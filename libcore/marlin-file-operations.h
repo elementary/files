@@ -62,6 +62,12 @@ void marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                                              gchar* folder_name,
                                              MarlinCreateCallback done_callback,
                                              gpointer done_callback_data);
+void marlin_file_operations_new_folder_with_name_recursive (GtkWidget *parent_view, 
+                                             GdkPoint *target_point,
+                                             GFile *parent_dir,
+                                             gchar* folder_name,
+                                             MarlinCreateCallback done_callback,
+                                             gpointer done_callback_data);                                             
 void marlin_file_operations_new_file    (GtkWidget                 *parent_view,
                                          GdkPoint                  *target_point,
                                          const char                *parent_dir,

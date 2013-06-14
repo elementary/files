@@ -34,7 +34,7 @@ namespace Marlin.View {
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
-        public Notebook tabs;
+        public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
         public ViewContainer? current_tab;
@@ -152,11 +152,9 @@ namespace Marlin.View {
             show_infobar (!is_marlin_mydefault_fm ());
 
             /* Contents */
-            tabs = new Notebook();
-            tabs.show_border = false;
-            tabs.show_tabs = false;
-            tabs.set_scrollable(true);
-            tabs.show();
+            tabs = new Granite.Widgets.DynamicNotebook ();
+            tabs.show_tabs = true;
+            tabs.show ();
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar (this);
@@ -222,23 +220,22 @@ namespace Marlin.View {
                 destroy();
             	return false;
             });
-
-            tabs.switch_page.connect((page, offset) => {
-                change_tab(offset);
+            
+            tabs.tab_added.connect ((tab) => {
+                if (tab != null)
+                    tabs.remove_tab (tab);
+                add_tab ();
             });
-
-            tabs.scroll_event.connect((scroll) => {
-                int offset = tabs.get_current_page();
-
-                if(scroll.direction == ScrollDirection.UP)
-                    offset++;
-                else if(scroll.direction == ScrollDirection.DOWN)
-                    offset--;
-
-                if(offset >= 0 && offset <= tabs.get_children().length()-1)
-                    tabs.set_current_page(offset);
-
+            
+            tabs.tab_removed.connect ((tab) => {
+                if (tabs.n_tabs == 1) {
+                    add_tab ();
+                }
                 return true;
+            });
+            
+            tabs.tab_switched.connect ((old_tab, new_tab) => {
+                change_tab (tabs.get_tab_position (new_tab));
             });
 
             Gtk.Allocation win_alloc;
@@ -276,7 +273,8 @@ namespace Marlin.View {
         }
 
         public void colorize_current_tab_selection (int n) {
-            ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
+            if (!current_tab.content_shown)
+                ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
 
@@ -290,9 +288,9 @@ namespace Marlin.View {
             this.title = title;
         }
 
-        public void change_tab(uint offset){
+        public void change_tab (int offset) {
             ViewContainer old_tab = current_tab;
-            current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
+            current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (old_tab == current_tab) {
                 return;
             }
@@ -310,7 +308,7 @@ namespace Marlin.View {
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-                    if (cur_slot.view_box != null)
+                    if (cur_slot.view_box != null && !current_tab.content_shown)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri, sidebar);
@@ -318,62 +316,27 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab(File location){
+        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
+        
             ViewContainer content = new View.ViewContainer(this, location,
-                current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
+                                    current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            var hbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            var button = new Button();
-            button.set_image(new Image.from_stock(Stock.CLOSE, IconSize.MENU));
-            button.set_relief(ReliefStyle.NONE);
-            button.set_focus_on_click(false);
-
-            button.clicked.connect(() => {
-                remove_tab(content);
+            var new_tab = new Granite.Widgets.Tab ("", null, content);
+            
+            content.tab_name_changed.connect ((tab_name) => {
+                new_tab.label = tab_name;
             });
+            
+            tabs.insert_tab (new_tab, -1);
 
-            if (is_close_first ()) {
-                hbox.pack_start (button, false, false, 0);
-                hbox.pack_start (content.label, false, false, 0);
-            } else {
-                hbox.pack_start (content.label, false, false, 0);
-                hbox.pack_start (button, false, false, 0);
-            }
-
-            hbox.show_all();
-
-            var eventbox = new EventBox();
-            eventbox.add(hbox);
-            eventbox.set_visible_window(false);
-            eventbox.events |= EventMask.BUTTON_PRESS_MASK;
-            eventbox.button_release_event.connect((click) => {
-                if(click.button == 2){
-                    remove_tab(content);
-                }
-
-                return false;
-            });
-
-            tabs.append_page(content, eventbox);
-            tabs.child_set (content, "tab-expand", true, null );
-
-            tabs.set_tab_reorderable(content, true);
-            tabs.show_tabs = tabs.get_children().length() > 1;
-
-            /* jump to that new tab */
-            tabs.set_current_page(tabs.get_n_pages()-1);
+            tabs.current = new_tab;
             //current_tab = content;
         }
 
-        public void remove_tab(ViewContainer view_container){
-            if(tabs.get_children().length() == 2){
-                tabs.show_tabs = false;
-            }else if(tabs.get_children().length() == 1){
-                save_geometries();
-                destroy();
-            }
-
-            tabs.remove(view_container);
+        public void remove_tab (ViewContainer view_container){
+            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            if (tab != null)
+                tabs.remove_tab (tab);
         }
 
         public void add_window(File location){
@@ -423,11 +386,11 @@ namespace Marlin.View {
         }
 
         private void action_new_tab (Gtk.Action action) {
-            add_tab (File.new_for_commandline_arg(Environment.get_home_dir()));
+            add_tab ();
         }
 
         private void action_remove_tab (Gtk.Action action) {
-            remove_tab(current_tab);
+            tabs.remove_tab (tabs.current);
         }
 
     	private void save_geometries () {
@@ -564,16 +527,13 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
         }
 
-        void action_next_tab()
+        void action_next_tab ()
         {
-            if(tabs.page == tabs.get_n_pages() - 1)
-                tabs.page = 0;
-            else
-                tabs.page++;
+            tabs.next_page ();
         }
-        void action_previous_tab()
+        void action_previous_tab ()
         {
-            tabs.page --;
+            tabs.previous_page ();
         }
 
         private void action_zoom_normal_callback (Gtk.Action action) {

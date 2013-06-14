@@ -26,9 +26,7 @@ namespace Marlin.View.Chrome
     public class TopMenu : Gtk.Toolbar
     {
         public ViewSwitcher? view_switcher;
-        public Gtk.Menu compact_menu;
         public Gtk.Menu toolbar_menu;
-        public Granite.Widgets.AppMenu app_menu;
         public LocationBar? location_bar;
         public Window win;
 
@@ -38,14 +36,11 @@ namespace Marlin.View.Chrome
 
             get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
 
-            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
-            toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
+            toolbar_menu = (Gtk.Menu) win.ui.get_widget ("/ToolbarMenu");
 
-            app_menu = new Granite.Widgets.AppMenu (compact_menu);
-            setup_items();
-            show();
+            setup_items ();
 
-            app_menu.show_all ();
+            show ();
         }
 
         public override bool popup_context_menu (int x, int y, int button) {
@@ -55,9 +50,6 @@ namespace Marlin.View.Chrome
 
         public void setup_items ()
         {
-            if (compact_menu != null)
-                compact_menu.ref();
-
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
 
@@ -75,7 +67,8 @@ namespace Marlin.View.Chrome
                     location_bar = new LocationBar (win.ui, win);
                     location_bar.halign = Gtk.Align.FILL;
                     location_bar.valign = Gtk.Align.FILL;
-                    location_bar.margin_left = location_bar.margin_right = 6;
+                    location_bar.margin_left = 6;
+                    location_bar.margin_right = 12;
 
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
@@ -85,7 +78,12 @@ namespace Marlin.View.Chrome
                         //debug ("topmenu test path %s", location_bar.path);
                     }
 
-                    location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
+                    location_bar.escape.connect( () => {
+                        if (win.current_tab.content_shown)
+                            win.current_tab.content.grab_focus ();
+                        else
+                            win.current_tab.slot.view_box.grab_focus ();
+                    });
                     location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
                     location_bar.activate_alternate.connect((a) => { win.add_tab(File.new_for_commandline_arg(a)); });
                     location_bar.show_all();
@@ -122,18 +120,6 @@ namespace Marlin.View.Chrome
                 }
             }
 
-            insert (app_menu, -1);
-            app_menu.right_click.connect (on_item_popup_menu);
-        }
-
-        private void on_item_popup_menu () {
-            Gdk.Event? event = Gtk.get_current_event ();
-            Gdk.EventButton? button_event = event.button;
-
-            int button = -1;
-            if (button_event != null)
-                button = (int) button_event.button;
-            popup_context_menu (0, 0, button);
         }
 
         private void toolitems_destroy (Gtk.Widget? w) {

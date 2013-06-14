@@ -70,10 +70,4 @@
     <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
 </popup>
 
-<popup name="CompactMenu" accelerators="false">
-	<menuitem name="New Tab" action="New Tab"/>
-	<menuitem name="New Window" action="New Window"/>
-	<separator/>
-    <menuitem name="About" action="About"/>
-</popup>
 </ui>

@@ -46,6 +46,7 @@ typedef struct {
     FMListModel         *model;
 
     FMListViewDetails   *details;
+    GList               *loaded_subdirectories;
 } FMListView;
 
 typedef struct {

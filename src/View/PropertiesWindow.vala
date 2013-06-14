@@ -158,8 +158,15 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         /* Preview */
         //message ("flag %d", (int) goffile.flags);
         if (count == 1 && goffile.flags != 0) {
+            /* Retrieve the low quality (existent) thumbnail.
+            This will be shown to prevent resizing the properties window
+            when the large preview is retrieved. */
+            var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+            /* Request the creation of the large thumbnail */
+            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true); 
             var preview_box = new Box(Gtk.Orientation.VERTICAL, 0);
-            construct_preview_panel (preview_box);
+            
+            construct_preview_panel (preview_box, small_preview);
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
@@ -1116,16 +1123,22 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         return choice;
     }
 
-    private void construct_preview_panel (Box box) {
+    private void construct_preview_panel (Box box, Gdk.Pixbuf? small_preview) {
         evbox = new Granite.Widgets.ImgEventBox (Orientation.HORIZONTAL);
-        try {
-            var pix = new Gdk.Pixbuf.from_file_at_size (goffile.location.get_path (), 245, 256);
-            evbox.set_from_pixbuf (pix);
-        } catch (Error e) {
-            warning (e.message);
-        }
-
+        if (small_preview != null)
+            evbox.set_from_pixbuf (small_preview);
         box.pack_start (evbox, false, true, 0);
+                
+        goffile.icon_changed.connect (() => {
+            var large_preview_path = goffile.get_preview_path ();
+            if (large_preview_path != null)
+                try {
+                    var large_preview = new Gdk.Pixbuf.from_file (large_preview_path);
+                    evbox.set_from_pixbuf (large_preview);
+                } catch (Error e) {
+                    warning (e.message);
+                }
+        });
     }
 
     private enum AppsColumn {

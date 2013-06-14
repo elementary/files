@@ -298,7 +298,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
      * remember the selected paths here and restore them later.
      */
     if (event->type == GDK_BUTTON_PRESS && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0
-        && path != NULL && gtk_tree_selection_path_is_selected (selection, path))
+        && path != NULL && GTK_IS_TREE_SELECTION (selection) && gtk_tree_selection_path_is_selected (selection, path))
     {
         /* if no custom select function is set, we simply use exo_noop_false here,
          * to tell the tree view that it may not alter the selection.
@@ -349,7 +349,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
 
     /* restore previous selection if the path is still selected */
     if (event->type == GDK_BUTTON_PRESS && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0
-        && path != NULL && gtk_tree_selection_path_is_selected (selection, path))
+        && path != NULL && GTK_IS_TREE_SELECTION (selection) && gtk_tree_selection_path_is_selected (selection, path))
     {
         /* check if we have to restore paths */
         if (G_LIKELY (gtk_tree_selection_get_select_function (selection) != (GtkTreeSelectionFunc) exo_noop_false))
@@ -361,7 +361,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
     }
 
     /* see bug http://bugzilla.xfce.org/show_bug.cgi?id=6230 for more information */
-    if (G_LIKELY (gtk_tree_selection_get_select_function (selection) == (GtkTreeSelectionFunc) exo_noop_false))
+    if (G_LIKELY (GTK_IS_TREE_SELECTION (selection) && gtk_tree_selection_get_select_function (selection) == (GtkTreeSelectionFunc) exo_noop_false))
     {
         /* just reset the select function (previously set to exo_noop_false),
          * there's no clean way to do this, so what the heck.
