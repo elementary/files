@@ -78,6 +78,8 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             folder_count_changed ();
         }
     }
+    
+    private uint file_count;
 
     private enum PanelType {
         INFO,
@@ -211,12 +213,13 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         total_size = 0;
         deep_count_directories = null;
         folder_count = 0;
+        file_count = 0;
 
         /* TODO cancel deep_count when leaving the dialog */
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
-                folder_count += 1;
+                folder_count++;
                 var d = new Marlin.DeepCount (gof.location);
                 deep_count_directories.prepend (d);
                 d.finished.connect (() => {
@@ -224,16 +227,20 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                                     deep_count_directories.remove (d);
                                     total_size += d.total_size;
                                     update_header_desc ();
-                                    folder_count -= 1;
+                                    folder_count--;
                                     mutex.unlock ();
                                     });
+            } else {
+                file_count++;
             }
+            
             mutex.lock ();
             total_size += gof.size;
             mutex.unlock ();
         }
 
-        update_header_desc ();
+        if (file_count > 0)
+            update_header_desc ();
         
         if (folder_count > 0) {
             spinner.start ();
@@ -278,7 +285,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
-        spinner_label = new Gtk.Label (_("Calculating size..."));
+        spinner_label = new Gtk.Label (_("Calculating size…"));
 
         header_desc = new Label (null);
         header_desc.set_use_markup (true);
