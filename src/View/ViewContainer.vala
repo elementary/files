@@ -146,17 +146,19 @@ namespace Marlin.View {
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
+            else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
+                tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else
-                tab_name = aslot.directory.file.info.get_attribute_string(FileAttribute.STANDARD_DISPLAY_NAME);
+                tab_name = _("This folder does not exist");
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
             /* update window title */
-            if(window.current_tab == this) {
-                window.set_title(tab_name);
+            if (window.current_tab == this) {
+                window.set_title (tab_name);
                 if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name();
+                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name ();
             }
 
         }
@@ -183,7 +185,7 @@ namespace Marlin.View {
                 /* we re just changing view keep the same location */
                 location = get_active_slot ().location;
                 /* store the old selection to restore it */
-                if (slot != null) {
+                if (slot != null && slot.directory.file.exists) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     foreach (var elem in list)
                         select_childs.prepend (elem.location);
@@ -218,7 +220,7 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             connect_available_info();
-            if (slot != null && slot.directory.file.exists) {
+            if (slot != null) {
                 slot.directory.done_loading.connect (directory_done_loading);
                 slot.directory.need_reload.connect (reload);
             }
