@@ -124,7 +124,7 @@ namespace Marlin.View {
 
         private void plugin_directory_loaded ()
         {
-            Object[] data = new Object[2];
+            Object[] data = new Object[3];
             data[0] = window;
             (mwcol != null) ? data[1] = mwcol : data[1] = slot;
             //data[2] = GOF.File.get(slot.location);
