@@ -226,25 +226,25 @@ namespace Marlin.View {
             } else {
                 string str = null;
                 if (folders_count > 1) {
-                    str = "%u folders".printf (folders_count);
+                    str = _("%u folders").printf (folders_count);
                     /*if (sub_folders_count > 0)
                       str += " (containing %u items)".printf (sub_count);
                       else
                       str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
-                        str += " and %u other items (%s) selected".printf (files_count, format_size ((int64) files_size));
+                        str += _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size));
                     else
-                        str += " selected";
+                        str += _(" selected");
                 } else if (folders_count == 1) {
-                    str = "%u folder".printf (folders_count);
+                    str = _("%u folder").printf (folders_count);
                     /*if (sub_folders_count > 0)
                       str += " (containing %u items)".printf (sub_count);
                       else
                       str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
-                        str += " and %u other items (%s) selected".printf (files_count, format_size ((int64) files_size));
+                        str += _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size));
                     else
-                        str += " selected";
+                        str += _(" selected");
                 } else {
                     str = _("%u items selected (%s)").printf (count, format_size ((int64) files_size));
                 }
