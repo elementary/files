@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-06-13 21:30-0500\n"
+"POT-Creation-Date: 2013-06-14 21:20+0000\n"
 "PO-Revision-Date: 2013-05-17 03:54+0000\n"
 "Last-Translator: LeeHoseok <neochain@naver.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -15,413 +15,193 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-06-14 06:24+0000\n"
+"X-Launchpad-Export-Date: 2013-06-15 05:34+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:116
-msgid "AFP"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:117
-msgid "DAV"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:118
-msgid "DAVS"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:119
-msgid "FTP"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:120
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:564
-msgid "Network"
-msgstr "네트워크"
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:121
-msgid "SFTP"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:122
-msgid "SMB"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:123
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:346
-msgid "Trash"
-msgstr "휴지통"
-
-#: /home/codygarver/files-trunk/po/../src/View/LocationBar.vala:302
-msgid "Open in New Tab"
-msgstr "새 탭에서 열기"
-
-#: /home/codygarver/files-trunk/po/../src/View/OverlayBar.vala:249
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u개 항목이 선택되었습니다. (%s)"
-
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:73
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
 msgstr "속성"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:126
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:126
 msgid "General"
 msgstr "일반"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:134
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:134
 msgid "More"
 msgstr "더 보기"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:153
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:153
 msgid "Preview"
 msgstr "미리 보기"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:340
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
+#, c-format
+msgid "%u selected items"
+msgstr ""
+
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
 msgstr "생성"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:342
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:59
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:342
+#: /home/cody/f/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "수정"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:345
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:345
 msgid "Last Access"
 msgstr "마지막 엑세스"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:351
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:351
 msgid "Deleted"
 msgstr "삭제함"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:356
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:356
 msgid "MimeType"
 msgstr "MIME 형식"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:364
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:364
 msgid "MimeTypes"
 msgstr "MIME 형식"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:368
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:368
 msgid "Location"
 msgstr "위치"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:370
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:370
 msgid "Target"
 msgstr "대상"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:376
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:376
 msgid "Origin Location"
 msgstr "원본 위치"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:386
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:386
 msgid "Info:"
 msgstr "정보:"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:421
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:421
 msgid "Other application..."
 msgstr "다른 프로그램..."
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:445
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:445
 msgid "Open with:"
 msgstr "다음으로 열기:"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:466
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:466
 msgid "Usage:"
 msgstr "사용법:"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:471
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:471
 msgid "Device usage:"
 msgstr "장치 사용량:"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:478
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:478
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s가 %s중에서 사용가능함 (%d%%사용됨)"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:617
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:617
 msgid "Read"
 msgstr "읽기"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:622
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:622
 msgid "Write"
 msgstr "쓰기"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:627
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:627
 msgid "Execute"
 msgstr "실행"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:845
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:858
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:845
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:858
 msgid "Owner"
 msgstr "소유자"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:850
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:862
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:850
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:862
 msgid "Group"
 msgstr "그룹"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:866
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:866
 msgid "Everyone"
 msgstr "모든 사람"
 
-#: /home/codygarver/files-trunk/po/../src/View/PropertiesWindow.vala:1128
+#: /home/cody/f/po/../src/View/PropertiesWindow.vala:1128
 msgid "Select an aplication to open "
 msgstr "이 파일을 열 때 사용할 프로그램을 선택하세요 "
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr "Files가 기본 파일 관리자가 아닙니다."
+#: /home/cody/f/po/../src/View/OverlayBar.vala:229
+#, c-format
+msgid "%u folders"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:132
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3426
-msgid "Set as default"
-msgstr "기본값으로 설정"
+#: /home/cody/f/po/../src/View/OverlayBar.vala:235
+#: /home/cody/f/po/../src/View/OverlayBar.vala:245
+#, c-format
+msgid " and %u other items (%s) selected"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "무시"
+#: /home/cody/f/po/../src/View/OverlayBar.vala:237
+#: /home/cody/f/po/../src/View/OverlayBar.vala:247
+msgid " selected"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:363
-msgid "Undo"
-msgstr "실행 취소"
+#: /home/cody/f/po/../src/View/OverlayBar.vala:239
+#, c-format
+msgid "%u folder"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:364
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:606
-msgid "Undo the last action"
-msgstr "마지막 동작을 실행 취소합니다"
+#: /home/cody/f/po/../src/View/OverlayBar.vala:249
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u개 항목이 선택되었습니다. (%s)"
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:373
-msgid "Redo"
-msgstr "다시 실행"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:148
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:300
+msgid "Home"
+msgstr "홈"
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:374
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:609
-msgid "Redo the last action"
-msgstr "마지막 작업을 다시 실행합니다"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:150
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:370
+msgid "File System"
+msgstr "파일 시스템"
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:584
-msgid "_File"
-msgstr "파일(_F)"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:154
+msgid "This folder does not exist"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:585
-msgid "_Edit"
-msgstr "편집(_E)"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:157
+msgid "(as Administrator)"
+msgstr "(관리자 권한으로)"
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:586
-msgid "_View"
-msgstr "보기(_V)"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:587
-msgid "_Go"
-msgstr "가기(_G)"
+#: /home/cody/f/po/../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:588
-msgid "_Help"
-msgstr "도움말(_H)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:590
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "새 창(_W)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:591
-msgid "Open another Files window for the displayed location"
-msgstr "현재 위치에서 새 창 열기"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:594
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "새 탭(_T)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:595
-msgid "Open another tab for the displayed location"
-msgstr "현재 위치에서 새 탭 열기"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:599
-msgid "_Close"
-msgstr "닫기(_C)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:600
-msgid "Close this folder"
-msgstr "이 폴더 닫기"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:605
-msgid "_Undo"
-msgstr "실행 취소(_U)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:608
-msgid "_Redo"
-msgstr "다시 실행(_R)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:611
-msgid "Open _Parent"
-msgstr "상위 폴더 열기(_P)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:612
-msgid "Open the parent folder"
-msgstr "상위 폴더를 엽니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:614
-msgid "_Back"
-msgstr "뒤로(_B)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:615
-msgid "Go to the previous visited location"
-msgstr "이전에 방문했던 위치로 갑니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:618
-msgid "_Forward"
-msgstr "앞으로(_F)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:619
-msgid "Go to the next visited location"
-msgstr "다음에 방문한 위치로 갑니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:621
-msgid "_Reload"
-msgstr "새로고침(_R)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:622
-msgid "Reload the current location"
-msgstr "현재 위치를 새로고침합니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:625
-msgid "_Home Folder"
-msgstr "홈 폴더 (_H)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:626
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:305
-msgid "Open your personal folder"
-msgstr "개인 폴더를 엽니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:629
-msgid "_Trash"
-msgstr "휴지통(_T)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:630
-msgid "Open your personal trash folder"
-msgstr "휴지통을 엽니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:633
-msgid "_Network"
-msgstr "네트워크(_N)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:634
-msgid "Browse bookmarked and local network locations"
-msgstr "책갈피와 로컬 네트워크를 찾아봅니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:637
-msgid "Zoom _In"
-msgstr "확대(_I)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:638
-msgid "Increase the view size"
-msgstr "확대합니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:649
-msgid "Zoom _Out"
-msgstr "축소(_O)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:650
-msgid "Decrease the view size"
-msgstr "축소합니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:657
-msgid "Normal Si_ze"
-msgstr "기본값 크기 (_z)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:658
-msgid "Use the normal view size"
-msgstr "보통 보기크기를 사용합니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:661
-msgid "Next Tab"
-msgstr "다음 탭"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:665
-msgid "Previous Tab"
-msgstr "이전 탭"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:669
-msgid "Connect to _Server..."
-msgstr "서버에 연결...(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:670
-msgid "Connect to a remote computer or shared disk"
-msgstr "원격 컴퓨터나 공유 디스크에 연결합니다"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:673
-msgid "_About"
-msgstr "Files에 대하여(_A)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:674
-msgid "Display credits"
-msgstr "기여자 목록을 표시합니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:677
-msgid "Report a Problem..."
-msgstr "문제점 보고..."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:678
-msgid "File a bug on Launchpad"
-msgstr "런치패드에 버그를 등록합니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:681
-msgid "Get Help Online..."
-msgstr "온라인으로 도움받기..."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:685
-msgid "Translate This Application..."
-msgstr "이 프로그램 번역하기..."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:694
-msgid "Show _Hidden Files"
-msgstr "숨긴 파일 표시(_H)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:695
-msgid "Toggle the display of hidden files in the current window"
-msgstr "현재 창의 숨긴 파일을 표시할 지를 바꿉니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:699
-msgid "_Places"
-msgstr "위치(_P)"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:700
-msgid "Change the visibility of this window's side pane"
-msgstr "가장자리 패널의 투명도를 바꿉니다."
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:708
-msgid "Icon"
-msgstr "아이콘"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:711
-msgid "List"
-msgstr "목록"
-
-#: /home/codygarver/files-trunk/po/../src/View/Window.vala:714
-msgid "Columns"
-msgstr "열"
-
-#: /home/codygarver/files-trunk/po/../src/View/DirectoryNotFound.vala:39
+#: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/DirectoryNotFound.vala:39
+#: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/DirectoryNotFound.vala:41
+#: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
 msgstr "만들기"
 
-#: /home/codygarver/files-trunk/po/../src/View/DirectoryNotFound.vala:41
+#: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/DirectoryNotFound.vala:55
+#: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
 msgid ""
 "Failed to create the folder\n"
@@ -429,78 +209,529 @@ msgid ""
 "%s"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:148
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:300
-msgid "Home"
-msgstr "홈"
-
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:150
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:370
-msgid "File System"
-msgstr "파일 시스템"
-
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:154
-msgid "This folder does not exist"
+#: /home/cody/f/po/../src/View/LocationBar.vala:116
+msgid "AFP"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:157
-msgid "(as Administrator)"
-msgstr "(관리자 권한으로)"
-
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
+#: /home/cody/f/po/../src/View/LocationBar.vala:117
+msgid "DAV"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
+#: /home/cody/f/po/../src/View/LocationBar.vala:118
+msgid "DAVS"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:622
-msgid "This folder is empty."
-msgstr "폴더가 비어 있습니다."
+#: /home/cody/f/po/../src/View/LocationBar.vala:119
+msgid "FTP"
+msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:205
+#: /home/cody/f/po/../src/View/LocationBar.vala:120
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:564
+msgid "Network"
+msgstr "네트워크"
+
+#: /home/cody/f/po/../src/View/LocationBar.vala:121
+msgid "SFTP"
+msgstr ""
+
+#: /home/cody/f/po/../src/View/LocationBar.vala:122
+msgid "SMB"
+msgstr ""
+
+#: /home/cody/f/po/../src/View/LocationBar.vala:123
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:346
+msgid "Trash"
+msgstr "휴지통"
+
+#: /home/cody/f/po/../src/View/LocationBar.vala:302
+msgid "Open in New Tab"
+msgstr "새 탭에서 열기"
+
+#: /home/cody/f/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "Files가 기본 파일 관리자가 아닙니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:132
+#: /home/cody/f/po/../src/fm-directory-view.c:3426
+msgid "Set as default"
+msgstr "기본값으로 설정"
+
+#: /home/cody/f/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "무시"
+
+#: /home/cody/f/po/../src/View/Window.vala:363
+msgid "Undo"
+msgstr "실행 취소"
+
+#: /home/cody/f/po/../src/View/Window.vala:364
+#: /home/cody/f/po/../src/View/Window.vala:606
+msgid "Undo the last action"
+msgstr "마지막 동작을 실행 취소합니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:373
+msgid "Redo"
+msgstr "다시 실행"
+
+#: /home/cody/f/po/../src/View/Window.vala:374
+#: /home/cody/f/po/../src/View/Window.vala:609
+msgid "Redo the last action"
+msgstr "마지막 작업을 다시 실행합니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:584
+msgid "_File"
+msgstr "파일(_F)"
+
+#: /home/cody/f/po/../src/View/Window.vala:585
+msgid "_Edit"
+msgstr "편집(_E)"
+
+#: /home/cody/f/po/../src/View/Window.vala:586
+msgid "_View"
+msgstr "보기(_V)"
+
+#: /home/cody/f/po/../src/View/Window.vala:587
+msgid "_Go"
+msgstr "가기(_G)"
+
+#: /home/cody/f/po/../src/View/Window.vala:588
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: /home/cody/f/po/../src/View/Window.vala:590
+#: /home/cody/f/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "새 창(_W)"
+
+#: /home/cody/f/po/../src/View/Window.vala:591
+msgid "Open another Files window for the displayed location"
+msgstr "현재 위치에서 새 창 열기"
+
+#: /home/cody/f/po/../src/View/Window.vala:594
+#: /home/cody/f/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "새 탭(_T)"
+
+#: /home/cody/f/po/../src/View/Window.vala:595
+msgid "Open another tab for the displayed location"
+msgstr "현재 위치에서 새 탭 열기"
+
+#: /home/cody/f/po/../src/View/Window.vala:599
+msgid "_Close"
+msgstr "닫기(_C)"
+
+#: /home/cody/f/po/../src/View/Window.vala:600
+msgid "Close this folder"
+msgstr "이 폴더 닫기"
+
+#: /home/cody/f/po/../src/View/Window.vala:605
+msgid "_Undo"
+msgstr "실행 취소(_U)"
+
+#: /home/cody/f/po/../src/View/Window.vala:608
+msgid "_Redo"
+msgstr "다시 실행(_R)"
+
+#: /home/cody/f/po/../src/View/Window.vala:611
+msgid "Open _Parent"
+msgstr "상위 폴더 열기(_P)"
+
+#: /home/cody/f/po/../src/View/Window.vala:612
+msgid "Open the parent folder"
+msgstr "상위 폴더를 엽니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:614
+msgid "_Back"
+msgstr "뒤로(_B)"
+
+#: /home/cody/f/po/../src/View/Window.vala:615
+msgid "Go to the previous visited location"
+msgstr "이전에 방문했던 위치로 갑니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:618
+msgid "_Forward"
+msgstr "앞으로(_F)"
+
+#: /home/cody/f/po/../src/View/Window.vala:619
+msgid "Go to the next visited location"
+msgstr "다음에 방문한 위치로 갑니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:621
+msgid "_Reload"
+msgstr "새로고침(_R)"
+
+#: /home/cody/f/po/../src/View/Window.vala:622
+msgid "Reload the current location"
+msgstr "현재 위치를 새로고침합니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:625
+msgid "_Home Folder"
+msgstr "홈 폴더 (_H)"
+
+#: /home/cody/f/po/../src/View/Window.vala:626
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:305
+msgid "Open your personal folder"
+msgstr "개인 폴더를 엽니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:629
+msgid "_Trash"
+msgstr "휴지통(_T)"
+
+#: /home/cody/f/po/../src/View/Window.vala:630
+msgid "Open your personal trash folder"
+msgstr "휴지통을 엽니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:633
+msgid "_Network"
+msgstr "네트워크(_N)"
+
+#: /home/cody/f/po/../src/View/Window.vala:634
+msgid "Browse bookmarked and local network locations"
+msgstr "책갈피와 로컬 네트워크를 찾아봅니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:637
+msgid "Zoom _In"
+msgstr "확대(_I)"
+
+#: /home/cody/f/po/../src/View/Window.vala:638
+msgid "Increase the view size"
+msgstr "확대합니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:649
+msgid "Zoom _Out"
+msgstr "축소(_O)"
+
+#: /home/cody/f/po/../src/View/Window.vala:650
+msgid "Decrease the view size"
+msgstr "축소합니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:657
+msgid "Normal Si_ze"
+msgstr "기본값 크기 (_z)"
+
+#: /home/cody/f/po/../src/View/Window.vala:658
+msgid "Use the normal view size"
+msgstr "보통 보기크기를 사용합니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:661
+msgid "Next Tab"
+msgstr "다음 탭"
+
+#: /home/cody/f/po/../src/View/Window.vala:665
+msgid "Previous Tab"
+msgstr "이전 탭"
+
+#: /home/cody/f/po/../src/View/Window.vala:669
+msgid "Connect to _Server..."
+msgstr "서버에 연결...(_S)"
+
+#: /home/cody/f/po/../src/View/Window.vala:670
+msgid "Connect to a remote computer or shared disk"
+msgstr "원격 컴퓨터나 공유 디스크에 연결합니다"
+
+#: /home/cody/f/po/../src/View/Window.vala:673
+msgid "_About"
+msgstr "Files에 대하여(_A)"
+
+#: /home/cody/f/po/../src/View/Window.vala:674
+msgid "Display credits"
+msgstr "기여자 목록을 표시합니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:677
+msgid "Report a Problem..."
+msgstr "문제점 보고..."
+
+#: /home/cody/f/po/../src/View/Window.vala:678
+msgid "File a bug on Launchpad"
+msgstr "런치패드에 버그를 등록합니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:681
+msgid "Get Help Online..."
+msgstr "온라인으로 도움받기..."
+
+#: /home/cody/f/po/../src/View/Window.vala:685
+msgid "Translate This Application..."
+msgstr "이 프로그램 번역하기..."
+
+#: /home/cody/f/po/../src/View/Window.vala:694
+msgid "Show _Hidden Files"
+msgstr "숨긴 파일 표시(_H)"
+
+#: /home/cody/f/po/../src/View/Window.vala:695
+msgid "Toggle the display of hidden files in the current window"
+msgstr "현재 창의 숨긴 파일을 표시할 지를 바꿉니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:699
+msgid "_Places"
+msgstr "위치(_P)"
+
+#: /home/cody/f/po/../src/View/Window.vala:700
+msgid "Change the visibility of this window's side pane"
+msgstr "가장자리 패널의 투명도를 바꿉니다."
+
+#: /home/cody/f/po/../src/View/Window.vala:708
+msgid "Icon"
+msgstr "아이콘"
+
+#: /home/cody/f/po/../src/View/Window.vala:711
+msgid "List"
+msgstr "목록"
+
+#: /home/cody/f/po/../src/View/Window.vala:714
+msgid "Columns"
+msgstr "열"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:139
+#: /home/cody/f/po/../src/fm-columns-view.c:186
+#: /home/cody/f/po/../src/fm-list-view.c:205
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "%s 파일의 이름을 %s(으)로 바꾸는데 실패했습니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:125
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "항목 정렬(_G)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "거꾸로(_V)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "아이콘을 반대 순서로 표시합니다"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "이름 순서(_N)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "이름 순서로 아이콘을 정렬합니다"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "크기 순서(_S)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "크기 순서로 아이콘을 정렬합니다"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "형식 순서(_T)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "파일형식순으로 아이콘을 정렬합니다"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "내용이 바뀐 날짜 순서(_D)"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "바뀐 날짜 순서로 아이콘을 정렬합니다"
+
+#: /home/cody/f/po/../src/fm-abstract-icon-view.c:573
+#: /home/cody/f/po/../src/fm-columns-view.c:82
+#: /home/cody/f/po/../src/fm-list-view.c:622
+msgid "This folder is empty."
+msgstr "폴더가 비어 있습니다."
+
+#: /home/cody/f/po/../src/eel-editable-label.c:3190
+#: /home/cody/f/po/../src/fm-directory-view.c:3540
+msgid "Select All"
+msgstr "모두 고르기"
+
+#: /home/cody/f/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "입력기"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:286
+msgid "Personal"
+msgstr "개인"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:291
+msgid "Your common places and bookmarks"
+msgstr "사용자의 개인 폴더 및 즐겨찾기"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:348
+msgid "Open the trash"
+msgstr "휴지통 열기"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:358
+msgid "Devices"
+msgstr "장치"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:363
+msgid "Your local partitions and devices"
+msgstr "로컬 파티션과 장치"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:372
+msgid "Open the contents of the File System"
+msgstr "파일 시스템을 열니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:431
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:456
+#, c-format
+msgid "Mount and open %s"
+msgstr "%s을(를) 마운트하고 엽니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:569
+msgid "Your network places"
+msgstr "네트워크 위치"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:600
+msgid "Entire network"
+msgstr "모든 네트워크"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:602
+msgid "Browse the contents of the network"
+msgstr "네트워크를 탐색합니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1590
+msgid "_Start"
+msgstr "시작(_S)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1591
+msgid "_Stop"
+msgstr "중지(_S)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1596
+msgid "_Power On"
+msgstr "전원 켜기(_P)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1597
+msgid "_Safely Remove Drive"
+msgstr "안전하게 드라이브 제거(_S)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Connect Drive"
+msgstr "드라이브 연결(_C)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1601
+msgid "_Disconnect Drive"
+msgstr "드라이브 연결 끊기(_D)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1604
+msgid "_Start Multi-disk Device"
+msgstr "멀티 디스크 장치 시작(_S)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Stop Multi-disk Device"
+msgstr "멀티 디스크 장치 중지(_S)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Unlock Drive"
+msgstr "드라이브 잠금 해제(_U)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Lock Drive"
+msgstr "드라이브 잠그기(_L)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1684
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2231
+#, c-format
+msgid "Unable to start %s"
+msgstr "'%s'을(를) 시작할 수 없습니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:1974
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2003
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2032
+#, c-format
+msgid "Unable to eject %s"
+msgstr "%s을(를) 꺼낼 수 없습니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2177
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "%s의 미디어가 바뀌었는지 확인할 수 없습니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2287
+#, c-format
+msgid "Unable to stop %s"
+msgstr "'%s'을(를) 중지할 수 없습니다"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2385
+#: /home/cody/f/po/../src/fm-directory-view.c:1978
+#: /home/cody/f/po/../src/fm-directory-view.c:3506
+msgid "_Open"
+msgstr "열기 (_O)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2393
+#: /home/cody/f/po/../src/fm-directory-view.c:1998
+#: /home/cody/f/po/../src/fm-directory-view.c:3518
+msgid "Open in New _Tab"
+msgstr "새 탭에서 열기(_T)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2400
+#: /home/cody/f/po/../src/fm-directory-view.c:2007
+msgid "Open in New _Window"
+msgstr "새 창에서 열기(_W)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2409
+msgid "Remove"
+msgstr "제거"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2418
+msgid "Rename..."
+msgstr "이름 바꾸기..."
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2431
+msgid "_Mount"
+msgstr "마운트(_M)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Unmount"
+msgstr "마운트 해제(_U)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Eject"
+msgstr "꺼내기(_E)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2453
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1422
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2312
+msgid "Empty _Trash"
+msgstr "휴지통 비우기(_T)"
+
+#: /home/cody/f/po/../src/marlin-places-sidebar.c:2463
+msgid "Connect to Server…"
+msgstr ""
+
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:128
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
 msgstr "공개 FTP"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:130
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
 msgstr "FTP (로그인)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:133
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:135
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
 msgstr "Windows 공유"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:137
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:139
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
 msgstr "보안된 WebDAV (HTTPS)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:186
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
 msgstr "접속중..."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:210
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -508,382 +739,122 @@ msgstr ""
 "지원하는 서버 방식 목록을 읽어들일 수 없습니다.\n"
 "gvfs가 제대로 설치되었는지 확인하십시오."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:288
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "\"%s\" 폴더를 \"%s\"에서 열 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:298
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "\"%s\" 위치의 서버를 찾을 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:333
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
 msgstr "다시 시도"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:398
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
 msgstr "사용자 상세 정보를 확인하십시오."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:428
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
 msgstr "계속"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:766
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1156
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:766
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1156
 msgid "C_onnect"
 msgstr "연결(_C)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:891
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:891
 msgid "Connect to Server"
 msgstr "서버에 연결"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:909
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:909
 msgid "Server Details"
 msgstr "서버 상세 정보"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:933
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:933
 msgid "_Server:"
 msgstr "서버(_S):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:953
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:953
 msgid "_Port:"
 msgstr "포트(_P):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:971
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:971
 msgid "_Type:"
 msgstr "종류(_T):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1040
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1040
 msgid "Sh_are:"
 msgstr "공유(_A):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1055
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1055
 msgid "_Folder:"
 msgstr "폴더(_F):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1073
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
 msgstr "사용자 정보"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1096
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1096
 msgid "_Domain name:"
 msgstr "도메인 이름(_D):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1111
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1111
 msgid "_User name:"
 msgstr "사용자 이름(_U):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1126
 msgid "Pass_word:"
 msgstr "암호(_W):"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1142
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1142
 msgid "_Remember this password"
 msgstr "이 암호 기억(_R)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-connect-server-dialog.c:1245
+#: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1245
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:419
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:475
-msgid "File Operations"
-msgstr "파일 작업"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "자세히 보이기"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d개 파일 작업이 진행중입니다."
-
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "복사 대화 상자 보이기"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "진행 중인 모든 작업 취소"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-progress-ui-handler.c:476
-msgid "All file operations have been successfully completed"
-msgstr "모든 파일 작업을 성공적으로 수행하였습니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1177
-msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS 드래그 위치에서 잘못된 파일 이름이 제공되었습니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1335
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "URL \"%s\"의 링크 생성에 실패했습니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1820
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "\"%s\"(으)로 선택한 항목을 엽니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "_Open With %s"
-msgstr "%s(으)로 열기(_O)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1978
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3506
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2385
-msgid "_Open"
-msgstr "열기 (_O)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1994
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "새 탭에서 %'d 열기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:1998
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3518
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2393
-msgid "Open in New _Tab"
-msgstr "새 탭에서 열기(_T)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:2003
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "새 창에서 %'d 열기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:2007
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2400
-msgid "Open in New _Window"
-msgstr "새 창에서 열기(_W)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3478
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "파일 붙여넣기 명령으로 선택한 파일을 옮길 준비를 합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3482
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "파일 붙여넣기 명령으로 선택한 파일을 복사할 준비를 합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3486
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 옮기거나 복사합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3489
-msgid "Paste Into Folder"
-msgstr "폴더에 붙여넣기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3490
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 선택한 폴더로 옮기거나 복사합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3493
-msgid "_Rename..."
-msgstr "이름 바꾸기(_R)..."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3494
-msgid "Rename selected item"
-msgstr "선택한 항목의 이름을 바꿉니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3497
-msgid "Create New _Folder"
-msgstr "새 폴더 만들기(_F)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3498
-msgid "Create a new empty folder inside this folder"
-msgstr "이 폴더 안에 빈 폴더를 새로 만듭니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3500
-msgid "Create New _File"
-msgstr "새 문서 만들기(_F)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3502
-msgid "_Empty File"
-msgstr "빈 문서(_E)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3503
-msgid "Create a new empty file inside this folder"
-msgstr "새 폴더를 이 폴더 안에 만듭니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3507
-msgid "Open the selected item"
-msgstr "선택한 항목을 엽니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3514
-msgid "Open in new Window"
-msgstr "새 창에서 열기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3515
-msgid "Open each selected item in a new window"
-msgstr "선택한 항목들을 새 창에서 엽니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3519
-msgid "Open each selected item in a new tab"
-msgstr "선택한 항목들을 새 탭에서 엽니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3521
-msgid "Open Wit_h"
-msgstr "다른 프로그램으로 열기(_H)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3522
-msgid "Choose a program with which to open the selected item"
-msgstr "선택한 항목을 열 프로그램을 선택합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3524
-msgid "Other _Application..."
-msgstr "다른 프로그램(_A)..."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3525
-msgid "Choose another application with which to open the selected item"
-msgstr "선택한 항목을 열 다른 프로그램을 선택합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3528
-msgid "Mo_ve to Trash"
-msgstr "휴지통으로 옮기기(_V)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3529
-msgid "Move each selected item to the Trash"
-msgstr "선택한 항목들을 휴지통으로 옮깁니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3532
-msgid "_Delete Permanently"
-msgstr "완전히 삭제하기(_D)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3533
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "선택한 항목을 휴지통으로 보내지 않고 삭제"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3536
-msgid "_Restore"
-msgstr "복원(_R)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3540
-#: /home/codygarver/files-trunk/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "모두 고르기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3544
-msgid "_Properties"
-msgstr "속성(_P)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3545
-msgid "View or modify the properties of each selected item"
-msgstr "각각 선택한 항목의 속성을 보거나 고칩니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-directory-view.c:3651
-msgid "Set Color:"
-msgstr "색상 설정:"
-
-#: /home/codygarver/files-trunk/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "아이콘 디렉토리 목록"
-
-#: /home/codygarver/files-trunk/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "아이콘 보기"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "클립보드에서 붙여넣을 자료가 없습니다."
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "항목 정렬(_G)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "거꾸로(_V)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "아이콘을 반대 순서로 표시합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "이름 순서(_N)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "이름 순서로 아이콘을 정렬합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "크기 순서(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "크기 순서로 아이콘을 정렬합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "형식 순서(_T)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "파일형식순으로 아이콘을 정렬합니다"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "내용이 바뀐 날짜 순서(_D)"
-
-#: /home/codygarver/files-trunk/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "바뀐 날짜 순서로 아이콘을 정렬합니다"
-
-#: /home/codygarver/files-trunk/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "입력기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "파일 이름"
-
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "크기"
-
-#: /home/codygarver/files-trunk/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "종류"
-
-#: /home/codygarver/files-trunk/po/../src/exo-tree-view.c:159
+#: /home/cody/f/po/../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "한 번 클릭"
 
-#: /home/codygarver/files-trunk/po/../src/exo-tree-view.c:160
+#: /home/cody/f/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "한 번 클릭하여 보고 있는 항목을 활성화시킬 지를 정합니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:423
+#: /home/cody/f/po/../src/exo-icon-view.c:857
+msgid "Layout mode"
+msgstr "레이아웃"
+
+#: /home/cody/f/po/../src/exo-icon-view.c:858
+msgid "The layout mode"
+msgstr "레이아웃"
+
+#: /home/cody/f/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
 msgstr "프로그램의 버전을 표시합니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:427
+#: /home/cody/f/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
 msgstr "새 탭에서 URL을 엽니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:429
+#: /home/cody/f/po/../src/marlin-application.c:429
 msgid "Quit Files."
 msgstr "닫기"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:431
+#: /home/cody/f/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
 msgstr "디버그 로깅 사용"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:432
+#: /home/cody/f/po/../src/marlin-application.c:432
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:441
+#: /home/cody/f/po/../src/marlin-application.c:441
 msgid ""
 "\n"
 "\n"
@@ -893,933 +864,607 @@ msgstr ""
 "\n"
 "파일 관리자로 파일 시스템을 찾아봅니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-application.c:461
+#: /home/cody/f/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 옵션은 URI와 같이 사용할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../src/exo-icon-view.c:857
-msgid "Layout mode"
-msgstr "레이아웃"
+#: /home/cody/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "클립보드에서 붙여넣을 자료가 없습니다."
 
-#: /home/codygarver/files-trunk/po/../src/exo-icon-view.c:858
-msgid "The layout mode"
-msgstr "레이아웃"
+#: /home/cody/f/po/../src/fm-directory-view.c:1177
+msgid "Invalid filename provided by XDS drag site"
+msgstr "XDS 드래그 위치에서 잘못된 파일 이름이 제공되었습니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:286
-msgid "Personal"
-msgstr "개인"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:291
-msgid "Your common places and bookmarks"
-msgstr "사용자의 개인 폴더 및 즐겨찾기"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:348
-msgid "Open the trash"
-msgstr "휴지통 열기"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:358
-msgid "Devices"
-msgstr "장치"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:363
-msgid "Your local partitions and devices"
-msgstr "로컬 파티션과 장치"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:372
-msgid "Open the contents of the File System"
-msgstr "파일 시스템을 열니다"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:456
+#: /home/cody/f/po/../src/fm-directory-view.c:1335
 #, c-format
-msgid "Mount and open %s"
-msgstr "%s을(를) 마운트하고 엽니다"
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "URL \"%s\"의 링크 생성에 실패했습니다."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:569
-msgid "Your network places"
-msgstr "네트워크 위치"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:600
-msgid "Entire network"
-msgstr "모든 네트워크"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:602
-msgid "Browse the contents of the network"
-msgstr "네트워크를 탐색합니다"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1590
-msgid "_Start"
-msgstr "시작(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1591
-msgid "_Stop"
-msgstr "중지(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1596
-msgid "_Power On"
-msgstr "전원 켜기(_P)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1597
-msgid "_Safely Remove Drive"
-msgstr "안전하게 드라이브 제거(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1600
-msgid "_Connect Drive"
-msgstr "드라이브 연결(_C)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1601
-msgid "_Disconnect Drive"
-msgstr "드라이브 연결 끊기(_D)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1604
-msgid "_Start Multi-disk Device"
-msgstr "멀티 디스크 장치 시작(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1605
-msgid "_Stop Multi-disk Device"
-msgstr "멀티 디스크 장치 중지(_S)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1609
-msgid "_Unlock Drive"
-msgstr "드라이브 잠금 해제(_U)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1610
-msgid "_Lock Drive"
-msgstr "드라이브 잠그기(_L)"
-
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1684
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2231
+#: /home/cody/f/po/../src/fm-directory-view.c:1820
 #, c-format
-msgid "Unable to start %s"
-msgstr "'%s'을(를) 시작할 수 없습니다"
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "\"%s\"(으)로 선택한 항목을 엽니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:1974
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2003
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2032
+#: /home/cody/f/po/../src/fm-directory-view.c:1972
 #, c-format
-msgid "Unable to eject %s"
-msgstr "%s을(를) 꺼낼 수 없습니다"
+msgid "_Open With %s"
+msgstr "%s(으)로 열기(_O)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2177
+#: /home/cody/f/po/../src/fm-directory-view.c:1994
 #, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "%s의 미디어가 바뀌었는지 확인할 수 없습니다"
+msgid "Open in %'d New _Tabs"
+msgstr "새 탭에서 %'d 열기"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2287
+#: /home/cody/f/po/../src/fm-directory-view.c:2003
 #, c-format
-msgid "Unable to stop %s"
-msgstr "'%s'을(를) 중지할 수 없습니다"
+msgid "Open in %'d New _Windows"
+msgstr "새 창에서 %'d 열기"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2409
-msgid "Remove"
-msgstr "제거"
+#: /home/cody/f/po/../src/fm-directory-view.c:3478
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "파일 붙여넣기 명령으로 선택한 파일을 옮길 준비를 합니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2418
-msgid "Rename..."
-msgstr "이름 바꾸기..."
+#: /home/cody/f/po/../src/fm-directory-view.c:3482
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "파일 붙여넣기 명령으로 선택한 파일을 복사할 준비를 합니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2431
-msgid "_Mount"
-msgstr "마운트(_M)"
+#: /home/cody/f/po/../src/fm-directory-view.c:3486
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 옮기거나 복사합니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2438
-msgid "_Unmount"
-msgstr "마운트 해제(_U)"
+#: /home/cody/f/po/../src/fm-directory-view.c:3489
+msgid "Paste Into Folder"
+msgstr "폴더에 붙여넣기"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2445
-msgid "_Eject"
-msgstr "꺼내기(_E)"
+#: /home/cody/f/po/../src/fm-directory-view.c:3490
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 선택한 폴더로 옮기거나 복사합니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2453
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2312
-msgid "Empty _Trash"
-msgstr "휴지통 비우기(_T)"
+#: /home/cody/f/po/../src/fm-directory-view.c:3493
+msgid "_Rename..."
+msgstr "이름 바꾸기(_R)..."
 
-#: /home/codygarver/files-trunk/po/../src/marlin-places-sidebar.c:2463
-msgid "Connect to Server…"
-msgstr ""
+#: /home/cody/f/po/../src/fm-directory-view.c:3494
+msgid "Rename selected item"
+msgstr "선택한 항목의 이름을 바꿉니다"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:103
+#: /home/cody/f/po/../src/fm-directory-view.c:3497
+msgid "Create New _Folder"
+msgstr "새 폴더 만들기(_F)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3498
+msgid "Create a new empty folder inside this folder"
+msgstr "이 폴더 안에 빈 폴더를 새로 만듭니다"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3500
+msgid "Create New _File"
+msgstr "새 문서 만들기(_F)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3502
+msgid "_Empty File"
+msgstr "빈 문서(_E)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3503
+msgid "Create a new empty file inside this folder"
+msgstr "새 폴더를 이 폴더 안에 만듭니다."
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3507
+msgid "Open the selected item"
+msgstr "선택한 항목을 엽니다"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3514
+msgid "Open in new Window"
+msgstr "새 창에서 열기"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3515
+msgid "Open each selected item in a new window"
+msgstr "선택한 항목들을 새 창에서 엽니다."
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3519
+msgid "Open each selected item in a new tab"
+msgstr "선택한 항목들을 새 탭에서 엽니다."
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3521
+msgid "Open Wit_h"
+msgstr "다른 프로그램으로 열기(_H)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3522
+msgid "Choose a program with which to open the selected item"
+msgstr "선택한 항목을 열 프로그램을 선택합니다"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3524
+msgid "Other _Application..."
+msgstr "다른 프로그램(_A)..."
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3525
+msgid "Choose another application with which to open the selected item"
+msgstr "선택한 항목을 열 다른 프로그램을 선택합니다"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3528
+msgid "Mo_ve to Trash"
+msgstr "휴지통으로 옮기기(_V)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3529
+msgid "Move each selected item to the Trash"
+msgstr "선택한 항목들을 휴지통으로 옮깁니다."
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3532
+msgid "_Delete Permanently"
+msgstr "완전히 삭제하기(_D)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3533
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "선택한 항목을 휴지통으로 보내지 않고 삭제"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3536
+msgid "_Restore"
+msgstr "복원(_R)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3544
+msgid "_Properties"
+msgstr "속성(_P)"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3545
+msgid "View or modify the properties of each selected item"
+msgstr "각각 선택한 항목의 속성을 보거나 고칩니다"
+
+#: /home/cody/f/po/../src/fm-directory-view.c:3651
+msgid "Set Color:"
+msgstr "색상 설정:"
+
+#: /home/cody/f/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "파일 이름"
+
+#: /home/cody/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "크기"
+
+#: /home/cody/f/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "종류"
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:114
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:164
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:419
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:475
+msgid "File Operations"
+msgstr "파일 작업"
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "자세히 보이기"
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:158
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d개 파일 작업이 진행중입니다."
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr "복사 대화 상자 보이기"
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr "진행 중인 모든 작업 취소"
+
+#: /home/cody/f/po/../src/marlin-progress-ui-handler.c:476
+msgid "All file operations have been successfully completed"
+msgstr "모든 파일 작업을 성공적으로 수행하였습니다."
+
+#: /home/cody/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "아이콘 디렉토리 목록"
+
+#: /home/cody/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "아이콘 보기"
+
+#: /home/cody/f/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
 msgstr "여기로 옮기기(_M)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:108
+#: /home/cody/f/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
 msgstr "여기로 복사(_C)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:113
+#: /home/cody/f/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
 msgstr "여기에 링크 만들기(_L)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:118
+#: /home/cody/f/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
 msgstr "배경 화면으로 설정(_B)"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:125
+#: /home/cody/f/po/../src/marlin-dnd.c:125
 msgid "Cancel"
 msgstr "취소"
 
-#: /home/codygarver/files-trunk/po/../src/marlin-dnd.c:217
+#: /home/cody/f/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "\"%s\"을(를) 실행하는데 실패했습니다."
 
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:6
+#: /home/cody/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "파일 찾아보기"
 
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:7
+#: /home/cody/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "파일 관리자"
 
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:10
+#: /home/cody/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "관리자 권한으로 새 창 열기"
 
-#: /home/codygarver/files-trunk/po/../src/DesktopLauncher.vala:11
+#: /home/cody/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "파일"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files-trunk/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (잘못된 유니코드)"
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:302
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:1761
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "오늘 %-l:%M %p"
-
-#: /home/codygarver/files-trunk/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "어제 %-l:%M %p"
-
-#: /home/codygarver/files-trunk/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "항목을 휴지통에서 되살릴 수 없습니다"
-
-#: /home/codygarver/files-trunk/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "자세히 표시(_D)"
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files-trunk/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "준비하는 중"
-
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "폴더 \"%s\"을(를) 합치시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr "폴더를 합치면, 폴더 안에 복사하려는 파일과 겹치는 파일이 있는 경우에 이를 덮어쓸 지 물어봅니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 오래된 폴더가 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 새로운 폴더가 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 다른 폴더가 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "바꾸시면 폴더 안의 모든 파일을 제거하게 됩니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "폴더 \"%s\"을(를) 바꾸시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 폴더가 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "\"%s\" 파일을 바꾸시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "바꾸시면 내용을 덮어쓰게 됩니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 오래된 파일이 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 새 파일이 이미 존재합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "\"%s\"에 같은 이름을 가진 파일이 이미 있습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "원본 파일"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "크기:"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "형식:"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "마지막 변경:"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "다음으로 바꾸기"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "병합"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "대상의 새 이름 선택(_S)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "초기화"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "모든 파일에 이 동작 적용"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:737
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:200
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "건너 뛰기(_S)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "이름 바꾸기(_N)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "바꾸기"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "파일 충돌"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:201
+#: /home/cody/f/po/../libcore/gof-file.c:302
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:1761
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:1799
+msgid "No Exec field specified"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:1819
+msgid "No URL field specified"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:1825
+msgid "Invalid desktop file"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:2115
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/gof-file.c:2135
+msgid "Toplevel files cannot be renamed"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "오늘 %-l:%M %p"
+
+#: /home/cody/f/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "어제 %-l:%M %p"
+
+#: /home/cody/f/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (잘못된 유니코드)"
+
+#: /home/cody/f/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
+
+#: /home/cody/f/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "항목을 휴지통에서 되살릴 수 없습니다"
+
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "모두 건너 뛰기(_K)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:202
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "다시 시도(_R)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:203
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "모두 지우기(_A)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:204
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "바꾸기(_R)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:205
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "모두 바꾸기(_A)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:206
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "합치기(_M)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:207
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "모두 합치기(_A)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:208
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "그래도 복사하기(_A)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:294
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 초"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:310
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:299
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 분"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:309
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 시간"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:317
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "약 %'d시간"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:393
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "%s에 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:397
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "%s에 또 다른 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:413
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%2$s에 %1$'d번째 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:417
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%2$s에 %1$'d번째 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:421
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%2$s에 %1$'d번째 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:425
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%2$s에 %1$'d번째 링크"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:463
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:465
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (또 다른 사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:482
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:468
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:470
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:472
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "번째 사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:475
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "번째 사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:477
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "번째 사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:479
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "번째 사본)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:496
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:498
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (또 다른 사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:519
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:501
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:503
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:505
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d 번째 사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:513
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d 번째 사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:515
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d 번째 사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:517
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d 번째 사본)%s"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:617
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:625
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1381
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "휴지통에서 \"%B\"을(를) 완전히 삭제하시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1384
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1829,538 +1474,885 @@ msgid_plural ""
 "trash?"
 msgstr[0] "정말로 휴지통에서 선택한 항목 %'d 개를 완전히 삭제하시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1462
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1394
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "휴지통을 비우면 항목들이 완전히 지워지게 됩니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1415
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "휴지통의 모든 항목을 비우시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1419
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "휴지통의 모든 항목을 완전히 삭제합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1450
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "정말로 \"%B\"을(를) 완전히 삭제하시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1453
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "정말로 선택한 항목 %'d개를 완전히 삭제하시겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1510
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1478
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "파일 삭제하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1504
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "지울 파일 %'d 개 남음"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1524
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T 남음"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2575
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1592
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1626
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1665
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1742
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while deleting."
 msgstr "삭제하는 중 오류 발생"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1596
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\"을(를) 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2634
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3630
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1599
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2634
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3630
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "\"%B\" 폴더의 파일에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3639
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1608
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3639
 msgid "_Skip files"
 msgstr "건너 뛰기(_S)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1629
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2673
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3675
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1632
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2673
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3675
 msgid "There was an error reading the folder \"%B\"."
 msgstr "\"%B\" 폴더를 읽는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1666
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "%B 폴더를 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1743
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "%B을(를) 삭제하는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1831
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1819
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "파일을 휴지통으로 보내는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1833
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "휴지통에 파일 %'d 개 남음"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1888
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "휴지통으로 이동시킬 수 없습니다. 완전히 삭제할까요?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:1889
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr "이 파일은 이동식 미디어 장치에 있어 휴지통으로 옮길 수 없습니다. 삭제하면 완전히 삭제되어 복구할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2071
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
 msgstr "파일을 휴지통에 버리는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2073
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
 msgstr "파일 삭제하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2145
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to eject %V"
 msgstr "%V을(를) 꺼낼 수 없음"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2147
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to unmount %V"
 msgstr "%V의 마운트를 해제할 수 없음"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2302
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2302
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "마운트를 해제하기 전에 휴지통을 비우겠습니까?"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2304
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2304
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr "이 볼륨에서 빈 공간을 확보하려면 휴지통을 비워야 합니다. 휴지통의 모든 항목은 완전히 사라지게 됩니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2310
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2310
 msgid "Do _not Empty Trash"
 msgstr "휴지통 비우지 않기(_N)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2365
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2365
 msgid "Emptying the trash"
 msgstr "휴지통을 비우는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2432
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2432
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s 장치를 마운트할 수 없습니다"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2510
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2510
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "파일 %'d개(%S) 복사 준비 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2516
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2516
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "파일 %'d개(%S) 옮길 준비 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2522
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "파일 %'d개(%S) 삭제 준비 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2528
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "파일 %'d개 휴지통에 버릴 준비 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3491
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3622
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3667
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2571
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3491
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3622
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3667
 msgid "Error while copying."
 msgstr "복사 중 오류."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2573
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3665
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2573
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3620
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while moving."
 msgstr "옮기는 중 오류."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2577
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
 msgstr "휴지통에 파일을 버리는 중 오류."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2631
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2631
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 안의 파일을 처리할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2670
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2670
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 처리할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2747
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2747
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 파일을 처리할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2750
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2750
 msgid "There was an error getting information about \"%B\"."
 msgstr "\"%B\"에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2850
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2892
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2925
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2955
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2850
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2892
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2925
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2955
 msgid "Error while copying to \"%B\"."
 msgstr "\"%B\"(으)로 복사중 오류."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2854
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2854
 msgid "You do not have permissions to access the destination folder."
 msgstr "대상 폴더에 접근할 권한이 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2856
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2856
 msgid "There was an error getting information about the destination."
 msgstr "대상에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2893
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2893
 msgid "The destination is not a folder."
 msgstr "대상이 폴더가 아닙니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2926
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2926
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "대상에 남은 공간이 없습니다. 공간을 확보하려면 파일을 지워보십시오."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2928
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2928
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S을(를) 이용할 수 있지만, %S이(가) 필요합니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:2956
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:2956
 msgid "The destination is read-only."
 msgstr "대상이 읽기 전용입니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3017
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3017
 msgid "Moving \"%B\" to \"%B\""
 msgstr "\"%B\"을(를) \"%B\"(으)로 옮기는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3018
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying \"%B\" to \"%B\""
 msgstr "\"%B\"을(를) \"%B\"(으)로 복사하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3022
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3022
 msgid "Duplicating \"%B\""
 msgstr "\"%B\"을(를) 복제하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3026
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 옮기는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3029
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3029
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 복사하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3036
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3036
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "(\"%B\" 내의) %'d 개의 파일을 복제하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3045
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3045
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 옮기는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3049
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3049
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 복사하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3054
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3054
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d 개의 파일을 복제하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3105
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3105
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3116
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3116
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — %T 남음 (%S/초)"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3495
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3495
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3498
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3498
 msgid "There was an error creating the folder \"%B\"."
 msgstr "\"%B\" 폴더를 만드는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3627
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3627
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 내의 파일을 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3672
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3672
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3717
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5006
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3717
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4418
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5006
 msgid "Error while moving \"%B\"."
 msgstr "\"%B\"을(를) 옮기는 중 오류가 발생하였습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3718
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3718
 msgid "Could not remove the source folder."
 msgstr "원본 폴더를 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3803
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3844
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4420
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4491
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3803
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3844
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4420
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4491
 msgid "Error while copying \"%B\"."
 msgstr "\"%B\"을(를) 복사하는 중 오류가 발생하였습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3804
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3804
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "기존의 폴더 %F의 파일을 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:3845
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:3845
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "기존에 존재하는 %F 파일을 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4846
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4174
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4846
 msgid "You cannot move a folder into itself."
 msgstr "폴더를 자기 자신 안에 옮길 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4847
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4175
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4847
 msgid "You cannot copy a folder into itself."
 msgstr "폴더를 자기 자신 안에 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4176
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4848
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4176
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4848
 msgid "The destination folder is inside the source folder."
 msgstr "대상 폴더가 원본 폴더 안에 들어 있습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4207
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4207
 msgid "You cannot move a file over itself."
 msgstr "파일을 자기 자신에게 옮길 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4208
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4208
 msgid "You cannot copy a file over itself."
 msgstr "파일을 자기 자신에게 복사할 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4209
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4209
 msgid "The source file would be overwritten by the destination."
 msgstr "대상 파일이 원본 파일을 덮어 쓰게 됩니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4422
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4422
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "%F 안에 같은 이름을 가진 기존의 파일을 지울 수 없습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4492
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4492
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "파일을 %F(으로) 복사하는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4720
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4720
 msgid "Copying Files"
 msgstr "파일을 복사하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4746
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4746
 msgid "Preparing to move to \"%B\""
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:4758
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:4758
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5007
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5007
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5270
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5300
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5300
 msgid "Creating links in \"%B\""
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5311
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5311
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5446
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5446
 msgid "Error while creating link to %B."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5448
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5448
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5451
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5451
 msgid "The target doesn't support symbolic links."
 msgstr "대상이 심볼릭 링크를 지원하지 않습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5454
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5454
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "%F에 심볼릭 링크를 만드는 데 오류가 발생했습니다."
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5782
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:5785
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5782
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:5785
 msgid "Setting permissions"
 msgstr "권한을 설정하는 중"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6036
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6036
 msgid "untitled folder"
 msgstr "이름 없는 폴더"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6044
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6044
 msgid "new file"
 msgstr "새 파일"
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6215
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating directory %B."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6217
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6217
 msgid "Error while creating file %B."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6219
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6219
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libcore/marlin-file-operations.c:6536
+#: /home/cody/f/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
 msgstr "휴지통을 비우는 중"
 
-#: /home/codygarver/files-trunk/po/../libwidgets/LocationBar.vala:321
+#: /home/cody/f/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "자세히 표시(_D)"
+
+#: /home/cody/f/po/../libcore/marlin-progress-info.c:192
+#: /home/cody/f/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "준비하는 중"
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/cody/f/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libwidgets/LocationBar.vala:325
+#: /home/cody/f/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libwidgets/LocationBar.vala:329
-#: /home/codygarver/files-trunk/po/../libwidgets/LocationBar.vala:333
+#: /home/cody/f/po/../libwidgets/LocationBar.vala:329
+#: /home/cody/f/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../libwidgets/LocationBar.vala:812
+#: /home/cody/f/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
 msgstr "%s 로 가기"
 
-#: /home/codygarver/files-trunk/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../src/View/Chrome/ViewSwicher.vala:85
+#: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
 msgstr "목록으로 보기"
 
-#: /home/codygarver/files-trunk/po/../src/View/Chrome/ViewSwicher.vala:88
+#: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/cody/f/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
 
-#: /home/codygarver/files-trunk/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/cody/f/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "휴지통 비우기"
-
-#, c-format
-#~ msgid "Folder does not exist"
-#~ msgstr "폴더가 존재하지 않습니다."
-
-#, c-format
-#~ msgid "Create the folder %s"
-#~ msgstr "폴더 %s를 생성하기"
-
-#, c-format
-#~ msgid "Files can't find the folder %s"
-#~ msgstr "파일 관리자가 폴더 %s를 찾을 수 없습니다."
-
-#~ msgid "Single Click Timeout"
-#~ msgstr "단일 클릭 타임 아웃"
-
-#~ msgid ""
-#~ "The amount of time after which the item under the mouse cursor will be "
-#~ "selected automatically in single click mode"
-#~ msgstr "단일클릭 모드에서 항목을 선택하기까지 시간을 설정합니다."
-
-#~ msgid "Customize Toolbar"
-#~ msgstr "도구 모음 사용자 설정"
-
-#~ msgid ""
-#~ "Select items to be displayed on the toolbar. Items can be reordered by drag "
-#~ "and drop."
-#~ msgstr "도구 모음에 표시할 항목을 선택합니다. 드래그 앤 드롭으로 순서를 바꿀 수 있습니다."
-
-#~ msgid "Available Items"
-#~ msgstr "사용가능한 항목"
-
-#~ msgid "Displayed Items"
-#~ msgstr "표시한 항목"
