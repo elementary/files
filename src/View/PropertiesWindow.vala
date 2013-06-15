@@ -285,7 +285,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
-        spinner_label = new Gtk.Label (_("Calculating size…"));
+        spinner_label = new Gtk.Label (_("Estimating size…"));
 
         header_desc = new Label (null);
         header_desc.set_use_markup (true);
