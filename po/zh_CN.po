@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-05-22 10:10+0000\n"
-"Last-Translator: Yangyu Huang <Unknown>\n"
+"PO-Revision-Date: 2013-06-15 06:29+0000\n"
+"Last-Translator: Wang Dianjin <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:35+0000\n"
+"X-Launchpad-Export-Date: 2013-06-16 05:05+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 "Language: \n"
 
@@ -38,7 +38,7 @@ msgstr "预览"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "已选择 %u 个条目"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
@@ -135,23 +135,23 @@ msgstr "选择一个应用程序来打开 "
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u 个文件夹"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " 和 %u 个其他条目 - 已选中(%s)"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " 已选中"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u 个文件夹"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:249
 #, c-format
@@ -170,7 +170,7 @@ msgstr "文件系统"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "该文件夹不存在"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -178,20 +178,20 @@ msgstr "(以管理员身份)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "它不属于您。"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "您没有权限查看该文件夹。"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "该文件夹不存在。"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "无法找到文件夹“%s”。"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -200,7 +200,7 @@ msgstr "创建"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "创建文件夹“%s”"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -209,6 +209,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"无法创建文件夹\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -698,7 +701,7 @@ msgstr "清空回收站(_T)"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "连接到服务器..."
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2012-11-06 00:23+0000\n"
+"PO-Revision-Date: 2013-06-15 16:08+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:33+0000\n"
+"X-Launchpad-Export-Date: 2013-06-16 05:05+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
@@ -37,7 +37,7 @@ msgstr "ቅድመ እይታ"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u የተመረጡት እቃዎች"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
@@ -50,7 +50,7 @@ msgstr "የተሻሻለው"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:345
 msgid "Last Access"
-msgstr ""
+msgstr "መጨረሻ የተደረሰበት"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:351
 msgid "Deleted"
@@ -134,28 +134,28 @@ msgstr "የሚከፈተውን መተግበሪያ ይምረጡ "
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u ፎልደሮች"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " እና %u ሌሎች እቃዎች (%s) የተመረጡት"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " የተመረጠው"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u ፎልደር"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:249
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u የተመረጡት እቃዎች (%s)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:148
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:300
@@ -169,7 +169,7 @@ msgstr "የፋይል ስርአት"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "ይህ ፎልደር አልነበረም"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -177,20 +177,20 @@ msgstr "(እንደ አስተዳዳሪ)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "ይህ የ እርስዎ አይደለም"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "ይህን ፎልደር ለማየት ፍቃድ የሎትም"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "ይህ ፎልደር አልነበረም"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "ይህን ፎልደር ማግኘት \"%s\" አልተቻለም"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -199,7 +199,7 @@ msgstr "መፍጠሪያ"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "ፎልደር መፍጠሪያ \"%s\""
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -208,22 +208,25 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"ፎልደር መፍጠር አልተቻለም\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:117
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:118
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:119
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:120
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:564
@@ -232,11 +235,11 @@ msgstr "ኔትዎርክ"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:122
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:123
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:346

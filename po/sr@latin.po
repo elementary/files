@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-05-27 20:25+0000\n"
+"PO-Revision-Date: 2013-06-16 00:35+0000\n"
 "Last-Translator: nadrimajstor <ipejic@gmail.com>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:35+0000\n"
+"X-Launchpad-Export-Date: 2013-06-16 05:05+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
@@ -38,7 +38,7 @@ msgstr "Pregled"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u izabranih stavki"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
@@ -135,23 +135,23 @@ msgstr "Izaberi aplikaciju za otvaranje "
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u fascikli"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " i %u preostalih stavki (%s) izabrano"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " izabrano"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u fascikla"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:249
 #, c-format
@@ -170,7 +170,7 @@ msgstr "Sistem fajlova"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Ova fascikla ne postoji"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -178,20 +178,20 @@ msgstr "(kao Administrator)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Ovo ne pripada vama."
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Nemate dozvolu za pregled ove fascikle."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ova fascikle ne postoji."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Fascikla \"%s\" nije pronađena."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -200,7 +200,7 @@ msgstr "Napravi"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Napravi fasciklu \"%s\""
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -209,6 +209,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Neuspešno pravljenje fascikle\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -492,47 +495,47 @@ msgstr "Neuspešna promena naziva %s u %s"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "Po_ređaj stavke"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "P_reokreni redosled"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Prikaži sličice u obrnutom redosledu"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Po _nazivu"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Sličice u redovima čuvaj poređane po nazivu"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Po ve_ličini"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Sličice u redovima čuvaj poređane po veličini"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Po _tipu"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Sličice u redovima čuvaj poređane po tipu"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Po _datumu izmene"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Sličice u redovima čuvaj poređane po datumu izmene"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:573
 #: /home/cody/f/po/../src/fm-columns-view.c:82
@@ -543,122 +546,122 @@ msgstr "Ova fascikla je prazna."
 #: /home/cody/f/po/../src/eel-editable-label.c:3190
 #: /home/cody/f/po/../src/fm-directory-view.c:3540
 msgid "Select All"
-msgstr ""
+msgstr "Obeleži sve"
 
 #: /home/cody/f/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
-msgstr ""
+msgstr "Metode unosa"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:286
 msgid "Personal"
-msgstr ""
+msgstr "Lični"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Vaše markirane i često posećene lokacije"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
-msgstr ""
+msgstr "Otvori kantu"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:358
 msgid "Devices"
-msgstr ""
+msgstr "Uređaji"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:363
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Vaše lokalne particije i uređaji"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:372
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "Prikaži sadržaj Fajl Sistema"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:431
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:456
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "Priključi i prikaži %s"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:569
 msgid "Your network places"
-msgstr ""
+msgstr "Vaše lokacije na mreži"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:600
 msgid "Entire network"
-msgstr ""
+msgstr "Celokupna mreža"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:602
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Prelistaj sadržaj mreže"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1590
 msgid "_Start"
-msgstr ""
+msgstr "_Start"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1591
 msgid "_Stop"
-msgstr ""
+msgstr "_Stop"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1596
 msgid "_Power On"
-msgstr ""
+msgstr "Uključi na_pajanje"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1597
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Uredno ukloni drajv"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1600
 msgid "_Connect Drive"
-msgstr ""
+msgstr "_Poveži drajv"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1601
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "Isključi _drajv"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1604
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "_Startuj multi-disk uređaj"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1605
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "_Stopiraj multi-disk uređaj"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1609
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "Otklj_učaj drajv"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1610
 msgid "_Lock Drive"
-msgstr ""
+msgstr "Zak_ljučaj drajv"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1684
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2231
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Neuspešan start %s"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:1974
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2003
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2032
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Neuspešno izbacivanje %s"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2177
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Neuspešna provera stanja %s"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2287
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Neuspešno stopiranje %s"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2385
 #: /home/cody/f/po/../src/fm-directory-view.c:1978
 #: /home/cody/f/po/../src/fm-directory-view.c:3506
 msgid "_Open"
-msgstr ""
+msgstr "_Otvori"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2393
 #: /home/cody/f/po/../src/fm-directory-view.c:1998
