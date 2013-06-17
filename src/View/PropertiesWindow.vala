@@ -365,7 +365,8 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             }
         }
         if (got_common_location())
-            info.add(new Pair<string, string>(_("Location") + (": "), "<a href=\"" + file.directory.get_uri () + "\">" + file.directory.get_parse_name() + "</a>"));
+            info.add(new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">"
+                                                            + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
         if (count == 1 && file.info.get_is_symlink())
             info.add(new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
 
