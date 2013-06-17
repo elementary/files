@@ -23,6 +23,7 @@
 #include "fm-columns-view.h"
 #include "marlin-view-window.h"
 #include "marlin-global-preferences.h"
+#include <granite.h>
 
 static void gof_window_slot_init       (GOFWindowSlot *slot);
 static void gof_window_slot_class_init (GOFWindowSlotClass *class);
@@ -97,7 +98,7 @@ gof_window_slot_finalize (GObject *object)
 void
 gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
-    GtkWidget *hpane = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
+    GtkWidget *hpane = granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL);
     gtk_widget_show (hpane);
     gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
     GtkWidget *vbox2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
