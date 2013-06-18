@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-06-02 17:40+0000\n"
-"Last-Translator: Larsson <Unknown>\n"
+"PO-Revision-Date: 2013-06-17 10:00+0000\n"
+"Last-Translator: Joachim Johansson <joachim.j@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:34+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-06-18 06:29+0000\n"
+"X-Generator: Launchpad (build 16673)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -111,7 +111,7 @@ msgstr "Skriv"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:627
 msgid "Execute"
-msgstr "Exekvera"
+msgstr "Utför"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:845
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:858
@@ -812,7 +812,7 @@ msgstr "Lös_enord:"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1142
 msgid "_Remember this password"
-msgstr "_Kom ihåg detta lösenord"
+msgstr "_Spara lösenordet"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1245
 msgid "Operation cancelled"
@@ -1086,7 +1086,7 @@ msgstr "_Länka hit"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
-msgstr "Ställ in som _bakgrund"
+msgstr "Ange som _bakgrund"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:125
 msgid "Cancel"
@@ -1503,7 +1503,7 @@ msgstr "Alla objekt i papperskorgen kommer att raderas permanent."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Är du säker att du vill ta bort \"%B\" permanent?"
+msgstr "Vill du radera \"%B\" permanent?"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -1539,7 +1539,7 @@ msgstr[1] "%T återstår"
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1742
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while deleting."
-msgstr "Fel vid borttagning."
+msgstr "Ett fel uppstod vid raderingen"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1596
 msgid ""
@@ -1555,8 +1555,7 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"Det inträffade ett fel vid hämtning av information om filerna i mappen "
-"\"%B\"."
+"Ett fel inträffade vid hämtning av information om filerna i mappen \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1608
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3639
@@ -1575,7 +1574,7 @@ msgstr ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2673
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3675
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Det inträffade ett fel vid läsning av mappen \"%B\"."
+msgstr "Ett fel inträffade vid läsningen av mappen \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
@@ -1583,7 +1582,7 @@ msgstr "Kunde inte ta bort mappen %B."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Det inträffade ett fel vid borttagning av %B."
+msgstr "Ett fel inträffade vid raderingen av %B."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1819
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1831
@@ -1599,15 +1598,15 @@ msgstr[1] "%'d filer återstår att kasta"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Kan inte flytta filen till paperskorgen. Ta bort omedelbart?"
+msgstr "Kan inte flytta filen till papperskorgen. Radera omedelbart?"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
-"Denna filen finns på en extern media och kan inte flyttas till "
-"papperskorgen. Om du tar bort den, så kan den inte återställas."
+"Denna fil finns på ett externt media och kan inte flyttas till "
+"papperskorgen. Om du raderar den kan den inte återställas."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
@@ -1615,7 +1614,7 @@ msgstr "Kastar filer"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
-msgstr "Tar bort filer"
+msgstr "Raderar filer"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to eject %V"
@@ -1634,8 +1633,8 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"För att återfå det lediga utrymmet på den här volymen måste papperskorgen "
-"tömmas. Alla raderade objekt på volymen kommer att permanent gå förlorade."
+"För att återfå det lediga utrymmet på volymen måste papperskorgen tömmas. "
+"Alla kastade objekt på volymen kommer att raderas permanent."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2310
 msgid "Do _not Empty Trash"
@@ -1668,8 +1667,8 @@ msgstr[1] "Förbereder att flytta %'d filer (%S)"
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Förbereder att ta bort %'d fil (%S)"
-msgstr[1] "Förbereder att ta bort %'d filer (%S)"
+msgstr[0] "Förbereder att radera %'d fil (%S)"
+msgstr[1] "Förbereder att radera %'d filer (%S)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2528
 #, c-format
@@ -1721,7 +1720,7 @@ msgstr ""
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2750
 msgid "There was an error getting information about \"%B\"."
-msgstr "Det inträffade ett fel vid hämtning av information om \"%B\"."
+msgstr "Ett fel inträffade vid hämtning av information om \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2850
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2892
@@ -1736,7 +1735,7 @@ msgstr "Du har inte de nödvändiga rättigheterna för att komma åt målmappen
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2856
 msgid "There was an error getting information about the destination."
-msgstr "Det inträffade ett fel vid hämtning av information om målet."
+msgstr "Ett fel inträffade vid hämtningen av informationen om målet."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2893
 msgid "The destination is not a folder."
@@ -1747,8 +1746,8 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
-"Det finns inte tillräckligt med utrymme på målet. Försök att ta bort några "
-"filer för att skapa mer ledigt utrymme."
+"Det finns inte tillräckligt med utrymme på målet. Försök att radera något "
+"för att skapa mer ledigt utrymme."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2928
 #, c-format
@@ -1824,19 +1823,19 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Mappen \"%B\" kan inte kopieras eftersom du inte har de nödvändiga "
-"rättigheterna för att skapa den på målet."
+"Mappen \"%B\" kan inte kopieras eftersom du saknar nödvändiga rättigheter "
+"för att skapa den på målet."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3498
 msgid "There was an error creating the folder \"%B\"."
-msgstr "Det inträffade ett fel vid skapandet av mappen \"%B\"."
+msgstr "Ett fel inträffade vid skapandet av mappen \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3627
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen \"%B\" kan inte kopieras eftersom du inte har de nödvändiga "
+"Filerna i mappen \"%B\" kan inte kopieras eftersom du saknar de nödvändiga "
 "rättigheterna för att se dem."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3672
@@ -1844,14 +1843,14 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappen \"%B\" kan inte kopieras eftersom du inte har de nödvändiga "
+"Mappen \"%B\" kan inte kopieras eftersom du saknar de nödvändiga "
 "rättigheterna för att läsa den."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3717
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:4418
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5006
 msgid "Error while moving \"%B\"."
-msgstr "Fel vid flyttning av \"%B\"."
+msgstr "Ett fel inträffade vid flyttningen av \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3718
 msgid "Could not remove the source folder."
@@ -1862,7 +1861,7 @@ msgstr "Kunde inte ta bort källmappen."
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:4420
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:4491
 msgid "Error while copying \"%B\"."
-msgstr "Fel vid kopiering av \"%B\"."
+msgstr "Ett fel inträffade vid kopieringen av \"%B\"."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3804
 #, c-format
@@ -1899,7 +1898,7 @@ msgstr "Du kan inte kopiera en fil till sig själv."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:4209
 msgid "The source file would be overwritten by the destination."
-msgstr "Källfilen skulle bli överskriven av målfilen."
+msgstr "Källfilen skulle skrivas över av målfilen."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:4422
 #, c-format
@@ -1929,7 +1928,7 @@ msgstr[1] "Förbereder att flytta %'d filer"
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5007
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "Det inträffade ett fel vid flytt av filen till %F."
+msgstr "Ett fel inträffade vid flytten av filen till %F."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
@@ -1961,7 +1960,7 @@ msgstr "Målet saknar stöd för symboliska länkar."
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5454
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "Det inträffade ett fel vid skapandet av symboliska länken i %F."
+msgstr "Ett fel inträffade vid skapandet av den symboliska länken i %F."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5782
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5785
@@ -1978,16 +1977,16 @@ msgstr "ny fil"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating directory %B."
-msgstr "Fel vid skapande av katalogen %B."
+msgstr "Ett fel uppstod vid skapandet av mappen %B."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:6217
 msgid "Error while creating file %B."
-msgstr "Fel vid skapande av filen %B."
+msgstr "Ett fel uppstod vid skapandet av filen %B."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:6219
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Det inträffade ett fel vid skapandet av katalogen i %F."
+msgstr "Ett fel inträffade vid skapandet av mappen i %F."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
@@ -2394,15 +2393,15 @@ msgstr "Gå till %s"
 
 #: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr "Visa som Rutnät"
+msgstr "Visa som rutnät"
 
 #: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr "Visa som Lista"
+msgstr "Visa som lista"
 
 #: /home/cody/f/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr "Visa i Kolumner"
+msgstr "Visa i kolumner"
 
 #: /home/cody/f/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."

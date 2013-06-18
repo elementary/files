@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-05-17 03:54+0000\n"
-"Last-Translator: LeeHoseok <neochain@naver.com>\n"
+"PO-Revision-Date: 2013-06-17 09:58+0000\n"
+"Last-Translator: Kyu-Seok Yang <lklk9110@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:34+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-06-18 06:29+0000\n"
+"X-Generator: Launchpad (build 16673)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -37,7 +37,7 @@ msgstr "미리 보기"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u 선택된 항목들"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
@@ -134,7 +134,7 @@ msgstr "이 파일을 열 때 사용할 프로그램을 선택하세요 "
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u 폴더들"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
@@ -145,12 +145,12 @@ msgstr ""
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " 선택됨"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "폴더 %u개"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:249
 #, c-format
@@ -169,7 +169,7 @@ msgstr "파일 시스템"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "이 폴더는 존재하지 않습니다."
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -181,16 +181,16 @@ msgstr ""
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "이 폴더를 볼 권한이 없습니다."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "이 폴더는 존재하지 않습니다."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "\"%s\" 폴더를 찾지 못하였습니다."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -199,7 +199,7 @@ msgstr "만들기"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "\"%s\" 폴더를 생성합니다."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -208,22 +208,25 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"폴더 생성에 실패하였습니다:\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:117
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:118
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:119
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:120
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:564
@@ -232,11 +235,11 @@ msgstr "네트워크"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:122
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:123
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:346
@@ -697,7 +700,7 @@ msgstr "휴지통 비우기(_T)"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "서버에 연결하는 중..."
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -713,7 +716,7 @@ msgstr "FTP (로그인)"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple 파일링 프로토콜)"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
@@ -1252,32 +1255,32 @@ msgstr "파일 충돌"
 #: /home/cody/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "%s(으)로의 링크"
 
 #: /home/cody/f/po/../libcore/gof-file.c:1761
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다."
 
 #: /home/cody/f/po/../libcore/gof-file.c:1799
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Exec 항목이 정의되지 않았습니다."
 
 #: /home/cody/f/po/../libcore/gof-file.c:1819
 msgid "No URL field specified"
-msgstr ""
+msgstr "URL 항목이 정의되지 않았습니다."
 
 #: /home/cody/f/po/../libcore/gof-file.c:1825
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "올바르지 않은 desktop 파일"
 
 #: /home/cody/f/po/../libcore/gof-file.c:2115
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
 
 #: /home/cody/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
 
 #: /home/cody/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -1868,8 +1871,7 @@ msgstr ""
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d개의 파일을 옮길 준비 중"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:5007
 #, c-format
