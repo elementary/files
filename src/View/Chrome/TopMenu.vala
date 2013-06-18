@@ -68,7 +68,7 @@ namespace Marlin.View.Chrome
                     location_bar.halign = Gtk.Align.FILL;
                     location_bar.valign = Gtk.Align.FILL;
                     location_bar.margin_left = 6;
-                    location_bar.margin_right = 12;
+                    location_bar.margin_right = 6;
 
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
