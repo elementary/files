@@ -95,6 +95,11 @@
       <summary>Width of the side pane</summary>
       <description>The default width of the side pane in new windows.</description>
     </key>
+    <key type="i" name="minimum-sidebar-width">
+      <default>96</default>
+      <summary>Minimum width of the side pane</summary>
+      <description>The minimum width of the side pane.</description>
+    </key>
     <key type="b" name="confirm-trash">
       <default>true</default>
       <summary>Confirm trash</summary>
