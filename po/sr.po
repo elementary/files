@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-06-18 09:52+0000\n"
+"PO-Revision-Date: 2013-06-19 21:35+0000\n"
 "Last-Translator: IvanBlago <ivan_blagojevic@mail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-06-19 05:45+0000\n"
+"X-Launchpad-Export-Date: 2013-06-20 05:49+0000\n"
 "X-Generator: Launchpad (build 16673)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
@@ -38,11 +38,11 @@ msgstr "Преглед"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u одабраних ставки"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
-msgstr ""
+msgstr "Направљено"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:342
 #: /home/cody/f/po/../src/fm-list-view.c:59
@@ -51,15 +51,15 @@ msgstr "Измењено"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:345
 msgid "Last Access"
-msgstr ""
+msgstr "Последњи приступ"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:351
 msgid "Deleted"
-msgstr ""
+msgstr "Обрисано"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:356
 msgid "MimeType"
-msgstr ""
+msgstr "MIME тип"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:364
 msgid "MimeTypes"
@@ -67,15 +67,15 @@ msgstr ""
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:368
 msgid "Location"
-msgstr ""
+msgstr "Место:"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:370
 msgid "Target"
-msgstr ""
+msgstr "Одредиште"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:376
 msgid "Origin Location"
-msgstr ""
+msgstr "Изворна локација"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:386
 msgid "Info:"
@@ -87,11 +87,11 @@ msgstr ""
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:445
 msgid "Open with:"
-msgstr ""
+msgstr "Отвори помоћу:"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:466
 msgid "Usage:"
-msgstr ""
+msgstr "Употреба:"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:471
 msgid "Device usage:"
@@ -100,7 +100,7 @@ msgstr ""
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:478
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s слободно од %s (%d%% искоришћено)"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:617
 msgid "Read"
