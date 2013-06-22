@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-05-31 16:04+0000\n"
-"Last-Translator: Albert <Unknown>\n"
+"PO-Revision-Date: 2013-06-21 13:58+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-15 05:34+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-06-22 05:59+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -37,7 +37,7 @@ msgstr "Vista previa"
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:235
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u elementos seleccionados"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:340
 msgid "Created"
@@ -134,23 +134,23 @@ msgstr "Escolla un aplicación para abrir "
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u cartafoles"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " e outros %u elementos (%s) seleccionados"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " swlwccionado"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u cartafol"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:249
 #, c-format
@@ -169,7 +169,7 @@ msgstr "Sistema de ficheiros"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Este cartafol non existe"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -177,20 +177,20 @@ msgstr "(como administrador)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Isto non lle pertence."
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Vostede non ten permiso para ver este cartafol."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Este cartafol non existe."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Non se atopa o cartafol «%s»."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -199,7 +199,7 @@ msgstr "Crear"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Crear lo cartafol «%s»"
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -208,6 +208,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Non foi posíbel crear o cartafol\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
