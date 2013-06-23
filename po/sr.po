@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-06-21 10:08+0000\n"
+"PO-Revision-Date: 2013-06-22 09:22+0000\n"
 "Last-Translator: IvanBlago <ivan_blagojevic@mail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-06-22 05:59+0000\n"
+"X-Launchpad-Export-Date: 2013-06-23 05:24+0000\n"
 "X-Generator: Launchpad (build 16677)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
@@ -63,7 +63,7 @@ msgstr "MIME тип"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:364
 msgid "MimeTypes"
-msgstr ""
+msgstr "Миме типови"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:368
 msgid "Location"
@@ -108,7 +108,7 @@ msgstr "Читај"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:622
 msgid "Write"
-msgstr ""
+msgstr "Писати"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:627
 msgid "Execute"
@@ -130,23 +130,23 @@ msgstr "Сви"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:1128
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Одаберите апликацију за отварање "
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u фасцикле"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:235
 #: /home/cody/f/po/../src/View/OverlayBar.vala:245
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " и %u друге ставке (%s) одабране"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:237
 #: /home/cody/f/po/../src/View/OverlayBar.vala:247
 msgid " selected"
-msgstr ""
+msgstr " одабрано"
 
 #: /home/cody/f/po/../src/View/OverlayBar.vala:239
 #, c-format
@@ -170,23 +170,23 @@ msgstr "Систем Датотека"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Ова фасцикла не постоји"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(као Администратор)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Ово не припада Вама."
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Ви немате дозволе да видите ову фасциклу."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ова фасцикла не постоји."
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
@@ -200,7 +200,7 @@ msgstr "Направи"
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Направи фасциклу \"%s\""
 
 #: /home/cody/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -209,18 +209,21 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Неуспено прављење фасцикле\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
-msgstr ""
+msgstr "АФП"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:117
 msgid "DAV"
-msgstr ""
+msgstr "ДАВ"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:118
 msgid "DAVS"
-msgstr ""
+msgstr "ДАВС"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:119
 msgid "FTP"
@@ -233,7 +236,7 @@ msgstr "Мрежа"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
-msgstr ""
+msgstr "СФТП"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:122
 msgid "SMB"
@@ -306,7 +309,7 @@ msgstr "_Нови прозор"
 
 #: /home/cody/f/po/../src/View/Window.vala:591
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Отвори други прозор Датотеке за приказану локацију"
 
 #: /home/cody/f/po/../src/View/Window.vala:594
 #: /home/cody/f/po/../src/DesktopLauncher.vala:8
@@ -331,7 +334,7 @@ msgstr "_Опозови"
 
 #: /home/cody/f/po/../src/View/Window.vala:608
 msgid "_Redo"
-msgstr ""
+msgstr "Поврати"
 
 #: /home/cody/f/po/../src/View/Window.vala:611
 msgid "Open _Parent"
@@ -351,11 +354,11 @@ msgstr "Иди на претходно посећену локацију"
 
 #: /home/cody/f/po/../src/View/Window.vala:618
 msgid "_Forward"
-msgstr ""
+msgstr "_Напред"
 
 #: /home/cody/f/po/../src/View/Window.vala:619
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Иди на следећу посећену локацију"
 
 #: /home/cody/f/po/../src/View/Window.vala:621
 msgid "_Reload"
@@ -436,7 +439,7 @@ msgstr "_О програму"
 
 #: /home/cody/f/po/../src/View/Window.vala:674
 msgid "Display credits"
-msgstr ""
+msgstr "Прикажи заслуге"
 
 #: /home/cody/f/po/../src/View/Window.vala:677
 msgid "Report a Problem..."
@@ -444,11 +447,11 @@ msgstr "Пријавите проблем..."
 
 #: /home/cody/f/po/../src/View/Window.vala:678
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Убележи бубу на Лоунчпеду"
 
 #: /home/cody/f/po/../src/View/Window.vala:681
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Пронађи помоћ на мрежи..."
 
 #: /home/cody/f/po/../src/View/Window.vala:685
 msgid "Translate This Application..."
@@ -460,7 +463,7 @@ msgstr "Прикажи _скривене датотеке"
 
 #: /home/cody/f/po/../src/View/Window.vala:695
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Прикажи или сакриј сакривене датотеке у текућем прозору"
 
 #: /home/cody/f/po/../src/View/Window.vala:699
 msgid "_Places"
@@ -499,7 +502,7 @@ msgstr "О_брни редослед"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Прикажи иконе у обрнутом реду"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
@@ -507,7 +510,7 @@ msgstr "По _имену"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Иконе по имену у редовима"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -523,15 +526,15 @@ msgstr "По типу"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Иконе по типу у редовима"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "По датуму_измене"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Држи иконе расврстане по датуму измене у редовима"
 
 #: /home/cody/f/po/../src/fm-abstract-icon-view.c:573
 #: /home/cody/f/po/../src/fm-columns-view.c:82
@@ -542,7 +545,7 @@ msgstr "Ова фасцикла је празна."
 #: /home/cody/f/po/../src/eel-editable-label.c:3190
 #: /home/cody/f/po/../src/fm-directory-view.c:3540
 msgid "Select All"
-msgstr ""
+msgstr "Изаберите све"
 
 #: /home/cody/f/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
@@ -646,7 +649,7 @@ msgstr "Не могу да избацим %s"
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2177
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Није могуће учитати %s за измене медија"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2287
 #, c-format
@@ -663,12 +666,12 @@ msgstr "_Отвори"
 #: /home/cody/f/po/../src/fm-directory-view.c:1998
 #: /home/cody/f/po/../src/fm-directory-view.c:3518
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Отвори у новом_језичку"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2400
 #: /home/cody/f/po/../src/fm-directory-view.c:2007
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Отвори у новом _прозору"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2409
 msgid "Remove"
@@ -698,7 +701,7 @@ msgstr "Избаци _смеће"
 
 #: /home/cody/f/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Повежи се са сервером..."
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -752,15 +755,15 @@ msgstr "Сервер на „%s“ није пронађен."
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
-msgstr ""
+msgstr "Покушајте поново"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Потврдите Ваше корисничке податке."
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
-msgstr ""
+msgstr "Наставите"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:766
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1156
@@ -769,7 +772,7 @@ msgstr "П_овежите се"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:891
 msgid "Connect to Server"
-msgstr ""
+msgstr "Повежите се са сервером"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:909
 msgid "Server Details"
@@ -797,7 +800,7 @@ msgstr "_Фасцикла:"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Детаљи о кориснику"
 
 #: /home/cody/f/po/../src/marlin-connect-server-dialog.c:1096
 msgid "_Domain name:"
@@ -837,7 +840,7 @@ msgstr "Режим распореда"
 
 #: /home/cody/f/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Прикажи верзију програма."
 
 #: /home/cody/f/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
@@ -845,7 +848,7 @@ msgstr ""
 
 #: /home/cody/f/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr ""
+msgstr "Угаси Датетеке."
 
 #: /home/cody/f/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
@@ -886,8 +889,9 @@ msgstr "Није успело прављење везе за УРЛ \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "За отварање изабране ставке користи „%s“"
+msgstr[1] "Користи \"%s\" за отварање изабране ставке."
+msgstr[2] "Користи \"%s\" за отварање изабраних ставки."
 
 #: /home/cody/f/po/../src/fm-directory-view.c:1972
 #, c-format
@@ -925,6 +929,7 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Премести или умножи одабрано са Исеци или Умножи командом у одабрану фасциклу"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3493
 msgid "_Rename..."
@@ -932,114 +937,114 @@ msgstr "_Преименуј..."
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3494
 msgid "Rename selected item"
-msgstr ""
+msgstr "Преименуј изабрану ставку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3497
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Направи нову _фасциклу"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3498
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Направите нову празну фасциклу унутар ове фасцикле"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3500
 msgid "Create New _File"
-msgstr ""
+msgstr "Направите нову_датотеку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3502
 msgid "_Empty File"
-msgstr ""
+msgstr "_Празна датотека"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3503
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Направите нову празну датотеку унутар ове фасцикле"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3507
 msgid "Open the selected item"
-msgstr ""
+msgstr "Отворите одабрану ставку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3514
 msgid "Open in new Window"
-msgstr ""
+msgstr "Отворите у новом прозору"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3515
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Отворите нови прозор за сваку одабрану ставку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3519
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Отворите нови језичак за сваку одабрану ставку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3521
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Отвори по_моћу"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3522
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Изабери програм којим да отворим изабрану ставку"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3524
 msgid "Other _Application..."
-msgstr ""
+msgstr "Друга_Апликација..."
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3525
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Одаберите другу апликацију за отварање одабране ставке"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3528
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "Пре_мести у смеће"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3529
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Премести сваку изабрану ставку у смеће"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3532
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Обришите трајно"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3533
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Уклоните сваку одабрану ставку, без премештања у Смеће"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3536
 msgid "_Restore"
-msgstr ""
+msgstr "_Врати"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3544
 msgid "_Properties"
-msgstr ""
+msgstr "_Својства"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3545
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Погледајте или измените својства сваке изабране ставке"
 
 #: /home/cody/f/po/../src/fm-directory-view.c:3651
 msgid "Set Color:"
-msgstr ""
+msgstr "Постави боју:"
 
 #: /home/cody/f/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Назив датотеке"
 
 #: /home/cody/f/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "Величина"
 
 #: /home/cody/f/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:114
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:164
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:419
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:475
 msgid "File Operations"
-msgstr ""
+msgstr "Операције са датотеком"
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr ""
+msgstr "Прикажи детаље"
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:158
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:180
@@ -1051,39 +1056,39 @@ msgstr[1] ""
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Прикажи дијалог умножавања"
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Откажи све тренутне радње"
 
 #: /home/cody/f/po/../src/marlin-progress-ui-handler.c:476
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Све операције са датотекама су успешно завршене"
 
 #: /home/cody/f/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Списак иконских фасцикли"
 
 #: /home/cody/f/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Преглед са иконицама"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr ""
+msgstr "_Премести овде"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
-msgstr ""
+msgstr "_Умножи овде"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr ""
+msgstr "_Повежи овде"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
-msgstr ""
+msgstr "Постави као _позадину"
 
 #: /home/cody/f/po/../src/marlin-dnd.c:125
 msgid "Cancel"
@@ -1092,29 +1097,29 @@ msgstr ""
 #: /home/cody/f/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Неуспешно извршавање датотеке \"%s\""
 
 #: /home/cody/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Прегледајте Ваше датотеке"
 
 #: /home/cody/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Управник датотека"
 
 #: /home/cody/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Нови прозор као_Администратор"
 
 #: /home/cody/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Датотеке"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Обједини фасциклу \"%s\"?"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:364
@@ -1122,222 +1127,224 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Спајање ће затражити потврду пре замене било којих датотека у фасцикли које "
+"се сукобљавају са датотекама које су умножене."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старија фасцикла са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Новија фасцикла са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Друга фасцикла са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Замена ће уклонити све датотеке у фасцикли."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Да заменим фасциклу „%s“?"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Фасцикла са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Да заменим датотеку „%s“?"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Њена замена ће заменити постојећи садржај."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старија датотека са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Новија датотека са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Друга датотека са овим називом већ постоји у „%s“."
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
-msgstr ""
+msgstr "Изворна датотека"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:461
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
-msgstr ""
+msgstr "Величина:"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:464
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
-msgstr ""
+msgstr "Тип:"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:467
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
-msgstr ""
+msgstr "Последња измена:"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
-msgstr ""
+msgstr "Замени са"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
-msgstr ""
+msgstr "Сједини"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Изаберите нови назив за одредиште"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
-msgstr ""
+msgstr "Поништи поставке"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Примени ову радњу за све датотеке"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
-msgstr ""
+msgstr "_Прескочи"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
-msgstr ""
+msgstr "Пре_именуј"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
-msgstr ""
+msgstr "Замени"
 
 #: /home/cody/f/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
-msgstr ""
+msgstr "Сукоб датотеке"
 
 #: /home/cody/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "веза до %s"
 
 #: /home/cody/f/po/../libcore/gof-file.c:1761
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
 #: /home/cody/f/po/../libcore/gof-file.c:1799
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Извршно поље није попуњено"
 
 #: /home/cody/f/po/../libcore/gof-file.c:1819
 msgid "No URL field specified"
-msgstr ""
+msgstr "Адресно поље није попуњено"
 
 #: /home/cody/f/po/../libcore/gof-file.c:1825
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Неважећа датотека радне површине"
 
 #: /home/cody/f/po/../libcore/gof-file.c:2115
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Црте нису дозвољене у називу датотека"
 
 #: /home/cody/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Датотеке највишег нивоа не могу бити преименоване"
 
 #: /home/cody/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Данас у %-I:%M %p"
 
 #: /home/cody/f/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Јуче у  %-I:%M %p"
 
 #: /home/cody/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/cody/f/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (неисправан Уникод)"
 
 #: /home/cody/f/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Није могуће утврдити изворну локацију за „%s“ "
 
 #: /home/cody/f/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Није могуће вратити ставку из Смећа"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
-msgstr ""
+msgstr "П_рескочи све"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
-msgstr ""
+msgstr "_Покушај поново"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
-msgstr ""
+msgstr "Обриши _све"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
-msgstr ""
+msgstr "_Замени"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
-msgstr ""
+msgstr "Замени _све"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
-msgstr ""
+msgstr "_Споји"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
-msgstr ""
+msgstr "Споји _ све"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Ипак _умножи"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:294
 #, c-format
@@ -1371,12 +1378,12 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Повежи са %s"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Још једна веза на %s"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:413
 #, c-format
@@ -1400,40 +1407,40 @@ msgstr ""
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (други умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:468
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:470
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:472
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "и умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "први умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "други умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "трећи умножак)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (умножак)%s"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (неки умножак)%s"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:501
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:503
@@ -1460,7 +1467,7 @@ msgstr ""
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:617
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:625
 #, c-format
@@ -1469,7 +1476,7 @@ msgstr ""
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -1485,7 +1492,7 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1394
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Ако обришете ставку, она ће бити неповратно изгубљена."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
@@ -1510,7 +1517,7 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1478
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Бришем датотеке"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -1522,8 +1529,9 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
+msgstr[0] "%T преостаје"
 msgstr[1] ""
+msgstr[2] "преостаје %T"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1592
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1626
@@ -1531,50 +1539,53 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1742
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while deleting."
-msgstr ""
+msgstr "Грешка при брисању."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да их "
+"видите."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1599
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2634
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3630
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Постоји грешка при добијању података о датотекама у фасцикли „%B“."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1608
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3639
 msgid "_Skip files"
-msgstr ""
+msgstr "_Прескочи датотеке"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1632
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2673
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3675
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Није могуће уклонити фасциклу %B."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Постоји грешка при брисању „%B“."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1819
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Премештам датотеке у смеће"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1833
 #, c-format
@@ -1585,73 +1596,80 @@ msgstr[1] ""
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Не могу да померим датотеке у Смеће. Обришите трајно?"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Датотека се налази на спољном уређају и није је могуће померити у Смеће. "
+"Једном обрисана, не може се вратити."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
-msgstr ""
+msgstr "Шаљем датотеке у смеће"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
-msgstr ""
+msgstr "Бришем датотеке"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Не могу да избацим %V"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Не могу да демонтирам „%V“"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2302
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Да ли желите да испразните корпу пре него што демонтирате?"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2304
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Морате испразнити смеће како бисте ослободили простор на овом уређају. Све "
+"ставке из смећа ће бити трајно изгубљене."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2310
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Не празните Смеће"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2365
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Избацујем смеће"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2432
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Не могу да монтирам %s"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2510
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Припрема умножавања %'d датотеке (%S)"
+msgstr[1] "Припрема умножавања %'d датотеке (%S)"
+msgstr[2] "Припрема умножавања %'d датотека (%S)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2516
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Припрема за премештање %'d датотеке (%S)"
+msgstr[1] "Припремам за премештање %'d датотеке (%S)"
+msgstr[2] "Припремам за премештање %'d датотека (%S)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Припрема за брисање %'d датотеке (%S)"
+msgstr[1] "Припрема за брисање %'d датотеке (%S)"
+msgstr[2] "Припрема за брисање %'d датотека (%S)"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2528
 #, c-format
@@ -1665,13 +1683,13 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3622
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3667
 msgid "Error while copying."
-msgstr ""
+msgstr "Грешка приликом умножавања."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2573
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3620
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while moving."
-msgstr ""
+msgstr "Грешка приликом премештања."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
@@ -1682,74 +1700,79 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Није могуће руковати датотекама у фасцикли \"%B\" јер немате дозволе да их "
+"видите."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2670
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"Није могуће руковати фасциклом \"%B\" јер немате дозволе за њено читање."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2747
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"Није могуће руковати датотеком \"%B\" јер немате дозволе за њено читање."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2750
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Грешка приликом добављања података о „%B“."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2850
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2892
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2925
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2955
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Грешка приликом умножавања у „%B“."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2854
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Немате овлашћења да приступите одредишној фасцикли."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2856
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Дошло је до грешке приликом добављања података о одредишту."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2893
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "Одредиште није фасцикла."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2926
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
+msgstr "Нема довољно места у одредишту. Покушајте да уклоните неке датотеке."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2928
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Доступно је %S, а неопходно је %S."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2956
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Одредиште је само за читање."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3017
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "Премештам „%B“ у „%B“"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "Умножавам „%B“ у „%B“"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3022
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Удвостручујем „%B“"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
+msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
+msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:3029
 msgid "Copying %'d file (in \"%B\") to \"%B\""
