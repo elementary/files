@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-14 21:20+0000\n"
-"PO-Revision-Date: 2013-06-18 21:32+0000\n"
+"PO-Revision-Date: 2013-06-23 21:43+0000\n"
 "Last-Translator: Joachim Johansson <joachim.j@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-19 05:45+0000\n"
-"X-Generator: Launchpad (build 16673)\n"
+"X-Launchpad-Export-Date: 2013-06-24 04:57+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
 
 #: /home/cody/f/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -169,7 +169,7 @@ msgstr "Filsystem"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Den här mappen fins inte"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -177,7 +177,7 @@ msgstr "(som administratör)"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Den här tillhör inte dig"
 
 #: /home/cody/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
@@ -208,6 +208,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Misslyckades med att skapa mappen\n"
+"\n"
+"%s"
 
 #: /home/cody/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -301,7 +304,7 @@ msgstr "_Hjälp"
 #: /home/cody/f/po/../src/View/Window.vala:590
 #: /home/cody/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Nytt fönster (_W)"
+msgstr "Nytt _fönster"
 
 #: /home/cody/f/po/../src/View/Window.vala:591
 msgid "Open another Files window for the displayed location"
@@ -1518,7 +1521,7 @@ msgstr[1] ""
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1478
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Tar bort filer"
+msgstr "Raderar filer"
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -1707,7 +1710,7 @@ msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappen \"%B\" kan inte hanteras eftersom du inte har de nödvändiga "
+"Mappen \"%B\" kan inte hanteras eftersom du saknar de nödvändiga "
 "rättigheterna för att läsa den."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2747
@@ -1715,7 +1718,7 @@ msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Filen \"%B\" kan inte hanteras eftersom du inte har de nödvändiga "
+"Filen \"%B\" kan inte hanteras eftersom du saknar de nödvändiga "
 "rättigheterna för att läsa den."
 
 #: /home/cody/f/po/../libcore/marlin-file-operations.c:2750
@@ -2243,8 +2246,8 @@ msgstr[1] "_Ångra länkskapandet till %d objekt"
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Ångra borttagning av %d objekt"
-msgstr[1] "_Ångra borttagning av %d objekt"
+msgstr[0] "_Ångra radering av %d objekt"
+msgstr[1] "_Ångra radering av %d objekt"
 
 #: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
@@ -2342,8 +2345,8 @@ msgstr[1] "_Gör om skapandet av länk till %d objekt"
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Gör om borttagning av %d objekt"
-msgstr[1] "_Gör om borttagning av %d objekt"
+msgstr[0] "_Gör om radering av %d objekt"
+msgstr[1] "_Gör om radering av %d objekt"
 
 #: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
@@ -2356,8 +2359,8 @@ msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Gör om ändring av rättigheter för %d objekt"
-msgstr[1] "Gör om ändring av rättigheter för %d objekt"
+msgstr[0] "Gör om ändring av behörigheter för %d objekt"
+msgstr[1] "Gör om ändring av behörigheter för %d objekt"
 
 #: /home/cody/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
