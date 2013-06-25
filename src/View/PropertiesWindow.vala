@@ -185,6 +185,8 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         if (folder_count == 0) {
             spinner.hide ();
             spinner_label.hide ();
+        } else if (file_count == 0) {
+            header_desc.hide ();
         }
     }
 
@@ -228,6 +230,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                                     total_size += d.total_size;
                                     update_header_desc ();
                                     folder_count--;
+                                    if (!header_desc.visible)
+                                        header_desc.show ();
+                                    if (spinner_label.visible)
+                                        spinner_label.hide ();
                                     mutex.unlock ();
                                     });
             } else {
