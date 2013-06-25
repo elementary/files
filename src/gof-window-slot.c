@@ -98,18 +98,26 @@ gof_window_slot_finalize (GObject *object)
 void
 gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
-    GtkWidget *hpane = granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL);
-    gtk_widget_show (hpane);
+    //GtkWidget *hpane = granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL);
+    GtkWidget *hpane = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
+    
+    gtk_widget_set_hexpand(hpane, TRUE);
+
     gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
-    GtkWidget *vbox2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_widget_show (vbox2);
-    slot->colpane = vbox2;
+    gtk_widget_show_all(slot->colpane);
+    
+    GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    GtkWidget *frame1 = gtk_frame_new ("");
+    gtk_box_pack_start(GTK_BOX(box1), frame1, TRUE,TRUE,0);      
+    gtk_widget_show_all (box1);
+    
+    slot->colpane = frame1;
     slot->hpane = hpane;
 
     gtk_widget_set_size_request (column, slot->mwcols->preferred_column_width, -1);
 
-    gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
-    gtk_paned_pack2 (GTK_PANED (hpane), vbox2, TRUE, FALSE);
+    gtk_paned_add1 (GTK_PANED (hpane), column);
+    gtk_paned_add2 (GTK_PANED (hpane), box1);
 }
 
 void
