@@ -223,7 +223,6 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         folder_count = 0;
         file_count = 0;
 
-        /* TODO cancel deep_count when leaving the dialog */
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
