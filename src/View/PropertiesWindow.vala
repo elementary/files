@@ -182,6 +182,12 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 
         present ();
         
+        this.destroy.connect (() => {
+            if (deep_count_directories.length () != 0)
+                foreach (var dir in deep_count_directories)
+                    dir.cancel ();
+        });
+        
         if (folder_count == 0) {
             spinner.hide ();
             spinner_label.hide ();
