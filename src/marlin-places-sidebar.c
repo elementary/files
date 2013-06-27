@@ -187,10 +187,17 @@ add_place (MarlinPlacesSidebar *sidebar,
         eject = NULL;
     }
 
+    GError* error = NULL;
+    gchar* converted_name = g_locale_to_utf8 (name, -1, NULL, NULL, &error);
+    if (error != NULL) {
+        g_warning ("Couldn't convert the bookmark name: %s With error: %s", name, error->message);
+        converted_name = name;
+    }
+
     gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, parent);
     gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, pixbuf,
-                        PLACES_SIDEBAR_COLUMN_NAME, name,
+                        PLACES_SIDEBAR_COLUMN_NAME, converted_name,
                         PLACES_SIDEBAR_COLUMN_URI, uri,
                         PLACES_SIDEBAR_COLUMN_DRIVE, drive,
                         PLACES_SIDEBAR_COLUMN_VOLUME, volume,
