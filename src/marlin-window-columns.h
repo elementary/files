@@ -59,6 +59,7 @@ typedef struct {
     GOFWindowSlot *active_slot;
 
     gint preferred_column_width;
+    guint total_width;
 } MarlinWindowColumns;
 
 typedef struct {
