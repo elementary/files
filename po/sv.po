@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-06-23 21:43+0000\n"
+"PO-Revision-Date: 2013-06-27 20:47+0000\n"
 "Last-Translator: Joachim Johansson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:50+0000\n"
+"X-Launchpad-Export-Date: 2013-06-28 06:18+0000\n"
 "X-Generator: Launchpad (build 16681)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
@@ -232,7 +232,7 @@ msgstr "Gör om senaste åtgärden"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:584
 msgid "_File"
-msgstr "_Fil"
+msgstr "_Arkiv"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:585
 msgid "_Edit"
@@ -310,11 +310,11 @@ msgstr "Gå till nästa besökta plats"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:621
 msgid "_Reload"
-msgstr "_Uppdatera"
+msgstr "_Läs in igen"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:622
 msgid "Reload the current location"
-msgstr "Uppdatera aktuell plats"
+msgstr "Läs in aktuell plats igen"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:625
 msgid "_Home Folder"
@@ -347,7 +347,7 @@ msgstr "_Förstora"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:638
 msgid "Increase the view size"
-msgstr "Öka vystorleken"
+msgstr "Öka storleken på vyn"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:649
 msgid "Zoom _Out"
@@ -355,7 +355,7 @@ msgstr "_Förminska"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:650
 msgid "Decrease the view size"
-msgstr "Minska vystorleken"
+msgstr "Minska storleken på vyn"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:657
 msgid "Normal Si_ze"
@@ -363,7 +363,7 @@ msgstr "Normal storlek"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:658
 msgid "Use the normal view size"
-msgstr "Använd normala vystorleken"
+msgstr "Använd den normala storleken på vyn"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:661
 msgid "Next Tab"
@@ -379,7 +379,7 @@ msgstr "Anslut till _server..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:670
 msgid "Connect to a remote computer or shared disk"
-msgstr "Anslut till en fjärrserver eller utdelad disk"
+msgstr "Anslut till en fjärrdator eller delad disk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:673
 msgid "_About"
@@ -755,7 +755,7 @@ msgstr "Skapa en ny tom fil inuti denna mapp"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3507
 msgid "Open the selected item"
-msgstr "Öppna markerad fil"
+msgstr "Öppna den markerade filen"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3514
 msgid "Open in new Window"
@@ -832,7 +832,7 @@ msgstr "Ikonvy"
 
 #: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr "Det finns inget i Urklipp att klistra in"
+msgstr "Det finns inget i urklipp att klistra in"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -916,7 +916,7 @@ msgstr "Avsluta FIles."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
-msgstr "Aktivera debug-loggning"
+msgstr "Aktivera felsöknings-loggning"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:432
 msgid "[URI...]"
@@ -1114,7 +1114,7 @@ msgstr "Filhanterare"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr "Nytt fönster som _Administratör"
+msgstr "Nytt fönster som _administratör"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -1341,15 +1341,15 @@ msgstr[1] "_Ångra skapandet av %d mappar"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Ångra förflyttning till papperskorgen för %d objekt"
-msgstr[1] "_Ångra förflyttning till papperskorgen för %d objekt"
+msgstr[0] "_Ångra flytten av %d objekt till papperskorgen"
+msgstr[1] "_Ångra flytten av %d objekt till papperskorgen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Ångra återskapandet från papperskorgen för %d objekt"
-msgstr[1] "_Ångra återskapandet från papperskorgen för %d objekt"
+msgstr[0] "_Ångra återskapandet av %d objekt från papperskorgen"
+msgstr[1] "_Ångra återskapandet av %d objekt från papperskorgen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
@@ -1369,15 +1369,15 @@ msgstr[1] "_Ångra radering av %d objekt"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Ångra rekursiva rättighetsändringar för %d objekt"
-msgstr[1] "Ångra rekursiva rättighetsändringar för %d objekt"
+msgstr[0] "Ångra rekursiva behörighetsändringar för %d objekt"
+msgstr[1] "Ångra rekursiva behörighetsändringar för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Ångra rättighetsändringar för %d objekt"
-msgstr[1] "Ångra rättighetsändringar för %d objekt"
+msgstr[0] "Ångra behörighetsändringar för %d objekt"
+msgstr[1] "Ångra behörighetsändringar för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
@@ -1468,8 +1468,8 @@ msgstr[1] "_Gör om radering av %d objekt"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Gör om rekursiv ändring av rättigheter för %d objekt"
-msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
+msgstr[0] "Gör om rekursiv ändring av behörigheter för %d objekt"
+msgstr[1] "Gör om rekursiv ändring av behörigheter för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
@@ -1516,7 +1516,7 @@ msgstr "Inget \"URL\"-fält angivet"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:1825
 msgid "Invalid desktop file"
-msgstr "Ogiltig desktop-fil"
+msgstr "Ogiltig skrivbordsfil"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:2115
 msgid "Slashes are not allowed in filenames"
@@ -1528,15 +1528,15 @@ msgstr "Toppnivåfiler kan inte döpas om"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr "I dag vid %-I:%M %p"
+msgstr "Idag kl. %H.%M"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr "I går vid %-I:%M %p"
+msgstr "Igår kl. %H.%M"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y-%m-%d kl. %H.%M"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
@@ -1568,8 +1568,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Sammanfogning kommer att fråga dig om bekräftelse innan några filer ersätts "
-"i mappen som är i konflikt med de filer som kopieras."
+"Vid sammanslagningskonflikter kommer du att få bekräfta innan några filer "
+"ersätts med de filer som kopieras."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
@@ -1669,7 +1669,7 @@ msgstr "Ersätt med"
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
-msgstr "Sammanfoga"
+msgstr "Slå samman"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
@@ -1722,11 +1722,11 @@ msgstr "Ersätt _alla"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
-msgstr "_Sammanfoga"
+msgstr "_Slå samman"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
-msgstr "Sammanfoga _alla"
+msgstr "Slå samman _alla"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
@@ -1934,7 +1934,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen \"%B\" kan inte tas bort eftersom du inte har de nödvändiga "
+"Filer i mappen \"%B\" kan inte raderas eftersom du saknar de nödvändiga "
 "rättigheterna för att se dem."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
@@ -2070,24 +2070,24 @@ msgstr[1] "Förbereder att kasta %'d filer"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3622
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3667
 msgid "Error while copying."
-msgstr "Fel vid kopiering."
+msgstr "Ett fel inträffade vid kopieringen."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while moving."
-msgstr "Fel vid flyttning."
+msgstr "Ett fel inträffade vid flyttningen."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
-msgstr "Fel vid flyttning av filer till papperskorgen."
+msgstr "Ett fel inträffade vid flyttning av filer till papperskorgen."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2631
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen \"%B\" kan inte hanteras eftersom du inte har de nödvändiga "
+"Filer i mappen \"%B\" kan inte hanteras eftersom du saknar de nödvändiga "
 "rättigheterna för att se dem."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2670
@@ -2115,7 +2115,7 @@ msgstr "Ett fel inträffade vid hämtning av information om \"%B\"."
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2925
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2955
 msgid "Error while copying to \"%B\"."
-msgstr "Fel vid kopiering till \"%B\"."
+msgstr "Ett fel inträffade vid kopiering till \"%B\"."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
 msgid "You do not have permissions to access the destination folder."
