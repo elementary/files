@@ -219,7 +219,6 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         folder_count = 0;
         file_count = 0;
 
-        /* TODO cancel deep_count when leaving the dialog */
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
@@ -261,6 +260,11 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                 }
             });
         }
+        
+        this.destroy.connect (() => {
+            foreach (var dir in deep_count_directories)
+                dir.cancel ();
+        });
     }
 /*
     private void selection_size_cancel () {
