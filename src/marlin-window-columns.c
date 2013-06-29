@@ -189,6 +189,41 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
     marlin_animation_smooth_adjustment_to (mwcols->hadj, slot_indice * (mwcols->preferred_column_width + mwcols->handle_size));
 }
 
+void
+marlin_windows_show_hidden_files_changed(GOFPreferences *prefs, GParamSpec *pspec, MarlinWindowColumns *mwcols) 
+{ 
+    if (!prefs->pref_show_hidden_files) {
+        /* we are hiding hidden files - check whether any slot is a hidden directory */
+        GList *l;
+        guint i;
+        GOFDirectoryAsync *dir;
+        
+        for (i=0, l = mwcols->slot; l != NULL; l = l->next, i++) {
+            dir = GOF_WINDOW_SLOT(l->data)->directory;
+            if (dir->file->is_hidden) 
+                break;
+        }
+        
+        if (l == NULL) {
+            /* no hidden folder found */
+            return;
+        }
+        
+        /* find last slot that is not a showing hidden folder or child of hidden folder */
+        l=l->prev;
+        if (i > 1) 
+            l=l->prev;
+
+        GOFWindowSlot *slot = GOF_WINDOW_SLOT(l->data)->view_box;
+        
+        /* make the selected slot active and remove subsequent slots*/
+        FMDirectoryView *view = FM_DIRECTORY_VIEW(slot);
+        fm_directory_view_set_active_slot(view);
+        marlin_window_columns_active_slot(mwcols, slot); 
+        gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
+    }    
+}
+
 static void
 marlin_window_columns_init (MarlinWindowColumns *mwcol)
 {
@@ -196,6 +231,9 @@ marlin_window_columns_init (MarlinWindowColumns *mwcol)
     mwcol->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start(GTK_BOX (mwcol->content_box), GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets, FALSE, FALSE, 0);
+        
+    g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
+                                 G_CALLBACK (marlin_windows_show_hidden_files_changed), mwcol, 0);
 }
 
 static void

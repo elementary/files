@@ -107,7 +107,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
 {
     GOFFile *file;
 
-    g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
     view->details->selection = get_selection (view);
