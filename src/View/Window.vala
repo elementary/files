@@ -222,14 +222,12 @@ namespace Marlin.View {
             });
             
             tabs.tab_added.connect ((tab) => {
-                if (tab != null)
-                    tabs.remove_tab (tab);
-                add_tab ();
+                make_new_tab (tab);
             });
             
             tabs.tab_removed.connect ((tab) => {
                 if (tabs.n_tabs == 1) {
-                    add_tab ();
+                    make_new_tab ();
                 }
                 return true;
             });
@@ -316,24 +314,34 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
-        
-            ViewContainer content = new View.ViewContainer(this, location,
+        private void make_new_tab (Granite.Widgets.Tab? tab = null,
+                                   File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
+            if (tab == null) {
+                var new_tab = new Granite.Widgets.Tab ();
+                tabs.insert_tab (new_tab, -1);
+                make_new_tab (new_tab, location);
+                return;
+            }
+
+            var content = new View.ViewContainer (this, location,
                                     current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            var new_tab = new Granite.Widgets.Tab ("", null, content);
-            
-            content.tab_name_changed.connect ((tab_name) => {
-                new_tab.label = tab_name;
-            });
-            
-            tabs.insert_tab (new_tab, -1);
+            tab.label = "";
+            tab.page = content;
 
-            tabs.current = new_tab;
-            //current_tab = content;
+            content.tab_name_changed.connect ((tab_name) => {
+                tab.label = tab_name;
+            });
+
+            tabs.current = tab;
+            change_tab (tabs.get_tab_position (tab));
         }
 
-        public void remove_tab (ViewContainer view_container){
+        public void add_tab (File location) {
+            make_new_tab (null, location);
+        }
+
+        public void remove_tab (ViewContainer view_container) {
             var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
             if (tab != null)
                 tabs.remove_tab (tab);
@@ -386,7 +394,7 @@ namespace Marlin.View {
         }
 
         private void action_new_tab (Gtk.Action action) {
-            add_tab ();
+            make_new_tab ();
         }
 
         private void action_remove_tab (Gtk.Action action) {
