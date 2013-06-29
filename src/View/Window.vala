@@ -154,6 +154,7 @@ namespace Marlin.View {
             /* Contents */
             tabs = new Granite.Widgets.DynamicNotebook ();
             tabs.show_tabs = true;
+            tabs.allow_restoring = true;
             tabs.show ();
 
             /* Sidebar */
@@ -229,11 +230,19 @@ namespace Marlin.View {
                 if (tabs.n_tabs == 1) {
                     make_new_tab ();
                 }
+                
+                tab.restore_data =
+                    (tab.page as ViewContainer).slot.location.get_uri ();
+                
                 return true;
             });
             
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
+            });
+            
+            tabs.tab_restored.connect ((tab) => {
+                make_new_tab (tab, File.new_for_uri (tab.restore_data));
             });
 
             Gtk.Allocation win_alloc;
