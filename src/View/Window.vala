@@ -339,6 +339,14 @@ namespace Marlin.View {
 
         public void add_tab (File location) {
             make_new_tab (null, location);
+            
+            /* The following fixes a bug where upon first opening
+               Files, the overlay status bar is shown empty. */
+            if (tabs.n_tabs == 1) {
+                var tab = tabs.get_tab_by_index (0);
+                if (tab != null)
+                    (tab.page as ViewContainer).overlay_statusbar.update ();
+            }
         }
 
         public void remove_tab (ViewContainer view_container) {
