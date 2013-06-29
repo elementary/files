@@ -75,7 +75,8 @@ public class Marlin.DeepCount : Object
                 }
             }
         } catch (Error err) {
-            warning ("%s", err.message);
+            if (!(err is IOError.CANCELLED))
+                warning ("%s", err.message);
         }
             
         directories.remove (directory);

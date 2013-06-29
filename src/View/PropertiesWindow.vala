@@ -54,6 +54,8 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
     private Granite.Widgets.WrapLabel header_title;
     private Gtk.Label header_desc;
     private string ftype; /* common type */
+    private Gtk.Spinner spinner;
+    private Gtk.Label spinner_label;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
@@ -61,6 +63,23 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
     private SizeGroup sg;
 
     private bool files_contain_a_directory;
+    
+    //To stop the spinner
+    private uint _folder_count;
+    private signal void folder_count_changed ();
+    
+    private uint folder_count {
+        get {
+            return _folder_count;
+        }
+        
+        set {
+            _folder_count = value;
+            folder_count_changed ();
+        }
+    }
+    
+    private uint file_count;
 
     private enum PanelType {
         INFO,
@@ -158,11 +177,19 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         set_destroy_with_parent (true);
 
         content_vbox.show();
-
         content_area.show_all();
         show_all();
 
         present ();
+        
+        if (folder_count == 0) {
+            spinner.hide ();
+        } else if (file_count == 0) {
+            header_desc.hide ();
+        }
+        
+        if (file_count > 0)
+            spinner_label.hide ();
     }
 
 
@@ -189,11 +216,13 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
     private void selection_size_update () {
         total_size = 0;
         deep_count_directories = null;
+        folder_count = 0;
+        file_count = 0;
 
-        /* TODO cancel deep_count when leaving the dialog */
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
+                folder_count++;
                 var d = new Marlin.DeepCount (gof.location);
                 deep_count_directories.prepend (d);
                 d.finished.connect (() => {
@@ -201,14 +230,41 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                                     deep_count_directories.remove (d);
                                     total_size += d.total_size;
                                     update_header_desc ();
+                                    folder_count--;
+                                    if (!header_desc.visible)
+                                        header_desc.show ();
+                                    if (spinner_label.visible)
+                                        spinner_label.hide ();
                                     mutex.unlock ();
                                     });
+            } else {
+                file_count++;
             }
+            
             mutex.lock ();
             total_size += gof.size;
             mutex.unlock ();
         }
-        update_header_desc ();
+
+        if (file_count > 0)
+            update_header_desc ();
+        
+        if (folder_count > 0) {
+            spinner.start ();
+            
+            folder_count_changed.connect (() => {
+                if (folder_count == 0) {
+                    spinner_label.hide ();
+                    spinner.hide ();
+                    spinner.stop ();
+                }
+            });
+        }
+        
+        this.destroy.connect (() => {
+            foreach (var dir in deep_count_directories)
+                dir.cancel ();
+        });
     }
 /*
     private void selection_size_cancel () {
@@ -236,21 +292,32 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         else
             header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.info.get_name () + "</span>");
 
+        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        hbox.set_halign (Align.START);
+        
+        spinner = new Gtk.Spinner ();
+        spinner.set_hexpand (false);
+        spinner_label = new Gtk.Label (_("Estimating size…"));
+
         header_desc = new Label (null);
-        header_desc.set_halign(Align.START);
-        header_desc.set_use_markup(true);
+        header_desc.set_use_markup (true);
 
         if (ftype != null) {
-            header_desc.set_markup(span_weight_light(goffile.formated_type));
+            header_desc.set_markup (span_weight_light (goffile.formated_type));
         }
-        selection_size_update();
 
+        selection_size_update ();
+        
+        hbox.pack_start (spinner);
+        hbox.pack_start (spinner_label);
+        hbox.pack_start (header_desc);
+        
         /*var font_style = new Pango.FontDescription();
           font_style.set_size(12 * 1000);
           header_title.modify_font(font_style);*/
 
-        vvbox.pack_start(header_title);
-        vvbox.pack_start(header_desc);
+        vvbox.pack_start (header_title);
+        vvbox.pack_start (hbox);
 
         /* Bottom padding */
         vvbox.margin_bottom = 12;

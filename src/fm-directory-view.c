@@ -2847,12 +2847,6 @@ fm_directory_view_set_property (GObject         *object,
         g_signal_connect_object (gof_preferences_get_default (), "notify::interpret-desktop-files",
                                  G_CALLBACK (show_desktop_files_changed), view, 0);
         
-        /* automagicly zoom if we have a valid keypath_size */
-        int keypath_size = fm_directory_view_get_uri_keypath_size (view);
-        if (keypath_size != 0) {
-            MarlinZoomLevel zoom = marlin_zoom_level_get_nearest_from_value (keypath_size); 
-            g_object_set (G_OBJECT (view), "zoom-level", zoom, NULL);
-        }
         
         fm_directory_view_connect_directory_handlers (view, slot->directory);
         

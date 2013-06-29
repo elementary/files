@@ -166,7 +166,7 @@ namespace Marlin.View {
         private GOF.File? goffile = null;
         //private unowned GLib.List<GOF.File>? last_selection = null;
 
-        private void update (GLib.List<GOF.File>? files = null)
+        public void update (GLib.List<GOF.File>? files = null)
         {
             //last_selection = files;
             real_update (files);
