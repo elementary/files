@@ -175,7 +175,7 @@ public class GOF.Directory.Async : Object
                 file.info_available ();
                 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
-            foreach (GOF.File gof in file_hash.get_values ()) {
+            foreach ( GOF.File gof in file_hash.get_values ()) {
                 if (gof.info != null && (!gof.is_hidden || show_hidden))
                     file_loaded (gof);
             }

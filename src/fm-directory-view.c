@@ -294,9 +294,9 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
             g_object_unref (dir);
         }
             
-        if(view->details->slot->mwcols) {
+        if (view->details->slot->mwcols) {
             /* if in miller view mode, remove any views of subdirectories of deleted directory */
-            gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
+            gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
         }
     }
 }
@@ -357,7 +357,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectory
         /* while the model is cleared and re-loaded we do not want the view to update */ 
         g_signal_handlers_block_by_func (view->model, fm_directory_view_row_deleted, view);
         g_signal_handlers_block_by_func (view->model, fm_directory_view_restore_selection, view);
-        view->updates_frozen=TRUE;
+        view->updates_frozen = TRUE;
         
         /* clear the model */
         fm_list_model_clear (view->model);
@@ -370,7 +370,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectory
         /* re-instate signals and unfreeze view */ 
         g_signal_handlers_unblock_by_func (view->model, fm_directory_view_row_deleted, view);
         g_signal_handlers_unblock_by_func (view->model, fm_directory_view_restore_selection, view);
-        view->updates_frozen=FALSE;
+        view->updates_frozen = FALSE;
     }
 }
 

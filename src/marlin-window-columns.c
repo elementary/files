@@ -190,7 +190,7 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 }
 
 void
-marlin_windows_show_hidden_files_changed(GOFPreferences *prefs, GParamSpec *pspec, MarlinWindowColumns *mwcols) 
+marlin_windows_show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindowColumns *mwcols) 
 { 
     if (!prefs->pref_show_hidden_files) {
         /* we are hiding hidden files - check whether any slot is a hidden directory */
@@ -199,7 +199,7 @@ marlin_windows_show_hidden_files_changed(GOFPreferences *prefs, GParamSpec *pspe
         GOFDirectoryAsync *dir;
         
         for (i=0, l = mwcols->slot; l != NULL; l = l->next, i++) {
-            dir = GOF_WINDOW_SLOT(l->data)->directory;
+            dir = GOF_WINDOW_SLOT (l->data)->directory;
             if (dir->file->is_hidden) 
                 break;
         }
@@ -210,17 +210,17 @@ marlin_windows_show_hidden_files_changed(GOFPreferences *prefs, GParamSpec *pspe
         }
         
         /* find last slot that is not a showing hidden folder or child of hidden folder */
-        l=l->prev;
-        if (i > 1) 
-            l=l->prev;
+        l = l->prev;
+//        if (i > 1) 
+//            l = l->prev;
 
-        GOFWindowSlot *slot = GOF_WINDOW_SLOT(l->data)->view_box;
+        GOFWindowSlot *slot = GOF_WINDOW_SLOT (l->data)->view_box;
         
         /* make the selected slot active and remove subsequent slots*/
-        FMDirectoryView *view = FM_DIRECTORY_VIEW(slot);
-        fm_directory_view_set_active_slot(view);
-        marlin_window_columns_active_slot(mwcols, slot); 
-        gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
+        FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
+        fm_directory_view_set_active_slot (view);
+        marlin_window_columns_active_slot (mwcols, slot); 
+        gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
     }    
 }
 
