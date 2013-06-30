@@ -37,6 +37,7 @@ namespace Marlin.View {
         private Marlin.View.Window window;
 
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
+        const string[] SKIP_IMAGES = {"image/svg+xml"};
         Cancellable? image_cancellable = null;
         bool image_size_loaded = false;
 
@@ -237,7 +238,8 @@ namespace Marlin.View {
 
                     /* if we have an image, see if we can get its resolution
                        code is mostly ported from nautilus' src/nautilus-image-properties.c */
-                    if (goffile.get_ftype ().substring (0, 6) == "image/") {
+                    var type = goffile.get_ftype ();
+                    if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         var file = goffile.location;
                         image_size_loaded = false;
                         image_cancellable = new Cancellable ();
@@ -247,12 +249,19 @@ namespace Marlin.View {
                                 var stream = file.read_async.end (res);
                                 if (stream == null)
                                     error ("Could not read image file's size data");
-                                var loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                                var loader = new Gdk.PixbufLoader.with_mime_type (type);
 
                                 loader.size_prepared.connect ((width, height) => {
                                     image_size_loaded = true;
-                                    status.set_label ("%s - %s (%s) | %ix%i".printf (goffile.info.get_name (),
-                                        goffile.formated_type, goffile.format_size, width, height));
+                                    status.set_label ("%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height));
+                                });
+
+                                /* Gdk wants us to always close the loader, so we are nice to it */
+                                image_cancellable.cancelled.connect (() => {
+                                    try {
+                                        loader.close ();
+                                        stream.close ();
+                                    } catch (Error e) {}
                                 });
 
                                 read_image_stream.begin (loader, stream, image_cancellable, (obj, res) => {
@@ -262,7 +271,7 @@ namespace Marlin.View {
                         });
                     }
 
-                    status.set_label ("%s - %s (%s)".printf (goffile.info.get_name (), goffile.formated_type, goffile.format_size));
+                    status.set_label ("%s (%s)".printf (goffile.formated_type, goffile.format_size));
                 } else {
                     status.set_label ("%s - %s".printf (goffile.info.get_name (), goffile.formated_type));
 
@@ -331,7 +340,16 @@ namespace Marlin.View {
                 loader.close ();
                 loader = null;
                 stream.close ();
-            } catch (Error e) { warning (e.message); }
+            } catch (IOError e) {
+                if (!(e is IOError.CANCELLED))
+                    warning (e.message);
+            } catch (Gdk.PixbufError e) {
+                /* errors while loading are expected, we only need to know the size */
+            } catch (FileError e) {
+                warning (e.message);
+            } catch (Error e) {
+                warning (e.message);
+            }
         }
     }
 }
