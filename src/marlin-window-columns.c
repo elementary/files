@@ -45,7 +45,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         /* Get previous file list to grab_focus on it */
         if(active_position > 0)
             to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position-1));
-        
+
         /* If it has been found in the GList mwcols->slot (and if it is not the first) */
         if(to_active != NULL)
         {
@@ -61,7 +61,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         /* Get previous file list to grab_focus on it */
         if(active_position < g_list_length(mwcols->slot))
             to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position+1));
-        
+
         if(to_active != NULL)
         {
             printf("GRAB FOCUS on : %d\n", active_position+1);
@@ -130,9 +130,9 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
     gof_window_column_add (slot, slot->view_box);
 
     gtk_box_pack_start(GTK_BOX (mwcols->content_box), mwcols->view_box, TRUE, TRUE, 0);
-    
+
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->content_box);
-    
+
     /* store pane handle size*/
     gtk_widget_style_get (GTK_WIDGET (slot->hpane), "handle-size", &mwcols->handle_size, NULL);
 
@@ -167,14 +167,14 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 }
 
 void
-marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot) 
+marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot)
 {
     GList *l;
     int slot_indice, i;
 
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-    
+
     for (i=0, l=mwcols->slot; l != NULL; l=l->next, i++)
     {
         //g_message ("list >> %s", GOF_WINDOW_SLOT (l->data)->directory->file->uri);
@@ -190,38 +190,36 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 }
 
 void
-marlin_windows_show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindowColumns *mwcols) 
-{ 
+show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindowColumns *mwcols)
+{
     if (!prefs->pref_show_hidden_files) {
         /* we are hiding hidden files - check whether any slot is a hidden directory */
         GList *l;
         guint i;
         GOFDirectoryAsync *dir;
-        
-        for (i=0, l = mwcols->slot; l != NULL; l = l->next, i++) {
+
+        for (i = 0, l = mwcols->slot; l != NULL; l = l->next, i++) {
             dir = GOF_WINDOW_SLOT (l->data)->directory;
-            if (dir->file->is_hidden) 
+            if (dir->file->is_hidden)
                 break;
         }
-        
-        if (l == NULL) {
-            /* no hidden folder found */
+
+        if (l == NULL || i == 0) {
+            /* no hidden folder found or first folder hidden */
             return;
         }
-        
-        /* find last slot that is not a showing hidden folder or child of hidden folder */
+
+        /* find last slot that is not a showing hidden folder */
         l = l->prev;
-//        if (i > 1) 
-//            l = l->prev;
 
         GOFWindowSlot *slot = GOF_WINDOW_SLOT (l->data)->view_box;
-        
+
         /* make the selected slot active and remove subsequent slots*/
         FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
         fm_directory_view_set_active_slot (view);
-        marlin_window_columns_active_slot (mwcols, slot); 
+        marlin_window_columns_active_slot (mwcols, slot);
         gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
-    }    
+    }
 }
 
 static void
@@ -231,9 +229,9 @@ marlin_window_columns_init (MarlinWindowColumns *mwcol)
     mwcol->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start(GTK_BOX (mwcol->content_box), GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets, FALSE, FALSE, 0);
-        
+
     g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
-                                 G_CALLBACK (marlin_windows_show_hidden_files_changed), mwcol, 0);
+                                 G_CALLBACK (show_hidden_files_changed), mwcol, 0);
 }
 
 static void
@@ -260,7 +258,7 @@ marlin_window_columns_finalize (GObject *object)
 void
 marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols)
 {
-    /* block key release events to not interfere while we rename a file 
+    /* block key release events to not interfere while we rename a file
     with the editing widget */
     g_signal_handlers_block_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
 }
@@ -268,7 +266,7 @@ marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols)
 void
 marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols)
 {
-    /* unblock key release events to not interfere while we rename a file 
+    /* unblock key release events to not interfere while we rename a file
     with the editing widget */
     g_signal_handlers_unblock_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
 }
