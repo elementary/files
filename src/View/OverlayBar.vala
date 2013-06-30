@@ -36,6 +36,10 @@ namespace Marlin.View {
         public Label status;
         private Marlin.View.Window window;
 
+        const int IMAGE_LOADER_BUFFER_SIZE = 8192;
+        Cancellable? image_cancellable = null;
+        bool image_size_loaded = false;
+
         private bool _showbar;
         public bool showbar {
             set {
@@ -71,6 +75,12 @@ namespace Marlin.View {
 
             window.selection_changed.connect (update);
             window.item_hovered.connect (update_hovered);
+
+            hide.connect (() => {
+                // when we're hiding, we no longer want to search for image size
+                if (image_cancellable != null)
+                    image_cancellable.cancel ();
+            });
         }
 
         public override void parent_set (Gtk.Widget? old_parent)
@@ -214,10 +224,43 @@ namespace Marlin.View {
 
         private void update_status ()
         {
+            // if we're still collecting image info, cancel
+            if (image_cancellable != null) {
+                image_cancellable.cancel ();
+                image_cancellable = null;
+            }
+
             if (count == 1) {
                 if (goffile.is_network_uri_scheme ()) {
                     status.set_label (goffile.get_display_target_uri ());
                 } else if (!goffile.is_folder ()) {
+
+                    // if we have an image, see if we can get its resolution
+                    if (goffile.get_ftype ().substring (0, 6) == "image/") {
+                        var file = goffile.location;
+                        image_size_loaded = false;
+                        image_cancellable = new Cancellable ();
+
+                        file.read_async.begin (0, image_cancellable, (obj, res) => {
+                            try {
+                                var stream = file.read_async.end (res);
+                                if (stream == null)
+                                    error ("Could not read image file's size data");
+                                var loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+
+                                loader.size_prepared.connect ((width, height) => {
+                                    image_size_loaded = true;
+                                    status.set_label ("%s - %s (%s) | %ix%i".printf (goffile.info.get_name (),
+                                        goffile.formated_type, goffile.format_size, width, height));
+                                });
+
+                                read_image_stream.begin (loader, stream, image_cancellable, (obj, res) => {
+                                    read_image_stream.end (res);
+                                });
+                            } catch (Error e) { warning (e.message); }
+                        });
+                    }
+
                     status.set_label ("%s - %s (%s)".printf (goffile.info.get_name (), goffile.formated_type, goffile.format_size));
                 } else {
                     status.set_label ("%s - %s".printf (goffile.info.get_name (), goffile.formated_type));
@@ -266,6 +309,28 @@ namespace Marlin.View {
                 }
                 count++;
             }
+        }
+
+        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
+        {
+            if (image_size_loaded)
+                return;
+
+            var buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
+
+            try {
+                var read = yield stream.read_async (buffer, 0, cancellable);
+
+                if (read > 0 && loader.write (buffer) && !image_size_loaded) {
+                    yield read_image_stream (loader, stream, cancellable);
+                    return;
+                }
+
+                image_size_loaded = true;
+                loader.close ();
+                loader = null;
+                stream.close ();
+            } catch (Error e) { warning (e.message); }
         }
     }
 }
