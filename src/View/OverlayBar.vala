@@ -77,7 +77,7 @@ namespace Marlin.View {
             window.item_hovered.connect (update_hovered);
 
             hide.connect (() => {
-                // when we're hiding, we no longer want to search for image size
+                /* when we're hiding, we no longer want to search for image size */
                 if (image_cancellable != null)
                     image_cancellable.cancel ();
             });
@@ -224,7 +224,7 @@ namespace Marlin.View {
 
         private void update_status ()
         {
-            // if we're still collecting image info, cancel
+            /* if we're still collecting image info, cancel */
             if (image_cancellable != null) {
                 image_cancellable.cancel ();
                 image_cancellable = null;
@@ -235,7 +235,8 @@ namespace Marlin.View {
                     status.set_label (goffile.get_display_target_uri ());
                 } else if (!goffile.is_folder ()) {
 
-                    // if we have an image, see if we can get its resolution
+                    /* if we have an image, see if we can get its resolution
+                       code is mostly ported from nautilus' src/nautilus-image-properties.c */
                     if (goffile.get_ftype ().substring (0, 6) == "image/") {
                         var file = goffile.location;
                         image_size_loaded = false;
