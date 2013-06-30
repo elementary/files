@@ -173,9 +173,10 @@ public class GOF.Directory.Async : Object
             /* send again the info_available signal for reused directories */
             if (file.info != null)
                 file.info_available ();
+                
+            bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
             foreach (GOF.File gof in file_hash.get_values ()) {
-                //if (gof != null  && gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
-                if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+                if (gof.info != null && (!gof.is_hidden || show_hidden))
                     file_loaded (gof);
             }
             done_loading ();
