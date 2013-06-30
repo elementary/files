@@ -541,7 +541,6 @@ filename_cell_data_func (GtkTreeViewColumn *column,
     GdkRGBA rgba;
 
     GtkTreePath *path, *hover_path;
-    PangoUnderline underline;
 
     gtk_tree_model_get (model, iter,
                         FM_LIST_MODEL_FILENAME, &text,
@@ -564,23 +563,9 @@ filename_cell_data_func (GtkTreeViewColumn *column,
       }
       g_free (color);*/
 
-	underline = PANGO_UNDERLINE_NONE;
-    if (exo_tree_view_get_single_click (EXO_TREE_VIEW (view->tree))) {
-		path = gtk_tree_model_get_path (model, iter);
-        hover_path = exo_tree_view_get_hover_path (EXO_TREE_VIEW (view->tree));
-
-		if (hover_path == NULL || gtk_tree_path_compare (path, hover_path)) {
-			underline = PANGO_UNDERLINE_NONE;
-		} else {
-			underline = PANGO_UNDERLINE_SINGLE;
-		}
-
-		gtk_tree_path_free (path);
-	}
-
     g_object_set (G_OBJECT (renderer),
                   "text", text,
-                  "underline", underline,
+                  "underline", PANGO_UNDERLINE_NONE,
                   //"cell-background", color,
                   "cell-background-rgba", &rgba,
                   NULL);

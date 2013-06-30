@@ -767,8 +767,6 @@ fm_abstract_icon_view_init (FMAbstractIconView *view)
     g_settings_bind (settings, "single-click", 
                      view->icons, "single-click", 0);
     g_settings_bind (settings, "single-click", 
-                     FM_DIRECTORY_VIEW (view)->name_renderer, "follow-prelit", 0); 
-    g_settings_bind (settings, "single-click", 
                      FM_DIRECTORY_VIEW (view)->icon_renderer, "selection-helpers", 0);
 
     g_signal_connect_object (view->icons, "button-press-event",
