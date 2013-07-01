@@ -35,7 +35,6 @@
 enum
 {
     PROP_0,
-    PROP_FOLLOW_PRELIT,
     PROP_FOLLOW_STATE,
     PROP_TEXT,
     PROP_BACKGROUND,
@@ -124,20 +123,6 @@ marlin_text_renderer_class_init (MarlinTextRendererClass *klass)
     gtkcell_renderer_class->get_size = marlin_text_renderer_get_size;
     gtkcell_renderer_class->render = marlin_text_renderer_render;
     gtkcell_renderer_class->start_editing = marlin_text_renderer_start_editing;
-
-    /**
-     * MarlinTextRenderer:follow-prelit:
-     *
-     * Whether to underline prelited cells. This is used for the single
-     * click support in the detailed list view.
-    **/
-    g_object_class_install_property (gobject_class,
-                                     PROP_FOLLOW_PRELIT,
-                                     g_param_spec_boolean ("follow-prelit",
-                                                           "follow-prelit",
-                                                           "follow-prelit",
-                                                           FALSE,
-                                                           EXO_PARAM_READWRITE));
 
     /**
      * MarlinTextRenderer:follow-state:
@@ -282,10 +267,6 @@ marlin_text_renderer_get_property (GObject    *object,
 
     switch (prop_id)
     {
-    case PROP_FOLLOW_PRELIT:
-        g_value_set_boolean (value, text_renderer->follow_prelit);
-        break;
-
     case PROP_FOLLOW_STATE:
         g_value_set_boolean (value, text_renderer->follow_state);
         break;
@@ -329,10 +310,6 @@ marlin_text_renderer_set_property (GObject      *object,
 
     switch (prop_id)
     {
-    case PROP_FOLLOW_PRELIT:
-        text_renderer->follow_prelit = g_value_get_boolean (value);
-        break;
-
     case PROP_FOLLOW_STATE:
         text_renderer->follow_state = g_value_get_boolean (value);
         break;
@@ -509,17 +486,13 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     }
 
     /* render small/normal text depending on the zoom_level */
-    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL) 
+    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
     {
-        if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
-            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small_underline_single ());
-        else
-            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
-    } else {
-        if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
-            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_underline_single ());
-        else
-            pango_layout_set_attributes (text_renderer->layout, NULL);
+        pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
+    }
+    else
+    {
+        pango_layout_set_attributes (text_renderer->layout, NULL);
     }
 
     /* setup the wrapping */

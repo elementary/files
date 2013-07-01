@@ -60,9 +60,6 @@ struct _MarlinTextRenderer
     gint          focus_width;
     MarlinZoomLevel zoom_level;
 
-    /* underline prelited rows */
-    gboolean      follow_prelit;
-
     /* cell editing support */
     GtkWidget    *entry; 
     gboolean      entry_menu_active;
