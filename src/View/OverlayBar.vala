@@ -236,39 +236,10 @@ namespace Marlin.View {
                     status.set_label (goffile.get_display_target_uri ());
                 } else if (!goffile.is_folder ()) {
 
-                    /* if we have an image, see if we can get its resolution
-                       code is mostly ported from nautilus' src/nautilus-image-properties.c */
+                    /* if we have an image, see if we can get its resolution */
                     var type = goffile.get_ftype ();
                     if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
-                        var file = goffile.location;
-                        image_size_loaded = false;
-                        image_cancellable = new Cancellable ();
-
-                        file.read_async.begin (0, image_cancellable, (obj, res) => {
-                            try {
-                                var stream = file.read_async.end (res);
-                                if (stream == null)
-                                    error ("Could not read image file's size data");
-                                var loader = new Gdk.PixbufLoader.with_mime_type (type);
-
-                                loader.size_prepared.connect ((width, height) => {
-                                    image_size_loaded = true;
-                                    status.set_label ("%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height));
-                                });
-
-                                /* Gdk wants us to always close the loader, so we are nice to it */
-                                image_cancellable.cancelled.connect (() => {
-                                    try {
-                                        loader.close ();
-                                        stream.close ();
-                                    } catch (Error e) {}
-                                });
-
-                                read_image_stream.begin (loader, stream, image_cancellable, (obj, res) => {
-                                    read_image_stream.end (res);
-                                });
-                            } catch (Error e) { warning (e.message); }
-                        });
+                        load_resolution (goffile);
                     }
 
                     status.set_label ("%s (%s)".printf (goffile.formated_type, goffile.format_size));
@@ -319,6 +290,36 @@ namespace Marlin.View {
                 }
                 count++;
             }
+        }
+
+        /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
+        private async void load_resolution (GOF.File gofile)
+        {
+            var file = goffile.location;
+            image_size_loaded = false;
+            image_cancellable = new Cancellable ();
+
+            try {
+                var stream = yield file.read_async (0, image_cancellable);
+                if (stream == null)
+                    error ("Could not read image file's size data");
+                var loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+
+                loader.size_prepared.connect ((width, height) => {
+                    image_size_loaded = true;
+                    status.set_label ("%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height));
+                });
+
+                /* Gdk wants us to always close the loader, so we are nice to it */
+                image_cancellable.cancelled.connect (() => {
+                    try {
+                        loader.close ();
+                        stream.close ();
+                    } catch (Error e) {}
+                });
+
+                yield read_image_stream (loader, stream, image_cancellable);
+            } catch (Error e) { warning (e.message); }
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
