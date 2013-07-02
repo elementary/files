@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-06-19 10:58+0000\n"
+"PO-Revision-Date: 2013-07-01 11:17+0000\n"
 "Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:49+0000\n"
-"X-Generator: Launchpad (build 16681)\n"
+"X-Launchpad-Export-Date: 2013-07-02 05:54+0000\n"
+"X-Generator: Launchpad (build 16692)\n"
 "Language: pl\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
@@ -107,7 +107,7 @@ msgstr "%u zaznaczonych elementów"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:294
 msgid "Estimating size…"
-msgstr ""
+msgstr "Szacowanie rozmiaru..."
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:401
 msgid "Created"
