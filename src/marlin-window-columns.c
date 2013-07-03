@@ -171,25 +171,36 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 {
     GList *l;
     int slot_indice, i;
+    GOFWindowSlot *other_slot;
+    guint width = 0;
+    gboolean sum_completed = FALSE;
 
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
 
-    for (i=0, l=mwcols->slot; l != NULL; l=l->next, i++)
+    for (i = 0, l = mwcols->slot; l != NULL; l = l->next, i++)
     {
-        //g_message ("list >> %s", GOF_WINDOW_SLOT (l->data)->directory->file->uri);
-        if (l->data != slot)
-            g_signal_emit_by_name (GOF_WINDOW_SLOT (l->data), "inactive");
-        else
-            slot_indice = i;
+        other_slot = GOF_WINDOW_SLOT (l->data);
+        
+        if (other_slot != slot)
+            g_signal_emit_by_name (other_slot, "inactive");
+         else
+        {
+             slot_indice = i;
+            sum_completed = TRUE;
+        }
+            
+        if (!sum_completed) {
+            width += other_slot->width;
+        }
     }
     
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
     
     /* autoscroll Miller Columns */
-    marlin_animation_smooth_adjustment_to (mwcols->hadj, slot_indice * (mwcols->preferred_column_width + mwcols->handle_size));
+    marlin_animation_smooth_adjustment_to (mwcols->hadj, width + slot_indice * mwcols->handle_size);
 }
 
 static void
