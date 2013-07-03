@@ -187,7 +187,7 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
             g_signal_emit_by_name (other_slot, "inactive");
          else
         {
-             slot_indice = i;
+            slot_indice = i;
             sum_completed = TRUE;
         }
             

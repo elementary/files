@@ -11,9 +11,9 @@ namespace Marlin.Animation {
         var old_adj_value = adj.value;
 
         Timeout.add(1000/60, () => {
-            /* If the user move it at the same time, just stop the animation */
-            if(old_adj_value != adj.value)
-                return false;
+//            /* If the user move it at the same time, just stop the animation */
+//            if(old_adj_value != adj.value)
+//                return false;
 
             if(newvalue >= to_do - 10) {
                 /* to be sure that there is not a little problem */
