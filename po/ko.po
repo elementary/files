@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-07-01 13:05+0000\n"
+"PO-Revision-Date: 2013-07-02 06:59+0000\n"
 "Last-Translator: LeeHoseok <neochain@naver.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-07-02 05:54+0000\n"
+"X-Launchpad-Export-Date: 2013-07-03 05:44+0000\n"
 "X-Generator: Launchpad (build 16692)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
@@ -105,7 +105,7 @@ msgstr "%u 선택된 항목들"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:294
 msgid "Estimating size…"
-msgstr ""
+msgstr "크기 예상중......"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:401
 msgid "Created"
