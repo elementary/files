@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-06-14 23:34+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2013-06-29 23:15+0000\n"
+"Last-Translator: Anthony Harrington <untaintableangel@ubuntu.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:50+0000\n"
-"X-Generator: Launchpad (build 16681)\n"
+"X-Launchpad-Export-Date: 2013-06-30 06:33+0000\n"
+"X-Generator: Launchpad (build 16692)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -50,7 +50,7 @@ msgstr "SMB"
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:123
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
 msgid "Trash"
-msgstr "Rubbish Bin"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:302
 msgid "Open in New Tab"
@@ -105,7 +105,7 @@ msgstr "%u selected items"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:294
 msgid "Estimating size…"
-msgstr ""
+msgstr "Estimating size…"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:401
 msgid "Created"
@@ -797,7 +797,7 @@ msgstr "_Delete Permanently"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3533
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "Delete each selected item, without moving to the Rubbish Bin"
+msgstr "Delete all selected items permanently, bypassing the Rubbish Bin"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3536
 msgid "_Restore"
@@ -1071,7 +1071,7 @@ msgstr "_Eject"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2312
 msgid "Empty _Trash"
-msgstr "Empty the _Rubbish Bin"
+msgstr "Empty _Rubbish Bin"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
@@ -1861,7 +1861,7 @@ msgstr " (%'d"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"Are you sure you want to permanently delete '%B' from the Rubbish Bin?"
+"Are you sure you want to permanently delete \"%B\" from the Rubbish Bin?"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -1983,8 +1983,8 @@ msgstr "Moving files to the Rubbish Bin"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d files left to move to the Rubbish Bin"
-msgstr[1] "%'d file left to move to the Rubbish Bin"
+msgstr[0] "%'d file left to move to Rubbish Bin"
+msgstr[1] "%'d files left to move to Rubbish Bin"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
@@ -2000,7 +2000,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
-msgstr "Moving Files to the Rubbish Bin"
+msgstr "Moving files to the Rubbish Bin"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
@@ -2023,7 +2023,7 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"In order to regain the free space on this volume the Rubbish Bin must be "
+"In order to regain the free space on this volume, the Rubbish Bin must be "
 "emptied. All deleted items on the volume will be permanently lost."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310

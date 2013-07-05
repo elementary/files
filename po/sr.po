@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-06-22 09:22+0000\n"
+"PO-Revision-Date: 2013-06-29 09:12+0000\n"
 "Last-Translator: IvanBlago <ivan_blagojevic@mail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:49+0000\n"
-"X-Generator: Launchpad (build 16681)\n"
+"X-Launchpad-Export-Date: 2013-06-30 06:33+0000\n"
+"X-Generator: Launchpad (build 16692)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -106,7 +106,7 @@ msgstr "%u одабраних ставки"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:294
 msgid "Estimating size…"
-msgstr ""
+msgstr "Процена величине..."
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:401
 msgid "Created"
@@ -689,7 +689,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3518
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2393
 msgid "Open in New _Tab"
-msgstr "Отвори у новом_језичку"
+msgstr "Отвори у новом _језичку"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:2003
 #, c-format
@@ -742,7 +742,7 @@ msgstr "Направите нову празну фасциклу унутар �
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3500
 msgid "Create New _File"
-msgstr "Направите нову_датотеку"
+msgstr "Направите нову _датотеку"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
 msgid "_Empty File"
@@ -778,7 +778,7 @@ msgstr "Изабери програм којим да отворим изабр�
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3524
 msgid "Other _Application..."
-msgstr "Друга_Апликација..."
+msgstr "Друга _Апликација..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3525
 msgid "Choose another application with which to open the selected item"
@@ -1096,7 +1096,7 @@ msgstr "Постави као _позадину"
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
-msgstr ""
+msgstr "Откажите"
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:217
 #, c-format
@@ -1122,24 +1122,24 @@ msgstr "Датотеке"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Обришите %d копиране ставке"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Обришите „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Обришите %d дуплиране ставке"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Померите %d ставке назад у '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
