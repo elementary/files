@@ -8,58 +8,58 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2012-11-20 12:21+0000\n"
-"Last-Translator: Martin Myrvold <Unknown>\n"
+"PO-Revision-Date: 2013-07-07 21:21+0000\n"
+"Last-Translator: Skandee <Unknown>\n"
 "Language-Team: Norwegian Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:49+0000\n"
-"X-Generator: Launchpad (build 16681)\n"
+"X-Launchpad-Export-Date: 2013-07-08 05:45+0000\n"
+"X-Generator: Launchpad (build 16696)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:117
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:118
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:119
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:120
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
 msgid "Network"
-msgstr ""
+msgstr "Nettverk"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:122
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:123
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
 msgid "Trash"
-msgstr ""
+msgstr "Papirkurv"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:302
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Opne i ny fane"
 
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:229
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u mapper"
 
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:235
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:245
@@ -118,23 +118,23 @@ msgstr "Sist endra"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:406
 msgid "Last Access"
-msgstr ""
+msgstr "Siste tilgang"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:412
 msgid "Deleted"
-msgstr ""
+msgstr "Fjerna"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:417
 msgid "MimeType"
-msgstr ""
+msgstr "MIME-type"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:425
 msgid "MimeTypes"
-msgstr ""
+msgstr "Mime-typer"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:429
 msgid "Location"
-msgstr ""
+msgstr "Stad"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:432
 msgid "Target"
@@ -142,23 +142,23 @@ msgstr "Mål"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:438
 msgid "Origin Location"
-msgstr ""
+msgstr "Opphavsstad"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:448
 msgid "Info:"
-msgstr ""
+msgstr "Info"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:483
 msgid "Other application..."
-msgstr ""
+msgstr "Anna applikasjon..."
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:507
 msgid "Open with:"
-msgstr ""
+msgstr "Opna med:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:528
 msgid "Usage:"
-msgstr ""
+msgstr "Diskforbruk:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:533
 msgid "Device usage:"
