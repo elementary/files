@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-25 06:17-0500\n"
-"PO-Revision-Date: 2013-06-17 11:25+0000\n"
+"PO-Revision-Date: 2013-07-10 12:01+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-26 05:49+0000\n"
-"X-Generator: Launchpad (build 16681)\n"
+"X-Launchpad-Export-Date: 2013-07-11 05:33+0000\n"
+"X-Generator: Launchpad (build 16696)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -105,7 +105,7 @@ msgstr "%u valittua kohdetta"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:294
 msgid "Estimating size…"
-msgstr ""
+msgstr "Arvioidaan kokoa…"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:401
 msgid "Created"
@@ -1408,8 +1408,8 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen siirto"
+msgstr[1] "_Tee uudelleen %d kohteen siirto"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
