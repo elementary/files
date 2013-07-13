@@ -171,22 +171,35 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 {
     GList *l;
     int slot_indice, i;
+    GOFWindowSlot *other_slot;
+    guint width = 0;
+    gboolean sum_completed = FALSE;
 
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
-    for (i=0, l=mwcols->slot; l != NULL; l=l->next, i++)
-    {
-        //g_message ("list >> %s", GOF_WINDOW_SLOT (l->data)->directory->file->uri);
-        if (l->data != slot)
-            g_signal_emit_by_name (GOF_WINDOW_SLOT (l->data), "inactive");
-        else
+
+    for (i = 0, l = mwcols->slot; l != NULL; l = l->next, i++) {
+        other_slot = GOF_WINDOW_SLOT (l->data);
+
+        if (other_slot != slot)
+            g_signal_emit_by_name (other_slot, "inactive");
+         else
+        {
             slot_indice = i;
+            sum_completed = TRUE;
+        }
+
+        if (!sum_completed) {
+            width += other_slot->width;
+        }
     }
+
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
+
     /* autoscroll Miller Columns */
-    marlin_animation_smooth_adjustment_to (mwcols->hadj, slot_indice * (mwcols->preferred_column_width + mwcols->handle_size));
+    marlin_animation_smooth_adjustment_to (mwcols->hadj, width + slot_indice * mwcols->handle_size);
 }
 
 void
@@ -226,6 +239,7 @@ static void
 marlin_window_columns_init (MarlinWindowColumns *mwcol)
 {
     mwcol->preferred_column_width = g_settings_get_int (marlin_column_view_settings, "preferred-column-width");
+    mwcol->total_width = 0;
     mwcol->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start(GTK_BOX (mwcol->content_box), GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets, FALSE, FALSE, 0);

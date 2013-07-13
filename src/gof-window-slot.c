@@ -45,6 +45,7 @@ static void
 gof_window_slot_init (GOFWindowSlot *slot)
 {
     slot->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    slot->width = 0;
     GOF_ABSTRACT_SLOT (slot)->extra_location_widgets = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start (GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
@@ -96,20 +97,40 @@ gof_window_slot_finalize (GObject *object)
 }
 
 void
+update_total_width (GtkWidget *widget, GtkAllocation *allocation, void *data)
+{
+    GOFWindowSlot* slot = data;
+    
+    if (slot->mwcols->total_width != 0 && slot->width != allocation->width) {
+        slot->mwcols->total_width += allocation->width - slot->width;
+        slot->width = allocation->width;
+        gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
+    }
+}
+
+void
 gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
-    GtkWidget *hpane = granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL);
+    GtkWidget *hpane = GTK_WIDGET (granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL));
+    gtk_widget_set_hexpand(hpane, TRUE);
     gtk_widget_show (hpane);
+    
     gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
-    GtkWidget *vbox2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_widget_show (vbox2);
-    slot->colpane = vbox2;
+    gtk_widget_show_all(slot->colpane);
+    
+    GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);    
+    gtk_widget_show_all (box1);
+
+    slot->colpane = box1;
     slot->hpane = hpane;
 
     gtk_widget_set_size_request (column, slot->mwcols->preferred_column_width, -1);
+    slot->width = slot->mwcols->preferred_column_width;
+
+    g_signal_connect (column, "size-allocate", G_CALLBACK (update_total_width), slot);
 
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
-    gtk_paned_pack2 (GTK_PANED (hpane), vbox2, TRUE, FALSE);
+    gtk_paned_pack2 (GTK_PANED (hpane), box1, TRUE, FALSE);
 }
 
 void
@@ -127,14 +148,17 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
         g_warning ("Can't find the slot you are viewing, this should *not* happen.");
     } else {
         GList *l = NULL;
+        slot->mwcols->total_width = 0;
         for(i = 0; i <= current_slot_position; i++) {
             l = g_list_append(l, list_slot->data);
+            slot->mwcols->total_width += GOF_WINDOW_SLOT (list_slot->data)->width;
             list_slot = list_slot->next;
         }
         g_list_free (slot->mwcols->slot);
         slot->mwcols->slot = l;
     }
-    
+    slot->mwcols->total_width += slot->mwcols->preferred_column_width + 100;
+    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);    
     marlin_window_columns_add (slot->mwcols, location);
 }
 

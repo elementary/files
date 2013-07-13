@@ -54,6 +54,7 @@ struct GOFWindowSlot {
     GOFDirectoryAsync *directory;
 
     MarlinWindowColumns *mwcols;
+    guint width;
 };
 
 struct GOFWindowSlotClass {
