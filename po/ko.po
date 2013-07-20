@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-07-19 06:32+0000\n"
+"X-Launchpad-Export-Date: 2013-07-20 06:17+0000\n"
 "X-Generator: Launchpad (build 16696)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
@@ -2362,6 +2362,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "휴지통 비우기"
-
-#~ msgid "Estimating size…"
-#~ msgstr "크기 예상중......"

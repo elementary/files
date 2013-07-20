@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-07-19 06:33+0000\n"
+"X-Launchpad-Export-Date: 2013-07-20 06:18+0000\n"
 "X-Generator: Launchpad (build 16696)\n"
 "Language: \n"
 
@@ -2336,6 +2336,3 @@ msgstr "清空回收站可能会删除这些项目。"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "清空回收站"
-
-#~ msgid "Estimating size…"
-#~ msgstr "正在评估大小..."
