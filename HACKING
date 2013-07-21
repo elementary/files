@@ -1,0 +1,163 @@
+====== Files - Contribute ======
+
+**This document is licensed under the LGPL 2.1.**
+
+====== Testing the latest build ======
+
+Get daily builds in Launchpad (https://launchpad.net/~elementary-os/+archive/daily ppa:elementary-os/daily).
+
+====== Join IRC chat rooms ======
+
+Join #elementary-dev on Freenode: https://kiwiirc.com/client/irc.freenode.net/elementary-dev.
+
+====== Contribute other than touching code ======
+
+- http://bugs.launchpad.net/pantheon-files Go through problem reports and check Unconfirmed bugs or those lacking information and mark any duplicates you spot.
+- http://translation.launchpad.net/pantheon-files Help getting Files translated in your language!
+
+====== Check out the sources ======
+
+bzr branch lp:pantheon-files
+
+The development **trunk** (master, tip) is the latest iteration of the next release.
+Browse it online and look for other branches at http://code.launchpad.net/pantheon-files
+Download a tarball of the latest revision at http://bazaar.launchpad.net/~pantheon-files/pantheon-files/trunk/tarball
+
+====== Build the code ======
+
+Refer to INSTALL for required dependencies.
+
+Then
+
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
+make
+
+Run Files:
+
+./src/pantheon-files
+
+To run Files from a local branch, you will need to have Files already installed in your system, since config files and plugins are loaded from system directories.
+
+If you want to install Files from a local branch under Ubuntu or any of its derivatives, it's advisable to get elementary-testing-scripts from the elementary Daily PPA and run:
+
+cd pantheon-files
+elementary-install-from-bzr .
+
+Alternatively, you can run
+
+cd pantheon-files/build
+sudo make install
+
+====== Debugging issues ======
+
+Testing an installed release may reveal crashers or memory corruption which require investigating from a local build and obtaining a stacktrace (backtrace, crash log).
+
+gdb ./src/pantheon-files --debug
+
+====== Coding style and quality ======
+
+Files' code should in general have:
+
+  * 4 space indentation, no tabs.
+  * Between 80 to 120 columns.
+  * Prefer /* */ style comments.
+  * Call variables //animal// and //animal_shelter// instead of <del>camelCase</del>.
+  * Keep a space between functions/ keywords and round parentheses.
+
+For Vala:
+
+  * Prefer //new Gtk.Widget ()// over //using Gtk; new Widget ()//
+  * No necessity to prefix anything from the GLib namespace. An exception to this rule is when using GOF.File and GLib.File in the same source file.
+  * Stick to standard Vala-style curly parentheses on the same line
+  * Cuddled //} else {// and //} catch (Error error) {//
+
+
+For C:
+
+  * Always keep { and } on their own line
+
+====== Committing code ======
+
+Tell Bazaar your name if you haven't yet
+    bzr whoami "Real Name <email@address>"
+
+See what you did so far
+    bzr diff
+
+Get an overview of changed and new files
+    bzr status
+
+Add new files, move/ rename or delete
+    bzr add FILENAME
+    bzr mv OLDFILE NEWFILE
+    bzr rm FILENAME
+
+Commit your changes in small increments. It is better to keep different changes in different commits.
+    bzr commit -p
+
+To see the last 5 revisions in the current branch
+    bzr log -l5
+    bzr log -l5 -p | less
+
+In the case you committed something wrong or want to ammend it:
+    bzr uncommit
+
+If you end up with unrelated debugging code or other patches in the current changes, it's sometimes handy to temporarily clean up. //This may be seen as bzr's version of git stash.//
+    bzr shelve
+    bzr commit -p
+    bzr unshelve
+
+Remember to keep your branch updated:
+    bzr pull
+
+As a general rule of thumb, ''bzr help COMMAND'' gives you an explanation of any command and ''bzr help commands'' lists all available commands.
+
+//If you're a die-hard git user, http://zyga.github.io/git-lp/ checkout git-lp to use git commands with the Bazaar repository.//
+
+====== Push proposed changes ======
+
+If you haven't yet, https://launchpad.net/~/+editsshkeys check that Launchpad has your SSH key - you can create an SSH key with **Passwords and Keys** aka **Seahorse** or ''ssh-keygen -t rsa'' - and use ''bzr launchpad-login'' to make youself known to bzr locally.
+
+If you checked out trunk, and added your patch(es), just **push it under your username** in Launchpad and you can **propose it for merging into trunk**. This will automatically request a **review from other developers** who can then comment on it and provide feedback.
+
+bzr push lp:~USERNAME/midori/fix-bug123456 && bzr lp-propose-merge lp:midori
+
+lp-propose-merge command may not be working on some distributions like Arch or Fedora.
+In case you get error like //bzr: ERROR: Unable to import library "launchpadlib": No module named launchpadlib// run
+
+bzr lp-open
+
+to open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
+
+**What happens to all the branches?**
+
+Leave the branches alone, **approved branches are cleared automatically** by Launchpad.
+
+For larger feature branches, **use the team** in Launchpad to allow other developers to work on the code with you.
+
+What if I want to help out on an **existing merge request** that I can't push to?
+
+bzr branch ~OTHERPERSON/pantheon0files/fix-bug123456
+cd fix-bug123456
+# make commits
+bzr push lp:USERNAME~/midori/fix-bug123456
+bzr lp-propose-merge ~OTHERPERSON/midori/fix-bug123456
+
+Updating a branch that may be out of sync with trunk:
+
+bzr pull
+bzr: ERROR: These branches have diverged
+bzr merge lp:midori
+# Hand-edit conflicting changes
+bzr resolve FILENAME
+# If any conflicts remain continue fixing
+bzr commit -m 'Merge changes from lp:pantheon-files'
+
+Save a little bandwidth, **branch from an existing local copy** that you keep around:
+
+bzr branch lp:midori midori
+bzr branch midori midori.fix-bug123456
+cd midori.fix-bug123456
+bzr pull lp:midori
