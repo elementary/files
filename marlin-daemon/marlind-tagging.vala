@@ -33,24 +33,20 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
-using GLib;
-using Sqlite;
-
 [DBus (name = "org.elementary.marlin.db")]
 public class MarlinTags : Object {
 
     protected static Sqlite.Database db;
 
-    public MarlinTags(){
-        openMarlinDB();
+    public MarlinTags (){
+        openMarlinDB ();
     }
 
-    protected static void fatal(string op, int res) {
+    protected static void fatal (string op, int res) {
         error("%s: [%d] %s", op, res, db.errmsg());
     }
 
-    private static int show_table_callback (int n_columns, string[] values, string[] column_names)
-    {
+    private static int show_table_callback (int n_columns, string[] values, string[] column_names) {
         for (int i = 0; i < n_columns; i++) {
             stdout.printf ("%s = %s\n", column_names[i], values[i]);
         }
@@ -59,28 +55,27 @@ public class MarlinTags : Object {
         return 0;
     }
 
-    public bool openMarlinDB()
-    {
+    public bool openMarlinDB () {
         File home_dir = File.new_for_path (Environment.get_home_dir ());
-        File data_dir = home_dir.get_child(".config").get_child("marlin");
+        File data_dir = home_dir.get_child (".config").get_child ("marlin");
 
         try {
-            if (!data_dir.query_exists(null))
-                data_dir.make_directory_with_parents(null);
+            if (!data_dir.query_exists (null))
+                data_dir.make_directory_with_parents (null);
         } catch (Error err) {
-            stderr.printf("Unable to create data directory %s: %s", data_dir.get_path(), err.message);
+            stderr.printf ("Unable to create data directory %s: %s", data_dir.get_path (), err.message);
         }
 
-        string marlin_db_path = data_dir.get_child("marlin.db").get_path();
+        string marlin_db_path = data_dir.get_child ("marlin.db").get_path ();
         //The database must exists, add here the full path
-        print("Database path: %s \n", marlin_db_path);
-        openDB(marlin_db_path);
+        print ("Database path: %s \n", marlin_db_path);
+        openDB (marlin_db_path);
 
         return true;
     }
 
-    private bool openDB(string dbpath){
-        int rc = Sqlite.Database.open_v2(dbpath, out db, Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE, null);
+    private bool openDB (string dbpath) {
+        int rc = Sqlite.Database.open_v2 (dbpath, out db, Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE, null);
 
         if (rc != Sqlite.OK) {
             stderr.printf ("Can't open database: %d, %s\n", rc, db.errmsg ());
@@ -88,12 +83,12 @@ public class MarlinTags : Object {
         }
 
         // disable synchronized commits for performance reasons ... this is not vital
-        rc = db.exec("PRAGMA synchronous=OFF");
+        rc = db.exec ("PRAGMA synchronous=OFF");
         if (rc != Sqlite.OK)
-            stdout.printf("Unable to disable synchronous mode %d, %s\n", rc, db.errmsg ());
+            stdout.printf ("Unable to disable synchronous mode %d, %s\n", rc, db.errmsg ());
 
         Sqlite.Statement stmt;
-        int res = db.prepare_v2("CREATE TABLE IF NOT EXISTS tags ("
+        int res = db.prepare_v2 ("CREATE TABLE IF NOT EXISTS tags ("
                                 + "id INTEGER PRIMARY KEY, "
                                 + "uri TEXT UNIQUE NOT NULL, "
                                 + "color INTEGER DEFAULT 0, "
@@ -102,10 +97,10 @@ public class MarlinTags : Object {
                                 + "modified_time INTEGER DEFAULT 0, "
                                 + "dir TEXT "
                                 + ")", -1, out stmt);
-        assert(res == Sqlite.OK);
-        res = stmt.step();
+        assert (res == Sqlite.OK);
+        res = stmt.step ();
         if (res != Sqlite.DONE)
-            fatal("create tags table", res);
+            fatal ("create tags table", res);
 
         /* TODO check result of the last sql command */
         upgrade_database ();
@@ -117,24 +112,24 @@ public class MarlinTags : Object {
     public async bool record_uri (string raw_uri, string content_type, int modified_time) {
         var uri = escape(raw_uri);
 
-        var sql = "INSERT OR REPLACE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";	
-        //var c = "INSERT OR IGNORE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";	
+        var sql = "INSERT OR REPLACE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
+        //var c = "INSERT OR IGNORE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
 
         int rc = db.exec (sql, null, null);
-        if (rc != Sqlite.OK) { 
+        if (rc != Sqlite.OK) {
             stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
         //stdout.printf("[Consult]: %s\n",c);
 
-        return true;		
+        return true;
     }
 #endif
 
     public async bool record_uris (Variant[] locations, string directory) {
         string sql = "";
         foreach (var location_variant in locations) {
-            VariantIter iter = location_variant.iterator();
+            VariantIter iter = location_variant.iterator ();
 
             var uri = iter.next_value ().get_string ();
             var content_type = iter.next_value ().get_string ();
@@ -144,30 +139,29 @@ public class MarlinTags : Object {
         }
 
         int rc = db.exec (sql, null, null);
-        if (rc != Sqlite.OK) { 
+        if (rc != Sqlite.OK) {
             stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
         //stdout.printf("[Consult]: %s\n",sql);
 
-        return true;		
+        return true;
     }
 
-    private string escape(string input){
-        return input.replace("'", "''");
+    private string escape (string input) {
+        return input.replace ("'", "''");
     }
 
-    public async Variant get_uri_infos (string raw_uri)
-    {
+    public async Variant get_uri_infos (string raw_uri) {
         Idle.add (get_uri_infos.callback);
         yield;
         var uri = escape (raw_uri);
-        Statement stmt;
+        Sqlite.Statement stmt;
 
         var vb = new VariantBuilder (new VariantType ("(as)"));
         int rc = db.prepare_v2 ("select modified_time, content_type, color from tags where uri='%s'".printf (uri),
                                 -1, out stmt);
-        assert (rc == Sqlite.OK); 
+        assert (rc == Sqlite.OK);
         rc = stmt.step();
 
         vb.open (new VariantType ("as"));
@@ -235,27 +229,26 @@ public class MarlinTags : Object {
     }
 #endif
 
-    public async bool deleteEntry(string uri)
-    {
+    public async bool deleteEntry (string uri) {
         Idle.add (deleteEntry.callback);
         yield;
         string c = "delete from tags where uri='" + uri + "'";
         int   rc = db.exec (c, null, null);
 
-        if (rc != Sqlite.OK) { 
+        if (rc != Sqlite.OK) {
             stderr.printf ("[deleteEntry: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
-        return true;		
+        return true;
     }
 
-    public bool showTable(string table){
-        stdout.printf("showTable\n");
+    public bool showTable (string table) {
+        stdout.printf ("showTable\n");
         string consult = "select * from " + table;
         int rc = db.exec (consult, show_table_callback, null);
 
-        if (rc != Sqlite.OK) { 
+        if (rc != Sqlite.OK) {
             stderr.printf ("[showTable: SQL error]: %d, %s\n", rc, db.errmsg ());
             return false;
         }
@@ -263,55 +256,55 @@ public class MarlinTags : Object {
         return true;
     }
 
-    public bool clearDB(){
-        string c = "delete from tags"; 
+    public bool clearDB () {
+        string c = "delete from tags";
         int   rc = db.exec (c, null, null);
 
-        if (rc != Sqlite.OK) { 
+        if (rc != Sqlite.OK) {
             stderr.printf ("[clearDB: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
-        return true;	
+        return true;
     }
 
-    private bool has_column(string table_name, string column_name) {
+    private bool has_column (string table_name, string column_name) {
         Sqlite.Statement stmt;
-        int res = db.prepare_v2("PRAGMA table_info(%s)".printf(table_name), -1, out stmt);
-        assert(res == Sqlite.OK);
-        
+        int res = db.prepare_v2("PRAGMA table_info(%s)".printf (table_name), -1, out stmt);
+        assert (res == Sqlite.OK);
+
         for (;;) {
-            res = stmt.step();
+            res = stmt.step ();
             if (res == Sqlite.DONE) {
                 break;
             } else if (res != Sqlite.ROW) {
-                fatal("has_column %s".printf(table_name), res);
-                
+                fatal ("has_column %s".printf(table_name), res);
+
                 break;
             } else {
-                string column = stmt.column_text(1);
+                string column = stmt.column_text (1);
                 if (column != null && column == column_name)
                     return true;
             }
         }
-        
+
         return false;
     }
 
-    private bool add_column(string table_name, string column_name, string column_constraints) {
+    private bool add_column (string table_name, string column_name, string column_constraints) {
         Sqlite.Statement stmt;
-        int res = db.prepare_v2("ALTER TABLE %s ADD COLUMN %s %s".printf(table_name, column_name,
+        int res = db.prepare_v2 ("ALTER TABLE %s ADD COLUMN %s %s".printf (table_name, column_name,
             column_constraints), -1, out stmt);
-        assert(res == Sqlite.OK);
-        
-        res = stmt.step();
+        assert (res == Sqlite.OK);
+
+        res = stmt.step ();
         if (res != Sqlite.DONE) {
-            critical("Unable to add column %s %s %s: (%d) %s", table_name, column_name, column_constraints,
-                res, db.errmsg());
-            
+            critical ("Unable to add column %s %s %s: (%d) %s", table_name, column_name, column_constraints,
+                res, db.errmsg ());
+
             return false;
         }
-        
+
         return true;
     }
 
@@ -335,7 +328,6 @@ public class MarlinTags : Object {
                 warning ("UPGRADE_ERROR");
         }
     }
-
 }
 
 /* =============== Main ==================== */
@@ -356,7 +348,7 @@ t.showTable("tags");
 
 
 // DBUS Things
-print("\n\nColor for file is %i\n", 
+print("\n\nColor for file is %i\n",
 t.getColor("file:///home/jordi"));
 }*/
 

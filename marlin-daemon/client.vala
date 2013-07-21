@@ -1,4 +1,3 @@
-
 [DBus (name = "org.elementary.marlin.db")]
 interface Demo : Object {
     public abstract bool   	showTable	(string table) 	throws IOError;
@@ -26,4 +25,3 @@ void main () {
         stderr.printf ("%s\n", e.message);
     }
 }
-

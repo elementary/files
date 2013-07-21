@@ -1,21 +1,21 @@
-/*  
+/*
  * Copyright (C) 2011 Marlin Developers
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Author: ammonkey <am.monkeyd@gmail.com>
- */ 
+ */
 
 /* TODO merge with ctags plugin */
 
@@ -30,7 +30,7 @@ namespace Marlin.View {
 
         private CTags ctags;
 
-        public Tags() {
+        public Tags () {
             try {
                 ctags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
                                            "/org/elementary/marlin/db");
@@ -39,8 +39,7 @@ namespace Marlin.View {
             }
         }
 
-        private Variant add_entry (GOF.File gof)
-        {
+        private Variant add_entry (GOF.File gof) {
             char* ptr_arr[4];
             ptr_arr[0] = gof.uri;
             ptr_arr[1] = gof.get_ftype ();
@@ -72,7 +71,7 @@ namespace Marlin.View {
 
 #if 0
         public async void get_color (GOF.File myfile) throws IOError {
-            if (myfile == null) 
+            if (myfile == null)
                 return;
             /*int n = yield tags.getColor(myfile.uri);
               myfile.color = Preferences.tags_colors[n];*/
@@ -93,8 +92,7 @@ namespace Marlin.View {
             }
 
         }
-#endif   
+#endif
 
     }
 }
-
