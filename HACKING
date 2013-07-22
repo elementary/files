@@ -1,6 +1,7 @@
 ====== Files - Contribute ======
 
 **This document is licensed under the LGPL 2.1.**
+This document is based on the HACKING file from the Midori browser project.
 
 ====== Testing the latest build ======
 
@@ -10,51 +11,47 @@ Get daily builds in Launchpad (https://launchpad.net/~elementary-os/+archive/dai
 
 Join #elementary-dev on Freenode: https://kiwiirc.com/client/irc.freenode.net/elementary-dev.
 
-====== Contribute other than touching code ======
+====== Contribute without touching code ======
 
 - http://bugs.launchpad.net/pantheon-files Go through problem reports and check Unconfirmed bugs or those lacking information and mark any duplicates you spot.
-- http://translation.launchpad.net/pantheon-files Help getting Files translated in your language!
+- https://translations.launchpad.net/pantheon-files Help getting Files translated in your language!
 
 ====== Check out the sources ======
 
-bzr branch lp:pantheon-files
+    bzr branch lp:pantheon-files
 
 The development **trunk** (master, tip) is the latest iteration of the next release.
 Browse it online and look for other branches at http://code.launchpad.net/pantheon-files
-Download a tarball of the latest revision at http://bazaar.launchpad.net/~pantheon-files/pantheon-files/trunk/tarball
 
 ====== Build the code ======
 
 Refer to INSTALL for required dependencies.
 
 Then
-
-mkdir build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
-make
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
+    make
 
 Run Files:
-
-./src/pantheon-files
+    ./src/pantheon-files
 
 To run Files from a local branch, you will need to have Files already installed in your system, since config files and plugins are loaded from system directories.
 
 If you want to install Files from a local branch under Ubuntu or any of its derivatives, it's advisable to get elementary-testing-scripts from the elementary Daily PPA and run:
-
-cd pantheon-files
-elementary-install-from-bzr .
+    cd pantheon-files
+    elementary-install-from-bzr .
 
 Alternatively, you can run
-
-cd pantheon-files/build
-sudo make install
+    cd pantheon-files/build
+    sudo make install
 
 ====== Debugging issues ======
 
 Testing an installed release may reveal crashers or memory corruption which require investigating from a local build and obtaining a stacktrace (backtrace, crash log).
 
-gdb ./src/pantheon-files --debug
+    gdb ./src/pantheon-files
+    run --debug
 
 ====== Coding style and quality ======
 
@@ -122,14 +119,10 @@ If you haven't yet, https://launchpad.net/~/+editsshkeys check that Launchpad ha
 
 If you checked out trunk, and added your patch(es), just **push it under your username** in Launchpad and you can **propose it for merging into trunk**. This will automatically request a **review from other developers** who can then comment on it and provide feedback.
 
-bzr push lp:~USERNAME/midori/fix-bug123456 && bzr lp-propose-merge lp:midori
+    bzr push lp:~USERNAME/junrrein/fix-123456
+    bzr lp-open
 
-lp-propose-merge command may not be working on some distributions like Arch or Fedora.
-In case you get error like //bzr: ERROR: Unable to import library "launchpadlib": No module named launchpadlib// run
-
-bzr lp-open
-
-to open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
+The last command will open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
 
 **What happens to all the branches?**
 
@@ -139,25 +132,29 @@ For larger feature branches, **use the team** in Launchpad to allow other develo
 
 What if I want to help out on an **existing merge request** that I can't push to?
 
-bzr branch ~OTHERPERSON/pantheon0files/fix-bug123456
-cd fix-bug123456
-# make commits
-bzr push lp:USERNAME~/midori/fix-bug123456
-bzr lp-propose-merge ~OTHERPERSON/midori/fix-bug123456
+    bzr branch ~OTHERPERSON/pantheon-files/fix-123456
+    cd fix-123456
+    # make commits
+    bzr push lp:USERNAME~/midori/fix-123456
+    bzr lp-open
+
+And in the Launchpad web overview of your branch, propose your branch for merging into ~OTHERPERSON/pantheon-files/fix-123456
 
 Updating a branch that may be out of sync with trunk:
 
-bzr pull
-bzr: ERROR: These branches have diverged
-bzr merge lp:midori
-# Hand-edit conflicting changes
-bzr resolve FILENAME
-# If any conflicts remain continue fixing
-bzr commit -m 'Merge changes from lp:pantheon-files'
+    bzr pull
+    bzr: ERROR: These branches have diverged
+    bzr merge lp:pantheon-files
+    # Hand-edit conflicting changes
+    bzr resolve FILENAME
+    # If any conflicts remain continue fixing
+    bzr commit -m 'Merge changes from lp:pantheon-files'
 
 Save a little bandwidth, **branch from an existing local copy** that you keep around:
 
-bzr branch lp:midori midori
-bzr branch midori midori.fix-bug123456
-cd midori.fix-bug123456
-bzr pull lp:midori
+[TODO: Does this work as intended?]
+
+    bzr branch lp:pantheon-files pantheon-files
+    bzr branch pantheon-files files-fix-123456
+    cd files-fix-123456
+    bzr pull lp:pantheon-files

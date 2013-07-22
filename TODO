@@ -1,7 +1,7 @@
 TODO:
 
 - Make permissions change async operations use jobs.
-- PropertyWindow permissions change recursively for folders.
+- PropertyWindow permissions: change recursively for folders.
 - Update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
 
-For more planned features, please refer to [LINK TO LAUNCHPAD WISHLIST BUGS].
+For more planned features, look through the wishlist-marked bugs at https://bugs.launchpad.net/pantheon-files

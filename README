@@ -1,10 +1,12 @@
-Files is a fast and sexy file manager.
+Files is a simple, powerful and sexy file manager.
 
 Some of its features:
 * Full integration with GTK+3 and Granite.
 * Built for the Pantheon DE as the main target.
 * Tab browsing, allowing the restoration of closed tabs.
-* Support for extensions written in Vala.
+* Support for extensions written in Vala. Current extensions include:
+    - Color tags for files and folders.
+    - Dropbox and Ubuntu One integration.
 
 For installation instructions read INSTALL.
 
