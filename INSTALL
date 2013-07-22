@@ -17,7 +17,7 @@ To get all of the dependencies under a Debian-based distribution, run:
     sudo apt-get build-dep pantheon-files
 
 Optional:
-- Unity >= 4.0.0 (For Unity launcher support).
+- Unity (libunity-dev) >= 4.0.0 (For Unity launcher support).
 
 To build pantheon-files:
     mkdir build

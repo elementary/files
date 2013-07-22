@@ -27,7 +27,7 @@ Browse it online and look for other branches at http://code.launchpad.net/panthe
 
 Refer to INSTALL for required dependencies.
 
-Then
+Then:
     mkdir build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
@@ -38,12 +38,7 @@ Run Files:
 
 To run Files from a local branch, you will need to have Files already installed in your system, since config files and plugins are loaded from system directories.
 
-If you want to install Files from a local branch under Ubuntu or any of its derivatives, it's advisable to get elementary-testing-scripts from the elementary Daily PPA and run:
-    cd pantheon-files
-    elementary-install-from-bzr .
-
-Alternatively, you can run
-    cd pantheon-files/build
+If you'd like to install from your local branch:
     sudo make install
 
 ====== Debugging issues ======
@@ -70,23 +65,23 @@ For Vala:
   * Stick to standard Vala-style curly parentheses on the same line
   * Cuddled //} else {// and //} catch (Error error) {//
 
-
 For C:
 
-  * Always keep { and } on their own line
+  * Always keep { and } on their own line.
 
 ====== Committing code ======
 
-Tell Bazaar your name if you haven't yet
+Tell Bazaar your name if you haven't yet:
     bzr whoami "Real Name <email@address>"
 
-See what you did so far
+See what you did so far:
     bzr diff
+    bzr diff | colordiff
 
-Get an overview of changed and new files
+Get an overview of changed and new files:
     bzr status
 
-Add new files, move/ rename or delete
+Add new files, move/ rename or delete:
     bzr add FILENAME
     bzr mv OLDFILE NEWFILE
     bzr rm FILENAME
@@ -94,7 +89,7 @@ Add new files, move/ rename or delete
 Commit your changes in small increments. It is better to keep different changes in different commits.
     bzr commit -p
 
-To see the last 5 revisions in the current branch
+To see the last 5 revisions in the current branch:
     bzr log -l5
     bzr log -l5 -p | less
 
@@ -124,11 +119,13 @@ If you checked out trunk, and added your patch(es), just **push it under your us
 
 The last command will open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
 
+
 **What happens to all the branches?**
 
 Leave the branches alone, **approved branches are cleared automatically** by Launchpad.
 
 For larger feature branches, **use the team** in Launchpad to allow other developers to work on the code with you.
+
 
 What if I want to help out on an **existing merge request** that I can't push to?
 
@@ -140,6 +137,7 @@ What if I want to help out on an **existing merge request** that I can't push to
 
 And in the Launchpad web overview of your branch, propose your branch for merging into ~OTHERPERSON/pantheon-files/fix-123456
 
+
 Updating a branch that may be out of sync with trunk:
 
     bzr pull
@@ -150,9 +148,8 @@ Updating a branch that may be out of sync with trunk:
     # If any conflicts remain continue fixing
     bzr commit -m 'Merge changes from lp:pantheon-files'
 
-Save a little bandwidth, **branch from an existing local copy** that you keep around:
 
-[TODO: Does this work as intended?]
+Save a little bandwidth, **branch from an existing local copy** that you keep around:
 
     bzr branch lp:pantheon-files pantheon-files
     bzr branch pantheon-files files-fix-123456
