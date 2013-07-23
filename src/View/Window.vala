@@ -247,7 +247,7 @@ namespace Marlin.View {
             });
             
             tabs.tab_duplicated.connect ((tab) => {
-                make_new_tab (null, File.new_for_uri((tab.page as ViewContainer).slot.location.get_uri ()));
+                make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
             });
 
             Gtk.Allocation win_alloc;
