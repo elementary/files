@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-18 02:09-0500\n"
-"PO-Revision-Date: 2013-07-02 06:59+0000\n"
-"Last-Translator: LeeHoseok <neochain@naver.com>\n"
+"PO-Revision-Date: 2013-07-23 05:34+0000\n"
+"Last-Translator: Kenny Kim <kennykim12@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-07-20 06:17+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-07-24 05:51+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -1677,7 +1677,7 @@ msgstr "파일을 복사하는 중"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4746
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "\"%B\"로 옮기려는 준비 중"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4758
 #, c-format
@@ -1688,7 +1688,7 @@ msgstr[0] "%'d개의 파일을 옮길 준비 중"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5007
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "파일을 %F(으)로 옮기는 데 오류가 발생했습니다."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
@@ -1696,7 +1696,7 @@ msgstr "파일을 옮기는 중"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5300
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "\"%B\"(으)로의 링크를 만드는 중"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
 #, c-format
@@ -1737,16 +1737,16 @@ msgstr "새 파일"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "%B 디렉토리를 만드는 중 오류."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6217
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "%B 파일을 만드는 중 오류."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6219
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "%F 내에 디렉토리를 만드는 데 오류가 발생했습니다."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
@@ -1755,7 +1755,7 @@ msgstr "휴지통을 비우는 중"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "%d개의 복사된 항목들을 제거"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215

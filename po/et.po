@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-18 02:09-0500\n"
-"PO-Revision-Date: 2013-07-22 15:35+0000\n"
+"PO-Revision-Date: 2013-07-23 18:32+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-23 05:30+0000\n"
+"X-Launchpad-Export-Date: 2013-07-24 05:51+0000\n"
 "X-Generator: Launchpad (build 16700)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
@@ -63,7 +63,7 @@ msgstr "FTP"
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:120
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:571
 msgid "Network"
-msgstr "Võrk"
+msgstr "Võrk:"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
@@ -230,7 +230,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "Files ei ole sinu vaikimis failihaldur."
+msgstr "\"Failid\" ei ole sinu vaikimis failihaldur."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3429
@@ -286,7 +286,7 @@ msgstr "Uus _aken"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:616
 msgid "Open another Files window for the displayed location"
-msgstr "Näidatud asukoha jaoks uue kaardi avamine"
+msgstr "Näidatud asukoha jaoks uue akna avamine"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:619
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
@@ -499,7 +499,7 @@ msgstr "Kas failid eelvaates tuleks aktiveerida üksikklõpsuga"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr "_Liiguta siia"
+msgstr "_Tõsta siia"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
@@ -612,7 +612,7 @@ msgstr "Kõik failioperatsioonid lõpetati edukalt"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:293
 msgid "Personal"
-msgstr "Isiklik"
+msgstr "Isiklik:"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:298
 msgid "Your common places and bookmarks"
@@ -624,7 +624,7 @@ msgstr "Ava prügikast"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:365
 msgid "Devices"
-msgstr "Seadmed"
+msgstr "Seadmed:"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:370
 msgid "Your local partitions and devices"
@@ -666,7 +666,7 @@ msgstr "_Lülita sisse"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1604
 msgid "_Safely Remove Drive"
-msgstr "_Eemalda ketas turvaliselt"
+msgstr "_Eemalda seade turvaliselt"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1607
 msgid "_Connect Drive"
@@ -899,7 +899,7 @@ msgstr "URI-de avamine uues aknas"
 
 #: /home/codygarver/f/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr "Välju Files'ist"
+msgstr "Välju Failidest"
 
 #: /home/codygarver/f/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
@@ -969,7 +969,7 @@ msgstr "Ava %'d uues _aknas"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3481
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Valitud failide liigutamise ettevalmistamine käsuga \"Aseta\""
+msgstr "Valitud failide ümbertõstmise ettevalmistamine käsuga \"Aseta\""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3485
 msgid "Prepare the selected files to be copied with a Paste command"
@@ -978,8 +978,8 @@ msgstr "Valitud failide kopeerimise ettevalmistamine käsuga \"Aseta\""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3489
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
-"Eelnevalt Lõika või Kopeeri käskudega valitud failide liigutamine või "
-"kopeerimine"
+"Eelnevalt \"Lõika\" või \"Kopeeri\" käskudega valitud failide ümbertõstmine "
+"või kopeerimine"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3492
 msgid "Paste Into Folder"
@@ -990,8 +990,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Liiguta või kopeeri eelnevalt valitud failid valitud kausta, kasutades käske "
-"'Lõika' või 'Kopeeri'"
+"Eelnevalt \"Lõika\" või \"Kopeeri\" käskudega valitud failide ümbertõstmine "
+"või kopeerimine valitud kausta"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3496
 msgid "_Rename..."
@@ -1119,7 +1119,7 @@ msgstr "Uus aken _juurkasutajana"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr "Files"
+msgstr "Failid"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:737
@@ -1424,7 +1424,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
-msgstr "Failide panemine prügikasti"
+msgstr "Failide viskamine prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
@@ -1475,8 +1475,8 @@ msgstr[1] "Ettevalmistused %'d faili kopeerimiseks (%S)"
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Ettevalmistused %'d faili liigutamiseks (%S)"
-msgstr[1] "Ettevalmistused %'d faili liigutamiseks (%S)"
+msgstr[0] "Ettevalmistused %'d faili ümbertõstmiseks (%S)"
+msgstr[1] "Ettevalmistused %'d faili ümbertõstmiseks (%S)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
 #, c-format
@@ -1507,15 +1507,15 @@ msgstr "Liigutamisel ilmnes probleem."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
-msgstr "Failide panemisel prügikasti ilmnes viga."
+msgstr "Faile prügikasti pannes ilmnes viga."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2631
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Kaustas \"%B\" olevaid faile pole võimalik muuta, kuna sul puuduvad selle "
-"kausta jaoks nägemise õigused."
+"Kaustas \"%B\" olevaid faile pole võimalik muuta, kuna sul puuduvad õigused "
+"nende failide nägemiseks."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2670
 msgid ""
@@ -1560,7 +1560,7 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
-"Asukohas pole piisavalt vaba ruumi. Ruumi tegemiseks kustuta mõningad "
+"Asukohas pole piisavalt vaba ruumi. Vaba ruumi tekitamiseks kustuta mõningad "
 "ebavajalikud failid."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2928
@@ -1690,7 +1690,7 @@ msgstr "Juba olemasolevat faili %F pole võimalik eemaldada."
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
 msgid "You cannot move a folder into itself."
-msgstr "Kausta pole võimalik iseendasse liigutada."
+msgstr "Kausta pole võimalik iseendasse ümbertõsta."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
@@ -1704,7 +1704,7 @@ msgstr "Sihtkaust asub lähtekausta sees."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
 msgid "You cannot move a file over itself."
-msgstr "Faili pole võimalik iseendale liigutada."
+msgstr "Faili pole võimalik iseendale ümbertõsta."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
 msgid "You cannot copy a file over itself."
@@ -1730,14 +1730,14 @@ msgstr "Failide kopeerimine"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4746
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" ettevalmistamine liigutamiseks."
+msgstr "\"%B\" ettevalmistamine ümbertõstmiseks."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4758
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "Ettevalmistused %'d faili liigutamiseks"
-msgstr[1] "Ettevalmistused %'d faili liigutamiseks"
+msgstr[0] "Ettevalmistused %'d faili ümbertõstmiseks"
+msgstr[1] "Ettevalmistused %'d faili ümbertõstmiseks"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5007
 #, c-format
@@ -1746,7 +1746,7 @@ msgstr "Faili liigutamisel asukohta %F ilmnes viga."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
-msgstr "Failide liigutamine"
+msgstr "Failide ümbertõstmine"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5300
 msgid "Creating links in \"%B\""
@@ -1826,12 +1826,12 @@ msgstr "%d dubleeritud faili kustutamine"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "%d faili liigutamine tagasi asukohta '%s'"
+msgstr "%d faili ümbertõstmine tagasi asukohta \"%s\""
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "'%s' liigutamine tagasi asukohta '%s'"
+msgstr "\"%s\" ümbertõstmine tagasi asukohta \"%s\""
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
@@ -1853,12 +1853,12 @@ msgstr "'%s' taastamine asukohta '%s'"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "%d faili liigutamine tagasi prügikasti"
+msgstr "%d faili ümbertõstmine tagasi prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "'%s' liigutamine tagasi prügikasti"
+msgstr "\"%s\" ümbertõstmine tagasi prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1913,12 +1913,12 @@ msgstr "'%s' dubleerimine asukohas '%s'"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "%d faili liigutamine asukohta '%s'"
+msgstr "%d faili ümbertõstmine asukohta '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "'%s' liigutamine asukohta '%s'"
+msgstr "\"%s\" ümbertõstmine asukohta \"%s\""
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
@@ -1938,12 +1938,12 @@ msgstr "Uue kataloogi '%s' loomine"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "%d faili liigutamine prügikasti"
+msgstr "%d faili ümbertõstmine prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "'%s' liigutamine prügikasti"
+msgstr "\"%s\" ümbertõstmine prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
@@ -1998,8 +1998,8 @@ msgstr[1] "_Võta tagasi %d faili paljundamine"
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "_Võta tagasi %d faili liigutamine"
-msgstr[1] "_Võta tagasi %d faili liigutamine"
+msgstr[0] "_Võta tagasi %d faili ümbertõstmine"
+msgstr[1] "_Võta tagasi %d faili ümbertõstmine"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
@@ -2027,8 +2027,8 @@ msgstr[1] "_Võta tagasi %d kausta loomine"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Võta tagasi %d faili liigutamine prügikasti"
-msgstr[1] "_Võta tagasi %d faili liigutamine prügikasti"
+msgstr[0] "_Võta tagasi %d faili ümbertõstmine prügikasti"
+msgstr[1] "_Võta tagasi %d faili ümbertõstmine prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
@@ -2097,7 +2097,7 @@ msgstr[1] "_Tee uuesti %d faili paljundamine"
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "_Tee uuesti %d faili liigutamine"
+msgstr[0] "_Tee uuesti %d faili ümbertõstmine"
 msgstr[1] "_Tee uuesti %d faili liigutamine"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
@@ -2126,7 +2126,7 @@ msgstr[1] "_Tee uuesti %d kausta loomine"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Tee uuesti %d faili liigutamine prügikasti"
+msgstr[0] "_Tee uuesti %d faili ümbertõstmine prügikasti"
 msgstr[1] "_Tee uuesti %d faili liigutamine prügikasti"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
