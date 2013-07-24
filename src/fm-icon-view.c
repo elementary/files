@@ -121,7 +121,7 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
     case MARLIN_ZOOM_LEVEL_SMALL:
         wrap_width = 72;
         break;
-
+ 
     case MARLIN_ZOOM_LEVEL_NORMAL:
         wrap_width = 128;
         break;
