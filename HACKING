@@ -36,7 +36,7 @@ Then:
 Run Files:
     ./src/pantheon-files
 
-To run Files from a local branch, you will need to have Files already installed in your system, since config files and plugins are loaded from system directories.
+To run Files from a local branch, you will need to already have Files installed in your system, since configuration files and plugins are loaded from system directories.
 
 If you'd like to install from your local branch:
     sudo make install
@@ -49,6 +49,9 @@ Testing an installed release may reveal crashers or memory corruption which requ
     run --debug
 
 ====== Coding style and quality ======
+
+Be sure to check the official elementary Code Style guide at:
+    https://dl.dropboxusercontent.com/u/19899464/elementarycodestyle.html
 
 Files' code should in general have:
 
