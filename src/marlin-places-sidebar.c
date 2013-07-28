@@ -1559,10 +1559,6 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
                             PLACES_SIDEBAR_COLUMN_BOOKMARK, &is_bookmark,
                             -1);
     }
-    else {
-        g_critical ("%s - Failed to get iter - returning", G_STRFUNC);
-        return;
-    }
 
     gtk_widget_show (sidebar->popup_menu_open_in_new_tab_item);
 
@@ -1573,11 +1569,9 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, (type == PLACES_BOOKMARK));*/
 
     //TODO add the possibility to rename volume later
-    if (is_bookmark) {
-        eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, TRUE);
-        eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, TRUE);
-        eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, TRUE);
-    }
+    eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, is_bookmark);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, is_bookmark);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, is_bookmark);
 
     gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
 
@@ -1844,7 +1838,7 @@ rename_selected_bookmark (MarlinPlacesSidebar *sidebar)
         path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
         column = gtk_tree_view_get_column (GTK_TREE_VIEW (sidebar->tree_view), 0);
         renderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (column));
-        cell = g_list_nth_data (renderers, 4);
+        cell = g_list_nth_data (renderers, 5);
         g_list_free (renderers);
         g_object_set (cell, "editable", TRUE, NULL);
         gtk_tree_view_set_cursor_on_cell (GTK_TREE_VIEW (sidebar->tree_view),
@@ -2439,7 +2433,8 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (rename_shortcut_cb), sidebar);
     gtk_widget_show (item);
     // Omit broken "Rename..." from the sidebar
-    // gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+    // Now fixed
+    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
     /* Mount/Unmount/Eject menu items */
 
