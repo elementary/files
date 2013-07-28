@@ -60,19 +60,19 @@ static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
 {
     /* this is required to set the category cells to bold and higher than the other ones */
     self->store = gtk_tree_store_new ((gint) PLACES_SIDEBAR_COLUMN_COUNT,
-                                      G_TYPE_INT, 
-                                      G_TYPE_STRING,
-                                      G_TYPE_DRIVE,
-                                      G_TYPE_VOLUME,
-                                      G_TYPE_MOUNT,
-                                      G_TYPE_STRING,
-                                      G_TYPE_ICON,    /* Primary icon */
-                                      G_TYPE_INT,
-                                      G_TYPE_BOOLEAN,
-                                      G_TYPE_BOOLEAN,
-                                      G_TYPE_BOOLEAN,
-                                      G_TYPE_STRING,
-                                      G_TYPE_ICON,    /* Action icon (e.g. eject button) */
-                                      G_TYPE_UINT64,  /* Free space */
-                                      G_TYPE_UINT64); /* For disks, total size */
+                                      G_TYPE_INT,       /* ROW_TYPE */
+                                      G_TYPE_STRING,    /* URI */
+                                      G_TYPE_DRIVE,     /* DRIVE */
+                                      G_TYPE_VOLUME,    /* VOLUME */
+                                      G_TYPE_MOUNT,     /* MOUNT */
+                                      G_TYPE_STRING,    /* NAME */
+                                      G_TYPE_ICON,      /* Primary icon */
+                                      G_TYPE_INT,       /* INDEX */
+                                      G_TYPE_BOOLEAN,   /* EJECT */
+                                      G_TYPE_BOOLEAN,   /* NO_EJECT */
+                                      G_TYPE_BOOLEAN,   /* IS BOOKMARK */
+                                      G_TYPE_STRING,    /* TOOLTIP */
+                                      G_TYPE_ICON,      /* Action icon (e.g. eject button) */
+                                      G_TYPE_UINT64,    /* Free space */
+                                      G_TYPE_UINT64);   /* For disks, total size */
 }
