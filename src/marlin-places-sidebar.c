@@ -190,7 +190,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     GError* error = NULL;
     gchar* converted_name = g_locale_to_utf8 (name, -1, NULL, NULL, &error);
     if (error != NULL) {
-        g_warning ("Couldn't convert the bookmark name: %s With error: %s", name, error->message);
+        g_warning ("%s - Couldn't convert the bookmark name: %s With error: %s", G_STRFUNC, name, error->message);
         converted_name = name;
     }
 
@@ -316,12 +316,16 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_object_unref (icon);
     g_free (mount_uri);
 
-    /* add bookmarks */
+ /* add bookmarks */
+    g_signal_handlers_block_by_func (sidebar->bookmarks, update_places, sidebar );
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
 
         if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
+            marlin_bookmark_list_delete_item_at (sidebar->bookmarks, index);
+            index--;
+            bookmark_count--;
             continue;
         }
 
@@ -344,6 +348,7 @@ update_places (MarlinPlacesSidebar *sidebar)
         g_free (mount_uri);
         g_free (tooltip);
     }
+    g_signal_handlers_unblock_by_func (sidebar->bookmarks, update_places, sidebar);
 
     /* add trash */
     mount_uri = MARLIN_TRASH_URI; /* No need to strdup */
