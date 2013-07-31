@@ -35,6 +35,7 @@ link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS} -O2)
 
 vala_precompile(VALA_C pantheon-files
+    main.vala
     marlin-deep-count.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
@@ -92,7 +93,6 @@ add_executable(pantheon-files
     fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c
-    marlin-main.c
     fm-abstract-icon-view.c
     fm-icon-view.c
     fm-list-view.c
