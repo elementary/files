@@ -12,17 +12,30 @@ public class Marlin.Application : Granite.Application {
     private static int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
     
-    public Application () {
+    construct {
+        program_name = "Files";
+        exec_name = "pantheon-files";
+
+        app_years = "2025";
+        application_id = "net.launchpad.pantheon-files";
+        build_version = "0.1.1";
+    }
+    
+    /*public Application () {
         base ();
         singleton = this;
         this.program_name = "Files";
-    }
+    }*/
     
     public static new Application get () {
         if (singleton == null)
             singleton = new Marlin.Application ();
             
         return singleton;
+    }
+    
+    ~Application () {
+        Notify.uninit ();
     }
     
     public void create_window (File location, Gdk.Screen screen) {
@@ -35,10 +48,20 @@ public class Marlin.Application : Granite.Application {
     }
     
     public bool is_first_window (Gtk.Window window) {
-        return false;
+        unowned List<Gtk.Window> list = this.get_windows ();
+        list = list.last ();
+        
+        return (window == list.data);
     }
     
-    public override int command_line (ApplicationCommandLine command_line) {
+    public override int command_line (ApplicationCommandLine cmd) {
+        this.hold ();
+        int result = _command_line (cmd);
+        this.release ();
+        return result;
+    }
+    
+    private int _command_line (ApplicationCommandLine cmd) {
         bool version = false;
         bool kill_shell = false;
         string[] remaining = null;
@@ -55,12 +78,13 @@ public class Marlin.Application : Granite.Application {
         // "" = G_OPTION_REMAINING
         options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
+        options [5] = { null };
         
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
         context.add_group (Gtk.get_option_group (true));
         
-        string[] args = command_line.get_arguments ();
+        string[] args = cmd.get_arguments ();
         // We need to store args in an unowned variable for context.parse .
         unowned string[] args_aux = args;
         
@@ -72,13 +96,13 @@ public class Marlin.Application : Granite.Application {
         }
         
         if (version) {
-            command_line.print ("Files " + Config.VERSION + "\n");
+            cmd.print ("Files " + Config.VERSION + "\n");
             return Posix.EXIT_SUCCESS;
         }
         
         if (kill_shell) {
             if (remaining != null) {
-                command_line.printerr ("%s\n",
+                cmd.printerr ("%s\n",
                                        _("--quit cannot be used with URIs."));
                 return Posix.EXIT_FAILURE;
             } else {
@@ -103,6 +127,8 @@ public class Marlin.Application : Granite.Application {
     }
     
     public override void startup () {
+        base.startup ();
+    
         Granite.Services.Logger.initialize ("pantheon-files");
         Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
         
@@ -173,6 +199,14 @@ public class Marlin.Application : Granite.Application {
         }
     }
     
+    public override void activate () {
+        this.hold ();
+        if (this.get_windows () == null)
+            this.open_window (File.new_for_path (Environment.get_home_dir ()),
+                                                 Gdk.Screen.get_default ());
+        this.release ();
+    }
+    
     private void init_schemas () {
         /* GSettings parameters */
         Preferences.settings = new Settings ("org.pantheon.files.preferences");
@@ -215,7 +249,7 @@ public class Marlin.Application : Granite.Application {
             save_of_accel_map_requested = false;
         }
         
-        return true;
+        return false;
     }
     
     
@@ -244,6 +278,7 @@ public class Marlin.Application : Granite.Application {
         
         unowned List<Gtk.Window> windows = this.get_windows ();
         
+        /* Get the first windows if any */
         if (windows != null && windows.data != null)
             window = windows.data as Marlin.View.Window;
         else {
@@ -253,9 +288,11 @@ public class Marlin.Application : Granite.Application {
         }
         
         if (files == null) {
+            /* Open a tab pointing at the default location */
             var location = File.new_for_path (Environment.get_home_dir ());
             window.add_tab (location);
         } else {
+            /* Open tabs at each requested location */
             foreach (var file in files)
                 window.add_tab (file);
         }
