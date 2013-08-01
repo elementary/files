@@ -26,7 +26,7 @@
 //#include "marlin-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "eel-gtk-extensions.h"
-#include "marlin-tags.h"
+#include "marlin-vala.h"
 
 /*enum
 {

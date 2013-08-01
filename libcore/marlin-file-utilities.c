@@ -20,7 +20,6 @@
  * Authors: John Sullivan <sullivan@eazel.com>
  */
 
-#include <config.h>
 #include "marlin-file-utilities.h"
 
 #include "gof-file.h"

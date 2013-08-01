@@ -6,6 +6,9 @@ public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
+    public GLib.Settings marlin_icon_view_settings;
+    public GLib.Settings marlin_list_view_settings;
+    public GLib.Settings marlin_column_view_settings;
 }
 
 namespace FM {

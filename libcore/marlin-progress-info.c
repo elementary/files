@@ -21,7 +21,6 @@
  * Author: Alexander Larsson <alexl@redhat.com>
  */
 
-#include <config.h>
 #include <math.h>
 #include <glib/gi18n.h>
 #include "eel-string.h"

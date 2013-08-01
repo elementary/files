@@ -23,8 +23,6 @@
  *
  */
 
-#include <config.h>
-
 #include "marlin-progress-info-widget.h"
 
 struct _MarlinProgressInfoWidgetPriv {

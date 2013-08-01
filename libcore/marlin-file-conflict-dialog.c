@@ -21,7 +21,6 @@
  * Authors: Cosimo Cecchi <cosimoc@gnome.org>
  */
 
-#include <config.h>
 #include "marlin-file-conflict-dialog.h"
 
 #include <string.h>

@@ -24,8 +24,6 @@
  *
  */
 
-#include <config.h>
-
 #include "marlin-progress-ui-handler.h"
 
 #include "marlin-vala.h"

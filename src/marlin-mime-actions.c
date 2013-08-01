@@ -22,8 +22,6 @@
  *          ammonkey <am.monkeyd@gmail.com>
  */
 
-#include <config.h>
-
 #include "marlin-mime-actions.h"
 
 static gboolean

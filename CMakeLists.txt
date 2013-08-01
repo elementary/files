@@ -13,9 +13,10 @@ set(PLUGIN_DIR "${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/")
 set(UI_DIR "${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/")
 set(PACKAGE_VERSION 0.1.1)
 set(VERSION 0.1.1)
-configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
+configure_file (${CMAKE_SOURCE_DIR}/Config.vala.cmake ${CMAKE_BINARY_DIR}/Config.vala)
 
 add_definitions("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+add_definitions("-DHAVE_DBUS")
 
 option (LIB_ONLY "Build libcore and libwidgets only" FALSE)
 

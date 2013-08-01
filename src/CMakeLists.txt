@@ -64,6 +64,7 @@ PACKAGES
     gconf-2.0
     gee-1.0
     granite
+    libnotify
     marlincore
     marlincore-C
 GENERATE_HEADER

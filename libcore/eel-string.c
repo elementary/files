@@ -22,7 +22,6 @@
  * Authors: Darin Adler <darin@eazel.com>
  */
 
-#include <config.h>
 #include "eel-string.h"
 
 #include <errno.h>

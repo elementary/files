@@ -19,8 +19,6 @@
  * Author: Cosimo Cecchi <cosimoc@redhat.com>
  */
 
-#include <config.h>
-
 #include "marlin-progress-info-manager.h"
 
 struct _MarlinProgressInfoManagerPriv {

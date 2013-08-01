@@ -1,13 +1,6 @@
 using Gtk;
 using GLib;
 
-[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
-namespace Config {
-    public const string PIXMAP_DIR;
-    public const string UI_DIR;
-    public const string VERSION;
-}
-
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
 namespace FM
 {
@@ -54,11 +47,14 @@ namespace EelPango {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
+    [CCode (cheader_filename = "marlin-file-utilities.h")]
+    string get_accel_map_file ();
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
         public static IconInfo lookup(GLib.Icon icon, int size);
         public Gdk.Pixbuf get_pixbuf_nodefault();
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
+        public static void clear_caches ();
     }
 
     [CCode (cheader_filename = "marlin-abstract-sidebar.h")]

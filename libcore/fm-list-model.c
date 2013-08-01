@@ -24,8 +24,6 @@
  *          Dave Camp <dave@ximian.com>
  */
 
-#include <config.h>
-
 #include <string.h>
 #include <gtk/gtk.h>
 #include <glib.h>

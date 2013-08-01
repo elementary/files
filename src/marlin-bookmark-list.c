@@ -24,7 +24,6 @@
 /* nautilus-bookmark-list.c - implementation of centralized list of bookmarks.
 */
 
-#include <config.h>
 #include "marlin-bookmark-list.h"
 
 #include <gio/gio.h>

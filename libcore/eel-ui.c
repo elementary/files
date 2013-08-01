@@ -21,7 +21,7 @@
  *  Authors: Alexander Larsson <alexl@redhat.com>
  */
 
-#include <config.h>
+#include "marlincore.h"
 #include "eel-ui.h"
 #include "eel-debug.h"
 
@@ -70,7 +70,7 @@ eel_ui_string_get (const char *filename)
 
     ui = g_hash_table_lookup (ui_cache, filename);
     if (ui == NULL) {
-        path = g_build_filename (UI_DIR, filename, NULL);
+        path = g_build_filename (CONFIG_UI_DIR, filename, NULL);
         if (path == NULL || !g_file_get_contents (path, &ui, NULL, NULL)) {
             g_warning ("Unable to load ui file %s\n", filename); 
         } 

@@ -17,8 +17,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <config.h>
-
 #ifdef HAVE_DBUS
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib.h>
