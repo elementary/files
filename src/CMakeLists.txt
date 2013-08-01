@@ -36,6 +36,7 @@ add_definitions(${CFLAGS} -O2)
 
 vala_precompile(VALA_C pantheon-files
     main.vala
+    marlin-application.vala
     marlin-deep-count.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
@@ -75,7 +76,6 @@ OPTIONS
 
 add_executable(pantheon-files
     eel-editable-label.c
-    marlin-application.c
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c

@@ -55,13 +55,6 @@ namespace Marlin {
         public bool queue_file(GOF.File file, int? request, bool large);
         
     }
-    [CCode (cheader_filename = "marlin-application.h")]
-    public class Application : Gtk.Application {
-        public Application ();
-        public void create_window (GLib.File location, Gdk.Screen screen);
-        public void quit ();
-        public bool is_first_window (Gtk.Window win);
-    }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]
@@ -108,6 +101,13 @@ namespace Marlin {
         public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
+    }
+    [CCode (cprefix = "MarlinProgress", lower_case_cprefix = "marlin_progress_")]
+    namespace Progress {
+        [CCode (cheader_filename = "marlin-progress-ui-handler.h")]
+        public class UIHandler : Object {
+            public UIHandler ();
+        }
     }
 }
 
