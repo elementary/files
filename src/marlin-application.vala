@@ -133,7 +133,12 @@ public class Marlin.Application : Granite.Application {
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
         this.volume_monitor = VolumeMonitor.get ();
-        volume_monitor.mount_removed.connect_object (mount_removed_
+        this.volume_monitor.mount_removed.connect (mount_removed_callback);
+        
+        //TODO:
+        /*#ifdef HAVE_UNITY
+            unity_quicklist_handler_get_singleton ();
+        #endif*/
     }
     
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
