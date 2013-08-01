@@ -126,6 +126,14 @@ public class Marlin.Application : Granite.Application {
         this.thumbnailer = Marlin.Thumbnailer.get ();
         
         tags = new Marlin.View.Tags ();
+        
+        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        plugins.load_plugins ();
+        
+        /* TODO move the volume manager here? */
+        /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+        this.volume_monitor = VolumeMonitor.get ();
+        volume_monitor.mount_removed.connect_object (mount_removed_
     }
     
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
