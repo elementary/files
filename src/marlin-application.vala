@@ -141,6 +141,12 @@ public class Marlin.Application : Granite.Application {
         #endif*/
     }
     
+    public override void quit_mainloop () {
+        print ("Quitting mainloop");
+        
+        Marlin.IconInfo.clear_caches ();
+    }
+    
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Check and see if any of the open windows are displaying contents from the unmounted mount */
         unowned List<Gtk.Window> window_list = this.get_windows ();
@@ -256,11 +262,6 @@ public class Marlin.Application : Granite.Application {
     }
     
     private void open_location (File[] files) {
-        //TODO:
-        /*if (this.debug)
-            Granite.Services.Logger.DisplayLevel (Granite.Services.LogLevel.DEBUG);*/
-        
-        /* Create windows */
         if (this.open_intab)
             this.open_tabs (files, Gdk.Screen.get_default ());
         else
@@ -268,6 +269,4 @@ public class Marlin.Application : Granite.Application {
         
         this.open_intab = false;
     }
-    
-
 }
