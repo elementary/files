@@ -9,7 +9,7 @@ public class Marlin.Application : Granite.Application {
     private bool debug;
     private bool open_intab;
 
-    private static int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
+    private int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
 
     construct {
@@ -36,10 +36,11 @@ public class Marlin.Application : Granite.Application {
         base.startup ();
 
         Granite.Services.Logger.initialize ("pantheon-files");
-        Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
-
         if (this.debug)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        else
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
+        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
         init_gtk_accels ();
@@ -76,7 +77,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     /* The array that holds the file commandline arguments
-       needs special boilerplate so its size gets updated. */
+       needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
 	private string[]? remaining = null;
 
@@ -103,11 +104,11 @@ public class Marlin.Application : Granite.Application {
         context.add_group (Gtk.get_option_group (true));
 
         string[] args = cmd.get_arguments ();
+        /* We need to store args in an unowned variable for context.parse */
+        unowned string[] args_aux = args;
 
         try {
-            /* We need to store args in an unowned variable for context.parse */
-            unowned string[] tmp = args;
-            context.parse (ref tmp);
+            context.parse (ref args_aux);
         } catch (OptionError error) {
             printerr ("Could not parse arguments: %s\n", error.message);
             return Posix.EXIT_FAILURE;
@@ -130,6 +131,8 @@ public class Marlin.Application : Granite.Application {
         }
 
         File[] files = null;
+        
+        /* Convert remaining args to GFiles */
         if (remaining != null) {
             foreach (string filepath in remaining) {
                 var file = File.new_for_commandline_arg (filepath);
@@ -138,15 +141,17 @@ public class Marlin.Application : Granite.Application {
             }
         }
 
-        this.open_location (files);
+        /* Open application */
+        this.open_locations (files);
 
         return Posix.EXIT_SUCCESS;
     }
 
     public override void quit_mainloop () {
         print ("Quitting mainloop");
-
         Marlin.IconInfo.clear_caches ();
+        
+        base.quit_mainloop ();
     }
 
     public new void quit () {
@@ -158,19 +163,12 @@ public class Marlin.Application : Granite.Application {
         this.open_window (location, screen);
     }
 
-    public bool is_first_window (Gtk.Window window) {
-        unowned List<Gtk.Window> list = this.get_windows ();
-        list = list.last ();
-
-        return (window == list.data);
-    }
-
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Check and see if any of the open windows are displaying contents from the unmounted mount */
         unowned List<Gtk.Window> window_list = this.get_windows ();
         File root = mount.get_root ();
 
-        /* We browse each slot from each windows, loading home for current tabs and closing the rest */
+        /* Check each slot from each window, loading home for current tabs and closing the rest */
         foreach (Gtk.Window window in window_list) {
             var marlin_window = window as Marlin.View.Window;
             List<Gtk.Widget> pages = marlin_window.tabs.get_children ();
@@ -179,11 +177,9 @@ public class Marlin.Application : Granite.Application {
                 var view_container = page as Marlin.View.ViewContainer;
                 var slot = view_container.slot;
                 var location = slot.location;
-                if (location == null || location.has_prefix (root) ||
-                        location.equal (root)) {
+                if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == marlin_window.current_tab)
-                        Signal.emit_by_name (view_container, "path-changed",
-                                             File.new_for_path (Environment.get_home_dir ()));
+                        view_container.path_changed (File.new_for_path (Environment.get_home_dir ()));
                     else
                         marlin_window.remove_tab (view_container);
                 }
@@ -209,8 +205,8 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "interpret-desktop-files", 0);
     }
 
-    private void init_gtk_accels () {
-        /* Load accelerator map, and register save callback */
+    /* Load accelerator map, and register save callback */
+    private void init_gtk_accels () {        
         string accel_map_filename = Marlin.get_accel_map_file ();
         if (accel_map_filename != null) {
             Gtk.AccelMap.load (accel_map_filename);
@@ -258,7 +254,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_tabs (File[]? files, Gdk.Screen screen) {
-        Marlin.View.Window window;
+        Marlin.View.Window window = null;
 
         unowned List<Gtk.Window> windows = this.get_windows ();
 
@@ -282,12 +278,19 @@ public class Marlin.Application : Granite.Application {
         }
     }
 
-    private void open_location (File[] files) {
+    private void open_locations (File[] files) {
         if (this.open_intab)
             this.open_tabs (files, Gdk.Screen.get_default ());
         else
             this.open_windows (files, Gdk.Screen.get_default ());
 
         this.open_intab = false;
+    }
+    
+    public bool is_first_window (Gtk.Window window) {
+        unowned List<Gtk.Window> list = this.get_windows ();
+        list = list.last ();
+
+        return (window == list.data);
     }
 }
