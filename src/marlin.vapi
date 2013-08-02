@@ -114,11 +114,9 @@ namespace Marlin {
     }
 }
 
+#if HAVE_UNITY
 [CCode (cprefix = "UnityQuicklistHandler", lower_case_cprefix = "unity_quicklist_handler_", cheader_filename = "unity-quicklist-handler.h")]
 public class Unity.QuicklistHandler : Object {
-    public QuicklistHandler ();
-    public static QuicklistHandler get_singleton ();
-    public static QuicklistHandler singleton;
+    public static unowned QuicklistHandler get_singleton ();
 }
-
-
+#endif

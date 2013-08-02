@@ -34,6 +34,8 @@ struct _UnityQuicklistHandlerPriv {
 
 G_DEFINE_TYPE (UnityQuicklistHandler, unity_quicklist_handler, G_TYPE_OBJECT);
 
+static UnityQuicklistHandler *unity_quicklist_handler_singleton = NULL;
+
 GList *
 unity_quicklist_get_launcher_entries (UnityQuicklistHandler *self)
 {

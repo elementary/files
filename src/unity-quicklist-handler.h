@@ -66,8 +66,6 @@ typedef struct {
 
 GType unity_quicklist_handler_get_type (void);
 
-static UnityQuicklistHandler *unity_quicklist_handler_singleton = NULL;
-
 UnityQuicklistHandler * unity_quicklist_handler_new (void);
 UnityQuicklistHandler * unity_quicklist_handler_get_singleton (void);
 
