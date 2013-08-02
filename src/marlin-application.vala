@@ -94,7 +94,7 @@ public class Marlin.Application : Granite.Application {
                         N_("Quit Files."), null };
         options [3] = { "debug", 'd', 0, OptionArg.NONE, ref this.debug,
                         N_("Enable debug logging"), null };
-        // "" = G_OPTION_REMAINING
+        /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
         options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
         options [5] = { null };
@@ -115,7 +115,7 @@ public class Marlin.Application : Granite.Application {
         }
 
         if (version) {
-            cmd.print ("Files " + Config.VERSION + "\n");
+            cmd.print ("pantheon-files " + Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
