@@ -156,7 +156,7 @@ namespace Marlin.View {
             tabs.show_tabs = true;
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
-            tabs.set_size_request (256,-1);
+            this.configure_event.connect ((e) => {tabs.set_size_request (e.width/2,-1); return false;});
 
             tabs.show ();
 
