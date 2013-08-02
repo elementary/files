@@ -34,46 +34,90 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS} -O2)
 
-vala_precompile(VALA_C pantheon-files
-    main.vala
-    marlin-application.vala
-    marlin-deep-count.vala
-    View/DiskRenderer.vala
-    View/DirectoryNotFound.vala
-    View/Window.vala
-    View/Resources.vala
-    View/DbusTags.vala
-    View/ViewContainer.vala
-    View/OverlayBar.vala
-    View/PropertiesWindow.vala
-    View/Browser.vala
-    View/ViewMode.vala
-    View/LocationBar.vala
-    View/Chrome/TopMenu.vala
-    View/Chrome/ViewSwicher.vala
-    View/Chrome/ColorWidget.vala
-    View/Chrome/XsEntry.vala
-    View/Chrome/ImgEventBox.vala
-CUSTOM_VAPIS
-    ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-    marlin.vapi
-PACKAGES
-    gtk+-3.0
-    gio-2.0
-    posix
-    gconf-2.0
-    gee-1.0
-    granite
-    libnotify
-    marlincore
-    marlincore-C
-GENERATE_HEADER
-    marlin-vala
-OPTIONS
-    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
-    --vapidir=${CMAKE_BINARY_DIR}/libcore/
-    --target-glib=2.32 # Needed for new thread API
-    --thread)
+IF(WITH_UNITY AND UNITY_FOUND)
+    vala_precompile(VALA_C pantheon-files
+        main.vala
+        marlin-application.vala
+        marlin-deep-count.vala
+        View/DiskRenderer.vala
+        View/DirectoryNotFound.vala
+        View/Window.vala
+        View/Resources.vala
+        View/DbusTags.vala
+        View/ViewContainer.vala
+        View/OverlayBar.vala
+        View/PropertiesWindow.vala
+        View/Browser.vala
+        View/ViewMode.vala
+        View/LocationBar.vala
+        View/Chrome/TopMenu.vala
+        View/Chrome/ViewSwicher.vala
+        View/Chrome/ColorWidget.vala
+        View/Chrome/XsEntry.vala
+        View/Chrome/ImgEventBox.vala
+    CUSTOM_VAPIS
+        ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
+        marlin.vapi
+    PACKAGES
+        gtk+-3.0
+        gio-2.0
+        posix
+        gconf-2.0
+        gee-1.0
+        granite
+        libnotify
+        marlincore
+        marlincore-C
+    GENERATE_HEADER
+        marlin-vala
+    OPTIONS
+        --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+        --vapidir=${CMAKE_BINARY_DIR}/libcore/
+        --target-glib=2.32 # Needed for new thread API
+        --thread
+        -D HAVE_UNITY)
+ELSE (
+    vala_precompile(VALA_C pantheon-files
+        main.vala
+        marlin-application.vala
+        marlin-deep-count.vala
+        View/DiskRenderer.vala
+        View/DirectoryNotFound.vala
+        View/Window.vala
+        View/Resources.vala
+        View/DbusTags.vala
+        View/ViewContainer.vala
+        View/OverlayBar.vala
+        View/PropertiesWindow.vala
+        View/Browser.vala
+        View/ViewMode.vala
+        View/LocationBar.vala
+        View/Chrome/TopMenu.vala
+        View/Chrome/ViewSwicher.vala
+        View/Chrome/ColorWidget.vala
+        View/Chrome/XsEntry.vala
+        View/Chrome/ImgEventBox.vala
+    CUSTOM_VAPIS
+        ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
+        marlin.vapi
+    PACKAGES
+        gtk+-3.0
+        gio-2.0
+        posix
+        gconf-2.0
+        gee-1.0
+        granite
+        libnotify
+        marlincore
+        marlincore-C
+    GENERATE_HEADER
+        marlin-vala
+    OPTIONS
+        --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+        --vapidir=${CMAKE_BINARY_DIR}/libcore/
+        --target-glib=2.32 # Needed for new thread API
+        --thread) )
+ENDIF(WITH_UNITY AND UNITY_FOUND)
 
 add_executable(pantheon-files
     eel-editable-label.c

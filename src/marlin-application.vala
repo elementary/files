@@ -1,4 +1,4 @@
-private Marlin.Application singleton = null;
+private Marlin.Application application_singleton = null;
 
 public class Marlin.Application : Granite.Application {
 
@@ -18,14 +18,14 @@ public class Marlin.Application : Granite.Application {
 
         flags = ApplicationFlags.HANDLES_COMMAND_LINE;
 
-        singleton = this;
+        application_singleton = this;
     }
 
     public static new Application get () {
-        if (singleton == null)
-            singleton = new Marlin.Application ();
+        if (application_singleton == null)
+            application_singleton = new Marlin.Application ();
 
-        return singleton;
+        return application_singleton;
     }
 
     ~Application () {
@@ -63,10 +63,9 @@ public class Marlin.Application : Granite.Application {
         this.volume_monitor = VolumeMonitor.get ();
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
 
-        //TODO:
-        /*#ifdef HAVE_UNITY
-            unity_quicklist_handler_get_singleton ();
-        #endif*/
+#if HAVE_UNITY
+        Unity.QuicklistHandler.singleton = Unity.QuicklistHandler.get_singleton ();
+#endif
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
