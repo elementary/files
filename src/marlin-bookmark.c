@@ -28,6 +28,7 @@
 enum {
     APPEARANCE_CHANGED,
     CONTENTS_CHANGED,
+    DELETED,
     LAST_SIGNAL
 };
 
@@ -35,8 +36,10 @@ enum {
 
 static guint signals[LAST_SIGNAL];
 
-//static void	  marlin_bookmark_connect_file	  (MarlinBookmark	 *file);
-//static void	  marlin_bookmark_disconnect_file	  (MarlinBookmark	 *file);
+static void bookmark_file_changed_callback (GFileMonitor *monitor, GFile *file, GFile *other_file, GFileMonitorEvent event_type, MarlinBookmark *bookmark);
+
+static void	  marlin_bookmark_connect_file	  (MarlinBookmark	 *file);
+static void	  marlin_bookmark_disconnect_file	  (MarlinBookmark	 *file);
 
 G_DEFINE_TYPE (MarlinBookmark, marlin_bookmark, G_TYPE_OBJECT);
 
@@ -50,7 +53,7 @@ marlin_bookmark_finalize (GObject *object)
     g_assert (MARLIN_IS_BOOKMARK (object));
 
     bookmark = MARLIN_BOOKMARK (object);
-    //marlin_bookmark_disconnect_file (bookmark);	
+    marlin_bookmark_disconnect_file (bookmark);	
     g_free (bookmark->label);
     //SPOTTED!
     g_warning ("%s", G_STRFUNC);
@@ -84,6 +87,14 @@ marlin_bookmark_class_init (MarlinBookmarkClass *class)
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0);
 
+    signals[DELETED] =
+        g_signal_new ("deleted",
+                      G_TYPE_FROM_CLASS (class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (MarlinBookmarkClass, deleted),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0);
 }
 
 static void
@@ -339,6 +350,16 @@ marlin_bookmark_update_icon (MarlinBookmark *bookmark)
     return FALSE;
 }
 
+static void
+bookmark_file_changed_callback (GFileMonitor *monitor, GFile *file, GFile *other_file, GFileMonitorEvent event_type, MarlinBookmark *bookmark)
+{
+    if (event_type == G_FILE_MONITOR_EVENT_DELETED && g_file_equal (file, bookmark->file->location)) {
+        g_signal_emit (bookmark, signals[DELETED], 0);
+    } else {
+        g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
+    }
+}
+
 #if 0
 static void
 bookmark_file_changed_callback (GOFFile *file, MarlinBookmark *bookmark)
@@ -447,6 +468,37 @@ marlin_bookmark_set_icon_to_default (MarlinBookmark *bookmark)
 }
 #endif
 
+static void
+marlin_bookmark_disconnect_file (MarlinBookmark *bookmark)
+{
+    g_return_if_fail (MARLIN_IS_BOOKMARK (bookmark));
+    g_return_if_fail (bookmark->file != NULL);
+    g_return_if_fail (bookmark->file->location != NULL);
+    
+    if (bookmark->monitor != NULL) {
+        g_signal_handlers_disconnect_by_func (bookmark->monitor,
+                                              G_CALLBACK (bookmark_file_changed_callback),
+                                              bookmark);
+        g_object_unref (bookmark->monitor);
+    }
+}
+
+
+static void
+marlin_bookmark_connect_file (MarlinBookmark *bookmark)
+{
+    g_return_if_fail (MARLIN_IS_BOOKMARK (bookmark));
+    g_return_if_fail (bookmark->file != NULL);
+    g_return_if_fail (bookmark->file->location != NULL);
+
+    if (!marlin_bookmark_uri_known_not_to_exist (bookmark)) {
+        bookmark->monitor = g_file_monitor_file (bookmark->file->location, G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
+        g_signal_connect (bookmark->monitor, "changed", G_CALLBACK (bookmark_file_changed_callback), bookmark);
+        } else {
+            g_warning ("%s - directory is NULL", G_STRFUNC);
+    }
+}
+
 //TODO
 #if 0
 static void
@@ -527,10 +579,10 @@ marlin_bookmark_new (GOFFile *file, char *label)
     if (bookmark->name == NULL)
         bookmark->name = gof_file_get_display_name (file);
 
-    //marlin_bookmark_connect_file (new_bookmark);
+    marlin_bookmark_connect_file (bookmark);
 
     return bookmark;
-}				 
+}
 
 #if 0
 static GtkWidget *

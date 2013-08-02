@@ -47,6 +47,7 @@ struct MarlinBookmark {
     const char  *name;
     char        *label;
     GOFFile     *file;
+    GFileMonitor *monitor;
 };
 
 struct MarlinBookmarkClass {
@@ -63,6 +64,11 @@ struct MarlinBookmarkClass {
      * URI has changed.
      */
     void	(* contents_changed) (MarlinBookmark *bookmark);
+    
+    /* The deleted signal is emitted when the bookmark's
+     * file has been deleted.
+     */
+    void	(* deleted) (MarlinBookmark *bookmark);
 };
 
 typedef struct MarlinBookmarkClass MarlinBookmarkClass;
