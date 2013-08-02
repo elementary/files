@@ -121,8 +121,7 @@ public class Marlin.Application : Granite.Application {
 
         if (kill_shell) {
             if (remaining != null) {
-                cmd.printerr ("%s\n",
-                                       _("--quit cannot be used with URIs."));
+                cmd.printerr ("%s\n", _("--quit cannot be used with URIs."));
                 return Posix.EXIT_FAILURE;
             } else {
                 this.quit ();
