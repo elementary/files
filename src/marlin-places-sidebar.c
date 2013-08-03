@@ -316,7 +316,7 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_object_unref (icon);
     g_free (mount_uri);
 
- /* add bookmarks */
+    /* add bookmarks */
     g_signal_handlers_block_by_func (sidebar->bookmarks, update_places, sidebar );
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
@@ -341,7 +341,7 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        //g_message ("%s - bookmark: %d %s", G_STRFUNC, index, mount_uri);
+        g_debug ("%s - bookmark: %d %s", G_STRFUNC, index, mount_uri);
         g_free (name);
         g_object_unref (root);
         g_object_unref (icon);
@@ -924,7 +924,7 @@ compute_drop_position (GtkTreeView *tree_view,
                                             y,
                                             path,
                                             pos)) {
-        g_debug ("%s - dest_row_at_pos UNKNOWN\n", G_STRFUNC);
+        g_warning ("%s - dest_row_at_pos UNKNOWN\n", G_STRFUNC);
         //row = num_rows - 1;
         //		*path = gtk_tree_path_new_from_indices (row, -1);
         /*gtk_tree_view_get_path_at_pos(tree_view,  x, y, path, NULL, NULL, NULL);
@@ -1567,18 +1567,14 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
 
     gtk_widget_show (sidebar->popup_menu_open_in_new_tab_item);
 
-    /*gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
-    gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
-    eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK)); 
-    eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
-    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, (type == PLACES_BOOKMARK));*/
+    //gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
+    //gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
+
 
     //TODO add the possibility to rename volume later
     eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, is_bookmark);
     eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, is_bookmark);
     eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, is_bookmark);
-
-    gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
 
     check_visibility (mount, volume, drive,
                       &show_mount, &show_unmount, &show_eject, &show_rescan, &show_format, &show_start, &show_stop);
@@ -1600,6 +1596,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
           eel_gtk_widget_set_shown (sidebar->popup_menu_start_item, show_start);
           eel_gtk_widget_set_shown (sidebar->popup_menu_stop_item, show_stop);*/
     eel_gtk_widget_set_shown (sidebar->popup_menu_empty_trash_item, show_empty_trash);
+    gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
     eel_gtk_widget_set_shown (sidebar->popup_menu_connect_server_item, show_connect_server);
 
     //TODO check this
@@ -2393,7 +2390,7 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     if (sidebar->popup_menu) {
         return;
     }
-
+    g_message ("%s -", G_STRFUNC);
     sidebar->popup_menu = gtk_menu_new ();
     gtk_menu_attach_to_widget (GTK_MENU (sidebar->popup_menu),
                                GTK_WIDGET (sidebar),
@@ -2437,8 +2434,6 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     g_signal_connect (item, "activate",
                       G_CALLBACK (rename_shortcut_cb), sidebar);
     gtk_widget_show (item);
-    // Omit broken "Rename..." from the sidebar
-    // Now fixed
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
     /* Mount/Unmount/Eject menu items */
@@ -2474,8 +2469,6 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (empty_trash_cb), sidebar);
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-    bookmarks_check_popup_sensitivity (sidebar);
 
     /* Connect to server menu item */
     item = gtk_menu_item_new_with_mnemonic (_("Connect to Server…"));
