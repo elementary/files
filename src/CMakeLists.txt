@@ -34,6 +34,9 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS} -O2)
 
+OPTION(WITH_UNITY "Add Unity launcher support" ON)
+pkg_check_modules(UNITY unity>=4.0.0)
+
 IF(WITH_UNITY AND UNITY_FOUND)
     vala_precompile(VALA_C pantheon-files
         main.vala
@@ -149,9 +152,6 @@ add_executable(pantheon-files
     ${VALA_C} )
 
 target_link_libraries(pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
-
-OPTION(WITH_UNITY "Add Unity launcher support" ON)
-pkg_check_modules(UNITY unity>=4.0.0)
 
 IF(WITH_UNITY AND UNITY_FOUND)
     include_directories(${UNITY_INCLUDE_DIRS})
