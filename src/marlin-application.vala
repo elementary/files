@@ -53,7 +53,6 @@ public class Marlin.Application : Granite.Application {
         tags = new Marlin.View.Tags ();
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
-        plugins.load_plugins ();
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
