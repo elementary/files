@@ -17,8 +17,6 @@
 public static const string APP_NAME = "pantheon-files";
 
 public static int main (string[] args) {
-    Gtk.init (ref args);
-
     /* Initiliaze gettext support */
     Intl.setlocale (LocaleCategory.ALL, Intl.get_language_names ()[0]);
     Intl.textdomain (Config.GETTEXT_PACKAGE);

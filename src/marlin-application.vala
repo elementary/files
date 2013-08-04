@@ -36,11 +36,7 @@ public class Marlin.Application : Granite.Application {
         base.startup ();
 
         Granite.Services.Logger.initialize ("pantheon-files");
-        if (this.debug)
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
-        else
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
-        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
+        warning ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
         init_gtk_accels ();
@@ -82,6 +78,7 @@ public class Marlin.Application : Granite.Application {
 	private string[]? remaining = null;
 
     private int _command_line (ApplicationCommandLine cmd) {
+        /* Setup the argument parser */
         bool version = false;
         bool kill_shell = false;
 
@@ -104,15 +101,22 @@ public class Marlin.Application : Granite.Application {
         context.add_group (Gtk.get_option_group (true));
 
         string[] args = cmd.get_arguments ();
-        /* We need to store args in an unowned variable for context.parse */
+        /* We need to store arguments in an unowned variable for context.parse */
         unowned string[] args_aux = args;
 
+        /* Parse arguments */
         try {
             context.parse (ref args_aux);
         } catch (OptionError error) {
-            printerr ("Could not parse arguments: %s\n", error.message);
+            cmd.printerr ("Could not parse arguments: %s\n", error.message);
             return Posix.EXIT_FAILURE;
         }
+        
+        /* Handle arguments */
+        if (this.debug)
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        else
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
 
         if (version) {
             cmd.print ("pantheon-files " + Config.VERSION);
@@ -131,7 +135,7 @@ public class Marlin.Application : Granite.Application {
 
         File[] files = null;
         
-        /* Convert remaining args to GFiles */
+        /* Convert remaining arguments to GFiles */
         if (remaining != null) {
             foreach (string filepath in remaining) {
                 var file = File.new_for_commandline_arg (filepath);
