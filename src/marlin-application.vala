@@ -6,7 +6,6 @@ public class Marlin.Application : Granite.Application {
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.Clipboard.Manager clipboard;
     private Marlin.Thumbnailer thumbnailer;
-    private bool debug;
     private bool open_intab;
 
     private int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -35,8 +34,10 @@ public class Marlin.Application : Granite.Application {
     public override void startup () {
         base.startup ();
 
-        Granite.Services.Logger.initialize ("pantheon-files");
-        warning ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
+        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
+
+        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
         init_gtk_accels ();
@@ -81,19 +82,17 @@ public class Marlin.Application : Granite.Application {
         bool version = false;
         bool kill_shell = false;
 
-        OptionEntry[] options = new OptionEntry [6];
+        OptionEntry[] options = new OptionEntry [5];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref this.open_intab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
-        options [3] = { "debug", 'd', 0, OptionArg.NONE, ref this.debug,
-                        N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [3] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [5] = { null };
+        options [4] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -110,12 +109,8 @@ public class Marlin.Application : Granite.Application {
             cmd.printerr ("Could not parse arguments: %s\n", error.message);
             return Posix.EXIT_FAILURE;
         }
-        
+
         /* Handle arguments */
-        if (this.debug)
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
-        else
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
 
         if (version) {
             cmd.print ("pantheon-files " + Config.VERSION);
@@ -133,7 +128,7 @@ public class Marlin.Application : Granite.Application {
         }
 
         File[] files = null;
-        
+
         /* Convert remaining arguments to GFiles */
         if (remaining != null) {
             foreach (string filepath in remaining) {
@@ -152,7 +147,7 @@ public class Marlin.Application : Granite.Application {
     public override void quit_mainloop () {
         print ("Quitting mainloop");
         Marlin.IconInfo.clear_caches ();
-        
+
         base.quit_mainloop ();
     }
 
@@ -208,7 +203,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     /* Load accelerator map, and register save callback */
-    private void init_gtk_accels () {        
+    private void init_gtk_accels () {
         string accel_map_filename = Marlin.get_accel_map_file ();
         if (accel_map_filename != null) {
             Gtk.AccelMap.load (accel_map_filename);
@@ -288,7 +283,7 @@ public class Marlin.Application : Granite.Application {
 
         this.open_intab = false;
     }
-    
+
     public bool is_first_window (Gtk.Window window) {
         unowned List<Gtk.Window> list = this.get_windows ();
         list = list.last ();
