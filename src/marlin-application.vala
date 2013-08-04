@@ -7,7 +7,7 @@ public class Marlin.Application : Granite.Application {
     private Marlin.Clipboard.Manager clipboard;
     private Marlin.Thumbnailer thumbnailer;
 
-    private int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
+    private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
 
     construct {
