@@ -58,6 +58,10 @@ namespace Marlin {
         public bool queue_file(GOF.File file, int? request, bool large);
         
     }
+    [CCode (cheader_filename = "marlin-bookmark.h")]
+    public class Bookmark : Object {
+        public File get_location ();
+    }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]

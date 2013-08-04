@@ -26,5 +26,13 @@ namespace Marlin {
         public static Unity.LauncherEntry get_launcher_entry (List<Marlin.LauncherEntry> list) {
             return list.data.entry;
         }
+        
+        private void entry_add (string entry_id) {
+        }
+        
+        private void activate_bookmark_by_quicklist (Dbusmenu.Menuitem menu,
+                                                     int timestamp,
+                                                     Marlin.Bookmark bookmark) {
+        }
     }
 }
