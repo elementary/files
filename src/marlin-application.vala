@@ -6,7 +6,6 @@ public class Marlin.Application : Granite.Application {
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.Clipboard.Manager clipboard;
     private Marlin.Thumbnailer thumbnailer;
-    private bool open_intab;
 
     private int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
@@ -80,12 +79,13 @@ public class Marlin.Application : Granite.Application {
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
         bool version = false;
+        bool open_in_tab = false;
         bool kill_shell = false;
 
         OptionEntry[] options = new OptionEntry [5];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
-        options [1] = { "tab", 't', 0, OptionArg.NONE, ref this.open_intab,
+        options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
@@ -111,9 +111,8 @@ public class Marlin.Application : Granite.Application {
         }
 
         /* Handle arguments */
-
         if (version) {
-            cmd.print ("pantheon-files " + Config.VERSION);
+            cmd.print ("pantheon-files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
@@ -139,7 +138,10 @@ public class Marlin.Application : Granite.Application {
         }
 
         /* Open application */
-        this.open_locations (files);
+        if (open_in_tab)
+            open_tabs (files);
+        else
+            open_windows (files);
 
         return Posix.EXIT_SUCCESS;
     }
@@ -157,7 +159,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     public void create_window (File location, Gdk.Screen screen) {
-        this.open_window (location, screen);
+        open_window (location, screen);
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
@@ -229,8 +231,7 @@ public class Marlin.Application : Granite.Application {
         return false;
     }
 
-
-    private void open_window (File location, Gdk.Screen screen) {
+    private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         var window = new Marlin.View.Window (this, screen);
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);
@@ -238,19 +239,19 @@ public class Marlin.Application : Granite.Application {
         window.add_tab (location);
     }
 
-    private void open_windows (File[]? files, Gdk.Screen screen) {
+    private void open_windows (File[]? files) {
         if (files == null) {
             /* Open a window pointing at the default location. */
             var location = File.new_for_path (Environment.get_home_dir ());
-            open_window (location, screen);
+            open_window (location);
         } else {
             /* Open windows at each requested location. */
             foreach (var file in files)
-                open_window (file, screen);
+                open_window (file);
         }
     }
 
-    private void open_tabs (File[]? files, Gdk.Screen screen) {
+    private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
         unowned List<Gtk.Window> windows = this.get_windows ();
@@ -273,15 +274,6 @@ public class Marlin.Application : Granite.Application {
             foreach (var file in files)
                 window.add_tab (file);
         }
-    }
-
-    private void open_locations (File[] files) {
-        if (this.open_intab)
-            this.open_tabs (files, Gdk.Screen.get_default ());
-        else
-            this.open_windows (files, Gdk.Screen.get_default ());
-
-        this.open_intab = false;
     }
 
     public bool is_first_window (Gtk.Window window) {
