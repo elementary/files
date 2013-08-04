@@ -37,7 +37,6 @@
 
 #ifdef HAVE_UNITY
 #include <unity.h>
-#include "unity-quicklist-handler.h"
 #endif
 
 struct _MarlinProgressUIHandlerPriv {
@@ -51,7 +50,7 @@ struct _MarlinProgressUIHandlerPriv {
     NotifyNotification *progress_notification;
     GtkStatusIcon *status_icon;
 #ifdef HAVE_UNITY
-    UnityQuicklistHandler *unity_quicklist_handler;
+    MarlinQuicklistHandler *unity_quicklist_handler;
 #endif
 };
 
@@ -220,8 +219,8 @@ progress_ui_handler_unity_progress_changed (MarlinProgressInfo *info,
     if (progress > 1.0)
         progress = 1.0;
 
-    for (l = unity_quicklist_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
-        UnityLauncherEntry *entry = unity_quicklist_get_launcher_entry (l);
+    for (l = marlin_quicklist_handler_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
+        UnityLauncherEntry *entry = marlin_quicklist_handler_get_launcher_entry (l);
         unity_launcher_entry_set_progress (entry, progress);
     }
 }
@@ -273,9 +272,9 @@ progress_ui_handler_build_unity_quicklist (MarlinProgressUIHandler *self)
     g_return_if_fail (self);
     GList *l;
 
-    for (l = unity_quicklist_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
-        LauncherEntry *lentry = l->data;
-        UnityLauncherEntry *entry = unity_quicklist_get_launcher_entry (l);
+    for (l = marlin_quicklist_handler_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
+        MarlinLauncherEntry *lentry = l->data;
+        UnityLauncherEntry *entry = marlin_quicklist_handler_get_launcher_entry (l);
         DbusmenuMenuitem *ql = unity_launcher_entry_get_quicklist (entry);
 
         DbusmenuMenuitem *quickmenu = dbusmenu_menuitem_new ();
@@ -306,7 +305,7 @@ progress_ui_handler_build_unity_quicklist (MarlinProgressUIHandler *self)
 
 static void
 progress_ui_handler_show_unity_quicklist (MarlinProgressUIHandler *self,
-                                          LauncherEntry *lentry,
+                                          MarlinLauncherEntry *lentry,
                                           gboolean show)
 {
     g_return_if_fail (self);
@@ -323,7 +322,7 @@ progress_ui_handler_show_unity_quicklist (MarlinProgressUIHandler *self,
 static void
 progress_ui_handler_update_unity_launcher_entry (MarlinProgressUIHandler *self,
                                                  MarlinProgressInfo *info,
-                                                 LauncherEntry *lentry)
+                                                 MarlinLauncherEntry *lentry)
 {
     UnityLauncherEntry *entry = lentry->entry;
 
@@ -360,16 +359,16 @@ progress_ui_handler_update_unity_launcher (MarlinProgressUIHandler *self,
     GList *l;
 
     if (!self->priv->unity_quicklist_handler) {
-        self->priv->unity_quicklist_handler = unity_quicklist_handler_get_singleton ();
+        self->priv->unity_quicklist_handler = marlin_quicklist_handler_get_singleton ();
         if (!self->priv->unity_quicklist_handler)
             return;
 
         progress_ui_handler_build_unity_quicklist (self);
     }
 
-    for (l = unity_quicklist_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
-        LauncherEntry *lentry = l->data;
-        UnityLauncherEntry *entry = unity_quicklist_get_launcher_entry (l);
+    for (l = marlin_quicklist_handler_get_launcher_entries (self->priv->unity_quicklist_handler); l; l = l->next) {
+        MarlinLauncherEntry *lentry = l->data;
+        UnityLauncherEntry *entry = marlin_quicklist_handler_get_launcher_entry (l);
         progress_ui_handler_update_unity_launcher_entry (self, info, lentry);
     }
 
