@@ -15,8 +15,11 @@ namespace Marlin {
         private QuicklistHandler () {
         }
     
-        public static QuicklistHandler get_singleton () {
-            return new QuicklistHandler ();
+        public static unowned QuicklistHandler get_singleton () {
+            if (quicklisthandler_singleton == null)
+                quicklisthandler_singleton = new QuicklistHandler ();
+        
+            return quicklisthandler_singleton;
         }
         
         public unowned List<Marlin.LauncherEntry> get_launcher_entries () {
@@ -33,6 +36,15 @@ namespace Marlin {
         private void activate_bookmark_by_quicklist (Dbusmenu.Menuitem menu,
                                                      int timestamp,
                                                      Marlin.Bookmark bookmark) {
+        }
+        
+        private void remove_bookmark_quicklists () {
+        }
+        
+        private void update_bookmarks (Marlin.BookmarkList bookmarks) {
+        }
+        
+        private void refresh_bookmarks (Marlin.BookmarkList bookmarks) {
         }
     }
 }
