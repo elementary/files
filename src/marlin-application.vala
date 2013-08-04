@@ -81,18 +81,21 @@ public class Marlin.Application : Granite.Application {
         bool version = false;
         bool open_in_tab = false;
         bool kill_shell = false;
+        bool debug = false;
 
-        OptionEntry[] options = new OptionEntry [5];
+        OptionEntry[] options = new OptionEntry [6];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
+        options [3] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
+                        N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [3] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [4] = { null };
+        options [5] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -111,6 +114,9 @@ public class Marlin.Application : Granite.Application {
         }
 
         /* Handle arguments */
+        if (debug)
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        
         if (version) {
             cmd.print ("pantheon-files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
