@@ -61,11 +61,15 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-bookmark.h")]
     public class Bookmark : Object {
         public File get_location ();
+        public string get_name ();
+        public bool uri_known_not_to_exist ();
     }
     [CCode (cheader_filename = "marlin-bookmark-list.h")]
     public class BookmarkList : Object {
-        public BookmarkList ();
         public signal void contents_changed ();
+        public BookmarkList ();
+        public int length ();
+        public Bookmark item_at (int index);
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {

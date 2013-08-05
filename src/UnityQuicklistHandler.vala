@@ -2,7 +2,7 @@ namespace Marlin {
 
     public class LauncherEntry {
         public Unity.LauncherEntry entry;
-        public List<string> bookmark_quicklists = null;
+        public List<Dbusmenu.Menuitem> bookmark_quicklists = null;
         public List<string> progress_quicklists = null;
     }
 
@@ -66,13 +66,46 @@ namespace Marlin {
         }
         
         private void remove_bookmark_quicklists () {
-            
+            foreach (var marlin_lentry in this.launcher_entries) {
+                var unity_lentry = marlin_lentry.entry;
+                Dbusmenu.Menuitem ql = unity_lentry.quicklist;
+                
+                if (ql == null)
+                    break;
+                
+                //TODO: Figure out what does the following do.
+                foreach (var menuitem in marlin_lentry.bookmark_quicklists) {
+                    //TODO: Complete with missing code.
+                    
+                    ql.child_delete (menuitem);
+                }
+            }
         }
         
         private void update_bookmarks (Marlin.BookmarkList bookmarks) {
+            var bookmark_count = bookmarks.length ();
+            for (int index = 0; index < bookmark_count; index++) {
+                var bookmark = bookmarks.item_at (index);
+                
+                if (bookmark.uri_known_not_to_exist ())
+                    continue;
+                
+                foreach (var marlin_lentry in this.launcher_entries) {
+                    var unity_lentry = marlin_lentry.entry;
+                    Dbusmenu.Menuitem ql = unity_lentry.quicklist;
+                    var menuitem = new Dbusmenu.Menuitem ();
+                    menuitem.property_set ("label", bookmark.get_name ());
+                    Signal.connect (menuitem, "item-activated", 
+                                    (Callback) activate_bookmark_by_quicklist, bookmark);
+                    ql.child_add_position (menuitem, index);
+                    marlin_lentry.bookmark_quicklists.prepend (menuitem);
+                }
+            }
         }
         
         private void refresh_bookmarks (Marlin.BookmarkList bookmarks) {
+            this.remove_bookmark_quicklists ();
+            this.update_bookmarks (bookmarks);
         }
     }
 }
