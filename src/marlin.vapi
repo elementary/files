@@ -64,6 +64,8 @@ namespace Marlin {
     }
     [CCode (cheader_filename = "marlin-bookmark-list.h")]
     public class BookmarkList : Object {
+        public BookmarkList ();
+        public signal void contents_changed ();
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
@@ -120,8 +122,3 @@ namespace Marlin {
         }
     }
 }
-#if 0
-#if HAVE_UNITY
-[CCode (cprefix = "UnityQuicklistHandler", lower_case_cprefix = "unity_quicklist_handler_", cheader_filename = "unity-quicklist-handler.h")]
-#endif
-#endif
