@@ -69,7 +69,7 @@ namespace Marlin {
         public signal void contents_changed ();
         public BookmarkList ();
         public int length ();
-        public Bookmark item_at (int index);
+        public unowned Bookmark item_at (int index);
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
