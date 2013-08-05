@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-18 02:09-0500\n"
-"PO-Revision-Date: 2013-06-24 07:32+0000\n"
-"Last-Translator: Tim v Herpen <timvherpen@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:21+0000\n"
+"Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-20 06:17+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-05 06:18+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -42,7 +42,7 @@ msgstr "Dit is niet van jou"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr "Je hebt niet de benodigde rechten om deze map te openen."
+msgstr "Je hebt niet de rechten om deze map te bekijken"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
