@@ -1,6 +1,6 @@
 namespace Marlin {
 
-    public class LauncherEntry {
+    public class LauncherEntry : Object {
         public Unity.LauncherEntry entry;
         public List<Dbusmenu.Menuitem> bookmark_quicklists = null;
         public List<Dbusmenu.Menuitem> progress_quicklists = null;
@@ -16,11 +16,15 @@ namespace Marlin {
             this.entry_add ("pantheon-files.desktop");
 
             if (this.launcher_entries.length () == 0)
-                critical ("Couldn't find a valid Unity launcher entry.");
+                error ("Couldn't find a valid Unity launcher entry.");
             else {
                 var bookmarks = new Marlin.BookmarkList ();
-                /* Recreate dynamic part of menu if bookmark list changes */
-                bookmarks.contents_changed.connect (refresh_bookmarks);
+
+                bookmarks.contents_changed.connect (() => {
+                    debug ("Refreshing Unity dynamic bookmarks.");
+                    this.remove_bookmark_quicklists ();
+                    this.load_bookmarks (bookmarks);
+                });
             }
         }
 
@@ -48,7 +52,7 @@ namespace Marlin {
 
                 this.launcher_entries.prepend (marlin_lentry);
 
-                /* Ensure dynamic quicklist exist */
+                /* Ensure dynamic quicklist exists */
                 Dbusmenu.Menuitem ql = unity_lentry.quicklist;
 
                 if (ql == null) {
@@ -66,16 +70,16 @@ namespace Marlin {
                 if (ql == null)
                     break;
 
-                //TODO: Complete the following.
                 foreach (var menuitem in marlin_lentry.bookmark_quicklists) {
                     ql.child_delete (menuitem);
                 }
-
+                
+                //TODO: Delete all items in quicklist.
                 marlin_lentry.bookmark_quicklists = null;
             }
         }
 
-        private void update_bookmarks (Marlin.BookmarkList bookmarks) {
+        private void load_bookmarks (Marlin.BookmarkList bookmarks) {
             var bookmark_count = bookmarks.length ();
             for (int index = 0; index < bookmark_count; index++) {
                 var bookmark = bookmarks.item_at (index);
@@ -87,8 +91,8 @@ namespace Marlin {
                     var unity_lentry = marlin_lentry.entry;
                     Dbusmenu.Menuitem ql = unity_lentry.quicklist;
                     var menuitem = new Dbusmenu.Menuitem ();
-                    menuitem.property_set ("label", bookmark.get_name ());
 
+                    menuitem.property_set ("label", bookmark.get_name ());
                     menuitem.item_activated.connect (() => {
                         var location = bookmark.get_location ();
                         Marlin.Application.get ().create_window (location, Gdk.Screen.get_default ());
@@ -98,12 +102,6 @@ namespace Marlin {
                     marlin_lentry.bookmark_quicklists.prepend (menuitem);
                 }
             }
-        }
-
-        private void refresh_bookmarks (Marlin.BookmarkList bookmarks) {
-            debug ("Refreshing unity bookmarks.");
-            this.remove_bookmark_quicklists ();
-            this.update_bookmarks (bookmarks);
         }
     }
 }
