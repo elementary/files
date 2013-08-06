@@ -2,7 +2,7 @@
   Copyright (C) 1999, 2000 Red Hat, Inc.
   Copyright (C) 2000, 2001 Eazel, Inc.
   Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
-  
+
   This program is free software: you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License version 3, as published
   by the Free Software Foundation.
@@ -14,6 +14,10 @@
 
   You should have received a copy of the GNU General Public License along
   with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  Authors: Elliot Lee <sopwith@redhat.com>,
+           Darin Adler <darin@bentspoon.com>,
+           Julián Unrrein <junrrein@gmail.com>
 ***/
 
 private Marlin.Application application_singleton = null;
@@ -134,7 +138,7 @@ public class Marlin.Application : Granite.Application {
         /* Handle arguments */
         if (debug)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
-        
+
         if (version) {
             cmd.print ("pantheon-files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
@@ -155,7 +159,7 @@ public class Marlin.Application : Granite.Application {
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
             var file = File.new_for_commandline_arg (filepath);
-            
+
             if (file != null)
                 files += (file);
         }
