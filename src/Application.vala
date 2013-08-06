@@ -41,7 +41,7 @@ public class Marlin.Application : Granite.Application {
         init_schemas ();
         init_gtk_accels ();
 
-        Gtk.IconTheme.get_default ().notify["changed"].connect (() => {
+        Gtk.IconTheme.get_default ().changed.connect (() => {
             Marlin.IconInfo.clear_caches ();
         });
 
@@ -215,7 +215,7 @@ public class Marlin.Application : Granite.Application {
             Gtk.AccelMap.load (accel_map_filename);
         }
 
-        Gtk.AccelMap.get ().notify["changed"].connect (() => {
+        Gtk.AccelMap.get ().changed.connect (() => {
             if (!save_of_accel_map_requested) {
                 save_of_accel_map_requested = true;
                 Timeout.add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
