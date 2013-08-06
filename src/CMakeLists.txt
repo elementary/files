@@ -42,7 +42,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         main.vala
         marlin-application.vala
         marlin-deep-count.vala
-        UnityQuicklistHandler.vala
+        QuicklistHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
