@@ -39,8 +39,8 @@ pkg_check_modules(UNITY unity>=4.0.0)
 
 IF(WITH_UNITY AND UNITY_FOUND)
     vala_precompile(VALA_C pantheon-files
+        Application.vala
         main.vala
-        marlin-application.vala
         marlin-deep-count.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -81,8 +81,8 @@ IF(WITH_UNITY AND UNITY_FOUND)
         -D HAVE_UNITY)
 ELSE (
     vala_precompile(VALA_C pantheon-files
+        Application.vala
         main.vala
-        marlin-application.vala
         marlin-deep-count.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
