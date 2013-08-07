@@ -321,13 +321,15 @@ update_places (MarlinPlacesSidebar *sidebar)
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
-
-        if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
-            marlin_bookmark_list_delete_item_at (sidebar->bookmarks, index);
-            index--;
-            bookmark_count--;
-            continue;
-        }
+            /* including these lines will cause non-existing and unmounted
+             * bookmarks to be automatically removed:
+             * if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
+             *      marlin_bookmark_list_delete_item_at (sidebar->bookmarks, index);
+             *      index--;
+             *      bookmark_count--;
+             *      continue;
+             * }
+             */
 
         name = marlin_bookmark_get_name (bookmark);
         icon = marlin_bookmark_get_icon (bookmark);
