@@ -2860,7 +2860,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     tree_view = GTK_TREE_VIEW (gtk_tree_view_new ());
     
     /*stop side-bar being shrunk too small, which causes a crash*/
-    gtk_widget_set_size_request (tree_view, g_settings_get_int (settings, "minimum-sidebar-width"), -1);
+    gtk_widget_set_size_request (GTK_WIDGET (tree_view), g_settings_get_int (settings, "minimum-sidebar-width"), -1);
     
     gtk_tree_view_set_headers_visible (tree_view, FALSE);
 

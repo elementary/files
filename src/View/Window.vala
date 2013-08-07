@@ -156,6 +156,11 @@ namespace Marlin.View {
             tabs.show_tabs = true;
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
+            this.configure_event.connect ((e) => {
+                tabs.set_size_request (e.width / 2, -1);
+                return false;
+            });
+
             tabs.show ();
 
             /* Sidebar */
@@ -163,10 +168,10 @@ namespace Marlin.View {
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
             var lside_pane = new Granite.Widgets.ThinPaned ();
-            lside_pane.show();
+            lside_pane.show ();
 
-            lside_pane.pack1(sidebar, false, false);
-            lside_pane.pack2(tabs, true, true);
+            lside_pane.pack1 (sidebar, false, false);
+            lside_pane.pack2 (tabs, true, false);
 
             sidebar.show ();
 
