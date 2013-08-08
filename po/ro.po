@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-18 02:09-0500\n"
+"POT-Creation-Date: 2013-08-07 19:25-0500\n"
 "PO-Revision-Date: 2013-03-05 20:25+0000\n"
 "Last-Translator: Richard B. <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2013-07-20 06:18+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-08 04:56+0000\n"
+"X-Generator: Launchpad (build 16723)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -239,249 +239,249 @@ msgstr "Definește ca implicit"
 msgid "Ignore"
 msgstr "Ignoră"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:388
+#: /home/codygarver/f/po/../src/View/Window.vala:398
 msgid "Undo"
 msgstr "Anulaţi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:389
-#: /home/codygarver/f/po/../src/View/Window.vala:631
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "Undo the last action"
 msgstr "Anulează ultima acțiune"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:398
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Redo"
 msgstr "Refă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Redo the last action"
 msgstr "Refă ultima acțiune"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_File"
 msgstr "_Fișier"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:610
+#: /home/codygarver/f/po/../src/View/Window.vala:620
 msgid "_Edit"
 msgstr "_Editare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:611
+#: /home/codygarver/f/po/../src/View/Window.vala:621
 msgid "_View"
 msgstr "_Vizualizare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:612
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Go"
 msgstr "_Navigare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:615
+#: /home/codygarver/f/po/../src/View/Window.vala:625
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "_Fereastră nouă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:616
+#: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open another Files window for the displayed location"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Filă_Nouă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:630
 msgid "Open another tab for the displayed location"
 msgstr "Deschide o nouă filă pentru locația afișată"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "_Close"
 msgstr "_Închide"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Close this folder"
 msgstr "Închide acest dosar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:640
 msgid "_Undo"
 msgstr "_Anulează"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Redo"
 msgstr "_Refă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:646
 msgid "Open _Parent"
 msgstr "Deschide _părinte"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:637
+#: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "Open the parent folder"
 msgstr "Deschide dosarul părinte"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 msgid "_Back"
 msgstr "_Înapoi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/View/Window.vala:650
 msgid "Go to the previous visited location"
 msgstr "Navighează la precedenta locație vizitată"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "_Forward"
 msgstr "_Înaintează"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:654
 msgid "Go to the next visited location"
 msgstr "Navighează la următoarea locație vizitată"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:646
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Reload"
 msgstr "_Reîncarcă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Reload the current location"
 msgstr "Reîncarcă locația curentă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "_Home Folder"
 msgstr "Dosar _Acasă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:312
 msgid "Open your personal folder"
 msgstr "Deschide dosarul personal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "_Trash"
 msgstr "_Coșul de gunoi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:655
+#: /home/codygarver/f/po/../src/View/Window.vala:665
 msgid "Open your personal trash folder"
 msgstr "Deschide dosarul personal de gunoi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:668
 msgid "_Network"
 msgstr "_Rețea"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:659
+#: /home/codygarver/f/po/../src/View/Window.vala:669
 msgid "Browse bookmarked and local network locations"
 msgstr "Accesați locațiile salvate sau din rețeaua locală"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:662
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _In"
 msgstr "_Mărește"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Increase the view size"
 msgstr "Crește dimensiunea mod de afișare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:674
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Zoom _Out"
 msgstr "_Micșorează"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:685
 msgid "Decrease the view size"
 msgstr "Micșorați dimensiunea mod de afișare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:682
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Normal Si_ze"
 msgstr "Dimensiune _normală"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Use the normal view size"
 msgstr "Folosește dimensiunea normală a modului de afișare"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:686
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "Next Tab"
 msgstr "Următoare Filă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:690
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Previous Tab"
 msgstr "Fila precedentă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:694
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Connect to _Server..."
 msgstr "Conectare la _server..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:705
 msgid "Connect to a remote computer or shared disk"
 msgstr "Conectați-vă la un calculator de la distanță sau la un disc partajat"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:698
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "_About"
 msgstr "_Despre"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Display credits"
 msgstr "Afiseaza merite"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:702
+#: /home/codygarver/f/po/../src/View/Window.vala:712
 msgid "Report a Problem..."
 msgstr "Raportează o problemă..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:703
+#: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "File a bug on Launchpad"
 msgstr "Completează o eroare pe Launchpad"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:706
+#: /home/codygarver/f/po/../src/View/Window.vala:716
 msgid "Get Help Online..."
 msgstr "Obțineți ajutor online..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:710
+#: /home/codygarver/f/po/../src/View/Window.vala:720
 msgid "Translate This Application..."
 msgstr "Traduceți această aplicație..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:719
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "Show _Hidden Files"
 msgstr "Arată _fișierele ascunse"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:730
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Comutați afișarea fișierelor ascunse în fereastra curentă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "_Places"
 msgstr "_Locații"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 msgid "Change the visibility of this window's side pane"
 msgstr "Modificați vizibilitatea panoului lateral a ferestrei"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:743
 msgid "Icon"
 msgstr "Icoană"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "List"
 msgstr "Listă"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "Columns"
 msgstr "Coloane"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:229
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:235
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:245
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:237
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:247
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:239
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:249
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elemente selectate (%s)"

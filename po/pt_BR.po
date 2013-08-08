@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-18 02:09-0500\n"
+"POT-Creation-Date: 2013-08-07 19:25-0500\n"
 "PO-Revision-Date: 2013-07-30 19:36+0000\n"
-"Last-Translator: Paulo Galardi <paulogalardi1@gmail.com>\n"
+"Last-Translator: Paulo Galardi <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-07-31 06:07+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
+"X-Launchpad-Export-Date: 2013-08-08 04:56+0000\n"
+"X-Generator: Launchpad (build 16723)\n"
 "Language: pt_BR\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
@@ -242,249 +242,249 @@ msgstr "Definir como padrão"
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:388
+#: /home/codygarver/f/po/../src/View/Window.vala:398
 msgid "Undo"
 msgstr "Desfazer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:389
-#: /home/codygarver/f/po/../src/View/Window.vala:631
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "Undo the last action"
 msgstr "Desfazer a última ação"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:398
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Redo"
 msgstr "Refazer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Redo the last action"
 msgstr "Refazer a última ação"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_File"
 msgstr "_Arquivo"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:610
+#: /home/codygarver/f/po/../src/View/Window.vala:620
 msgid "_Edit"
 msgstr "_Editar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:611
+#: /home/codygarver/f/po/../src/View/Window.vala:621
 msgid "_View"
 msgstr "_Visualizar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:612
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Go"
 msgstr "_Ir"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:615
+#: /home/codygarver/f/po/../src/View/Window.vala:625
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:616
+#: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open another Files window for the displayed location"
 msgstr "Abrir outra janela do Arquivos na localização demonstrada"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Nova _aba"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:630
 msgid "Open another tab for the displayed location"
 msgstr "Abrir outra aba para a localização exibida"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "_Close"
 msgstr "_Fechar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Close this folder"
 msgstr "Fechar esta pasta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:640
 msgid "_Undo"
 msgstr "_Desfazer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Redo"
 msgstr "_Refazer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:646
 msgid "Open _Parent"
 msgstr "Abrir _Pai"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:637
+#: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "Open the parent folder"
 msgstr "Abrir a pasta pai"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 msgid "_Back"
 msgstr "_Voltar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/View/Window.vala:650
 msgid "Go to the previous visited location"
 msgstr "Ir para a localização visitada anteriormente"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "_Forward"
 msgstr "_Avançar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:654
 msgid "Go to the next visited location"
 msgstr "Ir para a próxima localização visitada"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:646
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Reload"
 msgstr "Atualizar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Reload the current location"
 msgstr "Recarregar a localização atual"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "_Home Folder"
 msgstr "Pa_sta pessoal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:312
 msgid "Open your personal folder"
 msgstr "Abrir sua pasta pessoal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "_Trash"
 msgstr "_Lixeira"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:655
+#: /home/codygarver/f/po/../src/View/Window.vala:665
 msgid "Open your personal trash folder"
 msgstr "Abre a pasta de lixeira pessoal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:668
 msgid "_Network"
 msgstr "_Rede"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:659
+#: /home/codygarver/f/po/../src/View/Window.vala:669
 msgid "Browse bookmarked and local network locations"
 msgstr "Exibir locais remotos e locais adicionados aos favoritos"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:662
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _In"
 msgstr "_Ampliar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Increase the view size"
 msgstr "Aumenta o tamanho da visualização"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:674
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Zoom _Out"
 msgstr "_Reduzir"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:685
 msgid "Decrease the view size"
 msgstr "Diminui o tamanho da visualização"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:682
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Normal Si_ze"
 msgstr "Tamanho _Normal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Use the normal view size"
 msgstr "Usar o tamanho normal da visualização"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:686
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "Next Tab"
 msgstr "Próxima aba"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:690
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Previous Tab"
 msgstr "Aba anterior"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:694
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Connect to _Server..."
 msgstr "Conectar ao _servidor..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:705
 msgid "Connect to a remote computer or shared disk"
 msgstr "Conecta a um computador remoto ou disco compartilhado"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:698
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "_About"
 msgstr "_Sobre"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Display credits"
 msgstr "Mostrar créditos"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:702
+#: /home/codygarver/f/po/../src/View/Window.vala:712
 msgid "Report a Problem..."
 msgstr "Reportar um problema..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:703
+#: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "File a bug on Launchpad"
 msgstr "Reportar erro ao Launchpad"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:706
+#: /home/codygarver/f/po/../src/View/Window.vala:716
 msgid "Get Help Online..."
 msgstr "Obter ajuda online..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:710
+#: /home/codygarver/f/po/../src/View/Window.vala:720
 msgid "Translate This Application..."
 msgstr "Traduzir este aplicativo..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:719
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "Show _Hidden Files"
 msgstr "Mostrar arquivos _ocultos"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:730
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Alterna a exibição de arquivos ocultos na janela atual"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "_Places"
 msgstr "_Locais"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 msgid "Change the visibility of this window's side pane"
 msgstr "Alterar a visibilidade do painel lateral desta janela"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:743
 msgid "Icon"
 msgstr "Ícone"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "List"
 msgstr "Lista"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "Columns"
 msgstr "Colunas"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:229
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
 msgstr "%u pastas"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:235
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:245
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " e %u outros itens (%s) selecionados"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:237
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:247
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
 msgstr " selecionado"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:239
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
 msgstr "%u pasta"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:249
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u itens selecionados (%s)"

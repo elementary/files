@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-18 02:09-0500\n"
+"POT-Creation-Date: 2013-08-07 19:25-0500\n"
 "PO-Revision-Date: 2013-07-10 12:01+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-20 06:17+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-08 04:55+0000\n"
+"X-Generator: Launchpad (build 16723)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -241,249 +241,249 @@ msgstr "Aseta oletukseksi"
 msgid "Ignore"
 msgstr "Ohita"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:388
+#: /home/codygarver/f/po/../src/View/Window.vala:398
 msgid "Undo"
 msgstr "Kumoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:389
-#: /home/codygarver/f/po/../src/View/Window.vala:631
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "Undo the last action"
 msgstr "Kumoa viimeisin toiminto"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:398
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Redo"
 msgstr "Tee uudelleen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Redo the last action"
 msgstr "Tee viimeisin toiminto uudelleen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:610
+#: /home/codygarver/f/po/../src/View/Window.vala:620
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:611
+#: /home/codygarver/f/po/../src/View/Window.vala:621
 msgid "_View"
 msgstr "_Näytä"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:612
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Go"
 msgstr "_Siirry"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "_Help"
 msgstr "_Ohje"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:615
+#: /home/codygarver/f/po/../src/View/Window.vala:625
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "Uusi i_kkuna"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:616
+#: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open another Files window for the displayed location"
 msgstr "Avaa nykyinen sijainti uuteen ikkunaan"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Uusi _välilehti"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:630
 msgid "Open another tab for the displayed location"
 msgstr "Avaa nykyinen sijainti toisessa välilehdessä"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "_Close"
 msgstr "_Sulje"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Close this folder"
 msgstr "Sulje tämän kansio"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:640
 msgid "_Undo"
 msgstr "K_umoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Redo"
 msgstr "_Tee uudelleen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:646
 msgid "Open _Parent"
 msgstr "Avaa _yläkansio"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:637
+#: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "Open the parent folder"
 msgstr "Avaa yläkansio"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 msgid "_Back"
 msgstr "_Edellinen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/View/Window.vala:650
 msgid "Go to the previous visited location"
 msgstr "Siirry edelliseen sijaintiin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "_Forward"
 msgstr "_Seuraava"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:654
 msgid "Go to the next visited location"
 msgstr "Siirry seuraavaan sijaintiin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:646
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Reload"
 msgstr "P_äivitä"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Reload the current location"
 msgstr "Päivitä sijainnin sisältö"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "_Home Folder"
 msgstr "_Kotikansio"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:312
 msgid "Open your personal folder"
 msgstr "Avaa henkilökohtainen kansiosi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "_Trash"
 msgstr "_Roskakori"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:655
+#: /home/codygarver/f/po/../src/View/Window.vala:665
 msgid "Open your personal trash folder"
 msgstr "Avaa henkilökohtainen roskakorisi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:668
 msgid "_Network"
 msgstr "_Verkko"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:659
+#: /home/codygarver/f/po/../src/View/Window.vala:669
 msgid "Browse bookmarked and local network locations"
 msgstr "Selaa kirjanmerkittyjä ja paikallisia verkkosijainteja"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:662
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _In"
 msgstr "L_ähennä"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Increase the view size"
 msgstr "Kasvata näkymän kokoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:674
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Zoom _Out"
 msgstr "L_oitonna"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:685
 msgid "Decrease the view size"
 msgstr "Pienennä näkymän kokoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:682
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Normal Si_ze"
 msgstr "_Normaalikoko"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Use the normal view size"
 msgstr "Käytä näkymän oletuskokoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:686
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "Next Tab"
 msgstr "Seuraava välilehti"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:690
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Previous Tab"
 msgstr "Edellinen välilehti"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:694
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Connect to _Server..."
 msgstr "_Yhdistä palvelimeen…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:705
 msgid "Connect to a remote computer or shared disk"
 msgstr "Yhdistä toiseen tietokoneeseen tai jaettuun levyyn"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:698
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "_About"
 msgstr "_Tietoja"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Display credits"
 msgstr "Näytä tekijätiedot"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:702
+#: /home/codygarver/f/po/../src/View/Window.vala:712
 msgid "Report a Problem..."
 msgstr "Ilmoita ongelmasta..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:703
+#: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "File a bug on Launchpad"
 msgstr "Ilmoita ongelmasta Launchpad-sivustolla"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:706
+#: /home/codygarver/f/po/../src/View/Window.vala:716
 msgid "Get Help Online..."
 msgstr "Hae apua verkosta..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:710
+#: /home/codygarver/f/po/../src/View/Window.vala:720
 msgid "Translate This Application..."
 msgstr "Käännä tämä sovellus..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:719
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "Show _Hidden Files"
 msgstr "Näytä _piilotiedostot"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:730
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Näyttää tai piilottaa piilotiedostot nykyisessä ikkunassa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "_Places"
 msgstr "_Sijainnit"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 msgid "Change the visibility of this window's side pane"
 msgstr "Näytä tai piilota ikkunan sivupaneeli"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:743
 msgid "Icon"
 msgstr "Kuvake"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "List"
 msgstr "Luettelo"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "Columns"
 msgstr "Sarakkeet"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:229
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
 msgstr "%u kansiota"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:235
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:245
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " ja %u muuta kohdetta (%s) valittu"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:237
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:247
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
 msgstr " valittu"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:239
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
 msgstr "%u kansio"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:249
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u kohdetta valittu (%s)"

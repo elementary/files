@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-18 02:09-0500\n"
+"POT-Creation-Date: 2013-08-07 19:25-0500\n"
 "PO-Revision-Date: 2013-07-13 15:32+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-07-20 06:18+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-08 04:57+0000\n"
+"X-Generator: Launchpad (build 16723)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -241,249 +241,249 @@ msgstr "設為預設值"
 msgid "Ignore"
 msgstr "忽略"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:388
+#: /home/codygarver/f/po/../src/View/Window.vala:398
 msgid "Undo"
 msgstr "取消動作"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:389
-#: /home/codygarver/f/po/../src/View/Window.vala:631
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "Undo the last action"
 msgstr "取消上個動作"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:398
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Redo"
 msgstr "再次動作"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Redo the last action"
 msgstr "再次執行上個動作"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:610
+#: /home/codygarver/f/po/../src/View/Window.vala:620
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:611
+#: /home/codygarver/f/po/../src/View/Window.vala:621
 msgid "_View"
 msgstr "檢視(_V)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:612
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Go"
 msgstr "前往(_G)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "_Help"
 msgstr "幫助(_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:615
+#: /home/codygarver/f/po/../src/View/Window.vala:625
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "新增視窗(_W)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:616
+#: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open another Files window for the displayed location"
 msgstr "為顯示的位置開啟另一個「檔案」視窗"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "新增分頁(_T)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:630
 msgid "Open another tab for the displayed location"
 msgstr "為已顯示的位置開啟另一個分頁"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Close this folder"
 msgstr "關閉本資料夾"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:640
 msgid "_Undo"
 msgstr "取消動作(_U)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Redo"
 msgstr "再次動作(_R)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:646
 msgid "Open _Parent"
 msgstr "開啟上層(_P)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:637
+#: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "Open the parent folder"
 msgstr "開啟上層資料夾"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 msgid "_Back"
 msgstr "返回(_B)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/View/Window.vala:650
 msgid "Go to the previous visited location"
 msgstr "回到上一個瀏覽過的位置"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "_Forward"
 msgstr "前進(_F)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:654
 msgid "Go to the next visited location"
 msgstr "前住下一個瀏覽過的位置"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:646
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Reload"
 msgstr "重新載入(_R)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Reload the current location"
 msgstr "重新載入目前的位置"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "_Home Folder"
 msgstr "資料夾(_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:312
 msgid "Open your personal folder"
 msgstr "開啟您的個人資料夾"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "_Trash"
 msgstr "垃圾(_T)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:655
+#: /home/codygarver/f/po/../src/View/Window.vala:665
 msgid "Open your personal trash folder"
 msgstr "開啟您的個人垃圾筒資料夾"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:668
 msgid "_Network"
 msgstr "網路(_N)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:659
+#: /home/codygarver/f/po/../src/View/Window.vala:669
 msgid "Browse bookmarked and local network locations"
 msgstr "瀏覽已加入書籤的及本地網路的位置"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:662
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _In"
 msgstr "拉近(_I)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Increase the view size"
 msgstr "增加檢視的大小"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:674
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Zoom _Out"
 msgstr "拉遠(_O)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:685
 msgid "Decrease the view size"
 msgstr "減少檢視的大小"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:682
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Normal Si_ze"
 msgstr "原來大小(_Z)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Use the normal view size"
 msgstr "使用一般的檢視大小"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:686
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "Next Tab"
 msgstr "下個分頁"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:690
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Previous Tab"
 msgstr "前個分頁"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:694
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Connect to _Server..."
 msgstr "連接伺服器(_S)…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:705
 msgid "Connect to a remote computer or shared disk"
 msgstr "連接遠端電腦或磁碟共享"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:698
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "_About"
 msgstr "關於(_A)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Display credits"
 msgstr "顯示致謝名單"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:702
+#: /home/codygarver/f/po/../src/View/Window.vala:712
 msgid "Report a Problem..."
 msgstr "回報問題..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:703
+#: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "File a bug on Launchpad"
 msgstr "在 Launchpad 上提交臭蟲回報"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:706
+#: /home/codygarver/f/po/../src/View/Window.vala:716
 msgid "Get Help Online..."
 msgstr "取得線上幫助...."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:710
+#: /home/codygarver/f/po/../src/View/Window.vala:720
 msgid "Translate This Application..."
 msgstr "翻譯這個程式..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:719
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "Show _Hidden Files"
 msgstr "顯示隱藏檔(_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:730
 msgid "Toggle the display of hidden files in the current window"
 msgstr "在目前視窗中切換隱藏檔的顯示與否"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "_Places"
 msgstr "位置(_P)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 msgid "Change the visibility of this window's side pane"
 msgstr "顯示或隱藏本視窗的側窗格"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:743
 msgid "Icon"
 msgstr "圖示"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "List"
 msgstr "列表"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "Columns"
 msgstr "欄"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:229
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
 msgstr "%u 個資料夾"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:235
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:245
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " 與另外 %u 個項目 (%s) 已選取"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:237
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:247
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
 msgstr " 已選取"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:239
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
 msgstr "%u 個資料夾"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:249
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "已選取 %u 個項目（%s）"
