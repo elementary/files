@@ -115,6 +115,7 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-progress-info-manager.h")]
     public class Progress.InfoManager : Object {
         public InfoManager ();
+        public signal void new_progress_info (Progress.Info info);
         public void add_new_info (Progress.Info info);
         public unowned List<Progress.Info> get_all_infos ();
     }

@@ -42,16 +42,40 @@ public class Marlin.Progress.UIHandler : Object {
     private const string ACTION_DETAILS = "details";
     
     public UIHandler () {
+        this.manager = new Marlin.Progress.InfoManager ();
+        manager.new_progress_info.connect ((info) => {
+            new_progress_info_cb (manager, info);
+        });
+        
+        this.notification_supports_persistence = server_has_persistence ();
     }
     
     private void status_icon_activate_cb (Gtk.StatusIcon icon) {
+        icon.set_visible (false);
+        (progress_window as Gtk.Window).present ();
     }
     
     private void notification_show_details_cb (Notify.Notification notification,
                                                string action_name) {
+        if (action_name == ACTION_DETAILS)
+            return;
+            
+        progress_notification.close ();
+        (progress_window as Gtk.Window).present ();
     }
     
     private void ensure_notification () {
+        if (this.progress_notification != null)
+            return;
+            
+        this.progress_notification = new Notify.Notification (_("File Operations"),
+                                                              null, null);
+        
+        this.progress_notification.set_category ("transfer");
+        this.progress_notification.set_hint ("resident", new Variant.boolean (true));
+        this.progress_notification.add_action (ACTION_DETAILS,
+                                               _("Show Details"),
+                                               notification_show_details_cb);
     }
     
     private void ensure_status_icon () {
