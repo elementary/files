@@ -42,6 +42,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         Application.vala
         main.vala
         marlin-deep-count.vala
+        ProgressUIHandler.vala
         QuicklistHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -86,6 +87,7 @@ ELSE (
         Application.vala
         main.vala
         marlin-deep-count.vala
+        ProgressUIHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -148,7 +150,6 @@ add_executable(pantheon-files
     fm-columns-view.c
     marlin-connect-server-dialog.c
     marlin-connect-server-operation.c
-    marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
 
