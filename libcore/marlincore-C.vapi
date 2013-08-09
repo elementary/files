@@ -59,7 +59,7 @@ namespace EelPango {
 namespace Marlin
 {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
-    string get_accel_map_file ();
+    public string get_accel_map_file ();
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
         public static IconInfo lookup(GLib.Icon icon, int size);

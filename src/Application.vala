@@ -1,3 +1,25 @@
+/***
+  Copyright (C) 1999, 2000 Red Hat, Inc.
+  Copyright (C) 2000, 2001 Eazel, Inc.
+  Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License version 3, as published
+  by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranties of
+  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+  PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  Authors: Elliot Lee <sopwith@redhat.com>,
+           Darin Adler <darin@bentspoon.com>,
+           Julián Unrrein <junrrein@gmail.com>
+***/
+
 private Marlin.Application application_singleton = null;
 
 public class Marlin.Application : Granite.Application {
@@ -41,7 +63,7 @@ public class Marlin.Application : Granite.Application {
         init_schemas ();
         init_gtk_accels ();
 
-        Gtk.IconTheme.get_default ().notify["changed"].connect (() => {
+        Gtk.IconTheme.get_default ().changed.connect (() => {
             Marlin.IconInfo.clear_caches ();
         });
 
@@ -116,7 +138,7 @@ public class Marlin.Application : Granite.Application {
         /* Handle arguments */
         if (debug)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
-        
+
         if (version) {
             cmd.print ("pantheon-files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
@@ -135,12 +157,11 @@ public class Marlin.Application : Granite.Application {
         File[] files = null;
 
         /* Convert remaining arguments to GFiles */
-        if (remaining != null) {
-            foreach (string filepath in remaining) {
-                var file = File.new_for_commandline_arg (filepath);
-                if (file != null)
-                    files += (file);
-            }
+        foreach (string filepath in remaining) {
+            var file = File.new_for_commandline_arg (filepath);
+
+            if (file != null)
+                files += (file);
         }
 
         /* Open application */
@@ -180,8 +201,7 @@ public class Marlin.Application : Granite.Application {
 
             foreach (var page in pages) {
                 var view_container = page as Marlin.View.ViewContainer;
-                var slot = view_container.slot;
-                var location = slot.location;
+                File location = view_container.slot.location;
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == marlin_window.current_tab)
                         view_container.path_changed (File.new_for_path (Environment.get_home_dir ()));
@@ -217,7 +237,7 @@ public class Marlin.Application : Granite.Application {
             Gtk.AccelMap.load (accel_map_filename);
         }
 
-        Gtk.AccelMap.get ().notify["changed"].connect (() => {
+        Gtk.AccelMap.get ().changed.connect (() => {
             if (!save_of_accel_map_requested) {
                 save_of_accel_map_requested = true;
                 Timeout.add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
