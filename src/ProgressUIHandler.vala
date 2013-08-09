@@ -79,9 +79,26 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void ensure_status_icon () {
+        if (this.status_icon != null)
+            return;
+            
+        var icon = new ThemedIcon.with_default_fallbacks ("system-file-manager-symbolic");
+        this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
+        
+        this.status_icon.activate.connect (status_icon_activate_cb);
     }
     
     private void update_notification () {
+        this.ensure_notification ();
+        
+        string body = ngettext ("%'d file operation active",
+                                "%'d file operations active",
+                                this.active_infos);
+                                
+        this.progress_notification.update (_("File Operations"),
+                                           body, null);
+
+        this.progress_notification.show ();
     }
     
     private void update_status_icon () {
