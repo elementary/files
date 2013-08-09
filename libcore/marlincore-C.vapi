@@ -106,6 +106,18 @@ namespace Marlin
         public void undo (UndoFinishCallback? cb);
         public void redo (UndoFinishCallback? cb);
     }
+    
+    [CCode (cheader_filename = "marlin-progress-info.h")]
+    public class Progress.Info : Object {
+        public Info ();
+    }
+    
+    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
+    public class Progress.InfoManager : Object {
+        public InfoManager ();
+        public void add_new_info (Progress.Info info);
+        public unowned List<Progress.Info> get_all_infos ();
+    }
 }
 
 [CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]

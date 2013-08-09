@@ -21,6 +21,18 @@
 
 public class Marlin.Progress.UIHandler : Object {
     
+    private Marlin.Progress.InfoManager manager;
+    
+    private Gtk.Widget progress_window;
+    private Gtk.Widget window_vbox;
+    private int active_infos;
+    
+    private bool notification_supports_persistence;
+    private Notify.Notification progress_notification;
+    private Gtk.StatusIcon status_icon;
+#if HAVE_UNITY
+    private Marlin.QuicklistHandler quicklist_handler;
+#endif
     
     public UIHandler () {
     }
