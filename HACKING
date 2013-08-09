@@ -72,7 +72,22 @@ For C:
 
   * Always keep { and } on their own line.
 
+====== Important: Keep fixes for different bugs in different branches ======
+
+Branches that contain patches to fix more than one bug will be rejected, and you will be asked to supply a separate branch for every bug fix.
+This doesn't apply to patches that are indivisible by nature, and that fix multiple bugs.
+
+The reasons to work in this way are the following:
+
+    * If one of the bugs targeted by your branch is correctly fixed, but one of the other bugs is incorrectly fixed or needs corrections, the branch won't be accepted until everything looks ok for all bugs. This causes an unnecessary delay for the bugs that where fixed correctly.
+    * Suppose your branch was accepted for merging in the main one. Later, it is discovered that your branch introduces faulty behavior. The standard course of action for these situations is to revert the merge that introduced that faulty behavior. This will cause that all of your fixes are reverted (even the ones that didn't cause problems) because there was no way of discriminating between them. If a separate branch for each bug fixed existed, only the offending one would have been reverted, and not all of them.
+
+Be sure to understand this, and avoid a headache later!
+
 ====== Committing code ======
+
+Make a branch which will contain your changes for fixing bug XXXX:
+    bzr branch lp:pantheon-files fix-XXXX
 
 Tell Bazaar your name if you haven't yet:
     bzr whoami "Real Name <email@address>"
@@ -117,7 +132,7 @@ If you haven't yet, https://launchpad.net/~/+editsshkeys check that Launchpad ha
 
 If you checked out trunk, and added your patch(es), just **push it under your username** in Launchpad and you can **propose it for merging into trunk**. This will automatically request a **review from other developers** who can then comment on it and provide feedback.
 
-    bzr push lp:~USERNAME/junrrein/fix-123456
+    bzr push lp:~USERNAME/pantheon-files/fix-123456
     bzr lp-open
 
 The last command will open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
