@@ -78,7 +78,7 @@ G_DEFINE_TYPE (MarlinProgressUIHandler, marlin_progress_ui_handler, G_TYPE_OBJEC
 static void
 status_icon_activate_cb (GtkStatusIcon *icon,
                          MarlinProgressUIHandler *self)
-{	
+{
     gtk_status_icon_set_visible (icon, FALSE);
     gtk_window_present (GTK_WINDOW (self->priv->progress_window));
 }
