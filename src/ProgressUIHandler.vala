@@ -60,7 +60,12 @@ public class Marlin.Progress.UIHandler : Object {
         if (action_name == ACTION_DETAILS)
             return;
             
-        progress_notification.close ();
+        try {
+            progress_notification.close ();
+        } catch (Error error) {
+            warning ("There was an error when closing the notification: %s", error.message);
+        }
+        
         (progress_window as Gtk.Window).present ();
     }
     
@@ -96,16 +101,59 @@ public class Marlin.Progress.UIHandler : Object {
                                 this.active_infos);
                                 
         this.progress_notification.update (_("File Operations"),
-                                           body, null);
+                                           body, "");
 
-        this.progress_notification.show ();
+        try {
+            this.progress_notification.show ();
+        } catch (Error error) {
+            warning ("There was an error when showing the notification: %s", error.message);
+        }
     }
     
     private void update_status_icon () {
+        this.ensure_status_icon ();
+        
+        string tooltip = ngettext ("%'d file operation active",
+                                   "%'d file operations active",
+                                   this.active_infos);
+
+        this.status_icon.set_tooltip_text (tooltip);
+        
+        this.status_icon.visible = true;
     }
     
 #if HAVE_UNITY
     private void unity_progress_changed (Marlin.Progress.Info info) {
+        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        
+        double progress = 0;
+        double current = 0;
+        double total = 0;
+        
+        foreach (var _info in infos) {
+            var c = _info.get_current ();
+            var t = _info.get_total ();
+            
+            if (c < 0)
+                c = 0;
+            
+            if (t <= 0)
+                continue;
+
+            current += c;
+            total += t;
+        }
+        
+        if (current >= 0 && total > 0)
+            progress = current / total;
+
+        if (progress > 1.0)
+            progress = 1.0;
+            
+        foreach (Marlin.LauncherEntry marlin_lentry in this.quicklist_handler.launcher_entries) {
+            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
+            unity_lentry.progress = progress;
+        }
     }
     
     private bool disable_unity_urgency (Unity.LauncherEntry entry) {

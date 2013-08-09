@@ -27,7 +27,7 @@ namespace Marlin {
 
     public class QuicklistHandler : Object {
 
-        private List<Marlin.LauncherEntry> launcher_entries = null;
+        public List<Marlin.LauncherEntry> launcher_entries = null;
 
         private QuicklistHandler () {
             this.entry_add ("pantheon-files.desktop");
