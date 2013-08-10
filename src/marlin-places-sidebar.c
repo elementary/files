@@ -154,7 +154,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     MarlinZoomLevel     zoom;
     gboolean show_eject, show_unmount;
     gboolean show_eject_button;
-
+    
     g_object_get (sidebar, "zoom-level", &zoom, NULL);
 
     GtkIconSize stock_size = marlin_zoom_level_to_stock_icon_size (zoom);
@@ -317,20 +317,15 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_free (mount_uri);
 
     /* add bookmarks */
-    g_signal_handlers_block_by_func (sidebar->bookmarks, update_places, sidebar );
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
-            /* including these lines will cause non-existing and unmounted
-             * bookmarks to be automatically removed:
-             * if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
-             *      marlin_bookmark_list_delete_item_at (sidebar->bookmarks, index);
-             *      index--;
-             *      bookmark_count--;
-             *      continue;
-             * }
+        if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
+            /* do not show bookmarks that are (currently) unavailable
+             * note: these remain in the bookmark list
              */
-
+            continue;
+        }
         name = marlin_bookmark_get_name (bookmark);
         icon = marlin_bookmark_get_icon (bookmark);
         mount_uri = marlin_bookmark_get_uri (bookmark);
@@ -350,7 +345,6 @@ update_places (MarlinPlacesSidebar *sidebar)
         g_free (mount_uri);
         g_free (tooltip);
     }
-    g_signal_handlers_unblock_by_func (sidebar->bookmarks, update_places, sidebar);
 
     /* add trash */
     mount_uri = MARLIN_TRASH_URI; /* No need to strdup */
@@ -2392,7 +2386,7 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     if (sidebar->popup_menu) {
         return;
     }
-    g_message ("%s -", G_STRFUNC);
+
     sidebar->popup_menu = gtk_menu_new ();
     gtk_menu_attach_to_widget (GTK_MENU (sidebar->popup_menu),
                                GTK_WIDGET (sidebar),
