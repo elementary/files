@@ -110,6 +110,7 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-progress-info.h")]
     public class Progress.Info : Object {
         public Info ();
+        public void cancel ();
         public double get_progress ();
         public double get_current ();
         public double get_total ();

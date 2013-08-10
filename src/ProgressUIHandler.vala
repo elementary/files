@@ -80,7 +80,7 @@ public class Marlin.Progress.UIHandler : Object {
         this.progress_notification.set_hint ("resident", new Variant.boolean (true));
         this.progress_notification.add_action (ACTION_DETAILS,
                                                _("Show Details"),
-                                               notification_show_details_cb);
+                                               (Notify.ActionCallback) notification_show_details_cb);
     }
     
     private void ensure_status_icon () {
@@ -157,15 +157,26 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private bool disable_unity_urgency (Unity.LauncherEntry entry) {
+        entry.urgent = false;
+        
         return false;
     }
     
     private void unity_quicklist_show_activated (Dbusmenu.Menuitem menu,
                                                  int timestamp) {
+        if (!this.progress_window.visible)
+            (this.progress_window as Gtk.Window).present ();
+        else {
+            (this.progress_window as Gtk.Window).set_keep_above (true);
+            (this.progress_window as Gtk.Window).set_keep_above (false);
+        }
     }
     
     private void unity_quicklist_cancel_activated (Dbusmenu.Menuitem menu,
                                                    int timestamp) {
+        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        foreach (var info in infos)
+            info.cancel ();
     }
     
     private void build_unity_quicklist () {
