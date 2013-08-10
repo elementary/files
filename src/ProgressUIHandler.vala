@@ -261,11 +261,39 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
 
     private bool progress_window_delete_event (Gtk.Widget widget,
-                                               Gdk.Event event) {
+                                               Gdk.EventAny event) {
+        widget.hide ();
+        
+        if (this.notification_supports_persistence)
+            this.update_notification ();
+        else
+            this.update_status_icon ();
+        
         return true;
     }
 
     private void ensure_window () {
+        if (this.progress_window != null)
+            return;
+        
+        this.progress_window = new Gtk.Window (Gtk.WindowType.TOPLEVEL);
+        
+        (this.progress_window as Gtk.Window).resizable = false;
+        (this.progress_window as Gtk.Container).set_border_width (10);
+        (this.progress_window as Gtk.Window).title = _("File Operations");
+        (this.progress_window as Gtk.Window).set_wmclass ("file_progress", "Marlin");
+        (this.progress_window as Gtk.Window).set_position (Gtk.WindowPosition.CENTER);
+        (this.progress_window as Gtk.Window).icon_name = "system-file-manager";
+        
+        this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        
+        (this.window_vbox as Gtk.Box).spacing = 5;
+        (this.progress_window as Gtk.Container).add (this.window_vbox);
+        window_vbox.show ();
+        
+        progress_window.delete_event.connect ((widget, event) => {
+            return progress_window_delete_event (widget, event);
+        });
     }
     
     private void update_notification_or_status () {
