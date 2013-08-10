@@ -77,7 +77,7 @@ show_ok_dialog (const char *primary_text,
                 const char *secondary_text,
                 GtkMessageType type,
                 GtkWindow *parent)
-{  
+{
     GtkDialog *dialog;
 
     dialog = show_message_dialog (primary_text, secondary_text, type,
@@ -92,7 +92,7 @@ eel_show_warning_dialog (const char *primary_text,
                          const char *secondary_text,
                          GtkWindow *parent)
 {
-	return show_ok_dialog (primary_text, 
+	return show_ok_dialog (primary_text,
 			       secondary_text,
 			       GTK_MESSAGE_WARNING, parent);
 }

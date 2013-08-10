@@ -60,7 +60,7 @@ static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
 {
     /* this is required to set the category cells to bold and higher than the other ones */
     self->store = gtk_tree_store_new ((gint) PLACES_SIDEBAR_COLUMN_COUNT,
-                                      G_TYPE_INT, 
+                                      G_TYPE_INT,
                                       G_TYPE_STRING,
                                       G_TYPE_DRIVE,
                                       G_TYPE_VOLUME,

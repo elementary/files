@@ -29,7 +29,7 @@
 #include <gdk/gdk.h>
 
 /* Used for window position & size sanity-checking. The sizes are big enough to prevent
- * at least normal-sized gnome panels from obscuring the window at the screen edges. 
+ * at least normal-sized gnome panels from obscuring the window at the screen edges.
  */
 #define MINIMUM_ON_SCREEN_WIDTH     100
 #define MINIMUM_ON_SCREEN_HEIGHT    100
@@ -37,10 +37,10 @@
 /**
  * eel_gtk_window_get_geometry_string:
  * @window: a #GtkWindow
- * 
+ *
  * Obtains the geometry string for this window, suitable for
  * set_geometry_string(); assumes the window has NorthWest gravity
- * 
+ *
  * Return value: geometry string, must be freed
 **/
 char*
@@ -75,7 +75,7 @@ sanity_check_window_position (int *left, int *top)
      */
     *top = CLAMP (*top, 0, gdk_screen_height() - MINIMUM_ON_SCREEN_HEIGHT);
 
-    /* FIXME bugzilla.eazel.com 669: 
+    /* FIXME bugzilla.eazel.com 669:
      * If window has negative left coordinate, set_uposition sends it
      * somewhere else entirely. Not sure what level contains this bug (XWindows?).
      * Hacked around by pinning the left edge to zero, which just means you
@@ -106,13 +106,13 @@ sanity_check_window_dimensions (guint *width, guint *height)
 
 /**
  * eel_gtk_window_set_initial_geometry:
- * 
+ *
  * Sets the position and size of a GtkWindow before the
  * GtkWindow is shown. It is an error to call this on a window that
  * is already on-screen. Takes into account screen size, and does
  * some sanity-checking on the passed-in values.
  * If no originals coordinates are given the window would be centered
- * 
+ *
  * @window: A non-visible GtkWindow
  * @geometry_flags: A EelGdkGeometryFlags value defining which of
  * the following parameters have defined values
@@ -122,7 +122,7 @@ sanity_check_window_dimensions (guint *width, guint *height)
  * @height: height of window in pixels
  */
 void
-eel_gtk_window_set_initial_geometry (GtkWindow *window, 
+eel_gtk_window_set_initial_geometry (GtkWindow *window,
                                      EelGdkGeometryFlags geometry_flags,
                                      int left,
                                      int top,
@@ -137,7 +137,7 @@ eel_gtk_window_set_initial_geometry (GtkWindow *window,
 
     /* Setting the default size doesn't work when the window is already showing.
      * Someday we could make this move an already-showing window, but we don't
-     * need that functionality yet. 
+     * need that functionality yet.
      */
     g_return_if_fail (!gtk_widget_get_visible (GTK_WIDGET (window)));
 
@@ -177,13 +177,13 @@ eel_gtk_window_set_initial_geometry (GtkWindow *window,
 
 /**
  * eel_gtk_window_set_initial_geometry_from_string:
- * 
+ *
  * Sets the position and size of a GtkWindow before the
- * GtkWindow is shown. The geometry is passed in as a string. 
+ * GtkWindow is shown. The geometry is passed in as a string.
  * It is an error to call this on a window that
  * is already on-screen. Takes into account screen size, and does
  * some sanity-checking on the passed-in values.
- * 
+ *
  * @window: A non-visible GtkWindow
  * @geometry_string: A string suitable for use with eel_gdk_parse_geometry
  * @minimum_width: If the width from the string is smaller than this,
@@ -193,7 +193,7 @@ eel_gtk_window_set_initial_geometry (GtkWindow *window,
  * @ignore_position: If true position data from string will be ignored.
  */
 void
-eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window, 
+eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
                                                  const char *geometry_string,
                                                  guint minimum_width,
                                                  guint minimum_height,
@@ -208,7 +208,7 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
 
     /* Setting the default size doesn't work when the window is already showing.
      * Someday we could make this move an already-showing window, but we don't
-     * need that functionality yet. 
+     * need that functionality yet.
      */
     g_return_if_fail (!gtk_widget_get_visible (GTK_WIDGET (window)));
 
@@ -381,6 +381,6 @@ eel_gtk_widget_get_screen (GtkWidget *widget)
         screen = gdk_screen_get_default ();
     else if (GTK_IS_WIDGET (widget))
         screen = gtk_widget_get_screen (widget);
-        
+
     return screen;
 }

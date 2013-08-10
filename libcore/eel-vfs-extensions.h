@@ -1,4 +1,4 @@
-/* eel-vfs-extensions.c - gnome-vfs extensions.  Its likely some of these will 
+/* eel-vfs-extensions.c - gnome-vfs extensions.  Its likely some of these will
  *                        be part of gnome-vfs in the future.
  *
  * Copyright (C) 1999, 2000 Eazel, Inc.

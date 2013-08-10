@@ -35,7 +35,7 @@
 
 /**
  * marlin_get_accel_map_file:
- * 
+ *
  * Get the path for the filename containing nautilus accelerator map.
  * The filename need not exist. (according to gnome standard))
  *
@@ -77,7 +77,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
 
 		if (original_dir != NULL) {
 			if (directories == NULL) {
-				directories = g_hash_table_new_full (g_file_hash, 
+				directories = g_hash_table_new_full (g_file_hash,
                                              (GEqualFunc) g_file_equal,
                                              (GDestroyNotify) g_object_unref,
                                              (GDestroyNotify) my_list_free_full);
@@ -90,11 +90,11 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
 			g_hash_table_insert (directories, original_dir, m);
 		} else if (unhandled_files != NULL) {
 			*unhandled_files = g_list_append (*unhandled_files, gof_file_ref (file));
-    		if (original_dir != NULL) 
+    		if (original_dir != NULL)
 	    		g_object_unref (original_dir);
 		}
 
-		if (original_file != NULL) 
+		if (original_file != NULL)
 		    g_object_unref (original_file);
 
 	}
@@ -132,7 +132,7 @@ marlin_restore_files_from_trash (GList *files, GtkWindow *parent_window)
 			locations = g_hash_table_lookup (original_dirs_hash, original_dir);
 
             /*printf ("original dir: %s\n", g_file_get_uri (original_dir));*/
-			marlin_file_operations_move	(locations, NULL, 
+			marlin_file_operations_move	(locations, NULL,
                                          original_dir,
                                          parent_window,
                                          NULL, NULL);

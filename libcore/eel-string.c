@@ -195,19 +195,19 @@ eel_istr_has_suffix (const char *haystack, const char *needle)
 /**
  * eel_str_get_prefix:
  * Get a new string containing the first part of an existing string.
- * 
+ *
  * @source: The string whose prefix should be extracted.
  * @delimiter: The string that marks the end of the prefix.
- * 
+ *
  * Return value: A newly-allocated string that that matches the first part
  * of @source, up to but not including the first occurrence of
- * @delimiter. If @source is NULL, returns NULL. If 
+ * @delimiter. If @source is NULL, returns NULL. If
  * @delimiter is NULL, returns a copy of @source.
  * If @delimiter does not occur in @source, returns
  * a copy of @source.
 **/
 char *
-eel_str_get_prefix (const char *source, 
+eel_str_get_prefix (const char *source,
                     const char *delimiter)
 {
     char *prefix_start;
@@ -319,8 +319,8 @@ eel_str_capitalize (const char *string)
 
 /* Note: eel_string_ellipsize_* that use a length in pixels
  * rather than characters can be found in eel_gdk_extensions.h
- * 
- * FIXME bugzilla.eazel.com 5089: 
+ *
+ * FIXME bugzilla.eazel.com 5089:
  * we should coordinate the names of eel_string_ellipsize_*
  * and eel_str_*_truncate so that they match better and reflect
  * their different behavior.
@@ -452,7 +452,7 @@ typedef struct {
     int arg_pos;
     int width_pos;
     int width_format_index;
-    int precision_pos;  
+    int precision_pos;
     int precision_format_index;
 } ConversionInfo;
 
@@ -690,7 +690,7 @@ eel_strdup_vprintf_with_custom (EelPrintfHandler *custom,
             width = p;
             while (g_ascii_isdigit (*p)) {
                 p++;
-            }      
+            }
             g_string_append_len (f, width, p - width);
         }
 
@@ -711,7 +711,7 @@ eel_strdup_vprintf_with_custom (EelPrintfHandler *custom,
                 prec = p;
                 while (g_ascii_isdigit (*p) || *p == '-') {
                     p++;
-                }      
+                }
                 g_string_append_len (f, prec, p - prec);
             }
         }
@@ -908,7 +908,7 @@ retry_atomic_decrement:
         if (g_atomic_int_exchange_and_add (count, -1) == 0x80000001) {
             g_hash_table_remove (unique_ref_strs, (char *)str);
             g_free ((char *)count);
-        } 
+        }
         G_UNLOCK (unique_ref_strs);
     } else if (!g_atomic_int_compare_and_exchange (count,
                                                    old_ref, old_ref - 1)) {

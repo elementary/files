@@ -25,7 +25,7 @@ namespace Marlin.Animation {
             newvalue += 10;
 
             adj.value = initial + factor *
-                        Math.sin (((double) newvalue / (double) to_do) * Math.PI / x) * to_do;
+                        Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
 
             old_adj_value = adj.value;
             return true;

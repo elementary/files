@@ -1,4 +1,4 @@
-/* fm-list-model.h - a GtkTreeModel for file lists. 
+/* fm-list-model.h - a GtkTreeModel for file lists.
  *
  * Copyright (C) 2001, 2002 Anders Carlsson
  * Copyright (C) 2003, Soeren Sandmann
@@ -19,8 +19,8 @@
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Authors: Anders Carlsson <andersca@gnu.org>, 
- *          Soeren Sandmann (sandmann@daimi.au.dk), 
+ * Authors: Anders Carlsson <andersca@gnu.org>,
+ *          Soeren Sandmann (sandmann@daimi.au.dk),
  *          Dave Camp <dave@ximian.com>
  */
 
@@ -255,7 +255,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     case FM_LIST_MODEL_FILENAME:
         g_value_init (value, G_TYPE_STRING);
-        if (file != NULL) 
+        if (file != NULL)
             g_value_set_string(value, gof_file_get_display_name (file));
         break;
 
@@ -654,7 +654,7 @@ fm_list_model_set_sort_column_id (GtkTreeSortable *sortable, gint sort_column_id
 
     model = (FMListModel *)sortable;
 
-    model->details->sort_id = sort_column_id; 
+    model->details->sort_id = sort_column_id;
 
     model->details->order = order;
 
@@ -690,7 +690,7 @@ add_dummy_row (FMListModel *model, FileEntry *parent_entry)
 }
 
 gboolean
-fm_list_model_add_file (FMListModel *model, GOFFile *file, 
+fm_list_model_add_file (FMListModel *model, GOFFile *file,
                         GOFDirectoryAsync *directory)
 {
     GtkTreeIter iter;
@@ -996,8 +996,8 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
 
     file = NULL;
     if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path)) {
-        gtk_tree_model_get (GTK_TREE_MODEL (model), 
-                            &iter, 
+        gtk_tree_model_get (GTK_TREE_MODEL (model),
+                            &iter,
                             FM_LIST_MODEL_FILE_COLUMN, &file,
                             -1);
     }
@@ -1010,7 +1010,7 @@ fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
     GOFFile *file;
 
     file = NULL;
-    gtk_tree_model_get (GTK_TREE_MODEL (model), iter, 
+    gtk_tree_model_get (GTK_TREE_MODEL (model), iter,
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
 
     return (file);

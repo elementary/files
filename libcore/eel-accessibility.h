@@ -75,7 +75,7 @@ char*         eel_accessibility_text_get_text_after_offset
 gint          eel_accessibility_text_get_character_count
                                                       (AtkText              *text);
 
-                     
+
 #define EEL_TYPE_ACCESSIBLE_TEXT           (eel_accessible_text_get_type ())
 #define EEL_IS_ACCESSIBLE_TEXT(obj)        G_TYPE_CHECK_INSTANCE_TYPE ((obj), EEL_TYPE_ACCESSIBLE_TEXT)
 #define EEL_ACCESSIBLE_TEXT(obj)           G_TYPE_CHECK_INSTANCE_CAST ((obj), EEL_TYPE_ACCESSIBLE_TEXT, EelAccessibleText)

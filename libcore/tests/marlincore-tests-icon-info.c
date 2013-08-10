@@ -39,7 +39,7 @@ show_infos (gpointer data)
     marlin_icon_info_infos_caches ();
     //g_message ("pix ref count %u", G_OBJECT (data)->ref_count);
     g_main_loop_quit (loop);
-    
+
     return FALSE;
 }
 
@@ -53,7 +53,7 @@ void marlincore_tests_icon_info (void)
     g_assert(file != NULL);
     gof_file_query_update (file);
     g_assert(file->pix == NULL);
-    file->flags = 2; 
+    file->flags = 2;
     gof_file_update_icon (file, 128);
     g_assert(file->pix != NULL);
     gof_file_update_icon (file, 32);
