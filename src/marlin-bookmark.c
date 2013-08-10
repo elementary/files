@@ -353,10 +353,22 @@ marlin_bookmark_update_icon (MarlinBookmark *bookmark)
 static void
 bookmark_file_changed_callback (GFileMonitor *monitor, GFile *file, GFile *other_file, GFileMonitorEvent event_type, MarlinBookmark *bookmark)
 {
-    if (event_type == G_FILE_MONITOR_EVENT_DELETED && g_file_equal (file, bookmark->file->location)) {
-        g_signal_emit (bookmark, signals[DELETED], 0);
-    } else {
-        g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
+    g_debug ("%s - monitor event value is %i file is %s, other file is %s, bookmark location is %s",
+            G_STRFUNC,
+            event_type,
+            g_file_get_uri (file),
+            G_IS_FILE (other_file) ? g_file_get_uri (other_file) : "NULL",
+            g_file_get_uri (bookmark->file->location));
+
+    switch (event_type) {
+        case G_FILE_MONITOR_EVENT_DELETED :
+            g_signal_emit (bookmark, signals[DELETED], 0);
+            break;
+        case G_FILE_MONITOR_EVENT_MOVED :
+            marlin_bookmark_set_name (bookmark, g_file_get_basename (other_file));
+            break;
+        default :
+            break;
     }
 }
 
@@ -492,10 +504,13 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
     g_return_if_fail (bookmark->file->location != NULL);
 
     if (!marlin_bookmark_uri_known_not_to_exist (bookmark)) {
-        bookmark->monitor = g_file_monitor_file (bookmark->file->location, G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
-        g_signal_connect (bookmark->monitor, "changed", G_CALLBACK (bookmark_file_changed_callback), bookmark);
-        } else {
-            g_warning ("%s - directory is NULL", G_STRFUNC);
+        bookmark->monitor = g_file_monitor_file (bookmark->file->location,
+                                                G_FILE_MONITOR_SEND_MOVED,
+                                                NULL, NULL);
+                                                
+        g_signal_connect (bookmark->monitor, "changed",
+                            G_CALLBACK (bookmark_file_changed_callback),
+                            bookmark);
     }
 }
 
@@ -567,7 +582,6 @@ MarlinBookmark *
 marlin_bookmark_new (GOFFile *file, char *label)
 {
     MarlinBookmark *bookmark;
-
     bookmark = MARLIN_BOOKMARK (g_object_new (MARLIN_TYPE_BOOKMARK, NULL));
     g_object_ref_sink (bookmark);
 

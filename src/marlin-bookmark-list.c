@@ -125,12 +125,18 @@ bookmark_in_list_changed_callback (MarlinBookmark     *bookmark,
 }
 
 static void
-bookmark_in_list_to_be_deleted_callback (MarlinBookmark *bookmark, MarlinBookmarkList *bookmarks)
+bookmark_in_list_to_be_deleted_callback (MarlinBookmark *bookmark,
+                                        MarlinBookmarkList *bookmarks)
 {
     g_assert (MARLIN_IS_BOOKMARK (bookmark));
     g_assert (MARLIN_IS_BOOKMARK_LIST (bookmarks));
 
-    marlin_bookmark_list_delete_items_with_uri (bookmarks, g_file_get_uri (bookmark->file->location));
+    g_debug ("%s - deleting %s from bookmark list",
+            G_STRFUNC,
+            g_file_get_uri (bookmark->file->location));
+            
+    marlin_bookmark_list_delete_items_with_uri (bookmarks,
+                                                g_file_get_uri (bookmark->file->location));
 }
 
 static void
@@ -261,9 +267,12 @@ insert_bookmark_internal (MarlinBookmarkList *bookmarks,
     bookmarks->list = g_list_insert (bookmarks->list, bookmark, index);
 
     g_signal_connect_object (bookmark, "contents_changed",
-                             G_CALLBACK (bookmark_in_list_changed_callback), bookmarks, 0);
+                             G_CALLBACK (bookmark_in_list_changed_callback),
+                             bookmarks, 0);
+                             
     g_signal_connect_object (bookmark, "deleted",
-                             G_CALLBACK (bookmark_in_list_to_be_deleted_callback), bookmarks, 0);
+                             G_CALLBACK (bookmark_in_list_to_be_deleted_callback),
+                             bookmarks, 0);
 }
 
 /**
@@ -703,12 +712,7 @@ marlin_bookmark_list_load_file (MarlinBookmarkList *bookmarks)
 static void
 marlin_bookmark_list_save_file (MarlinBookmarkList *bookmarks)
 {
-    //g_message ("%s - emitting bookmarks CONTENT CHANGED", G_STRFUNC);
-    /* not necessary if bookmarks file is being monitored
-     * - saving the file will trigger it being reloaded
-     * through bookmarks->monitor */
-    if (!bookmarks->monitor)
-        g_signal_emit (bookmarks, signals[CONTENTS_CHANGED], 0);
+    g_signal_emit (bookmarks, signals[CONTENTS_CHANGED], 0);
 
     g_queue_push_head (bookmarks->pending_ops, GINT_TO_POINTER (SAVE_JOB));
 

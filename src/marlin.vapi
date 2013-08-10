@@ -81,6 +81,7 @@ namespace Marlin {
             public Dialog (Gtk.Window window);
         }
     }
+    
     [CCode (cprefix = "MarlinPlaces", lower_case_cprefix = "marlin_places_")]
     namespace Places {
         [CCode (cheader_filename = "marlin-places-sidebar.h")]
