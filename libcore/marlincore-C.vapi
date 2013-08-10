@@ -106,7 +106,7 @@ namespace Marlin
         public void undo (UndoFinishCallback? cb);
         public void redo (UndoFinishCallback? cb);
     }
-    
+
     [CCode (cheader_filename = "marlin-progress-info.h")]
     public class Progress.Info : Object {
         public Info ();
@@ -121,7 +121,7 @@ namespace Marlin
         public bool get_is_paused ();
         public Cancellable get_cancellable ();
     }
-    
+
     [CCode (cheader_filename = "marlin-progress-info-manager.h")]
     public class Progress.InfoManager : Object {
         public InfoManager ();
