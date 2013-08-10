@@ -297,12 +297,29 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void update_notification_or_status () {
+        if (this.notification_supports_persistence)
+            this.update_notification ();
+        else
+            this.update_status_icon ();
     }
     
     private void add_to_window (Marlin.Progress.Info info) {
+        var progress = new Marlin.Progress.InfoWidget (info);
+        this.ensure_window ();
+        
+        (this.window_vbox as Gtk.Box).pack_start (progress, false, false, 6);
+        
+        progress.show ();
     }
     
     private void show_complete_notification () {
+        if (!this.notification_supports_persistence)
+            return;
+            
+        var complete_notification = new Notify.Notification (_("File Operations"),
+                                                             _("All file operations have been successfully completed"),
+                                                             null);
+        complete_notification.show ();
     }
     
     private void hide_notification_or_status () {
