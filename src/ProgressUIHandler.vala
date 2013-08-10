@@ -243,6 +243,20 @@ public class Marlin.Progress.UIHandler : Object {
     
     private void update_unity_launcher (Marlin.Progress.Info info,
                                         bool added) {
+        if (this.quicklist_handler == null) {
+            this.quicklist_handler = QuicklistHandler.get_singleton ();
+            
+            if (this.quicklist_handler == null)
+                return;
+            
+            this.build_unity_quicklist ();
+        }
+        
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries)
+            this.update_unity_launcher_entry (info, marlin_lentry);
+        
+        if (added)
+            info.progress_changed.connect (unity_progress_changed);
     }
 #endif
 
