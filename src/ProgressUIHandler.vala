@@ -21,7 +21,7 @@
 
 private struct TimeoutData {
     Marlin.Progress.Info info;
-    Marlin.Progress.UIHandler ui_handler;
+    Marlin.Progress.UIHandler progress_ui_handler;
 }
 
 public class Marlin.Progress.UIHandler : Object {
@@ -403,13 +403,34 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void progress_info_started_cb (Marlin.Progress.Info info) {
+        var application = Marlin.Application.get ();
+        application.hold ();
+        
+        info.finished.connect (this.release_application);
+        
+        var data = TimeoutData ();
+        data.info = info;
+        data.progress_ui_handler = this;
+        
+        Timeout.add_seconds (2, () => {
+            return new_op_started_timeout (data);
+        });
     }
     
     private void new_progress_info_cb (Marlin.Progress.InfoManager manager,
                                        Marlin.Progress.Info info) {
+        info.started.connect (this.progress_info_started_cb);
     }
     
     private bool server_has_persistence () {
-        return false;
+        bool retval;
+        
+        unowned List<string> caps = Notify.get_server_caps ();
+        if (caps == null)
+            return false;
+            
+        retval = caps.find ("persistence") != null ? true : false;
+        
+        return retval;
     }
 }
