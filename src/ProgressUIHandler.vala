@@ -319,7 +319,11 @@ public class Marlin.Progress.UIHandler : Object {
         var complete_notification = new Notify.Notification (_("File Operations"),
                                                              _("All file operations have been successfully completed"),
                                                              null);
-        complete_notification.show ();
+        try {
+            complete_notification.show ();
+        } catch (Error error) {
+            warning ("There was an error when showing the notification: %s", error.message);
+        }
     }
     
     private void hide_notification_or_status () {
@@ -327,7 +331,11 @@ public class Marlin.Progress.UIHandler : Object {
             this.status_icon.visible = false;
 
         if (this.progress_notification != null) {
-            this.progress_notification.close ();
+            try {
+                this.progress_notification.close ();
+            } catch (Error error) {
+                warning ("There was an error when showing the notification: %s", error.message);
+            }
             
             //TODO: Are we leaking memory here?
             this.progress_notification = null;
@@ -355,13 +363,43 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void handle_new_progress_info (Marlin.Progress.Info info) {
+        info.finished.connect (progress_info_finished_cb);
+        
+        this.active_infos++;
+        
+        if (this.active_infos == 1) {
+            /* This is the only active operation, present the window */
+            this.add_to_window (info);
+            (this.progress_window as Gtk.Window).present ();
+        } else {
+            if (this.progress_window.visible)
+                this.add_to_window (info);
+            else
+                this.update_notification_or_status ();
+        }
+        
+#if HAVE_UNITY
+        this.update_unity_launcher (info, true);
+#endif
     }
     
     private bool new_op_started_timeout (TimeoutData data) {
+        Marlin.Progress.Info info = data.info;
+        
+        if (info.get_is_paused ())
+            return true;
+            
+        if (info.get_is_finished ())
+            this.handle_new_progress_info (info);
+    
         return false;
     }
     
     private void release_application (Marlin.Progress.Info info) {
+        var application = Marlin.Application.get ();
+        application.release ();
+        
+        debug ("ProgressUIHandler - release_application");
     }
     
     private void progress_info_started_cb (Marlin.Progress.Info info) {

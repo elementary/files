@@ -111,10 +111,13 @@ namespace Marlin
     public class Progress.Info : Object {
         public Info ();
         public signal void progress_changed ();
+        public signal void finished ();
         public void cancel ();
         public double get_progress ();
         public double get_current ();
         public double get_total ();
+        public bool get_is_finished ();
+        public bool get_is_paused ();
         public Cancellable get_cancellable ();
     }
     
