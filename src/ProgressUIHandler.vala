@@ -163,7 +163,7 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void unity_quicklist_show_activated (Dbusmenu.Menuitem menu,
-                                                 int timestamp) {
+                                                 uint timestamp) {
         if (!this.progress_window.visible)
             (this.progress_window as Gtk.Window).present ();
         else {
@@ -173,13 +173,41 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void unity_quicklist_cancel_activated (Dbusmenu.Menuitem menu,
-                                                   int timestamp) {
+                                                   uint timestamp) {
         unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
         foreach (var info in infos)
             info.cancel ();
     }
     
     private void build_unity_quicklist () {
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
+            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
+            Dbusmenu.Menuitem ql = unity_lentry.quicklist;
+            
+            var show_menuitem = new Dbusmenu.Menuitem ();
+            show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
+                                        _("Show Copy Dialog"));
+            show_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
+                                             false);
+            ql.child_add_position (show_menuitem, -1);
+            
+            marlin_lentry.progress_quicklists.prepend (show_menuitem);
+            show_menuitem.item_activated.connect ((menuitem, timestamp) => {
+                unity_quicklist_show_activated (menuitem, timestamp);
+            });
+            
+            var cancel_menuitem = new Dbusmenu.Menuitem ();
+            cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
+                                          _("Cancel All In-progress Actions"));
+            cancel_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
+                                               false);
+            ql.child_add_position (cancel_menuitem, -1);
+            
+            marlin_lentry.progress_quicklists.prepend (cancel_menuitem);
+            cancel_menuitem.item_activated.connect ((menuitem, timestamp) => {
+                unity_quicklist_cancel_activated (menuitem, timestamp);
+            });
+        }
     }
     
     private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
