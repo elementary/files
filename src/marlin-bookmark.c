@@ -293,6 +293,23 @@ marlin_bookmark_set_name (MarlinBookmark *bookmark, char *new_name)
     return TRUE;
 }
 
+gboolean
+marlin_bookmark_set_location (MarlinBookmark *bookmark, GFile *new_location)
+{
+    g_return_val_if_fail (new_location != NULL, FALSE);
+    g_return_val_if_fail (G_IS_FILE (new_location), FALSE);
+    g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), FALSE);
+
+    g_object_unref (bookmark->file);
+    bookmark->file = g_object_ref (gof_file_new (new_location, NULL));
+    if (bookmark->label != NULL) 
+        bookmark->name = bookmark->label;
+    else
+        bookmark->name = gof_file_get_display_name (bookmark->file);
+        
+    g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
+}
+
 #if 0
 static gboolean
 marlin_bookmark_icon_is_different (MarlinBookmark *bookmark,
@@ -362,10 +379,12 @@ bookmark_file_changed_callback (GFileMonitor *monitor, GFile *file, GFile *other
 
     switch (event_type) {
         case G_FILE_MONITOR_EVENT_DELETED :
-            g_signal_emit (bookmark, signals[DELETED], 0);
+            if (g_file_equal (file, bookmark->file->location)) {
+                g_signal_emit (bookmark, signals[DELETED], 0);
+            }
             break;
         case G_FILE_MONITOR_EVENT_MOVED :
-            marlin_bookmark_set_name (bookmark, g_file_get_basename (other_file));
+            marlin_bookmark_set_location (bookmark, other_file);
             break;
         default :
             break;
