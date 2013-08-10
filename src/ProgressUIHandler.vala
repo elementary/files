@@ -123,7 +123,7 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
 #if HAVE_UNITY
-    private void unity_progress_changed (Marlin.Progress.Info info) {
+    private void unity_progress_changed (Marlin.Progress.Info? info) {
         unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
         
         double progress = 0;
@@ -212,10 +212,33 @@ public class Marlin.Progress.UIHandler : Object {
     
     private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
                                        bool show) {
+        foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists)
+            menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
     }
     
     private void update_unity_launcher_entry (Marlin.Progress.Info info,
                                               Marlin.LauncherEntry marlin_lentry) {
+        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
+        
+        if (this.active_infos > 0) {
+            unity_lentry.progress_visible = true;
+            this.show_unity_quicklist (marlin_lentry, true);
+            this.unity_progress_changed (null);
+        } else {
+            unity_lentry.progress_visible = false;
+            unity_lentry.progress = 0.0;
+            unity_lentry.count_visible = false;
+            this.show_unity_quicklist (marlin_lentry, false);
+            
+            Cancellable pc = info.get_cancellable ();
+            
+            if (!pc.is_cancelled ()) {
+                unity_lentry.urgent = true;
+                Timeout.add_seconds (2, () => {
+                    return this.disable_unity_urgency (unity_lentry);
+                });
+            }
+        }
     }
     
     private void update_unity_launcher (Marlin.Progress.Info info,

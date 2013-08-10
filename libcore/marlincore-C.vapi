@@ -114,6 +114,7 @@ namespace Marlin
         public double get_progress ();
         public double get_current ();
         public double get_total ();
+        public Cancellable get_cancellable ();
     }
     
     [CCode (cheader_filename = "marlin-progress-info-manager.h")]
