@@ -1,18 +1,18 @@
 /*-
  * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>
  *
- * This program is free software; you can redistribute it and/or 
+ * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of 
+ * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public 
- * License along with this program; if not, write to the Free 
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
@@ -42,18 +42,18 @@
  * D-Bus services. This header contains an in-depth description of its design to make
  * it easier to understand why things are the way they are.
  *
- * Please note that all D-Bus calls are performed asynchronously. 
+ * Please note that all D-Bus calls are performed asynchronously.
  *
  *
- * When a request call is sent out, an internal request ID is created and 
- * associated with the corresponding DBusGProxyCall via the request_call_mapping hash 
- * table. 
+ * When a request call is sent out, an internal request ID is created and
+ * associated with the corresponding DBusGProxyCall via the request_call_mapping hash
+ * table.
  *
  * The D-Bus reply handler then checks if there was an delivery error or
  * not. If the request method was sent successfully, the handle returned by the
- * D-Bus thumbnailer is associated bidirectionally with the internal request ID via 
- * the request_handle_mapping and handle_request_mappings. In both cases, the 
- * association of the internal request ID with the DBusGProxyCall is removed from 
+ * D-Bus thumbnailer is associated bidirectionally with the internal request ID via
+ * the request_handle_mapping and handle_request_mappings. In both cases, the
+ * association of the internal request ID with the DBusGProxyCall is removed from
  * request_call_mapping.
  *
  * These hash tables play a major role in the Finished, Error and Ready
@@ -64,7 +64,7 @@
  * =============
  *
  * The Ready and Error signal handlers work exactly like Started except that
- * the Ready idle function sets the thumb state of the corresponding 
+ * the Ready idle function sets the thumb state of the corresponding
  * GOFFile objects to _READY and the Error signal sets the state to _NONE.
  *
  *
@@ -96,7 +96,7 @@ typedef struct _MarlinThumbnailerItem MarlinThumbnailerItem;
 
 
 static void                   marlin_thumbnailer_finalize               (GObject               *object);
-#ifdef HAVE_DBUS              
+#ifdef HAVE_DBUS
 static void                   marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer     *thumbnailer,
                                                                          DBusGConnection       *connection);
 static gboolean               marlin_thumbnailer_file_is_supported      (MarlinThumbnailer     *thumbnailer,
@@ -150,7 +150,7 @@ struct _MarlinThumbnailer
 
     GMutex     lock;
 
-    /* cached arrays of URI schemes and MIME types for which thumbnails 
+    /* cached arrays of URI schemes and MIME types for which thumbnails
      * can be generated */
     gchar     **supported_schemes;
     gchar     **supported_types;
@@ -230,11 +230,11 @@ marlin_thumbnailer_init (MarlinThumbnailer *thumbnailer)
     if (thumbnailer->thumbnailer_proxy != NULL)
     {
         /* we do, set up the hash tables */
-        thumbnailer->request_handle_mapping = 
+        thumbnailer->request_handle_mapping =
             g_hash_table_new_full (g_direct_hash, g_direct_equal, NULL, NULL);
-        thumbnailer->handle_request_mapping = 
+        thumbnailer->handle_request_mapping =
             g_hash_table_new_full (g_direct_hash, g_direct_equal, NULL, NULL);
-        thumbnailer->request_call_mapping = 
+        thumbnailer->request_call_mapping =
             g_hash_table_new_full (g_direct_hash, g_direct_equal, NULL, NULL);
     }
 
@@ -278,7 +278,7 @@ marlin_thumbnailer_finalize (GObject *object)
 
         g_hash_table_unref (thumbnailer->request_call_mapping);
 
-#if 0 
+#if 0
         /* dequeue all pending requests */
         list = g_hash_table_get_keys (thumbnailer->handle_request_mapping);
         for (lp = list; lp != NULL; lp = lp->next)
@@ -291,7 +291,7 @@ marlin_thumbnailer_finalize (GObject *object)
 
         /* disconnect from the thumbnailer proxy */
         g_signal_handlers_disconnect_matched (thumbnailer->thumbnailer_proxy,
-                                              G_SIGNAL_MATCH_DATA, 0, 0, 
+                                              G_SIGNAL_MATCH_DATA, 0, 0,
                                               NULL, NULL, thumbnailer);
 
         /* release the thumbnailer proxy */
@@ -327,8 +327,8 @@ marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer *thumbnailer,
     }
 
     /* create the thumbnailer proxy */
-    thumbnailer->thumbnailer_proxy = 
-        dbus_g_proxy_new_for_name (connection, 
+    thumbnailer->thumbnailer_proxy =
+        dbus_g_proxy_new_for_name (connection,
                                    "org.freedesktop.thumbnails.Thumbnailer1",
                                    "/org/freedesktop/thumbnails/Thumbnailer1",
                                    "org.freedesktop.thumbnails.Thumbnailer1");
@@ -336,9 +336,9 @@ marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer *thumbnailer,
     /* TODO this should actually be VOID:UINT,BOXED,INT,STRING */
     dbus_g_object_register_marshaller (g_cclosure_marshal_generic,
                                        G_TYPE_NONE,
-                                       G_TYPE_UINT, 
-                                       G_TYPE_STRV, 
-                                       G_TYPE_UINT, 
+                                       G_TYPE_UINT,
+                                       G_TYPE_STRV,
+                                       G_TYPE_UINT,
                                        G_TYPE_STRING,
                                        G_TYPE_INVALID);
 
@@ -348,24 +348,24 @@ marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer *thumbnailer,
                                        G_TYPE_STRV,
                                        G_TYPE_INVALID);
 
-    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Error", 
-                             G_TYPE_UINT, G_TYPE_STRV, G_TYPE_UINT, G_TYPE_STRING, 
+    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Error",
+                             G_TYPE_UINT, G_TYPE_STRV, G_TYPE_UINT, G_TYPE_STRING,
                              G_TYPE_INVALID);
-    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Finished", 
+    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Finished",
                              G_TYPE_UINT, G_TYPE_INVALID);
-    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Ready", 
+    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Ready",
                              G_TYPE_UINT, G_TYPE_STRV, G_TYPE_INVALID);
-    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Started", 
+    dbus_g_proxy_add_signal (thumbnailer->thumbnailer_proxy, "Started",
                              G_TYPE_UINT, G_TYPE_INVALID);
 
     dbus_g_proxy_connect_signal (thumbnailer->thumbnailer_proxy, "Error",
-                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_error), 
+                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_error),
                                  thumbnailer, NULL);
     dbus_g_proxy_connect_signal (thumbnailer->thumbnailer_proxy, "Finished",
-                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_finished), 
+                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_finished),
                                  thumbnailer, NULL);
     dbus_g_proxy_connect_signal (thumbnailer->thumbnailer_proxy, "Ready",
-                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_ready), 
+                                 G_CALLBACK (marlin_thumbnailer_thumbnailer_ready),
                                  thumbnailer, NULL);
 }
 
@@ -408,14 +408,14 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     }
 
     /* request the supported types on demand */
-    if (thumbnailer->supported_schemes == NULL 
+    if (thumbnailer->supported_schemes == NULL
         || thumbnailer->supported_types == NULL)
     {
         /* request the supported types from the thumbnailer D-Bus service. We only do
          * this once, so using a non-async call should be ok */
         marlin_thumbnailer_proxy_get_supported (thumbnailer->thumbnailer_proxy,
                                                 &thumbnailer->supported_schemes,
-                                                &thumbnailer->supported_types, 
+                                                &thumbnailer->supported_types,
                                                 NULL);
     }
 
@@ -498,7 +498,7 @@ marlin_thumbnailer_thumbnailer_finished (DBusGProxy        *proxy,
     g_return_if_fail (MARLIN_IS_THUMBNAILER (thumbnailer));
 
     /* look up the request ID for this D-Bus service handle */
-    request = g_hash_table_lookup (thumbnailer->handle_request_mapping, 
+    request = g_hash_table_lookup (thumbnailer->handle_request_mapping,
                                    GUINT_TO_POINTER (handle));
 
     /* check if we have a request for this handle */
@@ -538,8 +538,8 @@ marlin_thumbnailer_thumbnailer_ready (DBusGProxy        *proxy,
         thumbnailer->idles = g_list_prepend (thumbnailer->idles, idle);
 
         /* call the ready idle function when we have the time */
-        idle->id = g_idle_add_full (G_PRIORITY_LOW, 
-                                    marlin_thumbnailer_ready_idle, idle, 
+        idle->id = g_idle_add_full (G_PRIORITY_LOW,
+                                    marlin_thumbnailer_ready_idle, idle,
                                     marlin_thumbnailer_idle_free);
     }
 }
@@ -566,7 +566,7 @@ marlin_thumbnailer_queue_async_reply (DBusGProxy *proxy,
         /* remember that this request and D-Bus handle belong together */
         g_hash_table_insert (thumbnailer->request_handle_mapping,
                              call->request, GUINT_TO_POINTER (handle));
-        g_hash_table_insert (thumbnailer->handle_request_mapping, 
+        g_hash_table_insert (thumbnailer->handle_request_mapping,
                              GUINT_TO_POINTER (handle), call->request);
     }
 
@@ -614,16 +614,16 @@ marlin_thumbnailer_queue_async (MarlinThumbnailer *thumbnailer,
     if(large)
     {
         call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
-                                                 (const gchar **)uris, mime_hints, 
-                                                 "large", "foreground", 0, 
+                                                 (const gchar **)uris, mime_hints,
+                                                 "large", "foreground", 0,
                                                  marlin_thumbnailer_queue_async_reply,
                                                  thumbnailer_call);
     }
     else
     {
         call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
-                                                 (const gchar **)uris, mime_hints, 
-                                                 "normal", "foreground", 0, 
+                                                 (const gchar **)uris, mime_hints,
+                                                 "normal", "foreground", 0,
                                                  marlin_thumbnailer_queue_async_reply,
                                                  thumbnailer_call);
     }
@@ -743,7 +743,7 @@ marlin_thumbnailer_idle_free (gpointer data)
     g_return_if_fail (idle != NULL);
 
     /* free the URI array if necessary */
-    if (idle->type == MARLIN_THUMBNAILER_IDLE_READY 
+    if (idle->type == MARLIN_THUMBNAILER_IDLE_READY
         || idle->type == MARLIN_THUMBNAILER_IDLE_ERROR)
     {
         g_strfreev (idle->data.uris);
@@ -762,7 +762,7 @@ marlin_thumbnailer_idle_free (gpointer data)
 /**
  * marlin_thumbnailer_new:
  *
- * Allocates a new #MarlinThumbnailer object, which can be used to 
+ * Allocates a new #MarlinThumbnailer object, which can be used to
  * generate and store thumbnails for files.
  *
  * The caller is responsible to free the returned
@@ -842,7 +842,7 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
     g_mutex_unlock (&thumbnailer->lock);
 
     /* collect all supported files from the list that are neither in the
-     * about to be queued (wait queue), nor already queued, nor already 
+     * about to be queued (wait queue), nor already queued, nor already
      * processed (and awaiting to be refreshed) */
     for (lp = g_list_last (files); lp != NULL; lp = lp->prev)
     {
@@ -931,7 +931,7 @@ marlin_thumbnailer_dequeue (MarlinThumbnailer *thumbnailer,
         {
             /* Dequeue the request */
             //amtest
-            /*marlin_thumbnailer_proxy_dequeue (thumbnailer->thumbnailer_proxy, 
+            /*marlin_thumbnailer_proxy_dequeue (thumbnailer->thumbnailer_proxy,
               GPOINTER_TO_UINT (handle), NULL);*/
 
             /* drop all the request information */

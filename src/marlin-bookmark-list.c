@@ -68,7 +68,7 @@ new_bookmark_from_uri (const char *uri, char *label)
     new_bookmark = NULL;
     name = NULL;
 
-    if (label != NULL) { 
+    if (label != NULL) {
         name = g_strdup (label);
         has_label = TRUE;
     }*/
@@ -138,7 +138,7 @@ stop_monitoring_one (gpointer data, gpointer user_data)
     g_assert (MARLIN_IS_BOOKMARK (data));
     g_assert (MARLIN_IS_BOOKMARK_LIST (user_data));
 
-    stop_monitoring_bookmark (MARLIN_BOOKMARK_LIST (user_data), 
+    stop_monitoring_bookmark (MARLIN_BOOKMARK_LIST (user_data),
                               MARLIN_BOOKMARK (data));
     g_object_unref (MARLIN_BOOKMARK (data));
 }
@@ -201,7 +201,7 @@ marlin_bookmark_list_class_init (MarlinBookmarkListClass *class)
         g_signal_new ("contents_changed",
                       G_TYPE_FROM_CLASS (object_class),
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (MarlinBookmarkListClass, 
+                      G_STRUCT_OFFSET (MarlinBookmarkListClass,
                                        contents_changed),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
@@ -260,14 +260,14 @@ insert_bookmark_internal (MarlinBookmarkList *bookmarks,
  * @bookmark: Bookmark to append a copy of.
 **/
 void
-marlin_bookmark_list_append (MarlinBookmarkList *bookmarks, 
+marlin_bookmark_list_append (MarlinBookmarkList *bookmarks,
                              MarlinBookmark     *bookmark)
 {
     g_return_if_fail (MARLIN_IS_BOOKMARK_LIST (bookmarks));
     g_return_if_fail (MARLIN_IS_BOOKMARK (bookmark));
 
-    insert_bookmark_internal (bookmarks, 
-                              marlin_bookmark_copy (bookmark), 
+    insert_bookmark_internal (bookmarks,
+                              marlin_bookmark_copy (bookmark),
                               -1);
 
     marlin_bookmark_list_save_file (bookmarks);
@@ -279,31 +279,31 @@ marlin_bookmark_list_append (MarlinBookmarkList *bookmarks,
  * Check whether a bookmark with matching name and url is already in the list.
  * @bookmarks: MarlinBookmarkList to check contents of.
  * @bookmark: MarlinBookmark to match against.
- * 
+ *
  * Return value: TRUE if matching bookmark is in list, FALSE otherwise
 **/
 gboolean
-marlin_bookmark_list_contains (MarlinBookmarkList *bookmarks, 
+marlin_bookmark_list_contains (MarlinBookmarkList *bookmarks,
                                MarlinBookmark     *bookmark)
 {
     g_return_val_if_fail (MARLIN_IS_BOOKMARK_LIST (bookmarks), FALSE);
     g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), FALSE);
 
     return g_list_find_custom (bookmarks->list,
-                               (gpointer)bookmark, 
-                               marlin_bookmark_compare_with) 
+                               (gpointer)bookmark,
+                               marlin_bookmark_compare_with)
         != NULL;
 }
 
 /**
  * marlin_bookmark_list_delete_item_at:
- * 
+ *
  * Delete the bookmark at the specified position.
  * @bookmarks: the list of bookmarks.
  * @index: index, must be less than length of list.
 **/
 void
-marlin_bookmark_list_delete_item_at (MarlinBookmarkList *bookmarks, 
+marlin_bookmark_list_delete_item_at (MarlinBookmarkList *bookmarks,
                                      guint                 index)
 {
     GList *doomed;
@@ -363,13 +363,13 @@ marlin_bookmark_list_move_item (MarlinBookmarkList *bookmarks,
 
 /**
  * marlin_bookmark_list_delete_items_with_uri:
- * 
+ *
  * Delete all bookmarks with the given uri.
  * @bookmarks: the list of bookmarks.
  * @uri: The uri to match.
 **/
 void
-marlin_bookmark_list_delete_items_with_uri (MarlinBookmarkList *bookmarks, 
+marlin_bookmark_list_delete_items_with_uri (MarlinBookmarkList *bookmarks,
                                             const char           *uri)
 {
     GList *node, *next;
@@ -401,7 +401,7 @@ marlin_bookmark_list_delete_items_with_uri (MarlinBookmarkList *bookmarks,
 
 /**
  * marlin_bookmark_list_insert_item:
- * 
+ *
  * Insert a bookmark at a specified position.
  * @bookmarks: the list of bookmarks.
  * @index: the position to insert the bookmark at.
@@ -416,7 +416,7 @@ marlin_bookmark_list_insert_item (MarlinBookmarkList *bookmarks,
     g_return_if_fail (index <= g_list_length (bookmarks->list));
 
     insert_bookmark_internal (bookmarks,
-                              marlin_bookmark_copy (new_bookmark), 
+                              marlin_bookmark_copy (new_bookmark),
                               index);
 
     marlin_bookmark_list_save_file (bookmarks);
@@ -424,11 +424,11 @@ marlin_bookmark_list_insert_item (MarlinBookmarkList *bookmarks,
 
 /**
  * marlin_bookmark_list_item_at:
- * 
+ *
  * Get the bookmark at the specified position.
  * @bookmarks: the list of bookmarks.
  * @index: index, must be less than length of list.
- * 
+ *
  * Return value: the bookmark at position @index in @bookmarks.
 **/
 MarlinBookmark *
@@ -442,10 +442,10 @@ marlin_bookmark_list_item_at (MarlinBookmarkList *bookmarks, guint index)
 
 /**
  * marlin_bookmark_list_length:
- * 
+ *
  * Get the number of bookmarks in the list.
  * @bookmarks: the list of bookmarks.
- * 
+ *
  * Return value: the length of the bookmark list.
 **/
 guint
@@ -465,7 +465,7 @@ marlin_bookmark_list_get_gof_files (MarlinBookmarkList *bookmarks)
     for (p = bookmarks->list; p!= NULL; p=p->next) {
         GOFFile *gof = MARLIN_BOOKMARK (p->data)->file;
         //g_message ("%s %s", G_STRFUNC, gof->uri);
-        files = g_list_prepend (files, gof); 
+        files = g_list_prepend (files, gof);
     }
 
     return files;
@@ -505,8 +505,8 @@ load_file_finish (MarlinBookmarkList *bookmarks,
                     *space = '\0';
                     label = g_strdup (space + 1);
                 }
-                insert_bookmark_internal (bookmarks, 
-                                          new_bookmark_from_uri (lines[i], label), 
+                insert_bookmark_internal (bookmarks,
+                                          new_bookmark_from_uri (lines[i], label),
                                           -1);
 
                 g_free (label);
@@ -666,7 +666,7 @@ process_next_op (MarlinBookmarkList *bookmarks)
 
 /**
  * marlin_bookmark_list_load_file:
- * 
+ *
  * Reads bookmarks from file, clobbering contents in memory.
  * @bookmarks: the list of bookmarks to fill with file contents.
 **/
@@ -682,7 +682,7 @@ marlin_bookmark_list_load_file (MarlinBookmarkList *bookmarks)
 
 /**
  * marlin_bookmark_list_save_file:
- * 
+ *
  * Save bookmarks to disk.
  * @bookmarks: the list of bookmarks to save.
 **/
@@ -701,9 +701,9 @@ marlin_bookmark_list_save_file (MarlinBookmarkList *bookmarks)
 
 /**
  * marlin_bookmark_list_new:
- * 
+ *
  * Create a new bookmark_list, with contents read from disk.
- * 
+ *
  * Return value: A pointer to the new widget.
 **/
 MarlinBookmarkList *

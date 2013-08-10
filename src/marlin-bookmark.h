@@ -1,4 +1,4 @@
-/* 
+/*
  * marlin-bookmark.h - interface for individual bookmarks.
  *
  * Copyright (C) 1999, 2000 Eazel, Inc.
@@ -51,7 +51,7 @@ struct MarlinBookmark {
 
 struct MarlinBookmarkClass {
     GObjectClass parent_class;
-    
+
     /* Signals that clients can connect to. */
 
     /* The appearance_changed signal is emitted when the bookmark's

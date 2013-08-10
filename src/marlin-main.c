@@ -20,7 +20,7 @@ main (int argc, char *argv[])
     gint ret;
 
     g_type_init ();
-    
+
     /* Initialize gettext support */
     setlocale (LC_ALL, g_get_language_names ()[0]);
     textdomain (GETTEXT_PACKAGE);

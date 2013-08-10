@@ -191,19 +191,19 @@ gint           exo_icon_view_get_columns       (ExoIconView    *icon_view);
 void           exo_icon_view_set_item_width    (ExoIconView    *icon_view,
                                                 gint            item_width);
 gint           exo_icon_view_get_item_width    (ExoIconView    *icon_view);
-void           exo_icon_view_set_spacing       (ExoIconView    *icon_view, 
+void           exo_icon_view_set_spacing       (ExoIconView    *icon_view,
                                                 gint            spacing);
 gint           exo_icon_view_get_spacing       (ExoIconView    *icon_view);
-void           exo_icon_view_set_row_spacing   (ExoIconView    *icon_view, 
+void           exo_icon_view_set_row_spacing   (ExoIconView    *icon_view,
                                                 gint            row_spacing);
 gint           exo_icon_view_get_row_spacing   (ExoIconView    *icon_view);
-void           exo_icon_view_set_column_spacing (ExoIconView    *icon_view, 
+void           exo_icon_view_set_column_spacing (ExoIconView    *icon_view,
                                                  gint            column_spacing);
 gint           exo_icon_view_get_column_spacing (ExoIconView    *icon_view);
-void           exo_icon_view_set_margin        (ExoIconView    *icon_view, 
+void           exo_icon_view_set_margin        (ExoIconView    *icon_view,
                                                 gint            margin);
 gint           exo_icon_view_get_margin        (ExoIconView    *icon_view);
-void           exo_icon_view_set_item_padding  (ExoIconView    *icon_view, 
+void           exo_icon_view_set_item_padding  (ExoIconView    *icon_view,
                                                 gint            item_padding);
 gint           exo_icon_view_get_item_padding  (ExoIconView    *icon_view);
 

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  * Copyright (c) 2011  ammonkey <am.monkeyd@gmail.com>
  *
@@ -314,7 +314,7 @@ marlin_icon_renderer_set_property (GObject      *object,
 
 /**
  * marlin_icon_renderer_new:
- * 
+ *
  * Creates a new #MarlinIconRenderer. Adjust rendering
  * parameters using object properties. Object properties can be set
  * globally (with g_object_set()). Also, with #GtkTreeViewColumn, you
@@ -322,7 +322,7 @@ marlin_icon_renderer_set_property (GObject      *object,
  * can bind the "pixbuf" property on the cell renderer to a pixbuf value
  * in the model, thus rendering a different image in each row of the
  * #GtkTreeView.
- * 
+ *
  * Return value: the new cell renderer
 **/
 GtkCellRenderer *
@@ -398,8 +398,8 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
         if (y_offset) *y_offset = 0;
     }
 
-    /* Even if the last new pixbuf corresponding to the last requested size isn't generated 
-       yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails 
+    /* Even if the last new pixbuf corresponding to the last requested size isn't generated
+       yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails
        pixbuf */
     int s = MAX (pixbuf_width, pixbuf_height);
     priv->scale = (double)priv->size / s;
@@ -412,9 +412,9 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
 
 }
 
-static void 
-cairo_make_shadow_for_rect (cairo_t* cr, 
-                            gdouble x1, gdouble y1, gdouble w, gdouble h, 
+static void
+cairo_make_shadow_for_rect (cairo_t* cr,
+                            gdouble x1, gdouble y1, gdouble w, gdouble h,
                             gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size);
 
 static void
@@ -445,7 +445,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
       return;*/
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
-                                   &pix_rect.x, 
+                                   &pix_rect.x,
                                    &pix_rect.y,
                                    &pix_rect.width,
                                    &pix_rect.height);
@@ -496,7 +496,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     if (!gtk_widget_get_sensitive (widget) ||
         !gtk_cell_renderer_get_sensitive (cell))
         state |= GTK_STATE_FLAG_INSENSITIVE;
-    else if (priv->follow_state && 
+    else if (priv->follow_state &&
              (flags & (GTK_CELL_RENDERER_SELECTED |
                        GTK_CELL_RENDERER_PRELIT)) != 0) {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
@@ -536,14 +536,14 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         && gof_file_get_thumbnail_path (priv->file)
         && gof_file_thumb_can_frame (priv->file))
     {
-        cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4, 
-                                    pix_rect.width-4, pix_rect.height-6, 
+        cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4,
+                                    pix_rect.width-4, pix_rect.height-6,
                                     4, 0, 0, 0, 8);
         /* we need to mask the underlying shadows in case of transparent thumbs */
         GdkRGBA bg_color;
         gtk_style_context_get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg_color);
         gdk_cairo_set_source_rgba (cr, &bg_color);
-        cairo_rectangle (cr, pix_rect.x, pix_rect.y, 
+        cairo_rectangle (cr, pix_rect.x, pix_rect.y,
                          pix_rect.width, pix_rect.height);
         cairo_fill (cr);
     }
@@ -551,12 +551,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     gtk_render_icon (context, cr, pixbuf,
                      pix_rect.x, pix_rect.y);
 
-    /* let the theme draw a frame for loaded thumbnails */ 
+    /* let the theme draw a frame for loaded thumbnails */
     if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
         && gof_file_get_thumbnail_path (priv->file)
         && gof_file_thumb_can_frame (priv->file))
     {
-        gtk_render_frame (context, cr, 
+        gtk_render_frame (context, cr,
                           pix_rect.x, pix_rect.y,
                           pix_rect.width, pix_rect.height);
     }
@@ -656,8 +656,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
 #define _cairo_pattern_destroy0(var) ((var == NULL) ? NULL : (var = (cairo_pattern_destroy (var), NULL)))
 
-static void 
-add_shadow_stops (cairo_pattern_t* pat, gdouble r, gdouble g, gdouble b, gdouble size, gdouble alpha) 
+static void
+add_shadow_stops (cairo_pattern_t* pat, gdouble r, gdouble g, gdouble b, gdouble size, gdouble alpha)
 {
     g_return_if_fail (pat != NULL);
 
@@ -670,10 +670,10 @@ add_shadow_stops (cairo_pattern_t* pat, gdouble r, gdouble g, gdouble b, gdouble
 }
 
 
-static void 
-cairo_make_shadow_for_rect (cairo_t* cr, 
-                            gdouble x1, gdouble y1, gdouble w, gdouble h, 
-                            gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size) 
+static void
+cairo_make_shadow_for_rect (cairo_t* cr,
+                            gdouble x1, gdouble y1, gdouble w, gdouble h,
+                            gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size)
 {
     gdouble a;
     gdouble x2;
@@ -686,7 +686,7 @@ cairo_make_shadow_for_rect (cairo_t* cr,
     cairo_pattern_t* pat = NULL;
 
     g_return_if_fail (cr != NULL);
-    if (size < ((gdouble) 1)) 
+    if (size < ((gdouble) 1))
         return;
 
     cairo_save (cr);

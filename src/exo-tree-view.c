@@ -523,8 +523,8 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
             gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL);
 
             /* check if we have a new path */
-            if ((path == NULL && tree_view->priv->hover_path != NULL) || 
-                (path != NULL && tree_view->priv->hover_path == NULL) || 
+            if ((path == NULL && tree_view->priv->hover_path != NULL) ||
+                (path != NULL && tree_view->priv->hover_path == NULL) ||
                 (path != NULL && tree_view->priv->hover_path != NULL && gtk_tree_path_compare (path, tree_view->priv->hover_path) != 0))
             {
                 /* release the previous hover path */
@@ -549,7 +549,7 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                 }
             }
             else
-            {            
+            {
                 /* release the path resources */
                 gtk_tree_path_free (path);
             }

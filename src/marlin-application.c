@@ -133,7 +133,7 @@ open_tabs (MarlinApplication *application, GFile **files,
     }
 }
 
-static gboolean 
+static gboolean
 marlin_application_save_accel_map (gpointer data)
 {
     if (save_of_accel_map_requested) {
@@ -150,14 +150,14 @@ marlin_application_save_accel_map (gpointer data)
 }
 
 
-static void 
+static void
 queue_accel_map_save_callback (GtkAccelMap *object, gchar *accel_path,
                                guint accel_key, GdkModifierType accel_mods,
                                gpointer user_data)
 {
     if (!save_of_accel_map_requested) {
         save_of_accel_map_requested = TRUE;
-        g_timeout_add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY, 
+        g_timeout_add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
                                marlin_application_save_accel_map, NULL);
     }
 }
@@ -175,7 +175,7 @@ get_desktop_manager_selection (GdkDisplay *display, int screen)
     selection_atom = gdk_atom_intern (selection_name, FALSE);
 
     selection_owner = XGetSelectionOwner (GDK_DISPLAY_XDISPLAY (display),
-                                          gdk_x11_atom_to_xatom_for_display (display, 
+                                          gdk_x11_atom_to_xatom_for_display (display,
                                                                              selection_atom));
     if (selection_owner != None) {
         return NULL;
@@ -396,7 +396,7 @@ marlin_application_open_location (GApplication *app, GFile **files, gint n_files
         open_tabs (self, files, n_files, gdk_screen_get_default ());
     else
         open_windows (self, files, n_files, gdk_screen_get_default ());
-        
+
     self->priv->open_intab = FALSE;
 }
 
@@ -425,7 +425,7 @@ marlin_application_cmd (GApplication *app, GApplicationCommandLine *cmd)
           N_("Do not manage the desktop (ignore the preference set in the preferences dialog)."), NULL },*/
         { "tab", 't', 0, G_OPTION_ARG_NONE, &self->priv->open_intab,
             N_("Open uri(s) in new tab"), NULL },
-        { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell, 
+        { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell,
             N_("Quit Files."), NULL },
         { "debug", 'd', 0, G_OPTION_ARG_NONE, &self->priv->debug,
             N_("Enable debug logging"), NULL },
@@ -466,7 +466,7 @@ marlin_application_cmd (GApplication *app, GApplicationCommandLine *cmd)
     if (kill_shell) {
         marlin_application_quit (self);
         goto out;
-    } 
+    }
 
     GFile **files;
     gint i, len;
@@ -541,7 +541,7 @@ mount_removed_callback (GVolumeMonitor *monitor,
                 location = slot->location;
                 if (location == NULL ||
                     g_file_has_prefix (location, root) ||
-                    g_file_equal (location, root)) 
+                    g_file_equal (location, root))
                 {
                     //g_warning ("%s %s", G_STRFUNC, g_file_get_uri (location));
                     if (view_container == window->current_tab) {
@@ -552,7 +552,7 @@ mount_removed_callback (GVolumeMonitor *monitor,
                     }
                 }
             }
-            
+
             g_list_free (tabs);
         }
     }
@@ -571,13 +571,13 @@ init_schemas (void)
     marlin_column_view_settings = g_settings_new ("org.pantheon.files.column-view");
 
     /* bind settings with GOFPreferences */
-    g_settings_bind (settings, "show-hiddenfiles", 
+    g_settings_bind (settings, "show-hiddenfiles",
                      gof_preferences_get_default (), "show-hidden-files", 0);
-    g_settings_bind (settings, "confirm-trash", 
+    g_settings_bind (settings, "confirm-trash",
                      gof_preferences_get_default (), "confirm-trash", 0);
-    g_settings_bind (settings, "date-format", 
+    g_settings_bind (settings, "date-format",
                      gof_preferences_get_default (), "date-format", 0);
-    g_settings_bind (settings, "interpret-desktop-files", 
+    g_settings_bind (settings, "interpret-desktop-files",
                      gof_preferences_get_default (), "interpret-desktop-files", 0);
 
 }

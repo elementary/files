@@ -91,7 +91,7 @@ unity_quicklist_handler_launcher_entry_add (UnityQuicklistHandler *self,
         lentry->bookmark_quicklists = NULL;
         lentry->progress_quicklists = NULL;
         *entries = g_list_prepend (*entries, lentry);
-    
+
         /* ensure dynamic quicklists exist */
         DbusmenuMenuitem *ql = unity_launcher_entry_get_quicklist (entry);
         if (!ql) {
@@ -112,7 +112,7 @@ activate_bookmark_by_quicklist (DbusmenuMenuitem *menu,
 	GFile *location;
 
 	location = marlin_bookmark_get_location (bookmark);
-	marlin_application_create_window (marlin_application_get (), location, 
+	marlin_application_create_window (marlin_application_get (), location,
                                       gdk_screen_get_default ());
 
 	g_object_unref (location);

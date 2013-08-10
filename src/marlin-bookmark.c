@@ -1,4 +1,4 @@
-/* 
+/*
  * marlin-bookmark.c - implementation of individual bookmarks.
  *
  * Copyright (C) 1999, 2000 Eazel, Inc.
@@ -98,11 +98,11 @@ marlin_bookmark_init (MarlinBookmark *bookmark)
  * Check whether two bookmarks are considered identical.
  * @a: first MarlinBookmark*.
  * @b: second MarlinBookmark*.
- * 
- * Return value: 0 if @a and @b have same name and uri, 1 otherwise 
+ *
+ * Return value: 0 if @a and @b have same name and uri, 1 otherwise
  * (GCompareFunc style)
 **/
-int		    
+int		
 marlin_bookmark_compare_with (gconstpointer a, gconstpointer b)
 {
     MarlinBookmark *bookmark_a;
@@ -133,11 +133,11 @@ marlin_bookmark_compare_with (gconstpointer a, gconstpointer b)
  * Check whether the uris of two bookmarks are for the same location.
  * @a: first MarlinBookmark*.
  * @b: second MarlinBookmark*.
- * 
- * Return value: 0 if @a and @b have matching uri, 1 otherwise 
+ *
+ * Return value: 0 if @a and @b have matching uri, 1 otherwise
  * (GCompareFunc style)
 **/
-int		    
+int		
 marlin_bookmark_compare_uris (gconstpointer a, gconstpointer b)
 {
     MarlinBookmark *bookmark_a;
@@ -179,7 +179,7 @@ marlin_bookmark_get_has_custom_name (MarlinBookmark *bookmark)
 }
 
 #if 0
-GdkPixbuf *	    
+GdkPixbuf *	
 marlin_bookmark_get_pixbuf (MarlinBookmark *bookmark,
                               GtkIconSize stock_size)
 {
@@ -232,8 +232,8 @@ marlin_bookmark_get_location (MarlinBookmark *bookmark)
     /* Try to connect a file in case file exists now but didn't earlier.
      * This allows a bookmark to update its image properly in the case
      * where a new file appears with the same URI as a previously-deleted
-     * file. Calling connect_file here means that attempts to activate the 
-     * bookmark will update its image if possible. 
+     * file. Calling connect_file here means that attempts to activate the
+     * bookmark will update its image if possible.
      */
     //marlin_bookmark_connect_file (bookmark);
 
@@ -258,7 +258,7 @@ marlin_bookmark_get_uri (MarlinBookmark *bookmark)
  *
  * Change the user-displayed name of a bookmark.
  * @new_name: The new user-displayed name for this bookmark, mustn't be NULL.
- * 
+ *
  * Returns: TRUE if the name changed else FALSE.
 **/
 gboolean
@@ -269,7 +269,7 @@ marlin_bookmark_set_name (MarlinBookmark *bookmark, char *new_name)
 
     if (strcmp (new_name, bookmark->name) == 0) {
         return FALSE;
-    } 
+    }
 
     g_free (bookmark->label);
     bookmark->label = g_strdup (new_name);
@@ -368,9 +368,9 @@ bookmark_file_changed_callback (GOFFile *file, MarlinBookmark *bookmark)
     if (marlin_file_is_gone (file) ||
         marlin_file_is_in_trash (file)) {
         /* The file we were monitoring has been trashed, deleted,
-         * or moved in a way that we didn't notice. We should make 
-         * a spanking new GOFFile object for this 
-         * location so if a new file appears in this place 
+         * or moved in a way that we didn't notice. We should make
+         * a spanking new GOFFile object for this
+         * location so if a new file appears in this place
          * we will notice. However, we can't immediately do so
          * because creating a new GOFFile directly as a result
          * of noticing a file goes away may trigger i/o on that file
@@ -414,7 +414,7 @@ bookmark_file_changed_callback (GOFFile *file, MarlinBookmark *bookmark)
 #if 0
 /**
  * marlin_bookmark_set_icon_to_default:
- * 
+ *
  * Reset the icon to either the missing bookmark icon or the generic
  * bookmark icon, depending on whether the file still exists.
  */
@@ -488,7 +488,7 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
     }	
 
     /* Set icon based on available information; don't force network i/o
-     * to get any currently unknown information. 
+     * to get any currently unknown information.
      */
     if (!marlin_bookmark_update_icon (bookmark)) {
         if (bookmark->details->icon == NULL || bookmark->details->file == NULL) {
@@ -497,7 +497,7 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
     }
 
     if (!bookmark->details->has_custom_name &&
-        bookmark->details->file && 
+        bookmark->details->file &&
         marlin_file_check_if_ready (bookmark->details->file, MARLIN_FILE_ATTRIBUTE_INFO)) {
         //display_name = marlin_file_get_display_name (bookmark->details->file);
         display_name = bookmark->details->file->name;
@@ -522,7 +522,7 @@ marlin_bookmark_new (GOFFile *file, char *label)
     bookmark->name = NULL;
     bookmark->label = g_strdup (label);
     bookmark->file = g_object_ref (file);
-    if (label != NULL) 
+    if (label != NULL)
         bookmark->name = bookmark->label;
     if (bookmark->name == NULL)
         bookmark->name = gof_file_get_display_name (file);
@@ -530,7 +530,7 @@ marlin_bookmark_new (GOFFile *file, char *label)
     //marlin_bookmark_connect_file (new_bookmark);
 
     return bookmark;
-}				 
+}				
 
 #if 0
 static GtkWidget *
@@ -552,11 +552,11 @@ create_image_widget_for_bookmark (MarlinBookmark *bookmark)
 
 /**
  * marlin_bookmark_menu_item_new:
- * 
+ *
  * Return a menu item representing a bookmark.
  * @bookmark: The bookmark the menu item represents.
  * Return value: A newly-created bookmark, not yet shown.
-**/ 
+**/
 GtkWidget *
 marlin_bookmark_menu_item_new (MarlinBookmark *bookmark)
 {
