@@ -83,13 +83,16 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
      **/
     public void show () {
         focus = true;
+
         if (timeout > 0)
             Source.remove (timeout);
+
         timeout = Timeout.add (700, () => {
-                                    blink = !blink;
-                                    need_draw ();
-                                    return true;
-                                    });
+            blink = !blink;
+            need_draw ();
+
+            return true;
+        });
     }
 
     /**
@@ -115,6 +118,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         if (to_insert != null && to_insert.length > 0) {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
+
             if (first != second && second > 0) {
                 text = text.slice (0, first) + to_insert + text.slice (second, text.length);
                 selected_start = -1;
@@ -127,6 +131,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
                 cursor += to_insert.length;
             }
         }
+
         need_completion ();
     }
 
@@ -157,6 +162,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
                 if (selected_start < 0) {
                     selected_start = cursor;
                 }
+
                 if (selected_end < 0) {
                     selected_end = cursor;
                 }
@@ -167,16 +173,18 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             } else {
                 left ();
             }
+
             break;
 
         case 0xff53: /* right */
             if (cursor < text.length && !shift_pressed) {
-                cursor ++;
+                cursor++;
                 reset_selection ();
-            } else if(cursor < text.length && shift_pressed) {
+            } else if (cursor < text.length && shift_pressed) {
                 if (selected_start < 0) {
                     selected_start = cursor;
                 }
+
                 if (selected_end < 0) {
                     selected_end = cursor;
                 }
@@ -187,6 +195,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             } else if (!shift_pressed) {
                 complete ();
             }
+
             break;
 
         case 0xff0d: /* enter */
@@ -198,23 +207,25 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             if (get_selection () != null) {
                 delete_selection ();
                 need_completion ();
-            } else if(cursor > 0) {
-                text = text.slice (0,cursor - 1) + text.slice (cursor, text.length);
-                cursor --;
+            } else if (cursor > 0) {
+                text = text.slice (0, cursor - 1) + text.slice (cursor, text.length);
+                cursor--;
                 need_completion ();
             } else {
                 backspace ();
             }
+
             break;
 
         case 0xffff: /* delete */
             if (get_selection () == null && cursor < text.length && control_pressed) {
-                text = text.slice (0,cursor);
+                text = text.slice (0, cursor);
             } else if (get_selection () == null && cursor < text.length) {
-                text = text.slice (0,cursor) + text.slice (cursor + 1, text.length);
+                text = text.slice (0, cursor) + text.slice (cursor + 1, text.length);
             } else if (get_selection () != null) {
                 delete_selection ();
             }
+
             need_completion ();
             break;
 
@@ -253,6 +264,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
 
     public void complete () {
         reset_selection ();
+
         if (completion != "") {
             text += completion + "/";
             cursor += completion.length + 1;
@@ -267,6 +279,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
 
         if (!(first < 0 || second < 0))
             return text.slice (first,second);
+
         return null;
     }
 
@@ -276,8 +289,10 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
 
     public void mouse_motion_event (Gdk.EventMotion event, double width) {
         hover = false;
+
         if (event.x < width && event.x > width - arrow_img.get_width ())
             hover = true;
+
         if (is_selecting)
             selection_mouse_end = event.x > 0 ? event.x : 1;
     }
@@ -285,13 +300,14 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     public void mouse_press_event(Gdk.EventButton event, double width) {
         reset_selection ();
         blink = true;
-        if (event.x < width && event.x > width - arrow_img.get_width ())
+
+        if (event.x < width && event.x > width - arrow_img.get_width ()) {
             enter ();
-        else if (event.x >= 0) {
+        } else if (event.x >= 0) {
             is_selecting = true;
             selection_mouse_start = event.x;
             selection_mouse_end = event.x;
-        } else if(event.x >= -20) {
+        } else if (event.x >= -20) {
             is_selecting = true;
             selection_mouse_start = -1;
             selection_mouse_end = -1;
@@ -319,18 +335,22 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     private void update_selection (Cairo.Context cr, Gtk.Widget widget) {
         double last_diff = double.MAX;
         Pango.Layout layout = widget.create_pango_layout (text);
+
         if (selection_mouse_start > 0) {
             selected_start = -1;
             selection_start = 0;
             cursor = text.length;
+
             for (int i = 0; i <= text.length; i++) {
                 layout.set_text (text.slice(0, i), -1);
+
                 if (Math.fabs (selection_mouse_start - get_width (layout)) < last_diff) {
                     last_diff = Math.fabs (selection_mouse_start - get_width (layout));
                     selection_start = get_width (layout);
                     selected_start = i;
                 }
             }
+
             selection_mouse_start = -1;
         }
 
@@ -339,8 +359,10 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             selected_end = -1;
             selection_end = 0;
             cursor = text.length;
+
             for (int i = 0; i <= text.length; i++) {
                 layout.set_text (text.slice (0, i), -1);
+
                 if (Math.fabs (selection_mouse_end - get_width (layout)) < last_diff) {
                     last_diff = Math.fabs (selection_mouse_end - get_width (layout));
                     selection_end = get_width (layout);
@@ -348,6 +370,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
                     cursor = i;
                 }
             }
+
             selection_mouse_end = -1;
         }
     }
@@ -390,21 +413,24 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         if (need_selection_update)
             update_selection_key (cr, widget);
 
-        cr.set_source_rgba (0,0,0,0.8);
+        cr.set_source_rgba (0, 0, 0, 0.8);
 
         Pango.Layout layout = widget.create_pango_layout (text);
         computetext_width (layout);
-        button_context.render_layout (cr, x, height/2 - text_height/2, layout);
+        button_context.render_layout (cr, x, height / 2 - text_height / 2, layout);
 
         layout.set_text (text.slice (0, cursor), -1);
+
         if (blink && focus) {
-            cr.rectangle (x + get_width (layout), height/6, 1, 4*height/6);
+            cr.rectangle (x + get_width (layout), height / 6, 1, 4 * height / 6);
             cr.fill ();
         }
+
         if (text != "") {
                 Gdk.cairo_set_source_pixbuf (cr,arrow_img,
-                                      x + width - arrow_img.get_width() - 10,
-                                      height/2 - arrow_img.get_height()/2);
+                                             x + width - arrow_img.get_width() - 10,
+                                             height/2 - arrow_img.get_height() / 2);
+
             if (hover)
                 cr.paint ();
             else
@@ -412,8 +438,9 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         }
 
         /* draw completion */
-        cr.move_to (x + text_width, height/2 - text_height/2);
+        cr.move_to (x + text_width, height / 2 - text_height / 2);
         layout.set_text (completion, -1);
+
 #if VALA_0_14
         Gdk.RGBA color = button_context.get_color (Gtk.StateFlags.NORMAL);
 #else
@@ -425,7 +452,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
 
         /* draw selection */
         if (focus && selected_start >= 0 && selected_end >= 0) {
-            cr.rectangle (x + selection_start, height/6, selection_end - selection_start, 4*height/6);
+            cr.rectangle (x + selection_start, height / 6, selection_end - selection_start, 4 * height / 6);
 #if VALA_0_14
             color = button_context.get_background_color (Gtk.StateFlags.SELECTED);
 #else
@@ -435,13 +462,16 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             cr.fill ();
 
             layout.set_text (get_selection (), -1);
+
 #if VALA_0_14
             color = button_context.get_color (Gtk.StateFlags.SELECTED);
 #else
             button_context.get_color (Gtk.StateFlags.SELECTED, color);
 #endif
             Gdk.cairo_set_source_rgba (cr, color);
-            cr.move_to (x + Math.fmin (selection_start, selection_end), height/2 - text_height/2);
+            cr.move_to (x + Math.fmin (selection_start, selection_end),
+                        height / 2 - text_height / 2);
+
             Pango.cairo_show_layout (cr, layout);
         }
     }
