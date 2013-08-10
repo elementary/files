@@ -22,6 +22,7 @@
 public static Marlin.PluginManager plugins;
 
 public class Marlin.PluginManager : Object {
+
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
     Gee.List<string> names;
@@ -100,7 +101,7 @@ public class Marlin.PluginManager : Object {
 
             info = enumerator.next_file ();
 
-            while(info != null) {
+            while (info != null) {
                 string file_name = info.get_name ();
                 var plugin_file = dir.get_child_for_display_name (file_name);
 
@@ -163,7 +164,7 @@ public class Marlin.PluginManager : Object {
             keyfile.load_from_file (path, KeyFileFlags.NONE);
             string name = keyfile.get_string ("Plugin", "Name");
 
-            load_module(Path.build_filename(parent, keyfile.get_string ("Plugin", "File")), name);
+            load_module (Path.build_filename (parent, keyfile.get_string ("Plugin", "File")), name);
         } catch(Error e) {
             warning ("Couldn't open thie keyfile: %s, %s", path, e.message);
         }
@@ -174,7 +175,6 @@ public class Marlin.PluginManager : Object {
 
         if (menu is Gtk.Menu)
             drop_plugin_menuitems (menu as Gtk.Menu);
-
 
         foreach (var plugin in plugin_hash.values)
             plugin.context_menu (menu, files);
@@ -202,7 +202,7 @@ public class Marlin.PluginManager : Object {
         menus = null;
     }
 
-    public void ui(Gtk.UIManager data) {
+    public void ui (Gtk.UIManager data) {
         foreach (var plugin in plugin_hash.values)
             plugin.ui (data);
     }
