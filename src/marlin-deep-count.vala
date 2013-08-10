@@ -18,6 +18,7 @@
  */
 
 public class Marlin.DeepCount : Object {
+
     private File file;
     private string deep_count_attrs;
     private Cancellable cancellable;

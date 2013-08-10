@@ -34,6 +34,7 @@ public struct Marlin.View.Chrome.IconDirectory {
 }
 
 public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
+
     public string current_right_click_path;
     public string current_right_click_root;
     //double right_click_root;
@@ -135,11 +136,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         entry.need_draw.connect (queue_draw);
 
         entry.left.connect (() => {
-            if(elements.size > 0) {
+            if (elements.size > 0) {
                 var element = elements[elements.size - 1];
                 elements.remove (element);
+
                 if (element.display) {
-                    if(entry.text[0] != '/') {
+                    if (entry.text[0] != '/') {
                         entry.text = element.text + "/" + entry.text;
                         entry.cursor = element.text.length + 1;
                     } else {
@@ -163,6 +165,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                         tmp_entry += element.text;
                 }
             }
+
             entry.text = tmp_entry + tmp;
             elements.clear ();
         });
@@ -172,8 +175,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 string strloc = get_elements_path ();
                 File location = File.new_for_commandline_arg (strloc);
                 location = location.get_parent ();
+
                 if (location == null)
                     location = File.new_for_commandline_arg (protocol);
+
                 changed (location.get_uri () + "/");
                 grab_focus ();
             }
@@ -190,7 +195,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         entry.paste.connect (() => {
             var display = get_display ();
             Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display,atom);
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display, atom);
             clipboard.request_text (request_text);
         });
 
@@ -222,6 +227,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     void on_drag_data_received (Gdk.DragContext context, int x, int y, Gtk.SelectionData selection_data, uint info, uint time_) {
         var real_action = context.get_selected_action ();
         var uris = new List<GLib.File> ();
+
         foreach (var uri in selection_data.get_uris ()) {
             print ("Path to move: %s\n", uri);
             uris.append (File.new_for_uri (uri));
@@ -243,11 +249,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
+
         var el = get_element_from_coordinates (x, y);
+
         if (el != null)
             el.pressed = true;
         else
             Gdk.drag_status (context, 0, time);
+
         queue_draw ();
 
         return false;
@@ -255,10 +264,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
     private BreadcrumbsElement? get_element_from_coordinates (int x, int y) {
         double x_render = 0;
+
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
                 if (x_render <= x <= x_render + element.real_width)
                     return element;
+
                 x_render += element.real_width;
             }
         }
@@ -285,6 +296,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             icon.icon = icon_factory.load_symbolic_icon_from_gicon (button_context, icon.gicon, 16);
         else
             icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
+
         icons.append (icon);
     }
 
@@ -294,23 +306,23 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     }
 
     static const Gtk.ActionEntry[] action_entries = {
-/* name, stock id */         { "Cut", Gtk.Stock.CUT,
-/* label, accelerator */       null, null,
-/* tooltip */                  N_("Cut the selected text to the clipboard"),
-                             action_cut },
-/* name, stock id */         { "Copy", Gtk.Stock.COPY,
-/* label, accelerator */       null, null,
-/* tooltip */                 N_("Copy the selected text to the clipboard"),
-                            action_copy },
-/* name, stock id */        { "Paste", Gtk.Stock.PASTE,
-/* label, accelerator */      null, null,
-/* tooltip */                 N_("Paste the text stored on the clipboard"),
-                            action_paste },
-/* name, stock id */        { "Paste Into Folder", Gtk.Stock.PASTE,
-/* label, accelerator */      null, null,
-/* tooltip */                 N_("Paste the text stored on the clipboard"),
-                            action_paste }
-     };
+        /* name, stock id */         { "Cut", Gtk.Stock.CUT,
+                                       /* label, accelerator */       null, null,
+                                       /* tooltip */                  N_("Cut the selected text to the clipboard"),
+                                       action_cut },
+        /* name, stock id */         { "Copy", Gtk.Stock.COPY,
+                                       /* label, accelerator */       null, null,
+                                       /* tooltip */                 N_("Copy the selected text to the clipboard"),
+                                       action_copy },
+        /* name, stock id */        { "Paste", Gtk.Stock.PASTE,
+                                      /* label, accelerator */      null, null,
+                                      /* tooltip */                 N_("Paste the text stored on the clipboard"),
+                                      action_paste },
+        /* name, stock id */        { "Paste Into Folder", Gtk.Stock.PASTE,
+                                      /* label, accelerator */      null, null,
+                                      /* tooltip */                 N_("Paste the text stored on the clipboard"),
+                                      action_paste }
+    };
 
     /**
      * Get the current path of the PathBar, based on the elements that it contains
@@ -318,6 +330,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     public string get_elements_path () {
         string strpath = "";
         strpath = protocol;
+
         foreach (BreadcrumbsElement element in elements) {
             if (element.display)
                 strpath += element.text + "/"; /* sometimes, + "/" is useless
@@ -332,7 +345,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     private void action_paste (Gtk.Action action) {
         var display = get_display ();
         Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-        Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display,atom);
+        Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display, atom);
         clipboard.request_text (request_text);
     }
 
@@ -341,7 +354,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         if (selection != null) { /* else, it means that there is no selection */
             var display = get_display ();
             Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display,atom);
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display (display, atom);
             clipboard.set_text (entry.get_selection (), entry.get_selection ().length);
         }
     }
@@ -362,15 +375,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
      **/
     private bool select_bread_from_coord (Gdk.EventButton event) {
         var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+
         if (el != null) {
             var newpath = get_path_from_element (el);
             current_right_click_path = newpath;
             current_right_click_root = Marlin.Utils.get_parent (newpath);
             double menu_x_root;
+
             if (el.x - space_breads < 0)
                 menu_x_root = event.x_root - event.x + el.x;
             else
                 menu_x_root = event.x_root - event.x + el.x - space_breads;
+
             double menu_y_root = event.y_root - event.y + get_allocated_height ();
             load_right_click_menu (menu_x_root, menu_y_root);
             return true;
@@ -382,9 +398,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     public override bool button_press_event (Gdk.EventButton event) {
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
+
         var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+
         if (el != null)
             el.pressed = true;
+
         queue_draw ();
 
         if (timeout == -1 && event.button == 1) {
@@ -394,6 +413,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 return false;
             });
         }
+
         if (event.button == 2) {
             if (el != null) {
                 selected = elements.index_of (el);
@@ -415,10 +435,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
     public override bool button_release_event (Gdk.EventButton event) {
         reset_elements_states ();
+
         if (timeout != -1) {
             Source.remove ((uint) timeout);
             timeout = -1;
         }
+
         if (event.button == 1) {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
@@ -430,15 +452,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 grab_focus ();
             }
         }
+
         if (focus) {
             event.x -= x_render_saved;
             entry.mouse_release_event(event);
         }
+
         return true;
     }
 
     private void on_entry_enter () {
         text = get_elements_path ();
+
         if (text != "")
             changed (text + "/" + entry.text + entry.completion);
         else
@@ -463,6 +488,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         string strloc;
 
         warning ("change_breadcrumb text %s", newpath);
+
         if (Posix.strncmp (newpath, "./", 2) == 0) {
             entry.reset ();
             return null;
@@ -487,7 +513,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
-        var explode_protocol = newpath.split("://");
+        var explode_protocol = newpath.split ("://");
+
         if (explode_protocol.length > 1) {
             protocol = explode_protocol[0] + "://";
             text = explode_protocol[1];
@@ -495,6 +522,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             text = newpath;
             protocol = Marlin.ROOT_FS_URI;
         }
+
         selected = -1;
         var breads = text.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
@@ -508,12 +536,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         var volume_monitor = VolumeMonitor.get ();
         var mount_list = volume_monitor.get_mounts ();
         var icons_list = icons.length ();
+
         foreach (var mount in mount_list) {
             IconDirectory icon_directory = { mount.get_root ().get_path (),
                                              null, false,
                                              mount.get_icon (),
                                              null, mount.get_root ().get_path ().split ("/"),
                                              true, mount.get_name () };
+
             if (mount.get_root ().get_path () != null) {
                 icon_directory.exploded[0] = "/";
                 add_icon (icon_directory);
@@ -529,6 +559,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
         if (protocol == Marlin.ROOT_FS_URI)
             newelements[0].text = "/";
+
         int max_path = int.min (elements.size, newelements.size);
 
         bool same = true;
@@ -548,6 +579,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             } else if (!icon.protocol && icon.exploded.length <= newelements.size) {
                 bool found = true;
                 int h = 0;
+
                 for (int i = 0; i < icon.exploded.length; i++) {
                     if (icon.exploded[i] != newelements[i].text) {
                         found = false;
@@ -555,13 +587,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                     }
                     h = i;
                 }
+
                 if (found) {
-                    for(int j = 0; j < h; j++)
+                    for (int j = 0; j < h; j++)
                         newelements[j].display = false;
+
                     newelements[h].display = true;
                     newelements[h].set_icon (icon.icon);
                     newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
                     newelements[h].text_displayed = icon.text_displayed;
+
                     if (icon.break_loop) {
                         newelements[h].text = icon.path;
                         break;
@@ -597,10 +632,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     /* A threaded function to animate the old BreadcrumbsElement */
     private void animate_old_breads () {
         anim_state = 0;
+
         foreach (BreadcrumbsElement bread in newbreads)
             bread.offset = anim_state;
+
         if (anim > 0)
             Source.remove(anim);
+
         anim = Timeout.add (1000/60, () => {
             anim_state += 0.05;
             /* FIXME: Instead of this hacksih if( != null), we should use a
@@ -608,15 +646,19 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             if (newbreads != null)
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = anim_state;
+
             queue_draw ();
+
             if (anim_state >= 1) {
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = 1.0;
+
                 newbreads = null;
                 view_old = false;
                 queue_draw ();
                 return false;
             }
+
             return true;
         });
     }
@@ -624,10 +666,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     /* A threaded function to animate the new BreadcrumbsElement */
     private void animate_new_breads () {
         anim_state = 1;
+
         foreach (BreadcrumbsElement bread in newbreads)
             bread.offset = anim_state;
+
         if (anim > 0)
             Source.remove (anim);
+
         anim = Timeout.add (1000/60, () => {
             anim_state -= 0.08;
             /* FIXME: Instead of this hacksih if( != null), we should use a
@@ -635,10 +680,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             if (newbreads != null)
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = anim_state;
+
             queue_draw ();
+
             if (anim_state <= 0) {
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = 0.0;
+
                 newbreads = null;
                 view_old = false;
                 queue_draw ();
@@ -651,46 +699,44 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 /* disabled, waiting for deletion or fix the hardcoded stuff
  * or just draw elements by elements with widgets state flags */
 #if 0
-    private void draw_selection(Cairo.Context cr)
-    {
+    private void draw_selection (Cairo.Context cr) {
         /* If a dir is selected (= mouse hover)*/
-        if(selected != -1)
-        {
+        if (selected != -1) {
             int height = get_allocated_height();
             /* FIXME: this block could be cleaned up, +7 and +5 are
              * hardcoded. */
             double x_hl = y + right_padding + left_padding;
-            if(selected > 0)
-            {
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display)
-                    {
+
+            if (selected > 0) {
+                foreach(BreadcrumbsElement element in elements) {
+                    if (element.display) {
                         x_hl += element.real_width;
                     }
-                    if(element == elements[selected - 1])
-                    {
+
+                    if (element == elements[selected - 1]) {
                         break;
                     }
                 }
             }
+
             x_hl += 7;
-            double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
+            double first_stop = x_hl - 7 * (height / 2 - y)/(height / 2 - height / 3) + 5;
             double text_width = (elements[selected].max_width > 0 ? elements[selected].max_width : elements[selected].text_width);
+
             cr.move_to(first_stop,
                        y + 1);
             cr.line_to(x_hl + 3,
-                       height/2);
+                       height / 2);
             cr.line_to(first_stop,
                        height - y - 1);
 
             x_hl += text_width;
 
-            double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
+            double second_stop = x_hl - 7 * (height / 2 - y)/(height / 2 - height / 3) + 5;
             cr.line_to(second_stop,
                        height - y - 1);
             cr.line_to(x_hl + 3,
-                       height/2);
+                       height / 2);
             cr.line_to(second_stop,
                        y + 1);
             cr.close_path();
@@ -717,24 +763,29 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         double x_previous = -10;
         selected = -1;
         set_tooltip_text ("");
+
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
                 x_render += element.real_width;
                 if (x <= x_render + 5 && x > x_previous + 5) {
                     selected = elements.index_of (element);
                     //TODO doesn't work
-                    set_tooltip_text (_("Go to %s").printf(element.text));
+                    set_tooltip_text (_("Go to %s").printf (element.text));
                     break;
                 }
+
                 x_previous = x_render;
             }
         }
+
         event.x -= x_render_saved;
         entry.mouse_motion_event (event, get_allocated_width () - x_render_saved);
+
         if (event.x > 0 && event.x + x_render_saved < get_allocated_width () - entry.arrow_img.get_width ())
             get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.XTERM));
         else
             get_window ().set_cursor (null);
+
         queue_draw ();
         return true;
     }
@@ -779,12 +830,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 breadcrumbs_count++;
             }
         }
+
         return max_width;
     }
 
     public void reset_elements_states () {
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
+
         queue_draw ();
     }
 
@@ -854,12 +907,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             cr.save ();
             x_render -= height_marged/2 + 3;
 
-
             cr.move_to (0, 0);
             cr.line_to (0, y + height_marged + 3);
             cr.line_to (x_render, y + height_marged + 3);
             cr.line_to (x_render, y + height_marged);
-            cr.line_to (x_render + height_marged/2, y+height_marged/2);
+            cr.line_to (x_render + height_marged / 2, y+height_marged / 2);
             cr.line_to (x_render, y);
             cr.line_to (x_render, 0);
             cr.close_path ();
@@ -870,7 +922,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
             cr.move_to (x_render, get_allocated_height());
             cr.line_to (x_render, y + height_marged);
-            cr.line_to (x_render + height_marged/2, y+height_marged/2);
+            cr.line_to (x_render + height_marged / 2, y+height_marged / 2);
             cr.line_to (x_render, y);
             cr.line_to (x_render, 0);
             cr.line_to (get_allocated_width(), 0);
@@ -880,11 +932,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             button_context_active.render_background (cr, 0, margin, width, height_marged);
             button_context_active.render_frame (cr, 0, margin, width, height_marged);
             cr.restore ();
-            x_render += height_marged/2 + 3;
+            x_render += height_marged / 2 + 3;
         } else {
             button_context.render_frame (cr, 0, margin, width, height_marged);
         }
-        entry.draw (cr, x_render + space_breads/2, height, width - x_render, this, button_context);
+
+        entry.draw (cr, x_render + space_breads / 2, height, width - x_render, this, button_context);
         return true;
     }
 
@@ -900,6 +953,6 @@ namespace Marlin.Utils {
 
     public bool has_parent (string newpath) {
         var file = File.new_for_commandline_arg (newpath);
-        return (file.get_parent () != null);
+        return file.get_parent () != null;
     }
 }
