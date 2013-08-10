@@ -323,11 +323,37 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private void hide_notification_or_status () {
+        if (this.status_icon != null)
+            this.status_icon.visible = false;
+
+        if (this.progress_notification != null) {
+            this.progress_notification.close ();
+            
+            //TODO: Are we leaking memory here?
+            this.progress_notification = null;
+        }
     }
     
     private void progress_info_finished_cb (Marlin.Progress.Info info) {
+        this.active_infos--;
+        
+        if (this.active_infos > 0) {
+            if (!this.progress_window.visible)
+                this.update_notification_or_status ();
+        } else {
+            if (this.progress_window.visible) {
+                progress_window.hide ();
+            } else {
+                this.hide_notification_or_status ();
+                this.show_complete_notification ();
+            }
+        }
+        
+#if HAVE_UNITY
+        this.update_unity_launcher (info, false);
+#endif
     }
-    
+
     private void handle_new_progress_info (Marlin.Progress.Info info) {
     }
     
