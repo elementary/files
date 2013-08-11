@@ -347,7 +347,7 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.active_infos > 0) {
             unity_lentry.progress_visible = true;
             show_unity_quicklist (marlin_lentry, true);
-            unity_progress_changed (null);
+            unity_progress_changed ();
         } else {
             unity_lentry.progress_visible = false;
             unity_lentry.progress = 0.0;
@@ -371,7 +371,7 @@ public class Marlin.Progress.UIHandler : Object {
             menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
     }
 
-    private void unity_progress_changed (Marlin.Progress.Info? info) {
+    private void unity_progress_changed () {
         double progress = 0;
         double current = 0;
         double total = 0;
