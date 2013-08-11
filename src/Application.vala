@@ -41,7 +41,7 @@ public class Marlin.Application : Granite.Application {
         application_singleton = this;
     }
 
-    public static new Application get () {
+    public static new unowned Application get () {
         if (application_singleton == null)
             application_singleton = new Marlin.Application ();
 
