@@ -104,6 +104,22 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
     }
     
+    private void add_to_window (Marlin.Progress.Info info) {
+        ensure_window ();
+
+        var progress_widget = new Marlin.Progress.InfoWidget (info);
+        (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
+
+        progress_widget.show ();
+    }
+    
+    private void update_notification_or_status () {
+        if (this.notification_supports_persistence)
+            update_notification ();
+        else
+            update_status_icon ();
+    }
+    
     private void progress_info_finished_cb (Marlin.Progress.Info info) {
         this.active_infos--;
 
@@ -123,54 +139,40 @@ public class Marlin.Progress.UIHandler : Object {
         update_unity_launcher (info, false);
 #endif
     }
-
-    private void status_icon_activate_cb (Gtk.StatusIcon icon) {
-        icon.set_visible (false);
-        (this.progress_window as Gtk.Window).present ();
-    }
-
-    private void notification_show_details_cb (Notify.Notification notification,
-                                               string action_name) {
-        if (action_name != ACTION_DETAILS)
-            return;
-
-        try {
-            progress_notification.close ();
-        } catch (Error error) {
-            warning ("There was an error when closing the notification: %s", error.message);
-        }
-
-        (progress_window as Gtk.Window).present ();
-    }
-
-    private void ensure_notification () {
-        if (this.progress_notification != null)
-            return;
-
-        this.progress_notification = new Notify.Notification (_("File Operations"),
-                                                              null, null);
-
-        this.progress_notification.set_category ("transfer");
-        this.progress_notification.set_hint ("resident", new Variant.boolean (true));
-        this.progress_notification.add_action (ACTION_DETAILS,
-                                               _("Show Details"),
-                                               (Notify.ActionCallback) notification_show_details_cb);
-    }
-
-    private void ensure_status_icon () {
+    
+    private void hide_notification_or_status () {
         if (this.status_icon != null)
+            this.status_icon.visible = false;
+
+        if (this.progress_notification != null) {
+            try {
+                this.progress_notification.close ();
+            } catch (Error error) {
+                warning ("There was an error when showing the notification: %s", error.message);
+            }
+
+            //TODO: Are we leaking memory here?
+            this.progress_notification = null;
+        }
+    }
+    
+    private void show_complete_notification () {
+        /* Don't display the notification if we'd be using a status icon */
+        if (!this.notification_supports_persistence)
             return;
 
-        var icon = new ThemedIcon.with_default_fallbacks ("system-file-manager-symbolic");
-        this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
-
-        this.status_icon.activate.connect (status_icon_activate_cb);
-        
-        this.status_icon.visible = false;
+        var complete_notification = new Notify.Notification (_("File Operations"),
+                                                             _("All file operations have been successfully completed"),
+                                                             null);
+        try {
+            complete_notification.show ();
+        } catch (Error error) {
+            warning ("There was an error when showing the notification: %s", error.message);
+        }
     }
-
+    
     private void update_notification () {
-        this.ensure_notification ();
+        ensure_notification ();
 
         string body = ngettext ("%'d file operation active",
                                 "%'d file operations active",
@@ -185,9 +187,23 @@ public class Marlin.Progress.UIHandler : Object {
             warning ("There was an error when showing the notification: %s", error.message);
         }
     }
+    
+    private void ensure_notification () {
+        if (this.progress_notification != null)
+            return;
+
+        this.progress_notification = new Notify.Notification (_("File Operations"),
+                                                              null, null);
+
+        this.progress_notification.set_category ("transfer");
+        this.progress_notification.set_hint ("resident", new Variant.boolean (true));
+        this.progress_notification.add_action (ACTION_DETAILS,
+                                               _("Show Details"),
+                                               (Notify.ActionCallback) notification_show_details_cb);
+    }
 
     private void update_status_icon () {
-        this.ensure_status_icon ();
+        ensure_status_icon ();
 
         string tooltip = ngettext ("%'d file operation active",
                                    "%'d file operations active",
@@ -196,6 +212,35 @@ public class Marlin.Progress.UIHandler : Object {
         this.status_icon.set_tooltip_text (tooltip);
 
         this.status_icon.visible = true;
+    }
+    
+    private void ensure_status_icon () {
+        if (this.status_icon != null)
+            return;
+
+        var icon = new ThemedIcon.with_default_fallbacks ("system-file-manager-symbolic");
+        this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
+
+        this.status_icon.activate.connect (() => {
+            status_icon.visible = false;
+            (this.progress_window as Gtk.Window).present ();
+        });
+        
+        this.status_icon.visible = false;
+    }
+
+    private void notification_show_details_cb (Notify.Notification notification,
+                                               string action_name) {
+        if (action_name != ACTION_DETAILS)
+            return;
+
+        try {
+            progress_notification.close ();
+        } catch (Error error) {
+            warning ("There was an error when closing the notification: %s", error.message);
+        }
+
+        (progress_window as Gtk.Window).present ();
     }
 
 #if HAVE_UNITY
@@ -368,53 +413,6 @@ public class Marlin.Progress.UIHandler : Object {
         progress_window.delete_event.connect ((widget, event) => {
             return progress_window_delete_event (widget, event);
         });
-    }
-
-    private void update_notification_or_status () {
-        if (this.notification_supports_persistence)
-            this.update_notification ();
-        else
-            this.update_status_icon ();
-    }
-
-    private void add_to_window (Marlin.Progress.Info info) {
-        this.ensure_window ();
-
-        var progress = new Marlin.Progress.InfoWidget (info);
-        (this.window_vbox as Gtk.Box).pack_start (progress, false, false, 6);
-
-        progress.show ();
-    }
-
-    private void show_complete_notification () {
-        /* Don't display the notification if we would be using a status icon */
-        if (!this.notification_supports_persistence)
-            return;
-
-        var complete_notification = new Notify.Notification (_("File Operations"),
-                                                             _("All file operations have been successfully completed"),
-                                                             null);
-        try {
-            complete_notification.show ();
-        } catch (Error error) {
-            warning ("There was an error when showing the notification: %s", error.message);
-        }
-    }
-
-    private void hide_notification_or_status () {
-        if (this.status_icon != null)
-            this.status_icon.visible = false;
-
-        if (this.progress_notification != null) {
-            try {
-                this.progress_notification.close ();
-            } catch (Error error) {
-                warning ("There was an error when showing the notification: %s", error.message);
-            }
-
-            //TODO: Are we leaking memory here?
-            this.progress_notification = null;
-        }
     }
 
     private bool server_has_persistence () {
