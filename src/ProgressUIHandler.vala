@@ -295,6 +295,13 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void build_unity_quicklist () {
         foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
+            var separator = new Dbusmenu.Menuitem ();
+            separator.property_set (Dbusmenu.MENUITEM_PROP_TYPE,
+                                    Dbusmenu.CLIENT_TYPES_SEPARATOR);
+            separator.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
+                                        "Progress items separator");
+            marlin_lentry.progress_quicklists.append (separator);
+        
             var show_menuitem = new Dbusmenu.Menuitem ();
             show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
                                         _("Show Copy Dialog"));
