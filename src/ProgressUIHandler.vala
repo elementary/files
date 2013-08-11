@@ -275,8 +275,8 @@ public class Marlin.Progress.UIHandler : Object {
             quicklist.child_add_position (show_menuitem, -1);
 
             marlin_lentry.progress_quicklists.prepend (show_menuitem);
-            show_menuitem.item_activated.connect ((menuitem, timestamp) => {
-                unity_quicklist_show_activated (menuitem, timestamp);
+            show_menuitem.item_activated.connect (() => {
+                unity_quicklist_show_activated (show_menuitem);
             });
 
             var cancel_menuitem = new Dbusmenu.Menuitem ();
@@ -287,10 +287,26 @@ public class Marlin.Progress.UIHandler : Object {
             quicklist.child_add_position (cancel_menuitem, -1);
 
             marlin_lentry.progress_quicklists.prepend (cancel_menuitem);
-            cancel_menuitem.item_activated.connect ((menuitem, timestamp) => {
-                unity_quicklist_cancel_activated (menuitem, timestamp);
+            cancel_menuitem.item_activated.connect (() => {
+                unity_quicklist_cancel_activated (cancel_menuitem);
             });
         }
+    }
+    
+    private void unity_quicklist_show_activated (Dbusmenu.Menuitem menu) {
+        if (!this.progress_window.visible)
+            (this.progress_window as Gtk.Window).present ();
+        else {
+            //TODO: This does not seem to work correctly.
+            (this.progress_window as Gtk.Window).set_keep_above (true);
+            (this.progress_window as Gtk.Window).set_keep_above (false);
+        }
+    }
+    
+    private void unity_quicklist_cancel_activated (Dbusmenu.Menuitem menu) {
+        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        foreach (var info in infos)
+            info.cancel ();
     }
 
     private void update_unity_launcher_entry (Marlin.Progress.Info info,
@@ -353,24 +369,6 @@ public class Marlin.Progress.UIHandler : Object {
         entry.urgent = false;
 
         return false;
-    }
-
-    private void unity_quicklist_show_activated (Dbusmenu.Menuitem menu,
-                                                 uint timestamp) {
-        if (!this.progress_window.visible)
-            (this.progress_window as Gtk.Window).present ();
-        else {
-            //TODO: This does not seem to work correctly.
-            (this.progress_window as Gtk.Window).set_keep_above (true);
-            (this.progress_window as Gtk.Window).set_keep_above (false);
-        }
-    }
-
-    private void unity_quicklist_cancel_activated (Dbusmenu.Menuitem menu,
-                                                   uint timestamp) {
-        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
-        foreach (var info in infos)
-            info.cancel ();
     }
 
     private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
