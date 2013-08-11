@@ -294,46 +294,41 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void build_unity_quicklist () {
+        /* Create menu items for the quicklist */
         foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
+            /* Separator between bookmarks and progress items */
             var separator = new Dbusmenu.Menuitem ();
             separator.property_set (Dbusmenu.MENUITEM_PROP_TYPE,
                                     Dbusmenu.CLIENT_TYPES_SEPARATOR);
             separator.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                        "Progress items separator");
+                                    "Progress items separator");
             marlin_lentry.progress_quicklists.append (separator);
-        
+
+            /* "Show progress window" menu item */
             var show_menuitem = new Dbusmenu.Menuitem ();
             show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
                                         _("Show Copy Dialog"));
+
             show_menuitem.item_activated.connect (() => {
-                unity_quicklist_show_activated (show_menuitem);
+                (this.progress_window as Gtk.Window).present ();
             });
+
             marlin_lentry.progress_quicklists.append (show_menuitem);
 
+            /* "Cancel in-progress operations" menu item */
             var cancel_menuitem = new Dbusmenu.Menuitem ();
             cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
                                           _("Cancel All In-progress Actions"));
+
             cancel_menuitem.item_activated.connect (() => {
-                unity_quicklist_cancel_activated (cancel_menuitem);
+                unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+
+                foreach (var info in infos)
+                    info.cancel ();
             });
+
             marlin_lentry.progress_quicklists.append (cancel_menuitem);
         }
-    }
-
-    private void unity_quicklist_show_activated (Dbusmenu.Menuitem menu) {
-        if (!this.progress_window.visible)
-            (this.progress_window as Gtk.Window).present ();
-        else {
-            //TODO: This does not seem to work correctly.
-            (this.progress_window as Gtk.Window).set_keep_above (true);
-            (this.progress_window as Gtk.Window).set_keep_above (false);
-        }
-    }
-
-    private void unity_quicklist_cancel_activated (Dbusmenu.Menuitem menu) {
-        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
-        foreach (var info in infos)
-            info.cancel ();
     }
 
     private void update_unity_launcher_entry (Marlin.Progress.Info info,
