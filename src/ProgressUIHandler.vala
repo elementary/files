@@ -39,33 +39,51 @@ public class Marlin.Progress.UIHandler : Object {
     private Marlin.QuicklistHandler quicklist_handler = null;
 #endif
 
-    /* Our policy for showing progress notification is the following:
-    * - file operations that end within two seconds do not get notified in any way
-    * - if no file operations are running, and one passes the two seconds
-    *   timeout, a window is displayed with the progress
-    * - if the window is closed, we show a resident notification, or a status icon, depending on
-    *   the capabilities of the notification daemon running in the session
-    * - if some file operations are running, and another one passes the two seconds
-    *   timeout, and the window is showing, we add it to the window directly
-    * - in the same case, but when the window is not showing, we update the resident
-    *   notification, changing its message, or the status icon's tooltip
-    * - when one file operation finishes, if it's not the last one, we only update the
-    *   resident notification's message, or the status icon's tooltip
-    * - in the same case, if it's the last one, we close the resident notification,
-    *   or the status icon, and trigger a transient one
-    * - in the same case, but the window was showing, we just hide the window
-    */
-
     private const string ACTION_DETAILS = "details";
+
+    /* Our policy for showing progress notification is the following:
+     * - File operations that end within two seconds do not get notified in any way
+     * - If no file operations are running, and one passes the two seconds
+     *   timeout, a window is displayed with the progress
+     * - If the window is closed, we show a resident notification, or a status icon, depending on
+     *   the capabilities of the notification daemon running in the session
+     * - If some file operations are running, and another one passes the two seconds
+     *   timeout, and the window is showing, we add it to the window directly
+     * - In the same case, but when the window is not showing, we update the resident
+     *   notification, changing its message, or the status icon's tooltip
+     * - When one file operation finishes, if it's not the last one, we only update the
+     *   resident notification's message, or the status icon's tooltip
+     * - In the same case, if it's the last one, we close the resident notification,
+     *   or the status icon, and trigger a transient one
+     * - In the same case, but the window was showing, we just hide the window
+     */
 
     public UIHandler () {
         this.manager = new Marlin.Progress.InfoManager ();
         
         manager.new_progress_info.connect ((info) => {
-            new_progress_info_cb (this.manager, info);
+            info.started.connect (progress_info_started_cb);
         });
 
         this.notification_supports_persistence = server_has_persistence ();
+    }
+    
+    private void progress_info_started_cb (Marlin.Progress.Info info) {
+        var application = Marlin.Application.get ();
+        application.hold ();
+
+        info.finished.connect (() => {
+            application.release ();
+            debug ("ProgressUIHandler - release_application");
+        });
+
+        var data = TimeoutData ();
+        data.info = info;
+        data.progress_ui_handler = this;
+
+        Timeout.add_seconds (2, () => {
+            return new_op_started_timeout (data);
+        });
     }
 
     private void status_icon_activate_cb (Gtk.StatusIcon icon) {
@@ -412,33 +430,6 @@ public class Marlin.Progress.UIHandler : Object {
             this.handle_new_progress_info (info);
 
         return false;
-    }
-
-    private void release_application (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
-        application.release ();
-
-        debug ("ProgressUIHandler - release_application");
-    }
-
-    private void progress_info_started_cb (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
-        application.hold ();
-
-        info.finished.connect (this.release_application);
-
-        var data = TimeoutData ();
-        data.info = info;
-        data.progress_ui_handler = this;
-
-        Timeout.add_seconds (2, () => {
-            return new_op_started_timeout (data);
-        });
-    }
-
-    private void new_progress_info_cb (Marlin.Progress.InfoManager manager,
-                                       Marlin.Progress.Info info) {
-        info.started.connect (this.progress_info_started_cb);
     }
 
     private bool server_has_persistence () {
