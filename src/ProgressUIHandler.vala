@@ -186,6 +186,7 @@ public class Marlin.Progress.UIHandler : Object {
         if (!this.progress_window.visible)
             (this.progress_window as Gtk.Window).present ();
         else {
+            //TODO: This does not seem to work correctly.
             (this.progress_window as Gtk.Window).set_keep_above (true);
             (this.progress_window as Gtk.Window).set_keep_above (false);
         }
@@ -246,7 +247,6 @@ public class Marlin.Progress.UIHandler : Object {
         } else {
             unity_lentry.progress_visible = false;
             unity_lentry.progress = 0.0;
-            unity_lentry.count_visible = false;
             this.show_unity_quicklist (marlin_lentry, false);
 
             Cancellable pc = info.get_cancellable ();
@@ -275,7 +275,7 @@ public class Marlin.Progress.UIHandler : Object {
             this.update_unity_launcher_entry (info, marlin_lentry);
 
         if (added)
-            info.progress_changed.connect (unity_progress_changed);
+            info.progress_changed.connect (this.unity_progress_changed);
     }
 #endif
 
@@ -304,9 +304,8 @@ public class Marlin.Progress.UIHandler : Object {
         (this.progress_window as Gtk.Window).set_position (Gtk.WindowPosition.CENTER);
         (this.progress_window as Gtk.Window).icon_name = "system-file-manager";
 
-        this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 
-        (this.window_vbox as Gtk.Box).spacing = 5;
         (this.progress_window as Gtk.Container).add (this.window_vbox);
         window_vbox.show ();
 
@@ -323,15 +322,16 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void add_to_window (Marlin.Progress.Info info) {
-        var progress = new Marlin.Progress.InfoWidget (info);
         this.ensure_window ();
 
+        var progress = new Marlin.Progress.InfoWidget (info);
         (this.window_vbox as Gtk.Box).pack_start (progress, false, false, 6);
 
         progress.show ();
     }
 
     private void show_complete_notification () {
+        /* Don't display the notification if we would be using a status icon */
         if (!this.notification_supports_persistence)
             return;
 
@@ -442,14 +442,8 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private bool server_has_persistence () {
-        bool retval;
-
         unowned List<string> caps = Notify.get_server_caps ();
-        if (caps == null)
-            return false;
 
-        retval = caps.find ("persistence") != null ? true : false;
-
-        return retval;
+        return caps.find ("persistence") != null ? true : false;
     }
 }
