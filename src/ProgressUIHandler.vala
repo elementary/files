@@ -117,6 +117,8 @@ public class Marlin.Progress.UIHandler : Object {
         (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
 
         progress_widget.show ();
+        if (this.progress_window.visible)
+            (this.progress_window as Gtk.Window).present ();
     }
 
     private void ensure_window () {
