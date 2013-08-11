@@ -37,20 +37,20 @@ public class Marlin.Progress.UIHandler : Object {
     private const string ACTION_DETAILS = "details";
 
     /* Our policy for showing progress notification is the following:
-     * - File operations that end within two seconds do not get notified in any way
+     * - File operations that end within two seconds do not get notified in any way.
      * - If no file operations are running, and one passes the two seconds
-     *   timeout, a window is displayed with the progress
+     *   timeout, a window is displayed with the progress.
      * - If the window is closed, we show a resident notification, or a status icon, depending on
-     *   the capabilities of the notification daemon running in the session
+     *   the capabilities of the notification daemon running in the session.
      * - If some file operations are running, and another one passes the two seconds
-     *   timeout, and the window is showing, we add it to the window directly
+     *   timeout, and the window is showing, we add it to the window directly.
      * - In the same case, but when the window is not showing, we update the resident
-     *   notification, changing its message, or the status icon's tooltip
+     *   notification, changing its message, or the status icon's tooltip.
      * - When one file operation finishes, if it's not the last one, we only update the
-     *   resident notification's message, or the status icon's tooltip
+     *   resident notification's message, or the status icon's tooltip.
      * - In the same case, if it's the last one, we close the resident notification,
-     *   or the status icon, and trigger a transient one
-     * - In the same case, but the window was showing, we just hide the window
+     *   or the status icon, and trigger a transient one.
+     * - In the same case, but the window was showing, we just hide the window.
      */
 
     public UIHandler () {
@@ -64,9 +64,9 @@ public class Marlin.Progress.UIHandler : Object {
     }
     
     private bool server_has_persistence () {
-        unowned List<string> caps = Notify.get_server_caps ();
+        unowned List<string> cappabilities = Notify.get_server_caps ();
 
-        return caps.find ("persistence") != null ? true : false;
+        return cappabilities.find ("persistence") != null ? true : false;
     }
     
     private void progress_info_started_cb (Marlin.Progress.Info info) {
