@@ -74,8 +74,8 @@ public class Marlin.Progress.UIHandler : Object {
         application.hold ();
 
         info.finished.connect (() => {
+            debug ("Release application");
             application.release ();
-            debug ("ProgressUIHandler - release_application");
         });
 
         Timeout.add_seconds (2, () => {
