@@ -73,20 +73,16 @@ public class Marlin.Progress.UIHandler : Object {
         });
 
         Timeout.add_seconds (2, () => {
-            return new_op_started_timeout (info);
+            if (info.get_is_paused ())
+                return true;
+
+            if (!info.get_is_finished ())
+                handle_new_progress_info (info);
+
+            return false;
         });
     }
-    
-    private bool new_op_started_timeout (Marlin.Progress.Info info) {
-        if (info.get_is_paused ())
-            return true;
 
-        if (!info.get_is_finished ())
-            handle_new_progress_info (info);
-
-        return false;
-    }
-    
     private void handle_new_progress_info (Marlin.Progress.Info info) {
         info.finished.connect (progress_info_finished_cb);
 
