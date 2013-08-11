@@ -201,6 +201,20 @@ public class Marlin.Progress.UIHandler : Object {
                                                _("Show Details"),
                                                (Notify.ActionCallback) notification_show_details_cb);
     }
+    
+    private void notification_show_details_cb (Notify.Notification notification,
+                                               string action_name) {
+        if (action_name != ACTION_DETAILS)
+            return;
+
+        try {
+            progress_notification.close ();
+        } catch (Error error) {
+            warning ("There was an error when closing the notification: %s", error.message);
+        }
+
+        (progress_window as Gtk.Window).present ();
+    }
 
     private void update_status_icon () {
         ensure_status_icon ();
@@ -222,28 +236,87 @@ public class Marlin.Progress.UIHandler : Object {
         this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
 
         this.status_icon.activate.connect (() => {
-            status_icon.visible = false;
+            this.status_icon.visible = false;
             (this.progress_window as Gtk.Window).present ();
         });
         
         this.status_icon.visible = false;
     }
 
-    private void notification_show_details_cb (Notify.Notification notification,
-                                               string action_name) {
-        if (action_name != ACTION_DETAILS)
-            return;
+#if HAVE_UNITY
+    private void update_unity_launcher (Marlin.Progress.Info info,
+                                        bool added) {
+        if (this.quicklist_handler == null) {
+            this.quicklist_handler = QuicklistHandler.get_singleton ();
 
-        try {
-            progress_notification.close ();
-        } catch (Error error) {
-            warning ("There was an error when closing the notification: %s", error.message);
+            if (this.quicklist_handler == null)
+                return;
+
+            build_unity_quicklist ();
         }
 
-        (progress_window as Gtk.Window).present ();
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries)
+            update_unity_launcher_entry (info, marlin_lentry);
+
+        if (added)
+            info.progress_changed.connect (unity_progress_changed);
+    }
+    
+    private void build_unity_quicklist () {
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
+            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
+            Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
+
+            var show_menuitem = new Dbusmenu.Menuitem ();
+            show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
+                                        _("Show Copy Dialog"));
+            show_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
+                                             false);
+            quicklist.child_add_position (show_menuitem, -1);
+
+            marlin_lentry.progress_quicklists.prepend (show_menuitem);
+            show_menuitem.item_activated.connect ((menuitem, timestamp) => {
+                unity_quicklist_show_activated (menuitem, timestamp);
+            });
+
+            var cancel_menuitem = new Dbusmenu.Menuitem ();
+            cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
+                                          _("Cancel All In-progress Actions"));
+            cancel_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
+                                               false);
+            quicklist.child_add_position (cancel_menuitem, -1);
+
+            marlin_lentry.progress_quicklists.prepend (cancel_menuitem);
+            cancel_menuitem.item_activated.connect ((menuitem, timestamp) => {
+                unity_quicklist_cancel_activated (menuitem, timestamp);
+            });
+        }
     }
 
-#if HAVE_UNITY
+    private void update_unity_launcher_entry (Marlin.Progress.Info info,
+                                              Marlin.LauncherEntry marlin_lentry) {
+        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
+
+        if (this.active_infos > 0) {
+            unity_lentry.progress_visible = true;
+            show_unity_quicklist (marlin_lentry, true);
+            unity_progress_changed (null);
+        } else {
+            unity_lentry.progress_visible = false;
+            unity_lentry.progress = 0.0;
+            show_unity_quicklist (marlin_lentry, false);
+
+            Cancellable pc = info.get_cancellable ();
+
+            if (!pc.is_cancelled ()) {
+                unity_lentry.urgent = true;
+                Timeout.add_seconds (2, () => {
+                    return disable_unity_urgency (unity_lentry);
+                });
+            }
+        }
+    }
+
     private void unity_progress_changed (Marlin.Progress.Info? info) {
         double progress = 0;
         double current = 0;
@@ -300,83 +373,10 @@ public class Marlin.Progress.UIHandler : Object {
             info.cancel ();
     }
 
-    private void build_unity_quicklist () {
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
-            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-            Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
-
-            var show_menuitem = new Dbusmenu.Menuitem ();
-            show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                        _("Show Copy Dialog"));
-            show_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
-                                             false);
-            quicklist.child_add_position (show_menuitem, -1);
-
-            marlin_lentry.progress_quicklists.prepend (show_menuitem);
-            show_menuitem.item_activated.connect ((menuitem, timestamp) => {
-                unity_quicklist_show_activated (menuitem, timestamp);
-            });
-
-            var cancel_menuitem = new Dbusmenu.Menuitem ();
-            cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                          _("Cancel All In-progress Actions"));
-            cancel_menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE,
-                                               false);
-            quicklist.child_add_position (cancel_menuitem, -1);
-
-            marlin_lentry.progress_quicklists.prepend (cancel_menuitem);
-            cancel_menuitem.item_activated.connect ((menuitem, timestamp) => {
-                unity_quicklist_cancel_activated (menuitem, timestamp);
-            });
-        }
-    }
-
     private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
                                        bool show) {
         foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists)
             menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
-    }
-
-    private void update_unity_launcher_entry (Marlin.Progress.Info info,
-                                              Marlin.LauncherEntry marlin_lentry) {
-        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-
-        if (this.active_infos > 0) {
-            unity_lentry.progress_visible = true;
-            this.show_unity_quicklist (marlin_lentry, true);
-            this.unity_progress_changed (null);
-        } else {
-            unity_lentry.progress_visible = false;
-            unity_lentry.progress = 0.0;
-            this.show_unity_quicklist (marlin_lentry, false);
-
-            Cancellable pc = info.get_cancellable ();
-
-            if (!pc.is_cancelled ()) {
-                unity_lentry.urgent = true;
-                Timeout.add_seconds (2, () => {
-                    return this.disable_unity_urgency (unity_lentry);
-                });
-            }
-        }
-    }
-
-    private void update_unity_launcher (Marlin.Progress.Info info,
-                                        bool added) {
-        if (this.quicklist_handler == null) {
-            this.quicklist_handler = QuicklistHandler.get_singleton ();
-
-            if (this.quicklist_handler == null)
-                return;
-
-            this.build_unity_quicklist ();
-        }
-
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries)
-            this.update_unity_launcher_entry (info, marlin_lentry);
-
-        if (added)
-            info.progress_changed.connect (this.unity_progress_changed);
     }
 #endif
 
