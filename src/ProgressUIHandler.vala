@@ -138,7 +138,9 @@ public class Marlin.Progress.UIHandler : Object {
         window_vbox.show ();
 
         progress_window.delete_event.connect ((widget, event) => {
-            return progress_window_delete_event (widget, event);
+            widget.hide ();
+            update_notification_or_status ();
+            return true;
         });
     }
     
@@ -406,16 +408,4 @@ public class Marlin.Progress.UIHandler : Object {
             menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
     }
 #endif
-
-    private bool progress_window_delete_event (Gtk.Widget widget,
-                                               Gdk.EventAny event) {
-        widget.hide ();
-
-        if (this.notification_supports_persistence)
-            this.update_notification ();
-        else
-            this.update_status_icon ();
-
-        return true;
-    }
 }
