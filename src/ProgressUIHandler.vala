@@ -358,10 +358,17 @@ public class Marlin.Progress.UIHandler : Object {
             if (!pc.is_cancelled ()) {
                 unity_lentry.urgent = true;
                 Timeout.add_seconds (2, () => {
-                    return disable_unity_urgency (unity_lentry);
+                    unity_lentry.urgent = false;
+                    return false;
                 });
             }
         }
+    }
+    
+    private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
+                                       bool show) {
+        foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists)
+            menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
     }
 
     private void unity_progress_changed (Marlin.Progress.Info? info) {
@@ -394,18 +401,6 @@ public class Marlin.Progress.UIHandler : Object {
             Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
             unity_lentry.progress = progress;
         }
-    }
-
-    private bool disable_unity_urgency (Unity.LauncherEntry entry) {
-        entry.urgent = false;
-
-        return false;
-    }
-
-    private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
-                                       bool show) {
-        foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists)
-            menuitem.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, show);
     }
 #endif
 }
