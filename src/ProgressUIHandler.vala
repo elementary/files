@@ -19,11 +19,6 @@
            Julián Unrrein <junrrein@gmail.com>
 ***/
 
-private struct TimeoutData {
-    Marlin.Progress.Info info;
-    Marlin.Progress.UIHandler progress_ui_handler;
-}
-
 public class Marlin.Progress.UIHandler : Object {
 
     private Marlin.Progress.InfoManager manager = null;
@@ -77,13 +72,60 @@ public class Marlin.Progress.UIHandler : Object {
             debug ("ProgressUIHandler - release_application");
         });
 
-        var data = TimeoutData ();
-        data.info = info;
-        data.progress_ui_handler = this;
-
         Timeout.add_seconds (2, () => {
-            return new_op_started_timeout (data);
+            return new_op_started_timeout (info);
         });
+    }
+    
+    private bool new_op_started_timeout (Marlin.Progress.Info info) {
+        if (info.get_is_paused ())
+            return true;
+
+        if (!info.get_is_finished ())
+            handle_new_progress_info (info);
+
+        return false;
+    }
+    
+    private void handle_new_progress_info (Marlin.Progress.Info info) {
+        info.finished.connect (progress_info_finished_cb);
+
+        this.active_infos++;
+
+        if (this.active_infos == 1) {
+            /* This is the only active operation, present the window */
+            add_to_window (info);
+            (this.progress_window as Gtk.Window).present ();
+        } else {
+            if (this.progress_window.visible)
+                add_to_window (info);
+            else
+                update_notification_or_status ();
+        }
+
+#if HAVE_UNITY
+        update_unity_launcher (info, true);
+#endif
+    }
+    
+    private void progress_info_finished_cb (Marlin.Progress.Info info) {
+        this.active_infos--;
+
+        if (this.active_infos > 0) {
+            if (!this.progress_window.visible)
+                update_notification_or_status ();
+        } else {
+            if (this.progress_window.visible) {
+                progress_window.hide ();
+            } else {
+                hide_notification_or_status ();
+                show_complete_notification ();
+            }
+        }
+
+#if HAVE_UNITY
+        update_unity_launcher (info, false);
+#endif
     }
 
     private void status_icon_activate_cb (Gtk.StatusIcon icon) {
@@ -377,59 +419,6 @@ public class Marlin.Progress.UIHandler : Object {
             //TODO: Are we leaking memory here?
             this.progress_notification = null;
         }
-    }
-
-    private void progress_info_finished_cb (Marlin.Progress.Info info) {
-        this.active_infos--;
-
-        if (this.active_infos > 0) {
-            if (!this.progress_window.visible)
-                this.update_notification_or_status ();
-        } else {
-            if (this.progress_window.visible) {
-                progress_window.hide ();
-            } else {
-                this.hide_notification_or_status ();
-                this.show_complete_notification ();
-            }
-        }
-
-#if HAVE_UNITY
-        this.update_unity_launcher (info, false);
-#endif
-    }
-
-    private void handle_new_progress_info (Marlin.Progress.Info info) {
-        info.finished.connect (progress_info_finished_cb);
-
-        this.active_infos++;
-
-        if (this.active_infos == 1) {
-            /* This is the only active operation, present the window */
-            this.add_to_window (info);
-            (this.progress_window as Gtk.Window).present ();
-        } else {
-            if (this.progress_window.visible)
-                this.add_to_window (info);
-            else
-                this.update_notification_or_status ();
-        }
-
-#if HAVE_UNITY
-        this.update_unity_launcher (info, true);
-#endif
-    }
-
-    private bool new_op_started_timeout (TimeoutData data) {
-        Marlin.Progress.Info info = data.info;
-
-        if (info.get_is_paused ())
-            return true;
-
-        if (!info.get_is_finished ())
-            this.handle_new_progress_info (info);
-
-        return false;
     }
 
     private bool server_has_persistence () {
