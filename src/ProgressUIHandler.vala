@@ -26,25 +26,43 @@ private struct TimeoutData {
 
 public class Marlin.Progress.UIHandler : Object {
 
-    private Marlin.Progress.InfoManager manager;
+    private Marlin.Progress.InfoManager manager = null;
 
-    private Gtk.Widget progress_window;
-    private Gtk.Widget window_vbox;
-    private int active_infos;
+    private Gtk.Widget progress_window = null;
+    private Gtk.Widget window_vbox = null;
+    private uint active_infos = 0;
 
-    private bool notification_supports_persistence;
-    private Notify.Notification progress_notification;
-    private Gtk.StatusIcon status_icon;
+    private bool notification_supports_persistence = false;
+    private Notify.Notification progress_notification = null;
+    private Gtk.StatusIcon status_icon = null;
 #if HAVE_UNITY
-    private Marlin.QuicklistHandler quicklist_handler;
+    private Marlin.QuicklistHandler quicklist_handler = null;
 #endif
+
+    /* Our policy for showing progress notification is the following:
+    * - file operations that end within two seconds do not get notified in any way
+    * - if no file operations are running, and one passes the two seconds
+    *   timeout, a window is displayed with the progress
+    * - if the window is closed, we show a resident notification, or a status icon, depending on
+    *   the capabilities of the notification daemon running in the session
+    * - if some file operations are running, and another one passes the two seconds
+    *   timeout, and the window is showing, we add it to the window directly
+    * - in the same case, but when the window is not showing, we update the resident
+    *   notification, changing its message, or the status icon's tooltip
+    * - when one file operation finishes, if it's not the last one, we only update the
+    *   resident notification's message, or the status icon's tooltip
+    * - in the same case, if it's the last one, we close the resident notification,
+    *   or the status icon, and trigger a transient one
+    * - in the same case, but the window was showing, we just hide the window
+    */
 
     private const string ACTION_DETAILS = "details";
 
     public UIHandler () {
         this.manager = new Marlin.Progress.InfoManager ();
+        
         manager.new_progress_info.connect ((info) => {
-            new_progress_info_cb (manager, info);
+            new_progress_info_cb (this.manager, info);
         });
 
         this.notification_supports_persistence = server_has_persistence ();
@@ -52,12 +70,12 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void status_icon_activate_cb (Gtk.StatusIcon icon) {
         icon.set_visible (false);
-        (progress_window as Gtk.Window).present ();
+        (this.progress_window as Gtk.Window).present ();
     }
 
     private void notification_show_details_cb (Notify.Notification notification,
                                                string action_name) {
-        if (action_name == ACTION_DETAILS)
+        if (action_name != ACTION_DETAILS)
             return;
 
         try {
@@ -91,6 +109,8 @@ public class Marlin.Progress.UIHandler : Object {
         this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
 
         this.status_icon.activate.connect (status_icon_activate_cb);
+        
+        this.status_icon.visible = false;
     }
 
     private void update_notification () {
@@ -124,15 +144,14 @@ public class Marlin.Progress.UIHandler : Object {
 
 #if HAVE_UNITY
     private void unity_progress_changed (Marlin.Progress.Info? info) {
-        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
-
         double progress = 0;
         double current = 0;
         double total = 0;
+        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
 
         foreach (var _info in infos) {
-            var c = _info.get_current ();
-            var t = _info.get_total ();
+            double c = _info.get_current ();
+            double t = _info.get_total ();
 
             if (c < 0)
                 c = 0;
@@ -389,7 +408,7 @@ public class Marlin.Progress.UIHandler : Object {
         if (info.get_is_paused ())
             return true;
 
-        if (info.get_is_finished ())
+        if (!info.get_is_finished ())
             this.handle_new_progress_info (info);
 
         return false;
