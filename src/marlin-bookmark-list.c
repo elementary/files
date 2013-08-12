@@ -520,7 +520,6 @@ load_file_finish (MarlinBookmarkList *bookmarks,
         GList *files = marlin_bookmark_list_get_gof_files (bookmarks);
         gof_call_when_ready_new (files, bookmark_list_content_changed, bookmarks);
         g_list_free (files);
-
         g_signal_emit (bookmarks, signals[CONTENTS_CHANGED], 0);
     } else if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
         g_warning ("Could not load bookmark file: %s\n", error->message);
@@ -715,4 +714,3 @@ marlin_bookmark_list_new (void)
 
     return list;
 }
-

@@ -190,12 +190,12 @@ add_place (MarlinPlacesSidebar *sidebar,
     GError* error = NULL;
     gchar* converted_name = g_locale_to_utf8 (name, -1, NULL, NULL, &error);
     if (error != NULL) {
-        g_warning ("Couldn't convert the bookmark name: %s With error: %s", name, error->message);
+        g_warning ("%s - Couldn't convert the bookmark name: %s With error: %s", G_STRFUNC, name, error->message);
         converted_name = name;
     }
 
     gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, parent);
-    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
+    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR (sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, pixbuf,
                         PLACES_SIDEBAR_COLUMN_NAME, converted_name,
                         PLACES_SIDEBAR_COLUMN_URI, uri,
@@ -206,13 +206,12 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_INDEX, index,
                         PLACES_SIDEBAR_COLUMN_EJECT, show_eject_button,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, !show_eject_button,
-                        PLACES_SIDEBAR_COLUMN_BOOKMARK, place_type != PLACES_BOOKMARK,
+                        PLACES_SIDEBAR_COLUMN_BOOKMARK, place_type == PLACES_BOOKMARK,
                         PLACES_SIDEBAR_COLUMN_TOOLTIP, tooltip,
                         PLACES_SIDEBAR_COLUMN_EJECT_ICON, eject,
                         PLACES_SIDEBAR_COLUMN_FREE_SPACE, 0,
                         PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
                         -1, -1);
-
     return iter;
 }
 
@@ -321,11 +320,12 @@ update_places (MarlinPlacesSidebar *sidebar)
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
-
         if (marlin_bookmark_uri_known_not_to_exist (bookmark)) {
+            /* do not show bookmarks that are (currently) unavailable
+             * note: these remain in the bookmark list
+             */
             continue;
         }
-
         name = marlin_bookmark_get_name (bookmark);
         icon = marlin_bookmark_get_icon (bookmark);
         mount_uri = marlin_bookmark_get_uri (bookmark);
@@ -338,7 +338,7 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        //printf ("bookmark: %d %s\n", index, mount_uri);
+        g_debug ("%s - bookmark: %d %s", G_STRFUNC, index, mount_uri);
         g_free (name);
         g_object_unref (root);
         g_object_unref (icon);
@@ -920,7 +920,7 @@ compute_drop_position (GtkTreeView *tree_view,
                                             y,
                                             path,
                                             pos)) {
-        //printf ("dest_row_at_pos UNKNOWN\n");
+        g_warning ("%s - dest_row_at_pos UNKNOWN\n", G_STRFUNC);
         //row = num_rows - 1;
         //		*path = gtk_tree_path_new_from_indices (row, -1);
         /*gtk_tree_view_get_path_at_pos(tree_view,  x, y, path, NULL, NULL, NULL);
@@ -929,11 +929,11 @@ compute_drop_position (GtkTreeView *tree_view,
         *pos = -1;
         return;
     }
-    //printf ("TEST path %s\n", gtk_tree_path_to_string (*path));
+    g_debug ("%s - TEST path %s", G_STRFUNC, gtk_tree_path_to_string (*path));
     row = *gtk_tree_path_get_indices (*path);
     /*gint *idxs = gtk_tree_path_get_indices (*path);
       row = idxs[1];*/
-    //printf ("row indice %d\n", row);
+    g_debug ("%s - row indice %d", G_STRFUNC, row);
 
     gtk_tree_path_free (*path);
 
@@ -1183,7 +1183,7 @@ drag_leave_callback (GtkTreeView *tree_view,
                      MarlinPlacesSidebar *sidebar)
 {
     //amtest drag
-    printf ("%s\n", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     free_drag_data (sidebar);
     gtk_tree_view_set_drag_dest_row (tree_view, NULL, GTK_TREE_VIEW_DROP_BEFORE);
     g_signal_stop_emission_by_name (tree_view, "drag-leave");
@@ -1207,7 +1207,7 @@ bookmarks_drop_uris (MarlinPlacesSidebar    *sidebar,
 
     if (position < 0)
         position = 0;
-    printf ("%s\n", G_STRFUNC);
+   g_debug ("%s - position is %i", G_STRFUNC, position);
 
     for (i = 0; uris[i]; i++) {
         uri = uris[i];
@@ -1241,7 +1241,7 @@ get_selected_iter (MarlinPlacesSidebar *sidebar,
         return FALSE;
     }
     //amtest
-    //printf ("TEST %s: %s\n", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), iter));
+    g_debug ("TEST %s: %s", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR (sidebar)->store), iter));
     return TRUE;
 }
 
@@ -1253,6 +1253,7 @@ reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
     PlaceType type;
     int old_position;
     GtkTreeSelection *selection;
+    gboolean is_bookmark;
 
     /* Get the selected path */
     if (!get_selected_iter (sidebar, &iter)) {
@@ -1260,14 +1261,14 @@ reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
         //g_assert_not_reached ();
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
-                        PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR (sidebar)->store), &iter,
+                        PLACES_SIDEBAR_COLUMN_BOOKMARK, &is_bookmark,
                         PLACES_SIDEBAR_COLUMN_INDEX, &old_position,
                         -1);
 
     //printf("%s: old_pos: %d new_pos: %d\n", G_STRFUNC, old_position, new_position);
     old_position = old_position -sidebar->n_builtins_before;
-    if (type != PLACES_BOOKMARK ||
+    if (!is_bookmark ||
         old_position < 0 ||
         old_position >= marlin_bookmark_list_length (sidebar->bookmarks)) {
         return;
@@ -1299,7 +1300,7 @@ drag_data_received_callback (GtkWidget *widget,
     int position;
     GtkTreeModel *model;
     char *drop_uri;
-    PlaceType type;
+    gint type;
     gboolean success;
 
     tree_view = GTK_TREE_VIEW (widget);
@@ -1339,7 +1340,7 @@ drag_data_received_callback (GtkWidget *widget,
                             PLACES_SIDEBAR_COLUMN_INDEX, &position,
                             -1);
 
-        if (!(type == PLACES_BOOKMARK || type == PLACES_BUILT_IN)) {
+        if (type >= 0 && !(type == PLACES_BOOKMARK || type == PLACES_BUILT_IN)) {
             goto out;
         }
 
@@ -1541,6 +1542,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     gboolean show_empty_trash;
     gboolean show_connect_server;
     char *uri = NULL;
+    gboolean is_bookmark;
 
     type = PLACES_BUILT_IN;
 
@@ -1555,19 +1557,20 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
                             PLACES_SIDEBAR_COLUMN_VOLUME, &volume,
                             PLACES_SIDEBAR_COLUMN_MOUNT, &mount,
                             PLACES_SIDEBAR_COLUMN_URI, &uri,
+                            PLACES_SIDEBAR_COLUMN_BOOKMARK, &is_bookmark,
                             -1);
     }
 
     gtk_widget_show (sidebar->popup_menu_open_in_new_tab_item);
 
-    /*gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
-      gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));*/
-    eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
-    //TODO add the possibility to rename volume later
-    eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
-    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, (type == PLACES_BOOKMARK));
+    //gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
+    //gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
 
-    gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
+
+    //TODO add the possibility to rename volume later
+    eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, is_bookmark);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, is_bookmark);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, is_bookmark);
 
     check_visibility (mount, volume, drive,
                       &show_mount, &show_unmount, &show_eject, &show_rescan, &show_format, &show_start, &show_stop);
@@ -1589,6 +1592,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
           eel_gtk_widget_set_shown (sidebar->popup_menu_start_item, show_start);
           eel_gtk_widget_set_shown (sidebar->popup_menu_stop_item, show_stop);*/
     eel_gtk_widget_set_shown (sidebar->popup_menu_empty_trash_item, show_empty_trash);
+    gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
     eel_gtk_widget_set_shown (sidebar->popup_menu_connect_server_item, show_connect_server);
 
     //TODO check this
@@ -1832,7 +1836,7 @@ rename_selected_bookmark (MarlinPlacesSidebar *sidebar)
         path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
         column = gtk_tree_view_get_column (GTK_TREE_VIEW (sidebar->tree_view), 0);
         renderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (column));
-        cell = g_list_nth_data (renderers, 4);
+        cell = g_list_nth_data (renderers, 5);
         g_list_free (renderers);
         g_object_set (cell, "editable", TRUE, NULL);
         gtk_tree_view_set_cursor_on_cell (GTK_TREE_VIEW (sidebar->tree_view),
@@ -1853,20 +1857,19 @@ static void
 remove_selected_bookmarks (MarlinPlacesSidebar *sidebar)
 {
     GtkTreeIter iter;
-    PlaceType type;
-    int index;
+    gint index;
+    gboolean is_bookmark;
 
     if (!get_selected_iter (sidebar, &iter)) {
         return;
     }
 
     gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
-                        PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
+                        PLACES_SIDEBAR_COLUMN_BOOKMARK, &is_bookmark,
                         -1);
 
-    if (type != PLACES_BOOKMARK) {
+    if (!is_bookmark)
         return;
-    }
 
     gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_INDEX, &index,
@@ -2427,8 +2430,7 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     g_signal_connect (item, "activate",
                       G_CALLBACK (rename_shortcut_cb), sidebar);
     gtk_widget_show (item);
-    // Omit broken "Rename..." from the sidebar
-    // gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
     /* Mount/Unmount/Eject menu items */
 
@@ -2463,8 +2465,6 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (empty_trash_cb), sidebar);
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-    bookmarks_check_popup_sensitivity (sidebar);
 
     /* Connect to server menu item */
     item = gtk_menu_item_new_with_mnemonic (_("Connect to Server…"));
@@ -2860,7 +2860,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     tree_view = GTK_TREE_VIEW (gtk_tree_view_new ());
 
     /*stop side-bar being shrunk too small, which causes a crash*/
-    gtk_widget_set_size_request (tree_view, g_settings_get_int (settings, "minimum-sidebar-width"), -1);
+    gtk_widget_set_size_request (GTK_WIDGET (tree_view), g_settings_get_int (settings, "minimum-sidebar-width"), -1);
 
     gtk_tree_view_set_headers_visible (tree_view, FALSE);
 
@@ -3163,7 +3163,7 @@ handle_scroll_event (GtkWidget *widget, GdkEventScroll *event)
                 total_delta_y = 0;
                 /* zoom in */
                 sidebar_zoom_in (widget);
-                return TRUE;				
+                return TRUE;
             } else {
                 /* eat event */
                 return TRUE;
@@ -3265,4 +3265,3 @@ marlin_places_sidebar_new (GtkWidget *window)
 
     return (sidebar);
 }
-
