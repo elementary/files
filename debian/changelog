@@ -1,3 +1,9 @@
+pantheon-files (0.1.3) precise; urgency=low
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementaryos.org>  Sun, 11 Aug 2013 21:49:25 -0500
+
 pantheon-files (0.1.2) precise; urgency=low
 
   * New upstream release.
