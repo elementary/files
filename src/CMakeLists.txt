@@ -81,7 +81,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         --target-glib=2.32 # Needed for new thread API
         --thread
         -D HAVE_UNITY)
-ELSE (
+ELSE(WITH_UNITY AND UNITY_FOUND)
     vala_precompile(VALA_C pantheon-files
         Application.vala
         main.vala
@@ -121,7 +121,7 @@ ELSE (
         --vapidir=${CMAKE_SOURCE_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --target-glib=2.32 # Needed for new thread API
-        --thread) )
+        --thread)
 ENDIF(WITH_UNITY AND UNITY_FOUND)
 
 add_executable(pantheon-files
