@@ -283,9 +283,9 @@ public class Marlin.Application : Granite.Application {
         unowned List<Gtk.Window> windows = this.get_windows ();
 
         /* Get the first windows if any */
-        if (windows != null && windows.data != null)
+        if (windows != null && windows.data != null) {
             window = windows.data as Marlin.View.Window;
-        else {
+        } else {
             window = new Marlin.View.Window (this, screen);
             this.add_window (window as Gtk.Window);
             plugins.interface_loaded (window as Gtk.Widget);
