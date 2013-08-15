@@ -279,6 +279,7 @@ public class Marlin.Progress.UIHandler : Object {
 #if HAVE_UNITY
     private void update_unity_launcher (Marlin.Progress.Info info,
                                         bool added) {
+
         if (this.quicklist_handler == null) {
             this.quicklist_handler = QuicklistHandler.get_singleton ();
 
@@ -300,6 +301,7 @@ public class Marlin.Progress.UIHandler : Object {
         foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
             /* Separator between bookmarks and progress items */
             var separator = new Dbusmenu.Menuitem ();
+
             separator.property_set (Dbusmenu.MENUITEM_PROP_TYPE,
                                     Dbusmenu.CLIENT_TYPES_SEPARATOR);
             separator.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
@@ -308,6 +310,7 @@ public class Marlin.Progress.UIHandler : Object {
 
             /* "Show progress window" menu item */
             var show_menuitem = new Dbusmenu.Menuitem ();
+
             show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
                                         _("Show Copy Dialog"));
 
@@ -319,6 +322,7 @@ public class Marlin.Progress.UIHandler : Object {
 
             /* "Cancel in-progress operations" menu item */
             var cancel_menuitem = new Dbusmenu.Menuitem ();
+
             cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
                                           _("Cancel All In-progress Actions"));
 
@@ -350,6 +354,7 @@ public class Marlin.Progress.UIHandler : Object {
 
             if (!pc.is_cancelled ()) {
                 unity_lentry.urgent = true;
+
                 Timeout.add_seconds (2, () => {
                     unity_lentry.urgent = false;
                     return false;
@@ -360,6 +365,7 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
                                        bool show) {
+
         Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
         Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
 
