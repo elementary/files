@@ -32,9 +32,9 @@ namespace Marlin {
         private QuicklistHandler () {
             this.entry_add ("pantheon-files.desktop");
 
-            if (this.launcher_entries.length () == 0)
+            if (this.launcher_entries.length () == 0) {
                 error ("Couldn't find a valid Unity launcher entry.");
-            else {
+            } else {
                 var bookmarks = new Marlin.BookmarkList ();
 
                 bookmarks.contents_changed.connect (() => {
@@ -98,6 +98,7 @@ namespace Marlin {
 
         private void load_bookmarks (Marlin.BookmarkList bookmarks) {
             var bookmark_count = bookmarks.length ();
+
             for (int index = 0; index < bookmark_count; index++) {
                 var bookmark = bookmarks.item_at (index);
 
