@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-07 19:25-0500\n"
-"PO-Revision-Date: 2013-07-22 17:05+0000\n"
-"Last-Translator: Gabriel_P <Unknown>\n"
+"PO-Revision-Date: 2013-08-16 00:52+0000\n"
+"Last-Translator: Julián Unrrein <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-09 05:22+0000\n"
+"X-Launchpad-Export-Date: 2013-08-16 06:00+0000\n"
 "X-Generator: Launchpad (build 16723)\n"
 "Language: es\n"
 
@@ -477,7 +477,7 @@ msgstr " y %u otros elementos (%s) seleccionados"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
-msgstr " seleccionado"
+msgstr " seleccionadas"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
@@ -2031,8 +2031,8 @@ msgstr "_Deshacer creación de un archivo desde una plantilla"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Deshacer creación de la carpeta %d"
-msgstr[1] "_Deshacer creación de las carpetas %d"
+msgstr[0] "_Deshacer creación de %d carpeta"
+msgstr[1] "_Deshacer creación de %d carpetas"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
@@ -2130,8 +2130,8 @@ msgstr "_Rehacer ka creación de un archivos desde una plantilla"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Rehacer creación de la carpeta %d"
-msgstr[1] "_Rehacer creación de las carpetas %d"
+msgstr[0] "_Rehacer creación de %d carpeta"
+msgstr[1] "_Rehacer creación de %d carpetas"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
