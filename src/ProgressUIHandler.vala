@@ -184,7 +184,6 @@ public class Marlin.Progress.UIHandler : Object {
                 warning ("There was an error when showing the notification: %s", error.message);
             }
 
-            //TODO: Are we leaking memory here?
             this.progress_notification = null;
         }
     }
