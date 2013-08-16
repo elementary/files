@@ -91,7 +91,6 @@ namespace Marlin {
                     ql.child_delete (menuitem);
                 }
 
-                //TODO: Delete all items in quicklist.
                 marlin_lentry.bookmark_quicklists = null;
             }
         }
