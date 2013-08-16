@@ -66,7 +66,7 @@ public class Marlin.Progress.UIHandler : Object {
     private bool server_has_persistence () {
         unowned List<string> cappabilities = Notify.get_server_caps ();
 
-        return cappabilities.find ("persistence") != null ? true : false;
+        return cappabilities.find ("persistence") != null;
     }
 
     private void progress_info_started_cb (Marlin.Progress.Info info) {
