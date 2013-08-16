@@ -24,11 +24,9 @@
  *
  */
 
-#include <config.h>
-
 #include "marlin-progress-ui-handler.h"
 
-#include "marlin-application.h"
+#include "marlin-vala.h"
 #include "marlin-progress-info-widget.h"
 
 #include "marlin-progress-info.h"

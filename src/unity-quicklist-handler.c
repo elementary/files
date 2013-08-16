@@ -23,11 +23,8 @@
  */
 
 #ifdef HAVE_UNITY
-#include <config.h>
-
 #include "unity-quicklist-handler.h"
 
-#include "marlin-application.h"
 #include <libdbusmenu-glib/dbusmenu-glib.h>
 #include "marlin-bookmark-list.h"
 

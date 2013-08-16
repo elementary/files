@@ -20,7 +20,6 @@
    Authors: Frederic Crozat <fcrozat@mandrakesoft.com>
 */
 
-#include <config.h>
 #include <glib.h>
 #include "eel-i18n.h"
 

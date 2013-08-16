@@ -19,8 +19,6 @@
  * Author: Pavel Cisler <pavel@eazel.com>  
  */
 
-
-#include <config.h>
 #include "marlin-file-changes-queue.h"
 #include "marlincore.h"
 

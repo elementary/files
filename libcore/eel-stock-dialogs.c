@@ -20,7 +20,6 @@
  * Authors: Darin Adler <darin@eazel.com>
  */
 
-#include <config.h>
 #include "eel-stock-dialogs.h"
 
 #include <glib/gi18n-lib.h>

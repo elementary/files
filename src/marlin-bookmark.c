@@ -21,7 +21,6 @@
  * Authors: John Sullivan <sullivan@eazel.com>
  */
 
-#include <config.h>
 #include "marlin-bookmark.h"
 #include "marlin-icons.h"
 

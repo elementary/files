@@ -21,8 +21,6 @@
  *
  */
 
-#include <config.h>
-
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
 #include "eel-gio-extensions.h"

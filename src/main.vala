@@ -14,15 +14,12 @@
   with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-const string APP_NAME = "pantheon-files";
-const string GETTEXT_PACKAGE = "pantheon-files";
+public static const string APP_NAME = "pantheon-files";
 
 public static int main (string[] args) {
-    Gtk.init (ref args);
-
     /* Initiliaze gettext support */
     Intl.setlocale (LocaleCategory.ALL, Intl.get_language_names ()[0]);
-    Intl.textdomain (GETTEXT_PACKAGE);
+    Intl.textdomain (Config.GETTEXT_PACKAGE);
 
     Environment.set_application_name (APP_NAME);
     Environment.set_prgname (APP_NAME);

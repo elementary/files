@@ -24,7 +24,6 @@
  *          John Sullivan <sullivan@eazel.com>
  */
 
-#include <config.h>
 #include "eel-vfs-extensions.h"
 #include "eel-glib-extensions.h"
 
