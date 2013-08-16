@@ -52,14 +52,6 @@ namespace Marlin {
             return quicklisthandler_singleton;
         }
 
-        public unowned List<Marlin.LauncherEntry> get_launcher_entries () {
-            return this.launcher_entries;
-        }
-
-        public static Unity.LauncherEntry get_launcher_entry (List<Marlin.LauncherEntry> list) {
-            return list.data.entry;
-        }
-
         private void entry_add (string entry_id) {
             var unity_lentry = Unity.LauncherEntry.get_for_desktop_id (entry_id);
 
