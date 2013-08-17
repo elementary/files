@@ -37,6 +37,7 @@
 
 enum {
     CONTENTS_CHANGED,
+    DELETED,
     LAST_SIGNAL
 };
 
@@ -123,11 +124,29 @@ bookmark_in_list_changed_callback (MarlinBookmark     *bookmark,
 }
 
 static void
+bookmark_in_list_to_be_deleted_callback (MarlinBookmark *bookmark,
+                                        MarlinBookmarkList *bookmarks)
+{
+    g_assert (MARLIN_IS_BOOKMARK (bookmark));
+    g_assert (MARLIN_IS_BOOKMARK_LIST (bookmarks));
+
+    g_debug ("%s - deleting %s from bookmark list",
+            G_STRFUNC,
+            g_file_get_uri (bookmark->file->location));
+            
+    marlin_bookmark_list_delete_items_with_uri (bookmarks,
+                                                g_file_get_uri (bookmark->file->location));
+}
+
+static void
 stop_monitoring_bookmark (MarlinBookmarkList *bookmarks,
                           MarlinBookmark     *bookmark)
 {
     g_signal_handlers_disconnect_by_func (bookmark,
                                           bookmark_in_list_changed_callback,
+                                          bookmarks);
+    g_signal_handlers_disconnect_by_func (bookmark,
+                                          bookmark_in_list_to_be_deleted_callback,
                                           bookmarks);
 }
 
@@ -236,7 +255,6 @@ marlin_bookmark_list_init (MarlinBookmarkList *bookmarks)
 
     g_signal_connect (bookmarks->monitor, "changed",
                       G_CALLBACK (bookmark_monitor_changed_cb), bookmarks);
-
     g_object_unref (file);
 }
 
@@ -248,7 +266,12 @@ insert_bookmark_internal (MarlinBookmarkList *bookmarks,
     bookmarks->list = g_list_insert (bookmarks->list, bookmark, index);
 
     g_signal_connect_object (bookmark, "contents_changed",
-                             G_CALLBACK (bookmark_in_list_changed_callback), bookmarks, 0);
+                             G_CALLBACK (bookmark_in_list_changed_callback),
+                             bookmarks, 0);
+                             
+    g_signal_connect_object (bookmark, "deleted",
+                             G_CALLBACK (bookmark_in_list_to_be_deleted_callback),
+                             bookmarks, 0);
 }
 
 /**
