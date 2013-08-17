@@ -51,7 +51,7 @@ Testing an installed release may reveal crashers or memory corruption which requ
 ====== Coding style and quality ======
 
 Be sure to check the official elementary Code Style guide at:
-    https://dl.dropboxusercontent.com/u/19899464/elementarycodestyle.html
+    http://elementaryos.org/docs/code/code-style
 
 Files' code should in general have:
 
