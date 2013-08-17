@@ -119,11 +119,6 @@ In the case you committed something wrong or want to ammend it:
 If you want to revert all the changes made after the last revision:
     bzr revert
 
-If you end up with unrelated debugging code or other patches in the current changes, it's sometimes handy to temporarily clean up. //This may be seen as bzr's version of git stash.//
-    bzr shelve
-    bzr commit -p
-    bzr unshelve
-
 Remember to keep your branch updated:
     bzr pull
 
