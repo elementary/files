@@ -42,6 +42,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         Application.vala
         main.vala
         marlin-deep-count.vala
+        QuicklistHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -69,6 +70,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         gee-1.0
         granite
         libnotify
+        unity
         marlincore
         marlincore-C
     GENERATE_HEADER
@@ -127,7 +129,6 @@ add_executable(pantheon-files
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c
-    unity-quicklist-handler.c
     marlin-dnd.c
     marlin-clipboard-manager.c
     marlin-places-sidebar.c

@@ -82,7 +82,7 @@ public class Marlin.Application : Granite.Application {
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
 
 #if HAVE_UNITY
-        Unity.QuicklistHandler.get_singleton ();
+        QuicklistHandler.get_singleton ();
 #endif
     }
 

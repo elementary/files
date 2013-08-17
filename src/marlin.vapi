@@ -58,6 +58,19 @@ namespace Marlin {
         public bool queue_file(GOF.File file, int? request, bool large);
         
     }
+    [CCode (cheader_filename = "marlin-bookmark.h")]
+    public class Bookmark : Object {
+        public File get_location ();
+        public string get_name ();
+        public bool uri_known_not_to_exist ();
+    }
+    [CCode (cheader_filename = "marlin-bookmark-list.h")]
+    public class BookmarkList : Object {
+        public signal void contents_changed ();
+        public BookmarkList ();
+        public int length ();
+        public unowned Bookmark item_at (int index);
+    }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]
@@ -113,10 +126,3 @@ namespace Marlin {
         }
     }
 }
-
-#if HAVE_UNITY
-[CCode (cprefix = "UnityQuicklistHandler", lower_case_cprefix = "unity_quicklist_handler_", cheader_filename = "unity-quicklist-handler.h")]
-public class Unity.QuicklistHandler : Object {
-    public static unowned QuicklistHandler get_singleton ();
-}
-#endif
