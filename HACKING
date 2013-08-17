@@ -104,8 +104,10 @@ Add new files, move/ rename or delete:
     bzr mv OLDFILE NEWFILE
     bzr rm FILENAME
 
+After making your changes, you need to commit your work as a new revision.
+    bzr commit -m "Commit message"
+
 Commit your changes in small increments. It is better to keep different changes in different commits.
-    bzr commit -p
 
 To see the last 5 revisions in the current branch:
     bzr log -l5
@@ -113,6 +115,9 @@ To see the last 5 revisions in the current branch:
 
 In the case you committed something wrong or want to ammend it:
     bzr uncommit
+    
+If you want to revert all the changes made after the last revision:
+    bzr revert
 
 If you end up with unrelated debugging code or other patches in the current changes, it's sometimes handy to temporarily clean up. //This may be seen as bzr's version of git stash.//
     bzr shelve
