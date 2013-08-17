@@ -56,7 +56,7 @@ namespace Marlin {
     public class Thumbnailer : Object {
         public static Thumbnailer get();
         public bool queue_file(GOF.File file, int? request, bool large);
-        
+
     }
     [CCode (cheader_filename = "marlin-bookmark.h")]
     public class Bookmark : Object {
@@ -119,11 +119,8 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
     }
-    [CCode (cprefix = "MarlinProgress", lower_case_cprefix = "marlin_progress_")]
-    namespace Progress {
-        [CCode (cheader_filename = "marlin-progress-ui-handler.h")]
-        public class UIHandler : Object {
-            public UIHandler ();
-        }
+    [CCode (cheader_filename = "marlin-progress-info-widget.h")]
+    public class Progress.InfoWidget : Gtk.Box {
+        public InfoWidget (Marlin.Progress.Info info);
     }
 }

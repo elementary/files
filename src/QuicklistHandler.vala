@@ -27,7 +27,7 @@ namespace Marlin {
 
     public class QuicklistHandler : Object {
 
-        private List<Marlin.LauncherEntry> launcher_entries = null;
+        public List<Marlin.LauncherEntry> launcher_entries = null;
 
         private QuicklistHandler () {
             this.entry_add ("pantheon-files.desktop");
@@ -50,14 +50,6 @@ namespace Marlin {
                 quicklisthandler_singleton = new QuicklistHandler ();
 
             return quicklisthandler_singleton;
-        }
-
-        public unowned List<Marlin.LauncherEntry> get_launcher_entries () {
-            return this.launcher_entries;
-        }
-
-        public static Unity.LauncherEntry get_launcher_entry (List<Marlin.LauncherEntry> list) {
-            return list.data.entry;
         }
 
         private void entry_add (string entry_id) {
