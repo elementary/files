@@ -136,6 +136,8 @@ If you checked out trunk, and added your patch(es), just **push it under your us
     bzr lp-open
 
 The last command will open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
+Your branch will be reviewed by another developer. At this stage, you may be notified that changes need to be made to your branch, so keep an eye on your email inbox!
+After the branch is approved by the reviewer, it will get merged into the main project's source code.
 
 
 **What happens to all the branches?**
