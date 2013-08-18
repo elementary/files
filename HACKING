@@ -51,7 +51,7 @@ Testing an installed release may reveal crashers or memory corruption which requ
 ====== Coding style and quality ======
 
 Be sure to check the official elementary Code Style guide at:
-    https://dl.dropboxusercontent.com/u/19899464/elementarycodestyle.html
+    http://elementaryos.org/docs/code/code-style
 
 Files' code should in general have:
 
@@ -104,8 +104,10 @@ Add new files, move/ rename or delete:
     bzr mv OLDFILE NEWFILE
     bzr rm FILENAME
 
+After making your changes, you need to commit your work as a new revision.
+    bzr commit -m "Commit message"
+
 Commit your changes in small increments. It is better to keep different changes in different commits.
-    bzr commit -p
 
 To see the last 5 revisions in the current branch:
     bzr log -l5
@@ -113,11 +115,9 @@ To see the last 5 revisions in the current branch:
 
 In the case you committed something wrong or want to ammend it:
     bzr uncommit
-
-If you end up with unrelated debugging code or other patches in the current changes, it's sometimes handy to temporarily clean up. //This may be seen as bzr's version of git stash.//
-    bzr shelve
-    bzr commit -p
-    bzr unshelve
+    
+If you want to revert all the changes made after the last revision:
+    bzr revert
 
 Remember to keep your branch updated:
     bzr pull
@@ -136,6 +136,8 @@ If you checked out trunk, and added your patch(es), just **push it under your us
     bzr lp-open
 
 The last command will open a summary of the current branch in your web browser. There, you will be able to propose it for merging into trunk.
+Your branch will be reviewed by another developer. At this stage, you may be notified that changes need to be made to your branch, so keep an eye on your email inbox!
+After the branch is approved by the reviewer, it will get merged into the main project's source code.
 
 
 **What happens to all the branches?**
