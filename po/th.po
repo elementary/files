@@ -8,41 +8,41 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-07 19:25-0500\n"
-"PO-Revision-Date: 2012-05-07 02:52+0000\n"
-"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
+"PO-Revision-Date: 2013-08-21 22:54+0000\n"
+"Last-Translator: Jirayu Yingthawornsuk <me@jirayu.in.th>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-08-09 05:22+0000\n"
-"X-Generator: Launchpad (build 16723)\n"
+"X-Launchpad-Export-Date: 2013-08-22 05:37+0000\n"
+"X-Generator: Launchpad (build 16734)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
 msgid "Home"
-msgstr ""
+msgstr "บ้าน"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:150
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
 msgid "File System"
-msgstr ""
+msgstr "ระบบไฟล์"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "ไม่มีโฟลเดอร์นี้"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(ในฐานะผุ้ดูแลระบบ)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "นี่ไม่ใช่ของคุณ"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์ในการเข้าถึงโฟลเดอร์นี้"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
