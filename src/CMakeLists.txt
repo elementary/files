@@ -42,6 +42,7 @@ IF(WITH_UNITY AND UNITY_FOUND)
         Application.vala
         main.vala
         marlin-deep-count.vala
+        MimeActions.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
         View/DiskRenderer.vala
@@ -87,6 +88,7 @@ ELSE(WITH_UNITY AND UNITY_FOUND)
         Application.vala
         main.vala
         marlin-deep-count.vala
+        MimeActions.vala
         ProgressUIHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -140,7 +142,6 @@ add_executable(pantheon-files
     marlin-icon-renderer.c
     marlin-text-renderer.c
     marlin-cell-renderer-text-ellipsized.c
-    marlin-mime-actions.c
     fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c

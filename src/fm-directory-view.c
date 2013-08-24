@@ -47,7 +47,6 @@
 #include "marlin-icon-renderer.h"
 #include "marlin-text-renderer.h"
 #include "marlin-thumbnailer.h"
-#include "marlin-mime-actions.h"
 
 
 enum {
