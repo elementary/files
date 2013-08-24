@@ -37,4 +37,28 @@ namespace Marlin.Mime {
     public List<AppInfo> get_applications_for_files (List<GOF.File> files) {
         return new List<AppInfo> ();
     }
+    
+    private bool file_has_local_path (GOF.File file) {
+        
+        if (file.location.is_native ()) {
+            return true;
+        } else {
+            var path = file.location.get_path ();
+            return path != null;
+        }
+    }
+    
+    private bool file_compare_by_mime_type (GOF.File a, GOF.File b) {
+        return a.get_ftype () == b.get_ftype ();
+    }
+    
+    private string gof_get_parent_uri (GOF.File file) {
+        return file.directory != null ? file.directory.get_uri () : "";
+    }
+    
+    private bool file_compare_by_parent_uri (GOF.File a, GOF.File b) {
+        return gof_get_parent_uri (a) == gof_get_parent_uri (b);
+    }
+    
+    
 }
