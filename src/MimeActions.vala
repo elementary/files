@@ -88,12 +88,44 @@ namespace Marlin.Mime {
         result.sort (application_compare_by_name);
         
         return result;
-        
-        //return new List<AppInfo> ();
     }
 
     public List<AppInfo> get_applications_for_files (List<GOF.File> files) {
-        return new List<AppInfo> ();
+        assert (files != null);
+        
+        List<GOF.File> sorted_files = files.copy ();
+        sorted_files.sort (file_compare_by_mime_type);
+        
+        List<AppInfo> result = null;
+        
+        GOF.File previous_file = null;
+        foreach (var file in sorted_files) {
+            if (previous_file == null) {
+                previous_file = file;
+                continue;
+            }
+            
+            if (file_compare_by_mime_type (file, previous_file) == 0 &&
+                file_compare_by_parent_uri (file, previous_file) == 0)
+                continue;
+                
+            List<AppInfo> one_result = get_applications_for_file (file);
+            one_result.sort (application_compare_by_id);
+            
+            if (result != null)
+                result = intersect_application_lists (result, one_result);
+            else
+                result = one_result.copy ();
+                
+            if (result == null)
+                break;
+                
+            previous_file = file;
+        }
+        
+        result.sort (application_compare_by_name);
+        
+        return result;
     }
 
     private bool file_has_local_path (GOF.File file) {
@@ -130,5 +162,33 @@ namespace Marlin.Mime {
         foreach (var app in apps)
             if (!app.supports_uris ())
                 apps.remove (app);
+    }
+    
+    private List<AppInfo> intersect_application_lists (List<AppInfo> a, List<AppInfo> b) {
+        List<AppInfo> result = null;
+        
+        /* This is going to look ugly, but doing the same thing using
+           "foreach" would take m*n operations. */
+        unowned List<AppInfo> l = a;
+        unowned List<AppInfo> m = b;
+        
+        while (l != null && m != null) {
+            AppInfo app_a = l.data;
+            AppInfo app_b = m.data;
+            
+            int cmp = application_compare_by_id (app_a, app_b);
+            
+            if (cmp > 0) {
+                m = m.next;
+            } else if (cmp < 0) {
+                l = l.next;
+            } else {
+                result.append (app_a);
+                l = l.next;
+                m = m.next;
+            }
+        }
+        
+        return result;
     }
 }
