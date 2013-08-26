@@ -47,24 +47,24 @@ namespace Marlin.Mime {
                 previous_file = file;
                 continue;
             }
-            
+
             /* FIXME: What happens if the list is 2 items long, but
                they are of the same mymetipe/directory ?
                No app is set? */
             if (file_compare_by_mime_type (file, previous_file) == 0 &&
                 file_compare_by_parent_uri (file, previous_file) == 0)
                 continue;
-                
+
             var one_app = get_default_application_for_file (file);
-            
+
             if (one_app == null || (app != null) && !app.equal (one_app)) {
                 app = null;
                 break;
             }
-            
+
             if (app == null)
                 app = one_app;
-                
+
             previous_file = file;
         }
 
@@ -72,7 +72,24 @@ namespace Marlin.Mime {
     }
 
     public List<AppInfo> get_applications_for_file (GOF.File file) {
-        return new List<AppInfo> ();
+        List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
+        string uri_scheme = file.location.get_uri_scheme ();
+        
+        if (uri_scheme != null) {
+            var uri_handler = AppInfo.get_default_for_uri_scheme (uri_scheme);
+            
+            if (uri_handler != null)
+                result.prepend (uri_handler);
+        }
+        
+        if (!file_has_local_path (file))
+            filter_non_uri_apps (result);
+            
+        result.sort (application_compare_by_name);
+        
+        return result;
+        
+        //return new List<AppInfo> ();
     }
 
     public List<AppInfo> get_applications_for_files (List<GOF.File> files) {
@@ -99,5 +116,19 @@ namespace Marlin.Mime {
 
     private int file_compare_by_parent_uri (GOF.File a, GOF.File b) {
         return strcmp (gof_get_parent_uri (a), gof_get_parent_uri (b));
+    }
+
+    private int application_compare_by_name (AppInfo a, AppInfo b) {
+        return a.get_display_name ().collate (b.get_display_name ());
+    }
+
+    private int application_compare_by_id (AppInfo a, AppInfo b) {
+        return strcmp (a.get_id (), b.get_id ());
+    }
+
+    private void filter_non_uri_apps (List<AppInfo> apps) {
+        foreach (var app in apps)
+            if (!app.supports_uris ())
+                apps.remove (app);
     }
 }
