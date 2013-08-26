@@ -23,23 +23,64 @@
 namespace Marlin.Mime {
 
     public AppInfo get_default_application_for_file (GOF.File file) {
-        return AppInfo.get_default_for_type ("", false);
+        AppInfo app = file.get_default_handler ();
+
+        if (app == null) {
+            string uri_scheme = file.location.get_uri_scheme ();
+            if (uri_scheme != null)
+                app = AppInfo.get_default_for_uri_scheme (uri_scheme);
+        }
+
+        return app;
     }
-    
+
     public AppInfo get_default_application_for_files (List<GOF.File> files) {
-        return AppInfo.get_default_for_type ("", false);
+        assert (files != null);
+
+        List<GOF.File> sorted_files = files.copy ();
+        sorted_files.sort (file_compare_by_mime_type);
+
+        AppInfo app = null;
+        GOF.File previous_file = null;
+        foreach (var file in sorted_files) {
+            if (previous_file == null) {
+                previous_file = file;
+                continue;
+            }
+            
+            /* FIXME: What happens if the list is 2 items long, but
+               they are of the same mymetipe/directory ?
+               No app is set? */
+            if (file_compare_by_mime_type (file, previous_file) == 0 &&
+                file_compare_by_parent_uri (file, previous_file) == 0)
+                continue;
+                
+            var one_app = get_default_application_for_file (file);
+            
+            if (one_app == null || (app != null) && !app.equal (one_app)) {
+                app = null;
+                break;
+            }
+            
+            if (app == null)
+                app = one_app;
+                
+            previous_file = file;
+        }
+
+        return app;
     }
-    
+
     public List<AppInfo> get_applications_for_file (GOF.File file) {
         return new List<AppInfo> ();
     }
-    
+
     public List<AppInfo> get_applications_for_files (List<GOF.File> files) {
         return new List<AppInfo> ();
     }
-    
+
     private bool file_has_local_path (GOF.File file) {
-        
+
         if (file.location.is_native ()) {
             return true;
         } else {
@@ -47,18 +88,16 @@ namespace Marlin.Mime {
             return path != null;
         }
     }
-    
-    private bool file_compare_by_mime_type (GOF.File a, GOF.File b) {
-        return a.get_ftype () == b.get_ftype ();
+
+    private int file_compare_by_mime_type (GOF.File a, GOF.File b) {
+        return strcmp (a.get_ftype (), b.get_ftype ());
     }
-    
+
     private string gof_get_parent_uri (GOF.File file) {
         return file.directory != null ? file.directory.get_uri () : "";
     }
-    
-    private bool file_compare_by_parent_uri (GOF.File a, GOF.File b) {
-        return gof_get_parent_uri (a) == gof_get_parent_uri (b);
+
+    private int file_compare_by_parent_uri (GOF.File a, GOF.File b) {
+        return strcmp (gof_get_parent_uri (a), gof_get_parent_uri (b));
     }
-    
-    
 }
