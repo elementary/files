@@ -1970,7 +1970,7 @@ update_menus_selection (FMDirectoryView *view)
     action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
     if (view->details->default_app)
         g_object_unref (view->details->default_app);
-    view->details->default_app = marlin_mime_get_default_application_for_files (selection);
+    view->details->default_app = marlin_mime_get_default_application_for_files (gof_file_list_ref (selection));
     if (view->details->default_app != NULL && !gof_file_is_executable (file)) {
         char *escaped_app;
 
@@ -2029,7 +2029,7 @@ update_menus_selection (FMDirectoryView *view)
         view->details->open_with_apps = NULL;
     }
     if (view->details->default_app != NULL && !gof_file_is_folder (file))
-        view->details->open_with_apps = marlin_mime_get_applications_for_files (selection);
+        view->details->open_with_apps = marlin_mime_get_applications_for_files (gof_file_list_ref (selection));
     /* we need to remove the default app from open with menu */
     if (view->details->default_app != NULL && !gof_file_is_executable (file)) 
         view->details->open_with_apps = filter_default_app (view->details->open_with_apps, view->details->default_app);
