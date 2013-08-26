@@ -44,13 +44,11 @@ namespace Marlin.Mime {
         GOF.File previous_file = null;
         foreach (var file in sorted_files) {
             if (previous_file == null) {
+                app = get_default_application_for_file (file);
                 previous_file = file;
                 continue;
             }
 
-            /* FIXME: What happens if the list is 2 items long, but
-               they are of the same mymetipe/directory ?
-               No app is set? */
             if (file_compare_by_mime_type (file, previous_file) == 0 &&
                 file_compare_by_parent_uri (file, previous_file) == 0)
                 continue;
@@ -101,6 +99,7 @@ namespace Marlin.Mime {
         GOF.File previous_file = null;
         foreach (var file in sorted_files) {
             if (previous_file == null) {
+                result = get_applications_for_file (file);
                 previous_file = file;
                 continue;
             }
