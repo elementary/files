@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-07 19:25-0500\n"
-"PO-Revision-Date: 2013-05-28 10:46+0000\n"
-"Last-Translator: Filippos Kolyvas <Unknown>\n"
+"PO-Revision-Date: 2013-08-26 14:41+0000\n"
+"Last-Translator: Stefanos Papanatsios <stefan0spapanatsi0s@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-09 05:21+0000\n"
-"X-Generator: Launchpad (build 16723)\n"
+"X-Launchpad-Export-Date: 2013-08-27 04:57+0000\n"
+"X-Generator: Launchpad (build 16738)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -30,7 +30,7 @@ msgstr "Σύστημα Αρχείων"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Αυτός ο φάκελος δεν υπάρχει"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -38,7 +38,7 @@ msgstr "ως Διαχειριστής"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Αυτό δεν ανήκει σε εσάς."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
@@ -46,19 +46,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:117
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:118
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:119
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:120
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:571
@@ -67,11 +67,11 @@ msgstr "Δίκτυο"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:121
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:122
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:123
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
@@ -101,11 +101,11 @@ msgstr "Προεπισκόπηση"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:291
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u επιλεγμένα αντικείμενα"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
 msgid "Calculating size…"
-msgstr ""
+msgstr "Υπολογισμός μεγέθους..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Created"
@@ -201,12 +201,12 @@ msgstr "Επιλέξτε εφαρμογή για άνοιγμα "
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ο φάκελος δεν υπάρχει."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Ο φάκελος \"%s\" δεν βρέθηκε."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -215,7 +215,7 @@ msgstr "Δημιουργία"
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Δημιουργείστε τον φάκελο \"%s\""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -224,6 +224,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Αποτυχία δημιουργίας του φακέλου\n"
+"\n"
+"%s"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -463,23 +466,23 @@ msgstr "Στήλες"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u φάκελοι"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " και %u άλλα αντικείμενα (%s) επιλέχθηκαν"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
-msgstr ""
+msgstr " επιλέχτηκε"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u φάκελος"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
@@ -759,7 +762,7 @@ msgstr "Άδειασμα _απορριμμάτων"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2470
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Σύνδεση στο διακομιστή..."
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:857
 msgid "Layout mode"
@@ -783,7 +786,7 @@ msgstr "FTP (με κωδικό)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
@@ -2070,8 +2073,8 @@ msgstr[1] "_Αναίρεση διαγραφής των %d στοιχείων"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα του %d αντικειμένου"
+msgstr[1] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
@@ -2084,15 +2087,15 @@ msgstr[1] "Αναίρεση αλλαγής δικαιωμάτων των %d στ
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
+msgstr[1] "Αναίρεση αλλαγής ομάδας των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
+msgstr[1] "Αναίρεση αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
@@ -2169,29 +2172,29 @@ msgstr[1] ""
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων του %d αντικειμένου"
+msgstr[1] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής δικαιωμάτων των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής ομάδας των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:192
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:210
@@ -2398,16 +2401,16 @@ msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Αποκοπή του επιλεγμένου κειμένου στο πρόχειρο"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Αντιγραφή του επιλεγμένου κειμένου στο πρόχειρο"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:329
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Επικόλληση του κειμένου που είναι αποθηκευμένο στο πρόχειρο"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:812
 #, c-format
@@ -2416,20 +2419,20 @@ msgstr "Μετάβαση στο %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Προβολή σε πλέγμα"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Προβολή ως λίστα"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Προβολή σε στήλες"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Αυτά τα αρχεία μπορεί να διαγραφούν αδειάζοντας τα απορρίματα"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Άδειασμα των απορριμάτων"

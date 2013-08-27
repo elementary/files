@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-07 19:25-0500\n"
-"PO-Revision-Date: 2013-06-02 19:23+0000\n"
-"Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
+"PO-Revision-Date: 2013-08-26 19:00+0000\n"
+"Last-Translator: faisal <fafagold@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2013-08-09 05:21+0000\n"
-"X-Generator: Launchpad (build 16723)\n"
+"X-Launchpad-Export-Date: 2013-08-27 04:57+0000\n"
+"X-Generator: Launchpad (build 16738)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -31,7 +31,7 @@ msgstr "نظام ملفات"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "هذا الملف غير موجود"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -39,11 +39,11 @@ msgstr "(كمسؤول)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "هذا الأمر لا يخصك بشيء"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "أنت لا تملك الصلاحية لتعديل الملف"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -102,11 +102,11 @@ msgstr "معاينة"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:291
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u الملفات المختاره"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
 msgid "Calculating size…"
-msgstr ""
+msgstr "جاري حساب الحجم ..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Created"
@@ -202,12 +202,12 @@ msgstr "إختر تطبيقا لفتح "
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "هذا الملف عير موجود"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "هذا الملف \"%s\"  غير موجود"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -216,7 +216,7 @@ msgstr "أنشئ"
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "إنشاء الملف   \"%s\""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -225,6 +225,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"فشل في إنشاء الملف \n"
+"\n"
+"%s"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -463,7 +466,7 @@ msgstr "أعمدة"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u المجلدات"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
@@ -474,12 +477,12 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 msgid " selected"
-msgstr ""
+msgstr " محددة"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u مجلد"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
 #, c-format
