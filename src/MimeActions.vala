@@ -95,8 +95,8 @@ namespace Marlin.Mime {
         sorted_files.sort (file_compare_by_mime_type);
         
         List<AppInfo> result = null;
-        
         GOF.File previous_file = null;
+        
         foreach (var file in sorted_files) {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
