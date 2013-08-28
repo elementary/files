@@ -22,7 +22,7 @@
 
 namespace Marlin.Mime {
 
-    public AppInfo get_default_application_for_file (GOF.File file) {
+    public AppInfo? get_default_application_for_file (GOF.File file) {
         AppInfo app = file.get_default_handler ();
 
         if (app == null) {
@@ -35,7 +35,7 @@ namespace Marlin.Mime {
         return app;
     }
 
-    public AppInfo get_default_application_for_files (List<GOF.File> files) {
+    public AppInfo? get_default_application_for_files (List<GOF.File> files) {
         assert (files != null);
 
         List<GOF.File> sorted_files = files.copy ();
@@ -71,7 +71,7 @@ namespace Marlin.Mime {
         return app;
     }
 
-    public List<AppInfo> get_applications_for_file (GOF.File file) {
+    public List<AppInfo>? get_applications_for_file (GOF.File file) {
         List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -90,7 +90,7 @@ namespace Marlin.Mime {
         return result;
     }
 
-    public List<AppInfo> get_applications_for_files (List<GOF.File> files) {
+    public List<AppInfo>? get_applications_for_files (List<GOF.File> files) {
         assert (files != null);
 
         List<GOF.File> sorted_files = files.copy ();
