@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-07 19:25-0500\n"
-"PO-Revision-Date: 2013-07-23 05:34+0000\n"
-"Last-Translator: Kenny Kim <kennykim12@gmail.com>\n"
+"PO-Revision-Date: 2013-08-27 22:59+0000\n"
+"Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-08-09 05:21+0000\n"
-"X-Generator: Launchpad (build 16723)\n"
+"X-Launchpad-Export-Date: 2013-08-28 05:35+0000\n"
+"X-Generator: Launchpad (build 16738)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
@@ -105,7 +105,7 @@ msgstr "%u 선택된 항목들"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
 msgid "Calculating size…"
-msgstr ""
+msgstr "크기 계산 중..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Created"
@@ -1702,12 +1702,11 @@ msgstr "\"%B\"(으)로의 링크를 만드는 중"
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일에 대한 링크 만드는 중"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5446
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "%B(으)로의 링크를 만드는 중 오류."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5448
 msgid "Symbolic links only supported for local files"
@@ -1767,12 +1766,12 @@ msgstr "'%s' 삭제"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "%d 개의 중복된 항목 지우기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d 개 항목을 '%s'로 옮기기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -1783,13 +1782,13 @@ msgstr "'%s'을(를) '%s'(으)로 다시 이동"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s'을(를) '%s'(으)로 이름 바꾸기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "%d 개의 항목을 휴지통에서 복원하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
@@ -1799,17 +1798,17 @@ msgstr "'%s'을(를) '%s'(으)로 복원"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "%d 개의 항목을 휴지통으로 옮기기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "'%s'을(를) 휴지통으로 다시 옮기기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "%d 개 항목의 링크 삭제하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
