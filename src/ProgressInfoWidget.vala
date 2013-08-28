@@ -23,12 +23,27 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
 
     private Marlin.Progress.Info info;
 
-    Gtk.Widget status;          /* GtkLabel */
-    Gtk.Widget details;         /* GtkLabel */
+    Gtk.Widget status;          /* Gtk.Label */
+    Gtk.Widget details;         /* Gtk.Label */
     Gtk.Widget progress_bar;
 
     public InfoWidget (Marlin.Progress.Info info) {
         this.info = info;
+
+        build_and_show_widget ();
+
+        update_data ();
+        update_progress ();
+
+        this.info.changed.connect (update_data);
+        this.info.progress_changed.connect (update_progress);
+
+        this.info.finished.connect (() => {
+            destroy ();
+        });
+    }
+    
+    private void build_and_show_widget () {
         this.orientation = Gtk.Orientation.VERTICAL;
         this.homogeneous = false;
         this.spacing = 5;
@@ -66,16 +81,6 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         pack_start (details, true, false, 0);
 
         show_all ();
-
-        update_data ();
-        update_progress ();
-
-        this.info.changed.connect (update_data);
-        this.info.progress_changed.connect (update_progress);
-
-        this.info.finished.connect (() => {
-            destroy ();
-        });
     }
 
     private void update_data () {
