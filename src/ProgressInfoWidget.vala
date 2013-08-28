@@ -32,51 +32,50 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         this.orientation = Gtk.Orientation.VERTICAL;
         this.homogeneous = false;
         this.spacing = 5;
-        
+
         this.status = new Gtk.Label ("status");
         (this.status as Gtk.Label).set_size_request (500, -1);
         (this.status as Gtk.Label).set_line_wrap (true);
         (this.status as Gtk.Label).set_line_wrap_mode (Pango.WrapMode.WORD_CHAR);
         (this.status as Gtk.Misc).set_alignment ((float) 0.0, (float) 0.5);
         pack_start (status, true, false, 0);
-        
+
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        
+
         this.progress_bar = new Gtk.ProgressBar ();
         (this.progress_bar as Gtk.ProgressBar).pulse_step = 0.05;
         box.pack_start (this.progress_bar, true, false, 0);
         hbox.pack_start (box, true, true, 0);
-        
+
         var image = new Gtk.Image.from_stock (Gtk.Stock.CANCEL, Gtk.IconSize.BUTTON);
         var button = new Gtk.Button ();
         button.add (image);
-        button.clicked.connect (cancel_clicked);
+        button.clicked.connect (() => {
+            this.info.cancel ();
+            button.sensitive = false;
+        });
+        
         hbox.pack_start (button, false, false, 0);
-        
+
         pack_start (hbox, false, false, 0);
-        
+
         this.details = new Gtk.Label ("details");
         (this.details as Gtk.Label).set_line_wrap (true);
         (this.details as Gtk.Misc).set_alignment ((float) 0.0, (float) 0.5);
         pack_start (details, true, false, 0);
-        
+
         show_all ();
-        
+
         update_data ();
         update_progress ();
-        
+
         this.info.changed.connect (update_data);
         this.info.progress_changed.connect (update_progress);
-        this.info.finished.connect (info_finished);
-    }
-    
-    ~InfoWidget () {
-        this.info = null;
-    }
 
-    private void info_finished () {
-        this.destroy ();
+        this.info.finished.connect (() => {
+            destroy ();
+        });
     }
 
     private void update_data () {
@@ -87,18 +86,13 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         string markup = Markup.printf_escaped ("<span size='small'>%s</span>", details);
         (this.details as Gtk.Label).set_markup (markup);
     }
-    
+
     private void update_progress () {
         double progress = this.info.get_progress ();
-        
+
         if (progress < 0)
             (this.progress_bar as Gtk.ProgressBar).pulse ();
         else
             (this.progress_bar as Gtk.ProgressBar).set_fraction (progress);
-    }
-    
-    private void cancel_clicked (Gtk.Widget button) {
-        this.info.cancel ();
-        button.sensitive = false;
     }
 }
