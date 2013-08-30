@@ -23,6 +23,7 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
     private Marlin.ConnectServer.Dialog dialog;
 
     public Operation (Marlin.ConnectServer.Dialog dialog) {
+        this.dialog = dialog;
     }
 
     private new void ask_password (string message,
@@ -44,7 +45,4 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
         else
             reply (MountOperationResult.ABORTED);
     }
-
-
-
 }
