@@ -20,7 +20,20 @@
 
 public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
 
+    private Marlin.ConnectServer.Dialog dialog;
+
     public Operation (Marlin.ConnectServer.Dialog dialog) {
+    }
+    
+    private void fill_details_async_cb (Object source, AsyncResult result) {
+        var dialog = source as Marlin.ConnectServer.Dialog;
+    
+        bool res = dialog.fill_details_async.end (result);
+        
+        if (res)
+            reply (MountOperationResult.HANDLED);
+        else
+            reply (MountOperationResult.ABORTED);
     }
 
 }
