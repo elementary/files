@@ -31,18 +31,14 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
                                    string default_domain,
                                    AskPasswordFlags flags) {
 
-        this.dialog.fill_details_async (this, default_user, default_domain,
-                                        flags, fill_details_async_cb);
-    }
-
-    private void fill_details_async_cb (Object? source, AsyncResult result) {
-        var dialog = source as Marlin.ConnectServer.Dialog;
-
-        bool res = dialog.fill_details_async.end (result);
-
-        if (res)
-            reply (MountOperationResult.HANDLED);
-        else
-            reply (MountOperationResult.ABORTED);
+        this.dialog.fill_details_async (this, default_user, default_domain, flags,
+                                        (source, result) => {
+            bool res = this.dialog.fill_details_async.end (result);
+            
+            if (res)
+                reply (MountOperationResult.HANDLED);
+            else
+                reply (MountOperationResult.ABORTED);
+        });
     }
 }
