@@ -88,6 +88,11 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
         public class Dialog : Gtk.Dialog {
             public Dialog (Gtk.Window window);
+            public async void display_location_async (GLib.File location) throws Error;
+            public async void fill_details_async (GLib.MountOperation operation,
+                                                  string default_user,
+                                                  string default_domain,
+                                                  AskPasswordFlags flags);
         }
     }
     

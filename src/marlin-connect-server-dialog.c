@@ -20,15 +20,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "marlin-connect-server-dialog.h"
-
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "marlin-connect-server-operation.h"
-//#include "marlin-application.h"
 #include "marlin-vala.h"
 
 /* TODO:
