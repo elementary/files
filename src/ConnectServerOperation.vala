@@ -31,8 +31,8 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
                                    string default_domain,
                                    AskPasswordFlags flags) {
 
-        this.dialog.fill_details_async (this, default_user, default_domain, flags,
-                                        (source, result) => {
+        this.dialog.fill_details_async.begin (this, default_user, default_domain, flags,
+                                              (source, result) => {
             bool res = this.dialog.fill_details_async.end (result);
             
             if (res)
