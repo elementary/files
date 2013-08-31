@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-07 19:25-0500\n"
+"POT-Creation-Date: 2013-08-30 12:05-0500\n"
 "PO-Revision-Date: 2013-08-16 00:52+0000\n"
 "Last-Translator: Julián Unrrein <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -15,35 +15,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-17 06:11+0000\n"
-"X-Generator: Launchpad (build 16723)\n"
+"X-Launchpad-Export-Date: 2013-08-31 05:25+0000\n"
+"X-Generator: Launchpad (build 16750)\n"
 "Language: es\n"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:307
-msgid "Home"
-msgstr "Carpeta personal"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:150
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "File System"
-msgstr "Sistema de archivos"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
-msgid "This folder does not exist"
-msgstr "Esta carpeta no existe"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
-msgid "(as Administrator)"
-msgstr "(como administrador)"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Esto no le pertenece."
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "No tiene permiso para ver esta carpeta."
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -62,7 +36,7 @@ msgid "FTP"
 msgstr "FTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:120
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:571
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
 msgid "Network"
 msgstr "Red"
 
@@ -75,7 +49,7 @@ msgid "SMB"
 msgstr "SMB"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:123
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
 msgid "Trash"
 msgstr "Papelera"
 
@@ -200,6 +174,32 @@ msgstr "Cualquiera"
 msgid "Select an aplication to open "
 msgstr "Selecciona una aplicación para abrir "
 
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
+msgid "Home"
+msgstr "Carpeta personal"
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:150
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
+msgid "File System"
+msgstr "Sistema de archivos"
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
+msgid "This folder does not exist"
+msgstr "Esta carpeta no existe"
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
+msgid "(as Administrator)"
+msgstr "(como administrador)"
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Esto no le pertenece."
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "No tiene permiso para ver esta carpeta."
+
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr "Esta carpeta no existe."
@@ -234,7 +234,7 @@ msgid "Files isn't your default file manager."
 msgstr "Archivos no es el gestor de archivos predeterminado."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3429
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3427
 msgid "Set as default"
 msgstr "Establecer como predeterminado"
 
@@ -351,7 +351,7 @@ msgid "_Home Folder"
 msgstr "_Carpeta personal"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:661
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:312
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
 msgstr "Abrir su carpeta personal"
 
@@ -469,58 +469,192 @@ msgid "%u folders"
 msgstr "%u carpetas"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:269
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
+#, c-format
+msgid " and %u other item (%s) selected"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " y %u otros elementos (%s) seleccionados"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:261
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
 msgid " selected"
 msgstr " seleccionadas"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
 #, c-format
 msgid "%u folder"
 msgstr "%u carpeta"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:273
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elementos seleccionados (%s)"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Una pulsación"
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3541
+msgid "Select All"
+msgstr "Seleccionar todo"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Si los elementos en la vista se pueden activar con una pulsación"
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "Métodos de entrada"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Mover aquí"
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
+msgid "Personal"
+msgstr "Personal"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Copiar aquí"
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
+msgid "Your common places and bookmarks"
+msgstr "Sus lugares preferidos y marcadores"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Enlazar aquí"
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+msgid "Open the trash"
+msgstr "Abrir la papelera"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Establecer como _fondo"
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
+msgid "Devices"
+msgstr "Dispositivos"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Cancelar"
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
+msgid "Your local partitions and devices"
+msgstr "Dispositivos y particiones locales"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:217
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
+msgid "Open the contents of the File System"
+msgstr "Abrir el contenido del sistema de archivos"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
 #, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "No se pudo ejecutar el archivo «%s»"
+msgid "Mount and open %s"
+msgstr "Montar y abrir %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
+msgid "Your network places"
+msgstr "Lugares en la red"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
+msgid "Entire network"
+msgstr "Toda la red"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
+msgid "Browse the contents of the network"
+msgstr "Examinar los contenidos de la red"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
+msgid "_Start"
+msgstr "_Iniciar"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Stop"
+msgstr "_Detener"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Power On"
+msgstr "_Encender"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
+msgid "_Safely Remove Drive"
+msgstr "_Expulsar la unidad de forma segura"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Connect Drive"
+msgstr "_Conectar unidad"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Disconnect Drive"
+msgstr "_Desconectar unidad"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
+msgid "_Start Multi-disk Device"
+msgstr "_Iniciar unidad multidisco"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
+msgid "_Stop Multi-disk Device"
+msgstr "_Detener unidad multidisco"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
+msgid "_Unlock Drive"
+msgstr "_Desbloquear unidad"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
+msgid "_Lock Drive"
+msgstr "_Bloquear unidad"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
+#, c-format
+msgid "Unable to start %s"
+msgstr "No se pudo iniciar %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
+#, c-format
+msgid "Unable to eject %s"
+msgstr "No se pudo expulsar %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "No se pudo sondear %s para cambios en los soportes"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
+#, c-format
+msgid "Unable to stop %s"
+msgstr "No se pudo detener %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1985
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
+msgid "_Open"
+msgstr "_Abrir"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2005
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
+msgid "Open in New _Tab"
+msgstr "Abrir en una pes_taña nueva"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2014
+msgid "Open in New _Window"
+msgstr "Abrir en una _ventana nueva"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
+msgid "Remove"
+msgstr "Quitar"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
+msgid "Rename..."
+msgstr "Renombrar…"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Mount"
+msgstr "_Montar"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Unmount"
+msgstr "_Desmontar"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
+msgid "_Eject"
+msgstr "_Expulsar"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
+msgid "Empty _Trash"
+msgstr "_Vaciar la papelera"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
+msgid "Connect to Server…"
+msgstr "Conectar con un servidor…"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
 #: /home/codygarver/f/po/../src/fm-columns-view.c:186
@@ -579,230 +713,43 @@ msgstr "Mantener íconos ordenados por fecha de modificación en filas"
 msgid "This folder is empty."
 msgstr "Esta carpeta está vacía."
 
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:419
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:475
-msgid "File Operations"
-msgstr "Operaciones con archivos"
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "No hay nada en el portapapeles que pueda ser pegado"
 
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Mostrar detalles"
-
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d operación activa sobre archivos"
-msgstr[1] "%'d operaciones activas sobre archivos"
-
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "Mostrar el diálogo de copia"
-
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "Cancelar todas las acciones en progreso"
-
-#: /home/codygarver/f/po/../src/marlin-progress-ui-handler.c:476
-msgid "All file operations have been successfully completed"
-msgstr "Todas las operaciones sobre los archivos se han completado con éxito"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:293
-msgid "Personal"
-msgstr "Personal"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:298
-msgid "Your common places and bookmarks"
-msgstr "Sus lugares preferidos y marcadores"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:355
-msgid "Open the trash"
-msgstr "Abrir la papelera"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:365
-msgid "Devices"
-msgstr "Dispositivos"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:370
-msgid "Your local partitions and devices"
-msgstr "Dispositivos y particiones locales"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:379
-msgid "Open the contents of the File System"
-msgstr "Abrir el contenido del sistema de archivos"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:438
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:463
-#, c-format
-msgid "Mount and open %s"
-msgstr "Montar y abrir %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:576
-msgid "Your network places"
-msgstr "Lugares en la red"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Entire network"
-msgstr "Toda la red"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:609
-msgid "Browse the contents of the network"
-msgstr "Examinar los contenidos de la red"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1597
-msgid "_Start"
-msgstr "_Iniciar"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1598
-msgid "_Stop"
-msgstr "_Detener"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1603
-msgid "_Power On"
-msgstr "_Encender"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1604
-msgid "_Safely Remove Drive"
-msgstr "_Expulsar la unidad de forma segura"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1607
-msgid "_Connect Drive"
-msgstr "_Conectar unidad"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1608
-msgid "_Disconnect Drive"
-msgstr "_Desconectar unidad"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1611
-msgid "_Start Multi-disk Device"
-msgstr "_Iniciar unidad multidisco"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1612
-msgid "_Stop Multi-disk Device"
-msgstr "_Detener unidad multidisco"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1616
-msgid "_Unlock Drive"
-msgstr "_Desbloquear unidad"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1617
-msgid "_Lock Drive"
-msgstr "_Bloquear unidad"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1691
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2238
-#, c-format
-msgid "Unable to start %s"
-msgstr "No se pudo iniciar %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1981
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2010
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2039
-#, c-format
-msgid "Unable to eject %s"
-msgstr "No se pudo expulsar %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2184
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "No se pudo sondear %s para cambios en los soportes"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2294
-#, c-format
-msgid "Unable to stop %s"
-msgstr "No se pudo detener %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2392
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1987
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3509
-msgid "_Open"
-msgstr "_Abrir"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2400
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2007
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3521
-msgid "Open in New _Tab"
-msgstr "Abrir en una pes_taña nueva"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2407
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2016
-msgid "Open in New _Window"
-msgstr "Abrir en una _ventana nueva"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2416
-msgid "Remove"
-msgstr "Quitar"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2425
-msgid "Rename..."
-msgstr "Renombrar…"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "_Montar"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "_Desmontar"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "_Expulsar"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2312
-msgid "Empty _Trash"
-msgstr "_Vaciar la papelera"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2470
-msgid "Connect to Server…"
-msgstr "Conectar con un servidor…"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:857
-msgid "Layout mode"
-msgstr "Modo de disposición"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:858
-msgid "The layout mode"
-msgstr "El modo de disposición"
-
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:125
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:123
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:128
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:126
 msgid "Public FTP"
 msgstr "FTP público"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:130
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:128
 msgid "FTP (with login)"
 msgstr "FTP (con registro)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Windows share"
 msgstr "Recurso compartido de Windows"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:137
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:139
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:137
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV seguro (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:186
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:184
 msgid "Connecting..."
 msgstr "Conectando…"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:210
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:208
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -810,285 +757,125 @@ msgstr ""
 "No se puede cargar la lista de métodos soportada por el servidor.\n"
 "Compruebe su instalación de gvfs."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:288
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:286
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "No se puede abrir la carpeta «%s» en «%s»."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:298
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:296
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "No se puede encontrar el servidor en «%s»."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:333
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:331
 msgid "Try Again"
 msgstr "Inténtelo de nuevo"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:398
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:396
 msgid "Please verify your user details."
 msgstr "Compruebe sus detalles de usuario."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:428
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:426
 msgid "Continue"
 msgstr "Continuar"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:766
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1156
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:764
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1154
 msgid "C_onnect"
 msgstr "C_onectar"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:891
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:889
 msgid "Connect to Server"
 msgstr "Conectarse a un servidor"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:909
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:907
 msgid "Server Details"
 msgstr "Detalles del servidor"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:933
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:931
 msgid "_Server:"
 msgstr "_Servidor:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:953
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:951
 msgid "_Port:"
 msgstr "_Puerto:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:971
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:969
 msgid "_Type:"
 msgstr "_Tipo:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1040
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1038
 msgid "Sh_are:"
 msgstr "_Recurso compartido:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1055
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1053
 msgid "_Folder:"
 msgstr "_Carpeta:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1073
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1071
 msgid "User Details"
 msgstr "Detalles del usuario"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1096
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1094
 msgid "_Domain name:"
 msgstr "Nombre del _dominio:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1111
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1109
 msgid "_User name:"
 msgstr "_Nombre de usuario:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1124
 msgid "Pass_word:"
 msgstr "_Contraseña:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1142
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1140
 msgid "_Remember this password"
 msgstr "_Recordar esta contraseña"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1245
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1243
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:423
-msgid "Show the version of the program."
-msgstr "Mostrar la versión del programa."
+#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+msgid "_Move Here"
+msgstr "_Mover aquí"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:427
-msgid "Open uri(s) in new tab"
-msgstr "Abrir URI(s) en una pestaña nueva"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+msgid "_Copy Here"
+msgstr "_Copiar aquí"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:429
-msgid "Quit Files."
-msgstr "Salir."
+#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+msgid "_Link Here"
+msgstr "_Enlazar aquí"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:431
-msgid "Enable debug logging"
-msgstr "Activar el registro de depuración"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+msgid "Set as _Background"
+msgstr "Establecer como _fondo"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:432
-msgid "[URI...]"
-msgstr "[URI…]"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+msgid "Cancel"
+msgstr "Cancelar"
 
-#: /home/codygarver/f/po/../src/marlin-application.c:441
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Examine el sistema de archivos con el gestor de archivos"
-
-#: /home/codygarver/f/po/../src/marlin-application.c:461
-msgid "--quit cannot be used with URIs."
-msgstr "--quit no se puede usar con URI."
-
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3190
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3543
-msgid "Select All"
-msgstr "Seleccionar todo"
-
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Métodos de entrada"
-
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "No hay nada en el portapapeles que pueda ser pegado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1186
-msgid "Invalid filename provided by XDS drag site"
-msgstr ""
-"El nombre de archivo provisto por el sitio de arrastre de XDS no es válido"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1344
+#: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "No se pudo crear el enlace a la URL «%s»"
+msgid "Failed to execute file \"%s\""
+msgstr "No se pudo ejecutar el archivo «%s»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1829
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Use «%s» para abrir el elemento seleccionado"
-msgstr[1] "Use «%s» para abrir los elementos seleccionados"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Icono de listado de directorio"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1981
-#, c-format
-msgid "_Open With %s"
-msgstr "_Abrir con %s"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Vista de icono"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2003
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Abrir en %'d pestañas _nuevas"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:855
+msgid "Layout mode"
+msgstr "Modo de disposición"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2012
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Abrir en %'d _ventanas nuevas"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3481
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Preparar los archivos seleccionados para moverlos con una orden «Pegar»"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3485
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Preparar los archivos seleccionados para copiarlos con una orden «Pegar»"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3489
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
-"o «Copiar»"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3492
-msgid "Paste Into Folder"
-msgstr "Pegar en la carpeta"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3493
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
-"o «Copiar» en la carpeta seleccionada"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3496
-msgid "_Rename..."
-msgstr "_Renombrar…"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3497
-msgid "Rename selected item"
-msgstr "Renombrar el elemento seleccionado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3500
-msgid "Create New _Folder"
-msgstr "Crear una _carpeta Nueva"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3501
-msgid "Create a new empty folder inside this folder"
-msgstr "Crea una carpeta nueva vacía dentro de esta carpeta"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
-msgid "Create New _File"
-msgstr "Crear un _archivo nuevo"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3505
-msgid "_Empty File"
-msgstr "Archivo _vacío"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3506
-msgid "Create a new empty file inside this folder"
-msgstr "Crear un archivo vacío nuevo dentro de esta carpeta"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3510
-msgid "Open the selected item"
-msgstr "Abrir el elemento seleccionado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3517
-msgid "Open in new Window"
-msgstr "Abrir en una ventana nueva"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3518
-msgid "Open each selected item in a new window"
-msgstr "Abrir cada elemento seleccionado en una ventana nueva"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
-msgid "Open each selected item in a new tab"
-msgstr "Abrir cada elemento seleccionado en una pestaña nueva"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3524
-msgid "Open Wit_h"
-msgstr "Abrir _con"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
-msgid "Choose a program with which to open the selected item"
-msgstr ""
-"Selecciona un programa con el cual poder abrir el elemento seleccionado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3527
-msgid "Other _Application..."
-msgstr "Otra _aplicación…"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3528
-msgid "Choose another application with which to open the selected item"
-msgstr ""
-"Selecciona otra aplicación con la cual abrir el elemento seleccionado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3531
-msgid "Mo_ve to Trash"
-msgstr "Mo_ver a la papelera"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3532
-msgid "Move each selected item to the Trash"
-msgstr "Mover cada elemento seleccionado a la papelera"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3535
-msgid "_Delete Permanently"
-msgstr "_Eliminar permanentemente"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3536
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Eliminar cada elemento seleccionado, sin moverlo a la papelera"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3539
-msgid "_Restore"
-msgstr "_Restaurar"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3547
-msgid "_Properties"
-msgstr "_Propiedades"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3548
-msgid "View or modify the properties of each selected item"
-msgstr "Ver o modificar las propiedades de cada elemento seleccionado"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3654
-msgid "Set Color:"
-msgstr "Establecer color:"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:856
+msgid "The layout mode"
+msgstr "El modo de disposición"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -1102,13 +889,198 @@ msgstr "Tamaño"
 msgid "Type"
 msgstr "Tipo"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Icono de listado de directorio"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Una pulsación"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Vista de icono"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Si los elementos en la vista se pueden activar con una pulsación"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1184
+msgid "Invalid filename provided by XDS drag site"
+msgstr ""
+"El nombre de archivo provisto por el sitio de arrastre de XDS no es válido"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1342
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "No se pudo crear el enlace a la URL «%s»"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1827
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Use «%s» para abrir el elemento seleccionado"
+msgstr[1] "Use «%s» para abrir los elementos seleccionados"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1979
+#, c-format
+msgid "_Open With %s"
+msgstr "_Abrir con %s"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2001
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Abrir en %'d pestañas _nuevas"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2010
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Abrir en %'d _ventanas nuevas"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3479
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Preparar los archivos seleccionados para moverlos con una orden «Pegar»"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3483
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Preparar los archivos seleccionados para copiarlos con una orden «Pegar»"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3487
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
+"o «Copiar»"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
+msgid "Paste Into Folder"
+msgstr "Pegar en la carpeta"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3491
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
+"o «Copiar» en la carpeta seleccionada"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
+msgid "_Rename..."
+msgstr "_Renombrar…"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3495
+msgid "Rename selected item"
+msgstr "Renombrar el elemento seleccionado"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
+msgid "Create New _Folder"
+msgstr "Crear una _carpeta Nueva"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
+msgid "Create a new empty folder inside this folder"
+msgstr "Crea una carpeta nueva vacía dentro de esta carpeta"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3501
+msgid "Create New _File"
+msgstr "Crear un _archivo nuevo"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
+msgid "_Empty File"
+msgstr "Archivo _vacío"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3504
+msgid "Create a new empty file inside this folder"
+msgstr "Crear un archivo vacío nuevo dentro de esta carpeta"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3508
+msgid "Open the selected item"
+msgstr "Abrir el elemento seleccionado"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
+msgid "Open in new Window"
+msgstr "Abrir en una ventana nueva"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3516
+msgid "Open each selected item in a new window"
+msgstr "Abrir cada elemento seleccionado en una ventana nueva"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3520
+msgid "Open each selected item in a new tab"
+msgstr "Abrir cada elemento seleccionado en una pestaña nueva"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
+msgid "Open Wit_h"
+msgstr "Abrir _con"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3523
+msgid "Choose a program with which to open the selected item"
+msgstr ""
+"Selecciona un programa con el cual poder abrir el elemento seleccionado"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
+msgid "Other _Application..."
+msgstr "Otra _aplicación…"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3526
+msgid "Choose another application with which to open the selected item"
+msgstr ""
+"Selecciona otra aplicación con la cual abrir el elemento seleccionado"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
+msgid "Mo_ve to Trash"
+msgstr "Mo_ver a la papelera"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3530
+msgid "Move each selected item to the Trash"
+msgstr "Mover cada elemento seleccionado a la papelera"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
+msgid "_Delete Permanently"
+msgstr "_Eliminar permanentemente"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3534
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Eliminar cada elemento seleccionado, sin moverlo a la papelera"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3537
+msgid "_Restore"
+msgstr "_Restaurar"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
+msgid "_Properties"
+msgstr "_Propiedades"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3546
+msgid "View or modify the properties of each selected item"
+msgstr "Ver o modificar las propiedades de cada elemento seleccionado"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3652
+msgid "Set Color:"
+msgstr "Establecer color:"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
+msgid "File Operations"
+msgstr "Operaciones con archivos"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
+msgid "All file operations have been successfully completed"
+msgstr "Todas las operaciones sobre los archivos se han completado con éxito"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d operación activa sobre archivos"
+msgstr[1] "%'d operaciones activas sobre archivos"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
+msgid "Show Details"
+msgstr "Mostrar detalles"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
+msgid "Show Copy Dialog"
+msgstr "Mostrar el diálogo de copia"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
+msgid "Cancel All In-progress Actions"
+msgstr "Cancelar todas las acciones en progreso"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1126,695 +1098,77 @@ msgstr "Ventana como _administrador nueva"
 msgid "Files"
 msgstr "Archivos"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:737
-msgid "_Skip"
-msgstr "_Omitir"
+#: /home/codygarver/f/po/../src/Application.vala:110
+msgid "Show the version of the program."
+msgstr "Mostrar la versión del programa."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
-msgid "S_kip All"
-msgstr "O_mitir todo"
+#: /home/codygarver/f/po/../src/Application.vala:112
+msgid "Open uri(s) in new tab"
+msgstr "Abrir URI(s) en una pestaña nueva"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
-msgid "_Retry"
-msgstr "_Reintentar"
+#: /home/codygarver/f/po/../src/Application.vala:114
+msgid "Quit Files."
+msgstr "Salir."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
-msgid "Delete _All"
-msgstr "Eliminar _todo"
+#: /home/codygarver/f/po/../src/Application.vala:116
+msgid "Enable debug logging"
+msgstr "Activar el registro de depuración"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
-msgid "_Replace"
-msgstr "_Reemplazar"
+#: /home/codygarver/f/po/../src/Application.vala:119
+msgid "[URI...]"
+msgstr "[URI…]"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
-msgid "Replace _All"
-msgstr "Reemplazar _todo"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
-msgid "_Merge"
-msgstr "Co_mbinar"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
-msgid "Merge _All"
-msgstr "Combinar _todo"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:208
-msgid "Copy _Anyway"
-msgstr "Copiar de todas _formas"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:294
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d segundo"
-msgstr[1] "%'d segundos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:310
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minuto"
-msgstr[1] "%'d minutos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d hora"
-msgstr[1] "%'d horas"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:317
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "aproximadamente %'d hora"
-msgstr[1] "aproximadamente %'d horas"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:393
-#, c-format
-msgid "Link to %s"
-msgstr "Enlazar a %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:397
-#, c-format
-msgid "Another link to %s"
-msgstr "Otro enlace hacia %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:413
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'der enlace hacia %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:417
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'dº enlace hacia %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:421
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'der enlace hacia %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:425
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'dº enlace hacia %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:463
-msgid " (copy)"
-msgstr " (copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:465
-msgid " (another copy)"
-msgstr " (otra copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:482
-msgid "th copy)"
-msgstr ".ª copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:475
-msgid "st copy)"
-msgstr ".ª copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:477
-msgid "nd copy)"
-msgstr ".ª copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:479
-msgid "rd copy)"
-msgstr ".ª copia)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:496
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s (otra copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s (%'dª copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:513
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s (%'dª copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'dª copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s (%'dª copia)%s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:617
-msgid " ("
-msgstr " ("
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:625
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1381
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
-"¿Está seguro de que quiere eliminar permanentemente a «%B» de la papelera?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1384
-#, c-format
+#: /home/codygarver/f/po/../src/Application.vala:122
 msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado "
-"de la papelera?"
-msgstr[1] ""
-"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
-"seleccionados de la papelera?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1462
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Si elimina un elemento, se perderá permanentemente."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1415
-msgid "Empty all items from Trash?"
-msgstr "¿Eliminar todos los elementos en la papelera?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1419
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Todos los elementos de la papelera se eliminarán permanentemente."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1450
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "¿Está seguro de que quiere eliminar permanentemente «%B»?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1453
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado?"
-msgstr[1] ""
-"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
-"seleccionados?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1510
-msgid "Deleting files"
-msgstr "Eliminando archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1504
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "Queda %'d archivo por eliminar"
-msgstr[1] "Quedan %'d archivos por eliminar"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1524
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "Queda %T"
-msgstr[1] "Quedan %T"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2575
-msgid "Error while deleting."
-msgstr "Error al eliminar."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1596
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
+"\n"
+"\n"
+"Browse the file system with the file manager"
 msgstr ""
-"Los archivos en la carpeta «%B» no se pueden eliminar porque no tiene "
-"permisos para verlos."
+"\n"
+"\n"
+"Examine el sistema de archivos con el gestor de archivos"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2634
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3630
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"Hubo un error al obtener la información acerca de los archivos en la carpeta "
-"«%B»."
+#: /home/codygarver/f/po/../src/Application.vala:149
+msgid "--quit cannot be used with URIs."
+msgstr "--quit no se puede usar con URI."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3639
-msgid "_Skip files"
-msgstr "_Omitir archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1629
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"La carpeta «%B» no se puede eliminar porque no tiene permisos para leerla."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2673
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3675
-msgid "There was an error reading the folder \"%B\"."
-msgstr "Hubo un error al leer la carpeta «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1666
-msgid "Could not remove the folder %B."
-msgstr "No se pudo eliminar la carpeta %B."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1743
-msgid "There was an error deleting %B."
-msgstr "Hubo un error al eliminar %B."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1831
-msgid "Moving files to trash"
-msgstr "Moviendo archivos a la papelera"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1833
+#: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "Queda %'d archivo por mover a la papelera"
-msgstr[1] "Quedan %'d archivos por mover a la papelera"
+msgid "link to %s"
+msgstr "enlazar a %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
-msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
-"No se pudo mover el archivo a la papelera. ¿Desea eliminarlo inmediatamente?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1889
-msgid ""
-"This file is located on an external media and cannot be moved to the trash. "
-"Once deleted, it cannot be restored."
-msgstr ""
-"Este archivo está ubicado en un dispositivo externo y no se puede mover a la "
-"papelera. Una vez borrado no se podrá recuperar."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2071
-msgid "Trashing Files"
-msgstr "Moviendo archivos a la papelera"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2073
-msgid "Deleting Files"
-msgstr "Eliminando archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2145
-msgid "Unable to eject %V"
-msgstr "No se pudo expulsar %V"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2147
-msgid "Unable to unmount %V"
-msgstr "No se pudo desmontar %V"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2302
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "¿Quiere vaciar la papelera antes de desmontar?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2304
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Con el fin de ganar espacio libre en este volumen, la papelera debe "
-"vaciarse. Todos los elementos de la papelera se perderán permanentemente."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2310
-msgid "Do _not Empty Trash"
-msgstr "_No vaciar la papelera"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2365
-msgid "Emptying the trash"
-msgstr "Vaciando la papelera"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2432
+#: /home/codygarver/f/po/../libcore/gof-file.c:1761
 #, c-format
-msgid "Unable to mount %s"
-msgstr "No se pudo montar %s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2510
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Preparándose para copiar %'d archivo (%S)"
-msgstr[1] "Preparándose para copiar %'d archivos (%S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2516
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Preparándose para mover %'d archivo (%S)"
-msgstr[1] "Preparándose para mover %'d archivos (%S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Preparándose para eliminar %'d archivo (%S)"
-msgstr[1] "Preparándose para eliminar %'d archivos (%S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2528
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Preparándose para mover %'d archivo a la papelera"
-msgstr[1] "Preparándose para mover %'d archivos a la papelera"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3491
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3622
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3667
-msgid "Error while copying."
-msgstr "Se produjo un error al copiar."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2573
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3665
-msgid "Error while moving."
-msgstr "Se produjo un error al mover."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2577
-msgid "Error while moving files to trash."
-msgstr "Se produjo un error al mover los archivos a la papelera."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2631
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Los archivos en la carpeta «%B» no se pueden gestionar porque no tiene "
-"permisos para verlos."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2670
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"La carpeta «%B» no se puede gestionar porque no tiene permisos para leerla."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2747
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"El archivo «%B» no se puede gestionar porque usted no tiene permisos para "
-"leerlo."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2750
-msgid "There was an error getting information about \"%B\"."
-msgstr "Hubo un error al obtener la información acerca de «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2850
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2925
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2955
-msgid "Error while copying to \"%B\"."
-msgstr "Se produjo un error al copiar a «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2854
-msgid "You do not have permissions to access the destination folder."
-msgstr "No tiene permisos para acceder a la carpeta de destino."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2856
-msgid "There was an error getting information about the destination."
-msgstr "Hubo un error al obtener la información sobre el destino."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2893
-msgid "The destination is not a folder."
-msgstr "El destino no es una carpeta."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2926
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"No hay suficiente espacio en el destino. Intente eliminar archivos para "
-"crear espacio libre."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2928
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Hay %S disponible pero se requieren %S."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2956
-msgid "The destination is read-only."
-msgstr "El destino es de solo lectura."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3017
-msgid "Moving \"%B\" to \"%B\""
-msgstr "Moviendo «%B» a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3018
-msgid "Copying \"%B\" to \"%B\""
-msgstr "Copiando «%B» a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3022
-msgid "Duplicating \"%B\""
-msgstr "Duplicando «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3026
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Moviendo %'d archivo (en «%B») a «%B»"
-msgstr[1] "Moviendo %'d archivos (en «%B») a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3029
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Copiando %'d archivo (en «%B») a «%B»"
-msgstr[1] "Copiando %'d archivos (en «%B») a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3036
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Duplicando %'d archivo (en «%B»)"
-msgstr[1] "Duplicando %'d archivos (en «%B»)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3045
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Moviendo %'d archivo a «%B»"
-msgstr[1] "Moviendo %'d archivos a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3049
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Copiando %'d archivo a «%B»"
-msgstr[1] "Copiando %'d archivos a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3054
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Duplicando %'d archivo"
-msgstr[1] "Duplicando %'d archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3105
-#, c-format
-msgid "%S of %S"
-msgstr "%S de %S"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3116
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S de %S — %T restantes (%S/seg)"
-msgstr[1] "%S de %S — %T restantes (%S/seg)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3495
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"La carpeta «%B» no se puede copiar porque no tiene permisos para crearla en "
-"el destino."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3498
-msgid "There was an error creating the folder \"%B\"."
-msgstr "Se produjo un error al crear la carpeta «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3627
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Los archivos en la carpeta «%B» no se pueden copiar porque no tiene permisos "
-"para verlos."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3672
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"La carpeta «%B» no se puede copiar porque no tiene permisos para leerla."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3717
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5006
-msgid "Error while moving \"%B\"."
-msgstr "Error al mover «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3718
-msgid "Could not remove the source folder."
-msgstr "No se pudo eliminar la carpeta de origen."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4420
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
-msgid "Error while copying \"%B\"."
-msgstr "Error al copiar «%B»."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3804
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "No se pudieron eliminar los archivos de la carpeta ya existente %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3845
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "No se pudo eliminar el archivo ya existente %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
-msgid "You cannot move a folder into itself."
-msgstr "No se puede mover una carpeta dentro de sí misma."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
-msgid "You cannot copy a folder into itself."
-msgstr "No se puede copiar una carpeta dentro de sí misma."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4176
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4848
-msgid "The destination folder is inside the source folder."
-msgstr "La carpeta de destino está dentro de la carpeta de origen."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
-msgid "You cannot move a file over itself."
-msgstr "No se puede mover un archivo sobre sí mismo."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
-msgid "You cannot copy a file over itself."
-msgstr "No se puede copiar un archivo sobre sí mismo."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4209
-msgid "The source file would be overwritten by the destination."
-msgstr "El archivo de origen se sobrescribirá por el de destino."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4422
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
-"No se pudo eliminar el archivo ya existente con el mismo nombre en %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4492
-#, c-format
-msgid "There was an error copying the file into %F."
-msgstr "Hubo un error al copiar el archivo en %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4720
-msgid "Copying Files"
-msgstr "Copiando archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4746
-msgid "Preparing to move to \"%B\""
-msgstr "Preparándose para mover a «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4758
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Preparándose para mover %'d archivo"
-msgstr[1] "Preparándose para mover %'d archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5007
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "Hubo un error al mover el archivo a %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5270
-msgid "Moving Files"
-msgstr "Moviendo archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5300
-msgid "Creating links in \"%B\""
-msgstr "Creando enlaces en «%B»"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Creando enlace hacia %'d archivo"
-msgstr[1] "Creando enlaces hacia %'d archivos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5446
-msgid "Error while creating link to %B."
-msgstr "Error al crear el enlace hacia %B."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5448
-msgid "Symbolic links only supported for local files"
-msgstr "Los enlaces simbólicos solo son compatibles con archivos locales"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5451
-msgid "The target doesn't support symbolic links."
-msgstr "El destino no acepta enlaces simbólicos."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5454
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "Hubo un error al crear el enlace simbólico en %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5782
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5785
-msgid "Setting permissions"
-msgstr "Estableciendo permisos"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6036
-msgid "untitled folder"
-msgstr "carpeta sin título"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6044
-msgid "new file"
-msgstr "archivo nuevo"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6215
-msgid "Error while creating directory %B."
-msgstr "Error al crear el directorio %B."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6217
-msgid "Error while creating file %B."
-msgstr "Error al crear el archivo %B."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6219
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "Hubo un error al crear el directorio en %F."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6536
-msgid "Emptying Trash"
-msgstr "Vaciando la papelera"
+msgid "Failed to parse the desktop file: %s"
+msgstr "No se pudo procesar el archivo .desktop: %s"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1799
+msgid "No Exec field specified"
+msgstr "No se especificó el campo Exec"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1819
+msgid "No URL field specified"
+msgstr "No se especificó el campo URL"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1825
+msgid "Invalid desktop file"
+msgstr "Archivo de escritorio no válido"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:2115
+msgid "Slashes are not allowed in filenames"
+msgstr "No se permiten barras en los nombres de archivo"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:2135
+msgid "Toplevel files cannot be renamed"
+msgstr "Los archivos de nivel superior no se pueden renombrar"
+
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (Unicode no válido)"
+
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Mostrar más _detalles"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -2189,28 +1543,713 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Rehacer cambio de dueño del elemento %d"
 msgstr[1] "Rehacer cambio de dueño de los elementos %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Preparando"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:119
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "No se pudo determinar la ubicación original de «%s» "
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:122
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "No se puede restaurar el elemento desde la papelera"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+msgid "_Skip"
+msgstr "_Omitir"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "O_mitir todo"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "_Reintentar"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "Eliminar _todo"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "_Reemplazar"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Reemplazar _todo"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "Co_mbinar"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Combinar _todo"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "Copiar de todas _formas"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d segundo"
+msgstr[1] "%'d segundos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minuto"
+msgstr[1] "%'d minutos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d hora"
+msgstr[1] "%'d horas"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "aproximadamente %'d hora"
+msgstr[1] "aproximadamente %'d horas"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
+#, c-format
+msgid "Link to %s"
+msgstr "Enlazar a %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
+#, c-format
+msgid "Another link to %s"
+msgstr "Otro enlace hacia %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'der enlace hacia %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'dº enlace hacia %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'der enlace hacia %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'dº enlace hacia %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
+msgid " (copy)"
+msgstr " (copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
+msgid " (another copy)"
+msgstr " (otra copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
+msgid "th copy)"
+msgstr ".ª copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
+msgid "st copy)"
+msgstr ".ª copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
+msgid "nd copy)"
+msgstr ".ª copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
+msgid "rd copy)"
+msgstr ".ª copia)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (otra copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'dª copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'dª copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'dª copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'dª copia)%s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
+msgid " ("
+msgstr " ("
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr ""
+"¿Está seguro de que quiere eliminar permanentemente a «%B» de la papelera?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado "
+"de la papelera?"
+msgstr[1] ""
+"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
+"seleccionados de la papelera?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Si elimina un elemento, se perderá permanentemente."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
+msgid "Empty all items from Trash?"
+msgstr "¿Eliminar todos los elementos en la papelera?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Todos los elementos de la papelera se eliminarán permanentemente."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "¿Está seguro de que quiere eliminar permanentemente «%B»?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] ""
+"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado?"
+msgstr[1] ""
+"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
+"seleccionados?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
+msgid "Deleting files"
+msgstr "Eliminando archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "Queda %'d archivo por eliminar"
+msgstr[1] "Quedan %'d archivos por eliminar"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "Queda %T"
+msgstr[1] "Quedan %T"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2574
+msgid "Error while deleting."
+msgstr "Error al eliminar."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Los archivos en la carpeta «%B» no se pueden eliminar porque no tiene "
+"permisos para verlos."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"Hubo un error al obtener la información acerca de los archivos en la carpeta "
+"«%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
+msgid "_Skip files"
+msgstr "_Omitir archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"La carpeta «%B» no se puede eliminar porque no tiene permisos para leerla."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3674
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Hubo un error al leer la carpeta «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
+msgid "Could not remove the folder %B."
+msgstr "No se pudo eliminar la carpeta %B."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
+msgid "There was an error deleting %B."
+msgstr "Hubo un error al eliminar %B."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
+msgid "Moving files to trash"
+msgstr "Moviendo archivos a la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "Queda %'d archivo por mover a la papelera"
+msgstr[1] "Quedan %'d archivos por mover a la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
+msgid "Cannot move file to trash. Delete Immediately?"
+msgstr ""
+"No se pudo mover el archivo a la papelera. ¿Desea eliminarlo inmediatamente?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
+msgid ""
+"This file is located on an external media and cannot be moved to the trash. "
+"Once deleted, it cannot be restored."
+msgstr ""
+"Este archivo está ubicado en un dispositivo externo y no se puede mover a la "
+"papelera. Una vez borrado no se podrá recuperar."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
+msgid "Trashing Files"
+msgstr "Moviendo archivos a la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
+msgid "Deleting Files"
+msgstr "Eliminando archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
+msgid "Unable to eject %V"
+msgstr "No se pudo expulsar %V"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
+msgid "Unable to unmount %V"
+msgstr "No se pudo desmontar %V"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "¿Quiere vaciar la papelera antes de desmontar?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Con el fin de ganar espacio libre en este volumen, la papelera debe "
+"vaciarse. Todos los elementos de la papelera se perderán permanentemente."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
+msgid "Do _not Empty Trash"
+msgstr "_No vaciar la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
+msgid "Emptying the trash"
+msgstr "Vaciando la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
+#, c-format
+msgid "Unable to mount %s"
+msgstr "No se pudo montar %s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2509
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Preparándose para copiar %'d archivo (%S)"
+msgstr[1] "Preparándose para copiar %'d archivos (%S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2515
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Preparándose para mover %'d archivo (%S)"
+msgstr[1] "Preparándose para mover %'d archivos (%S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2521
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Preparándose para eliminar %'d archivo (%S)"
+msgstr[1] "Preparándose para eliminar %'d archivos (%S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2527
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Preparándose para mover %'d archivo a la papelera"
+msgstr[1] "Preparándose para mover %'d archivos a la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2570
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3490
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3621
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3666
+msgid "Error while copying."
+msgstr "Se produjo un error al copiar."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2572
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3619
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3664
+msgid "Error while moving."
+msgstr "Se produjo un error al mover."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
+msgid "Error while moving files to trash."
+msgstr "Se produjo un error al mover los archivos a la papelera."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Los archivos en la carpeta «%B» no se pueden gestionar porque no tiene "
+"permisos para verlos."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2669
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"La carpeta «%B» no se puede gestionar porque no tiene permisos para leerla."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2746
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"El archivo «%B» no se puede gestionar porque usted no tiene permisos para "
+"leerlo."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2749
+msgid "There was an error getting information about \"%B\"."
+msgstr "Hubo un error al obtener la información acerca de «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2849
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2891
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2924
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2954
+msgid "Error while copying to \"%B\"."
+msgstr "Se produjo un error al copiar a «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2853
+msgid "You do not have permissions to access the destination folder."
+msgstr "No tiene permisos para acceder a la carpeta de destino."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2855
+msgid "There was an error getting information about the destination."
+msgstr "Hubo un error al obtener la información sobre el destino."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
+msgid "The destination is not a folder."
+msgstr "El destino no es una carpeta."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2925
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"No hay suficiente espacio en el destino. Intente eliminar archivos para "
+"crear espacio libre."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2927
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Hay %S disponible pero se requieren %S."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2955
+msgid "The destination is read-only."
+msgstr "El destino es de solo lectura."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3016
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Moviendo «%B» a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3017
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Copiando «%B» a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3021
+msgid "Duplicating \"%B\""
+msgstr "Duplicando «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3025
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Moviendo %'d archivo (en «%B») a «%B»"
+msgstr[1] "Moviendo %'d archivos (en «%B») a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3028
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Copiando %'d archivo (en «%B») a «%B»"
+msgstr[1] "Copiando %'d archivos (en «%B») a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3035
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Duplicando %'d archivo (en «%B»)"
+msgstr[1] "Duplicando %'d archivos (en «%B»)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3044
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Moviendo %'d archivo a «%B»"
+msgstr[1] "Moviendo %'d archivos a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Copiando %'d archivo a «%B»"
+msgstr[1] "Copiando %'d archivos a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3053
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Duplicando %'d archivo"
+msgstr[1] "Duplicando %'d archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3104
+#, c-format
+msgid "%S of %S"
+msgstr "%S de %S"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3115
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S de %S — %T restantes (%S/seg)"
+msgstr[1] "%S de %S — %T restantes (%S/seg)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3494
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"La carpeta «%B» no se puede copiar porque no tiene permisos para crearla en "
+"el destino."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3497
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Se produjo un error al crear la carpeta «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3626
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Los archivos en la carpeta «%B» no se pueden copiar porque no tiene permisos "
+"para verlos."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3671
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"La carpeta «%B» no se puede copiar porque no tiene permisos para leerla."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5005
+msgid "Error while moving \"%B\"."
+msgstr "Error al mover «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3717
+msgid "Could not remove the source folder."
+msgstr "No se pudo eliminar la carpeta de origen."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3802
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3843
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4419
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4490
+msgid "Error while copying \"%B\"."
+msgstr "Error al copiar «%B»."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "No se pudieron eliminar los archivos de la carpeta ya existente %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "No se pudo eliminar el archivo ya existente %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4845
+msgid "You cannot move a folder into itself."
+msgstr "No se puede mover una carpeta dentro de sí misma."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
+msgid "You cannot copy a folder into itself."
+msgstr "No se puede copiar una carpeta dentro de sí misma."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
+msgid "The destination folder is inside the source folder."
+msgstr "La carpeta de destino está dentro de la carpeta de origen."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4206
+msgid "You cannot move a file over itself."
+msgstr "No se puede mover un archivo sobre sí mismo."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
+msgid "You cannot copy a file over itself."
+msgstr "No se puede copiar un archivo sobre sí mismo."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
+msgid "The source file would be overwritten by the destination."
+msgstr "El archivo de origen se sobrescribirá por el de destino."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4421
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr ""
+"No se pudo eliminar el archivo ya existente con el mismo nombre en %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
+#, c-format
+msgid "There was an error copying the file into %F."
+msgstr "Hubo un error al copiar el archivo en %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4719
+msgid "Copying Files"
+msgstr "Copiando archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4745
+msgid "Preparing to move to \"%B\""
+msgstr "Preparándose para mover a «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Preparándose para mover %'d archivo"
+msgstr[1] "Preparándose para mover %'d archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5006
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Hubo un error al mover el archivo a %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5269
+msgid "Moving Files"
+msgstr "Moviendo archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
+msgid "Creating links in \"%B\""
+msgstr "Creando enlaces en «%B»"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Creando enlace hacia %'d archivo"
+msgstr[1] "Creando enlaces hacia %'d archivos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
+msgid "Error while creating link to %B."
+msgstr "Error al crear el enlace hacia %B."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
+msgid "Symbolic links only supported for local files"
+msgstr "Los enlaces simbólicos solo son compatibles con archivos locales"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5450
+msgid "The target doesn't support symbolic links."
+msgstr "El destino no acepta enlaces simbólicos."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5453
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Hubo un error al crear el enlace simbólico en %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5781
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5784
+msgid "Setting permissions"
+msgstr "Estableciendo permisos"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6035
+msgid "untitled folder"
+msgstr "carpeta sin título"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6043
+msgid "new file"
+msgstr "archivo nuevo"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6214
+msgid "Error while creating directory %B."
+msgstr "Error al crear el directorio %B."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6216
+msgid "Error while creating file %B."
+msgstr "Error al crear el archivo %B."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6218
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Hubo un error al crear el directorio en %F."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6535
+msgid "Emptying Trash"
+msgstr "Vaciando la papelera"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "¿Combinar la carpeta «%s»?"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2218,167 +2257,129 @@ msgstr ""
 "Al combinar se pedirá confirmación antes de reemplazar cualquier archivo en "
 "la carpeta que esté en conflicto con los archivos que se están moviendo."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Existe una carpeta más antigua con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Existe una carpeta más reciente con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Ya existe una carpeta con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
 msgid "Replacing it will remove all files in the folder."
 msgstr "Reemplazarla eliminará todos los archivos en la carpeta."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "¿Reemplazar la carpeta «%s»?"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Ya existe una carpeta con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "¿Reemplazar el archivo «%s»?"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
 msgid "Replacing it will overwrite its content."
 msgstr "Reemplazarlo sobreescribirá su contenido."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Existe un archivo más antiguo con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Existe un archivo más reciente con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Ya existe otro archivo con el mismo nombre en «%s»."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
 msgid "Original file"
 msgstr "Archivo original"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Type:"
 msgstr "Tipo:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
 msgid "Last modified:"
 msgstr "Última modificación:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
 msgid "Replace with"
 msgstr "Reemplazar con"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
 msgid "Merge"
 msgstr "Combinar"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
 msgid "_Select a new name for the destination"
 msgstr "_Seleccionar un nombre nuevo para el destino"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
 msgid "Reset"
 msgstr "Restablecer"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
 msgid "Apply this action to all files"
 msgstr "Aplicar esta acción a todos los archivos"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
 msgid "Re_name"
 msgstr "Re_nombrar"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
 msgid "Replace"
 msgstr "Reemplazar"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
 msgid "File conflict"
 msgstr "Conflicto de archivo"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
-#, c-format
-msgid "link to %s"
-msgstr "enlazar a %s"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1761
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "No se pudo procesar el archivo .desktop: %s"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr "No se especificó el campo Exec"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr "No se especificó el campo URL"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr "Archivo de escritorio no válido"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr "No se permiten barras en los nombres de archivo"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr "Los archivos de nivel superior no se pueden renombrar"
-
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (Unicode no válido)"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Mostrar más _detalles"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -2391,6 +2392,11 @@ msgstr "Ayer a las %-H:%M"
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d de %b de %Y a las %-H:%M"
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Preparando"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
