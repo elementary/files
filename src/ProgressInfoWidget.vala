@@ -1,6 +1,6 @@
 /***
   Copyright (C) 2007, 2011 Red Hat, Inc.
-  Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+  Copyright (C) 2013 elementary Developers
 
   This program is free software: you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License version 3, as published
