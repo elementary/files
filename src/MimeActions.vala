@@ -169,23 +169,23 @@ public class Marlin.MimeActions {
 
         /* This is going to look ugly, but doing the same thing using
            "foreach" would take m*n operations. */
-        unowned List<AppInfo> l = a;
-        unowned List<AppInfo> m = b;
+        unowned List<AppInfo> iterator_a = a;
+        unowned List<AppInfo> iterator_b = b;
 
-        while (l != null && m != null) {
-            AppInfo app_a = l.data;
-            AppInfo app_b = m.data;
+        while (iterator_a != null && iterator_b != null) {
+            AppInfo app_a = iterator_a.data;
+            AppInfo app_b = iterator_b.data;
 
             int cmp = application_compare_by_id (app_a, app_b);
 
             if (cmp > 0) {
-                m = m.next;
+                iterator_b = iterator_b.next;
             } else if (cmp < 0) {
-                l = l.next;
+                iterator_a = iterator_a.next;
             } else {
                 result.append (app_a);
-                l = l.next;
-                m = m.next;
+                iterator_a = iterator_a.next;
+                iterator_b = iterator_b.next;
             }
         }
 
