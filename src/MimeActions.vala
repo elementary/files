@@ -20,9 +20,9 @@
            Julián Unrrein <junrrein@gmail.com>
 ***/
 
-namespace Marlin.Mime {
+public class Marlin.MimeActions {
 
-    public AppInfo? get_default_application_for_file (GOF.File file) {
+    public static AppInfo? get_default_application_for_file (GOF.File file) {
         AppInfo app = file.get_default_handler ();
 
         if (app == null) {
@@ -35,7 +35,7 @@ namespace Marlin.Mime {
         return app;
     }
 
-    public AppInfo? get_default_application_for_files (List<GOF.File> files) {
+    public static AppInfo? get_default_application_for_files (List<GOF.File> files) {
         assert (files != null);
 
         List<GOF.File> sorted_files = files.copy ();
@@ -71,7 +71,7 @@ namespace Marlin.Mime {
         return app;
     }
 
-    public List<AppInfo>? get_applications_for_file (GOF.File file) {
+    public static List<AppInfo>? get_applications_for_file (GOF.File file) {
         List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -90,7 +90,7 @@ namespace Marlin.Mime {
         return result;
     }
 
-    public List<AppInfo>? get_applications_for_files (List<GOF.File> files) {
+    public static List<AppInfo>? get_applications_for_files (List<GOF.File> files) {
         assert (files != null);
 
         List<GOF.File> sorted_files = files.copy ();
@@ -129,7 +129,7 @@ namespace Marlin.Mime {
         return result;
     }
 
-    private bool file_has_local_path (GOF.File file) {
+    private static bool file_has_local_path (GOF.File file) {
 
         if (file.location.is_native ()) {
             return true;
@@ -139,33 +139,33 @@ namespace Marlin.Mime {
         }
     }
 
-    private int file_compare_by_mime_type (GOF.File a, GOF.File b) {
+    private static int file_compare_by_mime_type (GOF.File a, GOF.File b) {
         return strcmp (a.get_ftype (), b.get_ftype ());
     }
 
-    private string? gof_get_parent_uri (GOF.File file) {
+    private static string? gof_get_parent_uri (GOF.File file) {
         return file.directory != null ? file.directory.get_uri () : null;
     }
 
-    private int file_compare_by_parent_uri (GOF.File a, GOF.File b) {
+    private static int file_compare_by_parent_uri (GOF.File a, GOF.File b) {
         return strcmp (gof_get_parent_uri (a), gof_get_parent_uri (b));
     }
 
-    private int application_compare_by_name (AppInfo a, AppInfo b) {
+    private static int application_compare_by_name (AppInfo a, AppInfo b) {
         return a.get_display_name ().collate (b.get_display_name ());
     }
 
-    private int application_compare_by_id (AppInfo a, AppInfo b) {
+    private static int application_compare_by_id (AppInfo a, AppInfo b) {
         return strcmp (a.get_id (), b.get_id ());
     }
 
-    private void filter_non_uri_apps (List<AppInfo> apps) {
+    private static void filter_non_uri_apps (List<AppInfo> apps) {
         foreach (var app in apps)
             if (!app.supports_uris ())
                 apps.remove (app);
     }
 
-    private List<AppInfo> intersect_application_lists (List<AppInfo> a, List<AppInfo> b) {
+    private static List<AppInfo> intersect_application_lists (List<AppInfo> a, List<AppInfo> b) {
         List<AppInfo> result = null;
 
         /* This is going to look ugly, but doing the same thing using
