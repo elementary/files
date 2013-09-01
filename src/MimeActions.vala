@@ -130,7 +130,6 @@ public class Marlin.MimeActions {
     }
 
     private static bool file_has_local_path (GOF.File file) {
-
         if (file.location.is_native ()) {
             return true;
         } else {
