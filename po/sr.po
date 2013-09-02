@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-30 12:05-0500\n"
-"PO-Revision-Date: 2013-08-27 09:09+0000\n"
-"Last-Translator: ZDroid <Unknown>\n"
+"PO-Revision-Date: 2013-09-01 09:09+0000\n"
+"Last-Translator: Иван Благојевић <ivan_blagojevic@mail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:25+0000\n"
+"X-Launchpad-Export-Date: 2013-09-02 05:23+0000\n"
 "X-Generator: Launchpad (build 16750)\n"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
@@ -472,7 +472,7 @@ msgstr "%u фасцикле"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " и %u друге ставке које су (%s) одабране"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
@@ -927,7 +927,7 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2010
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Отвори у %'d новим _прозорима"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3479
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -1060,8 +1060,9 @@ msgstr "Све операције са датотекама су успешно 
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "У току је %'d радња над датотекама"
+msgstr[1] "У току су %'d радње над датотекама"
+msgstr[2] "У току је %'d радњи над датотекама"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
 msgid "Show Details"
@@ -1161,7 +1162,7 @@ msgstr " (неисправан Уникод)"
 
 #: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr ""
+msgstr "Прикажи више _детаља"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1188,19 +1189,19 @@ msgstr "Померите %d ставке назад у '%s'"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Премести '%s' назад у '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Преименуј '%s' као '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Поврати %d ставке из смећа"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format

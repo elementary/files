@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2013-08-30 12:05-0500\n"
-"PO-Revision-Date: 2013-06-03 11:53+0000\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"PO-Revision-Date: 2013-09-01 18:55+0000\n"
+"Last-Translator: Vedran Ivančević <vedran.ivancevic@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:25+0000\n"
+"X-Launchpad-Export-Date: 2013-09-02 05:23+0000\n"
 "X-Generator: Launchpad (build 16750)\n"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
@@ -76,11 +76,11 @@ msgstr "Pretpregled"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:291
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u označenih stavki"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
 msgid "Calculating size…"
-msgstr ""
+msgstr "Izračunavanje veličine..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Created"
@@ -186,7 +186,7 @@ msgstr "Datotečni sustav"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Ova mapa ne postoji"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
 msgid "(as Administrator)"
@@ -194,20 +194,20 @@ msgstr "(kao administrator)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Ovo ne pripada Vama."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Nemate ovlasti za gledanje ova mape."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ova mapa ne postoji."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Mapu \"%s\" nije moguće pronaći."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -216,7 +216,7 @@ msgstr "Napravi"
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Kreirajte mapu \"%s\""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -225,6 +225,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Neuspjelo kreiranje mape\n"
+"\n"
+"%s"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -463,29 +466,29 @@ msgstr "Stupci"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u mape"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " i %u drugih stavki  (%s) označeno"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " i %u drugih stavki (%s) označeno"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
 msgid " selected"
-msgstr ""
+msgstr " označeno"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u mapa"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
 #, c-format

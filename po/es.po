@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-30 12:05-0500\n"
-"PO-Revision-Date: 2013-08-16 00:52+0000\n"
+"PO-Revision-Date: 2013-09-01 22:27+0000\n"
 "Last-Translator: Julián Unrrein <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:25+0000\n"
+"X-Launchpad-Export-Date: 2013-09-02 05:23+0000\n"
 "X-Generator: Launchpad (build 16750)\n"
 "Language: es\n"
 
@@ -472,7 +472,7 @@ msgstr "%u carpetas"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " y %u otro elemento (%s) seleccionados"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
