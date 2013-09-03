@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-30 12:05-0500\n"
-"PO-Revision-Date: 2013-07-29 19:21+0000\n"
-"Last-Translator: miyoyo <smartandroidtv95@gmail.com>\n"
+"PO-Revision-Date: 2013-09-02 10:34+0000\n"
+"Last-Translator: Corentin Noël <tintou@mailoo.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:24+0000\n"
-"X-Generator: Launchpad (build 16750)\n"
+"X-Launchpad-Export-Date: 2013-09-03 06:05+0000\n"
+"X-Generator: Launchpad (build 16753)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -473,7 +473,7 @@ msgstr "%u dossiers"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " et %u autres objets (%s) sélectionnés"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
