@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-30 12:05-0500\n"
-"PO-Revision-Date: 2013-07-10 12:01+0000\n"
+"PO-Revision-Date: 2013-09-06 06:25+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:24+0000\n"
-"X-Generator: Launchpad (build 16750)\n"
+"X-Launchpad-Export-Date: 2013-09-07 05:33+0000\n"
+"X-Generator: Launchpad (build 16760)\n"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "AFP"
@@ -79,7 +79,7 @@ msgstr "%u valittua kohdetta"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
 msgid "Calculating size…"
-msgstr ""
+msgstr "Lasketaan kokoa…"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Created"
@@ -471,7 +471,7 @@ msgstr "%u kansiota"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " ja %u muu kohde (%s) valittu"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
