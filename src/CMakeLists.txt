@@ -126,7 +126,7 @@ ELSE(WITH_UNITY AND UNITY_FOUND)
         --thread)
 ENDIF(WITH_UNITY AND UNITY_FOUND)
 
-add_executable(pantheon-files
+add_executable(../pantheon-files
     eel-editable-label.c
     marlin-enum-types.c
     marlin-bookmark.c
@@ -153,14 +153,14 @@ add_executable(pantheon-files
     marlin-progress-info-widget.c
     ${VALA_C} )
 
-target_link_libraries(pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
+target_link_libraries(../pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
 
 IF(WITH_UNITY AND UNITY_FOUND)
     include_directories(${UNITY_INCLUDE_DIRS})
-    target_link_libraries (pantheon-files marlincore marlinwidgets ${UNITY_LIBRARIES})
+    target_link_libraries (../pantheon-files marlincore marlinwidgets ${UNITY_LIBRARIES})
     add_definitions("-DHAVE_UNITY=1")
 ENDIF(WITH_UNITY AND UNITY_FOUND)
 
-install(TARGETS pantheon-files RUNTIME DESTINATION bin)
+install(TARGETS ../pantheon-files RUNTIME DESTINATION bin)
 install(FILES pantheon-files-ui.xml fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION ${UI_DIR})
 include(Tests)
