@@ -47,6 +47,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
 
     public BreadcrumbsElement (string text_, int left_padding, int right_padding) {
         text = text_;
+        text_displayed = GLib.Uri.unescape_string(text);
         this.left_padding = left_padding;
         this.right_padding = right_padding;
     }
