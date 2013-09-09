@@ -22,7 +22,6 @@
    Author: Darin Adler <darin@eazel.com>
 */
 
-#include <config.h>
 #include "eel-debug.h"
 
 #include <glib.h>

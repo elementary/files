@@ -25,7 +25,6 @@
  *          David Emory Watson <dwatson@cs.ucr.edu>
  */
 
-#include <config.h>
 #include "fm-directory-view.h"
 #include <math.h>
 
@@ -48,7 +47,6 @@
 #include "marlin-icon-renderer.h"
 #include "marlin-text-renderer.h"
 #include "marlin-thumbnailer.h"
-#include "marlin-tags.h"
 #include "marlin-mime-actions.h"
 
 

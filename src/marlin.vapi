@@ -6,6 +6,9 @@ public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
+    public GLib.Settings marlin_icon_view_settings;
+    public GLib.Settings marlin_list_view_settings;
+    public GLib.Settings marlin_column_view_settings;
 }
 
 namespace FM {
@@ -55,12 +58,18 @@ namespace Marlin {
         public bool queue_file(GOF.File file, int? request, bool large);
 
     }
-    [CCode (cheader_filename = "marlin-application.h")]
-    public class Application : Gtk.Application {
-        public Application ();
-        public void create_window (GLib.File location, Gdk.Screen screen);
-        public void quit ();
-        public bool is_first_window (Gtk.Window win);
+    [CCode (cheader_filename = "marlin-bookmark.h")]
+    public class Bookmark : Object {
+        public File get_location ();
+        public string get_name ();
+        public bool uri_known_not_to_exist ();
+    }
+    [CCode (cheader_filename = "marlin-bookmark-list.h")]
+    public class BookmarkList : Object {
+        public signal void contents_changed ();
+        public BookmarkList ();
+        public int length ();
+        public unowned Bookmark item_at (int index);
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
@@ -81,6 +90,7 @@ namespace Marlin {
             public Dialog (Gtk.Window window);
         }
     }
+    
     [CCode (cprefix = "MarlinPlaces", lower_case_cprefix = "marlin_places_")]
     namespace Places {
         [CCode (cheader_filename = "marlin-places-sidebar.h")]
@@ -109,5 +119,8 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
     }
+    [CCode (cheader_filename = "marlin-progress-info-widget.h")]
+    public class Progress.InfoWidget : Gtk.Box {
+        public InfoWidget (Marlin.Progress.Info info);
+    }
 }
-

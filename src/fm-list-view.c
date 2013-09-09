@@ -30,7 +30,7 @@
 #include "marlin-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
-#include "marlin-tags.h"
+#include "marlin-vala.h"
 
 /*enum
 {

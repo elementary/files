@@ -22,7 +22,6 @@
  *          Andy Hertzfeld <andy@eazel.com>
  */
 
-#include <config.h>
 #include "eel-gdk-pixbuf-extensions.h"
 //#include "eel-glib-extensions.h"
 #include <math.h>

@@ -19,7 +19,6 @@
  * Author: Pavel Cisler <pavel@eazel.com>
  */
 
-#include <config.h>
 #include "marlin-trash-monitor.h"
 
 #include "marlin-icons.h"

@@ -22,7 +22,6 @@
 	Anders Carlsson <andersca@gnu.org>
 	Michael Meeks   <michael@ximian.com>
 */
-#include <config.h>
 #include <gtk/gtk.h>
 #include <atk/atkrelationset.h>
 #include "eel-accessibility.h"

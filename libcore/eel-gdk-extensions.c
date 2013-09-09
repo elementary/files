@@ -22,7 +22,6 @@
  *          Ramiro Estrugo <ramiro@eazel.com>
  */
 
-#include <config.h>
 #include "eel-gdk-extensions.h"
 
 #include "eel-glib-extensions.h"

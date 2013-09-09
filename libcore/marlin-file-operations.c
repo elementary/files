@@ -22,7 +22,6 @@
  *          Pavel Cisler <pavel@eazel.com>
  */
 
-#include <config.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>

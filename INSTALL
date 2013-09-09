@@ -1,14 +1,32 @@
-To build marlin:
+Requirements:
+- Vala >= 0.16
+- Granite >= 0.2.1
+- Gtk+ >= 3.0.3
+- GLib >= 2.32
+- Gio >= 2.0
+- Gee >= 1.0
+- Pango >= 1.1.2
+- Sqlite 3
+- Libnotify >= 0.7.2
+- Gail >= 3.0
+- LibDBus-GLib
+- GConf 2
+
+To get all of the dependencies under a Debian-based distribution, run:
+
+    sudo apt-get build-dep pantheon-files
+
+Optional:
+- Unity (libunity-dev) >= 4.0.0 (For Unity launcher support).
+
+To build pantheon-files:
     mkdir build
     cd build
-    cmake ..
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     make
 
 To install it:
-    su
-    make install
 
-    or, on sudo based distributions (Ubuntu for instance):
     sudo make install
 
 Options:
@@ -17,7 +35,6 @@ Options:
 
     Different prefix:
         cmake .. -DCMAKE_INSTALL_PREFIX=/opt
-    
-    Note that if you want to install libcore and libwidgets only
-    you have to use the following command:
+
+    To install only libcore and libwidgets use the following command:
         cmake .. -DLIB_ONLY=true

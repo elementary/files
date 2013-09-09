@@ -114,12 +114,12 @@
 
   <schema path="/org/pantheon/files/icon-view/" id="org.pantheon.files.icon-view">
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'normal'</default>
+      <default>'large'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the icon view.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'normal'</default>
+      <default>'large'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the icon view.</description>
     </key>

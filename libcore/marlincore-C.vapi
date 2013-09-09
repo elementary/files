@@ -3,9 +3,13 @@ using GLib;
 
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
 namespace Config {
+    public const string GETTEXT_PACKAGE;
     public const string PIXMAP_DIR;
     public const string UI_DIR;
+    public const string PACKAGE_VERSION;
     public const string VERSION;
+    public const string GNOMELOCALEDIR;
+    public const string PLUGIN_DIR;
 }
 
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
@@ -54,11 +58,14 @@ namespace EelPango {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
+    [CCode (cheader_filename = "marlin-file-utilities.h")]
+    public string get_accel_map_file ();
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
         public static IconInfo lookup(GLib.Icon icon, int size);
         public Gdk.Pixbuf get_pixbuf_nodefault();
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
+        public static void clear_caches ();
     }
 
     [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
@@ -98,6 +105,29 @@ namespace Marlin
 
         public void undo (UndoFinishCallback? cb);
         public void redo (UndoFinishCallback? cb);
+    }
+
+    [CCode (cheader_filename = "marlin-progress-info.h")]
+    public class Progress.Info : Object {
+        public Info ();
+        public signal void started ();
+        public signal void finished ();
+        public signal void progress_changed ();
+        public void cancel ();
+        public double get_progress ();
+        public double get_current ();
+        public double get_total ();
+        public bool get_is_finished ();
+        public bool get_is_paused ();
+        public Cancellable get_cancellable ();
+    }
+
+    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
+    public class Progress.InfoManager : Object {
+        public InfoManager ();
+        public signal void new_progress_info (Progress.Info info);
+        public void add_new_info (Progress.Info info);
+        public unowned List<Progress.Info> get_all_infos ();
     }
 }
 

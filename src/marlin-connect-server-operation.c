@@ -21,8 +21,6 @@
  * Author: Cosimo Cecchi <cosimoc@gnome.org>
  */
 
-#include <config.h>
-
 #include "marlin-connect-server-operation.h"
 
 G_DEFINE_TYPE (MarlinConnectServerOperation,

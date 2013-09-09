@@ -19,6 +19,8 @@
 
 /* TODO merge with ctags plugin */
 
+public Marlin.View.Tags tags;
+
 [DBus (name = "org.elementary.marlin.db")]
 interface CTags : Object {
     public abstract async bool record_uris (Variant[] entries, string directory) 	throws IOError;

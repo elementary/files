@@ -23,7 +23,6 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#include <config.h>
 #include <math.h>
 #include <string.h>
 
@@ -4404,15 +4403,6 @@ gtk_cell_editable_key_press_event (EelEditableLabel *label,
       return TRUE;
     }
 
-  /* override focus */
-  if (key_event->keyval == GDK_KEY_Up || key_event->keyval == GDK_KEY_Down)
-    {
-      gtk_cell_editable_editing_done (GTK_CELL_EDITABLE (label));
-      gtk_cell_editable_remove_widget (GTK_CELL_EDITABLE (label));
-
-      return TRUE;
-    }
-
   return FALSE;
 }
 
@@ -4420,8 +4410,6 @@ static void
 eel_editable_label_start_editing (GtkCellEditable *cell_editable,
                                   GdkEvent *event)
 {
-  //EelEditableLabel *label = EEL_EDITABLE_LABEL (cell_editable);
-
   g_signal_connect (cell_editable, "activate",
                     G_CALLBACK (gtk_cell_editable_label_activated), NULL);
   g_signal_connect (cell_editable, "key-press-event",
