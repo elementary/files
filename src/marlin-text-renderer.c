@@ -336,7 +336,7 @@ marlin_text_renderer_set_property (GObject      *object,
         if (text_renderer->layout != NULL) {
             if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
                 pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
-            else 
+            else
                 pango_layout_set_attributes (text_renderer->layout, NULL);
         }
         break;
@@ -377,7 +377,7 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
 
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
-    
+
     gfloat xalign, yalign;
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 
@@ -404,7 +404,7 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
         pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
         if (xalign == 0.5f)
             pango_layout_set_alignment (text_renderer->layout, PANGO_ALIGN_CENTER);
-    
+
         pango_layout_get_pixel_size (text_renderer->layout, &text_width, &text_height);
     }
 
@@ -431,7 +431,7 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
         gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);*/
         if (G_LIKELY (x_offset != NULL))
         {
-            *x_offset = ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) ? 
+            *x_offset = ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) ?
                          (1.0 - xalign) : xalign) *
                          (cell_area->width - text_width - (2 * xpad));
             *x_offset = MAX (*x_offset, 0);
@@ -469,7 +469,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
 
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
-    
+
     state = gtk_widget_get_state_flags (widget);
     if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
     {
@@ -514,11 +514,11 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         (flags & GTK_CELL_RENDERER_PRELIT) == GTK_CELL_RENDERER_PRELIT) {
         pango_layout_set_ellipsize (text_renderer->layout, PANGO_ELLIPSIZE_NONE);
     }
-    
+
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
     if (xalign == 0.5f)
         pango_layout_set_alignment (text_renderer->layout, PANGO_ALIGN_CENTER);
-    
+
     pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
 
     /* calculate the real text dimension */
@@ -567,7 +567,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         cairo_curve_to (cr, x0 + 5, y1, x0, y1, x0, y1 - 5);
         cairo_line_to (cr, x0, y0 + 5);
         cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
-        
+
         GdkRGBA color;
 
         if(text_renderer->background != NULL && !selected)
@@ -577,7 +577,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
                 g_critical("Can't parse this color value: %s", text_renderer->background);
                 gtk_style_context_get_background_color (context, state, &color);
             }
-            
+
         }
         else
         {
@@ -605,8 +605,8 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     /* draw the text */
     if (xalign == 0.5f)
         x_offset = (cell_area->width - text_renderer->wrap_width)/2;
-    
-    gtk_render_layout (context, cr, 
+
+    gtk_render_layout (context, cr,
                        cell_area->x + x_offset + xpad,
                        cell_area->y + y_offset + ypad,
                        text_renderer->layout);
@@ -635,7 +635,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     if (!(visible && mode == GTK_CELL_RENDERER_MODE_EDITABLE))
         return NULL;
     //g_message ("%s %s\n", G_STRFUNC, path);
-    
+
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 
     /* allocate a new text entry widget to be used for editing */
@@ -659,7 +659,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
     gtk_misc_set_padding (GTK_MISC (text_renderer->entry), xpad, ypad);
 
-    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL) 
+    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
         g_object_set (text_renderer->entry, "small-size", TRUE, NULL);
 
     gtk_widget_set_size_request (text_renderer->entry, text_renderer->wrap_width, -1);

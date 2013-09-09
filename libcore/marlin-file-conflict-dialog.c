@@ -7,17 +7,17 @@
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU General Public
  * License along with this program; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
- *  
+ *
  * Authors: Cosimo Cecchi <cosimoc@gnome.org>
  */
 
@@ -145,7 +145,7 @@ file_list_ready_cb (GList *files,
                 (_("Merge folder \"%s\"?"),
                  dest_name);
 
-            message_extra = 
+            message_extra =
                 _("Merging will ask for confirmation before replacing any files in "
                   "the folder that conflict with the files being copied.");
 
@@ -359,7 +359,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
         if (src->is_directory) {
             primary_text = g_strdup_printf (_("Merge folder \"%s\"?"), dest_display_name);
 
-            message_extra = 
+            message_extra =
                 _("Merging will ask for confirmation before replacing any files in "
                   "the folder that conflict with the files being copied.");
 
@@ -443,7 +443,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
                         details->dest_image, FALSE, FALSE, 0);
     gtk_widget_show (details->dest_image);
     g_object_unref (pixbuf);
-    
+
     pixbuf = gof_file_get_icon_pixbuf (src, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->src_image = gtk_image_new_from_pixbuf (pixbuf);
@@ -804,7 +804,7 @@ marlin_file_conflict_dialog_get_new_name (MarlinFileConflictDialog *dialog)
 gboolean
 marlin_file_conflict_dialog_get_apply_to_all (MarlinFileConflictDialog *dialog)
 {
-    return gtk_toggle_button_get_active 
+    return gtk_toggle_button_get_active
         (GTK_TOGGLE_BUTTON (dialog->details->checkbox));
 }
 

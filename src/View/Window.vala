@@ -227,30 +227,34 @@ namespace Marlin.View {
                 destroy();
             	return false;
             });
-            
+
             tabs.tab_added.connect ((tab) => {
                 make_new_tab (tab);
             });
-            
+
             tabs.tab_removed.connect ((tab) => {
                 if (tabs.n_tabs == 1) {
                     make_new_tab ();
                 }
-                
+
                 tab.restore_data =
                     (tab.page as ViewContainer).slot.location.get_uri ();
-                
+
                 return true;
             });
-            
+
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
             });
-            
+
             tabs.tab_restored.connect ((tab) => {
                 make_new_tab (tab, File.new_for_uri (tab.restore_data));
             });
             
+            tabs.tab_duplicated.connect ((tab) => {
+                make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
+            });
+
             tabs.tab_duplicated.connect ((tab) => {
                 make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
             });
@@ -358,7 +362,7 @@ namespace Marlin.View {
 
         public void add_tab (File location) {
             make_new_tab (null, location);
-            
+
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -748,7 +752,7 @@ namespace Marlin.View {
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
               ViewMode.MILLER }
-     
+
         };
     }
 }

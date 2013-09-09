@@ -127,7 +127,7 @@ void    gof_file_changed (GOFFile *file)
     if (dir != NULL) {
         if (!file->is_hidden || dir->show_hidden_files)
             g_signal_emit_by_name (dir, "file_changed", file);
-        
+
         g_object_unref (dir);
     }
     g_signal_emit_by_name (file, "changed");
@@ -142,15 +142,15 @@ gof_file_icon_changed (GOFFile *file)
     /* get the DirectoryAsync associated to the file */
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
-        if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files) 
+        if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
             g_signal_emit_by_name (dir, "icon_changed", file);
-        
+
         g_object_unref (dir);
     }
     g_signal_emit_by_name (file, "icon_changed");
 }
 
-static void 
+static void
 gof_file_clear_info (GOFFile *file)
 {
     g_return_if_fail (file != NULL);
@@ -244,7 +244,7 @@ gof_file_is_smb_uri_scheme (GOFFile *file)
     return gof_file_compare_uri_schemes (file, SCHEMES);
 }
 
-void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file) 
+void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
 {
     if (!file->is_hidden && file->uri != NULL && file->icon == NULL) {
         char *path = g_filename_from_uri (file->uri, NULL, NULL);
@@ -259,7 +259,7 @@ void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
 }
 
-static void 
+static void
 gof_file_target_location_update (GOFFile *file)
 {
     if (file->target_location == NULL)
@@ -269,7 +269,7 @@ gof_file_target_location_update (GOFFile *file)
     gof_file_query_update (gof);
     file->is_directory = gof->is_directory;
     file->ftype = gof->ftype;*/
-   
+
     file->target_gof = gof_file_get (file->target_location);
     /* TODO make async */
     gof_file_query_update (file->target_gof);
@@ -289,7 +289,7 @@ static void
 gof_file_update_formated_type (GOFFile *file)
 {
     gchar *formated_type = NULL;
-    
+
     _g_free0 (file->formated_type);
     if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && gof_file_get_ftype (file->target_gof)) {
         file->formated_type = g_content_type_get_description (gof_file_get_ftype (file->target_gof));
@@ -310,7 +310,7 @@ gof_file_update_formated_type (GOFFile *file)
     g_free (formated_type);
 }
 
-static void 
+static void
 gof_file_update_icon_internal (GOFFile *file, gint size);
 
 void
@@ -345,9 +345,9 @@ gof_file_update (GOFFile *file)
 
     /* metadata */
     if (file->is_directory) {
-        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id")) 
+        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id"))
             file->sort_column_id = fm_list_model_get_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
-        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed")) 
+        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed"))
             file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
     }
 
@@ -360,19 +360,19 @@ gof_file_update (GOFFile *file)
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
-            
+
             if (file->file_type == G_FILE_TYPE_MOUNTABLE)
                 file->mount = get_mount_at (file->target_location);
-        } 
+        }
     }
 
-    /* TODO the key-files could be loaded async. 
+    /* TODO the key-files could be loaded async.
     <lazy>The performance gain would not be that great</lazy>*/
     if ((file->is_desktop = gof_file_is_desktop_file (file)))
     {
         /* The following code snippet about desktop files come from Thunar thunar-file.c,
          * Copyright (c) 2005-2007 Benedikt Meurer <benny@xfce.org>
-         * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org> 
+         * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>
          */
 
         /* determine the custom icon and display name for .desktop files */
@@ -383,14 +383,14 @@ gof_file_update (GOFFile *file)
         if (key_file != NULL)
         {
             /* read the icon name from the .desktop file */
-            file->custom_icon_name = g_key_file_get_string (key_file, 
+            file->custom_icon_name = g_key_file_get_string (key_file,
                                                             G_KEY_FILE_DESKTOP_GROUP,
                                                             G_KEY_FILE_DESKTOP_KEY_ICON,
                                                             NULL);
 
             if (G_UNLIKELY (eel_str_is_empty (file->custom_icon_name)))
             {
-                /* make sure we set null if the string is empty else the assertion in 
+                /* make sure we set null if the string is empty else the assertion in
                  * thunar_icon_factory_lookup_icon() will fail */
                 _g_free0 (file->custom_icon_name);
                 file->custom_icon_name = NULL;
@@ -417,7 +417,7 @@ gof_file_update (GOFFile *file)
             if (custom_display_name != NULL)
             {
                 /* drop the name if it's empty or has invalid encoding */
-                if (*custom_display_name == '\0' 
+                if (*custom_display_name == '\0'
                     || !g_utf8_validate (custom_display_name, -1, NULL))
                 {
                     _g_free0 (custom_display_name);
@@ -454,14 +454,14 @@ gof_file_update (GOFFile *file)
 
     /* sizes */
     gof_file_update_size (file);
-    
+
     /* modified date */
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     /* icon */
-    if (file->is_directory) { 
+    if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
-    } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) { 
+    } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) {
         file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote");
     } else {
         const gchar *ftype = gof_file_get_ftype (file);
@@ -471,7 +471,7 @@ gof_file_update (GOFFile *file)
 
 
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
-    /* mark the thumb flags as state none, we'll load the thumbs once the directory 
+    /* mark the thumb flags as state none, we'll load the thumbs once the directory
      * would be loaded on a thread */
     if (gof_file_get_thumbnail_path (file) != NULL)
         file->flags = GOF_FILE_THUMB_STATE_NONE;
@@ -511,7 +511,7 @@ static MarlinIconInfo *
 gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
     if (file->custom_icon_name != NULL) {
-        if (g_path_is_absolute (file->custom_icon_name)) 
+        if (g_path_is_absolute (file->custom_icon_name))
             return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
         else
             return marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
@@ -548,7 +548,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
         //printf ("thumbnail loading\n");
-    } else { 
+    } else {
         gicon = _g_object_ref0 (file->icon);
     }
 
@@ -562,12 +562,12 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     } else {
         icon = marlin_icon_info_get_generic_icon (size);
     }
-     
+
     return icon;
 }
 
 #if 0
-static GdkPixbuf 
+static GdkPixbuf
 *ensure_pixbuf_from_nicon (GOFFile *file, gint size, gboolean force_size, MarlinIconInfo *nicon)
 {
     GdkPixbuf *pix;
@@ -605,8 +605,8 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     return pix;
 }
 
-static void 
-gof_file_update_icon_internal (GOFFile *file, gint size) 
+static void
+gof_file_update_icon_internal (GOFFile *file, gint size)
 {
     /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
 
@@ -618,7 +618,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     file->pix_size = size;
 }
 
-/* This function is used by the icon renderer and only by it. 
+/* This function is used by the icon renderer and only by it.
  * Store the pixbuf and update it only for size change.
  */
 void gof_file_update_icon (GOFFile *file, gint size)
@@ -652,7 +652,7 @@ void gof_file_update_emblem (GOFFile *file)
         g_list_free (file->emblems_list);
         file->emblems_list = NULL;
     }
-    if(plugins != NULL) 
+    if(plugins != NULL)
         marlin_plugin_manager_update_file_info (plugins, file);
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
@@ -667,7 +667,7 @@ void gof_file_update_emblem (GOFFile *file)
     /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
-        gof_file_icon_changed (file); 
+        gof_file_icon_changed (file);
 }
 
 void gof_file_add_emblem (GOFFile* file, const gchar* emblem)
@@ -726,7 +726,7 @@ get_mount_at (GFile *target)
 	return found;
 }
 
-static GFileInfo * 
+static GFileInfo *
 gof_file_query_info (GOFFile *file)
 {
     GFileInfo *info = NULL;
@@ -734,7 +734,7 @@ gof_file_query_info (GOFFile *file)
 
     info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
                               0, NULL, &err);
-    
+
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
@@ -744,17 +744,17 @@ gof_file_query_info (GOFFile *file)
             file->exists = FALSE;
         }
         print_error (err);
-    } 
+    }
 
     return info;
 }
 
 /* query info and update. This call is synchronous */
-void 
+void
 gof_file_query_update (GOFFile *file)
 {
     GFileInfo *info = NULL;
-        
+
     if ((info = gof_file_query_info (file)) != NULL) {
         g_clear_object (&file->info);
         file->info = info;
@@ -763,7 +763,7 @@ gof_file_query_update (GOFFile *file)
 }
 
 /* ensure we got the file info */
-gboolean 
+gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
     if (file->info == NULL) {
@@ -774,8 +774,8 @@ gof_file_ensure_query_info (GOFFile *file)
     return (file->info != NULL);
 }
 
-/* only the thumbnail has changed (been generated) */ 
-void 
+/* only the thumbnail has changed (been generated) */
+void
 gof_file_query_thumbnail_update (GOFFile *file)
 {
     gchar    *base_name;
@@ -785,12 +785,12 @@ gof_file_query_thumbnail_update (GOFFile *file)
         /* get the thumbnail path from md5 filename */
         md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, file->uri, -1);
         base_name = g_strdup_printf ("%s.png", md5_hash);
-        file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails", 
+        file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
                                                  "normal", base_name, NULL);
         g_free (base_name);
         g_free (md5_hash);
     }
-    
+
     gof_file_update_icon_internal (file, file->pix_size);
 }
 
@@ -814,7 +814,7 @@ void gof_file_remove_from_caches (GOFFile *file)
     /* remove from file_cache */
     if (file_cache != NULL && g_hash_table_remove (file_cache, file->location))
         g_debug ("remove from file_cache %s", file->uri);
-    
+
     /* remove from directory_cache */
     GOFDirectoryAsync *dir = NULL;
     //g_warning ("zz0 %s", g_file_get_uri (file->location));
@@ -827,7 +827,7 @@ void gof_file_remove_from_caches (GOFFile *file)
             g_object_unref (dir);
         }
     }
-    
+
     file->is_gone = TRUE;
     g_warning ("end %s", G_STRFUNC);
 }
@@ -854,13 +854,13 @@ static void gof_file_init (GOFFile *file) {
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
     file->exists = TRUE;
-    
+
     file->flags = 0;
     file->pix_size = -1;
-    
+
     file->target_gof = NULL;
     file->thumbnail_path = NULL;
-    
+
     file->sort_column_id = FM_LIST_MODEL_FILENAME;
     file->sort_order = GTK_SORT_ASCENDING;
 }
@@ -999,9 +999,9 @@ compare_files_by_time (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_time (GOFFile *file1, GOFFile *file2)
 {
-    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
+    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2))
         return -1;
-    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
+    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1))
         return 1;
 
     return compare_files_by_time (file1, file2);
@@ -1018,7 +1018,7 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
      * that the string is dependent entirely on the mime type,
      * which is true now but might not be later.
      */
-    if (gof_file_is_folder (file1) && gof_file_is_folder (file2)) 
+    if (gof_file_is_folder (file1) && gof_file_is_folder (file2))
         return 0;
     if (gof_file_is_folder (file1))
         return -1;
@@ -1076,9 +1076,9 @@ compare_files_by_size (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_size (GOFFile *file1, GOFFile *file2)
 {
-    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
+    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2))
         return -1;
-    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
+    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1))
         return 1;
 
     return compare_files_by_size (file1, file2);
@@ -1091,9 +1091,9 @@ gof_file_compare_for_sort_internal (GOFFile *file1,
                                     gboolean reversed)
 {
     if (directories_first) {
-        if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
+        if (gof_file_is_folder (file1) && !gof_file_is_folder (file2))
             return -1;
-        if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
+        if (gof_file_is_folder (file2) && !gof_file_is_folder (file1))
             return 1;
     }
 
@@ -1145,7 +1145,7 @@ gof_file_compare_for_sort (GOFFile *file1,
             result = -result;
         }
     }
-    
+
     return result;
 }
 
@@ -1184,7 +1184,7 @@ gof_files_get_location_list (GList *files)
         if (file != NULL && file->location != NULL) {
             gfile_list = g_list_prepend (gfile_list, eel_g_file_ref (file->location));
         }
-    } 
+    }
     //gfile_list = g_list_reverse (gfile_list);
 
     return (gfile_list);
@@ -1240,8 +1240,8 @@ gof_file_get_symlink_target (GOFFile *file)
     return g_file_info_get_symlink_target (file->info);
 }
 
-gboolean 
-gof_file_is_symlink (GOFFile *file) 
+gboolean
+gof_file_is_symlink (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
@@ -1251,7 +1251,7 @@ gof_file_is_symlink (GOFFile *file)
     return g_file_info_get_is_symlink (file->info);
 }
 
-gchar * 
+gchar *
 gof_file_get_formated_time (GOFFile *file, const char *attr)
 {
     g_return_val_if_fail (file != NULL, NULL);
@@ -1288,7 +1288,7 @@ gof_file_is_desktop_file (GOFFile *file)
     if (content_type != NULL)
         is_desktop_file = g_content_type_equals (content_type, "application/x-desktop");
 
-    return is_desktop_file 
+    return is_desktop_file
         && !g_str_has_suffix (file->basename, ".directory");
 }
 
@@ -1298,7 +1298,7 @@ gof_file_is_desktop_file (GOFFile *file)
  *
  * Determines whether the owner of the current process is allowed
  * to execute the @file (or enter the directory refered to by
- * @file). On UNIX it also returns %TRUE if @file refers to a 
+ * @file). On UNIX it also returns %TRUE if @file refers to a
  * desktop entry.
  *
  * Return value: %TRUE if @file can be executed.
@@ -1350,10 +1350,10 @@ gof_file_is_executable (GOFFile *file)
  * @file        : a #GOFFile.
  * @thumb_state : the new #GOFFileThumbState.
  *
- * Sets the #GOFFileThumbState for @file to @thumb_state. 
+ * Sets the #GOFFileThumbState for @file to @thumb_state.
  * This will cause a "icon-changed" signal to be emitted from
- * #GOFMonitor. 
-**/ 
+ * #GOFMonitor.
+**/
 void
 gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 {
@@ -1362,7 +1362,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
     g_message ("%s %s %u", G_STRFUNC, file->uri, file->flags);
-    if (file->flags == GOF_FILE_THUMB_STATE_READY) 
+    if (file->flags == GOF_FILE_THUMB_STATE_READY)
         gof_file_query_thumbnail_update (file);
 
     /* notify others of this change, so that all components can update
@@ -1380,9 +1380,9 @@ GOFFile* gof_file_cache_lookup (GFile *location)
     if (G_UNLIKELY (file_cache == NULL))
     {
         G_LOCK (file_cache_mutex);
-        file_cache = g_hash_table_new_full (g_file_hash, 
-                                            (GEqualFunc) g_file_equal, 
-                                            (GDestroyNotify) g_object_unref, 
+        file_cache = g_hash_table_new_full (g_file_hash,
+                                            (GEqualFunc) g_file_equal,
+                                            (GDestroyNotify) g_object_unref,
                                             (GDestroyNotify) g_object_unref);
         G_UNLOCK (file_cache_mutex);
     }
@@ -1392,7 +1392,7 @@ GOFFile* gof_file_cache_lookup (GFile *location)
     return _g_object_ref0 (cached_file);
 }
 
-GOFFile* 
+GOFFile*
 gof_file_get (GFile *location)
 {
     GFile *parent;
@@ -1414,8 +1414,8 @@ gof_file_get (GFile *location)
     if (file == NULL) {
         //g_debug ("gof_file_cache_lookup");
         file = gof_file_cache_lookup (location);
-    } 
-    
+    }
+
     if (file != NULL) {
         g_debug (">>>>reuse file %s", file->uri);
     } else {
@@ -1426,7 +1426,7 @@ gof_file_get (GFile *location)
             g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));
         G_UNLOCK (file_cache_mutex);
 
-        /*g_critical ("%s INFO null %s file_cache items %d", G_STRFUNC, file->uri, 
+        /*g_critical ("%s INFO null %s file_cache items %d", G_STRFUNC, file->uri,
                     g_hash_table_size (file_cache));*/
     }
 
@@ -1481,7 +1481,7 @@ gchar* gof_file_list_to_string (GList *list, gsize *len)
     }
 
     *len = string->len;
-    return g_string_free (string, FALSE); 
+    return g_string_free (string, FALSE);
 }
 
 gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
@@ -1497,10 +1497,10 @@ gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
         return FALSE;
 
     /* determine the filesystem IDs */
-    filesystem_id_a = g_file_info_get_attribute_string (file_a->info, 
+    filesystem_id_a = g_file_info_get_attribute_string (file_a->info,
                                                         G_FILE_ATTRIBUTE_ID_FILESYSTEM);
 
-    filesystem_id_b = g_file_info_get_attribute_string (file_b->info, 
+    filesystem_id_b = g_file_info_get_attribute_string (file_b->info,
                                                         G_FILE_ATTRIBUTE_ID_FILESYSTEM);
 
     /* compare the filesystem IDs */
@@ -1595,7 +1595,7 @@ gof_file_accepts_drop (GOFFile          *file,
         }
 
         /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
-        if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0 
+        if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0
             && (suggested_action == GDK_ACTION_COPY))
         {
             /* default to move as suggested action */
@@ -1614,10 +1614,10 @@ gof_file_accepts_drop (GOFFile          *file,
                 /* we have only move if we know the source and both the source and the target
                  * are on the same disk, and the source file is owned by the current user.
                  */
-                if (ofile == NULL 
+                if (ofile == NULL
                     || !gof_file_same_filesystem (file, ofile)
-                    || (ofile->info != NULL 
-                        && g_file_info_get_attribute_uint32 (ofile->info, 
+                    || (ofile->info != NULL
+                        && g_file_info_get_attribute_uint32 (ofile->info,
                                                              G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
                 {
                     //printf ("%s default suggested action GDK_ACTION_COPY\n", G_STRFUNC);
@@ -1692,14 +1692,14 @@ gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
  * @file : a #GOFFile instance.
  *
  * Returns the default #GAppInfo for @file or %NULL if there is none.
- * 
+ *
  * The caller is responsible to free the returned #GAppInfo using
  * g_object_unref().
  *
  * Return value: Default #GAppInfo for @file or %NULL if there is none.
 **/
 GAppInfo *
-gof_file_get_default_handler (GOFFile *file) 
+gof_file_get_default_handler (GOFFile *file)
 {
     const gchar *content_type;
     gboolean     must_support_uris = FALSE;
@@ -1720,7 +1720,7 @@ gof_file_get_default_handler (GOFFile *file)
     //g_app_info_get_default_for_uri_scheme
     if (file->target_location != NULL)
         return g_file_query_default_handler (file->target_location, NULL, NULL);
-    
+
     return g_file_query_default_handler (file->location, NULL, NULL);
 }
 
@@ -1782,10 +1782,10 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                 /*terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                                    G_KEY_FILE_DESKTOP_KEY_TERMINAL, NULL);
                 snotify = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                  G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY, 
+                                                  G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY,
                                                   NULL);*/
 
-                cmd = marlin_exec_parse (exec, file_list, icon, name, location); 
+                cmd = marlin_exec_parse (exec, file_list, icon, name, location);
 
                 _g_free0 (name);
                 _g_free0 (icon);
@@ -1793,9 +1793,9 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `Exec' is a field name in a .desktop file. 
+                /* TRANSLATORS: `Exec' is a field name in a .desktop file.
                  * Don't translate it. */
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No Exec field specified"));
             }
         }
@@ -1809,19 +1809,19 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                 GOFFile *link = gof_file_get_by_commandline_arg (url);
                 result = gof_file_launch (link, screen, NULL);
                 g_object_unref (link);
-                return (result); 
+                return (result);
             }
             else
             {
                 /* TRANSLATORS: `URL' is a field name in a .desktop file.
                  * Don't translate it. */
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No URL field specified"));
             }
         }
         else
         {
-            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                          _("Invalid desktop file"));
         }
 
@@ -1914,7 +1914,7 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
         app = gof_file_get_default_handler (file);
     if (app == NULL)
     {
-        //TODO 
+        //TODO
         /* display the application chooser if no application is defined for this file
          * type yet */
         printf ("%s application show_chooser_dialog\n", G_STRFUNC);
@@ -1933,7 +1933,7 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
 
     succeed = gof_file_launch_with (file, screen, app);
 
-    /* TODO error */ 
+    /* TODO error */
 
     g_object_unref (G_OBJECT (app));
 
@@ -1977,8 +1977,8 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
 
     g_object_unref (file->location);
     file->location = g_object_ref (new_location);
-    
-    if (dir != NULL) 
+
+    if (dir != NULL)
         gof_directory_async_add_to_hash_cache (dir, file);
 
     _g_free0 (file->uri);
@@ -1990,7 +1990,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->pix_size = -1;
     _g_free0 (file->thumbnail_path);
     file->flags = 0;
-    
+
     gof_file_query_update (file);
 
     g_object_unref (dir);
@@ -2084,7 +2084,7 @@ rename_callback (GObject *source_object,
     gof_file_operation_complete (op, NULL, error);
     if (new_file != NULL) {
         g_object_unref (new_file);
-    } else { 
+    } else {
         g_error_free (error);
     }
 }
@@ -2158,7 +2158,7 @@ gboolean
 gof_file_can_set_owner (GOFFile *file)
 {
     /* unknown file uid */
-    if (file->uid == -1) 
+    if (file->uid == -1)
 		return FALSE;
 
 	/* root */
@@ -2168,12 +2168,12 @@ gof_file_can_set_owner (GOFFile *file)
 /* copied from nautilus-file.c */
 /**
  * gof_file_can_set_group:
- * 
+ *
  * Check whether the current user is allowed to change
  * the group of a file.
- * 
+ *
  * @file: The file in question.
- * 
+ *
  * Return value: TRUE if the current user can change the
  * group of @file, FALSE otherwise. It's always possible
  * that when you actually try to do it, you will fail.
@@ -2189,11 +2189,11 @@ gof_file_can_set_group (GOFFile *file)
 	user_id = geteuid();
 
 	/* Owner is allowed to set group (with restrictions). */
-	if (user_id == (uid_t) file->uid) 
+	if (user_id == (uid_t) file->uid)
 		return TRUE;
 
 	/* Root is also allowed to set group. */
-	if (user_id == 0) 
+	if (user_id == 0)
 		return TRUE;
 
 	return FALSE;
@@ -2202,10 +2202,10 @@ gof_file_can_set_group (GOFFile *file)
 /* copied from nautilus-file.c */
 /**
  * nautilus_file_get_settable_group_names:
- * 
+ *
  * Get a list of all group names that the current user
  * can set the group of a specific file to.
- * 
+ *
  * @file: The NautilusFile in question.
  */
 GList *
@@ -2236,12 +2236,12 @@ gof_file_get_settable_group_names (GOFFile *file)
 /* copied from nautilus-file.c */
 /**
  * gof_file_can_set_permissions:
- * 
+ *
  * Check whether the current user is allowed to change
  * the permissions of a file.
- * 
+ *
  * @file: The file in question.
- * 
+ *
  * Return value: TRUE if the current user can change the
  * permissions of @file, FALSE otherwise. It's always possible
  * that when you actually try to do it, you will fail.
@@ -2251,17 +2251,17 @@ gof_file_can_set_permissions (GOFFile *file)
 {
     uid_t user_id;
 
-    if (file->uid != -1 && g_file_is_native (file->location)) 
+    if (file->uid != -1 && g_file_is_native (file->location))
     {
         /* Check the user. */
         user_id = geteuid();
 
         /* Owner is allowed to set permissions. */
-        if (user_id == (uid_t) file->uid) 
+        if (user_id == (uid_t) file->uid)
             return TRUE;
 
         /* Root is also allowed to set permissions. */
-        if (user_id == 0) 
+        if (user_id == 0)
             return TRUE;
 
         /* Nobody else is allowed. */
@@ -2276,13 +2276,13 @@ gof_file_can_set_permissions (GOFFile *file)
 /* copied from nautilus-file.c */
 /**
  * gof_file_get_permissions_as_string:
- * 
+ *
  * Get a user-displayable string representing a file's permissions. The caller
  * is responsible for _g_free0-ing this string.
  * @file: GOFFile representing the file in question.
- * 
+ *
  * Returns: Newly allocated string ready to display to the user.
- * 
+ *
  **/
 char *
 gof_file_get_permissions_as_string (GOFFile *file)
@@ -2303,22 +2303,22 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             is_link ? 'l' : file->is_directory ? 'd' : '-',
                             file->permissions & S_IRUSR ? 'r' : '-',
                             file->permissions & S_IWUSR ? 'w' : '-',
-                            file->permissions & S_IXUSR 
-                            ? (suid ? 's' : 'x') 
+                            file->permissions & S_IXUSR
+                            ? (suid ? 's' : 'x')
                             : (suid ? 'S' : '-'),
                             file->permissions & S_IRGRP ? 'r' : '-',
                             file->permissions & S_IWGRP ? 'w' : '-',
                             file->permissions & S_IXGRP
-                            ? (sgid ? 's' : 'x') 
+                            ? (sgid ? 's' : 'x')
                             : (sgid ? 'S' : '-'),		
                             file->permissions & S_IROTH ? 'r' : '-',
                             file->permissions & S_IWOTH ? 'w' : '-',
                             file->permissions & S_IXOTH
-                            ? (sticky ? 't' : 'x') 
+                            ? (sticky ? 't' : 'x')
                             : (sticky ? 'T' : '-'));
 }
 
-gint 
+gint
 gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 {
     return compare_by_display_name (GOF_FILE (a), GOF_FILE (b));
@@ -2327,7 +2327,7 @@ gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 GFile *
 gof_file_get_target_location (GOFFile *file)
 {
-    /* when desktop files are not interpreted return the original loc, 
+    /* when desktop files are not interpreted return the original loc,
      * this way we can copy/paste simple desktop files intead of their target */
     if (file->is_desktop && !gof_preferences_get_default ()->pref_interpret_desktop_files)
         return file->location;
@@ -2350,11 +2350,11 @@ gof_file_get_display_name (GOFFile *file)
 
     if (file->info && g_file_info_get_display_name (file->info) != NULL)
         return g_file_info_get_display_name (file->info);
-    
+
     return file->basename;
 }
 
-gboolean 
+gboolean
 gof_file_is_folder (GOFFile *file)
 {
     /* TODO check */
@@ -2449,7 +2449,7 @@ gof_file_thumb_can_frame (GOFFile *file)
     /* get the DirectoryAsync associated to the file */
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
-        gboolean can_frame = !dir->uri_contain_keypath_icons; 
+        gboolean can_frame = !dir->uri_contain_keypath_icons;
         g_object_unref (dir);
         return can_frame;
     }

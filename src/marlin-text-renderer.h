@@ -61,7 +61,7 @@ struct _MarlinTextRenderer
     MarlinZoomLevel zoom_level;
 
     /* cell editing support */
-    GtkWidget    *entry; 
+    GtkWidget    *entry;
     gboolean      entry_menu_active;
     gint          entry_menu_popdown_timer_id;
 };

@@ -73,7 +73,7 @@ static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *
 static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
     g_return_val_if_fail(FM_IS_COLUMNS_VIEW(view), FALSE);
-    
+
     GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (FM_DIRECTORY_VIEW (view));
 
     if (gof_directory_async_is_empty (dir))
@@ -118,7 +118,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
     /* don't update column if we got a drag_begin started */
     if (fm_directory_view_is_drag_pending (FM_DIRECTORY_VIEW (view)))
         return;
- 
+
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
@@ -245,7 +245,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
     printf ("%s\n", G_STRFUNC);
 	view->details->editable_widget = NULL;
 
-	/* Don't allow a rename with an empty string. Revert to original 
+	/* Don't allow a rename with an empty string. Revert to original
 	 * without notifying the user.
 	 */
 	if (new_text[0] == '\0') {
@@ -466,11 +466,11 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
         view->details->updates_frozen = FALSE;
         selection = gtk_tree_view_get_selection (tree_view);
         list_selection_changed_callback (selection, view);
-        
+
         /* reset the pressed_button state */
         view->details->pressed_button = -1;
     }
-    
+
 
     return TRUE;
 }
@@ -684,7 +684,7 @@ fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static void
-fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
                             gboolean start_editing, gboolean select)
 {
     FMColumnsView *cols_view = FM_COLUMNS_VIEW (view);
@@ -692,12 +692,12 @@ fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
 
     /* the treeview select the path by default. */
     g_signal_handlers_block_by_func (selection, list_selection_changed_callback, cols_view);
-    gtk_tree_view_set_cursor_on_cell (cols_view->tree, path, 
+    gtk_tree_view_set_cursor_on_cell (cols_view->tree, path,
                                       cols_view->details->file_name_column,
                                       (GtkCellRenderer *) cols_view->details->file_name_cell,
                                       start_editing);
 
-    if (!select) 
+    if (!select)
         gtk_tree_selection_unselect_path (selection, path);
     g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, cols_view);
 }
@@ -724,7 +724,7 @@ fm_columns_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static gboolean
-fm_columns_view_get_visible_range (FMDirectoryView *view, 
+fm_columns_view_get_visible_range (FMDirectoryView *view,
                                    GtkTreePath     **start_path,
                                    GtkTreePath     **end_path)
 
@@ -738,7 +738,7 @@ static void
 fm_columns_view_zoom_normal (FMDirectoryView *view)
 {
     MarlinZoomLevel     zoom;
-    
+
     zoom = g_settings_get_enum (marlin_column_view_settings, "default-zoom-level");
     g_settings_set_enum (marlin_column_view_settings, "zoom-level", zoom);
 }
@@ -755,7 +755,7 @@ fm_columns_view_finalize (GObject *object)
         gof_file_list_free (view->details->selection);
 
     g_free (view->details);
-    G_OBJECT_CLASS (fm_columns_view_parent_class)->finalize (object); 
+    G_OBJECT_CLASS (fm_columns_view_parent_class)->finalize (object);
 }
 
 static void
@@ -767,8 +767,8 @@ fm_columns_view_init (FMColumnsView *view)
     create_and_set_up_tree_view (view);
 
     //fm_columns_view_click_policy_changed (FM_DIRECTORY_VIEW (view));
-    
-    g_settings_bind (marlin_column_view_settings, "zoom-level", 
+
+    g_settings_bind (marlin_column_view_settings, "zoom-level",
                      view, "zoom-level", 0);
 }
 
@@ -780,7 +780,7 @@ fm_columns_view_zoom_level_changed (FMDirectoryView *view)
     gint xpad, ypad;
 
     gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
-    gtk_cell_renderer_set_fixed_size (view->icon_renderer, 
+    gtk_cell_renderer_set_fixed_size (view->icon_renderer,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
     gtk_tree_view_columns_autosize (FM_COLUMNS_VIEW (view)->tree);
@@ -801,7 +801,7 @@ fm_columns_view_get_property (GObject    *object,
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
-    }   
+    }
 }
 
 static void
@@ -818,7 +818,7 @@ fm_columns_view_set_property (GObject       *object,
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
-    }   
+    }
 }
 #endif
 
@@ -835,7 +835,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
-    fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
+    fm_directory_view_class->get_selection = fm_columns_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_columns_view_select_path;

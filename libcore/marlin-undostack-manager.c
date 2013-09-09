@@ -113,8 +113,8 @@ static guint signals[LAST_SIGNAL];
 ***************************************************************** */
 enum
 {
-    PROP_UNDO_MANAGER_0, 
-    PROP_UNDO_LEVELS, 
+    PROP_UNDO_MANAGER_0,
+    PROP_UNDO_LEVELS,
     PROP_CONFIRM_DELETE
 };
 
@@ -250,9 +250,9 @@ marlin_undo_manager_class_init (MarlinUndoManagerClass *klass)
     /* The UI menu needs to update its status */
     signals[REQUEST_MENU_UPDATE] = g_signal_new ("request-menu-update",
                                                  G_TYPE_FROM_CLASS (klass),
-                                                 G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS, 
+                                                 G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
                                                  0, NULL, NULL,
-                                                 g_cclosure_marshal_VOID__POINTER, 
+                                                 g_cclosure_marshal_VOID__POINTER,
                                                  G_TYPE_NONE, 1, G_TYPE_POINTER);
 
     /* Hook deconstructors */
@@ -401,7 +401,7 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
 ** ****************************************************************/
 void
 marlin_undo_manager_redo (MarlinUndoManager *manager,
-                          GtkWidget *parent_view, 
+                          GtkWidget *parent_view,
                           MarlinUndoFinishCallback cb)
 {
     GList *uris;
@@ -552,7 +552,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 ** ****************************************************************/
 void
 marlin_undo_manager_undo (MarlinUndoManager *manager,
-                          GtkWidget *parent_view, 
+                          GtkWidget *parent_view,
                           MarlinUndoFinishCallback cb)
 {
     GList *uris = NULL;
@@ -748,7 +748,7 @@ get_all_trashed_items (GQueue *stack)
 
     while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL)
         if (action->trashed)
-            for (l = g_hash_table_get_keys (action->trashed); l != NULL; l=l->next) { 
+            for (l = g_hash_table_get_keys (action->trashed); l != NULL; l=l->next) {
                 trash = g_list_append(trash, l->data);
             }
 
@@ -756,14 +756,14 @@ get_all_trashed_items (GQueue *stack)
     return (trash);
 }
 
-static gboolean 
+static gboolean
 is_destination_uri_action_partof_trashed(GList *trash, GList *g)
 {
     GList *l;
     char *uri;
 
-    for (l = trash; l != NULL; l=l->next) { 
-        for (; g != NULL; g=g->next) { 
+    for (l = trash; l != NULL; l=l->next) {
+        for (; g != NULL; g=g->next) {
             //printf ("destinations: %s\n", g_file_get_uri(l->data));
             uri = g_file_get_uri(g->data);
             if (!strcmp (uri, l->data)) {
@@ -857,10 +857,10 @@ marlin_undo_manager_data_new (MarlinUndoActionType type, gint items_count)
 
     if (type == MARLIN_UNDO_MOVETOTRASH) {
         data->trashed = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
-    } 
+    }
     //undotest
     /*else if (type == MARLIN_UNDO_RECURSIVESETPERMISSIONS) {
-      data->original_permissions = 
+      data->original_permissions =
       g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
       }*/
 
@@ -894,9 +894,9 @@ marlin_undo_manager_data_set_dest_dir (MarlinUndoActionData *data, GFile *dest)
 /** ****************************************************************
  * Pushes an origin, target pair in an existing undo data container
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_add_origin_target_pair (MarlinUndoActionData *data, 
-                                                 GFile *origin, 
+void
+marlin_undo_manager_data_add_origin_target_pair (MarlinUndoActionData *data,
+                                                 GFile *origin,
                                                  GFile *target)
 {
 
@@ -915,11 +915,11 @@ marlin_undo_manager_data_add_origin_target_pair (MarlinUndoActionData *data,
  * Pushes an trashed file with modification time in an existing undo data container
 ** ****************************************************************/
 void
-marlin_undo_manager_data_add_trashed_file (MarlinUndoActionData *data, 
-                                           GFile *file, 
+marlin_undo_manager_data_add_trashed_file (MarlinUndoActionData *data,
+                                           GFile *file,
                                            guint64 mtime)
 {
-    if (!data) 
+    if (!data)
         return;
 
     guint64 *modification_time = g_new (guint64, 1);
@@ -937,9 +937,9 @@ marlin_undo_manager_data_add_trashed_file (MarlinUndoActionData *data,
 /** ****************************************************************
  * Pushes a recursive permission change data in an existing undo data container
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_add_file_permissions (MarlinUndoActionData *data, 
-                                               GFile *file, 
+void
+marlin_undo_manager_data_add_file_permissions (MarlinUndoActionData *data,
+                                               GFile *file,
                                                guint32 permission)
 {
     if (!data)
@@ -959,10 +959,10 @@ marlin_undo_manager_data_add_file_permissions (MarlinUndoActionData *data,
 /** ****************************************************************
  * Sets the original file permission in an existing undo data container
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_set_file_permissions (MarlinUndoActionData *data, 
+void
+marlin_undo_manager_data_set_file_permissions (MarlinUndoActionData *data,
                                                char *uri,
-                                               guint32 current_permissions, 
+                                               guint32 current_permissions,
                                                guint32 new_permissions)
 {
     if (!data)
@@ -979,8 +979,8 @@ marlin_undo_manager_data_set_file_permissions (MarlinUndoActionData *data,
 /** ****************************************************************
  * Sets the change owner information in an existing undo data container
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_set_owner_change_information (MarlinUndoActionData *data, 
+void
+marlin_undo_manager_data_set_owner_change_information (MarlinUndoActionData *data,
                                                        char *uri,
                                                        const char *current_user,
                                                        const char *new_user)
@@ -999,8 +999,8 @@ marlin_undo_manager_data_set_owner_change_information (MarlinUndoActionData *dat
 /** ****************************************************************
  * Sets the change group information in an existing undo data container
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_set_group_change_information (MarlinUndoActionData *data, 
+void
+marlin_undo_manager_data_set_group_change_information (MarlinUndoActionData *data,
                                                        char *uri,
                                                        const char *current_group,
                                                        const char *new_group)
@@ -1019,8 +1019,8 @@ marlin_undo_manager_data_set_group_change_information (MarlinUndoActionData *dat
 /** ****************************************************************
  * Sets the permission change mask
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_set_recursive_permissions (MarlinUndoActionData *data, 
+void
+marlin_undo_manager_data_set_recursive_permissions (MarlinUndoActionData *data,
                                                     guint32 file_permissions,
                                                     guint32 file_mask,
                                                     guint32 dir_permissions,
@@ -1041,8 +1041,8 @@ marlin_undo_manager_data_set_recursive_permissions (MarlinUndoActionData *data,
  * Sets create file information
 ** ****************************************************************/
 void
-marlin_undo_manager_data_set_create_data (MarlinUndoActionData *data, 
-                                          char *target_uri, 
+marlin_undo_manager_data_set_create_data (MarlinUndoActionData *data,
+                                          char *target_uri,
                                           char *template)
 {
     if (!data)
@@ -1057,9 +1057,9 @@ marlin_undo_manager_data_set_create_data (MarlinUndoActionData *data,
 /** ****************************************************************
  * Sets rename information
 ** ****************************************************************/
-void 
-marlin_undo_manager_data_set_rename_information (MarlinUndoActionData *data, 
-                                                 GFile *old_file, 
+void
+marlin_undo_manager_data_set_rename_information (MarlinUndoActionData *data,
+                                                 GFile *old_file,
                                                  GFile *new_file)
 {
     if (!data)

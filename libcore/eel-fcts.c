@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 1999, 2000, 2001 Eazel, Inc.
  *
  * The Gnome Library is free software; you can redistribute it and/or
@@ -35,14 +35,14 @@
 
 /**
  * eel_get_date_as_string:
- * 
+ *
  * Get a formated date string where format equal iso, locale, informal.
  * The caller is responsible for g_free-ing the result.
  * @d: contains the UNIX time.
  * @date_format: string representing the format to convert the date to.
- * 
+ *
  * Returns: Newly allocated date.
- * 
+ *
 **/
 char *
 eel_get_date_as_string (guint64 d, gchar *date_format)
@@ -98,8 +98,8 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
 
 /**
  * eel_get_user_names:
- * 
- * Get a list of user names. 
+ *
+ * Get a list of user names.
  * The caller is responsible for freeing this list and its contents.
  */
 GList *
@@ -218,7 +218,7 @@ eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 	return TRUE;
 }
 
-gchar 
+gchar
 *eel_format_size (guint64 size)
 {
     return g_format_size (size);

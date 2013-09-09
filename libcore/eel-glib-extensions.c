@@ -58,7 +58,7 @@ eel_g_settings_add_auto_boolean (GSettings *settings,
  *
  * @pointer_location: Address of the saved pointer.
 **/
-void 
+void
 eel_add_weak_pointer (gpointer pointer_location)
 {
     gpointer *object_location;
@@ -85,7 +85,7 @@ eel_add_weak_pointer (gpointer pointer_location)
  *
  * @pointer_location: Pointer that was passed to eel_add_weak_pointer.
 **/
-void 
+void
 eel_remove_weak_pointer (gpointer pointer_location)
 {
     gpointer *object_location;
@@ -139,7 +139,7 @@ eel_g_object_list_copy (GList *list)
  * Sort a list of strings using locale-sensitive rules.
  *
  * @list: List of strings and/or NULLs.
- * 
+ *
  * Return value: @list, sorted.
  **/
 GList *

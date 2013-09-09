@@ -17,12 +17,9 @@
  * Author: ammonkey <am.monkeyd@gmail.com>
  */
 
-using Gee;
-
 namespace Marlin.View {
 
-    public class Browser : GLib.Object
-    {
+    public class Browser : Object {
         private Stack<string> back_stack;
         private Stack<string> forward_stack;
 
@@ -33,8 +30,7 @@ namespace Marlin.View {
         public Gtk.Menu back_menu;
         public Gtk.Menu forward_menu;
 
-        public Browser ()
-        {
+        public Browser () {
             back_stack = new Stack<string> ();
             forward_stack = new Stack<string> ();
         }
@@ -43,10 +39,8 @@ namespace Marlin.View {
          * Use this method to track an uri location in
          * the back/forward stacks
          */
-        public void record_uri (string uri)
-        {
-            if (current_uri != null && current_uri != uri)
-            {
+        public void record_uri (string uri) {
+            if (current_uri != null && current_uri != uri) {
                 back_stack.push (current_uri);
                 forward_stack.clear ();
             }
@@ -66,21 +60,19 @@ namespace Marlin.View {
           stdout.printf ("bck|fwd: %d %d\n", back_stack.size(), forward_stack.size());
           }*/
 
-        public Gee.List<string> go_back_list(){
-            return back_stack.slice_head(history_list_length);
+        public Gee.List<string> go_back_list () {
+            return back_stack.slice_head (history_list_length);
         }
 
-        public Gee.List<string> go_forward_list(){
-            return forward_stack.slice_head(history_list_length);
+        public Gee.List<string> go_forward_list () {
+            return forward_stack.slice_head (history_list_length);
         }
 
-        public string? go_back (uint n = 1)
-        {
+        public string? go_back (uint n = 1) {
             debug ("[Browser] go back %i places", (int) n);
 
-            var uri = back_stack.pop();
-            if (uri != null)
-            {
+            var uri = back_stack.pop ();
+            if (uri != null) {
                 if (current_uri != null) {
                     forward_stack.push (current_uri);
                     current_uri = uri;
@@ -88,20 +80,17 @@ namespace Marlin.View {
                 //stdout.printf ("%% %s\n", uri);
             }
 
-            if(n <= 1){
+            if (n <= 1)
                 return uri;
-            }else{
-                return go_back(n-1);
-            }
+            else
+                return go_back (n-1);
         }
 
-        public string? go_forward (uint n = 1)
-        {
+        public string? go_forward (uint n = 1) {
             debug ("[Browser] go forward %i places", (int) n);
 
-            var uri = forward_stack.pop();
-            if (uri != null)
-            {
+            var uri = forward_stack.pop ();
+            if (uri != null) {
                 if (current_uri != null) {
                     back_stack.push (current_uri);
                     current_uri = uri;
@@ -109,18 +98,17 @@ namespace Marlin.View {
                 //stdout.printf ("%% %s\n", uri);
             }
 
-            if(n <= 1){
+            if (n <= 1)
                 return uri;
-            }else{
-                return go_forward(n-1);
-            }
+            else
+                return go_forward (n-1);
         }
 
-        public bool can_go_back ()  {
+        public bool can_go_back () {
             return !back_stack.is_empty ();
         }
 
-        public bool can_go_forward ()  {
+        public bool can_go_forward () {
             return !forward_stack.is_empty ();
         }
     } /* End: Browser class */
@@ -128,50 +116,41 @@ namespace Marlin.View {
     /**
      * Stack api
      */
-    public class Stack<G>
-    {
-        private LinkedList<G> list;
+    public class Stack<G> {
+        private Gee.LinkedList<G> list;
 
-        public Stack ()
-        {
-            list = new LinkedList<G>();
+        public Stack () {
+            list = new Gee.LinkedList<G> ();
         }
 
-        public Stack<G> push (G element)
-        {
+        public Stack<G> push (G element) {
             list.offer_head (element);
             return this;
         }
 
-        public G pop ()
-        {
+        public G pop () {
             return list.poll_head ();
         }
 
-        public G peek ()
-        {
+        public G peek () {
             return list.peek_head ();
         }
 
-        public int size ()
-        {
+        public int size () {
             return list.size;
         }
 
-        public void clear ()
-        {
+        public void clear () {
             list.clear ();
         }
 
-        public bool is_empty ()
-        {
-            return size() == 0;
+        public bool is_empty () {
+            return size () == 0;
         }
 
-        public Gee.List<G>? slice_head(int amount){
-            return list.slice(0, int.min(size(), amount));
+        public Gee.List<G>? slice_head (int amount) {
+            return list.slice (0, int.min (size (), amount));
         }
     }
 
 } /* namespace */
-

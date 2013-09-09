@@ -23,7 +23,7 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-void    eel_g_settings_add_auto_boolean (GSettings *settings, const char *key, 
+void    eel_g_settings_add_auto_boolean (GSettings *settings, const char *key,
                                          gboolean *storage);
 void    eel_add_weak_pointer (gpointer pointer_location);
 void    eel_remove_weak_pointer (gpointer pointer_location);

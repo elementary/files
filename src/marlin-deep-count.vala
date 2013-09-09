@@ -1,26 +1,24 @@
-/*  
+/*
  * Copyright (C) 2011 Marlin Developers
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Author: ammonkey <am.monkeyd@gmail.com>
  */
 
-using GLib;
+public class Marlin.DeepCount : Object {
 
-public class Marlin.DeepCount : Object
-{
     private File file;
     private string deep_count_attrs;
     private Cancellable cancellable;
@@ -33,8 +31,7 @@ public class Marlin.DeepCount : Object
 
     public signal void finished ();
 
-    public DeepCount (File _file)
-    {
+    public DeepCount (File _file) {
         file = _file;
         deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE;
         cancellable = new Cancellable ();
@@ -44,8 +41,7 @@ public class Marlin.DeepCount : Object
 
     private Mutex mutex;
 
-    private async void process_directory (File directory)
-    {
+    private async void process_directory (File directory) {
         directories.prepend (directory);
         try {
             /*bool exists = yield Utils.query_exists_async (directory);
@@ -57,8 +53,7 @@ public class Marlin.DeepCount : Object
                 if (files == null)
                     break;
 
-                foreach (var f in files)
-                {
+                foreach (var f in files) {
                     unowned string name = f.get_name ();
                     File location = directory.get_child (name);
                     if (f.get_file_type () == FileType.DIRECTORY) {
@@ -78,7 +73,7 @@ public class Marlin.DeepCount : Object
             if (!(err is IOError.CANCELLED))
                 warning ("%s", err.message);
         }
-            
+
         directories.remove (directory);
         /*message ("----------------");
           foreach (var dir in directories)
@@ -89,8 +84,7 @@ public class Marlin.DeepCount : Object
         }
     }
 
-    public void cancel () 
-    {
+    public void cancel ()  {
         cancellable.cancel ();
     }
 }

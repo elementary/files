@@ -1,4 +1,4 @@
-/* fm-list-model.h - a GtkTreeModel for file lists. 
+/* fm-list-model.h - a GtkTreeModel for file lists.
  *
  * Copyright (C) 2001, 2002 Anders Carlsson
  * Copyright (C) 2003, Soeren Sandmann
@@ -19,8 +19,8 @@
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Authors: Anders Carlsson <andersca@gnu.org>, 
- *          Soeren Sandmann (sandmann@daimi.au.dk), 
+ * Authors: Anders Carlsson <andersca@gnu.org>,
+ *          Soeren Sandmann (sandmann@daimi.au.dk),
  *          Dave Camp <dave@ximian.com>
  */
 
@@ -88,7 +88,7 @@ void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gb
 
 GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
 GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
-void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, 
+void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
                                                   GOFDirectoryAsync **directory, GOFFile **file);
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);
