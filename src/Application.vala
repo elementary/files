@@ -34,7 +34,7 @@ public class Marlin.Application : Granite.Application {
 
     construct {
         application_id = "org.pantheon.files";  //Ensures an unique instance.
-    
+
         program_name = "Files";
         build_version = Config.VERSION;
 
