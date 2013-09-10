@@ -33,6 +33,8 @@ public class Marlin.Application : Granite.Application {
     private bool save_of_accel_map_requested = false;
 
     construct {
+        application_id = "org.pantheon.files";  //Ensures an unique instance.
+    
         program_name = "Files";
         build_version = Config.VERSION;
 
