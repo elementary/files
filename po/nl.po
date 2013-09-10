@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-08-30 12:05-0500\n"
+"POT-Creation-Date: 2013-09-09 00:02-0500\n"
 "PO-Revision-Date: 2013-08-07 20:17+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -15,189 +15,307 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-31 05:24+0000\n"
-"X-Generator: Launchpad (build 16750)\n"
+"X-Launchpad-Export-Date: 2013-09-10 05:19+0000\n"
+"X-Generator: Launchpad (build 16761)\n"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "AFP"
-msgstr "AFP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-msgid "DAV"
-msgstr "DAV"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:118
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:119
-msgid "FTP"
-msgstr "FTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:120
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "Netwerk"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:121
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:122
-msgid "SMB"
-msgstr "SMB"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:123
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "Prullenbak"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:302
-msgid "Open in New Tab"
-msgstr "Openen in nieuw tabblad"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:92
-msgid "Properties"
-msgstr "Eigenschappen"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:145
-msgid "General"
-msgstr "Algemeen"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:153
-msgid "More"
-msgstr "Meer"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:172
-msgid "Preview"
-msgstr "Voorbeeld"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:291
-#, c-format
-msgid "%u selected items"
-msgstr "%u geselecteerde items"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:300
-msgid "Calculating size…"
-msgstr "Berekenen van grootte..."
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-msgid "Created"
-msgstr "Aangemaakt"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:409
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Gewijzigd"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
-msgid "Last Access"
-msgstr "Laatst geopend"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:418
-msgid "Deleted"
-msgstr "Verwijderd"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:423
-msgid "MimeType"
-msgstr "Bestandstype"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:431
-msgid "MimeTypes"
-msgstr "Bestandstypes"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:435
-msgid "Location"
-msgstr "Locatie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:438
-msgid "Target"
-msgstr "Doel"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:444
-msgid "Origin Location"
-msgstr "Oorspronkelijke lokatie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:454
-msgid "Info:"
-msgstr "Info:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:489
-msgid "Other application..."
-msgstr "Andere toepassing…"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:513
-msgid "Open with:"
-msgstr "Openen met:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:534
-msgid "Usage:"
-msgstr "Gebruik:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:539
-msgid "Device usage:"
-msgstr "Apparaatgebruik:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:546
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s vrij van %s (%d%% gebruikt)"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:685
-msgid "Read"
-msgstr "Lezen"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:690
-msgid "Write"
-msgstr "Schrijven"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:695
-msgid "Execute"
-msgstr "Uitvoeren"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:913
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:926
-msgid "Owner"
-msgstr "Eigenaar"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:918
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:930
-msgid "Group"
-msgstr "Groep"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:934
-msgid "Everyone"
-msgstr "Iedereen"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1196
-msgid "Select an aplication to open "
-msgstr "Selecteer een toepassing om   te openen "
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:148
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
 msgid "Home"
 msgstr "Persoonlijke map"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:150
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
 msgid "File System"
 msgstr "Bestandssysteem"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:154
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
 msgid "This folder does not exist"
 msgstr "Deze map bestaat niet"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:157
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
 msgstr "(als Beheerder)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:173
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
 msgstr "Dit is niet van jou"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
 msgstr "Je hebt niet de rechten om deze map te bekijken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "Files is niet uw standaard bestandsbeheerder."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:132
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3426
+msgid "Set as default"
+msgstr "Instellen als standaard"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "Negeren"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:402
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:403
+#: /home/codygarver/f/po/../src/View/Window.vala:645
+msgid "Undo the last action"
+msgstr "Laatste actie ongedaan maken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:412
+msgid "Redo"
+msgstr "Opnieuw uitvoeren"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:413
+#: /home/codygarver/f/po/../src/View/Window.vala:648
+msgid "Redo the last action"
+msgstr "Laatste actie opnieuw uitvoeren"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:623
+msgid "_File"
+msgstr "_Bestand"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:624
+msgid "_Edit"
+msgstr "_Bewerken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:625
+msgid "_View"
+msgstr "Bee_ld"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:626
+msgid "_Go"
+msgstr "_Ga"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:627
+msgid "_Help"
+msgstr "_Help"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Nieuw _venster"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:630
+msgid "Open another Files window for the displayed location"
+msgstr "Open een nieuw Files-venster voor de weergegeven locatie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nieuw _Tabblad"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:634
+msgid "Open another tab for the displayed location"
+msgstr "Open een nieuw tabblad voor de weergegeven locatie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:638
+msgid "_Close"
+msgstr "_Sluiten"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:639
+msgid "Close this folder"
+msgstr "Deze map sluiten"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:644
+msgid "_Undo"
+msgstr "_Ongedaan maken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:647
+msgid "_Redo"
+msgstr "Op_nieuw uitvoeren"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:650
+msgid "Open _Parent"
+msgstr "_Bovenliggende map openen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:651
+msgid "Open the parent folder"
+msgstr "Bovenliggende map openen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:653
+msgid "_Back"
+msgstr "V_orige"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:654
+msgid "Go to the previous visited location"
+msgstr "Ga naar de laatst bezochte locatie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:657
+msgid "_Forward"
+msgstr "_Volgende"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:658
+msgid "Go to the next visited location"
+msgstr "Ga naar de volgende bezochte locatie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:660
+msgid "_Reload"
+msgstr "_Herladen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:661
+msgid "Reload the current location"
+msgstr "De huidige locatie herladen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:664
+msgid "_Home Folder"
+msgstr "_Persoonlijke map"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:665
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+msgid "Open your personal folder"
+msgstr "Open uw persoonlijke map"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:668
+msgid "_Trash"
+msgstr "_Prullenbak"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:669
+msgid "Open your personal trash folder"
+msgstr "Open uw persoonlijke prullenpak"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:672
+msgid "_Network"
+msgstr "_Netwerk"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:673
+msgid "Browse bookmarked and local network locations"
+msgstr "Bladeren door opgeslagen en lokale netwerklocaties"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:676
+msgid "Zoom _In"
+msgstr "_Inzoomen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:677
+msgid "Increase the view size"
+msgstr "Het beeld vergroten"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:688
+msgid "Zoom _Out"
+msgstr "_Uitzoomen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:689
+msgid "Decrease the view size"
+msgstr "Het beeld verkleinen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:696
+msgid "Normal Si_ze"
+msgstr "Normale _grootte"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:697
+msgid "Use the normal view size"
+msgstr "De normale beeldgrootte gebruiken"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:700
+msgid "Next Tab"
+msgstr "Volgende Tab"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:704
+msgid "Previous Tab"
+msgstr "Vorige Tab"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:708
+msgid "Connect to _Server..."
+msgstr "Verbinden met _server..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:709
+msgid "Connect to a remote computer or shared disk"
+msgstr "Verbinding maken met een andere computer of een gedeelde schijf"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:712
+msgid "_About"
+msgstr "_Over Files"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:713
+msgid "Display credits"
+msgstr "Dankbetuiging weergeven"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:716
+msgid "Report a Problem..."
+msgstr "Meld een probleem..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:717
+msgid "File a bug on Launchpad"
+msgstr "Rapporteer een probleem op Launchpad"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:720
+msgid "Get Help Online..."
+msgstr "Online hulp verkrijgen…"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:724
+msgid "Translate This Application..."
+msgstr "Vertaal dit programma..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:733
+msgid "Show _Hidden Files"
+msgstr "Verbo_rgen bestanden tonen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:734
+msgid "Toggle the display of hidden files in the current window"
+msgstr ""
+"De weergave van verborgen bestanden in het huidige venster in-/uitschakelen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:738
+msgid "_Places"
+msgstr "_Locaties"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:739
+msgid "Change the visibility of this window's side pane"
+msgstr "Zichtbaarheid van het zijpaneel van dit venster veranderen"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:747
+msgid "Icon"
+msgstr "Icoon"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:750
+msgid "List"
+msgstr "Lijst"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:753
+msgid "Columns"
+msgstr "Kolommen"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "AFP"
+msgstr "AFP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "DAV"
+msgstr "DAV"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+msgid "DAVS"
+msgstr "DAVS"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "FTP"
+msgstr "FTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
+msgid "Network"
+msgstr "Netwerk"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+msgid "SFTP"
+msgstr "SFTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
+msgid "SMB"
+msgstr "SMB"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
+msgid "Trash"
+msgstr "Prullenbak"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
+msgid "Open in New Tab"
+msgstr "Openen in nieuw tabblad"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -228,240 +346,122 @@ msgstr ""
 "\n"
 "%s"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr "Files is niet uw standaard bestandsbeheerder."
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "Eigenschappen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3427
-msgid "Set as default"
-msgstr "Instellen als standaard"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
+msgid "General"
+msgstr "Algemeen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "Negeren"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
+msgid "More"
+msgstr "Meer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:398
-msgid "Undo"
-msgstr "Ongedaan maken"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
+msgid "Preview"
+msgstr "Voorbeeld"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-#: /home/codygarver/f/po/../src/View/Window.vala:641
-msgid "Undo the last action"
-msgstr "Laatste actie ongedaan maken"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
+#, c-format
+msgid "%u selected items"
+msgstr "%u geselecteerde items"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:408
-msgid "Redo"
-msgstr "Opnieuw uitvoeren"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
+msgid "Calculating size…"
+msgstr "Berekenen van grootte..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:409
-#: /home/codygarver/f/po/../src/View/Window.vala:644
-msgid "Redo the last action"
-msgstr "Laatste actie opnieuw uitvoeren"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
+msgid "Created"
+msgstr "Aangemaakt"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
-msgid "_File"
-msgstr "_Bestand"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:398
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Gewijzigd"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:620
-msgid "_Edit"
-msgstr "_Bewerken"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:401
+msgid "Last Access"
+msgstr "Laatst geopend"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:621
-msgid "_View"
-msgstr "Bee_ld"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
+msgid "Deleted"
+msgstr "Verwijderd"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:622
-msgid "_Go"
-msgstr "_Ga"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
+msgid "MimeType"
+msgstr "Bestandstype"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:623
-msgid "_Help"
-msgstr "_Help"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:420
+msgid "MimeTypes"
+msgstr "Bestandstypes"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Nieuw _venster"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:424
+msgid "Location"
+msgstr "Locatie"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
-msgid "Open another Files window for the displayed location"
-msgstr "Open een nieuw Files-venster voor de weergegeven locatie"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:427
+msgid "Target"
+msgstr "Doel"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nieuw _Tabblad"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+msgid "Origin Location"
+msgstr "Oorspronkelijke lokatie"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
-msgid "Open another tab for the displayed location"
-msgstr "Open een nieuw tabblad voor de weergegeven locatie"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
+msgid "Info:"
+msgstr "Info:"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:634
-msgid "_Close"
-msgstr "_Sluiten"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:478
+msgid "Other application..."
+msgstr "Andere toepassing…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:635
-msgid "Close this folder"
-msgstr "Deze map sluiten"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:502
+msgid "Open with:"
+msgstr "Openen met:"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
-msgid "_Undo"
-msgstr "_Ongedaan maken"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:522
+msgid "Usage:"
+msgstr "Gebruik:"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
-msgid "_Redo"
-msgstr "Op_nieuw uitvoeren"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:527
+msgid "Device usage:"
+msgstr "Apparaatgebruik:"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:646
-msgid "Open _Parent"
-msgstr "_Bovenliggende map openen"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:534
+#, c-format
+msgid "%s free of %s (%d%% used)"
+msgstr "%s vrij van %s (%d%% gebruikt)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
-msgid "Open the parent folder"
-msgstr "Bovenliggende map openen"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:673
+msgid "Read"
+msgstr "Lezen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:649
-msgid "_Back"
-msgstr "V_orige"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:678
+msgid "Write"
+msgstr "Schrijven"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
-msgid "Go to the previous visited location"
-msgstr "Ga naar de laatst bezochte locatie"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:683
+msgid "Execute"
+msgstr "Uitvoeren"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:653
-msgid "_Forward"
-msgstr "_Volgende"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:896
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:909
+msgid "Owner"
+msgstr "Eigenaar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
-msgid "Go to the next visited location"
-msgstr "Ga naar de volgende bezochte locatie"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:901
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:913
+msgid "Group"
+msgstr "Groep"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:656
-msgid "_Reload"
-msgstr "_Herladen"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+msgid "Everyone"
+msgstr "Iedereen"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:657
-msgid "Reload the current location"
-msgstr "De huidige locatie herladen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:660
-msgid "_Home Folder"
-msgstr "_Persoonlijke map"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:661
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
-msgid "Open your personal folder"
-msgstr "Open uw persoonlijke map"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:664
-msgid "_Trash"
-msgstr "_Prullenbak"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:665
-msgid "Open your personal trash folder"
-msgstr "Open uw persoonlijke prullenpak"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:668
-msgid "_Network"
-msgstr "_Netwerk"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:669
-msgid "Browse bookmarked and local network locations"
-msgstr "Bladeren door opgeslagen en lokale netwerklocaties"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:672
-msgid "Zoom _In"
-msgstr "_Inzoomen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:673
-msgid "Increase the view size"
-msgstr "Het beeld vergroten"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:684
-msgid "Zoom _Out"
-msgstr "_Uitzoomen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:685
-msgid "Decrease the view size"
-msgstr "Het beeld verkleinen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:692
-msgid "Normal Si_ze"
-msgstr "Normale _grootte"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:693
-msgid "Use the normal view size"
-msgstr "De normale beeldgrootte gebruiken"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:696
-msgid "Next Tab"
-msgstr "Volgende Tab"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:700
-msgid "Previous Tab"
-msgstr "Vorige Tab"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:704
-msgid "Connect to _Server..."
-msgstr "Verbinden met _server..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:705
-msgid "Connect to a remote computer or shared disk"
-msgstr "Verbinding maken met een andere computer of een gedeelde schijf"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:708
-msgid "_About"
-msgstr "_Over Files"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:709
-msgid "Display credits"
-msgstr "Dankbetuiging weergeven"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:712
-msgid "Report a Problem..."
-msgstr "Meld een probleem..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:713
-msgid "File a bug on Launchpad"
-msgstr "Rapporteer een probleem op Launchpad"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:716
-msgid "Get Help Online..."
-msgstr "Online hulp verkrijgen…"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:720
-msgid "Translate This Application..."
-msgstr "Vertaal dit programma..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:729
-msgid "Show _Hidden Files"
-msgstr "Verbo_rgen bestanden tonen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:730
-msgid "Toggle the display of hidden files in the current window"
-msgstr ""
-"De weergave van verborgen bestanden in het huidige venster in-/uitschakelen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:734
-msgid "_Places"
-msgstr "_Locaties"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:735
-msgid "Change the visibility of this window's side pane"
-msgstr "Zichtbaarheid van het zijpaneel van dit venster veranderen"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:743
-msgid "Icon"
-msgstr "Icoon"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:746
-msgid "List"
-msgstr "Lijst"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:749
-msgid "Columns"
-msgstr "Kolommen"
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1176
+msgid "Select an aplication to open "
+msgstr "Selecteer een toepassing om   te openen "
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -495,227 +495,13 @@ msgstr "%u map"
 msgid "%u items selected (%s)"
 msgstr "%u items geselecteerd (%s)"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3541
-msgid "Select All"
-msgstr "Alles Selecteren"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:855
+msgid "Layout mode"
+msgstr "Weergave-modus"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Invoermethodes"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "Persoonlijk"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "Uw gebruikelijke plaatsen en bladwijzers"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "Open de prullenbak."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "Apparaten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "Uw lokale partities en apparaten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "De inhoud van het bestandssysteem openen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "%s aankoppelen en openen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "Uw netwerkplaatsen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "Volledige netwerk"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "Door de inhoud van het netwerk bladeren"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "_Starten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "_Stoppen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "_Aanzetten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "_Station veilig verwijderen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "Station _verbinden"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "Stationverbinding ver_breken"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "Multischijf-apparaat _starten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "Multischijf-apparaat _stoppen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "Station vrij_geven"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "Station ver_grendelen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "Niet in staat %s te starten"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Kan %s niet uitwerpen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Niet in staat %s te bevragen voor veranderingen in media"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Niet in staat %s te stoppen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1985
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
-msgid "_Open"
-msgstr "_Open"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2005
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
-msgid "Open in New _Tab"
-msgstr "Open in Nieuwe _Tab"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2014
-msgid "Open in New _Window"
-msgstr "Open in Nieuw _Venster"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "Verwijder"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "Hernoem..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "_Koppelen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "_Ontkoppelen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "Uitw_erpen"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "Leeg _Prullenbak"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr "Verbind met server..."
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:186
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Kon %s niet naar %s hernoemen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Items sor_teren"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "Omgekeerde _volgorde"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Pictogrammen in omgekeerde volgorde tonen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Op _naam"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Houd pictogrammen gesorteerd op naam in rijen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Op _grootte"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Houd pictogrammen gesorteerd op grootte in rijen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Op _type"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Houd pictogrammen gesorteerd op type in rijen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Op wijzigings_datum"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Houd iconen gesorteerd op wijzigingsdatum in rijen"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/f/po/../src/fm-columns-view.c:82
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-msgid "This folder is empty."
-msgstr "Deze map is leeg."
-
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Er is niets op het klembord om te plakken"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:856
+msgid "The layout mode"
+msgstr "De weergave-modus"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:123
 msgid "SSH"
@@ -836,6 +622,411 @@ msgstr "Dit wachtwoo_rd onthouden"
 msgid "Operation cancelled"
 msgstr "Bewerking geannuleerd"
 
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3540
+msgid "Select All"
+msgstr "Alles Selecteren"
+
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "Invoermethodes"
+
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Enkele klik"
+
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Of de items geactiveerd kunnen worden met een enkele keer klikken"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Bestandsnaam"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Grootte"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Type"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:205
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/f/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Kon %s niet naar %s hernoemen"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:607
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+#: /home/codygarver/f/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Deze map is leeg."
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Pictogrammenlijst"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Pictogramweergave"
+
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Er is niets op het klembord om te plakken"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Items sor_teren"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "Omgekeerde _volgorde"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Pictogrammen in omgekeerde volgorde tonen"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Op _naam"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Houd pictogrammen gesorteerd op naam in rijen"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Op _grootte"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Houd pictogrammen gesorteerd op grootte in rijen"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Op _type"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Houd pictogrammen gesorteerd op type in rijen"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Op wijzigings_datum"
+
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Houd iconen gesorteerd op wijzigingsdatum in rijen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
+msgid "Personal"
+msgstr "Persoonlijk"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
+msgid "Your common places and bookmarks"
+msgstr "Uw gebruikelijke plaatsen en bladwijzers"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+msgid "Open the trash"
+msgstr "Open de prullenbak."
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
+msgid "Devices"
+msgstr "Apparaten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
+msgid "Your local partitions and devices"
+msgstr "Uw lokale partities en apparaten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
+msgid "Open the contents of the File System"
+msgstr "De inhoud van het bestandssysteem openen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
+#, c-format
+msgid "Mount and open %s"
+msgstr "%s aankoppelen en openen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
+msgid "Your network places"
+msgstr "Uw netwerkplaatsen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
+msgid "Entire network"
+msgstr "Volledige netwerk"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
+msgid "Browse the contents of the network"
+msgstr "Door de inhoud van het netwerk bladeren"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
+msgid "_Start"
+msgstr "_Starten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Stop"
+msgstr "_Stoppen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Power On"
+msgstr "_Aanzetten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
+msgid "_Safely Remove Drive"
+msgstr "_Station veilig verwijderen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Connect Drive"
+msgstr "Station _verbinden"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Disconnect Drive"
+msgstr "Stationverbinding ver_breken"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
+msgid "_Start Multi-disk Device"
+msgstr "Multischijf-apparaat _starten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
+msgid "_Stop Multi-disk Device"
+msgstr "Multischijf-apparaat _stoppen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
+msgid "_Unlock Drive"
+msgstr "Station vrij_geven"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
+msgid "_Lock Drive"
+msgstr "Station ver_grendelen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
+#, c-format
+msgid "Unable to start %s"
+msgstr "Niet in staat %s te starten"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Kan %s niet uitwerpen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Niet in staat %s te bevragen voor veranderingen in media"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Niet in staat %s te stoppen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1984
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3506
+msgid "_Open"
+msgstr "_Open"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2004
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3518
+msgid "Open in New _Tab"
+msgstr "Open in Nieuwe _Tab"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2013
+msgid "Open in New _Window"
+msgstr "Open in Nieuw _Venster"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
+msgid "Remove"
+msgstr "Verwijder"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
+msgid "Rename..."
+msgstr "Hernoem..."
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Mount"
+msgstr "_Koppelen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Unmount"
+msgstr "_Ontkoppelen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
+msgid "_Eject"
+msgstr "Uitw_erpen"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
+msgid "Empty _Trash"
+msgstr "Leeg _Prullenbak"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
+msgid "Connect to Server…"
+msgstr "Verbind met server..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1183
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Ongeldige bestandsnaam voorzien door XDS drag site"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1341
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Link voor de URL \"%s\" maken mislukt"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1826
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Gebruik \"%s\" om het selecteerde item te openen"
+msgstr[1] "Gebruik \"%s\" om de geselecteerde items te openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1978
+#, c-format
+msgid "_Open With %s"
+msgstr "_Openen met %s"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2000
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "In %'d nieuwe _tabbladen openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2009
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "In %'d nieuwe _vensters openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3478
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Geselecteerde bestanden klaarmaken om verplaatst te worden met de Plakken-"
+"opdracht"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3482
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Geselecteerde bestanden klaarmaken om gekopieerd te worden met de Plakken-"
+"opdracht"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3486
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Bestanden verplaatsen of kopiëren die eerder bij een Knippen- of Kopiëren-"
+"opdracht zijn geselecteerd"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3489
+msgid "Paste Into Folder"
+msgstr "In deze map plakken"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Verplaats of kopieer bestanden die eerder door een Knippen- of Kopiëren-"
+"opdracht zijn geselecteerd"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3493
+msgid "_Rename..."
+msgstr "He_rnoemen…"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
+msgid "Rename selected item"
+msgstr "Geselecteerde item hernoemen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3497
+msgid "Create New _Folder"
+msgstr "Nieuwe _map aanmaken"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
+msgid "Create a new empty folder inside this folder"
+msgstr "Nieuwe lege map aanmaken in deze map"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3500
+msgid "Create New _File"
+msgstr "Nieuw _bestand aanmaken"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3502
+msgid "_Empty File"
+msgstr "_Leeg bestand"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
+msgid "Create a new empty file inside this folder"
+msgstr "Nieuw leeg bestand aanmaken in deze map"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
+msgid "Open the selected item"
+msgstr "Geselecteerd item openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3514
+msgid "Open in new Window"
+msgstr "Open in een nieuw Venster"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
+msgid "Open each selected item in a new window"
+msgstr "Elk geselecteerd item in een nieuw venster openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
+msgid "Open each selected item in a new tab"
+msgstr "Elk geselecteerd item in een nieuw tabblad openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3521
+msgid "Open Wit_h"
+msgstr "Openen _met"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
+msgid "Choose a program with which to open the selected item"
+msgstr "Kies een toepassing om het geselecteerde item mee te openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3524
+msgid "Other _Application..."
+msgstr "Andere _toepassing…"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
+msgid "Choose another application with which to open the selected item"
+msgstr "Andere toepassing kiezen om het geselecteerde item mee te openen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3528
+msgid "Mo_ve to Trash"
+msgstr "Naar prullenbak _verplaatsen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
+msgid "Move each selected item to the Trash"
+msgstr "Alle geselecteerde items in de prullenbak gooien"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3532
+msgid "_Delete Permanently"
+msgstr "Permanent verwij_deren"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+"Elk geselecteerd item verwijderen, zonder het naar de prullenbak te "
+"verplaatsen."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3536
+msgid "_Restore"
+msgstr "He_rstellen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3544
+msgid "_Properties"
+msgstr "Eigenscha_ppen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
+msgid "View or modify the properties of each selected item"
+msgstr "De eigenschappen van elk geselecteerd item bekijken of wijzigen"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3651
+msgid "Set Color:"
+msgstr "Kies Kleur:"
+
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "_Verplaats hierheen"
@@ -860,244 +1051,6 @@ msgstr "Annuleren"
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "Kon bestand \"%s\" niet uitvoeren"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Pictogrammenlijst"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Pictogramweergave"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:855
-msgid "Layout mode"
-msgstr "Weergave-modus"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:856
-msgid "The layout mode"
-msgstr "De weergave-modus"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Bestandsnaam"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Grootte"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Type"
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Enkele klik"
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Of de items geactiveerd kunnen worden met een enkele keer klikken"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1184
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Ongeldige bestandsnaam voorzien door XDS drag site"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1342
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Link voor de URL \"%s\" maken mislukt"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1827
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Gebruik \"%s\" om het selecteerde item te openen"
-msgstr[1] "Gebruik \"%s\" om de geselecteerde items te openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1979
-#, c-format
-msgid "_Open With %s"
-msgstr "_Openen met %s"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2001
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "In %'d nieuwe _tabbladen openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2010
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "In %'d nieuwe _vensters openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3479
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Geselecteerde bestanden klaarmaken om verplaatst te worden met de Plakken-"
-"opdracht"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3483
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Geselecteerde bestanden klaarmaken om gekopieerd te worden met de Plakken-"
-"opdracht"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3487
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Bestanden verplaatsen of kopiëren die eerder bij een Knippen- of Kopiëren-"
-"opdracht zijn geselecteerd"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
-msgid "Paste Into Folder"
-msgstr "In deze map plakken"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3491
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Verplaats of kopieer bestanden die eerder door een Knippen- of Kopiëren-"
-"opdracht zijn geselecteerd"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
-msgid "_Rename..."
-msgstr "He_rnoemen…"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3495
-msgid "Rename selected item"
-msgstr "Geselecteerde item hernoemen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
-msgid "Create New _Folder"
-msgstr "Nieuwe _map aanmaken"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
-msgid "Create a new empty folder inside this folder"
-msgstr "Nieuwe lege map aanmaken in deze map"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3501
-msgid "Create New _File"
-msgstr "Nieuw _bestand aanmaken"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
-msgid "_Empty File"
-msgstr "_Leeg bestand"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3504
-msgid "Create a new empty file inside this folder"
-msgstr "Nieuw leeg bestand aanmaken in deze map"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3508
-msgid "Open the selected item"
-msgstr "Geselecteerd item openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
-msgid "Open in new Window"
-msgstr "Open in een nieuw Venster"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3516
-msgid "Open each selected item in a new window"
-msgstr "Elk geselecteerd item in een nieuw venster openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3520
-msgid "Open each selected item in a new tab"
-msgstr "Elk geselecteerd item in een nieuw tabblad openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
-msgid "Open Wit_h"
-msgstr "Openen _met"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3523
-msgid "Choose a program with which to open the selected item"
-msgstr "Kies een toepassing om het geselecteerde item mee te openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
-msgid "Other _Application..."
-msgstr "Andere _toepassing…"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3526
-msgid "Choose another application with which to open the selected item"
-msgstr "Andere toepassing kiezen om het geselecteerde item mee te openen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
-msgid "Mo_ve to Trash"
-msgstr "Naar prullenbak _verplaatsen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3530
-msgid "Move each selected item to the Trash"
-msgstr "Alle geselecteerde items in de prullenbak gooien"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
-msgid "_Delete Permanently"
-msgstr "Permanent verwij_deren"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3534
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-"Elk geselecteerd item verwijderen, zonder het naar de prullenbak te "
-"verplaatsen."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3537
-msgid "_Restore"
-msgstr "He_rstellen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
-msgid "_Properties"
-msgstr "Eigenscha_ppen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3546
-msgid "View or modify the properties of each selected item"
-msgstr "De eigenschappen van elk geselecteerd item bekijken of wijzigen"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3652
-msgid "Set Color:"
-msgstr "Kies Kleur:"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
-msgid "File Operations"
-msgstr "Bestandsbewerkingen"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
-msgid "All file operations have been successfully completed"
-msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d bestandsbewerking actief"
-msgstr[1] "%'d bestandsbewerkingen actief"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
-msgid "Show Details"
-msgstr "_Details tonen"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
-msgid "Show Copy Dialog"
-msgstr "Kopieer-dialoogvenster tonen"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
-msgid "Cancel All In-progress Actions"
-msgstr "Alle actieve acties annuleren"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Bestanden doorbladeren"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Bestandsbeheer"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Nieuw venster als _Administrator"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
-msgid "Files"
-msgstr "Files"
 
 #: /home/codygarver/f/po/../src/Application.vala:110
 msgid "Show the version of the program."
@@ -1133,43 +1086,219 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan niet gebruikt worden met URI's."
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Bestanden doorbladeren"
+
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Bestandsbeheer"
+
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Nieuw venster als _Administrator"
+
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
+msgid "Files"
+msgstr "Files"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
+msgid "File Operations"
+msgstr "Bestandsbewerkingen"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
+msgid "All file operations have been successfully completed"
+msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
 #, c-format
-msgid "link to %s"
-msgstr "link naar %s"
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d bestandsbewerking actief"
+msgstr[1] "%'d bestandsbewerkingen actief"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1761
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
+msgid "Show Details"
+msgstr "_Details tonen"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
+msgid "Show Copy Dialog"
+msgstr "Kopieer-dialoogvenster tonen"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
+msgid "Cancel All In-progress Actions"
+msgstr "Alle actieve acties annuleren"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Desktop-bestand verwerken is mislukt: %s"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr "Geen Exec veld gespecificeerd"
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr "Geen URL-veld opgegeven"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Map ‘%s’ samenvoegen?"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr "Ongeldig desktop-bestand"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
+"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr "Slashes zijn niet toegestaan in bestandsnamen"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr "Toplevel bestanden kunnen niet hernoemd worden"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ongeldige Unicode)"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+msgid "Replacing it will remove all files in the folder."
+msgstr ""
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Vervang map \"%s\"?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Vervang bestand \"%s\"?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+msgid "Replacing it will overwrite its content."
+msgstr "Vervangen zal de inhoud overschrijven."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+msgid "Original file"
+msgstr "Origineel bestand"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Size:"
+msgstr "Grootte:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Type:"
+msgstr "Type:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+msgid "Last modified:"
+msgstr "Laatst bewerkt:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+msgid "Replace with"
+msgstr "Vervang met"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+msgid "Merge"
+msgstr "Samenvoegen"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+msgid "_Select a new name for the destination"
+msgstr "_Selecteer een nieuwe naam voor de bestemming"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+msgid "Reset"
+msgstr "Herstel"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+msgid "Apply this action to all files"
+msgstr "Pas deze actie toe op alle bestanden"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Overslaan"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+msgid "Re_name"
+msgstr "Her_noemen"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+msgid "Replace"
+msgstr "Vervang"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+msgid "File conflict"
+msgstr "Bestandsconflict"
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Bezig met voorbereiden"
 
 #: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "Toon meer _details"
+
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ongeldige Unicode)"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1544,19 +1673,17 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
 msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Vandaag om %k:%M"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Gisteren om %k:%M"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-msgid "_Skip"
-msgstr "_Overslaan"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y om %-k:%M"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -2249,198 +2376,71 @@ msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
 msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Map ‘%s’ samenvoegen?"
+msgid "link to %s"
+msgstr "link naar %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
-"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#: /home/codygarver/f/po/../libcore/gof-file.c:1761
 #, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
+msgid "Failed to parse the desktop file: %s"
+msgstr "Desktop-bestand verwerken is mislukt: %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
+#: /home/codygarver/f/po/../libcore/gof-file.c:1799
+msgid "No Exec field specified"
+msgstr "Geen Exec veld gespecificeerd"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
+#: /home/codygarver/f/po/../libcore/gof-file.c:1819
+msgid "No URL field specified"
+msgstr "Geen URL-veld opgegeven"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
+#: /home/codygarver/f/po/../libcore/gof-file.c:1825
+msgid "Invalid desktop file"
+msgstr "Ongeldig desktop-bestand"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Vervang map \"%s\"?"
+#: /home/codygarver/f/po/../libcore/gof-file.c:2115
+msgid "Slashes are not allowed in filenames"
+msgstr "Slashes zijn niet toegestaan in bestandsnamen"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
+#: /home/codygarver/f/po/../libcore/gof-file.c:2135
+msgid "Toplevel files cannot be renamed"
+msgstr "Toplevel bestanden kunnen niet hernoemd worden"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Vervang bestand \"%s\"?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
-msgid "Replacing it will overwrite its content."
-msgstr "Vervangen zal de inhoud overschrijven."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
-msgid "Original file"
-msgstr "Origineel bestand"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Size:"
-msgstr "Grootte:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Type:"
-msgstr "Type:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
-msgid "Last modified:"
-msgstr "Laatst bewerkt:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
-msgid "Replace with"
-msgstr "Vervang met"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
-msgid "Merge"
-msgstr "Samenvoegen"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
-msgid "_Select a new name for the destination"
-msgstr "_Selecteer een nieuwe naam voor de bestemming"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
-msgid "Reset"
-msgstr "Herstel"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
-msgid "Apply this action to all files"
-msgstr "Pas deze actie toe op alle bestanden"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
-msgid "Re_name"
-msgstr "Her_noemen"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
-msgid "Replace"
-msgstr "Vervang"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
-msgid "File conflict"
-msgstr "Bestandsconflict"
-
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Vandaag om %k:%M"
-
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Gisteren om %k:%M"
-
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y om %-k:%M"
-
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Bezig met voorbereiden"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:321
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
 msgstr "Knip de geselecteerde tekst naar het klembord"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:325
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
 msgstr "Kopieer de geselecteerde tekst naar het klembord"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:329
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
 msgid "Paste the text stored on the clipboard"
 msgstr "Plak de opgeslagen tekst vanaf het klembord"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:812
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
 #, c-format
 msgid "Go to %s"
 msgstr "Ga naar %s"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
 msgstr "Als rooster weergeven"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:85
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
 msgstr "Lijst-weergave"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:88
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View in Columns"
 msgstr "Kolom-weergave"
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
 "Deze items kunnen verwijderd worden door de prullenbak leeg te maken."
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Maak de prullenbak leeg"
