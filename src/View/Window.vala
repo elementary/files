@@ -477,28 +477,6 @@ namespace Marlin.View {
             return false;
         }
 
-        /*private bool is_close_first () {
-            string path = "/apps/metacity/general/button_layout";
-            GConf.Client cl = GConf.Client.get_default ();
-            string key;
-
-            try {
-                if (cl.get (path) != null)
-                    key = cl.get_string (path);
-                else
-                    return false;
-            } catch (GLib.Error err) {
-                warning ("Unable to read metacity settings: %s", err.message);
-            }
-
-            string[] keys = key.split (":");
-            if ("close" in keys[0])
-                return true;
-            else
-                return false;
-
-        }*/
-
         private bool is_marlin_mydefault_fm ()
         {
             bool trash_uri_is_default = false;
