@@ -88,7 +88,7 @@ public class GOF.Directory.Async : Object {
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
         debug ("dir %s ref_count %u", this.file.uri, this.ref_count);
-        file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
+        file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
         if (uri_contain_keypath_icons)
@@ -467,7 +467,7 @@ public class GOF.Directory.Async : Object {
         Async? cached_dir = null;
 
         if (directory_cache == null)
-            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.file_hash, GLib.file_equal);
+            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
 
         if (directory_cache != null)
             cached_dir = directory_cache.lookup (file);
