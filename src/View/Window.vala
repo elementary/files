@@ -477,7 +477,7 @@ namespace Marlin.View {
             return false;
         }
 
-        private bool is_close_first () {
+        /*private bool is_close_first () {
             string path = "/apps/metacity/general/button_layout";
             GConf.Client cl = GConf.Client.get_default ();
             string key;
@@ -497,7 +497,7 @@ namespace Marlin.View {
             else
                 return false;
 
-        }
+        }*/
 
         private bool is_marlin_mydefault_fm ()
         {
