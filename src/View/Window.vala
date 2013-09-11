@@ -222,10 +222,16 @@ namespace Marlin.View {
                 return false;
             });
 
-            delete_event.connect(() => {
-                save_geometries();
-                destroy();
+            delete_event.connect (() => {
+                destroy ();
+
             	return false;
+            });
+
+            configure_event.connect (() => {
+                save_geometries ();
+
+                return false;
             });
 
             tabs.tab_added.connect ((tab) => {
@@ -250,7 +256,7 @@ namespace Marlin.View {
             tabs.tab_restored.connect ((tab) => {
                 make_new_tab (tab, File.new_for_uri (tab.restore_data));
             });
-            
+
             tabs.tab_duplicated.connect ((tab) => {
                 make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
             });
