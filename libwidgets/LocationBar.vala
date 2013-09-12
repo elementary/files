@@ -267,7 +267,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
-                if (x_render <= x <= x_render + element.real_width)
+                if (x_render <= x && x <= x_render + element.real_width)
                     return element;
 
                 x_render += element.real_width;
