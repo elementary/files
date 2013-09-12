@@ -1,6 +1,6 @@
 /***
   Copyright (C) 2010 Cosimo Cecchi <cosimoc@gnome.org>
-  Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+  Copyright (C) 2013 elementary Developers
 
   This program is free software: you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License version 3, as published
