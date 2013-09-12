@@ -26,6 +26,15 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
         this.dialog = dialog;
     }
 
+    /*
+      When mounting a network share, the ask_password implementation in
+      Gtk.MountOperation asks the user the password in a little separate window.
+      But we don't want an extra window. Our ConnectServer.Dialog already
+      provided a place to put the password in.
+
+      This ask_password implementation gets the password directly from the
+      dialog, so no extra window is spawned.
+    */
     public override void ask_password (string message,
                                    string default_user,
                                    string default_domain,
@@ -34,7 +43,7 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
         this.dialog.fill_details_async.begin (this, default_user, default_domain, flags,
                                               (source, result) => {
             bool res = this.dialog.fill_details_async.end (result);
-            
+
             if (res)
                 reply (MountOperationResult.HANDLED);
             else
