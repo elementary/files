@@ -36,9 +36,9 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
       dialog, so no extra window is spawned.
     */
     public override void ask_password (string message,
-                                   string default_user,
-                                   string default_domain,
-                                   AskPasswordFlags flags) {
+                                       string default_user,
+                                       string default_domain,
+                                       AskPasswordFlags flags) {
 
         this.dialog.fill_details_async.begin (this, default_user, default_domain, flags,
                                               (source, result) => {
