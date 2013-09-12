@@ -1,4 +1,3 @@
-
 namespace Marlin.View{
     public enum ViewMode{
         ICON,

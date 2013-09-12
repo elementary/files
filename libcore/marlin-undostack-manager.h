@@ -167,6 +167,6 @@ void
 marlin_undo_manager_data_set_owner_change_information (MarlinUndoActionData* data, char* uri, const char* current_user, const char* new_user);
 
 void
-marlin_undo_manager_data_set_group_change_information (MarlinUndoActionData* data, char* uri, const char* current_group, const char* new_group);    
+marlin_undo_manager_data_set_group_change_information (MarlinUndoActionData* data, char* uri, const char* current_group, const char* new_group);
 
 #endif /* MARLIN_UNDO_MANAGER_H */

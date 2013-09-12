@@ -73,8 +73,8 @@ eel_ui_string_get (const char *filename)
     if (ui == NULL) {
         path = g_build_filename (UI_DIR, filename, NULL);
         if (path == NULL || !g_file_get_contents (path, &ui, NULL, NULL)) {
-            g_warning ("Unable to load ui file %s\n", filename); 
-        } 
+            g_warning ("Unable to load ui file %s\n", filename);
+        }
         g_free (path);
         g_hash_table_insert (ui_cache,
                              g_strdup (filename),

@@ -51,7 +51,7 @@ gof_window_slot_init (GOFWindowSlot *slot)
 }
 
 static void
-real_active (GOFWindowSlot *slot) 
+real_active (GOFWindowSlot *slot)
 {
     marlin_view_view_container_refresh_slot_info (MARLIN_VIEW_VIEW_CONTAINER (slot->ctab));
 }
@@ -100,7 +100,7 @@ void
 update_total_width (GtkWidget *widget, GtkAllocation *allocation, void *data)
 {
     GOFWindowSlot* slot = data;
-    
+
     if (slot->mwcols->total_width != 0 && slot->width != allocation->width) {
         slot->mwcols->total_width += allocation->width - slot->width;
         slot->width = allocation->width;
@@ -114,11 +114,11 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
     GtkWidget *hpane = GTK_WIDGET (granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL));
     gtk_widget_set_hexpand(hpane, TRUE);
     gtk_widget_show (hpane);
-    
+
     gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
     gtk_widget_show_all(slot->colpane);
-    
-    GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);    
+
+    GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_widget_show_all (box1);
 
     slot->colpane = box1;
@@ -139,10 +139,10 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
     gint current_slot_position = 0;
     gint i;
     GList* list_slot = slot->mwcols->slot;
-   
+
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
-    
+
     current_slot_position = g_list_index(slot->mwcols->slot, slot);
     if(current_slot_position == -1) {
         g_warning ("Can't find the slot you are viewing, this should *not* happen.");
@@ -158,7 +158,7 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
         slot->mwcols->slot = l;
     }
     slot->mwcols->total_width += slot->mwcols->preferred_column_width + 100;
-    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);    
+    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
     marlin_window_columns_add (slot->mwcols, location);
 }
 
@@ -191,7 +191,7 @@ gof_window_slot_make_icon_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
-    
+
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
 }

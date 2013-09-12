@@ -63,6 +63,6 @@ void marlin_window_columns_tests(void)
     g_assert_cmpstr(g_file_get_path(marlin_window_columns_get_location(mwcols)),
                                     ==,
                                     "/usr");
- 
+
     g_assert_cmpint(g_list_length(mwcols->slot), ==, 2);
 }

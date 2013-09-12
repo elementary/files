@@ -38,32 +38,31 @@ namespace Marlin.View {
         //private ulong file_info_callback;
         private GLib.List<GLib.File> select_childs = null;
 
-        public signal void path_changed(File file);
-        public signal void up();
-        public signal void back(int n=1);
-        public signal void forward(int n=1);
+        public signal void path_changed (File file);
+        public signal void up ();
+        public signal void back (int n=1);
+        public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
 
-        public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0)
-        {
+        public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
             overlay_statusbar = new OverlayBar (win);
             view_mode = _view_mode;
 
             /* set active tab */
             browser = new Browser ();
-            label = new Gtk.Label("Loading...");
+            label = new Gtk.Label ("Loading...");
             change_view (view_mode, location);
-            label.set_ellipsize(Pango.EllipsizeMode.END);
-            label.set_single_line_mode(true);
-            label.set_alignment(0.0f, 0.5f);
-            label.set_padding(0, 0);
-            update_location_state(true);
+            label.set_ellipsize (Pango.EllipsizeMode.END);
+            label.set_single_line_mode (true);
+            label.set_alignment (0.0f, 0.5f);
+            label.set_padding (0, 0);
+            update_location_state (true);
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
             //add(content_item);
-            this.show_all();
+            this.show_all ();
 
             // Override background color to support transparency on overlay widgets
             Gdk.RGBA transparent = {0, 0, 0, 0};
@@ -74,67 +73,69 @@ namespace Marlin.View {
             add_overlay (overlay_statusbar);
             overlay_statusbar.showbar = view_mode != ViewMode.LIST;
 
-            path_changed.connect((myfile) => {
+            path_changed.connect ((myfile) => {
                 /* location didn't change, do nothing */
                 if (slot != null && myfile != null && slot.directory.file.exists
                     && slot.location.equal (myfile))
                     return;
                 change_view(view_mode, myfile);
-                update_location_state(true);
+                update_location_state (true);
             });
-            up.connect(() => {
-                if (slot.directory.has_parent()) {
-                    change_view(view_mode, slot.directory.get_parent());
-                    update_location_state(true);
+
+            up.connect (() => {
+                if (slot.directory.has_parent ()) {
+                    change_view (view_mode, slot.directory.get_parent ());
+                    update_location_state (true);
                 }
             });
-            back.connect((n) => {
-                change_view(view_mode, File.new_for_commandline_arg(browser.go_back(n)));
-                update_location_state(false);
+
+            back.connect ((n) => {
+                change_view (view_mode, File.new_for_commandline_arg (browser.go_back (n)));
+                update_location_state (false);
             });
-            forward.connect((n) => {
-                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward(n)));
-                update_location_state(false);
+
+            forward.connect ((n) => {
+                change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
+                update_location_state (false);
             });
         }
 
-        public Widget content{
-            set{
+        public Gtk.Widget content {
+            set {
                 if (content_item != null)
-                    remove(content_item);
-                add(value);
+                    remove (content_item);
+                add (value);
                 content_item = value;
                 content_item.show_all ();
                 content_shown = true;
             }
-            get{
+            get {
                 return content_item;
             }
         }
 
-        public string tab_name{
-            set{
+        public string tab_name {
+            set {
                 label.label = value;
                 tab_name_changed (value);
             }
-            get{
+            get {
                 return label.label;
             }
         }
 
-        private void plugin_directory_loaded ()
-        {
+        private void plugin_directory_loaded () {
             Object[] data = new Object[3];
             data[0] = window;
             (mwcol != null) ? data[1] = mwcol : data[1] = slot;
             //data[2] = GOF.File.get(slot.location);
             data[2] = slot.directory.file;
-            plugins.directory_loaded((void*)data);
+            plugins.directory_loaded ((void*) data);
         }
 
-        private void connect_available_info() {
+        private void connect_available_info () {
             //file_info_callback = slot.directory.file.info_available.connect((gof) => {
-                if(window.current_tab == this)
+                if (window.current_tab == this)
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
 
                 /*Source.remove((uint) file_info_callback);
@@ -205,15 +206,15 @@ namespace Marlin.View {
                 }
             }
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
-                slot.directory.cancel();
+                slot.directory.cancel ();
             }
 
             if (nview == ViewMode.MILLER) {
-                mwcol = new Marlin.Window.Columns(location, this);
+                mwcol = new Marlin.Window.Columns (location, this);
                 slot = mwcol.active_slot;
             } else {
                 mwcol = null;
-                slot = new GOF.Window.Slot(location, this);
+                slot = new GOF.Window.Slot (location, this);
             }
 
             /* automagicly enable icon view for icons keypath */
@@ -225,7 +226,7 @@ namespace Marlin.View {
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
-            connect_available_info();
+            connect_available_info ();
             if (slot != null) {
                 slot.directory.done_loading.connect (directory_done_loading);
                 slot.directory.need_reload.connect (reload);
@@ -234,13 +235,13 @@ namespace Marlin.View {
 
             switch (nview) {
             case ViewMode.LIST:
-                slot.make_list_view();
+                slot.make_list_view ();
                 break;
             case ViewMode.MILLER:
-                mwcol.make_view();
+                mwcol.make_view ();
                 break;
             default:
-                slot.make_icon_view();
+                slot.make_icon_view ();
                 break;
             }
 
@@ -262,61 +263,59 @@ namespace Marlin.View {
             change_view (view_mode, null);
         }
 
-        public void update_location_state(bool save_history)
-        {
+        public void update_location_state (bool save_history) {
             if (!slot.directory.file.exists)
                 return;
 
             if (save_history)
-                browser.record_uri(slot.directory.location.get_parse_name ());
-            window.can_go_up = slot.directory.has_parent();
-            window.can_go_back = browser.can_go_back();
-            window.can_go_forward = browser.can_go_forward();
+                browser.record_uri (slot.directory.location.get_parse_name ());
+            window.can_go_up = slot.directory.has_parent ();
+            window.can_go_back = browser.can_go_back ();
+            window.can_go_forward = browser.can_go_forward ();
             /* update ModeButton */
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
 
-        public Gtk.Menu get_back_menu()  {
+        public Gtk.Menu get_back_menu () {
             /* Clear the back menu and re-add the correct entries. */
             var back_menu = new Gtk.Menu ();
-            var list = browser.go_back_list();
+            var list = browser.go_back_list ();
             var n = 1;
-            foreach(var path in list){
+            foreach (var path in list) {
                 int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
                               // You see if I would just use back(n) the reference to n would be passed
                               // in the clusure, restulting in a value of n which would always be n=1. So
                               // by introducting a new variable I can bypass this anoyance.
                 var item = new Gtk.MenuItem.with_label (path);
-                item.activate.connect(() => { back(cn); });
-                back_menu.insert(item, -1);
+                item.activate.connect (() => { back(cn); });
+                back_menu.insert (item, -1);
             }
 
-            back_menu.show_all();
+            back_menu.show_all ();
             return back_menu;
         }
 
-        public Gtk.Menu get_forward_menu() {
+        public Gtk.Menu get_forward_menu () {
             /* Same for the forward menu */
             var forward_menu = new Gtk.Menu ();
-            var list = browser.go_forward_list();
+            var list = browser.go_forward_list ();
             var n = 1;
-            foreach(var path in list){
+            foreach (var path in list) {
                 int cn = n++; // For explenation look up
                 var item = new Gtk.MenuItem.with_label (path);
-                item.activate.connect(() => forward(cn));
-                forward_menu.insert(item, -1);
+                item.activate.connect (() => forward (cn));
+                forward_menu.insert (item, -1);
             }
 
-            forward_menu.show_all();
+            forward_menu.show_all ();
             return forward_menu;
         }
 
-        public new Gtk.Widget get_window()
+        public new Gtk.Widget get_window ()
         {
             return ((Gtk.Widget) window);
         }
 
     }
 }
-

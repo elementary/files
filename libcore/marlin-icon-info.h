@@ -55,8 +55,8 @@ MarlinIconInfo *    marlin_icon_info_get_generic_icon           (int size);
 gboolean            marlin_icon_info_is_fallback                (MarlinIconInfo *icon);
 //GdkPixbuf *         marlin_icon_info_get_pixbuf                 (MarlinIconInfo *icon);
 GdkPixbuf *         marlin_icon_info_get_pixbuf_nodefault       (MarlinIconInfo *icon);
-GdkPixbuf *         marlin_icon_info_get_pixbuf_force_size      (MarlinIconInfo *icon, 
-                                                                 gint           size, 
+GdkPixbuf *         marlin_icon_info_get_pixbuf_force_size      (MarlinIconInfo *icon,
+                                                                 gint           size,
                                                                  gboolean       force_size);
 /*GdkPixbuf *           marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
   gsize              forced_size);*/

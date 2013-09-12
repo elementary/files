@@ -1,22 +1,19 @@
 /*
  * Copyright (C) ammonkey 2011 <am.monkeyd@gmail.com>
- * 
+ *
  * Marlin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * Marlin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-using Gtk;
-using Marlin;
 
 [DBus (name = "org.elementary.marlin.db")]
 interface MarlinDaemon : Object {
@@ -27,8 +24,7 @@ interface MarlinDaemon : Object {
 }
 
 
-public class Marlin.Plugins.CTags : Marlin.Plugins.Base
-{
+public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private MarlinDaemon daemon;
     //GOF.Directory.Async directory;
     GOF.File directory;
@@ -41,8 +37,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     private uint t_consume_knowns = 0;
     private Cancellable cancellable;
 
-    public CTags()
-    {
+    public CTags () {
         unknowns = new Queue<GOF.File> ();
         knowns = new Queue<GOF.File> ();
         cancellable = new Cancellable ();
@@ -94,7 +89,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     private const string users_dirs[2] = {
         "file:///home",
         "file:///media"
-    }; 
+    };
 
     private bool f_is_user_dir (string uri) {
         return_val_if_fail (uri != null, false);
@@ -108,7 +103,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
 
     private bool f_ignore_dir (string uri) {
         return_val_if_fail (uri != null, true);
-        
+
         var idir = "file:///tmp";
         if (Posix.strncmp (uri, idir, idir.length) == 0)
             return true;
@@ -116,8 +111,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         return false;
     }
 
-    public override void directory_loaded (void* user_data)
-    {
+    public override void directory_loaded (void* user_data) {
         message  ("CANCEL");
         cancellable.cancel ();
 
@@ -129,9 +123,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
 
         unknowns.clear ();
         cancellable.reset ();
-        
+
         //directory = GOF.Directory.Async.from_file(((Object[])user_data)[2] as GOF.File);
-        directory = ((Object[])user_data)[2] as GOF.File;
+        directory = ((Object[]) user_data)[2] as GOF.File;
         //warning ("CTags Plugin dir %s", directory.file.uri);
         warning ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
@@ -139,8 +133,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     }
 
     //private Variant add_entry (string uri, string content_type, int modified_time)
-    private Variant add_entry (GOF.File gof)
-    {
+    private Variant add_entry (GOF.File gof) {
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
         ptr_arr[1] = gof.get_ftype ();
@@ -150,8 +143,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         return new Variant.strv ((string[]) ptr_arr);
     }
 
-    private async void consume_knowns_queue ()
-    {
+    private async void consume_knowns_queue () {
         Variant[] entries = null;
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
@@ -169,8 +161,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         }
     }
 
-    private async void consume_unknowns_queue ()
-    {
+    private async void consume_unknowns_queue () {
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
@@ -185,8 +176,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
                     if (files == null)
                         break;
 
-                    foreach (var file_info in files)
-                    {
+                    foreach (var file_info in files) {
                         GLib.File loc = directory.location.get_child ((string) file_info.get_name());
                         gof = GOF.File.get (loc);
                         if (gof != null)
@@ -222,8 +212,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
             Source.remove (t_consume_knowns);
             t_consume_knowns = 0;
         }
-        t_consume_knowns = Timeout.add (300, () => { 
-                                        consume_knowns_queue (); 
+        t_consume_knowns = Timeout.add (300, () => {
+                                        consume_knowns_queue ();
                                         return false;
                                         });
     }
@@ -233,15 +223,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
             unknowns.push_head (file);
 
             if (idle_consume_unknowns == 0)
-                idle_consume_unknowns = Idle.add (() => { 
+                idle_consume_unknowns = Idle.add (() => {
                                                   consume_unknowns_queue ();
                                                   return false;
                                                   });
         }
     }
 
-    private async void rreal_update_file_info (GOF.File file)
-    {
+    private async void rreal_update_file_info (GOF.File file) {
         //warning ("ctags update %s", file.name);
         try {
             var rc = yield daemon.get_uri_infos (file.uri);
@@ -279,8 +268,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         }
     }
 
-    public override void update_file_info(GOF.File file) 
-    {
+    public override void update_file_info (GOF.File file) {
         return_if_fail (file != null);
         if (!ignore_dir
             &&file != null && file.info != null
@@ -292,7 +280,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
 }
 
 
-public Marlin.Plugins.Base module_init()
-{
-    return new Marlin.Plugins.CTags();
+public Marlin.Plugins.Base module_init () {
+    return new Marlin.Plugins.CTags ();
 }

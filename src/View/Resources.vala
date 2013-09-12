@@ -7,8 +7,8 @@ namespace Marlin {
     public const string BUG_URL = "https://bugs.launchpad.net/pantheon-files/+filebug";
     public const string TRANSLATE_URL = "https://translations.launchpad.net/pantheon-files";
     public const string COMMENTS = "File Manager";
-    
-    public const string[] AUTHORS = { 
+
+    public const string[] AUTHORS = {
         "ammonkey <am.monkeyd@gmail.com>",
         "Lucas Baudin <xapantu@gmail.com>",
         "Mathijs Henquet <mathijs.henquet@gmail.com>",
@@ -18,8 +18,8 @@ namespace Marlin {
         "Mario Guerriero <mario@elementaryos.org>",
         null
     };
-    
-    public const string[] ARTISTS = { 
+
+    public const string[] ARTISTS = {
         "Daniel Foré <daniel.p.fore@gmail.com>",
         null
     };

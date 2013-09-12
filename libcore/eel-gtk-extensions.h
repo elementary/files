@@ -32,13 +32,13 @@
 #define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT 	2
 
 char	    *eel_gtk_window_get_geometry_string (GtkWindow *window);
-void	    eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window, 
+void	    eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
 							     const char *geometry_string,
 							     guint minimum_width,
 							     guint minimum_height,
 							     gboolean ignore_position);
 
-void	    eel_gtk_window_set_initial_geometry (GtkWindow *window, 
+void	    eel_gtk_window_set_initial_geometry (GtkWindow *window,
 						 EelGdkGeometryFlags geometry_flags,
 						 int left,
 						 int top,

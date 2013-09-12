@@ -1,22 +1,22 @@
-/* 
+/*
  * Copyright (C) 1999, 2000, 2001 Eazel, Inc.
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public
  * License along with this program; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Author: Pavel Cisler <pavel@eazel.com>  
+ * Author: Pavel Cisler <pavel@eazel.com>
  */
 
 #include "marlin-file-changes-queue.h"
@@ -73,7 +73,7 @@ marlin_file_changes_queue_get (void)
 }
 
 static void
-marlin_file_changes_queue_add_common (MarlinFileChangesQueue *queue, 
+marlin_file_changes_queue_add_common (MarlinFileChangesQueue *queue,
                                       MarlinFileChange *new_item)
 {
     /* enqueue the new queue item while locking down the list */
@@ -196,7 +196,7 @@ pairs_list_free (GList *pairs)
 
 /* go through changes in the change queue, send ones with the same kind
  * in a list to the different marlin_directory_notify calls
- */ 
+ */
 void
 marlin_file_changes_consume_changes (gboolean consume_all)
 {
@@ -217,7 +217,7 @@ marlin_file_changes_consume_changes (gboolean consume_all)
 
     /* Consume changes from the queue, stuffing them into one of three lists,
      * keep doing it while the changes are of the same kind, then send them off.
-     * This is to ensure that the changes get sent off in the same order that they 
+     * This is to ensure that the changes get sent off in the same order that they
      * arrived.
      */
     for (chunk_count = 0; ; chunk_count++) {
@@ -252,7 +252,7 @@ marlin_file_changes_consume_changes (gboolean consume_all)
         }
 
         if (flush_needed) {
-            /* Send changes we collected off. 
+            /* Send changes we collected off.
              * At one time we may only have one of the lists
              * contain changes.
              */

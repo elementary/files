@@ -54,12 +54,12 @@ eel_accessibility_set_up_label_widget_relation (GtkWidget *label, GtkWidget *wid
  *      that type.
  * @opt_gail_parent_class: the name of the Gail class to derive from eg. GailCanvasItem
  * @class_init: the init function to run for this class
- * 
+ *
  * This should be run to register the type, it can subsequently be run with
  * the same name and will not re-register it, but simply return it.
  *
  * NB. to do instance init, you prolly want to override AtkObject::initialize
- * 
+ *
  * Return value: the registered type, or 0 on failure.
  **/
 GType
@@ -90,7 +90,7 @@ eel_accessibility_create_derived_type (const char *type_name,
 	}
 
 	/*
-	 * Figure out the size of the class and instance 
+	 * Figure out the size of the class and instance
 	 * we are deriving from
 	 */
 	g_type_query (parent_atk_type, &query);
@@ -139,9 +139,9 @@ get_quark_gobject (void)
 /**
  * eel_accessibility_get_atk_object:
  * @object: a GObject of some sort
- * 
+ *
  * gets an AtkObject associated with a GObject
- * 
+ *
  * Return value: the associated accessible if one exists or NULL
  **/
 AtkObject *
@@ -153,10 +153,10 @@ eel_accessibility_get_atk_object (gpointer object)
 /**
  * eel_accessibilty_for_object:
  * @object: a GObject of some sort
- * 
+ *
  * gets an AtkObject associated with a GObject and if it doesn't
  * exist creates a suitable accessible object.
- * 
+ *
  * Return value: an associated accessible.
  **/
 AtkObject *
@@ -171,10 +171,10 @@ eel_accessibility_for_object (gpointer object)
 /**
  * eel_accessibility_get_gobject:
  * @object: an AtkObject
- * 
+ *
  * gets the GObject associated with the AtkObject, for which
  * @object provides accessibility support.
- * 
+ *
  * Return value: the accessible's associated GObject
  **/
 gpointer
@@ -198,9 +198,9 @@ eel_accessibility_destroy (gpointer data,
  * eel_accessibility_set_atk_object_return:
  * @object: a GObject
  * @atk_object: it's AtkObject
- * 
+ *
  * used to register and return a new accessible object for something
- * 
+ *
  * Return value: @atk_object.
  **/
 AtkObject *
@@ -259,7 +259,7 @@ eel_accessibility_text_get_text (AtkText *text,
 	return gail_text_util_get_substring (util, start_pos, end_pos);
 }
 
-gunichar 
+gunichar
 eel_accessibility_text_get_character_at_offset (AtkText *text,
 						gint     offset)
 {
@@ -289,7 +289,7 @@ eel_accessibility_text_get_text_before_offset (AtkText	      *text,
 	g_return_val_if_fail (util != NULL, NULL);
 
 	return gail_text_util_get_text (
-		util, NULL, GAIL_BEFORE_OFFSET, 
+		util, NULL, GAIL_BEFORE_OFFSET,
 		boundary_type, offset, start_offset, end_offset);
 }
 
@@ -319,7 +319,7 @@ eel_accessibility_text_get_text_after_offset  (AtkText	      *text,
 	g_return_val_if_fail (util != NULL, NULL);
 
 	return gail_text_util_get_text (
-		util, NULL, GAIL_AFTER_OFFSET, 
+		util, NULL, GAIL_AFTER_OFFSET,
 		boundary_type, offset, start_offset, end_offset);
 }
 

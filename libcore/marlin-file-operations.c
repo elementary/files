@@ -7,17 +7,17 @@
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- *  
+ *
  * You should have received a copy of the GNU General Public
  * License along with this program; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
- *  
+ *
  * Authors: Ettore Perazzoli <ettore@gnu.org>,
  *          Pavel Cisler <pavel@eazel.com>
  */
@@ -453,7 +453,7 @@ get_link_name (const char *name, int count, int max_length)
     return result;
 }
 
-/* Localizers: 
+/* Localizers:
  * Feel free to leave out the st, nd, rd and th suffix or
  * make some or all of them match.
  */
@@ -930,9 +930,9 @@ cancel_callback (TaskviewGeneric *origin, GError **error, CommonJob *job)
 
 #define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
 
-static gpointer 
+static gpointer
 init_common (JobTypes jobtype,
-             gsize job_size, 
+             gsize job_size,
              GtkWindow *parent_window)
 {
     CommonJob *common;
@@ -970,7 +970,7 @@ init_common (JobTypes jobtype,
         tv_icon = "file-manager";
     }
 
-    common->tv_io = g_object_new (TASKVIEW_TYPE_IO, 
+    common->tv_io = g_object_new (TASKVIEW_TYPE_IO,
                                   "state", TASKVIEW_PREPARING,
                                   "type", tv_type,
                                   "icon", tv_icon,
@@ -1384,7 +1384,7 @@ confirm_delete_from_trash (CommonJob *job,
                              "the %'d selected item from the trash?",
                              "Are you sure you want to permanently delete "
                              "the %'d selected items from the trash?",
-                             file_count), 
+                             file_count),
                     file_count);
     }
 
@@ -1446,7 +1446,7 @@ confirm_delete_directly (CommonJob *job,
     }
 
     if (file_count == 1) {
-        prompt = f (_("Are you sure you want to permanently delete \"%B\"?"), 
+        prompt = f (_("Are you sure you want to permanently delete \"%B\"?"),
                     files->data);
     } else {
         prompt = f (ngettext("Are you sure you want to permanently delete "
@@ -1456,7 +1456,7 @@ confirm_delete_directly (CommonJob *job,
                     file_count);
     }
 
-    response = run_warning (job, 
+    response = run_warning (job,
                             prompt,
                             f (_("If you delete an item, it will be permanently lost.")),
                             NULL,
@@ -1815,7 +1815,7 @@ report_trash_progress (CommonJob *job,
 {
 #ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
-                  "description", _("Moving files to trash"),    
+                  "description", _("Moving files to trash"),
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) files_trashed,
                   "total-items", (guint64) total_files,
@@ -2049,12 +2049,12 @@ delete_job (GIOSchedulerJob *io_job,
 static void
 trash_or_delete_internal (GList                  *files,
                           GtkWindow              *parent_window,
-                          gboolean                try_trash,			  
+                          gboolean                try_trash,			
                           MarlinDeleteCallback  done_callback,
                           gpointer                done_callback_data)
 {
     g_return_if_fail (files != NULL);
-    
+
     DeleteJob *job;
 
     /* TODO: special case desktop icon link files ... */
@@ -2100,13 +2100,13 @@ marlin_file_operations_trash_or_delete (GList                   *files,
 }
 
 void
-marlin_file_operations_delete (GList                    *files, 
+marlin_file_operations_delete (GList                    *files,
                                GtkWindow                *parent_window,
                                MarlinDeleteCallback     done_callback,
                                gpointer                 done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
-                              FALSE,			  
+                              FALSE,			
                               done_callback,  done_callback_data);
 }
 
@@ -2305,9 +2305,9 @@ prompt_empty_trash (GtkWindow *parent_window)
                                                 "the trash must be emptied. "
                                                 "All trashed items on the volume "
                                                 "will be permanently lost."));
-    gtk_dialog_add_buttons (GTK_DIALOG (dialog), 
-                            _("Do _not Empty Trash"), GTK_RESPONSE_REJECT, 
-                            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
+    gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+                            _("Do _not Empty Trash"), GTK_RESPONSE_REJECT,
+                            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                             _("Empty _Trash"), GTK_RESPONSE_ACCEPT, NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
     gtk_window_set_title (GTK_WINDOW (dialog), ""); /* as per HIG */
@@ -2529,7 +2529,7 @@ report_count_progress (CommonJob *job,
                         source_info->num_files),
                source_info->num_files);
         break;
-    } 
+    }
 
 #ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
@@ -2718,7 +2718,7 @@ scan_file (GFile *file,
 
 retry:
     error = NULL;
-    info = g_file_query_info (file, 
+    info = g_file_query_info (file,
                               G_FILE_ATTRIBUTE_STANDARD_TYPE","
                               G_FILE_ATTRIBUTE_STANDARD_SIZE,
                               G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
@@ -2776,7 +2776,7 @@ retry:
         }
     }
 
-    while (!job_aborted (job) && 
+    while (!job_aborted (job) &&
            (dir = g_queue_pop_head (dirs)) != NULL) {
         scan_dir (dir, source_info, job, dirs);
         g_object_unref (dir);
@@ -2833,7 +2833,7 @@ verify_destination (CommonJob *job,
 retry:
 
     error = NULL;
-    info = g_file_query_info (dest, 
+    info = g_file_query_info (dest,
                               G_FILE_ATTRIBUTE_STANDARD_TYPE","
                               G_FILE_ATTRIBUTE_ID_FILESYSTEM,
                               0,
@@ -3059,13 +3059,13 @@ report_copy_progress (CopyMoveJob *copy_job,
     }
 
 #ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, 
+    g_object_set (job->tv_io,
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) transfer_info->num_files,
                   "total-items", (guint64) source_info->num_files,
                   "processed-size", (guint64) transfer_info->num_bytes,
                   "total-size", (guint64) source_info->num_bytes,
-                  "type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,             
+                  "type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,
                   NULL);
 
     if (s != NULL)
@@ -3078,12 +3078,12 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (copy_job->destination != NULL) {
         gchar *current_item = g_file_get_uri (copy_job->destination);
         g_object_set (job->tv_io,
-                      "current-item", current_item, 
+                      "current-item", current_item,
                       NULL);	
         g_free (current_item);
     }
 #else
-    if (s != NULL) 
+    if (s != NULL)
 	{
 		marlin_progress_info_take_status (job->progress, s);
 	}
@@ -3122,7 +3122,7 @@ report_copy_progress (CopyMoveJob *copy_job,
 	}
 
 	marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
-#endif 
+#endif
 }
 
 static int
@@ -3255,7 +3255,7 @@ get_unique_target_file (GFile *src,
             make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
-        } 
+        }
 
         if (dest == NULL) {
             end = strrchr (basename, '.');
@@ -3314,7 +3314,7 @@ get_target_file_for_link (GFile *src,
             make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
-        } 
+        }
 
         if (dest == NULL) {
             if (count == 1) {
@@ -3698,7 +3698,7 @@ retry:
     }
 
     if (create_dest) {
-        flags = (readonly_source_fs) ? G_FILE_COPY_NOFOLLOW_SYMLINKS | G_FILE_COPY_TARGET_DEFAULT_PERMS 
+        flags = (readonly_source_fs) ? G_FILE_COPY_NOFOLLOW_SYMLINKS | G_FILE_COPY_TARGET_DEFAULT_PERMS
             : G_FILE_COPY_NOFOLLOW_SYMLINKS;
         /* Ignore errors here. Failure to copy metadata is not a hard error */
         g_file_copy_attributes (src, *dest,
@@ -3972,7 +3972,7 @@ is_trusted_desktop_file (GFile *file,
     }
     g_free (basename);
 
-    info = g_file_query_info (file, 
+    info = g_file_query_info (file,
                               G_FILE_ATTRIBUTE_STANDARD_TYPE ","
                               G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE,
                               G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
@@ -4027,12 +4027,12 @@ do_run_conflict_dialog (gpointer _data)
     response = gtk_dialog_run (GTK_DIALOG (dialog));
 
     if (response == CONFLICT_RESPONSE_RENAME) {
-        data->resp_data->new_name = 
+        data->resp_data->new_name =
             marlin_file_conflict_dialog_get_new_name (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     } else if (response != GTK_RESPONSE_CANCEL ||
                response != GTK_RESPONSE_NONE) {
         data->resp_data->apply_to_all =
-            marlin_file_conflict_dialog_get_apply_to_all 
+            marlin_file_conflict_dialog_get_apply_to_all
             (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     }
 
@@ -4161,8 +4161,8 @@ copy_move_file (CopyMoveJob *copy_job,
     }
 
 
-    /* Don't allow recursive move/copy into itself.  
-     * (We would get a file system error if we proceeded but it is nicer to 
+    /* Don't allow recursive move/copy into itself.
+     * (We would get a file system error if we proceeded but it is nicer to
      * detect and report it at this level) */
     if (test_dir_is_parent (dest_dir, src)) {
         if (job->skip_all_error) {
@@ -4745,8 +4745,8 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
 #ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, 
-                  "state", TASKVIEW_PREPARING, 
+    g_object_set (job->tv_io,
+                  "state", TASKVIEW_PREPARING,
                   "description", s,
                   "progress", (gint) -1,
                   NULL);
@@ -4833,8 +4833,8 @@ move_file_prepare (CopyMoveJob *move_job,
     dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
 
 
-    /* Don't allow recursive move/copy into itself.  
-     * (We would get a file system error if we proceeded but it is nicer to 
+    /* Don't allow recursive move/copy into itself.
+     * (We would get a file system error if we proceeded but it is nicer to
      * detect and report it at this level) */
     if (test_dir_is_parent (dest_dir, src)) {
         if (job->skip_all_error) {
@@ -4988,7 +4988,7 @@ retry:
         g_error_free (error);
 
         fallback = move_copy_file_callback_new (src,
-                                                overwrite, 
+                                                overwrite,
                                                 position);
         *fallback_files = g_list_prepend (*fallback_files, fallback);
     }
@@ -5304,7 +5304,7 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
                   "description", s,
                   NULL);
     g_free (s);
-#else 
+#else
     marlin_progress_info_take_status (job->progress, s);
     marlin_progress_info_take_details (job->progress,
                                        f (ngettext ("Making link to %'d file",
@@ -5379,7 +5379,7 @@ retry:
     if (path == NULL) {
         not_local = TRUE;
     } else if (g_file_make_symbolic_link (dest,
-                                          path, 
+                                          path,
                                           common->cancellable,
                                           &error)) {
 
@@ -5758,7 +5758,7 @@ set_permissions_file (SetPermissionsJob *job,
             }
             g_file_enumerator_close (enumerator, common->cancellable, NULL);
             g_object_unref (enumerator);
-        } 
+        }
     }
     if (free_info) {
         g_object_unref (info);
@@ -5863,7 +5863,7 @@ callback_for_move_to_trash (GHashTable *debuting_uris,
     g_slice_free (MoveTrashCBData, data);
 }
 
-void 
+void
 marlin_file_operations_copy_move   (GList                  *files,
                                     GArray                 *relative_item_points,
                                     GFile                  *target_dir,
@@ -5887,7 +5887,7 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     for (p = files; p != NULL; p = p->next) {
-        if (!g_file_has_uri_scheme ((GFile* )p->data, "burn")) {                
+        if (!g_file_has_uri_scheme ((GFile* )p->data, "burn")) {
             have_nonmapping_source = TRUE;
         }
     }
@@ -6044,7 +6044,7 @@ create_job (GIOSchedulerJob *io_job,
                 filename_is_utf8 = TRUE; /* Pass in utf8 */
             }
         }
-    } 
+    }
 
     make_file_name_valid_for_dest_fs (filename, dest_fs_type);
     if (filename_is_utf8) {
@@ -6252,8 +6252,8 @@ aborted:
     return FALSE;
 }
 
-void 
-marlin_file_operations_new_folder (GtkWidget *parent_view, 
+void
+marlin_file_operations_new_folder (GtkWidget *parent_view,
                                    GdkPoint *target_point,
                                    GFile *parent_dir,
                                    MarlinCreateCallback done_callback,
@@ -6290,8 +6290,8 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
-void 
-marlin_file_operations_new_folder_with_name (GtkWidget *parent_view, 
+void
+marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                                    GdkPoint *target_point,
                                    GFile *parent_dir,
                                    gchar* folder_name,
@@ -6327,8 +6327,8 @@ marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
 }
 
 #if 0
-void 
-marlin_file_operations_new_file_from_template (GtkWidget *parent_view, 
+void
+marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                                                GdkPoint *target_point,
                                                const char *parent_dir,
                                                const char *target_filename,
@@ -6372,8 +6372,8 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
 }
 #endif
 
-void 
-marlin_file_operations_new_file (GtkWidget *parent_view, 
+void
+marlin_file_operations_new_file (GtkWidget *parent_view,
                                  GdkPoint *target_point,
                                  const char *parent_dir,
                                  const char *target_filename,
@@ -6515,7 +6515,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     return FALSE;
 }
 
-void 
+void
 marlin_file_operations_empty_trash (GtkWidget *parent_view)
 {
     EmptyTrashJob *job;

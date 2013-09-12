@@ -222,35 +222,45 @@ namespace Marlin.View {
                 return false;
             });
 
-            delete_event.connect(() => {
-                save_geometries();
-                destroy();
+            delete_event.connect (() => {
+                destroy ();
+
             	return false;
             });
-            
+
+            configure_event.connect (() => {
+                save_geometries ();
+
+                return false;
+            });
+
             tabs.tab_added.connect ((tab) => {
                 make_new_tab (tab);
             });
-            
+
             tabs.tab_removed.connect ((tab) => {
                 if (tabs.n_tabs == 1) {
                     make_new_tab ();
                 }
-                
+
                 tab.restore_data =
                     (tab.page as ViewContainer).slot.location.get_uri ();
-                
+
                 return true;
             });
-            
+
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
             });
-            
+
             tabs.tab_restored.connect ((tab) => {
                 make_new_tab (tab, File.new_for_uri (tab.restore_data));
             });
-            
+
+            tabs.tab_duplicated.connect ((tab) => {
+                make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
+            });
+
             tabs.tab_duplicated.connect ((tab) => {
                 make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
             });
@@ -358,7 +368,7 @@ namespace Marlin.View {
 
         public void add_tab (File location) {
             make_new_tab (null, location);
-            
+
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -471,28 +481,6 @@ namespace Marlin.View {
             current_tab.reload ();
             t_reload_cb = 0;
             return false;
-        }
-
-        private bool is_close_first () {
-            string path = "/apps/metacity/general/button_layout";
-            GConf.Client cl = GConf.Client.get_default ();
-            string key;
-
-            try {
-                if (cl.get (path) != null)
-                    key = cl.get_string (path);
-                else
-                    return false;
-            } catch (GLib.Error err) {
-                warning ("Unable to read metacity settings: %s", err.message);
-            }
-
-            string[] keys = key.split (":");
-            if ("close" in keys[0])
-                return true;
-            else
-                return false;
-
         }
 
         private bool is_marlin_mydefault_fm ()
@@ -748,7 +736,7 @@ namespace Marlin.View {
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
               ViewMode.MILLER }
-     
+
         };
     }
 }
