@@ -26,7 +26,7 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
         this.dialog = dialog;
     }
 
-    private new void ask_password (string message,
+    public override void ask_password (string message,
                                    string default_user,
                                    string default_domain,
                                    AskPasswordFlags flags) {
