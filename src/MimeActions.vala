@@ -90,6 +90,25 @@ public class Marlin.MimeActions {
         return result;
     }
 
+    public static List<AppInfo>? get_applications_for_folder (GOF.File file) {
+        List<AppInfo> result = AppInfo.get_all_for_type (ContentType.get_mime_type ("inode/directory"));
+        string uri_scheme = file.location.get_uri_scheme ();
+
+        if (uri_scheme != null) {
+            var uri_handler = AppInfo.get_default_for_uri_scheme (uri_scheme);
+
+            if (uri_handler != null)
+                result.prepend (uri_handler);
+        }
+
+        if (!file_has_local_path (file))
+            filter_non_uri_apps (result);
+
+        result.sort (application_compare_by_name);
+
+        return result;
+    }
+
     public static List<AppInfo>? get_applications_for_files (List<GOF.File> files) {
         assert (files != null);
 

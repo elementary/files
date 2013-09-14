@@ -101,6 +101,16 @@
 		<separator name="Properties separator"/>
 		<menuitem name="Properties" action="Properties"/>
 	</placeholder>
+    <separator name="Open separator"/>
+    <placeholder name="Open Placeholder">
+        <menuitem name="Open" action="Open"/>
+        <menuitem name="OpenInNewTab" action="OpenInNewTab"/>
+        <menu action="Open With">
+            <placeholder name="Applications Placeholder"/>
+            <separator name="Open with separator"/>
+            <menuitem name="OtherApplication" action="OtherApplication"/>
+        </menu>
+    </placeholder>
 </popup>
 <popup name="selection">
 	<!--<placeholder name="Open Placeholder">
