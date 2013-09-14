@@ -239,7 +239,7 @@ namespace Marlin.View {
                     /* if we have an image, see if we can get its resolution */
                     var type = goffile.get_ftype ();
                     if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
-                        load_resolution (goffile);
+                        load_resolution.begin (goffile);
                     }
 
                     status.set_label ("%s (%s)".printf (goffile.formated_type, goffile.format_size));
