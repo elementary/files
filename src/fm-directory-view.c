@@ -1889,7 +1889,7 @@ filter_this_app (GList *apps)
 
         if (executable != NULL && strcmp (executable, APP_NAME) == 0)
         {
-		    g_object_unref (app);
+            g_object_unref (app);
             apps = g_list_delete_link (apps, l);
         }
     }
@@ -1957,8 +1957,6 @@ update_menus_empty_selection (FMDirectoryView *view)
 
     /* We do not want Pantheon Files in app list */
     view->details->open_with_apps = filter_this_app (view->details->open_with_apps);
-
-
 
     for (l = view->details->open_with_apps, index=0; l != NULL && index <10; l=l->next, index++) {
         add_application_to_open_with_menu (view,
