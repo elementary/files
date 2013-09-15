@@ -288,6 +288,57 @@ namespace Marlin.View.Chrome
 
             menu.append (new Gtk.SeparatorMenuItem ());
 
+            // Then the "Open with" menuitem is added to the menu.
+            var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
+            menu.append (menu_open_with);
+
+            var submenu_open_with = new Gtk.Menu ();
+            var root = GOF.File.get (File.new_for_uri (current_right_click_root));
+            var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
+
+            foreach (AppInfo app_info in app_info_list) {
+                if (app_info.get_executable () != APP_NAME) {
+                    var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
+                    menu_item.set_data ("appinfo", app_info);
+                    Icon icon;
+                    icon = app_info.get_icon ();
+                    if (icon == null)
+                        icon = new ThemedIcon ("application-x-executable");
+
+                    menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
+                    menu_item.always_show_image = true;
+                    menu_item.activate.connect (() => {
+                        unowned AppInfo app = submenu_open_with.get_active ().get_data ("appinfo");
+                        launch_uri_with_app (app, current_right_click_path);
+                    });
+                    submenu_open_with.append (menu_item);
+                }
+            }
+
+            submenu_open_with.append (new Gtk.SeparatorMenuItem ());
+
+            var open_with_other_item = new Gtk.MenuItem.with_label (_("Other Application .."));
+            open_with_other_item.activate.connect (() => {
+                var dialog = new Gtk.AppChooserDialog(
+                                win,
+                                Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                File.new_for_uri (current_right_click_path)
+                                );
+
+                var response = dialog.run ();
+                if (response == Gtk.ResponseType.OK) {
+                    unowned AppInfo app = dialog.get_app_info ();
+                    launch_uri_with_app (app, current_right_click_path);
+                }
+
+                dialog.destroy ();
+            });
+
+            submenu_open_with.append (open_with_other_item);
+            menu_open_with.set_submenu (submenu_open_with);
+            menu.append (new Gtk.SeparatorMenuItem ());
+
+
             unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
             foreach (var gof in sorted_dirs) {
                 var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
@@ -299,6 +350,11 @@ namespace Marlin.View.Chrome
                 });
             }
             menu.show_all ();
+        }
+
+        private void launch_uri_with_app (AppInfo app, string uri) {
+            var file = GOF.File.get (File.new_for_uri (uri));
+            file.launch (win.get_screen (), app);
         }
 
         protected override void on_file_droped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
