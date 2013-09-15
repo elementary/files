@@ -1,12 +1,13 @@
 namespace Marlin {
     public const string APP_TITLE = "Pantheon Files";
-    public const string COPYRIGHT = "2010-2012 Marlin Developers";
+    public const string COPYRIGHT = APP_YEARS + " Marlin Developers";
+    public const string APP_YEARS = "2010-2013";
     public const string LAUNCHPAD_LABEL = "Website";
     public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
     public const string HELP_URL = "https://answers.launchpad.net/pantheon-files";
     public const string BUG_URL = "https://bugs.launchpad.net/pantheon-files/+filebug";
     public const string TRANSLATE_URL = "https://translations.launchpad.net/pantheon-files";
-    public const string COMMENTS = "File Manager";
+    public const string COMMENTS = _("A simple and powerful file manager");
 
     public const string[] AUTHORS = {
         "ammonkey <am.monkeyd@gmail.com>",
@@ -24,7 +25,7 @@ namespace Marlin {
         null
     };
 
-    public const string TRANSLATORS = "Launchpad Translators";
+    public const string TRANSLATORS = _("Launchpad Translators");
 
     public const string ICON_ABOUT_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
