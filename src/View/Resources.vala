@@ -1,6 +1,6 @@
 namespace Marlin {
     public const string APP_TITLE = "Pantheon Files";
-    public const string COPYRIGHT = "2010-2012 Marlin Developers";
+    public const string COPYRIGHT = APP_YEARS + " Marlin Developers";
     public const string APP_YEARS = "2010-2013";
     public const string LAUNCHPAD_LABEL = "Website";
     public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
