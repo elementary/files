@@ -44,6 +44,7 @@ pkg_check_modules (UNITY unity>=4.0.0)
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
+        ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
@@ -90,6 +91,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
+        ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
@@ -154,7 +156,6 @@ add_executable (../pantheon-files
     fm-list-view.c
     fm-columns-view.c
     marlin-connect-server-dialog.c
-    marlin-connect-server-operation.c
     marlin-progress-info-widget.c
     ${VALA_C})
 
