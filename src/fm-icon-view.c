@@ -53,9 +53,9 @@ fm_icon_view_init (FMIconView *icon_view)
     //exo_icon_view_set_layout_mode (view->icons, EXO_ICON_VIEW_LAYOUT_ROW);
     /*exo_icon_view_set_row_spacing (view->icons, 0);
     exo_icon_view_set_margin (view->icons, 3);*/
-   
+
     g_object_set (G_OBJECT (icon_view), "text-beside-icons", FALSE, NULL);
-    
+
     /* setup the icon renderer */
     //g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "ypad", 0u, NULL);
 
@@ -67,7 +67,7 @@ fm_icon_view_init (FMIconView *icon_view)
                   "yalign", 0.5f,
                   NULL);*/
 
-    g_settings_bind (marlin_icon_view_settings, "zoom-level", 
+    g_settings_bind (marlin_icon_view_settings, "zoom-level",
                      icon_view, "zoom-level", 0);
 
 }
@@ -100,7 +100,7 @@ fm_icon_view_zoom_normal (FMDirectoryView *view)
     g_settings_set_enum (marlin_icon_view_settings, "zoom-level", zoom);
 }
 
-static void 
+static void
 fm_icon_view_zoom_level_changed (FMDirectoryView *view)
 {
     gint wrap_width;

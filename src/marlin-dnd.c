@@ -1,4 +1,4 @@
-/* marlin-dnd.c - Common Drag & drop handling code 
+/* marlin-dnd.c - Common Drag & drop handling code
  *
  * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
  * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>

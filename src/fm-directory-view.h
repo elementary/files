@@ -78,7 +78,7 @@ struct FMDirectoryViewClass {
     //	void 	(* clear) 		 (FMDirectoryView *view);
 
     /* The 'begin_file_changes' signal is emitted before a set of files
-     * are added to the view. It can be replaced by a subclass to do any 
+     * are added to the view. It can be replaced by a subclass to do any
      * necessary preparation for a set of new files. The default
      * implementation does nothing.
      */
@@ -87,10 +87,10 @@ struct FMDirectoryViewClass {
     /* The 'add_file' signal is emitted to add one file to the view.
      * It must be replaced by each subclass.
      */
-    void    (* add_file) 		 (FMDirectoryView *view, 
+    void    (* add_file) 		 (FMDirectoryView *view,
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
-    void    (* directory_loaded) (FMDirectoryView *view, 
+    void    (* directory_loaded) (FMDirectoryView *view,
                                           GOFDirectoryAsync *directory);
     void    (* sync_selection)	         (FMDirectoryView *view);
 
@@ -100,12 +100,12 @@ struct FMDirectoryViewClass {
      * including the file being removed.
      * It must be replaced by each subclass.
      */
-    void 	(* file_changed)         (FMDirectoryView *view, 
+    void 	(* file_changed)         (FMDirectoryView *view,
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
 
     /* The 'end_file_changes' signal is emitted after a set of files
-     * are added to the view. It can be replaced by a subclass to do any 
+     * are added to the view. It can be replaced by a subclass to do any
      * necessary cleanup (typically, cleanup for code in begin_file_changes).
      * The default implementation does nothing.
      */
@@ -114,15 +114,15 @@ struct FMDirectoryViewClass {
     //void    (* flush_added_files)	 (FMDirectoryView *view);
 
     /* The 'begin_loading' signal is emitted before any of the contents
-     * of a directory are added to the view. It can be replaced by a 
+     * of a directory are added to the view. It can be replaced by a
      * subclass to do any necessary preparation to start dealing with a
      * new directory. The default implementation does nothing.
      */
     void 	(* begin_loading) 	 (FMDirectoryView *view);
 
     /* The 'end_loading' signal is emitted after all of the contents
-     * of a directory are added to the view. It can be replaced by a 
-     * subclass to do any necessary clean-up. The default implementation 
+     * of a directory are added to the view. It can be replaced by a
+     * subclass to do any necessary clean-up. The default implementation
      * does nothing.
      *
      * If all_files_seen is true, the handler may assume that
@@ -137,7 +137,7 @@ struct FMDirectoryViewClass {
 
     /* The 'load_error' signal is emitted when the directory model
      * reports an error in the process of monitoring the directory's
-     * contents.  The load error indicates that the process of 
+     * contents.  The load error indicates that the process of
      * loading the contents has ended, but the directory is still
      * being monitored. The default implementation handles common
      * load failures like ACCESS_DENIED.
@@ -147,9 +147,9 @@ struct FMDirectoryViewClass {
 
     /* Function pointers that don't have corresponding signals */
 
-    /* reset_to_defaults is a function pointer that subclasses must 
+    /* reset_to_defaults is a function pointer that subclasses must
      * override to set sort order, zoom level, etc to match default
-     * values. 
+     * values.
      */
     void     (* reset_to_defaults)	         (FMDirectoryView *view);
 #endif
@@ -198,13 +198,13 @@ struct FMDirectoryViewClass {
      * override to select the specified items (and unselect all
      * others). The argument is a list of GOFFiles. */
 
-    void     (* set_selection)	 	(FMDirectoryView *view, 
+    void     (* set_selection)	 	(FMDirectoryView *view,
                                          GList *selection);
-    
+
     /* invert_selection is a function pointer that subclasses must
      * override to invert selection. */
 
-    void     (* invert_selection)	 	(FMDirectoryView *view);        					 
+    void     (* invert_selection)	 	(FMDirectoryView *view);        					
 
     /* Return an array of locations of selected icons in their view. */
     //GArray * (* get_selected_icon_locations) (FMDirectoryView *view);
@@ -218,7 +218,7 @@ struct FMDirectoryViewClass {
 
     /* zoom_to_level is a function pointer that subclasses must override
      * to set the zoom level of an object to the specified level. */
-    /*void    (* zoom_to_level) 		(FMDirectoryView *view, 
+    /*void    (* zoom_to_level) 		(FMDirectoryView *view,
       NautilusZoomLevel level);*/
 
     //NautilusZoomLevel (* get_zoom_level)    (FMDirectoryView *view);
@@ -258,7 +258,7 @@ struct FMDirectoryViewClass {
 #if 0
     /* update_menus is a function pointer that subclasses can override to
      * update the sensitivity or wording of menu items in the menu bar.
-     * It is called (at least) whenever the selection changes. If overridden, 
+     * It is called (at least) whenever the selection changes. If overridden,
      * subclasses must call parent class's function.
      */
     //void    (* update_menus)         	(FMDirectoryView *view);
@@ -289,7 +289,7 @@ struct FMDirectoryViewClass {
 
     /* supports_properties is a function pointer that subclasses may
      * override to control whether the "Show Properties" menu item
-     * should be enabled for selected items. The default implementation 
+     * should be enabled for selected items. The default implementation
      * returns TRUE.
      */
     //gboolean (* supports_properties)	(FMDirectoryView *view);
@@ -360,7 +360,7 @@ struct FMDirectoryViewClass {
       GdkPoint
      *position);*/
 
-    /* Preference change callbacks, overriden by icon and list views. 
+    /* Preference change callbacks, overriden by icon and list views.
      * Icon and list views respond by synchronizing to the new preference
      * values and forcing an update if appropriate.
      */

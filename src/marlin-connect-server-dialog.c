@@ -20,15 +20,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "marlin-connect-server-dialog.h"
-
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "marlin-connect-server-operation.h"
-//#include "marlin-application.h"
 #include "marlin-vala.h"
 
 /* TODO:
@@ -127,7 +123,7 @@ get_method_description (struct MethodInfo *meth)
         } else {
             return _("FTP (with login)");
         }
-    } else if (strcmp (meth->scheme, "afp") == 0) { 
+    } else if (strcmp (meth->scheme, "afp") == 0) {
         return _("AFP (Apple Filing Protocol)");
     } else if (strcmp (meth->scheme, "smb") == 0) {
         return _("Windows share");
@@ -1209,7 +1205,7 @@ marlin_connect_server_dialog_new (GtkWindow *window)
     gtk_window_set_transient_for (GTK_WINDOW (dialog), window);
 
     if (window) {
-        gtk_window_set_screen (GTK_WINDOW (dialog), 
+        gtk_window_set_screen (GTK_WINDOW (dialog),
                                gtk_window_get_screen (window));
     }
 

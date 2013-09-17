@@ -47,7 +47,7 @@ typedef struct MarlinBookmarkListClass MarlinBookmarkListClass;
 struct MarlinBookmarkList {
     GObject object;
 
-    GList *list; 
+    GList *list;
     GFileMonitor *monitor;
     GQueue *pending_ops;
 };

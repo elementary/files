@@ -48,7 +48,7 @@ static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
 {
     g_message ("%s", G_STRFUNC);
     g_assert_cmpint(dir->file->exists, ==, TRUE);
-   
+
     GOFDirectoryAsync *dir2 = gof_directory_async_from_file(dir->file);
     g_assert_cmpint(dir->files_count, ==, dir2->files_count);
     g_message ("files_count %u", dir->files_count);
@@ -58,7 +58,7 @@ static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
     /* some files testing inside a cached directory */
     GOFFile *f1 = gof_file_get_by_uri ("file:///tmp/marlin-test/a");
     g_object_unref (f1);
- 
+
     GOFFile *f2 = gof_file_get_by_uri ("file:///tmp/marlin-test/a");
     g_object_unref (f2);
 
@@ -67,22 +67,22 @@ static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
     system("rm -rf /tmp/marlin-test");
     /* free previously allocated dir */
     g_object_unref (dir);
-    
+
     g_main_loop_quit(loop);
-    
+
 }
 
 static void first_load_done(GOFDirectoryAsync* dir, gpointer data)
 {
     g_message ("%s", G_STRFUNC);
-    g_assert_cmpint(dir->file->exists, ==, FALSE); 
+    g_assert_cmpint(dir->file->exists, ==, FALSE);
 
     system("mkdir /tmp/marlin-test");
     system("touch /tmp/marlin-test/a");
     system("touch /tmp/marlin-test/b");
     system("touch /tmp/marlin-test/c");
     system("touch /tmp/marlin-test/d");
-   
+
     /* we use cached directories so better block this callback */
     g_signal_handlers_block_by_func (dir, first_load_done, NULL);
 
@@ -90,7 +90,7 @@ static void first_load_done(GOFDirectoryAsync* dir, gpointer data)
     dir2 = gof_directory_async_from_file(dir->file);
     g_signal_connect(dir2, "done_loading", (GCallback) second_load_done, NULL);
     gof_directory_async_load(dir2);
-    
+
     /* free previously allocated dir */
     g_object_unref (dir);
 
@@ -102,22 +102,22 @@ void marlincore_tests_file(void)
 {
     GOFDirectoryAsync* dir;
     //GOFDirectoryAsync *dir2;
-    g_test_log_set_fatal_handler(fatal_handler, NULL); 
+    g_test_log_set_fatal_handler(fatal_handler, NULL);
     system("rm -rf /tmp/marlin-test");
 
     dir = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));
     g_signal_connect(dir, "done_loading", (GCallback) first_load_done, NULL);
     gof_directory_async_load(dir);
-    
+
     /*dir2 = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));
     g_signal_connect(dir2, "done_loading", (GCallback) second_load_done, NULL);
     gof_directory_async_load(dir2);*/
 
     //GOFFile *f1 = gof_file_get (g_file_new_for_path("/tmp/marlin-test/a"));
-    
+
     //remove cached ref
     g_object_unref (dir);
-    
+
     loop = g_main_loop_new(NULL, FALSE);
     g_main_loop_run(loop);
 }

@@ -228,7 +228,7 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  * gof_file_get_thumb_state:
  * @file : a #GOFFile.
  *
- * Returns the current #GOFFileThumbState for @file. 
+ * Returns the current #GOFFileThumbState for @file.
  *
  * Return value: the #GOFFileThumbState for @file.
  **/

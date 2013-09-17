@@ -7,7 +7,7 @@ GTESTER_REPORT = /usr/bin/gtester-report	# for the GLIB package
 check_PROGRAMS = coremarlin_tests
 coremarlin_tests_SOURCES = tests.c \
     marlincore-tests-gof.c \
-    marlincore-tests-file.c 
+    marlincore-tests-file.c
 
 coremarlin_tests_LDADD = \
     $(top_srcdir)/libcore/libmarlincore.la \

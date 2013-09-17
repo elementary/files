@@ -102,10 +102,10 @@ static void
 fm_abstract_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMAbstractIconView *view)
 {
     //TODO make alternate
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT); 
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 }
 
-static void 
+static void
 fm_abstract_icon_view_freeze_updates (FMDirectoryView *view)
 {
     /* Make marlin-text-renderer cells editable. */
@@ -114,7 +114,7 @@ fm_abstract_icon_view_freeze_updates (FMDirectoryView *view)
     fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
-static void 
+static void
 fm_abstract_icon_view_unfreeze_updates (FMDirectoryView *view)
 {
     /*We're done editing - make the filename-cells readonly again.*/
@@ -177,7 +177,7 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
 
     /*g_signal_connect (label, "focus-out-event",
       G_CALLBACK (editable_focus_out_cb), icon_view);*/
-    /*g_signal_connect (entry, "populate-popup", 
+    /*g_signal_connect (entry, "populate-popup",
       G_CALLBACK (editable_populate_popup), text_renderer);*/
 
     //TODO
@@ -211,7 +211,7 @@ cell_renderer_edited (GtkCellRenderer   *cell,
     //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
 
-    /* Don't allow a rename with an empty string. Revert to original 
+    /* Don't allow a rename with an empty string. Revert to original
      * without notifying the user.
      */
     if (new_text[0] == '\0') {
@@ -249,7 +249,7 @@ fm_abstract_icon_view_sort_changed (FMAbstractIconView *view)
     GtkTreePath *path = NULL;
     /* store first selected item to reveal it after model sort */
     GList *selected_files = exo_icon_view_get_selected_items (view->icons);
-    if (selected_files != NULL) 
+    if (selected_files != NULL)
         path = selected_files->data;
 
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (view->details->sort_reversed) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
@@ -280,7 +280,7 @@ action_reversed_order_callback (GtkAction *action, FMAbstractIconView *view)
 }
 
 static const GtkActionEntry icon_view_entries[] = {
-    /* name, stock id, label */  { "Arrange Items", NULL, N_("Arran_ge Items") }, 
+    /* name, stock id, label */  { "Arrange Items", NULL, N_("Arran_ge Items") },
 };
 
 static const GtkToggleActionEntry icon_view_toggle_entries[] = {
@@ -337,7 +337,7 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
     gtk_action_group_add_actions (action_group,
                                   icon_view_entries, G_N_ELEMENTS (icon_view_entries),
                                   icon_view);
-    gtk_action_group_add_toggle_actions (action_group, 
+    gtk_action_group_add_toggle_actions (action_group,
                                          icon_view_toggle_entries, G_N_ELEMENTS (icon_view_toggle_entries),
                                          icon_view);
     gtk_action_group_add_radio_actions (action_group,
@@ -648,7 +648,7 @@ fm_abstract_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
                               start_editing);
 
     /* the icon view doesn't select by default*/
-    if (select) 
+    if (select)
         exo_icon_view_select_path (icon_view->icons, path);
 }
 
@@ -709,7 +709,7 @@ fm_abstract_icon_view_finalize (GObject *object)
 
     g_free (view->details);
 
-    G_OBJECT_CLASS (fm_abstract_icon_view_parent_class)->finalize (object); 
+    G_OBJECT_CLASS (fm_abstract_icon_view_parent_class)->finalize (object);
 }
 
 static void
@@ -746,8 +746,8 @@ fm_abstract_icon_view_init (FMAbstractIconView *view)
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
 
     /* add the name renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), 
-                  "follow-state", TRUE, "wrap-mode", PANGO_WRAP_WORD_CHAR, 
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer),
+                  "follow-state", TRUE, "wrap-mode", PANGO_WRAP_WORD_CHAR,
                   "xalign", 0.5f, "yalign", 0.0f, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, TRUE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
@@ -764,9 +764,9 @@ fm_abstract_icon_view_init (FMAbstractIconView *view)
     /**/
     //g_object_set (G_OBJECT (view), "text-beside-icons", FALSE, NULL);
 
-    g_settings_bind (settings, "single-click", 
+    g_settings_bind (settings, "single-click",
                      view->icons, "single-click", 0);
-    g_settings_bind (settings, "single-click", 
+    g_settings_bind (settings, "single-click",
                      FM_DIRECTORY_VIEW (view)->icon_renderer, "selection-helpers", 0);
 
     g_signal_connect_object (view->icons, "button-press-event",
@@ -797,7 +797,7 @@ fm_abstract_icon_view_get_property (GObject      *object,
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
-    }   
+    }
 }
 #endif
 
@@ -864,7 +864,7 @@ fm_abstract_icon_view_class_init (FMAbstractIconViewClass *klass)
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,
-                                     g_param_spec_boolean ("text-beside-icons", 
+                                     g_param_spec_boolean ("text-beside-icons",
                                                            "text-beside-icons",
                                                            "text-beside-icons",
                                                            FALSE,

@@ -78,7 +78,7 @@ void marlincore_tests_goffile(void)
     file = gof_file_get_by_uri("file:///tmp/very/long/path/azerty");
     g_assert(file != NULL);
     //g_test_log_set_fatal_handler(NULL, NULL);
-    
+
     system("rm /tmp/.marlin_backup /tmp/marlin_sym -f && touch /tmp/.marlin_backup");
     /* The URI is valid, the target exists */
     file = gof_file_get_by_uri("file:///tmp/.marlin_backup");

@@ -51,7 +51,7 @@ struct FMListViewDetails {
 };
 
 /* We wait two seconds after row is collapsed to unload the subdirectory */
-#define COLLAPSE_TO_UNLOAD_DELAY 2 
+#define COLLAPSE_TO_UNLOAD_DELAY 2
 
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
@@ -78,7 +78,7 @@ static GList    *fm_list_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMListView *view);
 static GList    *fm_list_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path);
-static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
                                          gboolean start_editing, gboolean select);
 
 static gboolean
@@ -270,7 +270,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
     g_message ("%s\n", G_STRFUNC);
 	view->details->editable_widget = NULL;
 
-	/* Don't allow a rename with an empty string. Revert to original 
+	/* Don't allow a rename with an empty string. Revert to original
 	 * without notifying the user.
 	 */
 	if (new_text[0] == '\0') {
@@ -413,10 +413,10 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
                 /* we don't unselect all other items if Control is active */
                 if ((event->state & GDK_CONTROL_MASK) == 0)
                     gtk_tree_selection_unselect_all (selection);
-                if (!gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL)	&& gtk_tree_path_get_depth (path) == 1) 
+                if (!gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL)	&& gtk_tree_path_get_depth (path) == 1)
                     gtk_tree_selection_select_path (selection, path);
             }
-            
+
             gtk_tree_path_free (path);
         }
         /* queue the menu popup */
@@ -437,7 +437,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
 
             /* cleanup */
             gtk_tree_path_free (path);
-        } 
+        }
 
         return TRUE;
     }
@@ -755,7 +755,7 @@ fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static void
-fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
                          gboolean start_editing, gboolean select)
 {
     FMListView *list_view = FM_LIST_VIEW (view);
@@ -764,7 +764,7 @@ fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
     /* the treeview select the path by default */
     if (!select)
         g_signal_handlers_block_by_func (selection, list_selection_changed_callback, list_view);
-    gtk_tree_view_set_cursor_on_cell (list_view->tree, path, 
+    gtk_tree_view_set_cursor_on_cell (list_view->tree, path,
                                       list_view->details->file_name_column,
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       start_editing);
@@ -850,7 +850,7 @@ fm_list_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static gboolean
-fm_list_view_get_visible_range (FMDirectoryView *view, 
+fm_list_view_get_visible_range (FMDirectoryView *view,
                                 GtkTreePath     **start_path,
                                 GtkTreePath     **end_path)
 
@@ -864,7 +864,7 @@ static void
 fm_list_view_zoom_normal (FMDirectoryView *view)
 {
     MarlinZoomLevel     zoom;
-    
+
     zoom = g_settings_get_enum (marlin_list_view_settings, "default-zoom-level");
     g_settings_set_enum (marlin_list_view_settings, "zoom-level", zoom);
 }
@@ -882,7 +882,7 @@ fm_list_view_finalize (GObject *object)
         GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
         fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
     }
-    
+
     g_list_free (view->loaded_subdirectories);
 
     g_free (view->details->original_name);
@@ -892,7 +892,7 @@ fm_list_view_finalize (GObject *object)
         gof_file_list_free (view->details->selection);
 
     g_free (view->details);
-    G_OBJECT_CLASS (fm_list_view_parent_class)->finalize (object); 
+    G_OBJECT_CLASS (fm_list_view_parent_class)->finalize (object);
 }
 
 static void
@@ -904,9 +904,9 @@ fm_list_view_init (FMListView *view)
 
     create_and_set_up_tree_view (view);
 
-    g_settings_bind (settings, "single-click", 
+    g_settings_bind (settings, "single-click",
                      EXO_TREE_VIEW (view->tree), "single-click", 0);
-    g_settings_bind (marlin_list_view_settings, "zoom-level", 
+    g_settings_bind (marlin_list_view_settings, "zoom-level",
                      view, "zoom-level", 0);
 }
 
@@ -918,7 +918,7 @@ fm_list_view_zoom_level_changed (FMDirectoryView *view)
     gint xpad, ypad;
 
     gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
-    gtk_cell_renderer_set_fixed_size (view->icon_renderer, 
+    gtk_cell_renderer_set_fixed_size (view->icon_renderer,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
     gtk_tree_view_columns_autosize (FM_LIST_VIEW (view)->tree);
@@ -939,7 +939,7 @@ fm_list_view_get_property (GObject    *object,
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
-    }   
+    }
 }
 
 static void
@@ -956,7 +956,7 @@ fm_list_view_set_property (GObject      *object,
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
-    }   
+    }
 }
 #endif
 

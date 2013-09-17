@@ -5,7 +5,7 @@
 
 #ifdef ENABLE_NLS
 #define P_(String) g_dgettext(GETTEXT_PACKAGE "-properties",String)
-#else 
+#else
 #define P_(String) (String)
 #endif
 
