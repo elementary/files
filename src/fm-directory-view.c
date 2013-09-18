@@ -1883,7 +1883,7 @@ filter_this_app (GList *apps)
     GAppInfo *app;
     const char *executable;
 
-    for (l=apps; l != NULL; l=l->next) {
+    for (l = apps; l != NULL; l = l->next) {
         app = (GAppInfo *) l->data;
         executable = g_app_info_get_executable (app);
 
@@ -1900,7 +1900,7 @@ filter_this_app (GList *apps)
 static void
 update_menus_empty_selection (FMDirectoryView *view)
 {
-    GtkUIManager    *ui_manager;
+    GtkUIManager *ui_manager;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
@@ -1958,7 +1958,7 @@ update_menus_empty_selection (FMDirectoryView *view)
     /* We do not want Pantheon Files in app list */
     view->details->open_with_apps = filter_this_app (view->details->open_with_apps);
 
-    for (l = view->details->open_with_apps, index=0; l != NULL && index <10; l=l->next, index++) {
+    for (l = view->details->open_with_apps, index = 0; l != NULL && index < 10; l = l->next, index++) {
         add_application_to_open_with_menu (view,
                                            l->data,
                                            selection,
