@@ -286,8 +286,6 @@ namespace Marlin.View.Chrome
                 win.add_tab (File.new_for_uri (current_right_click_path));
             });
 
-            menu.append (new Gtk.SeparatorMenuItem ());
-
             // Then the "Open with" menuitem is added to the menu.
             var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
             menu.append (menu_open_with);
@@ -296,8 +294,10 @@ namespace Marlin.View.Chrome
             var root = GOF.File.get (File.new_for_uri (current_right_click_root));
             var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
 
+            bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info.get_executable () != APP_NAME) {
+                    at_least_one = true;
                     var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
                     menu_item.set_data ("appinfo", app_info);
                     Icon icon;
@@ -315,7 +315,8 @@ namespace Marlin.View.Chrome
                 }
             }
 
-            submenu_open_with.append (new Gtk.SeparatorMenuItem ());
+            if (at_least_one)
+                submenu_open_with.append (new Gtk.SeparatorMenuItem ());
 
             var open_with_other_item = new Gtk.MenuItem.with_label (_("Other Application .."));
             open_with_other_item.activate.connect (() => {
