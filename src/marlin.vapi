@@ -124,8 +124,4 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
     }
-    [CCode (cheader_filename = "marlin-progress-info-widget.h")]
-    public class Progress.InfoWidget : Gtk.Box {
-        public InfoWidget (Marlin.Progress.Info info);
-    }
 }

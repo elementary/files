@@ -48,6 +48,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
+        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
         View/DiskRenderer.vala
@@ -95,6 +96,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
+        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -156,8 +158,7 @@ add_executable (../pantheon-files
     fm-list-view.c
     fm-columns-view.c
     marlin-connect-server-dialog.c
-    marlin-progress-info-widget.c
-    ${VALA_C})
+    ${VALA_C} )
 
 target_link_libraries (../pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
 
