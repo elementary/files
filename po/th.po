@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-09 00:02-0500\n"
-"PO-Revision-Date: 2013-08-21 22:54+0000\n"
+"PO-Revision-Date: 2013-09-20 17:50+0000\n"
 "Last-Translator: Jirayu Yingthawornsuk <me@jirayu.in.th>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-09-10 05:21+0000\n"
-"X-Generator: Launchpad (build 16761)\n"
+"X-Launchpad-Export-Date: 2013-09-21 05:56+0000\n"
+"X-Generator: Launchpad (build 16765)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
 msgid "Home"
-msgstr "บ้าน"
+msgstr "Home"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
@@ -34,7 +34,7 @@ msgstr "ไม่มีโฟลเดอร์นี้"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
-msgstr "(ในฐานะผุ้ดูแลระบบ)"
+msgstr "ในฐานะผู้ดูแลระบบ"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
@@ -46,59 +46,59 @@ msgstr "คุณไม่มีสิทธิ์ในการเข้าถ
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files ไม่ได้เป็นตัวจัดการไฟล์หลักของคุณ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3426
 msgid "Set as default"
-msgstr ""
+msgstr "ตั้งเป็นค่าเริ่มต้น"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:137
 msgid "Ignore"
-msgstr ""
+msgstr "ไม่สนใจ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:402
 msgid "Undo"
-msgstr ""
+msgstr "เลิกทำ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:403
 #: /home/codygarver/f/po/../src/View/Window.vala:645
 msgid "Undo the last action"
-msgstr ""
+msgstr "ยกเลิกการกระทำล่าสุด"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:412
 msgid "Redo"
-msgstr ""
+msgstr "ทำใหม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:413
 #: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "Redo the last action"
-msgstr ""
+msgstr "ทำซ้ำคำสั่งล่าสุด"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "_File"
-msgstr ""
+msgstr "แ_ฟ้ม"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:624
 msgid "_Edit"
-msgstr ""
+msgstr "แ_ก้ไข"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "_View"
-msgstr ""
+msgstr "_มุมมอง"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "_Go"
-msgstr ""
+msgstr "ไ_ป"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:627
 msgid "_Help"
-msgstr ""
+msgstr "_ช่วยเหลือ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:629
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "_หน้าต่างใหม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:630
 msgid "Open another Files window for the displayed location"
@@ -107,80 +107,80 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/Window.vala:633
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "แ_ท็บใหม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "เปิดแท็บใหม่สำหรับตำแหน่งที่แสดง"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:638
 msgid "_Close"
-msgstr ""
+msgstr "ปิ_ด"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:639
 msgid "Close this folder"
-msgstr ""
+msgstr "ปิดโฟลเดอร์นี้"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "_Undo"
-msgstr ""
+msgstr "เ_ลิกทำ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "_Redo"
-msgstr ""
+msgstr "_ทำซ้ำ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:650
 msgid "Open _Parent"
-msgstr ""
+msgstr "เปิดโฟลเดอร์_แม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:651
 msgid "Open the parent folder"
-msgstr ""
+msgstr "เปิดโฟลเดอร์แม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "_Back"
-msgstr ""
+msgstr "_ย้อนกลับ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:654
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "ไปตำแหน่งที่เปิดก่อนหน้านี้"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "_Forward"
-msgstr ""
+msgstr "เดินห_น้า"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:658
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "ไปตำแหน่งที่เปิดถัดจากนี้"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "_Reload"
-msgstr ""
+msgstr "เ_รียกใหม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:661
 msgid "Reload the current location"
-msgstr ""
+msgstr "อ่านตำแหน่งปัจจุบันใหม่"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "_Home Folder"
-msgstr ""
+msgstr "โฟลเดอร์_บ้าน"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:665
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
-msgstr ""
+msgstr "เปิดโฟลเดอร์ส่วนตัวของคุณ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:668
 msgid "_Trash"
-msgstr ""
+msgstr "_ถังขยะ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:669
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "เปิดโฟลเดอร์ถังขยะส่วนตัวของคุณ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "_Network"
-msgstr ""
+msgstr "เครือ_ข่าย"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Browse bookmarked and local network locations"
