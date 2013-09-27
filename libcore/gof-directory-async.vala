@@ -176,6 +176,7 @@ public class GOF.Directory.Async : Object {
                 if (gof.info != null && (!gof.is_hidden || show_hidden)) {
                     if (track_longest_name)
                         update_longest_file_name (gof);
+
                     file_loaded (gof);
                 }
             }
@@ -196,6 +197,7 @@ public class GOF.Directory.Async : Object {
                 if (gof != null && gof.info != null && gof.is_hidden) {
                     if (track_longest_name)
                         update_longest_file_name (gof);
+
                     file_loaded (gof);
                 }
             }
@@ -263,6 +265,7 @@ public class GOF.Directory.Async : Object {
                     if (!gof.is_hidden || show_hidden) {
                         if (track_longest_name)
                             update_longest_file_name (gof);
+
                         file_loaded (gof);
                     }
 

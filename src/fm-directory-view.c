@@ -321,6 +321,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         autosize_slot (view->details->slot);
     else
         view->details->slot->ready_to_autosize = TRUE;
+
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
@@ -507,9 +508,9 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->open_with_action_group = NULL;
     view->details->open_with_merge_id = 0;
     view->empty_message = g_strconcat ("<span size='x-large'>",
-                                        _("This folder is empty."),
-                                        "</span>",
-                                        NULL);
+                                       _("This folder is empty."),
+                                       "</span>",
+                                       NULL);
 }
 
 static GObject*
