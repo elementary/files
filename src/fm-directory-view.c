@@ -316,6 +316,11 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     g_object_get (view, "zoom-level", &zoom, NULL);
     int size = marlin_zoom_level_to_icon_size (zoom);
     gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
+    /* If in Miller view, autosize the column */
+    if (view->details->slot->ready_to_autosize)
+        autosize_slot (view->details->slot);
+    else
+        view->details->slot->ready_to_autosize = TRUE;
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
@@ -501,6 +506,10 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->dir_merge_id = 0;
     view->details->open_with_action_group = NULL;
     view->details->open_with_merge_id = 0;
+    view->empty_message = g_strconcat ("<span size='x-large'>",
+                                        _("This folder is empty."),
+                                        "</span>",
+                                        NULL);
 }
 
 static GObject*

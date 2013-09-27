@@ -79,9 +79,7 @@ static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsVie
     if (gof_directory_async_is_empty (dir))
     {
         PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), NULL);
-        gchar *str = g_strconcat("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);
-        pango_layout_set_markup (layout, str, -1);
-
+        pango_layout_set_markup (layout, FM_DIRECTORY_VIEW (view)->empty_message, -1);
         PangoRectangle extents;
         /* Get hayout height and width */
         pango_layout_get_extents(layout, NULL, &extents);

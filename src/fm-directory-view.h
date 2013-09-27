@@ -65,6 +65,7 @@ struct FMDirectoryView {
     GtkCellRenderer         *name_renderer;
     MarlinZoomLevel         zoom_level;
     gboolean                updates_frozen;
+    const gchar* empty_message;
 
     FMDirectoryViewDetails  *details;
 };
