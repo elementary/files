@@ -194,7 +194,7 @@ cell_renderer_editing_canceled (GtkCellRenderer *cell,
 {
     //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
-    //fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+    fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 //#endif
 
