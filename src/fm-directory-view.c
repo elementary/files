@@ -1721,35 +1721,6 @@ update_menus_pastes (FMDirectoryView *view, gboolean empty_selection)
     }
 }
 
-static void
-update_menus_empty_selection (FMDirectoryView *view)
-{
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-
-    update_menus_pastes (view, TRUE);
-    dir_action_set_sensitive (view, "Cut", FALSE);
-    dir_action_set_sensitive (view, "Copy", FALSE);
-    dir_action_set_sensitive (view, "Rename", FALSE);
-
-    dir_action_set_sensitive (view, "Trash", FALSE);
-    dir_action_set_sensitive (view, "Delete", FALSE);
-    dir_action_set_visible (view, "Restore From Trash", FALSE);
-
-    dir_action_set_visible (view, "Open", FALSE);
-    dir_action_set_visible (view, "OpenAlternate", FALSE);
-    dir_action_set_visible (view, "OpenInNewTab", FALSE);
-
-    GOFWindowSlot *slot = view->details->slot;
-
-    if (gof_file_is_trashed (slot->directory->file)) {
-        dir_action_set_visible (view, "New Folder", FALSE);
-        dir_action_set_visible (view, "New Empty File", FALSE);
-    } else {
-        dir_action_set_visible (view, "New Folder", TRUE);
-        dir_action_set_visible (view, "New Empty File", TRUE);
-    }
-}
-
 typedef struct {
     GAppInfo *application;
     GList *files;
@@ -1905,6 +1876,98 @@ filter_default_app (GList *apps, GAppInfo *default_app)
     return apps;
 }
 
+static GList*
+filter_this_app (GList *apps)
+{
+    GList *l;
+    GAppInfo *app;
+    const char *executable;
+
+    for (l = apps; l != NULL; l = l->next) {
+        app = (GAppInfo *) l->data;
+        executable = g_app_info_get_executable (app);
+
+        if (executable != NULL && strcmp (executable, APP_NAME) == 0) {
+            g_object_unref (app);
+            apps = g_list_delete_link (apps, l);
+        }
+    }
+
+    return apps;
+}
+
+static void
+update_menus_empty_selection (FMDirectoryView *view)
+{
+    GtkUIManager *ui_manager;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    ui_manager = fm_directory_view_get_ui_manager (view);
+    eel_ui_prepare_merge_ui (ui_manager,
+                             "OpenWithGroup",
+                             &view->details->open_with_merge_id,
+                             &view->details->open_with_action_group);
+
+    update_menus_pastes (view, TRUE);
+    dir_action_set_sensitive (view, "Cut", FALSE);
+    dir_action_set_sensitive (view, "Copy", FALSE);
+    dir_action_set_sensitive (view, "Rename", FALSE);
+
+    dir_action_set_sensitive (view, "Trash", FALSE);
+    dir_action_set_sensitive (view, "Delete", FALSE);
+    dir_action_set_visible (view, "Restore From Trash", FALSE);
+
+    dir_action_set_visible (view, "Open", FALSE);
+    dir_action_set_visible (view, "OpenAlternate", FALSE);
+    dir_action_set_visible (view, "OpenInNewTab", FALSE);
+
+    GOFWindowSlot *slot = view->details->slot;
+    GOFFile *file = slot->directory->file;
+
+    g_return_if_fail (file != NULL);
+
+    if (gof_file_is_trashed (file)) {
+        dir_action_set_visible (view, "New Folder", FALSE);
+        dir_action_set_visible (view, "New Empty File", FALSE);
+        return;
+    }
+
+    dir_action_set_visible (view, "New Folder", TRUE);
+    dir_action_set_visible (view, "New Empty File", TRUE);
+    dir_action_set_visible (view, "OpenAlternate", TRUE);
+
+    /* Open */
+    GList *l;
+    int index;
+    GList *selection;
+    const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
+    const char *popup_path = "/background/Open Placeholder/Open With/Applications Placeholder";
+
+    selection = g_list_append (selection, file);
+
+    /* Open With ... */
+    if (view->details->open_with_apps != NULL) {
+        g_list_free_full (view->details->open_with_apps, g_object_unref);
+        view->details->open_with_apps = NULL;
+    }
+
+    view->details->open_with_apps = marlin_mime_actions_get_applications_for_folder (file);
+
+    /* We do not want Pantheon Files in app list */
+    view->details->open_with_apps = filter_this_app (view->details->open_with_apps);
+
+    for (l = view->details->open_with_apps, index = 0; l != NULL && index < 10; l = l->next, index++) {
+        add_application_to_open_with_menu (view,
+                                           l->data,
+                                           selection,
+                                           index,
+                                           menu_path, popup_path);
+    }
+
+    dir_action_set_visible (view, "OtherApplication", TRUE);
+}
+
 static void
 update_menus_selection (FMDirectoryView *view)
 {
@@ -2030,9 +2093,16 @@ update_menus_selection (FMDirectoryView *view)
     }
     if (view->details->default_app != NULL && !gof_file_is_folder (file))
         view->details->open_with_apps = marlin_mime_actions_get_applications_for_files (gof_file_list_ref (selection));
-    /* we need to remove the default app from open with menu */
-    if (view->details->default_app != NULL && !gof_file_is_executable (file))
+
+    if (view->details->default_app != NULL && selection_count == 1 && gof_file_is_folder (file))
+        view->details->open_with_apps = marlin_mime_actions_get_applications_for_folder (file);
+
+    /* we need to remove the default app from open with menu unless folder selected*/
+    if (view->details->default_app != NULL && !gof_file_is_executable (file) && !gof_file_is_folder (file))
         view->details->open_with_apps = filter_default_app (view->details->open_with_apps, view->details->default_app);
+
+    view->details->open_with_apps = filter_this_app (view->details->open_with_apps);
+
     for (l = view->details->open_with_apps, index=0; l != NULL && index <10; l=l->next, index++) {
         add_application_to_open_with_menu (view,
                                            l->data,
@@ -2041,7 +2111,7 @@ update_menus_selection (FMDirectoryView *view)
                                            menu_path, popup_path);
     }
 
-    if (selection_count == 1 && !gof_file_is_folder (file))
+    if (selection_count == 1)
         dir_action_set_visible (view, "OtherApplication", TRUE);
 }
 
@@ -3416,6 +3486,9 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
     g_assert (FM_IS_DIRECTORY_VIEW (view));
 
     selection = fm_directory_view_get_selection (view);
+
+    if (selection == NULL)
+        selection = g_list_append (selection, view->details->slot->directory->file);
 
     g_assert (selection != NULL);
 
