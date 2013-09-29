@@ -2248,7 +2248,7 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
         //(*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, view->details->selection_before_delete);
 
         /* place the cursor on the selected path */
-        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, view->details->selection_before_delete, FALSE, FALSE);
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, view->details->selection_before_delete, FALSE, TRUE);
 
         /* Free the tree path */
         gtk_tree_path_free (view->details->selection_before_delete);
