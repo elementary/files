@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 00:02-0500\n"
+"POT-Creation-Date: 2013-10-02 11:59-0500\n"
 "PO-Revision-Date: 2013-06-14 14:02+0000\n"
 "Last-Translator: Stuartlittle1970@gmail.com <Stuartlittle1970@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-09-10 05:21+0000\n"
-"X-Generator: Launchpad (build 16761)\n"
+"X-Launchpad-Export-Date: 2013-10-03 05:53+0000\n"
+"X-Generator: Launchpad (build 16791)\n"
 "Language: uk\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -46,12 +46,20 @@ msgstr ""
 msgid "You don't have permission to view this folder."
 msgstr ""
 
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr ""
+
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
 msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3426
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
 msgid "Set as default"
 msgstr "Установити за умовчанням"
 
@@ -59,224 +67,224 @@ msgstr "Установити за умовчанням"
 msgid "Ignore"
 msgstr "Ігнорувати"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:402
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Undo"
 msgstr "Скасувати"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:403
-#: /home/codygarver/f/po/../src/View/Window.vala:645
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Undo the last action"
 msgstr "Скасувати останню дію"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:412
+#: /home/codygarver/f/po/../src/View/Window.vala:418
 msgid "Redo"
 msgstr "Поновити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:413
-#: /home/codygarver/f/po/../src/View/Window.vala:648
+#: /home/codygarver/f/po/../src/View/Window.vala:419
+#: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "Redo the last action"
 msgstr "Поновити останню дію"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:623
+#: /home/codygarver/f/po/../src/View/Window.vala:607
 msgid "_File"
 msgstr "_Файл"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:608
 msgid "_Edit"
 msgstr "_Редагувати"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "_View"
 msgstr "_Вигляд"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
+#: /home/codygarver/f/po/../src/View/Window.vala:610
 msgid "_Go"
 msgstr "_Перейти"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:627
+#: /home/codygarver/f/po/../src/View/Window.vala:611
 msgid "_Help"
 msgstr "_Допомога"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/View/Window.vala:613
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "Нове _вікно"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Open another Files window for the displayed location"
 msgstr "Відкрити нове вікно Files для обраного каталога"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:617
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Нова _вкладка"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:618
 msgid "Open another tab for the displayed location"
 msgstr "Відкрити іншу вкладку для відображеної директорії"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:638
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Close"
 msgstr "_Закрити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "Close this folder"
 msgstr "Закрити цю папку"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Undo"
 msgstr "_Відмінити дію"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:631
 msgid "_Redo"
 msgstr "_Повторити дію"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open _Parent"
 msgstr "Відкрити _верхню"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Open the parent folder"
 msgstr "Відкрити папку вище"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:653
+#: /home/codygarver/f/po/../src/View/Window.vala:637
 msgid "_Back"
 msgstr "_Назад"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:638
 msgid "Go to the previous visited location"
 msgstr "Перейти до попереднього відвіданого місця"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:657
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "_Forward"
 msgstr "_Вперед"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:642
 msgid "Go to the next visited location"
 msgstr "Перейти до наступного відвіданого місця"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:660
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "_Reload"
 msgstr "_Перезавантажити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:661
+#: /home/codygarver/f/po/../src/View/Window.vala:645
 msgid "Reload the current location"
 msgstr "Перезавантажити поточний каталог"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:664
+#: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "_Home Folder"
 msgstr "_Домашня тека"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:665
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
 msgstr "Відкрити Ваш особистий каталог"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:668
+#: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "_Trash"
 msgstr "_Смітник"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:669
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "Open your personal trash folder"
 msgstr "Відкрити вашу теку смітника"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:672
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Network"
 msgstr "_Мережа"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:673
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Browse bookmarked and local network locations"
 msgstr "Переглянути збережені та локальні мережеві адреси"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:676
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "Zoom _In"
 msgstr "Збільшити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:677
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 msgid "Increase the view size"
 msgstr "Збільшити розмір перегляду"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:688
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _Out"
 msgstr "Зменшити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:689
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Decrease the view size"
 msgstr "Зменшити розмір перегляду"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:696
+#: /home/codygarver/f/po/../src/View/Window.vala:680
 msgid "Normal Si_ze"
 msgstr "Звичайний _розмір"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:697
+#: /home/codygarver/f/po/../src/View/Window.vala:681
 msgid "Use the normal view size"
 msgstr "Звичайний розмір перегляду"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:700
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Next Tab"
 msgstr "Наступна вкладка"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:704
+#: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Previous Tab"
 msgstr "Попередня вкладка"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:708
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Connect to _Server..."
 msgstr "З'єднатись з _сервером…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:709
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Connect to a remote computer or shared disk"
 msgstr "З'єднатись до віддаленого комп'ютера або спільного диску"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:712
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "_About"
 msgstr "Про програму"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:713
+#: /home/codygarver/f/po/../src/View/Window.vala:697
 msgid "Display credits"
 msgstr "Показати кредити"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:716
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Report a Problem..."
 msgstr "Повідомити про проблему..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:717
+#: /home/codygarver/f/po/../src/View/Window.vala:701
 msgid "File a bug on Launchpad"
 msgstr "Надіслати повідомлення про помилку на Launchpad"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Get Help Online..."
 msgstr "Отримати онлайн довідку..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Translate This Application..."
 msgstr "Перекласти цю програму..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:717
 msgid "Show _Hidden Files"
 msgstr "Показати при_ховані файли"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:734
+#: /home/codygarver/f/po/../src/View/Window.vala:718
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Перемикнути показ прихованих файлів у поточному вікні"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:738
+#: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "_Places"
 msgstr "_Місця"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:723
 msgid "Change the visibility of this window's side pane"
 msgstr "Змінити видимість бічної панелі цього вікна"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:747
+#: /home/codygarver/f/po/../src/View/Window.vala:731
 msgid "Icon"
 msgstr "Піктограма"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:750
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "List"
 msgstr "Список"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:753
+#: /home/codygarver/f/po/../src/View/Window.vala:737
 msgid "Columns"
 msgstr "Стовпчики"
 
@@ -317,6 +325,14 @@ msgstr "Кошик"
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
 msgstr "Відкрити у новій вкладці"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr ""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -501,39 +517,39 @@ msgstr "Режим перегляду"
 msgid "The layout mode"
 msgstr "Режим перегляду"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:123
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:126
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "Публічний FTP"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:128
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "FTP (з авторизацією)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "Ресурс Windows"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:137
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Захищений WebDAV (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:184
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "З'єднання…"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:208
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -541,87 +557,87 @@ msgstr ""
 "Неможливо завантажити список методів підтримуваних сервером.\n"
 "Будь ласка, перевірте встановлення gvfs."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:286
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Каталог «%s» неможливо відкрити на «%s»."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:296
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Неможливо знайти сервер на «%s»"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:331
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "Спробувати знову"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:396
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "Будь ласка, перевірте особисті дані користувача."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:426
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Продовжити"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:764
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1154
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "З'_єднатись"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:889
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "З'єднання з сервером"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:907
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "Подробиці про сервер"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:931
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_Сервер:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:951
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "П_орт:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:969
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Тип:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1038
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "_Ресурс:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1053
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Каталог:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1071
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "Відомості про користувача"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1094
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "_Доменна назва:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1109
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_Ім'я користувача:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1124
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "_Пароль:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_Запам'ятати цей пароль"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1243
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Операцію скасовано"
 
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3540
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
 msgid "Select All"
 msgstr "Вибрати все"
 
@@ -824,19 +840,19 @@ msgid "Unable to stop %s"
 msgstr "Не вдається зупинити %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1984
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3506
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Open"
 msgstr "_Відкрити"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2004
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3518
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
 msgid "Open in New _Tab"
 msgstr "Відкрити у новій в_кладці"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2013
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
@@ -879,7 +895,7 @@ msgstr "Джерело XDS надав некоректне ім'я файлу"
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Не вдалося створити посилання на URL \"%s\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1826
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
@@ -887,42 +903,42 @@ msgstr[0] "Використати \"%s\" для відкривання вибр�
 msgstr[1] "Використати \"%s\" для відкривання вибраних елементів"
 msgstr[2] "Використати \"%s\" для відкривання вибраних елементів"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1978
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
 #, c-format
 msgid "_Open With %s"
 msgstr "_Відкрити у %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2000
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Відкрити в %'d Новій _Вкладці"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2009
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Відкрити в %'d Новому _Вікні"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3478
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Підготувати виділені файли до переносу за допомогою команди \"Вставити\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3482
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Підготувати виділені файли до копіювання за допомогою команди \"Вставити\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3486
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
 "\"Копіювати\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3489
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
 msgid "Paste Into Folder"
 msgstr "Вставити в папку"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -930,95 +946,95 @@ msgstr ""
 "Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
 "\"Копіювати\" у вибрану папку"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
 msgid "_Rename..."
 msgstr "_Перейменувати..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
 msgid "Rename selected item"
 msgstr "Перейменувати вибраний елемент"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3497
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
 msgid "Create New _Folder"
 msgstr "Створити Нову _Папку"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
 msgid "Create a new empty folder inside this folder"
 msgstr "Створити нову порожню папку всередині цієї папки"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3500
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
 msgid "Create New _File"
 msgstr "Створити Новий _Файл"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3502
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "_Empty File"
 msgstr "_Порожній файл"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
 msgid "Create a new empty file inside this folder"
 msgstr "Створити новий порожній файл в даному каталозі"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Open the selected item"
 msgstr "Відкрити вибраний елемент"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3514
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
 msgid "Open in new Window"
 msgstr "Відкрити у новому вікні"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "Open each selected item in a new window"
 msgstr "Відкрити кожний вибраний елемент у новому вікні"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
 msgid "Open each selected item in a new tab"
 msgstr "Відкрити кожний вибраний елемент у новій вкладці"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3521
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
 msgid "Open Wit_h"
 msgstr "Відкрити у_"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
 msgid "Choose a program with which to open the selected item"
 msgstr "Виберіть програму, якою слід відкривати виділений елемент"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3524
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
 msgid "Other _Application..."
 msgstr "Інша _Програма..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
 msgid "Choose another application with which to open the selected item"
 msgstr "Віберіть іншу програму, якою слід відкривати виділений елемент"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3528
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
 msgid "Mo_ve to Trash"
 msgstr "Пере_містити у смітник"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
 msgid "Move each selected item to the Trash"
 msgstr "Перемістити всі вибрані елементи у смітник"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3532
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "_Delete Permanently"
 msgstr "_Видалити Назавжди"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Видалити всі вибрані елементи без переносу в смітник"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3536
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
 msgid "_Restore"
 msgstr "_Відновити"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3544
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
 msgid "_Properties"
 msgstr "_Властивості"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "View or modify the properties of each selected item"
 msgstr "Переглянути чи змінити властивості кожного вибраного елементу"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3651
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
 msgid "Set Color:"
 msgstr "Вибрати колір"
 
@@ -1047,27 +1063,27 @@ msgstr "Відміна"
 msgid "Failed to execute file \"%s\""
 msgstr "Не вдається виконати файл \"%s\""
 
-#: /home/codygarver/f/po/../src/Application.vala:110
+#: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "Показати версію програми."
 
-#: /home/codygarver/f/po/../src/Application.vala:112
+#: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
 msgstr "Відкрити адресу(и) в новій вкладці"
 
-#: /home/codygarver/f/po/../src/Application.vala:114
+#: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
 msgstr "Вийти із Files."
 
-#: /home/codygarver/f/po/../src/Application.vala:116
+#: /home/codygarver/f/po/../src/Application.vala:135
 msgid "Enable debug logging"
 msgstr "Включити журнал налагодження"
 
-#: /home/codygarver/f/po/../src/Application.vala:119
+#: /home/codygarver/f/po/../src/Application.vala:138
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: /home/codygarver/f/po/../src/Application.vala:122
+#: /home/codygarver/f/po/../src/Application.vala:141
 msgid ""
 "\n"
 "\n"
@@ -1077,7 +1093,7 @@ msgstr ""
 "\n"
 "Перегляд файлової системи менеджером файлів"
 
-#: /home/codygarver/f/po/../src/Application.vala:149
+#: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
