@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-09-02 10:34+0000\n"
+"PO-Revision-Date: 2013-10-03 08:16+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:52+0000\n"
+"X-Launchpad-Export-Date: 2013-10-04 05:42+0000\n"
 "X-Generator: Launchpad (build 16791)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -46,11 +46,11 @@ msgstr "Anda tidak mempunyai keizinan untuk melihat folder ini."
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Merupakan pengurus fail yang ringkas dan hebat"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Penterjemah Launchpad"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -326,11 +326,11 @@ msgstr "Buka dalam Tab Baru"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Buka dengan"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Aplikasi Lain .."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
