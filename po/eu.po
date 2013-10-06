@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-09-09 00:02-0500\n"
+"POT-Creation-Date: 2013-10-02 11:59-0500\n"
 "PO-Revision-Date: 2013-07-19 14:47+0000\n"
 "Last-Translator: Ibai Oihanguren Sala <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-09-10 05:19+0000\n"
-"X-Generator: Launchpad (build 16761)\n"
+"X-Launchpad-Export-Date: 2013-10-03 05:51+0000\n"
+"X-Generator: Launchpad (build 16791)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -44,12 +44,20 @@ msgstr "Ez zara honen jabea."
 msgid "You don't have permission to view this folder."
 msgstr "Ez duzu karpeta hau ikusteko baimenik."
 
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr ""
+
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
 msgstr "Files ez da zure fitxategi-kudeatzaile lehenetsia"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3426
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
 msgid "Set as default"
 msgstr "Ezarri lehenetsi bezala"
 
@@ -57,224 +65,224 @@ msgstr "Ezarri lehenetsi bezala"
 msgid "Ignore"
 msgstr "Ezikusi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:402
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Undo"
 msgstr "Desegin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:403
-#: /home/codygarver/f/po/../src/View/Window.vala:645
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Undo the last action"
 msgstr "Desegin azken ekintza"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:412
+#: /home/codygarver/f/po/../src/View/Window.vala:418
 msgid "Redo"
 msgstr "Berregin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:413
-#: /home/codygarver/f/po/../src/View/Window.vala:648
+#: /home/codygarver/f/po/../src/View/Window.vala:419
+#: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "Redo the last action"
 msgstr "Berregin azken ekintza"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:623
+#: /home/codygarver/f/po/../src/View/Window.vala:607
 msgid "_File"
 msgstr "_Fitxategia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:608
 msgid "_Edit"
 msgstr "_Editatu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "_View"
 msgstr "_Ikusi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
+#: /home/codygarver/f/po/../src/View/Window.vala:610
 msgid "_Go"
 msgstr "_Joan"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:627
+#: /home/codygarver/f/po/../src/View/Window.vala:611
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/View/Window.vala:613
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "_Leiho berria"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Open another Files window for the displayed location"
 msgstr "Ireki beste Files leiho bat bistaratutako kokalekuarentzat"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:617
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "_Fitxa berria"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:618
 msgid "Open another tab for the displayed location"
 msgstr "Ireki fitxa berri bat bistaratutako kokalekuarentzat"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:638
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Close"
 msgstr "_Itxi"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "Close this folder"
 msgstr "Itxi karpeta hau"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Undo"
 msgstr "_Desegin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:631
 msgid "_Redo"
 msgstr "_Berregin"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open _Parent"
 msgstr "Ireki g_urasoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Open the parent folder"
 msgstr "Ireki karpeta gurasoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:653
+#: /home/codygarver/f/po/../src/View/Window.vala:637
 msgid "_Back"
 msgstr "_Atzera"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:638
 msgid "Go to the previous visited location"
 msgstr "Joan bisitatutako aurreko kokalekura"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:657
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "_Forward"
 msgstr "_Aurrera"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:642
 msgid "Go to the next visited location"
 msgstr "Joan bisitatutako hurrengo kokalekura"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:660
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "_Reload"
 msgstr "_Birkargatu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:661
+#: /home/codygarver/f/po/../src/View/Window.vala:645
 msgid "Reload the current location"
 msgstr "Birkargatu uneko kokalekua"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:664
+#: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "_Home Folder"
 msgstr "_Karpeta nagusia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:665
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
 msgstr "Ireki zure karpeta pertsonala"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:668
+#: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "_Trash"
 msgstr "_Zakarrontzia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:669
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "Open your personal trash folder"
 msgstr "Ireki zure zakarrontzi pertsonala"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:672
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Network"
 msgstr "_Sarea"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:673
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Browse bookmarked and local network locations"
 msgstr "Arakatu laster-markatutako eta sare lokaleko kokalekuak"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:676
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "Zoom _In"
 msgstr "Zooma ha_ndiagotu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:677
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 msgid "Increase the view size"
 msgstr "Handiagotu ikuspegiaren tamaina"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:688
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _Out"
 msgstr "Zooma t_xikiagotu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:689
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Decrease the view size"
 msgstr "Txikiagotu ikuspegiaren tamaina"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:696
+#: /home/codygarver/f/po/../src/View/Window.vala:680
 msgid "Normal Si_ze"
 msgstr "Tamaina _normala"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:697
+#: /home/codygarver/f/po/../src/View/Window.vala:681
 msgid "Use the normal view size"
 msgstr "Erabili ikuspegi-tamaina normala"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:700
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Next Tab"
 msgstr "Hurrengo fitxa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:704
+#: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Previous Tab"
 msgstr "Aurreko fitxa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:708
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Connect to _Server..."
 msgstr "Konektatu _zerbitzarira..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:709
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Connect to a remote computer or shared disk"
 msgstr "Konektatu urruneko ordenagailu edo partekatutako diskora"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:712
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "_About"
 msgstr "Honi _buruz"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:713
+#: /home/codygarver/f/po/../src/View/Window.vala:697
 msgid "Display credits"
 msgstr "Bistaratu kredituak"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:716
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Report a Problem..."
 msgstr "Arazo baten berri eman..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:717
+#: /home/codygarver/f/po/../src/View/Window.vala:701
 msgid "File a bug on Launchpad"
 msgstr "Errore bat jakinarazi Launchpad-en"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Get Help Online..."
 msgstr "Lortu laguntza linean..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Translate This Application..."
 msgstr "Itzuli aplikazio hau..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:717
 msgid "Show _Hidden Files"
 msgstr "Erakutsi ezkutuko _fitxategiak"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:734
+#: /home/codygarver/f/po/../src/View/Window.vala:718
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Txandakatu fitxategi ezkutuak bistaratzea uneko leihoan"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:738
+#: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "_Places"
 msgstr "_Lekuak"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:723
 msgid "Change the visibility of this window's side pane"
 msgstr "Aldatu leiho honen albo-panelaren ikusgarritasuna"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:747
+#: /home/codygarver/f/po/../src/View/Window.vala:731
 msgid "Icon"
 msgstr "Ikonoa"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:750
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "List"
 msgstr "Zerrenda"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:753
+#: /home/codygarver/f/po/../src/View/Window.vala:737
 msgid "Columns"
 msgstr "Zutabeak"
 
@@ -315,6 +323,14 @@ msgstr "Zakarrontzia"
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
 msgstr "Ireki fitxa berrian"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr ""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -502,39 +518,39 @@ msgstr "Aurkezpen modua"
 msgid "The layout mode"
 msgstr "Aurkezpen modua"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:123
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:126
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "FTP publikoa"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:128
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "FTP (saioarekin)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "Windows-ek partekatua"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:137
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV segurua (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:184
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "Konektatzen..."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:208
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -542,87 +558,87 @@ msgstr ""
 "Ezin da zerbitzariak onartutako metodoen zerrenda kargatu.\n"
 "Egiaztatu gvfs instalazioa."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:286
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Ezin da \"%s\" karpeta \"%s\"(e)n ireki."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:296
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Ezin da \"%s\" ostalariko zerbitzaria aurkitu."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:331
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "Saiatu berriro"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:396
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "Egiaztatu zure erabiltzailearen xehetasunak."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:426
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Jarraitu"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:764
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1154
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "K_onektatu"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:889
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "Konektatu zerbitzarira"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:907
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "Zerbitzariaren xehetasunak"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:931
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_Zerbitzaria:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:951
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_Ataka:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:969
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Mota:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1038
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "_Partekatu:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1053
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Karpeta:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1071
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "Erabiltzailearen xehetasunak"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1094
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "_Domeinu-izena:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1109
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_Erabiltzaile-izena:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1124
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "Pasa_hitza:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_Gogoratu pasahitz hau"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1243
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Eragiketa bertan behera utzi da"
 
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3540
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
 msgid "Select All"
 msgstr "Hautatu dena"
 
@@ -825,19 +841,19 @@ msgid "Unable to stop %s"
 msgstr "Ezin da %s gelditu"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1984
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3506
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Open"
 msgstr "_Ireki"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2004
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3518
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
 msgid "Open in New _Tab"
 msgstr "Ireki _fitxa berrian"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2013
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
 msgid "Open in New _Window"
 msgstr "Ireki leiho _berrian"
 
@@ -880,49 +896,49 @@ msgstr "XDS arrastatze lekuak emandako fitxategi-izena baliogabea da"
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Huts  \"%s\" URLrako lotura bat sortzerakoan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1826
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Erabili \"%s\" hautatutako elementua irekitzeko"
 msgstr[1] "Erabili \"%s\" hautatutako elementuak irekitzeko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1978
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
 #, c-format
 msgid "_Open With %s"
 msgstr "_Ireki honekin: %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2000
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Ireki %'d _fitxa berritan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2009
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Ireki %'d _leiho berritan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3478
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez lekuz aldatzeko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3482
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez kopiatzeko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3486
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
 "hautaturiko fitxategiak"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3489
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
 msgid "Paste Into Folder"
 msgstr "Itsatsi karpetan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -930,95 +946,95 @@ msgstr ""
 "Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
 "hautaturiko fitxategiak hautaturiko karpetara"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
 msgid "_Rename..."
 msgstr "_Berrizendatu"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
 msgid "Rename selected item"
 msgstr "Berrizendatu hautatutako elementua"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3497
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
 msgid "Create New _Folder"
 msgstr "Sortu _karpeta berria"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
 msgid "Create a new empty folder inside this folder"
 msgstr "Sortu karpeta huts berri bat karpeta honen barruan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3500
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
 msgid "Create New _File"
 msgstr "Sortu _fitxategi berria"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3502
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "_Empty File"
 msgstr "Fitxategi _hutsa"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
 msgid "Create a new empty file inside this folder"
 msgstr "Sortu fitxategi huts berri bat karpeta honen barruan"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Open the selected item"
 msgstr "Ireki hautatutako elementua"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3514
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
 msgid "Open in new Window"
 msgstr "Ireki leiho berrian"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "Open each selected item in a new window"
 msgstr "Ireki hautatutako elementu bakoitza leiho berri batean"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
 msgid "Open each selected item in a new tab"
 msgstr "Ireki hautatutako elementu bakoitza fitxa berri batean"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3521
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
 msgid "Open Wit_h"
 msgstr "I_reki honekin"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
 msgid "Choose a program with which to open the selected item"
 msgstr "Aukeratu programa bat hautatutako elementua irekitzeko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3524
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
 msgid "Other _Application..."
 msgstr "Beste _aplikazio bat..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
 msgid "Choose another application with which to open the selected item"
 msgstr "Aukeratu beste aplikazio bat hautatutako elementua irekitzeko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3528
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
 msgid "Mo_ve to Trash"
 msgstr "_Bota zakarrontzira"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
 msgid "Move each selected item to the Trash"
 msgstr "Bota hautatutako elementu guztiak zakarrontzira"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3532
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "_Delete Permanently"
 msgstr "_Ezabatu behin betiko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Ezabatu hautatutako elementu bakoitza, zakarrontzira bota gabe"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3536
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
 msgid "_Restore"
 msgstr "_Leheneratu"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3544
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
 msgid "_Properties"
 msgstr "_Propietateak"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "View or modify the properties of each selected item"
 msgstr "Ikusi edo aldatu hautatutako elementu guztien propietateak"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3651
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
 msgid "Set Color:"
 msgstr "Ezarri kolorea:"
 
@@ -1047,27 +1063,27 @@ msgstr "Utzi"
 msgid "Failed to execute file \"%s\""
 msgstr "Huts \"%s\" fitxategia exekutatzean"
 
-#: /home/codygarver/f/po/../src/Application.vala:110
+#: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "Erakutsi programaren bertsioa."
 
-#: /home/codygarver/f/po/../src/Application.vala:112
+#: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
 msgstr "Ireki URIa(k) fitxa berri(et)an"
 
-#: /home/codygarver/f/po/../src/Application.vala:114
+#: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
 msgstr "Irten Files-etik."
 
-#: /home/codygarver/f/po/../src/Application.vala:116
+#: /home/codygarver/f/po/../src/Application.vala:135
 msgid "Enable debug logging"
 msgstr "Gaitu arazketa-erregistroa"
 
-#: /home/codygarver/f/po/../src/Application.vala:119
+#: /home/codygarver/f/po/../src/Application.vala:138
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/f/po/../src/Application.vala:122
+#: /home/codygarver/f/po/../src/Application.vala:141
 msgid ""
 "\n"
 "\n"
@@ -1077,7 +1093,7 @@ msgstr ""
 "\n"
 "Arakatu fitxategi-sistema fitxategi-kudeatzailearekin"
 
-#: /home/codygarver/f/po/../src/Application.vala:149
+#: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ezin da URIekin erabili."
 

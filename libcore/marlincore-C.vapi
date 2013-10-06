@@ -219,7 +219,7 @@ namespace GOF {
         public bool can_set_permissions ();
         public bool can_unmount ();
         public string get_permissions_as_string ();
-        public bool launch_with (Gdk.Screen screen, AppInfo app);
+        public bool launch (Gdk.Screen screen, AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 00:02-0500\n"
-"PO-Revision-Date: 2013-09-01 22:27+0000\n"
-"Last-Translator: Julián Unrrein <Unknown>\n"
+"POT-Creation-Date: 2013-10-02 11:59-0500\n"
+"PO-Revision-Date: 2013-10-02 21:11+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-09-10 05:20+0000\n"
-"X-Generator: Launchpad (build 16761)\n"
+"X-Launchpad-Export-Date: 2013-10-03 05:53+0000\n"
+"X-Generator: Launchpad (build 16791)\n"
 "Language: es\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -45,12 +45,20 @@ msgstr "Esto no le pertenece."
 msgid "You don't have permission to view this folder."
 msgstr "No tiene permiso para ver esta carpeta."
 
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr ""
+
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
 msgstr "Archivos no es el gestor de archivos predeterminado."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3426
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
 msgid "Set as default"
 msgstr "Establecer como predeterminado"
 
@@ -58,224 +66,224 @@ msgstr "Establecer como predeterminado"
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:402
+#: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Undo"
 msgstr "Deshacer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:403
-#: /home/codygarver/f/po/../src/View/Window.vala:645
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Undo the last action"
 msgstr "Deshacer la última acción"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:412
+#: /home/codygarver/f/po/../src/View/Window.vala:418
 msgid "Redo"
 msgstr "Rehacer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:413
-#: /home/codygarver/f/po/../src/View/Window.vala:648
+#: /home/codygarver/f/po/../src/View/Window.vala:419
+#: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "Redo the last action"
 msgstr "Rehacer la última acción"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:623
+#: /home/codygarver/f/po/../src/View/Window.vala:607
 msgid "_File"
 msgstr "_Archivo"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:624
+#: /home/codygarver/f/po/../src/View/Window.vala:608
 msgid "_Edit"
 msgstr "_Editar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "_View"
 msgstr "_Ver"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
+#: /home/codygarver/f/po/../src/View/Window.vala:610
 msgid "_Go"
 msgstr "_Ir"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:627
+#: /home/codygarver/f/po/../src/View/Window.vala:611
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/View/Window.vala:613
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "_Ventana nueva"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:630
+#: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Open another Files window for the displayed location"
 msgstr "Abrir una ventana nueva para esta ubicación"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:617
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Pes_taña nueva"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:634
+#: /home/codygarver/f/po/../src/View/Window.vala:618
 msgid "Open another tab for the displayed location"
 msgstr "Abrir otra pestaña para el directorio en pantalla"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:638
+#: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "Close this folder"
 msgstr "Cerrar esta carpeta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Undo"
 msgstr "_Deshacer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:631
 msgid "_Redo"
 msgstr "_Rehacer"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:650
+#: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open _Parent"
 msgstr "Abrir _Contenedora"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Open the parent folder"
 msgstr "Abrir la carpeta contenedora"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:653
+#: /home/codygarver/f/po/../src/View/Window.vala:637
 msgid "_Back"
 msgstr "_Atrás"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:654
+#: /home/codygarver/f/po/../src/View/Window.vala:638
 msgid "Go to the previous visited location"
 msgstr "Ir a la ubicación visitada anteriormente"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:657
+#: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "_Forward"
 msgstr "_Adelante"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:658
+#: /home/codygarver/f/po/../src/View/Window.vala:642
 msgid "Go to the next visited location"
 msgstr "Ir a la siguiente ubicación visitada"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:660
+#: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "_Reload"
 msgstr "_Recargar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:661
+#: /home/codygarver/f/po/../src/View/Window.vala:645
 msgid "Reload the current location"
 msgstr "Recargar la localización actual"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:664
+#: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "_Home Folder"
 msgstr "_Carpeta personal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:665
+#: /home/codygarver/f/po/../src/View/Window.vala:649
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
 msgstr "Abrir su carpeta personal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:668
+#: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "_Trash"
 msgstr "_Papelera"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:669
+#: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "Open your personal trash folder"
 msgstr "Abrir la papelera personal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:672
+#: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Network"
 msgstr "_Red"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:673
+#: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Browse bookmarked and local network locations"
 msgstr "Examinar marcadores y ubicaciones en la red local"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:676
+#: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "Zoom _In"
 msgstr "_Ampliar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:677
+#: /home/codygarver/f/po/../src/View/Window.vala:661
 msgid "Increase the view size"
 msgstr "Aumentar el tamaño de la vista"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:688
+#: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _Out"
 msgstr "_Alejar"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:689
+#: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Decrease the view size"
 msgstr "Disminuir el tamaño de la vista"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:696
+#: /home/codygarver/f/po/../src/View/Window.vala:680
 msgid "Normal Si_ze"
 msgstr "Tamaño _normal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:697
+#: /home/codygarver/f/po/../src/View/Window.vala:681
 msgid "Use the normal view size"
 msgstr "Usar el tamaño de vista normal"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:700
+#: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Next Tab"
 msgstr "Pestaña siguiente"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:704
+#: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Previous Tab"
 msgstr "Pestaña anterior"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:708
+#: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Connect to _Server..."
 msgstr "Conectar con el _servidor…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:709
+#: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Connect to a remote computer or shared disk"
 msgstr "Conectar a un equipo remoto o disco compartido"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:712
+#: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "_About"
 msgstr "Acerca _de"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:713
+#: /home/codygarver/f/po/../src/View/Window.vala:697
 msgid "Display credits"
 msgstr "Mostrar los créditos"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:716
+#: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Report a Problem..."
 msgstr "Informar de un problema…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:717
+#: /home/codygarver/f/po/../src/View/Window.vala:701
 msgid "File a bug on Launchpad"
 msgstr "Informar de un fallo en Launchpad"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:720
+#: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Get Help Online..."
 msgstr "Obtener ayuda en línea…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:724
+#: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Translate This Application..."
 msgstr "Traducir esta aplicación…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:733
+#: /home/codygarver/f/po/../src/View/Window.vala:717
 msgid "Show _Hidden Files"
 msgstr "Mostrar archivos _ocultos"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:734
+#: /home/codygarver/f/po/../src/View/Window.vala:718
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Indica si se muestran o no los archivos ocultos en la ventana actual"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:738
+#: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "_Places"
 msgstr "_Lugares"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:739
+#: /home/codygarver/f/po/../src/View/Window.vala:723
 msgid "Change the visibility of this window's side pane"
 msgstr "Cambiar la visibilidad del panel lateral de la ventana"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:747
+#: /home/codygarver/f/po/../src/View/Window.vala:731
 msgid "Icon"
 msgstr "Icono"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:750
+#: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "List"
 msgstr "Lista"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:753
+#: /home/codygarver/f/po/../src/View/Window.vala:737
 msgid "Columns"
 msgstr "Columnas"
 
@@ -316,6 +324,14 @@ msgstr "Papelera"
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
 msgstr "Abrir en una pestaña nueva"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr "Abrir con"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr "Otra Aplicación"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -503,39 +519,39 @@ msgstr "Modo de disposición"
 msgid "The layout mode"
 msgstr "El modo de disposición"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:123
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:126
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "FTP público"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:128
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "FTP (con registro)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "Recurso compartido de Windows"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:135
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:137
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV seguro (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:184
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "Conectando…"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:208
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -543,87 +559,87 @@ msgstr ""
 "No se puede cargar la lista de métodos soportada por el servidor.\n"
 "Compruebe su instalación de gvfs."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:286
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "No se puede abrir la carpeta «%s» en «%s»."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:296
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "No se puede encontrar el servidor en «%s»."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:331
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "Inténtelo de nuevo"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:396
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "Compruebe sus detalles de usuario."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:426
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Continuar"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:764
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1154
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "C_onectar"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:889
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "Conectarse a un servidor"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:907
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "Detalles del servidor"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:931
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_Servidor:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:951
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_Puerto:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:969
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Tipo:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1038
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "_Recurso compartido:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1053
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Carpeta:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1071
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "Detalles del usuario"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1094
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "Nombre del _dominio:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1109
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_Nombre de usuario:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1124
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "_Contraseña:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_Recordar esta contraseña"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1243
+#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3540
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
 msgid "Select All"
 msgstr "Seleccionar todo"
 
@@ -826,19 +842,19 @@ msgid "Unable to stop %s"
 msgstr "No se pudo detener %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1984
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3506
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Open"
 msgstr "_Abrir"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2004
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3518
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
 msgid "Open in New _Tab"
 msgstr "Abrir en una pes_taña nueva"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2013
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
 msgid "Open in New _Window"
 msgstr "Abrir en una _ventana nueva"
 
@@ -882,49 +898,49 @@ msgstr ""
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "No se pudo crear el enlace a la URL «%s»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1826
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Use «%s» para abrir el elemento seleccionado"
 msgstr[1] "Use «%s» para abrir los elementos seleccionados"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1978
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
 #, c-format
 msgid "_Open With %s"
 msgstr "_Abrir con %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2000
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Abrir en %'d pestañas _nuevas"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2009
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Abrir en %'d _ventanas nuevas"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3478
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Preparar los archivos seleccionados para moverlos con una orden «Pegar»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3482
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Preparar los archivos seleccionados para copiarlos con una orden «Pegar»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3486
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
 "o «Copiar»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3489
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
 msgid "Paste Into Folder"
 msgstr "Pegar en la carpeta"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3490
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -932,97 +948,97 @@ msgstr ""
 "Mover o copiar los archivos previamente seleccionados por una orden «Cortar» "
 "o «Copiar» en la carpeta seleccionada"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
 msgid "_Rename..."
 msgstr "_Renombrar…"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3494
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
 msgid "Rename selected item"
 msgstr "Renombrar el elemento seleccionado"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3497
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
 msgid "Create New _Folder"
 msgstr "Crear una _carpeta Nueva"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3498
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
 msgid "Create a new empty folder inside this folder"
 msgstr "Crea una carpeta nueva vacía dentro de esta carpeta"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3500
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
 msgid "Create New _File"
 msgstr "Crear un _archivo nuevo"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3502
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "_Empty File"
 msgstr "Archivo _vacío"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3503
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
 msgid "Create a new empty file inside this folder"
 msgstr "Crear un archivo vacío nuevo dentro de esta carpeta"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3507
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Open the selected item"
 msgstr "Abrir el elemento seleccionado"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3514
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
 msgid "Open in new Window"
 msgstr "Abrir en una ventana nueva"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3515
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "Open each selected item in a new window"
 msgstr "Abrir cada elemento seleccionado en una ventana nueva"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3519
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
 msgid "Open each selected item in a new tab"
 msgstr "Abrir cada elemento seleccionado en una pestaña nueva"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3521
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
 msgid "Open Wit_h"
 msgstr "Abrir _con"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3522
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
 msgid "Choose a program with which to open the selected item"
 msgstr ""
 "Selecciona un programa con el cual poder abrir el elemento seleccionado"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3524
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
 msgid "Other _Application..."
 msgstr "Otra _aplicación…"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3525
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
 msgid "Choose another application with which to open the selected item"
 msgstr ""
 "Selecciona otra aplicación con la cual abrir el elemento seleccionado"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3528
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
 msgid "Mo_ve to Trash"
 msgstr "Mo_ver a la papelera"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3529
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
 msgid "Move each selected item to the Trash"
 msgstr "Mover cada elemento seleccionado a la papelera"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3532
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "_Delete Permanently"
 msgstr "_Eliminar permanentemente"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3533
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Eliminar cada elemento seleccionado, sin moverlo a la papelera"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3536
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
 msgid "_Restore"
 msgstr "_Restaurar"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3544
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
 msgid "_Properties"
 msgstr "_Propiedades"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3545
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "View or modify the properties of each selected item"
 msgstr "Ver o modificar las propiedades de cada elemento seleccionado"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3651
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
 msgid "Set Color:"
 msgstr "Establecer color:"
 
@@ -1051,27 +1067,27 @@ msgstr "Cancelar"
 msgid "Failed to execute file \"%s\""
 msgstr "No se pudo ejecutar el archivo «%s»"
 
-#: /home/codygarver/f/po/../src/Application.vala:110
+#: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "Mostrar la versión del programa."
 
-#: /home/codygarver/f/po/../src/Application.vala:112
+#: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
 msgstr "Abrir URI(s) en una pestaña nueva"
 
-#: /home/codygarver/f/po/../src/Application.vala:114
+#: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
 msgstr "Salir."
 
-#: /home/codygarver/f/po/../src/Application.vala:116
+#: /home/codygarver/f/po/../src/Application.vala:135
 msgid "Enable debug logging"
 msgstr "Activar el registro de depuración"
 
-#: /home/codygarver/f/po/../src/Application.vala:119
+#: /home/codygarver/f/po/../src/Application.vala:138
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: /home/codygarver/f/po/../src/Application.vala:122
+#: /home/codygarver/f/po/../src/Application.vala:141
 msgid ""
 "\n"
 "\n"
@@ -1081,7 +1097,7 @@ msgstr ""
 "\n"
 "Examine el sistema de archivos con el gestor de archivos"
 
-#: /home/codygarver/f/po/../src/Application.vala:149
+#: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no se puede usar con URI."
 
