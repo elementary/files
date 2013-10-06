@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-09-06 06:25+0000\n"
+"PO-Revision-Date: 2013-10-05 21:35+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:51+0000\n"
+"X-Launchpad-Export-Date: 2013-10-06 05:17+0000\n"
 "X-Generator: Launchpad (build 16791)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -46,11 +46,11 @@ msgstr "Sinulla ei ole oikeuksia tarkastella tätä kansiota."
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Helppo ja tehokas tiedostonhallinta"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Launchpad-kääntäjät"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -326,11 +326,11 @@ msgstr "Avaa uudessa välilehdessä"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Avaa sovelluksella"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Muu sovellus..."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
