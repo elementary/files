@@ -274,6 +274,7 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
                                                "window-slot", slot, NULL));
     gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
+    slot->directory->track_longest_name = FALSE;
     gof_directory_async_load (slot->directory);
 }
 

@@ -369,9 +369,6 @@ public class GOF.Directory.Async : Object {
             sorted_dirs.remove (gof);
         }
         gof.remove_from_caches ();
-
-        if (track_longest_name && gof.basename.length == longest_file_name.length)
-            load ();
     }
 
     private struct fchanges {
@@ -438,8 +435,16 @@ public class GOF.Directory.Async : Object {
                     need_reload ();
                 } else {
                     list_fchanges.reverse ();
+                    bool tln = track_longest_name;
+                    /* do not autosize during multiple changes */
+                    track_longest_name = false;
                     foreach (var fchange in list_fchanges)
                         real_directory_changed (fchange.file, null, fchange.event);
+
+                    if (tln) {
+                        track_longest_name = true;
+                        load ();
+                    }
                 }
             }
             list_fchanges_count = 0;
@@ -468,6 +473,9 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_removed (List<GLib.File> files) {
+        List<Async> dirs = null;
+        bool found;
+
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);
@@ -475,7 +483,19 @@ public class GOF.Directory.Async : Object {
             if (dir != null) {
                 //message ("notify removed %s", gof.uri);
                 dir.notify_file_removed (gof);
+                found = false;
+                foreach (var d in dirs) {
+                    if (d == dir)
+                        found = true;
+                }
+                if (!found)
+                    dirs.append (dir);
             }
+        }
+
+        foreach (var d in dirs) {
+            if (d.track_longest_name)
+                d.load();
         }
     }
 

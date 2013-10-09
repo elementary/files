@@ -2282,7 +2282,7 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->model == model);
 
-    g_message ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /* Get tree paths of selected files */
     selected_paths = (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selected_paths) (view);
 
@@ -2317,7 +2317,7 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->model == model);
 
-    g_message ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /* Check if there was only one file selected before the row was deleted. The
      * path is set by thunar_standard_view_row_deleted() if this is the case */
     if (G_LIKELY (view->details->selection_before_delete != NULL))
@@ -3125,7 +3125,7 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_set_active_slot (FMDirectoryView *view)
 {
-    g_warning ("%s %s %s", G_STRFUNC,
+    g_debug ("%s %s %s", G_STRFUNC,
                view->details->slot->mwcols->active_slot->directory->file->uri,
                view->details->slot->directory->file->uri
                );
@@ -3134,7 +3134,7 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
     if (view->details->slot->mwcols->active_slot == view->details->slot)
         return;
 
-    g_warning ("%s", G_STRFUNC);
+    //g_warning ("%s", G_STRFUNC);
     gof_window_slot_active (view->details->slot);
 
     /* make sure to grab focus as right click menus don't automaticly get it */
