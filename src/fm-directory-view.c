@@ -2341,7 +2341,6 @@ fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view)
     }
 }
 
-#if 0
 void
 fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
 {
@@ -2357,7 +2356,6 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
     gtk_tree_path_free (path);
 }
-#endif
 
 void
 fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files)
@@ -3338,12 +3336,17 @@ check_newly_file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FM
 static gboolean
 rename_file_callback (FMDirectoryView *view)
 {
+    if (view->details->newly_folder_added)
+        fm_directory_view_select_gof_file (view, view->details->newly_folder_added);
+
     rename_file (view, view->details->newly_folder_added);
     g_object_unref (view->details->newly_folder_added);
 
     return FALSE;
 }
 
+/* This function is also called after creating a new file */
+/* The parameter new_folder may be either a folder or a file */
 static void
 new_folder_done (GFile *new_folder, gpointer data)
 {
