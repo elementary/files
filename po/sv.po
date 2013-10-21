@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-10-10 22:09+0000\n"
+"PO-Revision-Date: 2013-10-20 14:21+0000\n"
 "Last-Translator: Joachim Johansson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-10-11 05:26+0000\n"
-"X-Generator: Launchpad (build 16799)\n"
+"X-Launchpad-Export-Date: 2013-10-21 04:53+0000\n"
+"X-Generator: Launchpad (build 16807)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -46,11 +46,11 @@ msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "En enkel men kraftfull filhanterare"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Launchpad-översättare"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -139,7 +139,7 @@ msgstr "_Gör om"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open _Parent"
-msgstr "Öppna _förälder"
+msgstr "Öppna _ovanstående"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Open the parent folder"
