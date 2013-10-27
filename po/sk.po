@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2012-08-08 07:26+0000\n"
-"Last-Translator: Ľuboš Mudrák <Unknown>\n"
+"PO-Revision-Date: 2013-10-26 20:00+0000\n"
+"Last-Translator: Milan Slovák <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:52+0000\n"
-"X-Generator: Launchpad (build 16791)\n"
+"X-Launchpad-Export-Date: 2013-10-27 06:06+0000\n"
+"X-Generator: Launchpad (build 16810)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -30,11 +30,11 @@ msgstr "Súborový systém"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Takýto priečinok neexistuje"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(Ako správca)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
@@ -42,19 +42,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Nemáte oprávnenie pre prezeranie tohoto priečinka."
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Jednoduchý a výkonný správca súborov"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Prekladatelia na Launchpad-e"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Prehliadač Súbory nie je nastavený ako predvolený správca súborov"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3499
@@ -63,16 +63,16 @@ msgstr "Nastaviť ako predvolený"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:137
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorovať"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:408
 msgid "Undo"
-msgstr ""
+msgstr "Vrátiť späť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:409
 #: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Undo the last action"
-msgstr ""
+msgstr "Vrátiť späť poslednú akciu"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:418
 msgid "Redo"
@@ -97,16 +97,16 @@ msgstr "_Zobraziť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:610
 msgid "_Go"
-msgstr ""
+msgstr "_Prejsť na"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:611
 msgid "_Help"
-msgstr ""
+msgstr "_Pomocník"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:613
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "Nové _okno"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Open another Files window for the displayed location"
@@ -115,63 +115,63 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/Window.vala:617
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "Nová _karta"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:618
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Otvorí zobrazené umiestnenie na ďalšej karte"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Close"
-msgstr ""
+msgstr "_Zavrieť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:623
 msgid "Close this folder"
-msgstr ""
+msgstr "Zatvoriť tento priečinok"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Undo"
-msgstr ""
+msgstr "_Vrátiť späť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:631
 msgid "_Redo"
-msgstr ""
+msgstr "_Opakovať vrátené"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:634
 msgid "Open _Parent"
-msgstr ""
+msgstr "Otvoriť _nadradený"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Otvoriť nadradený priečinok"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:637
 msgid "_Back"
-msgstr ""
+msgstr "_Späť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:638
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Prejsť na predchádzajúce navštívené umiestnenie"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:641
 msgid "_Forward"
-msgstr ""
+msgstr "_Dopredu"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:642
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Prejsť na nasledovné navštívené umiestnenie"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "_Reload"
-msgstr ""
+msgstr "_Znovu načítať"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:645
 msgid "Reload the current location"
-msgstr ""
+msgstr "Znovu načíta aktuálne umiestnenie"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Domovský priečinok"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:649
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
@@ -180,111 +180,111 @@ msgstr "Otvoriť váš osobný priečinok"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "_Trash"
-msgstr ""
+msgstr "_Kôš"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:653
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Otvoriť osobný priečinok odpadkového koša"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:656
 msgid "_Network"
-msgstr ""
+msgstr "_Sieť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:657
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Prehliadať záložky a miesta v lokálnej sieti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:660
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Priblížiť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:661
 msgid "Increase the view size"
-msgstr ""
+msgstr "Zväčšiť veľkosť zobrazenia"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Zoom _Out"
-msgstr ""
+msgstr "Z_menšiť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:673
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Zmenší veľkosť zobrazenia"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:680
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normálna _veľkosť"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:681
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Použiť normálnu veľkosť zobrazenia"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Next Tab"
-msgstr ""
+msgstr "Nasledujúca karta"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Previous Tab"
-msgstr ""
+msgstr "Predchádzajúca karta"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Pripojiť k _serveru..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:693
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Pripojiť k vzdialenému serveru alebo zdieľanému disku"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:696
 msgid "_About"
-msgstr ""
+msgstr "_O programe"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:697
 msgid "Display credits"
-msgstr ""
+msgstr "Zobraziť poďakovania"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Nahlásiť problém..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:701
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Nahlásiť chybu na Launchpad-e"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:704
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Získať pomoc z internetu..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Preložiť túto aplikáciu..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:717
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Zobraziť _Skryté súbory"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:718
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Prepína zobrazovanie skrytých súborov v aktuálnom okne"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "_Places"
-msgstr ""
+msgstr "_Miesta"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:723
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Zmeniť viditeľnosť bočného panelu tohoto okna"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:731
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:734
 msgid "List"
-msgstr ""
+msgstr "Zoznam"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:737
 msgid "Columns"
-msgstr ""
+msgstr "Stĺpce"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:110
 msgid "AFP"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:113
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:114
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569

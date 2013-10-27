@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-08-26 14:41+0000\n"
-"Last-Translator: Stefanos Papanatsios <stefan0spapanatsi0s@gmail.com>\n"
+"PO-Revision-Date: 2013-10-26 10:17+0000\n"
+"Last-Translator: Filippos Kolyvas <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:52+0000\n"
-"X-Generator: Launchpad (build 16791)\n"
+"X-Launchpad-Export-Date: 2013-10-27 06:06+0000\n"
+"X-Generator: Launchpad (build 16810)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -42,15 +42,15 @@ msgstr "Αυτό δεν ανήκει σε εσάς."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Ένας απλός και δυνατός διαχειριστής αρχείων"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Μεταφραστές στο Launchpad"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -241,7 +241,7 @@ msgstr "_Περί"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:697
 msgid "Display credits"
-msgstr ""
+msgstr "Εμφάνιση credits"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:700
 msgid "Report a Problem..."
@@ -327,11 +327,11 @@ msgstr "Άνοιγμα σε νέα καρτέλα"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Άνοιγμα με"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Άλλη εφαρμογή .."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -1593,72 +1593,72 @@ msgstr[1] "Αναίρεση αλλαγής ιδιοκτήτη των %d αντι
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη αντιγραφής %d αντικειμένου"
+msgstr[1] "Επανάληψη αντιγραφής %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένου"
+msgstr[1] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη μετακίνησης %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη μετονομασίας %d αντικειμένου"
+msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "Επανάληψη δημιουργίας ενός κενού φακέλου"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη δημιουργίας %d φακέλου"
+msgstr[1] "Επανάληψη δημιουργίας %d φακέλων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη μετακίνησης στα απορρίμματα  %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης στα απορρίμματα %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένου"
+msgstr[1] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
+msgstr[1] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επανάληψη διαγραφής %d αντικειμένου"
+msgstr[1] "Επανάληψη διαγραφής %d αντικειμένων"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
