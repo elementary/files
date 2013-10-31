@@ -223,13 +223,8 @@ namespace Marlin.View {
             });
 
             delete_event.connect (() => {
-                destroy ();
-
-            	return false;
-            });
-
-            configure_event.connect (() => {
                 save_geometries ();
+                destroy ();
 
                 return false;
             });
