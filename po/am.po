@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-06-15 16:08+0000\n"
+"PO-Revision-Date: 2013-11-03 00:04+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:51+0000\n"
-"X-Generator: Launchpad (build 16791)\n"
+"X-Launchpad-Export-Date: 2013-11-03 05:38+0000\n"
+"X-Generator: Launchpad (build 16820)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -46,11 +46,11 @@ msgstr "ይህን ፎልደር ለማየት ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "ቀላል እና ህይለኛ የ ፋይል አስተዳዳሪ"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "የ ላውንች ፓድ ተርጓሚዎች"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -272,7 +272,7 @@ msgstr "_ቦታዎች"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:723
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "የዚህን መስኮት የጎን ክፍል መመልከቻ መቀየሪያ"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:731
 msgid "Icon"
@@ -322,15 +322,15 @@ msgstr "ቆሻሻ"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
-msgstr ""
+msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "መክፈቻ በ"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "ሌሎች መተግበሪያዎች"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -384,7 +384,7 @@ msgstr "%u የተመረጡት እቃዎች"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 msgid "Calculating size…"
-msgstr ""
+msgstr "በ ማስላት ላይ መጠኑን…"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
 msgid "Created"
@@ -487,7 +487,7 @@ msgstr "%u ፎልደሮች"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " እና %u ሌሎች እቃዎች (%s) ተመርጠዋል"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
@@ -885,7 +885,7 @@ msgstr "ቆሻሻውን _ባዶ ማድረጊያ"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
 msgid "Connect to Server…"
-msgstr ""
+msgstr "ወደ ሰርቨር መገናኛ…"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:1183
 msgid "Invalid filename provided by XDS drag site"
@@ -1141,7 +1141,7 @@ msgstr "ሁሉንም በሂደት - ላይ ያሉ ተግባሮችን መሰረ�
 #: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "ዋናውን አካባቢ መወሰን አልተቻለም ከ \"%s\" "
 
 #: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
@@ -1159,101 +1159,102 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"ማዋሀጃ ማረጋገጫ ይጠይቃል በፎልደር ውስጥ ያሉትን ፋይሎች ከመተካቱ በፊት ኮፒ ከሚደረገው ፋይል ጋር የሚጋጩትን"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "በዚህ ስም የተሰየመ ፎልደር ቀደም ብሎ ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "አዲስ ፎልደር በዚህ ስም ቀደም ሲል ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "ሌላ ፎልደር በዚህ ስም ቀደም ሲል ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "መተካት ሁሉንም ፋይሎች በፎልደር ውስጥ ያሉትን ያስወግዳቸዋል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "ፎልደሩን ልቀይረው \"%s\"?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "በዚህ ስም የተሰየመ ፎልደር ቀደም ብሎ ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "ፋይሉን ልቀይረው \"%s\"?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "መተካት በነበረው ይዞታ ላይ ደርቦ ይጽፍበታል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "በዚህ ስም የተሰየመ ፋይል ቀደም ብሎ ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "በዚህ ስም የተሰየመ አዲስ ፋይል ቀደም ብሎ ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "በዚህ ስም የተሰየመ ሌላ ፋይል ቀደም ብሎ ነበር በ \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
 msgid "Original file"
-msgstr ""
+msgstr "ዋናው ፋይል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Size:"
-msgstr ""
+msgstr "መጠን:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Type:"
-msgstr ""
+msgstr "አይነት:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
 msgid "Last modified:"
-msgstr ""
+msgstr "መጨረሻ የተሻሻለው:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
 msgid "Replace with"
-msgstr ""
+msgstr "መቀየሪያ በ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
@@ -1287,7 +1288,7 @@ msgstr "መቀየሪያ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
 msgid "File conflict"
-msgstr ""
+msgstr "የፋይል አለመስማማት"
 
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
@@ -1300,7 +1301,7 @@ msgstr "ተጨማሪ _ዝርዝር ማሳያ"
 
 #: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (ዋጋ የሌለው ዩኒኮድ)"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1864,7 +1865,7 @@ msgstr[1] ""
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "አንድን እቃ ካጠፉት በቋሚነት ይጠፋል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
 msgid "Empty all items from Trash?"
@@ -1876,7 +1877,7 @@ msgstr "በቆሻሻው ውስጥ ያሉት እቃዎች በቋሚነት ይጠ�
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\"?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
 #, c-format
@@ -1916,14 +1917,14 @@ msgstr "ስህተት ተፈጥሯል በማጥፋት ላይ እንዳለ"
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "በፎልደር ውስጥ ያሉትን ፋይሎች \"%B\" ማጥፋት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል የፋይሎች እና የፎልደሮች መረጃ በሚፈለግበት ጊዜ \"%B\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
@@ -1934,7 +1935,7 @@ msgstr "ፋይሎችን _መዝለያ"
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "ይህን ፎልደር \"%B\" ማጥፋት አይችሉም ምክንያቱም ፋይሉን ለማንበብ በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
@@ -1990,21 +1991,23 @@ msgstr "ማውረድ አልተቻለም %V"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "ቆሻሻ ማጠራቀሚያው ከመውረዱ በፊት ባዶ ሊያደርጉት ይፈልጋሉ?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"ለዚህ መጠን የሚሆን ባዶ ቦታ ለማግኘት ቆሻሻ ማጠራቀሚያውን ባዶ ማድረግ ያስፈልጋል ፡ በቆሻሻ ማጠራቀሚያው ውስጥ ያሉት "
+"እቃዎች በሙሉ በቋሚነት ይጠፋሉ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "ቆሻሻ ማጠራቃሚያውን ባዶ _አታድርግ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
 msgid "Emptying the trash"
-msgstr ""
+msgstr "ቆሻሻውን ባዶ ማድረጊያ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
 #, c-format
@@ -2015,22 +2018,22 @@ msgstr "መጫን አልተቻለም %s"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2515
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2521
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2527
 #, c-format
@@ -2054,19 +2057,19 @@ msgstr "በማንቀሳቀስ ላይ ስህተት ተፈጥሯል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "ፋይሎችን ወደ ቆሻሻ ማጠራቀሚያው ጋር በመውሰድ ላይ እንዳለ ስህተት ተፈጥሯል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "በፎልደሩ ውስጥ ያሉትን ፋይሎች \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2669
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "ይህን ፎልደር \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2746
 msgid ""
