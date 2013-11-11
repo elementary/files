@@ -110,6 +110,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
     GOFWindowSlot *slot = mwcols->active_slot;
 
     gof_window_slot_make_column_view (slot);
+    slot->slot_number = 0;
 
     mwcols->colpane = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     slot->colpane = mwcols->colpane;
@@ -156,7 +157,9 @@ void
 marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 {
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
+    slot->width = mwcols->preferred_column_width;
     gof_window_slot_make_column_view (slot);
+    slot->slot_number = mwcols->active_slot->slot_number + 1;
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
     gof_window_column_add (slot, slot->view_box);

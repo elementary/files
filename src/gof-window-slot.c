@@ -46,6 +46,7 @@ gof_window_slot_init (GOFWindowSlot *slot)
 {
     slot->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     slot->width = 0;
+    slot->ready_to_autosize = FALSE;
     GOF_ABSTRACT_SLOT (slot)->extra_location_widgets = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start (GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
@@ -89,6 +90,7 @@ gof_window_slot_finalize (GObject *object)
     //load_dir_async_cancel(slot->directory);
     g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
     //g_warning ("%s %s %u\n", G_STRFUNC, slot->directory->file->uri, G_OBJECT (slot->directory)->ref_count);
+    g_signal_handlers_disconnect_by_data (slot->directory, slot);
     g_object_unref(slot->directory);
     g_object_unref(slot->location);
     G_OBJECT_CLASS (parent_class)->finalize (object);
@@ -131,6 +133,68 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
     gtk_paned_pack2 (GTK_PANED (hpane), box1, TRUE, FALSE);
+
+    /* If the directory finished loading before slot was ready then autosize the slot now.
+    * Otherwise the slot will be autosized by the directory_done_loading callback
+    * This is necessary because the directory loads faster from the cache than from disk
+    * On first use the directory loads from disk and we reach here before the directory
+    * has finished loading.
+    * On subsequent uses, the directory loads from cache before the slot is ready.
+    * Whichever finishes first sets slot->ready_to_autosize = TRUE
+    * Whichever finds slot->ready_to_autosize = TRUE does the autosizing.
+    */
+
+    if (slot->ready_to_autosize)
+        autosize_slot (slot);
+    else
+        slot->ready_to_autosize = TRUE;
+}
+
+void autosize_slot (GOFWindowSlot *slot)
+{
+    g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
+    g_return_if_fail (slot->view_box != NULL);
+    g_return_if_fail (GTK_IS_WIDGET (slot->view_box));
+    g_return_if_fail (GOF_DIRECTORY_IS_ASYNC (slot->directory));
+    g_return_if_fail (slot->mwcols != NULL);
+
+    PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET (slot->view_box), NULL);
+
+    if (gof_directory_async_is_empty (slot->directory))
+        pango_layout_set_markup (layout, FM_DIRECTORY_VIEW (slot->view_box)->empty_message, -1);
+    else
+        pango_layout_set_markup (layout,
+                                 g_markup_escape_text (slot->directory->longest_file_name, -1),
+                                 -1);
+
+    PangoRectangle extents;
+    pango_layout_get_extents (layout, NULL, &extents);
+
+    gint column_width = (int) pango_units_to_double(extents.width)
+                        + 2 * slot->directory->icon_size
+                        + 2 * slot->mwcols->handle_size
+                        + 12;
+
+    gint min_width = slot->mwcols->preferred_column_width / 2;
+
+    if (column_width < min_width)
+        column_width = min_width;
+    else {
+        //TODO make max_width a setting
+        gint max_width = 2 * slot->mwcols->preferred_column_width;
+        if (column_width > max_width)
+            column_width = max_width;
+    }
+
+    if (slot->slot_number == 0)
+        gtk_widget_set_size_request (gtk_paned_get_child1 (GTK_PANED (slot->hpane)), column_width, -1);
+    else
+        gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
+
+    slot->width = column_width;
+    gtk_widget_show_all (slot->mwcols->colpane);
+    gtk_widget_queue_draw (slot->mwcols->colpane);
+
 }
 
 void
@@ -157,9 +221,11 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
         g_list_free (slot->mwcols->slot);
         slot->mwcols->slot = l;
     }
-    slot->mwcols->total_width += slot->mwcols->preferred_column_width + 100;
-    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
+
     marlin_window_columns_add (slot->mwcols, location);
+
+    slot->mwcols->total_width += slot->width + 100;
+    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
 }
 
 GOFWindowSlot *
@@ -193,6 +259,7 @@ gof_window_slot_make_icon_view (GOFWindowSlot *slot)
     gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
 
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
+    slot->directory->track_longest_name = FALSE;
     gof_directory_async_load (slot->directory);
 }
 
@@ -207,6 +274,7 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
                                                "window-slot", slot, NULL));
     gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
+    slot->directory->track_longest_name = FALSE;
     gof_directory_async_load (slot->directory);
 }
 
@@ -224,6 +292,7 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
+    slot->directory->track_longest_name = TRUE;
     gof_directory_async_load (slot->directory);
 }
 
@@ -233,8 +302,10 @@ gof_window_slot_active (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
-    if (slot->mwcols)
-        marlin_window_columns_active_slot (slot->mwcols, slot);
+    if (slot->mwcols != NULL) {
+         marlin_window_columns_active_slot (slot->mwcols, slot);
+        autosize_slot (slot);
+    }
 }
 
 void

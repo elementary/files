@@ -829,7 +829,7 @@ void gof_file_remove_from_caches (GOFFile *file)
     }
 
     file->is_gone = TRUE;
-    g_warning ("end %s", G_STRFUNC);
+    //g_warning ("end %s", G_STRFUNC);
 }
 
 static void gof_file_init (GOFFile *file) {

@@ -207,6 +207,7 @@ namespace Marlin.View {
             }
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel ();
+                slot.directory.track_longest_name = false;
             }
 
             if (nview == ViewMode.MILLER) {

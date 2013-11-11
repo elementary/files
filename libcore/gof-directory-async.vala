@@ -28,6 +28,8 @@ public class GOF.Directory.Async : Object {
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
     public int uri_keypath_size = 0;
+    public string longest_file_name = ""; //for auto-sizing Miller columns
+    public bool track_longest_name;
 
     public enum State {
         NOT_LOADED,
@@ -75,7 +77,7 @@ public class GOF.Directory.Async : Object {
         file = GOF.File.get (location);
         file.exists = true;
         cancellable = new Cancellable ();
-
+        track_longest_name = false;
         //query_info_async (file, file_info_available);
         if (file.info == null)
             file.query_update ();
@@ -139,6 +141,7 @@ public class GOF.Directory.Async : Object {
 
     public void load () {
         cancellable.reset ();
+        longest_file_name = "";
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
             if (state == State.LOADING)
@@ -170,11 +173,20 @@ public class GOF.Directory.Async : Object {
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
             foreach (GOF.File gof in file_hash.get_values ()) {
-                if (gof.info != null && (!gof.is_hidden || show_hidden))
+                if (gof.info != null && (!gof.is_hidden || show_hidden)) {
+                    if (track_longest_name)
+                        update_longest_file_name (gof);
+
                     file_loaded (gof);
+                }
             }
             done_loading ();
         }
+    }
+
+    private void update_longest_file_name (GOF.File gof) {
+        if (longest_file_name.length < gof.basename.length)
+            longest_file_name = gof.basename;
     }
 
     public void load_hiddens () {
@@ -182,10 +194,15 @@ public class GOF.Directory.Async : Object {
             load ();
         } else {
             foreach (GOF.File gof in file_hash.get_values ()) {
-                if (gof != null  && gof.info != null && gof.is_hidden)
+                if (gof != null && gof.info != null && gof.is_hidden) {
+                    if (track_longest_name)
+                        update_longest_file_name (gof);
+
                     file_loaded (gof);
+                }
             }
         }
+        done_loading ();
     }
 
     public void update_desktop_files () {
@@ -232,6 +249,7 @@ public class GOF.Directory.Async : Object {
                 if (files == null)
                     break;
 
+                bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
                 foreach (var file_info in files) {
                     GLib.File loc = location.get_child ((string) file_info.get_name ());
                     //GOF.File gof;
@@ -244,8 +262,12 @@ public class GOF.Directory.Async : Object {
                     //debug ("file: %s", gof.name);
 
                     add_to_hash_cache (gof);
-                    if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
+                    if (!gof.is_hidden || show_hidden) {
+                        if (track_longest_name)
+                            update_longest_file_name (gof);
+
                         file_loaded (gof);
+                    }
 
                     //mutex.lock ();
                     files_count++;
@@ -317,6 +339,11 @@ public class GOF.Directory.Async : Object {
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
             sorted_dirs.insert_sorted (gof, GOF.File.compare_by_display_name);
+        }
+
+        if (track_longest_name && gof.basename.length > longest_file_name.length) {
+            longest_file_name = gof.basename;
+            done_loading ();
         }
     }
 
@@ -408,8 +435,16 @@ public class GOF.Directory.Async : Object {
                     need_reload ();
                 } else {
                     list_fchanges.reverse ();
+                    bool tln = track_longest_name;
+                    /* do not autosize during multiple changes */
+                    track_longest_name = false;
                     foreach (var fchange in list_fchanges)
                         real_directory_changed (fchange.file, null, fchange.event);
+
+                    if (tln) {
+                        track_longest_name = true;
+                        load ();
+                    }
                 }
             }
             list_fchanges_count = 0;
@@ -438,6 +473,9 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_removed (List<GLib.File> files) {
+        List<Async> dirs = null;
+        bool found;
+
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);
@@ -445,7 +483,19 @@ public class GOF.Directory.Async : Object {
             if (dir != null) {
                 //message ("notify removed %s", gof.uri);
                 dir.notify_file_removed (gof);
+                found = false;
+                foreach (var d in dirs) {
+                    if (d == dir)
+                        found = true;
+                }
+                if (!found)
+                    dirs.append (dir);
             }
+        }
+
+        foreach (var d in dirs) {
+            if (d.track_longest_name)
+                d.load();
         }
     }
 
@@ -578,7 +628,7 @@ public class GOF.Directory.Async : Object {
         return null;
     }
 
-    private int icon_size;
+    public int icon_size;
     public void threaded_load_thumbnails (int size) {
         try {
             icon_size = size;
