@@ -1,4 +1,12 @@
-pantheon-files (0.1.5) UNRELEASED; urgency=low
+pantheon-files (0.1.5.1) precise; urgency=low
+
+  * Select new folders after creation (LP: 1178869)
+  * Removed duplicate tab_duplicate signal handler (LP: #1239778)
+  * Fixed performance issue with updating the dconf-geometry (LP: #1243657)
+
+ -- Cody Garver <cody@elementaryos.org>  Mon, 11 Nov 2013 04:08:19 -0600
+
+pantheon-files (0.1.5) precise; urgency=low
 
   * New upstream release.
 
