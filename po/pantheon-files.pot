@@ -408,6 +408,14 @@ msgstr ""
 msgid "MimeTypes"
 msgstr ""
 
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:431
+msgid "Width"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:432
+msgid "Height"
+msgstr ""
+
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:424
 msgid "Location"
 msgstr ""
