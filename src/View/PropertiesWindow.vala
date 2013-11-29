@@ -429,8 +429,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
                 Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
                 var width = pixbuf.get_width ().to_string ();
                 var height = pixbuf.get_height ().to_string ();
-                info.add (new Pair<string, string>(_("Width") + (": "), width +" px"));
-                info.add (new Pair<string, string>(_("Height") + (": "), height +" px"));
+                info.add (new Pair<string, string>(_("Size") + (": "), width +" x " + height + " px"));
             } catch (Error e) {
                 stdout.printf ("Error: %s\n", e.message);
             }
