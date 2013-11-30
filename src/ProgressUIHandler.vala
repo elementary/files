@@ -63,8 +63,17 @@ public class Marlin.Progress.UIHandler : Object {
         this.notification_supports_persistence = server_has_persistence ();
     }
 
+#if !VALA_0_24
+    [CCode (cheader_filename = "libnotify/notify.h", cname = "notify_get_server_caps")]
+    extern static GLib.List<string> notify_get_server_caps ();
+#endif
+
     private bool server_has_persistence () {
-        unowned List<string> capabilities = Notify.get_server_caps ();
+#if VALA_0_24
+        var capabilities = Notify.get_server_caps ();
+#else
+        var capabilities = notify_get_server_caps ();
+#endif
 
         return capabilities.find ("persistence") != null;
     }
