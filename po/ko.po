@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 11:59-0500\n"
-"PO-Revision-Date: 2013-11-24 10:11+0000\n"
+"PO-Revision-Date: 2013-12-01 05:52+0000\n"
 "Last-Translator: 박정규(Jung Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-11-25 05:57+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2013-12-02 05:48+0000\n"
+"X-Generator: Launchpad (build 16856)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -1472,205 +1472,179 @@ msgstr "'%s'의 그룹을 '%s'로 설정"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s'의 소유주를 '%s'(으)로 설정"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 복사를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 복제를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 이동을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "빈 파일 작성을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "템플릿에서의 파일 작성을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 폴더 생성을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 휴지통에  버리기를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "휴지통에 버린 %d 항목의 복구를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목에 링크 만들기를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 지우기를 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 권한 변경을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 그룹 변경을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 소유자 변경을 취소하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 복사 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 복제 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 이동 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 이름 바꾸기 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "빈 파일 작성 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "템플릿에서의 파일 작성 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 폴더 생성 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 휴지통에 버리기 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 휴지통에서 복구 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목에 링크 생성 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d  항목 지우기 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 권한 변경을 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목의 그룹 변경을 다시하기"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 항목 소유자 변경 다시하기"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -1682,7 +1656,7 @@ msgstr "어제 %-l:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%-I:%M %p 의 %a %-d %b %Y"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -2348,16 +2322,16 @@ msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "선택한 글자를 클립보드에 오려두기"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "선택한 글자를 클립보드로 복사합니다"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "클립보드에 저장된 글자를 붙여 넣습니다"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
 #, c-format
@@ -2366,7 +2340,7 @@ msgstr "%s 로 가기"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
-msgstr ""
+msgstr "그리드로 보기"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
@@ -2378,7 +2352,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "이 항목들은 휴지통을 비울 때 지워집니다."
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
