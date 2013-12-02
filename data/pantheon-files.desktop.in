@@ -30,6 +30,6 @@ Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
 [AboutDialog Shortcut Group]
-Name=Show About _Dialog
+Name=About _Files
 Exec=pantheon-files --about
 TargetEnvironment=Unity
