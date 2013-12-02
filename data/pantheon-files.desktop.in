@@ -12,7 +12,7 @@ MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
 
-X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
+X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root;AboutDialog
 
 [TabNew Shortcut Group]
 Name=New _Tab
@@ -29,3 +29,7 @@ Name=New Window As _Administrator
 Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
+[AboutDialog Shortcut Group]
+Name=Show About _Dialog
+Exec=pantheon-files --about
+TargetEnvironment=Unity
