@@ -608,6 +608,7 @@ public class GOF.Directory.Async : Object {
     private bool thumbs_thread_runing;
     private void *load_thumbnails_func () {
         return_val_if_fail (this is Async, null);
+
         if (cancellable.is_cancelled () || file_hash == null) {
             this.unref ();
             return null;
@@ -638,6 +639,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public int icon_size;
+
     public void threaded_load_thumbnails (int size) {
         try {
             icon_size = size;
@@ -646,7 +648,6 @@ public class GOF.Directory.Async : Object {
             new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
         } catch (Error e) {
             critical ("Could not start loading thumbnails: %s", e.message);
-            return;
         }
     }
 
@@ -658,6 +659,7 @@ public class GOF.Directory.Async : Object {
             timeout_thumbsq = 0;
             return false;
         }
+
         return true;
     }
 
@@ -666,6 +668,7 @@ public class GOF.Directory.Async : Object {
 
         if (thumbs_thread_runing)
             thumbs_stop = true;
+
         if (timeout_thumbsq == 0) {
             timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
         }
