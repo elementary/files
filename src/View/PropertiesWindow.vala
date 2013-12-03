@@ -421,9 +421,9 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             }
         }
 
-         /* get image size in pixels */
+        /* get image size in pixels */
         var mime = file.icon.to_string ();
-        if ("image" in mime ) {
+        if ("image" in mime) {
             var path = file.location.get_path ();
 
             try {
