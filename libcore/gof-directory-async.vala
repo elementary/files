@@ -623,12 +623,13 @@ public class GOF.Directory.Async : Object {
                 return null;
             }
 
-            if (gof.info != null && gof.flags != 0) {
-                gof.flags = 2; /* thumb ready */
+            if (gof.info != null && gof.flags != GOF.File.ThumbState.UNKNOWN) {
+                gof.flags = GOF.File.ThumbState.READY;
                 gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }
         }
+
         thumbs_loaded ();
         thumbs_thread_runing = false;
 
