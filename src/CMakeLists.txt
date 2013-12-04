@@ -17,7 +17,6 @@ pkg_check_modules (DEPS REQUIRED
     glib-2.0>=2.29.0
     gthread-2.0
     gio-2.0
-    gconf-2.0
     gio-unix-2.0
     pango>=1.1.2
     gtk+-3.0>=3.0.3
@@ -74,7 +73,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         gtk+-3.0
         gio-2.0
         posix
-        gconf-2.0
         gee-1.0
         granite
         libnotify
@@ -121,7 +119,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         gtk+-3.0
         gio-2.0
         posix
-        gconf-2.0
         gee-1.0
         granite
         libnotify
