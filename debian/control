@@ -17,7 +17,7 @@ Build-Depends: cmake (>= 2.6),
                libpango1.0-dev (>= 1.1.2),
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
-               valac-0.16 | valac (>= 0.16)
+               valac (>= 0.16)
 Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.8.4
 
