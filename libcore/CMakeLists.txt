@@ -25,11 +25,11 @@ PACKAGES
     gio-2.0
     gee-1.0
     gmodule-2.0
+    marlincore-C
 OPTIONS
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
     --target-glib=2.32 # Needed for new thread API
-CUSTOM_VAPIS
-    marlincore-C.vapi
 GENERATE_VAPI
     marlincore
 GENERATE_HEADER

@@ -66,9 +66,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
-    CUSTOM_VAPIS
-        ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-        marlin.vapi
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -79,11 +76,15 @@ IF (WITH_UNITY AND UNITY_FOUND)
         unity
         marlincore
         marlincore-C
+        marlinwidgets
+        marlin
     GENERATE_HEADER
         marlin-vala
     OPTIONS
+        --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
         --vapidir=${CMAKE_SOURCE_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
+        --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
         --thread
         -D HAVE_UNITY)
@@ -112,9 +113,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
-    CUSTOM_VAPIS
-        ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-        marlin.vapi
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -124,11 +122,14 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         libnotify
         marlincore
         marlincore-C
+        marlinwidgets
+        marlin
     GENERATE_HEADER
         marlin-vala
     OPTIONS
         --vapidir=${CMAKE_SOURCE_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
+        --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
         --thread)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
@@ -158,6 +159,7 @@ add_executable (../pantheon-files
     ${VALA_C} )
 
 target_link_libraries (../pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
+add_dependencies (../pantheon-files marlincore marlinwidgets)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     include_directories (${UNITY_INCLUDE_DIRS})
