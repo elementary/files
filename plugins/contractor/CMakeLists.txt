@@ -13,18 +13,22 @@ add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 vala_precompile(VALA_C marlin-contractor
     plugin.vala
-CUSTOM_VAPIS
-    ${CMAKE_BINARY_DIR}/libcore/marlincore.vapi
-    ${CMAKE_SOURCE_DIR}/libcore/marlincore-C.vapi
-    ${CMAKE_BINARY_DIR}/libwidgets/marlinwidgets.vapi
 PACKAGES
     gtk+-3.0
     gee-1.0
     granite
+    marlincore-C
+    marlincore
+    marlinwidgets
 OPTIONS
-    --thread)
+    --thread
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
+)
 add_library(marlin-contractor SHARED
     ${VALA_C})
 target_link_libraries(marlin-contractor marlincore marlinwidgets)
+add_dependencies(marlin-contractor marlincore marlinwidgets)
 install(TARGETS marlin-contractor DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES contractor.plug DESTINATION lib/pantheon-files/plugins/core/)

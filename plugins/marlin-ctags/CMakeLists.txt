@@ -30,6 +30,7 @@ link_directories(${LIB_PATHS})
 add_library(marlinctags SHARED 
     ${VALA_C})
 target_link_libraries(marlinctags ${DEPS_LIBRARIES} marlincore)
+add_dependencies(marlinctags marlincore)
 install(TARGETS marlinctags DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES marlinctags.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

@@ -28,6 +28,7 @@ link_directories(${LIB_PATHS})
 add_library(marlintrash SHARED 
     ${VALA_C})
 target_link_libraries(marlintrash ${DEPS_LIBRARIES} marlincore)
+add_dependencies(marlintrash marlincore)
 install(TARGETS marlintrash DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES marlintrash.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

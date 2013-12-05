@@ -32,6 +32,7 @@ link_directories(${LIB_PATHS})
 
 add_library(${PLUGIN_LIB_NAME} SHARED ${VALA_C})
 target_link_libraries(${PLUGIN_LIB_NAME} ${DEPS_LIBRARIES} marlincore)
+add_dependencies(${PLUGIN_LIB_NAME} marlincore)
 install(TARGETS ${PLUGIN_LIB_NAME} DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES ${PLUGIN_LIB_NAME}.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)
