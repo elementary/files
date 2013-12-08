@@ -54,7 +54,6 @@ marlin_bookmark_finalize (GObject *object)
     bookmark = MARLIN_BOOKMARK (object);
     marlin_bookmark_disconnect_file (bookmark);	
     g_free (bookmark->label);
-    g_message ("%s - freeing name", G_STRFUNC);
     g_free (bookmark->name);
     //SPOTTED!
     g_warning ("%s", G_STRFUNC);
