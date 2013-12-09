@@ -435,6 +435,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
                 stdout.printf ("Error: %s\n", e.message);
             }
         }
+
         if (got_common_location ())
             info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">"
                                                             + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
