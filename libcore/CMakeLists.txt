@@ -151,3 +151,4 @@ add_executable (marlincore_tests
 add_test (core marlincore_tests)
 
 target_link_libraries (marlincore_tests marlincore ${DEPS_LIBRARIES})
+add_dependencies (marlincore_tests marlincore)
