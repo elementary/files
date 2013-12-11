@@ -127,6 +127,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
     GENERATE_HEADER
         marlin-vala
     OPTIONS
+        --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
         --vapidir=${CMAKE_SOURCE_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
