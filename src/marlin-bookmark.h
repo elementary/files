@@ -44,7 +44,7 @@ typedef struct MarlinBookmark MarlinBookmark;
 
 struct MarlinBookmark {
     GObject object;
-    const char  *name;
+    char  *name;
     char        *label;
     GOFFile     *file;
     GFileMonitor *monitor;

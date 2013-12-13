@@ -54,6 +54,7 @@ marlin_bookmark_finalize (GObject *object)
     bookmark = MARLIN_BOOKMARK (object);
     marlin_bookmark_disconnect_file (bookmark);	
     g_free (bookmark->label);
+    g_free (bookmark->name);
     //SPOTTED!
     g_warning ("%s", G_STRFUNC);
     g_object_unref (bookmark->file);
@@ -304,7 +305,7 @@ marlin_bookmark_set_location (MarlinBookmark *bookmark, GFile *new_location)
     if (bookmark->label != NULL) 
         bookmark->name = bookmark->label;
     else
-        bookmark->name = gof_file_get_display_name (bookmark->file);
+        bookmark->name = g_strdup (gof_file_get_display_name (bookmark->file));
         
     g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
 }
