@@ -420,6 +420,22 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
                 info.add (new Pair<string, string>(_("MimeTypes") + (": "), str));
             }
         }
+
+        /* get image size in pixels */
+        var mime = file.icon.to_string ();
+        if ("image" in mime) {
+            var path = file.location.get_path ();
+
+            try {
+                Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
+                var width = pixbuf.get_width ().to_string ();
+                var height = pixbuf.get_height ().to_string ();
+                info.add (new Pair<string, string> (_("Size") + (": "), width +" × " + height + " px"));
+            } catch (Error e) {
+                stdout.printf ("Error: %s\n", e.message);
+            }
+        }
+
         if (got_common_location ())
             info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">"
                                                             + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
