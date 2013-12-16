@@ -1189,7 +1189,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             foreach (var mime in mimes) {
                 (str == null) ? str = mime : str = string.join (", ", str, mime);
             }
-            app_chooser_dlg.set_heading (_("Select an aplication to open " + str));
+            app_chooser_dlg.set_heading (_("Select an application to open " + str));
             app_chooser_dlg.show_all ();
 
             int res = app_chooser_dlg.run ();
