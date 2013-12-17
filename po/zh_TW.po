@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-10-02 11:59-0500\n"
+"POT-Creation-Date: 2013-12-16 04:42-0600\n"
 "PO-Revision-Date: 2013-10-11 11:16+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-12-12 05:55+0000\n"
+"X-Launchpad-Export-Date: 2013-12-17 06:11+0000\n"
 "X-Generator: Launchpad (build 16869)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -43,294 +43,6 @@ msgstr "此物不屬於您。"
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
 msgstr "您未取得檢視此資料夾的許可。"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "簡單又強大的檔案管理器"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Launchpad 翻譯者"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr "「檔案」不是您的預設檔案瀏覽器。"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
-msgid "Set as default"
-msgstr "設為預設值"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "忽略"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:408
-msgid "Undo"
-msgstr "取消動作"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:409
-#: /home/codygarver/f/po/../src/View/Window.vala:629
-msgid "Undo the last action"
-msgstr "取消上個動作"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:418
-msgid "Redo"
-msgstr "再次動作"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:419
-#: /home/codygarver/f/po/../src/View/Window.vala:632
-msgid "Redo the last action"
-msgstr "再次執行上個動作"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:607
-msgid "_File"
-msgstr "檔案(_F)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:608
-msgid "_Edit"
-msgstr "編輯(_E)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:609
-msgid "_View"
-msgstr "檢視(_V)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:610
-msgid "_Go"
-msgstr "前往(_G)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:611
-msgid "_Help"
-msgstr "幫助(_H)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:613
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "新增視窗(_W)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:614
-msgid "Open another Files window for the displayed location"
-msgstr "為顯示的位置開啟另一個「檔案」視窗"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:617
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "新增分頁(_T)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:618
-msgid "Open another tab for the displayed location"
-msgstr "為已顯示的位置開啟另一個分頁"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:622
-msgid "_Close"
-msgstr "關閉(_C)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:623
-msgid "Close this folder"
-msgstr "關閉本資料夾"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:628
-msgid "_Undo"
-msgstr "取消動作(_U)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:631
-msgid "_Redo"
-msgstr "再次動作(_R)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:634
-msgid "Open _Parent"
-msgstr "開啟上層(_P)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:635
-msgid "Open the parent folder"
-msgstr "開啟上層資料夾"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:637
-msgid "_Back"
-msgstr "返回(_B)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:638
-msgid "Go to the previous visited location"
-msgstr "回到上一個瀏覽過的位置"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:641
-msgid "_Forward"
-msgstr "前進(_F)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:642
-msgid "Go to the next visited location"
-msgstr "前住下一個瀏覽過的位置"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:644
-msgid "_Reload"
-msgstr "重新載入(_R)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:645
-msgid "Reload the current location"
-msgstr "重新載入目前的位置"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:648
-msgid "_Home Folder"
-msgstr "資料夾(_H)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:649
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
-msgid "Open your personal folder"
-msgstr "開啟您的個人資料夾"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:652
-msgid "_Trash"
-msgstr "垃圾(_T)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:653
-msgid "Open your personal trash folder"
-msgstr "開啟您的個人垃圾筒資料夾"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:656
-msgid "_Network"
-msgstr "網路(_N)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:657
-msgid "Browse bookmarked and local network locations"
-msgstr "瀏覽已加入書籤的及本地網路的位置"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:660
-msgid "Zoom _In"
-msgstr "拉近(_I)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:661
-msgid "Increase the view size"
-msgstr "增加檢視的大小"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:672
-msgid "Zoom _Out"
-msgstr "拉遠(_O)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:673
-msgid "Decrease the view size"
-msgstr "減少檢視的大小"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:680
-msgid "Normal Si_ze"
-msgstr "原來大小(_Z)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:681
-msgid "Use the normal view size"
-msgstr "使用一般的檢視大小"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:684
-msgid "Next Tab"
-msgstr "下個分頁"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:688
-msgid "Previous Tab"
-msgstr "前個分頁"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:692
-msgid "Connect to _Server..."
-msgstr "連接伺服器(_S)…"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:693
-msgid "Connect to a remote computer or shared disk"
-msgstr "連接遠端電腦或磁碟共享"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:696
-msgid "_About"
-msgstr "關於(_A)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:697
-msgid "Display credits"
-msgstr "顯示致謝名單"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:700
-msgid "Report a Problem..."
-msgstr "回報問題..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:701
-msgid "File a bug on Launchpad"
-msgstr "在 Launchpad 上提交臭蟲回報"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:704
-msgid "Get Help Online..."
-msgstr "取得線上幫助...."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:708
-msgid "Translate This Application..."
-msgstr "翻譯這個程式..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:717
-msgid "Show _Hidden Files"
-msgstr "顯示隱藏檔(_H)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:718
-msgid "Toggle the display of hidden files in the current window"
-msgstr "在目前視窗中切換隱藏檔的顯示與否"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:722
-msgid "_Places"
-msgstr "位置(_P)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:723
-msgid "Change the visibility of this window's side pane"
-msgstr "顯示或隱藏本視窗的側窗格"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:731
-msgid "Icon"
-msgstr "圖示"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:734
-msgid "List"
-msgstr "列表"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:737
-msgid "Columns"
-msgstr "欄"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
-msgstr "AFP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
-msgstr "DAV"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr "FTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "網路"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr "SMB"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "垃圾"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr "在新分頁中開啟"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr "以此開啟"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr "其他應用程式…"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -360,6 +72,14 @@ msgstr ""
 "無法建立資料夾\n"
 "\n"
 "%s"
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "簡單又強大的檔案管理器"
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Launchpad 翻譯者"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -411,72 +131,357 @@ msgstr "Mime 類型"
 msgid "MimeTypes"
 msgstr "Mime 類型"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:424
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "大小"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
 msgid "Location"
 msgstr "位置"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:427
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
 msgid "Target"
 msgstr "目標"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Origin Location"
 msgstr "原始位置"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
 msgstr "資訊:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:478
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
 msgstr "其他應用程式…"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:502
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
 msgid "Open with:"
 msgstr "以此開啟："
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:522
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
 msgid "Usage:"
 msgstr "用量："
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:527
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
 msgid "Device usage:"
 msgstr "裝置用量："
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:534
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s 可用，共 %s (已使用 %d%% )"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:673
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
 msgstr "讀取"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:678
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
 msgid "Write"
 msgstr "寫入"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:683
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
 msgstr "執行"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:896
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:909
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
 msgid "Owner"
 msgstr "擁有者"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:901
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:913
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
 msgstr "群組"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
 msgstr "所有人"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1176
-msgid "Select an aplication to open "
-msgstr "選取用來開啟的應用程式 "
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
+msgid "Select an application to open "
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "「檔案」不是您的預設檔案瀏覽器。"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:132
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
+msgid "Set as default"
+msgstr "設為預設值"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "忽略"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+msgid "Undo"
+msgstr "取消動作"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:400
+#: /home/codygarver/f/po/../src/View/Window.vala:620
+msgid "Undo the last action"
+msgstr "取消上個動作"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+msgid "Redo"
+msgstr "再次動作"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:410
+#: /home/codygarver/f/po/../src/View/Window.vala:623
+msgid "Redo the last action"
+msgstr "再次執行上個動作"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:598
+msgid "_File"
+msgstr "檔案(_F)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:599
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:600
+msgid "_View"
+msgstr "檢視(_V)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:601
+msgid "_Go"
+msgstr "前往(_G)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:602
+msgid "_Help"
+msgstr "幫助(_H)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:604
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "新增視窗(_W)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:605
+msgid "Open another Files window for the displayed location"
+msgstr "為顯示的位置開啟另一個「檔案」視窗"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:608
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "新增分頁(_T)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:609
+msgid "Open another tab for the displayed location"
+msgstr "為已顯示的位置開啟另一個分頁"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:613
+msgid "_Close"
+msgstr "關閉(_C)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:614
+msgid "Close this folder"
+msgstr "關閉本資料夾"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:619
+msgid "_Undo"
+msgstr "取消動作(_U)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:622
+msgid "_Redo"
+msgstr "再次動作(_R)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:625
+msgid "Open _Parent"
+msgstr "開啟上層(_P)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:626
+msgid "Open the parent folder"
+msgstr "開啟上層資料夾"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:628
+msgid "_Back"
+msgstr "返回(_B)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:629
+msgid "Go to the previous visited location"
+msgstr "回到上一個瀏覽過的位置"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:632
+msgid "_Forward"
+msgstr "前進(_F)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:633
+msgid "Go to the next visited location"
+msgstr "前住下一個瀏覽過的位置"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:635
+msgid "_Reload"
+msgstr "重新載入(_R)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:636
+msgid "Reload the current location"
+msgstr "重新載入目前的位置"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:639
+msgid "_Home Folder"
+msgstr "資料夾(_H)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+msgid "Open your personal folder"
+msgstr "開啟您的個人資料夾"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:643
+msgid "_Trash"
+msgstr "垃圾(_T)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:644
+msgid "Open your personal trash folder"
+msgstr "開啟您的個人垃圾筒資料夾"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:647
+msgid "_Network"
+msgstr "網路(_N)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:648
+msgid "Browse bookmarked and local network locations"
+msgstr "瀏覽已加入書籤的及本地網路的位置"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:651
+msgid "Zoom _In"
+msgstr "拉近(_I)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:652
+msgid "Increase the view size"
+msgstr "增加檢視的大小"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:663
+msgid "Zoom _Out"
+msgstr "拉遠(_O)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:664
+msgid "Decrease the view size"
+msgstr "減少檢視的大小"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:671
+msgid "Normal Si_ze"
+msgstr "原來大小(_Z)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:672
+msgid "Use the normal view size"
+msgstr "使用一般的檢視大小"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:675
+msgid "Next Tab"
+msgstr "下個分頁"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:679
+msgid "Previous Tab"
+msgstr "前個分頁"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:683
+msgid "Connect to _Server..."
+msgstr "連接伺服器(_S)…"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:684
+msgid "Connect to a remote computer or shared disk"
+msgstr "連接遠端電腦或磁碟共享"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:687
+msgid "_About"
+msgstr "關於(_A)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:688
+msgid "Display credits"
+msgstr "顯示致謝名單"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:691
+msgid "Report a Problem..."
+msgstr "回報問題..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:692
+msgid "File a bug on Launchpad"
+msgstr "在 Launchpad 上提交臭蟲回報"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:695
+msgid "Get Help Online..."
+msgstr "取得線上幫助...."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:699
+msgid "Translate This Application..."
+msgstr "翻譯這個程式..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:708
+msgid "Show _Hidden Files"
+msgstr "顯示隱藏檔(_H)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:709
+msgid "Toggle the display of hidden files in the current window"
+msgstr "在目前視窗中切換隱藏檔的顯示與否"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:713
+msgid "_Places"
+msgstr "位置(_P)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:714
+msgid "Change the visibility of this window's side pane"
+msgstr "顯示或隱藏本視窗的側窗格"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:722
+msgid "Icon"
+msgstr "圖示"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:725
+msgid "List"
+msgstr "列表"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:728
+msgid "Columns"
+msgstr "欄"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "AFP"
+msgstr "AFP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "DAV"
+msgstr "DAV"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+msgid "DAVS"
+msgstr "DAVS"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "FTP"
+msgstr "FTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
+msgid "Network"
+msgstr "網路"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+msgid "SFTP"
+msgstr "SFTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
+msgid "SMB"
+msgstr "SMB"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
+msgid "Trash"
+msgstr "垃圾"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
+msgid "Open in New Tab"
+msgstr "在新分頁中開啟"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr "以此開啟"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr "其他應用程式…"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -510,6 +515,14 @@ msgstr "%u 個資料夾"
 msgid "%u items selected (%s)"
 msgstr "已選取 %u 個項目（%s）"
 
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "單次點擊"
+
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "是否可以用單次點擊啟動檢視中的項目"
+
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
 msgstr "配置模式"
@@ -517,6 +530,340 @@ msgstr "配置模式"
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
 msgstr "版面配置模式"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "檔案名稱"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "類型"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:205
+#: /home/codygarver/f/po/../src/fm-columns-view.c:184
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "無法將 %s 重新命名為 %s"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:607
+#: /home/codygarver/f/po/../src/fm-directory-view.c:511
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+msgid "This folder is empty."
+msgstr "這個資料夾是空的。"
+
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "剪貼簿中沒有東西可以貼上"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "圖示目錄列表方式"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "圖示檢視"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+msgid "Invalid filename provided by XDS drag site"
+msgstr "來自  XDS 拖拉位置的無效檔案名稱"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "無法為 URL「%s」建立連結"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "使用「%s」來開啟選定的項目"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#, c-format
+msgid "_Open With %s"
+msgstr "以 %s 開啟(_O)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+msgid "_Open"
+msgstr "開啟(_O)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "在 %'d 個新分頁中開啟(_T)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "在 %'d 個新視窗中開啟(_N)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "以「貼上」指令來準備移動選定的檔案"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "以「貼上」指令來準備複製選定的檔案"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr "移動或複製剛才以「剪下」或「複製」指令選取過的檔案"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+msgid "Paste Into Folder"
+msgstr "貼到資料夾內"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr "移動或複製之前以「剪下」或「複製」指令所選取過的檔案至所選的資料夾"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+msgid "_Rename..."
+msgstr "重新命名(_R)…"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+msgid "Rename selected item"
+msgstr "將選定的項目重新命名"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+msgid "Create New _Folder"
+msgstr "建立新資料夾(_F)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+msgid "Create a new empty folder inside this folder"
+msgstr "在本資料夾中新增空白資料夾"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+msgid "Create New _File"
+msgstr "建立新檔案 (_F)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+msgid "_Empty File"
+msgstr "空白文件(_E)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+msgid "Create a new empty file inside this folder"
+msgstr "新增空白文件"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+msgid "Open the selected item"
+msgstr "打開所選的項目"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+msgid "Open in new Window"
+msgstr "在新視窗中開啟"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+msgid "Open each selected item in a new window"
+msgstr "在新的視窗中分別開啟每個選取的項目"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+msgid "Open each selected item in a new tab"
+msgstr "以新的分頁分別開啟每個選取的項目"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+msgid "Open Wit_h"
+msgstr "以此開啟(_H)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+msgid "Choose a program with which to open the selected item"
+msgstr "請選擇要用來開啟選定項目的程式"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+msgid "Other _Application..."
+msgstr "其他應用程式(_A)..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+msgid "Choose another application with which to open the selected item"
+msgstr "請選擇其它程式來開啟選定的項目"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+msgid "Mo_ve to Trash"
+msgstr "丟進垃圾筒(_V)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+msgid "Move each selected item to the Trash"
+msgstr "將每個選定的項目丟進垃圾筒"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+msgid "_Delete Permanently"
+msgstr "永久刪除(_D)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "將每個選定的項目直接刪除而不先丟進垃圾筒"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+msgid "_Restore"
+msgstr "還原(_R)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+msgid "Select All"
+msgstr "選取全部"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+msgid "_Properties"
+msgstr "屬性(_P)"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+msgid "View or modify the properties of each selected item"
+msgstr "檢視或修改每個選定項目的屬性"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+msgid "Set Color:"
+msgstr "設定色彩："
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
+msgid "Personal"
+msgstr "個人"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
+msgid "Your common places and bookmarks"
+msgstr "您的常用位置與書籤"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+msgid "Open the trash"
+msgstr "開啟垃圾筒"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
+msgid "Devices"
+msgstr "裝置"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
+msgid "Your local partitions and devices"
+msgstr "您的本地端分割區和裝置"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
+msgid "Open the contents of the File System"
+msgstr "開啟「檔案系統」的內容"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
+#, c-format
+msgid "Mount and open %s"
+msgstr "掛載並開啟 %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
+msgid "Your network places"
+msgstr "您的網路位置"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
+msgid "Entire network"
+msgstr "整個網路"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
+msgid "Browse the contents of the network"
+msgstr "瀏覽網路的內容"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
+msgid "_Start"
+msgstr "開啟(_S)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Power On"
+msgstr "電源開啟(_P)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
+msgid "_Safely Remove Drive"
+msgstr "安全的移除裝置(_S)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Connect Drive"
+msgstr "連接裝置(_C)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Disconnect Drive"
+msgstr "中斷裝置(_D)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
+msgid "_Start Multi-disk Device"
+msgstr "開啟多磁碟裝置(_S)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
+msgid "_Stop Multi-disk Device"
+msgstr "停止多磁碟裝置(_S)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
+msgid "_Unlock Drive"
+msgstr "解除裝置鎖定(_U)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
+msgid "_Lock Drive"
+msgstr "鎖定裝置(_L)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
+#, c-format
+msgid "Unable to start %s"
+msgstr "無法開啟 %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
+#, c-format
+msgid "Unable to eject %s"
+msgstr "無法退出 %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "無法監測 %s 的媒體變更"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
+#, c-format
+msgid "Unable to stop %s"
+msgstr "無法停止 %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
+msgid "Remove"
+msgstr "移除"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
+msgid "Rename..."
+msgstr "重新命名..."
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Mount"
+msgstr "掛載(_M)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Unmount"
+msgstr "卸載(_U)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
+msgid "_Eject"
+msgstr "退出(_E)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
+msgid "Empty _Trash"
+msgstr "清理垃圾(_T)"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
+msgid "Connect to Server…"
+msgstr "連接至伺服器..."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -637,59 +984,34 @@ msgstr "記住此密碼(_R)"
 msgid "Operation cancelled"
 msgstr "操作程序已取消"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
-msgid "Select All"
-msgstr "選取全部"
-
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "輸入法"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "單次點擊"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+msgid "_Move Here"
+msgstr "移動至此(_M)"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "是否可以用單次點擊啟動檢視中的項目"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+msgid "_Copy Here"
+msgstr "複製至此(_C)"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "檔案名稱"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+msgid "_Link Here"
+msgstr "連結至此(_L)"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "大小"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+msgid "Set as _Background"
+msgstr "設為背景(_B)"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "類型"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+msgid "Cancel"
+msgstr "取消"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:186
+#: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
-msgid "Failed to rename %s to %s"
-msgstr "無法將 %s 重新命名為 %s"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/f/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "這個資料夾是空的。"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "圖示目錄列表方式"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "圖示檢視"
-
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "剪貼簿中沒有東西可以貼上"
+msgid "Failed to execute file \"%s\""
+msgstr "無法執行檔案「%s」"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -735,327 +1057,6 @@ msgstr "依修改日期(_D)"
 msgid "Keep icons sorted by modification date in rows"
 msgstr "以修改日期排列圖示"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "個人"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "您的常用位置與書籤"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "開啟垃圾筒"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "裝置"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "您的本地端分割區和裝置"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "開啟「檔案系統」的內容"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "掛載並開啟 %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "您的網路位置"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "整個網路"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "瀏覽網路的內容"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "開啟(_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "停止(_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "電源開啟(_P)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "安全的移除裝置(_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "連接裝置(_C)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "中斷裝置(_D)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "開啟多磁碟裝置(_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "停止多磁碟裝置(_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "解除裝置鎖定(_U)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "鎖定裝置(_L)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "無法開啟 %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "無法退出 %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "無法監測 %s 的媒體變更"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "無法停止 %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
-msgid "_Open"
-msgstr "開啟(_O)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
-msgid "Open in New _Tab"
-msgstr "在新分頁中開啟(_T)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
-msgid "Open in New _Window"
-msgstr "在新視窗中開啟(_W)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "移除"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "重新命名..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "掛載(_M)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "卸載(_U)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "退出(_E)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "清理垃圾(_T)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr "連接至伺服器..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1183
-msgid "Invalid filename provided by XDS drag site"
-msgstr "來自  XDS 拖拉位置的無效檔案名稱"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1341
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "無法為 URL「%s」建立連結"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "使用「%s」來開啟選定的項目"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
-#, c-format
-msgid "_Open With %s"
-msgstr "以 %s 開啟(_O)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "在 %'d 個新分頁中開啟(_T)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "在 %'d 個新視窗中開啟(_N)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "以「貼上」指令來準備移動選定的檔案"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "以「貼上」指令來準備複製選定的檔案"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "移動或複製剛才以「剪下」或「複製」指令選取過的檔案"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
-msgid "Paste Into Folder"
-msgstr "貼到資料夾內"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr "移動或複製之前以「剪下」或「複製」指令所選取過的檔案至所選的資料夾"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
-msgid "_Rename..."
-msgstr "重新命名(_R)…"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
-msgid "Rename selected item"
-msgstr "將選定的項目重新命名"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
-msgid "Create New _Folder"
-msgstr "建立新資料夾(_F)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
-msgid "Create a new empty folder inside this folder"
-msgstr "在本資料夾中新增空白資料夾"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
-msgid "Create New _File"
-msgstr "建立新檔案 (_F)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
-msgid "_Empty File"
-msgstr "空白文件(_E)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
-msgid "Create a new empty file inside this folder"
-msgstr "新增空白文件"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
-msgid "Open the selected item"
-msgstr "打開所選的項目"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
-msgid "Open in new Window"
-msgstr "在新視窗中開啟"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
-msgid "Open each selected item in a new window"
-msgstr "在新的視窗中分別開啟每個選取的項目"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-msgid "Open each selected item in a new tab"
-msgstr "以新的分頁分別開啟每個選取的項目"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
-msgid "Open Wit_h"
-msgstr "以此開啟(_H)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
-msgid "Choose a program with which to open the selected item"
-msgstr "請選擇要用來開啟選定項目的程式"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
-msgid "Other _Application..."
-msgstr "其他應用程式(_A)..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
-msgid "Choose another application with which to open the selected item"
-msgstr "請選擇其它程式來開啟選定的項目"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
-msgid "Mo_ve to Trash"
-msgstr "丟進垃圾筒(_V)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
-msgid "Move each selected item to the Trash"
-msgstr "將每個選定的項目丟進垃圾筒"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
-msgid "_Delete Permanently"
-msgstr "永久刪除(_D)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "將每個選定的項目直接刪除而不先丟進垃圾筒"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
-msgid "_Restore"
-msgstr "還原(_R)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
-msgid "_Properties"
-msgstr "屬性(_P)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
-msgid "View or modify the properties of each selected item"
-msgstr "檢視或修改每個選定項目的屬性"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
-msgid "Set Color:"
-msgstr "設定色彩："
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "移動至此(_M)"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "複製至此(_C)"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "連結至此(_L)"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "設為背景(_B)"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "取消"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "無法執行檔案「%s」"
-
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "顯示此程式的版本。"
@@ -1090,6 +1091,36 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能與 URI 一起使用。"
 
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "檔案操作"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "所有的檔案操作都已成功完成"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d 個檔案操作進行中"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "顯示詳細資料"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "顯示複製視窗"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "取消所有正在進行的動作"
+
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "瀏覽您的檔案"
@@ -1106,199 +1137,17 @@ msgstr "以管理員身分開啟新視窗(_A)"
 msgid "Files"
 msgstr "檔案"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
-msgid "File Operations"
-msgstr "檔案操作"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "今日%p %-I:%M"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
-msgid "All file operations have been successfully completed"
-msgstr "所有的檔案操作都已成功完成"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "昨日%p %-I:%M"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d 個檔案操作進行中"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
-msgid "Show Details"
-msgstr "顯示詳細資料"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
-msgid "Show Copy Dialog"
-msgstr "顯示複製視窗"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
-msgid "Cancel All In-progress Actions"
-msgstr "取消所有正在進行的動作"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "無法決定「%s」的原始位置 "
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "此項目不能從垃圾筒還原。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "合併資料夾「%s」？"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr "合併功能會在替換掉該資料夾中任何與正被複製過來但發生衝突的檔案之前，先尋求確認。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "在「%s」已有一個相同名稱的較舊資料夾。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "在「%s」已有一個相同名稱的較新資料夾。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "在「%s」已有另一個相同名稱的資料夾。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
-msgid "Replacing it will remove all files in the folder."
-msgstr "取代它將會移除該資料夾中所有的檔案。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "取代資料夾「%s」？"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "在「%s」已有一個相同名稱的資料夾。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "取代檔案「%s」？"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
-msgid "Replacing it will overwrite its content."
-msgstr "取代它將會覆蓋其內容。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "在「%s」中已有一個相同名稱的較舊檔案。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "在「%s」中已有一個相同名稱的較新檔案。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "在「%s」中已有另一個相同名稱的檔案。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
-msgid "Original file"
-msgstr "原始檔案"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Size:"
-msgstr "大小："
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Type:"
-msgstr "類型："
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
-msgid "Last modified:"
-msgstr "上次日期："
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
-msgid "Replace with"
-msgstr "替換為"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
-msgid "Merge"
-msgstr "合併"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
-msgid "_Select a new name for the destination"
-msgstr "為目的端選取新的名稱(_S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
-msgid "Reset"
-msgstr "重設"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
-msgid "Apply this action to all files"
-msgstr "將這個動作套用至所有檔案"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "略過(_S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
-msgid "Re_name"
-msgstr "重新命名(_N)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
-msgid "Replace"
-msgstr "取代"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
-msgid "File conflict"
-msgstr "檔案發生衝突"
-
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "準備中"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "顯示更多細節(_D)"
-
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (無效的統一碼)"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y年%b%-d日  %a %p %-I:%M"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1646,17 +1495,152 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "再次執行 %d 個項目其改變擁有者的動作"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "今日%p %-I:%M"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "合併資料夾「%s」？"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "昨日%p %-I:%M"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr "合併功能會在替換掉該資料夾中任何與正被複製過來但發生衝突的檔案之前，先尋求確認。"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y年%b%-d日  %a %p %-I:%M"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的較舊資料夾。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的較新資料夾。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有另一個相同名稱的資料夾。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+msgid "Replacing it will remove all files in the folder."
+msgstr "取代它將會移除該資料夾中所有的檔案。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "取代資料夾「%s」？"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的資料夾。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "取代檔案「%s」？"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+msgid "Replacing it will overwrite its content."
+msgstr "取代它將會覆蓋其內容。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "在「%s」中已有一個相同名稱的較舊檔案。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "在「%s」中已有一個相同名稱的較新檔案。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "在「%s」中已有另一個相同名稱的檔案。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+msgid "Original file"
+msgstr "原始檔案"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Size:"
+msgstr "大小："
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Type:"
+msgstr "類型："
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+msgid "Last modified:"
+msgstr "上次日期："
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+msgid "Replace with"
+msgstr "替換為"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+msgid "Merge"
+msgstr "合併"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+msgid "_Select a new name for the destination"
+msgstr "為目的端選取新的名稱(_S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+msgid "Reset"
+msgstr "重設"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+msgid "Apply this action to all files"
+msgstr "將這個動作套用至所有檔案"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "略過(_S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+msgid "Re_name"
+msgstr "重新命名(_N)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+msgid "Replace"
+msgstr "取代"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+msgid "File conflict"
+msgstr "檔案發生衝突"
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "準備中"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -2290,6 +2274,14 @@ msgstr "在 %F 中建立目錄時發生錯誤。"
 msgid "Emptying Trash"
 msgstr "正在清空垃圾筒"
 
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (無效的統一碼)"
+
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "顯示更多細節(_D)"
+
 #: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
@@ -2319,6 +2311,15 @@ msgstr "檔案名稱中不能使用斜線 ( / )"
 #: /home/codygarver/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
 msgstr "頂端層級檔案無法更改名稱"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "無法決定「%s」的原始位置 "
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "此項目不能從垃圾筒還原。"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"

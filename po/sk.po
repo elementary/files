@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-10-02 11:59-0500\n"
+"POT-Creation-Date: 2013-12-16 04:42-0600\n"
 "PO-Revision-Date: 2013-10-27 18:23+0000\n"
 "Last-Translator: Milan Slovák <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2013-12-12 05:54+0000\n"
+"X-Launchpad-Export-Date: 2013-12-17 06:10+0000\n"
 "X-Generator: Launchpad (build 16869)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -43,294 +43,6 @@ msgstr "To nepatrí k vám."
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte oprávnenie pre prezeranie tohoto priečinka."
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "Jednoduchý a výkonný správca súborov"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Prekladatelia na Launchpad-e"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr "Prehliadač Súbory nie je nastavený ako predvolený správca súborov"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
-msgid "Set as default"
-msgstr "Nastaviť ako predvolený"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "Ignorovať"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:408
-msgid "Undo"
-msgstr "Vrátiť späť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:409
-#: /home/codygarver/f/po/../src/View/Window.vala:629
-msgid "Undo the last action"
-msgstr "Vrátiť späť poslednú akciu"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:418
-msgid "Redo"
-msgstr "Znovu"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:419
-#: /home/codygarver/f/po/../src/View/Window.vala:632
-msgid "Redo the last action"
-msgstr "Vrátiť poslednú akciu"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:607
-msgid "_File"
-msgstr "Súbor(_F)"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:608
-msgid "_Edit"
-msgstr "_Upraviť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:609
-msgid "_View"
-msgstr "_Zobraziť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:610
-msgid "_Go"
-msgstr "_Prejsť na"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:611
-msgid "_Help"
-msgstr "_Pomocník"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:613
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Nové _okno"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:614
-msgid "Open another Files window for the displayed location"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Window.vala:617
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nová _karta"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:618
-msgid "Open another tab for the displayed location"
-msgstr "Otvorí zobrazené umiestnenie na ďalšej karte"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:622
-msgid "_Close"
-msgstr "_Zavrieť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:623
-msgid "Close this folder"
-msgstr "Zatvoriť tento priečinok"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:628
-msgid "_Undo"
-msgstr "_Vrátiť späť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:631
-msgid "_Redo"
-msgstr "_Opakovať vrátené"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:634
-msgid "Open _Parent"
-msgstr "Otvoriť _nadradený"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:635
-msgid "Open the parent folder"
-msgstr "Otvoriť nadradený priečinok"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:637
-msgid "_Back"
-msgstr "_Späť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:638
-msgid "Go to the previous visited location"
-msgstr "Prejsť na predchádzajúce navštívené umiestnenie"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:641
-msgid "_Forward"
-msgstr "_Dopredu"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:642
-msgid "Go to the next visited location"
-msgstr "Prejsť na nasledovné navštívené umiestnenie"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:644
-msgid "_Reload"
-msgstr "_Znovu načítať"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:645
-msgid "Reload the current location"
-msgstr "Znovu načíta aktuálne umiestnenie"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:648
-msgid "_Home Folder"
-msgstr "_Domovský priečinok"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:649
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
-msgid "Open your personal folder"
-msgstr "Otvoriť váš osobný priečinok"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:652
-msgid "_Trash"
-msgstr "_Kôš"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:653
-msgid "Open your personal trash folder"
-msgstr "Otvoriť osobný priečinok odpadkového koša"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:656
-msgid "_Network"
-msgstr "_Sieť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:657
-msgid "Browse bookmarked and local network locations"
-msgstr "Prehliadať záložky a miesta v lokálnej sieti"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:660
-msgid "Zoom _In"
-msgstr "_Priblížiť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:661
-msgid "Increase the view size"
-msgstr "Zväčšiť veľkosť zobrazenia"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:672
-msgid "Zoom _Out"
-msgstr "Z_menšiť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:673
-msgid "Decrease the view size"
-msgstr "Zmenší veľkosť zobrazenia"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:680
-msgid "Normal Si_ze"
-msgstr "Normálna _veľkosť"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:681
-msgid "Use the normal view size"
-msgstr "Použiť normálnu veľkosť zobrazenia"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:684
-msgid "Next Tab"
-msgstr "Nasledujúca karta"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:688
-msgid "Previous Tab"
-msgstr "Predchádzajúca karta"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:692
-msgid "Connect to _Server..."
-msgstr "Pripojiť k _serveru..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:693
-msgid "Connect to a remote computer or shared disk"
-msgstr "Pripojiť k vzdialenému serveru alebo zdieľanému disku"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:696
-msgid "_About"
-msgstr "_O programe"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:697
-msgid "Display credits"
-msgstr "Zobraziť poďakovania"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:700
-msgid "Report a Problem..."
-msgstr "Nahlásiť problém..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:701
-msgid "File a bug on Launchpad"
-msgstr "Nahlásiť chybu na Launchpad-e"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:704
-msgid "Get Help Online..."
-msgstr "Získať pomoc z internetu..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:708
-msgid "Translate This Application..."
-msgstr "Preložiť túto aplikáciu..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:717
-msgid "Show _Hidden Files"
-msgstr "Zobraziť _Skryté súbory"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:718
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Prepína zobrazovanie skrytých súborov v aktuálnom okne"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:722
-msgid "_Places"
-msgstr "_Miesta"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:723
-msgid "Change the visibility of this window's side pane"
-msgstr "Zmeniť viditeľnosť bočného panelu tohoto okna"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:731
-msgid "Icon"
-msgstr "Ikona"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:734
-msgid "List"
-msgstr "Zoznam"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:737
-msgid "Columns"
-msgstr "Stĺpce"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
-msgstr "AFP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
-msgstr "DAV"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr "FTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "Sieť"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr "SMB"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "Kôš"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr "Otvoriť na novej karte"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr "Otvoriť s"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr "Ďaľšie aplikácie.."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -360,6 +72,14 @@ msgstr ""
 "Zlyhalo vytvorenie priečinka\n"
 "\n"
 "%s"
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Jednoduchý a výkonný správca súborov"
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Prekladatelia na Launchpad-e"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -411,72 +131,357 @@ msgstr "MimeTyp"
 msgid "MimeTypes"
 msgstr "Mime Typy"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:424
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Veľkosť"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
 msgid "Location"
 msgstr "Umiestnenie"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:427
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
 msgid "Target"
 msgstr "Cieľ"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Origin Location"
 msgstr "Pôvodné umiestnenie"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
 msgstr "Info:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:478
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
 msgstr "Ďaľšie aplikácie"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:502
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
 msgid "Open with:"
 msgstr "Otvoriť s:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:522
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
 msgid "Usage:"
 msgstr "Použitie:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:527
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
 msgid "Device usage:"
 msgstr "Využitie zariadenia:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:534
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s voľné %s (%d%% využité)"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:673
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
 msgstr "Čítanie"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:678
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
 msgid "Write"
 msgstr "Zápis"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:683
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
 msgstr "Spustiť"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:896
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:909
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
 msgid "Owner"
 msgstr "Vlastník"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:901
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:913
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
 msgstr "Skupina"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
 msgstr "Všetci"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1176
-msgid "Select an aplication to open "
-msgstr "Vyberte aplikáciu na otvorenie "
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
+msgid "Select an application to open "
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "Prehliadač Súbory nie je nastavený ako predvolený správca súborov"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:132
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
+msgid "Set as default"
+msgstr "Nastaviť ako predvolený"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "Ignorovať"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+msgid "Undo"
+msgstr "Vrátiť späť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:400
+#: /home/codygarver/f/po/../src/View/Window.vala:620
+msgid "Undo the last action"
+msgstr "Vrátiť späť poslednú akciu"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+msgid "Redo"
+msgstr "Znovu"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:410
+#: /home/codygarver/f/po/../src/View/Window.vala:623
+msgid "Redo the last action"
+msgstr "Vrátiť poslednú akciu"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:598
+msgid "_File"
+msgstr "Súbor(_F)"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:599
+msgid "_Edit"
+msgstr "_Upraviť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:600
+msgid "_View"
+msgstr "_Zobraziť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:601
+msgid "_Go"
+msgstr "_Prejsť na"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:602
+msgid "_Help"
+msgstr "_Pomocník"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:604
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Nové _okno"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:605
+msgid "Open another Files window for the displayed location"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Window.vala:608
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nová _karta"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:609
+msgid "Open another tab for the displayed location"
+msgstr "Otvorí zobrazené umiestnenie na ďalšej karte"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:613
+msgid "_Close"
+msgstr "_Zavrieť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:614
+msgid "Close this folder"
+msgstr "Zatvoriť tento priečinok"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:619
+msgid "_Undo"
+msgstr "_Vrátiť späť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:622
+msgid "_Redo"
+msgstr "_Opakovať vrátené"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:625
+msgid "Open _Parent"
+msgstr "Otvoriť _nadradený"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:626
+msgid "Open the parent folder"
+msgstr "Otvoriť nadradený priečinok"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:628
+msgid "_Back"
+msgstr "_Späť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:629
+msgid "Go to the previous visited location"
+msgstr "Prejsť na predchádzajúce navštívené umiestnenie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:632
+msgid "_Forward"
+msgstr "_Dopredu"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:633
+msgid "Go to the next visited location"
+msgstr "Prejsť na nasledovné navštívené umiestnenie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:635
+msgid "_Reload"
+msgstr "_Znovu načítať"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:636
+msgid "Reload the current location"
+msgstr "Znovu načíta aktuálne umiestnenie"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:639
+msgid "_Home Folder"
+msgstr "_Domovský priečinok"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+msgid "Open your personal folder"
+msgstr "Otvoriť váš osobný priečinok"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:643
+msgid "_Trash"
+msgstr "_Kôš"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:644
+msgid "Open your personal trash folder"
+msgstr "Otvoriť osobný priečinok odpadkového koša"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:647
+msgid "_Network"
+msgstr "_Sieť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:648
+msgid "Browse bookmarked and local network locations"
+msgstr "Prehliadať záložky a miesta v lokálnej sieti"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:651
+msgid "Zoom _In"
+msgstr "_Priblížiť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:652
+msgid "Increase the view size"
+msgstr "Zväčšiť veľkosť zobrazenia"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:663
+msgid "Zoom _Out"
+msgstr "Z_menšiť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:664
+msgid "Decrease the view size"
+msgstr "Zmenší veľkosť zobrazenia"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:671
+msgid "Normal Si_ze"
+msgstr "Normálna _veľkosť"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:672
+msgid "Use the normal view size"
+msgstr "Použiť normálnu veľkosť zobrazenia"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:675
+msgid "Next Tab"
+msgstr "Nasledujúca karta"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:679
+msgid "Previous Tab"
+msgstr "Predchádzajúca karta"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:683
+msgid "Connect to _Server..."
+msgstr "Pripojiť k _serveru..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:684
+msgid "Connect to a remote computer or shared disk"
+msgstr "Pripojiť k vzdialenému serveru alebo zdieľanému disku"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:687
+msgid "_About"
+msgstr "_O programe"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:688
+msgid "Display credits"
+msgstr "Zobraziť poďakovania"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:691
+msgid "Report a Problem..."
+msgstr "Nahlásiť problém..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:692
+msgid "File a bug on Launchpad"
+msgstr "Nahlásiť chybu na Launchpad-e"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:695
+msgid "Get Help Online..."
+msgstr "Získať pomoc z internetu..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:699
+msgid "Translate This Application..."
+msgstr "Preložiť túto aplikáciu..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:708
+msgid "Show _Hidden Files"
+msgstr "Zobraziť _Skryté súbory"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:709
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Prepína zobrazovanie skrytých súborov v aktuálnom okne"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:713
+msgid "_Places"
+msgstr "_Miesta"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:714
+msgid "Change the visibility of this window's side pane"
+msgstr "Zmeniť viditeľnosť bočného panelu tohoto okna"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:722
+msgid "Icon"
+msgstr "Ikona"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:725
+msgid "List"
+msgstr "Zoznam"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:728
+msgid "Columns"
+msgstr "Stĺpce"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "AFP"
+msgstr "AFP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "DAV"
+msgstr "DAV"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+msgid "DAVS"
+msgstr "DAVS"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "FTP"
+msgstr "FTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
+msgid "Network"
+msgstr "Sieť"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+msgid "SFTP"
+msgstr "SFTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
+msgid "SMB"
+msgstr "SMB"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
+msgid "Trash"
+msgstr "Kôš"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
+msgid "Open in New Tab"
+msgstr "Otvoriť na novej karte"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr "Otvoriť s"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr "Ďaľšie aplikácie.."
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -510,6 +515,14 @@ msgstr "%u priečinok"
 msgid "%u items selected (%s)"
 msgstr "%u položiek vybraných (%s)"
 
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Jednoduché kliknutie"
+
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Rozhoduje, či sa zobrazené položky aktivujú jednoduchým kliknutím"
+
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
 msgstr ""
@@ -517,6 +530,346 @@ msgstr ""
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
 msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Názov súboru"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Typ"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:205
+#: /home/codygarver/f/po/../src/fm-columns-view.c:184
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Premenovanie %s na %s zlyhalo"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:607
+#: /home/codygarver/f/po/../src/fm-directory-view.c:511
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+msgid "This folder is empty."
+msgstr "Tento priečinok je prázdny."
+
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "V schránke nie je nič, čo by ste mohli vložiť"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Zobrazenie priečinkov ikonami"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Pohľad Ikony"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Neplatný názov súboru poskytovaný XDS drag site"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Nepodarilo sa vytvoriť odkaz na adresu \"%s\""
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Použiť \"%s\" pre otvorenie vybranej položky"
+msgstr[1] "Použiť \"%s\" pre otvorenie vybraných položiek"
+msgstr[2] "Použiť \"%s\" pre otvorenie vybraných položiek"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#, c-format
+msgid "_Open With %s"
+msgstr "_Otvoriť pomocou %s"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+msgid "_Open"
+msgstr "_Otvoriť"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+msgid "Open in New _Tab"
+msgstr "Otvoriť na novej _karte"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+msgid "Open in New _Window"
+msgstr "Otvoriť v novom _okne"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "Pripraviť vybrané súbory pre presun príkazom Vložiť"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "Pripraviť vybrané súbory pre kopírovanie príkazom Vložiť"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Presunúť alebo skopírovať súbory vybrané predcházajúcim príkazom Vystrihnúť "
+"alebo Kopírovať"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+msgid "Paste Into Folder"
+msgstr "Vložiť do priečinka"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Presunie alebo skopíruje súbory vybrané predchádzajúcim príkazom Vystrihnúť "
+"alebo Kopírovať do vybraného priečinka"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+msgid "_Rename..."
+msgstr "_Premenovať..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+msgid "Rename selected item"
+msgstr "Premenovať vybranú položku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+msgid "Create New _Folder"
+msgstr "Vytvoriť nový _priečinok"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+msgid "Create a new empty folder inside this folder"
+msgstr "Vytvorí nový prázdny priečinok v tomto priečinku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+msgid "Create New _File"
+msgstr "Vytvorí nový _súbor"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+msgid "_Empty File"
+msgstr "_Prázdny súbor"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+msgid "Create a new empty file inside this folder"
+msgstr "Vytvorí nový prázdny súbor v tomto priečinku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+msgid "Open the selected item"
+msgstr "Otvorí vybranú položku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+msgid "Open in new Window"
+msgstr "Otvoriť v novom okne"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+msgid "Open each selected item in a new window"
+msgstr "Otvorí každú vybranú položku v novom okne"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+msgid "Open each selected item in a new tab"
+msgstr "Otvorí každú vybranú položku na novej karte"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+msgid "Open Wit_h"
+msgstr "Otvoriť _pomocou"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+msgid "Choose a program with which to open the selected item"
+msgstr "Vyberte program, ktorým chcete otvoriť vybranú položku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+msgid "Other _Application..."
+msgstr "Iná _aplikácia..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+msgid "Choose another application with which to open the selected item"
+msgstr "Vyberte iný program, ktorým chcete otvoriť vybranú položku"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+msgid "Mo_ve to Trash"
+msgstr "_Presunúť do Koša"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+msgid "Move each selected item to the Trash"
+msgstr "Presunie každú vybranú položku do koša"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+msgid "_Delete Permanently"
+msgstr "_Odstrániť natrvalo"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Odstráni každú vybranú položku bez presunu do koša"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+msgid "_Restore"
+msgstr "_Obnoviť"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+msgid "Select All"
+msgstr "Vybrať všetko"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+msgid "_Properties"
+msgstr "_Vlastnosti"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+msgid "View or modify the properties of each selected item"
+msgstr "Zobrazí alebo upraví vlastnosti každej vybranej položky"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+msgid "Set Color:"
+msgstr "Nastaviť farbu:"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
+msgid "Personal"
+msgstr "Osobné"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
+msgid "Your common places and bookmarks"
+msgstr "Vaše bežné miesta a záložky"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+msgid "Open the trash"
+msgstr "Otvoriť kôš"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
+msgid "Devices"
+msgstr "Zariadenia"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
+msgid "Your local partitions and devices"
+msgstr "Vaše miestne partície a zariadenia"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
+msgid "Open the contents of the File System"
+msgstr "Otvoriť obsah súborového systému"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
+#, c-format
+msgid "Mount and open %s"
+msgstr "Pripojiť a otvoriť %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
+msgid "Your network places"
+msgstr "Vaše miesta v sieti"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
+msgid "Entire network"
+msgstr "Celá sieť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
+msgid "Browse the contents of the network"
+msgstr "Prehliadať obsah siete"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
+msgid "_Start"
+msgstr "_Spustiť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Stop"
+msgstr "Za_staviť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Power On"
+msgstr "Za_pnúť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
+msgid "_Safely Remove Drive"
+msgstr "_Bezpečne odobrať jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Connect Drive"
+msgstr "_Pripojiť jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Disconnect Drive"
+msgstr "O_dpojiť jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
+msgid "_Start Multi-disk Device"
+msgstr "_Spustiť viacdiskovú jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
+msgid "_Stop Multi-disk Device"
+msgstr "Za_staviť viacdiskovú jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
+msgid "_Unlock Drive"
+msgstr "_Odomknúť jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
+msgid "_Lock Drive"
+msgstr "_Zamknúť jednotku"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
+#, c-format
+msgid "Unable to start %s"
+msgstr "Nepodarilo sa spustiť %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Nepodarilo sa vysunúť %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Nepodarilo sa vyžiadať kontrolu média %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Nepodarilo sa zastaviť %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
+msgid "Remove"
+msgstr "Odstrániť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
+msgid "Rename..."
+msgstr "Premenovať..."
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Mount"
+msgstr "_Pripojiť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Unmount"
+msgstr "_Odpojiť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
+msgid "_Eject"
+msgstr "_Vysunúť"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
+msgid "Empty _Trash"
+msgstr "Vyprázdniť _kôš"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
+msgid "Connect to Server…"
+msgstr "Pripojenie na server..."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -637,59 +990,34 @@ msgstr "_Zapamätať heslo"
 msgid "Operation cancelled"
 msgstr "Operácia zrušená"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
-msgid "Select All"
-msgstr "Vybrať všetko"
-
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "Vstupné metódy"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Jednoduché kliknutie"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+msgid "_Move Here"
+msgstr "_Presunúť sem"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Rozhoduje, či sa zobrazené položky aktivujú jednoduchým kliknutím"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+msgid "_Copy Here"
+msgstr "_Kopírovať sem"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Názov súboru"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+msgid "_Link Here"
+msgstr "_Vytvoriť odkaz sem"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Veľkosť"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+msgid "Set as _Background"
+msgstr "Nastaviť ako _pozadie"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Typ"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+msgid "Cancel"
+msgstr "Zrušiť"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:186
+#: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Premenovanie %s na %s zlyhalo"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/f/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Tento priečinok je prázdny."
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Zobrazenie priečinkov ikonami"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Pohľad Ikony"
-
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "V schránke nie je nič, čo by ste mohli vložiť"
+msgid "Failed to execute file \"%s\""
+msgstr "Nepodarilo sa spustiť súbor \"%s\""
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -735,333 +1063,6 @@ msgstr "Podľa _dátumu zmeny"
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Udržiavať ikony zoradené podľa dátum zmeny v riadkoch"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "Osobné"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "Vaše bežné miesta a záložky"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "Otvoriť kôš"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "Zariadenia"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "Vaše miestne partície a zariadenia"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "Otvoriť obsah súborového systému"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "Pripojiť a otvoriť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "Vaše miesta v sieti"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "Celá sieť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "Prehliadať obsah siete"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "_Spustiť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "Za_staviť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "Za_pnúť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "_Bezpečne odobrať jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "_Pripojiť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "O_dpojiť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "_Spustiť viacdiskovú jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "Za_staviť viacdiskovú jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "_Odomknúť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "_Zamknúť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "Nepodarilo sa spustiť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Nepodarilo sa vysunúť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Nepodarilo sa vyžiadať kontrolu média %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Nepodarilo sa zastaviť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
-msgid "_Open"
-msgstr "_Otvoriť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
-msgid "Open in New _Tab"
-msgstr "Otvoriť na novej _karte"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
-msgid "Open in New _Window"
-msgstr "Otvoriť v novom _okne"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "Odstrániť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "Premenovať..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "_Pripojiť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "_Odpojiť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "_Vysunúť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "Vyprázdniť _kôš"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr "Pripojenie na server..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1183
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Neplatný názov súboru poskytovaný XDS drag site"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1341
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nepodarilo sa vytvoriť odkaz na adresu \"%s\""
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Použiť \"%s\" pre otvorenie vybranej položky"
-msgstr[1] "Použiť \"%s\" pre otvorenie vybraných položiek"
-msgstr[2] "Použiť \"%s\" pre otvorenie vybraných položiek"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
-#, c-format
-msgid "_Open With %s"
-msgstr "_Otvoriť pomocou %s"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Pripraviť vybrané súbory pre presun príkazom Vložiť"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Pripraviť vybrané súbory pre kopírovanie príkazom Vložiť"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Presunúť alebo skopírovať súbory vybrané predcházajúcim príkazom Vystrihnúť "
-"alebo Kopírovať"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
-msgid "Paste Into Folder"
-msgstr "Vložiť do priečinka"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Presunie alebo skopíruje súbory vybrané predchádzajúcim príkazom Vystrihnúť "
-"alebo Kopírovať do vybraného priečinka"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
-msgid "_Rename..."
-msgstr "_Premenovať..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
-msgid "Rename selected item"
-msgstr "Premenovať vybranú položku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
-msgid "Create New _Folder"
-msgstr "Vytvoriť nový _priečinok"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
-msgid "Create a new empty folder inside this folder"
-msgstr "Vytvorí nový prázdny priečinok v tomto priečinku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
-msgid "Create New _File"
-msgstr "Vytvorí nový _súbor"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
-msgid "_Empty File"
-msgstr "_Prázdny súbor"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
-msgid "Create a new empty file inside this folder"
-msgstr "Vytvorí nový prázdny súbor v tomto priečinku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
-msgid "Open the selected item"
-msgstr "Otvorí vybranú položku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
-msgid "Open in new Window"
-msgstr "Otvoriť v novom okne"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
-msgid "Open each selected item in a new window"
-msgstr "Otvorí každú vybranú položku v novom okne"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-msgid "Open each selected item in a new tab"
-msgstr "Otvorí každú vybranú položku na novej karte"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
-msgid "Open Wit_h"
-msgstr "Otvoriť _pomocou"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
-msgid "Choose a program with which to open the selected item"
-msgstr "Vyberte program, ktorým chcete otvoriť vybranú položku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
-msgid "Other _Application..."
-msgstr "Iná _aplikácia..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
-msgid "Choose another application with which to open the selected item"
-msgstr "Vyberte iný program, ktorým chcete otvoriť vybranú položku"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
-msgid "Mo_ve to Trash"
-msgstr "_Presunúť do Koša"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
-msgid "Move each selected item to the Trash"
-msgstr "Presunie každú vybranú položku do koša"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
-msgid "_Delete Permanently"
-msgstr "_Odstrániť natrvalo"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Odstráni každú vybranú položku bez presunu do koša"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
-msgid "_Restore"
-msgstr "_Obnoviť"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
-msgid "_Properties"
-msgstr "_Vlastnosti"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
-msgid "View or modify the properties of each selected item"
-msgstr "Zobrazí alebo upraví vlastnosti každej vybranej položky"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
-msgid "Set Color:"
-msgstr "Nastaviť farbu:"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "_Presunúť sem"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "_Kopírovať sem"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "_Vytvoriť odkaz sem"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "Nastaviť ako _pozadie"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "Zrušiť"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Nepodarilo sa spustiť súbor \"%s\""
-
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "Zobraziť verziu programu."
@@ -1096,6 +1097,38 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nie je možné použiť s URI."
 
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Operácie so súbormi"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Všetky operácie so súbormi boli úspešne dokončené"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d súborová operácia aktívna"
+msgstr[1] "%'d súborové operácie aktívne"
+msgstr[2] "%'d súborových operácii aktívnych"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Ukázať detaily"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Zobraziť okno kopírovania"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Zrušiť všetky práve prebiehajúce akcie"
+
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Prehliadať vaše súbory"
@@ -1112,203 +1145,17 @@ msgstr "Nové okno ako _Správca"
 msgid "Files"
 msgstr "Súbory"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
-msgid "File Operations"
-msgstr "Operácie so súbormi"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
-msgid "All file operations have been successfully completed"
-msgstr "Všetky operácie so súbormi boli úspešne dokončené"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d súborová operácia aktívna"
-msgstr[1] "%'d súborové operácie aktívne"
-msgstr[2] "%'d súborových operácii aktívnych"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
-msgid "Show Details"
-msgstr "Ukázať detaily"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
-msgid "Show Copy Dialog"
-msgstr "Zobraziť okno kopírovania"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
-msgid "Cancel All In-progress Actions"
-msgstr "Zrušiť všetky práve prebiehajúce akcie"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Položku nie je možné obnoviť z Koša."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Zlúčiť priečinok „%s“?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
 msgstr ""
-"Zlúčenie si vyžiada potvrdenie pred nahradením akýchkoľvek súborov v "
-"priečinku, ktorý je v konflikte s kopírovanými súbormi."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starší priečinok s rovnakým názvom už existuje v „%s“."
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Včera o %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novší priečinok s rovnakým názvom už existuje v „%s“."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Iný priečinok s rovnakým názvom už existuje v „%s“."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
-msgid "Replacing it will remove all files in the folder."
-msgstr "Ak ho nahradíte, odstránia sa všetky súbory v priečinku."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Nahradiť priečinok „%s“?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Priečinok s rovnakým názvom už existuje v „%s“."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Nahradiť súbor „%s“?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
-msgid "Replacing it will overwrite its content."
-msgstr "Ak ho nahradíte, prepíše sa jeho obsah."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starší súbor s rovnakým názvom v „%s“ už existuje."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novší súbor s rovnakým názvom v „%s“ už existuje."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ďalší súbor s rovnakým názvom v „%s“ už existuje."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
-msgid "Original file"
-msgstr "Pôvodný súbor"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Size:"
-msgstr "Veľkosť:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Type:"
-msgstr "Typ:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
-msgid "Last modified:"
-msgstr "Naposledy zmenený:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
-msgid "Replace with"
-msgstr "Nahradiť s"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
-msgid "Merge"
-msgstr "Zlúčiť"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
-msgid "_Select a new name for the destination"
-msgstr "_Vyberte nový názov cieľa"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
-msgid "Reset"
-msgstr "Zresetovať"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
-msgid "Apply this action to all files"
-msgstr "Použiť túto operáciu na všetky súbory"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "Pre_skočiť"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
-msgid "Re_name"
-msgstr "Preme_novať"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
-msgid "Replace"
-msgstr "Nahradiť"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
-msgid "File conflict"
-msgstr "Konflikt súborov"
-
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Pripravuje sa"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Zobraziť viac _detailov"
-
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (neplatné Unicode)"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1682,17 +1529,154 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Zlúčiť priečinok „%s“?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
 msgstr ""
+"Zlúčenie si vyžiada potvrdenie pred nahradením akýchkoľvek súborov v "
+"priečinku, ktorý je v konflikte s kopírovanými súbormi."
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Včera o %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starší priečinok s rovnakým názvom už existuje v „%s“."
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novší priečinok s rovnakým názvom už existuje v „%s“."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Iný priečinok s rovnakým názvom už existuje v „%s“."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+msgid "Replacing it will remove all files in the folder."
+msgstr "Ak ho nahradíte, odstránia sa všetky súbory v priečinku."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Nahradiť priečinok „%s“?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Priečinok s rovnakým názvom už existuje v „%s“."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Nahradiť súbor „%s“?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+msgid "Replacing it will overwrite its content."
+msgstr "Ak ho nahradíte, prepíše sa jeho obsah."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starší súbor s rovnakým názvom v „%s“ už existuje."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Novší súbor s rovnakým názvom v „%s“ už existuje."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Ďalší súbor s rovnakým názvom v „%s“ už existuje."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+msgid "Original file"
+msgstr "Pôvodný súbor"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Size:"
+msgstr "Veľkosť:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Type:"
+msgstr "Typ:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+msgid "Last modified:"
+msgstr "Naposledy zmenený:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+msgid "Replace with"
+msgstr "Nahradiť s"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+msgid "Merge"
+msgstr "Zlúčiť"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+msgid "_Select a new name for the destination"
+msgstr "_Vyberte nový názov cieľa"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+msgid "Reset"
+msgstr "Zresetovať"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+msgid "Apply this action to all files"
+msgstr "Použiť túto operáciu na všetky súbory"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "Pre_skočiť"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+msgid "Re_name"
+msgstr "Preme_novať"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+msgid "Replace"
+msgstr "Nahradiť"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+msgid "File conflict"
+msgstr "Konflikt súborov"
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Pripravuje sa"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -2392,6 +2376,14 @@ msgstr "Nastala chyba pri vytváraní priečinka v %F."
 msgid "Emptying Trash"
 msgstr "Vyprázdňuje sa kôš"
 
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (neplatné Unicode)"
+
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Zobraziť viac _detailov"
+
 #: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
@@ -2421,6 +2413,15 @@ msgstr "Lomená nie sú v názvoch súborov povolené"
 #: /home/codygarver/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
 msgstr "Súbory na najvyššej úrovni sa nedajú premenovať"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Položku nie je možné obnoviť z Koša."
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"

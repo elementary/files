@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-10-02 11:59-0500\n"
+"POT-Creation-Date: 2013-12-16 04:42-0600\n"
 "PO-Revision-Date: 2013-03-05 20:25+0000\n"
 "Last-Translator: Richard B. <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2013-12-12 05:54+0000\n"
+"X-Launchpad-Export-Date: 2013-12-17 06:10+0000\n"
 "X-Generator: Launchpad (build 16869)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -45,294 +45,6 @@ msgstr ""
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr "Files nu este managerul de fișiere implicit."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3499
-msgid "Set as default"
-msgstr "Definește ca implicit"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "Ignoră"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:408
-msgid "Undo"
-msgstr "Anulaţi"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:409
-#: /home/codygarver/f/po/../src/View/Window.vala:629
-msgid "Undo the last action"
-msgstr "Anulează ultima acțiune"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:418
-msgid "Redo"
-msgstr "Refă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:419
-#: /home/codygarver/f/po/../src/View/Window.vala:632
-msgid "Redo the last action"
-msgstr "Refă ultima acțiune"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:607
-msgid "_File"
-msgstr "_Fișier"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:608
-msgid "_Edit"
-msgstr "_Editare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:609
-msgid "_View"
-msgstr "_Vizualizare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:610
-msgid "_Go"
-msgstr "_Navigare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:611
-msgid "_Help"
-msgstr "_Ajutor"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:613
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "_Fereastră nouă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:614
-msgid "Open another Files window for the displayed location"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Window.vala:617
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Filă_Nouă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:618
-msgid "Open another tab for the displayed location"
-msgstr "Deschide o nouă filă pentru locația afișată"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:622
-msgid "_Close"
-msgstr "_Închide"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:623
-msgid "Close this folder"
-msgstr "Închide acest dosar"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:628
-msgid "_Undo"
-msgstr "_Anulează"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:631
-msgid "_Redo"
-msgstr "_Refă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:634
-msgid "Open _Parent"
-msgstr "Deschide _părinte"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:635
-msgid "Open the parent folder"
-msgstr "Deschide dosarul părinte"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:637
-msgid "_Back"
-msgstr "_Înapoi"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:638
-msgid "Go to the previous visited location"
-msgstr "Navighează la precedenta locație vizitată"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:641
-msgid "_Forward"
-msgstr "_Înaintează"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:642
-msgid "Go to the next visited location"
-msgstr "Navighează la următoarea locație vizitată"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:644
-msgid "_Reload"
-msgstr "_Reîncarcă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:645
-msgid "Reload the current location"
-msgstr "Reîncarcă locația curentă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:648
-msgid "_Home Folder"
-msgstr "Dosar _Acasă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:649
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
-msgid "Open your personal folder"
-msgstr "Deschide dosarul personal"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:652
-msgid "_Trash"
-msgstr "_Coșul de gunoi"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:653
-msgid "Open your personal trash folder"
-msgstr "Deschide dosarul personal de gunoi"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:656
-msgid "_Network"
-msgstr "_Rețea"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:657
-msgid "Browse bookmarked and local network locations"
-msgstr "Accesați locațiile salvate sau din rețeaua locală"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:660
-msgid "Zoom _In"
-msgstr "_Mărește"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:661
-msgid "Increase the view size"
-msgstr "Crește dimensiunea mod de afișare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:672
-msgid "Zoom _Out"
-msgstr "_Micșorează"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:673
-msgid "Decrease the view size"
-msgstr "Micșorați dimensiunea mod de afișare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:680
-msgid "Normal Si_ze"
-msgstr "Dimensiune _normală"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:681
-msgid "Use the normal view size"
-msgstr "Folosește dimensiunea normală a modului de afișare"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:684
-msgid "Next Tab"
-msgstr "Următoare Filă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:688
-msgid "Previous Tab"
-msgstr "Fila precedentă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:692
-msgid "Connect to _Server..."
-msgstr "Conectare la _server..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:693
-msgid "Connect to a remote computer or shared disk"
-msgstr "Conectați-vă la un calculator de la distanță sau la un disc partajat"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:696
-msgid "_About"
-msgstr "_Despre"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:697
-msgid "Display credits"
-msgstr "Afiseaza merite"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:700
-msgid "Report a Problem..."
-msgstr "Raportează o problemă..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:701
-msgid "File a bug on Launchpad"
-msgstr "Completează o eroare pe Launchpad"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:704
-msgid "Get Help Online..."
-msgstr "Obțineți ajutor online..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:708
-msgid "Translate This Application..."
-msgstr "Traduceți această aplicație..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:717
-msgid "Show _Hidden Files"
-msgstr "Arată _fișierele ascunse"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:718
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Comutați afișarea fișierelor ascunse în fereastra curentă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:722
-msgid "_Places"
-msgstr "_Locații"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:723
-msgid "Change the visibility of this window's side pane"
-msgstr "Modificați vizibilitatea panoului lateral a ferestrei"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:731
-msgid "Icon"
-msgstr "Icoană"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:734
-msgid "List"
-msgstr "Listă"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:737
-msgid "Columns"
-msgstr "Coloane"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "Reţea"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "Coș de gunoi"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr "Deschide într-o filă nouă"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr ""
-
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr ""
@@ -357,6 +69,14 @@ msgid ""
 "Failed to create the folder\n"
 "\n"
 "%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
 msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
@@ -409,72 +129,357 @@ msgstr "Tip MIME"
 msgid "MimeTypes"
 msgstr "Tipuri MIME"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:424
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Dimensiune"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
 msgid "Location"
 msgstr "Locație"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:427
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
 msgid "Target"
 msgstr "Țintă"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Origin Location"
 msgstr "Locație originală"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
 msgstr "Informație:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:478
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
 msgstr "Altă aplicație..."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:502
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
 msgid "Open with:"
 msgstr "Deschide cu:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:522
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
 msgid "Usage:"
 msgstr "Sintaxă:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:527
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
 msgid "Device usage:"
 msgstr "Utilizare dispozitiv:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:534
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s liber din %s (%d%% folosit)"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:673
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
 msgstr "Citeşte"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:678
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
 msgid "Write"
 msgstr "Scrie"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:683
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
 msgstr "Execută"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:896
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:909
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
 msgid "Owner"
 msgstr "Deținător"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:901
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:913
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
 msgstr "Grup"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
 msgstr "Toți"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1176
-msgid "Select an aplication to open "
-msgstr "Selectează o aplicație  pentru a deschide "
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
+msgid "Select an application to open "
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "Files nu este managerul de fișiere implicit."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:132
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
+msgid "Set as default"
+msgstr "Definește ca implicit"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "Ignoră"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:399
+msgid "Undo"
+msgstr "Anulaţi"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:400
+#: /home/codygarver/f/po/../src/View/Window.vala:620
+msgid "Undo the last action"
+msgstr "Anulează ultima acțiune"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:409
+msgid "Redo"
+msgstr "Refă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:410
+#: /home/codygarver/f/po/../src/View/Window.vala:623
+msgid "Redo the last action"
+msgstr "Refă ultima acțiune"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:598
+msgid "_File"
+msgstr "_Fișier"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:599
+msgid "_Edit"
+msgstr "_Editare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:600
+msgid "_View"
+msgstr "_Vizualizare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:601
+msgid "_Go"
+msgstr "_Navigare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:602
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:604
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "_Fereastră nouă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:605
+msgid "Open another Files window for the displayed location"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Window.vala:608
+#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Filă_Nouă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:609
+msgid "Open another tab for the displayed location"
+msgstr "Deschide o nouă filă pentru locația afișată"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:613
+msgid "_Close"
+msgstr "_Închide"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:614
+msgid "Close this folder"
+msgstr "Închide acest dosar"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:619
+msgid "_Undo"
+msgstr "_Anulează"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:622
+msgid "_Redo"
+msgstr "_Refă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:625
+msgid "Open _Parent"
+msgstr "Deschide _părinte"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:626
+msgid "Open the parent folder"
+msgstr "Deschide dosarul părinte"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:628
+msgid "_Back"
+msgstr "_Înapoi"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:629
+msgid "Go to the previous visited location"
+msgstr "Navighează la precedenta locație vizitată"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:632
+msgid "_Forward"
+msgstr "_Înaintează"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:633
+msgid "Go to the next visited location"
+msgstr "Navighează la următoarea locație vizitată"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:635
+msgid "_Reload"
+msgstr "_Reîncarcă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:636
+msgid "Reload the current location"
+msgstr "Reîncarcă locația curentă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:639
+msgid "_Home Folder"
+msgstr "Dosar _Acasă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:640
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+msgid "Open your personal folder"
+msgstr "Deschide dosarul personal"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:643
+msgid "_Trash"
+msgstr "_Coșul de gunoi"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:644
+msgid "Open your personal trash folder"
+msgstr "Deschide dosarul personal de gunoi"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:647
+msgid "_Network"
+msgstr "_Rețea"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:648
+msgid "Browse bookmarked and local network locations"
+msgstr "Accesați locațiile salvate sau din rețeaua locală"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:651
+msgid "Zoom _In"
+msgstr "_Mărește"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:652
+msgid "Increase the view size"
+msgstr "Crește dimensiunea mod de afișare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:663
+msgid "Zoom _Out"
+msgstr "_Micșorează"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:664
+msgid "Decrease the view size"
+msgstr "Micșorați dimensiunea mod de afișare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:671
+msgid "Normal Si_ze"
+msgstr "Dimensiune _normală"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:672
+msgid "Use the normal view size"
+msgstr "Folosește dimensiunea normală a modului de afișare"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:675
+msgid "Next Tab"
+msgstr "Următoare Filă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:679
+msgid "Previous Tab"
+msgstr "Fila precedentă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:683
+msgid "Connect to _Server..."
+msgstr "Conectare la _server..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:684
+msgid "Connect to a remote computer or shared disk"
+msgstr "Conectați-vă la un calculator de la distanță sau la un disc partajat"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:687
+msgid "_About"
+msgstr "_Despre"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:688
+msgid "Display credits"
+msgstr "Afiseaza merite"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:691
+msgid "Report a Problem..."
+msgstr "Raportează o problemă..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:692
+msgid "File a bug on Launchpad"
+msgstr "Completează o eroare pe Launchpad"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:695
+msgid "Get Help Online..."
+msgstr "Obțineți ajutor online..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:699
+msgid "Translate This Application..."
+msgstr "Traduceți această aplicație..."
+
+#: /home/codygarver/f/po/../src/View/Window.vala:708
+msgid "Show _Hidden Files"
+msgstr "Arată _fișierele ascunse"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:709
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Comutați afișarea fișierelor ascunse în fereastra curentă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:713
+msgid "_Places"
+msgstr "_Locații"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:714
+msgid "Change the visibility of this window's side pane"
+msgstr "Modificați vizibilitatea panoului lateral a ferestrei"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:722
+msgid "Icon"
+msgstr "Icoană"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:725
+msgid "List"
+msgstr "Listă"
+
+#: /home/codygarver/f/po/../src/View/Window.vala:728
+msgid "Columns"
+msgstr "Coloane"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "AFP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "DAV"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+msgid "DAVS"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "FTP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
+msgid "Network"
+msgstr "Reţea"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+msgid "SFTP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
+msgid "SMB"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
+msgid "Trash"
+msgstr "Coș de gunoi"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
+msgid "Open in New Tab"
+msgstr "Deschide într-o filă nouă"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
+msgid "Open with"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
+msgid "Other Application .."
+msgstr ""
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -508,12 +513,362 @@ msgstr ""
 msgid "%u items selected (%s)"
 msgstr "%u elemente selectate (%s)"
 
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Clic simplu"
+
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr ""
+
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
 msgstr ""
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Nume  fişier"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Tip"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:205
+#: /home/codygarver/f/po/../src/fm-columns-view.c:184
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Eșec la redenumirea lui %s în %s"
+
+#: /home/codygarver/f/po/../src/fm-list-view.c:607
+#: /home/codygarver/f/po/../src/fm-directory-view.c:511
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+msgid "This folder is empty."
+msgstr "Dosarul este gol."
+
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Nu există nimic în clipboard pentru lipire"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Listare dosar icoane"
+
+#: /home/codygarver/f/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Vizualizare pictograme"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Nume de fisier asigurat de XDS drag site invalid"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Nu s-a putut crea o legătură pentru URL-ul „%s”"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Folosește „%s” pentru a deschide articolul selectat"
+msgstr[1] "Foloseşte „%s” pentru a deschide articolele selectate"
+msgstr[2] "Foloseşte „%s” pentru a deschide articolele selectate"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#, c-format
+msgid "_Open With %s"
+msgstr "_Deschide cu %s"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+msgid "_Open"
+msgstr "Deschide"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Deschide în  %'d _Filă Nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+msgid "Open in New _Tab"
+msgstr "Deschide într-o fila noua"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Deschide în  %'d _Fereastră Nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+msgid "Open in New _Window"
+msgstr "Deschide într-o fereastră nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Pregătește fișierele selectate pentru a fi mutate cu o comandă Lipește"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Pregătește fișierele selectate pentru a fi copiate cu o comandă Lipește"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Mută sau copiază fişierele selectate anterior printr-o comandă Taie sau "
+"Lipeşte"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+msgid "Paste Into Folder"
+msgstr "Lipește în dosar"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Mută sau copiază fişierele selectate anterior printr-o comandă Taie sau "
+"Lipeşte într-un dosar selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+msgid "_Rename..."
+msgstr "_Redenumește..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+msgid "Rename selected item"
+msgstr "Redenumește articolul selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+msgid "Create New _Folder"
+msgstr "Creați un _dosar nou"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+msgid "Create a new empty folder inside this folder"
+msgstr "Creați ă un dosar gol în dosarul curent"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+msgid "Create New _File"
+msgstr "Creați _Filă Nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+msgid "_Empty File"
+msgstr "Fişier _gol"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+msgid "Create a new empty file inside this folder"
+msgstr "Creați un fișier gol în acest dosar"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+msgid "Open the selected item"
+msgstr "Deschide articolul selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+msgid "Open in new Window"
+msgstr "Deschide în fereastră nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+msgid "Open each selected item in a new window"
+msgstr "Deschide fiecare articol selectat în fereastră nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+msgid "Open each selected item in a new tab"
+msgstr "Deschide fiecare articol selectat într-o filă nouă"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+msgid "Open Wit_h"
+msgstr "Deschide _cu"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+msgid "Choose a program with which to open the selected item"
+msgstr "Alegeți un program cu care să deschideți articolul selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+msgid "Other _Application..."
+msgstr "Altă _aplicație..."
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+msgid "Choose another application with which to open the selected item"
+msgstr "Alegeți altă aplicație cu care să deschideți articolul selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+msgid "Mo_ve to Trash"
+msgstr "Mută în Coșul de _gunoi"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+msgid "Move each selected item to the Trash"
+msgstr "Mutați fiecare articol selectat în Coșul de gunoi"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+msgid "_Delete Permanently"
+msgstr "_Șterge Permanent"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Ștergeți articolele selectate, fără a le muta în Coșul de gunoi"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+msgid "_Restore"
+msgstr "_Restaurează"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+msgid "Select All"
+msgstr "Selectează tot"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+msgid "_Properties"
+msgstr "_Proprietăți"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+msgid "View or modify the properties of each selected item"
+msgstr "Vizualizați sau modificați proprietățile fiecărui articol selectat"
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+msgid "Set Color:"
+msgstr "Seteaza culoarea:"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
+msgid "Personal"
+msgstr "Personal"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
+msgid "Your common places and bookmarks"
+msgstr "Locurile tale comune si semnee de carte"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
+msgid "Open the trash"
+msgstr "Deschide coșul de gunoi"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
+msgid "Devices"
+msgstr "Dispozitive"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
+msgid "Your local partitions and devices"
+msgstr "Partițiile și dispozitivele tale locale"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
+msgid "Open the contents of the File System"
+msgstr "Deschide conținutul sistemului de fișiere"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
+#, c-format
+msgid "Mount and open %s"
+msgstr "Montează și deschide %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
+msgid "Your network places"
+msgstr "Locurile tale în rețea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
+msgid "Entire network"
+msgstr "Toată rețeaua"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
+msgid "Browse the contents of the network"
+msgstr "Navighează conținutul rețelei"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
+msgid "_Start"
+msgstr "Start"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
+msgid "_Stop"
+msgstr "Stop"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
+msgid "_Power On"
+msgstr "Pornește"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
+msgid "_Safely Remove Drive"
+msgstr "Scoate în siguranță unitatea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
+msgid "_Connect Drive"
+msgstr "Conectează unitatea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
+msgid "_Disconnect Drive"
+msgstr "Deconectează unitatea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
+msgid "_Start Multi-disk Device"
+msgstr "Pornește unitatea multi-disc"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
+msgid "_Stop Multi-disk Device"
+msgstr "Oprește unitatea multi-disc"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
+msgid "_Unlock Drive"
+msgstr "Deblochează unitatea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
+msgid "_Lock Drive"
+msgstr "Blochează unitatea"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
+#, c-format
+msgid "Unable to start %s"
+msgstr "Nu s-a putut porni %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Nu s-a putut scoate %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Nu s-a putut interoga %s pentru modificări ale mediului de stocare"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Nu s-a putut opri %s"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
+msgid "Remove"
+msgstr "Elimina"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
+msgid "Rename..."
+msgstr "Redenumeşte..."
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
+msgid "_Mount"
+msgstr "Montează"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
+msgid "_Unmount"
+msgstr "Demontează"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
+msgid "_Eject"
+msgstr "Scoate"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
+msgid "Empty _Trash"
+msgstr "Golește coșul de gunoi"
+
+#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
+msgid "Connect to Server…"
 msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
@@ -635,59 +990,34 @@ msgstr "Memo_rează această parolă"
 msgid "Operation cancelled"
 msgstr "Operațiune anulată"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3613
-msgid "Select All"
-msgstr "Selectează tot"
-
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "Metode de intrare"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Clic simplu"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+msgid "_Move Here"
+msgstr "_Mută aici"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+msgid "_Copy Here"
+msgstr "_Copiază aici"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Nume  fişier"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+msgid "_Link Here"
+msgstr "_Leagă aici"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Dimensiune"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+msgid "Set as _Background"
+msgstr "Setează ca fundal"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Tip"
+#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+msgid "Cancel"
+msgstr "Anulează"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:186
+#: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Eșec la redenumirea lui %s în %s"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/f/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Dosarul este gol."
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Listare dosar icoane"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Vizualizare pictograme"
-
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Nu există nimic în clipboard pentru lipire"
+msgid "Failed to execute file \"%s\""
+msgstr "Nu s-a putut executa fişierul „%s”"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -733,335 +1063,6 @@ msgstr "Dupa _Data Modificarii"
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Pastrati in randuri icoanele sortate dupa modificare datii"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "Personal"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "Locurile tale comune si semnee de carte"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "Deschide coșul de gunoi"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "Dispozitive"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele tale locale"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "Deschide conținutul sistemului de fișiere"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "Montează și deschide %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "Locurile tale în rețea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "Toată rețeaua"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "Navighează conținutul rețelei"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "Start"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "Stop"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "Pornește"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "Scoate în siguranță unitatea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "Conectează unitatea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "Deconectează unitatea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "Pornește unitatea multi-disc"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "Oprește unitatea multi-disc"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "Deblochează unitatea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "Blochează unitatea"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "Nu s-a putut porni %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Nu s-a putut scoate %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Nu s-a putut interoga %s pentru modificări ale mediului de stocare"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Nu s-a putut opri %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2047
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
-msgid "_Open"
-msgstr "Deschide"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2067
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3591
-msgid "Open in New _Tab"
-msgstr "Deschide într-o fila noua"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2076
-msgid "Open in New _Window"
-msgstr "Deschide într-o fereastră nouă"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "Elimina"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "Redenumeşte..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "Montează"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "Demontează"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "Scoate"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "Golește coșul de gunoi"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1183
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Nume de fisier asigurat de XDS drag site invalid"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1341
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nu s-a putut crea o legătură pentru URL-ul „%s”"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1797
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Folosește „%s” pentru a deschide articolul selectat"
-msgstr[1] "Foloseşte „%s” pentru a deschide articolele selectate"
-msgstr[2] "Foloseşte „%s” pentru a deschide articolele selectate"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2041
-#, c-format
-msgid "_Open With %s"
-msgstr "_Deschide cu %s"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2063
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Deschide în  %'d _Filă Nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2072
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Deschide în  %'d _Fereastră Nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3551
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Pregătește fișierele selectate pentru a fi mutate cu o comandă Lipește"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3555
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Pregătește fișierele selectate pentru a fi copiate cu o comandă Lipește"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3559
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Mută sau copiază fişierele selectate anterior printr-o comandă Taie sau "
-"Lipeşte"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3562
-msgid "Paste Into Folder"
-msgstr "Lipește în dosar"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3563
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Mută sau copiază fişierele selectate anterior printr-o comandă Taie sau "
-"Lipeşte într-un dosar selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3566
-msgid "_Rename..."
-msgstr "_Redenumește..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3567
-msgid "Rename selected item"
-msgstr "Redenumește articolul selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3570
-msgid "Create New _Folder"
-msgstr "Creați un _dosar nou"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3571
-msgid "Create a new empty folder inside this folder"
-msgstr "Creați ă un dosar gol în dosarul curent"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3573
-msgid "Create New _File"
-msgstr "Creați _Filă Nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
-msgid "_Empty File"
-msgstr "Fişier _gol"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
-msgid "Create a new empty file inside this folder"
-msgstr "Creați un fișier gol în acest dosar"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
-msgid "Open the selected item"
-msgstr "Deschide articolul selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3587
-msgid "Open in new Window"
-msgstr "Deschide în fereastră nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
-msgid "Open each selected item in a new window"
-msgstr "Deschide fiecare articol selectat în fereastră nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-msgid "Open each selected item in a new tab"
-msgstr "Deschide fiecare articol selectat într-o filă nouă"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3594
-msgid "Open Wit_h"
-msgstr "Deschide _cu"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3595
-msgid "Choose a program with which to open the selected item"
-msgstr "Alegeți un program cu care să deschideți articolul selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3597
-msgid "Other _Application..."
-msgstr "Altă _aplicație..."
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3598
-msgid "Choose another application with which to open the selected item"
-msgstr "Alegeți altă aplicație cu care să deschideți articolul selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
-msgid "Mo_ve to Trash"
-msgstr "Mută în Coșul de _gunoi"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3602
-msgid "Move each selected item to the Trash"
-msgstr "Mutați fiecare articol selectat în Coșul de gunoi"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
-msgid "_Delete Permanently"
-msgstr "_Șterge Permanent"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3606
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Ștergeți articolele selectate, fără a le muta în Coșul de gunoi"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3609
-msgid "_Restore"
-msgstr "_Restaurează"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3617
-msgid "_Properties"
-msgstr "_Proprietăți"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
-msgid "View or modify the properties of each selected item"
-msgstr "Vizualizați sau modificați proprietățile fiecărui articol selectat"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3724
-msgid "Set Color:"
-msgstr "Seteaza culoarea:"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "_Mută aici"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "_Copiază aici"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "_Leagă aici"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "Setează ca fundal"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "Anulează"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Nu s-a putut executa fişierul „%s”"
-
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
 msgstr "Arata versiunea programului"
@@ -1096,6 +1097,38 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nu poate fi folosit cu URI-uri."
 
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Operații cu fișiere"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Toate operațiunile pe fișiere au fost încheiate cu succes"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "O operație cu fișiere activă"
+msgstr[1] "%'d operații cu fișiere active"
+msgstr[2] "%'d de operații cu fișiere active"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Arată detalii"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Arată dialogul de copiere"
+
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Anuleaza toate actiunile in desfasurare"
+
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Navighează prin fișierele tale"
@@ -1112,203 +1145,17 @@ msgstr "Fereastră nouă ca și _Administrator"
 msgid "Files"
 msgstr "Files"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:132
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:196
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:213
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:227
-msgid "File Operations"
-msgstr "Operații cu fișiere"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Astazi la %-I:%M %p"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:197
-msgid "All file operations have been successfully completed"
-msgstr "Toate operațiunile pe fișiere au fost încheiate cu succes"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ieri la %-I:%M %p"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:209
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:254
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "O operație cu fișiere activă"
-msgstr[1] "%'d operații cu fișiere active"
-msgstr[2] "%'d de operații cu fișiere active"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:233
-msgid "Show Details"
-msgstr "Arată detalii"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:314
-msgid "Show Copy Dialog"
-msgstr "Arată dialogul de copiere"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:326
-msgid "Cancel All In-progress Actions"
-msgstr "Anuleaza toate actiunile in desfasurare"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nu s-a putut determina locația originală pentru „%s” "
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Combinați dosarul „%s”?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Combinarea va cere o confirmare înainte de înlocuirea oricărui fișier din "
-"dosar care este în conflict cu fișierele ce urmează a fi copiate."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Există deja un dosar mai vechi cu același nume în \"%s\""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Un dosar mai nou cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Alt dosar cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
-msgid "Replacing it will remove all files in the folder."
-msgstr "Înlocuindu-l se vor elimina toate fișierele din dosar."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Înlocuiți dosarul „%s”?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Un dosar cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Înlocuiți fișierul „%s”?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
-msgid "Replacing it will overwrite its content."
-msgstr "Înlocuirea va suprascrie conținutul."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Un fișier mai vechi cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Un fișier mai nou cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Alt fișier cu același nume există deja în \"%s\"."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
-msgid "Original file"
-msgstr "Fișierul original"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Size:"
-msgstr "Dimensiune:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Type:"
-msgstr "Tip:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
-msgid "Last modified:"
-msgstr "Data ultimei modificări:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
-msgid "Replace with"
-msgstr "Înlocuieşte cu"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
-msgid "Merge"
-msgstr "Îmbină"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
-msgid "_Select a new name for the destination"
-msgstr "_Alegeți un nou nume pentru destinație"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
-msgid "Reset"
-msgstr "Resetează"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
-msgid "Apply this action to all files"
-msgstr "Aplică această acțiune tuturor fișierelor"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "_Omite"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
-msgid "Re_name"
-msgstr "Redenumește"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
-msgid "Replace"
-msgstr "Înlocuiește"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
-msgid "File conflict"
-msgstr "Conflict de fișiere"
-
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Se pregătește"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Arată mai multe _detalii"
-
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (invalid Unicode)"
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %y la %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1682,17 +1529,154 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Astazi la %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Combinați dosarul „%s”?"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ieri la %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Combinarea va cere o confirmare înainte de înlocuirea oricărui fișier din "
+"dosar care este în conflict cu fișierele ce urmează a fi copiate."
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %y la %-I:%M %p"
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Există deja un dosar mai vechi cu același nume în \"%s\""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Un dosar mai nou cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Alt dosar cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+msgid "Replacing it will remove all files in the folder."
+msgstr "Înlocuindu-l se vor elimina toate fișierele din dosar."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Înlocuiți dosarul „%s”?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Un dosar cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Înlocuiți fișierul „%s”?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+msgid "Replacing it will overwrite its content."
+msgstr "Înlocuirea va suprascrie conținutul."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Un fișier mai vechi cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Un fișier mai nou cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Alt fișier cu același nume există deja în \"%s\"."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+msgid "Original file"
+msgstr "Fișierul original"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Size:"
+msgstr "Dimensiune:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Type:"
+msgstr "Tip:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+msgid "Last modified:"
+msgstr "Data ultimei modificări:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+msgid "Replace with"
+msgstr "Înlocuieşte cu"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+msgid "Merge"
+msgstr "Îmbină"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+msgid "_Select a new name for the destination"
+msgstr "_Alegeți un nou nume pentru destinație"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+msgid "Reset"
+msgstr "Resetează"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+msgid "Apply this action to all files"
+msgstr "Aplică această acțiune tuturor fișierelor"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Omite"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+msgid "Re_name"
+msgstr "Redenumește"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+msgid "Replace"
+msgstr "Înlocuiește"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+msgid "File conflict"
+msgstr "Conflict de fișiere"
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Se pregătește"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -2396,6 +2380,14 @@ msgstr "S-a produs o eroare la crearea dosarului în %F."
 msgid "Emptying Trash"
 msgstr "Se golește coșul de gunoi"
 
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (invalid Unicode)"
+
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Arată mai multe _detalii"
+
 #: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
@@ -2425,6 +2417,15 @@ msgstr "Caracterul nu este permis în numele fișierelor."
 #: /home/codygarver/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
 msgstr "Fisierele de mai jos nu pot fi redenumite"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nu s-a putut determina locația originală pentru „%s” "
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
