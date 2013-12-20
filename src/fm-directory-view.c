@@ -2472,16 +2472,6 @@ GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *vie
     return view->details->slot->directory;
 }
 
-static int
-fm_directory_view_get_uri_keypath_size (FMDirectoryView *view)
-{
-    GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (view);
-    if (dir != NULL)
-        return dir->uri_keypath_size;
-
-    return 0;
-}
-
 gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 {
     GOFDirectoryAsync *dir;

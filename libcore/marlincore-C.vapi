@@ -149,8 +149,11 @@ namespace GOF {
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         [CCode (cheader_filename = "gof-file.h")]
-        enum ThumbState {
-            READY
+        public enum ThumbState {
+            UNKNOWN,
+            NONE,
+            READY,
+            LOADING
         }
         public signal void changed ();
         public signal void info_available ();
@@ -230,7 +233,7 @@ namespace GOF {
         public bool is_smb_uri_scheme ();
 
         public unowned string get_display_target_uri ();
-        
+
         public AppInfo get_default_handler ();
     }
 

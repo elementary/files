@@ -18,8 +18,6 @@
  */
 
 public HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-//extern HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-/*  Mutex mutex = new Mutex ();*/
 
 public class GOF.Directory.Async : Object {
     public GLib.File location;
@@ -27,9 +25,10 @@ public class GOF.Directory.Async : Object {
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
-    public int uri_keypath_size = 0;
-    public string longest_file_name = ""; //for auto-sizing Miller columns
-    public bool track_longest_name;
+
+    /* for auto-sizing Miller columns */
+    public string longest_file_name = "";
+    public bool track_longest_name = false;
 
     public enum State {
         NOT_LOADED,
@@ -49,7 +48,6 @@ public class GOF.Directory.Async : Object {
 
     private List<GOF.File>? sorted_dirs = null;
 
-    /* signals */
     public signal void file_loaded (GOF.File file);
     public signal void file_added (GOF.File file);
     public signal void file_changed (GOF.File file);
@@ -77,8 +75,7 @@ public class GOF.Directory.Async : Object {
         file = GOF.File.get (location);
         file.exists = true;
         cancellable = new Cancellable ();
-        track_longest_name = false;
-        //query_info_async (file, file_info_available);
+
         if (file.info == null)
             file.query_update ();
         file.info_available ();
@@ -86,22 +83,14 @@ public class GOF.Directory.Async : Object {
         if (directory_cache != null)
            directory_cache.insert (location, this);
 
-        //warning ("dir ref_count %u", this.ref_count);
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
         debug ("dir %s ref_count %u", this.file.uri, this.ref_count);
+
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
-        if (uri_contain_keypath_icons)
-            get_keypath_size ();
-
-        //list_directory (location);
     }
-
-    /*~Async () {
-        warning ("Async finalize %s", this.file.uri);
-    }*/
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         return_if_fail (object != null && object is Object);
@@ -112,12 +101,14 @@ public class GOF.Directory.Async : Object {
 
             if (!dir.removed_from_cache)
                 dir.remove_dir_from_cache ();
+
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
 
     public void cancel () {
         cancellable.cancel ();
+
         /* remove any pending thumbnail generation */
         if (timeout_thumbsq != 0) {
             Source.remove (timeout_thumbsq);
@@ -130,6 +121,7 @@ public class GOF.Directory.Async : Object {
             Source.remove ((uint) idle_consume_changes_id);
             idle_consume_changes_id = 0;
         }
+
         monitor = null;
         sorted_dirs = null;
         file_hash.remove_all ();
@@ -137,31 +129,28 @@ public class GOF.Directory.Async : Object {
         state = 0;
     }
 
-    //private uint launch_id = 0;
-
     public void load () {
         cancellable.reset ();
         longest_file_name = "";
+
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
             if (state == State.LOADING)
                 clear_directory_info ();
+
             if (!file.is_mounted) {
                 mount_mountable.begin ();
                 return;
             }
 
-            /*if (launch_id != 0)
-                Source.remove (launch_id);
-            launch_id = Idle.add (() => { list_directory (location); return false; });*/
-            list_directory.begin (location);
+            list_directory.begin ();
+
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);
             } catch (IOError e) {
                 if (!(e is IOError.NOT_MOUNTED)) {
                     warning ("directory monitor failed: %s %s", e.message, file.uri);
-                    //remove_directory_from_cache ();
                 }
             }
         } else {
@@ -172,6 +161,7 @@ public class GOF.Directory.Async : Object {
                 file.info_available ();
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
+
             foreach (GOF.File gof in file_hash.get_values ()) {
                 if (gof.info != null && (!gof.is_hidden || show_hidden)) {
                     if (track_longest_name)
@@ -180,6 +170,7 @@ public class GOF.Directory.Async : Object {
                     file_loaded (gof);
                 }
             }
+
             done_loading ();
         }
     }
@@ -202,6 +193,7 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
+
         done_loading ();
     }
 
@@ -219,12 +211,14 @@ public class GOF.Directory.Async : Object {
 
         /* TODO pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
+
         try {
             if (file.file_type != FileType.MOUNTABLE) {
                 yield location.mount_enclosing_volume (0, mount_op, cancellable);
             } else {
                 yield location.mount_mountable (0, mount_op, cancellable);
             }
+
             file.is_mounted = true;
             yield query_info_async (file, file_info_available);
             load ();
@@ -233,35 +227,35 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    //private Mutex mutex = new Mutex ();
-
-    private async void list_directory (GLib.File directory) {
+    private async void list_directory () {
         file.exists = true;
         files_count = 0;
         state = State.LOADING;
 
         debug ("list directory %s", file.uri);
+
         try {
-            //var e = yield directory.enumerate_children_async (gio_default_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 0, cancellable);
-            var e = yield directory.enumerate_children_async (gio_attrs, 0, 0, cancellable);
+            var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
             while (true) {
                 var files = yield e.next_files_async (200, 0, cancellable);
+
                 if (files == null)
                     break;
 
                 bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
+
                 foreach (var file_info in files) {
                     GLib.File loc = location.get_child ((string) file_info.get_name ());
-                    //GOF.File gof;
                     GOF.File gof = GOF.File.cache_lookup (loc);
+
                     if (gof == null)
                         gof = new GOF.File (loc, location);
 
                     gof.info = file_info;
                     gof.update ();
-                    //debug ("file: %s", gof.name);
 
                     add_to_hash_cache (gof);
+
                     if (!gof.is_hidden || show_hidden) {
                         if (track_longest_name)
                             update_longest_file_name (gof);
@@ -269,20 +263,22 @@ public class GOF.Directory.Async : Object {
                         file_loaded (gof);
                     }
 
-                    //mutex.lock ();
                     files_count++;
-                    //mutex.unlock ();
                 }
             }
+
             file.exists = true;
             state = State.LOADED;
         } catch (Error err) {
             warning ("%s %s", err.message, file.uri);
             state = State.NOT_LOADED;
+
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
+
             if (err is IOError.PERMISSION_DENIED)
                 permission_denied = true;
+
             if (err is IOError.NOT_MOUNTED) {
                 file.is_mounted = false;
                 /* try again this time it shoould be mounted */
@@ -320,7 +316,9 @@ public class GOF.Directory.Async : Object {
     private void changed_and_refresh (GOF.File gof) {
         if (gof.is_gone)
             return;
+
         gof.update ();
+
         if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
             file_changed (gof);
             gof.changed ();
@@ -330,9 +328,12 @@ public class GOF.Directory.Async : Object {
     private void add_and_refresh (GOF.File gof) {
         if (gof.is_gone)
             return;
+
         if (gof.info == null)
             critical ("FILE INFO null");
+
         gof.update ();
+
         if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
 
@@ -364,10 +365,12 @@ public class GOF.Directory.Async : Object {
     private void notify_file_removed (GOF.File gof) {
         if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
             file_deleted (gof);
+
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
             sorted_dirs.remove (gof);
         }
+
         gof.remove_from_caches ();
     }
 
@@ -390,27 +393,22 @@ public class GOF.Directory.Async : Object {
                 list_fchanges.prepend (fc);
                 list_fchanges_count++;
             }
+
             return;
         }
+
         real_directory_changed (_file, other_file, event);
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
-        /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
-            //message ("file changed %s", _file.get_uri ());
-            //notify_file_changed (gof);
             MarlinFile.changes_queue_file_changed (_file);
             break;
         case FileMonitorEvent.CREATED:
-            //message ("file added %s", _file.get_uri ());
-            //notify_file_added (gof);
             MarlinFile.changes_queue_file_added (_file);
             break;
         case FileMonitorEvent.DELETED:
-            //message ("file deleted %s", _file.get_uri ());
-            //notify_file_removed (gof);
             MarlinFile.changes_queue_file_removed (_file);
             break;
         }
@@ -430,14 +428,17 @@ public class GOF.Directory.Async : Object {
         }
         set {
             _freeze_update = value;
+
             if (!value) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
                     need_reload ();
                 } else {
                     list_fchanges.reverse ();
-                    bool tln = track_longest_name;
+
                     /* do not autosize during multiple changes */
+                    bool tln = track_longest_name;
                     track_longest_name = false;
+
                     foreach (var fchange in list_fchanges)
                         real_directory_changed (fchange.file, null, fchange.event);
 
@@ -447,6 +448,7 @@ public class GOF.Directory.Async : Object {
                     }
                 }
             }
+
             list_fchanges_count = 0;
             list_fchanges = null;
         }
@@ -481,13 +483,14 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup (gof.directory);
 
             if (dir != null) {
-                //message ("notify removed %s", gof.uri);
                 dir.notify_file_removed (gof);
                 found = false;
+
                 foreach (var d in dirs) {
                     if (d == dir)
                         found = true;
                 }
+
                 if (!found)
                     dirs.append (dir);
             }
@@ -495,7 +498,7 @@ public class GOF.Directory.Async : Object {
 
         foreach (var d in dirs) {
             if (d.track_longest_name)
-                d.load();
+                d.load ();
         }
     }
 
@@ -521,11 +524,13 @@ public class GOF.Directory.Async : Object {
 
         if (directory_cache != null)
             cached_dir = directory_cache.lookup (file);
+
         if (cached_dir != null) {
             debug ("found cached dir %s\n", cached_dir.file.uri);
             if (cached_dir.file.info == null)
                 cached_dir.file.query_update ();
         }
+
         return cached_dir;
     }
 
@@ -575,7 +580,6 @@ public class GOF.Directory.Async : Object {
         if (file_hash != null)
             file_hash_count = file_hash.size ();
 
-        //debug ("is_empty hash sizes file: %u", file_hash_count);
         if (state == State.LOADED && file_hash_count == 0)
             return true;
 
@@ -585,6 +589,7 @@ public class GOF.Directory.Async : Object {
     public unowned List<GOF.File>? get_sorted_dirs () {
         if (state != State.LOADED)
             return null;
+
         if (sorted_dirs != null)
             return sorted_dirs;
 
@@ -592,6 +597,7 @@ public class GOF.Directory.Async : Object {
             if (gof.info != null && !gof.is_hidden && gof.is_folder ())
                 sorted_dirs.prepend (gof);
         }
+
         sorted_dirs.sort (GOF.File.compare_by_display_name);
 
         return sorted_dirs;
@@ -599,8 +605,10 @@ public class GOF.Directory.Async : Object {
 
     private bool thumbs_stop;
     private bool thumbs_thread_runing;
+
     private void *load_thumbnails_func () {
         return_val_if_fail (this is Async, null);
+
         if (cancellable.is_cancelled () || file_hash == null) {
             this.unref ();
             return null;
@@ -608,19 +616,21 @@ public class GOF.Directory.Async : Object {
 
         thumbs_thread_runing = true;
         thumbs_stop = false;
+
         foreach (var gof in file_hash.get_values ()) {
             if (cancellable.is_cancelled () || thumbs_stop) {
                 thumbs_thread_runing = false;
                 this.unref ();
                 return null;
             }
-            //if (gof.info != null && gof.flags == 1) {
-            if (gof.info != null && gof.flags != 0) {
-                gof.flags = 2; /* thumb ready */
+
+            if (gof.info != null && gof.flags != GOF.File.ThumbState.UNKNOWN) {
+                gof.flags = GOF.File.ThumbState.READY;
                 gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }
         }
+
         thumbs_loaded ();
         thumbs_thread_runing = false;
 
@@ -629,6 +639,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public int icon_size;
+
     public void threaded_load_thumbnails (int size) {
         try {
             icon_size = size;
@@ -637,7 +648,6 @@ public class GOF.Directory.Async : Object {
             new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
         } catch (Error e) {
             critical ("Could not start loading thumbnails: %s", e.message);
-            return;
         }
     }
 
@@ -649,6 +659,7 @@ public class GOF.Directory.Async : Object {
             timeout_thumbsq = 0;
             return false;
         }
+
         return true;
     }
 
@@ -657,26 +668,9 @@ public class GOF.Directory.Async : Object {
 
         if (thumbs_thread_runing)
             thumbs_stop = true;
+
         if (timeout_thumbsq == 0) {
             timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
-        }
-    }
-
-    private Regex regex_num_size = null;
-
-    private void get_keypath_size () {
-        try {
-            if (regex_num_size == null)
-                regex_num_size = new Regex ("^[0-9]+$");
-            if (regex_num_size.match (file.basename)) {
-                uri_keypath_size = int.parse (file.basename);
-                if (!(uri_keypath_size >= 16 && uri_keypath_size <= 256))
-                    uri_keypath_size = 0;
-            } else {
-                uri_keypath_size = 0;
-            }
-        } catch (RegexError e) {
-            warning ("%s", e.message);
         }
     }
 }
