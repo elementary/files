@@ -1,6 +1,3 @@
-using Gtk;
-using GLib;
-
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
 namespace Config {
     public const string GETTEXT_PACKAGE;
@@ -15,7 +12,7 @@ namespace Config {
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
 namespace FM
 {
-    public class ListModel : Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
+    public class ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
@@ -26,7 +23,7 @@ namespace FM
 [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
 namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
-    static void copy_move (List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
+    static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -75,7 +72,7 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
-    public abstract class TrashMonitor : Object
+    public abstract class TrashMonitor : GLib.Object
     {
         public static TrashMonitor get();
         public static bool is_empty ();
@@ -97,7 +94,7 @@ namespace Marlin
     /*public delegate void UndoFinishCallback ();*/
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public abstract class UndoManager : Object
+    public abstract class UndoManager : GLib.Object
     {
         public static UndoManager instance ();
 
@@ -108,7 +105,7 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : Object {
+    public class Progress.Info : GLib.Object {
         public Info ();
         public signal void changed ();
         public signal void started ();
@@ -122,15 +119,15 @@ namespace Marlin
         public double get_total ();
         public bool get_is_finished ();
         public bool get_is_paused ();
-        public Cancellable get_cancellable ();
+        public GLib.Cancellable get_cancellable ();
     }
 
     [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : Object {
+    public class Progress.InfoManager : GLib.Object {
         public InfoManager ();
         public signal void new_progress_info (Progress.Info info);
         public void add_new_info (Progress.Info info);
-        public unowned List<Progress.Info> get_all_infos ();
+        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 
@@ -182,7 +179,7 @@ namespace GOF {
         public Gdk.Pixbuf pix;
         public int pix_size;
 
-        public FileType file_type;
+        public GLib.FileType file_type;
         public bool is_hidden;
         public bool is_directory;
         public bool is_desktop;
@@ -222,7 +219,7 @@ namespace GOF {
         public bool can_set_permissions ();
         public bool can_unmount ();
         public string get_permissions_as_string ();
-        public bool launch (Gdk.Screen screen, AppInfo app);
+        public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
@@ -234,7 +231,7 @@ namespace GOF {
 
         public unowned string get_display_target_uri ();
 
-        public AppInfo get_default_handler ();
+        public GLib.AppInfo get_default_handler ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]

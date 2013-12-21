@@ -20,18 +20,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using Gtk;
-using Gdk;
-using Cairo;
-using Marlin.View.Chrome;
-using EelGtk.Window;
-
 namespace Marlin.View {
     public class Window : Gtk.Window
     {
-        public UIManager ui;
+        public Gtk.UIManager ui;
         private UndoManager undo_manager;
-        public Widget menu_bar;
+        public Gtk.Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
@@ -66,7 +60,7 @@ namespace Marlin.View {
         public signal void item_hovered (GOF.File gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
-        public signal void loading_uri (string location, Widget sidebar);
+        public signal void loading_uri (string location, Gtk.Widget sidebar);
 
 
         public void update_action_radio_view(int n) {
@@ -89,7 +83,7 @@ namespace Marlin.View {
             application = app;
             screen = myscreen;
 
-            ui = new UIManager();
+            ui = new Gtk.UIManager();
 
             try {
                 ui.add_ui_from_file(Config.UI_DIR + "pantheon-files-ui.xml");
@@ -126,7 +120,7 @@ namespace Marlin.View {
             var label = new Gtk.Label (_("Files isn't your default file manager."));
             label.set_line_wrap (true);
 
-            var expander = new Label ("");
+            var expander = new Gtk.Label ("");
             expander.hexpand = true;
 
             var make_default = new Gtk.Button.with_label (_("Set as default"));
@@ -145,9 +139,9 @@ namespace Marlin.View {
             bbox.pack_start (make_default, true, true, 5);
             bbox.pack_start (ignore, true, true, 5);
 
-            ((Box)info_bar.get_content_area ()).add (label);
-            ((Box)info_bar.get_content_area ()).add (expander);
-            ((Box)info_bar.get_content_area ()).add (bbox);
+            ((Gtk.Box)info_bar.get_content_area ()).add (label);
+            ((Gtk.Box)info_bar.get_content_area ()).add (expander);
+            ((Gtk.Box)info_bar.get_content_area ()).add (bbox);
 
             show_infobar (!is_marlin_mydefault_fm ());
 
@@ -179,7 +173,7 @@ namespace Marlin.View {
             /* Pack up all the view
             /*/
 
-            Box window_box = new Box(Gtk.Orientation.VERTICAL, 0);
+            Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
@@ -194,13 +188,13 @@ namespace Marlin.View {
             set_position(WindowPosition.CENTER);*/
             var geometry = Preferences.settings.get_string("geometry");
             /* only position the first window */
-            set_initial_geometry_from_string (this, geometry, 700, 450, !app.is_first_window ((Gtk.Window) this));
+            EelGtk.Window.set_initial_geometry_from_string (this, geometry, 700, 450, !app.is_first_window ((Gtk.Window) this));
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
             }
             title = Marlin.APP_TITLE;
             try {
-                this.icon = IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
+                this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
                 stderr.printf ("Unable to load marlin icon: %s", err.message);
             }
@@ -435,7 +429,7 @@ namespace Marlin.View {
             if (sidebar_alloc.width > 1)
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
-            var geometry = get_geometry_string (this);
+            var geometry = EelGtk.Window.get_geometry_string (this);
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
@@ -609,30 +603,30 @@ namespace Marlin.View {
   /* tooltip */                  N_("Open another tab for the displayed location"),
                                  action_new_tab },
 
-  /* name, stock id */         { "Close", Stock.CLOSE,
+  /* name, stock id */         { "Close", Gtk.Stock.CLOSE,
   /* label, accelerator */       N_("_Close"), "<control>W",
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
                              /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,
                                  null },*/
-                               { "Undo", Stock.UNDO, N_("_Undo"),
+                               { "Undo", Gtk.Stock.UNDO, N_("_Undo"),
                                  "<control>Z", N_("Undo the last action"),
                                  action_undo_callback },
-                               { "Redo", Stock.REDO, N_("_Redo"),
+                               { "Redo", Gtk.Stock.REDO, N_("_Redo"),
                                  "<control><shift>Z", N_("Redo the last action"),
                                  action_redo_callback },
-                               { "Up", Stock.GO_UP, N_("Open _Parent"),
+                               { "Up", Gtk.Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
                                  action_go_up },
-                               { "Back", Stock.GO_BACK, N_("_Back"),
+                               { "Back", Gtk.Stock.GO_BACK, N_("_Back"),
                                  "<alt>Left", N_("Go to the previous visited location"),
                                  //G_CALLBACK (action_up_callback) },
                                  action_go_back },
-                               { "Forward", Stock.GO_FORWARD, N_("_Forward"),
+                               { "Forward", Gtk.Stock.GO_FORWARD, N_("_Forward"),
                                  "<alt>Right", N_("Go to the next visited location"),
                                  action_go_forward },
-                               { "Reload", Stock.REFRESH, N_("_Reload"),
+                               { "Reload", Gtk.Stock.REFRESH, N_("_Reload"),
                                  "<control>R", N_("Reload the current location"),
                                  action_reload_callback },
   /* name, stock id */         { "Home", Marlin.ICON_HOME,
@@ -647,7 +641,7 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Network"), null,
   /* tooltip */                  N_("Browse bookmarked and local network locations"),
                                  action_go_to_network_callback },
-  /* name, stock id */         { "Zoom In", Stock.ZOOM_IN,
+  /* name, stock id */         { "Zoom In", Gtk.Stock.ZOOM_IN,
   /* label, accelerator */       N_("Zoom _In"), "<control>plus",
   /* tooltip */                  N_("Increase the view size"),
                                  action_zoom_in_callback },
@@ -659,7 +653,7 @@ namespace Marlin.View {
   /* label, accelerator */       "ZoomInAccel2", "<control>KP_Add",
   /* tooltip */                  null,
                                  action_zoom_in_callback },
-  /* name, stock id */         { "Zoom Out", Stock.ZOOM_OUT,
+  /* name, stock id */         { "Zoom Out", Gtk.Stock.ZOOM_OUT,
   /* label, accelerator */       N_("Zoom _Out"), "<control>minus",
   /* tooltip */                  N_("Decrease the view size"),
                                  action_zoom_out_callback },
@@ -667,7 +661,7 @@ namespace Marlin.View {
   /* label, accelerator */       "ZoomOutAccel", "<control>KP_Subtract",
   /* tooltip */                  null,
                                  action_zoom_out_callback },
-  /* name, stock id */         { "Zoom Normal", Stock.ZOOM_100,
+  /* name, stock id */         { "Zoom Normal", Gtk.Stock.ZOOM_100,
   /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
   /* tooltip */                  N_("Use the normal view size"),
                                  action_zoom_normal_callback },
@@ -683,7 +677,7 @@ namespace Marlin.View {
   /* label, accelerator */       N_("Connect to _Server..."), null,
   /* tooltip */                  N_("Connect to a remote computer or shared disk"),
                                  action_connect_to_server_callback },
-  /* name, stock id */         { "About", Stock.ABOUT,
+  /* name, stock id */         { "About", Gtk.Stock.ABOUT,
   /* label, accelerator */       N_("_About"), null,
   /* tooltip */                  N_("Display credits"),
                                  show_about },

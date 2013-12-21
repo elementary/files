@@ -1,6 +1,3 @@
-using Gtk;
-using GLib;
-
 public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
@@ -19,15 +16,15 @@ namespace FM {
             public void colorize_selection (int color);
             public signal void sync_selection ();
             public void notify_selection_changed ();
-            public unowned List<GOF.File> get_selection ();
+            public unowned GLib.List<GOF.File> get_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
             public void zoom_in ();
             public void zoom_out ();
             public void zoom_normal ();
-            public unowned List<AppInfo>? get_open_with_apps ();
-            public AppInfo? get_default_app ();
-            public void select_glib_files (List files);
+            public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
+            public GLib.AppInfo? get_default_app ();
+            public void select_glib_files (GLib.List files);
         }
     }
 }
@@ -44,7 +41,7 @@ namespace GOF {
             public void add_extra_widget(Gtk.Widget widget);
             public Directory.Async directory;
             public GLib.File location;
-            public Widget view_box;
+            public Gtk.Widget view_box;
             public signal void active ();
             public signal void inactive ();
         }
@@ -53,19 +50,19 @@ namespace GOF {
 
 namespace Marlin {
     [CCode (cheader_filename = "marlin-thumbnailer.h")]
-    public class Thumbnailer : Object {
+    public class Thumbnailer : GLib.Object {
         public static Thumbnailer get();
         public bool queue_file(GOF.File file, int? request, bool large);
 
     }
     [CCode (cheader_filename = "marlin-bookmark.h")]
-    public class Bookmark : Object {
-        public File get_location ();
+    public class Bookmark : GLib.Object {
+        public GLib.File get_location ();
         public string get_name ();
         public bool uri_known_not_to_exist ();
     }
     [CCode (cheader_filename = "marlin-bookmark-list.h")]
-    public class BookmarkList : Object {
+    public class BookmarkList : GLib.Object {
         public signal void contents_changed ();
         public BookmarkList ();
         public int length ();
@@ -88,11 +85,11 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
         public class Dialog : Gtk.Dialog {
             public Dialog (Gtk.Window window);
-            public async bool display_location_async (GLib.File location) throws Error;
+            public async bool display_location_async (GLib.File location) throws GLib.Error;
             public async bool fill_details_async (GLib.MountOperation operation,
                                                   string default_user,
                                                   string default_domain,
-                                                  AskPasswordFlags flags);
+                                                  GLib.AskPasswordFlags flags);
         }
     }
     
@@ -118,10 +115,10 @@ namespace Marlin {
     [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, void* callback, void* data_callback);
+        public void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, void* callback, void* data_callback);
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
+        public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, void* callback, void* data_callback);
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
+        public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, void* callback, void* data_callback);
     }
 }

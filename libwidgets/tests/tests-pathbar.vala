@@ -17,7 +17,6 @@
  * Boston, MA 02111-1307, USA.
  *
  */
-using Marlin.View.Chrome;
 
 public class Breadcrumbs : Marlin.View.Chrome.BasePathBar {
     public Breadcrumbs (Gtk.UIManager ui) {}
@@ -30,8 +29,8 @@ void add_pathbar_tests () {
     Test.add_func ("/marlin/pathbar/general", () => {
         Test.log_set_fatal_handler (() => { return false; });
         var breads = new Breadcrumbs (new Gtk.UIManager ());
-        var bread_entry = new BreadcrumbsEntry ();
-        assert (bread_entry is BreadcrumbsEntry);
+        var bread_entry = new Marlin.View.Chrome.BreadcrumbsEntry ();
+        assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
         Gdk.EventKey event = Gdk.EventKey ();
         event.window = breads.get_window ();
@@ -115,8 +114,8 @@ void add_pathbar_tests () {
     Test.add_func ("/marlin/pathbar/start-selection", () => {
         Test.log_set_fatal_handler (() => { return false; });
         var breads = new Breadcrumbs (new Gtk.UIManager ());
-        var bread_entry = new BreadcrumbsEntry ();
-        assert (bread_entry is BreadcrumbsEntry);
+        var bread_entry = new Marlin.View.Chrome.BreadcrumbsEntry ();
+        assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
         bread_entry.text = "abdcefghij/";
         bread_entry.cursor = ("abdcefghij/").length;
@@ -131,8 +130,8 @@ void add_pathbar_tests () {
     Test.add_func ("/marlin/pathbar/backspace-without-text", () => {
         Test.log_set_fatal_handler (() => { return false; });
         var breads = new Breadcrumbs (new Gtk.UIManager ());
-        var bread_entry = new BreadcrumbsEntry ();
-        assert (bread_entry is BreadcrumbsEntry);
+        var bread_entry = new Marlin.View.Chrome.BreadcrumbsEntry ();
+        assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
         Gdk.EventKey event = Gdk.EventKey ();
         event.window = breads.get_window ();
@@ -144,8 +143,8 @@ void add_pathbar_tests () {
     Test.add_func ("/marlin/pathbar/backspace-keypress", () => {
         Test.log_set_fatal_handler (() => { return false; });
         var breads = new Breadcrumbs (new Gtk.UIManager());
-        BreadcrumbsEntry bread_entry = breads.entry;
-        assert (bread_entry is BreadcrumbsEntry);
+        Marlin.View.Chrome.BreadcrumbsEntry bread_entry = breads.entry;
+        assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
         Gdk.EventKey event = Gdk.EventKey ();
         event.window = breads.get_window ();

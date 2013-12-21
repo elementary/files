@@ -16,8 +16,6 @@
  *
  */
 
-using Gtk;
-
 namespace Marlin.View {
 
     public class OverlayBar : Gtk.EventBox {
@@ -33,7 +31,7 @@ namespace Marlin.View {
            border-color: darker (@bg_color);
        }""";
 
-        public Label status;
+        public Gtk.Label status;
         private Marlin.View.Window window;
 
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
@@ -58,13 +56,13 @@ namespace Marlin.View {
 
             visible_window = false;
 
-            status = new Label (null);
+            status = new Gtk.Label (null);
             status.set_ellipsize (Pango.EllipsizeMode.END);
             add (status);
             status.show ();
 
-            set_halign (Align.END);
-            set_valign (Align.END);
+            set_halign (Gtk.Align.END);
+            set_valign (Gtk.Align.END);
 
             set_default_style ();
 
@@ -86,7 +84,7 @@ namespace Marlin.View {
 
         public override void parent_set (Gtk.Widget? old_parent)
         {
-            Widget parent = get_parent ();
+            Gtk.Widget parent = get_parent ();
 
             if (old_parent != null)
                 old_parent.enter_notify_event.disconnect (enter_notify_callback);
@@ -163,10 +161,10 @@ namespace Marlin.View {
         private bool enter_notify_callback (Gdk.EventCrossing event)
         {
             message ("enter_notify_event");
-            if (get_halign () == Align.START)
-                set_halign (Align.END);
+            if (get_halign () == Gtk.Align.START)
+                set_halign (Gtk.Align.END);
             else
-                set_halign (Align.START);
+                set_halign (Gtk.Align.START);
             return false;
         }
 
