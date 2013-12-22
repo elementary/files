@@ -429,7 +429,7 @@ namespace Marlin.View {
             tabs.remove_tab (tabs.current);
         }
 
-    	private void save_geometries () {
+        private void save_geometries () {
             Gtk.Allocation sidebar_alloc;
             sidebar.get_allocation (out sidebar_alloc);
             if (sidebar_alloc.width > 1)
@@ -524,6 +524,7 @@ namespace Marlin.View {
         }
 
         private void action_go_to_trash_callback (Gtk.Action action) {
+message ("Window: action_go_to_trash_callback ");
                 current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
         }
 

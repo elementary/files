@@ -61,6 +61,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Browser.vala
         View/ViewMode.vala
         View/LocationBar.vala
+        View/Sidebar.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
@@ -108,6 +109,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Browser.vala
         View/ViewMode.vala
         View/LocationBar.vala
+        View/Sidebar.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
@@ -141,7 +143,7 @@ add_executable (../pantheon-files
     marlin-bookmark-list.c
     marlin-dnd.c
     marlin-clipboard-manager.c
-    marlin-places-sidebar.c
+#    marlin-places-sidebar.c
     marlin-window-columns.c
     gof-window-slot.c
     marlin-thumbnailer.c

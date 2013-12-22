@@ -228,7 +228,7 @@ static const GtkTargetEntry drop_targets[] =
 };
 
 static gpointer _g_object_ref0 (gpointer self) {
-	return self ? g_object_ref (self) : NULL;
+    return self ? g_object_ref (self) : NULL;
 }
 
 
@@ -301,6 +301,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
+g_message ("fm-directory-view %s: ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -825,7 +826,7 @@ fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
                                        GdkEventScroll *event)
 {
     gdouble total_delta_y = 0;
-	gdouble delta_x, delta_y;
+    gdouble delta_x, delta_y;
 
     if (event->state & GDK_CONTROL_MASK) {
         switch (event->direction) {
@@ -1878,7 +1879,7 @@ filter_default_app (GList *apps, GAppInfo *default_app)
         if (id1 != NULL && id2 != NULL
             && strcmp (id1, id2) == 0)
         {
-			g_object_unref (app);
+            g_object_unref (app);
             apps = g_list_delete_link (apps, l);
         }
     }
@@ -2360,7 +2361,7 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     if (!fm_list_model_get_first_iter_for_file (view->model, file, &iter))
-		return;
+        return;
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
@@ -2403,10 +2404,10 @@ set_metadata_callback (GObject *source_object, GAsyncResult *result, gpointer ca
     error = NULL;
     res = g_file_set_attributes_finish (G_FILE (source_object), result, NULL, &error);
 
-	if (error != NULL) {
+    if (error != NULL) {
         g_critical ("%s error, %s", G_STRFUNC, error->message);
-		g_error_free (error);
-	}
+        g_error_free (error);
+    }
 }
 
 static void
@@ -3095,7 +3096,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
-  	if (view->updates_frozen)
+    if (view->updates_frozen)
         return;
     /* when we're in column view ignore selection changed from other slot than the active one */
     if (view->details->slot->mwcols &&
@@ -3408,7 +3409,7 @@ fm_directory_view_new_file (FMDirectoryView *view,
                             GOFFile *source)
 {
     //GdkPoint *pos;
-	/*NewFolderData *data;
+    /*NewFolderData *data;
     char *source_uri;*/
     char *current_dir_uri;
 
@@ -3433,10 +3434,10 @@ fm_directory_view_new_file (FMDirectoryView *view,
     g_return_if_fail (nautilus_file_is_local (source));
 g_return_if_fail (nautilus_file_is_local (source));
     //pos = context_menu_to_file_operation_position (directory_view);
-	data = setup_new_folder_data (directory_view);
-	source_uri = nautilus_file_get_uri (source);
+    data = setup_new_folder_data (directory_view);
+    source_uri = nautilus_file_get_uri (source);
 
-	marlin_file_operations_new_file_from_template (GTK_WIDGET (directory_view),
+    marlin_file_operations_new_file_from_template (GTK_WIDGET (directory_view),
                                                    pos,
                                                    parent_uri != NULL ? parent_uri : container_uri,
                                                    NULL,
@@ -3506,17 +3507,17 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
     g_assert (selection != NULL);
 
     file = GOF_FILE (selection->data);
-	gof_file_ref (file);
+    gof_file_ref (file);
 
-	dialog = gtk_app_chooser_dialog_new (GTK_WINDOW (view->details->window), 0, file->location);
+    dialog = gtk_app_chooser_dialog_new (GTK_WINDOW (view->details->window), 0, file->location);
     GtkWidget *check_default = gtk_check_button_new_with_label(_("Set as default"));
     gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), check_default, FALSE, FALSE, 0);
-	gtk_widget_show_all (dialog);
+    gtk_widget_show_all (dialog);
 
     int response = gtk_dialog_run (GTK_DIALOG (dialog));
     if(response == GTK_RESPONSE_OK)
     {
-	    app = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (GTK_DIALOG (dialog)));
+        app = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (GTK_DIALOG (dialog)));
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
         {
             GError* error = NULL;
@@ -3533,7 +3534,7 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
     }
 
     gtk_widget_destroy (GTK_WIDGET (dialog));
-	gof_file_unref (file);
+    gof_file_unref (file);
 }
 
 static void

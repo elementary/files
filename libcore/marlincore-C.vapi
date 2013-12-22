@@ -34,9 +34,24 @@ namespace EelGtk.Window {
     public string get_geometry_string (Gtk.Window win);
     public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position);
 }
+
+[CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
+namespace EelGFile {
+    public static List<GLib.File> list_new_from_string (string filelist);
+}
+
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-gtk-extensions.h")]
 namespace Eel {
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
+    public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
+    public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
+    public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
+}
+
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-stock-dialogs.h")]
+namespace Eel {
+    public Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 }
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
@@ -67,19 +82,12 @@ namespace Marlin
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
         public static void clear_caches ();
     }
-
-    [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
-    public abstract class AbstractSidebar : Gtk.ScrolledWindow
-    {
-        public void add_extra_item(string text);
-    }
-
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : Object
     {
         public static TrashMonitor get();
         public static bool is_empty ();
-
+        public static GLib.Icon get_icon ();
         public signal void trash_state_changed (bool new_state);
     }
 
@@ -159,7 +167,8 @@ namespace GOF {
         public const string GIO_DEFAULT_ATTRIBUTES;
 
         public File(GLib.File location, GLib.File dir);
-        public static File get(GLib.File location);
+        public static GOF.File get(GLib.File location);
+        public static GOF.File get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
 
         public void remove_from_caches ();
@@ -189,6 +198,8 @@ namespace GOF {
         public bool link_known_target;
         public uint flags;
 
+        public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
+
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
         public unowned string get_ftype ();
@@ -212,6 +223,7 @@ namespace GOF {
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();
+        public bool ensure_query_info ();
         public unowned string? get_thumbnail_path();
         public string? get_preview_path();
         public bool can_set_owner ();
@@ -230,7 +242,7 @@ namespace GOF {
         public bool is_smb_uri_scheme ();
 
         public unowned string get_display_target_uri ();
-        
+
         public AppInfo get_default_handler ();
     }
 
