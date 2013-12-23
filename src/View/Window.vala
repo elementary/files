@@ -223,31 +223,32 @@ namespace Marlin.View {
                 return false;
             });
 
-            tabs.tab_added.connect ((tab) => {
-                make_new_tab (tab);
+            tabs.new_tab_requested.connect (() => {
+                make_new_tab ();
             });
 
-            tabs.tab_removed.connect ((tab) => {
-                if (tabs.n_tabs == 1) {
-                    make_new_tab ();
-                }
-
+            tabs.close_tab_requested.connect ((tab) => {
                 tab.restore_data =
                     (tab.page as ViewContainer).slot.location.get_uri ();
 
                 return true;
             });
 
+            tabs.tab_removed.connect ((tab) => {
+                if (tabs.n_tabs == 0)
+                    make_new_tab ();
+            });
+
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
             });
 
-            tabs.tab_restored.connect ((tab) => {
-                make_new_tab (tab, File.new_for_uri (tab.restore_data));
+            tabs.tab_restored.connect ((label, restore_data, icon) => {
+                make_new_tab (File.new_for_uri (restore_data));
             });
 
             tabs.tab_duplicated.connect ((tab) => {
-                make_new_tab (null, File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
+                make_new_tab (File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
             });
 
             Gtk.Allocation win_alloc;
@@ -328,31 +329,24 @@ namespace Marlin.View {
             }
         }
 
-        private void make_new_tab (Granite.Widgets.Tab? tab = null,
-                                   File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
-            if (tab == null) {
-                var new_tab = new Granite.Widgets.Tab ();
-                tabs.insert_tab (new_tab, -1);
-                make_new_tab (new_tab, location);
-                return;
-            }
-
+        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
             var content = new View.ViewContainer (this, location,
                                     current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            tab.label = "";
-            tab.page = content;
+            var tab = new Granite.Widgets.Tab ("", null, content);
 
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
+
+            tabs.insert_tab (tab, -1);
 
             tabs.current = tab;
             change_tab (tabs.get_tab_position (tab));
         }
 
         public void add_tab (File location) {
-            make_new_tab (null, location);
+            make_new_tab (location);
 
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
@@ -365,8 +359,7 @@ namespace Marlin.View {
 
         public void remove_tab (ViewContainer view_container) {
             var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
-            if (tab != null)
-                tabs.remove_tab (tab);
+            tab.close ();
         }
 
         public void add_window(File location){
