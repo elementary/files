@@ -1,6 +1,6 @@
 Requirements:
 - Vala >= 0.16
-- Granite >= 0.2.1
+- Granite >= 0.3.0
 - Gtk+ >= 3.0.3
 - GLib >= 2.32
 - Gio >= 2.0
