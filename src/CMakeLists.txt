@@ -13,7 +13,7 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package (PkgConfig)
 
 pkg_check_modules (DEPS REQUIRED
-    granite>=0.2.3
+    granite>=0.3.0
     glib-2.0>=2.29.0
     gthread-2.0
     gio-2.0
