@@ -75,7 +75,6 @@ namespace Marlin.View {
 
             path_changed.connect ((myfile) => {
                 /* location didn't change, do nothing */
-message ("View Container path changed signal received");
                 if (slot != null && myfile != null && slot.directory.file.exists
                     && slot.location.equal (myfile))
                     return;
@@ -126,13 +125,11 @@ message ("View Container path changed signal received");
         }
 
         private void plugin_directory_loaded () {
-message ("View Container plugin_directory_loaded");
             Object[] data = new Object[3];
             data[0] = window;
             (mwcol != null) ? data[1] = mwcol : data[1] = slot;
             //data[2] = GOF.File.get(slot.location);
             data[2] = slot.directory.file;
-message ("View Container plugin_directory_loaded emitting plugin.directory loaded signal");
             plugins.directory_loaded ((void*) data);
         }
 
@@ -171,7 +168,6 @@ message ("View Container plugin_directory_loaded emitting plugin.directory loade
 
         /* handle directory not found */
         public void directory_done_loading () {
-            message ("View Container directory_done_loading");
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
             } else if (slot.directory.permission_denied) {
@@ -183,13 +179,10 @@ message ("View Container plugin_directory_loaded emitting plugin.directory loade
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
 
-            warning ("directory done loading finsihed - disconnect");
-
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
         public void change_view (int nview, GLib.File? location) {
-            message ("View Container change_view");
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -252,8 +245,6 @@ message ("View Container plugin_directory_loaded emitting plugin.directory loade
             }
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
-
-            message ("View Container leaving change_view");
         }
 
         public GOF.Window.Slot? get_active_slot () {
@@ -272,7 +263,6 @@ message ("View Container plugin_directory_loaded emitting plugin.directory loade
         }
 
         public void update_location_state (bool save_history) {
-message ("View Container update_location_state");
             if (!slot.directory.file.exists)
                 return;
 
@@ -284,7 +274,6 @@ message ("View Container update_location_state");
             /* update ModeButton */
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-message ("View Container leaving update_location_state");
         }
 
         public Gtk.Menu get_back_menu () {
