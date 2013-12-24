@@ -1225,7 +1225,6 @@ gof_file_is_writable (GOFFile *file)
 gboolean
 gof_file_is_trashed (GOFFile *file)
 {
-g_message ("%s:",G_STRFUNC);
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     return eel_g_file_is_trashed (gof_file_get_target_location (file));
 }

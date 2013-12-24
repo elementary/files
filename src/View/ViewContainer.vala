@@ -183,7 +183,7 @@ message ("View Container plugin_directory_loaded emitting plugin.directory loade
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
 
-            warning ("directory done loading");
+            warning ("directory done loading finsihed - disconnect");
 
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
