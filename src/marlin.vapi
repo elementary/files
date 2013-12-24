@@ -140,13 +140,13 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void mount_volume (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun);
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback);
+        public void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void unmount_mount_full (Gtk.Window? parent_window, Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback);
+        public void unmount_mount_full (Gtk.Window? parent_window, Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
     }
-    [CCode (cheader_filename = "marlin-file-operations.h")]
-    public delegate void MountCallback (GLib.Volume volume, void* callback_data);
-    [CCode (cheader_filename = "marlin-file-operations.h")]
+    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+    public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
+    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void UnmountCallback (void* callback_data);
 
     [CCode (cheader_filename = "marlin-enum-types.h")]
