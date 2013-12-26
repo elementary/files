@@ -115,7 +115,7 @@ public class Marlin.Application : Granite.Application {
     /* The array that holds the file commandline arguments
        needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
-	private string[]? remaining = null;
+    private string[]? remaining = null;
 
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
@@ -277,6 +277,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+message ("Application open window");
         var window = new Marlin.View.Window (this, screen);
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);

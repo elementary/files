@@ -164,6 +164,7 @@ namespace Marlin.View {
             tabs.show ();
 
             /* Sidebar */
+message ("Creating sidebar");
             sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
