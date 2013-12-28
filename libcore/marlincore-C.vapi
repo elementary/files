@@ -166,7 +166,7 @@ namespace GOF {
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 
-        public File(GLib.File location, GLib.File dir);
+        public File(GLib.File location, GLib.File? dir);
         public static GOF.File get(GLib.File location);
         public static GOF.File get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
@@ -205,6 +205,7 @@ namespace GOF {
         public unowned string get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
+        public void get_folder_icon_from_uri_or_path ();
         public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
 
         public bool is_mounted;
