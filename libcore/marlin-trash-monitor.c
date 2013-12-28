@@ -206,10 +206,7 @@ marlin_trash_monitor_is_empty (void)
     MarlinTrashMonitor *monitor;
 
     monitor = marlin_trash_monitor_get ();
-g_message ("%s: returning %s", G_STRFUNC, monitor->details->empty ? "empty" :"not empty");
     return monitor->details->empty;
-//g_message ("%s returning false", G_STRFUNC);
-//    return FALSE;
 }
 
 GIcon *

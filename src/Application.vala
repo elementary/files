@@ -97,12 +97,16 @@ public class Marlin.Application : Granite.Application {
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+//message ("Get volume manager");
         this.volume_monitor = VolumeMonitor.get ();
+//message ("volume manager connect mount_removed");
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
 
 #if HAVE_UNITY
+//message ("Get Quicklist singleton");
         QuicklistHandler.get_singleton ();
 #endif
+//message ("Leaving application startup");
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
