@@ -134,19 +134,14 @@ namespace Marlin.View {
         }
 
         private void connect_available_info () {
-message ("connect_available_info");
+//message ("connect_available_info");
             //file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if (window.current_tab == this)
-{
-message ("connect_available_info - loadint_uri");
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
-}
-else
-message ("connect_available_info - current tab is not this");
 
                 /*Source.remove((uint) file_info_callback);
             });*/
-message ("connect_available_info - leaving");
+//message ("connect_available_info - leaving");
         }
 
         public void refresh_slot_info () {
@@ -190,7 +185,7 @@ message ("connect_available_info - leaving");
         }
 
         public void change_view (int nview, GLib.File? location) {
-message ("change_view");
+//message ("change_view");
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -271,7 +266,7 @@ message ("change_view");
         }
 
         public void update_location_state (bool save_history) {
-message ("update_location_state");
+//message ("update_location_state");
             if (!slot.directory.file.exists)
                 return;
 
@@ -284,7 +279,7 @@ message ("update_location_state");
             /* update ModeButton */
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-message ("update_location_state - leaving");
+//message ("update_location_state - leaving");
         }
 
         public Gtk.Menu get_back_menu () {

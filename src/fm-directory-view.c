@@ -303,7 +303,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-g_message ("fm-directory-view %s: ", G_STRFUNC);
+//g_message ("fm-directory-view %s: ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -326,7 +326,7 @@ g_message ("fm-directory-view %s: ", G_STRFUNC);
         view->details->slot->ready_to_autosize = TRUE;
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
-g_message ("fm-directory-view %s: - leaving ", G_STRFUNC);
+//g_message ("fm-directory-view %s: - leaving ", G_STRFUNC);
 }
 
 static void
@@ -2724,10 +2724,10 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
+    //g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
 
     //coltest
-    g_message ("%s > merge menus", G_STRFUNC);
+    //g_message ("%s > merge menus", G_STRFUNC);
     fm_directory_view_merge_menus (view);
     //schedule_update_menus (view);
 }

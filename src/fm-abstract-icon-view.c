@@ -687,7 +687,7 @@ fm_abstract_icon_view_destroy (GtkWidget *object)
 {
     FMAbstractIconView *icon_view = FM_ABSTRACT_ICON_VIEW (object);
 
-    g_warning ("%s", G_STRFUNC);
+    //g_warning ("%s", G_STRFUNC);
 
     g_settings_unbind (icon_view, "zoom-level");
 
@@ -699,7 +699,7 @@ fm_abstract_icon_view_finalize (GObject *object)
 {
     FMAbstractIconView *view = FM_ABSTRACT_ICON_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    //g_warning ("%s\n", G_STRFUNC);
 
     g_free (view->details->original_name);
     view->details->original_name = NULL;
