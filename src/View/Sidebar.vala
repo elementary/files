@@ -44,15 +44,18 @@ namespace Marlin.Places {
 
         /* DnD */
         List<GLib.File> drag_list;
+        uint drag_data_info;
         uint drag_scroll_timer_id;
         Gdk.DragContext drag_context;
         bool received_drag_data;
-        uint drag_data_info;
+        bool drop_occurred;
+
         /* Identifiers for target types */
         public enum TargetType {
             GTK_TREE_MODEL_ROW,
             TEXT_URI_LIST
             }
+
         /* Gtk.Target types for dragging from shortcut list */
          const Gtk.TargetEntry source_targets [] = {
             {"GTK_TREE_MODEL_ROW", Gtk.TargetFlags.SAME_WIDGET, TargetType.GTK_TREE_MODEL_ROW}
@@ -73,8 +76,6 @@ namespace Marlin.Places {
                 tree_view.columns_autosize ();
             }
         }
-
-        bool drop_occurred;
 
         Gtk.Menu popupmenu;
         Gtk.MenuItem popupmenu_open_in_new_tab_item;
@@ -113,7 +114,6 @@ namespace Marlin.Places {
             NEW_TAB,
             NEW_WINDOW
         }
-
 
         Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
@@ -315,11 +315,11 @@ namespace Marlin.Places {
             bool show_eject, show_unmount;
             bool show_eject_button;
 
-            Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (_zoom);
+            Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_icon_cell_renderer.stock_size = stock_size;
 
             if (icon != null) {
-                int icon_size = Marlin.zoom_level_to_icon_size (_zoom);
+                int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
                 icon_info = Marlin.IconInfo.lookup (icon, icon_size);
                 pixbuf = icon_info.get_pixbuf_nodefault ();
             }
@@ -383,10 +383,6 @@ namespace Marlin.Places {
             Gtk.TreeSelection selection;
             Gtk.TreeIter iter, last_iter;
             Gtk.TreePath select_path;
-            //VolumeMonitor volume_monitor;
-           // Mount mount;
-            //Drive drive;
-            //Volume volume;
             string location, mount_uri, last_uri;
             Icon icon;
             File root;
@@ -462,7 +458,9 @@ message ("update_places");
             for (index = 0; index < bookmark_count; index++) {
                 bm = bookmarks.item_at (index);
 
-                if (bm == null || bm.uri_known_not_to_exist ())
+                if (bm == null
+                 //|| bm.uri_known_not_to_exist ())
+                 )
                     continue;
 
                 name = bm.label.dup ();
@@ -893,10 +891,9 @@ message ("update_places");
 
         /* Reorders the selected bookmark to the specified position */
         private void reorder_bookmarks (uint new_position) {
-
-            Gtk.TreeIter iter;
 message ("reorder_bookmarks - new position %u", new_position);
             /* Get the selected path */
+            Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
 
@@ -906,6 +903,7 @@ message ("reorder_bookmarks - new position %u", new_position);
                         Column.BOOKMARK, out is_bookmark,
                         Column.INDEX, out old_position,
                         -1);
+message ("reorder_bookmarks - uncorrected old position %u, n_builtins_before %u", old_position, n_builtins_before);
 
             old_position = old_position <= n_builtins_before ? 0 : old_position - n_builtins_before;
 
@@ -930,43 +928,23 @@ message ("reorder_bookmarks - corrected old position %u", old_position);
             Gtk.TreeIter iter;
             string uri;
 
-            if (!received_drag_data) {
-                if (!get_drag_data (tree_view, context, time));
-{
-//message ("drag_motion_callback - failed to get drag data");
+            if (!received_drag_data
+             && !get_drag_data (tree_view, context, time))
                     return false;
-}
-            }
-
-//message (@"Received drag data is $received_drag_data");
 
             if (!compute_drop_position (tree_view, x, y, out path, out pos))
-{
-//message ("drag_motion_callback - Failed to compute drop position");
                 return false;
-}
-//message ("drag_motion_callback - Computed drop position");
+
             if (pos == Gtk.TreeViewDropPosition.BEFORE
                 || pos == Gtk.TreeViewDropPosition.AFTER) {
-//message (@"Drop position $pos");
-//message (@"received drag data is $received_drag_data");
-//message (@"drag_data_info is $drag_data_info");
-//message ("drag_list is %s", drag_list != null ? "FULL" : "EMPTY");
-//message (@"path is $path");
-
                 if (received_drag_data
                     && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
-{
-//message ("drag_motion_callback - Drag data info = GTK_TREE_MODEL_ROW");
                     action = Gdk.DragAction.MOVE;
-}
                 else if (drag_list != null && can_accept_files_as_bookmarks (drag_list))
                     action = Gdk.DragAction.COPY;
             } else if (drag_list != null && path != null) {
-//message ("drag_motion_callback - Dropping onto bookmark");
                 store.get_iter (out iter, path);
                 this.store.@get (iter, Column.URI, out uri, -1);
-                //TODO use GOFFILE instead of uri
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
                     if (file.ensure_query_info ())
@@ -974,7 +952,6 @@ message ("reorder_bookmarks - corrected old position %u", old_position);
                 }
             }
 
-//message ("Action is %i, pos is %i", action, pos);
             tree_view.set_drag_dest_row (path, pos);
             GLib.Signal.stop_emission_by_name (tree_view, "drag-motion");
 
@@ -994,15 +971,15 @@ message ("reorder_bookmarks - corrected old position %u", old_position);
                                          int x,
                                          int y,
                                          uint time) {
-            bool retval = false;
-//message ("drag_drop_callback ");
             drop_occurred = true;
-            retval = get_drag_data (tree_view, context, time);
+            bool retval = get_drag_data (tree_view, context, time);
             GLib.Signal.stop_emission_by_name (tree_view, "drag_drop");
             return retval;
         }
 
-        private  bool get_drag_data (Gtk.TreeView tree_view, Gdk.DragContext context, uint32 time) {
+        private  bool get_drag_data (Gtk.TreeView tree_view,
+                                     Gdk.DragContext context,
+                                     uint32 time) {
             Gdk.Atom target = Gtk.drag_dest_find_target (tree_view, context, Gtk.drag_dest_get_target_list (tree_view));
 
             if (target == Gdk.Atom.NONE)
@@ -1019,137 +996,106 @@ message ("reorder_bookmarks - corrected old position %u", old_position);
                                                          Gtk.SelectionData selection_data,
                                                          uint info,
                                                          uint time) {
-            Gtk.TreeView tree_view;
-            Gtk.TreePath tree_path;
-            Gtk.TreeViewDropPosition drop_pos;
-            Gtk.TreeModel model;
-            string drop_uri;
-            bool success;
-
-//message ("drag_data_received_callback");
-            tree_view = widget as Gtk.TreeView;
-
             if (!received_drag_data) {
-//message ("received_drag_data_callback - received drag data is false");
-                if (selection_data.get_target () != Gdk.Atom.NONE && info == TargetType.TEXT_URI_LIST) {
-                    string s = (string)(selection_data.get_data ()); /* ?? */
-//message ("Filling drag_list");
-                    this.drag_list = EelGFile.list_new_from_string (s);
+                if (selection_data.get_target () != Gdk.Atom.NONE
+                    && info == TargetType.TEXT_URI_LIST) {
+                    string s = (string)(selection_data.get_data ());
+                    drag_list = EelGFile.list_new_from_string (s);
                 } else
-{
-//message ("Nulling drag_list");
                     this.drag_list = null;
-}
+
                 received_drag_data = true;
                 drag_data_info = info;
             }
 
             GLib.Signal.stop_emission_by_name (widget, "drag-data-received");
 
-            if (!drop_occurred)
-{
-//message ("received_drag_data_callback - drop did not occur");
-
+            if (!drop_occurred) /* called from drag_motion_callback */
                 return;
-}
 
-warning ("DROP OCCURRED");
-            success = false;
-            /* Compute position */
+            drop_occurred = false;
+            bool success = process_drop (context, x, y, info);
+            Gtk.drag_finish (context, success, false, time);
+            update_places ();
+        }
+
+        private bool process_drop (Gdk.DragContext context, int x, int y, uint info) {
+            Gtk.TreePath tree_path;
+            Gtk.TreeViewDropPosition drop_pos;
             if (compute_drop_position (tree_view, x, y, out tree_path, out drop_pos)) {
-//message ("received_drag_data_callback done compute drop poistion");
-
-                model = tree_view.get_model ();
-//message ("received_drag_data_callback done treepath is %s", tree_path.to_string ());
-//message (@"received_drag_data_callback done drop position is $drop_pos");
-
                 Gtk.TreeIter iter;
-                if (model.get_iter (out iter, tree_path)) {
-//message ("received_drag_data_callback - got iter");
+                if (!store.get_iter (out iter, tree_path))
+                    return false;
 
-                    if (drop_pos == Gtk.TreeViewDropPosition.BEFORE ||
-                        drop_pos == Gtk.TreeViewDropPosition.AFTER) {
-//message ("received_drag_data_callback - drop position before or after");
+                if (drop_pos == Gtk.TreeViewDropPosition.BEFORE
+                 || drop_pos == Gtk.TreeViewDropPosition.AFTER)
+                    return process_drop_between (iter, drop_pos, info);
+                else
+                    return process_drop_onto (iter, context, info);
+            }
+            return false;
+        }
 
-                        PlaceType type;
-                        uint position;
-                        model.@get (iter,
-                                    Column.ROW_TYPE, out type,
-                                    Column.INDEX, out position,
-                                    -1);
+        private bool process_drop_between (Gtk.TreeIter iter,
+                                           Gtk.TreeViewDropPosition drop_pos,
+                                           uint info) {
+            PlaceType type;
+            uint position;
+            store.@get (iter,
+                        Column.ROW_TYPE, out type,
+                        Column.INDEX, out position,
+                        -1);
 
-                        if (type >= 0 &&
-                            (type == PlaceType.BOOKMARK || type == PlaceType.BUILT_IN)) {
-//message ("received_drag_data_callback type is bookmark or builtin");
+            assert (type >=0);
+            if (type == PlaceType.BOOKMARK || type == PlaceType.BUILT_IN) {
+                if (type == PlaceType.BOOKMARK && drop_pos == Gtk.TreeViewDropPosition.BEFORE)
+                    position--;
 
-                            if (type == PlaceType.BOOKMARK && drop_pos == Gtk.TreeViewDropPosition.AFTER)
-                                position++;
-
-//message ("received_drag_data_callback info is %u", info);
-position = position <= n_builtins_before ? 0 : position - n_builtins_before;
-message (@"received_drag_data_callback position is $position");
-
-                            switch (info) {
-                                case TargetType.TEXT_URI_LIST:
-//message ("received_drag_data_callback- TEXT_URI_LIST");
-
-                                    //drop_uris (selection_data, position);
-                                    drop_drag_list (position);
-                                    success = true;
-                                    break;
-                                case TargetType.GTK_TREE_MODEL_ROW:
-                                    reorder_bookmarks (position);
-                                    success = true;
-                                    break;
-                                default:
-                                    assert_not_reached ();
-                            }
-                        }
-                    } else {
-//message ("received_drag_data_callback- file copy/move requested");
-
-                        store.@get (iter,
-                                    Column.URI, out drop_uri,
-                                    -1);
-                        Gdk.DragAction real_action;
-                        /* file transfer requested */
-                        real_action = context.get_selected_action ();
-
-                        if (real_action == Gdk.DragAction.ASK) {
-                            var actions = context.get_actions ();
-                            if (drop_uri.has_prefix ("trash:///"))
-                                actions &= Gdk.DragAction.MOVE;
-
-                            real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view,
-                                                                       actions);
-                        }
-//message ("received_drag_data_callback- real action is %i", (int)real_action);
-
-                        if (real_action > 0) {
-                            switch (info) {
-                                 case TargetType.TEXT_URI_LIST:
-                                    File drop_file = File.new_for_uri (drop_uri);
-                                    Marlin.FileOperations.copy_move (drag_list,
-                                                                     null,
-                                                                     drop_file,
-                                                                     real_action,
-                                                                     null, null, null);
-                                    success = true;
-                                    break;
-                                case TargetType.GTK_TREE_MODEL_ROW:
-                                    success = false;
-                                    break;
-                                default:
-                                    assert_not_reached ();
-                            }
-                        }
-                    }
+                switch (info) {
+                    case TargetType.TEXT_URI_LIST:
+                        drop_drag_list (position);
+                        return true;
+                    case TargetType.GTK_TREE_MODEL_ROW:
+                        reorder_bookmarks (position);
+                        return true;
+                    default:
+                        assert_not_reached ();
                 }
             }
-            drop_occurred = false;
-//message ("received_drag_data_callback- success is %s", success ? "TRUE" : "FALSE");
-            update_places ();
-            Gtk.drag_finish (context, success, false, time);
+            return false;
+        }
+
+        private bool process_drop_onto (Gtk.TreeIter iter, Gdk.DragContext context, uint info) {
+            string drop_uri;
+            store.@get (iter,
+                        Column.URI, out drop_uri,
+                        -1);
+
+            var real_action = context.get_selected_action ();
+            if (real_action == Gdk.DragAction.ASK) {
+                var actions = context.get_actions ();
+                if (drop_uri.has_prefix ("trash:///"))
+                    actions &= Gdk.DragAction.MOVE;
+
+                real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
+            }
+
+            if (real_action == Gdk.DragAction.DEFAULT)
+                return false;
+
+            switch (info) {
+                 case TargetType.TEXT_URI_LIST:
+                    Marlin.FileOperations.copy_move (drag_list,
+                                                     null,
+                                                     File.new_for_uri (drop_uri),
+                                                     real_action,
+                                                     null, null, null);
+                    return true;
+                case TargetType.GTK_TREE_MODEL_ROW:
+                    return false;
+                default:
+                    return false;;
+            }
         }
 
         private void drag_leave_callback (Gdk.DragContext context, uint time) {
@@ -1167,10 +1113,6 @@ message (@"received_drag_data_callback position is $position");
             }
         }
 
-
-//        private  bool can_accept_file_as_bookmark (GOF.File file) {
-//            return file.is_directory;
-//        }
         private  bool can_accept_file_as_bookmark (GLib.File file) {
             GLib.FileType ftype = file.query_file_type (GLib.FileQueryInfoFlags.NONE, null);
             return ( ftype == GLib.FileType.DIRECTORY
@@ -1188,7 +1130,6 @@ message (@"received_drag_data_callback position is $position");
                     if (can_accept_file_as_bookmark (file))
                             count++;
             });
-//message ("%i files accepted for drop", count);
             return count > 0 && count <= MAX_BOOKMARKS_DROPPED;
         }
 
@@ -1196,30 +1137,15 @@ message (@"received_drag_data_callback position is $position");
             if (drag_list == null)
                 return;
 
+            GLib.List<string> uris = null;
             drag_list.@foreach ((file) => {
-warning ("Attempting to drop %s", file.get_uri ());
-                if (can_accept_file_as_bookmark (file)) {
-                    bookmarks.insert_uri (file.get_uri (), position++);
-message ("DROPPED");
-}
+                if (can_accept_file_as_bookmark (file))
+                    //bookmarks.insert_uri (file.get_uri (), position++);
+                    uris.prepend (file.get_uri ());
             });
+            if (uris != null)
+                bookmarks.insert_uris (uris, position);
         }
-        /* Parses a "text/uri-list" string and inserts its URIs as bookmarks */
-//        private void drop_uris (Gtk.SelectionData selection_data,
-//                                          uint position) {
-
-//            string [] uris = selection_data.get_uris ();
-//            if (uris == null)
-//                return;
-
-//            GOF.File file;
-//            foreach (string uri in uris) {
-//                file = GOF.File.get_by_uri (uri);
-//                if (can_accept_file_as_bookmark (file))
-//                    bookmarks.insert_uri (uri, position++);
-
-//            }
-//        }
 
         private  bool drag_scroll_timer () {
             Gtk.Adjustment adjustment;
@@ -1275,10 +1201,6 @@ message ("DROPPED");
             return true;
         }
 
-    //    private void drag_scroll_timer_destroy (Object object) {
-    //        this.drag_scroll_timer_id = -1;
-    //    }
-
     /* Computes the appropriate row and position for dropping */
         private bool compute_drop_position (Gtk.TreeView tree_view,
                                                     int x,
@@ -1289,25 +1211,15 @@ message ("DROPPED");
             int num_rows;
             int row;
             num_rows = store.iter_n_children (null);
-//message ("num rows is %i", num_rows);
-//message ("X is %i,  Y is %i", x, y);
 
             if (!tree_view.get_dest_row_at_pos (x, y, out path, out drop_position)) {
                 warning ("compute_drop position dest_row_at_pos UNKNOWN");
                 return false;
             }
-            else
-                //message (@"get dest_row_at_pos pos is $drop_position, path is $path");
-
 
             row = (path.get_indices ()) [0];
-
-//message ("row is %i", row);
-
             path = null;
             tree_view.get_path_at_pos (x, y, out path, null, null, null);
-
-//message (@"get_path_at_pos, path is now $path");
 
             if (row == 1 || row == 2) {
                 /* Hardcoded shortcuts can only be dragged into */
@@ -1417,27 +1329,24 @@ message ("DROPPED");
             if (popupmenu == null)
                 return;
 
+            Gtk.TreeIter iter;
+            if (!get_selected_iter (out iter))
+                return;
+
             PlaceType type;
             Drive drive;
             Volume volume;
             Mount mount;
             string uri;
             bool is_bookmark;
-            Gtk.TreeIter iter;
-
-            if (get_selected_iter (out iter))
-                store.@get (iter,
-                            Column.ROW_TYPE, out type,
-                            Column.DRIVE, out drive,
-                            Column.VOLUME, out volume,
-                            Column.MOUNT, out mount,
-                            Column.URI, out uri,
-                            Column.BOOKMARK, out is_bookmark,
-                            -1);
-            else
-                return;
-
-//message ("check_popup_sensitivity - type is %i, uri is %s", type, uri);
+            store.@get (iter,
+                        Column.ROW_TYPE, out type,
+                        Column.DRIVE, out drive,
+                        Column.VOLUME, out volume,
+                        Column.MOUNT, out mount,
+                        Column.URI, out uri,
+                        Column.BOOKMARK, out is_bookmark,
+                        -1);
 
             popupmenu_open_in_new_tab_item.show ();
             Eel.gtk_widget_set_shown (popupmenu_remove_item, is_bookmark);
@@ -1445,7 +1354,6 @@ message ("DROPPED");
             Eel.gtk_widget_set_shown (popupmenu_separator_item1, is_bookmark);
 
             bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
-
             check_visibility (mount,
                               volume,
                               drive,
@@ -1492,17 +1400,16 @@ message ("DROPPED");
                                              ViewWindowOpenFlags flags) {
             if (path == null)
                 return;
+
             Gtk.TreeIter iter;
             if (!store.get_iter (out iter, path))
                 return;
 
             string uri;
-            File location;
-
             store.@get (iter, Column.URI, out uri, -1);
 
             if (uri != null) {
-                location = File.new_for_uri (uri);
+                var location = File.new_for_uri (uri);
                 /* Navigate to the clicked location */
                 if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
                     window.add_window (location);
@@ -1520,23 +1427,22 @@ message ("DROPPED");
                              Column.DRIVE, out drive,
                              Column.VOLUME, out volume,
                              -1);
+
                 if (volume != null && !mounting) {
                     mounting = true;
                     assert (go_to_after_mount_slot == null);
-message ("Volume UUID is %s", volume.get_uuid ());
+
                     var slot = window.get_active_slot ();
                     go_to_after_mount_slot = slot;
                     go_to_after_mount_flags = flags;
-                    Marlin.FileOperations.mount_volume_full (null, volume, false, (Marlin.MountCallback)volume_mounted_cb, this);
-                    //Marlin.FileOperations.mount_volume_full (null, volume, false, null);
-                    //Sidebar.mount_volume (this, volume, false);
-                } else if (volume == null && drive != null &&
-                   (drive.can_start () || drive.can_start_degraded ())) {
-message ("Drive identifiers are:");
-string[] identifiers = drive.enumerate_identifiers ();
-foreach (string s in identifiers) {
-    message ("%s", s);
-}
+                    Marlin.FileOperations.mount_volume_full (null,
+                                                             volume,
+                                                             false,
+                                                             (Marlin.MountCallback)volume_mounted_cb,
+                                                             this);
+                } else if (volume == null
+                        && drive != null
+                        && (drive.can_start () || drive.can_start_degraded ())) {
                     Gtk.Window win = this.get_toplevel () as Gtk.Window;
                     var mount_op = new Gtk.MountOperation (win);
                     drive.start.begin (DriveStartFlags.NONE, mount_op, null);
@@ -1545,7 +1451,6 @@ foreach (string s in identifiers) {
         }
 
         private void open_shortcut_from_menu (ViewWindowOpenFlags flags) {
-           // var model = tree_view.get_model ();
             Gtk.TreePath path;
             tree_view.get_cursor (out path, null);
             open_selected_bookmark (store, path, flags);
@@ -1564,16 +1469,18 @@ foreach (string s in identifiers) {
         }
 
         private void rename_selected_bookmark () {
-message ("rename_selected_bookmarks");
             Gtk.TreeIter iter;
-            if (get_selected_iter ( out iter)) {
-                var path = store.get_path (iter);
-                var column = tree_view.get_column (0);
-                GLib.List<weak Gtk.CellRenderer> renderers = column.get_cells ();
-                Gtk.CellRendererText cell = (Gtk.CellRendererText)(renderers.nth_data (5));
-                cell.editable = true;
-                tree_view.set_cursor_on_cell (path, column, cell, true);
-            }
+            if (!get_selected_iter ( out iter))
+                return;
+
+            var path = store.get_path (iter);
+            var column = tree_view.get_column (0);
+            GLib.List<weak Gtk.CellRenderer> renderers = column.get_cells ();
+            var cell = (Gtk.CellRendererText)(renderers.nth_data (5));
+            cell.editable = true;
+
+            tree_view.set_cursor_on_cell (path, column, cell, true);
+
         }
 
         private void rename_shortcut_cb (Gtk.MenuItem item) {
@@ -1581,7 +1488,6 @@ message ("rename_selected_bookmarks");
         }
 
         private void remove_selected_bookmarks () {
-message ("remove_selected_bookmarks");
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
@@ -1599,7 +1505,6 @@ message ("remove_selected_bookmarks");
         }
 
         private void remove_shortcut_cb (Gtk.MenuItem item) {
-message ("remove_shortcut_cb");
             remove_selected_bookmarks ();
         }
 
@@ -1638,37 +1543,14 @@ message ("remove_shortcut_cb");
 
         private void do_eject (Mount mount, Volume volume, Drive drive) {
             var mount_op = new Gtk.MountOperation (get_toplevel () as Gtk.Window);
-            if (mount != null) {
-    //            try {
-                    mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
-    //            }
-    //            catch (GLib.Error error) {
-    //                    var name = mount.get_name ();
-    //                    var primary = (_("Unable to eject %s")).printf (name);
-    //                    Eel.show_error_dialog (primary, error.message, null);
-    //            }
-            }
-            if (volume != null) {
-    //            try {
-                    volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
-    //            }
-    //            catch (GLib.Error error) {
-    //                    var name = volume.get_name ();
-    //                    var primary = (_("Unable to eject %s")).printf (name);
-    //                    Eel.show_error_dialog (primary, error.message, null);
-    //            }
-            }
+            if (mount != null)
+                mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
 
-            if (drive != null) {
-    //            try {
-                    drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
-    //            }
-    //            catch (GLib.Error error) {
-    //                    var name = drive.get_name ();
-    //                    var primary = (_("Unable to eject %s")).printf (name);
-    //                    Eel.show_error_dialog (primary, error.message, null);
-    //            }
-            }
+            if (volume != null)
+                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
+
+            if (drive != null)
+                drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
         }
 
         private void eject_shortcut_cb (Gtk.MenuItem item) {
@@ -1691,7 +1573,6 @@ message ("remove_shortcut_cb");
             if (path == null)
                 return false;
 
-            //var model = (Gtk.TreeModel)(store);
             Gtk.TreeIter iter;
             if (!store.get_iter (out iter, path))
                 return false;
@@ -1705,8 +1586,7 @@ message ("remove_shortcut_cb");
                         Column.DRIVE, out drive,
                         -1);
 
-            bool can_unmount;
-            bool can_eject;
+            bool can_unmount, can_eject;
             check_unmount_and_eject (mount, volume, drive, out can_unmount, out can_eject);
 
             if (can_eject) {
@@ -1726,7 +1606,6 @@ message ("remove_shortcut_cb");
                 return false;
 
             Gtk.TreePath path = store.get_path (iter);
-
             if (path == null)
                 return false;
 
@@ -1756,14 +1635,14 @@ message ("remove_shortcut_cb");
     //        Marlin.ConnectServer.dialog_show (window);
     //    }
 
-        private  bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
+        private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
             Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
-            if (event.keyval == Gdk.Key.Down && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
+            if (event.keyval == Gdk.Key.Down
+             && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
                 return eject_or_unmount_selection ();
 
-            if ((event.keyval == Gdk.Key.Delete
-                || event.keyval == Gdk.Key.KP_Delete)
-                && (event.state & modifiers) == 0) {
+            if ((event.keyval == Gdk.Key.Delete || event.keyval == Gdk.Key.KP_Delete)
+             && (event.state & modifiers) == 0) {
                 remove_selected_bookmarks ();
                 return true;
             }
@@ -1878,7 +1757,6 @@ message ("remove_shortcut_cb");
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
                 return true;
 
-
             Gtk.TreePath path;
             if (clicked_eject_button (out path)) {
                 eject_or_unmount_bookmark (path);
@@ -1886,7 +1764,6 @@ message ("remove_shortcut_cb");
             }
 
             assert (tree_view != null);
-            //var model = tree_view.get_model ();
 
             if (event.button ==1) {
                 if (event.window != tree_view.get_bin_window ())
@@ -1898,6 +1775,7 @@ message ("remove_shortcut_cb");
 
             return false;
         }
+
         /* Callback used when a button is pressed on the shortcuts list.
          * We trap button 3 to bring up a popup menu, and button 2 to
          * open in a new tab.
@@ -1912,7 +1790,6 @@ message ("remove_shortcut_cb");
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
-            //var model = tree_view.get_model ();
             Gtk.TreePath path;
             tree_view.get_path_at_pos ((int)event.x, (int)event.y, out path, null, null, null);
 
@@ -2091,22 +1968,21 @@ message ("remove_shortcut_cb");
         }
 
         private void zoom_in () {
-            if (_zoom == Marlin.ZoomLevel.NORMAL)
+            if (zoom_level == Marlin.ZoomLevel.NORMAL)
                 return;
 
-            _zoom += 1;
+            zoom_level += 1;
         }
 
         private void zoom_out () {
-            if (_zoom == Marlin.ZoomLevel.SMALLEST)
+            if (zoom_level == Marlin.ZoomLevel.SMALLEST)
                 return;
 
-            _zoom -= 1;
+            zoom_level -= 1;
         }
 
-        private new bool handle_scroll_event (Gdk.EventScroll event) {
-            double total_delta_y = 0;
-
+        public bool handle_scroll_event (Gdk.EventScroll event) {
+message ("handle_scroll_event");
             if (event.state == Gdk.ModifierType.CONTROL_MASK) {
                 switch (event.direction) {
                     case Gdk.ScrollDirection.UP:
@@ -2117,6 +1993,7 @@ message ("remove_shortcut_cb");
                         return true;
                     case Gdk.ScrollDirection.SMOOTH:
                     /* try to emulate a normal scrolling event by summing deltas */
+                        double total_delta_y = 0;
                         total_delta_y += event.delta_y;
                         if (total_delta_y >= 1) {
                             total_delta_y = 0;

@@ -34,10 +34,11 @@ namespace Marlin {
             save_bookmarks_file ();
         }
 
-        public void insert_uris (string [] uris, uint index) {
-            foreach (string uri in uris) {
+        public void insert_uris (GLib.List<string> uris, uint index) {
+            uris.@foreach ((uri) => {
                 insert_item_internal (new Bookmark.from_uri (uri, null), index);
-            }
+                index++;
+            });
             save_bookmarks_file ();
         }
 
@@ -120,7 +121,6 @@ namespace Marlin {
 
         private void schedule_job (JobType job) {
             pending_ops.push_head (job);
-message (@"Pushed job $job - pending ops now %u", pending_ops.length);
             if (pending_ops.length == 1)
                 process_next_op ();
         }
@@ -147,14 +147,10 @@ message (@"Pushed job $job - pending ops now %u", pending_ops.length);
         }
 
         private void bookmark_list_from_string (string contents) {
-            string [] lines = contents.split ("\n");
-
-message ("bookmark_list_from_string - list length before - %u", list.length ());
-
             list.@foreach (stop_monitoring_bookmark);
-            //list = null;
 
             uint count = 0;
+            string [] lines = contents.split ("\n");
             foreach (string line in lines) {
                 if (line[0] == '\0' || line[0] == ' ')
                     continue; /* ignore blank lines */
@@ -169,16 +165,10 @@ message ("bookmark_list_from_string - list length before - %u", list.length ());
             }
 
             list.@foreach (start_monitoring_bookmark);
-message ("bookmark_list_from_string - list length after - %u", list.length ());
-message ("bookmark_list_from_string - count after - %u", count);
+
             if (list.length () > count)
                 /* renew bookmark that was deleted when bookmarks file was changed externally */
-{
-message ("Bookmark deleted externally - renewing");
-            save_bookmarks_file ();
-                //ending_ops.push_head (JobType.SAVE_JOB);
-
-}
+                save_bookmarks_file ();
         }
 
         private GLib.List<GOF.File> get_gof_file_list () {
@@ -201,7 +191,7 @@ message ("Bookmark deleted externally - renewing");
 
                 sb.append ("\n");
             });
-message ("Saving contents %s", sb.str);
+
             file.replace_contents_async.begin (sb.data,
                                                null,
                                                false,
@@ -278,11 +268,12 @@ message ("Saving contents %s", sb.str);
         private void process_next_op () {
             stop_monitoring_bookmarks_file ();
             var pending = pending_ops.pop_tail ();
-message (@"Processing $pending");
-            pending_ops.clear(); /* if job is SAVE then subsequent pending saves and loads are redundant */
-                                 /* if job is LOAD then any pending changes requiring saving will be lost */
-            pending_ops.push_head (pending); /* block queue until job processed */
-message ("process_next_op before switch - pending ops length now %u", pending_ops.length);
+            /* if job is SAVE then subsequent pending saves and loads are redundant */
+            /* if job is LOAD then any pending changes requiring saving will be lost */
+            pending_ops.clear();
+            /* block queue until job processed */
+            pending_ops.push_head (pending);
+
             switch (pending) {
                 case JobType.LOAD:
                     load_bookmarks_file_async ();
@@ -295,21 +286,14 @@ message ("process_next_op before switch - pending ops length now %u", pending_op
                     op_processed_call_back ();
                     break;
             }
-message ("process_next_op after switch - pending ops length now %u", pending_ops.length);
-
         }
 
         private void op_processed_call_back () {
-message ("op_processed_call_back - pending ops length before popping %u", pending_ops.length);
             pending_ops.pop_tail (); /* remove job just completed */
             if (!pending_ops.is_empty ())
-{message ("/* another job has been scheduled while processing current job */");
                 process_next_op ();
-}
-            else {
-message ("/* no more jobs */");
+            else
                 start_monitoring_bookmarks_file ();
-            }
         }
     }
 }

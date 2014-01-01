@@ -87,6 +87,12 @@ namespace Marlin {
         private void file_changed_callback (GLib.File file,
                                             GLib.File? other_file,
                                             GLib.FileMonitorEvent event_type) {
+message ("Bookmark file_changed_callback - this uri is %s", this.get_uri ());
+message ("Bookmark file_changed_callback - file is %s", file.get_uri ());
+if (other_file != null)
+    message ("Bookmark file_changed_callback - other_file is %s", other_file.get_uri ());
+
+message (@"Bookmark file_changed_callback - event $event_type");
             switch (event_type) {
                 case GLib.FileMonitorEvent.DELETED:
                         disconnect_file ();
