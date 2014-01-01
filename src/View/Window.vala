@@ -164,7 +164,6 @@ namespace Marlin.View {
             tabs.show ();
 
             /* Sidebar */
-message ("Creating sidebar");
             sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
@@ -525,7 +524,6 @@ message ("Creating sidebar");
         }
 
         private void action_go_to_trash_callback (Gtk.Action action) {
-message ("Window: action_go_to_trash_callback ");
                 current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
         }
 
