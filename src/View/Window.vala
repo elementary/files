@@ -416,7 +416,7 @@ namespace Marlin.View {
             tabs.remove_tab (tabs.current);
         }
 
-    	private void save_geometries () {
+        private void save_geometries () {
             Gtk.Allocation sidebar_alloc;
             sidebar.get_allocation (out sidebar_alloc);
             if (sidebar_alloc.width > 1)

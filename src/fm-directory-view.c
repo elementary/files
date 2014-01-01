@@ -200,6 +200,8 @@ static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAlloc
 
 static int      fm_directory_view_get_uri_keypath_size (FMDirectoryView *view);
 
+void dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
+
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
 
@@ -228,7 +230,7 @@ static const GtkTargetEntry drop_targets[] =
 };
 
 static gpointer _g_object_ref0 (gpointer self) {
-	return self ? g_object_ref (self) : NULL;
+    return self ? g_object_ref (self) : NULL;
 }
 
 
@@ -301,6 +303,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
+//g_message ("fm-directory-view %s: ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -323,6 +326,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         view->details->slot->ready_to_autosize = TRUE;
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
+//g_message ("fm-directory-view %s: - leaving ", G_STRFUNC);
 }
 
 static void
@@ -825,7 +829,7 @@ fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
                                        GdkEventScroll *event)
 {
     gdouble total_delta_y = 0;
-	gdouble delta_x, delta_y;
+    gdouble delta_x, delta_y;
 
     if (event->state & GDK_CONTROL_MASK) {
         switch (event->direction) {
@@ -1034,7 +1038,7 @@ fm_directory_view_get_drop_file (FMDirectoryView    *view,
             file = fm_list_model_file_for_path (view->model, folder_path);
          }
 
-        printf ("%s %s\n", G_STRFUNC, file->uri);
+       // printf ("%s %s\n", G_STRFUNC, file->uri);
 
         /* we can only drop to directories and executable files */
         if (!gof_file_is_folder (file) && !gof_file_is_executable (file))
@@ -1078,7 +1082,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
 
     /* determine the file and path for the given coordinates */
     file = fm_directory_view_get_drop_file (view, x, y, &path);
-    printf ("%s %s\n", G_STRFUNC, file->uri);
+    //printf ("%s %s\n", G_STRFUNC, file->uri);
 
     /* check if we can drop there */
     if (G_LIKELY (file != NULL))
@@ -1456,10 +1460,11 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     GOFFile         *file = NULL;
     GdkAtom         target;
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     /* request the drop data on-demand (if we don't have it already) */
     if (G_UNLIKELY (!view->details->drop_data_ready))
     {
+g_message ("%s: drop_data_ready is false", G_STRFUNC);
         /* check if we can handle that drag data (yet?) */
         target = gtk_drag_dest_find_target (widget, context, NULL);
 
@@ -1467,7 +1472,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
         {
             /* determine the file for the given coordinates */
             file = fm_directory_view_get_drop_file (view, x, y, &path);
-            printf ("%s file %s\n", G_STRFUNC, file->uri);
+            printf ("%s XdndDirectSave0 or _NETSCAPE_URL file %s\n", G_STRFUNC, file->uri);
 
             /* check if we can save here */
             //TODO
@@ -1511,6 +1516,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
         }
         else
         {
+g_message ("%s: drop_data_ready is true", G_STRFUNC);
             /* request the drag data from the source */
             if (target != GDK_NONE)
                 gtk_drag_get_data (widget, context, target, timestamp);
@@ -1523,7 +1529,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     {
         /* check whether we can drop at (x,y) */
         //TODO
-        printf ("check whether we can drop at (x,y)\n");
+        //printf ("check whether we can drop at (x,y)\n");
         fm_directory_view_get_dest_actions (view, context, x, y, timestamp, NULL);
     }
 
@@ -1569,9 +1575,9 @@ fm_directory_view_drag_begin (GtkWidget           *widget,
             /*g_object_get (G_OBJECT (view->icon_renderer), "size", &size, NULL);
               icon = thunar_icon_factory_load_file_icon (view->icon_factory, file, THUNAR_FILE_ICON_STATE_DEFAULT, size);*/
             //TODO get icon size depending on the view and zoom lvl
-            printf ("hummmmmmmmmmmmmmmmm ????\n");
-            gtk_drag_set_icon_pixbuf (context, file->pix, 0, 0);
+            //printf ("hummmmmmmmmmmmmmmmm ????\n");
             //g_object_unref (G_OBJECT (icon));
+            gtk_drag_set_icon_pixbuf (context, file->pix, 0, 0);
         }
     }
 }
@@ -1878,7 +1884,7 @@ filter_default_app (GList *apps, GAppInfo *default_app)
         if (id1 != NULL && id2 != NULL
             && strcmp (id1, id2) == 0)
         {
-			g_object_unref (app);
+            g_object_unref (app);
             apps = g_list_delete_link (apps, l);
         }
     }
@@ -2360,7 +2366,7 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     if (!fm_list_model_get_first_iter_for_file (view->model, file, &iter))
-		return;
+        return;
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
@@ -2403,10 +2409,10 @@ set_metadata_callback (GObject *source_object, GAsyncResult *result, gpointer ca
     error = NULL;
     res = g_file_set_attributes_finish (G_FILE (source_object), result, NULL, &error);
 
-	if (error != NULL) {
+    if (error != NULL) {
         g_critical ("%s error, %s", G_STRFUNC, error->message);
-		g_error_free (error);
-	}
+        g_error_free (error);
+    }
 }
 
 static void
@@ -2708,10 +2714,10 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
+    //g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
 
     //coltest
-    g_message ("%s > merge menus", G_STRFUNC);
+    //g_message ("%s > merge menus", G_STRFUNC);
     fm_directory_view_merge_menus (view);
     //schedule_update_menus (view);
 }
@@ -3085,7 +3091,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
-  	if (view->updates_frozen)
+    if (view->updates_frozen)
         return;
     /* when we're in column view ignore selection changed from other slot than the active one */
     if (view->details->slot->mwcols &&
@@ -3398,7 +3404,7 @@ fm_directory_view_new_file (FMDirectoryView *view,
                             GOFFile *source)
 {
     //GdkPoint *pos;
-	/*NewFolderData *data;
+    /*NewFolderData *data;
     char *source_uri;*/
     char *current_dir_uri;
 
@@ -3423,10 +3429,10 @@ fm_directory_view_new_file (FMDirectoryView *view,
     g_return_if_fail (nautilus_file_is_local (source));
 g_return_if_fail (nautilus_file_is_local (source));
     //pos = context_menu_to_file_operation_position (directory_view);
-	data = setup_new_folder_data (directory_view);
-	source_uri = nautilus_file_get_uri (source);
+    data = setup_new_folder_data (directory_view);
+    source_uri = nautilus_file_get_uri (source);
 
-	marlin_file_operations_new_file_from_template (GTK_WIDGET (directory_view),
+    marlin_file_operations_new_file_from_template (GTK_WIDGET (directory_view),
                                                    pos,
                                                    parent_uri != NULL ? parent_uri : container_uri,
                                                    NULL,
@@ -3496,17 +3502,17 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
     g_assert (selection != NULL);
 
     file = GOF_FILE (selection->data);
-	gof_file_ref (file);
+    gof_file_ref (file);
 
-	dialog = gtk_app_chooser_dialog_new (GTK_WINDOW (view->details->window), 0, file->location);
+    dialog = gtk_app_chooser_dialog_new (GTK_WINDOW (view->details->window), 0, file->location);
     GtkWidget *check_default = gtk_check_button_new_with_label(_("Set as default"));
     gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), check_default, FALSE, FALSE, 0);
-	gtk_widget_show_all (dialog);
+    gtk_widget_show_all (dialog);
 
     int response = gtk_dialog_run (GTK_DIALOG (dialog));
     if(response == GTK_RESPONSE_OK)
     {
-	    app = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (GTK_DIALOG (dialog)));
+        app = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (GTK_DIALOG (dialog)));
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
         {
             GError* error = NULL;
@@ -3523,7 +3529,7 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
     }
 
     gtk_widget_destroy (GTK_WIDGET (dialog));
-	gof_file_unref (file);
+    gof_file_unref (file);
 }
 
 static void

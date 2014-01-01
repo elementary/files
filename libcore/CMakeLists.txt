@@ -14,6 +14,7 @@ include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
+    AbstractSidebar.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
@@ -59,7 +60,7 @@ set (C_SOURCE_FILES
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
-    marlin-abstract-sidebar.c
+#    marlin-abstract-sidebar.c
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
@@ -109,21 +110,21 @@ install (FILES ${C_HEADER_FILES} DESTINATION include/marlincore/)
 
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-	glib-2.0>=2.29.0
-	gthread-2.0
-	gio-2.0
-	pango>=1.1.2
-	gtk+-3.0>=3.4.0
-	gail-3.0
+    glib-2.0>=2.29.0
+    gthread-2.0
+    gio-2.0
+    pango>=1.1.2
+    gtk+-3.0>=3.4.0
+    gail-3.0
     gee-1.0
-	sqlite3
-	libnotify>=0.7.2)
+    sqlite3
+    libnotify>=0.7.2)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 add_definitions(${CFLAGS})
 set(LIBS
-	${DEP_LIBRARIES}
+    ${DEP_LIBRARIES}
 )
 
 link_libraries(${LIBS})

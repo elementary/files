@@ -43,6 +43,8 @@ pkg_check_modules (UNITY unity>=4.0.0)
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
+        Bookmark.vala
+        BookmarkList.vala
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
@@ -61,6 +63,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Browser.vala
         View/ViewMode.vala
         View/LocationBar.vala
+        View/Sidebar.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
@@ -91,6 +94,8 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
+        Bookmark.vala
+        BookmarkList.vala
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
@@ -108,6 +113,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Browser.vala
         View/ViewMode.vala
         View/LocationBar.vala
+        View/Sidebar.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
@@ -138,11 +144,11 @@ ENDIF (WITH_UNITY AND UNITY_FOUND)
 add_executable (../pantheon-files
     eel-editable-label.c
     marlin-enum-types.c
-    marlin-bookmark.c
-    marlin-bookmark-list.c
+#    marlin-bookmark.c
+#    marlin-bookmark-list.c
     marlin-dnd.c
     marlin-clipboard-manager.c
-    marlin-places-sidebar.c
+#    marlin-places-sidebar.c
     marlin-window-columns.c
     gof-window-slot.c
     marlin-thumbnailer.c

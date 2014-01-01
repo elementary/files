@@ -97,12 +97,16 @@ public class Marlin.Application : Granite.Application {
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+//message ("Get volume manager");
         this.volume_monitor = VolumeMonitor.get ();
+//message ("volume manager connect mount_removed");
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
 
 #if HAVE_UNITY
+//message ("Get Quicklist singleton");
         QuicklistHandler.get_singleton ();
 #endif
+//message ("Leaving application startup");
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
@@ -115,7 +119,7 @@ public class Marlin.Application : Granite.Application {
     /* The array that holds the file commandline arguments
        needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
-	private string[]? remaining = null;
+    private string[]? remaining = null;
 
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
@@ -277,6 +281,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+message ("Application open window");
         var window = new Marlin.View.Window (this, screen);
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);

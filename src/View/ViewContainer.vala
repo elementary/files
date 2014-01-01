@@ -178,8 +178,6 @@ namespace Marlin.View {
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
 
-            warning ("directory done loading");
-
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
@@ -269,6 +267,7 @@ namespace Marlin.View {
 
             if (save_history)
                 browser.record_uri (slot.directory.location.get_parse_name ());
+
             window.can_go_up = slot.directory.has_parent ();
             window.can_go_back = browser.can_go_back ();
             window.can_go_forward = browser.can_go_forward ();

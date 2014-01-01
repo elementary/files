@@ -35,7 +35,8 @@ namespace Marlin {
             if (this.launcher_entries.length () == 0) {
                 error ("Couldn't find a valid Unity launcher entry.");
             } else {
-                var bookmarks = new Marlin.BookmarkList ();
+                //var bookmarks = new Marlin.BookmarkList ();
+                var bookmarks = Marlin.BookmarkList.get_instance ();
 
                 bookmarks.contents_changed.connect (() => {
                     debug ("Refreshing Unity dynamic bookmarks.");
@@ -101,7 +102,7 @@ namespace Marlin {
                     Dbusmenu.Menuitem ql = unity_lentry.quicklist;
                     var menuitem = new Dbusmenu.Menuitem ();
 
-                    menuitem.property_set ("label", bookmark.get_name ());
+                    menuitem.property_set ("label", bookmark.label);
                     menuitem.item_activated.connect (() => {
                         var location = bookmark.get_location ();
                         Marlin.Application.get ().create_window (location, Gdk.Screen.get_default ());

@@ -19,7 +19,7 @@
 interface MarlinDaemon : Object {
     //public abstract async HashTable<string,Variant> get_uri_infos_from_directory (string directory) throws IOError;
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
-    public abstract async bool record_uris (Variant[] entries, string directory) 	throws IOError;
+    public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
 
 }
 
@@ -92,6 +92,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     };
 
     private bool f_is_user_dir (string uri) {
+message ("CTAGS f_is_user_dir");
         return_val_if_fail (uri != null, false);
         foreach (var duri in users_dirs) {
             if (Posix.strncmp (uri, duri, duri.length) == 0)
@@ -102,6 +103,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private bool f_ignore_dir (string uri) {
+message ("CTAGS f_ignore_dir");
         return_val_if_fail (uri != null, true);
 
         var idir = "file:///tmp";
@@ -112,7 +114,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-        message  ("CANCEL");
+        message  ("CTAGS PLUGIN     directory_loaded");
         cancellable.cancel ();
 
 
@@ -130,6 +132,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         warning ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
+        message ("leaving ctags directory loaded");
     }
 
     //private Variant add_entry (string uri, string content_type, int modified_time)
@@ -152,11 +155,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         if (entries != null) {
-            warning ("--- known entries %d", entries.length);
+            warning ("CTAGS PLUGIN --- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries, directory.uri);
             } catch (Error err) {
-                warning ("%s", err.message);
+                warning ("CTAGS PLUGIN %s", err.message);
             }
         }
     }
@@ -165,7 +168,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
-        message ("unknows queue nb: %u", count);
+        message ("CTAGS PLUGIN unknowns queue nb: %u", count);
         if (count > 10) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
@@ -184,7 +187,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                     }
                 }
             } catch (Error err1) {
-                warning ("dir query_info failed: %s %s", err1.message, directory.uri);
+                warning ("CTAGS PLUGIN  dir query_info failed: %s %s", err1.message, directory.uri);
             }
         } else {
             while ((gof = unknowns.pop_head ()) != null) {
@@ -192,10 +195,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 try {
                     //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    warning ("--- unknown query_info %s", gof.info.get_name ());
+                    warning ("CTAGS PLUGIN --- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
-                    warning ("query_info failed: %s %s", err2.message, gof.uri);
+                    warning ("CTAGS PLUGIN query_info failed: %s %s", err2.message, gof.uri);
                 }
 
             }
