@@ -34,7 +34,7 @@ namespace EelGtk.Window {
 
 [CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
 namespace EelGFile {
-    public static List<GLib.File> list_new_from_string (string filelist);
+    public static GLib.List<GLib.File> list_new_from_string (string filelist);
 }
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-gtk-extensions.h")]
