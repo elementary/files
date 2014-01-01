@@ -72,7 +72,9 @@ namespace Marlin.Places {
                 return _zoom;
             }
             set {
+
                 _zoom = value;
+                update_places ();
                 tree_view.columns_autosize ();
             }
         }
@@ -117,6 +119,9 @@ namespace Marlin.Places {
 
         Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
+
+        /* Handle smooth zooming */
+        double total_delta_y = 0;
 
         public Sidebar (Marlin.View.Window window) {
             init ();  //creates the Gtk.TreeModel store.
@@ -264,6 +269,8 @@ namespace Marlin.Places {
             this.bookmarks = Marlin.BookmarkList.get_instance ();
             bookmarks.contents_changed.connect (update_places);
 
+            this.scroll_event.connect (handle_scroll_event);
+
             update_places ();
         }
 
@@ -388,7 +395,7 @@ namespace Marlin.Places {
             File root;
             GOF.Window.Slot slot;
             string tooltip;
-message ("update_places");
+
             last_uri = null;
             select_path = null;
             location = null;
@@ -1971,48 +1978,42 @@ message ("reorder_bookmarks - corrected old position %u", old_position);
             if (zoom_level == Marlin.ZoomLevel.NORMAL)
                 return;
 
-            zoom_level += 1;
+            zoom_level = zoom_level + 1;
         }
 
         private void zoom_out () {
             if (zoom_level == Marlin.ZoomLevel.SMALLEST)
                 return;
 
-            zoom_level -= 1;
+            zoom_level = zoom_level - 1;
         }
 
         public bool handle_scroll_event (Gdk.EventScroll event) {
-message ("handle_scroll_event");
-            if (event.state == Gdk.ModifierType.CONTROL_MASK) {
-                switch (event.direction) {
-                    case Gdk.ScrollDirection.UP:
-                        zoom_in ();
-                        return true;
-                    case Gdk.ScrollDirection.DOWN:
-                        zoom_out ();
-                        return true;
-                    case Gdk.ScrollDirection.SMOOTH:
-                    /* try to emulate a normal scrolling event by summing deltas */
-                        double total_delta_y = 0;
-                        total_delta_y += event.delta_y;
-                        if (total_delta_y >= 1) {
-                            total_delta_y = 0;
-                            zoom_out ();
-                            return true;
-                        } else if (total_delta_y <= -1) {
-                            total_delta_y = 0;
-                            zoom_in ();
-                            return true;
-                        } else
-                            return true;
-                }
-            }
-            return false;
-        }
+            if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
+                return false;
 
-        /* handle Control+Scroll, which will cause a zoom-in/out */
-        public new bool scroll_event (Gdk.EventScroll event) {
-            return handle_scroll_event (event); /* ?? */
+            switch (event.direction) {
+                case Gdk.ScrollDirection.UP:
+                    zoom_in ();
+                    break;
+                case Gdk.ScrollDirection.DOWN:
+                    zoom_out ();
+                    break;
+                case Gdk.ScrollDirection.SMOOTH:
+                /* try to emulate a normal scrolling event by summing deltas */
+                    total_delta_y += event.delta_y;
+                    if (total_delta_y >= 1) {
+                        total_delta_y = 0;
+                        zoom_out ();
+                    } else if (total_delta_y <= -1) {
+                        total_delta_y = 0;
+                        zoom_in ();
+                    }
+                    break;
+                default:
+                    return false;
+            }
+            return true;
         }
 
         public new void style_set (Gtk.Style previous_style) {
