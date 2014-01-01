@@ -60,7 +60,6 @@ set (C_SOURCE_FILES
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
-#    marlin-abstract-sidebar.c
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c

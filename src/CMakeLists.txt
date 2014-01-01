@@ -144,11 +144,8 @@ ENDIF (WITH_UNITY AND UNITY_FOUND)
 add_executable (../pantheon-files
     eel-editable-label.c
     marlin-enum-types.c
-#    marlin-bookmark.c
-#    marlin-bookmark-list.c
     marlin-dnd.c
     marlin-clipboard-manager.c
-#    marlin-places-sidebar.c
     marlin-window-columns.c
     gof-window-slot.c
     marlin-thumbnailer.c
