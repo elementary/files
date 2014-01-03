@@ -1766,7 +1766,10 @@ exo_icon_view_allocate_children (ExoIconView *icon_view)
     {
         ExoIconViewChild *child = list->data;
 
-        /* totally ignore our child's requisition */
+        GtkRequisition minimum_size;
+        gtk_widget_get_preferred_size (child->widget, &minimum_size, NULL);
+        child->area.height = minimum_size.height;
+
         gtk_widget_size_allocate (child->widget, &child->area);
     }
 }
