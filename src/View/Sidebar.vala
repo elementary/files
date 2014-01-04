@@ -412,9 +412,14 @@ namespace Marlin.Places {
                 this.slot_location = null;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
+{
+
                 store.@get (iter,
                             Column.URI, &last_selected_uri,
                             -1);
+}
+            else
+                last_selected_uri = null;
 
             store.clear ();
             plugins.update_sidebar ((Gtk.Widget)this);
@@ -804,15 +809,15 @@ namespace Marlin.Places {
         }
 
         private void loading_uri_callback (string location) {
-            if (!(this.last_selected_uri == location)) {
-                this.last_selected_uri = location.dup ();
                 set_matching_selection (location);
-            }
         }
 
         private void set_matching_selection (string? location) {
             /* set selection if any place matches location */
             /* first matching place is selected */
+            /* Matching is done by comparing GLib.Files made from uris so that */
+            /* different but equivalent uris are matched */
+
             var selection = tree_view.get_selection ();
             selection.unselect_all ();
             if (location == null)
@@ -820,6 +825,7 @@ namespace Marlin.Places {
 
             Gtk.TreeIter iter;
             bool valid = store.get_iter_first (out iter);
+            var file1 = GLib.File.new_for_path (location);
 
             while (valid) {
                 Gtk.TreeIter child_iter;
@@ -827,8 +833,13 @@ namespace Marlin.Places {
                 while (child_valid) {
                     string uri;
                     store.@get (child_iter, Column.URI, out uri, -1);
-                    if (uri != null && uri == location) {
+                    if (uri == null)
+                        continue;
+
+                    var file2 = GLib.File.new_for_path (uri);
+                    if (file1.equal (file2)) {
                         selection.select_iter (child_iter);
+                        this.last_selected_uri = location;
                         valid = false; /* escape from outer loop */
                         break;
                     }
@@ -840,7 +851,6 @@ namespace Marlin.Places {
 
         /* Reorders the selected bookmark to the specified position */
         private void reorder_bookmarks (uint new_position) {
-message ("reorder_bookmarks - new position %u", new_position);
             /* Get the selected path */
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
@@ -852,11 +862,8 @@ message ("reorder_bookmarks - new position %u", new_position);
                         Column.BOOKMARK, out is_bookmark,
                         Column.INDEX, out old_position,
                         -1);
-message ("reorder_bookmarks - uncorrected old position %u, n_builtins_before %u", old_position, n_builtins_before);
 
             old_position = old_position <= n_builtins_before ? 0 : old_position - n_builtins_before;
-
-message ("reorder_bookmarks - corrected old position %u", old_position);
 
             if (!is_bookmark || old_position >= bookmarks.length ())
                 return;

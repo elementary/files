@@ -338,7 +338,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             /* FIXME make sure the comment never happen
              * -> it seems to be necessary in all cases */
         }
-
         return strpath;
     }
 
