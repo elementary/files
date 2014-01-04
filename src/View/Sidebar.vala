@@ -39,7 +39,6 @@ namespace Marlin.Places {
         Gtk.CellRendererPixbuf eject_icon_cell_renderer;
         Gtk.CellRendererText eject_text_cell_renderer;
         Gtk.CellRenderer expander_renderer;
-        //string uri;
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
@@ -398,6 +397,7 @@ namespace Marlin.Places {
         }
 
         private void update_places () {
+//message ("update places");
             Gtk.TreeIter iter;
             string mount_uri;
 
@@ -412,12 +412,9 @@ namespace Marlin.Places {
                 this.slot_location = null;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
-{
-
                 store.@get (iter,
                             Column.URI, &last_selected_uri,
                             -1);
-}
             else
                 last_selected_uri = null;
 
@@ -730,23 +727,23 @@ namespace Marlin.Places {
             }
         }
 
-        private void mount_added_callback (VolumeMonitor volume_monitor, Mount mount) {
+        private void mount_added_callback (Mount mount) {
             update_places ();
         }
-        private void mount_removed_callback (VolumeMonitor volume_monitor, Mount mount) {
+        private void mount_removed_callback (Mount mount) {
             update_places ();
         }
-        private void mount_changed_callback (VolumeMonitor volume_monitor, Mount mount) {
+        private void mount_changed_callback (Mount mount) {
             update_places ();
         }
 
-        private void volume_added_callback (VolumeMonitor volume_monitor, Volume volume) {
+        private void volume_added_callback (Volume volume) {
             update_places ();
         }
-        private void volume_removed_callback (VolumeMonitor volume_monitor, Volume volume) {
+        private void volume_removed_callback (Volume volume) {
             update_places ();
         }
-        private void volume_changed_callback (VolumeMonitor volume_monitor, Volume volume) {
+        private void volume_changed_callback (Volume volume) {
             update_places ();
         }
 
@@ -793,14 +790,15 @@ namespace Marlin.Places {
             return false;
         }
 
-        private  bool clicked_eject_button (out Gtk.TreePath path) {
+        private bool clicked_eject_button (out Gtk.TreePath path) {
             Gdk.Event event = Gtk.get_current_event ();
 
-            if ((event.type == Gdk.EventType.BUTTON_PRESS || event.type == Gdk.EventType.BUTTON_RELEASE) &&
-                over_eject_button (event.button.x, event.button.y, out path)) {
-                    return true;
-            }
-            return false;
+            if ((event.type == Gdk.EventType.BUTTON_PRESS
+              || event.type == Gdk.EventType.BUTTON_RELEASE)
+              && over_eject_button (event.button.x, event.button.y, out path))
+                return true;
+            else
+                return false;
         }
 
         private void row_activated_callback (Gtk.TreePath path,
@@ -834,7 +832,7 @@ namespace Marlin.Places {
                     string uri;
                     store.@get (child_iter, Column.URI, out uri, -1);
                     if (uri == null)
-                        continue;
+                        break;
 
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
@@ -1336,21 +1334,6 @@ namespace Marlin.Places {
             Eel.gtk_widget_set_shown (popupmenu_connect_server_item, show_connect_server);
         }
 
-    //    private void drive_start_from_bookmark_cb (GLib.Object? source_object,
-    //                                               GLib.AsyncResult res) {
-    //        Drive drive = source_object as Drive;
-    //        if (drive != null) {
-    //            try {
-    //                drive.poll_for_media (null);
-    //            }
-    //            catch (GLib.Error error) {
-    //                string name = drive.get_name ();
-    //                string primary = (_("Error on starting drive %s")).printf (name);
-    //                Eel.show_error_dialog (primary, error.message, null); /* ?doesnt show dialog? */
-    //            }
-    //        }
-    //    }
-
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
                                              ViewWindowOpenFlags flags) {
@@ -1380,9 +1363,9 @@ namespace Marlin.Places {
                 Drive drive;
                 Volume volume;
                 store.@get (iter,
-                             Column.DRIVE, out drive,
-                             Column.VOLUME, out volume,
-                             -1);
+                            Column.DRIVE, out drive,
+                            Column.VOLUME, out volume,
+                            -1);
 
                 if (volume != null && !mounting) {
                     mounting = true;
@@ -1413,7 +1396,7 @@ namespace Marlin.Places {
         }
 
         private void open_shortcut_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu ( 0);
+            open_shortcut_from_menu (ViewWindowOpenFlags.DEFAULT);
         }
 
         private void open_shortcut_in_new_window_cb (Gtk.MenuItem item) {
@@ -1476,7 +1459,7 @@ namespace Marlin.Places {
                 Marlin.FileOperations.mount_volume (null, volume, false);
          }
 
-         private void do_unmount (Mount mount) {
+         private void do_unmount (Mount? mount) {
             if (mount != null)
                 Marlin.FileOperations.unmount_mount_full (null, mount, false, true, null, null);
          }
@@ -1488,16 +1471,14 @@ namespace Marlin.Places {
 
             Mount mount;
             store.@get (iter, Column.MOUNT, out mount, -1);
-
-            if (mount != null)
-                do_unmount (mount);
+            do_unmount (mount);
          }
 
         private void unmount_shortcut_cb (Gtk.MenuItem item) {
             do_unmount_selection ();
         }
 
-        private void do_eject (Mount mount, Volume volume, Drive drive) {
+        private void do_eject (Mount? mount, Volume? volume, Drive? drive) {
             var mount_op = new Gtk.MountOperation (get_toplevel () as Gtk.Window);
             if (mount != null)
                 mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
@@ -1525,7 +1506,7 @@ namespace Marlin.Places {
             do_eject (mount, volume, drive);
         }
 
-        private  bool eject_or_unmount_bookmark (Gtk.TreePath path) {
+        private bool eject_or_unmount_bookmark (Gtk.TreePath? path) {
             if (path == null)
                 return false;
 
@@ -1547,25 +1528,19 @@ namespace Marlin.Places {
 
             if (can_eject) {
                 do_eject (mount, volume, drive);
-                return true;
             } else if (can_unmount) {
                 do_unmount (mount);
-                return true;
             }
 
-            return false;
+            return can_eject || can_unmount;
         }
 
         private bool eject_or_unmount_selection () {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return false;
-
-            Gtk.TreePath path = store.get_path (iter);
-            if (path == null)
-                return false;
-
-            return eject_or_unmount_bookmark (path);
+            else
+                return eject_or_unmount_bookmark (store.get_path (iter));
         }
 
     //    private void drive_poll_for_media_cb (Object source_object, AsyncResult res, void* user_data) {

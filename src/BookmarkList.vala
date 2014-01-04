@@ -192,13 +192,13 @@ namespace Marlin {
                 save_bookmarks_file ();
         }
 
-        private GLib.List<GOF.File> get_gof_file_list () {
-             GLib.List<GOF.File> gof_file_list = new GLib.List<GOF.File> ();
-            list.@foreach ((bm) => {
-                gof_file_list.prepend (bm.gof_file);
-            });
-            return gof_file_list.copy ();
-        }
+//        private GLib.List<GOF.File> get_gof_file_list () {
+//             GLib.List<GOF.File> gof_file_list = new GLib.List<GOF.File> ();
+//            list.@foreach ((bm) => {
+//                gof_file_list.prepend (bm.gof_file);
+//            });
+//            return gof_file_list.copy ();
+//        }
 
         private void save_bookmarks_file_async () {
 
