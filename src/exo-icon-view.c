@@ -90,6 +90,7 @@ struct _ExoIconViewChild
 {
     GtkWidget    *widget;
     GdkRectangle  area;
+    gint          index;
 };
 
 struct _ExoIconViewPrivate
@@ -447,6 +448,8 @@ static void                 exo_icon_view_context_changed                (GtkCel
                                                                           ExoIconView            *icon_view);
 static void                 update_text_cell                             (ExoIconView            *icon_view);
 static void                 update_pixbuf_cell                           (ExoIconView            *icon_view);
+static ExoIconViewChild     *get_child_widget_for_item                   (ExoIconView            *icon_view,
+		                                                                  const ExoIconViewItem      *item);
 
 /* Source side drag signals */
 static void exo_icon_view_drag_begin       (GtkWidget        *widget,
@@ -2132,6 +2135,7 @@ exo_icon_view_add_editable (GtkCellArea            *area,
 {
     ExoIconViewChild *child;
     GtkWidget *widget = GTK_WIDGET (editable);
+    GtkTreePath * const tree_path = gtk_tree_path_new_from_string (path);
 
     child = g_new (ExoIconViewChild, 1);
 
@@ -2140,6 +2144,8 @@ exo_icon_view_add_editable (GtkCellArea            *area,
     child->area.y      = cell_area->y;
     child->area.width  = cell_area->width;
     child->area.height = cell_area->height;
+    child->index       = gtk_tree_path_get_indices (tree_path)[0];
+
 
     icon_view->priv->children = g_list_append (icon_view->priv->children, child);
 
@@ -2147,6 +2153,8 @@ exo_icon_view_add_editable (GtkCellArea            *area,
         gtk_widget_set_parent_window (child->widget, icon_view->priv->bin_window);
 
     gtk_widget_set_parent (widget, GTK_WIDGET (icon_view));
+
+    gtk_tree_path_free (tree_path);
 }
 
 static void
@@ -3739,11 +3747,22 @@ exo_icon_view_paint_item (ExoIconView     *icon_view,
     cell_area.width  = item->cell_area.width;
     cell_area.height = item->cell_area.height;
 
+    /* If the item is being renamed, there is an editable widget for it */
+    const ExoIconViewChild * const child = get_child_widget_for_item (icon_view, item);
+    if (G_UNLIKELY (child))
+    {
+    	/* This assumes the item to be rendered is comprised of some editable
+    	 * widget below the icon -> when the item is being renamed, we're only
+    	 * interested in rendering the icon, let the editable widget do its
+    	 * thing */
+    	cell_area.height = child->area.y - cell_area.y;
+    }
+
     context = exo_icon_view_get_cell_area_context (icon_view, item);
 
-    gtk_cell_area_render (priv->cell_area, context,
-                          widget, cr, &cell_area, &cell_area, flags,
-                          draw_focus);
+	gtk_cell_area_render (priv->cell_area, context,
+						  widget, cr, &cell_area, &cell_area, flags,
+						  draw_focus);
 
     gtk_style_context_restore (style_context);
 }
@@ -11587,5 +11606,27 @@ exo_icon_view_search_init (GtkWidget   *entry,
 
   if (ret)
     icon_view->priv->selected_iter = 1;
+}
+
+/* Returns the child widget with the same index than the given item or NULL if
+ * there is none.
+ */
+static ExoIconViewChild *
+get_child_widget_for_item (ExoIconView *icon_view, const ExoIconViewItem *item)
+{
+	g_assert (icon_view);
+    g_return_val_if_fail (item, NULL);
+
+	const GList *children = icon_view->priv->children;
+	while (children)
+	{
+	    ExoIconViewChild * const child = children->data;
+		if (child->index == item->index)
+		{
+			return child;
+		}
+		children = children->next;
+	}
+	return NULL;
 }
 
