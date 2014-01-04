@@ -1,3 +1,23 @@
+/***
+  Copyright (C)  1999, 2000 Eazel, Inc.
+                 2013 Jeremy Wootten <jeremywootten@gmail.com>
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License version 3, as published
+  by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranties of
+  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+  PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program. If not, see <http://www.gnu.org/licenses/>.
+
+ Authors :    John Sullivan <sullivan@eazel.com>
+              Jeremy Wootten <jeremywootten@gmail.com>
+***/
+
 namespace Marlin {
     public class Bookmark {
 
@@ -58,6 +78,10 @@ namespace Marlin {
             return this.get_location ().get_uri ();
         }
 
+        public string get_parse_name () {
+            return this.get_location ().get_parse_name ();
+        }
+
         public unowned GLib.Icon get_icon () {
             if (gof_file.icon == null)
                 gof_file.get_folder_icon_from_uri_or_path ();
@@ -66,7 +90,6 @@ namespace Marlin {
         }
 
         public bool uri_known_not_to_exist () {
-
             if (!gof_file.location.is_native ())
                 return false;
 
@@ -74,25 +97,9 @@ namespace Marlin {
             return !GLib.FileUtils.test (path_name, GLib.FileTest.EXISTS);
         }
 
-//        private void set_uri (string new_uri) {
-//            if (this.get_uri () == new_uri)
-//                return;
-
-//            disconnect_file ();
-//            this.gof_file = GOF.File.get_by_uri (new_uri);
-//            connect_file ();
-//            contents_changed ();
-//        }
-
         private void file_changed_callback (GLib.File file,
                                             GLib.File? other_file,
                                             GLib.FileMonitorEvent event_type) {
-message ("Bookmark file_changed_callback - this uri is %s", this.get_uri ());
-message ("Bookmark file_changed_callback - file is %s", file.get_uri ());
-if (other_file != null)
-    message ("Bookmark file_changed_callback - other_file is %s", other_file.get_uri ());
-
-message (@"Bookmark file_changed_callback - event $event_type");
             switch (event_type) {
                 case GLib.FileMonitorEvent.DELETED:
                         disconnect_file ();
@@ -109,7 +116,6 @@ message (@"Bookmark file_changed_callback - event $event_type");
         }
 
         private void disconnect_file () {
-
             if (monitor != null) {
                 monitor.cancel ();
                 monitor = null;

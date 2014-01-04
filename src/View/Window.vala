@@ -60,7 +60,7 @@ namespace Marlin.View {
         public signal void item_hovered (GOF.File gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
-        public signal void loading_uri (string location, Gtk.Widget sidebar);
+        public signal void loading_uri (string location);
 
 
         public void update_action_radio_view(int n) {
@@ -324,7 +324,7 @@ namespace Marlin.View {
                     if (cur_slot.view_box != null && !current_tab.content_shown)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
-                    loading_uri (current_tab.slot.directory.file.uri, sidebar);
+                    loading_uri (current_tab.slot.directory.file.uri);
                 }
             }
         }

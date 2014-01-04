@@ -1,21 +1,24 @@
-/*
- * Copyright (C) 2013 Marlin Developers
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Author: jeremywootten <jeremywootten@gmail.com>
- */
+/***
+  Copyright (C)  /* TO DO
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License version 3, as published
+  by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranties of
+  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+  PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program. If not, see <http://www.gnu.org/licenses/>.
+
+ Authors : Mr Jamie McCracken (jamiemcc at blueyonder dot co dot uk)
+              Roth Robert <evfool@gmail.com>
+              ammonkey <am.monkeyd@gmail.com>
+*             Jeremy Wootten <jeremywootten@gmail.com>
+***/
+
 namespace Marlin.Places {
 
     //public class Sidebar : Gtk.ScrolledWindow {
@@ -36,11 +39,17 @@ namespace Marlin.Places {
         Gtk.CellRendererPixbuf eject_icon_cell_renderer;
         Gtk.CellRendererText eject_text_cell_renderer;
         Gtk.CellRenderer expander_renderer;
-        string uri;
+        //string uri;
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
+        Marlin.TrashMonitor monitor;
+        Gtk.IconTheme theme;
         uint n_builtins_before;
+
+        string last_selected_uri;
+        string slot_location;
+        Gtk.TreePath select_path;
 
         /* DnD */
         List<GLib.File> drag_list;
@@ -117,21 +126,38 @@ namespace Marlin.Places {
             NEW_WINDOW
         }
 
-        Marlin.TrashMonitor monitor;
-        Gtk.IconTheme theme;
-
         /* Handle smooth zooming */
         double total_delta_y = 0;
 
+        bool display_all_bookmarks = false;
+
         public Sidebar (Marlin.View.Window window) {
             init ();  //creates the Gtk.TreeModel store.
-            this.uri = null;
+            this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-
             this.window = window;
+            this.scroll_event.connect (handle_scroll_event);
             window.loading_uri.connect (loading_uri_callback);
 
-            var tree_view = new Gtk.TreeView ();
+            construct_tree_view ();
+            configure_tree_view ();
+            connect_tree_view_signals ();
+            this.add (this.tree_view);
+
+            this.bookmarks = Marlin.BookmarkList.get_instance ();
+            bookmarks.contents_changed.connect (update_places);
+
+            set_up_trash_monitor ();
+            set_up_volume_monitor ();
+
+            set_up_theme ();
+            this.show_all ();
+
+            update_places ();
+        }
+
+        private void construct_tree_view () {
+            tree_view = new Gtk.TreeView ();
             tree_view.set_size_request (Preferences.settings.get_int ("minimum-sidebar-width"), -1);
             tree_view.set_headers_visible (false);
 
@@ -210,8 +236,9 @@ namespace Marlin.Places {
             tree_view.append_column (col);
             tree_view.tooltip_column = Column.TOOLTIP;
             tree_view.model = this.store;
-            this.add (tree_view);
+        }
 
+        private void configure_tree_view () {
             var style_context = tree_view.get_style_context ();
             style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
             style_context.add_class (Granite.StyleClass.SOURCE_LIST);
@@ -220,9 +247,6 @@ namespace Marlin.Places {
             var selection = tree_view.get_selection ();
             selection.set_mode (Gtk.SelectionMode.BROWSE);
             selection.set_select_function (tree_selection_func);
-            this.tree_view = tree_view;
-            tree_view.show ();
-            this.show ();
 
             tree_view.row_activated.connect (row_activated_callback);
 
@@ -232,14 +256,15 @@ namespace Marlin.Places {
                                                 Gdk.DragAction.MOVE);
             Gtk.drag_dest_set (tree_view, Gtk.DestDefaults.MOTION, drop_targets,
                                Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+        }
 
-
+        private void connect_tree_view_signals () {
             tree_view.drag_motion.connect (drag_motion_callback);
             tree_view.drag_leave.connect (drag_leave_callback);
             tree_view.drag_data_received.connect (drag_data_received_callback);
             tree_view.drag_drop.connect (drag_drop_callback);
 
-            selection.changed.connect (selection_changed_cb);
+            (tree_view.get_selection ()).changed.connect (selection_changed_cb);
             tree_view.popup_menu.connect (popup_menu_cb);
             tree_view.button_press_event.connect (button_press_event_cb);
             tree_view.button_release_event.connect (button_release_event_cb);
@@ -247,12 +272,14 @@ namespace Marlin.Places {
 
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
+        }
 
+        private void set_up_trash_monitor () {
             monitor = Marlin.TrashMonitor.get ();
             monitor.trash_state_changed.connect (trash_state_changed_cb);
-            theme = Gtk.IconTheme.get_default ();
-            theme.changed.connect (icon_theme_changed_callback);
+        }
 
+        private void set_up_volume_monitor () {
             this.volume_monitor = GLib.VolumeMonitor.@get ();
             volume_monitor.volume_added.connect (volume_added_callback);
             volume_monitor.volume_removed.connect (volume_removed_callback);
@@ -265,15 +292,12 @@ namespace Marlin.Places {
             volume_monitor.drive_disconnected.connect (drive_disconnected_callback);
             volume_monitor.drive_changed.connect (drive_connected_callback);
             volume_monitor.drive_changed.connect (drive_changed_callback);
-
-            this.bookmarks = Marlin.BookmarkList.get_instance ();
-            bookmarks.contents_changed.connect (update_places);
-
-            this.scroll_event.connect (handle_scroll_event);
-
-            update_places ();
         }
 
+        private void set_up_theme () {
+            theme = Gtk.IconTheme.get_default ();
+            theme.changed.connect (icon_theme_changed_callback);
+        }
 
         private Icon get_eject_icon () {
             if (eject_icon == null)
@@ -316,7 +340,6 @@ namespace Marlin.Places {
                                         uint index,
                                         string tooltip) {
             Gtk.TreeIter iter;
-            Gdk.Pixbuf pixbuf = null;
             GLib.Icon eject;
             Marlin.IconInfo icon_info;
             bool show_eject, show_unmount;
@@ -325,6 +348,7 @@ namespace Marlin.Places {
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_icon_cell_renderer.stock_size = stock_size;
 
+            Gdk.Pixbuf pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
                 icon_info = Marlin.IconInfo.lookup (icon, icon_size);
@@ -332,7 +356,6 @@ namespace Marlin.Places {
             }
 
             check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
-
             if (show_unmount || show_eject)
                     assert (place_type != PlaceType.BOOKMARK);
 
@@ -374,50 +397,29 @@ namespace Marlin.Places {
             return iter;
         }
 
-        private void compare_for_selection (string? location,
-                                            string? added_uri,
-                                            string? last_uri,
-                                            Gtk.TreeIter iter,
-                                            ref Gtk.TreePath? path) {
-
-            if (added_uri != null && last_uri != null && added_uri == last_uri)
-                path = store.get_path (iter);
-            else if (location != null && location == added_uri && path == null)
-                path = store.get_path (iter);
-        }
-
         private void update_places () {
-            Gtk.TreeSelection selection;
-            Gtk.TreeIter iter, last_iter;
-            Gtk.TreePath select_path;
-            string location, mount_uri, last_uri;
-            Icon icon;
-            File root;
-            GOF.Window.Slot slot;
-            string tooltip;
+            Gtk.TreeIter iter;
+            string mount_uri;
 
-            last_uri = null;
-            select_path = null;
-            location = null;
+            this.last_selected_uri = null;
+            this.select_path = null;
+            this.n_builtins_before = 0;
 
-            n_builtins_before = 0;
-            selection = tree_view.get_selection ();
+            var slot = window.get_active_slot();
+            if (slot != null)
+                this.slot_location = slot.location.get_uri ();
+            else
+                this.slot_location = null;
 
-            unowned Gtk.TreeModel model;
-            if (selection.get_selected (out model, out last_iter))
-                store.@get (last_iter,
-                            Column.URI, &last_uri,
+            if ((tree_view.get_selection ()).get_selected (null, out iter))
+                store.@get (iter,
+                            Column.URI, &last_selected_uri,
                             -1);
 
             store.clear ();
-
             plugins.update_sidebar ((Gtk.Widget)this);
-            slot = window.get_active_slot();
 
-            if (slot != null)
-                location = slot.location.get_uri ();
-
-            /* add bookmarks category */
+            /* ADD BOOKMARKS CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -428,89 +430,54 @@ namespace Marlin.Places {
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your common places and bookmarks"),
                         -1);
+
             /* add built-in bookmarks */
             /* home folder if different from desktop directory */
-            string display_name;
             try {
                 mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
             }
-            display_name = _("Home");
-            icon = new ThemedIcon (Marlin.ICON_HOME);
-            last_iter = add_place ( PlaceType.BUILT_IN,
-                                    iter,
-                                    display_name,
-                                    icon,
-                                    mount_uri,
-                                    null,
-                                    null,
-                                    null,
-                                    0,
-                                    _("Open your personal folder"));
 
-            compare_for_selection ( location,
-                                    mount_uri,
-                                    last_uri,
-                                    last_iter,
-                                    ref select_path);
-
+            add_place ( PlaceType.BUILT_IN,
+                        iter,
+                        _("Home"),
+                        new ThemedIcon (Marlin.ICON_HOME),
+                        mount_uri,
+                        null,
+                        null,
+                        null,
+                        0,
+                        _("Open your personal folder"));
             n_builtins_before++;
 
             /* add bookmarks */
             uint bookmark_count = bookmarks.length ();
-            uint index;
             unowned Bookmark bm;
+            uint index;
             for (index = 0; index < bookmark_count; index++) {
                 bm = bookmarks.item_at (index);
-
                 if (bm == null
-                 //|| bm.uri_known_not_to_exist ())
-                 )
+                 || (bm.uri_known_not_to_exist () && !display_all_bookmarks))
                     continue;
 
-                name = bm.label.dup ();
-                icon = bm.get_icon ();
-                mount_uri = bm.get_uri ();
-                root = bm.get_location ();
-                tooltip = root.get_parse_name ();
-                last_iter = add_place ( PlaceType.BOOKMARK,
-                                        iter,
-                                        name,
-                                        icon,
-                                        mount_uri,
-                                        null,
-                                        null,
-                                        null,
-                                        index + n_builtins_before,
-                                        tooltip);
-                 compare_for_selection (location,
-                                        mount_uri,
-                                        last_uri,
-                                        last_iter,
-                                        ref select_path);
-                debug ("update places - bookmark %u %s", index, mount_uri);
+                add_bookmark (iter, bm, index);
             }
+
             /* add trash */
-            mount_uri = Marlin.TRASH_URI;
-            icon = Marlin.TrashMonitor.get_icon ();
-            last_iter = add_place ( PlaceType.BUILT_IN,
-                                    iter,
-                                    _("Trash"),
-                                    icon,
-                                    mount_uri,
-                                    null,
-                                    null,
-                                    null,
-                                    index + n_builtins_before,
-                                    _("Open the Trash"));
-             compare_for_selection (location,
-                                    mount_uri,
-                                    last_uri,
-                                    last_iter,
-                                    ref select_path);
-            /* add storage category*/
+            add_place ( PlaceType.BUILT_IN,
+                        iter,
+                        _("Trash"),
+                        Marlin.TrashMonitor.get_icon (),
+                        Marlin.TRASH_URI,
+                        null,
+                        null,
+                        null,
+                        index + n_builtins_before,
+                        _("Open the Trash"));
+
+            /* ADD STORAGE CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -521,171 +488,86 @@ namespace Marlin.Places {
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your local partitions and devices"),
                         -1);
-            mount_uri = "file:///";
-            icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
-            last_iter = add_place (PlaceType.BUILT_IN,
-                                   iter,
-                                   _("File System"),
-                                   icon,
-                                   mount_uri,
-                                   null,
-                                   null,
-                                   null,
-                                   0,
-                                   _("Open the contents of the FileSystem"));
-             compare_for_selection (location,
-                                    mount_uri,
-                                    last_uri,
-                                    last_iter,
-                                    ref select_path);
 
-            //volume_monitor = this.volume_monitor;
+            /* Add Filesystem BUILTIN */
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("File System"),
+                       new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                       "file:///",
+                       null,
+                       null,
+                       null,
+                       0,
+                       _("Open the contents of the FileSystem"));
+
+
             /* First go through all connected drives */
-            var drives = volume_monitor.get_connected_drives ();
-            List<Volume> volumes;
-            foreach (Drive drive in drives) {
+            GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
+            GLib.List<GLib.Volume> volumes;
+            foreach (GLib.Drive drive in drives) {
                 volumes = drive.get_volumes ();
                 if (volumes != null) {
-                    foreach (Volume volume in volumes) {
-                        var mount = volume.get_mount ();
-                        if (mount != null) {
-                            /* show mounted volume in sidebar */
-                            icon = mount.get_icon ();
-                            root = mount.get_default_location ();
-                            mount_uri = root.get_uri ();
-                            name = mount.get_name ();
-                            tooltip = root.get_parse_name ();
-                            last_iter = add_place (PlaceType.MOUNTED_VOLUME,
-                                                   iter,
-                                                   name,
-                                                   icon,
-                                                   mount_uri,
-                                                   drive,
-                                                   volume,
-                                                   mount,
-                                                   0,
-                                                   tooltip);
-                            GLib.FileInfo info;
-                            try {
-                                info = root.query_filesystem_info ("filesystem::*", null);
-                            }
-                            catch (GLib.Error error) {
-                                //message ("Error querying root filesystem info: %s", error.message);
-                                info = null;
-                            }
-                            uint64 fs_capacity = 0;
-                            uint64 fs_free = 0;
-                            if (info != null) {
-                                fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                                fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
-                            }
-                            store.@set (last_iter,
-                                        Column.FREE_SPACE, fs_free,
-                                        Column.DISK_SIZE, fs_capacity,
-                                        -1);
-                            compare_for_selection (location,
-                                                   mount_uri,
-                                                   last_uri,
-                                                   last_iter,
-                                                   ref select_path);
-                        } else {
-                            /* Do show the unmounted volumes in the sidebar;
-                            * this is so the user can mount it (in case automounting
-                            * is off).
-                            *
-                            * Also, even if automounting is enabled, this gives a visual
-                            * cue that the user should remember to yank out the media if
-                            * he just unmounted it.
-                            */
-                            icon = volume.get_icon ();
-                            name = volume.get_name ();
-                            tooltip = (_("Mount and open %s")).printf (name);
-                            last_iter = add_place (PlaceType.MOUNTED_VOLUME,
-                                                   iter,
-                                                   name,
-                                                   icon,
-                                                   null,
-                                                   drive,
-                                                   volume,
-                                                   null,
-                                                   0,
-                                                   tooltip);
-                        }
-                    }
-                } else {
-                    if (drive.is_media_removable () && !drive.is_media_check_automatic ()) {
-                        /* If the drive has no mountable volumes and we cannot detect media change.. we
-                         * display the drive in the sidebar so the user can manually poll the drive by
-                         * right clicking and selecting "Rescan..."
-                         *
-                         * This is mainly for drives like floppies where media detection doesn't
-                         * work.. but it's also for human beings who like to turn off media detection
-                         * in the OS to save battery juice.
-                         */
-                        icon = drive.get_icon ();
-                        name = drive.get_name ();
-                        tooltip = (_("Mount and open %s")).printf  (name);
-                        last_iter = add_place (PlaceType.BUILT_IN,
-                                               iter,
-                                               name,
-                                               icon,
-                                               null,
-                                               drive,
-                                               null,
-                                               null,
-                                               0,
-                                               tooltip);
-                    }
+                    add_volumes (iter, drive, volumes);
+                } else if (drive.is_media_removable ()
+                        && !drive.is_media_check_automatic ()) {
+                    /* If the drive has no mountable volumes and we cannot detect media change.. we
+                     * display the drive in the sidebar so the user can manually poll the drive by
+                     * right clicking and selecting "Rescan..."
+                     *
+                     * This is mainly for drives like floppies where media detection doesn't
+                     * work.. but it's also for human beings who like to turn off media detection
+                     * in the OS to save battery juice.
+                     */
+                    add_place (PlaceType.BUILT_IN,
+                               iter,
+                               drive.get_name (),
+                               drive.get_icon (),
+                               null,
+                               drive,
+                               null,
+                               null,
+                               0,
+                               (_("Mount and open %s")).printf  (name));
                 }
             }
+
             /* add all volumes that is not associated with a drive */
             volumes = volume_monitor.get_volumes ();
             foreach (Volume volume in volumes) {
-                var drive = volume.get_drive ();
-                if (drive != null)
+                if (volume.get_drive () != null)
                     continue;
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    icon = mount.get_icon ();
-                    root = mount.get_default_location ();
-                    mount_uri = root.get_uri ();
-                    tooltip = root.get_parse_name ();
-                    name = mount.get_name ();
-                    last_iter = add_place (PlaceType.MOUNTED_VOLUME,
-                                           iter,
-                                           name,
-                                           icon,
-                                           mount_uri,
-                                           null,
-                                           volume,
-                                           mount,
-                                           0,
-                                           tooltip);
-
-                    compare_for_selection (location,
-                                           mount_uri,
-                                           last_uri,
-                                           last_iter,
-                                           ref select_path);
+                    var root = mount.get_default_location ();
+                    add_place (PlaceType.MOUNTED_VOLUME,
+                               iter,
+                               mount.get_name (),
+                               mount.get_icon (),
+                               root.get_uri (),
+                               null,
+                               volume,
+                               mount,
+                               0,
+                               root.get_parse_name ());
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
-                    icon = volume.get_icon ();
-                    name = volume.get_name ();
-                    last_iter = add_place (PlaceType.MOUNTED_VOLUME,
-                                           iter,
-                                           name,
-                                           icon,
-                                           null,
-                                           null,
-                                           volume,
-                                           null,
-                                           0,
-                                           name);
+                    add_place (PlaceType.MOUNTED_VOLUME,
+                               iter,
+                               volume.get_name (),
+                               volume.get_icon (),
+                               null,
+                               null,
+                               volume,
+                               null,
+                               0,
+                               name);
                 }
             }
+
             /* add mounts that have no volume (/etc/mtab mounts, ftp, sftp,...) */
-            List<Mount> network_mounts = null;
+            GLib.List<Mount> network_mounts = null;
             var mounts = volume_monitor.get_mounts ();
             foreach (Mount mount in mounts) {
                 if (mount.is_shadowed ())
@@ -695,8 +577,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                root = mount.get_default_location ();
-
+                var root = mount.get_default_location ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive") {
@@ -705,29 +586,19 @@ namespace Marlin.Places {
                     }
                 }
 
-                icon = mount.get_icon ();
-                mount_uri = root.get_uri ();
-                tooltip = root.get_parse_name ();
-                name = mount.get_name ();
-                last_iter = add_place (PlaceType.MOUNTED_VOLUME,
-                                       iter,
-                                       name,
-                                       icon,
-                                       mount_uri,
-                                       null,
-                                       null,
-                                       mount,
-                                       0,
-                                       tooltip);
-
-                compare_for_selection (location,
-                                       mount_uri,
-                                       last_uri,
-                                       last_iter,
-                                       ref select_path);
+                add_place (PlaceType.MOUNTED_VOLUME,
+                           iter,
+                           mount.get_name (),
+                           mount.get_icon (),
+                           root.get_uri (),
+                           null,
+                           null,
+                           mount,
+                           0,
+                           root.get_parse_name ());
             }
-            /* add network category */
 
+            /* ADD NETWORK CATEGORY */
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -741,49 +612,117 @@ namespace Marlin.Places {
 
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
-                root = mount.get_default_location ();
-                icon = mount.get_icon ();
-                mount_uri = root.get_uri ();
-                tooltip = root.get_parse_name ();
-                name = mount.get_name ();
-                last_iter = add_place (PlaceType.BUILT_IN,
-                                       iter,
-                                       name,
-                                       icon,
-                                       mount_uri,
-                                       null,
-                                       null,
-                                       mount,
-                                       0,
-                                       tooltip);
-
-                compare_for_selection (location,
-                                       mount_uri,
-                                       last_uri,
-                                       last_iter,
-                                       ref select_path);
+                var root = mount.get_default_location ();
+                add_place (PlaceType.BUILT_IN,
+                           iter,
+                           mount.get_name (),
+                           mount.get_icon (),
+                           root.get_uri (),
+                           null,
+                           null,
+                           mount,
+                           0,
+                           root.get_parse_name ());
             }
 
-            mount_uri = "network:///";
-            icon = new GLib.ThemedIcon (Marlin.ICON_NETWORK);
-            last_iter = add_place (PlaceType.BUILT_IN,
-                                   iter,
-                                   _("Entire Network"),
-                                   icon,
-                                   mount_uri,
-                                   null,
-                                   null,
-                                   null,
-                                   0,
-                                   _("Browse the contents of the network"));
+            /* Add Entire Network BUILTIN */
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("Entire Network"),
+                       new GLib.ThemedIcon (Marlin.ICON_NETWORK),
+                       "network:///",
+                       null,
+                       null,
+                       null,
+                       0,
+                       _("Browse the contents of the network"));
 
             expander_init_pref_state (tree_view);
 
-            if (location != null && mount_uri != null && location == mount_uri)
-                selection.select_iter (last_iter);
+            /* select any previously selected place or any place matching slot location */
+            if (last_selected_uri != null)
+                set_matching_selection (this.last_selected_uri);
+            else
+                set_matching_selection  (this.slot_location);
+        }
 
-            if (select_path != null)
-                selection.select_path (select_path);
+        private void add_bookmark (Gtk.TreeIter iter, Marlin.Bookmark bm, uint index) {
+            add_place ( PlaceType.BOOKMARK,
+                        iter,
+                        bm.label.dup (),
+                        bm.get_icon (),
+                        bm.get_uri (),
+                        null,
+                        null,
+                        null,
+                        index + n_builtins_before,
+                        bm.get_parse_name());
+        }
+
+        private void add_volumes (Gtk.TreeIter iter,
+                                  GLib.Drive drive,
+                                  GLib.List<GLib.Volume> volumes) {
+            Gtk.TreeIter last_iter;
+            foreach (Volume volume in volumes) {
+                var mount = volume.get_mount ();
+                if (mount != null) {
+                    /* show mounted volume in sidebar */
+                    var root = mount.get_default_location ();
+                    last_iter = add_place (PlaceType.MOUNTED_VOLUME,
+                                           iter,
+                                           mount.get_name (),
+                                           mount.get_icon (),
+                                           root.get_uri (),
+                                           drive,
+                                           volume,
+                                           mount,
+                                           0,
+                                           root.get_parse_name ());
+
+                    uint64 fs_capacity, fs_free;
+                    get_filesystem_space (root, out fs_capacity, out fs_free);
+                    store.@set (last_iter,
+                                Column.FREE_SPACE, fs_free,
+                                Column.DISK_SIZE, fs_capacity,
+                                -1);
+                } else {
+                    /* Do show the unmounted volumes in the sidebar;
+                    * this is so the user can mount it (in case automounting
+                    * is off).
+                    *
+                    * Also, even if automounting is enabled, this gives a visual
+                    * cue that the user should remember to yank out the media if
+                    * he just unmounted it.
+                    */
+                    add_place (PlaceType.MOUNTED_VOLUME,
+                               iter,
+                               volume.get_name (),
+                               volume.get_icon (),
+                               null,
+                               drive,
+                               volume,
+                               null,
+                               0,
+                               (_("Mount and open %s")).printf (name));
+                }
+            }
+    }
+
+        private void get_filesystem_space (GLib.File root, out uint64 fs_capacity, out uint64 fs_free) {
+            GLib.FileInfo info;
+            try {
+                info = root.query_filesystem_info ("filesystem::*", null);
+            }
+            catch (GLib.Error error) {
+                //message ("Error querying root filesystem info: %s", error.message);
+                info = null;
+            }
+            fs_capacity = 0;
+            fs_free = 0;
+            if (info != null) {
+                fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+                fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+            }
         }
 
         private void mount_added_callback (VolumeMonitor volume_monitor, Mount mount) {
@@ -864,35 +803,38 @@ namespace Marlin.Places {
             open_selected_bookmark ((Gtk.TreeModel)store, path, 0);
         }
 
-        private void loading_uri_callback (string location, Gtk.Widget sidebar) {
-            Gtk.TreeSelection selection;
+        private void loading_uri_callback (string location) {
+            if (!(this.last_selected_uri == location)) {
+                this.last_selected_uri = location.dup ();
+                set_matching_selection (location);
+            }
+        }
+
+        private void set_matching_selection (string? location) {
+            /* set selection if any place matches location */
+            /* first matching place is selected */
+            var selection = tree_view.get_selection ();
+            selection.unselect_all ();
+            if (location == null)
+                return;
+
             Gtk.TreeIter iter;
-            Gtk.TreeIter child_iter;
-            bool valid;
-            bool child_valid;
+            bool valid = store.get_iter_first (out iter);
 
-            if (!(this.uri == location)) {
-                this.uri = location.dup ();
-
-                /* set selection if any place matches location */
-                selection = tree_view.get_selection ();
-                valid = store.get_iter_first (out iter);
-
-                while (valid) {
-                    child_valid = store.iter_children (out child_iter, iter);
-
+            while (valid) {
+                Gtk.TreeIter child_iter;
+                bool child_valid = store.iter_children (out child_iter, iter);
+                while (child_valid) {
                     string uri;
-                    while (child_valid) {
-                        store.@get (child_iter, Column.URI, out uri, -1);
-                        if (uri != null && uri == location) {
-                            selection.select_iter (child_iter);
-                            break;
-                        }
-
-                        child_valid = store.iter_next (ref child_iter);
+                    store.@get (child_iter, Column.URI, out uri, -1);
+                    if (uri != null && uri == location) {
+                        selection.select_iter (child_iter);
+                        valid = false; /* escape from outer loop */
+                        break;
                     }
-                    valid = store.iter_next (ref iter);
+                    child_valid = store.iter_next (ref child_iter);
                 }
+                valid = valid && store.iter_next (ref iter);
             }
         }
 
