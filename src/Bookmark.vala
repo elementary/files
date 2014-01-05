@@ -21,24 +21,21 @@
 namespace Marlin {
     public class Bookmark {
 
-        public bool has_custom_name = false;
         public signal void contents_changed ();
         public signal void deleted ();
 
-        private string custom_name;
+        private string custom_name = "";
         public string label {
             get {
-                    if (custom_name != null)
-                        return custom_name;
-                    else
-                        return this.gof_file.get_display_name ();
+                if (custom_name != "")
+                    return custom_name;
+                else
+                    return this.gof_file.get_display_name ();
             }
 
             set {
-                    if (value != "" && value != custom_name) {
-                        custom_name = value;
-                        has_custom_name = true;
-                    }
+                custom_name = value;
+                contents_changed ();
             }
         }
 

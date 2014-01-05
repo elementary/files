@@ -20,8 +20,6 @@
 ***/
 
 namespace Marlin.Places {
-
-    //public class Sidebar : Gtk.ScrolledWindow {
     public class Sidebar : Marlin.AbstractSidebar {
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
@@ -338,11 +336,6 @@ namespace Marlin.Places {
                                         Mount? mount,
                                         uint index,
                                         string tooltip) {
-            Gtk.TreeIter iter;
-            GLib.Icon eject;
-            Marlin.IconInfo icon_info;
-            bool show_eject, show_unmount;
-            bool show_eject_button;
 
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_icon_cell_renderer.stock_size = stock_size;
@@ -350,19 +343,22 @@ namespace Marlin.Places {
             Gdk.Pixbuf pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
-                icon_info = Marlin.IconInfo.lookup (icon, icon_size);
+                var icon_info = Marlin.IconInfo.lookup (icon, icon_size);
                 pixbuf = icon_info.get_pixbuf_nodefault ();
             }
 
+            bool show_eject, show_unmount;
             check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
             if (show_unmount || show_eject)
                     assert (place_type != PlaceType.BOOKMARK);
 
+            bool show_eject_button;
             if (mount == null)
                 show_eject_button = false;
             else
                 show_eject_button = (show_unmount || show_eject);
 
+            GLib.Icon eject;
             if (show_eject_button)
                 eject = get_eject_icon ();
             else
@@ -375,6 +371,7 @@ namespace Marlin.Places {
                 converted_name = name;
             }
 
+            Gtk.TreeIter iter;
             this.store.append (out iter, parent);
             this.store.@set (iter,
                             Column.ROW_TYPE, place_type,
@@ -390,14 +387,13 @@ namespace Marlin.Places {
                             Column.BOOKMARK, place_type == PlaceType.BOOKMARK,
                             Column.TOOLTIP, tooltip,
                             Column.EJECT_ICON, eject,
-                            Column.FREE_SPACE, 0,
-                            Column.DISK_SIZE, 0,
+                            Column.FREE_SPACE, (uint64)0,
+                            Column.DISK_SIZE, (uint64)0,
                             -1, -1);
             return iter;
         }
 
         private void update_places () {
-//message ("update places");
             Gtk.TreeIter iter;
             string mount_uri;
 
@@ -420,7 +416,6 @@ namespace Marlin.Places {
 
             store.clear ();
             plugins.update_sidebar ((Gtk.Widget)this);
-
             /* ADD BOOKMARKS CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
@@ -433,15 +428,13 @@ namespace Marlin.Places {
                         Column.TOOLTIP, _("Your common places and bookmarks"),
                         -1);
 
-            /* add built-in bookmarks */
-            /* home folder if different from desktop directory */
+            /* Add Home BUILTIN */
             try {
                 mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
             }
-
             add_place ( PlaceType.BUILT_IN,
                         iter,
                         _("Home"),
@@ -453,8 +446,7 @@ namespace Marlin.Places {
                         0,
                         _("Open your personal folder"));
             n_builtins_before++;
-
-            /* add bookmarks */
+            /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();
             unowned Bookmark bm;
             uint index;
@@ -466,8 +458,7 @@ namespace Marlin.Places {
 
                 add_bookmark (iter, bm, index);
             }
-
-            /* add trash */
+            /* Add trash */
             add_place ( PlaceType.BUILT_IN,
                         iter,
                         _("Trash"),
@@ -478,7 +469,6 @@ namespace Marlin.Places {
                         null,
                         index + n_builtins_before,
                         _("Open the Trash"));
-
             /* ADD STORAGE CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
@@ -490,7 +480,6 @@ namespace Marlin.Places {
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your local partitions and devices"),
                         -1);
-
             /* Add Filesystem BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -502,9 +491,7 @@ namespace Marlin.Places {
                        null,
                        0,
                        _("Open the contents of the FileSystem"));
-
-
-            /* First go through all connected drives */
+            /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
             GLib.List<GLib.Volume> volumes;
             foreach (GLib.Drive drive in drives) {
@@ -533,8 +520,7 @@ namespace Marlin.Places {
                                (_("Mount and open %s")).printf  (name));
                 }
             }
-
-            /* add all volumes that is not associated with a drive */
+            /* add all volumes that are not associated with a drive */
             volumes = volume_monitor.get_volumes ();
             foreach (Volume volume in volumes) {
                 if (volume.get_drive () != null)
@@ -567,8 +553,7 @@ namespace Marlin.Places {
                                name);
                 }
             }
-
-            /* add mounts that have no volume (/etc/mtab mounts, ftp, sftp,...) */
+            /* Add mounts that have no volume (/etc/mtab mounts, ftp, sftp,...) */
             GLib.List<Mount> network_mounts = null;
             var mounts = volume_monitor.get_mounts ();
             foreach (Mount mount in mounts) {
@@ -599,7 +584,6 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
-
             /* ADD NETWORK CATEGORY */
             store.append (out iter, null);
             store.@set (iter,
@@ -611,7 +595,7 @@ namespace Marlin.Places {
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your network places"),
                         -1);
-
+            /* Add network mounts */
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
                 var root = mount.get_default_location ();
@@ -626,7 +610,6 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
-
             /* Add Entire Network BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -716,7 +699,7 @@ namespace Marlin.Places {
                 info = root.query_filesystem_info ("filesystem::*", null);
             }
             catch (GLib.Error error) {
-                //message ("Error querying root filesystem info: %s", error.message);
+                warning ("Error querying root filesystem info: %s", error.message);
                 info = null;
             }
             fs_capacity = 0;
@@ -821,9 +804,10 @@ namespace Marlin.Places {
             if (location == null)
                 return;
 
+            var file1 = GLib.File.new_for_path (location);
+
             Gtk.TreeIter iter;
             bool valid = store.get_iter_first (out iter);
-            var file1 = GLib.File.new_for_path (location);
 
             while (valid) {
                 Gtk.TreeIter child_iter;
@@ -847,7 +831,7 @@ namespace Marlin.Places {
             }
         }
 
-        /* Reorders the selected bookmark to the specified position */
+        /* Reorder the selected bookmark to the specified position */
         private void reorder_bookmarks (uint new_position) {
             /* Get the selected path */
             Gtk.TreeIter iter;
@@ -861,7 +845,10 @@ namespace Marlin.Places {
                         Column.INDEX, out old_position,
                         -1);
 
-            old_position = old_position <= n_builtins_before ? 0 : old_position - n_builtins_before;
+            if (old_position <= n_builtins_before)
+                old_position = 0;
+            else
+                old_position-= n_builtins_before;
 
             if (!is_bookmark || old_position >= bookmarks.length ())
                 return;
@@ -876,28 +863,29 @@ namespace Marlin.Places {
                                            int x,
                                            int y,
                                            uint time) {
-            Gtk.TreePath path;
-            Gtk.TreeViewDropPosition pos = 0;
-            Gdk.DragAction action = 0;
-            Gtk.TreeIter iter;
-            string uri;
-
             if (!received_drag_data
              && !get_drag_data (tree_view, context, time))
                     return false;
 
+            Gtk.TreeViewDropPosition pos;
+            Gtk.TreePath path;
             if (!compute_drop_position (tree_view, x, y, out path, out pos))
                 return false;
 
+            Gdk.DragAction action = Gdk.DragAction.DEFAULT;
             if (pos == Gtk.TreeViewDropPosition.BEFORE
-                || pos == Gtk.TreeViewDropPosition.AFTER) {
+             || pos == Gtk.TreeViewDropPosition.AFTER) {
                 if (received_drag_data
-                    && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
+                 && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
                     action = Gdk.DragAction.MOVE;
-                else if (drag_list != null && can_accept_files_as_bookmarks (drag_list))
+                else if (drag_list != null
+                      && can_accept_files_as_bookmarks (drag_list))
                     action = Gdk.DragAction.COPY;
-            } else if (drag_list != null && path != null) {
+            }
+            else if (drag_list != null && path != null) {
+                Gtk.TreeIter iter;
                 store.get_iter (out iter, path);
+                string uri;
                 this.store.@get (iter, Column.URI, out uri, -1);
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
@@ -934,7 +922,10 @@ namespace Marlin.Places {
         private  bool get_drag_data (Gtk.TreeView tree_view,
                                      Gdk.DragContext context,
                                      uint32 time) {
-            Gdk.Atom target = Gtk.drag_dest_find_target (tree_view, context, Gtk.drag_dest_get_target_list (tree_view));
+            var target_list = Gtk.drag_dest_get_target_list (tree_view);
+            var target = Gtk.drag_dest_find_target (tree_view,
+                                                    context,
+                                                    target_list);
 
             if (target == Gdk.Atom.NONE)
                 return false;
@@ -944,12 +935,12 @@ namespace Marlin.Places {
         }
 
         private void drag_data_received_callback (Gtk.Widget widget,
-                                                         Gdk.DragContext context,
-                                                         int x,
-                                                         int y,
-                                                         Gtk.SelectionData selection_data,
-                                                         uint info,
-                                                         uint time) {
+                                                  Gdk.DragContext context,
+                                                  int x,
+                                                  int y,
+                                                  Gtk.SelectionData selection_data,
+                                                  uint info,
+                                                  uint time) {
             if (!received_drag_data) {
                 if (selection_data.get_target () != Gdk.Atom.NONE
                     && info == TargetType.TEXT_URI_LIST) {
@@ -1000,7 +991,6 @@ namespace Marlin.Places {
                         Column.INDEX, out position,
                         -1);
 
-            assert (type >=0);
             if (type == PlaceType.BOOKMARK || type == PlaceType.BUILT_IN) {
                 if (type == PlaceType.BOOKMARK && drop_pos == Gtk.TreeViewDropPosition.BEFORE)
                     position--;
@@ -1081,8 +1071,8 @@ namespace Marlin.Places {
          */
             int count = 0;
             items.@foreach ((file) => {
-                    if (can_accept_file_as_bookmark (file))
-                            count++;
+                if (can_accept_file_as_bookmark (file))
+                    count++;
             });
             return count > 0 && count <= MAX_BOOKMARKS_DROPPED;
         }
@@ -1094,7 +1084,6 @@ namespace Marlin.Places {
             GLib.List<string> uris = null;
             drag_list.@foreach ((file) => {
                 if (can_accept_file_as_bookmark (file))
-                    //bookmarks.insert_uri (file.get_uri (), position++);
                     uris.prepend (file.get_uri ());
             });
             if (uris != null)
@@ -1155,26 +1144,21 @@ namespace Marlin.Places {
             return true;
         }
 
-    /* Computes the appropriate row and position for dropping */
+        /* Computes the appropriate row and position for dropping */
         private bool compute_drop_position (Gtk.TreeView tree_view,
-                                                    int x,
-                                                    int y,
-                                                    out Gtk.TreePath path,
-                                                    out Gtk.TreeViewDropPosition drop_position
-                                                    ) {
-            int num_rows;
-            int row;
-            num_rows = store.iter_n_children (null);
-
+                                            int x,
+                                            int y,
+                                            out Gtk.TreePath path,
+                                            out Gtk.TreeViewDropPosition drop_position
+                                            ) {
+            path = null;
+            int num_rows = store.iter_n_children (null);
             if (!tree_view.get_dest_row_at_pos (x, y, out path, out drop_position)) {
                 warning ("compute_drop position dest_row_at_pos UNKNOWN");
                 return false;
             }
 
-            row = (path.get_indices ()) [0];
-            path = null;
-            tree_view.get_path_at_pos (x, y, out path, null, null, null);
-
+            int row = (path.get_indices ()) [0];
             if (row == 1 || row == 2) {
                 /* Hardcoded shortcuts can only be dragged into */
                 drop_position = Gtk.TreeViewDropPosition.INTO_OR_BEFORE;
@@ -1182,8 +1166,8 @@ namespace Marlin.Places {
                 row = num_rows - 1; /* row not used after this?? */
                 drop_position = Gtk.TreeViewDropPosition.AFTER;
             } else if (drop_position != Gtk.TreeViewDropPosition.BEFORE
-                       && received_drag_data
-                       && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
+                    && received_drag_data
+                    && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
                 /* bookmark rows are never dragged into other bookmark rows */
                 drop_position = Gtk.TreeViewDropPosition.AFTER;
 
@@ -1197,9 +1181,8 @@ namespace Marlin.Places {
 /*****************************/
 
         private  bool get_selected_iter (out Gtk.TreeIter iter) {
-                return (tree_view.get_selection ()).get_selected (null, out iter);
+            return (tree_view.get_selection ()).get_selected (null, out iter);
         }
-
 
         /* Callback used when the file list's popup menu is detached */
         public void popup_menu_detach_cb (Gtk.Widget attach_widget, Gtk.Menu menu) {
@@ -1217,61 +1200,6 @@ namespace Marlin.Places {
             popupmenu_stop_item = null;
             popupmenu_empty_trash_item = null;
             popupmenu_connect_server_item = null;
-        }
-
-        private void check_unmount_and_eject (Mount? mount,
-                                              Volume? volume,
-                                              Drive? drive,
-                                              out bool show_unmount,
-                                              out bool show_eject) {
-            show_unmount = false;
-            show_eject = false;
-
-            if (drive != null)
-                show_eject = drive.can_eject ();
-
-            if (volume != null)
-                show_eject = volume.can_eject ();
-
-            if (mount != null) {
-                show_eject = mount.can_eject ();
-                show_unmount = mount.can_unmount () && !show_eject;
-            }
-        }
-
-        private void check_visibility (Mount? mount,
-                                       Volume? volume,
-                                       Drive? drive,
-                                       out bool show_mount,
-                                       out bool show_unmount,
-                                       out bool show_eject,
-                                       out bool show_rescan,
-                                       out bool show_format,
-                                       out bool show_start,
-                                       out bool show_stop) {
-            show_mount = false;
-            show_format = false;
-            show_rescan = false;
-            show_start = false;
-            show_stop = false;
-
-            check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
-
-            if (drive != null) {
-                if (drive.is_media_removable () &&
-                    !drive.is_media_check_automatic () &&
-                    drive.can_poll_for_media ())
-                        show_rescan = true;
-
-                show_start = drive.can_start ()|| drive.can_start_degraded ();
-                show_stop = drive.can_stop ();
-
-                if (show_stop)
-                    show_unmount = false;
-            }
-
-            if (volume != null && mount == null)
-                show_mount = volume.can_mount ();
         }
 
         /* Callback used when the selection in the shortcuts tree changes */
@@ -1369,10 +1297,7 @@ namespace Marlin.Places {
 
                 if (volume != null && !mounting) {
                     mounting = true;
-                    assert (go_to_after_mount_slot == null);
-
-                    var slot = window.get_active_slot ();
-                    go_to_after_mount_slot = slot;
+                    go_to_after_mount_slot = window.get_active_slot ();
                     go_to_after_mount_flags = flags;
                     Marlin.FileOperations.mount_volume_full (null,
                                                              volume,
@@ -1414,7 +1339,7 @@ namespace Marlin.Places {
 
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
-            GLib.List<weak Gtk.CellRenderer> renderers = column.get_cells ();
+            var renderers = column.get_cells ();
             var cell = (Gtk.CellRendererText)(renderers.nth_data (5));
             cell.editable = true;
 
@@ -1447,7 +1372,7 @@ namespace Marlin.Places {
             remove_selected_bookmarks ();
         }
 
-         private void mount_shortcut_cb (Gtk.MenuItem item) {
+        private void mount_shortcut_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
@@ -1478,16 +1403,53 @@ namespace Marlin.Places {
             do_unmount_selection ();
         }
 
-        private void do_eject (Mount? mount, Volume? volume, Drive? drive) {
-            var mount_op = new Gtk.MountOperation (get_toplevel () as Gtk.Window);
-            if (mount != null)
-                mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
+        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive) {
+            GLib.MountOperation mount_op = new GLib.MountOperation ();
 
-            if (volume != null)
-                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
+            if (drive != null) {
+                drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                  mount_op,
+                                                  null,
+                                                  (obj, res) => {
+                    try {
+                        drive.eject_with_operation.end (res);
+                    }
+                    catch (GLib.Error error) {
+                        message ("Error ejecting drive: %s", error.message);
+                    }
+                });
+                return;
+            }
 
-            if (drive != null)
-                drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, mount_op, null); /* FORCE? */
+            if (volume != null){
+                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                   mount_op,
+                                                   null,
+                                                   (obj, res) => {
+                    try {
+                        volume.eject_with_operation.end (res);
+                    }
+                    catch (GLib.Error error) {
+                        message ("Error ejecting volume: %s", error.message);
+                    }
+                });
+                return;
+            }
+
+            if (mount != null){
+                mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                  mount_op,
+                                                  null,
+                                                  (obj, res) => {
+                        try {
+                            mount.eject_with_operation.end (res);
+                        }
+                        catch (GLib.Error error) {
+                            message ("Error ejecting mount: %s", error.message);
+                        }
+                });
+                return;
+            }
         }
 
         private void eject_shortcut_cb (Gtk.MenuItem item) {
@@ -1543,28 +1505,14 @@ namespace Marlin.Places {
                 return eject_or_unmount_bookmark (store.get_path (iter));
         }
 
-    //    private void drive_poll_for_media_cb (Object source_object, AsyncResult res, void* user_data) {
-    //        Drive drive = source_object as Drive;
-    //        if (drive == null)
-    //            return;
-
-    //        try {
-    //            drive.poll_for_media ();
-    //        }
-    //        catch (GLib.Error error) {
-    //            var name = drive.get_name ();
-    //            var primary = (_("Unable to poll %s for media changes")).printf (name);
-    //            Eel.show_error_dialog (primary, error.message, null);
-    //        }
-    //    }
-
         private void empty_trash_cb (Gtk.MenuItem item) {
             Marlin.FileOperations.empty_trash (window);
         }
 
-    //    private void connect_server_cb (Gtk.MenuItem item) {
-    //        Marlin.ConnectServer.dialog_show (window);
-    //    }
+        private void connect_server_cb (Gtk.MenuItem item) {
+            var dialog = new Marlin.ConnectServer.Dialog (window);
+            dialog.show ();
+        }
 
         private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
             Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
@@ -1659,7 +1607,7 @@ namespace Marlin.Places {
             /* Connect to server menu item */
             item = new Gtk.ImageMenuItem.with_mnemonic (_("Connect to Server..."));
             popupmenu_connect_server_item = item;
-            item.activate.connect (empty_trash_cb);
+            item.activate.connect (connect_server_cb);
             item.show ();
             popupmenu.append (item);
 
@@ -1694,8 +1642,6 @@ namespace Marlin.Places {
                 return false;
             }
 
-            assert (tree_view != null);
-
             if (event.button ==1) {
                 if (event.window != tree_view.get_bin_window ())
                     return false;
@@ -1716,8 +1662,6 @@ namespace Marlin.Places {
                 return true;
 
             var tree_view = widget as Gtk.TreeView;
-            assert (tree_view != null && tree_view == this.tree_view);
-
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
@@ -1786,11 +1730,7 @@ namespace Marlin.Places {
                                           Gtk.CellRenderer cell,
                                           Gtk.TreeModel model,
                                           Gtk.TreeIter iter) {
-
-            if (!store.iter_has_child (iter))
-                cell.set_visible (true);
-            else
-                cell.set_visible (false);
+            cell.set_visible (!store.iter_has_child (iter));
         }
 
         private void root_indent_cell_data_func (Gtk.CellLayout layout,
@@ -1875,6 +1815,7 @@ namespace Marlin.Places {
             store.@get (iter, Column.ROW_TYPE, out type, -1);
             expander_update_pref_state (type, false);
         }
+
         /**
          * Checks whether a tree path points to a main category.
          */
@@ -1944,26 +1885,80 @@ namespace Marlin.Places {
             update_places ();
         }
 
-        static void volume_mounted_cb (GLib.Volume volume, void* call_back_data_object) {
-            assert (call_back_data_object is Sidebar);
-            assert (volume != null);
-
-            var sidebar = call_back_data_object as Sidebar;
-            sidebar.mounting = false;
+        public void volume_mounted_cb (GLib.Volume volume, void* call_back_data_object) {
+            this.mounting = false;
 
             var mount = volume.get_mount ();
-            if (mount != null) {
-                var location = mount.get_default_location ();
-                if (sidebar.go_to_after_mount_slot != null &&
-                    sidebar.go_to_after_mount_flags != ViewWindowOpenFlags.NEW_WINDOW) {
-                        GLib.Signal.emit_by_name (sidebar.go_to_after_mount_slot.ctab,
-                                                  "path-changed",
-                                                  location);
-                        sidebar.go_to_after_mount_slot = null;
-                } else
-                    sidebar.window.add_window (location);
-            }
+            if (mount == null)
+                return;
+
+            var location = mount.get_default_location ();
+            if (go_to_after_mount_slot != null
+             && go_to_after_mount_flags != ViewWindowOpenFlags.NEW_WINDOW) {
+                    GLib.Signal.emit_by_name (go_to_after_mount_slot.ctab,
+                                              "path-changed",
+                                              location);
+                    go_to_after_mount_slot = null;
+            } else
+                window.add_window (location);
+
         }
     }
+
+/* CHECK FUNCTIONS */
+        private void check_unmount_and_eject (Mount? mount,
+                                              Volume? volume,
+                                              Drive? drive,
+                                              out bool show_unmount,
+                                              out bool show_eject) {
+            show_unmount = false;
+            show_eject = false;
+
+            if (drive != null)
+                show_eject = drive.can_eject ();
+
+            if (volume != null)
+                show_eject = volume.can_eject ();
+
+            if (mount != null) {
+                show_eject = mount.can_eject ();
+                show_unmount = mount.can_unmount () && !show_eject;
+            }
+        }
+
+        private void check_visibility (Mount? mount,
+                                       Volume? volume,
+                                       Drive? drive,
+                                       out bool show_mount,
+                                       out bool show_unmount,
+                                       out bool show_eject,
+                                       out bool show_rescan,
+                                       out bool show_format,
+                                       out bool show_start,
+                                       out bool show_stop) {
+            show_mount = false;
+            show_format = false;
+            show_rescan = false;
+            show_start = false;
+            show_stop = false;
+
+            check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
+
+            if (drive != null) {
+                if (drive.is_media_removable () &&
+                    !drive.is_media_check_automatic () &&
+                    drive.can_poll_for_media ())
+                        show_rescan = true;
+
+                show_start = drive.can_start ()|| drive.can_start_degraded ();
+                show_stop = drive.can_stop ();
+
+                if (show_stop)
+                    show_unmount = false;
+            }
+
+            if (volume != null && mount == null)
+                show_mount = volume.can_mount ();
+        }
 
 }

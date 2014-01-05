@@ -31,6 +31,8 @@ namespace Marlin {
         private GLib.List<Marlin.Bookmark> list;
         private GLib.FileMonitor monitor;
         private GLib.Queue<JobType> pending_ops;
+        private static GLib.File bookmarks_file;
+        private GOF.CallWhenReady call_when_ready;
 
         private static BookmarkList instance = null;
 
@@ -40,7 +42,37 @@ namespace Marlin {
         private BookmarkList () {
             list = new GLib.List<Marlin.Bookmark> ();
             pending_ops = new GLib.Queue<JobType> ();
-            load_bookmarks_file ();
+
+            /*Check bookmarks file exists and in right place */
+            string filename = GLib.Path.build_filename (GLib.Environment.get_user_config_dir (),
+                                                        "gtk-3.0",
+                                                        "bookmarks",
+                                                        null);
+            var file = GLib.File.new_for_path (filename);;
+            if (!file.query_exists (null)) {
+                try {
+                    file.get_parent ().make_directory_with_parents (null);
+                    file.create (GLib.FileCreateFlags.NONE, null);
+                }
+                catch (GLib.Error error){
+                    critical ("Could not create bookmarks file: %s", error.message);
+                }
+                /* load existing bookmarks from old location if exists */
+                var old_filename = GLib.Path.build_filename (GLib.Environment.get_home_dir (),
+                                                            ".gtk-bookmarks",
+                                                            null);
+                var old_file = GLib.File.new_for_path (old_filename);
+                if (old_file.query_exists (null)) {
+                    Marlin.BookmarkList.bookmarks_file = old_file;
+                    load_bookmarks_file ();
+                    Marlin.BookmarkList.bookmarks_file = file;
+                    save_bookmarks_file ();
+                }
+            }
+            else {
+                Marlin.BookmarkList.bookmarks_file = file;
+                load_bookmarks_file ();
+            }
         }
 
         public static BookmarkList get_instance () {
@@ -155,16 +187,29 @@ namespace Marlin {
                     file.load_contents_async.end (res, out contents, null);
                     if (contents != null) {
                         bookmark_list_from_string ((string)contents);
-//                        new GOF.CallWhenReady (get_gof_file_list (),
-//                                               (files) => {contents_changed ();}
-//                                              );
+                        this.call_when_ready = new GOF.CallWhenReady (get_gof_file_list (), files_ready);
+                        contents_changed ();
                     }
+
                 }
                 catch (GLib.Error error) {
                     critical ("Error loadinging bookmark file %s", error.message);
                 }
                 op_processed_call_back ();
             });
+        }
+
+        private GLib.List<GOF.File> get_gof_file_list () {
+            GLib.List<GOF.File> files = null;
+            list.@foreach ((bm) => {
+                files.prepend (bm.gof_file);
+            });
+            return files.copy ();
+        }
+
+        private void files_ready (GLib.List<GOF.File> files) {
+            call_when_ready = null;
+            contents_changed ();
         }
 
         private void bookmark_list_from_string (string contents) {
@@ -192,24 +237,13 @@ namespace Marlin {
                 save_bookmarks_file ();
         }
 
-//        private GLib.List<GOF.File> get_gof_file_list () {
-//             GLib.List<GOF.File> gof_file_list = new GLib.List<GOF.File> ();
-//            list.@foreach ((bm) => {
-//                gof_file_list.prepend (bm.gof_file);
-//            });
-//            return gof_file_list.copy ();
-//        }
-
         private void save_bookmarks_file_async () {
-
             GLib.File file = get_bookmarks_file ();
             StringBuilder sb = new StringBuilder ();
 
             list.@foreach ((bookmark) => {
                 sb.append (bookmark.get_uri ());
-                if (bookmark.has_custom_name)
-                    sb.append (" " + bookmark.label);
-
+                sb.append (" " + bookmark.label);
                 sb.append ("\n");
             });
 
@@ -231,10 +265,7 @@ namespace Marlin {
         }
 
         private static GLib.File get_bookmarks_file () {
-            string filename = GLib.Path.build_filename (GLib.Environment.get_home_dir (),
-                                                        ".gtk-bookmarks",
-                                                        null);
-            return GLib.File.new_for_path (filename);
+            return Marlin.BookmarkList.bookmarks_file;
         }
 
 

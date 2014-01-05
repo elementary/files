@@ -1,7 +1,6 @@
 namespace Marlin {
     public abstract class AbstractSidebar : Gtk.ScrolledWindow {
         public enum Column {
-            DUMMY,  /*Needed to avoid unexplained crash due to first column not retrieved properly*/
             NAME,
             URI,
             DRIVE,
@@ -17,32 +16,28 @@ namespace Marlin {
             EJECT_ICON,
             FREE_SPACE,
             DISK_SIZE,
-
             COUNT
         }
 
-        public Gtk.TreeStore store;
+        protected Gtk.TreeStore store;
 
-        public void init () {
+        protected void init () {
             store = new Gtk.TreeStore (((int)Column.COUNT),
-                                        typeof (int),       /*dummy*/
-                                        typeof (string),    /* name */
-//                                        typeof (PlaceType),        /* row type*/
-                                        typeof (string),    /* uri */
+                                        typeof (string),            /* name */
+                                        typeof (string),            /* uri */
                                         typeof (Drive),
                                         typeof (Volume),
                                         typeof (Mount),
-                                        typeof (int),        /* row type*/
-                                        //typeof (string),    /* name */
-                                        typeof (Icon),      /* Primary icon */
-                                        typeof (uint),       /* index*/
-                                        typeof (bool),   /* eject */
-                                        typeof (bool),   /* no eject */
-                                        typeof (bool),   /* is bookmark */
-                                        typeof (string),    /* tool tip */
-                                        typeof (Icon),      /* Action icon (e.g. eject button) */
-                                        typeof (uint64),    /* Free space */
-                                        typeof (uint64)   /* For disks, total size */
+                                        typeof (int),               /* row type*/
+                                        typeof (Icon),              /* Primary icon */
+                                        typeof (uint),              /* index*/
+                                        typeof (bool),              /* eject */
+                                        typeof (bool),              /* no eject */
+                                        typeof (bool),              /* is bookmark */
+                                        typeof (string),            /* tool tip */
+                                        typeof (Icon),              /* Action icon (e.g. eject button) */
+                                        typeof (uint64),            /* Free space */
+                                        typeof (uint64)             /* For disks, total size */
                                         );
         }
 
