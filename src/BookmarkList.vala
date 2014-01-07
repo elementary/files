@@ -48,7 +48,7 @@ namespace Marlin {
                                                         "gtk-3.0",
                                                         "bookmarks",
                                                         null);
-            var file = GLib.File.new_for_path (filename);;
+            var file = GLib.File.new_for_path (filename);
             if (!file.query_exists (null)) {
                 try {
                     file.get_parent ().make_directory_with_parents (null);
@@ -180,7 +180,6 @@ namespace Marlin {
 
         private void load_bookmarks_file_async () {
             GLib.File file = get_bookmarks_file ();
-
             file.load_contents_async.begin (null, (obj, res) => {
                 try {
                     uint8[] contents;
@@ -188,7 +187,6 @@ namespace Marlin {
                     if (contents != null) {
                         bookmark_list_from_string ((string)contents);
                         this.call_when_ready = new GOF.CallWhenReady (get_gof_file_list (), files_ready);
-                        contents_changed ();
                     }
 
                 }
@@ -320,8 +318,9 @@ namespace Marlin {
         private void process_next_op () {
             stop_monitoring_bookmarks_file ();
             var pending = pending_ops.pop_tail ();
-            /* if job is SAVE then subsequent pending saves and loads are redundant */
-            /* if job is LOAD then any pending changes requiring saving will be lost */
+            /* if job is SAVE then subsequent pending saves and loads are redundant
+             * if job is LOAD then any pending changes requiring saving will be lost
+             * so we can clear pending jobs */
             pending_ops.clear();
             /* block queue until job processed */
             pending_ops.push_head (pending);

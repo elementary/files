@@ -51,7 +51,6 @@ namespace Marlin {
         };
 
         private Bookmark (GOF.File gof_file, string? label = null) {
-
             if (label != null)
                 this.label = label;
 
@@ -120,7 +119,7 @@ namespace Marlin {
         }
 
         private void connect_file () {
-            if (!uri_known_not_to_exist ()) {
+            if (gof_file.location.is_native ()) {
                 try {
                     monitor = (this.get_location ()).monitor_file (GLib.FileMonitorFlags.SEND_MOVED, null);
                     monitor.changed.connect (file_changed_callback);
