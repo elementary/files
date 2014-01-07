@@ -81,7 +81,6 @@ namespace Marlin.View.Chrome
                     });
 
                     location_bar.activate.connect (() => {
-message ("Location bar activate path is %s", location_bar.path);
                         win.current_tab.path_changed (File.new_for_commandline_arg (location_bar.path));
                     });
 

@@ -57,28 +57,6 @@ namespace Marlin {
 
     }
 
-//    [CCode (cheader_filename = "marlin-bookmark.h")]
-//    public class Bookmark : Object {
-//        public Bookmark (GOF.File file, string? label);
-//        public File get_location ();
-//        public string get_name ();
-//        public Icon get_icon ();
-//        public string get_uri ();
-//        public bool set_name (string new_name);
-//        public bool uri_known_not_to_exist ();
-//    }
-//    [CCode (cheader_filename = "marlin-bookmark-list.h")]
-//    public class BookmarkList : Object {
-//        public signal void contents_changed ();
-//        public BookmarkList ();
-//        public int length ();
-//        public unowned Bookmark item_at (int index);
-//        public void insert_item (Marlin.Bookmark bookmark, int index);
-//        public void delete_item_at (int index);
-//        public void move_item (int index, int destination);
-//        public bool contains (Marlin.Bookmark bookmark);
-//    }
-
     [CCode (cheader_filename = "marlin-dnd.h")]
     public static Gdk.DragAction drag_drop_action_ask (Gtk.Widget widget, Gdk.DragAction possible_actions);
 
@@ -106,14 +84,6 @@ namespace Marlin {
                                                   GLib.AskPasswordFlags flags);
         }
     }
-
-//    [CCode (cprefix = "MarlinPlaces", lower_case_cprefix = "marlin_places_")]
-//    namespace Places {
-//        [CCode (cheader_filename = "marlin-places-sidebar.h")]
-//        public class Sidebar : Gtk.ScrolledWindow {
-//            public Sidebar (Gtk.Widget window);
-//        }
-//    }
 
     [CCode (cprefix = "MarlinClipboard", lower_case_cprefix = "marlin_clipboard_")]
     namespace Clipboard {

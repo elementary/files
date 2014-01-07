@@ -178,6 +178,8 @@ namespace Marlin.View {
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
 
+            warning ("directory done loading");
+
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 

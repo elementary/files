@@ -20,7 +20,6 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private Gtk.InfoBar? infobar = null;
 
     public Trash () {
-        warning ("trash plugin created");
         trash_monitor = TrashMonitor.get ();
         trash_monitor.trash_state_changed.connect ((state) => {
             /* state true = empty trash */
@@ -30,7 +29,6 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-        warning ("trash plugin directory loaded");
         GOF.File file = ((Object[]) user_data)[2] as GOF.File;
         if (file.location.get_uri_scheme () == "trash") {
             assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
@@ -45,11 +43,9 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
             infobar.set_message_type (Gtk.MessageType.INFO);
 
             infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
-            //infobar.set_response_sensitive (0, false);
 
             slot.add_extra_widget (infobar);
             infobar.show_all ();
-        message ("leaving trash plugin directory loaded");
         }
     }
 }

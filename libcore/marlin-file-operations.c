@@ -2444,12 +2444,10 @@ volume_mount_cb (GObject *source_object,
         g_object_get_data (G_OBJECT (mount_op), "mount-callback-data");
 
     if (mount_callback != NULL) {
-g_message ("%s - mount callback not null - calling ", G_STRFUNC);
         (* mount_callback) (G_VOLUME (source_object),
                             mount_callback_data_object);
 
         if (mount_callback_data_object != NULL) {
-g_message ("%s - mount callback data object not null - weak unrefing ", G_STRFUNC);
             g_object_weak_unref (mount_callback_data_object,
                                  mount_callback_data_notify,
                                  mount_op);

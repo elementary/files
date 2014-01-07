@@ -208,8 +208,7 @@ public class Marlin.Application : Granite.Application {
         open_window (location, screen);
     }
 
-    //private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
-    private void mount_removed_callback (Mount mount) {
+    private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Check and see if any of the open windows are displaying contents from the unmounted mount */
         unowned List<Gtk.Window> window_list = this.get_windows ();
         File root = mount.get_root ();

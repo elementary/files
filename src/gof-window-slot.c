@@ -300,8 +300,6 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
 void
 gof_window_slot_active (GOFWindowSlot *slot)
 {
-g_message ("%s:", G_STRFUNC);
-
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
     if (slot->mwcols != NULL) {

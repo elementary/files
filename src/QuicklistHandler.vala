@@ -35,7 +35,6 @@ namespace Marlin {
             if (this.launcher_entries.length () == 0) {
                 error ("Couldn't find a valid Unity launcher entry.");
             } else {
-                //var bookmarks = new Marlin.BookmarkList ();
                 var bookmarks = Marlin.BookmarkList.get_instance ();
 
                 bookmarks.contents_changed.connect (() => {

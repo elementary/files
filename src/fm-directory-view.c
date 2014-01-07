@@ -200,7 +200,7 @@ static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAlloc
 
 static int      fm_directory_view_get_uri_keypath_size (FMDirectoryView *view);
 
-void dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
+void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
 
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
@@ -303,7 +303,6 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-//g_message ("fm-directory-view %s: ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -326,7 +325,6 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         view->details->slot->ready_to_autosize = TRUE;
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
-//g_message ("fm-directory-view %s: - leaving ", G_STRFUNC);
 }
 
 static void
@@ -1038,7 +1036,7 @@ fm_directory_view_get_drop_file (FMDirectoryView    *view,
             file = fm_list_model_file_for_path (view->model, folder_path);
          }
 
-       // printf ("%s %s\n", G_STRFUNC, file->uri);
+        printf ("%s %s\n", G_STRFUNC, file->uri);
 
         /* we can only drop to directories and executable files */
         if (!gof_file_is_folder (file) && !gof_file_is_executable (file))
@@ -1082,7 +1080,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
 
     /* determine the file and path for the given coordinates */
     file = fm_directory_view_get_drop_file (view, x, y, &path);
-    //printf ("%s %s\n", G_STRFUNC, file->uri);
+    printf ("%s %s\n", G_STRFUNC, file->uri);
 
     /* check if we can drop there */
     if (G_LIKELY (file != NULL))
@@ -1460,7 +1458,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     GOFFile         *file = NULL;
     GdkAtom         target;
 
-    //printf ("%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     /* request the drop data on-demand (if we don't have it already) */
     if (G_UNLIKELY (!view->details->drop_data_ready))
     {
@@ -1472,7 +1470,7 @@ g_message ("%s: drop_data_ready is false", G_STRFUNC);
         {
             /* determine the file for the given coordinates */
             file = fm_directory_view_get_drop_file (view, x, y, &path);
-            printf ("%s XdndDirectSave0 or _NETSCAPE_URL file %s\n", G_STRFUNC, file->uri);
+            printf ("%s file %s\n", G_STRFUNC, file->uri);
 
             /* check if we can save here */
             //TODO
@@ -1516,7 +1514,6 @@ g_message ("%s: drop_data_ready is false", G_STRFUNC);
         }
         else
         {
-g_message ("%s: drop_data_ready is true", G_STRFUNC);
             /* request the drag data from the source */
             if (target != GDK_NONE)
                 gtk_drag_get_data (widget, context, target, timestamp);
@@ -1529,7 +1526,7 @@ g_message ("%s: drop_data_ready is true", G_STRFUNC);
     {
         /* check whether we can drop at (x,y) */
         //TODO
-        //printf ("check whether we can drop at (x,y)\n");
+        printf ("check whether we can drop at (x,y)\n");
         fm_directory_view_get_dest_actions (view, context, x, y, timestamp, NULL);
     }
 
@@ -1575,7 +1572,7 @@ fm_directory_view_drag_begin (GtkWidget           *widget,
             /*g_object_get (G_OBJECT (view->icon_renderer), "size", &size, NULL);
               icon = thunar_icon_factory_load_file_icon (view->icon_factory, file, THUNAR_FILE_ICON_STATE_DEFAULT, size);*/
             //TODO get icon size depending on the view and zoom lvl
-            //printf ("hummmmmmmmmmmmmmmmm ????\n");
+            printf ("hummmmmmmmmmmmmmmmm ????\n");
             //g_object_unref (G_OBJECT (icon));
             gtk_drag_set_icon_pixbuf (context, file->pix, 0, 0);
         }
@@ -2714,10 +2711,10 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    //g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
+    g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
 
     //coltest
-    //g_message ("%s > merge menus", G_STRFUNC);
+    g_message ("%s > merge menus", G_STRFUNC);
     fm_directory_view_merge_menus (view);
     //schedule_update_menus (view);
 }

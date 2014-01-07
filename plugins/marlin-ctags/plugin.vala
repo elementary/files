@@ -92,7 +92,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     };
 
     private bool f_is_user_dir (string uri) {
-message ("CTAGS f_is_user_dir");
         return_val_if_fail (uri != null, false);
         foreach (var duri in users_dirs) {
             if (Posix.strncmp (uri, duri, duri.length) == 0)
@@ -103,7 +102,6 @@ message ("CTAGS f_is_user_dir");
     }
 
     private bool f_ignore_dir (string uri) {
-message ("CTAGS f_ignore_dir");
         return_val_if_fail (uri != null, true);
 
         var idir = "file:///tmp";
@@ -114,7 +112,7 @@ message ("CTAGS f_ignore_dir");
     }
 
     public override void directory_loaded (void* user_data) {
-        message  ("CTAGS PLUGIN     directory_loaded");
+        message  ("CANCEL");
         cancellable.cancel ();
 
 
@@ -132,7 +130,6 @@ message ("CTAGS f_ignore_dir");
         warning ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
-        message ("leaving ctags directory loaded");
     }
 
     //private Variant add_entry (string uri, string content_type, int modified_time)
@@ -155,11 +152,11 @@ message ("CTAGS f_ignore_dir");
         }
 
         if (entries != null) {
-            warning ("CTAGS PLUGIN --- known entries %d", entries.length);
+            warning ("--- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries, directory.uri);
             } catch (Error err) {
-                warning ("CTAGS PLUGIN %s", err.message);
+                warning ("%s", err.message);
             }
         }
     }
@@ -168,7 +165,7 @@ message ("CTAGS f_ignore_dir");
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
-        message ("CTAGS PLUGIN unknowns queue nb: %u", count);
+        message ("unknows queue nb: %u", count);
         if (count > 10) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
@@ -187,7 +184,7 @@ message ("CTAGS f_ignore_dir");
                     }
                 }
             } catch (Error err1) {
-                warning ("CTAGS PLUGIN  dir query_info failed: %s %s", err1.message, directory.uri);
+                warning ("dir query_info failed: %s %s", err1.message, directory.uri);
             }
         } else {
             while ((gof = unknowns.pop_head ()) != null) {
@@ -195,10 +192,10 @@ message ("CTAGS f_ignore_dir");
                 try {
                     //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    warning ("CTAGS PLUGIN --- unknown query_info %s", gof.info.get_name ());
+                    warning ("--- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
-                    warning ("CTAGS PLUGIN query_info failed: %s %s", err2.message, gof.uri);
+                    warning ("query_info failed: %s %s", err2.message, gof.uri);
                 }
 
             }

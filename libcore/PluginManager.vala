@@ -121,7 +121,7 @@ public class Marlin.PluginManager : Object {
             return;
         }
 
-//message ("Loading plugin for %s", file_path);
+        message ("Loading plugin for %s", file_path);
 
         Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null) {
@@ -132,7 +132,7 @@ public class Marlin.PluginManager : Object {
         }
 
         void* function;
-//message ("Finding entry point for %s", file_path);
+
         if (!module.symbol ("module_init", out function)) {
             warning ("Failed to find entry point function '%s' in '%s': %s",
                      "module_init",
@@ -156,8 +156,6 @@ public class Marlin.PluginManager : Object {
 
         if (in_available)
             names.add (name);
-
-//message ("Leaving load module");
     }
 
     void load_plugin_keyfile (string path, string parent) {
