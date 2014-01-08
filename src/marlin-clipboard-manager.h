@@ -35,7 +35,7 @@ typedef struct _MarlinClipboardManager      MarlinClipboardManager;
 #define MARLIN_CLIPBOARD_MANAGER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((obj), MARLIN_TYPE_CLIPBOARD_MANAGER, MarlinClipboardManagerClass))
 #define MARLIN_IS_CLIPBOARD_MANAGER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_TYPE_CLIPBOARD_MANAGER))
 #define MARLIN_IS_CLIPBAORD_MANAGER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_TYPE_CLIPBOARD_MANAGER))
-#define MARLIN_CLIPBOARD_MANAGER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_TYPE_CLIPBAORD_MANAGER, MarlinClipboardManagerClass))
+#define MARLIN_CLIPBOARD_MANAGER_GET_CLASS(obj)   (G_TYPE_INSTANCEpaste_GET_CLASS ((obj), MARLIN_TYPE_CLIPBAORD_MANAGER, MarlinClipboardManagerClass))
 
 GType                   marlin_clipboard_manager_get_type        (void) G_GNUC_CONST;
 
