@@ -1394,6 +1394,7 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                 if (G_LIKELY (action != 0))
                 {
                     printf ("%s perform action %d\n", G_STRFUNC, action);
+                    view->details->selected_added_files = g_list_length (view->details->drop_file_list);
                     succeed = marlin_dnd_perform (GTK_WIDGET (view),
                                                   file,
                                                   view->details->drop_file_list,
