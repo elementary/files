@@ -1872,14 +1872,15 @@ filter_default_app (GList *apps, GAppInfo *default_app)
     const char *id1, *id2;
 
     id2 = g_app_info_get_id (default_app);
-    for (l=apps; l != NULL; l=l->next) {
+    for (l = apps; l != NULL; l = l->next) {
         app = (GAppInfo *) l->data;
         id1 = g_app_info_get_id (app);
         if (id1 != NULL && id2 != NULL
             && strcmp (id1, id2) == 0)
         {
-			g_object_unref (app);
+            g_object_unref (app);
             apps = g_list_delete_link (apps, l);
+            break;
         }
     }
 
