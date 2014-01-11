@@ -538,7 +538,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 {
     char *text;
     char *color;
-    GdkRGBA rgba;
+    GdkRGBA rgba = {0.0, 0.0, 0.0, 0.0};
 
     GtkTreePath *path, *hover_path;
 
@@ -580,7 +580,7 @@ color_row_func (GtkTreeViewColumn *column,
                 gpointer          *data)
 {
     char *color;
-    GdkRGBA rgba;
+    GdkRGBA rgba = {0.0, 0.0, 0.0, 0.0};
 
     gtk_tree_model_get (model, iter,
                         FM_LIST_MODEL_COLOR, &color,
