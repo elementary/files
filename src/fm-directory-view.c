@@ -1900,6 +1900,7 @@ filter_this_app (GList *apps)
         if (executable != NULL && strcmp (executable, APP_NAME) == 0) {
             g_object_unref (app);
             apps = g_list_delete_link (apps, l);
+            break;
         }
     }
 
