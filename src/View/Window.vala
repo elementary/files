@@ -231,12 +231,10 @@ namespace Marlin.View {
                 tab.restore_data =
                     (tab.page as ViewContainer).slot.location.get_uri ();
 
-                return true;
-            });
-
-            tabs.tab_removed.connect ((tab) => {
-                if (tabs.n_tabs == 0)
+                if (tabs.n_tabs == 1)
                     make_new_tab ();
+
+                return true;
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
