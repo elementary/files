@@ -39,6 +39,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Needed by Granite.Application */
         this.program_name = Marlin.APP_TITLE;
+        this.exec_name = Marlin.APP_TITLE.down ().replace (" ", "-");
         this.build_version = Config.VERSION;
 
         this.app_copyright = Marlin.COPYRIGHT;
