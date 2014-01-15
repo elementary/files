@@ -660,7 +660,7 @@ marlin_clipboard_manager_count_files (MarlinClipboardManager *manager)
 {
     g_return_val_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager), 0);
 
-    return (g_list_length (manager->files));
+    return g_list_length (manager->files);
 }
 
 /**

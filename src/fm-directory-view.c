@@ -245,8 +245,9 @@ void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
 static void
 fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
-g_message ("%s selected added files = %u", G_STRFUNC, view->details->selected_added_files);
     fm_list_model_add_file (view->model, file, directory);
+    /* Check whether added file is being pasted or dropped in.
+     * If so, add to current selection */
     if (view->details->selected_added_files > 0) {
         fm_directory_view_add_to_selection_gof_file (view, file);
         view->details->selected_added_files--;
