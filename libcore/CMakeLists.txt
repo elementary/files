@@ -91,7 +91,6 @@ set (C_HEADER_FILES
     marlin-file-changes-queue.h
     marlin-file-utilities.h
     marlin-icons.h
-    marlin-abstract-sidebar.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
     marlin-icon-info.h
