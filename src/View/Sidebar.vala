@@ -472,10 +472,11 @@ namespace Marlin.Places {
             GLib.List<GLib.Volume> volumes;
             foreach (GLib.Drive drive in drives) {
                 volumes = drive.get_volumes ();
-                if (volumes != null) {
+                if (volumes != null)
                     add_volumes (iter, drive, volumes);
-                } else if (drive.is_media_removable ()
-                        && !drive.is_media_check_automatic ()) {
+
+                else if (drive.is_media_removable ()
+                     && !drive.is_media_check_automatic ()) {
                     /* If the drive has no mountable volumes and we cannot detect media change.. we
                      * display the drive in the sidebar so the user can manually poll the drive by
                      * right clicking and selecting "Rescan..."
@@ -484,16 +485,17 @@ namespace Marlin.Places {
                      * work.. but it's also for human beings who like to turn off media detection
                      * in the OS to save battery juice.
                      */
+                    var name = drive.get_name ();
                     add_place (PlaceType.BUILT_IN,
                                iter,
-                               drive.get_name (),
+                               name,
                                drive.get_icon (),
                                null,
                                drive,
                                null,
                                null,
                                0,
-                               (_("Mount and open %s")).printf  (name));
+                               (_("Mount and open %s")).printf (name));
                 }
             }
             /* add all volumes that are not associated with a drive */
@@ -517,9 +519,10 @@ namespace Marlin.Places {
                                root.get_parse_name ());
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
+                    var name = volume.get_name ();
                     add_place (PlaceType.MOUNTED_VOLUME,
                                iter,
-                               volume.get_name (),
+                               name,
                                volume.get_icon (),
                                null,
                                null,
@@ -654,9 +657,10 @@ namespace Marlin.Places {
                     * cue that the user should remember to yank out the media if
                     * he just unmounted it.
                     */
+                    var name = volume.get_name ();
                     add_place (PlaceType.MOUNTED_VOLUME,
                                iter,
-                               volume.get_name (),
+                               name,
                                volume.get_icon (),
                                null,
                                drive,
@@ -1032,6 +1036,9 @@ namespace Marlin.Places {
             } else {
                 Drive drive;
                 Volume volume;
+                var win = this.get_toplevel () as Gtk.Window;
+                var mount_op = new Gtk.MountOperation (win);
+
                 store.@get (iter,
                             Column.DRIVE, out drive,
                             Column.VOLUME, out volume,
@@ -1039,7 +1046,6 @@ namespace Marlin.Places {
 
                 if (volume != null && !mounting) {
                     mounting = true;
-                    var mount_op = new GLib.MountOperation ();
                     go_to_after_mount_slot = window.get_active_slot ();
                     go_to_after_mount_flags = flags;
                     volume.mount.begin (GLib.MountMountFlags.NONE,
@@ -1053,13 +1059,22 @@ namespace Marlin.Places {
                             warning ("Error mounting volume %s: %s", volume.get_name (), error.message);
                         }
                     });
-                } else if (volume == null
-                        && drive != null
+                } else if (drive != null
+                        && volume == null
                         && (drive.can_start () || drive.can_start_degraded ())) {
-                    Gtk.Window win = this.get_toplevel () as Gtk.Window;
-                    var mount_op = new Gtk.MountOperation (win);
-                    drive.start.begin (DriveStartFlags.NONE, mount_op, null);
-                }
+                    drive.start.begin (DriveStartFlags.NONE, 
+                                       mount_op,
+                                       null,
+                                       (obj, res) => {
+                        try {
+                            drive.start.end (res);
+                        }
+                        catch (GLib.Error error) {
+                            warning ("Error starting drive %s: %s", drive.get_name (), error.message);
+                        }
+
+                    });
+                } 
             }
         }
 
