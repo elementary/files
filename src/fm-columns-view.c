@@ -134,7 +134,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
         /* give back the focus to the active slot */
         gtk_widget_grab_focus (GTK_WIDGET (view));
-    } else if (view->details->pressed_button != -1)
+    } else if (view->details->pressed_button != -1 && g_settings_get_boolean (settings, "single-click"))
     	/* Open a file provided that it's been selected with the mouse: we
     	 * don't want files to be open when changing selection with the
     	 * keyboard.
