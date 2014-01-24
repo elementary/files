@@ -13,7 +13,7 @@ set (DOLLAR "$")
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8)
 
 pkg_check_modules (GRANITE REQUIRED "granite")
 add_definitions (${GRANITE_CFLAGS})
@@ -41,7 +41,7 @@ vala_precompile(VALA_C ${PKGNAME}
 PACKAGES
     gtk+-3.0
     granite
-    gee-1.0
+    gee-0.8
     posix
 OPTIONS
     --thread
