@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-01-25 15:19+0000\n"
+"PO-Revision-Date: 2014-01-26 13:09+0000\n"
 "Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-01-26 05:12+0000\n"
+"X-Launchpad-Export-Date: 2014-01-27 05:43+0000\n"
 "X-Generator: Launchpad (build 16914)\n"
 "Language: uk\n"
 
@@ -413,7 +413,7 @@ msgstr "Перекласти цю програму..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
-msgstr "Показати при_ховані файли"
+msgstr "Показати При_ховані Файли"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
