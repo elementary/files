@@ -334,7 +334,12 @@ static void fm_columns_view_select_all(FMDirectoryView *view)
 
 static void fm_columns_view_unselect_all(FMDirectoryView *view)
 {
-    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
+    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+
+    GtkTreeSelection *selection;
+    selection = gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree);
+    if (selection)
+        gtk_tree_selection_unselect_all (selection);
 }
 
 static gboolean

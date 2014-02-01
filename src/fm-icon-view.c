@@ -19,13 +19,14 @@
 
 #include <fm-icon-view.h>
 #include "fm-directory-view.h"
+#include "fm-abstract-icon-view.h"
 #include "marlin-global-preferences.h"
 #include "eel-i18n.h"
 
 static AtkObject   *fm_icon_view_get_accessible (GtkWidget *widget);
 static void         fm_icon_view_zoom_normal (FMDirectoryView *view);
 static void         fm_icon_view_zoom_level_changed (FMDirectoryView *view);
-
+static void         fm_icon_view_unselect_all (FMDirectoryView *view);
 
 G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_ABSTRACT_ICON_VIEW)
 
@@ -42,6 +43,15 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
     fm_directory_view_class->zoom_normal = fm_icon_view_zoom_normal;
     fm_directory_view_class->zoom_level_changed = fm_icon_view_zoom_level_changed;
+    fm_directory_view_class->unselect_all = fm_icon_view_unselect_all;
+}
+
+static void
+fm_icon_view_unselect_all (FMDirectoryView *icon_view)
+{
+    g_return_if_fail (FM_IS_ICON_VIEW (icon_view));
+    
+    exo_icon_view_unselect_all (FM_ABSTRACT_ICON_VIEW (icon_view)->icons);
 }
 
 static void
