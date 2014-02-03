@@ -6326,13 +6326,13 @@ marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
-#if 0
+//#if 0
 void
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                                                GdkPoint *target_point,
-                                               const char *parent_dir,
+                                               GFile *parent_dir,
                                                const char *target_filename,
-                                               const char *template_uri,
+                                               GFile *template,
                                                MarlinCreateCallback done_callback,
                                                gpointer done_callback_data)
 {
@@ -6347,15 +6347,15 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->dest_dir = g_file_new_for_uri (parent_dir);
+    job->dest_dir = parent_dir;
     if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
     }
     job->filename = g_strdup (target_filename);
 
-    if (template_uri) {
-        job->src = g_file_new_for_uri (template_uri);
+    if (template) {
+        job->src = template;
     }
 
     // Start UNDO-REDO
@@ -6370,7 +6370,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                              0,
                              job->common.cancellable);
 }
-#endif
+//#endif
 
 void
 marlin_file_operations_new_file (GtkWidget *parent_view,
@@ -6384,7 +6384,7 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
 {
     CreateJob *job;
     GtkWindow *parent_window = NULL;
-
+g_message ("%s-", G_STRFUNC);
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
