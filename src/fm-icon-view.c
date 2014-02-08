@@ -115,37 +115,9 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
      * golden ratio */
     item_width = 1.62f * icon_size;
 
-    /* determine the "wrap-width" depending on the "zoom-level" */
-    switch (view->zoom_level)
-    {
-    case MARLIN_ZOOM_LEVEL_SMALLEST:
-        wrap_width = item_width - 2;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_SMALLER:
-        wrap_width = item_width - 2;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_SMALL:
-        wrap_width = item_width - 4;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_NORMAL:
-        wrap_width = item_width - 6;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_LARGE:
-        wrap_width = item_width - 8;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_LARGER:
-        wrap_width = item_width - 10;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_LARGEST:
-        wrap_width = item_width - 10;
-        break;
-    }
+    /* determine the "wrap-width" depending on the "zoom-level": a couple of
+     * pixels will do */
+    wrap_width = item_width - 2;
 
     /* set the new "wrap-width" for the text renderer */
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", wrap_width, "zoom-level", view->zoom_level, NULL);
