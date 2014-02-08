@@ -8,20 +8,20 @@
         <placeholder name="New Items Placeholder">
             <menuitem name="New Folder" action="New Folder"/>
             <menu action="New File">
-		<placeholder name="Templates Placeholder"/>
-		<separator name="Template Separator"/>
                 <menuitem name="New Empty File" action="New Empty File"/>
+                <separator name="Template Separator"/>
+                <placeholder name="Templates Placeholder"/>
             </menu>
         </placeholder>
         <placeholder name="Open Placeholder">
-		<menuitem name="Open" action="Open"/>
-		<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
-		<menuitem name="OpenAlternate" action="OpenAlternate"/>
-		<menu action="Open With">
-			<placeholder name="Applications Placeholder"/>
-			<separator name="Open With Separator"/>
-			<menuitem name="OtherApplication" action="OtherApplication"/>
-		</menu>
+			<menuitem name="Open" action="Open"/>
+			<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
+			<menuitem name="OpenAlternate" action="OpenAlternate"/>
+			<menu action="Open With">
+				<placeholder name="Applications Placeholder"/>
+				<separator name="Open With Separator"/>
+    		    <menuitem name="OtherApplication" action="OtherApplication"/>
+			</menu>
         </placeholder>
 			<!--<menu action="Scripts">
 				 <placeholder name="Scripts Placeholder"/>
@@ -67,14 +67,11 @@
 			<menuitem name="New Folder" action="New Folder"/>
 			<!--<menuitem name="New Launcher" action="New Launcher"/>-->
 			<menu action="New File">
-		        <!--<menuitem name="No Templates" action="No Templates"/>
-			 	<placeholder name="New Documents Placeholder"/>
-			 	<separator name="After New Documents"/>-->
-				<placeholder name="Templates Placeholder"/>
+				<menuitem name="New Empty File" action="New Empty File"/>
 				<separator name="Template Separator"/>
-			 	<menuitem name="New Empty File" action="New Empty File"/>
+				<placeholder name="Templates Placeholder"/>
 			</menu>
-            <separator />
+		<separator />
 	        <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
             <separator />
             <!--<menu action="Scripts">

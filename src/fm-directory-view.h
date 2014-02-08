@@ -55,7 +55,7 @@ typedef struct FMDirectoryViewClass FMDirectoryViewClass;
 #define FM_DIRECTORY_VIEW_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_DIRECTORY_VIEW, FMDirectoryViewClass))
 
-#define MAX_TEMPLATES 10
+#define MAX_TEMPLATES 32
 
 typedef struct FMDirectoryViewDetails FMDirectoryViewDetails;
 

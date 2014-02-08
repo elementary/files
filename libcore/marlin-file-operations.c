@@ -6326,7 +6326,6 @@ marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
-//#if 0
 void
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                                                GdkPoint *target_point,
@@ -6370,7 +6369,6 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                              0,
                              job->common.cancellable);
 }
-//#endif
 
 void
 marlin_file_operations_new_file (GtkWidget *parent_view,
@@ -6384,7 +6382,6 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
 {
     CreateJob *job;
     GtkWindow *parent_window = NULL;
-g_message ("%s-", G_STRFUNC);
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }

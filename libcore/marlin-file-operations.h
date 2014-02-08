@@ -76,7 +76,7 @@ void marlin_file_operations_new_file    (GtkWidget                 *parent_view,
                                          int                        length,
                                          MarlinCreateCallback     done_callback,
                                          gpointer                   data);
-//#if 0
+
 void marlin_file_operations_new_file_from_template (GtkWidget               *parent_view,
                                                     GdkPoint                *target_point,
                                                     GFile                   *parent_dir,
@@ -84,7 +84,6 @@ void marlin_file_operations_new_file_from_template (GtkWidget               *par
                                                     GFile                   *template,
                                                     MarlinCreateCallback     done_callback,
                                                     gpointer                 data);
-//#endif
 void marlin_file_operations_delete          (GList                  *files,
                                              GtkWindow              *parent_window,
                                              MarlinDeleteCallback   done_callback,
