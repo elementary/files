@@ -23,6 +23,9 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 
+    /* offset to left align disk usage graphic with the text */
+    private int offset = 2;
+
     public CellRendererDisk () {
     }
 
@@ -45,6 +48,8 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                                  Gdk.Rectangle background_area, Gdk.Rectangle area,
                                  Gtk.CellRendererState flags) {
         base.render (cr, widget, background_area, area, flags);
+        area.x+= offset; 
+        area.width-= offset;
         if(free_space > 0) {
             Gtk.StateFlags state;
             Gtk.StyleContext context = widget.get_parent ().get_style_context ();
@@ -55,7 +60,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                 var color_border = context.get_color (state);
                 color_border.alpha -= 0.4;
                 Gdk.cairo_set_source_rgba (cr, color_border);
-                cr.rectangle (area.x, area.y + area.height - 3, area.width + 1, 4);
+                cr.rectangle (area.x, area.y + area.height-3, area.width + 1, 4);
                 cr.fill ();
             }
             state = Gtk.StateFlags.SELECTED;

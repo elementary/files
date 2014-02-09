@@ -120,8 +120,8 @@ namespace Marlin.Places {
 
         /* volume mounting - delayed open process */
         bool mounting = false;
-        GOF.Window.Slot go_to_after_mount_slot;
-        ViewWindowOpenFlags go_to_after_mount_flags;
+        //GOF.Window.Slot go_to_after_mount_slot;
+        //ViewWindowOpenFlags go_to_after_mount_flags;
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
@@ -158,8 +158,9 @@ namespace Marlin.Places {
             tree_view.set_headers_visible (false);
 
             var col = new Gtk.TreeViewColumn ();
-            col.max_width = 24;
+            col.max_width = -1;
             col.expand = true;
+            col.spacing = 3;
 
             var crt = new Gtk.CellRendererText ();
             col.pack_start(crt, false);
@@ -1036,46 +1037,66 @@ namespace Marlin.Places {
             } else {
                 Drive drive;
                 Volume volume;
-                var win = this.get_toplevel () as Gtk.Window;
-                var mount_op = new Gtk.MountOperation (win);
+
+                //var win = this.get_toplevel () as Gtk.Window;
+                var mount_op = new Gtk.MountOperation (window);
 
                 store.@get (iter,
                             Column.DRIVE, out drive,
                             Column.VOLUME, out volume,
                             -1);
 
-                if (volume != null && !mounting) {
-                    mounting = true;
-                    go_to_after_mount_slot = window.get_active_slot ();
-                    go_to_after_mount_flags = flags;
-                    volume.mount.begin (GLib.MountMountFlags.NONE,
-                                        mount_op,
-                                        null,
-                                        (obj, res) => {
-                        try {
-                            volume.mount.end (res);
-                        }
-                        catch (GLib.Error error) {
-                            warning ("Error mounting volume %s: %s", volume.get_name (), error.message);
-                        }
-                    });
-                } else if (drive != null
-                        && volume == null
-                        && (drive.can_start () || drive.can_start_degraded ())) {
-                    drive.start.begin (DriveStartFlags.NONE, 
-                                       mount_op,
-                                       null,
-                                       (obj, res) => {
-                        try {
-                            drive.start.end (res);
-                        }
-                        catch (GLib.Error error) {
-                            warning ("Error starting drive %s: %s", drive.get_name (), error.message);
-                        }
+                if (volume != null && !mounting) 
+                    mount_volume (volume, mount_op, flags);
 
-                    });
-                } 
+                else if (drive != null && volume == null
+                        && (drive.can_start () || drive.can_start_degraded ())) 
+                    start_drive (drive, mount_op);
             }
+        }
+
+        private void mount_volume (Volume volume, Gtk.MountOperation mount_op, ViewWindowOpenFlags flags) {
+            mounting = true;
+            //go_to_after_mount_flags = flags;
+            Marlin.View.ViewContainer? slot = window.current_tab;
+            volume.mount.begin (GLib.MountMountFlags.NONE,
+                                mount_op,
+                                null,
+                                (obj, res) => {
+                try {
+                    mounting = false;
+                    volume.mount.end (res);
+                    Mount mount = volume.get_mount ();
+                    if (mount != null && slot != null) {
+                        var location = mount.get_default_location ();
+                        if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
+                            var app = Marlin.Application.get ();
+                            app.create_window (location, window.get_screen ());
+                        } else {
+                            slot.path_changed (location);
+                        }
+                    }
+                }
+                catch (GLib.Error error) {
+                    warning ("Error mounting volume %s: %s", volume.get_name (), error.message);
+                }
+            });
+        }
+
+        private void start_drive (Drive drive, Gtk.MountOperation mount_op) {
+            drive.start.begin (DriveStartFlags.NONE, 
+                               mount_op,
+                               null,
+                               (obj, res) => {
+                    try {
+                        drive.start.end (res);
+                    }
+                    catch (GLib.Error error) {
+                            var primary = _("Unable to start %s".printf (drive.get_name ()));
+                            Eel.show_error_dialog (primary, error.message, null);
+                    }
+                }
+            );
         }
 
         private void rename_selected_bookmark () {
@@ -1830,25 +1851,6 @@ namespace Marlin.Places {
 
         private void drive_changed_callback (VolumeMonitor volume_monitor, Drive drive) {
             update_places ();
-        }
-
-        public void volume_mounted_cb (GLib.Volume volume, void* call_back_data_object) {
-            this.mounting = false;
-
-            var mount = volume.get_mount ();
-            if (mount == null)
-                return;
-
-            var location = mount.get_default_location ();
-            if (go_to_after_mount_slot != null
-             && go_to_after_mount_flags != ViewWindowOpenFlags.NEW_WINDOW) {
-                    GLib.Signal.emit_by_name (go_to_after_mount_slot.ctab,
-                                              "path-changed",
-                                              location);
-                    go_to_after_mount_slot = null;
-            } else
-                window.add_window (location);
-
         }
 
 /* MISCELLANEOUS CALLBACK FUNCTIONS */
