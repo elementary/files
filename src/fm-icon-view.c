@@ -30,6 +30,10 @@ static void         fm_icon_view_zoom_level_changed (FMDirectoryView *view);
 G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_ABSTRACT_ICON_VIEW)
 
 
+/* Golden ratio used */
+#define ICON_SIZE_TO_ITEM_WIDTH_RATIO 1.62f
+
+
 static void
 fm_icon_view_class_init (FMIconViewClass *klass)
 {
@@ -104,39 +108,28 @@ static void
 fm_icon_view_zoom_level_changed (FMDirectoryView *view)
 {
     gint wrap_width;
+    gint icon_size;
+    gint item_width;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    /* determine the "wrap-width" depending on the "zoom-level" */
-    switch (view->zoom_level)
-    {
-    case MARLIN_ZOOM_LEVEL_SMALLEST:
-        wrap_width = 48;
-        break;
+    icon_size = marlin_zoom_level_to_icon_size (view->zoom_level);
 
-    case MARLIN_ZOOM_LEVEL_SMALLER:
-        wrap_width = 64;
-        break;
+    /* determine the "item-width" depending on the "zoom-level" */
+    item_width = ICON_SIZE_TO_ITEM_WIDTH_RATIO * icon_size;
 
-    case MARLIN_ZOOM_LEVEL_SMALL:
-        wrap_width = 72;
-        break;
-
-    case MARLIN_ZOOM_LEVEL_NORMAL:
-        wrap_width = 112;
-        break;
-
-    default:
-        wrap_width = 128;
-        break;
-    }
+    /* determine the "wrap-width" depending on the "zoom-level": a couple of
+     * pixels will do */
+    wrap_width = item_width - 2;
 
     /* set the new "wrap-width" for the text renderer */
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", wrap_width, "zoom-level", view->zoom_level, NULL);
-    //g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "zoom-level", view->zoom_level, NULL);
 
     /* set the new "size" for the icon renderer */
-    g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", marlin_zoom_level_to_icon_size (view->zoom_level), "zoom-level", view->zoom_level, NULL);
+    g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", icon_size, "zoom-level", view->zoom_level, NULL);
+
+    /* set the new "item-width" for the icon view */
+    g_object_set (FM_ABSTRACT_ICON_VIEW (view)->icons, "item-width", item_width, NULL);
 
     exo_icon_view_invalidate_sizes (FM_ABSTRACT_ICON_VIEW (view)->icons);
 }
