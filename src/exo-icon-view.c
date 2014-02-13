@@ -449,7 +449,7 @@ static void                 exo_icon_view_context_changed                (GtkCel
 static void                 update_text_cell                             (ExoIconView            *icon_view);
 static void                 update_pixbuf_cell                           (ExoIconView            *icon_view);
 static ExoIconViewChild     *get_child_widget_for_item                   (ExoIconView            *icon_view,
-		                                                                  const ExoIconViewItem      *item);
+                                                                              const ExoIconViewItem      *item);
 
 /* Source side drag signals */
 static void exo_icon_view_drag_begin       (GtkWidget        *widget,
@@ -3751,18 +3751,18 @@ exo_icon_view_paint_item (ExoIconView     *icon_view,
     const ExoIconViewChild * const child = get_child_widget_for_item (icon_view, item);
     if (G_UNLIKELY (child))
     {
-    	/* This assumes the item to be rendered is comprised of some editable
-    	 * widget below the icon -> when the item is being renamed, we're only
-    	 * interested in rendering the icon, let the editable widget do its
-    	 * thing */
-    	cell_area.height = child->area.y - cell_area.y;
+        /* This assumes the item to be rendered is comprised of some editable
+         * widget below the icon -> when the item is being renamed, we're only
+         * interested in rendering the icon, let the editable widget do its
+         * thing */
+        cell_area.height = child->area.y - cell_area.y;
     }
 
     context = exo_icon_view_get_cell_area_context (icon_view, item);
 
-	gtk_cell_area_render (priv->cell_area, context,
-						  widget, cr, &cell_area, &cell_area, flags,
-						  draw_focus);
+    gtk_cell_area_render (priv->cell_area, context,
+                             widget, cr, &cell_area, &cell_area, flags,
+                             draw_focus);
 
     gtk_style_context_restore (style_context);
 }
@@ -11608,25 +11608,23 @@ exo_icon_view_search_init (GtkWidget   *entry,
     icon_view->priv->selected_iter = 1;
 }
 
-/* Returns the child widget with the same index than the given item or NULL if
+/* Returns the child widget with the same index as the given item or NULL if
  * there is none.
  */
 static ExoIconViewChild *
 get_child_widget_for_item (ExoIconView *icon_view, const ExoIconViewItem *item)
 {
-	g_assert (icon_view);
+    g_assert (icon_view);
     g_return_val_if_fail (item, NULL);
 
-	const GList *children = icon_view->priv->children;
-	while (children)
-	{
-	    ExoIconViewChild * const child = children->data;
-		if (child->index == item->index)
-		{
-			return child;
-		}
-		children = children->next;
-	}
-	return NULL;
+    const GList *children = icon_view->priv->children;
+    while (children)
+    {
+        ExoIconViewChild * const child = children->data;
+        if (child->index == item->index)
+            return child;
+        children = children->next;
+    }
+    return NULL;
 }
 
