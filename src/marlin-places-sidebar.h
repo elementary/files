@@ -66,6 +66,8 @@ typedef struct {
     int                 drag_data_info;
     MarlinZoomLevel     zoom_level;
     gboolean            drop_occured;
+    gboolean            internal_drag_started;
+    gboolean            dragged_out_of_window;
 
     GtkWidget *popup_menu;
     GtkWidget *popup_menu_open_in_new_tab_item;

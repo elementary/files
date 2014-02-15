@@ -64,6 +64,7 @@ static void  open_selected_bookmark                    (MarlinPlacesSidebar     
                                                         GtkTreeModel                *model,
                                                         GtkTreePath                 *path,
                                                         MarlinViewWindowOpenFlags   flags);
+static void  remove_selected_bookmarks                 (MarlinPlacesSidebar *sidebar);
 static void  marlin_places_sidebar_style_set           (GtkWidget                   *widget,
                                                         GtkStyle                    *previous_style);
 static gboolean eject_or_unmount_bookmark              (MarlinPlacesSidebar *sidebar,
@@ -79,6 +80,14 @@ static void bookmarks_check_popup_sensitivity          (MarlinPlacesSidebar *sid
 static void expander_init_pref_state                   (GtkTreeView *tree_view);
 
 static gboolean category_at_path                       (GtkTreePath *path);
+static gboolean drag_failed_callback                       (GtkTreeView *tree_view,
+                                                        GdkDragContext *context,
+                                                        GtkDragResult result,
+                                                        MarlinPlacesSidebar *sidebar);
+static void drag_end_callback                          (GtkTreeView *tree_view,
+                                                        GdkDragContext *context,
+                                                        MarlinPlacesSidebar *sidebar);
+
 
 /* Identifiers for target types */
 enum {
@@ -1113,6 +1122,7 @@ drag_motion_callback (GtkTreeView *tree_view,
         if (sidebar->drag_data_received &&
             sidebar->drag_data_info == GTK_TREE_MODEL_ROW) {
             action = GDK_ACTION_MOVE;
+            sidebar->internal_drag_started = TRUE;
         } else if (can_accept_items_as_bookmarks (sidebar->drag_list)) {
             action = GDK_ACTION_COPY;
         } else {
@@ -1182,9 +1192,33 @@ drag_leave_callback (GtkTreeView *tree_view,
 {
     //amtest drag
     g_debug ("%s", G_STRFUNC);
+    sidebar->dragged_out_of_window = TRUE;
     free_drag_data (sidebar);
     gtk_tree_view_set_drag_dest_row (tree_view, NULL, GTK_TREE_VIEW_DROP_BEFORE);
     g_signal_stop_emission_by_name (tree_view, "drag-leave");
+}
+
+static gboolean
+drag_failed_callback (GtkTreeView *tree_view,
+                      GdkDragContext *context,
+                      GtkDragResult result,
+                      MarlinPlacesSidebar *sidebar)
+{
+    if (sidebar->internal_drag_started 
+     && sidebar->dragged_out_of_window) {
+        remove_selected_bookmarks (sidebar);
+        return TRUE;
+    } else
+        return FALSE;
+}
+
+static void
+drag_end_callback (GtkTreeView *tree_view,
+                   GdkDragContext *context,
+                   MarlinPlacesSidebar *sidebar)
+{
+    sidebar->internal_drag_started = FALSE;
+    sidebar->dragged_out_of_window = FALSE;
 }
 
 /* Parses a "text/uri-list" string and inserts its URIs as bookmarks */
@@ -2846,6 +2880,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     sidebar->uri = NULL;
     sidebar->volume_monitor = g_volume_monitor_get ();
+    sidebar->internal_drag_started = FALSE;
+    sidebar->dragged_out_of_window = FALSE;
 
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sidebar),
                                     GTK_POLICY_NEVER,
@@ -3017,6 +3053,10 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (drag_data_received_callback), sidebar);
     g_signal_connect (tree_view, "drag-drop",
                       G_CALLBACK (drag_drop_callback), sidebar);
+    g_signal_connect (tree_view, "drag-failed",
+                      G_CALLBACK (drag_failed_callback), sidebar);
+    g_signal_connect (tree_view, "drag-end",
+                      G_CALLBACK (drag_end_callback), sidebar);
 
     g_signal_connect (selection, "changed",
                       G_CALLBACK (bookmarks_selection_changed_cb), sidebar);
@@ -3030,6 +3070,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (category_row_expanded_event_cb), sidebar);
     g_signal_connect (tree_view, "row-collapsed",
                       G_CALLBACK (category_row_collapsed_event_cb), sidebar);
+
 
     /* TODO remove/keep? using this prohibit us to use the row_activated signal 
        no keyboard abilities in the sidebar */
