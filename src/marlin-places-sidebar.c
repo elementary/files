@@ -1204,8 +1204,16 @@ drag_failed_callback (GtkTreeView *tree_view,
                       GtkDragResult result,
                       MarlinPlacesSidebar *sidebar)
 {
+    gint x, y;
+    GdkDevice *device;
+    MarlinAnimationPoofWindow *poof_window;
+
     if (sidebar->internal_drag_started 
      && sidebar->dragged_out_of_window) {
+        device = gdk_drag_context_get_device (context);
+        gdk_device_get_position (device, NULL, &x, &y);
+        poof_window = marlin_animation_poof_window_get_default ();
+        marlin_animation_poof_window_show_at (poof_window, x, y);
         remove_selected_bookmarks (sidebar);
         return TRUE;
     } else

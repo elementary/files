@@ -33,9 +33,15 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 
+include_directories (${CMAKE_CURRENT_BINARY_DIR})
+include_directories (${CMAKE_BINARY_DIR})
+
 vala_precompile(VALA_C ${PKGNAME}
+    AnimatedRenderer.vala
     Animations.vala
+    CompositedWindow.vala
     LocationBar.vala
+    PoofWindow.vala
     BreadcrumbsElements.vala
     BreadcrumbsEntry.vala
 PACKAGES
@@ -43,6 +49,8 @@ PACKAGES
     granite
     gee-1.0
     posix
+    marlincore
+    marlincore-C
 OPTIONS
     --thread
 GENERATE_VAPI
