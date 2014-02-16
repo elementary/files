@@ -19,42 +19,42 @@ using Gdk;
 
 namespace Marlin.View.Chrome
 {
-	/**
-	 * A {@link Gtk.Window} with compositing support enabled.
-	 * The default expose event will draw a completely transparent window.
-	 */
-	public class CompositedWindow : Gtk.Window
-	{
-		public CompositedWindow ()
-		{
-			GLib.Object (type: Gtk.WindowType.TOPLEVEL);
-		}
-		
-		public CompositedWindow.with_type (Gtk.WindowType window_type)
-		{
-			GLib.Object (type: window_type);
-		}
-		
-		construct
-		{			
-			app_paintable = true;
-			decorated = false;
-			resizable = false;
-			double_buffered = false;
-			
-			unowned Screen screen = get_screen ();
-			set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
-		}
-		
-		public override bool draw (Cairo.Context cr)
-		{
-			cr.save ();
-			cr.set_source_rgba (0, 0, 0, 0);
-			cr.set_operator (Cairo.Operator.SOURCE);
-			cr.paint ();
-			cr.restore ();
-			
-			return true;
-		}
-	}
+    /**
+     * A {@link Gtk.Window} with compositing support enabled.
+     * The default expose event will draw a completely transparent window.
+     */
+    public class CompositedWindow : Gtk.Window
+    {
+        public CompositedWindow ()
+        {
+            GLib.Object (type: Gtk.WindowType.TOPLEVEL);
+        }
+        
+        public CompositedWindow.with_type (Gtk.WindowType window_type)
+        {
+            GLib.Object (type: window_type);
+        }
+        
+        construct
+        {           
+            app_paintable = true;
+            decorated = false;
+            resizable = false;
+            double_buffered = false;
+            
+            unowned Screen screen = get_screen ();
+            set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
+        }
+        
+        public override bool draw (Cairo.Context cr)
+        {
+            cr.save ();
+            cr.set_source_rgba (0, 0, 0, 0);
+            cr.set_operator (Cairo.Operator.SOURCE);
+            cr.paint ();
+            cr.restore ();
+            
+            return true;
+        }
+    }
 }

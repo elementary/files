@@ -23,13 +23,13 @@ link_directories (${GRANITE_LIBRARY_DIRS})
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 set(LIBS
-	${DEP_LIBRARIES}
+    ${DEP_LIBRARIES}
 )
 add_definitions(${CFLAGS})
 
 link_libraries(${LIBS})
 set(LIB_PATHS
-	${DEPS_LIBRARY_DIRS}
+    ${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
 
@@ -37,7 +37,6 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR})
 include_directories (${CMAKE_BINARY_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
-    AnimatedRenderer.vala
     Animations.vala
     CompositedWindow.vala
     LocationBar.vala
