@@ -287,7 +287,6 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 
 	col_view = FM_COLUMNS_VIEW (view);
 
-    g_message ("%s", G_STRFUNC);
 	/* Select all if we are in renaming mode already */
 	if (col_view->details->file_name_column && col_view->details->editable_widget) {
 		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
@@ -310,19 +309,17 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 	/* set cursor also triggers editing-started, where we save the editable widget */
 	/*gtk_tree_view_set_cursor (col_view->tree, path,
                               col_view->details->file_name_column, TRUE);*/
-    /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
+    /* sound like set_cursor is not enough to trigger editing-started, we use cursor_on_cell instead */
     gtk_tree_view_set_cursor_on_cell (col_view->tree, path,
                                       col_view->details->file_name_column,
                                       (GtkCellRenderer *) col_view->details->file_name_cell,
                                       TRUE);
 
-	if (col_view->details->editable_widget != NULL) {
-		eel_filename_get_rename_region (col_view->details->original_name,
-                                        &start_offset, &end_offset);
-
-		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
+    if (col_view->details->editable_widget != NULL) {
+        marlin_get_rename_region (col_view->details->original_name, &start_offset, &end_offset, select_all);
+        gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
                                     start_offset, end_offset);
-	}
+    }
 
 	gtk_tree_path_free (path);
 }

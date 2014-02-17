@@ -399,9 +399,7 @@ fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
 
     icon_view = FM_ABSTRACT_ICON_VIEW (view);
 
-    //g_message ("%s\n", G_STRFUNC);
     /* Select all if we are in renaming mode already */
-    //if (icon_view->details->file_name_column && icon_view->details->editable_widget) {
     if (icon_view->details->editable_widget) {
         gtk_editable_select_region (GTK_EDITABLE (icon_view->details->editable_widget),
                                     0, -1);
@@ -424,7 +422,7 @@ fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
     /* set cursor also triggers editing-started, where we save the editable widget */
     /*gtk_tree_view_set_cursor (icon_view->tree, path,
       icon_view->details->file_name_column, TRUE);*/
-    /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
+    /* sound like set_cursor is not enough to trigger editing-started, we use cursor_on_cell instead */
     exo_icon_view_set_cursor (icon_view->icons, path,
                               view->name_renderer,
                               TRUE);
@@ -434,9 +432,7 @@ fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
       TRUE);*/
 
     if (icon_view->details->editable_widget != NULL) {
-        eel_filename_get_rename_region (icon_view->details->original_name,
-                                        &start_offset, &end_offset);
-
+        marlin_get_rename_region (icon_view->details->original_name, &start_offset, &end_offset, select_all);
         gtk_editable_select_region (GTK_EDITABLE (icon_view->details->editable_widget),
                                     start_offset, end_offset);
     }
