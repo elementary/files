@@ -24,7 +24,7 @@ namespace Marlin.Animation
      * An animated window that draws a 'poof' animation.
      * Used when dragging items off the dock.
      */
-    public class PoofWindow : Marlin.View.Chrome.CompositedWindow
+    public class PoofWindow : Gtk.Window
     {
         const int POOF_SIZE = 128;
         const int POOF_FRAMES = 5;
@@ -57,6 +57,13 @@ namespace Marlin.Animation
         
         construct
         {
+            app_paintable = true;
+            decorated = false;
+            resizable = false;
+            double_buffered = false;
+            
+            unowned Screen screen = get_screen ();
+            set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
             accept_focus = false;
             can_focus = false;
             set_keep_above (true);

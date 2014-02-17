@@ -38,7 +38,6 @@ include_directories (${CMAKE_BINARY_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
     Animations.vala
-    CompositedWindow.vala
     LocationBar.vala
     PoofWindow.vala
     BreadcrumbsElements.vala
