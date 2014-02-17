@@ -341,11 +341,11 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       TRUE);
 
-	if (list_view->details->editable_widget != NULL) {
+    if (list_view->details->editable_widget != NULL) {
         marlin_get_rename_region (list_view->details->original_name, &start_offset, &end_offset, select_all);
         gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
                                     start_offset, end_offset);
-	}
+    }
 
 	gtk_tree_path_free (path);
 }

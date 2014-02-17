@@ -319,7 +319,7 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
         marlin_get_rename_region (col_view->details->original_name, &start_offset, &end_offset, select_all);
         gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
                                     start_offset, end_offset);
-	}
+    }
 
 	gtk_tree_path_free (path);
 }
