@@ -315,15 +315,9 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
                                       (GtkCellRenderer *) col_view->details->file_name_cell,
                                       TRUE);
 
-	if (col_view->details->editable_widget != NULL) {
-		if (file->is_directory) {
-			start_offset = 0;
-			end_offset = g_utf8_strlen (col_view->details->original_name, -1);
-		} else
-			eel_filename_get_rename_region (col_view->details->original_name,
-											&start_offset, &end_offset);
-
-		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
+    if (col_view->details->editable_widget != NULL) {
+        marlin_get_rename_region (col_view->details->original_name, &start_offset, &end_offset, select_all);
+        gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
                                     start_offset, end_offset);
 	}
 

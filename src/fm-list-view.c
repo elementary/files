@@ -342,14 +342,8 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
                                       TRUE);
 
 	if (list_view->details->editable_widget != NULL) {
-		if (file->is_directory) {
-			start_offset = 0;
-			end_offset = g_utf8_strlen (list_view->details->original_name, -1);
-		} else
-			eel_filename_get_rename_region (list_view->details->original_name,
-											&start_offset, &end_offset);
-
-		gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+        marlin_get_rename_region (list_view->details->original_name, &start_offset, &end_offset, select_all);
+        gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
                                     start_offset, end_offset);
 	}
 
