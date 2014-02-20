@@ -794,6 +794,7 @@ namespace Marlin.Places {
             drop_occurred = false;
             bool success = process_drop (context, x, y, info);
             Gtk.drag_finish (context, success, false, time);
+            free_drag_data ();
             update_places ();
         }
 
