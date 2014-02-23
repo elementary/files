@@ -1,7 +1,7 @@
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0
-    gee-1.0
+    gee-0.8
     glib-2.0
     granite)
 set(CFLAGS
@@ -15,7 +15,7 @@ vala_precompile(VALA_C marlin-contractor
     plugin.vala
 PACKAGES
     gtk+-3.0
-    gee-1.0
+    gee-0.8
     granite
     marlincore-C
     marlincore

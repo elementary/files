@@ -21,7 +21,7 @@ pkg_check_modules (DEPS REQUIRED
     pango>=1.1.2
     gtk+-3.0>=3.0.3
     gail-3.0
-    gee-1.0
+    gee-0.8
     sqlite3
     dbus-glib-1
     libnotify>=0.7.2)
@@ -70,7 +70,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         gtk+-3.0
         gio-2.0
         posix
-        gee-1.0
+        gee-0.8
         granite
         libnotify
         unity
@@ -117,7 +117,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         gtk+-3.0
         gio-2.0
         posix
-        gee-1.0
+        gee-0.8
         granite
         libnotify
         marlincore
