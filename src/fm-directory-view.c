@@ -127,6 +127,9 @@ struct FMDirectoryViewDetails
     gchar           *previewer;
     GtkWidget       *menu_selection;
     GtkWidget       *menu_background;
+
+    /* Support for zoom by smooth scrolling */
+    gdouble total_delta_y;
 };
 
 /* forward declarations */
@@ -457,6 +460,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->newly_folder_added = NULL;
     view->details->open_with_apps = NULL;
     view->details->default_app = NULL;
+    view->details->total_delta_y = 0;
 
     /* create a thumbnailer */
     view->details->thumbnailer = marlin_thumbnailer_get ();
@@ -821,40 +825,40 @@ fm_directory_view_zoom_out (FMDirectoryView *view)
 }
 
 static gboolean
-fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
+fm_directory_view_handle_scroll_event (FMDirectoryView *view,
                                        GdkEventScroll *event)
 {
-    gdouble total_delta_y = 0;
-	gdouble delta_x, delta_y;
+    gdouble delta_x, delta_y;
 
     if (event->state & GDK_CONTROL_MASK) {
         switch (event->direction) {
         case GDK_SCROLL_UP:
             /* Zoom In */
-            fm_directory_view_zoom_in (directory_view);
+            fm_directory_view_zoom_in (view);
             return TRUE;
 
         case GDK_SCROLL_DOWN:
             /* Zoom Out */
-            fm_directory_view_zoom_out (directory_view);
+            fm_directory_view_zoom_out (view);
             return TRUE;
 
         case GDK_SCROLL_SMOOTH:
             gdk_event_get_scroll_deltas ((const GdkEvent *) event,
                                          &delta_x, &delta_y);
+            /* try to emulate a normal scrolling event by summing deltas.
+             * step size of 0.5 chosen to match sensitivity */
 
-            /* try to emulate a normal scrolling event by summing deltas */
-            total_delta_y += delta_y;
+            view->details->total_delta_y += delta_y;
 
-            if (total_delta_y >= 1) {
-                total_delta_y = 0;
+            if (view->details->total_delta_y >= 0.5) {
+                view->details->total_delta_y = 0;
                 /* emulate scroll down */
-                fm_directory_view_zoom_out (directory_view);
+                fm_directory_view_zoom_out (view);
                 return TRUE;
-            } else if (total_delta_y <= - 1) {
-                total_delta_y = 0;
+            } else if (view->details->total_delta_y <= - 0.5) {
+                view->details->total_delta_y = 0;
                 /* emulate scroll up */
-                fm_directory_view_zoom_in (directory_view);
+                fm_directory_view_zoom_in (view);
                 return TRUE;
             } else {
                 /* eat event */
