@@ -1657,6 +1657,7 @@ exo_icon_view_realize (GtkWidget *widget)
     attributes.height = MAX (icon_view->priv->height, allocation.height);
     attributes.event_mask = (GDK_EXPOSURE_MASK |
                              GDK_SCROLL_MASK |
+                             GDK_SMOOTH_SCROLL_MASK |
                              GDK_POINTER_MOTION_MASK |
                              GDK_BUTTON_PRESS_MASK |
                              GDK_BUTTON_RELEASE_MASK |
