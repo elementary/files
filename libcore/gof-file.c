@@ -351,8 +351,10 @@ gof_file_update (GOFFile *file)
             file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
     }
 
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON))
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON)) {
         file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
+        g_object_ref (file->icon);
+    }
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);

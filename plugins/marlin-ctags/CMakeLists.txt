@@ -4,7 +4,7 @@ find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0
     gio-2.0
-    gee-1.0
+    gee-0.8
 )
 set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -16,7 +16,7 @@ vala_precompile(VALA_C marlinctags
     plugin.vala
 PACKAGES
     gtk+-3.0
-    gee-1.0
+    gee-0.8
     posix
     marlincore-C
     marlincore

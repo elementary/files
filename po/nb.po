@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-09-26 00:46+0000\n"
-"Last-Translator: kingu <comradekingu@gmail.com>\n"
+"PO-Revision-Date: 2014-01-06 15:38+0000\n"
+"Last-Translator: Thomas Hovland <naglfar@gmail.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-12-31 05:21+0000\n"
+"X-Launchpad-Export-Date: 2014-01-07 05:24+0000\n"
 "X-Generator: Launchpad (build 16877)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -75,11 +75,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "En enkel og kraftig filbehandler"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Launchpad Oversettere"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -201,7 +201,7 @@ msgstr "Alle"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
 msgid "Select an application to open "
-msgstr ""
+msgstr "Velg et program å åpne "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -477,11 +477,11 @@ msgstr "Åpne i ny fane"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Åpne med"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Annet Program .."
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -492,7 +492,7 @@ msgstr "%u mapper"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " og %u andre enheter (%s) valgt"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
@@ -1112,8 +1112,8 @@ msgstr "Alle filoperasjoner er fullført"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d aktiv filoperasjon"
+msgstr[1] "%'d aktive filoperasjoner"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
 msgid "Show Details"
@@ -1145,11 +1145,11 @@ msgstr "Filer"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "I dag ved %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "I går ved %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1334,199 +1334,199 @@ msgstr "Sett eier av «%s» til «%s»"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre kopiering av %d element"
+msgstr[1] "_Angre kopiering av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre duplikering av %d element"
+msgstr[1] "_Angre duplikering av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre flytting av %d element"
+msgstr[1] "_Angre flytting av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre navneendring av %d element"
+msgstr[1] "_Angre navneendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Angre oppretting av tom fil"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Angre oppretting av fil fra mal"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre oppretting av %d mappe"
+msgstr[1] "_Angre oppretting av %d mapper"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre flytting til papirkurv av %d element"
+msgstr[1] "_Angre flytting til papirkurv av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre gjenoppretting fra papirkurv av %d element"
+msgstr[1] "_Angre gjenoppretting fra papirkurv av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre oppretting av lenke til %d element"
+msgstr[1] "_Angre oppretting av lenke til %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Angre sletting av %d element"
+msgstr[1] "_Angre sletting av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Angre rekursiv endring av rettigheter på %d element"
+msgstr[1] "Angre rekursiv endring av rettigheter på %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Angre endring av rettigheter på %d element"
+msgstr[1] "Angre endring av rettigheter på %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Angre endring av gruppe på %d element"
+msgstr[1] "Angre endring av gruppe på %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Angre endring av eier av %d element"
+msgstr[1] "Angre endring av eier av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta kopiering av %d element"
+msgstr[1] "_Gjenta kopiering av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta duplikering av %d element"
+msgstr[1] "_Gjenta duplikering av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta flytting av %d element"
+msgstr[1] "_Gjenta flytting av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta navneendring av %d element"
+msgstr[1] "_Gjenta navneendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Gjenta oppretting av tom fil"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Gjenta oppretting av fil fra mal"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta oppretting av %d mappe"
+msgstr[1] "_Gjenta oppretting av %d mapper"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta flytt til papirkurv av %d element"
+msgstr[1] "_Gjenta flytt til papirkurv av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta gjenopprett fra papirkurv av %d element"
+msgstr[1] "_Gjenta gjenopprett fra papirkurv av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta oppretting av lenke til %d element"
+msgstr[1] "_Gjenta oppretting av lenke til %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta sletting av %d element"
+msgstr[1] "_Gjenta sletting av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gjenta rekursiv rettighetsendring av %d element"
+msgstr[1] "_Gjenta rekursiv rettighetsendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gjenta rettighetsendring av %d element"
+msgstr[1] "Gjenta rettighetsendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gjenta gruppeendring av %d element"
+msgstr[1] "Gjenta gruppeendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gjenta eierendring av %d element"
+msgstr[1] "Gjenta eierendring av %d elementer"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1562,30 +1562,30 @@ msgstr "En annen mappe med samme navn eksisterer allerede i \"%s\"."
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Hvis du erstatter den, vil alle filer i mappen slettes."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Erstatt mappe \"%s\"?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En mappe med samme navn eksisterer allerede i \"%s\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Erstatt fil \"%s\"?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Hvis du erstatter den vil du skrive over innholdet."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
@@ -1643,7 +1643,7 @@ msgstr "Sammenføy"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Velg et nytt navn for målet"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
 msgid "Reset"
@@ -1651,7 +1651,7 @@ msgstr "Nullstill"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Bruk denne handlingen på alle filer"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
@@ -1660,7 +1660,7 @@ msgstr "_Hopp over"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
 msgid "Re_name"
-msgstr ""
+msgstr "Gi _nytt navn"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
 msgid "Replace"
@@ -1712,6 +1712,7 @@ msgstr "Kopiér _likevel"
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
+msgstr[1] "%'d sekunder"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
@@ -1719,6 +1720,7 @@ msgstr[0] "%'d sekund"
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minutt"
+msgstr[1] "%'d minutter"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
 #, c-format
@@ -1770,7 +1772,7 @@ msgstr " (kopier)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
 msgid " (another copy)"
-msgstr ""
+msgstr " (annen kopi)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
@@ -1799,7 +1801,7 @@ msgstr "%s (kopi)%s"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (en kopi til)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
@@ -1826,7 +1828,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
 #, c-format
@@ -1999,7 +2001,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "Ikke_ tøm papirkurv"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
 msgid "Emptying the trash"
@@ -2200,6 +2202,7 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
+"Mappen \"%B\" kan ikke kopieres fordi du ikke har rettigheter til å lese den."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
@@ -2291,14 +2294,14 @@ msgstr "Flytter filer"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Oppretter lenker i \"%B\""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Oppretter lenke til %'d fil"
+msgstr[1] "Oppretter lenker til %'d filer"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
 msgid "Error while creating link to %B."
@@ -2306,21 +2309,21 @@ msgstr "Feil under oppretting av lenke til «%B»."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Symbolske lenker er kun støttet for lokale filer."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5450
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Målet støtter ikke symbolske lenker."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5453
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "Det oppsto en feil ved oppretting av symbolsk lenke i %F."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5781
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5784
 msgid "Setting permissions"
-msgstr ""
+msgstr "Setter rettigheter"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6035
 msgid "untitled folder"
@@ -2388,7 +2391,7 @@ msgstr "Kan ikke endre navn for filer på toppnivå"
 #: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Kunne ikke fastslå opprinnelig lokasjon for \"%s\" "
 
 #: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
@@ -2396,16 +2399,16 @@ msgstr "Oppføringen kan ikke gjenopprettes fra papirkurven"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Klipp ut valgt tekst til utklippstavlen"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Kopier valgt tekst til utklippstavlen"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Lim inn tekst fra utklippstavlen"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
 #, c-format
@@ -2414,20 +2417,20 @@ msgstr "Gå til %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
-msgstr ""
+msgstr "Vis som rutenett"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
-msgstr ""
+msgstr "Vis som liste"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View in Columns"
-msgstr ""
+msgstr "Vis i kolonner"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Disse elementene kan slettes ved å tømme papirkurven"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Tøm Papirkurven"
