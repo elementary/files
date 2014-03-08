@@ -1571,10 +1571,10 @@ namespace Marlin.Places {
                 case Gdk.ScrollDirection.SMOOTH:
                 /* try to emulate a normal scrolling event by summing deltas */
                     total_delta_y += event.delta_y;
-                    if (total_delta_y >= 1) {
+                    if (total_delta_y >= 3) {
                         total_delta_y = 0;
                         zoom_out ();
-                    } else if (total_delta_y <= -1) {
+                    } else if (total_delta_y <= -3) {
                         total_delta_y = 0;
                         zoom_in ();
                     }
