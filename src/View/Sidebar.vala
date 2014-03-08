@@ -1620,24 +1620,31 @@ namespace Marlin.Places {
             do_unmount (mount);
          }
 
-        private bool clicked_eject_button (out Gtk.TreePath path) {
+        private bool clicked_eject_button (out Gtk.TreePath p) {
             Gdk.Event event = Gtk.get_current_event ();
+            Gtk.TreePath path = null;
+
+            p = null;
 
             if ((event.type == Gdk.EventType.BUTTON_PRESS
               || event.type == Gdk.EventType.BUTTON_RELEASE)
-              && over_eject_button (event.button.x, event.button.y, out path))
+              && over_eject_button (event.button.x, event.button.y, out path)) {
+                p = path;
                 return true;
-            else
-                return false;
+            }
+
+            return false;
         }
 
-        private bool over_eject_button (double x, double y, out Gtk.TreePath path) {
+        private bool over_eject_button (double x, double y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
             int width, x_offset, hseparator;
             int eject_button_size;
             bool show_eject;
             Gtk.TreeIter iter;
+            Gtk.TreePath path;
 
+            p = null;
             int cell_x, cell_y;
             if (tree_view.get_path_at_pos ((int)x, (int)y, out path, out column, out cell_x, out cell_y)) {
                 if (path == null)
@@ -1657,8 +1664,10 @@ namespace Marlin.Places {
                 eject_button_size = 20;
                 x_offset+= width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
 
-                if (x - x_offset >= 0 && x - x_offset <= eject_button_size)
+                if (x - x_offset >= 0 && x - x_offset <= eject_button_size) {
+                    p = path;
                     return true;
+                }
             }
 
             return false;
