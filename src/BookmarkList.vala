@@ -1,6 +1,6 @@
 /***
   Copyright (C)  1999, 2000 Eazel, Inc.
-                 2013 Jeremy Wootten <jeremywootten@gmail.com>
+                 2014 elementary Developers and Jeremy Wootten
 
   This program is free software: you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License version 3, as published

@@ -51,7 +51,7 @@ public class GOF.CallWhenReady : Object {
 
     private void file_ready (GOF.File gof) {
         gof.update ();
-        //message ("file ready %s", gof.uri, gof.ftype);
+        //message ("file ready %s", gof.uri);
     }
 
     /* TODO move this to GOF.File */

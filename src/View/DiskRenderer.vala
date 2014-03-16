@@ -60,7 +60,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                 var color_border = context.get_color (state);
                 color_border.alpha -= 0.4;
                 Gdk.cairo_set_source_rgba (cr, color_border);
-                cr.rectangle (area.x, area.y + area.height-3, area.width + 1, 4);
+                cr.rectangle (area.x, area.y + area.height - 3, area.width + 1, 4);
                 cr.fill ();
             }
             state = Gtk.StateFlags.SELECTED;

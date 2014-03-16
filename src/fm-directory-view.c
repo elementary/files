@@ -1466,7 +1466,6 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     /* request the drop data on-demand (if we don't have it already) */
     if (G_UNLIKELY (!view->details->drop_data_ready))
     {
-g_message ("%s: drop_data_ready is false", G_STRFUNC);
         /* check if we can handle that drag data (yet?) */
         target = gtk_drag_dest_find_target (widget, context, NULL);
 
@@ -1577,8 +1576,8 @@ fm_directory_view_drag_begin (GtkWidget           *widget,
               icon = thunar_icon_factory_load_file_icon (view->icon_factory, file, THUNAR_FILE_ICON_STATE_DEFAULT, size);*/
             //TODO get icon size depending on the view and zoom lvl
             printf ("hummmmmmmmmmmmmmmmm ????\n");
-            //g_object_unref (G_OBJECT (icon));
             gtk_drag_set_icon_pixbuf (context, file->pix, 0, 0);
+            //g_object_unref (G_OBJECT (icon));
         }
     }
 }
