@@ -127,12 +127,12 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
         /* give back the focus to the active slot */
         gtk_widget_grab_focus (GTK_WIDGET (view));
-    } else if (view->details->pressed_button != -1 && g_settings_get_boolean (settings, "single-click"))
-        /* Open a file provided that it's been selected with the mouse: we
-         * don't want files to be open when changing selection with the
-         * keyboard.
+    } else if (view->details->pressed_button == 1 && g_settings_get_boolean (settings, "single-click"))
+        /* Open a file provided that it's been selected with the mouse (left
+         * clicks if single-click mode is activated): we don't want files to be
+         * open when changing selection with the keyboard.
          */
-        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 }
 
 static void
@@ -469,10 +469,10 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
             view->details->updates_frozen = FALSE;
             selection = gtk_tree_view_get_selection (tree_view);
             list_selection_changed_callback (selection, view);
-
-            /* reset the pressed_button state */
-            view->details->pressed_button = -1;
         }
+
+        /* reset the pressed_button state */
+        view->details->pressed_button = -1;
     }
 
     return TRUE;
