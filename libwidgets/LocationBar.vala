@@ -627,7 +627,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         entry.reset ();
     }
 
-    uint anim = -1;
+    uint anim = 0;
 
     /* A threaded function to animate the old BreadcrumbsElement */
     private void animate_old_breads () {
@@ -656,6 +656,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 newbreads = null;
                 view_old = false;
                 queue_draw ();
+                anim = 0;
                 return false;
             }
 
@@ -690,6 +691,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 newbreads = null;
                 view_old = false;
                 queue_draw ();
+                anim = 0;
                 return false;
             }
             return true;
