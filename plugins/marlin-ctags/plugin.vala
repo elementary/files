@@ -19,7 +19,7 @@
 interface MarlinDaemon : Object {
     //public abstract async HashTable<string,Variant> get_uri_infos_from_directory (string directory) throws IOError;
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
-    public abstract async bool record_uris (Variant[] entries, string directory) 	throws IOError;
+    public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
 
 }
 

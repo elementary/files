@@ -14,6 +14,7 @@ include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
+    AbstractSidebar.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
@@ -59,7 +60,6 @@ set (C_SOURCE_FILES
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
-    marlin-abstract-sidebar.c
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
@@ -91,7 +91,6 @@ set (C_HEADER_FILES
     marlin-file-changes-queue.h
     marlin-file-utilities.h
     marlin-icons.h
-    marlin-abstract-sidebar.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
     marlin-icon-info.h
@@ -123,7 +122,7 @@ pkg_check_modules(DEPS REQUIRED
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 add_definitions(${CFLAGS})
 set(LIBS
-	${DEP_LIBRARIES}
+    ${DEP_LIBRARIES}
 )
 
 link_libraries(${LIBS})
