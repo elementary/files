@@ -469,6 +469,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             value_label.set_size_request (150, -1);
             value_label.set_hexpand (true);
             value_label.set_use_markup (true);
+            value_label.set_can_focus (false);
 
             information.attach (key_label, 0, n, 1, 1);
             information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);

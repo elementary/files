@@ -402,7 +402,7 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
        yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails
        pixbuf */
     int s = MAX (pixbuf_width, pixbuf_height);
-    priv->scale = (double)priv->size / s;
+    priv->scale = MIN (1, (double)priv->size / s);
 
     if (width)
         *width = calc_width * priv->scale;
