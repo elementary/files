@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2012-10-02 11:16+0000\n"
+"PO-Revision-Date: 2014-03-17 15:52+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-12-31 05:21+0000\n"
-"X-Generator: Launchpad (build 16877)\n"
+"X-Launchpad-Export-Date: 2014-03-18 06:19+0000\n"
+"X-Generator: Launchpad (build 16963)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -31,7 +31,7 @@ msgstr "Failų sistema"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Šis aplankas neegzistuoja"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
@@ -43,16 +43,16 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Jūs neturite leidimo peržiūrėti šį aplanką."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Šis aplankas neegzistuoja."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Aplankas „%s“ nerastas."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -61,7 +61,7 @@ msgstr "Sukurti"
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Sukurti aplanką „%s“"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -70,14 +70,17 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Aplanko sukurti nepavyko\n"
+"\n"
+"%s"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Paprastas bei patogus failų tvarkymo įrankis."
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Vertėjai"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -102,7 +105,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 msgid "Calculating size…"
-msgstr ""
+msgstr "Skaičiuojamas dydis..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
 msgid "Created"
@@ -132,15 +135,15 @@ msgstr "MIME tipai"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "Dydis"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
 msgid "Location"
-msgstr ""
+msgstr "Vieta"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
 msgid "Target"
-msgstr ""
+msgstr "Paskirtis"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Origin Location"
@@ -148,15 +151,15 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
-msgstr ""
+msgstr "Informacija:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
-msgstr ""
+msgstr "Kita programa..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
 msgid "Open with:"
-msgstr ""
+msgstr "Atverti su:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
 msgid "Usage:"
@@ -181,17 +184,17 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
-msgstr ""
+msgstr "Vykdyti"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
 msgid "Owner"
-msgstr ""
+msgstr "Savininkas"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
-msgstr ""
+msgstr "Grupė"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
@@ -246,7 +249,7 @@ msgstr "_Rodymas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:601
 msgid "_Go"
-msgstr ""
+msgstr "_Eiti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:602
 msgid "_Help"
@@ -259,24 +262,24 @@ msgstr "Naujas _langas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:605
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Atverti naują langą dabar rodomai vietai"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:608
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "Nauja _kortelė"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Atverti kitą kortelę dabar rodomai vietai"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:613
 msgid "_Close"
-msgstr ""
+msgstr "_Užverti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Close this folder"
-msgstr ""
+msgstr "Užverti šį aplanką"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_Undo"
@@ -284,27 +287,27 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Redo"
-msgstr ""
+msgstr "_Grąžinti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "Open _Parent"
-msgstr ""
+msgstr "Atverti au_kštesnįjį"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Atverti aukštesnįjį aplanką"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Back"
-msgstr ""
+msgstr "_Grįžti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Eiti į anksčiau aplankytą vietą"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "_Forward"
-msgstr ""
+msgstr "_Pirmyn"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:633
 msgid "Go to the next visited location"
@@ -312,80 +315,80 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "_Reload"
-msgstr ""
+msgstr "Į_kelti iš naujo"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:636
 msgid "Reload the current location"
-msgstr ""
+msgstr "Įkelti dabartinę vietą iš naujo"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:639
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Namų aplankas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:640
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Atverti asmeninį aplanką"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Trash"
-msgstr ""
+msgstr "Ši_ukšlinė"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Atverti asmeninį šiukšlių aplanką"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "_Network"
-msgstr ""
+msgstr "_Tinklas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Naršyti įtrauktas į adresyną ir vietines tinklo vietas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:651
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Didinti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "Increase the view size"
-msgstr ""
+msgstr "Padidinti rodomus elementus"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:663
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Mažinti"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Sumažinti rodomus elementus"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:671
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Į_prastas dydis"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Naudoti įprastą elementų dydį"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:675
 msgid "Next Tab"
-msgstr ""
+msgstr "Kita kortelė"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:679
 msgid "Previous Tab"
-msgstr ""
+msgstr "Ankstesnė kortelė"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:683
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "_Jungtis prie serverio..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Jungtis prie nutolusio kompiuterio ar viešinamo aplanko"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:687
 msgid "_About"
-msgstr ""
+msgstr "_Apie"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Display credits"
@@ -393,7 +396,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:691
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Pranešti apie problemą..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "File a bug on Launchpad"
@@ -401,11 +404,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:695
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Pagalba internete..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:699
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Išversti šią programą..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
@@ -413,15 +416,15 @@ msgstr "Rodyti pa_slėptus failus"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Perjungti paslėptų failų rodymą esamame lange"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "_Places"
-msgstr ""
+msgstr "_Vietos"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:714
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Pakeisti šio lango šoninio polangio matomumą"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "Icon"
@@ -429,11 +432,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:725
 msgid "List"
-msgstr ""
+msgstr "Sąrašas"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:728
 msgid "Columns"
-msgstr ""
+msgstr "Stulpeliais"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:110
 msgid "AFP"
@@ -449,7 +452,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:113
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:114
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
@@ -458,7 +461,7 @@ msgstr "Tinklas"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:115
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "SMB"
@@ -471,15 +474,15 @@ msgstr "Šiukšlinė"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Atverti naujoje kortelėje"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Atverti su"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Kita programa.."
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -501,12 +504,12 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
 msgid " selected"
-msgstr ""
+msgstr " parinkta"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u aplankas"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
 #, c-format
@@ -515,11 +518,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/exo-tree-view.c:159
 msgid "Single Click"
-msgstr ""
+msgstr "Vienas spustelėjimas"
 
 #: /home/codygarver/f/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "Ar matomus elementus aktyvinti vienu pelės paspaudimu"
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
@@ -527,32 +530,32 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
-msgstr ""
+msgstr "Išdėstymo būdas"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Failo pavadinimas"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:205
 #: /home/codygarver/f/po/../src/fm-columns-view.c:184
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Nepavyko pervadinti %s į %s"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:607
 #: /home/codygarver/f/po/../src/fm-directory-view.c:511
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
 msgid "This folder is empty."
-msgstr ""
+msgstr "Šis aplankas tuščias."
 
 #: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Nieko nėra nukopijuota - nėra ką įdėti"
 
 #: /home/codygarver/f/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -560,7 +563,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Piktogramų vaizdas"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:1193
 msgid "Invalid filename provided by XDS drag site"
@@ -569,25 +572,26 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:1351
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "Nepavyko sukurti nuorodos į URL „%s“"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:1807
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Naudoti „%s“ pasirinkto elemento atvėrimui"
+msgstr[1] "Naudoti „%s“ pasirinktų elementų atvėrimui"
+msgstr[2] "Naudoti „%s“ pasirinktų elementų atvėrimui"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2051
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Atverti naudojant %s"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2057
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3592
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
 msgid "_Open"
-msgstr ""
+msgstr "At_verti"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2073
 #, c-format
@@ -598,7 +602,7 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3604
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Atverti naujoje _kortelėje"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2082
 #, c-format
@@ -608,23 +612,25 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2086
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Atverti naujame _lange"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3564
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "Pasirinktus failus paruošti perkėlimui su komanda „Įdėti“"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3568
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "Paruošti parinktus failus kopijavimui su komanda „Įdėti“"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3572
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Perkelti ar nukopijuoti failus, parinktus komandomis „Iškirpti“ ar "
+"„Kopijuoti“"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Įdėti į aplanką"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3576
 msgid ""
@@ -634,100 +640,100 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Rename..."
-msgstr ""
+msgstr "_Pervadinti..."
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Rename selected item"
-msgstr ""
+msgstr "Pervadinti parinktą elementą"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3583
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Sukurti naują a_planką"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3584
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Šiame aplanke sukurti naują tuščią aplanką"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3586
 msgid "Create New _File"
-msgstr ""
+msgstr "Sukurti naują _Failą"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "_Empty File"
-msgstr ""
+msgstr "_Tuščias failas"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3589
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Sukurti naują tuščią failą šiame aplanke"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3593
 msgid "Open the selected item"
-msgstr ""
+msgstr "Atverti pasirinktą elementą"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3600
 msgid "Open in new Window"
-msgstr ""
+msgstr "Atverti naujame lange"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3601
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Kiekvieną parinktą elementą atverti naujame lange"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Kiekvieną parinktą elementą atverti naujoje kortelėje"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3607
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Atverti _su"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3608
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Pasirinkite programą, su kuria atverti parinktą elementą"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3610
 msgid "Other _Application..."
-msgstr ""
+msgstr "Kita _programa..."
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3611
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Pasirinkti kitą programą, su kuria atverti parinktą elementą"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3614
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "Per_kelti į šiukšlinę"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3615
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Visus pasirinktus failus perkelti į šiukšlinę"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Ištrinti negrįžtamai"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3619
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Ištrinti kiekvieną pasirinktą elementą, neperkeliant į šiukšlinę"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3622
 msgid "_Restore"
-msgstr ""
+msgstr "_Atstatyti"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3626
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
-msgstr ""
+msgstr "Pasirinkti visus"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3630
 msgid "_Properties"
-msgstr ""
+msgstr "_Savybės"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3631
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Žiūrėti ar keisti kiekvieno parinkto elemento savybes"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3737
 msgid "Set Color:"
-msgstr ""
+msgstr "Nustatyti spalvą:"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
 msgid "Personal"
@@ -735,33 +741,33 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Dažniausiai lankomos vietos ir žymelės"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
 msgid "Open the trash"
-msgstr ""
+msgstr "Atverti šiukšlinę"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
 msgid "Devices"
-msgstr ""
+msgstr "Įrenginiai"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Vidinės laikmenos bei kiti įrenginiai"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "Rodyti failų sistemos turinį"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "Prijungti ir atverti %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
 msgid "Your network places"
-msgstr ""
+msgstr "Tinklo vietos"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
 msgid "Entire network"
@@ -769,7 +775,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Naršyti vietinį tinklą"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
 msgid "_Start"
@@ -781,19 +787,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
 msgid "_Power On"
-msgstr ""
+msgstr "Į_jungti"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Saugiai išimti laikmeną"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
 msgid "_Connect Drive"
-msgstr ""
+msgstr "Pri_jungti laikmeną"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "Atj_ungti laikmeną"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
 msgid "_Start Multi-disk Device"
@@ -805,24 +811,24 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "_Atrakinti laikmeną"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
 msgid "_Lock Drive"
-msgstr ""
+msgstr "_Užrakinti laikmeną"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Nepavyko paleisti %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Nepavyko išimti %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
 #, c-format
@@ -832,49 +838,49 @@ msgstr ""
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Nepavyko sustabdyti %s"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
 msgid "Remove"
-msgstr ""
+msgstr "Pašalinti"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
 msgid "Rename..."
-msgstr ""
+msgstr "Pervadinti..."
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
 msgid "_Mount"
-msgstr ""
+msgstr "Pri_jungti"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
 msgid "_Unmount"
-msgstr ""
+msgstr "_Atjungti"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
 msgid "_Eject"
-msgstr ""
+msgstr "_Išimti"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Iš_valyti šiukšlinę"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Jungtis prie serverio…"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "Viešas FTP"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (su slaptažodžiu)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -882,25 +888,27 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "Paviešintas Windows aplankas"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Saugus WebDAV (HTTPS)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "Jungiamasi..."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Nepavyko įkelti palaikomų prisijungimų prie serverio būdų sąrašo.\n"
+"Patikrinkite ar tinkamai įdiegta gvfs."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -910,44 +918,44 @@ msgstr ""
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Serveris „%s“ nerastas."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "Bandyti dar kartą"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Patikrinkite prisijungimo informaciją."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "Tęsti"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr ""
+msgstr "Prisi_jungti"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr ""
+msgstr "Jungtis prie serverio"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr ""
+msgstr "Serverio informacija"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr ""
+msgstr "_Serveris:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr ""
+msgstr "_Prievadas:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr ""
+msgstr "_Tipas:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
@@ -955,108 +963,108 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr ""
+msgstr "_Aplankas:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr ""
+msgstr "Naudotojo informacija"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Srities (domain) pavadinimas:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "_Naudotojo vardas:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr ""
+msgstr "_Slaptažodis:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr ""
+msgstr "Įsi_minti šį slaptažodį"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Veiksmas nutrauktas"
 
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
-msgstr ""
+msgstr "Įvesties metodai"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
-msgstr ""
+msgstr "_Perkelti čia"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:107
 msgid "_Copy Here"
-msgstr ""
+msgstr "_Kopijuoti čia"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:112
 msgid "_Link Here"
-msgstr ""
+msgstr "_Sukurti nuorodą čia"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:117
 msgid "Set as _Background"
-msgstr ""
+msgstr "Naudoti _fonui"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:124
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Nepavyko įvykdyti failo „%s“"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "Iš_dėstyti elementus"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "_Atvirkštine tvarka"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Rodyti elementus atvirkštine tvarka"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Pagal pa_vadinimą"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Elementus eilutėse rikiuoti pagal pavadinimą"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Pagal _dydį"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Elementus eilutėse rikiuoti pagal dydį"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Pagal _tipą"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Elementus eilutėse rikiuoti pagal tipą"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Pagal _keitimo datą"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Elementus eilutėse rikiuoti pagal keitimo datą"
 
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Rodyti programos versiją."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
@@ -1080,21 +1088,24 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Naršyti failų sistemą su failų tvarkykle"
 
 #: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit negali būti naudojamas su URI."
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
 msgid "File Operations"
-msgstr ""
+msgstr "Veiksmai su failais"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Visi veiksmai su failais sėkmingai užbaigti"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
@@ -1106,31 +1117,31 @@ msgstr[1] ""
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
 msgid "Show Details"
-msgstr ""
+msgstr "Rodyti išsamiau"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Rodyti kopijavimo langą"
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Nutraukti visus dabar vykdomus veiksmus"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Naršyti failus"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Failų tvarkytuvė"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Naujas langas administratoriaus teisėmis"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Failai"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -1147,56 +1158,56 @@ msgstr ""
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Pašalinti %d nukopijuotus elementus"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Ištrinti „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Pašalinti %d elementų kopijas"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Perkelti %d elementus atgal į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Perkelti „%s“ atgal į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Pervadinti „%s“ į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Atstatyti %d elementus iš šiukšlinės"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Grąžinti „%s“ į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Perkeltį %d elementų atgal į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Perkelti „%s“ atgal į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1206,37 +1217,37 @@ msgstr ""
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Pašalinti nuorodą į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Atkurti elementų, esančių „%s“, pradinius leidimus"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Atkurti pradinius „%s“ leidimus"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Atkurti „%s“ grupę į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Atkurti „%s“ savininką į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Nukopijuoti %d elementų į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopijuoti „%s“ į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
@@ -1246,77 +1257,77 @@ msgstr ""
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Sukurti „%s“ kopiją aplanke „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Perkelti %d elementus į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Perkelti „%s“ į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Sukurti naują failą „%s“ iš šablono "
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Sukurti tuščią failą „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Sukurti naują aplanką „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Perkelti %d elementus į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Perkelti „%s“ į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Grąžinti „%s“ iš šiukšlinės"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Sukurti nuorodas į %d elementus"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Sukurti nuorodą į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Nustatyti leidimus elementams, esantiems „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Nustatyti „%s“ leidimus"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "„%s“ grupę nustatyti į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "„%s“ savininką nustatyti į „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
@@ -1520,7 +1531,7 @@ msgstr[1] ""
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Sulieti aplanką „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
@@ -1528,70 +1539,72 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Suliejant bus prašoma patvirtinti, ar norite perrašyti tame aplanke esančius "
+"failus, kurie konfliktuoja su perkeltinais taip pat pavadintais failais."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Senesnis aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Naujesnis aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Kitas aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Pakeitus jį, bus pašalinti visi tame aplanke esantys failai."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Pakeisti aplanką „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Aplankas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Pakeisti failą „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Pakeitus failą, bus perrašytas jo turinys."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Senesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Naujesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Kitas failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
@@ -1603,35 +1616,35 @@ msgstr ""
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Size:"
-msgstr ""
+msgstr "Dydis:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Type:"
-msgstr ""
+msgstr "Tipas:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
 msgid "Last modified:"
-msgstr ""
+msgstr "Keitimo data:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
 msgid "Replace with"
-msgstr ""
+msgstr "Keisti į"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
 msgid "Merge"
-msgstr ""
+msgstr "Sulieti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Pasirinkti naują pavadinimą paskirties elementui"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
 msgid "Reset"
@@ -1639,100 +1652,104 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Pritaikyti šį veiksmą visiems failams"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr ""
+msgstr "_Praleisti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
 msgid "Re_name"
-msgstr ""
+msgstr "Per_vadinti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
 msgid "Replace"
-msgstr ""
+msgstr "Pakeisti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
 msgid "File conflict"
-msgstr ""
+msgstr "Konfliktuojantys failai"
 
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
 #: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr ""
+msgstr "Ruošiama"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "Praleisti _visus"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "_Kartoti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "Ištrinti _visus"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "Pa_keisti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Pakeisti _visus"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_Sulieti"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "Sulieti _visus"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Kopijuoti _vis tiek"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d sekundė"
+msgstr[1] "%'d sekundės"
+msgstr[2] "%'d sekundžių"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d minutė"
+msgstr[1] "%'d minutės"
+msgstr[2] "%'d minučių"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d valanda"
+msgstr[1] "%'d valandos"
+msgstr[2] "%'d valandų"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "maždaug %'d valanda"
+msgstr[1] "maždaug %'d valandos"
+msgstr[2] "maždaug %'d valandų"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Nuoroda į %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Kita nuoroda į %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
 #, c-format
@@ -1756,11 +1773,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
 msgid " (copy)"
-msgstr ""
+msgstr " (kopija)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
 msgid " (another copy)"
-msgstr ""
+msgstr " (kita kopija)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
@@ -1825,7 +1842,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Ar tikrai norite negrąžinamai ištrinti „%B“ iš šiukšlinės?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
 #, c-format
@@ -1836,32 +1853,38 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktą elementą iš šiukšlinės?"
 msgstr[1] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktus elementus iš "
+"šiukšlinės?"
+msgstr[2] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktų elementų iš šiukšlinės?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Jeigu ištrinsite failą, jis bus prarastas visam laikui."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Ištrinti visus failus bei aplankus iš šiukšlinės?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Visi elementai šiukšlinėje bus negrįžtamai ištrinti."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktą elementą?"
+msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktus elementus?"
+msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktų elementų?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
@@ -1872,8 +1895,9 @@ msgstr "Šalinami failai"
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Liko ištrinti %'d failą"
+msgstr[1] "Liko ištrinti %'d failus"
+msgstr[2] "Liko ištrinti %'d failų"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
 msgid "%T left"
@@ -1887,7 +1911,7 @@ msgstr[1] ""
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2574
 msgid "Error while deleting."
-msgstr ""
+msgstr "Klaida trinant."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
 msgid ""
