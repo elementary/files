@@ -95,12 +95,6 @@ static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsVie
 }
 
 static void
-show_selected_files (GOFFile *file)
-{
-    g_message ("selected: %s\n", g_file_info_get_name (file->info));
-}
-
-static void
 list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *view)
 {
     GOFFile *file;
@@ -109,7 +103,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
     view->details->selection = get_selection (view);
-    //show_selected_files (file);
 
     if (FM_DIRECTORY_VIEW (view)->updates_frozen)
         return;
@@ -123,7 +116,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
 
     if (view->details->selection == NULL)
         return;
-    /* dont show preview or load directory if we got more than 1 element selected */
+    /* don't show preview or load directory if we got more than 1 element selected */
     if (view->details->selection->next)
         return;
     if (view->details->updates_frozen)
@@ -134,7 +127,12 @@ list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *vie
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
         /* give back the focus to the active slot */
         gtk_widget_grab_focus (GTK_WIDGET (view));
-    }
+    } else if (view->details->pressed_button == 1 && g_settings_get_boolean (settings, "single-click"))
+        /* Open a file provided that it's been selected with the mouse (left
+         * clicks if single-click mode is activated): we don't want files to be
+         * open when changing selection with the keyboard.
+         */
+        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 }
 
 static void
@@ -347,6 +345,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         return FALSE;
 
     view->details->pressed_button = -1;
+
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
@@ -357,7 +356,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         gtk_tree_selection_unselect_all (selection);
     }
 
-    selection = gtk_tree_view_get_selection (tree_view);
+    /* left clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
         /* save last pressed button */
         if (view->details->pressed_button < 0) {
@@ -366,6 +365,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         }
     }
 
+    selection = gtk_tree_view_get_selection (tree_view);
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
@@ -373,6 +373,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             view->details->pressed_button = event->button;
             view->details->updates_frozen = TRUE;
         }
+
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select the path on which the user clicked if not selected yet */
@@ -400,7 +401,8 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
         return TRUE;
     }
-    else if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
+
+    if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
     {
         /* determine the path to the item that was middle-clicked */
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
@@ -458,14 +460,17 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
     g_message ("%s", G_STRFUNC);
     if (view->details->pressed_button == event->button && view->details->pressed_button != -1)
     {
-        view->details->updates_frozen = FALSE;
-        selection = gtk_tree_view_get_selection (tree_view);
-        list_selection_changed_callback (selection, view);
+        /* don't do anything if any modifier key is active */
+        if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0)
+        {
+            view->details->updates_frozen = FALSE;
+            selection = gtk_tree_view_get_selection (tree_view);
+            list_selection_changed_callback (selection, view);
+        }
 
         /* reset the pressed_button state */
         view->details->pressed_button = -1;
     }
-
 
     return TRUE;
 }
