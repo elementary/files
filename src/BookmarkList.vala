@@ -197,12 +197,12 @@ namespace Marlin {
             });
         }
 
-        private GLib.List<GOF.File> get_gof_file_list () {
-            GLib.List<GOF.File> files = null;
+        private unowned GLib.List<GOF.File> get_gof_file_list () {
+            unowned GLib.List<GOF.File> files = null;
             list.@foreach ((bm) => {
                 files.prepend (bm.gof_file);
             });
-            return files.copy ();
+            return files;
         }
 
         private void files_ready (GLib.List<GOF.File> files) {
