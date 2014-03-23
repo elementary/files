@@ -142,4 +142,12 @@ marlin_restore_files_from_trash (GList *files, GtkWindow *parent_window)
 	gof_file_list_free (unhandled_files);
 }
 
-
+void
+marlin_get_rename_region (const char *filename, int *start_offset, int *end_offset, gboolean select_all)
+{
+    if (select_all) {
+        *start_offset = 0;
+        *end_offset = g_utf8_strlen (filename, -1);
+    } else
+        eel_filename_get_rename_region (filename, start_offset, end_offset);
+}

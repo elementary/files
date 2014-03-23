@@ -135,7 +135,7 @@ namespace Marlin.View {
         private void connect_available_info () {
             //file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if (window.current_tab == this)
-                    window.loading_uri (slot.directory.file.uri, window.sidebar);
+                    window.loading_uri (slot.directory.file.uri);
 
                 /*Source.remove((uint) file_info_callback);
             });*/
@@ -269,6 +269,7 @@ namespace Marlin.View {
 
             if (save_history)
                 browser.record_uri (slot.directory.location.get_parse_name ());
+
             window.can_go_up = slot.directory.has_parent ();
             window.can_go_back = browser.can_go_back ();
             window.can_go_forward = browser.can_go_forward ();

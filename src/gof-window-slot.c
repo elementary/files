@@ -61,22 +61,22 @@ static void
 gof_window_slot_class_init (GOFWindowSlotClass *class)
 {
     signals[ACTIVE] =
-	g_signal_new ("active",
-		      G_TYPE_FROM_CLASS (class),
-		      G_SIGNAL_RUN_LAST,
-		      G_STRUCT_OFFSET (GOFWindowSlotClass, active),
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("active",
+              G_TYPE_FROM_CLASS (class),
+              G_SIGNAL_RUN_LAST,
+              G_STRUCT_OFFSET (GOFWindowSlotClass, active),
+              NULL, NULL,
+              g_cclosure_marshal_VOID__VOID,
+              G_TYPE_NONE, 0);
 
     signals[INACTIVE] =
-	g_signal_new ("inactive",
-		      G_TYPE_FROM_CLASS (class),
-		      G_SIGNAL_RUN_LAST,
-		      G_STRUCT_OFFSET (GOFWindowSlotClass, inactive),
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("inactive",
+              G_TYPE_FROM_CLASS (class),
+              G_SIGNAL_RUN_LAST,
+              G_STRUCT_OFFSET (GOFWindowSlotClass, inactive),
+              NULL, NULL,
+              g_cclosure_marshal_VOID__VOID,
+              G_TYPE_NONE, 0);
 
     G_OBJECT_CLASS (class)->finalize = gof_window_slot_finalize;
     class->active = real_active;

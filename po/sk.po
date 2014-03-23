@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-10-27 18:23+0000\n"
-"Last-Translator: Milan Slovák <Unknown>\n"
+"PO-Revision-Date: 2014-03-03 18:05+0000\n"
+"Last-Translator: majo dom <majo_dom@yahoo.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2013-12-31 05:21+0000\n"
-"X-Generator: Launchpad (build 16877)\n"
+"X-Launchpad-Export-Date: 2014-03-04 08:22+0000\n"
+"X-Generator: Launchpad (build 16948)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -201,7 +201,7 @@ msgstr "Všetci"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
 msgid "Select an application to open "
-msgstr ""
+msgstr "Vyberte aplikáciu na otvorenie "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -261,7 +261,7 @@ msgstr "Nové _okno"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:605
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Otvoriť ďalšie okno Súborov na tomto mieste"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:608
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
@@ -525,11 +525,11 @@ msgstr "Rozhoduje, či sa zobrazené položky aktivujú jednoduchým kliknutím"
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
-msgstr ""
+msgstr "Schéma rozloženia"
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
-msgstr ""
+msgstr "Schéma rozloženia"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -885,7 +885,7 @@ msgstr "FTP (s prihlásením)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -1069,7 +1069,7 @@ msgstr "Zobraziť verziu programu."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Otvoriť uri v novej karte"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
@@ -1147,7 +1147,7 @@ msgstr "Súbory"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Dnes o %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
@@ -1335,8 +1335,9 @@ msgstr "Nastaviť vlastníka '%s' na '%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Späť kopírovať %d položiek"
+msgstr[1] "_Späť kopírovať %d položky"
+msgstr[2] "_Späť kopírovať %d položiek"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format

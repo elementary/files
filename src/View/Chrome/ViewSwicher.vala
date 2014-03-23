@@ -69,17 +69,14 @@ namespace Marlin.View.Chrome {
             switcher = new Granite.Widgets.ModeButton ();
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
 
-            var icon_factory = Granite.Services.IconFactory.get_default ();
-            Gtk.StyleContext style = get_style_context ();
-
-            icon = new Gtk.Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-grid-symbolic", 16));
-            icon.set_tooltip_text (_("View as Grid"));
+            icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
+            icon.tooltip_text = _("View as Grid");
             switcher.append (icon);
-            list = new Gtk.Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-symbolic", 16));
-            list.set_tooltip_text (_("View as List"));
+            list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
+            list.tooltip_text  = _("View as List");
             switcher.append (list);
-            miller = new Gtk.Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-column-symbolic", 16));
-            miller.set_tooltip_text(_("View in Columns"));
+            miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.MENU);
+            miller.tooltip_text = _("View in Columns");
             switcher.append (miller);
 
             mode = (ViewMode) Preferences.settings.get_enum("default-viewmode");

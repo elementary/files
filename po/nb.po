@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-01-06 15:38+0000\n"
-"Last-Translator: Thomas Hovland <naglfar@gmail.com>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"PO-Revision-Date: 2014-03-22 02:36+0000\n"
+"Last-Translator: Magnus Meyer Hustveit <Unknown>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-01-07 05:24+0000\n"
-"X-Generator: Launchpad (build 16877)\n"
+"X-Launchpad-Export-Date: 2014-03-23 06:40+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
+"Language: nb\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -55,7 +56,7 @@ msgstr "Mappen \"%s\" kan ikke bli funnet."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
-msgstr "Opprett."
+msgstr "Opprett"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
@@ -79,7 +80,7 @@ msgstr "En enkel og kraftig filbehandler"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr "Launchpad Oversettere"
+msgstr "Launchpad oversettere"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -100,7 +101,7 @@ msgstr "Forhåndsvisning"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
 #, c-format
 msgid "%u selected items"
-msgstr "%u valgte elementer."
+msgstr "%u valgte elementer"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 msgid "Calculating size…"
@@ -171,7 +172,7 @@ msgstr "Enhetsbruk:"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr "%s tilgjengelig av %s (%d%% brukt)"
+msgstr "%s ledig av %s (%d%% brukt)"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
@@ -193,7 +194,7 @@ msgstr "Eier"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
-msgstr "Grupper."
+msgstr "Grupper"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
@@ -261,12 +262,12 @@ msgstr "Nytt _vindu"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:605
 msgid "Open another Files window for the displayed location"
-msgstr "Åpne annet Filer-vindu for vist plassering"
+msgstr "Åpne annet filvindu for vist plassering"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:608
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Ny _Fane"
+msgstr "Ny _fane"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "Open another tab for the displayed location"
@@ -399,7 +400,7 @@ msgstr "Rapporter et Problem"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "File a bug on Launchpad"
-msgstr "Sende inn en feilrapport på Launchpad"
+msgstr "Send inn en feilrapport på Launchpad"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:695
 msgid "Get Help Online..."
@@ -407,7 +408,7 @@ msgstr "Få hjelp på nettet …"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:699
 msgid "Translate This Application..."
-msgstr "Oversett Dette Programmet..."
+msgstr "Oversett dette programmet..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
@@ -594,7 +595,7 @@ msgstr "_Åpne"
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2073
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Åpne i %'d nye _faner"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2077
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3604
@@ -605,7 +606,7 @@ msgstr "Åpne i ny _fane"
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2082
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Åpne i %'d nye vinduer"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2086
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
@@ -811,11 +812,11 @@ msgstr "_Stopp Multidisk Enhet"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
 msgid "_Unlock Drive"
-msgstr "Lås _opp Stasjon"
+msgstr "Lås _opp stasjon"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
 msgid "_Lock Drive"
-msgstr "_Lås Stasjon"
+msgstr "_Lås stasjon"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
@@ -1153,7 +1154,7 @@ msgstr "I går ved %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1754,17 +1755,17 @@ msgstr "%'dste lenke til %s"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'dre lenke til %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'dre lenke til %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'dde lenke til %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
 msgid " (copy)"
@@ -1779,19 +1780,19 @@ msgstr " (annen kopi)"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
 msgid "th copy)"
-msgstr ""
+msgstr ". kopi)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
 msgid "st copy)"
-msgstr ""
+msgstr ". kopi)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
 msgid "nd copy)"
-msgstr ""
+msgstr ". kopi)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
 msgid "rd copy)"
-msgstr ""
+msgstr ". kopi)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
 #, c-format
@@ -1809,22 +1810,22 @@ msgstr "%s (en kopi til)%s"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dde kopi)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dste kopi)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'ddre kopi)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'ddde kopi)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
 msgid " ("
@@ -1833,7 +1834,7 @@ msgstr " ("
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
