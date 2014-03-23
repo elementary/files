@@ -2068,10 +2068,14 @@ load_templates_from_folder (GFile *template_folder, GList *templates)
     GFileInfo *info;
     GError *error = NULL;
     GFile *file;
-    GOFFile *template;
+    GOFFile *gof_file;
     GOFFile *dir;
     GFileEnumerator *enumerator;
+    GList *gof_file_list = NULL;
+    GList *folder_list = NULL;
     guint count = 0;
+
+    g_return_val_if_fail (template_folder != NULL, NULL);
 
     enumerator = g_file_enumerate_children (template_folder,
                                             G_FILE_ATTRIBUTE_STANDARD_NAME,
@@ -2088,22 +2092,38 @@ load_templates_from_folder (GFile *template_folder, GList *templates)
     count = g_list_length (templates);
     while (count < MAX_TEMPLATES
         && (info = g_file_enumerator_next_file (enumerator, NULL, NULL)) != NULL) {
+
         file = g_file_get_child (template_folder, g_file_info_get_name (info));
-        template = gof_file_get (file);
-        gof_file_ensure_query_info (template);
-        if (!gof_file_is_folder (template)) {
-            templates = g_list_prepend (templates, template);
+        gof_file = gof_file_get (file);
+        gof_file_ensure_query_info (gof_file);
+        if (!gof_file_is_folder (gof_file)) {
+            gof_file_list = g_list_prepend (gof_file_list, gof_file);
             count++;
         } else {
-            templates = load_templates_from_folder (file, templates);
-            count = g_list_length (templates);
+            folder_list = g_list_prepend (folder_list, file);
         }
     }
+
+    if (g_list_length (gof_file_list) > 0) {
+        gof_file_list = g_list_sort (gof_file_list, gof_file_compare_by_display_name);
+        templates = g_list_concat (templates, gof_file_list);
+    }
+
     dir = gof_file_get (template_folder);
     gof_file_ensure_query_info (dir);
-    templates = g_list_prepend (templates, dir);
+    templates = g_list_append (templates, dir);
 
-    return count > 0 ? templates : NULL;
+    GList *l;
+    guint index; 
+    if (g_list_length (folder_list) > 0) {
+        for (l = folder_list, index = 0;
+             l != NULL;
+             l = l->next, index++) {
+            templates = load_templates_from_folder (l->data, templates);
+        }
+    }
+
+    return templates;
 }
 
 static void
@@ -2163,8 +2183,8 @@ update_menus_empty_selection (FMDirectoryView *view)
         view->details->templates = NULL;
     }
 
-    GFile *template_file = g_file_new_for_path (g_strdup_printf ("%s/Templates", g_get_home_dir ()));
-    view->details->templates = load_templates_from_folder (template_file, view->details->templates);
+    GFile *template_dir_file = g_file_new_for_path (g_strdup_printf ("%s/Templates", g_get_home_dir ()));
+    view->details->templates = load_templates_from_folder (template_dir_file, view->details->templates);
 
     for (l = view->details->templates, index = 0;
          l != NULL && index < MAX_TEMPLATES;
