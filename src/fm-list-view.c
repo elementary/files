@@ -321,7 +321,6 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
-        g_debug ("%s FAILED", G_STRFUNC);
 		return;
 	}
 
@@ -330,29 +329,23 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
 
-	/* Make filename-cells editable. */
-	g_object_set (G_OBJECT (list_view->details->file_name_cell),
-                  "editable", TRUE, NULL);
-
 	gtk_tree_view_scroll_to_cell (list_view->tree, NULL,
                                   list_view->details->file_name_column,
                                   TRUE, 0.0, 0.0);
 	/* set cursor also triggers editing-started, where we save the editable widget */
 	/*gtk_tree_view_set_cursor (list_view->tree, path,
                               list_view->details->file_name_column, TRUE);*/
-    /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
+    /* sound like set_cursor is not enough to trigger editing-started, we use cursor_on_cell instead */
     gtk_tree_view_set_cursor_on_cell (list_view->tree, path,
                                       list_view->details->file_name_column,
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       TRUE);
 
-	if (list_view->details->editable_widget != NULL) {
-		eel_filename_get_rename_region (list_view->details->original_name,
-                                        &start_offset, &end_offset);
-
-		gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+    if (list_view->details->editable_widget != NULL) {
+        marlin_get_rename_region (list_view->details->original_name, &start_offset, &end_offset, select_all);
+        gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
                                     start_offset, end_offset);
-	}
+    }
 
 	gtk_tree_path_free (path);
 }

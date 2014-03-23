@@ -23,6 +23,9 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 
+    /* offset to left align disk usage graphic with the text */
+    private int offset = 2;
+
     public CellRendererDisk () {
     }
 
@@ -45,6 +48,8 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                                  Gdk.Rectangle background_area, Gdk.Rectangle area,
                                  Gtk.CellRendererState flags) {
         base.render (cr, widget, background_area, area, flags);
+        area.x+= offset; 
+        area.width-= offset;
         if(free_space > 0) {
             Gtk.StateFlags state;
             Gtk.StyleContext context = widget.get_parent ().get_style_context ();

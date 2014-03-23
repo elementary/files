@@ -68,15 +68,15 @@
 #include "marlincore.h"
 
 typedef struct {
-    GIOSchedulerJob *io_job;	
+    GIOSchedulerJob *io_job;
     GTimer *time;
     GtkWindow *parent_window;
     int screen_num;
     int inhibit_cookie;
 #ifdef ENABLE_TASKVIEW
-	TaskviewIO *tv_io;
+    TaskviewIO *tv_io;
 #else
-	MarlinProgressInfo *progress;
+    MarlinProgressInfo *progress;
 #endif
     GCancellable *cancellable;
     GHashTable *skip_files;
@@ -979,8 +979,8 @@ init_common (JobTypes jobtype,
                                   NULL);
     common->cancellable = g_cancellable_new ();
 #else
-	common->progress = marlin_progress_info_new ();
-	common->cancellable = marlin_progress_info_get_cancellable (common->progress);
+    common->progress = marlin_progress_info_new ();
+    common->cancellable = marlin_progress_info_get_cancellable (common->progress);
 #endif
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
@@ -1023,9 +1023,9 @@ finalize_common (CommonJob *common)
     // End UNDO-REDO
 
 #ifdef ENABLE_TASKVIEW
-	g_object_unref (common->tv_io);
+    g_object_unref (common->tv_io);
 #else
-	g_object_unref (common->progress);
+    g_object_unref (common->progress);
 #endif
     g_object_unref (common->cancellable);
     g_free (common);
@@ -1215,9 +1215,9 @@ run_simple_dialog_va (CommonJob *job,
                                          data,
                                          NULL);
 #ifdef ENABLE_TASKVIEW
-	g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
+    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
 #else
-	marlin_progress_info_resume (job->progress);
+    marlin_progress_info_resume (job->progress);
 #endif
     res = data->result;
 
@@ -1900,7 +1900,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                                      NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                ((DeleteJob *) job)->user_cancel = TRUE;				
+                ((DeleteJob *) job)->user_cancel = TRUE;
                 abort_job (job);
             } else if (response == 1) { /* skip all */
                 (*files_skipped)++;
@@ -2049,7 +2049,7 @@ delete_job (GIOSchedulerJob *io_job,
 static void
 trash_or_delete_internal (GList                  *files,
                           GtkWindow              *parent_window,
-                          gboolean                try_trash,			
+                          gboolean                try_trash,
                           MarlinDeleteCallback  done_callback,
                           gpointer                done_callback_data)
 {
@@ -2078,7 +2078,7 @@ trash_or_delete_internal (GList                  *files,
         //undotest usefull ??
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-	}
+    }
     // End UNDO-REDO
 
     g_io_scheduler_push_job (delete_job,
@@ -2106,7 +2106,7 @@ marlin_file_operations_delete (GList                    *files,
                                gpointer                 done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
-                              FALSE,			
+                              FALSE,
                               done_callback,  done_callback_data);
 }
 
@@ -2661,7 +2661,7 @@ retry:
         skip_file (job, dir);
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
-    } else {	
+    } else {
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
@@ -2698,7 +2698,7 @@ retry:
             g_assert_not_reached ();
         }
     }
-}	
+}
 
 static void
 scan_file (GFile *file,
@@ -3079,49 +3079,49 @@ report_copy_progress (CopyMoveJob *copy_job,
         gchar *current_item = g_file_get_uri (copy_job->destination);
         g_object_set (job->tv_io,
                       "current-item", current_item,
-                      NULL);	
+                      NULL);
         g_free (current_item);
     }
 #else
     if (s != NULL)
-	{
-		marlin_progress_info_take_status (job->progress, s);
-	}
-	
+    {
+        marlin_progress_info_take_status (job->progress, s);
+    }
 
-	total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
-	
-	elapsed = g_timer_elapsed (job->time, NULL);
-	transfer_rate = 0;
-	if (elapsed > 0) {
-		transfer_rate = transfer_info->num_bytes / elapsed;
-	}
 
-	if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
-	    transfer_rate > 0) {
-		char *s;
-		/* To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB" */		
-		s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
-		marlin_progress_info_take_details (job->progress, s);
-	} else {
-		char *s;
-		remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
+    total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
 
-		/* To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
-		 * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-		 *
-		 * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-		 */		
-		s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
-				 "%S of %S \xE2\x80\x94 %T left (%S/sec)",
-				 seconds_count_format_time_units (remaining_time)),
-		       transfer_info->num_bytes, total_size,
-		       remaining_time,
-		       (goffset)transfer_rate);
-		marlin_progress_info_take_details (job->progress, s);
-	}
+    elapsed = g_timer_elapsed (job->time, NULL);
+    transfer_rate = 0;
+    if (elapsed > 0) {
+        transfer_rate = transfer_info->num_bytes / elapsed;
+    }
 
-	marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
+    if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
+        transfer_rate > 0) {
+        char *s;
+        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB" */
+        s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
+        marlin_progress_info_take_details (job->progress, s);
+    } else {
+        char *s;
+        remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
+
+        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+         * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+         *
+         * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+         */
+        s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
+                 "%S of %S \xE2\x80\x94 %T left (%S/sec)",
+                 seconds_count_format_time_units (remaining_time)),
+               transfer_info->num_bytes, total_size,
+               remaining_time,
+               (goffset)transfer_rate);
+        marlin_progress_info_take_details (job->progress, s);
+    }
+
+    marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
 #endif
 }
 
@@ -4105,7 +4105,7 @@ get_target_file_for_display_name (GFile *dir,
         dest = g_file_get_child (dir, name);
     }
 
-    return dest;		
+    return dest;
 }
 
 /* Debuting files is non-NULL only for toplevel items */
@@ -4353,7 +4353,7 @@ retry:
             goto out;
         }
 
-        response = run_conflict_dialog (job, src, dest, dest_dir);	
+        response = run_conflict_dialog (job, src, dest, dest_dir);
 
         if (response->id == GTK_RESPONSE_CANCEL ||
             response->id == GTK_RESPONSE_DELETE_EVENT) {
@@ -4945,7 +4945,7 @@ retry:
 
         if (response->id == GTK_RESPONSE_CANCEL ||
             response->id == GTK_RESPONSE_DELETE_EVENT) {
-            conflict_response_data_free (response);	
+            conflict_response_data_free (response);
             abort_job (job);
         } else if (response->id == CONFLICT_RESPONSE_SKIP) {
             if (response->apply_to_all) {
@@ -5609,7 +5609,7 @@ marlin_file_operations_link (GList *files,
         g_object_ref (target_dir);
         marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     }
-	// End UNDO-REDO
+    // End UNDO-REDO
 
     g_io_scheduler_push_job (link_job,
                              job,
@@ -5728,8 +5728,8 @@ set_permissions_file (SetPermissionsJob *job,
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
         // Start UNDO-REDO
-		marlin_undo_manager_data_add_file_permissions(common->undo_redo_data, file, current);
-		// End UNDO-REDO
+        marlin_undo_manager_data_add_file_permissions(common->undo_redo_data, file, current);
+        // End UNDO-REDO
 
         current = (current & ~mask) | value;
 
@@ -5816,13 +5816,13 @@ marlin_file_set_permissions_recursive (const char *directory,
     job->done_callback_data = callback_data;
 
     // Start UNDO-REDO
-	if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-		job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
-		g_object_ref (job->file);
-		marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, job->file);
-		marlin_undo_manager_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
-	}
-	// End UNDO-REDO
+    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+        g_object_ref (job->file);
+        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, job->file);
+        marlin_undo_manager_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
+    }
+    // End UNDO-REDO
 
     g_io_scheduler_push_job (set_permissions_job,
                              job,
@@ -6027,7 +6027,7 @@ create_job (GIOSchedulerJob *io_job,
     filename = g_strdup (job->filename);
     filename_is_utf8 = FALSE;
     if (filename) {
-        filename_is_utf8 = g_utf8_validate (filename, -1, NULL);		
+        filename_is_utf8 = g_utf8_validate (filename, -1, NULL);
     }
     if (filename == NULL) {
         if (job->make_dir) {
@@ -6358,10 +6358,10 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     }
 
     // Start UNDO-REDO
-	if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-		job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
-	}
-	// End UNDO-REDO
+    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
+    }
+    // End UNDO-REDO
 
     g_io_scheduler_push_job (create_job,
                              job,
@@ -6399,10 +6399,10 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
-	if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-		job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
-	}
-	// End UNDO-REDO
+    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
+    }
+    // End UNDO-REDO
 
     g_io_scheduler_push_job (create_job,
                              job,
