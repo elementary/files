@@ -1949,9 +1949,8 @@ create_from_template_parameters_free (CreateFromTemplateParameters *params)
 {
     g_object_unref (params->template);
 
-    if (params->view != NULL) {
+    if (params->view != NULL)
         g_object_unref (params->view);
-    }
 
     g_free (params);
 }
@@ -2090,19 +2089,15 @@ load_templates_from_folder (GFile *template_folder, GList *templates)
     while (count < MAX_TEMPLATES
         && (info = g_file_enumerator_next_file (enumerator, NULL, NULL)) != NULL) {
         file = g_file_get_child (template_folder, g_file_info_get_name (info));
-        //if (file) {
-            template = gof_file_get (file);
-            //if (template) {
-                gof_file_ensure_query_info (template);
-                if (!gof_file_is_folder (template)) {
-                    templates = g_list_prepend (templates, template);
-                    count++;
-                } else {
-                    templates = load_templates_from_folder (file, templates);
-                    count = g_list_length (templates);
-                }
-            //} 
-        //}
+        template = gof_file_get (file);
+        gof_file_ensure_query_info (template);
+        if (!gof_file_is_folder (template)) {
+            templates = g_list_prepend (templates, template);
+            count++;
+        } else {
+            templates = load_templates_from_folder (file, templates);
+            count = g_list_length (templates);
+        }
     }
     dir = gof_file_get (template_folder);
     gof_file_ensure_query_info (dir);
@@ -2168,12 +2163,8 @@ update_menus_empty_selection (FMDirectoryView *view)
         view->details->templates = NULL;
     }
 
-    view->details->templates = load_templates_from_folder (
-                                    g_file_new_for_path (
-                                        g_strdup_printf ("%s/Templates",
-                                                         g_get_home_dir ())
-                                    ),
-                                    view->details->templates);
+    GFile *template_file = g_file_new_for_path (g_strdup_printf ("%s/Templates", g_get_home_dir ()));
+    view->details->templates = load_templates_from_folder (template_file, view->details->templates);
 
     for (l = view->details->templates, index = 0;
          l != NULL && index < MAX_TEMPLATES;
