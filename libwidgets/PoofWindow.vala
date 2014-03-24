@@ -24,7 +24,7 @@ namespace Marlin.Animation
     public class PoofWindow : Gtk.Window {
         const int POOF_SIZE = 128;
         const int POOF_FRAMES = 5;
-        const int MSEC_PER_FRAME = 150;
+        const int MSEC_PER_FRAME = 60;
         int frame_number = 0;
 
         static PoofWindow? instance = null;
