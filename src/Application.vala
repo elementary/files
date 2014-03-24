@@ -39,6 +39,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Needed by Granite.Application */
         this.program_name = Marlin.APP_TITLE;
+        this.exec_name = Marlin.APP_TITLE.down ().replace (" ", "-");
         this.build_version = Config.VERSION;
 
         this.app_copyright = Marlin.COPYRIGHT;
@@ -115,7 +116,7 @@ public class Marlin.Application : Granite.Application {
     /* The array that holds the file commandline arguments
        needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
-	private string[]? remaining = null;
+    private string[]? remaining = null;
 
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */

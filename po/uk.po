@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-12-21 23:54+0000\n"
-"Last-Translator: neiron13 <Unknown>\n"
+"PO-Revision-Date: 2014-01-26 13:09+0000\n"
+"Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-12-31 05:21+0000\n"
-"X-Generator: Launchpad (build 16877)\n"
+"X-Launchpad-Export-Date: 2014-01-27 05:43+0000\n"
+"X-Generator: Launchpad (build 16914)\n"
 "Language: uk\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -40,11 +40,11 @@ msgstr "(як Адміністратор)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
-msgstr ""
+msgstr "Це не належить вам."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
-msgstr "У вас немає дозволу для перегляду даної теки"
+msgstr "Ви не маєте права переглядати дану теку."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -81,7 +81,7 @@ msgstr "Простий і потужний файловий менеджер"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Перекладачі Launchpad"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -89,7 +89,7 @@ msgstr "Параметри"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
 msgid "General"
-msgstr "Загальний"
+msgstr "Загальне"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
 msgid "More"
@@ -102,7 +102,7 @@ msgstr "Попередній перегляд"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
 #, c-format
 msgid "%u selected items"
-msgstr ""
+msgstr "%u вибраних елементів"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 msgid "Calculating size…"
@@ -177,15 +177,15 @@ msgstr "%s із %s вільно (%d%% використано)"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
-msgstr "Читати"
+msgstr "Читання"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
 msgid "Write"
-msgstr "Записати"
+msgstr "Запис"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
-msgstr "Виконати"
+msgstr "Виконання"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
@@ -413,7 +413,7 @@ msgstr "Перекласти цю програму..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
-msgstr "Показати при_ховані файли"
+msgstr "Показати При_ховані Файли"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
@@ -500,7 +500,7 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " і %u інших елементів (%s) вибрано"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:275

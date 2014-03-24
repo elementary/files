@@ -454,7 +454,10 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 #endif
 //#if 0
         char *str_icon = g_icon_to_string (icon);
-        pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, size, size, NULL);
+        gint width, height;
+        
+        gdk_pixbuf_get_file_info (str_icon, &width, &height);
+        pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, MIN (width, size), MIN (height, size), NULL);
         /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
         icon_info->pixbuf = pixbuf;*/
         icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);

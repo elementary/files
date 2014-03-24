@@ -178,10 +178,16 @@ public class Marlin.MimeActions {
     }
 
     private static void filter_non_uri_apps (List<AppInfo> apps) {
+        var non_uri_apps = new List<AppInfo> ();
+
         foreach (var app in apps) {
             if (!app.supports_uris ()) {
-                apps.remove (app);
+                non_uri_apps.append (app);
             }
+        }
+
+        foreach (var app in non_uri_apps) {
+            apps.remove (app);
         }
     }
 

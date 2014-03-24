@@ -5,7 +5,7 @@ vala_precompile(VALA_C widgets-test
     tests-pathbar.vala
 PACKAGES
     gtk+-3.0
-    gee-1.0
+    gee-0.8
     posix
     marlinwidgets
 OPTIONS
@@ -15,7 +15,7 @@ OPTIONS
 )
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8)
 
 add_definitions(${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 
