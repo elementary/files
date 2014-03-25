@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-17 15:52+0000\n"
+"PO-Revision-Date: 2014-03-24 11:45+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-03-18 06:19+0000\n"
-"X-Generator: Launchpad (build 16963)\n"
+"X-Launchpad-Export-Date: 2014-03-25 07:14+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -1918,43 +1918,45 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Aplanke „%B“ esančių failų negalima ištrinti, nes neturite teisų matyti "
+"aplanko failų."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
 msgid "_Skip files"
-msgstr ""
+msgstr "_Praleisti failus"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Aplanko „%B“ negalima ištrinti, nes neturite teisų jį skaityti."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3674
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Klaida skaitant aplanką „%B“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Nepavyko pašalinti aplanko %B."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Klaida šalinant aplanką %B."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Failai perkeliami į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
 #, c-format
@@ -1965,7 +1967,7 @@ msgstr[1] ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Neįmanoma perkelti failo į šiukšlinę. Ar norite jį ištrinti?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
 msgid ""
@@ -1975,37 +1977,39 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
 msgid "Trashing Files"
-msgstr ""
+msgstr "Failai perkeliami į šiukšlinę"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
 msgid "Deleting Files"
-msgstr ""
+msgstr "Šalinami failai"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Nepavyko išstumti %V"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Nepavyko atjungti %V"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Ar norite išvalyti šiukšlinę prieš atjungiant skirsnį?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Norint šiame skirsnyje atlaisvinti vietą reikia išvalyti šiukšlinę. Visi "
+"šiukšlinėje esantys failai bus negrįžtamai prarasti."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Neišvalyti šiukšlinės"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Valoma šiukšlinė"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
 #, c-format
