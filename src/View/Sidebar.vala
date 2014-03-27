@@ -70,6 +70,8 @@ namespace Marlin.Places {
         Gdk.DragContext drag_context;
         bool received_drag_data;
         bool drop_occurred;
+        bool internal_drag_started;
+        bool dragged_out_of_window;
 
         /* Identifiers for target types */
         public enum TargetType {
@@ -260,6 +262,8 @@ namespace Marlin.Places {
             tree_view.drag_leave.connect (drag_leave_callback);
             tree_view.drag_data_received.connect (drag_data_received_callback);
             tree_view.drag_drop.connect (drag_drop_callback);
+            tree_view.drag_failed.connect (drag_failed_callback);
+            tree_view.drag_end.connect (drag_end_callback);
 
             (tree_view.get_selection ()).changed.connect (selection_changed_cb);
             tree_view.popup_menu.connect (popup_menu_cb);
@@ -692,6 +696,27 @@ namespace Marlin.Places {
 
 /* DRAG N DROP FUNCTIONS START */
 
+        private bool drag_failed_callback (Gdk.DragContext context, Gtk.DragResult result) {
+            int x, y;
+            Gdk.Device device;
+            Marlin.Animation.PoofWindow poof_window;
+
+            if (internal_drag_started && dragged_out_of_window) {
+                device = context.get_device ();
+                device.get_position (null, out x, out y);
+                poof_window = Marlin.Animation.PoofWindow.get_default ();
+                poof_window.show_at (x, y);
+                remove_selected_bookmarks ();
+                return true;
+            } else
+                return false;
+        }
+
+        private void drag_end_callback (Gdk.DragContext context) {
+            internal_drag_started = false;
+            dragged_out_of_window = false;
+        }
+
         private bool drag_motion_callback (Gdk.DragContext context,
                                            int x,
                                            int y,
@@ -709,8 +734,10 @@ namespace Marlin.Places {
             if (pos == Gtk.TreeViewDropPosition.BEFORE
              || pos == Gtk.TreeViewDropPosition.AFTER) {
                 if (received_drag_data
-                 && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
+                 && drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
                     action = Gdk.DragAction.MOVE;
+                    internal_drag_started = true;
+                }
                 else if (drag_list != null
                       && can_accept_files_as_bookmarks (drag_list))
                     action = Gdk.DragAction.COPY;
@@ -877,6 +904,7 @@ namespace Marlin.Places {
         }
 
         private void drag_leave_callback (Gdk.DragContext context, uint time) {
+            dragged_out_of_window = true;
             free_drag_data ();
             tree_view.set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
             GLib.Signal.stop_emission_by_name (tree_view, "drag-leave");

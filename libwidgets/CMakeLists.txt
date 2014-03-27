@@ -23,19 +23,23 @@ link_directories (${GRANITE_LIBRARY_DIRS})
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 set(LIBS
-	${DEP_LIBRARIES}
+    ${DEP_LIBRARIES}
 )
 add_definitions(${CFLAGS})
 
 link_libraries(${LIBS})
 set(LIB_PATHS
-	${DEPS_LIBRARY_DIRS}
+    ${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
+
+include_directories (${CMAKE_CURRENT_BINARY_DIR})
+include_directories (${CMAKE_BINARY_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
     Animations.vala
     LocationBar.vala
+    PoofWindow.vala
     BreadcrumbsElements.vala
     BreadcrumbsEntry.vala
 PACKAGES
@@ -43,6 +47,8 @@ PACKAGES
     granite
     gee-0.8
     posix
+    marlincore
+    marlincore-C
 OPTIONS
     --thread
 GENERATE_VAPI
