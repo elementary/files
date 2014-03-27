@@ -32,7 +32,12 @@ void add_pathbar_tests () {
         var bread_entry = new Marlin.View.Chrome.BreadcrumbsEntry ();
         assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
+#if VALA_0_24
+        Gdk.Event e = new Gdk.Event (Gdk.EventType.KEY_PRESS);
+        Gdk.EventKey event = e.key;
+#else
         Gdk.EventKey event = Gdk.EventKey ();
+#endif
         event.window = breads.get_window ();
         event.keyval = 0x061; /* a */
         bread_entry.key_press_event (event);
@@ -119,7 +124,12 @@ void add_pathbar_tests () {
         assert (bread_entry.text == "");
         bread_entry.text = "abdcefghij/";
         bread_entry.cursor = ("abdcefghij/").length;
+#if VALA_0_24
+        Gdk.Event e = new Gdk.Event (Gdk.EventType.KEY_PRESS);
+        Gdk.EventKey event = e.key;
+#else
         Gdk.EventKey event = Gdk.EventKey ();
+#endif
         event.state = Gdk.ModifierType.SHIFT_MASK;
         event.window = breads.get_window ();
         event.keyval = 0xff51; /* left */
@@ -133,7 +143,12 @@ void add_pathbar_tests () {
         var bread_entry = new Marlin.View.Chrome.BreadcrumbsEntry ();
         assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
+#if VALA_0_24
+        Gdk.Event e = new Gdk.Event (Gdk.EventType.KEY_PRESS);
+        Gdk.EventKey event = e.key;
+#else
         Gdk.EventKey event = Gdk.EventKey ();
+#endif
         event.window = breads.get_window ();
         event.keyval = 0xff08; /* backspace */
         bread_entry.key_press_event (event);
@@ -146,7 +161,12 @@ void add_pathbar_tests () {
         Marlin.View.Chrome.BreadcrumbsEntry bread_entry = breads.entry;
         assert (bread_entry is Marlin.View.Chrome.BreadcrumbsEntry);
         assert (bread_entry.text == "");
+#if VALA_0_24
+        Gdk.Event e = new Gdk.Event (Gdk.EventType.KEY_PRESS);
+        Gdk.EventKey event = e.key;
+#else
         Gdk.EventKey event = Gdk.EventKey ();
+#endif
         event.window = breads.get_window ();
         event.keyval = 0xff08; /* backspace */
         breads.key_press_event (event);
