@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-11-03 00:04+0000\n"
+"PO-Revision-Date: 2014-03-26 23:19+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-12-31 05:20+0000\n"
-"X-Generator: Launchpad (build 16877)\n"
+"X-Launchpad-Export-Date: 2014-03-27 08:09+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -201,7 +201,7 @@ msgstr "ሁሉም"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
 msgid "Select an application to open "
-msgstr ""
+msgstr "መተግበሪያ ይምረጡ ለመክፈት "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -1329,44 +1329,44 @@ msgstr "ባለቤት ማሰናጃ ከ '%s' ወደ '%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው ኮፒ ማድረግ %d እቃውን"
+msgstr[1] "_መተው ኮፒ ማድረግ %d እቃዎቹን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው የተደገመ %d እቃን"
+msgstr[1] "_መተው የተደገሙ %d እቃዎችን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
+msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው እንደገና መሰየም %d እቃውን"
+msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_መተው ባዶ ፋይል መፍጠሩን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
+msgstr[1] "_መተው ፎልደሮች %d መፍጠሩን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
@@ -1386,15 +1386,15 @@ msgstr[1] ""
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_መተው ማጥፋት %d እቃውን"
+msgstr[1] "_መተው ማጥፋት %d እቃዎቹን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
@@ -1407,8 +1407,8 @@ msgstr[1] ""
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
@@ -1869,7 +1869,7 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "በእርግጥ በቋሚነት ማጥፋት ይፈልጋሉ %&#x27;d የተመረጡትን እቃዎች?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
@@ -2059,26 +2059,26 @@ msgstr "ይህን ፎልደር \"%B\" ማየት አይችሉም ምክንያቱ�
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "ይህን ፋይል \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2749
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል መረጃ በማግኘት ላይ እንዳለ ስለ \"%B\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2849
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2891
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2924
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2954
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል ኮፒ በማድረግ ላይ እንዳለ \"%B\"."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2853
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "መድረሻው ፎልደር ጋር ለመድረስ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2855
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "ስለ መድረሻው መረጃ በማግኘት ላይ እንዳለ ስህተት ተፈጥሯል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
 msgid "The destination is not a folder."
@@ -2088,7 +2088,7 @@ msgstr "መድረሻው ፎልደር አይደለም"
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
+msgstr "በመድረሻው ውስጥ በቂ ባዶ ቦታ የለም በቂ ቦታ ለማግኘት ፋይሎች ማስወገድ አለብዎት"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2927
 #, c-format
@@ -2151,19 +2151,20 @@ msgstr[1] ""
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3104
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S ከ %S"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3115
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S ከ %S — %T የቀረው (%S/sec)"
+msgstr[1] "%S ከ %S — %T የቀረው (%S/sec)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3494
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"ይህን ፎልደር \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም በመድረሻው ላይ ፎልደሩን ለመፍጠር በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3497
 msgid "There was an error creating the folder \"%B\"."
@@ -2174,12 +2175,13 @@ msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"በፎልደሩ ውስጥ ያሉ ፋይሎችን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ፋይሎቹን ለማየት በቂ የሆነ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3671
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "ፎልደሩን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ለማንበብ ፍቃድ የሎትም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
@@ -2201,49 +2203,49 @@ msgstr "ኮፒ በማድረግ ላይ እንዳለ ስህተት ተፈጥሯል 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "ፋይሉን ከነበረበት ፎልደር ውስጥ ማስወገድ አይችሉም %F."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "የነበረውን ፋይል ማስወገድ አይችሉም %F."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4173
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "ፎልደሩን ወደራሱ ማንቀሳቀስ አይችሉም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "ፎልደሩን ወደራሱ ኮፒ ማድረግ አይችሉም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "መደረሻው ፎልደር በፎልደሩ ምንጭ ውስጥ ነው"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "ፋይሉን ወደራሱ ማንቀሳቀስ አይችሉም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "ፋይሉን ወደራሱ ኮፒ ማድረግ አይችሉም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "በመድረሻው ላይ የፋይሉ ምንጭ ተደርቦ ይጻፋል"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4421
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "በዚህ ስም ቀደም ብሎ የነበረውን ፋይል ማጥፋት አልተቻለም ከ %F."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል ፋይሉ ኮፒ ሲደረግ ወደ %F."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4719
 msgid "Copying Files"
@@ -2271,18 +2273,18 @@ msgstr "ፋይሎችን በማንቀሳቀስ ላይ"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "አገናኞች በመፍጠር ላይ ወደ \"%B\""
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "አገናኞች በመፍጠር ላይ ወደ %&#x27;d ፋይሎች"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል አገናኝ በመፍጠር ላይ %B."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
 msgid "Symbolic links only supported for local files"
@@ -2355,7 +2357,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/gof-file.c:1825
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "ዋጋ የሌለው የዴስክቶፕ ፋይል"
 
 #: /home/codygarver/f/po/../libcore/gof-file.c:2115
 msgid "Slashes are not allowed in filenames"
@@ -2363,7 +2365,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../libcore/gof-file.c:2135
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "ከፍተኛ ደረጃ ፋይሎችን እንደገና መሰየም አይቻልም"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
@@ -2376,37 +2378,37 @@ msgstr "ከቆሻሻ ማጠራቀሚያው ውስጥ እቃውን እንደነ�
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "በቁራጭ ሰሌዳው ላይ የተመረጠውን ጽሁፍ መቁረጫ"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "በቁራጭ ሰሌዳው ላይ የተመረጠውን ጽሁፍ ኮፒ ማድረጊያ"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "በቁራጭ ሰሌዳው ላይ የተቀመጠውን ጽሁፍ መለጠፊያ"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "መሄጃ ወደ %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
-msgstr ""
+msgstr "እንደ መጋጠሚያ መመልከቻ"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
-msgstr ""
+msgstr "እንደ ዝርዝር መመልከቻ"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View in Columns"
-msgstr ""
+msgstr "እንደ አምዶች መመልከቻ"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "እነዚህ እቃዎች በቋሚነት ይጠፋሉ ቆሻሻውን ባዶ ሲያደርጉ"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
