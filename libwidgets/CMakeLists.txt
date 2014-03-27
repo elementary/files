@@ -50,6 +50,8 @@ PACKAGES
     marlincore
     marlincore-C
 OPTIONS
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore
+    --vapidir=${CMAKE_BINARY_DIR}/libcore
     --thread
 GENERATE_VAPI
     marlinwidgets
@@ -57,6 +59,7 @@ GENERATE_HEADER
     marlinwidgets
 )
 add_library (${PKGNAME} SHARED ${VALA_C})
+add_dependencies (${PKGNAME} marlincore)
 
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINWIDGETS_VERSION}
