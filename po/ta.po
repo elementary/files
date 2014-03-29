@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-19 16:51+0000\n"
+"PO-Revision-Date: 2014-03-29 01:30+0000\n"
 "Last-Translator: SyedKhaleel Jageer <jskcse4@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-03-20 06:15+0000\n"
+"X-Launchpad-Export-Date: 2014-03-29 07:04+0000\n"
 "X-Generator: Launchpad (build 16967)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -80,19 +80,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
-msgstr ""
+msgstr "பண்புகள்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
 msgid "General"
-msgstr ""
+msgstr "பொதுவான"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
 msgid "More"
-msgstr ""
+msgstr "மேலும்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
 msgid "Preview"
-msgstr ""
+msgstr "முன்தோற்றம்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
 #, c-format
@@ -105,12 +105,12 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
 msgid "Created"
-msgstr ""
+msgstr "உருவாக்கப்பட்ட"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:398
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr ""
+msgstr "மாற்றப்பட்ட"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:401
 msgid "Last Access"
@@ -118,7 +118,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
 msgid "Deleted"
-msgstr ""
+msgstr "அழிக்கப்பட்டது"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
 msgid "MimeType"
@@ -131,15 +131,15 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "அளவு"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
 msgid "Location"
-msgstr ""
+msgstr "இடம்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
 msgid "Target"
-msgstr ""
+msgstr "இலக்கு"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Origin Location"
@@ -151,15 +151,15 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
-msgstr ""
+msgstr "மற்ற பயன்பாடு..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
 msgid "Open with:"
-msgstr ""
+msgstr "இதனால் திற:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
 msgid "Usage:"
-msgstr ""
+msgstr "பயன்பாடு:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
 msgid "Device usage:"
@@ -172,29 +172,29 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
-msgstr ""
+msgstr "படி"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
 msgid "Write"
-msgstr ""
+msgstr "எழுது"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Execute"
-msgstr ""
+msgstr "செயல்படுத்து"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
 msgid "Owner"
-msgstr ""
+msgstr "உரிமையாளர்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
 msgid "Group"
-msgstr ""
+msgstr "குழு"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
 msgid "Everyone"
-msgstr ""
+msgstr "அனைவரும்"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
 msgid "Select an application to open "
@@ -207,24 +207,24 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3512
 msgid "Set as default"
-msgstr ""
+msgstr "முன்னிருப்பாக அமைக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:137
 msgid "Ignore"
-msgstr ""
+msgstr "புறக்கணி"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:399
 msgid "Undo"
-msgstr ""
+msgstr "தவிர்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:400
 #: /home/codygarver/f/po/../src/View/Window.vala:620
 msgid "Undo the last action"
-msgstr ""
+msgstr "கடைசி செயலை ரத்து செய்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:409
 msgid "Redo"
-msgstr ""
+msgstr "மீளச்செய்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:410
 #: /home/codygarver/f/po/../src/View/Window.vala:623
@@ -233,28 +233,28 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:598
 msgid "_File"
-msgstr ""
+msgstr "கோப்பு (_F)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:599
 msgid "_Edit"
-msgstr ""
+msgstr "திருத்து (_E)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:600
 msgid "_View"
-msgstr ""
+msgstr "காண்பி (_V)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:601
 msgid "_Go"
-msgstr ""
+msgstr "செல் (_G)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:602
 msgid "_Help"
-msgstr ""
+msgstr "உதவி (_H)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:604
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "புதிய சாளரம் (_W)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:605
 msgid "Open another Files window for the displayed location"
@@ -263,59 +263,59 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/Window.vala:608
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "புதிய தத்தல் (_T)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "காட்டப்பட்ட இடத்திற்கு மற்றொரு தத்தலைத் திறக்கவும்."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:613
 msgid "_Close"
-msgstr ""
+msgstr "மூடவும் (_C)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Close this folder"
-msgstr ""
+msgstr "இந்த அடைவை மூடு"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_Undo"
-msgstr ""
+msgstr "செயல்தவிர் (_U)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Redo"
-msgstr ""
+msgstr "செயல்மீட்பு (_R)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "Open _Parent"
-msgstr ""
+msgstr "மூல அடைவைத் திற (_P)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open the parent folder"
-msgstr ""
+msgstr "மூல அடைவினைத் திறக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Back"
-msgstr ""
+msgstr "பின்செல் (_B)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "முன்பு பார்வையிட்ட இடத்திற்கு செல்லவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "_Forward"
-msgstr ""
+msgstr "முன்செல் (_F)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:633
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "அடுத்து பார்வையிட்ட இடத்திற்கு செல்லவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "_Reload"
-msgstr ""
+msgstr "மீளேற்று (_R)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:636
 msgid "Reload the current location"
-msgstr ""
+msgstr "நடப்பு இடத்தை மீளேற்று"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:639
 msgid "_Home Folder"
@@ -324,67 +324,67 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/Window.vala:640
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
 msgid "Open your personal folder"
-msgstr ""
+msgstr "உங்கள் தனிப்பட்ட அடைவைத் திறக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Trash"
-msgstr ""
+msgstr "குப்பை (_T)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "தனிப்பட்ட குப்பை அடைவைத் திற"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "_Network"
-msgstr ""
+msgstr "பிணையம் (_N)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "புத்தகக்குறியிட்ட மற்றும் உள்ளமை பிணைய இடங்களில் உலாவு"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:651
 msgid "Zoom _In"
-msgstr ""
+msgstr "அணுகிப்பார் (_I)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "Increase the view size"
-msgstr ""
+msgstr "காட்சி அளவை அதிகமாக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:663
 msgid "Zoom _Out"
-msgstr ""
+msgstr "விலகிப்பார் (_O)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "Decrease the view size"
-msgstr ""
+msgstr "காட்சி அளவை குறைக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:671
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "இயல்பான அளவு (_z)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Use the normal view size"
-msgstr ""
+msgstr "இயல்பான காட்சி அளவை பயன்படுத்துக"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:675
 msgid "Next Tab"
-msgstr ""
+msgstr "அடுத்த தத்தல்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:679
 msgid "Previous Tab"
-msgstr ""
+msgstr "முந்தைய தத்தல்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:683
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "சேவையகத்துடன் இணை... (_S)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "ஒரு தொலை கணினி அல்லது பகிர்ந்த வட்டுடன் இணைக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:687
 msgid "_About"
-msgstr ""
+msgstr "பற்றி (_A)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Display credits"
@@ -392,7 +392,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:691
 msgid "Report a Problem..."
-msgstr ""
+msgstr "பிரச்சினையை முறையிடு..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "File a bug on Launchpad"
@@ -400,15 +400,15 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:695
 msgid "Get Help Online..."
-msgstr ""
+msgstr "இணையத்தில் உதவி பெறுக..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:699
 msgid "Translate This Application..."
-msgstr ""
+msgstr "இந்த பயன்பாட்டை மொழிபெயர்க்கவும்..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "மறைவான கோப்புகளை காட்டவும் (_H)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "_Places"
-msgstr ""
+msgstr "இடங்கள் (_P)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:714
 msgid "Change the visibility of this window's side pane"
@@ -424,15 +424,15 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "Icon"
-msgstr ""
+msgstr "சின்னம்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:725
 msgid "List"
-msgstr ""
+msgstr "பட்டியல்"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:728
 msgid "Columns"
-msgstr ""
+msgstr "நெடுவரிசைகள்"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:110
 msgid "AFP"
@@ -448,12 +448,12 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:113
 msgid "FTP"
-msgstr ""
+msgstr "கோப்பு பரிமாற்ற நெறிமுறை"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:114
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
 msgid "Network"
-msgstr ""
+msgstr "வலையமைப்பு"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:115
 msgid "SFTP"
@@ -461,20 +461,20 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:117
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
 msgid "Trash"
-msgstr ""
+msgstr "குப்பைத் தொட்டி"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
-msgstr ""
+msgstr "புதிய தத்தில் திற"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "உடன் திறக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
@@ -505,7 +505,7 @@ msgstr ""
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
 #, c-format
 msgid "%u folder"
-msgstr ""
+msgstr "%u அடைவு"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
 #, c-format
@@ -514,7 +514,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/exo-tree-view.c:159
 msgid "Single Click"
-msgstr ""
+msgstr "ஒற்றை சொடுக்கு"
 
 #: /home/codygarver/f/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
@@ -530,11 +530,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "கோப்பின் பெயர்"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "வகை"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:205
 #: /home/codygarver/f/po/../src/fm-columns-view.c:184
@@ -574,19 +574,19 @@ msgstr ""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "தேர்வு செய்த உருப்படியைத் திறக்க \"%s\"ஐ பயன்படுத்தவும்"
+msgstr[1] "தேர்வு செய்த உருப்படிகளைத் திறக்க \"%s\"ஐ பயன்படுத்தவும்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2051
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "%s ஆல் திற (_O)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2057
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3592
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
 msgid "_Open"
-msgstr ""
+msgstr "திற (_O)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2073
 #, c-format
@@ -597,7 +597,7 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3604
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "புதிய கீற்றில் திற (_T)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2082
 #, c-format
@@ -607,23 +607,25 @@ msgstr ""
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2086
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
 msgid "Open in New _Window"
-msgstr ""
+msgstr "புதிய சாளரத்தில் திற (_W)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3564
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "தேர்வு செய்த கோப்புகளை ஒட்டு கட்டளையால் நகர்த்த ஏற்பாடு செய்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3568
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "தேர்வு செய்த கோப்புகளை ஒட்டு கட்டளையால் நகலெடுக்க ஏற்பாடு செய்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3572
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"ஏற்கெனவே தேர்வு செய்த ஒட்டு அல்லது நகலெடு கட்டளைப்படி கோப்புகளை நகர்த்தவும் "
+"அல்லது நகல் எடுக்கவும்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "அடைவிற்குள் ஒட்டவும்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3576
 msgid ""
@@ -633,19 +635,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Rename..."
-msgstr ""
+msgstr "மறுபெயரிடு... (_R)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Rename selected item"
-msgstr ""
+msgstr "தேர்வு செய்த உருப்படியின் பெயரை மாற்று"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3583
 msgid "Create New _Folder"
-msgstr ""
+msgstr "புதிய அடைவை உருவாக்கு (_F)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3584
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "இந்த அடைவுக்குள் புதிய காலி அடைவை உருவாக்கு"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3586
 msgid "Create New _File"
@@ -653,11 +655,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "_Empty File"
-msgstr ""
+msgstr "வெற்று கோப்பு (_E)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3589
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "இந்த அடைவுக்குள் புதிய காலி அடைவை உருவாக்கு"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3593
 msgid "Open the selected item"
@@ -673,56 +675,56 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட ஒவ்வொரு உருப்படியையும் புதிய தத்தலில் திற"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3607
 msgid "Open Wit_h"
-msgstr ""
+msgstr "இதனால் திற (_h)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3608
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "தேர்வு செய்த உருப்படியை திறக்க வேறு பயன்பாட்டை தேர்வு செய்யவும்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3610
 msgid "Other _Application..."
-msgstr ""
+msgstr "மற்றொரு பயன்பாடு... (​_A)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3611
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "தேர்வு செய்த உருப்படியை திறக்க வேறு பயன்பாட்டை தேர்வு செய்யவும்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3614
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "குப்பைக்கு நகர்த்து (_v)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3615
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "தேர்வு செய்த உருப்படிகளை குப்பைக்கு நகர்த்து"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "நிரந்தரமாக நீக்கு (_D)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3619
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "தேர்வு செய்த ஒவ்வொரு உருப்படியையும் குப்பைக்கு நகர்த்தாமல் நீக்கு"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3622
 msgid "_Restore"
-msgstr ""
+msgstr "மீட்டமை (_R)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3626
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
-msgstr ""
+msgstr "அனைத்தையும் தேர்வு செய்"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3630
 msgid "_Properties"
-msgstr ""
+msgstr "பண்புகள் (_P)"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3631
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "தேர்வு செய்த கோப்புகளின் பண்புகளை பார் அல்லது மாற்று"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3737
 msgid "Set Color:"
@@ -730,7 +732,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
 msgid "Personal"
-msgstr ""
+msgstr "தனிப்பட்ட"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
 msgid "Your common places and bookmarks"
@@ -738,11 +740,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
 msgid "Open the trash"
-msgstr ""
+msgstr "குப்பைத்தொட்டியைத் திற"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
 msgid "Devices"
-msgstr ""
+msgstr "சாதனங்கள்"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
 msgid "Your local partitions and devices"
@@ -750,7 +752,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "கோப்பு அமைப்பின் உள்ளடக்கங்களை திற"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
