@@ -22,7 +22,7 @@
 #include "eel-i18n.h"
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
-
+#include "exo-tree-view.h"
 //#include "marlin-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "eel-gtk-extensions.h"
@@ -345,16 +345,14 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         return FALSE;
 
     view->details->pressed_button = -1;
+    selection = gtk_tree_view_get_selection (tree_view);
 
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
     if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
         && !gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL))
-    {
-        selection = gtk_tree_view_get_selection (tree_view);
         gtk_tree_selection_unselect_all (selection);
-    }
 
     /* left clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
@@ -365,7 +363,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         }
     }
 
-    selection = gtk_tree_view_get_selection (tree_view);
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
@@ -460,19 +457,21 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
     g_message ("%s", G_STRFUNC);
     if (view->details->pressed_button == event->button && view->details->pressed_button != -1)
     {
-        /* don't do anything if any modifier key is active */
-        if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0)
+        /* reset the pressed_button state */
+        view->details->pressed_button = -1;
+
+        /* don't do anything if any modifier key is active  or not left-click*/
+        if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
+          && event->button == 1)
         {
             view->details->updates_frozen = FALSE;
             selection = gtk_tree_view_get_selection (tree_view);
             list_selection_changed_callback (selection, view);
+            return TRUE;
         }
-
-        /* reset the pressed_button state */
-        view->details->pressed_button = -1;
     }
 
-    return TRUE;
+    return FALSE;
 }
 
 static gboolean
@@ -571,8 +570,10 @@ create_and_set_up_tree_view (FMColumnsView *view)
     view->model = FM_DIRECTORY_VIEW (view)->model;
     g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
 
-    view->tree = g_object_new (GTK_TYPE_TREE_VIEW, "model", GTK_TREE_MODEL (view->model),
-                               "headers-visible", FALSE, NULL);
+    view->tree = GTK_TREE_VIEW (exo_tree_view_new ());
+    gtk_tree_view_set_model (view->tree, GTK_TREE_MODEL (view->model));
+    gtk_tree_view_set_headers_visible (view->tree, FALSE);
+
     gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
@@ -768,6 +769,8 @@ fm_columns_view_init (FMColumnsView *view)
 
     //fm_columns_view_click_policy_changed (FM_DIRECTORY_VIEW (view));
 
+    g_settings_bind (settings, "single-click",
+                     EXO_TREE_VIEW (view->tree), "single-click", 0);
     g_settings_bind (marlin_column_view_settings, "zoom-level",
                      view, "zoom-level", 0);
 }
