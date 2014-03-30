@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-29 01:30+0000\n"
+"PO-Revision-Date: 2014-03-29 17:08+0000\n"
 "Last-Translator: SyedKhaleel Jageer <jskcse4@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-03-29 07:04+0000\n"
+"X-Launchpad-Export-Date: 2014-03-30 06:12+0000\n"
 "X-Generator: Launchpad (build 16967)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -30,15 +30,15 @@ msgstr "கோப்பு அமைப்பு"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
 msgid "This folder does not exist"
-msgstr ""
+msgstr "இந்த அடைவு இருப்பில் இல்லை"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(நிர்வாகியாக)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
-msgstr ""
+msgstr "இது உங்களுக்கு உரியதன்று."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
@@ -46,7 +46,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "இந்த அடைவு இருப்பில் இல்லை"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
@@ -147,7 +147,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
-msgstr ""
+msgstr "தகவல்:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
@@ -319,7 +319,7 @@ msgstr "நடப்பு இடத்தை மீளேற்று"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:639
 msgid "_Home Folder"
-msgstr ""
+msgstr "இல்ல அடைவு (_H)"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:640
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
@@ -436,15 +436,15 @@ msgstr "நெடுவரிசைகள்"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:110
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:111
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:112
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:113
 msgid "FTP"
@@ -457,7 +457,7 @@ msgstr "வலையமைப்பு"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:115
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:116
 msgid "SMB"
@@ -478,7 +478,7 @@ msgstr "உடன் திறக்கவும்"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "மற்ற பயன்பாட்டு .."
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -774,74 +774,74 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
 msgid "_Start"
-msgstr ""
+msgstr "துவக்கு (_S)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
 msgid "_Stop"
-msgstr ""
+msgstr "நிறுத்து (_S)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
 msgid "_Power On"
-msgstr ""
+msgstr "ஆன் செய் (_P)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "பாதுகாப்பாக இயக்கியை நீக்கு (_S)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
 msgid "_Connect Drive"
-msgstr ""
+msgstr "இயக்கியை இணை (_C)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "இயக்கியை அகற்று (_D)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "பல் வட்டு சாதனத்தை துவக்கு (_S)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "பல் வட்டு சாதனத்தை நிறுத்து (_S)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "இயக்கியின் பூட்டைத் திற (_U)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
 msgid "_Lock Drive"
-msgstr ""
+msgstr "இயக்கியை பூட்டு (_L)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "%s ஐ துவக்க முடியவில்லை"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "%s ஐ வெளியேற்ற முடியவில்லை"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "%sஐ ஊடக மாற்றங்களுக்காக பதிவு செய்ய முடியவில்லை"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "%s ஐ நிறுத்த முடியவில்லை"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
 msgid "Remove"
-msgstr ""
+msgstr "அகற்று"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
 msgid "Rename..."
-msgstr ""
+msgstr "மறுபெயரிடு..."
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
 msgid "_Mount"
@@ -853,13 +853,13 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
 msgid "_Eject"
-msgstr ""
+msgstr "வெளியேற்று (_E)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
 msgid "Empty _Trash"
-msgstr ""
+msgstr "குப்பை தொட்டியை காலி செய் (_T)"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
 msgid "Connect to Server…"
@@ -867,15 +867,15 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "பொதுவான எஃப்டிபி"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "எஃப்டிபி (புகுபதிகையுடன்)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -883,19 +883,19 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "சாளர பகிர்வு"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "வெப்டேவ் (ஹெச்டிடிபி)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "பாதுகாப்பான வெப்டேவ் (ஹெச்டிடிபிஎஸ்)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "இணைக்கிறது..."
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -915,109 +915,109 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "மீண்டும் முயல்க"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "உங்கள் பயனர் விவரங்களை சரி பார்க்கவும்"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "தொடரவும்"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr ""
+msgstr "இணை (_o)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr ""
+msgstr "சேவையகத்துடன் இணை"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr ""
+msgstr "சேவையக விவரங்கள்"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr ""
+msgstr "சேவையகம் (_S):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr ""
+msgstr "முனையம் (_P):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr ""
+msgstr "வகை_T :"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr ""
+msgstr "பகிர் (_ a):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr ""
+msgstr "அடைவு (_F):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr ""
+msgstr "பயனர் விவரங்கள்"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr ""
+msgstr "களப்பெயர் (_D):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "பயனர் பெயர் (_U):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr ""
+msgstr "கடவுச்சொல் (_w):"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr ""
+msgstr "இந்த கடவுச்சொலை நினைவில் கொள்ளவும் (_R)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "செயல்பாடு ரத்து செய்யப்பட்டது"
 
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
-msgstr ""
+msgstr "உள்ளிடும் முறைகள்"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
-msgstr ""
+msgstr "இங்கே நகர்த்து (_M)"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:107
 msgid "_Copy Here"
-msgstr ""
+msgstr "இங்கே நகலெடு (_C)"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:112
 msgid "_Link Here"
-msgstr ""
+msgstr "இங்கே இணை (_L)"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:117
 msgid "Set as _Background"
-msgstr ""
+msgstr "பின்னனியாக அமை (_B)"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:124
 msgid "Cancel"
-msgstr ""
+msgstr "இரத்துசெய்"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "\"%s\"  செயல்படுத்த முடியவில்லை"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "உருப்படிகளை அடுக்கு (_g)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "தலைகீழ் வரிசை (_v)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
@@ -1025,7 +1025,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "பெயர் வாரியாக (_N)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -1033,31 +1033,31 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "அளவு வாரியாக (_S)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "சின்னங்களை அளவு வாரியாக வரிசையாக அடுக்கு"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "வகை வாரியாக (_T)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "சின்னங்களை வகை வாரியாக வரிசையாக அடுக்கு"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "திருத்திய தேதி வாரியாக (_D)"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "சின்னங்களை திருத்திய தேதி வாரியாக வரிசையாக அடுக்கு"
 
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
-msgstr ""
+msgstr "நிரல் பதிப்பை காட்டு."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
