@@ -606,6 +606,13 @@ fm_columns_view_select_all (FMDirectoryView *view)
     gtk_tree_selection_select_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
 }
 
+static void fm_columns_view_unselect_all(FMDirectoryView *view)
+{
+g_message ("%s-", G_STRFUNC);
+    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
+g_message ("%s- leaving", G_STRFUNC);
+}
+
 static GList *
 fm_columns_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {

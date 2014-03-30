@@ -82,14 +82,22 @@ namespace Marlin.View {
 
                 /* location didn't change, do nothing */
                 if (slot != null && myfile != null && slot.directory.file.exists
-                    && slot.location.equal (myfile))
+                    && slot.location.equal (myfile)) {
+                    if (mwcol != null) {
+                        mwcol.activate_slot (slot);
+                        refresh_slot_info ();
+                        update_location_state (false);
+                    }
+
                     return;
+                }
 
                 change_view(view_mode, myfile);
                 update_location_state (true);
             });
 
             up.connect (() => {
+                mwcol = null;
                 if (slot.directory.has_parent ()) {
                     change_view (view_mode, slot.directory.get_parent ());
                     update_location_state (true);
@@ -97,11 +105,13 @@ namespace Marlin.View {
             });
 
             back.connect ((n) => {
+                mwcol = null;
                 change_view (view_mode, File.new_for_commandline_arg (browser.go_back (n)));
                 update_location_state (false);
             });
 
             forward.connect ((n) => {
+                mwcol = null;
                 change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
                 update_location_state (false);
             });
@@ -231,7 +241,8 @@ namespace Marlin.View {
                     mwcol = new Marlin.Window.Columns (location, this);
                     slot = mwcol.active_slot;
                 } else {
-                    /* Create new slot in existing mwcol */
+                    /* Create new slot in existing mwcol
+                     * 'slot' already points to new slot */
                     slot.columns_add_location (location);
                     slot = mwcol.active_slot;
                     set_up_slot ();

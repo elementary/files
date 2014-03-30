@@ -42,35 +42,27 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
     {
     case GDK_KEY_Left:
         active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
-        /* Get previous file list to grab_focus on it */
-        if(active_position > 0)
+
+        if (active_position > 0)
             to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position-1));
 
-        /* If it has been found in the GList mwcols->slot_list (and if it is not the first) */
-        if(to_active != NULL)
-        {
-            gtk_widget_grab_focus(to_active->view_box);
-            printf("GRAB FOCUS on : %d\n", active_position-1);
-            marlin_window_columns_active_slot (mwcols, to_active);
-            return TRUE;
-        }
-        break;
+        if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active))
+            break;
+
+        g_signal_emit_by_name (to_active->ctab, "path-changed", to_active->directory->location, to_active);
+        return TRUE;
 
     case GDK_KEY_Right:
         active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
-        /* Get previous file list to grab_focus on it */
-        if(active_position < g_list_length(mwcols->slot_list))
-            to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position+1));
 
-        if(to_active != NULL)
-        {
-            printf("GRAB FOCUS on : %d\n", active_position+1);
-            marlin_window_columns_active_slot (mwcols, to_active);
-            fm_directory_view_select_first_for_empty_selection (FM_DIRECTORY_VIEW (to_active->view_box));
-            gtk_widget_grab_focus (to_active->view_box);
-            return TRUE;
-        }
-        break;
+        if (active_position < g_list_length(mwcols->slot_list) - 1)
+            to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position + 1));
+
+        if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active))
+            break;
+
+        g_signal_emit_by_name (to_active->ctab, "path-changed", to_active->directory->location, to_active);
+        return TRUE;
     }
 
     return FALSE;
@@ -163,14 +155,14 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
     gof_window_column_add (slot, slot->view_box);
-    //mwcols->active_slot = slot;
+
     /* Add it in our GList */
     mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
-    //gtk_widget_grab_focus(slot->view_box);
+    gtk_widget_grab_focus(slot->view_box);
 }
 
 void
-marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot)
+marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot)
 {
     GList *l;
     int slot_indice, i;
@@ -180,7 +172,6 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-
 
     for (i = 0, l = mwcols->slot_list; l != NULL; l = l->next, i++) {
         other_slot = GOF_WINDOW_SLOT (l->data);
@@ -200,7 +191,7 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
 
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
-
+    gtk_widget_grab_focus(slot->view_box);
     /* autoscroll Miller Columns */
     marlin_animation_smooth_adjustment_to (mwcols->hadj, width + slot_indice * mwcols->handle_size);
 }
@@ -233,7 +224,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindo
         /* make the selected slot active and remove subsequent slots*/
         FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
         fm_directory_view_set_active_slot (view);
-        marlin_window_columns_active_slot (mwcols, slot);
+        marlin_window_columns_activate_slot (mwcols, slot);
         gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
     }
 }

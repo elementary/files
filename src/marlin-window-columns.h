@@ -79,6 +79,6 @@ void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, 
 
 void                    marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols);
 void                    marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols);
-void                    marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot);
+void                    marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */

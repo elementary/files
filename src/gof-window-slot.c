@@ -303,7 +303,7 @@ gof_window_slot_active (GOFWindowSlot *slot)
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
     if (slot->mwcols != NULL) {
-         marlin_window_columns_active_slot (slot->mwcols, slot);
+         marlin_window_columns_activate_slot (slot->mwcols, slot);
         autosize_slot (slot);
     }
 }

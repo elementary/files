@@ -68,6 +68,7 @@ namespace Marlin {
         public class Columns : GOF.AbstractSlot {
             public Columns (GLib.File f, Gtk.Overlay ctab);
             public void make_view ();
+            public void activate_slot (GOF.Window.Slot slot);
             public GOF.Window.Slot active_slot;
         }
     }

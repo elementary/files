@@ -3132,7 +3132,7 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
     gof_window_slot_active (view->details->slot);
 
     /* make sure to grab focus as right click menus don't automaticly get it */
-    //fm_directory_view_grab_focus (GTK_WIDGET (view));
+    fm_directory_view_grab_focus (GTK_WIDGET (view));
 }
 
 /**
