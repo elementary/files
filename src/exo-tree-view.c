@@ -533,20 +533,6 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                 /* setup the new path */
                 tree_view->priv->hover_path = path;
                 exo_tree_view_item_hovered (tree_view, path);
-
-                /* check if we're over a row right now */
-                if (G_LIKELY (path != NULL))
-                {
-                    /* setup the hand cursor to indicate that the row at the pointer can be activated with a single click */
-                    cursor = gdk_cursor_new (GDK_HAND2);
-                    gdk_window_set_cursor (event->window, cursor);
-                    g_object_unref (cursor);
-                }
-                else
-                {
-                    /* reset the cursor to its default */
-                    gdk_window_set_cursor (event->window, NULL);
-                }
             }
             else
             {
