@@ -6259,7 +6259,7 @@ exo_icon_view_get_selected_items (ExoIconView *icon_view)
         }
     }
 
-    return selected;
+    return g_list_reverse (selected);
 }
 
 /**
