@@ -769,7 +769,7 @@ gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
     if (file->info == NULL) {
-        g_warning ("info null need to query_update %s", file->uri);
+        g_debug ("info null need to query_update %s", file->uri);
         gof_file_query_update (file);
     }
 
@@ -1363,7 +1363,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
-    g_message ("%s %s %u", G_STRFUNC, file->uri, file->flags);
+    g_debug ("%s %s %u", G_STRFUNC, file->uri, file->flags);
     if (file->flags == GOF_FILE_THUMB_STATE_READY)
         gof_file_query_thumbnail_update (file);
 

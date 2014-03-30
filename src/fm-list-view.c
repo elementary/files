@@ -197,7 +197,7 @@ fm_list_view_rename_callback (GOFFile *file,
 {
 	FMListView *view = FM_LIST_VIEW (callback_data);
 
-    printf ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 	if (view->details->renaming_file) {
 		view->details->rename_done = TRUE;
 		
@@ -267,7 +267,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	GOFFile *file;
 	GtkTreeIter iter;
 
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 	view->details->editable_widget = NULL;
 
 	/* Don't allow a rename with an empty string. Revert to original

@@ -41,12 +41,12 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
     switch(event->keyval)
     {
     case GDK_KEY_Left:
-        active_position = g_list_index(mwcols->slot, mwcols->active_slot);
+        active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
         /* Get previous file list to grab_focus on it */
         if(active_position > 0)
-            to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position-1));
+            to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position-1));
 
-        /* If it has been found in the GList mwcols->slot (and if it is not the first) */
+        /* If it has been found in the GList mwcols->slot_list (and if it is not the first) */
         if(to_active != NULL)
         {
             gtk_widget_grab_focus(to_active->view_box);
@@ -57,10 +57,10 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         break;
 
     case GDK_KEY_Right:
-        active_position = g_list_index(mwcols->slot, mwcols->active_slot);
+        active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
         /* Get previous file list to grab_focus on it */
-        if(active_position < g_list_length(mwcols->slot))
-            to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position+1));
+        if(active_position < g_list_length(mwcols->slot_list))
+            to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position+1));
 
         if(to_active != NULL)
         {
@@ -88,7 +88,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 {
-    g_message ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
+    g_debug ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = g_object_ref (location);
@@ -97,7 +97,7 @@ marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
     slot->mwcols = mwcols;
     mwcols->active_slot = slot;
-    mwcols->slot = g_list_append(mwcols->slot, slot);
+    mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
     return mwcols;
 }
 
@@ -148,7 +148,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 void
 marlin_window_columns_add_location (MarlinWindowColumns *mwcols, GFile *location)
 {
-    gof_window_columns_add_location(mwcols->active_slot, location);
+    gof_window_slot_columns_add_location(mwcols->active_slot, location);
 }
 /**
  * Add a new column
@@ -165,7 +165,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     gof_window_column_add (slot, slot->view_box);
     //mwcols->active_slot = slot;
     /* Add it in our GList */
-    mwcols->slot = g_list_append(mwcols->slot, slot);
+    mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
     //gtk_widget_grab_focus(slot->view_box);
 }
 
@@ -182,7 +182,7 @@ marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *s
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
 
-    for (i = 0, l = mwcols->slot; l != NULL; l = l->next, i++) {
+    for (i = 0, l = mwcols->slot_list; l != NULL; l = l->next, i++) {
         other_slot = GOF_WINDOW_SLOT (l->data);
 
         if (other_slot != slot)
@@ -214,7 +214,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindo
         guint i;
         GOFDirectoryAsync *dir;
 
-        for (i = 0, l = mwcols->slot; l != NULL; l = l->next, i++) {
+        for (i = 0, l = mwcols->slot_list; l != NULL; l = l->next, i++) {
             dir = GOF_WINDOW_SLOT (l->data)->directory;
             if (dir->file->is_hidden)
                 break;
@@ -261,7 +261,7 @@ static void
 marlin_window_columns_finalize (GObject *object)
 {
     MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     g_signal_handlers_disconnect_by_func (mwcols->colpane,
                                           G_CALLBACK (marlin_window_columns_key_pressed),

@@ -39,10 +39,12 @@ namespace GOF {
             public void make_list_view ();
             public void make_compact_view ();
             public void add_extra_widget(Gtk.Widget widget);
+            public void columns_add_location (GLib.File location);
             public Directory.Async directory;
             public GLib.File location;
             public Gtk.Widget view_box;
             public Gtk.Overlay ctab;
+            public int slot_number;
             public signal void active ();
             public signal void inactive ();
         }
@@ -64,12 +66,9 @@ namespace Marlin {
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GOF.AbstractSlot {
-            //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
             public Columns (GLib.File f, Gtk.Overlay ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
-            /*public Directory.Async directory;
-            public Widget get_view ();*/
         }
     }
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]

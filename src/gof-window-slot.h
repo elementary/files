@@ -25,12 +25,12 @@
 #include "marlincore.h"
 #include "marlin-window-columns.h"
 
-#define GOF_TYPE_WINDOW_SLOT	 (gof_window_slot_get_type())
-#define GOF_WINDOW_SLOT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GOF_TYPE_WINDOW_SLOT, GOFWindowSlotClass))
-#define GOF_WINDOW_SLOT(obj)	 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GOF_TYPE_WINDOW_SLOT, GOFWindowSlot))
-#define GOF_IS_WINDOW_SLOT(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GOF_TYPE_WINDOW_SLOT))
-#define GOF_IS_WINDOW_SLOT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GOF_TYPE_WINDOW_SLOT))
-#define GOF_WINDOW_SLOT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GOF_TYPE_WINDOW_SLOT, GOFWindowSlotClass))
+#define GOF_WINDOW_TYPE_SLOT	 (gof_window_slot_get_type())
+#define GOF_WINDOW_SLOT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GOF_WINDOW_TYPE_SLOT, GOFWindowSlotClass))
+#define GOF_WINDOW_SLOT(obj)	 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GOF_WINDOW_TYPE_SLOT, GOFWindowSlot))
+#define GOF_IS_WINDOW_SLOT(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GOF_WINDOW_TYPE_SLOT))
+#define GOF_IS_WINDOW_SLOT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GOF_WINDOW_TYPE_SLOT))
+#define GOF_WINDOW_SLOT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GOF_WINDOW_TYPE_SLOT, GOFWindowSlotClass))
 
 struct GOFWindowSlot {
     GOFAbstractSlot parent;
@@ -73,7 +73,7 @@ GType           gof_window_slot_get_type (void);
 GOFWindowSlot   *gof_window_slot_new (GFile *location, GtkOverlay *ctab);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
-void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);
+void            gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location);
 
 void            gof_window_slot_make_icon_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_list_view (GOFWindowSlot *slot);

@@ -55,7 +55,7 @@ typedef struct {
     GtkOverlay *ctab;
     GOFDirectoryAsync *directory;
 
-    GList *slot;
+    GList *slot_list;
     GOFWindowSlot *active_slot;
 
     gint preferred_column_width;

@@ -198,16 +198,16 @@ void autosize_slot (GOFWindowSlot *slot)
 }
 
 void
-gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
+gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location)
 {
     gint current_slot_position = 0;
     gint i;
-    GList* list_slot = slot->mwcols->slot;
+    GList* list_slot = slot->mwcols->slot_list;
 
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 
-    current_slot_position = g_list_index(slot->mwcols->slot, slot);
+    current_slot_position = g_list_index(slot->mwcols->slot_list, slot);
     if(current_slot_position == -1) {
         g_warning ("Can't find the slot you are viewing, this should *not* happen.");
     } else {
@@ -218,8 +218,8 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
             slot->mwcols->total_width += GOF_WINDOW_SLOT (list_slot->data)->width;
             list_slot = list_slot->next;
         }
-        g_list_free (slot->mwcols->slot);
-        slot->mwcols->slot = l;
+        g_list_free (slot->mwcols->slot_list);
+        slot->mwcols->slot_list = l;
     }
 
     marlin_window_columns_add (slot->mwcols, location);
@@ -232,7 +232,7 @@ GOFWindowSlot *
 gof_window_slot_new (GFile *location, GtkOverlay *ctab)
 {
     GOFWindowSlot *slot;
-    slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
+    slot = g_object_new (GOF_WINDOW_TYPE_SLOT, NULL);
     slot->location = g_object_ref (location);
     slot->ctab = ctab;
 

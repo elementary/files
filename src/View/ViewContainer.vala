@@ -37,7 +37,7 @@ namespace Marlin.View {
         //private ulong file_info_callback;
         private GLib.List<GLib.File> select_childs = null;
 
-        public signal void path_changed (File file);
+        public signal void path_changed (File file, GOF.Window.Slot? new_slot = null);
         public signal void up ();
         public signal void back (int n=1);
         public signal void forward (int n=1);
@@ -72,11 +72,19 @@ namespace Marlin.View {
             add_overlay (overlay_statusbar);
             overlay_statusbar.showbar = view_mode != ViewMode.LIST;
 
-            path_changed.connect ((myfile) => {
+            path_changed.connect ((myfile, new_slot) => {
+                if (new_slot != null)
+                    /* Put new slot in existing mwcol */
+                    slot = new_slot;
+                else
+                    /* Force creation of new mwcol */
+                    mwcol = null;
+
                 /* location didn't change, do nothing */
                 if (slot != null && myfile != null && slot.directory.file.exists
                     && slot.location.equal (myfile))
                     return;
+
                 change_view(view_mode, myfile);
                 update_location_state (true);
             });
@@ -121,6 +129,15 @@ namespace Marlin.View {
             get {
                 return label.label;
             }
+        }
+
+        private void set_up_slot () {
+            connect_available_info ();
+            if (slot != null) {
+                slot.directory.done_loading.connect (directory_done_loading);
+                slot.directory.need_reload.connect (reload);
+            }
+            plugin_directory_loaded ();
         }
 
         private void plugin_directory_loaded () {
@@ -210,8 +227,16 @@ namespace Marlin.View {
             }
 
             if (nview == ViewMode.MILLER) {
-                mwcol = new Marlin.Window.Columns (location, this);
-                slot = mwcol.active_slot;
+                if (mwcol == null) {
+                    mwcol = new Marlin.Window.Columns (location, this);
+                    slot = mwcol.active_slot;
+                } else {
+                    /* Create new slot in existing mwcol */
+                    slot.columns_add_location (location);
+                    slot = mwcol.active_slot;
+                    set_up_slot ();
+                    return;
+                }
             } else {
                 mwcol = null;
                 slot = new GOF.Window.Slot (location, this);
@@ -226,12 +251,7 @@ namespace Marlin.View {
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
-            connect_available_info ();
-            if (slot != null) {
-                slot.directory.done_loading.connect (directory_done_loading);
-                slot.directory.need_reload.connect (reload);
-            }
-            plugin_directory_loaded ();
+            set_up_slot ();
 
             switch (nview) {
             case ViewMode.LIST:
