@@ -513,9 +513,6 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
         {
             /* we're doing a rubberband selection, so don't activate anything */
             tree_view->priv->button_release_activates = FALSE;
-
-            /* also be sure to reset the cursor */
-            gdk_window_set_cursor (event->window, NULL);
         }
         else
         {
@@ -533,20 +530,6 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                 /* setup the new path */
                 tree_view->priv->hover_path = path;
                 exo_tree_view_item_hovered (tree_view, path);
-
-                /* check if we're over a row right now */
-                if (G_LIKELY (path != NULL))
-                {
-                    /* setup the hand cursor to indicate that the row at the pointer can be activated with a single click */
-                    cursor = gdk_cursor_new (GDK_HAND2);
-                    gdk_window_set_cursor (event->window, cursor);
-                    g_object_unref (cursor);
-                }
-                else
-                {
-                    /* reset the cursor to its default */
-                    gdk_window_set_cursor (event->window, NULL);
-                }
             }
             else
             {
@@ -572,10 +555,6 @@ exo_tree_view_leave_notify_event (GtkWidget        *widget,
     gtk_tree_path_free (tree_view->priv->hover_path);
     tree_view->priv->hover_path = NULL;
     exo_tree_view_item_hovered (tree_view, NULL);
-
-    /* reset the cursor for the tree view internal window */
-    if (gtk_widget_get_realized (GTK_WIDGET (tree_view)))
-        gdk_window_set_cursor (gtk_tree_view_get_bin_window (GTK_TREE_VIEW (tree_view)), NULL);
 
     /* the next button-release-event should not activate */
     tree_view->priv->button_release_activates = FALSE;
@@ -611,10 +590,6 @@ exo_tree_view_move_cursor (GtkTreeView    *view,
     /* release and reset the hover path (if any) */
     gtk_tree_path_free (tree_view->priv->hover_path);
     tree_view->priv->hover_path = NULL;
-
-    /* reset the cursor for the tree view internal window */
-    if (gtk_widget_get_realized (GTK_WIDGET (tree_view)))
-        gdk_window_set_cursor (gtk_tree_view_get_bin_window (GTK_TREE_VIEW (tree_view)), NULL);
 
     /* call the parent's handler */
     return (*GTK_TREE_VIEW_CLASS (exo_tree_view_parent_class)->move_cursor) (view, step, count);
