@@ -4237,11 +4237,6 @@ exo_icon_view_row_deleted (GtkTreeModel *model,
         /* reset the prelit item */
         icon_view->priv->prelit_item = NULL;
         exo_icon_view_item_hovered (icon_view, path);
-
-        /* in single click mode, we also reset the cursor when realized */
-        if (G_UNLIKELY (icon_view->priv->single_click &&
-                        gtk_widget_get_realized (GTK_WIDGET (icon_view))))
-            gdk_window_set_cursor (icon_view->priv->bin_window, NULL);
     }
 
     if (item->selected)
