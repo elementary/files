@@ -17,6 +17,7 @@ namespace FM {
             public signal void sync_selection ();
             public void notify_selection_changed ();
             public unowned GLib.List<GOF.File> get_selection ();
+            public void select_first_for_empty_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
             public void zoom_in ();

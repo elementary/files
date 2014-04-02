@@ -733,6 +733,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_columns_view_select_path;
     fm_directory_view_class->select_all = fm_columns_view_select_all;
+    fm_directory_view_class->unselect_all = fm_columns_view_unselect_all;
     fm_directory_view_class->set_cursor = fm_columns_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;

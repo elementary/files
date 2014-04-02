@@ -85,8 +85,7 @@ namespace Marlin.View {
                     && slot.location.equal (myfile)) {
                     if (mwcol != null) {
                         mwcol.activate_slot (slot);
-                        refresh_slot_info ();
-                        update_location_state (false);
+                        ((FM.Directory.View)(slot.view_box)).select_first_for_empty_selection ();
                     }
 
                     return;
