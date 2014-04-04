@@ -541,7 +541,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
                                     4, 0, 0, 0, 8);
         /* we need to mask the underlying shadows in case of transparent thumbs */
         GdkRGBA bg_color;
-        gtk_style_context_get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg_color);
+        gdk_rgba_parse (&bg_color, "#fff");
         gdk_cairo_set_source_rgba (cr, &bg_color);
         cairo_rectangle (cr, pix_rect.x, pix_rect.y,
                          pix_rect.width, pix_rect.height);
