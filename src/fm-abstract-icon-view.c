@@ -387,6 +387,11 @@ fm_abstract_icon_view_select_all (FMDirectoryView *view)
     exo_icon_view_select_all (FM_ABSTRACT_ICON_VIEW (view)->icons);
 }
 
+static void fm_abstract_icon_view_unselect_all(FMDirectoryView *view)
+{
+    exo_icon_view_unselect_all (FM_ABSTRACT_ICON_VIEW (view)->icons);
+}
+
 static void
 fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
                                            GOFFile *file,
@@ -848,6 +853,7 @@ fm_abstract_icon_view_class_init (FMAbstractIconViewClass *klass)
     fm_directory_view_class->get_selected_paths = fm_abstract_icon_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_abstract_icon_view_select_path;
     fm_directory_view_class->select_all = fm_abstract_icon_view_select_all;
+    fm_directory_view_class->unselect_all = fm_abstract_icon_view_unselect_all;
     fm_directory_view_class->set_cursor = fm_abstract_icon_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_abstract_icon_view_get_path_at_pos;

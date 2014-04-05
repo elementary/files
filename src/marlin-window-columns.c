@@ -24,6 +24,7 @@
 #include "fm-directory-view.h"
 
 static void marlin_window_columns_finalize   (GObject *object);
+void marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot);
 
 G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, GOF_TYPE_ABSTRACT_SLOT)
 #define parent_class marlin_window_columns_parent_class
@@ -55,13 +56,29 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
     case GDK_KEY_Right:
         active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
 
+        GList* selection;
+        GOFWindowSlot* active = mwcols->active_slot;
+        GtkWidget* view = active->view_box;
+        GFile* selected_location = NULL;
+        selection = (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selection) (view);
+
+        /* Only take action if just one selection and it is a directory*/
+        if (selection != NULL && g_list_length (selection) == 1 && gof_file_is_folder (GOF_FILE (selection->data)))
+            selected_location = gof_file_get_target_location (GOF_FILE (selection->data));
+        else
+            break;
+
         if (active_position < g_list_length(mwcols->slot_list) - 1)
             to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position + 1));
 
-        if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active))
-            break;
+        /* If no slot to activate or the locations do not match, open a new slot */
+        if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active)
+         || !g_file_equal (to_active->directory->location, selected_location))
+            g_signal_emit_by_name (active->ctab, "path-changed", selected_location, active);
+        else 
+        /* activate existing slot */
+            g_signal_emit_by_name (to_active->ctab, "path-changed", to_active->directory->location, to_active);
 
-        g_signal_emit_by_name (to_active->ctab, "path-changed", to_active->directory->location, to_active);
         return TRUE;
     }
 
@@ -158,7 +175,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 
     /* Add it in our GList */
     mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
-    gtk_widget_grab_focus(slot->view_box);
+    marlin_window_columns_activate_slot (mwcols, slot);
 }
 
 void
@@ -191,7 +208,7 @@ marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot 
 
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
-    gtk_widget_grab_focus(slot->view_box);
+
     /* autoscroll Miller Columns */
     marlin_animation_smooth_adjustment_to (mwcols->hadj, width + slot_indice * mwcols->handle_size);
 }

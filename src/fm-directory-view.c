@@ -322,12 +322,12 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     int size = marlin_zoom_level_to_icon_size (zoom);
     gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     /* If in Miller view, autosize the column */
-    if (view->details->slot->ready_to_autosize)
+    if (view->details->slot->mwcols != NULL) {
+        if (view->details->slot->ready_to_autosize)
         autosize_slot (view->details->slot);
-    else
-        view->details->slot->ready_to_autosize = TRUE;
-
-    //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
+        else
+            view->details->slot->ready_to_autosize = TRUE;
+    }
 }
 
 static void
@@ -452,7 +452,6 @@ zoom_level_changed (FMDirectoryView *view, GParamSpec *pspec)
 static void
 fm_directory_view_init (FMDirectoryView *view)
 {
-
     view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
 
     view->details = g_new0 (FMDirectoryViewDetails, 1);
@@ -1632,9 +1631,7 @@ fm_directory_view_drag_timer (gpointer user_data)
     //thunar_standard_view_context_menu (standard_view, 3, gtk_get_current_event_time ());
     //fm_directory_view_context_menu (view, 3, gtk_get_current_event_time ());
     fm_directory_view_context_menu (view, (GdkEventButton *) gtk_get_current_event ());
-    g_debug ("fire up the context menu 3\n");
     GDK_THREADS_LEAVE ();
-
     return FALSE;
 }
 
@@ -2217,6 +2214,10 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (event != NULL);
 
+    /* figure out the real view */
+    view_box = gtk_bin_get_child (GTK_BIN (view));
+    g_return_if_fail (view_box != NULL);
+
     /* check if we have already scheduled a drag timer */
     if (G_LIKELY (view->details->drag_timer_id < 0))
     {
@@ -2224,8 +2225,6 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
         view->details->drag_x = event->x;
         view->details->drag_y = event->y;
 
-        /* figure out the real view */
-        view_box = gtk_bin_get_child (GTK_BIN (view));
 
         /* we use the menu popup delay here, which should give us good values */
         settings = gtk_settings_get_for_screen (eel_gtk_widget_get_screen (view_box));
@@ -2254,9 +2253,10 @@ fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
     GList           *openwith_items = NULL;
     GtkUIManager    *ui_manager;
 
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (view != NULL && FM_IS_DIRECTORY_VIEW (view));
 
     ui_manager = fm_directory_view_get_ui_manager (view);
+
     selection = fm_directory_view_get_selection (view);
 
     /* grab an additional reference on the view */
@@ -2265,13 +2265,15 @@ fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
-    marlin_plugin_manager_hook_context_menu (plugins, menu, selection);
-    gtk_menu_set_screen (GTK_MENU (menu), eel_gtk_widget_get_screen (GTK_WIDGET (view)));
+    if (menu != NULL && GTK_IS_MENU (menu)) { 
+        marlin_plugin_manager_hook_context_menu (plugins, menu, selection);
+        gtk_menu_set_screen (GTK_MENU (menu), eel_gtk_widget_get_screen (GTK_WIDGET (view)));
 
-    eel_pop_up_context_menu (GTK_MENU (menu),
-                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
-                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
-                             event);
+        eel_pop_up_context_menu (GTK_MENU (menu),
+                                 EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                 EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                 event);
+    }
 
     /* release the additional reference on the view */
     g_object_unref (G_OBJECT (view));
@@ -2714,7 +2716,6 @@ static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
     g_debug ("%s %s", G_STRFUNC, slot->directory->file->uri);
-
     //coltest
     g_debug ("%s > merge menus", G_STRFUNC);
     fm_directory_view_merge_menus (view);
@@ -2894,7 +2895,6 @@ fm_directory_view_set_property (GObject         *object,
     GtkWidget *window;
 
     view = FM_DIRECTORY_VIEW (object);
-
     switch (prop_id)  {
     case PROP_WINDOW_SLOT:
         g_assert (view->details->slot == NULL);
@@ -3086,7 +3086,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
     GList *selection;
 
-    //g_message ("-- %s %s", G_STRFUNC, view->details->slot->directory->file->uri);
+    g_debug ("-- %s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
@@ -3097,7 +3097,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
         view->details->slot->mwcols->active_slot != view->details->slot)
         return;
 
-    //g_message ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
+    g_debug ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
     update_menus (view);
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
@@ -3129,7 +3129,6 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
 
     //g_warning ("%s", G_STRFUNC);
     gof_window_slot_active (view->details->slot);
-
     /* make sure to grab focus as right click menus don't automaticly get it */
     fm_directory_view_grab_focus (GTK_WIDGET (view));
 }
@@ -3254,7 +3253,7 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
 {
     GFile *current_directory;
 
-    //g_message ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 

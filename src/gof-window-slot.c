@@ -203,7 +203,6 @@ gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location)
     gint current_slot_position = 0;
     gint i;
     GList* list_slot = slot->mwcols->slot_list;
-
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 
@@ -301,9 +300,8 @@ void
 gof_window_slot_active (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-
     if (slot->mwcols != NULL) {
-         marlin_window_columns_activate_slot (slot->mwcols, slot);
+        marlin_window_columns_activate_slot (slot->mwcols, slot);
         autosize_slot (slot);
     }
 }

@@ -73,26 +73,23 @@ namespace Marlin.View {
             overlay_statusbar.showbar = view_mode != ViewMode.LIST;
 
             path_changed.connect ((myfile, new_slot) => {
+                /* new_slot is not null if the path is being changed inside a miller column view */
                 if (new_slot != null)
                     /* Put new slot in existing mwcol */
                     slot = new_slot;
                 else
-                    /* Force creation of new mwcol */
                     mwcol = null;
 
-                /* location didn't change, do nothing */
-                if (slot != null && myfile != null && slot.directory.file.exists
-                    && slot.location.equal (myfile)) {
-                    if (mwcol != null) {
-                        mwcol.activate_slot (slot);
-                        ((FM.Directory.View)(slot.view_box)).select_first_for_empty_selection ();
-                    }
-
-                    return;
+                if (new_slot != null && mwcol != null 
+                 && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
+                    /* Just re-activate existing slot */
+                    mwcol.activate_slot (slot);
+                    ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
+                } else {
+                    change_view(view_mode, myfile);
+                    update_location_state (true);
                 }
-
-                change_view(view_mode, myfile);
-                update_location_state (true);
+                slot.view_box.grab_focus ();
             });
 
             up.connect (() => {
@@ -202,10 +199,10 @@ namespace Marlin.View {
                 content_shown = false;
                 if (select_childs != null)
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
+                else if (mwcol != null)
+                    ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
             }
-
-            warning ("directory done loading");
-
+            message ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
@@ -241,8 +238,9 @@ namespace Marlin.View {
                     slot = mwcol.active_slot;
                 } else {
                     /* Create new slot in existing mwcol
-                     * 'slot' already points to new slot */
+                     * 'slot' already points to slot where to create new slot */
                     slot.columns_add_location (location);
+                    /* mwcols makes the new slot active */
                     slot = mwcol.active_slot;
                     set_up_slot ();
                     return;

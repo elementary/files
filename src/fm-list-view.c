@@ -774,6 +774,11 @@ fm_list_view_select_all (FMDirectoryView *view)
     gtk_tree_selection_select_all (gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree));
 }
 
+static void fm_list_view_unselect_all(FMDirectoryView *view)
+{
+    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree));
+}
+
 static void
 fm_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
@@ -971,8 +976,8 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->get_selected_paths = fm_list_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_list_view_select_path;
     fm_directory_view_class->select_all = fm_list_view_select_all;
+    fm_directory_view_class->unselect_all = fm_list_view_unselect_all;
     fm_directory_view_class->set_cursor = fm_list_view_set_cursor;
-
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;

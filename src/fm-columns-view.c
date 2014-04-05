@@ -323,7 +323,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             return TRUE;
         }
     }
-
     return FALSE;
 }
 
@@ -548,7 +547,6 @@ static GList *
 get_selection (FMColumnsView *view)
 {
     GList *list = NULL;
-
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);
 
@@ -574,7 +572,6 @@ static void
 fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 {
     GtkTreeSelection *selection;
-
     selection = gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree);
     gtk_tree_selection_select_path (selection, path);
 }
@@ -608,9 +605,7 @@ fm_columns_view_select_all (FMDirectoryView *view)
 
 static void fm_columns_view_unselect_all(FMDirectoryView *view)
 {
-g_message ("%s-", G_STRFUNC);
     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
-g_message ("%s- leaving", G_STRFUNC);
 }
 
 static GList *
