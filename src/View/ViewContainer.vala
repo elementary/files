@@ -51,12 +51,10 @@ namespace Marlin.View {
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label ("Loading...");
-            change_view (view_mode, location);
             label.set_ellipsize (Pango.EllipsizeMode.END);
             label.set_single_line_mode (true);
             label.set_alignment (0.0f, 0.5f);
             label.set_padding (0, 0);
-            update_location_state (true);
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
@@ -82,7 +80,7 @@ namespace Marlin.View {
 
                 if (new_slot != null && mwcol != null 
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
-                    /* Just re-activate existing slot */
+                    /* Just re-activate existing slot in miller column view */
                     mwcol.activate_slot (slot);
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                 } else {
@@ -93,24 +91,20 @@ namespace Marlin.View {
             });
 
             up.connect (() => {
-                mwcol = null;
-                if (slot.directory.has_parent ()) {
-                    change_view (view_mode, slot.directory.get_parent ());
-                    update_location_state (true);
-                }
+                if (slot.directory.has_parent ()) 
+                    path_changed (slot.directory.get_parent ());
             });
 
             back.connect ((n) => {
-                mwcol = null;
-                change_view (view_mode, File.new_for_commandline_arg (browser.go_back (n)));
-                update_location_state (false);
+                path_changed (File.new_for_commandline_arg (browser.go_back (n)));
             });
 
             forward.connect ((n) => {
-                mwcol = null;
-                change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
-                update_location_state (false);
+                 path_changed (File.new_for_commandline_arg (browser.go_forward (n)));
             });
+
+            /* handle all path changes through the path-changed signal */
+            path_changed (location);
         }
 
         public Gtk.Widget content {
@@ -227,6 +221,7 @@ namespace Marlin.View {
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
+
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel ();
                 slot.directory.track_longest_name = false;
@@ -237,10 +232,9 @@ namespace Marlin.View {
                     mwcol = new Marlin.Window.Columns (location, this);
                     slot = mwcol.active_slot;
                 } else {
-                    /* Create new slot in existing mwcol
-                     * 'slot' already points to slot where to create new slot */
+                    /* Create new slot in existing mwcol */
+                    /* The new slot becomes active */
                     slot.columns_add_location (location);
-                    /* mwcols makes the new slot active */
                     slot = mwcol.active_slot;
                     set_up_slot ();
                     return;
@@ -345,6 +339,5 @@ namespace Marlin.View {
         {
             return ((Gtk.Widget) window);
         }
-
     }
 }
