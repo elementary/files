@@ -558,15 +558,16 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         x1 = x0 + text_width;
         y1 = y0 + text_height;
 
-        cairo_move_to (cr, x0 + 5, y0);
-        cairo_line_to (cr, x1 - 5, y0);
-        cairo_curve_to (cr, x1 - 5, y0, x1, y0, x1, y0 + 5);
-        cairo_line_to (cr, x1, y1 - 5);
-        cairo_curve_to (cr, x1, y1 - 5, x1, y1, x1 - 5, y1);
-        cairo_line_to (cr, x0 + 5, y1);
-        cairo_curve_to (cr, x0 + 5, y1, x0, y1, x0, y1 - 5);
-        cairo_line_to (cr, x0, y0 + 5);
-        cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
+        const unsigned int border_radius = 2;
+        cairo_move_to (cr, x0 + border_radius, y0);
+        cairo_line_to (cr, x1 - border_radius, y0);
+        cairo_curve_to (cr, x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
+        cairo_line_to (cr, x1, y1 - border_radius);
+        cairo_curve_to (cr, x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
+        cairo_line_to (cr, x0 + border_radius, y1);
+        cairo_curve_to (cr, x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
+        cairo_line_to (cr, x0, y0 + border_radius);
+        cairo_curve_to (cr, x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
 
         GdkRGBA color;
 
@@ -577,7 +578,6 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
                 g_critical("Can't parse this color value: %s", text_renderer->background);
                 gtk_style_context_get_background_color (context, state, &color);
             }
-
         }
         else
         {
