@@ -167,13 +167,15 @@ namespace Marlin.View {
 
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
+            FileInfo file_info;
             try {
-                var file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);;
-
-                if (!file_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ))
-                    throw new IOError.PERMISSION_DENIED("");
-
-                /* Unless the location is a directory, change it to its parent dir */
+                file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
+                /* If not readable, alert the user */
+                if (!file_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ)) {
+                    content = new Granite.Widgets.Welcome (_("This does not belong to you."),
+                                                           _("You don't have permission to view this folder."));
+                }
+                /* If not a directory, then change the location to the parent */
                 if (file_info.get_file_type () == FileType.DIRECTORY) {
                     content_shown = false;
                     if (select_childs != null)
@@ -182,15 +184,11 @@ namespace Marlin.View {
                     path_changed (slot.location.get_parent ());
                 }
             } catch (Error err) {
-                if (err is IOError.NOT_FOUND)
-                    content = new DirectoryNotFound (slot.directory, this);
-                else if (err is IOError.PERMISSION_DENIED)
-                    content = new Granite.Widgets.Welcome (_("This does not belong to you."),
-                                                           _("You don't have permission to view this folder."));
+                /* query_info will throw an expception if it cannot find the file */
+                content = new DirectoryNotFound (slot.directory, this);
             }
 
             warning ("directory done loading");
-
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
