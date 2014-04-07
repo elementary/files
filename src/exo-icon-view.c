@@ -1974,7 +1974,6 @@ exo_icon_view_motion (GtkWidget      *widget,
     GtkAllocation allocation;
     ExoIconView *icon_view;
     ExoIconViewItem *item;
-    GdkCursor *cursor;
     gint size;
     gint abso;
 
@@ -2033,24 +2032,6 @@ exo_icon_view_motion (GtkWidget      *widget,
             }
             exo_icon_view_item_hovered (icon_view, path);
             gtk_tree_path_free (path);
-
-            /* check if we are in single click mode right now */
-            if (G_UNLIKELY (icon_view->priv->single_click))
-            {
-                /* display a hand cursor when pointer is above an item */
-                if (G_LIKELY (item != NULL))
-                {
-                    /* hand2 seems to be what we should use */
-                    cursor = gdk_cursor_new (GDK_HAND2);
-                    gdk_window_set_cursor (event->window, cursor);
-                    gdk_cursor_unref (cursor);
-                }
-                else
-                {
-                    /* reset the cursor */
-                    gdk_window_set_cursor (event->window, NULL);
-                }
-            }
         }
     }
 
@@ -4256,11 +4237,6 @@ exo_icon_view_row_deleted (GtkTreeModel *model,
         /* reset the prelit item */
         icon_view->priv->prelit_item = NULL;
         exo_icon_view_item_hovered (icon_view, path);
-
-        /* in single click mode, we also reset the cursor when realized */
-        if (G_UNLIKELY (icon_view->priv->single_click &&
-                        gtk_widget_get_realized (GTK_WIDGET (icon_view))))
-            gdk_window_set_cursor (icon_view->priv->bin_window, NULL);
     }
 
     if (item->selected)
@@ -6259,7 +6235,7 @@ exo_icon_view_get_selected_items (ExoIconView *icon_view)
         }
     }
 
-    return selected;
+    return g_list_reverse (selected);
 }
 
 /**
