@@ -359,7 +359,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
                    gof_file_get_uri (dest));
     }
 
-    should_show_type = g_strcmp0(src_ftype, dest_ftype);    
+    should_show_type = g_strcmp0 (src_ftype, dest_ftype);    
 
     const gchar *dest_display_name = gof_file_get_display_name (dest);
     const gchar *dest_dir_display_name = gof_file_get_display_name (dest_dir);
