@@ -181,6 +181,7 @@ namespace Marlin.View {
             warning ("directory done loading");
 
             slot.directory.done_loading.disconnect (directory_done_loading);
+            refresh_slot_info ();
         }
 
         public void change_view (int nview, GLib.File? location) {
