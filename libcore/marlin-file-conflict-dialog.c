@@ -351,12 +351,12 @@ file_list_ready_cb (GList *files, gpointer user_data)
 
     if (src_ftype == NULL) {
         g_warning ("Could not determine file type of source file: %s\n",
-                   gof_file_get_uri(src));
+                   gof_file_get_uri (src));
     }
 
     if (dest_ftype == NULL) {
         g_warning ("Could not determine file type of destination file: %s\n",
-                   gof_file_get_uri(dest));
+                   gof_file_get_uri (dest));
     }
 
     should_show_type = g_strcmp0(src_ftype, dest_ftype);    
