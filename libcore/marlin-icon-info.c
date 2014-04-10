@@ -730,3 +730,23 @@ marlin_icon_info_get_pixbuf_force_size (MarlinIconInfo  *icon, gint size, gboole
     }
 }
 
+static gboolean
+remove_all_size_cache (LoadableIconKey *key, gpointer value, gpointer user_info){
+    GFile *icon_file;
+    GIcon *icon;
+    LoadableIconKey *lookup_key;
+    char *path = user_info;
+
+    icon_file = g_file_new_for_path (path);
+    icon = g_file_icon_new (icon_file);
+
+    lookup_key = (LoadableIconKey *) key;
+
+    return (g_icon_equal (lookup_key->icon, icon));
+}
+
+void marlin_icon_info_remove_updated_icon (const char *path){
+     g_hash_table_foreach_remove (loadable_icon_cache,
+                                  (GHRFunc) remove_all_size_cache,
+                                  path);
+}

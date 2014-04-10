@@ -65,8 +65,8 @@ GdkPixbuf *         marlin_icon_info_get_pixbuf_at_size         (MarlinIconInfo 
 
 void                marlin_icon_info_clear_caches               (void);
 void                marlin_icon_info_infos_caches               (void);
+void                marlin_icon_info_remove_updated_icon        (const char *path);
 
 G_END_DECLS
 
 #endif /* MARLIN_ICON_INFO_H */
-
