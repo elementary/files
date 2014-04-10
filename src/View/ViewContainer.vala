@@ -82,7 +82,10 @@ namespace Marlin.View {
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
                     /* Just re-activate existing slot in miller column view */
                     mwcol.activate_slot (slot);
-                    ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
+                    if (select_childs != null)
+                        ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
+                    else 
+                        ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                 } else {
                     change_view(view_mode, myfile);
                     update_location_state (true);
@@ -224,7 +227,8 @@ namespace Marlin.View {
 
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel ();
-                slot.directory.track_longest_name = false;
+                if (mwcol == null)
+                    slot.directory.track_longest_name = false;
             }
 
             if (nview == ViewMode.MILLER) {
