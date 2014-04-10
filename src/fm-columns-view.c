@@ -64,6 +64,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
+
     view->details->selection = get_selection (view);
 
     /* setup the current active slot */
@@ -302,6 +303,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             gtk_tree_path_free (path);
         }
         /* queue the menu popup */
+        fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
         fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
 
         return TRUE;
