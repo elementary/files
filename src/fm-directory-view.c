@@ -276,6 +276,11 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
     g_return_if_fail (file->exists);
 
     g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
+    //remove thumbnail cache so new thumbnail would be generated
+    if (gof_file_get_thumbnail_path (file) != NULL){
+        char* path = gof_file_get_thumbnail_path (file);
+        marlin_icon_info_remove_updated_icon (path);
+    }
     fm_list_model_file_changed (view->model, file, directory);
     guint id;
     marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id, /* large */ FALSE);
@@ -285,6 +290,11 @@ static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     g_debug ("%s %s", G_STRFUNC, file->uri);
+    //remove thumbnail cache so new thumbnail would be generated
+    if (gof_file_get_thumbnail_path (file) != NULL){
+        char* path = gof_file_get_thumbnail_path (file);
+        marlin_icon_info_remove_updated_icon (path);
+    }
     fm_list_model_remove_file (view->model, file, directory);
     /* Remove from gof-directory-async cache */
     if (gof_file_is_folder (file)) {
@@ -3752,4 +3762,3 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
 
     update_menus (view);
 }
-

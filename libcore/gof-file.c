@@ -475,11 +475,8 @@ gof_file_update (GOFFile *file)
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
     /* mark the thumb flags as state none, we'll load the thumbs once the directory
      * would be loaded on a thread */
-    if (gof_file_get_thumbnail_path (file) != NULL){
+    if (gof_file_get_thumbnail_path (file) != NULL)
         file->flags = GOF_FILE_THUMB_STATE_NONE;
-        char* path = gof_file_get_thumbnail_path (file);
-        marlin_icon_info_remove_updated_icon (path);
-    }
 
     /* formated type */
     gof_file_update_formated_type (file);
