@@ -76,10 +76,13 @@ namespace Marlin.View {
                     /* Put new slot in existing mwcol */
                     slot = new_slot;
                 else {
-                    mwcol = null;
-                    if (slot != null && slot.directory != null && slot.directory.file.exists) {
-                        slot.directory.cancel ();
+                    if (mwcol != null && slot != null) {
+                        if (slot.directory != null) {
+                            slot.directory.cancel ();
+                            slot.directory.purge_dir_from_cache ();
+                        }
                         slot = null;
+                        mwcol = null;
                     }
                 }
 
@@ -87,10 +90,6 @@ namespace Marlin.View {
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
                     /* Just re-activate existing slot in miller column view */
                     mwcol.activate_slot (slot);
-                    if (select_childs != null)
-                        ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
-                    else 
-                        ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                 } else {
                     change_view(view_mode, myfile);
                     update_location_state (true);
@@ -247,6 +246,7 @@ namespace Marlin.View {
                     /* The new slot becomes active */
                     slot.columns_add_location (location);
                     slot = mwcol.active_slot; 
+                    ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                     if (slot != null) {
                         set_up_slot ();
                     } else 
