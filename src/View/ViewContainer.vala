@@ -206,7 +206,7 @@ namespace Marlin.View {
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                 }
             }
-            message ("directory done loading");
+            debug ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 

@@ -56,7 +56,6 @@ struct GOFWindowSlot {
     MarlinWindowColumns *mwcols;
     guint width;
     guint slot_number;
-    gboolean ready_to_autosize;
 };
 
 struct GOFWindowSlotClass {

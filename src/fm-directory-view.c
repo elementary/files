@@ -322,13 +322,8 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     int size = marlin_zoom_level_to_icon_size (zoom);
     gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     /* If in Miller view, autosize the column */
-    if (view->details->slot->mwcols != NULL) {
-        if (view->details->slot->ready_to_autosize) {
+    if (view->details->slot->mwcols != NULL)
             autosize_slot (view->details->slot);
-        }
-        else
-            view->details->slot->ready_to_autosize = TRUE;
-    }
 }
 
 static void
@@ -670,7 +665,6 @@ void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
 {
     GOFWindowSlot *slot = directory_view->details->slot;
-    slot->ready_to_autosize = FALSE;
     g_signal_emit_by_name (slot->ctab, "path-changed", location, slot);
 }
 
@@ -678,7 +672,6 @@ void
 fm_directory_view_load_root_location (FMDirectoryView *directory_view, GFile *location)
 {
     GOFWindowSlot *slot = directory_view->details->slot;
-    slot->ready_to_autosize = FALSE;
     g_signal_emit_by_name (slot->ctab, "path-changed", location, NULL);
 }
 
@@ -2425,7 +2418,7 @@ sort_column_changed_callback (GtkTreeSortable *sortable, FMDirectoryView *view)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     gtk_tree_sortable_get_sort_column_id (sortable, &sort_column_id, &sort_order);
-    //g_message ("%s %d %d", G_STRFUNC, sort_column_id, sort_order);
+    g_debug ("%s %d %d", G_STRFUNC, sort_column_id, sort_order);
 
     info = g_file_info_new ();
     g_file_info_set_attribute_string (info, "metadata::marlin-sort-column-id", fm_list_model_get_string_from_column_id (sort_column_id));
@@ -3268,7 +3261,7 @@ action_paste_into_folder (GtkAction *action, FMDirectoryView *view)
 {
     GOFFile *file;
 
-    //g_message ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 

@@ -606,16 +606,13 @@ get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter 
                         FM_LIST_MODEL_FILE_COLUMN, &file,
                         -1);
 
-    if (file != NULL) {
-g_message ("%s is selected", file->uri);
+    if (file != NULL)
         (* list) = g_list_prepend ((* list), file);
-    }
 }
 
 static GList *
 get_selection (FMColumnsView *view)
 {
-g_message ("%s-", G_STRFUNC);
     GList *list = NULL;
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);
@@ -731,7 +728,6 @@ static void
 fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
-
     g_debug ("%s\n", G_STRFUNC);
 
     //Unload all the subdirectories in the loaded subdirectories list.
@@ -779,15 +775,19 @@ fm_columns_view_init (FMColumnsView *view)
 static void
 fm_columns_view_zoom_level_changed (FMDirectoryView *view)
 {
-    /* set the new "size" for the icon renderer */
-    g_object_set (G_OBJECT (view->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), "zoom-level", view->zoom_level, NULL);
-    gint xpad, ypad;
+    /* Ignore if view not valid */
+    if (FM_IS_COLUMNS_VIEW (view) && GTK_IS_TREE_VIEW (FM_COLUMNS_VIEW (view)->tree)) {
+        /* set the new "size" for the icon renderer */
+        g_object_set (G_OBJECT (view->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), "zoom-level", view->zoom_level, NULL);
+        gint xpad, ypad;
 
-    gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
-    gtk_cell_renderer_set_fixed_size (view->icon_renderer,
-                                      marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
-                                      marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
-    gtk_tree_view_columns_autosize (FM_COLUMNS_VIEW (view)->tree);
+        gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
+        gtk_cell_renderer_set_fixed_size (view->icon_renderer,
+                                          marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
+                                          marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
+
+        gtk_tree_view_columns_autosize (FM_COLUMNS_VIEW (view)->tree);
+    }
 }
 
 

@@ -1061,7 +1061,7 @@ namespace Marlin.Places {
                 } else {
                     GOF.Window.Slot? slot = window.get_active_slot ();
                     if (slot != null)
-                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location);
+                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
                 }
             } else {
                 Drive drive;

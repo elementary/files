@@ -105,6 +105,7 @@ marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
     slot->mwcols = mwcols;
+    slot->slot_number = 0;
     mwcols->active_slot = slot;
     mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
     return mwcols;
@@ -134,7 +135,6 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     GOFWindowSlot *slot = mwcols->active_slot;
     gof_window_slot_make_column_view (slot);
-    slot->slot_number = 0;
     slot->colpane = mwcols->colpane;
     gof_window_column_add (slot, slot->view_box);
 

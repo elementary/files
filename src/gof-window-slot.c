@@ -46,7 +46,6 @@ gof_window_slot_init (GOFWindowSlot *slot)
 {
     slot->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     slot->width = 0;
-    slot->ready_to_autosize = FALSE;
     GOF_ABSTRACT_SLOT (slot)->extra_location_widgets = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start (GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
@@ -134,28 +133,12 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
     gtk_paned_pack2 (GTK_PANED (hpane), box1, TRUE, FALSE);
 
-    /* If the directory finished loading before slot was ready then autosize the slot now.
-    * Otherwise the slot will be autosized by the directory_done_loading callback
-    * This is necessary because the directory loads faster from the cache than from disk
-    * On first use the directory loads from disk and we reach here before the directory
-    * has finished loading.
-    * On subsequent uses, the directory loads from cache before the slot is ready.
-    * Whichever finishes first sets slot->ready_to_autosize = TRUE
-    * Whichever finds slot->ready_to_autosize = TRUE does the autosizing.
-    */
-
-    if (slot->ready_to_autosize) {
-        autosize_slot (slot);
-}
-    else
-        slot->ready_to_autosize = TRUE;
+    gof_directory_async_load (slot->directory);
 }
 
 void autosize_slot (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-    if (!slot->ready_to_autosize)
-        return;
 
     PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET (slot->view_box), NULL);
 
@@ -291,7 +274,7 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     slot->directory->track_longest_name = TRUE;
-    gof_directory_async_load (slot->directory);
+    //gof_directory_async_load (slot->directory);
 }
 
 
