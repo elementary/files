@@ -349,7 +349,17 @@ file_list_ready_cb (GList *files, gpointer user_data)
     const gchar *src_ftype = gof_file_get_ftype (src);
     const gchar *dest_ftype = gof_file_get_ftype (dest);
 
-    should_show_type = strcmp(src_ftype, dest_ftype);
+    if (src_ftype == NULL) {
+        g_warning ("Could not determine file type of source file: %s\n",
+                   gof_file_get_uri (src));
+    }
+
+    if (dest_ftype == NULL) {
+        g_warning ("Could not determine file type of destination file: %s\n",
+                   gof_file_get_uri (dest));
+    }
+
+    should_show_type = g_strcmp0 (src_ftype, dest_ftype);    
 
     const gchar *dest_display_name = gof_file_get_display_name (dest);
     const gchar *dest_dir_display_name = gof_file_get_display_name (dest_dir);
@@ -459,7 +469,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_string_append_printf (str, "<b>%s</b>\n", _("Original file"));
     g_string_append_printf (str, "<i>%s</i> %s\n", _("Size:"), dest->format_size);
 
-    if (should_show_type) {
+    if (should_show_type && dest_ftype != NULL) {
         g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), dest_ftype);
     }
 
@@ -480,7 +490,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_string_append_printf (str, "<b>%s</b>\n", _("Replace with"));
     g_string_append_printf (str, "<i>%s</i> %s\n", _("Size:"), src->format_size);
 
-    if (should_show_type) {
+    if (should_show_type && src_ftype != NULL) {
         g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), src_ftype);
     }
 
