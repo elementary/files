@@ -116,15 +116,9 @@ marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 void
 marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 {
-    GOFWindowSlot *slot = mwcols->active_slot;
-
-    gof_window_slot_make_column_view (slot);
-    slot->slot_number = 0;
-
     mwcols->colpane = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    slot->colpane = mwcols->colpane;
-    gtk_widget_show (mwcols->colpane);
     mwcols->view_box = gtk_scrolled_window_new (0, 0);
+
     GtkWidget *viewport = gtk_viewport_new (0, 0);
     gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
     gtk_container_add (GTK_CONTAINER (viewport), mwcols->colpane);
@@ -134,14 +128,15 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
                                     GTK_POLICY_NEVER);
     gtk_widget_show (mwcols->view_box);
     gtk_container_add (GTK_CONTAINER (mwcols->view_box), viewport);
-
-    mwcols->hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (slot->mwcols->view_box));
-
-    gof_window_column_add (slot, slot->view_box);
-
     gtk_box_pack_start(GTK_BOX (mwcols->content_box), mwcols->view_box, TRUE, TRUE, 0);
-
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->content_box);
+    mwcols->hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (mwcols->view_box));
+
+    GOFWindowSlot *slot = mwcols->active_slot;
+    gof_window_slot_make_column_view (slot);
+    slot->slot_number = 0;
+    slot->colpane = mwcols->colpane;
+    gof_window_column_add (slot, slot->view_box);
 
     /* store pane handle size*/
     gtk_widget_style_get (GTK_WIDGET (slot->hpane), "handle-size", &mwcols->handle_size, NULL);

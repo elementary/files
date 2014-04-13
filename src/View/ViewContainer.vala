@@ -75,8 +75,13 @@ namespace Marlin.View {
                 if (new_slot != null)
                     /* Put new slot in existing mwcol */
                     slot = new_slot;
-                else
+                else {
                     mwcol = null;
+                    if (slot != null && slot.directory != null && slot.directory.file.exists) {
+                        slot.directory.cancel ();
+                        slot = null;
+                    }
+                }
 
                 if (new_slot != null && mwcol != null 
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
@@ -194,10 +199,12 @@ namespace Marlin.View {
                                                        _("You don't have permission to view this folder."));
             } else {
                 content_shown = false;
-                if (select_childs != null)
+                if (select_childs != null) {
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
-                else if (mwcol != null)
+                }
+                else if (mwcol != null) {
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
+                }
             }
             message ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
@@ -239,8 +246,12 @@ namespace Marlin.View {
                     /* Create new slot in existing mwcol */
                     /* The new slot becomes active */
                     slot.columns_add_location (location);
-                    slot = mwcol.active_slot;
-                    set_up_slot ();
+                    slot = mwcol.active_slot; 
+                    if (slot != null) {
+                        set_up_slot ();
+                    } else 
+                        critical ("marlin window column view has no active slot");
+
                     return;
                 }
             } else {

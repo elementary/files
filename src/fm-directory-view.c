@@ -323,8 +323,9 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     /* If in Miller view, autosize the column */
     if (view->details->slot->mwcols != NULL) {
-        if (view->details->slot->ready_to_autosize)
-        autosize_slot (view->details->slot);
+        if (view->details->slot->ready_to_autosize) {
+            autosize_slot (view->details->slot);
+        }
         else
             view->details->slot->ready_to_autosize = TRUE;
     }
@@ -609,7 +610,7 @@ fm_directory_view_dispose (GObject *object)
 static void
 fm_directory_view_finalize (GObject *object)
 {
-    //g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
 
     GOFWindowSlot *slot = view->details->slot;
@@ -668,21 +669,17 @@ fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
 {
-    //GOFDirectoryAsync *directory;
-
-    /*if (eel_uri_is_search (location)) {
-      directory_view->details->allow_moves = FALSE;
-      } else {
-      directory_view->details->allow_moves = TRUE;
-      }*/
-
-    //directory = gof_directory_async_new(location);
-    /*if (FM_IS_COLUMNS_VIEW (directory_view))
-      marlin_window_columns_change_location (directory_view->details->slot, location);
-      else
-      gof_window_slot_change_location (directory_view->details->slot, location);*/
     GOFWindowSlot *slot = directory_view->details->slot;
+    slot->ready_to_autosize = FALSE;
     g_signal_emit_by_name (slot->ctab, "path-changed", location, slot);
+}
+
+void
+fm_directory_view_load_root_location (FMDirectoryView *directory_view, GFile *location)
+{
+    GOFWindowSlot *slot = directory_view->details->slot;
+    slot->ready_to_autosize = FALSE;
+    g_signal_emit_by_name (slot->ctab, "path-changed", location, NULL);
 }
 
 /* TODO remove screen if we don't create any new windows
@@ -2443,7 +2440,6 @@ sort_column_changed_callback (GtkTreeSortable *sortable, FMDirectoryView *view)
     g_object_unref (location);
     g_object_unref (info);
 }
-
 
 /* Thumbnails fonctions */
 

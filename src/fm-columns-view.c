@@ -40,6 +40,8 @@ struct FMColumnsViewDetails {
 
     GOFFile     *renaming_file;
     gboolean    rename_done;
+    guint       double_click_timeout_id;
+    GOFFile     *selected_folder;
 };
 
 /* Wait for the rename to end when activating a file being renamed */
@@ -262,6 +264,25 @@ fm_columns_view_sync_selection (FMDirectoryView *view)
     fm_directory_view_notify_selection_changed (view);
 }
 
+static void
+fm_columns_not_double_click (FMColumnsView *view) 
+{
+    g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
+    g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
+
+    view->details->double_click_timeout_id = 0;
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+    return FALSE;
+}
+
+static void
+fm_columns_cancel_await_double_click (FMColumnsView *view) {
+    if (view->details->double_click_timeout_id > 0) {
+        g_source_remove (view->details->double_click_timeout_id);
+        view->details->double_click_timeout_id = 0;
+    }
+}
+
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
 {
@@ -284,6 +305,51 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     {
         gtk_tree_selection_unselect_all (selection);
     }
+
+    if (event->button == 1 && g_settings_get_boolean (settings, "single-click")) {
+        /* Handle single left-click (and start of double click) in single click mode*/
+        if (event->type == GDK_BUTTON_PRESS 
+           && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0 ) {
+            /* Ignore second GDK_BUTTON_PRESS event of double-click */
+            if (view->details->double_click_timeout_id > 0)
+                return TRUE;
+
+            /*Determine where user clicked - this will be the sole selection*/
+            gtk_tree_selection_unselect_all (selection);
+            if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL)) {
+                /* select the path on which the user clicked */
+                gtk_tree_selection_select_path (selection, path);
+                gtk_tree_path_free (path);
+            } else 
+                return FALSE;
+
+            /* If single folder selected, start double-click timeout */
+            GList *file_list = NULL;
+            file_list = fm_directory_view_get_selection (view);
+            GOFFile *file = GOF_FILE (file_list->data);
+            view->details->selected_folder = NULL;
+            if (!gof_file_is_folder (file))
+                return FALSE;
+
+            view->details->selected_folder = file;
+            view->details->double_click_timeout_id = g_timeout_add (400,
+                                                                    (GSourceFunc)fm_columns_not_double_click,
+                                                                    view);
+
+            return TRUE;
+
+        } else if (event->type == GDK_2BUTTON_PRESS) {
+            /* In single click mode, double-clicking a folder will open it as root in a new view */
+            fm_columns_cancel_await_double_click (view);
+            if (view->details->selected_folder != NULL) {
+                fm_directory_view_load_root_location (view, view->details->selected_folder->location);
+                return TRUE;
+            } 
+        }
+    }
+    /* Ensure any timeout is cancelled  and unfreeze update
+     * if a button other than the left button is pressed */
+    fm_columns_cancel_await_double_click (view);
 
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
@@ -541,6 +607,7 @@ get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter 
                         -1);
 
     if (file != NULL) {
+g_message ("%s is selected", file->uri);
         (* list) = g_list_prepend ((* list), file);
     }
 }
@@ -548,6 +615,7 @@ get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter 
 static GList *
 get_selection (FMColumnsView *view)
 {
+g_message ("%s-", G_STRFUNC);
     GList *list = NULL;
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);
@@ -681,7 +749,13 @@ fm_columns_view_finalize (GObject *object)
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
+    if (view->details->selected_folder)
+        g_object_unref (view->details->selected_folder);
+
     g_free (view->details);
+
+    fm_columns_cancel_await_double_click (view);
+
     G_OBJECT_CLASS (fm_columns_view_parent_class)->finalize (object);
 }
 
@@ -691,6 +765,8 @@ fm_columns_view_init (FMColumnsView *view)
     view->details = g_new0 (FMColumnsViewDetails, 1);
     view->details->selection = NULL;
     view->loaded_subdirectories = NULL;
+    view->details->double_click_timeout_id = 0;
+    view->details->selected_folder = NULL;
 
     create_and_set_up_tree_view (view);
 
