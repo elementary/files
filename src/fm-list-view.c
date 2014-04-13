@@ -919,7 +919,6 @@ fm_list_view_zoom_level_changed (FMDirectoryView *view)
     gtk_cell_renderer_set_fixed_size (view->icon_renderer,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
-g_message ("%s-", G_STRFUNC);
     gtk_tree_view_columns_autosize (FM_LIST_VIEW (view)->tree);
 }
 

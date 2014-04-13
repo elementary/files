@@ -457,6 +457,11 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                          GtkTreeIter       *iter,
                          FMColumnsView        *view)
 {
+    g_return_if_fail (GTK_IS_TREE_VIEW_COLUMN (column));
+    g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
+    g_return_if_fail (GTK_IS_TREE_MODEL (model));
+    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+
     char *text;
     char *color;
     GdkRGBA rgba = {0.0, 0.0, 0.0, 0.0};
