@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-04-13 16:20+0000\n"
-"Last-Translator: Thomas Berends <Unknown>\n"
+"PO-Revision-Date: 2014-04-14 17:48+0000\n"
+"Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-04-14 05:56+0000\n"
+"X-Launchpad-Export-Date: 2014-04-15 07:45+0000\n"
 "X-Generator: Launchpad (build 16976)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -205,7 +205,7 @@ msgstr "Selecteer een applicatie om te openen "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "Files is niet uw standaard bestandsbeheerder."
+msgstr "Bestanden is niet uw standaard bestandsbeheerder."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3512
@@ -261,7 +261,7 @@ msgstr "Nieuw _venster"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:605
 msgid "Open another Files window for the displayed location"
-msgstr "Open een nieuw Files-venster voor de weergegeven locatie"
+msgstr "Open een nieuw Bestanden-venster voor de weergegeven locatie"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:608
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
@@ -387,7 +387,7 @@ msgstr "Verbinding maken met een andere computer of een gedeelde schijf"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:687
 msgid "_About"
-msgstr "_Over Files"
+msgstr "_Over Bestanden"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Display credits"
@@ -411,7 +411,7 @@ msgstr "Vertaal dit programma..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
-msgstr "Verbo_rgen bestanden tonen"
+msgstr "Verborgen bestanden tonen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
@@ -1079,7 +1079,7 @@ msgstr "URI('s) in nieuwe tab openen"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
-msgstr "Files afsluiten."
+msgstr "Bestanden afsluiten."
 
 #: /home/codygarver/f/po/../src/Application.vala:135
 msgid "Enable debug logging"
@@ -1148,7 +1148,7 @@ msgstr "Nieuw venster als _Administrator"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr "Files"
+msgstr "Bestanden"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
