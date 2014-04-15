@@ -186,7 +186,6 @@ pairs_list_free (GList *pairs)
         g_object_unref (from);
         g_object_unref (to);
         g_array_free (pair, TRUE);
-
     }
 
     /* delete the list and the now empty pair structs */
@@ -265,21 +264,18 @@ marlin_file_changes_consume_changes (gboolean consume_all)
             if (moves != NULL) {
                 moves = g_list_reverse (moves);
                 gof_directory_async_notify_files_moved (moves);
-                // g_message ("marlin_directory_notify_files_moved");
                 pairs_list_free (moves);
                 moves = NULL;
             }
             if (additions != NULL) {
                 additions = g_list_reverse (additions);
                 gof_directory_async_notify_files_added (additions);
-                //g_message ("marlin_directory_notify_files_added");
                 g_list_free_full (additions, g_object_unref);
                 additions = NULL;
             }
             if (changes != NULL) {
                 changes = g_list_reverse (changes);
                 gof_directory_async_notify_files_changed (changes);
-                //g_message ("marlin_directory_notify_files_changed");
                 g_list_free_full (changes, g_object_unref);
                 changes = NULL;
             }

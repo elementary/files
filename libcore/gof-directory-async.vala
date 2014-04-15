@@ -512,7 +512,7 @@ public class GOF.Directory.Async : Object {
 
             list_from.append (from);
             list_to.append (to);
-            
+
             notify_files_removed (list_from);
             notify_files_added (list_to);
         }
