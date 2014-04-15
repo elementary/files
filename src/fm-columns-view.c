@@ -114,7 +114,7 @@ fm_columns_view_rename_callback (GOFFile *file,
 
     if (view->details->renaming_file) {
         view->details->rename_done = TRUE;
-        
+
         if (error != NULL) {
             marlin_dialogs_show_error (GTK_WIDGET (view),
                                        error,
@@ -128,7 +128,7 @@ fm_columns_view_rename_callback (GOFFile *file,
             g_object_unref (view->details->renaming_file);
         }
     }
-    
+
     g_object_unref (view);
 }
 
@@ -187,13 +187,13 @@ cell_renderer_edited (GtkCellRendererText *cell,
         fm_columns_view_unfreeze_updates (view);
         return;
     }
-    
+
     path = gtk_tree_path_new_from_string (path_str);
 
     gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
 
     gtk_tree_path_free (path);
-    
+
     gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
 
@@ -205,7 +205,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
         view->details->original_name = g_strdup (new_text);
         gof_file_rename (file, new_text, fm_columns_view_rename_callback, g_object_ref (view));
     }
-    
+
     gof_file_unref (file);
 
     fm_columns_view_unfreeze_updates (view);
@@ -222,7 +222,7 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
     gint start_offset, end_offset;
 
     columns_view = FM_COLUMNS_VIEW (view);
-    
+
     /* Select all if we are in renaming mode already */
     if (columns_view->details->file_name_column && columns_view->details->editable_widget) {
         gtk_editable_select_region (GTK_EDITABLE (columns_view->details->editable_widget),
@@ -265,22 +265,24 @@ fm_columns_view_sync_selection (FMDirectoryView *view)
 }
 
 static void
-fm_columns_not_double_click (FMColumnsView *view) 
-{
-    g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
-    g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
-
-    view->details->double_click_timeout_id = 0;
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
-    return FALSE;
-}
-
-static void
 fm_columns_cancel_await_double_click (FMColumnsView *view) {
     if (view->details->double_click_timeout_id > 0) {
         g_source_remove (view->details->double_click_timeout_id);
         view->details->double_click_timeout_id = 0;
     }
+}
+
+static void
+fm_columns_not_double_click (FMColumnsView *view)
+{
+    g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
+    g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
+
+    fm_columns_cancel_await_double_click (view);
+    if (!fm_directory_view_is_drag_pending (view))
+        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+
+    return FALSE;
 }
 
 static gboolean
@@ -308,7 +310,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
     if (event->button == 1 && g_settings_get_boolean (settings, "single-click")) {
         /* Handle single left-click (and start of double click) in single click mode*/
-        if (event->type == GDK_BUTTON_PRESS 
+        if (event->type == GDK_BUTTON_PRESS
            && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0 ) {
             /* Ignore second GDK_BUTTON_PRESS event of double-click */
             if (view->details->double_click_timeout_id > 0)
@@ -320,7 +322,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
                 /* select the path on which the user clicked */
                 gtk_tree_selection_select_path (selection, path);
                 gtk_tree_path_free (path);
-            } else 
+            } else
                 return FALSE;
 
             /* If single folder selected, start double-click timeout */
@@ -336,7 +338,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
                                                                     (GSourceFunc)fm_columns_not_double_click,
                                                                     view);
 
-            return TRUE;
+            return FALSE;
 
         } else if (event->type == GDK_2BUTTON_PRESS) {
             /* In single click mode, double-clicking a folder will open it as root in a new view */
@@ -344,7 +346,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             if (view->details->selected_folder != NULL) {
                 fm_directory_view_load_root_location (view, view->details->selected_folder->location);
                 return TRUE;
-            } 
+            }
         }
     }
     /* Ensure any timeout is cancelled  and unfreeze update
@@ -392,6 +394,17 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         }
     }
     return FALSE;
+}
+
+static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
+{
+    if (g_settings_get_boolean (settings, "single-click")) {
+        if (view->details->double_click_timeout_id == 0)
+            return FALSE;
+        else
+            return TRUE;
+    } else
+        return FALSE;
 }
 
 static gboolean
@@ -554,7 +567,7 @@ create_and_set_up_tree_view (FMColumnsView *view)
 
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_MULTIPLE);
 
-    g_signal_connect (view->tree, "item-hovered", 
+    g_signal_connect (view->tree, "item-hovered",
                              G_CALLBACK (fm_columns_view_item_hovered), view);
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
@@ -562,6 +575,8 @@ create_and_set_up_tree_view (FMColumnsView *view)
 
     g_signal_connect_object (view->tree, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
+    g_signal_connect_object (view->tree, "button-release-event",
+                             G_CALLBACK (button_release_callback), view, 0);
 
     g_signal_connect (view->tree, "draw",
                              G_CALLBACK (fm_columns_view_draw), view);

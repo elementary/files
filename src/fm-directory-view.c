@@ -2255,7 +2255,7 @@ fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
-    if (menu != NULL && GTK_IS_MENU (menu)) { 
+    if (menu != NULL && GTK_IS_MENU (menu)) {
         marlin_plugin_manager_hook_context_menu (plugins, menu, selection);
         gtk_menu_set_screen (GTK_MENU (menu), eel_gtk_widget_get_screen (GTK_WIDGET (view)));
 
