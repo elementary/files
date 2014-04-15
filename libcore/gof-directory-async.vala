@@ -503,19 +503,19 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_moved (List<GLib.Array<GLib.File>> files) {
-        foreach (var pair in files) {
-            List<GLib.File> list_from = new List<GLib.File> ();
-            List<GLib.File> list_to = new List<GLib.File> ();
+        List<GLib.File> list_from = new List<GLib.File> ();
+        List<GLib.File> list_to = new List<GLib.File> ();
 
+        foreach (var pair in files) {
             GLib.File from = pair.index (0);
             GLib.File to = pair.index (1);
 
             list_from.append (from);
             list_to.append (to);
-
-            notify_files_removed (list_from);
-            notify_files_added (list_to);
         }
+
+        notify_files_removed (list_from);
+        notify_files_added (list_to);
     }
 
     public static Async from_gfile (GLib.File file) {
