@@ -81,7 +81,11 @@ namespace Marlin.View.Chrome
                     });
 
                     location_bar.activate.connect (() => {
-                        win.current_tab.path_changed (File.new_for_commandline_arg (location_bar.path));
+                        File file = File.new_for_commandline_arg (GLib.Uri.escape_string (
+                            location_bar.path, 
+                            (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS).replace("#", ""), 
+                            false));
+                        win.current_tab.path_changed (file);
                     });
 
                     location_bar.activate_alternate.connect ((a) => {
