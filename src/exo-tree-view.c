@@ -347,6 +347,9 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
     /* call the parent's button press handler */
     result = (*GTK_WIDGET_CLASS (exo_tree_view_parent_class)->button_press_event) (widget, event);
 
+    /* Renew the selection in case parent button press handler invalidates it */
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+
     /* restore previous selection if the path is still selected */
     if (event->type == GDK_BUTTON_PRESS && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0
         && path != NULL && GTK_IS_TREE_SELECTION (selection) && gtk_tree_selection_path_is_selected (selection, path))
