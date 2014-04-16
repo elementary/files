@@ -655,7 +655,13 @@ marlin_clipboard_manager_has_cutted_file (MarlinClipboardManager *manager,
     return (manager->files_cutted && g_list_find (manager->files, file) != NULL);
 }
 
+guint
+marlin_clipboard_manager_count_files (MarlinClipboardManager *manager)
+{
+    g_return_val_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager), 0);
 
+    return g_list_length (manager->files);
+}
 
 /**
  * marlin_clipboard_manager_copy_files:

@@ -128,6 +128,8 @@ struct FMDirectoryViewDetails
     GtkWidget       *menu_selection;
     GtkWidget       *menu_background;
 
+    gboolean        select_added_files;
+
     /* Support for zoom by smooth scrolling */
     gdouble total_delta_y;
 };
@@ -249,6 +251,10 @@ static void
 fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
+
+    if (view->details->select_added_files)
+        fm_directory_view_add_to_selection_gof_file (view, file);
+        
 }
 
 static void
@@ -257,6 +263,7 @@ file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVi
     if (file)
         g_debug ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file)->ref_count);
     //g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    view->details->select_added_files = FALSE;
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
@@ -462,6 +469,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->newly_folder_added = NULL;
     view->details->open_with_apps = NULL;
     view->details->default_app = NULL;
+    view->details->select_added_files = FALSE;
     view->details->total_delta_y = 0;
 
     /* create a thumbnailer */
@@ -1394,6 +1402,8 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                 if (G_LIKELY (action != 0))
                 {
                     printf ("%s perform action %d\n", G_STRFUNC, action);
+
+                    prepare_to_select_added_files (view);
                     succeed = marlin_dnd_perform (GTK_WIDGET (view),
                                                   file,
                                                   view->details->drop_file_list,
@@ -1462,7 +1472,6 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     GOFFile         *file = NULL;
     GdkAtom         target;
 
-    printf ("%s\n", G_STRFUNC);
     /* request the drop data on-demand (if we don't have it already) */
     if (G_UNLIKELY (!view->details->drop_data_ready))
     {
@@ -1529,7 +1538,6 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     {
         /* check whether we can drop at (x,y) */
         //TODO
-        printf ("check whether we can drop at (x,y)\n");
         fm_directory_view_get_dest_actions (view, context, x, y, timestamp, NULL);
     }
 
@@ -2376,6 +2384,21 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
 }
 
 void
+fm_directory_view_add_to_selection_gof_file (FMDirectoryView *view, GOFFile *file)
+{
+    GtkTreeIter iter;
+    GtkTreePath *path;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    if (!fm_list_model_get_first_iter_for_file (view->model, file, &iter))
+        return;
+
+    path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+    gtk_tree_path_free (path);
+}
+
+void
 fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files)
 {
     GList *l;
@@ -3169,6 +3192,17 @@ fm_directory_view_get_selection (FMDirectoryView *view)
     return (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selection) (view);
 }
 
+void
+prepare_to_select_added_files (FMDirectoryView *view)
+{
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    if (fm_directory_view_get_selection (view))
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->unselect_all) (view);
+
+    view->details->select_added_files = TRUE;
+}
+
 GList *
 fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {
@@ -3257,13 +3291,13 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
 {
     GFile *current_directory;
 
-    //g_message ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     current_directory = view->details->slot->location;
     if (G_LIKELY (current_directory != NULL))
     {
+        prepare_to_select_added_files (view);
         marlin_clipboard_manager_paste_files (view->clipboard, current_directory,
                                               GTK_WIDGET (view), NULL);
         //TODO evalutate
@@ -3276,14 +3310,15 @@ action_paste_into_folder (GtkAction *action, FMDirectoryView *view)
 {
     GOFFile *file;
 
-    //g_message ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     /* determine the first selected file and verify that it's a folder */
     file = g_list_nth_data (fm_directory_view_get_selection (view), 0);
-    if (G_LIKELY (file != NULL && gof_file_is_folder (file)))
+    if (G_LIKELY (file != NULL && gof_file_is_folder (file))) {
+        prepare_to_select_added_files (view);
         marlin_clipboard_manager_paste_files (view->clipboard, gof_file_get_target_location (file), GTK_WIDGET (view), NULL);
+    }
 }
 
 static void

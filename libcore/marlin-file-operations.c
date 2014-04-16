@@ -4700,7 +4700,6 @@ marlin_file_operations_copy (GList *files,
                              gpointer done_callback_data)
 {
     CopyMoveJob *job;
-
     job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     //job->desktop_location = marlin_get_desktop_location ();
     job->done_callback = done_callback;
