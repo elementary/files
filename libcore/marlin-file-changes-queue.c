@@ -44,11 +44,6 @@ typedef struct {
     GMutex mutex;
 } MarlinFileChangesQueue;
 
-typedef struct {
-	GFile *from;
-	GFile *to;
-} GFilePair;
-
 static MarlinFileChangesQueue *
 marlin_file_changes_queue_new (void)
 {
@@ -179,19 +174,22 @@ static void
 pairs_list_free (GList *pairs)
 {
     GList *p;
-    GFilePair *pair;
+    GArray *pair;
 
     /* deep delete the list of pairs */
 
     for (p = pairs; p != NULL; p = p->next) {
         /* delete the strings in each pair */
         pair = p->data;
-        g_object_unref (pair->from);
-        g_object_unref (pair->to);
+        GFile *from = g_array_index (pair, GFile *, 0);
+        GFile *to = g_array_index (pair, GFile *, 1);
+        g_object_unref (from);
+        g_object_unref (to);
+        g_array_free (pair, TRUE);
     }
 
     /* delete the list and the now empty pair structs */
-    g_list_free_full (pairs, g_free);
+    g_list_free (pairs);
 }
 
 /* go through changes in the change queue, send ones with the same kind
@@ -202,7 +200,7 @@ marlin_file_changes_consume_changes (gboolean consume_all)
 {
     MarlinFileChange *change;
     GList *additions, *changes, *deletions, *moves;
-    GFilePair *pair;
+    GArray *pair;
     guint chunk_count;
     MarlinFileChangesQueue *queue;
     gboolean flush_needed;
@@ -265,22 +263,19 @@ marlin_file_changes_consume_changes (gboolean consume_all)
             }
             if (moves != NULL) {
                 moves = g_list_reverse (moves);
-                //marlin_directory_notify_files_moved (moves);
-                g_message ("marlin_directory_notify_files_moved");
+                gof_directory_async_notify_files_moved (moves);
                 pairs_list_free (moves);
                 moves = NULL;
             }
             if (additions != NULL) {
                 additions = g_list_reverse (additions);
                 gof_directory_async_notify_files_added (additions);
-                //g_message ("marlin_directory_notify_files_added");
                 g_list_free_full (additions, g_object_unref);
                 additions = NULL;
             }
             if (changes != NULL) {
                 changes = g_list_reverse (changes);
                 gof_directory_async_notify_files_changed (changes);
-                //g_message ("marlin_directory_notify_files_changed");
                 g_list_free_full (changes, g_object_unref);
                 changes = NULL;
             }
@@ -306,9 +301,9 @@ marlin_file_changes_consume_changes (gboolean consume_all)
             break;
 
         case CHANGE_FILE_MOVED:
-            pair = g_new (GFilePair, 1);
-            pair->from = change->from;
-            pair->to = change->to;
+            pair = g_array_sized_new (FALSE, FALSE, sizeof (GFile *), 2);
+            g_array_append_val (pair, change->from);
+            g_array_append_val (pair, change->to);
             moves = g_list_prepend (moves, pair);
             break;
 
