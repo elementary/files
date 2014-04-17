@@ -40,6 +40,7 @@ struct FMColumnsViewDetails {
 
     GOFFile     *renaming_file;
     gboolean    rename_done;
+    gboolean    awaiting_double_click;
     guint       double_click_timeout_id;
     GOFFile     *selected_folder;
 };
@@ -266,9 +267,10 @@ fm_columns_view_sync_selection (FMDirectoryView *view)
 
 static void
 fm_columns_cancel_await_double_click (FMColumnsView *view) {
-    if (view->details->double_click_timeout_id > 0) {
+    if (view->details->awaiting_double_click) {
         g_source_remove (view->details->double_click_timeout_id);
         view->details->double_click_timeout_id = 0;
+        view->details->awaiting_double_click = FALSE;
     }
 }
 
@@ -278,7 +280,7 @@ fm_columns_not_double_click (FMColumnsView *view)
     g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
     g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
 
-    fm_columns_cancel_await_double_click (view);
+    view->details->awaiting_double_click = FALSE;
     if (!fm_directory_view_is_drag_pending (view))
         fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 
@@ -313,7 +315,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         if (event->type == GDK_BUTTON_PRESS
            && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0 ) {
             /* Ignore second GDK_BUTTON_PRESS event of double-click */
-            if (view->details->double_click_timeout_id > 0)
+            if (view->details->awaiting_double_click)
                 return TRUE;
 
             /*Determine where user clicked - this will be the sole selection*/
@@ -334,9 +336,17 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
                 return FALSE;
 
             view->details->selected_folder = file;
-            view->details->double_click_timeout_id = g_timeout_add (400,
+
+            guint double_click_setting = NULL;
+            if (gnome_mouse_settings != NULL)
+                double_click_setting = g_settings_get_int (gnome_mouse_settings, "double-click");
+            else
+                double_click_setting = 400;
+
+            view->details->double_click_timeout_id = g_timeout_add (double_click_setting,
                                                                     (GSourceFunc)fm_columns_not_double_click,
                                                                     view);
+            view->details->awaiting_double_click = TRUE;
 
             return FALSE;
 
@@ -398,13 +408,11 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
 static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
 {
-    if (g_settings_get_boolean (settings, "single-click")) {
-        if (view->details->double_click_timeout_id == 0)
-            return FALSE;
-        else
+    if (g_settings_get_boolean (settings, "single-click")
+        && view->details->awaiting_double_click)
             return TRUE;
-    } else
-        return FALSE;
+
+    return FALSE;
 }
 
 static gboolean
@@ -782,6 +790,7 @@ fm_columns_view_init (FMColumnsView *view)
     view->details->selection = NULL;
     view->loaded_subdirectories = NULL;
     view->details->double_click_timeout_id = 0;
+    view->details->awaiting_double_click = FALSE;
     view->details->selected_folder = NULL;
 
     create_and_set_up_tree_view (view);
