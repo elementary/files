@@ -22,27 +22,17 @@
 
 namespace Marlin.View.Chrome
 {
-    public class TopMenu : Gtk.Toolbar {
+    public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
-        public Gtk.Menu toolbar_menu;
         public LocationBar? location_bar;
         public Marlin.View.Window win;
 
         public TopMenu (Marlin.View.Window window) {
             win = window;
 
-            get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
-
-            toolbar_menu = (Gtk.Menu) win.ui.get_widget ("/ToolbarMenu");
-
             setup_items ();
 
             show ();
-        }
-
-        public override bool popup_context_menu (int x, int y, int button) {
-            toolbar_menu.popup (null, null, null, button, Gtk.get_current_event_time ());
-            return true;
         }
 
         public void setup_items () {
@@ -54,7 +44,7 @@ namespace Marlin.View.Chrome
                     Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
                     sep.set_draw(true);
                     sep.show();
-                    insert(sep, -1);
+                    pack_start (sep);
                     continue;
                 }
 
@@ -62,8 +52,8 @@ namespace Marlin.View.Chrome
                     location_bar = new LocationBar (win.ui, win);
                     location_bar.halign = Gtk.Align.FILL;
                     location_bar.valign = Gtk.Align.FILL;
-                    location_bar.margin_left = 6;
-                    location_bar.margin_right = 6;
+                    location_bar.margin_left = 26;
+                    location_bar.margin_right = 26;
 
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
@@ -93,7 +83,7 @@ namespace Marlin.View.Chrome
                     });
 
                     location_bar.show_all ();
-                    insert (location_bar, -1);
+                    pack_start (location_bar);
                     continue;
                 }
 
@@ -101,7 +91,7 @@ namespace Marlin.View.Chrome
                     view_switcher = new ViewSwitcher (win.main_actions);
                     view_switcher.show_all ();
                     view_switcher.margin_left = view_switcher.margin_right = 6;
-                    insert (view_switcher, -1);
+                    pack_start (view_switcher);
                     continue;
                 }
 
@@ -112,14 +102,14 @@ namespace Marlin.View.Chrome
                     if (name == "Forward") {
                         win.button_forward = new Granite.Widgets.ToolButtonWithMenu.from_action (main_action);
                         win.button_forward.show_all ();
-                        insert (win.button_forward, -1);
+                        pack_start (win.button_forward);
                     } else if ( name == "Back") {
                         win.button_back = new Granite.Widgets.ToolButtonWithMenu.from_action (main_action);
                         win.button_back.show_all ();
-                        insert (win.button_back, -1);
+                        pack_start (win.button_back);
                     } else {
                         item = (Gtk.ToolItem) main_action.create_tool_item ();
-                        insert (item, -1);
+                        pack_start (item);
                     }
                 }
             }

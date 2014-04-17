@@ -113,6 +113,9 @@ namespace Marlin.View {
 
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
+            top_menu.set_show_close_button (true);
+            top_menu.set_custom_title (new Gtk.Label (null));
+            set_titlebar (top_menu);
 
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
@@ -176,7 +179,6 @@ namespace Marlin.View {
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
-            window_box.pack_start(top_menu, false, false, 0);
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(lside_pane, true, true, 0);
 
@@ -440,7 +442,7 @@ namespace Marlin.View {
         }
 
         private void action_edit_path () {
-            top_menu.location_bar.get_child ().grab_focus ();
+            top_menu.location_bar.bread.grab_focus ();
         }
 
         private void action_go_back (Gtk.Action action) {
