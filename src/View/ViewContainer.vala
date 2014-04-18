@@ -45,7 +45,7 @@ namespace Marlin.View {
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
-            overlay_statusbar = new OverlayBar (win);
+            overlay_statusbar = new OverlayBar (win, this);
             view_mode = _view_mode;
 
             /* set active tab */
