@@ -768,10 +768,8 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL) {
-        g_warning ("info null need to query_update %s", file->uri);
+    if (file->info == NULL)
         gof_file_query_update (file);
-    }
 
     return (file->info != NULL);
 }

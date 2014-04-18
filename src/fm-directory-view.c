@@ -93,6 +93,9 @@ struct FMDirectoryViewDetails
     GtkActionGroup *open_with_action_group;
     guint open_with_merge_id;
 
+    GtkActionGroup *create_from_action_group;
+    guint create_from_merge_id;
+
     /* right-click drag/popup support */
     GList           *drag_file_list;
     gint            drag_scroll_timer_id;
@@ -122,6 +125,7 @@ struct FMDirectoryViewDetails
     GtkTreePath     *selection_before_delete;
     GOFFile         *newly_folder_added;
     GList           *open_with_apps;
+    GList           *templates;
     GAppInfo        *default_app;
 
     gchar           *previewer;
@@ -204,6 +208,8 @@ static void     fm_directory_view_scrolled (GtkAdjustment *adjustment, FMDirecto
 static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAllocation *allocation);
 
 static int      fm_directory_view_get_uri_keypath_size (FMDirectoryView *view);
+
+static void     new_folder_done (GFile *new_folder, gpointer data);
 
 void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
 
@@ -468,6 +474,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->dir_action_group = NULL;
     view->details->newly_folder_added = NULL;
     view->details->open_with_apps = NULL;
+    view->details->templates = NULL;
     view->details->default_app = NULL;
     view->details->select_added_files = FALSE;
     view->details->total_delta_y = 0;
@@ -521,6 +528,8 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->dir_merge_id = 0;
     view->details->open_with_action_group = NULL;
     view->details->open_with_merge_id = 0;
+    view->details->create_from_action_group = NULL;
+    view->details->create_from_merge_id = 0;
     view->empty_message = g_strconcat ("<span size='x-large'>",
                                        _("This folder is empty."),
                                        "</span>",
@@ -1824,11 +1833,10 @@ add_application_to_open_with_menu (FMDirectoryView *view,
     tip = g_strdup_printf (ngettext ("Use \"%s\" to open the selected item",
                                      "Use \"%s\" to open the selected items",
                                      g_list_length (files)),
-                           escaped_app);
+                                     escaped_app);
     g_free (escaped_app);
 
     action_name = g_strdup_printf ("open_with_%d", index);
-
     action = gtk_action_new (action_name, label, tip, NULL);
 
     app_icon = g_app_info_get_icon (application);
@@ -1925,6 +1933,210 @@ filter_this_app (GList *apps)
     return apps;
 }
 
+typedef struct {
+    GOFFile *template;
+    FMDirectoryView *view;
+}CreateFromTemplateParameters;
+
+static CreateFromTemplateParameters *
+create_from_template_parameters_new (GOFFile *template,
+                                     FMDirectoryView *view)
+{
+    CreateFromTemplateParameters *result;
+
+    result = g_new0 (CreateFromTemplateParameters, 1);
+    result->template = g_object_ref (template);
+
+    if (view != NULL) {
+        g_object_ref (view);
+        result->view = view;
+    }
+
+    return result;
+}
+
+static void
+create_from_template_parameters_free (CreateFromTemplateParameters *params)
+{
+    g_object_unref (params->template);
+
+    if (params->view != NULL)
+        g_object_unref (params->view);
+
+    g_free (params);
+}
+
+static void
+create_from_template_callback (GtkAction *action, gpointer *data)
+{
+    CreateFromTemplateParameters *params;
+
+    params = (CreateFromTemplateParameters *) data;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (params->view));
+    g_return_if_fail (GOF_IS_FILE (params->template));
+
+    marlin_file_operations_new_file_from_template (
+        GTK_WIDGET (params->view),
+        NULL,
+        (fm_directory_view_get_current_directory (params->view))->location,
+        g_strdup_printf ("untitled %s", gof_file_get_display_name (params->template)),
+        params->template->location,
+        new_folder_done, params->view);
+}
+
+static void
+add_template_to_create_from_menu (FMDirectoryView *view,
+                                   GOFFile *template,
+                                   int index,
+                                   const char *menu_placeholder,
+                                   const char *popup_placeholder)
+{
+    char *tip;
+    char *label;
+    char *action_name;
+    char *path;
+    GtkAction       *action;
+    GtkWidget       *menuitem;
+    GtkUIManager    *ui_manager;
+
+    ui_manager = fm_directory_view_get_ui_manager (view);
+
+    if (gof_file_is_folder (template)) {
+        action_name = g_strdup_printf ("separator_%d", index);
+        gtk_ui_manager_add_ui (ui_manager,
+                               view->details->create_from_merge_id,
+                               popup_placeholder,
+                               action_name,
+                               NULL,
+                               GTK_UI_MANAGER_SEPARATOR,
+                               FALSE);
+
+        gtk_ui_manager_add_ui (ui_manager,
+                               view->details->create_from_merge_id,
+                               menu_placeholder,
+                               action_name,
+                               NULL,
+                               GTK_UI_MANAGER_SEPARATOR,
+                               FALSE);
+        return;
+    }
+
+    label = g_strdup_printf ("%s", gof_file_get_display_name (template));
+    tip = g_strdup_printf (_("Use \"%s\" as template for new file"), label);
+
+    action_name = g_strdup_printf ("create_from_%d", index);
+    action = gtk_action_new (action_name, label, tip, NULL);
+
+    if (template->icon)
+        gtk_action_set_gicon (action, template->icon);
+
+    g_signal_connect_data (action, "activate",
+                           G_CALLBACK (create_from_template_callback),
+                           create_from_template_parameters_new (template, view),
+                           (GClosureNotify)create_from_template_parameters_free,
+                           0);
+
+    gtk_action_group_add_action (view->details->create_from_action_group, action);
+    g_object_unref (action);
+
+    gtk_ui_manager_add_ui (ui_manager,
+                           view->details->create_from_merge_id,
+                           menu_placeholder,
+                           action_name,
+                           action_name,
+                           GTK_UI_MANAGER_MENUITEM,
+                           FALSE);
+
+    path = g_strdup_printf ("%s/%s", menu_placeholder, action_name);
+    menuitem = gtk_ui_manager_get_widget (ui_manager, path);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), TRUE);
+
+    g_free (path);
+
+    gtk_ui_manager_add_ui (ui_manager,
+                           view->details->create_from_merge_id,
+                           popup_placeholder,
+                           action_name,
+                           action_name,
+                           GTK_UI_MANAGER_MENUITEM,
+                           FALSE);
+
+    path = g_strdup_printf ("%s/%s", popup_placeholder, action_name);
+    menuitem = gtk_ui_manager_get_widget (ui_manager, path);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), TRUE);
+
+    g_free (path);
+
+    g_free (action_name);
+    g_free (label);
+    g_free (tip);
+}
+
+static GList*
+load_templates_from_folder (GFile *template_folder, GList *templates)
+{
+    GFileInfo *info;
+    GError *error = NULL;
+    GFile *file;
+    GOFFile *gof_file;
+    GOFFile *dir;
+    GFileEnumerator *enumerator;
+    GList *gof_file_list = NULL;
+    GList *folder_list = NULL;
+    guint count = 0;
+
+    g_return_val_if_fail (template_folder != NULL, NULL);
+
+    enumerator = g_file_enumerate_children (template_folder,
+                                            G_FILE_ATTRIBUTE_STANDARD_NAME,
+                                            G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                            NULL,
+                                            &error);
+
+    if (error) {
+        g_error_free (error);
+        return NULL;
+    }
+
+    error = NULL;
+    count = g_list_length (templates);
+    while (count < MAX_TEMPLATES
+        && (info = g_file_enumerator_next_file (enumerator, NULL, NULL)) != NULL) {
+
+        file = g_file_get_child (template_folder, g_file_info_get_name (info));
+        gof_file = gof_file_get (file);
+        gof_file_ensure_query_info (gof_file);
+        if (!gof_file_is_folder (gof_file)) {
+            gof_file_list = g_list_prepend (gof_file_list, gof_file);
+            count++;
+        } else {
+            folder_list = g_list_prepend (folder_list, file);
+        }
+    }
+
+    if (g_list_length (gof_file_list) > 0) {
+        gof_file_list = g_list_sort (gof_file_list, gof_file_compare_by_display_name);
+        templates = g_list_concat (templates, gof_file_list);
+    }
+
+    dir = gof_file_get (template_folder);
+    gof_file_ensure_query_info (dir);
+    templates = g_list_append (templates, dir);
+
+    GList *l;
+    guint index; 
+    if (g_list_length (folder_list) > 0) {
+        for (l = folder_list, index = 0;
+             l != NULL;
+             l = l->next, index++) {
+            templates = load_templates_from_folder (l->data, templates);
+        }
+    }
+
+    return templates;
+}
+
 static void
 update_menus_empty_selection (FMDirectoryView *view)
 {
@@ -1937,6 +2149,10 @@ update_menus_empty_selection (FMDirectoryView *view)
                              "OpenWithGroup",
                              &view->details->open_with_merge_id,
                              &view->details->open_with_action_group);
+    eel_ui_prepare_merge_ui (ui_manager,
+                             "CreateFromGroup",
+                             &view->details->create_from_merge_id,
+                             &view->details->create_from_action_group);
 
     update_menus_pastes (view, TRUE);
     dir_action_set_sensitive (view, "Cut", FALSE);
@@ -1966,9 +2182,28 @@ update_menus_empty_selection (FMDirectoryView *view)
     dir_action_set_visible (view, "New Empty File", TRUE);
     dir_action_set_visible (view, "OpenAlternate", TRUE);
 
-    /* Open */
+    /* New File */
     GList *l;
     int index;
+
+    const char *template_menu_path = "/MenuBar/File/New Items Placeholder/New File/Templates Placeholder";
+    const char *template_popup_path = "/background/Before Zoom Items/New Object Items/New File/Templates Placeholder";
+
+    if (view->details->templates != NULL) {
+        g_list_free_full (view->details->templates, (GDestroyNotify)g_object_unref);
+        view->details->templates = NULL;
+    }
+
+    GFile *template_dir_file = g_file_new_for_path (g_strdup_printf ("%s/Templates", g_get_home_dir ()));
+    view->details->templates = load_templates_from_folder (template_dir_file, view->details->templates);
+
+    for (l = view->details->templates, index = 0;
+         l != NULL && index < MAX_TEMPLATES;
+         l = l->next, index++) {
+        add_template_to_create_from_menu (view, l->data, index, template_menu_path, template_popup_path);
+    }
+
+    /* Open */
     GList *selection;
     const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
     const char *popup_path = "/background/Open Placeholder/Open With/Applications Placeholder";
@@ -3089,6 +3324,10 @@ update_menus (FMDirectoryView *view)
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->open_with_merge_id,
                        &view->details->open_with_action_group);
+    eel_ui_unmerge_ui (ui_manager,
+                       &view->details->create_from_merge_id,
+                       &view->details->create_from_action_group);
+
     dir_action_set_visible (view, "OtherApplication", FALSE);
 
     if (selection != NULL) {
@@ -3422,7 +3661,6 @@ fm_directory_view_new_file_with_initial_contents (FMDirectoryView *view,
                                                   GdkPoint *pos)
 {
     //NewFolderData *data;
-
     g_assert (parent_uri != NULL);
 
     //data = setup_new_folder_data (view);
@@ -3686,9 +3924,13 @@ fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
                        &view->details->dir_action_group);
     if (view->details->dir_action_group != NULL)
         g_object_unref (view->details->dir_action_group);
+
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->open_with_merge_id,
                        &view->details->open_with_action_group);
+    eel_ui_unmerge_ui (ui_manager,
+                       &view->details->create_from_merge_id,
+                       &view->details->create_from_action_group);
 
     /*eel_ui_unmerge_ui (ui_manager,
       &view->details->extensions_menu_merge_id,
