@@ -50,10 +50,6 @@ namespace Marlin.View.Chrome
 
                 if (name == "LocationEntry") {
                     location_bar = new LocationBar (win.ui, win);
-                    location_bar.halign = Gtk.Align.FILL;
-                    location_bar.valign = Gtk.Align.FILL;
-                    location_bar.margin_left = 26;
-                    location_bar.margin_right = 26;
 
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
@@ -90,7 +86,6 @@ namespace Marlin.View.Chrome
                 if (name == "ViewSwitcher") {
                     view_switcher = new ViewSwitcher (win.main_actions);
                     view_switcher.show_all ();
-                    view_switcher.margin_left = view_switcher.margin_right = 6;
                     pack_start (view_switcher);
                     continue;
                 }
