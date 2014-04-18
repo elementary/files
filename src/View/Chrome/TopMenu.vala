@@ -75,7 +75,7 @@ namespace Marlin.View.Chrome
             });
 
             location_bar.show_all ();
-            view_switcher.margin_right = 24;
+            view_switcher.margin_right = 20;
             pack_start (location_bar);
 
             show ();
