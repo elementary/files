@@ -747,10 +747,9 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
     if (nb_elem == 1) {
         fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen, flags);
     } else {
-        /* ignore opening more than 10 elements at a time */
-        if (nb_elem < 10)
-            for (; file_list != NULL; file_list=file_list->next)
-            {
+        /* launch each selectd file individually - ignore selections greater than 10 */
+        if (nb_elem < 10 && view->details->default_app == NULL) {
+            for (; file_list != NULL; file_list=file_list->next) {
                 file = file_list->data;
                 if (gof_file_is_folder (file)) {
                     location = gof_file_get_target_location (file);
@@ -760,10 +759,14 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
                         marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
                 } else {
-                    gof_file_open_single (file, screen, view->details->default_app);
+                    gof_file_open_single (file, screen, NULL);
                 }
             }
-    }
+        } else if (view->details->default_app != NULL) {
+            /* Open all of the files in the default application at once instead of individually */
+            gof_files_launch_with (file_list, screen, view->details->default_app);
+        }
+    } 
 }
 
 void
@@ -3787,4 +3790,3 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
 
     update_menus (view);
 }
-
