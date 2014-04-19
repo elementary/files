@@ -238,7 +238,6 @@ public class Marlin.Application : Granite.Application {
         Preferences.marlin_icon_view_settings = new Settings ("org.pantheon.files.icon-view");
         Preferences.marlin_list_view_settings = new Settings ("org.pantheon.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("org.pantheon.files.column-view");
-        Preferences.gnome_mouse_settings = new Settings ("org.gnome.settings-daemon.peripherals.mouse");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",

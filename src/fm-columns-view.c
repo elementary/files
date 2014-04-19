@@ -327,7 +327,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             } else
                 return FALSE;
 
-            /* If single folder selected, start double-click timeout */
+            /* If single folder selected ... */
             GList *file_list = NULL;
             file_list = fm_directory_view_get_selection (view);
             GOFFile *file = GOF_FILE (file_list->data);
@@ -335,15 +335,17 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             if (!gof_file_is_folder (file))
                 return FALSE;
 
+            /*  ... store clicked folder and start double-click timeout */
             view->details->selected_folder = file;
 
-            guint double_click_setting = NULL;
-            if (gnome_mouse_settings != NULL)
-                double_click_setting = g_settings_get_int (gnome_mouse_settings, "double-click");
-            else
-                double_click_setting = 400;
+            GSettings *gtk_default_settings;
+            gint double_click_time;
+            gtk_default_settings = gtk_settings_get_default ();
+            g_object_get (gtk_default_settings,
+                          "gtk-double-click-time",
+                          &double_click_time);
 
-            view->details->double_click_timeout_id = g_timeout_add (double_click_setting,
+            view->details->double_click_timeout_id = g_timeout_add (double_click_time,
                                                                     (GSourceFunc)fm_columns_not_double_click,
                                                                     view);
             view->details->awaiting_double_click = TRUE;
