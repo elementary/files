@@ -168,16 +168,20 @@ namespace Marlin.View {
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
             FileInfo file_info;
+
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
+
                 /* If not readable, alert the user */
                 if (!file_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ)) {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                 }
+
                 /* If not a directory, then change the location to the parent */
                 if (file_info.get_file_type () == FileType.DIRECTORY) {
                     content_shown = false;
+
                     if (select_childs != null)
                         ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
                 } else {
