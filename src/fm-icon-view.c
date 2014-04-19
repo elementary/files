@@ -32,7 +32,7 @@ G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_ABSTRACT_ICON_VIEW)
 
 
 /* Golden ratio used */
-#define ICON_SIZE_TO_ITEM_WIDTH_RATIO 1.62f
+#define ITEM_WIDTH_TO_ICON_SIZE_RATIO 1.62f
 
 
 static void
@@ -123,14 +123,15 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
+    /* determine the icon "size" depending on the "zoom-level" */
     icon_size = marlin_zoom_level_to_icon_size (view->zoom_level);
 
-    /* determine the "item-width" depending on the "zoom-level" */
-    item_width = ICON_SIZE_TO_ITEM_WIDTH_RATIO * icon_size;
+    /* determine the "item-width" depending on the "icon-size" */
+    item_width = ITEM_WIDTH_TO_ICON_SIZE_RATIO * icon_size;
 
-    /* determine the "wrap-width" depending on the "zoom-level": a couple of
-     * pixels will do */
-    wrap_width = item_width - 2;
+    /* determine the "wrap-width" depending on the "item-width": just make sure
+     * there is enough room for focus if the item is selected */
+    wrap_width = item_width - 8;
 
     /* set the new "wrap-width" for the text renderer */
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", wrap_width, "zoom-level", view->zoom_level, NULL);
