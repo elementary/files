@@ -36,8 +36,8 @@ namespace Marlin.View {
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public Granite.Widgets.ToolButtonWithMenu button_forward;
-        public Granite.Widgets.ToolButtonWithMenu button_back;
+        public Chrome.ButtonWithMenu button_forward;
+        public Chrome.ButtonWithMenu button_back;
 
         public bool can_go_up{
             set{
@@ -47,13 +47,13 @@ namespace Marlin.View {
 
         public bool can_go_forward{
             set{
-                main_actions.get_action("Forward").set_sensitive(value);
+                button_forward.set_sensitive (value);
             }
         }
 
         public bool can_go_back{
             set{
-                main_actions.get_action("Back").set_sensitive(value);
+                button_back.set_sensitive (value);
             }
         }
 
@@ -116,6 +116,8 @@ namespace Marlin.View {
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
             set_titlebar (top_menu);
+            button_forward.slow_press.connect (() => {action_go_forward ();});
+            button_back.slow_press.connect (() => {action_go_back ();});
 
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
@@ -433,10 +435,6 @@ namespace Marlin.View {
             return this.main_actions;
         }
 
-        public void set_toolbar_items () {
-            top_menu.setup_items();
-        }
-
         private void action_go_up () {
             current_tab.up();
         }
@@ -445,11 +443,11 @@ namespace Marlin.View {
             top_menu.location_bar.bread.grab_focus ();
         }
 
-        private void action_go_back (Gtk.Action action) {
+        private void action_go_back () {
             current_tab.back();
         }
 
-        private void action_go_forward (Gtk.Action action) {
+        private void action_go_forward () {
             current_tab.forward();
         }
 

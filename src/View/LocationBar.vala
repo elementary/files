@@ -58,11 +58,8 @@ namespace Marlin.View.Chrome
             bread.changed.connect (on_bread_changed);
             bread.activate_alternate.connect ((a) => { activate_alternate(a); });
 
-            expand = true;
-
-            //border_width = 0;
-            margin_top = 5;
-            margin_bottom = 5;
+            margin_top = 4;
+            margin_bottom = 4;
             margin_left = 3;
 
             pack_start (bread, true, true, 0);
