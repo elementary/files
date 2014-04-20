@@ -74,8 +74,7 @@ namespace Marlin.View {
 
             path_changed.connect ((myfile) => {
                 /* location didn't change, do nothing */
-                if (slot != null && myfile != null && slot.directory.file.exists
-                    && slot.location.equal (myfile))
+                if (slot != null && myfile != null && slot.directory.file.exists && slot.location.equal (myfile))
                     return;
                 change_view(view_mode, myfile);
                 update_location_state (true);

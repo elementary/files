@@ -27,6 +27,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     bool blink = true;
     public Gdk.Pixbuf arrow_img;
 
+    bool ignore_mouse_release = false;
     double selection_mouse_start = -1;
     double selection_mouse_end = -1;
     double selection_start = 0;
@@ -99,7 +100,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
      * Delete the text selected.
      **/
     public void delete_selection () {
-        if (selected_start > 0 && selected_end > 0) {
+        if (selected_start >= 0 && selected_end > 0) {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
 
@@ -114,11 +115,12 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
      *
      * @param to_insert The text you want to insert.
      **/
-    public void insert (string to_insert) {
+    public void insert (string to_insert, bool needs_completion = true) {
         if (to_insert != null && to_insert.length > 0) {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
 
+            stdout.printf("\nfirst: %i, second: %i\n", first, second);
             if (first != second && second > 0) {
                 text = text.slice (0, first) + to_insert + text.slice (second, text.length);
                 selected_start = -1;
@@ -132,7 +134,8 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             }
         }
 
-        need_completion ();
+        if (needs_completion)
+            need_completion ();
     }
 
     /**
@@ -145,7 +148,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     public void key_press_event (Gdk.EventKey event) {
         /* FIXME: I can't find the vapi to not use hardcoded key value. */
         /* FIXME: we should use Gtk.BindingSet, but the vapi file seems buggy */
-
+        
         bool control_pressed = (event.state & Gdk.ModifierType.CONTROL_MASK) == 4;
         bool shift_pressed = ! ((event.state & Gdk.ModifierType.SHIFT_MASK) == 0);
 
@@ -179,7 +182,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         case 0xff53: /* right */
             if (cursor < text.length && !shift_pressed) {
                 cursor++;
-                reset_selection ();
+                //reset_selection ();
             } else if (cursor < text.length && shift_pressed) {
                 if (selected_start < 0) {
                     selected_start = cursor;
@@ -277,10 +280,25 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         int first = selected_start > selected_end ? selected_end : selected_start;
         int second = selected_start > selected_end ? selected_start : selected_end;
 
-        if (!(first < 0 || second < 0))
+        if (first >= 0 && second >= 0)
             return text.slice (first,second);
 
         return null;
+    }
+    
+    public void set_selection (int start, int? end) {
+        if (start < 0 || start >= text.length || (end != null && start > (!) end))
+            return;
+            
+        if (end == null || (!) end > text.length)
+            end = text.length;
+            
+        selected_start = start;
+        selected_end = end;
+        cursor = end;
+        ignore_mouse_release = true;
+        need_selection_update = true;
+        need_draw ();
     }
 
     public void key_release_event (Gdk.EventKey event) {
@@ -315,9 +333,15 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         need_draw ();
     }
 
-    public void mouse_release_event (Gdk.EventButton event) {
+    public void mouse_release_event (Gdk.EventButton event) {   
         selection_mouse_end = event.x;
         is_selecting = false;
+        
+        if (ignore_mouse_release) {
+            selection_mouse_start = -1;
+            selection_mouse_end = -1;
+            ignore_mouse_release = false;
+        }
     }
 
     /**
@@ -330,6 +354,8 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         selected_end = -1;
         selection_start = 0;
         selection_end = 0;
+        selection_mouse_start = -1;
+        selection_mouse_end = -1;
     }
 
     private void update_selection (Cairo.Context cr, Gtk.Widget widget) {
@@ -402,6 +428,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         layout.set_text (text.slice (0, selected_start), -1);
         selection_start = get_width (layout);
         need_selection_update = false;
+        ignore_mouse_release = false;
     }
 
     public void draw(Cairo.Context cr,

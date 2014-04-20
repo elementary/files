@@ -376,12 +376,39 @@ namespace Marlin.View.Chrome
         public override bool focus_out_event (Gdk.EventFocus event) {
             base.focus_out_event (event);
             merge_out_clipboard_actions ();
+            entry.reset ();
+            
+            // Show all breadcrumbs 
+            foreach (BreadcrumbsElement element in elements) {
+                if (!element.hidden)
+                    element.display = true;
+            }
+            
             return true;
         }
 
         public override bool focus_in_event (Gdk.EventFocus event) {
             base.focus_in_event (event);
             merge_in_clipboard_actions ();
+            
+            // Update the entry to have the full path (sans the protocol if it's "file://")
+            string path = get_elements_path ().replace("trash:///", "").replace("network:///", "");
+            File file = File.new_for_uri (path);
+            entry.reset ();
+            entry.reset_selection ();
+            
+            if (path.contains ("file://"))
+                entry.insert (file.get_path () + "/", false);
+            else
+                entry.insert (path, false);
+                
+            entry.set_selection (0, null);
+            
+            // Hide each breadcrumb and show the current path
+            foreach (BreadcrumbsElement element in elements) {
+                element.display = false;
+            }
+            
             return true;
         }
 

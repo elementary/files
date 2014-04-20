@@ -53,7 +53,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     public Gtk.ActionGroup clipboard_actions;
 
     /* This list will contain all BreadcrumbsElement */
-    Gee.ArrayList<BreadcrumbsElement> elements;
+    protected Gee.ArrayList<BreadcrumbsElement> elements;
 
     /* This list will contain the BreadcrumbsElement which are animated */
     Gee.List<BreadcrumbsElement> newbreads;
@@ -168,20 +168,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
             entry.text = tmp_entry + tmp;
             elements.clear ();
-        });
-
-        entry.backspace.connect (() => {
-            if (elements.size > 0) {
-                string strloc = get_elements_path ();
-                File location = File.new_for_commandline_arg (strloc);
-                location = location.get_parent ();
-
-                if (location == null)
-                    location = File.new_for_commandline_arg (protocol);
-
-                changed (location.get_uri () + "/");
-                grab_focus ();
-            }
         });
 
         entry.escape.connect (() => {
@@ -462,14 +448,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     }
 
     private void on_entry_enter () {
-        text = get_elements_path ();
-
-        if (text != "")
-            changed (text + "/" + entry.text + entry.completion);
-        else
-            changed (entry.text + entry.completion);
-
-        //entry.reset();
+        changed (entry.text.replace("ssh:", "sftp:") + entry.completion);
     }
 
     public override bool key_press_event (Gdk.EventKey event) {
@@ -589,9 +568,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 }
 
                 if (found) {
-                    for (int j = 0; j < h; j++)
+                    for (int j = 0; j < h; j++) {
                         newelements[j].display = false;
+                        newelements[j].hidden = true;
+                    }
 
+                    newelements[h].hidden = false;
                     newelements[h].display = true;
                     newelements[h].set_icon (icon.icon);
                     newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
@@ -812,13 +794,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         entry.show ();
         //button_context = entry_context;
         //button_context.set_state (StateFlags.ACTIVE);
+        
         focus = true;
         return true;
     }
 
     private void request_text (Gtk.Clipboard clip, string? text) {
         if (text != null)
-            entry.insert (text.replace ("\n", ""));
+            entry.insert (text.replace ("\n", ""), true);
     }
 
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
