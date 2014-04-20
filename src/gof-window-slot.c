@@ -139,6 +139,7 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 void autosize_slot (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
+    g_return_if_fail (GTK_IS_PANED (slot->hpane));
 
     PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET (slot->view_box), NULL);
 
@@ -203,10 +204,9 @@ gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location)
         slot->mwcols->slot_list = l;
     }
 
-    marlin_window_columns_add (slot->mwcols, location);
-
     slot->mwcols->total_width += slot->width + 10;
     gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
+    marlin_window_columns_add (slot->mwcols, location);
 }
 
 GOFWindowSlot *

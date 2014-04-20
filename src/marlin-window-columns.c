@@ -170,7 +170,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 
     /* Add it in our GList */
     mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
-    //marlin_window_columns_activate_slot (mwcols, slot);
+    marlin_window_columns_activate_slot (slot->mwcols, slot);
 }
 
 void
@@ -204,8 +204,19 @@ marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot 
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
 
-    /* autoscroll Miller Columns */
-    marlin_animation_smooth_adjustment_to (mwcols->hadj, width + slot_indice * mwcols->handle_size);
+    GtkAdjustment *adj = mwcols->hadj;
+    gint page_size = (int)gtk_adjustment_get_page_size (adj);
+    gint value = (int)gtk_adjustment_get_value (adj);
+
+    if (value > width)
+        /*scroll right */
+        marlin_animation_smooth_adjustment_to (adj, width);
+    else {
+        gint new_value = width + slot->width - page_size;
+        if (new_value > value)
+            /*scroll left */
+            marlin_animation_smooth_adjustment_to (adj, new_value);
+    }
 }
 
 void

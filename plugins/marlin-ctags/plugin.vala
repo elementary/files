@@ -112,7 +112,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-        message  ("CANCEL");
+        debug  ("CANCEL");
         cancellable.cancel ();
 
 
@@ -126,8 +126,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         //directory = GOF.Directory.Async.from_file(((Object[])user_data)[2] as GOF.File);
         directory = ((Object[]) user_data)[2] as GOF.File;
-        //warning ("CTags Plugin dir %s", directory.file.uri);
-        warning ("CTags Plugin dir %s", directory.uri);
+        debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
     }
@@ -147,12 +146,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         Variant[] entries = null;
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
-            //warning ("--- known %s", gof.name);
             entries += add_entry (gof);
         }
 
         if (entries != null) {
-            warning ("--- known entries %d", entries.length);
+            debug ("--- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries, directory.uri);
             } catch (Error err) {
@@ -165,7 +163,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
-        message ("unknows queue nb: %u", count);
+        debug ("unknows queue nb: %u", count);
         if (count > 10) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
@@ -188,11 +186,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
         } else {
             while ((gof = unknowns.pop_head ()) != null) {
-                //warning ("--- unknown %s", gof.name);
                 try {
                     //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    warning ("--- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
                     warning ("query_info failed: %s %s", err2.message, gof.uri);
@@ -231,19 +227,17 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        //warning ("ctags update %s", file.name);
         try {
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
-            //warning ("iter n_children %d", (int) iter.n_children ());
+            debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-            //warning ("row_iter n_children %d", (int) row_iter.n_children ());
+            debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
-                //message ("%s %d %d", file.name, (int) file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED), (int) modified);
                 unowned string type = row_iter.next_value ().get_string ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
@@ -259,7 +253,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         file.update_type ();
                     }
                 }
-                //message ("grrrrrr %s %s %d %s", myfile.name, type, n, myfile.ftype);
             } else {
                 add_to_unknowns_queue (file);
             }
