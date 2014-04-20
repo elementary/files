@@ -107,6 +107,9 @@ update_total_width (GtkWidget *widget, GtkAllocation *allocation, void *data)
         slot->width = allocation->width;
         gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
     }
+
+    if (slot->slot_number == slot->mwcols->active_slot->slot_number)
+        marlin_window_columns_scroll_to_slot (slot->mwcols, slot);
 }
 
 void
@@ -141,6 +144,7 @@ void autosize_slot (GOFWindowSlot *slot)
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
     g_return_if_fail (GTK_IS_PANED (slot->hpane));
 
+    g_debug ("Autosize slot %i", slot->slot_number);
     PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET (slot->view_box), NULL);
 
     if (gof_directory_async_is_empty (slot->directory))
@@ -174,9 +178,9 @@ void autosize_slot (GOFWindowSlot *slot)
     else
         gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
 
-    //slot->width = column_width;
     gtk_widget_show_all (slot->mwcols->colpane);
     gtk_widget_queue_draw (slot->mwcols->colpane);
+
 
 }
 
@@ -282,10 +286,8 @@ void
 gof_window_slot_active (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-    if (slot->mwcols != NULL) {
-        autosize_slot (slot);
+    if (slot->mwcols != NULL)
         marlin_window_columns_activate_slot (slot->mwcols, slot);
-    }
 }
 
 void

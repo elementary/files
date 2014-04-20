@@ -176,15 +176,22 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 void
 marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot)
 {
-    GList *l;
-    int slot_indice, i;
-    GOFWindowSlot *other_slot;
-    guint width = 0;
-    gboolean sum_completed = FALSE;
-
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
 
+    mwcols->active_slot = slot;
+    g_signal_emit_by_name (slot, "active");
+}
+
+void marlin_window_columns_scroll_to_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot) {
+    GList *l;
+    int slot_index, i;
+    GOFWindowSlot *other_slot;
+    guint width = 0;
+    guint previous_width = 0;
+    gboolean sum_completed = FALSE;
+
+    g_debug ("scrolling to slot %i", slot->slot_number);
     for (i = 0, l = mwcols->slot_list; l != NULL; l = l->next, i++) {
         other_slot = GOF_WINDOW_SLOT (l->data);
 
@@ -192,31 +199,40 @@ marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot 
             g_signal_emit_by_name (other_slot, "inactive");
          else
         {
-            slot_indice = i;
+            slot_index = i;
             sum_completed = TRUE;
         }
 
         if (!sum_completed) {
+            previous_width = width;
             width += other_slot->width;
         }
     }
-
-    mwcols->active_slot = slot;
-    g_signal_emit_by_name (slot, "active");
 
     GtkAdjustment *adj = mwcols->hadj;
     gint page_size = (int)gtk_adjustment_get_page_size (adj);
     gint value = (int)gtk_adjustment_get_value (adj);
 
-    if (value > width)
-        /*scroll right */
+    if (value > width) {
+        /*scroll right until left hand edge of active slot is in view*/
         marlin_animation_smooth_adjustment_to (adj, width);
-    else {
-        gint new_value = width + slot->width - page_size;
-        if (new_value > value)
-            /*scroll left */
-            marlin_animation_smooth_adjustment_to (adj, new_value);
+        return;
     }
+    gint new_value = width + slot->width - page_size;
+
+    if (new_value > value) {
+        /*scroll left until right hand edge of active slot is in view*/
+        marlin_animation_smooth_adjustment_to (adj, new_value);
+        return;
+    }
+
+    if (value > previous_width) {
+        /*scroll right until left hand edge of slot before the active slot is in view*/
+        marlin_animation_smooth_adjustment_to (adj, previous_width);
+        return;
+    }
+
+
 }
 
 void

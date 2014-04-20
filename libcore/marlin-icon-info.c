@@ -455,13 +455,14 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 //#if 0
         char *str_icon = g_icon_to_string (icon);
         gint width, height;
-        
+
         gdk_pixbuf_get_file_info (str_icon, &width, &height);
-        pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, MIN (width, size), MIN (height, size), NULL);
+        if ((width >= 1 || width == -1) && (height >= 1 || height == -1))
+            pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, MIN (width, size), MIN (height, size), NULL);
         /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
         icon_info->pixbuf = pixbuf;*/
-        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
         if (pixbuf != NULL) {
+            icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
             key = loadable_icon_key_new (icon, size);
             g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
             g_free (str_icon);
