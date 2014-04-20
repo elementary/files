@@ -173,7 +173,7 @@ void autosize_slot (GOFWindowSlot *slot)
     else
         gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
 
-    slot->width = column_width;
+    //slot->width = column_width;
     gtk_widget_show_all (slot->mwcols->colpane);
     gtk_widget_queue_draw (slot->mwcols->colpane);
 
@@ -205,7 +205,7 @@ gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location)
 
     marlin_window_columns_add (slot->mwcols, location);
 
-    slot->mwcols->total_width += slot->width + 100;
+    slot->mwcols->total_width += slot->width + 10;
     gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
 }
 
@@ -283,8 +283,8 @@ gof_window_slot_active (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
     if (slot->mwcols != NULL) {
-        marlin_window_columns_activate_slot (slot->mwcols, slot);
         autosize_slot (slot);
+        marlin_window_columns_activate_slot (slot->mwcols, slot);
     }
 }
 

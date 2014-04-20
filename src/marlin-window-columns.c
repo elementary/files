@@ -75,7 +75,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active)
          || !g_file_equal (to_active->directory->location, selected_location))
             g_signal_emit_by_name (active->ctab, "path-changed", selected_location, active);
-        else 
+        else
         /* activate existing slot */
             g_signal_emit_by_name (to_active->ctab, "path-changed", to_active->directory->location, to_active);
 
@@ -170,7 +170,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 
     /* Add it in our GList */
     mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
-    marlin_window_columns_activate_slot (mwcols, slot);
+    //marlin_window_columns_activate_slot (mwcols, slot);
 }
 
 void
@@ -236,7 +236,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindo
         /* make the selected slot active and remove subsequent slots*/
         FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
         fm_directory_view_set_active_slot (view);
-        marlin_window_columns_activate_slot (mwcols, slot);
+        //marlin_window_columns_activate_slot (mwcols, slot);
         gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
     }
 }

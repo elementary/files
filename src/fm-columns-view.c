@@ -337,14 +337,19 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
             /*  ... store clicked folder and start double-click timeout */
             view->details->selected_folder = file;
-
-            GSettings *gtk_default_settings;
             gint double_click_time;
-            gtk_default_settings = gtk_settings_get_default ();
-            g_object_get (gtk_default_settings,
-                          "gtk-double-click-time",
-                          &double_click_time);
+//#if 0
+            GSettings *gtk_default_settings;
+            GtkWidget *view_box;
+            view_box = gtk_bin_get_child (GTK_BIN (view));
 
+            gtk_default_settings = gtk_settings_get_for_screen (eel_gtk_widget_get_screen (view_box));
+            g_object_get (G_OBJECT (gtk_default_settings),
+                          "gtk-double-click-time",
+                          &double_click_time,
+                          NULL);
+//#endif
+//            double_click_time = 200;
             view->details->double_click_timeout_id = g_timeout_add (double_click_time,
                                                                     (GSourceFunc)fm_columns_not_double_click,
                                                                     view);
