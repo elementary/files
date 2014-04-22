@@ -173,7 +173,7 @@ namespace Marlin.View {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
                 /* If not readable, alert the user */
-                if (!file_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ)) {
+                if (slot.directory.permission_denied) {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                 }
