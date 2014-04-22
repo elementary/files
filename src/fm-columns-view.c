@@ -43,6 +43,7 @@ struct FMColumnsViewDetails {
     gboolean    awaiting_double_click;
     guint       double_click_timeout_id;
     GOFFile     *selected_folder;
+    MarlinWindowColumns *mwcols;
 };
 
 /* Wait for the rename to end when activating a file being renamed */
@@ -266,11 +267,13 @@ fm_columns_view_sync_selection (FMDirectoryView *view)
 }
 
 static void
-fm_columns_cancel_await_double_click (FMColumnsView *view) {
+fm_columns_cancel_await_double_click (FMColumnsView *view)
+{
     if (view->details->awaiting_double_click) {
         g_source_remove (view->details->double_click_timeout_id);
         view->details->double_click_timeout_id = 0;
         view->details->awaiting_double_click = FALSE;
+        view->details->mwcols->updates_frozen = FALSE;
     }
 }
 
@@ -281,6 +284,7 @@ fm_columns_not_double_click (FMColumnsView *view)
     g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
 
     view->details->awaiting_double_click = FALSE;
+    view->details->mwcols->updates_frozen = FALSE;
     if (!fm_directory_view_is_drag_pending (view))
         fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 
@@ -300,6 +304,14 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     /* check if the event is for the bin window */
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
         return FALSE;
+
+    //TODO Initialise view->details->mwcols more elegantly
+    if (view->details->mwcols == NULL)
+        view->details->mwcols = fm_directory_view_get_marlin_window_columns (FM_DIRECTORY_VIEW (view));
+
+    /* Ignore event if another slot is waiting for a double click */
+    if (view->details->mwcols->updates_frozen && !view->details->awaiting_double_click)
+        return TRUE;
 
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
@@ -332,29 +344,16 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             file_list = fm_directory_view_get_selection (view);
             GOFFile *file = GOF_FILE (file_list->data);
             view->details->selected_folder = NULL;
-            if (!gof_file_is_folder (file))
-                return FALSE;
-
-            /*  ... store clicked folder and start double-click timeout */
-            view->details->selected_folder = file;
-            gint double_click_time;
-//#if 0
-            GSettings *gtk_default_settings;
-            GtkWidget *view_box;
-            view_box = gtk_bin_get_child (GTK_BIN (view));
-
-            gtk_default_settings = gtk_settings_get_for_screen (eel_gtk_widget_get_screen (view_box));
-            g_object_get (G_OBJECT (gtk_default_settings),
-                          "gtk-double-click-time",
-                          &double_click_time,
-                          NULL);
-//#endif
-//            double_click_time = 200;
-            view->details->double_click_timeout_id = g_timeout_add (double_click_time,
-                                                                    (GSourceFunc)fm_columns_not_double_click,
-                                                                    view);
-            view->details->awaiting_double_click = TRUE;
-
+            if (gof_file_is_folder (file)) {
+                /*  ... store clicked folder and start double-click timeout */
+                view->details->selected_folder = file;
+                view->details->awaiting_double_click = TRUE;
+                view->details->mwcols->updates_frozen = TRUE;
+                /* use short timeout to maintain responsiveness */
+                view->details->double_click_timeout_id = g_timeout_add (100,
+                                                                        (GSourceFunc)fm_columns_not_double_click,
+                                                                        view);
+            }
             return FALSE;
 
         } else if (event->type == GDK_2BUTTON_PRESS) {

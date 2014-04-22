@@ -146,7 +146,6 @@ void autosize_slot (GOFWindowSlot *slot)
     g_return_if_fail (GTK_IS_WIDGET (slot->view_box));
     g_return_if_fail (GOF_DIRECTORY_IS_ASYNC (slot->directory));
     g_return_if_fail (slot->mwcols != NULL);
-    g_return_if_fail (slot->mwcols->colpane != NULL);
 
     g_debug ("Autosize slot %i", slot->slot_number);
     PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET (slot->view_box), NULL);
@@ -182,10 +181,10 @@ void autosize_slot (GOFWindowSlot *slot)
     else
         gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
 
-    gtk_widget_show_all (slot->mwcols->colpane);
-    gtk_widget_queue_draw (slot->mwcols->colpane);
-
-
+    if (slot->mwcols->colpane) {
+        gtk_widget_show_all (slot->mwcols->colpane);
+        gtk_widget_queue_draw (slot->mwcols->colpane);
+    }
 }
 
 void

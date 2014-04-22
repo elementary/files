@@ -137,7 +137,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
     gof_window_slot_make_column_view (slot);
     slot->colpane = mwcols->colpane;
     gof_window_column_add (slot, slot->view_box);
-
+    gtk_widget_show_all (mwcols->colpane);
     /* store pane handle size*/
     gtk_widget_style_get (GTK_WIDGET (slot->hpane), "handle-size", &mwcols->handle_size, NULL);
 
@@ -279,6 +279,7 @@ marlin_window_columns_init (MarlinWindowColumns *mwcol)
 
     g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
                                  G_CALLBACK (show_hidden_files_changed), mwcol, 0);
+    mwcol->updates_frozen = FALSE;
 }
 
 static void

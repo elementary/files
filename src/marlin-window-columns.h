@@ -60,6 +60,8 @@ typedef struct {
 
     gint preferred_column_width;
     guint total_width;
+
+    gboolean updates_frozen;
 } MarlinWindowColumns;
 
 typedef struct {

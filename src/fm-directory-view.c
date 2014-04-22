@@ -2479,6 +2479,14 @@ gboolean fm_directory_view_get_loading (FMDirectoryView *view)
     return FALSE;
 }
 
+MarlinWindowColumns *fm_directory_view_get_marlin_window_columns (FMDirectoryView *view)
+{
+    g_return_val_if_fail (view != NULL, NULL);
+    g_return_val_if_fail (view->details->slot != NULL, NULL);
+
+    return view->details->slot->mwcols;
+}
+
 static void
 fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view)
 {
