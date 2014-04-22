@@ -19,7 +19,7 @@ pkg_check_modules (DEPS REQUIRED
     gio-2.0
     gio-unix-2.0
     pango>=1.1.2
-    gtk+-3.0>=3.0.3
+    gtk+-3.0>=3.10
     gail-3.0
     gee-0.8
     sqlite3
@@ -65,6 +65,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/LocationBar.vala
         View/Sidebar.vala
         View/Chrome/TopMenu.vala
+        View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
@@ -115,6 +116,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/LocationBar.vala
         View/Sidebar.vala
         View/Chrome/TopMenu.vala
+        View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala

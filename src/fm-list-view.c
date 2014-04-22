@@ -200,7 +200,7 @@ fm_list_view_rename_callback (GOFFile *file,
     g_debug ("%s\n", G_STRFUNC);
 	if (view->details->renaming_file) {
 		view->details->rename_done = TRUE;
-		
+
 		if (error != NULL) {
             marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), g_file_info_get_name (file->info), view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
@@ -210,7 +210,7 @@ fm_list_view_rename_callback (GOFFile *file,
 			g_object_unref (view->details->renaming_file);
 		}
 	}
-	
+
 	g_object_unref (view);
 }
 
@@ -277,13 +277,13 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		fm_list_view_unfreeze_updates (view);
 		return;
 	}
-	
+
 	path = gtk_tree_path_new_from_string (path_str);
 
 	gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
 
 	gtk_tree_path_free (path);
-	
+
 	gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
 
@@ -295,7 +295,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		view->details->original_name = g_strdup (new_text);
 		gof_file_rename (file, new_text, fm_list_view_rename_callback, g_object_ref (view));
 	}
-	
+
 	gof_file_unref (file);
 
 	fm_list_view_unfreeze_updates (view);
@@ -312,7 +312,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	gint start_offset, end_offset;
 
 	list_view = FM_LIST_VIEW (view);
-	
+
 	/* Select all if we are in renaming mode already */
 	if (list_view->details->file_name_column && list_view->details->editable_widget) {
 		gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
@@ -776,7 +776,12 @@ fm_list_view_select_all (FMDirectoryView *view)
 
 static void fm_list_view_unselect_all(FMDirectoryView *view)
 {
-    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree));
+    g_return_if_fail (FM_IS_LIST_VIEW (view));
+
+    GtkTreeSelection *selection;
+    selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+    if (selection)
+        gtk_tree_selection_unselect_all (selection);
 }
 
 static void

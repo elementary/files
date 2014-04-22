@@ -718,7 +718,7 @@ get_mount_at (GFile *target)
             found = g_object_ref (mount);
             break;
         }
-		
+
         g_object_unref (root);
     }
 
@@ -768,10 +768,8 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL) {
-        g_debug ("info null need to query_update %s", file->uri);
+    if (file->info == NULL)
         gof_file_query_update (file);
-    }
 
     return (file->info != NULL);
 }
@@ -2312,7 +2310,7 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             file->permissions & S_IWGRP ? 'w' : '-',
                             file->permissions & S_IXGRP
                             ? (sgid ? 's' : 'x')
-                            : (sgid ? 'S' : '-'),		
+                            : (sgid ? 'S' : '-'),
                             file->permissions & S_IROTH ? 'r' : '-',
                             file->permissions & S_IWOTH ? 'w' : '-',
                             file->permissions & S_IXOTH

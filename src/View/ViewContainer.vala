@@ -45,7 +45,7 @@ namespace Marlin.View {
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
-            overlay_statusbar = new OverlayBar (win);
+            overlay_statusbar = new OverlayBar (win, this);
             view_mode = _view_mode;
 
             /* set active tab */
@@ -86,7 +86,7 @@ namespace Marlin.View {
                     }
                 }
 
-                if (new_slot != null && mwcol != null 
+                if (new_slot != null && mwcol != null
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
                     /* Just re-activate existing slot in miller column view */
                     mwcol.activate_slot (slot);
@@ -98,7 +98,7 @@ namespace Marlin.View {
             });
 
             up.connect (() => {
-                if (slot.directory.has_parent ()) 
+                if (slot.directory.has_parent ())
                     path_changed (slot.directory.get_parent ());
             });
 
@@ -189,22 +189,33 @@ namespace Marlin.View {
 
         }
 
-        /* handle directory not found */
+        /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
-            if (!slot.directory.file.exists) {
+            FileInfo file_info;
+
+            try {
+                file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
+
+                /* If not readable, alert the user */
+                if (slot.directory.permission_denied) {
+                    content = new Granite.Widgets.Welcome (_("This does not belong to you."),
+                                                           _("You don't have permission to view this folder."));
+                }
+
+                /* If not a directory, then change the location to the parent */
+                if (file_info.get_file_type () == FileType.DIRECTORY) {
+                    content_shown = false;
+
+                    if (select_childs != null)
+                        ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
+                } else {
+                    path_changed (slot.location.get_parent ());
+                }
+            } catch (Error err) {
+                /* query_info will throw an expception if it cannot find the file */
                 content = new DirectoryNotFound (slot.directory, this);
-            } else if (slot.directory.permission_denied) {
-                content = new Granite.Widgets.Welcome (_("This does not belong to you."),
-                                                       _("You don't have permission to view this folder."));
-            } else {
-                content_shown = false;
-                if (select_childs != null) {
-                    ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
-                }
-                else if (mwcol != null) {
-                    ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
-                }
             }
+
             debug ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
@@ -245,11 +256,11 @@ namespace Marlin.View {
                     /* Create new slot in existing mwcol */
                     /* The new slot becomes active */
                     slot.columns_add_location (location);
-                    slot = mwcol.active_slot; 
+                    slot = mwcol.active_slot;
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
                     if (slot != null) {
                         set_up_slot ();
-                    } else 
+                    } else
                         critical ("marlin window column view has no active slot");
 
                     return;

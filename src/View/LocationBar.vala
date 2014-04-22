@@ -21,8 +21,8 @@
 
 namespace Marlin.View.Chrome
 {
-    public class LocationBar : Gtk.ToolItem {
-        private Breadcrumbs bread;
+    public class LocationBar : Gtk.Box {
+        public Breadcrumbs bread;
 
         private string _path;
         public new string path {
@@ -45,6 +45,11 @@ namespace Marlin.View.Chrome
         public signal void activate_alternate (string path);
         public signal void escape ();
 
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            minimum_width = -1;
+            natural_width = 1200;
+        }
+
         public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
             this.win = win;
             bread = new Breadcrumbs (ui, win);
@@ -53,14 +58,11 @@ namespace Marlin.View.Chrome
             bread.changed.connect (on_bread_changed);
             bread.activate_alternate.connect ((a) => { activate_alternate(a); });
 
-            set_expand (true);
-
-            //border_width = 0;
-            margin_top = 5;
-            margin_bottom = 5;
+            margin_top = 4;
+            margin_bottom = 4;
             margin_left = 3;
 
-            add (bread);
+            pack_start (bread, true, true, 0);
         }
 
         private void on_bread_changed (string changed) {

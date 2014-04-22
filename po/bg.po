@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-06-22 19:11+0000\n"
-"Last-Translator: Veselin Trakiyski <Unknown>\n"
+"PO-Revision-Date: 2014-04-07 23:27+0000\n"
+"Last-Translator: ITPROJECTS <Unknown>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-04-07 06:46+0000\n"
+"X-Launchpad-Export-Date: 2014-04-08 06:59+0000\n"
 "X-Generator: Launchpad (build 16976)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
@@ -78,11 +78,11 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Прост и мощен папков уредник"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Лончпадови Преводачи"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -107,7 +107,7 @@ msgstr "%u избрани предмета"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 msgid "Calculating size…"
-msgstr ""
+msgstr "Пресмятане на размер..."
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
 msgid "Created"
@@ -132,7 +132,7 @@ msgstr "MimeType"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:420
 msgid "MimeTypes"
-msgstr ""
+msgstr "МаймВидове"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
@@ -204,7 +204,7 @@ msgstr "Всеки"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
 msgid "Select an application to open "
-msgstr ""
+msgstr "Изберете приложение за отваряне "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
@@ -247,11 +247,11 @@ msgstr "_Редактиране"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:600
 msgid "_View"
-msgstr ""
+msgstr "_Изглед"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:601
 msgid "_Go"
-msgstr ""
+msgstr "_Отиди"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:602
 msgid "_Help"
@@ -273,59 +273,59 @@ msgstr "Нов раздел"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:609
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Отваори друг подпрозорец за показания адрес"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:613
 msgid "_Close"
-msgstr ""
+msgstr "_Затвори"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:614
 msgid "Close this folder"
-msgstr ""
+msgstr "Затвори тази папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:619
 msgid "_Undo"
-msgstr ""
+msgstr "_Върни"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:622
 msgid "_Redo"
-msgstr ""
+msgstr "_Повтори"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "Open _Parent"
-msgstr ""
+msgstr "Отваряне на _по-главната папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Отвори по-главната папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Back"
-msgstr ""
+msgstr "_Назад"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:629
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Отиди на предходно посетеното место"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:632
 msgid "_Forward"
-msgstr ""
+msgstr "_Напред"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:633
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Отиди на следващото посетено место"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:635
 msgid "_Reload"
-msgstr ""
+msgstr "_Обнови"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:636
 msgid "Reload the current location"
-msgstr ""
+msgstr "Презареди текущото место"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:639
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Домашна папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:640
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
@@ -334,55 +334,55 @@ msgstr "Отворете личната си папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Trash"
-msgstr ""
+msgstr "_Кошче"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Отворете вашата лична кошче-папка"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:647
 msgid "_Network"
-msgstr ""
+msgstr "_Мрежа"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:648
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Преглед на местни или отметнати мрежови положения"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:651
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Увеличи"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:652
 msgid "Increase the view size"
-msgstr ""
+msgstr "Увеличи мащаба"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:663
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Намали"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:664
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Намали мащаба"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:671
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Обикновен ма_щаб"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:672
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Ползвай обикновения изгледен размер"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:675
 msgid "Next Tab"
-msgstr ""
+msgstr "Следващ подпрозорец"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:679
 msgid "Previous Tab"
-msgstr ""
+msgstr "Предишен подпрозорец"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:683
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Свързване към _сървър…"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:684
 msgid "Connect to a remote computer or shared disk"
@@ -390,11 +390,11 @@ msgstr "Свързване към отдалечен компютър или с�
 
 #: /home/codygarver/f/po/../src/View/Window.vala:687
 msgid "_About"
-msgstr ""
+msgstr "_Относно"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:688
 msgid "Display credits"
-msgstr ""
+msgstr "Покажи заслуги"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:691
 msgid "Report a Problem..."
@@ -402,31 +402,31 @@ msgstr "Докладване за проблем..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Съобщи за грешка в Лончпад"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:695
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Намери помощ в интернет..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:699
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Преведи това приложение..."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:708
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Покажи _скритите файлове"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:709
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Включи показването на скритите файлове в текущия прозорец"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:713
 msgid "_Places"
-msgstr ""
+msgstr "_Места"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:714
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Промени видимостта на страничния раздел за този прозорец"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:722
 msgid "Icon"
@@ -434,11 +434,11 @@ msgstr "Икона"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:725
 msgid "List"
-msgstr ""
+msgstr "Списък"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:728
 msgid "Columns"
-msgstr ""
+msgstr "Колони"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:110
 msgid "AFP"
@@ -480,11 +480,11 @@ msgstr "Отваряне в нов раздел"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
-msgstr ""
+msgstr "Отвори с"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:321
 msgid "Other Application .."
-msgstr ""
+msgstr "Друго Пиложение"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
 #, c-format
@@ -495,7 +495,7 @@ msgstr "%u папки"
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " and %u other item (%s) selected"
 
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
 #: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
@@ -528,15 +528,15 @@ msgstr "Задава дали обектите в изгледа да се ак�
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:855
 msgid "Layout mode"
-msgstr ""
+msgstr "Режим на оформление"
 
 #: /home/codygarver/f/po/../src/exo-icon-view.c:856
 msgid "The layout mode"
-msgstr ""
+msgstr "Режимът на оформлението"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Файлово име"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Type"
@@ -547,7 +547,7 @@ msgstr "Тип"
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Неуспех при преименуването на %s на %s"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:607
 #: /home/codygarver/f/po/../src/fm-directory-view.c:511
@@ -561,11 +561,11 @@ msgstr "Няма нищо в клипборда за поставяне"
 
 #: /home/codygarver/f/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Иконово папково списване"
 
 #: /home/codygarver/f/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Иконов изглед"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:1193
 msgid "Invalid filename provided by XDS drag site"
@@ -618,14 +618,20 @@ msgstr "Отвори в нов прозорец"
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3564
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Подготвяне на избраните файлове за преместване с командата за поставяне на "
+"файлове"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3568
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Подготвяне на избраните файлове за копиране с командата за поставяне на "
+"файлове"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3572
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Преместване или копиране на файловете, предварително избрани от командите за "
+"изрязване или копиране на файлове"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3575
 msgid "Paste Into Folder"
@@ -636,86 +642,88 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Преместване или копиране на файловете, предварително избрани от командите за "
+"изрязване или копиране на файлове в избраната папка"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Rename..."
-msgstr ""
+msgstr "_Преименуване…"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Rename selected item"
-msgstr ""
+msgstr "Преименуване на избраното"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3583
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Създаване на нова _папка"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3584
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Създаване на нова празна папка в тази папка"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3586
 msgid "Create New _File"
-msgstr ""
+msgstr "Създаване на нов файл"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "_Empty File"
-msgstr ""
+msgstr "_Празен файл"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3589
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Създаване на нов празен файл в тази папка"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3593
 msgid "Open the selected item"
-msgstr ""
+msgstr "Отваряне на избраното"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3600
 msgid "Open in new Window"
-msgstr ""
+msgstr "Отваряне в нов прозорецц"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3601
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Отваряне на всеки от избраните обекти в нов прозорец"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3605
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Отваряне на всеки от избратните обекти в нов подпрозорец"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3607
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Отваряне _с"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3608
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Изберете приложение с които да бъде отворен избрания обект"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3610
 msgid "Other _Application..."
-msgstr ""
+msgstr "_Друго Приложение…"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3611
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Изберете друго приложение с което да се отвори избрания обект"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3614
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "П_ремести в кошчето"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3615
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Преместване на всеки избран обект в кошчето"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3618
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Изтрий окончателно"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3619
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Изтриване на всеки избран обект, без преместване в кошчето"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3622
 msgid "_Restore"
-msgstr ""
+msgstr "_Възстановяване"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3626
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
@@ -724,11 +732,11 @@ msgstr "Избери всички"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3630
 msgid "_Properties"
-msgstr ""
+msgstr "_Свойства"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3631
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Преглед или промяна на свойствата на всеки избран обект"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3737
 msgid "Set Color:"
@@ -867,7 +875,7 @@ msgstr "Опразни Кошчето"
 
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Свръзка със сървър"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -883,7 +891,7 @@ msgstr "FTP (с вход)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "Апълски Протокол"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -974,7 +982,7 @@ msgstr "Име на домейн:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "_Потребителско име:"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
@@ -1019,67 +1027,67 @@ msgstr "Не може да се изпълни файл \"%s\""
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "_Подреждане на обекти"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "_Обратен ред"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Покажи иконите в обратен ред"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "По _име"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Дръж иконите в редове по име"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "По _размер"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Дръж иконите подредени по размер в редове"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "По _вид"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Дръж иконите подредени по вид в редове"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "По _дата на промяна"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Дръж иконите подредени по дата на промяна в редове"
 
 #: /home/codygarver/f/po/../src/Application.vala:129
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Покажи версията на програмата."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Отваряне на адреса/те в нов подпрозорец"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
-msgstr ""
+msgstr "Изход"
 
 #: /home/codygarver/f/po/../src/Application.vala:135
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Включване на режим за откриване на грешки"
 
 #: /home/codygarver/f/po/../src/Application.vala:138
 msgid "[URI...]"
-msgstr ""
+msgstr "[АДРЕС…]"
 
 #: /home/codygarver/f/po/../src/Application.vala:141
 msgid ""
@@ -1128,7 +1136,7 @@ msgstr "Отказване на всички изпълняващи се дей�
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Преглеждане на вашите файлове"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -1136,395 +1144,395 @@ msgstr "Файлов мениджър"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Нов Прозорец Като _Управител"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Файлове"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Днес в %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Вчера в %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y в %-I:%M %p"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Изтрий %d копирани неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Изтрий «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Изтрий %d повтарящите се неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Премести %d неща обратно в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Премести '%s' обратно в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Преименувай «%s» на «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Върни %d неща от кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Възстановяване на „%s“ като „%s“"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Премести %d неща обратно в кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Преместване на %s обратно в кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Изтрий връзки към %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Изтрий връзката към «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Възстанови първоначалните права за достъп до обектите в «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Възстанови първоначалните права за достъп до «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Възстанови групата на «%s» да е «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Възстанови собственика на «%s» да е «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Копирай %d неща в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Копирай '%s' в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Повторен на %d неща в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Повторен '%s' в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Премести %d неща в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Премести '%s' в '%s'"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Създай нов файл '%s' от шаблон "
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Създай празен файл «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Създай нова папка «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Премести %d неща в кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Премести «%s» в кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Възстанови «%s» от кошчето"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Създай връзки към %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Създай връзка към «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Задай правата за достъп до обектите в «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Задай права за достъп на «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Задай групата на «%s» да е «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Задай собственика на «%s» да е «%s»"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени копирането на %d нещо"
+msgstr[1] "_Отмени копирането на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени повторение на %d нещо"
+msgstr[1] "_Отмени повторение на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени преместване на %d нещо"
+msgstr[1] "_Отмени преместване на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени преименуване на %d нещо"
+msgstr[1] "_Отмени преименуване на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Отмени създаването на празен файл"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Отмени създаването на файл от шаблон"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени създаването на %d папка"
+msgstr[1] "_Отмени създаването на %d папки"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени преместването в кошчето на %d нещо"
+msgstr[1] "_Отмени преместването в кошчето на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени връщането от кошчето на %d нещо"
+msgstr[1] "_Отмени връщането от кошчето на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени създаването на връзка към %d нещо"
+msgstr[1] "_Отмени създаването на връзка към %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отмени изтриването на %d нещо"
+msgstr[1] "_Отмени изтриването на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отмени повторителната смяна на позволенията на %d нещо"
+msgstr[1] "Отмени повторителната смяна на позволенията на %d нещо"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отмени смяната на позволенията на %d нещо"
+msgstr[1] "Отмени смяната на позволенията на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отмени смяната на групата на %d нещо"
+msgstr[1] "Отмени смяната на групата на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отмени смяната на собственик на %d нещо"
+msgstr[1] "Отмени смяната на собственик на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори копирането на %d нещо"
+msgstr[1] "_Повтори копирането на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори повтарящите се на %d нещо"
+msgstr[1] "_Повтори повтарящите се на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори преместването на %d нещо"
+msgstr[1] "_Повтори преместването на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори преименуването на %d нещо"
+msgstr[1] "_Повтори преименуването на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Повтори създаването на празен файл"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Повтори създаването на файл от шаблон"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори създаването на %d папка"
+msgstr[1] "_Повтори създаването на %d папки"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори преместването в кошчето на %d папка"
+msgstr[1] "_Повтори преместването в кошчето на %d папки"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори връщането от кошчето на %d нещо"
+msgstr[1] "_Повтори връщането от кошчето на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори създаването на връзка към %d нещо"
+msgstr[1] "_Повтори създаването на връзка към %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повтори изтриването на %d нещо"
+msgstr[1] "_Повтори изтриването на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повтори многократната смяна на позволенията на %d нещо"
+msgstr[1] "Повтори многократната смяна на позволенията на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повтори смяна на позволенията на %d нещо"
+msgstr[1] "Повтори смяна на позволенията на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повтори смяна на групата на %d нещо"
+msgstr[1] "Повтори смяна на групата на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повтори смяна на собственика на %d нещо"
+msgstr[1] "Повтори смяна на собственика на %d неща"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1768,40 +1776,40 @@ msgstr "%'d-та връзка към %s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
 msgid " (copy)"
-msgstr ""
+msgstr " (копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
 msgid " (another copy)"
-msgstr ""
+msgstr " (друго копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
 msgid "th copy)"
-msgstr ""
+msgstr "о копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
 msgid "st copy)"
-msgstr ""
+msgstr "во копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
 msgid "nd copy)"
-msgstr ""
+msgstr "ро копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
 msgid "rd copy)"
-msgstr ""
+msgstr "то копие)"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (друго копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
@@ -1809,22 +1817,22 @@ msgstr ""
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dто копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dво копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dро копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'dто копие)%s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
 msgid " ("
@@ -1959,12 +1967,15 @@ msgstr[1] "%'d файла остават в Кошчето"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
+"Файлът не може да бъде преместен в кошчето. Да бъде ли изтрит веднага?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Този файл се намира на външен носител и не може да бъде преместен в кошчето. "
+"Веднъж изтрит неможе да бъде възвърнат."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
 msgid "Trashing Files"
@@ -2396,16 +2407,16 @@ msgstr "Обектът може да бъде изваден от кошчето
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Изрежи избрания текст в паметта"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Копирай избрания текст в паметта"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Постави текста, запазен в паметта"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
 #, c-format
@@ -2414,20 +2425,20 @@ msgstr "Отиди в %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
-msgstr ""
+msgstr "Изглед като Решетка"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
-msgstr ""
+msgstr "Изглед като Списък"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View in Columns"
-msgstr ""
+msgstr "Изглед като Колони"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Тези неща могат да бъдат изтрити при опразване на кошчето."
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Изпразни кошчето"
