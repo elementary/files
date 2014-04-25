@@ -194,6 +194,7 @@ namespace Marlin.View.Chrome {
                 // right_click
                 right_click (ev);
                 popup_menu_and_depress_button (ev);
+                return true;
             }
 
             return false;
