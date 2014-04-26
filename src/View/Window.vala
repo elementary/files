@@ -21,6 +21,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Marlin.View {
+
     public class Window : Gtk.Window
     {
         public Gtk.UIManager ui;
@@ -70,11 +71,13 @@ namespace Marlin.View {
         }
 
         protected virtual void action_radio_change_view(){
+message ("Action radio change view");
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
+message ("Current action value %i", n);
             /* change the view only for view_mode real change */
-            if (n != current_tab.view_mode)
+            if (current_tab != null && n != current_tab.view_mode)
                 current_tab.change_view(n, null);
         }
 
@@ -221,9 +224,12 @@ namespace Marlin.View {
             });
 
             delete_event.connect (() => {
-                save_geometries ();
-                destroy ();
+                if (app.is_first_window ((Gtk.Window) this)) {
+                    save_geometries ();
+                    save_tabs ();
+                }
 
+                //destroy ();
                 return false;
             });
 
@@ -242,6 +248,7 @@ namespace Marlin.View {
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
+message ("Tab switched callback");
                 change_tab (tabs.get_tab_position (new_tab));
             });
 
@@ -304,9 +311,11 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
+message ("Change tab offset %i", offset);
             ViewContainer old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-            if (old_tab == current_tab) {
+            if (current_tab == null || old_tab == current_tab) {
+message ("No change or null current - returning");
                 return;
             }
             if (old_tab != null) {
@@ -319,37 +328,54 @@ namespace Marlin.View {
                 var cur_slot = current_tab.get_active_slot ();
                 if (cur_slot != null) {
                     cur_slot.active();
+message ("update location state");
                     current_tab.update_location_state(false);
                     /* update radio action view state */
+message ("update radio action");
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
+message ("sync selection");
                     if (cur_slot.view_box != null && !current_tab.content_shown)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
+message ("emit signal loading uri %s", (current_tab.slot.directory.file.uri ?? "NULL"));
                     loading_uri (current_tab.slot.directory.file.uri);
                 }
             }
         }
 
-        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
-            var content = new View.ViewContainer (this, location,
-                                    current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
+        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+                                   int viewmode = -1) {
+message ("make new tab");
+            if (viewmode < 0) {
+                if (current_tab != null)
+                    viewmode = current_tab.view_mode;
+                else
+                    viewmode = Preferences.settings.get_enum("default-viewmode");
+            }
 
+            var content = new View.ViewContainer (this, location, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
-
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
 
+message ("inserting tab");
             tabs.insert_tab (tab, -1);
-
             tabs.current = tab;
             change_tab (tabs.get_tab_position (tab));
+            content.content_ready.connect (content_ready);
+
+message ("make new tab - leave");
         }
 
-        public void add_tab (File location) {
-            make_new_tab (location);
+        private void content_ready (View.ViewContainer content) {
+            content.content_ready.disconnect (content_ready);
+        }
 
+        public void add_tab (File location, int viewmode = -1) {
+            make_new_tab (location, viewmode);
+message ("add tab");
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -429,6 +455,35 @@ namespace Marlin.View {
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
+        }
+
+        private void save_tabs () {
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a{us}"));
+
+            foreach (var tab in tabs.tabs) {
+                assert (tab != null);
+                var view = tab.page as ViewContainer;
+                assert (view != null);
+                vb.add ("{us}", view.view_mode, (view.get_root_uri () ?? Environment.get_home_dir ()));
+            }
+            Preferences.settings.set_value ("tab-info-list", vb.end ());
+        }
+
+        public uint restore_tabs () {
+    message ("restore tabs");
+            GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
+            GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
+            message ("Number of items in container is %i", (int)iter.n_children ());
+            uint tabs_added = 0;
+            int viewmode;
+            string uri;
+            while (iter.next ("{us}", out viewmode, out uri)) {
+    message ("Adding tab uri %s, view mode %i", uri, viewmode);
+                //TODO Add validation of settings
+                add_tab (File.new_for_uri (uri), viewmode);
+                tabs_added++;
+            }
+            return tabs_added;
         }
 
         public Gtk.ActionGroup get_actiongroup () {

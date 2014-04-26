@@ -288,3 +288,24 @@ marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols)
     g_signal_handlers_unblock_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
 }
 
+const gchar*
+marlin_window_columns_get_root_uri (MarlinWindowColumns *mwcols)
+{
+    //GOFWindowSlot *first_slot = NULL;
+    //first_slot = GOF_WINDOW_SLOT((g_list_first (mwcols->slot))->data);
+    //g_return_val_if_fail (first_slot!=NULL && GOF_IS_WINDOW_SLOT (first_slot), NULL);
+    //g_message ("%s- first slot uri is %s", G_STRFUNC, first_slot->directory->file->uri);
+    return g_strdup((GOF_WINDOW_SLOT((g_list_first (mwcols->slot))->data))->directory->file->uri);
+}
+
+const gchar*
+marlin_window_columns_get_tip_uri (MarlinWindowColumns *mwcols)
+{
+    //GOFWindowSlot *last_slot = NULL;
+    //last_slot = GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data);
+    //g_return_val_if_fail (last_slot!=NULL && GOF_IS_WINDOW_SLOT (last_slot), NULL);
+    //g_message ("%s- first slot uri is %s", G_STRFUNC, last_slot->directory->file->uri);
+    return g_strdup((GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data))->directory->file->uri);
+}
+
+

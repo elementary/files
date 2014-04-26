@@ -68,6 +68,8 @@ namespace Marlin {
             public Columns (GLib.File f, Gtk.Overlay ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
+            public string? get_root_uri ();
+            public string? get_tip_uri ();
             /*public Directory.Async directory;
             public Widget get_view ();*/
         }

@@ -260,7 +260,7 @@ fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAs
 
     if (view->details->select_added_files)
         fm_directory_view_add_to_selection_gof_file (view, file);
-        
+
 }
 
 static void
@@ -722,7 +722,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
     {
         switch (flags) {
         case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
-            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
+            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location, -1);
             break;
         case MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW:
             marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
@@ -763,7 +763,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
                 if (gof_file_is_folder (file)) {
                     location = gof_file_get_target_location (file);
                     if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) {
-                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
+                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location, -1);
                     } else {
                         marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
@@ -775,7 +775,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
             /* Open all of the files in the default application at once instead of individually */
             gof_files_launch_with (file_list, screen, view->details->default_app);
         }
-    } 
+    }
 }
 
 void
@@ -2125,7 +2125,7 @@ load_templates_from_folder (GFile *template_folder, GList *templates)
     templates = g_list_append (templates, dir);
 
     GList *l;
-    guint index; 
+    guint index;
     if (g_list_length (folder_list) > 0) {
         for (l = folder_list, index = 0;
              l != NULL;
@@ -2891,7 +2891,7 @@ fm_directory_view_parent_set (GtkWidget *widget,
         GTK_WIDGET_CLASS (parent_class)->parent_set (widget, old_parent);
     }
 
-    g_debug("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     view = FM_DIRECTORY_VIEW (widget);
     dir = view->details->slot->directory;
 
@@ -2901,8 +2901,8 @@ fm_directory_view_parent_set (GtkWidget *widget,
 
         if (MARLIN_VIEW_WINDOW (view->details->window)->current_tab)
         {
-            /*printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
-              printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
+            printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
+              printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));
             if (view->details->slot ==
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
                 g_signal_emit_by_name (view->details->slot, "active");

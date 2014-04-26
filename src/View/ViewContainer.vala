@@ -42,8 +42,10 @@ namespace Marlin.View {
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
+        public signal void content_ready ();
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
+message ("new viewcontainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             view_mode = _view_mode;
@@ -97,6 +99,7 @@ namespace Marlin.View {
                 change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
                 update_location_state (false);
             });
+message ("new viewcontainer - leaving");
         }
 
         public Gtk.Widget content {
@@ -194,6 +197,7 @@ namespace Marlin.View {
 
             warning ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
+            content_ready ();
         }
 
         public void change_view (int nview, GLib.File? location) {
@@ -266,6 +270,20 @@ namespace Marlin.View {
                 return mwcol.active_slot;
             else
                 return slot;
+        }
+
+        public string? get_root_uri () {
+            if (mwcol!=null)
+                return mwcol.get_root_uri ();
+            else
+                return slot.directory.file.uri;
+        }
+
+        public string? get_tip_uri () {
+            if (mwcol!=null)
+                return mwcol.get_tip_uri ();
+            else
+                return get_root_uri ();
         }
 
         public void reload () {

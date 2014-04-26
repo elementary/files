@@ -286,11 +286,9 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_windows (File[]? files) {
-        if (files == null) {
-            /* Open a window pointing at the default location. */
-            var location = File.new_for_path (Environment.get_home_dir ());
-            open_window (location);
-        } else {
+        if (files == null)
+            open_tabs (files);
+        else {
             /* Open windows at each requested location. */
             foreach (var file in files)
                 open_window (file);
@@ -312,9 +310,12 @@ public class Marlin.Application : Granite.Application {
         }
 
         if (files == null) {
-            /* Open a tab pointing at the default location */
-            var location = File.new_for_path (Environment.get_home_dir ());
-            window.add_tab (location);
+            /* Restore session */
+            if (window.restore_tabs () < 1) {
+                /* Open a tab pointing at the default location if no tabs restored*/
+                var location = File.new_for_path (Environment.get_home_dir ());
+                window.add_tab (location);
+            }
         } else {
             /* Open tabs at each requested location */
             foreach (var file in files)
