@@ -459,12 +459,15 @@ namespace Marlin.View {
                 //TODO Completely save and restore Miller column view, not just root slot
             }
             Preferences.settings.set_value ("tab-info-list", vb.end ());
+
+            int active_tab_position = tabs.get_tab_position (tabs.current);
+            Preferences.settings.set_int ("active-tab-position", active_tab_position);
         }
 
         public uint restore_tabs () {
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
-            uint tabs_added = 0;
+            int tabs_added = 0;
             int viewmode;
             string uri;
 
@@ -479,7 +482,13 @@ namespace Marlin.View {
             }
 
             freeze_view_changes = false;
-            //TODO Restore previously active tab setting.
+
+            int active_tab_position = Preferences.settings.get_int ("active-tab-position");
+            if (active_tab_position >=0 && active_tab_position < tabs_added) {
+                tabs.current = tabs.get_tab_by_index (active_tab_position);
+                change_tab (active_tab_position);
+            }
+
             return tabs_added;
         }
 

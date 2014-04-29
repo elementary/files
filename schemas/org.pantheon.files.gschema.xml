@@ -116,6 +116,11 @@
       <summary>Whether to restore tabs on start up</summary>
       <description>Whether to restore tabs on start up</description>
     </key>
+    <key type="i" name="active-tab-position">
+      <default>1</default>
+      <summary>Which tab to make active on start up</summary>
+      <description>Which tab to make active on start up</description>
+    </key>
     <key type="a{us}" name="tab-info-list">
       <default>[{0,"file:///home"}]</default>
       <summary>Details of open tabs</summary>
