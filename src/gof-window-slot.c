@@ -290,6 +290,10 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
 void
 gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
+    if(slot->view_box != NULL)
+    {
+        gtk_widget_destroy(slot->view_box);
+    }
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     slot->directory->track_longest_name = TRUE;

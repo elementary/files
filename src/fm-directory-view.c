@@ -305,7 +305,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
         dir = gof_directory_async_cache_lookup (file->location);
         if (dir != NULL) {
             if (gof_directory_async_purge_dir_from_cache (dir))
-                g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
+                g_debug ("Removed %s from gof-directory-async cache\n", file->uri);
             g_object_unref (dir);
         }
 
@@ -335,10 +335,13 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     int size = marlin_zoom_level_to_icon_size (zoom);
     gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     /* If in Miller view, autosize the column */
-    if (view->details->slot->ready_to_autosize)
-        autosize_slot (view->details->slot);
-    else
-        view->details->slot->ready_to_autosize = TRUE;
+    if (view->details->slot->mwcols) {
+        if (view->details->slot->ready_to_autosize)
+            autosize_slot (view->details->slot);
+        else
+            view->details->slot->ready_to_autosize = TRUE;
+    } else
+        view->details->slot->ready_to_autosize = FALSE;
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
@@ -2977,12 +2980,8 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
-
-    //coltest
-    g_message ("%s > merge menus", G_STRFUNC);
+    g_debug ("%s %s", G_STRFUNC, slot->directory->file->uri);
     fm_directory_view_merge_menus (view);
-    //schedule_update_menus (view);
 }
 
 static void

@@ -88,7 +88,6 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 {
-    g_message ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = g_object_ref (location);
@@ -261,7 +260,6 @@ static void
 marlin_window_columns_finalize (GObject *object)
 {
     MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
-    g_message ("%s\n", G_STRFUNC);
 
     g_signal_handlers_disconnect_by_func (mwcols->colpane,
                                           G_CALLBACK (marlin_window_columns_key_pressed),
@@ -291,20 +289,12 @@ marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols)
 const gchar*
 marlin_window_columns_get_root_uri (MarlinWindowColumns *mwcols)
 {
-    //GOFWindowSlot *first_slot = NULL;
-    //first_slot = GOF_WINDOW_SLOT((g_list_first (mwcols->slot))->data);
-    //g_return_val_if_fail (first_slot!=NULL && GOF_IS_WINDOW_SLOT (first_slot), NULL);
-    //g_message ("%s- first slot uri is %s", G_STRFUNC, first_slot->directory->file->uri);
     return g_strdup((GOF_WINDOW_SLOT((g_list_first (mwcols->slot))->data))->directory->file->uri);
 }
 
 const gchar*
 marlin_window_columns_get_tip_uri (MarlinWindowColumns *mwcols)
 {
-    //GOFWindowSlot *last_slot = NULL;
-    //last_slot = GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data);
-    //g_return_val_if_fail (last_slot!=NULL && GOF_IS_WINDOW_SLOT (last_slot), NULL);
-    //g_message ("%s- first slot uri is %s", G_STRFUNC, last_slot->directory->file->uri);
     return g_strdup((GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data))->directory->file->uri);
 }
 

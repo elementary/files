@@ -45,7 +45,6 @@ namespace Marlin.View {
         public signal void content_ready ();
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
-message ("new viewcontainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             view_mode = _view_mode;
@@ -53,16 +52,16 @@ message ("new viewcontainer");
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label ("Loading...");
-            change_view (view_mode, location);
             label.set_ellipsize (Pango.EllipsizeMode.END);
             label.set_single_line_mode (true);
             label.set_alignment (0.0f, 0.5f);
             label.set_padding (0, 0);
-            update_location_state (true);
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
-            //add(content_item);
+            change_view (view_mode, location);
+            update_location_state (true);
+
             this.show_all ();
 
             // Override background color to support transparency on overlay widgets
@@ -79,6 +78,7 @@ message ("new viewcontainer");
                 if (slot != null && myfile != null && slot.directory.file.exists
                     && slot.location.equal (myfile))
                     return;
+
                 change_view(view_mode, myfile);
                 update_location_state (true);
             });
@@ -99,7 +99,6 @@ message ("new viewcontainer");
                 change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
                 update_location_state (false);
             });
-message ("new viewcontainer - leaving");
         }
 
         public Gtk.Widget content {
@@ -136,12 +135,8 @@ message ("new viewcontainer - leaving");
         }
 
         private void connect_available_info () {
-            //file_info_callback = slot.directory.file.info_available.connect((gof) => {
-                if (window.current_tab == this)
-                    window.loading_uri (slot.directory.file.uri);
-
-                /*Source.remove((uint) file_info_callback);
-            });*/
+            if (window.current_tab == this)
+                window.loading_uri (slot.directory.file.uri);
         }
 
         public void refresh_slot_info () {
@@ -171,7 +166,6 @@ message ("new viewcontainer - leaving");
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
             FileInfo file_info;
-
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -204,9 +198,15 @@ message ("new viewcontainer - leaving");
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
+
             if (location == null) {
                 /* we re just changing view keep the same location */
-                location = get_active_slot ().location;
+                GOF.Window.Slot? active_slot = get_active_slot ();
+                if (active_slot == null) {
+                    warning ("No active slot found - cannot change view");
+                    return;
+                }
+                location = active_slot.location;
                 /* store the old selection to restore it */
                 if (slot != null && !content_shown) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();

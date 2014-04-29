@@ -32,7 +32,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
-        public ViewContainer? current_tab;
+        public ViewContainer? current_tab = null;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
@@ -63,6 +63,7 @@ namespace Marlin.View {
 
         public signal void loading_uri (string location);
 
+        private bool freeze_view_changes = false;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -71,11 +72,12 @@ namespace Marlin.View {
         }
 
         protected virtual void action_radio_change_view(){
-message ("Action radio change view");
+            if (freeze_view_changes)
+                return;
+
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
-message ("Current action value %i", n);
             /* change the view only for view_mode real change */
             if (current_tab != null && n != current_tab.view_mode)
                 current_tab.change_view(n, null);
@@ -248,7 +250,6 @@ message ("Current action value %i", n);
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
-message ("Tab switched callback");
                 change_tab (tabs.get_tab_position (new_tab));
             });
 
@@ -306,18 +307,24 @@ message ("Tab switched callback");
             return null;
         }
 
+        public int get_page_number (Gtk.Widget widget) {
+            Granite.Widgets.Tab? tab = tabs.get_tab_by_widget (widget);
+            if (tab != null)
+                return tabs.get_tab_position (tab);
+            else
+                return -1;
+        }
+
         public new void set_title(string title){
             this.title = title;
         }
 
         public void change_tab (int offset) {
-message ("Change tab offset %i", offset);
-            ViewContainer old_tab = current_tab;
+            ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-            if (current_tab == null || old_tab == current_tab) {
-message ("No change or null current - returning");
+            if (current_tab == null || old_tab == current_tab)
                 return;
-            }
+
             if (old_tab != null) {
                 var old_slot = old_tab.get_active_slot ();
                 if (old_slot != null)
@@ -328,17 +335,13 @@ message ("No change or null current - returning");
                 var cur_slot = current_tab.get_active_slot ();
                 if (cur_slot != null) {
                     cur_slot.active();
-message ("update location state");
                     current_tab.update_location_state(false);
                     /* update radio action view state */
-message ("update radio action");
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-message ("sync selection");
                     if (cur_slot.view_box != null && !current_tab.content_shown)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
-message ("emit signal loading uri %s", (current_tab.slot.directory.file.uri ?? "NULL"));
                     loading_uri (current_tab.slot.directory.file.uri);
                 }
             }
@@ -346,7 +349,6 @@ message ("emit signal loading uri %s", (current_tab.slot.directory.file.uri ?? "
 
         private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                                    int viewmode = -1) {
-message ("make new tab");
             if (viewmode < 0) {
                 if (current_tab != null)
                     viewmode = current_tab.view_mode;
@@ -360,22 +362,12 @@ message ("make new tab");
                 tab.label = tab_name;
             });
 
-message ("inserting tab");
-            tabs.insert_tab (tab, -1);
+            change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-            change_tab (tabs.get_tab_position (tab));
-            content.content_ready.connect (content_ready);
-
-message ("make new tab - leave");
-        }
-
-        private void content_ready (View.ViewContainer content) {
-            content.content_ready.disconnect (content_ready);
         }
 
         public void add_tab (File location, int viewmode = -1) {
             make_new_tab (location, viewmode);
-message ("add tab");
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -463,26 +455,31 @@ message ("add tab");
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
                 var view = tab.page as ViewContainer;
-                assert (view != null);
                 vb.add ("{us}", view.view_mode, (view.get_root_uri () ?? Environment.get_home_dir ()));
+                //TODO Completely save and restore Miller column view, not just root slot
             }
             Preferences.settings.set_value ("tab-info-list", vb.end ());
         }
 
         public uint restore_tabs () {
-    message ("restore tabs");
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
-            message ("Number of items in container is %i", (int)iter.n_children ());
             uint tabs_added = 0;
             int viewmode;
             string uri;
+
+            /* prevent unwanted changes of view while restoring tabs
+             * as this causes all sorts of problems */
+            freeze_view_changes = true;
+
             while (iter.next ("{us}", out viewmode, out uri)) {
-    message ("Adding tab uri %s, view mode %i", uri, viewmode);
-                //TODO Add validation of settings
+                //TODO Validate retrieved settings
                 add_tab (File.new_for_uri (uri), viewmode);
                 tabs_added++;
             }
+
+            freeze_view_changes = false;
+            //TODO Restore previously active tab setting.
             return tabs_added;
         }
 
