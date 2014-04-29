@@ -455,7 +455,12 @@ namespace Marlin.View {
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
                 var view = tab.page as ViewContainer;
-                vb.add ("{us}", view.view_mode, (view.get_root_uri () ?? Environment.get_home_dir ()));
+                /* Do not save if "File does not exist" or "Does not belong to you" */
+                if (!view.can_show_folder)
+                    continue;
+
+                string uri = GLib.Uri.escape_string (view.get_root_uri ());
+                vb.add ("{us}", view.view_mode, (uri ?? Environment.get_home_dir ()));
                 //TODO Completely save and restore Miller column view, not just root slot
             }
             Preferences.settings.set_value ("tab-info-list", vb.end ());
@@ -476,9 +481,15 @@ namespace Marlin.View {
             freeze_view_changes = true;
 
             while (iter.next ("{us}", out viewmode, out uri)) {
-                //TODO Validate retrieved settings
-                add_tab (File.new_for_uri (uri), viewmode);
+                if (viewmode < 0 || viewmode > 2 || uri == null)
+                    continue;
+
+                string unescaped_uri = GLib.Uri.unescape_string (uri);
+                add_tab (GLib.File.new_for_uri (unescaped_uri), viewmode);
                 tabs_added++;
+
+                viewmode = -1;
+                uri = null;
             }
 
             freeze_view_changes = false;

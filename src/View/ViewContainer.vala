@@ -26,6 +26,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
         public bool content_shown = false;
+        public bool can_show_folder = true;
         public Gtk.Label label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
@@ -148,8 +149,10 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else
+            else {
                 tab_name = _("This folder does not exist");
+                can_show_folder = false;
+            }
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
@@ -173,6 +176,7 @@ namespace Marlin.View {
                 if (slot.directory.permission_denied) {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
+                    can_show_folder = false;
                 }
 
                 /* If not a directory, then change the location to the parent */
@@ -214,6 +218,7 @@ namespace Marlin.View {
                         select_childs.prepend (elem.location);
                 }
             } else {
+                can_show_folder = true;
                 /* check if the requested location is a parent of the previous one */
                 if (slot != null) {
                     var parent = slot.location.get_parent ();
