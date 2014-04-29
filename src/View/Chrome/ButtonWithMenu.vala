@@ -158,14 +158,10 @@ namespace Marlin.View.Chrome {
             active = false;
         }
 
-        private void popup_menu_and_depress_button (Gdk.EventButton ev) {
-            active = true;
-            popup_menu (ev);
-        }
-
         private bool on_button_release_event (Gdk.EventButton ev) {
             if (ev.time - last_click_time < LONG_PRESS_TIME) {
                 slow_press ();
+                active = false;
             }
 
             if (timeout != -1) {
@@ -179,13 +175,15 @@ namespace Marlin.View.Chrome {
         private bool on_button_press_event (Gdk.EventButton ev) {
             // If the button is kept pressed, don't make the user wait when there's no action
             int max_press_time = LONG_PRESS_TIME;
-
+            if (ev.button == 1 || ev.button == 3)
+                active = true;
+                
             if (timeout == -1 && ev.button == 1) {
                 last_click_time = ev.time;
                 timeout = (int) Timeout.add(max_press_time, () => {
                     // long click
                     timeout = -1;
-                    popup_menu_and_depress_button (ev);
+                    popup_menu (ev);
                     return false;
                 });
             }
@@ -193,10 +191,10 @@ namespace Marlin.View.Chrome {
             if (ev.button == 3) {
                 // right_click
                 right_click (ev);
-                popup_menu_and_depress_button (ev);
+                popup_menu (ev);
             }
+            return true;
 
-            return false;
         }
 
         private bool on_mnemonic_activate (bool group_cycling) {
