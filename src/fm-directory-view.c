@@ -682,8 +682,7 @@ void
 fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-
-    gof_window_columns_add_location(view->details->slot, location);
+    marlin_window_columns_add_location (view->details->slot->mwcols, location);
 }
 
 void
@@ -720,7 +719,6 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
     g_debug ("%s\n", G_STRFUNC);
     location = gof_file_get_target_location (file);
 
-    //g_message ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri(location));
     if (gof_file_is_folder (file))
     {
         switch (flags) {
@@ -2597,7 +2595,6 @@ void
 fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-
     GList *selection = fm_directory_view_get_selection (view);
 
     if (!selection) {
@@ -2904,8 +2901,8 @@ fm_directory_view_parent_set (GtkWidget *widget,
 
         if (MARLIN_VIEW_WINDOW (view->details->window)->current_tab)
         {
-            printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
-              printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));
+            /*printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
+              printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
             if (view->details->slot ==
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
                 g_signal_emit_by_name (view->details->slot, "active");

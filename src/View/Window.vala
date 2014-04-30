@@ -307,14 +307,6 @@ namespace Marlin.View {
             return null;
         }
 
-        public int get_page_number (Gtk.Widget widget) {
-            Granite.Widgets.Tab? tab = tabs.get_tab_by_widget (widget);
-            if (tab != null)
-                return tabs.get_tab_position (tab);
-            else
-                return -1;
-        }
-
         public new void set_title(string title){
             this.title = title;
         }
@@ -450,46 +442,56 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
-            VariantBuilder vb = new VariantBuilder (new VariantType ("a{us}"));
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
                 var view = tab.page as ViewContainer;
+
                 /* Do not save if "File does not exist" or "Does not belong to you" */
                 if (!view.can_show_folder)
                     continue;
 
-                string uri = GLib.Uri.escape_string (view.get_root_uri ());
-                vb.add ("{us}", view.view_mode, (uri ?? Environment.get_home_dir ()));
-                //TODO Completely save and restore Miller column view, not just root slot
+                vb.add ("(uss)",
+                        view.view_mode,
+                        GLib.Uri.escape_string (view.get_root_uri () ?? Environment.get_home_dir ()),
+                        GLib.Uri.escape_string (view.get_tip_uri () ?? "")
+                       );
             }
-            Preferences.settings.set_value ("tab-info-list", vb.end ());
 
-            int active_tab_position = tabs.get_tab_position (tabs.current);
-            Preferences.settings.set_int ("active-tab-position", active_tab_position);
+            Preferences.settings.set_value ("tab-info-list", vb.end ());
+            Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
         }
 
         public uint restore_tabs () {
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
             int tabs_added = 0;
-            int viewmode;
-            string uri;
+            int viewmode = -1;
+            string root_uri = null;
+            string tip_uri = null;
 
             /* prevent unwanted changes of view while restoring tabs
              * as this causes all sorts of problems */
             freeze_view_changes = true;
 
-            while (iter.next ("{us}", out viewmode, out uri)) {
-                if (viewmode < 0 || viewmode > 2 || uri == null)
+            while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
+                if (viewmode < 0 || viewmode > 2
+                 || root_uri == null || tip_uri == null)
                     continue;
 
-                string unescaped_uri = GLib.Uri.unescape_string (uri);
-                add_tab (GLib.File.new_for_uri (unescaped_uri), viewmode);
-                tabs_added++;
+                string unescaped_root_uri = GLib.Uri.unescape_string (root_uri);
+                GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
 
+                add_tab (root_location, viewmode);
+
+                if (viewmode == ViewMode.MILLER && tip_uri != root_uri)
+                    expand_miller_view (tip_uri, root_location);
+
+                tabs_added++;
                 viewmode = -1;
-                uri = null;
+                root_uri = null;
+                tip_uri = null;
             }
 
             freeze_view_changes = false;
@@ -501,6 +503,35 @@ namespace Marlin.View {
             }
 
             return tabs_added;
+        }
+
+        private void expand_miller_view (string tip_uri, GLib.File root_location) {
+            var tab = tabs.current;
+            var view = tab.page as ViewContainer;
+            var mwcols = view.mwcol;
+            var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
+            var relative_path = root_location.get_relative_path (tip_location);
+            var slot = mwcols.active_slot;
+
+            GLib.File gfile;
+            FM.Directory.View dview;
+
+            if (relative_path != null) {
+                string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
+                string uri = root_location.get_uri ();
+
+                foreach (string dir in dirs) {
+                    uri += (GLib.Path.DIR_SEPARATOR_S + dir);
+                    gfile = GLib.File.new_for_uri (uri);
+                    dview = slot.view_box as FM.Directory.View;
+
+                    dview.column_add_location (gfile);
+                    slot = mwcols.get_last_slot ();
+                }
+            } else {
+                warning ("Invalid tip uri for Miller View");
+            }
         }
 
         public Gtk.ActionGroup get_actiongroup () {

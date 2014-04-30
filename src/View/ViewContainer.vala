@@ -43,7 +43,6 @@ namespace Marlin.View {
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
-        public signal void content_ready ();
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
@@ -195,7 +194,6 @@ namespace Marlin.View {
 
             warning ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
-            content_ready ();
         }
 
         public void change_view (int nview, GLib.File? location) {
@@ -278,17 +276,17 @@ namespace Marlin.View {
         }
 
         public string? get_root_uri () {
-            if (mwcol!=null)
+            if (mwcol != null)
                 return mwcol.get_root_uri ();
             else
-                return slot.directory.file.uri;
+                return slot.location.get_uri ();
         }
 
         public string? get_tip_uri () {
-            if (mwcol!=null)
+            if (mwcol != null)
                 return mwcol.get_tip_uri ();
             else
-                return get_root_uri ();
+                return "";
         }
 
         public void reload () {

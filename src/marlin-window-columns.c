@@ -147,8 +147,31 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 void
 marlin_window_columns_add_location (MarlinWindowColumns *mwcols, GFile *location)
 {
+    /* First prepare active slot to receive new child
+     * then call marlin_window_columns_add */
     gof_window_columns_add_location(mwcols->active_slot, location);
+
+    GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
+
+    slot->width = mwcols->preferred_column_width;
+    slot->slot_number = mwcols->active_slot->slot_number + 1;
+    slot->mwcols = mwcols;
+
+    gof_window_slot_make_column_view (slot);
+    gof_window_column_add (slot, slot->view_box);
+
+    /* Add it in our GList */
+    mwcols->slot = g_list_append(mwcols->slot, slot);
+
+    mwcols->total_width += slot->width + 100;
+    gtk_widget_set_size_request (mwcols->colpane, mwcols->total_width, -1);
+
+    /* Set mwcols->active_slot now in case another slot is created before
+     * this one really becomes active, e.g. during restoring tabs on startup */
+    marlin_window_columns_active_slot (mwcols, slot);
 }
+#if 0
+/* Incorporated into marlin_window_columns_add_location */
 /**
  * Add a new column
  **/
@@ -166,7 +189,9 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     /* Add it in our GList */
     mwcols->slot = g_list_append(mwcols->slot, slot);
     //gtk_widget_grab_focus(slot->view_box);
+    return slot;
 }
+#endif
 
 void
 marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot)
@@ -296,6 +321,12 @@ const gchar*
 marlin_window_columns_get_tip_uri (MarlinWindowColumns *mwcols)
 {
     return g_strdup((GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data))->directory->file->uri);
+}
+
+GOFWindowSlot *
+marlin_window_columns_get_last_slot (MarlinWindowColumns *mwcols)
+{
+    return (GOF_WINDOW_SLOT((g_list_last (mwcols->slot))->data));
 }
 
 

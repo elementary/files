@@ -25,6 +25,7 @@ namespace FM {
             public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
             public GLib.AppInfo? get_default_app ();
             public void select_glib_files (GLib.List files);
+            public void column_add_location (GLib.File file);
         }
     }
 }
@@ -70,6 +71,7 @@ namespace Marlin {
             public GOF.Window.Slot active_slot;
             public string? get_root_uri ();
             public string? get_tip_uri ();
+            public unowned GOF.Window.Slot get_last_slot ();
             /*public Directory.Async directory;
             public Widget get_view ();*/
         }

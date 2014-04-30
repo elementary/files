@@ -121,10 +121,10 @@
       <summary>Which tab to make active on start up</summary>
       <description>Which tab to make active on start up</description>
     </key>
-    <key type="a{us}" name="tab-info-list">
-      <default>[{0,"file:///home"}]</default>
+    <key type="a(uss)" name="tab-info-list">
+      <default>[(0,"file:///home", "")]</default>
       <summary>Details of open tabs</summary>
-      <description>Array of root_uri strings</description>
+      <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
 
   </schema>
