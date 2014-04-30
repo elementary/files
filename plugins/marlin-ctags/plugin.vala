@@ -163,7 +163,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
-        debug ("unknows queue nb: %u", count);
+        debug ("unknowns queue length: %u", count);
         if (count > 10) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();

@@ -253,8 +253,8 @@ namespace Marlin.View {
                     mwcol = new Marlin.Window.Columns (location, this);
                     slot = mwcol.active_slot;
                 } else {
-                    /* Create new slot in existing mwcol */
-                    /* The new slot becomes active */
+                    /* Create new slot in existing mwcol
+                     * The new slot becomes active */
                     slot.columns_add_location (location);
                     slot = mwcol.active_slot;
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();

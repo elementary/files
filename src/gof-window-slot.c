@@ -123,7 +123,6 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
     gtk_widget_show_all(slot->colpane);
 
     GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    //gtk_widget_show_all (box1);
 
     slot->colpane = box1;
     slot->hpane = hpane;
@@ -196,7 +195,7 @@ gof_window_slot_columns_add_location (GOFWindowSlot *slot, GFile *location)
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 
-    current_slot_position = g_list_index(slot->mwcols->slot_list, slot);
+    current_slot_position = g_list_index (slot->mwcols->slot_list, slot);
     if(current_slot_position == -1) {
         g_warning ("Can't find the slot you are viewing, this should *not* happen.");
     } else {
@@ -281,7 +280,6 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     slot->directory->track_longest_name = TRUE;
-    //gof_directory_async_load (slot->directory);
 }
 
 

@@ -652,7 +652,7 @@ fm_directory_view_finalize (GObject *object)
 
     /* release the context menu references */
     if (view->details->menu_selection) {
-        gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
+        gpointer old_menuitems = g_object_get_data (G_OBJECT (view->details->menu_selection), "other_selection");
         g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy);
         g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL);
     }
@@ -675,7 +675,7 @@ fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    gof_window_slot_columns_add_location(view->details->slot, location);
+    gof_window_slot_columns_add_location (view->details->slot, location);
 }
 
 void
@@ -704,7 +704,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
 
     location = gof_file_get_target_location (file);
 
-    g_debug ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri(location));
+    g_debug ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri (location));
     if (gof_file_is_folder (file))
     {
         switch (flags) {

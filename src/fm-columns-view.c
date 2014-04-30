@@ -305,7 +305,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
         return FALSE;
 
-    //TODO Initialise view->details->mwcols more elegantly
     if (view->details->mwcols == NULL)
         view->details->mwcols = fm_directory_view_get_marlin_window_columns (FM_DIRECTORY_VIEW (view));
 
@@ -323,14 +322,14 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     }
 
     if (event->button == 1 && g_settings_get_boolean (settings, "single-click")) {
-        /* Handle single left-click (and start of double click) in single click mode*/
+        /* Handle single left-click (and start of double click) in single click mode */
         if (event->type == GDK_BUTTON_PRESS
            && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0 ) {
             /* Ignore second GDK_BUTTON_PRESS event of double-click */
             if (view->details->awaiting_double_click)
                 return TRUE;
 
-            /*Determine where user clicked - this will be the sole selection*/
+            /*Determine where user clicked - this will be the sole selection */
             gtk_tree_selection_unselect_all (selection);
             if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL)) {
                 /* select the path on which the user clicked */
@@ -482,7 +481,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                          GtkCellRenderer   *renderer,
                          GtkTreeModel      *model,
                          GtkTreeIter       *iter,
-                         FMColumnsView        *view)
+                         FMColumnsView     *view)
 {
     g_return_if_fail (GTK_IS_TREE_VIEW_COLUMN (column));
     g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
@@ -535,27 +534,28 @@ color_row_func (GtkTreeViewColumn *column,
     g_free (color);
 }
 
-static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
+static gboolean
+fm_columns_view_draw (GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
-    g_return_val_if_fail(FM_IS_COLUMNS_VIEW(view), FALSE);
+    g_return_val_if_fail (FM_IS_COLUMNS_VIEW (view), FALSE);
 
     GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (FM_DIRECTORY_VIEW (view));
 
     if (gof_directory_async_is_empty (dir))
     {
-        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), NULL);
-        gchar *str = g_strconcat("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);
+        PangoLayout* layout = gtk_widget_create_pango_layout (GTK_WIDGET(view), NULL);
+        gchar *str = g_strconcat ("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);
         pango_layout_set_markup (layout, str, -1);
 
         PangoRectangle extents;
         /* Get layout height and width */
-        pango_layout_get_extents(layout, NULL, &extents);
+        pango_layout_get_extents (layout, NULL, &extents);
         gdouble width = pango_units_to_double(extents.width);
-        gdouble height = pango_units_to_double(extents.height);
-        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
-                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
-                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
-                layout);
+        gdouble height = pango_units_to_double (extents.height);
+        gtk_render_layout (gtk_widget_get_style_context (GTK_WIDGET(view)), cr,
+                  (double) gtk_widget_get_allocated_width (GTK_WIDGET (view)) / 2 - width / 2,
+                  (double) gtk_widget_get_allocated_height (GTK_WIDGET(view)) / 2 - height / 2,
+                  layout);
     }
 
     return FALSE;

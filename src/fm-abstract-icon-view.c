@@ -387,7 +387,8 @@ fm_abstract_icon_view_select_all (FMDirectoryView *view)
     exo_icon_view_select_all (FM_ABSTRACT_ICON_VIEW (view)->icons);
 }
 
-static void fm_abstract_icon_view_unselect_all(FMDirectoryView *view)
+static void
+fm_abstract_icon_view_unselect_all (FMDirectoryView *view)
 {
     exo_icon_view_unselect_all (FM_ABSTRACT_ICON_VIEW (view)->icons);
 }
@@ -562,7 +563,8 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     return handled;
 }
 
-static gboolean fm_abstract_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMAbstractIconView* view)
+static gboolean
+fm_abstract_icon_view_draw (GtkWidget* view_, cairo_t* cr, FMAbstractIconView* view)
 {
     g_return_val_if_fail (FM_IS_ABSTRACT_ICON_VIEW(view), FALSE);
 

@@ -42,10 +42,10 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
     switch(event->keyval)
     {
     case GDK_KEY_Left:
-        active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
+        active_position = g_list_index (mwcols->slot_list, mwcols->active_slot);
 
         if (active_position > 0)
-            to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position-1));
+            to_active = GOF_WINDOW_SLOT (g_list_nth_data (mwcols->slot_list, active_position-1));
 
         if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active))
             break;
@@ -54,7 +54,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         return TRUE;
 
     case GDK_KEY_Right:
-        active_position = g_list_index(mwcols->slot_list, mwcols->active_slot);
+        active_position = g_list_index (mwcols->slot_list, mwcols->active_slot);
 
         GList* selection;
         GOFWindowSlot* active = mwcols->active_slot;
@@ -69,7 +69,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
             break;
 
         if (active_position < g_list_length(mwcols->slot_list) - 1)
-            to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot_list, active_position + 1));
+            to_active =  GOF_WINDOW_SLOT (g_list_nth_data (mwcols->slot_list, active_position + 1));
 
         /* If no slot to activate or the locations do not match, open a new slot */
         if (to_active == NULL || !GOF_IS_WINDOW_SLOT (to_active)
@@ -97,7 +97,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 {
-    g_debug ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
+    g_debug ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = g_object_ref (location);
@@ -107,7 +107,7 @@ marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
     slot->mwcols = mwcols;
     slot->slot_number = 0;
     mwcols->active_slot = slot;
-    mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
+    mwcols->slot_list = g_list_append (mwcols->slot_list, slot);
     return mwcols;
 }
 
@@ -152,7 +152,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 void
 marlin_window_columns_add_location (MarlinWindowColumns *mwcols, GFile *location)
 {
-    gof_window_slot_columns_add_location(mwcols->active_slot, location);
+    gof_window_slot_columns_add_location (mwcols->active_slot, location);
 }
 /**
  * Add a new column
@@ -169,7 +169,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     gof_window_column_add (slot, slot->view_box);
 
     /* Add it in our GList */
-    mwcols->slot_list = g_list_append(mwcols->slot_list, slot);
+    mwcols->slot_list = g_list_append (mwcols->slot_list, slot);
     marlin_window_columns_activate_slot (slot->mwcols, slot);
 }
 
@@ -210,8 +210,8 @@ void marlin_window_columns_scroll_to_slot (MarlinWindowColumns *mwcols, GOFWindo
     }
 
     GtkAdjustment *adj = mwcols->hadj;
-    gint page_size = (int)gtk_adjustment_get_page_size (adj);
-    gint value = (int)gtk_adjustment_get_value (adj);
+    gint page_size = (int) gtk_adjustment_get_page_size (adj);
+    gint value = (int) gtk_adjustment_get_value (adj);
 
     if (value > width) {
         /*scroll right until left hand edge of active slot is in view*/
@@ -263,7 +263,6 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindo
         /* make the selected slot active and remove subsequent slots*/
         FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
         fm_directory_view_set_active_slot (view);
-        //marlin_window_columns_activate_slot (mwcols, slot);
         gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
     }
 }
