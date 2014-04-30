@@ -80,9 +80,5 @@ namespace Marlin.View.Chrome
 
             show ();
         }
-
-        private void toolitems_destroy (Gtk.Widget? w) {
-            ((Gtk.Container) this).remove (w);
-        }
     }
 }

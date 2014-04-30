@@ -24,6 +24,13 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
 
     public Operation (Marlin.ConnectServer.Dialog dialog) {
         this.dialog = dialog;
+        this.set_parent (dialog);
+        
+        // Turn the parent's modal functionality off because the mount operation needs to take over
+        this.dialog.modal = false;
+        this.reply.connect ( (result) => {
+           this.dialog.modal = true;
+        });
     }
 
     /*
