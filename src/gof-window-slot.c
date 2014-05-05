@@ -194,8 +194,8 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
     gint current_slot_position = 0;
     gint i;
     GList* list_slot = slot->mwcols->slot;
-    /* slot should always be the active slot */
-    /* destroy all child slots of this slot */
+    /* slot should always be the active slot
+     * destroy all child slots of this slot */
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 
@@ -239,9 +239,8 @@ void
 gof_window_slot_make_icon_view (GOFWindowSlot *slot)
 {
     if(slot->view_box != NULL)
-    {
         gtk_widget_destroy(slot->view_box);
-    }
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
@@ -255,9 +254,8 @@ void
 gof_window_slot_make_list_view (GOFWindowSlot *slot)
 {
     if(slot->view_box != NULL)
-    {
         gtk_widget_destroy(slot->view_box);
-    }
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
@@ -279,9 +277,8 @@ void
 gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
     if(slot->view_box != NULL)
-    {
         gtk_widget_destroy(slot->view_box);
-    }
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     slot->directory->track_longest_name = TRUE;

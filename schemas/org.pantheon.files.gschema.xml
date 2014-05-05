@@ -20,7 +20,6 @@
     <value value="2" nick="informal"/>
   </enum>
 
-
   <schema path="/org/pantheon/files/preferences/" id="org.pantheon.files.preferences">
     <key type="b" name="show-sidebar">
       <default>true</default>
@@ -122,11 +121,10 @@
       <description>Which tab to make active on start up</description>
     </key>
     <key type="a(uss)" name="tab-info-list">
-      <default>[(0,"file:///home", "")]</default>
       <summary>Details of open tabs</summary>
+      <default>[(0,"","")]</default>
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
-
   </schema>
 
   <schema path="/org/pantheon/files/icon-view/" id="org.pantheon.files.icon-view">

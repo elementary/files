@@ -345,7 +345,7 @@ namespace Marlin.View {
                 if (current_tab != null)
                     viewmode = current_tab.view_mode;
                 else
-                    viewmode = Preferences.settings.get_enum("default-viewmode");
+                    viewmode = Preferences.settings.get_enum ("default-viewmode");
             }
 
             var content = new View.ViewContainer (this, location, viewmode);
@@ -476,12 +476,10 @@ namespace Marlin.View {
             freeze_view_changes = true;
 
             while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
-                if (viewmode < 0 || viewmode > 2
-                 || root_uri == null || tip_uri == null)
+                if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
-                string unescaped_root_uri = GLib.Uri.unescape_string (root_uri);
-                GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
+                GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
 
                 add_tab (root_location, viewmode);
 
