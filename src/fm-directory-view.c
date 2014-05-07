@@ -279,7 +279,7 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
     //remove thumbnail cache so new thumbnail would be generated
     if (gof_file_get_thumbnail_path (file) != NULL){
         char* path = gof_file_get_thumbnail_path (file);
-        marlin_icon_info_remove_updated_icon (path);
+        marlin_icon_info_remove_all_size_caches (path);
     }
     fm_list_model_file_changed (view->model, file, directory);
     guint id;
@@ -293,7 +293,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
     //remove thumbnail cache so new thumbnail would be generated
     if (gof_file_get_thumbnail_path (file) != NULL){
         char* path = gof_file_get_thumbnail_path (file);
-        marlin_icon_info_remove_updated_icon (path);
+        marlin_icon_info_remove_all_size_caches (path);
     }
     fm_list_model_remove_file (view->model, file, directory);
     /* Remove from gof-directory-async cache */

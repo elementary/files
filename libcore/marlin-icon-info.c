@@ -20,6 +20,7 @@
 //#include <config.h>
 #include <string.h>
 #include "marlin-icon-info.h"
+#include "../src/marlin-enum-types.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
@@ -729,24 +730,32 @@ marlin_icon_info_get_pixbuf_force_size (MarlinIconInfo  *icon, gint size, gboole
         return marlin_icon_info_get_pixbuf_nodefault (icon);
     }
 }
-
-static gboolean
-remove_all_size_cache (LoadableIconKey *key, gpointer value, gpointer user_info){
+void marlin_icon_info_remove_cache (const char *path, int size){
+    MarlinIconInfo *icon_info;
     GFile *icon_file;
     GIcon *icon;
     LoadableIconKey *lookup_key;
-    char *path = user_info;
-
+    
     icon_file = g_file_new_for_path (path);
     icon = g_file_icon_new (icon_file);
-
-    lookup_key = (LoadableIconKey *) key;
-
-    return (g_icon_equal (lookup_key->icon, icon));
+    lookup_key = loadable_icon_key_new (icon, size);
+    icon_info = marlin_icon_info_lookup (icon, size);
+    
+    if (icon_info != NULL)
+        g_hash_table_remove (loadable_icon_cache, lookup_key);
+    
+    g_object_unref (icon_file);
+    g_object_unref (icon_info);
+    g_object_unref (icon);
+    g_object_unref (lookup_key);
+    
 }
-
-void marlin_icon_info_remove_updated_icon (const char *path){
-     g_hash_table_foreach_remove (loadable_icon_cache,
-                                  (GHRFunc) remove_all_size_cache,
-                                  path);
+void marlin_icon_info_remove_all_size_caches (const char *path){
+    int zoom_level;
+    for (zoom_level=MARLIN_ICON_SIZE_SMALLEST;
+         zoom_level<=MARLIN_ICON_SIZE_LARGEST;
+         zoom_level++){
+         //size = marlin_zoom_level_to_icon_size (zoom_level);
+         marlin_icon_info_remove_cache (path, zoom_level);
+         }
 }
