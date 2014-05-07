@@ -20,7 +20,6 @@
 //#include <config.h>
 #include <string.h>
 #include "marlin-icon-info.h"
-#include "../src/marlin-enum-types.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
@@ -730,6 +729,7 @@ marlin_icon_info_get_pixbuf_force_size (MarlinIconInfo  *icon, gint size, gboole
         return marlin_icon_info_get_pixbuf_nodefault (icon);
     }
 }
+
 void marlin_icon_info_remove_cache (const char *path, int size){
     MarlinIconInfo *icon_info;
     GFile *icon_file;
