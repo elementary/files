@@ -741,21 +741,10 @@ void marlin_icon_info_remove_cache (const char *path, int size){
     lookup_key = loadable_icon_key_new (icon, size);
     icon_info = marlin_icon_info_lookup (icon, size);
     
-    if (icon_info != NULL)
+    if (icon_info != NULL){
         g_hash_table_remove (loadable_icon_cache, lookup_key);
-    
+        g_object_unref (icon_info);
+    }
     g_object_unref (icon_file);
-    g_object_unref (icon_info);
     g_object_unref (icon);
-    g_object_unref (lookup_key);
-    
-}
-void marlin_icon_info_remove_all_size_caches (const char *path){
-    int zoom_level;
-    for (zoom_level=MARLIN_ICON_SIZE_SMALLEST;
-         zoom_level<=MARLIN_ICON_SIZE_LARGEST;
-         zoom_level++){
-         //size = marlin_zoom_level_to_icon_size (zoom_level);
-         marlin_icon_info_remove_cache (path, zoom_level);
-         }
 }
