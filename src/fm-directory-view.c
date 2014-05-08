@@ -277,16 +277,7 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 
     g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
     //remove thumbnail cache so new thumbnail would be generated
-    if (gof_file_get_thumbnail_path (file) != NULL){
-        char* path = gof_file_get_thumbnail_path (file);
-        MarlinZoomLevel zoom_level;
-        for (zoom_level = MARLIN_ZOOM_LEVEL_SMALLEST;
-             zoom_level <= MARLIN_ZOOM_LEVEL_LARGEST;
-             zoom_level++){
-                int icon_size = marlin_zoom_level_to_icon_size (zoom_level);
-                marlin_icon_info_remove_cache (path, icon_size);
-             }
-    }
+    remove_marlin_icon_info_cache (file);
     fm_list_model_file_changed (view->model, file, directory);
     guint id;
     marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id, /* large */ FALSE);
@@ -297,16 +288,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 {
     g_debug ("%s %s", G_STRFUNC, file->uri);
     //remove thumbnail cache so new thumbnail would be generated
-    if (gof_file_get_thumbnail_path (file) != NULL){
-        char* path = gof_file_get_thumbnail_path (file);
-        MarlinZoomLevel zoom_level;
-        for (zoom_level = MARLIN_ZOOM_LEVEL_SMALLEST;
-             zoom_level <= MARLIN_ZOOM_LEVEL_LARGEST;
-             zoom_level++){
-                int icon_size = marlin_zoom_level_to_icon_size (zoom_level);
-                marlin_icon_info_remove_cache (path, icon_size);
-             }
-    }
+    remove_marlin_icon_info_cache (file);
     fm_list_model_remove_file (view->model, file, directory);
     /* Remove from gof-directory-async cache */
     if (gof_file_is_folder (file)) {
@@ -3773,4 +3755,20 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     //view->details->templates_invalid = TRUE;
 
     update_menus (view);
+}
+
+void 
+remove_marlin_icon_info_cache (GOFFile *file)
+{
+    if (gof_file_get_thumbnail_path (file) != NULL){
+        char* path = gof_file_get_thumbnail_path (file);
+        MarlinZoomLevel zoom_level;
+        for (zoom_level = MARLIN_ZOOM_LEVEL_SMALLEST;
+             zoom_level <= MARLIN_ZOOM_LEVEL_LARGEST;
+             zoom_level++)
+             {
+                int icon_size = marlin_zoom_level_to_icon_size (zoom_level);
+                marlin_icon_info_remove_cache (path, icon_size);
+             }
+    }
 }
