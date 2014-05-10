@@ -205,6 +205,8 @@ static int      fm_directory_view_get_uri_keypath_size (FMDirectoryView *view);
 
 void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
 
+static void 	remove_marlin_icon_info_cache (GOFFile *file);
+
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
 
@@ -3757,11 +3759,11 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     update_menus (view);
 }
 
-void 
+static void 
 remove_marlin_icon_info_cache (GOFFile *file)
 {
     if (gof_file_get_thumbnail_path (file) != NULL){
-        char* path = gof_file_get_thumbnail_path (file);
+        const char* path = gof_file_get_thumbnail_path (file);
         MarlinZoomLevel zoom_level;
         for (zoom_level = MARLIN_ZOOM_LEVEL_SMALLEST;
              zoom_level <= MARLIN_ZOOM_LEVEL_LARGEST;

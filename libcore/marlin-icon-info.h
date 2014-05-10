@@ -70,3 +70,4 @@ void                marlin_icon_info_remove_cache               (const char *pat
 G_END_DECLS
 
 #endif /* MARLIN_ICON_INFO_H */
+
