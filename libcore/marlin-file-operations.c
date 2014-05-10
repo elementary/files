@@ -2257,8 +2257,14 @@ get_trash_dirs_for_mount (GMount *mount)
     return list;
 }
 
-static gboolean
-has_trash_files (GMount *mount)
+
+GList *
+marlin_file_operations_get_trash_dirs_for_mount (GMount *mount)
+{
+    return get_trash_dirs_for_mount (mount);
+}
+
+static gboolean has_trash_files (GMount *mount)
 {
     GList *dirs, *l;
     GFile *dir;
@@ -2280,6 +2286,12 @@ has_trash_files (GMount *mount)
     g_list_free_full (dirs, g_object_unref);
 
     return res;
+}
+
+gboolean
+marlin_file_operations_has_trash_files (GMount *mount)
+{
+    return has_trash_files (mount);
 }
 
 
@@ -2331,6 +2343,12 @@ prompt_empty_trash (GtkWindow *parent_window)
     return result;
 }
 
+gint
+marlin_file_operations_prompt_empty_trash (GtkWindow *parent_window)
+{
+    return prompt_empty_trash (parent_window);
+}
+
 void
 marlin_file_operations_unmount_mount_full (GtkWindow                      *parent_window,
                                            GMount                         *mount,
@@ -2357,21 +2375,7 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
         response = prompt_empty_trash (parent_window);
 
         if (response == GTK_RESPONSE_ACCEPT) {
-            EmptyTrashJob *job;
-
-            job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-#ifdef ENABLE_TASKVIEW
-            g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-#endif
-            job->should_confirm = FALSE;
-            job->trash_dirs = get_trash_dirs_for_mount (mount);
-            job->done_callback = (MarlinOpCallback)do_unmount;
-            job->done_callback_data = data;
-            g_io_scheduler_push_job (empty_trash_job,
-                                     job,
-                                     NULL,
-                                     0,
-                                     NULL);
+            marlin_file_operations_empty_trash_dirs (parent_window, get_trash_dirs_for_mount (mount));
             return;
         } else if (response == GTK_RESPONSE_CANCEL) {
             if (callback) {
@@ -6522,11 +6526,23 @@ marlin_file_operations_empty_trash (GtkWidget *parent_view)
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    marlin_file_operations_empty_trash_dirs (parent_window, NULL);
+}
+
+void
+marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
+{
+    EmptyTrashJob *job;
+
     job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-    //g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-    job->trash_dirs = g_list_prepend (job->trash_dirs,
-                                      g_file_new_for_uri ("trash:"));
-    //job->should_confirm = TRUE;
+#ifdef ENABLE_TASKVIEW
+    g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
+#endif
+
+    if (dirs != NULL)
+        job->trash_dirs = dirs;
+    else
+        g_list_prepend (job->trash_dirs, g_file_new_for_uri ("trash:"));
 
     inhibit_power_manager ((CommonJob *)job, _("Emptying Trash"));
 

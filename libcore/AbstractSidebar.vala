@@ -58,7 +58,7 @@ namespace Marlin {
                                         typeof (string),            /* tool tip */
                                         typeof (Icon),              /* Action icon (e.g. eject button) */
                                         typeof (bool),              /* Show spinner */
-                                        typeof (int),               /* Spinner pulse */
+                                        typeof (uint),            /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64)             /* For disks, total size */
                                         );

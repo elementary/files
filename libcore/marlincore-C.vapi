@@ -22,7 +22,11 @@ namespace FM
 
 [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
 namespace Marlin.FileOperations {
-    static void empty_trash(Gtk.Widget widget);
+    static bool has_trash_files (GLib.Mount mount);
+    static int prompt_empty_trash (Gtk.Window? parent_window);
+    static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
+    static void empty_trash_dirs (Gtk.Window? parent_window, GLib.List<GLib.File> dirs);
+    static void empty_trash (Gtk.Widget? widget);
     static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
 }
 

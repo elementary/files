@@ -47,10 +47,10 @@ public class Marlin.PluginManager : Object {
         plugin_dirs += plugin_dir;
 
         load_plugins ();
-
         // Monitor plugin dirs
         foreach (string path in plugin_dirs)
             set_directory_monitor (path);
+
     }
 
     public void load_plugins () {
@@ -91,7 +91,6 @@ public class Marlin.PluginManager : Object {
 
         FileInfo info;
         FileEnumerator enumerator;
-
         try {
             var dir = File.new_for_path (path);
 
@@ -121,7 +120,7 @@ public class Marlin.PluginManager : Object {
             return;
         }
 
-        message ("Loading plugin for %s", file_path);
+        debug ("Loading plugin for %s", file_path);
 
         Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null) {
@@ -149,7 +148,6 @@ public class Marlin.PluginManager : Object {
         Plugins.Base plug = module_init();
 
         debug ("Loaded module source: '%s'", module.name());
-        //message ("Loaded module source: '%s'", module.name());
 
         if (plug != null)
             plugin_hash.set (file_path, plug);

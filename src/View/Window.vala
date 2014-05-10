@@ -82,7 +82,6 @@ namespace Marlin.View {
         {
             application = app;
             screen = myscreen;
-
             ui = new Gtk.UIManager();
 
             try {
@@ -161,11 +160,9 @@ namespace Marlin.View {
             });
 
             tabs.show ();
-
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
-
             var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show ();
 
@@ -291,7 +288,6 @@ namespace Marlin.View {
             if (!current_tab.content_shown)
                 ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
-
 
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null)
