@@ -1101,6 +1101,8 @@ namespace Marlin.Places {
                         if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location, window.get_screen ());
+                        } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
+                            window.add_tab (location);
                         } else {
                             slot.path_changed (location);
                         }

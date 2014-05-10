@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-03 18:05+0000\n"
-"Last-Translator: majo dom <majo_dom@yahoo.com>\n"
+"PO-Revision-Date: 2014-04-28 14:54+0000\n"
+"Last-Translator: Milan Slovák <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2014-04-07 06:49+0000\n"
-"X-Generator: Launchpad (build 16976)\n"
+"X-Launchpad-Export-Date: 2014-04-29 06:37+0000\n"
+"X-Generator: Launchpad (build 16985)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -1343,22 +1343,25 @@ msgstr[2] "_Späť kopírovať %d položiek"
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Vrátiť zdvojenú %d položku"
+msgstr[1] "_Vrátiť zdvojené %d položky"
+msgstr[2] "_Vrátiť zdvojených %d položiek"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Vrátiť prenesenú %d položku"
+msgstr[1] "_Vrátiť prenesené %d položky"
+msgstr[2] "_Vrátiť prenesených %d položiek"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Vrátiť premenovanú %d položku"
+msgstr[1] "_Vrátiť premenované %d položky"
+msgstr[2] "_Vrátiť premenovaných %d položiek"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"

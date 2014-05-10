@@ -22,7 +22,7 @@
 
 namespace Marlin.View.Chrome {
 
-    public class ViewSwitcher : Gtk.ToolItem {
+    public class ViewSwitcher : Gtk.Box {
         public Granite.Widgets.ModeButton switcher;
 
         private ViewMode _mode;
@@ -64,6 +64,8 @@ namespace Marlin.View.Chrome {
         private Gtk.Image miller;
 
         public ViewSwitcher (Gtk.ActionGroup action_group) {
+            Object (orientation: Gtk.Orientation.HORIZONTAL);
+
             main_actions = action_group;
 
             switcher = new Granite.Widgets.ModeButton ();
@@ -99,7 +101,7 @@ namespace Marlin.View.Chrome {
 
             switcher.sensitive = true;
 
-            add (switcher);
+            pack_start (switcher, true, true, 0);
         }
     }
 }

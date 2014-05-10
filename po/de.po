@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-05 14:51+0000\n"
-"Last-Translator: UweS <Unknown>\n"
+"PO-Revision-Date: 2014-05-06 00:11+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-04-07 06:47+0000\n"
-"X-Generator: Launchpad (build 16976)\n"
+"X-Launchpad-Export-Date: 2014-05-06 07:22+0000\n"
+"X-Generator: Launchpad (build 16996)\n"
 "Language: de\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -31,7 +31,7 @@ msgstr "Dateisystem"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
 msgid "This folder does not exist"
-msgstr "Dieser Ordner existiert nicht."
+msgstr "Dieser Ordner existiert nicht"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
 msgid "(as Administrator)"
@@ -39,7 +39,7 @@ msgstr "(als Administrator)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
-msgstr "Das gehört Ihnen nicht."
+msgstr "Dieses gehört Ihnen nicht."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
@@ -76,7 +76,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr "Ein einfacher und leistungsfähiger Dateimanager"
+msgstr "Eine einfache und leistungsfähige Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
@@ -206,7 +206,7 @@ msgstr "Wählen Sie eine Anwendung, die Sie öffnen möchten "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "Dateien ist nicht Ihr Standard-Dateimanager."
+msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3512
@@ -332,7 +332,7 @@ msgstr "Persönlichen Ordner öffnen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:643
 msgid "_Trash"
-msgstr "_Müll"
+msgstr "_Papierkorb"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:644
 msgid "Open your personal trash folder"
@@ -376,7 +376,7 @@ msgstr "Nächster Reiter"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:679
 msgid "Previous Tab"
-msgstr "Voheriger Reiter"
+msgstr "Vorheriger Tab"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:683
 msgid "Connect to _Server..."
@@ -471,11 +471,11 @@ msgstr "SMB"
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:117
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
 msgid "Trash"
-msgstr "Müll"
+msgstr "Papierkorb"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
-msgstr "In neuem Reiter öffnen"
+msgstr "In neuem Tab öffnen"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
@@ -910,7 +910,7 @@ msgstr "Sicheres WebDAV (HTTPS)"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Verbinde …"
+msgstr "Verbindungsaufbau …"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -1078,7 +1078,7 @@ msgstr "Die Versionsnummer des Programms anzeigen."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
-msgstr "Adresse(n) in neuem Reiter öffnen"
+msgstr "Adresse(n) in neuem Tab öffnen"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
@@ -1090,7 +1090,7 @@ msgstr "Nachrichten zur Fehlerdiagnose anzeigen"
 
 #: /home/codygarver/f/po/../src/Application.vala:138
 msgid "[URI...]"
-msgstr "[URI …]"
+msgstr "[Adresse …]"
 
 #: /home/codygarver/f/po/../src/Application.vala:141
 msgid ""
@@ -1100,11 +1100,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Das Dateisystem mit Hilfe des Dateimanagers anzeigen"
+"Das Dateisystem mit Hilfe der Dateiverwaltung durchsuchen"
 
 #: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
-msgstr "--quit kann nicht mit URI(s) benutzt werden."
+msgstr "--quit kann nicht mit Adressen benutzt werden."
 
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
@@ -1143,7 +1143,7 @@ msgstr "Durchsuchen Sie Ihre Dateien"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "Dateimanager"
+msgstr "Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -1212,12 +1212,12 @@ msgstr "»%s« nach »%s« wiederherstellen"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "Verschiebe %d Dateien zurück in den Papierkorb"
+msgstr "%d Dateien zurück in den Papierkorb verschieben"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Verschiebe »%s« zurück in den Müll"
+msgstr "»%s« zurück in den Papierkorb verschieben"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1297,17 +1297,17 @@ msgstr "Erstelle einen neuen Ordner »%s«"
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "Verschiebe %d Objekte in den Müll"
+msgstr "%d Objekte in den Papierkorb verschieben"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Verschiebe »%s« in den Müll"
+msgstr "»%s« in den Papierkorb verschieben"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "»%s« aus dem Müll wiederherstellen"
+msgstr "»%s« aus dem Papierkorb wiederherstellen"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
@@ -1386,15 +1386,16 @@ msgstr[1] "Erstellen von %d Ordnern _rückgängig machen"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "Verschieben in den Müll von %d Objekt _rückgängig machen"
-msgstr[1] "Verschieben in den Müll von %d Objekten _rückgängig machen"
+msgstr[0] "Verschieben in den Papierkorb von %d Objekt _rückgängig machen"
+msgstr[1] "Verschieben in den Papierkorb von %d Objekten _rückgängig machen"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "Wiederherstellen vom Müll für %d Objekt _rückgängig machen"
-msgstr[1] "Wiederherstellen vom Müll für %d Objekten _rückgängig machen"
+msgstr[0] "Wiederherstellen vom Papierkorb für %d Objekt _rückgängig machen"
+msgstr[1] ""
+"Wiederherstellen vom Papierkorb für %d Objekten _rückgängig machen"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
@@ -1485,15 +1486,15 @@ msgstr[1] "Erstellen von %d Ordnern wiede_rholen"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Verschieben von %d Objekt in den Müll wiede_rholen"
-msgstr[1] "Verschieben von %d Objekten in den Müll wiede_rholen"
+msgstr[0] "Verschieben von %d Objekt in den Papierkorb wiede_rholen"
+msgstr[1] "Verschieben von %d Objekten in den Papierkorb wiede_rholen"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Wiederherstellen aus dem Müll von %d Objekt wiede_rholen"
-msgstr[1] "Wiederherstellen aus dem Müll von %d Objekten wiede_rholen"
+msgstr[0] "Wiederherstellen aus dem Papierkorb von %d Objekt wiede_rholen"
+msgstr[1] "Wiederherstellen aus dem Papierkorb von %d Objekten wiede_rholen"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
@@ -1851,7 +1852,7 @@ msgstr " (%'d"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"Sind Sie sicher, dass Sie »%B« dauerhaft aus dem Müll entfernen möchten?"
+"Sind Sie sicher, dass Sie »%B« dauerhaft aus dem Papierkorb löschen möchten?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
 #, c-format
@@ -1862,11 +1863,11 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Sind Sie sicher, dass Sie das %'d gewählte Objekt dauerhaft aus dem Müll "
-"entfernen möchten?"
+"Sind Sie sicher, dass Sie das %'d gewählte Objekt dauerhaft aus dem "
+"Papierkorb löschen möchten?"
 msgstr[1] ""
-"Sind Sie sicher, dass Sie die %'d gewählten Objekte dauerhaft aus dem Müll "
-"entfernen möchten?"
+"Sind Sie sicher, dass Sie die %'d gewählten Objekte dauerhaft aus dem "
+"Papierkorb löschen möchten?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
@@ -1875,11 +1876,11 @@ msgstr "Sobald Sie ein Objekt entfernen, geht es dauerhaft verloren."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
 msgid "Empty all items from Trash?"
-msgstr "Sollen alle Objekte aus dem Müll gelöscht werden?"
+msgstr "Sollen alle Objekte aus dem Papierkorb entfernt werden?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle Objekte im Müll werden dauerhaft gelöscht."
+msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1968,20 +1969,20 @@ msgstr "Beim Entfernen von »%B« ist ein Fehler aufgetreten."
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
 msgid "Moving files to trash"
-msgstr "Dateien werden in den Müll verschoben"
+msgstr "Dateien werden in den Papierkorb verschoben"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "Noch %'d in den Müll zu verschiebende Datei"
-msgstr[1] "Noch %'d in den Müll zu verschiebende Dateien"
+msgstr[0] "Noch %'d in den Papierkorb zu verschiebende Datei"
+msgstr[1] "Noch %'d in den Papierkorb zu verschiebende Dateien"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
-"Datei kann nicht in den Müll verschoben werden. Soll sie sofort gelöscht "
-"werden?"
+"Datei kann nicht in den Papierkorb verschoben werden. Soll sie sofort "
+"gelöscht werden?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
 msgid ""
@@ -1989,16 +1990,16 @@ msgid ""
 "Once deleted, it cannot be restored."
 msgstr ""
 "Die Datei befindet sich auf einem externem Speichermedium und kann nicht in "
-"den Müll verschoben werden. Wenn sie einmal gelöscht ist, kann sie nicht "
-"mehr wiederhergestellt werden."
+"den Papierkorb verschoben werden. Wenn sie einmal gelöscht ist, kann sie "
+"nicht mehr wiederhergestellt werden."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
 msgid "Trashing Files"
-msgstr "Dateien werden in den Müll verschoben"
+msgstr "Dateien werden in den Papierkorb verschoben"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
 msgid "Deleting Files"
-msgstr "Dateien werden entfernt"
+msgstr "Dateien werden gelöscht"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
 msgid "Unable to eject %V"
@@ -2010,7 +2011,7 @@ msgstr "%V kann nicht ausgehangen werden"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Möchten Sie den Müll vor dem Aushängen leeren?"
+msgstr "Soll der Papierkorb vor dem Aushängen geleert werden?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
 msgid ""
@@ -2018,8 +2019,8 @@ msgid ""
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 "Um den freien Speicherplatz auf diesem Datenträger verfügbar zu machen, muss "
-"der Müll geleert werden. Alle im Müll dieses Datenträgers enthaltene Objekte "
-"werden dauerhaft entfernt."
+"der Papierkorb geleert werden. Alle im Papierkorb dieses Datenträgers "
+"enthaltenen Objekte werden dauerhaft gelöscht."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
 msgid "Do _not Empty Trash"
@@ -2027,7 +2028,7 @@ msgstr "Papierkorb _nicht leeren"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
 msgid "Emptying the trash"
-msgstr "Müll wird geleert"
+msgstr "Papierkorb wird geleert"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
 #, c-format
@@ -2059,8 +2060,8 @@ msgstr[1] "Entfernen von %'d Dateien wird vorbereitet (%S)"
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Verschieben von %'d Datei in den Müll wird vorbereitet"
-msgstr[1] "Verschieben von %'d Dateien in den Müll wird vorbereitet"
+msgstr[0] "Verschieben von %'d Datei in den Papierkorb wird vorbereitet"
+msgstr[1] "Verschieben von %'d Dateien in den Papierkorb wird vorbereitet"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2570
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3490
@@ -2077,7 +2078,7 @@ msgstr "Fehler beim Verschieben."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
 msgid "Error while moving files to trash."
-msgstr "Fehler beim Verschieben von Objekten in den Müll."
+msgstr "Fehler beim Verschieben von Objekten in den Papierkorb."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
 msgid ""
@@ -2387,7 +2388,7 @@ msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6535
 msgid "Emptying Trash"
-msgstr "Müll wird geleert"
+msgstr "Papierkorb wird geleert"
 
 #: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -2468,8 +2469,9 @@ msgstr "Als Spalten anzeigen"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr "Diese Elemente können durch das Leeren des Mülls gelöscht werden"
+msgstr ""
+"Diese Elemente können durch das Leeren des Papierkorbs gelöscht werden"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr "Müll leeren"
+msgstr "Den Papierkorb leeren"
