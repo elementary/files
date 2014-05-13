@@ -63,7 +63,7 @@ namespace Marlin.View {
 
         public signal void loading_uri (string location);
 
-        private bool freeze_view_changes = false;
+        public bool freeze_view_changes = false;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -471,10 +471,9 @@ namespace Marlin.View {
             string root_uri = null;
             string tip_uri = null;
 
-            /* prevent unwanted changes of view while restoring tabs
+            /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
             freeze_view_changes = true;
-
             while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
                 if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
@@ -500,6 +499,15 @@ namespace Marlin.View {
                 change_tab (active_tab_position);
             }
 
+            string path = current_tab.get_tip_uri ();
+            if (path == "")
+                path = current_tab.get_root_uri ();
+
+            /* Render the final path in the location bar without animation */
+            top_menu.location_bar.bread.animation_visible = false;
+            top_menu.location_bar.path = path;
+            /* restore location bar animation */
+            top_menu.location_bar.bread.animation_visible = true;
             return tabs_added;
         }
 
