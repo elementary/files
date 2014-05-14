@@ -110,6 +110,21 @@
       <summary>Path of the previewer.</summary>
       <description>Path of the previewer or executable name (if path already definied in PATH environnment variable). If no path is set, then the space bindkey would just activate the selected items instead of previewing them</description>
     </key>
+    <key type="b" name="restore-tabs">
+      <default>true</default>
+      <summary>Whether to restore tabs on start up</summary>
+      <description>Whether to restore tabs on start up</description>
+    </key>
+    <key type="i" name="active-tab-position">
+      <default>1</default>
+      <summary>Which tab to make active on start up</summary>
+      <description>Which tab to make active on start up</description>
+    </key>
+    <key type="a(uss)" name="tab-info-list">
+      <summary>Details of open tabs</summary>
+      <default>[(0,"","")]</default>
+      <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
+    </key>
   </schema>
 
   <schema path="/org/pantheon/files/icon-view/" id="org.pantheon.files.icon-view">

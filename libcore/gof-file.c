@@ -718,7 +718,7 @@ get_mount_at (GFile *target)
             found = g_object_ref (mount);
             break;
         }
-		
+
         g_object_unref (root);
     }
 
@@ -1361,7 +1361,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
-    g_message ("%s %s %u", G_STRFUNC, file->uri, file->flags);
+    g_debug ("%s %s %u", G_STRFUNC, file->uri, file->flags);
     if (file->flags == GOF_FILE_THUMB_STATE_READY)
         gof_file_query_thumbnail_update (file);
 
@@ -2310,7 +2310,7 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             file->permissions & S_IWGRP ? 'w' : '-',
                             file->permissions & S_IXGRP
                             ? (sgid ? 's' : 'x')
-                            : (sgid ? 'S' : '-'),		
+                            : (sgid ? 'S' : '-'),
                             file->permissions & S_IROTH ? 'r' : '-',
                             file->permissions & S_IWOTH ? 'w' : '-',
                             file->permissions & S_IXOTH

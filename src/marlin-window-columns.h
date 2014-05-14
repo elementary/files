@@ -75,10 +75,10 @@ GType                   marlin_window_columns_get_type (void);
 
 MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GtkOverlay *ctab);
 void                    marlin_window_columns_make_view (MarlinWindowColumns *mwcols);
-void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
-
 void                    marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols);
 void                    marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols);
 void                    marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot);
+const gchar             *marlin_window_columns_get_root_uri (MarlinWindowColumns *mwcols);
+const gchar             *marlin_window_columns_get_tip_uri (MarlinWindowColumns *mwcols);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */
