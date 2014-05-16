@@ -1631,7 +1631,7 @@ namespace Marlin.Places {
                 }
             }
 
-            GLib.MountOperation mount_op = new GLib.MountOperation ();
+            GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
             mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                 mount_op,
                                                 null,
@@ -1640,7 +1640,6 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    message ("Cannot unmount mount: %s", error.message);
                     this.ejecting_or_unmounting = false;
                 }
             });
