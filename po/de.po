@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-05-01 12:32+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"PO-Revision-Date: 2014-05-06 00:11+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-05-02 06:42+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
+"X-Launchpad-Export-Date: 2014-05-06 07:22+0000\n"
+"X-Generator: Launchpad (build 16996)\n"
 "Language: de\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -76,7 +76,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr "Ein einfacher und leistungsfähiger Dateimanager"
+msgstr "Eine einfache und leistungsfähige Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
@@ -206,7 +206,7 @@ msgstr "Wählen Sie eine Anwendung, die Sie öffnen möchten "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "Dateien ist nicht Ihr Standard-Dateimanager."
+msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3512
@@ -1100,7 +1100,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Das Dateisystem mit Hilfe des Dateimanagers anzeigen"
+"Das Dateisystem mit Hilfe der Dateiverwaltung durchsuchen"
 
 #: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
@@ -1143,7 +1143,7 @@ msgstr "Durchsuchen Sie Ihre Dateien"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "Dateimanager"
+msgstr "Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"

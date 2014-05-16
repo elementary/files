@@ -2353,10 +2353,8 @@ exo_icon_view_button_press (GtkWidget      *widget,
                 else
                 {
                     if (!icon_view->priv->add_remove_helper) {
-                        if (!item->selected) {
-                            exo_icon_view_unselect_all_internal (icon_view);
-                            item->selected = TRUE;
-                        }
+                        exo_icon_view_unselect_all_internal (icon_view);
+                        item->selected = TRUE;
                     } else {
                         item->selected = !item->selected;
                     }
@@ -5753,7 +5751,7 @@ exo_icon_view_set_model (ExoIconView *icon_view, GtkTreeModel *model)
         if (icon_view->priv->pixbuf_column != -1)
         {
             column_type = gtk_tree_model_get_column_type (model,
-                                                          icon_view->priv->pixbuf_column);	
+                                                          icon_view->priv->pixbuf_column);
 
             g_return_if_fail (column_type == GDK_TYPE_PIXBUF);
         }
@@ -5761,7 +5759,7 @@ exo_icon_view_set_model (ExoIconView *icon_view, GtkTreeModel *model)
         if (icon_view->priv->text_column != -1)
         {
             column_type = gtk_tree_model_get_column_type (model,
-                                                          icon_view->priv->text_column);	
+                                                          icon_view->priv->text_column);
 
             g_return_if_fail (column_type == G_TYPE_STRING);
         }
@@ -5769,7 +5767,7 @@ exo_icon_view_set_model (ExoIconView *icon_view, GtkTreeModel *model)
         if (icon_view->priv->markup_column != -1)
         {
             column_type = gtk_tree_model_get_column_type (model,
-                                                          icon_view->priv->markup_column);	
+                                                          icon_view->priv->markup_column);
 
             g_return_if_fail (column_type == G_TYPE_STRING);
         }
@@ -10697,7 +10695,7 @@ exo_icon_view_search_dialog_hide (GtkWidget   *search_dialog,
       g_source_remove (icon_view->priv->typeselect_flush_timeout);
       icon_view->priv->typeselect_flush_timeout = 0;
     }
-	
+
   if (gtk_widget_get_visible (search_dialog))
     {
       /* send focus-in event */
