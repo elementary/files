@@ -49,7 +49,6 @@ namespace Marlin.Places {
         Gtk.CellRenderer indent_renderer;
         Gtk.CellRendererPixbuf icon_cell_renderer;
         Marlin.IconSpinnerRenderer eject_spinner_cell_renderer;
-        bool ejecting_or_unmounting = false;
         Gtk.CellRenderer expander_renderer;
         Gtk.TreePath select_path;
         Marlin.View.Window window;
@@ -122,8 +121,8 @@ namespace Marlin.Places {
 
         /* volume mounting - delayed open process */
         bool mounting = false;
-        //GOF.Window.Slot go_to_after_mount_slot;
-        //ViewWindowOpenFlags go_to_after_mount_flags;
+        /* prevent multiple unmount processes */
+        bool ejecting_or_unmounting = false;
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
@@ -150,7 +149,6 @@ namespace Marlin.Places {
 
             set_up_theme ();
             this.show_all ();
-
             update_places ();
         }
 
@@ -327,10 +325,8 @@ namespace Marlin.Places {
             if (show_unmount || show_eject)
                     assert (place_type != PlaceType.BOOKMARK);
 
-            bool show_eject_button;
-            if (mount == null)
-                show_eject_button = false;
-            else
+            bool show_eject_button = false;
+            if (mount != null)
                 show_eject_button = (show_unmount || show_eject);
 
             GLib.Icon eject;
@@ -1616,7 +1612,7 @@ namespace Marlin.Places {
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */
 
-         private void do_unmount (Mount? mount) {
+         private void do_unmount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
             if (mount == null)
                 return;
 
@@ -1626,11 +1622,12 @@ namespace Marlin.Places {
                     GLib.List<GLib.File> dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
                     Marlin.FileOperations.empty_trash_dirs (null, dirs);
                 } else if (response == Gtk.ResponseType.CANCEL) {
-                    this.ejecting_or_unmounting = false;
+                    finish_eject_or_unmount (row_ref);
                     return;
                 }
             }
 
+            ejecting_or_unmounting = true;
             GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
             mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                 mount_op,
@@ -1640,19 +1637,10 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    this.ejecting_or_unmounting = false;
+                    message ("Error while unmounting");
                 }
+                finish_eject_or_unmount (row_ref);
             });
-         }
-
-         private void do_unmount_selection () {
-            Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
-                return;
-
-            Mount mount;
-            store.@get (iter, Column.MOUNT, out mount);
-            do_unmount (mount);
          }
 
         private bool clicked_eject_button (out Gtk.TreePath p) {
@@ -1688,7 +1676,7 @@ namespace Marlin.Places {
                 store.get_iter (out iter, path);
                 store.@get (iter, Column.EJECT, out show_eject);
 
-                if (!show_eject)
+                if (!show_eject || ejecting_or_unmounting)
                     return false;
 
                 tree_view.style_get ("horizontal-separator", out hseparator, null);
@@ -1707,9 +1695,9 @@ namespace Marlin.Places {
             return false;
         }
 
-        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive) {
+        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive, Gtk.TreeRowReference? row_ref = null) {
             GLib.MountOperation mount_op = new GLib.MountOperation ();
-
+            ejecting_or_unmounting = true;
             if (drive != null) {
                 drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
@@ -1720,8 +1708,8 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                         message ("Error ejecting drive: %s", error.message);
-                        this.ejecting_or_unmounting = false;
                     }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
@@ -1736,8 +1724,8 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                         message ("Error ejecting volume: %s", error.message);
-                        this.ejecting_or_unmounting = false;
                     }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
@@ -1752,15 +1740,24 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                         message ("Error ejecting mount: %s", error.message);
-                        this.ejecting_or_unmounting = false;
                     }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
         }
 
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref) {
+            ejecting_or_unmounting = false;
+            if (row_ref != null && row_ref.valid ()) {
+                Gtk.TreeIter iter;
+                if (store.get_iter (out iter, row_ref.get_path ()))
+                    store.@set (iter, Column.SHOW_SPINNER, false) ;
+            }
+        }
+
         private bool eject_or_unmount_bookmark (Gtk.TreePath? path) {
-            if (path == null)
+            if (path == null || ejecting_or_unmounting)
                 return false;
 
             Gtk.TreeIter iter;
@@ -1790,36 +1787,25 @@ namespace Marlin.Places {
             var rowref = new Gtk.TreeRowReference (store, path);
             store.@set (iter, Column.SHOW_SPINNER, true);
 
-            this.ejecting_or_unmounting = true;
             Timeout.add (100, ()=>{
                 uint val;
 
-                if (!rowref.valid ()) {
-                    this.ejecting_or_unmounting = false;
+                if (!rowref.valid ())
                     return false;
-                }
 
                 store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
-                if (!spinner_active) {
-                    this.ejecting_or_unmounting = false;
+                if (!spinner_active)
                     return false;
-                }
-
-                if (!this.ejecting_or_unmounting) {
-                    store.@set (iter, Column.SHOW_SPINNER, false);
-                    return false;
-                }
 
                 store.@get (iter, Column.SPINNER_PULSE, out val);
                 store.@set (iter, Column.SPINNER_PULSE, ++val);
                 return true;
             });
 
-            if (can_eject) {
-                do_eject (mount, volume, drive);
-            } else if (can_unmount) {
-                do_unmount (mount);
-            }
+            if (can_eject)
+                do_eject (mount, volume, drive, rowref);
+            else if (can_unmount)
+                do_unmount (mount, rowref);
 
             return true;
         }
