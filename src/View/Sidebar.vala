@@ -1058,7 +1058,7 @@ namespace Marlin.Places {
                     if (slot != null)
                         GLib.Signal.emit_by_name (slot.ctab, "path-changed", location);
                 }
-            } else {
+            } else if (!ejecting_or_unmounting) {
                 Drive drive;
                 Volume volume;
 
