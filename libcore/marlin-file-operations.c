@@ -2218,6 +2218,14 @@ dir_has_files (GFile *dir)
 }
 
 static GList *
+prepend_if_exists (GList *list, GFile *file) {
+    if (file != NULL && G_IS_FILE (file) && g_file_query_exists (file, NULL))
+        return g_list_prepend (list, file);
+    else
+        return list;
+}
+
+static GList *
 get_trash_dirs_for_mount (GMount *mount)
 {
     GFile *root;
@@ -2237,17 +2245,18 @@ get_trash_dirs_for_mount (GMount *mount)
         trash = g_file_resolve_relative_path (root, relpath);
         g_free (relpath);
 
-        list = g_list_prepend (list, g_file_get_child (trash, "files"));
-        list = g_list_prepend (list, g_file_get_child (trash, "info"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
 
         g_object_unref (trash);
 
         relpath = g_strdup_printf (".Trash-%d", getuid ());
         trash = g_file_get_child (root, relpath);
+
         g_free (relpath);
 
-        list = g_list_prepend (list, g_file_get_child (trash, "files"));
-        list = g_list_prepend (list, g_file_get_child (trash, "info"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
 
         g_object_unref (trash);
     }
@@ -6425,7 +6434,7 @@ delete_trash_file (CommonJob *job,
     GFile *child;
     GFileEnumerator *enumerator;
 
-    if (job_aborted (job)) {
+    if (!G_IS_FILE (file) || job_aborted (job)) {
         return;
     }
 
@@ -6451,9 +6460,8 @@ delete_trash_file (CommonJob *job,
         }
     }
 
-    if (!job_aborted (job) && del_file) {
+    if (!job_aborted (job) && del_file)
         g_file_delete (file, job->cancellable, NULL);
-    }
 }
 
 static gboolean
@@ -6483,7 +6491,6 @@ empty_trash_job (GIOSchedulerJob *io_job,
     EmptyTrashJob *job = user_data;
     CommonJob *common;
     GList *l;
-    //gboolean confirmed;
 
     common = (CommonJob *)job;
     common->io_job = io_job;
@@ -6494,18 +6501,12 @@ empty_trash_job (GIOSchedulerJob *io_job,
     marlin_progress_info_start (job->common.progress);
 #endif
 
-    /*if (job->should_confirm) {
-        confirmed = confirm_empty_trash (common);
-    } else {
-        confirmed = TRUE;
+    for (l = job->trash_dirs;
+         l != NULL && !job_aborted (common);
+         l = l->next) {
+
+        delete_trash_file (common, l->data, FALSE, TRUE);
     }
-    if (confirmed) {*/
-        for (l = job->trash_dirs;
-             l != NULL && !job_aborted (common);
-             l = l->next) {
-            delete_trash_file (common, l->data, FALSE, TRUE);
-        }
-    //}
 
     g_io_scheduler_job_send_to_mainloop_async (io_job,
                                                empty_trash_job_done,
@@ -6542,7 +6543,7 @@ marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
     if (dirs != NULL)
         job->trash_dirs = dirs;
     else
-        g_list_prepend (job->trash_dirs, g_file_new_for_uri ("trash:"));
+        job->trash_dirs = g_list_prepend (job->trash_dirs, g_file_new_for_uri ("trash:"));
 
     inhibit_power_manager ((CommonJob *)job, _("Emptying Trash"));
 

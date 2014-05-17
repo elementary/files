@@ -126,6 +126,7 @@ void marlin_file_operations_copy      (GList                *files,
                                        GtkWindow            *parent_window,
                                        MarlinCopyCallback   done_callback,
                                        gpointer             done_callback_data);
+
 void marlin_file_operations_copy_move   (GList                  *files,
                                          GArray                 *relative_item_points,
                                          GFile                  *target_dir,

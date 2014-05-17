@@ -82,6 +82,7 @@ namespace Marlin.View {
         {
             application = app;
             screen = myscreen;
+
             ui = new Gtk.UIManager();
 
             try {
@@ -160,9 +161,11 @@ namespace Marlin.View {
             });
 
             tabs.show ();
+
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
+
             var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show ();
 

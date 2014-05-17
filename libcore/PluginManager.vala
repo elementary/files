@@ -47,10 +47,10 @@ public class Marlin.PluginManager : Object {
         plugin_dirs += plugin_dir;
 
         load_plugins ();
+
         // Monitor plugin dirs
         foreach (string path in plugin_dirs)
             set_directory_monitor (path);
-
     }
 
     public void load_plugins () {
@@ -91,6 +91,7 @@ public class Marlin.PluginManager : Object {
 
         FileInfo info;
         FileEnumerator enumerator;
+
         try {
             var dir = File.new_for_path (path);
 

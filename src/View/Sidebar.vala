@@ -149,6 +149,7 @@ namespace Marlin.Places {
 
             set_up_theme ();
             this.show_all ();
+
             update_places ();
         }
 
@@ -182,7 +183,7 @@ namespace Marlin.Places {
             var crd = new Marlin.CellRendererDisk ();
             crd.ellipsize = Pango.EllipsizeMode.END;
             crd.ellipsize_set = true;
-            col.pack_start (crd, false);
+            col.pack_start (crd, true);
             col.set_attributes (crd,
                                 "text", Column.NAME,
                                 "visible", Column.EJECT,
@@ -310,8 +311,8 @@ namespace Marlin.Places {
                                         Mount? mount,
                                         uint index,
                                         string tooltip) {
-            Gtk.IconSize size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
-            eject_spinner_cell_renderer.icon_size = size;
+            Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
+            eject_spinner_cell_renderer.icon_size = stock_size;
 
             Gdk.Pixbuf pixbuf = null;
             if (icon != null) {
@@ -361,31 +362,32 @@ namespace Marlin.Places {
                             Column.SHOW_SPINNER, false,
                             Column.SPINNER_PULSE, 0,
                             Column.FREE_SPACE, (uint64)0,
-                            Column.DISK_SIZE, (uint64)0 );
+                            Column.DISK_SIZE, (uint64)0);
             return iter;
         }
 
         private void update_places () {
             Gtk.TreeIter iter;
             string mount_uri;
+
             this.last_selected_uri = null;
             this.select_path = null;
             this.n_builtins_before = 0;
-            var slot = window.get_active_slot();
 
+            var slot = window.get_active_slot();
             if (slot != null)
                 this.slot_location = slot.location.get_uri ();
             else
                 this.slot_location = null;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
-                store.@get (iter,
-                            Column.URI, &last_selected_uri);
+                store.@get (iter, Column.URI, &last_selected_uri);
             else
                 last_selected_uri = null;
 
             store.clear ();
             plugins.update_sidebar ((Gtk.Widget)this);
+
             /* ADD BOOKMARKS CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
@@ -396,6 +398,7 @@ namespace Marlin.Places {
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your common places and bookmarks"));
+
             /* Add Home BUILTIN */
             try {
                 mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
@@ -403,17 +406,20 @@ namespace Marlin.Places {
             catch (ConvertError e) {
                 mount_uri = "";
             }
-            add_place ( PlaceType.BUILT_IN,
-                        iter,
-                        _("Home"),
-                        new ThemedIcon (Marlin.ICON_HOME),
-                        mount_uri,
-                        null,
-                        null,
-                        null,
-                        0,
-                        _("Open your personal folder"));
+
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("Home"),
+                       new ThemedIcon (Marlin.ICON_HOME),
+                       mount_uri,
+                       null,
+                       null,
+                       null,
+                       0,
+                       _("Open your personal folder"));
+
             n_builtins_before++;
+
             /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();
             unowned Bookmark bm;
@@ -426,17 +432,19 @@ namespace Marlin.Places {
 
                 add_bookmark (iter, bm, index);
             }
+
             /* Add trash */
-            add_place ( PlaceType.BUILT_IN,
-                        iter,
-                        _("Trash"),
-                        Marlin.TrashMonitor.get_icon (),
-                        Marlin.TRASH_URI,
-                        null,
-                        null,
-                        null,
-                        index + n_builtins_before,
-                        _("Open the Trash"));
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("Trash"),
+                       Marlin.TrashMonitor.get_icon (),
+                       Marlin.TRASH_URI,
+                       null,
+                       null,
+                       null,
+                       index + n_builtins_before,
+                       _("Open the Trash"));
+
             /* ADD STORAGE CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
@@ -447,6 +455,7 @@ namespace Marlin.Places {
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your local partitions and devices"));
+
             /* Add Filesystem BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -458,6 +467,7 @@ namespace Marlin.Places {
                        null,
                        0,
                        _("Open the contents of the FileSystem"));
+
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
             GLib.List<GLib.Volume> volumes;
@@ -542,6 +552,7 @@ namespace Marlin.Places {
                         continue;
                     }
                 }
+
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            mount.get_name (),
@@ -553,6 +564,7 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
+
             /* ADD NETWORK CATEGORY */
             store.append (out iter, null);
             store.@set (iter,
@@ -563,6 +575,7 @@ namespace Marlin.Places {
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your network places"));
+
             /* Add network mounts */
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
@@ -578,6 +591,7 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
+
             /* Add Entire Network BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
