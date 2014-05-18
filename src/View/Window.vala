@@ -370,7 +370,13 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
+        }
+
+        private void actual_remove_tab (Granite.Widgets.Tab tab) {
+            /* signal for restore_data to be set and a new tab to be created if this is last tab */
+            tabs.close_tab_requested (tab);
+            /* now close the tab */
             tab.close ();
         }
 
@@ -425,7 +431,7 @@ namespace Marlin.View {
         }
 
         private void action_remove_tab (Gtk.Action action) {
-            tabs.remove_tab (tabs.current);
+            actual_remove_tab (tabs.current);
         }
 
         private void save_geometries () {
