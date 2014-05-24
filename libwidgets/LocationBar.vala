@@ -20,6 +20,7 @@
 
 namespace Marlin {
     public const string ROOT_FS_URI = "file://";
+    public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
 }
 
 public struct Marlin.View.Chrome.IconDirectory {
@@ -60,6 +61,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
     /* A flag to know when the animation is finished */
     double anim_state = 0;
+
+    /* A flag to 'hide' animation if desired */
+    public bool animation_visible = true;
 
     Gtk.StyleContext button_context;
     Gtk.StyleContext button_context_active;
@@ -466,7 +470,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     public virtual string? update_breadcrumbs (string newpath, string breadpath) {
         string strloc;
 
-        warning ("change_breadcrumb text %s", newpath);
+        debug ("Update breadcrumb text %s", newpath);
 
         if (Posix.strncmp (newpath, "./", 2) == 0) {
             entry.reset ();
@@ -492,6 +496,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
+        debug ("Change breadcrumbs to %s", newpath);
         var explode_protocol = newpath.split ("://");
 
         if (explode_protocol.length > 1) {
@@ -592,6 +597,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             icons.remove (icons.nth_data (i));
         }
 
+        /* Stop any animation */
+        if (anim > 0) {
+            Source.remove (anim);
+            anim = 0;
+        }
+
         if (newelements.size > elements.size) {
             view_old = false;
             newbreads = newelements.slice (max_path, newelements.size);
@@ -601,7 +612,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             newbreads = elements.slice (max_path, elements.size);
             animate_old_breads ();
         } else {
-            queue_draw ();
+            /* This is to make sure breadcrumbs are rendered properly when switching to a duplicate tab */
+            newbreads = newelements;
+            animate_new_breads ();
         }
 
         elements.clear ();
@@ -613,7 +626,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
     /* A threaded function to animate the old BreadcrumbsElement */
     private void animate_old_breads () {
-        anim_state = 0;
+        anim_state = animation_visible ? 0.0 : 0.95;
+        var step = animation_visible ? 0.05 : 0.001;
 
         foreach (BreadcrumbsElement bread in newbreads)
             bread.offset = anim_state;
@@ -622,16 +636,15 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             Source.remove(anim);
 
         anim = Timeout.add (1000/60, () => {
-            anim_state += 0.05;
+            anim_state += step;
             /* FIXME: Instead of this hacksih if( != null), we should use a
              * nice mutex */
-            if (newbreads != null)
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = anim_state;
+            if (newbreads == null) {
+                anim = 0;
+                return false;
+            }
 
-            queue_draw ();
-
-            if (anim_state >= 1) {
+            if (anim_state > 1.0 - step) {
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = 1.0;
 
@@ -640,15 +653,20 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
                 queue_draw ();
                 anim = 0;
                 return false;
-            }
+            } else {
+                foreach (BreadcrumbsElement bread in newbreads)
+                    bread.offset = anim_state;
 
-            return true;
+                queue_draw ();
+                return true;
+            }
         });
     }
 
     /* A threaded function to animate the new BreadcrumbsElement */
     private void animate_new_breads () {
-        anim_state = 1;
+        anim_state = animation_visible ? 1.0 : 0.007;
+        double step = animation_visible ? 0.08 : 0.001;
 
         foreach (BreadcrumbsElement bread in newbreads)
             bread.offset = anim_state;
@@ -657,26 +675,30 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             Source.remove (anim);
 
         anim = Timeout.add (1000/60, () => {
-            anim_state -= 0.08;
+            anim_state -= step;
             /* FIXME: Instead of this hacksih if( != null), we should use a
              * nice mutex */
-            if (newbreads != null)
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = anim_state;
+            if (newbreads == null) {
+                anim = 0;
+                return false;
+            }
 
-            queue_draw ();
-
-            if (anim_state <= 0) {
+            if (anim_state < step) {
                 foreach (BreadcrumbsElement bread in newbreads)
                     bread.offset = 0.0;
 
                 newbreads = null;
                 view_old = false;
-                queue_draw ();
                 anim = 0;
+                queue_draw ();
                 return false;
+            } else {
+                foreach (BreadcrumbsElement bread in newbreads)
+                    bread.offset = anim_state;
+
+                queue_draw ();
+                return true;
             }
-            return true;
         });
     }
 
@@ -770,7 +792,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         else
             get_window ().set_cursor (null);
 
-        queue_draw ();
         return true;
     }
 
@@ -805,18 +826,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     }
 
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
-        double max_width = 0.0;
+        double total_width = 0.0;
         breadcrumbs_count = 0;
-
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
-                max_width += element.width;
+                total_width += element.width;
                 element.max_width = -1;
                 breadcrumbs_count++;
             }
         }
-
-        return max_width;
+        return total_width;
     }
 
     public void reset_elements_states () {
@@ -839,7 +858,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
         double width = get_allocated_width ();
         double margin = y;
 
-        double width_marged = width - 2*margin;
+        /* Ensure there is an editable area to the right of the breadcrumbs */
+        double width_marged = width - 2*margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH;
         double height_marged = height - 2*margin;
         double x_render = margin;
 
@@ -896,7 +916,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
             cr.line_to (0, y + height_marged + 3);
             cr.line_to (x_render, y + height_marged + 3);
             cr.line_to (x_render, y + height_marged);
-            cr.line_to (x_render + height_marged / 2, y+height_marged / 2);
+            cr.line_to (x_render + height_marged / 2, y + height_marged / 2);
             cr.line_to (x_render, y);
             cr.line_to (x_render, 0);
             cr.close_path ();
@@ -907,7 +927,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
 
             cr.move_to (x_render, get_allocated_height());
             cr.line_to (x_render, y + height_marged);
-            cr.line_to (x_render + height_marged / 2, y+height_marged / 2);
+            cr.line_to (x_render + height_marged / 2, y + height_marged / 2);
             cr.line_to (x_render, y);
             cr.line_to (x_render, 0);
             cr.line_to (get_allocated_width(), 0);

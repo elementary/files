@@ -21,6 +21,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Marlin.View {
+
     public class Window : Gtk.Window
     {
         public Gtk.UIManager ui;
@@ -31,7 +32,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
-        public ViewContainer? current_tab;
+        public ViewContainer? current_tab = null;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
@@ -62,6 +63,7 @@ namespace Marlin.View {
 
         public signal void loading_uri (string location);
 
+        public bool freeze_view_changes = false;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -70,11 +72,14 @@ namespace Marlin.View {
         }
 
         protected virtual void action_radio_change_view(){
+            if (freeze_view_changes)
+                return;
+
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
             /* change the view only for view_mode real change */
-            if (n != current_tab.view_mode)
+            if (current_tab != null && n != current_tab.view_mode)
                 current_tab.change_view(n, null);
         }
 
@@ -221,9 +226,12 @@ namespace Marlin.View {
             });
 
             delete_event.connect (() => {
-                save_geometries ();
-                destroy ();
+                if (app.is_first_window ((Gtk.Window) this)) {
+                    save_geometries ();
+                    save_tabs ();
+                }
 
+                //destroy ();
                 return false;
             });
 
@@ -304,11 +312,11 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-            ViewContainer old_tab = current_tab;
+            ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-            if (old_tab == current_tab) {
+            if (current_tab == null || old_tab == current_tab)
                 return;
-            }
+
             if (old_tab != null) {
                 var old_slot = old_tab.get_active_slot ();
                 if (old_slot != null)
@@ -331,25 +339,27 @@ namespace Marlin.View {
             }
         }
 
-        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
-            var content = new View.ViewContainer (this, location,
-                                    current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
+        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+                                   int viewmode = -1) {
+            if (viewmode < 0) {
+                if (current_tab != null)
+                    viewmode = current_tab.view_mode;
+                else
+                    viewmode = Preferences.settings.get_enum ("default-viewmode");
+            }
 
+            var content = new View.ViewContainer (this, location, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
-
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
 
-            tabs.insert_tab (tab, -1);
-
+            change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-            change_tab (tabs.get_tab_position (tab));
         }
 
-        public void add_tab (File location) {
-            make_new_tab (location);
-
+        public void add_tab (File location, int viewmode = -1) {
+            make_new_tab (location, viewmode);
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -360,7 +370,13 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
+        }
+
+        private void actual_remove_tab (Granite.Widgets.Tab tab) {
+            /* signal for restore_data to be set and a new tab to be created if this is last tab */
+            tabs.close_tab_requested (tab);
+            /* now close the tab */
             tab.close ();
         }
 
@@ -415,7 +431,7 @@ namespace Marlin.View {
         }
 
         private void action_remove_tab (Gtk.Action action) {
-            tabs.remove_tab (tabs.current);
+            actual_remove_tab (tabs.current);
         }
 
         private void save_geometries () {
@@ -429,6 +445,105 @@ namespace Marlin.View {
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
+        }
+
+        private void save_tabs () {
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
+
+            foreach (var tab in tabs.tabs) {
+                assert (tab != null);
+                var view = tab.page as ViewContainer;
+
+                /* Do not save if "File does not exist" or "Does not belong to you" */
+                if (!view.can_show_folder)
+                    continue;
+
+                vb.add ("(uss)",
+                        view.view_mode,
+                        GLib.Uri.escape_string (view.get_root_uri () ?? Environment.get_home_dir ()),
+                        GLib.Uri.escape_string (view.get_tip_uri () ?? "")
+                       );
+            }
+
+            Preferences.settings.set_value ("tab-info-list", vb.end ());
+            Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
+        }
+
+        public uint restore_tabs () {
+            GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
+            GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
+            int tabs_added = 0;
+            int viewmode = -1;
+            string root_uri = null;
+            string tip_uri = null;
+
+            /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
+             * as this causes all sorts of problems */
+            freeze_view_changes = true;
+            while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
+                if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
+                    continue;
+
+                GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
+
+                add_tab (root_location, viewmode);
+
+                if (viewmode == ViewMode.MILLER && tip_uri != root_uri)
+                    expand_miller_view (tip_uri, root_location);
+
+                tabs_added++;
+                viewmode = -1;
+                root_uri = null;
+                tip_uri = null;
+            }
+
+            freeze_view_changes = false;
+
+            int active_tab_position = Preferences.settings.get_int ("active-tab-position");
+            if (active_tab_position >=0 && active_tab_position < tabs_added) {
+                tabs.current = tabs.get_tab_by_index (active_tab_position);
+                change_tab (active_tab_position);
+            }
+
+            string path = current_tab.get_tip_uri ();
+            if (path == "")
+                path = current_tab.get_root_uri ();
+
+            /* Render the final path in the location bar without animation */
+            top_menu.location_bar.bread.animation_visible = false;
+            top_menu.location_bar.path = path;
+            /* restore location bar animation */
+            top_menu.location_bar.bread.animation_visible = true;
+            return tabs_added;
+        }
+
+        private void expand_miller_view (string tip_uri, GLib.File root_location) {
+            var tab = tabs.current;
+            var view = tab.page as ViewContainer;
+            var mwcols = view.mwcol;
+            var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
+            var relative_path = root_location.get_relative_path (tip_location);
+            var slot = mwcols.active_slot;
+
+            GLib.File gfile;
+            FM.Directory.View dview;
+
+            if (relative_path != null) {
+                string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
+                string uri = root_location.get_uri ();
+
+                foreach (string dir in dirs) {
+                    uri += (GLib.Path.DIR_SEPARATOR_S + dir);
+                    gfile = GLib.File.new_for_uri (uri);
+                    dview = slot.view_box as FM.Directory.View;
+
+                    dview.column_add_location (gfile);
+                    slot = mwcols.get_last_slot ();
+                }
+            } else {
+                warning ("Invalid tip uri for Miller View");
+            }
         }
 
         public Gtk.ActionGroup get_actiongroup () {

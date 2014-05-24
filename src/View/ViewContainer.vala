@@ -26,6 +26,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
         public bool content_shown = false;
+        public bool can_show_folder = true;
         public Gtk.Label label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
@@ -51,16 +52,16 @@ namespace Marlin.View {
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label ("Loading...");
-            change_view (view_mode, location);
             label.set_ellipsize (Pango.EllipsizeMode.END);
             label.set_single_line_mode (true);
             label.set_alignment (0.0f, 0.5f);
             label.set_padding (0, 0);
-            update_location_state (true);
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
-            //add(content_item);
+            change_view (view_mode, location);
+            update_location_state (true);
+
             this.show_all ();
 
             // Override background color to support transparency on overlay widgets
@@ -76,6 +77,7 @@ namespace Marlin.View {
                 /* location didn't change, do nothing */
                 if (slot != null && myfile != null && slot.directory.file.exists && slot.location.equal (myfile))
                     return;
+
                 change_view(view_mode, myfile);
                 update_location_state (true);
             });
@@ -132,12 +134,8 @@ namespace Marlin.View {
         }
 
         private void connect_available_info () {
-            //file_info_callback = slot.directory.file.info_available.connect((gof) => {
-                if (window.current_tab == this)
-                    window.loading_uri (slot.directory.file.uri);
-
-                /*Source.remove((uint) file_info_callback);
-            });*/
+            if (window.current_tab == this)
+                window.loading_uri (slot.directory.file.uri);
         }
 
         public void refresh_slot_info () {
@@ -149,8 +147,10 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else
+            else {
                 tab_name = _("This folder does not exist");
+                can_show_folder = false;
+            }
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
@@ -167,14 +167,14 @@ namespace Marlin.View {
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
             FileInfo file_info;
-
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
                 /* If not readable, alert the user */
-                if (!file_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ)) {
+                if (slot.directory.permission_denied) {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
+                    can_show_folder = false;
                 }
 
                 /* If not a directory, then change the location to the parent */
@@ -199,9 +199,15 @@ namespace Marlin.View {
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
+
             if (location == null) {
                 /* we re just changing view keep the same location */
-                location = get_active_slot ().location;
+                GOF.Window.Slot? active_slot = get_active_slot ();
+                if (active_slot == null) {
+                    warning ("No active slot found - cannot change view");
+                    return;
+                }
+                location = active_slot.location;
                 /* store the old selection to restore it */
                 if (slot != null && !content_shown) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
@@ -209,6 +215,7 @@ namespace Marlin.View {
                         select_childs.prepend (elem.location);
                 }
             } else {
+                can_show_folder = true;
                 /* check if the requested location is a parent of the previous one */
                 if (slot != null) {
                     var parent = slot.location.get_parent ();
@@ -265,6 +272,20 @@ namespace Marlin.View {
                 return mwcol.active_slot;
             else
                 return slot;
+        }
+
+        public string? get_root_uri () {
+            if (mwcol != null)
+                return mwcol.get_root_uri ();
+            else
+                return slot.location.get_uri ();
+        }
+
+        public string? get_tip_uri () {
+            if (mwcol != null)
+                return mwcol.get_tip_uri ();
+            else
+                return "";
         }
 
         public void reload () {

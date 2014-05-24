@@ -29,7 +29,7 @@ namespace Marlin.View.Chrome
             set {
                 var new_path = value;
                 _path = new_path;
-                if (!bread.focus) {
+                if (!bread.focus && !win.freeze_view_changes) {
                     bread.entry.reset ();
                     bread.change_breadcrumbs (new_path);
                 }
@@ -66,6 +66,9 @@ namespace Marlin.View.Chrome
         }
 
         private void on_bread_changed (string changed) {
+            if (win.freeze_view_changes)
+                return;
+
             /* focus back the view */
             if (win.current_tab.content_shown)
                 win.current_tab.content.grab_focus ();

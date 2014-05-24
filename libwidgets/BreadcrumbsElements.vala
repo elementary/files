@@ -73,8 +73,8 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         cr.save ();
         last_height = height;
         cr.set_source_rgb (0,0,0);
-        string text = text_displayed ?? this.text;
-        Pango.Layout layout = widget.create_pango_layout (text);
+        string? text = text_displayed ?? this.text;
+        Pango.Layout layout = widget.create_pango_layout (text ?? "");
 
         if (icon == null) {
             computetext_width (layout);
