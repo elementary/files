@@ -20,6 +20,7 @@
 
 public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     Gtk.IMContext im_context;
+    private bool changed = false;
     public string text = "";
     public int cursor = 0;
     public string completion = "";
@@ -120,7 +121,6 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
 
-            stdout.printf("\nfirst: %i, second: %i\n", first, second);
             if (first != second && second > 0) {
                 text = text.slice (0, first) + to_insert + text.slice (second, text.length);
                 selected_start = -1;
@@ -182,7 +182,6 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         case 0xff53: /* right */
             if (cursor < text.length && !shift_pressed) {
                 cursor++;
-                //reset_selection ();
             } else if (cursor < text.length && shift_pressed) {
                 if (selected_start < 0) {
                     selected_start = cursor;
@@ -210,9 +209,11 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             if (get_selection () != null) {
                 delete_selection ();
                 need_completion ();
+                changed = true;
             } else if (cursor > 0) {
                 text = text.slice (0, cursor - 1) + text.slice (cursor, text.length);
                 cursor--;
+                changed = true;
                 need_completion ();
             } else {
                 backspace ();
@@ -223,8 +224,10 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         case 0xffff: /* delete */
             if (get_selection () == null && cursor < text.length && control_pressed) {
                 text = text.slice (0, cursor);
+                changed = true;
             } else if (get_selection () == null && cursor < text.length) {
                 text = text.slice (0, cursor) + text.slice (cursor + 1, text.length);
+                changed = true;
             } else if (get_selection () != null) {
                 delete_selection ();
             }
@@ -257,6 +260,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             break;
 
         default:
+            changed = true;
             im_context.filter_keypress (event);
             break;
         }
@@ -287,14 +291,18 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
     }
     
     public void set_selection (int start, int? end) {
-        if (start < 0 || start >= text.length || (end != null && start > (!) end))
+        if (start < 0 || start > text.length || (end != null && start > (!) end))
             return;
             
         if (end == null || (!) end > text.length)
             end = text.length;
-            
-        selected_start = start;
-        selected_end = end;
+        
+        /* if start is less than text.length, something is selected */
+        if (start < text.length) {
+            selected_start = start;
+            selected_end = end;
+        }
+        
         cursor = end;
         ignore_mouse_release = true;
         need_selection_update = true;
@@ -453,7 +461,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
             cr.fill ();
         }
 
-        if (text != "") {
+        if (changed) {
                 Gdk.cairo_set_source_pixbuf (cr,arrow_img,
                                              x + width - arrow_img.get_width() - 10,
                                              height/2 - arrow_img.get_height() / 2);
@@ -507,6 +515,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object {
         text = "";
         cursor = 0;
         completion = "";
+        changed = false;
     }
 
     public void hide () {

@@ -197,8 +197,17 @@ namespace Marlin.View.Chrome
             });
 
             entry.completed.connect (() => {
-                string path = get_elements_path ();
-                update_breadcrumbs (entry.text, path);
+                string path = "";
+                string newpath = update_breadcrumbs (entry.text, path);
+                
+                foreach (BreadcrumbsElement element in elements) {
+                    if (!element.hidden)
+                        path += element.text + "/";
+                }
+            
+                if (path != newpath)
+                    change_breadcrumbs (newpath);
+                
                 grab_focus ();
             });
 
@@ -272,9 +281,14 @@ namespace Marlin.View.Chrome
 
             if (path != null && path.length > 0) {
                 var directory = File.new_for_uri (path);
+                var files_cache = files;
+                
                 files = GOF.Directory.Async.from_gfile (directory);
                 if (files.file.exists) {
-                    files.file_loaded.connect (on_file_loaded);
+                    /* Verify that we got a new instance of files so we do not double up events */
+                    if (files_cache != files) 
+                        files.file_loaded.connect (on_file_loaded);
+                    
                     files.load ();
                 }
             }
@@ -378,7 +392,7 @@ namespace Marlin.View.Chrome
             merge_out_clipboard_actions ();
             entry.reset ();
             
-            // Show all breadcrumbs 
+            /* Show all breadcrumbs */
             foreach (BreadcrumbsElement element in elements) {
                 if (!element.hidden)
                     element.display = true;
@@ -391,20 +405,21 @@ namespace Marlin.View.Chrome
             base.focus_in_event (event);
             merge_in_clipboard_actions ();
             
-            // Update the entry to have the full path (sans the protocol if it's "file://")
-            string path = get_elements_path ().replace("trash:///", "").replace("network:///", "");
+            /* Update the entry to have the full path (replacements are to handle some of the strange results get_elements_path return) */
+            string path = get_elements_path ()
+                .replace("file:////", "/")
+                .replace("file:///", "/")
+                .replace("trash:///", "")
+                .replace("network:///", "");
+                
             File file = File.new_for_uri (path);
             entry.reset ();
             entry.reset_selection ();
+            entry.insert (path, false);
+            entry.set_selection (entry.text.length, null);
+            entry.reset_selection ();
             
-            if (path.contains ("file://"))
-                entry.insert (file.get_path () + "/", false);
-            else
-                entry.insert (path, false);
-                
-            entry.set_selection (0, null);
-            
-            // Hide each breadcrumb and show the current path
+            /* Hide each breadcrumb and show the current path */
             foreach (BreadcrumbsElement element in elements) {
                 element.display = false;
             }
