@@ -452,7 +452,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.EventBox {
     }
 
     private void on_entry_enter () {
-        changed (entry.text.replace("ssh:", "sftp:") + entry.completion);
+        string text = entry.text.replace("ssh:", "sftp:") + entry.completion;
+        if (text == "") {
+            text = "/";
+        }
+        
+        changed (text);
     }
 
     public override bool key_press_event (Gdk.EventKey event) {

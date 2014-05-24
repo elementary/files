@@ -239,13 +239,14 @@ namespace Marlin.View.Chrome
          *
          **/
         private void on_file_loaded(GOF.File file) {
-            if(file.is_folder () && file.get_display_name ().length > to_search.length) {
-                if (file.get_display_name ().ascii_ncasecmp (to_search, to_search.length) == 0) {
+            string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
+            if(file.is_folder () && file_display_name.length > to_search.length) {
+                if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
-                        entry.completion = file.get_display_name ().slice (to_search.length, file.get_display_name ().length);
+                        entry.completion = file_display_name.slice (to_search.length, file_display_name.length);
                         autocompleted = true;
                     } else {
-                        string file_complet = file.get_display_name ().slice (to_search.length, file.get_display_name ().length);
+                        string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
                         string to_add = "";
                         for (int i = 0; i < (entry.completion.length > file_complet.length ? file_complet.length : entry.completion.length); i++) {
                             if (entry.completion[i] == file_complet[i])
@@ -261,13 +262,14 @@ namespace Marlin.View.Chrome
                     string str = entry.text.slice (0, entry.text.length - to_search.length);
                     if (str == null)
                         str = "";
-                    entry.text = str + file.get_display_name ().slice (0, to_search.length);
+                    entry.text = str + file_display_name.slice (0, to_search.length);
                 }
             }
         }
 
         public void on_need_completion () {
             to_search = "";
+            string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
             string path = get_elements_path ();
             string[] stext = entry.text.split ("/");
             int stext_len = stext.length;
@@ -278,12 +280,14 @@ namespace Marlin.View.Chrome
             autocompleted = false;
 
             path += entry.text;
-            message ("path %s to_search %s", path, to_search);
+            string escaped_path = GLib.Uri.escape_string (path, reserved_chars, true);
+                
+            message ("path %s to_search %s", escaped_path, to_search);
             if (to_search != "")
-                path = Marlin.Utils.get_parent (path);
+                escaped_path = Marlin.Utils.get_parent (escaped_path);
 
-            if (path != null && path.length > 0) {
-                var directory = File.new_for_uri (path);
+            if (escaped_path != null && escaped_path.length > 0) {
+                var directory = File.new_for_uri (escaped_path);
                 var files_cache = files;
                 
                 files = GOF.Directory.Async.from_gfile (directory);
@@ -409,13 +413,12 @@ namespace Marlin.View.Chrome
             merge_in_clipboard_actions ();
             
             /* Update the entry to have the full path (replacements are to handle some of the strange results get_elements_path return) */
-            string path = get_elements_path ()
-                .replace("file:////", "/")
-                .replace("file:///", "/")
-                .replace("trash:///", "")
-                .replace("network:///", "");
+            string path = GLib.Uri.unescape_string (get_elements_path ()
+                .replace ("file:////", "/")
+                .replace ("file:///", "/")
+                .replace ("trash:///", "")
+                .replace ("network:///", ""));
                 
-            File file = File.new_for_uri (path);
             entry.reset ();
             entry.reset_selection ();
             entry.insert (path, false);
