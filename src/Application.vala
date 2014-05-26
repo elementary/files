@@ -122,22 +122,25 @@ public class Marlin.Application : Granite.Application {
         /* Setup the argument parser */
         bool version = false;
         bool open_in_tab = false;
+        bool create_new_window = false;
         bool kill_shell = false;
         bool debug = false;
 
-        OptionEntry[] options = new OptionEntry [6];
+        OptionEntry[] options = new OptionEntry [7];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
-        options [2] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
+        options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
+                        N_("New Window"), null };
+        options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
-        options [3] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
+        options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [5] = { null };
+        options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -185,7 +188,9 @@ public class Marlin.Application : Granite.Application {
         }
 
         /* Open application */
-        if (open_in_tab)
+        if (create_new_window)
+            create_window (File.new_for_path (Environment.get_home_dir ()), Gdk.Screen.get_default ());
+        else if (open_in_tab)
             open_tabs (files);
         else
             open_windows (files);
