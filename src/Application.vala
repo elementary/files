@@ -278,7 +278,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        var window = new Marlin.View.Window (this, screen);
+        var window = new Marlin.View.Window (this, screen, !windows_exist ());
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);
         window.set_size_request (300, 250);
@@ -298,13 +298,11 @@ public class Marlin.Application : Granite.Application {
     private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
-        unowned List<Gtk.Window> windows = this.get_windows ();
-
-        /* Get the first windows if any */
-        if (windows != null && windows.data != null) {
-            window = windows.data as Marlin.View.Window;
-        } else {
-            window = new Marlin.View.Window (this, screen);
+        /* Get the first window, if any, else create a new window */
+        if (windows_exist ())
+            window = (this.get_windows ()).data as Marlin.View.Window;
+        else {
+            window = new Marlin.View.Window (this, screen, true);
             this.add_window (window as Gtk.Window);
             plugins.interface_loaded (window as Gtk.Widget);
         }
@@ -323,10 +321,8 @@ public class Marlin.Application : Granite.Application {
         }
     }
 
-    public bool is_first_window (Gtk.Window window) {
-        unowned List<Gtk.Window> list = this.get_windows ();
-        list = list.last ();
-
-        return (window == list.data);
+    private bool windows_exist () {
+        unowned List<Gtk.Window> windows = this.get_windows ();
+        return (windows != null && windows.data != null);
     }
 }
