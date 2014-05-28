@@ -29,9 +29,9 @@ namespace Marlin.View.Chrome
             set {
                 var new_path = value;
                 _path = new_path;
-                if (!bread.focus && !win.freeze_view_changes) {
-                    bread.entry.reset ();
-                    bread.change_breadcrumbs (new_path);
+                if (!bread.is_focus && !win.freeze_view_changes) {
+                    bread.text = "";
+                    bread.change_breadcrumbs (GLib.Uri.unescape_string (new_path));
                 }
             }
             get {
@@ -55,7 +55,7 @@ namespace Marlin.View.Chrome
             bread = new Breadcrumbs (ui, win);
             bread.escape.connect (() => { escape(); });
 
-            bread.changed.connect (on_bread_changed);
+            bread.path_changed.connect (on_bread_changed);
             bread.activate_alternate.connect ((a) => { activate_alternate(a); });
 
             margin_top = 4;
@@ -81,7 +81,7 @@ namespace Marlin.View.Chrome
 
             /* This prevents that the location bar is left in a weird state
              * when going from a non-existent folder to another one underneath. */
-            bread.entry.reset ();
+            bread.text = "";
             bread.change_breadcrumbs (changed);
         }
     }
@@ -191,17 +191,17 @@ namespace Marlin.View.Chrome
             icon.exploded = {"/"};
             add_icon (icon);
 
-            entry.down.connect (() => {
-                /* focus back the view */
+            down.connect (() => {
+                // focus back the view 
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else
                     win.current_tab.slot.view_box.grab_focus ();
             });
 
-            entry.completed.connect (() => {
+            completed.connect (() => {
                 string path = "";
-                string newpath = update_breadcrumbs (entry.text, path);
+                string newpath = update_breadcrumbs (text, path);
                 
                 foreach (BreadcrumbsElement element in elements) {
                     if (!element.hidden)
@@ -209,25 +209,15 @@ namespace Marlin.View.Chrome
                 }
             
                 if (path != newpath)
-                    change_breadcrumbs (newpath);
+                    change_breadcrumbs (GLib.Uri.unescape_string (newpath));
                 
                 grab_focus ();
             });
+            
+            need_completion.connect (on_need_completion);
 
             menu = new Gtk.Menu ();
             menu.show_all ();
-
-            need_completion.connect (on_need_completion);
-        }
-
-        protected void merge_in_clipboard_actions () {
-            ui.insert_action_group (clipboard_actions, 0);
-            ui.ensure_update ();
-        }
-
-        protected void merge_out_clipboard_actions () {
-            ui.remove_action_group (clipboard_actions);
-            ui.ensure_update ();
         }
 
         /**
@@ -243,26 +233,28 @@ namespace Marlin.View.Chrome
             if(file.is_folder () && file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
-                        entry.completion = file_display_name.slice (to_search.length, file_display_name.length);
+                        completion = file_display_name.slice (to_search.length, file_display_name.length);
                         autocompleted = true;
                     } else {
                         string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
                         string to_add = "";
-                        for (int i = 0; i < (entry.completion.length > file_complet.length ? file_complet.length : entry.completion.length); i++) {
-                            if (entry.completion[i] == file_complet[i])
-                                to_add += entry.completion[i].to_string ();
+                        for (int i = 0; i < (completion.length > file_complet.length ? file_complet.length : completion.length); i++) {
+                            if (completion[i] == file_complet[i])
+                                to_add += completion[i].to_string ();
                             else
                                 break;
                         }
-                        entry.completion = to_add;
+                        completion = to_add;
                     }
+                    
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
-                    string str = entry.text.slice (0, entry.text.length - to_search.length);
+                    string str = text.slice (0, text.length - to_search.length);
                     if (str == null)
                         str = "";
-                    entry.text = str + file_display_name.slice (0, to_search.length);
+                    
+                    text = str + file.get_display_name ().slice (0, to_search.length);
                 }
             }
         }
@@ -270,16 +262,13 @@ namespace Marlin.View.Chrome
         public void on_need_completion () {
             to_search = "";
             string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
-            string path = get_elements_path ();
-            string[] stext = entry.text.split ("/");
+            string path = text;
+            string[] stext = text.split ("/");
             int stext_len = stext.length;
             if (stext_len > 0)
                 to_search = stext[stext.length -1];
 
-            entry.completion = "";
             autocompleted = false;
-
-            path += entry.text;
             string escaped_path = GLib.Uri.escape_string (path, reserved_chars, true);
                 
             message ("path %s to_search %s", escaped_path, to_search);
@@ -394,44 +383,7 @@ namespace Marlin.View.Chrome
             return strloc;
         }
 
-        public override bool focus_out_event (Gdk.EventFocus event) {
-            base.focus_out_event (event);
-            merge_out_clipboard_actions ();
-            entry.reset ();
-            
-            /* Show all breadcrumbs */
-            foreach (BreadcrumbsElement element in elements) {
-                if (!element.hidden)
-                    element.display = true;
-            }
-            
-            return true;
-        }
-
-        public override bool focus_in_event (Gdk.EventFocus event) {
-            base.focus_in_event (event);
-            merge_in_clipboard_actions ();
-            
-            /* Update the entry to have the full path (replacements are to handle some of the strange results get_elements_path return) */
-            string path = GLib.Uri.unescape_string (get_elements_path ()
-                .replace ("file:////", "/")
-                .replace ("file:///", "/")
-                .replace ("trash:///", "")
-                .replace ("network:///", ""));
-                
-            entry.reset ();
-            entry.reset_selection ();
-            entry.insert (path, false);
-            entry.set_selection (entry.text.length, null);
-            entry.reset_selection ();
-            
-            /* Hide each breadcrumb and show the current path */
-            foreach (BreadcrumbsElement element in elements) {
-                element.display = false;
-            }
-            
-            return true;
-        }
+        
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             x = (int) menu_x_root;

@@ -63,11 +63,13 @@ namespace Marlin.View.Chrome
             });
 
             location_bar.activate.connect (() => {
-                string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS).replace("#", "");
-                string escaped_path = GLib.Uri.escape_string (GLib.Uri.unescape_string (location_bar.path), reserved_chars, true);
+                File file;
+                string path = Uri.unescape_string (location_bar.path.replace("~", Environment.get_home_dir ()));
+                info (path);
+                string reserved_chars = (Uri.RESERVED_CHARS_GENERIC_DELIMITERS + Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS).replace("#", "");
+                string escaped_path = Uri.escape_string (path, reserved_chars, true);
                 
-                File file = File.new_for_uri (escaped_path);
-                file = File.new_for_path (file.get_path ());
+                file = File.new_for_commandline_arg (escaped_path);
                 win.current_tab.path_changed (file);
             });
 
@@ -75,6 +77,7 @@ namespace Marlin.View.Chrome
                 win.add_tab (File.new_for_commandline_arg (a));
             });
 
+            
             location_bar.show_all ();
             view_switcher.margin_right = 20;
             pack_start (location_bar);
