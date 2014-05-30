@@ -62,19 +62,12 @@ namespace Marlin.View.Chrome
                     win.current_tab.slot.view_box.grab_focus ();
             });
 
-            location_bar.activate.connect (() => {
-                File file;
-                string path = Uri.unescape_string (location_bar.path.replace("~", Environment.get_home_dir ()));
-                info (path);
-                string reserved_chars = (Uri.RESERVED_CHARS_GENERIC_DELIMITERS + Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS).replace("#", "");
-                string escaped_path = Uri.escape_string (path, reserved_chars, true);
-                
-                file = File.new_for_commandline_arg (escaped_path);
+            location_bar.activate.connect ((file) => {
                 win.current_tab.path_changed (file);
             });
 
-            location_bar.activate_alternate.connect ((a) => {
-                win.add_tab (File.new_for_commandline_arg (a));
+            location_bar.activate_alternate.connect ((file) => {
+                win.add_tab (file);
             });
 
             

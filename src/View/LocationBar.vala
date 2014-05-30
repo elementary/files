@@ -41,8 +41,8 @@ namespace Marlin.View.Chrome
 
         Marlin.View.Window win;
 
-        public new signal void activate ();
-        public signal void activate_alternate (string path);
+        public new signal void activate (GLib.File file);
+        public signal void activate_alternate (GLib.File file);
         public signal void escape ();
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
@@ -55,8 +55,8 @@ namespace Marlin.View.Chrome
             bread = new Breadcrumbs (ui, win);
             bread.escape.connect (() => { escape(); });
 
-            bread.path_changed.connect (on_bread_changed);
-            bread.activate_alternate.connect ((a) => { activate_alternate(a); });
+            bread.path_changed.connect (on_path_changed);
+            bread.activate_alternate.connect ((file) => { activate_alternate(file); });
 
             margin_top = 4;
             margin_bottom = 4;
@@ -65,7 +65,7 @@ namespace Marlin.View.Chrome
             pack_start (bread, true, true, 0);
         }
 
-        private void on_bread_changed (string changed) {
+        private void on_path_changed (File file) {
             if (win.freeze_view_changes)
                 return;
 
@@ -75,14 +75,13 @@ namespace Marlin.View.Chrome
             else
                 win.current_tab.slot.view_box.grab_focus ();
 
-            //_path = changed;
-            path = changed;
-            activate();
+            path = file.get_uri ();
+            activate(file);
 
             /* This prevents that the location bar is left in a weird state
              * when going from a non-existent folder to another one underneath. */
             bread.text = "";
-            bread.change_breadcrumbs (changed);
+            bread.change_breadcrumbs (file.get_uri ());
         }
     }
 
@@ -190,6 +189,17 @@ namespace Marlin.View.Chrome
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon (icon);
+            
+            up.connect (() => {
+                File file = get_file_for_path (text);
+                File parent = file.get_parent ();
+                
+                if (parent != null && file.get_uri () != parent.get_uri ())
+                    change_breadcrumbs (parent.get_uri ());
+                    
+                win.current_tab.up ();
+                grab_focus ();
+            });
 
             down.connect (() => {
                 // focus back the view 
@@ -209,7 +219,7 @@ namespace Marlin.View.Chrome
                 }
             
                 if (path != newpath)
-                    change_breadcrumbs (GLib.Uri.unescape_string (newpath));
+                    change_breadcrumbs ((get_file_for_path (newpath)).get_uri ());
                 
                 grab_focus ();
             });
@@ -233,18 +243,18 @@ namespace Marlin.View.Chrome
             if(file.is_folder () && file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
-                        completion = file_display_name.slice (to_search.length, file_display_name.length);
+                        text_completion = file_display_name.slice (to_search.length, file_display_name.length);
                         autocompleted = true;
                     } else {
                         string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
                         string to_add = "";
-                        for (int i = 0; i < (completion.length > file_complet.length ? file_complet.length : completion.length); i++) {
-                            if (completion[i] == file_complet[i])
-                                to_add += completion[i].to_string ();
+                        for (int i = 0; i < (text_completion.length > file_complet.length ? file_complet.length : text_completion.length); i++) {
+                            if (text_completion[i] == file_complet[i])
+                                to_add += text_completion[i].to_string ();
                             else
                                 break;
                         }
-                        completion = to_add;
+                        text_completion = to_add;
                     }
                     
                     /* autocompletion is case insensitive so we have to change the first completed
@@ -261,22 +271,22 @@ namespace Marlin.View.Chrome
 
         public void on_need_completion () {
             to_search = "";
-            string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
-            string path = text;
-            string[] stext = text.split ("/");
+            File file = get_file_for_path (text);
+            string path = file.get_uri ();
+            string[] stext = path.split ("/");
             int stext_len = stext.length;
             if (stext_len > 0)
                 to_search = stext[stext.length -1];
 
             autocompleted = false;
-            string escaped_path = GLib.Uri.escape_string (path, reserved_chars, true);
-                
-            message ("path %s to_search %s", escaped_path, to_search);
-            if (to_search != "")
-                escaped_path = Marlin.Utils.get_parent (escaped_path);
+            
+            if (to_search != "") {
+                path = Marlin.Utils.get_parent (path);
+                file = get_file_for_path (path);
+            }
 
-            if (escaped_path != null && escaped_path.length > 0) {
-                var directory = File.new_for_uri (escaped_path);
+            if (path != null && path.length > 0) {
+                var directory = file;
                 var files_cache = files;
                 
                 files = GOF.Directory.Async.from_gfile (directory);
@@ -370,7 +380,7 @@ namespace Marlin.View.Chrome
             file.launch (win.get_screen (), app);
         }
 
-        protected override void on_file_droped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
+        protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
             Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
         }
 
@@ -382,8 +392,6 @@ namespace Marlin.View.Chrome
             }
             return strloc;
         }
-
-        
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             x = (int) menu_x_root;
