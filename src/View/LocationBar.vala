@@ -271,34 +271,27 @@ namespace Marlin.View.Chrome
         }
 
         public void on_need_completion () {
-            to_search = "";
             File file = get_file_for_path (text);
-            string path = file.get_uri ();
-            string[] stext = path.split ("/");
-            int stext_len = stext.length;
-            if (stext_len > 0)
-                to_search = stext[stext.length -1];
+            to_search = file.get_basename ();
 
             autocompleted = false;
             multiple_completions = false;
             
-            if (to_search != "") {
-                path = Marlin.Utils.get_parent (path);
-                file = get_file_for_path (path);
-            }
+            if (to_search != "" && file.has_parent (null))
+                file = file.get_parent ();
+            else
+                return;
 
-            if (path != null && path.length > 0) {
-                var directory = file;
-                var files_cache = files;
+            var directory = file;
+            var files_cache = files;
+            
+            files = GOF.Directory.Async.from_gfile (directory);
+            if (files.file.exists) {
+                /* Verify that we got a new instance of files so we do not double up events */
+                if (files_cache != files)
+                    files.file_loaded.connect (on_file_loaded);
                 
-                files = GOF.Directory.Async.from_gfile (directory);
-                if (files.file.exists) {
-                    /* Verify that we got a new instance of files so we do not double up events */
-                    if (files_cache != files)
-                        files.file_loaded.connect (on_file_loaded);
-                    
-                    files.load ();
-                }
+                files.load ();
             }
         }
 

@@ -496,7 +496,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         string newpath = GLib.Uri.unescape_string (path);
 
         if (!newpath.contains("://"))
-            newpath = Marlin.ROOT_FS_URI + path;
+            newpath = Marlin.ROOT_FS_URI + newpath;
         
         /* Replace special environment variables here and escape the string */
         newpath = newpath.replace("ssh:", "sftp:");
