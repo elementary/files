@@ -177,7 +177,7 @@ fm_columns_view_rename_callback (GOFFile *file,
     printf ("%s\n", G_STRFUNC);
 	if (view->details->renaming_file) {
 		view->details->rename_done = TRUE;
-		
+
 		if (error != NULL) {
             marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), g_file_info_get_name (file->info), view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
@@ -187,7 +187,7 @@ fm_columns_view_rename_callback (GOFFile *file,
             g_object_unref (view->details->renaming_file);
 		}
 	}
-	
+
 	g_object_unref (view);
 }
 
@@ -248,13 +248,13 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		fm_columns_view_unfreeze_updates (view);
 		return;
 	}
-	
+
 	path = gtk_tree_path_new_from_string (path_str);
 
 	gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
 
 	gtk_tree_path_free (path);
-	
+
 	gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
 
@@ -267,7 +267,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		g_free (view->details->original_name);
 		view->details->original_name = g_strdup (new_text);
 	}
-	
+
 	gof_file_unref (file);
 
 	fm_columns_view_unfreeze_updates (view);
@@ -754,7 +754,7 @@ fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     if (view->details->selection)
         gof_file_list_free (view->details->selection);

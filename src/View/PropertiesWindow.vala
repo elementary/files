@@ -1097,7 +1097,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             int group_index = -1;
             int i = 0;
             foreach (var group in groups) {
-                if (group == goffile.owner) {
+                if (group == goffile.group) {
                     group_index = i;
                 }
                 store_groups.append (out iter);
