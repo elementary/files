@@ -262,10 +262,10 @@ namespace Marlin.View.Chrome
                      * parts: the entry.text.
                      */
                     string str = text.slice (0, text.length - to_search.length);
-                    if (str == null)
-                        str = "";
-                    
-                    text = str + file.get_display_name ().slice (0, to_search.length);
+                    if (str != null && !multiple_completions) {
+                        text = str + file.get_display_name ().slice (0, to_search.length);
+                        set_position (-1);
+                    }
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace Marlin.View.Chrome
                 files = GOF.Directory.Async.from_gfile (directory);
                 if (files.file.exists) {
                     /* Verify that we got a new instance of files so we do not double up events */
-                    if (files_cache != files) 
+                    if (files_cache != files)
                         files.file_loaded.connect (on_file_loaded);
                     
                     files.load ();

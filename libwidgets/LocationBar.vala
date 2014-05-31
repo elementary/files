@@ -41,10 +41,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     protected string text_completion = "";
     protected bool multiple_completions = false;
-    private bool text_changed = false;
-    private bool arrow_hovered = false;
-    private bool ignore_focus_in = false;
-    private bool ignore_change = false;
+    protected bool text_changed = false;
+    protected bool arrow_hovered = false;
+    protected bool ignore_focus_in = false;
+    protected bool ignore_change = false;
     private Gdk.Pixbuf arrow_img;
 
     /* if we must display the BreadcrumbsElement which are in  newbreads. */
@@ -401,7 +401,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             completed ();
         } else {
             set_entry_text (path);
-            set_position (-1);
         }
     }
     
@@ -416,6 +415,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         ignore_change = true;
         text_completion = "";
         this.text = text;
+        set_position (-1);
     }
     
     public void set_entry_cursor (Gdk.Cursor? cursor) {
@@ -497,7 +497,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         if (!newpath.contains("://"))
             newpath = Marlin.ROOT_FS_URI + path;
-            
+        
         /* Replace special environment variables here and escape the string */
         newpath = newpath.replace("ssh:", "sftp:");
         newpath = newpath.replace("~", Environment.get_home_dir ());
