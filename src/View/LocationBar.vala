@@ -211,7 +211,7 @@ namespace Marlin.View.Chrome
 
             completed.connect (() => {
                 string path = "";
-                string newpath = update_breadcrumbs (text, path);
+                string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
                 
                 foreach (BreadcrumbsElement element in elements) {
                     if (!element.hidden)
@@ -219,7 +219,7 @@ namespace Marlin.View.Chrome
                 }
             
                 if (path != newpath)
-                    change_breadcrumbs ((get_file_for_path (newpath)).get_uri ());
+                    change_breadcrumbs (newpath);
                 
                 grab_focus ();
             });
