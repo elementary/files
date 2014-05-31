@@ -58,6 +58,9 @@ namespace Marlin.View {
             }
         }
 
+        public bool is_first_window {get; private set;}
+        private bool tabs_restored = false;
+
         public signal void item_hovered (GOF.File gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
@@ -83,10 +86,11 @@ namespace Marlin.View {
                 current_tab.change_view(n, null);
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen)
+        public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
         {
             application = app;
             screen = myscreen;
+            is_first_window = first;
 
             ui = new Gtk.UIManager();
 
@@ -193,11 +197,9 @@ namespace Marlin.View {
 
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
 
-            /*set_default_size(760, 450);
-            set_position(WindowPosition.CENTER);*/
             var geometry = Preferences.settings.get_string("geometry");
             /* only position the first window */
-            EelGtk.Window.set_initial_geometry_from_string (this, geometry, 700, 450, !app.is_first_window ((Gtk.Window) this));
+            EelGtk.Window.set_initial_geometry_from_string (this, geometry, 700, 450, is_first_window);
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
             }
@@ -226,12 +228,10 @@ namespace Marlin.View {
             });
 
             delete_event.connect (() => {
-                if (app.is_first_window ((Gtk.Window) this)) {
+                if (is_first_window) {
                     save_geometries ();
                     save_tabs ();
                 }
-
-                //destroy ();
                 return false;
             });
 
@@ -265,7 +265,7 @@ namespace Marlin.View {
             get_allocation (out win_alloc);
 
             /* keyboard shortcuts bindings */
-            if (app.is_first_window ((Gtk.Window) this)) {
+            if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
@@ -470,6 +470,12 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
+            /* Do not restore tabs more than once */
+            if (tabs_restored || !is_first_window)
+                return 0;
+            else
+                tabs_restored = true;
+
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
             int tabs_added = 0;
