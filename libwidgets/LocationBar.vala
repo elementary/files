@@ -40,6 +40,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public string current_right_click_root;
     
     protected string text_completion = "";
+    protected bool multiple_completions = false;
     private bool text_changed = false;
     private bool arrow_hovered = false;
     private bool ignore_focus_in = false;
@@ -204,7 +205,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
 
         if (event.button == 3)
-            return select_bread_from_coord(event);
+            return select_bread_from_coord (event);
 
         return true;
     }
@@ -298,7 +299,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
     
         text_changed = false;
-        text_completion = "";
         ignore_focus_in = false;
         set_entry_text ("");
         set_arrow_hovered (false);
@@ -309,7 +309,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (ignore_focus_in)
             return false;
         
-        text_completion = "";
         set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
                 .replace ("file:////", "/")
                 .replace ("file:///", "/")
@@ -390,13 +389,19 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         icons.append (icon);
     }
     
-    public void complete () {
-        if (text_completion != "") {
-            set_entry_text (text + text_completion + "/");
-            select_region (0, 0);
-            set_position (0);
-            text_completion = "";
+    public void complete () {        
+        if (text_completion.length == 0)
+            return;
+
+        string path = text + text_completion;
+        
+        /* If there are multiple results, tab as far as we can, otherwise do the entire result */
+        if (!multiple_completions) {
+            set_entry_text (path + "/");
             completed ();
+        } else {
+            set_entry_text (path);
+            set_position (-1);
         }
     }
     
@@ -409,6 +414,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     public void set_entry_text (string text) {
         ignore_change = true;
+        text_completion = "";
         this.text = text;
     }
     
@@ -492,6 +498,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (!newpath.contains("://"))
             newpath = Marlin.ROOT_FS_URI + path;
             
+        /* Replace special environment variables here and escape the string */
         newpath = newpath.replace("ssh:", "sftp:");
         newpath = newpath.replace("~", Environment.get_home_dir ());
         newpath = GLib.Uri.escape_string (newpath, reserved_chars, true);
@@ -770,7 +777,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         double width = get_allocated_width ();
 
         if (!is_focus) {
-           
             double margin = y;
 
             /* Ensure there is an editable area to the right of the breadcrumbs */

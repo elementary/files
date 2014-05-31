@@ -97,7 +97,7 @@ namespace Marlin.View.Chrome
 
         /* Used for the context menu we show when there is a right click */
         GOF.Directory.Async files_menu = null;
-
+        
         bool autocompleted = false;
 
         Marlin.View.Window win;
@@ -255,6 +255,7 @@ namespace Marlin.View.Chrome
                                 break;
                         }
                         text_completion = to_add;
+                        multiple_completions = true;
                     }
                     
                     /* autocompletion is case insensitive so we have to change the first completed
@@ -279,6 +280,7 @@ namespace Marlin.View.Chrome
                 to_search = stext[stext.length -1];
 
             autocompleted = false;
+            multiple_completions = false;
             
             if (to_search != "") {
                 path = Marlin.Utils.get_parent (path);
