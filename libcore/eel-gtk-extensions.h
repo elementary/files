@@ -36,7 +36,9 @@ void	    eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
 							     const char *geometry_string,
 							     guint minimum_width,
 							     guint minimum_height,
-							     gboolean ignore_position);
+							     gboolean ignore_position,
+                                 gint left_offset,
+                                 gint top_offset);
 
 void	    eel_gtk_window_set_initial_geometry (GtkWindow *window,
 						 EelGdkGeometryFlags geometry_flags,

@@ -197,7 +197,9 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
                                                  const char *geometry_string,
                                                  guint minimum_width,
                                                  guint minimum_height,
-                                                 gboolean ignore_position)
+                                                 gboolean ignore_position,
+                                                 gint left_offset,
+                                                 gint top_offset)
 {
     int left, top;
     guint width, height;
@@ -214,7 +216,10 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
 
     width = height = 0;
     left = top = -1;
+
     geometry_flags = eel_gdk_parse_geometry (geometry_string, &left, &top, &width, &height);
+    left += left_offset;
+    top += top_offset;
 
     /* Make sure the window isn't smaller than makes sense for this window.
      * Other sanity checks are performed in set_initial_geometry.
