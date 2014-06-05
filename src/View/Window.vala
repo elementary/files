@@ -70,6 +70,8 @@ namespace Marlin.View {
         private const int MARLIN_MAXIMUM_TAB_COUNT = 10;
         private const int MARLIN_LEFT_OFFSET = 16;
         private const int MARLIN_TOP_OFFSET = 9;
+        private const int MARLIN_MINIMUM_WINDOW_WIDTH = 300;
+        private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 250;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -216,7 +218,8 @@ namespace Marlin.View {
                 top_offset = MARLIN_TOP_OFFSET;
             }
             EelGtk.Window.set_initial_geometry_from_string (this, geometry,
-                                                            700, 450,
+                                                            MARLIN_MINIMUM_WINDOW_WIDTH,
+                                                            MARLIN_MINIMUM_WINDOW_HEIGHT,
                                                             false,
                                                             left_offset, top_offset);
 
