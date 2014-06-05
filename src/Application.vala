@@ -32,6 +32,9 @@ public class Marlin.Application : Granite.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
 
+    private int window_count = 0;
+    private const int MARLIN_MAXIMUM_WINDOW_COUNT = 10;
+
     construct {
         /* Needed by Glib.Application */
         this.application_id = "org.pantheon.files";  //Ensures an unique instance.
@@ -59,6 +62,9 @@ public class Marlin.Application : Granite.Application {
         this.about_translators = Marlin.TRANSLATORS;
 
         application_singleton = this;
+
+        this.window_added.connect (() => {window_count++;});
+        this.window_removed.connect (() => {window_count--;});
     }
 
     public static new unowned Application get () {
@@ -283,6 +289,10 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+        if (window_count >= MARLIN_MAXIMUM_WINDOW_COUNT) {
+            warning ("Maximum window count reached - cannot create another window");
+            return;
+        }
         var window = new Marlin.View.Window (this, screen, !windows_exist ());
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);

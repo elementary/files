@@ -67,6 +67,7 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
 
         public bool freeze_view_changes = false;
+        private const int MARLIN_MAXIMUM_TAB_COUNT = 10;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -341,6 +342,11 @@ namespace Marlin.View {
 
         private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                                    int viewmode = -1) {
+            if (tabs.n_tabs >= MARLIN_MAXIMUM_TAB_COUNT) {
+                warning ("Maximum tab count reached - cannot make new tab");
+                return;
+            }
+
             if (viewmode < 0) {
                 if (current_tab != null)
                     viewmode = current_tab.view_mode;
