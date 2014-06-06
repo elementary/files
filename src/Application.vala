@@ -33,7 +33,6 @@ public class Marlin.Application : Granite.Application {
     private bool save_of_accel_map_requested = false;
 
     public int window_count { get; private set; }
-    private const int MARLIN_MAXIMUM_WINDOW_COUNT = 10;
 
     construct {
         /* Needed by Glib.Application */
@@ -290,10 +289,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        if (window_count >= MARLIN_MAXIMUM_WINDOW_COUNT)
-            warning ("Maximum window count reached - cannot create another window");
-        else
-            (add_view_window (screen)).add_tab (location);
+        (add_view_window (screen)).add_tab (location);
     }
 
     private void open_windows (File[]? files) {
