@@ -338,8 +338,8 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 
     MarlinZoomLevel zoom;
     g_object_get (view, "zoom-level", &zoom, NULL);
-    int size = marlin_zoom_level_to_icon_size (zoom);
-    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
+    gof_directory_async_queue_load_thumbnails (view->details->slot->directory,
+                                               marlin_zoom_level_to_icon_size (zoom));
     /* If in Miller view, autosize the column */
     if (view->details->slot->mwcols) {
         if (view->details->slot->ready_to_autosize)

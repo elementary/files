@@ -32,6 +32,8 @@ public class Marlin.Application : Granite.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private bool save_of_accel_map_requested = false;
 
+    public int window_count { get; private set; }
+
     construct {
         /* Needed by Glib.Application */
         this.application_id = "org.pantheon.files";  //Ensures an unique instance.
@@ -104,6 +106,10 @@ public class Marlin.Application : Granite.Application {
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
 #endif
+
+        window_count = 0;
+        this.window_added.connect (() => {window_count++;});
+        this.window_removed.connect (() => {window_count--;});
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
@@ -199,7 +205,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     public override void quit_mainloop () {
-        print ("Quitting mainloop");
+        debug ("Quitting mainloop");
         Marlin.IconInfo.clear_caches ();
 
         base.quit_mainloop ();
@@ -283,11 +289,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        var window = new Marlin.View.Window (this, screen, !windows_exist ());
-        plugins.interface_loaded (window as Gtk.Widget);
-        this.add_window (window as Gtk.Window);
-        window.set_size_request (300, 250);
-        window.add_tab (location);
+        (add_view_window (screen)).add_tab (location);
     }
 
     private void open_windows (File[]? files) {
@@ -306,11 +308,8 @@ public class Marlin.Application : Granite.Application {
         /* Get the first window, if any, else create a new window */
         if (windows_exist ())
             window = (this.get_windows ()).data as Marlin.View.Window;
-        else {
-            window = new Marlin.View.Window (this, screen, true);
-            this.add_window (window as Gtk.Window);
-            plugins.interface_loaded (window as Gtk.Widget);
-        }
+        else
+            window = add_view_window (screen);
 
         if (files == null) {
             /* Restore session if settings allow */
@@ -326,8 +325,15 @@ public class Marlin.Application : Granite.Application {
         }
     }
 
+    private Marlin.View.Window add_view_window (Gdk.Screen screen) {
+        var window = new Marlin.View.Window (this, screen, true);
+        this.add_window (window as Gtk.Window);
+        plugins.interface_loaded (window as Gtk.Widget);
+        return window;
+    }
+
     private bool windows_exist () {
-        unowned List<Gtk.Window> windows = this.get_windows ();
+        unowned List<weak Gtk.Window> windows = this.get_windows ();
         return (windows != null && windows.data != null);
     }
 }
