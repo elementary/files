@@ -26,6 +26,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
         public bool content_shown = false;
+        public bool can_show_folder = true;
         public Gtk.Label label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
@@ -37,7 +38,7 @@ namespace Marlin.View {
         //private ulong file_info_callback;
         private GLib.List<GLib.File> select_childs = null;
 
-        public signal void path_changed (File file, GOF.Window.Slot? new_slot = null);
+        public signal void path_changed (File? file, GOF.Window.Slot? new_slot = null);
         public signal void up ();
         public signal void back (int n=1);
         public signal void forward (int n=1);
@@ -58,7 +59,7 @@ namespace Marlin.View {
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
-            //add(content_item);
+            path_changed (location);
             this.show_all ();
 
             // Override background color to support transparency on overlay widgets
@@ -72,10 +73,11 @@ namespace Marlin.View {
 
             path_changed.connect ((myfile, new_slot) => {
                 /* new_slot is not null if the path is being changed inside a miller column view */
-                if (new_slot != null)
+                if (new_slot != null) {
                     /* Put new slot in existing mwcol */
+
                     slot = new_slot;
-                else {
+                } else {
                     if (mwcol != null && slot != null) {
                         if (slot.directory != null) {
                             slot.directory.cancel ();
@@ -157,12 +159,8 @@ namespace Marlin.View {
         }
 
         private void connect_available_info () {
-            //file_info_callback = slot.directory.file.info_available.connect((gof) => {
-                if (window.current_tab == this)
-                    window.loading_uri (slot.directory.file.uri);
-
-                /*Source.remove((uint) file_info_callback);
-            });*/
+            if (window.current_tab == this)
+                window.loading_uri (slot.directory.file.uri);
         }
 
         public void refresh_slot_info () {
@@ -174,8 +172,10 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else
+            else {
                 tab_name = _("This folder does not exist");
+                can_show_folder = false;
+            }
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
@@ -192,7 +192,6 @@ namespace Marlin.View {
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading () {
             FileInfo file_info;
-
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -200,6 +199,7 @@ namespace Marlin.View {
                 if (slot.directory.permission_denied) {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
+                    can_show_folder = false;
                 }
 
                 /* If not a directory, then change the location to the parent */
@@ -220,20 +220,34 @@ namespace Marlin.View {
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
-        public void change_view (int nview, GLib.File? location) {
+        public void change_view_mode (int mode) {
+            if (mode != view_mode)
+                change_view (mode, null);
+        }
+
+        private void change_view (int nview, GLib.File? location) {
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
+            GOF.Window.Slot? active_slot = get_active_slot ();
             if (location == null) {
                 /* we re just changing view keep the same location */
-                location = get_active_slot ().location;
+                if (active_slot == null) {
+                    warning ("No active slot found - cannot change view");
+                    return;
+                }
+                location = active_slot.location;
                 /* store the old selection to restore it */
                 if (slot != null && !content_shown) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     foreach (var elem in list)
                         select_childs.prepend (elem.location);
                 }
+            } else if (nview == view_mode && active_slot != null && location.equal (active_slot.location)) {
+                /* check if the requested location and viewmode are unchanged */
+                    return;
             } else {
+                can_show_folder = true;
                 /* check if the requested location is a parent of the previous one */
                 if (slot != null) {
                     var parent = slot.location.get_parent ();
@@ -303,12 +317,27 @@ namespace Marlin.View {
                 return slot;
         }
 
+        public string? get_root_uri () {
+            if (mwcol != null)
+                return mwcol.get_root_uri ();
+            else
+                return slot.location.get_uri ();
+        }
+
+        public string? get_tip_uri () {
+            if (mwcol != null)
+                return mwcol.get_tip_uri ();
+            else
+                return "";
+        }
+
         public void reload () {
             GOF.Directory.Async dir = slot.directory;
             dir.cancel ();
             dir.need_reload.disconnect (reload);
             dir.remove_dir_from_cache ();
-            change_view (view_mode, null);
+            //change_view (view_mode, null);
+            path_changed (null);
         }
 
         public void update_location_state (bool save_history) {

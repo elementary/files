@@ -70,7 +70,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    public Async (GLib.File _file) {
+    private Async (GLib.File _file) {
         location = _file;
         file = GOF.File.get (location);
         file.exists = true;
@@ -78,10 +78,9 @@ public class GOF.Directory.Async : Object {
 
         if (file.info == null)
             file.query_update ();
-        file.info_available ();
 
-        if (directory_cache != null)
-           directory_cache.insert (location, this);
+        assert (directory_cache != null);
+        directory_cache.insert (location, this);
 
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
@@ -94,7 +93,6 @@ public class GOF.Directory.Async : Object {
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         return_if_fail (object != null && object is Object);
-
         if (is_last) {
             Async dir = (Async) object;
             debug ("Async toggle_ref_notify %s", dir.file.uri);
@@ -126,12 +124,15 @@ public class GOF.Directory.Async : Object {
         sorted_dirs = null;
         file_hash.remove_all ();
         files_count = 0;
-        state = 0;
+        state = State.NOT_LOADED;
     }
 
     public void load () {
         cancellable.reset ();
         longest_file_name = "";
+
+        if (state == State.LOADING)
+            return;
 
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
@@ -156,9 +157,6 @@ public class GOF.Directory.Async : Object {
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
-            /* send again the info_available signal for reused directories */
-            if (file.info != null)
-                file.info_available ();
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
@@ -236,7 +234,7 @@ public class GOF.Directory.Async : Object {
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
-            while (true) {
+            while (state == State.LOADING) {
                 var files = yield e.next_files_async (200, 0, cancellable);
 
                 if (files == null)
@@ -266,9 +264,13 @@ public class GOF.Directory.Async : Object {
                     files_count++;
                 }
             }
-
-            file.exists = true;
-            state = State.LOADED;
+            if (state == State.LOADING) {
+                file.exists = true;
+                state = State.LOADED;
+            } else {
+                debug ("WARNING load() has been called again before LOADING finished");
+                return;
+            }
         } catch (Error err) {
             warning ("%s %s", err.message, file.uri);
             state = State.NOT_LOADED;
@@ -350,7 +352,6 @@ public class GOF.Directory.Async : Object {
 
     private void file_info_available (GOF.File gof) {
         gof.update ();
-        gof.info_available ();
     }
 
     private void notify_file_changed (GOF.File gof) {
@@ -519,13 +520,8 @@ public class GOF.Directory.Async : Object {
     }
 
     public static Async from_gfile (GLib.File file) {
-        Async dir;
-
-        dir = cache_lookup (file);
-        if (dir == null)
-            dir = new Async (file);
-
-        return dir;
+        /* Note: cache_lookup creates directory_cache if necessary */
+        return cache_lookup (file) ?? new Async (file);
     }
 
     public static Async from_file (GOF.File gof) {
@@ -535,11 +531,12 @@ public class GOF.Directory.Async : Object {
     public static Async? cache_lookup (GLib.File *file) {
         Async? cached_dir = null;
 
-        if (directory_cache == null)
+        if (directory_cache == null) {
             directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+            return null;
+        }
 
-        if (directory_cache != null)
-            cached_dir = directory_cache.lookup (file);
+        cached_dir = directory_cache.lookup (file);
 
         if (cached_dir != null) {
             debug ("found cached dir %s\n", cached_dir.file.uri);
@@ -569,7 +566,6 @@ public class GOF.Directory.Async : Object {
 
     public bool purge_dir_from_cache () {
         var removed = remove_dir_from_cache ();
-
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
             foreach (var gfile in file_hash.get_keys ()) {
@@ -681,7 +677,6 @@ public class GOF.Directory.Async : Object {
 
     public void queue_load_thumbnails (int size) {
         icon_size = size;
-
         if (thumbs_thread_runing)
             thumbs_stop = true;
 

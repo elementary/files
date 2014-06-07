@@ -762,9 +762,10 @@ static void
 fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
+
     g_debug ("%s\n", G_STRFUNC);
 
-    //Unload all the subdirectories in the loaded subdirectories list.
+    /* Unload all the subdirectories in the loaded subdirectories list. */
     GList *l = NULL;
     for (l = view->loaded_subdirectories; l != NULL; l = l->next) {
         GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);

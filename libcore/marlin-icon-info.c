@@ -731,3 +731,19 @@ marlin_icon_info_get_pixbuf_force_size (MarlinIconInfo  *icon, gint size, gboole
     }
 }
 
+void marlin_icon_info_remove_cache (const char *path, int size)
+{
+    GFile *icon_file;
+    GIcon *icon;
+    LoadableIconKey *lookup_key;
+    
+    icon_file = g_file_new_for_path (path);
+    icon = g_file_icon_new (icon_file);
+    lookup_key = loadable_icon_key_new (icon, size);
+    
+    g_hash_table_remove (loadable_icon_cache, lookup_key);
+    
+    g_object_unref (icon_file);
+    g_object_unref (icon);
+    loadable_icon_key_free (lookup_key);
+}

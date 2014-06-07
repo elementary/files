@@ -54,7 +54,7 @@ static void
 fm_icon_view_unselect_all (FMDirectoryView *icon_view)
 {
     g_return_if_fail (FM_IS_ICON_VIEW (icon_view));
-    
+
     exo_icon_view_unselect_all (FM_ABSTRACT_ICON_VIEW (icon_view)->icons);
 }
 

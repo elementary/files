@@ -122,22 +122,25 @@ public class Marlin.Application : Granite.Application {
         /* Setup the argument parser */
         bool version = false;
         bool open_in_tab = false;
+        bool create_new_window = false;
         bool kill_shell = false;
         bool debug = false;
 
-        OptionEntry[] options = new OptionEntry [6];
+        OptionEntry[] options = new OptionEntry [7];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
-        options [2] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
+        options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
+                        N_("New Window"), null };
+        options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
-        options [3] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
+        options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [4] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [5] = { null };
+        options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -185,7 +188,9 @@ public class Marlin.Application : Granite.Application {
         }
 
         /* Open application */
-        if (open_in_tab)
+        if (create_new_window)
+            create_window (File.new_for_path (Environment.get_home_dir ()), Gdk.Screen.get_default ());
+        else if (open_in_tab)
             open_tabs (files);
         else
             open_windows (files);
@@ -278,7 +283,7 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        var window = new Marlin.View.Window (this, screen);
+        var window = new Marlin.View.Window (this, screen, !windows_exist ());
         plugins.interface_loaded (window as Gtk.Widget);
         this.add_window (window as Gtk.Window);
         window.set_size_request (300, 250);
@@ -286,11 +291,9 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void open_windows (File[]? files) {
-        if (files == null) {
-            /* Open a window pointing at the default location. */
-            var location = File.new_for_path (Environment.get_home_dir ());
-            open_window (location);
-        } else {
+        if (files == null)
+            open_tabs (files);
+        else {
             /* Open windows at each requested location. */
             foreach (var file in files)
                 open_window (file);
@@ -300,21 +303,22 @@ public class Marlin.Application : Granite.Application {
     private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
-        unowned List<Gtk.Window> windows = this.get_windows ();
-
-        /* Get the first windows if any */
-        if (windows != null && windows.data != null) {
-            window = windows.data as Marlin.View.Window;
-        } else {
-            window = new Marlin.View.Window (this, screen);
+        /* Get the first window, if any, else create a new window */
+        if (windows_exist ())
+            window = (this.get_windows ()).data as Marlin.View.Window;
+        else {
+            window = new Marlin.View.Window (this, screen, true);
             this.add_window (window as Gtk.Window);
             plugins.interface_loaded (window as Gtk.Widget);
         }
 
         if (files == null) {
-            /* Open a tab pointing at the default location */
-            var location = File.new_for_path (Environment.get_home_dir ());
-            window.add_tab (location);
+            /* Restore session if settings allow */
+            if (!Preferences.settings.get_boolean ("restore-tabs") || window.restore_tabs () < 1) {
+                /* Open a tab pointing at the default location if no tabs restored*/
+                var location = File.new_for_path (Environment.get_home_dir ());
+                window.add_tab (location);
+            }
         } else {
             /* Open tabs at each requested location */
             foreach (var file in files)
@@ -322,10 +326,8 @@ public class Marlin.Application : Granite.Application {
         }
     }
 
-    public bool is_first_window (Gtk.Window window) {
-        unowned List<Gtk.Window> list = this.get_windows ();
-        list = list.last ();
-
-        return (window == list.data);
+    private bool windows_exist () {
+        unowned List<Gtk.Window> windows = this.get_windows ();
+        return (windows != null && windows.data != null);
     }
 }

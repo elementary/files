@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-04-25 15:00+0000\n"
-"Last-Translator: Alexander Wilms <Unknown>\n"
+"PO-Revision-Date: 2014-05-06 00:11+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-04-26 07:06+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
+"X-Launchpad-Export-Date: 2014-06-04 06:23+0000\n"
+"X-Generator: Launchpad (build 17031)\n"
 "Language: de\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -39,7 +39,7 @@ msgstr "(als Administrator)"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
 msgid "This does not belong to you."
-msgstr "Das gehört Ihnen nicht."
+msgstr "Dieses gehört Ihnen nicht."
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "You don't have permission to view this folder."
@@ -76,7 +76,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr "Ein einfacher und leistungsfähiger Dateimanager"
+msgstr "Eine einfache und leistungsfähige Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
@@ -206,7 +206,7 @@ msgstr "Wählen Sie eine Anwendung, die Sie öffnen möchten "
 
 #: /home/codygarver/f/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "Dateien ist nicht Ihr Standard-Dateimanager."
+msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:132
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3512
@@ -376,7 +376,7 @@ msgstr "Nächster Reiter"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:679
 msgid "Previous Tab"
-msgstr "Voheriger Reiter"
+msgstr "Vorheriger Tab"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:683
 msgid "Connect to _Server..."
@@ -475,7 +475,7 @@ msgstr "Papierkorb"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:283
 msgid "Open in New Tab"
-msgstr "In neuem Reiter öffnen"
+msgstr "In neuem Tab öffnen"
 
 #: /home/codygarver/f/po/../src/View/LocationBar.vala:290
 msgid "Open with"
@@ -1078,7 +1078,7 @@ msgstr "Die Versionsnummer des Programms anzeigen."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
-msgstr "Adresse(n) in neuem Reiter öffnen"
+msgstr "Adresse(n) in neuem Tab öffnen"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
@@ -1100,7 +1100,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Das Dateisystem mit Hilfe des Dateimanagers anzeigen"
+"Das Dateisystem mit Hilfe der Dateiverwaltung durchsuchen"
 
 #: /home/codygarver/f/po/../src/Application.vala:168
 msgid "--quit cannot be used with URIs."
@@ -1143,7 +1143,7 @@ msgstr "Durchsuchen Sie Ihre Dateien"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "Dateimanager"
+msgstr "Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"

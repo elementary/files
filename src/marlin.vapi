@@ -27,6 +27,7 @@ namespace FM {
             public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
             public GLib.AppInfo? get_default_app ();
             public void select_glib_files (GLib.List files);
+            public void column_add_location (GLib.File file);
         }
     }
 }
@@ -72,6 +73,9 @@ namespace Marlin {
             public void make_view ();
             public void activate_slot (GOF.Window.Slot slot);
             public GOF.Window.Slot active_slot;
+            public string? get_root_uri ();
+            public string? get_tip_uri ();
+            public unowned GOF.Window.Slot get_last_slot ();
         }
     }
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]

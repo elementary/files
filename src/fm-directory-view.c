@@ -213,6 +213,8 @@ static void     new_folder_done (GFile *new_folder, gpointer data);
 
 void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
 
+static void 	remove_marlin_icon_info_cache (GOFFile *file);
+
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
 
@@ -289,6 +291,8 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
     g_return_if_fail (file->exists);
 
     g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
+    //remove thumbnail cache so new thumbnail would be generated
+    remove_marlin_icon_info_cache (file);
     fm_list_model_file_changed (view->model, file, directory);
     guint id;
     marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id, /* large */ FALSE);
@@ -298,6 +302,8 @@ static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     g_debug ("%s %s", G_STRFUNC, file->uri);
+    //remove thumbnail cache so new thumbnail would be generated
+    remove_marlin_icon_info_cache (file);
     fm_list_model_remove_file (view->model, file, directory);
     /* Remove from gof-directory-async cache */
     if (gof_file_is_folder (file)) {
@@ -305,7 +311,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
         dir = gof_directory_async_cache_lookup (file->location);
         if (dir != NULL) {
             if (gof_directory_async_purge_dir_from_cache (dir))
-                g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
+                g_debug ("Removed %s from gof-directory-async cache\n", file->uri);
             g_object_unref (dir);
         }
 
@@ -361,7 +367,6 @@ static void
 show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectoryView *view)
 {
     GOFDirectoryAsync *directory;
-
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->details->slot);
 
@@ -449,7 +454,6 @@ static void
 zoom_level_changed (FMDirectoryView *view, GParamSpec *pspec)
 {
     MarlinZoomLevel zoom;
-
     if (!fm_directory_view_get_loading (view)) {
         g_object_get (view, "zoom-level", &zoom, NULL);
         gof_directory_async_queue_load_thumbnails (view->details->slot->directory,
@@ -704,12 +708,11 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
 
     location = gof_file_get_target_location (file);
 
-    g_debug ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri (location));
     if (gof_file_is_folder (file))
     {
         switch (flags) {
         case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
-            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
+            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location, -1);
             break;
         case MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW:
             marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
@@ -750,7 +753,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
                 if (gof_file_is_folder (file)) {
                     location = gof_file_get_target_location (file);
                     if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) {
-                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
+                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location, -1);
                     } else {
                         marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
@@ -2888,7 +2891,7 @@ fm_directory_view_parent_set (GtkWidget *widget,
         GTK_WIDGET_CLASS (parent_class)->parent_set (widget, old_parent);
     }
 
-    g_debug("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     view = FM_DIRECTORY_VIEW (widget);
     dir = view->details->slot->directory;
 
@@ -2975,17 +2978,18 @@ static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
     g_debug ("%s %s", G_STRFUNC, slot->directory->file->uri);
-    //coltest
-    g_debug ("%s > merge menus", G_STRFUNC);
+
+    MarlinZoomLevel zoom;
+    g_object_get (view, "zoom-level", &zoom, NULL);
+    int size = marlin_zoom_level_to_icon_size (zoom);
+    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     fm_directory_view_merge_menus (view);
-    //schedule_update_menus (view);
 }
 
 static void
 slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 {
     fm_directory_view_unmerge_menus (view);
-    //remove_update_menus_timeout_callback (view);
 }
 
 static void
@@ -3175,7 +3179,6 @@ fm_directory_view_set_property (GObject         *object,
                                  G_CALLBACK (show_hidden_files_changed), view, 0);
         g_signal_connect_object (gof_preferences_get_default (), "notify::interpret-desktop-files",
                                  G_CALLBACK (show_desktop_files_changed), view, 0);
-
 
         fm_directory_view_connect_directory_handlers (view, slot->directory);
 
@@ -4024,4 +4027,20 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     //view->details->templates_invalid = TRUE;
 
     update_menus (view);
+}
+
+static void
+remove_marlin_icon_info_cache (GOFFile *file)
+{
+    if (gof_file_get_thumbnail_path (file) != NULL){
+        const char* path = gof_file_get_thumbnail_path (file);
+        MarlinZoomLevel zoom_level;
+        for (zoom_level = MARLIN_ZOOM_LEVEL_SMALLEST;
+             zoom_level <= MARLIN_ZOOM_LEVEL_LARGEST;
+             zoom_level++)
+             {
+                int icon_size = marlin_zoom_level_to_icon_size (zoom_level);
+                marlin_icon_info_remove_cache (path, icon_size);
+             }
+    }
 }

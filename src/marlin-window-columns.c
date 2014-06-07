@@ -97,7 +97,6 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 {
-    g_debug ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = g_object_ref (location);
@@ -160,17 +159,25 @@ marlin_window_columns_add_location (MarlinWindowColumns *mwcols, GFile *location
 void
 marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 {
+    /* First prepare active slot to receive new child
+     * then call marlin_window_columns_add */
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
+
     slot->width = mwcols->preferred_column_width;
-    gof_window_slot_make_column_view (slot);
     slot->slot_number = mwcols->active_slot->slot_number + 1;
     slot->mwcols = mwcols;
-    slot->colpane = mwcols->active_slot->colpane;
+
+    gof_window_slot_make_column_view (slot);
     gof_window_column_add (slot, slot->view_box);
 
     /* Add it in our GList */
     mwcols->slot_list = g_list_append (mwcols->slot_list, slot);
     marlin_window_columns_activate_slot (slot->mwcols, slot);
+    mwcols->total_width += slot->width + 100;
+    gtk_widget_set_size_request (mwcols->colpane, mwcols->total_width, -1);
+
+    /* Set mwcols->active_slot now in case another slot is created before
+     * this one really becomes active, e.g. during restoring tabs on startup */
 }
 
 void
@@ -178,7 +185,6 @@ marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot 
 {
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
 }
@@ -291,7 +297,6 @@ static void
 marlin_window_columns_finalize (GObject *object)
 {
     MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
-    g_debug ("%s\n", G_STRFUNC);
 
     g_signal_handlers_disconnect_by_func (mwcols->colpane,
                                           G_CALLBACK (marlin_window_columns_key_pressed),
@@ -317,4 +322,23 @@ marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols)
     with the editing widget */
     g_signal_handlers_unblock_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
 }
+
+const gchar*
+marlin_window_columns_get_root_uri (MarlinWindowColumns *mwcols)
+{
+    return g_strdup ((GOF_WINDOW_SLOT ((g_list_first (mwcols->slot_list))->data))->directory->file->uri);
+}
+
+const gchar*
+marlin_window_columns_get_tip_uri (MarlinWindowColumns *mwcols)
+{
+    return g_strdup ((GOF_WINDOW_SLOT ((g_list_last (mwcols->slot_list))->data))->directory->file->uri);
+}
+
+GOFWindowSlot *
+marlin_window_columns_get_last_slot (MarlinWindowColumns *mwcols)
+{
+    return (GOF_WINDOW_SLOT ((g_list_last (mwcols->slot_list))->data));
+}
+
 
