@@ -313,26 +313,27 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     if (view->details->mwcols->updates_frozen && !view->details->awaiting_double_click)
         return TRUE;
 
+    gboolean on_path = gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL);
+    gboolean on_blank = gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL);
+    gboolean no_mods = (event->state & gtk_accelerator_get_default_mod_mask ()) == 0;
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
-    if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
-        && !gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL))
+    if (no_mods && !on_path)
     {
         gtk_tree_selection_unselect_all (selection);
     }
 
     if (event->button == 1 && g_settings_get_boolean (settings, "single-click")) {
         /* Handle single left-click (and start of double click) in single click mode */
-        if (event->type == GDK_BUTTON_PRESS
-           && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0 ) {
+        if (event->type == GDK_BUTTON_PRESS && no_mods) {
             /* Ignore second GDK_BUTTON_PRESS event of double-click */
             if (view->details->awaiting_double_click)
                 return TRUE;
 
             /*Determine where user clicked - this will be the sole selection */
             gtk_tree_selection_unselect_all (selection);
-            if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL)) {
+            if (on_path && !on_blank) {
                 /* select the path on which the user clicked */
                 gtk_tree_selection_select_path (selection, path);
                 gtk_tree_path_free (path);
