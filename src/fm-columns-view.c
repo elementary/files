@@ -72,6 +72,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     view->details->selection = get_selection (view);
 
     /* setup the current active slot */
+g_message ("%s - setting active slot", G_STRFUNC);
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 }
@@ -382,13 +383,19 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
                 if (!gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL)  && gtk_tree_path_get_depth (path) == 1)
                     gtk_tree_selection_select_path (selection, path);
             }
-
-            gtk_tree_path_free (path);
+            /* queue the menu popup */
+g_message ("%s - setting active slot", G_STRFUNC);
+            fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+            fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
+        } else {
+            /* context menu popup */
+g_message ("%s - setting active slot", G_STRFUNC);
+            fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+            fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event);
         }
-        /* queue the menu popup */
-        fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
-        fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
 
+
+        gtk_tree_path_free (path);
         return TRUE;
     }
     else if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
@@ -413,6 +420,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
 static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
 {
+g_message ("columns view %s-", G_STRFUNC);
     if (g_settings_get_boolean (settings, "single-click")
         && view->details->awaiting_double_click)
             return TRUE;

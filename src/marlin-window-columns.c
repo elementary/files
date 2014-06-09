@@ -185,8 +185,11 @@ marlin_window_columns_activate_slot (MarlinWindowColumns *mwcols, GOFWindowSlot 
 {
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
+    g_message ("%s slot uri %s", G_STRFUNC, slot->directory->file->uri);
     mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
+    /* Scroll to the active slot and inactivate other slots */
+    marlin_window_columns_scroll_to_slot (mwcols, slot);
 }
 
 void marlin_window_columns_scroll_to_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot) {
@@ -268,6 +271,7 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, MarlinWindo
 
         /* make the selected slot active and remove subsequent slots*/
         FMDirectoryView *view = FM_DIRECTORY_VIEW (slot);
+g_message ("%s - setting active slot", G_STRFUNC);
         fm_directory_view_set_active_slot (view);
         gtk_container_foreach (GTK_CONTAINER (mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
     }
