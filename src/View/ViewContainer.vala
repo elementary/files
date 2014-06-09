@@ -35,7 +35,6 @@ namespace Marlin.View {
         public int view_mode = 0;
         public OverlayBar overlay_statusbar;
 
-        //private ulong file_info_callback;
         private GLib.List<GLib.File> select_childs = null;
 
         public signal void path_changed (File? file, GOF.Window.Slot? new_slot = null);
@@ -62,7 +61,7 @@ namespace Marlin.View {
             path_changed (location);
             this.show_all ();
 
-            // Override background color to support transparency on overlay widgets
+            /* Override background color to support transparency on overlay widgets */
             Gdk.RGBA transparent = {0, 0, 0, 0};
             override_background_color (0, transparent);
 
@@ -153,7 +152,6 @@ namespace Marlin.View {
             Object[] data = new Object[3];
             data[0] = window;
             (mwcol != null) ? data[1] = mwcol : data[1] = slot;
-            //data[2] = GOF.File.get(slot.location);
             data[2] = slot.directory.file;
             plugins.directory_loaded ((void*) data);
         }
@@ -336,7 +334,6 @@ namespace Marlin.View {
             dir.cancel ();
             dir.need_reload.disconnect (reload);
             dir.remove_dir_from_cache ();
-            //change_view (view_mode, null);
             path_changed (null);
         }
 
@@ -380,7 +377,7 @@ namespace Marlin.View {
             var list = browser.go_forward_list ();
             var n = 1;
             foreach (var path in list) {
-                int cn = n++; // For explenation look up
+                int cn = n++; // For explanation look up
                 var item = new Gtk.MenuItem.with_label (path);
                 item.activate.connect (() => forward (cn));
                 forward_menu.insert (item, -1);

@@ -17,7 +17,6 @@
 
 [DBus (name = "org.elementary.marlin.db")]
 interface MarlinDaemon : Object {
-    //public abstract async HashTable<string,Variant> get_uri_infos_from_directory (string directory) throws IOError;
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
 
@@ -26,7 +25,6 @@ interface MarlinDaemon : Object {
 
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private MarlinDaemon daemon;
-    //GOF.Directory.Async directory;
     GOF.File directory;
     private bool is_user_dir;
     private bool ignore_dir;
@@ -49,41 +47,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             stderr.printf ("%s\n", e.message);
         }
     }
-
-    /*private void file_info_update (HashTable<string,Variant> rc, GOF.File file)
-      {
-      Variant row = rc.lookup (file.uri);
-      if (row == null)
-      return;
-
-      VariantIter iter = row.iterator ();
-      warning ("iter n_children %d", (int) iter.n_children ());
-      assert (iter.n_children () == 1);
-      VariantIter row_iter = iter.next_value ().iterator ();
-      warning ("row_iter n_children %d", (int) row_iter.n_children ());
-
-      if (row_iter.n_children () == 2) {
-      unowned string type = row_iter.next_value ().get_string ();
-      int n = int.parse (row_iter.next_value ().get_string ());
-      file.tagstype = type;
-    //file.color = Preferences.tags_colors[n];
-    file.update_type ();
-    message ("grrrrrr %s %d", type, n);
-    }
-    }*/
-
-    /*private async void files_infos_updates ()
-      {
-      var rc = yield daemon.get_uri_infos_from_directory (directory.file.uri);
-
-      foreach (var file in directory.unknown_types) {
-      message ("unknown %s %s", file.name, file.ftype);
-      file_info_update (rc, file);
-      }
-      directory.unknown_types = null;
-
-
-      }*/
 
     /* Arbitrary user dir list */
     private const string users_dirs[2] = {
@@ -124,14 +87,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         unknowns.clear ();
         cancellable.reset ();
 
-        //directory = GOF.Directory.Async.from_file(((Object[])user_data)[2] as GOF.File);
         directory = ((Object[]) user_data)[2] as GOF.File;
         debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
-    //private Variant add_entry (string uri, string content_type, int modified_time)
     private Variant add_entry (GOF.File gof) {
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
@@ -187,7 +148,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         } else {
             while ((gof = unknowns.pop_head ()) != null) {
                 try {
-                    //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {

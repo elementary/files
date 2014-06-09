@@ -759,7 +759,6 @@ namespace Marlin.View {
                                  action_go_up },
                                { "Back", Gtk.Stock.GO_BACK, N_("_Back"),
                                  "<alt>Left", N_("Go to the previous visited location"),
-                                 //G_CALLBACK (action_up_callback) },
                                  action_go_back },
                                { "Forward", Gtk.Stock.GO_FORWARD, N_("_Forward"),
                                  "<alt>Right", N_("Go to the next visited location"),

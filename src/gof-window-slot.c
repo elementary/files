@@ -85,16 +85,13 @@ static void
 gof_window_slot_finalize (GObject *object)
 {
     GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
-
-    //load_dir_async_cancel(slot->directory);
     g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
-    //g_warning ("%s %s %u\n", G_STRFUNC, slot->directory->file->uri, G_OBJECT (slot->directory)->ref_count);
+
     g_signal_handlers_disconnect_by_data (slot->directory, slot);
     g_object_unref(slot->directory);
     g_object_unref(slot->location);
     G_OBJECT_CLASS (parent_class)->finalize (object);
-    /* avoid a warning in vala code: slot is freed in ViewContainer */
-    //slot = NULL;
+    /* slot is freed in ViewContainer */
 }
 
 void
@@ -165,7 +162,7 @@ void autosize_slot (GOFWindowSlot *slot)
     if (column_width < min_width)
         column_width = min_width;
     else {
-        //TODO make max_width a setting
+        /* TODO - make max_width a setting? */
         gint max_width = 2 * slot->mwcols->preferred_column_width;
         if (column_width > max_width)
             column_width = max_width;

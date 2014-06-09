@@ -414,7 +414,6 @@ static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
     FMDirectoryView *view;
-    //GdkEventButton button_event = { 0 };
     gboolean handled;
     GtkTreeView *tree_view;
     GtkTreePath *path;
