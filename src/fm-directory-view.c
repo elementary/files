@@ -338,8 +338,8 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 
     MarlinZoomLevel zoom;
     g_object_get (view, "zoom-level", &zoom, NULL);
-    int size = marlin_zoom_level_to_icon_size (zoom);
-    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
+    gof_directory_async_queue_load_thumbnails (view->details->slot->directory,
+                                               marlin_zoom_level_to_icon_size (zoom));
     /* If in Miller view, autosize the column */
     if (view->details->slot->mwcols != NULL)
             autosize_slot (view->details->slot);
@@ -747,7 +747,8 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
         fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen, flags);
     } else {
         /* launch each selectd file individually - ignore selections greater than 10 */
-        if (nb_elem < 10 && view->details->default_app == NULL) {
+        //if (nb_elem < 10 && view->details->default_app == NULL) {
+        //if (nb_elem < 10 ) {
             for (; file_list != NULL; file_list=file_list->next) {
                 file = file_list->data;
                 if (gof_file_is_folder (file)) {
@@ -758,13 +759,13 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
                         marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
                 } else {
-                    gof_file_open_single (file, screen, NULL);
+                    gof_file_open_single (file, screen, view->details->default_app);
                 }
             }
-        } else if (view->details->default_app != NULL) {
-            /* Open all of the files in the default application at once instead of individually */
-            gof_files_launch_with (file_list, screen, view->details->default_app);
-        }
+       // } else if (view->details->default_app != NULL) {
+       //     /* Open all of the files in the default application at once instead of individually */
+       //     gof_files_launch_with (file_list, screen, view->details->default_app);
+       // }
     }
 }
 
@@ -2986,7 +2987,7 @@ g_message ("%s view uri %s", G_STRFUNC, view->details->slot->directory->file->ur
     MarlinZoomLevel zoom;
     g_object_get (view, "zoom-level", &zoom, NULL);
     int size = marlin_zoom_level_to_icon_size (zoom);
-    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
+    //gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     fm_directory_view_merge_menus (view);
 }
 
