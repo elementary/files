@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-01-11 05:40+0000\n"
+"PO-Revision-Date: 2014-06-09 04:56+0000\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-06-04 06:24+0000\n"
+"X-Launchpad-Export-Date: 2014-06-09 06:23+0000\n"
 "X-Generator: Launchpad (build 17031)\n"
 "Language: es\n"
 
@@ -172,7 +172,7 @@ msgstr "Uso del dispositivo:"
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr "%s libre de %s (%d%% usado)"
+msgstr "%s libre de %s (%d %% usado)"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
 msgid "Read"
@@ -291,7 +291,7 @@ msgstr "_Rehacer"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "Open _Parent"
-msgstr "Abrir _Contenedora"
+msgstr "Abrir _contenedora"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open the parent folder"
@@ -652,7 +652,7 @@ msgstr "Renombrar el elemento seleccionado"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3583
 msgid "Create New _Folder"
-msgstr "Crear una _carpeta Nueva"
+msgstr "Crear una _carpeta nueva"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3584
 msgid "Create a new empty folder inside this folder"
@@ -1074,7 +1074,7 @@ msgstr "Mostrar la versión del programa."
 
 #: /home/codygarver/f/po/../src/Application.vala:131
 msgid "Open uri(s) in new tab"
-msgstr "Abrir URI(s) en una pestaña nueva"
+msgstr "Abrir URI en una pestaña nueva"
 
 #: /home/codygarver/f/po/../src/Application.vala:133
 msgid "Quit Files."
@@ -1469,7 +1469,7 @@ msgstr "_Rehacer la creación de un archivo vacío"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr "_Rehacer ka creación de un archivos desde una plantilla"
+msgstr "_Rehacer la creación de un archivo desde una plantilla"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
