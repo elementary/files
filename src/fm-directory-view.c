@@ -215,6 +215,8 @@ void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *ac
 
 static void 	remove_marlin_icon_info_cache (GOFFile *file);
 
+static void     zoom_level_changed (FMDirectoryView *view, GParamSpec *pspec);
+
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
 
@@ -336,10 +338,9 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     else
         dir_action_set_sensitive (view, "Select All", TRUE);
 
-    MarlinZoomLevel zoom;
-    g_object_get (view, "zoom-level", &zoom, NULL);
-    gof_directory_async_queue_load_thumbnails (view->details->slot->directory,
-                                               marlin_zoom_level_to_icon_size (zoom));
+    /* ensure thumbnails updated */
+    zoom_level_changed (view, NULL);
+
     /* If in Miller view, autosize the column */
     if (view->details->slot->mwcols != NULL)
             autosize_slot (view->details->slot);
@@ -350,6 +351,7 @@ directory_thumbs_loaded_callback (GOFDirectoryAsync *directory, FMDirectoryView 
 {
     if (view && GTK_IS_WIDGET (view) && gtk_widget_get_realized (GTK_WIDGET (view)));
         gtk_widget_queue_draw (GTK_WIDGET (view));
+
     marlin_icon_info_infos_caches ();
 }
 
@@ -3325,6 +3327,8 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
         return;
 
     gof_window_slot_active (view->details->slot);
+    /* ensure thumbnails updated */
+    zoom_level_changed (view, NULL);
     /* make sure to grab focus as right click menus don't automaticly get it */
     fm_directory_view_grab_focus (GTK_WIDGET (view));
 }

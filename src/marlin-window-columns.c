@@ -172,12 +172,11 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 
     /* Add it in our GList */
     mwcols->slot_list = g_list_append (mwcols->slot_list, slot);
+    /* Set mwcols->active_slot now in case another slot is created before
+     * this one really becomes active, e.g. during restoring tabs on startup */
     marlin_window_columns_activate_slot (slot->mwcols, slot);
     mwcols->total_width += slot->width + 100;
     gtk_widget_set_size_request (mwcols->colpane, mwcols->total_width, -1);
-
-    /* Set mwcols->active_slot now in case another slot is created before
-     * this one really becomes active, e.g. during restoring tabs on startup */
 }
 
 void
