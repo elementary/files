@@ -281,8 +281,6 @@ void
 gof_window_slot_active (GOFWindowSlot *slot)
 {
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
-    g_message ("%s slot uri %s", G_STRFUNC, slot->directory->file->uri);
-    //g_message ("%s view uri %s", G_STRFUNC, view->details->slot->directory->file->uri);
     if (slot->mwcols != NULL)
         marlin_window_columns_activate_slot (slot->mwcols, slot);
 }

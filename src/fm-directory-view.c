@@ -1664,7 +1664,6 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), FALSE);
     g_return_val_if_fail (view->details->drag_timer_id >= 0, FALSE);
 
-g_message ("directory view %s-", G_STRFUNC);
     /* cancel the pending drag timer */
     g_source_remove (view->details->drag_timer_id);
 
@@ -2456,8 +2455,6 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (event != NULL);
 
-g_message ("%s- view uri is", G_STRFUNC, view->details->slot->directory->file->uri);
-
     /* figure out the real view */
     view_box = gtk_bin_get_child (GTK_BIN (view));
     g_return_if_fail (view_box != NULL);
@@ -2498,8 +2495,6 @@ fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
     GtkUIManager    *ui_manager;
 
     g_return_if_fail (view != NULL && FM_IS_DIRECTORY_VIEW (view));
-
-g_message ("%s- view uri is %s", G_STRFUNC, view->details->slot->directory->file->uri);
     ui_manager = fm_directory_view_get_ui_manager (view);
 
     selection = fm_directory_view_get_selection (view);
@@ -2982,19 +2977,16 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    //g_debug ("%s %s", G_STRFUNC, slot->directory->file->uri);
-g_message ("%s view uri %s", G_STRFUNC, view->details->slot->directory->file->uri);
+    g_debug ("%s %s", G_STRFUNC, slot->directory->file->uri);
     MarlinZoomLevel zoom;
     g_object_get (view, "zoom-level", &zoom, NULL);
     int size = marlin_zoom_level_to_icon_size (zoom);
-    //gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     fm_directory_view_merge_menus (view);
 }
 
 static void
 slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-//g_message ("%s view uri %s", G_STRFUNC, view->details->slot->directory->file->uri);
     fm_directory_view_unmerge_menus (view);
 }
 
@@ -3104,7 +3096,6 @@ delete_selected_files (FMDirectoryView *view)
 static void
 action_select_all (GtkAction *action, FMDirectoryView *view)
 {
-g_message ("%s- view uri is %s", G_STRFUNC, view->details->slot->directory->file->uri);
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_all)(view);
 }
 
@@ -3323,7 +3314,6 @@ static void
 update_menus (FMDirectoryView *view)
 {
     g_debug ("%s", G_STRFUNC);
-g_message ("%s", G_STRFUNC);
     GList *selection = fm_directory_view_get_selection (view);
     GtkUIManager *ui_manager = fm_directory_view_get_ui_manager (view);
 
@@ -3373,7 +3363,6 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 
     g_debug ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
-g_message ("%s - Calling update_menus", G_STRFUNC);
     update_menus (view);
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
 }
@@ -3393,7 +3382,6 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_set_active_slot (FMDirectoryView *view)
 {
-g_message ("%s - view uri is %s\n", G_STRFUNC, view->details->slot->directory->file->uri);
     g_debug ("%s %s %s", G_STRFUNC,
                view->details->slot->mwcols->active_slot->directory->file->uri,
                view->details->slot->directory->file->uri
@@ -3403,7 +3391,6 @@ g_message ("%s - view uri is %s\n", G_STRFUNC, view->details->slot->directory->f
     if (view->details->slot->mwcols->active_slot == view->details->slot)
         return;
 
-    //g_warning ("%s", G_STRFUNC);
     gof_window_slot_active (view->details->slot);
     /* make sure to grab focus as right click menus don't automaticly get it */
     fm_directory_view_grab_focus (GTK_WIDGET (view));
@@ -3493,7 +3480,6 @@ fm_directory_view_unfreeze_updates (FMDirectoryView *view)
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     view->updates_frozen = FALSE;
-g_message ("%s - Calling update_menus", G_STRFUNC);
     update_menus (view);
 
     /* unblock thumbnails request on size allocate */
@@ -3581,7 +3567,6 @@ real_action_rename (FMDirectoryView *view, gboolean select_all)
 
     selection = fm_directory_view_get_selection (view);
 
-    //printf ("%s\n", G_STRFUNC);
     if (selection != NULL) {
         /* If there is more than one file selected, invoke a batch renamer */
         if (selection->next != NULL) {
@@ -3737,7 +3722,6 @@ action_new_folder_callback (GtkAction *action, gpointer data)
 
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
 
-    g_message ("%s view uri %s", G_STRFUNC, view->details->slot->directory->file->uri);
     /* TODO usefull for desktop?
        pos = context_menu_to_file_operation_position (directory_view);*/
 
@@ -3927,7 +3911,6 @@ fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
     if (view->details->dir_action_group == NULL)
         return;
 
-g_message ("%s - view uri is %s\n", G_STRFUNC, view->details->slot->directory->file->uri);
 
     ui_manager = fm_directory_view_get_ui_manager (view);
     eel_ui_unmerge_ui (ui_manager,
@@ -3962,13 +3945,11 @@ static void
 fm_directory_view_real_merge_menus (FMDirectoryView *view)
 {
     if (view->details->dir_action_group != NULL) {
-g_message ("%s - action group is not null", G_STRFUNC);
         return;
 
     }
 
     g_debug("%s\n", G_STRFUNC);
-    g_message ("%s - view uri is %s\n", G_STRFUNC, view->details->slot->directory->file->uri);
     GtkActionGroup *action_group;
     GtkUIManager *ui_manager;
     const char *ui;
@@ -4044,7 +4025,6 @@ g_message ("%s - action group is not null", G_STRFUNC);
     marlin_plugin_manager_ui(plugins, ui_manager);
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
-g_message ("%s - Calling update_menus", G_STRFUNC);
     update_menus (view);
 }
 
