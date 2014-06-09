@@ -313,56 +313,72 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     if (view->details->mwcols->updates_frozen && !view->details->awaiting_double_click)
         return TRUE;
 
+g_message ("columns view %s-", G_STRFUNC);
+
     gboolean on_path = gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL);
     gboolean on_blank = gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL);
     gboolean no_mods = (event->state & gtk_accelerator_get_default_mod_mask ()) == 0;
+    gboolean finished = FALSE;
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
     if (no_mods && !on_path)
     {
+g_message ("columns view %s- un select all", G_STRFUNC);
         gtk_tree_selection_unselect_all (selection);
     }
 
     if (event->button == 1 && g_settings_get_boolean (settings, "single-click")) {
         /* Handle single left-click (and start of double click) in single click mode */
+g_message ("left, single click mode");
         if (event->type == GDK_BUTTON_PRESS && no_mods) {
+g_message ("button press no mods");
             /* Ignore second GDK_BUTTON_PRESS event of double-click */
-            if (view->details->awaiting_double_click)
-                return TRUE;
+            if (view->details->awaiting_double_click) {
+                //return TRUE;
+                finished = TRUE;
 
-            /*Determine where user clicked - this will be the sole selection */
-            gtk_tree_selection_unselect_all (selection);
-            if (on_path && !on_blank) {
-                /* select the path on which the user clicked */
-                gtk_tree_selection_select_path (selection, path);
-                gtk_tree_path_free (path);
-            } else
-                return FALSE;
+            } else {
+                /*Determine where user clicked - this will be the sole selection */
+                //gtk_tree_selection_unselect_all (selection);
+                if (on_path && !on_blank) {
+                    gtk_tree_selection_unselect_all (selection);
+    g_message ("on path and not on blank");
+                    /* select the path on which the user clicked */
+                    gtk_tree_selection_select_path (selection, path);
+                    gtk_tree_path_free (path);
+                //} else
+                  //  return FALSE;
 
-            /* If single folder selected ... */
-            GList *file_list = NULL;
-            file_list = fm_directory_view_get_selection (view);
-            GOFFile *file = GOF_FILE (file_list->data);
-            view->details->selected_folder = NULL;
-            if (gof_file_is_folder (file)) {
-                /*  ... store clicked folder and start double-click timeout */
-                view->details->selected_folder = file;
-                view->details->awaiting_double_click = TRUE;
-                view->details->mwcols->updates_frozen = TRUE;
-                /* use short timeout to maintain responsiveness */
-                view->details->double_click_timeout_id = g_timeout_add (100,
-                                                                        (GSourceFunc)fm_columns_not_double_click,
-                                                                        view);
+        g_message ("checking if folder");
+                    /* If single folder selected ... */
+                    GList *file_list = NULL;
+                    file_list = fm_directory_view_get_selection (view);
+                    GOFFile *file = GOF_FILE (file_list->data);
+                    view->details->selected_folder = NULL;
+                    if (gof_file_is_folder (file)) {
+                        /*  ... store clicked folder and start double-click timeout */
+                        view->details->selected_folder = file;
+                        view->details->awaiting_double_click = TRUE;
+                        view->details->mwcols->updates_frozen = TRUE;
+                        /* use short timeout to maintain responsiveness */
+                        view->details->double_click_timeout_id = g_timeout_add (100,
+                                                                                (GSourceFunc)fm_columns_not_double_click,
+                                                                                view);
+                    }
+        g_message ("return false");
+                    //return FALSE;
+                    finished = FALSE;
+                }
             }
-            return FALSE;
-
         } else if (event->type == GDK_2BUTTON_PRESS) {
+g_message ("double click");
             /* In single click mode, double-clicking a folder will open it as root in a new view */
             fm_columns_cancel_await_double_click (view);
             if (view->details->selected_folder != NULL) {
                 fm_directory_view_load_root_location (view, view->details->selected_folder->location);
                 return TRUE;
+                finished = TRUE;
             }
         }
     }
@@ -373,6 +389,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
+g_message ("right click");
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select the path on which the user clicked if not selected yet */
@@ -396,11 +413,13 @@ g_message ("%s - setting active slot", G_STRFUNC);
         }
 
 
-        gtk_tree_path_free (path);
-        return TRUE;
+        //gtk_tree_path_free (path);
+        //return TRUE;
+        finished = TRUE;
     }
     else if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
     {
+g_message ("middle click");
         /* determine the path to the item that was middle-clicked */
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
@@ -411,12 +430,15 @@ g_message ("%s - setting active slot", G_STRFUNC);
             fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
 
             /* cleanup */
-            gtk_tree_path_free (path);
+            //gtk_tree_path_free (path);
 
             return TRUE;
+            finished = TRUE;
         }
     }
-    return FALSE;
+g_message ("columns view %s- return in false", G_STRFUNC);
+    //return FALSE;
+    return finished;
 }
 
 static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
