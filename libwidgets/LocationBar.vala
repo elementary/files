@@ -146,19 +146,23 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     public override bool key_press_event (Gdk.EventKey event) {
         switch (event.keyval) {
-            case 0xff09: /* tab */
+            
+            case Gdk.Key.KP_Tab:
+            case Gdk.Key.Tab:
                 complete ();
                 return true;
 
-            case 0xff54: /* down */
+            case Gdk.Key.KP_Down:
+            case Gdk.Key.Down:
                 down ();
                 return true;
 
-            case 0xff52: /* up */
+            case Gdk.Key.KP_Up:
+            case Gdk.Key.Up:
                 up ();
                 return true;
                 
-            case 0xff1b: /* escape */
+            case Gdk.Key.Escape:
                 escape ();
                 return true;
         }
@@ -494,6 +498,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public File get_file_for_path (string path) {
         string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
         string newpath = GLib.Uri.unescape_string (path);
+
+        if (newpath == "")
+            newpath = "/";
 
         if (!newpath.contains("://"))
             newpath = Marlin.ROOT_FS_URI + newpath;
