@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2014-05-19 06:15+0000\n"
-"X-Generator: Launchpad (build 17007)\n"
+"X-Launchpad-Export-Date: 2014-06-04 06:24+0000\n"
+"X-Generator: Launchpad (build 17031)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304

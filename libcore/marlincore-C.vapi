@@ -29,7 +29,7 @@ namespace Marlin.FileOperations {
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
 namespace EelGtk.Window {
     public string get_geometry_string (Gtk.Window win);
-    public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position);
+    public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position, int left_offset, int top_offset);
 }
 
 [CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
