@@ -126,10 +126,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         elements = new Gee.ArrayList<BreadcrumbsElement> ();
         
+        secondary_icon_activatable = true;
+        secondary_icon_sensitive = true;
         truncate_multiline = true;
         activate.connect (on_activate);
+        icon_press.connect (on_activate);
         motion_notify_event.connect (on_motion_notify);
-        leave_notify_event.connect (on_leave_notify);
         focus_in_event.connect (on_focus_in);
         focus_out_event.connect (on_focus_out);
         grab_focus.connect_after (on_grab_focus);
@@ -146,7 +148,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     public override bool key_press_event (Gdk.EventKey event) {
         switch (event.keyval) {
-            
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
                 complete ();
@@ -171,14 +172,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
-        if (is_focus) {          
-            if (arrow_hovered && event.button == 1) {
-                activate ();
-                return true;
-            }
-        
+        if (is_focus)    
             return base.button_press_event (event);
-        }
         
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
@@ -231,12 +226,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 selected = elements.index_of (el);
                 var newpath = get_path_from_element (el);
                 path_changed (get_file_for_path (newpath));
-            } else {
+            } else
                 grab_focus ();
-            }
         }
         
-        return true;
+        return base.button_release_event (event);
     }
     
     void on_change () {
@@ -245,7 +239,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return;
         }
         
-        text_changed = true;
+        set_entry_icon (true, (text.length > 0) ? "Navigate to: " + text : "");
         text_completion = "";
         need_completion ();
     }
@@ -257,17 +251,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         double x_previous = -10;
         set_tooltip_text ("");
         
-        if (is_focus) {
-            if (event.x < width && event.x > width - arrow_img.get_width () - 10) {
-                set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
-                set_arrow_hovered (true);
-            } else {
-                set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.XTERM));
-                set_arrow_hovered (false);
-            }
-                
-            return false;
-        }
+        if (is_focus)
+            return base.motion_notify_event (event);
 
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
@@ -285,41 +270,35 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (event.x > 0 && event.x < x_render + 5)
             set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
         else
-            set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.XTERM));
+            set_entry_cursor (null);
             
-        return true;
-    }
-
-    bool on_leave_notify (Gdk.EventCrossing event) {
-        set_entry_cursor (null);
-        set_arrow_hovered (false);             
-        return false;
+        return base.motion_notify_event (event);
     }
 
     bool on_focus_out (Gdk.EventFocus event) {
         if (is_focus) {
             ignore_focus_in = true;
-            return false;
+            return base.focus_out_event (event);
         }
     
-        text_changed = false;
         ignore_focus_in = false;
+        set_entry_icon (false);
         set_entry_text ("");
-        set_arrow_hovered (false);
-        return false;
+        
+        return base.focus_out_event (event);
     }
 
     bool on_focus_in (Gdk.EventFocus event) {
         if (ignore_focus_in)
-            return false;
-        
+            return base.focus_in_event (event);
+
         set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
                 .replace ("file:////", "/")
                 .replace ("file:///", "/")
                 .replace ("trash:///", "")
                 .replace ("network:///", "")));
                 
-        return false;
+        return base.focus_in_event (event);
     }
     
     void on_grab_focus () {
@@ -403,9 +382,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (!multiple_completions) {
             set_entry_text (path + "/");
             completed ();
-        } else {
+        } else
             set_entry_text (path);
-        }
     }
     
     public void reset_elements_states () {
@@ -423,17 +401,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public void set_entry_cursor (Gdk.Cursor? cursor) {
-        foreach (var child in get_window ().get_children ())
-            child.set_cursor (cursor);
+        /* Only child 13 needs to be modified for the cursor - there may be a better way to do this */
+        get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
     
-    public void set_arrow_hovered (bool is_hovered) {
-        if (is_hovered == arrow_hovered)
-            return;
-            
-        arrow_hovered = is_hovered;
-        queue_draw ();
-    }    
+    public void set_entry_icon (bool active, string? tooltip = null) {
+        if (!active)
+            secondary_icon_pixbuf = null;
+        else {
+            secondary_icon_pixbuf = arrow_img;
+            secondary_icon_tooltip_text = tooltip;
+        }
+    }
     
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
         double total_width = 0.0;
@@ -497,17 +476,19 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      **/
     public File get_file_for_path (string path) {
         string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
-        string newpath = GLib.Uri.unescape_string (path);
+        string newpath = GLib.Uri.unescape_string (path ?? "");
 
+        /* Format our path so its valid */
         if (newpath == "")
             newpath = "/";
+            
+        if (newpath[0] == '~')
+            newpath = newpath.replace("~", Environment.get_home_dir ());
 
         if (!newpath.contains("://"))
             newpath = Marlin.ROOT_FS_URI + newpath;
         
-        /* Replace special environment variables here and escape the string */
         newpath = newpath.replace("ssh:", "sftp:");
-        newpath = newpath.replace("~", Environment.get_home_dir ());
         newpath = GLib.Uri.escape_string (newpath, reserved_chars, true);
         
         File file = File.new_for_commandline_arg (newpath);
@@ -561,7 +542,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
 
         return strloc;
-
     }
 
     /**
@@ -840,21 +820,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 layout.set_text (text_completion, -1);
                 Pango.cairo_show_layout (cr, layout);
             }
-            
-            if (text_changed) {
-                Gdk.cairo_set_source_pixbuf (cr, arrow_img,
-                                             width - arrow_img.get_width() - 5,
-                                             height / 2 - arrow_img.get_height() / 2);
-
-                if (arrow_hovered)
-                    cr.paint ();
-                else
-                    cr.paint_with_alpha (0.8);
-            }
         }
         
         return true;
-    }    
+    }
 
     protected abstract void load_right_click_menu (double x, double y);
 }
