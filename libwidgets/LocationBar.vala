@@ -245,7 +245,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     bool on_motion_notify (Gdk.EventMotion event) {
-        int width = get_allocated_width ();
         int x = (int) event.x;
         double x_render = 0;
         double x_previous = -10;
