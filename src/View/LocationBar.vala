@@ -27,11 +27,11 @@ namespace Marlin.View.Chrome
         private string _path;
         public new string path {
             set {
-                var new_path = value;
+                var new_path = GLib.Uri.unescape_string (value);
                 _path = new_path;
                 if (!bread.is_focus && !win.freeze_view_changes) {
                     bread.text = "";
-                    bread.change_breadcrumbs (GLib.Uri.unescape_string (new_path));
+                    bread.change_breadcrumbs (new_path);
                 }
             }
             get {
@@ -75,13 +75,7 @@ namespace Marlin.View.Chrome
             else
                 win.current_tab.slot.view_box.grab_focus ();
 
-            path = file.get_uri ();
             activate(file);
-
-            /* This prevents that the location bar is left in a weird state
-             * when going from a non-existent folder to another one underneath. */
-            bread.text = "";
-            bread.change_breadcrumbs (file.get_uri ());
         }
     }
 

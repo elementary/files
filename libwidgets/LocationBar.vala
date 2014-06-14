@@ -599,15 +599,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         int max_path = int.min (elements.size, newelements.size);
 
-        bool same = true;
-
-        for (int i = 0; i < max_path; i++) {
-            if (newelements[i].text != elements[i].text) {
-                same = false;
-                break;
-            }
-        }
-
         foreach (IconDirectory icon in icons) {
             if (icon.protocol && icon.path == protocol) {
                 newelements[0].set_icon(icon.icon);
