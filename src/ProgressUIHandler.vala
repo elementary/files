@@ -136,6 +136,7 @@ public class Marlin.Progress.UIHandler : Object {
 
         this.progress_window = new Gtk.Window (Gtk.WindowType.TOPLEVEL);
 
+        (this.progress_window as Gtk.Window).type_hint = Gdk.WindowTypeHint.DIALOG;
         (this.progress_window as Gtk.Window).resizable = false;
         (this.progress_window as Gtk.Container).set_border_width (10);
         (this.progress_window as Gtk.Window).title = _("File Operations");
