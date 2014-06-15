@@ -82,11 +82,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent) {
-        title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
         transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ALWAYS;
+        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         type_hint = Gdk.WindowTypeHint.DIALOG;      
         border_width = 5;
         destroy_with_parent = true;
