@@ -90,7 +90,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_hint = Gdk.WindowTypeHint.DIALOG;      
         border_width = 5;
         destroy_with_parent = true;
-        set_titlebar (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0));
+        
+        Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        header.height_request = 15;
+        set_titlebar (header);
 
         // Set the default containers
         var content_area = get_content_area ();
@@ -101,7 +104,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_area.pack_start (content_vbox);
 
         // Adjust sizes
-        content_vbox.margin_top = 10;
         content_vbox.margin_right = 5;
         content_vbox.margin_left = 5;
 
