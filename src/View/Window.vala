@@ -243,6 +243,12 @@ namespace Marlin.View {
             /*/
             /* Connect and abstract signals to local ones
             /*/
+            key_press_event.connect ((event) => {
+                if (top_menu.location_bar.bread.is_focus)
+                    return top_menu.location_bar.bread.key_press_event (event);
+                
+                return false;
+            });
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {

@@ -41,6 +41,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         }
     }
     Gdk.Pixbuf icon;
+    public bool hidden = false;
     public bool display = true;
     public bool display_text = true;
     public string? text_displayed = null;
