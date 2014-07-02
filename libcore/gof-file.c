@@ -1123,12 +1123,21 @@ gof_file_compare_for_sort (GOFFile *file1,
             break;
         case FM_LIST_MODEL_SIZE:
             result = compare_by_size (file1, file2);
+			if(result == 0) {
+				result = compare_by_display_name (file1, file2);
+			}
             break;
         case FM_LIST_MODEL_TYPE:
             result = compare_by_type (file1, file2);
+			if(result == 0) {
+				result = compare_by_display_name (file1, file2);
+			}
             break;
         case FM_LIST_MODEL_MODIFIED:
             result = compare_by_time (file1, file2);
+			if(result == 0) {
+				result = compare_by_display_name (file1, file2);
+			}
             break;
         }
 
