@@ -362,7 +362,7 @@ namespace Marlin.View {
                               // You see if I would just use back(n) the reference to n would be passed
                               // in the clusure, restulting in a value of n which would always be n=1. So
                               // by introducting a new variable I can bypass this anoyance.
-                var item = new Gtk.MenuItem.with_label (path);
+                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
                 item.activate.connect (() => { back(cn); });
                 back_menu.insert (item, -1);
             }
@@ -378,7 +378,7 @@ namespace Marlin.View {
             var n = 1;
             foreach (var path in list) {
                 int cn = n++; // For explanation look up
-                var item = new Gtk.MenuItem.with_label (path);
+                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
                 item.activate.connect (() => forward (cn));
                 forward_menu.insert (item, -1);
             }

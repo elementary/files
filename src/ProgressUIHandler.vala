@@ -23,7 +23,7 @@ public class Marlin.Progress.UIHandler : Object {
 
     private Marlin.Progress.InfoManager manager = null;
 
-    private Gtk.Widget progress_window = null;
+    private Gtk.Dialog progress_window = null;
     private Gtk.Widget window_vbox = null;
     private uint active_infos = 0;
 
@@ -134,18 +134,18 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.progress_window != null)
             return;
 
-        this.progress_window = new Gtk.Window (Gtk.WindowType.TOPLEVEL);
-
-        (this.progress_window as Gtk.Window).resizable = false;
-        (this.progress_window as Gtk.Container).set_border_width (10);
-        (this.progress_window as Gtk.Window).title = _("File Operations");
-        (this.progress_window as Gtk.Window).set_wmclass ("file_progress", "Marlin");
-        (this.progress_window as Gtk.Window).set_position (Gtk.WindowPosition.CENTER);
-        (this.progress_window as Gtk.Window).icon_name = "system-file-manager";
+        this.progress_window = new Gtk.Dialog ();
+        this.progress_window.type_hint = Gdk.WindowTypeHint.DIALOG;
+        this.progress_window.resizable = false;
+        this.progress_window.title = _("File Operations");
+        this.progress_window.set_wmclass ("file_progress", "Marlin");
+        this.progress_window.set_position (Gtk.WindowPosition.CENTER);
+        this.progress_window.icon_name = "system-file-manager";
 
         this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 
-        (this.progress_window as Gtk.Container).add (this.window_vbox);
+        this.progress_window.get_content_area ().set_border_width (10);
+        this.progress_window.get_content_area ().add (this.window_vbox);
         this.window_vbox.show ();
 
         this.progress_window.delete_event.connect ((widget, event) => {

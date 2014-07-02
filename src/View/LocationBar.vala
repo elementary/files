@@ -27,10 +27,10 @@ namespace Marlin.View.Chrome
         private string _path;
         public new string path {
             set {
-                var new_path = value;
+                var new_path = GLib.Uri.unescape_string (value);
                 _path = new_path;
-                if (!bread.focus && !win.freeze_view_changes) {
-                    bread.entry.reset ();
+                if (!bread.is_focus && !win.freeze_view_changes) {
+                    bread.text = "";
                     bread.change_breadcrumbs (new_path);
                 }
             }
@@ -41,8 +41,8 @@ namespace Marlin.View.Chrome
 
         Marlin.View.Window win;
 
-        public new signal void activate ();
-        public signal void activate_alternate (string path);
+        public new signal void activate (GLib.File file);
+        public signal void activate_alternate (GLib.File file);
         public signal void escape ();
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
@@ -55,8 +55,8 @@ namespace Marlin.View.Chrome
             bread = new Breadcrumbs (ui, win);
             bread.escape.connect (() => { escape(); });
 
-            bread.changed.connect (on_bread_changed);
-            bread.activate_alternate.connect ((a) => { activate_alternate(a); });
+            bread.path_changed.connect (on_path_changed);
+            bread.activate_alternate.connect ((file) => { activate_alternate(file); });
 
             margin_top = 4;
             margin_bottom = 4;
@@ -65,7 +65,7 @@ namespace Marlin.View.Chrome
             pack_start (bread, true, true, 0);
         }
 
-        private void on_bread_changed (string changed) {
+        private void on_path_changed (File file) {
             if (win.freeze_view_changes)
                 return;
 
@@ -75,14 +75,7 @@ namespace Marlin.View.Chrome
             else
                 win.current_tab.slot.view_box.grab_focus ();
 
-            //_path = changed;
-            path = changed;
-            activate();
-
-            /* This prevents that the location bar is left in a weird state
-             * when going from a non-existent folder to another one underneath. */
-            bread.entry.reset ();
-            bread.change_breadcrumbs (changed);
+            activate(file);
         }
     }
 
@@ -98,7 +91,7 @@ namespace Marlin.View.Chrome
 
         /* Used for the context menu we show when there is a right click */
         GOF.Directory.Async files_menu = null;
-
+        
         bool autocompleted = false;
 
         Marlin.View.Window win;
@@ -190,35 +183,45 @@ namespace Marlin.View.Chrome
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon (icon);
+            
+            up.connect (() => {
+                File file = get_file_for_path (text);
+                File parent = file.get_parent ();
+                
+                if (parent != null && file.get_uri () != parent.get_uri ())
+                    change_breadcrumbs (parent.get_uri ());
+                    
+                win.current_tab.up ();
+                grab_focus ();
+            });
 
-            entry.down.connect (() => {
-                /* focus back the view */
+            down.connect (() => {
+                // focus back the view 
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else
                     win.current_tab.slot.view_box.grab_focus ();
             });
 
-            entry.completed.connect (() => {
-                string path = get_elements_path ();
-                update_breadcrumbs (entry.text, path);
+            completed.connect (() => {
+                string path = "";
+                string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
+                
+                foreach (BreadcrumbsElement element in elements) {
+                    if (!element.hidden)
+                        path += element.text + "/";
+                }
+            
+                if (path != newpath)
+                    change_breadcrumbs (newpath);
+                
                 grab_focus ();
             });
+            
+            need_completion.connect (on_need_completion);
 
             menu = new Gtk.Menu ();
             menu.show_all ();
-
-            need_completion.connect (on_need_completion);
-        }
-
-        protected void merge_in_clipboard_actions () {
-            ui.insert_action_group (clipboard_actions, 0);
-            ui.ensure_update ();
-        }
-
-        protected void merge_out_clipboard_actions () {
-            ui.remove_action_group (clipboard_actions);
-            ui.ensure_update ();
         }
 
         /**
@@ -230,56 +233,59 @@ namespace Marlin.View.Chrome
          *
          **/
         private void on_file_loaded(GOF.File file) {
-            if(file.is_folder () && file.get_display_name ().length > to_search.length) {
-                if (file.get_display_name ().ascii_ncasecmp (to_search, to_search.length) == 0) {
+            string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
+            if(file.is_folder () && file_display_name.length > to_search.length) {
+                if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
-                        entry.completion = file.get_display_name ().slice (to_search.length, file.get_display_name ().length);
+                        text_completion = file_display_name.slice (to_search.length, file_display_name.length);
                         autocompleted = true;
                     } else {
-                        string file_complet = file.get_display_name ().slice (to_search.length, file.get_display_name ().length);
+                        string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
                         string to_add = "";
-                        for (int i = 0; i < (entry.completion.length > file_complet.length ? file_complet.length : entry.completion.length); i++) {
-                            if (entry.completion[i] == file_complet[i])
-                                to_add += entry.completion[i].to_string ();
+                        for (int i = 0; i < (text_completion.length > file_complet.length ? file_complet.length : text_completion.length); i++) {
+                            if (text_completion[i] == file_complet[i])
+                                to_add += text_completion[i].to_string ();
                             else
                                 break;
                         }
-                        entry.completion = to_add;
+                        text_completion = to_add;
+                        multiple_completions = true;
                     }
+                    
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
-                    string str = entry.text.slice (0, entry.text.length - to_search.length);
-                    if (str == null)
-                        str = "";
-                    entry.text = str + file.get_display_name ().slice (0, to_search.length);
+                    string str = text.slice (0, text.length - to_search.length);
+                    if (str != null && !multiple_completions) {
+                        text = str + file.get_display_name ().slice (0, to_search.length);
+                        set_position (-1);
+                    }
                 }
             }
         }
 
         public void on_need_completion () {
-            to_search = "";
-            string path = get_elements_path ();
-            string[] stext = entry.text.split ("/");
-            int stext_len = stext.length;
-            if (stext_len > 0)
-                to_search = stext[stext.length -1];
+            File file = get_file_for_path (text);
+            to_search = file.get_basename ();
 
-            entry.completion = "";
             autocompleted = false;
+            multiple_completions = false;
+            
+            if (to_search != "" && file.has_parent (null))
+                file = file.get_parent ();
+            else
+                return;
 
-            path += entry.text;
-            message ("path %s to_search %s", path, to_search);
-            if (to_search != "")
-                path = Marlin.Utils.get_parent (path);
-
-            if (path != null && path.length > 0) {
-                var directory = File.new_for_uri (path);
-                files = GOF.Directory.Async.from_gfile (directory);
-                if (files.file.exists) {
+            var directory = file;
+            var files_cache = files;
+            
+            files = GOF.Directory.Async.from_gfile (directory);
+            if (files.file.exists) {
+                /* Verify that we got a new instance of files so we do not double up events */
+                if (files_cache != files)
                     files.file_loaded.connect (on_file_loaded);
-                    files.load ();
-                }
+                
+                files.load ();
             }
         }
 
@@ -363,7 +369,7 @@ namespace Marlin.View.Chrome
             file.launch (win.get_screen (), app);
         }
 
-        protected override void on_file_droped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
+        protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
             Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
         }
 
@@ -374,18 +380,6 @@ namespace Marlin.View.Chrome
                 win.current_tab.path_changed (location);
             }
             return strloc;
-        }
-
-        public override bool focus_out_event (Gdk.EventFocus event) {
-            base.focus_out_event (event);
-            merge_out_clipboard_actions ();
-            return true;
-        }
-
-        public override bool focus_in_event (Gdk.EventFocus event) {
-            base.focus_in_event (event);
-            merge_in_clipboard_actions ();
-            return true;
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
