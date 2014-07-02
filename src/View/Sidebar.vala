@@ -1059,9 +1059,11 @@ namespace Marlin.Places {
                 } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
                     window.add_tab (location);
                 } else {
-                    GOF.Window.Slot? slot = window.get_active_slot ();
-                    if (slot != null)
-                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location);
+                    //GOF.Window.Slot? slot = window.get_active_slot ();
+                    //if (slot != null)
+                    if (window.current_tab != null) // && window.current_tab.get_active_slot () != null)
+                        //GLib.Signal.emit_by_name (slot.ctab, "path-changed", location);
+                        GLib.Signal.emit_by_name (window.current_tab, "path-changed", location);
                 }
             } else {
                 Drive drive;

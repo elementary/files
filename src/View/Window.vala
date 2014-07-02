@@ -501,6 +501,7 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
+message ("Window: Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window)
                 return 0;
@@ -555,16 +556,17 @@ namespace Marlin.View {
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
+message ("Window: expand miller view");
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             var mwcols = view.mwcol;
             var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
-            var slot = mwcols.active_slot;
+            //var slot = mwcols.active_slot;
 
             GLib.File gfile;
-            FM.Directory.View dview;
+            //FM.Directory.View dview;
 
             if (relative_path != null) {
                 string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
@@ -573,10 +575,11 @@ namespace Marlin.View {
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = GLib.File.new_for_uri (uri);
-                    dview = slot.view_box as FM.Directory.View;
+                    //dview = slot.view_box as FM.Directory.View;
 
-                    dview.column_add_location (gfile);
-                    slot = mwcols.get_last_slot ();
+                    //dview.column_add_location (gfile);
+                    //slot = mwcols.get_last_slot ();
+                    mwcols.add_location (gfile);
                 }
             } else {
                 warning ("Invalid tip uri for Miller View");

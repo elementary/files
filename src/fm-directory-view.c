@@ -315,16 +315,18 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
             g_object_unref (dir);
         }
 
-        if (view->details->slot->mwcols) {
-            /* if in miller view mode, remove any views of subdirectories of deleted directory */
-            gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
-        }
+        /* Connect mwcols to signal directly */
+        //if (view->details->slot->mwcols) {
+            ///* if in miller view mode, remove any views of subdirectories of deleted directory */
+            //gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
+        //}
     }
 }
 
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
+g_message ("%s - ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -340,14 +342,14 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     g_object_get (view, "zoom-level", &zoom, NULL);
     gof_directory_async_queue_load_thumbnails (view->details->slot->directory,
                                                marlin_zoom_level_to_icon_size (zoom));
-    /* If in Miller view, autosize the column */
-    if (view->details->slot->mwcols) {
-        if (view->details->slot->ready_to_autosize)
-            autosize_slot (view->details->slot);
-        else
-            view->details->slot->ready_to_autosize = TRUE;
-    } else
-        view->details->slot->ready_to_autosize = FALSE;
+    ///* If in Miller view, autosize the column */
+    //if (view->details->slot->mwcols) {
+        //if (view->details->slot->ready_to_autosize)
+            //autosize_slot (view->details->slot);
+        //else
+            //view->details->slot->ready_to_autosize = TRUE;
+    //} else
+        //view->details->slot->ready_to_autosize = FALSE;
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
@@ -684,12 +686,12 @@ fm_directory_view_finalize (GObject *object)
     (*G_OBJECT_CLASS (parent_class)->finalize) (object);
 }
 
-void
-fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
-{
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-    marlin_window_columns_add_location (view->details->slot->mwcols, location);
-}
+//void
+//fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
+//{
+    //g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    //marlin_window_columns_add_location (view->details->slot->mwcols, location);
+//}
 
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
@@ -707,9 +709,11 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
       marlin_window_columns_change_location (directory_view->details->slot, location);
       else
       gof_window_slot_change_location (directory_view->details->slot, location);*/
-    GOFWindowSlot *slot = directory_view->details->slot;
+   // GOFWindowSlot *slot = directory_view->details->slot;
 
-    g_signal_emit_by_name (slot->ctab, "path-changed", location);
+    //g_signal_emit_by_name (slot->ctab, "path-changed", location);
+
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (directory_view->details->window)->current_tab, "path-changed", location);
 }
 
 /* TODO remove screen if we don't create any new windows
@@ -3267,7 +3271,8 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                                      g_param_spec_object ("window-slot",
                                                           "Window Slot",
                                                           "The parent window slot reference",
-                                                          GOF_TYPE_WINDOW_SLOT,
+                                                          //GOF_TYPE_WINDOW_SLOT,
+                                                          GOF_WINDOW_TYPE_SLOT,
                                                           G_PARAM_WRITABLE |
                                                           G_PARAM_CONSTRUCT_ONLY));
 
@@ -3363,9 +3368,10 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     if (view->updates_frozen)
         return;
     /* when we're in column view ignore selection changed from other slot than the active one */
-    if (view->details->slot->mwcols &&
-        view->details->slot->mwcols->active_slot != view->details->slot)
-        return;
+    /* unnecessary? - changing selection will activate slot anyway ?? */
+    //if (view->details->slot->mwcols &&
+        //view->details->slot->mwcols->active_slot != view->details->slot)
+        //return;
 
     //g_message ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
@@ -3388,17 +3394,20 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_set_active_slot (FMDirectoryView *view)
 {
-    g_debug ("%s %s %s", G_STRFUNC,
-               view->details->slot->mwcols->active_slot->directory->file->uri,
+    g_debug ("%s %s", G_STRFUNC,
+               //view->details->slot->mwcols->active_slot->directory->file->uri,
                view->details->slot->directory->file->uri
                );
-    if (!view->details->slot->mwcols)
-        return;
-    if (view->details->slot->mwcols->active_slot == view->details->slot)
-        return;
+    /* Unnecessary */
+    //if (!view->details->slot->mwcols)
+        //return;
+    //if (view->details->slot->mwcols->active_slot == view->details->slot)
+        //return;
 
     //g_warning ("%s", G_STRFUNC);
-    gof_window_slot_active (view->details->slot);
+    //gof_window_slot_active (view->details->slot);
+
+    g_signal_emit_by_name (view->details->slot, "active");
 
     /* make sure to grab focus as right click menus don't automaticly get it */
     //fm_directory_view_grab_focus (GTK_WIDGET (view));

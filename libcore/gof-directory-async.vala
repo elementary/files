@@ -168,7 +168,7 @@ public class GOF.Directory.Async : Object {
                     file_loaded (gof);
                 }
             }
-
+message ("emitting done loading");
             done_loading ();
         }
     }

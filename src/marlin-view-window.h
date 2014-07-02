@@ -21,12 +21,30 @@
 #ifndef MARLIN_VIEW_WINDOW_H
 #define MARLIN_VIEW_WINDOW_H
 
-#ifndef GOF_WINDOW_SLOT_DEFINED
-#define GOF_WINDOW_SLOT_DEFINED
-typedef struct GOFWindowSlot GOFWindowSlot;
-#endif
+//#ifndef GOF_WINDOW_SLOT_DEFINED
+//#define GOF_WINDOW_SLOT_DEFINED
 
-typedef struct GOFWindowSlotClass GOFWindowSlotClass;
+//typedef struct _GOFWindowSlot GOFWindowSlot;
+//typedef struct _GOFWindowSlotClass GOFWindowSlotClass;
+//typedef struct _GOFWindowSlotPrivate GOFWindowSlotPrivate;
+
+//struct _GOFWindowSlot {
+	//GOFAbstractSlot parent_instance;
+	//GOFWindowSlotPrivate * priv;
+	//GOFDirectoryAsync* directory;
+	//GFile* location;
+	//GtkBox* content_box;
+	//FMDirectoryView* view_box;
+	//GtkBox* colpane;
+	//GraniteWidgetsThinPaned* hpane;
+	//MarlinViewViewContainer* ctab;
+	//MarlinWindowColumns* mwcols;
+//};
+
+//struct _GOFWindowSlotClass {
+	//GOFAbstractSlotClass parent_class;
+//};
+//#endif /* GOF_WINDOW_SLOT_DEFINED */
 
 typedef enum {
 	MARLIN_WINDOW_OPEN_FLAG_DEFAULT,

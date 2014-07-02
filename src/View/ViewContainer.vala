@@ -196,6 +196,7 @@ namespace Marlin.View {
         }
 
         public void change_view (int nview, GLib.File? location) {
+message ("ViewContainer: change_view");
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -230,10 +231,24 @@ namespace Marlin.View {
 
             if (nview == ViewMode.MILLER) {
                 mwcol = new Marlin.Window.Columns (location, this);
-                slot = mwcol.active_slot;
+                //slot = mwcol.active_slot;
             } else {
                 mwcol = null;
+                //slot = new GOF.Window.Slot (location, this);
                 slot = new GOF.Window.Slot (location, this);
+            }
+
+            switch (nview) {
+            case ViewMode.LIST:
+                content = slot.make_list_view ();
+                break;
+            case ViewMode.MILLER:
+                content = mwcol.make_view ();
+                slot = mwcol.active_slot;
+                break;
+            default:
+                content = slot.make_icon_view ();
+                break;
             }
 
             /* automagicly enable icon view for icons keypath */
@@ -251,18 +266,6 @@ namespace Marlin.View {
                 slot.directory.need_reload.connect (reload);
             }
             plugin_directory_loaded ();
-
-            switch (nview) {
-            case ViewMode.LIST:
-                slot.make_list_view ();
-                break;
-            case ViewMode.MILLER:
-                mwcol.make_view ();
-                break;
-            default:
-                slot.make_icon_view ();
-                break;
-            }
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
         }

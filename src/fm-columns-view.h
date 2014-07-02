@@ -23,7 +23,7 @@
 #include <gtk/gtk.h>
 #include "fm-list-model.h"
 #include "fm-directory-view.h"
-#include "marlin-vala.h"
+//#include "marlin-vala.h"
 
 G_BEGIN_DECLS
 

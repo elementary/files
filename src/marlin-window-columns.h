@@ -21,8 +21,9 @@
 #define MARLIN_WINDOW_COLUMNS_H
 
 #include <gtk/gtk.h>
-#include "gof-abstract-slot.h"
+//#include "gof-abstract-slot.h"
 #include "marlincore.h"
+//#include "marlin-vala.h"
 //#include "gof-window-slot.h"
 #include "marlin-view-window.h"
 
