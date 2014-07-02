@@ -317,16 +317,18 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
             g_object_unref (dir);
         }
 
-        if (view->details->slot->mwcols) {
-            /* if in miller view mode, remove any views of subdirectories of deleted directory */
-            gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
-        }
+        /* Connect mwcols to signal directly */
+        //if (view->details->slot->mwcols) {
+            ///* if in miller view mode, remove any views of subdirectories of deleted directory */
+            //gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
+        //}
     }
 }
 
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
+g_message ("%s - ", G_STRFUNC);
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -340,10 +342,6 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 
     /* ensure thumbnails updated */
     zoom_level_changed (view, NULL);
-
-    /* If in Miller view, autosize the column */
-    if (view->details->slot->mwcols != NULL)
-            autosize_slot (view->details->slot);
 }
 
 static void
@@ -675,13 +673,12 @@ fm_directory_view_finalize (GObject *object)
     (*G_OBJECT_CLASS (parent_class)->finalize) (object);
 }
 
-void
-fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
-{
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-
-    gof_window_slot_columns_add_location (view->details->slot, location);
-}
+//void
+//fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
+//{
+    //g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    //marlin_window_columns_add_location (view->details->slot->mwcols, location);
+//}
 
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
@@ -3292,9 +3289,10 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     if (view->updates_frozen)
         return;
     /* when we're in column view ignore selection changed from other slot than the active one */
-    if (view->details->slot->mwcols &&
-        view->details->slot->mwcols->active_slot != view->details->slot)
-        return;
+    /* unnecessary? - changing selection will activate slot anyway ?? */
+    //if (view->details->slot->mwcols &&
+        //view->details->slot->mwcols->active_slot != view->details->slot)
+        //return;
 
     g_debug ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
@@ -3317,14 +3315,15 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_set_active_slot (FMDirectoryView *view)
 {
-    g_debug ("%s %s %s", G_STRFUNC,
-               view->details->slot->mwcols->active_slot->directory->file->uri,
+    g_debug ("%s %s", G_STRFUNC,
+               //view->details->slot->mwcols->active_slot->directory->file->uri,
                view->details->slot->directory->file->uri
                );
-    if (!view->details->slot->mwcols)
-        return;
-    if (view->details->slot->mwcols->active_slot == view->details->slot)
-        return;
+    /* Unnecessary */
+    //if (!view->details->slot->mwcols)
+        //return;
+    //if (view->details->slot->mwcols->active_slot == view->details->slot)
+        //return;
 
     gof_window_slot_active (view->details->slot);
     /* ensure thumbnails updated */

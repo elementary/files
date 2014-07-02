@@ -48,10 +48,12 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
+        MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
+        Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -100,9 +102,11 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
+        MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -124,6 +128,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
     PACKAGES
         gtk+-3.0
         gio-2.0
+        pango
         posix
         gee-0.8
         granite
@@ -148,8 +153,8 @@ add_executable (../pantheon-files
     marlin-enum-types.c
     marlin-dnd.c
     marlin-clipboard-manager.c
-    marlin-window-columns.c
-    gof-window-slot.c
+#    marlin-window-columns.c
+#    gof-window-slot.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-text-renderer.c

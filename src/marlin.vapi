@@ -14,6 +14,9 @@ namespace FM {
     namespace Directory {
         [CCode (cheader_filename = "fm-directory-view.h")]
         public class View : Gtk.ScrolledWindow {
+            public View ();
+            public string empty_message;
+            public void set_slot (GOF.Window.Slot slot);
             public void colorize_selection (int color);
             public signal void sync_selection ();
             public void notify_selection_changed ();
@@ -30,29 +33,51 @@ namespace FM {
             public void column_add_location (GLib.File file);
         }
     }
-}
-[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
-namespace GOF {
-    [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
-    namespace Window {
-        [CCode (cheader_filename = "gof-window-slot.h")]
-        public class Slot : GOF.AbstractSlot {
-            public Slot (GLib.File f, Gtk.Overlay ctab);
-            public void make_icon_view ();
-            public void make_list_view ();
-            public void make_compact_view ();
-            public void add_extra_widget(Gtk.Widget widget);
-            public void columns_add_location (GLib.File location);
-            public Directory.Async directory;
-            public GLib.File location;
-            public Gtk.Widget view_box;
-            public Gtk.Overlay ctab;
-            public int slot_number;
-            public signal void active ();
-            public signal void inactive ();
+    [CCode (cprefix = "FMIcon", lower_case_cprefix = "fm_icon_")]
+    namespace Icon {
+        [CCode (cheader_filename = "fm-icon-view.h")]
+        public class View : Directory.View {
+            public View ();
+            public static GLib.Type get_type ();
+        }
+    }
+    [CCode (cprefix = "FMColumns", lower_case_cprefix = "fm_columns_")]
+    namespace Columns {
+        [CCode (cheader_filename = "fm-columns-view.h")]
+        public class View : Directory.View {
+            public View ();
+            public static GLib.Type get_type ();
+        }
+    }
+    [CCode (cprefix = "FMList", lower_case_cprefix = "fm_list_")]
+    namespace List {
+        [CCode (cheader_filename = "fm-list-view.h")]
+        public class View : Directory.View {
+            public View ();
+            public static GLib.Type get_type ();
         }
     }
 }
+//[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
+//namespace GOF {
+//    [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
+//    namespace Window {
+//        [CCode (cheader_filename = "gof-window-slot.h")]
+//        public class Slot : GOF.AbstractSlot {
+//            public Slot (GLib.File f, Gtk.Overlay ctab);
+//            public void make_icon_view ();
+//            public void make_list_view ();
+//            public void make_compact_view ();
+//            public void add_extra_widget(Gtk.Widget widget);
+//            public Directory.Async directory;
+//            public GLib.File location;
+//            public Gtk.Widget view_box;
+//            public Gtk.Overlay ctab;
+//            public signal void active ();
+//            public signal void inactive ();
+//        }
+//    }
+//}
 
 namespace Marlin {
     [CCode (cheader_filename = "marlin-thumbnailer.h")]
@@ -65,19 +90,27 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-dnd.h")]
     public static Gdk.DragAction drag_drop_action_ask (Gtk.Widget widget, Gdk.DragAction possible_actions);
 
-    [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
-    namespace Window {
-        [CCode (cheader_filename = "marlin-window-columns.h")]
-        public class Columns : GOF.AbstractSlot {
-            public Columns (GLib.File f, Gtk.Overlay ctab);
-            public void make_view ();
-            public void activate_slot (GOF.Window.Slot slot);
-            public GOF.Window.Slot active_slot;
-            public string? get_root_uri ();
-            public string? get_tip_uri ();
-            public unowned GOF.Window.Slot get_last_slot ();
-        }
-    }
+//    [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
+//    namespace Window {
+//        [CCode (cheader_filename = "marlin-window-columns.h")]
+//        public class Columns : GOF.AbstractSlot {
+//            //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+//            public Columns (GLib.File f, Gtk.Overlay ctab);
+//            public void make_view ();
+//            public GOF.Window.Slot active_slot;
+//            public string? get_root_uri ();
+//            public string? get_tip_uri ();
+//            public unowned GOF.Window.Slot get_last_slot ();
+//            public int preferred_column_width;
+//            public int total_width;
+//            public int handle_size;
+//            public Gtk.Widget colpane;
+//            public GLib.List<GOF.Window.Slot> slot;
+//            /*public Directory.Async directory;
+//            public Widget get_view ();*/
+//        }
+//    }
+
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
     namespace ConnectServer {
         [CCode (cheader_filename = "marlin-connect-server-dialog.h")]

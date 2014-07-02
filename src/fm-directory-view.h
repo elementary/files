@@ -30,10 +30,14 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 #include "gof-file.h"
-#include "marlin-window-columns.h"
-#include "gof-window-slot.h"
+//#include "marlin-window-columns.h"
+//#include "gof-window-slot.h"
+//#include "marlin-vala.h"
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
+//#include "fm-columns-view.h"
+//#include "fm-list-view.h"
+//#include "fm-icon-view.h"
 #include "marlin-view-window.h"
 #include "marlincore.h"
 #include "marlin-enum-types.h"
@@ -405,7 +409,7 @@ struct FMDirectoryViewClass {
 GType   fm_directory_view_get_type (void);
 void    fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 void    fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
-void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
+//void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
 void    fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWindowOpenFlags flags);
 void    fm_directory_view_preview_selected_items (FMDirectoryView *view);

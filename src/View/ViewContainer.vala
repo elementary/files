@@ -279,7 +279,21 @@ namespace Marlin.View {
                 }
             } else {
                 mwcol = null;
+                //slot = new GOF.Window.Slot (location, this);
                 slot = new GOF.Window.Slot (location, this);
+            }
+
+            switch (nview) {
+            case ViewMode.LIST:
+                content = slot.make_list_view ();
+                break;
+            case ViewMode.MILLER:
+                content = mwcol.make_view ();
+                slot = mwcol.active_slot;
+                break;
+            default:
+                content = slot.make_icon_view ();
+                break;
             }
 
             /* automagicly enable icon view for icons keypath */
@@ -292,18 +306,6 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             set_up_slot ();
-
-            switch (nview) {
-            case ViewMode.LIST:
-                slot.make_list_view ();
-                break;
-            case ViewMode.MILLER:
-                mwcol.make_view ();
-                break;
-            default:
-                slot.make_icon_view ();
-                break;
-            }
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
         }
