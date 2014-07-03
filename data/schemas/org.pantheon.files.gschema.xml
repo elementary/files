@@ -80,10 +80,15 @@
       <summary>Categorie Network expander</summary>
       <description>Expand/Collapse categorie Network</description>
     </key>
-    <key type="s" name="geometry">
-      <default>'700x450+0+0'</default>
-      <summary>The geometry string for a navigation window.</summary>
-      <description>A string containing the saved geometry and coordinates string for navigation windows.</description>
+    <key type="i" name="window-width">
+      <default>700</default>
+      <summary>Window width.</summary>
+      <description>Default window width.</description>
+    </key>
+    <key type="i" name="window-height">
+      <default>450</default>
+      <summary>Window height.</summary>
+      <description>Default window height.</description>
     </key>
     <key type="b" name="maximized">
       <default>false</default>
