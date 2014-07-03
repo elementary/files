@@ -205,27 +205,10 @@ namespace Marlin.View {
 
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
 
-            /* Position first window according to preferences and
-             * offset subsequent windows to ensure visibility */
-            string geometry = "";
-            int left_offset = 0, top_offset = 0;
-            if (window_number == 0) {
-                geometry = Preferences.settings.get_string("geometry");
-                if (geometry == "")
-                    geometry = (Preferences.settings.get_default_value("geometry")).get_string ();
-
-            } else {
-                geometry = EelGtk.Window.get_geometry_string (active_window);
-                left_offset = MARLIN_LEFT_OFFSET;
-                top_offset = MARLIN_TOP_OFFSET;
-            }
-            EelGtk.Window.set_initial_geometry_from_string (this, geometry,
-                                                            MARLIN_MINIMUM_WINDOW_WIDTH,
-                                                            MARLIN_MINIMUM_WINDOW_HEIGHT,
-                                                            false,
-                                                            left_offset, top_offset);
-
-            if (Preferences.settings.get_boolean("maximized"))
+			set_default_size(Preferences.settings.get_int("window-width"),
+		                     Preferences.settings.get_int("window-height"));
+            
+			if (Preferences.settings.get_boolean("maximized"))
                 maximize();
 
             title = Marlin.APP_TITLE;
@@ -471,10 +454,13 @@ namespace Marlin.View {
             if (sidebar_alloc.width > 1)
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
-            var geometry = EelGtk.Window.get_geometry_string (this);
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
-            if (is_maximized == false)
-                Preferences.settings.set_string("geometry", geometry);
+            if (is_maximized == false) {
+				int width, height;
+				get_size(out width, out height);
+                Preferences.settings.set_int("window-width", width);
+                Preferences.settings.set_int("window-height", height);
+			}
             Preferences.settings.set_boolean("maximized", is_maximized);
         }
 
