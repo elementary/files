@@ -459,7 +459,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMAbstract
     GtkTreeIter     iter;
     GtkAction       *action;
     GOFFile         *file;
-
+g_message ("fm abstract icon view %s -", G_STRFUNC);
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {

@@ -373,6 +373,7 @@ namespace Marlin.View {
 
         private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                                    int viewmode = -1) {
+message ("Window: make_new_tab");
             if (viewmode < 0) {
                 if (current_tab != null)
                     viewmode = current_tab.view_mode;
@@ -383,6 +384,7 @@ namespace Marlin.View {
             var content = new View.ViewContainer (this, location, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
             content.tab_name_changed.connect ((tab_name) => {
+message ("Window: tab_name_changed");
                 tab.label = tab_name;
             });
 
@@ -502,7 +504,6 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
-message ("Window: Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window)
                 return 0;
@@ -557,7 +558,6 @@ message ("Window: Restore tabs");
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
-message ("Window: expand miller view");
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             var mwcols = view.mwcol;

@@ -328,7 +328,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-g_message ("%s - ", G_STRFUNC);
+g_message ("FM directory view directory done loaded callback");
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
@@ -683,6 +683,7 @@ fm_directory_view_finalize (GObject *object)
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
 {
+g_message ("%s -", G_STRFUNC);
     GOFWindowSlot *slot = directory_view->details->slot;
     g_signal_emit_by_name (slot->ctab, "path-changed", location, slot);
 }
@@ -690,6 +691,7 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
 void
 fm_directory_view_load_root_location (FMDirectoryView *directory_view, GFile *location)
 {
+g_message ("%s -", G_STRFUNC);
     GOFWindowSlot *slot = directory_view->details->slot;
     g_signal_emit_by_name (slot->ctab, "path-changed", location, NULL);
 }
@@ -716,6 +718,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
             marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
             break;
         default:
+g_message ("Activating single file - location %s", g_file_get_uri (location));
             fm_directory_view_load_location (view, location);
             break;
         }
@@ -922,7 +925,7 @@ fm_directory_view_button_press_event (GtkWidget         *widget,
 {
     GtkActionGroup *main_actions;
     GtkAction *action = NULL;
-
+g_message ("%s -", G_STRFUNC);
     main_actions = MARLIN_VIEW_WINDOW (view->details->window)->main_actions;
     if (G_LIKELY (event->type == GDK_BUTTON_PRESS))
     {
@@ -1622,7 +1625,7 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
 {
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), FALSE);
     g_return_val_if_fail (view->details->drag_timer_id >= 0, FALSE);
-
+g_message ("%s -", G_STRFUNC);
     /* cancel the pending drag timer */
     g_source_remove (view->details->drag_timer_id);
 
@@ -2699,13 +2702,13 @@ gboolean fm_directory_view_get_loading (FMDirectoryView *view)
     return FALSE;
 }
 
-MarlinWindowColumns *fm_directory_view_get_marlin_window_columns (FMDirectoryView *view)
-{
-    g_return_val_if_fail (view != NULL, NULL);
-    g_return_val_if_fail (view->details->slot != NULL, NULL);
+//MarlinWindowColumns *fm_directory_view_get_marlin_window_columns (FMDirectoryView *view)
+//{
+    //g_return_val_if_fail (view != NULL, NULL);
+    //g_return_val_if_fail (view->details->slot != NULL, NULL);
 
-    return view->details->slot->mwcols;
-}
+    //return view->details->slot->mwcols;
+//}
 
 static void
 fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view)
@@ -3281,7 +3284,7 @@ void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
     GList *selection;
-
+g_message ("%s-", G_STRFUNC);
     g_debug ("-- %s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
@@ -3297,7 +3300,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     g_debug ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
     update_menus (view);
-    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
+    //g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
 }
 
 static void
@@ -3319,13 +3322,17 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
                //view->details->slot->mwcols->active_slot->directory->file->uri,
                view->details->slot->directory->file->uri
                );
+
+
+g_message ("%s-", G_STRFUNC);
+
     /* Unnecessary */
     //if (!view->details->slot->mwcols)
         //return;
     //if (view->details->slot->mwcols->active_slot == view->details->slot)
         //return;
 
-    gof_window_slot_active (view->details->slot);
+    g_signal_emit_by_name (view->details->slot, "active");
     /* ensure thumbnails updated */
     zoom_level_changed (view, NULL);
     /* make sure to grab focus as right click menus don't automaticly get it */
@@ -3960,3 +3967,10 @@ remove_marlin_icon_info_cache (GOFFile *file)
              }
     }
 }
+
+gboolean
+fm_directory_view_slot_is_frozen (FMDirectoryView *view)
+{
+    return view->details->slot->updates_frozen;
+}
+

@@ -2290,7 +2290,7 @@ exo_icon_view_button_press (GtkWidget      *widget,
     ExoIconViewItem *item;
     gboolean dirty = FALSE;
     GtkCellRenderer *cell = NULL, *cursor_cell = NULL;
-
+g_message ("%s -", G_STRFUNC);
     icon_view = EXO_ICON_VIEW (widget);
 
     if (event->window != icon_view->priv->bin_window)

@@ -58,7 +58,7 @@ namespace Marlin.View {
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
-            path_changed (location);
+            //path_changed (location);
             this.show_all ();
 
             /* Override background color to support transparency on overlay widgets */
@@ -74,7 +74,6 @@ namespace Marlin.View {
                 /* new_slot is not null if the path is being changed inside a miller column view */
                 if (new_slot != null) {
                     /* Put new slot in existing mwcol */
-
                     slot = new_slot;
                 } else {
                     if (mwcol != null && slot != null) {
@@ -89,8 +88,8 @@ namespace Marlin.View {
 
                 if (new_slot != null && mwcol != null
                  && myfile != null && slot.directory.file.exists && slot.location.equal (myfile)) {
-                    /* Just re-activate existing slot in miller column view */
-                    mwcol.activate_slot (slot);
+                    /* Just re-activate existing slot */
+                    slot.active ();
                 } else {
                     change_view(view_mode, myfile);
                     update_location_state (true);
@@ -161,14 +160,16 @@ namespace Marlin.View {
                 window.loading_uri (slot.directory.file.uri);
         }
 
-        public void refresh_slot_info () {
-            var aslot = get_active_slot ();
+        public void refresh_slot_info (GOF.Window.Slot aslot) {
+            if (aslot == null)
+                return;
+
             var slot_path = aslot.directory.file.location.get_path ();
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
+            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else {
                 tab_name = _("This folder does not exist");
@@ -184,7 +185,6 @@ namespace Marlin.View {
                 if (window.top_menu.location_bar != null)
                     window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name ();
             }
-
         }
 
         /* Handle nonexistent, non-directory, and unpermitted location */
@@ -263,13 +263,13 @@ namespace Marlin.View {
             if (nview == ViewMode.MILLER) {
                 if (mwcol == null) {
                     mwcol = new Marlin.Window.Columns (location, this);
-                    slot = mwcol.active_slot;
                 } else {
                     /* Create new slot in existing mwcol
                      * The new slot becomes active */
-                    slot.columns_add_location (location);
+                    mwcol.add_location (location);
                     slot = mwcol.active_slot;
                     ((FM.Directory.View) slot.view_box).select_first_for_empty_selection ();
+
                     if (slot != null) {
                         set_up_slot ();
                     } else
@@ -279,7 +279,6 @@ namespace Marlin.View {
                 }
             } else {
                 mwcol = null;
-                //slot = new GOF.Window.Slot (location, this);
                 slot = new GOF.Window.Slot (location, this);
             }
 

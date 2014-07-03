@@ -168,7 +168,7 @@ public class GOF.Directory.Async : Object {
                     file_loaded (gof);
                 }
             }
-message ("emitting done loading");
+message ("emitting done loading 1");
             done_loading ();
         }
     }
@@ -191,7 +191,7 @@ message ("emitting done loading");
                 }
             }
         }
-
+message ("emitting done loading 2");
         done_loading ();
     }
 
@@ -290,6 +290,7 @@ message ("emitting done loading");
         }
 
         //TODO send err code
+message ("emitting done loading 3");
         done_loading ();
     }
 
@@ -350,6 +351,7 @@ message ("emitting done loading");
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
             longest_file_name = gof.basename;
+message ("emitting done loading 4");
             done_loading ();
         }
     }
