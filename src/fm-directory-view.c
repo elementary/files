@@ -214,6 +214,7 @@ static void     new_folder_done (GFile *new_folder, gpointer data);
 void            dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive);
 
 static void 	remove_marlin_icon_info_cache (GOFFile *file);
+static void     prepare_to_select_added_files (FMDirectoryView *view);
 
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
@@ -3436,7 +3437,7 @@ fm_directory_view_get_selection (FMDirectoryView *view)
     return (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selection) (view);
 }
 
-void
+static void
 prepare_to_select_added_files (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));

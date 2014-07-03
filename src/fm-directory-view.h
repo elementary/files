@@ -441,4 +441,6 @@ void    fm_directory_view_select_first_for_empty_selection (FMDirectoryView *vie
 void    fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file);
 void    fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files);
 
+void    fm_directory_view_add_to_selection_gof_file (FMDirectoryView *view, GOFFile *file);
+
 #endif /* FM_DIRECTORY_VIEW_H */

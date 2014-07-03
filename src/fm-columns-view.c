@@ -734,7 +734,7 @@ fm_columns_view_get_visible_range (FMDirectoryView *view,
                                    GtkTreePath     **end_path)
 
 {
-    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+    g_return_val_if_fail (FM_IS_COLUMNS_VIEW (view), FALSE);
     return gtk_tree_view_get_visible_range (FM_COLUMNS_VIEW (view)->tree,
                                             start_path, end_path);
 }
