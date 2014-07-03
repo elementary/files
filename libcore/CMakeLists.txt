@@ -41,7 +41,6 @@ set (C_SOURCE_FILES
     eel-fcts.c
     eel-i18n.c
     eel-gtk-extensions.c
-    eel-gdk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
     eel-glib-extensions.c
@@ -71,7 +70,6 @@ set (C_HEADER_FILES
     eel-accessibility.h
     eel-debug.h
     eel-fcts.h
-    eel-gdk-extensions.h
     eel-gdk-pixbuf-extensions.h
     eel-gio-extensions.h
     eel-glib-extensions.h
@@ -138,7 +136,7 @@ set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION})
 
-target_link_libraries (${PKGNAME} ${DEPS_LIBRARIES})
+target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
