@@ -20,6 +20,7 @@ pkg_check_modules (DEPS REQUIRED
     gio-unix-2.0
     pango>=1.1.2
     gtk+-3.0>=3.10
+	gmodule-2.0
     gail-3.0
     gee-0.8
     sqlite3

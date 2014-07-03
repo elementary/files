@@ -115,6 +115,7 @@ pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0>=3.4.0
 	gail-3.0
     gee-0.8
+    gmodule-2.0
 	sqlite3
 	libnotify>=0.7.2)
 # Link all
