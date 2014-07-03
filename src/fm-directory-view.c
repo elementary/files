@@ -2212,7 +2212,7 @@ update_menus_empty_selection (FMDirectoryView *view)
     }
 
     /* Open */
-    GList *selection;
+    GList *selection = NULL;
     const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
     const char *popup_path = "/background/Open Placeholder/Open With/Applications Placeholder";
 
