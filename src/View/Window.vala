@@ -205,10 +205,10 @@ namespace Marlin.View {
 
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
 
-			set_default_size(Preferences.settings.get_int("window-width"),
-		                     Preferences.settings.get_int("window-height"));
+            set_default_size(Preferences.settings.get_int("window-width"),
+                             Preferences.settings.get_int("window-height"));
             
-			if (Preferences.settings.get_boolean("maximized"))
+            if (Preferences.settings.get_boolean("maximized"))
                 maximize();
 
             title = Marlin.APP_TITLE;
@@ -456,11 +456,11 @@ namespace Marlin.View {
 
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
             if (is_maximized == false) {
-				int width, height;
-				get_size(out width, out height);
+                int width, height;
+                get_size(out width, out height);
                 Preferences.settings.set_int("window-width", width);
                 Preferences.settings.set_int("window-height", height);
-			}
+            }
             Preferences.settings.set_boolean("maximized", is_maximized);
         }
 
