@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2013-09-20 17:50+0000\n"
+"PO-Revision-Date: 2014-07-05 20:09+0000\n"
 "Last-Translator: Jirayu Yingthawornsuk <me@jirayu.in.th>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-06-04 06:25+0000\n"
-"X-Generator: Launchpad (build 17031)\n"
+"X-Launchpad-Export-Date: 2014-07-06 05:56+0000\n"
+"X-Generator: Launchpad (build 17086)\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
 #: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
@@ -46,21 +46,21 @@ msgstr "คุณไม่มีสิทธิ์ในการเข้าถ
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "ไม่มีโฟลเดอร์ที่เรียกใช้"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "ไม่พบโฟลเดอร์ \"%s\""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
-msgstr ""
+msgstr "สร้าง"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "สร้างโฟลเดอร์ \"%s\""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
@@ -69,26 +69,28 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"ไม่สามารถสร้างโฟลเดอร์ได้\n"
+"%s"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "ตัวจัดการไฟล์ที่ใช้ง่ายและทรงพลัง"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "นักแปลแห่งลอนช์แพด"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
-msgstr ""
+msgstr "คุณสมบัติ"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
 msgid "General"
-msgstr ""
+msgstr "ทั่วไป"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
 msgid "More"
-msgstr ""
+msgstr "เพิ่มเติม"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
 msgid "Preview"
