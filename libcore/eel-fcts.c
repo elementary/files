@@ -83,6 +83,10 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
         //YESTERDAY_TIME_FORMATS
         //"Yesterday at 00:00 PM"
         format = _("Yesterday at %-I:%M %p");
+    } else if (file_date_age <= 365 * G_TIME_SPAN_DAY) {
+        //CURRENT_YEAR_TIME_FORMATS
+        //"Mon 00 Oct at 00:00 PM"
+        format = _("%a %-d %b at %-I:%M %p");
     } else {
         //CURRENT_WEEK_TIME_FORMATS
         //"Mon 00 Oct 0000 at 00:00 PM"
