@@ -4002,15 +4002,18 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
 
 
     /* we have to make sure that we add our custom widget once in the menu */
-    static gboolean selection_menu_builded = FALSE;
+    static gboolean selection_menu_built = FALSE;
 
-    if (!selection_menu_builded)
+    if (!selection_menu_built)
     {
         GtkWidget *item;
-
+        GList *children = gtk_container_get_children (GTK_CONTAINER (view->details->menu_selection));
+        int n_children = g_list_length (children);
+        /* calculate the position of the properties item (the last item+separator)*/
+        int position = n_children - 2;
         /* append a menu separator */
         item = gtk_separator_menu_item_new ();
-        gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
+        gtk_menu_shell_insert (GTK_MENU_SHELL (view->details->menu_selection), item, position);
         gtk_widget_show (item);
 
 #if 0
@@ -4023,10 +4026,10 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
 
         /* append menu color selection */
         item = GTK_WIDGET (marlin_view_chrome_color_widget_new (MARLIN_VIEW_WINDOW (view->details->window)));
-        gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
+        gtk_menu_shell_insert (GTK_MENU_SHELL (view->details->menu_selection), item, position+1);
         gtk_widget_show (item);
 
-        selection_menu_builded = TRUE;
+        selection_menu_built = TRUE;
     }
 
     marlin_plugin_manager_ui(plugins, ui_manager);
