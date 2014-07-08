@@ -32,7 +32,7 @@
       <description>If set to true, hidden files will also be shown (files starting with a "." for example)</description>
     </key>
     <key name="date-format" enum="dateformatmode">
-      <default>'locale'</default>
+      <default>'informal'</default>
       <summary>Date Format</summary>
       <description>The format of file dates. Possible values are "locale", "iso", and "informal".</description>
     </key>
