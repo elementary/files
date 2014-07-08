@@ -680,9 +680,11 @@ create_and_set_up_tree_view (FMListView *view)
         } else {
             renderer = gtk_cell_renderer_text_new( );
             col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-FM_LIST_MODEL_FILENAME]), renderer, "text", k, NULL);
+
             if (k == FM_LIST_MODEL_SIZE || k == FM_LIST_MODEL_MODIFIED) {
                 g_object_set (renderer, "xalign", 1.0);
             }
+
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             //gtk_tree_view_column_set_fixed_width (col, 240);

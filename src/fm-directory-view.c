@@ -2267,8 +2267,7 @@ update_menus_selection (FMDirectoryView *view)
 
     dir_action_set_sensitive (view, "Cut", TRUE);
     dir_action_set_sensitive (view, "Copy", TRUE);
-    dir_action_set_sensitive (view, "Rename",
-                              selection->next == NULL ? TRUE : FALSE);
+    dir_action_set_sensitive (view, "Rename", selection->next == NULL);
 
     /* got only one element in selection */
     if (selection->next == NULL && gof_file_is_folder (file)) {
@@ -4027,7 +4026,7 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
 
         /* append menu color selection */
         item = GTK_WIDGET (marlin_view_chrome_color_widget_new (MARLIN_VIEW_WINDOW (view->details->window)));
-        gtk_menu_shell_insert (GTK_MENU_SHELL (view->details->menu_selection), item, position+1);
+        gtk_menu_shell_insert (GTK_MENU_SHELL (view->details->menu_selection), item, position + 1);
         gtk_widget_show (item);
 
         selection_menu_built = TRUE;

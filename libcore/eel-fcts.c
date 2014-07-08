@@ -49,8 +49,9 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
 {
     const char *format;
     gchar *result = NULL;
-    GDateTime *date_time, *today;
+    GDateTime *date_time, *today, *last_year;
     GTimeSpan file_date_age;
+    gboolean is_last_year;
 
     g_return_val_if_fail (date_format != NULL, NULL);
     date_time = g_date_time_new_from_unix_local ((gint64) d);
@@ -64,8 +65,11 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
     }
 
     today = g_date_time_new_now_local ();
+    last_year = g_date_time_add_years (today, -1);
 	file_date_age = g_date_time_difference (today, date_time);
+    is_last_year = g_date_time_compare (date_time, last_year) > 0;
 	g_date_time_unref (today);
+	g_date_time_unref (last_year);
 
     /* Format varies depending on how old the date is. This minimizes
      * the length (and thus clutter & complication) of typical dates
@@ -83,7 +87,7 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
         //YESTERDAY_TIME_FORMATS
         //"Yesterday at 00:00 PM"
         format = _("Yesterday at %-I:%M %p");
-    } else if (file_date_age <= 365 * G_TIME_SPAN_DAY) {
+    } else if (is_last_year) {
         //CURRENT_YEAR_TIME_FORMATS
         //"Mon 00 Oct at 00:00 PM"
         format = _("%a %-d %b at %-I:%M %p");
