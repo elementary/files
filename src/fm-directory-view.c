@@ -2267,7 +2267,8 @@ update_menus_selection (FMDirectoryView *view)
 
     dir_action_set_sensitive (view, "Cut", TRUE);
     dir_action_set_sensitive (view, "Copy", TRUE);
-    dir_action_set_sensitive (view, "Rename", TRUE);
+    dir_action_set_sensitive (view, "Rename",
+                              selection->next == NULL ? TRUE : FALSE);
 
     /* got only one element in selection */
     if (selection->next == NULL && gof_file_is_folder (file)) {
