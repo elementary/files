@@ -394,12 +394,13 @@ namespace Marlin.View {
 //                    viewmode = Preferences.settings.get_enum ("default-viewmode");
 //            }
 
-            var content = new View.ViewContainer (this, location, viewmode);
+            //var content = new View.ViewContainer (this, location, viewmode);
+            var content = new View.ViewContainer (this, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
-
+            content.path_changed (location);
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
         }

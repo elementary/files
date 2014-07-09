@@ -43,7 +43,9 @@ namespace Marlin.View {
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
 
-        public ViewContainer (Marlin.View.Window win, GLib.File location, Marlin.ViewMode viewmode) {
+        //public ViewContainer (Marlin.View.Window win, GLib.File location, Marlin.ViewMode viewmode) {
+        /* Initial location now set by Window.make_tab after connecting signals */
+        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode viewmode) {
 //message ("New ViewContainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
@@ -68,6 +70,7 @@ namespace Marlin.View {
             /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 //message ("adding overlay");
+            /* The overlay is already added in the constructor of the statusbar */
             //add_overlay (overlay_statusbar);
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 //message ("connections");
@@ -123,7 +126,7 @@ namespace Marlin.View {
             });
 //message ("changing path");
             /* handle all path changes through the path-changed signal */
-            path_changed (location);
+            //path_changed (location);
 //message ("Leaving new container");
         }
 
@@ -175,11 +178,9 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info (GOF.File? file) {
-//message ("Refresh slot info");
             if (file == null)
                 return;
 
-//message ("Refresh slot info - no null");
             //var slot_path = aslot.directory.file.location.get_path ();
             var slot_path = file.location.get_path ();
             if (slot_path == Environment.get_home_dir ())
@@ -198,7 +199,6 @@ namespace Marlin.View {
                 tab_name = tab_name + " " + _("(as Administrator)");
 
             /* update window title */
-//message ("Refresh slot info - update window title");
             if (window.current_tab == this) {
                 window.set_title (tab_name);
                 if (window.top_menu.location_bar != null)
