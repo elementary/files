@@ -145,7 +145,7 @@ namespace Marlin.View {
             var expander = new Gtk.Label ("");
             expander.hexpand = true;
 
-            var make_default = new Gtk.Button.with_label (_("Set as default"));
+            var make_default = new Gtk.Button.with_label (_("Set as Default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
                 show_infobar (false);

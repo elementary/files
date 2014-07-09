@@ -49,23 +49,27 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
 {
     const char *format;
     gchar *result = NULL;
-    GDateTime *date_time, *today;
+    GDateTime *date_time, *today, *last_year;
     GTimeSpan file_date_age;
+    gboolean is_last_year;
 
     g_return_val_if_fail (date_format != NULL, NULL);
     date_time = g_date_time_new_from_unix_local ((gint64) d);
 
     if (!strcmp (date_format, "locale")) {
         result = g_date_time_format (date_time, "%c");
-		goto out;
+        goto out;
     } else if (!strcmp (date_format, "iso")) {
         result = g_date_time_format (date_time, "%Y-%m-%d %H:%M:%S");
-		goto out;
+        goto out;
     }
 
     today = g_date_time_new_now_local ();
-	file_date_age = g_date_time_difference (today, date_time);
-	g_date_time_unref (today);
+    last_year = g_date_time_add_years (today, -1);
+    file_date_age = g_date_time_difference (today, date_time);
+    is_last_year = g_date_time_compare (date_time, last_year) > 0;
+    g_date_time_unref (today);
+    g_date_time_unref (last_year);
 
     /* Format varies depending on how old the date is. This minimizes
      * the length (and thus clutter & complication) of typical dates
@@ -83,13 +87,17 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
         //YESTERDAY_TIME_FORMATS
         //"Yesterday at 00:00 PM"
         format = _("Yesterday at %-I:%M %p");
+    } else if (is_last_year) {
+        //CURRENT_YEAR_TIME_FORMATS
+        //"Mon 00 Oct at 00:00 PM"
+        format = _("%a %-d %b at %-I:%M %p");
     } else {
         //CURRENT_WEEK_TIME_FORMATS
         //"Mon 00 Oct 0000 at 00:00 PM"
         format = _("%a %-d %b %Y at %-I:%M %p");
     }
 
-	result = g_date_time_format (date_time, format);
+    result = g_date_time_format (date_time, format);
 
  out:
     g_date_time_unref (date_time);
