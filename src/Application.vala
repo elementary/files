@@ -216,8 +216,8 @@ public class Marlin.Application : Granite.Application {
             window.destroy ();
     }
 
-    public void create_window (File location, Gdk.Screen screen) {
-        open_window (location, screen);
+    public void create_window (File location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+        open_window (location, screen, viewmode);
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
@@ -288,8 +288,8 @@ public class Marlin.Application : Granite.Application {
         return false;
     }
 
-    private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        (add_view_window (screen)).add_tab (location);
+    private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+        (add_view_window (screen)).add_tab (location, viewmode);
     }
 
     private void open_windows (File[]? files) {
@@ -316,12 +316,12 @@ public class Marlin.Application : Granite.Application {
             if (!Preferences.settings.get_boolean ("restore-tabs") || window.restore_tabs () < 1) {
                 /* Open a tab pointing at the default location if no tabs restored*/
                 var location = File.new_for_path (Environment.get_home_dir ());
-                window.add_tab (location);
+                window.add_tab (location, Marlin.ViewMode.PREFERRED);
             }
         } else {
             /* Open tabs at each requested location */
             foreach (var file in files)
-                window.add_tab (file);
+                window.add_tab (file, Marlin.ViewMode.PREFERRED);
         }
     }
 

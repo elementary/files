@@ -21,35 +21,29 @@
 #ifndef MARLIN_VIEW_WINDOW_H
 #define MARLIN_VIEW_WINDOW_H
 
-//#ifndef GOF_WINDOW_SLOT_DEFINED
-//#define GOF_WINDOW_SLOT_DEFINED
+#define MARLIN_TYPE_OPEN_FLAG (marlin_open_flag_get_type ())
 
-//typedef struct _GOFWindowSlot GOFWindowSlot;
-//typedef struct _GOFWindowSlotClass GOFWindowSlotClass;
-//typedef struct _GOFWindowSlotPrivate GOFWindowSlotPrivate;
+typedef enum
+{
+    MARLIN_OPEN_FLAG_DEFAULT,
+    MARLIN_OPEN_FLAG_NEW_ROOT,
+    MARLIN_OPEN_FLAG_NEW_TAB,
+    MARLIN_OPEN_FLAG_NEW_WINDOW
+} MarlinOpenFlag;
 
-//struct _GOFWindowSlot {
-	//GOFAbstractSlot parent_instance;
-	//GOFWindowSlotPrivate * priv;
-	//GOFDirectoryAsync* directory;
-	//GFile* location;
-	//GtkBox* content_box;
-	//FMDirectoryView* view_box;
-	//GtkBox* colpane;
-	//GraniteWidgetsThinPaned* hpane;
-	//MarlinViewViewContainer* ctab;
-	//MarlinWindowColumns* mwcols;
-//};
+GType           marlin_open_flag_get_type     (void) G_GNUC_CONST;
 
-//struct _GOFWindowSlotClass {
-	//GOFAbstractSlotClass parent_class;
-//};
-//#endif /* GOF_WINDOW_SLOT_DEFINED */
+#define MARLIN_TYPE_VIEW_MODE (marlin_view_mode_get_type ())
 
-typedef enum {
-	MARLIN_WINDOW_OPEN_FLAG_DEFAULT,
-	MARLIN_WINDOW_OPEN_FLAG_NEW_TAB,
-	MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW
-} MarlinViewWindowOpenFlags;
+typedef enum
+{
+    MARLIN_VIEW_MODE_ICON,
+    MARLIN_VIEW_MODE_LIST,
+    MARLIN_VIEW_MODE_MILLER,
+    MARLIN_VIEW_MODE_CURRENT,
+    MARLIN_VIEW_MODE_PREFERRED,
+    MARLIN_VIEW_MODE_INVALID,
+} MarlinViewMode;
 
+GType           marlin_view_mode_get_type     (void) G_GNUC_CONST;
 #endif /* MARLIN_VIEW_WINDOW_H */

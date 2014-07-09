@@ -62,7 +62,7 @@ namespace Marlin.View {
         private bool tabs_restored = false;
 
         public signal void item_hovered (GOF.File gof_file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file);
+        public signal void selection_changed (GLib.List<GOF.File> gof_file); //OverlayBar connects
 
         public signal void loading_uri (string location);
 
@@ -84,15 +84,15 @@ namespace Marlin.View {
 
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
-            int n = action.get_current_value();
+            Marlin.ViewMode mode = (Marlin.ViewMode)action.get_current_value();
             /* change the view only for view_mode real change */
-            if (current_tab != null && n != current_tab.view_mode) {
-                current_tab.change_view_mode (n);
-            }
+            if (current_tab != null && mode != current_tab.view_mode)
+                current_tab.change_view_mode (mode);
         }
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
         {
+//message ("New window");
             /* Capture application window_count and active_window before they can change */
             var window_number = app.window_count;
             var active_window = app.get_active_window ();
@@ -247,8 +247,20 @@ namespace Marlin.View {
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
-                
+
                 return false;
+            });
+
+            button_press_event.connect ((event) => {
+                /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
+                if (event.button == 8) {
+                    main_actions.get_action ("Back").activate ();
+                    return true;
+                } else if (event.button == 9) {
+                    main_actions.get_action ("Forward").activate ();
+                    return true;
+                } else
+                    return false;
             });
 
             window_state_event.connect ((event) => {
@@ -290,7 +302,7 @@ namespace Marlin.View {
             });
 
             tabs.tab_duplicated.connect ((tab) => {
-                make_new_tab (File.new_for_uri (((tab.page as ViewContainer).get_active_slot ()).location.get_uri ()));
+                make_new_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
             });
 
             Gtk.Allocation win_alloc;
@@ -328,14 +340,14 @@ namespace Marlin.View {
         }
 
         public void colorize_current_tab_selection (int n) {
-            if (!current_tab.content_shown)
-                ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
+//            if (!current_tab.content_shown)
+//                ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
 
-        public GOF.Window.Slot? get_active_slot() {
+        public Slot? get_active_slot() {
             if (current_tab != null)
-                return current_tab.get_active_slot ();
+                return current_tab.get_current_slot ();
             return null;
         }
 
@@ -350,13 +362,15 @@ namespace Marlin.View {
                 return;
 
             if (old_tab != null) {
-                var old_slot = old_tab.get_active_slot ();
-                if (old_slot != null)
+                var old_slot = old_tab.get_current_slot ();
+                if (old_slot != null) {
                     old_slot.inactive ();
+//message ("Window:emitting slot inactive");
+}
             }
 
             if (current_tab != null) {
-                var cur_slot = current_tab.get_active_slot ();
+                var cur_slot = current_tab.get_current_slot ();
                 if (cur_slot != null) {
                     cur_slot.active();
                     current_tab.update_location_state(false);
@@ -372,19 +386,17 @@ namespace Marlin.View {
         }
 
         private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                                   int viewmode = -1) {
-message ("Window: make_new_tab");
-            if (viewmode < 0) {
-                if (current_tab != null)
-                    viewmode = current_tab.view_mode;
-                else
-                    viewmode = Preferences.settings.get_enum ("default-viewmode");
-            }
+                                   Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+//            if (viewmode < 0) {
+//                if (current_tab != null)
+//                    viewmode = current_tab.view_mode;
+//                else
+//                    viewmode = Preferences.settings.get_enum ("default-viewmode");
+//            }
 
             var content = new View.ViewContainer (this, location, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
             content.tab_name_changed.connect ((tab_name) => {
-message ("Window: tab_name_changed");
                 tab.label = tab_name;
             });
 
@@ -392,7 +404,7 @@ message ("Window: tab_name_changed");
             tabs.current = tab;
         }
 
-        public void add_tab (File location, int viewmode = -1) {
+        public void add_tab (File location, Marlin.ViewMode viewmode) {
             make_new_tab (location, viewmode);
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
@@ -414,8 +426,8 @@ message ("Window: tab_name_changed");
             tab.close ();
         }
 
-        public void add_window(File location){
-            ((Marlin.Application) application).create_window (location, screen);
+        public void add_window(File location, Marlin.ViewMode viewmode){
+            ((Marlin.Application) application).create_window (location, screen, viewmode);
         }
 
         private void undo_actions_set_insensitive () {
@@ -513,7 +525,7 @@ message ("Window: tab_name_changed");
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
             int tabs_added = 0;
-            int viewmode = -1;
+            Marlin.ViewMode viewmode = Marlin.ViewMode.INVALID;
             string root_uri = null;
             string tip_uri = null;
 
@@ -521,18 +533,18 @@ message ("Window: tab_name_changed");
              * as this causes all sorts of problems */
             freeze_view_changes = true;
             while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
-                if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
+                if (viewmode < 0 || viewmode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
 
                 add_tab (root_location, viewmode);
 
-                if (viewmode == ViewMode.MILLER && tip_uri != root_uri)
+                if (viewmode == Marlin.ViewMode.MILLER && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
 
                 tabs_added++;
-                viewmode = -1;
+                viewmode = Marlin.ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
             }
@@ -564,10 +576,7 @@ message ("Window: tab_name_changed");
             var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
-            //var slot = mwcols.active_slot;
-
             GLib.File gfile;
-            //FM.Directory.View dview;
 
             if (relative_path != null) {
                 string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
@@ -575,12 +584,8 @@ message ("Window: tab_name_changed");
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = GLib.File.new_for_uri (uri);
-                    //dview = slot.view_box as FM.Directory.View;
-
-                    //dview.column_add_location (gfile);
-                    //slot = mwcols.get_last_slot ();
-                    mwcols.add_location (gfile);
+                    gfile = GLib.File.new_for_uri (uri);;
+                    mwcols.add_location (gfile, mwcols.current_slot);
                 }
             } else {
                 warning ("Invalid tip uri for Miller View");
@@ -860,13 +865,13 @@ message ("Window: tab_name_changed");
         static const Gtk.RadioActionEntry view_radio_entries[] = {
             { "view-as-icons", null,
               N_("Icon"), "<control>1", null,
-              ViewMode.ICON },
+              Marlin.ViewMode.ICON },
             { "view-as-detailed-list", null,
               N_("List"), "<control>2", null,
-              ViewMode.LIST },
+              Marlin.ViewMode.LIST },
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
-              ViewMode.MILLER }
+              Marlin.ViewMode.MILLER }
 
         };
     }

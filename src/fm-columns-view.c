@@ -19,7 +19,7 @@
 
 #include "fm-columns-view.h"
 #include "fm-list-model.h"
-#include "fm-directory-view.h"
+//#include "fm-directory-view.h"
 #include "marlin-global-preferences.h"
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
@@ -28,7 +28,7 @@
 #include "marlin-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
-#include "marlin-vala.h"
+//#include "marlin-vala.h"
 
 struct FMColumnsViewDetails {
     GList       *selection;
@@ -64,12 +64,19 @@ static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *
 static void
 list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
 {
+g_message ("list_selection_changed_callback");
     FMColumnsView *view = FM_COLUMNS_VIEW (user_data);
 
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
 
     view->details->selection = get_selection (view);
+
+GOFFile *file;
+if (view->details->selection != NULL  && (file = GOF_FILE (view->details->selection->data)) != NULL)
+g_message ("selection now %s ", gof_file_get_display_name (file));
+else
+g_message ("selection is null");
 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
@@ -85,7 +92,7 @@ fm_columns_view_item_hovered (ExoTreeView *exo_tree, GtkTreePath *path, FMColumn
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMColumnsView *view)
 {
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_DEFAULT);
 }
 
 static void
@@ -263,7 +270,7 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 static void
 fm_columns_view_sync_selection (FMDirectoryView *view)
 {
-    fm_directory_view_notify_selection_changed (view);
+    //fm_directory_view_notify_selection_changed (view);
 }
 
 static void
@@ -289,7 +296,7 @@ g_message ("%s - ", G_STRFUNC);
     //view->details->mwcols->updates_frozen = FALSE;
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
     if (!fm_directory_view_is_drag_pending (view))
-        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+        fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_DEFAULT);
 
     return FALSE;
 }
@@ -314,9 +321,14 @@ g_message ("%s - ", G_STRFUNC);
 
     /* Ignore event if another slot is waiting for a double click */
     //if (view->details->mwcols->updates_frozen && !view->details->awaiting_double_click)
-    if (fm_directory_view_slot_is_frozen (FM_DIRECTORY_VIEW (view)) && !view->details->awaiting_double_click)
+    if (fm_directory_view_is_frozen (FM_DIRECTORY_VIEW (view)) && !view->details->awaiting_double_click)
         return TRUE;
 
+    //gtk_widget_grab_focus (gtk_bin_get_child (GTK_BIN (view)));
+    //gtk_widget_grab_focus (GTK_WIDGET (tree_view));
+    //fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+
+g_message ("here5");
     gboolean on_path = gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL);
     gboolean on_blank = gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL);
     gboolean no_mods = (event->state & gtk_accelerator_get_default_mod_mask ()) == 0;
@@ -325,6 +337,7 @@ g_message ("%s - ", G_STRFUNC);
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
+g_message ("here4");
     if (no_mods && !on_path)
         gtk_tree_selection_unselect_all (selection);
 
@@ -344,13 +357,14 @@ g_message ("%s - ", G_STRFUNC);
                 GList *file_list = NULL;
                 file_list = fm_directory_view_get_selection (view);
                 GOFFile *file = GOF_FILE (file_list->data);
+g_message ("%s - selected %s", gof_file_get_display_name (file));
                 view->details->selected_folder = NULL;
                 if (gof_file_is_folder (file)) {
                     /*  ... store clicked folder and start double-click timeout */
                     view->details->selected_folder = file;
                     view->details->awaiting_double_click = TRUE;
                     //view->details->mwcols->updates_frozen = TRUE;
-                    //fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+                    fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
                     /* use short timeout to maintain responsiveness */
                     view->details->double_click_timeout_id = g_timeout_add (100,
                                                                             (GSourceFunc)fm_columns_not_double_click,
@@ -379,11 +393,15 @@ g_message ("%s - ", G_STRFUNC);
             /* select the path on which the user clicked if not selected yet */
             if (!gtk_tree_selection_path_is_selected (selection, path)) {
                 /* we don't unselect all other items if Control is active */
-                if ((event->state & GDK_CONTROL_MASK) == 0)
+                if ((event->state & GDK_CONTROL_MASK) == 0) {
+g_message ("%s - unselecting all", G_STRFUNC);
                     gtk_tree_selection_unselect_all (selection);
+}
+                if (!on_blank) {
+g_message ("%s - selecting path", G_STRFUNC);
 
-                if (!on_blank)
                     gtk_tree_selection_select_path (selection, path);
+}
             }
             /* queue the menu popup */
             fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
@@ -400,10 +418,11 @@ g_message ("%s - ", G_STRFUNC);
             gtk_tree_selection_unselect_all (selection);
             gtk_tree_selection_select_path (selection, path);
 
-            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
             finished = TRUE;
         }
     }
+g_message ("Returning %s", finished ? "true" : "false");
     return finished;
 }
 
@@ -411,9 +430,10 @@ static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton 
 {
 g_message ("%s - ", G_STRFUNC);
     if (g_settings_get_boolean (settings, "single-click")
-        && view->details->awaiting_double_click)
+    && view->details->awaiting_double_click) {
             return TRUE;
-
+g_message ("returning true");
+}
     return FALSE;
 }
 
@@ -448,7 +468,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         }
         if ((event->state & GDK_SHIFT_MASK) != 0) {
             /* alternate */
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
         } else {
             fm_directory_view_preview_selected_items (view);
         }
@@ -458,9 +478,9 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     case GDK_KEY_KP_Enter:
         if ((event->state & GDK_SHIFT_MASK) != 0) {
             /* alternate */
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
         } else {
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_DEFAULT);
         }
         handled = TRUE;
         break;
@@ -643,6 +663,9 @@ get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter 
 static GList *
 get_selection (FMColumnsView *view)
 {
+GOFDirectoryAsync *dir = fm_directory_view_get_current_directory ( FM_DIRECTORY_VIEW (view));
+GOFFile *file = dir->file;
+g_message ("Column view get selection for directory %s", gof_file_get_display_name (file));
     GList *list = NULL;
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);
@@ -653,6 +676,18 @@ get_selection (FMColumnsView *view)
 static GList *
 fm_columns_view_get_selection (FMDirectoryView *view)
 {
+    g_message ("%s -", G_STRFUNC);
+    GList *selection = FM_COLUMNS_VIEW (view)->details->selection;
+    if (selection != NULL) {
+        GOFFile *file = FM_COLUMNS_VIEW (view)->details->selection->data;
+        if (file != NULL) {
+            g_message ("Returning selection %s", gof_file_get_display_name (file));
+        }
+    }
+    else
+    {
+        g_message ("Returning null");
+    }
     return FM_COLUMNS_VIEW (view)->details->selection;
 }
 
@@ -762,13 +797,13 @@ fm_columns_view_finalize (GObject *object)
     g_debug ("%s\n", G_STRFUNC);
 
     /* Unload all the subdirectories in the loaded subdirectories list. */
-    GList *l = NULL;
-    for (l = view->loaded_subdirectories; l != NULL; l = l->next) {
-        GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
-        fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
-    }
+    //GList *l = NULL;
+    //for (l = view->loaded_subdirectories; l != NULL; l = l->next) {
+        //GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
+        //fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
+    //}
 
-    g_list_free (view->loaded_subdirectories);
+    //g_list_free (view->loaded_subdirectories);
 
     g_free (view->details->original_name);
     view->details->original_name = NULL;
@@ -791,7 +826,7 @@ fm_columns_view_init (FMColumnsView *view)
 {
     view->details = g_new0 (FMColumnsViewDetails, 1);
     view->details->selection = NULL;
-    view->loaded_subdirectories = NULL;
+    //view->loaded_subdirectories = NULL;
     view->details->double_click_timeout_id = 0;
     view->details->awaiting_double_click = FALSE;
     view->details->selected_folder = NULL;

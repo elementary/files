@@ -31,11 +31,11 @@ namespace Marlin.Places {
             STORAGE_CATEGORY
         }
 
-        enum ViewWindowOpenFlags {
-            DEFAULT,
-            NEW_TAB,
-            NEW_WINDOW
-        }
+//        enum Marlin.OpenFlag {
+//            DEFAULT,
+//            NEW_TAB,
+//            NEW_WINDOW
+//        }
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
@@ -123,13 +123,14 @@ namespace Marlin.Places {
         /* volume mounting - delayed open process */
         bool mounting = false;
         //GOF.Window.Slot go_to_after_mount_slot;
-        //ViewWindowOpenFlags go_to_after_mount_flags;
+        //Marlin.OpenFlag go_to_after_mount_flags;
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
         bool display_all_bookmarks = false;
 
         public Sidebar (Marlin.View.Window window) {
+//message ("New sidebar");
             init ();  //creates the Gtk.TreeModel store.
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -1040,7 +1041,7 @@ namespace Marlin.Places {
 
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
-                                             ViewWindowOpenFlags flags) {
+                                             Marlin.OpenFlag flags) {
             if (path == null)
                 return;
 
@@ -1054,12 +1055,12 @@ namespace Marlin.Places {
             if (uri != null) {
                 var location = File.new_for_uri (uri);
                 /* Navigate to the clicked location */
-                if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
-                    window.add_window (location);
-                } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
-                    window.add_tab (location);
+                if (flags == Marlin.OpenFlag.NEW_WINDOW) {
+                    window.add_window (location, Marlin.ViewMode.CURRENT);
+                } else if (flags == Marlin.OpenFlag.NEW_TAB) {
+                    window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    GOF.Window.Slot? slot = window.get_active_slot ();
+                    Marlin.View.Slot? slot = window.get_active_slot ();
                     if (slot != null)
                         GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
                 }
@@ -1084,10 +1085,10 @@ namespace Marlin.Places {
             }
         }
 
-        private void mount_volume (Volume volume, Gtk.MountOperation mount_op, ViewWindowOpenFlags flags) {
+        private void mount_volume (Volume volume, Gtk.MountOperation mount_op, Marlin.OpenFlag flags) {
             mounting = true;
             //go_to_after_mount_flags = flags;
-            Marlin.View.ViewContainer? slot = window.current_tab;
+            Marlin.View.ViewContainer? ctab = window.current_tab;
             volume.mount.begin (GLib.MountMountFlags.NONE,
                                 mount_op,
                                 null,
@@ -1096,15 +1097,15 @@ namespace Marlin.Places {
                     mounting = false;
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
-                    if (mount != null && slot != null) {
+                    if (mount != null && ctab != null) {
                         var location = mount.get_default_location ();
-                        if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
+                        if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location, window.get_screen ());
-                        } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
-                            window.add_tab (location);
+                        } else if (flags == Marlin.OpenFlag.NEW_TAB) {
+                            window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            slot.path_changed (location);
+                            ctab.path_changed (location, Marlin.OpenFlag.DEFAULT);
                         }
                     }
                 }
@@ -1558,7 +1559,7 @@ namespace Marlin.Places {
 
                 case Gdk.BUTTON_MIDDLE:
                     if (path != null && !category_at_path (path))
-                        open_selected_bookmark (store, path, ViewWindowOpenFlags.NEW_TAB);
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
 
                     break;
             }
@@ -1791,22 +1792,22 @@ namespace Marlin.Places {
 
 /* POPUP MENU CALLBACK FUNCTIONS */
 
-        private void open_shortcut_from_menu (ViewWindowOpenFlags flags) {
+        private void open_shortcut_from_menu (Marlin.OpenFlag flags) {
             Gtk.TreePath path;
             tree_view.get_cursor (out path, null);
             open_selected_bookmark (store, path, flags);
         }
 
         private void open_shortcut_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.DEFAULT);
+            open_shortcut_from_menu (Marlin.OpenFlag.DEFAULT);
         }
 
         private void open_shortcut_in_new_window_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.NEW_WINDOW);
+            open_shortcut_from_menu (Marlin.OpenFlag.NEW_WINDOW);
         }
 
         private void open_shortcut_in_new_tab_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.NEW_TAB);
+            open_shortcut_from_menu (Marlin.OpenFlag.NEW_TAB);
         }
 
         private void mount_shortcut_cb (Gtk.MenuItem item) {

@@ -76,7 +76,7 @@ public class GOF.CallWhenReady : Object {
 
         call_when_ready_list.remove (gof);
         if (call_when_ready_list == null) {
-            message ("call when ready OK - empty list");
+            //message ("call when ready OK - empty list");
             if (f != null)
                 f (files);
         }

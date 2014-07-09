@@ -28,6 +28,7 @@ namespace Marlin.View.Chrome
         public Marlin.View.Window win;
 
         public TopMenu (Marlin.View.Window window) {
+//message ("New TopMenu");
             win = window;
 
             win.button_back = new ButtonWithMenu.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
@@ -67,7 +68,7 @@ namespace Marlin.View.Chrome
             });
 
             location_bar.activate_alternate.connect ((file) => {
-                win.add_tab (file);
+                win.add_tab (file, Marlin.ViewMode.CURRENT);
             });
 
             

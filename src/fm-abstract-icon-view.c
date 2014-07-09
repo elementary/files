@@ -102,7 +102,7 @@ static void
 fm_abstract_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMAbstractIconView *view)
 {
     //TODO make alternate
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_DEFAULT);
 }
 
 static void
@@ -325,10 +325,13 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
     const char *ui;
 
     g_assert (FM_IS_ABSTRACT_ICON_VIEW (view));
-
-    FM_DIRECTORY_VIEW_CLASS (fm_abstract_icon_view_parent_class)->merge_menus (view);
-
     icon_view = FM_ABSTRACT_ICON_VIEW (view);
+
+    if (icon_view->details->icon_merge_id > 0) {
+//g_message ("icon_merge_id non zero - %u -  returning", icon_view->details->icon_merge_id );
+        return;
+    }
+
     ui_manager = fm_directory_view_get_ui_manager (view);
 
     action_group = gtk_action_group_new ("IconViewActions");
@@ -347,6 +350,7 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
                                         G_CALLBACK (action_sort_radio_callback),
                                         icon_view);
 
+//g_message ("%s - inserting IconDirView action group", G_STRFUNC);
     gtk_ui_manager_insert_action_group (ui_manager, action_group, 0);
     g_object_unref (action_group);
 
@@ -362,6 +366,8 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
                                   current_dir->file->sort_order);
 
+    FM_DIRECTORY_VIEW_CLASS (fm_abstract_icon_view_parent_class)->merge_menus (view);
+
 }
 
 static void
@@ -369,16 +375,19 @@ fm_abstract_icon_view_unmerge_menus (FMDirectoryView *view)
 {
     FMAbstractIconView *icon_view;
     GtkUIManager *ui_manager;
-
-    FM_DIRECTORY_VIEW_CLASS (fm_abstract_icon_view_parent_class)->unmerge_menus (view);
-
     icon_view = FM_ABSTRACT_ICON_VIEW (view);
+
+    if (icon_view->details->icon_action_group == NULL)
+        return;
+
+//g_message ("%s - ", G_STRFUNC);
     ui_manager = fm_directory_view_get_ui_manager (view);
     if (ui_manager != NULL) {
         eel_ui_unmerge_ui (ui_manager,
                            &icon_view->details->icon_merge_id,
                            &icon_view->details->icon_action_group);
     }
+    FM_DIRECTORY_VIEW_CLASS (fm_abstract_icon_view_parent_class)->unmerge_menus (view);
 }
 
 static void
@@ -449,7 +458,7 @@ fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
 static void
 fm_abstract_icon_view_sync_selection (FMDirectoryView *view)
 {
-    fm_directory_view_notify_selection_changed (view);
+    //fm_directory_view_notify_selection_changed (view);
 }
 
 static gboolean
@@ -459,7 +468,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMAbstract
     GtkTreeIter     iter;
     GtkAction       *action;
     GOFFile         *file;
-g_message ("fm abstract icon view %s -", G_STRFUNC);
+//g_message ("fm abstract icon view %s -", G_STRFUNC);
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
@@ -499,7 +508,7 @@ g_message ("fm abstract icon view %s -", G_STRFUNC);
             exo_icon_view_unselect_all (view->icons);
             exo_icon_view_select_path (view->icons, path);
 
-            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
 
             /* cleanup */
             gtk_tree_path_free (path);
@@ -539,7 +548,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         }
         if ((event->state & GDK_SHIFT_MASK) != 0) {
             /* alternate */
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
         } else {
             fm_directory_view_preview_selected_items (view);
         }
@@ -549,9 +558,9 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     case GDK_KEY_KP_Enter:
         if ((event->state & GDK_SHIFT_MASK) != 0) {
             /* alternate */
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_NEW_TAB);
         } else {
-            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_OPEN_FLAG_DEFAULT);
         }
         handled = TRUE;
         break;

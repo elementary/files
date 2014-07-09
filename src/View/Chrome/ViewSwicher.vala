@@ -25,19 +25,19 @@ namespace Marlin.View.Chrome {
     public class ViewSwitcher : Gtk.Box {
         public Granite.Widgets.ModeButton switcher;
 
-        private ViewMode _mode;
-        public ViewMode mode {
+        private int _mode;
+        public int mode {
         //private ViewMode mode{
             set {
                 Gtk.Widget target;
                 int active_index;
 
-                switch (value) {
-                case ViewMode.LIST:
+                switch ((Marlin.ViewMode)value) {
+                case Marlin.ViewMode.LIST:
                     target = list;
                     active_index = 1;
                     break;
-                case ViewMode.MILLER:
+                case Marlin.ViewMode.MILLER:
                     target = miller;
                     active_index = 2;
                     break;
@@ -81,16 +81,16 @@ namespace Marlin.View.Chrome {
             miller.tooltip_text = _("View in Columns");
             switcher.append (miller);
 
-            mode = (ViewMode) Preferences.settings.get_enum("default-viewmode");
+            mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
-            switcher.mode_changed.connect ((mode) => {
+            switcher.mode_changed.connect ((image) => {
                 Gtk.Action action;
 
                 //You cannot do a switch here, only for int and string
-                if (mode == list) {
+                if (image == list) {
                     action = main_actions.get_action ("view-as-detailed-list");
                     action.activate ();
-                } else if (mode == miller) {
+                } else if (image == miller) {
                     action = main_actions.get_action ("view-as-columns");
                     action.activate ();
                 } else {

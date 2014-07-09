@@ -42,18 +42,20 @@ pkg_check_modules (UNITY unity>=4.0.0)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
+        View/Slot.vala
         Application.vala
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
-        MillerView.vala
+#        MarlinEnums.vala
+        #MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
-        Slot.vala
+        #Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -63,9 +65,10 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/ViewMode.vala
+#        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
+        View/Miller.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
@@ -102,11 +105,12 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
-        MillerView.vala
+#        MarlinEnums.vala
+        #MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
-        Slot.vala
+        #Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -116,9 +120,11 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/ViewMode.vala
+#        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
+        View/Slot.vala
+        View/Miller.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala

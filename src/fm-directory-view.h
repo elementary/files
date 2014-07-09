@@ -71,6 +71,7 @@ struct FMDirectoryView {
     GtkCellRenderer         *name_renderer;
     MarlinZoomLevel         zoom_level;
     gboolean                updates_frozen;
+    gboolean                active;
     const gchar* empty_message;
 
     FMDirectoryViewDetails  *details;
@@ -97,8 +98,8 @@ struct FMDirectoryViewClass {
     void    (* add_file) 		 (FMDirectoryView *view,
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
-    void    (* directory_loaded) (FMDirectoryView *view,
-                                          GOFDirectoryAsync *directory);
+    //void    (* directory_loaded) (FMDirectoryView *view,
+                                          //GOFDirectoryAsync *directory);
     void    (* sync_selection)	         (FMDirectoryView *view);
 
 
@@ -262,14 +263,14 @@ struct FMDirectoryViewClass {
     void    (* merge_menus)         	(FMDirectoryView *view);
     void    (* unmerge_menus)         	(FMDirectoryView *view);
 
-#if 0
+
     /* update_menus is a function pointer that subclasses can override to
      * update the sensitivity or wording of menu items in the menu bar.
      * It is called (at least) whenever the selection changes. If overridden,
      * subclasses must call parent class's function.
      */
-    //void    (* update_menus)         	(FMDirectoryView *view);
-
+    void    (* update_menus)         	(FMDirectoryView *view);
+#if 0
     /* sort_files is a function pointer that subclasses can override
      * to provide a sorting order to determine which files should be
      * presented when only a partial list is provided.
@@ -403,6 +404,16 @@ struct FMDirectoryViewClass {
                                          GtkTreePath **end_path);
     void         (*zoom_normal)         (FMDirectoryView *view);
     void         (*zoom_level_changed)  (FMDirectoryView *view);
+
+    /* Signal a path change request */
+    void        (*change_path)          (FMDirectoryView *view,
+                                         GFile new_location, gboolean make_root, MarlinOpenFlag flag);
+    /* Signal request to trash specifed files */
+    gboolean        (*trash_files)          (FMDirectoryView *view, GList *locations);
+    /* Signal request to delete specifed files */
+    gboolean        (*delete_files)          (FMDirectoryView *view, GList *locations);
+    /* Signal request to restore specifed GOF files */
+    gboolean        (*restore_files)          (FMDirectoryView *view, GList *files);
 };
 
 /* GObject support */
@@ -411,7 +422,7 @@ void    fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryA
 void    fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 //void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
-void    fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWindowOpenFlags flags);
+void    fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinOpenFlag flag);
 void    fm_directory_view_preview_selected_items (FMDirectoryView *view);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_item_hovered (FMDirectoryView *view, GtkTreePath *path);
@@ -435,17 +446,24 @@ void    fm_directory_view_zoom_in (FMDirectoryView *view);
 void    fm_directory_view_zoom_out (FMDirectoryView *view);
 void    fm_directory_view_zoom_normal (FMDirectoryView *view);
 gboolean fm_directory_view_get_loading (FMDirectoryView *view);
-void    fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
+//void    fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
 GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *view);
 
 GList   *fm_directory_view_get_open_with_apps (FMDirectoryView *view);
 GAppInfo *fm_directory_view_get_default_app (FMDirectoryView *view);
 
 void    fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view);
+void    fm_directory_view_set_select_added_files (FMDirectoryView *view, gboolean select);
 void    fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file);
 void    fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files);
 
 void    fm_directory_view_load_root_location (FMDirectoryView *directory_view, GFile *location);
-gboolean fm_directory_view_slot_is_frozen (FMDirectoryView *view);
+gboolean fm_directory_view_is_frozen (FMDirectoryView *view);
+
+void    fm_directory_view_clear_model (FMDirectoryView *view);
+FMListModel    *fm_directory_view_get_model (FMDirectoryView *view);
+void    fm_directory_view_set_selection_was_removed (FMDirectoryView *view, gboolean was_removed);
+void    fm_directory_view_update_menus (FMDirectoryView *view);
+
 
 #endif /* FM_DIRECTORY_VIEW_H */

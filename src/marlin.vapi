@@ -16,21 +16,39 @@ namespace FM {
         public class View : Gtk.ScrolledWindow {
             public View ();
             public string empty_message;
-            public void set_slot (GOF.Window.Slot slot);
-            public void colorize_selection (int color);
-            public signal void sync_selection ();
+            //public void set_slot (GOF.Window.Slot slot);
+            public void set_active (bool active);
+            public bool active;
+            public bool is_frozen ();
+            public bool updates_frozen;
+            public void dir_action_set_sensitive (string action_name, bool sensitive);
+            //public void colorize_selection (int color);
             public void notify_selection_changed ();
             public unowned GLib.List<GOF.File> get_selection ();
             public void select_first_for_empty_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
+            public void update_menus ();
             public void zoom_in ();
             public void zoom_out ();
             public void zoom_normal ();
+            public Marlin.ZoomLevel zoom_level;
             public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
             public GLib.AppInfo? get_default_app ();
             public void select_glib_files (GLib.List files);
-            public void column_add_location (GLib.File file);
+            public void set_select_added_files (bool select);
+            public void set_selection_was_removed (bool was_removed);
+            //public void column_add_location (GLib.File file);
+            public void clear_model ();
+            public unowned FM.ListModel get_model ();
+            public virtual signal void add_file (GOF.File file, GOF.Directory.Async dir);
+            public signal void sync_selection ();
+            public signal void change_path (GLib.File location, Marlin.OpenFlag flag);
+            public signal void trash_files (GLib.List<GLib.File> locations);
+            public signal void delete_files (GLib.List<GLib.File> locations);
+            public signal void restore_files (GLib.List<GOF.File> files);
+            //public virtual signal void sync_selection ();
+ 
         }
     }
     [CCode (cprefix = "FMIcon", lower_case_cprefix = "fm_icon_")]
@@ -150,11 +168,20 @@ namespace Marlin {
         public void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
         [CCode (cheader_filename = "marlin-file-operations.h")]
         public void unmount_mount_full (Gtk.Window? parent_window, GLib.Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
+        [CCode (cheader_filename = "marlin-file-operations.h")]
+        public void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
+        [CCode (cheader_filename = "marlin-file-operations.h")]
+        public void @delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
     }
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void UnmountCallback (void* callback_data);
+
+    [CCode (cheader_filename = "marlin-file-utilities.h")]
+    public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);
+    [CCode (cheader_filename = "marlin-file-utilities.h")]
+    public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all);
 
     [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum ZoomLevel {
@@ -168,6 +195,7 @@ namespace Marlin {
         N_LEVELS
     }
 
+    [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum IconSize {
         SMALLEST = 16,
         SMALLER  = 24,
@@ -182,4 +210,22 @@ namespace Marlin {
     public Gtk.IconSize zoom_level_to_stock_icon_size (ZoomLevel zoom);
     [CCode (cheader_filename = "marlin-enum-types.h")]
     public Marlin.IconSize zoom_level_to_icon_size (ZoomLevel zoom);
+
+    [CCode (cheader_filename = "marlin-view-window.h")]
+    public enum OpenFlag {
+        DEFAULT,
+        NEW_ROOT,
+        NEW_TAB,
+        NEW_WINDOW
+    }
+
+    [CCode (cheader_filename = "marlin-view-window.h")]
+    public enum ViewMode {
+        ICON,
+        LIST,
+        MILLER,
+        CURRENT,
+        PREFERRED,
+        INVALID
+    }    
 }

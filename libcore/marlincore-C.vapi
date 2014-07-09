@@ -16,6 +16,8 @@ namespace FM
     {
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
+        public void remove_file (GOF.File file, GOF.Directory.Async dir);
+        public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File file_for_path(Gtk.TreePath path);
     }
 }
@@ -78,6 +80,8 @@ namespace Marlin
         public Gdk.Pixbuf get_pixbuf_nodefault();
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
         public static void clear_caches ();
+        public static void remove_cache (string path, int size);
+        public static void infos_caches ();
     }
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : GLib.Object

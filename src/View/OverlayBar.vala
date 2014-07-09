@@ -39,6 +39,7 @@ namespace Marlin.View {
 
         public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay)
         {
+//message ("New Overlay Bar");
             base (overlay);
 
             window = win;
@@ -73,7 +74,7 @@ namespace Marlin.View {
                 list.prepend (file);
                 real_update (list);
             } else {
-                GOF.Window.Slot slot = window.current_tab.slot;
+                Marlin.View.Slot slot = window.current_tab.slot;
                 if (slot != null) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     real_update (list);

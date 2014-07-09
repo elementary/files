@@ -23,6 +23,7 @@ private Mutex dir_cache_lock;
 public class GOF.Directory.Async : Object {
     public GLib.File location;
     public GOF.File file;
+    public int icon_size;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
@@ -168,7 +169,7 @@ public class GOF.Directory.Async : Object {
                     file_loaded (gof);
                 }
             }
-message ("emitting done loading 1");
+            //done_loading ();
             done_loading ();
         }
     }
@@ -191,7 +192,7 @@ message ("emitting done loading 1");
                 }
             }
         }
-message ("emitting done loading 2");
+        //done_loading ();
         done_loading ();
     }
 
@@ -290,7 +291,7 @@ message ("emitting done loading 2");
         }
 
         //TODO send err code
-message ("emitting done loading 3");
+        //done_loading ();
         done_loading ();
     }
 
@@ -351,7 +352,6 @@ message ("emitting done loading 3");
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
             longest_file_name = gof.basename;
-message ("emitting done loading 4");
             done_loading ();
         }
     }
@@ -621,7 +621,6 @@ message ("emitting done loading 4");
     }
 
     /* Thumbnail loading */
-    public int icon_size;
     private uint timeout_thumbsq = 0;
     private bool thumbs_stop;
     private bool thumbs_thread_running;
@@ -682,6 +681,9 @@ message ("emitting done loading 4");
     }
 
     public void queue_load_thumbnails (int size) {
+        if (this.state == State.LOADING)
+            return;
+
         /* Do not interrupt loading thumbs at same size for this folder */
         if (icon_size == size && thumbs_thread_running)
             return;

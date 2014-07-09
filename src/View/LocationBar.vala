@@ -51,6 +51,7 @@ namespace Marlin.View.Chrome
         }
 
         public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
+//message ("New LocationBar");
             this.win = win;
             bread = new Breadcrumbs (ui, win);
             bread.escape.connect (() => { escape(); });
@@ -294,7 +295,7 @@ namespace Marlin.View.Chrome
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                win.add_tab (File.new_for_uri (current_right_click_path));
+                win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
             // Then the "Open with" menuitem is added to the menu.

@@ -110,8 +110,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         view = _view;
         files = _files.copy ();
         count = files.length();
+message ("PropertiesWindow: files length is %u", files.length ());
         goffile = (GOF.File) files.data;
-
+message ("goffile is %s", goffile.get_display_name ());
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
         {
