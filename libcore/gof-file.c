@@ -631,8 +631,8 @@ void gof_file_update_icon (GOFFile *file, gint size)
     if (!(file->pix == NULL || file->pix_size != size))
         return;
     /* Don't load thumbnails they would be loaded asyncronously */
-    if (!(file->flags == 0 || file->pix == NULL))
-        return;
+    //if (!(file->flags == 0 || file->pix == NULL))
+    //    return;
 
     //g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
     gof_file_update_icon_internal (file, size);
