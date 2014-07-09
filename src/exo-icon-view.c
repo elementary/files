@@ -357,7 +357,8 @@ static void                 exo_icon_view_accessible_set_adjustment      (AtkObj
                                                                           GtkAdjustment          *adjustment);
 static void                 exo_icon_view_adjustment_changed             (GtkAdjustment          *adjustment,
                                                                           ExoIconView            *icon_view);
-static void                 exo_icon_view_layout                         (ExoIconView            *icon_view);
+static void                 exo_icon_view_layout                         (ExoIconView            *icon_view,
+                                                                          gboolean                 queue_draw);
 static void                 exo_icon_view_paint_item                     (ExoIconView            *icon_view,
                                                                           cairo_t                *cr,
                                                                           ExoIconViewItem        *item,
@@ -1765,7 +1766,6 @@ static void
 exo_icon_view_allocate_children (ExoIconView *icon_view)
 {
     GList *list;
-
     for (list = icon_view->priv->children; list; list = list->next)
     {
         ExoIconViewChild *child = list->data;
@@ -1796,7 +1796,7 @@ exo_icon_view_size_allocate (GtkWidget      *widget,
                            MAX (icon_view->priv->height, allocation->height));
     }
 
-    exo_icon_view_layout (icon_view);
+    //exo_icon_view_layout (icon_view);
 
     exo_icon_view_allocate_children (icon_view);
 
@@ -1839,6 +1839,8 @@ exo_icon_view_draw (GtkWidget *widget,
     ExoIconViewItem *dest_item = NULL;
 
     icon_view = EXO_ICON_VIEW (widget);
+
+    exo_icon_view_layout (icon_view, FALSE);
 
     if (!gtk_cairo_should_draw_window (cr, icon_view->priv->bin_window))
         return FALSE;
@@ -3031,8 +3033,10 @@ exo_icon_view_process_updates (ExoIconView *icon_view)
      * do it now that all cell view items have valid sizes before we proceeed
      * (and resize the bin_window if required).
      */
-    if (icon_view->priv->layout_idle_id != 0)
-        exo_icon_view_layout (icon_view);
+    if (icon_view->priv->layout_idle_id != 0) {
+        exo_icon_view_layout (icon_view, TRUE);
+        //gtk_widget_queue_draw (GTK_WIDGET (icon_view));
+    }
 
     gdk_window_process_updates (icon_view->priv->bin_window, TRUE);
 }
@@ -3205,6 +3209,7 @@ exo_icon_view_layout_single_row (ExoIconView *icon_view,
     GList *items, *last_item;
     gint col;
     gint max_height = 0;
+    gint natural_height = 0;
     gboolean rtl;
 
     rtl = gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
@@ -3270,7 +3275,7 @@ exo_icon_view_layout_single_row (ExoIconView *icon_view,
 
     last_item = items;
 
-    gtk_cell_area_context_get_preferred_height_for_width (context, item_width, &max_height, NULL);
+    gtk_cell_area_context_get_preferred_height_for_width (context, item_width, &max_height, &natural_height);
     gtk_cell_area_context_allocate (context, item_width, max_height);
 
     /* In the second loop the item height has been aligned and derived and
@@ -3428,7 +3433,7 @@ adjust_wrap_width (ExoIconView *icon_view)
 }
 
 static void
-exo_icon_view_layout (ExoIconView *icon_view)
+exo_icon_view_layout (ExoIconView *icon_view, gboolean queue_draw)
 {
     GtkAllocation allocation;
     GtkWidget *widget;
@@ -3569,7 +3574,8 @@ exo_icon_view_layout (ExoIconView *icon_view)
         gtk_tree_path_free (path);
     }
 
-    gtk_widget_queue_draw (widget);
+    if (queue_draw)
+        gtk_widget_queue_draw (widget);
 }
 
 /* This ensures that all widths have been cached in the
@@ -3823,7 +3829,8 @@ layout_callback (gpointer user_data)
     ExoIconView *icon_view;
 
     icon_view = EXO_ICON_VIEW (user_data);
-    exo_icon_view_layout (icon_view);
+    exo_icon_view_layout (icon_view, TRUE);
+    //gtk_widget_queue_draw (GTK_WIDGET (icon_view));
     icon_view->priv->layout_idle_id = 0;
 
     return FALSE;
@@ -11602,4 +11609,3 @@ get_child_widget_for_item (ExoIconView *icon_view, const ExoIconViewItem *item)
     }
     return NULL;
 }
-
