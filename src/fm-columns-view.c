@@ -64,7 +64,7 @@ static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *
 static void
 list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
 {
-g_message ("list_selection_changed_callback");
+//g_message ("list_selection_changed_callback");
     FMColumnsView *view = FM_COLUMNS_VIEW (user_data);
 
     if (view->details->selection != NULL)
@@ -73,10 +73,10 @@ g_message ("list_selection_changed_callback");
     view->details->selection = get_selection (view);
 
 GOFFile *file;
-if (view->details->selection != NULL  && (file = GOF_FILE (view->details->selection->data)) != NULL)
-g_message ("selection now %s ", gof_file_get_display_name (file));
-else
-g_message ("selection is null");
+//if (view->details->selection != NULL  && (file = GOF_FILE (view->details->selection->data)) != NULL)
+//g_message ("selection now %s ", gof_file_get_display_name (file));
+//else
+//g_message ("selection is null");
 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
@@ -277,7 +277,7 @@ static void
 fm_columns_cancel_await_double_click (FMColumnsView *view)
 {
     if (view->details->awaiting_double_click) {
-g_message ("%s - ", G_STRFUNC);
+//g_message ("%s - ", G_STRFUNC);
         g_source_remove (view->details->double_click_timeout_id);
         view->details->double_click_timeout_id = 0;
         view->details->awaiting_double_click = FALSE;
@@ -291,7 +291,7 @@ fm_columns_not_double_click (FMColumnsView *view)
 {
     g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
     g_return_val_if_fail (view->details->double_click_timeout_id != 0, FALSE);
-g_message ("%s - ", G_STRFUNC);
+//g_message ("%s - ", G_STRFUNC);
     view->details->awaiting_double_click = FALSE;
     //view->details->mwcols->updates_frozen = FALSE;
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
@@ -315,7 +315,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
         return FALSE;
 
-g_message ("%s - ", G_STRFUNC);
+//g_message ("%s - ", G_STRFUNC);
 //    if (view->details->mwcols == NULL)
 //        view->details->mwcols = fm_directory_view_get_marlin_window_columns (FM_DIRECTORY_VIEW (view));
 
@@ -328,7 +328,7 @@ g_message ("%s - ", G_STRFUNC);
     //gtk_widget_grab_focus (GTK_WIDGET (tree_view));
     //fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
 
-g_message ("here5");
+//g_message ("here5");
     gboolean on_path = gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL);
     gboolean on_blank = gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL);
     gboolean no_mods = (event->state & gtk_accelerator_get_default_mod_mask ()) == 0;
@@ -337,7 +337,7 @@ g_message ("here5");
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
-g_message ("here4");
+//g_message ("here4");
     if (no_mods && !on_path)
         gtk_tree_selection_unselect_all (selection);
 
@@ -357,7 +357,7 @@ g_message ("here4");
                 GList *file_list = NULL;
                 file_list = fm_directory_view_get_selection (view);
                 GOFFile *file = GOF_FILE (file_list->data);
-g_message ("%s - selected %s", gof_file_get_display_name (file));
+//g_message ("%s - selected %s", gof_file_get_display_name (file));
                 view->details->selected_folder = NULL;
                 if (gof_file_is_folder (file)) {
                     /*  ... store clicked folder and start double-click timeout */
@@ -394,11 +394,11 @@ g_message ("%s - selected %s", gof_file_get_display_name (file));
             if (!gtk_tree_selection_path_is_selected (selection, path)) {
                 /* we don't unselect all other items if Control is active */
                 if ((event->state & GDK_CONTROL_MASK) == 0) {
-g_message ("%s - unselecting all", G_STRFUNC);
+//g_message ("%s - unselecting all", G_STRFUNC);
                     gtk_tree_selection_unselect_all (selection);
 }
                 if (!on_blank) {
-g_message ("%s - selecting path", G_STRFUNC);
+//g_message ("%s - selecting path", G_STRFUNC);
 
                     gtk_tree_selection_select_path (selection, path);
 }
@@ -422,17 +422,17 @@ g_message ("%s - selecting path", G_STRFUNC);
             finished = TRUE;
         }
     }
-g_message ("Returning %s", finished ? "true" : "false");
+//g_message ("Returning %s", finished ? "true" : "false");
     return finished;
 }
 
 static gboolean button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
 {
-g_message ("%s - ", G_STRFUNC);
+//g_message ("%s - ", G_STRFUNC);
     if (g_settings_get_boolean (settings, "single-click")
     && view->details->awaiting_double_click) {
             return TRUE;
-g_message ("returning true");
+//g_message ("returning true");
 }
     return FALSE;
 }
@@ -665,7 +665,7 @@ get_selection (FMColumnsView *view)
 {
 GOFDirectoryAsync *dir = fm_directory_view_get_current_directory ( FM_DIRECTORY_VIEW (view));
 GOFFile *file = dir->file;
-g_message ("Column view get selection for directory %s", gof_file_get_display_name (file));
+//g_message ("Column view get selection for directory %s", gof_file_get_display_name (file));
     GList *list = NULL;
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);
@@ -676,17 +676,17 @@ g_message ("Column view get selection for directory %s", gof_file_get_display_na
 static GList *
 fm_columns_view_get_selection (FMDirectoryView *view)
 {
-    g_message ("%s -", G_STRFUNC);
+    //g_message ("%s -", G_STRFUNC);
     GList *selection = FM_COLUMNS_VIEW (view)->details->selection;
     if (selection != NULL) {
         GOFFile *file = FM_COLUMNS_VIEW (view)->details->selection->data;
         if (file != NULL) {
-            g_message ("Returning selection %s", gof_file_get_display_name (file));
+            //g_message ("Returning selection %s", gof_file_get_display_name (file));
         }
     }
     else
     {
-        g_message ("Returning null");
+        //g_message ("Returning null");
     }
     return FM_COLUMNS_VIEW (view)->details->selection;
 }

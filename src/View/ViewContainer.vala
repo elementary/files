@@ -253,13 +253,13 @@ namespace Marlin.View {
         }
 
         public void change_view_mode (Marlin.ViewMode mode) {
-            mode = real_mode (mode);
-            if (mode != view_mode)
                 change_view (mode, null);
         }
 
         private void change_view (Marlin.ViewMode mode, GLib.File? location) {
 //message ("ViewContainer: change view");
+            /* Convert "Current" and "Preferred" modes to actual view modes */
+            mode = real_mode (mode);
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
