@@ -1796,8 +1796,6 @@ exo_icon_view_size_allocate (GtkWidget      *widget,
                            MAX (icon_view->priv->height, allocation->height));
     }
 
-    //exo_icon_view_layout (icon_view);
-
     exo_icon_view_allocate_children (icon_view);
 
     /* Delay signal emission */
@@ -3035,7 +3033,6 @@ exo_icon_view_process_updates (ExoIconView *icon_view)
      */
     if (icon_view->priv->layout_idle_id != 0) {
         exo_icon_view_layout (icon_view, TRUE);
-        //gtk_widget_queue_draw (GTK_WIDGET (icon_view));
     }
 
     gdk_window_process_updates (icon_view->priv->bin_window, TRUE);
@@ -3830,7 +3827,6 @@ layout_callback (gpointer user_data)
 
     icon_view = EXO_ICON_VIEW (user_data);
     exo_icon_view_layout (icon_view, TRUE);
-    //gtk_widget_queue_draw (GTK_WIDGET (icon_view));
     icon_view->priv->layout_idle_id = 0;
 
     return FALSE;

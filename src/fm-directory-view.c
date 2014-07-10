@@ -322,7 +322,7 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
         }
     }
 
-    // redraw the view to remove file form ui
+    // redraw the view to remove file from ui
     gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
