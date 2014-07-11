@@ -347,9 +347,6 @@ namespace Marlin.View {
                     /* sync selection */
                     if (cur_slot.view_box != null && !current_tab.content_shown) {
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
-
-                        // refresh the view to make sure the icons are rendered at the correct size
-                        current_tab.reload();
                     }
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
