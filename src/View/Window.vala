@@ -314,7 +314,6 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
-
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null)
                 return current_tab.get_active_slot ();
