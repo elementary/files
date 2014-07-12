@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-05-06 00:11+0000\n"
-"Last-Translator: Tobias Bannert <Unknown>\n"
+"PO-Revision-Date: 2014-07-11 11:33+0000\n"
+"Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-06-04 06:23+0000\n"
-"X-Generator: Launchpad (build 17031)\n"
+"X-Launchpad-Export-Date: 2014-07-12 06:53+0000\n"
+"X-Generator: Launchpad (build 17111)\n"
 "Language: de\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -291,11 +291,11 @@ msgstr "_Wiederholen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:625
 msgid "Open _Parent"
-msgstr "_Übergeordnetes Verzeichnis öffnen"
+msgstr "_Übergeordneten Ordner öffnen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:626
 msgid "Open the parent folder"
-msgstr "Das übergeordnete Verzeichnis öffnen"
+msgstr "Den übergeordneten Ordner öffnen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:628
 msgid "_Back"
@@ -401,7 +401,7 @@ msgstr "Ein Problem melden …"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:692
 msgid "File a bug on Launchpad"
-msgstr "Einen Fehler auf Launchpad berichten"
+msgstr "Einen Fehler auf Launchpad melden"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:695
 msgid "Get Help Online..."
@@ -945,7 +945,7 @@ msgstr "Weiter"
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr "_Verbinde"
+msgstr "_Verbinden"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
@@ -1147,7 +1147,7 @@ msgstr "Dateiverwaltung"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr "Neues Fenster Als _Administrator"
+msgstr "Neues Fenster als _Administrator"
 
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -2007,7 +2007,7 @@ msgstr "Auswerfen von %V nicht möglich"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
 msgid "Unable to unmount %V"
-msgstr "%V kann nicht ausgehangen werden"
+msgstr "%V kann nicht ausgehängt werden"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
 msgid "Do you want to empty the trash before you unmount?"
@@ -2310,7 +2310,7 @@ msgstr "Dateien werden kopiert"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4745
 msgid "Preparing to move to \"%B\""
-msgstr "Verschieben nach \"%B\" wird vorbereitet"
+msgstr "Verschieben nach »%B« wird vorbereitet"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
 #, c-format
@@ -2439,7 +2439,7 @@ msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
 msgid "Cut the selected text to the clipboard"
-msgstr "Den markierten Text in die Zwischenablage ausschneiden"
+msgstr "Den markierten Text in die Zwischenablage verschieben"
 
 #: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
 msgid "Copy the selected text to the clipboard"
