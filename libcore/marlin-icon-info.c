@@ -404,6 +404,8 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     //GdkPixbuf *scaled_pixbuf = NULL;
 
     g_return_val_if_fail (icon && G_IS_ICON (icon), NULL);
+    size = MAX (1, size);
+
     if (G_IS_LOADABLE_ICON (icon)) {
         LoadableIconKey lookup_key;
         LoadableIconKey *key;
@@ -458,7 +460,10 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         gdk_pixbuf_get_file_info (str_icon, &width, &height);
         if ((width >= 1 || width == -1) && (height >= 1 || height == -1))
+{
+//g_message ("new pixbuf 1 width %i, height %i, size %i", width, height, size);
             pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, MIN (width, size), MIN (height, size), NULL);
+}
         /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
         icon_info->pixbuf = pixbuf;*/
         if (pixbuf != NULL) {
@@ -556,7 +561,7 @@ marlin_icon_info_lookup_from_name (const char *name, int size)
 {
     GIcon *icon;
     MarlinIconInfo *info;
-
+    g_return_val_if_fail (size >= 1, NULL);
     icon = g_themed_icon_new (name);
     info = marlin_icon_info_lookup (icon, size);
     g_object_unref (icon);
@@ -570,7 +575,7 @@ marlin_icon_info_lookup_from_path (const char *path, int size)
     GFile *icon_file;
     GIcon *icon;
     MarlinIconInfo *info;
-
+    g_return_val_if_fail (size >= 1, NULL);
     icon_file = g_file_new_for_path (path);
     icon = g_file_icon_new (icon_file);
     info = marlin_icon_info_lookup (icon, size);

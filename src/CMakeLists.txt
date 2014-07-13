@@ -58,6 +58,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         #Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
+        View/DirectoryView.vala
         View/Window.vala
         View/Resources.vala
         View/DbusTags.vala
@@ -113,6 +114,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         #Slot.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
+        View/DirectoryView.vala
         View/Window.vala
         View/Resources.vala
         View/DbusTags.vala

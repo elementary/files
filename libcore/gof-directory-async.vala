@@ -23,7 +23,7 @@ private Mutex dir_cache_lock;
 public class GOF.Directory.Async : Object {
     public GLib.File location;
     public GOF.File file;
-    public int icon_size;
+    public int icon_size = 16;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
@@ -591,6 +591,14 @@ public class GOF.Directory.Async : Object {
         return file.directory;
     }
 
+    public bool is_loading () {
+        return this.state == State.LOADING;
+    }
+
+    public bool is_loaded () {
+        return this.state == State.LOADED;
+    }
+
     public bool is_empty () {
         uint file_hash_count = 0;
 
@@ -681,13 +689,18 @@ public class GOF.Directory.Async : Object {
     }
 
     public void queue_load_thumbnails (int size) {
+message ("queue_load_thumbnails");
         if (this.state == State.LOADING)
+{
+message ("Loading - returning");
             return;
+}
 
         /* Do not interrupt loading thumbs at same size for this folder */
         if (icon_size == size && thumbs_thread_running)
             return;
 
+message ("Async  setting icon_size to %i", size);
         icon_size = size;
         thumbs_stop = true;
 

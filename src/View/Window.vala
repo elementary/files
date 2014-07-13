@@ -22,7 +22,7 @@
 
 namespace Marlin.View {
 
-    public class Window : Gtk.Window
+    public class Window : Gtk.ApplicationWindow
     {
         public Gtk.UIManager ui;
         private UndoManager undo_manager;

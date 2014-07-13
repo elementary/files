@@ -320,7 +320,7 @@ gof_file_update_type (GOFFile *file)
 
     gof_file_update_formated_type (file);
     /* update icon */
-    //g_message ("%s build new icon", G_STRFUNC);
+//g_message ("%s build new icon", G_STRFUNC);
     file->icon = g_content_type_get_icon (ftype);
     gof_file_update_icon_internal (file, file->pix_size);
     gof_file_icon_changed (file);
@@ -358,7 +358,7 @@ gof_file_update (GOFFile *file)
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
-        /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
+        /*//g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
@@ -512,6 +512,7 @@ gof_file_update (GOFFile *file)
 static MarlinIconInfo *
 gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
+//g_message ("%s - size %i", G_STRFUNC, size);
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name))
             return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
@@ -540,7 +541,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     GIcon *gicon;
 
     g_return_val_if_fail (file, NULL);
-
+//g_message ("%s - size %i", G_STRFUNC, size);
     icon = gof_file_get_special_icon (file, size, flags);
     if (icon != NULL && !marlin_icon_info_is_fallback (icon))
         return icon;
@@ -574,7 +575,7 @@ static GdkPixbuf
 {
     GdkPixbuf *pix;
     MarlinIconInfo *temp_nicon;
-
+//g_message ("%s - size %i", G_STRFUNC, size);
     pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
     if (pix == NULL) {
         temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
@@ -592,7 +593,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 {
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
-
+//g_message ("%s - size %i", G_STRFUNC, size);
     nicon = gof_file_get_icon (file, size, flags);
     //nicon = gof_file_get_icon (file, size, 0);
 
@@ -602,7 +603,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
         g_object_unref (nicon);
     //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
     /*if (pix && nicon)
-        g_message ("%s ref count %u %u", G_STRFUNC, G_OBJECT (nicon)->ref_count, G_OBJECT (pix)->ref_count);*/
+        //g_message ("%s ref count %u %u", G_STRFUNC, G_OBJECT (nicon)->ref_count, G_OBJECT (pix)->ref_count);*/
 
     return pix;
 }
@@ -610,8 +611,8 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 static void
 gof_file_update_icon_internal (GOFFile *file, gint size)
 {
-    /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
-
+    /*//g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
+//g_message ("%s - size %i", G_STRFUNC, size);
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
@@ -625,16 +626,17 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
+//g_message ("%s - size %i", G_STRFUNC, size);
     //if (!(file->pix == NULL || size <= 0 || file->pix_size != size))
-    if (size <=0)
-        return;
+   // if (size <=0)
+     //   return;
     if (!(file->pix == NULL || file->pix_size != size))
         return;
     /* Don't load thumbnails they would be loaded asyncronously */
     if (!(file->flags == 0 || file->pix == NULL))
         return;
 
-    //g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
+//g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
     gof_file_update_icon_internal (file, size);
 }
 
@@ -790,7 +792,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         g_free (base_name);
         g_free (md5_hash);
     }
-
+//g_message ("%s - size %i", G_STRFUNC, file->pix_size);
     gof_file_update_icon_internal (file, file->pix_size);
 }
 
@@ -1661,7 +1663,7 @@ gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
     }
 
     if (error != NULL) {
-        g_message ("Could not start application on terminal: %s", error->message);
+        //g_message ("Could not start application on terminal: %s", error->message);
         g_error_free (error);
     }
 

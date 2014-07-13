@@ -19,6 +19,9 @@ namespace FM
         public void remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File file_for_path(Gtk.TreePath path);
+        public static GLib.Type get_type ();
+        public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
+        public string get_string_from_sort_column_id (int id);
     }
 }
 
@@ -44,6 +47,7 @@ namespace Eel {
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
     public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
     public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
+    public Gdk.Screen gtk_widget_get_screen (Gtk.Widget widget);
     public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
 }
 
@@ -249,6 +253,8 @@ namespace GOF {
         public unowned string get_display_target_uri ();
 
         public GLib.AppInfo get_default_handler ();
+
+        public string list_to_string (GLib.List<GOF.File> list, out long len);
     }
 
     [CCode (cheader_filename = "gof-file.h")]

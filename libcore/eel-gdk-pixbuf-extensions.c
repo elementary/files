@@ -31,6 +31,7 @@
 static GdkPixbuf *
 create_new_pixbuf (GdkPixbuf *src)
 {
+//g_message ("eel new pix buf from src - width %i, height %i", gdk_pixbuf_get_width (src), gdk_pixbuf_get_height (src));
     g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
     g_assert ((!gdk_pixbuf_get_has_alpha (src)
                && gdk_pixbuf_get_n_channels (src) == 3)
@@ -245,6 +246,7 @@ eel_gdk_pixbuf_lucent (GdkPixbuf *source,
   height = gdk_pixbuf_get_height (source);
 
   /* allocate the destination pixbuf */
+g_message ("New pixbuf 2");
   dst = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (source), TRUE, gdk_pixbuf_get_bits_per_sample (source), width, height);
 
   /* determine row strides on src/dst */

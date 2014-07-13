@@ -78,56 +78,57 @@ namespace FM {
 }
 //[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 //namespace GOF {
-//    [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
-//    namespace Window {
-//        [CCode (cheader_filename = "gof-window-slot.h")]
-//        public class Slot : GOF.AbstractSlot {
-//            public Slot (GLib.File f, Gtk.Overlay ctab);
-//            public void make_icon_view ();
-//            public void make_list_view ();
-//            public void make_compact_view ();
-//            public void add_extra_widget(Gtk.Widget widget);
-//            public Directory.Async directory;
-//            public GLib.File location;
-//            public Gtk.Widget view_box;
-//            public Gtk.Overlay ctab;
-//            public signal void active ();
-//            public signal void inactive ();
-//        }
-//    }
+// [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
+// namespace Window {
+//  [CCode (cheader_filename = "gof-window-slot.h")]
+//  public class Slot : GOF.AbstractSlot {
+//   public Slot (GLib.File f, Gtk.Overlay ctab);
+//   public void make_icon_view ();
+//   public void make_list_view ();
+//   public void make_compact_view ();
+//   public void add_extra_widget(Gtk.Widget widget);
+//   public Directory.Async directory;
+//   public GLib.File location;
+//   public Gtk.Widget view_box;
+//   public Gtk.Overlay ctab;
+//   public signal void active ();
+//   public signal void inactive ();
+//  }
+// }
 //}
 
 namespace Marlin {
     [CCode (cheader_filename = "marlin-thumbnailer.h")]
     public class Thumbnailer : GLib.Object {
         public static Thumbnailer get();
-        public bool queue_file(GOF.File file, int? request, bool large);
+        public bool queue_file (GOF.File file, int? request, bool large);
+        public bool queue_files (GLib.List<GOF.File> files, int? request, bool large);
 
     }
 
     [CCode (cheader_filename = "marlin-dnd.h")]
     public static Gdk.DragAction drag_drop_action_ask (Gtk.Widget widget, Gdk.DragAction possible_actions);
 
-//    [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
-//    namespace Window {
-//        [CCode (cheader_filename = "marlin-window-columns.h")]
-//        public class Columns : GOF.AbstractSlot {
-//            //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
-//            public Columns (GLib.File f, Gtk.Overlay ctab);
-//            public void make_view ();
-//            public GOF.Window.Slot active_slot;
-//            public string? get_root_uri ();
-//            public string? get_tip_uri ();
-//            public unowned GOF.Window.Slot get_last_slot ();
-//            public int preferred_column_width;
-//            public int total_width;
-//            public int handle_size;
-//            public Gtk.Widget colpane;
-//            public GLib.List<GOF.Window.Slot> slot;
-//            /*public Directory.Async directory;
-//            public Widget get_view ();*/
-//        }
-//    }
+// [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
+// namespace Window {
+//  [CCode (cheader_filename = "marlin-window-columns.h")]
+//  public class Columns : GOF.AbstractSlot {
+//   //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+//   public Columns (GLib.File f, Gtk.Overlay ctab);
+//   public void make_view ();
+//   public GOF.Window.Slot active_slot;
+//   public string? get_root_uri ();
+//   public string? get_tip_uri ();
+//   public unowned GOF.Window.Slot get_last_slot ();
+//   public int preferred_column_width;
+//   public int total_width;
+//   public int handle_size;
+//   public Gtk.Widget colpane;
+//   public GLib.List<GOF.Window.Slot> slot;
+//   /*public Directory.Async directory;
+//   public Widget get_view ();*/
+//  }
+// }
 
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
     namespace ConnectServer {
@@ -136,9 +137,9 @@ namespace Marlin {
             public Dialog (Gtk.Window window);
             public async bool display_location_async (GLib.File location) throws GLib.Error;
             public async bool fill_details_async (GLib.MountOperation operation,
-                                                  string default_user,
-                                                  string default_domain,
-                                                  GLib.AskPasswordFlags flags);
+                                                 string default_user,
+                                                 string default_domain,
+                                                 GLib.AskPasswordFlags flags);
         }
     }
 
@@ -183,6 +184,32 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all);
 
+    [CCode (cheader_filename = "marlin-icon-renderer.h")]
+    public class IconRenderer : Gtk.CellRenderer {
+        public IconRenderer ();
+        public File drop_file;
+    }
+    [CCode (cheader_filename = "marlin-text-renderer.h")]
+    public class TextRenderer : Gtk.CellRenderer {
+        public TextRenderer ();
+        public Pango.Layout layout;
+        public Gtk.Widget widget;
+        bool text_static;
+        string text;
+        string background;
+        int char_width;
+        int char_height;
+        Pango.WrapMode wrap_mode;
+        int wrap_width;
+        bool follow_state;
+        int focus_width;
+        Marlin.ZoomLevel zoom_level;
+        Gtk.Widget entry;
+        bool entry_menu_active;
+        int entry_menu_popdown_timer_id;
+        public signal void edited (string path, string text);
+    }
+
     [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum ZoomLevel {
         SMALLEST,
@@ -198,12 +225,12 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum IconSize {
         SMALLEST = 16,
-        SMALLER  = 24,
-        SMALL    = 32,
-        NORMAL   = 48,
-        LARGE    = 64,
-        LARGER   = 96,
-        LARGEST  = 128
+        SMALLER = 24,
+        SMALL = 32,
+        NORMAL = 48,
+        LARGE = 64,
+        LARGER = 96,
+        LARGEST = 128
     }
 
     [CCode (cheader_filename = "marlin-enum-types.h")]
@@ -227,5 +254,6 @@ namespace Marlin {
         CURRENT,
         PREFERRED,
         INVALID
-    }    
+    }
+ 
 }

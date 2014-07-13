@@ -457,14 +457,14 @@ fm_directory_view_disconnect_directory_handlers (FMDirectoryView *view,
 void
 fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-    fm_directory_view_connect_directory_handlers (view, directory);
-    gof_directory_async_load (directory);
+    //fm_directory_view_connect_directory_handlers (view, directory);
+    //gof_directory_async_load (directory);
 }
 
 void
 fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-    fm_directory_view_disconnect_directory_handlers (view, directory);
+    //fm_directory_view_disconnect_directory_handlers (view, directory);
 }
 
 //static void
@@ -484,6 +484,7 @@ fm_directory_view_init (FMDirectoryView *view)
 {
 //g_message ("View init");
     view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
+    view->zoom_level =  MARLIN_ZOOM_LEVEL_NORMAL;
 
     view->details = g_new0 (FMDirectoryViewDetails, 1);
     view->details->drag_scroll_timer_id = -1;
@@ -495,7 +496,6 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->default_app = NULL;
     view->details->select_added_files = FALSE;
     view->details->total_delta_y = 0;
-//g_message ("Setting directorry null");
     view->details->directory = NULL;
     view->details->window = NULL;
     view->details->dir_action_group = NULL;

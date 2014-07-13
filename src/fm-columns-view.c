@@ -796,15 +796,6 @@ fm_columns_view_finalize (GObject *object)
 
     g_debug ("%s\n", G_STRFUNC);
 
-    /* Unload all the subdirectories in the loaded subdirectories list. */
-    //GList *l = NULL;
-    //for (l = view->loaded_subdirectories; l != NULL; l = l->next) {
-        //GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
-        //fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
-    //}
-
-    //g_list_free (view->loaded_subdirectories);
-
     g_free (view->details->original_name);
     view->details->original_name = NULL;
 
@@ -826,7 +817,6 @@ fm_columns_view_init (FMColumnsView *view)
 {
     view->details = g_new0 (FMColumnsViewDetails, 1);
     view->details->selection = NULL;
-    //view->loaded_subdirectories = NULL;
     view->details->double_click_timeout_id = 0;
     view->details->awaiting_double_click = FALSE;
     view->details->selected_folder = NULL;

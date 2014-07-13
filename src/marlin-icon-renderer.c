@@ -444,6 +444,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     g_return_if_fail (priv->file);
     g_return_if_fail (priv->pixbuf);
     g_return_if_fail (GDK_IS_PIXBUF (priv->pixbuf));
+    g_return_if_fail (priv->size >= 1);
     /*if (!(priv->file && priv->pixbuf))
       return;*/
 
