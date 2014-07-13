@@ -321,6 +321,9 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
             gtk_container_foreach (GTK_CONTAINER (view->details->slot->mwcols->active_slot->colpane), (GtkCallback) gtk_widget_destroy, NULL);
         }
     }
+
+    // redraw the view to remove file from ui
+    gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
 static void

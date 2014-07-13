@@ -207,7 +207,7 @@ namespace Marlin.View {
 
             set_default_size(Preferences.settings.get_int("window-width"),
                              Preferences.settings.get_int("window-height"));
-            
+
             if (Preferences.settings.get_boolean("maximized"))
                 maximize();
 
@@ -229,7 +229,7 @@ namespace Marlin.View {
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
-                
+
                 return false;
             });
 
@@ -344,8 +344,9 @@ namespace Marlin.View {
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-                    if (cur_slot.view_box != null && !current_tab.content_shown)
+                    if (cur_slot.view_box != null && !current_tab.content_shown) {
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
+                    }
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
                 }
