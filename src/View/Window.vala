@@ -339,7 +339,11 @@ namespace Marlin.View {
             if (current_tab != null) {
                 var cur_slot = current_tab.get_active_slot ();
                 if (cur_slot != null) {
+                    /* disable animation when switching tabs */
+                    top_menu.location_bar.bread.animation_visible = false;
                     cur_slot.active();
+                    top_menu.location_bar.bread.animation_visible = true;
+
                     current_tab.update_location_state(false);
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
