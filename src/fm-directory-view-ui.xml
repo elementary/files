@@ -90,6 +90,17 @@
 		<menuitem name="Select All" action="Select All"/>
 	</placeholder>
 
+	<separator name="Open separator"/>
+	<placeholder name="Open Placeholder">
+		<menuitem name="Open" action="Open"/>
+		<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
+		<menu action="Open With">
+			<placeholder name="Applications Placeholder"/>
+			<separator name="Open with separator"/>
+			<menuitem name="OtherApplication" action="OtherApplication"/>
+		</menu>
+	</placeholder>
+
 	<separator name="Folder Items separator"/>
 	<placeholder name="Folder Items Placeholder">
 		<!--<menuitem name="Self Mount Volume" action="Self Mount Volume"/>
@@ -101,16 +112,6 @@
 		<menuitem name="Self Poll" action="Self Poll"/>-->
 		<separator name="Properties separator"/>
 		<menuitem name="Properties" action="Properties"/>
-	</placeholder>
-	<separator name="Open separator"/>
-	<placeholder name="Open Placeholder">
-		<menuitem name="Open" action="Open"/>
-		<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
-		<menu action="Open With">
-			<placeholder name="Applications Placeholder"/>
-			<separator name="Open with separator"/>
-			<menuitem name="OtherApplication" action="OtherApplication"/>
-		</menu>
 	</placeholder>
 </popup>
 <popup name="selection">

@@ -654,7 +654,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             animate_old_breads ();
         } else {
             /* This is to make sure breadcrumbs are rendered properly when switching to a duplicate tab */
-            newbreads = newelements;
+            newbreads = newelements.slice (max_path, newelements.size);
             animate_new_breads ();
         }
 

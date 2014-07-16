@@ -145,7 +145,7 @@ namespace Marlin.View {
             var expander = new Gtk.Label ("");
             expander.hexpand = true;
 
-            var make_default = new Gtk.Button.with_label (_("Set as default"));
+            var make_default = new Gtk.Button.with_label (_("Set as Default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
                 show_infobar (false);
@@ -207,7 +207,7 @@ namespace Marlin.View {
 
             set_default_size(Preferences.settings.get_int("window-width"),
                              Preferences.settings.get_int("window-height"));
-            
+
             if (Preferences.settings.get_boolean("maximized"))
                 maximize();
 
@@ -229,7 +229,7 @@ namespace Marlin.View {
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
-                
+
                 return false;
             });
 
@@ -314,7 +314,6 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
-
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null)
                 return current_tab.get_active_slot ();
@@ -340,13 +339,18 @@ namespace Marlin.View {
             if (current_tab != null) {
                 var cur_slot = current_tab.get_active_slot ();
                 if (cur_slot != null) {
+                    /* disable animation when switching tabs */
+                    top_menu.location_bar.bread.animation_visible = false;
                     cur_slot.active();
+                    top_menu.location_bar.bread.animation_visible = true;
+
                     current_tab.update_location_state(false);
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-                    if (cur_slot.view_box != null && !current_tab.content_shown)
+                    if (cur_slot.view_box != null && !current_tab.content_shown) {
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
+                    }
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
                 }

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-01-16 18:51+0000\n"
-"Last-Translator: Evertton de Lima <e.everttonlima@gmail.com>\n"
+"PO-Revision-Date: 2014-07-10 23:11+0000\n"
+"Last-Translator: Leonardo Lemos <leonardolemos@live.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-06-04 06:25+0000\n"
-"X-Generator: Launchpad (build 17031)\n"
+"X-Launchpad-Export-Date: 2014-07-11 06:08+0000\n"
+"X-Generator: Launchpad (build 17111)\n"
 "Language: pt_BR\n"
 
 #: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
@@ -47,7 +47,7 @@ msgstr "Você não tem permissão para ver esta pasta."
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr "Esta pasta não existe."
+msgstr "Esta pasta não existe"
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
@@ -151,7 +151,7 @@ msgstr "Localização original"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
 msgid "Info:"
-msgstr "Informação:"
+msgstr "Informações:"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
 msgid "Other application..."
@@ -643,7 +643,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3579
 msgid "_Rename..."
-msgstr "_Renomear..."
+msgstr "_Renomear"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3580
 msgid "Rename selected item"
@@ -659,7 +659,7 @@ msgstr "Cria uma nova pasta vazia dentro desta pasta"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3586
 msgid "Create New _File"
-msgstr "Criar Novo Arquivo"
+msgstr "Criar novo arquivo"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3588
 msgid "_Empty File"
@@ -687,7 +687,7 @@ msgstr "Abrir cada item selecionado em uma nova aba"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3607
 msgid "Open Wit_h"
-msgstr "Abrir _Com"
+msgstr "Abrir _com"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:3608
 msgid "Choose a program with which to open the selected item"
@@ -1023,7 +1023,7 @@ msgstr "Falha ao executar o arquivo \"%s\""
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr "Or_ganizar Ítens"
+msgstr "Or_ganizar itens"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
@@ -1035,7 +1035,7 @@ msgstr "Exibir ícones na ordem inversa"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr "Por _Nome"
+msgstr "Por _nome"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -1043,7 +1043,7 @@ msgstr "Mantém ícones ordenados por nome nas linhas"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr "Por _Tamanho"
+msgstr "Por _tamanho"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
@@ -1051,7 +1051,7 @@ msgstr "Mantém ícones ordenados por tamanho nas linhas"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr "Por T_ipo"
+msgstr "Por t_ipo"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
@@ -1059,7 +1059,7 @@ msgstr "Mantém ícones ordenados por tipo nas linhas"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr "Por _Data de Modificação"
+msgstr "Por _data de modificação"
 
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
@@ -2431,15 +2431,15 @@ msgstr "Ir para %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
 msgid "View as Grid"
-msgstr "Visualizar em Grade"
+msgstr "Visualizar em grade"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
 msgid "View as List"
-msgstr "Visualizar em Lista"
+msgstr "Visualizar em lista"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View in Columns"
-msgstr "Visualizar em Colunas"
+msgstr "Visualizar em colunas"
 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
