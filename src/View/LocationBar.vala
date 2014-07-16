@@ -44,6 +44,7 @@ namespace Marlin.View.Chrome
         public new signal void activate (GLib.File file);
         public signal void activate_alternate (GLib.File file);
         public signal void escape ();
+        public signal void search_mode_left ();
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
             minimum_width = -1;
@@ -57,12 +58,21 @@ namespace Marlin.View.Chrome
 
             bread.path_changed.connect (on_path_changed);
             bread.activate_alternate.connect ((file) => { activate_alternate(file); });
+            bread.search_changed.connect (on_search_changed);
+            bread.notify["search-mode"].connect (() => {
+                if (!bread.search_mode)
+                     search_mode_left ();
+            });
 
             margin_top = 4;
             margin_bottom = 4;
             margin_left = 3;
 
             pack_start (bread, true, true, 0);
+        }
+
+        public void enter_search_mode () {
+            bread.search_mode = true;
         }
 
         private void on_path_changed (File file) {
@@ -76,6 +86,10 @@ namespace Marlin.View.Chrome
                 win.current_tab.slot.view_box.grab_focus ();
 
             activate(file);
+        }
+
+        private void on_search_changed (string text) {
+            win.search_view.search (text, win.current_tab.slot.location);
         }
     }
 
@@ -185,6 +199,11 @@ namespace Marlin.View.Chrome
             add_icon (icon);
             
             up.connect (() => {
+                if (search_mode) {
+                    win.search_view.up ();
+                    return;
+                }
+
                 File file = get_file_for_path (text);
                 File parent = file.get_parent ();
                 
@@ -196,11 +215,20 @@ namespace Marlin.View.Chrome
             });
 
             down.connect (() => {
+                if (search_mode) {
+                    win.search_view.down ();
+                    return;
+                }
+
                 // focus back the view 
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else
                     win.current_tab.slot.view_box.grab_focus ();
+            });
+
+            select_current.connect (() => {
+                win.search_view.select_current ();
             });
 
             completed.connect (() => {
