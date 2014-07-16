@@ -200,9 +200,6 @@ struct _ExoIconViewPrivate
     /* Indicate if double-click has occurred */
     gboolean is_double_click;
 
-    /* Indicate if in multi-select mode (i.e. ctrl or shift hel down */
-    gboolean is_multi_select;
-
     /* Interactive search */
     gint selected_iter;
     gint search_column;
@@ -2453,7 +2450,8 @@ exo_icon_view_button_press (GtkWidget      *widget,
                 break;
         }
 
-        if (item != NULL) {
+        if (item != NULL)
+        {
             /* Save press to possibly begin a drag */
             if (icon_view->priv->pressed_button < 0)
             {
@@ -2863,7 +2861,6 @@ exo_icon_view_stop_rubberbanding (ExoIconView *icon_view)
             // in the view, however other file managers seem to set it as the
             // *last* item in the selection, so we will ignore the break and
             // and loop through to the end
-            //break;
         }
     }
 
@@ -4512,9 +4509,9 @@ exo_icon_view_real_move_cursor (ExoIconView     *icon_view,
 
     if (gtk_get_current_event_state (&state))
     {
-        if ((state & GDK_CONTROL_MASK)/* == GDK_CONTROL_MASK*/)
+        if ((state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK)
             icon_view->priv->ctrl_pressed = TRUE;
-        if ((state & GDK_SHIFT_MASK)/* == GDK_SHIFT_MASK*/)
+        if ((state & GDK_SHIFT_MASK) == GDK_SHIFT_MASK)
             icon_view->priv->shift_pressed = TRUE;
     }
     /* else we assume not pressed */
@@ -4631,7 +4628,8 @@ exo_icon_view_select_all_between (ExoIconView     *icon_view,
     gboolean dirty = FALSE;
     gint start_row, end_row, start_col, end_col;
 
-    if (boxed_selection) {
+    if (boxed_selection)
+    {
         start_row = MIN(anchor->row, cursor->row);
         end_row = MAX(anchor->row, cursor->row);
         start_col = MIN(anchor->col, cursor->col);
@@ -4779,10 +4777,8 @@ exo_icon_view_move_cursor_up_down (ExoIconView *icon_view,
     if ((icon_view->priv->ctrl_pressed && !icon_view->priv->shift_pressed) ||
         !icon_view->priv->shift_pressed ||
         !icon_view->priv->anchor_item ||
-        icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE) {
-
+        icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
         icon_view->priv->anchor_item = item;
-    }
 
     cell = gtk_cell_area_get_focus_cell (icon_view->priv->cell_area);
     exo_icon_view_set_cursor_item (icon_view, item, cell);
