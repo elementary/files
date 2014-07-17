@@ -362,8 +362,7 @@ static void                 exo_icon_view_accessible_set_adjustment      (AtkObj
                                                                           GtkAdjustment          *adjustment);
 static void                 exo_icon_view_adjustment_changed             (GtkAdjustment          *adjustment,
                                                                           ExoIconView            *icon_view);
-static void                 exo_icon_view_layout                         (ExoIconView            *icon_view,
-                                                                          gboolean                queue_draw);
+static void                 exo_icon_view_layout                         (ExoIconView            *icon_view);
 static void                 exo_icon_view_paint_item                     (ExoIconView            *icon_view,
                                                                           cairo_t                *cr,
                                                                           ExoIconViewItem        *item,
@@ -1844,8 +1843,6 @@ exo_icon_view_draw (GtkWidget *widget,
 
     icon_view = EXO_ICON_VIEW (widget);
 
-    exo_icon_view_layout (icon_view, FALSE);
-
     if (!gtk_cairo_should_draw_window (cr, icon_view->priv->bin_window))
         return FALSE;
 
@@ -3147,7 +3144,7 @@ exo_icon_view_process_updates (ExoIconView *icon_view)
      * (and resize the bin_window if required).
      */
     if (icon_view->priv->layout_idle_id != 0) {
-        exo_icon_view_layout (icon_view, TRUE);
+        exo_icon_view_layout (icon_view);
     }
 
     gdk_window_process_updates (icon_view->priv->bin_window, TRUE);
@@ -3545,7 +3542,7 @@ adjust_wrap_width (ExoIconView *icon_view)
 }
 
 static void
-exo_icon_view_layout (ExoIconView *icon_view, gboolean queue_draw)
+exo_icon_view_layout (ExoIconView *icon_view)
 {
     GtkAllocation allocation;
     GtkWidget *widget;
@@ -3686,8 +3683,7 @@ exo_icon_view_layout (ExoIconView *icon_view, gboolean queue_draw)
         gtk_tree_path_free (path);
     }
 
-    if (queue_draw)
-        gtk_widget_queue_draw (widget);
+    gtk_widget_queue_draw (widget);
 }
 
 /* This ensures that all widths have been cached in the
@@ -3941,7 +3937,7 @@ layout_callback (gpointer user_data)
     ExoIconView *icon_view;
 
     icon_view = EXO_ICON_VIEW (user_data);
-    exo_icon_view_layout (icon_view, TRUE);
+    exo_icon_view_layout (icon_view);
     icon_view->priv->layout_idle_id = 0;
 
     return FALSE;
