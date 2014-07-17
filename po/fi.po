@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-07-15 13:52-0500\n"
-"PO-Revision-Date: 2013-10-05 21:35+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
+"PO-Revision-Date: 2014-07-17 05:05+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-16 07:14+0000\n"
-"X-Generator: Launchpad (build 17112)\n"
+"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -148,7 +148,7 @@ msgstr "Esikatselu"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 #, c-format
@@ -291,7 +291,7 @@ msgstr "FIles ei ole oletusarvoinen tiedostonhallintasovelluksesi."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Aseta oletukseksi"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:153
 msgid "Ignore"
@@ -528,7 +528,7 @@ msgstr "Yleiset sijainnit ja kirjanmerkit"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Avaa roskakori"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -554,7 +554,7 @@ msgstr "Verkkosijainnit"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Koko verkko"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -567,7 +567,7 @@ msgstr "Asemaa %s ei voi käynnistää"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Avaa"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2342
@@ -586,7 +586,7 @@ msgstr "Poista"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Nimeä uudelleen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -608,7 +608,7 @@ msgstr "Tyhjennä _roskakori"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Yhdistä palvelimeen…"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -1026,7 +1026,7 @@ msgstr ""
 
 #: /home/codygarver/f/po/../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Uusi ikkuna"
 
 #: /home/codygarver/f/po/../src/Application.vala:143
 msgid "Quit Files."
@@ -2368,11 +2368,11 @@ msgstr "Siirry kohteeseen %s"
 
 #: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Edellinen"
 
 #: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Seuraava"
 
 #: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
