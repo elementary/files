@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2399,39 +2399,3 @@ msgstr "Item ini mungkin telah dipadam dengan cara mengosongkan tong sampah."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Kosongkan Tong Sampah"
-
-#~ msgid "Open the trash"
-#~ msgstr "Buka tong sampah"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Buka kandungan Fail Sistem"
-
-#~ msgid "Entire network"
-#~ msgstr "Keseluruhan rangkaian"
-
-#~ msgid "_Start"
-#~ msgstr "_Mula"
-
-#~ msgid "_Power On"
-#~ msgstr "_Pasang Kuasa"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Tanggalkan Pemacu Secara Selamat"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Putuskan Pemacu"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Buka Pemacu"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Tampal teks yang disimpan pada papan keratan"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Salin teks dipilih ke papan keratan"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Potong teks dipilih ke papan keratan"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Sambung ke Pelayan..."

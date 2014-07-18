@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2417,27 +2417,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "Atvērt miskasti"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Atvērt failu sistēmas saturu"
-
-#~ msgid "Entire network"
-#~ msgstr "Viss tīkls"
-
-#~ msgid "_Start"
-#~ msgstr "_Startēt"
-
-#~ msgid "_Power On"
-#~ msgstr "_Ieslēgt"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Droši izņemt dzini"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Atvienot dzini"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Atslēgt dzini"

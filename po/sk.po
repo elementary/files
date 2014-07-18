@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2424,39 +2424,3 @@ msgstr "Tieto položky môžu byť odstránené pri vyprázdňovaní koša."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Vyprázdniť kôš"
-
-#~ msgid "Open the trash"
-#~ msgstr "Otvoriť kôš"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Otvoriť obsah súborového systému"
-
-#~ msgid "Entire network"
-#~ msgstr "Celá sieť"
-
-#~ msgid "_Start"
-#~ msgstr "_Spustiť"
-
-#~ msgid "_Power On"
-#~ msgstr "Za_pnúť"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Bezpečne odobrať jednotku"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "O_dpojiť jednotku"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Odomknúť jednotku"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Pripojenie na server..."
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Vložiť text uložený v schránke"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Skopírovať vybraný text do schránky"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Vystrihnúť vybraný text do schránky"

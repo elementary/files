@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2490,36 +2490,3 @@ msgstr "Te predmete odstranite z izpraznitvijo koša"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Izprazni smeti"
-
-#~ msgid "Open the trash"
-#~ msgstr "Odpri smeti"
-
-#~ msgid "_Start"
-#~ msgstr "_Zaženi"
-
-#~ msgid "_Power On"
-#~ msgstr "_Vklopi"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Varno odstrani pogon"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Prekini povezavo s pogonom"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Odkleni pogon"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Prilepi besedilo, shranjeno na odložišču"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopira izbrano besedilo na odložišče"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Izreže izbrano besedilo na odložišče"
-
-#~ msgid "Entire network"
-#~ msgstr "Celotno omrežje"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Odpri vsebino datotečnega sistema"

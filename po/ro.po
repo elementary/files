@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2424,36 +2424,3 @@ msgstr "Aceste elemente pot fi sterse prin golirea cosului de gunoi"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Goleste cosul de gunoi"
-
-#~ msgid "Open the trash"
-#~ msgstr "Deschide coșul de gunoi"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Deschide conținutul sistemului de fișiere"
-
-#~ msgid "Entire network"
-#~ msgstr "Toată rețeaua"
-
-#~ msgid "_Start"
-#~ msgstr "Start"
-
-#~ msgid "_Power On"
-#~ msgstr "Pornește"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "Scoate în siguranță unitatea"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Deconectează unitatea"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Deblochează unitatea"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Taie textul selectat in clipboard"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copiaza textul selectat in clipboard"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Lipeste textul stocat in clipboard"

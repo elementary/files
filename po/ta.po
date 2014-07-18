@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2362,24 +2362,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "குப்பைத்தொட்டியைத் திற"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "கோப்பு அமைப்பின் உள்ளடக்கங்களை திற"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "இயக்கியை அகற்று (_D)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "பாதுகாப்பாக இயக்கியை நீக்கு (_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "ஆன் செய் (_P)"
-
-#~ msgid "_Start"
-#~ msgstr "துவக்கு (_S)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "இயக்கியின் பூட்டைத் திற (_U)"

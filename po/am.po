@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:16+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2373,39 +2373,3 @@ msgstr "እነዚህ እቃዎች በቋሚነት ይጠፋሉ ቆሻሻውን �
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "ቆሻሻ ማጠራቀሚያውን ባዶ ማድረጊያ"
-
-#~ msgid "_Power On"
-#~ msgstr "_ማብሪያ"
-
-#~ msgid "_Start"
-#~ msgstr "_መጀመሪያ"
-
-#~ msgid "Entire network"
-#~ msgstr "ጠቅላላ ኔትዎርክ"
-
-#~ msgid "Open the trash"
-#~ msgstr "የቆሻሻውን ማጠራቀሚያውን መክፈቻ"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "የፋይል ስርአት ይዞታዎችን መክፈቻ"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_በደህንንነት አካሎችን ማስወገጃ"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "አካሉን _መክፈቻ"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "አካሉን _መለያያ"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "ወደ ሰርቨር መገናኛ…"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "በቁራጭ ሰሌዳው ላይ የተመረጠውን ጽሁፍ መቁረጫ"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "በቁራጭ ሰሌዳው ላይ የተቀመጠውን ጽሁፍ መለጠፊያ"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "በቁራጭ ሰሌዳው ላይ የተመረጠውን ጽሁፍ ኮፒ ማድረጊያ"

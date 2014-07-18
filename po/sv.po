@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2400,39 +2400,3 @@ msgstr "Dessa filer kan raderas genom att tömma papperskorgen."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Töm papperskorgen"
-
-#~ msgid "Open the trash"
-#~ msgstr "Öppna papperskorgen"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Öppna filsystemets innehåll"
-
-#~ msgid "Entire network"
-#~ msgstr "Hela nätverket"
-
-#~ msgid "_Power On"
-#~ msgstr "Slå _på"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Säker borttagning av enhet"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Koppla från enhet"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Lås _upp enhet"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopiera den markerade texten till urklipp"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Klipp ut den markerade texten till urklipp"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Klistra in text sparad i urklipp"
-
-#~ msgid "_Start"
-#~ msgstr "_Start"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Anslut till server..."

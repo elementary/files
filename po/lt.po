@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2389,24 +2389,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "Atverti šiukšlinę"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Saugiai išimti laikmeną"
-
-#~ msgid "_Power On"
-#~ msgstr "Į_jungti"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Rodyti failų sistemos turinį"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Atj_ungti laikmeną"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Atrakinti laikmeną"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Jungtis prie serverio…"

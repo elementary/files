@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2390,30 +2390,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "Отворите смеће"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Прикажите садржај система датотека"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Откачи уређај"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Безбедно уклони уређај"
-
-#~ msgid "_Power On"
-#~ msgstr "_Укључи"
-
-#~ msgid "_Start"
-#~ msgstr "_Покрени"
-
-#~ msgid "Entire network"
-#~ msgstr "Цела мрежа"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Откључај уређај"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Повежи се са сервером..."

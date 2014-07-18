@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: hu\n"
 
@@ -2395,39 +2395,3 @@ msgstr "Ezek az elemek törlődhetnek a Kuka ürítésével."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Kuka ürítése"
-
-#~ msgid "Open the trash"
-#~ msgstr "A Kuka megnyitása"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "A fájlrendszer tartalmának megjelenítése"
-
-#~ msgid "Entire network"
-#~ msgstr "Teljes hálózat"
-
-#~ msgid "_Start"
-#~ msgstr "_Kezdés"
-
-#~ msgid "_Power On"
-#~ msgstr "Be_kapcsolás"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "Meghajtó _biztonságos eltávolítása"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Kapcsolat bontása a meghajtóval"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Meghajtó fel_oldása"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Szöveg beillesztése a vágólapról"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "A kijelölt szöveg másolása a vágólapra"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "A kijelölt szöveg áthelyezése a vágólapra"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Csatlakozás kiszolgálóhoz..."

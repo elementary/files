@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2361,33 +2361,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "ئەخلەتخانا ئاچ"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "ھۆججەت سىستېمىسىنىڭ مۇندەرىجىسىنى ئاچ"
-
-#~ msgid "_Start"
-#~ msgstr "باشلا(_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "مەنبەنى ئاچ(_P)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "قوزغاتقۇچنى بىخەتەر چىقىرىۋەت(_S)"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "قوزغاتقۇچنى ئۈز(_D)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "قوزغاتقۇچنى قۇلۇپسىزلا(_U)"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "تاللىغان تېكىستنى كېسىپ چاپلاش تاختىسىغا قوي"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "تاللىغان تېكىستنى چاپلاش تاختىسىغا كۆچۈرىدۇ"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "چاپلاش تاختىسىدىكى تېكىستنى چاپلا"

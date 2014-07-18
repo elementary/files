@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
@@ -2402,39 +2402,3 @@ msgstr "Тези неща могат да бъдат изтрити при оп�
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Изпразни кошчето"
-
-#~ msgid "Open the trash"
-#~ msgstr "Отвори Кошчето"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Отваря съдържанието на файловата система"
-
-#~ msgid "Entire network"
-#~ msgstr "Цялата мрежа"
-
-#~ msgid "_Start"
-#~ msgstr "Старт"
-
-#~ msgid "_Power On"
-#~ msgstr "Включване"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "Безопасно премахване на диск"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Разкачи диск"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Отключи диск"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Свръзка със сървър"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Постави текста, запазен в паметта"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Копирай избрания текст в паметта"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Изрежи избрания текст в паметта"

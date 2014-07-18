@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: \n"
 
@@ -2319,39 +2319,3 @@ msgstr "清空回收站可能会删除这些项目。"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "清空回收站"
-
-#~ msgid "Open the trash"
-#~ msgstr "打开回收站"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "打开文件系统的内容"
-
-#~ msgid "Entire network"
-#~ msgstr "整个网络"
-
-#~ msgid "_Start"
-#~ msgstr "开始(_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "上电(_P)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "安全移除驱动器(_S)"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "断开驱动器(_D)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "解锁驱动器(_U)"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "粘贴剪贴板中的文字"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "把选中的文本复制到剪贴板"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "把选中的文本剪切到剪贴板"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "连接到服务器..."

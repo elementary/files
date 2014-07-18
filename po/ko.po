@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2318,39 +2318,3 @@ msgstr "이 항목들은 휴지통을 비울 때 지워집니다."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "휴지통 비우기"
-
-#~ msgid "_Start"
-#~ msgstr "시작(_S)"
-
-#~ msgid "Entire network"
-#~ msgstr "모든 네트워크"
-
-#~ msgid "Open the trash"
-#~ msgstr "휴지통 열기"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "파일 시스템을 열니다"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "드라이브 연결 끊기(_D)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "안전하게 드라이브 제거(_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "전원 켜기(_P)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "드라이브 잠금 해제(_U)"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "서버에 연결하는 중..."
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "클립보드에 저장된 글자를 붙여 넣습니다"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "선택한 글자를 클립보드로 복사합니다"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "선택한 글자를 클립보드에 오려두기"

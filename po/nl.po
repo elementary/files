@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2421,39 +2421,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Maak de prullenbak leeg"
-
-#~ msgid "Open the trash"
-#~ msgstr "Open de prullenbak."
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "De inhoud van het bestandssysteem openen"
-
-#~ msgid "Entire network"
-#~ msgstr "Volledige netwerk"
-
-#~ msgid "_Start"
-#~ msgstr "_Starten"
-
-#~ msgid "_Power On"
-#~ msgstr "_Aanzetten"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Station veilig verwijderen"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Stationverbinding ver_breken"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Station vrij_geven"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Verbind met server..."
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Plak de opgeslagen tekst vanaf het klembord"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopieer de geselecteerde tekst naar het klembord"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Knip de geselecteerde tekst naar het klembord"

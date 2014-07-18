@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 13:52-0500\n"
-"PO-Revision-Date: 2014-07-17 04:54+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2014-07-17 15:38+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: de\n"
 
@@ -149,7 +149,7 @@ msgstr "Vorschau"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 #, c-format
@@ -292,7 +292,7 @@ msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Als Vorgabe einstellen"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:153
 msgid "Ignore"
@@ -530,7 +530,7 @@ msgstr "Ihre normalen Orte und Lesezeichen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Den Papierkorb öffnen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -542,7 +542,7 @@ msgstr "Ihre lokalen Partitionen und Geräte"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Den Inhalt des Dateisystems öffnen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:499
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:673
@@ -556,7 +556,7 @@ msgstr "Ihre Orte im Netzwerk"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Gesamtes Netzwerk"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -569,7 +569,7 @@ msgstr "Starten von %s nicht möglich"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2342
@@ -588,7 +588,7 @@ msgstr "Entfernen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Umbenennen"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -610,7 +610,7 @@ msgstr "_Papierkorb leeren"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Zum Server verbinden …"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -652,7 +652,7 @@ msgstr[1] "»%s« verwenden, um die gewählten Objekte zu öffnen"
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "»%s« als Vorlage für eine neue Datei benutzen"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2316
 #, c-format
@@ -1039,7 +1039,7 @@ msgstr "Adresse(n) in neuem Tab öffnen"
 
 #: /home/codygarver/f/po/../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Neues Fenster"
 
 #: /home/codygarver/f/po/../src/Application.vala:143
 msgid "Quit Files."
@@ -2435,39 +2435,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Den Papierkorb leeren"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Inhalt des Dateisystems öffnen"
-
-#~ msgid "Entire network"
-#~ msgstr "Gesamtes Netzwerk"
-
-#~ msgid "_Start"
-#~ msgstr "_Starten"
-
-#~ msgid "_Power On"
-#~ msgstr "_Anschalten"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "Laufwerk _sicher entfernen"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Laufwerk _trennen"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Laufwerk _entsperren"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Den in der Zwischenablage gespeicherten Text einfügen"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Den ausgewählten Text in die Zwischenablage einfügen"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Mit Server verbinden …"
-
-#~ msgid "Open the trash"
-#~ msgstr "Papierkorb öffnen"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Den markierten Text in die Zwischenablage verschieben"

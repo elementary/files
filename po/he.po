@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2374,30 +2374,3 @@ msgstr "פריטים אלו יכולים להמחק על ידי ריקון פח 
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "ריקון סל המיחזור"
-
-#~ msgid "Entire network"
-#~ msgstr "הרשת כולה"
-
-#~ msgid "_Start"
-#~ msgstr "התחל"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "פתיחת תוכן מערכת הקבצים"
-
-#~ msgid "Open the trash"
-#~ msgstr "פתיחת סל המיחזור"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "חיבור לשרת..."
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_ניתוק כונן"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_הסרת הכונן בבטחה"
-
-#~ msgid "_Power On"
-#~ msgstr "_הדלקה"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_שחרור כונן"

@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2318,39 +2318,3 @@ msgstr "清理垃圾筒將會刪除這些檔案"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "清理垃圾筒"
-
-#~ msgid "Entire network"
-#~ msgstr "整個網路"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "安全的移除裝置(_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "電源開啟(_P)"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "中斷裝置(_D)"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "貼上存於剪貼簿內的文字"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "將選取的文字複製至剪貼簿"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "開啟「檔案系統」的內容"
-
-#~ msgid "_Start"
-#~ msgstr "開啟(_S)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "解除裝置鎖定(_U)"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "將選定的文字剪下至剪貼簿"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "連接至伺服器..."
-
-#~ msgid "Open the trash"
-#~ msgstr "開啟垃圾筒"

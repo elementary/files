@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: uk\n"
 
@@ -2449,39 +2449,3 @@ msgstr "Ці елементи можуть бути видалені при оч
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Очистити Смітник"
-
-#~ msgid "Open the trash"
-#~ msgstr "Відкрити кошик"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Відкрити вміст файлової системи"
-
-#~ msgid "Entire network"
-#~ msgstr "Вся мережа"
-
-#~ msgid "_Start"
-#~ msgstr "З_апустити"
-
-#~ msgid "_Power On"
-#~ msgstr "_Увімкнути"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Безпечне вилучення пристрою"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "В_ід'єднати привід"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Розблокувати привід"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Вставити текст з буферу обміну"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Копіювати виділений текст у буфер обміну"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Вирізати виділений текст у буфер обміну"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Під’єднання до сервера…"

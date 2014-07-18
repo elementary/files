@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-07-15 13:52-0500\n"
-"PO-Revision-Date: 2014-07-17 05:03+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2014-07-17 12:10+0000\n"
+"Last-Translator: Anthony Harrington <untaintableangel@ubuntu.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -528,7 +528,7 @@ msgstr "Your common places and bookmarks"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Open the Rubbish Bin"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -1604,7 +1604,7 @@ msgstr[1] "%'d files left to move to Rubbish Bin"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Cannot move file to the Rubbish Bin. Delete Immediately?"
+msgstr "Cannot move file to the Rubbish Bin. Delete immediately?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
 msgid ""
@@ -2219,15 +2219,15 @@ msgstr[1] "_Undo creation of %d folders"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Undo move to the Rubbish Bin of %d item"
-msgstr[1] "_Undo move to the Rubbish Bin of %d items"
+msgstr[0] "_Undo moving %d item to the Rubbish Bin"
+msgstr[1] "_Undo moving %d items to the Rubbish Bin"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Undo restore from the Rubbish Bin of %d item"
-msgstr[1] "_Undo restore from the Rubbish Bin of %d items"
+msgstr[0] "_Undo restoring %d item from the Rubbish Bin"
+msgstr[1] "_Undo restoring %d items from the Rubbish Bin"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
@@ -2318,15 +2318,15 @@ msgstr[1] "_Redo creation of %d folders"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Redo move to the Rubbish Bin of %d item"
-msgstr[1] "_Redo move to the Rubbish Bin of %d items"
+msgstr[0] "_Redo moving %d item to the Rubbish Bin"
+msgstr[1] "_Redo moving %d items to the Rubbish Bin"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Redo restore from the Rubbish Bin of %d item"
-msgstr[1] "_Redo restore from the Rubbish Bin of %d items"
+msgstr[0] "_Redo restoring %d item from the Rubbish Bin"
+msgstr[1] "_Redo restoring %d items from the Rubbish Bin"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
@@ -2402,39 +2402,3 @@ msgstr "These items may be deleted by emptying the Rubbish Bin."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Empty the Rubbish Bin"
-
-#~ msgid "Open the trash"
-#~ msgstr "Open the Rubbish Bin"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Open the contents of the File System"
-
-#~ msgid "Entire network"
-#~ msgstr "Entire network"
-
-#~ msgid "_Start"
-#~ msgstr "_Start"
-
-#~ msgid "_Power On"
-#~ msgstr "_Power On"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Safely Remove Drive"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Disconnect Drive"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Unlock Drive"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Paste the text stored on the clipboard"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copy the selected text to the clipboard"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Cut the selected text to the clipboard"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Connect to Server…"

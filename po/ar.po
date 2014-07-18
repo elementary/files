@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:16+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2587,39 +2587,3 @@ msgstr "قد يتم حذف هذه البنود عند إفراغ سلة المه
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "أفرغ سلة المهملات"
-
-#~ msgid "Open the trash"
-#~ msgstr "افتح المهملات"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "افتح محتويات نظام الملفات"
-
-#~ msgid "Entire network"
-#~ msgstr "الشبكة كلها"
-
-#~ msgid "_Start"
-#~ msgstr "ا_بدأ"
-
-#~ msgid "_Power On"
-#~ msgstr "_شغّل"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "أزِل السواقة بأ_مان"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "ا_فصل السواقة"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "ا_فتح قفل السواقة"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "الصق النص المخزن في الحافظة"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "قص النص المحدد إلى الحافظة"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "نسخ النص المحدد إلى الحافظة"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "جاري الاتصال بالخادم..."

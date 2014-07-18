@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2407,39 +2407,3 @@ msgstr "Estes elementos vanse eliminar ao baleirar o lixo"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Baleirar o lixo"
-
-#~ msgid "Open the trash"
-#~ msgstr "Abrir o lixo"
-
-#~ msgid "_Power On"
-#~ msgstr "_Acender"
-
-#~ msgid "_Start"
-#~ msgstr "_Iniciar"
-
-#~ msgid "Entire network"
-#~ msgstr "Toda a rede"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Abrir os contidos do sistema de ficheiros"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Desconectar unidade"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Retirar a unidade de forma segura"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Desbloquear a unidade"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Pegar o texto almacenado no portapapeis"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copiar o texto seleccionado para o portapapeis"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Cortar o texto seleccionado para o portapapeis"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Conectar co servidor..."

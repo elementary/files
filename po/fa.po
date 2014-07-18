@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2339,39 +2339,3 @@ msgstr "ممکن است با خالی کردن زباله‌دان این موا
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "خالی کردن زباله‌دان"
-
-#~ msgid "Open the trash"
-#~ msgstr "باز کردن زباله‌دان"
-
-#~ msgid "Entire network"
-#~ msgstr "تمام شبکه"
-
-#~ msgid "_Start"
-#~ msgstr "_آغاز"
-
-#~ msgid "_Power On"
-#~ msgstr "رو_شن کردن"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "نشان دادن محتویات سیستم پرونده‌ای"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "بیرون کشیدن ای_من"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "قطع ا_بزار"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_بازکردن قفل ابزار"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "انتقال متن انتخاب شده به حافظه"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "رونویسی متن انتخاب شده در حافظه"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "چسباندن متن درون حافظه"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "درحال اتصال به سرور..."

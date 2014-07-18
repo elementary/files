@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: es\n"
 
@@ -2412,39 +2412,3 @@ msgstr "Estos archivos pueden ser eliminados al vaciar la papelera."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Vaciar la papelera"
-
-#~ msgid "Open the trash"
-#~ msgstr "Abrir la papelera"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Abrir el contenido del sistema de archivos"
-
-#~ msgid "Entire network"
-#~ msgstr "Toda la red"
-
-#~ msgid "_Start"
-#~ msgstr "_Iniciar"
-
-#~ msgid "_Power On"
-#~ msgstr "_Encender"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Expulsar la unidad de forma segura"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Desconectar unidad"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Desbloquear unidad"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Pega el texto almacenado en el portapapeles"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copiar el texto seleccionado al portapapeles"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Cortar el texto seleccionado al portapapeles"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Conectar con un servidor…"

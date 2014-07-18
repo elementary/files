@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2399,39 +2399,3 @@ msgstr "Fitxategi hauek zakarrontzia hustutzean ezabatuko dira."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Hustu zakarrontzia"
-
-#~ msgid "Open the trash"
-#~ msgstr "Ireki zakarrontzia"
-
-#~ msgid "Entire network"
-#~ msgstr "Sare osoa"
-
-#~ msgid "_Start"
-#~ msgstr "_Abiarazi"
-
-#~ msgid "_Power On"
-#~ msgstr "_Piztu"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Kendu unitatea modu seguruan"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Deskonektatu unitatea"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Desblokeatu unitatea"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Ireki fitxategi-sistemaren edukiak"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Itsatsi arbeleko testua"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Ebaki hautatutako testua arbelera"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopiatu hautatutako testua arbelean"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Konektatu zerbitzarira..."

@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: nb\n"
 
@@ -2395,39 +2395,3 @@ msgstr "Disse elementene kan slettes ved å tømme papirkurven"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Tøm Papirkurven"
-
-#~ msgid "Open the trash"
-#~ msgstr "Åpne papirkurven"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Trygg fjerning av lagringsenhet"
-
-#~ msgid "_Power On"
-#~ msgstr "_Slå på"
-
-#~ msgid "_Start"
-#~ msgstr "_Start"
-
-#~ msgid "Entire network"
-#~ msgstr "Hele nettverket"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Åpne innholdet i Filsystemet"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Koble fra Stasjon"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Koble til tjener..."
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Lim inn tekst fra utklippstavlen"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopier valgt tekst til utklippstavlen"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Klipp ut valgt tekst til utklippstavlen"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Lås _opp stasjon"

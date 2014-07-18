@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2365,24 +2365,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "Open the trash"
-#~ msgstr "చెత్తబుట్టని తెరువు"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "ఫైల్ వ్యవస్థలో ఉన్న విషయములను తెరువు"
-
-#~ msgid "_Start"
-#~ msgstr "ప్రారంభించు (_S)"
-
-#~ msgid "_Power On"
-#~ msgstr "పవర్ ఆన్ (_P)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "డ్రైవును సురక్షితముగా తీసివేయండి (_S)"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "డ్రైవును అననుసంధానించు (_D)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "డ్రైవు తాళం తీయి (_U)"

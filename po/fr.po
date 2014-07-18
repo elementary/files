@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2418,39 +2418,3 @@ msgstr "Ces éléments peuvent être supprimés en vidant la Corbeille"
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Vider la Corbeille"
-
-#~ msgid "Open the trash"
-#~ msgstr "Ouvrir la corbeille"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Ouvrir le contenu du système de fichiers"
-
-#~ msgid "Entire network"
-#~ msgstr "Tout le réseau"
-
-#~ msgid "_Start"
-#~ msgstr "_Démarrer"
-
-#~ msgid "_Power On"
-#~ msgstr "_Allumer"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Retirer le volume sans risque"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Déconnecter le volume"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Déverro_uiller le volume"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copie le texte sélectionné dans le presse-papiers"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Colle le texte contenu dans le presse-papiers"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Coupe le texte sélectionné dans le presse-papiers"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Se connecter à un serveur"

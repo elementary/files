@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2405,39 +2405,3 @@ msgstr "Aquests fitxers poden ser suprimits en buidar la paperera."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Buida la paperera"
-
-#~ msgid "Open the trash"
-#~ msgstr "Obre la paperera"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Obre el contingut del sistema de fitxers"
-
-#~ msgid "Entire network"
-#~ msgstr "Tota la xarxa"
-
-#~ msgid "_Start"
-#~ msgstr "_Inicia"
-
-#~ msgid "_Power On"
-#~ msgstr "_Encén"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Treu la unitat de forma segura"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Desconnecta la unitat"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Desbloca la unitat"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copia el text seleccionat al porta-retalls"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Retalla el text seleccionat al porta-retalls"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Enganxa el text emmagatzemat al porta-retalls"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Connecta a un servidor…"

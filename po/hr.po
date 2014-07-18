@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2439,39 +2439,3 @@ msgstr "Ove stavke mogu biti obrisane pražnjenjem smeća."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Isprazni smeće"
-
-#~ msgid "Open the trash"
-#~ msgstr "Otvori smeće"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Otvorite sadržaj datotečnog sustava"
-
-#~ msgid "Entire network"
-#~ msgstr "Sve mreže"
-
-#~ msgid "_Start"
-#~ msgstr "_Pokreni"
-
-#~ msgid "_Power On"
-#~ msgstr "_Uključi"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Sigurno uklanjanje uređaja"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Odspoji uređaj"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Otključaj uređaj"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Izreži odabrani tekst i smijesti ga u međuspremnik"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopiraj odabrani tekst u međuspremnik"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Zalijepi tekst iz međuspremnika"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Povezivanje s poslužiteljem..."

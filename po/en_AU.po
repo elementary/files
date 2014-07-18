@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2401,39 +2401,3 @@ msgstr "These items may be deleted by emptying the rubbish bin."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Empty the Rubbish Bin"
-
-#~ msgid "Open the trash"
-#~ msgstr "Open the rubbish bin"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Open the contents of the File System"
-
-#~ msgid "Entire network"
-#~ msgstr "Entire network"
-
-#~ msgid "_Start"
-#~ msgstr "_Start"
-
-#~ msgid "_Power On"
-#~ msgstr "_Power On"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Safely Remove Drive"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Disconnect Drive"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Unlock Drive"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Paste the text stored on the clipboard"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Copy the selected text to the clipboard"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Cut the selected text to the clipboard"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Connect to Server…"

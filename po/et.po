@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2401,39 +2401,3 @@ msgstr "Järgnevad failid kustutatakse prügikasti tühjendamisel."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Tühjenda prügikast"
-
-#~ msgid "Open the trash"
-#~ msgstr "Ava prügikast"
-
-#~ msgid "Entire network"
-#~ msgstr "Kogu võrk"
-
-#~ msgid "_Power On"
-#~ msgstr "_Lülita sisse"
-
-#~ msgid "_Start"
-#~ msgstr "_Alusta"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Võta ketas lukust lahti"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Ava failisüsteemi kaust"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "_Eemalda ketas"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Lõikepuhvris oleva teksti asetamine"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Valitud teksti kopeerimine lõikepuhvrisse"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Valitud teksti lõikamine lõikepuhvrisse"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Ühendu serveriga…"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Eemalda seade turvaliselt"

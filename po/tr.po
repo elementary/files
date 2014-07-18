@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2344,39 +2344,3 @@ msgstr "Bu öğeler çöpü boşaltığınızda silinebilir."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Çöpü boşalt"
-
-#~ msgid "Open the trash"
-#~ msgstr "Çöpü aç"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Dosya Sisteminin içeriğini aç"
-
-#~ msgid "Entire network"
-#~ msgstr "Tüm ağ"
-
-#~ msgid "_Start"
-#~ msgstr "_Başlat"
-
-#~ msgid "_Power On"
-#~ msgstr "_Güç Açık"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Sürücüyü Güvenle Kaldır"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "Sürücünün Bağlantısını _Kes"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "Sürücü Kilidini K_aldır"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Seçili metni panoya kopyala"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Panoda kayıtlı olan metini yapıştır"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Seçili metni kes ve panoya kopyala"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Sunucuya Bağlan..."

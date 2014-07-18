@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:26+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:17+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2393,39 +2393,3 @@ msgstr "Nämä kohteet voi poistaa tyhjentämällä roskakorin."
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Tyhjennä roskakori"
-
-#~ msgid "Open the trash"
-#~ msgstr "Avaa roskakori"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "Näytä tiedostojärjestelmän sisältö"
-
-#~ msgid "Entire network"
-#~ msgstr "Koko verkko"
-
-#~ msgid "_Start"
-#~ msgstr "_Käynnistä"
-
-#~ msgid "_Power On"
-#~ msgstr "K_ytke virta"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "_Sammuta asema turvallisesti"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "K_atkaise yhteys asemaan"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "_Avaa aseman lukitus"
-
-#~ msgid "Paste the text stored on the clipboard"
-#~ msgstr "Liitä leikepöydän sisältämä teksti"
-
-#~ msgid "Copy the selected text to the clipboard"
-#~ msgstr "Kopioi valittu teksti leikepöydälle"
-
-#~ msgid "Cut the selected text to the clipboard"
-#~ msgstr "Leikkaa valittu teksti leikepöydälle"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Yhdistä palvelimeen…"

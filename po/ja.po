@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-17 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -2342,27 +2342,3 @@ msgstr ""
 #: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr ""
-
-#~ msgid "_Start"
-#~ msgstr "開始 (_S)"
-
-#~ msgid "Entire network"
-#~ msgstr "ネットワーク全体"
-
-#~ msgid "Open the trash"
-#~ msgstr "ゴミ箱を開く"
-
-#~ msgid "Open the contents of the File System"
-#~ msgstr "ファイルシステムの内容を表示"
-
-#~ msgid "_Disconnect Drive"
-#~ msgstr "ドライブを接続解除 (_D)"
-
-#~ msgid "_Power On"
-#~ msgstr "電源オン (_P)"
-
-#~ msgid "_Unlock Drive"
-#~ msgstr "ドライブのロック解除 (_U)"
-
-#~ msgid "_Safely Remove Drive"
-#~ msgstr "ドライブの安全な取り出し (_S)"
