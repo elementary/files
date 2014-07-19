@@ -235,6 +235,9 @@ static gboolean empty_trash_job (GIOSchedulerJob *io_job,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
+void
+marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs);
+
 #ifndef ENABLE_TASKVIEW
 /* keep in time with format_time()
  *
