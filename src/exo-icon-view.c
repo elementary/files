@@ -137,6 +137,8 @@ struct _ExoIconViewPrivate
 
     ExoIconViewItem *last_single_clicked;
 
+    ExoIconViewItem *selected_on_last_button_press;
+
     GList *cell_list;
     gint n_cells;
 
@@ -196,6 +198,9 @@ struct _ExoIconViewPrivate
 
     /* Single-click support */
     guint single_click : 1;
+
+    /* Indicate if double-click has occurred */
+    gboolean is_double_click;
 
     /* Interactive search */
     gint selected_iter;
@@ -357,8 +362,7 @@ static void                 exo_icon_view_accessible_set_adjustment      (AtkObj
                                                                           GtkAdjustment          *adjustment);
 static void                 exo_icon_view_adjustment_changed             (GtkAdjustment          *adjustment,
                                                                           ExoIconView            *icon_view);
-static void                 exo_icon_view_layout                         (ExoIconView            *icon_view,
-                                                                          gboolean                queue_draw);
+static void                 exo_icon_view_layout                         (ExoIconView            *icon_view);
 static void                 exo_icon_view_paint_item                     (ExoIconView            *icon_view,
                                                                           cairo_t                *cr,
                                                                           ExoIconViewItem        *item,
@@ -417,7 +421,8 @@ static void                 exo_icon_view_unselect_item                  (ExoIco
                                                                           ExoIconViewItem        *item);
 static gboolean             exo_icon_view_select_all_between             (ExoIconView            *icon_view,
                                                                           ExoIconViewItem        *anchor,
-                                                                          ExoIconViewItem        *cursor);
+                                                                          ExoIconViewItem        *cursor,
+                                                                          gboolean               boxed_selection);
 static ExoIconViewItem *    exo_icon_view_get_item_at_coords             (ExoIconView            *icon_view,
                                                                           gint                    x,
                                                                           gint                    y,
@@ -1796,6 +1801,9 @@ exo_icon_view_size_allocate (GtkWidget      *widget,
                            MAX (icon_view->priv->height, allocation->height));
     }
 
+    exo_icon_view_queue_layout (icon_view);
+
+
     exo_icon_view_allocate_children (icon_view);
 
     /* Delay signal emission */
@@ -1837,8 +1845,6 @@ exo_icon_view_draw (GtkWidget *widget,
     ExoIconViewItem *dest_item = NULL;
 
     icon_view = EXO_ICON_VIEW (widget);
-
-    exo_icon_view_layout (icon_view, FALSE);
 
     if (!gtk_cairo_should_draw_window (cr, icon_view->priv->bin_window))
         return FALSE;
@@ -2293,6 +2299,8 @@ exo_icon_view_button_press (GtkWidget      *widget,
 
     icon_view = EXO_ICON_VIEW (widget);
 
+    icon_view->priv->selected_on_last_button_press = NULL;
+
     if (event->window != icon_view->priv->bin_window)
         return FALSE;
 
@@ -2306,65 +2314,132 @@ exo_icon_view_button_press (GtkWidget      *widget,
                                                  FALSE,
                                                  &cell);
 
-        /*
-         * We consider only the the cells' area as the item area if the
-         * item is not selected, but if it *is* selected, the complete
-         * selection rectangle is considered to be part of the item.
-         */
-        //if (item != NULL && (cell != NULL || item->selected))
-        if (item != NULL)
-        {
-            if (cell != NULL)
-            {
-                if (gtk_cell_renderer_is_activatable (cell))
-                    cursor_cell = cell;
-            }
+        if (cell != NULL && gtk_cell_renderer_is_activatable (cell))
+            cursor_cell = cell;
 
+        if (item != NULL)
             exo_icon_view_scroll_to_item (icon_view, item);
 
-            if (icon_view->priv->selection_mode == GTK_SELECTION_NONE)
-            {
-                exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
-            }
-            else if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE &&
-                     (event->state & GDK_SHIFT_MASK))
-            {
-                exo_icon_view_unselect_all_internal (icon_view);
+        switch (icon_view->priv->selection_mode)
+        {
+            case GTK_SELECTION_NONE:
+                if (item != NULL)
+                    exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+                break;
 
-                exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
-                if (!icon_view->priv->anchor_item)
-                    icon_view->priv->anchor_item = item;
-                else
-                    exo_icon_view_select_all_between (icon_view,
-                                                      icon_view->priv->anchor_item,
-                                                      item);
-                dirty = TRUE;
-            }
-            else
-            {
-                if ((icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE ||
-                     ((icon_view->priv->selection_mode == GTK_SELECTION_SINGLE) && item->selected)) &&
-                    (event->state & GDK_CONTROL_MASK))
+            case GTK_SELECTION_SINGLE:
+                if (event->state & GDK_CONTROL_MASK)
                 {
-                    item->selected = !item->selected;
-                    exo_icon_view_queue_draw_item (icon_view, item);
-                    dirty = TRUE;
+                    if (item != NULL)
+                    {
+                        gint selected = item->selected;
+                        exo_icon_view_unselect_all_internal (icon_view);
+                        if (selected)
+                            item->selected = !selected;
+                        exo_icon_view_queue_draw_item (icon_view, item);
+                        dirty = TRUE;
+                    }
                 }
                 else
                 {
-                    if (!icon_view->priv->add_remove_helper) {
+                    if (item != NULL && !item->selected)
+                    {
                         exo_icon_view_unselect_all_internal (icon_view);
                         item->selected = TRUE;
-                    } else {
-                        item->selected = !item->selected;
+                        exo_icon_view_queue_draw_item (icon_view, item);
+                        dirty = TRUE;
                     }
+                }
+                break;
+
+            case GTK_SELECTION_BROWSE:
+                if (item != NULL && !item->selected)
+                {
+                    exo_icon_view_unselect_all_internal (icon_view);
+                    item->selected = TRUE;
                     exo_icon_view_queue_draw_item (icon_view, item);
                     dirty = TRUE;
                 }
-                exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
-                icon_view->priv->anchor_item = item;
-            }
+                break;
 
+            case GTK_SELECTION_MULTIPLE:
+            default:
+                if (event->state & GDK_SHIFT_MASK)
+                {
+                    if (item != NULL)
+                    {
+                        // check if doing a CTRL + SHIFT select
+                        if (!(event->state & GDK_CONTROL_MASK))
+                            exo_icon_view_unselect_all_internal (icon_view);
+
+                        exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+                        if (!icon_view->priv->anchor_item)
+                            icon_view->priv->anchor_item = item;
+                        else
+                            exo_icon_view_select_all_between (icon_view,
+                                                              icon_view->priv->anchor_item,
+                                                              item,
+                                                              FALSE);
+                        dirty = TRUE;
+                    }
+                    else
+                    {
+                        icon_view->priv->rubberbanding_shift = TRUE;
+                        exo_icon_view_start_rubberbanding (icon_view, event->device, event->x, event->y);
+                    }
+                }
+                else if (event->state & GDK_CONTROL_MASK)
+                {
+                    if (item != NULL)
+                    {
+                        // on button press, items can only be selected. they are unselected on button release
+                        if (!item->selected)
+                        {
+                            item->selected = TRUE;
+                            icon_view->priv->selected_on_last_button_press = item;
+                            exo_icon_view_queue_draw_item (icon_view, item);
+                            dirty = TRUE;
+                        }
+                        exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+                        icon_view->priv->anchor_item = item;
+                    }
+                    else
+                    {
+                        icon_view->priv->rubberbanding_shift = FALSE;
+                        exo_icon_view_start_rubberbanding (icon_view, event->device, event->x, event->y);
+                    }
+                }
+                else    // no CTRL|SHIFT modifier
+                {
+                    if (item != NULL)
+                    {
+                        // on button press, items can only be selected. they are unselected on button release
+                        if (!item->selected)
+                        {
+                            if (!icon_view->priv->add_remove_helper)
+                                exo_icon_view_unselect_all_internal (icon_view);  
+
+                            item->selected = TRUE;
+                            icon_view->priv->selected_on_last_button_press = item;
+                            exo_icon_view_queue_draw_item (icon_view, item);
+                            dirty = TRUE;
+                        }
+
+                        exo_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+                        icon_view->priv->anchor_item = item;
+                    }
+                    else
+                    {
+                        dirty = exo_icon_view_unselect_all_internal (icon_view);
+                        icon_view->priv->rubberbanding_shift = FALSE;
+                        exo_icon_view_start_rubberbanding (icon_view, event->device, event->x, event->y);
+                    }
+                }
+                break;
+        }
+
+        if (item != NULL)
+        {
             /* Save press to possibly begin a drag */
             if (icon_view->priv->pressed_button < 0)
             {
@@ -2391,51 +2466,19 @@ exo_icon_view_button_press (GtkWidget      *widget,
                                         (GdkRectangle *)item, 0/* XXX flags */, FALSE);
             }
         }
-        else
-        {
-            if (icon_view->priv->selection_mode != GTK_SELECTION_BROWSE &&
-                !((event->state & GDK_CONTROL_MASK) || (event->state & GDK_SHIFT_MASK)))
-            {
-                dirty = exo_icon_view_unselect_all_internal (icon_view);
-            }
-
-            if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE) {
-                if (event->state & GDK_SHIFT_MASK)
-                    icon_view->priv->rubberbanding_shift = TRUE;
-                else
-                    icon_view->priv->rubberbanding_shift = FALSE;
-                exo_icon_view_start_rubberbanding (icon_view, event->device, event->x, event->y);
-            }
-        }
 
         /* don't draw keyboard focus around an clicked-on item */
         icon_view->priv->draw_focus = FALSE;
     }
 
-    if (!icon_view->priv->single_click && event->button == 1 && event->type == GDK_2BUTTON_PRESS)
-    {
-        item = exo_icon_view_get_item_at_coords (icon_view,
-                                                 event->x, event->y,
-                                                 FALSE,
-                                                 NULL);
-
-        if (item && item == icon_view->priv->last_single_clicked)
-        {
-            GtkTreePath *path;
-
-            path = gtk_tree_path_new_from_indices (item->index, -1);
-            exo_icon_view_item_activated (icon_view, path);
-            gtk_tree_path_free (path);
-        }
-
-        icon_view->priv->last_single_clicked = NULL;
-        icon_view->priv->pressed_button = -1;
-    }
-
     if (dirty)
         g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
 
+    /* remember whether this is a double click event */
+    icon_view->priv->is_double_click = (event->type == GDK_2BUTTON_PRESS);
+
     return event->button == 1;
+
 }
 
 static gboolean
@@ -2448,30 +2491,76 @@ exo_icon_view_button_release (GtkWidget      *widget,
 
     if (icon_view->priv->pressed_button == event->button)
     {
-        /* check if we're in single click mode */
-        if (icon_view->priv->single_click && (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) == 0)
+        /* check if we're in single click or double click mode */
+        if (icon_view->priv->single_click)
         {
             /* determine the item at the mouse coords and check if this is the last single clicked one */
             item = exo_icon_view_get_item_at_coords (icon_view, event->x, event->y, TRUE, NULL);
-            if (G_LIKELY (item != NULL && item == icon_view->priv->last_single_clicked))
+            if (item != NULL)
             {
-                if (!icon_view->priv->add_remove_helper) {
-                    exo_icon_view_unselect_all_internal (icon_view);
-                    item->selected = TRUE;
-                }
-                exo_icon_view_queue_draw_item (icon_view, item);
-                g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
-
-                if (!icon_view->priv->add_remove_helper) {
-                    path = gtk_tree_path_new_from_indices (g_list_index (icon_view->priv->items, item), -1);
-                    /* emit an "item-activated" signal for this item */
-                    exo_icon_view_item_activated (icon_view, path);
-                    gtk_tree_path_free (path);
+                if (!(event->state & GDK_SHIFT_MASK))
+                {
+                    // for CTRL-click or normal click, items can only be deselected on button release
+                    if (icon_view->priv->add_remove_helper || 
+                        event->state & GDK_CONTROL_MASK)
+                    {
+                        if (item->selected && icon_view->priv->selected_on_last_button_press == NULL)
+                        {
+                            item->selected = FALSE;
+                            exo_icon_view_queue_draw_item (icon_view, item);
+                            g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+                        }
+                    }
+                    else
+                    {
+                        path = gtk_tree_path_new_from_indices (g_list_index (icon_view->priv->items, item), -1);
+                        /* emit an "item-activated" signal for this item */
+                        exo_icon_view_item_activated (icon_view, path);
+                        gtk_tree_path_free (path);
+                    }
                 }
             }
 
             /* reset the last single clicked item */
             icon_view->priv->last_single_clicked = NULL;
+        }
+        else if (!icon_view->priv->single_click && event->button == 1)
+        {
+            /* determine the item at the mouse coords and check if this is the last single clicked one */
+            item = exo_icon_view_get_item_at_coords (icon_view, event->x, event->y, TRUE, NULL);
+            if (item != NULL)
+            {
+                if (!(event->state & GDK_SHIFT_MASK))
+                {
+                    // for CTRL-click or normal click, items can only be deselected on button release
+                    if (event->state & GDK_CONTROL_MASK)
+                    {
+                        if (item->selected && icon_view->priv->selected_on_last_button_press == NULL)
+                        {
+                            item->selected = FALSE;
+                            exo_icon_view_queue_draw_item (icon_view, item);
+                            g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+                        }
+                    }
+                    else
+                    {
+                        exo_icon_view_unselect_all_internal (icon_view);
+                        item->selected = TRUE;
+                        exo_icon_view_queue_draw_item (icon_view, item);
+                        g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+                    }
+                }
+
+                if (icon_view->priv->is_double_click && item == icon_view->priv->last_single_clicked)
+                {
+                    GtkTreePath *path;
+
+                    path = gtk_tree_path_new_from_indices (item->index, -1);
+                    exo_icon_view_item_activated (icon_view, path);
+                    gtk_tree_path_free (path);
+                }
+            }
+            icon_view->priv->last_single_clicked = item;
         }
 
         /* reset the pressed_button state */
@@ -2759,6 +2848,32 @@ exo_icon_view_stop_rubberbanding (ExoIconView *icon_view)
                                            0, 0, NULL, NULL,
                                            drag_data);
     }
+
+    /* if an item is selected, set it to the new anchor and update the cursor */
+    guint num_selected = 0;
+    ExoIconViewItem *anItem = NULL;
+    GList *items;
+    for (items = icon_view->priv->items; items; items = items->next)
+    {
+        ExoIconViewItem *item = items->data;
+        if (item->selected)
+        {
+            num_selected++;
+            anItem = item;
+
+            // could break here and select the anchor as the first selected item
+            // in the view, however other file managers seem to set it as the
+            // *last* item in the selection, so we will ignore the break and
+            // and loop through to the end
+        }
+    }
+
+    if (num_selected > 0)
+    {
+        exo_icon_view_set_cursor_item (icon_view, anItem, NULL);
+        icon_view->priv->cursor_item = anItem;
+        icon_view->priv->anchor_item = anItem;
+    }
 }
 
 static void
@@ -3032,7 +3147,7 @@ exo_icon_view_process_updates (ExoIconView *icon_view)
      * (and resize the bin_window if required).
      */
     if (icon_view->priv->layout_idle_id != 0) {
-        exo_icon_view_layout (icon_view, TRUE);
+        exo_icon_view_layout (icon_view);
     }
 
     gdk_window_process_updates (icon_view->priv->bin_window, TRUE);
@@ -3430,7 +3545,7 @@ adjust_wrap_width (ExoIconView *icon_view)
 }
 
 static void
-exo_icon_view_layout (ExoIconView *icon_view, gboolean queue_draw)
+exo_icon_view_layout (ExoIconView *icon_view)
 {
     GtkAllocation allocation;
     GtkWidget *widget;
@@ -3571,8 +3686,7 @@ exo_icon_view_layout (ExoIconView *icon_view, gboolean queue_draw)
         gtk_tree_path_free (path);
     }
 
-    if (queue_draw)
-        gtk_widget_queue_draw (widget);
+    gtk_widget_queue_draw (widget);
 }
 
 /* This ensures that all widths have been cached in the
@@ -3826,7 +3940,7 @@ layout_callback (gpointer user_data)
     ExoIconView *icon_view;
 
     icon_view = EXO_ICON_VIEW (user_data);
-    exo_icon_view_layout (icon_view, TRUE);
+    exo_icon_view_layout (icon_view);
     icon_view->priv->layout_idle_id = 0;
 
     return FALSE;
@@ -4512,41 +4626,72 @@ find_item_page_up_down (ExoIconView     *icon_view,
 static gboolean
 exo_icon_view_select_all_between (ExoIconView     *icon_view,
                                   ExoIconViewItem *anchor,
-                                  ExoIconViewItem *cursor)
+                                  ExoIconViewItem *cursor,
+                                  gboolean        boxed_selection)
 {
     GList *items;
-    ExoIconViewItem *item, *last;
+    ExoIconViewItem *item, *first, *last;
     gboolean dirty = FALSE;
+    gint start_row, end_row, start_col, end_col;
 
-    for (items = icon_view->priv->items; items; items = items->next)
+    if (boxed_selection)
     {
-        item = items->data;
+        start_row = MIN(anchor->row, cursor->row);
+        end_row = MAX(anchor->row, cursor->row);
+        start_col = MIN(anchor->col, cursor->col);
+        end_col = MAX(anchor->col, cursor->col);
 
-        if (item == anchor)
+        for (items = icon_view->priv->items; items; items = items->next)
         {
-            last = cursor;
-            break;
-        }
-        else if (item == cursor)
-        {
-            last = anchor;
-            break;
+            item = items->data;
+            if (item->row >= start_row && item->row <= end_row &&
+                item->col >= start_col && item->col <= end_col)
+            {
+                if (!item->selected)
+                    dirty = TRUE;
+
+                item->selected = TRUE;
+
+                exo_icon_view_queue_draw_item (icon_view, item);
+            }
+
+            if (item->row > end_row && item->col >= end_col)
+                break;
         }
     }
-
-    for (; items; items = items->next)
+    else
     {
-        item = items->data;
+        for (items = icon_view->priv->items; items; items = items->next)
+        {
+            item = items->data;
 
-        if (!item->selected)
-            dirty = TRUE;
+            if (item == anchor)
+            {
+                last = cursor;
+                break;
+            }
+            else if (item == cursor)
+            {
+                last = anchor;
+                break;
+            }
+        }
 
-        item->selected = TRUE;
+        first = item;
+        for (; items; items = items->next)
+        {
+            item = items->data;
 
-        exo_icon_view_queue_draw_item (icon_view, item);
+            if (!item->selected)
+                dirty = TRUE;
 
-        if (item == last)
-            break;
+            item->selected = TRUE;
+
+            exo_icon_view_queue_draw_item (icon_view, item);
+
+            if (item == last)
+                break;
+        }
     }
 
     return dirty;
@@ -4635,7 +4780,7 @@ exo_icon_view_move_cursor_up_down (ExoIconView *icon_view,
         return;
     }
 
-    if (icon_view->priv->ctrl_pressed ||
+    if ((icon_view->priv->ctrl_pressed && !icon_view->priv->shift_pressed) ||
         !icon_view->priv->shift_pressed ||
         !icon_view->priv->anchor_item ||
         icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
@@ -4644,13 +4789,13 @@ exo_icon_view_move_cursor_up_down (ExoIconView *icon_view,
     cell = gtk_cell_area_get_focus_cell (icon_view->priv->cell_area);
     exo_icon_view_set_cursor_item (icon_view, item, cell);
 
-    if (!icon_view->priv->ctrl_pressed &&
-        icon_view->priv->selection_mode != GTK_SELECTION_NONE)
+    if (icon_view->priv->selection_mode != GTK_SELECTION_NONE)
     {
         dirty = exo_icon_view_unselect_all_internal (icon_view);
         dirty = exo_icon_view_select_all_between (icon_view,
                                                   icon_view->priv->anchor_item,
-                                                  item) || dirty;
+                                                  item,
+                                                  icon_view->priv->ctrl_pressed && icon_view->priv->shift_pressed) || dirty;
     }
 
     exo_icon_view_scroll_to_item (icon_view, item);
@@ -4691,7 +4836,7 @@ exo_icon_view_move_cursor_page_up_down (ExoIconView *icon_view,
     if (!item)
         return;
 
-    if (icon_view->priv->ctrl_pressed ||
+    if ((icon_view->priv->ctrl_pressed && !icon_view->priv->shift_pressed) ||
         !icon_view->priv->shift_pressed ||
         !icon_view->priv->anchor_item ||
         icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
@@ -4699,13 +4844,13 @@ exo_icon_view_move_cursor_page_up_down (ExoIconView *icon_view,
 
     exo_icon_view_set_cursor_item (icon_view, item, NULL);
 
-    if (!icon_view->priv->ctrl_pressed &&
-        icon_view->priv->selection_mode != GTK_SELECTION_NONE)
+    if (icon_view->priv->selection_mode != GTK_SELECTION_NONE)
     {
         dirty = exo_icon_view_unselect_all_internal (icon_view);
         dirty = exo_icon_view_select_all_between (icon_view,
                                                   icon_view->priv->anchor_item,
-                                                  item) || dirty;
+                                                  item,
+                                                  icon_view->priv->ctrl_pressed && icon_view->priv->shift_pressed) || dirty;
     }
 
     exo_icon_view_scroll_to_item (icon_view, item);
@@ -4797,7 +4942,7 @@ exo_icon_view_move_cursor_left_right (ExoIconView *icon_view,
         return;
     }
 
-    if (icon_view->priv->ctrl_pressed ||
+    if ((icon_view->priv->ctrl_pressed && !icon_view->priv->shift_pressed) ||
         !icon_view->priv->shift_pressed ||
         !icon_view->priv->anchor_item ||
         icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
@@ -4806,13 +4951,13 @@ exo_icon_view_move_cursor_left_right (ExoIconView *icon_view,
     cell = gtk_cell_area_get_focus_cell (icon_view->priv->cell_area);
     exo_icon_view_set_cursor_item (icon_view, item, cell);
 
-    if (!icon_view->priv->ctrl_pressed &&
-        icon_view->priv->selection_mode != GTK_SELECTION_NONE)
+    if (icon_view->priv->selection_mode != GTK_SELECTION_NONE)
     {
         dirty = exo_icon_view_unselect_all_internal (icon_view);
         dirty = exo_icon_view_select_all_between (icon_view,
                                                   icon_view->priv->anchor_item,
-                                                  item) || dirty;
+                                                  item,
+                                                  icon_view->priv->ctrl_pressed && icon_view->priv->shift_pressed) || dirty;
     }
 
     exo_icon_view_scroll_to_item (icon_view, item);
@@ -4845,7 +4990,7 @@ exo_icon_view_move_cursor_start_end (ExoIconView *icon_view,
     if (!item)
         return;
 
-    if (icon_view->priv->ctrl_pressed ||
+    if ((icon_view->priv->ctrl_pressed && !icon_view->priv->shift_pressed) ||
         !icon_view->priv->shift_pressed ||
         !icon_view->priv->anchor_item ||
         icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
@@ -4853,13 +4998,13 @@ exo_icon_view_move_cursor_start_end (ExoIconView *icon_view,
 
     exo_icon_view_set_cursor_item (icon_view, item, NULL);
 
-    if (!icon_view->priv->ctrl_pressed &&
-        icon_view->priv->selection_mode != GTK_SELECTION_NONE)
+    if (icon_view->priv->selection_mode != GTK_SELECTION_NONE)
     {
         dirty = exo_icon_view_unselect_all_internal (icon_view);
         dirty = exo_icon_view_select_all_between (icon_view,
                                                   icon_view->priv->anchor_item,
-                                                  item) || dirty;
+                                                  item,
+                                                  icon_view->priv->ctrl_pressed && icon_view->priv->shift_pressed) || dirty;
     }
 
     exo_icon_view_scroll_to_item (icon_view, item);

@@ -353,6 +353,9 @@ namespace Marlin.View {
                     }
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
+
+                    // reload the view to ensure icons are rendered correctly
+                    current_tab.reload ();
                 }
             }
         }
