@@ -1801,6 +1801,9 @@ exo_icon_view_size_allocate (GtkWidget      *widget,
                            MAX (icon_view->priv->height, allocation->height));
     }
 
+    exo_icon_view_queue_layout (icon_view);
+
+
     exo_icon_view_allocate_children (icon_view);
 
     /* Delay signal emission */
