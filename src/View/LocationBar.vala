@@ -58,10 +58,11 @@ namespace Marlin.View.Chrome
 
             bread.path_changed.connect (on_path_changed);
             bread.activate_alternate.connect ((file) => { activate_alternate(file); });
-            bread.search_changed.connect (on_search_changed);
             bread.notify["search-mode"].connect (() => {
-                if (!bread.search_mode)
-                     search_mode_left ();
+                if (!bread.search_mode) {
+                    bread.search_results.clear ();
+                    search_mode_left ();
+                }
             });
 
             margin_top = 4;
@@ -87,13 +88,11 @@ namespace Marlin.View.Chrome
 
             activate(file);
         }
-
-        private void on_search_changed (string text) {
-            win.search_view.search (text, win.current_tab.slot.location);
-        }
     }
 
     public class Breadcrumbs : BasePathBar {
+        public SearchResults search_results { get; private set; }
+
         Gtk.Menu menu;
         private Gtk.UIManager ui;
 
@@ -199,11 +198,6 @@ namespace Marlin.View.Chrome
             add_icon (icon);
             
             up.connect (() => {
-                if (search_mode) {
-                    win.search_view.up ();
-                    return;
-                }
-
                 File file = get_file_for_path (text);
                 File parent = file.get_parent ();
                 
@@ -215,20 +209,11 @@ namespace Marlin.View.Chrome
             });
 
             down.connect (() => {
-                if (search_mode) {
-                    win.search_view.down ();
-                    return;
-                }
-
                 // focus back the view 
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else
                     win.current_tab.slot.view_box.grab_focus ();
-            });
-
-            select_current.connect (() => {
-                win.search_view.select_current ();
             });
 
             completed.connect (() => {
@@ -245,11 +230,32 @@ namespace Marlin.View.Chrome
                 
                 grab_focus ();
             });
-            
+
             need_completion.connect (on_need_completion);
 
             menu = new Gtk.Menu ();
             menu.show_all ();
+
+            search_results = new SearchResults (this);
+
+            search_results.file_selected.connect ((file) => {
+                if (win.current_tab.content_shown)
+                    win.current_tab.content.grab_focus ();
+                else
+                    win.current_tab.slot.view_box.grab_focus ();
+
+                win.current_tab.focus_file (file);
+            });
+            search_results.hide.connect (() => {
+                if (text.length < 1)
+                    search_mode = false;
+                else
+                    text = "";
+            });
+
+            search_changed.connect ((text) => {
+                search_results.search (text, win.current_tab.slot.location);
+            });
         }
 
         /**

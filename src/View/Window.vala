@@ -31,7 +31,6 @@ namespace Marlin.View {
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
-        public SearchView search_view;
 
         public ViewContainer? current_tab = null;
 
@@ -192,22 +191,11 @@ namespace Marlin.View {
 
             sidebar.show ();
 
-            search_view = new SearchView (top_menu.location_bar);
-            search_view.file_selected.connect ((file) => {
-                if (current_tab.content_shown)
-                    current_tab.content.grab_focus ();
-                else
-                    current_tab.slot.view_box.grab_focus ();
-
-                current_tab.focus_file (file);
-            });
             top_menu.location_bar.search_mode_left.connect (() => {
                 if (current_tab.content_shown)
                     current_tab.content.grab_focus ();
                 else
                     current_tab.slot.view_box.grab_focus ();
-
-                search_view.hide ();
             });
 
             /*/
@@ -663,16 +651,6 @@ namespace Marlin.View {
 
         private void action_find_callback (Gtk.Action action) {
             top_menu.location_bar.enter_search_mode ();
-
-            Gtk.Allocation alloc;
-            int x, y;
-            var point_to = top_menu.location_bar;
-            point_to.get_allocation (out alloc);
-            point_to.translate_coordinates (this, 0, 0, out x, out y);
-
-            search_view.set_pointing_to ({ 0, 0, alloc.height + 6, alloc.height });
-            search_view.clear ();
-            search_view.show_all ();
         }
 
         private void action_home_callback (Gtk.Action action) {

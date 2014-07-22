@@ -54,10 +54,11 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
+        ZeitgeistManager.vala
         View/DiskRenderer.vala
         View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
-        View/SearchView.vala
+        View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
         View/DbusTags.vala

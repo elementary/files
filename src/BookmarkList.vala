@@ -28,7 +28,8 @@ namespace Marlin {
             SAVE = 2
         }
 
-        private GLib.List<Marlin.Bookmark> list;
+        public unowned GLib.List<Marlin.Bookmark> list { get; private set; }
+
         private GLib.FileMonitor monitor;
         private GLib.Queue<JobType> pending_ops;
         private static GLib.File bookmarks_file;

@@ -90,7 +90,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void path_changed (File file);
     public signal void need_completion ();
     public signal void search_changed (string text);
-    public signal void select_current ();
 
     List<IconDirectory?> icons;
 
@@ -253,18 +252,19 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     void on_change () {
+        if (search_mode) {
+            search_changed (text);
+            return;
+        }
+
         if (ignore_change) {
             ignore_change = false;
             return;
         }
 
-        if (search_mode) {
-            search_changed (text);
-        } else {
-            set_entry_icon (true, (text.length > 0) ? "Navigate to: " + text : "");
-            text_completion = "";
-            need_completion ();
-        }
+        set_entry_icon (true, (text.length > 0) ? "Navigate to: " + text : "");
+        text_completion = "";
+        need_completion ();
     }
     
     bool on_motion_notify (Gdk.EventMotion event) {
@@ -333,11 +333,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_activate () {
-        if (search_mode) {
-            select_current ();
-            return;
-        }
-
         path_changed (get_file_for_path (text + text_completion));
         text_completion = "";
     }
