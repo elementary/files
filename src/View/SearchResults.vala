@@ -90,6 +90,7 @@ namespace Marlin.View
             view = new Gtk.TreeView ();
             view.headers_visible = false;
             view.show_expanders = false;
+            view.level_indentation = 12;
 
             Gtk.CellRenderer cell;
             var column = new Gtk.TreeViewColumn ();
@@ -100,12 +101,10 @@ namespace Marlin.View
 
             cell = new Gtk.CellRendererText ();
             column.pack_start (cell, true);
-            column.set_attributes (cell, "text", 0);
+            column.set_attributes (cell, "markup", 0);
 
             var cell_path = new Gtk.CellRendererText ();
-            cell_path.xalign = 1.0f;
             cell_path.ellipsize = Pango.EllipsizeMode.MIDDLE;
-            cell_path.alignment = Pango.Alignment.RIGHT;
             column.pack_start (cell_path, false);
             column.set_attributes (cell_path, "markup", 2);
 
@@ -116,11 +115,11 @@ namespace Marlin.View
             view.model = list;
 
             list.append (out local_results, null);
-            list.@set (local_results, 0, _("In this folder:"));
+            list.@set (local_results, 0, get_category_header (_("In This Folder")));
             list.append (out global_results, null);
-            list.@set (global_results, 0, _("Everywhere else:"));
+            list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
             list.append (out bookmark_results, null);
-            list.@set (bookmark_results, 0, _("Bookmarks:"));
+            list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
 
             frame.add (view);
             add (frame);
@@ -381,12 +380,11 @@ namespace Marlin.View
                     } catch (Error e) {}
                 }
 
-                var location = "\t<span style=\"italic\">%s</span>".printf (
-                    Markup.escape_text (match.path_string));
+                var location = Markup.escape_text (match.path_string);
 
                 Gtk.TreeIter iter;
                 list.append (out iter, parent);
-                list.@set (iter, 0, match.name, 1, pixbuf, 2, location, 3, match.file, 4, true);
+                list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
 
                 view.expand_all ();
             }
@@ -523,7 +521,7 @@ namespace Marlin.View
             File f = folder;
             var path_string = "";
             while (!f.equal (current_root)) {
-                path_string = f.get_basename () + (path_string == "" ? "" : " > " + path_string);
+                path_string = f.get_basename () + (path_string == "" ? "" : "/" + path_string);
                 f = f.get_parent ();
                 depth++;
             }
@@ -615,14 +613,14 @@ namespace Marlin.View
                                 break;
 
                             if (parent.equal (home)) {
-                                path_string = "~ > " + path_string;
+                                path_string = "~/" + path_string;
                                 break;
                             }
 
                             if (path_string == "")
                                 path_string = parent.get_basename ();
                             else
-                                path_string = parent.get_basename () + " > " + path_string;
+                                path_string = parent.get_basename () + "/" + path_string;
                         }
 
                         var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
@@ -645,6 +643,20 @@ namespace Marlin.View
             // term is assumed to be down
             var res = name.normalize ().casefold ().contains (term);
             return res;
+        }
+
+        string get_category_header (string title)
+        {
+            Gdk.RGBA rgba;
+            string color = "";
+            var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
+
+            if (colored) {
+                Gdk.Color gdk_color = { 0, (uint16) (rgba.red * 65536), (uint16) (rgba.green * 65536), (uint16) (rgba.blue * 65536) };
+                color = "color='%s'".printf (gdk_color.to_string ());
+            }
+
+            return "<span weight='bold' %s>%s</span>".printf (color, title);
         }
     }
 }
