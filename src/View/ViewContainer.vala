@@ -143,9 +143,9 @@ namespace Marlin.View {
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
+            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else if (slot.directory.file.exists && !aslot.directory.file.is_mounted) {
+            else if (aslot.directory.file.exists && !aslot.directory.file.is_mounted) {
                 // tab_name will change once the directory has been mounted
                 tab_name = _("Connecting...");
                 loading (true);
