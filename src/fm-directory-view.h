@@ -55,6 +55,8 @@ typedef struct FMDirectoryViewClass FMDirectoryViewClass;
 #define FM_DIRECTORY_VIEW_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_DIRECTORY_VIEW, FMDirectoryViewClass))
 
+#define MAX_TEMPLATES 32
+
 typedef struct FMDirectoryViewDetails FMDirectoryViewDetails;
 
 struct FMDirectoryView {
@@ -438,5 +440,7 @@ GAppInfo *fm_directory_view_get_default_app (FMDirectoryView *view);
 void    fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view);
 void    fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file);
 void    fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files);
+
+void    fm_directory_view_add_to_selection_gof_file (FMDirectoryView *view, GOFFile *file);
 
 #endif /* FM_DIRECTORY_VIEW_H */

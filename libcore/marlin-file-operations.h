@@ -76,15 +76,14 @@ void marlin_file_operations_new_file    (GtkWidget                 *parent_view,
                                          int                        length,
                                          MarlinCreateCallback     done_callback,
                                          gpointer                   data);
-#if 0
+
 void marlin_file_operations_new_file_from_template (GtkWidget               *parent_view,
                                                     GdkPoint                *target_point,
-                                                    const char              *parent_dir,
+                                                    GFile                   *parent_dir,
                                                     const char              *target_filename,
-                                                    const char              *template_uri,
-                                                    MarlinCreateCallback   done_callback,
+                                                    GFile                   *template,
+                                                    MarlinCreateCallback     done_callback,
                                                     gpointer                 data);
-#endif
 void marlin_file_operations_delete          (GList                  *files,
                                              GtkWindow              *parent_window,
                                              MarlinDeleteCallback   done_callback,
@@ -158,6 +157,10 @@ void marlin_file_mark_desktop_file_trusted (GFile           *file,
                                             gboolean          interactive,
                                             MarlinOpCallback done_callback,
                                             gpointer          done_callback_data);
+
+gboolean marlin_file_operations_has_trash_files (GMount *mount);
+gint marlin_file_operations_prompt_empty_trash (GtkWindow *parent_window);
+GList *marlin_file_operations_get_trash_dirs_for_mount (GMount *mount);
 
 #endif
 #endif /* MARLIN_FILE_OPERATIONS_H */

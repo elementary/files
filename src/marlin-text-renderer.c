@@ -20,6 +20,7 @@
 #include <config.h>
 #endif
 
+#include <math.h>
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
@@ -476,7 +477,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         state |= GTK_STATE_FLAG_SELECTED;
     }
     else if ((flags & GTK_CELL_RENDERER_PRELIT) == GTK_CELL_RENDERER_PRELIT
-             && gtk_widget_get_state (widget) == GTK_STATE_PRELIGHT)
+             && gtk_widget_get_state_flags (widget) == GTK_STATE_PRELIGHT)
     {
         state = GTK_STATE_PRELIGHT;
     }
@@ -528,15 +529,17 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     /* take into account the state indicator (required for calculation) */
     if (text_renderer->follow_state)
     {
-        text_width += 2 * text_renderer->focus_width;
+        /* make the focus indicator rectangular */
+        text_width += 4 * text_renderer->focus_width;
         text_height += 2 * text_renderer->focus_width;
     }
 
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
 
     /* calculate the real x-offset */
-    x_offset = ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) ? (1.0 - xalign) : xalign)
-        * (cell_area->width - text_width - (2 * xpad));
+    /* ceil seems to work best when the offset is actually a float value */
+    x_offset = ceil(((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) ? (1.0 - xalign) : xalign)
+        * (cell_area->width - text_width - (2 * xpad)));
     x_offset = MAX (x_offset, 0);
 
     /* calculate the real y-offset */
@@ -558,26 +561,26 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         x1 = x0 + text_width;
         y1 = y0 + text_height;
 
-        cairo_move_to (cr, x0 + 5, y0);
-        cairo_line_to (cr, x1 - 5, y0);
-        cairo_curve_to (cr, x1 - 5, y0, x1, y0, x1, y0 + 5);
-        cairo_line_to (cr, x1, y1 - 5);
-        cairo_curve_to (cr, x1, y1 - 5, x1, y1, x1 - 5, y1);
-        cairo_line_to (cr, x0 + 5, y1);
-        cairo_curve_to (cr, x0 + 5, y1, x0, y1, x0, y1 - 5);
-        cairo_line_to (cr, x0, y0 + 5);
-        cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
+        const unsigned int border_radius = 3;
+        cairo_move_to (cr, x0 + border_radius, y0);
+        cairo_line_to (cr, x1 - border_radius, y0);
+        cairo_curve_to (cr, x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
+        cairo_line_to (cr, x1, y1 - border_radius);
+        cairo_curve_to (cr, x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
+        cairo_line_to (cr, x0 + border_radius, y1);
+        cairo_curve_to (cr, x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
+        cairo_line_to (cr, x0, y0 + border_radius);
+        cairo_curve_to (cr, x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
 
         GdkRGBA color;
 
-        if(text_renderer->background != NULL && !selected)
+        if (text_renderer->background != NULL && !selected)
         {
-            if(!gdk_rgba_parse(&color, text_renderer->background))
+            if (!gdk_rgba_parse(&color, text_renderer->background))
             {
                 g_critical("Can't parse this color value: %s", text_renderer->background);
                 gtk_style_context_get_background_color (context, state, &color);
             }
-
         }
         else
         {
@@ -747,7 +750,7 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
 
         /* determine the focus-padding and focus-line-width style properties from the widget */
         gtk_widget_style_get (widget, "focus-padding", &focus_padding, "focus-line-width", &focus_line_width, NULL);
-        text_renderer->focus_width = focus_padding + focus_line_width;
+        text_renderer->focus_width = MAX (focus_padding + focus_line_width, 2);
     }
     else
     {

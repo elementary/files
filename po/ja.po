@@ -7,41 +7,253 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2012-06-12 02:36+0000\n"
-"Last-Translator: Naoki Kephart <Unknown>\n"
+"POT-Creation-Date: 2014-07-15 13:52-0500\n"
+"PO-Revision-Date: 2014-07-17 05:07+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-04-07 06:48+0000\n"
-"X-Generator: Launchpad (build 16976)\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:136
+#, c-format
+msgid "%u folders"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:142
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:154
+#, c-format
+msgid " and %u other item (%s) selected"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:143
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:155
+#, c-format
+msgid " and %u other items (%s) selected"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:146
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:148
+#, c-format
+msgid "%u folder"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:160
+#, c-format
+msgid "%u items selected (%s)"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:145
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:412
 msgid "Home"
 msgstr "ホーム"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:147
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:462
 msgid "File System"
 msgstr "ファイルシステム"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
 msgid "This folder does not exist"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:156
 msgid "(as Administrator)"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "This does not belong to you."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:176
 msgid "You don't have permission to view this folder."
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:108
+msgid "AFP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:109
+msgid "DAV"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "DAVS"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "FTP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "ネットワーク"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "SFTP"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+msgid "SMB"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "ゴミ箱"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:294
+msgid "Open in New Tab"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:301
+msgid "Open with"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:332
+msgid "Other Application .."
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "プロパティ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "プレビュー"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
+#, c-format
+msgid "%u selected items"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "作成日時"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "変更日時"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "アクセス日時"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "削除日時"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "MIMEタイプ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "MIMEタイプ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:442
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "サイズ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "場所"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "リンク先"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "リンク元"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "他のアプリケーション..."
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:560
+#, c-format
+msgid "%s free of %s (%d%% used)"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "読み込み"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "書き込み"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "実行"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:922
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "所有者"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:927
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "グループ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "その他"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
 msgstr ""
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
@@ -70,463 +282,330 @@ msgid ""
 "%s"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "プロパティ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
-msgid "General"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
-msgid "More"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
-msgid "Preview"
-msgstr "プレビュー"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
-#, c-format
-msgid "%u selected items"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
-msgid "Calculating size…"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
-msgid "Created"
-msgstr "作成日時"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:398
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "変更日時"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:401
-msgid "Last Access"
-msgstr "アクセス日時"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-msgid "Deleted"
-msgstr "削除日時"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
-msgid "MimeType"
-msgstr "MIMEタイプ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:420
-msgid "MimeTypes"
-msgstr "MIMEタイプ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "サイズ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
-msgid "Location"
-msgstr "場所"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
-msgid "Target"
-msgstr "リンク先"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Origin Location"
-msgstr "リンク元"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
-msgid "Info:"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
-msgid "Other application..."
-msgstr "他のアプリケーション..."
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
-msgid "Open with:"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
-msgid "Usage:"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
-msgid "Device usage:"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
-msgid "Read"
-msgstr "読み込み"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
-msgid "Write"
-msgstr "書き込み"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Execute"
-msgstr "実行"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
-msgid "Owner"
-msgstr "所有者"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
-msgid "Group"
-msgstr "グループ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
-msgid "Everyone"
-msgstr "その他"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
-msgid "Select an application to open "
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
+#: /home/codygarver/f/po/../src/View/Window.vala:142
 msgid "Files isn't your default file manager."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
-msgid "Set as default"
-msgstr "デフォルトに設定"
+#: /home/codygarver/f/po/../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:137
+#: /home/codygarver/f/po/../src/View/Window.vala:153
 msgid "Ignore"
 msgstr "無視"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:422
 msgid "Undo"
 msgstr "元に戻す"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:400
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:423
+#: /home/codygarver/f/po/../src/View/Window.vala:747
 msgid "Undo the last action"
 msgstr "最後のアクションを元に戻す"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:432
 msgid "Redo"
 msgstr "やり直す"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:410
-#: /home/codygarver/f/po/../src/View/Window.vala:623
+#: /home/codygarver/f/po/../src/View/Window.vala:433
+#: /home/codygarver/f/po/../src/View/Window.vala:750
 msgid "Redo the last action"
 msgstr "最後のアクションをやり直す"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:598
+#: /home/codygarver/f/po/../src/View/Window.vala:725
 msgid "_File"
 msgstr "ファイル (_F)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:599
+#: /home/codygarver/f/po/../src/View/Window.vala:726
 msgid "_Edit"
 msgstr "編集 (_E)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:600
+#: /home/codygarver/f/po/../src/View/Window.vala:727
 msgid "_View"
 msgstr "ビュー (_V)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:601
+#: /home/codygarver/f/po/../src/View/Window.vala:728
 msgid "_Go"
 msgstr "移動 (_G)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:602
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "_Help"
 msgstr "ヘルプ (_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:604
+#: /home/codygarver/f/po/../src/View/Window.vala:731
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "新規ウィンドウ (_W)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:605
+#: /home/codygarver/f/po/../src/View/Window.vala:732
 msgid "Open another Files window for the displayed location"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:608
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "新規タブ (_T)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:736
 msgid "Open another tab for the displayed location"
 msgstr "表示されているタブを新しいタブで開く"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:740
 msgid "_Close"
 msgstr "閉じる (_C)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:614
+#: /home/codygarver/f/po/../src/View/Window.vala:741
 msgid "Close this folder"
 msgstr "このフォルダを閉じる"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "_Undo"
 msgstr "元に戻す (_U)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:622
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "_Redo"
 msgstr "やり直す (_R)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:752
 msgid "Open _Parent"
 msgstr "親フォルダを開く (_P)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
+#: /home/codygarver/f/po/../src/View/Window.vala:753
 msgid "Open the parent folder"
 msgstr "現在のフォルダの親フォルダを開く"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:628
+#: /home/codygarver/f/po/../src/View/Window.vala:755
 msgid "_Back"
 msgstr "戻る (_B)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/View/Window.vala:756
 msgid "Go to the previous visited location"
 msgstr "前に表示していた場所へ移動"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:632
+#: /home/codygarver/f/po/../src/View/Window.vala:759
 msgid "_Forward"
 msgstr "進む (_F)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:760
 msgid "Go to the next visited location"
 msgstr "次に表示していた場所へ移動"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:635
+#: /home/codygarver/f/po/../src/View/Window.vala:762
 msgid "_Reload"
 msgstr "再読み込み (_R)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:763
 msgid "Reload the current location"
 msgstr "この場所を再度読み込む"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:766
 msgid "_Home Folder"
 msgstr "ホームフォルダ (_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+#: /home/codygarver/f/po/../src/View/Window.vala:767
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:419
 msgid "Open your personal folder"
 msgstr "ユーザのホームフォルダを開く"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:770
 msgid "_Trash"
 msgstr "ゴミ箱 (_T)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:771
 msgid "Open your personal trash folder"
 msgstr "ユーザのゴミ箱を開く"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:774
 msgid "_Network"
 msgstr "ネットワーク (_N)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:648
+#: /home/codygarver/f/po/../src/View/Window.vala:775
 msgid "Browse bookmarked and local network locations"
 msgstr "ローカルやブックマークされたネットワーク上の場所を参照"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:778
 msgid "Zoom _In"
 msgstr "拡大 (_I)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:652
+#: /home/codygarver/f/po/../src/View/Window.vala:779
 msgid "Increase the view size"
 msgstr "ビューの表示を拡大"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:790
 msgid "Zoom _Out"
 msgstr "縮小 (_O)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:664
+#: /home/codygarver/f/po/../src/View/Window.vala:791
 msgid "Decrease the view size"
 msgstr "ビューの表示を縮小"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:671
+#: /home/codygarver/f/po/../src/View/Window.vala:798
 msgid "Normal Si_ze"
 msgstr "通常のサイズ (_Z)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:672
+#: /home/codygarver/f/po/../src/View/Window.vala:799
 msgid "Use the normal view size"
 msgstr "通常の表示サイズに戻す"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:802
 msgid "Next Tab"
 msgstr "次のタブ"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:679
+#: /home/codygarver/f/po/../src/View/Window.vala:806
 msgid "Previous Tab"
 msgstr "前のタブ"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:810
 msgid "Connect to _Server..."
 msgstr "サーバに接続... (_S)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:684
+#: /home/codygarver/f/po/../src/View/Window.vala:811
 msgid "Connect to a remote computer or shared disk"
 msgstr "リモートのコンピュータや共有ディスクに接続"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:687
+#: /home/codygarver/f/po/../src/View/Window.vala:814
 msgid "_About"
 msgstr "このアプリケーションについて (_A)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:688
+#: /home/codygarver/f/po/../src/View/Window.vala:815
 msgid "Display credits"
 msgstr "クレジットを表示"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:691
+#: /home/codygarver/f/po/../src/View/Window.vala:818
 msgid "Report a Problem..."
 msgstr "問題の報告..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:692
+#: /home/codygarver/f/po/../src/View/Window.vala:819
 msgid "File a bug on Launchpad"
 msgstr "Launchpad でバグを報告"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:822
 msgid "Get Help Online..."
 msgstr "オンラインヘルプ..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:826
 msgid "Translate This Application..."
 msgstr "このアプリケーションを翻訳..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:708
+#: /home/codygarver/f/po/../src/View/Window.vala:835
 msgid "Show _Hidden Files"
 msgstr "隠しファイルを表示 (_H)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:709
+#: /home/codygarver/f/po/../src/View/Window.vala:836
 msgid "Toggle the display of hidden files in the current window"
 msgstr "ウィンドウ内で隠しファイルの表示を切り替える"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:713
+#: /home/codygarver/f/po/../src/View/Window.vala:840
 msgid "_Places"
 msgstr "場所 (_P)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:714
+#: /home/codygarver/f/po/../src/View/Window.vala:841
 msgid "Change the visibility of this window's side pane"
 msgstr "ウィンドウでのサイドパネルの表示を切り替える"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:722
+#: /home/codygarver/f/po/../src/View/Window.vala:849
 msgid "Icon"
 msgstr "アイコン"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:852
 msgid "List"
 msgstr "リスト"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:728
+#: /home/codygarver/f/po/../src/View/Window.vala:855
 msgid "Columns"
 msgstr "カラム"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "パーソナル"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "一般的な場所とブックマーク"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:446
+msgid "Open the Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "デバイス"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "ローカルのディスクドライブと接続されたデバイス"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "ネットワーク"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "ゴミ箱"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:499
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:673
 #, c-format
-msgid "%u folders"
+msgid "Mount and open %s"
+msgstr "%s をマウントして表示"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "ネットワーク上の場所"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:598
+msgid "Entire Network"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "ネットワークの内容を表示"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1118
 #, c-format
-msgid " and %u other item (%s) selected"
+msgid "Unable to start %s"
+msgstr "%s を起動できません"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
+msgid "Open"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
-#, c-format
-msgid " and %u other items (%s) selected"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2342
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3884
+msgid "Open in New _Tab"
+msgstr "新しいタブで開く (_T)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1201
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2351
+msgid "Open in New _Window"
+msgstr "新しいウィンドウで開く (_W)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "削除"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
+msgid "Rename"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
-msgid " selected"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "マウント (_M)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "アンマウント (_U)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "取り出し (_E)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1244
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2332
+msgid "Empty _Trash"
+msgstr "ゴミ箱を空にする (_T)"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
 msgstr ""
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
-#, c-format
-msgid "%u folder"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
-#, c-format
-msgid "%u items selected (%s)"
-msgstr ""
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "シングルクリック"
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "表示されているアイテムをシングルクリックで選択"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:855
-msgid "Layout mode"
-msgstr "レイアウトモード"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:856
-msgid "The layout mode"
-msgstr "レイアウトのモード"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -537,330 +616,232 @@ msgid "Type"
 msgstr "形式"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-columns-view.c:184
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/f/po/../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "%s の名前を %s に変更できませんでした"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-directory-view.c:511
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+#: /home/codygarver/f/po/../src/fm-list-view.c:600
+#: /home/codygarver/f/po/../src/fm-directory-view.c:547
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "このフォルダは空です。"
 
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "クリップボード上に貼り付けるものがありません"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "ディレクトリをアイコンで表示"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "アイコン表示"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "XDS で不正なファイル名をドラッグしています"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "URL \"%s\" のリンク作成に失敗しました"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "選択したアイテムを \"%s\" で開く"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2037
+#, c-format
+msgid "Use \"%s\" as template for new file"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "%sで開く (_O)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2322
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "開く ( _O )"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "%'d個の新しいタブで開く (_T)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-msgid "Open in New _Tab"
-msgstr "新しいタブで開く (_T)"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "%'d個の新しいウィンドウで開く (_T)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-msgid "Open in New _Window"
-msgstr "新しいウィンドウで開く (_W)"
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3792
+msgid "Set as default"
+msgstr "デフォルトに設定"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "選択されたファイルを「貼り付け」コマンドで移動する準備"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "選択されたファイルを「貼り付け」コマンドでコピーする準備"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "「切り取り」 または 「コピー」 のコマンドで選択されていたファイルを移動、もしくはコピー"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "フォルダ内に貼り付け"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr "「切り取り」または「コピー」のコマンドで選択されていたファイルをフォルダ内に移動、もしくはコピー"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "名前の変更... (_R)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "選択されたアイテムの名前を変更"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "新しいフォルダを作成 (_F)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "フォルダ内に空のフォルダを新たに作成"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "新しいファイルを作成 (_F)"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "選択したアイテムを開く"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "新しいウィンドウで開く"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3906
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "すべて選択"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+#: /home/codygarver/f/po/../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "色を設定:"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "パーソナル"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:859
+msgid "Layout mode"
+msgstr "レイアウトモード"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "一般的な場所とブックマーク"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:860
+msgid "The layout mode"
+msgstr "レイアウトのモード"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "ゴミ箱を開く"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "アイテムの並べ替え (_G)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "デバイス"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "順番を逆転 (_V)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "ローカルのディスクドライブと接続されたデバイス"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "アイコンの表示順を逆転"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "ファイルシステムの内容を表示"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "名前順 (_N)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "%s をマウントして表示"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "アイコンを名前順に並べ替え"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "ネットワーク上の場所"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "サイズ順 (_S)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "ネットワーク全体"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "アイコンをサイズ順に並べ替え"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "ネットワークの内容を表示"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "種類順 (_T)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "開始 (_S)"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "アイコンを種類順に並べ替え"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "停止 (_S)"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "更新日時順 (_D)"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "電源オン (_P)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "ドライブの安全な取り出し (_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "ドライブを接続 (_C)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "ドライブを接続解除 (_D)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "マルチディスク・デバイスを起動 (_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "マルチディスク・デバイスを停止 (_S)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "ドライブのロック解除 (_U)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "ドライブのロック (_L)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "%s を起動できません"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "%s を取り出せません"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "%s 上のメディア変更を監視できません"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "%s を停止できません"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "削除"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "名前を変更..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "マウント (_M)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "アンマウント (_U)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "取り出し (_E)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "ゴミ箱を空にする (_T)"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr ""
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "アイコンを更新日時順に並べ替え"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -981,10 +962,6 @@ msgstr "パスワードを記憶する (_R)"
 msgid "Operation cancelled"
 msgstr "操作がキャンセルされました"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "入力メソッド"
-
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "ここへ移動 (_M)"
@@ -1010,71 +987,55 @@ msgstr "キャンセル"
 msgid "Failed to execute file \"%s\""
 msgstr "ファイル \"%s\" の実行に失敗しました"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "アイテムの並べ替え (_G)"
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "クリップボード上に貼り付けるものがありません"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "順番を逆転 (_V)"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "ディレクトリをアイコンで表示"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "アイコンの表示順を逆転"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "アイコン表示"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "名前順 (_N)"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "シングルクリック"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "アイコンを名前順に並べ替え"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "表示されているアイテムをシングルクリックで選択"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "サイズ順 (_S)"
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "入力メソッド"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "アイコンをサイズ順に並べ替え"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "種類順 (_T)"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "アイコンを種類順に並べ替え"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "更新日時順 (_D)"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "アイコンを更新日時順に並べ替え"
-
-#: /home/codygarver/f/po/../src/Application.vala:129
+#: /home/codygarver/f/po/../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "バージョンを表示"
 
-#: /home/codygarver/f/po/../src/Application.vala:131
+#: /home/codygarver/f/po/../src/Application.vala:139
 msgid "Open uri(s) in new tab"
 msgstr "URLを新しいタブで開く"
 
-#: /home/codygarver/f/po/../src/Application.vala:133
+#: /home/codygarver/f/po/../src/Application.vala:141
+msgid "New Window"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/Application.vala:143
 msgid "Quit Files."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/Application.vala:135
+#: /home/codygarver/f/po/../src/Application.vala:145
 msgid "Enable debug logging"
 msgstr "デバック・ログを有効化"
 
-#: /home/codygarver/f/po/../src/Application.vala:138
+#: /home/codygarver/f/po/../src/Application.vala:148
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/f/po/../src/Application.vala:141
+#: /home/codygarver/f/po/../src/Application.vala:151
 msgid ""
 "\n"
 "\n"
@@ -1084,11 +1045,11 @@ msgstr ""
 "\n"
 "ファイルマネージャーでファイルシステムを閲覧します"
 
-#: /home/codygarver/f/po/../src/Application.vala:168
+#: /home/codygarver/f/po/../src/Application.vala:178
 msgid "--quit cannot be used with URIs."
 msgstr "--quit オプションには URI を指定できません。"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:140
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
@@ -1134,17 +1095,848 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "準備中"
+
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (不正な Unicode です)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" の元の場所を特定できませんでした "
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "ゴミ箱からアイテムを復元できません"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#, c-format
+msgid "link to %s"
+msgstr "%s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1748
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "デスクトップファイル \"%s\" を解析できませんでした"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1786
+msgid "No Exec field specified"
+msgstr "Exec フィールドが指定されていません"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1806
+msgid "No URL field specified"
+msgstr "URL フィールドが指定されていません"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:1812
+msgid "Invalid desktop file"
+msgstr "不正なデスクトップファイル"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:2102
+msgid "Slashes are not allowed in filenames"
+msgstr "ファイル名にスラッシュは使えません"
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:2122
+msgid "Toplevel files cannot be renamed"
+msgstr "トップレベルのファイル名は変更できません"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "フォルダ \"%s\" をマージしますか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:373
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr "マージをする際に、重複するファイルを転送元のファイルで置き換えるか確認がなされます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のより古いフォルダが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のより新しいフォルダが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:391
+msgid "Replacing it will remove all files in the folder."
+msgstr "置き換えることでフォルダ内のファイルがすべて削除されます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "フォルダ \"%s\" を置き換えますか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "ファイル \"%s\" を置き換えますか？"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:402
+msgid "Replacing it will overwrite its content."
+msgstr "置き換えることで内容が上書きされます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のより古いファイルが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のより新しいファイルが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "\"%s\" 内に同じ名前のファイルが既に存在しています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:469
+msgid "Original file"
+msgstr "元のファイル"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:470
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:491
+msgid "Size:"
+msgstr "サイズ:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:473
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:494
+msgid "Type:"
+msgstr "形式:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:476
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:497
+msgid "Last modified:"
+msgstr "最終更新日:"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:490
+msgid "Replace with"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:515
+msgid "Merge"
+msgstr "併合"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:709
+msgid "_Select a new name for the destination"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:723
+msgid "Reset"
+msgstr "元に戻す"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:735
+msgid "Apply this action to all files"
+msgstr "このアクションをすべてのファイルに適用"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:746
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "スキップ(_S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:751
+msgid "Re_name"
+msgstr "名前の変更(_N)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:757
+msgid "Replace"
+msgstr "置き換え"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:830
+msgid "File conflict"
+msgstr "ファイルの重複"
+
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "詳細を表示(_D)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "すべてスキップ(_K)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "再試行(_R)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "すべて削除(_A)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "置き換える(_R)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "すべて置き換える(_A)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "合わせる(_M)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "すべて合わせる(_A)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "それでもコピー(_A)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d 秒"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d 分"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d 時間"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "約 %'d 時間"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
+#, c-format
+msgid "Link to %s"
+msgstr "%s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
+#, c-format
+msgid "Another link to %s"
+msgstr "%s への別のリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d 番目の %s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d 番目の %s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d 番目の %s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d 番目の %s へのリンク"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
+msgid " (copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
+msgid " (another copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
+msgid "th copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
+msgid "st copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
+msgid "nd copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
+msgid "rd copy)"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
+#, c-format
+msgid "%s (copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
+#, c-format
+msgid "%s (another copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
+msgid " ("
+msgstr " ("
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "ゴミ箱から \"%B\" を完全に削除してもよろしいですか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
+msgid "If you delete an item, it will be permanently lost."
+msgstr "アイテムを完全に削除すると、元に戻すことはできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
+msgid "Empty all items from Trash?"
+msgstr "ゴミ箱からすべてのアイテムを削除してもよろしいですか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
+msgid "All items in the Trash will be permanently deleted."
+msgstr "ゴミ箱内のアイテムが完全に削除されます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "\"%B\"を完全に削除してもよろしいですか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
+msgid "Deleting files"
+msgstr "ファイルを削除中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "残り %'d 個のファイルを削除中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "残り %T"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2587
+msgid "Error while deleting."
+msgstr "削除中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため削除できません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2646
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3642
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "フォルダ \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3651
+msgid "_Skip files"
+msgstr "ファイルをスキップ(_S)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr "フォルダ \"%B\" を参照する権限がないためフォルダを削除できません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2685
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3687
+msgid "There was an error reading the folder \"%B\"."
+msgstr "フォルダ \"%B\" を読み込む際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
+msgid "Could not remove the folder %B."
+msgstr "フォルダ \"%B\" を削除できませんでした。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
+msgid "There was an error deleting %B."
+msgstr "%B を削除する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
+msgid "Moving files to trash"
+msgstr "ファイルをゴミ箱へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
+msgid "Cannot move file to trash. Delete Immediately?"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
+msgid ""
+"This file is located on an external media and cannot be moved to the trash. "
+"Once deleted, it cannot be restored."
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
+msgid "Trashing Files"
+msgstr "ファイルをゴミ箱へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
+msgid "Deleting Files"
+msgstr "ファイルを削除中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
+msgid "Unable to eject %V"
+msgstr "%V を取り出せません"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
+msgid "Unable to unmount %V"
+msgstr "%V をアンマウントできません"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2322
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "アンマウントする前にゴミ箱を空にしますか?"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2324
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr "このデバイス上の空き領域を増やすにはゴミ箱を空にする必要があります。その際ゴミ箱内にあるすべてのアイテムは完全に削除されます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2330
+msgid "Do _not Empty Trash"
+msgstr "ゴミ箱を空にしない(_N)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2444
+#, c-format
+msgid "Unable to mount %s"
+msgstr "%s をマウントできません"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "%'d 個のファイル (%S) をコピーする準備中..."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2528
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "%'d 個のファイル (%S) を移動する準備中..."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2534
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2540
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中..."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2583
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3503
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3634
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3679
+msgid "Error while copying."
+msgstr "コピー中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2585
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3632
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3677
+msgid "Error while moving."
+msgstr "移動中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2589
+msgid "Error while moving files to trash."
+msgstr "ファイルをゴミ箱へ移動する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2643
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため操作できません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2682
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "フォルダ \"%B\" を参照する権限がないため操作できません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2759
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "ファイル \"%B\" を参照する権限がないため操作できません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2762
+msgid "There was an error getting information about \"%B\"."
+msgstr "\"%B\" の情報を取得する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2862
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2904
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2937
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2967
+msgid "Error while copying to \"%B\"."
+msgstr "\"%B\" へのコピー中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2866
+msgid "You do not have permissions to access the destination folder."
+msgstr "転送先のフォルダにアクセスする権限がありません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2868
+msgid "There was an error getting information about the destination."
+msgstr "転送先の情報を取得する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2905
+msgid "The destination is not a folder."
+msgstr "転送先がフォルダではありません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2938
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr "転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみて下さい。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2940
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "利用可能な容量は %S ありますが、%S 必要です。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2968
+msgid "The destination is read-only."
+msgstr "転送先は読み込み専用です。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3029
+msgid "Moving \"%B\" to \"%B\""
+msgstr "\"%B\" を \"%B\" へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3030
+msgid "Copying \"%B\" to \"%B\""
+msgstr "\"%B\" を \"%B\" へコピー中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3034
+msgid "Duplicating \"%B\""
+msgstr "\"%B\" の複製中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3038
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3041
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピー中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "%'d 個のファイルを \"%B\" 内で複製中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3057
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "%'d 個のファイルを \"%B\" へ移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3061
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "%'d 個のファイルを \"%B\" へコピー中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3066
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "%'d 個のファイルを複製中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3117
+#, c-format
+msgid "%S of %S"
+msgstr "%S / %S"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3128
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S / %S — 残り %T (%S/秒)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3507
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr "フォルダ \"%B\" をコピー先に作成する権限がないためコピーできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3510
+msgid "There was an error creating the folder \"%B\"."
+msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3639
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないためコピーできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3684
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr "フォルダ \"%B\" を参照する権限がないためコピーできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3729
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4430
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5017
+msgid "Error while moving \"%B\"."
+msgstr "\"%B\" の移動中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3730
+msgid "Could not remove the source folder."
+msgstr "転送元のフォルダを削除できませんでした。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3815
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3856
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4432
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4503
+msgid "Error while copying \"%B\"."
+msgstr "\"%B\" のコピー中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3816
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "既に存在しているフォルダ %F からファイルを削除できませんでした。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3857
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "既に存在しているファイル %F を削除できませんでした。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4186
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4857
+msgid "You cannot move a folder into itself."
+msgstr "フォルダを自身の中に移動することはできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4187
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4858
+msgid "You cannot copy a folder into itself."
+msgstr "フォルダを自身の中にコピーすることはできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4188
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4859
+msgid "The destination folder is inside the source folder."
+msgstr "転送先のフォルダが転送元のフォルダ内にあります。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4219
+msgid "You cannot move a file over itself."
+msgstr "ファイルを自身の上に移動することはできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4220
+msgid "You cannot copy a file over itself."
+msgstr "ファイルを自身の上にコピーすることはできません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4221
+msgid "The source file would be overwritten by the destination."
+msgstr "転送元のファイルは転送先によって上書きされます。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4434
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "%F の中に存在する同名のファイルを削除できませんでした。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4504
+#, c-format
+msgid "There was an error copying the file into %F."
+msgstr "ファイルを %F へコピーする際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4731
+msgid "Copying Files"
+msgstr "ファイルをコピー中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+msgid "Preparing to move to \"%B\""
+msgstr "\"%B\" へ移動する準備中..."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4769
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "%'d 個のファイルを移動する準備中..."
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5018
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "%F 内にファイルを移動する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5281
+msgid "Moving Files"
+msgstr "ファイルを移動中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
+msgid "Creating links in \"%B\""
+msgstr "\"%B\" 内でリンクを作成中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5322
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "%'d 個のファイルへのリンクを作成中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5457
+msgid "Error while creating link to %B."
+msgstr "%B へのリンク作成中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5459
+msgid "Symbolic links only supported for local files"
+msgstr "シンボリック・リンクはローカルのファイルでのみサポートされています。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5462
+msgid "The target doesn't support symbolic links."
+msgstr "リンクの作成先はシンボリック・リンクをサポートしていません。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5465
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "%F 内にシンボリック・リンクを作成する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5793
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5796
+msgid "Setting permissions"
+msgstr "アクセス権の設定中"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6047
+msgid "untitled folder"
+msgstr "新しいフォルダ"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6055
+msgid "new file"
+msgstr "新しいファイル"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6226
+msgid "Error while creating directory %B."
+msgstr "フォルダ %B の作成中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6228
+msgid "Error while creating file %B."
+msgstr "ファイル %B の作成中にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6230
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "%F 内にフォルダを作成する際にエラーが発生しました。"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6540
+msgid "Emptying the trash"
+msgstr "ゴミ箱を空にしています"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6548
+msgid "Emptying Trash"
+msgstr "ゴミ箱を空にしています"
 
 #: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1518,860 +2310,28 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "フォルダ \"%s\" をマージしますか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr "マージをする際に、重複するファイルを転送元のファイルで置き換えるか確認がなされます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のより古いフォルダが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のより新しいフォルダが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
-msgid "Replacing it will remove all files in the folder."
-msgstr "置き換えることでフォルダ内のファイルがすべて削除されます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "フォルダ \"%s\" を置き換えますか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "ファイル \"%s\" を置き換えますか？"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
-msgid "Replacing it will overwrite its content."
-msgstr "置き換えることで内容が上書きされます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のより古いファイルが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のより新しいファイルが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のファイルが既に存在しています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
-msgid "Original file"
-msgstr "元のファイル"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Size:"
-msgstr "サイズ:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Type:"
-msgstr "形式:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
-msgid "Last modified:"
-msgstr "最終更新日:"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
-msgid "Replace with"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
-msgid "Merge"
-msgstr "併合"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
-msgid "_Select a new name for the destination"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
-msgid "Reset"
-msgstr "元に戻す"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
-msgid "Apply this action to all files"
-msgstr "このアクションをすべてのファイルに適用"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "スキップ(_S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
-msgid "Re_name"
-msgstr "名前の変更(_N)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
-msgid "Replace"
-msgstr "置き換え"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
-msgid "File conflict"
-msgstr "ファイルの重複"
-
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "準備中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "すべてスキップ(_K)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "再試行(_R)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "すべて削除(_A)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "置き換える(_R)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "すべて置き換える(_A)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "合わせる(_M)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "すべて合わせる(_A)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "それでもコピー(_A)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d 秒"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d 分"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d 時間"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "約 %'d 時間"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
-#, c-format
-msgid "Link to %s"
-msgstr "%s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
-#, c-format
-msgid "Another link to %s"
-msgstr "%s への別のリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
-msgid " (copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
-msgid " (another copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
-msgid "th copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
-msgid "st copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
-msgid "nd copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
-msgid "rd copy)"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
-#, c-format
-msgid "%s (copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
-#, c-format
-msgid "%s (another copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
-msgid " ("
-msgstr " ("
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "ゴミ箱から \"%B\" を完全に削除してもよろしいですか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
-msgid "If you delete an item, it will be permanently lost."
-msgstr "アイテムを完全に削除すると、元に戻すことはできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
-msgid "Empty all items from Trash?"
-msgstr "ゴミ箱からすべてのアイテムを削除してもよろしいですか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
-msgid "All items in the Trash will be permanently deleted."
-msgstr "ゴミ箱内のアイテムが完全に削除されます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "\"%B\"を完全に削除してもよろしいですか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
-msgid "Deleting files"
-msgstr "ファイルを削除中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "残り %'d 個のファイルを削除中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "残り %T"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2574
-msgid "Error while deleting."
-msgstr "削除中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため削除できません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr "フォルダ \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
-msgid "_Skip files"
-msgstr "ファイルをスキップ(_S)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr "フォルダ \"%B\" を参照する権限がないためフォルダを削除できません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3674
-msgid "There was an error reading the folder \"%B\"."
-msgstr "フォルダ \"%B\" を読み込む際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
-msgid "Could not remove the folder %B."
-msgstr "フォルダ \"%B\" を削除できませんでした。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
-msgid "There was an error deleting %B."
-msgstr "%B を削除する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
-msgid "Moving files to trash"
-msgstr "ファイルをゴミ箱へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
-msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
-msgid ""
-"This file is located on an external media and cannot be moved to the trash. "
-"Once deleted, it cannot be restored."
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
-msgid "Trashing Files"
-msgstr "ファイルをゴミ箱へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
-msgid "Deleting Files"
-msgstr "ファイルを削除中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
-msgid "Unable to eject %V"
-msgstr "%V を取り出せません"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
-msgid "Unable to unmount %V"
-msgstr "%V をアンマウントできません"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "アンマウントする前にゴミ箱を空にしますか?"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr "このデバイス上の空き領域を増やすにはゴミ箱を空にする必要があります。その際ゴミ箱内にあるすべてのアイテムは完全に削除されます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
-msgid "Do _not Empty Trash"
-msgstr "ゴミ箱を空にしない(_N)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
-msgid "Emptying the trash"
-msgstr "ゴミ箱を空にしています"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
-#, c-format
-msgid "Unable to mount %s"
-msgstr "%s をマウントできません"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2509
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) をコピーする準備中..."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2515
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を移動する準備中..."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2521
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2527
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中..."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2570
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3490
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3621
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3666
-msgid "Error while copying."
-msgstr "コピー中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2572
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3619
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3664
-msgid "Error while moving."
-msgstr "移動中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
-msgid "Error while moving files to trash."
-msgstr "ファイルをゴミ箱へ移動する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため操作できません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2669
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr "フォルダ \"%B\" を参照する権限がないため操作できません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2746
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr "ファイル \"%B\" を参照する権限がないため操作できません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2749
-msgid "There was an error getting information about \"%B\"."
-msgstr "\"%B\" の情報を取得する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2849
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2891
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2924
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2954
-msgid "Error while copying to \"%B\"."
-msgstr "\"%B\" へのコピー中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2853
-msgid "You do not have permissions to access the destination folder."
-msgstr "転送先のフォルダにアクセスする権限がありません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2855
-msgid "There was an error getting information about the destination."
-msgstr "転送先の情報を取得する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
-msgid "The destination is not a folder."
-msgstr "転送先がフォルダではありません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2925
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr "転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみて下さい。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2927
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "利用可能な容量は %S ありますが、%S 必要です。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2955
-msgid "The destination is read-only."
-msgstr "転送先は読み込み専用です。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3016
-msgid "Moving \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3017
-msgid "Copying \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へコピー中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3021
-msgid "Duplicating \"%B\""
-msgstr "\"%B\" の複製中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3025
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3028
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピー中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3035
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "%'d 個のファイルを \"%B\" 内で複製中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3044
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へ移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へコピー中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3053
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "%'d 個のファイルを複製中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3104
-#, c-format
-msgid "%S of %S"
-msgstr "%S / %S"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3115
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S / %S — 残り %T (%S/秒)"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3494
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr "フォルダ \"%B\" をコピー先に作成する権限がないためコピーできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3497
-msgid "There was an error creating the folder \"%B\"."
-msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3626
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないためコピーできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3671
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr "フォルダ \"%B\" を参照する権限がないためコピーできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5005
-msgid "Error while moving \"%B\"."
-msgstr "\"%B\" の移動中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3717
-msgid "Could not remove the source folder."
-msgstr "転送元のフォルダを削除できませんでした。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3802
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3843
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4419
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4490
-msgid "Error while copying \"%B\"."
-msgstr "\"%B\" のコピー中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "既に存在しているフォルダ %F からファイルを削除できませんでした。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "既に存在しているファイル %F を削除できませんでした。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4845
-msgid "You cannot move a folder into itself."
-msgstr "フォルダを自身の中に移動することはできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
-msgid "You cannot copy a folder into itself."
-msgstr "フォルダを自身の中にコピーすることはできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
-msgid "The destination folder is inside the source folder."
-msgstr "転送先のフォルダが転送元のフォルダ内にあります。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4206
-msgid "You cannot move a file over itself."
-msgstr "ファイルを自身の上に移動することはできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
-msgid "You cannot copy a file over itself."
-msgstr "ファイルを自身の上にコピーすることはできません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
-msgid "The source file would be overwritten by the destination."
-msgstr "転送元のファイルは転送先によって上書きされます。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4421
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "%F の中に存在する同名のファイルを削除できませんでした。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
-#, c-format
-msgid "There was an error copying the file into %F."
-msgstr "ファイルを %F へコピーする際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4719
-msgid "Copying Files"
-msgstr "ファイルをコピー中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4745
-msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" へ移動する準備中..."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "%'d 個のファイルを移動する準備中..."
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5006
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "%F 内にファイルを移動する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5269
-msgid "Moving Files"
-msgstr "ファイルを移動中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
-msgid "Creating links in \"%B\""
-msgstr "\"%B\" 内でリンクを作成中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "%'d 個のファイルへのリンクを作成中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
-msgid "Error while creating link to %B."
-msgstr "%B へのリンク作成中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
-msgid "Symbolic links only supported for local files"
-msgstr "シンボリック・リンクはローカルのファイルでのみサポートされています。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5450
-msgid "The target doesn't support symbolic links."
-msgstr "リンクの作成先はシンボリック・リンクをサポートしていません。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5453
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "%F 内にシンボリック・リンクを作成する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5781
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5784
-msgid "Setting permissions"
-msgstr "アクセス権の設定中"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6035
-msgid "untitled folder"
-msgstr "新しいフォルダ"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6043
-msgid "new file"
-msgstr "新しいファイル"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6214
-msgid "Error while creating directory %B."
-msgstr "フォルダ %B の作成中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6216
-msgid "Error while creating file %B."
-msgstr "ファイル %B の作成中にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6218
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "%F 内にフォルダを作成する際にエラーが発生しました。"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6535
-msgid "Emptying Trash"
-msgstr "ゴミ箱を空にしています"
-
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (不正な Unicode です)"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "詳細を表示(_D)"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
-#, c-format
-msgid "link to %s"
-msgstr "%s へのリンク"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1761
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "デスクトップファイル \"%s\" を解析できませんでした"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr "Exec フィールドが指定されていません"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr "URL フィールドが指定されていません"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr "不正なデスクトップファイル"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr "ファイル名にスラッシュは使えません"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr "トップレベルのファイル名は変更できません"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" の元の場所を特定できませんでした "
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "ゴミ箱からアイテムを復元できません"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
-msgid "Cut the selected text to the clipboard"
-msgstr ""
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
-msgid "Copy the selected text to the clipboard"
-msgstr ""
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
-msgid "Paste the text stored on the clipboard"
-msgstr ""
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:261
 #, c-format
 msgid "Go to %s"
 msgstr "%s へ移動"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
+#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr ""
 

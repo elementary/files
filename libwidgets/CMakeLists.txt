@@ -41,7 +41,6 @@ vala_precompile(VALA_C ${PKGNAME}
     LocationBar.vala
     PoofWindow.vala
     BreadcrumbsElements.vala
-    BreadcrumbsEntry.vala
 PACKAGES
     gtk+-3.0
     granite
@@ -67,4 +66,3 @@ set_target_properties (${PKGNAME} PROPERTIES
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})
-add_subdirectory(tests)

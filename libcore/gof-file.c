@@ -625,13 +625,9 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    //if (!(file->pix == NULL || size <= 0 || file->pix_size != size))
     if (size <=0)
         return;
     if (!(file->pix == NULL || file->pix_size != size))
-        return;
-    /* Don't load thumbnails they would be loaded asyncronously */
-    if (!(file->flags == 0 || file->pix == NULL))
         return;
 
     //g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
@@ -718,7 +714,7 @@ get_mount_at (GFile *target)
             found = g_object_ref (mount);
             break;
         }
-		
+
         g_object_unref (root);
     }
 
@@ -768,10 +764,8 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL) {
-        g_warning ("info null need to query_update %s", file->uri);
+    if (file->info == NULL)
         gof_file_query_update (file);
-    }
 
     return (file->info != NULL);
 }
@@ -818,20 +812,11 @@ void gof_file_remove_from_caches (GOFFile *file)
         g_debug ("remove from file_cache %s", file->uri);
 
     /* remove from directory_cache */
-    GOFDirectoryAsync *dir = NULL;
-    //g_warning ("zz0 %s", g_file_get_uri (file->location));
     if (file->directory && G_OBJECT (file->directory)->ref_count > 0) {
-        dir = gof_directory_async_cache_lookup (file->directory);
-        //g_warning ("zz1 %s", g_file_get_uri (file->directory));
-        if (dir != NULL) {
-            if (gof_directory_async_remove_from_cache (dir, file))
-                g_debug ("remove from directory_cache %s", file->uri);
-            g_object_unref (dir);
-        }
+        gof_directory_async_remove_file_from_cache (file);
     }
 
     file->is_gone = TRUE;
-    //g_warning ("end %s", G_STRFUNC);
 }
 
 static void gof_file_init (GOFFile *file) {
@@ -1134,12 +1119,21 @@ gof_file_compare_for_sort (GOFFile *file1,
             break;
         case FM_LIST_MODEL_SIZE:
             result = compare_by_size (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         case FM_LIST_MODEL_TYPE:
             result = compare_by_type (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         case FM_LIST_MODEL_MODIFIED:
             result = compare_by_time (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         }
 
@@ -1363,7 +1357,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
-    g_message ("%s %s %u", G_STRFUNC, file->uri, file->flags);
+    g_debug ("%s %s %u", G_STRFUNC, file->uri, file->flags);
     if (file->flags == GOF_FILE_THUMB_STATE_READY)
         gof_file_query_thumbnail_update (file);
 
@@ -1401,22 +1395,16 @@ gof_file_get (GFile *location)
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
 
-    //parent = g_file_get_parent (location);
-    if ((parent = g_file_get_parent (location)) != NULL)
+    if ((parent = g_file_get_parent (location)) != NULL) {
         dir = gof_directory_async_cache_lookup (parent);
-    if (dir != NULL) {
-        /*gchar *uri = g_file_get_uri (parent);
-        g_warning (">>>>>>>>>>>>>>> dir already cached %s", uri);
-        g_free (uri);*/
-        file = g_hash_table_lookup (dir->file_hash, location);
-        _g_object_ref0 (file);
-        g_object_unref (dir);
+        if (dir != NULL) {
+            file = gof_directory_async_file_hash_lookup_location (dir, location);
+            g_object_unref (dir);
+        }
     }
 
-    if (file == NULL) {
-        //g_debug ("gof_file_cache_lookup");
+    if (file == NULL)
         file = gof_file_cache_lookup (location);
-    }
 
     if (file != NULL) {
         g_debug (">>>>reuse file %s", file->uri);
@@ -1427,9 +1415,6 @@ gof_file_get (GFile *location)
         if (file_cache != NULL)
             g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));
         G_UNLOCK (file_cache_mutex);
-
-        /*g_critical ("%s INFO null %s file_cache items %d", G_STRFUNC, file->uri,
-                    g_hash_table_size (file_cache));*/
     }
 
     if (parent)
@@ -1981,7 +1966,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->location = g_object_ref (new_location);
 
     if (dir != NULL)
-        gof_directory_async_add_to_hash_cache (dir, file);
+        gof_directory_async_file_hash_add_file (dir, file);
 
     _g_free0 (file->uri);
     file->uri = g_file_get_uri (new_location);
@@ -2312,7 +2297,7 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             file->permissions & S_IWGRP ? 'w' : '-',
                             file->permissions & S_IXGRP
                             ? (sgid ? 's' : 'x')
-                            : (sgid ? 'S' : '-'),		
+                            : (sgid ? 'S' : '-'),
                             file->permissions & S_IROTH ? 'r' : '-',
                             file->permissions & S_IWOTH ? 'w' : '-',
                             file->permissions & S_IXOTH

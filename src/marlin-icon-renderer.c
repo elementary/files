@@ -59,6 +59,9 @@ static void marlin_icon_renderer_render     (GtkCellRenderer            *cell,
                                              const GdkRectangle         *background_area,
                                              const GdkRectangle         *cell_area,
                                              GtkCellRendererState        flags);
+static inline gboolean thumbnail_needs_frame   (const GdkPixbuf             *thumbnail,
+                                                gint                        width,
+                                                gint                        height);
 
 
 enum {
@@ -534,18 +537,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
         && gof_file_get_thumbnail_path (priv->file)
-        && gof_file_thumb_can_frame (priv->file))
+        && gof_file_thumb_can_frame (priv->file)
+        && thumbnail_needs_frame (pixbuf, pix_rect.width, pix_rect.height))
     {
         cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4,
                                     pix_rect.width-4, pix_rect.height-6,
                                     4, 0, 0, 0, 8);
-        /* we need to mask the underlying shadows in case of transparent thumbs */
-        GdkRGBA bg_color;
-        gtk_style_context_get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg_color);
-        gdk_cairo_set_source_rgba (cr, &bg_color);
-        cairo_rectangle (cr, pix_rect.x, pix_rect.y,
-                         pix_rect.width, pix_rect.height);
-        cairo_fill (cr);
     }
 
     gtk_render_icon (context, cr, pixbuf,
@@ -794,5 +791,47 @@ cairo_make_shadow_for_rect (cairo_t* cr,
     _cairo_pattern_destroy0 (pat);
 }
 
+static inline gboolean
+thumbnail_needs_frame (const GdkPixbuf *thumbnail,
+                       gint             width,
+                       gint             height)
+{
+  const guchar *pixels;
+  gint          rowstride;
+  gint          n;
 
+  /* don't add frames to small thumbnails */
+  if (width < 48 && height < 48)
+    return FALSE;
 
+  /* always add a frame to thumbnails w/o alpha channel */
+  if (G_LIKELY (!gdk_pixbuf_get_has_alpha (thumbnail)))
+    return TRUE;
+
+  /* get a pointer to the thumbnail data */
+  pixels = gdk_pixbuf_get_pixels (thumbnail);
+
+  /* check if we have a transparent pixel on the first row */
+  for (n = width * 4; n > 0; n -= 4)
+    if (pixels[n - 1] < 255u)
+      return FALSE;
+  g_debug("transparent pixel");
+
+  /* determine the rowstride */
+  rowstride = gdk_pixbuf_get_rowstride (thumbnail);
+
+  /* skip the first row */
+  pixels += rowstride;
+
+  /* check if we have a transparent pixel in the first or last column */
+  for (n = height - 2; n > 0; --n, pixels += rowstride)
+    if (pixels[3] < 255u || pixels[width * 4 - 1] < 255u)
+      return FALSE;
+
+  /* check if we have a transparent pixel on the last row */
+  for (n = width * 4; n > 0; n -= 4)
+    if (pixels[n - 1] < 255u)
+      return FALSE;
+
+  return TRUE;
+}

@@ -115,24 +115,19 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
     GtkWidget *hpane = GTK_WIDGET (granite_widgets_thin_paned_new (GTK_ORIENTATION_HORIZONTAL));
     gtk_widget_set_hexpand(hpane, TRUE);
-    gtk_widget_show (hpane);
 
-    gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
-    gtk_widget_show_all(slot->colpane);
+    gtk_container_add(GTK_CONTAINER (slot->mwcols->active_slot->colpane), hpane);
 
     GtkWidget *box1 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_widget_show_all (box1);
 
     slot->colpane = box1;
     slot->hpane = hpane;
-
-    gtk_widget_set_size_request (column, slot->mwcols->preferred_column_width, -1);
-    slot->width = slot->mwcols->preferred_column_width;
-
-    g_signal_connect (column, "size-allocate", G_CALLBACK (update_total_width), slot);
-
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
     gtk_paned_pack2 (GTK_PANED (hpane), box1, TRUE, FALSE);
+
+    gtk_widget_set_size_request (column, slot->mwcols->preferred_column_width, -1);
+    g_signal_connect (column, "size-allocate", G_CALLBACK (update_total_width), slot);
+    gtk_widget_show_all (slot->hpane);
 
     /* If the directory finished loading before slot was ready then autosize the slot now.
     * Otherwise the slot will be autosized by the directory_done_loading callback
@@ -186,11 +181,7 @@ void autosize_slot (GOFWindowSlot *slot)
             column_width = max_width;
     }
 
-    if (slot->slot_number == 0)
-        gtk_widget_set_size_request (gtk_paned_get_child1 (GTK_PANED (slot->hpane)), column_width, -1);
-    else
-        gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
-
+    gtk_paned_set_position (GTK_PANED (slot->hpane), column_width);
     slot->width = column_width;
     gtk_widget_show_all (slot->mwcols->colpane);
     gtk_widget_queue_draw (slot->mwcols->colpane);
@@ -203,10 +194,12 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
     gint current_slot_position = 0;
     gint i;
     GList* list_slot = slot->mwcols->slot;
-
+    /* slot should always be the active slot
+     * destroy all child slots of this slot */
     g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 
+    /* Rebuild list of slots and recalculate total width of slots */
     current_slot_position = g_list_index(slot->mwcols->slot, slot);
     if(current_slot_position == -1) {
         g_warning ("Can't find the slot you are viewing, this should *not* happen.");
@@ -221,11 +214,6 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
         g_list_free (slot->mwcols->slot);
         slot->mwcols->slot = l;
     }
-
-    marlin_window_columns_add (slot->mwcols, location);
-
-    slot->mwcols->total_width += slot->width + 100;
-    gtk_widget_set_size_request (slot->mwcols->colpane, slot->mwcols->total_width, -1);
 }
 
 GOFWindowSlot *
@@ -251,9 +239,8 @@ void
 gof_window_slot_make_icon_view (GOFWindowSlot *slot)
 {
     if(slot->view_box != NULL)
-    {
         gtk_widget_destroy(slot->view_box);
-    }
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
@@ -267,9 +254,8 @@ void
 gof_window_slot_make_list_view (GOFWindowSlot *slot)
 {
     if(slot->view_box != NULL)
-    {
         gtk_widget_destroy(slot->view_box);
-    }
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
@@ -290,6 +276,9 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
 void
 gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
+    if(slot->view_box != NULL)
+        gtk_widget_destroy(slot->view_box);
+
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     slot->directory->track_longest_name = TRUE;

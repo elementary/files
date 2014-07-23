@@ -177,7 +177,7 @@ fm_columns_view_rename_callback (GOFFile *file,
     printf ("%s\n", G_STRFUNC);
 	if (view->details->renaming_file) {
 		view->details->rename_done = TRUE;
-		
+
 		if (error != NULL) {
             marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), g_file_info_get_name (file->info), view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
@@ -187,7 +187,7 @@ fm_columns_view_rename_callback (GOFFile *file,
             g_object_unref (view->details->renaming_file);
 		}
 	}
-	
+
 	g_object_unref (view);
 }
 
@@ -248,13 +248,13 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		fm_columns_view_unfreeze_updates (view);
 		return;
 	}
-	
+
 	path = gtk_tree_path_new_from_string (path_str);
 
 	gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
 
 	gtk_tree_path_free (path);
-	
+
 	gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
 
@@ -267,7 +267,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 		g_free (view->details->original_name);
 		view->details->original_name = g_strdup (new_text);
 	}
-	
+
 	gof_file_unref (file);
 
 	fm_columns_view_unfreeze_updates (view);
@@ -329,7 +329,12 @@ static void fm_columns_view_select_all(FMDirectoryView *view)
 
 static void fm_columns_view_unselect_all(FMDirectoryView *view)
 {
-    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
+    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+
+    GtkTreeSelection *selection;
+    selection = gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree);
+    if (selection)
+        gtk_tree_selection_unselect_all (selection);
 }
 
 static gboolean
@@ -729,7 +734,7 @@ fm_columns_view_get_visible_range (FMDirectoryView *view,
                                    GtkTreePath     **end_path)
 
 {
-    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+    g_return_val_if_fail (FM_IS_COLUMNS_VIEW (view), FALSE);
     return gtk_tree_view_get_visible_range (FM_COLUMNS_VIEW (view)->tree,
                                             start_path, end_path);
 }
@@ -749,7 +754,7 @@ fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     if (view->details->selection)
         gof_file_list_free (view->details->selection);

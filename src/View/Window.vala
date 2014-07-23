@@ -21,6 +21,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Marlin.View {
+
     public class Window : Gtk.Window
     {
         public Gtk.UIManager ui;
@@ -31,13 +32,13 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
-        public ViewContainer? current_tab;
+        public ViewContainer? current_tab = null;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public Granite.Widgets.ToolButtonWithMenu button_forward;
-        public Granite.Widgets.ToolButtonWithMenu button_back;
+        public Chrome.ButtonWithMenu button_forward;
+        public Chrome.ButtonWithMenu button_back;
 
         public bool can_go_up{
             set{
@@ -47,21 +48,29 @@ namespace Marlin.View {
 
         public bool can_go_forward{
             set{
-                main_actions.get_action("Forward").set_sensitive(value);
+                button_forward.set_sensitive (value);
             }
         }
 
         public bool can_go_back{
             set{
-                main_actions.get_action("Back").set_sensitive(value);
+                button_back.set_sensitive (value);
             }
         }
+
+        public bool is_first_window {get; private set;}
+        private bool tabs_restored = false;
 
         public signal void item_hovered (GOF.File gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         public signal void loading_uri (string location);
 
+        public bool freeze_view_changes = false;
+        private const int MARLIN_LEFT_OFFSET = 16;
+        private const int MARLIN_TOP_OFFSET = 9;
+        private const int MARLIN_MINIMUM_WINDOW_WIDTH = 640;
+        private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 480;
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -70,18 +79,26 @@ namespace Marlin.View {
         }
 
         protected virtual void action_radio_change_view(){
+            if (freeze_view_changes)
+                return;
+
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
             /* change the view only for view_mode real change */
-            if (n != current_tab.view_mode)
+            if (current_tab != null && n != current_tab.view_mode)
                 current_tab.change_view(n, null);
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen)
+        public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
         {
+            /* Capture application window_count and active_window before they can change */
+            var window_number = app.window_count;
+            var active_window = app.get_active_window ();
+
             application = app;
             screen = myscreen;
+            is_first_window = first;
 
             ui = new Gtk.UIManager();
 
@@ -113,6 +130,11 @@ namespace Marlin.View {
 
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
+            top_menu.set_show_close_button (true);
+            top_menu.set_custom_title (new Gtk.Label (null));
+            set_titlebar (top_menu);
+            button_forward.slow_press.connect (() => {action_go_forward ();});
+            button_back.slow_press.connect (() => {action_go_back ();});
 
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
@@ -123,7 +145,7 @@ namespace Marlin.View {
             var expander = new Gtk.Label ("");
             expander.hexpand = true;
 
-            var make_default = new Gtk.Button.with_label (_("Set as default"));
+            var make_default = new Gtk.Button.with_label (_("Set as Default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
                 show_infobar (false);
@@ -176,7 +198,6 @@ namespace Marlin.View {
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
-            window_box.pack_start(top_menu, false, false, 0);
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(lside_pane, true, true, 0);
 
@@ -184,14 +205,12 @@ namespace Marlin.View {
 
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
 
-            /*set_default_size(760, 450);
-            set_position(WindowPosition.CENTER);*/
-            var geometry = Preferences.settings.get_string("geometry");
-            /* only position the first window */
-            EelGtk.Window.set_initial_geometry_from_string (this, geometry, 700, 450, !app.is_first_window ((Gtk.Window) this));
-            if (Preferences.settings.get_boolean("maximized")) {
+            set_default_size(Preferences.settings.get_int("window-width"),
+                             Preferences.settings.get_int("window-height"));
+
+            if (Preferences.settings.get_boolean("maximized"))
                 maximize();
-            }
+
             title = Marlin.APP_TITLE;
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
@@ -207,6 +226,12 @@ namespace Marlin.View {
             /*/
             /* Connect and abstract signals to local ones
             /*/
+            key_press_event.connect ((event) => {
+                if (top_menu.location_bar.bread.is_focus)
+                    return top_menu.location_bar.bread.key_press_event (event);
+
+                return false;
+            });
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
@@ -217,9 +242,10 @@ namespace Marlin.View {
             });
 
             delete_event.connect (() => {
-                save_geometries ();
-                destroy ();
-
+                if (is_first_window) {
+                    save_geometries ();
+                    save_tabs ();
+                }
                 return false;
             });
 
@@ -253,7 +279,7 @@ namespace Marlin.View {
             get_allocation (out win_alloc);
 
             /* keyboard shortcuts bindings */
-            if (app.is_first_window ((Gtk.Window) this)) {
+            if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
@@ -288,7 +314,6 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
-
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null)
                 return current_tab.get_active_slot ();
@@ -300,11 +325,11 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-            ViewContainer old_tab = current_tab;
+            ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-            if (old_tab == current_tab) {
+            if (current_tab == null || old_tab == current_tab)
                 return;
-            }
+
             if (old_tab != null) {
                 var old_slot = old_tab.get_active_slot ();
                 if (old_slot != null)
@@ -314,38 +339,48 @@ namespace Marlin.View {
             if (current_tab != null) {
                 var cur_slot = current_tab.get_active_slot ();
                 if (cur_slot != null) {
+                    /* disable animation when switching tabs */
+                    top_menu.location_bar.bread.animation_visible = false;
                     cur_slot.active();
+                    top_menu.location_bar.bread.animation_visible = true;
+
                     current_tab.update_location_state(false);
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-                    if (cur_slot.view_box != null && !current_tab.content_shown)
+                    if (cur_slot.view_box != null && !current_tab.content_shown) {
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
+                    }
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
+
+                    // reload the view to ensure icons are rendered correctly
+                    current_tab.reload ();
                 }
             }
         }
 
-        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
-            var content = new View.ViewContainer (this, location,
-                                    current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
+        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+                                   int viewmode = -1) {
+            if (viewmode < 0) {
+                if (current_tab != null)
+                    viewmode = current_tab.view_mode;
+                else
+                    viewmode = Preferences.settings.get_enum ("default-viewmode");
+            }
 
+            var content = new View.ViewContainer (this, location, viewmode);
             var tab = new Granite.Widgets.Tab ("", null, content);
-
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
 
-            tabs.insert_tab (tab, -1);
-
+            change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-            change_tab (tabs.get_tab_position (tab));
         }
 
-        public void add_tab (File location) {
-            make_new_tab (location);
-
+        public void add_tab (File location, int viewmode = -1) {
+            make_new_tab (location, viewmode);
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
@@ -356,7 +391,13 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
+        }
+
+        private void actual_remove_tab (Granite.Widgets.Tab tab) {
+            /* signal for restore_data to be set and a new tab to be created if this is last tab */
+            tabs.close_tab_requested (tab);
+            /* now close the tab */
             tab.close ();
         }
 
@@ -411,7 +452,7 @@ namespace Marlin.View {
         }
 
         private void action_remove_tab (Gtk.Action action) {
-            tabs.remove_tab (tabs.current);
+            actual_remove_tab (tabs.current);
         }
 
         private void save_geometries () {
@@ -420,19 +461,123 @@ namespace Marlin.View {
             if (sidebar_alloc.width > 1)
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
-            var geometry = EelGtk.Window.get_geometry_string (this);
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
-            if (is_maximized == false)
-                Preferences.settings.set_string("geometry", geometry);
+            if (is_maximized == false) {
+                int width, height;
+                get_size(out width, out height);
+                Preferences.settings.set_int("window-width", width);
+                Preferences.settings.set_int("window-height", height);
+            }
             Preferences.settings.set_boolean("maximized", is_maximized);
+        }
+
+        private void save_tabs () {
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
+
+            foreach (var tab in tabs.tabs) {
+                assert (tab != null);
+                var view = tab.page as ViewContainer;
+
+                /* Do not save if "File does not exist" or "Does not belong to you" */
+                if (!view.can_show_folder)
+                    continue;
+
+                vb.add ("(uss)",
+                        view.view_mode,
+                        GLib.Uri.escape_string (view.get_root_uri () ?? Environment.get_home_dir ()),
+                        GLib.Uri.escape_string (view.get_tip_uri () ?? "")
+                       );
+            }
+
+            Preferences.settings.set_value ("tab-info-list", vb.end ());
+            Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
+        }
+
+        public uint restore_tabs () {
+            /* Do not restore tabs more than once */
+            if (tabs_restored || !is_first_window)
+                return 0;
+            else
+                tabs_restored = true;
+
+            GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
+            GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
+            int tabs_added = 0;
+            int viewmode = -1;
+            string root_uri = null;
+            string tip_uri = null;
+
+            /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
+             * as this causes all sorts of problems */
+            freeze_view_changes = true;
+            while (iter.next ("(uss)", out viewmode, out root_uri, out tip_uri)) {
+                if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
+                    continue;
+
+                GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
+
+                add_tab (root_location, viewmode);
+
+                if (viewmode == ViewMode.MILLER && tip_uri != root_uri)
+                    expand_miller_view (tip_uri, root_location);
+
+                tabs_added++;
+                viewmode = -1;
+                root_uri = null;
+                tip_uri = null;
+            }
+
+            freeze_view_changes = false;
+
+            int active_tab_position = Preferences.settings.get_int ("active-tab-position");
+            if (active_tab_position >=0 && active_tab_position < tabs_added) {
+                tabs.current = tabs.get_tab_by_index (active_tab_position);
+                change_tab (active_tab_position);
+            }
+
+            string path = current_tab.get_tip_uri ();
+            if (path == "")
+                path = current_tab.get_root_uri ();
+
+            /* Render the final path in the location bar without animation */
+            top_menu.location_bar.bread.animation_visible = false;
+            top_menu.location_bar.path = path;
+            /* restore location bar animation */
+            top_menu.location_bar.bread.animation_visible = true;
+            return tabs_added;
+        }
+
+        private void expand_miller_view (string tip_uri, GLib.File root_location) {
+            var tab = tabs.current;
+            var view = tab.page as ViewContainer;
+            var mwcols = view.mwcol;
+            var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
+            var relative_path = root_location.get_relative_path (tip_location);
+            var slot = mwcols.active_slot;
+
+            GLib.File gfile;
+            FM.Directory.View dview;
+
+            if (relative_path != null) {
+                string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
+                string uri = root_location.get_uri ();
+
+                foreach (string dir in dirs) {
+                    uri += (GLib.Path.DIR_SEPARATOR_S + dir);
+                    gfile = GLib.File.new_for_uri (uri);
+                    dview = slot.view_box as FM.Directory.View;
+
+                    dview.column_add_location (gfile);
+                    slot = mwcols.get_last_slot ();
+                }
+            } else {
+                warning ("Invalid tip uri for Miller View");
+            }
         }
 
         public Gtk.ActionGroup get_actiongroup () {
             return this.main_actions;
-        }
-
-        public void set_toolbar_items () {
-            top_menu.setup_items();
         }
 
         private void action_go_up () {
@@ -440,14 +585,14 @@ namespace Marlin.View {
         }
 
         private void action_edit_path () {
-            top_menu.location_bar.get_child ().grab_focus ();
+            top_menu.location_bar.bread.grab_focus ();
         }
 
-        private void action_go_back (Gtk.Action action) {
+        private void action_go_back () {
             current_tab.back();
         }
 
-        private void action_go_forward (Gtk.Action action) {
+        private void action_go_forward () {
             current_tab.forward();
         }
 

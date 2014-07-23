@@ -235,6 +235,9 @@ static gboolean empty_trash_job (GIOSchedulerJob *io_job,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
+void
+marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs);
+
 #ifndef ENABLE_TASKVIEW
 /* keep in time with format_time()
  *
@@ -2218,6 +2221,14 @@ dir_has_files (GFile *dir)
 }
 
 static GList *
+prepend_if_exists (GList *list, GFile *file) {
+    if (file != NULL && G_IS_FILE (file) && g_file_query_exists (file, NULL))
+        return g_list_prepend (list, file);
+    else
+        return list;
+}
+
+static GList *
 get_trash_dirs_for_mount (GMount *mount)
 {
     GFile *root;
@@ -2237,17 +2248,18 @@ get_trash_dirs_for_mount (GMount *mount)
         trash = g_file_resolve_relative_path (root, relpath);
         g_free (relpath);
 
-        list = g_list_prepend (list, g_file_get_child (trash, "files"));
-        list = g_list_prepend (list, g_file_get_child (trash, "info"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
 
         g_object_unref (trash);
 
         relpath = g_strdup_printf (".Trash-%d", getuid ());
         trash = g_file_get_child (root, relpath);
+
         g_free (relpath);
 
-        list = g_list_prepend (list, g_file_get_child (trash, "files"));
-        list = g_list_prepend (list, g_file_get_child (trash, "info"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
+        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
 
         g_object_unref (trash);
     }
@@ -2257,8 +2269,14 @@ get_trash_dirs_for_mount (GMount *mount)
     return list;
 }
 
-static gboolean
-has_trash_files (GMount *mount)
+
+GList *
+marlin_file_operations_get_trash_dirs_for_mount (GMount *mount)
+{
+    return get_trash_dirs_for_mount (mount);
+}
+
+static gboolean has_trash_files (GMount *mount)
 {
     GList *dirs, *l;
     GFile *dir;
@@ -2280,6 +2298,12 @@ has_trash_files (GMount *mount)
     g_list_free_full (dirs, g_object_unref);
 
     return res;
+}
+
+gboolean
+marlin_file_operations_has_trash_files (GMount *mount)
+{
+    return has_trash_files (mount);
 }
 
 
@@ -2331,6 +2355,12 @@ prompt_empty_trash (GtkWindow *parent_window)
     return result;
 }
 
+gint
+marlin_file_operations_prompt_empty_trash (GtkWindow *parent_window)
+{
+    return prompt_empty_trash (parent_window);
+}
+
 void
 marlin_file_operations_unmount_mount_full (GtkWindow                      *parent_window,
                                            GMount                         *mount,
@@ -2357,21 +2387,7 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
         response = prompt_empty_trash (parent_window);
 
         if (response == GTK_RESPONSE_ACCEPT) {
-            EmptyTrashJob *job;
-
-            job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-#ifdef ENABLE_TASKVIEW
-            g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-#endif
-            job->should_confirm = FALSE;
-            job->trash_dirs = get_trash_dirs_for_mount (mount);
-            job->done_callback = (MarlinOpCallback)do_unmount;
-            job->done_callback_data = data;
-            g_io_scheduler_push_job (empty_trash_job,
-                                     job,
-                                     NULL,
-                                     0,
-                                     NULL);
+            marlin_file_operations_empty_trash_dirs (parent_window, get_trash_dirs_for_mount (mount));
             return;
         } else if (response == GTK_RESPONSE_CANCEL) {
             if (callback) {
@@ -4700,7 +4716,6 @@ marlin_file_operations_copy (GList *files,
                              gpointer done_callback_data)
 {
     CopyMoveJob *job;
-
     job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     //job->desktop_location = marlin_get_desktop_location ();
     job->done_callback = done_callback;
@@ -6326,13 +6341,12 @@ marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
-#if 0
 void
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                                                GdkPoint *target_point,
-                                               const char *parent_dir,
+                                               GFile *parent_dir,
                                                const char *target_filename,
-                                               const char *template_uri,
+                                               GFile *template,
                                                MarlinCreateCallback done_callback,
                                                gpointer done_callback_data)
 {
@@ -6347,15 +6361,15 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->dest_dir = g_file_new_for_uri (parent_dir);
+    job->dest_dir = parent_dir;
     if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
     }
     job->filename = g_strdup (target_filename);
 
-    if (template_uri) {
-        job->src = g_file_new_for_uri (template_uri);
+    if (template) {
+        job->src = template;
     }
 
     // Start UNDO-REDO
@@ -6370,7 +6384,6 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                              0,
                              job->common.cancellable);
 }
-#endif
 
 void
 marlin_file_operations_new_file (GtkWidget *parent_view,
@@ -6384,7 +6397,6 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
 {
     CreateJob *job;
     GtkWindow *parent_window = NULL;
-
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
@@ -6425,7 +6437,7 @@ delete_trash_file (CommonJob *job,
     GFile *child;
     GFileEnumerator *enumerator;
 
-    if (job_aborted (job)) {
+    if (!G_IS_FILE (file) || job_aborted (job)) {
         return;
     }
 
@@ -6451,9 +6463,8 @@ delete_trash_file (CommonJob *job,
         }
     }
 
-    if (!job_aborted (job) && del_file) {
+    if (!job_aborted (job) && del_file)
         g_file_delete (file, job->cancellable, NULL);
-    }
 }
 
 static gboolean
@@ -6483,7 +6494,6 @@ empty_trash_job (GIOSchedulerJob *io_job,
     EmptyTrashJob *job = user_data;
     CommonJob *common;
     GList *l;
-    //gboolean confirmed;
 
     common = (CommonJob *)job;
     common->io_job = io_job;
@@ -6494,18 +6504,12 @@ empty_trash_job (GIOSchedulerJob *io_job,
     marlin_progress_info_start (job->common.progress);
 #endif
 
-    /*if (job->should_confirm) {
-        confirmed = confirm_empty_trash (common);
-    } else {
-        confirmed = TRUE;
+    for (l = job->trash_dirs;
+         l != NULL && !job_aborted (common);
+         l = l->next) {
+
+        delete_trash_file (common, l->data, FALSE, TRUE);
     }
-    if (confirmed) {*/
-        for (l = job->trash_dirs;
-             l != NULL && !job_aborted (common);
-             l = l->next) {
-            delete_trash_file (common, l->data, FALSE, TRUE);
-        }
-    //}
 
     g_io_scheduler_job_send_to_mainloop_async (io_job,
                                                empty_trash_job_done,
@@ -6526,11 +6530,23 @@ marlin_file_operations_empty_trash (GtkWidget *parent_view)
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    marlin_file_operations_empty_trash_dirs (parent_window, NULL);
+}
+
+void
+marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
+{
+    EmptyTrashJob *job;
+
     job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-    //g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-    job->trash_dirs = g_list_prepend (job->trash_dirs,
-                                      g_file_new_for_uri ("trash:"));
-    //job->should_confirm = TRUE;
+#ifdef ENABLE_TASKVIEW
+    g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
+#endif
+
+    if (dirs != NULL)
+        job->trash_dirs = dirs;
+    else
+        job->trash_dirs = g_list_prepend (job->trash_dirs, g_file_new_for_uri ("trash:"));
 
     inhibit_power_manager ((CommonJob *)job, _("Emptying Trash"));
 

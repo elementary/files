@@ -16,6 +16,7 @@ set (VERSION 0.1.6)
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+add_definitions ("-w")
 
 option (LIB_ONLY "Build libcore and libwidgets only" FALSE)
 
@@ -31,10 +32,8 @@ ELSE ()
     add_subdirectory (src)
     add_subdirectory (data)
     add_subdirectory (marlin-daemon)
-    add_subdirectory (icons)
     add_subdirectory (libcore)
     add_subdirectory (libwidgets)
     add_subdirectory (plugins)
-    add_subdirectory (schemas)
     add_subdirectory (po)
 ENDIF (LIB_ONLY)

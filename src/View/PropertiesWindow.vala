@@ -17,7 +17,7 @@
  * Author: ammonkey <am.monkeyd@gmail.com>
  */
 
-public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
+public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private class Pair<F, G> {
         public F key;
         public G value;
@@ -85,16 +85,19 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
-
+        transient_for = parent;
+        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+        type_hint = Gdk.WindowTypeHint.DIALOG;      
+        border_width = 5;
+        destroy_with_parent = true;
+        
+        Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        header.height_request = 15;
+        set_titlebar (header);
 
         // Set the default containers
-        var content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
-        var action_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
-        border_width = 5;
+        var content_area = get_content_area ();
         sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-
-        add (content_area);
-        add (action_area);
 
         var content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         //var content_vbox = new VBox(false, 12);
@@ -165,13 +168,19 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
-        set_transient_for (parent);
-        set_position (Gtk.WindowPosition.CENTER_ALWAYS);
-        set_destroy_with_parent (true);
-
         content_vbox.show ();
         content_area.show_all ();
         show_all ();
+        
+        /* Action area */
+        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        response.connect ((source, type) => {
+            switch (type) {
+                case Gtk.ResponseType.CLOSE:
+                    destroy ();
+                    break;
+            }
+        });
 
         present ();
 
@@ -1097,7 +1106,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow {
             int group_index = -1;
             int i = 0;
             foreach (var group in groups) {
-                if (group == goffile.owner) {
+                if (group == goffile.group) {
                     group_index = i;
                 }
                 store_groups.append (out iter);

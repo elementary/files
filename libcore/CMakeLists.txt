@@ -41,7 +41,6 @@ set (C_SOURCE_FILES
     eel-fcts.c
     eel-i18n.c
     eel-gtk-extensions.c
-    eel-gdk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
     eel-glib-extensions.c
@@ -71,7 +70,6 @@ set (C_HEADER_FILES
     eel-accessibility.h
     eel-debug.h
     eel-fcts.h
-    eel-gdk-extensions.h
     eel-gdk-pixbuf-extensions.h
     eel-gio-extensions.h
     eel-glib-extensions.h
@@ -115,6 +113,7 @@ pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0>=3.4.0
 	gail-3.0
     gee-0.8
+    gmodule-2.0
 	sqlite3
 	libnotify>=0.7.2)
 # Link all
@@ -137,7 +136,7 @@ set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION})
 
-target_link_libraries (${PKGNAME} ${DEPS_LIBRARIES})
+target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 

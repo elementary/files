@@ -7,42 +7,254 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-03-03 18:05+0000\n"
-"Last-Translator: majo dom <majo_dom@yahoo.com>\n"
+"POT-Creation-Date: 2014-07-15 13:52-0500\n"
+"PO-Revision-Date: 2014-07-17 05:06+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2014-04-07 06:49+0000\n"
-"X-Generator: Launchpad (build 16976)\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
+#: /home/codygarver/f/po/../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Jednoduchý a výkonný správca súborov"
+
+#: /home/codygarver/f/po/../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Prekladatelia na Launchpad-e"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:136
+#, c-format
+msgid "%u folders"
+msgstr "%u priečinkov"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:142
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:154
+#, c-format
+msgid " and %u other item (%s) selected"
+msgstr " a %u daľšia položka (%s) vybrané"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:143
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:155
+#, c-format
+msgid " and %u other items (%s) selected"
+msgstr " a %u daľšie položky (%s) vybrané"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:146
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr " vybrané"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:148
+#, c-format
+msgid "%u folder"
+msgstr "%u priečinok"
+
+#: /home/codygarver/f/po/../src/View/OverlayBar.vala:160
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u položiek vybraných (%s)"
+
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:145
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:412
 msgid "Home"
 msgstr "Domov"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:147
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:462
 msgid "File System"
 msgstr "Súborový systém"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
 msgid "This folder does not exist"
 msgstr "Takýto priečinok neexistuje"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:156
 msgid "(as Administrator)"
 msgstr "(Ako správca)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
 msgid "This does not belong to you."
 msgstr "To nepatrí k vám."
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
+#: /home/codygarver/f/po/../src/View/ViewContainer.vala:176
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte oprávnenie pre prezeranie tohoto priečinka."
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:108
+msgid "AFP"
+msgstr "AFP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:109
+msgid "DAV"
+msgstr "DAV"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+msgid "DAVS"
+msgstr "DAVS"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+msgid "FTP"
+msgstr "FTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "Sieť"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+msgid "SFTP"
+msgstr "SFTP"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+msgid "SMB"
+msgstr "SMB"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "Kôš"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:294
+msgid "Open in New Tab"
+msgstr "Otvoriť na novej karte"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:301
+msgid "Open with"
+msgstr "Otvoriť s"
+
+#: /home/codygarver/f/po/../src/View/LocationBar.vala:332
+msgid "Other Application .."
+msgstr "Ďaľšie aplikácie.."
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr "Všeobecné"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr "Viac"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "Náhľad"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
+#, c-format
+msgid "%u selected items"
+msgstr "%u vybrané položky"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr "Vypočítať veľkosť..."
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "Vytvorené"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Zmena"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "Posledný prístup"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "Odstránené"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "MimeTyp"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "Mime Typy"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:442
+#: /home/codygarver/f/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Veľkosť"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "Umiestnenie"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "Cieľ"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "Pôvodné umiestnenie"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr "Info:"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "Ďaľšie aplikácie"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr "Otvoriť s:"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr "Použitie:"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr "Využitie zariadenia:"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:560
+#, c-format
+msgid "%s free of %s (%d%% used)"
+msgstr "%s voľné %s (%d%% využité)"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "Čítanie"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "Zápis"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "Spustiť"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:922
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "Vlastník"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:927
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "Skupina"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "Všetci"
+
+#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
+msgstr "Vyberte aplikáciu na otvorenie "
 
 #: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -73,463 +285,330 @@ msgstr ""
 "\n"
 "%s"
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "Jednoduchý a výkonný správca súborov"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Prekladatelia na Launchpad-e"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Vlastnosti"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
-msgid "General"
-msgstr "Všeobecné"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
-msgid "More"
-msgstr "Viac"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
-msgid "Preview"
-msgstr "Náhľad"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
-#, c-format
-msgid "%u selected items"
-msgstr "%u vybrané položky"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
-msgid "Calculating size…"
-msgstr "Vypočítať veľkosť..."
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
-msgid "Created"
-msgstr "Vytvorené"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:398
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Zmena"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:401
-msgid "Last Access"
-msgstr "Posledný prístup"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-msgid "Deleted"
-msgstr "Odstránené"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
-msgid "MimeType"
-msgstr "MimeTyp"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:420
-msgid "MimeTypes"
-msgstr "Mime Typy"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Veľkosť"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
-msgid "Location"
-msgstr "Umiestnenie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
-msgid "Target"
-msgstr "Cieľ"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Origin Location"
-msgstr "Pôvodné umiestnenie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
-msgid "Info:"
-msgstr "Info:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
-msgid "Other application..."
-msgstr "Ďaľšie aplikácie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
-msgid "Open with:"
-msgstr "Otvoriť s:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
-msgid "Usage:"
-msgstr "Použitie:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
-msgid "Device usage:"
-msgstr "Využitie zariadenia:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s voľné %s (%d%% využité)"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
-msgid "Read"
-msgstr "Čítanie"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
-msgid "Write"
-msgstr "Zápis"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Execute"
-msgstr "Spustiť"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
-msgid "Owner"
-msgstr "Vlastník"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
-msgid "Group"
-msgstr "Skupina"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
-msgid "Everyone"
-msgstr "Všetci"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
-msgid "Select an application to open "
-msgstr "Vyberte aplikáciu na otvorenie "
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
+#: /home/codygarver/f/po/../src/View/Window.vala:142
 msgid "Files isn't your default file manager."
 msgstr "Prehliadač Súbory nie je nastavený ako predvolený správca súborov"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
-msgid "Set as default"
-msgstr "Nastaviť ako predvolený"
+#: /home/codygarver/f/po/../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:137
+#: /home/codygarver/f/po/../src/View/Window.vala:153
 msgid "Ignore"
 msgstr "Ignorovať"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:399
+#: /home/codygarver/f/po/../src/View/Window.vala:422
 msgid "Undo"
 msgstr "Vrátiť späť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:400
-#: /home/codygarver/f/po/../src/View/Window.vala:620
+#: /home/codygarver/f/po/../src/View/Window.vala:423
+#: /home/codygarver/f/po/../src/View/Window.vala:747
 msgid "Undo the last action"
 msgstr "Vrátiť späť poslednú akciu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:409
+#: /home/codygarver/f/po/../src/View/Window.vala:432
 msgid "Redo"
 msgstr "Znovu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:410
-#: /home/codygarver/f/po/../src/View/Window.vala:623
+#: /home/codygarver/f/po/../src/View/Window.vala:433
+#: /home/codygarver/f/po/../src/View/Window.vala:750
 msgid "Redo the last action"
 msgstr "Vrátiť poslednú akciu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:598
+#: /home/codygarver/f/po/../src/View/Window.vala:725
 msgid "_File"
 msgstr "Súbor(_F)"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:599
+#: /home/codygarver/f/po/../src/View/Window.vala:726
 msgid "_Edit"
 msgstr "_Upraviť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:600
+#: /home/codygarver/f/po/../src/View/Window.vala:727
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:601
+#: /home/codygarver/f/po/../src/View/Window.vala:728
 msgid "_Go"
 msgstr "_Prejsť na"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:602
+#: /home/codygarver/f/po/../src/View/Window.vala:729
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:604
+#: /home/codygarver/f/po/../src/View/Window.vala:731
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "Nové _okno"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:605
+#: /home/codygarver/f/po/../src/View/Window.vala:732
 msgid "Open another Files window for the displayed location"
 msgstr "Otvoriť ďalšie okno Súborov na tomto mieste"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:608
+#: /home/codygarver/f/po/../src/View/Window.vala:735
 #: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Nová _karta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:609
+#: /home/codygarver/f/po/../src/View/Window.vala:736
 msgid "Open another tab for the displayed location"
 msgstr "Otvorí zobrazené umiestnenie na ďalšej karte"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:613
+#: /home/codygarver/f/po/../src/View/Window.vala:740
 msgid "_Close"
 msgstr "_Zavrieť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:614
+#: /home/codygarver/f/po/../src/View/Window.vala:741
 msgid "Close this folder"
 msgstr "Zatvoriť tento priečinok"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:619
+#: /home/codygarver/f/po/../src/View/Window.vala:746
 msgid "_Undo"
 msgstr "_Vrátiť späť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:622
+#: /home/codygarver/f/po/../src/View/Window.vala:749
 msgid "_Redo"
 msgstr "_Opakovať vrátené"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:625
+#: /home/codygarver/f/po/../src/View/Window.vala:752
 msgid "Open _Parent"
 msgstr "Otvoriť _nadradený"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:626
+#: /home/codygarver/f/po/../src/View/Window.vala:753
 msgid "Open the parent folder"
 msgstr "Otvoriť nadradený priečinok"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:628
+#: /home/codygarver/f/po/../src/View/Window.vala:755
 msgid "_Back"
 msgstr "_Späť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:629
+#: /home/codygarver/f/po/../src/View/Window.vala:756
 msgid "Go to the previous visited location"
 msgstr "Prejsť na predchádzajúce navštívené umiestnenie"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:632
+#: /home/codygarver/f/po/../src/View/Window.vala:759
 msgid "_Forward"
 msgstr "_Dopredu"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:633
+#: /home/codygarver/f/po/../src/View/Window.vala:760
 msgid "Go to the next visited location"
 msgstr "Prejsť na nasledovné navštívené umiestnenie"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:635
+#: /home/codygarver/f/po/../src/View/Window.vala:762
 msgid "_Reload"
 msgstr "_Znovu načítať"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:636
+#: /home/codygarver/f/po/../src/View/Window.vala:763
 msgid "Reload the current location"
 msgstr "Znovu načíta aktuálne umiestnenie"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:639
+#: /home/codygarver/f/po/../src/View/Window.vala:766
 msgid "_Home Folder"
 msgstr "_Domovský priečinok"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:640
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
+#: /home/codygarver/f/po/../src/View/Window.vala:767
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:419
 msgid "Open your personal folder"
 msgstr "Otvoriť váš osobný priečinok"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:643
+#: /home/codygarver/f/po/../src/View/Window.vala:770
 msgid "_Trash"
 msgstr "_Kôš"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:644
+#: /home/codygarver/f/po/../src/View/Window.vala:771
 msgid "Open your personal trash folder"
 msgstr "Otvoriť osobný priečinok odpadkového koša"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:647
+#: /home/codygarver/f/po/../src/View/Window.vala:774
 msgid "_Network"
 msgstr "_Sieť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:648
+#: /home/codygarver/f/po/../src/View/Window.vala:775
 msgid "Browse bookmarked and local network locations"
 msgstr "Prehliadať záložky a miesta v lokálnej sieti"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:651
+#: /home/codygarver/f/po/../src/View/Window.vala:778
 msgid "Zoom _In"
 msgstr "_Priblížiť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:652
+#: /home/codygarver/f/po/../src/View/Window.vala:779
 msgid "Increase the view size"
 msgstr "Zväčšiť veľkosť zobrazenia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:663
+#: /home/codygarver/f/po/../src/View/Window.vala:790
 msgid "Zoom _Out"
 msgstr "Z_menšiť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:664
+#: /home/codygarver/f/po/../src/View/Window.vala:791
 msgid "Decrease the view size"
 msgstr "Zmenší veľkosť zobrazenia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:671
+#: /home/codygarver/f/po/../src/View/Window.vala:798
 msgid "Normal Si_ze"
 msgstr "Normálna _veľkosť"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:672
+#: /home/codygarver/f/po/../src/View/Window.vala:799
 msgid "Use the normal view size"
 msgstr "Použiť normálnu veľkosť zobrazenia"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:675
+#: /home/codygarver/f/po/../src/View/Window.vala:802
 msgid "Next Tab"
 msgstr "Nasledujúca karta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:679
+#: /home/codygarver/f/po/../src/View/Window.vala:806
 msgid "Previous Tab"
 msgstr "Predchádzajúca karta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:683
+#: /home/codygarver/f/po/../src/View/Window.vala:810
 msgid "Connect to _Server..."
 msgstr "Pripojiť k _serveru..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:684
+#: /home/codygarver/f/po/../src/View/Window.vala:811
 msgid "Connect to a remote computer or shared disk"
 msgstr "Pripojiť k vzdialenému serveru alebo zdieľanému disku"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:687
+#: /home/codygarver/f/po/../src/View/Window.vala:814
 msgid "_About"
 msgstr "_O programe"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:688
+#: /home/codygarver/f/po/../src/View/Window.vala:815
 msgid "Display credits"
 msgstr "Zobraziť poďakovania"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:691
+#: /home/codygarver/f/po/../src/View/Window.vala:818
 msgid "Report a Problem..."
 msgstr "Nahlásiť problém..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:692
+#: /home/codygarver/f/po/../src/View/Window.vala:819
 msgid "File a bug on Launchpad"
 msgstr "Nahlásiť chybu na Launchpad-e"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:695
+#: /home/codygarver/f/po/../src/View/Window.vala:822
 msgid "Get Help Online..."
 msgstr "Získať pomoc z internetu..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:699
+#: /home/codygarver/f/po/../src/View/Window.vala:826
 msgid "Translate This Application..."
 msgstr "Preložiť túto aplikáciu..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:708
+#: /home/codygarver/f/po/../src/View/Window.vala:835
 msgid "Show _Hidden Files"
 msgstr "Zobraziť _Skryté súbory"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:709
+#: /home/codygarver/f/po/../src/View/Window.vala:836
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Prepína zobrazovanie skrytých súborov v aktuálnom okne"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:713
+#: /home/codygarver/f/po/../src/View/Window.vala:840
 msgid "_Places"
 msgstr "_Miesta"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:714
+#: /home/codygarver/f/po/../src/View/Window.vala:841
 msgid "Change the visibility of this window's side pane"
 msgstr "Zmeniť viditeľnosť bočného panelu tohoto okna"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:722
+#: /home/codygarver/f/po/../src/View/Window.vala:849
 msgid "Icon"
 msgstr "Ikona"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /home/codygarver/f/po/../src/View/Window.vala:852
 msgid "List"
 msgstr "Zoznam"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:728
+#: /home/codygarver/f/po/../src/View/Window.vala:855
 msgid "Columns"
 msgstr "Stĺpce"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
-msgstr "AFP"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "Osobné"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
-msgstr "DAV"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "Vaše bežné miesta a záložky"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr "DAVS"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:446
+msgid "Open the Trash"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr "FTP"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "Zariadenia"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "Sieť"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "Vaše miestne partície a zariadenia"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr "SFTP"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr "SMB"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "Kôš"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr "Otvoriť na novej karte"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr "Otvoriť s"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr "Ďaľšie aplikácie.."
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:499
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:673
 #, c-format
-msgid "%u folders"
-msgstr "%u priečinkov"
+msgid "Mount and open %s"
+msgstr "Pripojiť a otvoriť %s"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "Vaše miesta v sieti"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:598
+msgid "Entire Network"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "Prehliadať obsah siete"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1118
 #, c-format
-msgid " and %u other item (%s) selected"
-msgstr " a %u daľšia položka (%s) vybrané"
+msgid "Unable to start %s"
+msgstr "Nepodarilo sa spustiť %s"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " a %u daľšie položky (%s) vybrané"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
+msgid "Open"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
-msgid " selected"
-msgstr " vybrané"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2342
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3884
+msgid "Open in New _Tab"
+msgstr "Otvoriť na novej _karte"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
-#, c-format
-msgid "%u folder"
-msgstr "%u priečinok"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1201
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2351
+msgid "Open in New _Window"
+msgstr "Otvoriť v novom _okne"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u položiek vybraných (%s)"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "Odstrániť"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Jednoduché kliknutie"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
+msgid "Rename"
+msgstr ""
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Rozhoduje, či sa zobrazené položky aktivujú jednoduchým kliknutím"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "_Pripojiť"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:855
-msgid "Layout mode"
-msgstr "Schéma rozloženia"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "_Odpojiť"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:856
-msgid "The layout mode"
-msgstr "Schéma rozloženia"
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "_Vysunúť"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1244
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2332
+msgid "Empty _Trash"
+msgstr "Vyprázdniť _kôš"
+
+#: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
+msgstr ""
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -540,40 +619,28 @@ msgid "Type"
 msgstr "Typ"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-columns-view.c:184
 #: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/f/po/../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Premenovanie %s na %s zlyhalo"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-directory-view.c:511
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+#: /home/codygarver/f/po/../src/fm-list-view.c:600
+#: /home/codygarver/f/po/../src/fm-directory-view.c:547
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "Tento priečinok je prázdny."
 
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "V schránke nie je nič, čo by ste mohli vložiť"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Zobrazenie priečinkov ikonami"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Pohľad Ikony"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "Neplatný názov súboru poskytovaný XDS drag site"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Nepodarilo sa vytvoriť odkaz na adresu \"%s\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#: /home/codygarver/f/po/../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
@@ -581,57 +648,54 @@ msgstr[0] "Použiť \"%s\" pre otvorenie vybranej položky"
 msgstr[1] "Použiť \"%s\" pre otvorenie vybraných položiek"
 msgstr[2] "Použiť \"%s\" pre otvorenie vybraných položiek"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2037
+#, c-format
+msgid "Use \"%s\" as template for new file"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "_Otvoriť pomocou %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2322
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "_Otvoriť"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
-msgid "Open in New _Tab"
-msgstr "Otvoriť na novej _karte"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#: /home/codygarver/f/po/../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
-msgid "Open in New _Window"
-msgstr "Otvoriť v novom _okne"
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3792
+msgid "Set as default"
+msgstr "Nastaviť ako predvolený"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "Pripraviť vybrané súbory pre presun príkazom Vložiť"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "Pripraviť vybrané súbory pre kopírovanie príkazom Vložiť"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Presunúť alebo skopírovať súbory vybrané predcházajúcim príkazom Vystrihnúť "
 "alebo Kopírovať"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "Vložiť do priečinka"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -639,237 +703,154 @@ msgstr ""
 "Presunie alebo skopíruje súbory vybrané predchádzajúcim príkazom Vystrihnúť "
 "alebo Kopírovať do vybraného priečinka"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_Premenovať..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "Premenovať vybranú položku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "Vytvoriť nový _priečinok"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "Vytvorí nový prázdny priečinok v tomto priečinku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "Vytvorí nový _súbor"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "_Prázdny súbor"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "Vytvorí nový prázdny súbor v tomto priečinku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "Otvorí vybranú položku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "Otvoriť v novom okne"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "Otvorí každú vybranú položku v novom okne"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "Otvorí každú vybranú položku na novej karte"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "Otvoriť _pomocou"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "Vyberte program, ktorým chcete otvoriť vybranú položku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "Iná _aplikácia..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "Vyberte iný program, ktorým chcete otvoriť vybranú položku"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "_Presunúť do Koša"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "Presunie každú vybranú položku do koša"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "_Odstrániť natrvalo"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Odstráni každú vybranú položku bez presunu do koša"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_Obnoviť"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3906
 #: /home/codygarver/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "Vybrať všetko"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "_Vlastnosti"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+#: /home/codygarver/f/po/../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "Zobrazí alebo upraví vlastnosti každej vybranej položky"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+#: /home/codygarver/f/po/../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "Nastaviť farbu:"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "Osobné"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:859
+msgid "Layout mode"
+msgstr "Schéma rozloženia"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "Vaše bežné miesta a záložky"
+#: /home/codygarver/f/po/../src/exo-icon-view.c:860
+msgid "The layout mode"
+msgstr "Schéma rozloženia"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "Otvoriť kôš"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "_Usporiadať položky"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "Zariadenia"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "_Opačné poradie"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "Vaše miestne partície a zariadenia"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Zobraziť ikony v opačnom poradí"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "Otvoriť obsah súborového systému"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Podľa _názvu"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "Pripojiť a otvoriť %s"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Udržiavať ikony zoradené podľa názvu v riadkoch"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "Vaše miesta v sieti"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Podľa _veľkosti"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "Celá sieť"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Udržiavať ikony zoradené podľa veľkosti v riadkoch"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "Prehliadať obsah siete"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Podľa _typu"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "_Spustiť"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Udržiavať ikony zoradené podľa typu v riadkoch"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "Za_staviť"
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Podľa _dátumu zmeny"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "Za_pnúť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "_Bezpečne odobrať jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "_Pripojiť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "O_dpojiť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "_Spustiť viacdiskovú jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "Za_staviť viacdiskovú jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "_Odomknúť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "_Zamknúť jednotku"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "Nepodarilo sa spustiť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Nepodarilo sa vysunúť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Nepodarilo sa vyžiadať kontrolu média %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Nepodarilo sa zastaviť %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "Odstrániť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "Premenovať..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "_Pripojiť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "_Odpojiť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "_Vysunúť"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "Vyprázdniť _kôš"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr "Pripojenie na server..."
+#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Udržiavať ikony zoradené podľa dátum zmeny v riadkoch"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -990,10 +971,6 @@ msgstr "_Zapamätať heslo"
 msgid "Operation cancelled"
 msgstr "Operácia zrušená"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Vstupné metódy"
-
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "_Presunúť sem"
@@ -1019,71 +996,55 @@ msgstr "Zrušiť"
 msgid "Failed to execute file \"%s\""
 msgstr "Nepodarilo sa spustiť súbor \"%s\""
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "_Usporiadať položky"
+#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "V schránke nie je nič, čo by ste mohli vložiť"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "_Opačné poradie"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "Zobrazenie priečinkov ikonami"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Zobraziť ikony v opačnom poradí"
+#: /home/codygarver/f/po/../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "Pohľad Ikony"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Podľa _názvu"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Jednoduché kliknutie"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Udržiavať ikony zoradené podľa názvu v riadkoch"
+#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Rozhoduje, či sa zobrazené položky aktivujú jednoduchým kliknutím"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Podľa _veľkosti"
+#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "Vstupné metódy"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Udržiavať ikony zoradené podľa veľkosti v riadkoch"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Podľa _typu"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Udržiavať ikony zoradené podľa typu v riadkoch"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Podľa _dátumu zmeny"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Udržiavať ikony zoradené podľa dátum zmeny v riadkoch"
-
-#: /home/codygarver/f/po/../src/Application.vala:129
+#: /home/codygarver/f/po/../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "Zobraziť verziu programu."
 
-#: /home/codygarver/f/po/../src/Application.vala:131
+#: /home/codygarver/f/po/../src/Application.vala:139
 msgid "Open uri(s) in new tab"
 msgstr "Otvoriť uri v novej karte"
 
-#: /home/codygarver/f/po/../src/Application.vala:133
+#: /home/codygarver/f/po/../src/Application.vala:141
+msgid "New Window"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/Application.vala:143
 msgid "Quit Files."
 msgstr "Ukončiť Files."
 
-#: /home/codygarver/f/po/../src/Application.vala:135
+#: /home/codygarver/f/po/../src/Application.vala:145
 msgid "Enable debug logging"
 msgstr "Povoľte zapisovanie pri ladení"
 
-#: /home/codygarver/f/po/../src/Application.vala:138
+#: /home/codygarver/f/po/../src/Application.vala:148
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/f/po/../src/Application.vala:141
+#: /home/codygarver/f/po/../src/Application.vala:151
 msgid ""
 "\n"
 "\n"
@@ -1093,11 +1054,11 @@ msgstr ""
 "\n"
 "Prehliadať súborový systém správcom súborov"
 
-#: /home/codygarver/f/po/../src/Application.vala:168
+#: /home/codygarver/f/po/../src/Application.vala:178
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nie je možné použiť s URI."
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
+#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:140
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
 #: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
@@ -1145,399 +1106,78 @@ msgstr "Nové okno ako _Správca"
 msgid "Files"
 msgstr "Súbory"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Dnes o %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "Včera o %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y at %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
+#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Pripravuje sa"
+
+#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (neplatné Unicode)"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "Odstrániť %d skopírovaných položiek"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
+#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Položku nie je možné obnoviť z Koša."
+
+#: /home/codygarver/f/po/../libcore/gof-file.c:302
 #, c-format
-msgid "Delete '%s'"
-msgstr "Odstrániť '%s'"
+msgid "link to %s"
+msgstr "odkaz na %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
+#: /home/codygarver/f/po/../libcore/gof-file.c:1748
 #, c-format
-msgid "Delete %d duplicated items"
-msgstr "Odstrániť %d zdvojené položky"
+msgid "Failed to parse the desktop file: %s"
+msgstr "Zlyhala analýza súboru plochy: %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Presunúť %d položiek späť do '%s'"
+#: /home/codygarver/f/po/../libcore/gof-file.c:1786
+msgid "No Exec field specified"
+msgstr "Nie je zadaná položka Spustiť"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Presunúť '%s' späť do '%s'"
+#: /home/codygarver/f/po/../libcore/gof-file.c:1806
+msgid "No URL field specified"
+msgstr "Nie je zadaná položka URL"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Premenovať '%s' na '%s'"
+#: /home/codygarver/f/po/../libcore/gof-file.c:1812
+msgid "Invalid desktop file"
+msgstr "Neplatný súbor pracovnej plochy"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Obnoviť %d položiek z koša"
+#: /home/codygarver/f/po/../libcore/gof-file.c:2102
+msgid "Slashes are not allowed in filenames"
+msgstr "Lomená nie sú v názvoch súborov povolené"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Obnoviť '%s' na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Presunúť %d položiek späť do koša"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Presunúť '%s' späť do koša"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Odstrániť odkaz na %d položiek"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Odstrániť odkaz na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Obnoviť pôvodné práva položiek uzavreté v '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Obnoviť originálne práva '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Obnoviť skupinu '%s' na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Obnoviť vlastníka '%s' na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopírovať %d položiek do '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopírovať '%s' do '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplikovať %d položiek v '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplikovať '%s' v '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Presunúť %d položiek do '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Presunúť '%s' do '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Vytvoriť nový súbor '%s' zo šablóny "
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Vytvoriť prázdny súbor '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Vytvoriť nový priečinok '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Presunúť %d položiek do koša"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Presunúť '%s' do koša"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Obnoviť '%s' z koša"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Vytvoriť odkaz na %d položiek"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Vytvoriť odkaz na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Nastaviť práva položiek uzavretých v '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Nastaviť práva '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Nastaviť skupinu '%s' na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Nastaviť vlastníka '%s' na '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Späť kopírovať %d položiek"
-msgstr[1] "_Späť kopírovať %d položky"
-msgstr[2] "_Späť kopírovať %d položiek"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Vrátiť vytvorenie prázdneho súboru"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Vrátiť vytvorenie súboru zo šablóny"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+#: /home/codygarver/f/po/../libcore/gof-file.c:2122
+msgid "Toplevel files cannot be renamed"
+msgstr "Súbory na najvyššej úrovni sa nedajú premenovať"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Zlúčiť priečinok „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1546,138 +1186,137 @@ msgstr ""
 "priečinku, ktorý je v konflikte s kopírovanými súbormi."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starší priečinok s rovnakým názvom už existuje v „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Novší priečinok s rovnakým názvom už existuje v „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Iný priečinok s rovnakým názvom už existuje v „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "Ak ho nahradíte, odstránia sa všetky súbory v priečinku."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Nahradiť priečinok „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Priečinok s rovnakým názvom už existuje v „%s“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Nahradiť súbor „%s“?"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "Ak ho nahradíte, prepíše sa jeho obsah."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Starší súbor s rovnakým názvom v „%s“ už existuje."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Novší súbor s rovnakým názvom v „%s“ už existuje."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Ďalší súbor s rovnakým názvom v „%s“ už existuje."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "Pôvodný súbor"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:470
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "Veľkosť:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:473
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "Typ:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:476
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "Naposledy zmenený:"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "Nahradiť s"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "Zlúčiť"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "_Vyberte nový názov cieľa"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "Zresetovať"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "Použiť túto operáciu na všetky súbory"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:746
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "Pre_skočiť"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "Preme_novať"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "Nahradiť"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "Konflikt súborov"
 
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Pripravuje sa"
+#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Zobraziť viac _detailov"
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1912,7 +1551,7 @@ msgstr[2] "zostáva %T"
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2574
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2587
 msgid "Error while deleting."
 msgstr "Chyba pri odstraňovaní."
 
@@ -1925,14 +1564,14 @@ msgstr ""
 "vidieť."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2646
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3642
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Nastala chyba pri zisťovaní informácií o súboroch v priečinku „%B“."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3651
 msgid "_Skip files"
 msgstr "Pre_skočiť súbory"
 
@@ -1945,8 +1584,8 @@ msgstr ""
 "čítanie."
 
 #: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3674
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2685
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3687
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Nastala chyba pri čítaní priečinka „%B“."
 
@@ -1999,11 +1638,11 @@ msgstr "Nepodarilo sa vysunúť %V"
 msgid "Unable to unmount %V"
 msgstr "Nepodarilo sa odpojiť %V"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2322
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Chcete vyprázdniť Kôš pred odpojením?"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2324
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -2011,20 +1650,16 @@ msgstr ""
 "Kvôli uvoľneniu miesta na tomto zväzku treba vyprázdniť kôš. Všetky položky "
 "v koši budú nenávratne stratené."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2330
 msgid "Do _not Empty Trash"
 msgstr "_Nevyprázdňovať kôš"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
-msgid "Emptying the trash"
-msgstr "Kôš sa vyprázdňuje"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2444
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nepodarilo sa pripojiť %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2509
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -2032,7 +1667,7 @@ msgstr[0] "Pripravuje sa kopírovanie %'d súbora (%S)"
 msgstr[1] "Pripravuje sa kopírovanie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa kopírovanie %'d súborov (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2515
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -2040,7 +1675,7 @@ msgstr[0] "Pripravuje sa presunutie %'d súboru (%S)"
 msgstr[1] "Pripravuje sa presunutie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa presunutie %'d súborov (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2521
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2534
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -2048,7 +1683,7 @@ msgstr[0] "Pripravuje sa vymazanie %'d súboru (%S)"
 msgstr[1] "Pripravuje sa vymazanie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa vymazanie %'d súborov (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2527
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2540
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -2056,24 +1691,24 @@ msgstr[0] "Pripravuje sa vyhodenie %'d súboru do koša"
 msgstr[1] "Pripravuje sa vyhodenie %'d súborov do koša"
 msgstr[2] "Pripravuje sa vyhodenie %'d súborov do koša"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2570
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3490
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3621
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3666
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2583
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3503
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3634
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3679
 msgid "Error while copying."
 msgstr "Chyba pri kopírovaní."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2572
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3619
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3664
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2585
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3632
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3677
 msgid "Error while moving."
 msgstr "Chyba pri presúvaní."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2589
 msgid "Error while moving files to trash."
 msgstr "Chyba pri vyhadzovaní súborov do koša."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2643
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -2081,7 +1716,7 @@ msgstr ""
 "Nie je možné spracovať súbory v priečinku „%B“, pretože nemáte oprávnenie "
 "ich vidieť."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2669
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2682
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -2089,99 +1724,99 @@ msgstr ""
 "Nie je možné spracovať priečinok „%B“, pretože nemáte oprávnenia na jeho "
 "čítanie."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2746
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2759
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Nie je možné spracovať súbor „%B“, pretože nemáte oprávnenia na jeho čítanie."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2749
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2762
 msgid "There was an error getting information about \"%B\"."
 msgstr "Nastala chyba pri získavaní informácií o „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2849
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2891
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2924
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2954
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2862
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2904
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2937
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2967
 msgid "Error while copying to \"%B\"."
 msgstr "Chyba pri kopírovaní do „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2853
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2866
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nemáte oprávnenia na prístup do cieľového priečinka."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2855
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2868
 msgid "There was an error getting information about the destination."
 msgstr "Nastala chyba pri získavaní informácií o cieli."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2905
 msgid "The destination is not a folder."
 msgstr "Cieľ nie je priečinok."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2925
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2938
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "V cieli nie je dostatok miesta. Skúste odstrániť nejaké súbory."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2927
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2940
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Je k dispozícii %S, ale treba %S."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2955
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2968
 msgid "The destination is read-only."
 msgstr "Cieľ je len na čítanie."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3029
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Presúvanie „%B“ do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3017
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3030
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopírovanie „%B“ do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3021
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating \"%B\""
 msgstr "Duplikovanie „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3025
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3038
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Presúvanie %'d súboru (v „%B“) do „%B“"
 msgstr[1] "Presúvanie %'d súborov (v „%B“) do „%B“"
 msgstr[2] "Presúvanie %'d súborov (v „%B“) do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3028
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3041
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopírovanie %'d súboru (v „%B“) do „%B“"
 msgstr[1] "Kopírovanie %'d súborov (v „%B“) do „%B“"
 msgstr[2] "Kopírovanie %'d súborov (v „%B“) do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3035
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplikovanie %'d súboru (v „%B“)"
 msgstr[1] "Duplikovanie %'d súborov (v „%B“)"
 msgstr[2] "Duplikovanie %'d súborov (v „%B“)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3044
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3057
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Presúvanie %'d súboru do „%B“"
 msgstr[1] "Presúvanie %'d súborov do „%B“"
 msgstr[2] "Presúvanie %'d súborov do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3061
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopírovanie %'d súboru do „%B“"
 msgstr[1] "Kopírovanie %'d súborov do „%B“"
 msgstr[2] "Kopírovanie %'d súborov do „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3053
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3066
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -2189,19 +1824,19 @@ msgstr[0] "Duplikovanie %'d súboru"
 msgstr[1] "Duplikovanie %'d súborov"
 msgstr[2] "Duplikovanie %'d súborov"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3104
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3117
 #, c-format
 msgid "%S of %S"
 msgstr "%S z %S"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3115
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3128
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S z %S - zostáva %T (%S/sec)"
 msgstr[1] "%S z %S - zostávajú %T (%S/sec)"
 msgstr[2] "%S z %S - zostáva %T (%S/sec)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3494
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3507
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -2209,11 +1844,11 @@ msgstr ""
 "Nie je možné skopírovať priečinok „%B“, pretože nemáte oprávnenia na jeho "
 "vytvorenie v cieli."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3497
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3510
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Pri vytváraní priečinka „%B“ nastala chyba."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3626
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3639
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -2221,7 +1856,7 @@ msgstr ""
 "Súbory v priečinku \"%B\" nie je možné skopírovať pretože nemáte oprávnenia "
 "na ich zobrazenie."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3671
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3684
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -2229,79 +1864,79 @@ msgstr ""
 "Priečinok \"%B\" nie je možné skopírovať pretože nemáte oprávnenia na jeho "
 "čítanie."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5005
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3729
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4430
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5017
 msgid "Error while moving \"%B\"."
 msgstr "Chyba pri presúvaní do „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3717
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3730
 msgid "Could not remove the source folder."
 msgstr "Nepodarilo sa odstrániť zdrojový priečinok."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3802
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3843
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4419
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4490
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3815
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3856
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4432
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4503
 msgid "Error while copying \"%B\"."
 msgstr "Chyba pri kopírovaní „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3816
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nepodarilo sa odstrániť súbory z už existujúceho priečinka %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3857
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nepodarilo sa odstrániť existujúci súbor s názvom %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4845
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4186
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4857
 msgid "You cannot move a folder into itself."
 msgstr "Nie je možné presunúť priečinok do seba samého."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4187
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4858
 msgid "You cannot copy a folder into itself."
 msgstr "Nie je možné kopírovať priečinok do seba samého."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4188
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4859
 msgid "The destination folder is inside the source folder."
 msgstr "Cieľový priečinok je vo vnútri zdrojového priečinka."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4206
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4219
 msgid "You cannot move a file over itself."
 msgstr "Nie je možné presunúť súbor do seba samého."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4220
 msgid "You cannot copy a file over itself."
 msgstr "Nie je možné kopírovať súbor do seba samého."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4221
 msgid "The source file would be overwritten by the destination."
 msgstr "Zdrojový súbor bude prepísaný cieľovým."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4421
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4434
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Nepodarilo sa odstrániť už existujúci súbor s rovnakým názvom v %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4504
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Nastala chyba pri kopírovaní súboru do %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4719
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4731
 msgid "Copying Files"
 msgstr "Kopírujú sa súbory"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4745
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
 msgid "Preparing to move to \"%B\""
 msgstr "Pripravuje sa presunutie do \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4769
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -2309,20 +1944,20 @@ msgstr[0] "Pripravuje sa presunutie %'d súboru"
 msgstr[1] "Pripravuje sa presunutie %'d súborov"
 msgstr[2] "Pripravuje sa presunutie %'d súborov"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5006
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5018
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Nastala chyba pri presúvaní súboru do %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5269
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5281
 msgid "Moving Files"
 msgstr "Presúvajú sa súbory"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
 msgid "Creating links in \"%B\""
 msgstr "Pripravuje sa odkazy v „%B“"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5322
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -2330,127 +1965,455 @@ msgstr[0] "Vytvárajú sa odkazy na %'d súbor"
 msgstr[1] "Vytvárajú sa odkazy na %'d súbory"
 msgstr[2] "Vytvárajú sa odkazy na %'d súborov"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5457
 msgid "Error while creating link to %B."
 msgstr "Chyba pri vytváraní odkazu na %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5459
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolické odkazy sú podporované iba pre lokálne súbory"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5450
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5462
 msgid "The target doesn't support symbolic links."
 msgstr "Cieľ nepodporuje symbolické odkazy."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5453
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5465
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Nastala chyba pri tvorbe symbolického odkazu v %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5781
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5784
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5793
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5796
 msgid "Setting permissions"
 msgstr "Nastavujú sa oprávnenia"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6035
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6047
 msgid "untitled folder"
 msgstr "priečinok bez názvu"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6043
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6055
 msgid "new file"
 msgstr "nový súbor"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6214
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6226
 msgid "Error while creating directory %B."
 msgstr "Chyba pri vytváraní priečinka „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6216
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6228
 msgid "Error while creating file %B."
 msgstr "Chyba pri vytváraní súboru „%B“."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6218
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6230
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Nastala chyba pri vytváraní priečinka v %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6535
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6540
+msgid "Emptying the trash"
+msgstr "Kôš sa vyprázdňuje"
+
+#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6548
 msgid "Emptying Trash"
 msgstr "Vyprázdňuje sa kôš"
 
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (neplatné Unicode)"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Zobraziť viac _detailov"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "link to %s"
-msgstr "odkaz na %s"
+msgid "Delete %d copied items"
+msgstr "Odstrániť %d skopírovaných položiek"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1761
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Zlyhala analýza súboru plochy: %s"
+msgid "Delete '%s'"
+msgstr "Odstrániť '%s'"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr "Nie je zadaná položka Spustiť"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr "Nie je zadaná položka URL"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr "Neplatný súbor pracovnej plochy"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr "Lomená nie sú v názvoch súborov povolené"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr "Súbory na najvyššej úrovni sa nedajú premenovať"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
+msgid "Delete %d duplicated items"
+msgstr "Odstrániť %d zdvojené položky"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Položku nie je možné obnoviť z Koša."
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Presunúť %d položiek späť do '%s'"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
-msgid "Cut the selected text to the clipboard"
-msgstr "Vystrihnúť vybraný text do schránky"
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Presunúť '%s' späť do '%s'"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
-msgid "Copy the selected text to the clipboard"
-msgstr "Skopírovať vybraný text do schránky"
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Premenovať '%s' na '%s'"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
-msgid "Paste the text stored on the clipboard"
-msgstr "Vložiť text uložený v schránke"
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Obnoviť %d položiek z koša"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Obnoviť '%s' na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Presunúť %d položiek späť do koša"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Presunúť '%s' späť do koša"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Odstrániť odkaz na %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Odstrániť odkaz na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Obnoviť pôvodné práva položiek uzavreté v '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Obnoviť originálne práva '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Obnoviť skupinu '%s' na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Obnoviť vlastníka '%s' na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopírovať %d položiek do '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopírovať '%s' do '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplikovať %d položiek v '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duplikovať '%s' v '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Presunúť %d položiek do '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Presunúť '%s' do '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Vytvoriť nový súbor '%s' zo šablóny "
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Vytvoriť prázdny súbor '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Vytvoriť nový priečinok '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Presunúť %d položiek do koša"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Presunúť '%s' do koša"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Obnoviť '%s' z koša"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Vytvoriť odkaz na %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Vytvoriť odkaz na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Nastaviť práva položiek uzavretých v '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Nastaviť práva '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Nastaviť skupinu '%s' na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Nastaviť vlastníka '%s' na '%s'"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Späť kopírovať %d položiek"
+msgstr[1] "_Späť kopírovať %d položky"
+msgstr[2] "_Späť kopírovať %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Vrátiť zdvojenú %d položku"
+msgstr[1] "_Vrátiť zdvojené %d položky"
+msgstr[2] "_Vrátiť zdvojených %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Vrátiť prenesenú %d položku"
+msgstr[1] "_Vrátiť prenesené %d položky"
+msgstr[2] "_Vrátiť prenesených %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Vrátiť premenovanú %d položku"
+msgstr[1] "_Vrátiť premenované %d položky"
+msgstr[2] "_Vrátiť premenovaných %d položiek"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Vrátiť vytvorenie prázdneho súboru"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Vrátiť vytvorenie súboru zo šablóny"
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:261
 #, c-format
 msgid "Go to %s"
 msgstr "Prejsť na %s"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
+#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr ""
+
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "Zobraziť v mriežke"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "Zobraziť ako zoznam"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "Zobraziť v stĺpcoch"
 

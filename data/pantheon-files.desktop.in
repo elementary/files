@@ -21,7 +21,7 @@ TargetEnvironment=Unity
 
 [WindowNew Shortcut Group]
 Name=New _Window
-Exec=pantheon-files
+Exec=pantheon-files -n
 TargetEnvironment=Unity
 
 [Root Shortcut Group]

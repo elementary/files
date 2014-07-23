@@ -680,6 +680,11 @@ create_and_set_up_tree_view (FMListView *view)
         } else {
             renderer = gtk_cell_renderer_text_new( );
             col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-FM_LIST_MODEL_FILENAME]), renderer, "text", k, NULL);
+
+            if (k == FM_LIST_MODEL_SIZE || k == FM_LIST_MODEL_MODIFIED) {
+                g_object_set (renderer, "xalign", 1.0);
+            }
+
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             //gtk_tree_view_column_set_fixed_width (col, 240);
@@ -774,6 +779,16 @@ fm_list_view_select_all (FMDirectoryView *view)
     gtk_tree_selection_select_all (gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree));
 }
 
+static void fm_list_view_unselect_all(FMDirectoryView *view)
+{
+    g_return_if_fail (FM_IS_LIST_VIEW (view));
+    
+    GtkTreeSelection *selection;
+    selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+    if (selection)
+        gtk_tree_selection_unselect_all (selection);
+}
+
 static void
 fm_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
@@ -848,7 +863,7 @@ fm_list_view_get_visible_range (FMDirectoryView *view,
                                 GtkTreePath     **end_path)
 
 {
-    g_return_if_fail (FM_IS_LIST_VIEW (view));
+    g_return_val_if_fail (FM_IS_LIST_VIEW (view), FALSE);
     return gtk_tree_view_get_visible_range (FM_LIST_VIEW (view)->tree,
                                             start_path, end_path);
 }
@@ -971,6 +986,7 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->get_selected_paths = fm_list_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_list_view_select_path;
     fm_directory_view_class->select_all = fm_list_view_select_all;
+    fm_directory_view_class->unselect_all = fm_list_view_unselect_all;
     fm_directory_view_class->set_cursor = fm_list_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;

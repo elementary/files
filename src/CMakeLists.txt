@@ -19,7 +19,8 @@ pkg_check_modules (DEPS REQUIRED
     gio-2.0
     gio-unix-2.0
     pango>=1.1.2
-    gtk+-3.0>=3.0.3
+    gtk+-3.0>=3.10
+    gmodule-2.0
     gail-3.0
     gee-0.8
     sqlite3
@@ -53,6 +54,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ProgressUIHandler.vala
         QuicklistHandler.vala
         View/DiskRenderer.vala
+        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
         View/Resources.vala
@@ -65,6 +67,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/LocationBar.vala
         View/Sidebar.vala
         View/Chrome/TopMenu.vala
+        View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
@@ -108,6 +111,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Resources.vala
         View/DbusTags.vala
         View/ViewContainer.vala
+        View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
@@ -115,6 +119,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/LocationBar.vala
         View/Sidebar.vala
         View/Chrome/TopMenu.vala
+        View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
         View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala

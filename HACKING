@@ -34,7 +34,7 @@ Then:
     make
 
 Run Files:
-    ./src/pantheon-files
+    ./pantheon-files
 
 To run Files from a local branch, you will need to already have Files installed in your system, since configuration files and plugins are loaded from system directories.
 
@@ -45,7 +45,7 @@ If you'd like to install from your local branch:
 
 Testing an installed release may reveal crashers or memory corruption which require investigating from a local build and obtaining a stacktrace (backtrace, crash log).
 
-    gdb ./src/pantheon-files
+    gdb ./pantheon-files
     run --debug
 
 ====== Coding style and quality ======

@@ -19,19 +19,20 @@
 
 #include <fm-icon-view.h>
 #include "fm-directory-view.h"
+#include "fm-abstract-icon-view.h"
 #include "marlin-global-preferences.h"
 #include "eel-i18n.h"
 
 static AtkObject   *fm_icon_view_get_accessible (GtkWidget *widget);
 static void         fm_icon_view_zoom_normal (FMDirectoryView *view);
 static void         fm_icon_view_zoom_level_changed (FMDirectoryView *view);
-
+static void         fm_icon_view_unselect_all (FMDirectoryView *view);
 
 G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_ABSTRACT_ICON_VIEW)
 
 
 /* Golden ratio used */
-#define ICON_SIZE_TO_ITEM_WIDTH_RATIO 1.62f
+#define ITEM_WIDTH_TO_ICON_SIZE_RATIO 1.62f
 
 
 static void
@@ -46,6 +47,15 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
     fm_directory_view_class->zoom_normal = fm_icon_view_zoom_normal;
     fm_directory_view_class->zoom_level_changed = fm_icon_view_zoom_level_changed;
+    fm_directory_view_class->unselect_all = fm_icon_view_unselect_all;
+}
+
+static void
+fm_icon_view_unselect_all (FMDirectoryView *icon_view)
+{
+    g_return_if_fail (FM_IS_ICON_VIEW (icon_view));
+    
+    exo_icon_view_unselect_all (FM_ABSTRACT_ICON_VIEW (icon_view)->icons);
 }
 
 static void
@@ -113,14 +123,15 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
+    /* determine the icon "size" depending on the "zoom-level" */
     icon_size = marlin_zoom_level_to_icon_size (view->zoom_level);
 
-    /* determine the "item-width" depending on the "zoom-level" */
-    item_width = ICON_SIZE_TO_ITEM_WIDTH_RATIO * icon_size;
+    /* determine the "item-width" depending on the "icon-size" */
+    item_width = ITEM_WIDTH_TO_ICON_SIZE_RATIO * icon_size;
 
-    /* determine the "wrap-width" depending on the "zoom-level": a couple of
-     * pixels will do */
-    wrap_width = item_width - 2;
+    /* determine the "wrap-width" depending on the "item-width": just make sure
+     * there is enough room for focus if the item is selected */
+    wrap_width = item_width - 8;
 
     /* set the new "wrap-width" for the text renderer */
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", wrap_width, "zoom-level", view->zoom_level, NULL);
