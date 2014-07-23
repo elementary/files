@@ -375,6 +375,10 @@ namespace Marlin.View {
                 tab.label = tab_name;
             });
 
+            content.loading.connect ((is_loading) => {
+                tab.working = is_loading;
+            });
+
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
         }

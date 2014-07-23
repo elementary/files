@@ -27,7 +27,7 @@ namespace Marlin.View {
         public Gtk.Widget? content_item;
         public bool content_shown = false;
         public bool can_show_folder = true;
-        public Gtk.Label label;
+        private string label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
         public Marlin.Window.Columns? mwcol = null;
@@ -43,6 +43,7 @@ namespace Marlin.View {
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
+        public signal void loading (bool is_working);
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
@@ -51,11 +52,7 @@ namespace Marlin.View {
 
             /* set active tab */
             browser = new Browser ();
-            label = new Gtk.Label ("Loading...");
-            label.set_ellipsize (Pango.EllipsizeMode.END);
-            label.set_single_line_mode (true);
-            label.set_alignment (0.0f, 0.5f);
-            label.set_padding (0, 0);
+            label = _("Loading...");
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
@@ -116,11 +113,11 @@ namespace Marlin.View {
 
         public string tab_name {
             set {
-                label.label = value;
+                label = value;
                 tab_name_changed (value);
             }
             get {
-                return label.label;
+                return label;
             }
         }
 
@@ -139,6 +136,7 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info () {
+            loading (false);
             var aslot = get_active_slot ();
             var slot_path = aslot.directory.file.location.get_path ();
             if (slot_path == Environment.get_home_dir ())
@@ -147,7 +145,11 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else {
+            else if (slot.directory.file.exists && !aslot.directory.file.is_mounted) {
+                // tab_name will change once the directory has been mounted
+                tab_name = _("Connecting...");
+                loading (true);
+            } else {
                 tab_name = _("This folder does not exist");
                 can_show_folder = false;
             }
@@ -186,6 +188,8 @@ namespace Marlin.View {
                 } else {
                     path_changed (slot.location.get_parent ());
                 }
+
+                refresh_slot_info ();
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
                 content = new DirectoryNotFound (slot.directory, this);
@@ -193,7 +197,6 @@ namespace Marlin.View {
 
             warning ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
-            refresh_slot_info ();
         }
 
         public void change_view (int nview, GLib.File? location) {
