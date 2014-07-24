@@ -52,7 +52,7 @@ namespace Marlin.View {
 
             /* set active tab */
             browser = new Browser ();
-            label = _("Loading...");
+            label = _("Loading…");
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
@@ -147,7 +147,7 @@ namespace Marlin.View {
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else if (aslot.directory.file.exists && !aslot.directory.file.is_mounted) {
                 // tab_name will change once the directory has been mounted
-                tab_name = _("Connecting...");
+                tab_name = _("Connecting…");
                 loading (true);
             } else {
                 tab_name = _("This folder does not exist");
