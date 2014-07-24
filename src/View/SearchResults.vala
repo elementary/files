@@ -92,6 +92,8 @@ namespace Marlin.View
             view.show_expanders = false;
             view.level_indentation = 12;
 
+            get_style_context ().add_class ("completion-popup");
+
             Gtk.CellRenderer cell;
             var column = new Gtk.TreeViewColumn ();
 
@@ -104,6 +106,7 @@ namespace Marlin.View
             column.set_attributes (cell, "markup", 0);
 
             var cell_path = new Gtk.CellRendererText ();
+            cell_path.xpad = 6;
             cell_path.ellipsize = Pango.EllipsizeMode.MIDDLE;
             column.pack_start (cell_path, false);
             column.set_attributes (cell_path, "markup", 2);
@@ -116,10 +119,10 @@ namespace Marlin.View
 
             list.append (out local_results, null);
             list.@set (local_results, 0, get_category_header (_("In This Folder")));
-            list.append (out global_results, null);
-            list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
             list.append (out bookmark_results, null);
             list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
+            list.append (out global_results, null);
+            list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
 
             frame.add (view);
             add (frame);
@@ -380,7 +383,8 @@ namespace Marlin.View
                     } catch (Error e) {}
                 }
 
-                var location = Markup.escape_text (match.path_string);
+                var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
+                    Markup.escape_text (match.path_string));
 
                 Gtk.TreeIter iter;
                 list.append (out iter, parent);
@@ -647,6 +651,11 @@ namespace Marlin.View
 
         string get_category_header (string title)
         {
+            return "<span weight='bold' %s>%s</span>".printf (get_pango_grey_color_string (), title);
+        }
+
+        string get_pango_grey_color_string ()
+        {
             Gdk.RGBA rgba;
             string color = "";
             var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
@@ -656,7 +665,7 @@ namespace Marlin.View
                 color = "color='%s'".printf (gdk_color.to_string ());
             }
 
-            return "<span weight='bold' %s>%s</span>".printf (color, title);
+            return color;
         }
     }
 }
