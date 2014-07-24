@@ -1,5 +1,5 @@
 namespace Marlin {
-    public const string APP_TITLE = "Pantheon Files";
+    public const string APP_TITLE = "Files";
     public const string COPYRIGHT = APP_YEARS + " Marlin Developers";
     public const string APP_YEARS = "2010-2014";
     public const string LAUNCHPAD_LABEL = "Website";
