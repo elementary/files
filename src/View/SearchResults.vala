@@ -62,6 +62,8 @@ namespace Marlin.View
         Gtk.TreeIter bookmark_results;
         Gtk.TreeView view;
         Gtk.TreeStore list;
+        Gtk.TreeModelFilter filter;
+        Gtk.ScrolledWindow scroll;
 
         public SearchResults (Gtk.Entry entry)
         {
@@ -87,6 +89,9 @@ namespace Marlin.View
             var frame = new Gtk.Frame (null);
             frame.shadow_type = Gtk.ShadowType.ETCHED_IN;
 
+            scroll = new Gtk.ScrolledWindow (null, null);
+            scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
+
             view = new Gtk.TreeView ();
             view.headers_visible = false;
             view.show_expanders = false;
@@ -94,16 +99,17 @@ namespace Marlin.View
 
             get_style_context ().add_class ("completion-popup");
 
-            Gtk.CellRenderer cell;
             var column = new Gtk.TreeViewColumn ();
+            column.sizing = Gtk.TreeViewColumnSizing.FIXED;
 
-            cell= new Gtk.CellRendererPixbuf ();
+            var cell = new Gtk.CellRendererPixbuf ();
             column.pack_start (cell, false);
             column.set_attributes (cell, "pixbuf", 1, "visible", 4);
 
-            cell = new Gtk.CellRendererText ();
-            column.pack_start (cell, true);
-            column.set_attributes (cell, "markup", 0);
+            var cell_name = new Gtk.CellRendererText ();
+            cell_name.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            column.pack_start (cell_name, true);
+            column.set_attributes (cell_name, "markup", 0);
 
             var cell_path = new Gtk.CellRendererText ();
             cell_path.xpad = 6;
@@ -115,7 +121,12 @@ namespace Marlin.View
 
             list = new Gtk.TreeStore (5, typeof (string), typeof (Gdk.Pixbuf),
                 typeof (string), typeof (File), typeof (bool));
-            view.model = list;
+            filter = new Gtk.TreeModelFilter (list, null);
+            filter.set_visible_func ((model, iter) => {
+                // hide empty category headers
+                return list.iter_depth (iter) != 0 || list.iter_has_child (iter);
+            });
+            view.model = filter;
 
             list.append (out local_results, null);
             list.@set (local_results, 0, get_category_header (_("In This Folder")));
@@ -124,7 +135,8 @@ namespace Marlin.View
             list.append (out global_results, null);
             list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
 
-            frame.add (view);
+            scroll.add (view);
+            frame.add (scroll);
             add (frame);
 
             entry.focus_out_event.connect (() => {
@@ -145,7 +157,8 @@ namespace Marlin.View
                 view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
 
                 if (path != null) {
-                    list.get_iter (out iter, path);
+                    filter.get_iter (out iter, path);
+                    filter.convert_iter_to_child_iter (out iter, iter);
                     accept (iter);
                 }
 
@@ -196,16 +209,13 @@ namespace Marlin.View
                         return true;
                     }
 
-                    Gtk.TreePath path;
                     Gtk.TreeIter iter, parent;
-
-                    view.get_cursor (out path, null);
-                    list.get_iter (out iter, path);
+                    get_iter_at_cursor (out iter);
 
                     if ((!down && !list.iter_previous (ref iter))
                         || (down && !list.iter_next (ref iter))) {
 
-                        list.get_iter (out iter, path);
+                        get_iter_at_cursor (out iter);
                         list.iter_parent (out parent, iter);
 
                         var found = false;
@@ -230,8 +240,7 @@ namespace Marlin.View
                         }
                     }
 
-                    path = list.get_path (iter);
-                    view.set_cursor (path, null, false);
+                    select_iter (iter);
 
                     return true;
             }
@@ -258,27 +267,26 @@ namespace Marlin.View
                 if (!list.iter_has_child (iter))
                     continue;
 
-                var path = list.get_path (iter);
-                path.append_index (0);
-
-                view.set_cursor (path, null, false);
+                list.iter_nth_child (out iter, iter, 0);
+                select_iter (iter);
                 break;
             } while (list.iter_next (ref iter));
+
+            // make sure we actually scroll all the way back to the unselectable header
+            scroll.vadjustment.@value = 0;
         }
 
         void select_last ()
         {
             Gtk.TreeIter iter;
-            list.iter_nth_child (out iter, null, list.iter_n_children (null) - 1);
+            list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
 
             do {
                 if (!list.iter_has_child (iter))
                     continue;
 
-                var path = list.get_path (iter);
-                path.append_index (list.iter_n_children (iter) - 1);
-
-                view.set_cursor (path, null, false);
+                list.iter_nth_child (out iter, iter, list.iter_n_children (iter) - 1);
+                select_iter (iter);
                 break;
             } while (list.iter_previous (ref iter));
         }
@@ -292,6 +300,23 @@ namespace Marlin.View
             }
 
             return true;
+        }
+
+        int n_matches (out int n_headers = null)
+        {
+            var matches = 0;
+            n_headers = 0;
+
+            Gtk.TreeIter iter;
+            for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
+                var n_children = list.iter_n_children (iter);
+                if (n_children > 0)
+                    n_headers++;
+
+                matches += n_children;
+            }
+
+            return matches;
         }
 
         void resize_popup ()
@@ -313,7 +338,12 @@ namespace Marlin.View
             var monitor = screen.get_monitor_at_window (entry_window);
             var workarea = screen.get_monitor_workarea (monitor);
 
-            set_size_request (int.min (entry_alloc.width, workarea.width), -1);
+            int cell_height, separator_height, items, headers;
+            view.style_get ("vertical-separator", out separator_height);
+            view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
+            items = n_matches (out headers);
+
+            var height = (items + headers) * (cell_height + separator_height) + separator_height;
 
             if (x < workarea.x)
                 x = workarea.x;
@@ -322,7 +352,31 @@ namespace Marlin.View
 
             y += entry_alloc.height;
 
+            if (y + height > workarea.x + workarea.height)
+                height = workarea.y + workarea.height - y - 12;
+
+            set_size_request (int.min (entry_alloc.width, workarea.width), height);
             move (x, y);
+            resize (width_request, height_request);
+        }
+
+        void get_iter_at_cursor (out Gtk.TreeIter iter)
+        {
+            Gtk.TreePath path;
+            Gtk.TreeIter filter_iter;
+
+            view.get_cursor (out path, null);
+            filter.get_iter (out filter_iter, path);
+
+            filter.convert_iter_to_child_iter (out iter, filter_iter);
+        }
+
+        void select_iter (Gtk.TreeIter iter)
+        {
+            filter.convert_child_iter_to_iter (out iter, iter);
+
+            var path = filter.get_path (iter);
+            view.set_cursor (path, null, false);
         }
 
         void popup ()
@@ -374,6 +428,9 @@ namespace Marlin.View
 
         void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent)
         {
+            if (current_operation.is_cancelled ())
+                return;
+
             foreach (var match in new_results) {
                 Gdk.Pixbuf? pixbuf = null;
                 var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
@@ -391,6 +448,11 @@ namespace Marlin.View
                 list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
 
                 view.expand_all ();
+
+                // if we're already finished, but some async method still sends change we won't resize
+                // automatically, so call that manually
+                if (!working)
+                    resize_popup ();
             }
         }
 
@@ -401,11 +463,8 @@ namespace Marlin.View
                 return;
             }
 
-            if (accepted == null) {
-                Gtk.TreePath path;
-                view.get_cursor (out path, null);
-                list.get_iter (out accepted, path);
-            }
+            if (accepted == null)
+                get_iter_at_cursor (out accepted);
 
             File file;
             list.@get (accepted, 3, out file);
@@ -422,6 +481,8 @@ namespace Marlin.View
 
                 while (list.remove (ref iter));
             }
+
+            resize_popup ();
         }
 
         public void search (string term, File folder)
@@ -442,9 +503,6 @@ namespace Marlin.View
             }
 
             if (term.strip () == "") {
-                if (visible)
-                    popdown ();
-
                 clear ();
                 return;
             }
@@ -465,6 +523,8 @@ namespace Marlin.View
 
             clear ();
 
+            local_search_finished = false;
+            global_search_finished = false;
             working = true;
 
             directory_queue.add (folder);
@@ -502,6 +562,8 @@ namespace Marlin.View
             select_first ();
             if (list_empty ())
                 view.get_selection ().unselect_all ();
+
+            resize_popup ();
 
             return false;
         }
