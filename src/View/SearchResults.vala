@@ -431,7 +431,40 @@ namespace Marlin.View
             if (current_operation.is_cancelled ())
                 return;
 
+            Gtk.TreeIter iter;
+            File file;
+
             foreach (var match in new_results) {
+                // prevent results from showing in both global and local results
+                if (parent == global_results) {
+                    var already_added = false;
+
+                    for (var valid = list.iter_nth_child (out iter, local_results, 0); valid;
+                        valid = list.iter_next (ref iter)) {
+
+                        list.@get (iter, 3, out file);
+
+                        if (file.equal (match.file)) {
+                            already_added = true;
+                            break;
+                        }
+                    }
+
+                    if (already_added)
+                        continue;
+                } else if (parent == local_results) {
+                    for (var valid = list.iter_nth_child (out iter, global_results, 0); valid;
+                        valid = list.iter_next (ref iter)) {
+
+                        list.@get (iter, 3, out file);
+
+                        if (file.equal (match.file)) {
+                            list.remove (ref iter);
+                            break;
+                        }
+                    }
+                }
+
                 Gdk.Pixbuf? pixbuf = null;
                 var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
                 if (icon_info != null) {
@@ -443,7 +476,6 @@ namespace Marlin.View
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
                     Markup.escape_text (match.path_string));
 
-                Gtk.TreeIter iter;
                 list.append (out iter, parent);
                 list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
 
