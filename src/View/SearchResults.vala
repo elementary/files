@@ -504,6 +504,7 @@ namespace Marlin.View
 
             if (term.strip () == "") {
                 clear ();
+                popdown ();
                 return;
             }
 

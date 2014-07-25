@@ -245,12 +245,11 @@ namespace Marlin.View.Chrome
                     win.current_tab.slot.view_box.grab_focus ();
 
                 win.current_tab.focus_file (file);
+
+                search_mode = false;
             });
             search_results.hide.connect (() => {
-                if (text.length < 1)
-                    search_mode = false;
-                else
-                    text = "";
+                text = "";
             });
 
             search_changed.connect ((text) => {
