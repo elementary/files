@@ -37,6 +37,7 @@ namespace Marlin.View
 
         public Gtk.Entry entry { get; construct; }
         public bool working { get; private set; default = false; }
+        public int n_results { get; private set; default = 0; }
 
         File current_root;
         Gee.Queue<File> directory_queue;
@@ -60,6 +61,7 @@ namespace Marlin.View
         Gtk.TreeIter local_results;
         Gtk.TreeIter global_results;
         Gtk.TreeIter bookmark_results;
+        Gtk.TreeIter no_results_label;
         Gtk.TreeView view;
         Gtk.TreeStore list;
         Gtk.TreeModelFilter filter;
@@ -123,6 +125,9 @@ namespace Marlin.View
                 typeof (string), typeof (File), typeof (bool));
             filter = new Gtk.TreeModelFilter (list, null);
             filter.set_visible_func ((model, iter) => {
+                if (iter == no_results_label)
+                    return n_results < 1;
+
                 // hide empty category headers
                 return list.iter_depth (iter) != 0 || list.iter_has_child (iter);
             });
@@ -134,6 +139,8 @@ namespace Marlin.View
             list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
             list.append (out global_results, null);
             list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
+            list.append (out no_results_label, null);
+            list.@set (no_results_label, 0, get_category_header (_("No Results Found")));
 
             scroll.add (view);
             frame.add (scroll);
@@ -478,6 +485,7 @@ namespace Marlin.View
 
                 list.append (out iter, parent);
                 list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
+                n_results++;
 
                 view.expand_all ();
 
@@ -559,6 +567,8 @@ namespace Marlin.View
             local_search_finished = false;
             global_search_finished = false;
             working = true;
+            n_results = 0;
+            filter.refilter ();
 
             directory_queue.add (folder);
 
@@ -592,6 +602,7 @@ namespace Marlin.View
                 return false;
 
             working = false;
+            filter.refilter ();
 
             select_first ();
             if (list_empty ())
