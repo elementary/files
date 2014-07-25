@@ -543,8 +543,9 @@ namespace Marlin.View
             get_zg_results.begin (term);
 
             var bookmarks_matched = new Gee.LinkedList<Match> ();
+            var search_term = term.normalize ().casefold ();
             foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (term, bookmark.label)) {
+                if (term_matches (search_term, bookmark.label)) {
                     bookmarks_matched.add (new Match.from_bookmark (bookmark));
                 }
             }
