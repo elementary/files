@@ -496,7 +496,7 @@ exo_tree_view_item_hovered (ExoTreeView      *tree_view,
                             GtkTreePath      *path)
 {
     g_return_if_fail (EXO_IS_TREE_VIEW (tree_view));
-
+//g_message ("%s- ", G_STRFUNC);
     g_signal_emit (tree_view, tree_view_signals[ITEM_HOVERED], 0, path);
 }
 
@@ -508,8 +508,9 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
     GtkTreePath *path = NULL;
     GdkCursor   *cursor;
 
+//g_message ("%s - ", G_STRFUNC);
     /* check if the event occurred on the tree view internal window and we are in single-click mode */
-    if (event->window == gtk_tree_view_get_bin_window (GTK_TREE_VIEW (tree_view)) && tree_view->priv->single_click)
+    if (TRUE || (event->window == gtk_tree_view_get_bin_window (GTK_TREE_VIEW (tree_view)) && tree_view->priv->single_click))
     {
         /* check if we're doing a rubberband selection right now (which means DnD is blocked) */
         if (G_UNLIKELY (tree_view->priv->button_release_unblocks_dnd))
@@ -519,6 +520,7 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
         }
         else
         {
+//g_message ("Not rubberbanding");
             /* determine the path at the event coordinates */
             gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL);
 
@@ -532,15 +534,18 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
 
                 /* setup the new path */
                 tree_view->priv->hover_path = path;
+//g_message ("emitting signal");
                 exo_tree_view_item_hovered (tree_view, path);
             }
             else
             {
+//g_message ("not new path");
                 /* release the path resources */
                 gtk_tree_path_free (path);
             }
         }
-    }
+    } else
+//g_message ("Not internal window");
 
     /* call the parent's motion notify handler */
     return (*GTK_WIDGET_CLASS (exo_tree_view_parent_class)->motion_notify_event) (widget, event);

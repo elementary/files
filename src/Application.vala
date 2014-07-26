@@ -26,7 +26,7 @@ public class Marlin.Application : Granite.Application {
 
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
-    private Marlin.Clipboard.Manager clipboard;
+    private Marlin.ClipboardManager clipboard;
     private Marlin.Thumbnailer thumbnailer;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -91,12 +91,12 @@ public class Marlin.Application : Granite.Application {
 
         Notify.init (Config.GETTEXT_PACKAGE);
         this.progress_handler = new Marlin.Progress.UIHandler ();
-        this.clipboard = new Marlin.Clipboard.Manager.get_for_display (Gdk.Display.get_default ());
+        this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
         this.thumbnailer = Marlin.Thumbnailer.get ();
 
         tags = new Marlin.View.Tags ();
 
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        //plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -328,7 +328,7 @@ public class Marlin.Application : Granite.Application {
     private Marlin.View.Window add_view_window (Gdk.Screen screen) {
         var window = new Marlin.View.Window (this, screen, true);
         this.add_window (window as Gtk.Window);
-        plugins.interface_loaded (window as Gtk.Widget);
+        //plugins.interface_loaded (window as Gtk.Widget);
         return window;
     }
 

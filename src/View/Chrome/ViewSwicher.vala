@@ -31,19 +31,21 @@ namespace Marlin.View.Chrome {
             set {
                 Gtk.Widget target;
                 int active_index;
-
+message ("mode set to %i", value);
                 switch ((Marlin.ViewMode)value) {
                 case Marlin.ViewMode.LIST:
                     target = list;
                     active_index = 1;
                     break;
-                case Marlin.ViewMode.MILLER:
+                case Marlin.ViewMode.MILLER_COLUMNS:
                     target = miller;
                     active_index = 2;
                     break;
                 default:
-                    target = icon;
-                    active_index = 0;
+//                    target = icon;
+//                    active_index = 0;
+                    target = miller;
+                    active_index = 2;
                     break;
                 }
 

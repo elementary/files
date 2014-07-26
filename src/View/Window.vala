@@ -61,8 +61,8 @@ namespace Marlin.View {
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
 
-        public signal void item_hovered (GOF.File gof_file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file); //OverlayBar connects
+        public signal void item_hovered (GOF.File? gof_file);
+        public signal void selection_changed (GLib.List<GOF.File>? gof_file); //OverlayBar connects
 
         public signal void loading_uri (string location);
 
@@ -210,6 +210,7 @@ namespace Marlin.View {
              * offset subsequent windows to ensure visibility */
             string geometry = "";
             int left_offset = 0, top_offset = 0;
+message ("Getting geometry");
             if (window_number == 0) {
                 geometry = Preferences.settings.get_string("geometry");
                 if (geometry == "")
@@ -220,6 +221,7 @@ namespace Marlin.View {
                 left_offset = MARLIN_LEFT_OFFSET;
                 top_offset = MARLIN_TOP_OFFSET;
             }
+message ("Got geometry %s", geometry);
             EelGtk.Window.set_initial_geometry_from_string (this, geometry,
                                                             MARLIN_MINIMUM_WINDOW_WIDTH,
                                                             MARLIN_MINIMUM_WINDOW_HEIGHT,
@@ -341,7 +343,7 @@ namespace Marlin.View {
 
         public void colorize_current_tab_selection (int n) {
 //            if (!current_tab.content_shown)
-//                ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
+//                ((FM.DirectoryView) current_tab.slot.view_box).colorize_selection(n);
         }
 
 
@@ -378,7 +380,7 @@ namespace Marlin.View {
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
                     if (cur_slot.view_box != null && !current_tab.content_shown)
-                        ((FM.Directory.View) cur_slot.view_box).sync_selection();
+                        ((FM.DirectoryView) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri);
                 }
@@ -541,7 +543,7 @@ namespace Marlin.View {
 
                 add_tab (root_location, viewmode);
 
-                if (viewmode == Marlin.ViewMode.MILLER && tip_uri != root_uri)
+                if (viewmode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
 
                 tabs_added++;
@@ -680,12 +682,12 @@ namespace Marlin.View {
 
         private void action_zoom_in_callback (Gtk.Action action) {
             if (current_tab != null && current_tab.slot != null)
-                ((FM.Directory.View) current_tab.slot.view_box).zoom_in ();
+                ((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
         }
 
         private void action_zoom_out_callback (Gtk.Action action) {
             if (current_tab != null && current_tab.slot != null)
-                ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
+                ((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
         }
 
         void action_next_tab ()
@@ -699,7 +701,7 @@ namespace Marlin.View {
 
         private void action_zoom_normal_callback (Gtk.Action action) {
             if (current_tab != null && current_tab.slot != null)
-                ((FM.Directory.View) current_tab.slot.view_box).zoom_normal ();
+                ((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
         }
 
         private void action_connect_to_server_callback (Gtk.Action action)
@@ -872,7 +874,7 @@ namespace Marlin.View {
               Marlin.ViewMode.LIST },
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
-              Marlin.ViewMode.MILLER }
+              Marlin.ViewMode.MILLER_COLUMNS }
 
         };
     }

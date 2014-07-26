@@ -1855,7 +1855,8 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
 }
 
 gboolean
-gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
+gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
+//gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
 {
     GdkAppLaunchContext *context;
     gboolean             succeed;

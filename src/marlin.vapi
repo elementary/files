@@ -10,51 +10,51 @@ namespace Preferences {
 }
 
 namespace FM {
-    [CCode (cprefix = "FMDirectory", lower_case_cprefix = "fm_directory_")]
-    namespace Directory {
-        [CCode (cheader_filename = "fm-directory-view.h")]
-        public class View : Gtk.ScrolledWindow {
-            public View ();
-            public string empty_message;
-            //public void set_slot (GOF.Window.Slot slot);
-            public void set_active (bool active);
-            public bool active;
-            public bool is_frozen ();
-            public bool updates_frozen;
-            public void dir_action_set_sensitive (string action_name, bool sensitive);
-            //public void colorize_selection (int color);
-            public void notify_selection_changed ();
-            public unowned GLib.List<GOF.File> get_selection ();
-            public void select_first_for_empty_selection ();
-            public void merge_menus ();
-            public void unmerge_menus ();
-            public void update_menus ();
-            public void zoom_in ();
-            public void zoom_out ();
-            public void zoom_normal ();
-            public Marlin.ZoomLevel zoom_level;
-            public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
-            public GLib.AppInfo? get_default_app ();
-            public void select_glib_files (GLib.List files);
-            public void set_select_added_files (bool select);
-            public void set_selection_was_removed (bool was_removed);
-            //public void column_add_location (GLib.File file);
-            public void clear_model ();
-            public unowned FM.ListModel get_model ();
-            public virtual signal void add_file (GOF.File file, GOF.Directory.Async dir);
-            public signal void sync_selection ();
-            public signal void change_path (GLib.File location, Marlin.OpenFlag flag);
-            public signal void trash_files (GLib.List<GLib.File> locations);
-            public signal void delete_files (GLib.List<GLib.File> locations);
-            public signal void restore_files (GLib.List<GOF.File> files);
-            //public virtual signal void sync_selection ();
+//    [CCode (cprefix = "FMDirectory", lower_case_cprefix = "fm_directory_")]
+//    namespace Directory {
+//        [CCode (cheader_filename = "fm-directory-view.h")]
+//        public class View : Gtk.ScrolledWindow {
+//            //public View ();
+//            //public string empty_message;
+//            //public void set_slot (GOF.Window.Slot slot);
+//            public void set_active (bool active);
+//            public bool active;
+//            public bool is_frozen ();
+//            public bool updates_frozen;
+//            public void dir_action_set_sensitive (string action_name, bool sensitive);
+//            //public void colorize_selection (int color);
+//            public void notify_selection_changed ();
+//            public unowned GLib.List<GOF.File> get_selection ();
+//            public void select_first_for_empty_selection ();
+//            public void merge_menus ();
+//            public void unmerge_menus ();
+//            public void update_menus ();
+//            public void zoom_in ();
+//            public void zoom_out ();
+//            public void zoom_normal ();
+//            public Marlin.ZoomLevel zoom_level;
+//            public unowned GLib.List<GLib.AppInfo>? get_open_with_apps ();
+//            public GLib.AppInfo? get_default_app ();
+//            public void select_glib_files (GLib.List files);
+//            public void set_select_added_files (bool select);
+//            public void set_selection_was_removed (bool was_removed);
+//            //public void column_add_location (GLib.File file);
+//            public void clear_model ();
+//            public unowned FM.ListModel get_model ();
+//            public virtual signal void add_file (GOF.File file, GOF.Directory.Async dir);
+//            public signal void sync_selection ();
+//            public signal void change_path (GLib.File location, Marlin.OpenFlag flag);
+//            public signal void trash_files (GLib.List<GLib.File> locations);
+//            public signal void delete_files (GLib.List<GLib.File> locations);
+//            public signal void restore_files (GLib.List<GOF.File> files);
+//            //public virtual signal void sync_selection ();
  
-        }
-    }
+//        }
+//    }
     [CCode (cprefix = "FMIcon", lower_case_cprefix = "fm_icon_")]
     namespace Icon {
         [CCode (cheader_filename = "fm-icon-view.h")]
-        public class View : Directory.View {
+        public class View : DirectoryView {
             public View ();
             public static GLib.Type get_type ();
         }
@@ -62,7 +62,7 @@ namespace FM {
     [CCode (cprefix = "FMColumns", lower_case_cprefix = "fm_columns_")]
     namespace Columns {
         [CCode (cheader_filename = "fm-columns-view.h")]
-        public class View : Directory.View {
+        public class View : DirectoryView {
             public View ();
             public static GLib.Type get_type ();
         }
@@ -70,7 +70,7 @@ namespace FM {
     [CCode (cprefix = "FMList", lower_case_cprefix = "fm_list_")]
     namespace List {
         [CCode (cheader_filename = "fm-list-view.h")]
-        public class View : Directory.View {
+        public class View : DirectoryView {
             public View ();
             public static GLib.Type get_type ();
         }
@@ -101,9 +101,9 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-thumbnailer.h")]
     public class Thumbnailer : GLib.Object {
         public static Thumbnailer get();
-        public bool queue_file (GOF.File file, int? request, bool large);
-        public bool queue_files (GLib.List<GOF.File> files, int? request, bool large);
-
+        public bool queue_file (GOF.File file, out uint request, bool large);
+        public bool queue_files (GLib.List<GOF.File> files, out uint request, bool large);
+        public void dequeue (uint request);
     }
 
     [CCode (cheader_filename = "marlin-dnd.h")]
@@ -143,18 +143,19 @@ namespace Marlin {
         }
     }
 
-    [CCode (cprefix = "MarlinClipboard", lower_case_cprefix = "marlin_clipboard_")]
-    namespace Clipboard {
-        [CCode (cheader_filename = "marlin-clipboard-manager.h")]
-        public class Manager : GLib.Object {
-            public Manager.get_for_display (Gdk.Display display);
+    [CCode (cprefix = "MarlinClipboardManager", lower_case_cprefix = "marlin_clipboard_manager_", cheader_filename = "marlin-clipboard-manager.h")]
+//    namespace Clipboard {
+//        [CCode (cheader_filename = "marlin-clipboard-manager.h")]
+        public class ClipboardManager : GLib.Object {
+            public ClipboardManager.get_for_display (Gdk.Display display);
             public bool get_can_paste ();
             public bool has_cutted_files (GOF.File file);
             public void copy_files (GLib.List files);
             public void cut_files (GLib.List files);
-            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.List files, GLib.Closure new_file_closure);
+            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.Closure? new_file_closure);
+            public signal void changed ();
         }
-    }
+//    }
     [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
@@ -187,8 +188,8 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-icon-renderer.h")]
     public class IconRenderer : Gtk.CellRenderer {
         public IconRenderer ();
-        public File drop_file;
     }
+
     [CCode (cheader_filename = "marlin-text-renderer.h")]
     public class TextRenderer : Gtk.CellRenderer {
         public TextRenderer ();
@@ -209,6 +210,12 @@ namespace Marlin {
         int entry_menu_popdown_timer_id;
         public signal void edited (string path, string text);
     }
+    [CCode (cheader_filename = "marlin-cell-renderer-text-ellipsized.h")]
+    public class CellRendererTextEllipsized : Gtk.CellRendererText {
+        public CellRendererTextEllipsized ();
+    }
+
+    
 
     [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum ZoomLevel {
@@ -223,6 +230,11 @@ namespace Marlin {
     }
 
     [CCode (cheader_filename = "marlin-enum-types.h")]
+    public static Gtk.IconSize zoom_level_to_stock_icon_size (ZoomLevel zoom);
+    [CCode (cheader_filename = "marlin-enum-types.h")]
+    public static Marlin.IconSize zoom_level_to_icon_size (ZoomLevel zoom);
+
+    [CCode (cheader_filename = "marlin-enum-types.h")]
     public enum IconSize {
         SMALLEST = 16,
         SMALLER = 24,
@@ -233,10 +245,7 @@ namespace Marlin {
         LARGEST = 128
     }
 
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public Gtk.IconSize zoom_level_to_stock_icon_size (ZoomLevel zoom);
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public Marlin.IconSize zoom_level_to_icon_size (ZoomLevel zoom);
+
 
     [CCode (cheader_filename = "marlin-view-window.h")]
     public enum OpenFlag {
@@ -250,10 +259,19 @@ namespace Marlin {
     public enum ViewMode {
         ICON,
         LIST,
-        MILLER,
+        MILLER_COLUMNS,
         CURRENT,
         PREFERRED,
         INVALID
     }
- 
+}
+namespace Exo {
+    [CCode (cprefix = "ExoTreeView", lower_case_cprefix = "exo_tree_view_", cheader_filename = "exo-tree-view.h")]
+    public class TreeView : Gtk.TreeView {
+        public TreeView ();
+        public bool get_single_click ();
+        public bool set_single_click (bool single);
+        public Gtk.TreePath? get_hover_path ();
+        public signal void item_hovered (Gtk.TreePath path);
+    }
 }

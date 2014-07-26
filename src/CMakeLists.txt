@@ -42,20 +42,18 @@ pkg_check_modules (UNITY unity>=4.0.0)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
-        View/Slot.vala
         Application.vala
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
+        DndHandler.vala
         main.vala
         marlin-deep-count.vala
-#        MarlinEnums.vala
-        #MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
-        #Slot.vala
+        View/ColumnView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/DirectoryView.vala
@@ -66,9 +64,9 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-#        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
+        View/Slot.vala
         View/Miller.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
@@ -104,14 +102,13 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
+        DndHandler.vala
         main.vala
         marlin-deep-count.vala
-#        MarlinEnums.vala
-        #MillerView.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
-        #Slot.vala
+        View/ColumnView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/DirectoryView.vala
@@ -122,7 +119,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-#        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
         View/Slot.vala
@@ -161,19 +157,16 @@ add_executable (../pantheon-files
     marlin-enum-types.c
     marlin-dnd.c
     marlin-clipboard-manager.c
-#    marlin-window-columns.c
-#    gof-window-slot.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-text-renderer.c
     marlin-cell-renderer-text-ellipsized.c
-    fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c
-    fm-abstract-icon-view.c
-    fm-icon-view.c
-    fm-list-view.c
-    fm-columns-view.c
+    #fm-abstract-icon-view.c
+    #fm-icon-view.c
+    #fm-list-view.c
+    #fm-columns-view.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 

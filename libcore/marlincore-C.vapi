@@ -14,6 +14,17 @@ namespace FM
 {
     public class ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
+        [CCode (cprefix = "FM_LIST_MODEL_", cheader_filename = "fm-list-model.h")]
+        public enum ColumnID {
+            FILE_COLUMN,
+            COLOR,
+            FILENAME,
+            SIZE,
+            TYPE,
+            MODIFIED,
+            NUM_COLUMNS
+        }
+
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public void remove_file (GOF.File file, GOF.Directory.Async dir);
@@ -21,7 +32,9 @@ namespace FM
         public GOF.File file_for_path(Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
-        public string get_string_from_sort_column_id (int id);
+        public GOF.File file_for_iter (Gtk.TreeIter iter);
+        public static string get_string_from_column_id (int id);
+        public void clear ();
     }
 }
 
@@ -29,12 +42,18 @@ namespace FM
 namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
     static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
+    static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, void* done_callback = null, void* done_callback_data = null);
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
 namespace EelGtk.Window {
     public string get_geometry_string (Gtk.Window win);
     public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position, int left_offset, int top_offset);
+}
+
+[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_widget_", cheader_filename = "eel-gtk-extensions.h")]
+namespace EelGtk.Widget {
+    public Gdk.Screen get_screen ();
 }
 
 [CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
@@ -47,7 +66,7 @@ namespace Eel {
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
     public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
     public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
-    public Gdk.Screen gtk_widget_get_screen (Gtk.Widget widget);
+    public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
     public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
 }
 
@@ -175,9 +194,10 @@ namespace GOF {
         public const string GIO_DEFAULT_ATTRIBUTES;
 
         public File(GLib.File location, GLib.File? dir);
-        public static GOF.File get(GLib.File location);
+        public static GOF.File @get(GLib.File location);
         public static GOF.File get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
+        public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
 
         public void remove_from_caches ();
         public bool is_gone;
@@ -195,6 +215,8 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf pix;
         public int pix_size;
+        public int sort_column_id;
+        public Gtk.SortType sort_order;
 
         public GLib.FileType file_type;
         public bool is_hidden;
@@ -203,6 +225,8 @@ namespace GOF {
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
+        public bool is_writable ();
+        public bool is_executable ();
         public bool link_known_target;
         public uint flags;
 
@@ -226,6 +250,7 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
+        public void open_single (Gdk.Screen screen, GLib.AppInfo app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -254,8 +279,15 @@ namespace GOF {
 
         public GLib.AppInfo get_default_handler ();
 
-        public string list_to_string (GLib.List<GOF.File> list, out long len);
+        public static string list_to_string (GLib.List<GOF.File> list, out long len);
+
+        public bool execute (Gdk.Screen screen, GLib.List<GLib.File> files, out GLib.Error error);
+        public void rename (string new_name, GOF.FileOperationCallback callback);
+
+        public GOF.File ref ();
     }
+
+    public delegate void FileOperationCallback (GOF.File file, GLib.File result_location, GLib.Error error, void* callback_data);
 
     [CCode (cheader_filename = "gof-file.h")]
     public enum FileIconFlags

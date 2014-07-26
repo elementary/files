@@ -19,7 +19,7 @@
 
 #include "fm-columns-view.h"
 #include "fm-list-model.h"
-//#include "fm-directory-view.h"
+#include "fm-directory-view.h"
 #include "marlin-global-preferences.h"
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
@@ -28,7 +28,6 @@
 #include "marlin-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
-//#include "marlin-vala.h"
 
 struct FMColumnsViewDetails {
     GList       *selection;
@@ -286,7 +285,7 @@ fm_columns_cancel_await_double_click (FMColumnsView *view)
     }
 }
 
-static void
+static gboolean
 fm_columns_not_double_click (FMColumnsView *view)
 {
     g_return_val_if_fail (view != NULL && FM_IS_COLUMNS_VIEW (view), FALSE);
@@ -873,4 +872,3 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->zoom_normal = fm_columns_view_zoom_normal;
     fm_directory_view_class->zoom_level_changed = fm_columns_view_zoom_level_changed;
 }
-

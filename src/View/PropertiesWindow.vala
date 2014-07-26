@@ -41,7 +41,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private uint count;
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
-    private FM.Directory.View view;
+    private FM.DirectoryView view;
 
     private Gee.Set<string>? mimes;
 
@@ -81,7 +81,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         PREVIEW
     }
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<GOF.File> _files, FM.DirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
@@ -1218,7 +1218,8 @@ message ("goffile is %s", goffile.get_display_name ());
             try {
                 foreach (var mime in mimes)
                     app.set_as_default_for_type (mime);
-                view.notify_selection_changed ();
+
+                view.notify_selection_changed (); /* indirectly update menus */
             } catch (Error e) {
                 critical ("Couldn't set as default: %s", e.message);
             }

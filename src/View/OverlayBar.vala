@@ -69,6 +69,7 @@ namespace Marlin.View {
 
         private void update_hovered (GOF.File? file)
         {
+//message ("update hovered");
             if (file != null) {
                 GLib.List<GOF.File> list = null;
                 list.prepend (file);
@@ -76,7 +77,8 @@ namespace Marlin.View {
             } else {
                 Marlin.View.Slot slot = window.current_tab.slot;
                 if (slot != null) {
-                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
+                    //List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
+                    unowned List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
                     real_update (list);
                 }
             }
@@ -84,6 +86,7 @@ namespace Marlin.View {
 
         private void real_update (GLib.List<GOF.File>? files = null)
         {
+//message ("Overlay bar real update");
             count = 0;
             folders_count = 0;
             files_count = 0;
@@ -92,6 +95,7 @@ namespace Marlin.View {
             /* cancel any pending subfolder scan */
             //cancellable.cancel ();
             if (files != null) {
+//message ("files is not null");
                 visible = showbar;
 
                 /* list contain only one element */
@@ -102,6 +106,7 @@ namespace Marlin.View {
                 update_status ();
 
             } else {
+//message ("files is null");
                 visible = false;
                 status = "";
             }

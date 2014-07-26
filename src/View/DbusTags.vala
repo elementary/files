@@ -51,9 +51,10 @@ namespace Marlin.View {
             return new Variant.strv ((string[]) ptr_arr);
         }
 
-        public async void set_color (FM.Directory.View view, int n) throws IOError {
+        public async void set_color (FM.DirectoryView view, int n) throws IOError {
             Variant[] entries = null;
-            unowned List<GOF.File> files = view.get_selection ();
+            //List<GOF.File> files = view.get_selected_files ();
+            unowned List<GOF.File> files = view.get_selected_files ();
             /*if (n == 0)
               yield tags.deleteEntry(file.uri);
               else*/

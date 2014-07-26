@@ -28,7 +28,7 @@
 #include "eel-gtk-extensions.h"
 #include "eel-editable-label.h"
 #include "eel-ui.h"
-#include "marlin-vala.h"
+#include "fm-directory-view.h"
 
 enum
 {
