@@ -109,6 +109,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        ZeitgeistManager.vala
+        View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -139,6 +141,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         marlincore-C
         marlinwidgets
         marlin
+        zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala
     OPTIONS
