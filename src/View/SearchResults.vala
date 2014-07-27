@@ -182,6 +182,8 @@ namespace Marlin.View
             key_press_event.connect (key_event);
 
             entry.key_press_event.connect (entry_key_press);
+
+            grab_broken_event.connect (() => { print ("Grab broken!\n"); });
         }
 
         bool entry_key_press (Gdk.EventKey event)
@@ -416,10 +418,10 @@ namespace Marlin.View
 
             if (device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
+                print ("Grabbing status: %s\n", device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
                     | Gdk.EventMask.POINTER_MOTION_MASK,
-                    null, Gdk.CURRENT_TIME);
+                    null, Gdk.CURRENT_TIME).to_string ());
 
                 is_grabbing = true;
             }
