@@ -404,7 +404,8 @@ namespace Marlin.View
 
             show_all ();
 
-            device = Gtk.get_current_event_device ();
+            device = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
                 device = device.associated_device;
 
