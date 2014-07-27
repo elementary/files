@@ -173,8 +173,6 @@ namespace Marlin.View
                     accept (iter);
                 }
 
-                popdown ();
-
                 return true;
             });
 
@@ -182,8 +180,6 @@ namespace Marlin.View
             key_press_event.connect (key_event);
 
             entry.key_press_event.connect (entry_key_press);
-
-            grab_broken_event.connect (() => { print ("Grab broken!\n"); });
         }
 
         bool entry_key_press (Gdk.EventKey event)
@@ -203,7 +199,6 @@ namespace Marlin.View
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
                     accept ();
-                    popdown ();
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
@@ -418,10 +413,10 @@ namespace Marlin.View
 
             if (device != null) {
                 Gtk.device_grab_add (this, device, true);
-                print ("Grabbing status: %s\n", device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
+                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
                     | Gdk.EventMask.POINTER_MOTION_MASK,
-                    null, Gdk.CURRENT_TIME).to_string ());
+                    null, Gdk.CURRENT_TIME);
 
                 is_grabbing = true;
             }
@@ -528,6 +523,8 @@ namespace Marlin.View
             list.@get (accepted, 3, out file);
 
             file_selected (file);
+
+            popdown ();
         }
 
         public void clear ()
