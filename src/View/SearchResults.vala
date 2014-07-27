@@ -9,7 +9,7 @@ namespace Marlin.View
             public string mime { get; construct; }
             public string path_string { get; construct; }
             public Icon icon { get; construct; }
-            public File file { get; construct; }
+            public File? file { get; construct; }
 
             public Match (FileInfo info, string path_string, File parent)
             {
@@ -27,6 +27,15 @@ namespace Marlin.View
                         icon: bookmark.get_icon (),
                         path_string: "",
                         file: bookmark.get_location ());
+            }
+
+            public Match.ellipsis ()
+            {
+                Object (name: "...",
+                        mime: "",
+                        icon: null,
+                        path_string: "",
+                        file: null);
             }
         }
 
@@ -207,48 +216,17 @@ namespace Marlin.View
                         return true;
                     }
 
-                    var down = event.keyval == Gdk.Key.Down;
+                    var up = event.keyval == Gdk.Key.Up;
 
                     if (view.get_selection ().count_selected_rows () < 1) {
-                        if (down)
-                            select_first ();
-                        else
+                        if (up)
                             select_last ();
+                        else
+                            select_first ();
                         return true;
                     }
 
-                    Gtk.TreeIter iter, parent;
-                    get_iter_at_cursor (out iter);
-
-                    if ((!down && !list.iter_previous (ref iter))
-                        || (down && !list.iter_next (ref iter))) {
-
-                        get_iter_at_cursor (out iter);
-                        list.iter_parent (out parent, iter);
-
-                        var found = false;
-                        while ((!down && list.iter_previous (ref parent))
-                                || (down && list.iter_next (ref parent))) {
-
-                            if (!list.iter_has_child (parent))
-                                continue;
-
-                            list.iter_nth_child (out iter, parent, down ? 0 : list.iter_n_children (parent) - 1);
-                            found = true;
-                            break;
-                        }
-
-                        if (!found) {
-                            if (down)
-                                select_first ();
-                            else
-                                select_last ();
-
-                            return true;
-                        }
-                    }
-
-                    select_iter (iter);
+                    select_adjacent (up);
 
                     return true;
             }
@@ -297,6 +275,48 @@ namespace Marlin.View
                 select_iter (iter);
                 break;
             } while (list.iter_previous (ref iter));
+        }
+
+        void select_adjacent (bool up)
+        {
+            File? file = null;
+            Gtk.TreeIter iter, parent;
+            get_iter_at_cursor (out iter);
+
+            var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
+
+            if (valid) {
+                list.@get (iter, 3, out file);
+                if (file != null) {
+                    select_iter (iter);
+                    return;
+                }
+            }
+
+            get_iter_at_cursor (out iter);
+            list.iter_parent (out parent, iter);
+
+            do {
+                if (up ? !list.iter_previous (ref parent) : !list.iter_next (ref parent)) {
+                    if (up)
+                        select_last ();
+                    else
+                        select_first ();
+
+                    return;
+                }
+            } while (!list.iter_has_child (parent));
+
+            list.iter_nth_child (out iter, parent, up ? list.iter_n_children (parent) - 1 : 0);
+
+            // make sure we haven't hit an ellipsis
+            if (up) {
+                list.@get (iter, 3, out file);
+                if (file == null)
+                    list.iter_previous (ref iter);
+            }
+
+            select_iter (iter);
         }
 
         bool list_empty ()
@@ -488,11 +508,13 @@ namespace Marlin.View
                 }
 
                 Gdk.Pixbuf? pixbuf = null;
-                var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
-                if (icon_info != null) {
-                    try {
-                        pixbuf = icon_info.load_icon ();
-                    } catch (Error e) {}
+                if (match.icon != null) {
+                    var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
+                    if (icon_info != null) {
+                        try {
+                            pixbuf = icon_info.load_icon ();
+                        } catch (Error e) {}
+                    }
                 }
 
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
@@ -519,8 +541,13 @@ namespace Marlin.View
             if (accepted == null)
                 get_iter_at_cursor (out accepted);
 
-            File file;
+            File? file = null;
             list.@get (accepted, 3, out file);
+
+            if (file == null) {
+                Gdk.beep ();
+                return;
+            }
 
             file_selected (file);
 
@@ -722,8 +749,9 @@ namespace Marlin.View
                             if (count > num_ok)
                                 it.remove ();
                         }
-                    } else if (num_ok == 0)
-                        return;
+                    }
+
+                    new_results.add (new Match.ellipsis ());
 
                     display_count = MAX_RESULTS;
                 } else
@@ -745,7 +773,7 @@ namespace Marlin.View
                                                  new Zeitgeist.TimeRange.anytime (),
                                                  templates,
                                                  0, // offset
-                                                 MAX_RESULTS,
+                                                 MAX_RESULTS + 1,
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
             } catch (IOError.CANCELLED e) {
@@ -755,11 +783,18 @@ namespace Marlin.View
                 return;
             }
 
+            var i = 0;
+
             var matches = new Gee.LinkedList<Match> ();
             var home = File.new_for_path (Environment.get_home_dir ());
             while (results.has_next () && !current_operation.is_cancelled ()) {
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
+                    if (i == MAX_RESULTS) {
+                        matches.add (new Match.ellipsis ());
+                        break;
+                    }
+
                     try {
                         var file = File.new_for_uri (subject.uri);
                         var path_string = "";
@@ -781,6 +816,8 @@ namespace Marlin.View
 
                         var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
                         matches.add (new Match (info, path_string, file.get_parent ()));
+
+                        i++;
                     } catch (Error e) {}
                 }
             }
