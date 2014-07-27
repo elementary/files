@@ -366,6 +366,7 @@ namespace Marlin.View
             if (y + height > workarea.x + workarea.height)
                 height = workarea.y + workarea.height - y - 12;
 
+            scroll.set_min_content_height (height);
             set_size_request (int.min (entry_alloc.width, workarea.width), height);
             move (x, y);
             resize (width_request, height_request);
