@@ -32,6 +32,7 @@ namespace Marlin.View
 
         const int MAX_RESULTS = 10;
         const int MAX_DEPTH = 5;
+        const int DELAY_ADDING_RESULTS = 150;
 
         public signal void file_selected (File file);
 
@@ -41,8 +42,11 @@ namespace Marlin.View
 
         File current_root;
         Gee.Queue<File> directory_queue;
-        Gee.LinkedList<Match> results;
         ulong waiting_handler;
+
+        uint adding_timeout;
+        bool allow_adding_results;
+        Gee.Map<Gtk.TreeIter?,Gee.List> waiting_results;
 
         Cancellable? current_operation = null;
         Cancellable? file_search_operation = null;
@@ -439,6 +443,18 @@ namespace Marlin.View
             if (current_operation.is_cancelled ())
                 return;
 
+            if (!allow_adding_results) {
+                Gee.List list;
+
+                if ((list = waiting_results.@get (parent)) == null) {
+                    list = new Gee.LinkedList<Match> ();
+                    waiting_results.@set (parent, list);
+                }
+
+                list.insert_all (list.size, new_results);
+                return;
+            }
+
             Gtk.TreeIter iter;
             File file;
 
@@ -489,12 +505,10 @@ namespace Marlin.View
                 n_results++;
 
                 view.expand_all ();
-
-                // if we're already finished, but some async method still sends change we won't resize
-                // automatically, so call that manually
-                if (!working)
-                    resize_popup ();
             }
+
+            if (!working)
+                resize_popup ();
         }
 
         void accept (Gtk.TreeIter? accepted = null)
@@ -531,6 +545,18 @@ namespace Marlin.View
             if (!current_operation.is_cancelled ())
                 current_operation.cancel ();
 
+            if (adding_timeout != 0) {
+                Source.remove (adding_timeout);
+                adding_timeout = 0;
+
+                // we need to catch the case when we were only waiting for the timeout
+                // to be finished and the actual was already done. Otherwise the next
+                // condition will never be reached.
+                if (global_search_finished && local_search_finished) {
+                    working = false;
+                }
+            }
+
             if (working) {
                 if (waiting_handler != 0)
                     SignalHandler.disconnect (this, waiting_handler);
@@ -549,13 +575,11 @@ namespace Marlin.View
                 return;
             }
 
-            popup ();
-
             var include_hidden = GOF.Preferences.get_default ().pref_show_hidden_files;
 
             display_count = 0;
             directory_queue = new Gee.LinkedList<File> ();
-            results = new Gee.LinkedList<Match> ();
+            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Match> ();
             current_root = folder;
 
             current_operation = new Cancellable ();
@@ -567,11 +591,27 @@ namespace Marlin.View
 
             local_search_finished = false;
             global_search_finished = false;
+            allow_adding_results = false;
             working = true;
             n_results = 0;
-            filter.refilter ();
 
             directory_queue.add (folder);
+
+            adding_timeout = Timeout.add (DELAY_ADDING_RESULTS, () => {
+                if (!visible)
+                    popup ();
+
+                adding_timeout = 0;
+                allow_adding_results = true;
+                var it = waiting_results.map_iterator ();
+
+                while (it.next ())
+                    add_results (it.get_value (), it.get_key ());
+
+                send_search_finished ();
+
+                return false;
+            });
 
             new Thread<void*> (null, () => {
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
@@ -599,10 +639,11 @@ namespace Marlin.View
 
         bool send_search_finished ()
         {
-            if (!local_search_finished || !global_search_finished)
+            if (!local_search_finished || !global_search_finished || !allow_adding_results)
                 return false;
 
             working = false;
+
             filter.refilter ();
 
             select_first ();
@@ -663,6 +704,9 @@ namespace Marlin.View
                         new_results.add (new Match (info, path_string, folder));
                 }
             } catch (Error e) {}
+
+            if (new_results.size < 1)
+                return;
 
             if (!cancel.is_cancelled ()) {
                 var new_count = display_count + new_results.size;
