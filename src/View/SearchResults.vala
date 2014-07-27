@@ -405,8 +405,8 @@ namespace Marlin.View
             if (toplevel is Gtk.Window)
                 ((Gtk.Window) toplevel).get_group ().add_window (this);
 
+            grab_focus ();
             set_screen (entry.get_screen ());
-
             show_all ();
 
             device = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
