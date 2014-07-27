@@ -161,14 +161,19 @@ public class GOF.Directory.Async : Object {
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
-            foreach (GOF.File gof in file_hash.get_values ()) {
+            //foreach (GOF.File gof in file_hash.get_values ()) {
+            file_hash.@foreach ((location, gof) => {
+                if (gof != null) {
                 if (gof.info != null && (!gof.is_hidden || show_hidden)) {
                     if (track_longest_name)
                         update_longest_file_name (gof);
 
                     file_loaded (gof);
                 }
-            }
+                } else {
+message ("CRITICAL location %s gof null", location.get_uri ());
+                }
+            });
             //done_loading ();
             done_loading ();
         }

@@ -246,7 +246,6 @@ eel_gdk_pixbuf_lucent (GdkPixbuf *source,
   height = gdk_pixbuf_get_height (source);
 
   /* allocate the destination pixbuf */
-g_message ("New pixbuf 2");
   dst = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (source), TRUE, gdk_pixbuf_get_bits_per_sample (source), width, height);
 
   /* determine row strides on src/dst */

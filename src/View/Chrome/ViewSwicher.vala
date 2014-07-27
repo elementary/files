@@ -31,7 +31,7 @@ namespace Marlin.View.Chrome {
             set {
                 Gtk.Widget target;
                 int active_index;
-message ("mode set to %i", value);
+
                 switch ((Marlin.ViewMode)value) {
                 case Marlin.ViewMode.LIST:
                     target = list;
