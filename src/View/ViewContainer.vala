@@ -145,11 +145,7 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else if (aslot.directory.file.exists && !aslot.directory.file.is_mounted) {
-                // tab_name will change once the directory has been mounted
-                tab_name = _("Connecting…");
-                loading (true);
-            } else {
+            else {
                 tab_name = _("This folder does not exist");
                 can_show_folder = false;
             }
@@ -189,10 +185,14 @@ namespace Marlin.View {
                     path_changed (slot.location.get_parent ());
                 }
 
-                refresh_slot_info ();
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
-                content = new DirectoryNotFound (slot.directory, this);
+
+                if (err is IOError.NOT_MOUNTED) {
+                    reload ();
+                } else {
+                    content = new DirectoryNotFound (slot.directory, this);
+                }
             }
 
             warning ("directory done loading");
@@ -227,22 +227,50 @@ namespace Marlin.View {
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
+
+            Marlin.Window.Columns new_mwcol;
+            GOF.Window.Slot new_slot;
+
+            if (nview == ViewMode.MILLER) {
+                new_mwcol = new Marlin.Window.Columns (location, this);
+                new_slot = mwcol.active_slot;
+            } else {
+                new_mwcol = null;
+                new_slot = new GOF.Window.Slot (location, this);
+            }
+
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && new_slot.directory.uri_contain_keypath_icons)
+                nview = 0; /* icon view */
+
+            /* Mount the directory if it's not mounted */
+            if (!new_slot.directory.file.is_mounted) {
+                tab_name = _("Connecting…");
+                loading (true);
+                
+                new_slot.directory.mount_mountable.begin ((obj,res) => {
+                    try {
+                        new_slot.directory.mount_mountable.end (res);
+                        make_view (nview, new_mwcol, new_slot);
+                    } catch (Error e) {
+                        warning ("mount_mountable failed: %s", e.message);
+                        // Reset the tab label
+                        refresh_slot_info ();
+                    }
+                });
+            } else {
+                make_view (nview, new_mwcol, new_slot);
+            }
+        }
+
+        private void make_view (int nview, Marlin.Window.Columns? new_mwcol, GOF.Window.Slot new_slot) {
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel ();
                 slot.directory.track_longest_name = false;
             }
 
-            if (nview == ViewMode.MILLER) {
-                mwcol = new Marlin.Window.Columns (location, this);
-                slot = mwcol.active_slot;
-            } else {
-                mwcol = null;
-                slot = new GOF.Window.Slot (location, this);
-            }
-
-            /* automagicly enable icon view for icons keypath */
-            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
-                nview = 0; /* icon view */
+            slot = new_slot;
+            mwcol = new_mwcol;
 
             /* Setting up view_mode and its button */
             view_mode = nview;
@@ -281,8 +309,10 @@ namespace Marlin.View {
         public string? get_root_uri () {
             if (mwcol != null)
                 return mwcol.get_root_uri ();
-            else
+            else if (slot != null)
                 return slot.location.get_uri ();
+
+            return null;
         }
 
         public string? get_tip_uri () {
@@ -301,7 +331,7 @@ namespace Marlin.View {
         }
 
         public void update_location_state (bool save_history) {
-            if (!slot.directory.file.exists)
+            if (slot == null || !slot.directory.file.exists)
                 return;
 
             if (save_history)
