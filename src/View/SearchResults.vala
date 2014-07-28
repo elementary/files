@@ -198,10 +198,6 @@ namespace Marlin.View
 
             switch (event.keyval) {
                 case Gdk.Key.Escape:
-                case Gdk.Key.Left:
-                case Gdk.Key.Right:
-                case Gdk.Key.KP_Left:
-                case Gdk.Key.KP_Right:
                     popdown ();
                     return true;
                 case Gdk.Key.Return:
