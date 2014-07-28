@@ -11,6 +11,7 @@ Requirements:
 - Gail >= 3.0
 - LibDBus-GLib
 - GConf 2
+- Zeitgeist-2.0
 
 To get all of the dependencies under a Debian-based distribution, run:
 
