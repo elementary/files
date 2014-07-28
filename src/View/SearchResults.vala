@@ -426,14 +426,9 @@ namespace Marlin.View
             set_screen (entry.get_screen ());
             show_all ();
 
-            device = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-
-            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
-                device = device.associated_device;
-
             if (device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
+                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, false, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
                     | Gdk.EventMask.POINTER_MOTION_MASK,
                     null, Gdk.CURRENT_TIME);
@@ -569,6 +564,11 @@ namespace Marlin.View
 
         public void search (string term, File folder)
         {
+            device = Gtk.get_current_event_device ();
+
+            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
+                device = device.associated_device;
+
             if (!current_operation.is_cancelled ())
                 current_operation.cancel ();
 
