@@ -37,7 +37,6 @@ public class GOF.Directory.Async : Object {
         LOADED
     }
     public State state = State.NOT_LOADED;
-    // public string? mount_error = null;
 
     private HashTable<GLib.File,GOF.File> file_hash;
     public uint files_count;
@@ -206,11 +205,10 @@ public class GOF.Directory.Async : Object {
         /* TODO pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
 
-        if (file.file_type != FileType.MOUNTABLE) {
+        if (file.file_type != FileType.MOUNTABLE)
             yield location.mount_enclosing_volume (0, mount_op, cancellable);
-        } else {
+        else
             yield location.mount_mountable (0, mount_op, cancellable);
-        }
 
         file.is_mounted = true;
         yield query_info_async (file, file_info_available);

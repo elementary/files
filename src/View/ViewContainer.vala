@@ -184,7 +184,6 @@ namespace Marlin.View {
                 } else {
                     path_changed (slot.location.get_parent ());
                 }
-
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
 
