@@ -54,7 +54,7 @@ namespace Marlin.View
         ulong waiting_handler;
 
         uint adding_timeout;
-        bool allow_adding_results;
+        bool allow_adding_results = false;
         Gee.Map<Gtk.TreeIter?,Gee.List> waiting_results;
 
         Cancellable? current_operation = null;
@@ -571,9 +571,10 @@ namespace Marlin.View
             if (adding_timeout != 0) {
                 Source.remove (adding_timeout);
                 adding_timeout = 0;
+                allow_adding_results = true;
 
                 // we need to catch the case when we were only waiting for the timeout
-                // to be finished and the actual was already done. Otherwise the next
+                // to be finished and the actual search was already done. Otherwise the next
                 // condition will never be reached.
                 if (global_search_finished && local_search_finished) {
                     working = false;
@@ -612,14 +613,12 @@ namespace Marlin.View
 
             clear ();
 
-            local_search_finished = false;
-            global_search_finished = false;
-            allow_adding_results = false;
             working = true;
             n_results = 0;
 
             directory_queue.add (folder);
 
+            allow_adding_results = false;
             adding_timeout = Timeout.add (DELAY_ADDING_RESULTS, () => {
                 if (!visible)
                     popup ();
@@ -637,11 +636,13 @@ namespace Marlin.View
             });
 
             new Thread<void*> (null, () => {
+                local_search_finished = false;
+
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
                     visit (term.normalize ().casefold (), include_hidden, file_search_operation);
                 }
 
-                global_search_finished = true;
+                local_search_finished = true;
                 Idle.add (send_search_finished);
 
                 return null;
@@ -763,6 +764,8 @@ namespace Marlin.View
 
         async void get_zg_results (string term)
         {
+            global_search_finished = false;
+
             Zeitgeist.ResultSet results;
             try {
                 results = yield zg_index.search (term,
@@ -773,9 +776,13 @@ namespace Marlin.View
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
             } catch (IOError.CANCELLED e) {
+                global_search_finished = true;
+                Idle.add (send_search_finished);
                 return;
             } catch (Error e) {
                 warning ("Fetching results for term '%s' from zeitgeist failed: %s", term, e.message);
+                global_search_finished = true;
+                Idle.add (send_search_finished);
                 return;
             }
 
@@ -821,7 +828,7 @@ namespace Marlin.View
             if (!current_operation.is_cancelled ())
                 add_results (matches, global_results);
 
-            local_search_finished = true;
+            global_search_finished = true;
             Idle.add (send_search_finished);
         }
 
