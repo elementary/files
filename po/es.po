@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 13:52-0500\n"
-"PO-Revision-Date: 2014-07-17 04:56+0000\n"
+"PO-Revision-Date: 2014-07-29 01:51+0000\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-18 05:19+0000\n"
-"X-Generator: Launchpad (build 17114)\n"
+"X-Launchpad-Export-Date: 2014-07-29 06:42+0000\n"
+"X-Generator: Launchpad (build 17131)\n"
 "Language: es\n"
 
 #: /home/codygarver/f/po/../src/View/Resources.vala:10
@@ -149,7 +149,7 @@ msgstr "Previsualización"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
 #, c-format
@@ -292,7 +292,7 @@ msgstr "Archivos no es el gestor de archivos predeterminado."
 
 #: /home/codygarver/f/po/../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Predeterminar"
 
 #: /home/codygarver/f/po/../src/View/Window.vala:153
 msgid "Ignore"
@@ -529,7 +529,7 @@ msgstr "Sus lugares preferidos y marcadores"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Abrir la papelera"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -541,7 +541,7 @@ msgstr "Dispositivos y particiones locales"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Abrir el contenido del sistema de archivos"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:499
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:673
@@ -555,7 +555,7 @@ msgstr "Lugares en la red"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Toda la red"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -568,7 +568,7 @@ msgstr "No se pudo iniciar %s"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2342
@@ -587,7 +587,7 @@ msgstr "Quitar"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Renombrar"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -609,7 +609,7 @@ msgstr "_Vaciar la papelera"
 
 #: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Conectar con el servidor…"
 
 #: /home/codygarver/f/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -652,7 +652,7 @@ msgstr[1] "Use «%s» para abrir los elementos seleccionados"
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Usar «%s» como plantilla para un archivo nuevo"
 
 #: /home/codygarver/f/po/../src/fm-directory-view.c:2316
 #, c-format
@@ -974,7 +974,7 @@ msgstr "_Recordar esta contraseña"
 
 #: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr "Operación cancelada"
+msgstr "Operación cancelada"
 
 #: /home/codygarver/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
@@ -1035,7 +1035,7 @@ msgstr "Abrir URI en una pestaña nueva"
 
 #: /home/codygarver/f/po/../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Ventana nueva"
 
 #: /home/codygarver/f/po/../src/Application.vala:143
 msgid "Quit Files."
