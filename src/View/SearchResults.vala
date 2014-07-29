@@ -260,7 +260,9 @@ namespace Marlin.View
 
         void select_last ()
         {
+            File file;
             Gtk.TreeIter iter;
+
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
 
             do {
@@ -268,6 +270,13 @@ namespace Marlin.View
                     continue;
 
                 list.iter_nth_child (out iter, iter, list.iter_n_children (iter) - 1);
+
+                list.@get (iter, 3, out file);
+
+                // catch the case when we land on an ellipsis
+                if (file == null)
+                    list.iter_previous (ref iter);
+
                 select_iter (iter);
                 break;
             } while (list.iter_previous (ref iter));
