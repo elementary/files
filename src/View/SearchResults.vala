@@ -164,7 +164,12 @@ namespace Marlin.View
                 return false;
             });
 
-            button_press_event.connect (() => {
+            button_press_event.connect ((e) => {
+                if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
+                    view.event (e);
+                    return false;
+                }
+
                 entry.text = "";
                 popdown ();
                 return false;
