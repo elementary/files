@@ -477,7 +477,7 @@ namespace Marlin.View
 
                         list.@get (iter, 3, out file);
 
-                        if (file.equal (match.file)) {
+                        if (file != null && file.equal (match.file)) {
                             already_added = true;
                             break;
                         }
@@ -491,7 +491,7 @@ namespace Marlin.View
 
                         list.@get (iter, 3, out file);
 
-                        if (file.equal (match.file)) {
+                        if (file != null && file.equal (match.file)) {
                             list.remove (ref iter);
                             break;
                         }
