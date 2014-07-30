@@ -25,7 +25,8 @@ pkg_check_modules (DEPS REQUIRED
     gee-0.8
     sqlite3
     dbus-glib-1
-    libnotify>=0.7.2)
+    libnotify>=0.7.2
+    zeitgeist-2.0)
 
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -53,9 +54,11 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         QuicklistHandler.vala
+        ZeitgeistManager.vala
         View/DiskRenderer.vala
         View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
+        View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
         View/DbusTags.vala
@@ -84,6 +87,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         marlincore-C
         marlinwidgets
         marlin
+        zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala
     OPTIONS
@@ -105,6 +109,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        ZeitgeistManager.vala
+        View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/Window.vala
@@ -135,6 +141,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         marlincore-C
         marlinwidgets
         marlin
+        zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala
     OPTIONS

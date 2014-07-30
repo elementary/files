@@ -195,7 +195,7 @@ namespace Marlin.View {
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
-        public void change_view (int nview, GLib.File? location) {
+        public void change_view (int nview, GLib.File? location, GLib.File? focus_file = null) {
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -227,6 +227,9 @@ namespace Marlin.View {
                 slot.directory.cancel ();
                 slot.directory.track_longest_name = false;
             }
+
+            if (focus_file != null)
+                select_childs.prepend (focus_file);
 
             if (nview == ViewMode.MILLER) {
                 mwcol = new Marlin.Window.Columns (location, this);
@@ -265,6 +268,25 @@ namespace Marlin.View {
             }
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
+        }
+
+        public void focus_file (File file) {
+            if (file.query_file_type (0) == FileType.DIRECTORY) {
+                if (slot.location.equal (file))
+                    return;
+
+                change_view (view_mode, file);
+            } else {
+                if (slot.location.equal (file.get_parent ())) {
+                    var list = new List<File> ();
+                    list.prepend (file);
+                    ((FM.Directory.View) slot.view_box).select_glib_files (list);
+                } else
+                    change_view (view_mode, file.get_parent (), file);
+            }
+
+            update_location_state (true);
+            refresh_slot_info ();
         }
 
         public GOF.Window.Slot? get_active_slot () {

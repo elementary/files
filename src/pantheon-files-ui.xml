@@ -26,6 +26,8 @@
 		<separator/>
 		<placeholder name="Clipboard Actions"/>
 		<separator/>
+            <menuitem name="Find" action="Find"/>
+		<separator/>
         <placeholder name="File Items Placeholder"/>
 		<separator/>
         <placeholder name="Dangerous File Actions"/>
