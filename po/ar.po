@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-07-15 13:52-0500\n"
+"POT-Creation-Date: 2014-07-30 00:46-0500\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: فيصل شامخ <chamfay@yahoo.fr>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -16,266 +16,282 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2014-07-18 05:16+0000\n"
-"X-Generator: Launchpad (build 17114)\n"
+"X-Launchpad-Export-Date: 2014-07-30 06:51+0000\n"
+"X-Generator: Launchpad (build 17131)\n"
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
 msgstr "مدير ملف بسيطة وقوية"
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
 msgstr "ترجمات لانشباد"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:136
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:136
 #, c-format
 msgid "%u folders"
 msgstr "%u المجلدات"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:142
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:154
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:142
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:154
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " و %u عناصر أخرى (%s)  تم تحديدها"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:143
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:155
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:143
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:155
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " و %u عناصر أخرى (%s)  تم تحديدها"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:146
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:158
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:146
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:158
 msgid " selected"
 msgstr " محددة"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:148
 #, c-format
 msgid "%u folder"
 msgstr "%u مجلد"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:160
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:160
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u العناصر المحددة (%s)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:145
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:412
 msgid "Home"
 msgstr "المنزل"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:147
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:147
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:462
 msgid "File System"
 msgstr "نظام ملفات"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:151
 msgid "This folder does not exist"
 msgstr "هذا المجلد غير موجود"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:156
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:156
 msgid "(as Administrator)"
 msgstr "(كمسؤول)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:175
 msgid "This does not belong to you."
 msgstr "هذا الأمر لا يخصك بشيء"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:176
 msgid "You don't have permission to view this folder."
 msgstr "أنت لا تملك الصلاحية لتعديل الملف"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:108
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:121
 msgid "AFP"
 msgstr "AFP"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:109
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:122
 msgid "DAV"
 msgstr "DAV"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:123
 msgid "DAVS"
 msgstr "DAVS"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:124
 msgid "FTP"
 msgstr "بروتوكول نقل الملفّات (FTP)"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:572
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:125
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:572
 msgid "Network"
 msgstr "الشبكة"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:126
 msgid "SFTP"
 msgstr "روتوكول نقل الملفّات المشفر (SFTP)"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:127
 msgid "SMB"
 msgstr "كتلة رسائل النّظام (SMB)"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:439
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:128
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:439
 msgid "Trash"
 msgstr "المهملات"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:294
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:327
 msgid "Open in New Tab"
 msgstr "فتح في علامة تبويب جديدة"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:334
 msgid "Open with"
 msgstr "فتح باستخدام"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:332
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:365
 msgid "Other Application .."
 msgstr "تطبيق أخرى .."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
 msgstr "الخصائص"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:141
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:141
 msgid "General"
 msgstr "عامّ"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:149
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:149
 msgid "More"
 msgstr "المزيد"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:168
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:168
 msgid "Preview"
 msgstr "معاينة"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:176
 msgid "Close"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:292
 #, c-format
 msgid "%u selected items"
 msgstr "%u الملفات المختاره"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:301
 msgid "Calculating size…"
 msgstr "جاري حساب الحجم ..."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:405
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:405
 msgid "Created"
 msgstr "تمّ الإنشاء"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:407
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "عُدِّل"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:410
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:410
 msgid "Last Access"
 msgstr "آخِر تعامل"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:416
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:416
 msgid "Deleted"
 msgstr "تم الحذف"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:421
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:421
 msgid "MimeType"
 msgstr "نوع المحتوى"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:429
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:429
 msgid "MimeTypes"
 msgstr "أنواع المحتوى"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:442
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:442
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Size"
 msgstr "الحجم"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Location"
 msgstr "المكان"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:452
 msgid "Target"
 msgstr "هدف"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:458
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:458
 msgid "Origin Location"
 msgstr "المكان الأصلي"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:468
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:468
 msgid "Info:"
 msgstr "معلومات:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:504
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:504
 msgid "Other application..."
 msgstr "تطبيق آخر..."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:528
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:528
 msgid "Open with:"
 msgstr "افتح باستخدام:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:548
 msgid "Usage:"
 msgstr "الإستخدام:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:553
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:553
 msgid "Device usage:"
 msgstr "استخدام الجهاز:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:560
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:560
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s حرة من %s (%d%% مستعملة("
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Read"
 msgstr "قراءة"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:704
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:704
 msgid "Write"
 msgstr "كتابة"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:709
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:709
 msgid "Execute"
 msgstr "تنفيذ"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:922
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:935
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:922
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:935
 msgid "Owner"
 msgstr "المالك"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:927
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:939
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:927
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:939
 msgid "Group"
 msgstr "المجموعة"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:943
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:943
 msgid "Everyone"
 msgstr "الجميع"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:1202
 msgid "Select an application to open "
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr "هذا المجلد غير موجود"
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
 msgstr "لا يمكن العثور على المجلد \"%s\""
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
 msgstr "أنشئ"
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
 msgstr "أنشئ المجلد  \"%s\""
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
 msgid ""
 "Failed to create the folder\n"
@@ -286,362 +302,370 @@ msgstr ""
 "\n"
 "%s"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:142
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:142
 msgid "Files isn't your default file manager."
 msgstr "الملفات ليست من مدير الملف الافتراضي."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:148
 msgid "Set as Default"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:153
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:153
 msgid "Ignore"
 msgstr "تجاهل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:422
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:432
 msgid "Undo"
 msgstr "تراجُع"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:423
-#: /home/codygarver/f/po/../src/View/Window.vala:747
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:433
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:761
 msgid "Undo the last action"
 msgstr "تراجع عن الإجراء الأخير"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:432
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:442
 msgid "Redo"
 msgstr "أعِد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:433
-#: /home/codygarver/f/po/../src/View/Window.vala:750
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:443
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:764
 msgid "Redo the last action"
 msgstr "أعِد آخر عملية"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:739
 msgid "_File"
 msgstr "_ملفّ"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:726
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:740
 msgid "_Edit"
 msgstr "_تعديل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:727
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:741
 msgid "_View"
 msgstr "_عرض"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:728
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:742
 msgid "_Go"
 msgstr "إ_ذهب"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:729
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:743
 msgid "_Help"
 msgstr "م_ساعدة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:731
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:745
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "نافذة _جديدة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:732
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:746
 msgid "Open another Files window for the displayed location"
 msgstr "فتح نافذة ملفات أخرى للمسار المحدد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:735
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:749
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "_علامة تبويب جديد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:750
 msgid "Open another tab for the displayed location"
 msgstr "افتح علامة تبويب جديد للمكان المعروض"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:740
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:754
 msgid "_Close"
 msgstr "إ_غلاق"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:741
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:755
 msgid "Close this folder"
 msgstr "أغلق هذا المجلد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:746
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:760
 msgid "_Undo"
 msgstr "ت_راجع"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:749
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:763
 msgid "_Redo"
 msgstr "أ_عد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:752
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:766
+msgid "_Find"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:769
 msgid "Open _Parent"
 msgstr "اف_تح الأب"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:753
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:770
 msgid "Open the parent folder"
 msgstr "افتح المجلد الأب"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:755
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:772
 msgid "_Back"
 msgstr "ا_رجع"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:756
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:773
 msgid "Go to the previous visited location"
 msgstr "اذهب إلى المكان المزار سابقا"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:759
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:776
 msgid "_Forward"
 msgstr "للأ_مام"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:760
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:777
 msgid "Go to the next visited location"
 msgstr "اذهب إلى المكان المزار التالي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:762
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:779
 msgid "_Reload"
 msgstr "أ_عِد التحميل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:763
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:780
 msgid "Reload the current location"
 msgstr "أعِد تحميل المجلد الحالي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:766
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:783
 msgid "_Home Folder"
 msgstr "مجلّد ال_منزل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:767
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:419
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:784
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:419
 msgid "Open your personal folder"
 msgstr "افتح مجلّدك الشخصي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:770
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:787
 msgid "_Trash"
 msgstr "ال_مهملات"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:771
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:788
 msgid "Open your personal trash folder"
 msgstr "افتح مجلّد المهملات الشخصي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:774
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:791
 msgid "_Network"
 msgstr "ال_شبكة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:775
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:792
 msgid "Browse bookmarked and local network locations"
 msgstr "تصفح مواقع الشبكة والمحلّية المعلّمة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:778
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:795
 msgid "Zoom _In"
 msgstr "ت_كبير"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:779
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:796
 msgid "Increase the view size"
 msgstr "كبّر حجم المنظور"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:790
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:807
 msgid "Zoom _Out"
 msgstr "ت_صغير"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:791
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:808
 msgid "Decrease the view size"
 msgstr "صغّر حجم المنظور"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:798
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:815
 msgid "Normal Si_ze"
 msgstr "ال_حجم العادي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:799
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:816
 msgid "Use the normal view size"
 msgstr "استخدم الحجم العادي للمنظور"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:802
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:819
 msgid "Next Tab"
 msgstr "التبويب التالي"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:806
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:823
 msgid "Previous Tab"
 msgstr "التبويب السابق"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:810
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:827
 msgid "Connect to _Server..."
 msgstr "اتصل بال_خادم..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:811
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:828
 msgid "Connect to a remote computer or shared disk"
 msgstr "تعذّر الاتصال بحاسوب بعيد أو قرص مشترك"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:814
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:831
 msgid "_About"
 msgstr "_حوْل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:815
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:832
 msgid "Display credits"
 msgstr "عرض الرصيد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:818
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:835
 msgid "Report a Problem..."
 msgstr "أرسل تقرير عن مشكلة ما"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:819
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:836
 msgid "File a bug on Launchpad"
 msgstr "الإبلاغ عن خطأ في لنشباد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:822
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:839
 msgid "Get Help Online..."
 msgstr "احصل على المساعدة عبر الإنترنت..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:826
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:843
 msgid "Translate This Application..."
 msgstr "ترجم هذا البرنامج..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:835
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:852
 msgid "Show _Hidden Files"
 msgstr "عرض الملفات الم_خفية"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:836
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:853
 msgid "Toggle the display of hidden files in the current window"
 msgstr "بدّل عرض الملفّات المخفيّة في النّافذة الحاليّة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:840
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:857
 msgid "_Places"
 msgstr "ال_أماكن"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:841
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:858
 msgid "Change the visibility of this window's side pane"
 msgstr "إظهار/إخفاء اللوح الجانبي لهذه النافذة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:849
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:866
 msgid "Icon"
 msgstr "الأيقونة"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:852
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:869
 msgid "List"
 msgstr "اسرد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:855
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:872
 msgid "Columns"
 msgstr "أعمدة"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:395
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:395
 msgid "Personal"
 msgstr "شخصي"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:400
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:400
 msgid "Your common places and bookmarks"
 msgstr "مجلداتك وعلاماتك الشائعة"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:446
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
 msgstr "الأجهزة"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:457
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:457
 msgid "Your local partitions and devices"
 msgstr "اقراصك و أجهزتك المحلية"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:469
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:499
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:673
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:499
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:673
 #, c-format
 msgid "Mount and open %s"
 msgstr "أوصل وافتح %s"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:577
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:577
 msgid "Your network places"
 msgstr "شبكتك المحلية"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:598
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:598
 msgid "Entire Network"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:605
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
 msgstr "تصفّح محتويات الشبكة"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1118
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1118
 #, c-format
 msgid "Unable to start %s"
 msgstr "تعذّر بدء %s"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1187
 msgid "Open"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2342
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3884
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1195
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2342
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3884
 msgid "Open in New _Tab"
 msgstr "افتح في _لسان جديد"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1201
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2351
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1201
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2351
 msgid "Open in New _Window"
 msgstr "افتح في _نافذة جديدة"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1208
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1208
 msgid "Remove"
 msgstr "أزِل"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1216
 msgid "Rename"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1225
 msgid "_Mount"
 msgstr "أو_صل"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1231
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1231
 msgid "_Unmount"
 msgstr "ا_فصل"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1237
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1237
 msgid "_Eject"
 msgstr "أ_خرِج"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1244
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2332
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1244
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1424
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2335
 msgid "Empty _Trash"
 msgstr "أفرغ ال_مهملات"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "اسم ملف"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Type"
 msgstr "النّوع"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:182
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:139
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "فشل تغيير اسم %s إلى %s"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:600
-#: /home/codygarver/f/po/../src/fm-directory-view.c:547
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:569
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:600
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:547
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "هذا المجلد فارغ."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1230
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "أسم ملف خاطأ مدعوم من موقع السحب XDS"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1388
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1844
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
@@ -652,52 +676,52 @@ msgstr[3] "استعمل \"%s\" لفتح العناصر المُختارة"
 msgstr[4] "استعمل \"%s\" لفتح العناصر المُختارة"
 msgstr[5] "استعمل \"%s\" لفتح العناصر المُختارة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2037
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "ا_فتح باستخدام %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2322
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3872
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "ا_فتح"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2338
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "فتح في %'d أ_لسنة جديدة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2347
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "فتح في %'d _نوافذ جديدة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3792
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3792
 msgid "Set as default"
 msgstr "عيّن كافتراضي"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3844
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "جَهّز الملفات المنتقاة ليتم نقلها بأمر لصق"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3848
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "جَهّز الملفات المنتقاة ليتم نسخها بأمر لصق"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3852
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "انقل أو انسخ الملفات المختارة سابقا بأمر قص أو نسخ"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3855
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "ألصق في مجلد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3856
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -705,188 +729,188 @@ msgstr ""
 "نقل أو نسخ الملفات المحددة مسبقا من قبل المقصوصة أو المنسوخة إلى المجلد "
 "المحدد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_غيّر التسمية..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3860
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "إعادة تسمية العنصر المنتقى"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3863
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "أنشئ _مجلدا جديدا"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3864
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3866
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "أنشء _ملف جديد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3868
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "_ملف فارغ"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3869
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3873
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "إفتح الخيارات المحدد"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3880
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "إفتح في نافذة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3881
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "إفتح كل من الخيارات المحدد في نافذة جديدة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3885
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "افتح كل عنصر مختار في علامة التبويب الجديدة"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3887
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "افتح با_ستخدام"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3888
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "اختر برنامجا لفتح العنصر المنتقى به"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3890
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "_تطبيق آخر..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3891
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "اختر تطبيقا آخر لفتح العنصر المختار به"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3894
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "ا_نقل إلى المهملات"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3895
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "نقل كل عنصر منتقى إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3898
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "ا_حذف نهائيا"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3899
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "حذف كل عنصر منتقى، دون نقله إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3902
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "ا_سترجع"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3906
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3906
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "حدد الكل"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3910
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "_خصائص"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3911
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "عرض أوتعديل خصائص كل عنصر منتقى"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:4024
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "عيّن اللّون:"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "وضع تصميم"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:860
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "التصميم الموضوع"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "ترت_يب العناصر"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "ترتيب _عكسي"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "عرض الأيقونات في ترتيب عكسي"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "بحسب الإ_سم"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الاسم"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "بحسب ال_حجم"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الحجم"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "بحسب ال_نوع"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب النوع"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "بجسب _تاريخ التعديل"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب تاريخ التعديل"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "آس آس أش"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "‏FTP عام"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "‏FTP (بتسجيل دخول)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "بروتوكول أبل للإيداع"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "مشاركة ويندوز"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "وبداف آمن ((Secure WebDAV (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "يتّصل..."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -894,159 +918,159 @@ msgstr ""
 "تعذّر تحميل قائمة طُرق الخواديم المدعومة.\n"
 "تحقق من تثبيت gvfs."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "تعذّر فتح المجلد \"%s\" على \"%s\"."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "تعذّر العثور على الخادوم \"%s\"."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "أعِد المحاولة"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "من فضلك راجع تفاصيل المستخدم."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "تابع"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:760
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "_اتصل"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "اتصل بالخادوم"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "تفاصيل الخادوم"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "ال_خادم:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "ال_منفذ:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "ال_نوع:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "المشا_ركة:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "ال_مجلّد:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "تفاصيل المستخدم"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "اسم ال_نطاق:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "ا_سم المستخدم:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "كلمة ال_سر:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_تذكّر كلمة السر هذه"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "أُلغيت العملية"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "ان_قل هنا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:107
 msgid "_Copy Here"
 msgstr "ان_سخ هنا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:112
 msgid "_Link Here"
 msgstr "ا_ربط هنا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:117
 msgid "Set as _Background"
 msgstr "عيّن كخلفية"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:124
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "فشل في تنفيذ الملف \"%s\""
 
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:100
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-icon-view.c:100
 msgid "Icon directory listing"
 msgstr "قائمة دليل الأيقونات"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:101
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-icon-view.c:101
 msgid "Icon view"
 msgstr "عرض أيقونات"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "نقرة واحدة"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "كيفما كانت العناصر في العرض يمكن أن تعمل بنقره واحدة"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "طرق الإدخال"
 
-#: /home/codygarver/f/po/../src/Application.vala:137
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "اعرض إصدارة البرنامج."
 
-#: /home/codygarver/f/po/../src/Application.vala:139
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:139
 msgid "Open uri(s) in new tab"
 msgstr "إفتح الروابط في علامة تبويب جديدة"
 
-#: /home/codygarver/f/po/../src/Application.vala:141
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:141
 msgid "New Window"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/Application.vala:143
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:143
 msgid "Quit Files."
 msgstr "الخروج من فيلز."
 
-#: /home/codygarver/f/po/../src/Application.vala:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:145
 msgid "Enable debug logging"
 msgstr "تمكين تسجيل التصحيح"
 
-#: /home/codygarver/f/po/../src/Application.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:148
 msgid "[URI...]"
 msgstr "[العنوان...]"
 
-#: /home/codygarver/f/po/../src/Application.vala:151
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:151
 msgid ""
 "\n"
 "\n"
@@ -1056,23 +1080,23 @@ msgstr ""
 "\n"
 "تصفح نظام الملفات بمدير الملفات"
 
-#: /home/codygarver/f/po/../src/Application.vala:178
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:178
 msgid "--quit cannot be used with URIs."
 msgstr "لا يمكن استخدام ‪%s‬ مع المسارات."
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:140
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:140
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:222
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:236
 msgid "File Operations"
 msgstr "عمليات الملف"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:206
 msgid "All file operations have been successfully completed"
 msgstr "اكتملت جميع عمليات الملفات بنجاح"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:218
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:263
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
@@ -1083,106 +1107,110 @@ msgstr[3] "%'d عمليات ملفات نشطة"
 msgstr[4] "%'d عمليات ملفات نشطة"
 msgstr[5] "%'d عمليات ملفات نشطة"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:242
 msgid "Show Details"
 msgstr "أظهر التفاصيل"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
 msgstr "اظهر نافذة النسخ"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
 msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "تصفح ملفاتك"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "مدير الملفات"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "نافذة جديدة كمسؤول"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:12
 msgid "Files"
 msgstr "الملفات"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "اليوم في %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "أمس في %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:93
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
 msgstr ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:97
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y في %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-progress-info.c:191
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr "يحضّر"
 
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (يونيكود غير صحيح)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "تعذّر تحديد مكان \"%s\" الأصلي "
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "لا يمكن إستعادة العنصر من المهملات"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
 msgstr "وصلة إلى %s"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1748
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "فشل في تحليل ملف سطح المكتب: %s"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1786
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1786
 msgid "No Exec field specified"
 msgstr "لم يتم تحديد حقل Exec"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1806
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1806
 msgid "No URL field specified"
 msgstr "لم يتم تحديد حقل URL"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1812
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
 msgstr "ملف سطح المكتب غير صالح"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2102
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
 msgstr "غير مسموح باستخدام الشرطات المائلة (/) في أسماء الملفات"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2122
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "أأدمج المجلد \"%s\"؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1190,172 +1218,172 @@ msgstr ""
 "الدمج سيطلب التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
 "نسخها."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "استبداله سيحذف كل الملفات داخل المجلد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "أأستبدل المجلد \"%s\"؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "أأستبدل الملف \"%s\"؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:402
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "استبداله سيستبدل محتواه."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:469
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "الملف الأصلي"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:470
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:491
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:470
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "الحجم:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:473
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:494
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:473
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "النوع:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:476
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:497
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:476
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "آخر تعديل:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:490
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "إستبدال بـ"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:515
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "إدمج"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:709
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "_حدد اسما جديدا للوِجهة"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:723
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "أعد ضبط"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:735
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "طبق هذا الإجراء على كل الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:746
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:746
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "_تخطَّ"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:751
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "إعادة تسمية"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:757
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "إستبدل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:830
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "تعارض الملف"
 
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "أظهر _تفاصيل أكثر"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "ت_خطى الكل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "أ_عد المحاولة"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "احذف الكل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "است_بدِل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "إستبدل الكل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "ا_دمج"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "ادمج الكل"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "انسخ _على أي حال"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1366,8 +1394,8 @@ msgstr[3] "%'d ثوان"
 msgstr[4] "%'d ثانية"
 msgstr[5] "%'d ثانية"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1378,7 +1406,7 @@ msgstr[3] "%'d دقائق"
 msgstr[4] "%'d دقائق"
 msgstr[5] "%'d دقائق"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1389,7 +1417,7 @@ msgstr[3] "%'d ساعات"
 msgstr[4] "%'d ساعات"
 msgstr[5] "%'d ساعات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1400,110 +1428,110 @@ msgstr[3] "%'d ساعات تقريبا"
 msgstr[4] "%'d ساعات تقريبا"
 msgstr[5] "%'d ساعات تقريبا"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "وصلة إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
 msgstr "وصلة أخرى إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "الوصلة %'d إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "الوصلة %'d إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "الوصلة %'d إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "الوصلة %'d إلى %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (نسخ)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (نسخة أخرى)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:470
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:472
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr "نسخة)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr "نسخة)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr "نسخة)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr "نسخة)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (نسخة)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (نسخة أخرى)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:505
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:507
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (نسخة %'d)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (نسخة %'d)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (نسخة %'d)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (نسخة %'d)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (%I'd"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "أمتأكد أنك تريد حذف \"%B\" نهائيا من المهملات؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1518,24 +1546,24 @@ msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المخ�
 msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيًّا من المهملات؟"
 msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيًّا من المهملات؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1396
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "إذا حذفت عنصر، سيُفقد للأبد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
 msgstr "إفراغ جميع العناصر من المُهملات؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
 msgstr "جميع العناصر في المُهملات سيتم حذفها نهائياً."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "أمتأكد من أنك تريد حذف \"%B\" نهائيا؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1547,12 +1575,12 @@ msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المخ�
 msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيا؟"
 msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيا؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1480
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "تُحذف الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -1563,7 +1591,7 @@ msgstr[3] "تبقى %'d ملفات للحذف"
 msgstr[4] "تبقى %'d ملفاً للحذف"
 msgstr[5] "تبقى %'d ملف للحذف"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "بقى %T"
@@ -1573,15 +1601,15 @@ msgstr[3] "بقى %T"
 msgstr[4] "بقى %T"
 msgstr[5] "بقى %T"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2587
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1594
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1667
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1744
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "خطأ أثناء الحذف."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1589,44 +1617,44 @@ msgstr ""
 "لا يمكن حذف الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح الكافية "
 "لقراءتها."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2646
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3642
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1601
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2649
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "حدث خطأ في الحصول على معلومات حول الملفات في المجلد \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3651
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1610
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "ت_خطى الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "لا يمكن حذف المجلد \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2685
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3687
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1634
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2688
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "حدث خطأ أثناء قراءة المجلد \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
 msgstr "تعذّر حذف المجلد %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "حدث خطأ أثناء حذف المجلد %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1821
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "تُنقل الملفات إلى المُهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1637,11 +1665,11 @@ msgstr[3] "تبقى %'d ملفات لنقلها إلى المهملات"
 msgstr[4] "تبقى %'d ملفاً لنقلها إلى المهملات"
 msgstr[5] "تبقى %'d ملف لنقلها إلى المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "لا يمكن نقل الملف إلى سلة المهملات. حذف فورا؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1649,27 +1677,27 @@ msgstr ""
 "تم تحديد هذا الملف وسائط خارجية والتي لا يمكن نقلها إلى سلة المهملات. عند "
 "حذف، لا يمكن استعادة."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
 msgstr "إرسال الملفات للمهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
 msgstr "تُحذف الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
 msgstr "تعذر إخراج %V"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
 msgstr "تعذر فصْل %V"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "أترغب في إفراغ المهملات قبل الفصْل؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2324
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1677,16 +1705,16 @@ msgstr ""
 "لتستعيد المساحة الخالية على هذا الجزء يجب إفراغ المهملات. كل الملفات في "
 "المهملات ستُفقد للأبد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2330
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
 msgstr "_لا تُفرغ المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2444
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
 msgstr "تعذّر وصْل %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1697,7 +1725,7 @@ msgstr[3] "يجري التحضير لنسخ %'d ملفات (%S)"
 msgstr[4] "يجري التحضير لنسخ %'d ملفات (%S)"
 msgstr[5] "يجري التحضير لنسخ %'d ملفات (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2528
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1708,7 +1736,7 @@ msgstr[3] "يجري التحضير لنقل %I'd ملفات (%S)"
 msgstr[4] "يجري التحضير لنقل %I'd ملفات (%S)"
 msgstr[5] "يجري التحضير لنقل %I'd ملفات (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2534
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1719,7 +1747,7 @@ msgstr[3] "يجري التحضير لحذف %I'd ملفات (%S)"
 msgstr[4] "يجري التحضير لحذف %I'd ملفات (%S)"
 msgstr[5] "يجري التحضير لحذف %I'd ملفات (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2540
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1730,24 +1758,24 @@ msgstr[3] "يُحضر لنقل %'d ملفات إلى المهملات"
 msgstr[4] "يُحضر لنقل %'d ملفاً إلى المهملات"
 msgstr[5] "يُحضر لنقل %'d ملف إلى المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2583
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3503
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3634
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3679
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2586
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3506
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3637
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "خطأ أثناء النسخ."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2585
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3632
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3677
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2588
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3635
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "خطأ أثناء النقل."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2589
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
 msgstr "حدث خطأ أثناء نقل الملفات إلى المهملات."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2643
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1755,71 +1783,71 @@ msgstr ""
 "لا يمكن التعامل مع الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح "
 "الكافية لقراءتها ."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2682
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "لا يمكن التعامل مع المجلد \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2759
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "لا يمكن التعامل مع الملف \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2762
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "حدث خطأ أثناء جلب معلومات عن \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2862
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2904
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2937
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2967
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2865
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2907
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2940
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "خطأ أثناء النسخ إلى \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2866
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "لا تملك الصلاحيات الكافية للوصول إلى المجلد المقصود."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2868
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "حدث خطأ في جلب معلومات عن الوجهة."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2905
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr "الوجهة ليست مجلدا."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2938
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "لا توجد مساحة كافية في الوجهة. حاول إزالة ملفات لإفراغ مساحة."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2940
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "يتوفر %S، لكن %S مطلوب."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2968
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr "الوِجهة قابلة للقراءة فقط."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3029
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr "يجري نقل \"%B\" إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3030
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr "يُنسخ \"%B\" إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3034
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr "يُنسخ \"%B\" مرة أخرى"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3038
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
@@ -1829,7 +1857,7 @@ msgstr[3] "يُنقل %I'd ملفات (في \"%B\") إلى \"%B\""
 msgstr[4] "يُنقل %I'd ملفاً (في \"%B\") إلى \"%B\""
 msgstr[5] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3041
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
@@ -1839,7 +1867,7 @@ msgstr[3] "يُنسخ %I'd ملفات (في \"%B\") إلى \"%B\""
 msgstr[4] "يُنسخ %I'd ملفاً (في \"%B\") إلى \"%B\""
 msgstr[5] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "يُضاعف %I'd ملف (في \"%B\")"
@@ -1849,7 +1877,7 @@ msgstr[3] "يُضاعف %I'd ملفات (في \"%B\")"
 msgstr[4] "يُضاعف %I'd ملفاً (في \"%B\")"
 msgstr[5] "يُضاعف %I'd ملف (في \"%B\")"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3057
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "يُنقل %I'd ملف إلى \"%B\""
@@ -1859,7 +1887,7 @@ msgstr[3] "يُنقل %I'd ملفات  إلى \"%B\""
 msgstr[4] "يُنقل %I'd ملفاً إلى \"%B\""
 msgstr[5] "يُنقل %I'd ملف إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3061
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "يُنسخ %I'd ملف إلى \"%B\""
@@ -1869,7 +1897,7 @@ msgstr[3] "يُنسخ %I'd ملفات إلى \"%B\""
 msgstr[4] "يُنسخ %I'd ملفاً إلى \"%B\""
 msgstr[5] "يُنسخ %I'd ملف إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3066
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1880,12 +1908,12 @@ msgstr[3] "يُضاعف %I'd ملفات"
 msgstr[4] "يُضاعف %I'd ملفاً"
 msgstr[5] "يُضاعف %I'd ملف"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3117
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr "%S من %S"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3128
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S من %S — تبقى %T (%S/ثانية)"
@@ -1895,7 +1923,7 @@ msgstr[3] "%S من %S — تبقى %T (%S/ثانية)"
 msgstr[4] "%S من %S — تبقى %T (%S/ثانية)"
 msgstr[5] "%S من %S — تبقى %T (%S/ثانية)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3507
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1903,11 +1931,11 @@ msgstr ""
 "لا يمكن نسخ المجلد \"%B\" لأنك لا تملك الصلاحيات الكافية لإنشائه في الوجهة "
 "المقصودة."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3510
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr "حدث خطأ أثناء إنشاء المجلد \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3639
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1915,85 +1943,85 @@ msgstr ""
 "لا يمكن نسخ الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك الصلاحيات الكافية "
 "لقراءتها."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3684
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "لا يمكن نسخ المجلد \"%B\" لأنك لا تملك الصلاحيات الكافية لقراءته."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3729
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4430
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5017
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3732
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4433
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr "خطأ أثناء نقل \"%B\" ."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3730
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr "تعذر حذف المجلد المصدر."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3815
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3856
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4432
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3818
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4435
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr "خطأ أثناء نسخ \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3816
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "لا يمكن إزالة الملفات من المجلد %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3857
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "تعذّر إزالة الملف %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4186
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4857
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4189
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr "لا يمكنك نقل مجلد إلى نفسه."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4187
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4858
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4190
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr "لا يمكنك نسخ مجلد إلى نفسه."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4188
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4191
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr "المجلد الوِجهة داخل المجلد المصدر."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4219
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr "لا يمكنك نقل مجلد إلى نفسه."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4220
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr "لا يمكنك نسخ مجلد إلى نفسه."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4221
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr "سيُستبدَل الملف المصدر بالملف الهدف."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4434
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "تعذّر إزالة الملف الموجود فعلا بنفس الاسم في %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4504
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "حدث خطأ أثناء نسخ الملف إلى %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4731
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr "نسخ الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr "يُحضر للنقل إلى \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4769
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -2004,20 +2032,20 @@ msgstr[3] "يُحضر لنقل %I'd ملفات"
 msgstr[4] "يُحضر لنقل %I'd ملفاً"
 msgstr[5] "يُحضر لنقل %I'd ملف"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5018
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "حدث خطأ عند نقل الملف إلى %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5281
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr "نقل الملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr "تُنشئ وصلات في \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -2028,232 +2056,232 @@ msgstr[3] "يُنشئ وصلات إلى %I'd ملفات"
 msgstr[4] "يُنشئ وصلات إلى %I'd ملفاً"
 msgstr[5] "يُنشئ وصلات إلى %I'd ملف"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5457
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr "خطأ أثناء إنشاء وصلة إلى %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5459
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr "الوصلات الرمزية مدعومة في أنظمة الملفات المحلية فقط"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr "الوِجهة لا تدعم الوصلات الرمزية."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5465
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "حدث خطأ عند إنشاء الوصلة الرمزية في %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5793
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5796
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5796
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr "إعداد الصلاحيات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6047
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr "مجلد دون اسم"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6055
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr "ملف جديد"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6226
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr "خطأ أثناء إنشاء المجلد %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6228
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr "خطأ أثناء إنشاء الملف %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6230
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "حدث خطأ عند إنشاء المجلد في %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6540
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
 msgstr "تُفرغ المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr "إفراغ المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "حذف  %d العناصر المنسوخة"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1215
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "احذف '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "حذف  %d العناصر المتكررة"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "أرجع %d العناصر إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "أرجع '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1236
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "غيّر اسم '%s' كـ '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1255
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "أعد %d العناصر الموجودة في سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "استعد '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "أعد %d العناصر إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "انقل '%s' مرة أخرى إلى المُهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "حذف روابط ل %d عناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "إحذف الرابط إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "استعد التصاريح الأصلية للعناصر المُضمنة في '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "استعد تصاريح '%s' الأصلية"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "استعد مجموعة '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "استعدالمالك '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "أنسخ %d العناصر إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "انسخ '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "ضاعِف %d العناصر في '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "ضاعِف '%s' في '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "إنقل %d العناصر إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "انقل '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "أنشئ ملفا جديدا '%s' من قالب "
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "أنشئ ملف فارغ '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "أنشئ مجلد جديد '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "أنقل %d العناصر إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "انقل '%s' إلى المُهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "استعد '%s' من المُهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "أنشئ رابط إلى عناصر  %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "أنشئ رابط إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "اضبط التصاريح للعناصر المضمنة في '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "اضبط التصاريح لـ '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "اضبط مجموعة '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "اضبط مالك '%s' إلى '%s'"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
@@ -2264,7 +2292,7 @@ msgstr[3] "_ألغي النسخ %d العناصر"
 msgstr[4] "_ألغي النسخ %d العناصر"
 msgstr[5] "_ألغي النسخ %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
@@ -2275,7 +2303,7 @@ msgstr[3] "_ألغي تكرير %d العناصر"
 msgstr[4] "_ألغي تكرير %d العناصر"
 msgstr[5] "_ألغي تكرير %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
@@ -2286,7 +2314,7 @@ msgstr[3] "_ألغي نقل %d العناصر"
 msgstr[4] "_ألغي نقل %d العناصر"
 msgstr[5] "_ألغي نقل %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
@@ -2297,15 +2325,15 @@ msgstr[3] "_ألغي إعادة التسمية %d العناصر"
 msgstr[4] "_ألغي إعادة التسمية %d العناصر"
 msgstr[5] "_ألغي إعادة التسمية %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_ألغي إنشاء ملف خالي"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_ألغي إنشاء ملف قالب"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
@@ -2316,7 +2344,7 @@ msgstr[3] "_ألغي إنشاء %d ملفات"
 msgstr[4] "_ألغي إنشاء %d ملفات"
 msgstr[5] "_ألغي إنشاء %d ملفات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
@@ -2327,7 +2355,7 @@ msgstr[3] "_ألغي نقل العناصر %d إلى سلة المهملات"
 msgstr[4] "_ألغي نقل العناصر %d إلى سلة المهملات"
 msgstr[5] "_ألغي نقل العناصر %d إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
@@ -2338,7 +2366,7 @@ msgstr[3] "_ألغي إعادة العناصر %d من سلة المهملات"
 msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
 msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
@@ -2349,7 +2377,7 @@ msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
 msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
 msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
@@ -2360,7 +2388,7 @@ msgstr[3] "_التراجع عن حذف %d العناصر"
 msgstr[4] "_التراجع عن حذف %d العناصر"
 msgstr[5] "_التراجع عن حذف %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
@@ -2371,7 +2399,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول لجميع مح�
 msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
@@ -2382,7 +2410,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول  %d العناص
 msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
@@ -2393,7 +2421,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول خاصة بال�
 msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
@@ -2404,7 +2432,7 @@ msgstr[3] "التراجع عن تغير المالك  %d العناصر"
 msgstr[4] "التراجع عن تغير المالك  %d العناصر"
 msgstr[5] "التراجع عن تغير المالك  %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
@@ -2415,7 +2443,7 @@ msgstr[3] "_أعد نسخ %d العناصر"
 msgstr[4] "_أعد نسخ %d العناصر"
 msgstr[5] "_أعد نسخ %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
@@ -2426,7 +2454,7 @@ msgstr[3] "_أعد مضعفة %d العناصر"
 msgstr[4] "_أعد مضعفة %d العناصر"
 msgstr[5] "_أعد مضعفة %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
@@ -2437,7 +2465,7 @@ msgstr[3] "_أعد نقل %d العناصر"
 msgstr[4] "_أعد نقل %d العناصر"
 msgstr[5] "_أعد نقل %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
@@ -2448,15 +2476,15 @@ msgstr[3] "_أعد تسمية %d العناصر"
 msgstr[4] "_أعد تسمية %d العناصر"
 msgstr[5] "_أعد تسمية %d العناصر"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "_أعد إنشاء ملف غارغ"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "_أعد إنشاء ملف قالب"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
@@ -2467,7 +2495,7 @@ msgstr[3] "_أعد إنشاء %d حوافظ"
 msgstr[4] "_أعد إنشاء %d حوافظ"
 msgstr[5] "_أعد إنشاء %d حوافظ"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
@@ -2478,7 +2506,7 @@ msgstr[3] "_أعد نقل %d عناصر إلى سلة المهملات"
 msgstr[4] "_أعد نقل %d عناصر إلى سلة المهملات"
 msgstr[5] "_أعد نقل %d عناصر إلى سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
@@ -2489,7 +2517,7 @@ msgstr[3] "_أعد جلب %d عناصر من سلة المهملات"
 msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
 msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
@@ -2500,7 +2528,7 @@ msgstr[3] "_أعد إنشاء رابط للعناصر %d"
 msgstr[4] "_أعد إنشاء رابط للعناصر %d"
 msgstr[5] "_أعد إنشاء رابط للعناصر %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
@@ -2511,7 +2539,7 @@ msgstr[3] "_أعد حذف للعناصر %d"
 msgstr[4] "_أعد حذف للعناصر %d"
 msgstr[5] "_أعد حذف للعناصر %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
@@ -2522,7 +2550,7 @@ msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى �
 msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
@@ -2533,7 +2561,7 @@ msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
 msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
@@ -2544,7 +2572,7 @@ msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعنا
 msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -2555,35 +2583,35 @@ msgstr[3] "أعد تغير المالك للعناصر %d"
 msgstr[4] "أعد تغير المالك للعناصر %d"
 msgstr[5] "أعد تغير المالك للعناصر %d"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:261
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libwidgets/LocationBar.vala:284
 #, c-format
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
 
-#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:34
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:75
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "عرض كشبكة"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:78
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "اعرض كقائمة"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:81
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "العرض في الأعمدة"
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
+#: /tmp/tmp.hEKQxaYCdd/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "قد يتم حذف هذه البنود عند إفراغ سلة المهملات."
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "أفرغ سلة المهملات"

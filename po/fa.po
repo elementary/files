@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-07-15 13:52-0500\n"
+"POT-Creation-Date: 2014-07-30 00:46-0500\n"
 "PO-Revision-Date: 2014-07-17 04:56+0000\n"
 "Last-Translator: Mason Kamely <masonkamely@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,266 +15,282 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-07-18 05:18+0000\n"
-"X-Generator: Launchpad (build 17114)\n"
+"X-Launchpad-Export-Date: 2014-07-30 06:53+0000\n"
+"X-Generator: Launchpad (build 17131)\n"
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Resources.vala:28
 msgid "Launchpad Translators"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:136
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:136
 #, c-format
 msgid "%u folders"
 msgstr "%u پوشه ها"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:142
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:154
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:142
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:154
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:143
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:155
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:143
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:155
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " و %u دیگر موارد (%s) انتخاب شد"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:146
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:158
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:146
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:158
 msgid " selected"
 msgstr " انتخاب شد."
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:148
 #, c-format
 msgid "%u folder"
 msgstr "%u پوشه"
 
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:160
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/OverlayBar.vala:160
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u موارد انتخاب شد (%s)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:145
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:412
 msgid "Home"
 msgstr "خانه"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:147
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:147
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:462
 msgid "File System"
 msgstr "سیستم پرونده"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:151
 msgid "This folder does not exist"
 msgstr "این پوشه وجود ندارد."
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:156
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:156
 msgid "(as Administrator)"
 msgstr "(به عنوان کاربر ارشد)"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:175
 msgid "This does not belong to you."
 msgstr "این به شما تعلق ندارد."
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/ViewContainer.vala:176
 msgid "You don't have permission to view this folder."
 msgstr "شما اجازه دیدن این پوشه را ندارید."
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:108
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:121
 msgid "AFP"
 msgstr "AFP"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:109
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:122
 msgid "DAV"
 msgstr "DAV"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:123
 msgid "DAVS"
 msgstr "DAVS"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:124
 msgid "FTP"
 msgstr "FTP"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:572
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:125
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:572
 msgid "Network"
 msgstr "شبکه"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:126
 msgid "SFTP"
 msgstr "SFTP"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:127
 msgid "SMB"
 msgstr "SMB"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:439
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:128
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:439
 msgid "Trash"
 msgstr "زباله‌دان"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:294
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:327
 msgid "Open in New Tab"
 msgstr "باز کردن در زبانه جدید"
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:334
 msgid "Open with"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:332
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/LocationBar.vala:365
 msgid "Other Application .."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
 msgstr "ویژگی‌ها"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:141
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:141
 msgid "General"
 msgstr "عمومی"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:149
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:149
 msgid "More"
 msgstr "دیگر"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:168
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:168
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:176
 msgid "Close"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:292
 #, c-format
 msgid "%u selected items"
 msgstr "%u موارد انتخاب شده"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:301
 msgid "Calculating size…"
 msgstr "در حال محاسبه اندازه..."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:405
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:405
 msgid "Created"
 msgstr "تاریخ ساخت"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:407
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "تغییر یافته"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:410
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:410
 msgid "Last Access"
 msgstr "آخرین دسترسی"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:416
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:416
 msgid "Deleted"
 msgstr "حذف شده"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:421
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:421
 msgid "MimeType"
 msgstr "نوع مایم"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:429
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:429
 msgid "MimeTypes"
 msgstr "انواع مایم"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:442
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:442
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Size"
 msgstr "اندازه"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:449
 msgid "Location"
 msgstr "مکان"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:452
 msgid "Target"
 msgstr "مقصد"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:458
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:458
 msgid "Origin Location"
 msgstr "مکان اصلی"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:468
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:468
 msgid "Info:"
 msgstr "اطلاعات:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:504
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:504
 msgid "Other application..."
 msgstr "برنامه‌های دیگر..."
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:528
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:528
 msgid "Open with:"
 msgstr "باز کردن با:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:548
 msgid "Usage:"
 msgstr "استفاده:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:553
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:553
 msgid "Device usage:"
 msgstr "ظرفیت:"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:560
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:560
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s خالی از %s (%d%% پر)"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:699
 msgid "Read"
 msgstr "خواندن"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:704
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:704
 msgid "Write"
 msgstr "نوشتن"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:709
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:709
 msgid "Execute"
 msgstr "اجرا کردن"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:922
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:935
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:922
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:935
 msgid "Owner"
 msgstr "مالک"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:927
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:939
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:927
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:939
 msgid "Group"
 msgstr "گروه"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:943
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:943
 msgid "Everyone"
 msgstr "همه"
 
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:1202
 msgid "Select an application to open "
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr "این پوشه وجود ندارد."
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
 msgstr "امکان یافتن پوشه \"%s\" وجود ندارند."
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
 msgstr "ساختن"
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
 msgstr "ایجاد پوشه \"%s\""
 
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/DirectoryNotFound.vala:55
 #, c-format
 msgid ""
 "Failed to create the folder\n"
@@ -285,415 +301,423 @@ msgstr ""
 "\n"
 "%s"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:142
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:142
 msgid "Files isn't your default file manager."
 msgstr "فایلز مدیر پرونده پیش‌فرض شما نیست."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:148
 msgid "Set as Default"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Window.vala:153
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:153
 msgid "Ignore"
 msgstr "چشم‌پوشی‌"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:422
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:432
 msgid "Undo"
 msgstr "واگرد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:423
-#: /home/codygarver/f/po/../src/View/Window.vala:747
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:433
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:761
 msgid "Undo the last action"
 msgstr "حذف آخرین فعالیت"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:432
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:442
 msgid "Redo"
 msgstr "بازگرد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:433
-#: /home/codygarver/f/po/../src/View/Window.vala:750
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:443
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:764
 msgid "Redo the last action"
 msgstr "انجام مجدد آخرین فعالیت"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:725
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:739
 msgid "_File"
 msgstr "_پرونده"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:726
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:740
 msgid "_Edit"
 msgstr "_ويرايش"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:727
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:741
 msgid "_View"
 msgstr "_نمایش"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:728
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:742
 msgid "_Go"
 msgstr "_برو"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:729
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:743
 msgid "_Help"
 msgstr "_راهنما"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:731
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:745
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "پنجره _جدید"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:732
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:746
 msgid "Open another Files window for the displayed location"
 msgstr "باز کردن پنجره فایلز دیگری برای مکان کنونی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:735
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:749
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "_برگه جدید"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:736
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:750
 msgid "Open another tab for the displayed location"
 msgstr "باز کردن برگه دیگری برای مکان کنونی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:740
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:754
 msgid "_Close"
 msgstr "_بستن"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:741
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:755
 msgid "Close this folder"
 msgstr "بستن این پوشه"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:746
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:760
 msgid "_Undo"
 msgstr "_واگرد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:749
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:763
 msgid "_Redo"
 msgstr "_بازگرد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:752
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:766
+msgid "_Find"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:769
 msgid "Open _Parent"
 msgstr "باز کردن _سرشاخه"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:753
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:770
 msgid "Open the parent folder"
 msgstr "باز کردن پوشه سرشاخه"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:755
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:772
 msgid "_Back"
 msgstr "_بازگشت"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:756
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:773
 msgid "Go to the previous visited location"
 msgstr "رفتن به مکان قبلی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:759
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:776
 msgid "_Forward"
 msgstr "_جلو"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:760
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:777
 msgid "Go to the next visited location"
 msgstr "رفتن به مکان بعدی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:762
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:779
 msgid "_Reload"
 msgstr "_بازآوری"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:763
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:780
 msgid "Reload the current location"
 msgstr "بازآوری مکان کنونی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:766
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:783
 msgid "_Home Folder"
 msgstr "_پوشه خانه"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:767
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:419
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:784
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:419
 msgid "Open your personal folder"
 msgstr "باز کردن پوشه شخصی شما"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:770
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:787
 msgid "_Trash"
 msgstr "_زباله‌دان"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:771
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:788
 msgid "Open your personal trash folder"
 msgstr "بازکردن زباله‌دان شخصی شما"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:774
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:791
 msgid "_Network"
 msgstr "_شبکه"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:775
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:792
 msgid "Browse bookmarked and local network locations"
 msgstr "مرور شبکه محلی و مکان‌های نشانه‌گذاری شده"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:778
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:795
 msgid "Zoom _In"
 msgstr "_بزرگتر"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:779
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:796
 msgid "Increase the view size"
 msgstr "افزایش اندازه نمایش"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:790
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:807
 msgid "Zoom _Out"
 msgstr "_کوچکتر"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:791
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:808
 msgid "Decrease the view size"
 msgstr "کاهش اندازه نمایش"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:798
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:815
 msgid "Normal Si_ze"
 msgstr "_اندازه عادی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:799
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:816
 msgid "Use the normal view size"
 msgstr "استفاده از اندازه عادی نما"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:802
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:819
 msgid "Next Tab"
 msgstr "برگه بعدی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:806
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:823
 msgid "Previous Tab"
 msgstr "برگه قبلی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:810
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:827
 msgid "Connect to _Server..."
 msgstr "اتصال به _کارگزار..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:811
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:828
 msgid "Connect to a remote computer or shared disk"
 msgstr "اتصال به یک رایانه دوردست و یا یک دیسک به اشتراک گذاشته شده"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:814
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:831
 msgid "_About"
 msgstr "_درباره"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:815
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:832
 msgid "Display credits"
 msgstr "نمایش اعتبارها"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:818
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:835
 msgid "Report a Problem..."
 msgstr "مشکلی را گزارش دهید…"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:819
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:836
 msgid "File a bug on Launchpad"
 msgstr "قرار دادن گزارش یک مشکل در لانچپد"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:822
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:839
 msgid "Get Help Online..."
 msgstr "دریافت راهنمای آنلاین..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:826
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:843
 msgid "Translate This Application..."
 msgstr "این برنامه را ترجمه کنید..."
 
-#: /home/codygarver/f/po/../src/View/Window.vala:835
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:852
 msgid "Show _Hidden Files"
 msgstr "نمایش _پرونده‌های پنهان"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:836
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:853
 msgid "Toggle the display of hidden files in the current window"
 msgstr "تغییر وضعیت نمایشی پرونده‌های پنهان در پنجره‌ کنونی"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:840
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:857
 msgid "_Places"
 msgstr "_محل‌ها"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:841
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:858
 msgid "Change the visibility of this window's side pane"
 msgstr "تغییر ‌روئیت‌پذیری قاب کناری پنجره"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:849
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:866
 msgid "Icon"
 msgstr "شمایل"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:852
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:869
 msgid "List"
 msgstr "فهرست"
 
-#: /home/codygarver/f/po/../src/View/Window.vala:855
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:872
 msgid "Columns"
 msgstr "‌ستون‌ها"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:395
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:395
 msgid "Personal"
 msgstr "شخصي"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:400
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:400
 msgid "Your common places and bookmarks"
 msgstr "مکان‌ها و نشانه‌های معمول شما"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:446
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:446
 msgid "Open the Trash"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:452
 msgid "Devices"
 msgstr "دستگاه‌ها"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:457
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:457
 msgid "Your local partitions and devices"
 msgstr "پارتیشن‌ها و دستگاه‌های جانبی رایانه شما"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:469
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:499
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:673
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:499
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:673
 #, c-format
 msgid "Mount and open %s"
 msgstr "سوار و باز کردن %s"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:577
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:577
 msgid "Your network places"
 msgstr "شبکه‌های شما"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:598
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:598
 msgid "Entire Network"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:605
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
 msgstr "مرور محتویات شبکه"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1118
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1118
 #, c-format
 msgid "Unable to start %s"
 msgstr "نمی‌توان %s را آغاز کرد"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1187
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1187
 msgid "Open"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1195
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2342
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3884
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1195
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2342
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3884
 msgid "Open in New _Tab"
 msgstr "باز کردن در _برگه جدید"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1201
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2351
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1201
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2351
 msgid "Open in New _Window"
 msgstr "باز کردن در پنجره _جدید"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1208
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1208
 msgid "Remove"
 msgstr "حذف"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1216
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1216
 msgid "Rename"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1225
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1225
 msgid "_Mount"
 msgstr "_سوار کردن"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1231
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1231
 msgid "_Unmount"
 msgstr "_جدا کردن"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1237
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1237
 msgid "_Eject"
 msgstr "ب_یرون دادن"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1244
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2332
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1244
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1424
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2335
 msgid "Empty _Trash"
 msgstr "خالی کردن _زباله‌دان"
 
-#: /home/codygarver/f/po/../src/View/Sidebar.vala:1251
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "نام پرونده"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:59
 msgid "Type"
 msgstr "نوع"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/f/po/../src/fm-columns-view.c:182
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:139
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "نمی‌توان نام %s را به %s تغییر داد"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:600
-#: /home/codygarver/f/po/../src/fm-directory-view.c:547
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:569
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-list-view.c:600
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:547
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "این پوشه خالی است."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1230
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "نام فایل ارائه شده توسط XDS drag site نامعتبر است."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1388
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "نمی‌توان پیوندی برای نشانی «%s» ساخت"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1844
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "باز کردن مورد انتخاب شده با استفاده از «%s»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2037
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "_باز ‌کردن با «%s»"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2322
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3872
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "باز _کردن"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2338
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "باز کردن در %'d _برگه جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2347
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "باز کردن در %'d _پنجره جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3792
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3792
 msgid "Set as default"
 msgstr "تنظیم به عنوان پیش‌فرض"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3844
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "آماده کردن پرونده‌های انتخاب شده برای جابجایی پس از فرمان انتقال"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3848
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "آماده کردن پرونده‌های انتخاب شده برای رونویسی پس از فرمان انتقال"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3852
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "جابجایی و یا رونویسی پرونده‌هایی که با فرمان برش و یا رونویسی انتخاب شده "
 "بودند"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3855
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "انتقال به پوشه"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3856
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -701,188 +725,188 @@ msgstr ""
 "جابجایی و یا رونویسی پرونده‌هایی که با فرمان برش و یا رونویسی انتخاب شده "
 "بودند"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_تغییر نام"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3860
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "تغییر دادن نام مورد انتخاب شده"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3863
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "ساخت _پوشه جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3864
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "ساخت یک پوشه جدید در این پوشه"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3866
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "ساخت پرونده _جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3868
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "پرونده _خالی"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3869
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "ساخت یک پرونده خالی در این پوشه"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3873
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "باز کردن مورد انتخاب شده"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3880
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "باز کردن در پنجره جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3881
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "باز کردن هرکدام از موارد انتخاب شده در یک پنجره جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3885
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "باز کردن هرکدام از موارد انتخاب شده در یک برگه جدید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3887
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "باز کردن _با"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3888
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "برنامه‌ای را برای باز کردن مورد انتخاب شده، تعیین کنید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3890
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "_برنامه‌های دیگر"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3891
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "برنامه دیگری برای باز کردن مورد انتخاب شده، تعیین کنید"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3894
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "_انتقال به زباله‌دان"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3895
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "انتقال موارد انتخاب شده به زباله‌دان"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3898
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "_حذف همیشگی"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3899
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "حذف کردن مورد انتخاب شده بدون انتقال به زباله‌دان"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3902
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_بازیابی"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3906
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3906
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "انتخاب همه"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3910
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "ویژگی‌ها"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3911
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "مشاهده و یا تغییر ویژگی‌های هر یک از موارد انتخاب شده"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:4024
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "تعیین رنگ:"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "حالت ساختار"
 
-#: /home/codygarver/f/po/../src/exo-icon-view.c:860
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "حالت ساختار"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "_آرایش موارد"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "ترتیب _معکوس"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "نمایش شمایل‌ها با ترتیب معکوس"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "بر حسب _نام"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "مرتب شدن شمایل‌ها بر حسب نام آنها"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "بر حسب _اندازه"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "مرتب شدن شمایل‌ها بر حسب اندازه آنها"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "بر حسب _نوع"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "مرتب شدن شمایل‌ها بر حسب نوع آنها"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "بر حسب تاریخ _تغییر"
 
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "مرتب شدن شمایل‌ها بر حسب تاریخ تغییر داده شدن آنها"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "FTP عمومی"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "‏FTP (با ورود به سیستم)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP(پروتکل فایل اپل)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "اشتراک ویندوز"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV امن (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "درحال اتصال..."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -890,159 +914,159 @@ msgstr ""
 "نمی‌توان فهرست روش‌های پشتیبانی شده کارگزار را بارگیری کرد.\n"
 "لطفاً نصب gvfs خود را بررسی کنید."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "پوشه «%s» نمی‌تواند در «%s» باز شود."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "کارگزار «%s» پیدا نشد."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "تلاش دوباره"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "لطفاً جزییات کاربری خود را بررسی کنید."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "ادامه"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:760
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "ا_تصال"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "اتصال به کارگزار"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "جزئیات کارگزار"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_کارگزار:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_درگاه:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_نوع:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "ا_شتراک:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_پوشه:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "جزئیات کاربر"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "_نام دامنه:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_نام کاربری"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "گذر_واژه"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_به خاطر سپردن این گذرواژه"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "عملیات لغو شد"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "_انتقال به اينجا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:107
 msgid "_Copy Here"
 msgstr "_رونویسی در اينجا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:112
 msgid "_Link Here"
 msgstr "_پیوند به اینجا"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:117
 msgid "Set as _Background"
 msgstr "_کاغذ دیواری شود"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:124
 msgid "Cancel"
 msgstr "لغو"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "نمی‌توان پرونده «%s» را اجراء کرد"
 
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "در حافظه چیزی برای انتقال وجود ندارد"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:100
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-icon-view.c:100
 msgid "Icon directory listing"
 msgstr "نمایش شمایلی پرونده‌ها و پوشه‌ها"
 
-#: /home/codygarver/f/po/../src/fm-icon-view.c:101
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/fm-icon-view.c:101
 msgid "Icon view"
 msgstr "نمای شمایلی"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "تک کلیک"
 
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "آیا موارد فهرست شده با یک بار فشردن موس فعال شوند یا خیر"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "روش‌های ورودی"
 
-#: /home/codygarver/f/po/../src/Application.vala:137
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "نمایش شماره نسخه برنامه"
 
-#: /home/codygarver/f/po/../src/Application.vala:139
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:139
 msgid "Open uri(s) in new tab"
 msgstr "باز کردن نشانی(ها) در برگه جدید"
 
-#: /home/codygarver/f/po/../src/Application.vala:141
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:141
 msgid "New Window"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/Application.vala:143
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:143
 msgid "Quit Files."
 msgstr "خروج از فایلز."
 
-#: /home/codygarver/f/po/../src/Application.vala:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:145
 msgid "Enable debug logging"
 msgstr "فعال کردن ثبت اشکال‌زدایی"
 
-#: /home/codygarver/f/po/../src/Application.vala:148
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:148
 msgid "[URI...]"
 msgstr "[نشانی...]"
 
-#: /home/codygarver/f/po/../src/Application.vala:151
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:151
 msgid ""
 "\n"
 "\n"
@@ -1052,128 +1076,132 @@ msgstr ""
 "\n"
 "مرور سیستم پرونده‌ای با مدیر پرونده‌ها"
 
-#: /home/codygarver/f/po/../src/Application.vala:178
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/Application.vala:178
 msgid "--quit cannot be used with URIs."
 msgstr "نمی‌توان از quit-- برای نشانی‌ها استفاده کرد."
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:140
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:140
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:222
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:236
 msgid "File Operations"
 msgstr "عملیات‌های پرونده"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:206
 msgid "All file operations have been successfully completed"
 msgstr "همه عملیات‌های پرونده‌ای با موفقیت به پایان رسیدند"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:218
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:263
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d عملیات پرونده فعال"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:242
 msgid "Show Details"
 msgstr "نمایش جزئیات"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
 msgstr "نمایش پنجره رونویسی"
 
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
 msgstr "لغو همه فرآیندهای در حال انجام"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "مرور پرونده‌ها"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "مدیر پرونده"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "پنجره جدید به عنوان کاربر ارشد"
 
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:12
 msgid "Files"
 msgstr "فایلز"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "امروز، ساعت %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "دیروز، ساعت %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:93
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
 msgstr ""
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:97
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y در ساعت %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-progress-info.c:191
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr "در حال آماده‌سازی"
 
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (یونی‌کد نامعتبر)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "نمی‌توان مکان اصلی «%s» را تعیین کرد "
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "این مورد را نمی‌توان از زباله‌دان بازگرداند"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
 msgstr "پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1748
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "تجزیه پرونده پیشخوان موفقیت‌آمیز نبود: %s"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1786
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1786
 msgid "No Exec field specified"
 msgstr "هیچ بخش اجرایی تعیین نشده است"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1806
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1806
 msgid "No URL field specified"
 msgstr "هیچ URL مشخص نگردیده است"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1812
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
 msgstr "پرونده نامعتبر پیشخوان"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2102
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
 msgstr "نمی‌توان از اسلش (/) در نام پرونده‌ها استفاده کرد"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:2122
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "نمی‌توان نام پرونده سطح بالا را تغییر داد"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:145
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "آیا باید پوشه «%s» ادغام شود؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:149
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1181,300 +1209,300 @@ msgstr ""
 "چنانچه در هین فرآیند ادغام پرونده‌ای با نام آنچه رونویسی می‌شود در پوشه مقصد "
 "وجود داشته باشد، برای تایید جاینویسی از شما پرسیده خواهد شد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:154
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "پوشه‌ای قدیمی با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:158
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "پوشه جدیدتری با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:162
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "پوشه دیگری با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:167
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "جایگزینی آن باعث پاک شدن همه پرونده‌های درونش می‌شود."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:169
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "آیا باید پوشه «%s» جایگزین شود؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:171
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "پوشه‌‌ای با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:176
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "آیا باید پرونده \"%s\" جایگزین شود؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:402
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:178
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "جایگزینی آن محتوایش را تغییر خواهد داد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:182
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "پرونده‌ای قدیمی با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:186
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "پرونده جدیدتری با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:190
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "پرونده دیگری با نام مشابه در «%s» وجود دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:469
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:252
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "پرونده اصلی"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:470
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:491
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:470
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "اندازه:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:473
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:494
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:256
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:287
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:473
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "نوع:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:476
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:497
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:259
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:290
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:476
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "آخرین تغییر:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:490
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:283
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "جایگزینی با"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:515
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:312
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "ادغام"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:709
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "_نام جدیدی برای مقصد انتخاب کنید"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:723
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "بازنشانی"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:735
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "این کنش روی همه پرونده‌ها اعمال شود"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:746
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:746
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "_پرش"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:751
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "ت_غییر نام"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:757
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "جایگزینی"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:830
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "تداخل پرونده"
 
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "نمایش جزئیات _بیشتر"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "پر_ش از همه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "تلاش دوباره_"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "حذف _همه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "_جایگزینی"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "جای‌گزینی _همه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "اد_غام"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "ادغام _همه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "در هر _صورت رونویسی شود"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d ثانیه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:301
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d دقیقه"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ساعت"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "تقریباُ %'d ساعت"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
 msgstr "پیوند دیگری به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'dاُمین پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'dاُمین پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'dاُمین پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'dاُمین پیوند به %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (رونویسی)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (رونویسی دیگر)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:470
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:472
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr "اُمین رونویسی)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr "اُمین رونویسی)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr "اُمین رونویسی)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr "اُمین رونویسی)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (رونویسی)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (رونویسی دیگر)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:505
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:507
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'dاُمین رونویسی)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'dاُمین رونویسی)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'dاُمین رونویسی)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'dاُمین رونویسی)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " )"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "آیا واقعاً می‌خواهید «%B» را برای همیشه از زباله‌دان پاک کنید؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1485,111 +1513,111 @@ msgid_plural ""
 msgstr[0] ""
 "آیا واقعاً می‌خواهید %'d مورد انتخاب شده را برای همیشه از زباله‌دان پاک کنید؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1396
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "اگر موردی را پاک کنید، برای همیشه از دست خواهد رفت."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
 msgstr "آیا باید زباله‌دان کاملاً خالی شود؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
 msgstr "همه موارد درون زباله‌دان برای همیشه پاک خواهند شد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "آیا واقعاً می‌خواهید «%B» را برای همیشه پاک کنید؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "آیا واقعاً می‌خواهید %'d مورد انتخاب شده را برای همیشه پاک کنید؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1480
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "در حال حذف کردن پرونده‌ها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d پرونده برای حذف باقی مانده است"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T باقی‌مانده"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2587
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1594
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1667
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1744
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "در هنگام حذف کردن خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "حذف پرونده‌های درون پوشه «%B» ممکن نیست، چون شما مجوز مشاهده آنها را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2646
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3642
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1601
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2649
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "در هنگام جمع‌آوری اطلاعات پرونده‌های پوشه «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3651
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1610
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "_پرش از پرونده‌ها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "نمی‌توان پوشه «%B» را حذف کرد چون شما مجوز خواندن آن را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2685
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3687
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1634
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2688
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "در هنگام خواندن پوشه «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
 msgstr "نمی‌توان پوشه %B را حذف کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "در هنگام حذف کردن %B خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1821
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "در حال انتقال پرونده‌ها به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d پرونده در زباله‌دان باقی مانده است."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 "نمی‌توان پرونده را به زباله‌دان منتقل کرد. آیا می‌خواهید که آن را برای همیشه "
 "پاک کنید؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1597,27 +1625,27 @@ msgstr ""
 "این پرونده روی یک رسانه بیرونی قرار دارد و نمی‌توان آن را در زباله‌دان "
 "انداخت. پس از حذف شدنش نمی‌توان آن را بازیافت کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
 msgstr "در حال انداختن پرونده‌ها به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
 msgstr "در حال حذف کردن پرونده‌ها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
 msgstr "نمی‌توان %V را بیرون داد"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
 msgstr "نمی‌توان %V را جدا کرد"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "آیا مایلید که پیش از جدا کردن زباله‌دان خالی شود؟"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2324
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1625,57 +1653,57 @@ msgstr ""
 "برای به دست آوردن فضای خالی بیشتر، باید زباله‌دان را خالی کرد. تمام زباله‌ها "
 "در این جلد برای همیشه از دست خواهند رفت."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2330
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
 msgstr "زباله‌دان خالی ‌_نشود"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2444
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
 msgstr "نمی‌توان %s را سوار کرد"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2522
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "در حال آماده‌سازی برای رونویسی %'d پرونده (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2528
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "در حال آماده‌سازی برای جابجایی %'d پرونده (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2534
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "در حال آماده‌سازی برای حذف کردن %'d پرونده‌ (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2540
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "در حال آماده‌سازی برای انداختن %'d پرونده‌ به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2583
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3503
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3634
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3679
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2586
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3506
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3637
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "در هنگام رونویسی خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2585
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3632
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3677
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2588
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3635
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "در هنگام جابجایی خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2589
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
 msgstr "در هنگام انداختن پرونده‌ها به زباله‌دان خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2643
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1683,122 +1711,122 @@ msgstr ""
 "نمی‌توان پرونده‌های درون پوشه «%B» را اداره کرد، چون شما اجازه دیدن آنها را "
 "ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2682
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "نمی‌توان پوشه «%B» را اداره کرد چون شما اجازه خواندنش را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2759
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "نمی‌توان پرونده «%B» را اداره کرد چون شما اجازه خواندنش را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2762
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "در هنگام دریافت اطلاعات «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2862
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2904
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2937
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2967
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2865
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2907
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2940
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "در هنگام رونویسی در «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2866
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "شما اجازه دسترسی به پوشه مقصد را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2868
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "در هنگام گرفتن اطلاعات مقصد، خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2905
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr "مقصد یک پوشه نیست."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2938
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 "فضای کافی در مقصد وجود ندارد. می‌توانید با حذف تعدادی پرونده، فضا ایجاد کنید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2940
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S موجود است، ولی %S لازم است."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2968
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr "مقصد «فقط خواندنی» است."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3029
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr "جابجایی «%B» به «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3030
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr "رونویسی «%B» در «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3034
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr "در حال تکثیر «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3038
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "در حال جابجایی %'d  پرونده (درون «%B») به «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3041
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "در حال رونویسی %'d  پرونده (درون «%B») به «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "در حال تکثیر %'d پرونده (در «%B»)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3057
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "در حال جابجایی %'d پرونده‌ به «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3061
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "در حال رونویسی %'d پرونده در «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3066
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "در حال تکثیر %'d پرونده"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3117
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr "%S از %S"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3128
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S از %S — %T باقی مانده (%S/ثانیه)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3507
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 "نمی‌توان پوشه «%B» را رونویسی کرد چون شما اجازه ساخت آن را در مقصد ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3510
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr "در هنگام ساخت پوشه «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3639
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1806,536 +1834,536 @@ msgstr ""
 "نمی‌توان پرونده‌های پوشه «%B» را رونویسی کرد چون شما اجازه دیدن آنها را "
 "ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3684
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "نمی‌توان پوشه «%B» را رونویسی کرد چون شما اجازه خواندنش را ندارید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3729
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4430
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5017
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3732
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4433
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr "در هنگام جابجایی «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3730
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr "نمی‌توان پوشه مبدأ را حذف کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3815
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3856
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4432
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4503
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3818
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4435
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr "در هنگام رونویسی از «%B» خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3816
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "نمی‌توان پرونده‌های پوشه %F که هم اکنون وجود دارد را حذف کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3857
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "نمی‌توان پرونده %F که هم اکنون وجود دارد را حذف کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4186
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4857
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4189
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr "نمی‌توانید یک پوشه را به درون خودش منتقل کنید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4187
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4858
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4190
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr "نمی‌توانید یک پوشه را در درون خودش رونویسی کنید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4188
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4859
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4191
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr "پوشه مقصد داخل پوشه مبدأ قرار دارد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4219
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr "نمی‌توانید یک پرونده را روی خودش جابجا کنید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4220
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr "نمی‌توانید یک پرونده را روی خودش رونویسی کنید."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4221
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr "پرونده مبدأ با پرونده مقصد رونویسی می‌شود."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4434
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "نمی‌توان پرونده‌ای که هم اکنون با نام مشابهی در %F وجود دارد را حذف کرد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4504
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "در هنگام رونویسی پرونده در %F خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4731
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr "در حال رونویسی پرونده‌ها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr "در حال آماده‌سازی برای جابجایی به «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4769
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "در حال آماده‌سازی برای جابجایی %'d پرونده"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5018
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "در هنگام جابجایی پرونده به %F خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5281
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr "در حال جابجایی پرونده‌ها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5311
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr "در حال ساخت پیوندها در «%B»"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5322
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "در حال ساخت پیوند به %'d پرونده"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5457
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr "در هنگام ساخت پیوند به %B خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5459
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr "پیوندهای نمادین تنها برای پرونده‌های محلی پشتیبانی می‌شوند"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr "مقصد از پیوندهای نمادین پشتیبانی نمی‌کند."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5465
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "در هنگام ایجاد پیوند نمادین در %F خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5793
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5796
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5796
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr "تعیین مجوزها"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6047
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr "پوشه بی‌نام"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6055
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr "پرونده جدید"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6226
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr "در هنگام ساخت پوشه %B خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6228
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr "در هنگام ساخت پرونده %B خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6230
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "در هنگام ساخت پوشه در %F خطایی رخداد."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6540
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
 msgstr "در حال خالی کردن زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr "در حال خالی کردن زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "حذف %d مورد رونویسی شده"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1205
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1215
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "حذف «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "حذف %d مورد تکراری"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "بازگرداندن %d مورد به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "بازگرداندن «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1236
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "تغییر نام «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1255
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "بازیافت %d مورد از زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "بازیافت «%s» در «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "بازگرداندن %d مورد به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "بازگرداندن «%s» به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "حذف کردن پیوندهای به %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "حذف پیوند به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "بازیابی مجوزهای اصلی مواردی که درون «%s» قرار دارند"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "بازیابی مجوزهای اصلی «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "بازگرداندن گروه «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "بازگرداندن مالکیت «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "رونویسی %d مورد در «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "رونویسی «%s» در «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "تکثیر %d مورد در «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "تکثیر «%s» در «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "جابجایی %d مورد به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "جابجایی «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "ساخت پرونده جدید «%s» از روی قالب "
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "ساخت یک پرونده جدید «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "ساخت یک پوشه جدید «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "انداختن %d مورد به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "انداختن «%s» به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "بازیافت «%s» از زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "ساخت پیوند به %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "ساخت پیوند به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "تعیین مجوزهای موارد درون «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "تعیین مجوزهای «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "تنظیم گروه «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "واگذاری مالکیت «%s» به «%s»"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_واگشت رونویسی از %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_واگشت تکثیر از %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_واگشت جابجایی %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_بازگرداندن نام پیشین %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_واگشت ساخت یک پرونده جدید"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_واگشت ساخت یک پرونده از روی قالب"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_واگشت ساخت %d پوشه"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_واگشت انداختن %d مورد به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_واگشت بازیافت %d مورد از زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_واگشت ساخت پیوند به %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_بازگرداندن %d مورد حذف شده"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "بازگرداندن تغییرات بازگشتی مجوزهای %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "بازگرداندن تغییرات مجوزهای %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "واگشت تغییر گروه %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "واگذاری دوباره %d مورد به مالک پیشین"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "رونویسی _دوباره %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "تکثیر _دوباره %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "جابجایی _دوباره %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "تغییر _دوباره نام %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "ساخت _دوباره یک پرونده خالی"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "ساخت _دوباره یک پرونده از روی قالب"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "ساخت _دوباره %d پوشه"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "انتقال _دوباره %d مورد به زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "بازیافت _دوباره %d مورد از زباله‌دان"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "ساخت _دوباره پیوند به %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "حذف _دوباره %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "تغییر بازگشتی دوباره مجوزهای %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "تغییر دوباره مجوزهای %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "تغییر دوباره گروه %d مورد"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "تغییر دوباره مالک %d مورد"
 
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:261
+#: /tmp/tmp.hEKQxaYCdd/f/po/../libwidgets/LocationBar.vala:284
 #, c-format
 msgid "Go to %s"
 msgstr "برو به %s"
 
-#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:34
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/TopMenu.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
 msgstr ""
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:75
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "نمایش جدولی"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:78
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "نمایش فهرستی"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:81
+#: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "نمایش ستونی"
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
+#: /tmp/tmp.hEKQxaYCdd/f/po/../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "ممکن است با خالی کردن زباله‌دان این موارد پاک شوند."
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
+#: /tmp/tmp.hEKQxaYCdd/f/po/../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "خالی کردن زباله‌دان"
