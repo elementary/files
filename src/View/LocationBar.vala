@@ -48,7 +48,7 @@ namespace Marlin.View.Chrome
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
             minimum_width = -1;
-            natural_width = 1200;
+            natural_width = 3000;
         }
 
         public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
