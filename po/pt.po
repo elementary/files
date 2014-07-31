@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-07-30 00:46-0500\n"
-"PO-Revision-Date: 2014-07-27 21:19+0000\n"
-"Last-Translator: Sérgio Marques <Unknown>\n"
+"PO-Revision-Date: 2014-07-30 16:30+0000\n"
+"Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-07-30 06:54+0000\n"
+"X-Launchpad-Export-Date: 2014-07-31 07:03+0000\n"
 "X-Generator: Launchpad (build 17131)\n"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Resources.vala:10
@@ -133,19 +133,19 @@ msgstr "Outra aplicação..."
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "Nesta Pasta"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Marcadores"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Outros Locais"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Não Foram Encontrados Resultados"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -388,11 +388,11 @@ msgstr "_Refazer"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:766
 msgid "_Find"
-msgstr ""
+msgstr "_Procurar"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:767
 msgid "Search the current folder"
-msgstr ""
+msgstr "Procurar nesta pasta"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/View/Window.vala:769
 msgid "Open _Parent"
@@ -1129,7 +1129,7 @@ msgstr "Nova janela como _administrador"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "Sobre _Ficheiros"
 
 #: /tmp/tmp.hEKQxaYCdd/f/po/../src/DesktopLauncher.vala:12
 msgid "Files"
