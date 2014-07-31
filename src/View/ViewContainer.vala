@@ -27,7 +27,7 @@ namespace Marlin.View {
         public Gtk.Widget? content_item;
         public bool content_shown = false;
         public bool can_show_folder = true;
-        public Gtk.Label label;
+        private string label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
         public Marlin.Window.Columns? mwcol = null;
@@ -43,6 +43,7 @@ namespace Marlin.View {
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
+        public signal void loading (bool is_loading);
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
@@ -51,11 +52,7 @@ namespace Marlin.View {
 
             /* set active tab */
             browser = new Browser ();
-            label = new Gtk.Label ("Loading...");
-            label.set_ellipsize (Pango.EllipsizeMode.END);
-            label.set_single_line_mode (true);
-            label.set_alignment (0.0f, 0.5f);
-            label.set_padding (0, 0);
+            label = _("Loading…");
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
@@ -116,11 +113,11 @@ namespace Marlin.View {
 
         public string tab_name {
             set {
-                label.label = value;
+                label = value;
                 tab_name_changed (value);
             }
             get {
-                return label.label;
+                return label;
             }
         }
 
@@ -139,13 +136,14 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info () {
+            loading (false);
             var aslot = get_active_slot ();
             var slot_path = aslot.directory.file.location.get_path ();
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
+            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else {
                 tab_name = _("This folder does not exist");
@@ -188,7 +186,12 @@ namespace Marlin.View {
                 }
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
-                content = new DirectoryNotFound (slot.directory, this);
+
+                if (err is IOError.NOT_MOUNTED) {
+                    reload ();
+                } else {
+                    content = new DirectoryNotFound (slot.directory, this);
+                }
             }
 
             warning ("directory done loading");
@@ -223,25 +226,53 @@ namespace Marlin.View {
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
+
+            if (focus_file != null)
+                select_childs.prepend (focus_file);
+
+            Marlin.Window.Columns new_mwcol;
+            GOF.Window.Slot new_slot;
+
+            if (nview == ViewMode.MILLER) {
+                new_mwcol = new Marlin.Window.Columns (location, this);
+                new_slot = mwcol.active_slot;
+            } else {
+                new_mwcol = null;
+                new_slot = new GOF.Window.Slot (location, this);
+            }
+
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && new_slot.directory.uri_contain_keypath_icons)
+                nview = 0; /* icon view */
+
+            /* Mount the directory if it's not mounted */
+            if (!new_slot.directory.file.is_mounted) {
+                tab_name = _("Connecting…");
+                loading (true);
+                
+                new_slot.directory.mount_mountable.begin ((obj,res) => {
+                    try {
+                        new_slot.directory.mount_mountable.end (res);
+                        make_view (nview, new_mwcol, new_slot);
+                    } catch (Error e) {
+                        warning ("mount_mountable failed: %s", e.message);
+                        // Reset the tab label
+                        refresh_slot_info ();
+                    }
+                });
+            } else {
+                make_view (nview, new_mwcol, new_slot);
+            }
+        }
+
+        private void make_view (int nview, Marlin.Window.Columns? new_mwcol, GOF.Window.Slot new_slot) {
             if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel ();
                 slot.directory.track_longest_name = false;
             }
 
-            if (focus_file != null)
-                select_childs.prepend (focus_file);
-
-            if (nview == ViewMode.MILLER) {
-                mwcol = new Marlin.Window.Columns (location, this);
-                slot = mwcol.active_slot;
-            } else {
-                mwcol = null;
-                slot = new GOF.Window.Slot (location, this);
-            }
-
-            /* automagicly enable icon view for icons keypath */
-            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
-                nview = 0; /* icon view */
+            slot = new_slot;
+            mwcol = new_mwcol;
 
             /* Setting up view_mode and its button */
             view_mode = nview;
@@ -299,8 +330,10 @@ namespace Marlin.View {
         public string? get_root_uri () {
             if (mwcol != null)
                 return mwcol.get_root_uri ();
-            else
+            else if (slot != null)
                 return slot.location.get_uri ();
+
+            return null;
         }
 
         public string? get_tip_uri () {
@@ -319,7 +352,7 @@ namespace Marlin.View {
         }
 
         public void update_location_state (bool save_history) {
-            if (!slot.directory.file.exists)
+            if (slot == null || !slot.directory.file.exists)
                 return;
 
             if (save_history)
