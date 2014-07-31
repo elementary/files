@@ -38,6 +38,23 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     public string current_right_click_path;
     public string current_right_click_root;
+
+    bool _search_mode = false;
+    public bool search_mode {
+        get {
+            return _search_mode;
+        }
+        set {
+            if (_search_mode == value)
+                return;
+
+            _search_mode = value;
+
+            primary_icon_name = _search_mode ? "edit-find-symbolic" : null;
+
+            grab_focus ();
+        }
+    }
     
     protected string text_completion = "";
     protected bool multiple_completions = false;
@@ -72,6 +89,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void activate_alternate (File file);
     public signal void path_changed (File file);
     public signal void need_completion ();
+    public signal void search_changed (string text);
 
     List<IconDirectory?> icons;
 
@@ -234,11 +252,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     void on_change () {
+        if (search_mode) {
+            search_changed (text);
+            return;
+        }
+
         if (ignore_change) {
             ignore_change = false;
             return;
         }
-        
+
         set_entry_icon (true, (text.length > 0) ? "Navigate to: " + text : "");
         text_completion = "";
         need_completion ();
@@ -283,6 +306,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         ignore_focus_in = false;
         set_entry_icon (false);
         set_entry_text ("");
+        search_mode = false;
         
         return base.focus_out_event (event);
     }
@@ -291,11 +315,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (ignore_focus_in)
             return base.focus_in_event (event);
 
-        set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
-                .replace ("file:////", "/")
-                .replace ("file:///", "/")
-                .replace ("trash:///", "")
-                .replace ("network:///", "")));
+        if (search_mode)
+            set_entry_text ("");
+        else
+            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
+                    .replace ("file:////", "/")
+                    .replace ("file:///", "/")
+                    .replace ("trash:///", "")
+                    .replace ("network:///", "")));
                 
         return base.focus_in_event (event);
     }

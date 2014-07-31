@@ -191,6 +191,13 @@ namespace Marlin.View {
 
             sidebar.show ();
 
+            top_menu.location_bar.search_mode_left.connect (() => {
+                if (current_tab.content_shown)
+                    current_tab.content.grab_focus ();
+                else
+                    current_tab.slot.view_box.grab_focus ();
+            });
+
             /*/
             /* Pack up all the view
             /*/
@@ -653,6 +660,10 @@ namespace Marlin.View {
             undo_manager.redo (null);
         }
 
+        private void action_find_callback (Gtk.Action action) {
+            top_menu.location_bar.enter_search_mode ();
+        }
+
         private void action_home_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
@@ -756,6 +767,9 @@ namespace Marlin.View {
                                { "Redo", Gtk.Stock.REDO, N_("_Redo"),
                                  "<control><shift>Z", N_("Redo the last action"),
                                  action_redo_callback },
+                               { "Find", Gtk.Stock.FIND, N_("_Find"),
+                                 "<control>F", N_("Search the current folder"),
+                                 action_find_callback },
                                { "Up", Gtk.Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
                                  action_go_up },
