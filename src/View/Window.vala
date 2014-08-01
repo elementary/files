@@ -92,10 +92,6 @@ namespace Marlin.View {
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
         {
-            /* Capture application window_count and active_window before they can change */
-            var window_number = app.window_count;
-            var active_window = app.get_active_window ();
-
             application = app;
             screen = myscreen;
             is_first_window = first;
