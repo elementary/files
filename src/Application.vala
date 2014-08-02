@@ -34,6 +34,12 @@ public class Marlin.Application : Granite.Application {
 
     public int window_count { get; private set; }
 
+    static const GLib.ActionEntry [] app_actions = {
+        {"new_window", on_activate_new_window },
+        {"quit", on_activate_quit }
+    };
+
+
     construct {
         /* Needed by Glib.Application */
         this.application_id = "org.pantheon.files";  //Ensures an unique instance.
@@ -74,6 +80,14 @@ public class Marlin.Application : Granite.Application {
         Notify.uninit ();
     }
 
+    void on_activate_quit (GLib.SimpleAction action, GLib.Variant? param) {
+        quit ();
+    }
+
+    void on_activate_new_window (GLib.SimpleAction action, GLib.Variant? param) {
+        create_window ();
+    }
+
     public override void startup () {
         base.startup ();
 
@@ -83,7 +97,7 @@ public class Marlin.Application : Granite.Application {
         message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
-        init_gtk_accels ();
+        //init_gtk_accels ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
             Marlin.IconInfo.clear_caches ();
@@ -96,7 +110,7 @@ public class Marlin.Application : Granite.Application {
 
         tags = new Marlin.View.Tags ();
 
-        //plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -110,6 +124,22 @@ public class Marlin.Application : Granite.Application {
         window_count = 0;
         this.window_added.connect (() => {window_count++;});
         this.window_removed.connect (() => {window_count--;});
+
+        /** Application actions:  New Window, Quit */
+        /* {name, activate function, parameter type, state, change state function } */
+
+        this.add_action_entries (app_actions, this);
+message ("Application actions");
+        /** Application menu */
+        var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
+        this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
+message ("Window actions");
+        /** Window actions:  New Tab */
+        builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
+message ("got builder");
+        this.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
+message ("menubar set");  
+
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
@@ -195,7 +225,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Open application */
         if (create_new_window)
-            create_window (File.new_for_path (Environment.get_home_dir ()), Gdk.Screen.get_default ());
+            create_window ();
         else if (open_in_tab)
             open_tabs (files);
         else
@@ -216,7 +246,10 @@ public class Marlin.Application : Granite.Application {
             window.destroy ();
     }
 
-    public void create_window (File location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    public void create_window (File location = File.new_for_path (Environment.get_home_dir ()),
+                               Gdk.Screen screen = Gdk.Screen.get_default (),
+                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+
         open_window (location, screen, viewmode);
     }
 
@@ -262,33 +295,33 @@ public class Marlin.Application : Granite.Application {
     }
 
     /* Load accelerator map, and register save callback */
-    private void init_gtk_accels () {
-        string accel_map_filename = Marlin.get_accel_map_file ();
-        if (accel_map_filename != null) {
-            Gtk.AccelMap.load (accel_map_filename);
-        }
+//    private void init_gtk_accels () {
+//        string accel_map_filename = Marlin.get_accel_map_file ();
+//        if (accel_map_filename != null) {
+//            Gtk.AccelMap.load (accel_map_filename);
+//        }
 
-        Gtk.AccelMap.get ().changed.connect (() => {
-            if (!save_of_accel_map_requested) {
-                save_of_accel_map_requested = true;
-                Timeout.add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
-                                     save_accel_map);
-            }
-        });
-    }
+//        Gtk.AccelMap.get ().changed.connect (() => {
+//            if (!save_of_accel_map_requested) {
+//                save_of_accel_map_requested = true;
+//                Timeout.add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
+//                                     save_accel_map);
+//            }
+//        });
+//    }
 
-    private bool save_accel_map () {
-        if (save_of_accel_map_requested) {
-            string accel_map_filename = Marlin.get_accel_map_file ();
-            if (accel_map_filename != null)
-                Gtk.AccelMap.save (accel_map_filename);
-            save_of_accel_map_requested = false;
-        }
+//    private bool save_accel_map () {
+//        if (save_of_accel_map_requested) {
+//            string accel_map_filename = Marlin.get_accel_map_file ();
+//            if (accel_map_filename != null)
+//                Gtk.AccelMap.save (accel_map_filename);
+//            save_of_accel_map_requested = false;
+//        }
 
-        return false;
-    }
+//        return false;
+//    }
 
-    private void open_window (File location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    private void open_window (File? location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
         (add_view_window (screen)).add_tab (location, viewmode);
     }
 
@@ -328,7 +361,7 @@ public class Marlin.Application : Granite.Application {
     private Marlin.View.Window add_view_window (Gdk.Screen screen) {
         var window = new Marlin.View.Window (this, screen, true);
         this.add_window (window as Gtk.Window);
-        //plugins.interface_loaded (window as Gtk.Widget);
+        plugins.interface_loaded (window as Gtk.Widget);
         return window;
     }
 

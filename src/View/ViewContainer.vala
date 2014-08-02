@@ -254,8 +254,12 @@ namespace Marlin.View {
                     return mode;
                 case Marlin.ViewMode.PREFERRED:
                     return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
+                case Marlin.ViewMode.CURRENT:
+                    return this.view_mode;
                 default:
-                    break;
+//message ("view mode %u not recognised", (uint)view_mode);
+                    return Marlin.ViewMode.MILLER_COLUMNS;
+                    //break;
             }
             return this.view_mode;
         }

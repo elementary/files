@@ -41,12 +41,13 @@ namespace Marlin.View.Chrome
             win.button_forward.show_all ();
             pack_start (win.button_forward);
 
-            view_switcher = new ViewSwitcher (win.main_actions);
+            view_switcher = new ViewSwitcher (win.win_actions.lookup_action ("view_mode") as GLib.SimpleAction);
             view_switcher.show_all ();
             pack_start (view_switcher);
 
             //Location Bar
-            location_bar = new LocationBar (win.ui, win);
+            //location_bar = new LocationBar (win.ui, win);
+            location_bar = new LocationBar (win);
 
             /* init the path if we got a curent tab with a valid slot
                and a valid directory loaded */

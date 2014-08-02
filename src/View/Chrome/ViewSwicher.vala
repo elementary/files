@@ -59,17 +59,20 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        private Gtk.ActionGroup main_actions;
+        //private Gtk.ActionGroup main_actions;
+        //private GLib.SimpleActionGroup main_actions;
+        private GLib.SimpleAction view_mode_action;
 
         private Gtk.Image icon;
         private Gtk.Image list;
         private Gtk.Image miller;
 
-        public ViewSwitcher (Gtk.ActionGroup action_group) {
+        //public ViewSwitcher (Gtk.ActionGroup action_group) {
+        public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
             Object (orientation: Gtk.Orientation.HORIZONTAL);
 
-            main_actions = action_group;
-
+            //main_actions = action_group;
+            this.view_mode_action = _view_mode_action;
             switcher = new Granite.Widgets.ModeButton ();
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
 
@@ -86,18 +89,25 @@ namespace Marlin.View.Chrome {
             mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
             switcher.mode_changed.connect ((image) => {
-                Gtk.Action action;
+                //Gtk.Action action;
+                //GLib.Action action;
 
                 //You cannot do a switch here, only for int and string
                 if (image == list) {
-                    action = main_actions.get_action ("view-as-detailed-list");
-                    action.activate ();
+message ("activate LIST");
+                    //action = main_actions.lookup_action ("view-as-detailed-list");
+                    //action.activate (null);
+                    view_mode_action.activate (new GLib.Variant.string ("LIST"));
                 } else if (image == miller) {
-                    action = main_actions.get_action ("view-as-columns");
-                    action.activate ();
+message ("activate MILLER");
+                    //action = main_actions.lookup_action ("view-as-columns");
+                    //action.activate (null);
+                    view_mode_action.activate (new GLib.Variant.string ("MILLER"));
                 } else {
-                    action = main_actions.get_action ("view-as-icons");
-                    action.activate ();
+message ("activate ICON");
+//                    action = main_actions.lookup_action ("view-as-icons");
+//                    action.activate (null);
+                    view_mode_action.activate (new GLib.Variant.string ("ICON"));
                 }
             });
 

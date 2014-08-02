@@ -24,9 +24,11 @@ namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow
     {
-        public Gtk.UIManager ui;
+        //public Gtk.UIManager ui;
+        public Gtk.Builder ui;
         private UndoManager undo_manager;
-        public Gtk.Widget menu_bar;
+        //public Gtk.Widget menu_bar;
+        public GLib.Menu menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
@@ -34,15 +36,16 @@ namespace Marlin.View {
 
         public ViewContainer? current_tab = null;
 
-        public Gtk.ActionGroup main_actions;
-        public Gtk.AccelGroup accel_group;
+        //public Gtk.ActionGroup main_actions;
+        public GLib.SimpleActionGroup win_actions;
+        //public Gtk.AccelGroup accel_group;
 
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
 
         public bool can_go_up{
             set{
-                main_actions.get_action("Up").set_sensitive(value);
+                //get_action ("Up").set_enabled(value);
             }
         }
 
@@ -73,26 +76,27 @@ namespace Marlin.View {
         private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 480;
 
         public void update_action_radio_view(int n) {
-            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
-            assert(action != null);
-            action.set_current_value(n);
+//            Gtk.RadioAction action = (Gtk.RadioAction) get_action ("view-as-icons");
+//            assert(action != null);
+//            action.set_current_value(n);
         }
 
         protected virtual void action_radio_change_view(){
-            if (freeze_view_changes)
-                return;
+//            if (freeze_view_changes)
+//                return;
 
-            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
-            assert(action != null);
-            Marlin.ViewMode mode = (Marlin.ViewMode)action.get_current_value();
-            /* change the view only for view_mode real change */
-            if (current_tab != null && mode != current_tab.view_mode)
-                current_tab.change_view_mode (mode);
+//            Gtk.RadioAction action = (Gtk.RadioAction) get_action ("view-as-icons");
+//            assert(action != null);
+//            Marlin.ViewMode mode = (Marlin.ViewMode)action.get_current_value();
+//            /* change the view only for view_mode real change */
+//            if (current_tab != null && mode != current_tab.view_mode)
+//                current_tab.change_view_mode (mode);
         }
+
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
         {
-//message ("New window");
+message ("New window");
             /* Capture application window_count and active_window before they can change */
             var window_number = app.window_count;
             var active_window = app.get_active_window ();
@@ -101,33 +105,34 @@ namespace Marlin.View {
             screen = myscreen;
             is_first_window = first;
 
-            ui = new Gtk.UIManager();
+            /** Window actions */
+            win_actions = new GLib.SimpleActionGroup ();
+            win_actions.add_action_entries (win_entries, this);
+            win_actions.add_action_entries (win_toggle_entries, this);
+            win_actions.add_action_entries (win_radio_entries, this);
 
-            try {
-                ui.add_ui_from_file(Config.UI_DIR + "pantheon-files-ui.xml");
-            } catch (Error e) {
-                stderr.printf ("Error loading UI: %s", e.message);
-            }
+            this.insert_action_group ("win", win_actions);          
 
-            main_actions = new Gtk.ActionGroup("MainActionGroup");
-            main_actions.set_translation_domain("pantheon-files");
-            main_actions.add_actions(main_entries, this);
-            main_actions.add_toggle_actions(main_toggle_entries, this);
-            main_actions.add_radio_actions(view_radio_entries, -1,
-                                           action_radio_change_view);
+//            main_actions = new Gtk.ActionGroup("MainActionGroup");
+//            main_actions.set_translation_domain("pantheon-files");
+//            main_actions.add_actions(main_entries, this);
+//            main_actions.add_toggle_actions(main_toggle_entries, this);
+//            main_actions.add_radio_actions(view_radio_entries, -1,
+//                                           action_radio_change_view);
             /*main_actions.add_radio_actions(color_radio_entries, -1,
                                            action_radio_set_color_changed);*/
-            accel_group = ui.get_accel_group();
-            add_accel_group(accel_group);
+            //accel_group = ui.get_accel_group();
+            //add_accel_group(accel_group);
 
-            ui.insert_action_group(main_actions, 0);
-            ui.ensure_update();
+            //ui.insert_action_group(main_actions, 0);
+            //ui.ensure_update();
 
             /* Menubar. We only need a menubar for special cases like global menus or HUD.
                We don't need to show it in any other case */
-            menu_bar = ui.get_widget("/MenuBar");
-            menu_bar.no_show_all = true;
-            menu_bar.hide ();
+            //menu_bar = ui.get_widget("/MenuBar");
+            //menu_bar = ui.get_object("menubar") as GLib.Menu;
+            //menu_bar.no_show_all = true;
+            //menu_bar.hide ();
 
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
@@ -198,7 +203,7 @@ namespace Marlin.View {
 
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
-            window_box.pack_start(menu_bar, false, false, 0);
+            //window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(lside_pane, true, true, 0);
 
@@ -240,12 +245,13 @@ message ("Got geometry %s", geometry);
             show();
 
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
-            Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
-            Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
+           // Preferences.settings.bind("show-sidebar", get_action ("Show Hide Sidebar"), "active", 0);
+            //Preferences.settings.bind("show-hiddenfiles", get_action ("Show Hidden Files"), "active", 0);
 
             /*/
             /* Connect and abstract signals to local ones
             /*/
+message ("Connect key press event");
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
@@ -253,18 +259,20 @@ message ("Got geometry %s", geometry);
                 return false;
             });
 
+message ("Connect button press event");
             button_press_event.connect ((event) => {
                 /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
                 if (event.button == 8) {
-                    main_actions.get_action ("Back").activate ();
+                    //get_action ("Back").activate (null);
                     return true;
                 } else if (event.button == 9) {
-                    main_actions.get_action ("Forward").activate ();
+                    //get_action ("Forward").activate (null);
                     return true;
                 } else
                     return false;
             });
 
+message ("Connect window state event");
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
@@ -310,6 +318,7 @@ message ("Got geometry %s", geometry);
             Gtk.Allocation win_alloc;
             get_allocation (out win_alloc);
 
+message ("keyboard shortcut binding");
             /* keyboard shortcuts bindings */
             if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
@@ -367,7 +376,7 @@ message ("Got geometry %s", geometry);
                 var old_slot = old_tab.get_current_slot ();
                 if (old_slot != null) {
                     old_slot.inactive ();
-//message ("Window:emitting slot inactive");
+message ("Window:emitting slot inactive");
 }
             }
 
@@ -434,36 +443,38 @@ message ("Got geometry %s", geometry);
         }
 
         private void undo_actions_set_insensitive () {
-            Gtk.Action action;
+            GLib.SimpleAction action;
 
-            action = main_actions.get_action ("Undo");
-            action.set_sensitive (false);
-            action = main_actions.get_action ("Redo");
-            action.set_sensitive (false);
+            //action = get_action ("Undo");
+//            action = get_action ("Undo");
+//            action.set_enabled (false);
+//            action = get_action ("Redo");
+//            action.set_enabled (false);
         }
 
         private void update_undo_actions (UndoMenuData? data = null) {
-            Gtk.Action action;
+//            //Gtk.Action action;
+//            GLib.Action? action;
 
-            action = main_actions.get_action ("Undo");
-            if (data != null && data.undo_label != null && sensitive) {
-                action.set_label (data.undo_label);
-                action.set_tooltip (data.undo_description);
-            } else {
-                action.set_label (_("Undo"));
-                action.set_tooltip (_("Undo the last action"));
-            }
-            action.set_sensitive (data != null && data.undo_label != null);
+//            action = get_action ("Undo");
+//            if (data != null && data.undo_label != null && sensitive) {
+//                action.set_label (data.undo_label);
+//                action.set_tooltip (data.undo_description);
+//            } else {
+//                action.set_label (_("Undo"));
+//                action.set_tooltip (_("Undo the last action"));
+//            }
+//            action.set_enabled (data != null && data.undo_label != null);
 
-            action = main_actions.get_action ("Redo");
-            if (data != null && data.redo_label != null && sensitive) {
-                action.set_label (data.redo_label);
-                action.set_tooltip (data.redo_description);
-            } else {
-                action.set_label (_("Redo"));
-                action.set_tooltip (_("Redo the last action"));
-            }
-            action.set_sensitive (data != null && data.redo_label != null);
+//            action = get_action ("Redo");
+//            if (data != null && data.redo_label != null && sensitive) {
+//                action.set_label (data.redo_label);
+//                action.set_tooltip (data.redo_description);
+//            } else {
+//                action.set_label (_("Redo"));
+//                action.set_tooltip (_("Redo the last action"));
+//            }
+//            action.set_enabled (data != null && data.redo_label != null);
         }
 
         private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
@@ -475,11 +486,12 @@ message ("Got geometry %s", geometry);
             ((Marlin.Application) application).create_window (location, screen);
         }
 
-        private void action_new_tab (Gtk.Action action) {
+        //private void action_new_tab (Gtk.Action action) {
+        private void action_new_tab (GLib.SimpleAction action, GLib.Variant? param) {
             make_new_tab ();
         }
 
-        private void action_remove_tab (Gtk.Action action) {
+        private void action_remove_tab (GLib.SimpleAction action, GLib.Variant? param) {
             actual_remove_tab (tabs.current);
         }
 
@@ -595,8 +607,8 @@ message ("Got geometry %s", geometry);
             }
         }
 
-        public Gtk.ActionGroup get_actiongroup () {
-            return this.main_actions;
+        public GLib.SimpleActionGroup get_action_group () {
+            return this.win_actions;
         }
 
         private void action_go_up () {
@@ -652,40 +664,50 @@ message ("Got geometry %s", geometry);
             }
         }
 
-        private void action_reload_callback (Gtk.Action action) {
+        //private void action_reload_callback (Gtk.Action action) {
+        private void action_reload_callback (GLib.SimpleAction action) {
             /* avoid spawning reload when key kept pressed */
             if (t_reload_cb == 0)
                 t_reload_cb = Timeout.add (90, real_reload_callback );
         }
 
-        private void action_undo_callback (Gtk.Action action) {
+        //private void action_undo_callback (Gtk.Action action) {
+        private void action_undo_callback () {
             update_undo_actions ();
             undo_manager.undo (null);
         }
 
-        private void action_redo_callback (Gtk.Action action) {
+        //private void action_redo_callback (Gtk.Action action) {
+        private void action_redo_callback () {
             update_undo_actions ();
             undo_manager.redo (null);
         }
 
-        private void action_home_callback (Gtk.Action action) {
+        //private void action_home_callback (Gtk.Action action) {
+        //private void action_go_to_home (Gtk.Action action) {
+        //private void action_go_to_home () {
+        private void action_go_to_home (GLib.SimpleAction action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
 
-        private void action_go_to_trash_callback (Gtk.Action action) {
+        private void action_go_to_trash (GLib.SimpleAction action) {
+        //private void action_go_to_trash_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
         }
 
-        private void action_go_to_network_callback (Gtk.Action action) {
+        //private void action_go_to_network_callback (Gtk.Action action) {
+        private void action_go_to_network (GLib.SimpleAction action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
         }
 
-        private void action_zoom_in_callback (Gtk.Action action) {
+        //private void action_zoom_in_callback (Gtk.Action action) {
+        private void action_zoom_in (GLib.SimpleAction action) {
             if (current_tab != null && current_tab.slot != null)
                 ((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
         }
 
-        private void action_zoom_out_callback (Gtk.Action action) {
+        //private void action_zoom_out_callback (Gtk.Action action) {
+        private void action_zoom_out (GLib.SimpleAction action) {
             if (current_tab != null && current_tab.slot != null)
                 ((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
         }
@@ -694,17 +716,20 @@ message ("Got geometry %s", geometry);
         {
             tabs.next_page ();
         }
+
         void action_previous_tab ()
         {
             tabs.previous_page ();
         }
 
-        private void action_zoom_normal_callback (Gtk.Action action) {
+        //private void action_zoom_normal_callback (Gtk.Action action) {
+        private void action_zoom_normal_callback (GLib.SimpleAction action) {
             if (current_tab != null && current_tab.slot != null)
                 ((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
         }
 
-        private void action_connect_to_server_callback (Gtk.Action action)
+        //private void action_connect_to_server_callback (Gtk.Action action)
+        private void action_connect_to_server_callback ()
         {
             var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
             dialog.show ();
@@ -743,139 +768,196 @@ message ("Got geometry %s", geometry);
             catch (Error e) { critical("Can't open the link"); }
         }
 
-        static const Gtk.ActionEntry[] main_entries = {
-  /* name, stock id, label */  { "File", null, N_("_File") },
-  /* name, stock id, label */  { "Edit", null, N_("_Edit") },
-  /* name, stock id, label */  { "View", null, N_("_View") },
-  /* name, stock id, label */  { "Go", null, N_("_Go") },
-  /* name, stock id, label */  { "Help", null, N_("_Help") },
-/*                               { "ColorMenu", null, N_("Set _Color") },*/
-  /* name, stock id, label */  { "New Window", "window-new", N_("New _Window"),
-                                 "<control>N", N_("Open another Files window for the displayed location"),
-                                 action_new_window },
-  /* name, stock id */         { "New Tab", "tab-new",
-  /* label, accelerator */       N_("New _Tab"), "<control>T",
-  /* tooltip */                  N_("Open another tab for the displayed location"),
-                                 action_new_tab },
+        private GLib.SimpleAction? get_action (string action_name) {
+            return win_actions.lookup_action (action_name) as GLib.SimpleAction?;
+        }
 
-  /* name, stock id */         { "Close", Gtk.Stock.CLOSE,
-  /* label, accelerator */       N_("_Close"), "<control>W",
-  /* tooltip */                  N_("Close this folder"),
-                                 action_remove_tab },
-                             /*{ Chrome.ColorAction, null, "ColorAction"),
-                                 null, null,
-                                 null },*/
-                               { "Undo", Gtk.Stock.UNDO, N_("_Undo"),
-                                 "<control>Z", N_("Undo the last action"),
-                                 action_undo_callback },
-                               { "Redo", Gtk.Stock.REDO, N_("_Redo"),
-                                 "<control><shift>Z", N_("Redo the last action"),
-                                 action_redo_callback },
-                               { "Up", Gtk.Stock.GO_UP, N_("Open _Parent"),
-                                 "<alt>Up", N_("Open the parent folder"),
-                                 action_go_up },
-                               { "Back", Gtk.Stock.GO_BACK, N_("_Back"),
-                                 "<alt>Left", N_("Go to the previous visited location"),
-                                 action_go_back },
-                               { "Forward", Gtk.Stock.GO_FORWARD, N_("_Forward"),
-                                 "<alt>Right", N_("Go to the next visited location"),
-                                 action_go_forward },
-                               { "Reload", Gtk.Stock.REFRESH, N_("_Reload"),
-                                 "<control>R", N_("Reload the current location"),
-                                 action_reload_callback },
-  /* name, stock id */         { "Home", Marlin.ICON_HOME,
-  /* label, accelerator */       N_("_Home Folder"), "<alt>Home",
-  /* tooltip */                  N_("Open your personal folder"),
-                                 action_home_callback },
-  /* name, stock id */         { "Go to Trash", Marlin.ICON_TRASH,
-  /* label, accelerator */       N_("_Trash"), null,
-  /* tooltip */                  N_("Open your personal trash folder"),
-                                 action_go_to_trash_callback },
-  /* name, stock id */         { "Go to Network", Marlin.ICON_NETWORK,
-  /* label, accelerator */       N_("_Network"), null,
-  /* tooltip */                  N_("Browse bookmarked and local network locations"),
-                                 action_go_to_network_callback },
-  /* name, stock id */         { "Zoom In", Gtk.Stock.ZOOM_IN,
-  /* label, accelerator */       N_("Zoom _In"), "<control>plus",
-  /* tooltip */                  N_("Increase the view size"),
-                                 action_zoom_in_callback },
-  /* name, stock id */         { "ZoomInAccel", null,
-  /* label, accelerator */       "ZoomInAccel", "<control>equal",
-  /* tooltip */                  null,
-                                 action_zoom_in_callback },
-  /* name, stock id */         { "ZoomInAccel2", null,
-  /* label, accelerator */       "ZoomInAccel2", "<control>KP_Add",
-  /* tooltip */                  null,
-                                 action_zoom_in_callback },
-  /* name, stock id */         { "Zoom Out", Gtk.Stock.ZOOM_OUT,
-  /* label, accelerator */       N_("Zoom _Out"), "<control>minus",
-  /* tooltip */                  N_("Decrease the view size"),
-                                 action_zoom_out_callback },
-  /* name, stock id */         { "ZoomOutAccel", null,
-  /* label, accelerator */       "ZoomOutAccel", "<control>KP_Subtract",
-  /* tooltip */                  null,
-                                 action_zoom_out_callback },
-  /* name, stock id */         { "Zoom Normal", Gtk.Stock.ZOOM_100,
-  /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
-  /* tooltip */                  N_("Use the normal view size"),
-                                 action_zoom_normal_callback },
-  /* name, stock id */         { "Next Tab", "",
-  /* label, accelerator */       N_("Next Tab"), "<control>Page_Down",
-  /* tooltip */                  "",
-                                 action_next_tab },
-  /* name, stock id */         { "Previous Tab", "",
-  /* label, accelerator */       N_("Previous Tab"), "<control>Page_Up",
-  /* tooltip */                  "",
-                                 action_previous_tab },
-  /* name, stock id */         { "Connect to Server", null,
-  /* label, accelerator */       N_("Connect to _Server..."), null,
-  /* tooltip */                  N_("Connect to a remote computer or shared disk"),
-                                 action_connect_to_server_callback },
-  /* name, stock id */         { "About", Gtk.Stock.ABOUT,
-  /* label, accelerator */       N_("_About"), null,
-  /* tooltip */                  N_("Display credits"),
-                                 show_about },
-  /* name, stock id */         { "ReportProblem", "",
-  /* label, accelerator */       N_("Report a Problem..."), null,
-  /* tooltip */                  N_("File a bug on Launchpad"),
-                                 show_report },
-  /* name, stock id */         { "GetHelp", "",
-  /* label, accelerator */       N_("Get Help Online..."), null,
-  /* tooltip */                  "",
-                                 show_app_help },
-  /* name, stock id */         { "Translate", "",
-  /* label, accelerator */       N_("Translate This Application..."), null,
-  /* tooltip */                  "",
-                                 show_translate }
-
-
+        static const GLib.ActionEntry [] win_entries = {
+            {"new_tab", action_new_tab },
+            {"close_tab", action_remove_tab },
+            {"go_home", action_go_to_home },
+            {"go_to_trash", action_go_to_trash },
+            {"go_to_network", action_go_to_network },
+            {"zoom_in", action_zoom_in },
+            {"zoom_out", action_zoom_out },
+            {"next_tab", action_next_tab },
+            {"previous_tab", action_previous_tab },
+            {"zoom_out", action_zoom_out },
         };
 
-        static const Gtk.ToggleActionEntry main_toggle_entries[] = {
-  /* name, stock id */         { "Show Hidden Files", null,
-  /* label, accelerator */       N_("Show _Hidden Files"), "<control>H",
-  /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
-                                 null,
-                                 true },
-  /* name, stock id */         { "Show Hide Sidebar", null,
-  /* label, accelerator */       N_("_Places"), "F9",
-  /* tooltip */                  N_("Change the visibility of this window's side pane"),
-                                 null,
-  /* is_active */                true }
-
+        static const GLib.ActionEntry [] win_toggle_entries = {
+            {"show_hidden", on_activate_show_hidden, "b" },
+            {"show_sidebar", on_activate_show_sidebar , "b"}
         };
 
-        static const Gtk.RadioActionEntry view_radio_entries[] = {
-            { "view-as-icons", null,
-              N_("Icon"), "<control>1", null,
-              Marlin.ViewMode.ICON },
-            { "view-as-detailed-list", null,
-              N_("List"), "<control>2", null,
-              Marlin.ViewMode.LIST },
-            { "view-as-columns", null,
-              N_("Columns"), "<control>3", null,
-              Marlin.ViewMode.MILLER_COLUMNS }
+        private void on_activate_show_hidden (GLib.SimpleAction action) {
+            
+        }
 
+        private void on_activate_show_sidebar (GLib.SimpleAction action) {
+            
+        }
+
+        static const GLib.ActionEntry [] win_radio_entries = {
+            {"view_mode", on_activate_view_mode, "s", "'MILLER'" }
         };
+
+        private void on_activate_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+            string mode_string = param.get_string ();
+            Marlin.ViewMode view_mode = Marlin.ViewMode.MILLER_COLUMNS;
+message ("on activate view mode %s", mode_string);
+message ("param is of VariantType %s", param.get_type_string ());
+        action.change_state (param);
+        switch (mode_string) {
+            case "ICON":
+                view_mode = Marlin.ViewMode.ICON;
+                break;
+            case "LIST":
+                view_mode = Marlin.ViewMode.LIST;
+                break;
+            case "MILLER":
+                view_mode = Marlin.ViewMode.MILLER_COLUMNS;
+                break;
+            default:
+                break;
+        }
+        current_tab.change_view_mode (view_mode);
+message ("state is set");
+        }
+
+//        static const Gtk.ActionEntry[] main_entries = {
+//  /* name, stock id, label */  { "File", null, N_("_File") },
+//  /* name, stock id, label */  { "Edit", null, N_("_Edit") },
+//  /* name, stock id, label */  { "View", null, N_("_View") },
+//  /* name, stock id, label */  { "Go", null, N_("_Go") },
+//  /* name, stock id, label */  { "Help", null, N_("_Help") },
+///*                               { "ColorMenu", null, N_("Set _Color") },*/
+//  /* name, stock id, label */  { "New Window", "window-new", N_("New _Window"),
+//                                 "<control>N", N_("Open another Files window for the displayed location"),
+//                                 action_new_window },
+//  /* name, stock id */         { "New Tab", "tab-new",
+//  /* label, accelerator */       N_("New _Tab"), "<control>T",
+//  /* tooltip */                  N_("Open another tab for the displayed location"),
+//                                 action_new_tab },
+
+//  /* name, stock id */         { "Close", Gtk.Stock.CLOSE,
+//  /* label, accelerator */       N_("_Close"), "<control>W",
+//  /* tooltip */                  N_("Close this folder"),
+//                                 action_remove_tab },
+//                             /*{ Chrome.ColorAction, null, "ColorAction"),
+//                                 null, null,
+//                                 null },*/
+//                               { "Undo", Gtk.Stock.UNDO, N_("_Undo"),
+//                                 "<control>Z", N_("Undo the last action"),
+//                                 action_undo_callback },
+//                               { "Redo", Gtk.Stock.REDO, N_("_Redo"),
+//                                 "<control><shift>Z", N_("Redo the last action"),
+//                                 action_redo_callback },
+//                               { "Up", Gtk.Stock.GO_UP, N_("Open _Parent"),
+//                                 "<alt>Up", N_("Open the parent folder"),
+//                                 action_go_up },
+//                               { "Back", Gtk.Stock.GO_BACK, N_("_Back"),
+//                                 "<alt>Left", N_("Go to the previous visited location"),
+//                                 action_go_back },
+//                               { "Forward", Gtk.Stock.GO_FORWARD, N_("_Forward"),
+//                                 "<alt>Right", N_("Go to the next visited location"),
+//                                 action_go_forward },
+//                               { "Reload", Gtk.Stock.REFRESH, N_("_Reload"),
+//                                 "<control>R", N_("Reload the current location"),
+//                                 action_reload_callback },
+//  /* name, stock id */         { "Home", Marlin.ICON_HOME,
+//  /* label, accelerator */       N_("_Home Folder"), "<alt>Home",
+//  /* tooltip */                  N_("Open your personal folder"),
+//                                 action_home_callback },
+//  /* name, stock id */         { "Go to Trash", Marlin.ICON_TRASH,
+//  /* label, accelerator */       N_("_Trash"), null,
+//  /* tooltip */                  N_("Open your personal trash folder"),
+//                                 action_go_to_trash_callback },
+//  /* name, stock id */         { "Go to Network", Marlin.ICON_NETWORK,
+//  /* label, accelerator */       N_("_Network"), null,
+//  /* tooltip */                  N_("Browse bookmarked and local network locations"),
+//                                 action_go_to_network_callback },
+//  /* name, stock id */         { "Zoom In", Gtk.Stock.ZOOM_IN,
+//  /* label, accelerator */       N_("Zoom _In"), "<control>plus",
+//  /* tooltip */                  N_("Increase the view size"),
+//                                 action_zoom_in_callback },
+//  /* name, stock id */         { "ZoomInAccel", null,
+//  /* label, accelerator */       "ZoomInAccel", "<control>equal",
+//  /* tooltip */                  null,
+//                                 action_zoom_in_callback },
+//  /* name, stock id */         { "ZoomInAccel2", null,
+//  /* label, accelerator */       "ZoomInAccel2", "<control>KP_Add",
+//  /* tooltip */                  null,
+//                                 action_zoom_in_callback },
+//  /* name, stock id */         { "Zoom Out", Gtk.Stock.ZOOM_OUT,
+//  /* label, accelerator */       N_("Zoom _Out"), "<control>minus",
+//  /* tooltip */                  N_("Decrease the view size"),
+//                                 action_zoom_out_callback },
+//  /* name, stock id */         { "ZoomOutAccel", null,
+//  /* label, accelerator */       "ZoomOutAccel", "<control>KP_Subtract",
+//  /* tooltip */                  null,
+//                                 action_zoom_out_callback },
+//  /* name, stock id */         { "Zoom Normal", Gtk.Stock.ZOOM_100,
+//  /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
+//  /* tooltip */                  N_("Use the normal view size"),
+//                                 action_zoom_normal_callback },
+//  /* name, stock id */         { "Next Tab", "",
+//  /* label, accelerator */       N_("Next Tab"), "<control>Page_Down",
+//  /* tooltip */                  "",
+//                                 action_next_tab },
+//  /* name, stock id */         { "Previous Tab", "",
+//  /* label, accelerator */       N_("Previous Tab"), "<control>Page_Up",
+//  /* tooltip */                  "",
+//                                 action_previous_tab },
+//  /* name, stock id */         { "Connect to Server", null,
+//  /* label, accelerator */       N_("Connect to _Server..."), null,
+//  /* tooltip */                  N_("Connect to a remote computer or shared disk"),
+//                                 action_connect_to_server_callback },
+//  /* name, stock id */         { "About", Gtk.Stock.ABOUT,
+//  /* label, accelerator */       N_("_About"), null,
+//  /* tooltip */                  N_("Display credits"),
+//                                 show_about },
+//  /* name, stock id */         { "ReportProblem", "",
+//  /* label, accelerator */       N_("Report a Problem..."), null,
+//  /* tooltip */                  N_("File a bug on Launchpad"),
+//                                 show_report },
+//  /* name, stock id */         { "GetHelp", "",
+//  /* label, accelerator */       N_("Get Help Online..."), null,
+//  /* tooltip */                  "",
+//                                 show_app_help },
+//  /* name, stock id */         { "Translate", "",
+//  /* label, accelerator */       N_("Translate This Application..."), null,
+//  /* tooltip */                  "",
+//                                 show_translate }
+
+
+//        };
+
+//        static const Gtk.ToggleActionEntry main_toggle_entries[] = {
+//  /* name, stock id */         { "Show Hidden Files", null,
+//  /* label, accelerator */       N_("Show _Hidden Files"), "<control>H",
+//  /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
+//                                 null,
+//                                 true },
+//  /* name, stock id */         { "Show Hide Sidebar", null,
+//  /* label, accelerator */       N_("_Places"), "F9",
+//  /* tooltip */                  N_("Change the visibility of this window's side pane"),
+//                                 null,
+//  /* is_active */                true }
+
+//        };
+
+//        static const Gtk.RadioActionEntry view_radio_entries[] = {
+//            { "view-as-icons", null,
+//              N_("Icon"), "<control>1", null,
+//              Marlin.ViewMode.ICON },
+//            { "view-as-detailed-list", null,
+//              N_("List"), "<control>2", null,
+//              Marlin.ViewMode.LIST },
+//            { "view-as-columns", null,
+//              N_("Columns"), "<control>3", null,
+//              Marlin.ViewMode.MILLER_COLUMNS }
+
+//        };
     }
 }

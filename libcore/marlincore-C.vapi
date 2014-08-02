@@ -43,6 +43,7 @@ namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
     static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
     static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, void* done_callback = null, void* done_callback_data = null);
+    static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, void* done_callback = null, void* done_callback_data = null);
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -84,6 +85,11 @@ namespace Eel {
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     public bool get_id_from_digit_string (string digit_str, out int id);
     public string format_size (uint64 size);
+}
+
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-string.h")]
+namespace Eel {
+    public string? str_double_underscores (string? str);
 }
 
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]

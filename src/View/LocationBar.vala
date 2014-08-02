@@ -50,10 +50,12 @@ namespace Marlin.View.Chrome
             natural_width = 1200;
         }
 
-        public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
+        //public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
+        public LocationBar (Marlin.View.Window win) {
 //message ("New LocationBar");
             this.win = win;
-            bread = new Breadcrumbs (ui, win);
+            //bread = new Breadcrumbs (ui, win);
+            bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
 
             bread.path_changed.connect (on_path_changed);
@@ -82,7 +84,7 @@ namespace Marlin.View.Chrome
 
     public class Breadcrumbs : BasePathBar {
         Gtk.Menu menu;
-        private Gtk.UIManager ui;
+        //private Gtk.Builder ui;
 
         /* Used for auto-copmpletion */
         GOF.Directory.Async files;
@@ -100,10 +102,11 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
-        public Breadcrumbs (Gtk.UIManager ui, Marlin.View.Window win)
+        //public Breadcrumbs (Gtk.UIManager ui, Marlin.View.Window win)
+        public Breadcrumbs (Marlin.View.Window win)
         {
             /* grab the UIManager */
-            this.ui = ui;
+            //this.ui = ui;
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
