@@ -1572,8 +1572,10 @@ namespace Marlin.Places {
                     return false;
 
                 tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
-                open_selected_bookmark (store, path,
-                    (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
+
+                if (path != null)
+                    open_selected_bookmark (store, path,
+                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
             }
 
             return false;
