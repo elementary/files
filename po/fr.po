@@ -7,730 +7,120 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 18:05-0500\n"
-"PO-Revision-Date: 2014-07-17 04:59+0000\n"
-"Last-Translator: Gaël Rousseau <Rodney78310@gmail.com>\n"
+"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"PO-Revision-Date: 2014-08-01 07:54+0000\n"
+"Last-Translator: qperroit <quentin.perroit@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-08-01 06:59+0000\n"
-"X-Generator: Launchpad (build 17141)\n"
+"X-Launchpad-Export-Date: 2014-08-02 06:27+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "Un gestionnaire de fichiers simple et puissant"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Équipe de traduction"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:136
-#, c-format
-msgid "%u folders"
-msgstr "%u dossiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:142
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:154
-#, c-format
-msgid " and %u other item (%s) selected"
-msgstr " et %u autres objets (%s) sélectionnés"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:155
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " et %u autres éléments (%s) sélectionnés"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:146
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:158
-msgid " selected"
-msgstr " sélectionné"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:148
-#, c-format
-msgid "%u folder"
-msgstr "%u dossier"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:160
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u éléments sélectionnés (%s)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "Dossier personnel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:145
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "Système de fichier"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "Ce dossier n'existe pas"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(en tant qu'administrateur)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Ceci ne vous appartient pas."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "Vous n'avez pas la permission de voir ce dossier."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:125
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "Réseau"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:128
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "Corbeille"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "Ouvrir dans un nouvel onglet"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "Ouvrir avec"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr "Autres applications..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Propriétés"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:141
-msgid "General"
-msgstr "Général"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:149
-msgid "More"
-msgstr "Plus"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:168
-msgid "Preview"
-msgstr "Aperçu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:176
-msgid "Close"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:292
-#, c-format
-msgid "%u selected items"
-msgstr "%u éléments sélectionnés"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr "Calcul de la taille..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:405
-msgid "Created"
-msgstr "Créé"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:407
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Modifié"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:410
-msgid "Last Access"
-msgstr "Dernier accès"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:416
-msgid "Deleted"
-msgstr "Supprimé"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:421
-msgid "MimeType"
-msgstr "Type Mime"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:429
-msgid "MimeTypes"
-msgstr "Types Mime"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:442
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Taille"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Location"
-msgstr "Emplacement"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:452
-msgid "Target"
-msgstr "Cible"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:458
-msgid "Origin Location"
-msgstr "Emplacement d'origine"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:468
-msgid "Info:"
-msgstr "Info :"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:504
-msgid "Other application..."
-msgstr "Autre application…"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:528
-msgid "Open with:"
-msgstr "Ouvrir avec :"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:548
-msgid "Usage:"
-msgstr "Utilisation :"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:553
-msgid "Device usage:"
-msgstr "Utilisation du périphérique :"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:560
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s libres sur %s (%d%% utilisé)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Read"
-msgstr "Lecture"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:704
-msgid "Write"
-msgstr "Écriture"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:709
-msgid "Execute"
-msgstr "Exécution"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:922
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:935
-msgid "Owner"
-msgstr "Propriétaire"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:927
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:939
-msgid "Group"
-msgstr "Groupe"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:943
-msgid "Everyone"
-msgstr "Tout le monde"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:1202
-msgid "Select an application to open "
-msgstr "Sélectionner une application à ouvrir "
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Ce dossier n'existe pas."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "Le dossier \"%s\" est introuvable."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "Créer"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "Créer le dossier \"%s\""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:55
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Impossible de créer le dossier\n"
-"\n"
-"%s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "Fichiers n'est pas votre gestionnaire de fichiers par défaut."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Ignorer"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Annuler"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:437
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Annuler la dernière action"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Rétablir"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:447
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Rétablir la dernière action"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Fichier"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Éditer"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Vue"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:746
-msgid "_Go"
-msgstr "Aller"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:747
-msgid "_Help"
-msgstr "Aide"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:749
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Nouvelle fenêtre"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "Ouvrir une nouvelle fenêtre Files de l'emplacement actuel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:753
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nouvel ongle_t"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Ouvre un nouvel onglet pour l'emplacement actuel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:758
-msgid "_Close"
-msgstr "Fermer"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Fermer ce dossier"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "Ann_uler"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Rétablir"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Ouvrir le dossier _parent"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Ouvrir le dossier parent"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_Précédent"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Aller à l'emplacement précédent"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Suivant"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Aller à l'emplacement visité"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "Actualise_r"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Actualise l'emplacement actuel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Dossier personnel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:788
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Ouvrir votre dossier personnel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Corbeille"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Ouvrir votre dossier de corbeille personnel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:795
-msgid "_Network"
-msgstr "Réseau"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Parcourir les emplacements mis en signets et ceux du réseau local"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "Zoom avant"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Agrandir l'affichage"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "Zoom arrière"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Diminue l'affichage"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Taille normale"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Affiche les éléments avec la taille standard"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Onglet suivant"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Onglet précédent"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "Se connecter au _serveur..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "Se connecter à un ordinateur distant ou à un disque partagé"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:835
-msgid "_About"
-msgstr "_À propos"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Afficher les crédits"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Signaler un bogue…"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Rapporter un bogue sur Launchpad"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Obtenir de l'aide en ligne…"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Traduire cette application…"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Afficher les fichiers cac_hés"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Affiche ou non les fichiers cachés dans la fenêtre actuelle"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Raccourcis"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Afficher/Masquer le panneau latéral de cette fenêtre"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Icône"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:873
-msgid "List"
-msgstr "Liste"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Colonnes"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Personnel"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Vos emplacements et vos signets"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Périphériques"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Vos partitions et périphériques locaux"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:499
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:673
-#, c-format
-msgid "Mount and open %s"
-msgstr "Monter et ouvrir %s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Vos emplacements réseau"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Parcourir le réseau"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1118
-#, c-format
-msgid "Unable to start %s"
-msgstr "Impossible de démarrer %s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1195
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2342
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3884
-msgid "Open in New _Tab"
-msgstr "Ouvrir dans un nouvel _onglet"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1201
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2351
-msgid "Open in New _Window"
-msgstr "Ouvrir dans une nouvelle _fenêtre"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Retirer"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Monter"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Démonter"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "É_jecter"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1244
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1424
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2335
-msgid "Empty _Trash"
-msgstr "_Vider la corbeille"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "Nom du fichier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
+msgid "Size"
+msgstr "Taille"
+
+#: ../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Type"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:139
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-columns-view.c:182
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
+msgid "Modified"
+msgstr "Modifié"
+
+#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
+#: ../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Impossible de renommer %s en %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:600
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:547
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
+#: ../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "Ce dossier est vide."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1230
+#: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "Nom de fichier invalide fourni par le glisser du site XDS"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1388
+#: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Échec lors de la création du lien pour \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1844
+#: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Utiliser « %s » pour ouvrir l'élément sélectionné"
 msgstr[1] "Utiliser « %s » pour ouvrir les éléments sélectionnés"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2037
+#: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Utiliser \"%s\" comme modèle de nouveau document"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2316
+#: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "_Ouvrir avec %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2322
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3872
+#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "_Ouvrir"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2338
+#: ../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Ouvrir dans %'d Nouveaux_Onglets"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2347
+#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
+#: ../src/View/Sidebar.vala:1195
+msgid "Open in New _Tab"
+msgstr "Ouvrir dans un nouvel _onglet"
+
+#: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Ouvrir dans %'d Nouvelles _Fenêtres"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3792
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+msgid "Open in New _Window"
+msgstr "Ouvrir dans une nouvelle _fenêtre"
+
+#: ../src/fm-directory-view.c:3792
 msgid "Set as default"
 msgstr "Définir comme valeur par défaut"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3844
+#: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prépare le déplacement des fichiers sélectionnés avec la commande « Coller »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3848
+#: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Prépare la copie des fichiers sélectionnés avec la commande « Coller »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3852
+#: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
 "« Couper » ou « Copier »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3855
+#: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "Coller dans le dossier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3856
+#: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -738,189 +128,188 @@ msgstr ""
 "Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
 "« Couper » ou « Copier » dans le dossier sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3859
+#: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_Renommer…"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3860
+#: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "Renommer l'élément sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3863
+#: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "Créer un nouveau dossier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3864
+#: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "Créer un nouveau dossier vide dans ce dossier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3866
+#: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "Créer un nouveau _fichier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3868
+#: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "_Fichier Vide"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3869
+#: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "Créer un nouveau fichier vide dans ce dossier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3873
+#: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "Ouvrir l'élément sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3880
+#: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3881
+#: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "Ouvrir chaque élément sélectionné dans une nouvelle fenêtre"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3885
+#: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "Ouvre chaque élément sélectionné dans un nouvel onglet"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3887
+#: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "Ouvrir avec"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3888
+#: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "Choisir une application avec laquelle ouvrir l'élément sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3890
+#: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "Autre _application..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3891
+#: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "Choisir une autre application pour ouvrir l'élément sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3894
+#: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "_Mettre dans la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3895
+#: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "Déplace chaque élément sélectionné dans la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3898
+#: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "Supprimer _définitivement"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3899
+#: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 "Supprime tous les éléments sélectionnés, sans les mettre dans la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3902
+#: ../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_Restaurer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3906
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3189
+#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "Tout sélectionner"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3910
+#: ../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "_Propriétés"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3911
+#: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "Affiche ou modifie les propriétés de chaque élément sélectionné"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:4024
+#: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "Définir la couleur :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:864
+#: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "Mode de disposition"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:865
+#: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "Le mode de disposition"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:283
+#: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "Ran_ger les éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:288
+#: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "_Ordre inversé"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:289
+#: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Affiche les éléments dans l'ordre inverse"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:296
+#: ../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "Par _nom"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:297
+#: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Ranger en lignes les icônes triées par nom"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:300
+#: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "Par _taille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:301
+#: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Ranger en lignes les icônes triées par taille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:304
+#: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "Par _type"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:305
+#: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Ranger en lignes les icônes triées par type"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:308
+#: ../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "Par _date de modification"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:309
+#: ../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Ranger en lignes les icônes triées par date de modification"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:119
+#: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:122
+#: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "FTP publique"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:124
+#: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "FTP (avec identification)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:127
+#: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Protocole Apple pour le traitement de fichier)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:129
+#: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "Partage Windows"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:131
+#: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:133
+#: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV sécurisé (HTTPS)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:180
+#: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "Connexion en cours..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:204
+#: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -929,296 +318,206 @@ msgstr ""
 "serveur.\n"
 "Veuillez vérifier votre installation de gvfs."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:282
+#: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Impossible d'ouvrir le dossier \"%s\" sur \"%s\"."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:292
+#: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Le serveur sur \"%s\" n'a pas été trouvé."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:327
+#: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "Essayer à nouveau"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:392
+#: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "Veuillez vérifier vos paramètres utilisateur."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:422
+#: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Continuer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:760
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1150
+#: ../src/marlin-connect-server-dialog.c:760
+#: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "Se connecter"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:885
+#: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "Se connecter au serveur"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:903
+#: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "Détails du serveur"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:927
+#: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_Serveur :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:947
+#: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_Port :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:965
+#: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Type :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1034
+#: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "P_artage :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1049
+#: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Dossier :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1067
+#: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "Détails relatifs à l'utilisateur"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1090
+#: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "Nom de _domaine :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1105
+#: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "Nom d'_utilisateur :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1120
+#: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "Mot de passe :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1136
+#: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "Se souvenir du mot de passe :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1239
+#: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:102
+#: ../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "_Déplacer ici"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:107
+#: ../src/marlin-dnd.c:107
 msgid "_Copy Here"
 msgstr "_Copier ici"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:112
+#: ../src/marlin-dnd.c:112
 msgid "_Link Here"
 msgstr "Créer un lien ici"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:117
+#: ../src/marlin-dnd.c:117
 msgid "Set as _Background"
 msgstr "Définir comme _arrière-plan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:124
+#: ../src/marlin-dnd.c:124
 msgid "Cancel"
 msgstr "Annuler"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:216
+#: ../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "Échec d'exécution du fichier \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-clipboard-manager.c:369
+#: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "Il n'y a rien à coller dans le presse-papier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:100
+#: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
 msgstr "lister les répertoires en icônes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:101
+#: ../src/fm-icon-view.c:101
 msgid "Icon view"
 msgstr "Vue en icônes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:159
+#: ../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "Simple Clic"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:160
+#: ../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr ""
 "Si les éléments dans la vue peuvent être activés ou non avec un simple clic"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3200
+#: ../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "Méthodes de saisie"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:137
-msgid "Show the version of the program."
-msgstr "Afficher la version du programme."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:139
-msgid "Open uri(s) in new tab"
-msgstr "Ouvrir le(s) uri(s) dans un nouvel onglet"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:141
-msgid "New Window"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:143
-msgid "Quit Files."
-msgstr "Quiter Files"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:145
-msgid "Enable debug logging"
-msgstr "Activer le débogage"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:148
-msgid "[URI...]"
-msgstr "[URI...]"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:151
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Parcourt le système de fichiers avec le gestionnaire de fichiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:178
-msgid "--quit cannot be used with URIs."
-msgstr "--quit ne peut pas être utilisé avec des URI."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:140
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:222
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Opérations sur les fichiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Toutes les opérations de fichier ont terminé avec succès"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:218
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:263
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d opération de fichier active"
-msgstr[1] "%'d opérations de fichier actives"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Afficher les détails"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Afficher la fenêtre de copie"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Annuler toutes les actions en cours"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Explorez vos fichiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Gestionnaire de fichiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Nouvelle fenêtre en tant qu'_administrateur"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "Fichiers"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Aujourd'hui à %-kh%M"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "Hier à %-kh%M"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:93
+#: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b at %-I:%M %p"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:97
+#: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y à %-I:%M %p"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:209
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr "En préparation"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-vfs-extensions.c:71
+#: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (Unicode non valide)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Impossible de déterminer l'emplacement d'origine de « %s » "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:121
+#: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "Impossible de restaurer l'élément depuis la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:302
+#: ../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
 msgstr "lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1748
+#: ../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Échec d'analyse du fichier bureau : %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1786
+#: ../libcore/gof-file.c:1786
 msgid "No Exec field specified"
 msgstr "Aucun champ Exec spécifié"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1806
+#: ../libcore/gof-file.c:1806
 msgid "No URL field specified"
 msgstr "Aucune URL spécifiée"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1812
+#: ../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
 msgstr "Fichier de bureau non valide"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2102
+#: ../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
 msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2122
+#: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "Impossible de renommer les fichiers racines"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Fusionner le dossier « %s » ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1226,305 +525,305 @@ msgstr ""
 "La fusion demandera une confirmation avant chaque remplacement de fichier du "
 "dossier qui entre en conflit avec les fichiers en cours de copie."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Un dossier plus récent portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "Le remplacement va effacer tous les fichiers dans ce répertoire"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Remplacer le dossier « %s » ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Un dossier portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Remplacer le fichier « %s » ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:402
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "Le remplacer va écraser son contenu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Un fichier plus ancien portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Un fichier plus récent portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Un autre fichier portant le même nom existe déjà dans « %s »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:469
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "Fichier original"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:491
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "Taille :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:473
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:494
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "Type :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:476
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:497
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "Dernière modification :"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:490
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "Remplacer par"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:515
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "Fusionner"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:709
+#: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "Choi_sissez un nouveau nom pour la destination"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:723
+#: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:735
+#: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "Appliquer cette action pour tous les fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:746
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "_Ignorer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:751
+#: ../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "Re_nommer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:757
+#: ../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "Remplacer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:830
+#: ../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "Conflit de fichier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-stock-dialogs.c:34
+#: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "Afficher plus de _détails"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "Tout i_gnorer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "_Réessayer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "Tout _supprimer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "_Remplacer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "_Tout remplacer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "_Fusionner"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "_Tout fusionner"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "Copier _quand même"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:296
+#: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d seconde"
 msgstr[1] "%'d secondes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:301
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:312
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minute"
 msgstr[1] "%'d minutes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:311
+#: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d heure"
 msgstr[1] "%'d heures"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:319
+#: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "environ %'d heure"
 msgstr[1] "environ %'d heures"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:395
+#: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "Lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:399
+#: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
 msgstr "Un autre lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:415
+#: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'der lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'de lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:423
+#: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'de lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:427
+#: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'de lien vers %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:465
+#: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:467
+#: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (autre copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:472
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:474
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:484
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr "ème copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:477
+#: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr "ère copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:479
+#: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr "ème copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr "ème copie)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:498
+#: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:500
+#: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (autre copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:503
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:505
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:507
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:521
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:515
+#: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'dère copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:517
+#: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:519
+#: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:619
+#: ../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " ("
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:627
+#: ../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Souhaitez-vous vraiment supprimer définitivement « %B » de la corbeille ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1386
+#: ../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1539,24 +838,29 @@ msgstr[1] ""
 "Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
 "sélectionnés de la corbeille ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1396
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Si vous supprimez un élément, il sera définitivement perdu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1417
+#: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
 msgstr "Supprimer tous les éléments de la corbeille ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1421
+#: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tout les éléments dans la corbeille seront définitivement supprimés."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1452
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+msgid "Empty _Trash"
+msgstr "_Vider la corbeille"
+
+#: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Souhaitez-vous vraiment supprimer définitivement « %B » ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1455
+#: ../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1567,33 +871,33 @@ msgstr[1] ""
 "Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
 "sélectionnés ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1480
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1512
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "Suppression de fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1506
+#: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Encore %'d fichier à supprimer"
 msgstr[1] "Encore %'d fichiers à supprimer"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1526
+#: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T restante"
 msgstr[1] "%T restantes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1594
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1628
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1667
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1744
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2590
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "Erreur lors de la suppression."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1598
+#: ../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1601,21 +905,21 @@ msgstr ""
 "Les fichiers dans le dossier « %B » ne peuvent être supprimés car vous "
 "n'avez pas la permission de les lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1601
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2649
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2649
+#: ../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Une erreur est survenue lors de l'obtention des informations concernant les "
 "fichiers dans le dossier « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1610
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3654
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "_Ignorer les fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1631
+#: ../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1623,39 +927,39 @@ msgstr ""
 "Le dossier « %B » ne peut être supprimé car vous n'avez pas la permission de "
 "le lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1634
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2688
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3690
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2688
+#: ../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Une erreur s'est produite lors de la lecture du dossier « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1668
+#: ../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
 msgstr "Impossible de supprimer le dossier %B."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1745
+#: ../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "Une erreur s'est produite lors de la suppression de %B."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1821
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1833
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "Mise à la corbeille des fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1835
+#: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Encore %'d fichier à mettre à la corbeille"
 msgstr[1] "Encore %'d fichiers à mettre à la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1890
+#: ../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 "Impossible de déplacer le fichier vers la corbeille. Le supprimer "
 "immédiatement ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1891
+#: ../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1663,27 +967,27 @@ msgstr ""
 "Ce fichier est situé sur un périphérique externe et ne peut pas être déplacé "
 "vers la corbeille. Après suppression, celui-ci ne pourra pas être restauré."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2073
+#: ../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
 msgstr "Mise à la corbeille des fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2075
+#: ../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
 msgstr "Suppression des fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2147
+#: ../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
 msgstr "Impossible d'éjecter %V"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2149
+#: ../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
 msgstr "Impossible de démonter %V"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2325
+#: ../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Souhaitez-vous vider la corbeille avant de démonter ?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2327
+#: ../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1692,61 +996,61 @@ msgstr ""
 "être vidée. Tous les éléments dans la corbeille seront définitivement "
 "supprimés."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2333
+#: ../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
 msgstr "Ne _pas vider la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2447
+#: ../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Impossible de monter %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2525
+#: ../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Préparation de la copie de %'d fichier (%S)"
 msgstr[1] "Préparation de la copie de %'d fichiers (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2531
+#: ../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Préparation du déplacement de %'d fichier (%S)"
 msgstr[1] "Préparation du déplacement de %'d fichiers (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2537
+#: ../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Préparation de la suppression de %'d fichier (%S)"
 msgstr[1] "Préparation de la suppression de %'d fichiers (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2543
+#: ../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Préparation de la mise à la corbeille de %'d fichier"
 msgstr[1] "Préparation de la mise à la corbeille de %'d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2586
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3506
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3637
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3682
+#: ../libcore/marlin-file-operations.c:2586
+#: ../libcore/marlin-file-operations.c:3506
+#: ../libcore/marlin-file-operations.c:3637
+#: ../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "Erreur lors de la copie."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2588
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3635
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3680
+#: ../libcore/marlin-file-operations.c:2588
+#: ../libcore/marlin-file-operations.c:3635
+#: ../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "Erreur lors du déplacement."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2592
+#: ../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
 msgstr "Erreur lors de la mise à la corbeille des fichiers."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2646
+#: ../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1754,7 +1058,7 @@ msgstr ""
 "Impossible de traiter les fichiers du dossier « %B » car vous n'avez pas la "
 "permission de les lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1762,7 +1066,7 @@ msgstr ""
 "Impossible de traiter le dossier « %B » car vous n'avez pas la permission de "
 "le lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2762
+#: ../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1770,30 +1074,30 @@ msgstr ""
 "Impossible de traiter le fichier \"%B\" car vous n'avez pas la permission de "
 "le lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2765
+#: ../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "Erreur lors de l'obtention d'informations concernant « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2865
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2907
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2940
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2970
+#: ../libcore/marlin-file-operations.c:2865
+#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2940
+#: ../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "Erreur lors de la copie vers « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2869
+#: ../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "Vous n'avez pas la permission d'accéder au dossier de destination."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2871
+#: ../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "Erreur lors de l'obtention d'informations concernant la destination."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2908
+#: ../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr "La destination n'est pas un dossier."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1801,76 +1105,76 @@ msgstr ""
 "La destination n'a plus assez d'espace libre. Essayez de supprimer des "
 "fichiers pour libérer de l'espace."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2943
+#: ../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S est disponible, mais %S est requis."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2971
+#: ../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr "La destination est en lecture seule."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3032
+#: ../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Déplacement de « %B » vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3033
+#: ../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Copie de « %B » vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3037
+#: ../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr "Duplication de « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Déplacement de %'d fichier (de « %B ») vers « %B »"
 msgstr[1] "Déplacement de %'d fichiers (de « %B ») vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3044
+#: ../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Copie de %'d fichier (de « %B ») vers « %B »"
 msgstr[1] "Copie de %'d fichiers (de « %B ») vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3051
+#: ../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplication de %'d fichier (de « %B »)"
 msgstr[1] "Duplication de %'d fichiers (de « %B »)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3060
+#: ../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Déplacement de %'d fichier vers « %B »"
 msgstr[1] "Déplacement de %'d fichiers vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3064
+#: ../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Copie %'d fichier vers «%B»"
 msgstr[1] "Copie %'d fichiers vers «%B»"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3069
+#: ../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Duplication de %'d fichier"
 msgstr[1] "Duplication de %'d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3120
+#: ../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr "%S sur %S"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3131
+#: ../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S sur %S—%T restante (%S/s)"
 msgstr[1] "%S sur %S—%T restantes (%S/s)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3510
+#: ../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1878,11 +1182,11 @@ msgstr ""
 "Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
 "le créer dans la destination."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3513
+#: ../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Une erreur s'est produite lors de la création du dossier « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3642
+#: ../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1890,7 +1194,7 @@ msgstr ""
 "Impossible de copier les fichiers du dossier « %B » car vous n'avez pas la "
 "permission de les lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3687
+#: ../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1898,559 +1202,1213 @@ msgstr ""
 "Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
 "le lire."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3732
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4433
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5020
+#: ../libcore/marlin-file-operations.c:3732
+#: ../libcore/marlin-file-operations.c:4433
+#: ../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr "Erreur lors du déplacement de « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3733
+#: ../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr "Impossible de supprimer le dossier source."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3818
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3859
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4435
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4506
+#: ../libcore/marlin-file-operations.c:3818
+#: ../libcore/marlin-file-operations.c:3859
+#: ../libcore/marlin-file-operations.c:4435
+#: ../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr "Erreur lors de la copie de « %B »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3819
+#: ../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Impossible de supprimer les fichiers du dossier préexistant %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3860
+#: ../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Impossible de supprimer le fichier préexistant « %F »."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4189
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4189
+#: ../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr "Impossible de déplacer un dossier vers lui-même."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4861
+#: ../libcore/marlin-file-operations.c:4190
+#: ../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr "Impossible de copier un dossier vers lui-même."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4862
+#: ../libcore/marlin-file-operations.c:4191
+#: ../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr "Le dossier de destination se trouve à l'intérieur du dossier source."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4222
+#: ../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr "Impossible de déplacer un fichier sur lui-même."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4223
+#: ../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr "Impossible de copier un fichier sur lui-même."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4224
+#: ../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr "Le fichier source serait écrasé par la destination."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4437
+#: ../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Impossible de supprimer le fichier préexistant portant le même nom dans %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Erreur lors de la copie du fichier dans %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4734
+#: ../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr "Copie des fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4760
+#: ../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr "Préparation pour se déplacer vers « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4772
+#: ../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Préparation du déplacement de %'d fichier"
 msgstr[1] "Préparation du déplacement de %'d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5021
+#: ../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Erreur lors du déplacement du fichier dans %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5284
+#: ../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr "Déplacement des fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5314
+#: ../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr "Création des liens dans « %B »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5325
+#: ../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Création d'un lien vers %'d fichier"
 msgstr[1] "Création des liens vers %'d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5460
+#: ../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr "Erreur lors de la création du lien vers %B."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5462
+#: ../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr ""
 "Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5465
+#: ../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr "La cible ne prend pas en charge les liens symboliques."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5468
+#: ../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Erreur lors de la création du lien symbolique dans %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5796
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5799
+#: ../libcore/marlin-file-operations.c:5796
+#: ../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr "Définition des permissions"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6050
+#: ../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr "nouveau dossier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6058
+#: ../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr "nouveau fichier"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6229
+#: ../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr "Erreur lors de la création du répertoire %B."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6231
+#: ../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr "Erreur lors de la création du fichier %B."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6233
+#: ../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Erreur lors de la création du répertoire dans %F."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6543
+#: ../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
 msgstr "Vidage de la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6551
+#: ../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr "Vidage de la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Supprimer %d fichiers copiés"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "Supprimer « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1212
+#: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Supprimer %d doublons"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1223
+#: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Restaurer %d éléments vers '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1227
+#: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Restaurer « %s » vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1403
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Renommer « %s » en « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1450
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Restaurer %d éléments de la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Restaurer « %s » vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1274
+#: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Restaurer %d éléments vers la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1277
+#: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Restaure « %s » vers la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Supprimer les liens vers %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1289
+#: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Supprime le lien vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1299
+#: ../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Restaure les permissions d'origine des éléments inclus dans « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1307
+#: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Restaure les permissions d'origine de « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1316
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Restaure le groupe de « %s » à « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1326
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Restaure le propriétaire de « %s » à « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1365
+#: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Copie de %d éléments vers '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1369
+#: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Copie de « %s » vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1377
+#: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Duplication de %d éléments dans « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1382
+#: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Dupliquer « %s » vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1390
+#: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Déplacement de %d éléments dans « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1394
+#: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Déplacer « %s » vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1412
+#: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1419
+#: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Créer un fichier vide « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Créer un nouveau dossier « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1434
+#: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Déplacer %d objets vers la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1440
+#: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Mettre « %s » à la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1453
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Restaure « %s » depuis la corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1462
+#: ../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "Créer des liens vers %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1465
+#: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Créer le lien vers « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1474
+#: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Définir les permissions des éléments inclus dans « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1482
+#: ../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Définir les permissions de « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1491
+#: ../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Définir le groupe de « %s » à « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1501
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Définir le propriétaire de « %s » à « %s »"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1533
+#: ../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Annuler la copie de %d élément"
 msgstr[1] "_Annuler la copie de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1538
+#: ../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Annuler la duplication de %d élément"
 msgstr[1] "_Annuler la duplication de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1543
+#: ../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Annuler le déplacement de %d élément"
 msgstr[1] "_Annuler le déplacement de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1548
+#: ../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Annuler le renommage de %d élément"
 msgstr[1] "_Annuler le renommage de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1552
+#: ../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_Annuler la création d'un fichier vide"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1555
+#: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_Annuler la création d'un fichier créé à partir d'un modèle"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1559
+#: ../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Annuler la création de %d dossier"
 msgstr[1] "_Annuler la création de %d dossiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1564
+#: ../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Annuler le déplacement vers la corbeille de %d élément"
 msgstr[1] "_Annuler le déplacement vers la corbeille de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1569
+#: ../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Annuler la restauration de la corbeille de %d élément"
 msgstr[1] "_Annuler la restauration de la corbeille de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1574
+#: ../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Annuler la création du lien vers %d élément"
 msgstr[1] "_Annuler la création du lien vers %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1579
+#: ../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Annuler la suppression de %d élément"
 msgstr[1] "_Annuler la suppression de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1584
+#: ../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Annuler le changement récursif des permissions de %d fichier"
 msgstr[1] "Annuler le changement récursif des permissions de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1590
+#: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Annuler le changement des permissions de %d fichier"
 msgstr[1] "Annuler le changement des permissions de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1595
+#: ../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Annuler le changement de groupe de %d fichier"
 msgstr[1] "Annuler le changement de groupe de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1600
+#: ../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Annuler le changement de propriétaire de %d fichier"
 msgstr[1] "Annuler le changement de propriétaire de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1628
+#: ../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Rétablir la copie de %d élément"
 msgstr[1] "_Rétablir la copie de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1633
+#: ../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Rétablir la duplication de %d élément"
 msgstr[1] "_Rétablir la duplication de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1638
+#: ../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Rétablir le déplacement de %d l'élément"
 msgstr[1] "_Rétablir le déplacement des %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1643
+#: ../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Rétablir le renommage de %d élément"
 msgstr[1] "_Rétablir le renommage de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1647
+#: ../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "_Rétablir la création d'un fichier vide"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1650
+#: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "_Rétablir la création d'un fichier à partir d'un modèle"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1654
+#: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Rétablir la création de %d dossier"
 msgstr[1] "_Rétablir la création de %d dossiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1659
+#: ../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Rétablir la mise à la corbeille de %d l'élément"
 msgstr[1] "_Rétablir la mise à la corbeille des %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1664
+#: ../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Rétablir la restauration depuis la corbeille de %d l'élément"
 msgstr[1] "_Rétablir la restauration depuis la corbeille des %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1669
+#: ../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Rétablir la création de raccourçi vers %d élément"
 msgstr[1] "_Rétablir la création de raccourçi vers %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1674
+#: ../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Rétablir la suppression de %d élément"
 msgstr[1] "_Rétablir la suppression de %d éléments"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1679
+#: ../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "Rétablir le changement récursif des permissions de %d fichier"
 msgstr[1] "Rétablir le changement récursif des permissions de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1685
+#: ../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Rétablir le changement des permissions de %d fichier"
 msgstr[1] "Rétablir le changement des permissions de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1690
+#: ../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Rétablir le changement de groupe de %d fichier"
 msgstr[1] "Rétablir le changement de groupe de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1695
+#: ../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Rétablir le changement de propriétaire de %d fichier"
 msgstr[1] "Rétablir le changement de propriétaire de %d fichiers"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libwidgets/LocationBar.vala:284
-#, c-format
-msgid "Go to %s"
-msgstr "Aller à %s"
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Un gestionnaire de fichiers simple et puissant"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:34
+#: ../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Équipe de traduction"
+
+#: ../src/View/OverlayBar.vala:136
+msgid "%u folders"
+msgstr "%u dossiers"
+
+#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+msgid " and %u other item (%s) selected"
+msgstr " et %u autres objets (%s) sélectionnés"
+
+#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+msgid " and %u other items (%s) selected"
+msgstr " et %u autres éléments (%s) sélectionnés"
+
+#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr " sélectionné"
+
+#: ../src/View/OverlayBar.vala:148
+msgid "%u folder"
+msgstr "%u dossier"
+
+#: ../src/View/OverlayBar.vala:160
+msgid "%u items selected (%s)"
+msgstr "%u éléments sélectionnés (%s)"
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr "Chargement en cours…"
+
+#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
+msgid "Home"
+msgstr "Dossier personnel"
+
+#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
+msgid "File System"
+msgstr "Système de fichier"
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "Ce dossier n'existe pas"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(en tant qu'administrateur)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Ceci ne vous appartient pas."
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "Vous n'avez pas la permission de voir ce dossier."
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr "Connexion en cours…"
+
+#: ../src/View/LocationBar.vala:121
+msgid "AFP"
+msgstr "AFP"
+
+#: ../src/View/LocationBar.vala:122
+msgid "DAV"
+msgstr "DAV"
+
+#: ../src/View/LocationBar.vala:123
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../src/View/LocationBar.vala:124
+msgid "FTP"
+msgstr "FTP"
+
+#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "Réseau"
+
+#: ../src/View/LocationBar.vala:126
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../src/View/LocationBar.vala:127
+msgid "SMB"
+msgstr "SMB"
+
+#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "Corbeille"
+
+#: ../src/View/LocationBar.vala:327
+msgid "Open in New Tab"
+msgstr "Ouvrir dans un nouvel onglet"
+
+#: ../src/View/LocationBar.vala:334
+msgid "Open with"
+msgstr "Ouvrir avec"
+
+#: ../src/View/LocationBar.vala:365
+msgid "Other Application .."
+msgstr "Autres applications..."
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr "Dans ce dossier"
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr "Marque-pages"
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr "Partout ailleurs"
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr "Aucun résultat trouvé"
+
+#: ../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "Propriétés"
+
+#: ../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr "Général"
+
+#: ../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr "Plus"
+
+#: ../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "Aperçu"
+
+#: ../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr "Fermer"
+
+#: ../src/View/PropertiesWindow.vala:292
+msgid "%u selected items"
+msgstr "%u éléments sélectionnés"
+
+#: ../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr "Calcul de la taille..."
+
+#: ../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "Créé"
+
+#: ../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "Dernier accès"
+
+#: ../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "Supprimé"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "Type Mime"
+
+#: ../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "Types Mime"
+
+#: ../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "Emplacement"
+
+#: ../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "Cible"
+
+#: ../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "Emplacement d'origine"
+
+#: ../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr "Info :"
+
+#: ../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "Autre application…"
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr "Ouvrir avec :"
+
+#: ../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr "Utilisation :"
+
+#: ../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr "Utilisation du périphérique :"
+
+#: ../src/View/PropertiesWindow.vala:560
+msgid "%s free of %s (%d%% used)"
+msgstr "%s libres sur %s (%d%% utilisé)"
+
+#: ../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "Lecture"
+
+#: ../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "Écriture"
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "Exécution"
+
+#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "Groupe"
+
+#: ../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "Tout le monde"
+
+#: ../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
+msgstr "Sélectionner une application à ouvrir "
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr "Ce dossier n'existe pas."
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "Le dossier \"%s\" est introuvable."
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "Créer"
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "Créer le dossier \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Impossible de créer le dossier\n"
+"\n"
+"%s"
+
+#: ../src/View/Window.vala:142
+msgid "Files isn't your default file manager."
+msgstr "Fichiers n'est pas votre gestionnaire de fichiers par défaut."
+
+#: ../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr "Définir par défaut"
+
+#: ../src/View/Window.vala:153
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: ../src/View/Window.vala:436
+msgid "Undo"
+msgstr "Annuler"
+
+#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
+msgid "Undo the last action"
+msgstr "Annuler la dernière action"
+
+#: ../src/View/Window.vala:446
+msgid "Redo"
+msgstr "Rétablir"
+
+#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
+msgid "Redo the last action"
+msgstr "Rétablir la dernière action"
+
+#: ../src/View/Window.vala:743
+msgid "_File"
+msgstr "_Fichier"
+
+#: ../src/View/Window.vala:744
+msgid "_Edit"
+msgstr "_Éditer"
+
+#: ../src/View/Window.vala:745
+msgid "_View"
+msgstr "_Vue"
+
+#: ../src/View/Window.vala:746
+msgid "_Go"
+msgstr "Aller"
+
+#: ../src/View/Window.vala:747
+msgid "_Help"
+msgstr "Aide"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Nouvelle fenêtre"
+
+#: ../src/View/Window.vala:750
+msgid "Open another Files window for the displayed location"
+msgstr "Ouvrir une nouvelle fenêtre Files de l'emplacement actuel"
+
+#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nouvel ongle_t"
+
+#: ../src/View/Window.vala:754
+msgid "Open another tab for the displayed location"
+msgstr "Ouvre un nouvel onglet pour l'emplacement actuel"
+
+#: ../src/View/Window.vala:758
+msgid "_Close"
+msgstr "Fermer"
+
+#: ../src/View/Window.vala:759
+msgid "Close this folder"
+msgstr "Fermer ce dossier"
+
+#: ../src/View/Window.vala:764
+msgid "_Undo"
+msgstr "Ann_uler"
+
+#: ../src/View/Window.vala:767
+msgid "_Redo"
+msgstr "_Rétablir"
+
+#: ../src/View/Window.vala:770
+msgid "_Find"
+msgstr "_Rechercher"
+
+#: ../src/View/Window.vala:771
+msgid "Search the current folder"
+msgstr "Rechercher dans ce dossier"
+
+#: ../src/View/Window.vala:773
+msgid "Open _Parent"
+msgstr "Ouvrir le dossier _parent"
+
+#: ../src/View/Window.vala:774
+msgid "Open the parent folder"
+msgstr "Ouvrir le dossier parent"
+
+#: ../src/View/Window.vala:776
+msgid "_Back"
+msgstr "_Précédent"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the previous visited location"
+msgstr "Aller à l'emplacement précédent"
+
+#: ../src/View/Window.vala:780
+msgid "_Forward"
+msgstr "_Suivant"
+
+#: ../src/View/Window.vala:781
+msgid "Go to the next visited location"
+msgstr "Aller à l'emplacement visité"
+
+#: ../src/View/Window.vala:783
+msgid "_Reload"
+msgstr "Actualise_r"
+
+#: ../src/View/Window.vala:784
+msgid "Reload the current location"
+msgstr "Actualise l'emplacement actuel"
+
+#: ../src/View/Window.vala:787
+msgid "_Home Folder"
+msgstr "_Dossier personnel"
+
+#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
+msgid "Open your personal folder"
+msgstr "Ouvrir votre dossier personnel"
+
+#: ../src/View/Window.vala:791
+msgid "_Trash"
+msgstr "_Corbeille"
+
+#: ../src/View/Window.vala:792
+msgid "Open your personal trash folder"
+msgstr "Ouvrir votre dossier de corbeille personnel"
+
+#: ../src/View/Window.vala:795
+msgid "_Network"
+msgstr "Réseau"
+
+#: ../src/View/Window.vala:796
+msgid "Browse bookmarked and local network locations"
+msgstr "Parcourir les emplacements mis en signets et ceux du réseau local"
+
+#: ../src/View/Window.vala:799
+msgid "Zoom _In"
+msgstr "Zoom avant"
+
+#: ../src/View/Window.vala:800
+msgid "Increase the view size"
+msgstr "Agrandir l'affichage"
+
+#: ../src/View/Window.vala:811
+msgid "Zoom _Out"
+msgstr "Zoom arrière"
+
+#: ../src/View/Window.vala:812
+msgid "Decrease the view size"
+msgstr "Diminue l'affichage"
+
+#: ../src/View/Window.vala:819
+msgid "Normal Si_ze"
+msgstr "Taille normale"
+
+#: ../src/View/Window.vala:820
+msgid "Use the normal view size"
+msgstr "Affiche les éléments avec la taille standard"
+
+#: ../src/View/Window.vala:823
+msgid "Next Tab"
+msgstr "Onglet suivant"
+
+#: ../src/View/Window.vala:827
+msgid "Previous Tab"
+msgstr "Onglet précédent"
+
+#: ../src/View/Window.vala:831
+msgid "Connect to _Server..."
+msgstr "Se connecter au _serveur..."
+
+#: ../src/View/Window.vala:832
+msgid "Connect to a remote computer or shared disk"
+msgstr "Se connecter à un ordinateur distant ou à un disque partagé"
+
+#: ../src/View/Window.vala:835
+msgid "_About"
+msgstr "_À propos"
+
+#: ../src/View/Window.vala:836
+msgid "Display credits"
+msgstr "Afficher les crédits"
+
+#: ../src/View/Window.vala:839
+msgid "Report a Problem..."
+msgstr "Signaler un bogue…"
+
+#: ../src/View/Window.vala:840
+msgid "File a bug on Launchpad"
+msgstr "Rapporter un bogue sur Launchpad"
+
+#: ../src/View/Window.vala:843
+msgid "Get Help Online..."
+msgstr "Obtenir de l'aide en ligne…"
+
+#: ../src/View/Window.vala:847
+msgid "Translate This Application..."
+msgstr "Traduire cette application…"
+
+#: ../src/View/Window.vala:856
+msgid "Show _Hidden Files"
+msgstr "Afficher les fichiers cac_hés"
+
+#: ../src/View/Window.vala:857
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Affiche ou non les fichiers cachés dans la fenêtre actuelle"
+
+#: ../src/View/Window.vala:861
+msgid "_Places"
+msgstr "_Raccourcis"
+
+#: ../src/View/Window.vala:862
+msgid "Change the visibility of this window's side pane"
+msgstr "Afficher/Masquer le panneau latéral de cette fenêtre"
+
+#: ../src/View/Window.vala:870
+msgid "Icon"
+msgstr "Icône"
+
+#: ../src/View/Window.vala:873
+msgid "List"
+msgstr "Liste"
+
+#: ../src/View/Window.vala:876
+msgid "Columns"
+msgstr "Colonnes"
+
+#: ../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "Personnel"
+
+#: ../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "Vos emplacements et vos signets"
+
+#: ../src/View/Sidebar.vala:446
+msgid "Open the Trash"
+msgstr "Ouvrir la corbeille"
+
+#: ../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "Périphériques"
+
+#: ../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "Vos partitions et périphériques locaux"
+
+#: ../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
+msgstr "Ouvrir le contenu du dossier système"
+
+#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
+msgid "Mount and open %s"
+msgstr "Monter et ouvrir %s"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "Vos emplacements réseau"
+
+#: ../src/View/Sidebar.vala:598
+msgid "Entire Network"
+msgstr "Tout le réseau"
+
+#: ../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "Parcourir le réseau"
+
+#: ../src/View/Sidebar.vala:1118
+msgid "Unable to start %s"
+msgstr "Impossible de démarrer %s"
+
+#: ../src/View/Sidebar.vala:1187
+msgid "Open"
+msgstr "Ouvrir"
+
+#: ../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "Retirer"
+
+#: ../src/View/Sidebar.vala:1216
+msgid "Rename"
+msgstr "Renommer"
+
+#: ../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "_Monter"
+
+#: ../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "_Démonter"
+
+#: ../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "É_jecter"
+
+#: ../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
+msgstr "Se connecter à un serveur..."
+
+#: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Précedent"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:39
+#: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:75
+#: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "Vue en grille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:78
+#: ../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "Vue en liste"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:81
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "Vue en colonnes"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:38
+#: ../src/Application.vala:137
+msgid "Show the version of the program."
+msgstr "Afficher la version du programme."
+
+#: ../src/Application.vala:139
+msgid "Open uri(s) in new tab"
+msgstr "Ouvrir le(s) uri(s) dans un nouvel onglet"
+
+#: ../src/Application.vala:141
+msgid "New Window"
+msgstr "Nouvelle fenêtre"
+
+#: ../src/Application.vala:143
+msgid "Quit Files."
+msgstr "Quiter Files"
+
+#: ../src/Application.vala:145
+msgid "Enable debug logging"
+msgstr "Activer le débogage"
+
+#: ../src/Application.vala:148
+msgid "[URI...]"
+msgstr "[URI...]"
+
+#: ../src/Application.vala:151
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Parcourt le système de fichiers avec le gestionnaire de fichiers"
+
+#: ../src/Application.vala:178
+msgid "--quit cannot be used with URIs."
+msgstr "--quit ne peut pas être utilisé avec des URI."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Opérations sur les fichiers"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Toutes les opérations de fichier ont terminé avec succès"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d opération de fichier active"
+msgstr[1] "%'d opérations de fichier actives"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Afficher les détails"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Afficher la fenêtre de copie"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Annuler toutes les actions en cours"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Explorez vos fichiers"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Gestionnaire de fichiers"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Nouvelle fenêtre en tant qu'_administrateur"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Fichiers"
+
+#: ../libwidgets/LocationBar.vala:284
+msgid "Go to %s"
+msgstr "Aller à %s"
+
+#: ../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "Ces éléments peuvent être supprimés en vidant la Corbeille"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Vider la Corbeille"

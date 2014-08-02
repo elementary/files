@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-07-31 18:05-0500\n"
+"POT-Creation-Date: 2014-08-01 14:48-0500\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -15,720 +15,110 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-01 06:58+0000\n"
-"X-Generator: Launchpad (build 17141)\n"
+"X-Launchpad-Export-Date: 2014-08-02 06:26+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "Fitxategi-kudeatzaile sinple eta ahaltsua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Launchpadeko itzultzaileak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:136
-#, c-format
-msgid "%u folders"
-msgstr "%u karpeta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:142
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:154
-#, c-format
-msgid " and %u other item (%s) selected"
-msgstr " eta hautatutako beste %u elementu (%s)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:155
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " eta %u bestelako elementu (%s) hautatuta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:146
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:158
-msgid " selected"
-msgstr " hautatuta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:148
-#, c-format
-msgid "%u folder"
-msgstr "%u karpeta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:160
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u elementu hautatuta (%s)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "Karpeta nagusia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:145
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "Fitxategi-sistema"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "Karpeta hau ez da existitzen"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(administratzaile bezala)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Ez zara honen jabea."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "Ez duzu karpeta hau ikusteko baimenik."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:125
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "Sarea"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:128
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "Zakarrontzia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "Ireki fitxa berrian"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "Ireki honekin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr "Beste aplikazio bat..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Propietateak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:141
-msgid "General"
-msgstr "Orokorra"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:149
-msgid "More"
-msgstr "Gehiago"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:168
-msgid "Preview"
-msgstr "Aurrebista"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:176
-msgid "Close"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:292
-#, c-format
-msgid "%u selected items"
-msgstr "%u elementu hautatuta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr "Tamaina kalkulatzen..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:405
-msgid "Created"
-msgstr "Sortua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:407
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Aldatua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:410
-msgid "Last Access"
-msgstr "Azken atzipena"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:416
-msgid "Deleted"
-msgstr "Ezabatua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:421
-msgid "MimeType"
-msgstr "Mime mota"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:429
-msgid "MimeTypes"
-msgstr "Mime motak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:442
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Tamaina"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Location"
-msgstr "Kokalekua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:452
-msgid "Target"
-msgstr "Helburua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:458
-msgid "Origin Location"
-msgstr "Jatorrizko kokalekua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:468
-msgid "Info:"
-msgstr "Informazioa:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:504
-msgid "Other application..."
-msgstr "Beste aplikazio bat..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:528
-msgid "Open with:"
-msgstr "Ireki honekin:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:548
-msgid "Usage:"
-msgstr "Erabilera:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:553
-msgid "Device usage:"
-msgstr "Gailuaren erabilera:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:560
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s libre %s(e)tik (%%%d erabilita)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Read"
-msgstr "Irakurri"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:704
-msgid "Write"
-msgstr "Idatzi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:709
-msgid "Execute"
-msgstr "Exekutatu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:922
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:935
-msgid "Owner"
-msgstr "Jabea"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:927
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:939
-msgid "Group"
-msgstr "Taldea"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:943
-msgid "Everyone"
-msgstr "Guztiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:1202
-msgid "Select an application to open "
-msgstr "Hautatu aplikazio bat hau irekitzeko: "
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Karpeta hau ez da existitzen."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" karpeta ezin izan da aurkitu."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "Sortu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "Sortu \"%s\" karpeta"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:55
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Huts egin du karpeta sortzean\n"
-"\n"
-"%s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "Files ez da zure fitxategi-kudeatzaile lehenetsia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Ezikusi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Desegin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:437
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Desegin azken ekintza"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Berregin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:447
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Berregin azken ekintza"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Fitxategia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Ikusi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:746
-msgid "_Go"
-msgstr "_Joan"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:749
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "_Leiho berria"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "Ireki beste Files leiho bat bistaratutako kokalekuarentzat"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:753
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "_Fitxa berria"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Ireki fitxa berri bat bistaratutako kokalekuarentzat"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_Itxi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Itxi karpeta hau"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_Desegin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Berregin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Ireki g_urasoa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Ireki karpeta gurasoa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_Atzera"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Joan bisitatutako aurreko kokalekura"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Aurrera"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Joan bisitatutako hurrengo kokalekura"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "_Birkargatu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Birkargatu uneko kokalekua"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Karpeta nagusia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:788
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Ireki zure karpeta pertsonala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Zakarrontzia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Ireki zure zakarrontzi pertsonala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_Sarea"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Arakatu laster-markatutako eta sare lokaleko kokalekuak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "Zooma ha_ndiagotu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Handiagotu ikuspegiaren tamaina"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "Zooma t_xikiagotu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Txikiagotu ikuspegiaren tamaina"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Tamaina _normala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Erabili ikuspegi-tamaina normala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Hurrengo fitxa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Aurreko fitxa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "Konektatu _zerbitzarira..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "Konektatu urruneko ordenagailu edo partekatutako diskora"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:835
-msgid "_About"
-msgstr "Honi _buruz"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Bistaratu kredituak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Arazo baten berri eman..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Errore bat jakinarazi Launchpad-en"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Lortu laguntza linean..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Itzuli aplikazio hau..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Erakutsi ezkutuko _fitxategiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Txandakatu fitxategi ezkutuak bistaratzea uneko leihoan"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Lekuak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Aldatu leiho honen albo-panelaren ikusgarritasuna"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Ikonoa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:873
-msgid "List"
-msgstr "Zerrenda"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Zutabeak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Pertsonala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Zure ohiko lekuak eta laster-markak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Gailuak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Zure partizio lokalak eta gailuak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:499
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:673
-#, c-format
-msgid "Mount and open %s"
-msgstr "Muntatu eta ireki %s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Zure sareko lekuak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Arakatu sareko edukiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1118
-#, c-format
-msgid "Unable to start %s"
-msgstr "Ezin da %s abiarazi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1195
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2342
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3884
-msgid "Open in New _Tab"
-msgstr "Ireki _fitxa berrian"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1201
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2351
-msgid "Open in New _Window"
-msgstr "Ireki leiho _berrian"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Kendu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Muntatu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Desmuntatu"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "_Egotzi"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1244
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1424
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2335
-msgid "Empty _Trash"
-msgstr "Hustu _zakarrontzia"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "Fitxategi-izena"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
+msgid "Size"
+msgstr "Tamaina"
+
+#: ../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Mota"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:139
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-columns-view.c:182
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
+msgid "Modified"
+msgstr "Aldatua"
+
+#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
+#: ../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Huts egin du %s berrizendatzean %s bezala"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:600
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:547
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
+#: ../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "Karpeta hau hutsik dago."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1230
+#: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "XDS arrastatze lekuak emandako fitxategi-izena baliogabea da"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1388
+#: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Huts  \"%s\" URLrako lotura bat sortzerakoan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1844
+#: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Erabili \"%s\" hautatutako elementua irekitzeko"
 msgstr[1] "Erabili \"%s\" hautatutako elementuak irekitzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2037
+#: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2316
+#: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "_Ireki honekin: %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2322
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3872
+#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "_Ireki"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2338
+#: ../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Ireki %'d _fitxa berritan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2347
+#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
+#: ../src/View/Sidebar.vala:1195
+msgid "Open in New _Tab"
+msgstr "Ireki _fitxa berrian"
+
+#: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Ireki %'d _leiho berritan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3792
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+msgid "Open in New _Window"
+msgstr "Ireki leiho _berrian"
+
+#: ../src/fm-directory-view.c:3792
 msgid "Set as default"
 msgstr "Ezarri lehenetsi bezala"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3844
+#: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez lekuz aldatzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3848
+#: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez kopiatzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3852
+#: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
 "hautaturiko fitxategiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3855
+#: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "Itsatsi karpetan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3856
+#: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -736,188 +126,187 @@ msgstr ""
 "Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
 "hautaturiko fitxategiak hautaturiko karpetara"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3859
+#: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_Berrizendatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3860
+#: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "Berrizendatu hautatutako elementua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3863
+#: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "Sortu _karpeta berria"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3864
+#: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "Sortu karpeta huts berri bat karpeta honen barruan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3866
+#: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "Sortu _fitxategi berria"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3868
+#: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "Fitxategi _hutsa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3869
+#: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "Sortu fitxategi huts berri bat karpeta honen barruan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3873
+#: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "Ireki hautatutako elementua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3880
+#: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "Ireki leiho berrian"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3881
+#: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "Ireki hautatutako elementu bakoitza leiho berri batean"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3885
+#: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "Ireki hautatutako elementu bakoitza fitxa berri batean"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3887
+#: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "I_reki honekin"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3888
+#: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "Aukeratu programa bat hautatutako elementua irekitzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3890
+#: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "Beste _aplikazio bat..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3891
+#: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "Aukeratu beste aplikazio bat hautatutako elementua irekitzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3894
+#: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "_Bota zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3895
+#: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "Bota hautatutako elementu guztiak zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3898
+#: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "_Ezabatu behin betiko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3899
+#: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Ezabatu hautatutako elementu bakoitza, zakarrontzira bota gabe"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3902
+#: ../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_Leheneratu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3906
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3189
+#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "Hautatu dena"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3910
+#: ../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "_Propietateak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3911
+#: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "Ikusi edo aldatu hautatutako elementu guztien propietateak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:4024
+#: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "Ezarri kolorea:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:864
+#: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "Aurkezpen modua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:865
+#: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "Aurkezpen modua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:283
+#: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "_Antolatu elementuak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:288
+#: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "Al_derantzizko ordena"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:289
+#: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Bistaratu ikonoak alderantzizko ordenean"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:296
+#: ../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "_Izenaren arabera"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:297
+#: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Mantendu ikonoak errenkadetan izenaren arabera ordenatuta"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:300
+#: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "_Tamainaren arabera"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:301
+#: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Mantendu ikonoak errenkadetan tamainaren arabera ordenatuta"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:304
+#: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "_Motaren arabera"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:305
+#: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Mantendu ikonoak errenkadetan motaren arabera ordenatuta"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:308
+#: ../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "Aldatze-_dataren arabera"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:309
+#: ../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Mantendu ikonoak errenkadetan aldatze-dataren arabera ordenatuta"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:119
+#: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:122
+#: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "FTP publikoa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:124
+#: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "FTP (saioarekin)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:127
+#: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:129
+#: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "Windows-ek partekatua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:131
+#: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:133
+#: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV segurua (HTTPS)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:180
+#: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "Konektatzen..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:204
+#: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -925,295 +314,205 @@ msgstr ""
 "Ezin da zerbitzariak onartutako metodoen zerrenda kargatu.\n"
 "Egiaztatu gvfs instalazioa."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:282
+#: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Ezin da \"%s\" karpeta \"%s\"(e)n ireki."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:292
+#: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Ezin da \"%s\" ostalariko zerbitzaria aurkitu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:327
+#: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "Saiatu berriro"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:392
+#: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "Egiaztatu zure erabiltzailearen xehetasunak."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:422
+#: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Jarraitu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:760
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1150
+#: ../src/marlin-connect-server-dialog.c:760
+#: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "K_onektatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:885
+#: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "Konektatu zerbitzarira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:903
+#: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "Zerbitzariaren xehetasunak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:927
+#: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_Zerbitzaria:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:947
+#: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_Ataka:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:965
+#: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Mota:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1034
+#: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "_Partekatu:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1049
+#: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Karpeta:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1067
+#: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "Erabiltzailearen xehetasunak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1090
+#: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "_Domeinu-izena:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1105
+#: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_Erabiltzaile-izena:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1120
+#: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "Pasa_hitza:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1136
+#: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_Gogoratu pasahitz hau"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1239
+#: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Eragiketa bertan behera utzi da"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:102
+#: ../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "_Mugitu hona"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:107
+#: ../src/marlin-dnd.c:107
 msgid "_Copy Here"
 msgstr "_Kopiatu hemen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:112
+#: ../src/marlin-dnd.c:112
 msgid "_Link Here"
 msgstr "_Estekatu hemen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:117
+#: ../src/marlin-dnd.c:117
 msgid "Set as _Background"
 msgstr "Ezarri _atzeko plano gisa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:124
+#: ../src/marlin-dnd.c:124
 msgid "Cancel"
 msgstr "Utzi"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:216
+#: ../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "Huts \"%s\" fitxategia exekutatzean"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-clipboard-manager.c:369
+#: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "Ez dago itsasteko ezer arbelean"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:100
+#: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
 msgstr "Ikono-direktorio zerrendatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:101
+#: ../src/fm-icon-view.c:101
 msgid "Icon view"
 msgstr "Ikono-ikuspegia"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:159
+#: ../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "Klik bakarra"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:160
+#: ../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "Ikuspegiko elementuak klik bakar batez aktibatu daitezkeen ala ez"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3200
+#: ../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "Sarrera metodoak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:137
-msgid "Show the version of the program."
-msgstr "Erakutsi programaren bertsioa."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:139
-msgid "Open uri(s) in new tab"
-msgstr "Ireki URIa(k) fitxa berri(et)an"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:141
-msgid "New Window"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:143
-msgid "Quit Files."
-msgstr "Irten Files-etik."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:145
-msgid "Enable debug logging"
-msgstr "Gaitu arazketa-erregistroa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:148
-msgid "[URI...]"
-msgstr "[URI...]"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:151
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Arakatu fitxategi-sistema fitxategi-kudeatzailearekin"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:178
-msgid "--quit cannot be used with URIs."
-msgstr "--quit ezin da URIekin erabili."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:140
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:222
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Fitxategi-eragiketak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Fitxategien eragiketa guztiak ondo burutu dira"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:218
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:263
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "Fitxategien eragiketa %'d aktibo"
-msgstr[1] "Fitxategien %'d eragiketa aktibo"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Erakutsi xehetasunak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Erakutsi kopiatze-leihoa"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Utzi bertan behera ekintza aktibo guztiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Arakatu zure fitxategiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Fitxategi-kudeatzailea"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Leiho berria _administratzaile bezala"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "Fitxategiak"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Gaur %-I:%M %p(e)tan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "Atzo %-I:%M %p(e)tan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:93
+#: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:97
+#: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a, %Y %b %-d, %-H:%M"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:209
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr "Prestatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-vfs-extensions.c:71
+#: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (Unicode baliogabea)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Ezin izan da \"%s\"(r)en jatorrizko kokalekua zehaztu "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:121
+#: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "Ezin da elementua zakarrontzitik berreskuratu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:302
+#: ../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
 msgstr "%s(e)ra lotura"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1748
+#: ../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Ezin izan da mahaigain-fitxategia analizatu: %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1786
+#: ../libcore/gof-file.c:1786
 msgid "No Exec field specified"
 msgstr "Ez da Exec eremurik zehaztu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1806
+#: ../libcore/gof-file.c:1806
 msgid "No URL field specified"
 msgstr "Ez da URL eremurik zehaztu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1812
+#: ../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
 msgstr "Mahaigain-fitxategi baliogabea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2102
+#: ../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
 msgstr "Ez da onartzen barrarik fitxategi-izenetan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2122
+#: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "Maila goreneko fitxategiak ezin dira berrizendatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Batu \"%s\" karpeta?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1221,304 +520,304 @@ msgstr ""
 "Batzean baieztapena eskatuko zaizu kopiatzen ari diren fitxategiekin gatazka "
 "duten karpetako fitxategiak ordeztu aurretik."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko karpeta zaharrago bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko karpeta berriago bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko beste karpeta bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "Hau ordeztean karpetako fitxategi guztiak kenduko dira."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Ordeztu \"%s\" karpeta?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko karpeta bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Ordeztu \"%s\" fitxategia?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:402
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "Hau ordeztean bere edukia gainidatziko da."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko fitxategi zaharrago bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko fitxategi berriago bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Badago izen bereko beste fitxategi bat \"%s\"(e)n."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:469
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "Jatorrizko fitxategia"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:491
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "Tamaina:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:473
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:494
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "Mota:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:476
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:497
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "Azken aldaketa:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:490
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "Ordeztu honekin"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:515
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "Batu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:709
+#: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "_Hautatu helburuaren izen berria"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:723
+#: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "Berrezarri"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:735
+#: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "Aplikatu ekintza hau fitxategi guztiei"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:746
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "_Saltatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:751
+#: ../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "Al_datu izena"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:757
+#: ../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "Ordeztu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:830
+#: ../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "Fitxategien gatazka"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-stock-dialogs.c:34
+#: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "Erakutsi _xehetasun gehiago"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "Saltatu _guztiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "_Saiatu berriro"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "Ezabatu _guztiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "_Ordeztu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "Ordeztu _guztiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "_Batu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "Batu _guztiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "Kopiatu _dena den"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:296
+#: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "Segundo %'d"
 msgstr[1] "%'d segundo"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:301
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:312
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "Minutu %'d"
 msgstr[1] "%'d minutu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:311
+#: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "Ordu %'d"
 msgstr[1] "%'d ordu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:319
+#: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "gutxi gorabehera ordu %'d"
 msgstr[1] "gutxi gorabehera %'d ordu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:395
+#: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "Estekatu hona: %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:399
+#: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
 msgstr "Beste esteka hona: %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:415
+#: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. esteka %s(e)rako"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. esteka %s(e)rako"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:423
+#: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. esteka %s(e)rako"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:427
+#: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. esteka %s(e)rako"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:465
+#: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (kopia)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:467
+#: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (beste kopia bat)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:472
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:474
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:484
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr "garren kopia)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:477
+#: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr "garren kopia)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:479
+#: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr "garren kopia)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr "garren kopia)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:498
+#: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopia)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:500
+#: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (beste kopia bat)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:503
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:505
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:507
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:521
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'dgarren kopia)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:515
+#: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'dgarren kopia)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:517
+#: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'dgarren kopia)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:519
+#: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'dgarren kopia)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:619
+#: ../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " ("
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:627
+#: ../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Ziur zaude \"%B\" zakarrontzitik behin betiko ezabatu nahi duzula?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1386
+#: ../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1533,24 +832,29 @@ msgstr[1] ""
 "Ziur zaude hautatutako %'d elementu zakarrontzitik behin betiko ezabatu nahi "
 "dituzula?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1396
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Elementu bat ezabatzen baduzu, betirako galduko duzu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1417
+#: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
 msgstr "Zakarrontziko elementu guztiak ezabatu?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1421
+#: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Zakarrontziko elementu guztiak betirako ezabatuko dira."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1452
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+msgid "Empty _Trash"
+msgstr "Hustu _zakarrontzia"
+
+#: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Ziur zaude \"%B\" behin betiko ezabatu nahi duzula?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1455
+#: ../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1560,33 +864,33 @@ msgstr[0] ""
 msgstr[1] ""
 "Ziur zaude hautatutako %'d elementu behin betiko ezabatu nahi dituzula?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1480
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1512
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "Fitxategiak ezabatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1506
+#: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "fitxategi %'d ezabatzeko"
 msgstr[1] "%'d fitxategi ezabatzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1526
+#: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T falta da"
 msgstr[1] "%T falta dira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1594
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1628
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1667
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1744
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2590
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "Huts ezabatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1598
+#: ../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1594,56 +898,56 @@ msgstr ""
 "Ezin dira \"%B\" karpetako fitxategiak ezabatu, hauek ikusteko baimenik ez "
 "duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1601
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2649
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2649
+#: ../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Errorea gertatu da \"%B\" karpetako fitxategien informazioa eskuratzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1610
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3654
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "_Saltatu fitxategiak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1631
+#: ../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "Ezin da \"%B\" karpeta ezabatu, irakurtzeko baimenik ez duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1634
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2688
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3690
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2688
+#: ../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Errore bat gertatu da \"%B\" karpeta irakurtzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1668
+#: ../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
 msgstr "Ezin izan da %B karpeta ezabatu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1745
+#: ../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "Errore bat gertatu da %B ezabatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1821
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1833
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "Fitxategiak zakarrontzira botatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1835
+#: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Fitxategi %'d zakarrontzira botatzeko"
 msgstr[1] "%'d fitxategi zakarrontzira botatzeko"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1890
+#: ../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Ezin da fitxategia zakarrontzira bota. Berehala ezabatu nahi duzu?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1891
+#: ../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1651,27 +955,27 @@ msgstr ""
 "Fitxategi hau kanpoko euskarri batean dago eta ezin da zakarrontzira bota. "
 "Ezabatuz gero ezingo duzu leheneratu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2073
+#: ../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
 msgstr "Fitxategiak zakarrontzira botatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2075
+#: ../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
 msgstr "Fitxategiak ezabatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2147
+#: ../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
 msgstr "Ezin da %V egotzi"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2149
+#: ../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
 msgstr "Ezin da %V desmuntatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2325
+#: ../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Zakarrontzia hustu nahi duzu desmuntatu aurretik?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2327
+#: ../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1679,61 +983,61 @@ msgstr ""
 "Gailu honetako leku erabilgarria handitzeko zakarrontzia hustu behar da. "
 "Bolumeneko zakarrontziko elementu guztiak betirako galduko dira."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2333
+#: ../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
 msgstr "_Ez hustu zakarrontzia"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2447
+#: ../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Ezin da %s muntatu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2525
+#: ../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Fitxategi %'d kopiatzeko prestatzen (%S)"
 msgstr[1] "%'d fitxategi kopiatzeko prestatzen (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2531
+#: ../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Fitxategi %'d lekuz aldatzeko prestatzen (%S)"
 msgstr[1] "%'d fitxategi lekuz aldatzeko prestatzen (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2537
+#: ../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Fitxategi %'d ezabatzeko prestatzen (%S)"
 msgstr[1] "%'d fitxategi ezabatzeko prestatzen (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2543
+#: ../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Fitxategi %'d zakarrontzira botatzeko prestatzen"
 msgstr[1] "%'d fitxategi zakarrontzira botatzeko prestatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2586
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3506
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3637
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3682
+#: ../libcore/marlin-file-operations.c:2586
+#: ../libcore/marlin-file-operations.c:3506
+#: ../libcore/marlin-file-operations.c:3637
+#: ../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "Errorea kopiatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2588
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3635
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3680
+#: ../libcore/marlin-file-operations.c:2588
+#: ../libcore/marlin-file-operations.c:3635
+#: ../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "Errorea lekuz aldatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2592
+#: ../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
 msgstr "Errorea fitxategiak zakarrontzira botatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2646
+#: ../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1741,42 +1045,42 @@ msgstr ""
 "Ezin dira \"%B\" karpetako fitxategiak kudeatu, hauek ikusteko baimenik ez "
 "duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Ezin da \"%B\" karpeta kudeatu, irakurtzeko baimenik ez duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2762
+#: ../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Ezin da \"%B\" fitxategia kudeatu, irakurtzeko baimenik ez duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2765
+#: ../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "Errorea gertatu da \"%B\"(r)en informazioa lortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2865
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2907
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2940
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2970
+#: ../libcore/marlin-file-operations.c:2865
+#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2940
+#: ../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "Errorea \"%B\"(e)n kopiatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2869
+#: ../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "Ez duzu helburuko karpeta atzitzeko baimenik."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2871
+#: ../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "Errorea gertatu da helburuaren informazioa lortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2908
+#: ../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr "Helburua ez da karpeta bat."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1784,76 +1088,76 @@ msgstr ""
 "Ez dago nahikoa leku erabilgarri helburuan. Saiatu fitxategiak ezabatzen "
 "lekua egiteko."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2943
+#: ../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S daude erabilgarri, baina %S behar dira."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2971
+#: ../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr "Helburua irakurtzeko soilik da."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3032
+#: ../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr "\"%B\" hona eramaten: \"%B\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3033
+#: ../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr "\"%B\" hemen kopiatzen: \"%B\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3037
+#: ../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr "\"%B\" bikoizten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Fitxategi %'d (\"%B\"(e)koa) \"%B\"(e)ra eramaten"
 msgstr[1] "%'d fitxategi (\"%B\"(e)koak) \"%B\"(e)ra eramaten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3044
+#: ../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Fitxategi %'d (\"%B\"(e)koa) \"%B\"(e)ra kopiatzen"
 msgstr[1] "%'d fitxategi (\"%B\"(e)koak) \"%B\"(e)ra kopiatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3051
+#: ../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Fitxategi %'d (\"%B\"(e)koa) bikoizten"
 msgstr[1] "%'d fitxategi (\"%B\"(e)koak) bikoizten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3060
+#: ../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Fitxategi %'d \"%B\"(e)ra eramaten"
 msgstr[1] "%'d fitxategi \"%B\"(e)ra eramaten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3064
+#: ../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Fitxategi %'d \"%B\"(e)n kopiatzen"
 msgstr[1] "%'d fitxategi \"%B\"(e)n kopiatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3069
+#: ../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Fitxategi %'d bikoizten"
 msgstr[1] "%'d fitxategi bikoizten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3120
+#: ../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3131
+#: ../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — %T faltan (%S/seg)"
 msgstr[1] "%S / %S — %T faltan (%S/seg)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3510
+#: ../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1861,11 +1165,11 @@ msgstr ""
 "Ezin da \"%B\" karpeta kopiatu, helburuan karpeta hau sortzeko baimenik ez "
 "duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3513
+#: ../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Errorea gertatu da \"%B\" karpeta sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3642
+#: ../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1873,565 +1177,1219 @@ msgstr ""
 "Ezin dira \"%B\" karpetako fitxategiak kopiatu, hauek ikusteko baimenik ez "
 "duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3687
+#: ../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "Ezin da \"%B\" karpeta kopiatu, irakurtzeko baimenik ez duzulako."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3732
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4433
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5020
+#: ../libcore/marlin-file-operations.c:3732
+#: ../libcore/marlin-file-operations.c:4433
+#: ../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr "Errorea \"%B\" lekuz aldatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3733
+#: ../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr "Ezin izan da iturburuko karpeta ezabatu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3818
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3859
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4435
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4506
+#: ../libcore/marlin-file-operations.c:3818
+#: ../libcore/marlin-file-operations.c:3859
+#: ../libcore/marlin-file-operations.c:4435
+#: ../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr "Errorea \"%B\" kopiatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3819
+#: ../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Ezin izan dira fitxategiak ezabatu existitzen den %F karpetatik."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3860
+#: ../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Ezin izan da existitzen den %F fitxategia kendu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4189
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4189
+#: ../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr "Karpeta bat ezin da karpeta beraren barrura eraman."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4861
+#: ../libcore/marlin-file-operations.c:4190
+#: ../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr "Karpeta bat ezin da karpeta beraren barruan kopiatu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4862
+#: ../libcore/marlin-file-operations.c:4191
+#: ../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr "Helburuko karpeta iturburuaren barruan kokatuta dago."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4222
+#: ../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr "Fitxategi bat ezin da bere burura eraman."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4223
+#: ../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr "Fitxategi bat ezin da bere gainean kopiatu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4224
+#: ../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr "Iturburuko fitxategia helburukoarekin gainidatziko da."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4437
+#: ../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Ezin izan da %F(e)n dagoeneko existitzen den izen berdineko fitxategia "
 "ezabatu."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Errorea gertatu da fitxategia %F(e)n kopiatzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4734
+#: ../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr "Fitxategiak kopiatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4760
+#: ../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr "\"%B\"(e)ra lekuz aldatzeko prestatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4772
+#: ../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Fitxategi %'d lekuz aldatzeko prestatzen"
 msgstr[1] "%'d fitxategi lekuz aldatzeko prestatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5021
+#: ../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Errorea gertatu da fitxategia %F(e)ra eramatean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5284
+#: ../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr "Fitxategiak lekuz aldatzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5314
+#: ../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr "\"%B\"(e)n estekak sortzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5325
+#: ../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Fitxategi %'derako esteka sortzen"
 msgstr[1] "%'d fitxategietarako estekak sortzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5460
+#: ../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr "Errorea %B(e)rako esteka sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5462
+#: ../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr "Fitxategi lokalen esteka sinbolikoak soilik onartzen dira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5465
+#: ../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr "Helburuak ez du esteka sinbolikorik onartzen."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5468
+#: ../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Errorea gertatu da %F(e)n esteka sinbolikoa sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5796
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5799
+#: ../libcore/marlin-file-operations.c:5796
+#: ../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr "Baimenak ezartzen"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6050
+#: ../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr "izenik gabeko karpeta"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6058
+#: ../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr "fitxategi berria"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6229
+#: ../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr "Errorea %B direktorioa sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6231
+#: ../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr "Errorea %B fitxategia sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6233
+#: ../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Errorea gertatu da %F(e)n direktorioa sortzean."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6543
+#: ../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
 msgstr "Zakarrontzia husten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6551
+#: ../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr "Zakarrontzia husten"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Ezabatu kopiatutako %d elementu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "Ezabatu '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1212
+#: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Ezabatu bikoiztutako %d elementu"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1223
+#: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "%d elementu lekuz aldatu berriro '%s'(e)ra"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1227
+#: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "'%s' berriz ere '%s'(e)ra eraman"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1403
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "'%s' berrizendatu '%s' bezala"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1450
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Berrezarri %d elementu zakarrontzitik"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Berrezarri '%s' hona: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1274
+#: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Bota %d elementu berriz ere zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1277
+#: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Bota '%s' berriz ere zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Ezabatu %d elementuren estekak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1289
+#: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Ezabatu '%s'(r)en esteka"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1299
+#: ../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Berrezarri jatorrizko baimenak '%s' barneko elementuei"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1307
+#: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Berrezarri '%s'(r)en jatorrizko baimenak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1316
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Berrezarri '%s'(r)en taldea '%s'(e)ra"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1326
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Berrezarri '%s'(r)en jabetzat '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1365
+#: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopiatu %d elementu '%s'(e)ra"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1369
+#: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Kopiatu '%s' hona: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1377
+#: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Bikoiztu %d elementu '%s'(e)n"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1382
+#: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Bikoiztu '%s' hemen: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1390
+#: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Lekuz aldatu %d elementu '%s'(e)ra"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1394
+#: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Lekuz aldatu '%s' hona: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1412
+#: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Sortu '%s' fitxategi berria txantiloi honetatik: "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1419
+#: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Sortu '%s' fitxategi hutsa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Sortu '%s' karpeta berria"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1434
+#: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Bota %d elementu zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1440
+#: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Bota '%s' zakarrontzira"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1453
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Berrezarri '%s' zakarrontzitik"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1462
+#: ../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "Sortu %d elementutarako estekak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1465
+#: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Sortu esteka hona: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1474
+#: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Ezarri '%s' barneko elementuen baimenak"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1482
+#: ../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Ezarri baimenak honi: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1491
+#: ../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Ezarri '%s'(r)en taldea hona: '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1501
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Ezarri '%s'(r)en jabetzat '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1533
+#: ../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Desegin elementu %den kopia"
 msgstr[1] "_Desegin %d elementuren kopia"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1538
+#: ../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Desegin elementu %den bikoizketa"
 msgstr[1] "_Desegin %d elementuren kopia"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1543
+#: ../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Desegin elementu %d lekuz aldatzea"
 msgstr[1] "_Desegin %d elementu lekuz aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1548
+#: ../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Desegin elementu %d berrizendatzea"
 msgstr[1] "_Desegin %d elementu berrizendatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1552
+#: ../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_Desegin fitxategi hutsa sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1555
+#: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_Desegin txantiloitik fitxategi bat sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1559
+#: ../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Desegin karpeta %d sortzea"
 msgstr[1] "_Desegin %d karpeta sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1564
+#: ../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Desegin elementu %d zakarrontzira botatzea"
 msgstr[1] "_Desegin %d elementu zakarrontzira botatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1569
+#: ../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Desegin elementu %d zakarrontzitik berrezartzea"
 msgstr[1] "_Desegin %d elementu zakarrontzitik berrezartzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1574
+#: ../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Desegin elementu %den esteka sortzea"
 msgstr[1] "_Desegin %d elementuren esteka sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1579
+#: ../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Desegin elementu %d ezabatzea"
 msgstr[1] "_Desegin %d elementu ezabatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1584
+#: ../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Desegin elementu %den baimenak errekurtsiboki aldatzea"
 msgstr[1] "Desegin %d elementuren baimenak errekurtsiboki aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1590
+#: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Desegin elementu %den baimenak aldatzea"
 msgstr[1] "Desegin %d elementuren baimenak aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1595
+#: ../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Desegin elementu %den taldea aldatzea"
 msgstr[1] "Desegin %d elementuren taldea aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1600
+#: ../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Desegin elementu %den jabea aldatzea"
 msgstr[1] "Desegin %d elementuren jabea aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1628
+#: ../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Berregin elementu %d kopiatzea"
 msgstr[1] "_Berregin %d elementu kopiatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1633
+#: ../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Berregin elementu %d bikoiztea"
 msgstr[1] "_Berregin %d elementu bikoiztea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1638
+#: ../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Berregin elementu %d lekuz aldatzea"
 msgstr[1] "_Berregin %d elementu lekuz aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1643
+#: ../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Berregin elementu %d berrizendatzea"
 msgstr[1] "_Berregin %d elementu berrizendatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1647
+#: ../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "_Berregin fitxategi huts bat sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1650
+#: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "_Berregin txantiloitik fitxategi bat sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1654
+#: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Berregin karpeta %d sortzea"
 msgstr[1] "_Berregin %d karpeta sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1659
+#: ../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Berregin elementu %d zakarrontzira botatzea"
 msgstr[1] "_Berregin %d elementu zakarrontzira botatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1664
+#: ../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Berregin elementu %d zakarrontzitik berreskuratzea"
 msgstr[1] "_Berregin %d elementu zakarrontzitik berreskuratzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1669
+#: ../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Berregin elementu %dera esteka sortzea"
 msgstr[1] "_Berregin %d elementura esteka sortzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1674
+#: ../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Berregin elementu %d ezabatzea"
 msgstr[1] "_Berregin %d elementu ezabatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1679
+#: ../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "Berregin elementu %den baimenak errekurtsiboki aldatzea"
 msgstr[1] "Berregin %d elementuren baimenak errekurtsiboki aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1685
+#: ../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Berregin elementu %den baimenak aldatzea"
 msgstr[1] "Berregin %d elementuren baimenak aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1690
+#: ../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Berregin elementu %den taldea aldatzea"
 msgstr[1] "Berregin %d elementuren taldea aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1695
+#: ../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Berregin elementu %den jabea aldatzea"
 msgstr[1] "Berregin %d elementuren jabea aldatzea"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libwidgets/LocationBar.vala:284
-#, c-format
-msgid "Go to %s"
-msgstr "%s(e)ra joan"
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Fitxategi-kudeatzaile sinple eta ahaltsua"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:34
+#: ../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Launchpadeko itzultzaileak"
+
+#: ../src/View/OverlayBar.vala:136
+msgid "%u folders"
+msgstr "%u karpeta"
+
+#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+msgid " and %u other item (%s) selected"
+msgstr " eta hautatutako beste %u elementu (%s)"
+
+#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+msgid " and %u other items (%s) selected"
+msgstr " eta %u bestelako elementu (%s) hautatuta"
+
+#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr " hautatuta"
+
+#: ../src/View/OverlayBar.vala:148
+msgid "%u folder"
+msgstr "%u karpeta"
+
+#: ../src/View/OverlayBar.vala:160
+msgid "%u items selected (%s)"
+msgstr "%u elementu hautatuta (%s)"
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
+msgid "Home"
+msgstr "Karpeta nagusia"
+
+#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
+msgid "File System"
+msgstr "Fitxategi-sistema"
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "Karpeta hau ez da existitzen"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(administratzaile bezala)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Ez zara honen jabea."
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "Ez duzu karpeta hau ikusteko baimenik."
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:121
+msgid "AFP"
+msgstr "AFP"
+
+#: ../src/View/LocationBar.vala:122
+msgid "DAV"
+msgstr "DAV"
+
+#: ../src/View/LocationBar.vala:123
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../src/View/LocationBar.vala:124
+msgid "FTP"
+msgstr "FTP"
+
+#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "Sarea"
+
+#: ../src/View/LocationBar.vala:126
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../src/View/LocationBar.vala:127
+msgid "SMB"
+msgstr "SMB"
+
+#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "Zakarrontzia"
+
+#: ../src/View/LocationBar.vala:327
+msgid "Open in New Tab"
+msgstr "Ireki fitxa berrian"
+
+#: ../src/View/LocationBar.vala:334
+msgid "Open with"
+msgstr "Ireki honekin"
+
+#: ../src/View/LocationBar.vala:365
+msgid "Other Application .."
+msgstr "Beste aplikazio bat..."
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "Propietateak"
+
+#: ../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr "Orokorra"
+
+#: ../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr "Gehiago"
+
+#: ../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "Aurrebista"
+
+#: ../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:292
+msgid "%u selected items"
+msgstr "%u elementu hautatuta"
+
+#: ../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr "Tamaina kalkulatzen..."
+
+#: ../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "Sortua"
+
+#: ../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "Azken atzipena"
+
+#: ../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "Ezabatua"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "Mime mota"
+
+#: ../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "Mime motak"
+
+#: ../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "Kokalekua"
+
+#: ../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "Helburua"
+
+#: ../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "Jatorrizko kokalekua"
+
+#: ../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr "Informazioa:"
+
+#: ../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "Beste aplikazio bat..."
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr "Ireki honekin:"
+
+#: ../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr "Erabilera:"
+
+#: ../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr "Gailuaren erabilera:"
+
+#: ../src/View/PropertiesWindow.vala:560
+msgid "%s free of %s (%d%% used)"
+msgstr "%s libre %s(e)tik (%%%d erabilita)"
+
+#: ../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "Irakurri"
+
+#: ../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "Idatzi"
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "Exekutatu"
+
+#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "Jabea"
+
+#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "Taldea"
+
+#: ../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "Guztiak"
+
+#: ../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
+msgstr "Hautatu aplikazio bat hau irekitzeko: "
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr "Karpeta hau ez da existitzen."
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" karpeta ezin izan da aurkitu."
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "Sortu"
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "Sortu \"%s\" karpeta"
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Huts egin du karpeta sortzean\n"
+"\n"
+"%s"
+
+#: ../src/View/Window.vala:142
+msgid "Files isn't your default file manager."
+msgstr "Files ez da zure fitxategi-kudeatzaile lehenetsia"
+
+#: ../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:153
+msgid "Ignore"
+msgstr "Ezikusi"
+
+#: ../src/View/Window.vala:436
+msgid "Undo"
+msgstr "Desegin"
+
+#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
+msgid "Undo the last action"
+msgstr "Desegin azken ekintza"
+
+#: ../src/View/Window.vala:446
+msgid "Redo"
+msgstr "Berregin"
+
+#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
+msgid "Redo the last action"
+msgstr "Berregin azken ekintza"
+
+#: ../src/View/Window.vala:743
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: ../src/View/Window.vala:744
+msgid "_Edit"
+msgstr "_Editatu"
+
+#: ../src/View/Window.vala:745
+msgid "_View"
+msgstr "_Ikusi"
+
+#: ../src/View/Window.vala:746
+msgid "_Go"
+msgstr "_Joan"
+
+#: ../src/View/Window.vala:747
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "_Leiho berria"
+
+#: ../src/View/Window.vala:750
+msgid "Open another Files window for the displayed location"
+msgstr "Ireki beste Files leiho bat bistaratutako kokalekuarentzat"
+
+#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "_Fitxa berria"
+
+#: ../src/View/Window.vala:754
+msgid "Open another tab for the displayed location"
+msgstr "Ireki fitxa berri bat bistaratutako kokalekuarentzat"
+
+#: ../src/View/Window.vala:758
+msgid "_Close"
+msgstr "_Itxi"
+
+#: ../src/View/Window.vala:759
+msgid "Close this folder"
+msgstr "Itxi karpeta hau"
+
+#: ../src/View/Window.vala:764
+msgid "_Undo"
+msgstr "_Desegin"
+
+#: ../src/View/Window.vala:767
+msgid "_Redo"
+msgstr "_Berregin"
+
+#: ../src/View/Window.vala:770
+msgid "_Find"
+msgstr ""
+
+#: ../src/View/Window.vala:771
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:773
+msgid "Open _Parent"
+msgstr "Ireki g_urasoa"
+
+#: ../src/View/Window.vala:774
+msgid "Open the parent folder"
+msgstr "Ireki karpeta gurasoa"
+
+#: ../src/View/Window.vala:776
+msgid "_Back"
+msgstr "_Atzera"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the previous visited location"
+msgstr "Joan bisitatutako aurreko kokalekura"
+
+#: ../src/View/Window.vala:780
+msgid "_Forward"
+msgstr "_Aurrera"
+
+#: ../src/View/Window.vala:781
+msgid "Go to the next visited location"
+msgstr "Joan bisitatutako hurrengo kokalekura"
+
+#: ../src/View/Window.vala:783
+msgid "_Reload"
+msgstr "_Birkargatu"
+
+#: ../src/View/Window.vala:784
+msgid "Reload the current location"
+msgstr "Birkargatu uneko kokalekua"
+
+#: ../src/View/Window.vala:787
+msgid "_Home Folder"
+msgstr "_Karpeta nagusia"
+
+#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
+msgid "Open your personal folder"
+msgstr "Ireki zure karpeta pertsonala"
+
+#: ../src/View/Window.vala:791
+msgid "_Trash"
+msgstr "_Zakarrontzia"
+
+#: ../src/View/Window.vala:792
+msgid "Open your personal trash folder"
+msgstr "Ireki zure zakarrontzi pertsonala"
+
+#: ../src/View/Window.vala:795
+msgid "_Network"
+msgstr "_Sarea"
+
+#: ../src/View/Window.vala:796
+msgid "Browse bookmarked and local network locations"
+msgstr "Arakatu laster-markatutako eta sare lokaleko kokalekuak"
+
+#: ../src/View/Window.vala:799
+msgid "Zoom _In"
+msgstr "Zooma ha_ndiagotu"
+
+#: ../src/View/Window.vala:800
+msgid "Increase the view size"
+msgstr "Handiagotu ikuspegiaren tamaina"
+
+#: ../src/View/Window.vala:811
+msgid "Zoom _Out"
+msgstr "Zooma t_xikiagotu"
+
+#: ../src/View/Window.vala:812
+msgid "Decrease the view size"
+msgstr "Txikiagotu ikuspegiaren tamaina"
+
+#: ../src/View/Window.vala:819
+msgid "Normal Si_ze"
+msgstr "Tamaina _normala"
+
+#: ../src/View/Window.vala:820
+msgid "Use the normal view size"
+msgstr "Erabili ikuspegi-tamaina normala"
+
+#: ../src/View/Window.vala:823
+msgid "Next Tab"
+msgstr "Hurrengo fitxa"
+
+#: ../src/View/Window.vala:827
+msgid "Previous Tab"
+msgstr "Aurreko fitxa"
+
+#: ../src/View/Window.vala:831
+msgid "Connect to _Server..."
+msgstr "Konektatu _zerbitzarira..."
+
+#: ../src/View/Window.vala:832
+msgid "Connect to a remote computer or shared disk"
+msgstr "Konektatu urruneko ordenagailu edo partekatutako diskora"
+
+#: ../src/View/Window.vala:835
+msgid "_About"
+msgstr "Honi _buruz"
+
+#: ../src/View/Window.vala:836
+msgid "Display credits"
+msgstr "Bistaratu kredituak"
+
+#: ../src/View/Window.vala:839
+msgid "Report a Problem..."
+msgstr "Arazo baten berri eman..."
+
+#: ../src/View/Window.vala:840
+msgid "File a bug on Launchpad"
+msgstr "Errore bat jakinarazi Launchpad-en"
+
+#: ../src/View/Window.vala:843
+msgid "Get Help Online..."
+msgstr "Lortu laguntza linean..."
+
+#: ../src/View/Window.vala:847
+msgid "Translate This Application..."
+msgstr "Itzuli aplikazio hau..."
+
+#: ../src/View/Window.vala:856
+msgid "Show _Hidden Files"
+msgstr "Erakutsi ezkutuko _fitxategiak"
+
+#: ../src/View/Window.vala:857
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Txandakatu fitxategi ezkutuak bistaratzea uneko leihoan"
+
+#: ../src/View/Window.vala:861
+msgid "_Places"
+msgstr "_Lekuak"
+
+#: ../src/View/Window.vala:862
+msgid "Change the visibility of this window's side pane"
+msgstr "Aldatu leiho honen albo-panelaren ikusgarritasuna"
+
+#: ../src/View/Window.vala:870
+msgid "Icon"
+msgstr "Ikonoa"
+
+#: ../src/View/Window.vala:873
+msgid "List"
+msgstr "Zerrenda"
+
+#: ../src/View/Window.vala:876
+msgid "Columns"
+msgstr "Zutabeak"
+
+#: ../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "Pertsonala"
+
+#: ../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "Zure ohiko lekuak eta laster-markak"
+
+#: ../src/View/Sidebar.vala:446
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "Gailuak"
+
+#: ../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "Zure partizio lokalak eta gailuak"
+
+#: ../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
+msgid "Mount and open %s"
+msgstr "Muntatu eta ireki %s"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "Zure sareko lekuak"
+
+#: ../src/View/Sidebar.vala:598
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "Arakatu sareko edukiak"
+
+#: ../src/View/Sidebar.vala:1118
+msgid "Unable to start %s"
+msgstr "Ezin da %s abiarazi"
+
+#: ../src/View/Sidebar.vala:1187
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "Kendu"
+
+#: ../src/View/Sidebar.vala:1216
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "_Muntatu"
+
+#: ../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "_Desmuntatu"
+
+#: ../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "_Egotzi"
+
+#: ../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:39
+#: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:75
+#: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "Ikusi sareta gisa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:78
+#: ../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "Ikusi zerrenda gisa"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:81
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "Ikusi zutabetan"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:38
+#: ../src/Application.vala:137
+msgid "Show the version of the program."
+msgstr "Erakutsi programaren bertsioa."
+
+#: ../src/Application.vala:139
+msgid "Open uri(s) in new tab"
+msgstr "Ireki URIa(k) fitxa berri(et)an"
+
+#: ../src/Application.vala:141
+msgid "New Window"
+msgstr ""
+
+#: ../src/Application.vala:143
+msgid "Quit Files."
+msgstr "Irten Files-etik."
+
+#: ../src/Application.vala:145
+msgid "Enable debug logging"
+msgstr "Gaitu arazketa-erregistroa"
+
+#: ../src/Application.vala:148
+msgid "[URI...]"
+msgstr "[URI...]"
+
+#: ../src/Application.vala:151
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Arakatu fitxategi-sistema fitxategi-kudeatzailearekin"
+
+#: ../src/Application.vala:178
+msgid "--quit cannot be used with URIs."
+msgstr "--quit ezin da URIekin erabili."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Fitxategi-eragiketak"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Fitxategien eragiketa guztiak ondo burutu dira"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "Fitxategien eragiketa %'d aktibo"
+msgstr[1] "Fitxategien %'d eragiketa aktibo"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Erakutsi xehetasunak"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Erakutsi kopiatze-leihoa"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Utzi bertan behera ekintza aktibo guztiak"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Arakatu zure fitxategiak"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Fitxategi-kudeatzailea"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Leiho berria _administratzaile bezala"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Fitxategiak"
+
+#: ../libwidgets/LocationBar.vala:284
+msgid "Go to %s"
+msgstr "%s(e)ra joan"
+
+#: ../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "Fitxategi hauek zakarrontzia hustutzean ezabatuko dira."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Hustu zakarrontzia"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-07-31 18:05-0500\n"
+"POT-Creation-Date: 2014-08-01 14:48-0500\n"
 "PO-Revision-Date: 2014-07-17 05:10+0000\n"
 "Last-Translator: Uri Damsker  אורי דמסקר <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -15,713 +15,106 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-01 07:00+0000\n"
-"X-Generator: Launchpad (build 17141)\n"
+"X-Launchpad-Export-Date: 2014-08-02 06:27+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:136
-#, c-format
-msgid "%u folders"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:142
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:154
-#, c-format
-msgid " and %u other item (%s) selected"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:155
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:146
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:158
-msgid " selected"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:148
-#, c-format
-msgid "%u folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/OverlayBar.vala:160
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "נבחרו %u פריטים (%s)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:143
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "בית"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:145
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "מערכת קבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "התיקיה אינה קימת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(כמנהל)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "אין לך הרשאה לראות תיקייה זו"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:125
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "רשת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:128
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "סל המיחזור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "פתיחה בלשונית חדשה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "מאפיינים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:141
-msgid "General"
-msgstr "כללי"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:149
-msgid "More"
-msgstr "פרטים נוספים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:168
-msgid "Preview"
-msgstr "תצוגה מקדימה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:176
-msgid "Close"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:292
-#, c-format
-msgid "%u selected items"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:405
-msgid "Created"
-msgstr "מועד היצירה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:407
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "מועד השינוי"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:410
-msgid "Last Access"
-msgstr "גישה אחרונה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:416
-msgid "Deleted"
-msgstr "נמחק"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:421
-msgid "MimeType"
-msgstr "טיפוס Mime"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:429
-msgid "MimeTypes"
-msgstr "טיפוסי Mime"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:442
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "גודל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Location"
-msgstr "מִקוּם"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:452
-msgid "Target"
-msgstr "יעד"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:458
-msgid "Origin Location"
-msgstr "מיקום מקור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:468
-msgid "Info:"
-msgstr "פרטים:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:504
-msgid "Other application..."
-msgstr "יישום אחר..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:528
-msgid "Open with:"
-msgstr "פתיחה באמצעות:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:548
-msgid "Usage:"
-msgstr "שִׁימוּשׁ"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:553
-msgid "Device usage:"
-msgstr "שִׁימוּשׁ בהתקן:"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:560
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s פנויים מתוך %s  ‏(%d%% בשימוש)"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Read"
-msgstr "קריאה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:704
-msgid "Write"
-msgstr "כתיבה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:709
-msgid "Execute"
-msgstr "הפעלה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:922
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:935
-msgid "Owner"
-msgstr "בְּעָלִים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:927
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:939
-msgid "Group"
-msgstr "קבוצה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:943
-msgid "Everyone"
-msgstr "כל אחד"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/PropertiesWindow.vala:1202
-msgid "Select an application to open "
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:39
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "יצירה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:41
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/DirectoryNotFound.vala:55
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "מנהל הקבצים Files  אינו  ברירת המחדל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "התעלמות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:436
-msgid "Undo"
-msgstr "החזרה למצב הקודם"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:437
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "ביטול השינוי האחרון"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:446
-msgid "Redo"
-msgstr "ביצוע חוזר"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:447
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "שחזור פעולה אחרונה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:743
-msgid "_File"
-msgstr "_קובץ"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "עריכה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:745
-msgid "_View"
-msgstr "צפייה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:746
-msgid "_Go"
-msgstr "מעבר"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_עזרה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:749
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "_חלון חדש"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "פתיחת חלון נוסף של מנהל הקבצים  להצגת המיקם"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:753
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "_לשונית חדשה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "פתיחת לשונית נוספת למיקום המוצג"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_סגירה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "סגירת תיקייה זו"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_החזרה למצב הקודם"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "שחזור פעולה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "פתיחת מקור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "פתיחת תיקיית מקור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:776
-msgid "_Back"
-msgstr "חזרה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "חזרה למיקום הקודם"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "קדימה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "מעבר למיקום הבא בו בקרת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "רענון"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "טעינה מחדש של המיקום הנוכחי"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "תיקיית הבית"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:788
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "פתיחת התיקייה האישית"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "סל המיחזור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "פתיחת תיקיית סל המיחזור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:795
-msgid "_Network"
-msgstr "רשת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "עיון במיקומי רשת מסומנים ומקומיים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "התקרבות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "הגדלת גודל התצוגה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "התרחקות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "הקטנת גודל התצוגה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "גודל ר_גיל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "שימוש בגודל תצוגה רגיל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "הלשונית הבאה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "הלשונית הקודמת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "התחברות לשרת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "התחברות למחשב מרוחק או לכונן משותף"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:835
-msgid "_About"
-msgstr "אודות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "הצגת זכויות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "דיווח על בעייה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "דיווח על בעייה ל: Launchpad"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "קבלת עזרה מקוונת..."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "תרגום יישום נוכחי"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "הצגת קבצים _נסתרים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "הצגת / אי הצגת קבצים נסתרים בחלון הנוכחי"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_מקומות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "הצגת / הסתרת לוח הצד של חלון זה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:870
-msgid "Icon"
-msgstr "סמל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:873
-msgid "List"
-msgstr "הצגה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr "עמודות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "הגדרות אישיות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "המקומות הנפוצים שלך וסימניות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "התקנים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "המחיצות וההתקנים המקומיים שלך"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:499
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:673
-#, c-format
-msgid "Mount and open %s"
-msgstr "הצבה ופתיחה של  %s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "מיקומי הרשת שלך"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "עיון בתוכן הרשת"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1118
-#, c-format
-msgid "Unable to start %s"
-msgstr "לא ניתן להתחיל את %s"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1195
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2342
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3884
-msgid "Open in New _Tab"
-msgstr "פתיחה ב_לשונית חדשה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1201
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2351
-msgid "Open in New _Window"
-msgstr "פתיחה ב_חלון חדש"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "הסרה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_עיגון"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_ניתוק עיגון"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "_שליפה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1244
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1424
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2335
-msgid "Empty _Trash"
-msgstr "ריקון_סל המיחזור"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "שם קובץ"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
+msgid "Size"
+msgstr "גודל"
+
+#: ../src/fm-list-view.c:59
 msgid "Type"
 msgstr "סוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:139
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-columns-view.c:182
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
+msgid "Modified"
+msgstr "מועד השינוי"
+
+#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
+#: ../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "כשלון בשינוי השם %s ל-%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-list-view.c:600
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:547
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
+#: ../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
 msgstr "התיקייה הנוכחית ריקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1230
+#: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "שם קובץ לא חוקי המסופק ע\"י אתר גרירת XDS"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1388
+#: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "יצירת קישור עבור הכתובת \"%s\" נכשלה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:1844
+#: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "שימוש ב־„%s“ לפתיחת הפריט הנבחר"
 msgstr[1] "שימוש ב־„%s“ לפתיחת הפריטים הנבחרים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2037
+#: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2316
+#: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
 msgstr "_פתיחה באמצעות %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2322
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3872
+#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2338
+#: ../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:2347
+#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
+#: ../src/View/Sidebar.vala:1195
+msgid "Open in New _Tab"
+msgstr "פתיחה ב_לשונית חדשה"
+
+#: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3792
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+msgid "Open in New _Window"
+msgstr "פתיחה ב_חלון חדש"
+
+#: ../src/fm-directory-view.c:3792
 msgid "Set as default"
 msgstr "הגדרה כברירת מחדל"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3844
+#: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "הכנת הקבצים הנבחרים להעברה באמצעות פקודת הדבקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3848
+#: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "הכנת הקבצים הנבחרים להעתקה באמצעות פקודת הדבקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3852
+#: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "העברה או העתקה של קבצים מבחירה מוקדמת באמצעות פקודת גזירה או העתקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3855
+#: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
 msgstr "הדבקה לתיקייה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3856
+#: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -729,188 +122,187 @@ msgstr ""
 "העברה או העתקה של קבצים שנבחרו קודם לכן על ידי פקודת גזירה או פקודת העתקה "
 "לתוך תיקייה שנבחרה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3859
+#: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_שינוי שם..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3860
+#: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "שינוי שם הפריט הנבחר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3863
+#: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
 msgstr "יצירת _תיקייה חדשה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3864
+#: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "יצירת תיקייה ריקה חדשה בתוך תיקייה זו"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3866
+#: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "יצירת קובץ_חדש"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3868
+#: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3869
+#: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "יצירת קובץ חדש וריק בתוך תיקייה זו"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3873
+#: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "פתיחת הפריט הנבחר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3880
+#: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
 msgstr "פתיחה בחלון חדש"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3881
+#: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "פתיחת כל פריט שנבחר בחלון חדש"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3885
+#: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "פתיחת כל פריט שנבחר בלשונית חדשה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3887
+#: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
 msgstr "פתיחה ב_אמצעות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3888
+#: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
 msgstr "בחירת תוכנית לפתיחת הפריט הנבחר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3890
+#: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
 msgstr "_יישום אחר..."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3891
+#: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "בחירת יישום אחר אתו יש להציג את הפריט הנבחר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3894
+#: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
 msgstr "ה_עברה לסל המחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3895
+#: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
 msgstr "העברה לסל המיחזור של כל אחד מהפריטים הנבחרים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3898
+#: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
 msgstr "מחיקה _לצמיתות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3899
+#: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "מחק כל אחד מהפריטים הנבחרים ללא העברה לסל המחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3902
+#: ../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_שחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3906
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3189
+#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "בחירת הכל"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3910
+#: ../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "מ_אפיינים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:3911
+#: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
 msgstr "הצגה או שינוי של מאפייני כל אחד מהפריטים הנבחרים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-directory-view.c:4024
+#: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
 msgstr "הגדרת צבע:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:864
+#: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "מצב פריסה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-icon-view.c:865
+#: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "מצב הפריסה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:283
+#: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "_אירגון פריטים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:288
+#: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "ארגון בסדר הפוך"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:289
+#: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "הצגת סמלים לפי סדר הפוך"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:296
+#: ../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "לפי _שם"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:297
+#: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "שמירת הסמלים ממוינים לפי שם בשורות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:300
+#: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "לפי גודל"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:301
+#: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "שמירת סמלים בשורות  ממויינים לפי גודל"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:304
+#: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "לפי סוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:305
+#: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "שמירה על סמלים בשורות ממויינים לפי סוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:308
+#: ../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "בהתאם ל_תאריך השינוי"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-abstract-icon-view.c:309
+#: ../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "שמירת סמלים בשורות ממויינים לפי תאריך השינוי"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:119
+#: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "פרוטוקול SSH"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:122
+#: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "שרת FTP ציבורי"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:124
+#: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
 msgstr "שרת FTP עם הרשמה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:127
+#: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:129
+#: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
 msgstr "שיתוף קבצי חלונות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:131
+#: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:133
+#: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV מאובטח (HTTPS)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:180
+#: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
 msgstr "בהליך חיבור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:204
+#: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -918,295 +310,205 @@ msgstr ""
 "רשימת שיטות השרת הנתמכות לא נטענה.\n"
 "נא לבדוק את התקנת ה־gvfs שלך."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:282
+#: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "לא ניתן לפתוח תיקיית \"%s\" במיקום \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:292
+#: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "לא ניתן לאתר את השרת בכתובת „%s“"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:327
+#: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
 msgstr "נסיון חוזר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:392
+#: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
 msgstr "נא לוודא את פרטי המשתמש שלך."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:422
+#: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "הבא"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:760
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1150
+#: ../src/marlin-connect-server-dialog.c:760
+#: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
 msgstr "הת_חברות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:885
+#: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
 msgstr "התחברות לשרת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:903
+#: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
 msgstr "פרטי שרת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:927
+#: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
 msgstr "_שרת:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:947
+#: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_פתחה:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:965
+#: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_סוג:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1034
+#: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "שיתו_ף:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1049
+#: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_תיקייה:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1067
+#: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
 msgstr "פרטי המשתמש"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1090
+#: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
 msgstr "שם _מתחם:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1105
+#: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "שם _משתמש:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1120
+#: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
 msgstr "_סיסמא:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1136
+#: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
 msgstr "_שמירת סיסמא זו"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-connect-server-dialog.c:1239
+#: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "הפעולה בוטלה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:102
+#: ../src/marlin-dnd.c:102
 msgid "_Move Here"
 msgstr "העברה לכאן"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:107
+#: ../src/marlin-dnd.c:107
 msgid "_Copy Here"
 msgstr "העתקה לכאן"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:112
+#: ../src/marlin-dnd.c:112
 msgid "_Link Here"
 msgstr "קישור לכאן"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:117
+#: ../src/marlin-dnd.c:117
 msgid "Set as _Background"
 msgstr "הגדרה כרקע"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:124
+#: ../src/marlin-dnd.c:124
 msgid "Cancel"
 msgstr "ביטול"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-dnd.c:216
+#: ../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "כשל בביצוע הקובץ \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/marlin-clipboard-manager.c:369
+#: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "תוכן להדבקה אינו קיים על לוח הגזירים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:100
+#: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/fm-icon-view.c:101
+#: ../src/fm-icon-view.c:101
 msgid "Icon view"
 msgstr "תצוגת סמלים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:159
+#: ../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr "לחיצה בודדת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/exo-tree-view.c:160
+#: ../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "האם לאפשר הצגת פריטים באמצעות לחיצה בודדת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/eel-editable-label.c:3200
+#: ../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "שיטות קלט"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:137
-msgid "Show the version of the program."
-msgstr "הצגת גירסת תוכנה."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:139
-msgid "Open uri(s) in new tab"
-msgstr "פתיחת כתובת / כתובות URL בלשונית חדשה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:141
-msgid "New Window"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:143
-msgid "Quit Files."
-msgstr "יציאה ממנהל הקבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:145
-msgid "Enable debug logging"
-msgstr "אפשרת ניפוי שגיאות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:148
-msgid "[URI...]"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:151
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"עיון במערכת הקבצים עם מנהל הקבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/Application.vala:178
-msgid "--quit cannot be used with URIs."
-msgstr "--quit cannot be used with URIs."
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:140
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:205
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:222
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "פעולות קבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "כל פעילויות הקבצים הושלמו בהצלחה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:218
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:263
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "פעולת קבצים אחת פעילה"
-msgstr[1] "%'d פעולות קבצים פעילות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "הצגת פרטים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "הצגת דו־שיח ההעתקה"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "ביטול כל הפעולות המתבצעות"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "עיון בקבצים שלך"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "מנהל קבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "חלון חדש כמנהל"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: /tmp/tmp.euUVxynctZ/f/po/../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "קבצים"
-
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "היום ב %-I:%M %p"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "אתמול ב %-I:%M %p"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:93
+#: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-fcts.c:97
+#: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-progress-info.c:209
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr "בהכנה לביצוע"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-vfs-extensions.c:71
+#: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (יוניקוד לא תקני)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "לא ניתן להגדיר את המיקום המקורי של \"%s\" "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-utilities.c:121
+#: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר הפריט מסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:302
+#: ../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
 msgstr "קישור אל %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1748
+#: ../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "אירע כשל בפענוח קובץ שולחן העבודה: %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1786
+#: ../libcore/gof-file.c:1786
 msgid "No Exec field specified"
 msgstr "לא הוגדר שדה Exec"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1806
+#: ../libcore/gof-file.c:1806
 msgid "No URL field specified"
 msgstr "לא הוגדר שדה כתובת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:1812
+#: ../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
 msgstr "קובץ שולחן עבודה אינו בר תוקף"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2102
+#: ../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
 msgstr "קו נטוי אינו בר שימוש בשמות קבצים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/gof-file.c:2122
+#: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "לא ניתן לשנות שם עבור קובצי רמה ראשונה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:370
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "האם למזג את התיקייה \"%s\"?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:373
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1214,304 +516,304 @@ msgstr ""
 "תהליך המיזוג יבקש אישורך טרם החלפת קבצים בספריה העומדים בסתירה לקבצים "
 "המועתקים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:378
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "תיקייה ישנה יותר בעלת שם זהה קיימת ב \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:382
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "תיקייה חדשה יותר בעלת שם זהה קיימת ב \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:386
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "תיקייה אחרת בעלת שם זהה קיימת ב  \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:391
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "פעולת החלפה תסיר את כל הקבצים בתיקייה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:393
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "האם להחליף את התיקייה \"%s\"?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:395
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "תיקייה בעלת שם זהה קיימת ב \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "האם להחליף את הקובץ \"%s\"?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:402
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "ההחלפה תשכתב את התוכן."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:406
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "קובץ ישן יותר בעל שם זהה קיים ב  \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:410
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "קובץ חדש יותר בעל שם זהה קיים ב  \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:414
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "קובץ אחר בעל שם זהה קיים ב  \"%s\""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:469
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "קובץ המקור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:491
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "גודל:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:473
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:494
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "סוג:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:476
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:497
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "שונה לאחרונה:"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:490
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "החלפה ב־"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:515
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "מיזוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:709
+#: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
 msgstr "יש ל_בחור בשם חדש עבור היעד"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:723
+#: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "איפוס"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:735
+#: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "יש להחיל פעולה זו על כל הקבצים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:746
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "_דילוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:751
+#: ../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
 msgstr "שינוי _שם"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:757
+#: ../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "החלפה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-conflict-dialog.c:830
+#: ../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "התנגשות קובץ"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/eel-stock-dialogs.c:34
+#: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "הצגת _פרטים נוספים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "דילוג על ה_כול"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "_ניסיון חוזר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "מחיקת ה_כול"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "ה_חלפה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "החלפת ה_כול"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "מי_זוג"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "מיזוג ה_כול"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "העתקה _בכל זאת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:296
+#: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "שנייה אחת"
 msgstr[1] "%'d שניות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:301
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:312
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "דקה אחת"
 msgstr[1] "%'d דקות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:311
+#: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "שעה אחת"
 msgstr[1] "%'d שעות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:319
+#: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "בסביבות שעה אחת"
 msgstr[1] "בסביבות %'d שעות"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:395
+#: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "קישור ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:399
+#: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
 msgstr "קישור נוסף ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:415
+#: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "קישור מספר %'d ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "קישור מספר %'d ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:423
+#: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "קישור מספר %'d ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:427
+#: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "קישור מספר %'d ל־%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:465
+#: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (העתקה)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:467
+#: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (עותק נוסף)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:470
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:472
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:474
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:484
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:477
+#: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:479
+#: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:498
+#: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:500
+#: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (עותק נוסף)%s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:503
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:505
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:507
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:521
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:515
+#: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:517
+#: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:519
+#: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:619
+#: ../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " (העתק מספר"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:627
+#: ../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (העתק מספר %'d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "האם ברצונך למחוק לצמיתות את \"%B\" מהאשפה?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1386
+#: ../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1522,24 +824,29 @@ msgid_plural ""
 msgstr[0] "האם למחוק לצמיתות את הפריט הנבחר מהאשפה?"
 msgstr[1] "האם למחוק לצמיתות את %'d הפריטים הנבחרים מהאשפה?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1396
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "אם פריט נמחק, הוא יאבד לצמיתות."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1417
+#: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
 msgstr "האם לרוקן את כל הפריטים מהאשפה?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1421
+#: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
 msgstr "כל הפריטים שבאשפה יימחקו לצמיתות."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1452
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+msgid "Empty _Trash"
+msgstr "ריקון_סל המיחזור"
+
+#: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "האם ברצונך למחוק לצמיתות את \"%B\"?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1455
+#: ../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1547,87 +854,87 @@ msgid_plural ""
 msgstr[0] "האם למחוק לצמיתות את הפריט הנבחר?"
 msgstr[1] "האם למחוק לצמיתות את %'d הפריטים הנבחרים?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1480
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1512
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "קבצים נמחקים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1506
+#: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "נשאר קובץ אחד למחיקה"
 msgstr[1] "נשארו %'d קבצים למחיקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1526
+#: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "נותרה %T"
 msgstr[1] "%T נותרו"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1594
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1628
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1667
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1744
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2590
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "שגיאה במהלך מחיקה."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1598
+#: ../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr "לא ניתן למחוק קבצים מהתיקייה \"%B\" בגלל שאין לך הרשאות לראות אותם."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1601
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2649
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2649
+#: ../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "אירעה שגיאה בקבלת מידע על הקבצים בתיקייה \"%B\"."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1610
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3654
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "_דילוג על הקבצים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1631
+#: ../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "התיקייה \"%B\" אינה ניתנת למחיקה מאחר ואינך בעל הרשאות לעיין בה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1634
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2688
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3690
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2688
+#: ../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "חלה שגיאה בקריאת תיקיית \"%B\"."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1668
+#: ../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
 msgstr "תיקיית \"%B\" אינה ניתנת להסרה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1745
+#: ../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "חלה שגיאה בעת"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1821
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1833
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "קבצים מועברים לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1835
+#: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1890
+#: ../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "לא ניתן להעביר קבצים לסל המיחזור, האם למחוק מיד?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:1891
+#: ../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1635,27 +942,27 @@ msgstr ""
 "קובץ זה נמצא בהתקן חיצוני ועל כן, לא ניתן להעברה לסל המיחזור. במידה וימחק, "
 "לא ניתן לשחזרו."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2073
+#: ../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
 msgstr "קבצים מועברים לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2075
+#: ../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2147
+#: ../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2149
+#: ../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2325
+#: ../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "האם ברצונך לרוקן את סל המיחזור טרם הניתוק?"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2327
+#: ../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1663,750 +970,1401 @@ msgstr ""
 "על מנת לשחזר שטח פנוי בכונן זה, יש לרוקן את סל המיחזור  - פעולה אשר תמחק "
 "הפריטים לצמיתות."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2333
+#: ../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
 msgstr "אין לרוקן את סל המחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2447
+#: ../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
 msgstr "לא ניתן לעגן את  %s"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2525
+#: ../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "קובץ %'d בהכנה להעתקה  (%S)"
 msgstr[1] "קבצי  %'d בהכנה להעתקה  (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2531
+#: ../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "קובץ %'d בהכנה להעברה  (%S)"
 msgstr[1] "קבצי  %'d בהכנה להעברה  (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2537
+#: ../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "קובץ  %'d בהכנה למחיקה  (%S)"
 msgstr[1] "קבצי  %'d בהכנה למחיקה  (%S)"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2543
+#: ../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2586
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3506
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3637
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3682
+#: ../libcore/marlin-file-operations.c:2586
+#: ../libcore/marlin-file-operations.c:3506
+#: ../libcore/marlin-file-operations.c:3637
+#: ../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "חלה שגיאה במהלך ההעתקה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2588
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3635
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3680
+#: ../libcore/marlin-file-operations.c:2588
+#: ../libcore/marlin-file-operations.c:3635
+#: ../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "חלה שגיאה במהלך ההעברה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2592
+#: ../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
 msgstr "חלה שגיאה במהלך ההעברה לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2646
+#: ../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 "אין גישה לקבצים בתיקייה \"%B\" מאחר ואין לך ההרשאות המתאימות לצפות בהם."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "אין גישה לקבצים בתיקייה \"%B\" מאחר ואין לך ההרשאות המתאימות לקרוא ממנה."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2762
+#: ../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "אין גישה לקובץ \"%B\" מאחר ואין לך ההרשאות המתאימות לצפות בו."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2765
+#: ../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "התרחשה שגיאה בקבלת מידע אודות קובץ \"%B\"."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2865
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2907
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2940
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2970
+#: ../libcore/marlin-file-operations.c:2865
+#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2940
+#: ../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "התרחשה שגיאה במהלך העתקת קובץ \"%B\"."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2869
+#: ../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "אין גישה לתיקיית היעד מאחר ואין בידך ההרשאות המתאימות."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2871
+#: ../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "התרחשה שגיאה במהלך קבלת מידע על היעד."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2908
+#: ../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2943
+#: ../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:2971
+#: ../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3032
+#: ../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3033
+#: ../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3037
+#: ../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3044
+#: ../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3051
+#: ../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3060
+#: ../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3064
+#: ../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3069
+#: ../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3120
+#: ../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3131
+#: ../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3510
+#: ../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3513
+#: ../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3642
+#: ../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3687
+#: ../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3732
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4433
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5020
+#: ../libcore/marlin-file-operations.c:3732
+#: ../libcore/marlin-file-operations.c:4433
+#: ../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3733
+#: ../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3818
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3859
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4435
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4506
+#: ../libcore/marlin-file-operations.c:3818
+#: ../libcore/marlin-file-operations.c:3859
+#: ../libcore/marlin-file-operations.c:4435
+#: ../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3819
+#: ../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:3860
+#: ../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4189
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4189
+#: ../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4190
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4861
+#: ../libcore/marlin-file-operations.c:4190
+#: ../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4191
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4862
+#: ../libcore/marlin-file-operations.c:4191
+#: ../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4222
+#: ../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4223
+#: ../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4224
+#: ../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4437
+#: ../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4734
+#: ../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4760
+#: ../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:4772
+#: ../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5021
+#: ../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5284
+#: ../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5314
+#: ../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5325
+#: ../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5460
+#: ../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5462
+#: ../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5465
+#: ../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5468
+#: ../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5796
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:5799
+#: ../libcore/marlin-file-operations.c:5796
+#: ../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6050
+#: ../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6058
+#: ../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6229
+#: ../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6231
+#: ../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6233
+#: ../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6543
+#: ../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
 msgstr "פינוי סל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-file-operations.c:6551
+#: ../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "מחיקת %d ופריטים מועתקים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "מחיקת '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1212
+#: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "מחיקת %d ופריטים משוכפלים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1223
+#: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "העברת פריטי  %d בחזרה ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1227
+#: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "העברת '%s' בחזרה ל־'%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1403
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "שינוי השם '%s' ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1450
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "שיחזור פריטי  %d מסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "שיחזור '%s' ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1274
+#: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "העברת פריטי %d בחזרה לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1277
+#: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "העברת פריטי '%s' חזרה לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "מחיקת קישורים לפריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1289
+#: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "מחיקת קישור ל  '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1299
+#: ../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "שיחזור הרשאות מקוריות של פריטים המצורפים ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1307
+#: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "שיחזור הרשאות מקוריות של'%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1316
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "שיחזור קבוצת '%s' ל  '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1326
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "שיחזור בעלים של '%s' לידי '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1365
+#: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "העתקת פריטי %d ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1369
+#: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "העתקת  '%s' ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1377
+#: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "יצירת עותק של פריטי  %d ב '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1382
+#: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "יצירת עותק של '%s' ב '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1390
+#: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "העברת פריטי %d ל  '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1394
+#: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "העברת '%s' ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1412
+#: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "יצירת קובץ חדש '%s' מתבנית "
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1419
+#: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "יצירת קובץ ריק '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "יצירת תיקייה חדשה בשם '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1434
+#: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "העברת פריטי %d לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1440
+#: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "העברת '%s' לסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1453
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "שיחזור '%s' מסל המיחזור"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1462
+#: ../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "יצירת קישור לפריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1465
+#: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "יצירת קישור אל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1474
+#: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "הגדרת הרשאות של פריטים המצורפים ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1482
+#: ../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "הגדרת הרשאות של '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1491
+#: ../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "הגדרת קבוצת '%s' ל '%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1501
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "הגדרת הבעלים של %s'  ל'%s'"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1533
+#: ../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_ביטול העתקה של פריט  %d"
 msgstr[1] "ביטול העתקה של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1538
+#: ../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_ביטול כפילות של פריט  %d"
 msgstr[1] "ביטול כפילות של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1543
+#: ../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_ביטול העברת פריט %d"
 msgstr[1] "_ביטול העברת פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1548
+#: ../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_ביטול שינוי שם של פריט %d"
 msgstr[1] "_ביטול שינוי שמות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1552
+#: ../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_ביטול יצירת קובץ ריק"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1555
+#: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_ביטול יצירת קובץ ריק מתבנית"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1559
+#: ../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_ביטול יצירת תיקייה של %d"
 msgstr[1] "_ביטול יצירת תיקיות של %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1564
+#: ../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_ביטול העברה לסל המיחזור של פריט %d"
 msgstr[1] "_ביטול העברה לסל המיחזור של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1569
+#: ../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_ביטול שיחזור מסל המחזור של פריט  %d"
 msgstr[1] "_ביטול שיחזור מסל המחזור של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1574
+#: ../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_ביטול יצירת קישור לפריט  %d"
 msgstr[1] "_ביטול יצירת קישורים לפריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1579
+#: ../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_ביטול מחיקת פריט  %d"
 msgstr[1] "_ביטול מחיקת פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1584
+#: ../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "ביטול הרשאה נסוגה של פריט %d"
 msgstr[1] "ביטול הרשאות נסוגות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1590
+#: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "ביטול שינוי הרשאות של פריט  %d"
 msgstr[1] "ביטול שינוי הרשאות של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1595
+#: ../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "ביטול שינוי קבוצה פריט %d"
 msgstr[1] "ביטול שינוי קבוצות פריט  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1600
+#: ../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "ביטול שינוי בעלים של פריט %d"
 msgstr[1] "ביטול שינוי בעלות של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1628
+#: ../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "ביטול העתקת פריט %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1633
+#: ../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "ביטול שכפול של פריט %d"
 msgstr[1] "ביטול שכפול של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1638
+#: ../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "ביטול העברת פריט %d"
 msgstr[1] "ביטול העברת פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1643
+#: ../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "ביטול שינוי שם של פריט %d"
 msgstr[1] "ביטול שינויי שמות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1647
+#: ../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "ביטול יצירת קובץ ריק"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1650
+#: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "ביטול יצירת קובץ ריק מתבנית"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1654
+#: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "ביטול יצירה של תיקיית %d"
 msgstr[1] "ביטול יצירה של תיקיות %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1659
+#: ../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "ביטול העברה לסל המיחזור של פריט %d"
 msgstr[1] "ביטול העברה לסל המיחזור של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1664
+#: ../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "ביטול שיחזור מסל המיחזור של פריט %d"
 msgstr[1] "ביטול שיחזור מסל המיחזור של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1669
+#: ../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "ביטול יצירת קישור של פריט  %d"
 msgstr[1] "ביטול יצירת קישורים של פריטי  %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1674
+#: ../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "ביטול מחיקת פריט %d"
 msgstr[1] "ביטול מחיקת פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1679
+#: ../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "ביטול הרשאה נסוגה של פריט %d"
 msgstr[1] "ביטול הרשאות נסוגות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1685
+#: ../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "ביטול שינוי הרשאה של פריט  %d"
 msgstr[1] "ביטול שינוי הרשאה של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1690
+#: ../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "ביטול שינוי הרשאה של פריט %d"
 msgstr[1] "ביטול שינוי הרשאות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libcore/marlin-undostack-manager.c:1695
+#: ../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "ביטול שינוי בעלים של פריט %d"
 msgstr[1] "ביטול שינוי בעלות של פריטי %d"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../libwidgets/LocationBar.vala:284
-#, c-format
-msgid "Go to %s"
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:34
+#: ../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:136
+msgid "%u folders"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+msgid " and %u other item (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+msgid " and %u other items (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:148
+msgid "%u folder"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:160
+msgid "%u items selected (%s)"
+msgstr "נבחרו %u פריטים (%s)"
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
+msgid "Home"
+msgstr "בית"
+
+#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
+msgid "File System"
+msgstr "מערכת קבצים"
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "התיקיה אינה קימת"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(כמנהל)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "אין לך הרשאה לראות תיקייה זו"
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:121
+msgid "AFP"
+msgstr "AFP"
+
+#: ../src/View/LocationBar.vala:122
+msgid "DAV"
+msgstr "DAV"
+
+#: ../src/View/LocationBar.vala:123
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../src/View/LocationBar.vala:124
+msgid "FTP"
+msgstr "FTP"
+
+#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "רשת"
+
+#: ../src/View/LocationBar.vala:126
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../src/View/LocationBar.vala:127
+msgid "SMB"
+msgstr "SMB"
+
+#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "סל המיחזור"
+
+#: ../src/View/LocationBar.vala:327
+msgid "Open in New Tab"
+msgstr "פתיחה בלשונית חדשה"
+
+#: ../src/View/LocationBar.vala:334
+msgid "Open with"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:365
+msgid "Other Application .."
+msgstr ""
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "מאפיינים"
+
+#: ../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr "כללי"
+
+#: ../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr "פרטים נוספים"
+
+#: ../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: ../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:292
+msgid "%u selected items"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "מועד היצירה"
+
+#: ../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "גישה אחרונה"
+
+#: ../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "נמחק"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "טיפוס Mime"
+
+#: ../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "טיפוסי Mime"
+
+#: ../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "מִקוּם"
+
+#: ../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "יעד"
+
+#: ../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "מיקום מקור"
+
+#: ../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr "פרטים:"
+
+#: ../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "יישום אחר..."
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr "פתיחה באמצעות:"
+
+#: ../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr "שִׁימוּשׁ"
+
+#: ../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr "שִׁימוּשׁ בהתקן:"
+
+#: ../src/View/PropertiesWindow.vala:560
+msgid "%s free of %s (%d%% used)"
+msgstr "%s פנויים מתוך %s  ‏(%d%% בשימוש)"
+
+#: ../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "קריאה"
+
+#: ../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "כתיבה"
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "הפעלה"
+
+#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "בְּעָלִים"
+
+#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "קבוצה"
+
+#: ../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "כל אחד"
+
+#: ../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "יצירה"
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../src/View/Window.vala:142
+msgid "Files isn't your default file manager."
+msgstr "מנהל הקבצים Files  אינו  ברירת המחדל"
+
+#: ../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:153
+msgid "Ignore"
+msgstr "התעלמות"
+
+#: ../src/View/Window.vala:436
+msgid "Undo"
+msgstr "החזרה למצב הקודם"
+
+#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
+msgid "Undo the last action"
+msgstr "ביטול השינוי האחרון"
+
+#: ../src/View/Window.vala:446
+msgid "Redo"
+msgstr "ביצוע חוזר"
+
+#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
+msgid "Redo the last action"
+msgstr "שחזור פעולה אחרונה"
+
+#: ../src/View/Window.vala:743
+msgid "_File"
+msgstr "_קובץ"
+
+#: ../src/View/Window.vala:744
+msgid "_Edit"
+msgstr "עריכה"
+
+#: ../src/View/Window.vala:745
+msgid "_View"
+msgstr "צפייה"
+
+#: ../src/View/Window.vala:746
+msgid "_Go"
+msgstr "מעבר"
+
+#: ../src/View/Window.vala:747
+msgid "_Help"
+msgstr "_עזרה"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "_חלון חדש"
+
+#: ../src/View/Window.vala:750
+msgid "Open another Files window for the displayed location"
+msgstr "פתיחת חלון נוסף של מנהל הקבצים  להצגת המיקם"
+
+#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "_לשונית חדשה"
+
+#: ../src/View/Window.vala:754
+msgid "Open another tab for the displayed location"
+msgstr "פתיחת לשונית נוספת למיקום המוצג"
+
+#: ../src/View/Window.vala:758
+msgid "_Close"
+msgstr "_סגירה"
+
+#: ../src/View/Window.vala:759
+msgid "Close this folder"
+msgstr "סגירת תיקייה זו"
+
+#: ../src/View/Window.vala:764
+msgid "_Undo"
+msgstr "_החזרה למצב הקודם"
+
+#: ../src/View/Window.vala:767
+msgid "_Redo"
+msgstr "שחזור פעולה"
+
+#: ../src/View/Window.vala:770
+msgid "_Find"
+msgstr ""
+
+#: ../src/View/Window.vala:771
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:773
+msgid "Open _Parent"
+msgstr "פתיחת מקור"
+
+#: ../src/View/Window.vala:774
+msgid "Open the parent folder"
+msgstr "פתיחת תיקיית מקור"
+
+#: ../src/View/Window.vala:776
+msgid "_Back"
+msgstr "חזרה"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the previous visited location"
+msgstr "חזרה למיקום הקודם"
+
+#: ../src/View/Window.vala:780
+msgid "_Forward"
+msgstr "קדימה"
+
+#: ../src/View/Window.vala:781
+msgid "Go to the next visited location"
+msgstr "מעבר למיקום הבא בו בקרת"
+
+#: ../src/View/Window.vala:783
+msgid "_Reload"
+msgstr "רענון"
+
+#: ../src/View/Window.vala:784
+msgid "Reload the current location"
+msgstr "טעינה מחדש של המיקום הנוכחי"
+
+#: ../src/View/Window.vala:787
+msgid "_Home Folder"
+msgstr "תיקיית הבית"
+
+#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
+msgid "Open your personal folder"
+msgstr "פתיחת התיקייה האישית"
+
+#: ../src/View/Window.vala:791
+msgid "_Trash"
+msgstr "סל המיחזור"
+
+#: ../src/View/Window.vala:792
+msgid "Open your personal trash folder"
+msgstr "פתיחת תיקיית סל המיחזור"
+
+#: ../src/View/Window.vala:795
+msgid "_Network"
+msgstr "רשת"
+
+#: ../src/View/Window.vala:796
+msgid "Browse bookmarked and local network locations"
+msgstr "עיון במיקומי רשת מסומנים ומקומיים"
+
+#: ../src/View/Window.vala:799
+msgid "Zoom _In"
+msgstr "התקרבות"
+
+#: ../src/View/Window.vala:800
+msgid "Increase the view size"
+msgstr "הגדלת גודל התצוגה"
+
+#: ../src/View/Window.vala:811
+msgid "Zoom _Out"
+msgstr "התרחקות"
+
+#: ../src/View/Window.vala:812
+msgid "Decrease the view size"
+msgstr "הקטנת גודל התצוגה"
+
+#: ../src/View/Window.vala:819
+msgid "Normal Si_ze"
+msgstr "גודל ר_גיל"
+
+#: ../src/View/Window.vala:820
+msgid "Use the normal view size"
+msgstr "שימוש בגודל תצוגה רגיל"
+
+#: ../src/View/Window.vala:823
+msgid "Next Tab"
+msgstr "הלשונית הבאה"
+
+#: ../src/View/Window.vala:827
+msgid "Previous Tab"
+msgstr "הלשונית הקודמת"
+
+#: ../src/View/Window.vala:831
+msgid "Connect to _Server..."
+msgstr "התחברות לשרת"
+
+#: ../src/View/Window.vala:832
+msgid "Connect to a remote computer or shared disk"
+msgstr "התחברות למחשב מרוחק או לכונן משותף"
+
+#: ../src/View/Window.vala:835
+msgid "_About"
+msgstr "אודות"
+
+#: ../src/View/Window.vala:836
+msgid "Display credits"
+msgstr "הצגת זכויות"
+
+#: ../src/View/Window.vala:839
+msgid "Report a Problem..."
+msgstr "דיווח על בעייה"
+
+#: ../src/View/Window.vala:840
+msgid "File a bug on Launchpad"
+msgstr "דיווח על בעייה ל: Launchpad"
+
+#: ../src/View/Window.vala:843
+msgid "Get Help Online..."
+msgstr "קבלת עזרה מקוונת..."
+
+#: ../src/View/Window.vala:847
+msgid "Translate This Application..."
+msgstr "תרגום יישום נוכחי"
+
+#: ../src/View/Window.vala:856
+msgid "Show _Hidden Files"
+msgstr "הצגת קבצים _נסתרים"
+
+#: ../src/View/Window.vala:857
+msgid "Toggle the display of hidden files in the current window"
+msgstr "הצגת / אי הצגת קבצים נסתרים בחלון הנוכחי"
+
+#: ../src/View/Window.vala:861
+msgid "_Places"
+msgstr "_מקומות"
+
+#: ../src/View/Window.vala:862
+msgid "Change the visibility of this window's side pane"
+msgstr "הצגת / הסתרת לוח הצד של חלון זה"
+
+#: ../src/View/Window.vala:870
+msgid "Icon"
+msgstr "סמל"
+
+#: ../src/View/Window.vala:873
+msgid "List"
+msgstr "הצגה"
+
+#: ../src/View/Window.vala:876
+msgid "Columns"
+msgstr "עמודות"
+
+#: ../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "הגדרות אישיות"
+
+#: ../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "המקומות הנפוצים שלך וסימניות"
+
+#: ../src/View/Sidebar.vala:446
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "התקנים"
+
+#: ../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "המחיצות וההתקנים המקומיים שלך"
+
+#: ../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
+msgid "Mount and open %s"
+msgstr "הצבה ופתיחה של  %s"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "מיקומי הרשת שלך"
+
+#: ../src/View/Sidebar.vala:598
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "עיון בתוכן הרשת"
+
+#: ../src/View/Sidebar.vala:1118
+msgid "Unable to start %s"
+msgstr "לא ניתן להתחיל את %s"
+
+#: ../src/View/Sidebar.vala:1187
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "הסרה"
+
+#: ../src/View/Sidebar.vala:1216
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "_עיגון"
+
+#: ../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "_ניתוק עיגון"
+
+#: ../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "_שליפה"
+
+#: ../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/TopMenu.vala:39
+#: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
 msgstr ""
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:75
+#: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "פריסה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:78
+#: ../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "רשימה"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../src/View/Chrome/ViewSwicher.vala:81
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "הצג בטורים"
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:38
+#: ../src/Application.vala:137
+msgid "Show the version of the program."
+msgstr "הצגת גירסת תוכנה."
+
+#: ../src/Application.vala:139
+msgid "Open uri(s) in new tab"
+msgstr "פתיחת כתובת / כתובות URL בלשונית חדשה"
+
+#: ../src/Application.vala:141
+msgid "New Window"
+msgstr ""
+
+#: ../src/Application.vala:143
+msgid "Quit Files."
+msgstr "יציאה ממנהל הקבצים"
+
+#: ../src/Application.vala:145
+msgid "Enable debug logging"
+msgstr "אפשרת ניפוי שגיאות"
+
+#: ../src/Application.vala:148
+msgid "[URI...]"
+msgstr ""
+
+#: ../src/Application.vala:151
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"עיון במערכת הקבצים עם מנהל הקבצים"
+
+#: ../src/Application.vala:178
+msgid "--quit cannot be used with URIs."
+msgstr "--quit cannot be used with URIs."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "פעולות קבצים"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "כל פעילויות הקבצים הושלמו בהצלחה"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "פעולת קבצים אחת פעילה"
+msgstr[1] "%'d פעולות קבצים פעילות"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "הצגת פרטים"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "הצגת דו־שיח ההעתקה"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "ביטול כל הפעולות המתבצעות"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "עיון בקבצים שלך"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "מנהל קבצים"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "חלון חדש כמנהל"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "קבצים"
+
+#: ../libwidgets/LocationBar.vala:284
+msgid "Go to %s"
+msgstr ""
+
+#: ../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "פריטים אלו יכולים להמחק על ידי ריקון פח האשפה."
 
-#: /tmp/tmp.euUVxynctZ/f/po/../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "ריקון סל המיחזור"
