@@ -67,6 +67,10 @@ namespace Marlin.View.Chrome {
         private Gtk.Image list;
         private Gtk.Image miller;
 
+        private GLib.Variant icon_sv;
+        private GLib.Variant list_sv;
+        private GLib.Variant miller_sv;
+
         //public ViewSwitcher (Gtk.ActionGroup action_group) {
         public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
             Object (orientation: Gtk.Orientation.HORIZONTAL);
@@ -79,12 +83,17 @@ namespace Marlin.View.Chrome {
             icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
             icon.tooltip_text = _("View as Grid");
             switcher.append (icon);
+            icon_sv = new GLib.Variant.string ("ICON");
+
             list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
             list.tooltip_text  = _("View as List");
             switcher.append (list);
+            list_sv = new GLib.Variant.string ("LIST");
+
             miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.MENU);
             miller.tooltip_text = _("View in Columns");
             switcher.append (miller);
+            miller_sv = new GLib.Variant.string ("MILLER");
 
             mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
@@ -97,17 +106,17 @@ namespace Marlin.View.Chrome {
 message ("activate LIST");
                     //action = main_actions.lookup_action ("view-as-detailed-list");
                     //action.activate (null);
-                    view_mode_action.activate (new GLib.Variant.string ("LIST"));
+                    view_mode_action.activate (list_sv);
                 } else if (image == miller) {
 message ("activate MILLER");
                     //action = main_actions.lookup_action ("view-as-columns");
                     //action.activate (null);
-                    view_mode_action.activate (new GLib.Variant.string ("MILLER"));
+                    view_mode_action.activate (miller_sv);
                 } else {
 message ("activate ICON");
 //                    action = main_actions.lookup_action ("view-as-icons");
 //                    action.activate (null);
-                    view_mode_action.activate (new GLib.Variant.string ("ICON"));
+                    view_mode_action.activate (icon_sv);
                 }
             });
 

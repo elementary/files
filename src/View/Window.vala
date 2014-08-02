@@ -81,7 +81,7 @@ namespace Marlin.View {
 //            action.set_current_value(n);
         }
 
-        protected virtual void action_radio_change_view(){
+//        protected virtual void action_radio_change_view(){
 //            if (freeze_view_changes)
 //                return;
 
@@ -91,7 +91,7 @@ namespace Marlin.View {
 //            /* change the view only for view_mode real change */
 //            if (current_tab != null && mode != current_tab.view_mode)
 //                current_tab.change_view_mode (mode);
-        }
+//        }
 
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool first)
@@ -108,8 +108,6 @@ message ("New window");
             /** Window actions */
             win_actions = new GLib.SimpleActionGroup ();
             win_actions.add_action_entries (win_entries, this);
-            win_actions.add_action_entries (win_toggle_entries, this);
-            win_actions.add_action_entries (win_radio_entries, this);
 
             this.insert_action_group ("win", win_actions);          
 
@@ -139,8 +137,14 @@ message ("New window");
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
             set_titlebar (top_menu);
-            button_forward.slow_press.connect (() => {action_go_forward ();});
-            button_back.slow_press.connect (() => {action_go_back ();});
+
+            button_forward.slow_press.connect (() => {
+                current_tab.forward ();
+            });
+
+            button_back.slow_press.connect (() => {
+                current_tab.back ();
+            });
 
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
@@ -215,7 +219,7 @@ message ("New window");
              * offset subsequent windows to ensure visibility */
             string geometry = "";
             int left_offset = 0, top_offset = 0;
-message ("Getting geometry");
+
             if (window_number == 0) {
                 geometry = Preferences.settings.get_string("geometry");
                 if (geometry == "")
@@ -226,7 +230,7 @@ message ("Getting geometry");
                 left_offset = MARLIN_LEFT_OFFSET;
                 top_offset = MARLIN_TOP_OFFSET;
             }
-message ("Got geometry %s", geometry);
+
             EelGtk.Window.set_initial_geometry_from_string (this, geometry,
                                                             MARLIN_MINIMUM_WINDOW_WIDTH,
                                                             MARLIN_MINIMUM_WINDOW_HEIGHT,
@@ -240,13 +244,13 @@ message ("Got geometry %s", geometry);
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
-                stderr.printf ("Unable to load marlin icon: %s", err.message);
+                stderr.printf ("Unable to load marlin icon: %s\n", err.message);
             }
             show();
 
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
-           // Preferences.settings.bind("show-sidebar", get_action ("Show Hide Sidebar"), "active", 0);
-            //Preferences.settings.bind("show-hiddenfiles", get_action ("Show Hidden Files"), "active", 0);
+            //Preferences.settings.bind("show-sidebar", get_action ("show_sidebar"), "state", 0);
+            //Preferences.settings.bind("show-hiddenfiles", get_action ("show_hidden"), "state", 0);
 
             /*/
             /* Connect and abstract signals to local ones
@@ -340,15 +344,15 @@ message ("keyboard shortcut binding");
                 info_bar.hide ();
         }
 
-        [Signal (action=true)]
-        public virtual signal void go_up () {
-            action_go_up ();
-        }
+//        [Signal (action=true)]
+//        public virtual signal void go_up () {
+//            action_go_up ();
+//        }
 
-        [Signal (action=true)]
-        public virtual signal void edit_path () {
-            action_edit_path ();
-        }
+//        [Signal (action=true)]
+//        public virtual signal void edit_path () {
+//            action_edit_path ();
+//        }
 
         public void colorize_current_tab_selection (int n) {
 //            if (!current_tab.content_shown)
@@ -487,13 +491,13 @@ message ("Window:emitting slot inactive");
         }
 
         //private void action_new_tab (Gtk.Action action) {
-        private void action_new_tab (GLib.SimpleAction action, GLib.Variant? param) {
-            make_new_tab ();
-        }
+//        private void action_new_tab (GLib.SimpleAction action, GLib.Variant? param) {
+//            make_new_tab ();
+//        }
 
-        private void action_remove_tab (GLib.SimpleAction action, GLib.Variant? param) {
-            actual_remove_tab (tabs.current);
-        }
+//        private void action_remove_tab (GLib.SimpleAction action, GLib.Variant? param) {
+//            actual_remove_tab (tabs.current);
+//        }
 
         private void save_geometries () {
             Gtk.Allocation sidebar_alloc;
@@ -611,21 +615,21 @@ message ("Window:emitting slot inactive");
             return this.win_actions;
         }
 
-        private void action_go_up () {
-            current_tab.up();
-        }
+//        private void action_go_up () {
+//            current_tab.up();
+//        }
 
         private void action_edit_path () {
             top_menu.location_bar.bread.grab_focus ();
         }
 
-        private void action_go_back () {
-            current_tab.back();
-        }
+//        private void action_go_back () {
+//            current_tab.back();
+//        }
 
-        private void action_go_forward () {
-            current_tab.forward();
-        }
+//        private void action_go_forward () {
+//            current_tab.forward();
+//        }
 
         private uint t_reload_cb = 0;
 
@@ -686,46 +690,146 @@ message ("Window:emitting slot inactive");
         //private void action_home_callback (Gtk.Action action) {
         //private void action_go_to_home (Gtk.Action action) {
         //private void action_go_to_home () {
-        private void action_go_to_home (GLib.SimpleAction action) {
-                current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
-        }
+//        private void action_go_to_home (GLib.SimpleAction action) {
+//                current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
+//        }
 
-        private void action_go_to_trash (GLib.SimpleAction action) {
-        //private void action_go_to_trash_callback (Gtk.Action action) {
-                current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
-        }
+//        private void action_go_to_trash (GLib.SimpleAction action) {
+//        //private void action_go_to_trash_callback (Gtk.Action action) {
+//                current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
+//        }
 
         //private void action_go_to_network_callback (Gtk.Action action) {
-        private void action_go_to_network (GLib.SimpleAction action) {
-                current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
-        }
+//        private void action_go_to_network (GLib.SimpleAction action) {
+//                current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
+//        }
 
         //private void action_zoom_in_callback (Gtk.Action action) {
-        private void action_zoom_in (GLib.SimpleAction action) {
-            if (current_tab != null && current_tab.slot != null)
-                ((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
-        }
+//        private void action_zoom_in (GLib.SimpleAction action) {
+//            if (current_tab != null && current_tab.slot != null)
+//                ((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
+//        }
 
         //private void action_zoom_out_callback (Gtk.Action action) {
-        private void action_zoom_out (GLib.SimpleAction action) {
-            if (current_tab != null && current_tab.slot != null)
-                ((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
-        }
+//        private void action_zoom_out (GLib.SimpleAction action) {
+//            if (current_tab != null && current_tab.slot != null)
+//                ((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
+//        }
 
-        void action_next_tab ()
-        {
-            tabs.next_page ();
-        }
+//        void action_next_tab ()
+//        {
+//            tabs.next_page ();
+//        }
 
-        void action_previous_tab ()
-        {
-            tabs.previous_page ();
-        }
+//        void action_previous_tab ()
+//        {
+//            tabs.previous_page ();
+//        }
 
         //private void action_zoom_normal_callback (Gtk.Action action) {
-        private void action_zoom_normal_callback (GLib.SimpleAction action) {
-            if (current_tab != null && current_tab.slot != null)
-                ((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
+//        private void action_zoom_normal_callback (GLib.SimpleAction action) {
+//            if (current_tab != null && current_tab.slot != null)
+//                ((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
+//        }
+
+        private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+            string mode_string = param.get_string ();
+            Marlin.ViewMode view_mode = Marlin.ViewMode.MILLER_COLUMNS;
+            action.change_state (param);
+            switch (mode_string) {
+                case "ICON":
+                    view_mode = Marlin.ViewMode.ICON;
+                    break;
+
+                case "LIST":
+                    view_mode = Marlin.ViewMode.LIST;
+                    break;
+
+                case "MILLER":
+                    view_mode = Marlin.ViewMode.MILLER_COLUMNS;
+                    break;
+
+                default:
+                    break;
+            }
+            current_tab.change_view_mode (view_mode);
+        }
+
+        private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
+            switch (param.get_string ()) {
+                case "HOME":
+                    current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
+                    break;
+
+                case "TRASH":
+                    current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
+                    break;
+
+                case "NETWORK":
+                    current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
+                    break;
+
+                case "UP":
+                    current_tab.up ();
+                    break;
+
+                case "FORWARD":
+                    current_tab.forward ();
+                    break;
+
+                case "BACK":
+                    current_tab.back ();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
+message ("action zoom");
+            if (current_tab != null && current_tab.slot != null) {
+message ("tab and slot not null");
+                switch (param.get_string ()) {
+                    case "ZOOM_IN":
+                        ((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
+                        break;
+
+                    case "ZOOM_OUT":
+                        ((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
+                        break;
+
+                    case "ZOOM_NORMAL":
+                        ((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {                
+                switch (param.get_string ()) {
+                    case "NEW":
+                        make_new_tab ();
+                        break;
+
+                    case "CLOSE":
+                        actual_remove_tab (tabs.current);
+                        break;
+
+                    case "NEXT":
+                        tabs.next_page ();
+                        break;
+
+                    case "PREVIOUS":
+                        tabs.previous_page ();
+                        break;
+
+                    default:
+                        break;
+                }
         }
 
         //private void action_connect_to_server_callback (Gtk.Action action)
@@ -773,57 +877,29 @@ message ("Window:emitting slot inactive");
         }
 
         static const GLib.ActionEntry [] win_entries = {
-            {"new_tab", action_new_tab },
-            {"close_tab", action_remove_tab },
-            {"go_home", action_go_to_home },
-            {"go_to_trash", action_go_to_trash },
-            {"go_to_network", action_go_to_network },
-            {"zoom_in", action_zoom_in },
-            {"zoom_out", action_zoom_out },
-            {"next_tab", action_next_tab },
-            {"previous_tab", action_previous_tab },
-            {"zoom_out", action_zoom_out },
+            {"tab", action_tab, "s" },
+            {"go_to", action_go_to, "s" },
+            {"zoom", action_zoom, "s" },
+            {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_sidebar", null ,  null, "false", change_state_show_sidebar},
+            {"view_mode", action_view_mode, "s", "'MILLER'" }
         };
 
-        static const GLib.ActionEntry [] win_toggle_entries = {
-            {"show_hidden", on_activate_show_hidden, "b" },
-            {"show_sidebar", on_activate_show_sidebar , "b"}
-        };
-
-        private void on_activate_show_hidden (GLib.SimpleAction action) {
+        private void change_state_show_hidden (GLib.SimpleAction action) {
+message ("show hidden state %s", action.state.get_boolean () ? "true" : "false");
+            bool state = action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (!state));
             
+            Preferences.settings.set_boolean ("show-hiddenfiles", state);
         }
 
-        private void on_activate_show_sidebar (GLib.SimpleAction action) {
-            
+        private void change_state_show_sidebar (GLib.SimpleAction action) {
+message ("show sidebar state %s", action.state.get_boolean () ? "true" : "false");
+            bool state = action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (!state));
+            Preferences.settings.set_boolean ("show-sidebar", state);
         }
 
-        static const GLib.ActionEntry [] win_radio_entries = {
-            {"view_mode", on_activate_view_mode, "s", "'MILLER'" }
-        };
-
-        private void on_activate_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-            string mode_string = param.get_string ();
-            Marlin.ViewMode view_mode = Marlin.ViewMode.MILLER_COLUMNS;
-message ("on activate view mode %s", mode_string);
-message ("param is of VariantType %s", param.get_type_string ());
-        action.change_state (param);
-        switch (mode_string) {
-            case "ICON":
-                view_mode = Marlin.ViewMode.ICON;
-                break;
-            case "LIST":
-                view_mode = Marlin.ViewMode.LIST;
-                break;
-            case "MILLER":
-                view_mode = Marlin.ViewMode.MILLER_COLUMNS;
-                break;
-            default:
-                break;
-        }
-        current_tab.change_view_mode (view_mode);
-message ("state is set");
-        }
 
 //        static const Gtk.ActionEntry[] main_entries = {
 //  /* name, stock id, label */  { "File", null, N_("_File") },
