@@ -235,7 +235,7 @@ namespace Marlin.View {
 
             if (nview == ViewMode.MILLER) {
                 new_mwcol = new Marlin.Window.Columns (location, this);
-                new_slot = mwcol.active_slot;
+                new_slot = new_mwcol.active_slot;
             } else {
                 new_mwcol = null;
                 new_slot = new GOF.Window.Slot (location, this);
