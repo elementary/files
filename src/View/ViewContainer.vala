@@ -256,8 +256,15 @@ namespace Marlin.View {
                         make_view (nview, new_mwcol, new_slot);
                     } catch (Error e) {
                         warning ("mount_mountable failed: %s", e.message);
-                        // Reset the tab label
-                        refresh_slot_info ();
+
+                        if (get_active_slot () == null) {
+                            /* There's no previous slot to refresh */
+                            File home = File.new_for_path (Environment.get_home_dir ());
+                            change_view (nview, home);
+                        } else {
+                            /* Reset the tab label */
+                            refresh_slot_info ();
+                        }
                     }
                 });
             } else {
