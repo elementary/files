@@ -49,11 +49,10 @@ namespace Marlin.View {
         //public ViewContainer (Marlin.View.Window win, GLib.File location, Marlin.ViewMode viewmode) {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win, Marlin.ViewMode viewmode) {
-//message ("New ViewContainer");
+message ("New ViewContainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
-            this.view_mode = real_mode (viewmode);
-
+            this.view_mode = viewmode;
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label ("Loading...");
@@ -72,11 +71,11 @@ namespace Marlin.View {
 
             /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-//message ("adding overlay");
+message ("adding overlay");
             /* The overlay is already added in the constructor of the statusbar */
             //add_overlay (overlay_statusbar);
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-//message ("connections");
+message ("connections");
             path_changed.connect ((location, flag, host_slot) => {
                 switch ((Marlin.OpenFlag)flag) {
                     case Marlin.OpenFlag.NEW_TAB:
@@ -88,16 +87,16 @@ namespace Marlin.View {
                         return;
 
                     case Marlin.OpenFlag.DEFAULT:
-//message ("path changed - default");
+message ("path changed - default");
                         if (mwcol != null && host_slot != null) {
-//message ("we have miller view with host");
+message ("we have miller view with host");
                             /* We have a Miller View with a host_slot*/
                             if (location != null && this.slot.directory.file.exists && this.slot.location.equal (location)) {
                                 /* No change in path - just re-activate existing slot and return */
                                 this.slot.active ();
                                 return;
                             } else {
-//message ("nest in host");
+message ("nest in host");
                                 /* Nest new slot in specified host_slot */
                                 /* this.slot is used to temporarily store reference to host_slot */
                                 this.slot = host_slot;
@@ -130,10 +129,10 @@ namespace Marlin.View {
             forward.connect ((n) => {
                  path_changed (File.new_for_commandline_arg (browser.go_forward (n)));
             });
-//message ("changing path");
+message ("changing path");
             /* handle all path changes through the path-changed signal */
             //path_changed (location);
-//message ("Leaving new container");
+message ("Leaving new container");
         }
 
         public Gtk.Widget content {
@@ -161,7 +160,7 @@ namespace Marlin.View {
         }
 
         private void set_up_slot () {
-//message ("set up slot");
+message ("set up slot");
             connect_available_info ();
             if (slot != null) {
                 slot.directory.done_loading.connect (directory_done_loading);
@@ -179,7 +178,7 @@ namespace Marlin.View {
 //        }
 
         private void connect_available_info () {
-//message ("Connect available info");
+message ("Connect available info");
             if (window.current_tab == this)
                 window.loading_uri (slot.directory.file.uri);
         }
@@ -242,26 +241,8 @@ namespace Marlin.View {
             }
 
             //debug ("directory done loading");
-            //message ("directory done loading");
+            message ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
-        }
-
-        private Marlin.ViewMode real_mode (Marlin.ViewMode mode) {
-            switch (view_mode) {
-                case Marlin.ViewMode.ICON:
-                case Marlin.ViewMode.LIST:
-                case Marlin.ViewMode.MILLER_COLUMNS:
-                    return mode;
-                case Marlin.ViewMode.PREFERRED:
-                    return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
-                case Marlin.ViewMode.CURRENT:
-                    return this.view_mode;
-                default:
-//message ("view mode %u not recognised", (uint)view_mode);
-                    return Marlin.ViewMode.MILLER_COLUMNS;
-                    //break;
-            }
-            return this.view_mode;
         }
 
         public void change_view_mode (Marlin.ViewMode mode) {
@@ -269,9 +250,9 @@ namespace Marlin.View {
         }
 
         private void change_view (Marlin.ViewMode mode, GLib.File? location) {
-//message ("ViewContainer: change view");
-            /* Ensure convert "Current" and "Preferred" modes to actual view modes */
-            mode = real_mode (mode);
+message ("ViewContainer: change view mode is %i", (int)mode);
+if (location != null)
+    message ("location is %s",location.get_uri ());
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -313,55 +294,59 @@ namespace Marlin.View {
             }
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-//message ("mode is miller");
+message ("mode is miller");
                 if (mwcol == null) {
-//message ("make new miller");
+message ("make new miller");
                     mwcol = new Marlin.View.Miller (location, this);
                 } else {
                     /* Create new slot in existing mwcol
                      * this.slot is the host_slot, newly created slot becomes active and assigned to this.slot.*/
                     assert (slot != null);
-//message ("ViewContainer: mwcol add location %s to host %s", location.get_uri (), slot.location.get_uri ());
+message ("ViewContainer: mwcol add location %s to host %s", location.get_uri (), slot.location.get_uri ());
                     mwcol.add_location (location, slot);
-//message ("make container slot miller active slot");
+message ("make container slot miller active slot");
                     slot = mwcol.current_slot;
 
                     if (slot != null) {
                         set_up_slot ();
                     } else
                         critical ("marlin window column view has no active slot");
-//message ("return from change view");
+message ("return from change view");
                     return;
                 }
             } else {
                 mwcol = null;
+message ("new root slot");
                 slot = new Slot (location, this);
             }
 
             switch (mode) {
             case Marlin.ViewMode.LIST:
+message ("make list view");
                 content = slot.make_list_view ();
                 break;
             case Marlin.ViewMode.MILLER_COLUMNS:
+message ("make miller view");
                 content = mwcol.make_view ();
                 slot = mwcol.current_slot;
                 break;
             default:
+message ("make icon view");
                 content = slot.make_icon_view ();
                 break;
             }
 
-//message ("call directory view first for empty selection");
+message ("call directory view first for empty selection");
                     ((FM.DirectoryView) slot.view_box).select_first_for_empty_selection ();
 
             /* automagicly enable icon view for icons keypath */
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
                 mode = 0; /* icon view */
 
-            /* Setting up view_mode and its button */
+            /* Setting up view_mode and its button is responsibility of window */
             view_mode = mode;
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = view_mode;
+//            if (window.top_menu.view_switcher != null)
+//                window.top_menu.view_switcher.mode = view_mode;
 
             set_up_slot ();
             slot.active ();
@@ -400,19 +385,16 @@ namespace Marlin.View {
         }
 
         public void update_location_state (bool save_history) {
-//message ("Update location state");
+message ("Update location state");
             if (!slot.directory.file.exists)
                 return;
 
             if (save_history)
                 browser.record_uri (slot.directory.location.get_parse_name ());
 
-            window.can_go_up = slot.directory.has_parent ();
             window.can_go_back = browser.can_go_back ();
             window.can_go_forward = browser.can_go_forward ();
-            /* update ModeButton */
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = view_mode;
+            /* update ModeButton is responsibility of Window*/
         }
 
         public Gtk.Menu get_back_menu () {

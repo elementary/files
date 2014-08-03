@@ -71,7 +71,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-        View/Chrome/ColorWidget.vala
+#        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES
@@ -126,7 +126,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-        View/Chrome/ColorWidget.vala
+#        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES

@@ -31,12 +31,11 @@ namespace Marlin.View.Chrome
 //message ("New TopMenu");
             win = window;
 
-            win.button_back = new ButtonWithMenu.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
             win.button_back.tooltip_text = _("Previous");
             win.button_back.show_all ();
             pack_start (win.button_back);
 
-            win.button_forward = new ButtonWithMenu.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+
             win.button_forward.tooltip_text = _("Next");
             win.button_forward.show_all ();
             pack_start (win.button_forward);

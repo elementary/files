@@ -648,7 +648,7 @@ message ("CRITICAL location %s gof null", location.get_uri ());
             this.unref ();
             return null;
         }
-//message ("load thumbnails func");
+message ("load thumbnails func");
         thumbs_thread_running = true;
         thumbs_stop = false;
 
@@ -695,10 +695,10 @@ message ("CRITICAL location %s gof null", location.get_uri ());
     }
 
     public void queue_load_thumbnails (int size) {
-//message ("queue_load_thumbnails");
+message ("queue_load_thumbnails");
         if (this.state == State.LOADING)
 {
-//message ("Loading - returning");
+message ("Loading - returning");
             return;
 }
 
@@ -706,7 +706,7 @@ message ("CRITICAL location %s gof null", location.get_uri ());
         if (icon_size == size && thumbs_thread_running)
             return;
 
-//message ("Async  setting icon_size to %i", size);
+message ("Async  setting icon_size to %i", size);
         icon_size = size;
         thumbs_stop = true;
 

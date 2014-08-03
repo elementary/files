@@ -30,7 +30,6 @@ public class Marlin.Application : Granite.Application {
     private Marlin.Thumbnailer thumbnailer;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
-    private bool save_of_accel_map_requested = false;
 
     public int window_count { get; private set; }
 
@@ -39,6 +38,7 @@ public class Marlin.Application : Granite.Application {
         {"quit", on_activate_quit }
     };
 
+    bool quitting = false;
 
     construct {
         /* Needed by Glib.Application */
@@ -133,12 +133,6 @@ message ("Application actions");
         /** Application menu */
         var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
         this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
-message ("Window actions");
-        /** Window actions:  New Tab */
-        builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
-message ("got builder");
-        this.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
-message ("menubar set");  
 
     }
 
@@ -242,15 +236,19 @@ message ("menubar set");
     }
 
     public new void quit () {
-        foreach (var window in this.get_windows ())
-            window.destroy ();
-    }
+        /* Protect against holding Ctrl-Q down */
+message ("quit");
+        if (quitting)
+            return;
 
-    public void create_window (File location = File.new_for_path (Environment.get_home_dir ()),
-                               Gdk.Screen screen = Gdk.Screen.get_default (),
-                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+        quitting = true;
+        unowned List<Gtk.Window> window_list = this.get_windows ();
+message ("number of windows is %u", window_list.length ());
+        window_list.@foreach ((window) => {
+            ((Marlin.View.Window)window).quit ();
+        });
 
-        open_window (location, screen, viewmode);
+        base.quit ();
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
@@ -285,44 +283,13 @@ message ("menubar set");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
-                                   GOF.Preferences.get_default (), "show-hidden-files", 0);
+                                   GOF.Preferences.get_default (), "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("confirm-trash",
-                                   GOF.Preferences.get_default (), "confirm-trash", 0);
+                                   GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",
-                                   GOF.Preferences.get_default (), "date-format", 0);
+                                   GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("interpret-desktop-files",
-                                   GOF.Preferences.get_default (), "interpret-desktop-files", 0);
-    }
-
-    /* Load accelerator map, and register save callback */
-//    private void init_gtk_accels () {
-//        string accel_map_filename = Marlin.get_accel_map_file ();
-//        if (accel_map_filename != null) {
-//            Gtk.AccelMap.load (accel_map_filename);
-//        }
-
-//        Gtk.AccelMap.get ().changed.connect (() => {
-//            if (!save_of_accel_map_requested) {
-//                save_of_accel_map_requested = true;
-//                Timeout.add_seconds (MARLIN_ACCEL_MAP_SAVE_DELAY,
-//                                     save_accel_map);
-//            }
-//        });
-//    }
-
-//    private bool save_accel_map () {
-//        if (save_of_accel_map_requested) {
-//            string accel_map_filename = Marlin.get_accel_map_file ();
-//            if (accel_map_filename != null)
-//                Gtk.AccelMap.save (accel_map_filename);
-//            save_of_accel_map_requested = false;
-//        }
-
-//        return false;
-//    }
-
-    private void open_window (File? location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
-        (add_view_window (screen)).add_tab (location, viewmode);
+                                   GOF.Preferences.get_default (), "interpret-desktop-files", GLib.SettingsBindFlags.DEFAULT);
     }
 
     private void open_windows (File[]? files) {
@@ -333,6 +300,24 @@ message ("menubar set");
             foreach (var file in files)
                 open_window (file);
         }
+    }
+
+    public void create_window (File location = File.new_for_path (Environment.get_home_dir ()),
+                               Gdk.Screen screen = Gdk.Screen.get_default (),
+                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+
+        open_window (location, screen, viewmode);
+    }
+
+    private void open_window (File? location, Gdk.Screen screen = Gdk.Screen.get_default (), Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+        (add_view_window (screen)).add_tab (location, viewmode);
+    }
+
+    private Marlin.View.Window add_view_window (Gdk.Screen screen) {
+        var window = new Marlin.View.Window (this, screen);
+        this.add_window (window as Gtk.Window);
+        plugins.interface_loaded (window as Gtk.Widget);
+        return window;
     }
 
     private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
@@ -356,13 +341,6 @@ message ("menubar set");
             foreach (var file in files)
                 window.add_tab (file, Marlin.ViewMode.PREFERRED);
         }
-    }
-
-    private Marlin.View.Window add_view_window (Gdk.Screen screen) {
-        var window = new Marlin.View.Window (this, screen, true);
-        this.add_window (window as Gtk.Window);
-        plugins.interface_loaded (window as Gtk.Widget);
-        return window;
     }
 
     private bool windows_exist () {

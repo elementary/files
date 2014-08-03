@@ -42,23 +42,25 @@ namespace Marlin.View.Chrome {
                     active_index = 2;
                     break;
                 default:
-//                    target = icon;
-//                    active_index = 0;
-                    target = miller;
-                    active_index = 2;
+                    target = icon;
+                    active_index = 0;
+                    value = 0;
                     break;
                 }
 
                 Preferences.settings.set_enum ("default-viewmode", value);
                 //switcher.focus(target);
+                freeze_update = true;
                 switcher.set_active (active_index);
-                _mode = mode;
+                freeze_update = false;
+                _mode = value;
             }
             private get {
                 return _mode;
             }
         }
 
+        private bool freeze_update = false;
         //private Gtk.ActionGroup main_actions;
         //private GLib.SimpleActionGroup main_actions;
         private GLib.SimpleAction view_mode_action;
@@ -98,24 +100,19 @@ namespace Marlin.View.Chrome {
             mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
             switcher.mode_changed.connect ((image) => {
-                //Gtk.Action action;
-                //GLib.Action action;
+                if (freeze_update) {
+message ("Switcher update frozen");
+                    return;
+                }
 
-                //You cannot do a switch here, only for int and string
                 if (image == list) {
 message ("activate LIST");
-                    //action = main_actions.lookup_action ("view-as-detailed-list");
-                    //action.activate (null);
                     view_mode_action.activate (list_sv);
                 } else if (image == miller) {
 message ("activate MILLER");
-                    //action = main_actions.lookup_action ("view-as-columns");
-                    //action.activate (null);
                     view_mode_action.activate (miller_sv);
                 } else {
 message ("activate ICON");
-//                    action = main_actions.lookup_action ("view-as-icons");
-//                    action.activate (null);
                     view_mode_action.activate (icon_sv);
                 }
             });
