@@ -32,7 +32,7 @@ namespace Marlin {
     public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
     public const string ICON_FOLDER = "folder";
     public const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
-    public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-downloads-symbolic";
+    public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
     public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
     public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
