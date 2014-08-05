@@ -1,5 +1,0 @@
-Add libpantheon-files-dev:
---------------------------
-Adding the following argument while running cmake:
-    - -DLIB_ONLY=true
-we should be able to get a splitted lib package
