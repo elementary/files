@@ -21,7 +21,7 @@
 
 public Marlin.View.Tags tags;
 
-[DBus (name = "org.elementary.marlin.db")]
+[DBus (name = "org.elementary.pantheonfiles.db")]
 interface CTags : Object {
     public abstract async bool record_uris (Variant[] entries, string directory) 	throws IOError;
 }
@@ -34,8 +34,8 @@ namespace Marlin.View {
 
         public Tags () {
             try {
-                ctags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
-                                           "/org/elementary/marlin/db");
+                ctags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.pantheonfiles.db",
+                                           "/org/elementary/pantheonfiles/db");
             } catch (IOError e) {
                 stderr.printf ("%s\n", e.message);
             }
