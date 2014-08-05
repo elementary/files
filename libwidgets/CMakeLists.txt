@@ -1,5 +1,5 @@
-set (PKGNAME marlinwidgets)
-set (PKGNAME_ MARLINWIDGETS)
+set (PKGNAME pantheon-fileswidgets)
+set (PKGNAME_ PANTHEON_FILESWIDGETS)
 set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
@@ -46,23 +46,23 @@ PACKAGES
     granite
     gee-0.8
     posix
-    marlincore
-    marlincore-C
+    pantheon-filescore
+    pantheon-filescore-C
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
     --thread
 GENERATE_VAPI
-    marlinwidgets
+    pantheon-fileswidgets
 GENERATE_HEADER
-    marlinwidgets
+    pantheon-fileswidgets
 )
 add_library (${PKGNAME} SHARED ${VALA_C})
-add_dependencies (${PKGNAME} marlincore)
+add_dependencies (${PKGNAME} pantheon-filescore)
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${MARLINWIDGETS_VERSION}
-    SOVERSION ${MARLINWIDGETS_SOVERSION})
+    VERSION ${PANTHEON_FILESWIDGETS_VERSION}
+    SOVERSION ${PANTHEON_FILESWIDGETS_SOVERSION})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})

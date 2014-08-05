@@ -65,7 +65,7 @@
 #include "marlin-file-changes-queue.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
-#include "marlincore.h"
+#include "pantheon-filescore.h"
 
 typedef struct {
     GIOSchedulerJob *io_job;

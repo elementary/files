@@ -1,7 +1,7 @@
 include (Tests)
 
-set (PKGNAME marlincore)
-set (PKGNAME_ MARLINCORE)
+set (PKGNAME pantheon-filescore)
+set (PKGNAME_ PANTHEON_FILESCORE)
 set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
@@ -26,15 +26,15 @@ PACKAGES
     gio-2.0
     gee-0.8
     gmodule-2.0
-    marlincore-C
+    pantheon-filescore-C
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
     --target-glib=2.32 # Needed for new thread API
 GENERATE_VAPI
-    marlincore
+    pantheon-filescore
 GENERATE_HEADER
-    marlincore
+    pantheon-filescore
 )
 
 set (C_SOURCE_FILES
@@ -97,11 +97,11 @@ set (C_HEADER_FILES
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.h DESTINATION include/marlincore/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.vapi DESTINATION share/vala/vapi)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore.deps DESTINATION share/vala/vapi)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore-C.vapi DESTINATION share/vala/vapi)
-install (FILES ${C_HEADER_FILES} DESTINATION include/marlincore/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-filescore.h DESTINATION include/pantheon-filescore/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-filescore.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-filescore.deps DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-filescore-C.vapi DESTINATION share/vala/vapi)
+install (FILES ${C_HEADER_FILES} DESTINATION include/pantheon-filescore/)
 # Check for the deps
 
 find_package(PkgConfig)
@@ -133,20 +133,20 @@ link_directories (${LIB_PATHS})
 add_library (${PKGNAME} SHARED ${C_SOURCE_FILES})
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${MARLINCORE_VERSION}
-    SOVERSION ${MARLINCORE_SOVERSION})
+    VERSION ${PANTHEON_FILESCORE_VERSION}
+    SOVERSION ${PANTHEON_FILESCORE_SOVERSION})
 
 target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
-add_executable (marlincore_tests
+add_executable (pantheon-filescore_tests
     tests/tests.c
     tests/marlincore-tests-gof.c
     tests/marlincore-tests-file.c
     tests/marlincore-tests-icon-info.c)
 
-add_test (core marlincore_tests)
+add_test (core pantheon-filescore_tests)
 
-target_link_libraries (marlincore_tests marlincore ${DEPS_LIBRARIES})
-add_dependencies (marlincore_tests marlincore)
+target_link_libraries (pantheon-filescore_tests pantheon-filescore ${DEPS_LIBRARIES})
+add_dependencies (pantheon-filescore_tests pantheon-filescore)
