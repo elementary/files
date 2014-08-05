@@ -1,30 +1,36 @@
-This package was re-debianized by Sergey "Shnatsel" Davidoff <shnatsel@gmail.com> on
-Mon, 25 Apr 2011 15:17:43 +0400.
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: pantheon-files
+Source: https://launchpad.net/pantheon-files
 
-Upstream Authors:
-	ammonkey <am.monkeyd@gmail.com>
-	Mathijs Henquet <mathijs.henquet@gmail.com>
+Files: *
+Copyright: <years> <put author's name and email here>
+           <years> <likewise for another author>
+License: GPL-3.0+
 
-Copyright:
-	© 2010 Marlin Devs
+Files: debian/*
+Copyright: 2011, 2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
+           2011-2014 Cody Garver <cody@elementaryos.org>
+           2011 ammonkey <am.monkeyd@gmail.com>
+           2013 Rico Tzschichholz <ricotz@ubuntu.com>
+License: GPL-3.0+
 
-License: GPL-3
- Marlin - The sexiest fish in the large sea of file-browsers.
- Copyright (C) 2010 Marlin Devs
- .
- This program is free software; you can redistribute it and/or modify
+Files: debian/watch
+Copyright: 2014 Bart Martens <bartm@debian.org>
+License: GPL-3.0+
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
+ the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
  .
- This program is distributed in the hope that it will be useful,
+ This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
-
-X-Comment: On Debian GNU/Linux systems, the complete text of the GNU General
- Public License can be found in the /usr/share/common-licenses/GPL-3 file.
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
