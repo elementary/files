@@ -29,7 +29,7 @@
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
-#include "marlincore.h"
+#include "pantheon-filescore.h"
 
 
 G_LOCK_DEFINE_STATIC (file_cache_mutex);

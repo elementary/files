@@ -28,7 +28,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include "gof-file.h"
-#include "marlincore.h"
+#include "pantheon-filescore.h"
 
 #ifndef FM_LIST_MODEL_H
 #define FM_LIST_MODEL_H

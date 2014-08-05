@@ -142,9 +142,9 @@ install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
 add_executable (pantheon-filescore_tests
     tests/tests.c
-    tests/pantheon-filescore-tests-gof.c
-    tests/pantheon-filescore-tests-file.c
-    tests/pantheon-filescore-tests-icon-info.c)
+    tests/marlincore-tests-gof.c
+    tests/marlincore-tests-file.c
+    tests/marlincore-tests-icon-info.c)
 
 add_test (core pantheon-filescore_tests)
 

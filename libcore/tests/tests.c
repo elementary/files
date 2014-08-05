@@ -23,7 +23,7 @@
 #include "marlincore-tests-gof.h"
 #include "marlincore-tests-file.h"
 #include "marlincore-tests-icon-info.h"
-#include "marlincore.h"
+#include "pantheon-filescore.h"
 
 int main (int argc, char* argv[])
 {
