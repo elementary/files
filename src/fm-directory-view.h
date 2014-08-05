@@ -35,7 +35,7 @@
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
 #include "marlin-view-window.h"
-#include "pantheon-filescore.h"
+#include "pantheon-files-core.h"
 #include "marlin-enum-types.h"
 
 

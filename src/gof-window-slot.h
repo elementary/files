@@ -22,7 +22,7 @@
 
 #include <gtk/gtk.h>
 #include "gof-abstract-slot.h"
-#include "pantheon-filescore.h"
+#include "pantheon-files-core.h"
 #include "marlin-window-columns.h"
 
 #define GOF_TYPE_WINDOW_SLOT	 (gof_window_slot_get_type())

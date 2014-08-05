@@ -19,8 +19,8 @@ vala_precompile(VALA_C pantheon-filescserver
 PACKAGES
     gtk+-3.0
     gee-0.8
-    pantheon-filescore-C
-    pantheon-filescore
+    pantheon-files-core-C
+    pantheon-files-core
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
@@ -31,8 +31,8 @@ OPTIONS
 link_directories(${LIB_PATHS})
 
 add_library(${PLUGIN_LIB_NAME} SHARED ${VALA_C})
-target_link_libraries(${PLUGIN_LIB_NAME} ${DEPS_LIBRARIES} pantheon-filescore)
-add_dependencies(${PLUGIN_LIB_NAME} pantheon-filescore)
+target_link_libraries(${PLUGIN_LIB_NAME} ${DEPS_LIBRARIES} pantheon-files-core)
+add_dependencies(${PLUGIN_LIB_NAME} pantheon-files-core)
 install(TARGETS ${PLUGIN_LIB_NAME} DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES ${PLUGIN_LIB_NAME}.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

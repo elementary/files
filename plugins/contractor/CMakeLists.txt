@@ -17,9 +17,9 @@ PACKAGES
     gtk+-3.0
     gee-0.8
     granite
-    pantheon-filescore-C
-    pantheon-filescore
-    pantheon-fileswidgets
+    pantheon-files-core-C
+    pantheon-files-core
+    pantheon-files-widgets
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
@@ -28,7 +28,7 @@ OPTIONS
 )
 add_library(pantheon-files-contractor SHARED
     ${VALA_C})
-target_link_libraries(pantheon-files-contractor pantheon-filescore pantheon-fileswidgets)
-add_dependencies(pantheon-files-contractor pantheon-filescore pantheon-fileswidgets)
+target_link_libraries(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
+add_dependencies(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
 install(TARGETS pantheon-files-contractor DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES contractor.plug DESTINATION lib/pantheon-files/plugins/core/)

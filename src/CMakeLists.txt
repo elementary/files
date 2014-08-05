@@ -83,9 +83,9 @@ IF (WITH_UNITY AND UNITY_FOUND)
         granite
         libnotify
         unity
-        pantheon-filescore
-        pantheon-filescore-C
-        pantheon-fileswidgets
+        pantheon-files-core
+        pantheon-files-core-C
+        pantheon-files-widgets
         marlin
         zeitgeist-2.0
     GENERATE_HEADER
@@ -137,9 +137,9 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         gee-0.8
         granite
         libnotify
-        pantheon-filescore
-        pantheon-filescore-C
-        pantheon-fileswidgets
+        pantheon-files-core
+        pantheon-files-core-C
+        pantheon-files-widgets
         marlin
         zeitgeist-2.0
     GENERATE_HEADER
@@ -174,12 +174,12 @@ add_executable (../pantheon-files
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
-target_link_libraries (../pantheon-files m pantheon-filescore pantheon-fileswidgets ${DEPS_LIBRARIES})
-add_dependencies (../pantheon-files pantheon-filescore pantheon-fileswidgets)
+target_link_libraries (../pantheon-files m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})
+add_dependencies (../pantheon-files pantheon-files-core pantheon-files-widgets)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     include_directories (${UNITY_INCLUDE_DIRS})
-    target_link_libraries (../pantheon-files pantheon-filescore pantheon-fileswidgets ${UNITY_LIBRARIES})
+    target_link_libraries (../pantheon-files pantheon-files-core pantheon-files-widgets ${UNITY_LIBRARIES})
     add_definitions ("-DHAVE_UNITY=1")
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 

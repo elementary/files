@@ -22,7 +22,7 @@
  */
 
 #include <config.h>
-#include "pantheon-filescore.h"
+#include "pantheon-files-core.h"
 #include "eel-ui.h"
 #include "eel-debug.h"
 

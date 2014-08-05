@@ -20,7 +20,7 @@
  */
 
 #include "marlin-file-changes-queue.h"
-#include "pantheon-filescore.h"
+#include "pantheon-files-core.h"
 
 typedef enum {
     CHANGE_FILE_INITIAL,

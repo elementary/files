@@ -18,8 +18,8 @@ PACKAGES
     gtk+-3.0
     gee-0.8
     posix
-    pantheon-filescore-C
-    pantheon-filescore
+    pantheon-files-core-C
+    pantheon-files-core
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
@@ -29,8 +29,8 @@ add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(pantheon-filesctags SHARED 
     ${VALA_C})
-target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-filescore)
-add_dependencies(pantheon-filesctags pantheon-filescore)
+target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-files-core)
+add_dependencies(pantheon-filesctags pantheon-files-core)
 install(TARGETS pantheon-filesctags DESTINATION lib/pantheon-files/plugins/core/)
 install(FILES pantheon-files-ctags.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

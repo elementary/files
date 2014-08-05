@@ -22,7 +22,7 @@
 
 #include <gtk/gtk.h>
 #include "gof-abstract-slot.h"
-#include "pantheon-filescore.h"
+#include "pantheon-files-core.h"
 //#include "gof-window-slot.h"
 #include "marlin-view-window.h"
 

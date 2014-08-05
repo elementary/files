@@ -1,5 +1,5 @@
-set (PKGNAME pantheon-fileswidgets)
-set (PKGNAME_ PANTHEON_FILESWIDGETS)
+set (PKGNAME pantheon-files-widgets)
+set (PKGNAME_ PANTHEON_FILES_WIDGETS)
 set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
@@ -46,23 +46,23 @@ PACKAGES
     granite
     gee-0.8
     posix
-    pantheon-filescore
-    pantheon-filescore-C
+    pantheon-files-core
+    pantheon-files-core-C
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
     --thread
 GENERATE_VAPI
-    pantheon-fileswidgets
+    pantheon-files-widgets
 GENERATE_HEADER
-    pantheon-fileswidgets
+    pantheon-files-widgets
 )
 add_library (${PKGNAME} SHARED ${VALA_C})
-add_dependencies (${PKGNAME} pantheon-filescore)
+add_dependencies (${PKGNAME} pantheon-files-core)
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${PANTHEON_FILESWIDGETS_VERSION}
-    SOVERSION ${PANTHEON_FILESWIDGETS_SOVERSION})
+    VERSION ${PANTHEON_FILES_WIDGETS_VERSION}
+    SOVERSION ${PANTHEON_FILES_WIDGETS_SOVERSION})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})
