@@ -33,7 +33,7 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
-[DBus (name = "org.elementary.marlin.db")]
+[DBus (name = "org.elementary.pantheon-files.db")]
 public class MarlinTags : Object {
 
     protected static Sqlite.Database db;
@@ -355,7 +355,7 @@ t.getColor("file:///home/jordi"));
 
 void on_bus_aquired (DBusConnection conn) {
     try {
-        conn.register_object ("/org/elementary/marlin/db", new MarlinTags ());
+        conn.register_object ("/org/elementary/pantheon-files/db", new MarlinTags ());
     } catch (IOError e) {
         error ("Could not register service");
     }
@@ -370,7 +370,7 @@ void on_bus_lost (DBusConnection connection, string name) {
 }
 
 void main () {
-    Bus.own_name (BusType.SESSION, "org.elementary.marlin.db", BusNameOwnerFlags.NONE,
+    Bus.own_name (BusType.SESSION, "org.elementary.pantheon-files.db", BusNameOwnerFlags.NONE,
                   on_bus_aquired,
                   () => {},
                   on_bus_lost);

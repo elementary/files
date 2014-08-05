@@ -3,6 +3,7 @@
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0
+    gio-2.0
     gee-0.8
 )
 set(CFLAGS
@@ -11,13 +12,14 @@ set(CFLAGS
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 
-vala_precompile(VALA_C marlintrash
+vala_precompile(VALA_C pantheon-filesctags
     plugin.vala
 PACKAGES
     gtk+-3.0
     gee-0.8
-    marlincore-C
-    marlincore
+    posix
+    pantheon-filescore-C
+    pantheon-filescore
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
@@ -25,10 +27,10 @@ OPTIONS
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
-add_library(marlintrash SHARED 
+add_library(pantheon-filesctags SHARED 
     ${VALA_C})
-target_link_libraries(marlintrash ${DEPS_LIBRARIES} marlincore)
-add_dependencies(marlintrash marlincore)
-install(TARGETS marlintrash DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES marlintrash.plug DESTINATION lib/pantheon-files/plugins/core/)
+target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-filescore)
+add_dependencies(pantheon-filesctags pantheon-filescore)
+install(TARGETS pantheon-filesctags DESTINATION lib/pantheon-files/plugins/core/)
+install(FILES pantheon-filesctags.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)
