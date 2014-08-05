@@ -32,5 +32,5 @@ add_library(pantheon-filesctags SHARED
 target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-filescore)
 add_dependencies(pantheon-filesctags pantheon-filescore)
 install(TARGETS pantheon-filesctags DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES pantheon-filesctags.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(FILES pantheon-files-ctags.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)
