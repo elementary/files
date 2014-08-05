@@ -15,6 +15,10 @@ export DEB_BUILD_OPTIONS=nocheck
 %:
 	dh $@ 
 
+# Do not set RPATH, see https://wiki.debian.org/RpathIssue
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_SKIP_BUILD_RPATH=true
+
 override_dh_strip:
 	dh_strip --dbg-package=pantheon-files-dbg
 
