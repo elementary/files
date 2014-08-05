@@ -39,3 +39,33 @@ Description: File manager for the Pantheon desktop (debugging symbols)
  TODO
  .
  This package contains the debugging symbols for pantheon-files.
+
+Package: libpantheon-files-core0
+Architecture: any
+Section: libs
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: pantheon-files
+Description: TODO
+ TODO
+
+Package: libpantheon-files-core-dev
+Architecture: any
+Section: libdevel
+Depends: libpantheon-files-core0 (= ${binary:Version}), ${misc:Depends}
+Description: TODO
+ TODO
+
+Package: libpantheon-files-widgets0
+Architecture: any
+Section: libs
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: TODO
+ TODO
+
+Package: libpantheon-files-widgets-dev
+Architecture: any
+Section: libdevel
+Depends: libpantheon-files-widgets0 (= ${binary:Version}), ${misc:Depends}
+Suggests: pantheon-files
+Description: TODO
+ TODO
