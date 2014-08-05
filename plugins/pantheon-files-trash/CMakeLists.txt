@@ -30,5 +30,5 @@ add_library(pantheon-filestrash SHARED
 target_link_libraries(pantheon-filestrash ${DEPS_LIBRARIES} pantheon-filescore)
 add_dependencies(pantheon-filestrash pantheon-filescore)
 install(TARGETS pantheon-filestrash DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES pantheon-filestrash.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(FILES pantheon-files-trash.plug DESTINATION lib/pantheon-files/plugins/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)
