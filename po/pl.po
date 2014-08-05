@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 04:57+0000\n"
+"PO-Revision-Date: 2014-08-04 10:59+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-08-05 06:35+0000\n"
 "X-Generator: Launchpad (build 17147)\n"
 "Language: pl\n"
 
@@ -67,7 +67,7 @@ msgstr[2] "Używa programu „%s” do otwarcia zaznaczonych elementów"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Użyj \"%s\" jako szablonu dla nowego pliku"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -457,7 +457,7 @@ msgstr "Wczoraj o %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b o %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1797,7 +1797,7 @@ msgstr "Zaznaczono %u elementów (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "Wczytywanie…"
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1825,7 +1825,7 @@ msgstr "Nie masz uprawnień do przegladania tego folderu."
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "Łączenie…"
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1873,19 +1873,19 @@ msgstr "Inny program..."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "W tym katalogu"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zakładki"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Wszędzie indziej"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Nic nie znaleziono"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1905,7 +1905,7 @@ msgstr "Podgląd"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -2031,7 +2031,7 @@ msgstr "To nie jest Twój domyślny manager plików."
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Ustaw jako domyślny"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -2107,11 +2107,11 @@ msgstr "_Ponów"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "_Znajdź"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "Przeszukaj bieżący katalog"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2271,7 +2271,7 @@ msgstr "Udostępnia często używane położenia i zakładki"
 
 #: ../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Otwórz kosz"
 
 #: ../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -2283,7 +2283,7 @@ msgstr "Udostępnia lokalne wolumeny i nośniki"
 
 #: ../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Otwórz zawartość systemu plików"
 
 #: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
 msgid "Mount and open %s"
@@ -2295,7 +2295,7 @@ msgstr "Udostępnia położenia sieciowe"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Cała sieć"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2307,7 +2307,7 @@ msgstr "Nie można uruchomić %s"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Otwórz"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2315,7 +2315,7 @@ msgstr "Usuń"
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Zmień nazwę"
 
 #: ../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -2331,15 +2331,15 @@ msgstr "_Wysuń"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Połącz z serwerem..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Poprzedni"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Następny"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2363,7 +2363,7 @@ msgstr "Otwiera adresy URI w nowych kartach"
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Nowe okno"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
@@ -2433,7 +2433,7 @@ msgstr "Nowe okno, jako _Administrator"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "O _Plikach"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
