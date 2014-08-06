@@ -35,6 +35,7 @@ namespace FM
         public GOF.File file_for_iter (Gtk.TreeIter iter);
         public static string get_string_from_column_id (int id);
         public void clear ();
+        public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
 }
 
