@@ -29,6 +29,7 @@ namespace Marlin.View.Chrome
             set {
                 var new_path = GLib.Uri.unescape_string (value);
                 _path = new_path;
+//message ("new path win free_view_changeds is %s", win.freeze_view_changes ? "true": "false");
                 if (!bread.is_focus && !win.freeze_view_changes) {
                     bread.text = "";
                     bread.change_breadcrumbs (new_path);

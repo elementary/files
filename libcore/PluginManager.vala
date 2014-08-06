@@ -46,7 +46,7 @@ public class Marlin.PluginManager : Object {
         plugin_dirs += Path.build_filename (plugin_dir, "core");
         plugin_dirs += plugin_dir;
 
-        load_plugins ();
+        //load_plugins ();
 
         // Monitor plugin dirs
         foreach (string path in plugin_dirs)
@@ -81,7 +81,7 @@ public class Marlin.PluginManager : Object {
         Idle.add_full (Priority.LOW, on_plugin_directory_change.callback);
         yield;
 
-        load_plugins ();
+        //load_plugins ();
         update_queued = false;
     }
 

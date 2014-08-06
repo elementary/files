@@ -59,7 +59,7 @@ namespace Marlin.View {
               yield tags.deleteEntry(file.uri);
               else*/
             //yield tags.setColor(file.uri, n);
-            foreach (var file in files) {
+            foreach (unowned GOF.File file in files) {
                 file.color = n;
                 entries +=  add_entry (file);
             }

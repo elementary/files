@@ -61,10 +61,9 @@ namespace Marlin.View {
         private GOF.File? goffile = null;
         //private unowned GLib.List<GOF.File>? last_selection = null;
 
-        public void update (GLib.List<GOF.File>? files = null)
-        {
-            //last_selection = files;
-            real_update (files);
+        public void update (GLib.List<GOF.File>? files = null) {
+//message ("overlay update");
+           real_update (files);
         }
 
         private void update_hovered (GOF.File? file)
@@ -84,8 +83,7 @@ namespace Marlin.View {
             }
         }
 
-        private void real_update (GLib.List<GOF.File>? files = null)
-        {
+        private void real_update (GLib.List<GOF.File>? files) {
 //message ("Overlay bar real update");
             count = 0;
             folders_count = 0;
@@ -95,32 +93,31 @@ namespace Marlin.View {
             /* cancel any pending subfolder scan */
             //cancellable.cancel ();
             if (files != null) {
-//message ("files is not null");
                 visible = showbar;
 
                 /* list contain only one element */
-                if (files.next == null) {
-                    goffile = files.data;
-                }
-                scan_list (files);
-                update_status ();
+                if (files.data != null) {
+                    if (files.next == null)
+                        goffile = files.first ().data;
 
+                    scan_list (files);
+                    update_status ();
+                }
             } else {
-//message ("files is null");
                 visible = false;
                 status = "";
             }
         }
 
-        private void update_status ()
-        {
+        private void update_status () {
+//message ("update status");
             /* if we're still collecting image info, cancel */
             if (image_cancellable != null) {
                 image_cancellable.cancel ();
                 image_cancellable = null;
             }
 
-            if (count == 1) {
+            if (count == 1 && goffile != null) {
                 if (goffile.is_network_uri_scheme ()) {
                     status = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -171,23 +168,24 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (List<GOF.File> files)
-        {
+        private void scan_list (List<GOF.File> files) {
+//message ("scan list");
             foreach (var gof in files) {
-                if (gof.is_folder ()) {
-                    folders_count++;
-                    //scan_folder (gof.location);
-                } else {
-                    files_count++;
-                    files_size += gof.size;
+                if (gof != null) {
+                    if (gof.is_folder ()) {
+                        folders_count++;
+                        //scan_folder (gof.location);
+                    } else {
+                        files_count++;
+                        files_size += gof.size;
+                    }
+                    count++;
                 }
-                count++;
             }
         }
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
-        private async void load_resolution (GOF.File gofile)
-        {
+        private async void load_resolution (GOF.File gofile) {
             var file = goffile.location;
             image_size_loaded = false;
             image_cancellable = new Cancellable ();

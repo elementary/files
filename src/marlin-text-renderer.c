@@ -628,6 +628,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
                                     const GdkRectangle  *cell_area,
                                     GtkCellRendererState flags)
 {
+
     MarlinTextRenderer *text_renderer = MARLIN_TEXT_RENDERER (cell);
     gint xpad, ypad;
     gfloat xalign, yalign;

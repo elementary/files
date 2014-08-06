@@ -110,7 +110,7 @@ public class Marlin.Application : Granite.Application {
 
         tags = new Marlin.View.Tags ();
 
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        //plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -134,6 +134,10 @@ message ("Application actions");
         var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
         this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
 
+    }
+
+    public unowned Marlin.ClipboardManager get_clipboard_manager () {
+        return this.clipboard;
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
@@ -316,7 +320,7 @@ message ("number of windows is %u", window_list.length ());
     private Marlin.View.Window add_view_window (Gdk.Screen screen) {
         var window = new Marlin.View.Window (this, screen);
         this.add_window (window as Gtk.Window);
-        plugins.interface_loaded (window as Gtk.Widget);
+        //plugins.interface_loaded (window as Gtk.Widget);
         return window;
     }
 

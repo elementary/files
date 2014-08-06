@@ -204,6 +204,7 @@ namespace GOF {
         public static GOF.File get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
         public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
+        public static void list_free (GLib.List<GOF.File> files);
 
         public void remove_from_caches ();
         public bool is_gone;
@@ -290,7 +291,8 @@ namespace GOF {
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File> files, out GLib.Error error);
         public void rename (string new_name, GOF.FileOperationCallback callback);
 
-        public GOF.File ref ();
+        public GOF.File @ref ();
+        public GOF.File unref ();
     }
 
     public delegate void FileOperationCallback (GOF.File file, GLib.File result_location, GLib.Error error, void* callback_data);
