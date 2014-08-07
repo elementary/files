@@ -13,7 +13,7 @@
 export DEB_BUILD_OPTIONS=nocheck
 
 # Enable extra security features: PIE and *full* RELRO
-export DEB_BUILD_MAINT_OPTIONS=hardening=+pie,+relro,+bindnow
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 %:
 	dh $@ 
