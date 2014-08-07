@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 04:57+0000\n"
+"PO-Revision-Date: 2014-08-06 21:01+0000\n"
 "Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:27+0000\n"
+"X-Launchpad-Export-Date: 2014-08-07 06:19+0000\n"
 "X-Generator: Launchpad (build 17147)\n"
 "Language: hu\n"
 
@@ -1737,7 +1737,7 @@ msgstr "%u elem kiválasztva (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "Betöltés…"
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1765,7 +1765,7 @@ msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "Kapcsolódás…"
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1813,19 +1813,19 @@ msgstr "Más alkalmazás .."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "Ebben a mappában"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Könyvjelzők"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Akárhol máshol"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Nincsenek Találatok"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1845,7 +1845,7 @@ msgstr "Előnézet"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -1971,7 +1971,7 @@ msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője"
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Beállítás alapértelmezésként"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -2047,11 +2047,11 @@ msgstr "Mé_gis"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "_Keresés"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "Keresés a jelenlegi mappában"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2235,7 +2235,7 @@ msgstr "Hálózati helyek"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Egész hálózaton"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2247,7 +2247,7 @@ msgstr "A(z) %s nem indítható"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Megnyitás"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2255,7 +2255,7 @@ msgstr "Eltávolítás"
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Átnevezés"
 
 #: ../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -2271,15 +2271,15 @@ msgstr "_Kiadás"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Kapcsolódás kiszolgálóhoz…"
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Előző"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Következő"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2303,7 +2303,7 @@ msgstr "URI cím(ek) megjelenítése új lapon"
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Új ablak"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
@@ -2372,7 +2372,7 @@ msgstr "Új ablak nyitása _adminisztátorként"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "_Files névjegye"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
