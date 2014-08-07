@@ -22,7 +22,7 @@ namespace Marlin.View {
         private Marlin.View.Window window;
 
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
-        const string[] SKIP_IMAGES = {"image/svg+xml"};
+        const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff"};
         Cancellable? image_cancellable = null;
         bool image_size_loaded = false;
 
