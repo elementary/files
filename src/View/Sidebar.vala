@@ -1637,7 +1637,7 @@ namespace Marlin.Places {
                 int response = Marlin.FileOperations.prompt_empty_trash (null);
                 if (response == Gtk.ResponseType.ACCEPT) {
                     GLib.List<GLib.File> dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                    Marlin.FileOperations.empty_trash_dirs (null, dirs);
+                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
                 } else if (response == Gtk.ResponseType.CANCEL) {
                     finish_eject_or_unmount (row_ref);
                     return;
