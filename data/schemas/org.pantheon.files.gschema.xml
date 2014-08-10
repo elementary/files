@@ -81,12 +81,12 @@
       <description>Expand/Collapse categorie Network</description>
     </key>
     <key type="i" name="window-width">
-      <default>700</default>
+      <default>1000</default>
       <summary>Window width.</summary>
       <description>Default window width.</description>
     </key>
     <key type="i" name="window-height">
-      <default>450</default>
+      <default>680</default>
       <summary>Window height.</summary>
       <description>Default window height.</description>
     </key>
