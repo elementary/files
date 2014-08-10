@@ -88,7 +88,8 @@ void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gb
 
 GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
 GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
-void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
+gboolean        fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
+//void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
                                                   GOFDirectoryAsync **directory, GOFFile **file);
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);

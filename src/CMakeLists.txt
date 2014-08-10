@@ -54,6 +54,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ProgressUIHandler.vala
         QuicklistHandler.vala
         View/ColumnView.vala
+        View/AbstractTreeView.vala
         View/ListView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -110,6 +111,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         View/ColumnView.vala
+        View/AbstractTreeView.vala
         View/ListView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala

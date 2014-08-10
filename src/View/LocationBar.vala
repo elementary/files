@@ -76,8 +76,10 @@ namespace Marlin.View.Chrome
             /* focus back the view */
             if (win.current_tab.content_shown)
                 win.current_tab.content.grab_focus ();
-            else
+            else {
+message ("Location Bar - view grab focus 1");
                 win.current_tab.slot.view_box.grab_focus ();
+            }
 
             activate(file);
         }
@@ -204,8 +206,11 @@ namespace Marlin.View.Chrome
                 // focus back the view 
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
-                else
+                else {
+message ("Location Bar - view grab focus 2");
+
                     win.current_tab.slot.view_box.grab_focus ();
+                }
             });
 
             completed.connect (() => {

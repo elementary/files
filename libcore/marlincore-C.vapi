@@ -26,14 +26,17 @@ namespace FM
         }
 
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
+        public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public void remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File file_for_path(Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
+        public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
+        //public void get_directory_file (Gtk.TreePath path, out GOF.Directory.Async directory, out GOF.File file);
+        public bool get_directory_file (Gtk.TreePath path, out GOF.Directory.Async directory, out GOF.File file);
         public GOF.File file_for_iter (Gtk.TreeIter iter);
-        public static string get_string_from_column_id (int id);
         public void clear ();
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
@@ -182,7 +185,7 @@ namespace MarlinFile {
     public void changes_consume_changes (bool consume_all);
 }
 
-[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
+[CCode (cprefix = "GOF", lower_case_cprefix = "gof_", ref_function = "gof_file_ref", unref_function = "gof_file_unref")]
 namespace GOF {
 
     [CCode (cheader_filename = "gof-file.h")]

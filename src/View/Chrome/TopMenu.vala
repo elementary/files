@@ -59,8 +59,11 @@ namespace Marlin.View.Chrome
             location_bar.escape.connect (() => {
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
-                else
+                else {
+message ("TopMenu- view grab focus 1");
+
                     win.current_tab.slot.view_box.grab_focus ();
+                }
             });
 
             location_bar.activate.connect ((file) => {

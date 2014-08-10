@@ -85,23 +85,29 @@ public class GOF.Directory.Async : Object {
 
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
-        debug ("dir %s ref_count %u", this.file.uri, this.ref_count);
+        debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
+//message ("dir %s ref_count %u", this.file.uri, this.ref_count);
 
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+//message ("leaving create dir");
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         return_if_fail (object != null && object is Object);
         if (is_last) {
+//message ("Async toggle ref is last - refcount is %u", object.ref_count);
             Async dir = (Async) object;
             debug ("Async toggle_ref_notify %s", dir.file.uri);
+//message ("Async toggle_ref_notify removing %s", dir.file.uri);
 
             if (!dir.removed_from_cache)
                 dir.remove_dir_from_cache ();
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        } else {
+//message ("Async toggle ref not last - refcount is %u", object.ref_count);
         }
     }
 
@@ -645,7 +651,9 @@ public class GOF.Directory.Async : Object {
         return_val_if_fail (!thumbs_thread_running, null);
 
         if (cancellable.is_cancelled () || file_hash == null) {
+//message ("thumbnailing cancelled - unref");
             this.unref ();
+//message ("ref count %u", this.ref_count);
             return null;
         }
 //message ("load thumbnails func");
@@ -668,7 +676,9 @@ public class GOF.Directory.Async : Object {
             thumbs_loaded ();
 
         thumbs_thread_running = false;
+//message ("stop/finish thumbnailing - unref");
         this.unref ();
+//message ("ref count %u", this.ref_count);
         return null;
     }
 
@@ -676,7 +686,9 @@ public class GOF.Directory.Async : Object {
         try {
             icon_size = size;
             thumbs_stop = false;
+//message ("thumbnailing - add ref");
             this.ref ();
+//message ("ref count %u", this.ref_count);
             new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
         } catch (Error e) {
             critical ("Could not start loading thumbnails: %s", e.message);

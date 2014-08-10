@@ -441,12 +441,14 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    g_return_if_fail (priv->file);
-    g_return_if_fail (priv->pixbuf);
+    if (!(priv->file && priv->pixbuf))
+      return;  /* return silently - this is not an error - could be rendering blank line (e.g. expanded empty subdirectory */
+
+    //g_return_if_fail (priv->file);
+    //g_return_if_fail (priv->pixbuf);
     g_return_if_fail (GDK_IS_PIXBUF (priv->pixbuf));
     g_return_if_fail (priv->size >= 1);
-    /*if (!(priv->file && priv->pixbuf))
-      return;*/
+
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x,

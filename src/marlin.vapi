@@ -210,6 +210,7 @@ namespace Marlin {
         int entry_menu_popdown_timer_id;
         public signal void edited (string path, string text);
     }
+
     [CCode (cheader_filename = "marlin-cell-renderer-text-ellipsized.h")]
     public class CellRendererTextEllipsized : Gtk.CellRendererText {
         public CellRendererTextEllipsized ();

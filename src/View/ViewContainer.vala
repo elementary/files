@@ -46,7 +46,6 @@ namespace Marlin.View {
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
 
-        //public ViewContainer (Marlin.View.Window win, GLib.File location, Marlin.ViewMode viewmode) {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win, Marlin.ViewMode viewmode) {
 //message ("New ViewContainer");
@@ -71,11 +70,8 @@ namespace Marlin.View {
 
             /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-//message ("adding overlay");
             /* The overlay is already added in the constructor of the statusbar */
-            //add_overlay (overlay_statusbar);
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-//message ("connections");
             path_changed.connect ((location, flag, host_slot) => {
                 switch ((Marlin.OpenFlag)flag) {
                     case Marlin.OpenFlag.NEW_TAB:
@@ -87,23 +83,19 @@ namespace Marlin.View {
                         return;
 
                     case Marlin.OpenFlag.DEFAULT:
-//message ("path changed - default");
                         if (mwcol != null && host_slot != null) {
-//message ("we have miller view with host");
                             /* We have a Miller View with a host_slot*/
                             if (location != null && this.slot.directory.file.exists && this.slot.location.equal (location)) {
                                 /* No change in path - just re-activate existing slot and return */
                                 this.slot.active ();
                                 return;
                             } else {
-//message ("nest in host");
                                 /* Nest new slot in specified host_slot */
                                 /* this.slot is used to temporarily store reference to host_slot */
                                 this.slot = host_slot;
                             }
                         } else {
                             /* Create a new root slot */
-//message ("mwcol set to null to create new root");
                             mwcol = null;
                         }
                         break;
@@ -112,7 +104,6 @@ namespace Marlin.View {
                     default:
                         /* Create a new root slot */
                         mwcol = null;
-//message ("mwcol set to null to create new root 2");
                         break;
                 }
                 change_view(this.view_mode, location);
@@ -131,10 +122,6 @@ namespace Marlin.View {
             forward.connect ((n) => {
                  path_changed (File.new_for_commandline_arg (browser.go_forward (n)));
             });
-//message ("changing path");
-            /* handle all path changes through the path-changed signal */
-            //path_changed (location);
-//message ("Leaving new container");
         }
 
         public Gtk.Widget content {
@@ -189,13 +176,11 @@ namespace Marlin.View {
             if (file == null)
                 return;
 //message ("refresh slot info for %s", file.uri);
-            //var slot_path = aslot.directory.file.location.get_path ();
             var slot_path = file.location.get_path ();
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            //else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
             else if (file.exists && (file.info is FileInfo))
                 tab_name = file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else {
@@ -210,8 +195,6 @@ namespace Marlin.View {
             if (window.current_tab == this) {
                 window.set_title (tab_name);
                 if (window.top_menu.location_bar != null) {
-                    //window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name ();
-//message ("setting location bar path");
                     window.top_menu.location_bar.path = file.location.get_parse_name ();
                 }
             }
@@ -243,9 +226,6 @@ namespace Marlin.View {
                 /* query_info will throw an expception if it cannot find the file */
                 content = new DirectoryNotFound (slot.directory, this);
             }
-
-            //debug ("directory done loading");
-            //message ("directory done loading");
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
@@ -255,8 +235,6 @@ namespace Marlin.View {
 
         private void change_view (Marlin.ViewMode mode, GLib.File? location) {
 //message ("ViewContainer: change view mode is %i", (int)mode);
-//message ("location is %s", location != null ? location.get_uri () : "null");
-
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
             select_childs = null;
@@ -275,14 +253,10 @@ namespace Marlin.View {
                 if (slot != null && !content_shown) {
                     //List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
                     unowned List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
-                    foreach (var elem in list)
+                    foreach (var elem in list) {
                         select_childs.prepend (elem.location);
+                    }
                 }
-//            }
-//          else if (mode == view_mode && current_slot != null && location.equal (current_slot.location)) {
-//                /* check if the requested location and viewmode are unchanged */
-//message ("returning - location and viewmode unchanged");
-//                    return;
             } else {
                 can_show_folder = true;
                 /* check if the requested location is a parent of the previous one */
@@ -300,50 +274,40 @@ namespace Marlin.View {
             }
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-//message ("mode is miller");
                 if (mwcol == null) {
-//message ("make new miller");
                     mwcol = new Marlin.View.Miller (location, this);
                 } else {
                     /* Create new slot in existing mwcol
                      * this.slot is the host_slot, newly created slot becomes active and assigned to this.slot.*/
                     assert (slot != null);
-//message ("ViewContainer: mwcol add location %s to host %s", location.get_uri (), slot.location.get_uri ());
                     mwcol.add_location (location, slot);
-//message ("make container slot miller active slot");
                     slot = mwcol.current_slot;
 
                     if (slot != null) {
                         set_up_slot ();
                     } else
                         critical ("marlin window column view has no active slot");
-//message ("return from change view");
                     return;
                 }
             } else {
                 mwcol = null;
-//message ("new root slot");
                 slot = new Slot (location, this);
             }
 
             switch (mode) {
             case Marlin.ViewMode.LIST:
-//message ("make list view");
                 content = slot.make_list_view ();
                 break;
             case Marlin.ViewMode.MILLER_COLUMNS:
-//message ("make miller view");
                 content = mwcol.make_view ();
                 slot = mwcol.current_slot;
                 break;
             default:
-//message ("make icon view");
                 content = slot.make_icon_view ();
                 break;
             }
 
-//message ("call directory view first for empty selection");
-                    ((FM.DirectoryView) slot.view_box).select_first_for_empty_selection ();
+            ((FM.DirectoryView) slot.view_box).select_first_for_empty_selection ();
 
             /* automagicly enable icon view for icons keypath */
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
@@ -351,8 +315,6 @@ namespace Marlin.View {
 
             /* Setting up view_mode and its button is responsibility of window */
             view_mode = mode;
-//            if (window.top_menu.view_switcher != null)
-//                window.top_menu.view_switcher.mode = view_mode;
 
             set_up_slot ();
             slot.active ();
