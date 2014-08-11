@@ -207,8 +207,6 @@ message ("Location Bar - view grab focus 1");
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else {
-message ("Location Bar - view grab focus 2");
-
                     win.current_tab.slot.view_box.grab_focus ();
                 }
             });

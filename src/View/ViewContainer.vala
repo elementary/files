@@ -155,16 +155,16 @@ namespace Marlin.View {
                 slot.directory.done_loading.connect (directory_done_loading);
                 slot.directory.need_reload.connect (reload);
             }
-            //plugin_directory_loaded ();
+            plugin_directory_loaded ();
         }
 
-//        private void plugin_directory_loaded () {
-//            Object[] data = new Object[3];
-//            data[0] = window;
-//            (mwcol != null) ? data[1] = mwcol : data[1] = slot;
-//            data[2] = slot.directory.file;
-//            plugins.directory_loaded ((void*) data);
-//        }
+        private void plugin_directory_loaded () {
+            Object[] data = new Object[3];
+            data[0] = window;
+            (mwcol != null) ? data[1] = mwcol : data[1] = slot;
+            data[2] = slot.directory.file;
+            plugins.directory_loaded ((void*) data);
+        }
 
         private void connect_available_info () {
 //message ("Connect available info");

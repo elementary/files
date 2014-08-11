@@ -621,7 +621,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     file->pix_size = size;
 }
 
-/* This function is used by the icon renderer and only by it.
+/* This function is used by the icon renderer and fm-list-model.
  * Store the pixbuf and update it only for size change.
  */
 void gof_file_update_icon (GOFFile *file, gint size)

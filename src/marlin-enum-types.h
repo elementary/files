@@ -53,9 +53,6 @@ typedef enum
     MARLIN_ZOOM_LEVEL_LARGE,
     MARLIN_ZOOM_LEVEL_LARGER,
     MARLIN_ZOOM_LEVEL_LARGEST,
-
-    /*< private >*/
-    MARLIN_ZOOM_N_LEVELS,
 } MarlinZoomLevel;
 
 GType           marlin_zoom_level_get_type     (void) G_GNUC_CONST;

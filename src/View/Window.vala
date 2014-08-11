@@ -206,11 +206,8 @@ namespace Marlin.View {
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
             if (is_first_window) {
-        //message ("Menubar");
                 var builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
-        //message ("got builder");
                 application.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
-        //message ("menubar set");
             }
         }
 
@@ -271,7 +268,6 @@ namespace Marlin.View {
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
-//message ("Connect key press event");
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
@@ -279,7 +275,6 @@ namespace Marlin.View {
                 return false;
             });
 
-//message ("Connect button press event");
             var go_to_action = get_action ("go_to");
             button_press_event.connect ((event) => {
                 /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
@@ -293,7 +288,6 @@ namespace Marlin.View {
                     return false;
             });
 
-//message ("Connect window state event");
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
@@ -341,7 +335,6 @@ namespace Marlin.View {
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.SET);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.DEFAULT);
 
-//message ("keyboard shortcut binding");
             /* keyboard shortcuts bindings */
             if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
@@ -351,12 +344,9 @@ namespace Marlin.View {
         }
 
         private void show_infobar (bool val) {
-//message ("show infobar is %s", val ? "true" : "false");
             if (val) {
-//message ("show");
                 info_bar.show_all ();
             } else {
-//message ("hide");
                 info_bar.hide ();
             }
         }
@@ -379,10 +369,8 @@ namespace Marlin.View {
 
             if (old_tab != null) {
                 var old_slot = old_tab.get_current_slot ();
-                if (old_slot != null) {
+                if (old_slot != null)
                     old_slot.inactive ();
-//message ("Window:emitting slot inactive");
-}
             }
 
             if (current_tab != null) {
