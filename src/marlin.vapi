@@ -275,4 +275,51 @@ namespace Exo {
         public Gtk.TreePath? get_hover_path ();
         public signal void item_hovered (Gtk.TreePath path);
     }
+
+    [CCode (cheader_filename = "exo-tree-view.h")]
+    public delegate void IconViewForeachFunc (Exo.IconView icon_view, Gtk.TreePath path);
+
+    [CCode (cheader_filename = "exo-tree-view.h", cprefix = "GTK_ICON_VIEW_")]
+    public enum IconViewDropPosition {
+		NO_DROP,
+		DROP_INTO,
+		DROP_LEFT,
+		DROP_RIGHT,
+		DROP_ABOVE,
+		DROP_BELOW
+    }
+//        private struct IconViewItem {
+//            Gdk.Rectangle cell_area;
+//            Gtk.TreeIter iter;
+//            int index;
+//            int row;
+//            int col;
+//            uint selected = 1;
+//            uint selected_before_rubberbanding = 1;
+//        }
+    [CCode (cprefix = "ExoIconView", lower_case_cprefix = "exo_icon_view_", cheader_filename = "exo-icon-view.h")]
+    public class IconView : Gtk.Container {
+
+        public IconView ();
+        public void set_model (Gtk.TreeModel model);
+        public void set_selection_mode (Gtk.SelectionMode mode);
+        public void set_pixbuf_column (int column);
+        public void set_text_column (int column);
+        public void set_columns (int cols);
+        public void set_item_width (int width);
+        public GLib.List get_selected_items ();
+        public void selected_foreach (Exo.IconViewForeachFunc func);
+        public void set_drag_dest_item (Gtk.TreePath path, Exo.IconViewDropPosition pos);
+        public bool get_dest_item_at_pos (int x, int y, out Gtk.TreePath path, out Exo.IconViewDropPosition pos);
+        public void select_all ();
+        public void unselect_all ();
+        public void select_path (Gtk.TreePath path);
+        public void unselect_path (Gtk.TreePath path);
+        public void scroll_to_path (Gtk.TreePath path, bool use_align, float row_align, float col_align);
+        public void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing);
+        public bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
+        public signal void selection_changed ();
+        public signal void item_activated (Gtk.TreePath path);
+        
+    }
 }

@@ -45,6 +45,8 @@ namespace Marlin.Places {
         private const int PROP_0 = 0;
         private const int PROP_ZOOM_LEVEL = 1;
 
+        private static FM.DndHandler dnd_handler = new FM.DndHandler ();
+
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;
         Gtk.CellRendererPixbuf icon_cell_renderer;
@@ -883,7 +885,8 @@ namespace Marlin.Places {
                 if (drop_uri.has_prefix ("trash:///"))
                     actions &= Gdk.DragAction.MOVE;
 
-                real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
+                //real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
+                real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, window, actions);
             }
 
             if (real_action == Gdk.DragAction.DEFAULT)

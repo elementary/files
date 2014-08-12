@@ -56,6 +56,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
+#        View/ExoIconView.vala
         View/ListView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -114,6 +115,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
+#        View/ExoIconView.vala
         View/ListView.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
@@ -161,14 +163,14 @@ ENDIF (WITH_UNITY AND UNITY_FOUND)
 add_executable (../pantheon-files
     eel-editable-label.c
     marlin-enum-types.c
-    marlin-dnd.c
+    #marlin-dnd.c
     marlin-clipboard-manager.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-text-renderer.c
     marlin-cell-renderer-text-ellipsized.c
-    exo-icon-view.c
-    exo-tree-view.c
+    #exo-icon-view.c
+    #exo-tree-view.c
     #fm-abstract-icon-view.c
     #fm-icon-view.c
     #fm-list-view.c
@@ -186,5 +188,5 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 install (TARGETS ../pantheon-files RUNTIME DESTINATION bin)
-install (FILES appmenu.ui View/winmenu.ui View/directory_view_popup.ui pantheon-files-ui.xml fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION ${UI_DIR})
+install (FILES appmenu.ui View/winmenu.ui View/directory_view_popup.ui pantheon-files-ui.xml DESTINATION ${UI_DIR})
 include (Tests)

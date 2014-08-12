@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain='pantheon-files'>
+    <menu id='appmenu'>
+        <section>
+            <item>
+                <attribute name="label">New Window</attribute>
+                <attribute name="action">app.new_window</attribute>
+                <attribute name="accel"><![CDATA[<Ctrl>N]]></attribute>
+            </item>
+        </section>
+        <section>
+            <item>
+                <attribute name="label">Quit</attribute>
+                <attribute name="action">app.quit</attribute>
+                <attribute name="accel"><![CDATA[<Ctrl>Q]]></attribute>
+            </item>
+        </section>
+    </menu>
+</interface>

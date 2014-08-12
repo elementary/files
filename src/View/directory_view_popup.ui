@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface  domain='pantheon-files'>
+    <menu id='popup-trash-selection'>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Restore from trash</attribute>
+                <attribute name='action'>selection.restore</attribute>
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Delete permanently</attribute>
+                <attribute name='action'>selection.delete</attribute>
+            </item>
+        </section>
+    </menu>
+
+    <menu id='popup-selection'>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Rename</attribute>
+                <attribute name='action'>selection.rename</attribute>
+            </item>
+        </section>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Move to Trash</attribute>
+                <attribute name='action'>selection.trash</attribute>
+            </item>
+        </section>
+    </menu>
+
+    <menu id='popup-background'>
+        <section>
+            <submenu>
+                <attribute name='label' translatable='yes'>New ...</attribute>
+                <item>
+                    <attribute name='label' translatable='yes'>Empty Folder</attribute>
+                    <attribute name='action'>background.new</attribute>
+                    <attribute name="target">FOLDER</attribute>
+                </item>
+                <item>
+                    <attribute name='label' translatable='yes'>Empty File</attribute>
+                    <attribute name='action'>background.new</attribute>
+                    <attribute name="target">FILE</attribute>
+                </item>
+            </submenu>
+        </section>
+    </menu>
+
+    <menu id='open-in'>
+        <submenu>
+            <attribute name='label' translatable = 'yes'>Open in ...</attribute>
+            <section>
+                <item>
+                    <attribute name='label' translatable='yes'>New Tab</attribute>
+                    <attribute name='action'>common.open_in</attribute>
+                    <attribute name="target">TAB</attribute>
+                </item>
+                <item>
+                    <attribute name='label' translatable='yes'>New Window</attribute>
+                    <attribute name='action'>common.open_in</attribute>
+                    <attribute name="target">WINDOW</attribute>
+                </item>
+                <item>
+                    <attribute name='label' translatable='yes'>Terminal</attribute>
+                    <attribute name='action'>common.open_in</attribute>
+                    <attribute name="target">TERMINAL</attribute>
+                </item>
+            </section>
+        </submenu>
+    </menu>
+
+    <menu id='properties'>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Properties</attribute>
+                <attribute name='action'>common.properties</attribute>
+            </item>
+        </section>
+    </menu>
+
+    <menu id='clipboard'>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Cut</attribute>
+                <attribute name='action'>selection.cut</attribute>
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Copy</attribute>
+                <attribute name='action'>common.copy</attribute>
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Paste into Folder</attribute>
+                <attribute name='action'>common.paste_into</attribute>
+            </item>
+        </section>
+    </menu>
+
+
+
+</interface>

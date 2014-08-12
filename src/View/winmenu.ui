@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain='pantheon-files'>
+    <menu id='winmenu'>
+        <submenu>
+            <attribute name="label" translatable='yes'>Actions</attribute>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Undo</attribute>
+                    <attribute name="action">win.undo</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>Z]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Redo</attribute>
+                    <attribute name="action">win.redo</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl><Shift>Z]]></attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Select all</attribute>
+                    <attribute name="action">win.select_all</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>A]]></attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable='yes'>Tabs</attribute>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>New Tab</attribute>
+                    <attribute name="action">win.tab</attribute>
+                    <attribute name="target">NEW</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>T]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Close Tab</attribute>
+                    <attribute name="action">win.tab</attribute>
+                    <attribute name="target">CLOSE</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>W]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Next Tab</attribute>
+                    <attribute name="action">win.tab</attribute>
+                    <attribute name="target">NEXT</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>Page_Down]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Previous Tab</attribute>
+                    <attribute name="action">win.tab</attribute>
+                    <attribute name="target">PREVIOUS</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>Page_Up]]></attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable='yes'>View</attribute>
+            <submenu>
+                <attribute name="label" translatable='yes'>Mode</attribute>
+                <section>
+                    <item>
+                        <attribute name="label" translatable='yes'>View as Icons</attribute>
+                        <attribute name="action">win.view_mode</attribute>
+                        <attribute name="target">ICON</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>1]]></attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable='yes'>View as List</attribute>
+                        <attribute name="action">win.view_mode</attribute>
+                        <attribute name="target">LIST</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>2]]></attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable='yes'>View as Columns</attribute>
+                        <attribute name="action">win.view_mode</attribute>
+                        <attribute name="target">MILLER</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>3]]></attribute>
+                    </item>
+                </section>
+                <section>
+                    <item>
+                        <attribute name="label" translatable='yes'>Refresh Window</attribute>
+                        <attribute name="action">win.refresh</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>R]]></attribute>
+                    </item>
+                </section>
+            </submenu>
+            <submenu>
+                <attribute name="label" translatable='yes'>Zoom</attribute>
+                <section>
+                    <item>
+                        <attribute name="label" translatable='yes'>In</attribute>
+                        <attribute name="action">win.zoom</attribute>
+                        <attribute name="target">ZOOM_IN</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>equal]]></attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable='yes'>Out</attribute>
+                        <attribute name="action">win.zoom</attribute>
+                        <attribute name="target">ZOOM_OUT</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>minus]]></attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable='yes'>Normal</attribute>
+                        <attribute name="action">win.zoom</attribute>
+                        <attribute name="target">ZOOM_NORMAL</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>0]]></attribute>
+                    </item>
+                </section>
+            </submenu>
+            <submenu>
+                <attribute name="label" translatable='yes'>Show</attribute>
+                <section>
+                    <item>
+                        <attribute name="label" translatable='yes'>Sidebar</attribute>
+                        <attribute name="action">win.show_sidebar</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>b]]></attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable='yes'>Hidden files</attribute>
+                        <attribute name="action">win.show_hidden</attribute>
+                        <attribute name="accel"><![CDATA[<Ctrl>h]]></attribute>
+                    </item>
+                </section>
+            </submenu>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable='yes'>Go</attribute>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Home</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">HOME</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>Home]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Trash</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">TRASH</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>T]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Network</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">NETWORK</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>N]]></attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Server</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">SERVER</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>C]]></attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Parent directory</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">UP</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>Up]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Next directory</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">FORWARD</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>Right]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>Previous directory</attribute>
+                    <attribute name="action">win.go_to</attribute>
+                    <attribute name="target">BACK</attribute>
+                    <attribute name="accel"><![CDATA[<Alt>Left]]></attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable='yes'>Help</attribute>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Get Help</attribute>
+                        <attribute name="action">win.help</attribute>
+                        <attribute name="target">HELP</attribute>
+                        <attribute name="accel"><![CDATA[F1]]></attribute>
+                </item>
+                <item>
+                    <attribute name="label" translatable='yes'>About</attribute>
+                        <attribute name="action">win.help</attribute>
+                        <attribute name="target">ABOUT</attribute>
+                        <attribute name="accel"><![CDATA[F2]]></attribute>
+                </item>
+            </section>
+        </submenu>
+    </menu>
+</interface>
