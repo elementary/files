@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-08-06 18:03+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"PO-Revision-Date: 2014-08-11 18:16+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-07 06:19+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-08-12 06:20+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
 "Language: de\n"
 
 #: ../src/fm-list-view.c:59
@@ -1851,7 +1851,7 @@ msgstr "Andere Anwendung …"
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "In diesem Ordner"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
@@ -2346,7 +2346,7 @@ msgstr "Neues Fenster"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
-msgstr "Files beenden."
+msgstr "Dateiverwaltung beenden."
 
 #: ../src/Application.vala:145
 msgid "Enable debug logging"
@@ -2411,7 +2411,7 @@ msgstr "Neues Fenster als _Administrator"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "_Über Dateiverwaltung"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"

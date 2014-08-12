@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 05:07+0000\n"
+"PO-Revision-Date: 2014-08-11 18:39+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:28+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-08-12 06:20+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -66,7 +66,7 @@ msgstr[2] "Koristi \"%s\" za otvaranje odabranih stavki"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Koristi \"%s\" kao predložak za novu datoteku"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -1780,7 +1780,7 @@ msgstr "%u odabranih stavaka (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "Učitavanje..."
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1808,7 +1808,7 @@ msgstr "Nemate ovlasti za gledanje ova mape."
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "Povezivanje…"
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1856,11 +1856,11 @@ msgstr "Druga aplikacija..."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "U ovoj mapi"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zabilješke"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
@@ -1868,7 +1868,7 @@ msgstr ""
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Nema pronađenih rezultata"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1888,7 +1888,7 @@ msgstr "Pretpregled"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -2014,7 +2014,7 @@ msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Postavi kao zadano"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -2090,11 +2090,11 @@ msgstr "_Ponovi"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "_Traži"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "Pretraži trenutnuu ampu"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2254,7 +2254,7 @@ msgstr "Vaša uobičajna mjesta i zabilješke"
 
 #: ../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Otvori smeće"
 
 #: ../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -2266,7 +2266,7 @@ msgstr "Vaše lokalne particije i uređaji"
 
 #: ../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Otvori sadržaj datotečnog sustava"
 
 #: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
 msgid "Mount and open %s"
@@ -2278,7 +2278,7 @@ msgstr "Vaša mrežna mjesta"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Cjelokupna mreža"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2290,7 +2290,7 @@ msgstr "Nemoguće je pokrenuti %s"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2298,7 +2298,7 @@ msgstr "Ukloni"
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "Preimenuj"
 
 #: ../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -2314,15 +2314,15 @@ msgstr "_Izbaci"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Povezivanje s poslužiteljem..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Prijašnje"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Sljedeće"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2346,7 +2346,7 @@ msgstr "Ovori uri(e) u novoj kartici"
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Novi prozor"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
