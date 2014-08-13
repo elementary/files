@@ -1,1 +1,4 @@
 build
+../src/Miller.vala
+../src/Slot.vala
+../src/MillerView.vala
