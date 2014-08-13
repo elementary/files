@@ -2053,6 +2053,7 @@ rename_callback (GObject *source_object,
     GFile *new_file;
     GError *error;
 
+//g_message ("rename callback");
     op = callback_data;
     error = NULL;
     new_file = g_file_set_display_name_finish (G_FILE (source_object),
@@ -2062,11 +2063,12 @@ rename_callback (GObject *source_object,
     //marlin_file_changes_queue_file_added (new_file);
     if (error == NULL)
         gof_file_update_existing (op->file, new_file);
-    /*else
-        marlin_dialogs_show_error (NULL, error, "Failed to rename %s", op->file->name);*/
+    else
+        marlin_dialogs_show_error (NULL, error, "Failed to rename %s", op->file->uri);
 
     //g_warning ("%s %u", G_STRFUNC, G_OBJECT (op->file)->ref_count);
-    gof_file_operation_complete (op, NULL, error);
+    //gof_file_operation_complete (op, NULL, error);
+    gof_file_operation_complete (op, new_file, error);
     if (new_file != NULL) {
         g_object_unref (new_file);
     } else {
@@ -2086,7 +2088,7 @@ gof_file_rename (GOFFile *file,
     //char *new_file_name;
     //gboolean success, name_changed;
     GError *error;
-
+//g_message ("%s -", G_STRFUNC);
     //g_warning ("%s %u", G_STRFUNC, G_OBJECT (file)->ref_count);
     g_return_if_fail (GOF_IS_FILE (file));
     g_return_if_fail (new_name != NULL);

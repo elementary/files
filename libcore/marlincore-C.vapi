@@ -300,7 +300,7 @@ namespace GOF {
         public GOF.File unref ();
     }
 
-    public delegate void FileOperationCallback (GOF.File file, GLib.File result_location, GLib.Error error, void* callback_data);
+    public delegate void FileOperationCallback (GOF.File file, GLib.File? result_location, GLib.Error? error, void* callback_data);
 
     [CCode (cheader_filename = "gof-file.h")]
     public enum FileIconFlags

@@ -27,7 +27,6 @@ namespace Marlin.View.Chrome {
 
         private int _mode;
         public int mode {
-        //private ViewMode mode{
             set {
                 Gtk.Widget target;
                 int active_index;
@@ -61,8 +60,6 @@ namespace Marlin.View.Chrome {
         }
 
         private bool freeze_update = false;
-        //private Gtk.ActionGroup main_actions;
-        //private GLib.SimpleActionGroup main_actions;
         private GLib.SimpleAction view_mode_action;
 
         private Gtk.Image icon;
@@ -73,11 +70,9 @@ namespace Marlin.View.Chrome {
         private GLib.Variant list_sv;
         private GLib.Variant miller_sv;
 
-        //public ViewSwitcher (Gtk.ActionGroup action_group) {
         public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
             Object (orientation: Gtk.Orientation.HORIZONTAL);
 
-            //main_actions = action_group;
             this.view_mode_action = _view_mode_action;
             switcher = new Granite.Widgets.ModeButton ();
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
@@ -101,18 +96,14 @@ namespace Marlin.View.Chrome {
 
             switcher.mode_changed.connect ((image) => {
                 if (freeze_update) {
-message ("Switcher update frozen");
                     return;
                 }
 
                 if (image == list) {
-message ("activate LIST");
                     view_mode_action.activate (list_sv);
                 } else if (image == miller) {
-message ("activate MILLER");
                     view_mode_action.activate (miller_sv);
                 } else {
-message ("activate ICON");
                     view_mode_action.activate (icon_sv);
                 }
             });

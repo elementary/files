@@ -38,7 +38,7 @@ namespace FM {
 
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-message ("CV setup zoom_level");
+//message ("CV setup zoom_level");
             Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
             return (Marlin.ZoomLevel)(Preferences.marlin_column_view_settings.get_enum ("zoom-level"));
         }
@@ -70,8 +70,8 @@ message ("CV setup zoom_level");
             return result;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-message ("handle left button");
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+//message ("handle left button");
             bool result = false;
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
@@ -111,7 +111,7 @@ message ("handle left button");
             return result;
         }
 
-        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
                 /* opens folder(s) in new tab */
                 cancel_await_double_click ();
                 if (path != null) {
@@ -121,7 +121,7 @@ message ("handle left button");
                     return false;
         }
 
-        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
 //message ("handle right button");
             if (path != null) {
                 /* select the path on which the user clicked if not selected yet */
@@ -145,7 +145,7 @@ message ("handle left button");
 
 /** Private methods */
         private void cancel_await_double_click () {
-message ("MCV cancel await double click");
+//message ("MCV cancel await double click");
             if (awaiting_double_click) {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
@@ -156,7 +156,7 @@ message ("MCV cancel await double click");
 
 
         private bool not_double_click () {
-message ("MCV not double click");
+//message ("MCV not double click");
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
@@ -167,5 +167,7 @@ message ("MCV not double click");
             }
             return false;
         }
+
+
     }
 }

@@ -94,7 +94,7 @@ public class Marlin.Application : Granite.Application {
         if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
 
-        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
+        //message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
         //init_gtk_accels ();
@@ -129,7 +129,7 @@ public class Marlin.Application : Granite.Application {
         /* {name, activate function, parameter type, state, change state function } */
 
         this.add_action_entries (app_actions, this);
-message ("Application actions");
+//message ("Application actions");
         /** Application menu */
         var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
         this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
@@ -241,13 +241,13 @@ message ("Application actions");
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-message ("quit");
+//message ("quit");
         if (quitting)
             return;
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
-message ("number of windows is %u", window_list.length ());
+//message ("number of windows is %u", window_list.length ());
         window_list.@foreach ((window) => {
             ((Marlin.View.Window)window).quit ();
         });

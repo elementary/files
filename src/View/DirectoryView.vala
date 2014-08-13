@@ -131,7 +131,6 @@ namespace FM {
         Marlin.Thumbnailer thumbnailer = null;
         uint thumbnail_request = 0;
         uint thumbnail_source_id = 0;
-        bool thumbnailing_scheduled = false;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
         private GLib.AppInfo default_app;
@@ -143,10 +142,9 @@ namespace FM {
         /* Rename support */
         protected Gtk.TreeViewColumn name_column;
         protected Gtk.CellRendererText name_renderer;
-        protected Gtk.Entry editable_widget;
-        protected GOF.File renaming_file = null;
-        protected bool rename_done = false;
-        protected string original_name = "";
+        protected Gtk.Entry? editable_widget = null;
+        protected GOF.File? renaming_file = null;
+        public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
@@ -889,7 +887,7 @@ namespace FM {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
-message ("DV on zoom level changed");
+//message ("DV on zoom level changed");
             model.set_property ("size", Marlin.zoom_level_to_icon_size (zoom));
             zoom_level_changed ();
             load_thumbnails (slot.directory, zoom);
@@ -1777,7 +1775,7 @@ message ("DV on zoom level changed");
         }
 
         private void set_up_zoom_level () {
-message ("DV set up zoom level");
+//message ("DV set up zoom level");
             zoom_level = get_set_up_zoom_level (); /* Abstract */
             model.set_property ("size", (int)(Marlin.zoom_level_to_icon_size (zoom_level)));
         }
@@ -1787,19 +1785,19 @@ message ("DV set up zoom level");
         }
 
         protected virtual void on_view_items_activated () {
-message ("on items activated");
+//message ("on items activated");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         protected virtual void on_view_selection_changed () {
-message ("on tree selection changed");
+//message ("on tree selection changed");
             update_selected_files ();
             notify_selection_changed ();
         }
 
         /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-message ("on key_press_event");
+//message ("on key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
@@ -1838,7 +1836,7 @@ message ("on key_press_event");
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
-message ("Abstract List view scroll handler");
+//message ("Abstract List view scroll handler");
 
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) {
                 double increment = 0.0;
@@ -1865,7 +1863,7 @@ message ("Abstract List view scroll handler");
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
-message ("on name editing started");
+//message ("on name editing started");
             renaming = true;
             freeze_updates ();
             editable_widget = editable as Gtk.Entry;
@@ -1877,7 +1875,7 @@ message ("on name editing started");
         }
 
         protected void on_name_editing_canceled () {
-message ("on name editing canceled");
+//message ("on name editing canceled");
                 editable_widget = null;
                 renaming = false;
                 unfreeze_updates ();
@@ -1887,7 +1885,19 @@ message ("on name editing canceled");
         protected void on_name_edited (string path_string, string new_name) {
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
+//message ("on name edited");
             if (new_name != "") {
+                /* Validate filename before trying to rename the file */
+                try {
+                    Filename.from_uri ("file:///" + Uri.escape_string (new_name));
+                } catch (GLib.ConvertError e) {
+                    var dialog = new Gtk.MessageDialog ((Gtk.Window)window, Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, _("%s is not a valid file name"), new_name);
+                    dialog.run ();
+                    dialog.destroy ();
+                    renaming = false;
+                    return;
+                }
+
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
@@ -1898,28 +1908,15 @@ message ("on name editing canceled");
 
                 /* Only rename if name actually changed */
                 if (!(new_name == original_name)) {
-                    renaming_file = file;
-                    rename_done = false;
-                    original_name = new_name.dup ();
-                    file.rename (new_name, on_renaming_done);
+                    file.rename (new_name, (file, result_location, error) => {
+                        /* FIXME Cannot access calling environment within this closure for some reason
+                         * so cannot display dialog now*/
+                        if (error != null)
+                            warning ("Rename Error:  %s", error.message);
+                    });
                 }
             }
             renaming = false;
-        }
-
-        protected void on_renaming_done (GOF.File file, GLib.File result_location, GLib.Error error, void* callback_data = null) {
-            if (renaming_file != null) {
-                rename_done = true;
-
-                if (error != null) {
-                    Eel.show_error_dialog (_("Failed to rename %s to %s").printf (file.info.get_name (), original_name), error.message, null);
-                    /* If the rename failed (or was cancelled), kill renaming_file.
-                     * We won't get a change event for the rename, so otherwise
-                     * it would stay around forever.
-                     */
-                    renaming_file = null;
-                }
-            }
         }
 
         protected virtual void filename_cell_data_func (Gtk.CellLayout cell_layout,
@@ -1963,26 +1960,35 @@ message ("on name editing canceled");
             return false;
         }
 
-/** Dummy Virtual methods - may be overridden*/
-        public virtual void zoom_level_changed () {}
-        public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
-        public virtual void highlight_path (Gtk.TreePath? path) {}
-        public virtual Gtk.TreePath? get_path_at_pos (int x, int y) {return null;}
-        public virtual void select_all () {}
-        public virtual void unselect_all () {}
-        public virtual void select_path (Gtk.TreePath? path) {}
-        public virtual void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {}
-        public virtual bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {start_path = null; end_path = null; return false;}
-        public virtual void start_renaming_file (GOF.File file, bool preselect_whole_name) {}
+/** Virtual methods - may be overridden*/
         public virtual void sync_selection () {}
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
+        public virtual void highlight_path (Gtk.TreePath? path) {}
+        protected virtual bool handle_default_button_click () {return false;}
+        protected virtual bool on_view_button_release_event (Gdk.EventButton event) {return false;}
+
 /** Abstract methods - must be overridden*/
+        public abstract void zoom_level_changed ();
+        public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
+        public abstract Gtk.TreePath? get_path_at_pos (int x, int y);
+        public abstract void select_all ();
+        public abstract void unselect_all ();
+        public abstract void select_path (Gtk.TreePath? path);
+        public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select);
+        public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
+        public abstract void start_renaming_file (GOF.File file, bool preselect_whole_name);
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
+
+        protected abstract bool on_view_button_press_event (Gdk.EventButton event);
+        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
+        protected abstract bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
+        protected abstract bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
+
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

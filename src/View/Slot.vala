@@ -43,7 +43,7 @@ namespace Marlin.View {
                                "</span>";
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab) {
-message ("New slot location %s", _location.get_uri ());
+//message ("New slot location %s", _location.get_uri ());
             base.init ();
             location = _location;
             ctab = _ctab;
@@ -58,7 +58,7 @@ message ("New slot location %s", _location.get_uri ());
                     //this.view_box.merge_menus ();
                     this.is_active = true;
                     /* Ensure this slot gets the keypress events */
-message ("Slot grab focus");
+//message ("Slot grab focus");
                     this.view_box.grab_focus ();
                 }
             });
@@ -75,7 +75,7 @@ message ("Slot grab focus");
         }
 
         ~Slot () {
-message ("In slot %s destruct", directory.file.uri);
+//message ("In slot %s destruct", directory.file.uri);
             this.view_box = null;
             this.directory = null;
             this.ctab = null;
@@ -132,7 +132,7 @@ message ("In slot %s destruct", directory.file.uri);
         }
 
         public bool select_all (bool all) {
-message ("Slot select_all?");
+//message ("Slot select_all?");
             if (view_box != null) {
                 if (all)
                     view_box.select_all ();
