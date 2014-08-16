@@ -267,7 +267,8 @@ public class Marlin.Application : Granite.Application {
 
             foreach (var page in pages) {
                 var view_container = page as Marlin.View.ViewContainer;
-                File location = view_container.slot.location;
+                //File location = view_container.slot.location;
+                GLib.File location = view_container.location;
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == marlin_window.current_tab)
                         view_container.path_changed (File.new_for_path (Environment.get_home_dir ()));

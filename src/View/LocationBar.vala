@@ -25,16 +25,27 @@ namespace Marlin.View.Chrome
         public Breadcrumbs bread;
 
         private string _path;
+        //public new string path {
         public new string path {
             set {
+message ("path is %s", path);
                 var new_path = GLib.Uri.unescape_string (value);
-                _path = new_path;
-//message ("new path win free_view_changeds is %s", win.freeze_view_changes ? "true": "false");
-                if (!bread.is_focus && !win.freeze_view_changes) {
-                    bread.text = "";
-                    bread.change_breadcrumbs (new_path);
+                if (new_path != null) {
+                    _path = new_path;
+    //message ("new path win free_view_changeds is %s", win.freeze_view_changes ? "true": "false");
+message ("setting _path to %s", new_path);
+message ("bread is focus is %s", bread.is_focus ? "true" : "false");
+message ("win freeze view changes is %s", win.freeze_view_changes ? "true" : "false");
+                    if (!bread.is_focus && !win.freeze_view_changes) {
+                        bread.text = "";
+message ("changing bread crumbs");
+                        bread.change_breadcrumbs (new_path);
+                    }
+                } else {
+critical ("Tried to set null path");
                 }
             }
+
             get {
                 return _path;
             }
@@ -78,7 +89,8 @@ namespace Marlin.View.Chrome
                 win.current_tab.content.grab_focus ();
             else {
 message ("Location Bar - view grab focus 1");
-                win.current_tab.slot.view_box.grab_focus ();
+                //win.current_tab.slot.view_box.grab_focus ();
+                win.current_tab.view.grab_focus ();
             }
 
             activate(file);
@@ -207,7 +219,8 @@ message ("Location Bar - view grab focus 1");
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else {
-                    win.current_tab.slot.view_box.grab_focus ();
+                    //win.current_tab.slot.view_box.grab_focus ();
+                    win.current_tab.view.grab_focus ();
                 }
             });
 

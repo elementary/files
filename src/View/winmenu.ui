@@ -76,13 +76,6 @@
                         <attribute name="accel"><![CDATA[<Ctrl>3]]></attribute>
                     </item>
                 </section>
-                <section>
-                    <item>
-                        <attribute name="label" translatable='yes'>Refresh Window</attribute>
-                        <attribute name="action">win.refresh</attribute>
-                        <attribute name="accel"><![CDATA[<Ctrl>R]]></attribute>
-                    </item>
-                </section>
             </submenu>
             <submenu>
                 <attribute name="label" translatable='yes'>Zoom</attribute>
@@ -122,6 +115,13 @@
                     </item>
                 </section>
             </submenu>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Refresh Window</attribute>
+                    <attribute name="action">win.refresh</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>R]]></attribute>
+                </item>
+            </section>
         </submenu>
         <submenu>
             <attribute name="label" translatable='yes'>Go</attribute>

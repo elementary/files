@@ -384,11 +384,13 @@ namespace Marlin.Places {
             this.select_path = null;
             this.n_builtins_before = 0;
 
-            var slot = window.get_active_slot();
-            if (slot != null)
-                this.slot_location = slot.location.get_uri ();
-            else
-                this.slot_location = null;
+//            var slot = window.get_active_slot();
+//            if (slot != null)
+//                this.slot_location = slot.location.get_uri ();
+//            else
+//                this.slot_location = null;
+
+            //this.slot_location = window.current_tab.get_location ();
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
                 store.@get (iter,
@@ -614,7 +616,8 @@ namespace Marlin.Places {
             if (last_selected_uri != null)
                 set_matching_selection (this.last_selected_uri);
             else
-                set_matching_selection  (this.slot_location);
+                //set_matching_selection  (this.slot_location);
+                set_matching_selection  (slot_location);
         }
 
         private void add_bookmark (Gtk.TreeIter iter, Marlin.Bookmark bm, uint index) {
@@ -1063,9 +1066,11 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    Marlin.View.Slot? slot = window.get_active_slot ();
-                    if (slot != null)
-                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
+//                    Marlin.View.Slot? slot = window.get_active_slot ();
+//                    if (slot != null)
+//                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
+                        //GLib.Signal.emit_by_name (window.current_tab, "path-changed", location, null);
+                    window.current_tab.path_changed (location);
                 }
             } else {
                 Drive drive;
@@ -1906,6 +1911,7 @@ namespace Marlin.Places {
 
         private void loading_uri_callback (string location) {
                 set_matching_selection (location);
+                slot_location = location;
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {

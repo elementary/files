@@ -74,10 +74,16 @@ namespace Marlin.View {
                 list.prepend (file);
                 real_update (list);
             } else {
-                Marlin.View.Slot slot = window.current_tab.slot;
-                if (slot != null) {
+//                Marlin.View.Slot slot = window.current_tab.slot;
+//                if (slot != null) {
+//                    //List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
+//                    unowned List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
+//                    real_update (list);
+//                }
+                GOF.AbstractSlot view = window.current_tab.view;
+                if (view != null) {
                     //List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
-                    unowned List<GOF.File> list = ((FM.DirectoryView) slot.view_box).get_selected_files ();
+                    unowned List<GOF.File> list = view.get_selected_files ();
                     real_update (list);
                 }
             }

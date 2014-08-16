@@ -1,5 +1,5 @@
 /*
- Copyright (C) 
+ Copyright (C) 2014 ELementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License along
  with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : 
+ Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
 namespace FM {
@@ -34,6 +34,7 @@ namespace FM {
         public ListView (Marlin.View.Slot _slot) {
 //message ("New list view");
             base (_slot);
+            slot.directory.load ();
         }
 
         construct {
@@ -166,7 +167,7 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("LV handle left button");
+message ("LV handle left button");
             bool result = true;
             if (path != null) {
                 /*Determine where user clicked - this will be the sole selection */
@@ -203,23 +204,6 @@ namespace FM {
                 return true;
             } else
                 return false;
-        }
-
-        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("LV handle right button");
-            if (path != null) {
-                /* select the path on which the user clicked if not selected yet */
-                if (!selection.path_is_selected (path)) {
-                    /* we don't unselect all other items if Control is active */
-                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
-                        selection.unselect_all ();
-
-                    if (!on_blank)
-                        selection.select_path (path);
-                }
-            }
-            show_or_queue_context_menu (event);
-            return true;
         }
 
         private void on_sort_column_changed () {

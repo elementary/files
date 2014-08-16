@@ -1,5 +1,5 @@
 /*
- Copyright (C) 
+ Copyright (C) 2014 ELementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -13,10 +13,12 @@
  You should have received a copy of the GNU General Public License along
  with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : 
+ Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
+
 namespace FM {
+    /* View for use within the Miller View only */
     public class ColumnView : AbstractTreeView {
     /** Miller View support */
         bool awaiting_double_click = false;
@@ -26,6 +28,7 @@ namespace FM {
         public ColumnView (Marlin.View.Slot _slot) {
 //message ("New column view");
             base (_slot);
+            /* We do not need to load the directory - this is done by Miller */
         }
 
         construct {
@@ -71,7 +74,7 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("handle left button");
+message ("CV handle left button");
             bool result = false;
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
@@ -79,6 +82,7 @@ namespace FM {
                     result = true;
                 } else if (path != null) {
                     /*Determine where user clicked - this will be the sole selection */
+message ("CV unselect all");
                     selection.unselect_all ();
                     selection.select_path (path);
 
@@ -119,23 +123,6 @@ namespace FM {
                     return true;
                 } else
                     return false;
-        }
-
-        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("handle right button");
-            if (path != null) {
-                /* select the path on which the user clicked if not selected yet */
-                if (!selection.path_is_selected (path)) {
-                    /* we don't unselect all other items if Control is active */
-                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
-                        selection.unselect_all ();
-
-                    if (!on_blank)
-                        selection.select_path (path);
-                }
-            }
-            show_or_queue_context_menu (event);
-            return true;
         }
 
         protected override bool handle_default_button_click () {

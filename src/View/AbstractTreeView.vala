@@ -19,7 +19,6 @@
 namespace FM {
     /* Implement common features of MillerColumnView and ListView */
     public abstract class AbstractTreeView : DirectoryView {
-        //protected Exo.TreeView tree;
         protected Gtk.TreeView tree;
         protected Gtk.CellRendererPixbuf pixbuf_renderer;
 
@@ -133,29 +132,31 @@ namespace FM {
         }
 
         public override void unselect_all () {
+message ("ATV unselect all");
             tree.get_selection ().unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {
             if (path != null)
                 tree.get_selection ().select_path (path);
-            else
-                unselect_all ();
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-//message ("ATV set cursor");
+message ("ATV set cursor");
             if (path == null)
                 return;
 
             Gtk.TreeSelection selection = tree.get_selection ();
             if (!select)
-                GLib.SignalHandler.block_by_func (selection, (void*) on_view_selection_changed, null);
+                //GLib.SignalHandler.block_by_func (selection, (void*) on_view_selection_changed, null);
+                selection.changed.disconnect (on_view_selection_changed);
 
             tree.set_cursor_on_cell (path, name_column, name_renderer, start_editing);
 
             if (!select)
-                GLib.SignalHandler.unblock_by_func (selection, (void*) on_view_selection_changed, null);
+                //GLib.SignalHandler.unblock_by_func (selection, (void*) on_view_selection_changed, null);
+                selection.changed.connect (on_view_selection_changed);
+
         }
 
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
@@ -217,13 +218,14 @@ message ("ATV start renaming file");
         }
 
         protected override void update_selected_files () {
-//message ("ATV update selected files");
+message ("ATV update selected files");
             selected_files = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File file;
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
                 if (file != null) {
+message ("prepending %s", file.uri);
                     selected_files.prepend (file);
                 } else {
                     critical ("Null file in model");
@@ -233,13 +235,14 @@ message ("ATV start renaming file");
         }
 
         protected override bool on_view_button_press_event (Gdk.EventButton event) {
-//message ("ATV button press");
+message ("ATV button press");
 
             /* check if the event is for the bin window */
             if (event.window != tree.get_bin_window ())
                 return false; /* not for us */
 
-            grab_focus (); /* cancels any renaming */
+            //grab_focus (); /* cancels any renaming */
+            slot.active ();
 
             unowned Gtk.TreeSelection selection = tree.get_selection ();
             Gtk.TreePath? path = null;
@@ -250,16 +253,22 @@ message ("ATV start renaming file");
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool result = false;
 
-            //if (no_mods && path == null)
-            if (no_mods)
+            if (no_mods) {
+message ("ATV button press unselect all");
                 unselect_all ();
+                if (path != null)
+                    selection.select_path (path);
+            }
 
             switch (event.button) {
-                case Gdk.BUTTON_PRIMARY: 
-                    if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                case Gdk.BUTTON_PRIMARY:
+                    if (path == null)
+                        result = true;
+
+                    else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
                         result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank);
                     }
-                    /* In double-click mode the default Gtk.TreeView handler is used */
+                    /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
@@ -267,7 +276,8 @@ message ("ATV start renaming file");
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
-                    result = handle_secondary_button_click (event, selection, path, col, no_mods, on_blank);
+                    //result = handle_secondary_button_click (event, selection, path, col, no_mods, on_blank);
+                    result = handle_secondary_button_click (event);
                     break;
 
                 default:
@@ -276,6 +286,12 @@ message ("ATV start renaming file");
             }
             return result;
         }
+
+//        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+////message ("ATV handle right button");
+//            show_or_queue_context_menu (event);
+//            return true;
+//        }
 
         protected override bool view_has_focus () {
             return tree.has_focus;

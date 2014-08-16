@@ -121,7 +121,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private void clear_directory_info () {
+    public void clear_directory_info () {
         if (idle_consume_changes_id != 0) {
             Source.remove ((uint) idle_consume_changes_id);
             idle_consume_changes_id = 0;
@@ -180,7 +180,7 @@ public class GOF.Directory.Async : Object {
 //message ("CRITICAL location %s gof null", location.get_uri ());
                 }
             });
-            //done_loading ();
+message ("done_loading emit");
             done_loading ();
         }
     }

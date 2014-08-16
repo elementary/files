@@ -48,18 +48,6 @@ namespace Marlin.View {
             current_uri = uri;
         }
 
-        /*private void clear ()
-          {
-          back_stack.clear ();
-          forward_stack.clear ();
-          current_uri = null;
-          }*/
-
-        /*private void printstack ()
-          {
-          stdout.printf ("bck|fwd: %d %d\n", back_stack.size(), forward_stack.size());
-          }*/
-
         public Gee.List<string> go_back_list () {
             return back_stack.slice_head (history_list_length);
         }
@@ -77,7 +65,6 @@ namespace Marlin.View {
                     forward_stack.push (current_uri);
                     current_uri = uri;
                 }
-                //stdout.printf ("%% %s\n", uri);
             }
 
             if (n <= 1)
@@ -95,7 +82,6 @@ namespace Marlin.View {
                     back_stack.push (current_uri);
                     current_uri = uri;
                 }
-                //stdout.printf ("%% %s\n", uri);
             }
 
             if (n <= 1)
@@ -104,11 +90,11 @@ namespace Marlin.View {
                 return go_forward (n-1);
         }
 
-        public bool can_go_back () {
+        public bool get_can_go_back () {
             return !back_stack.is_empty ();
         }
 
-        public bool can_go_forward () {
+        public bool get_can_go_forward () {
             return !forward_stack.is_empty ();
         }
     } /* End: Browser class */

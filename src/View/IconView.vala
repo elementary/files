@@ -1,5 +1,5 @@
 /*
- Copyright (C) 
+ Copyright (C) 2014 ELementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License along
  with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : 
+ Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
 namespace FM {
@@ -27,6 +27,7 @@ namespace FM {
         public IconView (Marlin.View.Slot _slot) {
 //message ("New Abstract IconView");
             base (_slot);
+            slot.directory.load ();
         }
 
         construct {
@@ -69,7 +70,6 @@ namespace FM {
 
         private void set_up_view () {
 //message ("IV tree view set up view");
-            tree.cell_area.add_editable.connect (on_cell_area_add_editable);
             connect_tree_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
         }
@@ -107,11 +107,6 @@ namespace FM {
             return (Marlin.ZoomLevel)zoom;
         }
 
-        private void on_cell_area_add_editable (Gtk.CellRenderer renderer, Gtk.CellEditable editable, Gdk.Rectangle rect, string path) {
-//message ("cell_area add editable");
-            //on_name_editing_started (editable, path);
-        }
-
 /** Override DirectoryView virtual methods as required, where common to IconView and MillerColumnView*/
 
         public override void zoom_level_changed () {
@@ -136,7 +131,7 @@ namespace FM {
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
 //message ("IV get path at pos");
             unowned Gtk.TreePath path;
-            Gtk.IconViewDropPosition pos; // = Gtk.IconViewDropPosition.DROP_INTO;
+            Gtk.IconViewDropPosition pos; 
             if (tree.get_dest_item_at_pos  (x, y, out path, out pos))
                 return path;
             else
@@ -154,8 +149,6 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path) {
             if (path != null)
                 tree.select_path (path);
-            else
-                unselect_all ();
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
@@ -163,7 +156,6 @@ namespace FM {
             if (path == null)
                 return;
 
-            //Gtk.TreeSelection selection = tree.get_selection ();
             if (!select)
                 GLib.SignalHandler.block_by_func (tree, (void*) on_view_selection_changed, null);
 
@@ -227,7 +219,6 @@ namespace FM {
                 file = model.file_for_path (path);
                 /* FIXME - model does not return owned object?  Is this correct? */
                 if (file != null) {
-//message ("appending %s to selected files", file.uri);
                     selected_files.prepend (file);
                 } else {
                     critical ("Null file in model");
@@ -257,15 +248,22 @@ namespace FM {
                 on_editable = false;
 
 
-            if (no_mods)
+            if (no_mods) {
                 unselect_all ();
+                if (path != null)
+                    tree.select_path (path);
+            }
 
             switch (event.button) {
-                case Gdk.BUTTON_PRIMARY: 
-                    if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                case Gdk.BUTTON_PRIMARY:
+                    if (path == null)
+                        result = true;
+
+                    else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
                         result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank);
+
                     }
-                    /* In double-click mode the default Gtk.TreeView handler is used */
+                    /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
@@ -273,7 +271,7 @@ namespace FM {
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
-                    result = handle_secondary_button_click (event, null, path, null, no_mods, on_blank);
+                    result = handle_secondary_button_click (event);
                     break;
 
                 default:
@@ -283,21 +281,13 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("LV handle right button");
+        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+            /* opens folder(s) in new tab */
             if (path != null) {
-                /* select the path on which the user clicked if not selected yet */
-                if (!tree.path_is_selected (path)) {
-                    /* we don't unselect all other items if Control is active */
-                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
-                        tree.unselect_all ();
-
-                    if (!on_blank)
-                        tree.select_path (path);
-                }
-            }
-            show_or_queue_context_menu (event);
-            return true;
+                activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                return true;
+            } else
+                return false;
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -331,7 +321,6 @@ namespace FM {
 
         //protected override bool on_view_button_press_event (Gdk.EventButton event) {return false;}
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
-        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
         //protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
 
     }
