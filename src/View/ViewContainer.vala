@@ -33,7 +33,7 @@ namespace Marlin.View {
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         Browser browser;
-        public Marlin.ViewMode view_mode;
+        public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
         public GLib.File location;
         public OverlayBar overlay_statusbar;
 
@@ -48,27 +48,22 @@ namespace Marlin.View {
          * TopMenu, ViewContainer, DirectoryView Sidebar*/
         /* LocationBar has a different signal named "path_changed" */
 
-        public signal void path_changed (GLib.File? file, int flag = 0, Slot? source_slot = null);
+       // public signal void path_changed (GLib.File? file, int flag = 0, Slot? source_slot = null);
+
         public signal void up ();
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode viewmode, GLib.File location) {
+        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File location) {
 message ("New ViewContainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
-            this.view_mode = viewmode;
+            //this.view_mode = viewmode;
             this.location = location;
 
             browser = new Browser ();
-
-            if (viewmode == Marlin.ViewMode.MILLER_COLUMNS)
-                view = new Miller (location, this);
-            else
-                view = new Slot (location, this);
-
             label = new Gtk.Label ("Loading...");
             label.set_ellipsize (Pango.EllipsizeMode.END);
             label.set_single_line_mode (true);
@@ -87,7 +82,8 @@ message ("New ViewContainer");
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
             connect_signals ();
-            change_view_mode (view_mode);
+            change_view_mode (mode);
+message ("New ViewContainer leaving");
         }
 
         public Gtk.Widget content {
@@ -116,54 +112,68 @@ message ("New ViewContainer");
 
         private void connect_signals () {
 
-            path_changed.connect (on_path_changed);
-
             up.connect (() => {
                 if (view.directory.has_parent ())
-                    path_changed (view.directory.get_parent ());
+                    user_path_change_request (view.directory.get_parent ());
             });
 
             back.connect ((n) => {
                 string? loc = browser.go_back (n);
                 if (loc != null)
-                    path_changed (File.new_for_commandline_arg (loc));
+                    user_path_change_request (File.new_for_commandline_arg (loc));
             });
 
             forward.connect ((n) => {
                 string? loc = browser.go_forward (n);
                 if (loc != null)
-                    path_changed (File.new_for_commandline_arg (loc));
+                    user_path_change_request (File.new_for_commandline_arg (loc));
             });
         }
 
-        private void on_path_changed (GLib.File? location, int flag) {
+        public void user_path_change_request (GLib.File loc) {
+            //var slot = get_current_slot ();
+            //assert (slot != null);
+            view.user_path_change_request (loc);
+        }
+
+        public void new_container_request (GLib.File loc, int flag = 1) {
+            switch ((Marlin.OpenFlag)flag) {
+                case Marlin.OpenFlag.NEW_TAB:
+                    this.window.add_tab (location, view_mode);
+                    break;
+
+                case Marlin.OpenFlag.NEW_WINDOW:
+                    this.window.add_window (location, view_mode);
+                    break;
+
+                default:
+                    assert_not_reached ();
+            }
+
+        }
+
+        public void slot_path_changed (GLib.File loc) {
+
+        //private void on_path_changed (GLib.File? location, int flag) {
         /* ViewContainer only handles new tab and new window - otherwise just updates appearance*/
-message ("VC on path changed");
+message ("VC path changed");
 
 //            /* automagicly enable icon view for icons keypath */
 //            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
 //                mode = 0; /* icon view */
 
-            switch ((Marlin.OpenFlag)flag) {
-                case Marlin.OpenFlag.NEW_TAB:
-                    this.window.add_tab (location, view_mode);
-                    return;
 
-                case Marlin.OpenFlag.NEW_WINDOW:
-                    this.window.add_window (location, view_mode);
-                    return;
+            if (this.location != loc) {
+                this.location = loc;
+                browser.record_uri (loc.get_parse_name ());
 
-                default:
-                    this.location = location;
-                    browser.record_uri (location.get_parse_name ());
-
-                    set_up_slot ();  /*  ?? */
-                    refresh_slot_info (location);
-                    window.loading_uri (location.get_uri ());
-                    window.update_top_menu ();
-                    plugin_directory_loaded ();
-                    break;
-            }
+                set_up_slot ();  /*  ?? */
+                refresh_slot_info (loc);
+                window.loading_uri (loc.get_uri ());
+                window.update_top_menu ();
+                plugin_directory_loaded ();
+            } else
+                assert_not_reached ();
         }
 
         /* This is called whenever a slot is created or displays a new location*/
@@ -187,16 +197,17 @@ message ("set up slot");
                 //plugin_directory_loaded ();
             } else
                 critical ("Tried to set up null slot");
-message ("leaving");
+message ("leaving set up slot");
         }
 
         private void plugin_directory_loaded () {
+message ("plugin directory loaded");
             var slot = get_current_slot ();
             Object[] data = new Object[3];
             data[0] = window;
             data[1] = slot;
             data[2] = slot.directory.file;
-            plugins.directory_loaded ((void*) data);
+            //plugins.directory_loaded ((void*) data);
         }
 
         public void refresh_slot_info (GLib.File location) {
@@ -243,7 +254,7 @@ message ("THere are selected childs");
 
                 } else {
                     /* If not a directory, then change the location to the parent */
-                    path_changed (slot.location.get_parent ());
+                    user_path_change_request (slot.location.get_parent ());
                 }
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
@@ -256,17 +267,21 @@ message ("THere are selected childs");
         }
 
         public void change_view_mode (Marlin.ViewMode mode) {
+message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
+            if (mode != view_mode) {
+message ("mode is different");
+                store_selection ();
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    view = new Miller (location, this, mode);
+                else
+                    view = new Slot (location, this, mode);
 
-            store_selection ();
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
-                view = new Miller (location, this);
-            else
-                view = new Slot (location, this);
-
-            content = view.make_view (mode);
-            set_up_slot ();
-            update_view (mode);
-            restore_selection ();
+                content = view.get_content_box ();
+                set_up_slot ();
+                update_view (mode);
+                restore_selection ();
+                this.view_mode = mode;
+            }
         }
 
         private void store_selection () {}
@@ -278,7 +293,10 @@ message ("THere are selected childs");
         }
 
         public GOF.AbstractSlot get_current_slot () {
-           return view.get_current_slot ();
+//message ("VC get current slot");
+            var slot = view.get_current_slot ();
+            assert (slot != null);
+           return slot;
         }
 
         public string? get_root_uri () {

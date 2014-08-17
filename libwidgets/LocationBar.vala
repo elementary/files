@@ -550,6 +550,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
+message ("change bread crumbs");
         var explode_protocol = Uri.unescape_string (newpath).split ("://");
 
         if (explode_protocol.length > 1) {

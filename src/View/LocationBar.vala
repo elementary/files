@@ -28,17 +28,17 @@ namespace Marlin.View.Chrome
         //public new string path {
         public new string path {
             set {
-message ("path is %s", path);
+//message ("path is %s", path);
                 var new_path = GLib.Uri.unescape_string (value);
                 if (new_path != null) {
                     _path = new_path;
     //message ("new path win free_view_changeds is %s", win.freeze_view_changes ? "true": "false");
-message ("setting _path to %s", new_path);
-message ("bread is focus is %s", bread.is_focus ? "true" : "false");
-message ("win freeze view changes is %s", win.freeze_view_changes ? "true" : "false");
+//message ("setting _path to %s", new_path);
+//message ("bread is focus is %s", bread.is_focus ? "true" : "false");
+//message ("win freeze view changes is %s", win.freeze_view_changes ? "true" : "false");
                     if (!bread.is_focus && !win.freeze_view_changes) {
                         bread.text = "";
-message ("changing bread crumbs");
+//message ("changing bread crumbs");
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {
@@ -88,11 +88,10 @@ critical ("Tried to set null path");
             if (win.current_tab.content_shown)
                 win.current_tab.content.grab_focus ();
             else {
-message ("Location Bar - view grab focus 1");
-                //win.current_tab.slot.view_box.grab_focus ();
+//message ("Location Bar - view grab focus 1");
+                //win.current_tab.slot.dir_view.grab_focus ();
                 win.current_tab.view.grab_focus ();
             }
-
             activate(file);
         }
     }
@@ -219,7 +218,7 @@ message ("Location Bar - view grab focus 1");
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else {
-                    //win.current_tab.slot.view_box.grab_focus ();
+                    //win.current_tab.slot.dir_view.grab_focus ();
                     win.current_tab.view.grab_focus ();
                 }
             });
@@ -378,8 +377,9 @@ message ("Location Bar - view grab focus 1");
                 menuitem.set_data ("location", gof.get_target_location ());
                 menu.append (menuitem);
                 menuitem.activate.connect (() => {
+//message ("Location bar menu activated");
                     unowned File loc = menu.get_active ().get_data ("location");
-                    win.current_tab.path_changed (loc);
+                    win.current_tab.user_path_change_request (loc);
                 });
             }
             menu.show_all ();
@@ -397,8 +397,9 @@ message ("Location Bar - view grab focus 1");
         public override string? update_breadcrumbs (string new_path, string base_path) {
             string strloc = base.update_breadcrumbs (new_path, base_path);
             if(strloc != null) {
-                File location = File.new_for_commandline_arg (strloc);
-                win.current_tab.path_changed (location);
+//message ("update breadcrumbs");
+                //File location = File.new_for_commandline_arg (strloc);
+                //win.current_tab.path_changed (location);
             }
             return strloc;
         }

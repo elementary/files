@@ -26,13 +26,13 @@ namespace FM {
         private unowned GOF.File? selected_folder = null;
 
         public ColumnView (Marlin.View.Slot _slot) {
-//message ("New column view");
+message ("New column view");
             base (_slot);
             /* We do not need to load the directory - this is done by Miller */
         }
 
         construct {
-//message ("Column view construct");
+message ("Column view construct");
         }
 
         /* Was fm_columns_view_finalize */
@@ -41,7 +41,7 @@ namespace FM {
 
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-//message ("CV setup zoom_level");
+message ("CV setup zoom_level");
             Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
             return (Marlin.ZoomLevel)(Preferences.marlin_column_view_settings.get_enum ("zoom-level"));
         }
@@ -54,23 +54,24 @@ namespace FM {
 
 /** Modified Signal handlers */
         protected new void on_view_selection_changed () {
-//message ("on tree selection changed");
+message ("on tree selection changed");
             set_active_slot ();
             base.on_view_selection_changed ();
         }
 
 /** Implement Abstract TreeView abstract methods*/
         protected override Gtk.Widget? create_view () {
-//message ("CV create view");
+message ("CV create view");
             model.set_property ("has-child", false);
             base.create_view ();
             return tree as Gtk.Widget;
         }
 
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
-//message ("Column view button release");
-            bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
-            return result;
+message ("Column view button release");
+            //bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
+            //return result;
+            return true;
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
@@ -92,9 +93,11 @@ message ("CV unselect all");
                         unowned GOF.File file = selected_files.data;
 
                         if (file.is_folder ()) {
+message ("on folder");
                             /*  ... store clicked folder and start double-click timeout */
                             selected_folder = file;
                             awaiting_double_click = true;
+message ("freeze updates and start timeout");
                             freeze_updates ();
                             /* use short timeout to maintain responsiveness */
                             double_click_timeout_id = GLib.Timeout.add (100, not_double_click);
@@ -132,7 +135,7 @@ message ("CV unselect all");
 
 /** Private methods */
         private void cancel_await_double_click () {
-//message ("MCV cancel await double click");
+message ("MCV cancel await double click");
             if (awaiting_double_click) {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
@@ -143,14 +146,18 @@ message ("CV unselect all");
 
 
         private bool not_double_click () {
-//message ("MCV not double click");
+message ("MCV not double click");
             if (double_click_timeout_id != 0) {
+message ("timeout not cancelled");
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
+message ("unfreeze updated");
                 unfreeze_updates ();
-
-                if (!is_drag_pending ())
+message ("activate if drag not pending");
+                if (!is_drag_pending ()) {
+message ("activation");
                     activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                }
             }
             return false;
         }

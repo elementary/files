@@ -23,12 +23,12 @@ namespace FM {
         protected Gtk.CellRendererPixbuf pixbuf_renderer;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
-//message ("New Abstract ListView");
+////message ("New Abstract ListView");
             base (_slot);
         }
 
         construct {
-//message ("Abstract ListView construct");
+////message ("Abstract ListView construct");
         }
 
         ~AbstractTreeView () {
@@ -36,7 +36,7 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-//message ("ATV create view");
+////message ("ATV create view");
             tree = new Gtk.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
@@ -73,14 +73,14 @@ namespace FM {
         }
 
         protected void set_up_view () {
-//message ("ATV tree view set up view");
+////message ("ATV tree view set up view");
             connect_tree_signals ();
             connect_name_renderer_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
         }
 
         protected void connect_tree_signals () {
-//message ("ATV connect tree_signals");
+////message ("ATV connect tree_signals");
             tree.get_selection ().changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -90,7 +90,7 @@ namespace FM {
         }
 
         protected void connect_name_renderer_signals () {
-//message ("ATV connect renderer_signals");
+////message ("ATV connect renderer_signals");
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
@@ -114,12 +114,12 @@ namespace FM {
         }
 
         public override void highlight_path (Gtk.TreePath? path) {
-//message ("AbstractTreeView highlight path");
+////message ("AbstractTreeView highlight path");
             tree.set_drag_dest_row (path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
         }
 
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-//message ("ATV get path at pos");
+////message ("ATV get path at pos");
             Gtk.TreePath? path = null;
             if (tree.get_dest_row_at_pos (x, y, out path, null))
                 return path;
@@ -132,7 +132,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-message ("ATV unselect all");
+//message ("ATV unselect all");
             tree.get_selection ().unselect_all ();
         }
 
@@ -142,7 +142,7 @@ message ("ATV unselect all");
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-message ("ATV set cursor");
+//message ("ATV set cursor");
             if (path == null)
                 return;
 
@@ -166,7 +166,7 @@ message ("ATV set cursor");
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-message ("ATV start renaming file");
+//message ("ATV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);
@@ -206,26 +206,26 @@ message ("ATV start renaming file");
 
 /**  Helper functions */
         public new void freeze_updates () {
-//message ("freeze updates");
+////message ("freeze updates");
             name_renderer.@set ("editable", true, null);
             base.freeze_updates ();
         }
 
         public new void unfreeze_updates () {
-//message ("unfreeze updates");
+////message ("unfreeze updates");
             name_renderer.@set ("editable", false, null);
             base.unfreeze_updates ();
         }
 
         protected override void update_selected_files () {
-message ("ATV update selected files");
+//message ("ATV update selected files");
             selected_files = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File file;
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
                 if (file != null) {
-message ("prepending %s", file.uri);
+//message ("prepending %s", file.uri);
                     selected_files.prepend (file);
                 } else {
                     critical ("Null file in model");
@@ -284,11 +284,12 @@ message ("ATV button press unselect all");
                     result = handle_default_button_click ();
                     break;
             }
+message ("ATV button press leaving");
             return result;
         }
 
 //        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-////message ("ATV handle right button");
+//////message ("ATV handle right button");
 //            show_or_queue_context_menu (event);
 //            return true;
 //        }

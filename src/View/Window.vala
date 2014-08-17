@@ -57,22 +57,7 @@ namespace Marlin.View {
 
         public ViewContainer? current_tab = null;
 
-//        public Chrome.ButtonWithMenu button_forward;
-//        public Chrome.ButtonWithMenu button_back;
-
         public bool can_go_up = false;
-
-//        public bool can_go_forward{
-//            set{
-//                button_forward.set_sensitive (value);
-//            }
-//        }
-
-//        public bool can_go_back{
-//            set{
-//                button_back.set_sensitive (value);
-//            }
-//        }
 
         public void set_can_go_back (bool can) {
            top_menu.set_can_go_back (can);
@@ -104,9 +89,6 @@ namespace Marlin.View {
         public virtual signal void edit_path () {
             action_edit_path ();
         }
-
-//        public void signal back (int steps);
-//        public void signal forward (int steps);
 
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
@@ -221,8 +203,6 @@ namespace Marlin.View {
 
         private void construct_top_menu () {
 //message ("construct top menu");
-//            button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
-//            button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
             top_menu = new Chrome.TopMenu(this);
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
@@ -372,6 +352,7 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
+message ("WIN change tab");
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
@@ -387,13 +368,15 @@ namespace Marlin.View {
                 var cur_slot = current_tab.get_current_slot ();
                 if (cur_slot != null) {
                     cur_slot.active();
-                    //current_tab.update_location_state(false);
                     update_top_menu ();
                     /* update radio action view state */
                     update_view_mode (current_tab.view_mode);
-//                    /* sync selection */
-//                    if (cur_slot.view_box != null && !current_tab.content_shown)
-//                        ((FM.DirectoryView) cur_slot.view_box).sync_selection();
+#if 0
+                    /* sync selection */
+                    if (cur_slot.dir_view != null && !current_tab.content_shown)
+                        //((FM.DirectoryView) cur_slot.dir_view).sync_selection();
+                        cur_slot.dir_view.sync_selection();
+#endif
                     /* sync sidebar selection */
                     //loading_uri (current_tab.slot.directory.file.uri);
                     loading_uri (current_tab.location.get_uri ());
@@ -416,13 +399,15 @@ namespace Marlin.View {
         }
 
         public void add_tab (File location, Marlin.ViewMode mode) {
+message ("add tab");
             make_new_tab (location, mode);
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
+message ("made tab");
             if (tabs.n_tabs == 1) {
                 var tab = tabs.get_tab_by_index (0);
-                if (tab != null)
-                    (tab.page as ViewContainer).overlay_statusbar.update ();
+                assert (tab != null);
+                (tab.page as ViewContainer).overlay_statusbar.update ();
             }
         }
 
@@ -504,15 +489,15 @@ namespace Marlin.View {
 //message ("action go to");
             switch (param.get_string ()) {
                 case "HOME":
-                    current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
+                    current_tab.user_path_change_request (File.new_for_commandline_arg(Environment.get_home_dir()));
                     break;
 
                 case "TRASH":
-                    current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
+                    current_tab.user_path_change_request (File.new_for_commandline_arg(Marlin.TRASH_URI));
                     break;
 
                 case "NETWORK":
-                    current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
+                    current_tab.user_path_change_request (File.new_for_commandline_arg(Marlin.NETWORK_URI));
                     break;
 
                 case "SERVER":
@@ -543,17 +528,17 @@ namespace Marlin.View {
                 assert (current_tab.view != null);
                 switch (param.get_string ()) {
                     case "ZOOM_IN":
-                        //((FM.DirectoryView) current_tab.slot.view_box).zoom_in ();
+                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_in ();
                         current_tab.view.zoom_in ();
                         break;
 
                     case "ZOOM_OUT":
-                        //((FM.DirectoryView) current_tab.slot.view_box).zoom_out ();
+                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_out ();
                         current_tab.view.zoom_out ();
                         break;
 
                     case "ZOOM_NORMAL":
-                        //((FM.DirectoryView) current_tab.slot.view_box).zoom_normal ();
+                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_normal ();
                         current_tab.view.zoom_normal ();
                         break;
 
@@ -741,6 +726,7 @@ namespace Marlin.View {
         }
 
         public void update_view_mode (Marlin.ViewMode mode) {
+message ("update viewmode");
             GLib.SimpleAction action = get_action ("view_mode");
             action.set_state (mode_strings [(int)mode]);
             top_menu.view_switcher.mode = mode;
@@ -769,21 +755,21 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
-//message ("save tabs");
+message ("save tabs");
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
-                var view = tab.page as ViewContainer;
+                var view_container = tab.page as ViewContainer;
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
-                if (!view.can_show_folder)
+                if (!view_container.can_show_folder)
                     continue;
 
                 vb.add ("(uss)",
-                        view.view_mode,
-                        GLib.Uri.escape_string (view.get_root_uri () ?? Environment.get_home_dir ()),
-                        GLib.Uri.escape_string (view.get_tip_uri () ?? "")
+                        view_container.view_mode,
+                        GLib.Uri.escape_string (view_container.get_root_uri () ?? Environment.get_home_dir ()),
+                        GLib.Uri.escape_string (view_container.get_tip_uri () ?? "")
                        );
             }
 
@@ -795,7 +781,7 @@ namespace Marlin.View {
 message ("Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window) {
-message ("returning zero");
+//message ("returning zero");
                 return 0;
             }
             else
@@ -816,9 +802,9 @@ message ("returning zero");
                     continue;
 
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
-
+message ("restoring %s mode is %i", root_uri, (int)mode);
                 add_tab (root_location, mode);
-
+message ("add tab finished");
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
 
@@ -836,9 +822,12 @@ message ("returning zero");
                 change_tab (active_tab_position);
             }
 
+message ("get current tab tip uri");
             string? path = current_tab.get_tip_uri ();
-            if (path == null || path == "")
+            if (path == null || path == "") {
+message ("get current tab root uri");
                 path = current_tab.get_root_uri ();
+            }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
@@ -846,10 +835,13 @@ message ("Final path is %s", path);
             top_menu.location_bar.path = path;
             /* restore location bar animation */
             top_menu.location_bar.bread.animation_visible = true;
+message ("leaving restore tabs");
             return tabs_added;
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
+message ("expand Miller");
+/**TODO - move to Miller.vala **/ 
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             //var mwcols = view.mwcol;
@@ -879,9 +871,9 @@ message ("Final path is %s", path);
         }
 
         public void update_labels (string new_path, string title) {
-message ("Window title is %s", title);
+//message ("Window title is %s", title);
         assert (new_path != null && new_path != "");
-message ("New path is %s", new_path);
+//message ("New path is %s", new_path);
             set_title (title);
             //if (window.top_menu.location_bar != null) {
             top_menu.update_location_bar (new_path);

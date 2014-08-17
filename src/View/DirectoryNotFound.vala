@@ -57,7 +57,7 @@ namespace Marlin.View
                 }
 
                 if (success)
-                    ctab.path_changed (dir_saved.location);
+                    ctab.user_path_change_request (dir_saved.location);
             });
 
             show_all ();

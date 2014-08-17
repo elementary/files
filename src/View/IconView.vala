@@ -232,7 +232,7 @@ namespace FM {
         }
 
         protected override bool on_view_button_press_event (Gdk.EventButton event) {
-//message ("ATV button press");
+message ("IV button press");
             grab_focus (); /* cancels any renaming */
 
             Gtk.TreePath? path = null;
@@ -278,6 +278,28 @@ namespace FM {
                     result = handle_default_button_click ();
                     break;
             }
+message ("IV button press leaving");
+            return result;
+        }
+
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+message ("LV handle left button");
+            assert (selection == null); /* not consistent with icon view */
+            assert (col == null); /* not consistent with icon view */
+
+            bool result = true;
+            if (path != null) {
+                /*Determine where user clicked - this will be the sole selection */
+                tree.unselect_all ();
+                tree.select_path (path);
+
+                if (on_editable)
+                    rename_file (selected_files.data); /* Is this desirable? */
+                else
+                    result = false; /* Use default handler */
+
+            } /* No action if left click on blank area */
+
             return result;
         }
 
@@ -320,7 +342,7 @@ namespace FM {
         }
 
         //protected override bool on_view_button_press_event (Gdk.EventButton event) {return false;}
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
+        //protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
         //protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {return false;}
 
     }

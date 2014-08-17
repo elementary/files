@@ -110,7 +110,7 @@ public class Marlin.Application : Granite.Application {
 
         tags = new Marlin.View.Tags ();
 
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        //plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
         /* TODO move the volume manager here? */
         /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -271,7 +271,7 @@ public class Marlin.Application : Granite.Application {
                 GLib.File location = view_container.location;
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == marlin_window.current_tab)
-                        view_container.path_changed (File.new_for_path (Environment.get_home_dir ()));
+                        view_container.user_path_change_request (File.new_for_path (Environment.get_home_dir ()));
                     else
                         marlin_window.remove_tab (view_container);
                 }
@@ -321,7 +321,7 @@ public class Marlin.Application : Granite.Application {
     private Marlin.View.Window add_view_window (Gdk.Screen screen) {
         var window = new Marlin.View.Window (this, screen);
         this.add_window (window as Gtk.Window);
-        plugins.interface_loaded (window as Gtk.Widget);
+        //plugins.interface_loaded (window as Gtk.Widget);
         return window;
     }
 

@@ -400,7 +400,7 @@ namespace Marlin.Places {
                 last_selected_uri = null;
 
             store.clear ();
-            plugins.update_sidebar ((Gtk.Widget)this);
+            //plugins.update_sidebar ((Gtk.Widget)this);
 
             /* ADD BOOKMARKS CATEGORY*/
             store.append (out iter, null);
@@ -1070,7 +1070,8 @@ namespace Marlin.Places {
 //                    if (slot != null)
 //                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
                         //GLib.Signal.emit_by_name (window.current_tab, "path-changed", location, null);
-                    window.current_tab.path_changed (location);
+message ("Sidebar open selected");
+                    window.current_tab.user_path_change_request (location);
                 }
             } else {
                 Drive drive;
@@ -1113,7 +1114,7 @@ namespace Marlin.Places {
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            ctab.path_changed (location, Marlin.OpenFlag.DEFAULT);
+                            ctab.user_path_change_request (location);
                         }
                     }
                 }

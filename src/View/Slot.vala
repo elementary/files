@@ -23,7 +23,7 @@ namespace Marlin.View {
         //public GOF.Directory.Async directory;
         public ViewContainer ctab;
 
-        public FM.DirectoryView? view_box = null;
+        public FM.DirectoryView? dir_view = null;
         public Gtk.Box colpane;
         public Granite.Widgets.ThinPaned hpane;
 
@@ -35,83 +35,110 @@ namespace Marlin.View {
         public signal void frozen_changed (bool freeze); //Listeners: Miller
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
 
+        public signal void miller_slot_request (GLib.File file, bool make_root);
+
         public string empty_message = "<span size='x-large'>" +
                                 _("This folder is empty.") +
                                "</span>";
 
-        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab) {
+        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode mode) {
 message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
             directory = GOF.Directory.Async.from_gfile (_location);
             assert (directory != null);
-            connect_signals ();
+            connect_slot_signals ();
+            make_view ((int)mode);
+message ("New slot - leave");
         }
 
         ~Slot () {
-            this.view_box = null;
+            this.dir_view = null;
             this.directory = null;
             this.ctab = null;
         }
 
-        private void connect_signals () {
-message ("Slot connect signals");
+        private void connect_slot_signals () {
+message ("connect slot signals");
             active.connect (() => {
                 if (!this.is_active) {
                     ctab.refresh_slot_info (directory.location);
                     this.is_active = true;
-                    this.view_box.grab_focus ();
+                    this.dir_view.grab_focus ();
                 }
             });
 
+message ("Slot connect signals - inactive");
             inactive.connect (() => {
                 if (this.is_active) {
-message ("Slot inactive");
+message ("Slot -> inactive");
                     this.is_active = false;
-                    this.view_box.unselect_all ();
+                    this.dir_view.unselect_all ();
                 }
             });
+        }
 
-            ctab.path_changed.connect ((loc, flags, host) => {
-message ("Slot received path change signal");
-                if (view_box is FM.ColumnView) {
-                    /* Handled by Miller */
-                    return;
-                } else
-                    on_tab_path_changed (loc, flags, host);
+        private void connect_dir_view_signals () {
+message ("Connect DV to slot signals - path_change_request");
+            dir_view.path_change_request.connect ((loc, flag, make_root) => {
+                /* Avoid race conditions in signal processing */
+                schedule_path_change_request (loc, flag, make_root);
+            });
+        }
+
+        private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
+            GLib.Timeout.add (20, () => {
+                on_path_change_request (loc, flag, make_root);
+                return false;
             });
 
         }
 
-//        public Gtk.Widget make_icon_view () {
-//            make_view (Marlin.ViewMode.ICON);
-//            return content_box as Gtk.Widget;
-//        }
+        private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+            if (flag == 0) {
+                if (dir_view is FM.ColumnView) {
+message ("Miller slot request");
+                    miller_slot_request (loc, make_root);
+                } else {
+message ("User path request");
+                    user_path_change_request (loc);
+                }
+            } else
+                ctab.new_container_request (loc, flag);
+        }
 
-//        public Gtk.Widget make_list_view () {
-//            make_view (Marlin.ViewMode.LIST);
-//            return content_box as Gtk.Widget;
-//        }
+        //protected override void on_tab_path_changed (GLib.File? loc, int flag, Slot? source_slot) {
+        public override void user_path_change_request (GLib.File loc) {
+message ("SLot - on tab changed");
+            assert (loc != null);
+message ("Slot received path change signal to loc %s", loc.get_uri ());
 
-//        /** Only called by Miller, which returns the content to ViewContainer */
-//        public void make_column_view () {
-//message ("Slot make column view");
-//            make_view (Marlin.ViewMode.MILLER_COLUMNS);
-//        }
+            if (location != loc) {
+                var new_dir = GOF.Directory.Async.from_gfile (loc);
+                dir_view.change_directory (directory, new_dir);
+                directory = new_dir;
+            } else
+                assert_not_reached ();
 
-        public override Gtk.Widget make_view (int view_mode) {
+            /* View Container takes care of updating appearance */
+            ctab.slot_path_changed (loc);
+        }
+
+        protected override Gtk.Widget make_view (int view_mode) {
 message ("Slot make view");
+            assert (dir_view == null);
+
             switch ((Marlin.ViewMode)view_mode) {
                 case Marlin.ViewMode.MILLER_COLUMNS:
-                    view_box = new FM.ColumnView (this);
+                    dir_view = new FM.ColumnView (this);
                     break;
 
                 case Marlin.ViewMode.LIST:;
-                    view_box = new FM.ListView (this);
+                    dir_view = new FM.ListView (this);
                     break;
 
                 case Marlin.ViewMode.ICON:
-                    view_box = new FM.IconView (this);
+                    dir_view = new FM.IconView (this);
                     break;
 
                 default:
@@ -119,10 +146,11 @@ message ("Slot make view");
             }
 
             if (view_mode != Marlin.ViewMode.MILLER_COLUMNS) {
-                content_box.pack_start (view_box, true, true, 0);
+                content_box.pack_start (dir_view, true, true, 0);
                 directory.track_longest_name = false;
-            }
-            /* Miller takes care of packing the view_box otherwise */
+            } /* Miller takes care of packing the dir_view otherwise */
+
+            connect_dir_view_signals ();
 
             return content_box as Gtk.Widget;
         }
@@ -136,11 +164,11 @@ message ("Slot make view");
 
         public override bool set_all_selected (bool select_all) {
 message ("Slot all selected is %s", select_all ? "true" : "false");
-            if (view_box != null) {
+            if (dir_view != null) {
                 if (select_all)
-                    view_box.select_all ();
+                    dir_view.select_all ();
                 else
-                    view_box.unselect_all ();
+                    dir_view.unselect_all ();
 
                 return true;
             } else
@@ -148,35 +176,22 @@ message ("Slot all selected is %s", select_all ? "true" : "false");
         }
 
         public override unowned GLib.List<unowned GOF.File>? get_selected_files () {
-            if (view_box != null)
-                return view_box.get_selected_files ();
+            if (dir_view != null)
+                return dir_view.get_selected_files ();
             else
                 return null;
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files) {
-            if (view_box != null)
-                view_box.select_glib_files (files);
+            if (dir_view != null)
+                dir_view.select_glib_files (files);
 
         }
 
         public override void select_first_for_empty_selection () {
-            if (view_box != null)
-                view_box.select_first_for_empty_selection ();
+            if (dir_view != null)
+                dir_view.select_first_for_empty_selection ();
 
-        }
-
-        //protected override void on_tab_path_changed (GLib.File? loc, int flag, Slot? source_slot) {
-        protected override void on_tab_path_changed (GLib.File? loc, int flag, GOF.AbstractSlot? source_slot = null) {
-message ("SLot - on tab changed");
-            if (flag == Marlin.OpenFlag.DEFAULT && loc != null) {
-                if (location != loc) {
-                    var new_dir = GOF.Directory.Async.from_gfile (loc);
-                    view_box.change_directory (directory, new_dir);
-                    directory = new_dir;
-                } else
-warning ("Already at this location!");
-            }
         }
 
         public override void set_active_state (bool set_active) {
@@ -190,11 +205,11 @@ warning ("Already at this location!");
             return this as GOF.AbstractSlot;
         }
 
-        public override void zoom_in () {view_box.zoom_in ();}
-        public override void zoom_out () {view_box.zoom_out ();}
-        public override void zoom_normal () {view_box.zoom_normal ();}
-        public override void grab_focus () {view_box.grab_focus ();}
-        public override void reload () {view_box.reload ();}
+        public override void zoom_in () {dir_view.zoom_in ();}
+        public override void zoom_out () {dir_view.zoom_out ();}
+        public override void zoom_normal () {dir_view.zoom_normal ();}
+        public override void grab_focus () {dir_view.grab_focus ();}
+        public override void reload () {dir_view.reload ();}
 
     }
 }

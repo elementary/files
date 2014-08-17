@@ -99,15 +99,15 @@ namespace Marlin.View.Chrome
                 if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
                 else {
-message ("TopMenu- view grab focus 1");
+//message ("TopMenu- view grab focus 1");
 
-                   // win.current_tab.slot.view_box.grab_focus ();
+                   // win.current_tab.slot.dir_view.grab_focus ();
                     win.current_tab.view.grab_focus ();
                 }
             });
 
             location_bar.activate.connect ((file) => {
-                win.current_tab.path_changed (file);
+                win.current_tab.user_path_change_request (file);
             });
 
             location_bar.activate_alternate.connect ((file) => {
@@ -160,7 +160,7 @@ message ("TopMenu- view grab focus 1");
         }
 
         public void update_location_bar (string new_path) {
-message ("TM New path is %s", new_path);
+//message ("TM New path is %s", new_path);
             location_bar.path = new_path;
         }
 
