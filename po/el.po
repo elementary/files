@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-08-02 17:36+0000\n"
-"Last-Translator: James Spentzos <Unknown>\n"
+"PO-Revision-Date: 2014-08-17 08:15+0000\n"
+"Last-Translator: Jim Spentzos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-03 06:03+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-08-18 07:13+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -64,7 +64,7 @@ msgstr[1] "Χρήση του \"%s\" για το άνοιγμα των επιλε
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr "Χρήση του \"%s\" ως πρότυπο για το νέο αρχείο"
+msgstr "Χρήση του \"%s\" ως πρότυπο για νέο αρχείο"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
