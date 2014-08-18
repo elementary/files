@@ -2304,6 +2304,10 @@ exo_icon_view_button_press (GtkWidget      *widget,
     if (event->window != icon_view->priv->bin_window)
         return FALSE;
 
+    /* stop the current editing, if it exists */
+    if (icon_view->priv->cell_area)
+        gtk_cell_area_stop_editing (icon_view->priv->cell_area, FALSE);
+
     if (!gtk_widget_has_focus (widget))
         gtk_widget_grab_focus (widget);
 
@@ -2450,9 +2454,6 @@ exo_icon_view_button_press (GtkWidget      *widget,
 
             if (icon_view->priv->last_single_clicked == NULL)
                 icon_view->priv->last_single_clicked = item;
-
-            /* cancel the current editing, if it exists */
-            gtk_cell_area_stop_editing (icon_view->priv->cell_area, TRUE);
 
             if (cell != NULL && gtk_cell_renderer_is_activatable (cell))
             {
