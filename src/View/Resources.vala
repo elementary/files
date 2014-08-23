@@ -1,7 +1,7 @@
 namespace Marlin {
-    public const string APP_TITLE = "Pantheon Files";
+    public const string APP_TITLE = "Files";
     public const string COPYRIGHT = APP_YEARS + " Marlin Developers";
-    public const string APP_YEARS = "2010-2013";
+    public const string APP_YEARS = "2010-2014";
     public const string LAUNCHPAD_LABEL = "Website";
     public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
     public const string HELP_URL = "https://answers.launchpad.net/pantheon-files";
@@ -32,7 +32,7 @@ namespace Marlin {
     public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
     public const string ICON_FOLDER = "folder";
     public const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
-    public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-downloads-symbolic";
+    public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
     public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
     public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
     public const string ICON_FOLDER_REMOTE = "folder-remote";

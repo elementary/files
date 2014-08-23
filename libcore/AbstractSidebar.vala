@@ -33,6 +33,8 @@ namespace Marlin {
             BOOKMARK,
             TOOLTIP,
             EJECT_ICON,
+            SHOW_SPINNER,
+            SPINNER_PULSE,
             FREE_SPACE,
             DISK_SIZE,
             COUNT
@@ -55,6 +57,8 @@ namespace Marlin {
                                         typeof (bool),              /* is bookmark */
                                         typeof (string),            /* tool tip */
                                         typeof (Icon),              /* Action icon (e.g. eject button) */
+                                        typeof (bool),              /* Show spinner */
+                                        typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64)             /* For disks, total size */
                                         );

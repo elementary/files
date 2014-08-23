@@ -20,11 +20,13 @@ pkg_check_modules (DEPS REQUIRED
     gio-unix-2.0
     pango>=1.1.2
     gtk+-3.0>=3.10
+    gmodule-2.0
     gail-3.0
     gee-0.8
     sqlite3
     dbus-glib-1
-    libnotify>=0.7.2)
+    libnotify>=0.7.2
+    zeitgeist-2.0)
 
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -58,9 +60,12 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/IconView.vala
 #        View/ExoIconView.vala
         View/ListView.vala
+        ZeitgeistManager.vala
         View/DiskRenderer.vala
+        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/DirectoryView.vala
+        View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
         View/DbusTags.vala
@@ -86,10 +91,11 @@ IF (WITH_UNITY AND UNITY_FOUND)
         granite
         libnotify
         unity
-        marlincore
-        marlincore-C
-        marlinwidgets
+        pantheon-files-core
+        pantheon-files-core-C
+        pantheon-files-widgets
         marlin
+        zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala
     OPTIONS
@@ -117,6 +123,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/IconView.vala
 #        View/ExoIconView.vala
         View/ListView.vala
+        ZeitgeistManager.vala
+        View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/DirectoryView.vala
@@ -124,6 +132,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Resources.vala
         View/DbusTags.vala
         View/ViewContainer.vala
+        View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
@@ -145,10 +154,11 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         gee-0.8
         granite
         libnotify
-        marlincore
-        marlincore-C
-        marlinwidgets
+        pantheon-files-core
+        pantheon-files-core-C
+        pantheon-files-widgets
         marlin
+        zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala
     OPTIONS
@@ -178,12 +188,12 @@ add_executable (../pantheon-files
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
-target_link_libraries (../pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
-add_dependencies (../pantheon-files marlincore marlinwidgets)
+target_link_libraries (../pantheon-files m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})
+add_dependencies (../pantheon-files pantheon-files-core pantheon-files-widgets)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     include_directories (${UNITY_INCLUDE_DIRS})
-    target_link_libraries (../pantheon-files marlincore marlinwidgets ${UNITY_LIBRARIES})
+    target_link_libraries (../pantheon-files pantheon-files-core pantheon-files-widgets ${UNITY_LIBRARIES})
     add_definitions ("-DHAVE_UNITY=1")
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 

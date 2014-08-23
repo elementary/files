@@ -1,7 +1,7 @@
 include (Tests)
 
-set (PKGNAME marlincore)
-set (PKGNAME_ MARLINCORE)
+set (PKGNAME pantheon-files-core)
+set (PKGNAME_ PANTHEON_FILES_CORE)
 set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
@@ -27,22 +27,21 @@ PACKAGES
     gio-2.0
     gee-0.8
     gmodule-2.0
-    marlincore-C
+    pantheon-files-core-C
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
     --target-glib=2.32 # Needed for new thread API
 GENERATE_VAPI
-    marlincore
+    pantheon-files-core
 GENERATE_HEADER
-    marlincore
+    pantheon-files-core
 )
 
 set (C_SOURCE_FILES
     eel-fcts.c
     eel-i18n.c
     eel-gtk-extensions.c
-    eel-gdk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
     eel-glib-extensions.c
@@ -72,7 +71,6 @@ set (C_HEADER_FILES
     eel-accessibility.h
     eel-debug.h
     eel-fcts.h
-    eel-gdk-extensions.h
     eel-gdk-pixbuf-extensions.h
     eel-gio-extensions.h
     eel-glib-extensions.h
@@ -100,11 +98,11 @@ set (C_HEADER_FILES
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.h DESTINATION include/marlincore/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.vapi DESTINATION share/vala/vapi)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore.deps DESTINATION share/vala/vapi)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore-C.vapi DESTINATION share/vala/vapi)
-install (FILES ${C_HEADER_FILES} DESTINATION include/marlincore/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-core.h DESTINATION include/pantheon-files-core/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-core.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-files-core.deps DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-files-core-C.vapi DESTINATION share/vala/vapi)
+install (FILES ${C_HEADER_FILES} DESTINATION include/pantheon-files-core/)
 # Check for the deps
 
 find_package(PkgConfig)
@@ -116,6 +114,7 @@ pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0>=3.4.0
 	gail-3.0
     gee-0.8
+    gmodule-2.0
 	sqlite3
 	libnotify>=0.7.2)
 # Link all
@@ -135,20 +134,20 @@ link_directories (${LIB_PATHS})
 add_library (${PKGNAME} SHARED ${C_SOURCE_FILES})
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${MARLINCORE_VERSION}
-    SOVERSION ${MARLINCORE_SOVERSION})
+    VERSION ${PANTHEON_FILES_CORE_VERSION}
+    SOVERSION ${PANTHEON_FILES_CORE_SOVERSION})
 
-target_link_libraries (${PKGNAME} ${DEPS_LIBRARIES})
+target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
-add_executable (marlincore_tests
+add_executable (pantheon-files-core_tests
     tests/tests.c
     tests/marlincore-tests-gof.c
     tests/marlincore-tests-file.c
     tests/marlincore-tests-icon-info.c)
 
-add_test (core marlincore_tests)
+add_test (core pantheon-files-core_tests)
 
-target_link_libraries (marlincore_tests marlincore ${DEPS_LIBRARIES})
-add_dependencies (marlincore_tests marlincore)
+target_link_libraries (pantheon-files-core_tests pantheon-files-core ${DEPS_LIBRARIES})
+add_dependencies (pantheon-files-core_tests pantheon-files-core)

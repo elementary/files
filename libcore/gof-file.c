@@ -29,7 +29,7 @@
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
-#include "marlincore.h"
+#include "pantheon-files-core.h"
 
 
 G_LOCK_DEFINE_STATIC (file_cache_mutex);
@@ -626,14 +626,10 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-//g_message ("%s - size %i", G_STRFUNC, size);
-    //if (!(file->pix == NULL || size <= 0 || file->pix_size != size))
-   // if (size <=0)
-     //   return;
-    if (!(file->pix == NULL || file->pix_size != size))
+    if (size <=0)
         return;
-    /* Don't load thumbnails they would be loaded asyncronously */
-    if (!(file->flags == 0 || file->pix == NULL))
+
+    if (!(file->pix == NULL || file->pix_size != size))
         return;
 
 //g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
@@ -1125,12 +1121,21 @@ gof_file_compare_for_sort (GOFFile *file1,
             break;
         case FM_LIST_MODEL_SIZE:
             result = compare_by_size (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         case FM_LIST_MODEL_TYPE:
             result = compare_by_type (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         case FM_LIST_MODEL_MODIFIED:
             result = compare_by_time (file1, file2);
+            if (result == 0) {
+                result = compare_by_display_name (file1, file2);
+            }
             break;
         }
 

@@ -45,7 +45,12 @@ namespace Marlin.View {
                 forward_stack.clear ();
             }
 
+            if (current_uri != null)
+                ZeitgeistManager.report_event (current_uri, Zeitgeist.ZG.LEAVE_EVENT);
+
             current_uri = uri;
+
+            ZeitgeistManager.report_event (uri, Zeitgeist.ZG.ACCESS_EVENT);
         }
 
         public Gee.List<string> go_back_list () {

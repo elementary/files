@@ -218,7 +218,7 @@ namespace Marlin.View {
             var expander = new Gtk.Label ("");
             expander.hexpand = true;
 
-            var make_default = new Gtk.Button.with_label (_("Set as default"));
+            var make_default = new Gtk.Button.with_label (_("Set as Default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
                 show_infobar (false);
@@ -373,6 +373,9 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
+
+            // reload the view to ensure icons are rendered correctly
+            current_tab.reload ();
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -386,6 +389,11 @@ namespace Marlin.View {
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
+
+            content.loading.connect ((is_loading) => {
+                tab.working = is_loading;
+            });
+
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
@@ -729,10 +737,13 @@ namespace Marlin.View {
             if (sidebar_alloc.width > 1)
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
-            var geometry = EelGtk.Window.get_geometry_string (this);
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
-            if (is_maximized == false)
-                Preferences.settings.set_string("geometry", geometry);
+            if (is_maximized == false) {
+                int width, height;
+                get_size(out width, out height);
+                Preferences.settings.set_int("window-width", width);
+                Preferences.settings.set_int("window-height", height);
+            }
             Preferences.settings.set_boolean("maximized", is_maximized);
         }
 

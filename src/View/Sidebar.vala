@@ -50,8 +50,7 @@ namespace Marlin.Places {
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;
         Gtk.CellRendererPixbuf icon_cell_renderer;
-        Gtk.CellRendererPixbuf eject_icon_cell_renderer;
-        Gtk.CellRendererText eject_text_cell_renderer;
+        Marlin.IconSpinnerRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
         Gtk.TreePath select_path;
         Marlin.View.Window window;
@@ -59,7 +58,7 @@ namespace Marlin.Places {
         VolumeMonitor volume_monitor;
         Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
-        Icon eject_icon;
+        GLib.Icon eject_icon;
 
         uint n_builtins_before;
         string last_selected_uri;
@@ -124,8 +123,12 @@ namespace Marlin.Places {
 
         /* volume mounting - delayed open process */
         bool mounting = false;
+
         //GOF.Window.Slot go_to_after_mount_slot;
         //Marlin.OpenFlag go_to_after_mount_flags;
+
+        /* prevent multiple unmount processes */
+        bool ejecting_or_unmounting = false;
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
@@ -185,7 +188,6 @@ namespace Marlin.Places {
             col.set_cell_data_func (crpb, icon_cell_data_func);
 
             var crd = new Marlin.CellRendererDisk ();
-            eject_text_cell_renderer = crd;
             crd.ellipsize = Pango.EllipsizeMode.END;
             crd.ellipsize_set = true;
             col.pack_start (crd, true);
@@ -195,18 +197,18 @@ namespace Marlin.Places {
                                 "free_space", Column.FREE_SPACE,
                                 "disk_size", Column.DISK_SIZE);
 
-
-            crpb = new Gtk.CellRendererPixbuf ();
-            eject_icon_cell_renderer = crpb;
-            crpb.mode = Gtk.CellRendererMode.ACTIVATABLE;
-            crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.follow_state = true;
-            crpb.xpad = EJECT_BUTTON_XPAD;
-            crpb.xalign = (float)1.0;
-            col.pack_start (crpb, false);
-            col.set_attributes (crpb,
+            var crs = new Marlin.IconSpinnerRenderer ();
+            eject_spinner_cell_renderer = crs;
+            crs.mode = Gtk.CellRendererMode.ACTIVATABLE;
+            crs.icon_size = Gtk.IconSize.MENU;
+            crs.xpad = EJECT_BUTTON_XPAD;
+            crs.xalign = (float)1.0;
+            col.pack_start (crs, false);
+            col.set_attributes (crs,
+                                "gicon", Column.EJECT_ICON,
                                 "visible", Column.EJECT,
-                                "gicon", Column.EJECT_ICON);
+                                "active", Column.SHOW_SPINNER,
+                                "pulse", Column.SPINNER_PULSE);
 
             crt = new Gtk.CellRendererText ();
             crt.editable = false;
@@ -215,7 +217,6 @@ namespace Marlin.Places {
             crt.edited.connect (edited);
             crt.editing_canceled.connect (editing_canceled);
             col.pack_start (crt,true);
-
             col.set_attributes (crt,
                                 "text", Column.NAME,
                                 "visible", Column.NO_EJECT,
@@ -226,12 +227,10 @@ namespace Marlin.Places {
             var cre = new Granite.Widgets.CellRendererExpander ();
             expander_renderer = cre;
             cre.is_category_expander = true;
-
             /* this is required to align the eject buttons to the right */
             int exp_size = cre.get_arrow_size (tree_view);
             cre.xpad = (16 - exp_size).abs () + EJECT_BUTTON_XPAD - 2;
             cre.xalign = (float)1.0;
-
             col.pack_end (cre, false);
             col.set_cell_data_func (cre, expander_cell_data_func);
 
@@ -250,9 +249,7 @@ namespace Marlin.Places {
             selection.set_mode (Gtk.SelectionMode.BROWSE);
             selection.set_select_function (tree_selection_func);
 
-            tree_view.row_activated.connect (row_activated_callback);
-
-            this.drag_scroll_timer_id = -1;
+            this.drag_scroll_timer_id = 0;
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
                                                 source_targets,
                                                 Gdk.DragAction.MOVE);
@@ -261,6 +258,8 @@ namespace Marlin.Places {
         }
 
         private void connect_tree_view_signals () {
+            tree_view.row_activated.connect (row_activated_callback);
+
             tree_view.drag_motion.connect (drag_motion_callback);
             tree_view.drag_leave.connect (drag_leave_callback);
             tree_view.drag_data_received.connect (drag_data_received_callback);
@@ -319,9 +318,8 @@ namespace Marlin.Places {
                                         Mount? mount,
                                         uint index,
                                         string tooltip) {
-
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
-            eject_icon_cell_renderer.stock_size = stock_size;
+            eject_spinner_cell_renderer.icon_size = stock_size;
 
             Gdk.Pixbuf pixbuf = null;
             if (icon != null) {
@@ -335,10 +333,8 @@ namespace Marlin.Places {
             if (show_unmount || show_eject)
                     assert (place_type != PlaceType.BOOKMARK);
 
-            bool show_eject_button;
-            if (mount == null)
-                show_eject_button = false;
-            else
+            bool show_eject_button = false;
+            if (mount != null)
                 show_eject_button = (show_unmount || show_eject);
 
             GLib.Icon eject;
@@ -370,9 +366,10 @@ namespace Marlin.Places {
                             Column.BOOKMARK, place_type == PlaceType.BOOKMARK,
                             Column.TOOLTIP, tooltip,
                             Column.EJECT_ICON, eject,
+                            Column.SHOW_SPINNER, false,
+                            Column.SPINNER_PULSE, 0,
                             Column.FREE_SPACE, (uint64)0,
-                            Column.DISK_SIZE, (uint64)0,
-                            -1, -1);
+                            Column.DISK_SIZE, (uint64)0);
             return iter;
         }
 
@@ -385,9 +382,7 @@ namespace Marlin.Places {
             this.n_builtins_before = 0;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
-                store.@get (iter,
-                            Column.URI, &last_selected_uri,
-                            -1);
+                store.@get (iter, Column.URI, &last_selected_uri);
             else
                 last_selected_uri = null;
 
@@ -403,8 +398,7 @@ namespace Marlin.Places {
                         Column.EJECT, false,
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
-                        Column.TOOLTIP, _("Your common places and bookmarks"),
-                        -1);
+                        Column.TOOLTIP, _("Your common places and bookmarks"));
 
             /* Add Home BUILTIN */
             try {
@@ -413,17 +407,20 @@ namespace Marlin.Places {
             catch (ConvertError e) {
                 mount_uri = "";
             }
-            add_place ( PlaceType.BUILT_IN,
-                        iter,
-                        _("Home"),
-                        new ThemedIcon (Marlin.ICON_HOME),
-                        mount_uri,
-                        null,
-                        null,
-                        null,
-                        0,
-                        _("Open your personal folder"));
+
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("Home"),
+                       new ThemedIcon (Marlin.ICON_HOME),
+                       mount_uri,
+                       null,
+                       null,
+                       null,
+                       0,
+                       _("Open your personal folder"));
+
             n_builtins_before++;
+
             /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();
             unowned Bookmark bm;
@@ -436,17 +433,19 @@ namespace Marlin.Places {
 
                 add_bookmark (iter, bm, index);
             }
+
             /* Add trash */
-            add_place ( PlaceType.BUILT_IN,
-                        iter,
-                        _("Trash"),
-                        Marlin.TrashMonitor.get_icon (),
-                        Marlin.TRASH_URI,
-                        null,
-                        null,
-                        null,
-                        index + n_builtins_before,
-                        _("Open the Trash"));
+            add_place (PlaceType.BUILT_IN,
+                       iter,
+                       _("Trash"),
+                       Marlin.TrashMonitor.get_icon (),
+                       Marlin.TRASH_URI,
+                       null,
+                       null,
+                       null,
+                       index + n_builtins_before,
+                       _("Open the Trash"));
+
             /* ADD STORAGE CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
@@ -456,8 +455,8 @@ namespace Marlin.Places {
                         Column.EJECT, false,
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
-                        Column.TOOLTIP, _("Your local partitions and devices"),
-                        -1);
+                        Column.TOOLTIP, _("Your local partitions and devices"));
+
             /* Add Filesystem BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -469,6 +468,7 @@ namespace Marlin.Places {
                        null,
                        0,
                        _("Open the contents of the FileSystem"));
+
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
             GLib.List<GLib.Volume> volumes;
@@ -553,6 +553,7 @@ namespace Marlin.Places {
                         continue;
                     }
                 }
+
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            mount.get_name (),
@@ -564,6 +565,7 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
+
             /* ADD NETWORK CATEGORY */
             store.append (out iter, null);
             store.@set (iter,
@@ -573,8 +575,8 @@ namespace Marlin.Places {
                         Column.EJECT, false,
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
-                        Column.TOOLTIP, _("Your network places"),
-                        -1);
+                        Column.TOOLTIP, _("Your network places"));
+
             /* Add network mounts */
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
@@ -590,6 +592,7 @@ namespace Marlin.Places {
                            0,
                            root.get_parse_name ());
             }
+
             /* Add Entire Network BUILTIN */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -649,8 +652,7 @@ namespace Marlin.Places {
                     get_filesystem_space (root, out fs_capacity, out fs_free);
                     store.@set (last_iter,
                                 Column.FREE_SPACE, fs_free,
-                                Column.DISK_SIZE, fs_capacity,
-                                -1);
+                                Column.DISK_SIZE, fs_capacity);
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -744,7 +746,7 @@ namespace Marlin.Places {
                 Gtk.TreeIter iter;
                 store.get_iter (out iter, path);
                 string uri;
-                this.store.@get (iter, Column.URI, out uri, -1);
+                this.store.@get (iter, Column.URI, out uri);
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
                     if (file.ensure_query_info ())
@@ -758,7 +760,7 @@ namespace Marlin.Places {
             Gdk.drag_status (context, action, time);
 
             /* start the drag autoscroll timer if not already running */
-            if (drag_scroll_timer_id < 0) {
+            if (drag_scroll_timer_id < 1) {
                 drag_context = context;
                 drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                               50,
@@ -847,8 +849,7 @@ namespace Marlin.Places {
             uint position;
             store.@get (iter,
                         Column.ROW_TYPE, out type,
-                        Column.INDEX, out position,
-                        -1);
+                        Column.INDEX, out position);
 
             if (type == PlaceType.BOOKMARK || type == PlaceType.BUILT_IN) {
                 if (type == PlaceType.BOOKMARK && drop_pos == Gtk.TreeViewDropPosition.BEFORE)
@@ -870,9 +871,7 @@ namespace Marlin.Places {
 
         private bool process_drop_onto (Gtk.TreeIter iter, Gdk.DragContext context, uint info) {
             string drop_uri;
-            store.@get (iter,
-                        Column.URI, out drop_uri,
-                        -1);
+            store.@get (iter, Column.URI, out drop_uri);
 
             var real_action = context.get_selected_action ();
             if (real_action == Gdk.DragAction.ASK) {
@@ -912,9 +911,9 @@ namespace Marlin.Places {
         private void free_drag_data () {
             received_drag_data = false;
             /* stop any running drag autoscroll timer */
-            if (drag_scroll_timer_id >= 0) {
+            if (drag_scroll_timer_id > 0) {
                 GLib.Source.remove (drag_scroll_timer_id);
-                drag_scroll_timer_id = -1;
+                drag_scroll_timer_id = 0;
             }
         }
 
@@ -1048,7 +1047,7 @@ namespace Marlin.Places {
                 return;
 
             string uri;
-            store.@get (iter, Column.URI, out uri, -1);
+            store.@get (iter, Column.URI, out uri);
 
             if (uri != null) {
                 var location = File.new_for_uri (uri);
@@ -1065,23 +1064,20 @@ namespace Marlin.Places {
 message ("Sidebar open selected");
                     window.current_tab.user_path_change_request (location);
                 }
-            } else {
+            } else if (!ejecting_or_unmounting) {
                 Drive drive;
                 Volume volume;
 
-                //var win = this.get_toplevel () as Gtk.Window;
                 var mount_op = new Gtk.MountOperation (window);
-
                 store.@get (iter,
                             Column.DRIVE, out drive,
-                            Column.VOLUME, out volume,
-                            -1);
+                            Column.VOLUME, out volume);
 
-                if (volume != null && !mounting) 
+                if (volume != null && !mounting)
                     mount_volume (volume, mount_op, flags);
 
                 else if (drive != null && volume == null
-                        && (drive.can_start () || drive.can_start_degraded ())) 
+                        && (drive.can_start () || drive.can_start_degraded ()))
                     start_drive (drive, mount_op);
             }
         }
@@ -1117,7 +1113,7 @@ message ("Sidebar open selected");
         }
 
         private void start_drive (Drive drive, Gtk.MountOperation mount_op) {
-            drive.start.begin (DriveStartFlags.NONE, 
+            drive.start.begin (DriveStartFlags.NONE,
                                mount_op,
                                null,
                                (obj, res) => {
@@ -1156,7 +1152,7 @@ message ("Sidebar open selected");
                 return;
 
             uint index;
-            store.@get (iter, Column.INDEX, out index, -1);
+            store.@get (iter, Column.INDEX, out index);
             index = index <= n_builtins_before ? 0 : index - n_builtins_before;
             bookmarks.delete_item_at (index);
         }
@@ -1172,8 +1168,7 @@ message ("Sidebar open selected");
             uint old_position;
             store.@get (iter,
                         Column.BOOKMARK, out is_bookmark,
-                        Column.INDEX, out old_position,
-                        -1);
+                        Column.INDEX, out old_position);
 
             if (old_position <= n_builtins_before)
                 old_position = 0;
@@ -1241,13 +1236,13 @@ message ("Sidebar open selected");
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Unmount"));
             popupmenu_unmount_item = item;
-            item.activate.connect (unmount_shortcut_cb);
+            item.activate.connect (eject_or_unmount_shortcut_cb);
             item.show ();
             popupmenu.append (item);
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Eject"));
             popupmenu_eject_item = item;
-            item.activate.connect (eject_shortcut_cb);
+            item.activate.connect (eject_or_unmount_shortcut_cb);
             item.show ();
             popupmenu.append (item);
 
@@ -1331,7 +1326,7 @@ message ("Sidebar open selected");
                 bool child_valid = store.iter_children (out child_iter, iter);
                 while (child_valid) {
                     string uri;
-                    store.@get (child_iter, Column.URI, out uri, -1);
+                    store.@get (child_iter, Column.URI, out uri);
                     if (uri == null)
                         break;
 
@@ -1356,7 +1351,7 @@ message ("Sidebar open selected");
             store.get_iter (out iter, path);
 
             uint index;
-            store.@get (iter, Column.INDEX, out index, -1);
+            store.@get (iter, Column.INDEX, out index);
             index-= this.n_builtins_before;
 
             Marlin.Bookmark? bookmark = this.bookmarks.item_at (index);
@@ -1478,7 +1473,7 @@ message ("Sidebar open selected");
                                                      Gtk.TreeIter iter,
                                                      Gtk.TreePath path) {
             PlaceType type;
-            store.@get (iter, Column.ROW_TYPE, out type, -1);
+            store.@get (iter, Column.ROW_TYPE, out type);
             expander_update_pref_state (type, true);
         }
 
@@ -1486,7 +1481,7 @@ message ("Sidebar open selected");
                                                       Gtk.TreeIter iter,
                                                       Gtk.TreePath path) {
             PlaceType type;
-            store.@get (iter, Column.ROW_TYPE, out type, -1);
+            store.@get (iter, Column.ROW_TYPE, out type);
             expander_update_pref_state (type, false);
         }
 
@@ -1583,7 +1578,10 @@ message ("Sidebar open selected");
                     return false;
 
                 tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
-                open_selected_bookmark (store, path, 0);
+
+                if (path != null)
+                    open_selected_bookmark (store, path,
+                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
             }
 
             return false;
@@ -1637,19 +1635,35 @@ message ("Sidebar open selected");
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */
 
-         private void do_unmount (Mount? mount) {
-            if (mount != null)
-                Marlin.FileOperations.unmount_mount_full (null, mount, false, true, null, null);
-         }
-
-         private void do_unmount_selection () {
-            Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+         private void do_unmount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
+            if (mount == null)
                 return;
 
-            Mount mount;
-            store.@get (iter, Column.MOUNT, out mount, -1);
-            do_unmount (mount);
+            if (Marlin.FileOperations.has_trash_files (mount)) {
+                int response = Marlin.FileOperations.prompt_empty_trash (null);
+                if (response == Gtk.ResponseType.ACCEPT) {
+                    GLib.List<GLib.File> dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
+                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
+                } else if (response == Gtk.ResponseType.CANCEL) {
+                    finish_eject_or_unmount (row_ref);
+                    return;
+                }
+            }
+
+            ejecting_or_unmounting = true;
+            GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
+            mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                mount_op,
+                                                null,
+                                                (obj, res) => {
+                try {
+                    mount.unmount_with_operation.end (res);
+                }
+                catch (GLib.Error error) {
+                    message ("Error while unmounting");
+                }
+                finish_eject_or_unmount (row_ref);
+            });
          }
 
         private bool clicked_eject_button (out Gtk.TreePath p) {
@@ -1683,20 +1697,19 @@ message ("Sidebar open selected");
                     return false;
 
                 store.get_iter (out iter, path);
-                store.@get (iter, Column.EJECT, out show_eject, -1);
+                store.@get (iter, Column.EJECT, out show_eject);
 
-                if (!show_eject)
+                if (!show_eject || ejecting_or_unmounting)
                     return false;
 
                 tree_view.style_get ("horizontal-separator", out hseparator, null);
                 /* reload the cell attributes for this particular row */
                 column.cell_set_cell_data (store, iter, false, false);
-                column.cell_get_position (eject_icon_cell_renderer, out x_offset, out width);
+                column.cell_get_position (eject_spinner_cell_renderer, out x_offset, out width);
 
                 eject_button_size = 20;
-                x_offset+= width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
-
-                if (x - x_offset >= 0 && x - x_offset <= eject_button_size) {
+                x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
+                if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size) {
                     p = path;
                     return true;
                 }
@@ -1705,9 +1718,9 @@ message ("Sidebar open selected");
             return false;
         }
 
-        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive) {
+        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive, Gtk.TreeRowReference? row_ref = null) {
             GLib.MountOperation mount_op = new GLib.MountOperation ();
-
+            ejecting_or_unmounting = true;
             if (drive != null) {
                 drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
@@ -1719,6 +1732,7 @@ message ("Sidebar open selected");
                     catch (GLib.Error error) {
                         message ("Error ejecting drive: %s", error.message);
                     }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
@@ -1734,6 +1748,7 @@ message ("Sidebar open selected");
                     catch (GLib.Error error) {
                         message ("Error ejecting volume: %s", error.message);
                     }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
@@ -1743,19 +1758,29 @@ message ("Sidebar open selected");
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
-                        try {
-                            mount.eject_with_operation.end (res);
-                        }
-                        catch (GLib.Error error) {
-                            message ("Error ejecting mount: %s", error.message);
-                        }
+                    try {
+                        mount.eject_with_operation.end (res);
+                    }
+                    catch (GLib.Error error) {
+                        message ("Error ejecting mount: %s", error.message);
+                    }
+                    finish_eject_or_unmount (row_ref);
                 });
                 return;
             }
         }
 
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref) {
+            ejecting_or_unmounting = false;
+            if (row_ref != null && row_ref.valid ()) {
+                Gtk.TreeIter iter;
+                if (store.get_iter (out iter, row_ref.get_path ()))
+                    store.@set (iter, Column.SHOW_SPINNER, false) ;
+            }
+        }
+
         private bool eject_or_unmount_bookmark (Gtk.TreePath? path) {
-            if (path == null)
+            if (path == null || ejecting_or_unmounting)
                 return false;
 
             Gtk.TreeIter iter;
@@ -1765,22 +1790,47 @@ message ("Sidebar open selected");
             Mount mount;
             Volume volume;
             Drive drive;
+            bool spinner_active;
             store.@get (iter,
                         Column.MOUNT, out mount,
                         Column.VOLUME, out volume,
                         Column.DRIVE, out drive,
-                        -1);
+                        Column.SHOW_SPINNER, out spinner_active);
+
+            /* Return if already ejecting */
+            if (spinner_active)
+                return true;
 
             bool can_unmount, can_eject;
             check_unmount_and_eject (mount, volume, drive, out can_unmount, out can_eject);
 
-            if (can_eject) {
-                do_eject (mount, volume, drive);
-            } else if (can_unmount) {
-                do_unmount (mount);
-            }
+            if (!(can_eject || can_unmount))
+                return false;
 
-            return can_eject || can_unmount;
+            var rowref = new Gtk.TreeRowReference (store, path);
+            store.@set (iter, Column.SHOW_SPINNER, true);
+
+            Timeout.add (100, ()=>{
+                uint val;
+
+                if (!rowref.valid ())
+                    return false;
+
+                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
+                if (!spinner_active)
+                    return false;
+
+                store.@get (iter, Column.SPINNER_PULSE, out val);
+                store.@set (iter, Column.SPINNER_PULSE, ++val);
+                return true;
+            });
+
+            if (can_eject)
+                do_eject (mount, volume, drive, rowref);
+            else if (can_unmount)
+                do_unmount (mount, rowref);
+
+            return true;
         }
 
         private bool eject_or_unmount_selection () {
@@ -1817,14 +1867,10 @@ message ("Sidebar open selected");
                 return;
 
             Volume volume;
-            store.@get (iter, Column.VOLUME, out volume, -1);
+            store.@get (iter, Column.VOLUME, out volume);
             if (volume != null)
                 Marlin.FileOperations.mount_volume (null, volume, false);
          }
-
-        private void unmount_shortcut_cb (Gtk.MenuItem item) {
-            do_unmount_selection ();
-        }
 
         private void remove_shortcut_cb (Gtk.MenuItem item) {
             remove_selected_bookmarks ();
@@ -1834,20 +1880,12 @@ message ("Sidebar open selected");
             rename_selected_bookmark ();
         }
 
-        private void eject_shortcut_cb (Gtk.MenuItem item) {
+        private void eject_or_unmount_shortcut_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
-
-            Mount mount;
-            Volume volume;
-            Drive drive;
-            store.@get (iter,
-                        Column.MOUNT, out mount,
-                        Column.VOLUME, out volume,
-                        Column.DRIVE, out drive,
-                        -1);
-            do_eject (mount, volume, drive);
+            else
+                eject_or_unmount_bookmark (store.get_path (iter));
         }
 
         private void empty_trash_cb (Gtk.MenuItem item) {
@@ -1988,8 +2026,7 @@ message ("Sidebar open selected");
                         Column.VOLUME, out volume,
                         Column.MOUNT, out mount,
                         Column.URI, out uri,
-                        Column.BOOKMARK, out is_bookmark,
-                        -1);
+                        Column.BOOKMARK, out is_bookmark);
 
             popupmenu_open_in_new_tab_item.show ();
             Eel.gtk_widget_set_shown (popupmenu_remove_item, is_bookmark);

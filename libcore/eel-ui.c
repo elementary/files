@@ -22,7 +22,7 @@
  */
 
 #include <config.h>
-#include "marlincore.h"
+#include "pantheon-files-core.h"
 #include "eel-ui.h"
 #include "eel-debug.h"
 

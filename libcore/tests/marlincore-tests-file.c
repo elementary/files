@@ -22,7 +22,7 @@
 #include <glib.h>
 #include <gio/gio.h>
 #include "marlincore-tests-file.h"
-#include "marlincore.h"
+#include "pantheon-files-core.h"
 #include "gof-file.h"
 
 GMainLoop* loop;

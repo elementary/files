@@ -32,7 +32,7 @@
 
 #include "gof-file.h"
 #include "marlin-icon-info.h"
-#include "marlincore.h"
+#include "pantheon-files-core.h"
 
 #define FILE_ICON_SIZE_LARGE	    64
 

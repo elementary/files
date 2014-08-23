@@ -121,7 +121,7 @@ public class Marlin.PluginManager : Object {
             return;
         }
 
-        message ("Loading plugin for %s", file_path);
+        debug ("Loading plugin for %s", file_path);
 
         Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null) {
@@ -149,7 +149,6 @@ public class Marlin.PluginManager : Object {
         Plugins.Base plug = module_init();
 
         debug ("Loaded module source: '%s'", module.name());
-        //message ("Loaded module source: '%s'", module.name());
 
         if (plug != null)
             plugin_hash.set (file_path, plug);

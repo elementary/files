@@ -77,6 +77,7 @@ namespace Marlin.View.Chrome
 
 
             view_switcher = new ViewSwitcher (win.win_actions.lookup_action ("view_mode") as GLib.SimpleAction);
+
             view_switcher.show_all ();
             pack_start (view_switcher);
 

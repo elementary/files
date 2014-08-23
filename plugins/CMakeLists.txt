@@ -1,4 +1,4 @@
 add_subdirectory(contractor)
-add_subdirectory(marlin-trash)
-add_subdirectory(marlin-ctags)
+add_subdirectory(pantheon-files-trash)
+add_subdirectory(pantheon-files-ctags)
 add_subdirectory(network-places)

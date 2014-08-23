@@ -146,11 +146,6 @@ public class GOF.Directory.Async : Object {
             if (state == State.LOADING)
                 clear_directory_info ();
 
-            if (!file.is_mounted) {
-                mount_mountable.begin ();
-                return;
-            }
-
             list_directory.begin ();
 
             try {
@@ -216,25 +211,19 @@ message ("done_loading emit");
         }
     }
 
-    private async void mount_mountable () {
+    public async void mount_mountable () throws Error {
         debug ("mount_mountable %s", file.uri);
 
         /* TODO pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
 
-        try {
-            if (file.file_type != FileType.MOUNTABLE) {
-                yield location.mount_enclosing_volume (0, mount_op, cancellable);
-            } else {
-                yield location.mount_mountable (0, mount_op, cancellable);
-            }
+        if (file.file_type != FileType.MOUNTABLE)
+            yield location.mount_enclosing_volume (0, mount_op, cancellable);
+        else
+            yield location.mount_mountable (0, mount_op, cancellable);
 
-            file.is_mounted = true;
-            yield query_info_async (file, file_info_available);
-            load ();
-        } catch (Error e) {
-            warning ("mount_mountable failed: %s %s", e.message, file.uri);
-        }
+        file.is_mounted = true;
+        yield query_info_async (file, file_info_available);
     }
 
     private async void list_directory () {
@@ -290,15 +279,11 @@ message ("done_loading emit");
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
 
-            if (err is IOError.PERMISSION_DENIED)
+            else if (err is IOError.PERMISSION_DENIED)
                 permission_denied = true;
 
-            if (err is IOError.NOT_MOUNTED) {
+            else if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
-                /* try again this time it shoould be mounted */
-                load ();
-                return;
-            }
         }
 
         //TODO send err code

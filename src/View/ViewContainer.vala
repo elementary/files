@@ -63,6 +63,7 @@ namespace Marlin.View {
         public signal void back (int n=1);
         public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
+        public signal void loading (bool is_loading);
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
@@ -109,11 +110,11 @@ namespace Marlin.View {
 
         public string tab_name {
             set {
-                label.label = value;
+                label = value;
                 tab_name_changed (value);
             }
             get {
-                return label.label;
+                return label;
             }
         }
 
@@ -219,11 +220,13 @@ message ("set up slot");
             data[0] = window;
             data[1] = slot;
             data[2] = slot.directory.file;
+
             //plugins.directory_loaded ((void*) data);
         }
 
         public void refresh_slot_info (GLib.File loc) {
 message ("refresh slot info");
+            loading (false);
             var slot_path = loc.get_path ();
 
             if (slot_path == Environment.get_home_dir ())
@@ -232,6 +235,7 @@ message ("refresh slot info");
                 tab_name = _("File System");
             else
                 tab_name = loc.get_basename ();
+                // TODO can_show_folder setting required ?
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
@@ -270,12 +274,15 @@ message ("directory done loading");
                 }
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
-                content = new DirectoryNotFound (slot.directory, this);
-                tab_name = _("This folder does not exist");
-                can_show_folder = false;
+                if (err is IOError.NOT_MOUNTED) {
+                    reload ();
+                } else {
+                    content = new DirectoryNotFound (slot.directory, this);
+                }
             }
-            //slot.directory.done_loading.disconnect (directory_done_loading);
-            slot.directory.disconnect (directory_done_loading_handler_id);
+
+            warning ("directory done loading");
+            slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
         private void store_selection () {}
@@ -295,6 +302,142 @@ message ("directory done loading");
 
         public void set_active_state (bool is_active) {
             get_current_slot ().set_active_state (is_active);
+        }
+
+        public void change_view (int nview, GLib.File? location, GLib.File? focus_file = null) {
+            /* if location is null then we have a user change view request */
+            bool user_change_rq = location == null;
+            select_childs = null;
+
+            if (location == null) {
+                /* we re just changing view keep the same location */
+                GOF.Window.Slot? active_slot = get_active_slot ();
+                if (active_slot == null) {
+                    warning ("No active slot found - cannot change view");
+                    return;
+                }
+                location = active_slot.location;
+                /* store the old selection to restore it */
+                if (slot != null && !content_shown) {
+                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
+                    foreach (var elem in list)
+                        select_childs.prepend (elem.location);
+                }
+            } else {
+                can_show_folder = true;
+                /* check if the requested location is a parent of the previous one */
+                if (slot != null) {
+                    var parent = slot.location.get_parent ();
+                    if (parent != null && parent.equal (location))
+                        select_childs.prepend (slot.directory.file.location);
+                }
+            }
+
+            if (focus_file != null)
+                select_childs.prepend (focus_file);
+
+            Marlin.Window.Columns new_mwcol;
+            GOF.Window.Slot new_slot;
+
+            if (nview == ViewMode.MILLER) {
+                new_mwcol = new Marlin.Window.Columns (location, this);
+                new_slot = new_mwcol.active_slot;
+            } else {
+                new_mwcol = null;
+                new_slot = new GOF.Window.Slot (location, this);
+            }
+
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && new_slot.directory.uri_contain_keypath_icons)
+                nview = 0; /* icon view */
+
+            /* Mount the directory if it's not mounted */
+            if (!new_slot.directory.file.is_mounted) {
+                tab_name = _("Connecting…");
+                loading (true);
+                
+                new_slot.directory.mount_mountable.begin ((obj,res) => {
+                    try {
+                        new_slot.directory.mount_mountable.end (res);
+                        make_view (nview, new_mwcol, new_slot);
+                    } catch (Error e) {
+                        warning ("mount_mountable failed: %s", e.message);
+
+                        if (get_active_slot () == null) {
+                            /* There's no previous slot to refresh */
+                            File home = File.new_for_path (Environment.get_home_dir ());
+                            change_view (nview, home);
+                        } else {
+                            /* Reset the tab label */
+                            refresh_slot_info ();
+                        }
+                    }
+                });
+            } else {
+                make_view (nview, new_mwcol, new_slot);
+            }
+        }
+
+        private void make_view (int nview, Marlin.Window.Columns? new_mwcol, GOF.Window.Slot new_slot) {
+            if (slot != null && slot.directory != null && slot.directory.file.exists) {
+                slot.directory.cancel ();
+                slot.directory.track_longest_name = false;
+            }
+
+            slot = new_slot;
+            mwcol = new_mwcol;
+
+            /* Setting up view_mode and its button */
+            view_mode = nview;
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+
+            connect_available_info ();
+            if (slot != null) {
+                slot.directory.done_loading.connect (directory_done_loading);
+                slot.directory.need_reload.connect (reload);
+            }
+            plugin_directory_loaded ();
+
+            switch (nview) {
+            case ViewMode.LIST:
+                slot.make_list_view ();
+                break;
+            case ViewMode.MILLER:
+                mwcol.make_view ();
+                break;
+            default:
+                slot.make_icon_view ();
+                break;
+            }
+
+            overlay_statusbar.showbar = nview != ViewMode.LIST;
+        }
+
+        public void focus_file (File file) {
+            if (file.query_file_type (0) == FileType.DIRECTORY) {
+                if (slot.location.equal (file))
+                    return;
+
+                change_view (view_mode, file);
+            } else {
+                if (slot.location.equal (file.get_parent ())) {
+                    var list = new List<File> ();
+                    list.prepend (file);
+                    ((FM.Directory.View) slot.view_box).select_glib_files (list);
+                } else
+                    change_view (view_mode, file.get_parent (), file);
+            }
+
+            update_location_state (true);
+            refresh_slot_info ();
+        }
+
+        public GOF.Window.Slot? get_active_slot () {
+            if (mwcol != null)
+                return mwcol.active_slot;
+            else
+                return slot;
         }
 
         public string? get_root_uri () {

@@ -158,5 +158,9 @@ void marlin_file_mark_desktop_file_trusted (GFile           *file,
                                             MarlinOpCallback done_callback,
                                             gpointer          done_callback_data);
 
+gboolean marlin_file_operations_has_trash_files (GMount *mount);
+gint marlin_file_operations_prompt_empty_trash (GtkWindow *parent_window);
+GList *marlin_file_operations_get_trash_dirs_for_mount (GMount *mount);
+
 #endif
 #endif /* MARLIN_FILE_OPERATIONS_H */

@@ -7,1542 +7,516 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-12-16 04:42-0600\n"
-"PO-Revision-Date: 2014-06-05 11:30+0000\n"
-"Last-Translator: James Spentzos <Unknown>\n"
+"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"PO-Revision-Date: 2014-08-17 08:15+0000\n"
+"Last-Translator: Jim Spentzos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-06-06 06:29+0000\n"
-"X-Generator: Launchpad (build 17031)\n"
+"X-Launchpad-Export-Date: 2014-08-18 07:13+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
 
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:149
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:304
-msgid "Home"
-msgstr "Προσωπικός φάκελος"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:151
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:375
-msgid "File System"
-msgstr "Σύστημα Αρχείων"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:155
-msgid "This folder does not exist"
-msgstr "Αυτός ο φάκελος δεν υπάρχει"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:158
-msgid "(as Administrator)"
-msgstr "ως Διαχειριστής"
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:174
-msgid "This does not belong to you."
-msgstr "Αυτό δεν ανήκει σε εσάς."
-
-#: /home/codygarver/f/po/../src/View/ViewContainer.vala:175
-msgid "You don't have permission to view this folder."
-msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
-
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Ο φάκελος δεν υπάρχει."
-
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:39
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "Ο φάκελος \"%s\" δεν βρέθηκε."
-
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "Δημιουργία"
-
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:41
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "Δημιουργείστε τον φάκελο \"%s\""
-
-#: /home/codygarver/f/po/../src/View/DirectoryNotFound.vala:55
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Αποτυχία δημιουργίας του φακέλου\n"
-"\n"
-"%s"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
-msgstr "Ένας απλός και δυνατός διαχειριστής αρχείων"
-
-#: /home/codygarver/f/po/../src/View/Resources.vala:28
-msgid "Launchpad Translators"
-msgstr "Μεταφραστές στο Launchpad"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Ιδιότητες"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:138
-msgid "General"
-msgstr "Γενικά"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:146
-msgid "More"
-msgstr "Περισσότερα"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:165
-msgid "Preview"
-msgstr "Προεπισκόπηση"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:283
-#, c-format
-msgid "%u selected items"
-msgstr "%u επιλεγμένα αντικείμενα"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:292
-msgid "Calculating size…"
-msgstr "Υπολογισμός μεγέθους..."
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:396
-msgid "Created"
-msgstr "Δημιουργήθηκε"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:398
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Τροποποίηση"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:401
-msgid "Last Access"
-msgstr "Τελευταία Προσπέλαση"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:407
-msgid "Deleted"
-msgstr "Διαγράφηκε"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:412
-msgid "MimeType"
-msgstr "Επέκταση διαδικτυακού ταχυδρομείου πολλαπλών χρήσεων (MimeType)"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:420
-msgid "MimeTypes"
-msgstr "Επεκτάσεις διαδικτυακού ταχυδρομείου πολλαπλών χρήσεων (MimeTypes)"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:433
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Μέγεθος"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:440
-msgid "Location"
-msgstr "Τοποθεσία"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:443
-msgid "Target"
-msgstr "Προορισμός"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:449
-msgid "Origin Location"
-msgstr "Τοποθεσία προέλευσης"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:459
-msgid "Info:"
-msgstr "Πληροφορίες:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:494
-msgid "Other application..."
-msgstr "Άλλη εφαρμογή…"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:518
-msgid "Open with:"
-msgstr "Άνοιγμα με:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:538
-msgid "Usage:"
-msgstr "Χρήση:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:543
-msgid "Device usage:"
-msgstr "Χρήση συσκευής:"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:550
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s ελεύθερα από %s (%d%% χρησιμοποιημένα)"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:689
-msgid "Read"
-msgstr "Ανάγνωση"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:694
-msgid "Write"
-msgstr "Εγγραφή"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:699
-msgid "Execute"
-msgstr "Εκτέλεση"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:912
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:925
-msgid "Owner"
-msgstr "Κάτοχος"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:917
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:929
-msgid "Group"
-msgstr "Ομάδα"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:933
-msgid "Everyone"
-msgstr "Όλοι"
-
-#: /home/codygarver/f/po/../src/View/PropertiesWindow.vala:1192
-msgid "Select an application to open "
-msgstr "Επιλέξτε μια εφαρμογή για να ανοίξετε "
-
-#: /home/codygarver/f/po/../src/View/Window.vala:126
-msgid "Files isn't your default file manager."
-msgstr ""
-"Η εφαρμογή Αρχεία δεν είναι ο προεπιλεγμένος διαχειριστής αρχείων σας."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:132
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3512
-msgid "Set as default"
-msgstr "Ορισμός ως προεπιλογή"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:137
-msgid "Ignore"
-msgstr "Παράβλεψη"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:399
-msgid "Undo"
-msgstr "Αναίρεση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:400
-#: /home/codygarver/f/po/../src/View/Window.vala:620
-msgid "Undo the last action"
-msgstr "Αναίρεση της τελευταίας ενέργειας"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:409
-msgid "Redo"
-msgstr "Επανάληψη"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:410
-#: /home/codygarver/f/po/../src/View/Window.vala:623
-msgid "Redo the last action"
-msgstr "Επανάληψη της τελευταίας ενέργειας"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:598
-msgid "_File"
-msgstr "_Αρχείο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:599
-msgid "_Edit"
-msgstr "_Επεξεργασία"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:600
-msgid "_View"
-msgstr "_Προβολή"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:601
-msgid "_Go"
-msgstr "_Μετάβαση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:602
-msgid "_Help"
-msgstr "_Βοήθεια"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:604
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Νέο _Παράθυρο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:605
-msgid "Open another Files window for the displayed location"
-msgstr "Άνοιγμα διαφορετικού παραθύρου Αρχείων για την προβληθήσα τοποθεσία"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:608
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Νέα _Καρτέλα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:609
-msgid "Open another tab for the displayed location"
-msgstr "Άνοιγμα της τρέχουσας τοποθεσίας σε νέα καρτέλα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:613
-msgid "_Close"
-msgstr "_Κλείσιμο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:614
-msgid "Close this folder"
-msgstr "Κλείσιμο αυτού του φακέλου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:619
-msgid "_Undo"
-msgstr "_Αναίρεση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:622
-msgid "_Redo"
-msgstr "_Επανάληψη"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:625
-msgid "Open _Parent"
-msgstr "Άνοιγμα _γονικού"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:626
-msgid "Open the parent folder"
-msgstr "Άνοιγμα του γονικού φακέλου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:628
-msgid "_Back"
-msgstr "_Πίσω"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:629
-msgid "Go to the previous visited location"
-msgstr "Μετάβαση στην προηγούμενη τοποθεσία που είχατε επισκεφθεί"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:632
-msgid "_Forward"
-msgstr "_Μπροστά"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:633
-msgid "Go to the next visited location"
-msgstr "Μετάβαση στην επόμενη τοποθεσία που είχατε επισκεφθεί"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:635
-msgid "_Reload"
-msgstr "_Επαναφόρτωση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:636
-msgid "Reload the current location"
-msgstr "Επαναφόρτωση της τρέχουσας τοποθεσίας"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:639
-msgid "_Home Folder"
-msgstr "Προσωπικός _φάκελος"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:640
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:309
-msgid "Open your personal folder"
-msgstr "Άνοιγμα του προσωπικού σας φακέλου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:643
-msgid "_Trash"
-msgstr "_Απορρίματα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:644
-msgid "Open your personal trash folder"
-msgstr "Άνοιγμα του προσωπικού σας φακέλου απορριμμάτων"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:647
-msgid "_Network"
-msgstr "_Δίκτυο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:648
-msgid "Browse bookmarked and local network locations"
-msgstr "Περιήγηση σε σελιδοδείκτες και τοποθεσίες τοπικού δικτύου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:651
-msgid "Zoom _In"
-msgstr "_Μεγέθυνση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:652
-msgid "Increase the view size"
-msgstr "Αύξηση του μεγέθους προβολής"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:663
-msgid "Zoom _Out"
-msgstr "Σμίκρυν_ση"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:664
-msgid "Decrease the view size"
-msgstr "Μείωση του μεγέθους προβολής"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:671
-msgid "Normal Si_ze"
-msgstr "Κανονικό _μέγεθος"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:672
-msgid "Use the normal view size"
-msgstr "Χρήση του κανονικού μεγέθους προβολής"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:675
-msgid "Next Tab"
-msgstr "Επόμενη καρτέλα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:679
-msgid "Previous Tab"
-msgstr "Προηγούμενη καρτέλα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:683
-msgid "Connect to _Server..."
-msgstr "Σύνδεση σε ε_ξυπηρετητή"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:684
-msgid "Connect to a remote computer or shared disk"
-msgstr "Σύνδεση σε απομακρυσμένο υπολογιστή ή κοινόχρηστο δίσκο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:687
-msgid "_About"
-msgstr "_Περί"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:688
-msgid "Display credits"
-msgstr "Εμφάνιση credits"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:691
-msgid "Report a Problem..."
-msgstr "Αναφορά Προβλήματος..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:692
-msgid "File a bug on Launchpad"
-msgstr "Υποβολή σφάλματος στο Launchpad"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:695
-msgid "Get Help Online..."
-msgstr "Λήψη Βοήθειας από το Διαδίκτυο..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:699
-msgid "Translate This Application..."
-msgstr "Μετάφρασε Αυτή Την Εφαρμογή..."
-
-#: /home/codygarver/f/po/../src/View/Window.vala:708
-msgid "Show _Hidden Files"
-msgstr "Εμφάνιση _Κρυφών Αρχείων"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:709
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Εναλλαγή της εμφάνισης των κρυφών αρχείων του τρέχοντος παραθύρου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:713
-msgid "_Places"
-msgstr "_Τοποθεσίες"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:714
-msgid "Change the visibility of this window's side pane"
-msgstr "Αλλαγή της ορατότητας της πλευρικής στήλης αυτού του παραθύρου"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:722
-msgid "Icon"
-msgstr "Εικονίδιο"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:725
-msgid "List"
-msgstr "Λίστα"
-
-#: /home/codygarver/f/po/../src/View/Window.vala:728
-msgid "Columns"
-msgstr "Στήλες"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:110
-msgid "AFP"
-msgstr "AFP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:111
-msgid "DAV"
-msgstr "DAV"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:112
-msgid "DAVS"
-msgstr "DAVS"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:113
-msgid "FTP"
-msgstr "FTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:114
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:569
-msgid "Network"
-msgstr "Δίκτυο"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:115
-msgid "SFTP"
-msgstr "SFTP"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:116
-msgid "SMB"
-msgstr "SMB"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:117
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:351
-msgid "Trash"
-msgstr "Απορρίμματα"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:283
-msgid "Open in New Tab"
-msgstr "Άνοιγμα σε νέα καρτέλα"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:290
-msgid "Open with"
-msgstr "Άνοιγμα με"
-
-#: /home/codygarver/f/po/../src/View/LocationBar.vala:321
-msgid "Other Application .."
-msgstr "Άλλη εφαρμογή .."
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:253
-#, c-format
-msgid "%u folders"
-msgstr "%u φάκελοι"
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:259
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:271
-#, c-format
-msgid " and %u other item (%s) selected"
-msgstr " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:260
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:272
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " και %u άλλα αντικείμενα (%s) επιλέχθηκαν"
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:263
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:275
-msgid " selected"
-msgstr " επιλέχτηκε"
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:265
-#, c-format
-msgid "%u folder"
-msgstr "%u φάκελος"
-
-#: /home/codygarver/f/po/../src/View/OverlayBar.vala:277
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u επιλεγμένα αντικείμενα (%s)"
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Μονό κλικ"
-
-#: /home/codygarver/f/po/../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Εάν θα ενεργοποιούνται τα αντικείμενα στην προβολή με μονά κλικ"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:855
-msgid "Layout mode"
-msgstr "Διάταξη"
-
-#: /home/codygarver/f/po/../src/exo-icon-view.c:856
-msgid "The layout mode"
-msgstr "Η διάταξη της προβολής"
-
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "Όνομα αρχείου"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:59
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: ../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Τύπος"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:205
-#: /home/codygarver/f/po/../src/fm-columns-view.c:184
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:139
+#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
+msgid "Modified"
+msgstr "Τροποποίηση"
+
+#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
+#: ../src/fm-columns-view.c:182
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Αποτυχία μετονομασίας του %s σε %s"
 
-#: /home/codygarver/f/po/../src/fm-list-view.c:607
-#: /home/codygarver/f/po/../src/fm-directory-view.c:511
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:573
+#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
+#: ../src/fm-abstract-icon-view.c:569
 msgid "This folder is empty."
-msgstr "Αυτός ο φάκελος είναι κενός."
+msgstr "Αυτός ο φάκελος είναι άδειος."
 
-#: /home/codygarver/f/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Δεν υπάρχει τίποτα στο πρόχειρο για να επικολληθεί."
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Εικονίδια λίστας καταλόγου"
-
-#: /home/codygarver/f/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Προβολή εικονιδίων"
-
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1193
+#: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
 msgstr "Μη έγκυρο όνομα αρχείου από το XDS drag site"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1351
+#: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Δεν ήταν δυνατή η δημιουργία δεσμού για τη διεύθυνση \"%s\""
+msgstr "Αδυναμία δημιουργίας συνδέσμου για τη διεύθυνση \"%s\""
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:1807
+#: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Χρήση του \"%s\" για το άνοιγμα του επιλεγμένου αντικειμένου"
 msgstr[1] "Χρήση του \"%s\" για το άνοιγμα των επιλεγμένων αντικειμένων"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2051
+#: ../src/fm-directory-view.c:2037
+#, c-format
+msgid "Use \"%s\" as template for new file"
+msgstr "Χρήση του \"%s\" ως πρότυπο για νέο αρχείο"
+
+#: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
-msgstr "_Άνοιγμα με %s"
+msgstr "_Άνοιγμα Με %s"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2057
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3592
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2393
+#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2073
+#: ../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Άνοιγμα σε %'d Νέες καρτέλες"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2077
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3604
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2401
+#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
+#: ../src/View/Sidebar.vala:1195
 msgid "Open in New _Tab"
-msgstr "Άνοιγμα σε νέα καρ_τέλα"
+msgstr "Άνοιγμα σε Νέα _Καρτέλα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2082
+#: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Άνοιγμα σε %'d Νέα παράθυρα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:2086
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2408
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
 msgid "Open in New _Window"
-msgstr "Άνοιγμα σε νέο παρά_θυρο"
+msgstr "Άνοιγμα σε Νέο _Παράθυρο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3564
+#: ../src/fm-directory-view.c:3792
+msgid "Set as default"
+msgstr "Ορισμός ως προεπιλογή"
+
+#: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Προετοιμασία μεταφοράς των επιλεγμένων αρχείων με την εντολή Επικόλληση"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3568
+#: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Προετοιμασία αντιγραφής των επιλεγμένων αρχείων με την εντολή Επικόλληση"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3572
+#: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Μετακίνηση ή αντιγραφή των αρχείων που επιλέχθησαν με την εντολή Αποκοπή ή "
 "Αντιγραφή"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3575
+#: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
-msgstr "Επικόλληση στο φάκελο"
+msgstr "Επικόλληση στο Φάκελο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3576
+#: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
 "Μετακίνηση ή αντιγραφή αρχείων που επιλέχθηκαν προηγουμένως με την εντολή "
-"Αποκοπή ή Αντιγραφή σε επιλεγμένο φάκελο"
+"Αποκοπή ή Αντιγραφή στον επιλεγμένο φάκελο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3579
+#: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
 msgstr "_Μετονομασία..."
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3580
+#: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
 msgstr "Μετονομασία επιλεγμένου αντικειμένου"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3583
+#: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
-msgstr "Δημιουργία νέου _φακέλου"
+msgstr "Δημιουργία Νέου _Φακέλου"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3584
+#: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
 msgstr "Δημιουργία νέου κενού φακέλου μέσα σε αυτό το φάκελο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3586
+#: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
 msgstr "Δημιουργία Νέου _Αρχείου"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3588
+#: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
-msgstr "_Κενό αρχείο"
+msgstr "_Κενό Αρχείο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3589
+#: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
 msgstr "Δημιουργία ενός νέου κενού αρχείου μέσα σε αυτό το φάκελο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3593
+#: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
 msgstr "Άνοιγμα του επιλεγμένου στοιχείου"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3600
+#: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
-msgstr "Άνοιγμα σε νέο παράθυρο"
+msgstr "Άνοιγμα σε νέο Παράθυρο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3601
+#: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
 msgstr "Άνοιγμα κάθε επιλεγμένου στοιχείου σε ένα νέο παράθυρο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3605
+#: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
 msgstr "Άνοιγμα κάθε επιλεγμένου αντικειμένου σε νέα καρτέλα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3607
+#: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
-msgstr "Άνοιγμα _με"
+msgstr "Άνοιγμα _Με"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3608
+#: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
-msgstr "Επιλογή προγράμματος για το άνοιγμα του επιλεγμένου αντικειμένου"
+msgstr ""
+"Επιλέξτε ένα πρόγραμμα με το οποίο θα ανοίξετε το επιλεγμένο αντικείμενο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3610
+#: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
-msgstr "Άλλη _εφαρμογή…"
+msgstr "Άλλη _Εφαρμογή…"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3611
+#: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
 msgstr "Επιλέξτε μία άλλη εφαρμογή για να ανοίξετε το επιλεγμένο αντικειμένο"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3614
+#: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
-msgstr "Μετακίνηση στα απο_ρρίμματα"
+msgstr "_Μετακίνηση στα Απορρίμματα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3615
+#: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
-msgstr "Μετακίνηση κάθε επιλεγμένου αντικειμένου στα απορρίμματα"
+msgstr "Μετακίνηση κάθε επιλεγμένου αντικειμένου στα Απορρίμματα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3618
+#: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
-msgstr "Οριστική _διαγραφή"
+msgstr "Οριστική _Διαγραφή"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3619
+#: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
-"Διαγραφή κάθε επιλεγμένου αντικειμένου, χωρίς προηγούμενη μετακίνηση στα "
-"απορρίμματα"
+"Διαγραφή κάθε επιλεγμένου αντικειμένου, χωρίς να μετακινηθούν στα Απορρίμματα"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3622
+#: ../src/fm-directory-view.c:3902
 msgid "_Restore"
 msgstr "_Επαναφορά"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3626
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3189
+#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
 msgstr "Επιλογή Όλων"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3630
+#: ../src/fm-directory-view.c:3910
 msgid "_Properties"
 msgstr "_Ιδιότητες"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3631
+#: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
-msgstr "Εμφάνιση ή τροποποίηση των ιδιοτήτων κάθε επιλεγμένου αντικειμένου"
+msgstr "Προβολή ή τροποποίηση των ιδιοτήτων κάθε επιλεγμένου αντικειμένου"
 
-#: /home/codygarver/f/po/../src/fm-directory-view.c:3737
+#: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
-msgstr "Χρωματισμός"
+msgstr "Ορισμός Χρώματος:"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:290
-msgid "Personal"
-msgstr "Προσωπικά"
+#: ../src/exo-icon-view.c:864
+msgid "Layout mode"
+msgstr "Λειτουργία διάταξης"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:295
-msgid "Your common places and bookmarks"
-msgstr "Οι συνήθεις τοποθεσίες και τα αγαπημένα σας"
+#: ../src/exo-icon-view.c:865
+msgid "The layout mode"
+msgstr "Η λειτουργία διάταξης"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:353
-msgid "Open the trash"
-msgstr "Άνοιγμα των απορριμμάτων"
+#: ../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Στοί_χιση Αντικειμένων"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:363
-msgid "Devices"
-msgstr "Συσκευές"
+#: ../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "Αντί_στροφη Σειρά"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:368
-msgid "Your local partitions and devices"
-msgstr "Τα τοπικά σας διαμερίσματα και συσκευές"
+#: ../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Εμφάνιση των εικονιδίων στην αντίστροφη σειρά"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:377
-msgid "Open the contents of the File System"
-msgstr "Άνοιγμα των περιεχομένων του συστήματος αρχείων σας"
+#: ../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Κατά _Όνομα"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:436
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:461
-#, c-format
-msgid "Mount and open %s"
-msgstr "Προσάρτηση και άνοιγμα  %s"
+#: ../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Να διατηρούνται τα εικονίδια ταξινομημένα κατά όνομα σε γραμμές"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:574
-msgid "Your network places"
-msgstr "Οι δικτυακές σας τοποθεσίες"
+#: ../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Κατά _Μέγεθος"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:605
-msgid "Entire network"
-msgstr "Ολόκληρο το δίκτυο"
+#: ../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Να διατηρούνται τα εικονίδια ταξινομημένα κατά μεγέθος σε γραμμές"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:607
-msgid "Browse the contents of the network"
-msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
+#: ../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Κατά _Τύπο"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start"
-msgstr "Έναρ_ξη"
+#: ../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Να διατηρούνται τα εικονίδια ταξινομημένα κατά τύπο σε γραμμές"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop"
-msgstr "_Διακοπή"
+#: ../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Κατά _Ημερομηνία Τροποποίησης"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1605
-msgid "_Power On"
-msgstr "_Εκκίνηση"
+#: ../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr ""
+"Να διατηρούνται τα εικονίδια ταξινομημένα κατά ημερομηνία τροποποίησης σε "
+"γραμμές"
 
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1606
-msgid "_Safely Remove Drive"
-msgstr "Ασφαλής _κατάργηση δίσκου"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1609
-msgid "_Connect Drive"
-msgstr "Σύν_δεση Δίσκου"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1610
-msgid "_Disconnect Drive"
-msgstr "Α_ποσύνδεση δίσκου"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1613
-msgid "_Start Multi-disk Device"
-msgstr "Ε_κκίνηση συσκευής πολλαπλών δίσκων"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1614
-msgid "_Stop Multi-disk Device"
-msgstr "_Διακοπή συσκευής πολλαπλών δίσκων"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1618
-msgid "_Unlock Drive"
-msgstr "_Ξεκλείδωμα δίσκου"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1619
-msgid "_Lock Drive"
-msgstr "Κλείδ_ωμα δίσκου"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1693
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2239
-#, c-format
-msgid "Unable to start %s"
-msgstr "Αδυναμία εκκίνησης %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:1982
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2011
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2040
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Αδυναμία εξαγωγής %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2185
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Αδυναμία ερώτησης %s για αλλαγές μέσων"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2295
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Αδυναμία διακοπής %s"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2417
-msgid "Remove"
-msgstr "Κατάργηση"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2426
-msgid "Rename..."
-msgstr "Μετονομασία..."
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2438
-msgid "_Mount"
-msgstr "Π_ροσάρτηση"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2445
-msgid "_Unmount"
-msgstr "Αποπ_ροσάρτηση"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2452
-msgid "_Eject"
-msgstr "Ε_ξαγωγή"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2460
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1421
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2311
-msgid "Empty _Trash"
-msgstr "Άδειασμα _απορριμμάτων"
-
-#: /home/codygarver/f/po/../src/marlin-places-sidebar.c:2468
-msgid "Connect to Server…"
-msgstr "Σύνδεση στο διακομιστή..."
-
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:119
+#: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:122
+#: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
 msgstr "Δημόσιο FTP"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:124
+#: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (με κωδικό)"
+msgstr "FTP (με σύνδεση)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:127
+#: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:129
+#: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Κοινόχρηστο των Windows"
+msgstr "Κοινή χρήση παραθύρων"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:131
+#: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:133
+#: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Ασφαλές WebDAV (HTTPS)"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:180
+#: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Γίνεται σύνδεση"
+msgstr "Σύνδεση..."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:204
+#: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Αδυναμία φόρτωσης της λίστας υποστηριζόμενων μεθόδων του εξυπηρετητή.\n"
+"Αδυναμία φόρτωσης της λίστας υποστηριζόμενων μεθόδων διακομιστή.\n"
 "Παρακαλώ ελέγξτε την εγκατάσταση του gvfs σας."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:282
+#: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Ο φάκελος «%s» δεν μπορεί να ανοικτεί στο «%s»."
+msgstr "Ο φάκελος \"%s\" δεν μπορεί να ανοιχτεί στο \"%s\"."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:292
+#: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Δεν βρέθηκε ο εξυπηρετητής στο «%s»."
+msgstr "Ο διακομιστής στο \"%s\" δεν μπόρεσε να βρεθεί."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:327
+#: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "Προσπαθήστε ξανά"
+msgstr "Προσπαθήστε Ξανά"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:392
+#: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Παρακαλώ επιβεβαιώστε τις πληροφορίες χρήστη."
+msgstr "Παρακαλώ επιβεβαιώστε τις λεπτομέρειες χρήστη σας."
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:422
+#: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
 msgstr "Συνέχεια"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:760
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1150
+#: ../src/marlin-connect-server-dialog.c:760
+#: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr "Σύν_δεση"
+msgstr "_Σύνδεση"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:885
+#: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr "Σύνδεση στον εξυπηρετητή"
+msgstr "Σύνδεση στο Διακομιστή"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:903
+#: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr "Λεπτομέρειες εξυπηρετητή"
+msgstr "Λεπτομέρειες Διακομιστή"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:927
+#: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr "Ε_ξυπηρετητής:"
+msgstr "_Διακομιστής:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:947
+#: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
 msgstr "_Θύρα:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:965
+#: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
 msgstr "_Τύπος:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1034
+#: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
 msgstr "_Κοινή χρήση:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1049
+#: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
 msgstr "_Φάκελος:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1067
+#: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr "Λεπτομέρειες χρήστη"
+msgstr "Λεπτομέρειες Χρήστη"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1090
+#: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "Ό_νομα τομέα:"
+msgstr "_Όνομα τομέα:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1105
+#: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
 msgstr "_Όνομα χρήστη:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1120
+#: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr "_Κωδικός:"
+msgstr "_Κωδικός πρόσβασης:"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1136
+#: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr "Απο_μνημόνευση κωδικού"
+msgstr "_Απομνημόνευση αυτού του κωδικού πρόσβασης"
 
-#: /home/codygarver/f/po/../src/marlin-connect-server-dialog.c:1239
+#: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Η λειτουργία ακυρώθηκε"
 
-#: /home/codygarver/f/po/../src/eel-editable-label.c:3200
+#: ../src/marlin-dnd.c:102
+msgid "_Move Here"
+msgstr "_Μετακίνηση Εδώ"
+
+#: ../src/marlin-dnd.c:107
+msgid "_Copy Here"
+msgstr "_Αντιγραφή Εδώ"
+
+#: ../src/marlin-dnd.c:112
+msgid "_Link Here"
+msgstr "_Σύνδεση Εδώ"
+
+#: ../src/marlin-dnd.c:117
+msgid "Set as _Background"
+msgstr "Ορισμός ως _Φόντο"
+
+#: ../src/marlin-dnd.c:124
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: ../src/marlin-dnd.c:216
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Αποτυχία εκτέλεσης του αρχείου \"%s\""
+
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Δεν υπάρχει τίποτα στο πρόχειρο για επικόλληση."
+
+#: ../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "Καταγραφή Καταλόγων Εικονιδίων"
+
+#: ../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "Προβολή εικονιδίων"
+
+#: ../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Μονό Κλικ"
+
+#: ../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Εάν θα ενεργοποιούνται τα αντικείμενα στην προβολή με μονά κλικ"
+
+#: ../src/eel-editable-label.c:3200
 msgid "Input Methods"
 msgstr "Μέθοδοι Εισαγωγής"
 
-#: /home/codygarver/f/po/../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "_Μετακίνηση εδώ"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "_Αντιγραφή εδώ"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "_Σύνδεση εδώ"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "Ορισμός ως _παρασκήνιο"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "Άκυρο"
-
-#: /home/codygarver/f/po/../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Η εκτέλεση του \"%s\" απέτυχε"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Στοί_χιση Αντικειμένων"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "Α_ντίστροφη σειρά"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Εμφάνιση των εικονιδίων σε αντίστροφη σειρά"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Κατά _όνομα"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Διατήρηση της ταξινόμησης των εικονιδίων κατά όνομα σε γραμμές"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Κατά _μέγεθος"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Διατήρηση της ταξινόμησης των εικονιδίων κατά μέγεθος σε γραμμές"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Κατά _είδος"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Διατήρηση των εικονιδίων ταξινομημένα σε γραμμές κατά τύπο"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Κατά _ημερομηνία τροποποίησης"
-
-#: /home/codygarver/f/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr ""
-"Διατήρηση της ταξινόμησης των εικονιδίων κατά ημερομηνία τροποποίησης σε "
-"γραμμές"
-
-#: /home/codygarver/f/po/../src/Application.vala:129
-msgid "Show the version of the program."
-msgstr "Εμφάνιση της έκδοσης του προγράμματος."
-
-#: /home/codygarver/f/po/../src/Application.vala:131
-msgid "Open uri(s) in new tab"
-msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
-
-#: /home/codygarver/f/po/../src/Application.vala:133
-msgid "Quit Files."
-msgstr "Έξοδος από το Files"
-
-#: /home/codygarver/f/po/../src/Application.vala:135
-msgid "Enable debug logging"
-msgstr "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων"
-
-#: /home/codygarver/f/po/../src/Application.vala:138
-msgid "[URI...]"
-msgstr "[URI…]"
-
-#: /home/codygarver/f/po/../src/Application.vala:141
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Περιήγηση του συστήματος αρχείων με το διαχειριστή αρχείων"
-
-#: /home/codygarver/f/po/../src/Application.vala:168
-msgid "--quit cannot be used with URIs."
-msgstr "το --quit δεν μπορεί να χρησιμοποιηθεί σε URI."
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:141
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:205
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:222
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Λειτουργίες αρχείων"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Όλες οι ενέργειες αρχείων ολοκληρώθηκαν επιτυχώς"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:218
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:263
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d ενέργεια αρχείου ενεργή"
-msgstr[1] "%'d ενέργειες αρχείων ενεργές"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Εμφάνιση λεπτομερειών"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Εμφάνιση διαλόγου αντιγραφής"
-
-#: /home/codygarver/f/po/../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Ακύρωση όλων των ενεργειών σε εξέλιξη"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Περιηγηθείτε στα αρχεία σας"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Διαχειριστής αρχείων"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Νέο παράθυρο ως_Διαχειριστής"
-
-#: /home/codygarver/f/po/../src/DesktopLauncher.vala:11
-msgid "Files"
-msgstr "Αρχεία"
-
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:81
+#: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Σήμερα στις %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
 msgstr "Χθες στις %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b στις %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y στις %-I:%M %p"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Προετοιμασία"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (μη έγκυρο Unicode)"
+
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "Διαγραφή %d αντιγραμμένων στοιχείων"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
+
+#: ../libcore/gof-file.c:302
 #, c-format
-msgid "Delete '%s'"
-msgstr "Διαγραφή του '%s'"
+msgid "link to %s"
+msgstr "σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1212
+#: ../libcore/gof-file.c:1748
 #, c-format
-msgid "Delete %d duplicated items"
-msgstr "Διαγραφή %d διπλότυπων αντικειμένων"
+msgid "Failed to parse the desktop file: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Μετακίνιση %d στοιχείων πίσω στο '%s'"
+#: ../libcore/gof-file.c:1786
+msgid "No Exec field specified"
+msgstr "Δεν έχει οριστεί το πεδίο Exec"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Μετακίνηση του '%s' πίσω στο '%s'"
+#: ../libcore/gof-file.c:1806
+msgid "No URL field specified"
+msgstr "Δεν έχει οριστεί το πεδίο URL"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Μετονομασία του '%s' ως '%s'"
+#: ../libcore/gof-file.c:1812
+msgid "Invalid desktop file"
+msgstr "Μη έγκυρο αρχείο επιφάνειας εργασίας"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Επαναφορά %d στοιχείων από τα απορρίμματα"
+#: ../libcore/gof-file.c:2102
+msgid "Slashes are not allowed in filenames"
+msgstr "Δεν επιτρέπεται η χρήση καθέτων στα ονόματα αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Επαναφορά του '%s' στο '%s'"
+#: ../libcore/gof-file.c:2122
+msgid "Toplevel files cannot be renamed"
+msgstr "Τα αρχεία ανωτάτου επιπέδου δεν μπορούν να μετονομαστούν"
 
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Μετακίνιση %d στοιχείων πίσω στα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Μεταφορά του '%s' πίσω στα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Διαγραφή συνδεσμων σε  %d στοιχεία"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Διαγραφή συνδέσμου στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-"Επαναφορά αρχικών δικαιωμάτων των αντικειμένων που εσωκλείονται στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Επαναφορά των αρχικών δικαιωμάτων του '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Επαναφορά ομάδας του '%s' σε '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Επαναφορά του ιδιοκτήτη του '%s' σε '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Αντιγραφή %d αστοιχείων στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Αντιγραφή του '%s' στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Δημιουργία διπλοτύπου %d αντικειμένων στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Δημιουργία διπλοτύπου του '%s' στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Μετακίνιση %d στοιχείων στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Μετακίνηση του '%s' στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Δημιουργία νέου αρχείου '%s' από πρότυπο "
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Δημιουργία ενός κενού αρχείου '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Δημιουργία νέου φακέλου '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Μετακίνιση %d στοιχίων στα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Μετακίνηση του '%s' στα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Επαναφορά του '%s' από τα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Δημιουργία συνδέσμων σε %d στοιχεία"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Δημιουργία συνδέσμου προς το '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Ορισμός δικαιωμάτων των αντικειμένων που περιέχονται στο '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Ορισμός δικαιωμάτων του '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Ορισμός ομάδας του '%s' σε '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Ορισμός του ιδιοκτήτη του '%s' σε '%s'"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Αναίρεση αντηγραφής %d στοιχείου"
-msgstr[1] "_Αναίρεση αντιγραφής %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Αναίρεση δημιουργίας διπλότυπου %d αντικειμένου"
-msgstr[1] "Αναίρεση δημιουργίας διπλότυπου %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου"
-msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Αναίρεση μετονομασίας %d στοιχείου"
-msgstr[1] "_Αναίρεση μετονομασίας %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Αναίρεση δημιουργίας %d φακέλου"
-msgstr[1] "_Αναίρεση δημιουργίας %d φακέλων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου στα απορρίμματα"
-msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων στα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Αναίρεση επαναφοράς %d στοιχείου από τα απορρίμματα"
-msgstr[1] "_Αναίρεση επαναφοράς %d στοιχείων από τα απορρίμματα"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
-msgstr[1] "_Αναίρεση δημιουργίας συνδέσμου των %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Αναίρεση διαγραφής του %d στοιχείου"
-msgstr[1] "_Αναίρεση διαγραφής των %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα του %d αντικειμένου"
-msgstr[1] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
-msgstr[1] "Αναίρεση αλλαγής δικαιωμάτων των %d στοιχείων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
-msgstr[1] "Αναίρεση αλλαγής ομάδας των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
-msgstr[1] "Αναίρεση αλλαγής ιδιοκτήτη των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "Επανάληψη αντιγραφής %d αντικειμένου"
-msgstr[1] "Επανάληψη αντιγραφής %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένου"
-msgstr[1] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "Επανάληψη μετακίνησης %d αντικειμένου"
-msgstr[1] "Επανάληψη μετακίνησης %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "Επανάληψη μετονομασίας %d αντικειμένου"
-msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "Επανάληψη δημιουργίας ενός κενού φακέλου"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "Επανάληψη δημιουργίας %d φακέλου"
-msgstr[1] "Επανάληψη δημιουργίας %d φακέλων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Επανάληψη μετακίνησης στα απορρίμματα  %d αντικειμένου"
-msgstr[1] "Επανάληψη μετακίνησης στα απορρίμματα %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένου"
-msgstr[1] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
-msgstr[1] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "Επανάληψη διαγραφής %d αντικειμένου"
-msgstr[1] "Επανάληψη διαγραφής %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων του %d αντικειμένου"
-msgstr[1] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
-msgstr[1] "Επανάληψη αλλαγής δικαιωμάτων των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
-msgstr[1] "Επανάληψη αλλαγής ομάδας των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
-msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:145
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:360
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Συγχώνευση φακέλου \"%s\";"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:149
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:363
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1550,307 +524,305 @@ msgstr ""
 "Η συγχώνευση θα ζητήσει επιβεβαίωση προτού αντικαταστήσει αρχεία στο φάκελο "
 "που συγκρούονται με τα αρχεία που αντιγράφονται."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:154
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:368
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας παλαιότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:158
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:372
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας νεότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:162
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:376
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:167
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:381
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
 msgstr "Η αντικατάστασή του θα διαγράψει όλα τα αρχεία του φακέλου."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:169
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:383
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Αντικατάσταση φακέλου \"%s\";"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:171
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:385
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:176
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:390
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Αντικατάσταση αρχείου \"%s\";"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:178
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:392
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:182
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:396
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα παλαιότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:186
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:400
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα νεότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:190
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:404
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:252
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:459
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
 msgstr "Αρχικό αρχείο"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:481
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:256
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:287
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:484
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:259
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:290
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:466
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:487
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
 msgstr "Τελευταία τροποποίηση:"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:283
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:480
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
 msgstr "Αντικατάσταση με"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:312
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:505
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
 msgstr "Συγχώνευση"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:699
+#: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
-msgstr "Επιλέξτε _νέο όνομα για τον προορισμό"
+msgstr "_Επιλέξτε ένα νέο όνομα για τον προορισμό"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:713
+#: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
 msgstr "Επαναφορά"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:725
+#: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
 msgstr "Εφαρμογή αυτής της ενέργειας σε όλα τα αρχεία"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:736
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "Παρά_λειψη"
+msgstr "_Παράλειψη"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:741
+#: ../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
-msgstr "Μετο_νομασία"
+msgstr "_Μετονομασία"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:747
+#: ../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-conflict-dialog.c:820
+#: ../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
 msgstr "Σύγκρουση αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:191
-#: /home/codygarver/f/po/../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Προετοιμασία"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "Πα_ράλειψη όλων"
+msgstr "_Παράλειψη Όλων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "_Επανάληψη"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Διαγραφή ό_λων"
+msgstr "Διαγραφή _Όλων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "Αντικα_τάσταση"
+msgstr "_Αντικατάσταση"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "Αντικατάσταση _Όλων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "Συγ_χώνευση"
+msgstr "_Συγχώνευση"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Συγχώνευση όλ_ων"
+msgstr "Συγχώνευση _Όλων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Αντιγραφή παρ'αυτά"
+msgstr "Αντιγραφή _Παρ' αυτά"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:293
+#: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d δευτερόλεπτο"
 msgstr[1] "%'d δευτερόλεπτα"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:298
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:309
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d λεπτό"
 msgstr[1] "%'d λεπτά"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:308
+#: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ώρα"
 msgstr[1] "%'d ώρες"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:316
+#: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "περίπου %'d ώρα"
 msgstr[1] "περίπου %'d ώρες"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:392
+#: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
 msgstr "Σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:396
+#: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr "Επιπλέον σύνδεσμος προς το %s"
+msgstr "Κι άλλος σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:412
+#: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'dος σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:416
+#: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'dος σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:420
+#: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'dος σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:424
+#: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'dος σύνδεσμος προς το %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:462
+#: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
 msgstr " (αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:464
+#: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
 msgstr " (επιπλέον αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:467
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:469
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:471
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
 msgstr "ο αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
 msgstr "ο αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:476
+#: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
 msgstr "ο αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:478
+#: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
 msgstr "ο αντίγραφο)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:495
+#: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:497
+#: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (επιπλέον αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:500
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:502
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:504
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:518
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dο αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:512
+#: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dο αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:514
+#: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dο αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:516
+#: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'dο αντίγραφο)%s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:616
+#: ../libcore/marlin-file-operations.c:619
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:624
+#: ../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1380
+#: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%B\" από τα "
-"απορρίμματα;"
+"Είστε βέβαιος ότι θέλετε να διαγράψετε οριστικά το \"%B\" από τα απορρίμματα;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1386
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1865,24 +837,29 @@ msgstr[1] ""
 "Σίγουρα θέλετε να διαγράψετε οριστικά τα %'d επιλεγμένα αντικείμενα από τα "
 "απορρίμματα;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1393
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1461
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Αν διαγράψετε ένα αντικείμενο, θα χαθεί οριστικά."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1414
+#: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr "Διαγραφή όλων των αντικειμένων από τα απορρίμματα;"
+msgstr "Διαγραφή όλων των αντικειμένων από τα Απορρίμματα;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1418
+#: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Όλα τα αντικείμενα στα απορρίμματα θα διαγραφούν οριστικά."
+msgstr "Όλα τα αντικείμενα στα Απορρίμματα θα διαγραφούν οριστικά."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1449
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+msgid "Empty _Trash"
+msgstr "Άδειασμα _Απορριμμάτων"
+
+#: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Σίγουρα θέλετε να διαγράψετε οριστικά το \"%B\";"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1452
+#: ../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1894,54 +871,55 @@ msgstr[1] ""
 "Είστε σίγουροι ότι θέλετε να διαγράψετε οριστικά τα %'d επιλεγμένα "
 "αντικείμενα;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1477
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1509
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
 msgstr "Διαγραφή αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1503
+#: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d αρχείο απομένει για διαγραφή"
 msgstr[1] "%'d αρχεία απομένουν για διαγραφή"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1523
+#: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T απομένει"
 msgstr[1] "%T απομένουν"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1591
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1625
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1664
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1741
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2574
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2590
 msgid "Error while deleting."
 msgstr "Σφάλμα κατά τη διαγραφή."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1595
+#: ../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Τα αρχείο στο φάκελο \"%B\" δεν μπορούν να διαγραφούν διότι δεν έχετε "
-"δικαίωμα ανάγνωσής τους."
+"Τα αρχεία στο φάκελο \"%B\" δεν μπορούν να διαγραφούν διότι δεν έχετε "
+"δικαίωμα προβολής τους."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1598
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2633
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3629
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2649
+#: ../libcore/marlin-file-operations.c:3645
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"Υπήρξε ένα σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία στο φάκελο \"%B\"."
+"Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία του φακέλου "
+"\"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1607
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3638
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3654
 msgid "_Skip files"
 msgstr "_Παράλειψη αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1949,37 +927,37 @@ msgstr ""
 "Ο φάκελος \"%B\" δεν μπορεί να διαγραφεί διότι δεν έχετε δικαίωμα ανάγνωσής "
 "του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1631
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2672
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3674
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2688
+#: ../libcore/marlin-file-operations.c:3690
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Παρουσιάστηκε σφάλμα κατά την ανάγνωση του φακέλου \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1665
+#: ../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
-msgstr "Δεν ήταν δυνατή η διαγραφή του φακέλου %B."
+msgstr "Αδυναμία διαγραφής του φακέλου %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1742
+#: ../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή του %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1818
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1830
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
 msgstr "Μετακίνηση των αρχείων στα απορρίμματα"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1832
+#: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d αρχείο απομένει για μεταφορά στα απορρίμματα"
 msgstr[1] "%'d αρχεία απομένουν για μεταφορά στα απορρίματα"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1887
+#: ../libcore/marlin-file-operations.c:1890
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Αδυναμία μετακίνισης των αρχείων στα απορρίματα. Διαγραφή αμέσως"
+msgstr "Αδυναμία μετακίνησης των αρχείων στα απορρίμματα. Άμεση Διαγραφή;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:1888
+#: ../libcore/marlin-file-operations.c:1891
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1987,93 +965,90 @@ msgstr ""
 "Αυτό το αρχείο βρίσκεται σε ένα εξωτερικό μέσο και δεν μπορεί να μετακινηθεί "
 "στα απορρίμματα. Μόλις διαγραφεί, δεν μπορεί να αποκατασταθεί."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2070
+#: ../libcore/marlin-file-operations.c:2073
 msgid "Trashing Files"
-msgstr "Μεταφορά αρχείων στα απορρίμματα"
+msgstr "Μεταφορά Αρχείων στα Απορρίμματα"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2072
+#: ../libcore/marlin-file-operations.c:2075
 msgid "Deleting Files"
-msgstr "Διαγραφή αρχείων"
+msgstr "Διαγραφή Αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2144
+#: ../libcore/marlin-file-operations.c:2147
 msgid "Unable to eject %V"
-msgstr "Αδυναμία εξαγωγής %V"
+msgstr "Αδυναμία εξαγωγής του %V"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2146
+#: ../libcore/marlin-file-operations.c:2149
 msgid "Unable to unmount %V"
-msgstr "Αδυναμία αποπροσάρτησης %V"
+msgstr "Αδυναμία αποπροσάρτησης του %V"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2301
+#: ../libcore/marlin-file-operations.c:2325
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Θέλετε να αδειάσετε τα απορρίμματα πριν την αποπροσάρτηση;"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2303
+#: ../libcore/marlin-file-operations.c:2327
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Για να κερδίσετε ελεύθερο χώρο στη συσκευή, θα πρέπει να αδειάσετε τα "
-"απορρίμματα. Όλα τα αντικείμενα στα απορρίμματα θα χαθούν οριστικά."
+"Για να ανακτήσετε ελεύθερο χώρο σε αυτό τον τόμο, θα πρέπει να αδειάσετε τα "
+"απορρίμματα. Όλα τα αντικείμενα των απορριμμάτων σε αυτό τον τόμο θα χαθούν "
+"οριστικά."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2309
+#: ../libcore/marlin-file-operations.c:2333
 msgid "Do _not Empty Trash"
-msgstr "Να _μην γίνει άδειασμα των απορριμμάτων"
+msgstr "Να _μην Γίνει Άδειασμα των Απορριμμάτων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2364
-msgid "Emptying the trash"
-msgstr "Τα απορρίμματα αδειάζουν"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2431
+#: ../libcore/marlin-file-operations.c:2447
 #, c-format
 msgid "Unable to mount %s"
-msgstr "Αδυναμία προσάρτησης %s"
+msgstr "Αδυναμία προσάρτησης του %s"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2509
+#: ../libcore/marlin-file-operations.c:2525
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Προετοιμασία αντιγραφής %'d αρχείου (%S)"
 msgstr[1] "Προετοιμασία αντιγραφής %'d αρχείων (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2515
+#: ../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Προετοιμασία μετακίνησης %'d αρχείου (%S)"
 msgstr[1] "Προετοιμασία μετακίνησης %'d αρχείων (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2521
+#: ../libcore/marlin-file-operations.c:2537
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Προετοιμασία διαγραφής %'d αρχείου (%S)"
 msgstr[1] "Προετοιμασία διαγραφής %'d αρχείων (%S)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2527
+#: ../libcore/marlin-file-operations.c:2543
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Προετοιμασία μεταφοράς στα απορρίμματα %'d αρχείου"
 msgstr[1] "Προετοιμασία μεταφοράς στα απορρίματα %'d αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2570
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3490
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3621
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3666
+#: ../libcore/marlin-file-operations.c:2586
+#: ../libcore/marlin-file-operations.c:3506
+#: ../libcore/marlin-file-operations.c:3637
+#: ../libcore/marlin-file-operations.c:3682
 msgid "Error while copying."
 msgstr "Σφάλμα κατά την αντιγραφή."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2572
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3619
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3664
+#: ../libcore/marlin-file-operations.c:2588
+#: ../libcore/marlin-file-operations.c:3635
+#: ../libcore/marlin-file-operations.c:3680
 msgid "Error while moving."
 msgstr "Σφάλμα κατά τη μετακίνηση."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2576
+#: ../libcore/marlin-file-operations.c:2592
 msgid "Error while moving files to trash."
-msgstr "Σφάλμα κατά τη μεταφορά αρχείων στα απορρίμματα."
+msgstr "Σφάλμα κατά τη μετακίνηση αρχείων στα απορρίμματα."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2630
+#: ../libcore/marlin-file-operations.c:2646
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -2081,7 +1056,7 @@ msgstr ""
 "Δεν είναι δυνατός ο χειρισμός των αρχείων του φακέλου \"%B\", διότι δεν "
 "έχετε δικαιώματα ανάγνωσής τους."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:2685
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -2089,7 +1064,7 @@ msgstr ""
 "Δεν είναι δυνατός ο χειρισμός του φακέλου \"%B\", διότι δεν έχετε δικαίωμα "
 "ανάγνωσής του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2746
+#: ../libcore/marlin-file-operations.c:2762
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -2097,30 +1072,30 @@ msgstr ""
 "Δεν είναι δυνατός ο χειρισμός του αρχείου \"%B\", διότι δεν έχετε δικαίωμα "
 "ανάγνωσής του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2749
+#: ../libcore/marlin-file-operations.c:2765
 msgid "There was an error getting information about \"%B\"."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για το \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2849
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2891
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2924
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2954
+#: ../libcore/marlin-file-operations.c:2865
+#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2940
+#: ../libcore/marlin-file-operations.c:2970
 msgid "Error while copying to \"%B\"."
 msgstr "Σφάλμα κατά την αντιγραφή στο \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2853
+#: ../libcore/marlin-file-operations.c:2869
 msgid "You do not have permissions to access the destination folder."
 msgstr "Δεν έχετε δικαίωμα πρόσβασης στον προορισμό."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2855
+#: ../libcore/marlin-file-operations.c:2871
 msgid "There was an error getting information about the destination."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τον προορισμό."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2892
+#: ../libcore/marlin-file-operations.c:2908
 msgid "The destination is not a folder."
 msgstr "Ο προορισμός δεν είναι φάκελος"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2925
+#: ../libcore/marlin-file-operations.c:2941
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -2128,76 +1103,76 @@ msgstr ""
 "Δεν υπάρχει διαθέσιμος χώρος στον προορισμό. Δοκιμάστε να απομακρύνετε "
 "κάποια αρχεία για να κερδίσετε χώρο."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2927
+#: ../libcore/marlin-file-operations.c:2943
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Υπάρχουν διαθέσιμα %S, αλλά απαιτούνται %S."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:2955
+#: ../libcore/marlin-file-operations.c:2971
 msgid "The destination is read-only."
 msgstr "Ο προορισμός είναι μόνο για ανάγνωση."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3016
+#: ../libcore/marlin-file-operations.c:3032
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Μετακίνηση του \"%B\" στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3017
+#: ../libcore/marlin-file-operations.c:3033
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Αντιγραφή του \"%B\" στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3021
+#: ../libcore/marlin-file-operations.c:3037
 msgid "Duplicating \"%B\""
 msgstr "Δημιουργία διπλοτύπου του \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3025
+#: ../libcore/marlin-file-operations.c:3041
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Μετακίνηση %'d αρχείου (από το \"%B\") στο \"%B\""
 msgstr[1] "Μετακίνηση %'d αρχείων (από το \"%B\") στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3028
+#: ../libcore/marlin-file-operations.c:3044
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Αντιγραφή %'d αρχείου (από το \"%B\") στο \"%B\""
 msgstr[1] "Αντιγραφή %'d αρχείων (από το \"%B\") στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3035
+#: ../libcore/marlin-file-operations.c:3051
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Δημιουργία διπλοτύπου %'d αρχείου (στο \"%B\")"
 msgstr[1] "Δημιουργία διπλοτύπων %'d αρχείων (στο \"%B\")"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3044
+#: ../libcore/marlin-file-operations.c:3060
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Μετακίνηση %'d αρχείου στο \"%B\""
 msgstr[1] "Μετακίνηση %'d αρχείων στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3048
+#: ../libcore/marlin-file-operations.c:3064
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Αντιγραφή %'d αρχείου στο \"%B\""
 msgstr[1] "Αντιγραφή %'d αρχείων στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3053
+#: ../libcore/marlin-file-operations.c:3069
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Δημιουργία διπλοτύπου %'d αρχείου"
 msgstr[1] "Δημιουργία διπλοτύπων %'d αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3104
+#: ../libcore/marlin-file-operations.c:3120
 #, c-format
 msgid "%S of %S"
 msgstr "%S από %S"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3115
+#: ../libcore/marlin-file-operations.c:3131
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S από %S — Απομένει %T (%S/δευτ)"
 msgstr[1] "%S από %S — Απομένουν %T (%S/δευτ)"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3494
+#: ../libcore/marlin-file-operations.c:3510
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -2205,11 +1180,11 @@ msgstr ""
 "Δεν είναι δυνατή η αντιγραφή του φακέλου \"%B\", διότι δεν έχετε δικαίωμα "
 "δημιουργίας του στον προορισμό."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3497
+#: ../libcore/marlin-file-operations.c:3513
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία του φακέλου \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3626
+#: ../libcore/marlin-file-operations.c:3642
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -2217,7 +1192,7 @@ msgstr ""
 "Δεν είναι δυνατή η αντιγραφή των αρχείων του φακέλου \"%B\", διότι δεν έχετε "
 "δικαιώματα ανάγνωσής τους."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3671
+#: ../libcore/marlin-file-operations.c:3687
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -2225,237 +1200,1217 @@ msgstr ""
 "Ο φάκελος \"%B\" δεν μπορεί να αντιγραφεί, διότι δεν έχετε δικαίωμα "
 "ανάγνωσής του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3716
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4417
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5005
+#: ../libcore/marlin-file-operations.c:3732
+#: ../libcore/marlin-file-operations.c:4433
+#: ../libcore/marlin-file-operations.c:5020
 msgid "Error while moving \"%B\"."
 msgstr "Σφάλμα κατά τη μετακίνηση του \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3717
+#: ../libcore/marlin-file-operations.c:3733
 msgid "Could not remove the source folder."
 msgstr "Δεν ήταν δυνατή η διαγραφή του φακέλου προέλευσης."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3802
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3843
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4419
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4490
+#: ../libcore/marlin-file-operations.c:3818
+#: ../libcore/marlin-file-operations.c:3859
+#: ../libcore/marlin-file-operations.c:4435
+#: ../libcore/marlin-file-operations.c:4506
 msgid "Error while copying \"%B\"."
 msgstr "Σφάλμα κατά την αντιγραφή του \"%B\"."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3803
+#: ../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 "Δεν είναι δυνατή η απομάκρυνση των αρχείων από τον ήδη υπάρχοντα φάκελο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:3844
+#: ../libcore/marlin-file-operations.c:3860
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Δεν είναι δυνατή η απομάκρυνση του ήδη υπάρχοντος αρχείου %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4845
+#: ../libcore/marlin-file-operations.c:4189
+#: ../libcore/marlin-file-operations.c:4860
 msgid "You cannot move a folder into itself."
 msgstr "Δεν επιτρέπεται η μετακίνηση ενός φακέλου στον εαυτό του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4846
+#: ../libcore/marlin-file-operations.c:4190
+#: ../libcore/marlin-file-operations.c:4861
 msgid "You cannot copy a folder into itself."
 msgstr "Δεν επιτρέπεται η αντιγραφή ενός φακέλου στον εαυτό του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4847
+#: ../libcore/marlin-file-operations.c:4191
+#: ../libcore/marlin-file-operations.c:4862
 msgid "The destination folder is inside the source folder."
 msgstr "Ο φάκελος προορισμού βρίσκεται μέσα στο φάκελο προέλευσης."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4206
+#: ../libcore/marlin-file-operations.c:4222
 msgid "You cannot move a file over itself."
 msgstr "Δεν επιτρέπεται η μετακίνηση ενός αρχείου στον εαυτό του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4207
+#: ../libcore/marlin-file-operations.c:4223
 msgid "You cannot copy a file over itself."
 msgstr "Δεν επιτρέπεται η αντιγραφή ενός αρχείου στον εαυτό του."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4208
+#: ../libcore/marlin-file-operations.c:4224
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 "Το αρχείο προέλευσης θα έπρεπε να αντικατασταθεί από το αρχείο προορισμού."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4421
+#: ../libcore/marlin-file-operations.c:4437
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Δεν είναι δυνατή η απομάκρυνση του ήδη υπάρχοντος αρχείου με το ίδιο όνομα "
 "στο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4491
+#: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Παρουσιάστηκε σφάλμα κατά την αντιγραφή του αρχείου στο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4719
+#: ../libcore/marlin-file-operations.c:4734
 msgid "Copying Files"
 msgstr "Αντιγραφή αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4745
+#: ../libcore/marlin-file-operations.c:4760
 msgid "Preparing to move to \"%B\""
 msgstr "Προετοιμασία μετακίνησης στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:4757
+#: ../libcore/marlin-file-operations.c:4772
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Προετοιμασία μετακίνησης %'d αρχείου"
 msgstr[1] "Προετοιμασία μετακίνησης %'d αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5006
+#: ../libcore/marlin-file-operations.c:5021
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη μετακίνηση του αρχείου στο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5269
+#: ../libcore/marlin-file-operations.c:5284
 msgid "Moving Files"
 msgstr "Μετακίνηση αρχείων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5299
+#: ../libcore/marlin-file-operations.c:5314
 msgid "Creating links in \"%B\""
 msgstr "Δημιουργία συνδέσμων στο \"%B\""
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5310
+#: ../libcore/marlin-file-operations.c:5325
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Δημιουργία συνδέσμων προς %'d αρχείο"
 msgstr[1] "Δημιουργία συνδέσμων προς %'d αρχεία"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5445
+#: ../libcore/marlin-file-operations.c:5460
 msgid "Error while creating link to %B."
 msgstr "Σφάλμα κατά τη δημιουργία συνδέσμου προς το %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5447
+#: ../libcore/marlin-file-operations.c:5462
 msgid "Symbolic links only supported for local files"
 msgstr "Οι συμβολικοί σύνδεσμοι υποστηρίζονται μόνο για τοπικά αρχεία"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5450
+#: ../libcore/marlin-file-operations.c:5465
 msgid "The target doesn't support symbolic links."
 msgstr "Ο προορισμός δεν υποστηρίζει συμβολικούς συνδέσμους."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5453
+#: ../libcore/marlin-file-operations.c:5468
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία συμβολικού συνδέσμου στο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5781
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:5784
+#: ../libcore/marlin-file-operations.c:5796
+#: ../libcore/marlin-file-operations.c:5799
 msgid "Setting permissions"
 msgstr "Ορισμός δικαιωμάτων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6035
+#: ../libcore/marlin-file-operations.c:6050
 msgid "untitled folder"
 msgstr "ανώνυμος φάκελος"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6043
+#: ../libcore/marlin-file-operations.c:6058
 msgid "new file"
 msgstr "νέο αρχείο"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6214
+#: ../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
 msgstr "Σφάλμα κατά τη δημιουργία του φακέλου %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6216
+#: ../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
 msgstr "Σφάλμα κατά τη δημιουργία του αρχείου %B."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6218
+#: ../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία του φακέλου στο %F."
 
-#: /home/codygarver/f/po/../libcore/marlin-file-operations.c:6535
+#: ../libcore/marlin-file-operations.c:6543
+msgid "Emptying the trash"
+msgstr "Τα απορρίμματα αδειάζουν"
+
+#: ../libcore/marlin-file-operations.c:6551
 msgid "Emptying Trash"
 msgstr "Άδειασμα απορριμμάτων"
 
-#: /home/codygarver/f/po/../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (μη έγκυρο Unicode)"
-
-#: /home/codygarver/f/po/../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Εμφάνιση περι_σσότερων λεπτομερειών"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:302
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "link to %s"
-msgstr "σύνδεσμος προς το %s"
+msgid "Delete %d copied items"
+msgstr "Διαγραφή %d αντιγραμμένων στοιχείων"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1761
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Αδυναμία ανάγνωσης δεικτικού αρχείου: %s"
+msgid "Delete '%s'"
+msgstr "Διαγραφή του '%s'"
 
-#: /home/codygarver/f/po/../libcore/gof-file.c:1799
-msgid "No Exec field specified"
-msgstr "Δεν έχει οριστεί το πεδίο Exec"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1819
-msgid "No URL field specified"
-msgstr "Δεν έχει οριστεί το πεδίο URL"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:1825
-msgid "Invalid desktop file"
-msgstr "Μη έγκυρο δεκτικό αρχείο"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2115
-msgid "Slashes are not allowed in filenames"
-msgstr "Δεν επιτρέπεται η χρήση καθέτων στα ονόματα αρχείων"
-
-#: /home/codygarver/f/po/../libcore/gof-file.c:2135
-msgid "Toplevel files cannot be renamed"
-msgstr "Δεν είναι δυνατή η μετονομασία αρχείων ανωτάτου επιπέδου"
-
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
+msgid "Delete %d duplicated items"
+msgstr "Διαγραφή %d διπλότυπων αντικειμένων"
 
-#: /home/codygarver/f/po/../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Δεν είναι δυνατή η αποκατάσταση του αντικειμένου από τα απορρίμματα"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:311
-msgid "Cut the selected text to the clipboard"
-msgstr "Αποκοπή του επιλεγμένου κειμένου στο πρόχειρο"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:315
-msgid "Copy the selected text to the clipboard"
-msgstr "Αντιγραφή του επιλεγμένου κειμένου στο πρόχειρο"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:319
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:323
-msgid "Paste the text stored on the clipboard"
-msgstr "Επικόλληση του κειμένου που είναι αποθηκευμένο στο πρόχειρο"
-
-#: /home/codygarver/f/po/../libwidgets/LocationBar.vala:773
+#: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
-msgid "Go to %s"
-msgstr "Μετάβαση στο %s"
+msgid "Move %d items back to '%s'"
+msgstr "Μετακίνιση %d στοιχείων πίσω στο '%s'"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:76
+#: ../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Μετακίνηση του '%s' πίσω στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Μετονομασία του '%s' ως '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Επαναφορά %d στοιχείων από τα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Επαναφορά του '%s' στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Μετακίνιση %d στοιχείων πίσω στα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Μεταφορά του '%s' πίσω στα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Διαγραφή συνδεσμων σε  %d στοιχεία"
+
+#: ../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Διαγραφή συνδέσμου στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+"Επαναφορά αρχικών δικαιωμάτων των αντικειμένων που εσωκλείονται στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Επαναφορά των αρχικών δικαιωμάτων του '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Επαναφορά ομάδας του '%s' σε '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Επαναφορά του ιδιοκτήτη του '%s' σε '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Αντιγραφή %d αστοιχείων στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Αντιγραφή του '%s' στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Δημιουργία διπλοτύπου %d αντικειμένων στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Δημιουργία διπλοτύπου του '%s' στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Μετακίνιση %d στοιχείων στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Μετακίνηση του '%s' στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Δημιουργία νέου αρχείου '%s' από πρότυπο "
+
+#: ../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Δημιουργία ενός κενού αρχείου '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Δημιουργία νέου φακέλου '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Μετακίνιση %d στοιχίων στα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Μετακίνηση του '%s' στα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Επαναφορά του '%s' από τα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Δημιουργία συνδέσμων σε %d στοιχεία"
+
+#: ../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Δημιουργία συνδέσμου προς το '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Ορισμός δικαιωμάτων των αντικειμένων που περιέχονται στο '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Ορισμός δικαιωμάτων του '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Ορισμός ομάδας του '%s' σε '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Ορισμός του ιδιοκτήτη του '%s' σε '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Αναίρεση αντηγραφής %d στοιχείου"
+msgstr[1] "_Αναίρεση αντιγραφής %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Αναίρεση δημιουργίας διπλότυπου %d αντικειμένου"
+msgstr[1] "Αναίρεση δημιουργίας διπλότυπου %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου"
+msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Αναίρεση μετονομασίας %d στοιχείου"
+msgstr[1] "_Αναίρεση μετονομασίας %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
+
+#: ../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
+
+#: ../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Αναίρεση δημιουργίας %d φακέλου"
+msgstr[1] "_Αναίρεση δημιουργίας %d φακέλων"
+
+#: ../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου στα απορρίμματα"
+msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων στα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Αναίρεση επαναφοράς %d στοιχείου από τα απορρίμματα"
+msgstr[1] "_Αναίρεση επαναφοράς %d στοιχείων από τα απορρίμματα"
+
+#: ../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
+msgstr[1] "_Αναίρεση δημιουργίας συνδέσμου των %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Αναίρεση διαγραφής του %d στοιχείου"
+msgstr[1] "_Αναίρεση διαγραφής των %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα του %d αντικειμένου"
+msgstr[1] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
+msgstr[1] "Αναίρεση αλλαγής δικαιωμάτων των %d στοιχείων"
+
+#: ../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
+msgstr[1] "Αναίρεση αλλαγής ομάδας των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
+msgstr[1] "Αναίρεση αλλαγής ιδιοκτήτη των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "Επανάληψη αντιγραφής %d αντικειμένου"
+msgstr[1] "Επανάληψη αντιγραφής %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένου"
+msgstr[1] "Επανάληψη δημιουργίας διπλότυπου %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "Επανάληψη μετακίνησης %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "Επανάληψη μετονομασίας %d αντικειμένου"
+msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "Επανάληψη δημιουργίας ενός κενού φακέλου"
+
+#: ../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
+
+#: ../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Επανάληψη δημιουργίας %d φακέλου"
+msgstr[1] "Επανάληψη δημιουργίας %d φακέλων"
+
+#: ../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Επανάληψη μετακίνησης στα απορρίμματα  %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης στα απορρίμματα %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένου"
+msgstr[1] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
+msgstr[1] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "Επανάληψη διαγραφής %d αντικειμένου"
+msgstr[1] "Επανάληψη διαγραφής %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων του %d αντικειμένου"
+msgstr[1] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής δικαιωμάτων των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής ομάδας των %d αντικειμένων"
+
+#: ../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
+msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
+
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Ένας απλός και δυνατός διαχειριστής αρχείων"
+
+#: ../src/View/Resources.vala:28
+msgid "Launchpad Translators"
+msgstr "Μεταφραστές στο Launchpad"
+
+#: ../src/View/OverlayBar.vala:136
+msgid "%u folders"
+msgstr "%u φάκελοι"
+
+#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+msgid " and %u other item (%s) selected"
+msgstr " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
+
+#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+msgid " and %u other items (%s) selected"
+msgstr " και %u άλλα αντικείμενα (%s) επιλέχθηκαν"
+
+#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+msgid " selected"
+msgstr " επιλέχτηκε"
+
+#: ../src/View/OverlayBar.vala:148
+msgid "%u folder"
+msgstr "%u φάκελος"
+
+#: ../src/View/OverlayBar.vala:160
+msgid "%u items selected (%s)"
+msgstr "%u επιλεγμένα αντικείμενα (%s)"
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr "Φόρτωση…"
+
+#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
+msgid "Home"
+msgstr "Προσωπικός φάκελος"
+
+#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
+msgid "File System"
+msgstr "Σύστημα Αρχείων"
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "Αυτός ο φάκελος δεν υπάρχει"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "ως Διαχειριστής"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Αυτό δεν ανήκει σε εσάς."
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr "Σύνδεση…"
+
+#: ../src/View/LocationBar.vala:121
+msgid "AFP"
+msgstr "AFP"
+
+#: ../src/View/LocationBar.vala:122
+msgid "DAV"
+msgstr "DAV"
+
+#: ../src/View/LocationBar.vala:123
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../src/View/LocationBar.vala:124
+msgid "FTP"
+msgstr "FTP"
+
+#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
+msgid "Network"
+msgstr "Δίκτυο"
+
+#: ../src/View/LocationBar.vala:126
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../src/View/LocationBar.vala:127
+msgid "SMB"
+msgstr "SMB"
+
+#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
+msgid "Trash"
+msgstr "Απορρίμματα"
+
+#: ../src/View/LocationBar.vala:327
+msgid "Open in New Tab"
+msgstr "Άνοιγμα σε νέα καρτέλα"
+
+#: ../src/View/LocationBar.vala:334
+msgid "Open with"
+msgstr "Άνοιγμα με"
+
+#: ../src/View/LocationBar.vala:365
+msgid "Other Application .."
+msgstr "Άλλη εφαρμογή .."
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr "Σε Αυτό το Φάκελο"
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr "Σελιδοδείκτες"
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr "Οπουδήποτε Αλλού"
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr "Δε Βρέθηκαν Αποτελέσματα"
+
+#: ../src/View/PropertiesWindow.vala:85
+msgid "Properties"
+msgstr "Ιδιότητες"
+
+#: ../src/View/PropertiesWindow.vala:141
+msgid "General"
+msgstr "Γενικά"
+
+#: ../src/View/PropertiesWindow.vala:149
+msgid "More"
+msgstr "Περισσότερα"
+
+#: ../src/View/PropertiesWindow.vala:168
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: ../src/View/PropertiesWindow.vala:176
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: ../src/View/PropertiesWindow.vala:292
+msgid "%u selected items"
+msgstr "%u επιλεγμένα αντικείμενα"
+
+#: ../src/View/PropertiesWindow.vala:301
+msgid "Calculating size…"
+msgstr "Υπολογισμός μεγέθους..."
+
+#: ../src/View/PropertiesWindow.vala:405
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: ../src/View/PropertiesWindow.vala:410
+msgid "Last Access"
+msgstr "Τελευταία Προσπέλαση"
+
+#: ../src/View/PropertiesWindow.vala:416
+msgid "Deleted"
+msgstr "Διαγράφηκε"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "MimeType"
+msgstr "Επέκταση διαδικτυακού ταχυδρομείου πολλαπλών χρήσεων (MimeType)"
+
+#: ../src/View/PropertiesWindow.vala:429
+msgid "MimeTypes"
+msgstr "Επεκτάσεις διαδικτυακού ταχυδρομείου πολλαπλών χρήσεων (MimeTypes)"
+
+#: ../src/View/PropertiesWindow.vala:449
+msgid "Location"
+msgstr "Τοποθεσία"
+
+#: ../src/View/PropertiesWindow.vala:452
+msgid "Target"
+msgstr "Προορισμός"
+
+#: ../src/View/PropertiesWindow.vala:458
+msgid "Origin Location"
+msgstr "Τοποθεσία προέλευσης"
+
+#: ../src/View/PropertiesWindow.vala:468
+msgid "Info:"
+msgstr "Πληροφορίες:"
+
+#: ../src/View/PropertiesWindow.vala:504
+msgid "Other application..."
+msgstr "Άλλη εφαρμογή…"
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Open with:"
+msgstr "Άνοιγμα με:"
+
+#: ../src/View/PropertiesWindow.vala:548
+msgid "Usage:"
+msgstr "Χρήση:"
+
+#: ../src/View/PropertiesWindow.vala:553
+msgid "Device usage:"
+msgstr "Χρήση συσκευής:"
+
+#: ../src/View/PropertiesWindow.vala:560
+msgid "%s free of %s (%d%% used)"
+msgstr "%s ελεύθερα από %s (%d%% χρησιμοποιημένα)"
+
+#: ../src/View/PropertiesWindow.vala:699
+msgid "Read"
+msgstr "Ανάγνωση"
+
+#: ../src/View/PropertiesWindow.vala:704
+msgid "Write"
+msgstr "Εγγραφή"
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Execute"
+msgstr "Εκτέλεση"
+
+#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+msgid "Owner"
+msgstr "Κάτοχος"
+
+#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+msgid "Group"
+msgstr "Ομάδα"
+
+#: ../src/View/PropertiesWindow.vala:943
+msgid "Everyone"
+msgstr "Όλοι"
+
+#: ../src/View/PropertiesWindow.vala:1202
+msgid "Select an application to open "
+msgstr "Επιλέξτε μια εφαρμογή για να ανοίξετε "
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr "Ο φάκελος δεν υπάρχει."
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "Ο φάκελος \"%s\" δεν βρέθηκε."
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "Δημιουργείστε τον φάκελο \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Αποτυχία δημιουργίας του φακέλου\n"
+"\n"
+"%s"
+
+#: ../src/View/Window.vala:142
+msgid "Files isn't your default file manager."
+msgstr ""
+"Η εφαρμογή Αρχεία δεν είναι ο προεπιλεγμένος διαχειριστής αρχείων σας."
+
+#: ../src/View/Window.vala:148
+msgid "Set as Default"
+msgstr "Ορισμός ως Προεπιλογή"
+
+#: ../src/View/Window.vala:153
+msgid "Ignore"
+msgstr "Παράβλεψη"
+
+#: ../src/View/Window.vala:436
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
+msgid "Undo the last action"
+msgstr "Αναίρεση της τελευταίας ενέργειας"
+
+#: ../src/View/Window.vala:446
+msgid "Redo"
+msgstr "Επανάληψη"
+
+#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
+msgid "Redo the last action"
+msgstr "Επανάληψη της τελευταίας ενέργειας"
+
+#: ../src/View/Window.vala:743
+msgid "_File"
+msgstr "_Αρχείο"
+
+#: ../src/View/Window.vala:744
+msgid "_Edit"
+msgstr "_Επεξεργασία"
+
+#: ../src/View/Window.vala:745
+msgid "_View"
+msgstr "_Προβολή"
+
+#: ../src/View/Window.vala:746
+msgid "_Go"
+msgstr "_Μετάβαση"
+
+#: ../src/View/Window.vala:747
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Νέο _Παράθυρο"
+
+#: ../src/View/Window.vala:750
+msgid "Open another Files window for the displayed location"
+msgstr "Άνοιγμα διαφορετικού παραθύρου Αρχείων για την προβληθήσα τοποθεσία"
+
+#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Νέα _Καρτέλα"
+
+#: ../src/View/Window.vala:754
+msgid "Open another tab for the displayed location"
+msgstr "Άνοιγμα της τρέχουσας τοποθεσίας σε νέα καρτέλα"
+
+#: ../src/View/Window.vala:758
+msgid "_Close"
+msgstr "_Κλείσιμο"
+
+#: ../src/View/Window.vala:759
+msgid "Close this folder"
+msgstr "Κλείσιμο αυτού του φακέλου"
+
+#: ../src/View/Window.vala:764
+msgid "_Undo"
+msgstr "_Αναίρεση"
+
+#: ../src/View/Window.vala:767
+msgid "_Redo"
+msgstr "_Επανάληψη"
+
+#: ../src/View/Window.vala:770
+msgid "_Find"
+msgstr "_Εύρεση"
+
+#: ../src/View/Window.vala:771
+msgid "Search the current folder"
+msgstr "Αναζήτηση του τρέχοντος φακέλου"
+
+#: ../src/View/Window.vala:773
+msgid "Open _Parent"
+msgstr "Άνοιγμα _γονικού"
+
+#: ../src/View/Window.vala:774
+msgid "Open the parent folder"
+msgstr "Άνοιγμα του γονικού φακέλου"
+
+#: ../src/View/Window.vala:776
+msgid "_Back"
+msgstr "_Πίσω"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the previous visited location"
+msgstr "Μετάβαση στην προηγούμενη τοποθεσία που είχατε επισκεφθεί"
+
+#: ../src/View/Window.vala:780
+msgid "_Forward"
+msgstr "_Μπροστά"
+
+#: ../src/View/Window.vala:781
+msgid "Go to the next visited location"
+msgstr "Μετάβαση στην επόμενη τοποθεσία που είχατε επισκεφθεί"
+
+#: ../src/View/Window.vala:783
+msgid "_Reload"
+msgstr "_Επαναφόρτωση"
+
+#: ../src/View/Window.vala:784
+msgid "Reload the current location"
+msgstr "Επαναφόρτωση της τρέχουσας τοποθεσίας"
+
+#: ../src/View/Window.vala:787
+msgid "_Home Folder"
+msgstr "Προσωπικός _φάκελος"
+
+#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
+msgid "Open your personal folder"
+msgstr "Άνοιγμα του προσωπικού σας φακέλου"
+
+#: ../src/View/Window.vala:791
+msgid "_Trash"
+msgstr "_Απορρίματα"
+
+#: ../src/View/Window.vala:792
+msgid "Open your personal trash folder"
+msgstr "Άνοιγμα του προσωπικού σας φακέλου απορριμμάτων"
+
+#: ../src/View/Window.vala:795
+msgid "_Network"
+msgstr "_Δίκτυο"
+
+#: ../src/View/Window.vala:796
+msgid "Browse bookmarked and local network locations"
+msgstr "Περιήγηση σε σελιδοδείκτες και τοποθεσίες τοπικού δικτύου"
+
+#: ../src/View/Window.vala:799
+msgid "Zoom _In"
+msgstr "_Μεγέθυνση"
+
+#: ../src/View/Window.vala:800
+msgid "Increase the view size"
+msgstr "Αύξηση του μεγέθους προβολής"
+
+#: ../src/View/Window.vala:811
+msgid "Zoom _Out"
+msgstr "Σμίκρυν_ση"
+
+#: ../src/View/Window.vala:812
+msgid "Decrease the view size"
+msgstr "Μείωση του μεγέθους προβολής"
+
+#: ../src/View/Window.vala:819
+msgid "Normal Si_ze"
+msgstr "Κανονικό _μέγεθος"
+
+#: ../src/View/Window.vala:820
+msgid "Use the normal view size"
+msgstr "Χρήση του κανονικού μεγέθους προβολής"
+
+#: ../src/View/Window.vala:823
+msgid "Next Tab"
+msgstr "Επόμενη καρτέλα"
+
+#: ../src/View/Window.vala:827
+msgid "Previous Tab"
+msgstr "Προηγούμενη καρτέλα"
+
+#: ../src/View/Window.vala:831
+msgid "Connect to _Server..."
+msgstr "Σύνδεση σε ε_ξυπηρετητή"
+
+#: ../src/View/Window.vala:832
+msgid "Connect to a remote computer or shared disk"
+msgstr "Σύνδεση σε απομακρυσμένο υπολογιστή ή κοινόχρηστο δίσκο"
+
+#: ../src/View/Window.vala:835
+msgid "_About"
+msgstr "_Περί"
+
+#: ../src/View/Window.vala:836
+msgid "Display credits"
+msgstr "Εμφάνιση credits"
+
+#: ../src/View/Window.vala:839
+msgid "Report a Problem..."
+msgstr "Αναφορά Προβλήματος..."
+
+#: ../src/View/Window.vala:840
+msgid "File a bug on Launchpad"
+msgstr "Υποβολή σφάλματος στο Launchpad"
+
+#: ../src/View/Window.vala:843
+msgid "Get Help Online..."
+msgstr "Λήψη Βοήθειας από το Διαδίκτυο..."
+
+#: ../src/View/Window.vala:847
+msgid "Translate This Application..."
+msgstr "Μετάφρασε Αυτή Την Εφαρμογή..."
+
+#: ../src/View/Window.vala:856
+msgid "Show _Hidden Files"
+msgstr "Εμφάνιση _Κρυφών Αρχείων"
+
+#: ../src/View/Window.vala:857
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Εναλλαγή της εμφάνισης των κρυφών αρχείων του τρέχοντος παραθύρου"
+
+#: ../src/View/Window.vala:861
+msgid "_Places"
+msgstr "_Τοποθεσίες"
+
+#: ../src/View/Window.vala:862
+msgid "Change the visibility of this window's side pane"
+msgstr "Αλλαγή της ορατότητας της πλευρικής στήλης αυτού του παραθύρου"
+
+#: ../src/View/Window.vala:870
+msgid "Icon"
+msgstr "Εικονίδιο"
+
+#: ../src/View/Window.vala:873
+msgid "List"
+msgstr "Λίστα"
+
+#: ../src/View/Window.vala:876
+msgid "Columns"
+msgstr "Στήλες"
+
+#: ../src/View/Sidebar.vala:395
+msgid "Personal"
+msgstr "Προσωπικά"
+
+#: ../src/View/Sidebar.vala:400
+msgid "Your common places and bookmarks"
+msgstr "Οι συνήθεις τοποθεσίες και τα αγαπημένα σας"
+
+#: ../src/View/Sidebar.vala:446
+msgid "Open the Trash"
+msgstr "Άνοιγμα των Απορριμμάτων"
+
+#: ../src/View/Sidebar.vala:452
+msgid "Devices"
+msgstr "Συσκευές"
+
+#: ../src/View/Sidebar.vala:457
+msgid "Your local partitions and devices"
+msgstr "Τα τοπικά σας διαμερίσματα και συσκευές"
+
+#: ../src/View/Sidebar.vala:469
+msgid "Open the contents of the FileSystem"
+msgstr "Άνοιγμα των περιεχομένων του Συστήματος Αρχείων"
+
+#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
+msgid "Mount and open %s"
+msgstr "Προσάρτηση και άνοιγμα  %s"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your network places"
+msgstr "Οι δικτυακές σας τοποθεσίες"
+
+#: ../src/View/Sidebar.vala:598
+msgid "Entire Network"
+msgstr "Ολόκληρο Δίκτυο"
+
+#: ../src/View/Sidebar.vala:605
+msgid "Browse the contents of the network"
+msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
+
+#: ../src/View/Sidebar.vala:1118
+msgid "Unable to start %s"
+msgstr "Αδυναμία εκκίνησης %s"
+
+#: ../src/View/Sidebar.vala:1187
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: ../src/View/Sidebar.vala:1208
+msgid "Remove"
+msgstr "Κατάργηση"
+
+#: ../src/View/Sidebar.vala:1216
+msgid "Rename"
+msgstr "Μετονομασία"
+
+#: ../src/View/Sidebar.vala:1225
+msgid "_Mount"
+msgstr "Π_ροσάρτηση"
+
+#: ../src/View/Sidebar.vala:1231
+msgid "_Unmount"
+msgstr "Αποπ_ροσάρτηση"
+
+#: ../src/View/Sidebar.vala:1237
+msgid "_Eject"
+msgstr "Ε_ξαγωγή"
+
+#: ../src/View/Sidebar.vala:1251
+msgid "Connect to Server..."
+msgstr "Σύνδεση σε Διακομηστή..."
+
+#: ../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: ../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr "Επόμενο"
+
+#: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
 msgstr "Προβολή σε πλέγμα"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:79
+#: ../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
 msgstr "Προβολή ως λίστα"
 
-#: /home/codygarver/f/po/../src/View/Chrome/ViewSwicher.vala:82
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
 msgstr "Προβολή σε στήλες"
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:38
+#: ../src/Application.vala:137
+msgid "Show the version of the program."
+msgstr "Εμφάνιση της έκδοσης του προγράμματος."
+
+#: ../src/Application.vala:139
+msgid "Open uri(s) in new tab"
+msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
+
+#: ../src/Application.vala:141
+msgid "New Window"
+msgstr "Νέο Παράθυρο"
+
+#: ../src/Application.vala:143
+msgid "Quit Files."
+msgstr "Έξοδος από το Files"
+
+#: ../src/Application.vala:145
+msgid "Enable debug logging"
+msgstr "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων"
+
+#: ../src/Application.vala:148
+msgid "[URI...]"
+msgstr "[URI…]"
+
+#: ../src/Application.vala:151
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Περιήγηση του συστήματος αρχείων με το διαχειριστή αρχείων"
+
+#: ../src/Application.vala:178
+msgid "--quit cannot be used with URIs."
+msgstr "το --quit δεν μπορεί να χρησιμοποιηθεί σε URI."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Λειτουργίες αρχείων"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Όλες οι ενέργειες αρχείων ολοκληρώθηκαν επιτυχώς"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d ενέργεια αρχείου ενεργή"
+msgstr[1] "%'d ενέργειες αρχείων ενεργές"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Εμφάνιση λεπτομερειών"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Εμφάνιση διαλόγου αντιγραφής"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Ακύρωση όλων των ενεργειών σε εξέλιξη"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Περιηγηθείτε στα αρχεία σας"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Διαχειριστής αρχείων"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Νέο παράθυρο ως_Διαχειριστής"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr "Σχετικά με τα _Αρχεία"
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Αρχεία"
+
+#: ../libwidgets/LocationBar.vala:284
+msgid "Go to %s"
+msgstr "Μετάβαση στο %s"
+
+#: ../plugins/marlin-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr "Αυτά τα αρχεία μπορεί να διαγραφούν αδειάζοντας τα απορρίματα"
 
-#: /home/codygarver/f/po/../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/marlin-trash/plugin.vala:39
 msgid "Empty the Trash"
 msgstr "Άδειασμα των απορριμάτων"
