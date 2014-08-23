@@ -29,7 +29,7 @@ namespace Marlin.View {
         public Gtk.Widget? content_item;
         //public bool content_shown = false;
         public bool can_show_folder = true;
-        public Gtk.Label label;
+        public string label;
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         Browser browser;
@@ -72,11 +72,7 @@ namespace Marlin.View {
             overlay_statusbar = new OverlayBar (win, this);
             //this.view_mode = viewmode;
             browser = new Browser ();
-            label = new Gtk.Label ("Loading...");
-            label.set_ellipsize (Pango.EllipsizeMode.END);
-            label.set_single_line_mode (true);
-            label.set_alignment (0.0f, 0.5f);
-            label.set_padding (0, 0);
+            label = _("Loading…");
 
             this.show_all ();
 
@@ -282,7 +278,8 @@ message ("directory done loading");
             }
 
             warning ("directory done loading");
-            slot.directory.done_loading.disconnect (directory_done_loading);
+            //slot.directory.done_loading.disconnect (directory_done_loading);
+            slot.directory.disconnect (directory_done_loading_handler_id);
         }
 
         private void store_selection () {}
@@ -303,7 +300,7 @@ message ("directory done loading");
         public void set_active_state (bool is_active) {
             get_current_slot ().set_active_state (is_active);
         }
-
+#if 0
         public void change_view (int nview, GLib.File? location, GLib.File? focus_file = null) {
             /* if location is null then we have a user change view request */
             bool user_change_rq = location == null;
@@ -413,33 +410,42 @@ message ("directory done loading");
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
         }
-
+#endif
         public void focus_file (File file) {
+            File? loc = null;
             if (file.query_file_type (0) == FileType.DIRECTORY) {
-                if (slot.location.equal (file))
+                if (location.equal (file))
                     return;
 
-                change_view (view_mode, file);
+                //change_view (view_mode, file);
+                loc = file;
+                user_path_change_request (loc);
             } else {
-                if (slot.location.equal (file.get_parent ())) {
+                if (location.equal (file.get_parent ())) {
                     var list = new List<File> ();
                     list.prepend (file);
-                    ((FM.Directory.View) slot.view_box).select_glib_files (list);
+                    get_current_slot ().select_glib_files (list);
                 } else
-                    change_view (view_mode, file.get_parent (), file);
+                    //change_view (view_mode, file.get_parent (), file);
+                    loc = file.get_parent ();
+                    user_path_change_request (loc);
+                    //TODO implement request focus file on path change
             }
 
-            update_location_state (true);
-            refresh_slot_info ();
+            //update_location_state (true);
+            if (loc != null) {
+                slot_path_changed (loc);
+                refresh_slot_info (loc);
+            }
         }
-
+#if 0
         public GOF.Window.Slot? get_active_slot () {
             if (mwcol != null)
                 return mwcol.active_slot;
             else
                 return slot;
         }
-
+#endif
         public string? get_root_uri () {
             return view.get_root_uri ();
         }

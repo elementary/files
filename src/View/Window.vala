@@ -77,8 +77,8 @@ namespace Marlin.View {
         public bool freeze_view_changes = false;
         private const int MARLIN_LEFT_OFFSET = 16;
         private const int MARLIN_TOP_OFFSET = 9;
-        private const int MARLIN_MINIMUM_WINDOW_WIDTH = 640;
-        private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 480;
+        //private const int MARLIN_MINIMUM_WINDOW_WIDTH = 640;
+        //private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 480;
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -93,7 +93,7 @@ namespace Marlin.View {
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
             var window_number = app.window_count;
-            var active_window = app.get_active_window ();
+            //var active_window = app.get_active_window ();
 //message ("New window");
             application = app;
             screen = myscreen;
@@ -111,10 +111,11 @@ namespace Marlin.View {
             build_window ();
             connect_signals ();
             make_bindings ();
-            set_geometry (window_number, active_window);
+            //set_geometry (window_number, active_window);
             show ();
         }
 
+#if 0
         private void set_geometry (int window_number, Gtk.Window? active_window) {
 //message ("set geometry, window number is %i", window_number);
 
@@ -134,13 +135,14 @@ namespace Marlin.View {
                 top_offset = MARLIN_TOP_OFFSET;
             }
 
-            EelGtk.Window.set_initial_geometry_from_string (this, geometry,
-                                                            MARLIN_MINIMUM_WINDOW_WIDTH,
-                                                            MARLIN_MINIMUM_WINDOW_HEIGHT,
-                                                            false,
-                                                            left_offset, top_offset);
+//            EelGtk.Window.set_initial_geometry_from_string (this, geometry,
+//                                                            MARLIN_MINIMUM_WINDOW_WIDTH,
+//                                                            MARLIN_MINIMUM_WINDOW_HEIGHT,
+//                                                            false,
+//                                                            left_offset, top_offset);
         }
 
+#endif
         private void build_window () {
 //message ("build window");
             var lside_pane = new Granite.Widgets.ThinPaned ();
@@ -166,6 +168,9 @@ namespace Marlin.View {
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
             get_action ("show_sidebar").set_state (Preferences.settings.get_boolean ("show-sidebar"));
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
+
+            set_default_size (Preferences.settings.get_int("window-width"),
+                             Preferences.settings.get_int("window-height"));
 
             if (Preferences.settings.get_boolean("maximized"))
                 maximize();

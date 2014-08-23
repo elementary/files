@@ -1581,7 +1581,8 @@ message ("Sidebar open selected");
 
                 if (path != null)
                     open_selected_bookmark (store, path,
-                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
+                        //(event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
+                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? Marlin.OpenFlag.NEW_TAB : Marlin.OpenFlag.DEFAULT);
             }
 
             return false;

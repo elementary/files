@@ -262,11 +262,12 @@ namespace Marlin.View.Chrome
             search_results = new SearchResults (this);
 
             search_results.file_selected.connect ((file) => {
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else
-                    win.current_tab.slot.view_box.grab_focus ();
+//                if (win.current_tab.content_shown)
+//                    win.current_tab.content.grab_focus ();
+//                else
+//                    win.current_tab.slot.view_box.grab_focus ();
 
+                win.grab_focus ();
                 win.current_tab.focus_file (file);
 
                 search_mode = false;
@@ -276,7 +277,7 @@ namespace Marlin.View.Chrome
             });
 
             search_changed.connect ((text) => {
-                search_results.search (text, win.current_tab.slot.location);
+                search_results.search (text, win.current_tab.location);
             });
         }
 
