@@ -42,7 +42,7 @@ namespace Marlin.View.Chrome
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {
-critical ("Tried to set null path");
+                    critical ("Tried to set null path");
                 }
             }
 
@@ -85,13 +85,15 @@ critical ("Tried to set null path");
                 return;
 
             /* focus back the view */
-            if (win.current_tab.content_shown)
-                win.current_tab.content.grab_focus ();
-            else {
-//message ("Location Bar - view grab focus 1");
-                //win.current_tab.slot.dir_view.grab_focus ();
-                win.current_tab.view.grab_focus ();
-            }
+//            if (win.current_tab.content_shown)
+//                win.current_tab.content.grab_focus ();
+//            else {
+////message ("Location Bar - view grab focus 1");
+//                //win.current_tab.slot.dir_view.grab_focus ();
+//                win.current_tab.view.grab_focus ();
+//            }
+
+            win.grab_focus ();
             activate(file);
         }
     }
@@ -215,12 +217,13 @@ critical ("Tried to set null path");
 
             down.connect (() => {
                 // focus back the view 
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else {
-                    //win.current_tab.slot.dir_view.grab_focus ();
-                    win.current_tab.view.grab_focus ();
-                }
+//                if (win.current_tab.content_shown)
+//                    win.current_tab.content.grab_focus ();
+//                else {
+//                    //win.current_tab.slot.dir_view.grab_focus ();
+//                    win.current_tab.view.grab_focus ();
+//                }
+                win.grab_focus ();
             });
 
             completed.connect (() => {
@@ -379,7 +382,7 @@ critical ("Tried to set null path");
                 menuitem.activate.connect (() => {
 //message ("Location bar menu activated");
                     unowned File loc = menu.get_active ().get_data ("location");
-                    win.current_tab.user_path_change_request (loc);
+                    win.file_path_change_request (loc);
                 });
             }
             menu.show_all ();

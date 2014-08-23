@@ -27,14 +27,23 @@ using Marlin;
 namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
-        public bool content_shown = false;
+        //public bool content_shown = false;
         public bool can_show_folder = true;
         public Gtk.Label label;
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         Browser browser;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
-        public GLib.File location;
+        public GLib.File location {
+            get {
+                return get_current_slot ().location;
+            }
+        }
+        public string uri {
+            get {
+                return get_current_slot ().uri;
+            }
+        }
         public OverlayBar overlay_statusbar;
 
         private GLib.List<GLib.File> select_childs = null;
@@ -56,13 +65,11 @@ namespace Marlin.View {
         public signal void tab_name_changed (string tab_name);
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File location) {
-message ("New ViewContainer");
+        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
+//message ("New ViewContainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             //this.view_mode = viewmode;
-            this.location = location;
-
             browser = new Browser ();
             label = new Gtk.Label ("Loading...");
             label.set_ellipsize (Pango.EllipsizeMode.END);
@@ -82,8 +89,8 @@ message ("New ViewContainer");
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
             connect_signals ();
-            change_view_mode (mode);
-message ("New ViewContainer leaving");
+            change_view_mode (mode, loc);
+//message ("New ViewContainer leaving");
         }
 
         public Gtk.Widget content {
@@ -93,7 +100,7 @@ message ("New ViewContainer leaving");
                 add (value);
                 content_item = value;
                 content_item.show_all ();
-                content_shown = true;
+                //content_shown = true;
             }
             get {
                 return content_item;
@@ -111,7 +118,6 @@ message ("New ViewContainer leaving");
         }
 
         private void connect_signals () {
-
             up.connect (() => {
                 if (view.directory.has_parent ())
                     user_path_change_request (view.directory.get_parent ());
@@ -130,78 +136,84 @@ message ("New ViewContainer leaving");
             });
         }
 
+        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
+            if (mode != view_mode) {
+
+                if (loc == null) { /* Only untrue on container creation */
+                    loc = this.location;
+                }
+
+                if (view != null) {
+                    store_selection ();
+                    view.destroy ();
+                }
+
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    view = new Miller (loc, this, mode);
+                else
+                    view = new Slot (loc, this, mode);
+
+                set_up_current_slot ();
+                update_view (mode);
+                restore_selection ();
+            }
+        }
+
         public void user_path_change_request (GLib.File loc) {
-            //var slot = get_current_slot ();
-            //assert (slot != null);
+message ("VC user path changed request");
             view.user_path_change_request (loc);
         }
 
         public void new_container_request (GLib.File loc, int flag = 1) {
+message ("VC new container request");
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    this.window.add_tab (location, view_mode);
+                    this.window.add_tab (loc, view_mode);
                     break;
 
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    this.window.add_window (location, view_mode);
+                    this.window.add_window (loc, view_mode);
                     break;
 
                 default:
                     assert_not_reached ();
             }
-
         }
 
         public void slot_path_changed (GLib.File loc) {
-
-        //private void on_path_changed (GLib.File? location, int flag) {
-        /* ViewContainer only handles new tab and new window - otherwise just updates appearance*/
 message ("VC path changed");
+#if 0
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
+                mode = 0; /* icon view */
+#endif
 
-//            /* automagicly enable icon view for icons keypath */
-//            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
-//                mode = 0; /* icon view */
+            set_up_current_slot ();
+            browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
 
-
-            if (this.location != loc) {
-                this.location = loc;
-                browser.record_uri (loc.get_parse_name ());
-
-                set_up_slot ();  /*  ?? */
-                refresh_slot_info (loc);
-                window.loading_uri (loc.get_uri ());
-                window.update_top_menu ();
-                plugin_directory_loaded ();
-            } else
-                assert_not_reached ();
         }
 
-        /* This is called whenever a slot is created or displays a new location*/
-        private void set_up_slot () {
+        private void set_up_current_slot () {
 message ("set up slot");
             var slot = get_current_slot ();
-            if (slot != null) {
-                /* synchronise sidebar */
-//message ("Slot uri is %s", slot.location.get_uri ());
-                //if (window.current_tab == this)
-                  //  window.loading_uri (slot.location.get_uri ());
 
-                directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
-                    directory_done_loading (slot);
-                });
+            content = view.get_content_box ();
+            can_show_folder = true;
 
-                reload_handler_id = slot.directory.need_reload.connect (() => {
-                    reload_slot (slot);
-                });
-//message ("plugins load");
-                //plugin_directory_loaded ();
-            } else
-                critical ("Tried to set up null slot");
-message ("leaving set up slot");
+            directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
+                directory_done_loading (slot);
+            });
+
+            reload_handler_id = slot.directory.need_reload.connect (() => {
+                reload_slot (slot);
+            });
+
+            plugin_directory_loaded ();
         }
 
         private void plugin_directory_loaded () {
-message ("plugin directory loaded");
+//message ("plugin directory loaded");
             var slot = get_current_slot ();
             Object[] data = new Object[3];
             data[0] = window;
@@ -210,29 +222,30 @@ message ("plugin directory loaded");
             //plugins.directory_loaded ((void*) data);
         }
 
-        public void refresh_slot_info (GLib.File location) {
-message ("refresh slot info for %s", location.get_uri ());
-            var slot_path = location.get_path ();
+        public void refresh_slot_info (GLib.File loc) {
+message ("refresh slot info");
+            var slot_path = loc.get_path ();
 
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
             else
-                tab_name = location.get_basename ();
-                
-           
+                tab_name = loc.get_basename ();
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
-            window.update_labels (location.get_parse_name (), tab_name);
+            window.loading_uri (loc.get_uri ());
+            window.update_top_menu ();
+            window.update_labels (loc.get_parse_name (), tab_name);
         }
 
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading (GOF.AbstractSlot slot) {
+message ("directory done loading");
             FileInfo file_info;
-            
+
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -245,13 +258,12 @@ message ("refresh slot info for %s", location.get_uri ());
 
 
                 if (file_info.get_file_type () == FileType.DIRECTORY) {
-message ("loaded directory");
-                    content_shown = false;
+//message ("loaded directory");
+                    //content_shown = false;  ????
                     if (select_childs != null) {
-message ("THere are selected childs");
+//message ("THere are selected childs");
                         slot.select_glib_files (select_childs);
                     }
-
                 } else {
                     /* If not a directory, then change the location to the parent */
                     user_path_change_request (slot.location.get_parent ());
@@ -264,24 +276,6 @@ message ("THere are selected childs");
             }
             //slot.directory.done_loading.disconnect (directory_done_loading);
             slot.directory.disconnect (directory_done_loading_handler_id);
-        }
-
-        public void change_view_mode (Marlin.ViewMode mode) {
-message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
-            if (mode != view_mode) {
-message ("mode is different");
-                store_selection ();
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
-                    view = new Miller (location, this, mode);
-                else
-                    view = new Slot (location, this, mode);
-
-                content = view.get_content_box ();
-                set_up_slot ();
-                update_view (mode);
-                restore_selection ();
-                this.view_mode = mode;
-            }
         }
 
         private void store_selection () {}
@@ -299,6 +293,10 @@ message ("mode is different");
            return slot;
         }
 
+        public void set_active_state (bool is_active) {
+            get_current_slot ().set_active_state (is_active);
+        }
+
         public string? get_root_uri () {
             return view.get_root_uri ();
         }
@@ -312,7 +310,7 @@ message ("mode is different");
         }
 
         private void reload_slot (GOF.AbstractSlot slot) {
-message ("reload");
+//message ("reload");
 //            GOF.Directory.Async dir = slot.directory;
 //            dir.cancel ();
 //            dir.disconnect (reload_handler_id);
@@ -327,6 +325,10 @@ message ("reload");
 
         public Gee.List<string> get_go_forward_path_list () {
             return browser.go_forward_list ();
+        }
+
+        public new void grab_focus () {
+            content.grab_focus ();
         }
 
 //        public new Gtk.Widget get_window () {

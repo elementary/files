@@ -42,24 +42,26 @@ namespace Marlin.View {
                                "</span>";
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode mode) {
-message ("New slot location %s", _location.get_uri ());
+//message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
             directory = GOF.Directory.Async.from_gfile (_location);
             assert (directory != null);
             connect_slot_signals ();
             make_view ((int)mode);
-message ("New slot - leave");
+//message ("New slot - leave");
         }
 
-        ~Slot () {
-            this.dir_view = null;
+        public override void destroy () {
+            dir_view.destroy ();
+            dir_view = null;
+            this.directory.cancel ();
             this.directory = null;
             this.ctab = null;
         }
 
         private void connect_slot_signals () {
-message ("connect slot signals");
+//message ("connect slot signals");
             active.connect (() => {
                 if (!this.is_active) {
                     ctab.refresh_slot_info (directory.location);
@@ -68,10 +70,10 @@ message ("connect slot signals");
                 }
             });
 
-message ("Slot connect signals - inactive");
+//message ("Slot connect signals - inactive");
             inactive.connect (() => {
                 if (this.is_active) {
-message ("Slot -> inactive");
+//message ("Slot -> inactive");
                     this.is_active = false;
                     this.dir_view.unselect_all ();
                 }
@@ -79,7 +81,7 @@ message ("Slot -> inactive");
         }
 
         private void connect_dir_view_signals () {
-message ("Connect DV to slot signals - path_change_request");
+//message ("Connect DV to slot signals - path_change_request");
             dir_view.path_change_request.connect ((loc, flag, make_root) => {
                 /* Avoid race conditions in signal processing */
                 schedule_path_change_request (loc, flag, make_root);
@@ -97,10 +99,10 @@ message ("Connect DV to slot signals - path_change_request");
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) {
                 if (dir_view is FM.ColumnView) {
-message ("Miller slot request");
+//message ("Miller slot request");
                     miller_slot_request (loc, make_root);
                 } else {
-message ("User path request");
+//message ("User path request");
                     user_path_change_request (loc);
                 }
             } else
@@ -109,9 +111,9 @@ message ("User path request");
 
         //protected override void on_tab_path_changed (GLib.File? loc, int flag, Slot? source_slot) {
         public override void user_path_change_request (GLib.File loc) {
-message ("SLot - on tab changed");
+//message ("SLot - on tab changed");
             assert (loc != null);
-message ("Slot received path change signal to loc %s", loc.get_uri ());
+//message ("Slot received path change signal to loc %s", loc.get_uri ());
 
             if (location != loc) {
                 var new_dir = GOF.Directory.Async.from_gfile (loc);
@@ -125,7 +127,7 @@ message ("Slot received path change signal to loc %s", loc.get_uri ());
         }
 
         protected override Gtk.Widget make_view (int view_mode) {
-message ("Slot make view");
+//message ("Slot make view");
             assert (dir_view == null);
 
             switch ((Marlin.ViewMode)view_mode) {
@@ -163,7 +165,7 @@ message ("Slot make view");
         }
 
         public override bool set_all_selected (bool select_all) {
-message ("Slot all selected is %s", select_all ? "true" : "false");
+//message ("Slot all selected is %s", select_all ? "true" : "false");
             if (dir_view != null) {
                 if (select_all)
                     dir_view.select_all ();

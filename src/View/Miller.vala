@@ -22,10 +22,8 @@ namespace Marlin.View {
 
         public Gtk.ScrolledWindow scrolled_window;
         public Gtk.Adjustment hadj;
-//        public Slot current_slot;
-//        public GLib.List<Slot> slot_list;
         public GOF.AbstractSlot current_slot;
-        public GLib.List<GOF.AbstractSlot> slot_list = null;
+        public GLib.List<GOF.AbstractSlot> slot_list = null; /* TODO why abstract? */
 
         public int preferred_column_width;
         public int total_width = 0; /*TODO Use AbstractSlot width? */
@@ -63,12 +61,13 @@ message ("Making new Miller View");
             this.colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
             this.colpane.key_release_event.connect (on_key_pressed);
 
-           // make_view ((int)mode);
             add_location (loc);
         }
 
-        ~Miller () {
-message ("In Miller destruct");
+        public override void destroy () {
+            slot_list.@foreach ((slot) => {
+                slot.destroy ();
+            });
         }
 
         public override void user_path_change_request (GLib.File loc) {
@@ -196,6 +195,12 @@ message ("truncate list after slot");
             assert (current_slot_position >= 0);
 
             unowned GLib.List<GOF.AbstractSlot> last_valid_slot = slot_list.nth (slot.slot_number);
+            unowned GLib.List<GOF.AbstractSlot> invalid_slot_list = last_valid_slot.next;
+            if (invalid_slot_list != null) {
+                invalid_slot_list.@foreach ((slot) => {
+                    slot.destroy ();
+                });
+            }
             last_valid_slot.next = null;
             calculate_total_width ();
         }

@@ -290,7 +290,7 @@ namespace Marlin.View {
             });
 
             tabs.new_tab_requested.connect (() => {
-                make_new_tab ();
+                add_tab ();
             });
 
             tabs.close_tab_requested.connect ((tab) => {
@@ -299,7 +299,7 @@ namespace Marlin.View {
                     (tab.page as ViewContainer).location.get_uri ();
 
                 if (tabs.n_tabs == 1)
-                    make_new_tab ();
+                    add_tab ();
 
                 return true;
             });
@@ -309,11 +309,11 @@ namespace Marlin.View {
             });
 
             tabs.tab_restored.connect ((label, restore_data, icon) => {
-                make_new_tab (File.new_for_uri (restore_data));
+                add_tab (File.new_for_uri (restore_data));
             });
 
             tabs.tab_duplicated.connect ((tab) => {
-                make_new_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
+                add_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
             });
 
         }
@@ -352,62 +352,48 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-message ("WIN change tab");
+//message ("WIN change tab");
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
                 return;
 
             if (old_tab != null) {
-                var old_slot = old_tab.get_current_slot ();
-                if (old_slot != null)
-                    old_slot.inactive ();
+                old_tab.set_active_state (false);
             }
-
-            if (current_tab != null) {
-                var cur_slot = current_tab.get_current_slot ();
-                if (cur_slot != null) {
-                    cur_slot.active();
-                    update_top_menu ();
-                    /* update radio action view state */
-                    update_view_mode (current_tab.view_mode);
+            current_tab.set_active_state (true);
+            update_top_menu ();
+            /* update radio action view state */
+            update_view_mode (current_tab.view_mode);
 #if 0
-                    /* sync selection */
-                    if (cur_slot.dir_view != null && !current_tab.content_shown)
-                        //((FM.DirectoryView) cur_slot.dir_view).sync_selection();
-                        cur_slot.dir_view.sync_selection();
+            /* sync selection */
+            //if (cur_slot.dir_view != null && !current_tab.content_shown);
+            if (cur_slot.dir_view != null && current_tab.can_show_folder);
+                cur_slot.dir_view.sync_selection();
 #endif
-                    /* sync sidebar selection */
-                    //loading_uri (current_tab.slot.directory.file.uri);
-                    loading_uri (current_tab.location.get_uri ());
-                }
-            }
+            /* sync sidebar selection */
+            loading_uri (current_tab.uri);
         }
 
-        private void make_new_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                                   Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+//message ("add tab");
             mode = real_mode (mode);
             update_view_mode (mode);
             var content = new View.ViewContainer (this, mode, location);
             var tab = new Granite.Widgets.Tab ("", null, content);
+            tab.label = content.tab_name; /* in case ViewContainer gets created too quickly */
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
-            //content.path_changed (location);
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-        }
-
-        public void add_tab (File location, Marlin.ViewMode mode) {
-message ("add tab");
-            make_new_tab (location, mode);
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
-message ("made tab");
             if (tabs.n_tabs == 1) {
-                var tab = tabs.get_tab_by_index (0);
-                assert (tab != null);
-                (tab.page as ViewContainer).overlay_statusbar.update ();
+                var tab1 = tabs.get_tab_by_index (0);
+                assert (tab1 != null);
+                (tab1.page as ViewContainer).overlay_statusbar.update ();
             }
         }
 
@@ -489,15 +475,15 @@ message ("made tab");
 //message ("action go to");
             switch (param.get_string ()) {
                 case "HOME":
-                    current_tab.user_path_change_request (File.new_for_commandline_arg(Environment.get_home_dir()));
+                    uri_path_change_request (Environment.get_home_dir());
                     break;
 
                 case "TRASH":
-                    current_tab.user_path_change_request (File.new_for_commandline_arg(Marlin.TRASH_URI));
+                    uri_path_change_request (Marlin.TRASH_URI);
                     break;
 
                 case "NETWORK":
-                    current_tab.user_path_change_request (File.new_for_commandline_arg(Marlin.NETWORK_URI));
+                    uri_path_change_request (Marlin.NETWORK_URI);
                     break;
 
                 case "SERVER":
@@ -528,17 +514,14 @@ message ("made tab");
                 assert (current_tab.view != null);
                 switch (param.get_string ()) {
                     case "ZOOM_IN":
-                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_in ();
                         current_tab.view.zoom_in ();
                         break;
 
                     case "ZOOM_OUT":
-                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_out ();
                         current_tab.view.zoom_out ();
                         break;
 
                     case "ZOOM_NORMAL":
-                        //((FM.DirectoryView) current_tab.slot.dir_view).zoom_normal ();
                         current_tab.view.zoom_normal ();
                         break;
 
@@ -552,7 +535,7 @@ message ("made tab");
 //message ("action tab");
             switch (param.get_string ()) {
                 case "NEW":
-                    make_new_tab ();
+                    add_tab ();
                     break;
 
                 case "CLOSE":
@@ -610,7 +593,6 @@ message ("made tab");
 
         private void change_state_select_all (GLib.SimpleAction action) {
 //message ("select all state %s", action.state.get_boolean () ? "true" : "false");
-            //Slot? slot = get_active_slot ();
             var slot = get_active_slot ();
             if (slot != null) {
                 bool state = !action.state.get_boolean ();
@@ -682,7 +664,7 @@ message ("made tab");
                 case Marlin.ViewMode.MILLER_COLUMNS:
                     return mode;
                 case Marlin.ViewMode.CURRENT:
-                    return this.current_tab.view_mode;
+                    return current_tab.view_mode;
                 default:
                     break;
             }
@@ -726,7 +708,7 @@ message ("made tab");
         }
 
         public void update_view_mode (Marlin.ViewMode mode) {
-message ("update viewmode");
+//message ("update viewmode");
             GLib.SimpleAction action = get_action ("view_mode");
             action.set_state (mode_strings [(int)mode]);
             top_menu.view_switcher.mode = mode;
@@ -755,7 +737,7 @@ message ("update viewmode");
         }
 
         private void save_tabs () {
-message ("save tabs");
+//message ("save tabs");
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
@@ -778,7 +760,7 @@ message ("save tabs");
         }
 
         public uint restore_tabs () {
-message ("Restore tabs");
+//message ("Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window) {
 //message ("returning zero");
@@ -789,11 +771,10 @@ message ("Restore tabs");
 
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
-            int tabs_added = 0;
             Marlin.ViewMode mode = Marlin.ViewMode.INVALID;
             string root_uri = null;
             string tip_uri = null;
-
+            int tabs_added = 0;
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
             freeze_view_changes = true;
@@ -802,9 +783,9 @@ message ("Restore tabs");
                     continue;
 
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
-message ("restoring %s mode is %i", root_uri, (int)mode);
+//message ("restoring %s mode is %i", root_uri, (int)mode);
                 add_tab (root_location, mode);
-message ("add tab finished");
+//message ("add tab finished");
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
 
@@ -814,6 +795,9 @@ message ("add tab finished");
                 tip_uri = null;
             }
 
+            if (tabs_added == 0)
+                add_tab ();
+
             freeze_view_changes = false;
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
@@ -822,25 +806,25 @@ message ("add tab finished");
                 change_tab (active_tab_position);
             }
 
-message ("get current tab tip uri");
+//message ("get current tab tip uri");
             string? path = current_tab.get_tip_uri ();
             if (path == null || path == "") {
-message ("get current tab root uri");
+//message ("get current tab root uri");
                 path = current_tab.get_root_uri ();
             }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
-message ("Final path is %s", path);
+//message ("Final path is %s", path);
             top_menu.location_bar.path = path;
             /* restore location bar animation */
             top_menu.location_bar.bread.animation_visible = true;
-message ("leaving restore tabs");
+//message ("leaving restore tabs");
             return tabs_added;
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
-message ("expand Miller");
+//message ("expand Miller");
 /**TODO - move to Miller.vala **/ 
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
@@ -870,7 +854,7 @@ message ("expand Miller");
             top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
         }
 
-        public void update_labels (string new_path, string title) {
+        public void update_labels (string new_path, string tab_name) {
 //message ("Window title is %s", title);
         assert (new_path != null && new_path != "");
 //message ("New path is %s", new_path);
@@ -878,6 +862,32 @@ message ("expand Miller");
             //if (window.top_menu.location_bar != null) {
             top_menu.update_location_bar (new_path);
             //}            
+        }
+
+        public void mount_removed (Mount mount) {
+            GLib.File root = mount.get_root ();
+            foreach (var page in tabs.get_children ()) {
+                var view_container = page as Marlin.View.ViewContainer;
+                GLib.File location = view_container.location;
+                if (location == null || location.has_prefix (root) || location.equal (root)) {
+                    if (view_container == current_tab)
+                        view_container.user_path_change_request (File.new_for_path (Environment.get_home_dir ()));
+                    else
+                        remove_tab (view_container);
+                }
+            }
+        }
+
+        public void file_path_change_request (GLib.File loc) {
+            current_tab.user_path_change_request (loc);
+        }
+
+        public void uri_path_change_request (string uri) {
+            file_path_change_request (File.new_for_uri (uri));
+        }
+
+        public new void grab_focus () {
+            current_tab.grab_focus ();
         }
     }
 }

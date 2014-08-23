@@ -54,6 +54,7 @@ namespace GOF {
         public abstract void reload ();
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
+        public abstract void destroy ();
 
         protected abstract Gtk.Widget make_view (int mode);
 

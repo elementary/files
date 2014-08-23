@@ -384,14 +384,6 @@ namespace Marlin.Places {
             this.select_path = null;
             this.n_builtins_before = 0;
 
-//            var slot = window.get_active_slot();
-//            if (slot != null)
-//                this.slot_location = slot.location.get_uri ();
-//            else
-//                this.slot_location = null;
-
-            //this.slot_location = window.current_tab.get_location ();
-
             if ((tree_view.get_selection ()).get_selected (null, out iter))
                 store.@get (iter,
                             Column.URI, &last_selected_uri,

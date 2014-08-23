@@ -94,7 +94,7 @@ public class Marlin.Application : Granite.Application {
         if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
 
-        //message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
+        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
         //init_gtk_accels ();
@@ -129,7 +129,7 @@ public class Marlin.Application : Granite.Application {
         /* {name, activate function, parameter type, state, change state function } */
 
         this.add_action_entries (app_actions, this);
-//message ("Application actions");
+message ("Application actions");
         /** Application menu */
         var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
         this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
@@ -241,13 +241,13 @@ public class Marlin.Application : Granite.Application {
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-//message ("quit");
+message ("quit");
         if (quitting)
             return;
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
-//message ("number of windows is %u", window_list.length ());
+message ("number of windows is %u", window_list.length ());
         window_list.@foreach ((window) => {
             ((Marlin.View.Window)window).quit ();
         });
@@ -256,26 +256,9 @@ public class Marlin.Application : Granite.Application {
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
-        /* Check and see if any of the open windows are displaying contents from the unmounted mount */
-        unowned List<Gtk.Window> window_list = this.get_windows ();
-        File root = mount.get_root ();
-
-        /* Check each slot from each window, loading home for current tabs and closing the rest */
-        foreach (Gtk.Window window in window_list) {
-            var marlin_window = window as Marlin.View.Window;
-            List<Gtk.Widget> pages = marlin_window.tabs.get_children ();
-
-            foreach (var page in pages) {
-                var view_container = page as Marlin.View.ViewContainer;
-                //File location = view_container.slot.location;
-                GLib.File location = view_container.location;
-                if (location == null || location.has_prefix (root) || location.equal (root)) {
-                    if (view_container == marlin_window.current_tab)
-                        view_container.user_path_change_request (File.new_for_path (Environment.get_home_dir ()));
-                    else
-                        marlin_window.remove_tab (view_container);
-                }
-            }
+        /* Notify each window */
+        foreach (var window in this.get_windows ()) {
+            ((Marlin.View.Window)window).mount_removed (mount);
         }
     }
 

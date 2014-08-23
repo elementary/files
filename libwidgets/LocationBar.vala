@@ -292,7 +292,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return base.focus_in_event (event);
 
         set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
-                .replace ("file:////", "/")
+                .replace ("file://", "/")
                 .replace ("file:///", "/")
                 .replace ("trash:///", "")
                 .replace ("network:///", "")));
@@ -550,7 +550,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
-message ("change bread crumbs");
+//message ("change bread crumbs");
         var explode_protocol = Uri.unescape_string (newpath).split ("://");
 
         if (explode_protocol.length > 1) {

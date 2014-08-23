@@ -293,7 +293,7 @@ namespace GOF {
 
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
-        public bool execute (Gdk.Screen screen, GLib.List<GLib.File> files, out GLib.Error error);
+        public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
         public void rename (string new_name, GOF.FileOperationCallback callback);
 
         public GOF.File @ref ();

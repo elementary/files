@@ -48,7 +48,7 @@ namespace FM {
 
         /* Menu Handling */
         const GLib.ActionEntry [] selection_entries = {
-            {"open", on_selection_action_open},
+            {"open", on_selection_action_open_executable},
             {"open_with_app", on_selection_action_open_with_app, "s"},
             {"open_with_default", on_selection_action_open_with_default},
             {"open_with_other_app", on_selection_action_open_with_other_app},
@@ -172,7 +172,6 @@ namespace FM {
         public DirectoryView (Marlin.View.Slot _slot) {
 //message ("new directory view - location %s", _slot.directory.file.uri);
             slot = _slot;
-            in_trash = (slot.directory.file.uri == Marlin.TRASH_URI);
             window = _slot.ctab.window;
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
@@ -305,7 +304,7 @@ namespace FM {
         }
 
         public void unfreeze_updates () {
-message ("DV unfreeze updates");
+//message ("DV unfreeze updates");
             if (renaming)
                 return;
 
@@ -338,7 +337,7 @@ message ("DV unfreeze updates");
         }
 
         protected void load_location (GLib.File location) {
-message ("load location");
+//message ("load location");
             /* In column view, this will nest new location in slot.
             /* Else same effect as load_root_location */
             //slot.ctab.path_changed (location, Marlin.OpenFlag.DEFAULT, slot);
@@ -346,7 +345,7 @@ message ("load location");
         }
 
         protected void load_root_location (GLib.File location) {
-message ("load root location");
+//message ("load root location");
             path_change_request (location, Marlin.OpenFlag.DEFAULT, true);
             //slot.ctab.path_changed (location, Marlin.OpenFlag.DEFAULT, null);
         }
@@ -461,24 +460,16 @@ message ("load root location");
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-message ("DV change directory");
+//message ("DV change directory");
             disconnect_directory_handlers (old_dir);
-message ("block model");
             block_model ();
-message ("DV remove subdirectories");
             loaded_subdirectories.@foreach ((dir) => {
-message ("DV removing subdirectory");
                 remove_subdirectory (dir);
             });
-message ("DV loaded subdir -> null");
             loaded_subdirectories = null;
-message ("DV clear model");
             model.clear ();
-message ("DV unblock model");
             unblock_model ();
-message ("DV connect dir handlers");
             connect_directory_handlers (new_dir);
-message ("DV load dir");
             new_dir.load ();
         }
 
@@ -615,7 +606,7 @@ message ("DV load dir");
 /*** Private methods */
     /** File operations */
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-message ("activate file %s", file.uri);
+//message ("activate file %s", file.uri);
             if (updates_frozen || in_trash)
                 return;
 
@@ -634,16 +625,20 @@ message ("activate file %s", file.uri);
                     default:
                         if (only_one_file) {
                             load_location (location);
-message ("loaded location");
+//message ("loaded location");
                         }
                         break;
                 }
             } else if (only_one_file && file.is_root_network_folder ())
                 load_location (location);
+            else if (only_one_file && file.is_executable ())
+                file.execute (screen, null, null);
             else if (only_one_file && default_app != null)
                 file.open_single (screen, default_app);
+            else
+                warning ("Unable to activate this file");
 
-message ("leaving activate file");
+//message ("leaving activate file");
         }
 
         private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list, bool delete_if_already_in_trash) {
@@ -700,9 +695,12 @@ message ("leaving activate file");
             });
         }
 
-        private void after_trash_or_delete (GLib.HashTable debuting_files, bool user_cancel, void* data) {
-            if (user_cancel)
+        private void after_trash_or_delete (GLib.HashTable? debuting_files, bool user_cancel, void* data) {
+//message ("after trash or delete");
+            if (user_cancel) {
+//message ("trash or delete cancelled");
                 selection_was_removed = false;
+            }
         }
 
         private void trash_or_delete_selected_files () {
@@ -713,8 +711,8 @@ message ("leaving activate file");
             if (!selection_was_removed) {
                  unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
                 if (selection != null) {
-                    trash_or_delete_files (selection, true);
                     selection_was_removed = true;
+                    trash_or_delete_files (selection, true);
                 }
             }
         }
@@ -768,20 +766,28 @@ message ("leaving activate file");
             Marlin.restore_files_from_trash (selection, window);
         }
 
-        private void on_selection_action_open (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.DEFAULT);
+        private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
+message ("on selection action open");
+            //activate_selected_items (Marlin.OpenFlag.DEFAULT);
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            GOF.File file = selection.data as GOF.File;
+            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
+            file.execute (screen, null, null);
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
+message ("on selection action open with default");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
+message ("on selection action open with app");
             var index = int.parse (param.get_string ());
             open_files_with (open_with_apps.nth_data ((uint)index), get_files_for_action ());
         }
 
         private void on_selection_action_open_with_other_app () {
+message ("on selection action open with other app");
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             var dialog = new Gtk.AppChooserDialog (window, 0, selection.data.location);
             GOF.File file = selection.data as GOF.File;
@@ -906,8 +912,9 @@ message ("leaving activate file");
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-message ("directory done loading %s", dir.file.uri);
+//message ("directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
+            in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
 
             if (dir.is_empty ())
                 queue_draw ();
@@ -916,7 +923,7 @@ message ("directory done loading %s", dir.file.uri);
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
-message ("on directory thumbs loaded");
+//message ("on directory thumbs loaded");
             if (get_realized ())
                 queue_draw ();
 
@@ -1437,26 +1444,44 @@ message ("on directory thumbs loaded");
         }
 
         private GLib.MenuModel build_menu_open () {
-//message ("build menu open");
+message ("build menu open");
             var menu = new GLib.Menu ();        
-            string label = _("Open");
-            if (default_app != null) {
+//            string label = _("Open");
+//            if (default_app != null) {
+//                var app_name = default_app.get_display_name ();
+//                if (app_name == "Files") {
+//                    default_app = null;
+//                } else if (!selected_files.data.is_executable ()) {
+//                    label = (_("Open With %s")).printf (app_name);
+//                }
+//            }
+            string label = _("Invalid");
+            if (selected_files.data.is_executable ()) {
+message ("appending selection open");
+                    label = _("Run");
+                    menu.append (label, "selection.open");
+            } else if (default_app != null) {
                 var app_name = default_app.get_display_name ();
-                if (app_name == "Files") {
-                    default_app = null;
-                } else if (!selected_files.data.is_executable ()) {
+
+                if (app_name != "Files") {
+message ("Appending selection open with default");
                     label = (_("Open With %s")).printf (app_name);
+                    menu.append (label, "selection.open_with_default");
                 }
             }
 
-            if (default_app != null)
-                    menu.append (label, "selection.open_with_default");
-            else
-                    menu.append (label, "selection.open");
+//            if (default_app != null)
+//                    menu.append (label, "selection.open_with_default");
+            //else
+                    //menu.append (label, "selection.open");
 
             GLib.MenuModel? app_submenu = build_submenu_open_with_applications ();
-            if (app_submenu != null)
+            if (app_submenu != null) {
+message ("Appending open with apps");
                 menu.append_submenu (_("Open with"), app_submenu);
+            } else {
+message ("No open with apps");
+            }
 
             return menu as MenuModel;
         }
@@ -1513,7 +1538,7 @@ message ("on directory thumbs loaded");
         private void update_menu_actions () {
             if (!slot.is_active || updates_frozen)
                 return;
-message ("update menu actions for slot %s", slot.directory.file.uri);
+//message ("update menu actions for slot %s", slot.directory.file.uri);
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
@@ -1543,7 +1568,7 @@ message ("update menu actions for slot %s", slot.directory.file.uri);
         }
 
         private void update_paste_action_enabled (bool single_folder) {
-//message ("update menus pastes clipboard is %s null, can paste is %s, single folder is %s", clipboard != null ? "not" : "", clipboard.get_can_paste () ? "true" : "false", single_folder ? "true" : "false");
+//message ("update paste action enabled");
 
             if (clipboard != null && clipboard.get_can_paste ()) {
                 action_set_enabled (common_actions, "paste_into", single_folder);

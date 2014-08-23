@@ -232,7 +232,7 @@ namespace FM {
         }
 
         protected override bool on_view_button_press_event (Gdk.EventButton event) {
-message ("IV button press");
+//message ("IV button press");
             grab_focus (); /* cancels any renaming */
 
             Gtk.TreePath? path = null;
@@ -278,12 +278,12 @@ message ("IV button press");
                     result = handle_default_button_click ();
                     break;
             }
-message ("IV button press leaving");
+//message ("IV button press leaving");
             return result;
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-message ("LV handle left button");
+//message ("LV handle left button");
             assert (selection == null); /* not consistent with icon view */
             assert (col == null); /* not consistent with icon view */
 

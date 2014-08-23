@@ -95,21 +95,8 @@ namespace Marlin.View.Chrome
                 //debug ("topmenu test path %s", location_bar.path);
             }
 
-            location_bar.escape.connect (() => {
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else {
-//message ("TopMenu- view grab focus 1");
-
-                   // win.current_tab.slot.dir_view.grab_focus ();
-                    win.current_tab.view.grab_focus ();
-                }
-            });
-
-            location_bar.activate.connect ((file) => {
-                win.current_tab.user_path_change_request (file);
-            });
-
+            location_bar.escape.connect (win.grab_focus);
+            location_bar.activate.connect (win.file_path_change_request);
             location_bar.activate_alternate.connect ((file) => {
                 win.add_tab (file, Marlin.ViewMode.CURRENT);
             });

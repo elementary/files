@@ -167,7 +167,7 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-message ("LV handle left button");
+//message ("LV handle left button");
             bool result = true;
             if (path != null) {
                 /*Determine where user clicked - this will be the sole selection */
