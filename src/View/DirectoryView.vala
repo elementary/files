@@ -351,7 +351,7 @@ namespace FM {
         }
 
     /** Operations on selections */
-        protected void activate_selected_items (Marlin.OpenFlag flag) {
+        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
 //message ("activate selected items");
             if (updates_frozen || in_trash)
                 return;

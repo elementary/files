@@ -156,7 +156,7 @@ namespace FM {
 //message ("activate if drag not pending");
                 if (!is_drag_pending ()) {
 //message ("activation");
-                    //message (" (Marlin.OpenFlag.DEFAULT);
+                    activate_selected_items ();
                 }
             }
             return false;

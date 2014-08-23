@@ -192,8 +192,10 @@ message ("VC path changed");
         }
 
         private void set_up_current_slot () {
-message ("set up slot");
+message ("set up current slot");
             var slot = get_current_slot ();
+            assert (slot != null);
+            assert (slot.directory != null);
 
             content = view.get_content_box ();
             can_show_folder = true;

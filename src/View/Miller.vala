@@ -65,13 +65,14 @@ message ("Making new Miller View");
         }
 
         public override void destroy () {
-            slot_list.@foreach ((slot) => {
-                slot.destroy ();
-            });
+            var slot = slot_list.first().data;
+            assert (slot != null);
+            truncate_list_after_slot (slot);
+            slot.destroy ();
         }
 
         public override void user_path_change_request (GLib.File loc) {
-message ("MV path change request %s", loc.get_uri ());
+message ("MV user path change request %s", loc.get_uri ());
             /* user request always make new root */
             var slot = slot_list.first().data;
             assert (slot != null);
@@ -180,11 +181,11 @@ message ("Miller: nest slot");
         //private void truncate_list_after_slot (Slot slot) {
         private void truncate_list_after_slot (GOF.AbstractSlot slot) {
 message ("truncate list after slot");
+            current_slot = slot;
+
             if (slot_list.length () < 2) {
                 return;
             }
-
-            
             /* destroy the nested slots */
             ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
                 if (w != null)

@@ -54,10 +54,7 @@ namespace Marlin.View {
 
         public override void destroy () {
             dir_view.destroy ();
-            dir_view = null;
             this.directory.cancel ();
-            this.directory = null;
-            this.ctab = null;
         }
 
         private void connect_slot_signals () {
