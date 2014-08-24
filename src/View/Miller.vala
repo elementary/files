@@ -33,7 +33,7 @@ namespace Marlin.View {
         public int total_width = 0; /*TODO Use AbstractSlot width? */
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
-message ("Making new Miller View %s", loc.get_uri());
+//message ("Making new Miller View %s", loc.get_uri());
             base.init ();
             this.ctab = ctab;
             this.root_location = loc;
@@ -60,17 +60,11 @@ message ("Making new Miller View %s", loc.get_uri());
 
             this.colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
             this.colpane.key_release_event.connect (on_key_pressed);
-
-            //add_location (loc);
-            this.make_view (Marlin.ViewMode.MILLER_COLUMNS);
-        }
-
-        ~Miller () {
-message ("In Miller destructor");
+            this.make_view ();
         }
 
         public override void user_path_change_request (GLib.File loc) {
-message ("MV user path change request %s", loc.get_uri ());
+//message ("MV user path change request %s", loc.get_uri ());
             /* user request always make new root */
             var slot = slot_list.first().data;
             assert (slot != null);
@@ -80,23 +74,21 @@ message ("MV user path change request %s", loc.get_uri ());
         }
 
         public override string? get_tip_uri () {
-message ("MILLER get_tip_uri");
+//message ("MILLER get_tip_uri");
             if (slot_list != null && slot_list.last () != null && slot_list.last ().data is GOF.AbstractSlot) {
-message ("returning %s", slot_list.last ().data.uri);
                 return slot_list.last ().data.uri;
             } else {
-message ("returning null");
                 return null;
             }
         }
 
         public override string? get_root_uri () {
-message ("MV get root uri %s", root_location.get_uri ());
+//message ("MV get root uri %s", root_location.get_uri ());
             return root_location.get_uri ();
         }
 
-        protected override Gtk.Widget make_view (int mode) {
-message ("Miller View: making root view");
+        protected override Gtk.Widget make_view () {
+//message ("Miller View: making root view");
             this.current_slot = null;
             add_location (root_location, null);  /* current slot gets set by this */
             ((Marlin.View.Slot)(current_slot)).hpane.style_get ("handle-size", out this.handle_size);
@@ -107,32 +99,22 @@ message ("Miller View: making root view");
         /* TODO Make Expand Miller View a MillerView function */
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, GOF.AbstractSlot? host = null) {
-message ("MV add location %s", loc.get_uri ());
-            /* host is null when creating the root slot */
-            if (host != null)
-message ("MV add location  host %s", host.uri);
-
+//message ("MV add location %s", loc.get_uri ());
             Slot new_slot = new Slot (loc, this.ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-
-            new_slot.width = preferred_column_width;
             this.total_width += new_slot.width + 180;
             this.colpane.set_size_request (total_width, -1);
-
-            connect_slot_signals (new_slot);
-
             nest_slot_in_host_slot (new_slot, (Marlin.View.Slot)host);
-
-            new_slot.directory.track_longest_name = true;
+            new_slot.width = preferred_column_width;
+            connect_slot_signals (new_slot);
+            new_slot.directory.track_longest_name = true;;
             new_slot.directory.load ();
-
             slot_list.append (new_slot);
             new_slot.active ();
         }
 
-
         private void nest_slot_in_host_slot (Slot slot, Slot? host) {
-message ("Miller: nest slot");
+//message ("Miller: nest slot");
             var hpane1 = new Granite.Widgets.ThinPaned (Gtk.Orientation.HORIZONTAL);
             hpane1.hexpand = true;
             slot.hpane = hpane1;
@@ -156,7 +138,7 @@ message ("Miller: nest slot");
         }
 
         private void truncate_list_after_slot (GOF.AbstractSlot slot) {
-message ("truncate list after slot");
+//message ("truncate list after slot");
             if (slot_list.length () <= 0)
                 return;
 
@@ -174,7 +156,6 @@ message ("truncate list after slot");
         private void calculate_total_width () {
             total_width = 100;
             slot_list.@foreach ((slot) => {
-message ("Add width %i", slot.width);
                 total_width += slot.width;
             });
         }
@@ -191,6 +172,7 @@ message ("autosize_slot %s", slot.uri);
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
+
             slot.width = (int) Pango.units_to_double (extents.width)
                   + 2 * slot.directory.icon_size
                   + 2 * handle_size
@@ -203,13 +185,13 @@ message ("autosize_slot %s", slot.uri);
         }
 
         private void update_total_width (Gtk.Allocation allocation, Slot slot) {
-message ("update_total_width: slot changed %s;  allocation width %i, current width %i", slot.uri, allocation.width, total_width);
+//message ("update_total_width: slot changed %s;  allocation width %i, current width %i", slot.uri, allocation.width, total_width);
             if (total_width != 0 && slot.width != allocation.width) {
                 total_width += allocation.width - slot.width;
                 slot.width = allocation.width;
                 this.colpane.set_size_request (total_width, -1);
             }
-message ("update_total_width: updated width %i", total_width);
+//message ("update_total_width: updated width %i", total_width);
         }
 
         
@@ -217,25 +199,10 @@ message ("update_total_width: updated width %i", total_width);
 /** Signal handling **/
 /*********************/
         private void connect_slot_signals (Slot slot) {
-            var dir = slot.directory;
-//            dir.done_loading.connect (() => {
-//                autosize_slot (slot);
-//            });
-
-//            dir.file_deleted.connect ((f) => {
-//                if (f.is_directory)
-//                    //TODO Check if this is right - copied from existing code
-//                    truncate_list_after_slot (current_slot);
-//            });
-
             slot.autosize.connect (autosize_slot);
-
             slot.frozen_changed.connect (on_slot_frozen_changed);
-
             slot.active.connect (on_slot_active);
-
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
-
             slot.miller_slot_request.connect ((loc, make_root) => {
                 if (make_root)
                     user_path_change_request (loc);
@@ -257,7 +224,7 @@ message ("update_total_width: updated width %i", total_width);
         /** Called in response to slot active signal.
          *  Should not be called directly */
         private void on_slot_active (GOF.AbstractSlot slot) {
-message ("Miller: Slot active");
+//message ("Miller: Slot active");
             if (this.current_slot == slot)
                 return;
 
@@ -271,7 +238,7 @@ message ("Miller: Slot active");
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
-message ("default prefs notification");
+//message ("default prefs notification");
             if (!show_hidden) {
                 /* we are hiding hidden files - check whether any slot is a hidden directory */
                 int i = -1;
@@ -320,7 +287,7 @@ message ("default prefs notification");
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {
             /* Ensure all slots synchronise the frozen state and suppress key press event processing when frozen*/
-message ("on_slot_frozen_changed");
+//message ("on_slot_frozen_changed");
             if (frozen)
                 this.colpane.key_release_event.disconnect (on_key_pressed);
             else
@@ -338,7 +305,7 @@ message ("on_slot_frozen_changed");
 /** Helper functions */
 
         private void scroll_to_slot (GOF.AbstractSlot slot) {
-message ("scroll_to_slot");
+//message ("scroll_to_slot");
             int width = 0;
             int previous_width = 0;
 
@@ -396,13 +363,12 @@ message ("scroll_to_slot");
         }
 
         public void expand_miller_view (string tip_uri) {
-message ("expand miller view to %s", tip_uri);
+//message ("expand miller view to %s", tip_uri);
             assert (slot_list.length () == 1);
             
             var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
-            //var relative_path = location.get_relative_path (tip_location);
             GLib.File gfile;
 
             if (relative_path != null) {

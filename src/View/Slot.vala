@@ -20,6 +20,7 @@
 namespace Marlin.View {
     public class Slot : GOF.AbstractSlot {
         private Marlin.View.ViewContainer ctab;
+        private Marlin.ViewMode mode;
         //public GOF.Directory.Async directory;
         public FM.DirectoryView? dir_view = null;
         public Gtk.Box colpane;
@@ -42,20 +43,15 @@ namespace Marlin.View {
 
         public signal void autosize ();
 
-        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode mode) {
+        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
 //message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
+            mode = _mode;
             set_up_directory (_location);
             connect_slot_signals ();
-            make_view ((int)mode);
-//message ("New slot - leave");
+            make_view ();
         }
-
-        ~Slot () {
-message ("In slot destructor");
-        }
-
 
         private void connect_slot_signals () {
 //message ("connect slot signals");
@@ -78,7 +74,7 @@ message ("In slot destructor");
         }
 
         private void autosize_me () {
-message ("autosize me");
+//message ("autosize me");
             autosize ();
         }
 
@@ -94,6 +90,7 @@ message ("autosize me");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
             directory.done_loading.connect (autosize_me);
+            directory.track_longest_name = (mode == Marlin.ViewMode.MILLER_COLUMNS);
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
@@ -101,27 +98,22 @@ message ("autosize me");
                 on_path_change_request (loc, flag, make_root);
                 return false;
             });
-
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) {
                 if (dir_view is FM.ColumnView) {
-//message ("Miller slot request");
                     miller_slot_request (loc, make_root);
                 } else {
-//message ("User path request");
                     user_path_change_request (loc);
                 }
             } else
                 ctab.new_container_request (loc, flag);
         }
 
-        //protected override void on_tab_path_changed (GLib.File? loc, int flag, Slot? source_slot) {
         public override void user_path_change_request (GLib.File loc) {
-//message ("SLot - on tab changed");
-            assert (loc != null);
 //message ("Slot received path change signal to loc %s", loc.get_uri ());
+            assert (loc != null);
 
             if (location != loc) {
                 var old_dir = directory;
@@ -135,11 +127,11 @@ message ("autosize me");
             ctab.slot_path_changed (loc);
         }
 
-        protected override Gtk.Widget make_view (int view_mode) {
+        protected override Gtk.Widget make_view () {
 //message ("Slot make view");
             assert (dir_view == null);
 
-            switch ((Marlin.ViewMode)view_mode) {
+            switch (mode) {
                 case Marlin.ViewMode.MILLER_COLUMNS:
                     dir_view = new FM.ColumnView (this);
                     break;
@@ -156,9 +148,8 @@ message ("autosize me");
                     break;
             }
 
-            if (view_mode != Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
                 content_box.pack_start (dir_view, true, true, 0);
-                directory.track_longest_name = false;
             } /* Miller takes care of packing the dir_view otherwise */
 
             connect_dir_view_signals ();

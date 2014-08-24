@@ -129,7 +129,7 @@ namespace Marlin.View {
         }
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
-message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
+//message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
             if (mode != view_mode) {
 
                 if (loc == null) { /* Only untrue on container creation */
@@ -152,12 +152,12 @@ message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view
         }
 
         public void user_path_change_request (GLib.File loc) {
-message ("VC user path changed request");
+//message ("VC user path changed request");
             view.user_path_change_request (loc);
         }
 
         public void new_container_request (GLib.File loc, int flag = 1) {
-message ("VC new container request");
+//message ("VC new container request");
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);
@@ -173,7 +173,7 @@ message ("VC new container request");
         }
 
         public void slot_path_changed (GLib.File loc) {
-message ("VC path changed");
+//message ("VC path changed");
 #if 0
             /* automagicly enable icon view for icons keypath */
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
@@ -184,7 +184,7 @@ message ("VC path changed");
         }
 
         private void set_up_current_slot () {
-message ("set up current slot");
+//message ("set up current slot");
             var slot = get_current_slot ();
             assert (slot != null);
             assert (slot.directory != null);
@@ -238,7 +238,7 @@ message ("set up current slot");
 
         /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading (GOF.AbstractSlot slot) {
-message ("directory done loading");
+//message ("directory done loading");
             FileInfo file_info;
 
             try {

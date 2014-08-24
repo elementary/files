@@ -340,14 +340,12 @@ namespace FM {
 //message ("load location");
             /* In column view, this will nest new location in slot.
             /* Else same effect as load_root_location */
-            //slot.ctab.path_changed (location, Marlin.OpenFlag.DEFAULT, slot);
             path_change_request (location, Marlin.OpenFlag.DEFAULT, false);
         }
 
         protected void load_root_location (GLib.File location) {
 //message ("load root location");
             path_change_request (location, Marlin.OpenFlag.DEFAULT, true);
-            //slot.ctab.path_changed (location, Marlin.OpenFlag.DEFAULT, null);
         }
 
     /** Operations on selections */
@@ -429,17 +427,11 @@ namespace FM {
         protected void connect_directory_handlers (GOF.Directory.Async dir) {
             assert (dir != null);
             dir.file_loaded.connect (on_directory_file_loaded);
-
             dir.file_added.connect (on_directory_file_added);
-
             dir.file_changed.connect (on_directory_file_changed);
-
             dir.file_deleted.connect (on_directory_file_deleted);
-
             dir.icon_changed.connect (on_directory_file_icon_changed);
-
             dir.done_loading.connect (on_directory_done_loading);
-
             dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
         }
 
@@ -1446,41 +1438,22 @@ message ("on selection action open with other app");
         private GLib.MenuModel build_menu_open () {
 message ("build menu open");
             var menu = new GLib.Menu ();        
-//            string label = _("Open");
-//            if (default_app != null) {
-//                var app_name = default_app.get_display_name ();
-//                if (app_name == "Files") {
-//                    default_app = null;
-//                } else if (!selected_files.data.is_executable ()) {
-//                    label = (_("Open With %s")).printf (app_name);
-//                }
-//            }
             string label = _("Invalid");
             if (selected_files.data.is_executable ()) {
-message ("appending selection open");
                     label = _("Run");
                     menu.append (label, "selection.open");
             } else if (default_app != null) {
                 var app_name = default_app.get_display_name ();
 
                 if (app_name != "Files") {
-message ("Appending selection open with default");
                     label = (_("Open With %s")).printf (app_name);
                     menu.append (label, "selection.open_with_default");
                 }
             }
 
-//            if (default_app != null)
-//                    menu.append (label, "selection.open_with_default");
-            //else
-                    //menu.append (label, "selection.open");
-
             GLib.MenuModel? app_submenu = build_submenu_open_with_applications ();
             if (app_submenu != null) {
-message ("Appending open with apps");
                 menu.append_submenu (_("Open with"), app_submenu);
-            } else {
-message ("No open with apps");
             }
 
             return menu as MenuModel;

@@ -24,9 +24,7 @@ namespace GOF {
         protected Gtk.Box content_box;
         public GOF.Directory.Async directory;
         public GLib.File location  {
-            get {
-message ("GeSt ABS location");
-                return directory.location;}
+            get {return directory.location;}
         }
         public string uri {
             get { return directory.file.uri;}
@@ -57,7 +55,8 @@ message ("GeSt ABS location");
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
 
-        protected abstract Gtk.Widget make_view (int mode);
+        //protected abstract Gtk.Widget make_view (int mode);
+        protected abstract Gtk.Widget make_view ();
 
         public virtual void zoom_out () {}
         public virtual void zoom_normal () {}
@@ -68,8 +67,5 @@ message ("GeSt ABS location");
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
         public virtual void zoom_in () {}
-
-
-
     }
 }

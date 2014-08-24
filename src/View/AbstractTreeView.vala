@@ -73,14 +73,14 @@ namespace FM {
         }
 
         protected void set_up_view () {
-message ("ATV tree view set up view");
+//message ("ATV tree view set up view");
             connect_tree_signals ();
             connect_name_renderer_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
         }
 
         protected void connect_tree_signals () {
-message ("ATV connect tree_signals");
+//message ("ATV connect tree_signals");
             tree.get_selection ().changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -166,7 +166,7 @@ message ("ATV connect tree_signals");
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-message ("ATV start renaming file");
+//message ("ATV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);

@@ -326,7 +326,7 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-message ("WIN change tab");
+//message ("WIN change tab");
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
@@ -722,7 +722,7 @@ message ("WIN change tab");
         }
 
         private void save_tabs () {
-message ("save tabs");
+//message ("save tabs");
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
@@ -731,7 +731,7 @@ message ("save tabs");
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
                 if (!view_container.can_show_folder) {
-message ("Not saving unshowable folder");
+//message ("Not saving unshowable folder");
                     continue;
                 }
 

@@ -31,14 +31,6 @@ namespace FM {
             /* We do not need to load the directory - this is done by Miller */
         }
 
-        construct {
-//message ("Column view construct");
-        }
-
-        /* Was fm_columns_view_finalize */
-        ~ColumnView () {
-        }
-
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("CV setup zoom_level");
@@ -80,11 +72,9 @@ namespace FM {
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
-//message ("awaiting double click");
                     result = true;
                 } else if (path != null) {
                     /*Determine where user clicked - this will be the sole selection */
-//message ("CV unselect all");
                     selection.unselect_all ();
                     selection.select_path (path);
 
@@ -94,23 +84,18 @@ namespace FM {
                         unowned GOF.File file = selected_files.data;
 
                         if (file.is_folder ()) {
-//message ("on folder");
                             /*  ... store clicked folder and start double-click timeout */
                             selected_folder = file;
                             awaiting_double_click = true;
-//message ("freeze updates and start timeout");
                             freeze_updates ();
-                            /* use short timeout to maintain responsiveness */
                             double_click_timeout_id = GLib.Timeout.add (100, not_double_click);
                         } else {
-//message ("not on folder tree is single click mode - %s", tree.get_activate_on_single_click () ? "true" : "false");
                             int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
                             tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
                             int? x_offset, width;
                             if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
                                (cell_x <= x_offset + width)) {
                                         /* clicked on icon or expander - use default handler */
-//message ("CV on icon");
                                         result = false;
                             } else {
                                 rename_file (selected_files.data); /* Is this desirable? */
@@ -118,7 +103,6 @@ namespace FM {
                             }
                         }
                     } else {
-//message ("path is null");
                         /* Do not activate row if click on blank part */
                         result = true;
                     }
@@ -164,20 +148,14 @@ namespace FM {
         private bool not_double_click () {
 //message ("MCV not double click");
             if (double_click_timeout_id != 0) {
-//message ("timeout not cancelled");
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-//message ("unfreeze updated");
                 unfreeze_updates ();
-//message ("activate if drag not pending");
                 if (!is_drag_pending ()) {
-//message ("activation");
                     activate_selected_items ();
                 }
             }
             return false;
         }
-
-
     }
 }
