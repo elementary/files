@@ -77,8 +77,6 @@ namespace Marlin.View {
         public bool freeze_view_changes = false;
         private const int MARLIN_LEFT_OFFSET = 16;
         private const int MARLIN_TOP_OFFSET = 9;
-        //private const int MARLIN_MINIMUM_WINDOW_WIDTH = 640;
-        //private const int MARLIN_MINIMUM_WINDOW_HEIGHT = 480;
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -93,7 +91,6 @@ namespace Marlin.View {
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
             var window_number = app.window_count;
-            //var active_window = app.get_active_window ();
 //message ("New window");
             application = app;
             screen = myscreen;
@@ -111,38 +108,9 @@ namespace Marlin.View {
             build_window ();
             connect_signals ();
             make_bindings ();
-            //set_geometry (window_number, active_window);
             show ();
         }
 
-#if 0
-        private void set_geometry (int window_number, Gtk.Window? active_window) {
-//message ("set geometry, window number is %i", window_number);
-
-            /* Position first window according to preferences and
-             * offset subsequent windows to ensure visibility */
-            string geometry = "";
-            int left_offset = 0, top_offset = 0;
-
-            if (active_window == null || window_number == 0) {
-                geometry = Preferences.settings.get_string("geometry");
-                if (geometry == "")
-                    geometry = (Preferences.settings.get_default_value("geometry")).get_string ();
-
-            } else {
-                geometry = EelGtk.Window.get_geometry_string (active_window);
-                left_offset = MARLIN_LEFT_OFFSET;
-                top_offset = MARLIN_TOP_OFFSET;
-            }
-
-//            EelGtk.Window.set_initial_geometry_from_string (this, geometry,
-//                                                            MARLIN_MINIMUM_WINDOW_WIDTH,
-//                                                            MARLIN_MINIMUM_WINDOW_HEIGHT,
-//                                                            false,
-//                                                            left_offset, top_offset);
-        }
-
-#endif
         private void build_window () {
 //message ("build window");
             var lside_pane = new Granite.Widgets.ThinPaned ();
@@ -318,7 +286,8 @@ namespace Marlin.View {
             });
 
             tabs.tab_duplicated.connect ((tab) => {
-                add_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
+                add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
+               // add_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
             });
 
         }
@@ -357,7 +326,7 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-//message ("WIN change tab");
+message ("WIN change tab");
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
@@ -753,7 +722,7 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
-//message ("save tabs");
+message ("save tabs");
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
@@ -761,8 +730,10 @@ namespace Marlin.View {
                 var view_container = tab.page as ViewContainer;
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
-                if (!view_container.can_show_folder)
+                if (!view_container.can_show_folder) {
+message ("Not saving unshowable folder");
                     continue;
+                }
 
                 vb.add ("(uss)",
                         view_container.view_mode,
@@ -779,7 +750,6 @@ namespace Marlin.View {
 //message ("Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window) {
-//message ("returning zero");
                 return 0;
             }
             else
@@ -801,10 +771,11 @@ namespace Marlin.View {
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
 //message ("restoring %s mode is %i", root_uri, (int)mode);
                 add_tab (root_location, mode);
-//message ("add tab finished");
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_location);
-
+//                    var mwcols = (tabs.current.page as ViewContainer).view as Miller;
+//                    mwcols.expand_miller_view (tip_uri);
+                }
                 tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
@@ -822,20 +793,16 @@ namespace Marlin.View {
                 change_tab (active_tab_position);
             }
 
-//message ("get current tab tip uri");
             string? path = current_tab.get_tip_uri ();
             if (path == null || path == "") {
-//message ("get current tab root uri");
                 path = current_tab.get_root_uri ();
             }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
-//message ("Final path is %s", path);
             top_menu.location_bar.path = path;
             /* restore location bar animation */
             top_menu.location_bar.bread.animation_visible = true;
-//message ("leaving restore tabs");
             return tabs_added;
         }
 
@@ -844,7 +811,6 @@ namespace Marlin.View {
 /**TODO - move to Miller.vala **/ 
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
-            //var mwcols = view.mwcol;
             var mwcols = view.view as Miller;
             var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
@@ -866,18 +832,16 @@ namespace Marlin.View {
         }
 
         public void update_top_menu () {
-            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
+            if (current_tab != null) {
+                top_menu.set_back_menu (current_tab.get_go_back_path_list ());
+                top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
+            }
         }
 
         public void update_labels (string new_path, string tab_name) {
-//message ("Window title is %s", title);
-        assert (new_path != null && new_path != "");
-//message ("New path is %s", new_path);
+            assert (new_path != null && new_path != "");
             set_title (title);
-            //if (window.top_menu.location_bar != null) {
-            top_menu.update_location_bar (new_path);
-            //}            
+            top_menu.update_location_bar (new_path);          
         }
 
         public void mount_removed (Mount mount) {

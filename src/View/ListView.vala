@@ -166,28 +166,17 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
 //message ("LV handle left button");
             bool result = true;
             if (path != null) {
                 /*Determine where user clicked - this will be the sole selection */
                 selection.unselect_all ();
                 selection.select_path (path);
-
-                int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
-                tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
-                if (col == name_column) {
-                    int? x_offset, width;
-                    int expander_width = 10; /* TODO Get from style class */
-                    if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
-                       (cell_x <= x_offset + width + expander_width)) {
-                                /* clicked on icon or expander - use default handler */
-                                result = false;
-                    } else if (!on_blank) {
-                            rename_file (selected_files.data); /* Is this desirable? */
-                            result = true;
-                    }
-                }
+                if (on_icon)
+                    result = false; 
+                else
+                    rename_file (selected_files.data); /* Is this desirable? */
             }
 
             return result;
@@ -197,10 +186,10 @@ namespace FM {
             return false;
         }
 
-        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
             /* opens folder(s) in new tab */
-            if (path != null) {
-                activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+            if (!on_blank) {
+                //message (" (Marlin.OpenFlag.NEW_TAB);
                 return true;
             } else
                 return false;

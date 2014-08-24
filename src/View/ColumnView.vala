@@ -69,17 +69,18 @@ namespace FM {
 
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
 //message ("Column view button release");
-            //bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
-            //return result;
-            return true;
+            /* Invoke default handler unless waiting for a double-click in single-click mode */
+            bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
+            return result;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
 //message ("CV handle left button");
             bool result = false;
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
+//message ("awaiting double click");
                     result = true;
                 } else if (path != null) {
                     /*Determine where user clicked - this will be the sole selection */
@@ -101,13 +102,27 @@ namespace FM {
                             freeze_updates ();
                             /* use short timeout to maintain responsiveness */
                             double_click_timeout_id = GLib.Timeout.add (100, not_double_click);
+                        } else {
+//message ("not on folder tree is single click mode - %s", tree.get_activate_on_single_click () ? "true" : "false");
+                            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
+                            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
+                            int? x_offset, width;
+                            if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
+                               (cell_x <= x_offset + width)) {
+                                        /* clicked on icon or expander - use default handler */
+//message ("CV on icon");
+                                        result = false;
+                            } else {
+                                rename_file (selected_files.data); /* Is this desirable? */
+                                result = true;
+                            }
                         }
-                    } else
+                    } else {
+//message ("path is null");
                         /* Do not activate row if click on blank part */
                         result = true;
-                } else
-                    /* pass on event to activate the row and slot clicked on unless on blank part*/
-                    result = on_blank;
+                    }
+                }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
                 cancel_await_double_click ();
                 if (selected_folder != null) {
@@ -115,13 +130,14 @@ namespace FM {
                 }
                 result = true;
             }
+//message ("Returning %s", result ? "true" : "false");
             return result;
         }
 
-        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
+        protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
                 /* opens folder(s) in new tab */
                 cancel_await_double_click ();
-                if (path != null) {
+                if (!on_blank) {
                     //message (" (Marlin.OpenFlag.NEW_TAB);
                     return true;
                 } else

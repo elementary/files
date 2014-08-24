@@ -19,14 +19,14 @@
 
 namespace Marlin.View {
     public class Slot : GOF.AbstractSlot {
-
+        private Marlin.View.ViewContainer ctab;
         //public GOF.Directory.Async directory;
-        public ViewContainer ctab;
-
         public FM.DirectoryView? dir_view = null;
         public Gtk.Box colpane;
         public Granite.Widgets.ThinPaned hpane;
-
+        public Marlin.View.Window window {
+            get {return ctab.window;}
+        }
         //public int width = 0;
         public bool updates_frozen = false;
         public bool is_active = false;
@@ -36,34 +36,34 @@ namespace Marlin.View {
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
 
         public signal void miller_slot_request (GLib.File file, bool make_root);
-
         public string empty_message = "<span size='x-large'>" +
                                 _("This folder is empty.") +
                                "</span>";
+
+        public signal void autosize ();
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode mode) {
 //message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
-            directory = GOF.Directory.Async.from_gfile (_location);
-            assert (directory != null);
+            set_up_directory (_location);
             connect_slot_signals ();
             make_view ((int)mode);
 //message ("New slot - leave");
         }
 
-        public override void destroy () {
-            dir_view.destroy ();
-            this.directory.cancel ();
+        ~Slot () {
+message ("In slot destructor");
         }
+
 
         private void connect_slot_signals () {
 //message ("connect slot signals");
             active.connect (() => {
+                this.dir_view.grab_focus ();
                 if (!this.is_active) {
                     ctab.refresh_slot_info (directory.location);
                     this.is_active = true;
-                    this.dir_view.grab_focus ();
                 }
             });
 
@@ -77,12 +77,23 @@ namespace Marlin.View {
             });
         }
 
+        private void autosize_me () {
+message ("autosize me");
+            autosize ();
+        }
+
         private void connect_dir_view_signals () {
 //message ("Connect DV to slot signals - path_change_request");
             dir_view.path_change_request.connect ((loc, flag, make_root) => {
-                /* Avoid race conditions in signal processing */
+                /* Avoid race conditions in signal processing TODO identify and prevent race condition*/
                 schedule_path_change_request (loc, flag, make_root);
             });
+        }
+
+        private void set_up_directory (GLib.File loc) {
+            directory = GOF.Directory.Async.from_gfile (loc);
+            assert (directory != null);
+            directory.done_loading.connect (autosize_me);
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
@@ -113,9 +124,10 @@ namespace Marlin.View {
 //message ("Slot received path change signal to loc %s", loc.get_uri ());
 
             if (location != loc) {
-                var new_dir = GOF.Directory.Async.from_gfile (loc);
-                dir_view.change_directory (directory, new_dir);
-                directory = new_dir;
+                var old_dir = directory;
+                set_up_directory (loc);
+                dir_view.change_directory (old_dir, directory);
+
             } else
                 assert_not_reached ();
 

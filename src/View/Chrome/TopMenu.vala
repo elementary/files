@@ -90,7 +90,7 @@ namespace Marlin.View.Chrome
                 win.current_tab.view != null
                 //&& win.current_tab.slot.directory != null) {
                 && win.current_tab.view.directory != null) {
-                /* TODO should not need to know deep details of other widgets*/
+                /** TODO should not need to know deep details of other widgets*/
                 //location_bar.path = win.current_tab.slot.directory.location.get_parse_name ();
                 location_bar.path = win.current_tab.location.get_parse_name ();
                 //debug ("topmenu test path %s", location_bar.path);

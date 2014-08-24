@@ -199,6 +199,7 @@ message ("done_loading emit");
             }
         }
         //done_loading ();
+message ("done_loading emit2");
         done_loading ();
     }
 
@@ -288,6 +289,7 @@ message ("done_loading emit");
 
         //TODO send err code
         //done_loading ();
+message ("done_loading emit3");
         done_loading ();
     }
 
@@ -348,6 +350,7 @@ message ("done_loading emit");
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
             longest_file_name = gof.basename;
+message ("done_loading emit4");
             done_loading ();
         }
     }

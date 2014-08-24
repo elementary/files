@@ -73,14 +73,14 @@ namespace FM {
         }
 
         protected void set_up_view () {
-//message ("ATV tree view set up view");
+message ("ATV tree view set up view");
             connect_tree_signals ();
             connect_name_renderer_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
         }
 
         protected void connect_tree_signals () {
-//message ("ATV connect tree_signals");
+message ("ATV connect tree_signals");
             tree.get_selection ().changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -166,7 +166,7 @@ namespace FM {
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-//message ("ATV start renaming file");
+message ("ATV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);
@@ -241,8 +241,7 @@ namespace FM {
             if (event.window != tree.get_bin_window ())
                 return false; /* not for us */
 
-            //grab_focus (); /* cancels any renaming */
-            slot.active ();
+            slot.active ();  /* grabs focus and cancels any renaming */
 
             unowned Gtk.TreeSelection selection = tree.get_selection ();
             Gtk.TreePath? path = null;
@@ -251,6 +250,7 @@ namespace FM {
             int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
             bool on_blank = tree.is_blank_at_pos ((int) event.x, (int) event.y, out path, out col, out cell_x, out cell_y);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
+            bool on_icon =  (path != null) ? clicked_on_icon (event, col) : false;
             bool result = false;
 
             if (no_mods) {
@@ -266,13 +266,13 @@ namespace FM {
                         result = true;
 
                     else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
-                        result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank);
+                        result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank, on_icon);
                     }
                     /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
-                    result = handle_middle_button_click (event, selection, path, col, no_mods, on_blank);
+                    result = handle_middle_button_click (event, on_blank);
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
@@ -296,6 +296,22 @@ namespace FM {
 
         protected override bool view_has_focus () {
             return tree.has_focus;
+        }
+
+        protected bool clicked_on_icon (Gdk.EventButton event, Gtk.TreeViewColumn? col) {
+            bool result = false;
+            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
+            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
+            if (col != null && col == name_column) {
+                int? x_offset, width;
+                int expander_width = (tree.show_expanders ? 10 : 0); /* TODO Get from style class */
+                if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
+                   (cell_x <= x_offset + width + expander_width))
+
+                    result = true;
+            }
+
+            return result;
         }
     }
 }

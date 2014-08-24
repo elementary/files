@@ -172,7 +172,7 @@ namespace FM {
         public DirectoryView (Marlin.View.Slot _slot) {
 //message ("new directory view - location %s", _slot.directory.file.uri);
             slot = _slot;
-            window = _slot.ctab.window;
+            window = _slot.window;
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
@@ -680,7 +680,7 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-//message ("rename file");
+message ("rename file");
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
@@ -1853,8 +1853,8 @@ message ("No open with apps");
             zoom_level = get_normal_zoom_level (); /* Abstract */
         }
 
-        protected virtual void on_view_items_activated () {
-//message ("on items activated");
+        protected void on_view_items_activated () {
+message ("on items activated");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
@@ -2060,8 +2060,8 @@ message ("No open with apps");
         protected abstract void update_selected_files ();
 
         protected abstract bool on_view_button_press_event (Gdk.EventButton event);
-        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
-        protected abstract bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
+        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon);
+        protected abstract bool handle_middle_button_click (Gdk.EventButton event, bool on_blank);
 //        protected abstract bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
 
 

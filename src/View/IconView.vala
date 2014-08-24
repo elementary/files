@@ -21,7 +21,6 @@ namespace FM {
         /* Golden ratio used */
         const double ITEM_WIDTH_TO_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
-        private bool on_editable = false;
         private new Gtk.CellRendererText name_renderer;
 
         public IconView (Marlin.View.Slot _slot) {
@@ -241,12 +240,7 @@ namespace FM {
             bool on_blank = !tree.get_item_at_pos ((int) event.x, (int) event.y, out path, out renderer);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool result = false;
-
-            if (renderer != null && (renderer is Gtk.CellRendererText)) {
-                on_editable = true;
-            } else
-                on_editable = false;
-
+            bool on_editable = (renderer != null && (renderer is Gtk.CellRendererText));
 
             if (no_mods) {
                 unselect_all ();
@@ -260,14 +254,14 @@ namespace FM {
                         result = true;
 
                     else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
-                        result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank);
+                        result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank, !on_editable);
 
                     }
                     /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
-                    result = handle_middle_button_click (event, null, path, null, no_mods, on_blank);
+                    result = handle_middle_button_click (event, on_blank);
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
@@ -282,8 +276,8 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("LV handle left button");
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
+message ("IV handle left button");
             assert (selection == null); /* not consistent with icon view */
             assert (col == null); /* not consistent with icon view */
 
@@ -293,7 +287,7 @@ namespace FM {
                 tree.unselect_all ();
                 tree.select_path (path);
 
-                if (on_editable)
+                if (!on_icon)
                     rename_file (selected_files.data); /* Is this desirable? */
                 else
                     result = false; /* Use default handler */
@@ -303,13 +297,13 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_middle_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-            /* opens folder(s) in new tab */
-            if (path != null) {
-                activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                return true;
-            } else
-                return false;
+        protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
+                /* opens folder(s) in new tab */
+                if (!on_blank) {
+                    //message (" (Marlin.OpenFlag.NEW_TAB);
+                    return true;
+                } else
+                    return false;
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {

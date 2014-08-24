@@ -24,7 +24,9 @@ namespace GOF {
         protected Gtk.Box content_box;
         public GOF.Directory.Async directory;
         public GLib.File location  {
-            get { return directory.location;}
+            get {
+message ("GeSt ABS location");
+                return directory.location;}
         }
         public string uri {
             get { return directory.file.uri;}
@@ -54,7 +56,6 @@ namespace GOF {
         public abstract void reload ();
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
-        public abstract void destroy ();
 
         protected abstract Gtk.Widget make_view (int mode);
 
