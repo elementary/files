@@ -21,6 +21,7 @@ namespace FM {
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
         protected Gtk.CellRendererPixbuf pixbuf_renderer;
+        private bool left_button_down = false;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
@@ -34,16 +35,16 @@ namespace FM {
             tree.set_headers_visible (false);
             tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
             tree.set_rules_hint (true);
-            tree.set_rubber_banding (true);
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
 
             create_and_set_up_name_column ();
             set_up_view ();
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+            tree.set_rubber_banding (true);
+
             return tree as Gtk.Widget;
         }
 
         protected virtual void create_and_set_up_name_column () {
-
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
             name_column.set_expand (true);
@@ -113,7 +114,7 @@ namespace FM {
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
 //message ("ATV get path at pos");
             Gtk.TreePath? path = null;
-            if (tree.get_dest_row_at_pos (x, y, out path, null))
+            if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null))
                 return path;
             else
                 return null;
@@ -205,14 +206,11 @@ namespace FM {
 //message ("ATV update selected files");
             selected_files = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
-                GOF.File file;
+                GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
                 if (file != null) {
-//message ("prepending %s", file.uri);
                     selected_files.prepend (file);
-                } else {
-                    critical ("Null file in model");
                 }
             });
             selected_files.reverse ();
@@ -245,11 +243,13 @@ namespace FM {
                     selection.select_path (path);
             }
 
+            if (path == null || on_blank)
+                block_drag_and_drop ();
+
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (path == null)
-                        result = true;
-                    else if (Preferences.settings.get_boolean ("single-click") && no_mods)
+                    left_button_down = true;
+                    if (path != null && Preferences.settings.get_boolean ("single-click") && no_mods)
                         result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank, on_icon);
                     break;
 

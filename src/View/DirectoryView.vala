@@ -126,6 +126,8 @@ namespace FM {
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
         private bool drag_has_begun = false;
+        protected bool dnd_disabled = false;
+        private void* drag_data;
 
         /* support for generating thumbnails */
         Marlin.Thumbnailer thumbnailer = null;
@@ -143,14 +145,11 @@ namespace FM {
         protected Gtk.TreeViewColumn name_column;
         protected Gtk.CellRendererText name_renderer;
         protected Gtk.Entry? editable_widget = null;
-        //protected GOF.File? renaming_file = null;
-        //protected GOF.File? newly_added_file = null;
         public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
 
-        /* Move to list view? */
         protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
         protected GLib.List<unowned GOF.File> selected_files = null ;
         private Gtk.TreePath selection_before_delete;
@@ -160,12 +159,15 @@ namespace FM {
         private bool updates_frozen = false;
         private bool in_trash = false;
 
+        private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
         protected FM.ListModel model;
         protected Gtk.CellRenderer icon_renderer;
         protected Marlin.View.Slot slot;
         protected Marlin.View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new FM.DndHandler ();
+
+        private Gtk.TreePath? hover_path = null;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
@@ -188,7 +190,8 @@ namespace FM {
 //message ("Directory view construct");
             set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
-            /* TODO previewer support */ 
+            /* TODO previewer support */
+
             size_allocate.connect_after (on_size_allocate);
             button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
@@ -207,7 +210,7 @@ namespace FM {
 
             connect_directory_handlers (slot.directory);
 
-            Gtk.Widget? view = create_view (); /* Abstract */
+            view = create_view (); /* Abstract */
             if (view != null) {
                 add (view);
                 connect_drag_drop_signals (view);
@@ -473,7 +476,7 @@ namespace FM {
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
 //message ("connect drag drop");
-            //var widget = get_real_view ();
+
             /* Set up as drop site */
             Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
             widget.drag_drop.connect (on_drag_drop);
@@ -620,7 +623,6 @@ namespace FM {
                     default:
                         if (only_one_file) {
                             load_location (location);
-//message ("loaded location");
                         }
                         break;
                 }
@@ -632,8 +634,6 @@ namespace FM {
                 file.open_single (screen, default_app);
             else
                 warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
-
-//message ("leaving activate file");
         }
 
         private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list, bool delete_if_already_in_trash) {
@@ -1730,16 +1730,12 @@ namespace FM {
 //message ("block model");
             model.row_deleted.disconnect (on_row_deleted);
             model.row_deleted.disconnect (after_restore_selection);
-            //GLib.SignalHandler.block_by_func (model, (void*)on_row_deleted, null);
-            //GLib.SignalHandler.block_by_func (model, (void*)after_restore_selection, null);
             updates_frozen = true;
         }
 
         private void unblock_model () {
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect (after_restore_selection);
-            //GLib.SignalHandler.unblock_by_func (model, (void*)on_row_deleted, null);
-            //GLib.SignalHandler.unblock_by_func (model, (void*)after_restore_selection, null);
             updates_frozen = false;
         }
 
@@ -1768,7 +1764,6 @@ namespace FM {
         }
 
         private void start_drag_scroll_timer (Gdk.DragContext context) {
-            //drag_context = context;
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
@@ -1891,6 +1886,20 @@ namespace FM {
                 default:
                     break;
             }
+            return false;
+        }
+
+        protected bool on_motion_notify_event (Gdk.EventMotion event) {
+            var path = get_path_at_pos ((int)event.x, (int)event.y);
+            if ((path != null && hover_path == null) ||
+                (path == null && hover_path != null) ||
+                (path != null && hover_path != null && path.compare (hover_path) != 0)) {
+//message ("emitting item hovered");
+                GOF.File? file = path != null ? model.file_for_path (path) : null;
+                window.item_hovered (file);
+                hover_path = path;
+            }
+
             return false;
         }
 
@@ -2026,13 +2035,38 @@ namespace FM {
             return true;
         }
 
+        //protected void block_drag_and_drop (Gtk.Widget widget) {
+        protected void block_drag_and_drop () {
+//message ("block_drag_and_drop");
+            drag_data = view.get_data ("gtk-site-data");
+            GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
+            dnd_disabled = true;
+            if (view is Gtk.TreeView)
+                (view as Gtk.TreeView).set_rubber_banding (true); /* FIXME Doesnt work! */
+        }
+
+        //protected void unblock_drag_and_drop (Gtk.Widget widget) {
+        protected void unblock_drag_and_drop () {
+//message ("unblock_drag_and_drop");
+            drag_data = view.get_data ("gtk-site-data");
+            GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
+            dnd_disabled = false;
+        }
+
+        protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
+            if (dnd_disabled)
+                unblock_drag_and_drop ();
+
+            return false;
+        }
+
 /** Virtual methods - may be overridden*/
         public virtual void sync_selection () {}
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
-        protected virtual bool on_view_button_release_event (Gdk.EventButton event) {return false;}
+
 
 /** Abstract methods - must be overridden*/
         public abstract void zoom_level_changed ();
@@ -2053,6 +2087,7 @@ namespace FM {
         protected abstract bool on_view_button_press_event (Gdk.EventButton event);
         protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon);
         protected abstract bool handle_middle_button_click (Gdk.EventButton event, bool on_blank);
+        //protected abstract bool on_view_button_release_event (Gdk.EventButton event);
 //        protected abstract bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
 
 

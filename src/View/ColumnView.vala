@@ -56,6 +56,8 @@ namespace FM {
 //message ("CV create view");
             model.set_property ("has-child", false);
             base.create_view ();
+            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+            tree.motion_notify_event.connect (on_motion_notify_event);
             return tree as Gtk.Widget;
         }
 
@@ -63,6 +65,7 @@ namespace FM {
 //message ("Column view button release");
             /* Invoke default handler unless waiting for a double-click in single-click mode */
             bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
+            base.on_view_button_release_event (event);
             return result;
         }
 
@@ -73,11 +76,7 @@ namespace FM {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
                     result = true;
-                } else if (path != null) {
-                    /*Determine where user clicked - this will be the sole selection */
-                    //selection.unselect_all ();
-                    //selection.select_path (path);
-
+                } else {
                     if (!on_blank) {
                         /* Determine if folder selected ... */
                         selected_folder = null;
@@ -89,18 +88,10 @@ namespace FM {
                             awaiting_double_click = true;
                             freeze_updates ();
                             double_click_timeout_id = GLib.Timeout.add (100, not_double_click);
-                        } else {
-                            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
-                            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
-                            int? x_offset, width;
-                            if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
-                               (cell_x <= x_offset + width)) {
-                                        /* clicked on icon or expander - use default handler */
-                                        result = false;
-                            } else {
-                                rename_file (selected_files.data); /* Is this desirable? */
-                                result = true;
-                            }
+                            result = true;
+                        } else if (!on_icon) {
+                            rename_file (selected_files.data); /* Is this desirable? */
+                            result = true;
                         }
                     } else {
                         /* Do not activate row if click on blank part */
@@ -135,7 +126,7 @@ namespace FM {
 
 /** Private methods */
         private void cancel_await_double_click () {
-//message ("MCV cancel await double click");
+message ("MCV cancel await double click");
             if (awaiting_double_click) {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
@@ -146,7 +137,7 @@ namespace FM {
 
 
         private bool not_double_click () {
-//message ("MCV not double click");
+message ("MCV not double click");
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;

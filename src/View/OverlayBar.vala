@@ -59,7 +59,6 @@ namespace Marlin.View {
         private uint files_count = 0;
         private uint64 files_size = 0;
         private GOF.File? goffile = null;
-        //private unowned GLib.List<GOF.File>? last_selection = null;
 
         public void update (GLib.List<GOF.File>? files = null) {
 //message ("overlay update");
@@ -74,15 +73,8 @@ namespace Marlin.View {
                 list.prepend (file);
                 real_update (list);
             } else {
-//                Marlin.View.Slot slot = window.current_tab.slot;
-//                if (slot != null) {
-//                    //List<GOF.File> list = ((FM.DirectoryView) slot.dir_view).get_selected_files ();
-//                    unowned List<GOF.File> list = ((FM.DirectoryView) slot.dir_view).get_selected_files ();
-//                    real_update (list);
-//                }
                 GOF.AbstractSlot view = window.current_tab.view;
                 if (view != null) {
-                    //List<GOF.File> list = ((FM.DirectoryView) slot.dir_view).get_selected_files ();
                     unowned List<GOF.File> list = view.get_selected_files ();
                     real_update (list);
                 }

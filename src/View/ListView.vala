@@ -159,27 +159,24 @@ namespace FM {
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
 //message ("LV handle left button");
             bool result = true;
-            if (path != null) {
-                /*Determine where user clicked - this will be the sole selection */
-                //selection.unselect_all ();
-                //selection.select_path (path);
-                if (on_icon)
-                    result = false; 
-                else if (!on_blank)
-                    rename_file (selected_files.data); /* Is this desirable? */
-            }
+            if (on_icon)
+                result = false; 
+            else if (!on_blank && col == name_column)
+                rename_file (selected_files.data);
 
             return result;
         }
 
-        protected override bool on_view_button_release_event (Gdk.EventButton event) {
-            return false;
-        }
+//        protected override bool on_view_button_release_event (Gdk.EventButton event) {
+//            if (dnd_disabled)
+//                unblock_drag_and_drop ();
+
+//            return false;
+//        }
 
         protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
             /* opens folder(s) in new tab */
             if (!on_blank) {
-                //message (" (Marlin.OpenFlag.NEW_TAB);
                 return true;
             } else
                 return false;

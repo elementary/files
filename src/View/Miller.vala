@@ -163,7 +163,6 @@ namespace Marlin.View {
         }
 
         public void autosize_slot (Slot slot) {
-//message ("autosize_slot %s", slot.uri);
             Pango.Layout layout = slot.dir_view.create_pango_layout (null);
 
             if (slot.directory.is_empty ())
@@ -187,13 +186,11 @@ namespace Marlin.View {
         }
 
         private void update_total_width (Gtk.Allocation allocation, Slot slot) {
-//message ("update_total_width: slot changed %s;  allocation width %i, current width %i", slot.uri, allocation.width, total_width);
             if (total_width != 0 && slot.width != allocation.width) {
                 total_width += allocation.width - slot.width;
                 slot.width = allocation.width;
                 this.colpane.set_size_request (total_width, -1);
             }
-//message ("update_total_width: updated width %i", total_width);
         }
 
         

@@ -61,7 +61,6 @@ namespace Marlin.View {
                 this.is_active = true;
             });
 
-//message ("Slot connect signals - inactive");
             inactive.connect (() => {
                 this.is_active = false;
                 this.dir_view.unselect_all ();
@@ -69,12 +68,10 @@ namespace Marlin.View {
         }
 
         private void autosize_me () {
-//message ("autosize me");
             autosize ();
         }
 
         private void connect_dir_view_signals () {
-//message ("Connect DV to slot signals - path_change_request");
             dir_view.path_change_request.connect ((loc, flag, make_root) => {
                 /* Avoid race conditions in signal processing TODO identify and prevent race condition*/
                 schedule_path_change_request (loc, flag, make_root);
@@ -97,6 +94,7 @@ namespace Marlin.View {
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+//message ("on_path change request - make root is %s", make_root ? "true" : "false");
             if (flag == 0) {
                 if (dir_view is FM.ColumnView) {
                     miller_slot_request (loc, make_root);
@@ -108,7 +106,7 @@ namespace Marlin.View {
         }
 
         public override void user_path_change_request (GLib.File loc) {
-//message ("Slot received path change signal to loc %s", loc.get_uri ());
+//message ("Slot received user path change signal to loc %s", loc.get_uri ());
             assert (loc != null);
 
             if (location != loc) {

@@ -359,7 +359,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
-message ("notify file added");
+//message ("notify file added");
         file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }

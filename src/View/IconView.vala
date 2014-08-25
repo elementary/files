@@ -52,6 +52,9 @@ namespace FM {
                 return stop;
             });
 
+            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+            tree.motion_notify_event.connect (on_motion_notify_event);
+
             return tree as Gtk.Widget;
         }
 
@@ -84,6 +87,7 @@ namespace FM {
             tree.item_activated.connect (on_view_items_activated);
         }
 
+        
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("CV setup zoom_level");
@@ -121,9 +125,9 @@ namespace FM {
 
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
 //message ("IV get path at pos");
-            unowned Gtk.TreePath path;
+            unowned Gtk.TreePath? path = null;
             Gtk.IconViewDropPosition pos; 
-            if (tree.get_dest_item_at_pos  (x, y, out path, out pos))
+            if (x >= 0 && y >= 0 && tree.get_dest_item_at_pos  (x, y, out path, out pos))
                 return path;
             else
                 return null;
@@ -233,10 +237,10 @@ namespace FM {
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (path == null)
-                        result = true;
+                    if (path == null) {
+                        block_drag_and_drop ();  /* allow rubber banding */
 
-                    else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                    } else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
                         result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank, !on_editable);
 
                     }
@@ -285,6 +289,13 @@ namespace FM {
                     return true;
                 } else
                     return false;
+        }
+
+        protected override bool on_view_button_release_event (Gdk.EventButton event) {
+            if (dnd_disabled)
+                unblock_drag_and_drop ();
+
+            return false;
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {

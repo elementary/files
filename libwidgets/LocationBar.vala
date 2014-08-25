@@ -190,7 +190,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
-message ("location bar bpe");
+//message ("location bar bpe");
         if (is_focus)    
             return base.button_press_event (event);
         
