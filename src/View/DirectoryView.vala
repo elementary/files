@@ -274,6 +274,7 @@ namespace FM {
         }
 
         public unowned GLib.AppInfo get_default_app () {
+//message ("get default app");
             return default_app;
         }
 
@@ -628,7 +629,7 @@ namespace FM {
             else if (only_one_file && default_app != null)
                 file.open_single (screen, default_app);
             else
-                warning ("Unable to activate this file");
+                warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
 
 //message ("leaving activate file");
         }
@@ -672,7 +673,7 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-message ("rename file");
+//message ("rename file");
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
@@ -759,7 +760,7 @@ message ("rename file");
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open");
+//message ("on selection action open");
             //activate_selected_items (Marlin.OpenFlag.DEFAULT);
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
@@ -768,18 +769,18 @@ message ("on selection action open");
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open with default");
+//message ("on selection action open with default");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open with app");
+//message ("on selection action open with app");
             var index = int.parse (param.get_string ());
             open_files_with (open_with_apps.nth_data ((uint)index), get_files_for_action ());
         }
 
         private void on_selection_action_open_with_other_app () {
-message ("on selection action open with other app");
+//message ("on selection action open with other app");
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             var dialog = new Gtk.AppChooserDialog (window, 0, selection.data.location);
             GOF.File file = selection.data as GOF.File;
@@ -826,6 +827,7 @@ message ("on selection action open with other app");
         /** Common actions */
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
+//message ("on common action open in ");
             default_app = null;
             get_files_for_action ();
 
@@ -1054,16 +1056,22 @@ message ("on selection action open with other app");
 
 /** Handle Selection changes */
         public void notify_selection_changed () {
-//message ("notify selection changed calls update menu actions");
+message ("notify selection changed calls update menu actions");
             selection_was_removed = false;
-            if (!get_realized ())
+            if (!get_realized ()) {
+message ("not realized");
                 return;
+            }
 
-            if (updates_frozen)
+            if (updates_frozen) {
+message ("updates frozen");
                 return;
+            }
 
-            if (!slot.is_active)
+            if (!slot.is_active) {
+message ("not active");
                 return;
+            }
 
             update_menu_actions ();
             window.selection_changed (get_selected_files ());
@@ -1436,7 +1444,7 @@ message ("on selection action open with other app");
         }
 
         private GLib.MenuModel build_menu_open () {
-message ("build menu open");
+//message ("build menu open");
             var menu = new GLib.Menu ();        
             string label = _("Invalid");
             if (selected_files.data.is_executable ()) {
@@ -1827,12 +1835,12 @@ message ("build menu open");
         }
 
         protected void on_view_items_activated () {
-message ("on items activated");
+//message ("on view items activated");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         protected virtual void on_view_selection_changed () {
-//message ("on tree selection changed");
+message ("on tree selection changed");
             update_selected_files ();
             notify_selection_changed ();
         }

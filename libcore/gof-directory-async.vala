@@ -175,7 +175,7 @@ public class GOF.Directory.Async : Object {
 //message ("CRITICAL location %s gof null", location.get_uri ());
                 }
             });
-message ("done_loading emit");
+//message ("done_loading emit");
             done_loading ();
         }
     }
@@ -199,7 +199,7 @@ message ("done_loading emit");
             }
         }
         //done_loading ();
-message ("done_loading emit2");
+//message ("done_loading emit2");
         done_loading ();
     }
 
@@ -289,7 +289,7 @@ message ("done_loading emit2");
 
         //TODO send err code
         //done_loading ();
-message ("done_loading emit3");
+//message ("done_loading emit3");
         done_loading ();
     }
 
@@ -350,7 +350,7 @@ message ("done_loading emit3");
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
             longest_file_name = gof.basename;
-message ("done_loading emit4");
+//message ("done_loading emit4");
             done_loading ();
         }
     }
@@ -706,6 +706,7 @@ message ("done_loading emit4");
         if (icon_size == size && thumbs_thread_running)
             return;
 
+//message ("Async  setting icon_size to %i", size);
 //message ("Async  setting icon_size to %i", size);
         icon_size = size;
         thumbs_stop = true;

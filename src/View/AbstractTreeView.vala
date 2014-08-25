@@ -27,14 +27,6 @@ namespace FM {
             base (_slot);
         }
 
-        construct {
-//message ("Abstract ListView construct");
-        }
-
-        ~AbstractTreeView () {
-
-        }
-
         protected override Gtk.Widget? create_view () {
 //message ("ATV create view");
             tree = new Gtk.TreeView ();
@@ -254,7 +246,6 @@ namespace FM {
             bool result = false;
 
             if (no_mods) {
-//message ("ATV button press unselect all");
                 unselect_all ();
                 if (path != null)
                     selection.select_path (path);
@@ -284,15 +275,8 @@ namespace FM {
                     result = handle_default_button_click ();
                     break;
             }
-//message ("ATV button press leaving");
             return result;
         }
-
-//        protected override bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank) {
-//message ("ATV handle right button");
-//            show_or_queue_context_menu (event);
-//            return true;
-//        }
 
         protected override bool view_has_focus () {
             return tree.has_focus;

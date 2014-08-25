@@ -29,14 +29,14 @@ namespace FM {
         }
 
         ~DndHandler () {
-message ("In Dndhandler destructor");
+//message ("In Dndhandler destructor");
         }
 
         public bool dnd_perform (Gtk.Widget widget,
                                  GOF.File drop_target,
                                  GLib.List<GLib.File> drop_files,
                                  Gdk.DragAction action) {
-message ("dnd perform");
+//message ("dnd perform");
 
             if (drop_target.is_folder ()) {
                 Marlin.FileOperations.copy_move (drop_files,

@@ -1304,7 +1304,6 @@ gof_file_is_desktop_file (GOFFile *file)
 gboolean
 gof_file_is_executable (GOFFile *file)
 {
-g_message ("is executable?");
     gboolean     can_execute = FALSE;
     const gchar *content_type;
 
@@ -1313,25 +1312,21 @@ g_message ("is executable?");
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
-g_message ("File info is null - returning false");
         return FALSE;
     }
 
     if (gof_file_is_desktop_file (file)) {
-g_message ("Is desktop file returning true");
         return TRUE;
     }
 
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
     {
-g_message ("Attribute is executable");
         /* get the content type of the file */
         //TODO
         //content_type = g_file_info_get_content_type (file->info);
         content_type = gof_file_get_ftype (file);
         if (G_LIKELY (content_type != NULL))
         {
-g_message ("Checking content type %s", content_type);
 #ifdef G_OS_WIN32
             /* check for .exe, .bar or .com */
             can_execute = g_content_type_can_be_executable (content_type);

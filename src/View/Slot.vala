@@ -30,7 +30,7 @@ namespace Marlin.View {
         }
         //public int width = 0;
         public bool updates_frozen = false;
-        public bool is_active = false;
+        public bool is_active = true;
 
         public signal bool horizontal_scroll_event (double delta_x); //Listeners: Miller
         public signal void frozen_changed (bool freeze); //Listeners: Miller

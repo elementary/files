@@ -161,7 +161,7 @@ namespace Marlin.View {
         }
 
         public void autosize_slot (Slot slot) {
-message ("autosize_slot %s", slot.uri);
+//message ("autosize_slot %s", slot.uri);
             Pango.Layout layout = slot.dir_view.create_pango_layout (null);
 
             if (slot.directory.is_empty ())

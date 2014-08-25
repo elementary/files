@@ -75,8 +75,8 @@ namespace FM {
                     result = true;
                 } else if (path != null) {
                     /*Determine where user clicked - this will be the sole selection */
-                    selection.unselect_all ();
-                    selection.select_path (path);
+                    //selection.unselect_all ();
+                    //selection.select_path (path);
 
                     if (!on_blank) {
                         /* Determine if folder selected ... */

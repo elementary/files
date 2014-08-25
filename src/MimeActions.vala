@@ -23,6 +23,8 @@
 public class Marlin.MimeActions {
 
     public static AppInfo? get_default_application_for_file (GOF.File file) {
+//message ("Mime Actions get default app for file");
+
         AppInfo app = file.get_default_handler ();
 
         if (app == null) {
@@ -37,7 +39,7 @@ public class Marlin.MimeActions {
 
     public static AppInfo? get_default_application_for_files (GLib.List<GOF.File> files) {
         assert (files != null);
-
+//message ("Mime Actions get default app for files");
         //GLib.List<GOF.File> sorted_files = files.copy ();
         unowned GLib.List<GOF.File> sorted_files = files;
 
@@ -74,6 +76,8 @@ public class Marlin.MimeActions {
     }
 
     public static List<AppInfo>? get_applications_for_file (GOF.File file) {
+//message ("Mime Actions get apps for files");
+
         List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -93,6 +97,8 @@ public class Marlin.MimeActions {
     }
 
     public static List<AppInfo>? get_applications_for_folder (GOF.File file) {
+//message ("Mime Actions get default app for folder");
+
         List<AppInfo> result = AppInfo.get_all_for_type (ContentType.get_mime_type ("inode/directory"));
         string uri_scheme = file.location.get_uri_scheme ();
 

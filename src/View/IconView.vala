@@ -24,17 +24,9 @@ namespace FM {
         private new Gtk.CellRendererText name_renderer;
 
         public IconView (Marlin.View.Slot _slot) {
-//message ("New Abstract IconView");
+//message ("New IconView");
             base (_slot);
             slot.directory.load ();
-        }
-
-        construct {
-//message ("Abstract IconView construct");
-        }
-
-        ~AbstractTreeView () {
-
         }
 
         protected override Gtk.Widget? create_view () {
@@ -83,7 +75,7 @@ namespace FM {
         }
 
         private void connect_tree_signals () {
-//message ("IV connect tree_signals");
+message ("IV connect tree_signals");
             tree.selection_changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -244,8 +236,10 @@ namespace FM {
 
             if (no_mods) {
                 unselect_all ();
-                if (path != null)
+                if (path != null) {
                     tree.select_path (path);
+//message ("IV reselect path");
+                }
             }
 
             switch (event.button) {
@@ -277,15 +271,13 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
-message ("IV handle left button");
+//message ("IV handle left button");
             assert (selection == null); /* not consistent with icon view */
             assert (col == null); /* not consistent with icon view */
 
             bool result = true;
             if (path != null) {
                 /*Determine where user clicked - this will be the sole selection */
-                tree.unselect_all ();
-                tree.select_path (path);
 
                 if (!on_icon)
                     rename_file (selected_files.data); /* Is this desirable? */

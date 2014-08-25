@@ -37,16 +37,6 @@ namespace FM {
             slot.directory.load ();
         }
 
-        construct {
-//message ("List view construct");
-        }
-
-        ~ListView () {
-//message ("List View destruct");
-            if (unload_file_timeout_id > 0)
-                GLib.Source.remove (unload_file_timeout_id);
-        }
-
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("LV setup zoom_level");
@@ -171,11 +161,11 @@ namespace FM {
             bool result = true;
             if (path != null) {
                 /*Determine where user clicked - this will be the sole selection */
-                selection.unselect_all ();
-                selection.select_path (path);
+                //selection.unselect_all ();
+                //selection.select_path (path);
                 if (on_icon)
                     result = false; 
-                else
+                else if (!on_blank)
                     rename_file (selected_files.data); /* Is this desirable? */
             }
 
