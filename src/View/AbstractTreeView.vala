@@ -140,13 +140,11 @@ namespace FM {
 
             Gtk.TreeSelection selection = tree.get_selection ();
             if (!select)
-                //GLib.SignalHandler.block_by_func (selection, (void*) on_view_selection_changed, null);
                 selection.changed.disconnect (on_view_selection_changed);
 
             tree.set_cursor_on_cell (path, name_column, name_renderer, start_editing);
 
             if (!select)
-                //GLib.SignalHandler.unblock_by_func (selection, (void*) on_view_selection_changed, null);
                 selection.changed.connect (on_view_selection_changed);
 
         }
@@ -190,20 +188,14 @@ namespace FM {
             /* FIXME Not implemented - needed? */
         }
 
-/** Treeview functions */
-        /* Was filename_cell_data_func */
-
-
-
-
 /**  Helper functions */
-        public new void freeze_updates () {
+        protected new void freeze_updates () {
 //message ("freeze updates");
             name_renderer.@set ("editable", true, null);
             base.freeze_updates ();
         }
 
-        public new void unfreeze_updates () {
+        protected new void unfreeze_updates () {
 //message ("unfreeze updates");
             name_renderer.@set ("editable", false, null);
             base.unfreeze_updates ();
@@ -243,7 +235,8 @@ namespace FM {
             bool on_blank = tree.is_blank_at_pos ((int) event.x, (int) event.y, out path, out col, out cell_x, out cell_y);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool on_icon =  (path != null) ? clicked_on_icon (event, col) : false;
-            bool result = false;
+
+            bool result = false; /* Pass to default handler by default */
 
             if (no_mods) {
                 unselect_all ();
@@ -255,11 +248,8 @@ namespace FM {
                 case Gdk.BUTTON_PRIMARY:
                     if (path == null)
                         result = true;
-
-                    else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                    else if (Preferences.settings.get_boolean ("single-click") && no_mods)
                         result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank, on_icon);
-                    }
-                    /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
@@ -267,7 +257,6 @@ namespace FM {
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
-                    //result = handle_secondary_button_click (event, selection, path, col, no_mods, on_blank);
                     result = handle_secondary_button_click (event);
                     break;
 

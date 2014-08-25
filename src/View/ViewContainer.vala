@@ -289,7 +289,7 @@ namespace Marlin.View {
         }
 
         public void set_active_state (bool is_active) {
-message ("VC set slot active to %s", is_active ? "true" : "false");
+//message ("VC set slot active to %s", is_active ? "true" : "false");
             get_current_slot ().set_active_state (is_active);
         }
 

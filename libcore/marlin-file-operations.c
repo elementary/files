@@ -3535,7 +3535,7 @@ retry:
         }
         return CREATE_DEST_DIR_FAILED;
     }
-    marlin_file_changes_queue_file_added (*dest);
+    //marlin_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
     marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
@@ -4293,7 +4293,7 @@ retry:
         if (copy_job->is_move) {
             marlin_file_changes_queue_file_moved (src, dest);
         } else {
-            marlin_file_changes_queue_file_added (dest);
+           marlin_file_changes_queue_file_added (dest);
         }
 
         /* If copying a trusted desktop file to the desktop,
@@ -5406,8 +5406,7 @@ retry:
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-
-        marlin_file_changes_queue_file_added (dest);
+       marlin_file_changes_queue_file_added (dest);
         /*if (position) {
             //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
         } else {
@@ -6140,7 +6139,7 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-        marlin_file_changes_queue_file_added (dest);
+       marlin_file_changes_queue_file_added (dest);
         /*if (job->has_position) {
             //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
         } else {

@@ -72,6 +72,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private Async (GLib.File _file) {
+//message ("create dir");
         location = _file;
         file = GOF.File.get (location);
         file.exists = true;
@@ -86,28 +87,23 @@ public class GOF.Directory.Async : Object {
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
-//message ("dir %s ref_count %u", this.file.uri, this.ref_count);
 
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
-//message ("leaving create dir");
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         return_if_fail (object != null && object is Object);
         if (is_last) {
-//message ("Async toggle ref is last - refcount is %u", object.ref_count);
             Async dir = (Async) object;
             debug ("Async toggle_ref_notify %s", dir.file.uri);
-//message ("Async toggle_ref_notify removing %s", dir.file.uri);
 
             if (!dir.removed_from_cache)
                 dir.remove_dir_from_cache ();
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         } else {
-//message ("Async toggle ref not last - refcount is %u", object.ref_count);
         }
     }
 
@@ -172,7 +168,7 @@ public class GOF.Directory.Async : Object {
                     file_loaded (gof);
                 }
                 } else {
-//message ("CRITICAL location %s gof null", location.get_uri ());
+                    critical ("CRITICAL location %s gof null", location.get_uri ());
                 }
             });
 //message ("done_loading emit");
@@ -198,7 +194,6 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
-        //done_loading ();
 //message ("done_loading emit2");
         done_loading ();
     }
@@ -287,8 +282,6 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-        //TODO send err code
-        //done_loading ();
 //message ("done_loading emit3");
         done_loading ();
     }
@@ -332,6 +325,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
+//message ("async fir add and refresh");
         if (gof.is_gone)
             return;
 
@@ -340,8 +334,9 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
             file_added (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -364,6 +359,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
+message ("notify file added");
         file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
@@ -406,6 +402,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
+//message ("real directory changed");
         switch (event) {
         case FileMonitorEvent.CHANGES_DONE_HINT:
             MarlinFile.changes_queue_file_changed (_file);
@@ -470,6 +467,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_added (List<GLib.File> files) {
+//message ("notify files added 1");
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);
@@ -508,6 +506,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_moved (List<GLib.Array<GLib.File>> files) {
+//message ("notify files moved");
         List<GLib.File> list_from = new List<GLib.File> ();
         List<GLib.File> list_to = new List<GLib.File> ();
 

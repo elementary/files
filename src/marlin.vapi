@@ -156,29 +156,31 @@ namespace Marlin {
             public signal void changed ();
         }
 //    }
-    [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
-    namespace FileOperations {
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, void* callback, void* data_callback);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, void* callback, void* data_callback);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, void* callback, void* data_callback);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void mount_volume (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void unmount_mount_full (Gtk.Window? parent_window, GLib.Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
-        [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void @delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
-    }
-    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
-    public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
-    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
-    public delegate void UnmountCallback (void* callback_data);
+//    [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
+//    namespace FileOperations {
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, Marlin.CreateCallback? create_callback, void* data_callback);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, Marlin.CreateCallback? create_callback, void* data_callback);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, Marlin.CreateCallback? create_callback, void* data_callback);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void mount_volume (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void unmount_mount_full (Gtk.Window? parent_window, GLib.Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
+//        [CCode (cheader_filename = "marlin-file-operations.h")]
+//        public void @delete (GLib.List<GLib.File> locations, Gtk.Window window, void* callback, void* callback_data);
+//    }
+//    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+//    public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
+//    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+//    public delegate void UnmountCallback (void* callback_data);
+//    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+//    public delegate void CreateCallback (GLib.File new_file, void* callback_data);
 
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);

@@ -143,7 +143,8 @@ namespace FM {
         protected Gtk.TreeViewColumn name_column;
         protected Gtk.CellRendererText name_renderer;
         protected Gtk.Entry? editable_widget = null;
-        protected GOF.File? renaming_file = null;
+        //protected GOF.File? renaming_file = null;
+        //protected GOF.File? newly_added_file = null;
         public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
@@ -154,7 +155,7 @@ namespace FM {
         protected GLib.List<unowned GOF.File> selected_files = null ;
         private Gtk.TreePath selection_before_delete;
         private bool selection_was_removed = false;
-        private bool select_added_files = false;
+        public bool select_added_files = false;
         protected bool renaming = false;
         private bool updates_frozen = false;
         private bool in_trash = false;
@@ -289,27 +290,27 @@ namespace FM {
             return updates_frozen;
         }
 
-        public void freeze_updates () {
+        protected void freeze_updates () {
 //message ("freeze updates");
             updates_frozen = true;
+            slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
             action_set_enabled (common_actions, "copy", false);
-            //action_set_enabled (common_actions, "paste", false);
             action_set_enabled (common_actions, "paste_into", false);
             action_set_enabled (window.win_actions, "select_all", false);
 
             GLib.SignalHandler.block_by_func (this, (void*) on_size_allocate, null); /* required? */
             GLib.SignalHandler.block_by_func (this, (void*) on_clipboard_changed, null); 
-            //slot.set_updates_frozen (true);
             /* TODO queue file changed/added/.. and freeze their updates */
         }
 
-        public void unfreeze_updates () {
+        protected void unfreeze_updates () {
 //message ("DV unfreeze updates");
             if (renaming)
                 return;
 
             updates_frozen = false;
+            slot.directory.freeze_update = false;;
             update_menu_actions ();
             GLib.SignalHandler.unblock_by_func (this, (void*) on_size_allocate, null); 
             GLib.SignalHandler.unblock_by_func (this, (void*) on_clipboard_changed, null); 
@@ -649,10 +650,10 @@ namespace FM {
         }
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
-//message ("add file %s", file.uri);
             model.add_file (file, dir);
-            if (select_added_files)
+            if (select_added_files) {
                 add_gof_file_to_selection (file);
+            }
         }
 
         private void new_empty_file (string? parent_uri = null) {
@@ -665,25 +666,31 @@ namespace FM {
                                             null,
                                             null,
                                             0,
-                                            (void*)create_file_done);
+                                            (Marlin.CreateCallback?) create_file_done,
+                                            this);
         }
 
         private void new_empty_folder () {
-            Marlin.FileOperations.new_folder (null, null, slot.location, (void*) create_file_done, null);
+            Marlin.FileOperations.new_folder (null, null, slot.location, (Marlin.CreateCallback?) create_file_done, this);
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-//message ("rename file");
+message ("rename file");
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
 
 
 /** File operation callbacks */
-        private void create_file_done (GLib.File new_file, void* data) {
+        static void create_file_done (GLib.File? new_file, void* data) {
+            if (new_file == null)
+                return;
+
+            var view = (FM.DirectoryView)data;
             var file_to_rename = GOF.File.@get (new_file);
+            /* Allow time for the file to appear in the tree model before renaming */
             GLib.Timeout.add (50, () => {
-                rename_file (file_to_rename);
+                view.rename_file (file_to_rename);
                 return false;
             });
         }
@@ -807,6 +814,7 @@ namespace FM {
                 /** Background actions */
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
+message ("on background action new");
             switch (param.get_string ()) {
                 case "FOLDER":
                     new_empty_folder ();
@@ -871,7 +879,7 @@ namespace FM {
 
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-//message ("on directory file added");
+message ("on directory file added");
             add_file (file, dir);
         }
 
@@ -1662,8 +1670,8 @@ message ("not active");
                                                           slot.directory.location,
                                                           (_("Untitled %s")).printf (template.get_display_name ()),
                                                           template.location,
-                                                          (void*)create_file_done,
-                                                          null);
+                                                          (Marlin.CreateCallback?) create_file_done,
+                                                          this);
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<unowned GOF.File> files) {
@@ -1797,7 +1805,7 @@ message ("not active");
         }
 
         private void prepare_to_select_added_files () {
-//message ("prepare to add selected files");
+message ("prepare to add selected files");
             if (selected_files != null)
                 unselect_all ();
 
@@ -1913,7 +1921,7 @@ message ("on tree selection changed");
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
-//message ("on name editing started");
+message ("on name editing started");
             renaming = true;
             freeze_updates ();
             editable_widget = editable as Gtk.Entry;
@@ -1925,7 +1933,7 @@ message ("on tree selection changed");
         }
 
         protected void on_name_editing_canceled () {
-//message ("on name editing canceled");
+message ("on name editing canceled");
                 editable_widget = null;
                 renaming = false;
                 unfreeze_updates ();
@@ -1935,7 +1943,7 @@ message ("on tree selection changed");
         protected void on_name_edited (string path_string, string new_name) {
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
-//message ("on name edited");
+message ("on name edited");
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -1967,6 +1975,7 @@ message ("on tree selection changed");
                 }
             }
             renaming = false;
+            slot.directory.freeze_update = false;
         }
 
         protected virtual void filename_cell_data_func (Gtk.CellLayout cell_layout,

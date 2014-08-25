@@ -75,7 +75,7 @@ namespace FM {
         }
 
         private void connect_tree_signals () {
-message ("IV connect tree_signals");
+//message ("IV connect tree_signals");
             tree.selection_changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -190,17 +190,6 @@ message ("IV connect tree_signals");
 
 
 /**  Helper functions */
-        public new void freeze_updates () {
-//message ("freeze updates");
-            //name_renderer.@set ("editable", true, null);
-            base.freeze_updates ();
-        }
-
-        public new void unfreeze_updates () {
-//message ("unfreeze updates");
-            //name_renderer.@set ("editable", false, null);
-            base.unfreeze_updates ();
-        }
 
         protected override void update_selected_files () {
 //message ("IV update selected files");
@@ -299,7 +288,7 @@ message ("IV connect tree_signals");
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-//message ("ATV start renaming file");
+message ("ATV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);

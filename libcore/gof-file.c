@@ -1338,7 +1338,6 @@ gof_file_is_executable (GOFFile *file)
                 || g_content_type_is_a (content_type, "application/x-shellscript")
                 || g_content_type_is_a (content_type, "application/octet-stream"))
             {
-g_message ("returning true");
                 can_execute = TRUE;
             }
 #endif
