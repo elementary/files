@@ -57,19 +57,14 @@ namespace Marlin.View {
 //message ("connect slot signals");
             active.connect (() => {
                 this.dir_view.grab_focus ();
-                if (!this.is_active) {
-                    ctab.refresh_slot_info (directory.location);
-                    this.is_active = true;
-                }
+                ctab.refresh_slot_info (directory.location);
+                this.is_active = true;
             });
 
 //message ("Slot connect signals - inactive");
             inactive.connect (() => {
-                if (this.is_active) {
-//message ("Slot -> inactive");
-                    this.is_active = false;
-                    this.dir_view.unselect_all ();
-                }
+                this.is_active = false;
+                this.dir_view.unselect_all ();
             });
         }
 
@@ -87,6 +82,7 @@ namespace Marlin.View {
         }
 
         private void set_up_directory (GLib.File loc) {
+//message ("set up directory");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
             directory.done_loading.connect (autosize_me);

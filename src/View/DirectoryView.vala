@@ -608,6 +608,7 @@ namespace FM {
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
 
+
             if (file.is_folder ()) {
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
@@ -675,7 +676,7 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-message ("rename file");
+//message ("rename file");
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
@@ -814,7 +815,7 @@ message ("rename file");
                 /** Background actions */
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on background action new");
+//message ("on background action new");
             switch (param.get_string ()) {
                 case "FOLDER":
                     new_empty_folder ();
@@ -879,7 +880,7 @@ message ("on background action new");
 
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-message ("on directory file added");
+//message ("on directory file added");
             add_file (file, dir);
         }
 
@@ -1064,20 +1065,20 @@ message ("on directory file added");
 
 /** Handle Selection changes */
         public void notify_selection_changed () {
-message ("notify selection changed calls update menu actions");
+//message ("notify selection changed calls update menu actions");
             selection_was_removed = false;
             if (!get_realized ()) {
-message ("not realized");
+//message ("not realized");
                 return;
             }
 
             if (updates_frozen) {
-message ("updates frozen");
+//message ("updates frozen");
                 return;
             }
 
             if (!slot.is_active) {
-message ("not active");
+//message ("not active");
                 return;
             }
 
@@ -1805,7 +1806,7 @@ message ("not active");
         }
 
         private void prepare_to_select_added_files () {
-message ("prepare to add selected files");
+//message ("prepare to add selected files");
             if (selected_files != null)
                 unselect_all ();
 
@@ -1848,7 +1849,7 @@ message ("prepare to add selected files");
         }
 
         protected virtual void on_view_selection_changed () {
-message ("on tree selection changed");
+//message ("on tree selection changed");
             update_selected_files ();
             notify_selection_changed ();
         }
@@ -1921,7 +1922,7 @@ message ("on tree selection changed");
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
-message ("on name editing started");
+//message ("on name editing started");
             renaming = true;
             freeze_updates ();
             editable_widget = editable as Gtk.Entry;
@@ -1933,7 +1934,7 @@ message ("on name editing started");
         }
 
         protected void on_name_editing_canceled () {
-message ("on name editing canceled");
+//message ("on name editing canceled");
                 editable_widget = null;
                 renaming = false;
                 unfreeze_updates ();
@@ -1943,7 +1944,7 @@ message ("on name editing canceled");
         protected void on_name_edited (string path_string, string new_name) {
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
-message ("on name edited");
+//message ("on name edited");
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {

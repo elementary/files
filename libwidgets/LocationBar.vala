@@ -190,6 +190,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
+message ("location bar bpe");
         if (is_focus)    
             return base.button_press_event (event);
         
@@ -333,6 +334,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_activate () {
+message ("on activate");
         path_changed (get_file_for_path (text + text_completion));
         text_completion = "";
     }

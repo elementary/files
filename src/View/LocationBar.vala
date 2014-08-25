@@ -28,17 +28,14 @@ namespace Marlin.View.Chrome
         //public new string path {
         public new string path {
             set {
-//message ("path is %s", path);
                 var new_path = GLib.Uri.unescape_string (value);
                 if (new_path != null) {
+//message ("setting new path - bread is focus %s - win freeze view changes %s", bread.is_focus ? "true" : "false", win.freeze_view_changes ? "true" : "false");
                     _path = new_path;
-    //message ("new path win free_view_changeds is %s", win.freeze_view_changes ? "true": "false");
-//message ("setting _path to %s", new_path);
-//message ("bread is focus is %s", bread.is_focus ? "true" : "false");
-//message ("win freeze view changes is %s", win.freeze_view_changes ? "true" : "false");
+
                     if (!bread.is_focus && !win.freeze_view_changes) {
                         bread.text = "";
-//message ("changing bread crumbs");
+
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {
@@ -67,7 +64,6 @@ namespace Marlin.View.Chrome
         public LocationBar (Marlin.View.Window win) {
 //message ("New LocationBar");
             this.win = win;
-            //bread = new Breadcrumbs (ui, win);
             bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
 
@@ -92,20 +88,12 @@ namespace Marlin.View.Chrome
         }
 
         private void on_path_changed (File file) {
+//message ("on path changed");
             if (win.freeze_view_changes)
                 return;
 
-            /* focus back the view */
-//            if (win.current_tab.content_shown)
-//                win.current_tab.content.grab_focus ();
-//            else {
-////message ("Location Bar - view grab focus 1");
-//                //win.current_tab.slot.dir_view.grab_focus ();
-//                win.current_tab.view.grab_focus ();
-//            }
-
             win.grab_focus ();
-            activate(file);
+            activate (file);
         }
     }
 
@@ -131,11 +119,8 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
-        //public Breadcrumbs (Gtk.UIManager ui, Marlin.View.Window win)
         public Breadcrumbs (Marlin.View.Window win)
         {
-            /* grab the UIManager */
-            //this.ui = ui;
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
@@ -229,13 +214,6 @@ namespace Marlin.View.Chrome
             });
 
             down.connect (() => {
-                // focus back the view 
-//                if (win.current_tab.content_shown)
-//                    win.current_tab.content.grab_focus ();
-//                else {
-//                    //win.current_tab.slot.dir_view.grab_focus ();
-//                    win.current_tab.view.grab_focus ();
-//                }
                 win.grab_focus ();
             });
 
@@ -262,11 +240,6 @@ namespace Marlin.View.Chrome
             search_results = new SearchResults (this);
 
             search_results.file_selected.connect ((file) => {
-//                if (win.current_tab.content_shown)
-//                    win.current_tab.content.grab_focus ();
-//                else
-//                    win.current_tab.slot.view_box.grab_focus ();
-
                 win.grab_focus ();
                 win.current_tab.focus_file (file);
 

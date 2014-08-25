@@ -216,6 +216,7 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info (GLib.File loc) {
+//message ("refresh slot info - location is %s", location.get_uri ());
             loading (false);
             var slot_path = loc.get_path ();
 

@@ -151,6 +151,8 @@ namespace Marlin.View {
             slot_list.nth (slot.slot_number).next = null;
 
             calculate_total_width ();
+
+            current_slot = slot;
         }
 
         private void calculate_total_width () {

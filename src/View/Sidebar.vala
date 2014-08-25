@@ -1061,7 +1061,7 @@ namespace Marlin.Places {
 //                    if (slot != null)
 //                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
                         //GLib.Signal.emit_by_name (window.current_tab, "path-changed", location, null);
-message ("Sidebar open selected");
+//message ("Sidebar open selected");
                     window.current_tab.user_path_change_request (location);
                 }
             } else if (!ejecting_or_unmounting) {
@@ -1661,7 +1661,7 @@ message ("Sidebar open selected");
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    message ("Error while unmounting");
+                    //message ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
@@ -1731,7 +1731,7 @@ message ("Sidebar open selected");
                         drive.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting drive: %s", error.message);
+                        //message ("Error ejecting drive: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1747,7 +1747,7 @@ message ("Sidebar open selected");
                         volume.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting volume: %s", error.message);
+                        //message ("Error ejecting volume: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1763,7 +1763,7 @@ message ("Sidebar open selected");
                         mount.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting mount: %s", error.message);
+                        //message ("Error ejecting mount: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });

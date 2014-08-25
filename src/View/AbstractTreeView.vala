@@ -225,6 +225,7 @@ namespace FM {
             if (event.window != tree.get_bin_window ())
                 return false; /* not for us */
 
+//message ("for us");
             slot.active ();  /* grabs focus and cancels any renaming */
 
             unowned Gtk.TreeSelection selection = tree.get_selection ();

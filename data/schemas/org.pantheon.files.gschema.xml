@@ -127,7 +127,7 @@
     </key>
     <key type="a(uss)" name="tab-info-list">
       <summary>Details of open tabs</summary>
-      <default>[(0,"","")]</default>
+      <default>[(0,'','')]</default>
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
   </schema>

@@ -75,8 +75,8 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
 
         public bool freeze_view_changes = false;
-        private const int MARLIN_LEFT_OFFSET = 16;
-        private const int MARLIN_TOP_OFFSET = 9;
+        //private const int MARLIN_LEFT_OFFSET = 16;
+        //private const int MARLIN_TOP_OFFSET = 9;
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -832,16 +832,19 @@ namespace Marlin.View {
         }
 
         public void update_top_menu () {
+
             if (current_tab != null) {
+//message ("update to menu");
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
             }
         }
 
         public void update_labels (string new_path, string tab_name) {
+//message ("update labels");
             assert (new_path != null && new_path != "");
             set_title (title);
-            top_menu.update_location_bar (new_path);          
+            top_menu.update_location_bar (new_path);
         }
 
         public void mount_removed (Mount mount) {
@@ -859,6 +862,7 @@ namespace Marlin.View {
         }
 
         public void file_path_change_request (GLib.File loc) {
+//message ("file path change request");
             current_tab.user_path_change_request (loc);
         }
 
