@@ -167,13 +167,6 @@ namespace FM {
             return result;
         }
 
-//        protected override bool on_view_button_release_event (Gdk.EventButton event) {
-//            if (dnd_disabled)
-//                unblock_drag_and_drop ();
-
-//            return false;
-//        }
-
         protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
             /* opens folder(s) in new tab */
             if (!on_blank) {

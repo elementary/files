@@ -30,8 +30,8 @@ namespace GOF {
             get { return directory.file.uri;}
         }
         
-        public int slot_number;
-        public int width = 0;
+        protected int slot_number;
+        protected int width = 0;
 
         public signal void active (); //Listeners: this, Miller
         public signal void inactive (); //Listeners: this
@@ -55,10 +55,10 @@ namespace GOF {
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
 
-        //protected abstract Gtk.Widget make_view (int mode);
         protected abstract Gtk.Widget make_view ();
 
         public virtual void zoom_out () {}
+        public virtual void zoom_in () {}
         public virtual void zoom_normal () {}
         public virtual bool set_all_selected (bool all_selected) {return false;}
         public virtual Gtk.Widget get_content_box () {return content_box as Gtk.Widget;}
@@ -66,6 +66,5 @@ namespace GOF {
         public virtual void select_glib_files (GLib.List<GLib.File> locations) {}
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
-        public virtual void zoom_in () {}
     }
 }

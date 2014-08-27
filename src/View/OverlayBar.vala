@@ -208,7 +208,7 @@ namespace Marlin.View {
                 });
 
                 yield read_image_stream (loader, stream, image_cancellable);
-            } catch (Error e) { warning (e.message); }
+            } catch (Error e) { debug (e.message); }
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)

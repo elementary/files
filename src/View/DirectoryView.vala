@@ -493,14 +493,14 @@ namespace FM {
         }
 
     /** Handle hovering */
-        protected void notify_item_hovered (Gtk.TreePath? path) {
-            GOF.File? file = null;
-            if (path != null) {
-                file = model.file_for_path (path);
-                if (file != null)
-                    window.item_hovered (file);
-            }
-        }
+//        protected void notify_item_hovered (Gtk.TreePath? path) {
+//            GOF.File? file = null;
+//            if (path != null) {
+//                file = model.file_for_path (path);
+//                if (file != null)
+//                    window.item_hovered (file);
+//            }
+//        }
 
         protected void cancel_drag_timer () {
             if (drag_timer_id > 0) {
@@ -1077,10 +1077,10 @@ namespace FM {
                 return;
             }
 
-            if (!slot.is_active) {
+           //if (!slot.is_active) {
 //message ("not active");
-                return;
-            }
+             //   return;
+            //}
 
             update_menu_actions ();
             window.selection_changed (get_selected_files ());
@@ -1526,7 +1526,8 @@ namespace FM {
         }
 
         private void update_menu_actions () {
-            if (!slot.is_active || updates_frozen)
+            //if (!slot.is_active || updates_frozen)
+            if (updates_frozen)
                 return;
 //message ("update menu actions for slot %s", slot.directory.file.uri);
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
@@ -1890,13 +1891,24 @@ namespace FM {
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
-            var path = get_path_at_pos ((int)event.x, (int)event.y);
+            int x, y, mask;
+            /* We need to use the device position for rubberbanding to work properly in ListView */
+            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
+            var path = get_path_at_pos (x, y);
+
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
-//message ("emitting item hovered");
+
                 GOF.File? file = path != null ? model.file_for_path (path) : null;
                 window.item_hovered (file);
+
+                if (dnd_disabled ) { /* Rubberbanding */
+                    if (path != null && !path_is_selected (path)) {
+                        select_path (path);
+                    } else if (hover_path != null && path_is_selected (path))
+                        unselect_path (hover_path);
+                }
                 hover_path = path;
             }
 
@@ -2054,6 +2066,7 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
+//message ("DV button release");
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
@@ -2069,18 +2082,20 @@ namespace FM {
 
 
 /** Abstract methods - must be overridden*/
-        public abstract void zoom_level_changed ();
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int y);
         public abstract void select_all ();
         public abstract void unselect_all ();
         public abstract void select_path (Gtk.TreePath? path);
+        public abstract void unselect_path (Gtk.TreePath? path);
+        public abstract bool path_is_selected (Gtk.TreePath? path);
         public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
         public abstract void start_renaming_file (GOF.File file, bool preselect_whole_name);
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
+        public abstract void zoom_level_changed ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
 

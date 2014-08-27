@@ -21,33 +21,31 @@ namespace Marlin.View {
     public class Slot : GOF.AbstractSlot {
         private Marlin.View.ViewContainer ctab;
         private Marlin.ViewMode mode;
-        //public GOF.Directory.Async directory;
+        private int preferred_column_width;
+
+        protected bool updates_frozen = false;
+        protected bool is_active = true;
+
         public FM.DirectoryView? dir_view = null;
         public Gtk.Box colpane;
         public Granite.Widgets.ThinPaned hpane;
         public Marlin.View.Window window {
             get {return ctab.window;}
         }
-        //public int width = 0;
-        public bool updates_frozen = false;
-        public bool is_active = true;
-
+        public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
         public signal bool horizontal_scroll_event (double delta_x); //Listeners: Miller
         public signal void frozen_changed (bool freeze); //Listeners: Miller
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
-
         public signal void miller_slot_request (GLib.File file, bool make_root);
-        public string empty_message = "<span size='x-large'>" +
-                                _("This folder is empty.") +
-                               "</span>";
-
-        public signal void autosize ();
+        //public signal void autosize ();
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
 //message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
             mode = _mode;
+            preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
+            width = preferred_column_width;
             set_up_directory (_location);
             connect_slot_signals ();
             make_view ();
@@ -67,10 +65,6 @@ namespace Marlin.View {
             });
         }
 
-        private void autosize_me () {
-            autosize ();
-        }
-
         private void connect_dir_view_signals () {
             dir_view.path_change_request.connect ((loc, flag, make_root) => {
                 /* Avoid race conditions in signal processing TODO identify and prevent race condition*/
@@ -82,8 +76,10 @@ namespace Marlin.View {
 //message ("set up directory");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
-            directory.done_loading.connect (autosize_me);
-            directory.track_longest_name = (mode == Marlin.ViewMode.MILLER_COLUMNS);
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+                directory.done_loading.connect (() => {autosize_slot ();});
+                directory.track_longest_name = true;
+            }
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
@@ -96,13 +92,34 @@ namespace Marlin.View {
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
 //message ("on_path change request - make root is %s", make_root ? "true" : "false");
             if (flag == 0) {
-                if (dir_view is FM.ColumnView) {
+                if (dir_view is FM.ColumnView)
                     miller_slot_request (loc, make_root);
-                } else {
+                else
                     user_path_change_request (loc);
-                }
             } else
                 ctab.new_container_request (loc, flag);
+        }
+
+        private void autosize_slot () {
+            Pango.Layout layout = dir_view.create_pango_layout (null);
+
+            if (directory.is_empty ())
+                layout.set_markup (empty_message, -1);
+            else
+                layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
+
+            Pango.Rectangle extents;
+            layout.get_extents (null, out extents);
+
+
+            width = (int) Pango.units_to_double (extents.width)
+                  + 2 * directory.icon_size
+                  + 24;
+
+            width = width.clamp (preferred_column_width / 3, preferred_column_width * 2);
+            hpane.set_position (width);
+            colpane.show_all ();
+            colpane.queue_draw ();
         }
 
         public override void user_path_change_request (GLib.File loc) {
@@ -142,9 +159,8 @@ namespace Marlin.View {
                     break;
             }
 
-            if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
-            } /* Miller takes care of packing the dir_view otherwise */
 
             connect_dir_view_signals ();
 

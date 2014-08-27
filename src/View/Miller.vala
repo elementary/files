@@ -20,7 +20,7 @@
 namespace Marlin.View {
     public class Miller : GOF.AbstractSlot {
         private Marlin.View.ViewContainer ctab;
-        private int handle_size;
+        //private int handle_size;
         private GLib.File root_location; /* Need private copy of initial location as Miller does not have its own Asyncdirectory object */
         private new GLib.File location;
         private Gtk.Box colpane;
@@ -29,7 +29,7 @@ namespace Marlin.View {
         public Gtk.Adjustment hadj;
         public GOF.AbstractSlot current_slot;
         public GLib.List<GOF.AbstractSlot> slot_list = null; /* TODO why abstract? */
-        public int preferred_column_width;
+        //public int preferred_column_width;
         public int total_width = 0; /*TODO Use AbstractSlot width? */
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
@@ -38,7 +38,7 @@ namespace Marlin.View {
             this.ctab = ctab;
             this.root_location = loc;
 
-            preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
+            //preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((GOF.Preferences)s).show_hidden_files);
@@ -91,7 +91,7 @@ namespace Marlin.View {
 //message ("Miller View: making root view");
             this.current_slot = null;
             add_location (root_location, null);  /* current slot gets set by this */
-            ((Marlin.View.Slot)(current_slot)).hpane.style_get ("handle-size", out this.handle_size);
+            //((Marlin.View.Slot)(current_slot)).hpane.style_get ("handle-size", out this.handle_size);
 
             return this.content_box as Gtk.Widget;
         }
@@ -102,12 +102,11 @@ namespace Marlin.View {
 //message ("MV add location %s", loc.get_uri ());
             Slot new_slot = new Slot (loc, this.ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-            this.total_width += new_slot.width + 180;
+            this.total_width += new_slot.width;
             this.colpane.set_size_request (total_width, -1);
             nest_slot_in_host_slot (new_slot, (Marlin.View.Slot)host);
-            new_slot.width = preferred_column_width;
             connect_slot_signals (new_slot);
-            new_slot.directory.track_longest_name = true;;
+           // new_slot.directory.track_longest_name = true;
             new_slot.directory.load ();
             slot_list.append (new_slot);
             new_slot.active ();
@@ -123,7 +122,7 @@ namespace Marlin.View {
             slot.colpane = box1;
 
             var column = slot.dir_view;
-            column.set_size_request (preferred_column_width, -1);
+            //column.set_size_request (preferred_column_width, -1);
             column.size_allocate.connect ((a) => {update_total_width (a, slot);});
 
             hpane1.pack1 (column, false, false);
@@ -162,28 +161,7 @@ namespace Marlin.View {
             });
         }
 
-        public void autosize_slot (Slot slot) {
-            Pango.Layout layout = slot.dir_view.create_pango_layout (null);
 
-            if (slot.directory.is_empty ())
-                layout.set_markup (slot.empty_message, -1);
-            else
-                layout.set_markup (GLib.Markup.escape_text (slot.directory.longest_file_name), -1);
-
-            Pango.Rectangle extents;
-            layout.get_extents (null, out extents);
-
-
-            slot.width = (int) Pango.units_to_double (extents.width)
-                  + 2 * slot.directory.icon_size
-                  + 2 * handle_size
-                  + 24;
-
-            slot.width = slot.width.clamp (preferred_column_width / 3, preferred_column_width * 2);
-            slot.hpane.set_position (slot.width);
-            slot.colpane.show_all ();
-            slot.colpane.queue_draw ();
-        }
 
         private void update_total_width (Gtk.Allocation allocation, Slot slot) {
             if (total_width != 0 && slot.width != allocation.width) {
@@ -198,7 +176,7 @@ namespace Marlin.View {
 /** Signal handling **/
 /*********************/
         private void connect_slot_signals (Slot slot) {
-            slot.autosize.connect (autosize_slot);
+            //slot.autosize.connect (autosize_slot);
             slot.frozen_changed.connect (on_slot_frozen_changed);
             slot.active.connect (on_slot_active);
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);

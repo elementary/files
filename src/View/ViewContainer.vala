@@ -278,7 +278,8 @@ namespace Marlin.View {
         private void restore_selection () {}
 
         private void update_view (Marlin.ViewMode mode) {
-            overlay_statusbar.showbar = mode != Marlin.ViewMode.LIST;
+            //overlay_statusbar.showbar = mode != Marlin.ViewMode.LIST;
+            overlay_statusbar.showbar = true;
             view_mode = mode;
         }
 

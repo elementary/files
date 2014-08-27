@@ -145,6 +145,16 @@ namespace FM {
             if (path != null)
                 tree.select_path (path);
         }
+        public override void unselect_path (Gtk.TreePath? path) {
+            if (path != null)
+                tree.unselect_path (path);
+        }
+        public override bool path_is_selected (Gtk.TreePath? path) {
+            if (path != null)
+                return tree.path_is_selected (path);
+            else
+                return false;
+        }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
 //message ("IV set cursor");

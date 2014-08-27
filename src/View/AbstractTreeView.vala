@@ -21,7 +21,6 @@ namespace FM {
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
         protected Gtk.CellRendererPixbuf pixbuf_renderer;
-        private bool left_button_down = false;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
@@ -40,6 +39,9 @@ namespace FM {
             set_up_view ();
             tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_rubber_banding (true);
+
+            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+            tree.motion_notify_event.connect (on_motion_notify_event);
 
             return tree as Gtk.Widget;
         }
@@ -132,6 +134,16 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path) {
             if (path != null)
                 tree.get_selection ().select_path (path);
+        }
+        public override void unselect_path (Gtk.TreePath? path) {
+            if (path != null)
+                tree.get_selection ().unselect_path (path);
+        }
+        public override bool path_is_selected (Gtk.TreePath? path) {
+            if (path != null)
+                return tree.get_selection ().path_is_selected (path);
+            else
+                return false;
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
@@ -239,8 +251,9 @@ namespace FM {
 
             if (no_mods) {
                 unselect_all ();
-                if (path != null)
+                if (path != null) {
                     selection.select_path (path);
+                }
             }
 
             if (path == null || on_blank)
@@ -248,7 +261,6 @@ namespace FM {
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    left_button_down = true;
                     if (path != null && Preferences.settings.get_boolean ("single-click") && no_mods)
                         result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank, on_icon);
                     break;

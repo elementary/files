@@ -56,8 +56,7 @@ namespace FM {
 //message ("CV create view");
             model.set_property ("has-child", false);
             base.create_view ();
-            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
-            tree.motion_notify_event.connect (on_motion_notify_event);
+
             return tree as Gtk.Widget;
         }
 
