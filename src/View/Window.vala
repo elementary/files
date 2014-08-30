@@ -359,7 +359,7 @@ namespace Marlin.View {
             update_view_mode (mode);
             var content = new View.ViewContainer (this, mode, location);
             var tab = new Granite.Widgets.Tab ("", null, content);
-            tab.label = content.tab_name; /* in case ViewContainer gets created too quickly */
+            tab.label = content.tab_name;
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });

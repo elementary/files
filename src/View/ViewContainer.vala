@@ -212,7 +212,7 @@ namespace Marlin.View {
             data[1] = slot;
             data[2] = slot.directory.file;
 
-            //plugins.directory_loaded ((void*) data);
+            plugins.directory_loaded ((void*) data);
         }
 
         public void refresh_slot_info (GLib.File loc) {

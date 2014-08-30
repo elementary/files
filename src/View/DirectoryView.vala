@@ -174,7 +174,7 @@ namespace FM {
 
 /*** Creation methods */
         public DirectoryView (Marlin.View.Slot _slot) {
-message ("new directory view - location %s", _slot.directory.file.uri);
+//message ("new directory view - location %s", _slot.directory.file.uri);
             slot = _slot;
             window = _slot.window;
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
@@ -189,7 +189,7 @@ message ("new directory view - location %s", _slot.directory.file.uri);
         }
 
         private void set_up_directory_view () {
-message ("Set up Directory viewt");
+//message ("Set up Directory viewt");
             set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
             /* TODO previewer support */
@@ -246,7 +246,7 @@ message ("Set up Directory viewt");
         }
 
         public void select_first_for_empty_selection () {
-message ("select first for empty selection");
+//message ("select first for empty selection");
             if (selected_files == null) {
                 var path = new Gtk.TreePath.from_indices (0, -1);
                 //unselect_all (); /* necessary ?? */
@@ -255,7 +255,7 @@ message ("select first for empty selection");
         }
 
         public void select_glib_files (GLib.List<GLib.File> location_list) {
-message ("select glib files");
+//message ("select glib files");
             updates_frozen = true;
             int i = 1;
             location_list.@foreach ((location) => {
@@ -265,7 +265,7 @@ message ("select glib files");
                         Gtk.TreePath path = model.get_path (iter);
                     if (path != null && i==1)
                         set_cursor (path, false, true);
-message ("selecting path");
+//message ("selecting path");
                     select_path (path);
                     i++;
                 }
@@ -280,7 +280,7 @@ message ("selecting path");
         }
 
         public unowned GLib.AppInfo get_default_app () {
-message ("get default app");
+//message ("get default app");
             return default_app;
         }
 
@@ -296,7 +296,7 @@ message ("get default app");
         }
 
         protected void freeze_updates () {
-message ("freeze updates");
+//message ("freeze updates");
             updates_frozen = true;
             slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
@@ -310,7 +310,7 @@ message ("freeze updates");
         }
 
         protected void unfreeze_updates () {
-message ("DV unfreeze updates");
+//message ("DV unfreeze updates");
             if (renaming)
                 return;
 
@@ -323,7 +323,7 @@ message ("DV unfreeze updates");
         }
 
         public new void grab_focus () {
-message ("DV grab focus");
+//message ("DV grab focus");
             (this as Gtk.Bin).get_child ().grab_focus ();
         }
 
@@ -332,52 +332,58 @@ message ("DV grab focus");
         }
 
         public bool is_frozen () {
-message ("is_frozen");
+//message ("is_frozen");
             return updates_frozen;
         }
  
 
 /*** Protected Methods */
         protected void set_active_slot () {
-message ("DV set_active");
+//message ("DV set_active");
             slot.active ();
         }
 
         protected void load_location (GLib.File location) {
-message ("load location");
+//message ("load location");
             /* In column view, this will nest new location in slot.
             /* Else same effect as load_root_location */
             path_change_request (location, Marlin.OpenFlag.DEFAULT, false);
         }
 
         protected void load_root_location (GLib.File location) {
-message ("load root location");
+//message ("load root location");
             path_change_request (location, Marlin.OpenFlag.DEFAULT, true);
         }
 
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-message ("activate selected items");
+//message ("activate selected items");
             if (updates_frozen || in_trash)
                 return;
 
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint nb_elem = selection.length ();
-message ("no of elem is %u", nb_elem);
+//message ("no of elem is %u", nb_elem);
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             bool only_folders = selection_only_contains_folders (selection);
+message ("only folders is %s", only_folders ? "true" : "false");
             if (nb_elem < 10 && (default_app == null || only_folders)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
                 bool only_one_file = (nb_elem == 1);
                 foreach (unowned GOF.File file in selection) {
-message ("activating file %s", file.uri);
-                    activate_file (file, screen, flag, only_one_file);
-message ("done");
+//message ("activating file %s", file.uri);
+                    /* Prevent too rapid activation of files - causes New Tab to crash for example */
+                    GLib.Timeout.add (50, () => {
+                        activate_file (file, screen, flag, only_one_file);
+                        return false;
+                    });
+                    
+//message ("done");
                 }
             } else if (default_app != null) {
                 open_files_with (default_app, selection);
             }
-message ("leaving activate items");
+//message ("leaving activate items");
         }
 
         /** Only call with non null selection */
@@ -401,7 +407,7 @@ message ("leaving activate items");
         }
 
         protected void select_gof_file (GOF.File file) {
-message ("select gof file");
+//message ("select gof file");
             var iter = Gtk.TreeIter ();
             if (!model.get_first_iter_for_file (file, out iter))
                 return; /* file not in model */
@@ -411,7 +417,7 @@ message ("select gof file");
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
-message ("add gof file to selection");
+//message ("add gof file to selection");
             var iter = Gtk.TreeIter ();
             if (!model.get_first_iter_for_file (file, out iter))
                 return; /* file not in model */
@@ -421,7 +427,7 @@ message ("add gof file to selection");
         }
 
         protected void after_restore_selection (Gtk.TreePath path) {
-message ("after restore selection");
+//message ("after restore selection");
             /* Check if there was only one file selected before the row was deleted. The
              * selection_before_delete is set by on_row_deleted() if this is the case.
              * place the cursor on the selected path */
@@ -459,7 +465,7 @@ message ("after restore selection");
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-message ("DV change directory");
+//message ("DV change directory");
             disconnect_directory_handlers (old_dir);
             block_model ();
             loaded_subdirectories.@foreach ((dir) => {
@@ -477,7 +483,7 @@ message ("DV change directory");
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
-message ("connect drag drop");
+//message ("connect drag drop");
 
             /* Set up as drop site */
             Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
@@ -537,7 +543,7 @@ message ("connect drag drop");
         }
 
         protected bool is_drag_pending () {
-message ("is drag pending");
+//message ("is drag pending");
             return drag_has_begun;
         }
 
@@ -592,7 +598,7 @@ message ("is drag pending");
         }
 
         protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer () {
-message ("get selected files for transfer");
+//message ("get selected files for transfer");
             unowned GLib.List<unowned GOF.File> list = null;
             selected_files.@foreach ((file) => {
                 list.prepend (file);
@@ -604,14 +610,13 @@ message ("get selected files for transfer");
 /*** Private methods */
     /** File operations */
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-message ("activate file %s", file.uri);
+//message ("activate file %s", file.uri);
             if (updates_frozen || in_trash)
                 return;
 
             GLib.File location = file.location.dup ();
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
-
 
             if (file.is_folder ()) {
                 switch (flag) {
@@ -677,7 +682,7 @@ message ("activate file %s", file.uri);
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-message ("rename file");
+//message ("rename file");
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
@@ -698,9 +703,9 @@ message ("rename file");
         }
 
         private void after_trash_or_delete (GLib.HashTable? debuting_files, bool user_cancel, void* data) {
-message ("after trash or delete");
+//message ("after trash or delete");
             if (user_cancel) {
-message ("trash or delete cancelled");
+//message ("trash or delete cancelled");
                 selection_was_removed = false;
             }
         }
@@ -739,7 +744,7 @@ message ("trash or delete cancelled");
         /** Selection actions */
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action rename");
+//message ("on selection action rename");
             if (selected_files.next != null) {
                 /* TODO invoke batch renamer */
                 warning ("Cannot rename multiple files (yet) - renaming first only");
@@ -769,7 +774,7 @@ message ("on selection action rename");
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open");
+//message ("on selection action open");
             //activate_selected_items (Marlin.OpenFlag.DEFAULT);
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
@@ -778,18 +783,18 @@ message ("on selection action open");
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open with default");
+//message ("on selection action open with default");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on selection action open with app");
+//message ("on selection action open with app");
             var index = int.parse (param.get_string ());
             open_files_with (open_with_apps.nth_data ((uint)index), get_files_for_action ());
         }
 
         private void on_selection_action_open_with_other_app () {
-message ("on selection action open with other app");
+//message ("on selection action open with other app");
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             var dialog = new Gtk.AppChooserDialog (window, 0, selection.data.location);
             GOF.File file = selection.data as GOF.File;
@@ -816,7 +821,7 @@ message ("on selection action open with other app");
                 /** Background actions */
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on background action new");
+//message ("on background action new");
             switch (param.get_string ()) {
                 case "FOLDER":
                     new_empty_folder ();
@@ -837,7 +842,7 @@ message ("on background action new");
         /** Common actions */
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
-message ("on common action open in ");
+//message ("on common action open in ");
             default_app = null;
             get_files_for_action ();
 
@@ -881,12 +886,12 @@ message ("on common action open in ");
 
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-message ("on directory file added");
+//message ("on directory file added");
             add_file (file, dir);
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
-message ("on directory file loaded");
+//message ("on directory file loaded");
             select_added_files = false;
             add_file (file, dir);
         }
@@ -916,7 +921,7 @@ message ("on directory file loaded");
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-message ("directory done loading %s", dir.file.uri);
+//message ("directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
 
@@ -927,7 +932,7 @@ message ("directory done loading %s", dir.file.uri);
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
-message ("on directory thumbs loaded");
+//message ("on directory thumbs loaded");
             if (get_realized ())
                 queue_draw ();
 
@@ -936,7 +941,7 @@ message ("on directory thumbs loaded");
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
-message ("DV on zoom level changed");
+//message ("DV on zoom level changed");
             model.set_property ("size", Marlin.zoom_level_to_icon_size (zoom));
             zoom_level_changed ();
             load_thumbnails (slot.directory, zoom);
@@ -944,7 +949,7 @@ message ("DV on zoom level changed");
 
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-message ("show_hidden files changed");
+//message ("show_hidden files changed");
             bool show = (prefs as GOF.Preferences).show_hidden_files;
             if (!show) {
                 block_model ();
@@ -962,7 +967,7 @@ message ("show_hidden files changed");
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
-message ("directory hidden changed di %s", dir.file.uri);
+//message ("directory hidden changed di %s", dir.file.uri);
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             if (show)
                 dir.load_hiddens ();
@@ -976,7 +981,7 @@ message ("directory hidden changed di %s", dir.file.uri);
 
     /** Handle popup menu events */
         private bool on_popup_menu () {
-message ("on popup menu");
+//message ("on popup menu");
             Gdk.Event event = Gtk.get_current_event ();
             show_or_queue_context_menu (event);
             return true;
@@ -984,7 +989,7 @@ message ("on popup menu");
 
     /** Handle Button events */
         private bool on_button_release (Gdk.EventButton event) {
-message ("Directory on button release");
+//message ("Directory on button release");
             /* Only active during drag timeout */
             cancel_drag_timer ();
             show_context_menu (event);
@@ -992,7 +997,7 @@ message ("Directory on button release");
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
-message ("Directory view on button press event");
+//message ("Directory view on button press event");
             /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
             GLib.Action? action = null;
             GLib.SimpleActionGroup main_actions = window.get_action_group ();
@@ -1012,7 +1017,7 @@ message ("Directory view on button press event");
 
 /** Handle Motion events */
         private bool on_motion_notify (Gdk.EventMotion event) {
-message ("on motion notify");
+//message ("on motion notify");
             /* Only active during drag timeout */
             Gdk.DragContext context;
             var widget = get_real_view ();
@@ -1035,7 +1040,7 @@ message ("on motion notify");
 
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
-message ("on row deleted");
+//message ("on row deleted");
              GLib.List<Gtk.TreePath>? selected_paths = get_selected_paths ();
             selection_before_delete = null;
 
@@ -1058,7 +1063,7 @@ message ("on row deleted");
 
 /** Handle clipboard signal */
         private void on_clipboard_changed () {
-message ("on clipboard changed");
+//message ("on clipboard changed");
             update_menu_actions ();
             /* show possible change in appearance of cut items */
             queue_draw ();
@@ -1066,20 +1071,20 @@ message ("on clipboard changed");
 
 /** Handle Selection changes */
         public void notify_selection_changed () {
-message ("notify selection changed calls update menu actions");
+//message ("notify selection changed calls update menu actions");
             selection_was_removed = false;
             if (!get_realized ()) {
-message ("not realized");
+//message ("not realized");
                 return;
             }
 
             if (updates_frozen) {
-message ("updates frozen");
+//message ("updates frozen");
                 return;
             }
 
            //if (!slot.is_active) {
-message ("not active");
+//message ("not active");
              //   return;
             //}
 
@@ -1097,7 +1102,7 @@ message ("not active");
     /** Handle Drag source signals*/
 
         private void on_drag_begin (Gdk.DragContext context) {
-message ("on drag begin");
+//message ("on drag begin");
             /* Do we need to free the drag_file_list? */
             drag_file_list = get_selected_files_for_transfer ();
             if (drag_file_list == null)
@@ -1116,7 +1121,7 @@ message ("on drag begin");
                                        Gtk.SelectionData selection_data,
                                        uint info,
                                        uint timestamp) {
-message ("on drag data get");
+//message ("on drag data get");
             GLib.StringBuilder sb = new GLib.StringBuilder ("");
             drag_file_list.@foreach ((file) => {
                 sb.append (file.uri);
@@ -1125,11 +1130,11 @@ message ("on drag data get");
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
-message ("leaving");
+//message ("leaving");
         }
 
         private void on_drag_data_delete (Gdk.DragContext context) {
-message ("on drag data delete");
+//message ("on drag data delete");
             /* block real_view default handler because handled in on_drag_end */
             GLib.Signal.stop_emission_by_name (get_real_view (), "drag-data-delete");
         }
@@ -1150,7 +1155,7 @@ message ("on drag data delete");
                              int x,
                              int y,
                              uint timestamp) {
-message ("on drag motion");
+//message ("on drag motion");
             /* if we don't have drop data already ... */
             if (!drop_data_ready) {
                 get_drop_data (context, x, y, timestamp);
@@ -1168,7 +1173,7 @@ message ("on drag motion");
                                    int x,
                                    int y,
                                    uint timestamp) {
-message ("on drag drop");
+//message ("on drag drop");
             Gtk.TargetList list = null;
             string? uri = null;
             bool ok_to_drop = false;
@@ -1210,7 +1215,7 @@ message ("on drag drop");
                                             uint info,
                                             uint timestamp
                                             ) {
-message ("drag data received");
+//message ("drag data received");
             bool success = false;
 
             if (!drop_data_ready) {
@@ -1250,7 +1255,7 @@ message ("drag data received");
         }
 
         private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
-message ("on drag leave");
+//message ("on drag leave");
             /* reset the drop-file for the icon renderer */
             icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
             /* stop any running drag autoscroll timer */
@@ -1272,7 +1277,7 @@ message ("on drag leave");
 /** DnD helpers */
 
         private GOF.File? get_drop_target_file (int x, int y, out Gtk.TreePath? path_return) {
-message ("get drop target file x %i, y %i", x, y);
+//message ("get drop target file x %i, y %i", x, y);
             Gtk.TreePath? path = get_path_at_pos (x, y);
             GOF.File? file = null;
 
@@ -1300,7 +1305,7 @@ message ("get drop target file x %i, y %i", x, y);
         }   
 
         private void get_drop_data (Gdk.DragContext context, int x, int y, uint timestamp) {
-message ("get_drop data - slot uri %s", slot.directory.file.uri);
+//message ("get_drop data - slot uri %s", slot.directory.file.uri);
             Gdk.DragAction action = Gdk.DragAction.DEFAULT;
             Gtk.TargetList? list = null; /* NOTE incorrect Gtk vapi file for this function */
             Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
@@ -1326,7 +1331,7 @@ message ("get_drop data - slot uri %s", slot.directory.file.uri);
         }
 
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
-message ("get dest actions");
+//message ("get dest actions");
             Gtk.TreePath? path;
             GOF.File? file = get_drop_target_file (x, y, out path);
             string uri = file != null ? file.uri : "";
@@ -1344,7 +1349,7 @@ message ("get dest actions");
         }
 
         private void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
-message ("highlight dropfile");
+//message ("highlight dropfile");
             /* Set highlighting accordingly */
             bool can_drop = (action != Gdk.DragAction.DEFAULT);
             if (drop_highlight != can_drop) {
@@ -1376,7 +1381,7 @@ message ("highlight dropfile");
          * instead.
         **/
         private void queue_context_menu (Gdk.Event event) {
-message ("queue context menu");
+//message ("queue context menu");
             if (drag_timer_id > 0) /* already queued */
                 return;
 
@@ -1384,7 +1389,7 @@ message ("queue context menu");
         }
 
         private void start_drag_timer (Gdk.Event event) {
-message ("start drag timer");
+//message ("start drag timer");
             connect_motion_and_release_events ();
             /* Remember position of click */ 
             drag_x = (int)(event.button.x);
@@ -1400,7 +1405,7 @@ message ("start drag timer");
         }
 
         protected void show_context_menu (Gdk.Event event) {
-message ("show context menu");
+//message ("show context menu");
             /* select selection or background context menu */
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
             GLib.MenuModel? model;
@@ -1412,7 +1417,7 @@ message ("show context menu");
             if (model != null) {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
-                //plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
                 Eel.pop_up_context_menu (menu, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, (Gdk.EventButton) event);
@@ -1420,7 +1425,7 @@ message ("show context menu");
         }
 
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
-message ("build menu selection");
+//message ("build menu selection");
             GLib.Menu menu;
             if (in_trash)
                 menu = builder.get_object ("popup-trash-selection") as GLib.Menu;
@@ -1437,7 +1442,7 @@ message ("build menu selection");
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash) {
-message ("build menu background");
+//message ("build menu background");
             if (in_trash)
                 return null;
 
@@ -1454,7 +1459,7 @@ message ("build menu background");
         }
 
         private GLib.MenuModel build_menu_open () {
-message ("build menu open");
+//message ("build menu open");
             var menu = new GLib.Menu ();        
             string label = _("Invalid");
             if (selected_files.data.is_executable ()) {
@@ -1478,7 +1483,7 @@ message ("build menu open");
         }
 
         private GLib.MenuModel? build_submenu_open_with_applications () {
-message ("build submenu open with apps");
+//message ("build submenu open with apps");
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
 
@@ -1505,7 +1510,7 @@ message ("build submenu open with apps");
 
         private GLib.MenuModel? build_menu_templates () {
         /* TODO - Do just once when app starts or view created? */
-message ("build template menu");
+//message ("build template menu");
             load_templates_from_folder (GLib.File.new_for_path ("%s/Templates".printf (GLib.Environment.get_home_dir ())));
             if (templates.length () == 0)
                 return null;
@@ -1530,7 +1535,7 @@ message ("build template menu");
             //if (!slot.is_active || updates_frozen)
             if (updates_frozen)
                 return;
-message ("update menu actions for slot %s", slot.directory.file.uri);
+//message ("update menu actions for slot %s", slot.directory.file.uri);
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
@@ -1555,12 +1560,12 @@ message ("update menu actions for slot %s", slot.directory.file.uri);
         }
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
-message ("update default app");
+//message ("update default app");
             default_app = Marlin.MimeActions.get_default_application_for_files (selection);
         }
 
         private void update_paste_action_enabled (bool single_folder) {
-message ("update paste action enabled");
+//message ("update paste action enabled");
 
             if (clipboard != null && clipboard.get_can_paste ()) {
                 action_set_enabled (common_actions, "paste_into", single_folder);
@@ -1587,7 +1592,7 @@ message ("update paste action enabled");
         }
 
         private void load_templates_from_folder (GLib.File template_folder) {
-message ("load templates from folder");
+//message ("load templates from folder");
             GLib.List<GOF.File> gof_file_list = null;
             GLib.List<GLib.File> folder_list = null;
 
@@ -1632,7 +1637,7 @@ message ("load templates from folder");
         }
 
         private void filter_this_app_from_open_with_apps () {
-message ("filter this app");
+//message ("filter this app");
             string? exec_name;
             unowned GLib.List<AppInfo> l = open_with_apps;
             while (l != null) {
@@ -1646,7 +1651,7 @@ message ("filter this app");
         }
 
         private void filter_default_app_from_open_with_apps () {
-message ("filter default app");
+//message ("filter default app");
             if (default_app == null)
                 return;
 
@@ -1729,7 +1734,7 @@ message ("filter default app");
 /** HELPER AND CONVENIENCE FUNCTIONS */
 
         private void block_model () {
-message ("block model");
+//message ("block model");
             model.row_deleted.disconnect (on_row_deleted);
             model.row_deleted.disconnect (after_restore_selection);
             updates_frozen = true;
@@ -1742,7 +1747,7 @@ message ("block model");
         }
 
         private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-message ("load thumbnails");
+//message ("load thumbnails");
             /* Async function checks dir is not loading */
             dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
         }
@@ -1752,14 +1757,14 @@ message ("load thumbnails");
         }
 
         private void connect_motion_and_release_events () {
-message ("connect motion and release events");
+//message ("connect motion and release events");
             var real_view = get_real_view ();
             real_view.button_release_event.connect (on_button_release);
             real_view.motion_notify_event.connect (on_motion_notify);
         }
 
         private void disconnect_motion_and_release_events () {
-message ("disconnect motion and release events");
+//message ("disconnect motion and release events");
             var real_view = get_real_view ();
             real_view.button_release_event.disconnect (on_button_release);
             real_view.motion_notify_event.disconnect (on_motion_notify);
@@ -1803,7 +1808,7 @@ message ("disconnect motion and release events");
         }
 
         private void prepare_to_select_added_files () {
-message ("prepare to add selected files");
+//message ("prepare to add selected files");
             if (selected_files != null)
                 unselect_all ();
 
@@ -1831,7 +1836,7 @@ message ("prepare to add selected files");
         }
 
         private void set_up_zoom_level () {
-message ("DV set up zoom level");
+//message ("DV set up zoom level");
             zoom_level = get_set_up_zoom_level (); /* Abstract */
             model.set_property ("size", (int)(Marlin.zoom_level_to_icon_size (zoom_level)));
         }
@@ -1841,19 +1846,19 @@ message ("DV set up zoom level");
         }
 
         protected void on_view_items_activated () {
-message ("on view items activated");
+//message ("on view items activated");
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
         protected virtual void on_view_selection_changed () {
-message ("on tree selection changed");
+//message ("on tree selection changed");
             update_selected_files ();
             notify_selection_changed ();
         }
 
         /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-message ("on key_press_event");
+//message ("on key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
@@ -1942,7 +1947,7 @@ message ("on key_press_event");
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
-message ("on name editing started");
+//message ("on name editing started");
             renaming = true;
             freeze_updates ();
             editable_widget = editable as Gtk.Entry;
@@ -1954,7 +1959,7 @@ message ("on name editing started");
         }
 
         protected void on_name_editing_canceled () {
-message ("on name editing canceled");
+//message ("on name editing canceled");
                 editable_widget = null;
                 renaming = false;
                 unfreeze_updates ();
@@ -1964,7 +1969,7 @@ message ("on name editing canceled");
         protected void on_name_edited (string path_string, string new_name) {
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
-message ("on name edited");
+//message ("on name edited");
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -2041,14 +2046,14 @@ message ("on name edited");
         }
 
         protected bool handle_secondary_button_click (Gdk.EventButton event) {
-message ("DV handle secondary button");
+//message ("DV handle secondary button");
             show_or_queue_context_menu (event);
             return true;
         }
 
         //protected void block_drag_and_drop (Gtk.Widget widget) {
         protected void block_drag_and_drop () {
-message ("block_drag_and_drop");
+//message ("block_drag_and_drop");
             drag_data = view.get_data ("gtk-site-data");
             GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
             dnd_disabled = true;
@@ -2058,14 +2063,14 @@ message ("block_drag_and_drop");
 
         //protected void unblock_drag_and_drop (Gtk.Widget widget) {
         protected void unblock_drag_and_drop () {
-message ("unblock_drag_and_drop");
+//message ("unblock_drag_and_drop");
             drag_data = view.get_data ("gtk-site-data");
             GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
             dnd_disabled = false;
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-message ("DV button release");
+//message ("DV button release");
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 

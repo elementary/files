@@ -45,12 +45,13 @@ message ("IV create view");
 message ("IV tree view set up view");
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
-            tree.set_pixbuf_column (FM.ListModel.ColumnID.PIXBUF);
+            //tree.set_pixbuf_column (FM.ListModel.ColumnID.PIXBUF);
             tree.set_columns (-1);
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
             (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
             (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
+            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
             connect_tree_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
         }
@@ -69,6 +70,8 @@ message ("IV set up name renderer");
         protected void set_up_icon_renderer () {
 message ("IV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
+            icon_renderer.set_property ("selection-helpers",  true);
+            //Preferences.settings.bind ("single-click", icon_renderer, "selection-helpers", GLib.SettingsBindFlags.DEFAULT);
         }
 
 
@@ -105,6 +108,8 @@ message ("IV zoom level changed");
                 int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
                 tree.set_columns (-1);
                 tree.set_item_width ((int)((double) icon_size * ITEM_WIDTH_TO_ICON_SIZE_RATIO));
+                icon_renderer.set_property ("zoom-level", zoom_level);
+                icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
                 queue_draw ();
             }
         }
@@ -210,23 +215,29 @@ message ("IV button press");
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool result = false;
             bool on_editable = (renderer != null && (renderer is Gtk.CellRendererText));
+            bool on_helper = clicked_on_add_remove_helper ((int)event.x, (int)event.y);
 
-            if (no_mods) {
+            if (path == null)
                 unselect_all ();
-                if (path != null) {
-                    tree.select_path (path);
-message ("IV reselect path");
-                }
-            }
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                     if (path == null) {
                         block_drag_and_drop ();  /* allow rubber banding */
-
-                    } else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
-                        result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank, !on_editable);
-
+                    } else if (on_helper) {
+                        if (path_is_selected (path))
+                            unselect_path (path);
+                        else
+                            select_path (path);
+                        return true;
+                    } else {
+                        if (no_mods) {
+                            unselect_all ();
+                            tree.select_path (path);
+                        }
+                        if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                            result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank, !on_editable);
+                        }
                     }
                     /* In double-click mode on path the default Gtk.TreeView handler is used */
                     break;
@@ -236,6 +247,9 @@ message ("IV reselect path");
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
+                    if (path != null)
+                        select_path (path);
+
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -249,19 +263,14 @@ message ("IV button press leaving");
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
 message ("IV handle left button");
-            assert (selection == null); /* not consistent with icon view */
-            assert (col == null); /* not consistent with icon view */
-
             bool result = true;
             if (path != null) {
-                /*Determine where user clicked - this will be the sole selection */
-
                 if (!on_icon)
                     rename_file (selected_files.data); /* Is this desirable? */
                 else {
-                    result = false; /* Use default handler */
+                        result = false; /* Use default handler */
                 }
-            } /* No action if left click on blank area */
+            } 
 
             return result;
         }
@@ -309,6 +318,25 @@ message ("ATV start renaming file");
                 Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
                 editable_widget.select_region (start_offset, end_offset);
             }
+        }
+
+        private bool clicked_on_add_remove_helper (int x, int y) {
+message ("clicked on add remove helper");
+            Gtk.CellRenderer? renderer = null;
+            Gtk.TreePath? path = null;
+            tree.get_item_at_pos (x, y, out path, out renderer);
+            if (renderer != null && renderer is Marlin.IconRenderer) {
+                Gdk.Rectangle rect, area;
+                tree.get_cell_rect  (path, renderer, out rect);
+                area = renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+message ("area x is %i, area y is %i, area width is %i, area height is %i;  x is %i, y is %i", area.x, area.y, area.width, area.height, x,y);
+                if (x <= area.x + 18 && y <= area.y + 18) {
+message ("returning true");
+                    return true;
+                }
+            }
+message ("returning false");
+            return false;
         }
 
     }

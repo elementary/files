@@ -387,7 +387,7 @@ namespace Marlin.Places {
                 last_selected_uri = null;
 
             store.clear ();
-            //plugins.update_sidebar ((Gtk.Widget)this);
+            plugins.update_sidebar ((Gtk.Widget)this);
 
             /* ADD BOOKMARKS CATEGORY*/
             store.append (out iter, null);
