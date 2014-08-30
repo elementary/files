@@ -52,7 +52,6 @@ namespace FM {
             name_column.set_expand (true);
             name_column.set_resizable (true);
 
-            name_renderer = new Gtk.CellRendererText ();
             name_renderer.ellipsize_set = true;
             name_renderer.ellipsize = Pango.EllipsizeMode.MIDDLE;
 

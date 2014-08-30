@@ -269,19 +269,19 @@ namespace Marlin {
     }
 }
 namespace Exo {
-    [CCode (cprefix = "ExoTreeView", lower_case_cprefix = "exo_tree_view_", cheader_filename = "exo-tree-view.h")]
-    public class TreeView : Gtk.TreeView {
-        public TreeView ();
-        public bool get_single_click ();
-        public bool set_single_click (bool single);
-        public Gtk.TreePath? get_hover_path ();
-        public signal void item_hovered (Gtk.TreePath path);
-    }
+//    [CCode (cprefix = "ExoTreeView", lower_case_cprefix = "exo_tree_view_", cheader_filename = "exo-tree-view.h")]
+//    public class TreeView : Gtk.TreeView {
+//        public TreeView ();
+//        public bool get_single_click ();
+//        public bool set_single_click (bool single);
+//        public Gtk.TreePath? get_hover_path ();
+//        public signal void item_hovered (Gtk.TreePath path);
+//    }
 
-    [CCode (cheader_filename = "exo-tree-view.h")]
+    [CCode (cheader_filename = "exo-icon-view.h")]
     public delegate void IconViewForeachFunc (Exo.IconView icon_view, Gtk.TreePath path);
 
-    [CCode (cheader_filename = "exo-tree-view.h", cprefix = "GTK_ICON_VIEW_")]
+    [CCode (cheader_filename = "exo-icon-view.h", cprefix = "GTK_ICON_VIEW_")]
     public enum IconViewDropPosition {
 		NO_DROP,
 		DROP_INTO,
@@ -290,18 +290,18 @@ namespace Exo {
 		DROP_ABOVE,
 		DROP_BELOW
     }
-//        private struct IconViewItem {
-//            Gdk.Rectangle cell_area;
-//            Gtk.TreeIter iter;
-//            int index;
-//            int row;
-//            int col;
-//            uint selected = 1;
-//            uint selected_before_rubberbanding = 1;
-//        }
+    [CCode (cheader_filename = "exo-icon-view.h")]
+    private struct IconViewItem {
+        Gdk.Rectangle cell_area;
+        Gtk.TreeIter iter;
+        int index;
+        int row;
+        int col;
+        uint selected;
+        uint selected_before_rubberbanding;
+    }
     [CCode (cprefix = "ExoIconView", lower_case_cprefix = "exo_icon_view_", cheader_filename = "exo-icon-view.h")]
-    public class IconView : Gtk.Container {
-
+    public class IconView : Gtk.Container, Gtk.Buildable, Gtk.CellLayout, Gtk.TreeDragSource, Gtk.TreeDragDest, Atk.Action, Atk.Image, Atk.Text, Atk.Component, Atk.Selection {
         public IconView ();
         public void set_model (Gtk.TreeModel model);
         public void set_selection_mode (Gtk.SelectionMode mode);
@@ -312,11 +312,13 @@ namespace Exo {
         public GLib.List get_selected_items ();
         public void selected_foreach (Exo.IconViewForeachFunc func);
         public void set_drag_dest_item (Gtk.TreePath path, Exo.IconViewDropPosition pos);
-        public bool get_dest_item_at_pos (int x, int y, out Gtk.TreePath path, out Exo.IconViewDropPosition pos);
+        public bool get_dest_item_at_pos (int x, int y, out unowned Gtk.TreePath path, out Exo.IconViewDropPosition pos);
+        public bool get_item_at_pos (int x, int y, out unowned Gtk.TreePath path, out unowned Gtk.CellRenderer cell);
         public void select_all ();
         public void unselect_all ();
         public void select_path (Gtk.TreePath path);
         public void unselect_path (Gtk.TreePath path);
+        public bool path_is_selected (Gtk.TreePath path);
         public void scroll_to_path (Gtk.TreePath path, bool use_align, float row_align, float col_align);
         public void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing);
         public bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);

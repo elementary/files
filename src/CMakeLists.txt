@@ -179,7 +179,7 @@ add_executable (../pantheon-files
     marlin-icon-renderer.c
     marlin-text-renderer.c
     marlin-cell-renderer-text-ellipsized.c
-    #exo-icon-view.c
+    exo-icon-view.c
     #exo-tree-view.c
     #fm-abstract-icon-view.c
     #fm-icon-view.c
