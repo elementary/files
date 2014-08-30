@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-08-26 22:04+0000\n"
+"PO-Revision-Date: 2014-08-29 21:02+0000\n"
 "Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-27 07:35+0000\n"
-"X-Generator: Launchpad (build 17174)\n"
+"X-Launchpad-Export-Date: 2014-08-30 07:23+0000\n"
+"X-Generator: Launchpad (build 17176)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -66,7 +66,7 @@ msgstr[2] "Использовать приложение «%s» для откр�
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Использовать \"%s\" как шаблон для новых файлов"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -454,7 +454,7 @@ msgstr "Вчера в %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b в %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1870,19 +1870,19 @@ msgstr "Другое приложение .."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "В этой папке"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Закладки"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "В других папках"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Ничего не найдено"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -2028,7 +2028,7 @@ msgstr "Эта программа не является вашим файлов�
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Установить по умолчанию"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -2104,11 +2104,11 @@ msgstr "_Повторить"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "_Найти"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "Поиск в актуальной папке"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2268,7 +2268,7 @@ msgstr "Ваши общие места и закладки"
 
 #: ../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Открыть корзину"
 
 #: ../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -2280,7 +2280,7 @@ msgstr "Ваши локальные разделы и устройства"
 
 #: ../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Открыть содержание файловой системы"
 
 #: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
 msgid "Mount and open %s"
@@ -2292,7 +2292,7 @@ msgstr "Ваша сеть"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Вся сеть"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2328,15 +2328,15 @@ msgstr "_Извлечь"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Соединиться с сервером..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "Назад"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "Далее"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2360,7 +2360,7 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "Новое окно"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
@@ -2430,7 +2430,7 @@ msgstr "Открыть новое окно как администратор"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "_О программе"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
