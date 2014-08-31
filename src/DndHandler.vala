@@ -34,12 +34,12 @@ namespace FM {
 
         public bool dnd_perform (Gtk.Widget widget,
                                  GOF.File drop_target,
-                                 GLib.List<GLib.File> drop_files,
+                                 GLib.List<GLib.File> drop_file_list,
                                  Gdk.DragAction action) {
 //message ("dnd perform");
 
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move (drop_files,
+                Marlin.FileOperations.copy_move (drop_file_list,
                                                  null,
                                                  drop_target.get_target_location (),
                                                  action,
@@ -49,7 +49,7 @@ namespace FM {
                 return true;
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
-                if (!drop_target.execute (widget.get_screen (), drop_files, out error)) {
+                if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
                     Eel.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
                                            error.message,
                                            null);
@@ -66,11 +66,9 @@ namespace FM {
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
                                                       Gtk.ApplicationWindow win,
                                                       Gdk.DragAction possible_actions) {
-//                                                      uint32 timestamp) {
 //message ("drag_drop_action_ask");
             this.chosen = Gdk.DragAction.DEFAULT;
             add_action (win);
-            //var ask_menu = new Gtk.Menu.from_model (build_menu (possible_actions));
             var ask_menu = build_menu (possible_actions);
             ask_menu.set_screen (dest_widget.get_screen ());
             ask_menu.show_all ();
@@ -264,6 +262,7 @@ namespace FM {
 
                 text = data_to_string (selection_data.get_data_with_length ());
             }
+//message ("DNDHANDLER selection data is uri list returning %s", (text != null) ? "true" : "false");
             return (text != null);
         }
 

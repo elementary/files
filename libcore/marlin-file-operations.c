@@ -2731,7 +2731,6 @@ scan_file (GFile *file,
     int response;
 
     dirs = g_queue_new ();
-
 retry:
     error = NULL;
     info = g_file_query_info (file,
@@ -4503,8 +4502,10 @@ retry:
             g_error_free (error);
             goto out;
         }
-        primary = f (_("Error while copying \"%B\"."), src);
-        secondary = f (_("There was an error copying the file into %F."), dest_dir);
+        //primary = f (_("Error while copying \"%B\"."), src);
+        primary = f (_("There was an Error while copying \"%s\"."), g_file_get_uri (src));
+        //secondary = f (_("There was an error copying the file into %F."), dest_dir);
+        secondary = f (_("There was an error copying the file into %s."), g_file_get_uri (dest_dir));
         details = error->message;
 
         response = run_warning (job,
@@ -5017,7 +5018,8 @@ retry:
         if (job->skip_all_error) {
             goto out;
         }
-        primary = f (_("Error while moving \"%B\"."), src);
+        //primary = f (_("Error while moving \"%B\"."), src);
+        primary = f (_("Error while moving \"%F\"."), src);
         secondary = f (_("There was an error moving the file into %F."), dest_dir);
         details = error->message;
 
@@ -5282,7 +5284,6 @@ marlin_file_operations_move (GList *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
-
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
         if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {

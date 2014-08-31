@@ -100,6 +100,7 @@ namespace FM {
         int drag_x = 0;
         int drag_y = 0;
         int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
+        //int drag_delay = 5000;
         GOF.File? drop_target_file = null;
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -249,7 +250,6 @@ namespace FM {
 //message ("select first for empty selection");
             if (selected_files == null) {
                 var path = new Gtk.TreePath.from_indices (0, -1);
-                //unselect_all (); /* necessary ?? */
                 select_path (path);
             }
         }
@@ -296,7 +296,7 @@ namespace FM {
         }
 
         protected void freeze_updates () {
-//message ("freeze updates");
+//message ("DV freeze updates");
             updates_frozen = true;
             slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
@@ -319,7 +319,6 @@ namespace FM {
             update_menu_actions ();
             GLib.SignalHandler.unblock_by_func (this, (void*) on_size_allocate, null); 
             GLib.SignalHandler.unblock_by_func (this, (void*) on_clipboard_changed, null); 
-            //slot.set_updates_frozen (false);
         }
 
         public new void grab_focus () {
@@ -366,7 +365,7 @@ namespace FM {
 //message ("no of elem is %u", nb_elem);
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             bool only_folders = selection_only_contains_folders (selection);
-message ("only folders is %s", only_folders ? "true" : "false");
+//message ("only folders is %s", only_folders ? "true" : "false");
             if (nb_elem < 10 && (default_app == null || only_folders)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
                 bool only_one_file = (nb_elem == 1);
@@ -476,6 +475,7 @@ message ("only folders is %s", only_folders ? "true" : "false");
             unblock_model ();
             connect_directory_handlers (new_dir);
             new_dir.load ();
+            update_menu_actions ();
         }
 
         public void reload () {
@@ -511,8 +511,9 @@ message ("only folders is %s", only_folders ? "true" : "false");
 //        }
 
         protected void cancel_drag_timer () {
+//message ("cancel drag timer");
             if (drag_timer_id > 0) {
-                disconnect_motion_and_release_events ();
+                disconnect_drag_timeout_motion_and_release_events ();
                 GLib.Source.remove (drag_timer_id);
                 drag_timer_id = 0;
             }
@@ -613,7 +614,7 @@ message ("only folders is %s", only_folders ? "true" : "false");
 //message ("activate file %s", file.uri);
             if (updates_frozen || in_trash)
                 return;
-
+//message ("really activate file %s", file.uri);
             GLib.File location = file.location.dup ();
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
@@ -992,7 +993,9 @@ message ("only folders is %s", only_folders ? "true" : "false");
 //message ("Directory on button release");
             /* Only active during drag timeout */
             cancel_drag_timer ();
-            show_context_menu (event);
+            if (event.button == 3)
+                show_context_menu (event);
+
             return false;
         }
 
@@ -1016,8 +1019,8 @@ message ("only folders is %s", only_folders ? "true" : "false");
         }
 
 /** Handle Motion events */
-        private bool on_motion_notify (Gdk.EventMotion event) {
-//message ("on motion notify");
+        private bool on_drag_timeout_motion_notify (Gdk.EventMotion event) {
+//message ("on drag timeout motion notify");
             /* Only active during drag timeout */
             Gdk.DragContext context;
             var widget = get_real_view ();
@@ -1083,11 +1086,6 @@ message ("only folders is %s", only_folders ? "true" : "false");
                 return;
             }
 
-           //if (!slot.is_active) {
-//message ("not active");
-             //   return;
-            //}
-
             update_menu_actions ();
             window.selection_changed (get_selected_files ());
         }
@@ -1125,6 +1123,7 @@ message ("only folders is %s", only_folders ? "true" : "false");
             GLib.StringBuilder sb = new GLib.StringBuilder ("");
             drag_file_list.@foreach ((file) => {
                 sb.append (file.uri);
+                sb.append ("\n");
             });
 
             selection_data.@set (selection_data.get_target (),
@@ -1388,16 +1387,17 @@ message ("only folders is %s", only_folders ? "true" : "false");
             start_drag_timer (event);
         }
 
-        private void start_drag_timer (Gdk.Event event) {
+        protected void start_drag_timer (Gdk.Event event) {
 //message ("start drag timer");
-            connect_motion_and_release_events ();
+            connect_drag_motion_and_release_events ();
             /* Remember position of click */ 
             drag_x = (int)(event.button.x);
             drag_y = (int)(event.button.y);
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    drag_delay,
                                                    () => {
-                disconnect_motion_and_release_events ();
+//message ("drag time out");
+                disconnect_drag_timeout_motion_and_release_events ();
                 drag_timer_id = 0;
                 show_context_menu (event);
                 return false;
@@ -1532,7 +1532,6 @@ message ("only folders is %s", only_folders ? "true" : "false");
         }
 
         private void update_menu_actions () {
-            //if (!slot.is_active || updates_frozen)
             if (updates_frozen)
                 return;
 //message ("update menu actions for slot %s", slot.directory.file.uri);
@@ -1741,6 +1740,7 @@ message ("only folders is %s", only_folders ? "true" : "false");
         }
 
         private void unblock_model () {
+//message ("unblock model");
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect (after_restore_selection);
             updates_frozen = false;
@@ -1756,18 +1756,18 @@ message ("only folders is %s", only_folders ? "true" : "false");
             return (this as Gtk.Bin).get_child ();
         }
 
-        private void connect_motion_and_release_events () {
+        private void connect_drag_motion_and_release_events () {
 //message ("connect motion and release events");
             var real_view = get_real_view ();
             real_view.button_release_event.connect (on_button_release);
-            real_view.motion_notify_event.connect (on_motion_notify);
+            real_view.motion_notify_event.connect (on_drag_timeout_motion_notify);
         }
 
-        private void disconnect_motion_and_release_events () {
+        private void disconnect_drag_timeout_motion_and_release_events () {
 //message ("disconnect motion and release events");
             var real_view = get_real_view ();
             real_view.button_release_event.disconnect (on_button_release);
-            real_view.motion_notify_event.disconnect (on_motion_notify);
+            real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
         }
 
         private void start_drag_scroll_timer (Gdk.DragContext context) {
@@ -2077,6 +2077,12 @@ message ("only folders is %s", only_folders ? "true" : "false");
             return false;
         }
 
+        public virtual void zoom_level_changed () {
+            icon_renderer.set_property ("zoom-level", zoom_level);
+            icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
+            icon_renderer.set_property ("selection-helpers", zoom_level >= Marlin.ZoomLevel.SMALLER);
+        }
+
 /** Virtual methods - may be overridden*/
         public virtual void sync_selection () {}
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
@@ -2099,12 +2105,12 @@ message ("only folders is %s", only_folders ? "true" : "false");
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
-        public abstract void zoom_level_changed ();
+
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
 
         protected abstract bool on_view_button_press_event (Gdk.EventButton event);
-        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon);
+        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon);
         protected abstract bool handle_middle_button_click (Gdk.EventButton event, bool on_blank);
         //protected abstract bool on_view_button_release_event (Gdk.EventButton event);
 //        protected abstract bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);

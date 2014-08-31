@@ -55,15 +55,25 @@ namespace FM {
             name_renderer.ellipsize_set = true;
             name_renderer.ellipsize = Pango.EllipsizeMode.MIDDLE;
 
-            pixbuf_renderer = new Gtk.CellRendererPixbuf ();
-            name_column.pack_start (pixbuf_renderer, false);
-            name_column.set_attributes (pixbuf_renderer,
-                                        "pixbuf", FM.ListModel.ColumnID.PIXBUF);
+            //pixbuf_renderer = new Gtk.CellRendererPixbuf ();
+            icon_renderer = new Marlin.IconRenderer ();
+            set_up_icon_renderer ();
+            //name_column.pack_start (pixbuf_renderer, false);
+            name_column.pack_start (icon_renderer, false);
+           // name_column.set_attributes (pixbuf_renderer,
+            name_column.set_attributes (icon_renderer,
+                                        "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
             name_column.pack_start (name_renderer, true);
             name_column.set_cell_data_func (name_renderer, filename_cell_data_func);
 
             tree.append_column (name_column);
+        }
+
+        protected void set_up_icon_renderer () {
+message ("ATV set up icon renderer");
+            icon_renderer.set_property ("follow-state",  true);
+            icon_renderer.set_property ("selection-helpers",  true);
         }
 
         protected void set_up_view () {
@@ -94,11 +104,7 @@ namespace FM {
 
         public override void zoom_level_changed () {
             if (tree != null) {
-                int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
-                int xpad = 0, ypad = 0;
-                pixbuf_renderer.get_padding (out xpad, out ypad);
-                pixbuf_renderer.set_fixed_size (icon_size + 2 * xpad, icon_size + 2 * ypad);
-
+                base.zoom_level_changed ();
                 tree.columns_autosize ();
             }
         }
@@ -236,32 +242,41 @@ namespace FM {
 
 //message ("for us");
             slot.active ();  /* grabs focus and cancels any renaming */
-
+/* TODO - Check for start of drag */
             unowned Gtk.TreeSelection selection = tree.get_selection ();
             Gtk.TreePath? path = null;
-            Gtk.TreeViewColumn? col = null;
-
-            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
-            bool on_blank = tree.is_blank_at_pos ((int) event.x, (int) event.y, out path, out col, out cell_x, out cell_y);
-            bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
-            bool on_icon =  (path != null) ? clicked_on_icon (event, col) : false;
+            //Gtk.TreeViewColumn? col = null;
+            bool on_blank, on_icon, on_helper, on_name;
+            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
 
             bool result = false; /* Pass to default handler by default */
+            bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
+//            if (no_mods) {
+//                unselect_all ();
+//                if (path != null) {
+//                    selection.select_path (path);
+//                }
+//            }
 
-            if (no_mods) {
+            if (path == null)
                 unselect_all ();
-                if (path != null) {
-                    selection.select_path (path);
-                }
-            }
 
-            if (path == null || on_blank)
-                block_drag_and_drop ();
+//            if (path == null || on_blank)
+//                block_drag_and_drop ();
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (path != null && Preferences.settings.get_boolean ("single-click") && no_mods)
-                        result = handle_primary_button_single_click_mode (event, selection, path, col, no_mods, on_blank, on_icon);
+                    if (path == null) {
+                        block_drag_and_drop ();  /* allow rubber banding */
+                    } else if (on_helper) {
+                        if (path_is_selected (path))
+                            unselect_path (path);
+                        else
+                            select_path (path);
+
+                        return true;
+                    } else if (path != null && Preferences.settings.get_boolean ("single-click") && no_mods)
+                        result = handle_primary_button_single_click_mode (event, selection, path, on_name, no_mods, on_blank, on_icon);
                     break;
 
                 case Gdk.BUTTON_MIDDLE: 
@@ -283,20 +298,57 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected bool clicked_on_icon (Gdk.EventButton event, Gtk.TreeViewColumn? col) {
-            bool result = false;
-            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
-            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
-            if (col != null && col == name_column) {
+//        protected bool clicked_on_icon (Gdk.EventButton event, Gtk.TreeViewColumn? col) {
+//            bool result = false;
+//            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
+//            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
+//            if (col != null && col == name_column) {
+//                int? x_offset, width;
+//                int expander_width = (tree.show_expanders ? 10 : 0); /* TODO Get from style class */
+//                //if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
+//                if (col.cell_get_position (icon_renderer, out x_offset, out width) &&
+//                   (cell_x <= x_offset + width + expander_width))
+
+//                    result = true;
+//            }
+
+//            return result;
+//        }
+
+        protected void get_click_position_info (int x, int y,
+                                                out Gtk.TreePath? path,
+                                                out bool on_name,
+                                                out bool on_blank,
+                                                out bool on_icon,
+                                                out bool on_helper) {
+            unowned Gtk.TreePath? p = null;
+            unowned Gtk.TreeViewColumn? c = null;
+            //bool on_blank, on_icon, on_helper, on_name;
+            int cx, cy;
+
+            on_blank = tree.is_blank_at_pos (x, y, out p, out c, out cx, out cy);
+            path = p;
+
+            //tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
+            on_icon = false;
+            on_helper = false;
+            if (c != null && c == name_column) {
                 int? x_offset, width;
+                c.cell_get_position (icon_renderer, out x_offset, out width);
                 int expander_width = (tree.show_expanders ? 10 : 0); /* TODO Get from style class */
-                if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
-                   (cell_x <= x_offset + width + expander_width))
+                if (cx <= x_offset + width + expander_width)
+                    on_icon = true;
 
-                    result = true;
+                if ((cx <= x_offset + expander_width + 18) && (cy <=18))
+                    on_helper = true;
             }
+            on_name = !on_icon && !on_blank;
 
-            return result;
+message ("\non_blank is %s", on_blank ? "true" : "false");
+message ("on_icon is %s", on_icon ? "true" : "false");
+message ("on_name is %s", on_name ? "true" : "false");
+message ("on_helper is %s", on_helper ? "true" : "false");
+message ("path is %s\n", path != null ? "not null" : "null");
         }
     }
 }

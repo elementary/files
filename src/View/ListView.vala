@@ -156,12 +156,12 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon) {
 //message ("LV handle left button");
             bool result = true;
             if (on_icon)
                 result = false; 
-            else if (!on_blank && col == name_column)
+            else if (on_name)
                 rename_file (selected_files.data);
 
             return result;

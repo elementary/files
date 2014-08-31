@@ -68,7 +68,7 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon) {
 //message ("CV handle left button");
             bool result = false;
             if (event.type == Gdk.EventType.BUTTON_PRESS) {

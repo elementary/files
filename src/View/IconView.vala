@@ -23,13 +23,13 @@ namespace FM {
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
-message ("New IconView");
+//message ("New IconView");
             base (_slot);
             slot.directory.load ();
         }
 
         protected override Gtk.Widget? create_view () {
-message ("IV create view");
+//message ("IV create view");
             tree = new Gtk.IconView ();
             set_up_view ();
             set_up_name_renderer ();
@@ -42,10 +42,9 @@ message ("IV create view");
         }
 
         private void set_up_view () {
-message ("IV tree view set up view");
+//message ("IV tree view set up view");
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
-            //tree.set_pixbuf_column (FM.ListModel.ColumnID.PIXBUF);
             tree.set_columns (-1);
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
@@ -53,11 +52,12 @@ message ("IV tree view set up view");
             (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
             (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
             connect_tree_signals ();
-            Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
+            Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
+            //tree.activate_on_single_click = false;
         }
 
         protected void set_up_name_renderer () {
-message ("IV set up name renderer");
+//message ("IV set up name renderer");
             name_renderer.wrap_width = 12;
             name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
@@ -68,15 +68,15 @@ message ("IV set up name renderer");
             name_renderer.editing_started.connect (on_name_editing_started);
         }
         protected void set_up_icon_renderer () {
-message ("IV set up icon renderer");
+//message ("IV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
-            icon_renderer.set_property ("selection-helpers",  true);
+            icon_renderer.set_property ("selection-helpers",  true); /* do we always want helpers for accessibility? */
             //Preferences.settings.bind ("single-click", icon_renderer, "selection-helpers", GLib.SettingsBindFlags.DEFAULT);
         }
 
 
         private void connect_tree_signals () {
-message ("IV connect tree_signals");
+//message ("IV connect tree_signals");
             tree.selection_changed.connect (on_view_selection_changed);
             tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
@@ -88,7 +88,7 @@ message ("IV connect tree_signals");
         
 /** Override parents virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-message ("CV setup zoom_level");
+//message ("CV setup zoom_level");
             var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
             Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
             return (Marlin.ZoomLevel)zoom;
@@ -104,13 +104,10 @@ message ("CV setup zoom_level");
 
         public override void zoom_level_changed () {
             if (tree != null) {
-message ("IV zoom level changed");
+//message ("IV zoom level changed");
                 int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
-                tree.set_columns (-1);
                 tree.set_item_width ((int)((double) icon_size * ITEM_WIDTH_TO_ICON_SIZE_RATIO));
-                icon_renderer.set_property ("zoom-level", zoom_level);
-                icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
-                queue_draw ();
+                base.zoom_level_changed ();
             }
         }
 
@@ -119,14 +116,12 @@ message ("IV zoom level changed");
         }
 
         public override void highlight_path (Gtk.TreePath? path) {
-message ("AbstractTreeView highlight path");
+//message ("IconView highlight path");
             tree.set_drag_dest_item (path, Gtk.IconViewDropPosition.DROP_INTO);
-            //tree.set_drag_dest_item (path, Exo.IconViewDropPosition.DROP_INTO);
         }
 
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
             unowned Gtk.TreePath? path = null;
-            //Exo.IconViewDropPosition pos; 
             Gtk.IconViewDropPosition pos; 
             if (x >= 0 && y >= 0 && tree.get_dest_item_at_pos  (x, y, out path, out pos))
                 return path;
@@ -139,10 +134,12 @@ message ("AbstractTreeView highlight path");
         }
 
         public override void unselect_all () {
+//message ("IV unselect all");
             tree.unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {
+//message ("IV select path");
             if (path != null)
                 tree.select_path (path);
         }
@@ -158,7 +155,7 @@ message ("AbstractTreeView highlight path");
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-message ("IV set cursor");
+//message ("IV set cursor");
             if (path == null)
                 return;
 
@@ -185,7 +182,7 @@ message ("IV set cursor");
 /**  Helper functions */
 
         protected override void update_selected_files () {
-message ("IV update selected files");
+//message ("IV update selected files");
             selected_files = null;
             tree.selected_foreach ((tree, path) => {
                 unowned GOF.File file;
@@ -205,21 +202,20 @@ message ("IV update selected files");
         }
 
         protected override bool on_view_button_press_event (Gdk.EventButton event) {
-message ("IV button press");
-            grab_focus (); /* cancels any renaming */
-
+//message ("IV button press");
+            //grab_focus (); /* cancels any renaming */
+            slot.active ();
             Gtk.TreePath? path = null;
-            Gtk.CellRenderer? renderer = null;
-
-            bool on_blank = !tree.get_item_at_pos ((int) event.x, (int) event.y, out path, out renderer);
+            bool on_blank, on_icon, on_helper, on_name;
+            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
-            bool result = false;
-            bool on_editable = (renderer != null && (renderer is Gtk.CellRendererText));
-            bool on_helper = clicked_on_add_remove_helper ((int)event.x, (int)event.y);
 
-            if (path == null)
+            if (path == null || (!on_helper && !path_is_selected (path) && no_mods)) {
                 unselect_all ();
+                select_path (path);
+            }
 
+            bool result = false;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                     if (path == null) {
@@ -229,14 +225,15 @@ message ("IV button press");
                             unselect_path (path);
                         else
                             select_path (path);
+
                         return true;
                     } else {
-                        if (no_mods) {
-                            unselect_all ();
-                            tree.select_path (path);
-                        }
+//                        if (no_mods) {
+//                            unselect_all ();
+//                            tree.select_path (path);
+//                        }
                         if (Preferences.settings.get_boolean ("single-click") && no_mods) {
-                            result = handle_primary_button_single_click_mode (event, null, path, null, no_mods, on_blank, !on_editable);
+                            result = handle_primary_button_single_click_mode (event, null, path, on_name, no_mods, on_blank, on_icon);
                         }
                     }
                     /* In double-click mode on path the default Gtk.TreeView handler is used */
@@ -247,9 +244,6 @@ message ("IV button press");
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
-                    if (path != null)
-                        select_path (path);
-
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -257,18 +251,19 @@ message ("IV button press");
                     result = handle_default_button_click ();
                     break;
             }
-message ("IV button press leaving");
+//message ("IV button press leaving");
             return result;
+            //return true;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank, bool on_icon) {
-message ("IV handle left button");
+        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon) {
+//message ("IV handle left button");
             bool result = true;
             if (path != null) {
-                if (!on_icon)
+                if (!on_icon) {
                     rename_file (selected_files.data); /* Is this desirable? */
-                else {
-                        result = false; /* Use default handler */
+                } else {
+                    result = false;
                 }
             } 
 
@@ -285,6 +280,7 @@ message ("IV handle left button");
         }
 
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
+//message ("IV button release event");
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
@@ -292,7 +288,7 @@ message ("IV handle left button");
         }
 
         public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-message ("ATV start renaming file");
+//message ("ATV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);
@@ -320,23 +316,59 @@ message ("ATV start renaming file");
             }
         }
 
-        private bool clicked_on_add_remove_helper (int x, int y) {
-message ("clicked on add remove helper");
-            Gtk.CellRenderer? renderer = null;
-            Gtk.TreePath? path = null;
-            tree.get_item_at_pos (x, y, out path, out renderer);
-            if (renderer != null && renderer is Marlin.IconRenderer) {
-                Gdk.Rectangle rect, area;
-                tree.get_cell_rect  (path, renderer, out rect);
-                area = renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-message ("area x is %i, area y is %i, area width is %i, area height is %i;  x is %i, y is %i", area.x, area.y, area.width, area.height, x,y);
-                if (x <= area.x + 18 && y <= area.y + 18) {
-message ("returning true");
-                    return true;
+//        private bool clicked_on_add_remove_helper (int x, int y) {
+//message ("clicked on add remove helper");
+//            Gtk.CellRenderer? renderer = null;
+//            Gtk.TreePath? path = null;
+//            tree.get_item_at_pos (x, y, out path, out renderer);
+//            if (renderer != null && renderer is Marlin.IconRenderer) {
+//                Gdk.Rectangle rect, area;
+//                tree.get_cell_rect  (path, renderer, out rect);
+//                area = renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+//message ("area x is %i, area y is %i, area width is %i, area height is %i;  x is %i, y is %i", area.x, area.y, area.width, area.height, x,y);
+//                if (x <= area.x + 18 && y <= area.y + 18) {
+//message ("returning true");
+//                    return true;
+//                }
+//            }
+//message ("returning false");
+//            return false;
+//        }
+
+        protected void get_click_position_info (int x, int y,
+                                                out Gtk.TreePath? path,
+                                                out bool on_name,
+                                                out bool on_blank,
+                                                out bool on_icon,
+                                                out bool on_helper) {
+            unowned Gtk.TreePath? p = null;
+            unowned Gtk.CellRenderer r;
+
+            on_blank = !tree.get_item_at_pos (x, y, out p, out r);
+            path = p;
+
+            on_icon = false;
+            on_helper = false;
+            on_name = false;
+            if (r != null) {
+                if (r is Gtk.CellRendererText)
+                    on_name = true;
+                else {
+                    Gdk.Rectangle rect, area;
+                    tree.get_cell_rect  (p, r, out rect);
+                    area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+                    if (x <= area.x + 18 && y <= area.y + 18) {
+                        on_helper = true;
+                    }
                 }
             }
-message ("returning false");
-            return false;
+            on_icon = !on_name && !on_helper;
+
+//message ("\non_blank is %s", on_blank ? "true" : "false");
+//message ("on_icon is %s", on_icon ? "true" : "false");
+//message ("on_name is %s", on_name ? "true" : "false");
+//message ("on_helper is %s", on_helper ? "true" : "false");
+//message ("path is %s\n", path != null ? "not null" : "null");
         }
 
     }
