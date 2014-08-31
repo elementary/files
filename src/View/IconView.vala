@@ -28,18 +28,6 @@ namespace FM {
             slot.directory.load ();
         }
 
-        protected override Gtk.Widget? create_view () {
-//message ("IV create view");
-            tree = new Gtk.IconView ();
-            set_up_view ();
-            set_up_name_renderer ();
-            set_up_icon_renderer ();
-
-            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
-            tree.motion_notify_event.connect (on_motion_notify_event);
-
-            return tree as Gtk.Widget;
-        }
 
         private void set_up_view () {
 //message ("IV tree view set up view");
@@ -85,8 +73,21 @@ namespace FM {
             tree.item_activated.connect (on_view_items_activated);
         }
 
-        
-/** Override parents virtual methods as required*/
+/** Override parent's abstract and  virtual methods as required*/
+
+        protected override Gtk.Widget? create_view () {
+//message ("IV create view");
+            tree = new Gtk.IconView ();
+            set_up_view ();
+            set_up_name_renderer ();
+            set_up_icon_renderer ();
+
+            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+            tree.motion_notify_event.connect (on_motion_notify_event);
+
+            return tree as Gtk.Widget;
+        }
+
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("CV setup zoom_level");
             var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
@@ -99,8 +100,6 @@ namespace FM {
             Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
             return (Marlin.ZoomLevel)zoom;
         }
-
-/** Override DirectoryView virtual methods as required, where common to IconView and MillerColumnView*/
 
         public override void zoom_level_changed () {
             if (tree != null) {
@@ -178,9 +177,6 @@ namespace FM {
             /* FIXME Not implemented - needed? */
         }
 
-
-/**  Helper functions */
-
         protected override void update_selected_files () {
 //message ("IV update selected files");
             selected_files = null;
@@ -201,141 +197,7 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override bool on_view_button_press_event (Gdk.EventButton event) {
-//message ("IV button press");
-            //grab_focus (); /* cancels any renaming */
-            slot.active ();
-            Gtk.TreePath? path = null;
-            bool on_blank, on_icon, on_helper, on_name;
-            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
-            bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
-
-            if (path == null || (!on_helper && !path_is_selected (path) && no_mods)) {
-                unselect_all ();
-                select_path (path);
-            }
-
-            bool result = false;
-            switch (event.button) {
-                case Gdk.BUTTON_PRIMARY:
-                    if (path == null) {
-                        block_drag_and_drop ();  /* allow rubber banding */
-                    } else if (on_helper) {
-                        if (path_is_selected (path))
-                            unselect_path (path);
-                        else
-                            select_path (path);
-
-                        return true;
-                    } else {
-//                        if (no_mods) {
-//                            unselect_all ();
-//                            tree.select_path (path);
-//                        }
-                        if (Preferences.settings.get_boolean ("single-click") && no_mods) {
-                            result = handle_primary_button_single_click_mode (event, null, path, on_name, no_mods, on_blank, on_icon);
-                        }
-                    }
-                    /* In double-click mode on path the default Gtk.TreeView handler is used */
-                    break;
-
-                case Gdk.BUTTON_MIDDLE: 
-                    result = handle_middle_button_click (event, on_blank);
-                    break;
-
-                case Gdk.BUTTON_SECONDARY:
-                    result = handle_secondary_button_click (event);
-                    break;
-
-                default:
-                    result = handle_default_button_click ();
-                    break;
-            }
-//message ("IV button press leaving");
-            return result;
-            //return true;
-        }
-
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon) {
-//message ("IV handle left button");
-            bool result = true;
-            if (path != null) {
-                if (!on_icon) {
-                    rename_file (selected_files.data); /* Is this desirable? */
-                } else {
-                    result = false;
-                }
-            } 
-
-            return result;
-        }
-
-        protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
-                /* opens folder(s) in new tab */
-                if (!on_blank) {
-                    activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                    return true;
-                } else
-                    return false;
-        }
-
-        protected override bool on_view_button_release_event (Gdk.EventButton event) {
-//message ("IV button release event");
-            if (dnd_disabled)
-                unblock_drag_and_drop ();
-
-            return false;
-        }
-
-        public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-//message ("ATV start renaming file");
-            /* Select whole name if we are in renaming mode already */
-            if (name_column != null && editable_widget != null) {
-                editable_widget.select_region (0, -1);
-                return;
-            }
-
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                critical ("Failed to find rename file in model");
-                return;
-            }
-
-            /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-            freeze_updates ();
-
-            Gtk.TreePath path = model.get_path (iter);
-            tree.scroll_to_path (path, true, (float) 0.0, (float) 0.0);
-            /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            tree.set_cursor (path, name_renderer, true);
-
-            int start_offset= 0, end_offset = -1;
-            if (editable_widget != null) {
-                Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
-                editable_widget.select_region (start_offset, end_offset);
-            }
-        }
-
-//        private bool clicked_on_add_remove_helper (int x, int y) {
-//message ("clicked on add remove helper");
-//            Gtk.CellRenderer? renderer = null;
-//            Gtk.TreePath? path = null;
-//            tree.get_item_at_pos (x, y, out path, out renderer);
-//            if (renderer != null && renderer is Marlin.IconRenderer) {
-//                Gdk.Rectangle rect, area;
-//                tree.get_cell_rect  (path, renderer, out rect);
-//                area = renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-//message ("area x is %i, area y is %i, area width is %i, area height is %i;  x is %i, y is %i", area.x, area.y, area.width, area.height, x,y);
-//                if (x <= area.x + 18 && y <= area.y + 18) {
-//message ("returning true");
-//                    return true;
-//                }
-//            }
-//message ("returning false");
-//            return false;
-//        }
-
-        protected void get_click_position_info (int x, int y,
+        protected override void get_click_position_info (int x, int y,
                                                 out Gtk.TreePath? path,
                                                 out bool on_name,
                                                 out bool on_blank,
@@ -363,12 +225,13 @@ namespace FM {
                 }
             }
             on_icon = !on_name && !on_helper;
+        }
 
-//message ("\non_blank is %s", on_blank ? "true" : "false");
-//message ("on_icon is %s", on_icon ? "true" : "false");
-//message ("on_name is %s", on_name ? "true" : "false");
-//message ("on_helper is %s", on_helper ? "true" : "false");
-//message ("path is %s\n", path != null ? "not null" : "null");
+        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
+            tree.scroll_to_path (path, false, 0.0f, 0.0f);
+        }
+        protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
+            tree.set_cursor (path, renderer, start_editing);
         }
 
     }

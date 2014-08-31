@@ -27,25 +27,6 @@ namespace FM {
             base (_slot);
         }
 
-        protected override Gtk.Widget? create_view () {
-//message ("ATV create view");
-            tree = new Gtk.TreeView ();
-            tree.set_model (model);
-            tree.set_headers_visible (false);
-            tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
-            tree.set_rules_hint (true);
-
-            create_and_set_up_name_column ();
-            set_up_view ();
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
-            tree.set_rubber_banding (true);
-
-            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
-            tree.motion_notify_event.connect (on_motion_notify_event);
-
-            return tree as Gtk.Widget;
-        }
-
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
@@ -55,12 +36,9 @@ namespace FM {
             name_renderer.ellipsize_set = true;
             name_renderer.ellipsize = Pango.EllipsizeMode.MIDDLE;
 
-            //pixbuf_renderer = new Gtk.CellRendererPixbuf ();
             icon_renderer = new Marlin.IconRenderer ();
             set_up_icon_renderer ();
-            //name_column.pack_start (pixbuf_renderer, false);
             name_column.pack_start (icon_renderer, false);
-           // name_column.set_attributes (pixbuf_renderer,
             name_column.set_attributes (icon_renderer,
                                         "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
@@ -71,7 +49,7 @@ namespace FM {
         }
 
         protected void set_up_icon_renderer () {
-message ("ATV set up icon renderer");
+//message ("ATV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
             icon_renderer.set_property ("selection-helpers",  true);
         }
@@ -100,7 +78,26 @@ message ("ATV set up icon renderer");
             name_renderer.editing_started.connect (on_name_editing_started);
         }
 
-/** Override DirectoryView virtual methods as required, where common to ListView and MillerColumnView*/
+/** Override parent's abstract and virtual methods as required, where common to ListView and MillerColumnView*/
+
+        protected override Gtk.Widget? create_view () {
+//message ("ATV create view");
+            tree = new Gtk.TreeView ();
+            tree.set_model (model);
+            tree.set_headers_visible (false);
+            tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
+            tree.set_rules_hint (true);
+
+            create_and_set_up_name_column ();
+            set_up_view ();
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+            tree.set_rubber_banding (true);
+
+            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+            tree.motion_notify_event.connect (on_motion_notify_event);
+
+            return tree as Gtk.Widget;
+        }
 
         public override void zoom_level_changed () {
             if (tree != null) {
@@ -173,50 +170,8 @@ message ("ATV set up icon renderer");
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        public override void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-//message ("ATV start renaming file");
-            /* Select whole name if we are in renaming mode already */
-            if (name_column != null && editable_widget != null) {
-                editable_widget.select_region (0, -1);
-                return;
-            }
-
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                critical ("Failed to find rename file in model");
-                return;
-            }
-
-            /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-            freeze_updates ();
-
-            Gtk.TreePath path = model.get_path (iter);
-            tree.scroll_to_cell (null, name_column, true, (float) 0.0, (float) 0.0);
-            /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            tree.set_cursor_on_cell (path, name_column, name_renderer, true);
-
-            int start_offset= 0, end_offset = -1;
-            if (editable_widget != null) {
-                Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
-                editable_widget.select_region (start_offset, end_offset);
-            }
-        }
-
         public override void sync_selection () {
             /* FIXME Not implemented - needed? */
-        }
-
-/**  Helper functions */
-        protected new void freeze_updates () {
-//message ("freeze updates");
-            name_renderer.@set ("editable", true, null);
-            base.freeze_updates ();
-        }
-
-        protected new void unfreeze_updates () {
-//message ("unfreeze updates");
-            name_renderer.@set ("editable", false, null);
-            base.unfreeze_updates ();
         }
 
         protected override void update_selected_files () {
@@ -233,89 +188,11 @@ message ("ATV set up icon renderer");
             selected_files.reverse ();
         }
 
-        protected override bool on_view_button_press_event (Gdk.EventButton event) {
-//message ("ATV button press");
-
-            /* check if the event is for the bin window */
-            if (event.window != tree.get_bin_window ())
-                return false; /* not for us */
-
-//message ("for us");
-            slot.active ();  /* grabs focus and cancels any renaming */
-/* TODO - Check for start of drag */
-            unowned Gtk.TreeSelection selection = tree.get_selection ();
-            Gtk.TreePath? path = null;
-            //Gtk.TreeViewColumn? col = null;
-            bool on_blank, on_icon, on_helper, on_name;
-            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
-
-            bool result = false; /* Pass to default handler by default */
-            bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
-//            if (no_mods) {
-//                unselect_all ();
-//                if (path != null) {
-//                    selection.select_path (path);
-//                }
-//            }
-
-            if (path == null)
-                unselect_all ();
-
-//            if (path == null || on_blank)
-//                block_drag_and_drop ();
-
-            switch (event.button) {
-                case Gdk.BUTTON_PRIMARY:
-                    if (path == null) {
-                        block_drag_and_drop ();  /* allow rubber banding */
-                    } else if (on_helper) {
-                        if (path_is_selected (path))
-                            unselect_path (path);
-                        else
-                            select_path (path);
-
-                        return true;
-                    } else if (path != null && Preferences.settings.get_boolean ("single-click") && no_mods)
-                        result = handle_primary_button_single_click_mode (event, selection, path, on_name, no_mods, on_blank, on_icon);
-                    break;
-
-                case Gdk.BUTTON_MIDDLE: 
-                    result = handle_middle_button_click (event, on_blank);
-                    break;
-
-                case Gdk.BUTTON_SECONDARY:
-                    result = handle_secondary_button_click (event);
-                    break;
-
-                default:
-                    result = handle_default_button_click ();
-                    break;
-            }
-            return result;
-        }
-
         protected override bool view_has_focus () {
             return tree.has_focus;
         }
 
-//        protected bool clicked_on_icon (Gdk.EventButton event, Gtk.TreeViewColumn? col) {
-//            bool result = false;
-//            int cell_x = -1, cell_y = -1; /* The gtk+-3.0.vapi requires these even though C interface does not */
-//            tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
-//            if (col != null && col == name_column) {
-//                int? x_offset, width;
-//                int expander_width = (tree.show_expanders ? 10 : 0); /* TODO Get from style class */
-//                //if (col.cell_get_position (pixbuf_renderer, out x_offset, out width) &&
-//                if (col.cell_get_position (icon_renderer, out x_offset, out width) &&
-//                   (cell_x <= x_offset + width + expander_width))
-
-//                    result = true;
-//            }
-
-//            return result;
-//        }
-
-        protected void get_click_position_info (int x, int y,
+        protected override void get_click_position_info (int x, int y,
                                                 out Gtk.TreePath? path,
                                                 out bool on_name,
                                                 out bool on_blank,
@@ -323,32 +200,37 @@ message ("ATV set up icon renderer");
                                                 out bool on_helper) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
-            //bool on_blank, on_icon, on_helper, on_name;
             int cx, cy;
 
             on_blank = tree.is_blank_at_pos (x, y, out p, out c, out cx, out cy);
             path = p;
 
-            //tree.convert_bin_window_to_widget_coords ((int)event.x, (int)event.y, out cell_x, out cell_y);
+            int depth = p != null ? p.get_depth () : 0;
             on_icon = false;
             on_helper = false;
+            on_name = false;
             if (c != null && c == name_column) {
                 int? x_offset, width;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
-                int expander_width = (tree.show_expanders ? 10 : 0); /* TODO Get from style class */
-                if (cx <= x_offset + width + expander_width)
-                    on_icon = true;
+                int expander_width = (tree.show_expanders ? 10 : 0) * (depth + 1); /* TODO Find a simpler way */
+                if (cx > expander_width ) {
+                    if (cx <= x_offset + width + expander_width)
+                        on_icon = true;
 
-                if ((cx <= x_offset + expander_width + 18) && (cy <=18))
-                    on_helper = true;
+                    if ((cx <= x_offset + expander_width + 18) && (cy <=18))
+                        on_helper = true;
+
+                    on_name = !on_icon && !on_blank;
+                } else
+                    on_blank = false;
             }
-            on_name = !on_icon && !on_blank;
+        }
 
-message ("\non_blank is %s", on_blank ? "true" : "false");
-message ("on_icon is %s", on_icon ? "true" : "false");
-message ("on_name is %s", on_name ? "true" : "false");
-message ("on_helper is %s", on_helper ? "true" : "false");
-message ("path is %s\n", path != null ? "not null" : "null");
+        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
+            tree.scroll_to_cell (path, col, false, 0.0f, 0.0f);
+        }
+        protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
+            tree.set_cursor_on_cell (path, col, renderer, start_editing);
         }
     }
 }

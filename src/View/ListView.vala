@@ -37,19 +37,6 @@ namespace FM {
             slot.directory.load ();
         }
 
-/** Override parents virtual methods as required*/
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-//message ("LV setup zoom_level");
-            Preferences.marlin_list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
-            return (Marlin.ZoomLevel)(Preferences.marlin_list_view_settings.get_enum ("zoom-level"));
-        }
-
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Preferences.marlin_list_view_settings.get_enum ("default-zoom-level");
-            Preferences.marlin_list_view_settings.set_enum ("zoom-level", zoom);
-            return (Marlin.ZoomLevel)zoom;
-        }
-
         private void connect_additional_signals () {
 //message ("LV connect tree_signals");
             tree.row_expanded.connect (on_row_expanded);
@@ -78,23 +65,6 @@ namespace FM {
                     tree.append_column (col);
                 }
             }
-        }
-
-        protected override void add_subdirectory (GOF.Directory.Async dir) {
-//message ("add subdirectory");
-            connect_directory_handlers (dir);
-            dir.load ();
-            /* Maintain our own reference on dir, independent of the model */
-            /* Also needed for updating show hidden status */
-            loaded_subdirectories.prepend (dir);
-        }
-
-        protected override void remove_subdirectory (GOF.Directory.Async dir) {
-//message ("remove subdirectory");
-            assert (dir != null);
-            disconnect_directory_handlers (dir);
-            /* Release our reference on dir */
-            loaded_subdirectories.remove (dir);
         }
 
         private void color_row_func (Gtk.CellLayout column,
@@ -144,37 +114,6 @@ namespace FM {
             });
         }
 
-/** Implement Abstract TreeView abstract methods*/
-        protected override Gtk.Widget? create_view () {
-//message ("LV create view");
-            model.set_property ("has-child", true);
-            base.create_view ();
-            tree.set_show_expanders (true);
-            tree.set_headers_visible (true);
-            append_extra_tree_columns ();
-            connect_additional_signals ();
-            return tree as Gtk.Widget;
-        }
-
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon) {
-//message ("LV handle left button");
-            bool result = true;
-            if (on_icon)
-                result = false; 
-            else if (on_name)
-                rename_file (selected_files.data);
-
-            return result;
-        }
-
-        protected override bool handle_middle_button_click (Gdk.EventButton event, bool on_blank) {
-            /* opens folder(s) in new tab */
-            if (!on_blank) {
-                return true;
-            } else
-                return false;
-        }
-
         private void on_sort_column_changed () {
 //message ("on_sort_column_changed");
             int sort_column_id;
@@ -222,5 +161,48 @@ namespace FM {
                 return "name";
             }
         }
+
+/** Override parents abstract and virtual methods as required*/
+        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
+//message ("LV setup zoom_level");
+            Preferences.marlin_list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+            return (Marlin.ZoomLevel)(Preferences.marlin_list_view_settings.get_enum ("zoom-level"));
+        }
+
+        public override Marlin.ZoomLevel get_normal_zoom_level () {
+            var zoom = Preferences.marlin_list_view_settings.get_enum ("default-zoom-level");
+            Preferences.marlin_list_view_settings.set_enum ("zoom-level", zoom);
+            return (Marlin.ZoomLevel)zoom;
+        }
+
+        protected override void add_subdirectory (GOF.Directory.Async dir) {
+//message ("add subdirectory");
+            connect_directory_handlers (dir);
+            dir.load ();
+            /* Maintain our own reference on dir, independent of the model */
+            /* Also needed for updating show hidden status */
+            loaded_subdirectories.prepend (dir);
+        }
+
+        protected override void remove_subdirectory (GOF.Directory.Async dir) {
+//message ("remove subdirectory");
+            assert (dir != null);
+            disconnect_directory_handlers (dir);
+            /* Release our reference on dir */
+            loaded_subdirectories.remove (dir);
+        }
+
+        protected override Gtk.Widget? create_view () {
+//message ("LV create view");
+            model.set_property ("has-child", true);
+            base.create_view ();
+            tree.set_show_expanders (true);
+            tree.set_headers_visible (true);
+            append_extra_tree_columns ();
+            connect_additional_signals ();
+            return tree as Gtk.Widget;
+        }
+
+
     }
 }

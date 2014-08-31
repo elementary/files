@@ -285,6 +285,7 @@ namespace FM {
         }
 
         public void set_updates_frozen (bool freeze) {
+//message ("set updates frozen %s", freeze ? "true" : "false");
             if (freeze && !updates_frozen)
                 freeze_updates ();
             else if (!freeze && updates_frozen)
@@ -307,6 +308,8 @@ namespace FM {
             GLib.SignalHandler.block_by_func (this, (void*) on_size_allocate, null); /* required? */
             GLib.SignalHandler.block_by_func (this, (void*) on_clipboard_changed, null); 
             /* TODO queue file changed/added/.. and freeze their updates */
+
+            name_renderer.@set ("editable", true, null);
         }
 
         protected void unfreeze_updates () {
@@ -318,7 +321,10 @@ namespace FM {
             slot.directory.freeze_update = false;;
             update_menu_actions ();
             GLib.SignalHandler.unblock_by_func (this, (void*) on_size_allocate, null); 
-            GLib.SignalHandler.unblock_by_func (this, (void*) on_clipboard_changed, null); 
+            GLib.SignalHandler.unblock_by_func (this, (void*) on_clipboard_changed, null);
+
+            name_renderer.@set ("editable", false, null);
+
         }
 
         public new void grab_focus () {
@@ -362,27 +368,21 @@ namespace FM {
 
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint nb_elem = selection.length ();
-//message ("no of elem is %u", nb_elem);
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             bool only_folders = selection_only_contains_folders (selection);
-//message ("only folders is %s", only_folders ? "true" : "false");
             if (nb_elem < 10 && (default_app == null || only_folders)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
                 bool only_one_file = (nb_elem == 1);
                 foreach (unowned GOF.File file in selection) {
-//message ("activating file %s", file.uri);
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
                     GLib.Timeout.add (50, () => {
                         activate_file (file, screen, flag, only_one_file);
                         return false;
                     });
-                    
-//message ("done");
                 }
             } else if (default_app != null) {
                 open_files_with (default_app, selection);
             }
-//message ("leaving activate items");
         }
 
         /** Only call with non null selection */
@@ -499,16 +499,6 @@ namespace FM {
             widget.drag_data_delete.connect (on_drag_data_delete);
             widget.drag_end.connect (on_drag_end);
         }
-
-    /** Handle hovering */
-//        protected void notify_item_hovered (Gtk.TreePath? path) {
-//            GOF.File? file = null;
-//            if (path != null) {
-//                file = model.file_for_path (path);
-//                if (file != null)
-//                    window.item_hovered (file);
-//            }
-//        }
 
         protected void cancel_drag_timer () {
 //message ("cancel drag timer");
@@ -684,6 +674,7 @@ namespace FM {
 
         protected void rename_file (GOF.File file_to_rename) {
 //message ("rename file");
+            unselect_all ();
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
         }
@@ -1959,7 +1950,10 @@ namespace FM {
         }
 
         protected void on_name_editing_canceled () {
+                if (!renaming)
+                    return;
 //message ("on name editing canceled");
+
                 editable_widget = null;
                 renaming = false;
                 unfreeze_updates ();
@@ -2069,6 +2063,61 @@ namespace FM {
             dnd_disabled = false;
         }
 
+        protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+//message ("DV view button press");
+            grab_focus (); /* cancels any renaming */
+            slot.active ();
+            Gtk.TreePath? path = null;
+            bool on_blank, on_icon, on_helper, on_name;
+            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
+            bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
+
+            if (!on_helper && no_mods) {
+                unselect_all ();
+                if (path != null)
+                    select_path (path);
+            }
+
+            bool result = true;
+            switch (event.button) {
+                case Gdk.BUTTON_PRIMARY:
+                    //if (path == null) {
+                    if (on_blank) {
+                        block_drag_and_drop ();  /* allow rubber banding */
+                    } else if (on_helper) {
+                        if (path_is_selected (path))
+                            unselect_path (path);
+                        else
+                            select_path (path);
+                    } else  if (on_name) {
+                        rename_file (selected_files.data);
+                    } else if (Preferences.settings.get_boolean ("single-click") && no_mods) {
+                            result = handle_primary_button_single_click_mode (event, path, on_icon);
+                    } else {
+                        /* Not handled */
+                        result = false;
+                    }
+                    break;
+
+                case Gdk.BUTTON_MIDDLE:
+                    if (!on_blank)
+                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+
+                    break;
+
+                case Gdk.BUTTON_SECONDARY:
+                    result = handle_secondary_button_click (event);
+                    break;
+
+                default:
+                    result = handle_default_button_click ();
+                    break;
+            }
+
+//message ("DV BPE Returning %s", result ? "true" : "false"); 
+            return result;
+        }
+
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
 //message ("DV button release");
             if (dnd_disabled)
@@ -2083,13 +2132,42 @@ namespace FM {
             icon_renderer.set_property ("selection-helpers", zoom_level >= Marlin.ZoomLevel.SMALLER);
         }
 
+        public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
+//message ("ATV start renaming file");
+            /* Select whole name if we are in renaming mode already */
+            if (name_column != null && editable_widget != null) {
+                editable_widget.select_region (0, -1);
+                return;
+            }
+
+            Gtk.TreeIter? iter = null;
+            if (!model.get_first_iter_for_file (file, out iter)) {
+                critical ("Failed to find rename file in model");
+                return;
+            }
+
+            /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+            freeze_updates ();
+
+            Gtk.TreePath path = model.get_path (iter);
+            scroll_to_cell (path, name_column);
+            /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
+            set_cursor_on_cell (path, name_column, name_renderer, true);
+
+            int start_offset= 0, end_offset = -1;
+            if (editable_widget != null) {
+                Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
+                editable_widget.select_region (start_offset, end_offset);
+            }
+        }
+
 /** Virtual methods - may be overridden*/
         public virtual void sync_selection () {}
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
-
+        protected virtual bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {return false;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -2101,19 +2179,15 @@ namespace FM {
         public abstract bool path_is_selected (Gtk.TreePath? path);
         public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
-        public abstract void start_renaming_file (GOF.File file, bool preselect_whole_name);
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
-
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
+        protected abstract void get_click_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
+        protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col);
+        protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing); 
 
-        protected abstract bool on_view_button_press_event (Gdk.EventButton event);
-        protected abstract bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, bool on_name, bool no_mods, bool on_blank, bool on_icon);
-        protected abstract bool handle_middle_button_click (Gdk.EventButton event, bool on_blank);
-        //protected abstract bool on_view_button_release_event (Gdk.EventButton event);
-//        protected abstract bool handle_secondary_button_click (Gdk.EventButton event, Gtk.TreeSelection? selection, Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool no_mods, bool on_blank);
 
 
 /** Unimplemented methods
