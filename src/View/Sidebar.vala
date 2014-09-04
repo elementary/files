@@ -115,7 +115,6 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_rescan_item;
         Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
-        Gtk.MenuItem popupmenu_connect_server_item;
         Gtk.MenuItem popupmenu_start_item;
         Gtk.MenuItem popupmenu_stop_item;
 
@@ -1246,14 +1245,6 @@ namespace Marlin.Places {
             item.activate.connect (empty_trash_cb);
             item.show ();
             popupmenu.append (item);
-
-            /* Connect to server menu item */
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("Connect to Server..."));
-            popupmenu_connect_server_item = item;
-            item.activate.connect (connect_server_cb);
-            item.show ();
-            popupmenu.append (item);
-
             check_popup_sensitivity ();
         }
 
@@ -1284,7 +1275,6 @@ namespace Marlin.Places {
             popupmenu_start_item = null;
             popupmenu_stop_item = null;
             popupmenu_empty_trash_item = null;
-            popupmenu_connect_server_item = null;
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -1886,11 +1876,6 @@ namespace Marlin.Places {
             Marlin.FileOperations.empty_trash (window);
         }
 
-        private void connect_server_cb (Gtk.MenuItem item) {
-            var dialog = new Marlin.ConnectServer.Dialog (window);
-            dialog.show ();
-        }
-
 /* VOLUME MONITOR CALLBACK FUNCTIONS */
 
         private void mount_added_callback (Mount mount) {
@@ -2039,18 +2024,14 @@ namespace Marlin.Places {
                               out show_stop);
 
             bool show_empty_trash = (uri != null) && (uri == Marlin.TRASH_URI);
-            bool show_connect_server = (uri != null) && (uri == Marlin.NETWORK_URI);
             Eel.gtk_widget_set_shown (popupmenu_separator_item2,
                                       show_eject || show_unmount ||
-                                      show_mount || show_empty_trash ||
-                                      show_connect_server);
+                                      show_mount || show_empty_trash);
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
-
-            Eel.gtk_widget_set_shown (popupmenu_connect_server_item, show_connect_server);
         }
 
         /**
