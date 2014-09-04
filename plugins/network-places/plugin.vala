@@ -47,7 +47,7 @@ public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
     public override void update_sidebar (Gtk.Widget sidebar) {
 message ("Network plug update sidebar");
         if (!sidebar_button_added) {
-            var sidebar_button = new Gtk.Button.from_icon_name ("server", Gtk.IconSize.MENU);
+            var sidebar_button = new Gtk.Button.from_icon_name ("gtk-add", Gtk.IconSize.MENU);
             sidebar_button.set_always_show_image (true);
             sidebar_button.set_label (_("Connect to server"));
             sidebar_button.clicked.connect ((w) => {
