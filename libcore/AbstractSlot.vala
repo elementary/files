@@ -32,9 +32,8 @@ namespace GOF {
         
         protected int slot_number;
         protected int width = 0;
-
-        public signal void active (); //Listeners: this, Miller
-        public signal void inactive (); //Listeners: this
+        public static int slot_instance_count = 0;
+        public int instance_number;
 
         protected void init () {
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -50,12 +49,11 @@ namespace GOF {
 
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active);
-        public abstract AbstractSlot get_current_slot ();
+        public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload ();
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
-
-        protected abstract Gtk.Widget make_view ();
+        protected abstract void make_view ();
 
         public virtual void zoom_out () {}
         public virtual void zoom_in () {}

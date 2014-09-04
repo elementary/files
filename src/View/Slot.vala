@@ -19,25 +19,30 @@
 
 namespace Marlin.View {
     public class Slot : GOF.AbstractSlot {
-        private Marlin.View.ViewContainer ctab;
+        private unowned Marlin.View.ViewContainer ctab;
         private Marlin.ViewMode mode;
         private int preferred_column_width;
 
         protected bool updates_frozen = false;
         protected bool is_active = true;
 
-        public FM.DirectoryView? dir_view = null;
-        public Gtk.Box colpane;
-        public Granite.Widgets.ThinPaned hpane;
-        public Marlin.View.Window window {
+        private FM.DirectoryView? dir_view = null;
+        public unowned Marlin.View.Window window {
             get {return ctab.window;}
         }
+
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
-        public signal bool horizontal_scroll_event (double delta_x); //Listeners: Miller
-        public signal void frozen_changed (bool freeze); //Listeners: Miller
+        public signal bool horizontal_scroll_event (double delta_x);
+        public signal void frozen_changed (bool freeze); 
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
+        public signal void active (); 
+        public signal void inactive ();
+
+        /* Support for multi-slot view (Miller)*/
+        public Gtk.Box colpane;
+        public Granite.Widgets.ThinPaned hpane;
         public signal void miller_slot_request (GLib.File file, bool make_root);
-        //public signal void autosize ();
+
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
 //message ("New slot location %s", _location.get_uri ());
@@ -47,19 +52,26 @@ namespace Marlin.View {
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
             set_up_directory (_location);
+
             connect_slot_signals ();
             make_view ();
+        }
+
+        ~Slot () {
+message ("Slot destructor");
         }
 
         private void connect_slot_signals () {
 //message ("connect slot signals");
             active.connect (() => {
+//message ("Slot active");
                 this.dir_view.grab_focus ();
                 ctab.refresh_slot_info (directory.location);
                 this.is_active = true;
             });
 
             inactive.connect (() => {
+//message ("Slot inactive");
                 this.is_active = false;
                 this.dir_view.unselect_all ();
             });
@@ -80,9 +92,11 @@ namespace Marlin.View {
                 directory.done_loading.connect (() => {autosize_slot ();});
                 directory.track_longest_name = true;
             }
+            directory.need_reload.connect (reload);
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
+//message ("schedule path change request");
             GLib.Timeout.add (20, () => {
                 on_path_change_request (loc, flag, make_root);
                 return false;
@@ -138,7 +152,7 @@ namespace Marlin.View {
             ctab.slot_path_changed (loc);
         }
 
-        protected override Gtk.Widget make_view () {
+        protected override void make_view () {
 //message ("Slot make view");
             assert (dir_view == null);
 
@@ -163,15 +177,10 @@ namespace Marlin.View {
                 content_box.pack_start (dir_view, true, true, 0);
 
             connect_dir_view_signals ();
-
-            return content_box as Gtk.Widget;
         }
 
-
-        public void set_updates_frozen (bool freeze) {
-            directory.freeze_update = freeze;
-            updates_frozen = freeze;
-            frozen_changed (freeze);
+        public void set_view_updates_frozen (bool freeze) {
+            dir_view.set_updates_frozen (freeze);
         }
 
         public override bool set_all_selected (bool select_all) {
@@ -213,8 +222,12 @@ namespace Marlin.View {
                 inactive ();
         }
 
-        public override GOF.AbstractSlot get_current_slot () {
+        public override unowned GOF.AbstractSlot? get_current_slot () {
             return this as GOF.AbstractSlot;
+        }
+
+        public unowned Gtk.Widget get_directory_view () {
+            return dir_view;
         }
 
         public override void zoom_in () {dir_view.zoom_in ();}

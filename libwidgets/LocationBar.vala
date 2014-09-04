@@ -165,6 +165,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public override bool key_press_event (Gdk.EventKey event) {
+message ("Location bar key press");
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:

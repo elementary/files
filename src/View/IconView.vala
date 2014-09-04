@@ -34,6 +34,7 @@ namespace FM {
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
+            tree.set_reorderable (false);
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
             (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
@@ -41,7 +42,6 @@ namespace FM {
             (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
             connect_tree_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
-            //tree.activate_on_single_click = false;
         }
 
         protected void set_up_name_renderer () {
@@ -133,7 +133,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-//message ("IV unselect all");
+message ("IV unselect all");
             tree.unselect_all ();
         }
 
@@ -143,6 +143,7 @@ namespace FM {
                 tree.select_path (path);
         }
         public override void unselect_path (Gtk.TreePath? path) {
+message ("IV unselect path");
             if (path != null)
                 tree.unselect_path (path);
         }

@@ -73,7 +73,7 @@ namespace Marlin.View {
                 list.prepend (file);
                 real_update (list);
             } else {
-                GOF.AbstractSlot view = window.current_tab.view;
+                GOF.AbstractSlot? view = window.current_tab.view;
                 if (view != null) {
                     unowned List<GOF.File> list = view.get_selected_files ();
                     real_update (list);

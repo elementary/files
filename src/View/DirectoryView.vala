@@ -100,7 +100,6 @@ namespace FM {
         int drag_x = 0;
         int drag_y = 0;
         int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
-        //int drag_delay = 5000;
         GOF.File? drop_target_file = null;
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -163,12 +162,10 @@ namespace FM {
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
         protected FM.ListModel model;
-        //protected Gtk.CellRenderer icon_renderer;
-        protected Marlin.IconRenderer icon_renderer;
-        protected Marlin.View.Slot slot;
-        protected Marlin.View.Window window; /*For convenience - this can be derived from slot */
+        protected Marlin.IconRenderer icon_renderer; 
+        protected unowned Marlin.View.Slot slot; /* prevent circular references */
+        protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new FM.DndHandler ();
-
         private Gtk.TreePath? hover_path = null;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
@@ -187,6 +184,11 @@ namespace FM {
             set_up_directory_view ();
             set_up__menu_actions ();
             set_up_zoom_level ();
+
+        }
+
+        ~DirectoryView () {
+message ("DV  destructor");
         }
 
         private void set_up_directory_view () {
@@ -212,7 +214,6 @@ namespace FM {
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             connect_directory_handlers (slot.directory);
-
             view = create_view (); /* Abstract */
             if (view != null) {
                 add (view);
@@ -224,6 +225,7 @@ namespace FM {
         }
 
         private void set_up__menu_actions () {
+//message ("set up menu actions";
             selection_actions = new GLib.SimpleActionGroup ();
             selection_actions.add_action_entries (selection_entries, this);
             insert_action_group ("selection", selection_actions);
@@ -249,7 +251,7 @@ namespace FM {
         public void select_first_for_empty_selection () {
 //message ("select first for empty selection");
             if (selected_files == null) {
-                var path = new Gtk.TreePath.from_indices (0, -1);
+                var path = new Gtk.TreePath.from_indices (0);
                 select_path (path);
             }
         }
@@ -263,13 +265,21 @@ namespace FM {
                 GOF.File file = GOF.File.@get (location);
                 if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
-                    if (path != null && i==1)
-                        set_cursor (path, false, true);
+                    if (path != null) {
+                        if (i==1)
+                            set_cursor (path, false, true);
+
 //message ("selecting path");
-                    select_path (path);
-                    i++;
+                        select_path (path);
+                        i++;
+                    } else {
+//message ("path is null");
+                    }
+                } else {
+//message ("Glib file not found in model");
                 }
             });
+//message ("%i selectged", i-1);
             updates_frozen = false;
             update_selected_files ();
             notify_selection_changed ();
@@ -913,14 +923,16 @@ namespace FM {
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-//message ("directory done loading %s", dir.file.uri);
+//message ("DV  directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
 
             if (dir.is_empty ())
                 queue_draw ();
-            else
+            else {
                 load_thumbnails (dir, zoom_level);
+                //set_cursor (new Gtk.TreePath.from_indices (0), false, true);
+            }
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -1665,7 +1677,8 @@ namespace FM {
         private void create_from_template (GOF.File template) {
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
-                                                          slot.directory.location,
+                                                          slot.location,
+                                                          //slot.directory.location,
                                                           (_("Untitled %s")).printf (template.get_display_name ()),
                                                           template.location,
                                                           (Marlin.CreateCallback?) create_file_done,
@@ -1843,6 +1856,9 @@ namespace FM {
 
         protected virtual void on_view_selection_changed () {
 //message ("on tree selection changed");
+            if (updates_frozen)
+                return;
+
             update_selected_files ();
             notify_selection_changed ();
         }
@@ -1998,26 +2014,7 @@ namespace FM {
             slot.directory.freeze_update = false;
         }
 
-        protected virtual void filename_cell_data_func (Gtk.CellLayout cell_layout,
-                                              Gtk.CellRenderer renderer,
-                                              Gtk.TreeModel model,
-                                              Gtk.TreeIter iter) {
-
-            Gdk.RGBA rgba = {0.0, 0.0, 0.0, 0.0};
-            string filename = "";
-            model.@get (iter, FM.ListModel.ColumnID.FILENAME, out filename, -1);
-            string? color = null;
-            model.@get (iter, FM.ListModel.ColumnID.COLOR, out color, -1);
-
-            if (color != null)
-                rgba.parse (color);
-
-            renderer.@set ("text", filename,
-                           "underline", Pango.Underline.NONE,
-                           "cell-background-rgba", rgba,
-                           null);
-        }
-
+       
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */

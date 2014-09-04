@@ -1502,6 +1502,7 @@ namespace Marlin.Places {
          * open in a new tab.
          */
         private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
+message ("side bar key press");
             Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
             if (event.keyval == Gdk.Key.Down
              && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)

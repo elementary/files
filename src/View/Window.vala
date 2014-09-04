@@ -230,9 +230,9 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
             key_press_event.connect ((event) => {
-                if (top_menu.location_bar.bread.is_focus)
+                if (top_menu.location_bar.bread.is_focus) {
                     return top_menu.location_bar.bread.key_press_event (event);
-
+                }
                 return false;
             });
 

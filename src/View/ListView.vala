@@ -55,13 +55,11 @@ namespace FM {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                       renderer,
-                                                                      "text",
-                                                                       k,
-                                                                       null
-                    );
+                                                                      "text", k,
+                                                                      "background", FM.ListModel.ColumnID.COLOR);
                     col.set_sort_column_id (k);
                     col.set_resizable (true);
-                    col.set_cell_data_func (renderer, color_row_func);
+                    //col.set_cell_data_func (renderer, color_row_func);
                     tree.append_column (col);
                 }
             }
@@ -163,6 +161,17 @@ namespace FM {
         }
 
 /** Override parents abstract and virtual methods as required*/
+        protected override Gtk.Widget? create_view () {
+//message ("LV create view");
+            model.set_property ("has-child", true);
+            base.create_view ();
+            tree.set_show_expanders (true);
+            tree.set_headers_visible (true);
+            append_extra_tree_columns ();
+            connect_additional_signals ();
+            return tree as Gtk.Widget;
+        }
+
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("LV setup zoom_level");
             Preferences.marlin_list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
@@ -191,18 +200,5 @@ namespace FM {
             /* Release our reference on dir */
             loaded_subdirectories.remove (dir);
         }
-
-        protected override Gtk.Widget? create_view () {
-//message ("LV create view");
-            model.set_property ("has-child", true);
-            base.create_view ();
-            tree.set_show_expanders (true);
-            tree.set_headers_visible (true);
-            append_extra_tree_columns ();
-            connect_additional_signals ();
-            return tree as Gtk.Widget;
-        }
-
-
     }
 }

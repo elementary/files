@@ -20,7 +20,6 @@ namespace FM {
     /* Implement common features of MillerColumnView and ListView */
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
-        protected Gtk.CellRendererPixbuf pixbuf_renderer;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
@@ -28,6 +27,7 @@ namespace FM {
         }
 
         protected virtual void create_and_set_up_name_column () {
+//message ("ATV create and set up name column");
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
             name_column.set_expand (true);
@@ -36,15 +36,15 @@ namespace FM {
             name_renderer.ellipsize_set = true;
             name_renderer.ellipsize = Pango.EllipsizeMode.MIDDLE;
 
-            icon_renderer = new Marlin.IconRenderer ();
             set_up_icon_renderer ();
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
                                         "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
             name_column.pack_start (name_renderer, true);
-            name_column.set_cell_data_func (name_renderer, filename_cell_data_func);
-
+            name_column.set_attributes (name_renderer,
+                                        "text", FM.ListModel.ColumnID.FILENAME,
+                                        "background", FM.ListModel.ColumnID.COLOR);
             tree.append_column (name_column);
         }
 
@@ -58,7 +58,7 @@ namespace FM {
 //message ("ATV tree view set up view");
             connect_tree_signals ();
             connect_name_renderer_signals ();
-            Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);   
+            Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
         }
 
         protected void connect_tree_signals () {
@@ -86,6 +86,7 @@ namespace FM {
             tree.set_model (model);
             tree.set_headers_visible (false);
             tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
+            tree.set_enable_search (true);
             tree.set_rules_hint (true);
 
             create_and_set_up_name_column ();
@@ -95,7 +96,6 @@ namespace FM {
 
             tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
             tree.motion_notify_event.connect (on_motion_notify_event);
-
             return tree as Gtk.Widget;
         }
 
@@ -138,6 +138,7 @@ namespace FM {
                 tree.get_selection ().select_path (path);
         }
         public override void unselect_path (Gtk.TreePath? path) {
+//message ("Unselect path");
             if (path != null)
                 tree.get_selection ().unselect_path (path);
         }
@@ -182,6 +183,7 @@ namespace FM {
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
                 if (file != null) {
+//message ("adding %s to selected files", file.uri);
                     selected_files.prepend (file);
                 }
             });

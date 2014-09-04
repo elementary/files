@@ -45,16 +45,8 @@ namespace Marlin.View {
         }
         public OverlayBar overlay_statusbar;
 
-        private GLib.List<GLib.File> select_childs = null;
+        private GLib.List<GLib.File>? selected_locations = null;
         private ulong directory_done_loading_handler_id = 0;
-        private ulong reload_handler_id = 0;
-
-        /* The path_changed signal is listened to by Slot, Miller as well as ViewContainer */
-        /* The path_changed signal is emitted by :
-         * Window (go to actions)
-         * LocationBar (context menu - directory itens)
-         * TopMenu, ViewContainer, DirectoryView Sidebar*/
-        /* LocationBar has a different signal named "path_changed" */
 
         public signal void up ();
         public signal void back (int n=1);
@@ -83,7 +75,6 @@ namespace Marlin.View {
 
             connect_signals ();
             change_view_mode (mode, loc);
-//message ("New ViewContainer leaving");
         }
 
         public Gtk.Widget content {
@@ -137,7 +128,7 @@ namespace Marlin.View {
                 }
 
                 if (view != null) {
-                    store_selection ();
+                    //store_selection ();
                 }
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
@@ -146,8 +137,7 @@ namespace Marlin.View {
                     view = new Slot (loc, this, mode);
 
                 set_up_current_slot ();
-                update_view (mode);
-                restore_selection ();
+                update_view_container (mode);
             }
         }
 
@@ -175,6 +165,7 @@ namespace Marlin.View {
         public void slot_path_changed (GLib.File loc) {
 //message ("VC path changed");
 #if 0
+            /*TODO Reimplement ? */
             /* automagicly enable icon view for icons keypath */
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
                 mode = 0; /* icon view */
@@ -196,12 +187,7 @@ namespace Marlin.View {
                 directory_done_loading (slot);
             });
 
-            reload_handler_id = slot.directory.need_reload.connect (() => {
-                reload_slot (slot);
-            });
-
-            refresh_slot_info (slot.location);
-            plugin_directory_loaded ();
+             //plugin_directory_loaded ();
         }
 
         private void plugin_directory_loaded () {
@@ -212,7 +198,7 @@ namespace Marlin.View {
             data[1] = slot;
             data[2] = slot.directory.file;
 
-            plugins.directory_loaded ((void*) data);
+            //plugins.directory_loaded ((void*) data);
         }
 
         public void refresh_slot_info (GLib.File loc) {
@@ -253,19 +239,21 @@ namespace Marlin.View {
                 }
 
                 if (file_info.get_file_type () == FileType.DIRECTORY) {
-//message ("loaded directory");
-                    if (select_childs != null) {
-//message ("THere are selected childs");
-                        slot.select_glib_files (select_childs);
+//message ("directory loaded");
+                    if (selected_locations != null) {
+//message ("restoring selection - number of locations is %u", selected_locations.length ());
+                        view.select_glib_files (selected_locations);
                     }
                 } else {
+//message ("FIle type is %i", (int)(file_info.get_file_type ()));
+                    assert_not_reached ();
                     /* If not a directory, then change the location to the parent */
-                    user_path_change_request (slot.location.get_parent ());
+                    //user_path_change_request (slot.location.get_parent ());
                 }
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
                 if (err is IOError.NOT_MOUNTED) {
-                    reload ();
+                    slot.reload ();
                 } else {
                     content = new DirectoryNotFound (slot.directory, this);
                     can_show_folder = false;
@@ -274,20 +262,27 @@ namespace Marlin.View {
             slot.directory.disconnect (directory_done_loading_handler_id);
         }
 
-        private void store_selection () {}
-        private void restore_selection () {}
+//        private void store_selection () {
+//message ("store selection");
+//            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
+//            selected_locations = null;
+//            if (selected_files.length () >= 1) {
+//message ("%u files are selected ", selected_files.length ());
+//                selected_files.@foreach ((file) => {
+//                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
+//                });
+//            }
+//        }
 
-        private void update_view (Marlin.ViewMode mode) {
+        private void update_view_container (Marlin.ViewMode mode) {
             //overlay_statusbar.showbar = mode != Marlin.ViewMode.LIST;
             overlay_statusbar.showbar = true;
             view_mode = mode;
         }
 
-        public GOF.AbstractSlot get_current_slot () {
+        public unowned GOF.AbstractSlot? get_current_slot () {
 //message ("VC get current slot");
-            var slot = view.get_current_slot ();
-            assert (slot != null);
-           return slot;
+           return view.get_current_slot ();
         }
 
         public void set_active_state (bool is_active) {
@@ -296,6 +291,7 @@ namespace Marlin.View {
         }
 
         public void focus_file (File file) {
+//message ("focus file");
             File? loc = null;
             if (file.query_file_type (0) == FileType.DIRECTORY) {
                 if (location.equal (file))
@@ -329,17 +325,12 @@ namespace Marlin.View {
         }
 
         public void reload () {
-            reload_slot (view.get_current_slot ());
-        }
-
-        private void reload_slot (GOF.AbstractSlot slot) {
-//message ("reload");
-            slot.reload ();
+            view.get_current_slot ().reload ();
         }
 
         public Gee.List<string> get_go_back_path_list () {
             assert (browser != null);
-                return browser.go_back_list ();
+            return browser.go_back_list ();
         }
 
         public Gee.List<string> get_go_forward_path_list () {
