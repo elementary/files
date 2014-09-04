@@ -216,9 +216,9 @@ public class Marlin.PluginManager : Object {
             plugin.interface_loaded (win);
     }
 
-    public void update_sidebar (Gtk.Widget win) {
+    public void update_sidebar (Gtk.Widget sidebar) {
         foreach (var plugin in plugin_hash.values)
-            plugin.update_sidebar (win);
+            plugin.update_sidebar (sidebar);
     }
 
     public void update_file_info (GOF.File file) {

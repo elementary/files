@@ -41,6 +41,7 @@ namespace Marlin {
         }
 
         protected Gtk.TreeStore store;
+        protected Gtk.Box content_box;
 
         protected void init () {
             store = new Gtk.TreeStore (((int)Column.COUNT),
@@ -62,6 +63,10 @@ namespace Marlin {
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64)             /* For disks, total size */
                                         );
+
+            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            this.add (content_box);
+            content_box.show_all ();
         }
 
         public void add_extra_item (string text) {
@@ -72,6 +77,19 @@ namespace Marlin {
                        Column.NAME, text,
                        Column.URI, "test://",
                        -1);
+        }
+
+        public void add_extra_widget (Gtk.Widget widget, bool pack_start, int pos, bool expand, bool fill, int padding) {
+            var style_context = widget.get_style_context ();
+            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            style_context.add_class (Granite.StyleClass.SOURCE_LIST);
+
+            if (pack_start) 
+                this.content_box.pack_start (widget, expand, fill, padding);
+            else
+                this.content_box.pack_end (widget, expand, fill, padding);
+
+            this.content_box.reorder_child (widget, pos);
         }
     }
 }
