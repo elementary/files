@@ -29,7 +29,6 @@ public class Files.Plugins.NetworkInfobar : Gtk.InfoBar {
 }
 
 public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
-    private bool sidebar_button_added = false;
     public override void directory_loaded (void* user_data) {
         var file = ((Object[]) user_data)[2] as GOF.File;
         return_if_fail (file != null);
@@ -44,19 +43,11 @@ public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
         }
     }
 
-    public override void update_sidebar (Gtk.Widget sidebar) {
-message ("Network plug update sidebar");
-        if (!sidebar_button_added) {
-            var sidebar_button = new Gtk.Button.from_icon_name ("gtk-add", Gtk.IconSize.MENU);
-            sidebar_button.set_always_show_image (true);
-            sidebar_button.set_label (_("Connect to server"));
-            sidebar_button.clicked.connect ((w) => {
-                marlin_connect_server_dialog_show (w);
-            });
-            sidebar_button.show_all ();
-            (sidebar as Marlin.AbstractSidebar).add_extra_widget (sidebar_button, true, -1, false, false, 0);
-            sidebar_button_added = true;
-        }
+    public override void update_sidebar (Gtk.Widget widget) {
+        var sidebar = widget as Marlin.AbstractSidebar;
+        sidebar.add_extra_network_item ("Connect Server",
+                                         new ThemedIcon.with_default_fallbacks ("gtk-add"),
+                                         marlin_connect_server_dialog_show);
     }
 }
 

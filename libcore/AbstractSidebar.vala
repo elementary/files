@@ -18,6 +18,18 @@
 ***/
 
 namespace Marlin {
+
+    public delegate void PluginCallbackFunc (Gtk.Widget widget);
+    public enum PlaceType {
+        BUILT_IN,
+        MOUNTED_VOLUME,
+        BOOKMARK,
+        BOOKMARKS_CATEGORY,
+        PERSONAL_CATEGORY,
+        STORAGE_CATEGORY,
+        PLUGIN_ITEM
+    }
+
     public abstract class AbstractSidebar : Gtk.ScrolledWindow {
         public enum Column {
             NAME,
@@ -37,10 +49,12 @@ namespace Marlin {
             SPINNER_PULSE,
             FREE_SPACE,
             DISK_SIZE,
+            PLUGIN_CALLBACK,
             COUNT
         }
 
         protected Gtk.TreeStore store;
+        protected Gtk.TreeRowReference network_category_reference;
         protected Gtk.Box content_box;
 
         protected void init () {
@@ -61,7 +75,8 @@ namespace Marlin {
                                         typeof (bool),              /* Show spinner */
                                         typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
-                                        typeof (uint64)             /* For disks, total size */
+                                        typeof (uint64),             /* For disks, total size */
+                                        typeof (Marlin.PluginCallbackFunc)
                                         );
 
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -77,19 +92,36 @@ namespace Marlin {
                        Column.NAME, text,
                        Column.URI, "test://",
                        -1);
+
         }
 
-        public void add_extra_widget (Gtk.Widget widget, bool pack_start, int pos, bool expand, bool fill, int padding) {
-            var style_context = widget.get_style_context ();
-            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
-            style_context.add_class (Granite.StyleClass.SOURCE_LIST);
+        public void add_extra_network_item (string text, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+            Gtk.TreeIter iter;
+            store.get_iter (out iter, network_category_reference.get_path ());
+            iter = add_place (PlaceType.PLUGIN_ITEM,
+                             iter,
+                             _("Connect server"),
+                             icon,
+                             null,
+                             null,
+                             null,
+                             null,
+                             0,
+                             _("Connect to a network file server"));
+            if (cb != null)
+                store.@set (iter, Column.PLUGIN_CALLBACK, cb);
 
-            if (pack_start) 
-                this.content_box.pack_start (widget, expand, fill, padding);
-            else
-                this.content_box.pack_end (widget, expand, fill, padding);
-
-            this.content_box.reorder_child (widget, pos);
         }
+
+       protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
+                                                  Gtk.TreeIter? parent,
+                                                  string name,
+                                                  Icon? icon,
+                                                  string? uri,
+                                                  Drive? drive,
+                                                  Volume? volume,
+                                                  Mount? mount,
+                                                  uint index,
+                                                  string tooltip) ;
     }
 }
