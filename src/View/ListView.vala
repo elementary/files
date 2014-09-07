@@ -34,7 +34,10 @@ namespace FM {
         public ListView (Marlin.View.Slot _slot) {
 //message ("New list view");
             base (_slot);
-            slot.directory.load ();
+        }
+
+        ~ListView () {
+//message ("LV destructor");
         }
 
         private void connect_additional_signals () {
@@ -59,17 +62,9 @@ namespace FM {
                                                                       "background", FM.ListModel.ColumnID.COLOR);
                     col.set_sort_column_id (k);
                     col.set_resizable (true);
-                    //col.set_cell_data_func (renderer, color_row_func);
                     tree.append_column (col);
                 }
             }
-        }
-
-        private void color_row_func (Gtk.CellLayout column,
-                                     Gtk.CellRenderer renderer,
-                                     Gtk.TreeModel model,
-                                     Gtk.TreeIter iter) {
-
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
@@ -90,7 +85,6 @@ namespace FM {
             } else {
                 critical ("failed to get directory/file");
             }
-
         }
 
         private void schedule_model_unload_directory (GOF.File file, GOF.Directory.Async directory) {

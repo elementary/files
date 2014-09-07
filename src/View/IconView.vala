@@ -21,13 +21,16 @@ namespace FM {
         /* Golden ratio used */
         const double ITEM_WIDTH_TO_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
+        protected bool is_loading {get; private set;}
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
             base (_slot);
-            slot.directory.load ();
         }
 
+        ~IconView () {
+//message ("IV desctructor");
+        }
 
         private void set_up_view () {
 //message ("IV tree view set up view");
@@ -89,7 +92,7 @@ namespace FM {
         }
 
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-//message ("CV setup zoom_level");
+//message ("IV setup zoom_level");
             var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
             Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
             return (Marlin.ZoomLevel)zoom;
@@ -133,7 +136,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-message ("IV unselect all");
+//message ("IV unselect all");
             tree.unselect_all ();
         }
 
@@ -143,7 +146,7 @@ message ("IV unselect all");
                 tree.select_path (path);
         }
         public override void unselect_path (Gtk.TreePath? path) {
-message ("IV unselect path");
+//message ("IV unselect path");
             if (path != null)
                 tree.unselect_path (path);
         }
@@ -233,6 +236,25 @@ message ("IV unselect path");
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
             tree.set_cursor (path, renderer, start_editing);
+        }
+
+        protected override void freeze_tree () {
+//message ("IV freeze tree");
+            tree.freeze_child_notify ();
+            tree.set_model (null);
+            is_loading = true;
+        }
+        protected override void thaw_tree () {
+//message ("IV thaw tree");
+            if (!is_loading)
+                return;
+
+            tree.thaw_child_notify ();
+            tree.set_model (model);
+            is_loading = false;
+        }
+        protected override bool get_tree_is_loading () {
+            return is_loading;
         }
 
     }

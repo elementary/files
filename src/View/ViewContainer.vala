@@ -136,6 +136,8 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
+                content = view.get_content_box ();
+                queue_draw ();
                 set_up_current_slot ();
                 update_view_container (mode);
             }
@@ -180,14 +182,14 @@ namespace Marlin.View {
             assert (slot != null);
             assert (slot.directory != null);
 
-            content = view.get_content_box ();
+            //content = view.get_content_box ();
             can_show_folder = true;
 
             directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
                 directory_done_loading (slot);
             });
 
-             //plugin_directory_loaded ();
+             plugin_directory_loaded ();
         }
 
         private void plugin_directory_loaded () {
@@ -198,7 +200,7 @@ namespace Marlin.View {
             data[1] = slot;
             data[2] = slot.directory.file;
 
-            //plugins.directory_loaded ((void*) data);
+            plugins.directory_loaded ((void*) data);
         }
 
         public void refresh_slot_info (GLib.File loc) {
@@ -253,6 +255,7 @@ namespace Marlin.View {
             } catch (Error err) {
                 /* query_info will throw an expception if it cannot find the file */
                 if (err is IOError.NOT_MOUNTED) {
+//message ("VC NOT MOUNTED error");
                     slot.reload ();
                 } else {
                     content = new DirectoryNotFound (slot.directory, this);
@@ -263,11 +266,9 @@ namespace Marlin.View {
         }
 
 //        private void store_selection () {
-//message ("store selection");
 //            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
 //            selected_locations = null;
 //            if (selected_files.length () >= 1) {
-//message ("%u files are selected ", selected_files.length ());
 //                selected_files.@foreach ((file) => {
 //                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
 //                });
@@ -281,7 +282,7 @@ namespace Marlin.View {
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {
-//message ("VC get current slot");
+debug ("VC get current slot");
            return view.get_current_slot ();
         }
 
@@ -325,6 +326,7 @@ namespace Marlin.View {
         }
 
         public void reload () {
+//message ("VC reload");
             view.get_current_slot ().reload ();
         }
 

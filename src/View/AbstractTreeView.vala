@@ -20,6 +20,7 @@ namespace FM {
     /* Implement common features of MillerColumnView and ListView */
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
+        private bool is_loading = false;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
@@ -233,6 +234,25 @@ namespace FM {
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
             tree.set_cursor_on_cell (path, col, renderer, start_editing);
+        }
+
+        protected override void freeze_tree () {
+//message ("ATV freeze_tree");
+            tree.freeze_child_notify ();
+            tree.set_model (null);
+            is_loading = true;
+        }
+        protected override void thaw_tree () {
+//message ("ATV thaw_tree");
+            if (!is_loading)
+                return;
+
+            tree.thaw_child_notify ();
+            tree.set_model (model);
+            is_loading = false;
+        }
+        protected override bool get_tree_is_loading () {
+            return is_loading;
         }
     }
 }

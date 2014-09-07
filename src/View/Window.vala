@@ -278,6 +278,7 @@ namespace Marlin.View {
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
+//message ("tab_switched calling change tab");
                 change_tab (tabs.get_tab_position (new_tab));
             });
 
@@ -326,12 +327,12 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-//message ("WIN change tab");
+
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
                 return;
-
+//message ("WIN change tab");
             if (old_tab != null) {
                 old_tab.set_active_state (false);
             }
@@ -349,7 +350,7 @@ namespace Marlin.View {
             loading_uri (current_tab.uri);
 
             // reload the view to ensure icons are rendered correctly
-            current_tab.reload ();
+            //current_tab.reload ();
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -368,6 +369,7 @@ namespace Marlin.View {
                 tab.working = is_loading;
             });
 
+//message ("add tab calling change tab");
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
@@ -790,6 +792,7 @@ namespace Marlin.View {
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
             if (active_tab_position >=0 && active_tab_position < tabs_added) {
                 tabs.current = tabs.get_tab_by_index (active_tab_position);
+//message ("restore calling change tab");
                 change_tab (active_tab_position);
             }
 

@@ -31,6 +31,10 @@ namespace FM {
             /* We do not need to load the directory - this is done by Miller */
         }
 
+        ~ColumnView () {
+//message ("CV destgructor");
+        }
+
     /** Modified Signal handler */
         protected new void on_view_selection_changed () {
 //message ("on tree selection changed");

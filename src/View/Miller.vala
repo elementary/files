@@ -16,7 +16,6 @@
  Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
-
 namespace Marlin.View {
     public class Miller : GOF.AbstractSlot {
         private unowned Marlin.View.ViewContainer ctab;
@@ -25,9 +24,9 @@ namespace Marlin.View {
 
         public Gtk.ScrolledWindow scrolled_window;
         public Gtk.Adjustment hadj;
-        public Marlin.View.Slot? current_slot;
+        public unowned Marlin.View.Slot? current_slot;
         public GLib.List<Marlin.View.Slot> slot_list = null;
-        public int total_width = 0; /*TODO Use AbstractSlot width? */
+        public int total_width = 0;
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
 //message ("Making new Miller View %s", loc.get_uri());
@@ -59,7 +58,7 @@ namespace Marlin.View {
         }
 
         ~Miller () {
-//message ("Miller destructor");
+message ("Miller destructor");
         }
 
         protected override void make_view () {
@@ -68,19 +67,18 @@ namespace Marlin.View {
             add_location (root_location, null);  /* current slot gets set by this */
         }
 
-        /* TODO Make Expand Miller View a MillerView function */
         /** Creates a new slot in the host slot hpane */
-        public void add_location (GLib.File loc, GOF.AbstractSlot? host = null) {
-//message ("MV add location %s", loc.get_uri ());
-            Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, this.ctab, Marlin.ViewMode.MILLER_COLUMNS);
+        public void add_location (GLib.File loc, Marlin.View.Slot? host = null) {
+message ("MV add location %s", loc.get_uri ());
+            Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             this.total_width += new_slot.width;
+message ("total width now %i", total_width);
             this.colpane.set_size_request (total_width, -1);
-
-            nest_slot_in_host_slot (new_slot, (Marlin.View.Slot?)host);
-            connect_slot_signals (new_slot);
+            nest_slot_in_host_slot (new_slot, host);
             new_slot.directory.load ();
             slot_list.append (new_slot);
+            connect_slot_signals (new_slot);
             new_slot.active ();
         }
 
@@ -92,9 +90,10 @@ namespace Marlin.View {
 
             var box1 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             slot.colpane = box1;
+            slot.colpane.set_size_request (slot.width, -1);
 
             unowned Gtk.Widget column = slot.get_directory_view ();
-            column.size_allocate.connect ((a) => {update_total_width (a, slot);});
+           // column.size_allocate.connect ((a) => {update_total_width (a, slot.width);});
 
             hpane1.pack1 (column, false, false);
             hpane1.pack2 (box1, true, true);
@@ -137,15 +136,11 @@ namespace Marlin.View {
             });
         }
 
-        private void update_total_width (Gtk.Allocation allocation, Slot slot) {
-            if (total_width != 0 && slot.width != allocation.width) {
-                total_width += allocation.width - slot.width;
-                slot.width = allocation.width;
-                this.colpane.set_size_request (total_width, -1);
-            }
+        private void update_total_width (Slot slot, int change) {
+            total_width += change;
+            this.colpane.set_size_request (total_width + 90, -1);
         }
 
-        
 /*********************/
 /** Signal handling **/
 /*********************/
@@ -165,6 +160,7 @@ namespace Marlin.View {
             slot.active.connect (on_slot_active);
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.connect (on_miller_slot_request);
+            slot.size_change.connect (update_total_width);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -192,8 +188,8 @@ namespace Marlin.View {
         }
 
         /** Called in response to slot active signal.
-         *  Should not be called directly */
-        //private void on_slot_active (GOF.AbstractSlot slot) {
+         *  Should not be called directly
+         **/
         private void on_slot_active (Marlin.View.Slot slot) {
 //message ("Miller: Slot active");
             if (this.current_slot == slot)
@@ -291,12 +287,6 @@ namespace Marlin.View {
                 l = l.next;
             }
 
-            int total_width = width;
-            while (l != null) {
-                total_width += l.data.width;
-                l = l.next;
-            }
-
             int page_size = (int) this.hadj.get_page_size ();
             int current_value = (int) this.hadj.get_value (); ;
             int new_value = current_value;
@@ -335,6 +325,8 @@ namespace Marlin.View {
                 current_slot.inactive ();
         }
 
+#if 0
+        //TODO Get to work
         public void expand_miller_view (string tip_uri) {
 //message ("expand miller view to %s", tip_uri);
             assert (slot_list.length () == 1);
@@ -357,7 +349,7 @@ namespace Marlin.View {
                 warning ("Invalid tip uri for Miller View");
             }
         }
-
+#endif
         public override string? get_tip_uri () {
 //message ("MILLER get_tip_uri");
             if (slot_list != null && slot_list.last () != null && slot_list.last ().data is GOF.AbstractSlot) {

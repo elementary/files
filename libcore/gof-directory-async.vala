@@ -87,9 +87,7 @@ public class GOF.Directory.Async : Object {
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
-
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
-
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
     }
 
@@ -266,6 +264,7 @@ public class GOF.Directory.Async : Object {
                 state = State.LOADED;
             } else {
                 debug ("WARNING load() has been called again before LOADING finished");
+//message ("WARNING load() has been called again before LOADING finished");
                 return;
             }
         } catch (Error err) {
@@ -702,17 +701,17 @@ public class GOF.Directory.Async : Object {
 }
 
         /* Do not interrupt loading thumbs at same size for this folder */
-        if (icon_size == size && thumbs_thread_running)
+        if ((icon_size == size) && thumbs_thread_running)
             return;
 
-//message ("Async  setting icon_size to %i", size);
 //message ("Async  setting icon_size to %i", size);
         icon_size = size;
         thumbs_stop = true;
 
         /* Wait for thumbnail thread to stop then start a new thread */
-        if (timeout_thumbsq == 0) {
-            timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
-        }
+        if (timeout_thumbsq != 0)
+            GLib.Source.remove (timeout_thumbsq);
+
+        timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
     }
 }

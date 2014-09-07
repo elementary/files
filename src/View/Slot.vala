@@ -32,6 +32,7 @@ namespace Marlin.View {
         }
 
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
+        public string loading_message = "<span size='x-large'>" + _("Loading ...") + "</span>";
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze); 
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
@@ -42,6 +43,7 @@ namespace Marlin.View {
         public Gtk.Box colpane;
         public Granite.Widgets.ThinPaned hpane;
         public signal void miller_slot_request (GLib.File file, bool make_root);
+        public signal void size_change (int change);
 
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
@@ -58,7 +60,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-message ("Slot destructor");
+//message ("Slot destructor");
         }
 
         private void connect_slot_signals () {
@@ -115,6 +117,10 @@ message ("Slot destructor");
         }
 
         private void autosize_slot () {
+//message ("autosize_slot");
+            if (dir_view == null)
+                return;
+
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ())
@@ -125,12 +131,14 @@ message ("Slot destructor");
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
-
+            int old_width = width;
             width = (int) Pango.units_to_double (extents.width)
                   + 2 * directory.icon_size
                   + 24;
 
             width = width.clamp (preferred_column_width / 3, preferred_column_width * 2);
+
+            size_change (width - old_width);
             hpane.set_position (width);
             colpane.show_all ();
             colpane.queue_draw ();

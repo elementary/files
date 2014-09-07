@@ -183,12 +183,18 @@ namespace FM {
 
             set_up_directory_view ();
             set_up__menu_actions ();
+            view = create_view (); /* Abstract */
+            if (view != null) {
+                add (view);
+                connect_drag_drop_signals (view);
+            }
+            freeze_tree ();
+            slot.directory.load ();
             set_up_zoom_level ();
-
         }
 
         ~DirectoryView () {
-message ("DV  destructor");
+//message ("DV  destructor");
         }
 
         private void set_up_directory_view () {
@@ -214,18 +220,13 @@ message ("DV  destructor");
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             connect_directory_handlers (slot.directory);
-            view = create_view (); /* Abstract */
-            if (view != null) {
-                add (view);
-                connect_drag_drop_signals (view);
-            }
 
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect_after (after_restore_selection);
         }
 
         private void set_up__menu_actions () {
-//message ("set up menu actions";
+//message ("set up menu actions");
             selection_actions = new GLib.SimpleActionGroup ();
             selection_actions.add_action_entries (selection_entries, this);
             insert_action_group ("selection", selection_actions);
@@ -239,13 +240,22 @@ message ("DV  destructor");
             insert_action_group ("common", common_actions);
         }
 
-/*** Public methods */
         public void zoom_in () {
                 zoom_level = zoom_level + 1;
         }
 
         public void zoom_out () {
                 zoom_level = zoom_level - 1;
+        }
+
+        private void set_up_zoom_level () {
+//message ("DV set up zoom level");
+            zoom_level = get_set_up_zoom_level (); /* Abstract */
+            model.set_property ("size", (int)(Marlin.zoom_level_to_icon_size (zoom_level)));
+        }
+
+        public void zoom_normal () {
+            zoom_level = get_normal_zoom_level (); /* Abstract */
         }
 
         public void select_first_for_empty_selection () {
@@ -308,6 +318,7 @@ message ("DV  destructor");
 
         protected void freeze_updates () {
 //message ("DV freeze updates");
+            
             updates_frozen = true;
             slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
@@ -475,6 +486,7 @@ message ("DV  destructor");
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
 //message ("DV change directory");
+            freeze_tree ();
             disconnect_directory_handlers (old_dir);
             block_model ();
             loaded_subdirectories.@foreach ((dir) => {
@@ -489,6 +501,7 @@ message ("DV  destructor");
         }
 
         public void reload () {
+//message ("DV reload");
             change_directory (slot.directory, slot.directory);
         }
 
@@ -659,9 +672,8 @@ message ("DV  destructor");
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
             model.add_file (file, dir);
-            if (select_added_files) {
+            if (select_added_files)
                 add_gof_file_to_selection (file);
-            }
         }
 
         private void new_empty_file (string? parent_uri = null) {
@@ -893,7 +905,6 @@ message ("DV  destructor");
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
-//message ("on directory file loaded");
             select_added_files = false;
             add_file (file, dir);
         }
@@ -927,10 +938,9 @@ message ("DV  destructor");
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
 
-            if (dir.is_empty ())
-                queue_draw ();
-            else {
-                load_thumbnails (dir, zoom_level);
+            queue_draw ();
+            if (!dir.is_empty ()) {
+                //load_thumbnails (dir, zoom_level);
                 //set_cursor (new Gtk.TreePath.from_indices (0), false, true);
             }
         }
@@ -941,6 +951,7 @@ message ("DV  destructor");
                 queue_draw ();
 
             Marlin.IconInfo.infos_caches ();
+            thaw_tree ();
         }
 
     /** Handle zoom level change */
@@ -1095,6 +1106,7 @@ message ("DV  destructor");
 
     /** Handle size allocation event */
         private void on_size_allocate (Gtk.Allocation allocation) {
+//message ("on size allocate");
             schedule_thumbnail_timeout ();
         }
 
@@ -1692,6 +1704,7 @@ message ("DV  destructor");
 
 /** Thumbnail handling */
         private void schedule_thumbnail_timeout () {
+//message ("schedule thumbnail timeout");
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
@@ -1729,6 +1742,7 @@ message ("DV  destructor");
                     thumbnailer.queue_files (visible_files, out thumbnail_request, false);
 
                 thumbnail_source_id = 0;
+                thaw_tree ();
                 return false;
             });
         }
@@ -1751,7 +1765,7 @@ message ("DV  destructor");
         }
 
         private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-//message ("load thumbnails");
+//message ("DV load thumbnails");
             /* Async function checks dir is not loading */
             dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
         }
@@ -1837,16 +1851,6 @@ message ("DV  destructor");
                 selected_files.prepend (slot.directory.file);
 
             return selected_files;
-        }
-
-        private void set_up_zoom_level () {
-//message ("DV set up zoom level");
-            zoom_level = get_set_up_zoom_level (); /* Abstract */
-            model.set_property ("size", (int)(Marlin.zoom_level_to_icon_size (zoom_level)));
-        }
-
-        public void zoom_normal () {
-            zoom_level = get_normal_zoom_level (); /* Abstract */
         }
 
         protected void on_view_items_activated () {
@@ -2016,11 +2020,15 @@ message ("DV  destructor");
 
        
         public virtual bool on_view_draw (Cairo.Context cr) {
+//message ("DV on view draw, tree is loading %s", get_tree_is_loading () ? "true" : "false");
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
-            if (slot.directory.is_empty ()) {
+            if (slot.directory.is_empty () || get_tree_is_loading ()) {
                 Pango.Layout layout = create_pango_layout (null);
-                layout.set_markup (slot.empty_message, -1);
+                if (slot.directory.is_empty ())
+                    layout.set_markup (slot.empty_message, -1);
+                else
+                    layout.set_markup (slot.loading_message, -1);
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2030,8 +2038,9 @@ message ("DV  destructor");
 
                 double x = (double) get_allocated_width () / 2 - width / 2;
                 double y = (double) get_allocated_height () / 2 - height / 2;
-
+//message ("rendering layout");
                 get_style_context ().render_layout (cr, x, y, layout);
+                return true;
             }
             return false;
         }
@@ -2183,7 +2192,10 @@ message ("DV  destructor");
         protected abstract void update_selected_files ();
         protected abstract void get_click_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col);
-        protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing); 
+        protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing);
+        protected abstract void freeze_tree ();
+        protected abstract void thaw_tree ();
+        protected abstract bool get_tree_is_loading ();
 
 
 
