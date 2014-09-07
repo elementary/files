@@ -165,7 +165,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public override bool key_press_event (Gdk.EventKey event) {
-message ("Location bar key press");
+//message ("Location bar key press");
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
@@ -321,7 +321,7 @@ message ("Location bar key press");
             set_entry_text ("");
         else
             set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
-                    .replace ("file:////", "/")
+                    .replace ("file://", "/")
                     .replace ("file:///", "/")
                     .replace ("trash:///", "")
                     .replace ("network:///", "")));
@@ -335,7 +335,7 @@ message ("Location bar key press");
     }
 
     void on_activate () {
-message ("on activate");
+//message ("on activate");
         path_changed (get_file_for_path (text + text_completion));
         text_completion = "";
     }

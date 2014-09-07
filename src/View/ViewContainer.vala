@@ -136,7 +136,7 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
-                content = view.get_content_box ();
+                //content = view.get_content_box ();
                 queue_draw ();
                 set_up_current_slot ();
                 update_view_container (mode);
@@ -174,6 +174,7 @@ namespace Marlin.View {
 #endif
 
             set_up_current_slot ();
+            refresh_slot_info (loc);
         }
 
         private void set_up_current_slot () {
@@ -182,7 +183,7 @@ namespace Marlin.View {
             assert (slot != null);
             assert (slot.directory != null);
 
-            //content = view.get_content_box ();
+            content = view.get_content_box ();
             can_show_folder = true;
 
             directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
@@ -238,22 +239,22 @@ namespace Marlin.View {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                     can_show_folder = false;
+                    //user_path_change_request (slot.location.get_parent ());
                 }
-
-                if (file_info.get_file_type () == FileType.DIRECTORY) {
+                else if (file_info.get_file_type () == FileType.DIRECTORY) {
 //message ("directory loaded");
                     if (selected_locations != null) {
 //message ("restoring selection - number of locations is %u", selected_locations.length ());
                         view.select_glib_files (selected_locations);
                     }
-                } else {
-//message ("FIle type is %i", (int)(file_info.get_file_type ()));
-                    assert_not_reached ();
-                    /* If not a directory, then change the location to the parent */
-                    //user_path_change_request (slot.location.get_parent ());
                 }
+//                else {
+//message ("FIle type is %i", (int)(file_info.get_file_type ()));
+//                    /* If not a directory, then change the location to the parent */
+//                    user_path_change_request (slot.location.get_parent ());
+//                }
             } catch (Error err) {
-                /* query_info will throw an expception if it cannot find the file */
+                /* query_info will throw an exception if it cannot find the file */
                 if (err is IOError.NOT_MOUNTED) {
 //message ("VC NOT MOUNTED error");
                     slot.reload ();

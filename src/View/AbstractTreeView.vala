@@ -20,8 +20,6 @@ namespace FM {
     /* Implement common features of MillerColumnView and ListView */
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
-        private bool is_loading = false;
-
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
             base (_slot);
@@ -201,6 +199,7 @@ namespace FM {
                                                 out bool on_blank,
                                                 out bool on_icon,
                                                 out bool on_helper) {
+//message ("get click position info x is %i,  y is %i", x, y);
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             int cx, cy;
@@ -215,18 +214,20 @@ namespace FM {
             if (c != null && c == name_column) {
                 int? x_offset, width;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
-                int expander_width = (tree.show_expanders ? 10 : 0) * (depth + 1); /* TODO Find a simpler way */
+                int expander_width = (tree.show_expanders ? 10 : 0) * (depth +1); /* TODO Find a simpler way */
                 if (cx > expander_width ) {
                     if (cx <= x_offset + width + expander_width)
                         on_icon = true;
 
-                    if ((cx <= x_offset + expander_width + 18) && (cy <=18))
+                    if (((cx -x_offset - expander_width) <= 18) && (cy <=18))
                         on_helper = true;
 
                     on_name = !on_icon && !on_blank;
                 } else
                     on_blank = false;
             }
+
+//message ("on helper is %s", on_helper ? "true" : "false");
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
@@ -234,25 +235,6 @@ namespace FM {
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
             tree.set_cursor_on_cell (path, col, renderer, start_editing);
-        }
-
-        protected override void freeze_tree () {
-//message ("ATV freeze_tree");
-            tree.freeze_child_notify ();
-            tree.set_model (null);
-            is_loading = true;
-        }
-        protected override void thaw_tree () {
-//message ("ATV thaw_tree");
-            if (!is_loading)
-                return;
-
-            tree.thaw_child_notify ();
-            tree.set_model (model);
-            is_loading = false;
-        }
-        protected override bool get_tree_is_loading () {
-            return is_loading;
         }
     }
 }

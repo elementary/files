@@ -2174,6 +2174,9 @@ namespace FM {
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
         protected virtual bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {return false;}
+        protected virtual void freeze_tree () {}
+        protected virtual void thaw_tree () {}
+        protected virtual bool get_tree_is_loading () {return false;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -2193,12 +2196,6 @@ namespace FM {
         protected abstract void get_click_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing);
-        protected abstract void freeze_tree ();
-        protected abstract void thaw_tree ();
-        protected abstract bool get_tree_is_loading ();
-
-
-
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
 */ 

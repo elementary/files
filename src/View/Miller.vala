@@ -58,7 +58,7 @@ namespace Marlin.View {
         }
 
         ~Miller () {
-message ("Miller destructor");
+//message ("Miller destructor");
         }
 
         protected override void make_view () {
@@ -69,11 +69,11 @@ message ("Miller destructor");
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null) {
-message ("MV add location %s", loc.get_uri ());
+//message ("MV add location %s", loc.get_uri ());
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             this.total_width += new_slot.width;
-message ("total width now %i", total_width);
+//message ("total width now %i", total_width);
             this.colpane.set_size_request (total_width, -1);
             nest_slot_in_host_slot (new_slot, host);
             new_slot.directory.load ();
