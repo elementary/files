@@ -108,8 +108,6 @@ public class Marlin.Application : Granite.Application {
         this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
         this.thumbnailer = Marlin.Thumbnailer.get ();
 
-        tags = new Marlin.View.Tags ();
-
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
         /* TODO move the volume manager here? */

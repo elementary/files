@@ -18,13 +18,14 @@
  *          ammonkey <am.monkeyd@gmail.com>
  */
 
-namespace Marlin.View.Chrome {
-
+//namespace Marlin.View.Chrome {
+namespace Marlin {
     public class ColorWidget : Gtk.MenuItem {
 
         public Marlin.View.Window win;
         private new bool has_focus;
         private int height;
+
         /*
          * ColorWidget constructor
          */

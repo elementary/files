@@ -68,7 +68,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
-        View/DbusTags.vala
+#        View/DbusTags.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
@@ -130,7 +130,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/DirectoryView.vala
         View/Window.vala
         View/Resources.vala
-        View/DbusTags.vala
+#        View/DbusTags.vala
         View/ViewContainer.vala
         View/IconSpinnerRenderer.vala
         View/OverlayBar.vala

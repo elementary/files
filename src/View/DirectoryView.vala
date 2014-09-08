@@ -1433,6 +1433,7 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                //plugins.hook_context_menu (menu as Gtk.Widget, selected_files);
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
                 Eel.pop_up_context_menu (menu, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, (Gdk.EventButton) event);
@@ -1501,7 +1502,6 @@ namespace FM {
 //message ("build submenu open with apps");
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
-
             filter_default_app_from_open_with_apps ();
             filter_this_app_from_open_with_apps ();
             if (open_with_apps.length () == 0)
@@ -1517,6 +1517,7 @@ namespace FM {
                 index++;
                 apps_submenu.append (label, "selection.open_with_app::" + index.to_string ());
             });
+
             if (selection.length () == 1)
                 apps_submenu.append (_("Other application"), "selection.other_app");
 
@@ -1555,9 +1556,8 @@ namespace FM {
             bool more_than_one_selected = (selection_count > 1);
             bool single_folder = true; /* background is a folder */
             bool only_folders = selection_only_contains_folders (selection);
- 
             if (selection_count > 0) {
-                GOF.File? file = selection.data;
+                unowned GOF.File? file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
                     update_default_app (selection);
@@ -1565,6 +1565,7 @@ namespace FM {
                     critical ("File in selection is null");
                 }
             }
+
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
             action_set_enabled (common_actions, "open_in", only_folders);
@@ -1860,10 +1861,10 @@ namespace FM {
 
         protected virtual void on_view_selection_changed () {
 //message ("on tree selection changed");
+            update_selected_files ();
             if (updates_frozen)
                 return;
 
-            update_selected_files ();
             notify_selection_changed ();
         }
 
@@ -2078,16 +2079,15 @@ namespace FM {
             get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
 
-            if (!on_helper && no_mods) {
-                unselect_all ();
-                if (path != null)
-                    select_path (path);
-            }
-
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                     //if (path == null) {
+                    if (!on_helper && no_mods) {
+                        unselect_all ();
+                        if (path != null)
+                            select_path (path);
+                    }
                     if (on_blank) {
                         block_drag_and_drop ();  /* allow rubber banding */
                     } else if (on_helper) {
