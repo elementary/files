@@ -86,10 +86,6 @@ namespace FM {
             set_up_view ();
             set_up_name_renderer ();
             set_up_icon_renderer ();
-
-            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
-            tree.motion_notify_event.connect (on_motion_notify_event);
-
             return tree as Gtk.Widget;
         }
 

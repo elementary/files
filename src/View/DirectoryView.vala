@@ -189,6 +189,9 @@ namespace FM {
                 add (view);
                 show_all ();
                 connect_drag_drop_signals (view);
+                view.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+                view.motion_notify_event.connect (on_motion_notify_event);
+                view.leave_notify_event.connect (on_leave_notify_event);
             }
             freeze_tree ();
             set_up_zoom_level ();
@@ -213,6 +216,10 @@ namespace FM {
             popup_menu.connect (on_popup_menu);
             unrealize.connect (() => {
                 clipboard.changed.disconnect (on_clipboard_changed);
+            });
+            realize.connect (() => {
+                clipboard.changed.connect (on_clipboard_changed);
+                on_clipboard_changed ();
             });
 
             scroll_event.connect (on_scroll_event);           
@@ -322,8 +329,9 @@ namespace FM {
             action_set_enabled (common_actions, "paste_into", false);
             action_set_enabled (window.win_actions, "select_all", false);
 
-            GLib.SignalHandler.block_by_func (this, (void*) on_size_allocate, null); /* required? */
-            GLib.SignalHandler.block_by_func (this, (void*) on_clipboard_changed, null); 
+            size_allocate.disconnect (on_size_allocate);
+            clipboard.changed.disconnect (on_clipboard_changed);
+            view.motion_notify_event.disconnect (on_motion_notify_event);
             /* TODO queue file changed/added/.. and freeze their updates */
 
             name_renderer.@set ("editable", true, null);
@@ -337,8 +345,9 @@ namespace FM {
             updates_frozen = false;
             slot.directory.freeze_update = false;;
             update_menu_actions ();
-            GLib.SignalHandler.unblock_by_func (this, (void*) on_size_allocate, null); 
-            GLib.SignalHandler.unblock_by_func (this, (void*) on_clipboard_changed, null);
+            size_allocate.connect (on_size_allocate);
+            clipboard.changed.connect (on_clipboard_changed);
+            view.motion_notify_event.connect (on_motion_notify_event);
 
             name_renderer.@set ("editable", false, null);
 
@@ -1899,6 +1908,7 @@ namespace FM {
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
+//message ("on_motion_notify event");
             int x, y, mask;
             /* We need to use the device position for rubberbanding to work properly in ListView */
             get_window ().get_device_position (event.get_device (), out x, out y, out mask);
@@ -1920,6 +1930,11 @@ namespace FM {
                 hover_path = path;
             }
 
+            return false;
+        }
+
+        protected bool on_leave_notify_event (Gdk.EventCrossing event) {
+            window.item_hovered (null); /* Cause OverLay to disappear */
             return false;
         }
 
@@ -2068,20 +2083,19 @@ namespace FM {
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    //if (path == null) {
-                    if (!on_helper && no_mods) {
+                    if (!no_mods)
+                        return false;
+
+                    if (!on_helper) {
                         unselect_all ();
                         if (path != null)
                             select_path (path);
                     }
-                    if (on_blank) {
+                    if (on_blank)
                         block_drag_and_drop ();  /* allow rubber banding */
-                    } else if (on_helper) {
-                        if (path_is_selected (path))
-                            unselect_path (path);
-                        else
-                            select_path (path);
-                    } else  if (on_name)
+                    else if (on_helper)
+                        toggle_selected_path (path);
+                    else  if (on_name)
                         rename_file (selected_files.data);
                     else if (Preferences.settings.get_boolean ("single-click") && no_mods)
                             result = handle_primary_button_single_click_mode (event, path, on_icon);
@@ -2108,6 +2122,14 @@ namespace FM {
 
 //message ("DV BPE Returning %s", result ? "true" : "false"); 
             return result;
+        }
+
+        private void toggle_selected_path (Gtk.TreePath path) {
+message ("Toggle selected");
+            if (path_is_selected (path))
+                unselect_path (path);
+            else
+                select_path (path);
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {

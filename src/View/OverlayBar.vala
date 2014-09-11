@@ -44,7 +44,7 @@ namespace Marlin.View {
             window = win;
 
             window.selection_changed.connect (on_selection_changed);
-            window.item_hovered.connect (update_hovered);
+            window.item_hovered.connect (update_hovered);            
 
             hide.connect (() => {
                 /* when we're hiding, we no longer want to search for image size */
@@ -58,10 +58,10 @@ namespace Marlin.View {
         private uint files_count = 0;
         private uint64 files_size = 0;
         private GOF.File? goffile = null;
-        private unowned GLib.List<GOF.File>? selected_files;
+        private unowned GLib.List<unowned GOF.File>? selected_files;
 
         public void on_selection_changed (GLib.List<GOF.File>? files = null) {
-//message ("overlay update");
+//message ("overlay selection changed");
             selected_files = files;
             real_update (selected_files);
         }
@@ -69,16 +69,26 @@ namespace Marlin.View {
         private void update_hovered (GOF.File? file) {
 //message ("update hovered");
             if (file != null) {
-                GLib.List<GOF.File> list = null;
-                list.prepend (file);
-                real_update (list);
+                bool matched = false;
+                selected_files.@foreach ((f) => {
+                    if (f== file)
+                        matched = true;
+                });
+                if (matched)
+                    real_update (selected_files);
+                else {
+                    GLib.List<GOF.File> list = null;
+                    list.prepend (file);
+                    real_update (list);
+                }
             } else
-                real_update (selected_files);
+                real_update (null);
         }
 
        private void real_update (GLib.List<GOF.File>? files) {
 //message ("Overlay bar real update");
             count = 0;
+            goffile = null;
             folders_count = 0;
             files_count = 0;
             files_size = 0;
@@ -88,12 +98,13 @@ namespace Marlin.View {
             if (files != null) {
                 visible = showbar;
 
-                /* list contain only one element */
                 if (files.data != null) {
                     if (files.next == null)
+                        /* list contain only one element */
                         goffile = files.first ().data;
+                    else
+                        scan_list (files);
 
-                    scan_list (files);
                     update_status ();
                 }
             } else {
@@ -110,7 +121,7 @@ namespace Marlin.View {
                 image_cancellable = null;
             }
 
-            if (count == 1 && goffile != null) {
+            if (goffile != null) {
                 if (goffile.is_network_uri_scheme ()) {
                     status = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -153,8 +164,11 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (List<GOF.File> files) {
+        private void scan_list (GLib.List<GOF.File>? files) {
 //message ("scan list");
+            if (files == null)
+                return;
+
             foreach (var gof in files) {
                 if (gof != null) {
                     if (gof.is_folder ()) {

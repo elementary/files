@@ -95,9 +95,6 @@ namespace FM {
             set_up_view ();
             tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_rubber_banding (true);
-
-            tree.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
-            tree.motion_notify_event.connect (on_motion_notify_event);
             return tree as Gtk.Widget;
         }
 

@@ -67,7 +67,7 @@ namespace Marlin.View {
         public bool freeze_view_changes = false;
 
         public signal void item_hovered (GOF.File? gof_file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file); //OverlayBar connects
+        public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         [Signal (action=true)]
         public virtual signal void go_up () {
