@@ -1978,9 +1978,9 @@ namespace FM {
         }
 
         protected void on_name_editing_canceled () {
+//message ("on name editing canceled");
                 if (!renaming)
                     return;
-//message ("on name editing canceled");
 
                 editable_widget = null;
                 renaming = false;
@@ -1992,6 +1992,8 @@ namespace FM {
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
 //message ("on name edited");
+
+            on_name_editing_canceled ();
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -2000,7 +2002,6 @@ namespace FM {
                     var dialog = new Gtk.MessageDialog ((Gtk.Window)window, Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, _("%s is not a valid file name"), new_name);
                     dialog.run ();
                     dialog.destroy ();
-                    renaming = false;
                     return;
                 }
 
@@ -2022,8 +2023,6 @@ namespace FM {
                     });
                 }
             }
-            renaming = false;
-            slot.directory.freeze_update = false;
         }
 
        
@@ -2145,7 +2144,7 @@ namespace FM {
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-//message ("ATV start renaming file");
+//message ("DV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (name_column != null && editable_widget != null) {
                 editable_widget.select_region (0, -1);
