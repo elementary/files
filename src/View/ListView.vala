@@ -45,7 +45,6 @@ namespace FM {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
             model.sort_column_changed.connect (on_sort_column_changed);
-            //key_press_event.connect (this.on_view_key_press_event);
         }
 
         private void append_extra_tree_columns () {
@@ -71,9 +70,8 @@ namespace FM {
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
 //message ("on row expanded");
             GOF.Directory.Async dir;
-            if (model.load_subdirectory (path, out dir) && dir is GOF.Directory.Async) {
+            if (model.load_subdirectory (path, out dir) && dir is GOF.Directory.Async)
                 add_subdirectory (dir);
-            }
         }
 
         private void on_row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
@@ -83,9 +81,8 @@ namespace FM {
             if (model.get_directory_file (path, out dir, out file)) {
                 schedule_model_unload_directory (file, dir);
                 remove_subdirectory (dir);
-            } else {
+            } else
                 critical ("failed to get directory/file");
-            }
         }
 
         private void schedule_model_unload_directory (GOF.File file, GOF.Directory.Async directory) {
@@ -95,12 +92,10 @@ namespace FM {
                 /* FIXME model.get_tree_iter_from_file does not work for some reason */
                 if (model.get_first_iter_for_file (file, out iter)) {
                     path = ((Gtk.TreeModel)model).get_path (iter);
-                    if (path != null && !((Gtk.TreeView)tree).is_row_expanded (path)) {
+                    if (path != null && !((Gtk.TreeView)tree).is_row_expanded (path))
                         model.unload_subdirectory (iter);
-                    }
-                } else {
+                } else
                     critical ("Failed to get iter");
-                }
 
                 unload_file_timeout_id = 0;
                 return false;

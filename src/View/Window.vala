@@ -209,9 +209,9 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
             key_press_event.connect ((event) => {
-                if (top_menu.location_bar.bread.is_focus) {
+                if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
-                }
+
                 return false;
             });
 
@@ -228,10 +228,10 @@ namespace Marlin.View {
             });
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
                     Preferences.settings.set_boolean("maximized",
                                                      (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
-                }
+
                 return false;
             });
 
@@ -312,16 +312,16 @@ namespace Marlin.View {
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
                 return;
-//message ("WIN change tab");
-            if (old_tab != null) {
+
+            if (old_tab != null)
                 old_tab.set_active_state (false);
-            }
+
             current_tab.set_active_state (true);
             update_top_menu ();
             /* update radio action view state */
             update_view_mode (current_tab.view_mode);
 #if 0
-            /* sync selection */
+            /* sync selection - to be reimplemented if needed*/
             if (cur_slot.dir_view != null && current_tab.can_show_folder);
                 cur_slot.dir_view.sync_selection();
 #endif
@@ -349,9 +349,8 @@ namespace Marlin.View {
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
-            if (tabs.n_tabs == 1) {
+            if (tabs.n_tabs == 1)
                 item_hovered (null); 
-            }
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -451,7 +450,6 @@ namespace Marlin.View {
                     break;
 
                 case "FORWARD":
-message ("action go forward");
                     current_tab.go_forward ();
                     break;
 
@@ -628,9 +626,9 @@ message ("action go forward");
                     } catch (GLib.Error e) {
                         critical ("Can't set Marlin default FM: %s", e.message);
                     }
-                } else {
+                } else
                     critical ("Failed to make Pantheon Files App Info");
-                }
+
             } else {
                 AppInfo.reset_type_associations ("inode/directory");
                 AppInfo.reset_type_associations ("x-scheme-handler/trash");
@@ -678,10 +676,8 @@ message ("action go forward");
                 var view_container = tab.page as ViewContainer;
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
-                if (!view_container.can_show_folder) {
-//message ("Not saving unshowable folder");
+                if (!view_container.can_show_folder)
                     continue;
-                }
 
                 vb.add ("(uss)",
                         view_container.view_mode,
@@ -697,9 +693,8 @@ message ("action go forward");
         public uint restore_tabs () {
 //message ("Restore tabs");
             /* Do not restore tabs more than once */
-            if (tabs_restored || !is_first_window) {
+            if (tabs_restored || !is_first_window)
                 return 0;
-            }
             else
                 tabs_restored = true;
 
@@ -717,13 +712,10 @@ message ("action go forward");
                     continue;
 
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
-//message ("restoring %s mode is %i", root_uri, (int)mode);
                 add_tab (root_location, mode);
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
-//                    var mwcols = (tabs.current.page as ViewContainer).view as Miller;
-//                    mwcols.expand_miller_view (tip_uri);
-                }
+
                 tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
@@ -738,14 +730,12 @@ message ("action go forward");
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
             if (active_tab_position >=0 && active_tab_position < tabs_added) {
                 tabs.current = tabs.get_tab_by_index (active_tab_position);
-//message ("restore calling change tab");
                 change_tab (active_tab_position);
             }
 
             string? path = current_tab.get_tip_uri ();
-            if (path == null || path == "") {
+            if (path == null || path == "")
                 path = current_tab.get_root_uri ();
-            }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
@@ -781,9 +771,7 @@ message ("action go forward");
         }
 
         public void update_top_menu () {
-
             if (current_tab != null) {
-//message ("update to menu");
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
             }

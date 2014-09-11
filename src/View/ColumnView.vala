@@ -58,9 +58,9 @@ namespace FM {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
                 unfreeze_updates ();
-                if (!is_drag_pending ()) {
+                if (!is_drag_pending ())
                     activate_selected_items ();
-                }
+
             }
             return false;
         }
@@ -98,9 +98,9 @@ namespace FM {
             bool result = false;
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
-                if (awaiting_double_click) {
+                if (awaiting_double_click)
                     result = true;
-                } else if (on_icon) {
+                else if (on_icon) {
                     /* Determine if folder selected ... */
                     selected_folder = null;
                     unowned GOF.File file = selected_files.data;
@@ -115,9 +115,9 @@ namespace FM {
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
                 cancel_await_double_click ();
-                if (selected_folder != null) {
+                if (selected_folder != null)
                     load_root_location (selected_folder.location);
-                }
+
                 result = true;
             }
 //message ("Returning %s", result ? "true" : "false");

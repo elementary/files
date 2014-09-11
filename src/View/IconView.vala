@@ -177,11 +177,10 @@ namespace FM {
                 unowned GOF.File file;
                 file = model.file_for_path (path);
                 /* FIXME - model does not return owned object?  Is this correct? */
-                if (file != null) {
+                if (file != null)
                     selected_files.prepend (file);
-                } else {
+                else
                     critical ("Null file in model");
-                }
             });
             selected_files.reverse ();
 //message ("select files length is %u", selected_files.length ());
@@ -213,9 +212,8 @@ namespace FM {
                     Gdk.Rectangle rect, area;
                     tree.get_cell_rect  (p, r, out rect);
                     area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-                    if (x <= area.x + 18 && y <= area.y + 18) {
+                    if (x <= area.x + 18 && y <= area.y + 18)
                         on_helper = true;
-                    }
                 }
             }
             on_icon = !on_name && !on_helper;

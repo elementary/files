@@ -118,20 +118,17 @@ namespace Marlin.View {
 //message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
             if (mode != view_mode) {
 
-                if (loc == null) { /* Only untrue on container creation */
+                if (loc == null)  /* Only untrue on container creation */
                     loc = this.location;
-                }
 
-                if (view != null) {
-                    //store_selection ();
-                }
+                if (view != null)
+                    store_selection ();
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
                 else
                     view = new Slot (loc, this, mode);
 
-                //content = view.get_content_box ();
                 queue_draw ();
                 set_up_current_slot ();
                 update_view_container (mode);
@@ -210,7 +207,6 @@ namespace Marlin.View {
                 tab_name = _("File System");
             else
                 tab_name = loc.get_basename ();
-                // TODO can_show_folder setting required ?
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
@@ -236,24 +232,14 @@ namespace Marlin.View {
                     can_show_folder = false;
                     //user_path_change_request (slot.location.get_parent ());
                 }
-                else if (file_info.get_file_type () == FileType.DIRECTORY) {
-//message ("directory loaded");
-                    if (selected_locations != null) {
-//message ("restoring selection - number of locations is %u", selected_locations.length ());
+                else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null)
                         view.select_glib_files (selected_locations);
-                    }
-                }
-//                else {
-//message ("FIle type is %i", (int)(file_info.get_file_type ()));
-//                    /* If not a directory, then change the location to the parent */
-//                    user_path_change_request (slot.location.get_parent ());
-//                }
+
             } catch (Error err) {
                 /* query_info will throw an exception if it cannot find the file */
-                if (err is IOError.NOT_MOUNTED) {
-//message ("VC NOT MOUNTED error");
+                if (err is IOError.NOT_MOUNTED)
                     slot.reload ();
-                } else {
+                else {
                     content = new DirectoryNotFound (slot.directory, this);
                     can_show_folder = false;
                 }
@@ -261,18 +247,17 @@ namespace Marlin.View {
             slot.directory.disconnect (directory_done_loading_handler_id);
         }
 
-//        private void store_selection () {
-//            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
-//            selected_locations = null;
-//            if (selected_files.length () >= 1) {
-//                selected_files.@foreach ((file) => {
-//                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
-//                });
-//            }
-//        }
+        private void store_selection () {
+            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
+            selected_locations = null;
+            if (selected_files.length () >= 1) {
+                selected_files.@foreach ((file) => {
+                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
+                });
+            }
+        }
 
         private void update_view_container (Marlin.ViewMode mode) {
-            //overlay_statusbar.showbar = mode != Marlin.ViewMode.LIST;
             overlay_statusbar.showbar = true;
             view_mode = mode;
         }

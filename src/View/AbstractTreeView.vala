@@ -170,9 +170,9 @@ namespace FM {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
-                if (file != null) {
+                if (file != null)
                     selected_files.prepend (file);
-                }
+
             });
             selected_files.reverse ();
 //message ("ATV selected files length is %u", selected_files.length ());

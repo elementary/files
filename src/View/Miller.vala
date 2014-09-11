@@ -110,16 +110,14 @@ namespace Marlin.View {
 
             /* destroy the nested slots */
             ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
-                if (w != null) {
+               // if (w != null)
                     w.destroy ();
-                }
             });
 
             uint n = slot.slot_number;
             slot_list.@foreach ((s) => {
-                if (s.slot_number > n) {
+                if (s.slot_number > n)
                     disconnect_slot_signals (s);
-                }
             });
             slot_list.nth (n).next = null;
             calculate_total_width ();
@@ -305,20 +303,18 @@ namespace Marlin.View {
             int current_value = (int) this.hadj.get_value (); ;
             int new_value = current_value;
 
-            if (current_value > previous_width) {
+            if (current_value > previous_width)
                 /*scroll right until left hand edge of slot before the active slot is in view*/
                 new_value = previous_width;
-            }
 
-            if (new_value > width) {
+            if (new_value > width)
                 /*scroll right until left hand edge of active slot is in view*/
                 new_value = width;
-            }
+
             int val = page_size - (width + slot.width + 100);
-            if (val < 0) {
+            if (val < 0)
                 /*scroll left until right hand edge of active slot is in view*/
                 new_value =  -val;
-            }
 
             Marlin.Animation.smooth_adjustment_to (this.hadj, new_value);
         }
@@ -339,31 +335,6 @@ namespace Marlin.View {
                 current_slot.inactive ();
         }
 
-#if 0
-        //TODO Get to work
-        public void expand_miller_view (string tip_uri) {
-//message ("expand miller view to %s", tip_uri);
-            assert (slot_list.length () == 1);
-            
-            var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
-            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
-            var relative_path = root_location.get_relative_path (tip_location);
-            GLib.File gfile;
-
-            if (relative_path != null) {
-                string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
-                string uri = root_location.get_uri ();
-
-                foreach (string dir in dirs) {
-                    uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = GLib.File.new_for_uri (uri);;
-                    add_location (gfile, current_slot);
-                }
-            } else {
-                warning ("Invalid tip uri for Miller View");
-            }
-        }
-#endif
         public override string? get_tip_uri () {
 //message ("MILLER get_tip_uri");
             if (slot_list != null && slot_list.last () != null && slot_list.last ().data is GOF.AbstractSlot) {
