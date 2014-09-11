@@ -267,7 +267,7 @@ namespace FM {
         public void select_first_for_empty_selection () {
 //message ("select first for empty selection");
             if (selected_files == null) {
-                set_cursor (new Gtk.TreePath.from_indices (0), false, true);
+                set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
             }
         }
 
@@ -282,7 +282,7 @@ namespace FM {
                         Gtk.TreePath path = model.get_path (iter);
                     if (path != null) {
                         if (i==1)
-                            set_cursor (path, false, true);
+                            set_cursor (path, false, true, true);
 
 //message ("selecting path");
                         select_path (path);
@@ -438,7 +438,7 @@ namespace FM {
                 return; /* file not in model */
 
             var path = model.get_path (iter);
-            set_cursor (path, false, true);
+            set_cursor (path, false, true, false);
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
@@ -456,7 +456,7 @@ namespace FM {
             /* Check if there was only one file selected before the row was deleted. The
              * selection_before_delete is set by on_row_deleted() if this is the case.
              * place the cursor on the selected path */
-            set_cursor (selection_before_delete, false, true);
+            set_cursor (selection_before_delete, false, true, false);
             selection_before_delete = null;
         }
 
@@ -2163,7 +2163,7 @@ namespace FM {
 
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_column, name_renderer, true);
+            set_cursor_on_cell (path, name_column, name_renderer, true, false);
 
             int start_offset= 0, end_offset = -1;
             if (editable_widget != null) {
@@ -2190,7 +2190,6 @@ namespace FM {
         public abstract void select_path (Gtk.TreePath? path);
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);
-        public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
@@ -2198,8 +2197,10 @@ namespace FM {
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
         protected abstract void get_event_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
-        protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col);
-        protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing);
+        protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top);
+        protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top);
+        public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select, bool scroll_to_top);
+
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
 */ 

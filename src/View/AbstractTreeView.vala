@@ -153,23 +153,6 @@ namespace FM {
                 return false;
         }
 
-        public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-            if (path == null)
-                return;
-
-//message ("ATV set cursor, select is %s", select ? "true" : "false");
-            Gtk.TreeSelection selection = tree.get_selection ();
-
-            if (!select)
-                selection.changed.disconnect (on_view_selection_changed);
-
-            set_cursor_on_cell (path, name_column, name_renderer, start_editing);
-
-            if (!select)
-                selection.changed.connect (on_view_selection_changed);
-
-        }
-
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
             start_path = null;
             end_path = null;
@@ -236,15 +219,31 @@ namespace FM {
 //message ("on helper is %s", on_helper ? "true" : "false");
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
+        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top) {
 //message ("ATV scroll to cell");
             if (tree != null)
-                tree.scroll_to_cell (path, col, true, 1.0f, 0.0f);
+                tree.scroll_to_cell (path, col, scroll_to_top, 0.0f, 0.0f);
         }
-        protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
+        protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top) {
 //message ("ATV set cursor on cell");
-            scroll_to_cell (path, name_column);
+            scroll_to_cell (path, name_column, scroll_to_top);
             tree.set_cursor_on_cell (path, col, renderer, start_editing);
+        }
+
+        public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select, bool scroll_to_top) {
+            if (path == null)
+                return;
+//message ("ATV set cursor, select is %s", select ? "true" : "false");
+            Gtk.TreeSelection selection = tree.get_selection ();
+
+            if (!select)
+                selection.changed.disconnect (on_view_selection_changed);
+
+            set_cursor_on_cell (path, name_column, name_renderer, start_editing, scroll_to_top);
+
+            if (!select)
+                selection.changed.connect (on_view_selection_changed);
+
         }
     }
 }
