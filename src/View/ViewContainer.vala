@@ -48,9 +48,6 @@ namespace Marlin.View {
         private GLib.List<GLib.File>? selected_locations = null;
         private ulong directory_done_loading_handler_id = 0;
 
-        public signal void up ();
-        public signal void back (int n=1);
-        public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
 
@@ -72,8 +69,6 @@ namespace Marlin.View {
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             /* The overlay is already added in the constructor of the statusbar */
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-
-            connect_signals ();
             change_view_mode (mode, loc);
         }
 
@@ -100,24 +95,24 @@ namespace Marlin.View {
             }
         }
 
-        private void connect_signals () {
-            up.connect (() => {
-                if (view.directory.has_parent ())
-                    user_path_change_request (view.directory.get_parent ());
-            });
-
-            back.connect ((n) => {
-                string? loc = browser.go_back (n);
-                if (loc != null)
-                    user_path_change_request (File.new_for_commandline_arg (loc));
-            });
-
-            forward.connect ((n) => {
-                string? loc = browser.go_forward (n);
-                if (loc != null)
-                    user_path_change_request (File.new_for_commandline_arg (loc));
-            });
+        public void go_up () {
+            if (view.directory.has_parent ())
+                user_path_change_request (view.directory.get_parent ());
         }
+
+        public void go_back (int n = 1) {
+            string? loc = browser.go_back (n);
+            if (loc != null)
+                user_path_change_request (File.new_for_commandline_arg (loc));
+        }
+
+        public void go_forward (int n = 1) {
+//message ("VC go forward");
+            string? loc = browser.go_forward (n);
+            if (loc != null)
+                user_path_change_request (File.new_for_commandline_arg (loc));
+        }
+
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
 //message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
@@ -342,7 +337,11 @@ debug ("VC get current slot");
         }
 
         public new void grab_focus () {
-            content.grab_focus ();
+//message ("VC grab focus");
+            if (can_show_folder)
+                view.grab_focus ();
+            else
+                content.grab_focus ();
         }
 
     }

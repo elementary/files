@@ -24,7 +24,6 @@ namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow
     {
-
         static const GLib.ActionEntry [] win_entries = {
             {"refresh", action_reload},
             {"undo", action_undo},
@@ -32,7 +31,7 @@ namespace Marlin.View {
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
-            {"help", action_help, "s"},
+            {"info", action_info, "s"},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"select_all", null, null, "false", change_state_select_all},
             {"show_hidden", null, null, "false", change_state_show_hidden},
@@ -54,33 +53,25 @@ namespace Marlin.View {
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
-
         public ViewContainer? current_tab = null;
 
         public bool can_go_up = false;
-
         public void set_can_go_back (bool can) {
            top_menu.set_can_go_back (can);
         }
         public void set_can_go_forward (bool can) {
            top_menu.set_can_go_forward (can);
         }
-
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
+        public bool freeze_view_changes = false;
 
         public signal void item_hovered (GOF.File? gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file); //OverlayBar connects
-
         public signal void loading_uri (string location);
-
-        public bool freeze_view_changes = false;
-        //private const int MARLIN_LEFT_OFFSET = 16;
-        //private const int MARLIN_TOP_OFFSET = 9;
-
         [Signal (action=true)]
         public virtual signal void go_up () {
-            current_tab.up ();
+            current_tab.go_up ();
         }
 
         [Signal (action=true)]
@@ -91,7 +82,6 @@ namespace Marlin.View {
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
             var window_number = app.window_count;
-//message ("New window");
             application = app;
             screen = myscreen;
             is_first_window = (window_number == 0);
@@ -112,7 +102,6 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-//message ("build window");
             var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
@@ -145,7 +134,6 @@ namespace Marlin.View {
         }
 
         private void construct_sidebar () {
-//message ("construct sidebar");
             sidebar = new Marlin.Places.Sidebar (this);
             sidebar.show ();
         }
@@ -164,7 +152,6 @@ namespace Marlin.View {
         }
 
         private void construct_menu_actions () {
-//message ("construct menu actions");
             win_actions = new GLib.SimpleActionGroup ();
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
@@ -175,14 +162,12 @@ namespace Marlin.View {
         }
 
         private void construct_top_menu () {
-//message ("construct top menu");
             top_menu = new Chrome.TopMenu(this);
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
         }
 
         private void construct_info_bar () {
-//message ("construct info bar");
             info_bar = new Gtk.InfoBar ();
 
             var label = new Gtk.Label (_("Files isn't your default file manager."));
@@ -214,18 +199,12 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-//message ("connect signals");
             /*/
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect ((n) => {
-                current_tab.forward (n);
-            });
-
-            top_menu.back.connect ((n) => {
-                current_tab.back (n);
-            });
+            top_menu.forward.connect (on_go_forward);
+            top_menu.back.connect (on_go_back);
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
@@ -236,14 +215,13 @@ namespace Marlin.View {
                 return false;
             });
 
-            var go_to_action = get_action ("go_to");
             button_press_event.connect ((event) => {
                 /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
                 if (event.button == 8) {
-                    go_to_action.activate (new GLib.Variant.string ("BACK"));
+                    on_go_back ();
                     return true;
                 } else if (event.button == 9) {
-                    go_to_action.activate (new GLib.Variant.string ("FORWARD"));
+                    on_go_forward ();
                     return true;
                 } else
                     return false;
@@ -267,9 +245,7 @@ namespace Marlin.View {
             });
 
             tabs.close_tab_requested.connect ((tab) => {
-                tab.restore_data =
-                    //(tab.page as ViewContainer).slot.location.get_uri ();
-                    (tab.page as ViewContainer).location.get_uri ();
+                tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
 
                 if (tabs.n_tabs == 1)
                     add_tab ();
@@ -278,7 +254,6 @@ namespace Marlin.View {
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
-//message ("tab_switched calling change tab");
                 change_tab (tabs.get_tab_position (new_tab));
             });
 
@@ -288,13 +263,11 @@ namespace Marlin.View {
 
             tabs.tab_duplicated.connect ((tab) => {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
-               // add_tab (File.new_for_uri (((tab.page as ViewContainer).get_current_slot ()).location.get_uri ()));
             });
 
         }
 
         private void make_bindings () {
-//message ("make bindings");
             /*Preference bindings */
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.SET);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.DEFAULT);
@@ -306,6 +279,14 @@ namespace Marlin.View {
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
         }
+
+        private void on_go_forward (int n = 1) {
+            current_tab.go_forward (n);
+        }
+        private void on_go_back (int n = 1) {
+            current_tab.go_back (n);
+        }
+        
 
         private void show_infobar (bool val) {
             if (val) {
@@ -327,7 +308,6 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab)
@@ -342,15 +322,11 @@ namespace Marlin.View {
             update_view_mode (current_tab.view_mode);
 #if 0
             /* sync selection */
-            //if (cur_slot.dir_view != null && !current_tab.content_shown);
             if (cur_slot.dir_view != null && current_tab.can_show_folder);
                 cur_slot.dir_view.sync_selection();
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-
-            // reload the view to ensure icons are rendered correctly
-            //current_tab.reload ();
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -369,15 +345,12 @@ namespace Marlin.View {
                 tab.working = is_loading;
             });
 
-//message ("add tab calling change tab");
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                Files, the overlay status bar is shown empty. */
             if (tabs.n_tabs == 1) {
-                var tab1 = tabs.get_tab_by_index (0);
-                assert (tab1 != null);
-                (tab1.page as ViewContainer).overlay_statusbar.update ();
+                item_hovered (null); 
             }
         }
 
@@ -456,7 +429,6 @@ namespace Marlin.View {
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action go to");
             switch (param.get_string ()) {
                 case "HOME":
                     uri_path_change_request (Environment.get_home_dir());
@@ -475,15 +447,16 @@ namespace Marlin.View {
                     break;
 
                 case "UP":
-                    current_tab.up ();
+                    current_tab.go_up ();
                     break;
 
                 case "FORWARD":
-                    current_tab.forward ();
+message ("action go forward");
+                    current_tab.go_forward ();
                     break;
 
                 case "BACK":
-                    current_tab.back ();
+                    current_tab.go_back ();
                     break;
 
                 default:
@@ -492,8 +465,6 @@ namespace Marlin.View {
         }
 
         private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action zoom");
-            //if (current_tab != null && current_tab.slot != null) {
             if (current_tab != null) {
                 assert (current_tab.view != null);
                 switch (param.get_string ()) {
@@ -516,7 +487,6 @@ namespace Marlin.View {
         }
 
         private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action tab");
             switch (param.get_string ()) {
                 case "NEW":
                     add_tab ();
@@ -539,19 +509,10 @@ namespace Marlin.View {
             }
         }
 
-        private void action_help (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action tab");
+        private void action_info (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "HELP":
                     show_app_help ();
-                    break;
-
-                case "TRANSLATE":
-                    show_translate ();
-                    break;
-
-                case "PROBLEM":
-                    show_report ();
                     break;
 
                 case "ABOUT":
@@ -564,19 +525,16 @@ namespace Marlin.View {
         }
 
         private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action undo");
             update_undo_actions ();
             undo_manager.undo (null);
         }
 
         private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action redo");
             update_undo_actions ();
             undo_manager.redo (null);
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
-//message ("select all state %s", action.state.get_boolean () ? "true" : "false");
             var slot = get_active_slot ();
             if (slot != null) {
                 bool state = !action.state.get_boolean ();
@@ -586,14 +544,12 @@ namespace Marlin.View {
         }
 
         private void change_state_show_hidden (GLib.SimpleAction action) {
-//message ("show hidden state %s", action.state.get_boolean () ? "true" : "false");
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-hiddenfiles", state);
         }
 
         private void change_state_show_sidebar (GLib.SimpleAction action) {
-//message ("show sidebar state %s", action.state.get_boolean () ? "true" : "false");
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-sidebar", state);
@@ -620,16 +576,6 @@ namespace Marlin.View {
                 "translate", Marlin.TRANSLATE_URL,
                 "bug", Marlin.BUG_URL
             );
-        }
-
-        void show_report() {
-            try { Gtk.show_uri (screen, Marlin.BUG_URL, -1); }
-            catch (Error e) { critical("Can't open the link"); }
-        }
-
-        void show_translate() {
-            try { Gtk.show_uri (screen, Marlin.TRANSLATE_URL, -1); }
-            catch (Error e) { critical("Can't open the link"); }
         }
 
         void show_app_help() {
@@ -874,6 +820,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
+//message ("WIN grab focus");
             current_tab.grab_focus ();
         }
     }

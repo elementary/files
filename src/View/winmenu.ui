@@ -179,13 +179,13 @@
             <section>
                 <item>
                     <attribute name="label" translatable='yes'>Get Help</attribute>
-                        <attribute name="action">win.help</attribute>
+                        <attribute name="action">win.info</attribute>
                         <attribute name="target">HELP</attribute>
                         <attribute name="accel"><![CDATA[F1]]></attribute>
                 </item>
                 <item>
                     <attribute name="label" translatable='yes'>About</attribute>
-                        <attribute name="action">win.help</attribute>
+                        <attribute name="action">win.info</attribute>
                         <attribute name="target">ABOUT</attribute>
                         <attribute name="accel"><![CDATA[F2]]></attribute>
                 </item>

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 
+ Copyright (C)
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -13,7 +13,7 @@
  You should have received a copy of the GNU General Public License along
  with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : 
+ Authors :
 */
 
 namespace FM {
@@ -68,6 +68,9 @@ namespace FM {
             tree.draw.connect (on_view_draw);
             tree.key_press_event.connect (on_view_key_press_event);
             tree.row_activated.connect (on_view_items_activated);
+            tree.realize.connect ((w) => {
+                tree.grab_focus ();
+            });
         }
 
         protected void connect_name_renderer_signals () {
@@ -133,8 +136,10 @@ namespace FM {
         }
 
         public override void select_path (Gtk.TreePath? path) {
-            if (path != null)
+            if (path != null) {
+//message ("select path %s", path.to_string ());
                 tree.get_selection ().select_path (path);
+            }
         }
         public override void unselect_path (Gtk.TreePath? path) {
 //message ("Unselect path");
@@ -149,15 +154,16 @@ namespace FM {
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-//message ("ATV set cursor");
             if (path == null)
                 return;
 
+//message ("ATV set cursor, select is %s", select ? "true" : "false");
             Gtk.TreeSelection selection = tree.get_selection ();
+
             if (!select)
                 selection.changed.disconnect (on_view_selection_changed);
 
-            tree.set_cursor_on_cell (path, name_column, name_renderer, start_editing);
+            set_cursor_on_cell (path, name_column, name_renderer, start_editing);
 
             if (!select)
                 selection.changed.connect (on_view_selection_changed);
@@ -182,18 +188,18 @@ namespace FM {
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 /* model does not return owned file */
                 if (file != null) {
-//message ("adding %s to selected files", file.uri);
                     selected_files.prepend (file);
                 }
             });
             selected_files.reverse ();
+//message ("ATV selected files length is %u", selected_files.length ());
         }
 
         protected override bool view_has_focus () {
             return tree.has_focus;
         }
 
-        protected override void get_click_position_info (int x, int y,
+        protected override void get_event_position_info (int x, int y,
                                                 out Gtk.TreePath? path,
                                                 out bool on_name,
                                                 out bool on_blank,
@@ -231,9 +237,13 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
-            tree.scroll_to_cell (path, col, false, 0.0f, 0.0f);
+//message ("ATV scroll to cell");
+            if (tree != null)
+                tree.scroll_to_cell (path, col, true, 1.0f, 0.0f);
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
+//message ("ATV set cursor on cell");
+            scroll_to_cell (path, name_column);
             tree.set_cursor_on_cell (path, col, renderer, start_editing);
         }
     }

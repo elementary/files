@@ -21,7 +21,6 @@ namespace FM {
         /* Golden ratio used */
         const double ITEM_WIDTH_TO_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
-        protected bool is_loading {get; private set;}
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
@@ -74,6 +73,9 @@ namespace FM {
             tree.draw.connect (on_view_draw);
             tree.key_press_event.connect (on_view_key_press_event);
             tree.item_activated.connect (on_view_items_activated);
+            tree.realize.connect ((w) => {
+                tree.grab_focus ();
+            });
         }
 
 /** Override parent's abstract and  virtual methods as required*/
@@ -141,9 +143,10 @@ namespace FM {
         }
 
         public override void select_path (Gtk.TreePath? path) {
-//message ("IV select path");
-            if (path != null)
+            if (path != null) {
+//message ("IV select path %s", path.to_string ());
                 tree.select_path (path);
+            }
         }
         public override void unselect_path (Gtk.TreePath? path) {
 //message ("IV unselect path");
@@ -158,17 +161,18 @@ namespace FM {
         }
 
         public override void set_cursor (Gtk.TreePath? path, bool start_editing, bool select) {
-//message ("IV set cursor");
             if (path == null)
                 return;
-
+//message ("IV set cursor path %s, select is %s", path.to_string (), select ? "true" : "false");
             if (!select)
-                GLib.SignalHandler.block_by_func (tree, (void*) on_view_selection_changed, null);
+                //GLib.SignalHandler.block_by_func (tree, (void*) on_view_selection_changed, null);
+                tree.selection_changed.disconnect (on_view_selection_changed);
 
-            tree.set_cursor (path, null, start_editing);
-
+            set_cursor_on_cell (path, null, name_renderer, start_editing);
+            select_path (path);
             if (!select)
-                GLib.SignalHandler.unblock_by_func (tree, (void*) on_view_selection_changed, null);
+//                GLib.SignalHandler.unblock_by_func (tree, (void*) on_view_selection_changed, null);
+                tree.selection_changed.connect (on_view_selection_changed);
         }
 
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
@@ -195,13 +199,14 @@ namespace FM {
                 }
             });
             selected_files.reverse ();
+//message ("select files length is %u", selected_files.length ());
         }
 
         protected override bool view_has_focus () {
             return tree.has_focus;
         }
 
-        protected override void get_click_position_info (int x, int y,
+        protected override void get_event_position_info (int x, int y,
                                                 out Gtk.TreePath? path,
                                                 out bool on_name,
                                                 out bool on_blank,
@@ -232,30 +237,28 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col) {
-            tree.scroll_to_path (path, false, 0.0f, 0.0f);
+//message ("IV scroll to cell");
+            if (tree != null)
+                tree.scroll_to_path (path, true, 0.0f, 0.0f);
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing) {
+            scroll_to_cell(path, name_column);
             tree.set_cursor (path, renderer, start_editing);
         }
 
         protected override void freeze_tree () {
 //message ("IV freeze tree");
             tree.freeze_child_notify ();
-            tree.set_model (null);
             is_loading = true;
         }
         protected override void thaw_tree () {
-//message ("IV thaw tree");
             if (!is_loading)
                 return;
 
+//message ("IV thaw tree");
             tree.thaw_child_notify ();
-            tree.set_model (model);
             is_loading = false;
+            queue_draw ();
         }
-        protected override bool get_tree_is_loading () {
-            return is_loading;
-        }
-
     }
 }

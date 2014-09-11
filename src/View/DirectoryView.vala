@@ -158,6 +158,7 @@ namespace FM {
         protected bool renaming = false;
         private bool updates_frozen = false;
         private bool in_trash = false;
+        protected bool is_loading;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -186,11 +187,15 @@ namespace FM {
             view = create_view (); /* Abstract */
             if (view != null) {
                 add (view);
+                show_all ();
                 connect_drag_drop_signals (view);
             }
             freeze_tree ();
-            slot.directory.load ();
             set_up_zoom_level ();
+            /* Allow time for "Loading ... " to be displayed for large folders
+             * otherwise there can be significant delay in showing the application window on start up*/
+            GLib.Timeout.add (100, () => {slot.directory.load (); return false;});
+            queue_draw ();
         }
 
         ~DirectoryView () {
@@ -213,6 +218,7 @@ namespace FM {
             scroll_event.connect (on_scroll_event);           
 
             get_vadjustment ().value_changed.connect ((alloc) => {
+//message ("vadjustment changed");
                 schedule_thumbnail_timeout ();
             });
 
@@ -261,8 +267,7 @@ namespace FM {
         public void select_first_for_empty_selection () {
 //message ("select first for empty selection");
             if (selected_files == null) {
-                var path = new Gtk.TreePath.from_indices (0);
-                select_path (path);
+                set_cursor (new Gtk.TreePath.from_indices (0), false, true);
             }
         }
 
@@ -789,7 +794,6 @@ namespace FM {
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
 //message ("on selection action open");
-            //activate_selected_items (Marlin.OpenFlag.DEFAULT);
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
@@ -938,20 +942,20 @@ namespace FM {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
 
+            thaw_tree ();
             queue_draw ();
-            if (!dir.is_empty ()) {
-                //load_thumbnails (dir, zoom_level);
-                //set_cursor (new Gtk.TreePath.from_indices (0), false, true);
+            if (!dir.is_empty () && slot.is_active) {
+                select_first_for_empty_selection ();
+                grab_focus ();
             }
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
 //message ("on directory thumbs loaded");
-            if (get_realized ())
-                queue_draw ();
+//            if (get_realized ())
+//                queue_draw ();
 
             Marlin.IconInfo.infos_caches ();
-            thaw_tree ();
         }
 
     /** Handle zoom level change */
@@ -959,7 +963,8 @@ namespace FM {
 //message ("DV on zoom level changed");
             model.set_property ("size", Marlin.zoom_level_to_icon_size (zoom));
             zoom_level_changed ();
-            load_thumbnails (slot.directory, zoom);
+            if (get_realized ())
+                load_thumbnails (slot.directory, zoom);
         }
 
     /** Handle Preference changes */
@@ -1705,16 +1710,19 @@ namespace FM {
 
 /** Thumbnail handling */
         private void schedule_thumbnail_timeout () {
-//message ("schedule thumbnail timeout");
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
+            if (thumbnail_source_id != 0)
+                return;
+
+//message ("schedule thumbnail timeout");
             cancel_thumbnailing ();
             thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (slot.directory.is_loading ()) /* wait longer (should not happen) */
-                    return true;
-
+                if (slot.directory == null || slot.directory.is_loading ()) {
+                    return false;
+                }
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
                 Gtk.TreeIter iter;
@@ -1743,7 +1751,6 @@ namespace FM {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, false);
 
                 thumbnail_source_id = 0;
-                thaw_tree ();
                 return false;
             });
         }
@@ -1751,14 +1758,14 @@ namespace FM {
 
 /** HELPER AND CONVENIENCE FUNCTIONS */
 
-        private void block_model () {
+        protected void block_model () {
 //message ("block model");
             model.row_deleted.disconnect (on_row_deleted);
             model.row_deleted.disconnect (after_restore_selection);
             updates_frozen = true;
         }
 
-        private void unblock_model () {
+        protected void unblock_model () {
 //message ("unblock model");
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect (after_restore_selection);
@@ -1870,7 +1877,7 @@ namespace FM {
 
         /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-//message ("on key_press_event");
+//message ("on view key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
@@ -2021,10 +2028,10 @@ namespace FM {
 
        
         public virtual bool on_view_draw (Cairo.Context cr) {
-//message ("DV on view draw, tree is loading %s", get_tree_is_loading () ? "true" : "false");
+//message ("DV on view draw, tree is loading %s", is_loading ? "true" : "false");
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
-            if (slot.directory.is_empty () || get_tree_is_loading ()) {
+            if (slot.directory.is_empty () || is_loading) {
                 Pango.Layout layout = create_pango_layout (null);
                 if (slot.directory.is_empty ())
                     layout.set_markup (slot.empty_message, -1);
@@ -2039,7 +2046,6 @@ namespace FM {
 
                 double x = (double) get_allocated_width () / 2 - width / 2;
                 double y = (double) get_allocated_height () / 2 - height / 2;
-//message ("rendering layout");
                 get_style_context ().render_layout (cr, x, y, layout);
                 return true;
             }
@@ -2076,7 +2082,7 @@ namespace FM {
             slot.active ();
             Gtk.TreePath? path = null;
             bool on_blank, on_icon, on_helper, on_name;
-            get_click_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
+            get_event_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
 
             bool result = true;
@@ -2156,7 +2162,6 @@ namespace FM {
             freeze_updates ();
 
             Gtk.TreePath path = model.get_path (iter);
-            scroll_to_cell (path, name_column);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
             set_cursor_on_cell (path, name_column, name_renderer, true);
 
@@ -2174,9 +2179,8 @@ namespace FM {
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
         protected virtual bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {return false;}
-        protected virtual void freeze_tree () {}
-        protected virtual void thaw_tree () {}
-        protected virtual bool get_tree_is_loading () {return false;}
+        protected virtual void freeze_tree () {is_loading = true;}
+        protected virtual void thaw_tree () {is_loading = false;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -2193,7 +2197,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
-        protected abstract void get_click_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
+        protected abstract void get_event_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing);
 /** Unimplemented methods

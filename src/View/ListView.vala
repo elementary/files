@@ -45,6 +45,7 @@ namespace FM {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
             model.sort_column_changed.connect (on_sort_column_changed);
+            //key_press_event.connect (this.on_view_key_press_event);
         }
 
         private void append_extra_tree_columns () {
@@ -136,6 +137,34 @@ namespace FM {
                 }
             });
 
+        }
+
+        protected override bool on_view_key_press_event (Gdk.EventKey event) {
+//message ("LV on view key_press_event");
+            bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
+
+            if (!control_pressed && !shift_pressed) {
+                switch (event.keyval) {
+                    case Gdk.Key.Right:
+                        Gtk.TreePath path;
+                        tree.get_cursor (out path, null);
+                        if (path != null)
+                            tree.expand_row (path, false);
+
+                        return true;
+                    case Gdk.Key.Left:
+                        Gtk.TreePath path;
+                        tree.get_cursor (out path, null);
+                        if (path != null)
+                            tree.collapse_row (path);
+
+                        return true;
+                    default:
+                        break;
+                }
+            }
+            return base.on_view_key_press_event (event);
         }
 
         private string get_string_from_column_id (int id) {

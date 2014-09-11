@@ -37,14 +37,13 @@ namespace Marlin.View {
             }
         }
 
-        public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay)
-        {
+        public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
 //message ("New Overlay Bar");
             base (overlay);
 
             window = win;
 
-            window.selection_changed.connect (update);
+            window.selection_changed.connect (on_selection_changed);
             window.item_hovered.connect (update_hovered);
 
             hide.connect (() => {
@@ -59,29 +58,25 @@ namespace Marlin.View {
         private uint files_count = 0;
         private uint64 files_size = 0;
         private GOF.File? goffile = null;
+        private unowned GLib.List<GOF.File>? selected_files;
 
-        public void update (GLib.List<GOF.File>? files = null) {
+        public void on_selection_changed (GLib.List<GOF.File>? files = null) {
 //message ("overlay update");
-           real_update (files);
+            selected_files = files;
+            real_update (selected_files);
         }
 
-        private void update_hovered (GOF.File? file)
-        {
+        private void update_hovered (GOF.File? file) {
 //message ("update hovered");
             if (file != null) {
                 GLib.List<GOF.File> list = null;
                 list.prepend (file);
                 real_update (list);
-            } else {
-                GOF.AbstractSlot? view = window.current_tab.view;
-                if (view != null) {
-                    unowned List<GOF.File> list = view.get_selected_files ();
-                    real_update (list);
-                }
-            }
+            } else
+                real_update (selected_files);
         }
 
-        private void real_update (GLib.List<GOF.File>? files) {
+       private void real_update (GLib.List<GOF.File>? files) {
 //message ("Overlay bar real update");
             count = 0;
             folders_count = 0;
@@ -135,10 +130,6 @@ namespace Marlin.View {
                 string str = null;
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
-                    /*if (sub_folders_count > 0)
-                      str += " (containing %u items)".printf (sub_count);
-                      else
-                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
@@ -147,10 +138,6 @@ namespace Marlin.View {
                         str += _(" selected");
                 } else if (folders_count == 1) {
                     str = _("%u folder").printf (folders_count);
-                    /*if (sub_folders_count > 0)
-                      str += " (containing %u items)".printf (sub_count);
-                      else
-                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
@@ -172,7 +159,6 @@ namespace Marlin.View {
                 if (gof != null) {
                     if (gof.is_folder ()) {
                         folders_count++;
-                        //scan_folder (gof.location);
                     } else {
                         files_count++;
                         files_size += gof.size;

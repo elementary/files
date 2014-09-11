@@ -134,7 +134,7 @@ public class GOF.Directory.Async : Object {
 
         if (state == State.LOADING)
             return;
-
+//message ("Async load");
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
             if (state == State.LOADING)
@@ -169,7 +169,6 @@ public class GOF.Directory.Async : Object {
                     critical ("CRITICAL location %s gof null", location.get_uri ());
                 }
             });
-//message ("done_loading emit");
             done_loading ();
         }
     }
@@ -637,9 +636,7 @@ public class GOF.Directory.Async : Object {
         return_val_if_fail (!thumbs_thread_running, null);
 
         if (cancellable.is_cancelled () || file_hash == null) {
-//message ("thumbnailing cancelled - unref");
             this.unref ();
-//message ("ref count %u", this.ref_count);
             return null;
         }
 //message ("load thumbnails func");
@@ -662,9 +659,7 @@ public class GOF.Directory.Async : Object {
             thumbs_loaded ();
 
         thumbs_thread_running = false;
-//message ("stop/finish thumbnailing - unref");
         this.unref ();
-//message ("ref count %u", this.ref_count);
         return null;
     }
 
@@ -672,9 +667,7 @@ public class GOF.Directory.Async : Object {
         try {
             icon_size = size;
             thumbs_stop = false;
-//message ("thumbnailing - add ref");
             this.ref ();
-//message ("ref count %u", this.ref_count);
             new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
         } catch (Error e) {
             critical ("Could not start loading thumbnails: %s", e.message);
@@ -693,18 +686,14 @@ public class GOF.Directory.Async : Object {
     }
 
     public void queue_load_thumbnails (int size) {
-//message ("queue_load_thumbnails");
         if (this.state == State.LOADING)
-{
-//message ("Loading - returning");
             return;
-}
 
         /* Do not interrupt loading thumbs at same size for this folder */
         if ((icon_size == size) && thumbs_thread_running)
             return;
 
-//message ("Async  setting icon_size to %i", size);
+//message ("queue_load_thumbnails");
         icon_size = size;
         thumbs_stop = true;
 

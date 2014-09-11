@@ -24,7 +24,7 @@ namespace Marlin.View {
         private int preferred_column_width;
 
         protected bool updates_frozen = false;
-        protected bool is_active = true;
+        public bool is_active {get; protected set;}
 
         private FM.DirectoryView? dir_view = null;
         public unowned Marlin.View.Window window {
@@ -51,6 +51,7 @@ namespace Marlin.View {
             base.init ();
             ctab = _ctab;
             mode = _mode;
+            is_active = true;
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
             set_up_directory (_location);
@@ -66,16 +67,16 @@ namespace Marlin.View {
         private void connect_slot_signals () {
 //message ("connect slot signals");
             active.connect (() => {
-//message ("Slot active");
-                this.dir_view.grab_focus ();
+//message ("Slot %s active", location.get_uri ());
                 ctab.refresh_slot_info (directory.location);
-                this.is_active = true;
+                is_active = true;
+                dir_view.grab_focus ();
             });
 
             inactive.connect (() => {
-//message ("Slot inactive");
-                this.is_active = false;
-                this.dir_view.unselect_all ();
+//message ("Slot %s inactive", location.get_uri ());
+                is_active = false;
+                dir_view.unselect_all ();
             });
         }
 
@@ -234,14 +235,18 @@ namespace Marlin.View {
             return this as GOF.AbstractSlot;
         }
 
-        public unowned Gtk.Widget get_directory_view () {
+        public unowned FM.DirectoryView? get_directory_view () {
             return dir_view;
         }
 
+        public override void grab_focus () {
+//message ("SLot grab focus");
+            dir_view.grab_focus ();
+        }
         public override void zoom_in () {dir_view.zoom_in ();}
         public override void zoom_out () {dir_view.zoom_out ();}
         public override void zoom_normal () {dir_view.zoom_normal ();}
-        public override void grab_focus () {dir_view.grab_focus ();}
+
         public override void reload () {dir_view.reload ();}
 
     }

@@ -53,7 +53,7 @@ namespace Marlin.View {
             content_box.show_all ();
 
             this.colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
-            this.colpane.key_release_event.connect (on_key_pressed);
+            this.colpane.key_release_event.connect (on_key_released);
             this.make_view ();
         }
 
@@ -73,7 +73,6 @@ namespace Marlin.View {
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             this.total_width += new_slot.width;
-//message ("total width now %i", total_width);
             this.colpane.set_size_request (total_width, -1);
             nest_slot_in_host_slot (new_slot, host);
             new_slot.directory.load ();
@@ -92,9 +91,7 @@ namespace Marlin.View {
             slot.colpane = box1;
             slot.colpane.set_size_request (slot.width, -1);
 
-            unowned Gtk.Widget column = slot.get_directory_view ();
-           // column.size_allocate.connect ((a) => {update_total_width (a, slot.width);});
-
+            unowned Gtk.Widget column = slot.get_directory_view () as Gtk.Widget;
             hpane1.pack1 (column, false, false);
             hpane1.pack2 (box1, true, true);
             hpane1.show_all ();
@@ -227,8 +224,8 @@ namespace Marlin.View {
             }
         }
 
-        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
-//message ("Miller key press");
+        private bool on_key_released (Gtk.Widget box, Gdk.EventKey event) {
+//message ("Miller key release");
             int current_position = slot_list.index (current_slot);
             Marlin.View.Slot to_activate = null;
 
@@ -240,14 +237,31 @@ namespace Marlin.View {
                     break;
 
                 case Gdk.Key.Right:
+                    if (current_slot.get_selected_files () == null)
+                        return true;
+
+                    GOF.File? selected_file = current_slot.get_selected_files ().data;
+                    if (selected_file == null)
+                        return true;
+
+                    GLib.File current_location = selected_file.location;
+                    GLib.File? next_location = null; 
                     if (current_position < slot_list.length () - 1)
+                        next_location = slot_list.nth_data (current_position + 1).location;
+
+                    if (next_location != null && next_location == current_location) {
                         to_activate = slot_list.nth_data (current_position + 1);
+                    } else if (selected_file.is_folder ()) {
+                        add_location (current_location, current_slot);
+                        return true;
+                    }
 
                     break;
             }
 
             if (to_activate != null) {
                 to_activate.active ();
+                to_activate.select_first_for_empty_selection ();
                 return true;
             } else
                 return false;
@@ -257,9 +271,9 @@ namespace Marlin.View {
             /* Ensure all slots synchronise the frozen state and suppress key press event processing when frozen*/
 //message ("on_slot_frozen_changed");
             if (frozen)
-                this.colpane.key_release_event.disconnect (on_key_pressed);
+                this.colpane.key_release_event.disconnect (on_key_released);
             else
-                this.colpane.key_release_event.connect (on_key_pressed);
+                this.colpane.key_release_event.connect (on_key_released);
 
             slot_list.@foreach ((abstract_slot) => {
                 var s = abstract_slot as Marlin.View.Slot;

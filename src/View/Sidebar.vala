@@ -1057,12 +1057,7 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-//                    Marlin.View.Slot? slot = window.get_active_slot ();
-//                    if (slot != null)
-//                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location, null);
-                        //GLib.Signal.emit_by_name (window.current_tab, "path-changed", location, null);
-//message ("Sidebar open selected");
-                    window.current_tab.user_path_change_request (location);
+                    window.file_path_change_request (location);
                 }
             } else if (!ejecting_or_unmounting) {
                 Drive drive;
@@ -1085,7 +1080,7 @@ namespace Marlin.Places {
         private void mount_volume (Volume volume, Gtk.MountOperation mount_op, Marlin.OpenFlag flags) {
             mounting = true;
             //go_to_after_mount_flags = flags;
-            Marlin.View.ViewContainer? ctab = window.current_tab;
+            //Marlin.View.ViewContainer? ctab = window.current_tab;
             volume.mount.begin (GLib.MountMountFlags.NONE,
                                 mount_op,
                                 null,
@@ -1094,7 +1089,7 @@ namespace Marlin.Places {
                     mounting = false;
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
-                    if (mount != null && ctab != null) {
+                    if (mount != null) {
                         var location = mount.get_default_location ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
@@ -1102,7 +1097,7 @@ namespace Marlin.Places {
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            ctab.user_path_change_request (location);
+                            window.file_path_change_request (location);
                         }
                     }
                 }
@@ -1129,6 +1124,7 @@ namespace Marlin.Places {
         }
 
         private void rename_selected_bookmark () {
+//message ("rename selected bookmark");
             Gtk.TreeIter iter;
             if (!get_selected_iter ( out iter))
                 return;

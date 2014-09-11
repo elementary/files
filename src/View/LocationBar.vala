@@ -101,7 +101,6 @@ namespace Marlin.View.Chrome
         public SearchResults search_results { get; private set; }
 
         Gtk.Menu menu;
-        //private Gtk.Builder ui;
 
         /* Used for auto-copmpletion */
         GOF.Directory.Async files;
@@ -209,7 +208,7 @@ namespace Marlin.View.Chrome
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
                     
-                win.current_tab.up ();
+                win.go_up ();
                 grab_focus ();
             });
 

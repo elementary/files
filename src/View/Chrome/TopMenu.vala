@@ -45,20 +45,9 @@ namespace Marlin.View.Chrome
 
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
             button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
-
-//            win.button_back.tooltip_text = _("Previous");
-//            win.button_back.show_all ();
-//            pack_start (win.button_back);
-
-
-//            win.button_forward.tooltip_text = _("Next");
-//            win.button_forward.show_all ();
-//            pack_start (win.button_forward);
-
             button_back.tooltip_text = _("Previous");
             button_back.show_all ();
             pack_start (button_back);
-
 
             button_forward.tooltip_text = _("Next");
             button_forward.show_all ();
@@ -66,12 +55,10 @@ namespace Marlin.View.Chrome
 
 
             button_forward.slow_press.connect (() => {
-                //current_tab.forward ();
                 forward (1);
             });
 
             button_back.slow_press.connect (() => {
-                //current_tab.back ();
                 back (1);
             });
 
@@ -82,20 +69,6 @@ namespace Marlin.View.Chrome
             pack_start (view_switcher);
 
             location_bar = new LocationBar (win);
-
-            /* init the path if we got a curent tab with a valid slot
-               and a valid directory loaded */
-            if (win.current_tab != null &&
-                //win.current_tab.slot != null
-                win.current_tab.view != null
-                //&& win.current_tab.slot.directory != null) {
-                && win.current_tab.view.directory != null) {
-                /** TODO should not need to know deep details of other widgets*/
-                //location_bar.path = win.current_tab.slot.directory.location.get_parse_name ();
-                location_bar.path = win.current_tab.location.get_parse_name ();
-                //debug ("topmenu test path %s", location_bar.path);
-            }
-
             location_bar.escape.connect (win.grab_focus);
             location_bar.activate.connect (win.file_path_change_request);
             location_bar.activate_alternate.connect ((file) => {
