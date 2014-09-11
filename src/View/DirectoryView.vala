@@ -265,8 +265,8 @@ namespace FM {
         }
 
         public void select_first_for_empty_selection () {
-//message ("select first for empty selection");
             if (selected_files == null) {
+//message ("select first for empty selection");
                 set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
             }
         }
@@ -274,27 +274,18 @@ namespace FM {
         public void select_glib_files (GLib.List<GLib.File> location_list) {
 //message ("select glib files");
             updates_frozen = true;
-            int i = 1;
+            unselect_all ();
             location_list.@foreach ((location) => {
                 var iter = Gtk.TreeIter ();
                 GOF.File file = GOF.File.@get (location);
                 if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
                     if (path != null) {
-                        if (i==1)
-                            set_cursor (path, false, true, true);
-
-//message ("selecting path");
+                        scroll_to_cell (path, null, false);
                         select_path (path);
-                        i++;
-                    } else {
-//message ("path is null");
-                    }
-                } else {
-//message ("Glib file not found in model");
-                }
+                    } 
+                } 
             });
-//message ("%i selectged", i-1);
             updates_frozen = false;
             update_selected_files ();
             notify_selection_changed ();

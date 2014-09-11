@@ -54,14 +54,15 @@ namespace GOF {
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);
         protected abstract void make_view ();
+        public abstract void select_first_for_empty_selection ();
+        public abstract void select_glib_files (GLib.List<GLib.File> locations);
 
         public virtual void zoom_out () {}
         public virtual void zoom_in () {}
         public virtual void zoom_normal () {}
         public virtual bool set_all_selected (bool all_selected) {return false;}
         public virtual Gtk.Widget get_content_box () {return content_box as Gtk.Widget;}
-        public virtual void select_first_for_empty_selection () {}
-        public virtual void select_glib_files (GLib.List<GLib.File> locations) {}
+
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
     }

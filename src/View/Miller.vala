@@ -349,6 +349,14 @@ namespace Marlin.View {
             return root_location.get_uri ();
         }
 
+        public override void select_glib_files (GLib.List<GLib.File> files) {
+            current_slot.select_glib_files (files);
+        }
+
+        public override void select_first_for_empty_selection () {
+            current_slot.select_first_for_empty_selection ();
+        }
+
         public override void zoom_in () {((Marlin.View.Slot)(current_slot)).zoom_in ();}
         public override void zoom_out () {((Marlin.View.Slot)(current_slot)).zoom_out ();}
         public override void zoom_normal () {((Marlin.View.Slot)(current_slot)).zoom_normal ();}

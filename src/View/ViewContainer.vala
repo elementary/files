@@ -217,7 +217,6 @@ namespace Marlin.View {
             browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
         }
 
-        /* Handle nonexistent, non-directory, and unpermitted location */
         public void directory_done_loading (GOF.AbstractSlot slot) {
 //message ("directory done loading");
             FileInfo file_info;
@@ -248,6 +247,7 @@ namespace Marlin.View {
         }
 
         private void store_selection () {
+//message ("Storing selection");
             unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
             selected_locations = null;
             if (selected_files.length () >= 1) {
@@ -263,7 +263,7 @@ namespace Marlin.View {
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {
-debug ("VC get current slot");
+//debug ("VC get current slot");
            return view.get_current_slot ();
         }
 
