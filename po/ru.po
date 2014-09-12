@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-08-29 21:02+0000\n"
+"PO-Revision-Date: 2014-09-11 16:04+0000\n"
 "Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-30 07:23+0000\n"
-"X-Generator: Launchpad (build 17176)\n"
+"X-Launchpad-Export-Date: 2014-09-12 06:47+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -53,7 +53,7 @@ msgstr "Источник XDS предоставил некорректное и�
 #: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Не удалось создать ссылку на адрес \"%s\""
+msgstr "Не удалось создать ссылку на адрес «%s»"
 
 #: ../src/fm-directory-view.c:1844
 #, c-format
@@ -66,7 +66,7 @@ msgstr[2] "Использовать приложение «%s» для откр�
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr "Использовать \"%s\" как шаблон для новых файлов"
+msgstr "Использовать «%s» как шаблон для новых файлов"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -142,7 +142,7 @@ msgstr "Создать новую _папку"
 
 #: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
-msgstr "Создать новую пустую папку внутри этой папки"
+msgstr "Создать новую папку в этой папке"
 
 #: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
@@ -154,7 +154,7 @@ msgstr "_Пустой файл"
 
 #: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
-msgstr "Создать новый пустой файл внутри этой папки"
+msgstr "Создать новый файл в этой папке"
 
 #: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
@@ -369,7 +369,7 @@ msgstr "Р_есурс:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr "_Каталог:"
+msgstr "_Папка:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
@@ -426,7 +426,7 @@ msgstr "Буфер обмена пуст"
 
 #: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
-msgstr "Список папок в виде значков"
+msgstr "Список каталогов в виде значков"
 
 #: ../src/fm-icon-view.c:101
 msgid "Icon view"
@@ -511,7 +511,7 @@ msgstr "Файлы верхнего уровня нельзя переимено
 #: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Совместить папку \"%s\"?"
+msgstr "Совместить папку «%s»?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:373
@@ -526,36 +526,36 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Более старая папка с таким именем уже существует в \"%s\"."
+msgstr "Более старая папка с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Более новая папка с таким именем уже существует в \"%s\"."
+msgstr "Более новая папка с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Папка с таким именем уже существует в \"%s\"."
+msgstr "Другая папка с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
-msgstr "При замене все файлы в папке будут удалены."
+msgstr "При замене будут все файлы в папке удалены."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Заменить папку \"%s\"?"
+msgstr "Заменить папку «%s»?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Папка с таким именем уже существует в \"%s\"."
+msgstr "Папка с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:400
@@ -1230,7 +1230,7 @@ msgstr "Произошла ошибка при копировании «%B»."
 #: ../libcore/marlin-file-operations.c:3819
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Невозможно удалить файлы из уже существующей папки %F."
+msgstr "Не удалось удалить файлы из уже существующей папки %F."
 
 #: ../libcore/marlin-file-operations.c:3860
 #, c-format
@@ -1343,7 +1343,7 @@ msgstr "новый файл"
 
 #: ../libcore/marlin-file-operations.c:6229
 msgid "Error while creating directory %B."
-msgstr "Произошла ошибка при создании папки %B."
+msgstr "Произошла ошибка при создании каталога %B."
 
 #: ../libcore/marlin-file-operations.c:6231
 msgid "Error while creating file %B."
@@ -1352,7 +1352,7 @@ msgstr "Произошла ошибка при создании файла %B."
 #: ../libcore/marlin-file-operations.c:6233
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Произошла ошибка при создании папки в %F."
+msgstr "Произошла ошибка при создании каталога в %F."
 
 #: ../libcore/marlin-file-operations.c:6543
 msgid "Emptying the trash"
@@ -1806,7 +1806,7 @@ msgstr "Файловая система"
 
 #: ../src/View/ViewContainer.vala:149
 msgid "This folder does not exist"
-msgstr "Такой папки не существует"
+msgstr "Эта папка не существует"
 
 #: ../src/View/ViewContainer.vala:154
 msgid "(as Administrator)"
@@ -1818,7 +1818,7 @@ msgstr "Это принадлежит не Вам."
 
 #: ../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr "У Вас недостаточно прав для просмотра этой папки."
+msgstr "У вас нет прав для просмотра этой папки."
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
@@ -1998,11 +1998,11 @@ msgstr "Выберите приложение для открытия "
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr "Такой папки не существует."
+msgstr "Эта папка не существует."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr "Невозможно найти папку \"%s\"."
+msgstr "Папка «%s» не найдена."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -2010,7 +2010,7 @@ msgstr "Создать"
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr "Создать папку \"%s\""
+msgstr "Создать папку «%s»"
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -2148,7 +2148,7 @@ msgstr "_Домашняя папка"
 
 #: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
 msgid "Open your personal folder"
-msgstr "Открыть домашнюю папку"
+msgstr "Открыть вашу личную папку"
 
 #: ../src/View/Window.vala:791
 msgid "_Trash"
@@ -2156,7 +2156,7 @@ msgstr "_Корзина"
 
 #: ../src/View/Window.vala:792
 msgid "Open your personal trash folder"
-msgstr "Открыть вашу личную мусорную корзину"
+msgstr "Открыть вашу личную корзину"
 
 #: ../src/View/Window.vala:795
 msgid "_Network"
