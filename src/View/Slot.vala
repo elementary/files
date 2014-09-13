@@ -33,6 +33,7 @@ namespace Marlin.View {
 
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
         public string loading_message = "<span size='x-large'>" + _("Loading ...") + "</span>";
+        public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze); 
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
@@ -126,6 +127,8 @@ namespace Marlin.View {
 
             if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
+            else if (directory.permission_denied)
+                layout.set_markup (denied_message, -1);
             else
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
 
@@ -153,11 +156,10 @@ namespace Marlin.View {
                 var old_dir = directory;
                 set_up_directory (loc);
                 dir_view.change_directory (old_dir, directory);
-
+                /* View Container takes care of updating appearance */
             } else
-                assert_not_reached ();
+                reload ();
 
-            /* View Container takes care of updating appearance */
             ctab.slot_path_changed (loc);
         }
 

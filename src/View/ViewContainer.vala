@@ -33,14 +33,17 @@ namespace Marlin.View {
         public GOF.AbstractSlot? view = null;
         Browser browser;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
-        public GLib.File location {
+        public GLib.File? location {
             get {
-                return get_current_slot ().location;
+//message ("VC get location");
+                var slot = get_current_slot ();
+                return slot != null ? slot.location : null;
             }
         }
         public string uri {
             get {
-                return get_current_slot ().uri;
+                var slot = get_current_slot ();
+                return slot != null ? slot.uri : null;
             }
         }
         public OverlayBar overlay_statusbar;
@@ -118,21 +121,28 @@ namespace Marlin.View {
 //message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
             if (mode != view_mode) {
 
-                if (loc == null)  /* Only untrue on container creation */
+                if (loc == null) { /* Only untrue on container creation */
+//message ("VC change view mode - loc is null");
                     loc = this.location;
+                }
 
-                if (view != null)
+                if (view != null) {
                     store_selection ();
-
+                }
+//message ("VC change view mode - before create view");
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
                 else
                     view = new Slot (loc, this, mode);
 
+//message ("VC change view mode - after create view");
+
                 queue_draw ();
                 set_up_current_slot ();
-                update_view_container (mode);
+                overlay_statusbar.showbar = true;
+                view_mode = mode;
             }
+//message ("VC leaving change view mode");
         }
 
         public void user_path_change_request (GLib.File loc) {
@@ -255,11 +265,6 @@ namespace Marlin.View {
                     selected_locations.prepend (GLib.File.new_for_uri (file.uri));
                 });
             }
-        }
-
-        private void update_view_container (Marlin.ViewMode mode) {
-            overlay_statusbar.showbar = true;
-            view_mode = mode;
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {

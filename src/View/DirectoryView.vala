@@ -2083,14 +2083,16 @@ namespace FM {
 
        
         public virtual bool on_view_draw (Cairo.Context cr) {
-//message ("DV on view draw, tree is loading %s", is_loading ? "true" : "false");
+//message ("DV on view draw, tree is loading %s, empty is %s", is_loading ? "true" : "false", slot.directory.is_empty () ? "true" : "false");
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
-            if (slot.directory.is_empty () || is_loading) {
+            if (is_loading || slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
                 if (slot.directory.is_empty ())
                     layout.set_markup (slot.empty_message, -1);
-                else
+                else if (slot.directory.permission_denied) {
+                    layout.set_markup (slot.denied_message, -1);
+                } else 
                     layout.set_markup (slot.loading_message, -1);
 
                 Pango.Rectangle? extents = null;
@@ -2184,7 +2186,7 @@ namespace FM {
         }
 
         private void toggle_selected_path (Gtk.TreePath path) {
-message ("Toggle selected");
+//message ("Toggle selected");
             if (path_is_selected (path))
                 unselect_path (path);
             else

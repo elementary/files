@@ -216,9 +216,11 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col,  bool scroll_to_top) {
-//message ("IV scroll to cell");
-            if (tree != null)
-                tree.scroll_to_path (path, scroll_to_top, 0.0f, 0.0f);
+message ("IV scroll to cell");
+            if (tree == null || path == null || slot.directory.permission_denied)
+                return;
+
+            tree.scroll_to_path (path, scroll_to_top, 0.0f, 0.0f);
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top) {
             scroll_to_cell(path, name_column, scroll_to_top);

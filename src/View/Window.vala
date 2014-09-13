@@ -297,6 +297,7 @@ namespace Marlin.View {
         }
 
         public GOF.AbstractSlot? get_active_slot() {
+//message ("get_active_slot");
             if (current_tab != null)
                 return current_tab.get_current_slot ();
             else
