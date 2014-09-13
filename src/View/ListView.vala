@@ -44,7 +44,6 @@ namespace FM {
 //message ("LV connect tree_signals");
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
-            model.sort_column_changed.connect (on_sort_column_changed);
         }
 
         private void append_extra_tree_columns () {
@@ -59,7 +58,7 @@ namespace FM {
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                       renderer,
                                                                       "text", k,
-                                                                      "background", FM.ListModel.ColumnID.COLOR);
+                                                                      "background", FM.ListModel.ColumnID.COLOR);       
                     col.set_sort_column_id (k);
                     col.set_resizable (true);
                     tree.append_column (col);
@@ -102,37 +101,6 @@ namespace FM {
             });
         }
 
-        private void on_sort_column_changed () {
-//message ("on_sort_column_changed");
-            int sort_column_id;
-            Gtk.SortType sort_order;
-            if (!model.get_sort_column_id (out sort_column_id, out sort_order))
-                return;
-
-            var info = new GLib.FileInfo ();
-            info.set_attribute_string ("metadata::marlin-sort-column-id",
-                                       get_string_from_column_id (sort_column_id));
-            info.set_attribute_string ("metadata::marlin-sort-reversed",
-                                       (sort_order == Gtk.SortType.DESCENDING ? "true" : "false"));
-
-            var dir = slot.directory;
-            dir.file.sort_column_id = sort_column_id;
-            dir.file.sort_order = sort_order;
-
-            dir.location.set_attributes_async.begin (info,
-                                               GLib.FileQueryInfoFlags.NONE,
-                                               GLib.Priority.DEFAULT,
-                                               null,
-                                               (obj, res) => {
-                try {
-                    GLib.FileInfo inf;
-                    dir.location.set_attributes_async.end (res, out inf); 
-                } catch (GLib.Error e) {
-                    warning ("Could not set file attributes - %s", e.message);
-                }
-            });
-
-        }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
 //message ("LV on view key_press_event");
@@ -160,22 +128,6 @@ namespace FM {
                 }
             }
             return base.on_view_key_press_event (event);
-        }
-
-        private string get_string_from_column_id (int id) {
-            switch (id) {
-            case FM.ListModel.ColumnID.FILENAME:
-                return "name";
-            case FM.ListModel.ColumnID.SIZE:
-                return "size";
-            case FM.ListModel.ColumnID.TYPE:
-                return "type";
-            case FM.ListModel.ColumnID.MODIFIED:
-                return "modified";
-            default:
-                warning ("column id not recognised - using 'name'");
-                return "name";
-            }
         }
 
 /** Override parents abstract and virtual methods as required*/

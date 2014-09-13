@@ -63,7 +63,9 @@ namespace FM {
 
         const GLib.ActionEntry [] background_entries = {
             {"new", on_background_action_new, "s"},
-            {"create_from", on_background_action_create_from, "s"}
+            {"create_from", on_background_action_create_from, "s"},
+            {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
+            {"reverse", on_background_action_reverse_changed, null, "false"},
         };
 
         GLib.SimpleActionGroup background_actions;
@@ -236,6 +238,9 @@ namespace FM {
 
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect_after (after_restore_selection);
+
+            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            model.sort_column_changed.connect (on_sort_column_changed);
         }
 
         private void set_up__menu_actions () {
@@ -854,6 +859,33 @@ namespace FM {
             create_from_template (templates.nth_data ((uint)index));
         }
 
+        private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
+            string sort = val.get_string ();
+            set_sort (sort, false);
+        }
+        private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
+            set_sort (null, true);
+        }
+
+        private void set_sort (string? col_name, bool reverse) {
+//message ("set sort");
+            int sort_column_id;
+            Gtk.SortType sort_order;
+            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+                if (col_name != null)
+                    sort_column_id = get_column_id_from_string (col_name);
+
+                if (reverse) {
+                    if (sort_order == Gtk.SortType.ASCENDING)
+                        sort_order = Gtk.SortType.DESCENDING;
+                    else
+                        sort_order = Gtk.SortType.ASCENDING;
+                }
+                    
+                model.set_sort_column_id (sort_column_id, sort_order);
+            }
+        }
+
         /** Common actions */
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1469,6 +1501,7 @@ namespace FM {
             if (template_submenu != null)
                 menu.append_submenu (_("Create new"), template_submenu);
 
+            menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
         }
@@ -1555,6 +1588,7 @@ namespace FM {
             bool more_than_one_selected = (selection_count > 1);
             bool single_folder = true; /* background is a folder */
             bool only_folders = selection_only_contains_folders (selection);
+
             if (selection_count > 0) {
                 unowned GOF.File? file = selection.data;
                 if (file != null) {
@@ -1566,10 +1600,23 @@ namespace FM {
 
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
+            update_menu_actions_sort ();
+
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
+        }
+
+        private void update_menu_actions_sort () {
+            int sort_column_id;
+            Gtk.SortType sort_order;
+            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+                GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
+                action_set_state (background_actions, "sort_by", val);
+                val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
+                action_set_state (background_actions, "reverse", val);
+            }
         }
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
@@ -1601,6 +1648,17 @@ namespace FM {
                 }
             }
             critical ("Action name not found: %s - cannot enable", name); 
+        }
+        private void action_set_state (GLib.SimpleActionGroup? action_group, string name, GLib.Variant val) {
+            if (action_group != null) {
+                GLib.SimpleAction? action = (action_group.lookup_action (name) as GLib.SimpleAction);
+                if (action != null) {
+//message ("action set state name %s, type %s", name, val.get_type_string ());
+                    action.set_state (val);
+                    return;
+                }
+            }
+            critical ("Action name not found: %s - cannot set state", name); 
         }
 
         private void load_templates_from_folder (GLib.File template_folder) {
@@ -2080,17 +2138,18 @@ namespace FM {
             get_event_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
 
+            if (!no_mods)
+                return false;
+
+            if (!on_helper) {
+                unselect_all ();
+                if (path != null)
+                    select_path (path);
+            }
+
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (!no_mods)
-                        return false;
-
-                    if (!on_helper) {
-                        unselect_all ();
-                        if (path != null)
-                            select_path (path);
-                    }
                     if (on_blank)
                         block_drag_and_drop ();  /* allow rubber banding */
                     else if (on_helper)
@@ -2172,6 +2231,70 @@ message ("Toggle selected");
                 Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
                 editable_widget.select_region (start_offset, end_offset);
             }
+        }
+
+        protected string get_string_from_column_id (int id) {
+            switch (id) {
+            case FM.ListModel.ColumnID.FILENAME:
+                return "name";
+            case FM.ListModel.ColumnID.SIZE:
+                return "size";
+            case FM.ListModel.ColumnID.TYPE:
+                return "type";
+            case FM.ListModel.ColumnID.MODIFIED:
+                return "modified";
+            default:
+                warning ("column id not recognised - using 'name'");
+                return "name";
+            }
+        }
+        protected int get_column_id_from_string (string col_name) {
+            switch (col_name) {
+            case "name":
+                return FM.ListModel.ColumnID.FILENAME;
+            case "size":
+                return FM.ListModel.ColumnID.SIZE;
+            case "type":
+                return FM.ListModel.ColumnID.TYPE;
+            case "modified":
+                return FM.ListModel.ColumnID.MODIFIED;
+            default:
+                warning ("column name not recognised - using FILENAME");
+                return FM.ListModel.ColumnID.FILENAME;
+            }
+        }
+
+        protected void on_sort_column_changed () {
+//message ("on_sort_column_changed");
+            int sort_column_id;
+            Gtk.SortType sort_order;
+            if (!model.get_sort_column_id (out sort_column_id, out sort_order))
+                return;
+
+            var info = new GLib.FileInfo ();
+            info.set_attribute_string ("metadata::marlin-sort-column-id",
+                                       get_string_from_column_id (sort_column_id));
+            info.set_attribute_string ("metadata::marlin-sort-reversed",
+                                       (sort_order == Gtk.SortType.DESCENDING ? "true" : "false"));
+
+            var dir = slot.directory;
+            dir.file.sort_column_id = sort_column_id;
+            dir.file.sort_order = sort_order;
+
+            dir.location.set_attributes_async.begin (info,
+                                               GLib.FileQueryInfoFlags.NONE,
+                                               GLib.Priority.DEFAULT,
+                                               null,
+                                               (obj, res) => {
+                try {
+                    GLib.FileInfo inf;
+                    dir.location.set_attributes_async.end (res, out inf); 
+                } catch (GLib.Error e) {
+                    warning ("Could not set file attributes - %s", e.message);
+                }
+            });
+
+            update_menu_actions_sort ();
         }
 
 /** Virtual methods - may be overridden*/
