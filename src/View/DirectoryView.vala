@@ -1879,7 +1879,7 @@ namespace FM {
                     var upper = adj.get_upper ();
                     var page = adj.get_page_size ();
 
-                    val = (val + band).clamp (lower, upper - page);
+                    val = (val + 2 * offset).clamp (lower, upper - page);
                     adj.set_value (val);
                 }
         }
