@@ -68,8 +68,9 @@ namespace FM {
 /** Override parent's abstract and virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("CV setup zoom_level");
+            var zoom = Preferences.marlin_column_view_settings.get_enum ("zoom-level");
             Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
-            return (Marlin.ZoomLevel)(Preferences.marlin_column_view_settings.get_enum ("zoom-level"));
+            return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {
@@ -77,6 +78,7 @@ namespace FM {
             Preferences.marlin_column_view_settings.set_enum ("zoom-level", zoom);
             return (Marlin.ZoomLevel)zoom;
         }
+
         protected override Gtk.Widget? create_view () {
 //message ("CV create view");
             model.set_property ("has-child", false);
@@ -94,8 +96,8 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
-//message ("CV handle left button");
-            bool result = false;
+message ("CV handle left button"); 
+            bool result = false; /* returning false allows drag initiation but also unselects other rows */
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click)
@@ -126,6 +128,11 @@ namespace FM {
         protected override bool handle_default_button_click () {
             cancel_await_double_click ();
             return false;
+        }
+
+        protected override void zoom_level_changed () {
+            base.zoom_level_changed ();
+            slot.autosize_slot ();
         }
     }
 }

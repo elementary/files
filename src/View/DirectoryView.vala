@@ -200,11 +200,15 @@ namespace FM {
             /* Allow time for "Loading ... " to be displayed for large folders
              * otherwise there can be significant delay in showing the application window on start up*/
             GLib.Timeout.add (100, () => {slot.directory.load (); return false;});
+            zoom_level_changed (); /* set icon_renderer properties */
             queue_draw ();
         }
 
         ~DirectoryView () {
 //message ("DV  destructor");
+            loaded_subdirectories.@foreach ((dir) => {
+                remove_subdirectory (dir);
+            });
         }
 
         private void set_up_directory_view () {
@@ -273,6 +277,7 @@ namespace FM {
         }
 
         public void zoom_normal () {
+//message ("zoom normal");
             zoom_level = get_normal_zoom_level (); /* Abstract */
         }
 
@@ -2140,25 +2145,25 @@ namespace FM {
             bool on_blank, on_icon, on_helper, on_name;
             get_event_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
+            bool path_selected = (path != null ? path_is_selected (path) : false);
 
             if (!no_mods)
                 return false;
 
-            if (!on_helper) {
-                unselect_all ();
-                if (path != null)
-                    select_path (path);
-            }
+            if (path != null && !path_selected)
+                select_path (path);
 
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (on_blank)
+                    if (on_blank) {
+                        select_one_path (path);
                         block_drag_and_drop ();  /* allow rubber banding */
-                    else if (on_helper)
-                        toggle_selected_path (path);
-                    else  if (on_name)
-                        rename_file (selected_files.data);
+                    } else if (on_helper) {
+                        if (path_selected) /* unselected paths will already have been selected */
+                            unselect_path (path);
+                    } else  if (on_name)
+                        rename_file (selected_files.data); /* TODO Is this desirable? */
                     else if (Preferences.settings.get_boolean ("single-click") && no_mods)
                             result = handle_primary_button_single_click_mode (event, path, on_icon);
                     else
@@ -2186,11 +2191,9 @@ namespace FM {
             return result;
         }
 
-        private void toggle_selected_path (Gtk.TreePath path) {
-//message ("Toggle selected");
-            if (path_is_selected (path))
-                unselect_path (path);
-            else
+        private void select_one_path (Gtk.TreePath? path) {
+            unselect_all ();
+            if (path != null)
                 select_path (path);
         }
 
@@ -2205,7 +2208,7 @@ namespace FM {
         public virtual void zoom_level_changed () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
-            icon_renderer.set_property ("selection-helpers", zoom_level >= Marlin.ZoomLevel.SMALLER);
+            icon_renderer.set_property ("selection-helpers", zoom_level >= Marlin.ZoomLevel.NORMAL); /* TODO What is suitable minimum size? */
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {

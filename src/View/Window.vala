@@ -343,7 +343,6 @@ namespace Marlin.View {
             });
 
             content.loading.connect ((is_loading) => {
-message ("tab working is %s", tab.working ? "True" : "false");
                 tab.working = is_loading;
                 if (is_loading)
                     tab.label = _("Loading ...");

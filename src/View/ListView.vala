@@ -145,8 +145,9 @@ namespace FM {
 
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
 //message ("LV setup zoom_level");
+            var zoom = Preferences.marlin_list_view_settings.get_enum ("zoom-level");
             Preferences.marlin_list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
-            return (Marlin.ZoomLevel)(Preferences.marlin_list_view_settings.get_enum ("zoom-level"));
+            return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {

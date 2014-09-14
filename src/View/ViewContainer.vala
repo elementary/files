@@ -225,7 +225,7 @@ namespace Marlin.View {
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-message ("directory done loading");
+//message ("directory done loading");
             FileInfo file_info;
 
             loading (false);

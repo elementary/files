@@ -69,6 +69,7 @@ namespace FM {
             tree.key_press_event.connect (on_view_key_press_event);
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
+                tree.columns_autosize ();
             });
         }
 
