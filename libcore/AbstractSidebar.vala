@@ -100,7 +100,7 @@ namespace Marlin {
             store.get_iter (out iter, network_category_reference.get_path ());
             iter = add_place (PlaceType.PLUGIN_ITEM,
                              iter,
-                             _("Connect server"),
+                             _("Connect to server"),
                              icon,
                              null,
                              null,

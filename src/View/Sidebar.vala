@@ -129,7 +129,7 @@ namespace Marlin.Places {
             construct_tree_view ();
             configure_tree_view ();
             connect_tree_view_signals ();
-            this.content_box.add (this.tree_view);
+            this.content_box.pack_start (this.tree_view, true);
 
             this.bookmarks = Marlin.BookmarkList.get_instance ();
             bookmarks.contents_changed.connect (update_places);
