@@ -947,6 +947,10 @@ namespace Marlin.Places {
                 bookmarks.insert_uris (uris, position);
         }
 
+        public void add_uri (string uri) {
+            bookmarks.insert_uri_at_end (uri);
+        }
+
         private  bool drag_scroll_timer () {
             Gtk.Adjustment adjustment;
             double val;

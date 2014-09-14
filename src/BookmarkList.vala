@@ -88,6 +88,12 @@ namespace Marlin {
             save_bookmarks_file ();
         }
 
+        public void insert_uri_at_end (string uri) {
+//message ("insert uri at end %s", uri);
+            append_internal (new Bookmark.from_uri (uri, null));
+            save_bookmarks_file ();
+        }
+
         public void insert_uris (GLib.List<string> uris, uint index) {
             uris.@foreach ((uri) => {
                 insert_item_internal (new Bookmark.from_uri (uri, null), index);

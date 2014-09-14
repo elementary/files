@@ -78,6 +78,15 @@
         </section>
     </menu>
 
+    <menu id='bookmark'>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Bookmark</attribute>
+                <attribute name='action'>common.bookmark</attribute>
+            </item>
+        </section>
+    </menu>
+
     <menu id='clipboard'>
         <section>
             <item>

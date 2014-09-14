@@ -74,6 +74,7 @@ namespace FM {
             {"copy", on_common_action_copy},
             {"paste_into", on_common_action_paste_into},
             {"open_in", on_common_action_open_in, "s"},
+            {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties}
         };
 
@@ -843,6 +844,15 @@ namespace FM {
             }
         }
 
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+//message ("on selection bookmark");
+            if (selected_files != null)
+                window.sidebar.add_uri (selected_files.data.uri);
+            else
+                window.sidebar.add_uri (slot.directory.file.uri);
+        }
+
+
                 /** Background actions */
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1470,7 +1480,6 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
-                //plugins.hook_context_menu (menu as Gtk.Widget, selected_files);
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
                 Eel.pop_up_context_menu (menu, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, (Gdk.EventButton) event);
@@ -1486,9 +1495,11 @@ namespace FM {
                 menu = builder.get_object ("popup-selection") as GLib.Menu;
                 menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
                 menu.append_section (null, build_menu_open ());
-                if (common_actions.get_action_enabled ("open_in")) {
+                if (common_actions.get_action_enabled ("open_in"))
                     menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-                }
+
+                if (common_actions.get_action_enabled ("bookmark"))
+                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
             }
             menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
@@ -1508,6 +1519,10 @@ namespace FM {
                 menu.append_submenu (_("Create new"), template_submenu);
 
             menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+
+            if (common_actions.get_action_enabled ("bookmark"))
+                menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+
             menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
         }
@@ -1612,6 +1627,7 @@ namespace FM {
             action_set_enabled (selection_actions, "rename", selection_count == 1);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
+            action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
         private void update_menu_actions_sort () {
@@ -2150,8 +2166,10 @@ namespace FM {
             if (!no_mods)
                 return false;
 
-            if (path != null && !path_selected)
+            if (path != null && !path_selected) {
+                unselect_all ();
                 select_path (path);
+            }
 
             bool result = true;
             switch (event.button) {
