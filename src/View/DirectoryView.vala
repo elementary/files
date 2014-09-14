@@ -101,7 +101,7 @@ namespace FM {
         uint drag_timer_id = 0;
         int drag_x = 0;
         int drag_y = 0;
-        int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
+        protected int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
         GOF.File? drop_target_file = null;
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -974,7 +974,8 @@ namespace FM {
             thaw_tree ();
             queue_draw ();
             if (!dir.is_empty () && slot.is_active) {
-                select_first_for_empty_selection ();
+                /* TBD Do we want to select first item if no other selection ? */
+                //select_first_for_empty_selection ();
                 grab_focus ();
             }
         }
@@ -1147,12 +1148,12 @@ namespace FM {
 
         private void on_drag_begin (Gdk.DragContext context) {
 //message ("on drag begin");
+            drag_has_begun = true;
             /* Do we need to free the drag_file_list? */
             drag_file_list = get_selected_files_for_transfer ();
             if (drag_file_list == null)
                 return;
 
-            drag_has_begun = true;
             GOF.File file = drag_file_list.first ().data;
             /* TODO - get drag icon depending on view and zoom_level */
             if (file != null && file.pix != null)

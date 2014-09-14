@@ -75,10 +75,11 @@ namespace Marlin.View {
             this.total_width += new_slot.width;
             this.colpane.set_size_request (total_width, -1);
             nest_slot_in_host_slot (new_slot, host);
-            new_slot.directory.load ();
-            slot_list.append (new_slot);
             connect_slot_signals (new_slot);
+            slot_list.append (new_slot);
+            //new_slot.directory.load ();
             new_slot.active ();
+            new_slot.autosize_slot ();
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {

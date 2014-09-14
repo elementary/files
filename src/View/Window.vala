@@ -311,7 +311,7 @@ namespace Marlin.View {
         public void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-            if (current_tab == null || old_tab == current_tab)
+            if (current_tab == null || old_tab == current_tab || freeze_view_changes)
                 return;
 
             if (old_tab != null)
@@ -343,15 +343,17 @@ namespace Marlin.View {
             });
 
             content.loading.connect ((is_loading) => {
+message ("tab working is %s", tab.working ? "True" : "false");
                 tab.working = is_loading;
+                if (is_loading)
+                    tab.label = _("Loading ...");
             });
 
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
-               Files, the overlay status bar is shown empty. */
-            if (tabs.n_tabs == 1)
-                item_hovered (null); 
+               a tab, the overlay status bar is shown empty. */
+            item_hovered (null); 
         }
 
         public void remove_tab (ViewContainer view_container) {

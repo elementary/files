@@ -37,14 +37,20 @@ namespace Marlin.View {
             }
         }
 
+        private uint count = 0;
+        private uint folders_count = 0;
+        private uint files_count = 0;
+        private uint64 files_size = 0;
+        private GOF.File? goffile = null;
+        private GLib.List<unowned GOF.File>? selected_files = null;
+
         public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
 //message ("New Overlay Bar");
-            base (overlay);
+            base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             window = win;
-
             window.selection_changed.connect (on_selection_changed);
-            window.item_hovered.connect (update_hovered);            
+            window.item_hovered.connect (update_hovered);
 
             hide.connect (() => {
                 /* when we're hiding, we no longer want to search for image size */
@@ -53,36 +59,41 @@ namespace Marlin.View {
             });
         }
 
-        private uint count = 0;
-        private uint folders_count = 0;
-        private uint files_count = 0;
-        private uint64 files_size = 0;
-        private GOF.File? goffile = null;
-        private unowned GLib.List<unowned GOF.File>? selected_files;
-
         public void on_selection_changed (GLib.List<GOF.File>? files = null) {
 //message ("overlay selection changed");
-            selected_files = files;
+            if (files != null)
+                selected_files = files.copy ();
+            else
+                selected_files = null;
+
             real_update (selected_files);
+        }
+
+        public void reset_selection () {
+            selected_files = null;
         }
 
         private void update_hovered (GOF.File? file) {
 //message ("update hovered");
+            GLib.List<GOF.File> list = null;
             if (file != null) {
                 bool matched = false;
-                selected_files.@foreach ((f) => {
-                    if (f== file)
-                        matched = true;
-                });
-                if (matched)
+                if (selected_files != null) {
+                    selected_files.@foreach ((f) => {
+                        if (f == file)
+                            matched = true;
+                    });
+                }
+
+                if (matched) {
                     real_update (selected_files);
-                else {
-                    GLib.List<GOF.File> list = null;
+                    return;
+                } else {
                     list.prepend (file);
                     real_update (list);
                 }
-            } else
-                real_update (null);
+            }
+            real_update (list);
         }
 
        private void real_update (GLib.List<GOF.File>? files) {

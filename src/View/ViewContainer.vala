@@ -28,7 +28,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
         public bool can_show_folder = true;
-        public string label;
+        public string label = "";
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         Browser browser;
@@ -60,7 +60,6 @@ namespace Marlin.View {
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
-            label = _("Loading…");
 
             this.show_all ();
 
@@ -137,10 +136,10 @@ namespace Marlin.View {
 
 //message ("VC change view mode - after create view");
 
-                queue_draw ();
-                set_up_current_slot ();
-                overlay_statusbar.showbar = true;
+                slot_path_changed (loc);
                 view_mode = mode;
+                overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+                overlay_statusbar.reset_selection ();
             }
 //message ("VC leaving change view mode");
         }
@@ -174,9 +173,8 @@ namespace Marlin.View {
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
                 mode = 0; /* icon view */
 #endif
-
+            loading (true);
             set_up_current_slot ();
-            refresh_slot_info (loc);
         }
 
         private void set_up_current_slot () {
@@ -208,7 +206,6 @@ namespace Marlin.View {
 
         public void refresh_slot_info (GLib.File loc) {
 //message ("refresh slot info - location is %s", location.get_uri ());
-            loading (false);
             var slot_path = loc.get_path ();
 
             if (slot_path == Environment.get_home_dir ())
@@ -228,9 +225,11 @@ namespace Marlin.View {
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-//message ("directory done loading");
+message ("directory done loading");
             FileInfo file_info;
 
+            loading (false);
+            refresh_slot_info (slot.directory.location);
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -239,7 +238,6 @@ namespace Marlin.View {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                     can_show_folder = false;
-                    //user_path_change_request (slot.location.get_parent ());
                 }
                 else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null)
                         view.select_glib_files (selected_locations);

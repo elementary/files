@@ -29,6 +29,7 @@ namespace FM {
 //message ("New column view");
             base (_slot);
             /* We do not need to load the directory - this is done by Miller */
+            /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
         ~ColumnView () {
@@ -58,9 +59,8 @@ namespace FM {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
                 unfreeze_updates ();
-                if (!is_drag_pending ())
+                if (!is_drag_pending ()) 
                     activate_selected_items ();
-
             }
             return false;
         }
@@ -109,8 +109,7 @@ namespace FM {
                         selected_folder = file;
                         awaiting_double_click = true;
                         freeze_updates ();
-                        double_click_timeout_id = GLib.Timeout.add (100, not_double_click);
-                        result = true;
+                        double_click_timeout_id = GLib.Timeout.add (drag_delay, not_double_click);
                     }
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {

@@ -118,11 +118,11 @@ namespace Marlin.View {
                 ctab.new_container_request (loc, flag);
         }
 
-        private void autosize_slot () {
-//message ("autosize_slot");
+        public void autosize_slot () {
             if (dir_view == null)
                 return;
 
+//message ("autosize_slot");
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ())

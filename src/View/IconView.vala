@@ -216,7 +216,7 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col,  bool scroll_to_top) {
-message ("IV scroll to cell");
+//message ("IV scroll to cell");
             if (tree == null || path == null || slot.directory.permission_denied)
                 return;
 

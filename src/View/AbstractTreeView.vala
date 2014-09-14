@@ -67,7 +67,6 @@ namespace FM {
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
             tree.draw.connect (on_view_draw);
             tree.key_press_event.connect (on_view_key_press_event);
-            tree.row_activated.connect (on_view_items_activated);
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
