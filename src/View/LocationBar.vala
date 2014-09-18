@@ -63,6 +63,10 @@ namespace Marlin.View.Chrome
                     bread.search_results.clear ();
                     search_mode_left ();
                 }
+                else
+                {
+                    bread.text = "";
+                }
             });
 
             margin_top = 4;
