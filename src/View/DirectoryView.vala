@@ -185,8 +185,9 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
 
-            set_up_directory_view ();
             set_up__menu_actions ();
+            set_up_directory_view ();
+
             view = create_view (); /* Abstract */
             if (view != null) {
                 add (view);
@@ -240,8 +241,9 @@ namespace FM {
             model.row_deleted.connect (on_row_deleted);
             model.row_deleted.connect_after (after_restore_selection);
 
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
             model.sort_column_changed.connect (on_sort_column_changed);
+            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+
         }
 
         private void set_up__menu_actions () {
@@ -508,6 +510,7 @@ namespace FM {
             unblock_model ();
             connect_directory_handlers (new_dir);
             update_menu_actions ();
+            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
         }
 
         public void reload () {
