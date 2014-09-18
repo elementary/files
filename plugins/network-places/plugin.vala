@@ -29,17 +29,22 @@ public class Files.Plugins.NetworkInfobar : Gtk.InfoBar {
 }
 
 public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
+    private NetworkInfobar? infobar = null;
+
     public override void directory_loaded (void* user_data) {
         var file = ((Object[]) user_data)[2] as GOF.File;
         return_if_fail (file != null);
 
-        if (file.is_network_uri_scheme ()) {
+        if (file.is_network_uri_scheme () && infobar == null) {
             var slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
             return_if_fail (slot != null);
 
-            var infobar = new NetworkInfobar ();
+            infobar = new NetworkInfobar ();
             slot.add_extra_widget (infobar);
             infobar.show_all ();
+        }  else if (infobar != null) {
+            infobar.destroy ();
+            infobar = null;
         }
     }
 }

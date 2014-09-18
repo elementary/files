@@ -30,7 +30,7 @@ namespace Marlin.View.Chrome
             set {
                 var new_path = GLib.Uri.unescape_string (value);
                 if (new_path != null) {
-//message ("setting new path - bread is focus %s - win freeze view changes %s", bread.is_focus ? "true" : "false", win.freeze_view_changes ? "true" : "false");
+//message ("setting new path -  %s", new_path);
                     _path = new_path;
 
                     if (!bread.is_focus && !win.freeze_view_changes) {
@@ -88,7 +88,7 @@ namespace Marlin.View.Chrome
         }
 
         private void on_path_changed (File file) {
-//message ("on path changed");
+//message ("LB on path changed");
             if (win.freeze_view_changes)
                 return;
 
@@ -284,9 +284,12 @@ namespace Marlin.View.Chrome
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
-                    string str = text.slice (0, text.length - to_search.length);
+                    string? str = null;
+                    if (text.length >=1)
+                        str = text.slice (0, text.length - to_search.length);
                     if (str != null && !multiple_completions) {
                         text = str + file.get_display_name ().slice (0, to_search.length);
+//message ("Setting text to %s", text);
                         set_position (-1);
                     }
                 }
@@ -294,6 +297,7 @@ namespace Marlin.View.Chrome
         }
 
         public void on_need_completion () {
+//message ("on need completion - text is %s", text);
             File file = get_file_for_path (text);
             to_search = file.get_basename ();
 

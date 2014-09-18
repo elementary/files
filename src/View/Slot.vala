@@ -69,7 +69,8 @@ namespace Marlin.View {
 //message ("connect slot signals");
             active.connect (() => {
 //message ("Slot %s active", location.get_uri ());
-                ctab.refresh_slot_info (directory.location);
+                //ctab.refresh_slot_info (directory.location);
+                ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
             });
@@ -96,7 +97,7 @@ namespace Marlin.View {
                 directory.done_loading.connect (() => {autosize_slot ();});
                 directory.track_longest_name = true;
             }
-            directory.need_reload.connect (reload);
+            directory.need_reload.connect (ctab.reload);
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
@@ -149,18 +150,18 @@ namespace Marlin.View {
         }
 
         public override void user_path_change_request (GLib.File loc) {
-//message ("Slot received user path change signal to loc %s", loc.get_uri ());
+//message ("Slot received user path change signal to loc %s, current location is %s", loc.get_uri (), location.get_uri ());
             assert (loc != null);
 
-            if (location != loc) {
+            if (!location.equal (loc)) {
                 var old_dir = directory;
                 set_up_directory (loc);
                 dir_view.change_directory (old_dir, directory);
                 /* View Container takes care of updating appearance */
-            } else
-                reload ();
-
-            ctab.slot_path_changed (loc);
+                ctab.slot_path_changed (loc);
+            } else {
+                ctab.reload ();
+            }
         }
 
         protected override void make_view () {

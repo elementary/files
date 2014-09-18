@@ -120,28 +120,28 @@ namespace Marlin.View {
 //message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
             if (mode != view_mode) {
 
-                if (loc == null) { /* Only untrue on container creation */
-//message ("VC change view mode - loc is null");
+                if (loc == null) /* Only untrue on container creation */
                     loc = this.location;
-                }
 
-                if (view != null) {
+                if (view != null)
                     store_selection ();
-                }
-//message ("VC change view mode - before create view");
+
+                /* the following 2 lines delays destruction of the old view until this function returns
+                 * and allows the processor to display or update the window more quickly
+                 */    
+                GOF.AbstractSlot temp;
+                temp = view; 
+
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
                 else
                     view = new Slot (loc, this, mode);
-
-//message ("VC change view mode - after create view");
 
                 slot_path_changed (loc);
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
             }
-//message ("VC leaving change view mode");
         }
 
         public void user_path_change_request (GLib.File loc) {
@@ -166,14 +166,14 @@ namespace Marlin.View {
         }
 
         public void slot_path_changed (GLib.File loc) {
-//message ("VC path changed");
+//message ("VC slot path changed");
 #if 0
             /*TODO Reimplement ? */
             /* automagicly enable icon view for icons keypath */
             if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
                 mode = 0; /* icon view */
 #endif
-            loading (true);
+
             set_up_current_slot ();
         }
 
@@ -184,13 +184,25 @@ namespace Marlin.View {
             assert (slot.directory != null);
 
             content = view.get_content_box ();
-            can_show_folder = true;
+            plugin_directory_loaded ();
+            load_slot_directory (slot);
+        }
 
+        public void load_slot_directory (GOF.AbstractSlot slot) {
+            can_show_folder = true;
             directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
                 directory_done_loading (slot);
             });
-
-             plugin_directory_loaded ();
+            loading (true);
+            /* Allow time for the window to update before starting to load directory
+             * This ensures the window is displayed quickly with the "Loading ... " message
+             * when starting the application in, or switching view to, a folder that contains
+             * a large number of files.
+             */           
+            Timeout.add (100, () => {
+                slot.directory.load ();
+                return false;
+            });
         }
 
         private void plugin_directory_loaded () {
@@ -204,17 +216,20 @@ namespace Marlin.View {
             plugins.directory_loaded ((void*) data);
         }
 
-        public void refresh_slot_info (GLib.File loc) {
-//message ("refresh slot info - location is %s", location.get_uri ());
+        public void refresh_slot_info (GOF.AbstractSlot aslot) {
+            var loc = aslot.directory.file.location;
             var slot_path = loc.get_path ();
-
+//message ("refresh slot info - path is %s", slot_path);
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else
-                tab_name = loc.get_basename ();
-
+            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
+                tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
+            else {
+                tab_name = _("This folder does not exist");
+                can_show_folder = false;
+            }
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
@@ -229,7 +244,7 @@ namespace Marlin.View {
             FileInfo file_info;
 
             loading (false);
-            refresh_slot_info (slot.directory.location);
+            refresh_slot_info (slot);
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -297,7 +312,7 @@ namespace Marlin.View {
 
             if (loc != null) {
                 slot_path_changed (loc);
-                refresh_slot_info (loc);
+                refresh_slot_info (get_current_slot ());
             }
         }
 
@@ -311,7 +326,14 @@ namespace Marlin.View {
 
         public void reload () {
 //message ("VC reload");
-            view.get_current_slot ().reload ();
+            loading (true);
+            /* Allow time for the signal to propagate and the tab label to redraw */
+            Timeout.add (10, () => {
+                var slot = view.get_current_slot ();
+                slot.reload ();
+                load_slot_directory (slot);
+                return false;
+            });
         }
 
         public Gee.List<string> get_go_back_path_list () {

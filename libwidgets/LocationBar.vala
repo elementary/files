@@ -165,6 +165,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public override bool key_press_event (Gdk.EventKey event) {
+//message ("on key press event");
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
@@ -189,10 +190,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
-//message ("location bar bpe");
+//message ("LBE location bar bpe");
         if (is_focus)    
             return base.button_press_event (event);
-        
+
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
 
@@ -228,6 +229,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public override bool button_release_event (Gdk.EventButton event) {
+//message ("LBE location bar button release");
         reset_elements_states ();
 
         if (timeout != -1) {
@@ -238,11 +240,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (is_focus)
             return base.button_release_event (event);
 
+//message ("LBE button release continuing");
         if (event.button == 1) {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
                 selected = elements.index_of (el);
-                var newpath = get_path_from_element (el);
+                var newpath = sanitise_path (get_path_from_element (el));
+//message ("LBE new path from element %s", newpath);
                 path_changed (get_file_for_path (newpath));
             } else
                 grab_focus ();
@@ -252,6 +256,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     void on_change () {
+//message ("on_change");
         if (search_mode) {
             search_changed (text);
             return;
@@ -298,6 +303,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     bool on_focus_out (Gdk.EventFocus event) {
+//message ("LBE on focus out");
         if (is_focus) {
             ignore_focus_in = true;
             return base.focus_out_event (event);
@@ -312,19 +318,24 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     bool on_focus_in (Gdk.EventFocus event) {
+//message ("on focus in");
         if (ignore_focus_in)
             return base.focus_in_event (event);
 
         if (search_mode)
             set_entry_text ("");
         else
-            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
-                    .replace ("file://", "/")
-                    .replace ("file:///", "/")
-                    .replace ("trash:///", "")
-                    .replace ("network:///", "")));
+            set_entry_text (sanitise_path (GLib.Uri.unescape_string (get_elements_path ())));
+                    
                 
         return base.focus_in_event (event);
+    }
+
+    string sanitise_path (string path) {
+        return path.replace ("file:////", "/")
+                   .replace ("file:///", "/")
+                   .replace ("trash:///", "")
+                   .replace ("network:///", "");
     }
     
     void on_grab_focus () {
@@ -421,6 +432,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public void set_entry_text (string text) {
+//message ("set entry text");
         ignore_change = true;
         text_completion = "";
         this.text = text;
@@ -433,6 +445,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public void set_entry_icon (bool active, string? tooltip = null) {
+//message ("set entry icon %s", active ? "true" : "false");
         if (!active)
             secondary_icon_pixbuf = null;
         else {
@@ -440,7 +453,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             secondary_icon_tooltip_text = tooltip;
         }
     }
-    
+
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
         double total_width = 0.0;
         breadcrumbs_count = 0;
@@ -470,6 +483,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     private string get_path_from_element (BreadcrumbsElement el) {
+//message ("get_path_from_element");
         string newpath = protocol;
 
         foreach (BreadcrumbsElement element in elements) {
@@ -479,7 +493,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                     break;
             }
         }
-
         return newpath;
     }
 
@@ -487,6 +500,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * Get the current path of the PathBar, based on the elements that it contains
      **/
     public string get_elements_path () {
+//message ("get elements path");
         string strpath = "";
         strpath = protocol;
 
@@ -494,7 +508,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             if (element.display)
                 strpath += element.text + "/";
         }
-
         return strpath;
     }
     
@@ -531,7 +544,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * @param event a button event to compute the coords of the new menu.
      *
      **/
-    private bool select_bread_from_coord (Gdk.EventButton event) {    
+    private bool select_bread_from_coord (Gdk.EventButton event) {
+//message ("select bread from coord");   
         var el = get_element_from_coordinates ((int) event.x, (int) event.y);
 
         if (el != null) {
@@ -578,7 +592,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
-//message ("change bread crumbs");
+//message ("change bread crumbs, new path is %s", newpath);
         var explode_protocol = Uri.unescape_string (newpath).split ("://");
 
         if (explode_protocol.length > 1) {
@@ -618,6 +632,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         foreach (string dir in breads) {
             if (dir != "") {
+//message ("creating new bread dir %s", dir);
                 var element = new BreadcrumbsElement (dir, left_padding, right_padding);
                 newelements.add (element);
             }
@@ -630,6 +645,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         foreach (IconDirectory icon in icons) {
             if (icon.protocol && icon.path == protocol) {
+//message ("Setting icon for protocol %s", protocol);
                 newelements[0].set_icon(icon.icon);
                 newelements[0].text_displayed = icon.text_displayed;
                 break;
@@ -646,6 +662,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 }
 
                 if (found) {
+//message ("icon found");
                     for (int j = 0; j < h; j++)
                         newelements[j].display = false;
 

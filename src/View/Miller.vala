@@ -77,7 +77,7 @@ namespace Marlin.View {
             nest_slot_in_host_slot (new_slot, host);
             connect_slot_signals (new_slot);
             slot_list.append (new_slot);
-            //new_slot.directory.load ();
+            ctab.load_slot_directory (new_slot);
             new_slot.active ();
             new_slot.autosize_slot ();
         }
@@ -248,7 +248,7 @@ namespace Marlin.View {
                     if (current_position < slot_list.length () - 1)
                         next_location = slot_list.nth_data (current_position + 1).location;
 
-                    if (next_location != null && next_location == current_location) {
+                    if (next_location != null && next_location.equal (current_location)) {
                         to_activate = slot_list.nth_data (current_position + 1);
                     } else if (selected_file.is_folder ()) {
                         add_location (current_location, current_slot);

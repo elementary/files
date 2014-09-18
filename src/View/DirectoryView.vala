@@ -198,11 +198,7 @@ namespace FM {
             }
             freeze_tree ();
             set_up_zoom_level ();
-            /* Allow time for "Loading ... " to be displayed for large folders
-             * otherwise there can be significant delay in showing the application window on start up*/
-            GLib.Timeout.add (100, () => {slot.directory.load (); return false;});
             zoom_level_changed (); /* set icon_renderer properties */
-            queue_draw ();
         }
 
         ~DirectoryView () {
@@ -511,7 +507,6 @@ namespace FM {
             model.clear ();
             unblock_model ();
             connect_directory_handlers (new_dir);
-            new_dir.load ();
             update_menu_actions ();
         }
 
@@ -985,14 +980,8 @@ namespace FM {
 //message ("DV  directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
-
             thaw_tree ();
             queue_draw ();
-            if (!dir.is_empty () && slot.is_active) {
-                /* TBD Do we want to select first item if no other selection ? */
-                //select_first_for_empty_selection ();
-                grab_focus ();
-            }
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {

@@ -30,7 +30,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
     public override void directory_loaded (void* user_data) {
         GOF.File file = ((Object[]) user_data)[2] as GOF.File;
-        if (file.location.get_uri_scheme () == "trash") {
+        /* Ignore directories other than trash and ignore reloading trash */
+        if (file.location.get_uri_scheme () == "trash" && infobar == null) {
             assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
             GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
 
@@ -46,8 +47,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
             slot.add_extra_widget (infobar);
             infobar.show_all ();
-        } else if (infobar != null)
+        } else if (infobar != null) {
             infobar.destroy ();
+            infobar = null;
+        }
     }
 }
 
