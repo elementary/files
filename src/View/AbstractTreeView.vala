@@ -50,7 +50,6 @@ namespace FM {
         protected void set_up_icon_renderer () {
 //message ("ATV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
-            icon_renderer.set_property ("selection-helpers",  true);
         }
 
         protected void set_up_view () {
@@ -205,7 +204,10 @@ namespace FM {
                     if (cx <= x_offset + width + expander_width)
                         on_icon = true;
 
-                    if (((cx -x_offset - expander_width) <= 18) && (cy <=18))
+                    if (helpers_shown &&
+                        ((cx -x_offset - expander_width) <= 18) &&
+                        (cy <=18))
+
                         on_helper = true;
 
                     on_name = !on_icon && !on_blank;

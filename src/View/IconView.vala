@@ -60,7 +60,6 @@ namespace FM {
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
-            icon_renderer.set_property ("selection-helpers",  true); /* do we always want helpers for accessibility? */
             //Preferences.settings.bind ("single-click", icon_renderer, "selection-helpers", GLib.SettingsBindFlags.DEFAULT);
         }
 
@@ -179,7 +178,6 @@ namespace FM {
                     critical ("Null file in model");
             });
             selected_files.reverse ();
-//message ("select files length is %u", selected_files.length ());
         }
 
         protected override bool view_has_focus () {
@@ -208,7 +206,10 @@ namespace FM {
                     Gdk.Rectangle rect, area;
                     tree.get_cell_rect  (p, r, out rect);
                     area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-                    if (x <= area.x + 18 && y <= area.y + 18)
+                    if (helpers_shown &&
+                        x <= area.x + 18 &&
+                        y <= area.y + 18)
+
                         on_helper = true;
                 }
             }

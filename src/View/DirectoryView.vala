@@ -162,6 +162,7 @@ namespace FM {
         private bool updates_frozen = false;
         private bool in_trash = false;
         protected bool is_loading;
+        protected bool helpers_shown;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -2219,7 +2220,9 @@ namespace FM {
         public virtual void zoom_level_changed () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
-            icon_renderer.set_property ("selection-helpers", zoom_level >= Marlin.ZoomLevel.NORMAL); /* TODO What is suitable minimum size? */
+            helpers_shown = (zoom_level >= Marlin.ZoomLevel.NORMAL);
+            icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
+            
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
