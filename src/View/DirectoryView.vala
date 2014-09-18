@@ -2157,7 +2157,8 @@ namespace FM {
 
             if (path != null && !path_selected) {
                 unselect_all ();
-                select_path (path);
+                if (!on_blank)
+                    select_path (path);
             }
 
             bool result = true;
