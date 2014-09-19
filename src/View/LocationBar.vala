@@ -62,6 +62,8 @@ namespace Marlin.View.Chrome
                 if (!bread.search_mode) {
                     bread.search_results.clear ();
                     search_mode_left ();
+                } else {
+                    bread.text = "";
                 }
             });
 
