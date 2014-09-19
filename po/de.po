@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-09-15 13:24+0000\n"
-"Last-Translator: UweS <Unknown>\n"
+"PO-Revision-Date: 2014-09-18 19:52+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-09-16 08:20+0000\n"
+"X-Launchpad-Export-Date: 2014-09-19 07:59+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "Language: de\n"
 
@@ -84,7 +84,7 @@ msgstr "In %'d neuen _Tabs öffnen"
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
 #: ../src/View/Sidebar.vala:1195
 msgid "Open in New _Tab"
-msgstr "In neuem _Reiter öffnen"
+msgstr "In neuem _Tab öffnen"
 
 #: ../src/fm-directory-view.c:2347
 #, c-format
@@ -167,7 +167,7 @@ msgstr "Jedes gewählte Objekt in einem neuen Fenster öffnen"
 
 #: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
-msgstr "Alle gewählten Objekte in neuen Reitern öffnen"
+msgstr "Alle gewählten Objekte in neuen Tabs öffnen"
 
 #: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
@@ -1740,7 +1740,7 @@ msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr "Eine einfache und leistungsfähige Dateiverwaltung"
+msgstr "Eine schlichte, aber leistungsfähige Dateiverwaltung"
 
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
@@ -1836,7 +1836,7 @@ msgstr "Papierkorb"
 
 #: ../src/View/LocationBar.vala:327
 msgid "Open in New Tab"
-msgstr "In neuem Reiter öffnen"
+msgstr "In neuem Tab öffnen"
 
 #: ../src/View/LocationBar.vala:334
 msgid "Open with"
@@ -2058,11 +2058,11 @@ msgstr "Ein anderes Files Fenster für den angezeigen Ort öffnen"
 
 #: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Neuer _Reiter"
+msgstr "Neuer _Tab"
 
 #: ../src/View/Window.vala:754
 msgid "Open another tab for the displayed location"
-msgstr "Einen weiteren Reiter für diesen Ort öffnen"
+msgstr "Einen weiteren Tab für diesen Ort öffnen"
 
 #: ../src/View/Window.vala:758
 msgid "_Close"
@@ -2170,11 +2170,11 @@ msgstr "Die normale Ansichtsgröße verwenden"
 
 #: ../src/View/Window.vala:823
 msgid "Next Tab"
-msgstr "Nächster Reiter"
+msgstr "Nächster Tab"
 
 #: ../src/View/Window.vala:827
 msgid "Previous Tab"
-msgstr "Vorheriger Reiter"
+msgstr "Vorheriger Tab"
 
 #: ../src/View/Window.vala:831
 msgid "Connect to _Server..."
@@ -2335,7 +2335,7 @@ msgstr "Die Versionsnummer des Programms anzeigen."
 
 #: ../src/Application.vala:139
 msgid "Open uri(s) in new tab"
-msgstr "Adresse(n) in neuem Reiter öffnen"
+msgstr "Adresse(n) in neuem Tab öffnen"
 
 #: ../src/Application.vala:141
 msgid "New Window"
