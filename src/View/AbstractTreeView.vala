@@ -184,7 +184,7 @@ namespace FM {
                                                 out bool on_blank,
                                                 out bool on_icon,
                                                 out bool on_helper) {
-//message ("get click position info x is %i,  y is %i", x, y);
+message ("get click position info x is %i,  y is %i", x, y);
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             int cx, cy;
@@ -210,12 +210,20 @@ namespace FM {
 
                         on_helper = true;
 
-                    on_name = !on_icon && !on_blank;
+                    /* Disable one-click renaming below a minimum icon size - make name activatable */
+                    if (zoom_level >= Marlin.ZoomLevel.NORMAL)
+                        on_name = !on_icon && !on_blank;
+                    else
+                        on_icon = !on_blank;
+
                 } else
                     on_blank = false;
             }
 
 //message ("on helper is %s", on_helper ? "true" : "false");
+//message ("on icon is %s", on_icon ? "true" : "false");
+//message ("on name is %s", on_name ? "true" : "false");
+//message ("on blank is %s", on_blank ? "true" : "false");
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top) {

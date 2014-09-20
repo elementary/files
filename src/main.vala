@@ -15,6 +15,7 @@
 ***/
 
 public static const string APP_NAME = "pantheon-files";
+public static const string TERMINAL_NAME = "pantheon-terminal";
 
 public static int main (string[] args) {
     /* Initiliaze gettext support */

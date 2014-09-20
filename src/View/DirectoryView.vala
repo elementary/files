@@ -66,6 +66,7 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
+            {"show_hidden", null, null, "false", change_state_show_hidden}
         };
 
         GLib.SimpleActionGroup background_actions;
@@ -87,14 +88,23 @@ namespace FM {
             }
 
             set {
-                if (value <= Marlin.ZoomLevel.LARGEST &&
-                    value >= Marlin.ZoomLevel.SMALLEST &&
+                if (value <= maximum_zoom &&
+                    value >= minimum_zoom &&
                     value != _zoom_level) {
                         _zoom_level = value;
                         on_zoom_level_changed (value);
                 }
             }
         }
+
+        public int icon_size {
+            get {
+                return Marlin.zoom_level_to_icon_size (_zoom_level);
+            }
+        }
+
+        protected Marlin.ZoomLevel minimum_zoom = Marlin.ZoomLevel.SMALLEST; 
+        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST; 
 
         /* drag support */
         unowned GLib.List<unowned GOF.File> drag_file_list = null;
@@ -139,7 +149,7 @@ namespace FM {
 
         private GLib.List<GLib.AppInfo> open_with_apps;
         private GLib.AppInfo default_app;
-        private GLib.List<GOF.File> templates;
+        private GLib.List<unowned GOF.File>? templates = null;
 
         /* TODO Support for preview */
         private string? previewer = null;
@@ -260,6 +270,8 @@ namespace FM {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (common_entries, this);
             insert_action_group ("common", common_actions);
+
+            action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
         }
 
         public void zoom_in () {
@@ -273,7 +285,7 @@ namespace FM {
         private void set_up_zoom_level () {
 //message ("DV set up zoom level");
             zoom_level = get_set_up_zoom_level (); /* Abstract */
-            model.set_property ("size", (int)(Marlin.zoom_level_to_icon_size (zoom_level)));
+            model.set_property ("size", icon_size);
         }
 
         public void zoom_normal () {
@@ -586,6 +598,9 @@ namespace FM {
 
     /** Handle scroll events */
         protected bool handle_scroll_event (Gdk.EventScroll event) {
+            if (updates_frozen)
+                return true;
+
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
                 switch (event.direction) {
                     case Gdk.ScrollDirection.UP:
@@ -854,6 +869,10 @@ namespace FM {
 
                 /** Background actions */
 
+        private void change_state_show_hidden (GLib.SimpleAction action) {
+            window.change_state_show_hidden (action);
+        }
+
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
 //message ("on background action new");
             switch (param.get_string ()) {
@@ -915,16 +934,18 @@ namespace FM {
                     activate_selected_items (Marlin.OpenFlag.NEW_WINDOW);
                     break;
                 case "TERMINAL":
-                    var terminal = new GLib.DesktopAppInfo.from_filename ("/usr/share/applications/open-pantheon-terminal-here.desktop");
-                    if (terminal != null)
-                        open_files_with (terminal, selected_files);
-
+                    open_selected_in_terminal ();
                     break;
                 default:
                     break;
             }
         }
 
+        private void open_selected_in_terminal () {
+                var terminal = new GLib.DesktopAppInfo.from_filename (Marlin.OPEN_IN_TERMINAL_PATH);
+                if (terminal != null)
+                    open_files_with (terminal, selected_files);
+        }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
             new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
@@ -996,7 +1017,7 @@ namespace FM {
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
 //message ("DV on zoom level changed");
-            model.set_property ("size", Marlin.zoom_level_to_icon_size (zoom));
+            model.set_property ("size", icon_size);
             zoom_level_changed ();
             if (get_realized ())
                 load_thumbnails (slot.directory, zoom);
@@ -1019,6 +1040,8 @@ namespace FM {
 
             if (!show)
                 unblock_model ();
+
+            action_set_state (background_actions, "show_hidden", show);
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -1504,12 +1527,15 @@ namespace FM {
                 return null;
 
             var menu = builder.get_object ("popup-background") as GLib.Menu;
+
             menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
 
-            GLib.MenuModel? template_submenu = build_menu_templates ();
-            if (template_submenu != null)
-                menu.append_submenu (_("Create new"), template_submenu);
+            GLib.MenuModel? template_menu = build_menu_templates ();
+            if (template_menu != null) {
+                var new_menu = builder.get_object ("new") as GLib.Menu;
+                new_menu.append_section (null, template_menu);
+            }
 
             menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
 
@@ -1524,14 +1550,15 @@ namespace FM {
 //message ("build menu open");
             var menu = new GLib.Menu ();        
             string label = _("Invalid");
-            if (selected_files.data.is_executable ()) {
+            var selection = selected_files.data;
+            if (!selection.is_folder () && selection.is_executable ()) {
                     label = _("Run");
                     menu.append (label, "selection.open");
             } else if (default_app != null) {
                 var app_name = default_app.get_display_name ();
 
                 if (app_name != "Files") {
-                    label = (_("Open With %s")).printf (app_name);
+                    label = (_("Open with %s")).printf (app_name);
                     menu.append (label, "selection.open_with_default");
                 }
             }
@@ -1565,7 +1592,7 @@ namespace FM {
             });
 
             if (selection.length () == 1)
-                apps_submenu.append (_("Other application"), "selection.other_app");
+                apps_submenu.append (_("Other Application"), "selection.other_app");
 
             return apps_submenu as MenuModel;
         }
@@ -1573,24 +1600,34 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
         /* TODO - Do just once when app starts or view created? */
 //message ("build template menu");
+            templates = null;
             load_templates_from_folder (GLib.File.new_for_path ("%s/Templates".printf (GLib.Environment.get_home_dir ())));
             if (templates.length () == 0)
                 return null;
 
+            var templates_menu = new GLib.Menu ();
             var templates_submenu = new GLib.Menu ();
-            int index = -1;
+            int index = 0;
+            int count = 0;
             templates.@foreach ((template) => {
                 var label = template.get_display_name ();
                 if (!template.is_folder ()) {
-                    index++;
                     templates_submenu.append (label, "background.create_from::" + index.to_string ());
+                    count ++;
+                } else {
+                    var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
+                    templates_menu.append_item (submenu);
+                    templates_submenu = new GLib.Menu ();
                 }
+                index++;
             });
 
-            if (index < 0)
+            templates_menu.append_section (null, templates_submenu);
+
+            if (count < 1)
                 return null;
             else
-                return templates_submenu as MenuModel;
+                return templates_menu as MenuModel;
         }
 
         private void update_menu_actions () {
@@ -1678,8 +1715,8 @@ namespace FM {
 
         private void load_templates_from_folder (GLib.File template_folder) {
 //message ("load templates from folder");
-            GLib.List<GOF.File> gof_file_list = null;
-            GLib.List<GLib.File> folder_list = null;
+            GLib.List<GOF.File>? gof_file_list = null;
+            GLib.List<GLib.File>? folder_list = null;
 
             GLib.FileEnumerator enumerator;
             try {
@@ -1707,11 +1744,12 @@ namespace FM {
             if (gof_file_list.length () > 0) {
                 gof_file_list.sort (GOF.File.compare_by_display_name);
                 templates.concat (gof_file_list.copy ());
+                GOF.File dir = GOF.File.@get (template_folder);
+                dir.ensure_query_info ();
+                templates.append (dir);
             }
 
-            GOF.File dir = GOF.File.@get (template_folder);
-            dir.ensure_query_info ();
-            templates.append (dir);
+
 
             if (folder_list.length () > 0) {
                 /* recursively load templates from subdirectories */
@@ -1727,7 +1765,7 @@ namespace FM {
             unowned GLib.List<AppInfo> l = open_with_apps;
             while (l != null) {
                 exec_name = l.data.get_executable ();
-                if (exec_name != null && exec_name == APP_NAME) {
+                if (exec_name != null && (exec_name == APP_NAME || exec_name == TERMINAL_NAME)) {
                     open_with_apps.delete_link (l);
                     break;
                 }
@@ -1909,12 +1947,12 @@ namespace FM {
         private void remove_marlin_icon_info_cache (GOF.File file) {
              string? path = file.get_thumbnail_path ();
             if (path != null) {
-                Marlin.IconSize icon_size;
+                Marlin.IconSize s;
                 for (int z = Marlin.ZoomLevel.SMALLEST;
                      z <= Marlin.ZoomLevel.LARGEST;
                      z++) {
-                    icon_size = Marlin.zoom_level_to_icon_size ((Marlin.ZoomLevel)z);
-                    Marlin.IconInfo.remove_cache (path, icon_size);
+                    s = Marlin.zoom_level_to_icon_size ((Marlin.ZoomLevel)z);
+                    Marlin.IconInfo.remove_cache (path, s);
                 }
             }
         }
@@ -1974,6 +2012,10 @@ namespace FM {
 
                     return true;
 
+                case Gdk.Key.T:
+                    if (control_pressed && shift_pressed)
+                        open_selected_in_terminal ();
+                    break;
                 default:
                     break;
             }
@@ -1993,13 +2035,6 @@ namespace FM {
 
                 GOF.File? file = path != null ? model.file_for_path (path) : null;
                 window.item_hovered (file);
-
-                if (dnd_disabled ) { /* Rubberbanding */
-                    if (path != null && !path_is_selected (path))
-                        select_path (path);
-                    else if (hover_path != null && path_is_selected (path))
-                        unselect_path (hover_path);
-                }
                 hover_path = path;
             }
 
@@ -2124,6 +2159,17 @@ namespace FM {
             return false;
         }
 
+        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
+//message ("DV handle primary button");
+            bool single_click_mode = Preferences.settings.get_boolean ("single-click");
+            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+            if (on_icon && (single_click_mode || double_click_event )) {
+                on_view_items_activated ();
+                return true;
+            } else
+                return false; /* required for row expanders to work */
+        }
+
         protected bool handle_secondary_button_click (Gdk.EventButton event) {
 //message ("DV handle secondary button");
             show_or_queue_context_menu (event);
@@ -2159,7 +2205,7 @@ namespace FM {
             if (!no_mods)
                 return false;
 
-            if (path != null && !path_selected) {
+            if (on_blank || (path != null && !path_selected && !on_helper)) {
                 unselect_all ();
                 if (!on_blank)
                     select_path (path);
@@ -2169,18 +2215,17 @@ namespace FM {
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                     if (on_blank) {
-                        select_one_path (path);
                         block_drag_and_drop ();  /* allow rubber banding */
+                        return false;
                     } else if (on_helper) {
-                        if (path_selected) /* unselected paths will already have been selected */
+                        if (path_selected)
                             unselect_path (path);
+                        else
+                            select_path (path);
                     } else  if (on_name)
-                        rename_file (selected_files.data); /* TODO Is this desirable? */
-                    else if (Preferences.settings.get_boolean ("single-click") && no_mods)
-                            result = handle_primary_button_single_click_mode (event, path, on_icon);
+                        rename_file (selected_files.data); 
                     else
-                        /* Not handled */
-                        result = false;
+                        result = handle_primary_button_click (event, path, on_icon);
 
                     break;
 
@@ -2198,15 +2243,7 @@ namespace FM {
                     result = handle_default_button_click ();
                     break;
             }
-
-//message ("DV BPE Returning %s", result ? "true" : "false"); 
             return result;
-        }
-
-        private void select_one_path (Gtk.TreePath? path) {
-            unselect_all ();
-            if (path != null)
-                select_path (path);
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
@@ -2219,7 +2256,7 @@ namespace FM {
 
         public virtual void zoom_level_changed () {
             icon_renderer.set_property ("zoom-level", zoom_level);
-            icon_renderer.set_property ("size", Marlin.zoom_level_to_icon_size (zoom_level));
+            icon_renderer.set_property ("size", icon_size);
             helpers_shown = (zoom_level >= Marlin.ZoomLevel.NORMAL);
             icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
             
@@ -2323,7 +2360,6 @@ namespace FM {
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
-        protected virtual bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {return false;}
         protected virtual void freeze_tree () {is_loading = true;}
         protected virtual void thaw_tree () {is_loading = false;}
 

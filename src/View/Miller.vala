@@ -79,6 +79,7 @@ namespace Marlin.View {
             slot_list.append (new_slot);
             ctab.load_slot_directory (new_slot);
             new_slot.active ();
+message ("calling autosize_slot");
             new_slot.autosize_slot ();
         }
 
@@ -111,7 +112,6 @@ namespace Marlin.View {
 
             /* destroy the nested slots */
             ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
-               // if (w != null)
                     w.destroy ();
             });
 
@@ -133,8 +133,10 @@ namespace Marlin.View {
         }
 
         private void update_total_width (Slot slot, int change) {
+//message ("update total width %i", total_width);
             total_width += change;
             this.colpane.set_size_request (total_width + 90, -1);
+//message ("total width now %i", total_width);
         }
 
 /*********************/

@@ -95,9 +95,12 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_primary_button_single_click_mode (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
-message ("CV handle left button"); 
-            bool result = false; /* returning false allows drag initiation but also unselects other rows */
+        protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
+//message ("CV handle left button");
+            if (!Preferences.settings.get_boolean ("single-click"))
+                return base.handle_primary_button_click (event, path, on_icon);
+
+            bool result = false; 
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click)

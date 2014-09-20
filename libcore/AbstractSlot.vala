@@ -31,7 +31,9 @@ namespace GOF {
         }
         
         protected int slot_number;
-        protected int width = 180;
+        protected int width;
+
+        /* For debugging */
         public static int slot_instance_count = 0;
         public int instance_number;
 

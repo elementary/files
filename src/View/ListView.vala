@@ -44,7 +44,6 @@ namespace FM {
 //message ("LV connect tree_signals");
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
-            tree.row_activated.connect (on_view_items_activated);
         }
 
         private void append_extra_tree_columns () {

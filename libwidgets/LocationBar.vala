@@ -441,6 +441,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     public void set_entry_cursor (Gdk.Cursor? cursor) {
         /* Only child 13 needs to be modified for the cursor - there may be a better way to do this */
+        /* TODO - this doesn't work ? */
         get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
     

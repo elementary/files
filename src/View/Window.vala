@@ -28,6 +28,7 @@ namespace Marlin.View {
             {"refresh", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
+            {"find", action_find},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -55,12 +56,11 @@ namespace Marlin.View {
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
 
-        public bool can_go_up = false;
-        public void set_can_go_back (bool can) {
-           top_menu.set_can_go_back (can);
-        }
         public void set_can_go_forward (bool can) {
            top_menu.set_can_go_forward (can);
+        }
+        public void set_can_go_back (bool can) {
+           top_menu.set_can_go_back (can);
         }
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
@@ -155,6 +155,7 @@ namespace Marlin.View {
             win_actions = new GLib.SimpleActionGroup ();
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
+
             if (is_first_window) {
                 var builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
                 application.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
@@ -395,6 +396,10 @@ namespace Marlin.View {
             top_menu.location_bar.bread.grab_focus ();
         }
 
+        private void action_find () {
+            top_menu.location_bar.enter_search_mode ();
+        }
+
         private uint reload_timeout_id = 0;
         private void action_reload (GLib.SimpleAction action, GLib.Variant? param) {
             /* avoid spawning reload when key kept pressed */
@@ -543,7 +548,7 @@ namespace Marlin.View {
             }
         }
 
-        private void change_state_show_hidden (GLib.SimpleAction action) {
+        public void change_state_show_hidden (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-hiddenfiles", state);

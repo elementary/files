@@ -3,7 +3,7 @@
     <menu id='popup-trash-selection'>
         <section>
             <item>
-                <attribute name='label' translatable='yes'>Restore from trash</attribute>
+                <attribute name='label' translatable='yes'>Restore from Trash</attribute>
                 <attribute name='action'>selection.restore</attribute>
             </item>
             <item>
@@ -30,10 +30,10 @@
 
     <menu id='popup-background'>
         <section>
-            <submenu>
-                <attribute name='label' translatable='yes'>New ...</attribute>
+            <submenu id='new'>
+                <attribute name='label' translatable='yes'>New</attribute>
                 <item>
-                    <attribute name='label' translatable='yes'>Empty Folder</attribute>
+                    <attribute name='label' translatable='yes'>Folder</attribute>
                     <attribute name='action'>background.new</attribute>
                     <attribute name="target">FOLDER</attribute>
                 </item>
@@ -44,11 +44,17 @@
                 </item>
             </submenu>
         </section>
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
+                <attribute name='action'>background.show_hidden</attribute>
+            </item>
+        </section>
     </menu>
 
     <menu id='open-in'>
         <submenu>
-            <attribute name='label' translatable = 'yes'>Open in ...</attribute>
+            <attribute name='label' translatable = 'yes'>Open in</attribute>
             <section>
                 <item>
                     <attribute name='label' translatable='yes'>New Tab</attribute>
@@ -107,7 +113,7 @@
     <menu id='sort-by'>
         <section>
             <submenu>
-                <attribute name='label' translatable='yes'>Sort by ...</attribute>
+                <attribute name='label' translatable='yes'>Sort by</attribute>
                 <section>
                     <item>
                         <attribute name='label' translatable='yes'>Name</attribute>

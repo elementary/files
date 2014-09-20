@@ -49,7 +49,6 @@ namespace Marlin.View {
         public OverlayBar overlay_statusbar;
 
         private GLib.List<GLib.File>? selected_locations = null;
-        private ulong directory_done_loading_handler_id = 0;
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
@@ -190,12 +189,9 @@ namespace Marlin.View {
 
         public void load_slot_directory (GOF.AbstractSlot slot) {
             can_show_folder = true;
-            directory_done_loading_handler_id = slot.directory.done_loading.connect (() => {
-                directory_done_loading (slot);
-            });
             loading (true);
-            /* Allow time for the window to update before starting to load directory
-             * This ensures the window is displayed quickly with the "Loading ... " message
+            /* Allow time for the window to update before starting to load directory so that
+             * the window is displayed more quickly with the "Loading ... " message
              * when starting the application in, or switching view to, a folder that contains
              * a large number of files.
              */           
@@ -237,6 +233,8 @@ namespace Marlin.View {
             window.update_top_menu ();
             window.update_labels (loc.get_parse_name (), tab_name);
             browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
+            window.set_can_go_back (browser.get_can_go_back ());
+            window.set_can_go_forward (browser.get_can_go_forward ());
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
@@ -266,7 +264,6 @@ namespace Marlin.View {
                     can_show_folder = false;
                 }
             }
-            slot.directory.disconnect (directory_done_loading_handler_id);
         }
 
         private void store_selection () {

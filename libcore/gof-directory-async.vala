@@ -23,7 +23,7 @@ private Mutex dir_cache_lock;
 public class GOF.Directory.Async : Object {
     public GLib.File location;
     public GOF.File file;
-    public int icon_size = 16;
+    public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
@@ -159,12 +159,12 @@ public class GOF.Directory.Async : Object {
             //foreach (GOF.File gof in file_hash.get_values ()) {
             file_hash.@foreach ((location, gof) => {
                 if (gof != null) {
-                if (gof.info != null && (!gof.is_hidden || show_hidden)) {
-                    if (track_longest_name)
-                        update_longest_file_name (gof);
+                    if (gof.info != null && (!gof.is_hidden || show_hidden)) {
+                        if (track_longest_name)
+                            update_longest_file_name (gof);
 
-                    file_loaded (gof);
-                }
+                        file_loaded (gof);
+                    }
                 } else {
                     critical ("CRITICAL location %s gof null", location.get_uri ());
                 }
@@ -686,6 +686,8 @@ public class GOF.Directory.Async : Object {
     }
 
     public void queue_load_thumbnails (int size) {
+        icon_size = size;
+
         if (this.state == State.LOADING)
             return;
 

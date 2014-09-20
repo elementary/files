@@ -17,9 +17,16 @@
             </section>
             <section>
                 <item>
-                    <attribute name="label" translatable='yes'>Select all</attribute>
+                    <attribute name="label" translatable='yes'>Select All</attribute>
                     <attribute name="action">win.select_all</attribute>
                     <attribute name="accel"><![CDATA[<Ctrl>A]]></attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="label" translatable='yes'>Find</attribute>
+                    <attribute name="action">win.find</attribute>
+                    <attribute name="accel"><![CDATA[<Ctrl>F]]></attribute>
                 </item>
             </section>
         </submenu>
@@ -109,7 +116,7 @@
                         <attribute name="accel"><![CDATA[<Ctrl>b]]></attribute>
                     </item>
                     <item>
-                        <attribute name="label" translatable='yes'>Hidden files</attribute>
+                        <attribute name="label" translatable='yes'>Hidden Files</attribute>
                         <attribute name="action">win.show_hidden</attribute>
                         <attribute name="accel"><![CDATA[<Ctrl>h]]></attribute>
                     </item>
@@ -155,19 +162,19 @@
             </section>
             <section>
                 <item>
-                    <attribute name="label" translatable='yes'>Parent directory</attribute>
+                    <attribute name="label" translatable='yes'>Parent Directory</attribute>
                     <attribute name="action">win.go_to</attribute>
                     <attribute name="target">UP</attribute>
                     <attribute name="accel"><![CDATA[<Alt>Up]]></attribute>
                 </item>
                 <item>
-                    <attribute name="label" translatable='yes'>Next directory</attribute>
+                    <attribute name="label" translatable='yes'>Next Directory</attribute>
                     <attribute name="action">win.go_to</attribute>
                     <attribute name="target">FORWARD</attribute>
                     <attribute name="accel"><![CDATA[<Alt>Right]]></attribute>
                 </item>
                 <item>
-                    <attribute name="label" translatable='yes'>Previous directory</attribute>
+                    <attribute name="label" translatable='yes'>Previous Directory</attribute>
                     <attribute name="action">win.go_to</attribute>
                     <attribute name="target">BACK</attribute>
                     <attribute name="accel"><![CDATA[<Alt>Left]]></attribute>

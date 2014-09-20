@@ -40,6 +40,7 @@ namespace Marlin.View {
          * the back/forward stacks
          */
         public void record_uri (string uri) {
+            /* When path changed by browser buttons or menu, uri will equal current_uri */
             if (current_uri != null && current_uri != uri) {
                 back_stack.push (current_uri);
                 forward_stack.clear ();
@@ -63,7 +64,6 @@ namespace Marlin.View {
 
         public string? go_back (uint n = 1) {
             debug ("[Browser] go back %i places", (int) n);
-
             var uri = back_stack.pop ();
             if (uri != null) {
                 if (current_uri != null) {
@@ -80,7 +80,6 @@ namespace Marlin.View {
 
         public string? go_forward (uint n = 1) {
             debug ("[Browser] go forward %i places", (int) n);
-
             var uri = forward_stack.pop ();
             if (uri != null) {
                 if (current_uri != null) {

@@ -19,12 +19,16 @@
 namespace FM {
     public class IconView : DirectoryView {
         /* Golden ratio used */
-        const double ITEM_WIDTH_TO_ICON_SIZE_RATIO = 1.62;
+        const double COLUMN_SPACING_RATIO = 0.3;
+        const double ROW_SPACING_RATIO = 0.3;
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
             base (_slot);
+            minimum_zoom = Marlin.ZoomLevel.LARGE;
+            if (zoom_level < minimum_zoom)
+                zoom_level = minimum_zoom;
         }
 
         ~IconView () {
@@ -71,7 +75,6 @@ namespace FM {
             tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
             tree.draw.connect (on_view_draw);
             tree.key_press_event.connect (on_view_key_press_event);
-            tree.item_activated.connect (on_view_items_activated);
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
@@ -105,7 +108,9 @@ namespace FM {
             if (tree != null) {
 //message ("IV zoom level changed");
                 int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
-                tree.set_item_width ((int)((double) icon_size * ITEM_WIDTH_TO_ICON_SIZE_RATIO));
+                tree.set_item_width (icon_size);
+                tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
+                tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
                 base.zoom_level_changed ();
             }
         }
@@ -206,14 +211,15 @@ namespace FM {
                     Gdk.Rectangle rect, area;
                     tree.get_cell_rect  (p, r, out rect);
                     area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-                    if (helpers_shown &&
+                    on_blank = (x < area.x || y < area.y);
+                    if (!on_blank && helpers_shown &&
                         x <= area.x + 18 &&
                         y <= area.y + 18)
 
                         on_helper = true;
                 }
             }
-            on_icon = !on_name && !on_helper;
+            on_icon = !on_name && !on_helper && !on_blank;
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col,  bool scroll_to_top) {

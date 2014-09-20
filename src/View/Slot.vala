@@ -90,13 +90,19 @@ namespace Marlin.View {
         }
 
         private void set_up_directory (GLib.File loc) {
-//message ("set up directory");
+message ("set up directory");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-                directory.done_loading.connect (() => {autosize_slot ();});
+
+            directory.done_loading.connect (() => {
+                ctab.directory_done_loading (this);
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    autosize_slot ();
+            });
+
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                 directory.track_longest_name = true;
-            }
+
             directory.need_reload.connect (ctab.reload);
         }
 
@@ -126,7 +132,9 @@ namespace Marlin.View {
 //message ("autosize_slot");
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ())
+            if (directory.is_loading ())
+                layout.set_markup (loading_message, -1);
+            else if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);
@@ -136,13 +144,14 @@ namespace Marlin.View {
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
+
             int old_width = width;
             width = (int) Pango.units_to_double (extents.width)
-                  + 2 * directory.icon_size
-                  + 24;
+                  + dir_view.icon_size * 2;
 
-            width = width.clamp (preferred_column_width / 3, preferred_column_width * 2);
+            width = width.clamp (preferred_column_width / 2, preferred_column_width * 3);
 
+//message ("new width %i, old width %i, icon size %i", width, old_width, directory.icon_size);
             size_change (width - old_width);
             hpane.set_position (width);
             colpane.show_all ();
