@@ -97,6 +97,7 @@ namespace Marlin.View {
         }
 
         public void go_up () {
+//message ("VC go up");
             if (view.directory.has_parent ())
                 user_path_change_request (view.directory.get_parent ());
         }

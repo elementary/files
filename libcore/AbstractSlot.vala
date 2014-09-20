@@ -22,7 +22,17 @@ namespace GOF {
 
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
-        public GOF.Directory.Async directory;
+        private  GOF.Directory.Async _directory;
+        public GOF.Directory.Async directory {
+            get {
+                return get_current_slot ()._directory;
+            }
+
+            protected set {
+                _directory = value;
+            }
+        }
+
         public GLib.File location  {
             get {return directory.location;}
         }

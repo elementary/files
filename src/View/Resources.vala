@@ -50,5 +50,5 @@ namespace Marlin {
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
 
-    public const string OPEN_IN_TERMINAL_PATH = "/usr/share/applications/open-pantheon-terminal-here.desktop";
+    public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 }

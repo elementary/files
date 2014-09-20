@@ -416,6 +416,9 @@ namespace FM {
 
             unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint nb_elem = selection.length ();
+            if (nb_elem < 1)
+                return;
+
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             bool only_folders = selection_only_contains_folders (selection);
             if (nb_elem < 10 && (default_app == null || only_folders)) {
@@ -942,9 +945,9 @@ namespace FM {
         }
 
         private void open_selected_in_terminal () {
-                var terminal = new GLib.DesktopAppInfo.from_filename (Marlin.OPEN_IN_TERMINAL_PATH);
-                if (terminal != null)
-                    open_files_with (terminal, selected_files);
+            var terminal = new GLib.DesktopAppInfo (Marlin.OPEN_IN_TERMINAL_DESKTOP_ID);
+            if (terminal != null)
+                open_files_with (terminal, selected_files);
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2016,6 +2019,12 @@ namespace FM {
                     if (control_pressed && shift_pressed)
                         open_selected_in_terminal ();
                     break;
+
+                case Gdk.Key.N:
+                    if (control_pressed && shift_pressed)
+                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    break;
+
                 default:
                     break;
             }

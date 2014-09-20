@@ -79,7 +79,6 @@ namespace Marlin.View {
             slot_list.append (new_slot);
             ctab.load_slot_directory (new_slot);
             new_slot.active ();
-message ("calling autosize_slot");
             new_slot.autosize_slot ();
         }
 

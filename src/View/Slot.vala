@@ -90,7 +90,7 @@ namespace Marlin.View {
         }
 
         private void set_up_directory (GLib.File loc) {
-message ("set up directory");
+//message ("set up directory");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
 
