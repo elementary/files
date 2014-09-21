@@ -125,9 +125,11 @@ public class Marlin.Application : Granite.Application {
 
         this.add_action_entries (app_actions, this);
 
+#if 0
         /** Application menu */
         var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
         this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
+#endif
 
     }
 

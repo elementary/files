@@ -156,10 +156,12 @@ namespace Marlin.View {
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
 
+#if 0
             if (is_first_window) {
                 var builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
                 application.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
             }
+#endif
         }
 
         private void construct_top_menu () {

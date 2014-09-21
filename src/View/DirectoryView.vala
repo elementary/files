@@ -210,6 +210,7 @@ namespace FM {
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
+                view.enter_notify_event.connect (on_enter_notify_event);
             }
             freeze_tree ();
             set_up_zoom_level ();
@@ -2061,6 +2062,10 @@ message ("on view key_press_event");
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             window.item_hovered (null); /* Cause OverLay to disappear */
+            return false;
+        }
+        protected bool on_enter_notify_event (Gdk.EventCrossing event) {
+            grab_focus (); /* Cause OverLay to disappear */
             return false;
         }
 
