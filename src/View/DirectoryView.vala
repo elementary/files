@@ -112,6 +112,7 @@ namespace FM {
         uint drag_timer_id = 0;
         int drag_x = 0;
         int drag_y = 0;
+        int drag_button;
         protected int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
         GOF.File? drop_target_file = null;
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -1075,6 +1076,8 @@ namespace FM {
             cancel_drag_timer ();
             if (event.button == 3)
                 show_context_menu (event);
+            else if (event.button == 1)
+                activate_selected_items ();
 
             return false;
         }
@@ -1110,10 +1113,14 @@ namespace FM {
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
                 var target_list = new Gtk.TargetList (drag_targets);
+                var actions = file_drag_actions;
+                if (drag_button == 3)
+                    actions |= Gdk.DragAction.ASK;
+
                 context = Gtk.drag_begin_with_coordinates (widget,
                                 target_list,
-                                Gdk.DragAction.ASK | file_drag_actions,
-                                3,
+                                actions,
+                                drag_button,
                                 (Gdk.Event) event,
                                  x, y);
                 return true;
@@ -1474,13 +1481,14 @@ namespace FM {
             /* Remember position of click */ 
             drag_x = (int)(event.button.x);
             drag_y = (int)(event.button.y);
+            var button_event = (Gdk.EventButton)event;
+            drag_button = (int)(button_event.button);
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    drag_delay,
                                                    () => {
-//message ("drag time out");
                 disconnect_drag_timeout_motion_and_release_events ();
                 drag_timer_id = 0;
-                show_context_menu (event);
+                on_button_release((Gdk.EventButton)event);
                 return false;
             });
         }
@@ -1982,7 +1990,7 @@ namespace FM {
 
         /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-//message ("on view key_press_event");
+message ("on view key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
@@ -2167,15 +2175,14 @@ namespace FM {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
+        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("DV handle primary button");
             bool single_click_mode = Preferences.settings.get_boolean ("single-click");
             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-            if (on_icon && (single_click_mode || double_click_event )) {
-                on_view_items_activated ();
-                return true;
-            } else
-                return false; /* required for row expanders to work */
+            if (single_click_mode || double_click_event)
+                start_drag_timer ((Gdk.Event)event);
+
+            return true;
         }
 
         protected bool handle_secondary_button_click (Gdk.EventButton event) {
@@ -2213,7 +2220,7 @@ namespace FM {
             if (!no_mods)
                 return false;
 
-            if (on_blank || (path != null && !path_selected && !on_helper)) {
+            if (!path_selected && (on_blank || !on_helper)){
                 unselect_all ();
                 if (!on_blank)
                     select_path (path);
@@ -2224,17 +2231,18 @@ namespace FM {
                 case Gdk.BUTTON_PRIMARY:
                     if (on_blank) {
                         block_drag_and_drop ();  /* allow rubber banding */
-                        return false;
+                        return false; /* default handler also unselects other rows */
                     } else if (on_helper) {
                         if (path_selected)
                             unselect_path (path);
                         else
                             select_path (path);
-                    } else  if (on_name)
+                    } else if (on_name)
                         rename_file (selected_files.data); 
-                    else
-                        result = handle_primary_button_click (event, path, on_icon);
-
+                    else if (on_icon)
+                        result = handle_primary_button_click (event, path);
+                    else /* must be on expanders (if any) */
+                        return false; /* required for row expanders to work */
                     break;
 
                 case Gdk.BUTTON_MIDDLE:

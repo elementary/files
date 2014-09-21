@@ -53,14 +53,13 @@ namespace FM {
             }
         }
 
-        private bool not_double_click () {
+        private bool not_double_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("MCV not double click");
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
                 unfreeze_updates ();
-                if (!is_drag_pending ()) 
-                    activate_selected_items ();
+                base.handle_primary_button_click (event, path);
             }
             return false;
         }
@@ -95,17 +94,17 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path, bool on_icon) {
+        protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("CV handle left button");
             if (!Preferences.settings.get_boolean ("single-click"))
-                return base.handle_primary_button_click (event, path, on_icon);
+                return base.handle_primary_button_click (event, path);
 
             bool result = false; 
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click)
                     result = true;
-                else if (on_icon) {
+                else {
                     /* Determine if folder selected ... */
                     selected_folder = null;
                     unowned GOF.File file = selected_files.data;
@@ -114,7 +113,10 @@ namespace FM {
                         selected_folder = file;
                         awaiting_double_click = true;
                         freeze_updates ();
-                        double_click_timeout_id = GLib.Timeout.add (drag_delay, not_double_click);
+                        double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
+                            not_double_click (event, path);
+                            return false;
+                        });
                     }
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {

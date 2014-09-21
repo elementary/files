@@ -198,5 +198,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 install (TARGETS ../pantheon-files RUNTIME DESTINATION bin)
-install (FILES appmenu.ui View/winmenu.ui View/directory_view_popup.ui pantheon-files-ui.xml DESTINATION ${UI_DIR})
+#install (FILES appmenu.ui View/winmenu.ui View/directory_view_popup.ui pantheon-files-ui.xml DESTINATION ${UI_DIR})
+install (FILES appmenu.ui View/winmenu.ui View/directory_view_popup.ui DESTINATION ${UI_DIR})
 include (Tests)
