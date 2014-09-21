@@ -1820,14 +1820,13 @@ namespace FM {
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
-            if (thumbnail_source_id != 0)
+            if (thumbnail_source_id != 0 || slot.directory == null)
                 return;
 
-//message ("schedule thumbnail timeout");
             cancel_thumbnailing ();
             thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (slot.directory == null || slot.directory.is_loading ())
-                    return false;
+                if (slot.directory.is_loading ())
+                    return true;
 
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
