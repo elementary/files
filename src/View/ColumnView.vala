@@ -96,28 +96,28 @@ namespace FM {
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("CV handle left button");
-            if (!Preferences.settings.get_boolean ("single-click"))
+
+            selected_folder = null;
+            unowned GOF.File file = selected_files.data;
+            bool is_folder = file.is_folder ();
+
+            if (!is_folder || !Preferences.settings.get_boolean ("single-click"))
                 return base.handle_primary_button_click (event, path);
 
-            bool result = false; 
+            selected_folder = file;
+            bool result = true; 
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click)
                     result = true;
                 else {
-                    /* Determine if folder selected ... */
-                    selected_folder = null;
-                    unowned GOF.File file = selected_files.data;
-                    if (file.is_folder ()) {
-                        /*  ... store clicked folder and start double-click timeout */
-                        selected_folder = file;
-                        awaiting_double_click = true;
-                        freeze_updates ();
-                        double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
-                            not_double_click (event, path);
-                            return false;
-                        });
-                    }
+                    /*  ... store clicked folder and start double-click timeout */
+                    awaiting_double_click = true;
+                    freeze_updates ();
+                    double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
+                        not_double_click (event, path);
+                        return false;
+                    });
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
                 cancel_await_double_click ();

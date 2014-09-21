@@ -78,7 +78,7 @@ namespace Marlin.View {
             inactive.connect (() => {
 //message ("Slot %s inactive", location.get_uri ());
                 is_active = false;
-                dir_view.unselect_all ();
+                //dir_view.unselect_all (); /* Is this desirable? */
             });
         }
 

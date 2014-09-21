@@ -20,6 +20,7 @@ namespace FM {
     /* Implement common features of MillerColumnView and ListView */
     public abstract class AbstractTreeView : DirectoryView {
         protected Gtk.TreeView tree;
+        protected int icon_renderer_xpad = 6;
         public AbstractTreeView (Marlin.View.Slot _slot) {
 //message ("New Abstract ListView");
             base (_slot);
@@ -50,6 +51,7 @@ namespace FM {
         protected void set_up_icon_renderer () {
 //message ("ATV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
+            icon_renderer.xpad = icon_renderer_xpad;
         }
 
         protected void set_up_view () {
@@ -200,6 +202,7 @@ namespace FM {
                 int? x_offset, width;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
                 int expander_width = (tree.show_expanders ? 10 : 0) * (depth +1); /* TODO Find a simpler way */
+                expander_width += icon_renderer_xpad;
                 if (cx > expander_width ) {
                     if (cx <= x_offset + width + expander_width)
                         on_icon = true;
@@ -210,11 +213,12 @@ namespace FM {
 
                         on_helper = true;
 
-                    /* Disable one-click renaming below a minimum icon size - make name activatable */
-                    if (zoom_level >= Marlin.ZoomLevel.NORMAL)
+                    /* Disable one-click renaming below a minimum icon size - make name activatable
+                     * disabled due to bug caused when icon and font are small and a drag is commmenced */
+                    //if (zoom_level >= Marlin.ZoomLevel.NORMAL)
                         on_name = !on_icon && !on_blank;
-                    else
-                        on_icon = !on_blank;
+                    //else
+                    //    on_icon = !on_blank;
 
                 } else
                     on_blank = false;

@@ -171,5 +171,14 @@ namespace FM {
             /* Release our reference on dir */
             loaded_subdirectories.remove (dir);
         }
+
+        protected override bool expand_collapse (Gtk.TreePath? path) {
+            if (tree.is_row_expanded (path))
+                tree.collapse_row (path);
+            else
+                tree.expand_row (path, false);
+
+            return true;
+        }
     }
 }

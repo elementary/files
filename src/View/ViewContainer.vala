@@ -167,14 +167,14 @@ namespace Marlin.View {
 
         public void slot_path_changed (GLib.File loc) {
 //message ("VC slot path changed");
-#if 0
+#if 0       /* TODO - Is this desirable? */
             /* automagicly enable icon view for icons keypath */
             if (get_current_slot ().directory.uri_contain_keypath_icons && view_mode != Marlin.ViewMode.ICON)
                 change_view_mode (Marlin.ViewMode.ICON, null);
             else
 #endif
 
-                set_up_current_slot ();
+            set_up_current_slot ();
         }
 
         private void set_up_current_slot () {
@@ -324,6 +324,9 @@ namespace Marlin.View {
 
         public void reload () {
 //message ("VC reload");
+            if (!can_show_folder) /* Try to display folder again */
+                content = view.get_content_box ();
+
             loading (true);
             /* Allow time for the signal to propagate and the tab label to redraw */
             Timeout.add (10, () => {

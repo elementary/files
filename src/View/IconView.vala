@@ -18,15 +18,15 @@
 
 namespace FM {
     public class IconView : DirectoryView {
-        /* Golden ratio used */
         const double COLUMN_SPACING_RATIO = 0.3;
         const double ROW_SPACING_RATIO = 0.3;
+        const double WIDTH_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
             base (_slot);
-            minimum_zoom = Marlin.ZoomLevel.LARGE;
+            minimum_zoom = Marlin.ZoomLevel.SMALLER;
             if (zoom_level < minimum_zoom)
                 zoom_level = minimum_zoom;
         }
@@ -53,18 +53,20 @@ namespace FM {
         protected void set_up_name_renderer () {
 //message ("IV set up name renderer");
             name_renderer.wrap_width = 12;
-            name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            name_renderer.wrap_mode = Pango.WrapMode.WORD;
             name_renderer.xalign = 0.5f;
+            name_renderer.yalign = 0.0f;
             name_renderer.editable_set = true;
             name_renderer.editable = true;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
+            name_renderer.scale = 1.0;
+            name_renderer.scale_set = true;
         }
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
             icon_renderer.set_property ("follow-state",  true);
-            //Preferences.settings.bind ("single-click", icon_renderer, "selection-helpers", GLib.SettingsBindFlags.DEFAULT);
         }
 
 
@@ -111,6 +113,7 @@ namespace FM {
                 tree.set_item_width (icon_size);
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
+                tree.set_item_width ((int)(1.62 * icon_size));
                 base.zoom_level_changed ();
             }
         }

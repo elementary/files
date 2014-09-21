@@ -184,6 +184,8 @@ namespace FM {
         protected static DndHandler dnd_handler = new FM.DndHandler ();
         private Gtk.TreePath? hover_path = null;
 
+        public bool single_click_mode {get; set;}
+
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
 /*** Creation methods */
@@ -196,7 +198,7 @@ namespace FM {
             name_renderer = new Gtk.CellRendererText ();
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-
+            Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             set_up__menu_actions ();
             set_up_directory_view ();
 
@@ -727,7 +729,7 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-//message ("rename file");
+//message ("DV rename file");
             unselect_all ();
             select_gof_file (file_to_rename);
             start_renaming_file (file_to_rename, false);
@@ -1074,12 +1076,12 @@ namespace FM {
 //message ("Directory on button release");
             /* Only active during drag timeout */
             cancel_drag_timer ();
-            if (event.button == 3)
+            if (drag_button == Gdk.BUTTON_SECONDARY)
                 show_context_menu (event);
-            else if (event.button == 1)
+            else if (drag_button == Gdk.BUTTON_PRIMARY && single_click_mode)
                 activate_selected_items ();
 
-            return false;
+            return true;
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
@@ -2177,10 +2179,11 @@ message ("on view key_press_event");
 
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("DV handle primary button");
-            bool single_click_mode = Preferences.settings.get_boolean ("single-click");
             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-            if (single_click_mode || double_click_event)
+            if (!double_click_event) {
                 start_drag_timer ((Gdk.Event)event);
+            } else 
+                activate_selected_items ();
 
             return true;
         }
@@ -2238,11 +2241,13 @@ message ("on view key_press_event");
                         else
                             select_path (path);
                     } else if (on_name)
-                        rename_file (selected_files.data); 
+                        rename_file (selected_files.data);
                     else if (on_icon)
                         result = handle_primary_button_click (event, path);
-                    else /* must be on expanders (if any) */
-                        return false; /* required for row expanders to work */
+                    else
+                        /* must be on expanders (if any) or xpad. Handle ourselves so that clicking
+                         * on xpad also expands/collapses row (accessibility)*/
+                        result = expand_collapse (path);
                     break;
 
                 case Gdk.BUTTON_MIDDLE:
@@ -2275,7 +2280,7 @@ message ("on view key_press_event");
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = (zoom_level >= Marlin.ZoomLevel.NORMAL);
             icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
-            
+            name_renderer.scale = zoom_level_to_scale (zoom_level);
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -2368,6 +2373,33 @@ message ("on view key_press_event");
             });
 
             update_menu_actions_sort ();
+        }
+
+        protected double zoom_level_to_scale (Marlin.ZoomLevel zoom) {
+        /* TODO Set best scale factors */
+            switch (zoom) {
+                case Marlin.ZoomLevel.SMALLEST:
+                    return 0.7;
+                case Marlin.ZoomLevel.SMALLER:
+                    return 0.8;
+                case Marlin.ZoomLevel.SMALL:
+                    return 0.9;
+                case Marlin.ZoomLevel.NORMAL:
+                    return 1.0;
+                case Marlin.ZoomLevel.LARGE:
+                    return 1.2;
+                case Marlin.ZoomLevel.LARGER:
+                    return 1.4;
+                case Marlin.ZoomLevel.LARGEST:
+                    return 1.6;
+                default:
+                    return 1.0;
+
+            }
+        }
+
+        protected virtual bool expand_collapse (Gtk.TreePath? path) {
+            return true;
         }
 
 /** Virtual methods - may be overridden*/
