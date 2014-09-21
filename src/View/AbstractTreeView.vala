@@ -184,7 +184,7 @@ namespace FM {
                                                 out bool on_blank,
                                                 out bool on_icon,
                                                 out bool on_helper) {
-message ("get click position info x is %i,  y is %i", x, y);
+//message ("get click position info x is %i,  y is %i", x, y);
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             int cx, cy;

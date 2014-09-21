@@ -137,8 +137,8 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
-                slot_path_changed (loc);
                 view_mode = mode;
+                slot_path_changed (loc);
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
             }
@@ -168,13 +168,13 @@ namespace Marlin.View {
         public void slot_path_changed (GLib.File loc) {
 //message ("VC slot path changed");
 #if 0
-            /*TODO Reimplement ? */
             /* automagicly enable icon view for icons keypath */
-            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
-                mode = 0; /* icon view */
+            if (get_current_slot ().directory.uri_contain_keypath_icons && view_mode != Marlin.ViewMode.ICON)
+                change_view_mode (Marlin.ViewMode.ICON, null);
+            else
 #endif
 
-            set_up_current_slot ();
+                set_up_current_slot ();
         }
 
         private void set_up_current_slot () {
