@@ -13,13 +13,16 @@
         </section>
     </menu>
 
-    <menu id='popup-selection'>
+    <menu id='rename'>
         <section>
             <item>
                 <attribute name='label' translatable='yes'>Rename</attribute>
                 <attribute name='action'>selection.rename</attribute>
             </item>
         </section>
+    </menu>
+
+    <menu id='trash'>
         <section>
             <item>
                 <attribute name='label' translatable='yes'>Move to Trash</attribute>
@@ -28,9 +31,9 @@
         </section>
     </menu>
 
-    <menu id='popup-background'>
+    <menu id='new'>
         <section>
-            <submenu id='new'>
+            <submenu id='new-submenu'>
                 <attribute name='label' translatable='yes'>New</attribute>
                 <item>
                     <attribute name='label' translatable='yes'>Folder</attribute>
@@ -44,12 +47,13 @@
                 </item>
             </submenu>
         </section>
-        <section>
+
+    </menu>
+    <menu id='hidden'>
             <item>
                 <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
                 <attribute name='action'>background.show_hidden</attribute>
             </item>
-        </section>
     </menu>
 
     <menu id='open-in'>

@@ -1518,15 +1518,18 @@ namespace FM {
 
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
 //message ("build menu selection");
-            GLib.Menu menu;
+            GLib.Menu menu = new GLib.Menu ();
             if (in_trash)
-                menu = builder.get_object ("popup-trash-selection") as GLib.Menu;
+                menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
             else {
-                menu = builder.get_object ("popup-selection") as GLib.Menu;
-                menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
                 menu.append_section (null, build_menu_open ());
+
                 if (common_actions.get_action_enabled ("open_in"))
                     menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+
+                menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
 
                 if (common_actions.get_action_enabled ("bookmark"))
                     menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
@@ -1540,22 +1543,25 @@ namespace FM {
             if (in_trash)
                 return null;
 
-            var menu = builder.get_object ("popup-background") as GLib.Menu;
-
-            menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
+            var menu = new GLib.Menu ();
             menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+            menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
 
             GLib.MenuModel? template_menu = build_menu_templates ();
+            var new_menu = builder.get_object ("new") as GLib.Menu;
+
             if (template_menu != null) {
-                var new_menu = builder.get_object ("new") as GLib.Menu;
-                new_menu.append_section (null, template_menu);
+                var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
+                new_submenu.append_section (null, template_menu);
             }
 
+            menu.append_section (null, new_menu as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
 
             if (common_actions.get_action_enabled ("bookmark"))
                 menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
 
+            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
         }
@@ -1993,7 +1999,7 @@ namespace FM {
 
         /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-message ("on view key_press_event");
+//message ("on view key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
