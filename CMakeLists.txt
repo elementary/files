@@ -22,7 +22,7 @@ option (LIB_ONLY "Build libcore and libwidgets only" FALSE)
 
 find_package (Vala REQUIRED)
 include (ValaVersion)
-ensure_vala_version ("0.16.0" MINIMUM)
+ensure_vala_version ("0.25.0" MINIMUM)
 include (ValaPrecompile)
 
 IF (LIB_ONLY)

@@ -84,30 +84,23 @@ namespace Marlin {
             content_box.show_all ();
         }
 
-        public void add_extra_item (string text) {
-            Gtk.TreeIter iter;
-            store.append (out iter, null);
-            store.set (iter,
-                       Column.ICON, null,
-                       Column.NAME, text,
-                       Column.URI, "test://",
-                       -1);
-
+        public void add_extra_network_item (string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+            add_extra_item (network_category_reference, text, tooltip, icon, cb);
         }
 
-        public void add_extra_network_item (string text, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+        public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
             Gtk.TreeIter iter;
-            store.get_iter (out iter, network_category_reference.get_path ());
+            store.get_iter (out iter, category.get_path ());
             iter = add_place (PlaceType.PLUGIN_ITEM,
                              iter,
-                             _("Connect to server"),
+                             text,
                              icon,
                              null,
                              null,
                              null,
                              null,
                              0,
-                             _("Connect to a network file server"));
+                             tooltip);
             if (cb != null)
                 store.@set (iter, Column.PLUGIN_CALLBACK, cb);
 

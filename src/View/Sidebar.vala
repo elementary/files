@@ -96,6 +96,7 @@ namespace Marlin.Places {
 
         Gtk.Menu popupmenu;
         Gtk.MenuItem popupmenu_open_in_new_tab_item;
+        Gtk.MenuItem popupmenu_open_in_new_window_item;
         Gtk.MenuItem popupmenu_remove_item;
         Gtk.MenuItem popupmenu_rename_item;
         Gtk.MenuItem popupmenu_separator_item1;
@@ -1195,6 +1196,7 @@ namespace Marlin.Places {
             popupmenu.append (item);
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("Open in New _Window"));
+            popupmenu_open_in_new_window_item = item;
             item.activate.connect (open_shortcut_in_new_window_cb);
             item.show ();
             popupmenu.append (item);
@@ -2029,6 +2031,10 @@ namespace Marlin.Places {
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
+
+            bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
+            Eel.gtk_widget_set_shown (popupmenu_open_in_new_tab_item, !is_plugin);
+            Eel.gtk_widget_set_shown (popupmenu_open_in_new_window_item, !is_plugin);
         }
 
         /**
