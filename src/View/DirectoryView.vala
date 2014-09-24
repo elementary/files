@@ -2316,7 +2316,6 @@ namespace FM {
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = (zoom_level >= Marlin.ZoomLevel.NORMAL);
             icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
-            name_renderer.scale = zoom_level_to_scale (zoom_level);
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -2409,29 +2408,6 @@ namespace FM {
             });
 
             update_menu_actions_sort ();
-        }
-
-        protected double zoom_level_to_scale (Marlin.ZoomLevel zoom) {
-        /* TODO Set best scale factors */
-            switch (zoom) {
-                case Marlin.ZoomLevel.SMALLEST:
-                    return 0.7;
-                case Marlin.ZoomLevel.SMALLER:
-                    return 0.8;
-                case Marlin.ZoomLevel.SMALL:
-                    return 0.9;
-                case Marlin.ZoomLevel.NORMAL:
-                    return 1.0;
-                case Marlin.ZoomLevel.LARGE:
-                    return 1.2;
-                case Marlin.ZoomLevel.LARGER:
-                    return 1.4;
-                case Marlin.ZoomLevel.LARGEST:
-                    return 1.6;
-                default:
-                    return 1.0;
-
-            }
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {

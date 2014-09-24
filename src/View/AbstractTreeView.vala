@@ -212,8 +212,6 @@ namespace FM {
                 } else
                     zone = ClickZone.EXPANDER;
             }
-
-message ("zone is %i", (int)zone);
             return zone;
         }
 

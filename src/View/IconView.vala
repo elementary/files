@@ -61,8 +61,6 @@ namespace FM {
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
-            name_renderer.scale = 1.0;
-            name_renderer.scale_set = true;
         }
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
