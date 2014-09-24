@@ -180,54 +180,41 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override void get_event_position_info (int x, int y,
-                                                out Gtk.TreePath? path,
-                                                out bool on_name,
-                                                out bool on_blank,
-                                                out bool on_icon,
-                                                out bool on_helper) {
+        protected override uint get_event_position_info (int x, int y, out Gtk.TreePath? path) {
 //message ("get click position info x is %i,  y is %i", x, y);
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
-            int cx, cy;
+            uint zone;
+            int cx, cy, depth;
 
-            on_blank = tree.is_blank_at_pos (x, y, out p, out c, out cx, out cy);
+            bool on_blank = tree.is_blank_at_pos (x, y, out p, out c, out cx, out cy);
             path = p;
 
-            int depth = p != null ? p.get_depth () : 0;
-            on_icon = false;
-            on_helper = false;
-            on_name = false;
+            depth = p != null ? p.get_depth () : 0;
+            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
+
             if (c != null && c == name_column) {
                 int? x_offset, width;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
                 int expander_width = (tree.show_expanders ? 10 : 0) * (depth +1); /* TODO Find a simpler way */
                 expander_width += icon_renderer_xpad;
                 if (cx > expander_width ) {
-                    if (cx <= x_offset + width + expander_width)
-                        on_icon = true;
+                    if (cx <= x_offset + width + expander_width) {
+                        if (helpers_shown &&
+                            ((cx -x_offset - expander_width) <= 18) &&
+                            (cy <=18))
+                            zone = ClickZone.HELPER;
+                        else
+                            zone = ClickZone.ICON;
 
-                    if (helpers_shown &&
-                        ((cx -x_offset - expander_width) <= 18) &&
-                        (cy <=18))
-
-                        on_helper = true;
-
-                    /* Disable one-click renaming below a minimum icon size - make name activatable
-                     * disabled due to bug caused when icon and font are small and a drag is commmenced */
-                    //if (zoom_level >= Marlin.ZoomLevel.NORMAL)
-                        on_name = !on_icon && !on_blank;
-                    //else
-                    //    on_icon = !on_blank;
-
+                    } else if (!on_blank)
+                        zone = ClickZone.NAME;
                 } else
-                    on_blank = false;
+                    zone = ClickZone.EXPANDER;
             }
 
-//message ("on helper is %s", on_helper ? "true" : "false");
-//message ("on icon is %s", on_icon ? "true" : "false");
-//message ("on name is %s", on_name ? "true" : "false");
-//message ("on blank is %s", on_blank ? "true" : "false");
+message ("zone is %i", (int)zone);
+            return zone;
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top) {

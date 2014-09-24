@@ -59,7 +59,8 @@ namespace FM {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
                 unfreeze_updates ();
-                base.handle_primary_button_click (event, path);
+                if (should_activate) /* button already released */
+                    activate_selected_items ();
             }
             return false;
         }
@@ -89,9 +90,11 @@ namespace FM {
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
 //message ("Column view button release");
             /* Invoke default handler unless waiting for a double-click in single-click mode */
-            bool result =  (Preferences.settings.get_boolean ("single-click") && awaiting_double_click);
-            base.on_view_button_release_event (event);
-            return result;
+            if (Preferences.settings.get_boolean ("single-click") && awaiting_double_click) {
+                should_activate = true; /* will activate when times out */
+                return true;
+            } else
+                return base.on_view_button_release_event (event);
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
@@ -126,7 +129,6 @@ namespace FM {
 
                 result = true;
             }
-//message ("Returning %s", result ? "true" : "false");
             return result;
         }
 

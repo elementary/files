@@ -289,7 +289,7 @@ namespace Marlin.View {
 /** Helper functions */
 
         private void scroll_to_slot (GOF.AbstractSlot slot) {
-//message ("scroll_to_slot");
+message ("scroll_to_slot");
             int width = 0;
             int previous_width = 0;
 

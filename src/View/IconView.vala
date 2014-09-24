@@ -192,37 +192,34 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override void get_event_position_info (int x, int y,
-                                                out Gtk.TreePath? path,
-                                                out bool on_name,
-                                                out bool on_blank,
-                                                out bool on_icon,
-                                                out bool on_helper) {
+        protected override uint get_event_position_info (int x, int y,
+                                                out Gtk.TreePath? path) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.CellRenderer r;
+            uint zone;
 
-            on_blank = !tree.get_item_at_pos (x, y, out p, out r);
+            tree.get_item_at_pos (x, y, out p, out r);
             path = p;
-
-            on_icon = false;
-            on_helper = false;
-            on_name = false;
+            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
             if (r != null) {
                 if (r is Gtk.CellRendererText)
-                    on_name = true;
+                    zone = ClickZone.NAME;
                 else {
                     Gdk.Rectangle rect, area;
                     tree.get_cell_rect  (p, r, out rect);
                     area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-                    on_blank = (x < area.x || y < area.y);
-                    if (!on_blank && helpers_shown &&
+                    if (helpers_shown &&
+                        x >= area.x &&
                         x <= area.x + 18 &&
+                        y >= area.y &&
                         y <= area.y + 18)
 
-                        on_helper = true;
+                        zone = ClickZone.HELPER;
+                    else
+                        zone = ClickZone.ICON;
                 }
             }
-            on_icon = !on_name && !on_helper && !on_blank;
+            return zone;
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col,  bool scroll_to_top) {

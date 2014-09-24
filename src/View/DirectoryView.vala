@@ -31,6 +31,15 @@ namespace FM {
             NETSCAPE_URL
         }
 
+        protected enum ClickZone {
+            EXPANDER,
+            HELPER,
+            ICON,
+            NAME,
+            BLANK_PATH,
+            BLANK_NO_PATH
+        }
+
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -185,6 +194,8 @@ namespace FM {
         private Gtk.TreePath? hover_path = null;
 
         public bool single_click_mode {get; set;}
+        protected bool should_activate = false;
+        protected uint click_zone = ClickZone.ICON;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
@@ -1073,14 +1084,12 @@ namespace FM {
         }
 
     /** Handle Button events */
-        private bool on_button_release (Gdk.EventButton event) {
+        private bool on_drag_timeout_button_release (Gdk.EventButton event) {
 //message ("Directory on button release");
             /* Only active during drag timeout */
             cancel_drag_timer ();
             if (drag_button == Gdk.BUTTON_SECONDARY)
                 show_context_menu (event);
-            else if (drag_button == Gdk.BUTTON_PRIMARY && single_click_mode)
-                activate_selected_items ();
 
             return true;
         }
@@ -1115,6 +1124,7 @@ namespace FM {
 
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
+                should_activate = false;
                 var target_list = new Gtk.TargetList (drag_targets);
                 var actions = file_drag_actions;
                 if (drag_button == 3)
@@ -1166,15 +1176,11 @@ namespace FM {
         public void notify_selection_changed () {
 //message ("notify selection changed calls update menu actions");
             selection_was_removed = false;
-            if (!get_realized ()) {
-//message ("not realized");
+            if (!get_realized ())
                 return;
-            }
 
-            if (updates_frozen) {
-//message ("updates frozen");
+            if (updates_frozen)
                 return;
-            }
 
             update_menu_actions ();
             window.selection_changed (get_selected_files ());
@@ -1491,7 +1497,7 @@ namespace FM {
                                                    () => {
                 disconnect_drag_timeout_motion_and_release_events ();
                 drag_timer_id = 0;
-                on_button_release((Gdk.EventButton)event);
+                on_drag_timeout_button_release((Gdk.EventButton)event);
                 return false;
             });
         }
@@ -1907,14 +1913,14 @@ namespace FM {
         private void connect_drag_motion_and_release_events () {
 //message ("connect motion and release events");
             var real_view = get_real_view ();
-            real_view.button_release_event.connect (on_button_release);
+            real_view.button_release_event.connect (on_drag_timeout_button_release);
             real_view.motion_notify_event.connect (on_drag_timeout_motion_notify);
         }
 
         private void disconnect_drag_timeout_motion_and_release_events () {
 //message ("disconnect motion and release events");
             var real_view = get_real_view ();
-            real_view.button_release_event.disconnect (on_button_release);
+            real_view.button_release_event.disconnect (on_drag_timeout_button_release);
             real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
         }
 
@@ -2191,10 +2197,10 @@ namespace FM {
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
 //message ("DV handle primary button");
             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-            if (!double_click_event) {
+            should_activate =  single_click_mode || double_click_event;
+
+            if (!double_click_event)
                 start_drag_timer ((Gdk.Event)event);
-            } else 
-                activate_selected_items ();
 
             return true;
         }
@@ -2224,17 +2230,16 @@ namespace FM {
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
 //message ("DV view button press");
             grab_focus (); /* cancels any renaming */
-            slot.active ();
             Gtk.TreePath? path = null;
-            bool on_blank, on_icon, on_helper, on_name;
-            get_event_position_info ((int)event.x, (int)event.y, out path,  out on_name, out on_blank, out on_icon, out on_helper);
+
+            click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool path_selected = (path != null ? path_is_selected (path) : false);
-
+            bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
             if (!no_mods)
                 return false;
 
-            if (!path_selected && (on_blank || !on_helper)){
+            if (!path_selected && (on_blank || !(click_zone == ClickZone.HELPER))){
                 unselect_all ();
                 if (!on_blank)
                     select_path (path);
@@ -2243,26 +2248,36 @@ namespace FM {
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
-                    if (on_blank) {
-                        block_drag_and_drop ();  /* allow rubber banding */
-                        return false; /* default handler also unselects other rows */
-                    } else if (on_helper) {
-                        if (path_selected)
-                            unselect_path (path);
-                        else
-                            select_path (path);
-                    } else if (on_name)
-                        rename_file (selected_files.data);
-                    else if (on_icon)
-                        result = handle_primary_button_click (event, path);
-                    else
-                        /* must be on expanders (if any) or xpad. Handle ourselves so that clicking
-                         * on xpad also expands/collapses row (accessibility)*/
-                        result = expand_collapse (path);
+                    switch (click_zone) {
+                        case ClickZone.BLANK_NO_PATH:
+                        case ClickZone.BLANK_PATH:
+                            block_drag_and_drop ();  /* allow rubber banding */
+                            result = false;
+                            break;
+                        case ClickZone.HELPER:
+                            if (path_selected)
+                                unselect_path (path);
+                            else
+                                select_path (path);
+                            break;
+                        case ClickZone.NAME:
+                            rename_file (selected_files.data);
+                            break;
+                        case ClickZone.ICON:
+                            result = handle_primary_button_click (event, path);
+                            break;
+                        case ClickZone.EXPANDER:
+                            /* on expanders (if any) or xpad. Handle ourselves so that clicking
+                             * on xpad also expands/collapses row (accessibility)*/
+                            result = expand_collapse (path);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
 
                 case Gdk.BUTTON_MIDDLE:
-                    if (!on_blank)
+                    if (path_is_selected (path))
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
 
                     break;
@@ -2283,6 +2298,16 @@ namespace FM {
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
+            slot.active ();
+            if (should_activate) {
+                Gtk.Widget widget = get_real_view ();
+                int x = (int)event.x;
+                int y = (int)event.y;
+                /* Only activate if pointer has not moved */
+                if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y))
+                    activate_selected_items (Marlin.OpenFlag.DEFAULT);
+            }
+            should_activate = false;
             return false;
         }
 
@@ -2436,7 +2461,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
-        protected abstract void get_event_position_info (int x, int y, out Gtk.TreePath? path, out bool on_name, out bool on_blank, out bool on_icon, out bool on_helper);
+        protected abstract uint get_event_position_info (int x, int y, out Gtk.TreePath? path);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top);
         public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select, bool scroll_to_top);
