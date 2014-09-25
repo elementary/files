@@ -2003,7 +2003,6 @@ namespace FM {
             notify_selection_changed ();
         }
 
-        /* Was key_press_call_back */
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
 //message ("on view key_press_event");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -2014,8 +2013,8 @@ namespace FM {
                     if (control_pressed) {
                         show_or_queue_context_menu (event);
                         return true;
-                    } else
-                        return false;
+                    }
+                    break;
 
                 case Gdk.Key.space:
                     if (!control_pressed && view_has_focus ()) {
@@ -2025,9 +2024,8 @@ namespace FM {
                             preview_selected_items ();
 
                         return true;
-                    } else
-                        return false;
-
+                    }
+                    break;
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     if (shift_pressed)
@@ -2038,13 +2036,17 @@ namespace FM {
                     return true;
 
                 case Gdk.Key.T:
-                    if (control_pressed && shift_pressed)
+                    if (control_pressed) {
                         open_selected_in_terminal ();
+                        return true;
+                    }
                     break;
 
                 case Gdk.Key.N:
-                    if (control_pressed && shift_pressed)
+                    if (control_pressed) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        return true;
+                    }
                     break;
 
                 default:

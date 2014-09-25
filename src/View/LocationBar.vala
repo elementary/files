@@ -372,7 +372,7 @@ namespace Marlin.View.Chrome
 
                 var response = dialog.run ();
                 if (response == Gtk.ResponseType.OK) {
-                    unowned AppInfo app = dialog.get_app_info ();
+                    AppInfo app = dialog.get_app_info ();
                     launch_uri_with_app (app, current_right_click_path);
                 }
 

@@ -25,6 +25,8 @@ namespace Marlin.View {
     public class Window : Gtk.ApplicationWindow
     {
         static const GLib.ActionEntry [] win_entries = {
+            {"new_window", action_new_window},
+            {"quit", action_quit},
             {"refresh", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
@@ -49,7 +51,6 @@ namespace Marlin.View {
 
         public Gtk.Builder ui;
         private UndoManager undo_manager;
-        public GLib.Menu menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
@@ -87,8 +88,9 @@ namespace Marlin.View {
             is_first_window = (window_number == 0);
 
             construct_menu_actions ();
-            undo_manager = Marlin.UndoManager.instance ();
             undo_actions_set_insensitive ();
+
+            undo_manager = Marlin.UndoManager.instance ();
             construct_top_menu ();
             set_titlebar (top_menu);
             construct_info_bar ();
@@ -96,6 +98,7 @@ namespace Marlin.View {
             construct_notebook ();
             construct_sidebar ();
             build_window ();
+
             connect_signals ();
             make_bindings ();
             show ();
@@ -156,12 +159,8 @@ namespace Marlin.View {
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
 
-#if 0
-            if (is_first_window) {
-                var builder = new Gtk.Builder.from_file (Config.UI_DIR + "winmenu.ui");
-                application.set_menubar (builder.get_object ("winmenu") as GLib.MenuModel);
-            }
-#endif
+            if (is_first_window)      
+                set_accelerators ();          
         }
 
         private void construct_top_menu () {
@@ -292,11 +291,10 @@ namespace Marlin.View {
         
 
         private void show_infobar (bool val) {
-            if (val) {
+            if (val)
                 info_bar.show_all ();
-            } else {
+            else
                 info_bar.hide ();
-            }
         }
 
         public GOF.AbstractSlot? get_active_slot() {
@@ -392,14 +390,22 @@ namespace Marlin.View {
         private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
             update_undo_actions (data);
         }
-
-
+   
         private void action_edit_path () {
             top_menu.location_bar.bread.grab_focus ();
         }
 
         private void action_find () {
             top_menu.location_bar.enter_search_mode ();
+        }
+
+        private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
+            (application as Marlin.Application).create_window ();
+        }
+
+        private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
+//message ("action quit");
+            (application as Marlin.Application).quit ();
         }
 
         private uint reload_timeout_id = 0;
@@ -439,7 +445,7 @@ namespace Marlin.View {
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "HOME":
-                    uri_path_change_request (Environment.get_home_dir());
+                    uri_path_change_request ("file://" + Environment.get_home_dir());
                     break;
 
                 case "TRASH":
@@ -542,6 +548,7 @@ namespace Marlin.View {
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
+//message ("change state select all");
             var slot = get_active_slot ();
             if (slot != null) {
                 bool state = !action.state.get_boolean ();
@@ -551,6 +558,7 @@ namespace Marlin.View {
         }
 
         public void change_state_show_hidden (GLib.SimpleAction action) {
+//message ("change state hidden");
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-hiddenfiles", state);
@@ -819,6 +827,37 @@ namespace Marlin.View {
         public new void grab_focus () {
 //message ("WIN grab focus");
             current_tab.grab_focus ();
+        }
+
+        private void set_accelerators () {
+            application.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
+            application.set_accels_for_action ("win.new_window", {"<Ctrl>N"});
+            application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
+            application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
+            application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
+            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
+            application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
+            application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});
+            application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up"});
+            application.set_accels_for_action ("win.view_mode::ICON", {"<Ctrl>1"});
+            application.set_accels_for_action ("win.view_mode::LIST", {"<Ctrl>2"});
+            application.set_accels_for_action ("win.view_mode::MILLER", {"<Ctrl>3"});
+            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>equal"});
+            application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
+            application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
+            application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
+            application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
+            application.set_accels_for_action ("win.refresh", {"<Ctrl>R"});
+            application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
+            application.set_accels_for_action ("win.go_to::TRASH", {"<Alt>T"});
+            application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
+            application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
+            application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
+            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
+            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
+            application.set_accels_for_action ("win.info::HELP", {"F1"});
+            application.set_accels_for_action ("win.info::ABOUT", {"F2"});
         }
     }
 }

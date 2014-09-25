@@ -33,11 +33,6 @@ public class Marlin.Application : Granite.Application {
 
     public int window_count { get; private set; }
 
-    static const GLib.ActionEntry [] app_actions = {
-        {"new_window", on_activate_new_window },
-        {"quit", on_activate_quit }
-    };
-
     bool quitting = false;
 
     construct {
@@ -80,14 +75,6 @@ public class Marlin.Application : Granite.Application {
         Notify.uninit ();
     }
 
-    void on_activate_quit (GLib.SimpleAction action, GLib.Variant? param) {
-        quit ();
-    }
-
-    void on_activate_new_window (GLib.SimpleAction action, GLib.Variant? param) {
-        create_window ();
-    }
-
     public override void startup () {
         base.startup ();
 
@@ -97,7 +84,6 @@ public class Marlin.Application : Granite.Application {
         message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         init_schemas ();
-        //init_gtk_accels ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
             Marlin.IconInfo.clear_caches ();
@@ -122,15 +108,6 @@ public class Marlin.Application : Granite.Application {
         window_count = 0;
         this.window_added.connect (() => {window_count++;});
         this.window_removed.connect (() => {window_count--;});
-
-        this.add_action_entries (app_actions, this);
-
-#if 0
-        /** Application menu */
-        var builder = new Gtk.Builder.from_file (Config.UI_DIR + "appmenu.ui");
-        this.set_app_menu (builder.get_object ("appmenu") as GLib.MenuModel);
-#endif
-
     }
 
     public unowned Marlin.ClipboardManager get_clipboard_manager () {

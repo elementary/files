@@ -165,7 +165,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public override bool key_press_event (Gdk.EventKey event) {
-//message ("on key press event");
+//message ("LB on key press event");
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
