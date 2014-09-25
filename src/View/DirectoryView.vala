@@ -976,12 +976,16 @@ namespace FM {
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
+//message ("on common action paste into");
             get_files_for_action ();
             var file = get_selected_files ().nth_data (0);
-            if (file != null && file.is_folder ()) {
+            if (file != null && clipboard.get_can_paste ()) {
                 prepare_to_select_added_files ();
-                clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, null);
-            }
+                if (file.is_folder () && !clipboard.has_file (file))
+                    clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, null);
+                else
+                    clipboard.paste_files (slot.directory.location, this as Gtk.Widget, null);
+            } 
         }
 
 
@@ -1703,8 +1707,6 @@ namespace FM {
         }
 
         private void update_paste_action_enabled (bool single_folder) {
-//message ("update paste action enabled");
-
             if (clipboard != null && clipboard.get_can_paste ())
                 action_set_enabled (common_actions, "paste_into", single_folder);
             else
@@ -2045,6 +2047,30 @@ namespace FM {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        return true;
+                    }
+                    break;
+
+                case Gdk.Key.c:
+                    if (control_pressed) {
+                        common_actions.activate_action ("copy", null);
+                        return true;
+                    }
+                    break;
+
+                case Gdk.Key.v:
+                    if (control_pressed) {
+                        /* Force attempt to paste - as a fallback will paste into current directory */
+                        action_set_enabled (common_actions, "paste_into", true);
+                        common_actions.activate_action ("paste_into", null);
+                        update_menu_actions ();
+                        return true;
+                    }
+                    break;
+
+                case Gdk.Key.x:
+                    if (control_pressed) {
+                        selection_actions.activate_action ("cut", null);
                         return true;
                     }
                     break;

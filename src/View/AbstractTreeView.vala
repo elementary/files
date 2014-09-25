@@ -182,8 +182,8 @@ namespace FM {
 
         protected override uint get_event_position_info (int x, int y, out Gtk.TreePath? path) {
 //message ("get click position info x is %i,  y is %i", x, y);
-            Gtk.TreePath? p = null;
-            Gtk.TreeViewColumn? c = null;
+            unowned Gtk.TreePath? p = null;
+            unowned Gtk.TreeViewColumn? c = null;
             uint zone;
             int cx, cy, depth;
 

@@ -150,6 +150,7 @@ namespace Marlin {
             public ClipboardManager.get_for_display (Gdk.Display display);
             public bool get_can_paste ();
             public bool has_cutted_files (GOF.File file);
+            public bool has_file (GOF.File file);
             public void copy_files (GLib.List files);
             public void cut_files (GLib.List files);
             public void paste_files (GLib.File target, Gtk.Widget widget, GLib.Closure? new_file_closure);
