@@ -269,6 +269,11 @@ namespace Marlin.View {
 
         }
 
+        public void focus_location_bar (Gdk.EventKey event) {
+            set_focus (top_menu.location_bar.bread);
+            top_menu.location_bar.bread.key_press_event (event);
+        }
+
         private void make_bindings () {
             /*Preference bindings */
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.SET);
@@ -817,7 +822,12 @@ namespace Marlin.View {
 
         public void file_path_change_request (GLib.File loc) {
 //message ("file path change request");
-            current_tab.user_path_change_request (loc);
+            FileType type = loc.query_file_type (GLib.FileQueryInfoFlags.NONE);
+            if (type == FileType.DIRECTORY || type == FileType.UNKNOWN)
+                /* ViewContainer deals with non-existent or unmounted directories */
+                current_tab.user_path_change_request (loc);
+            else
+                current_tab.focus_file (loc);
         }
 
         public void uri_path_change_request (string uri) {

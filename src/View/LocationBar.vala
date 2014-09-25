@@ -60,7 +60,6 @@ namespace Marlin.View.Chrome
             natural_width = 3000;
         }
 
-        //public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
         public LocationBar (Marlin.View.Window win) {
 //message ("New LocationBar");
             this.win = win;
@@ -265,7 +264,7 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file) {
             string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
-            if(file.is_folder () && file_display_name.length > to_search.length) {
+            if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
                         text_completion = file_display_name.slice (to_search.length, file_display_name.length);
@@ -291,7 +290,6 @@ namespace Marlin.View.Chrome
                         str = text.slice (0, text.length - to_search.length);
                     if (str != null && !multiple_completions) {
                         text = str + file.get_display_name ().slice (0, to_search.length);
-//message ("Setting text to %s", text);
                         set_position (-1);
                     }
                 }
@@ -302,7 +300,6 @@ namespace Marlin.View.Chrome
 //message ("on need completion - text is %s", text);
             File file = get_file_for_path (text);
             to_search = file.get_basename ();
-
             autocompleted = false;
             multiple_completions = false;
             
@@ -392,7 +389,6 @@ namespace Marlin.View.Chrome
                 menuitem.set_data ("location", gof.get_target_location ());
                 menu.append (menuitem);
                 menuitem.activate.connect (() => {
-//message ("Location bar menu activated");
                     unowned File loc = menu.get_active ().get_data ("location");
                     win.file_path_change_request (loc);
                 });
@@ -407,16 +403,6 @@ namespace Marlin.View.Chrome
 
         protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
             Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
-        }
-
-        public override string? update_breadcrumbs (string new_path, string base_path) {
-            string strloc = base.update_breadcrumbs (new_path, base_path);
-            if(strloc != null) {
-//message ("update breadcrumbs");
-                //File location = File.new_for_commandline_arg (strloc);
-                //win.current_tab.path_changed (location);
-            }
-            return strloc;
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {

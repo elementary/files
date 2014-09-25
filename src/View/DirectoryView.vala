@@ -2078,7 +2078,9 @@ namespace FM {
                 default:
                     break;
             }
-            return false;
+            window.win_actions.activate_action ("find", null);
+            window.key_press_event (event);
+            return true;
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {

@@ -88,8 +88,8 @@ namespace FM {
             tree = new Gtk.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
-            tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
-            tree.set_enable_search (true);
+            //tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
+            //tree.set_enable_search (true);
             tree.set_rules_hint (true);
 
             create_and_set_up_name_column ();

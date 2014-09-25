@@ -167,13 +167,12 @@ namespace Marlin.View {
 
         public void slot_path_changed (GLib.File loc) {
 //message ("VC slot path changed");
-#if 0       /* TODO - Is this desirable? */
+#if 0 
             /* automagicly enable icon view for icons keypath */
             if (get_current_slot ().directory.uri_contain_keypath_icons && view_mode != Marlin.ViewMode.ICON)
                 change_view_mode (Marlin.ViewMode.ICON, null);
             else
 #endif
-
             set_up_current_slot ();
         }
 
@@ -288,9 +287,9 @@ namespace Marlin.View {
             get_current_slot ().set_active_state (is_active);
         }
 
-        public void focus_file (File file) {
-//message ("focus file");
-            File? loc = null;
+        public void focus_file (GLib.File file) {
+//message ("focus file %s", file.get_uri ());
+            GLib.File? loc = null;
             if (file.query_file_type (0) == FileType.DIRECTORY) {
                 if (location.equal (file))
                     return;
@@ -302,10 +301,10 @@ namespace Marlin.View {
                     var list = new List<File> ();
                     list.prepend (file);
                     get_current_slot ().select_glib_files (list);
-                } else
+                } else {
                     loc = file.get_parent ();
                     user_path_change_request (loc);
-                    //TODO implement request focus file on path change
+                }
             }
 
             if (loc != null) {

@@ -240,13 +240,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (is_focus)
             return base.button_release_event (event);
 
-//message ("LBE button release continuing");
         if (event.button == 1) {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
                 selected = elements.index_of (el);
                 var newpath = sanitise_path (get_path_from_element (el));
-//message ("LBE new path from element %s", newpath);
                 path_changed (get_file_for_path (newpath));
             } else
                 grab_focus ();
@@ -410,7 +408,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         icons.append (icon);
     }
     
-    public void complete () {        
+    public void complete () {
+//message ("complete");
         if (text_completion.length == 0)
             return;
 
