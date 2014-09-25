@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 05:05+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2014-09-17 03:50+0000\n"
+"Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:27+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-09-18 07:06+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -63,7 +63,7 @@ msgstr[0] "\"%s\"(으)로 선택한 항목을 엽니다"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "새 파일에 \"%s\"를 템플릿으로 사용하기"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -445,7 +445,7 @@ msgstr "어제 %-l:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b at %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1378,7 +1378,7 @@ msgstr "'%s'를 '%s'로 복사하기"
 #: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "%d개의 파일을 '%s'로 복사"
 
 #: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
@@ -1661,7 +1661,7 @@ msgstr "%u개 항목이 선택되었습니다. (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "불러오는 중..."
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1689,7 +1689,7 @@ msgstr "이 폴더를 볼 권한이 없습니다."
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "연결 중..."
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1737,19 +1737,19 @@ msgstr "다른 프로그램 .."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "이 폴더에 있음"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "책갈피"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "이 폴더 외 전체 위치"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "검색 결과가 없습니다."
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1769,7 +1769,7 @@ msgstr "미리 보기"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -1895,7 +1895,7 @@ msgstr "Files가 기본 파일 관리자가 아닙니다."
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "기본값으로 설정"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -1971,11 +1971,11 @@ msgstr "다시 실행(_R)"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "찾기(_F)"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "현재 폴더 검색"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2135,7 +2135,7 @@ msgstr "사용자의 개인 폴더 및 즐겨찾기"
 
 #: ../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "휴지통 열기"
 
 #: ../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -2147,7 +2147,7 @@ msgstr "로컬 파티션과 장치"
 
 #: ../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "파일 시스템의 항목을 열기"
 
 #: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
 msgid "Mount and open %s"
@@ -2159,7 +2159,7 @@ msgstr "네트워크 위치"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "전체 네트워크"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2171,7 +2171,7 @@ msgstr "'%s'을(를) 시작할 수 없습니다"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "열기"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2179,7 +2179,7 @@ msgstr "제거"
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "이름 바꾸기"
 
 #: ../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -2195,15 +2195,15 @@ msgstr "꺼내기(_E)"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "서버에 연결..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "이전"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2227,7 +2227,7 @@ msgstr "새 탭에서 URL을 엽니다."
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "새 창"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
@@ -2295,7 +2295,7 @@ msgstr "관리자 권한으로 새 창 열기"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "파일에 대하여 (_F)"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"

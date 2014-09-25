@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-08-11 09:41+0000\n"
+"PO-Revision-Date: 2014-09-03 04:26+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-08-12 06:21+0000\n"
-"X-Generator: Launchpad (build 17156)\n"
+"X-Launchpad-Export-Date: 2014-09-04 08:24+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 "Language: \n"
 
 #: ../src/fm-list-view.c:59
@@ -64,7 +64,7 @@ msgstr[0] "用“%s”打开选中的项目"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "使用 “%s”作为新文件的模板"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -446,7 +446,7 @@ msgstr "昨天 %-l:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b at %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1662,7 +1662,7 @@ msgstr "已选中 %u 个条目 (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "正在载入..."
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1690,7 +1690,7 @@ msgstr "您没有权限查看该文件夹。"
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "正在连接…"
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1738,19 +1738,19 @@ msgstr "其他应用程序..."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "在此文件夹中"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "书签"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "其它地方"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "未发现任何结果"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1770,7 +1770,7 @@ msgstr "预览"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -1972,11 +1972,11 @@ msgstr "重做(_R)"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "查找(_F)"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
-msgstr ""
+msgstr "搜索当前文件夹"
 
 #: ../src/View/Window.vala:773
 msgid "Open _Parent"
@@ -2172,7 +2172,7 @@ msgstr "无法启动 %s"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "打开"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2180,7 +2180,7 @@ msgstr "移除"
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Rename"
-msgstr ""
+msgstr "重命名"
 
 #: ../src/View/Sidebar.vala:1225
 msgid "_Mount"
@@ -2196,15 +2196,15 @@ msgstr "弹出(_E)"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "连接到服务器..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "上一个"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "下一个"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2296,7 +2296,7 @@ msgstr "以管理员身份新建窗口(_A)"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "关于文件(_F)"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
