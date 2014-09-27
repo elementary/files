@@ -50,17 +50,18 @@ namespace FM {
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
         }
 
-        protected void set_up_name_renderer () {
+        protected override void set_up_name_renderer () {
 //message ("IV set up name renderer");
-            name_renderer.wrap_width = 12;
+            base.set_up_name_renderer ();
             name_renderer.wrap_mode = Pango.WrapMode.WORD;
+            /* Cannot have both word wrap and ellipsize - ellipsize takes precedence */
+            //name_renderer.ellipsize = Pango.EllipsizeMode.END;
+
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
-            name_renderer.editable_set = true;
-            name_renderer.editable = true;
-            name_renderer.edited.connect (on_name_edited);
-            name_renderer.editing_canceled.connect (on_name_editing_canceled);
-            name_renderer.editing_started.connect (on_name_editing_started);
+
+            /* Limit name to three lines of text */
+            name_renderer.set_fixed_height_from_font (3); 
         }
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
@@ -71,10 +72,6 @@ namespace FM {
         private void connect_tree_signals () {
 //message ("IV connect tree_signals");
             tree.selection_changed.connect (on_view_selection_changed);
-            tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
-            tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
-            tree.draw.connect (on_view_draw);
-            tree.key_press_event.connect (on_view_key_press_event);
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
@@ -108,10 +105,9 @@ namespace FM {
             if (tree != null) {
 //message ("IV zoom level changed");
                 int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
-                tree.set_item_width (icon_size);
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
-                tree.set_item_width ((int)(1.62 * icon_size));
+                name_renderer.wrap_width = (int)(1.62 * icon_size);
                 base.zoom_level_changed ();
             }
         }
@@ -202,12 +198,18 @@ namespace FM {
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
             if (r != null) {
-                if (r is Gtk.CellRendererText)
-                    zone = ClickZone.NAME;
-                else {
-                    Gdk.Rectangle rect, area;
-                    tree.get_cell_rect  (p, r, out rect);
-                    area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+                Gdk.Rectangle rect, area;
+                tree.get_cell_rect  (p, r, out rect);
+                area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+                if (r is Gtk.CellRendererText) {
+                    if (x >= area.x &&
+                        x < area.x + area.width &&
+                        y >= area.y &&
+                        y < area.y + area.height)
+
+                        zone = ClickZone.NAME;
+
+                } else {
                     if (helpers_shown &&
                         x >= area.x &&
                         x <= area.x + 18 &&

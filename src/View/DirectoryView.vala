@@ -197,6 +197,9 @@ namespace FM {
         protected bool should_activate = false;
         protected uint click_zone = ClickZone.ICON;
 
+        private Gdk.Cursor xterm_cursor;
+        private Gdk.Cursor arrow_cursor;
+
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
 /*** Creation methods */
@@ -204,9 +207,12 @@ namespace FM {
 //message ("new directory view - location %s", _slot.directory.file.uri);
             slot = _slot;
             window = _slot.window;
+            xterm_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
+            arrow_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             name_renderer = new Gtk.CellRendererText ();
+            set_up_name_renderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
@@ -222,6 +228,10 @@ namespace FM {
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
                 view.enter_notify_event.connect (on_enter_notify_event);
+                view.key_press_event.connect (on_view_key_press_event);
+                view.button_press_event.connect (on_view_button_press_event);
+                view.button_release_event.connect (on_view_button_release_event);
+                view.draw.connect (on_view_draw);
             }
             freeze_tree ();
             set_up_zoom_level ();
@@ -233,6 +243,14 @@ namespace FM {
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
+        }
+
+        protected virtual void set_up_name_renderer () {
+            name_renderer.editable_set = true;
+            name_renderer.editable = false;
+            name_renderer.edited.connect (on_name_edited);
+            name_renderer.editing_canceled.connect (on_name_editing_canceled);
+            name_renderer.editing_started.connect (on_name_editing_started);
         }
 
         private void set_up_directory_view () {
@@ -369,9 +387,9 @@ namespace FM {
             size_allocate.disconnect (on_size_allocate);
             clipboard.changed.disconnect (on_clipboard_changed);
             view.motion_notify_event.disconnect (on_motion_notify_event);
+            view.enter_notify_event.disconnect (on_enter_notify_event);
+            view.key_press_event.disconnect (on_view_key_press_event);
             /* TODO queue file changed/added/.. and freeze their updates */
-
-            name_renderer.@set ("editable", true, null);
         }
 
         protected void unfreeze_updates () {
@@ -385,6 +403,8 @@ namespace FM {
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
             view.motion_notify_event.connect (on_motion_notify_event);
+            view.enter_notify_event.connect (on_enter_notify_event);
+            view.key_press_event.connect (on_view_key_press_event);
 
             name_renderer.@set ("editable", false, null);
 
@@ -744,6 +764,7 @@ namespace FM {
 //message ("DV rename file");
             unselect_all ();
             select_gof_file (file_to_rename);
+            name_renderer.@set ("editable", true, null);
             start_renaming_file (file_to_rename, false);
         }
 
@@ -2007,6 +2028,9 @@ namespace FM {
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
 //message ("on view key_press_event");
+            if (updates_frozen)
+                return true;
+
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
@@ -2084,11 +2108,18 @@ namespace FM {
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
+
+            if (updates_frozen)
+                return true;
 //message ("on_motion_notify event");
             int x, y, mask;
             /* We need to use the device position for rubberbanding to work properly in ListView */
             get_window ().get_device_position (event.get_device (), out x, out y, out mask);
-            var path = get_path_at_pos (x, y);
+
+            Gtk.TreePath? path = null;
+            click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
+
+            view.get_window ().set_cursor (click_zone == ClickZone.NAME ? xterm_cursor : arrow_cursor);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -2096,6 +2127,7 @@ namespace FM {
 
                 GOF.File? file = path != null ? model.file_for_path (path) : null;
                 window.item_hovered (file);
+
                 hover_path = path;
             }
 
@@ -2107,7 +2139,7 @@ namespace FM {
             return false;
         }
         protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            grab_focus (); /* Cause OverLay to disappear */
+            grab_focus (); /* Cause OverLay to appear */
             return false;
         }
 
@@ -2138,33 +2170,39 @@ namespace FM {
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
 //message ("on name editing started");
+            if (renaming)
+                return;
+
             renaming = true;
             freeze_updates ();
             editable_widget = editable as Gtk.Entry;
             original_name = editable_widget.get_text ().dup ();
-            editable_widget.focus_out_event.connect ((event) => {
-                on_name_editing_canceled ();
-                return false;
-            });
+            editable_widget.focus_out_event.connect (on_editable_widget_focus_out);
+        }
+
+        private bool on_editable_widget_focus_out (Gdk.Event event) {
+            editable_widget.activate ();
+            return true;
         }
 
         protected void on_name_editing_canceled () {
-//message ("on name editing canceled");
                 if (!renaming)
                     return;
-
-                editable_widget = null;
+//message ("on name editing canceled");
                 renaming = false;
-                unfreeze_updates ();
-                
+                name_renderer.@set ("editable", false, null);
+                unfreeze_updates ();               
         }
 
         protected void on_name_edited (string path_string, string new_name) {
+            if (!renaming)
+                return;
+
+            editable_widget.focus_out_event.disconnect (on_editable_widget_focus_out);
+            on_name_editing_canceled ();
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
 //message ("on name edited");
-
-            on_name_editing_canceled ();
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -2280,9 +2318,11 @@ namespace FM {
                 case Gdk.BUTTON_PRIMARY:
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
-                        case ClickZone.BLANK_PATH:
                             block_drag_and_drop ();  /* allow rubber banding */
                             result = false;
+                            break;
+                        case ClickZone.BLANK_PATH:
+                            block_drag_and_drop ();  /* icon view does not allow rubber-banding if on path */
                             break;
                         case ClickZone.HELPER:
                             if (path_selected)
@@ -2291,6 +2331,7 @@ namespace FM {
                                 select_path (path);
                             break;
                         case ClickZone.NAME:
+                            block_drag_and_drop ();
                             rename_file (selected_files.data);
                             break;
                         case ClickZone.ICON:
@@ -2328,6 +2369,9 @@ namespace FM {
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
+            if (renaming)
+                return true;
+
             slot.active ();
             if (should_activate) {
                 Gtk.Widget widget = get_real_view ();
@@ -2351,11 +2395,11 @@ namespace FM {
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
 //message ("DV start renaming file");
             /* Select whole name if we are in renaming mode already */
-            if (name_column != null && editable_widget != null) {
+            if (renaming) {
                 editable_widget.select_region (0, -1);
                 return;
             }
-
+            editable_widget = null;
             Gtk.TreeIter? iter = null;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 critical ("Failed to find rename file in model");

@@ -57,28 +57,16 @@ namespace FM {
         protected void set_up_view () {
 //message ("ATV tree view set up view");
             connect_tree_signals ();
-            connect_name_renderer_signals ();
             Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
         }
 
         protected void connect_tree_signals () {
 //message ("ATV connect tree_signals");
             tree.get_selection ().changed.connect (on_view_selection_changed);
-            tree.button_press_event.connect (on_view_button_press_event); /* Abstract */
-            tree.button_release_event.connect (on_view_button_release_event); /* Abstract */
-            tree.draw.connect (on_view_draw);
-            tree.key_press_event.connect (on_view_key_press_event);
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
             });
-        }
-
-        protected void connect_name_renderer_signals () {
-//message ("ATV connect renderer_signals");
-            name_renderer.edited.connect (on_name_edited);
-            name_renderer.editing_canceled.connect (on_name_editing_canceled);
-            name_renderer.editing_started.connect (on_name_editing_started);
         }
 
 /** Override parent's abstract and virtual methods as required, where common to ListView and MillerColumnView*/
@@ -88,8 +76,6 @@ namespace FM {
             tree = new Gtk.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
-            //tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
-            //tree.set_enable_search (true);
             tree.set_rules_hint (true);
 
             create_and_set_up_name_column ();
