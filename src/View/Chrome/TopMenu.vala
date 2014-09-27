@@ -43,8 +43,8 @@ namespace Marlin.View.Chrome
 //message ("New TopMenu");
             win = window;
 
-            button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
-            button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next", Gtk.IconSize.LARGE_TOOLBAR);
+            button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_back.tooltip_text = _("Previous");
             button_back.show_all ();
             pack_start (button_back);
