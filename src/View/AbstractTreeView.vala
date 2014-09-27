@@ -193,8 +193,10 @@ namespace FM {
                         else
                             zone = ClickZone.ICON;
 
-                    } else if (!on_blank)
+                    } else if (!on_blank &&
+                               cy < icon_size) { /* stop edge of row appearing as name */
                         zone = ClickZone.NAME;
+                    }
                 } else
                     zone = ClickZone.EXPANDER;
             }

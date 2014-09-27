@@ -196,9 +196,12 @@ namespace FM {
         public bool single_click_mode {get; set;}
         protected bool should_activate = false;
         protected uint click_zone = ClickZone.ICON;
+        protected uint previous_click_zone = ClickZone.ICON;
 
-        private Gdk.Cursor xterm_cursor;
-        private Gdk.Cursor arrow_cursor;
+        private Gdk.Cursor editable_cursor;
+        private Gdk.Cursor activatable_cursor;
+        private Gdk.Cursor blank_cursor;
+        private Gdk.Cursor selectable_cursor;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
@@ -207,8 +210,10 @@ namespace FM {
 //message ("new directory view - location %s", _slot.directory.file.uri);
             slot = _slot;
             window = _slot.window;
-            xterm_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
-            arrow_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
+            editable_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
+            activatable_cursor = new Gdk.Cursor (Gdk.CursorType.HAND1);
+            selectable_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
+            blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             name_renderer = new Gtk.CellRendererText ();
@@ -2118,8 +2123,24 @@ namespace FM {
 
             Gtk.TreePath? path = null;
             click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
-
-            view.get_window ().set_cursor (click_zone == ClickZone.NAME ? xterm_cursor : arrow_cursor);
+            if (!dnd_disabled && click_zone != previous_click_zone) {
+                var win = view.get_window ();
+                switch (click_zone) {
+                    case ClickZone.NAME:
+                        win.set_cursor (editable_cursor);
+                        break;
+                    case ClickZone.BLANK_NO_PATH:
+                        win.set_cursor (blank_cursor);
+                        break;
+                    case ClickZone.ICON:
+                        win.set_cursor (activatable_cursor);
+                        break;
+                    default:
+                        win.set_cursor (selectable_cursor);
+                        break;
+                }
+                previous_click_zone = click_zone;
+            }
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -2322,7 +2343,8 @@ namespace FM {
                             result = false;
                             break;
                         case ClickZone.BLANK_PATH:
-                            block_drag_and_drop ();  /* icon view does not allow rubber-banding if on path */
+                            block_drag_and_drop ();  
+                            result = false;
                             break;
                         case ClickZone.HELPER:
                             if (path_selected)
