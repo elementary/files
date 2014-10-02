@@ -54,6 +54,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        TextRenderer.vala
         QuicklistHandler.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
@@ -118,6 +119,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        TextRenderer.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -177,8 +179,8 @@ add_executable (../pantheon-files
     marlin-clipboard-manager.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
-    marlin-text-renderer.c
-    marlin-cell-renderer-text-ellipsized.c
+    #marlin-text-renderer.c
+    #marlin-cell-renderer-text-ellipsized.c
     #exo-icon-view.c
     #exo-tree-view.c
     #fm-abstract-icon-view.c

@@ -166,8 +166,8 @@ namespace FM {
 
         /* Rename support */
         protected Gtk.TreeViewColumn name_column;
-        protected Gtk.CellRendererText name_renderer;
-        protected Gtk.Entry? editable_widget = null;
+        protected Marlin.TextRenderer name_renderer;
+        unowned Eel.EditableLabel? editable_widget = null;
         public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
@@ -216,7 +216,7 @@ namespace FM {
             blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
-            name_renderer = new Gtk.CellRendererText ();
+            name_renderer = new Marlin.TextRenderer ();
             set_up_name_renderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
@@ -251,7 +251,6 @@ namespace FM {
         }
 
         protected virtual void set_up_name_renderer () {
-            name_renderer.editable_set = true;
             name_renderer.editable = false;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
@@ -411,7 +410,7 @@ namespace FM {
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
 
-            name_renderer.@set ("editable", false, null);
+            name_renderer.editable = false;
 
         }
 
@@ -769,7 +768,7 @@ namespace FM {
 //message ("DV rename file");
             unselect_all ();
             select_gof_file (file_to_rename);
-            name_renderer.@set ("editable", true, null);
+            name_renderer.editable = true;
             start_renaming_file (file_to_rename, false);
         }
 
@@ -2034,7 +2033,7 @@ namespace FM {
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
 //message ("on view key_press_event");
             if (updates_frozen)
-                return true;
+                return false;
 
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -2116,13 +2115,14 @@ namespace FM {
 
             if (updates_frozen)
                 return true;
-//message ("on_motion_notify event");
+debug ("on_motion_notify event");
             int x, y, mask;
             /* We need to use the device position for rubberbanding to work properly in ListView */
             get_window ().get_device_position (event.get_device (), out x, out y, out mask);
 
             Gtk.TreePath? path = null;
             click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
+debug ("click zone %u", click_zone);
             if (!dnd_disabled && click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
@@ -2189,33 +2189,35 @@ namespace FM {
         }
 
     /** name renderer signals */
-        protected void on_name_editing_started (Gtk.CellEditable editable, string path) {
-//message ("on name editing started");
+        protected void on_name_editing_started (Gtk.CellEditable? editable, string path) {
             if (renaming)
                 return;
-
+//message ("on name editing started editable is %s null", editable != null ? "NOT" : "");
             renaming = true;
             freeze_updates ();
-            editable_widget = editable as Gtk.Entry;
+            editable_widget = editable as Eel.EditableLabel;
             original_name = editable_widget.get_text ().dup ();
             editable_widget.focus_out_event.connect (on_editable_widget_focus_out);
         }
 
         private bool on_editable_widget_focus_out (Gdk.Event event) {
+//message ("editable focus out");
             editable_widget.activate ();
             return true;
         }
 
         protected void on_name_editing_canceled () {
+//message ("on name editing canceled");
                 if (!renaming)
                     return;
-//message ("on name editing canceled");
+
                 renaming = false;
-                name_renderer.@set ("editable", false, null);
+                name_renderer.editable = false;
                 unfreeze_updates ();               
         }
 
         protected void on_name_edited (string path_string, string new_name) {
+//message ("on name edited");
             if (!renaming)
                 return;
 
@@ -2223,7 +2225,7 @@ namespace FM {
             on_name_editing_canceled ();
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
-//message ("on name edited");
+
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -2257,7 +2259,7 @@ namespace FM {
 
        
         public virtual bool on_view_draw (Cairo.Context cr) {
-//message ("DV on view draw, tree is loading %s, empty is %s", is_loading ? "true" : "false", slot.directory.is_empty () ? "true" : "false");
+debug ("DV on view draw");
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
             if (is_loading || slot.directory.is_empty () || slot.directory.permission_denied) {
@@ -2314,6 +2316,8 @@ namespace FM {
             drag_data = view.get_data ("gtk-site-data");
             GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
             dnd_disabled = false;
+            if (view is Gtk.TreeView)
+                (view as Gtk.TreeView).set_rubber_banding (false);
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
@@ -2353,6 +2357,8 @@ namespace FM {
                                 select_path (path);
                             break;
                         case ClickZone.NAME:
+                            unselect_all ();
+                            select_path (path);
                             block_drag_and_drop ();
                             rename_file (selected_files.data);
                             break;
@@ -2433,13 +2439,15 @@ namespace FM {
 
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_column, name_renderer, true, false);
+            set_cursor_on_cell (path, name_column, name_renderer as Gtk.CellRenderer, true, false);
 
             int start_offset= 0, end_offset = -1;
             if (editable_widget != null) {
                 Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
                 editable_widget.select_region (start_offset, end_offset);
-            }
+            } else
+                warning ("Editable widget is null");
+
         }
 
         protected string get_string_from_column_id (int id) {

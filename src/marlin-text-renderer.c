@@ -628,7 +628,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
                                     const GdkRectangle  *cell_area,
                                     GtkCellRendererState flags)
 {
-
+g_message ("Text Renderer start editing");
     MarlinTextRenderer *text_renderer = MARLIN_TEXT_RENDERER (cell);
     gint xpad, ypad;
     gfloat xalign, yalign;
@@ -638,7 +638,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     g_object_get (cell, "visible", &visible, "mode", &mode, NULL);
     if (!(visible && mode == GTK_CELL_RENDERER_MODE_EDITABLE))
         return NULL;
-    //g_message ("%s %s\n", G_STRFUNC, path);
+g_message ("%s %s\n", G_STRFUNC, path);
 
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 

@@ -730,6 +730,7 @@ eel_editable_label_set_text (EelEditableLabel *label,
   GtkEditable *editable;
   int tmp_pos;
 
+//g_message ("%s", G_STRFUNC);
   g_return_if_fail (EEL_IS_EDITABLE_LABEL (label));
   g_return_if_fail (str != NULL);
 
@@ -976,6 +977,7 @@ get_label_wrap_width (EelEditableLabel *label)
   GtkStyleContext *style = gtk_widget_get_style_context (GTK_WIDGET (label));
   PangoFontDescription *desc;
 
+//g_message ("%s-", G_STRFUNC);
   LabelWrapWidth *wrap_width = g_object_get_data (G_OBJECT (style), "gtk-label-wrap-width");
   if (!wrap_width)
     {
@@ -1004,6 +1006,7 @@ get_label_wrap_width (EelEditableLabel *label)
  out:
   pango_font_description_free (desc);
 
+//g_message ("wrap width %i", wrap_width->width);
   return wrap_width->width;
 }
 
@@ -1045,6 +1048,7 @@ eel_editable_label_ensure_layout (EelEditableLabel *label,
 	  g_string_prepend_len (tmp_string, label->text, label->n_bytes);
 	  g_string_insert (tmp_string, label->selection_anchor, preedit_string);
 
+//g_message ("Creating layout with string %s", tmp_string->str);
 	  label->layout = gtk_widget_create_pango_layout (widget, tmp_string->str);
 
 	  pango_attr_list_splice (tmp_attrs, preedit_attrs,
@@ -1054,6 +1058,8 @@ eel_editable_label_ensure_layout (EelEditableLabel *label,
 	}
       else
 	{
+//g_message ("Creating layout with string %s", label->text);
+
 	  label->layout = gtk_widget_create_pango_layout (widget, label->text);
 	}
       label->layout_includes_preedit = include_preedit;
@@ -1661,6 +1667,7 @@ eel_editable_label_draw (GtkWidget *widget,
 	      range[1] > label->selection_anchor)
 	    {
 	      text = pango_layout_get_text (label->layout) + label->selection_anchor;
+//g_message ("draw text is %s", text);
 	      range[1] += g_utf8_offset_to_pointer (text, label->preedit_length) - text;
 	    }
 	
@@ -2006,7 +2013,7 @@ get_text_callback (GtkClipboard     *clipboard,
                    gpointer          user_data_or_owner)
 {
   EelEditableLabel *label;
-
+//g_message ("%s -", G_STRFUNC);
   label = EEL_EDITABLE_LABEL (user_data_or_owner);
 
   if ((label->selection_anchor != label->selection_end) &&
@@ -2056,7 +2063,7 @@ eel_editable_label_select_region_index (EelEditableLabel *label,
 
   g_assert (EEL_IS_EDITABLE_LABEL (label));
 
-
+//g_message ("%s - ", G_STRFUNC);
   if (label->selection_anchor == anchor_index &&
       label->selection_end == end_index)
     return;
@@ -2343,6 +2350,8 @@ eel_editable_label_delete_text (EelEditableLabel *label,
 {
   int anchor, end;
 
+//g_message ("%s - %i, %i", G_STRFUNC, start_pos, end_pos);
+
   if (start_pos < 0)
     start_pos = 0;
   if (end_pos < 0 || end_pos > label->n_bytes)
@@ -2378,6 +2387,7 @@ eel_editable_label_insert_text (EelEditableLabel *label,
 				gint         new_text_length,
 				gint        *index)
 {
+//g_message ("label insert text %s length %i", new_text, new_text_length);
   if (new_text_length + label->n_bytes + 1 > label->text_size)
     {
       while (new_text_length + label->n_bytes + 1 > label->text_size)
@@ -2433,6 +2443,8 @@ eel_editable_label_enter_text (EelEditableLabel *label,
   GtkEditable *editable = GTK_EDITABLE (label);
   gint tmp_pos;
   gboolean old_need_im_reset;
+
+//g_message ("Enter text %s", str);
 
   /* Never reset the im while commiting, as that resets possible im state */
   old_need_im_reset = label->need_im_reset;
@@ -3953,7 +3965,7 @@ eel_editable_label_accessible_set_text_contents (AtkEditableText *text,
 {
   GtkWidget *widget;
   EelEditableLabel *label;
-
+//g_message ("%s -", G_STRFUNC);
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (text));
   if (widget == NULL)
     /* State is defunct */
@@ -4385,6 +4397,7 @@ eel_editable_label_get_accessible (GtkWidget *widget)
 static void
 gtk_cell_editable_label_activated (EelEditableLabel *label, gpointer data)
 {
+//g_message ("%s - ", G_STRFUNC);
   gtk_cell_editable_editing_done (GTK_CELL_EDITABLE (label));
   gtk_cell_editable_remove_widget (GTK_CELL_EDITABLE (label));
 }
@@ -4394,6 +4407,8 @@ gtk_cell_editable_key_press_event (EelEditableLabel *label,
                                    GdkEventKey      *key_event,
                                    gpointer         data)
 {
+//g_message ("%s - ", G_STRFUNC);
+
   if (key_event->keyval == GDK_KEY_Escape)
     {
       label->editing_canceled = TRUE;
@@ -4410,6 +4425,8 @@ static void
 eel_editable_label_start_editing (GtkCellEditable *cell_editable,
                                   GdkEvent *event)
 {
+//g_message ("%s - ", G_STRFUNC);
+
   g_signal_connect (cell_editable, "activate",
                     G_CALLBACK (gtk_cell_editable_label_activated), NULL);
   g_signal_connect (cell_editable, "key-press-event",

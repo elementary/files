@@ -53,15 +53,9 @@ namespace FM {
         protected override void set_up_name_renderer () {
 //message ("IV set up name renderer");
             base.set_up_name_renderer ();
-            name_renderer.wrap_mode = Pango.WrapMode.WORD;
-            /* Cannot have both word wrap and ellipsize - ellipsize takes precedence */
-            //name_renderer.ellipsize = Pango.EllipsizeMode.END;
-
+            name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
-            name_renderer.yalign = 0.0f;
-
-            /* Limit name to three lines of text */
-            name_renderer.set_fixed_height_from_font (3); 
+            name_renderer.yalign = 0.0f; 
         }
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
@@ -107,7 +101,8 @@ namespace FM {
                 int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
-                name_renderer.wrap_width = (int)(1.62 * icon_size);
+                name_renderer.set_property ("wrap-width", (int)(1.62 * icon_size));
+                name_renderer.set_property ("zoom-level", zoom_level);
                 base.zoom_level_changed ();
             }
         }
@@ -201,7 +196,7 @@ namespace FM {
                 Gdk.Rectangle rect, area;
                 tree.get_cell_rect  (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-                if (r is Gtk.CellRendererText) {
+                if (r is Marlin.TextRenderer) {
                     if (x >= area.x &&
                         x < area.x + area.width &&
                         y >= area.y &&
@@ -221,6 +216,7 @@ namespace FM {
                         zone = ClickZone.ICON;
                 }
             }
+//message ("returning zone %u", zone);
             return zone;
         }
 
@@ -232,6 +228,7 @@ namespace FM {
             tree.scroll_to_path (path, scroll_to_top, 0.0f, 0.0f);
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top) {
+//message ("IV set cursor on cell, start editing is %s", start_editing.to_string ());
             scroll_to_cell(path, name_column, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
         }
