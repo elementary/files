@@ -167,7 +167,7 @@ namespace FM {
         /* Rename support */
         protected Gtk.TreeViewColumn name_column;
         protected Marlin.TextRenderer name_renderer;
-        unowned Eel.EditableLabel? editable_widget = null;
+        unowned Marlin.EditableLabel? editable_widget = null;
         public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
@@ -2195,7 +2195,7 @@ debug ("click zone %u", click_zone);
 //message ("on name editing started editable is %s null", editable != null ? "NOT" : "");
             renaming = true;
             freeze_updates ();
-            editable_widget = editable as Eel.EditableLabel;
+            editable_widget = editable as Marlin.EditableLabel;
             original_name = editable_widget.get_text ().dup ();
             editable_widget.focus_out_event.connect (on_editable_widget_focus_out);
         }

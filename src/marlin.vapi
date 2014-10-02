@@ -101,35 +101,3 @@ namespace Marlin {
         INVALID
     }
 }
-
-namespace Eel {
-    [CCode (cprefix = "EelEditableLabel", lower_case_cprefix = "eel_editable_label_", cheader_filename = "eel-editable-label.h")]
-    public class EditableLabel : Gtk.Misc, Gtk.Editable, Gtk.CellEditable {
-        public EditableLabel (string? text = null);
-        public void set_text (string text);
-        public unowned string get_text ();
-        public void set_justify (Gtk.Justification jtype);
-        public Gtk.Justification get_justification ();
-        public void set_line_wrap (bool wrap);
-        public bool get_line_wrap ();
-        public void set_line_wrap_mode (Pango.WrapMode mode);
-        public Pango.WrapMode get_line_wrap_mode ();
-        public void set_draw_outline (bool outline);
-        public void select_region (int start_offset, int end_offset);
-        public bool get_selection_bounds (out int start, out int end);
-        public Pango.Layout get_layout ();
-        public void get_layout_offsets (out int x, out int y);
-        public void set_font_description (Pango.FontDescription font);
-        public Pango.FontDescription get_font_description ();
-        public signal void activate ();
-        public signal void move_cursor (Gtk.MovementStep step, int count, bool extend_selection);
-        public signal void insert_at_cursor (string text);
-        public signal void delete_from_cursor (Gtk.DeleteType dtype, int count);
-        public signal void cut_clipboard ();
-        public signal void copy_clipboard ();
-        public signal void paste_clipboard ();
-        public signal void toggle_overwrite ();
-        public signal void populate_popup (Gtk.Menu menu);
-    }  
-
-}
