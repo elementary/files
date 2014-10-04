@@ -63,9 +63,10 @@ namespace FM {
         protected override void set_up_name_renderer () {
 //message ("ATV set up name renderer");
             base.set_up_name_renderer ();
-            name_renderer.@set ("wrap-mode", Pango.WrapMode.CHAR);
             name_renderer.@set ("wrap-width", -1);
             name_renderer.@set ("zoom-level", Marlin.ZoomLevel.NORMAL);
+            name_renderer.@set ("ellipsize-set", true);
+            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
             name_renderer.yalign = 0.5f; 
         }

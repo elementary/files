@@ -55,7 +55,8 @@ namespace FM {
             base.set_up_name_renderer ();
             name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
-            name_renderer.yalign = 0.0f; 
+            name_renderer.yalign = 0.0f;
+            name_renderer.set_fixed_size (-1, 54);
         }
         protected void set_up_icon_renderer () {
 //message ("IV set up icon renderer");
