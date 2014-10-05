@@ -18,6 +18,18 @@
 ***/
 
 namespace Marlin {
+
+    public delegate void PluginCallbackFunc (Gtk.Widget widget);
+    public enum PlaceType {
+        BUILT_IN,
+        MOUNTED_VOLUME,
+        BOOKMARK,
+        BOOKMARKS_CATEGORY,
+        PERSONAL_CATEGORY,
+        STORAGE_CATEGORY,
+        PLUGIN_ITEM
+    }
+
     public abstract class AbstractSidebar : Gtk.ScrolledWindow {
         public enum Column {
             NAME,
@@ -37,10 +49,13 @@ namespace Marlin {
             SPINNER_PULSE,
             FREE_SPACE,
             DISK_SIZE,
+            PLUGIN_CALLBACK,
             COUNT
         }
 
         protected Gtk.TreeStore store;
+        protected Gtk.TreeRowReference network_category_reference;
+        protected Gtk.Box content_box;
 
         protected void init () {
             store = new Gtk.TreeStore (((int)Column.COUNT),
@@ -60,18 +75,46 @@ namespace Marlin {
                                         typeof (bool),              /* Show spinner */
                                         typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
-                                        typeof (uint64)             /* For disks, total size */
+                                        typeof (uint64),             /* For disks, total size */
+                                        typeof (Marlin.PluginCallbackFunc)
                                         );
+
+            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            this.add (content_box);
+            content_box.show_all ();
         }
 
-        public void add_extra_item (string text) {
-            Gtk.TreeIter iter;
-            store.append (out iter, null);
-            store.set (iter,
-                       Column.ICON, null,
-                       Column.NAME, text,
-                       Column.URI, "test://",
-                       -1);
+        public void add_extra_network_item (string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+            add_extra_item (network_category_reference, text, tooltip, icon, cb);
         }
+
+        public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+            Gtk.TreeIter iter;
+            store.get_iter (out iter, category.get_path ());
+            iter = add_place (PlaceType.PLUGIN_ITEM,
+                             iter,
+                             text,
+                             icon,
+                             null,
+                             null,
+                             null,
+                             null,
+                             0,
+                             tooltip);
+            if (cb != null)
+                store.@set (iter, Column.PLUGIN_CALLBACK, cb);
+
+        }
+
+       protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
+                                                  Gtk.TreeIter? parent,
+                                                  string name,
+                                                  Icon? icon,
+                                                  string? uri,
+                                                  Drive? drive,
+                                                  Volume? volume,
+                                                  Mount? mount,
+                                                  uint index,
+                                                  string tooltip) ;
     }
 }
