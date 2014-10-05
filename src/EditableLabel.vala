@@ -79,7 +79,7 @@ namespace Marlin {
         }
 
         public bool on_key_press_event (Gdk.EventKey event) {
-message ("Editable key press");
+//message ("Editable key press");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             switch (event.keyval) {
                 case Gdk.Key.Return:
