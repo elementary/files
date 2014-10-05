@@ -176,40 +176,8 @@ debug ("set  widget");
             else
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
 
-            /* render small/normal text depending on the zoom_level */
-            if (this.zoom_level < Marlin.ZoomLevel.NORMAL)
-                this.layout.set_attributes (EelPango.attr_list_small ());
-            else
-                this.layout.set_attributes (null);
-
-            if (this.wrap_width < 0) {
-                layout.set_width (cell_area.width * Pango.SCALE);
-                layout.set_height (- 1);
-            } else {
-                layout.set_width (wrap_width * Pango.SCALE);
-                layout.set_wrap (this.wrap_mode);
-                /* ellipsize to max lines except for selected or prelit items */
-                layout.set_height (- MAX_LINES);
-            }
-
-            layout.set_ellipsize (Pango.EllipsizeMode.END);
-
-            if (this.xalign == 0.5f)
-                layout.set_alignment (Pango.Alignment.CENTER);
-
-            layout.set_text (this.text != null ? text : "", -1);
-
-            /* calculate the real text dimension */
             int text_width, text_height;
-            layout.get_pixel_size (out text_width, out text_height);
-
-
-            /* take into account the state indicator (required for calculation) */
-            if (this.follow_state) {
-                /* make the focus indicator rectangular */
-                text_width += 4 * this.focus_width;
-                text_height += 2 * this.focus_width;
-            }
+            set_up_layout (this.text, cell_area, out text_width, out text_height);
 
             int x_offset, y_offset;
             /* calculate the real x-offset */
@@ -286,6 +254,44 @@ debug ("set  widget");
                                    layout);
 
             context.restore ();
+        }
+
+        public void set_up_layout (string text, Gdk.Rectangle cell_area, out int text_width, out int text_height) {
+            /* render small/normal text depending on the zoom_level */
+            if (this.zoom_level < Marlin.ZoomLevel.NORMAL)
+                this.layout.set_attributes (EelPango.attr_list_small ());
+            else
+                this.layout.set_attributes (null);
+
+            if (this.wrap_width < 0) {
+                layout.set_width (cell_area.width * Pango.SCALE);
+                layout.set_height (- 1);
+            } else {
+                layout.set_width (wrap_width * Pango.SCALE);
+                layout.set_wrap (this.wrap_mode);
+                /* ellipsize to max lines except for selected or prelit items */
+                layout.set_height (- MAX_LINES);
+            }
+
+            layout.set_ellipsize (Pango.EllipsizeMode.END);
+
+            if (this.xalign == 0.5f)
+                layout.set_alignment (Pango.Alignment.CENTER);
+
+            layout.set_text (this.text != null ? text : "", -1);
+
+            /* calculate the real text dimension */
+            int width, height;
+            layout.get_pixel_size (out width, out height);
+            text_width = width;
+            text_height = height;
+
+            /* take into account the state indicator (required for calculation) */
+            if (this.follow_state) {
+                /* make the focus indicator rectangular */
+                text_width += 4 * this.focus_width;
+                text_height += 2 * this.focus_width;
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace FM {
         const double ROW_SPACING_RATIO = 0.3;
         const double WIDTH_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
+        uint current_zone;
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
@@ -185,7 +186,7 @@ namespace FM {
 
         protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path) {
             unowned Gtk.TreePath? p = null;
-            unowned Gtk.CellRenderer r;
+            unowned Gtk.CellRenderer? r;
             uint zone;
 
             int x, y, mask;
@@ -194,18 +195,36 @@ namespace FM {
             tree.get_item_at_pos ((int)event.x, (int)event.y, out p, out r);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
+            if (zone == current_zone)
+                return zone;
+
             if (r != null) {
                 Gdk.Rectangle rect, area;
                 tree.get_cell_rect  (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
                 if (r is Marlin.TextRenderer) {
+                    int text_width, text_height;
+                    Gtk.TreeIter iter;
+                    model.get_iter (out iter, path);
+                    string? text = null;
+                    model.@get (iter,
+                            FM.ListModel.ColumnID.FILENAME, out text);
+
+                    if (text == null)
+                        text = "";
+
+                    (r as Marlin.TextRenderer).set_up_layout (text, area, out text_width, out text_height);   
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + rect.height)
+                        y <= rect.y + text_height)
 
                         zone = ClickZone.NAME;
-
+                    else {
+                        event.x = rect.x + rect.width / 2;
+                        event.y = rect.y + rect.height + 10;
+                        zone = ClickZone.BLANK_NO_PATH;
+                    }
                 } else {
                     if (helpers_shown &&
                         x >= area.x &&
@@ -220,9 +239,15 @@ namespace FM {
                         y <= area.y + icon_size)
 
                         zone = ClickZone.ICON;
+                    else {
+                        event.x = rect.x + rect.width / 2;
+                        event.y = rect.y - 10;
+                        zone = ClickZone.BLANK_NO_PATH;
+                    }
                 }
             }
 //message ("returning zone %u", zone);
+            current_zone = zone;
             return zone;
         }
 
