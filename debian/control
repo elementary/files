@@ -17,7 +17,7 @@ Build-Depends: cmake (>= 2.6),
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
-               valac (>= 0.16)
+               valac-0.26 | valac (>= 0.26)
 Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.9.5
 
