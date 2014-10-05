@@ -24,6 +24,7 @@ namespace Marlin {
         public bool small_size { get; set; }
         public float yalign {get; set;}
         public float xalign {get; set;}
+        public string original_name;
 
         public EditableLabel () {
             key_press_event.connect (on_key_press_event);
@@ -31,6 +32,7 @@ namespace Marlin {
 
         public void set_text (string text) {
             get_buffer ().set_text (text);
+            original_name = text;
         }
 
         public void set_line_wrap (bool wrap) {
@@ -77,6 +79,8 @@ namespace Marlin {
         }
 
         public bool on_key_press_event (Gdk.EventKey event) {
+message ("Editable key press");
+            bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -88,6 +92,11 @@ namespace Marlin {
                     editing_canceled = true;
                     editing_done ();
                     remove_widget ();
+                    break;
+                case Gdk.Key.z:
+                    if (control_pressed)
+                        set_text (original_name);
+
                     break;
                 default:
                     return false;
