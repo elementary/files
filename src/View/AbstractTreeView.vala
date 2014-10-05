@@ -183,9 +183,6 @@ namespace FM {
             uint zone;
             int cx, cy, depth;
 
-            int x, y, mask;
-            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
-
             bool on_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
 

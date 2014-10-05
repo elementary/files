@@ -689,7 +689,7 @@ namespace FM {
             if (updates_frozen || in_trash)
                 return;
 
-//message ("activate file %s", file.uri);
+//message ("activate file %s  only one file %s", file.uri, only_one_file.to_string ());
             GLib.File location = file.location.dup ();
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
@@ -2294,7 +2294,6 @@ debug ("DV on view draw");
 //message ("DV handle primary button");
             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
             should_activate =  single_click_mode || double_click_event;
-
             if (!double_click_event)
                 start_drag_timer ((Gdk.Event)event);
 

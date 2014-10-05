@@ -352,6 +352,7 @@ namespace Marlin.View {
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files) {
+//message ("Miller: select glib files");
             current_slot.select_glib_files (files);
         }
 

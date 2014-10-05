@@ -225,6 +225,7 @@ namespace Marlin.View {
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files) {
+//message ("SLot: select_glib_files");
             if (dir_view != null)
                 dir_view.select_glib_files (files);
 

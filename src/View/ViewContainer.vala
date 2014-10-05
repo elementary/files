@@ -252,8 +252,10 @@ namespace Marlin.View {
                                                            _("You don't have permission to view this folder."));
                     can_show_folder = false;
                 }
-                else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null)
-                        view.select_glib_files (selected_locations);
+                else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
+                    view.select_glib_files (selected_locations);
+                    selected_locations = null;
+                }
 
             } catch (Error err) {
                 /* query_info will throw an exception if it cannot find the file */
