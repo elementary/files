@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 05:03+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2014-10-04 15:38+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:28+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-10-05 06:24+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -64,7 +64,7 @@ msgstr[1] "Använd \"%s\" för att öppna de markerade objekten"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Använd \"%s\" som mall för nya filer"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -1742,7 +1742,7 @@ msgstr "%u objekt valda (%s)"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "Läser in…"
 
 #: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
 msgid "Home"
@@ -1770,7 +1770,7 @@ msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "Ansluter..."
 
 #: ../src/View/LocationBar.vala:121
 msgid "AFP"
@@ -1818,11 +1818,11 @@ msgstr "Annat program ..."
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "I denna mapp"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bokmärken"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
@@ -1830,7 +1830,7 @@ msgstr ""
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Inga resultat funna"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1850,7 +1850,7 @@ msgstr "Förhandsgranska"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -1976,7 +1976,7 @@ msgstr "Files är inte din standardfilhanterare."
 
 #: ../src/View/Window.vala:148
 msgid "Set as Default"
-msgstr ""
+msgstr "Ange som standard"
 
 #: ../src/View/Window.vala:153
 msgid "Ignore"
@@ -2052,7 +2052,7 @@ msgstr "_Gör om"
 
 #: ../src/View/Window.vala:770
 msgid "_Find"
-msgstr ""
+msgstr "_Sök"
 
 #: ../src/View/Window.vala:771
 msgid "Search the current folder"
@@ -2216,7 +2216,7 @@ msgstr "Dina vanliga platser och bokmärken"
 
 #: ../src/View/Sidebar.vala:446
 msgid "Open the Trash"
-msgstr ""
+msgstr "Öppna papperskorgen"
 
 #: ../src/View/Sidebar.vala:452
 msgid "Devices"
@@ -2228,7 +2228,7 @@ msgstr "Dina lokala partitioner och enheter"
 
 #: ../src/View/Sidebar.vala:469
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Öppna innehållet av filsystemet"
 
 #: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
 msgid "Mount and open %s"
@@ -2240,7 +2240,7 @@ msgstr "Dina nätverksplatser"
 
 #: ../src/View/Sidebar.vala:598
 msgid "Entire Network"
-msgstr ""
+msgstr "Hela nätverket"
 
 #: ../src/View/Sidebar.vala:605
 msgid "Browse the contents of the network"
@@ -2252,7 +2252,7 @@ msgstr "Kunde inte starta %s"
 
 #: ../src/View/Sidebar.vala:1187
 msgid "Open"
-msgstr ""
+msgstr "Öppna"
 
 #: ../src/View/Sidebar.vala:1208
 msgid "Remove"
@@ -2276,7 +2276,7 @@ msgstr "Mata _ut"
 
 #: ../src/View/Sidebar.vala:1251
 msgid "Connect to Server..."
-msgstr ""
+msgstr "Anslut till server..."
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
