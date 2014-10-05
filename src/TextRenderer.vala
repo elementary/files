@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2014 ELementary Developers
+ Copyright (C) 2014 elementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -35,10 +35,12 @@ namespace Marlin {
 
         public TextRenderer () {
             this.mode = Gtk.CellRendererMode.EDITABLE;
+            this.entry = new Marlin.EditableLabel ();
+            connect_entry_signals ();
         }
 
         private void set_widget (Gtk.Widget? widget) {
-//message ("set  widget");
+debug ("set  widget");
             Pango.FontMetrics metrics;
             Pango.Context context;
             int focus_padding;
@@ -92,22 +94,20 @@ namespace Marlin {
 
         /* Needs patched gtk+-3.0.vapi file - incorrect function signature up to version 0.25.4 */
         public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-                                                   Gtk.Widget widget,
-                                                   string  path,
-                                                   Gdk.Rectangle  background_area,
-                                                   Gdk.Rectangle  cell_area,
-                                                   Gtk.CellRendererState flags) {
-//message ("Start editing");
+                                                                 Gtk.Widget widget,
+                                                                 string  path,
+                                                                 Gdk.Rectangle  background_area,
+                                                                 Gdk.Rectangle  cell_area,
+                                                                 Gtk.CellRendererState flags) {
+//message ("TR Start editing");
             if (!this.visible || this.mode != Gtk.CellRendererMode.EDITABLE)
                 return null;
 
             float xalign, yalign;
             get_alignment (out xalign, out yalign);
-            this.entry = new Marlin.EditableLabel ();
             entry.set_text (this.text);
             entry.set_line_wrap (true);
             entry.set_line_wrap_mode (this.wrap_mode);
-            //entry.set_draw_outline (true);
 
             /* presume we're in POSITION UNDER */
             if (wrap_width > 0)
@@ -121,14 +121,21 @@ namespace Marlin {
             this.get_padding (out xpad, out ypad);
             entry.set_padding ((int)xpad, (int)ypad);
 
-            if (zoom_level < Marlin.ZoomLevel.NORMAL)
-                entry.@set ("small-size", true);
+            var context = widget.get_style_context ();
+            var state = widget.get_state_flags ();
+            var font = (context.get_property ("font", state) as Pango.FontDescription);
 
+            if (zoom_level < Marlin.ZoomLevel.NORMAL || (text.length + 3)* char_width > 3 * wrap_width) {
+                font.set_size ((int)(font.get_size () * Pango.Scale.SMALL));
+            } else {
+                font_desc.set_size ((int)(font.get_size () * Pango.Scale.MEDIUM));
+            }
+
+            entry.override_font (font);
             entry.set_size_request (wrap_width, -1);
             entry.show_all ();
+            entry.set_position (-1);
             entry.set_data ("marlin-text-renderer-path", path.dup ());
-
-            connect_entry_signals ();
 
             return entry as Gtk.CellEditable;
         }
@@ -139,96 +146,26 @@ namespace Marlin {
             entry.editing_done.connect (on_entry_editing_done);
             entry.focus_out_event.connect (on_entry_focus_out_event);
         }
-        private void disconnect_entry_signals () {
-//message ("DisConnext entry signals");
-            entry.editing_done.disconnect (on_entry_editing_done);
-            entry.focus_out_event.disconnect (on_entry_focus_out_event);
-        }
 
         private void on_entry_editing_done () {
-//message ("Editing done");
-            disconnect_entry_signals ();
+//message ("TV Editing done");
             bool cancelled = entry.editing_canceled;
-            //entry.@get ("editing-canceled", out cancelled);
             base.stop_editing (cancelled);
             if (!cancelled) {
                 string text = entry.get_text ();
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
+            entry.hide ();
         }
 
         private bool on_entry_focus_out_event (Gdk.Event event) {
-//message ("Focus out event");
+//message ("TV Focus out event");
             on_entry_editing_done ();
             return false;
         }
 
-		public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-//message ("get preferred height");
-            minimum_size = 18;
-            natural_size = 54;
-        }
-
-        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area, out int x_offset, out int y_offset, out int width, out int height) {
-message ("get size");
-            set_widget (widget);
-            float xalign, yalign;
-            get_alignment (out xalign, out yalign);
-            int text_length, text_width, text_height;
-            if (wrap_width <0) {
-                text_length = text.char_count (-1);
-                text_length += 2;
-                text_width = char_width * text_length;
-                text_height = char_height;
-            } else {
-                layout.set_ellipsize (Pango.EllipsizeMode.END);
-                layout.set_height (- MAX_LINES);
-                layout.set_width (wrap_width * Pango.SCALE);
-                layout.set_wrap (wrap_mode);
-                layout.set_text (text, -1);
-                if (xalign == 0.5f)
-                    layout.set_alignment (Pango.Alignment.CENTER);
-
-                layout.get_pixel_size (out text_width, out text_height);
-            }
-
-            if (follow_state) {
-                text_width += focus_width;
-                text_height += focus_width;
-            }
-
-            int xpad, ypad;
-            get_padding (out xpad, out ypad);
-
-            //if (width != null)
-                width = text_width + 2 * xpad;
-
-            //if (height != null)
-                //height = text_height + 2 * ypad;
-                height = layout.get_height ();
-
-            if (cell_area != null) {
-                //if (x_offset != null) {
-                    float x;
-                    if (widget.get_direction () == Gtk.TextDirection.RTL)
-                        x = 1.0f - xalign;
-                    else
-                        x = xalign;
-
-                    x_offset = (int)(x * (width - text_width - 2 * xpad));
-                    x_offset = int.max (x_offset, 0);
-                //}
-
-                //if (y_offset != null) {
-                    y_offset = (int)(yalign * (height - text_height - 2 * ypad));
-                    y_offset = int.max (y_offset, 0);
-                //}
-            }
-        }
-
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
-//message ("Render");
             set_widget (widget);
             Gtk.StateFlags state = widget.get_state_flags ();
 
@@ -256,16 +193,11 @@ message ("get size");
             }
 
             layout.set_ellipsize (Pango.EllipsizeMode.END);
-//            if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED ||
-//                (flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT) {
-
-//                layout.set_ellipsize (Pango.EllipsizeMode.NONE);
-//            }
 
             if (this.xalign == 0.5f)
                 layout.set_alignment (Pango.Alignment.CENTER);
 
-            layout.set_text (this.text, -1);
+            layout.set_text (this.text != null ? text : "", -1);
 
             /* calculate the real text dimension */
             int text_width, text_height;

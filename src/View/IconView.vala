@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2014 ELementary Developers
+ Copyright (C) 2014 elementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -99,7 +99,6 @@ namespace FM {
         public override void zoom_level_changed () {
             if (tree != null) {
 //message ("IV zoom level changed");
-                int icon_size = (int) (Marlin.zoom_level_to_icon_size (zoom_level));
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
                 name_renderer.set_property ("wrap-width", (int)(1.62 * icon_size));
@@ -184,13 +183,15 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (int x, int y,
-                                                out Gtk.TreePath? path) {
+        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.CellRenderer r;
             uint zone;
 
-            tree.get_item_at_pos (x, y, out p, out r);
+            int x, y, mask;
+            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
+
+            tree.get_item_at_pos ((int)event.x, (int)event.y, out p, out r);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
             if (r != null) {
@@ -198,10 +199,10 @@ namespace FM {
                 tree.get_cell_rect  (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
                 if (r is Marlin.TextRenderer) {
-                    if (x >= area.x &&
-                        x < area.x + area.width &&
-                        y >= area.y &&
-                        y < area.y + area.height)
+                    if (x >= rect.x &&
+                        x <= rect.x + rect.width &&
+                        y >= rect.y &&
+                        y <= rect.y + rect.height)
 
                         zone = ClickZone.NAME;
 
@@ -213,7 +214,11 @@ namespace FM {
                         y <= area.y + 18)
 
                         zone = ClickZone.HELPER;
-                    else
+                    else if (x >= area.x &&
+                        x <= area.x + icon_size &&
+                        y >= area.y &&
+                        y <= area.y + icon_size)
+
                         zone = ClickZone.ICON;
                 }
             }

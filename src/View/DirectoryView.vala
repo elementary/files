@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2014 ELementary Developers
+ Copyright (C) 2014 elementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -252,6 +252,7 @@ namespace FM {
 
         protected virtual void set_up_name_renderer () {
             name_renderer.editable = false;
+            name_renderer.follow_state = false;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
@@ -380,7 +381,6 @@ namespace FM {
 
         protected void freeze_updates () {
 //message ("DV freeze updates");
-            
             updates_frozen = true;
             slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
@@ -390,33 +390,24 @@ namespace FM {
 
             size_allocate.disconnect (on_size_allocate);
             clipboard.changed.disconnect (on_clipboard_changed);
-            view.motion_notify_event.disconnect (on_motion_notify_event);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
             /* TODO queue file changed/added/.. and freeze their updates */
         }
 
         protected void unfreeze_updates () {
-//message ("DV unfreeze updates");
-            if (renaming)
-                return;
-
             updates_frozen = false;
             slot.directory.freeze_update = false;;
             update_menu_actions ();
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
-            view.motion_notify_event.connect (on_motion_notify_event);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
-
-            name_renderer.editable = false;
-
         }
 
         public new void grab_focus () {
 //message ("DV grab focus");
-            (this as Gtk.Bin).get_child ().grab_focus ();
+            view.grab_focus ();
         }
 
         public unowned GLib.List<unowned GOF.File> get_selected_files () {
@@ -768,7 +759,6 @@ namespace FM {
 //message ("DV rename file");
             unselect_all ();
             select_gof_file (file_to_rename);
-            name_renderer.editable = true;
             start_renaming_file (file_to_rename, false);
         }
 
@@ -1291,7 +1281,7 @@ namespace FM {
             if (drag_scroll_timer_id == 0)
                 start_drag_scroll_timer (context);
 
-            return false;
+            return true;
         }
 
         private bool on_drag_drop (Gdk.DragContext context,
@@ -1445,7 +1435,18 @@ namespace FM {
                 if (file != null &&
                     file.is_folder () &&
                     file.is_writable ()) {
+
                     action = context.get_suggested_action ();
+                    if (action == 0 && path != null)
+                        path = null;
+
+                    if (drop_highlight != (path == null && action != 0)) {
+                        drop_highlight = !drop_highlight;
+                        queue_draw ();
+                    }
+
+                    icon_renderer.@set ("drop-file", (action != 0) ? file : null);
+                    highlight_path (path);
                 }
             } else if (target != Gdk.Atom.NONE)
                 /* request the drag data from the source */
@@ -1467,16 +1468,16 @@ namespace FM {
                 current_suggested_action = Gdk.DragAction.DEFAULT;
                 if (file != null) {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
-                    highlight_drop_file (file, current_suggested_action, path);
+                    highlight_drop_file (drop_target_file, current_actions, path); 
                 }
                 Gdk.drag_status (context, current_suggested_action, timestamp);
             }
         }
 
         private void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
-//message ("highlight dropfile");
+//message ("highlight dropfile action %i", (int)action);
             /* Set highlighting accordingly */
-            bool can_drop = (action != Gdk.DragAction.DEFAULT);
+            bool can_drop = (action > Gdk.DragAction.DEFAULT);
             if (drop_highlight != can_drop) {
                 drop_highlight = can_drop;
                 queue_draw ();
@@ -1515,7 +1516,7 @@ namespace FM {
 
         protected void start_drag_timer (Gdk.Event event) {
 //message ("start drag timer");
-            connect_drag_motion_and_release_events ();
+            connect_drag_timeout_motion_and_release_events ();
             /* Remember position of click */ 
             drag_x = (int)(event.button.x);
             drag_y = (int)(event.button.y);
@@ -1937,7 +1938,7 @@ namespace FM {
             return (this as Gtk.Bin).get_child ();
         }
 
-        private void connect_drag_motion_and_release_events () {
+        private void connect_drag_timeout_motion_and_release_events () {
 //message ("connect motion and release events");
             var real_view = get_real_view ();
             real_view.button_release_event.connect (on_drag_timeout_button_release);
@@ -2103,6 +2104,19 @@ namespace FM {
                     }
                     break;
 
+                case Gdk.Key.Left:
+                case Gdk.Key.KP_Left:
+                case Gdk.Key.Right:
+                case Gdk.Key.KP_Right:
+                case Gdk.Key.Up:
+                case Gdk.Key.KP_Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.KP_Down:
+                case Gdk.Key.Tab:
+                case Gdk.Key.KP_Tab:
+                case Gdk.Key.Escape:
+                    return false;
+
                 default:
                     break;
             }
@@ -2112,18 +2126,15 @@ namespace FM {
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
-
-            if (updates_frozen)
-                return true;
 debug ("on_motion_notify event");
             int x, y, mask;
             /* We need to use the device position for rubberbanding to work properly in ListView */
             get_window ().get_device_position (event.get_device (), out x, out y, out mask);
 
             Gtk.TreePath? path = null;
-            click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
+            click_zone = get_event_position_info ((Gdk.EventButton)event, out path);
 debug ("click zone %u", click_zone);
-            if (!dnd_disabled && click_zone != previous_click_zone) {
+            if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
                     case ClickZone.NAME:
@@ -2141,6 +2152,9 @@ debug ("click zone %u", click_zone);
                 }
                 previous_click_zone = click_zone;
             }
+
+            if (updates_frozen)
+                return false;
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -2197,13 +2211,6 @@ debug ("click zone %u", click_zone);
             freeze_updates ();
             editable_widget = editable as Marlin.EditableLabel;
             original_name = editable_widget.get_text ().dup ();
-            editable_widget.focus_out_event.connect (on_editable_widget_focus_out);
-        }
-
-        private bool on_editable_widget_focus_out (Gdk.Event event) {
-//message ("editable focus out");
-            editable_widget.activate ();
-            return true;
         }
 
         protected void on_name_editing_canceled () {
@@ -2217,15 +2224,12 @@ debug ("click zone %u", click_zone);
         }
 
         protected void on_name_edited (string path_string, string new_name) {
-//message ("on name edited");
             if (!renaming)
                 return;
+//message ("on name edited");
 
-            editable_widget.focus_out_event.disconnect (on_editable_widget_focus_out);
-            on_name_editing_canceled ();
             /* Don't allow a rename with an empty string. Revert to original
              * without notifying the user. */
-
             if (new_name != "") {
                 /* Validate filename before trying to rename the file */
                 try {
@@ -2255,6 +2259,7 @@ debug ("click zone %u", click_zone);
                     });
                 }
             }
+            on_name_editing_canceled ();
         }
 
        
@@ -2325,7 +2330,7 @@ debug ("DV on view draw");
             grab_focus (); /* cancels any renaming */
             Gtk.TreePath? path = null;
 
-            click_zone = get_event_position_info ((int)event.x, (int)event.y, out path);
+            click_zone = get_event_position_info (event, out path);
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
@@ -2424,16 +2429,17 @@ debug ("DV on view draw");
 //message ("DV start renaming file");
             /* Select whole name if we are in renaming mode already */
             if (renaming) {
-                editable_widget.select_region (0, -1);
+                //editable_widget.select_region (0, -1);
                 return;
             }
-            editable_widget = null;
+
             Gtk.TreeIter? iter = null;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 critical ("Failed to find rename file in model");
                 return;
             }
 
+            name_renderer.editable = true;
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             freeze_updates ();
 
@@ -2443,7 +2449,9 @@ debug ("DV on view draw");
 
             int start_offset= 0, end_offset = -1;
             if (editable_widget != null) {
-                Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
+                if (!file.is_folder ())
+                    Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
+
                 editable_widget.select_region (start_offset, end_offset);
             } else
                 warning ("Editable widget is null");
@@ -2541,7 +2549,7 @@ debug ("DV on view draw");
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
-        protected abstract uint get_event_position_info (int x, int y, out Gtk.TreePath? path);
+        protected abstract uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top);
         public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select, bool scroll_to_top);

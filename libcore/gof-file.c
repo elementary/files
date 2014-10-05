@@ -1622,7 +1622,7 @@ gof_file_accepts_drop (GOFFile          *file,
             //printf ("%s actions MOVE %d COPY %d suggested %d\n", G_STRFUNC, GDK_ACTION_MOVE, GDK_ACTION_COPY, suggested_action);
         }
     }
-    else if (gof_file_is_executable (file))
+    else if (!gof_file_is_folder (file) && gof_file_is_executable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);

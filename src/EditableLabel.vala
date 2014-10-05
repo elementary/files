@@ -1,25 +1,20 @@
 /*
- * EditableLabel.vala
- * 
- * Copyright 2014 jeremy <jeremy@jeremy-MM061>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
+ Copyright (C) 2014 elementary Developers
+
+ This program is free software: you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License version 3, as published
+ by the Free Software Foundation.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranties of
+ MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+ PURPOSE. See the GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License along
+ with this program. If not, see <http://www.gnu.org/licenses/>.
+
+ Authors : Jeremy Wootten <jeremy@elementary.org>
+*/
 
 
 namespace Marlin {
@@ -117,7 +112,7 @@ namespace Marlin {
             buffer.select_range (ins, bound);
         }
 
-		public void do_delete_text (int start_pos, int end_pos) {
+        public void do_delete_text (int start_pos, int end_pos) {
             var buffer = get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -131,7 +126,7 @@ namespace Marlin {
             buffer.delete_range (start, end);
         }
 
-		public void do_insert_text (string new_text, int new_text_length, ref int position) {
+        public void do_insert_text (string new_text, int new_text_length, ref int position) {
             var buffer = get_buffer ();
             Gtk.TextIter? pos = null;
 
@@ -139,7 +134,7 @@ namespace Marlin {
             buffer.insert (ref pos, new_text, new_text_length);
         }
 
-		public string get_chars (int start_pos, int end_pos) {
+        public string get_chars (int start_pos, int end_pos) {
             var buffer = get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -155,16 +150,16 @@ namespace Marlin {
             return buffer.get_text (start, end, false);
         }
 
-		public int get_position () {
+        public int get_position () {
             var buffer = get_buffer ();
             var mark = buffer.get_insert ();
             Gtk.TextIter? iter = null;
             buffer.get_iter_at_mark (out iter, mark);
-            
+
             return iter.get_offset ();
         }
 
-		public bool get_selection_bounds (out int start_pos, out int end_pos) {
+        public bool get_selection_bounds (out int start_pos, out int end_pos) {
             var buffer = get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -175,9 +170,10 @@ namespace Marlin {
             return start_pos != end_pos;
         }
 
-		public void set_position (int position) {
+        public void set_position (int position) {
             var buffer = get_buffer ();
             Gtk.TextIter? iter = null;
+            buffer.get_start_iter (out iter);
             iter.set_offset (position);
             buffer.place_cursor (iter);
         }

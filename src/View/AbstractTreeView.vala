@@ -1,5 +1,5 @@
 /*
- Copyright (C)
+ Copyright (C) 2014 elementary Developers
 
  This program is free software: you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License version 3, as published
@@ -177,14 +177,16 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (int x, int y, out Gtk.TreePath? path) {
-//message ("get click position info x is %i,  y is %i", x, y);
+        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
             int cx, cy, depth;
 
-            bool on_blank = tree.is_blank_at_pos (x, y, out p, out c, out cx, out cy);
+            int x, y, mask;
+            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
+
+            bool on_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
 
             depth = p != null ? p.get_depth () : 0;
