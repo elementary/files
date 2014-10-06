@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"POT-Creation-Date: 2014-10-05 01:32-0500\n"
 "PO-Revision-Date: 2014-10-04 15:38+0000\n"
 "Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -15,8 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-05 06:24+0000\n"
+"X-Launchpad-Export-Date: 2014-10-06 06:53+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
+
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Det finns inget i urklipp att klistra in"
+
+#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
+#: ../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Misslyckades att byta namn på %s till %s"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -34,16 +44,62 @@ msgstr "Filtyp"
 msgid "Modified"
 msgstr "Ändrad"
 
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Misslyckades att byta namn på %s till %s"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
 msgstr "Mappen är tom."
+
+#: ../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "_Ordna objekt"
+
+#: ../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "_Omvänd ordning"
+
+#: ../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Visa ikoner i omvänd ordning"
+
+#: ../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Efter _namn"
+
+#: ../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Sortera ikoner i rader efter namn"
+
+#: ../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Efter _storlek"
+
+#: ../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Sortera ikoner i rader efter storlek"
+
+#: ../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Enligt _typ"
+
+#: ../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Sortera ikoner radvis efter typ"
+
+#: ../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Efter ändrings_datum"
+
+#: ../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Sortera ikoner i rader efter ändringsdatum"
+
+#: ../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Enkelklick"
+
+#: ../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Huruvida objekten i vyn kan aktiveras med enkelklick"
 
 #: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
@@ -81,7 +137,7 @@ msgid "Open in %'d New _Tabs"
 msgstr "Öppna i %'d Nya flikar"
 
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
+#: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
 msgstr "Öppna i ny _flik"
 
@@ -90,7 +146,7 @@ msgstr "Öppna i ny _flik"
 msgid "Open in %'d New _Windows"
 msgstr "Öppna i %'d Nya fönster"
 
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
 msgstr "Öppna i nytt _fönster"
 
@@ -220,6 +276,18 @@ msgstr "Visa eller ändra egenskaperna för varje markerat objekt"
 msgid "Set Color:"
 msgstr "Välj färg:"
 
+#: ../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "Inmatningsmetoder"
+
+#: ../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "Kataloglista för ikoner"
+
+#: ../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "Ikonvy"
+
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "Layoutläge"
@@ -227,50 +295,6 @@ msgstr "Layoutläge"
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "Layoutläget"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "_Ordna objekt"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "_Omvänd ordning"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Visa ikoner i omvänd ordning"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Efter _namn"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Sortera ikoner i rader efter namn"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Efter _storlek"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Sortera ikoner i rader efter storlek"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Enligt _typ"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Sortera ikoner radvis efter typ"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Efter ändrings_datum"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Sortera ikoner i rader efter ändringsdatum"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -416,62 +440,377 @@ msgstr "Avbryt"
 msgid "Failed to execute file \"%s\""
 msgstr "Misslyckades med att starta filen \"%s\""
 
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Det finns inget i urklipp att klistra in"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "Kataloglista för ikoner"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "Ikonvy"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Enkelklick"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Huruvida objekten i vyn kan aktiveras med enkelklick"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Inmatningsmetoder"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Idag kl. %H.%M"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Igår kl. %H.%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y-%m-%d kl. %H.%M"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Förbereder"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ogiltig Unicode)"
-
-#: ../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
+msgid "Delete %d copied items"
+msgstr "Radera %d kopierade objekt"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Objektet kan inte återskapas från papperskorgen"
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Radera \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Radera %d duplicerade objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Flytta tillbaka %d objekt till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Flytta tillbaka \"%s\" till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Byt namn på \"%s\" till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Återskapa %d objekt från papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Återställ \"%s\" till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Flytta %d objekt till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Flytta \"%s\" tillbaka till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Ta bort länkar till %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Ta bort länk till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Återställ ursprungliga rättigheter för objekt inuti \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Återställ ursprungliga rättigheter för \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Återställ grupp för \"%s\" till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Återställ ägare av \"%s\" till \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopiera %d objekt till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopiera '%s' till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Dubbletter av %d filer i '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duplicera '%s' i '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Flytta %d objekt till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Flytta '%s' till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Skapa ny fil '%s' från mall "
+
+#: ../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Skapa en tom fil '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Skapa ny mapp '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Flytta %d objekt till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Flytta '%s' till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Återställ '%s' från papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Skapa länkar till %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Skapa länk till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Ange rättigheter för objekt inuti '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Ange rättigheter för '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Ange grupp för '%s' till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Ange ägare av '%s' till '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Ångra kopiering av %d objekt"
+msgstr[1] "_Ångra kopiering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Ångra duplicering av %d objekt"
+msgstr[1] "Ångra duplicering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Ångra flytt av %d objekt"
+msgstr[1] "_Ångra flytt av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Ångra namnbyte på %d objekt"
+msgstr[1] "_Ångra namnbyten på %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Ångra skapandet av en tom fil"
+
+#: ../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Ångra skapandet av en fil från mall"
+
+#: ../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Ångra skapandet av %d mapp"
+msgstr[1] "_Ångra skapandet av %d mappar"
+
+#: ../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Ångra flytten av %d objekt till papperskorgen"
+msgstr[1] "_Ångra flytten av %d objekt till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Ångra återskapandet av %d objekt från papperskorgen"
+msgstr[1] "_Ångra återskapandet av %d objekt från papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Ångra länkandet till %d objekt"
+msgstr[1] "_Ångra länkandet till %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Ångra radering av %d objekt"
+msgstr[1] "_Ångra radering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Ångra rekursiva behörighetsändringar för %d objekt"
+msgstr[1] "Ångra rekursiva behörighetsändringar för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Ångra behörighetsändringar för %d objekt"
+msgstr[1] "Ångra behörighetsändringar för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Ångra gruppändringar för %d objekt"
+msgstr[1] "Ångra gruppändringar för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Ångra ägarändringar för %d objekt"
+msgstr[1] "Ångra ägarändringar för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Gör om kopiering av %d objekt"
+msgstr[1] "_Gör om kopiering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Gör om duplicering av %d objekt"
+msgstr[1] "_Gör om duplicering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Gör om flytt av %d objekt"
+msgstr[1] "_Gör om flytt av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Gör om namnbyte på %d objekt"
+msgstr[1] "_Gör om namnbyte på %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Gör om skapandet av en tom fil"
+
+#: ../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Gör om skapandet av en fil från mall"
+
+#: ../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Gör om skapandet av %d mapp"
+msgstr[1] "_Gör om skapandet av %d mappar"
+
+#: ../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Gör om flytt av %d objekt till papperskorgen"
+msgstr[1] "_Gör om flytt av %d objekt till papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Gör om återställning av %d objekt från papperskorgen"
+msgstr[1] "_Gör om återställning av %d objekt från papperskorgen"
+
+#: ../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Gör om länkning till %d objekt"
+msgstr[1] "_Gör om länkning till %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Gör om radering av %d objekt"
+msgstr[1] "_Gör om radering av %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Gör om rekursiv ändring av behörigheter för %d objekt"
+msgstr[1] "Gör om rekursiv ändring av behörigheter för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Gör om ändring av behörigheter för %d objekt"
+msgstr[1] "Gör om ändring av behörigheter för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Gör om ändring av grupp för %d objekt"
+msgstr[1] "Gör om ändring av grupp för %d objekt"
+
+#: ../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Gör om ändring av ägare för %d objekt"
+msgstr[1] "Gör om ändring av ägare för %d objekt"
 
 #: ../libcore/gof-file.c:302
 #, c-format
@@ -502,6 +841,30 @@ msgstr "Snedstreck tillåts inte i filnamn"
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "Toppnivåfiler kan inte döpas om"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Förbereder"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Visa mer _information"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Idag kl. %H.%M"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Igår kl. %H.%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y-%m-%d kl. %H.%M"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -647,9 +1010,9 @@ msgstr "Ersätt"
 msgid "File conflict"
 msgstr "Filkonflikt"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Visa mer _information"
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ogiltig Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -841,7 +1204,7 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "Alla objekt i papperskorgen kommer att raderas permanent."
 
 #: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
 msgstr "Töm _papperskorgen"
 
@@ -1336,377 +1699,58 @@ msgstr "Tömmer papperskorgen"
 msgid "Emptying Trash"
 msgstr "Tömmer papperskorgen"
 
-#: ../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "Radera %d kopierade objekt"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
 
-#: ../libcore/marlin-undostack-manager.c:1205
-#: ../libcore/marlin-undostack-manager.c:1215
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Radera \"%s\""
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Objektet kan inte återskapas från papperskorgen"
 
-#: ../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Radera %d duplicerade objekt"
+#: ../src/View/LocationBar.vala:123
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Flytta tillbaka %d objekt till '%s'"
+#: ../src/View/LocationBar.vala:124
+msgid "DAV"
+msgstr "DAV"
 
-#: ../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Flytta tillbaka \"%s\" till \"%s\""
+#: ../src/View/LocationBar.vala:125
+msgid "DAVS"
+msgstr "DAVS"
 
-#: ../libcore/marlin-undostack-manager.c:1236
-#: ../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Byt namn på \"%s\" till \"%s\""
+#: ../src/View/LocationBar.vala:126
+msgid "FTP"
+msgstr "FTP"
 
-#: ../libcore/marlin-undostack-manager.c:1255
-#: ../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Återskapa %d objekt från papperskorgen"
+#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr "Nätverk"
 
-#: ../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Återställ \"%s\" till \"%s\""
+#: ../src/View/LocationBar.vala:128
+msgid "SFTP"
+msgstr "SFTP"
 
-#: ../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Flytta %d objekt till papperskorgen"
+#: ../src/View/LocationBar.vala:129
+msgid "SMB"
+msgstr "SMB"
 
-#: ../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Flytta \"%s\" tillbaka till papperskorgen"
+#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr "Papperskorg"
 
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Ta bort länkar till %d objekt"
+#: ../src/View/LocationBar.vala:329
+msgid "Open in New Tab"
+msgstr "Öppna i ny flik"
 
-#: ../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Ta bort länk till \"%s\""
+#: ../src/View/LocationBar.vala:336
+msgid "Open with"
+msgstr "Öppna med"
 
-#: ../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Återställ ursprungliga rättigheter för objekt inuti \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Återställ ursprungliga rättigheter för \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Återställ grupp för \"%s\" till \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Återställ ägare av \"%s\" till \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopiera %d objekt till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopiera '%s' till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Dubbletter av %d filer i '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplicera '%s' i '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Flytta %d objekt till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Flytta '%s' till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Skapa ny fil '%s' från mall "
-
-#: ../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Skapa en tom fil '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Skapa ny mapp '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Flytta %d objekt till papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Flytta '%s' till papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Återställ '%s' från papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Skapa länkar till %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Skapa länk till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Ange rättigheter för objekt inuti '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Ange rättigheter för '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Ange grupp för '%s' till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Ange ägare av '%s' till '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Ångra kopiering av %d objekt"
-msgstr[1] "_Ångra kopiering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Ångra duplicering av %d objekt"
-msgstr[1] "Ångra duplicering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Ångra flytt av %d objekt"
-msgstr[1] "_Ångra flytt av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Ångra namnbyte på %d objekt"
-msgstr[1] "_Ångra namnbyten på %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Ångra skapandet av en tom fil"
-
-#: ../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Ångra skapandet av en fil från mall"
-
-#: ../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Ångra skapandet av %d mapp"
-msgstr[1] "_Ångra skapandet av %d mappar"
-
-#: ../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Ångra flytten av %d objekt till papperskorgen"
-msgstr[1] "_Ångra flytten av %d objekt till papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Ångra återskapandet av %d objekt från papperskorgen"
-msgstr[1] "_Ångra återskapandet av %d objekt från papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Ångra länkandet till %d objekt"
-msgstr[1] "_Ångra länkandet till %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Ångra radering av %d objekt"
-msgstr[1] "_Ångra radering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Ångra rekursiva behörighetsändringar för %d objekt"
-msgstr[1] "Ångra rekursiva behörighetsändringar för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Ångra behörighetsändringar för %d objekt"
-msgstr[1] "Ångra behörighetsändringar för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Ångra gruppändringar för %d objekt"
-msgstr[1] "Ångra gruppändringar för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Ångra ägarändringar för %d objekt"
-msgstr[1] "Ångra ägarändringar för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Gör om kopiering av %d objekt"
-msgstr[1] "_Gör om kopiering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Gör om duplicering av %d objekt"
-msgstr[1] "_Gör om duplicering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Gör om flytt av %d objekt"
-msgstr[1] "_Gör om flytt av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Gör om namnbyte på %d objekt"
-msgstr[1] "_Gör om namnbyte på %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Gör om skapandet av en tom fil"
-
-#: ../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Gör om skapandet av en fil från mall"
-
-#: ../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Gör om skapandet av %d mapp"
-msgstr[1] "_Gör om skapandet av %d mappar"
-
-#: ../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Gör om flytt av %d objekt till papperskorgen"
-msgstr[1] "_Gör om flytt av %d objekt till papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Gör om återställning av %d objekt från papperskorgen"
-msgstr[1] "_Gör om återställning av %d objekt från papperskorgen"
-
-#: ../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Gör om länkning till %d objekt"
-msgstr[1] "_Gör om länkning till %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Gör om radering av %d objekt"
-msgstr[1] "_Gör om radering av %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Gör om rekursiv ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om rekursiv ändring av behörigheter för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Gör om ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om ändring av behörigheter för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Gör om ändring av grupp för %d objekt"
-msgstr[1] "Gör om ändring av grupp för %d objekt"
-
-#: ../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Gör om ändring av ägare för %d objekt"
-msgstr[1] "Gör om ändring av ägare för %d objekt"
+#: ../src/View/LocationBar.vala:367
+msgid "Other Application .."
+msgstr "Annat program ..."
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1715,6 +1759,378 @@ msgstr "En enkel men kraftfull filhanterare"
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
 msgstr "Launchpad-översättare"
+
+#: ../src/View/Window.vala:138
+msgid "Files isn't your default file manager."
+msgstr "Files är inte din standardfilhanterare."
+
+#: ../src/View/Window.vala:144
+msgid "Set as Default"
+msgstr "Ange som standard"
+
+#: ../src/View/Window.vala:149
+msgid "Ignore"
+msgstr "Ignorera"
+
+#: ../src/View/Window.vala:432
+msgid "Undo"
+msgstr "Ångra"
+
+#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
+msgid "Undo the last action"
+msgstr "Ångra senaste åtgärden"
+
+#: ../src/View/Window.vala:442
+msgid "Redo"
+msgstr "Gör om"
+
+#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
+msgid "Redo the last action"
+msgstr "Gör om senaste åtgärden"
+
+#: ../src/View/Window.vala:739
+msgid "_File"
+msgstr "_Arkiv"
+
+#: ../src/View/Window.vala:740
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: ../src/View/Window.vala:741
+msgid "_View"
+msgstr "_Visa"
+
+#: ../src/View/Window.vala:742
+msgid "_Go"
+msgstr "_Gå"
+
+#: ../src/View/Window.vala:743
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Nytt _fönster"
+
+#: ../src/View/Window.vala:746
+msgid "Open another Files window for the displayed location"
+msgstr "Öppna ett nytt Files-fönster för den visade platsen"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Ny _flik"
+
+#: ../src/View/Window.vala:750
+msgid "Open another tab for the displayed location"
+msgstr "Öppna ytterligare flik för den visade platsen"
+
+#: ../src/View/Window.vala:754
+msgid "_Close"
+msgstr "_Stäng"
+
+#: ../src/View/Window.vala:755
+msgid "Close this folder"
+msgstr "Stäng den här mappen"
+
+#: ../src/View/Window.vala:760
+msgid "_Undo"
+msgstr "_Ångra"
+
+#: ../src/View/Window.vala:763
+msgid "_Redo"
+msgstr "_Gör om"
+
+#: ../src/View/Window.vala:766
+msgid "_Find"
+msgstr "_Sök"
+
+#: ../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:769
+msgid "Open _Parent"
+msgstr "Öppna _ovanstående"
+
+#: ../src/View/Window.vala:770
+msgid "Open the parent folder"
+msgstr "Öppna ovanliggade mapp"
+
+#: ../src/View/Window.vala:772
+msgid "_Back"
+msgstr "Till_baka"
+
+#: ../src/View/Window.vala:773
+msgid "Go to the previous visited location"
+msgstr "Gå till föregående besökta plats"
+
+#: ../src/View/Window.vala:776
+msgid "_Forward"
+msgstr "_Framåt"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the next visited location"
+msgstr "Gå till nästa besökta plats"
+
+#: ../src/View/Window.vala:779
+msgid "_Reload"
+msgstr "_Läs in igen"
+
+#: ../src/View/Window.vala:780
+msgid "Reload the current location"
+msgstr "Läs in aktuell plats igen"
+
+#: ../src/View/Window.vala:783
+msgid "_Home Folder"
+msgstr "_Hemmapp"
+
+#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "Öppna din personliga mapp"
+
+#: ../src/View/Window.vala:787
+msgid "_Trash"
+msgstr "_Papperskorg"
+
+#: ../src/View/Window.vala:788
+msgid "Open your personal trash folder"
+msgstr "Öppna din personliga papperskorg"
+
+#: ../src/View/Window.vala:791
+msgid "_Network"
+msgstr "_Nätverk"
+
+#: ../src/View/Window.vala:792
+msgid "Browse bookmarked and local network locations"
+msgstr "Bläddra bland bokmärkta och lokala nätverksplatser"
+
+#: ../src/View/Window.vala:795
+msgid "Zoom _In"
+msgstr "_Förstora"
+
+#: ../src/View/Window.vala:796
+msgid "Increase the view size"
+msgstr "Öka storleken på vyn"
+
+#: ../src/View/Window.vala:807
+msgid "Zoom _Out"
+msgstr "_Förminska"
+
+#: ../src/View/Window.vala:808
+msgid "Decrease the view size"
+msgstr "Minska storleken på vyn"
+
+#: ../src/View/Window.vala:815
+msgid "Normal Si_ze"
+msgstr "Normal storlek"
+
+#: ../src/View/Window.vala:816
+msgid "Use the normal view size"
+msgstr "Använd den normala storleken på vyn"
+
+#: ../src/View/Window.vala:819
+msgid "Next Tab"
+msgstr "Nästa flik"
+
+#: ../src/View/Window.vala:823
+msgid "Previous Tab"
+msgstr "Föregående flik"
+
+#: ../src/View/Window.vala:827
+msgid "Connect to _Server..."
+msgstr "Anslut till _server..."
+
+#: ../src/View/Window.vala:828
+msgid "Connect to a remote computer or shared disk"
+msgstr "Anslut till en fjärrdator eller delad disk"
+
+#: ../src/View/Window.vala:831
+msgid "_About"
+msgstr "_Om"
+
+#: ../src/View/Window.vala:832
+msgid "Display credits"
+msgstr "Lista medverkande"
+
+#: ../src/View/Window.vala:835
+msgid "Report a Problem..."
+msgstr "Rapportera ett problem..."
+
+#: ../src/View/Window.vala:836
+msgid "File a bug on Launchpad"
+msgstr "Rapportera en bugg på Launchpad"
+
+#: ../src/View/Window.vala:839
+msgid "Get Help Online..."
+msgstr "Få hjälp online..."
+
+#: ../src/View/Window.vala:843
+msgid "Translate This Application..."
+msgstr "Översätt det här programmet..."
+
+#: ../src/View/Window.vala:852
+msgid "Show _Hidden Files"
+msgstr "Visa _dolda filer"
+
+#: ../src/View/Window.vala:853
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Växla visningen av dolda filer i det aktuella fönstret"
+
+#: ../src/View/Window.vala:857
+msgid "_Places"
+msgstr "_Platser"
+
+#: ../src/View/Window.vala:858
+msgid "Change the visibility of this window's side pane"
+msgstr "Ändra synligheten på detta fönsters sidopanel"
+
+#: ../src/View/Window.vala:866
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../src/View/Window.vala:869
+msgid "List"
+msgstr "Lista"
+
+#: ../src/View/Window.vala:872
+msgid "Columns"
+msgstr "Kolumner"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "Personlig"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "Dina vanliga platser och bokmärken"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+msgid "Home"
+msgstr "Hem"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr "Öppna papperskorgen"
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "Enheter"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "Dina lokala partitioner och enheter"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+msgid "File System"
+msgstr "Filsystem"
+
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr "Öppna innehållet av filsystemet"
+
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "Montera och öppna %s"
+
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "Dina nätverksplatser"
+
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr "Hela nätverket"
+
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "Bläddra i nätverkets innehåll"
+
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "Kunde inte starta %s"
+
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr "Öppna"
+
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../src/View/Sidebar.vala:1214
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "_Montera"
+
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "_Avmontera"
+
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "Mata _ut"
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr "I denna mapp"
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr "Inga resultat funna"
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr "Läser in…"
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "Mappen finns inte"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(som administratör)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Den här tillhör inte dig"
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr "Ansluter..."
+
+#: ../src/View/Chrome/ViewSwicher.vala:75
+msgid "View as Grid"
+msgstr "Visa som rutnät"
+
+#: ../src/View/Chrome/ViewSwicher.vala:78
+msgid "View as List"
+msgstr "Visa som lista"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View in Columns"
+msgstr "Visa i kolumner"
+
+#: ../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:136
 msgid "%u folders"
@@ -1740,97 +2156,31 @@ msgstr "%u mapp"
 msgid "%u items selected (%s)"
 msgstr "%u objekt valda (%s)"
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr "Läser in…"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr "Mappen finns inte."
 
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "Hem"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "Mappen \"%s\" kan inte hittas."
 
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "Filsystem"
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "Skapa"
 
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "Mappen finns inte"
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "Skapa mappen \"%s\""
 
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(som administratör)"
-
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Den här tillhör inte dig"
-
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
-
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr "Ansluter..."
-
-#: ../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: ../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: ../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "Nätverk"
-
-#: ../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "Papperskorg"
-
-#: ../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "Öppna i ny flik"
-
-#: ../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "Öppna med"
-
-#: ../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr "Annat program ..."
-
-#: ../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr "I denna mapp"
-
-#: ../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr "Bokmärken"
-
-#: ../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
-
-#: ../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr "Inga resultat funna"
+"Misslyckades med att skapa mappen\n"
+"\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1944,360 +2294,6 @@ msgstr "Alla"
 msgid "Select an application to open "
 msgstr "Välj ett program för att öppna "
 
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Mappen finns inte."
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "The folder \"%s\" can't be found."
-msgstr "Mappen \"%s\" kan inte hittas."
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "Skapa"
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create the folder \"%s\""
-msgstr "Skapa mappen \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:55
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Misslyckades med att skapa mappen\n"
-"\n"
-"%s"
-
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "Files är inte din standardfilhanterare."
-
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr "Ange som standard"
-
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Ignorera"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Ångra"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Ångra senaste åtgärden"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Gör om"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Gör om senaste åtgärden"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Arkiv"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Redigera"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Visa"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "_Gå"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Nytt _fönster"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "Öppna ett nytt Files-fönster för den visade platsen"
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Ny _flik"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Öppna ytterligare flik för den visade platsen"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_Stäng"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Stäng den här mappen"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_Ångra"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Gör om"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
-msgstr "_Sök"
-
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Öppna _ovanstående"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Öppna ovanliggade mapp"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "Till_baka"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Gå till föregående besökta plats"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Framåt"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Gå till nästa besökta plats"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "_Läs in igen"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Läs in aktuell plats igen"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Hemmapp"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Öppna din personliga mapp"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Papperskorg"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Öppna din personliga papperskorg"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_Nätverk"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Bläddra bland bokmärkta och lokala nätverksplatser"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "_Förstora"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Öka storleken på vyn"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "_Förminska"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Minska storleken på vyn"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Normal storlek"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Använd den normala storleken på vyn"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Nästa flik"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Föregående flik"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "Anslut till _server..."
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "Anslut till en fjärrdator eller delad disk"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "_Om"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Lista medverkande"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Rapportera ett problem..."
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Rapportera en bugg på Launchpad"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Få hjälp online..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Översätt det här programmet..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Visa _dolda filer"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Växla visningen av dolda filer i det aktuella fönstret"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Platser"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Ändra synligheten på detta fönsters sidopanel"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Ikon"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "Lista"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Kolumner"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Personlig"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Dina vanliga platser och bokmärken"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr "Öppna papperskorgen"
-
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Enheter"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Dina lokala partitioner och enheter"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr "Öppna innehållet av filsystemet"
-
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "Montera och öppna %s"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Dina nätverksplatser"
-
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr "Hela nätverket"
-
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Bläddra i nätverkets innehåll"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "Kunde inte starta %s"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr "Öppna"
-
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Ta bort"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Montera"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Avmontera"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "Mata _ut"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr "Anslut till server..."
-
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "Visa som rutnät"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "Visa som lista"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "Visa i kolumner"
-
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "Visa programversionen."
@@ -2336,6 +2332,26 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan inte användas med URI:er."
 
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Bläddra bland dina filer"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Filhanterare"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Nytt fönster som _administratör"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Files"
+
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
@@ -2363,34 +2379,6 @@ msgstr "Visa kopieringsdialog"
 msgid "Cancel All In-progress Actions"
 msgstr "Avbryt alla pågående åtgärder"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Bläddra bland dina filer"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Filhanterare"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Nytt fönster som _administratör"
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "Files"
-
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Gå till %s"
-
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "Dessa filer kan raderas genom att tömma papperskorgen."
-
-#: ../plugins/marlin-trash/plugin.vala:39
-msgid "Empty the Trash"
-msgstr "Töm papperskorgen"

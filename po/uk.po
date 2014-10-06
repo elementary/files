@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"POT-Creation-Date: 2014-10-05 01:32-0500\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: Sergey Kostyuk <ks.hot.ua@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -16,9 +16,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:29+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-10-06 06:53+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 "Language: uk\n"
+
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Буфер обміну порожній"
+
+#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
+#: ../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Не вдалося перейменувати %s в %s"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -36,16 +46,62 @@ msgstr "Тип"
 msgid "Modified"
 msgstr "Змінено"
 
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Не вдалося перейменувати %s в %s"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
 msgstr "Ця тека є порожньою."
+
+#: ../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Впорядкувати _елементи"
+
+#: ../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "З_воротний порядок"
+
+#: ../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Показувати піктограми у зворотному порядку"
+
+#: ../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "За _назвою"
+
+#: ../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Лишити піктограми впорядкованими за назвою в рядках"
+
+#: ../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "За _розміром"
+
+#: ../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Лишити піктограми впорядкованими за розміром в рядках"
+
+#: ../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "За _типом"
+
+#: ../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Лишити піктограми впорядкованими за типом в рядках"
+
+#: ../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "за датою _зміни"
+
+#: ../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Лишити піктограми впорядкованими за датою зміни в рядках"
+
+#: ../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "Одинарний клік"
+
+#: ../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Чи буде елемент активовано при одинарному кліку"
 
 #: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
@@ -84,7 +140,7 @@ msgid "Open in %'d New _Tabs"
 msgstr "Відкрити в %'d Новій _Вкладці"
 
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
+#: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
 msgstr "Відкрити у новій в_кладці"
 
@@ -93,7 +149,7 @@ msgstr "Відкрити у новій в_кладці"
 msgid "Open in %'d New _Windows"
 msgstr "Відкрити в %'d Новому _Вікні"
 
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
@@ -225,6 +281,18 @@ msgstr "Переглянути чи змінити властивості кож
 msgid "Set Color:"
 msgstr "Вибрати колір"
 
+#: ../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "Способи вводу"
+
+#: ../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "Список у вигляді іконок"
+
+#: ../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "Режим піктограм"
+
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "Режим перегляду"
@@ -232,50 +300,6 @@ msgstr "Режим перегляду"
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "Режим перегляду"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Впорядкувати _елементи"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "З_воротний порядок"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Показувати піктограми у зворотному порядку"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "За _назвою"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Лишити піктограми впорядкованими за назвою в рядках"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "За _розміром"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Лишити піктограми впорядкованими за розміром в рядках"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "За _типом"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Лишити піктограми впорядкованими за типом в рядках"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "за датою _зміни"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Лишити піктограми впорядкованими за датою зміни в рядках"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -421,62 +445,403 @@ msgstr "Відміна"
 msgid "Failed to execute file \"%s\""
 msgstr "Не вдається виконати файл \"%s\""
 
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Буфер обміну порожній"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "Список у вигляді іконок"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "Режим піктограм"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Одинарний клік"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Чи буде елемент активовано при одинарному кліку"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Способи вводу"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Сьогодні о %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Вчора о %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y на %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Приготування"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
-
-#: ../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не вдається визначити початкове розташування \"%s\" "
+msgid "Delete %d copied items"
+msgstr "Видалити %d скопійованих елементів"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Елемент неможливо відновити зі смітника"
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Видалити '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Видалити %d продубльованих елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Переміщення %d елементів назад у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Перемістити '%s' назад у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Перейменувати '%s' на '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Відновити %d елементів зі смітника"
+
+#: ../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Відновити '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Перемістити %d елементів назад в смітник"
+
+#: ../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Перемістити '%s' назад у смітник"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Видалити посилання на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Видалити посилання на '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Відновити початкові права на об'єкти у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Відновити початкові права на '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Відновити групу з '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Відновити власника з '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Копіювати %d елементів до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Скопіювати '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Дублювати %d елементів у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Дублювати '%s' у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Перемістити %d елементів у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Перемістити '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Створити новий файл '%s' з шаблону "
+
+#: ../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Створити порожній файл '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Створити нову теку '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Перемістити %d елементів у смітник"
+
+#: ../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Перемістити '%s' у смітник"
+
+#: ../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Відновити '%s' з смітника"
+
+#: ../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Створити посилання на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Створити посилання на '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Вказати права на об'єкти у '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Вказати права на '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Вказати групу з '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Вказати власника з '%s' до '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Відмінити копіювання %d елемента"
+msgstr[1] "_Відмінити копіювання %d елементів"
+msgstr[2] "_Відмінити копіювання %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Відмінити дублювання %d елемента"
+msgstr[1] "_Відмінити дублювання %d елементів"
+msgstr[2] "_Відмінити дублювання %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Відмінити переміщення %d елемента"
+msgstr[1] "_Відмінити переміщення %d елементів"
+msgstr[2] "_Відмінити переміщення %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Відмінити перейменування %d елемента"
+msgstr[1] "_Відмінити перейменування %d елементів"
+msgstr[2] "_Відмінити перейменування %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Відмінити створення порожнього файлу"
+
+#: ../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Відмінити створення файлу з шаблону"
+
+#: ../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Відмінити створення %d каталогу"
+msgstr[1] "_Відмінити створення %d каталогів"
+msgstr[2] "_Відмінити створення %d каталогів"
+
+#: ../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Відмінити переміщення у смітник %d елемента"
+msgstr[1] "_Відмінити переміщення у смітник %d елементів"
+msgstr[2] "_Відмінити переміщення у смітник %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Відмінити відновлення %d елемента переміщених у смітник"
+msgstr[1] "_Відмінити відновлення %d елементів переміщених у смітник"
+msgstr[2] "_Відмінити відновлення %d елементів переміщених у смітник"
+
+#: ../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Відмінити створення посилання на %d елемент"
+msgstr[1] "_Відмінити створення посилання на %d елементів"
+msgstr[2] "_Відмінити створення посилання на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Відмінити видалення %d елемента"
+msgstr[1] "_Відмінити видалення %d елементів"
+msgstr[2] "_Відмінити видалення %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Відмінити рекурсивну зміну повноважень елементу %d"
+msgstr[1] "Відмінити рекурсивну зміну повноважень елементів %d"
+msgstr[2] "Відмінити рекурсивну зміну повноважень елементів %d"
+
+#: ../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Відмінити зміну прав на %d елемент"
+msgstr[1] "Відмінити зміну прав на %d елементів"
+msgstr[2] "Відмінити зміну прав на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Відмінити зміну групи %d елемента"
+msgstr[1] "Відмінити зміну групи %d елементів"
+msgstr[2] "Відмінити зміну групи %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Відмінити зміну власника %d елемента"
+msgstr[1] "Відмінити зміну власника %d елементів"
+msgstr[2] "Відмінити зміну власника %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Повернути копіювання %d елемента"
+msgstr[1] "_Повернути копіювання %d елементів"
+msgstr[2] "_Повернути копіювання %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Повернути дублювання %d елемента"
+msgstr[1] "_Повернути дублювання %d елементів"
+msgstr[2] "_Повернути дублювання %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Повернути переміщення %d елемента"
+msgstr[1] "_Повернути переміщення %d елементів"
+msgstr[2] "_Повернути переміщення %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Повернути перейменування %d елемента"
+msgstr[1] "_Повернути перейменування %d елементів"
+msgstr[2] "_Повернути перейменування %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Повернути створення порожнього файлу"
+
+#: ../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Повернути створення файлу зі шаблону"
+
+#: ../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Повернути створення %d каталога"
+msgstr[1] "_Повернути створення %d каталогів"
+msgstr[2] "_Повернути створення %d каталогів"
+
+#: ../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Повернути перенесення у смітник %d елемента"
+msgstr[1] "_Повернути перенесення у смітник %d елементів"
+msgstr[2] "_Повернути перенесення у смітник %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Повернути відновлення зі смітник %d елемента"
+msgstr[1] "_Повернути відновлення зі смітник %d елемента"
+msgstr[2] "_Повернути відновлення зі смітник %d елемента"
+
+#: ../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Повернути створення посилання на %d елемент"
+msgstr[1] "_Повернути створення посилання на %d елементів"
+msgstr[2] "_Повернути створення посилання на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Повернути видалення %d елемента"
+msgstr[1] "_Повернути видалення %d елементів"
+msgstr[2] "_Повернути видалення %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Відновити рекурсивну зміну повноважень елементу %d"
+msgstr[1] "Відновити рекурсивну зміну повноважень елементів %d"
+msgstr[2] "Відновити рекурсивну зміну повноважень елементів %d"
+
+#: ../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Повернути зміну прав на %d елемент"
+msgstr[1] "Повернути зміну прав на %d елементів"
+msgstr[2] "Повернути зміну прав на %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Повернути зміну групи %d елемента"
+msgstr[1] "Повернути зміну групи %d елементів"
+msgstr[2] "Повернути зміну групи %d елементів"
+
+#: ../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Повернути зміну власника %d елемента"
+msgstr[1] "Повернути зміну власника %d елементів"
+msgstr[2] "Повернути зміну власника %d елементів"
 
 #: ../libcore/gof-file.c:302
 #, c-format
@@ -507,6 +872,30 @@ msgstr "У назвах файлів не можна використовува�
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "Файли верхнього рівня не можна перейменовувати"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Приготування"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Показати додаткові _подробиці"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Сьогодні о %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Вчора о %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y на %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -652,9 +1041,9 @@ msgstr "Замінити"
 msgid "File conflict"
 msgstr "Конфлікт файлів"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (некоректний символ Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -853,7 +1242,7 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "Всі об’єкти з кошика будуть остаточно видалені."
 
 #: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
 msgstr "О_чистити кошик"
 
@@ -1358,403 +1747,58 @@ msgstr "Очищення кошика"
 msgid "Emptying Trash"
 msgstr "Очищення смітника"
 
-#: ../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "Видалити %d скопійованих елементів"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Не вдається визначити початкове розташування \"%s\" "
 
-#: ../libcore/marlin-undostack-manager.c:1205
-#: ../libcore/marlin-undostack-manager.c:1215
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Видалити '%s'"
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Елемент неможливо відновити зі смітника"
 
-#: ../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Видалити %d продубльованих елементів"
+#: ../src/View/LocationBar.vala:123
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Переміщення %d елементів назад у '%s'"
+#: ../src/View/LocationBar.vala:124
+msgid "DAV"
+msgstr "DAV"
 
-#: ../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Перемістити '%s' назад у '%s'"
+#: ../src/View/LocationBar.vala:125
+msgid "DAVS"
+msgstr "DAVS"
 
-#: ../libcore/marlin-undostack-manager.c:1236
-#: ../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Перейменувати '%s' на '%s'"
+#: ../src/View/LocationBar.vala:126
+msgid "FTP"
+msgstr "FTP"
 
-#: ../libcore/marlin-undostack-manager.c:1255
-#: ../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Відновити %d елементів зі смітника"
+#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr "Мережа"
 
-#: ../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Відновити '%s' до '%s'"
+#: ../src/View/LocationBar.vala:128
+msgid "SFTP"
+msgstr "SFTP"
 
-#: ../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Перемістити %d елементів назад в смітник"
+#: ../src/View/LocationBar.vala:129
+msgid "SMB"
+msgstr "SMB"
 
-#: ../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Перемістити '%s' назад у смітник"
+#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr "Кошик"
 
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Видалити посилання на %d елементів"
+#: ../src/View/LocationBar.vala:329
+msgid "Open in New Tab"
+msgstr "Відкрити у новій вкладці"
 
-#: ../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Видалити посилання на '%s'"
+#: ../src/View/LocationBar.vala:336
+msgid "Open with"
+msgstr "Відкрити за допомогою"
 
-#: ../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Відновити початкові права на об'єкти у '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Відновити початкові права на '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Відновити групу з '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Відновити власника з '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Копіювати %d елементів до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Скопіювати '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Дублювати %d елементів у '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Дублювати '%s' у '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Перемістити %d елементів у '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Перемістити '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Створити новий файл '%s' з шаблону "
-
-#: ../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Створити порожній файл '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Створити нову теку '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Перемістити %d елементів у смітник"
-
-#: ../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Перемістити '%s' у смітник"
-
-#: ../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Відновити '%s' з смітника"
-
-#: ../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Створити посилання на %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Створити посилання на '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Вказати права на об'єкти у '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Вказати права на '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Вказати групу з '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Вказати власника з '%s' до '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Відмінити копіювання %d елемента"
-msgstr[1] "_Відмінити копіювання %d елементів"
-msgstr[2] "_Відмінити копіювання %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Відмінити дублювання %d елемента"
-msgstr[1] "_Відмінити дублювання %d елементів"
-msgstr[2] "_Відмінити дублювання %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Відмінити переміщення %d елемента"
-msgstr[1] "_Відмінити переміщення %d елементів"
-msgstr[2] "_Відмінити переміщення %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Відмінити перейменування %d елемента"
-msgstr[1] "_Відмінити перейменування %d елементів"
-msgstr[2] "_Відмінити перейменування %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Відмінити створення порожнього файлу"
-
-#: ../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Відмінити створення файлу з шаблону"
-
-#: ../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Відмінити створення %d каталогу"
-msgstr[1] "_Відмінити створення %d каталогів"
-msgstr[2] "_Відмінити створення %d каталогів"
-
-#: ../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Відмінити переміщення у смітник %d елемента"
-msgstr[1] "_Відмінити переміщення у смітник %d елементів"
-msgstr[2] "_Відмінити переміщення у смітник %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Відмінити відновлення %d елемента переміщених у смітник"
-msgstr[1] "_Відмінити відновлення %d елементів переміщених у смітник"
-msgstr[2] "_Відмінити відновлення %d елементів переміщених у смітник"
-
-#: ../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Відмінити створення посилання на %d елемент"
-msgstr[1] "_Відмінити створення посилання на %d елементів"
-msgstr[2] "_Відмінити створення посилання на %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Відмінити видалення %d елемента"
-msgstr[1] "_Відмінити видалення %d елементів"
-msgstr[2] "_Відмінити видалення %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Відмінити рекурсивну зміну повноважень елементу %d"
-msgstr[1] "Відмінити рекурсивну зміну повноважень елементів %d"
-msgstr[2] "Відмінити рекурсивну зміну повноважень елементів %d"
-
-#: ../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Відмінити зміну прав на %d елемент"
-msgstr[1] "Відмінити зміну прав на %d елементів"
-msgstr[2] "Відмінити зміну прав на %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Відмінити зміну групи %d елемента"
-msgstr[1] "Відмінити зміну групи %d елементів"
-msgstr[2] "Відмінити зміну групи %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Відмінити зміну власника %d елемента"
-msgstr[1] "Відмінити зміну власника %d елементів"
-msgstr[2] "Відмінити зміну власника %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Повернути копіювання %d елемента"
-msgstr[1] "_Повернути копіювання %d елементів"
-msgstr[2] "_Повернути копіювання %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Повернути дублювання %d елемента"
-msgstr[1] "_Повернути дублювання %d елементів"
-msgstr[2] "_Повернути дублювання %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Повернути переміщення %d елемента"
-msgstr[1] "_Повернути переміщення %d елементів"
-msgstr[2] "_Повернути переміщення %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Повернути перейменування %d елемента"
-msgstr[1] "_Повернути перейменування %d елементів"
-msgstr[2] "_Повернути перейменування %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Повернути створення порожнього файлу"
-
-#: ../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Повернути створення файлу зі шаблону"
-
-#: ../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Повернути створення %d каталога"
-msgstr[1] "_Повернути створення %d каталогів"
-msgstr[2] "_Повернути створення %d каталогів"
-
-#: ../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Повернути перенесення у смітник %d елемента"
-msgstr[1] "_Повернути перенесення у смітник %d елементів"
-msgstr[2] "_Повернути перенесення у смітник %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Повернути відновлення зі смітник %d елемента"
-msgstr[1] "_Повернути відновлення зі смітник %d елемента"
-msgstr[2] "_Повернути відновлення зі смітник %d елемента"
-
-#: ../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Повернути створення посилання на %d елемент"
-msgstr[1] "_Повернути створення посилання на %d елементів"
-msgstr[2] "_Повернути створення посилання на %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Повернути видалення %d елемента"
-msgstr[1] "_Повернути видалення %d елементів"
-msgstr[2] "_Повернути видалення %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Відновити рекурсивну зміну повноважень елементу %d"
-msgstr[1] "Відновити рекурсивну зміну повноважень елементів %d"
-msgstr[2] "Відновити рекурсивну зміну повноважень елементів %d"
-
-#: ../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Повернути зміну прав на %d елемент"
-msgstr[1] "Повернути зміну прав на %d елементів"
-msgstr[2] "Повернути зміну прав на %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Повернути зміну групи %d елемента"
-msgstr[1] "Повернути зміну групи %d елементів"
-msgstr[2] "Повернути зміну групи %d елементів"
-
-#: ../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Повернути зміну власника %d елемента"
-msgstr[1] "Повернути зміну власника %d елементів"
-msgstr[2] "Повернути зміну власника %d елементів"
+#: ../src/View/LocationBar.vala:367
+msgid "Other Application .."
+msgstr ""
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1763,6 +1807,378 @@ msgstr "Простий і потужний файловий менеджер"
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
 msgstr "Перекладачі Launchpad"
+
+#: ../src/View/Window.vala:138
+msgid "Files isn't your default file manager."
+msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
+
+#: ../src/View/Window.vala:144
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:149
+msgid "Ignore"
+msgstr "Ігнорувати"
+
+#: ../src/View/Window.vala:432
+msgid "Undo"
+msgstr "Скасувати"
+
+#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
+msgid "Undo the last action"
+msgstr "Скасувати останню дію"
+
+#: ../src/View/Window.vala:442
+msgid "Redo"
+msgstr "Поновити"
+
+#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
+msgid "Redo the last action"
+msgstr "Поновити останню дію"
+
+#: ../src/View/Window.vala:739
+msgid "_File"
+msgstr "_Файл"
+
+#: ../src/View/Window.vala:740
+msgid "_Edit"
+msgstr "_Редагувати"
+
+#: ../src/View/Window.vala:741
+msgid "_View"
+msgstr "_Вигляд"
+
+#: ../src/View/Window.vala:742
+msgid "_Go"
+msgstr "_Перейти"
+
+#: ../src/View/Window.vala:743
+msgid "_Help"
+msgstr "_Допомога"
+
+#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Нове _вікно"
+
+#: ../src/View/Window.vala:746
+msgid "Open another Files window for the displayed location"
+msgstr "Відкрити нове вікно Files для обраного каталога"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Нова _вкладка"
+
+#: ../src/View/Window.vala:750
+msgid "Open another tab for the displayed location"
+msgstr "Відкрити іншу вкладку для відображеної директорії"
+
+#: ../src/View/Window.vala:754
+msgid "_Close"
+msgstr "_Закрити"
+
+#: ../src/View/Window.vala:755
+msgid "Close this folder"
+msgstr "Закрити цю папку"
+
+#: ../src/View/Window.vala:760
+msgid "_Undo"
+msgstr "_Відмінити дію"
+
+#: ../src/View/Window.vala:763
+msgid "_Redo"
+msgstr "_Повторити дію"
+
+#: ../src/View/Window.vala:766
+msgid "_Find"
+msgstr ""
+
+#: ../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:769
+msgid "Open _Parent"
+msgstr "Відкрити _верхню"
+
+#: ../src/View/Window.vala:770
+msgid "Open the parent folder"
+msgstr "Відкрити папку вище"
+
+#: ../src/View/Window.vala:772
+msgid "_Back"
+msgstr "_Назад"
+
+#: ../src/View/Window.vala:773
+msgid "Go to the previous visited location"
+msgstr "Перейти до попереднього відвіданого місця"
+
+#: ../src/View/Window.vala:776
+msgid "_Forward"
+msgstr "_Вперед"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the next visited location"
+msgstr "Перейти до наступного відвіданого місця"
+
+#: ../src/View/Window.vala:779
+msgid "_Reload"
+msgstr "_Перезавантажити"
+
+#: ../src/View/Window.vala:780
+msgid "Reload the current location"
+msgstr "Перезавантажити поточний каталог"
+
+#: ../src/View/Window.vala:783
+msgid "_Home Folder"
+msgstr "_Домашня тека"
+
+#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "Відкрити Ваш особистий каталог"
+
+#: ../src/View/Window.vala:787
+msgid "_Trash"
+msgstr "_Смітник"
+
+#: ../src/View/Window.vala:788
+msgid "Open your personal trash folder"
+msgstr "Відкрити вашу теку смітника"
+
+#: ../src/View/Window.vala:791
+msgid "_Network"
+msgstr "_Мережа"
+
+#: ../src/View/Window.vala:792
+msgid "Browse bookmarked and local network locations"
+msgstr "Переглянути збережені та локальні мережеві адреси"
+
+#: ../src/View/Window.vala:795
+msgid "Zoom _In"
+msgstr "Збільшити"
+
+#: ../src/View/Window.vala:796
+msgid "Increase the view size"
+msgstr "Збільшити розмір перегляду"
+
+#: ../src/View/Window.vala:807
+msgid "Zoom _Out"
+msgstr "Зменшити"
+
+#: ../src/View/Window.vala:808
+msgid "Decrease the view size"
+msgstr "Зменшити розмір перегляду"
+
+#: ../src/View/Window.vala:815
+msgid "Normal Si_ze"
+msgstr "Звичайний _розмір"
+
+#: ../src/View/Window.vala:816
+msgid "Use the normal view size"
+msgstr "Звичайний розмір перегляду"
+
+#: ../src/View/Window.vala:819
+msgid "Next Tab"
+msgstr "Наступна вкладка"
+
+#: ../src/View/Window.vala:823
+msgid "Previous Tab"
+msgstr "Попередня вкладка"
+
+#: ../src/View/Window.vala:827
+msgid "Connect to _Server..."
+msgstr "З'єднатись з _сервером…"
+
+#: ../src/View/Window.vala:828
+msgid "Connect to a remote computer or shared disk"
+msgstr "З'єднатись до віддаленого комп'ютера або спільного диску"
+
+#: ../src/View/Window.vala:831
+msgid "_About"
+msgstr "Про програму"
+
+#: ../src/View/Window.vala:832
+msgid "Display credits"
+msgstr "Показати кредити"
+
+#: ../src/View/Window.vala:835
+msgid "Report a Problem..."
+msgstr "Повідомити про проблему..."
+
+#: ../src/View/Window.vala:836
+msgid "File a bug on Launchpad"
+msgstr "Надіслати повідомлення про помилку на Launchpad"
+
+#: ../src/View/Window.vala:839
+msgid "Get Help Online..."
+msgstr "Отримати онлайн довідку..."
+
+#: ../src/View/Window.vala:843
+msgid "Translate This Application..."
+msgstr "Перекласти цю програму..."
+
+#: ../src/View/Window.vala:852
+msgid "Show _Hidden Files"
+msgstr "Показати При_ховані Файли"
+
+#: ../src/View/Window.vala:853
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Перемикнути показ прихованих файлів у поточному вікні"
+
+#: ../src/View/Window.vala:857
+msgid "_Places"
+msgstr "_Місця"
+
+#: ../src/View/Window.vala:858
+msgid "Change the visibility of this window's side pane"
+msgstr "Змінити видимість бічної панелі цього вікна"
+
+#: ../src/View/Window.vala:866
+msgid "Icon"
+msgstr "Піктограма"
+
+#: ../src/View/Window.vala:869
+msgid "List"
+msgstr "Список"
+
+#: ../src/View/Window.vala:872
+msgid "Columns"
+msgstr "Стовпчики"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "Особисте"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "Ваші загальні місця та закладки"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+msgid "Home"
+msgstr "Домівка"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "Пристрої"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "Ваші локальні розділи та пристрої"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+msgid "File System"
+msgstr "Файлова Система"
+
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "Підключити та відкрити %s"
+
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "Ваші мережеві місця"
+
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "Перегляд вмісту мережі"
+
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "Не вдається запустити %s"
+
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "Видалити"
+
+#: ../src/View/Sidebar.vala:1214
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "_Підключити"
+
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "_Відключити"
+
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "Ви_йняти"
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "Дана тека не існує"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(як Адміністратор)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "Це не належить вам."
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "Ви не маєте права переглядати дану теку."
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr ""
+
+#: ../src/View/Chrome/ViewSwicher.vala:75
+msgid "View as Grid"
+msgstr "Перегляд у вигляді таблиці"
+
+#: ../src/View/Chrome/ViewSwicher.vala:78
+msgid "View as List"
+msgstr "Перегляд у вигляді списку"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View in Columns"
+msgstr "Перегляд у вигляді колонок"
+
+#: ../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:136
 msgid "%u folders"
@@ -1788,97 +2204,31 @@ msgstr "%u тека"
 msgid "%u items selected (%s)"
 msgstr "%u елементів обрано (%s)"
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
+msgstr "Дана тека не існує."
+
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "Теку \"%s\" неможливо знайти."
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "Створити"
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "Створити теку \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
-
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "Домівка"
-
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "Файлова Система"
-
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "Дана тека не існує"
-
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(як Адміністратор)"
-
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Це не належить вам."
-
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "Ви не маєте права переглядати дану теку."
-
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: ../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: ../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "Мережа"
-
-#: ../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "Кошик"
-
-#: ../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "Відкрити у новій вкладці"
-
-#: ../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "Відкрити за допомогою"
-
-#: ../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr ""
-
-#: ../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
+"Помилка при створенні теки\n"
+"\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1992,360 +2342,6 @@ msgstr "Будь-хто"
 msgid "Select an application to open "
 msgstr "Виберіть програму, аби відкрити "
 
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Дана тека не існує."
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "The folder \"%s\" can't be found."
-msgstr "Теку \"%s\" неможливо знайти."
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "Створити"
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create the folder \"%s\""
-msgstr "Створити теку \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:55
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Помилка при створенні теки\n"
-"\n"
-"%s"
-
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
-
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Ігнорувати"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Скасувати"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Скасувати останню дію"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Поновити"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Поновити останню дію"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Файл"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Редагувати"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Вигляд"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "_Перейти"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_Допомога"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Нове _вікно"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "Відкрити нове вікно Files для обраного каталога"
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Нова _вкладка"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Відкрити іншу вкладку для відображеної директорії"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_Закрити"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Закрити цю папку"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_Відмінити дію"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Повторити дію"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Відкрити _верхню"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Відкрити папку вище"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_Назад"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Перейти до попереднього відвіданого місця"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Вперед"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Перейти до наступного відвіданого місця"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "_Перезавантажити"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Перезавантажити поточний каталог"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Домашня тека"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Відкрити Ваш особистий каталог"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Смітник"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Відкрити вашу теку смітника"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_Мережа"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Переглянути збережені та локальні мережеві адреси"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "Збільшити"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Збільшити розмір перегляду"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "Зменшити"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Зменшити розмір перегляду"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Звичайний _розмір"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Звичайний розмір перегляду"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Наступна вкладка"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Попередня вкладка"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "З'єднатись з _сервером…"
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "З'єднатись до віддаленого комп'ютера або спільного диску"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "Про програму"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Показати кредити"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Повідомити про проблему..."
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Надіслати повідомлення про помилку на Launchpad"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Отримати онлайн довідку..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Перекласти цю програму..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Показати При_ховані Файли"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Перемикнути показ прихованих файлів у поточному вікні"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Місця"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Змінити видимість бічної панелі цього вікна"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Піктограма"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "Список"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Стовпчики"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Особисте"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Пристрої"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "Підключити та відкрити %s"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Ваші мережеві місця"
-
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Перегляд вмісту мережі"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "Не вдається запустити %s"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Видалити"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Підключити"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Відключити"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "Ви_йняти"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "Перегляд у вигляді таблиці"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "Перегляд у вигляді списку"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "Перегляд у вигляді колонок"
-
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "Показати версію програми."
@@ -2384,6 +2380,26 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Переглянути свої файли"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Файловий менеджер"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Нове вікно від імені адміністратора"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Файли"
+
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
@@ -2412,34 +2428,6 @@ msgstr "Відобразити вікно копіювання"
 msgid "Cancel All In-progress Actions"
 msgstr "Скасувати всі активні дії"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Переглянути свої файли"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Файловий менеджер"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Нове вікно від імені адміністратора"
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "Файли"
-
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Перейти до %s"
-
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "Ці елементи можуть бути видалені при очищенні Смітника."
-
-#: ../plugins/marlin-trash/plugin.vala:39
-msgid "Empty the Trash"
-msgstr "Очистити Смітник"
