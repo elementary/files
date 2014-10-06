@@ -42,6 +42,13 @@ public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
             infobar.show_all ();
         }
     }
+
+    public override void update_sidebar (Gtk.Widget widget) {
+        var sidebar = widget as Marlin.AbstractSidebar;
+        sidebar.add_extra_network_item (_("Connect to Server…"), _("Connect to a network file server"),
+                                         new ThemedIcon.with_default_fallbacks ("network-server"), 
+                                         marlin_connect_server_dialog_show);
+    }
 }
 
 public Marlin.Plugins.Base module_init () {
