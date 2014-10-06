@@ -301,12 +301,16 @@ namespace Marlin.View.Chrome
 
         public void on_need_completion () {
             File file = get_file_for_path (text);
-            to_search = file.get_basename ();
+            if (text.has_suffix("/"))
+                // don't use basename because it will return "folder for "/folder/" text
+                to_search = "";
+            else
+                to_search = file.get_basename ();
 
             autocompleted = false;
             multiple_completions = false;
             
-            if (to_search != "" && file.has_parent (null))
+            if (!text.has_suffix("/") && file.has_parent (null))
                 file = file.get_parent ();
             else
                 return;
