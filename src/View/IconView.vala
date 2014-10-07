@@ -188,8 +188,8 @@ namespace FM {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.CellRenderer? r;
             uint zone;
-
             int x, y, mask;
+
             get_window ().get_device_position (event.get_device (), out x, out y, out mask);
 
             tree.get_item_at_pos ((int)event.x, (int)event.y, out p, out r);

@@ -182,10 +182,14 @@ namespace FM {
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
             int cx, cy, depth;
+            path = null;
+
+            /* Check if clicked on headers */
+            if (event.window != tree.get_bin_window ())
+                return ClickZone.INVALID;
 
             bool on_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
-
             depth = p != null ? p.get_depth () : 0;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 

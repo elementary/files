@@ -37,7 +37,8 @@ namespace FM {
             ICON,
             NAME,
             BLANK_PATH,
-            BLANK_NO_PATH
+            BLANK_NO_PATH,
+            INVALID
         }
 
         const int MAX_TEMPLATES = 32;
@@ -2333,6 +2334,9 @@ debug ("DV on view draw");
             Gtk.TreePath? path = null;
 
             click_zone = get_event_position_info (event, out path);
+            if (click_zone == ClickZone.INVALID)
+                return false;
+
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);

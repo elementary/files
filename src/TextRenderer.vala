@@ -256,8 +256,11 @@ debug ("set  widget");
             context.restore ();
         }
 
-        public void set_up_layout (string text, Gdk.Rectangle cell_area, out int text_width, out int text_height) {
+        public void set_up_layout (string? text, Gdk.Rectangle cell_area, out int text_width, out int text_height) {
             /* render small/normal text depending on the zoom_level */
+            if (text == null)
+                text= " ";
+                
             if (this.zoom_level < Marlin.ZoomLevel.NORMAL)
                 this.layout.set_attributes (EelPango.attr_list_small ());
             else
@@ -278,7 +281,7 @@ debug ("set  widget");
             if (this.xalign == 0.5f)
                 layout.set_alignment (Pango.Alignment.CENTER);
 
-            layout.set_text (this.text != null ? text : "", -1);
+            layout.set_text (text, -1);
 
             /* calculate the real text dimension */
             int width, height;
