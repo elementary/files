@@ -119,7 +119,9 @@ namespace FM {
                     case Gdk.Key.Left:
                         Gtk.TreePath path;
                         tree.get_cursor (out path, null);
-                        if (path != null)
+                        if (tree.is_row_expanded (path))
+                            tree.collapse_row (path);
+                        else if (path.up ())
                             tree.collapse_row (path);
 
                         return true;
@@ -129,7 +131,6 @@ namespace FM {
             }
             return base.on_view_key_press_event (event);
         }
-
 /** Override parents abstract and virtual methods as required*/
         protected override Gtk.Widget? create_view () {
 //message ("LV create view");
