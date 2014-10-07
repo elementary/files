@@ -302,7 +302,7 @@ namespace Marlin.View.Chrome
         public void on_need_completion () {
             File file = get_file_for_path (text);
             if (text.has_suffix("/"))
-                // don't use basename because it will return "folder for "/folder/" text
+                // don't use get_basename () because it will return "folder" for "/folder/" text
                 to_search = "";
             else
                 to_search = file.get_basename ();
