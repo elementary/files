@@ -2033,62 +2033,71 @@ namespace FM {
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
 //message ("on view key_press_event");
-            if (updates_frozen)
+            if (updates_frozen || event.is_modifier == 1)
                 return false;
 
-            bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool no_mods = (mods == 0);
+            bool only_shift_pressed = (mods & ~Gdk.ModifierType.SHIFT_MASK) == 0;
+            bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
             switch (event.keyval) {
                 case Gdk.Key.F10:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         show_or_queue_context_menu (event);
                         return true;
                     }
                     break;
 
                 case Gdk.Key.space:
-                    if (!control_pressed && view_has_focus ()) {
-                        if (shift_pressed)
+                    if (view_has_focus ()) {
+                        if (only_shift_pressed)
                             activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        else
+                        else if (no_mods)
                             preview_selected_items ();
+                        else
+                            return false;
 
                         return true;
                     }
                     break;
+
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    if (shift_pressed)
+                    if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                    else
+                    else if (no_mods)
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                    else 
+                        return false;
 
                     return true;
 
                 case Gdk.Key.T:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         open_selected_in_terminal ();
                         return true;
                     }
                     break;
 
                 case Gdk.Key.N:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                         return true;
                     }
                     break;
 
                 case Gdk.Key.c:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         common_actions.activate_action ("copy", null);
                         return true;
                     }
                     break;
 
                 case Gdk.Key.v:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         /* Force attempt to paste - as a fallback will paste into current directory */
                         action_set_enabled (common_actions, "paste_into", true);
                         common_actions.activate_action ("paste_into", null);
@@ -2098,31 +2107,25 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
-                    if (control_pressed) {
+                    if (only_control_pressed) {
                         selection_actions.activate_action ("cut", null);
                         return true;
                     }
                     break;
 
-                case Gdk.Key.Left:
-                case Gdk.Key.KP_Left:
-                case Gdk.Key.Right:
-                case Gdk.Key.KP_Right:
-                case Gdk.Key.Up:
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Tab:
-                case Gdk.Key.KP_Tab:
-                case Gdk.Key.Escape:
-                    return false;
-
                 default:
                     break;
             }
-            window.win_actions.activate_action ("find", null);
-            window.key_press_event (event);
-            return true;
+
+            if (no_mods || only_shift_pressed) {
+                /* Use printable characters to initiate search */
+                if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                    window.win_actions.activate_action ("find", null);
+                    window.key_press_event (event);
+                    return true;
+                } 
+            }
+            return false;
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
