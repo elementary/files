@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-05 01:32-0500\n"
-"PO-Revision-Date: 2014-08-06 08:56+0000\n"
-"Last-Translator: qperroit <quentin.perroit@gmail.com>\n"
+"PO-Revision-Date: 2014-10-06 19:04+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-10-06 06:51+0000\n"
+"X-Launchpad-Export-Date: 2014-10-07 06:51+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1956,7 +1956,7 @@ msgstr "Onglet précédent"
 
 #: ../src/View/Window.vala:827
 msgid "Connect to _Server..."
-msgstr "Se connecter au _serveur..."
+msgstr "Se connecter à un _serveur..."
 
 #: ../src/View/Window.vala:828
 msgid "Connect to a remote computer or shared disk"
@@ -2364,7 +2364,7 @@ msgstr "Nouvelle fenêtre en tant qu'_administrateur"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr "A propos _Fichiers"
+msgstr "À propos de _Fichiers"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
