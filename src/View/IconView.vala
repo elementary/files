@@ -221,6 +221,7 @@ namespace FM {
 
                         zone = ClickZone.NAME;
                     else {
+                        /* Fake location outside centre bottom of item */
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10;
                         zone = ClickZone.BLANK_NO_PATH;
@@ -240,6 +241,7 @@ namespace FM {
 
                         zone = ClickZone.ICON;
                     else {
+                        /* Fake location outside centre top of item */
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y - 10;
                         zone = ClickZone.BLANK_NO_PATH;

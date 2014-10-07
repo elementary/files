@@ -1219,6 +1219,7 @@ namespace FM {
         private void on_drag_begin (Gdk.DragContext context) {
 //message ("on drag begin");
             drag_has_begun = true;
+            should_activate = false;
             /* Do we need to free the drag_file_list? */
             drag_file_list = get_selected_files_for_transfer ();
             if (drag_file_list == null)
