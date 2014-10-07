@@ -2041,8 +2041,10 @@ namespace FM {
             bool no_mods = (mods == 0);
             bool only_shift_pressed = (mods & ~Gdk.ModifierType.SHIFT_MASK) == 0;
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
+            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
             switch (event.keyval) {
                 case Gdk.Key.F10:
@@ -2110,6 +2112,16 @@ namespace FM {
                 case Gdk.Key.x:
                     if (only_control_pressed) {
                         selection_actions.activate_action ("cut", null);
+                        return true;
+                    }
+                    break;
+
+                case Gdk.Key.minus:
+                    if (only_alt_pressed) {
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null && path_is_selected (path))
+                            unselect_path (path);
+
                         return true;
                     }
                     break;
@@ -2544,6 +2556,7 @@ debug ("DV on view draw");
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int y);
+        public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void select_all ();
         public abstract void unselect_all ();
         public abstract void select_path (Gtk.TreePath? path);

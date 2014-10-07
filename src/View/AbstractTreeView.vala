@@ -245,5 +245,11 @@ namespace FM {
                 selection.changed.connect (on_view_selection_changed);
 
         }
+
+        public override Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path;
+            tree.get_cursor (out path, null);
+            return path;
+        }
     }
 }

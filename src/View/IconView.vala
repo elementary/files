@@ -278,6 +278,12 @@ namespace FM {
                 tree.selection_changed.connect (on_view_selection_changed);
         }
 
+        public override Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path;
+            tree.get_cursor (out path, null);
+            return path;
+        }
+
         protected override void freeze_tree () {
 //message ("IV freeze tree");
             tree.freeze_child_notify ();
