@@ -2126,6 +2126,12 @@ namespace FM {
                     }
                     break;
 
+                case Gdk.Key.Escape:
+                    if (no_mods)
+                        unselect_all ();
+
+                    break;
+
                 default:
                     break;
             }
