@@ -143,7 +143,7 @@ namespace Marlin.View {
                         load_resolution.begin (goffile);
                     }
 
-                    status = "%s (%s)".printf (goffile.formated_type, goffile.format_size);
+                    status = "%s - %s (%s)".printf (goffile.info.get_name (), goffile.formated_type, goffile.format_size);
                 } else {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
 

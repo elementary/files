@@ -69,7 +69,7 @@ namespace Marlin.View {
             /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             /* The overlay is already added in the constructor of the statusbar */
-            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+            //overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
             change_view_mode (mode, loc);
         }
 
