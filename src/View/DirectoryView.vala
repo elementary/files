@@ -2160,14 +2160,10 @@ namespace FM {
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
 debug ("on_motion_notify event");
-            int x, y, mask;
-            /* We need to use the device position for rubberbanding to work properly in ListView */
-            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
-
             Gtk.TreePath? path = null;
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path);
-debug ("click zone %u", click_zone);
             GOF.File? file = path != null ? model.file_for_path (path) : null;
+
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
@@ -2199,11 +2195,10 @@ debug ("click zone %u", click_zone);
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
                 window.item_hovered (file);
-
                 hover_path = path;
             }
 
-            return false;
+            return (path == null); /* Do not show helpers when between items in icon view */
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
