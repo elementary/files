@@ -256,6 +256,7 @@ namespace GOF {
         public bool is_hidden;
         public bool is_directory;
         public bool is_desktop;
+        public void set_expanded (bool expanded);
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();

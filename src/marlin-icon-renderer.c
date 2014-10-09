@@ -477,6 +477,14 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         g_object_unref (nicon);
         g_object_unref (pixbuf);
         pixbuf = temp;
+    } else if (priv->file->is_directory) {
+        if (priv->file->is_expanded) {
+            nicon = marlin_icon_info_lookup_from_name ("folder-open", priv->size);
+            temp = marlin_icon_info_get_pixbuf_nodefault (nicon);
+            g_object_unref (nicon);
+            g_object_unref (pixbuf);
+            pixbuf = temp;
+        }
     }
 
     /* clipboard */

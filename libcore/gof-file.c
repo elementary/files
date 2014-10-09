@@ -852,6 +852,8 @@ static void gof_file_init (GOFFile *file) {
 
     file->sort_column_id = FM_LIST_MODEL_FILENAME;
     file->sort_order = GTK_SORT_ASCENDING;
+
+    file->is_expanded = FALSE;
 }
 
 static void gof_file_finalize (GObject* obj) {
@@ -1392,6 +1394,12 @@ GOFFile* gof_file_cache_lookup (GFile *location)
         cached_file = g_hash_table_lookup (file_cache, location);
 
     return _g_object_ref0 (cached_file);
+}
+
+void
+gof_file_set_expanded (GOFFile *file, gboolean expanded) {
+    g_return_if_fail (file != NULL || !file->is_directory);
+    file->is_expanded = expanded;
 }
 
 GOFFile*

@@ -69,6 +69,7 @@ namespace FM {
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
 //message ("on row expanded");
             GOF.Directory.Async dir;
+            set_path_expanded (path, true);
             if (model.load_subdirectory (path, out dir) && dir is GOF.Directory.Async)
                 add_subdirectory (dir);
         }
@@ -77,11 +78,22 @@ namespace FM {
 //message ("on row collapsed");
             unowned GOF.Directory.Async dir;
             unowned GOF.File file;
+            set_path_expanded (path, false);
             if (model.get_directory_file (path, out dir, out file)) {
                 schedule_model_unload_directory (file, dir);
                 remove_subdirectory (dir);
             } else
                 critical ("failed to get directory/file");
+        }
+
+        private void set_path_expanded (Gtk.TreePath path, bool expanded) {
+//message ("set path expanded");
+            unowned GOF.File? file = null;
+            Gtk.TreeIter? iter = null;
+            model.get_iter (out iter, path);
+            model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+            if (file != null)
+                file.set_expanded (expanded);
         }
 
         private void schedule_model_unload_directory (GOF.File file, GOF.Directory.Async directory) {
