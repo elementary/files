@@ -351,7 +351,7 @@ namespace Marlin.View.Chrome
                     menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
                     menu_item.always_show_image = true;
                     menu_item.activate.connect (() => {
-                        unowned AppInfo app = submenu_open_with.get_active ().get_data ("appinfo");
+                        AppInfo app = submenu_open_with.get_active ().get_data ("appinfo");
                         launch_uri_with_app (app, current_right_click_path);
                     });
                     submenu_open_with.append (menu_item);

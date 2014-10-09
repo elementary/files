@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"POT-Creation-Date: 2014-10-05 01:32-0500\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: فيصل شامخ <chamfay@yahoo.fr>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -16,8 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:26+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-10-06 06:50+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
+
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
+
+#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
+#: ../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "فشل تغيير اسم %s إلى %s"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -35,16 +45,62 @@ msgstr "النّوع"
 msgid "Modified"
 msgstr "عُدِّل"
 
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "فشل تغيير اسم %s إلى %s"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
 msgstr "هذا المجلد فارغ."
+
+#: ../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "ترت_يب العناصر"
+
+#: ../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "ترتيب _عكسي"
+
+#: ../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "عرض الأيقونات في ترتيب عكسي"
+
+#: ../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "بحسب الإ_سم"
+
+#: ../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الاسم"
+
+#: ../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "بحسب ال_حجم"
+
+#: ../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الحجم"
+
+#: ../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "بحسب ال_نوع"
+
+#: ../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب النوع"
+
+#: ../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "بجسب _تاريخ التعديل"
+
+#: ../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب تاريخ التعديل"
+
+#: ../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "نقرة واحدة"
+
+#: ../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "كيفما كانت العناصر في العرض يمكن أن تعمل بنقره واحدة"
 
 #: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
@@ -86,7 +142,7 @@ msgid "Open in %'d New _Tabs"
 msgstr "فتح في %'d أ_لسنة جديدة"
 
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
+#: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
 msgstr "افتح في _لسان جديد"
 
@@ -95,7 +151,7 @@ msgstr "افتح في _لسان جديد"
 msgid "Open in %'d New _Windows"
 msgstr "فتح في %'d _نوافذ جديدة"
 
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
 msgstr "افتح في _نافذة جديدة"
 
@@ -223,6 +279,18 @@ msgstr "عرض أوتعديل خصائص كل عنصر منتقى"
 msgid "Set Color:"
 msgstr "عيّن اللّون:"
 
+#: ../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "طرق الإدخال"
+
+#: ../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "قائمة دليل الأيقونات"
+
+#: ../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "عرض أيقونات"
+
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "وضع تصميم"
@@ -230,50 +298,6 @@ msgstr "وضع تصميم"
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "التصميم الموضوع"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "ترت_يب العناصر"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "ترتيب _عكسي"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "عرض الأيقونات في ترتيب عكسي"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "بحسب الإ_سم"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الاسم"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "بحسب ال_حجم"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الحجم"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "بحسب ال_نوع"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب النوع"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "بجسب _تاريخ التعديل"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب تاريخ التعديل"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -419,62 +443,481 @@ msgstr "ألغِ"
 msgid "Failed to execute file \"%s\""
 msgstr "فشل في تنفيذ الملف \"%s\""
 
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "قائمة دليل الأيقونات"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "عرض أيقونات"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "نقرة واحدة"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "كيفما كانت العناصر في العرض يمكن أن تعمل بنقره واحدة"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "طرق الإدخال"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "اليوم في %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "أمس في %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y في %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "يحضّر"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (يونيكود غير صحيح)"
-
-#: ../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "تعذّر تحديد مكان \"%s\" الأصلي "
+msgid "Delete %d copied items"
+msgstr "حذف  %d العناصر المنسوخة"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "لا يمكن إستعادة العنصر من المهملات"
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "احذف '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "حذف  %d العناصر المتكررة"
+
+#: ../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "أرجع %d العناصر إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "أرجع '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "غيّر اسم '%s' كـ '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "أعد %d العناصر الموجودة في سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "استعد '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "أعد %d العناصر إلى سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "انقل '%s' مرة أخرى إلى المُهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "حذف روابط ل %d عناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "إحذف الرابط إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "استعد التصاريح الأصلية للعناصر المُضمنة في '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "استعد تصاريح '%s' الأصلية"
+
+#: ../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "استعد مجموعة '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "استعدالمالك '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "أنسخ %d العناصر إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "انسخ '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "ضاعِف %d العناصر في '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "ضاعِف '%s' في '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "إنقل %d العناصر إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "انقل '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "أنشئ ملفا جديدا '%s' من قالب "
+
+#: ../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "أنشئ ملف فارغ '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "أنشئ مجلد جديد '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "أنقل %d العناصر إلى سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "انقل '%s' إلى المُهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "استعد '%s' من المُهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "أنشئ رابط إلى عناصر  %d"
+
+#: ../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "أنشئ رابط إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "اضبط التصاريح للعناصر المضمنة في '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "اضبط التصاريح لـ '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "اضبط مجموعة '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "اضبط مالك '%s' إلى '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_ألغي النسخ %d العنصر"
+msgstr[1] "_ألغي النسخ %d العناصر"
+msgstr[2] "_ألغي النسخ %d العناصر"
+msgstr[3] "_ألغي النسخ %d العناصر"
+msgstr[4] "_ألغي النسخ %d العناصر"
+msgstr[5] "_ألغي النسخ %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_ألغي تكرير %d العنصر"
+msgstr[1] "_ألغي تكرير %d العناصر"
+msgstr[2] "_ألغي تكرير %d العناصر"
+msgstr[3] "_ألغي تكرير %d العناصر"
+msgstr[4] "_ألغي تكرير %d العناصر"
+msgstr[5] "_ألغي تكرير %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_ألغي نقل %d العنصر"
+msgstr[1] "_ألغي نقل %d العناصر"
+msgstr[2] "_ألغي نقل %d العناصر"
+msgstr[3] "_ألغي نقل %d العناصر"
+msgstr[4] "_ألغي نقل %d العناصر"
+msgstr[5] "_ألغي نقل %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_ألغي إعادة التسمية %d العنصر"
+msgstr[1] "_ألغي إعادة التسمية %d العناصر"
+msgstr[2] "_ألغي إعادة التسمية %d العناصر"
+msgstr[3] "_ألغي إعادة التسمية %d العناصر"
+msgstr[4] "_ألغي إعادة التسمية %d العناصر"
+msgstr[5] "_ألغي إعادة التسمية %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_ألغي إنشاء ملف خالي"
+
+#: ../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_ألغي إنشاء ملف قالب"
+
+#: ../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_ألغي إنشاء %d ملف"
+msgstr[1] "_ألغي إنشاء %d ملفات"
+msgstr[2] "_ألغي إنشاء %d ملفات"
+msgstr[3] "_ألغي إنشاء %d ملفات"
+msgstr[4] "_ألغي إنشاء %d ملفات"
+msgstr[5] "_ألغي إنشاء %d ملفات"
+
+#: ../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_ألغي نقل العنصر %d إلى سلة المهملات"
+msgstr[1] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[2] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[3] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[4] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[5] "_ألغي نقل العناصر %d إلى سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_ألغي إعادة العنصر %d من سلة المهملات"
+msgstr[1] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[2] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[3] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_التراجع عن إنشاء رابط %d للعنصر"
+msgstr[1] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[2] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_التراجع عن حذف %d العنصر"
+msgstr[1] "_التراجع عن حذف %d العناصر"
+msgstr[2] "_التراجع عن حذف %d العناصر"
+msgstr[3] "_التراجع عن حذف %d العناصر"
+msgstr[4] "_التراجع عن حذف %d العناصر"
+msgstr[5] "_التراجع عن حذف %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "التراجع عن تغير قونين الدخول  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "التراجع عن تغير المالك  %d العنصر"
+msgstr[1] "التراجع عن تغير المالك  %d العناصر"
+msgstr[2] "التراجع عن تغير المالك  %d العناصر"
+msgstr[3] "التراجع عن تغير المالك  %d العناصر"
+msgstr[4] "التراجع عن تغير المالك  %d العناصر"
+msgstr[5] "التراجع عن تغير المالك  %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_أعد نسخ %d العنصر"
+msgstr[1] "_أعد نسخ %d العناصر"
+msgstr[2] "_أعد نسخ %d العناصر"
+msgstr[3] "_أعد نسخ %d العناصر"
+msgstr[4] "_أعد نسخ %d العناصر"
+msgstr[5] "_أعد نسخ %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_أعد مضعفة %d العنصر"
+msgstr[1] "_أعد مضعفة %d العناصر"
+msgstr[2] "_أعد مضعفة %d العناصر"
+msgstr[3] "_أعد مضعفة %d العناصر"
+msgstr[4] "_أعد مضعفة %d العناصر"
+msgstr[5] "_أعد مضعفة %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_أعد نقل %d العنصر"
+msgstr[1] "_أعد نقل %d العناصر"
+msgstr[2] "_أعد نقل %d العناصر"
+msgstr[3] "_أعد نقل %d العناصر"
+msgstr[4] "_أعد نقل %d العناصر"
+msgstr[5] "_أعد نقل %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_أعد تسمية %d العنصر"
+msgstr[1] "_أعد تسمية %d العناصر"
+msgstr[2] "_أعد تسمية %d العناصر"
+msgstr[3] "_أعد تسمية %d العناصر"
+msgstr[4] "_أعد تسمية %d العناصر"
+msgstr[5] "_أعد تسمية %d العناصر"
+
+#: ../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_أعد إنشاء ملف غارغ"
+
+#: ../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_أعد إنشاء ملف قالب"
+
+#: ../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_أعد إنشاء %d حافظة"
+msgstr[1] "_أعد إنشاء %d حوافظ"
+msgstr[2] "_أعد إنشاء %d حوافظ"
+msgstr[3] "_أعد إنشاء %d حوافظ"
+msgstr[4] "_أعد إنشاء %d حوافظ"
+msgstr[5] "_أعد إنشاء %d حوافظ"
+
+#: ../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_أعد نقل %d عنصر إلى سلة المهملات"
+msgstr[1] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[2] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[3] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[4] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[5] "_أعد نقل %d عناصر إلى سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_أعد جلب %d عنصر من سلة المهملات"
+msgstr[1] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[2] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[3] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
+
+#: ../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_أعد إنشاء رابط للعنصر %d"
+msgstr[1] "_أعد إنشاء رابط للعناصر %d"
+msgstr[2] "_أعد إنشاء رابط للعناصر %d"
+msgstr[3] "_أعد إنشاء رابط للعناصر %d"
+msgstr[4] "_أعد إنشاء رابط للعناصر %d"
+msgstr[5] "_أعد إنشاء رابط للعناصر %d"
+
+#: ../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_أعد حذف للعنصر %d"
+msgstr[1] "_أعد حذف للعناصر %d"
+msgstr[2] "_أعد حذف للعناصر %d"
+msgstr[3] "_أعد حذف للعناصر %d"
+msgstr[4] "_أعد حذف للعناصر %d"
+msgstr[5] "_أعد حذف للعناصر %d"
+
+#: ../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "أعد تغير قوانين الدخول لجميع المحتوى للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+
+#: ../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "أعد تغير قوانين الدخول للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
+
+#: ../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "أعد تغير قوانين الدخول للمجموعة للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+
+#: ../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "أعد تغير المالك للعنصر %d"
+msgstr[1] "أعد تغير المالك للعناصر %d"
+msgstr[2] "أعد تغير المالك للعناصر %d"
+msgstr[3] "أعد تغير المالك للعناصر %d"
+msgstr[4] "أعد تغير المالك للعناصر %d"
+msgstr[5] "أعد تغير المالك للعناصر %d"
 
 #: ../libcore/gof-file.c:302
 #, c-format
@@ -505,6 +948,30 @@ msgstr "غير مسموح باستخدام الشرطات المائلة (/) ف�
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "يحضّر"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "أظهر _تفاصيل أكثر"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "اليوم في %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "أمس في %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y في %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -650,9 +1117,9 @@ msgstr "إستبدل"
 msgid "File conflict"
 msgstr "تعارض الملف"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "أظهر _تفاصيل أكثر"
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (يونيكود غير صحيح)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -863,7 +1330,7 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "جميع العناصر في المُهملات سيتم حذفها نهائياً."
 
 #: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
 msgstr "أفرغ ال_مهملات"
 
@@ -1415,481 +1882,58 @@ msgstr "تُفرغ المهملات"
 msgid "Emptying Trash"
 msgstr "إفراغ المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "حذف  %d العناصر المنسوخة"
+msgid "Could not determine original location of \"%s\" "
+msgstr "تعذّر تحديد مكان \"%s\" الأصلي "
 
-#: ../libcore/marlin-undostack-manager.c:1205
-#: ../libcore/marlin-undostack-manager.c:1215
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "احذف '%s'"
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "لا يمكن إستعادة العنصر من المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "حذف  %d العناصر المتكررة"
+#: ../src/View/LocationBar.vala:123
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "أرجع %d العناصر إلى '%s'"
+#: ../src/View/LocationBar.vala:124
+msgid "DAV"
+msgstr "DAV"
 
-#: ../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "أرجع '%s' إلى '%s'"
+#: ../src/View/LocationBar.vala:125
+msgid "DAVS"
+msgstr "DAVS"
 
-#: ../libcore/marlin-undostack-manager.c:1236
-#: ../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "غيّر اسم '%s' كـ '%s'"
+#: ../src/View/LocationBar.vala:126
+msgid "FTP"
+msgstr "بروتوكول نقل الملفّات (FTP)"
 
-#: ../libcore/marlin-undostack-manager.c:1255
-#: ../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "أعد %d العناصر الموجودة في سلة المهملات"
+#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr "الشبكة"
 
-#: ../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "استعد '%s' إلى '%s'"
+#: ../src/View/LocationBar.vala:128
+msgid "SFTP"
+msgstr "روتوكول نقل الملفّات المشفر (SFTP)"
 
-#: ../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "أعد %d العناصر إلى سلة المهملات"
+#: ../src/View/LocationBar.vala:129
+msgid "SMB"
+msgstr "كتلة رسائل النّظام (SMB)"
 
-#: ../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "انقل '%s' مرة أخرى إلى المُهملات"
+#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr "المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "حذف روابط ل %d عناصر"
+#: ../src/View/LocationBar.vala:329
+msgid "Open in New Tab"
+msgstr "فتح في علامة تبويب جديدة"
 
-#: ../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "إحذف الرابط إلى '%s'"
+#: ../src/View/LocationBar.vala:336
+msgid "Open with"
+msgstr "فتح باستخدام"
 
-#: ../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "استعد التصاريح الأصلية للعناصر المُضمنة في '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "استعد تصاريح '%s' الأصلية"
-
-#: ../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "استعد مجموعة '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "استعدالمالك '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "أنسخ %d العناصر إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "انسخ '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "ضاعِف %d العناصر في '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "ضاعِف '%s' في '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "إنقل %d العناصر إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "انقل '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "أنشئ ملفا جديدا '%s' من قالب "
-
-#: ../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "أنشئ ملف فارغ '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "أنشئ مجلد جديد '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "أنقل %d العناصر إلى سلة المهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "انقل '%s' إلى المُهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "استعد '%s' من المُهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "أنشئ رابط إلى عناصر  %d"
-
-#: ../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "أنشئ رابط إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "اضبط التصاريح للعناصر المضمنة في '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "اضبط التصاريح لـ '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "اضبط مجموعة '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "اضبط مالك '%s' إلى '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_ألغي النسخ %d العنصر"
-msgstr[1] "_ألغي النسخ %d العناصر"
-msgstr[2] "_ألغي النسخ %d العناصر"
-msgstr[3] "_ألغي النسخ %d العناصر"
-msgstr[4] "_ألغي النسخ %d العناصر"
-msgstr[5] "_ألغي النسخ %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_ألغي تكرير %d العنصر"
-msgstr[1] "_ألغي تكرير %d العناصر"
-msgstr[2] "_ألغي تكرير %d العناصر"
-msgstr[3] "_ألغي تكرير %d العناصر"
-msgstr[4] "_ألغي تكرير %d العناصر"
-msgstr[5] "_ألغي تكرير %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_ألغي نقل %d العنصر"
-msgstr[1] "_ألغي نقل %d العناصر"
-msgstr[2] "_ألغي نقل %d العناصر"
-msgstr[3] "_ألغي نقل %d العناصر"
-msgstr[4] "_ألغي نقل %d العناصر"
-msgstr[5] "_ألغي نقل %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_ألغي إعادة التسمية %d العنصر"
-msgstr[1] "_ألغي إعادة التسمية %d العناصر"
-msgstr[2] "_ألغي إعادة التسمية %d العناصر"
-msgstr[3] "_ألغي إعادة التسمية %d العناصر"
-msgstr[4] "_ألغي إعادة التسمية %d العناصر"
-msgstr[5] "_ألغي إعادة التسمية %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_ألغي إنشاء ملف خالي"
-
-#: ../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_ألغي إنشاء ملف قالب"
-
-#: ../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_ألغي إنشاء %d ملف"
-msgstr[1] "_ألغي إنشاء %d ملفات"
-msgstr[2] "_ألغي إنشاء %d ملفات"
-msgstr[3] "_ألغي إنشاء %d ملفات"
-msgstr[4] "_ألغي إنشاء %d ملفات"
-msgstr[5] "_ألغي إنشاء %d ملفات"
-
-#: ../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_ألغي نقل العنصر %d إلى سلة المهملات"
-msgstr[1] "_ألغي نقل العناصر %d إلى سلة المهملات"
-msgstr[2] "_ألغي نقل العناصر %d إلى سلة المهملات"
-msgstr[3] "_ألغي نقل العناصر %d إلى سلة المهملات"
-msgstr[4] "_ألغي نقل العناصر %d إلى سلة المهملات"
-msgstr[5] "_ألغي نقل العناصر %d إلى سلة المهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_ألغي إعادة العنصر %d من سلة المهملات"
-msgstr[1] "_ألغي إعادة العناصر %d من سلة المهملات"
-msgstr[2] "_ألغي إعادة العناصر %d من سلة المهملات"
-msgstr[3] "_ألغي إعادة العناصر %d من سلة المهملات"
-msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
-msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_التراجع عن إنشاء رابط %d للعنصر"
-msgstr[1] "_التراجع عن إنشاء رابط %d للعناصر"
-msgstr[2] "_التراجع عن إنشاء رابط %d للعناصر"
-msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
-msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
-msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_التراجع عن حذف %d العنصر"
-msgstr[1] "_التراجع عن حذف %d العناصر"
-msgstr[2] "_التراجع عن حذف %d العناصر"
-msgstr[3] "_التراجع عن حذف %d العناصر"
-msgstr[4] "_التراجع عن حذف %d العناصر"
-msgstr[5] "_التراجع عن حذف %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العنصر"
-msgstr[1] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-msgstr[2] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-msgstr[3] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "التراجع عن تغير قونين الدخول  %d العنصر"
-msgstr[1] "التراجع عن تغير قونين الدخول  %d العناصر"
-msgstr[2] "التراجع عن تغير قونين الدخول  %d العناصر"
-msgstr[3] "التراجع عن تغير قونين الدخول  %d العناصر"
-msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
-msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العنصر"
-msgstr[1] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-msgstr[2] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-msgstr[3] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "التراجع عن تغير المالك  %d العنصر"
-msgstr[1] "التراجع عن تغير المالك  %d العناصر"
-msgstr[2] "التراجع عن تغير المالك  %d العناصر"
-msgstr[3] "التراجع عن تغير المالك  %d العناصر"
-msgstr[4] "التراجع عن تغير المالك  %d العناصر"
-msgstr[5] "التراجع عن تغير المالك  %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_أعد نسخ %d العنصر"
-msgstr[1] "_أعد نسخ %d العناصر"
-msgstr[2] "_أعد نسخ %d العناصر"
-msgstr[3] "_أعد نسخ %d العناصر"
-msgstr[4] "_أعد نسخ %d العناصر"
-msgstr[5] "_أعد نسخ %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_أعد مضعفة %d العنصر"
-msgstr[1] "_أعد مضعفة %d العناصر"
-msgstr[2] "_أعد مضعفة %d العناصر"
-msgstr[3] "_أعد مضعفة %d العناصر"
-msgstr[4] "_أعد مضعفة %d العناصر"
-msgstr[5] "_أعد مضعفة %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_أعد نقل %d العنصر"
-msgstr[1] "_أعد نقل %d العناصر"
-msgstr[2] "_أعد نقل %d العناصر"
-msgstr[3] "_أعد نقل %d العناصر"
-msgstr[4] "_أعد نقل %d العناصر"
-msgstr[5] "_أعد نقل %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_أعد تسمية %d العنصر"
-msgstr[1] "_أعد تسمية %d العناصر"
-msgstr[2] "_أعد تسمية %d العناصر"
-msgstr[3] "_أعد تسمية %d العناصر"
-msgstr[4] "_أعد تسمية %d العناصر"
-msgstr[5] "_أعد تسمية %d العناصر"
-
-#: ../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_أعد إنشاء ملف غارغ"
-
-#: ../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_أعد إنشاء ملف قالب"
-
-#: ../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_أعد إنشاء %d حافظة"
-msgstr[1] "_أعد إنشاء %d حوافظ"
-msgstr[2] "_أعد إنشاء %d حوافظ"
-msgstr[3] "_أعد إنشاء %d حوافظ"
-msgstr[4] "_أعد إنشاء %d حوافظ"
-msgstr[5] "_أعد إنشاء %d حوافظ"
-
-#: ../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_أعد نقل %d عنصر إلى سلة المهملات"
-msgstr[1] "_أعد نقل %d عناصر إلى سلة المهملات"
-msgstr[2] "_أعد نقل %d عناصر إلى سلة المهملات"
-msgstr[3] "_أعد نقل %d عناصر إلى سلة المهملات"
-msgstr[4] "_أعد نقل %d عناصر إلى سلة المهملات"
-msgstr[5] "_أعد نقل %d عناصر إلى سلة المهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_أعد جلب %d عنصر من سلة المهملات"
-msgstr[1] "_أعد جلب %d عناصر من سلة المهملات"
-msgstr[2] "_أعد جلب %d عناصر من سلة المهملات"
-msgstr[3] "_أعد جلب %d عناصر من سلة المهملات"
-msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
-msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
-
-#: ../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_أعد إنشاء رابط للعنصر %d"
-msgstr[1] "_أعد إنشاء رابط للعناصر %d"
-msgstr[2] "_أعد إنشاء رابط للعناصر %d"
-msgstr[3] "_أعد إنشاء رابط للعناصر %d"
-msgstr[4] "_أعد إنشاء رابط للعناصر %d"
-msgstr[5] "_أعد إنشاء رابط للعناصر %d"
-
-#: ../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_أعد حذف للعنصر %d"
-msgstr[1] "_أعد حذف للعناصر %d"
-msgstr[2] "_أعد حذف للعناصر %d"
-msgstr[3] "_أعد حذف للعناصر %d"
-msgstr[4] "_أعد حذف للعناصر %d"
-msgstr[5] "_أعد حذف للعناصر %d"
-
-#: ../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "أعد تغير قوانين الدخول لجميع المحتوى للعنصر %d"
-msgstr[1] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-msgstr[2] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-
-#: ../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "أعد تغير قوانين الدخول للعنصر %d"
-msgstr[1] "أعد تغير قوانين الدخول للعناصر %d"
-msgstr[2] "أعد تغير قوانين الدخول للعناصر %d"
-msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
-msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
-msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
-
-#: ../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "أعد تغير قوانين الدخول للمجموعة للعنصر %d"
-msgstr[1] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-msgstr[2] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-
-#: ../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "أعد تغير المالك للعنصر %d"
-msgstr[1] "أعد تغير المالك للعناصر %d"
-msgstr[2] "أعد تغير المالك للعناصر %d"
-msgstr[3] "أعد تغير المالك للعناصر %d"
-msgstr[4] "أعد تغير المالك للعناصر %d"
-msgstr[5] "أعد تغير المالك للعناصر %d"
+#: ../src/View/LocationBar.vala:367
+msgid "Other Application .."
+msgstr "تطبيق أخرى .."
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1898,6 +1942,378 @@ msgstr "مدير ملف بسيطة وقوية"
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
 msgstr "ترجمات لانشباد"
+
+#: ../src/View/Window.vala:138
+msgid "Files isn't your default file manager."
+msgstr "الملفات ليست من مدير الملف الافتراضي."
+
+#: ../src/View/Window.vala:144
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:149
+msgid "Ignore"
+msgstr "تجاهل"
+
+#: ../src/View/Window.vala:432
+msgid "Undo"
+msgstr "تراجُع"
+
+#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
+msgid "Undo the last action"
+msgstr "تراجع عن الإجراء الأخير"
+
+#: ../src/View/Window.vala:442
+msgid "Redo"
+msgstr "أعِد"
+
+#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
+msgid "Redo the last action"
+msgstr "أعِد آخر عملية"
+
+#: ../src/View/Window.vala:739
+msgid "_File"
+msgstr "_ملفّ"
+
+#: ../src/View/Window.vala:740
+msgid "_Edit"
+msgstr "_تعديل"
+
+#: ../src/View/Window.vala:741
+msgid "_View"
+msgstr "_عرض"
+
+#: ../src/View/Window.vala:742
+msgid "_Go"
+msgstr "إ_ذهب"
+
+#: ../src/View/Window.vala:743
+msgid "_Help"
+msgstr "م_ساعدة"
+
+#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "نافذة _جديدة"
+
+#: ../src/View/Window.vala:746
+msgid "Open another Files window for the displayed location"
+msgstr "فتح نافذة ملفات أخرى للمسار المحدد"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "_علامة تبويب جديد"
+
+#: ../src/View/Window.vala:750
+msgid "Open another tab for the displayed location"
+msgstr "افتح علامة تبويب جديد للمكان المعروض"
+
+#: ../src/View/Window.vala:754
+msgid "_Close"
+msgstr "إ_غلاق"
+
+#: ../src/View/Window.vala:755
+msgid "Close this folder"
+msgstr "أغلق هذا المجلد"
+
+#: ../src/View/Window.vala:760
+msgid "_Undo"
+msgstr "ت_راجع"
+
+#: ../src/View/Window.vala:763
+msgid "_Redo"
+msgstr "أ_عد"
+
+#: ../src/View/Window.vala:766
+msgid "_Find"
+msgstr ""
+
+#: ../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:769
+msgid "Open _Parent"
+msgstr "اف_تح الأب"
+
+#: ../src/View/Window.vala:770
+msgid "Open the parent folder"
+msgstr "افتح المجلد الأب"
+
+#: ../src/View/Window.vala:772
+msgid "_Back"
+msgstr "ا_رجع"
+
+#: ../src/View/Window.vala:773
+msgid "Go to the previous visited location"
+msgstr "اذهب إلى المكان المزار سابقا"
+
+#: ../src/View/Window.vala:776
+msgid "_Forward"
+msgstr "للأ_مام"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the next visited location"
+msgstr "اذهب إلى المكان المزار التالي"
+
+#: ../src/View/Window.vala:779
+msgid "_Reload"
+msgstr "أ_عِد التحميل"
+
+#: ../src/View/Window.vala:780
+msgid "Reload the current location"
+msgstr "أعِد تحميل المجلد الحالي"
+
+#: ../src/View/Window.vala:783
+msgid "_Home Folder"
+msgstr "مجلّد ال_منزل"
+
+#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "افتح مجلّدك الشخصي"
+
+#: ../src/View/Window.vala:787
+msgid "_Trash"
+msgstr "ال_مهملات"
+
+#: ../src/View/Window.vala:788
+msgid "Open your personal trash folder"
+msgstr "افتح مجلّد المهملات الشخصي"
+
+#: ../src/View/Window.vala:791
+msgid "_Network"
+msgstr "ال_شبكة"
+
+#: ../src/View/Window.vala:792
+msgid "Browse bookmarked and local network locations"
+msgstr "تصفح مواقع الشبكة والمحلّية المعلّمة"
+
+#: ../src/View/Window.vala:795
+msgid "Zoom _In"
+msgstr "ت_كبير"
+
+#: ../src/View/Window.vala:796
+msgid "Increase the view size"
+msgstr "كبّر حجم المنظور"
+
+#: ../src/View/Window.vala:807
+msgid "Zoom _Out"
+msgstr "ت_صغير"
+
+#: ../src/View/Window.vala:808
+msgid "Decrease the view size"
+msgstr "صغّر حجم المنظور"
+
+#: ../src/View/Window.vala:815
+msgid "Normal Si_ze"
+msgstr "ال_حجم العادي"
+
+#: ../src/View/Window.vala:816
+msgid "Use the normal view size"
+msgstr "استخدم الحجم العادي للمنظور"
+
+#: ../src/View/Window.vala:819
+msgid "Next Tab"
+msgstr "التبويب التالي"
+
+#: ../src/View/Window.vala:823
+msgid "Previous Tab"
+msgstr "التبويب السابق"
+
+#: ../src/View/Window.vala:827
+msgid "Connect to _Server..."
+msgstr "اتصل بال_خادم..."
+
+#: ../src/View/Window.vala:828
+msgid "Connect to a remote computer or shared disk"
+msgstr "تعذّر الاتصال بحاسوب بعيد أو قرص مشترك"
+
+#: ../src/View/Window.vala:831
+msgid "_About"
+msgstr "_حوْل"
+
+#: ../src/View/Window.vala:832
+msgid "Display credits"
+msgstr "عرض الرصيد"
+
+#: ../src/View/Window.vala:835
+msgid "Report a Problem..."
+msgstr "أرسل تقرير عن مشكلة ما"
+
+#: ../src/View/Window.vala:836
+msgid "File a bug on Launchpad"
+msgstr "الإبلاغ عن خطأ في لنشباد"
+
+#: ../src/View/Window.vala:839
+msgid "Get Help Online..."
+msgstr "احصل على المساعدة عبر الإنترنت..."
+
+#: ../src/View/Window.vala:843
+msgid "Translate This Application..."
+msgstr "ترجم هذا البرنامج..."
+
+#: ../src/View/Window.vala:852
+msgid "Show _Hidden Files"
+msgstr "عرض الملفات الم_خفية"
+
+#: ../src/View/Window.vala:853
+msgid "Toggle the display of hidden files in the current window"
+msgstr "بدّل عرض الملفّات المخفيّة في النّافذة الحاليّة"
+
+#: ../src/View/Window.vala:857
+msgid "_Places"
+msgstr "ال_أماكن"
+
+#: ../src/View/Window.vala:858
+msgid "Change the visibility of this window's side pane"
+msgstr "إظهار/إخفاء اللوح الجانبي لهذه النافذة"
+
+#: ../src/View/Window.vala:866
+msgid "Icon"
+msgstr "الأيقونة"
+
+#: ../src/View/Window.vala:869
+msgid "List"
+msgstr "اسرد"
+
+#: ../src/View/Window.vala:872
+msgid "Columns"
+msgstr "أعمدة"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "شخصي"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "مجلداتك وعلاماتك الشائعة"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+msgid "Home"
+msgstr "المنزل"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "الأجهزة"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "اقراصك و أجهزتك المحلية"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+msgid "File System"
+msgstr "نظام ملفات"
+
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "أوصل وافتح %s"
+
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "شبكتك المحلية"
+
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "تصفّح محتويات الشبكة"
+
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "تعذّر بدء %s"
+
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "أزِل"
+
+#: ../src/View/Sidebar.vala:1214
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "أو_صل"
+
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "ا_فصل"
+
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "أ_خرِج"
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "هذا المجلد غير موجود"
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(كمسؤول)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "هذا الأمر لا يخصك بشيء"
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "أنت لا تملك الصلاحية لتعديل الملف"
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr ""
+
+#: ../src/View/Chrome/ViewSwicher.vala:75
+msgid "View as Grid"
+msgstr "عرض كشبكة"
+
+#: ../src/View/Chrome/ViewSwicher.vala:78
+msgid "View as List"
+msgstr "اعرض كقائمة"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View in Columns"
+msgstr "العرض في الأعمدة"
+
+#: ../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:136
 msgid "%u folders"
@@ -1923,97 +2339,31 @@ msgstr "%u مجلد"
 msgid "%u items selected (%s)"
 msgstr "%u العناصر المحددة (%s)"
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "المنزل"
-
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "نظام ملفات"
-
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
 msgstr "هذا المجلد غير موجود"
 
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(كمسؤول)"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "لا يمكن العثور على المجلد \"%s\""
 
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "هذا الأمر لا يخصك بشيء"
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "أنشئ"
 
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "أنت لا تملك الصلاحية لتعديل الملف"
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "أنشئ المجلد  \"%s\""
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
-
-#: ../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: ../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: ../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "بروتوكول نقل الملفّات (FTP)"
-
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "الشبكة"
-
-#: ../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "روتوكول نقل الملفّات المشفر (SFTP)"
-
-#: ../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "كتلة رسائل النّظام (SMB)"
-
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "المهملات"
-
-#: ../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "فتح في علامة تبويب جديدة"
-
-#: ../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "فتح باستخدام"
-
-#: ../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr "تطبيق أخرى .."
-
-#: ../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
+"فشل في إنشاء الملف \n"
+"\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -2127,360 +2477,6 @@ msgstr "الجميع"
 msgid "Select an application to open "
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "هذا المجلد غير موجود"
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "The folder \"%s\" can't be found."
-msgstr "لا يمكن العثور على المجلد \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "أنشئ"
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create the folder \"%s\""
-msgstr "أنشئ المجلد  \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:55
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"فشل في إنشاء الملف \n"
-"\n"
-"%s"
-
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "الملفات ليست من مدير الملف الافتراضي."
-
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "تجاهل"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "تراجُع"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "تراجع عن الإجراء الأخير"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "أعِد"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "أعِد آخر عملية"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_ملفّ"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_تعديل"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_عرض"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "إ_ذهب"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "م_ساعدة"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "نافذة _جديدة"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "فتح نافذة ملفات أخرى للمسار المحدد"
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "_علامة تبويب جديد"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "افتح علامة تبويب جديد للمكان المعروض"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "إ_غلاق"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "أغلق هذا المجلد"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "ت_راجع"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "أ_عد"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "اف_تح الأب"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "افتح المجلد الأب"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "ا_رجع"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "اذهب إلى المكان المزار سابقا"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "للأ_مام"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "اذهب إلى المكان المزار التالي"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "أ_عِد التحميل"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "أعِد تحميل المجلد الحالي"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "مجلّد ال_منزل"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "افتح مجلّدك الشخصي"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "ال_مهملات"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "افتح مجلّد المهملات الشخصي"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "ال_شبكة"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "تصفح مواقع الشبكة والمحلّية المعلّمة"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "ت_كبير"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "كبّر حجم المنظور"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "ت_صغير"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "صغّر حجم المنظور"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "ال_حجم العادي"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "استخدم الحجم العادي للمنظور"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "التبويب التالي"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "التبويب السابق"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "اتصل بال_خادم..."
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "تعذّر الاتصال بحاسوب بعيد أو قرص مشترك"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "_حوْل"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "عرض الرصيد"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "أرسل تقرير عن مشكلة ما"
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "الإبلاغ عن خطأ في لنشباد"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "احصل على المساعدة عبر الإنترنت..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "ترجم هذا البرنامج..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "عرض الملفات الم_خفية"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "بدّل عرض الملفّات المخفيّة في النّافذة الحاليّة"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "ال_أماكن"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "إظهار/إخفاء اللوح الجانبي لهذه النافذة"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "الأيقونة"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "اسرد"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "أعمدة"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "شخصي"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "مجلداتك وعلاماتك الشائعة"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "الأجهزة"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "اقراصك و أجهزتك المحلية"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "أوصل وافتح %s"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "شبكتك المحلية"
-
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "تصفّح محتويات الشبكة"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "تعذّر بدء %s"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "أزِل"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "أو_صل"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "ا_فصل"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "أ_خرِج"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "عرض كشبكة"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "اعرض كقائمة"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "العرض في الأعمدة"
-
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "اعرض إصدارة البرنامج."
@@ -2519,6 +2515,26 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "لا يمكن استخدام ‪%s‬ مع المسارات."
 
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "تصفح ملفاتك"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "مدير الملفات"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "نافذة جديدة كمسؤول"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "الملفات"
+
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
@@ -2550,34 +2566,6 @@ msgstr "اظهر نافذة النسخ"
 msgid "Cancel All In-progress Actions"
 msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "تصفح ملفاتك"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "مدير الملفات"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "نافذة جديدة كمسؤول"
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "الملفات"
-
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
-
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "قد يتم حذف هذه البنود عند إفراغ سلة المهملات."
-
-#: ../plugins/marlin-trash/plugin.vala:39
-msgid "Empty the Trash"
-msgstr "أفرغ سلة المهملات"

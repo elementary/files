@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
+"POT-Creation-Date: 2014-10-05 01:32-0500\n"
 "PO-Revision-Date: 2014-07-17 04:56+0000\n"
 "Last-Translator: Mason Kamely <masonkamely@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,8 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:28+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-10-06 06:52+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
+
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "در حافظه چیزی برای انتقال وجود ندارد"
+
+#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
+#: ../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "نمی‌توان نام %s را به %s تغییر داد"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
@@ -34,16 +44,62 @@ msgstr "نوع"
 msgid "Modified"
 msgstr "تغییر یافته"
 
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "نمی‌توان نام %s را به %s تغییر داد"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
+#: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
 msgstr "این پوشه خالی است."
+
+#: ../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "_آرایش موارد"
+
+#: ../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "ترتیب _معکوس"
+
+#: ../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "نمایش شمایل‌ها با ترتیب معکوس"
+
+#: ../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "بر حسب _نام"
+
+#: ../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "مرتب شدن شمایل‌ها بر حسب نام آنها"
+
+#: ../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "بر حسب _اندازه"
+
+#: ../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "مرتب شدن شمایل‌ها بر حسب اندازه آنها"
+
+#: ../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "بر حسب _نوع"
+
+#: ../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "مرتب شدن شمایل‌ها بر حسب نوع آنها"
+
+#: ../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "بر حسب تاریخ _تغییر"
+
+#: ../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "مرتب شدن شمایل‌ها بر حسب تاریخ تغییر داده شدن آنها"
+
+#: ../src/exo-tree-view.c:159
+msgid "Single Click"
+msgstr "تک کلیک"
+
+#: ../src/exo-tree-view.c:160
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "آیا موارد فهرست شده با یک بار فشردن موس فعال شوند یا خیر"
 
 #: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
@@ -80,7 +136,7 @@ msgid "Open in %'d New _Tabs"
 msgstr "باز کردن در %'d _برگه جدید"
 
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
+#: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
 msgstr "باز کردن در _برگه جدید"
 
@@ -89,7 +145,7 @@ msgstr "باز کردن در _برگه جدید"
 msgid "Open in %'d New _Windows"
 msgstr "باز کردن در %'d _پنجره جدید"
 
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
+#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
 msgstr "باز کردن در پنجره _جدید"
 
@@ -219,6 +275,18 @@ msgstr "مشاهده و یا تغییر ویژگی‌های هر یک از مو�
 msgid "Set Color:"
 msgstr "تعیین رنگ:"
 
+#: ../src/eel-editable-label.c:3200
+msgid "Input Methods"
+msgstr "روش‌های ورودی"
+
+#: ../src/fm-icon-view.c:100
+msgid "Icon directory listing"
+msgstr "نمایش شمایلی پرونده‌ها و پوشه‌ها"
+
+#: ../src/fm-icon-view.c:101
+msgid "Icon view"
+msgstr "نمای شمایلی"
+
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
 msgstr "حالت ساختار"
@@ -226,50 +294,6 @@ msgstr "حالت ساختار"
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
 msgstr "حالت ساختار"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "_آرایش موارد"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "ترتیب _معکوس"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "نمایش شمایل‌ها با ترتیب معکوس"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "بر حسب _نام"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "مرتب شدن شمایل‌ها بر حسب نام آنها"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "بر حسب _اندازه"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "مرتب شدن شمایل‌ها بر حسب اندازه آنها"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "بر حسب _نوع"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "مرتب شدن شمایل‌ها بر حسب نوع آنها"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "بر حسب تاریخ _تغییر"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "مرتب شدن شمایل‌ها بر حسب تاریخ تغییر داده شدن آنها"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -415,62 +439,351 @@ msgstr "لغو"
 msgid "Failed to execute file \"%s\""
 msgstr "نمی‌توان پرونده «%s» را اجراء کرد"
 
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "در حافظه چیزی برای انتقال وجود ندارد"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "نمایش شمایلی پرونده‌ها و پوشه‌ها"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "نمای شمایلی"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "تک کلیک"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "آیا موارد فهرست شده با یک بار فشردن موس فعال شوند یا خیر"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "روش‌های ورودی"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "امروز، ساعت %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "دیروز، ساعت %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y در ساعت %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "در حال آماده‌سازی"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (یونی‌کد نامعتبر)"
-
-#: ../libcore/marlin-file-utilities.c:118
+#: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "نمی‌توان مکان اصلی «%s» را تعیین کرد "
+msgid "Delete %d copied items"
+msgstr "حذف %d مورد رونویسی شده"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "این مورد را نمی‌توان از زباله‌دان بازگرداند"
+#: ../libcore/marlin-undostack-manager.c:1205
+#: ../libcore/marlin-undostack-manager.c:1215
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "حذف «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "حذف %d مورد تکراری"
+
+#: ../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "بازگرداندن %d مورد به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "بازگرداندن «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1236
+#: ../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "تغییر نام «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1255
+#: ../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "بازیافت %d مورد از زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "بازیافت «%s» در «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "بازگرداندن %d مورد به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "بازگرداندن «%s» به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "حذف کردن پیوندهای به %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "حذف پیوند به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "بازیابی مجوزهای اصلی مواردی که درون «%s» قرار دارند"
+
+#: ../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "بازیابی مجوزهای اصلی «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "بازگرداندن گروه «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "بازگرداندن مالکیت «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "رونویسی %d مورد در «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "رونویسی «%s» در «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "تکثیر %d مورد در «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "تکثیر «%s» در «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "جابجایی %d مورد به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "جابجایی «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "ساخت پرونده جدید «%s» از روی قالب "
+
+#: ../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "ساخت یک پرونده جدید «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "ساخت یک پوشه جدید «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "انداختن %d مورد به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "انداختن «%s» به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "بازیافت «%s» از زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "ساخت پیوند به %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "ساخت پیوند به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "تعیین مجوزهای موارد درون «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "تعیین مجوزهای «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "تنظیم گروه «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "واگذاری مالکیت «%s» به «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_واگشت رونویسی از %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_واگشت تکثیر از %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_واگشت جابجایی %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_بازگرداندن نام پیشین %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_واگشت ساخت یک پرونده جدید"
+
+#: ../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_واگشت ساخت یک پرونده از روی قالب"
+
+#: ../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_واگشت ساخت %d پوشه"
+
+#: ../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_واگشت انداختن %d مورد به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_واگشت بازیافت %d مورد از زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_واگشت ساخت پیوند به %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_بازگرداندن %d مورد حذف شده"
+
+#: ../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "بازگرداندن تغییرات بازگشتی مجوزهای %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "بازگرداندن تغییرات مجوزهای %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "واگشت تغییر گروه %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "واگذاری دوباره %d مورد به مالک پیشین"
+
+#: ../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "رونویسی _دوباره %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "تکثیر _دوباره %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "جابجایی _دوباره %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "تغییر _دوباره نام %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "ساخت _دوباره یک پرونده خالی"
+
+#: ../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "ساخت _دوباره یک پرونده از روی قالب"
+
+#: ../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "ساخت _دوباره %d پوشه"
+
+#: ../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "انتقال _دوباره %d مورد به زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "بازیافت _دوباره %d مورد از زباله‌دان"
+
+#: ../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "ساخت _دوباره پیوند به %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "حذف _دوباره %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "تغییر بازگشتی دوباره مجوزهای %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "تغییر دوباره مجوزهای %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "تغییر دوباره گروه %d مورد"
+
+#: ../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "تغییر دوباره مالک %d مورد"
 
 #: ../libcore/gof-file.c:302
 #, c-format
@@ -501,6 +814,30 @@ msgstr "نمی‌توان از اسلش (/) در نام پرونده‌ها اس
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
 msgstr "نمی‌توان نام پرونده سطح بالا را تغییر داد"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "در حال آماده‌سازی"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "نمایش جزئیات _بیشتر"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "امروز، ساعت %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "دیروز، ساعت %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y در ساعت %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -646,9 +983,9 @@ msgstr "جایگزینی"
 msgid "File conflict"
 msgstr "تداخل پرونده"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "نمایش جزئیات _بیشتر"
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (یونی‌کد نامعتبر)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -835,7 +1172,7 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "همه موارد درون زباله‌دان برای همیشه پاک خواهند شد."
 
 #: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
+#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
 msgstr "خالی کردن _زباله‌دان"
 
@@ -1302,351 +1639,58 @@ msgstr "در حال خالی کردن زباله‌دان"
 msgid "Emptying Trash"
 msgstr "در حال خالی کردن زباله‌دان"
 
-#: ../libcore/marlin-undostack-manager.c:1202
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "Delete %d copied items"
-msgstr "حذف %d مورد رونویسی شده"
+msgid "Could not determine original location of \"%s\" "
+msgstr "نمی‌توان مکان اصلی «%s» را تعیین کرد "
 
-#: ../libcore/marlin-undostack-manager.c:1205
-#: ../libcore/marlin-undostack-manager.c:1215
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "حذف «%s»"
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "این مورد را نمی‌توان از زباله‌دان بازگرداند"
 
-#: ../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "حذف %d مورد تکراری"
+#: ../src/View/LocationBar.vala:123
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "بازگرداندن %d مورد به «%s»"
+#: ../src/View/LocationBar.vala:124
+msgid "DAV"
+msgstr "DAV"
 
-#: ../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "بازگرداندن «%s» به «%s»"
+#: ../src/View/LocationBar.vala:125
+msgid "DAVS"
+msgstr "DAVS"
 
-#: ../libcore/marlin-undostack-manager.c:1236
-#: ../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "تغییر نام «%s» به «%s»"
+#: ../src/View/LocationBar.vala:126
+msgid "FTP"
+msgstr "FTP"
 
-#: ../libcore/marlin-undostack-manager.c:1255
-#: ../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "بازیافت %d مورد از زباله‌دان"
+#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr "شبکه"
 
-#: ../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "بازیافت «%s» در «%s»"
+#: ../src/View/LocationBar.vala:128
+msgid "SFTP"
+msgstr "SFTP"
 
-#: ../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "بازگرداندن %d مورد به زباله‌دان"
+#: ../src/View/LocationBar.vala:129
+msgid "SMB"
+msgstr "SMB"
 
-#: ../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "بازگرداندن «%s» به زباله‌دان"
+#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr "زباله‌دان"
 
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "حذف کردن پیوندهای به %d مورد"
+#: ../src/View/LocationBar.vala:329
+msgid "Open in New Tab"
+msgstr "باز کردن در زبانه جدید"
 
-#: ../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "حذف پیوند به «%s»"
+#: ../src/View/LocationBar.vala:336
+msgid "Open with"
+msgstr ""
 
-#: ../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "بازیابی مجوزهای اصلی مواردی که درون «%s» قرار دارند"
-
-#: ../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "بازیابی مجوزهای اصلی «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "بازگرداندن گروه «%s» به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "بازگرداندن مالکیت «%s» به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "رونویسی %d مورد در «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "رونویسی «%s» در «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "تکثیر %d مورد در «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "تکثیر «%s» در «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "جابجایی %d مورد به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "جابجایی «%s» به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "ساخت پرونده جدید «%s» از روی قالب "
-
-#: ../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "ساخت یک پرونده جدید «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "ساخت یک پوشه جدید «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "انداختن %d مورد به زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "انداختن «%s» به زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "بازیافت «%s» از زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "ساخت پیوند به %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "ساخت پیوند به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "تعیین مجوزهای موارد درون «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "تعیین مجوزهای «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "تنظیم گروه «%s» به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "واگذاری مالکیت «%s» به «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_واگشت رونویسی از %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_واگشت تکثیر از %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_واگشت جابجایی %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_بازگرداندن نام پیشین %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_واگشت ساخت یک پرونده جدید"
-
-#: ../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_واگشت ساخت یک پرونده از روی قالب"
-
-#: ../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_واگشت ساخت %d پوشه"
-
-#: ../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_واگشت انداختن %d مورد به زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_واگشت بازیافت %d مورد از زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_واگشت ساخت پیوند به %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_بازگرداندن %d مورد حذف شده"
-
-#: ../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "بازگرداندن تغییرات بازگشتی مجوزهای %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "بازگرداندن تغییرات مجوزهای %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "واگشت تغییر گروه %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "واگذاری دوباره %d مورد به مالک پیشین"
-
-#: ../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "رونویسی _دوباره %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "تکثیر _دوباره %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "جابجایی _دوباره %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "تغییر _دوباره نام %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "ساخت _دوباره یک پرونده خالی"
-
-#: ../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "ساخت _دوباره یک پرونده از روی قالب"
-
-#: ../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "ساخت _دوباره %d پوشه"
-
-#: ../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "انتقال _دوباره %d مورد به زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "بازیافت _دوباره %d مورد از زباله‌دان"
-
-#: ../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "ساخت _دوباره پیوند به %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "حذف _دوباره %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "تغییر بازگشتی دوباره مجوزهای %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "تغییر دوباره مجوزهای %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "تغییر دوباره گروه %d مورد"
-
-#: ../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "تغییر دوباره مالک %d مورد"
+#: ../src/View/LocationBar.vala:367
+msgid "Other Application .."
+msgstr ""
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1654,6 +1698,378 @@ msgstr ""
 
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
+msgstr ""
+
+#: ../src/View/Window.vala:138
+msgid "Files isn't your default file manager."
+msgstr "فایلز مدیر پرونده پیش‌فرض شما نیست."
+
+#: ../src/View/Window.vala:144
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:149
+msgid "Ignore"
+msgstr "چشم‌پوشی‌"
+
+#: ../src/View/Window.vala:432
+msgid "Undo"
+msgstr "واگرد"
+
+#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
+msgid "Undo the last action"
+msgstr "حذف آخرین فعالیت"
+
+#: ../src/View/Window.vala:442
+msgid "Redo"
+msgstr "بازگرد"
+
+#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
+msgid "Redo the last action"
+msgstr "انجام مجدد آخرین فعالیت"
+
+#: ../src/View/Window.vala:739
+msgid "_File"
+msgstr "_پرونده"
+
+#: ../src/View/Window.vala:740
+msgid "_Edit"
+msgstr "_ويرايش"
+
+#: ../src/View/Window.vala:741
+msgid "_View"
+msgstr "_نمایش"
+
+#: ../src/View/Window.vala:742
+msgid "_Go"
+msgstr "_برو"
+
+#: ../src/View/Window.vala:743
+msgid "_Help"
+msgstr "_راهنما"
+
+#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "پنجره _جدید"
+
+#: ../src/View/Window.vala:746
+msgid "Open another Files window for the displayed location"
+msgstr "باز کردن پنجره فایلز دیگری برای مکان کنونی"
+
+#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "_برگه جدید"
+
+#: ../src/View/Window.vala:750
+msgid "Open another tab for the displayed location"
+msgstr "باز کردن برگه دیگری برای مکان کنونی"
+
+#: ../src/View/Window.vala:754
+msgid "_Close"
+msgstr "_بستن"
+
+#: ../src/View/Window.vala:755
+msgid "Close this folder"
+msgstr "بستن این پوشه"
+
+#: ../src/View/Window.vala:760
+msgid "_Undo"
+msgstr "_واگرد"
+
+#: ../src/View/Window.vala:763
+msgid "_Redo"
+msgstr "_بازگرد"
+
+#: ../src/View/Window.vala:766
+msgid "_Find"
+msgstr ""
+
+#: ../src/View/Window.vala:767
+msgid "Search the current folder"
+msgstr ""
+
+#: ../src/View/Window.vala:769
+msgid "Open _Parent"
+msgstr "باز کردن _سرشاخه"
+
+#: ../src/View/Window.vala:770
+msgid "Open the parent folder"
+msgstr "باز کردن پوشه سرشاخه"
+
+#: ../src/View/Window.vala:772
+msgid "_Back"
+msgstr "_بازگشت"
+
+#: ../src/View/Window.vala:773
+msgid "Go to the previous visited location"
+msgstr "رفتن به مکان قبلی"
+
+#: ../src/View/Window.vala:776
+msgid "_Forward"
+msgstr "_جلو"
+
+#: ../src/View/Window.vala:777
+msgid "Go to the next visited location"
+msgstr "رفتن به مکان بعدی"
+
+#: ../src/View/Window.vala:779
+msgid "_Reload"
+msgstr "_بازآوری"
+
+#: ../src/View/Window.vala:780
+msgid "Reload the current location"
+msgstr "بازآوری مکان کنونی"
+
+#: ../src/View/Window.vala:783
+msgid "_Home Folder"
+msgstr "_پوشه خانه"
+
+#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "باز کردن پوشه شخصی شما"
+
+#: ../src/View/Window.vala:787
+msgid "_Trash"
+msgstr "_زباله‌دان"
+
+#: ../src/View/Window.vala:788
+msgid "Open your personal trash folder"
+msgstr "بازکردن زباله‌دان شخصی شما"
+
+#: ../src/View/Window.vala:791
+msgid "_Network"
+msgstr "_شبکه"
+
+#: ../src/View/Window.vala:792
+msgid "Browse bookmarked and local network locations"
+msgstr "مرور شبکه محلی و مکان‌های نشانه‌گذاری شده"
+
+#: ../src/View/Window.vala:795
+msgid "Zoom _In"
+msgstr "_بزرگتر"
+
+#: ../src/View/Window.vala:796
+msgid "Increase the view size"
+msgstr "افزایش اندازه نمایش"
+
+#: ../src/View/Window.vala:807
+msgid "Zoom _Out"
+msgstr "_کوچکتر"
+
+#: ../src/View/Window.vala:808
+msgid "Decrease the view size"
+msgstr "کاهش اندازه نمایش"
+
+#: ../src/View/Window.vala:815
+msgid "Normal Si_ze"
+msgstr "_اندازه عادی"
+
+#: ../src/View/Window.vala:816
+msgid "Use the normal view size"
+msgstr "استفاده از اندازه عادی نما"
+
+#: ../src/View/Window.vala:819
+msgid "Next Tab"
+msgstr "برگه بعدی"
+
+#: ../src/View/Window.vala:823
+msgid "Previous Tab"
+msgstr "برگه قبلی"
+
+#: ../src/View/Window.vala:827
+msgid "Connect to _Server..."
+msgstr "اتصال به _کارگزار..."
+
+#: ../src/View/Window.vala:828
+msgid "Connect to a remote computer or shared disk"
+msgstr "اتصال به یک رایانه دوردست و یا یک دیسک به اشتراک گذاشته شده"
+
+#: ../src/View/Window.vala:831
+msgid "_About"
+msgstr "_درباره"
+
+#: ../src/View/Window.vala:832
+msgid "Display credits"
+msgstr "نمایش اعتبارها"
+
+#: ../src/View/Window.vala:835
+msgid "Report a Problem..."
+msgstr "مشکلی را گزارش دهید…"
+
+#: ../src/View/Window.vala:836
+msgid "File a bug on Launchpad"
+msgstr "قرار دادن گزارش یک مشکل در لانچپد"
+
+#: ../src/View/Window.vala:839
+msgid "Get Help Online..."
+msgstr "دریافت راهنمای آنلاین..."
+
+#: ../src/View/Window.vala:843
+msgid "Translate This Application..."
+msgstr "این برنامه را ترجمه کنید..."
+
+#: ../src/View/Window.vala:852
+msgid "Show _Hidden Files"
+msgstr "نمایش _پرونده‌های پنهان"
+
+#: ../src/View/Window.vala:853
+msgid "Toggle the display of hidden files in the current window"
+msgstr "تغییر وضعیت نمایشی پرونده‌های پنهان در پنجره‌ کنونی"
+
+#: ../src/View/Window.vala:857
+msgid "_Places"
+msgstr "_محل‌ها"
+
+#: ../src/View/Window.vala:858
+msgid "Change the visibility of this window's side pane"
+msgstr "تغییر ‌روئیت‌پذیری قاب کناری پنجره"
+
+#: ../src/View/Window.vala:866
+msgid "Icon"
+msgstr "شمایل"
+
+#: ../src/View/Window.vala:869
+msgid "List"
+msgstr "فهرست"
+
+#: ../src/View/Window.vala:872
+msgid "Columns"
+msgstr "‌ستون‌ها"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "شخصي"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "مکان‌ها و نشانه‌های معمول شما"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+msgid "Home"
+msgstr "خانه"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "دستگاه‌ها"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "پارتیشن‌ها و دستگاه‌های جانبی رایانه شما"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+msgid "File System"
+msgstr "سیستم پرونده"
+
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "سوار و باز کردن %s"
+
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "شبکه‌های شما"
+
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "مرور محتویات شبکه"
+
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "نمی‌توان %s را آغاز کرد"
+
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "حذف"
+
+#: ../src/View/Sidebar.vala:1214
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "_سوار کردن"
+
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "_جدا کردن"
+
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "ب_یرون دادن"
+
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:55
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:149
+msgid "This folder does not exist"
+msgstr "این پوشه وجود ندارد."
+
+#: ../src/View/ViewContainer.vala:154
+msgid "(as Administrator)"
+msgstr "(به عنوان کاربر ارشد)"
+
+#: ../src/View/ViewContainer.vala:173
+msgid "This does not belong to you."
+msgstr "این به شما تعلق ندارد."
+
+#: ../src/View/ViewContainer.vala:174
+msgid "You don't have permission to view this folder."
+msgstr "شما اجازه دیدن این پوشه را ندارید."
+
+#: ../src/View/ViewContainer.vala:250
+msgid "Connecting…"
+msgstr ""
+
+#: ../src/View/Chrome/ViewSwicher.vala:75
+msgid "View as Grid"
+msgstr "نمایش جدولی"
+
+#: ../src/View/Chrome/ViewSwicher.vala:78
+msgid "View as List"
+msgstr "نمایش فهرستی"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View in Columns"
+msgstr "نمایش ستونی"
+
+#: ../src/View/Chrome/TopMenu.vala:34
+msgid "Previous"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:39
+msgid "Next"
 msgstr ""
 
 #: ../src/View/OverlayBar.vala:136
@@ -1680,97 +2096,31 @@ msgstr "%u پوشه"
 msgid "%u items selected (%s)"
 msgstr "%u موارد انتخاب شد (%s)"
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "خانه"
-
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "سیستم پرونده"
-
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
 msgstr "این پوشه وجود ندارد."
 
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(به عنوان کاربر ارشد)"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr "امکان یافتن پوشه \"%s\" وجود ندارند."
 
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "این به شما تعلق ندارد."
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr "ساختن"
 
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "شما اجازه دیدن این پوشه را ندارید."
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr "ایجاد پوشه \"%s\""
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
-
-#: ../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
-
-#: ../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
-
-#: ../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
-
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "شبکه"
-
-#: ../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
-
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "زباله‌دان"
-
-#: ../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "باز کردن در زبانه جدید"
-
-#: ../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr ""
-
-#: ../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
+"ایجاد پوشه با شکست روبرو شد\n"
+"\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
@@ -1884,360 +2234,6 @@ msgstr "همه"
 msgid "Select an application to open "
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "این پوشه وجود ندارد."
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "The folder \"%s\" can't be found."
-msgstr "امکان یافتن پوشه \"%s\" وجود ندارند."
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr "ساختن"
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create the folder \"%s\""
-msgstr "ایجاد پوشه \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:55
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"ایجاد پوشه با شکست روبرو شد\n"
-"\n"
-"%s"
-
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "فایلز مدیر پرونده پیش‌فرض شما نیست."
-
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "چشم‌پوشی‌"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "واگرد"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "حذف آخرین فعالیت"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "بازگرد"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "انجام مجدد آخرین فعالیت"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_پرونده"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_ويرايش"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_نمایش"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "_برو"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_راهنما"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "پنجره _جدید"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "باز کردن پنجره فایلز دیگری برای مکان کنونی"
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "_برگه جدید"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "باز کردن برگه دیگری برای مکان کنونی"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_بستن"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "بستن این پوشه"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_واگرد"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_بازگرد"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "باز کردن _سرشاخه"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "باز کردن پوشه سرشاخه"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_بازگشت"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "رفتن به مکان قبلی"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_جلو"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "رفتن به مکان بعدی"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "_بازآوری"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "بازآوری مکان کنونی"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_پوشه خانه"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "باز کردن پوشه شخصی شما"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_زباله‌دان"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "بازکردن زباله‌دان شخصی شما"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_شبکه"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "مرور شبکه محلی و مکان‌های نشانه‌گذاری شده"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "_بزرگتر"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "افزایش اندازه نمایش"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "_کوچکتر"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "کاهش اندازه نمایش"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "_اندازه عادی"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "استفاده از اندازه عادی نما"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "برگه بعدی"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "برگه قبلی"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "اتصال به _کارگزار..."
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "اتصال به یک رایانه دوردست و یا یک دیسک به اشتراک گذاشته شده"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "_درباره"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "نمایش اعتبارها"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "مشکلی را گزارش دهید…"
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "قرار دادن گزارش یک مشکل در لانچپد"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "دریافت راهنمای آنلاین..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "این برنامه را ترجمه کنید..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "نمایش _پرونده‌های پنهان"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "تغییر وضعیت نمایشی پرونده‌های پنهان در پنجره‌ کنونی"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_محل‌ها"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "تغییر ‌روئیت‌پذیری قاب کناری پنجره"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "شمایل"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "فهرست"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "‌ستون‌ها"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "شخصي"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "مکان‌ها و نشانه‌های معمول شما"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "دستگاه‌ها"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "پارتیشن‌ها و دستگاه‌های جانبی رایانه شما"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "سوار و باز کردن %s"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "شبکه‌های شما"
-
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "مرور محتویات شبکه"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "نمی‌توان %s را آغاز کرد"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "حذف"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_سوار کردن"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_جدا کردن"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "ب_یرون دادن"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "نمایش جدولی"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "نمایش فهرستی"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "نمایش ستونی"
-
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
 msgstr "نمایش شماره نسخه برنامه"
@@ -2276,6 +2272,26 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "نمی‌توان از quit-- برای نشانی‌ها استفاده کرد."
 
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "مرور پرونده‌ها"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "مدیر پرونده"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "پنجره جدید به عنوان کاربر ارشد"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "فایلز"
+
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
@@ -2302,34 +2318,6 @@ msgstr "نمایش پنجره رونویسی"
 msgid "Cancel All In-progress Actions"
 msgstr "لغو همه فرآیندهای در حال انجام"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "مرور پرونده‌ها"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "مدیر پرونده"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "پنجره جدید به عنوان کاربر ارشد"
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "فایلز"
-
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "برو به %s"
-
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "ممکن است با خالی کردن زباله‌دان این موارد پاک شوند."
-
-#: ../plugins/marlin-trash/plugin.vala:39
-msgid "Empty the Trash"
-msgstr "خالی کردن زباله‌دان"
