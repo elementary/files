@@ -24,6 +24,7 @@ namespace Marlin {
         public Marlin.ZoomLevel zoom_level {get; set;}
         public bool follow_state {get; set;}
         public new string background { set; private get;}
+        public GOF.File file {set; private get;}
 
         Pango.Layout layout;
         Gtk.Widget widget;
@@ -209,11 +210,20 @@ debug ("set  widget");
             /* render small/normal text depending on the zoom_level */
             if (text == null)
                 text= " ";
-                
-            if (this.zoom_level < Marlin.ZoomLevel.NORMAL)
-                this.layout.set_attributes (EelPango.attr_list_small ());
-            else
-                this.layout.set_attributes (null);
+
+            bool writable = file.is_writable ();
+            bool small = this.zoom_level < Marlin.ZoomLevel.NORMAL;
+            if (writable) {
+                if (small)
+                    this.layout.set_attributes (EelPango.attr_list_small ());
+                else
+                    this.layout.set_attributes (null);
+            } else {
+                if (small)
+                    this.layout.set_attributes (EelPango.attr_list_small_italic ());
+                else
+                    this.layout.set_attributes (EelPango.attr_list_italic ());
+            }
 
             if (this.wrap_width < 0) {
                 layout.set_width (cell_area.width * Pango.SCALE);

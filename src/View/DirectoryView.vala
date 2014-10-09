@@ -764,7 +764,10 @@ namespace FM {
 //message ("DV rename file");
             unselect_all ();
             select_gof_file (file_to_rename);
-            start_renaming_file (file_to_rename, false);
+            if (file_to_rename.is_writable ())
+                start_renaming_file (file_to_rename, false);
+            else
+                message ("You do not have permission to rename this file");
         }
 
 
@@ -1701,11 +1704,13 @@ namespace FM {
             bool more_than_one_selected = (selection_count > 1);
             bool single_folder = true; /* background is a folder */
             bool only_folders = selection_only_contains_folders (selection);
+            bool can_rename = false;
 
             if (selection_count > 0) {
                 unowned GOF.File? file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
+                    can_rename = file.is_writable ();
                     update_default_app (selection);
                 } else
                     critical ("File in selection is null");
@@ -1716,7 +1721,7 @@ namespace FM {
             update_menu_actions_sort ();
 
             action_set_enabled (common_actions, "open_in", only_folders);
-            action_set_enabled (selection_actions, "rename", selection_count == 1);
+            action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
@@ -2162,11 +2167,16 @@ debug ("on_motion_notify event");
             Gtk.TreePath? path = null;
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path);
 debug ("click zone %u", click_zone);
+            GOF.File? file = path != null ? model.file_for_path (path) : null;
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
                     case ClickZone.NAME:
-                        win.set_cursor (editable_cursor);
+                        if (file.is_writable ())
+                            win.set_cursor (editable_cursor);
+                        else
+                            win.set_cursor (selectable_cursor);
+
                         break;
                     case ClickZone.BLANK_NO_PATH:
                         win.set_cursor (blank_cursor);
@@ -2188,7 +2198,6 @@ debug ("click zone %u", click_zone);
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
-                GOF.File? file = path != null ? model.file_for_path (path) : null;
                 window.item_hovered (file);
 
                 hover_path = path;

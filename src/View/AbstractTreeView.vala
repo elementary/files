@@ -44,6 +44,7 @@ namespace FM {
             name_column.pack_start (name_renderer, true);
             name_column.set_attributes (name_renderer,
                                         "text", FM.ListModel.ColumnID.FILENAME,
+                                        "file", FM.ListModel.ColumnID.FILE_COLUMN,
                                         "background", FM.ListModel.ColumnID.COLOR);
             tree.append_column (name_column);
         }

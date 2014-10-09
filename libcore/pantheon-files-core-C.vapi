@@ -122,6 +122,8 @@ namespace Eel {
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
 namespace EelPango {
     public unowned Pango.AttrList attr_list_small();
+    public unowned Pango.AttrList attr_list_small_italic();
+    public unowned Pango.AttrList attr_list_italic();
     public unowned Pango.AttrList attr_list_big();
 }
 

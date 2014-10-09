@@ -87,10 +87,7 @@ namespace FM {
 
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
 //message ("set path expanded");
-            unowned GOF.File? file = null;
-            Gtk.TreeIter? iter = null;
-            model.get_iter (out iter, path);
-            model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+            unowned GOF.File? file = model.file_for_path (path);
             if (file != null)
                 file.set_expanded (expanded);
         }
