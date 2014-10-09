@@ -2168,7 +2168,7 @@ debug ("on_motion_notify event");
                 var win = view.get_window ();
                 switch (click_zone) {
                     case ClickZone.NAME:
-                        if (file.is_writable ())
+                        if (file != null && file.is_writable ())
                             win.set_cursor (editable_cursor);
                         else
                             win.set_cursor (selectable_cursor);
