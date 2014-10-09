@@ -57,8 +57,7 @@ namespace FM {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                       renderer,
-                                                                      "text", k,
-                                                                      "background", FM.ListModel.ColumnID.COLOR);       
+                                                                      "text", k);     
                     col.set_sort_column_id (k);
                     col.set_resizable (true);
                     tree.append_column (col);
