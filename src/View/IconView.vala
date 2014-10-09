@@ -97,14 +97,14 @@ namespace FM {
             return (Marlin.ZoomLevel)zoom;
         }
 
-        public override void zoom_level_changed () {
+        public override void change_zoom_level () {
             if (tree != null) {
 //message ("IV zoom level changed");
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
                 name_renderer.set_property ("wrap-width", (int)(1.62 * icon_size));
                 name_renderer.set_property ("zoom-level", zoom_level);
-                base.zoom_level_changed ();
+                base.change_zoom_level ();
             }
         }
 
@@ -203,7 +203,6 @@ namespace FM {
                 tree.get_cell_rect  (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
                 if (r is Marlin.TextRenderer) {
-                    int text_width, text_height;
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
@@ -213,11 +212,11 @@ namespace FM {
                     if (text == null)
                         text = "";
 
-                    (r as Marlin.TextRenderer).set_up_layout (text, area, out text_width, out text_height);   
+                    (r as Marlin.TextRenderer).set_up_layout (text, area);   
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + text_height)
+                        y <= rect.y + (r as Marlin.TextRenderer).text_height)
 
                         zone = ClickZone.NAME;
                     else {

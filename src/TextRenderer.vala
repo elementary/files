@@ -29,7 +29,9 @@ namespace Marlin {
         Gtk.Widget widget;
         int char_width;
         int char_height;
-        int focus_width;
+        public int text_width;
+        public int text_height;
+        int focus_border_width;
 
         Marlin.EditableLabel entry;
 
@@ -68,7 +70,7 @@ debug ("set  widget");
                     (this as Gtk.CellRenderer).set_fixed_size (-1, this.char_height);
 
                 widget.style_get ("focus-padding", out focus_padding, "focus-line-width", out focus_line_width);
-                this.focus_width = int.max (focus_padding + focus_line_width, 2);
+                this.focus_border_width = int.max (focus_padding + focus_line_width, 2);
             } else {
                 this.layout = null;
                 this.char_width = 0;
@@ -115,10 +117,7 @@ debug ("set  widget");
             else 
                 entry.set_justify (Gtk.Justification.LEFT);
 
-            entry.@set ("yalign", this.yalign);
-
-            int xpad, ypad;
-            this.get_padding (out xpad, out ypad);
+            entry.yalign = this.yalign;
             entry.set_padding ((int)xpad, (int)ypad);
 
             var context = widget.get_style_context ();
@@ -176,87 +175,37 @@ debug ("set  widget");
             else
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
 
-            int text_width, text_height;
-            set_up_layout (this.text, cell_area, out text_width, out text_height);
+            set_up_layout (this.text, cell_area);
+
+            Gtk.StyleContext style_context = widget.get_parent ().get_style_context ();
+            style_context.save ();
+            style_context.set_state (state);
+
+            if (follow_state || background != null)
+                draw_focus (cr, cell_area, flags, style_context, state);
+
 
             int x_offset, y_offset;
-            /* calculate the real x-offset */
-            /* ceil seems to work best when the offset is actually a float value */
-            float x;
-            if (widget.get_direction () == Gtk.TextDirection.RTL)
-                x = 1.0f - xalign;
-            else
-                x = xalign;
+            get_offsets (cell_area, text_width, text_height, xalign, out x_offset, out y_offset);
 
-            x *= (cell_area.width - text_width - 2 * xpad);
-            x_offset = int.max ((int)(GLib.Math.ceil (x)), 0);
-
-            /* calculate the real y-offset */
-            y_offset = (int)(yalign * (cell_area.height - text_height - 2 * ypad));
-            y_offset = int.max (y_offset, 0);
-
-            Gtk.StyleContext context = widget.get_parent ().get_style_context ();
-            context.save ();
-            context.set_state (state);
-
-            bool selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED && this.follow_state);
-
-            /* render the state indicator */
-            if (selected || this.background != null) {
-                /* calculate the text bounding box (including the focus padding/width) */
-                int x0 = cell_area.x + x_offset;
-                int y0 = cell_area.y + y_offset;
-                int x1 = x0 + text_width;
-                int y1 = y0 + text_height;
-
-                const uint border_radius = 3;
-                cr.move_to (x0 + border_radius, y0);
-                cr.line_to (x1 - border_radius, y0);
-                cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
-                cr.line_to (x1, y1 - border_radius);
-                cr.curve_to (x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
-                cr.line_to (x0 + border_radius, y1);
-                cr.curve_to (x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
-                cr.line_to (x0, y0 + border_radius);
-                cr.curve_to (x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
-
-                Gdk.RGBA color ={};
-                if (this.background != null && !selected) {
-                    if (!color.parse (this.background)) {
-                        critical ("Can't parse this color value: %s", background);
-                        color = context.get_background_color (state);
-                    }
-                } else
-                    color = context.get_background_color (state);
-
-                Gdk.cairo_set_source_rgba (cr, color);
-            }
-            /* draw the focus indicator */
-            if (this.follow_state && (flags & Gtk.CellRendererState.FOCUSED) != 0) {
-                context.render_focus (cr, cell_area.x + x_offset, cell_area.y + y_offset, text_width, text_height);
-            }
-
-            /* get proper sizing for the layout drawing */
-            if (this.follow_state) {
-                text_width -= 2 * this.focus_width;
-                text_height -= 2 * this.focus_width;
-                x_offset += this.focus_width;
-                y_offset += this.focus_width;
-            }
-
-            /* draw the text */
-            if (xalign == 0.5f)
+            /* Adjust text offsets for best appearance in each view */
+            if (xalign == 0.5f) { /* Icon view */
                 x_offset = (cell_area.width - this.wrap_width) / 2;
+                y_offset += focus_border_width + (int)ypad;
+            } else {    
+                x_offset += focus_border_width + 2 * (int)xpad;
+                y_offset += focus_border_width;
+            }
 
-            context.render_layout (cr,
-                                   cell_area.x + x_offset + xpad,
-                                   cell_area.y + y_offset + ypad,
+            style_context.render_layout (cr,
+                                   cell_area.x + x_offset,
+                                   cell_area.y + y_offset,
                                    layout);
 
-            context.restore ();
+            style_context.restore ();
         }
 
-        public void set_up_layout (string? text, Gdk.Rectangle cell_area, out int text_width, out int text_height) {
+        public void set_up_layout (string? text, Gdk.Rectangle cell_area) {
             /* render small/normal text depending on the zoom_level */
             if (text == null)
                 text= " ";
@@ -288,13 +237,63 @@ debug ("set  widget");
             layout.get_pixel_size (out width, out height);
             text_width = width;
             text_height = height;
+        }
 
-            /* take into account the state indicator (required for calculation) */
-            if (this.follow_state) {
-                /* make the focus indicator rectangular */
-                text_width += 4 * this.focus_width;
-                text_height += 2 * this.focus_width;
+        private void draw_focus (Cairo.Context cr, Gdk.Rectangle cell_area, Gtk.CellRendererState flags, Gtk.StyleContext style_context, Gtk.StateFlags state) {
+            bool selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED && this.follow_state);
+            int focus_rect_width = text_width + 4 * this.focus_border_width;
+            int focus_rect_height = text_height + 2 * this.focus_border_width;
+
+            float x;
+            if (widget.get_direction () == Gtk.TextDirection.RTL)
+                x = 1.0f - xalign;
+            else
+                x = xalign;
+
+            int x_offset, y_offset;
+            get_offsets (cell_area, focus_rect_width, focus_rect_height, x, out x_offset, out y_offset);
+
+            /* render the background if selected or colorized */
+            if (selected || this.background != null) {
+                int x0 = cell_area.x + x_offset + (int)xpad;
+                int y0 = cell_area.y + y_offset + (int)ypad;
+                int x1 = x0 + focus_rect_width;
+                int y1 = y0 + focus_rect_height;
+
+                const uint border_radius = 6;
+                cr.move_to (x0 + border_radius, y0);
+                cr.line_to (x1 - border_radius, y0);
+                cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
+                cr.line_to (x1, y1 - border_radius);
+                cr.curve_to (x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
+                cr.line_to (x0 + border_radius, y1);
+                cr.curve_to (x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
+                cr.line_to (x0, y0 + border_radius);
+                cr.curve_to (x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
+
+                Gdk.RGBA color ={};
+                if (this.background != null && !selected) {
+                    if (!color.parse (this.background)) {
+                        critical ("Can't parse this color value: %s", background);
+                        color = style_context.get_background_color (state);
+                    }
+                } else
+                    color = style_context.get_background_color (state);
+
+                Gdk.cairo_set_source_rgba (cr, color);
+                cr.fill ();
             }
+            /* draw the focus indicator */
+            if (this.follow_state && (flags & Gtk.CellRendererState.FOCUSED) != 0)
+                style_context.render_focus (cr, cell_area.x + x_offset, cell_area.y + y_offset, focus_rect_width, focus_rect_height);
+        }
+
+        private void get_offsets (Gdk.Rectangle cell_area, int width, int height, float x, out int x_offset, out int y_offset) {
+            x_offset = (int)(x * (cell_area.width - width - 2 * (int)xpad));
+            x_offset = int.max (x_offset, 0);
+
+            y_offset = (int)(yalign * (cell_area.height - height - 2 * (int)ypad));
+            y_offset = int.max (y_offset, 0);
         }
     }
 }

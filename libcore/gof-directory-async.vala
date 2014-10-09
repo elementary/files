@@ -630,7 +630,7 @@ public class GOF.Directory.Async : Object {
     private bool thumbs_thread_running;
 
     private void *load_thumbnails_func () {
-
+//message ("load thumbnails func");
         return_val_if_fail (this is Async, null);
         /* Ensure only one thread loading thumbs for this directory */
         return_val_if_fail (!thumbs_thread_running, null);
@@ -639,7 +639,6 @@ public class GOF.Directory.Async : Object {
             this.unref ();
             return null;
         }
-//message ("load thumbnails func");
         thumbs_thread_running = true;
         thumbs_stop = false;
 
@@ -664,6 +663,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void threaded_load_thumbnails (int size) {
+//message ("threaded load thumbnails");
         try {
             icon_size = size;
             thumbs_stop = false;
@@ -676,6 +676,7 @@ public class GOF.Directory.Async : Object {
 
     private bool queue_thumbs_timeout_cb () {
         /* Wait for thumbnail thread to stop then start a new thread */
+//message ("queue thumbs timeout");
         if (!thumbs_thread_running) {
             threaded_load_thumbnails (icon_size);
             timeout_thumbsq = 0;
@@ -687,7 +688,6 @@ public class GOF.Directory.Async : Object {
 
     public void queue_load_thumbnails (int size) {
         icon_size = size;
-
         if (this.state == State.LOADING)
             return;
 

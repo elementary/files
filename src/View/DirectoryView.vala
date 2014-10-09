@@ -101,6 +101,7 @@ namespace FM {
                 if (value <= maximum_zoom &&
                     value >= minimum_zoom &&
                     value != _zoom_level) {
+
                         _zoom_level = value;
                         on_zoom_level_changed (value);
                 }
@@ -241,7 +242,7 @@ namespace FM {
             }
             freeze_tree ();
             set_up_zoom_level ();
-            zoom_level_changed (); /* set icon_renderer properties */
+            change_zoom_level (); /* set icon_renderer properties */
         }
 
         ~DirectoryView () {
@@ -253,7 +254,7 @@ namespace FM {
 
         protected virtual void set_up_name_renderer () {
             name_renderer.editable = false;
-            name_renderer.follow_state = false;
+            name_renderer.follow_state = true;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
@@ -600,6 +601,9 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
+//message ("cancel_thumbnailing");
+            slot.directory.cancel ();
+
             if (thumbnail_source_id > 0) {
                 GLib.Source.remove (thumbnail_source_id);
                 thumbnail_source_id = 0;
@@ -1056,7 +1060,7 @@ namespace FM {
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
 //message ("DV on zoom level changed");
             model.set_property ("size", icon_size);
-            zoom_level_changed ();
+            change_zoom_level ();
             if (get_realized ())
                 load_thumbnails (slot.directory, zoom);
         }
@@ -1869,6 +1873,7 @@ namespace FM {
 
 /** Thumbnail handling */
         private void schedule_thumbnail_timeout () {
+//message ("schedule_thumbnail_timeout");
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
@@ -2443,10 +2448,10 @@ debug ("DV on view draw");
             return false;
         }
 
-        public virtual void zoom_level_changed () {
+        public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
-            helpers_shown = (zoom_level >= Marlin.ZoomLevel.NORMAL);
+            helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
         }
 

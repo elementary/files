@@ -96,9 +96,9 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        public override void zoom_level_changed () {
+        public override void change_zoom_level () {
             if (tree != null) {
-                base.zoom_level_changed ();
+                base.change_zoom_level ();
                 tree.columns_autosize ();
             }
         }
