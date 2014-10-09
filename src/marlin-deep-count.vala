@@ -33,7 +33,7 @@ public class Marlin.DeepCount : Object {
 
     public DeepCount (File _file) {
         file = _file;
-        deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE;
+        deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_ALLOCATED_SIZE;
         cancellable = new Cancellable ();
 
         process_directory.begin (file);
@@ -65,7 +65,14 @@ public class Marlin.DeepCount : Object {
                         files_count++;
                     }
                     mutex.lock ();
-                    total_size += f.get_size();
+                    uint64 file_size = f.get_size ();
+                    uint64 allocated_size = f.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
+                    // Check for sparse file, allocated size will be smaller, for normal files allocated size
+                    // includes overhead size so we don't use it for those here
+                    if (allocated_size < file_size && f.get_file_type () != FileType.DIRECTORY)
+                        file_size = allocated_size;
+
+                    total_size += file_size;
                     mutex.unlock ();
                 }
             }
