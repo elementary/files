@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-05 01:32-0500\n"
-"PO-Revision-Date: 2014-08-02 19:24+0000\n"
+"PO-Revision-Date: 2014-10-09 14:35+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-06 06:51+0000\n"
+"X-Launchpad-Export-Date: 2014-10-10 05:16+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -121,7 +121,7 @@ msgstr[1] "Käytä sovellusta ”%s” valittujen kohteiden avaamiseen"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Käytä tiedostoa \"%s\" mallipohjana uudelle tiedostolle"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -157,15 +157,17 @@ msgstr "Aseta oletukseksi"
 
 #: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "Valmistele valittujen tiedostojen siirto ”liitä”-komennolla"
 
 #: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "Valmistele valittujen tiedostojen kopiointi ”liitä”-komennolla"
 
 #: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Siirrä tai kopioi viimeksi ”leikkaa”- tai ”kopioi”-komennolla valitut "
+"tiedostot"
 
 #: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
@@ -176,6 +178,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Siirrä tai kopioi viimeksi ”leikkaa”- tai ”kopioi”-komennolla valitut "
+"tiedostot valittuun kansioon"
 
 #: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
@@ -857,11 +861,11 @@ msgstr "Eilen %H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %e. %bkuuta %R"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %e. %bkuuta %Y %R"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -2285,7 +2289,7 @@ msgstr "Kaikki"
 
 #: ../src/View/PropertiesWindow.vala:1202
 msgid "Select an application to open "
-msgstr ""
+msgstr "Valitse sovellus, jolla avataan tiedostot tyyppiä "
 
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
