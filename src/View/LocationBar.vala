@@ -304,10 +304,12 @@ namespace Marlin.View.Chrome
 
             // don't use get_basename (), it will return "folder" for "/folder/"
             int last_slash = text.last_index_of_char ('/');
-            if (last_slash + 1 < text.length)
+            message ("last %d , leng %d",last_slash,text.length);
+            if (last_slash > -1 && last_slash < text.length)
                 to_search = text.slice (last_slash + 1, text.length);
             else
                 to_search = "";
+            message (to_search);
 
             autocompleted = false;
             multiple_completions = false;
