@@ -2088,6 +2088,14 @@ namespace FM {
                     }
                     break;
 
+                case Gdk.Key.Delete:
+                case Gdk.Key.KP_Delete:
+                    if (no_mods) {
+                        trash_or_delete_selected_files ();
+                        return true;
+                    }
+                    break;
+
                 case Gdk.Key.space:
                     if (view_has_focus ()) {
                         if (only_shift_pressed)
