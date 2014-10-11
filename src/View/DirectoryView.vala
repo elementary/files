@@ -2052,7 +2052,7 @@ namespace FM {
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
-            bool only_shift_pressed = (mods & ~Gdk.ModifierType.SHIFT_MASK) == 0;
+            bool only_shift_pressed = (mods > 0 && (mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
