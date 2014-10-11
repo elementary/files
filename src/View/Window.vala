@@ -827,7 +827,7 @@ namespace Marlin.View {
                 /* ViewContainer deals with non-existent or unmounted directories */
                 current_tab.user_path_change_request (loc);
             else
-                current_tab.focus_file (loc);
+                current_tab.focus_location (loc);
         }
 
         public void uri_path_change_request (string uri) {

@@ -241,7 +241,7 @@ namespace Marlin.View.Chrome
 
             search_results.file_selected.connect ((file) => {
                 win.grab_focus ();
-                win.current_tab.focus_file (file);
+                win.current_tab.focus_location (file);
 
                 search_mode = false;
             });

@@ -222,10 +222,10 @@ namespace Marlin.View {
                 return null;
         }
 
-        public override void select_glib_files (GLib.List<GLib.File> files) {
+        public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
 //message ("SLot: select_glib_files");
             if (dir_view != null)
-                dir_view.select_glib_files (files);
+                dir_view.select_glib_files (files, focus_location);
 
         }
 

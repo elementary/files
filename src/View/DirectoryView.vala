@@ -340,18 +340,23 @@ namespace FM {
             }
         }
 
-        public void select_glib_files (GLib.List<GLib.File> location_list) {
+        public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
 //message ("select glib files");
             updates_frozen = true;
             unselect_all ();
+            if (focus_location == null)
+                focus_location = location_list.first ().data;
+
             location_list.@foreach ((location) => {
                 var iter = Gtk.TreeIter ();
                 GOF.File file = GOF.File.@get (location);
                 if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
                     if (path != null) {
-                        scroll_to_cell (path, null, false);
-                        select_path (path);
+                        if (focus_location == location)
+                            set_cursor (path, false, true, false); /* set cursor and select */
+                        else
+                            select_path (path);
                     } 
                 } 
             });

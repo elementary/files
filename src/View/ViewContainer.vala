@@ -253,7 +253,7 @@ namespace Marlin.View {
                     can_show_folder = false;
                 }
                 else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
-                    view.select_glib_files (selected_locations);
+                    view.select_glib_files (selected_locations, null);
                     selected_locations = null;
                 }
 
@@ -289,7 +289,7 @@ namespace Marlin.View {
             get_current_slot ().set_active_state (is_active);
         }
 
-        public void focus_file (GLib.File file) {
+        public void focus_location (GLib.File file) {
 //message ("focus file %s", file.get_uri ());
             GLib.File? loc = null;
             if (file.query_file_type (0) == FileType.DIRECTORY) {
@@ -302,7 +302,7 @@ namespace Marlin.View {
                 if (location.equal (file.get_parent ())) {
                     var list = new List<File> ();
                     list.prepend (file);
-                    get_current_slot ().select_glib_files (list);
+                    get_current_slot ().select_glib_files (list, file);
                 } else {
                     loc = file.get_parent ();
                     user_path_change_request (loc);

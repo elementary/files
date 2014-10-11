@@ -351,9 +351,9 @@ namespace Marlin.View {
             return root_location.get_uri ();
         }
 
-        public override void select_glib_files (GLib.List<GLib.File> files) {
+        public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
 //message ("Miller: select glib files");
-            current_slot.select_glib_files (files);
+            current_slot.select_glib_files (files, focus_location);
         }
 
         public override void select_first_for_empty_selection () {
