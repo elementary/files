@@ -102,10 +102,10 @@ debug ("set  widget");
                                                                  Gdk.Rectangle  background_area,
                                                                  Gdk.Rectangle  cell_area,
                                                                  Gtk.CellRendererState flags) {
-//message ("TR Start editing");
+
             if (!this.visible || this.mode != Gtk.CellRendererMode.EDITABLE)
                 return null;
-
+//message ("TR Start editing");
             float xalign, yalign;
             get_alignment (out xalign, out yalign);
             entry.set_text (this.text);
@@ -125,11 +125,11 @@ debug ("set  widget");
             var state = widget.get_state_flags ();
             var font = (context.get_property ("font", state) as Pango.FontDescription);
 
-            if (zoom_level < Marlin.ZoomLevel.NORMAL || (text.length + 3)* char_width > 3 * wrap_width) {
+            /* Make more room to edit long filenames in icon view by reducing font size where necessary */
+            if (wrap_width > 0 && (text.length * char_width) > 2 * wrap_width)
                 font.set_size ((int)(font.get_size () * Pango.Scale.SMALL));
-            } else {
-                font_desc.set_size ((int)(font.get_size () * Pango.Scale.MEDIUM));
-            }
+            else
+                font.set_size ((int)(font.get_size () * Pango.Scale.MEDIUM));
 
             entry.override_font (font);
             entry.set_size_request (wrap_width, -1);
