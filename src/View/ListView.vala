@@ -118,20 +118,21 @@ namespace FM {
             if (!control_pressed && !shift_pressed) {
                 switch (event.keyval) {
                     case Gdk.Key.Right:
-                        Gtk.TreePath path;
+                        Gtk.TreePath? path = null;
                         tree.get_cursor (out path, null);
                         if (path != null)
                             tree.expand_row (path, false);
 
                         return true;
                     case Gdk.Key.Left:
-                        Gtk.TreePath path;
+                        Gtk.TreePath? path = null;
                         tree.get_cursor (out path, null);
-                        if (tree.is_row_expanded (path))
-                            tree.collapse_row (path);
-                        else if (path.up ())
-                            tree.collapse_row (path);
-
+                        if (path != null) {
+                            if (tree.is_row_expanded (path))
+                                tree.collapse_row (path);
+                            else if (path.up ())
+                                tree.collapse_row (path);
+                        }
                         return true;
                     default:
                         break;

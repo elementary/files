@@ -410,7 +410,14 @@ namespace FM {
 
         public new void grab_focus () {
 //message ("DV grab focus");
-            view.grab_focus ();
+            if (view.get_realized ())
+                view.grab_focus ();
+            else { /* wait until realized */
+                GLib.Timeout.add (100, () => {
+                    view.grab_focus ();
+                    return !view.get_realized ();
+                });
+            }
         }
 
         public unowned GLib.List<unowned GOF.File> get_selected_files () {

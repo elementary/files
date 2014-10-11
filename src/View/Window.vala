@@ -213,7 +213,6 @@ namespace Marlin.View {
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
                     return top_menu.location_bar.bread.key_press_event (event);
-
                 return false;
             });
 
@@ -323,7 +322,6 @@ namespace Marlin.View {
             if (old_tab != null)
                 old_tab.set_active_state (false);
 
-            current_tab.set_active_state (true);
             update_top_menu ();
             /* update radio action view state */
             update_view_mode (current_tab.view_mode);
@@ -334,6 +332,8 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
+
+            current_tab.set_active_state (true);
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
