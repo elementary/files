@@ -197,7 +197,7 @@ namespace Marlin.View {
         }
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
-        private async void load_resolution (GOF.File gofile) {
+        private async void load_resolution (GOF.File goffile) {
             var file = goffile.location;
             image_size_loaded = false;
             image_cancellable = new Cancellable ();

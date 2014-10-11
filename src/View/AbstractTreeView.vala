@@ -211,10 +211,16 @@ namespace FM {
                     } else if (!on_blank &&
                                cy < icon_size) { /* stop edge of row appearing as name */
                         zone = ClickZone.NAME;
+                    } else {
+                        c.cell_get_position (name_renderer, out x_offset, out width);
+                        if (cx >= x_offset + width - 24)
+                       zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
                     }
                 } else
                     zone = ClickZone.EXPANDER;
-            }
+            } else
+                zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
+
             return zone;
         }
 

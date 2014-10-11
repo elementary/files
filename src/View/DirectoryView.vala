@@ -2177,7 +2177,8 @@ debug ("on_motion_notify event");
 
                         break;
                     case ClickZone.BLANK_NO_PATH:
-                        win.set_cursor (blank_cursor);
+                        //win.set_cursor (blank_cursor);
+                        win.set_cursor (selectable_cursor);
                         break;
                     case ClickZone.ICON:
                         win.set_cursor (activatable_cursor);
@@ -2364,12 +2365,15 @@ debug ("DV on view draw");
             Gtk.TreePath? path = null;
 
             click_zone = get_event_position_info (event, out path);
-            if (click_zone == ClickZone.INVALID)
-                return false;
+
+            /* certain positions fake a no path blank zone */
+            if (click_zone == ClickZone.BLANK_NO_PATH)
+                path = null;
 
             bool no_mods = (event.state & Gtk.accelerator_get_default_mod_mask ()) == 0;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
+
             if (!no_mods)
                 return false;
 
@@ -2384,7 +2388,8 @@ debug ("DV on view draw");
                 case Gdk.BUTTON_PRIMARY:
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
-                            block_drag_and_drop ();  /* allow rubber banding */
+                            block_drag_and_drop (); 
+                            /* allow rubber banding */
                             result = false;
                             break;
                         case ClickZone.BLANK_PATH:
@@ -2412,6 +2417,8 @@ debug ("DV on view draw");
                             result = expand_collapse (path);
                             break;
                         default:
+                            block_drag_and_drop (); 
+                            unselect_all ();
                             break;
                     }
                     break;
