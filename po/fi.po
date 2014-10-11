@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-05 01:32-0500\n"
-"PO-Revision-Date: 2014-10-09 14:35+0000\n"
+"PO-Revision-Date: 2014-10-10 17:00+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-10 05:16+0000\n"
+"X-Launchpad-Export-Date: 2014-10-11 05:01+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -739,51 +739,51 @@ msgstr[1] "_Tee uudelleen %d kohteen siirto"
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
+msgstr[1] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
 
 #: ../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Tee uudelleen tyhjän tiedoston luonti"
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Tee uudelleen tiedoston luominen mallipohjasta"
 
 #: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kansion luonti"
+msgstr[1] "_Tee uudelleen %d kansion luonti"
 
 #: ../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
+msgstr[1] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
 
 #: ../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
+msgstr[1] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
 
 #: ../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen linkki %d kohteeseen"
+msgstr[1] "_Tee uudelleen linkki %d kohteeseen"
 
 #: ../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen poisto"
+msgstr[1] "_Tee uudelleen %d kohteen poisto"
 
 #: ../libcore/marlin-undostack-manager.c:1679
 #, c-format
