@@ -398,6 +398,7 @@ namespace FM {
         }
 
         protected void unfreeze_updates () {
+//message ("DV unfreeze updates");
             updates_frozen = false;
             slot.directory.freeze_update = false;;
             update_menu_actions ();
@@ -767,7 +768,7 @@ namespace FM {
             if (file_to_rename.is_writable ())
                 start_renaming_file (file_to_rename, false);
             else
-                message ("You do not have permission to rename this file");
+                warning ("You do not have permission to rename this file");
         }
 
 
@@ -1724,6 +1725,7 @@ namespace FM {
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
+            action_set_enabled (common_actions, "copy", true); /* TODO inhibit copy for unreadable files */
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
