@@ -835,8 +835,15 @@ namespace FM {
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
 //message ("on selection action rename");
-            /* TODO invoke batch renamer */
+            rename_selected_file ();
+        }
+
+        private void rename_selected_file () {
+            if (selected_files == null)
+                return;
+
             if (selected_files.next != null)
+                /* TODO invoke batch renamer */
                 warning ("Cannot rename multiple files (yet) - renaming first only");
 
             var file = selected_files.first ().data;
@@ -2074,6 +2081,13 @@ namespace FM {
                     }
                     break;
 
+                case Gdk.Key.F2:
+                    if (no_mods) {
+                        rename_selected_file ();
+                        return true;
+                    }
+                    break;
+
                 case Gdk.Key.space:
                     if (view_has_focus ()) {
                         if (only_shift_pressed)
@@ -2478,10 +2492,8 @@ debug ("DV on view draw");
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
 //message ("DV start renaming file");
             /* Select whole name if we are in renaming mode already */
-            if (renaming) {
-                //editable_widget.select_region (0, -1);
+            if (renaming)
                 return;
-            }
 
             Gtk.TreeIter? iter = null;
             if (!model.get_first_iter_for_file (file, out iter)) {

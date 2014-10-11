@@ -867,7 +867,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
             application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
-            application.set_accels_for_action ("win.info::ABOUT", {"F2"});
+            application.set_accels_for_action ("win.info::ABOUT", {"F3"});
         }
     }
 }
