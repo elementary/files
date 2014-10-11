@@ -193,7 +193,7 @@ debug ("set  widget");
             if (xalign == 0.5f) { /* Icon view */
                 x_offset = (cell_area.width - this.wrap_width) / 2;
                 y_offset += focus_border_width + (int)ypad;
-            } else {    
+            } else {
                 x_offset += focus_border_width + 2 * (int)xpad;
                 y_offset += focus_border_width;
             }

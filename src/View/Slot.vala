@@ -69,7 +69,6 @@ namespace Marlin.View {
 //message ("connect slot signals");
             active.connect (() => {
 //message ("Slot %s active", location.get_uri ());
-                //ctab.refresh_slot_info (directory.location);
                 ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
@@ -78,7 +77,6 @@ namespace Marlin.View {
             inactive.connect (() => {
 //message ("Slot %s inactive", location.get_uri ());
                 is_active = false;
-                //dir_view.unselect_all (); /* Is this desirable? */
             });
         }
 
@@ -144,12 +142,12 @@ namespace Marlin.View {
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
-
             int old_width = width;
             width = (int) Pango.units_to_double (extents.width)
-                  + dir_view.icon_size * 2;
+                  + dir_view.icon_size
+                  + 64; /* allow some extra room for icon padding and right margin*/
 
-            width = width.clamp (preferred_column_width / 2, preferred_column_width * 3);
+            width = width.clamp (preferred_column_width, preferred_column_width * 3);
 
 //message ("new width %i, old width %i, icon size %i", width, old_width, directory.icon_size);
             size_change (width - old_width);
