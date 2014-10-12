@@ -22,7 +22,6 @@ namespace FM {
         const double ROW_SPACING_RATIO = 0.3;
         const double WIDTH_ICON_SIZE_RATIO = 1.62;
         protected new Gtk.IconView tree;
-        uint current_zone;
 
         public IconView (Marlin.View.Slot _slot) {
 //message ("New IconView");
@@ -197,11 +196,6 @@ namespace FM {
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
-            /* The parameter 'rubberband' is true when processing a button press - ignore current zone */
-            /* When processing a motion event only continue if path changes */
-            if (!rubberband && zone == current_zone)
-                return zone;
-
             if (r != null) {
                 Gdk.Rectangle rect, area;
                 tree.get_cell_rect  (p, r, out rect);
@@ -253,7 +247,6 @@ namespace FM {
             }
 
 //message ("returning zone %u", zone);
-            current_zone = zone;
             return zone;
         }
 
