@@ -185,7 +185,7 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path) {
+        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path, bool rubberband = false) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.CellRenderer? r;
             uint zone;
@@ -220,8 +220,8 @@ namespace FM {
                         y <= rect.y + (r as Marlin.TextRenderer).text_height)
 
                         zone = ClickZone.NAME;
-                    else {
-                        /* Fake location outside centre bottom of item */
+                    else if (rubberband) {
+                        /* Fake location outside centre bottom of item for rubberbanding */
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10;
                         zone = ClickZone.BLANK_NO_PATH;
@@ -240,8 +240,8 @@ namespace FM {
                         y <= area.y + icon_size)
 
                         zone = ClickZone.ICON;
-                    else {
-                        /* Fake location outside centre top of item */
+                    else if (rubberband) {
+                        /* Fake location outside centre top of item for rubberbanding */
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y - 10;
                         zone = ClickZone.BLANK_NO_PATH;
@@ -261,6 +261,7 @@ namespace FM {
 
             tree.scroll_to_path (path, scroll_to_top, 0.0f, 0.0f);
         }
+
         protected override void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top) {
 //message ("IV set cursor on cell, start editing is %s", start_editing.to_string ());
             scroll_to_cell(path, name_column, scroll_to_top);

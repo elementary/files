@@ -650,6 +650,7 @@ namespace FM {
 
     /** Handle scroll events */
         protected bool handle_scroll_event (Gdk.EventScroll event) {
+//message ("handle scroll event");
             if (updates_frozen)
                 return true;
 
@@ -681,7 +682,7 @@ namespace FM {
                     default:
                         break;
                 }
-            } 
+            }
             return false;
         }
 
@@ -2198,7 +2199,7 @@ namespace FM {
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
 debug ("on_motion_notify event");
             Gtk.TreePath? path = null;
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path);
+            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
             GOF.File? file = path != null ? model.file_for_path (path) : null;
 
             if (click_zone != previous_click_zone) {
@@ -2236,7 +2237,7 @@ debug ("on_motion_notify event");
                 hover_path = path;
             }
 
-            return (path == null); /* Do not show helpers when between items in icon view */
+            return false;
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
@@ -2249,6 +2250,7 @@ debug ("on_motion_notify event");
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
+//message ("on scroll event");
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) {
                 double increment = 0.0;
                 switch (event.direction) {
@@ -2399,7 +2401,7 @@ debug ("DV on view draw");
             grab_focus (); /* cancels any renaming */
             Gtk.TreePath? path = null;
 
-            click_zone = get_event_position_info (event, out path);
+            click_zone = get_event_position_info (event, out path, true);
 
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH)
@@ -2626,7 +2628,7 @@ debug ("DV on view draw");
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract void update_selected_files ();
-        protected abstract uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path);
+        protected abstract uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path, bool rubberband = false);
         protected abstract void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path, Gtk.TreeViewColumn? col, Gtk.CellRenderer renderer, bool start_editing, bool scroll_to_top);
         public abstract void set_cursor (Gtk.TreePath? path, bool start_editing, bool select, bool scroll_to_top);

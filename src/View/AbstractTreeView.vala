@@ -178,7 +178,7 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path) {
+        protected override uint get_event_position_info (Gdk.EventButton event, out Gtk.TreePath? path, bool rubberband = false) {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
