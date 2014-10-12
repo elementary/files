@@ -196,7 +196,10 @@ namespace FM {
             tree.get_item_at_pos ((int)event.x, (int)event.y, out p, out r);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
-            if (zone == current_zone)
+
+            /* The parameter 'rubberband' is true when processing a button press - ignore current zone */
+            /* When processing a motion event only continue if path changes */
+            if (!rubberband && zone == current_zone)
                 return zone;
 
             if (r != null) {
@@ -223,7 +226,7 @@ namespace FM {
                     else if (rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding */
                         event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10;
+                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 } else {
@@ -243,7 +246,7 @@ namespace FM {
                     else if (rubberband) {
                         /* Fake location outside centre top of item for rubberbanding */
                         event.x = rect.x + rect.width / 2;
-                        event.y = rect.y - 10;
+                        event.y = rect.y - 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 }
