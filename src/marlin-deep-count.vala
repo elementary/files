@@ -24,6 +24,7 @@ public class Marlin.DeepCount : Object {
     private Cancellable cancellable;
     private List<File>? directories = null;
 
+    public bool file_not_read = false;
     public uint64 total_size = 0;
     public uint files_count = 0;
     public uint dirs_count = 0;
@@ -77,8 +78,12 @@ public class Marlin.DeepCount : Object {
                 }
             }
         } catch (Error err) {
-            if (!(err is IOError.CANCELLED))
+            if (!(err is IOError.CANCELLED)) {
+                mutex.lock ();
+                file_not_read = true;
+                mutex.unlock ();
                 warning ("%s", err.message);
+            }
         }
 
         directories.remove (directory);

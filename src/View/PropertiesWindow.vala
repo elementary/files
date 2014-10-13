@@ -50,6 +50,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private Gtk.Label spinner_label;
+    private Gtk.Image size_warning_image;
+    private bool size_warning = false;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
@@ -171,7 +173,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_vbox.show ();
         content_area.show_all ();
         show_all ();
-        
+
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -192,6 +194,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         if (file_count > 0)
             spinner_label.hide ();
+
+        if (!size_warning)
+            size_warning_image.hide ();
     }
 
 
@@ -220,6 +225,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         deep_count_directories = null;
         folder_count = 0;
         file_count = 0;
+        size_warning = false;
+        size_warning_image.hide ();
 
         foreach (GOF.File gof in files) {
             if (gof.is_directory) {
@@ -230,8 +237,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                     mutex.lock ();
                                     deep_count_directories.remove (d);
                                     total_size += d.total_size;
+                                    if (d.file_not_read)
+                                        size_warning = true;
                                     update_header_desc ();
                                     folder_count--;
+                                    size_warning_image.visible = size_warning;
                                     if (!header_desc.visible)
                                         header_desc.show ();
                                     if (spinner_label.visible)
@@ -243,7 +253,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             }
 
             mutex.lock ();
-            total_size += gof.size;
+            total_size += PropertiesWindow.file_real_size (gof);
             mutex.unlock ();
         }
 
@@ -303,15 +313,21 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         header_desc = new Gtk.Label (null);
         header_desc.set_use_markup (true);
 
+        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+        size_warning_image.tooltip_text = _("Actual size could be larger as some files could not be read due to permissions or other errors.");
+        size_warning_image.hide ();
+
         if (ftype != null) {
             header_desc.set_markup (span_weight_light (goffile.formated_type));
         }
 
         selection_size_update ();
-
+        
         hbox.pack_start (spinner);
         hbox.pack_start (spinner_label);
         hbox.pack_start (header_desc);
+        hbox.pack_start (size_warning_image);
+        size_warning_image.hide ();
 
         /*var font_style = new Pango.FontDescription();
           font_style.set_size(12 * 1000);
@@ -1222,5 +1238,20 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 critical ("Couldn't set as default: %s", e.message);
             }
         }
+    }
+
+    public static uint64 file_real_size (GOF.File gof) {
+        uint64 file_size = gof.size;
+        try {
+            var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
+            uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
+            // Check for sparse file, allocated size will be smaller, for normal files allocated size
+            // includes overhead size so we don't use it for those here
+            if (allocated_size < file_size && !gof.is_directory)
+                file_size = allocated_size;
+        } catch (Error err) {
+            warning ("%s", err.message);
+        }
+        return file_size;
     }
 }
