@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-05 01:32-0500\n"
-"PO-Revision-Date: 2014-10-10 17:00+0000\n"
+"PO-Revision-Date: 2014-10-13 16:44+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-11 05:01+0000\n"
+"X-Launchpad-Export-Date: 2014-10-14 07:04+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -283,7 +283,7 @@ msgstr "Syöttötavat"
 
 #: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Kansion kuvakelistaus"
 
 #: ../src/fm-icon-view.c:101
 msgid "Icon view"
@@ -613,7 +613,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Aseta kohteen '%s' omistajaksi '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1533
 #, c-format
@@ -2297,7 +2297,7 @@ msgstr "Näytä ohjelman versio."
 
 #: ../src/Application.vala:139
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Avaa URI-tunnisteet uusiin välilehtiin"
 
 #: ../src/Application.vala:141
 msgid "New Window"
@@ -2313,7 +2313,7 @@ msgstr "Käytä vianjäljityksen lokitusta"
 
 #: ../src/Application.vala:148
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: ../src/Application.vala:151
 msgid ""
