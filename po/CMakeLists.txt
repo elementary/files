@@ -7,4 +7,6 @@ add_translations_catalog(${GETTEXT_PACKAGE}
     ../libwidgets
     ../src/View/Chrome
     ../plugins/marlin-trash
+    ../plugins/network-plugins
+    ../plugins/pantheon-files-trash
 )
