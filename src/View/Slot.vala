@@ -32,7 +32,6 @@ namespace Marlin.View {
         }
 
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
-        public string loading_message = "<span size='x-large'>" + _("Loading ...") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze); 
@@ -130,9 +129,7 @@ namespace Marlin.View {
 //message ("autosize_slot");
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_loading ())
-                layout.set_markup (loading_message, -1);
-            else if (directory.is_empty ())
+            if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);

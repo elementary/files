@@ -2339,14 +2339,13 @@ debug ("on_motion_notify event");
 debug ("DV on view draw");
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
-            if (is_loading || slot.directory.is_empty () || slot.directory.permission_denied) {
+            if (slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
                 if (slot.directory.is_empty ())
                     layout.set_markup (slot.empty_message, -1);
                 else if (slot.directory.permission_denied) {
                     layout.set_markup (slot.denied_message, -1);
-                } else 
-                    layout.set_markup (slot.loading_message, -1);
+                }
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2610,8 +2609,14 @@ debug ("DV on view draw");
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual bool handle_default_button_click () {return false;}
-        protected virtual void freeze_tree () {is_loading = true;}
-        protected virtual void thaw_tree () {is_loading = false;}
+
+        protected virtual void freeze_tree () {
+        }
+
+        protected virtual void thaw_tree () {
+message ("base thaw tree");
+            queue_draw ();
+        }
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;

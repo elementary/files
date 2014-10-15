@@ -287,17 +287,12 @@ namespace FM {
 
         protected override void freeze_tree () {
 //message ("IV freeze tree");
+            base.freeze_tree ();
             tree.freeze_child_notify ();
-            is_loading = true;
         }
         protected override void thaw_tree () {
-            if (!is_loading)
-                return;
-
-//message ("IV thaw tree");
+            base.thaw_tree ();
             tree.thaw_child_notify ();
-            is_loading = false;
-            queue_draw ();
         }
     }
 }
