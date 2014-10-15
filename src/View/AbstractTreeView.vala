@@ -33,9 +33,8 @@ namespace FM {
             name_column.set_expand (true);
             name_column.set_resizable (true);
 
-            name_renderer.ellipsize_set = true;
-            name_renderer.ellipsize = Pango.EllipsizeMode.MIDDLE;
-
+            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
+            set_up_name_renderer ();
             set_up_icon_renderer ();
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,

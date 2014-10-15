@@ -34,11 +34,15 @@ namespace Marlin {
         public int text_height;
         int focus_border_width;
 
-        Marlin.EditableLabel entry;
+        Marlin.AbstractEditableLabel? entry = null;
 
-        public TextRenderer () {
+        public TextRenderer (Marlin.ViewMode viewmode) {
             this.mode = Gtk.CellRendererMode.EDITABLE;
-            this.entry = new Marlin.EditableLabel ();
+            if (viewmode == Marlin.ViewMode.ICON)
+                this.entry = new Marlin.MultiLineEditableLabel ();
+            else
+                this.entry = new Marlin.SingleLineEditableLabel ();
+
             connect_entry_signals ();
         }
 
@@ -137,7 +141,7 @@ debug ("set  widget");
         private void connect_entry_signals () {
 //message ("Connect entry signals");
             entry.editing_done.connect (on_entry_editing_done);
-            entry.focus_out_event.connect (on_entry_focus_out_event);
+            entry.editable_widget.focus_out_event.connect (on_entry_focus_out_event);
         }
 
         private void on_entry_editing_done () {

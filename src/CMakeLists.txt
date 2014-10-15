@@ -49,7 +49,10 @@ IF (WITH_UNITY AND UNITY_FOUND)
         BookmarkList.vala
         ConnectServerOperation.vala
         DndHandler.vala
-        EditableLabel.vala
+#        EditableLabel.vala
+        AbstractEditableLabel.vala
+        SingleLineEditableLabel.vala
+        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
@@ -115,7 +118,9 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         BookmarkList.vala
         ConnectServerOperation.vala
         DndHandler.vala
-        EditableLabel.vala
+        AbstractEditableLabel.vala
+        SingleLineEditableLabel.vala
+        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
@@ -125,7 +130,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
-#        View/ExoIconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
         View/SearchResults.vala

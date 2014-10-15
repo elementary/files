@@ -41,6 +41,8 @@ namespace FM {
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
             tree.set_reorderable (false);
+            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
+            set_up_name_renderer ();
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
             (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);

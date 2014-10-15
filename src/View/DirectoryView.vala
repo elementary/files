@@ -168,8 +168,8 @@ namespace FM {
 
         /* Rename support */
         protected Gtk.TreeViewColumn name_column;
-        protected Marlin.TextRenderer name_renderer;
-        unowned Marlin.EditableLabel? editable_widget = null;
+        protected Marlin.TextRenderer? name_renderer = null;
+        unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
 
         /* Support for zoom by smooth scrolling */
@@ -218,14 +218,11 @@ namespace FM {
             blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
-            name_renderer = new Marlin.TextRenderer ();
-            set_up_name_renderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             set_up__menu_actions ();
             set_up_directory_view ();
-
             view = create_view (); /* Abstract */
             if (view != null) {
                 add (view);
@@ -2281,7 +2278,7 @@ debug ("on_motion_notify event");
 //message ("on name editing started editable is %s null", editable != null ? "NOT" : "");
             renaming = true;
             freeze_updates ();
-            editable_widget = editable as Marlin.EditableLabel;
+            editable_widget = editable as Marlin.AbstractEditableLabel;
             original_name = editable_widget.get_text ().dup ();
         }
 
