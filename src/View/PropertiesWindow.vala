@@ -46,10 +46,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private Gee.Set<string>? mimes;
 
     private Granite.Widgets.WrapLabel header_title;
-    private Gtk.Label header_desc;
+    private Granite.Widgets.WrapLabel type_label;
+    private Gtk.Label size_label;
+    private Gtk.Widget type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
-    private Gtk.Label spinner_label;
     private Gtk.Image size_warning_image;
     private bool size_warning = false;
 
@@ -128,8 +129,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         cancellable = new GLib.Cancellable ();
 
         /* Header Box */
-        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 9);
+        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
         add_header_box (content_vbox, header_box);
+        header_box.margin_bottom = 15;
+        header_box.margin_left = header_box.margin_right = 10;
 
         /* Static Notebook */
         var notebook = new Granite.Widgets.StaticNotebook ();
@@ -186,22 +189,16 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         present ();
 
-        if (folder_count == 0) {
+        if (folder_count == 0)
             spinner.hide ();
-        } else if (file_count == 0) {
-            header_desc.hide ();
-        }
-
-        if (file_count > 0)
-            spinner_label.hide ();
 
         if (!size_warning)
             size_warning_image.hide ();
-    }
 
-
-    private string span_weight_light (string str) {
-        return "<span weight='light'>" + str + "</span>";
+        if (file_count > 1) {
+            type_key_label.hide ();
+            type_label.hide ();
+        }
     }
 
     private uint64 total_size = 0;
@@ -211,10 +208,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         //header_desc_str = Eel.format_size (total_size);
         header_desc_str = format_size ((int64) total_size);
-        if (ftype != null) {
-            header_desc_str += ", " + goffile.formated_type;
+        if (ftype != null) 
+            type_label.label = goffile.formated_type;
+        else {
+            type_key_label.hide ();
+            type_label.hide ();
         }
-        header_desc.set_markup (span_weight_light(header_desc_str));
+
+        size_label.label = header_desc_str;
     }
 
     private Mutex mutex;
@@ -242,10 +243,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                     update_header_desc ();
                                     folder_count--;
                                     size_warning_image.visible = size_warning;
-                                    if (!header_desc.visible)
-                                        header_desc.show ();
-                                    if (spinner_label.visible)
-                                        spinner_label.hide ();
+                                    if (!size_label.visible)
+                                        size_label.show ();
                                     mutex.unlock ();
                                     });
             } else {
@@ -265,7 +264,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
             folder_count_changed.connect (() => {
                 if (folder_count == 0) {
-                    spinner_label.hide ();
                     spinner.hide ();
                     spinner.stop ();
                 }
@@ -289,55 +287,35 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 */
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
+        type_label = new Granite.Widgets.WrapLabel ("");
+        size_label = new Gtk.Label ("");
+        type_key_label = create_label_key (_("Type") + (": "));
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_img = new Gtk.Image.from_pixbuf (file_pix);
-        file_img.set_valign (Gtk.Align.START);
+        file_img.set_valign (Gtk.Align.CENTER);
         content.pack_start (file_img, false, false);
-
-        var vvbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content.pack_start (vvbox);
 
         header_title = new Granite.Widgets.WrapLabel ();
         if (count > 1)
-            header_title.set_markup ("<span weight='semibold' size='large'>" + _("%u selected items").printf(count) + "</span>");
+            header_title.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
         else
-            header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.info.get_name () + "</span>");
+            header_title.set_markup ("<span>" + goffile.info.get_name () + "</span>");
+        header_title.get_style_context ().add_class ("h2");
+        header_title.margin_top = 5;
 
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        hbox.set_halign (Gtk.Align.START);
-
+        hbox.set_halign (Gtk.Align.CENTER);
+        header_title.set_valign (Gtk.Align.CENTER);
+        content.pack_start (header_title);
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
-        spinner_label = new Gtk.Label (_("Calculating size…"));
-
-        header_desc = new Gtk.Label (null);
-        header_desc.set_use_markup (true);
 
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.tooltip_text = _("Actual size could be larger as some files could not be read due to permissions or other errors.");
+        size_warning_image.tooltip_text = _("Actual size could be larger, some files could not be read due to permissions or other errors.");
         size_warning_image.hide ();
-
-        if (ftype != null) {
-            header_desc.set_markup (span_weight_light (goffile.formated_type));
-        }
 
         selection_size_update ();
-        
-        hbox.pack_start (spinner);
-        hbox.pack_start (spinner_label);
-        hbox.pack_start (header_desc);
-        hbox.pack_start (size_warning_image);
         size_warning_image.hide ();
-
-        /*var font_style = new Pango.FontDescription();
-          font_style.set_size(12 * 1000);
-          header_title.modify_font(font_style);*/
-
-        vvbox.pack_start (header_title);
-        vvbox.pack_start (hbox);
-
-        /* Bottom padding */
-        vvbox.margin_bottom = 12;
 
         vbox.pack_start (content, false, false, 0);
     }
@@ -475,6 +453,24 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
     }
 
+    private void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
+        key_label.margin_left = 20;
+        value_label.set_selectable (true);
+        value_label.set_hexpand (true);
+        value_label.set_use_markup (true);
+        value_label.set_can_focus (false);
+
+        information.attach (key_label, 0, line, 1, 1);
+        if (value_container != null) {
+            value_container.set_size_request (150, -1);
+            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+        else
+            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        line++;
+    }
+
     private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Gtk.Grid();
         information.row_spacing = 3;
@@ -485,20 +481,24 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         information.attach (label, 0, 0, 1, 1);
 
         int n = 1;
+        // Have to have these separate as size call is async
+        var size_key_label = create_label_key (_("Size") + (": "));
+        var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
+        size_box.pack_start (size_label, false, true);
+        size_box.pack_start (spinner, false, false);
+        size_box.pack_start (size_warning_image);
+
+        spinner.halign = Gtk.Align.START;
+        size_warning_image.halign = Gtk.Align.START;
+        create_info_line (size_key_label, size_label, information, ref n, size_box);
+        size_label.set_hexpand (false);
+
+        create_info_line (type_key_label, type_label, information, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Granite.Widgets.WrapLabel (pair.value);
             var key_label = create_label_key (pair.key);
-            key_label.margin_left = 20;
-            value_label.set_selectable (true);
-            value_label.set_size_request (150, -1);
-            value_label.set_hexpand (true);
-            value_label.set_use_markup (true);
-            value_label.set_can_focus (false);
-
-            information.attach (key_label, 0, n, 1, 1);
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
+            create_info_line (key_label, value_label, information, ref n);
         }
 
         /* Open with */
@@ -580,7 +580,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 warning ("error: %s", e.message);
             }
         }
-
+        
         box.pack_start (information);
     }
 
