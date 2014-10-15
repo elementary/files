@@ -18,9 +18,9 @@
 
 namespace FM {
     public class IconView : DirectoryView {
-        const double COLUMN_SPACING_RATIO = 0.3;
-        const double ROW_SPACING_RATIO = 0.3;
-        const double WIDTH_ICON_SIZE_RATIO = 1.62;
+        const double COLUMN_SPACING_RATIO = 0.2;
+        const double ROW_SPACING_RATIO = 0.2;
+        const double ITEM_WIDTH_RATIO = 1.5;
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
@@ -102,7 +102,8 @@ namespace FM {
 //message ("IV zoom level changed");
                 tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
                 tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
-                name_renderer.set_property ("wrap-width", (int)(1.62 * icon_size));
+                tree.set_item_width ((int)((double)icon_size * ITEM_WIDTH_RATIO));
+                name_renderer.set_property ("wrap-width", tree.get_item_width ());
                 name_renderer.set_property ("zoom-level", zoom_level);
                 base.change_zoom_level ();
             }
