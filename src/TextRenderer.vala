@@ -124,15 +124,7 @@ debug ("set  widget");
 
             var context = widget.get_style_context ();
             var state = widget.get_state_flags ();
-            var font = (context.get_property ("font", state) as Pango.FontDescription);
 
-            /* Make more room to edit long filenames in icon view by reducing font size where necessary */
-            if (wrap_width > 0 && (text.length * char_width) > 2 * wrap_width)
-                font.set_size ((int)(font.get_size () * Pango.Scale.SMALL));
-            else
-                font.set_size ((int)(font.get_size () * Pango.Scale.MEDIUM));
-
-            entry.override_font (font);
             entry.set_size_request (wrap_width, -1);
             entry.show_all ();
             entry.set_position (-1);
@@ -213,19 +205,11 @@ debug ("set  widget");
             if (text == null)
                 text= " ";
 
-            bool writable = file.is_writable ();
             bool small = this.zoom_level < Marlin.ZoomLevel.NORMAL;
-            if (writable) {
-                if (small)
-                    this.layout.set_attributes (EelPango.attr_list_small ());
-                else
-                    this.layout.set_attributes (null);
-            } else {
-                if (small)
-                    this.layout.set_attributes (EelPango.attr_list_small_italic ());
-                else
-                    this.layout.set_attributes (EelPango.attr_list_italic ());
-            }
+            if (small)
+                this.layout.set_attributes (EelPango.attr_list_small ());
+            else
+                this.layout.set_attributes (null);
 
             if (this.wrap_width < 0) {
                 layout.set_width (cell_area.width * Pango.SCALE);
