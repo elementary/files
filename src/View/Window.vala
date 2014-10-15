@@ -522,6 +522,8 @@ namespace Marlin.View {
                     continue;
 
                 GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
+                if (!valid_location (root_location))
+                    continue;
 
                 add_tab (root_location, viewmode);
 
@@ -542,9 +544,14 @@ namespace Marlin.View {
                 change_tab (active_tab_position);
             }
 
-            string path = current_tab.get_tip_uri ();
-            if (path == "")
-                path = current_tab.get_root_uri ();
+            string path;
+            if (current_tab == null)
+                path = "";
+            else {
+                path = current_tab.get_tip_uri ();
+                if (path == "")
+                    path = current_tab.get_root_uri ();
+            }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
@@ -552,6 +559,24 @@ namespace Marlin.View {
             /* restore location bar animation */
             top_menu.location_bar.bread.animation_visible = true;
             return tabs_added;
+        }
+
+        private bool valid_location (GLib.File location) {
+            GLib.FileInfo? info = null;
+            try {
+                info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
+            }
+            catch (GLib.Error e) {
+                warning ("Invalid location on restoring tabs");
+                return false;
+            }
+
+            if (info.get_file_type () == GLib.FileType.DIRECTORY)
+                return true;
+            else {
+                warning ("Attempt to restore a location that is not a directory");
+                return false;
+            }
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
@@ -573,6 +598,9 @@ namespace Marlin.View {
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = GLib.File.new_for_uri (uri);
+                    if (!valid_location (gfile))
+                        break;
+
                     dview = slot.view_box as FM.Directory.View;
 
                     dview.column_add_location (gfile);
