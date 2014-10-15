@@ -25,6 +25,7 @@ namespace Marlin {
         public float yalign {get; set;}
         public float xalign {get; set;}
         public string original_name;
+        public bool draw_outline {get; set;}
 
         public EditableLabel () {
             key_press_event.connect (on_key_press_event);
@@ -185,6 +186,25 @@ namespace Marlin {
             buffer.get_start_iter (out iter);
             iter.set_offset (position);
             buffer.place_cursor (iter);
+        }
+
+        public override bool draw (Cairo.Context cr) {
+            bool result = base.draw (cr);
+            if (draw_outline) {
+                Gtk.Allocation allocation;
+                Gdk.RGBA color;
+                Gdk.Rectangle outline;
+
+                get_allocation (out allocation);
+                color = get_style_context ().get_color (get_state_flags ());
+                Gdk.cairo_set_source_rgba (cr, color);
+                cr.set_line_width (1.0);
+                outline = {1, 1, allocation.width - 2, allocation.height - 2};
+                Gdk.cairo_rectangle (cr, outline);
+                cr.stroke ();
+                
+            }
+            return result;
         }
 
         /** CellEditable interface */

@@ -112,12 +112,13 @@ debug ("set  widget");
             entry.set_line_wrap (true);
             entry.set_line_wrap_mode (this.wrap_mode);
 
-            /* presume we're in POSITION UNDER */
-            if (wrap_width > 0)
+            if (wrap_width > 0) { /* Icon view */
                 entry.set_justify (Gtk.Justification.CENTER);
-            else 
+                entry.draw_outline = true;
+            } else {  /*List and COlumn views */
                 entry.set_justify (Gtk.Justification.LEFT);
-
+                entry.draw_outline = false;
+            }
             entry.yalign = this.yalign;
             entry.set_padding ((int)xpad, (int)ypad);
 
@@ -170,8 +171,9 @@ debug ("set  widget");
             Gtk.StateFlags state = widget.get_state_flags ();
 
             if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED)
-                state |= Gtk.StateFlags.SELECTED;
+                state |= Gtk.StateFlags.PRELIGHT;
             else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT)
+            if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT)
                 state = Gtk.StateFlags.PRELIGHT;
             else
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
