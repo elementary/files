@@ -521,7 +521,13 @@ namespace Marlin.View {
                 if (viewmode < 0 || viewmode > 2 || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
-                GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
+                string? unescaped_root_uri = GLib.Uri.unescape_string (root_uri);
+                if (unescaped_root_uri == null) {
+                    warning ("Invalid root location for tab");
+                    continue;
+                }
+
+                GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
                 if (!valid_location (root_location))
                     continue;
 
@@ -583,7 +589,13 @@ namespace Marlin.View {
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             var mwcols = view.mwcol;
-            var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+            string? unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+
+            if (unescaped_tip_uri == null) {
+                warning ("Invalid tip uri for Miller View");
+                return;
+            }
+
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             var slot = mwcols.active_slot;
