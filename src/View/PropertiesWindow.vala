@@ -52,7 +52,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private Gtk.Image size_warning_image;
-    private bool size_warning = false;
+    private int size_warning = 0;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
@@ -192,7 +192,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (folder_count == 0)
             spinner.hide ();
 
-        if (!size_warning)
+        if (size_warning < 1)
             size_warning_image.hide ();
 
         if (file_count > 1) {
@@ -213,6 +213,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         else {
             type_key_label.hide ();
             type_label.hide ();
+        } 
+
+        if (size_warning > 0) {
+            string file_plural = _("file");
+            if (size_warning > 1)
+                file_plural = _("files");
+            size_warning_image.visible = true;
+            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
         }
 
         size_label.label = header_desc_str;
@@ -226,7 +234,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         deep_count_directories = null;
         folder_count = 0;
         file_count = 0;
-        size_warning = false;
+        size_warning = 0;
         size_warning_image.hide ();
 
         foreach (GOF.File gof in files) {
@@ -238,11 +246,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                     mutex.lock ();
                                     deep_count_directories.remove (d);
                                     total_size += d.total_size;
-                                    if (d.file_not_read)
-                                        size_warning = true;
+                                    size_warning = d.file_not_read;
                                     update_header_desc ();
+                                    if (file_count + folder_count == size_warning)
+                                        size_label.label = _("unknown");
+                                        
                                     folder_count--;
-                                    size_warning_image.visible = size_warning;
                                     if (!size_label.visible)
                                         size_label.show ();
                                     mutex.unlock ();
@@ -311,7 +320,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         spinner.set_hexpand (false);
 
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.tooltip_text = _("Actual size could be larger, some files could not be read due to permissions or other errors.");
         size_warning_image.hide ();
 
         selection_size_update ();
