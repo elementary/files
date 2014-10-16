@@ -662,6 +662,13 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
+    if (!gof_file_is_writable (file)) {
+        if (gof_file_is_readable (file))
+            gof_file_add_emblem (file, "emblem-readonly");
+        else
+            gof_file_add_emblem (file, "emblem-unreadable");
+    }
+
     /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
@@ -1212,10 +1219,26 @@ gof_file_is_writable (GOFFile *file)
          * is the trash folder (since it is writable). */
         if (strncmp (file->uri, "trash:///", 10) == 0)
             return TRUE;
+
         return FALSE;
     }
 
     return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+}
+
+gboolean
+gof_file_is_readable (GOFFile *file)
+{
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+
+    if (file->target_gof)
+        return gof_file_is_writable (file->target_gof);
+    if (file->info == NULL)
+        return FALSE;
+    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+        return FALSE;
+
+    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
 }
 
 gboolean
