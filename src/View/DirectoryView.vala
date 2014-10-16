@@ -2611,7 +2611,7 @@ debug ("DV on view draw");
         }
 
         protected virtual void thaw_tree () {
-message ("base thaw tree");
+//message ("base thaw tree");
             queue_draw ();
         }
 
