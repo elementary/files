@@ -125,7 +125,7 @@ namespace Marlin.View {
                         load_resolution.begin (goffile);
                     }
 
-                    status = "%s (%s)".printf (goffile.formated_type, goffile.format_size);
+                    status = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
                 } else {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
 
@@ -173,7 +173,7 @@ namespace Marlin.View {
                     //scan_folder (gof.location);
                 } else {
                     files_count++;
-                    files_size += gof.size;
+                    files_size += PropertiesWindow.file_real_size (gof);
                 }
                 count++;
             }
