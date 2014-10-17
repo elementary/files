@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
-"PO-Revision-Date: 2014-09-11 16:04+0000\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
+"PO-Revision-Date: 2014-10-16 22:08+0000\n"
 "Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:34+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:12+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1348,7 +1348,7 @@ msgstr[2] "осталось удалить в корзину %'d файлов"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Не удаётся переместить файл в корзину, или удалить его"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
@@ -1369,23 +1369,27 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Не удаётся переместить файл в корзину. Попытаться сразу удалить его?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Этот файл не может быть перемещён в корзину. Для получения дополнительной "
+"информации смотреть подробности ниже."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Не удаётся переместить файл в корзину. Попытаться удалить его?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Этот файл не может быть перемещён в корзину. У вас нет возможности удалить "
+"его."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
@@ -2473,10 +2477,19 @@ msgstr "Отменить все выполняемые действия"
 msgid "Go to %s"
 msgstr "Перейти к %s"
 
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr "Подключиться к серверу…"
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr ""
+
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "При чистки корзины эти файлы могут быть удалены."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Очистить корзину"

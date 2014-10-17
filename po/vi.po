@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: longdv <x0xwin@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:35+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:13+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -2382,6 +2382,15 @@ msgstr "Hủy tất cả các hoạt động đang diễn ra"
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Đi tới %s"
+
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr ""
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."

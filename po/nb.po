@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
-"PO-Revision-Date: 2014-10-01 09:35+0000\n"
-"Last-Translator: kingu <comradekingu@gmail.com>\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
+"PO-Revision-Date: 2014-10-16 08:14+0000\n"
+"Last-Translator: ProsjektX <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:34+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:11+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "Language: nb\n"
 
@@ -1307,50 +1307,62 @@ msgstr[1] "%'d filer igjen å slette"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Kan ikke flytte fil til papirkurv eller slette den"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Det er ikke tillatt å slette eller flytte filer til papirkurv på et "
+"skrivebeskyttet filsystem."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Det er ikke tillatt å slette eller flytte filer til papirkurv fra mapper du "
+"ikke har skriverettigheter til."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Det er ikke tillatt å slette eller flytte mapper til papirkurv som du ikke "
+"har skriverettigheter til."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Kan ikke flytte fil til papirkurv. Prøve å slette den umiddelbart?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Denne filen kunne ikke flyttes til papirkurv. Se detaljer under for mer "
+"informasjon."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Kan ikke flytte fil til papirkurv. Prøve å slette den?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Denne filen kunne ikke flyttes til papirkurv. Det kan være den ikke kan "
+"slettes heller."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Ved å slette en fil fjernes den permanent"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -2415,10 +2427,19 @@ msgstr "Avbryt alle pågående handlinger"
 msgid "Go to %s"
 msgstr "Gå til %s"
 
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr "Kobler til tjener..."
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr "Koble til en nettverk filtjener"
+
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Disse elementene kan slettes ved å tømme papirkurven."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Tøm papirkurven."

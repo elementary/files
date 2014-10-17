@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
 "PO-Revision-Date: 2012-05-07 03:04+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:32+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:09+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -2383,6 +2383,15 @@ msgstr ""
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Idi u %s"
+
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr ""
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."

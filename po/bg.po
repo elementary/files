@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
 "PO-Revision-Date: 2014-08-13 13:51+0000\n"
 "Last-Translator: KrisPetkov <kristian.p.petkov@gmail.com>\n"
 "Language-Team: Bulgarian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:32+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:09+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
@@ -2420,6 +2420,15 @@ msgstr "Отказване на всички изпълняващи се дей�
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Отиди в %s"
+
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr ""
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."

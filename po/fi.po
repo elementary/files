@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-14 05:48-0500\n"
-"PO-Revision-Date: 2014-10-13 16:44+0000\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
+"PO-Revision-Date: 2014-10-16 06:57+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:33+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:09+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1305,50 +1305,65 @@ msgstr[1] "vielä %'d tiedostoa siirrettävä roskakoriin"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Tiedostoa ei voitu siirtää roskakoriin tai poistaa"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Vain luku -muodossa olevalta tiedostojärjestelmältä tiedostoja ei voi "
+"poistaa tai siirtää roskakoriin."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Tiedostojen poistaminen tai siirtäminen roskakoriin ei ole sallittu niiden "
+"kansioiden sisällä, joihin sinulla ei ole kirjoitusoikeutta."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Kansioiden poistaminen tai siirtäminen roskakoriin ei ole sallittu, jos "
+"sinulla ei ole niihin kirjoitusoikeutta."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"TIedoston siirtäminen roskakoriin epäonnistui. Yritetäänkö tiedoston "
+"poistamista välittömästi?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Tätä tiedostoa ei voitu siirtää roskakoriin. Katso lisätietoja alapuolelta."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"TIedoston siirtäminen roskakoriin epäonnistui. Yritetäänkö tiedoston "
+"poistamista?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Tätä tiedostoa ei voitu siirtää roskakoriin. Saattaa olla, ettet myöskään "
+"pysty poistamaan sitä."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Tiedoston poistaminen hävittää sen pysyvästi"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -2416,10 +2431,21 @@ msgstr "Peru kaikki meneillään olevat toiminnot"
 msgid "Go to %s"
 msgstr "Siirry kohteeseen %s"
 
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr "Yhdistä palvelimeen…"
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr "Yhdistä verkkopalvelimeen"
+
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
+"Seuraavat kohteet on mahdollista poistaa lopullisesti tyhjentämällä "
+"roskakori."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Tyhjennä roskakori"
