@@ -33,9 +33,7 @@
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
-//#define MARLIN_EMBLEM_SIZE 18
-#define MARLIN_EMBLEM_MIN_SIZE 7
-
+#define MARLIN_EMBLEM_SIZE 16
 
 static void marlin_icon_renderer_get_property  (GObject                    *object,
                                                 guint                       param_id,
@@ -599,10 +597,10 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
         /* render the emblems
          * show number of emblems depending on the zoom lvl. */
-        while (emblems != NULL && position < priv->zoom_level + 1)
+        while (emblems != NULL && priv->zoom_level > 0 && position < priv->zoom_level)
         {
             /* check if we have the emblem in the icon theme */
-            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_MIN_SIZE + 2 * priv->zoom_level);
+            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
             pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
             if(pix == NULL) {
                 g_warning ("Can't load icon %s", (char *) emblems->data);

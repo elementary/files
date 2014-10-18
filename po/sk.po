@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-05 01:32-0500\n"
+"POT-Creation-Date: 2014-10-16 01:39-0500\n"
 "PO-Revision-Date: 2014-09-11 09:12+0000\n"
 "Last-Translator: smutok <smutok@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2014-10-06 06:53+0000\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:12+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1216,7 +1216,7 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "Všetky položky v koši budú natrvalo zmazané."
 
 #: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1242
+#: ../libcore/marlin-file-operations.c:2405 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
 msgstr "Vyprázdniť _kôš"
 
@@ -1257,7 +1257,7 @@ msgstr[2] "zostáva %T"
 #: ../libcore/marlin-file-operations.c:1628
 #: ../libcore/marlin-file-operations.c:1667
 #: ../libcore/marlin-file-operations.c:1744
-#: ../libcore/marlin-file-operations.c:2590
+#: ../libcore/marlin-file-operations.c:2660
 msgid "Error while deleting."
 msgstr "Chyba pri odstraňovaní."
 
@@ -1270,14 +1270,14 @@ msgstr ""
 "vidieť."
 
 #: ../libcore/marlin-file-operations.c:1601
-#: ../libcore/marlin-file-operations.c:2649
-#: ../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:2719
+#: ../libcore/marlin-file-operations.c:3715
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Nastala chyba pri zisťovaní informácií o súboroch v priečinku „%B“."
 
 #: ../libcore/marlin-file-operations.c:1610
-#: ../libcore/marlin-file-operations.c:3654
+#: ../libcore/marlin-file-operations.c:3724
 msgid "_Skip files"
 msgstr "Pre_skočiť súbory"
 
@@ -1290,8 +1290,8 @@ msgstr ""
 "čítanie."
 
 #: ../libcore/marlin-file-operations.c:1634
-#: ../libcore/marlin-file-operations.c:2688
-#: ../libcore/marlin-file-operations.c:3690
+#: ../libcore/marlin-file-operations.c:2758
+#: ../libcore/marlin-file-operations.c:3760
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Nastala chyba pri čítaní priečinka „%B“."
 
@@ -1316,39 +1316,76 @@ msgstr[0] "%'d súbor zostáva vyhodiť do koša"
 msgstr[1] "%'d súbory zostávajú vyhodiť do koša"
 msgstr[2] "%'d súborov zostáva vyhodiť do koša"
 
-#: ../libcore/marlin-file-operations.c:1890
-msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Súbor nie je možné premiestniť do koša. Odstrańiť natrvalo?"
-
-#: ../libcore/marlin-file-operations.c:1891
-msgid ""
-"This file is located on an external media and cannot be moved to the trash. "
-"Once deleted, it cannot be restored."
+#: ../libcore/marlin-file-operations.c:1930
+#: ../libcore/marlin-file-operations.c:1933
+#: ../libcore/marlin-file-operations.c:1936
+msgid "Cannot move file to trash or delete it"
 msgstr ""
-"Tento súbor je umiestnený na externom médiu a nemôže byť presunutý do koša. "
-"Akonáhle sú súbory vymazané, nedajú sa obnoviť."
 
-#: ../libcore/marlin-file-operations.c:2073
+#: ../libcore/marlin-file-operations.c:1931
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1934
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1937
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1939
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1940
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1944
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1945
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
 msgstr "Vyhadzujú sa súbory do koša"
 
-#: ../libcore/marlin-file-operations.c:2075
+#: ../libcore/marlin-file-operations.c:2145
 msgid "Deleting Files"
 msgstr "Odstraňujú sa súbory"
 
-#: ../libcore/marlin-file-operations.c:2147
+#: ../libcore/marlin-file-operations.c:2217
 msgid "Unable to eject %V"
 msgstr "Nepodarilo sa vysunúť %V"
 
-#: ../libcore/marlin-file-operations.c:2149
+#: ../libcore/marlin-file-operations.c:2219
 msgid "Unable to unmount %V"
 msgstr "Nepodarilo sa odpojiť %V"
 
-#: ../libcore/marlin-file-operations.c:2325
+#: ../libcore/marlin-file-operations.c:2395
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Chcete vyprázdniť Kôš pred odpojením?"
 
-#: ../libcore/marlin-file-operations.c:2327
+#: ../libcore/marlin-file-operations.c:2397
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1356,16 +1393,16 @@ msgstr ""
 "Kvôli uvoľneniu miesta na tomto zväzku treba vyprázdniť kôš. Všetky položky "
 "v koši budú nenávratne stratené."
 
-#: ../libcore/marlin-file-operations.c:2333
+#: ../libcore/marlin-file-operations.c:2403
 msgid "Do _not Empty Trash"
 msgstr "_Nevyprázdňovať kôš"
 
-#: ../libcore/marlin-file-operations.c:2447
+#: ../libcore/marlin-file-operations.c:2517
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nepodarilo sa pripojiť %s"
 
-#: ../libcore/marlin-file-operations.c:2525
+#: ../libcore/marlin-file-operations.c:2595
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1373,7 +1410,7 @@ msgstr[0] "Pripravuje sa kopírovanie %'d súbora (%S)"
 msgstr[1] "Pripravuje sa kopírovanie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa kopírovanie %'d súborov (%S)"
 
-#: ../libcore/marlin-file-operations.c:2531
+#: ../libcore/marlin-file-operations.c:2601
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1381,7 +1418,7 @@ msgstr[0] "Pripravuje sa presunutie %'d súboru (%S)"
 msgstr[1] "Pripravuje sa presunutie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa presunutie %'d súborov (%S)"
 
-#: ../libcore/marlin-file-operations.c:2537
+#: ../libcore/marlin-file-operations.c:2607
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1389,7 +1426,7 @@ msgstr[0] "Pripravuje sa vymazanie %'d súboru (%S)"
 msgstr[1] "Pripravuje sa vymazanie %'d súborov (%S)"
 msgstr[2] "Pripravuje sa vymazanie %'d súborov (%S)"
 
-#: ../libcore/marlin-file-operations.c:2543
+#: ../libcore/marlin-file-operations.c:2613
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1397,24 +1434,24 @@ msgstr[0] "Pripravuje sa vyhodenie %'d súboru do koša"
 msgstr[1] "Pripravuje sa vyhodenie %'d súborov do koša"
 msgstr[2] "Pripravuje sa vyhodenie %'d súborov do koša"
 
-#: ../libcore/marlin-file-operations.c:2586
-#: ../libcore/marlin-file-operations.c:3506
-#: ../libcore/marlin-file-operations.c:3637
-#: ../libcore/marlin-file-operations.c:3682
+#: ../libcore/marlin-file-operations.c:2656
+#: ../libcore/marlin-file-operations.c:3576
+#: ../libcore/marlin-file-operations.c:3707
+#: ../libcore/marlin-file-operations.c:3752
 msgid "Error while copying."
 msgstr "Chyba pri kopírovaní."
 
-#: ../libcore/marlin-file-operations.c:2588
-#: ../libcore/marlin-file-operations.c:3635
-#: ../libcore/marlin-file-operations.c:3680
+#: ../libcore/marlin-file-operations.c:2658
+#: ../libcore/marlin-file-operations.c:3705
+#: ../libcore/marlin-file-operations.c:3750
 msgid "Error while moving."
 msgstr "Chyba pri presúvaní."
 
-#: ../libcore/marlin-file-operations.c:2592
+#: ../libcore/marlin-file-operations.c:2662
 msgid "Error while moving files to trash."
 msgstr "Chyba pri vyhadzovaní súborov do koša."
 
-#: ../libcore/marlin-file-operations.c:2646
+#: ../libcore/marlin-file-operations.c:2716
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1422,7 +1459,7 @@ msgstr ""
 "Nie je možné spracovať súbory v priečinku „%B“, pretože nemáte oprávnenie "
 "ich vidieť."
 
-#: ../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2755
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1430,99 +1467,99 @@ msgstr ""
 "Nie je možné spracovať priečinok „%B“, pretože nemáte oprávnenia na jeho "
 "čítanie."
 
-#: ../libcore/marlin-file-operations.c:2762
+#: ../libcore/marlin-file-operations.c:2832
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Nie je možné spracovať súbor „%B“, pretože nemáte oprávnenia na jeho čítanie."
 
-#: ../libcore/marlin-file-operations.c:2765
+#: ../libcore/marlin-file-operations.c:2835
 msgid "There was an error getting information about \"%B\"."
 msgstr "Nastala chyba pri získavaní informácií o „%B“."
 
-#: ../libcore/marlin-file-operations.c:2865
-#: ../libcore/marlin-file-operations.c:2907
-#: ../libcore/marlin-file-operations.c:2940
-#: ../libcore/marlin-file-operations.c:2970
+#: ../libcore/marlin-file-operations.c:2935
+#: ../libcore/marlin-file-operations.c:2977
+#: ../libcore/marlin-file-operations.c:3010
+#: ../libcore/marlin-file-operations.c:3040
 msgid "Error while copying to \"%B\"."
 msgstr "Chyba pri kopírovaní do „%B“."
 
-#: ../libcore/marlin-file-operations.c:2869
+#: ../libcore/marlin-file-operations.c:2939
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nemáte oprávnenia na prístup do cieľového priečinka."
 
-#: ../libcore/marlin-file-operations.c:2871
+#: ../libcore/marlin-file-operations.c:2941
 msgid "There was an error getting information about the destination."
 msgstr "Nastala chyba pri získavaní informácií o cieli."
 
-#: ../libcore/marlin-file-operations.c:2908
+#: ../libcore/marlin-file-operations.c:2978
 msgid "The destination is not a folder."
 msgstr "Cieľ nie je priečinok."
 
-#: ../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:3011
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "V cieli nie je dostatok miesta. Skúste odstrániť nejaké súbory."
 
-#: ../libcore/marlin-file-operations.c:2943
+#: ../libcore/marlin-file-operations.c:3013
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Je k dispozícii %S, ale treba %S."
 
-#: ../libcore/marlin-file-operations.c:2971
+#: ../libcore/marlin-file-operations.c:3041
 msgid "The destination is read-only."
 msgstr "Cieľ je len na čítanie."
 
-#: ../libcore/marlin-file-operations.c:3032
+#: ../libcore/marlin-file-operations.c:3102
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Presúvanie „%B“ do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3033
+#: ../libcore/marlin-file-operations.c:3103
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopírovanie „%B“ do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3037
+#: ../libcore/marlin-file-operations.c:3107
 msgid "Duplicating \"%B\""
 msgstr "Duplikovanie „%B“"
 
-#: ../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3111
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Presúvanie %'d súboru (v „%B“) do „%B“"
 msgstr[1] "Presúvanie %'d súborov (v „%B“) do „%B“"
 msgstr[2] "Presúvanie %'d súborov (v „%B“) do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3044
+#: ../libcore/marlin-file-operations.c:3114
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopírovanie %'d súboru (v „%B“) do „%B“"
 msgstr[1] "Kopírovanie %'d súborov (v „%B“) do „%B“"
 msgstr[2] "Kopírovanie %'d súborov (v „%B“) do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3051
+#: ../libcore/marlin-file-operations.c:3121
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplikovanie %'d súboru (v „%B“)"
 msgstr[1] "Duplikovanie %'d súborov (v „%B“)"
 msgstr[2] "Duplikovanie %'d súborov (v „%B“)"
 
-#: ../libcore/marlin-file-operations.c:3060
+#: ../libcore/marlin-file-operations.c:3130
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Presúvanie %'d súboru do „%B“"
 msgstr[1] "Presúvanie %'d súborov do „%B“"
 msgstr[2] "Presúvanie %'d súborov do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3064
+#: ../libcore/marlin-file-operations.c:3134
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopírovanie %'d súboru do „%B“"
 msgstr[1] "Kopírovanie %'d súborov do „%B“"
 msgstr[2] "Kopírovanie %'d súborov do „%B“"
 
-#: ../libcore/marlin-file-operations.c:3069
+#: ../libcore/marlin-file-operations.c:3139
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1530,19 +1567,19 @@ msgstr[0] "Duplikovanie %'d súboru"
 msgstr[1] "Duplikovanie %'d súborov"
 msgstr[2] "Duplikovanie %'d súborov"
 
-#: ../libcore/marlin-file-operations.c:3120
+#: ../libcore/marlin-file-operations.c:3190
 #, c-format
 msgid "%S of %S"
 msgstr "%S z %S"
 
-#: ../libcore/marlin-file-operations.c:3131
+#: ../libcore/marlin-file-operations.c:3201
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S z %S - zostáva %T (%S/sec)"
 msgstr[1] "%S z %S - zostávajú %T (%S/sec)"
 msgstr[2] "%S z %S - zostáva %T (%S/sec)"
 
-#: ../libcore/marlin-file-operations.c:3510
+#: ../libcore/marlin-file-operations.c:3580
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1550,11 +1587,11 @@ msgstr ""
 "Nie je možné skopírovať priečinok „%B“, pretože nemáte oprávnenia na jeho "
 "vytvorenie v cieli."
 
-#: ../libcore/marlin-file-operations.c:3513
+#: ../libcore/marlin-file-operations.c:3583
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Pri vytváraní priečinka „%B“ nastala chyba."
 
-#: ../libcore/marlin-file-operations.c:3642
+#: ../libcore/marlin-file-operations.c:3712
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1562,7 +1599,7 @@ msgstr ""
 "Súbory v priečinku \"%B\" nie je možné skopírovať pretože nemáte oprávnenia "
 "na ich zobrazenie."
 
-#: ../libcore/marlin-file-operations.c:3687
+#: ../libcore/marlin-file-operations.c:3757
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1570,79 +1607,79 @@ msgstr ""
 "Priečinok \"%B\" nie je možné skopírovať pretože nemáte oprávnenia na jeho "
 "čítanie."
 
-#: ../libcore/marlin-file-operations.c:3732
-#: ../libcore/marlin-file-operations.c:4433
-#: ../libcore/marlin-file-operations.c:5020
+#: ../libcore/marlin-file-operations.c:3802
+#: ../libcore/marlin-file-operations.c:4503
+#: ../libcore/marlin-file-operations.c:5090
 msgid "Error while moving \"%B\"."
 msgstr "Chyba pri presúvaní do „%B“."
 
-#: ../libcore/marlin-file-operations.c:3733
+#: ../libcore/marlin-file-operations.c:3803
 msgid "Could not remove the source folder."
 msgstr "Nepodarilo sa odstrániť zdrojový priečinok."
 
-#: ../libcore/marlin-file-operations.c:3818
-#: ../libcore/marlin-file-operations.c:3859
-#: ../libcore/marlin-file-operations.c:4435
-#: ../libcore/marlin-file-operations.c:4506
+#: ../libcore/marlin-file-operations.c:3888
+#: ../libcore/marlin-file-operations.c:3929
+#: ../libcore/marlin-file-operations.c:4505
+#: ../libcore/marlin-file-operations.c:4576
 msgid "Error while copying \"%B\"."
 msgstr "Chyba pri kopírovaní „%B“."
 
-#: ../libcore/marlin-file-operations.c:3819
+#: ../libcore/marlin-file-operations.c:3889
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nepodarilo sa odstrániť súbory z už existujúceho priečinka %F."
 
-#: ../libcore/marlin-file-operations.c:3860
+#: ../libcore/marlin-file-operations.c:3930
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nepodarilo sa odstrániť existujúci súbor s názvom %F."
 
-#: ../libcore/marlin-file-operations.c:4189
-#: ../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4259
+#: ../libcore/marlin-file-operations.c:4930
 msgid "You cannot move a folder into itself."
 msgstr "Nie je možné presunúť priečinok do seba samého."
 
-#: ../libcore/marlin-file-operations.c:4190
-#: ../libcore/marlin-file-operations.c:4861
+#: ../libcore/marlin-file-operations.c:4260
+#: ../libcore/marlin-file-operations.c:4931
 msgid "You cannot copy a folder into itself."
 msgstr "Nie je možné kopírovať priečinok do seba samého."
 
-#: ../libcore/marlin-file-operations.c:4191
-#: ../libcore/marlin-file-operations.c:4862
+#: ../libcore/marlin-file-operations.c:4261
+#: ../libcore/marlin-file-operations.c:4932
 msgid "The destination folder is inside the source folder."
 msgstr "Cieľový priečinok je vo vnútri zdrojového priečinka."
 
-#: ../libcore/marlin-file-operations.c:4222
+#: ../libcore/marlin-file-operations.c:4292
 msgid "You cannot move a file over itself."
 msgstr "Nie je možné presunúť súbor do seba samého."
 
-#: ../libcore/marlin-file-operations.c:4223
+#: ../libcore/marlin-file-operations.c:4293
 msgid "You cannot copy a file over itself."
 msgstr "Nie je možné kopírovať súbor do seba samého."
 
-#: ../libcore/marlin-file-operations.c:4224
+#: ../libcore/marlin-file-operations.c:4294
 msgid "The source file would be overwritten by the destination."
 msgstr "Zdrojový súbor bude prepísaný cieľovým."
 
-#: ../libcore/marlin-file-operations.c:4437
+#: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Nepodarilo sa odstrániť už existujúci súbor s rovnakým názvom v %F."
 
-#: ../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4577
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Nastala chyba pri kopírovaní súboru do %F."
 
-#: ../libcore/marlin-file-operations.c:4734
+#: ../libcore/marlin-file-operations.c:4804
 msgid "Copying Files"
 msgstr "Kopírujú sa súbory"
 
-#: ../libcore/marlin-file-operations.c:4760
+#: ../libcore/marlin-file-operations.c:4830
 msgid "Preparing to move to \"%B\""
 msgstr "Pripravuje sa presunutie do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:4772
+#: ../libcore/marlin-file-operations.c:4842
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1650,20 +1687,20 @@ msgstr[0] "Pripravuje sa presunutie %'d súboru"
 msgstr[1] "Pripravuje sa presunutie %'d súborov"
 msgstr[2] "Pripravuje sa presunutie %'d súborov"
 
-#: ../libcore/marlin-file-operations.c:5021
+#: ../libcore/marlin-file-operations.c:5091
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Nastala chyba pri presúvaní súboru do %F."
 
-#: ../libcore/marlin-file-operations.c:5284
+#: ../libcore/marlin-file-operations.c:5354
 msgid "Moving Files"
 msgstr "Presúvajú sa súbory"
 
-#: ../libcore/marlin-file-operations.c:5314
+#: ../libcore/marlin-file-operations.c:5384
 msgid "Creating links in \"%B\""
 msgstr "Pripravuje sa odkazy v „%B“"
 
-#: ../libcore/marlin-file-operations.c:5325
+#: ../libcore/marlin-file-operations.c:5395
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1671,54 +1708,54 @@ msgstr[0] "Vytvárajú sa odkazy na %'d súbor"
 msgstr[1] "Vytvárajú sa odkazy na %'d súbory"
 msgstr[2] "Vytvárajú sa odkazy na %'d súborov"
 
-#: ../libcore/marlin-file-operations.c:5460
+#: ../libcore/marlin-file-operations.c:5530
 msgid "Error while creating link to %B."
 msgstr "Chyba pri vytváraní odkazu na %B."
 
-#: ../libcore/marlin-file-operations.c:5462
+#: ../libcore/marlin-file-operations.c:5532
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolické odkazy sú podporované iba pre lokálne súbory"
 
-#: ../libcore/marlin-file-operations.c:5465
+#: ../libcore/marlin-file-operations.c:5535
 msgid "The target doesn't support symbolic links."
 msgstr "Cieľ nepodporuje symbolické odkazy."
 
-#: ../libcore/marlin-file-operations.c:5468
+#: ../libcore/marlin-file-operations.c:5538
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Nastala chyba pri tvorbe symbolického odkazu v %F."
 
-#: ../libcore/marlin-file-operations.c:5796
-#: ../libcore/marlin-file-operations.c:5799
+#: ../libcore/marlin-file-operations.c:5866
+#: ../libcore/marlin-file-operations.c:5869
 msgid "Setting permissions"
 msgstr "Nastavujú sa oprávnenia"
 
-#: ../libcore/marlin-file-operations.c:6050
+#: ../libcore/marlin-file-operations.c:6120
 msgid "untitled folder"
 msgstr "priečinok bez názvu"
 
-#: ../libcore/marlin-file-operations.c:6058
+#: ../libcore/marlin-file-operations.c:6128
 msgid "new file"
 msgstr "nový súbor"
 
-#: ../libcore/marlin-file-operations.c:6229
+#: ../libcore/marlin-file-operations.c:6299
 msgid "Error while creating directory %B."
 msgstr "Chyba pri vytváraní priečinka „%B“."
 
-#: ../libcore/marlin-file-operations.c:6231
+#: ../libcore/marlin-file-operations.c:6301
 msgid "Error while creating file %B."
 msgstr "Chyba pri vytváraní súboru „%B“."
 
-#: ../libcore/marlin-file-operations.c:6233
+#: ../libcore/marlin-file-operations.c:6303
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Nastala chyba pri vytváraní priečinka v %F."
 
-#: ../libcore/marlin-file-operations.c:6543
+#: ../libcore/marlin-file-operations.c:6613
 msgid "Emptying the trash"
 msgstr "Kôš sa vyprázdňuje"
 
-#: ../libcore/marlin-file-operations.c:6551
+#: ../libcore/marlin-file-operations.c:6621
 msgid "Emptying Trash"
 msgstr "Vyprázdňuje sa kôš"
 
@@ -2406,3 +2443,20 @@ msgstr "Zrušiť všetky práve prebiehajúce akcie"
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
 msgstr "Prejsť na %s"
+
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to Server…"
+msgstr ""
+
+#: ../plugins/network-places/plugin.vala:48
+msgid "Connect to a network file server"
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:38
+msgid "These items may be deleted by emptying the trash."
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:39
+msgid "Empty the Trash"
+msgstr ""

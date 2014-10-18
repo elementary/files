@@ -1852,10 +1852,21 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
     GFile *file;
     GList *to_delete;
     GError *error;
+    GFileInfo *info;
+    GFileInfo *parent_info;
+    GFileInfo *fsinfo;
     int total_files, files_trashed;
     char *primary, *secondary, *details;
     int response;
     guint64 mtime;
+    gboolean can_delete;
+    gboolean can_write;
+    gboolean is_folder;
+    gboolean parent_can_write;
+    gboolean readonly_fs;
+    gboolean have_info;
+    gboolean have_parent_info;
+    gboolean have_filesystem_info;
 
     if (job_aborted (job)) {
         return;
@@ -1887,20 +1898,79 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                 goto skip;
             }
 
-            primary = f (_("Cannot move file to trash. Delete Immediately?"));
-            secondary = f (_("This file is located on an external media and cannot be moved to the trash. Once deleted, it cannot be restored."));
-            details = NULL;
-            if (!IS_IO_ERROR (error, NOT_SUPPORTED)) {
-                details = error->message;
+            info = g_file_query_info (file, "access::can-write,standard::type", 0, NULL, NULL);
+            parent_info = g_file_query_info (g_file_get_parent (file), "access::can-write", 0, NULL, NULL);
+            fsinfo = g_file_query_filesystem_info (file, "filesystem::readonly", NULL, NULL);
+
+            if (info != NULL) {
+                can_write = g_file_info_get_attribute_boolean (info, "access::can-write");
+                is_folder = (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY);
+                have_info = TRUE;
+                g_object_unref (info);
+            } else
+                have_info = FALSE;
+
+            if (parent_info != NULL) {
+                parent_can_write = g_file_info_get_attribute_boolean (parent_info, "access::can-write");
+                have_parent_info = TRUE;
+                g_object_unref (parent_info);
+            } else
+                have_parent_info = FALSE;
+
+            if (fsinfo != NULL) {
+                readonly_fs = g_file_info_get_attribute_boolean (fsinfo, "filesystem::readonly");
+                have_filesystem_info = TRUE;
+                g_object_unref (fsinfo);
+            } else
+                have_filesystem_info = FALSE;
+
+            if (have_info) {
+                can_delete = FALSE;
+                if (have_filesystem_info && readonly_fs) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete files on a read only filesystem."));
+                } else if (have_parent_info && !parent_can_write) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
+                } else if (is_folder && !can_write ) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
+                } else {
+                    primary = f (_("Cannot move file to trash. Try to delete it immediately?"));
+                    secondary = f (_("This file could not be moved to trash. See details below for further information."));
+                    can_delete = TRUE;
+                }
+            } else {
+                primary = f (_("Cannot move file to trash.  Try to delete it?"));
+                secondary = f (_("This file could not be moved to trash. You may not be able to delete it either."));
+                can_delete = TRUE;
             }
 
-            response = run_question (job,
-                                     primary,
-                                     secondary,
-                                     details,
-                                     (total_files - files_trashed) > 1,
-                                     GTK_STOCK_CANCEL, SKIP_ALL, SKIP, DELETE_ALL, GTK_STOCK_DELETE,
-                                     NULL);
+            if (can_delete)
+                secondary = g_strconcat (secondary, f (_("\n Deleting a file removes it permanently")), NULL);
+
+            details = NULL;
+            details = error->message;
+
+            /* Note primary and secondary text is freed by run_simple_dialog_va */
+            if (can_delete) {
+                response = run_question (job,
+                                         primary,
+                                         secondary,
+                                         details,
+                                         (total_files - files_trashed) > 1,
+                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP, DELETE_ALL, GTK_STOCK_DELETE,
+                                         NULL);
+            } else {
+                response = run_question (job,
+                                         primary,
+                                         secondary,
+                                         details,
+                                         (total_files - files_trashed) > 1,
+                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                         NULL);
+
+            }
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
                 ((DeleteJob *) job)->user_cancel = TRUE;

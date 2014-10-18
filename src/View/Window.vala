@@ -733,7 +733,16 @@ namespace Marlin.View {
                 if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
-                GLib.File root_location = GLib.File.new_for_uri (GLib.Uri.unescape_string (root_uri));
+                string? unescaped_root_uri = GLib.Uri.unescape_string (root_uri);
+                if (unescaped_root_uri == null) {
+                    warning ("Invalid root location for tab");
+                    continue;
+                }
+
+                GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
+                if (!valid_location (root_location))
+                    continue;
+
                 add_tab (root_location, mode);
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
@@ -755,9 +764,15 @@ namespace Marlin.View {
                 change_tab (active_tab_position);
             }
 
-            string? path = current_tab.get_tip_uri ();
-            if (path == null || path == "")
-                path = current_tab.get_root_uri ();
+            string? path;
+            if (current_tab == null)
+                path = "";
+            else {
+                path = current_tab.get_tip_uri ();
+
+                if (path == null || path == "")
+                    path = current_tab.get_root_uri ();
+            }
 
             /* Render the final path in the location bar without animation */
             top_menu.location_bar.bread.animation_visible = false;
@@ -767,6 +782,24 @@ namespace Marlin.View {
             return tabs_added;
         }
 
+        private bool valid_location (GLib.File location) {
+            GLib.FileInfo? info = null;
+            try {
+                info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
+            }
+            catch (GLib.Error e) {
+                warning ("Invalid location on restoring tabs");
+                return false;
+            }
+
+            if (info.get_file_type () == GLib.FileType.DIRECTORY)
+                return true;
+            else {
+                warning ("Attempt to restore a location that is not a directory");
+                return false;
+            }
+        }
+
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
 //message ("expand Miller");
 /**TODO - move to Miller.vala **/ 
@@ -774,6 +807,12 @@ namespace Marlin.View {
             var view = tab.page as ViewContainer;
             var mwcols = view.view as Miller;
             var unescaped_tip_uri = GLib.Uri.unescape_string (tip_uri);
+
+            if (unescaped_tip_uri == null) {
+                warning ("Invalid tip uri for Miller View");
+                return;
+            }
+
             var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
@@ -784,7 +823,10 @@ namespace Marlin.View {
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = GLib.File.new_for_uri (uri);;
+                    gfile = GLib.File.new_for_uri (uri);
+                    if (!valid_location (gfile))
+                        break;
+
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }
             } else {

@@ -142,11 +142,8 @@ namespace Marlin.View {
                     if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         load_resolution.begin (goffile);
                     }
-                    if (window.current_tab.view_mode == Marlin.ViewMode.ICON)
-                        /* In icon view, show untruncated filename as well */
-                        status = "%s - %s (%s)".printf (goffile.info.get_name (), goffile.formated_type, goffile.format_size);
-                    else
-                        status = "%s (%s)".printf (goffile.formated_type, goffile.format_size);
+
+                    status = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
                 } else {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
 
@@ -184,14 +181,12 @@ namespace Marlin.View {
                 return;
 
             foreach (var gof in files) {
-                if (gof != null) {
-                    if (gof.is_folder ()) {
-                        folders_count++;
-                    } else {
-                        files_count++;
-                        files_size += gof.size;
-                    }
-                    count++;
+                if (gof.is_folder ()) {
+                    folders_count++;
+                    //scan_folder (gof.location);
+                } else {
+                    files_count++;
+                    files_size += PropertiesWindow.file_real_size (gof);
                 }
             }
         }

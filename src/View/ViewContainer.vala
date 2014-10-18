@@ -324,6 +324,7 @@ namespace Marlin.View {
         }
 
         public void reload () {
+//<<<<<<< TREE
 //message ("VC reload");
             if (!can_show_folder) /* Try to display folder again */
                 content = view.get_content_box ();
@@ -354,6 +355,68 @@ namespace Marlin.View {
                 view.grab_focus ();
             else
                 content.grab_focus ();
+//=======
+//            GOF.Directory.Async dir = slot.directory;
+//            dir.cancel ();
+//            dir.need_reload.disconnect (reload);
+//            dir.remove_dir_from_cache ();
+//            dir.load ();
+//        }
+
+//        public void update_location_state (bool save_history) {
+//            if (slot == null || !slot.directory.file.exists)
+//                return;
+
+//            if (save_history)
+//                browser.record_uri (slot.directory.location.get_parse_name ());
+
+//            window.can_go_up = slot.directory.has_parent ();
+//            window.can_go_back = browser.can_go_back ();
+//            window.can_go_forward = browser.can_go_forward ();
+//            /* update ModeButton */
+//            if (window.top_menu.view_switcher != null)
+//                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+//        }
+
+//        public Gtk.Menu get_back_menu () {
+//            /* Clear the back menu and re-add the correct entries. */
+//            var back_menu = new Gtk.Menu ();
+//            var list = browser.go_back_list ();
+//            var n = 1;
+//            foreach (var path in list) {
+//                int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
+//                              // You see if I would just use back(n) the reference to n would be passed
+//                              // in the clusure, restulting in a value of n which would always be n=1. So
+//                              // by introducting a new variable I can bypass this anoyance.
+//                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
+//                item.activate.connect (() => { back(cn); });
+//                back_menu.insert (item, -1);
+//            }
+
+//            back_menu.show_all ();
+//            return back_menu;
+//        }
+
+//        public Gtk.Menu get_forward_menu () {
+//            /* Same for the forward menu */
+//            var forward_menu = new Gtk.Menu ();
+//            var list = browser.go_forward_list ();
+//            var n = 1;
+//            foreach (var path in list) {
+//                int cn = n++; // For explenation look up
+//                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
+//                item.activate.connect (() => forward (cn));
+//                forward_menu.insert (item, -1);
+//            }
+
+//            forward_menu.show_all ();
+//            return forward_menu;
+//        }
+
+//        public new Gtk.Widget get_window ()
+//        {
+//            return ((Gtk.Widget) window);
+//>>>>>>> MERGE-SOURCE
         }
 
     }
