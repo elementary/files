@@ -176,7 +176,7 @@ namespace Marlin {
                 color = get_style_context ().get_color (get_state_flags ());
                 Gdk.cairo_set_source_rgba (cr, color);
                 cr.set_line_width (1.0);
-                outline = {1, 1, allocation.width - 2, allocation.height - 2};
+                outline = {0, 0, allocation.width, allocation.height};
                 Gdk.cairo_rectangle (cr, outline);
                 cr.stroke ();
             }
