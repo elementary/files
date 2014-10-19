@@ -1,1110 +1,1138 @@
-# Chinese (Simplified) translation for marlin
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the marlin package.
-# 英华 <wantinghard@gmail.com>, 2011.
+# Burmese translation for pantheon-files
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: pantheon-files\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-10-19 05:18+0000\n"
-"Last-Translator: colindemian <dengmengpc@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"PO-Revision-Date: 2014-10-18 15:15+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Burmese <my@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-10-19 06:58+0000\n"
+"X-Launchpad-Export-Date: 2014-10-19 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
-"Language: \n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr "剪贴板中没有可粘贴的内容"
+msgstr ""
 
 #: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
 #: ../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr "无法将 %s 重命名为 %s"
+msgstr ""
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
-msgstr "文件名"
+msgstr ""
 
 #: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
 msgid "Size"
-msgstr "大小"
+msgstr ""
 
 #: ../src/fm-list-view.c:59
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 #: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
 msgid "Modified"
-msgstr "已修改"
+msgstr ""
 
 #: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
 #: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
-msgstr "该文件夹为空。"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr "排列项目(_G)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr "逆序(_V)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr "用相反的顺序显示图标"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr "按名称(_N)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "按名称排列图标"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr "按大小(_S)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr "按大小排列图标"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr "按类型(_T)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr "按类型排列图标"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr "按修改时间(_D)"
+msgstr ""
 
 #: ../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr "按修改时间排列图标"
+msgstr ""
 
 #: ../src/exo-tree-view.c:159
 msgid "Single Click"
-msgstr "单击"
+msgstr ""
 
 #: ../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "该视图中的项目是否可以通过单击激活"
+msgstr ""
 
 #: ../src/fm-directory-view.c:1230
 msgid "Invalid filename provided by XDS drag site"
-msgstr "来自XDS拖动站的无效文件名"
+msgstr ""
 
 #: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "创建到 URL “%s”的链接失败"
+msgstr ""
 
 #: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "用“%s”打开选中的项目"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr "使用 “%s”作为新文件的模板"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
-msgstr "使用 %s 打开(_O)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
-msgstr "打开(_O)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2338
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr "在 %'d 新标签中打开(_T)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
-msgstr "在新标签中打开(_T)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "在 %'d 新窗口中打开(_W)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
-msgstr "在新窗口中打开(_W)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3792
 msgid "Set as default"
-msgstr "设为默认"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "准备将选中的文件用粘贴命令移动"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "准备将选中的文件用粘贴命令复制"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "移动或复制由前面的剪切或复制命令所选中的文件"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
-msgstr "粘贴到文件夹"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
-msgstr "移动/复制先前由剪切/复制命令选中的文件到选中的文件夹"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
-msgstr "重命名(_R)..."
+msgstr ""
 
 #: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
-msgstr "重命名选中的项目"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
-msgstr "创建文件夹(_F)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3864
 msgid "Create a new empty folder inside this folder"
-msgstr "在该文件夹中创建新的空文件夹"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
-msgstr "创建文件(_F)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
-msgstr "空文件(_E)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3869
 msgid "Create a new empty file inside this folder"
-msgstr "在该文件夹中创建新的空文件"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
-msgstr "打开选中的项目"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
-msgstr "在新窗口中打开"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
-msgstr "在新窗口中打开选中的文件"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
-msgstr "在新标签中打开选中的每个项目"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
-msgstr "打开方式(_H)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
-msgstr "选择用来打开选中项目的程序"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
-msgstr "其它程序(_A)..."
+msgstr ""
 
 #: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
-msgstr "另选一个用来打开选中项目的程序"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
-msgstr "移动到回收站(_V)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
-msgstr "把每个选中项目都移到回收站"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
-msgstr "永久删除(_D)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "删除每个选中的项目，而不移动到回收站"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3902
 msgid "_Restore"
-msgstr "还原(_R)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
-msgstr "全选"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3910
 msgid "_Properties"
-msgstr "属性(_P)"
+msgstr ""
 
 #: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
-msgstr "查看或修改每个选中项目的属性"
+msgstr ""
 
 #: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
-msgstr "设置颜色"
+msgstr ""
 
 #: ../src/eel-editable-label.c:3200
 msgid "Input Methods"
-msgstr "输入法"
+msgstr ""
 
 #: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
-msgstr "图标目录列表"
+msgstr ""
 
 #: ../src/fm-icon-view.c:101
 msgid "Icon view"
-msgstr "图标视图"
+msgstr ""
 
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
-msgstr "布局模式"
+msgstr ""
 
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
-msgstr "布局模式"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "SSH"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "公共 FTP"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (需登录)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (苹果文件协议)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Windows 共享"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "安全 WebDAV (HTTPS)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "正在连接..."
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"无法载入支持的服务器方式列表。\n"
-"请检查您的 gvfs 安装。"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "无法在“%s”打开文件夹“%s”。"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "无法找到位于“%s”的服务器。"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "重试"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "请确认您的用户详情。"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr "继续"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr "连接(_O)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr "连接到服务器"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr "服务器详情"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr "服务器(_S)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr "端口(_P)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr "类型(_T)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr "共享(_A)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr "文件夹(_F)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr "用户详情"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "域名(_D)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr "用户名(_U)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr "密码(_W)："
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr "记住密码"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr "操作已取消"
+msgstr ""
 
 #: ../src/marlin-dnd.c:102
 msgid "_Move Here"
-msgstr "移到此处(_M)"
+msgstr ""
 
 #: ../src/marlin-dnd.c:107
 msgid "_Copy Here"
-msgstr "复制到到处(_C)"
+msgstr ""
 
 #: ../src/marlin-dnd.c:112
 msgid "_Link Here"
-msgstr "在此处创建链接(_L)"
+msgstr ""
 
 #: ../src/marlin-dnd.c:117
 msgid "Set as _Background"
-msgstr "设置为背景(_B)"
+msgstr ""
 
 #: ../src/marlin-dnd.c:124
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: ../src/marlin-dnd.c:216
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "执行“%s”文件失败"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr "删除 %d 个已复制项目"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #: ../libcore/marlin-undostack-manager.c:1215
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr "删除 “%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "删除 %d 个重复的项目"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "移动 %d 项目回到 '%s'"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "将“%s”移动回“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "将“%s”重命名为“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1255
 #: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "从回收站还原 %d 个项目"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "将“%s”恢复到“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "移动 %d 个项目到回收站"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "将 “%s” 移动回回收站"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr "删除 %d 个项目的链接"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "删除到“%s”的链接"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "恢复附加于 %s 的权限"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "恢复“%s”的原始权限"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "将“%s”的组恢复为“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "将“%s”的属主恢复为“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "复制 %d 个项目到“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "复制“%s”到“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "复制 %d 个项目在 '%s'"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "就地复制“%s”(“%s”中)"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "移动 %d 个项目到“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "将“%s”移动到“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "根据模板创建新文档“%s” "
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "创建一个空文件“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "创建新文件夹 '%s'"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "移动 %d 个项目到回收站"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "将“%s”移动到回收站"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "从回收站恢复“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr "创建 %d 个项目的链接"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr "创建“%s”链接"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "设置附加于“%s”的权限"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "设定“%s”的权限"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "将“%s”的组设置为“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "设置“%s”的属主为“%s”"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "撤销 %d 个项目的复制( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "撤销 %d 个项目的复制( _U)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "撤销 %d 个项目的移动( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "撤销 %d 个项目的重命名( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr "撤销空文件的创建( _U )"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr "撤销从模板创建的文件( _U )"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "撤销创建 %d 个文件夹( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "撤销移动 %d 个文件( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "撤销恢复 %d 个文件( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "撤销创建到 %d 个文件的链接( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "撤销删除 %d 个文件( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "撤销改变 %d 个项目的递归权限( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "撤销改变 %d 个项目的权限( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "撤销改变 %d 个项目的群组( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "撤销改变 %d 个项目的所有者( _U )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "重新复制 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "重新复制 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "重新移动 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "重新重命名 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr "重新创建新文件(_R)"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr "重新从模板创建文件(_R)"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "重新创建 %d 个文件夹( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "重新移动 %d 个项目到回收站( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "重新从回收站恢复 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "重新创建链接到 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "重新删除 %d 个项目( _R )"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "重新递归改变 %d 个项目的权限"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "重新改变 %d 个项目的权限"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "重新改变 %d 个项目的群组"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "重新改变 %d 个项目的所有者"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/gof-file.c:302
 #, c-format
 msgid "link to %s"
-msgstr "链接到 %s"
+msgstr ""
 
 #: ../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "解析桌面文件 %s 失败"
+msgstr ""
 
 #: ../libcore/gof-file.c:1786
 msgid "No Exec field specified"
-msgstr "没有指定 Exec 字段"
+msgstr ""
 
 #: ../libcore/gof-file.c:1806
 msgid "No URL field specified"
-msgstr "没有指定 URL 字段"
+msgstr ""
 
 #: ../libcore/gof-file.c:1812
 msgid "Invalid desktop file"
-msgstr "无效的桌面文件"
+msgstr ""
 
 #: ../libcore/gof-file.c:2102
 msgid "Slashes are not allowed in filenames"
-msgstr "文件名中不能出现斜线"
+msgstr ""
 
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
-msgstr "无法重命名顶级文件"
+msgstr ""
 
 #: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr "正在准备"
+msgstr ""
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "显示更多细节(_D)"
+msgstr ""
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "今天 %-l:%M %p"
+msgstr ""
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "昨天 %-l:%M %p"
+msgstr ""
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b at %-I:%M %p"
+msgstr ""
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "合并文件夹“%s”吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr "合并时，在替换目标文件夹中与待复制文件冲突的文件前会请求确认。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:378
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的旧文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的新文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
-msgstr "若替换它，将移除其中的所有文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "替换“%s”文件夹？"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:400
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "替换“%s”文件？"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
-msgstr "若替换它，将覆盖其内容。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:406
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的旧文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:410
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的新文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:414
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:469
 msgid "Original file"
-msgstr "原文件"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:253
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:470
 #: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
-msgstr "大小："
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:473
 #: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
-msgstr "类型："
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
 #: ../libcore/marlin-file-conflict-dialog.c:476
 #: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
-msgstr "上次修改："
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:490
 msgid "Replace with"
-msgstr "替换为"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
-msgstr "合并"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
-msgstr "为目标选择一个新名称(_S)"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
-msgstr "重设"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
-msgstr "将此操作应用到所有文件"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:746
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "跳过(_S)"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:751
 msgid "Re_name"
-msgstr "重命名(_N)"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:757
 msgid "Replace"
-msgstr "替换"
+msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:830
 msgid "File conflict"
-msgstr "文件冲突"
+msgstr ""
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
-msgstr " (无效的 Unicode)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "全部跳过(_K)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "重试(_R)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "全部删除(_A)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "替换(_R)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "全部替换(_A)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "合并(_M)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "全部合并(_A)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "强制复制(_A)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d 秒"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:301
 #: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d 分钟"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d 小时"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "约 %'d 小时"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
-msgstr "到 %s 的链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr "另一个到 %s 的链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
-msgstr " (复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
-msgstr " (另一个复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:470
 #: ../libcore/marlin-file-operations.c:472
 #: ../libcore/marlin-file-operations.c:474
 #: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
-msgstr "复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
-msgstr "复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
-msgstr "复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
-msgstr "复件)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
-msgstr "%s (复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
-msgstr "%s (另一个复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:503
 #: ../libcore/marlin-file-operations.c:505
@@ -1112,35 +1140,35 @@ msgstr "%s (另一个复件)%s"
 #: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr "%s (第%'d个复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr "%s (第%'d个复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr "%s (第%'d个复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr "%s (第%'d个复件)%s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:619
 msgid " ("
-msgstr " ("
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:627
 #, c-format
 msgid " (%'d"
-msgstr " (%'d"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "您确实想从回收站中永久删除“%B”吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1386
 #, c-format
@@ -1150,52 +1178,56 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "您确实想从回收站中永久删除所选的 %'d 项吗？"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:1396
 #: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
-msgstr "如果您删除一项，它会永远消失。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr "清空回收站中的所有项目？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
-msgstr "回收站中的所有项目将永久删除。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1424
 #: ../libcore/marlin-file-operations.c:2405 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
-msgstr "清空回收站(_T)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "您确实想永久删除“%B”吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "您确实想永久删除所选的 %'d 项吗？"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr "正在删除文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "还有 %'d 个文件要删除"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "还剩 %T"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:1594
 #: ../libcore/marlin-file-operations.c:1628
@@ -1203,935 +1235,947 @@ msgstr[0] "还剩 %T"
 #: ../libcore/marlin-file-operations.c:1744
 #: ../libcore/marlin-file-operations.c:2660
 msgid "Error while deleting."
-msgstr "删除时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr "“%B”文件夹中的文件无法删除，因为您没有查看它们的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1601
 #: ../libcore/marlin-file-operations.c:2719
 #: ../libcore/marlin-file-operations.c:3715
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "在获取文件夹“%B”中的信息时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1610
 #: ../libcore/marlin-file-operations.c:3724
 msgid "_Skip files"
-msgstr "跳过文件(_S)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "无法删除文件夹“%B”，因为您没有读它们的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1634
 #: ../libcore/marlin-file-operations.c:2758
 #: ../libcore/marlin-file-operations.c:3760
 msgid "There was an error reading the folder \"%B\"."
-msgstr "读取文件夹“%B”时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
-msgstr "无法移除文件夹 %B。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
-msgstr "删除 %B 时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1821
 #: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
-msgstr "将文件移到回收站"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "还有 %'d 个文件要移到回收站"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:1930
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr "无法将文件放入回收站或删除"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr "在只读文件系统中不允许删除文件或将文件放入回收站。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr "在您不具备写入权限的文件夹中不允许删除文件或将文件放入回收站。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr "您不具备写入权限的文件夹无法被删除或放入回收站。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "无法放入回收站，尝试立即删除文件吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr "无法将此文件放入回收站。查看下方详情以获取更多信息。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "无法放入回收站，尝试删除文件吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr "无法放入回收站，您可能也无法删除次文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
-"\n"
-" 使用永久删除的方式删除文件"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
-msgstr "正在将文件移到回收站"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2145
 msgid "Deleting Files"
-msgstr "正在删除文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2217
 msgid "Unable to eject %V"
-msgstr "无法弹出 %V"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2219
 msgid "Unable to unmount %V"
-msgstr "无法卸载 %V"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2395
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "您想在卸载前清空回收站吗？"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2397
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr "为了重新获取该卷上的剩余空间，必须清空回收站。该卷上所有移到回收站的项目将永远消失。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2403
 msgid "Do _not Empty Trash"
-msgstr "不清空回收站(_N)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2517
 #, c-format
 msgid "Unable to mount %s"
-msgstr "无法卸载 %s"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2595
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "正在准备复制 %'d 个文件(%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:2601
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "正在准备移动 %'d 个文件(%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:2607
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "正在准备删除 %'d 个文件(%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:2613
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "正在准备将 %'d 个文件移到回收站"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:2656
 #: ../libcore/marlin-file-operations.c:3576
 #: ../libcore/marlin-file-operations.c:3707
 #: ../libcore/marlin-file-operations.c:3752
 msgid "Error while copying."
-msgstr "复制出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2658
 #: ../libcore/marlin-file-operations.c:3705
 #: ../libcore/marlin-file-operations.c:3750
 msgid "Error while moving."
-msgstr "移动出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2662
 msgid "Error while moving files to trash."
-msgstr "在将文件移到回收站时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2716
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr "无法操作文件夹“%B”中的文件，因为您没有查看它们的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2755
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "无法操作文件夹“%B”，因为您没有读取它的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2832
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "无法操作文件“%B”，因为您没有读取它的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2835
 msgid "There was an error getting information about \"%B\"."
-msgstr "获取有关“%B”的信息时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2935
 #: ../libcore/marlin-file-operations.c:2977
 #: ../libcore/marlin-file-operations.c:3010
 #: ../libcore/marlin-file-operations.c:3040
 msgid "Error while copying to \"%B\"."
-msgstr "复制到“%B”时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2939
 msgid "You do not have permissions to access the destination folder."
-msgstr "您没有访问目标文件夹的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2941
 msgid "There was an error getting information about the destination."
-msgstr "获取目标信息时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2978
 msgid "The destination is not a folder."
-msgstr "目标不是一个文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3011
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr "目标位置没有足够的空间。尝试删除文件来腾出空间。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3013
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "可用空间为 %S，但需要 %S。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3041
 msgid "The destination is read-only."
-msgstr "目标为只读。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3102
 msgid "Moving \"%B\" to \"%B\""
-msgstr "正在将“%B”移动到“%B”"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3103
 msgid "Copying \"%B\" to \"%B\""
-msgstr "正在将“%B”复制到“%B”"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3107
 msgid "Duplicating \"%B\""
-msgstr "正在复制“%B”"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3111
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "正在移动 %'d 个文件(位于“%B”)到“%B”"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "正在复制 %'d 个文件(位于“%B”)到“%B”"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3121
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "正在重复 %'d 个文件(位于“%B”)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3130
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "正在移动 %'d 个文件到“%B”"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3134
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "正在复制 %'d 个文件到“%B”"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3139
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "正在重复 %'d 个文件"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3190
 #, c-format
 msgid "%S of %S"
-msgstr "%S / %S"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3201
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S of %S — 剩余 %T(%S/秒)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:3580
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "无法复制文件夹“%B”，因为您没有在目标位置创建它的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3583
 msgid "There was an error creating the folder \"%B\"."
-msgstr "创建文件夹“%B”时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3712
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr "无法复制文件夹“%B”中的文件，因为您没有查看它们的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3757
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "无法复制文件夹“%B”，因为您没有读取它的权限。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3802
 #: ../libcore/marlin-file-operations.c:4503
 #: ../libcore/marlin-file-operations.c:5090
 msgid "Error while moving \"%B\"."
-msgstr "移动“%B”时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3803
 msgid "Could not remove the source folder."
-msgstr "无法移动源文件夹。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3888
 #: ../libcore/marlin-file-operations.c:3929
 #: ../libcore/marlin-file-operations.c:4505
 #: ../libcore/marlin-file-operations.c:4576
 msgid "Error while copying \"%B\"."
-msgstr "复制“%B”时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3889
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "无法从已存在的文件夹 %F 中移除文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3930
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "无法移除已存在的文件 %F。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4259
 #: ../libcore/marlin-file-operations.c:4930
 msgid "You cannot move a folder into itself."
-msgstr "您不能将文件夹移到它自己里面。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4260
 #: ../libcore/marlin-file-operations.c:4931
 msgid "You cannot copy a folder into itself."
-msgstr "您不能将文件夹复制到它自己里面。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4261
 #: ../libcore/marlin-file-operations.c:4932
 msgid "The destination folder is inside the source folder."
-msgstr "目标文件夹在源文件夹内。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4292
 msgid "You cannot move a file over itself."
-msgstr "您不能原地移动一个文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4293
 msgid "You cannot copy a file over itself."
-msgstr "您不能原地复制一个文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4294
 msgid "The source file would be overwritten by the destination."
-msgstr "源文件会被目标文件覆盖。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4507
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "无法移除 %F 中同名的现有文件。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4577
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr "将文件复制到 %F 时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4804
 msgid "Copying Files"
-msgstr "正在复制文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4830
 msgid "Preparing to move to \"%B\""
-msgstr "正在准备移到“%B”"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4842
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "正在准备移动 %'d 个文件"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:5091
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "将文件移到 %F 时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5354
 msgid "Moving Files"
-msgstr "正在移动文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5384
 msgid "Creating links in \"%B\""
-msgstr "在“%B”中创建链接"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5395
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "正在创建到 %'d 个文件的链接"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:5530
 msgid "Error while creating link to %B."
-msgstr "创建指向 %B 的链接时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5532
 msgid "Symbolic links only supported for local files"
-msgstr "符号链接只支持本地文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5535
 msgid "The target doesn't support symbolic links."
-msgstr "目标不支持符号链接。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5538
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "在 %F 中创建符号链接时出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5866
 #: ../libcore/marlin-file-operations.c:5869
 msgid "Setting permissions"
-msgstr "正在设置权限"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6120
 msgid "untitled folder"
-msgstr "无标题文件夹"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6128
 msgid "new file"
-msgstr "新文件"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6299
 msgid "Error while creating directory %B."
-msgstr "创建目录 %B 出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6301
 msgid "Error while creating file %B."
-msgstr "创建文件 %B 出错。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6303
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "在 %F 中创建目录时出现了一个错误。"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6613
 msgid "Emptying the trash"
-msgstr "清空回收站"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6621
 msgid "Emptying Trash"
-msgstr "正在清空回收站"
+msgstr ""
 
 #: ../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "无法确定“%s”的原位置 "
+msgstr ""
 
 #: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
-msgstr "无法从回收站中恢复该项目"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:123
 msgid "AFP"
-msgstr "AFP"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:124
 msgid "DAV"
-msgstr "DAV"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:125
 msgid "DAVS"
-msgstr "DAVS"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:126
 msgid "FTP"
-msgstr "FTP"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
 msgid "Network"
-msgstr "网络"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:128
 msgid "SFTP"
-msgstr "SFTP"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:129
 msgid "SMB"
-msgstr "SMB"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
 msgid "Trash"
-msgstr "回收站"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:329
 msgid "Open in New Tab"
-msgstr "在新标签页中打开"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:336
 msgid "Open with"
-msgstr "打开方式"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:367
 msgid "Other Application .."
-msgstr "其他应用程序..."
+msgstr ""
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr "一款简洁、强大的文件管理器"
+msgstr ""
 
 #: ../src/View/Resources.vala:28
 msgid "Launchpad Translators"
-msgstr "Launchpad 翻译者"
+msgstr ""
 
 #: ../src/View/Window.vala:138
 msgid "Files isn't your default file manager."
-msgstr "Files 不是您的默认文件管理器。"
+msgstr ""
 
 #: ../src/View/Window.vala:144
 msgid "Set as Default"
-msgstr "设为默认"
+msgstr ""
 
 #: ../src/View/Window.vala:149
 msgid "Ignore"
-msgstr "忽略"
+msgstr ""
 
 #: ../src/View/Window.vala:432
 msgid "Undo"
-msgstr "撤销"
+msgstr ""
 
 #: ../src/View/Window.vala:433 ../src/View/Window.vala:761
 msgid "Undo the last action"
-msgstr "撤销上次操作"
+msgstr ""
 
 #: ../src/View/Window.vala:442
 msgid "Redo"
-msgstr "重做"
+msgstr ""
 
 #: ../src/View/Window.vala:443 ../src/View/Window.vala:764
 msgid "Redo the last action"
-msgstr "重做上次操作"
+msgstr ""
 
 #: ../src/View/Window.vala:739
 msgid "_File"
-msgstr "文件(_F)"
+msgstr ""
 
 #: ../src/View/Window.vala:740
 msgid "_Edit"
-msgstr "编辑(_E)"
+msgstr ""
 
 #: ../src/View/Window.vala:741
 msgid "_View"
-msgstr "查看(_V)"
+msgstr ""
 
 #: ../src/View/Window.vala:742
 msgid "_Go"
-msgstr "转到(_G)"
+msgstr ""
 
 #: ../src/View/Window.vala:743
 msgid "_Help"
-msgstr "帮助(_H)"
+msgstr ""
 
 #: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "新建窗口(_W)"
+msgstr ""
 
 #: ../src/View/Window.vala:746
 msgid "Open another Files window for the displayed location"
-msgstr "在另一个窗口中打开显示的位置"
+msgstr ""
 
 #: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "新建标签(_T)"
+msgstr ""
 
 #: ../src/View/Window.vala:750
 msgid "Open another tab for the displayed location"
-msgstr "在另一个标签中打开显示的位置"
+msgstr ""
 
 #: ../src/View/Window.vala:754
 msgid "_Close"
-msgstr "关闭(_C)"
+msgstr ""
 
 #: ../src/View/Window.vala:755
 msgid "Close this folder"
-msgstr "关闭此文件夹"
+msgstr ""
 
 #: ../src/View/Window.vala:760
 msgid "_Undo"
-msgstr "撤销(_U)"
+msgstr ""
 
 #: ../src/View/Window.vala:763
 msgid "_Redo"
-msgstr "重做(_R)"
+msgstr ""
 
 #: ../src/View/Window.vala:766
 msgid "_Find"
-msgstr "查找(_F)"
+msgstr ""
 
 #: ../src/View/Window.vala:767
 msgid "Search the current folder"
-msgstr "搜索当前文件夹"
+msgstr ""
 
 #: ../src/View/Window.vala:769
 msgid "Open _Parent"
-msgstr "打开父文件夹(_P)"
+msgstr ""
 
 #: ../src/View/Window.vala:770
 msgid "Open the parent folder"
-msgstr "打开父文件夹"
+msgstr ""
 
 #: ../src/View/Window.vala:772
 msgid "_Back"
-msgstr "返回(_B)"
+msgstr ""
 
 #: ../src/View/Window.vala:773
 msgid "Go to the previous visited location"
-msgstr "转到上一个访问过的位置"
+msgstr ""
 
 #: ../src/View/Window.vala:776
 msgid "_Forward"
-msgstr "前进(_F)"
+msgstr ""
 
 #: ../src/View/Window.vala:777
 msgid "Go to the next visited location"
-msgstr "转到下一个访问过的位置"
+msgstr ""
 
 #: ../src/View/Window.vala:779
 msgid "_Reload"
-msgstr "重新载入(_R)"
+msgstr ""
 
 #: ../src/View/Window.vala:780
 msgid "Reload the current location"
-msgstr "重新载入当前位置"
+msgstr ""
 
 #: ../src/View/Window.vala:783
 msgid "_Home Folder"
-msgstr "主文件夹(_H)"
+msgstr ""
 
 #: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
 msgid "Open your personal folder"
-msgstr "打开您的个人文件夹"
+msgstr ""
 
 #: ../src/View/Window.vala:787
 msgid "_Trash"
-msgstr "回收站(_T)"
+msgstr ""
 
 #: ../src/View/Window.vala:788
 msgid "Open your personal trash folder"
-msgstr "打开您个人回收站文件夹"
+msgstr ""
 
 #: ../src/View/Window.vala:791
 msgid "_Network"
-msgstr "网络(_N)"
+msgstr ""
 
 #: ../src/View/Window.vala:792
 msgid "Browse bookmarked and local network locations"
-msgstr "浏览书签和局域网"
+msgstr ""
 
 #: ../src/View/Window.vala:795
 msgid "Zoom _In"
-msgstr "放大(_I)"
+msgstr ""
 
 #: ../src/View/Window.vala:796
 msgid "Increase the view size"
-msgstr "增加视图大小"
+msgstr ""
 
 #: ../src/View/Window.vala:807
 msgid "Zoom _Out"
-msgstr "缩小(_O)"
+msgstr ""
 
 #: ../src/View/Window.vala:808
 msgid "Decrease the view size"
-msgstr "减少视图大小"
+msgstr ""
 
 #: ../src/View/Window.vala:815
 msgid "Normal Si_ze"
-msgstr "普通大小(_Z)"
+msgstr ""
 
 #: ../src/View/Window.vala:816
 msgid "Use the normal view size"
-msgstr "使用普通大小的视图"
+msgstr ""
 
 #: ../src/View/Window.vala:819
 msgid "Next Tab"
-msgstr "下一个标签"
+msgstr ""
 
 #: ../src/View/Window.vala:823
 msgid "Previous Tab"
-msgstr "上一个标签"
+msgstr ""
 
 #: ../src/View/Window.vala:827
 msgid "Connect to _Server..."
-msgstr "连接到服务器(_S)..."
+msgstr ""
 
 #: ../src/View/Window.vala:828
 msgid "Connect to a remote computer or shared disk"
-msgstr "连接到远程计算机或共享磁盘"
+msgstr ""
 
 #: ../src/View/Window.vala:831
 msgid "_About"
-msgstr "关于(_A)"
+msgstr ""
 
 #: ../src/View/Window.vala:832
 msgid "Display credits"
-msgstr "开发人员名单"
+msgstr ""
 
 #: ../src/View/Window.vala:835
 msgid "Report a Problem..."
-msgstr "报告问题..."
+msgstr ""
 
 #: ../src/View/Window.vala:836
 msgid "File a bug on Launchpad"
-msgstr "向 Launchpad 提交 Bug"
+msgstr ""
 
 #: ../src/View/Window.vala:839
 msgid "Get Help Online..."
-msgstr "获取在线帮助..."
+msgstr ""
 
 #: ../src/View/Window.vala:843
 msgid "Translate This Application..."
-msgstr "翻译此应用程序..."
+msgstr ""
 
 #: ../src/View/Window.vala:852
 msgid "Show _Hidden Files"
-msgstr "显示隐藏文件(_H)"
+msgstr ""
 
 #: ../src/View/Window.vala:853
 msgid "Toggle the display of hidden files in the current window"
-msgstr "切换当前窗口中是否显示隐藏文件"
+msgstr ""
 
 #: ../src/View/Window.vala:857
 msgid "_Places"
-msgstr "位置(_P)"
+msgstr ""
 
 #: ../src/View/Window.vala:858
 msgid "Change the visibility of this window's side pane"
-msgstr "更改该窗口侧边栏的可见性"
+msgstr ""
 
 #: ../src/View/Window.vala:866
 msgid "Icon"
-msgstr "图标"
+msgstr ""
 
 #: ../src/View/Window.vala:869
 msgid "List"
-msgstr "列表"
+msgstr ""
 
 #: ../src/View/Window.vala:872
 msgid "Columns"
-msgstr "列"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:385
 msgid "Personal"
-msgstr "个人"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:390
 msgid "Your common places and bookmarks"
-msgstr "您的常用位置和书签"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
 msgid "Home"
-msgstr "主目录"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr "打开回收站"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
-msgstr "设备"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:447
 msgid "Your local partitions and devices"
-msgstr "您的本地分区和设备"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
 msgid "File System"
-msgstr "文件系统"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr "打开文件系统内容"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
-msgstr "挂载并打开 %s"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:567
 msgid "Your network places"
-msgstr "您的网络位置"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:590
 msgid "Entire Network"
-msgstr "整个网络"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
-msgstr "浏览网络内容"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1115
 msgid "Unable to start %s"
-msgstr "无法启动 %s"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1184
 msgid "Open"
-msgstr "打开"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1206
 msgid "Remove"
-msgstr "移除"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1214
 msgid "Rename"
-msgstr "重命名"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1223
 msgid "_Mount"
-msgstr "挂载(_M)"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1229
 msgid "_Unmount"
-msgstr "卸载(_U)"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1235
 msgid "_Eject"
-msgstr "弹出(_E)"
+msgstr ""
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr "在此文件夹中"
+msgstr ""
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr "书签"
+msgstr ""
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr "其它地方"
+msgstr ""
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr "未发现任何结果"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr "正在载入..."
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:149
 msgid "This folder does not exist"
-msgstr "该文件夹不存在"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:154
 msgid "(as Administrator)"
-msgstr "(以管理员身份)"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:173
 msgid "This does not belong to you."
-msgstr "它不属于您。"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:174
 msgid "You don't have permission to view this folder."
-msgstr "您没有权限查看该文件夹。"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr "正在连接…"
+msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
-msgstr "网格视图"
+msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:78
 msgid "View as List"
-msgstr "列表视图"
+msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View in Columns"
-msgstr "分栏显示"
+msgstr ""
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr "上一个"
+msgstr ""
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr "下一个"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:136
 msgid "%u folders"
-msgstr "%u 个文件夹"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
 msgid " and %u other item (%s) selected"
-msgstr " 和 %u 其他项目(%s)已被选中"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
 msgid " and %u other items (%s) selected"
-msgstr " 和 %u 个其他条目 - 已选中(%s)"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
 msgid " selected"
-msgstr " 已选中"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:148
 msgid "%u folder"
-msgstr "%u 个文件夹"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:160
 msgid "%u items selected (%s)"
-msgstr "已选中 %u 个条目 (%s)"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr "该文件夹不存在。"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr "无法找到文件夹“%s”。"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
-msgstr "创建"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr "创建文件夹“%s”"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -2139,145 +2183,142 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"无法创建文件夹\n"
-"\n"
-"%s"
 
 #: ../src/View/PropertiesWindow.vala:85
 msgid "Properties"
-msgstr "属性"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:141
 msgid "General"
-msgstr "常规"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:149
 msgid "More"
-msgstr "更多"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:168
 msgid "Preview"
-msgstr "预览"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr "关闭"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
-msgstr "已选择 %u 个条目"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:301
 msgid "Calculating size…"
-msgstr "正在计算大小..."
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:405
 msgid "Created"
-msgstr "创建时间"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:410
 msgid "Last Access"
-msgstr "上次访问"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:416
 msgid "Deleted"
-msgstr "已删除"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:421
 msgid "MimeType"
-msgstr "MIME 类型"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:429
 msgid "MimeTypes"
-msgstr "Mime 类型"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:449
 msgid "Location"
-msgstr "位置"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:452
 msgid "Target"
-msgstr "目标"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:458
 msgid "Origin Location"
-msgstr "原位置"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:468
 msgid "Info:"
-msgstr "信息："
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:504
 msgid "Other application..."
-msgstr "其它程序..."
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Open with:"
-msgstr "打开方式："
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:548
 msgid "Usage:"
-msgstr "使用情况："
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:553
 msgid "Device usage:"
-msgstr "设备使用率："
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:560
 msgid "%s free of %s (%d%% used)"
-msgstr "空闲：%s/%s(已用 %d%%)"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:699
 msgid "Read"
-msgstr "读取"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:704
 msgid "Write"
-msgstr "写入"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:709
 msgid "Execute"
-msgstr "执行"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
 msgid "Owner"
-msgstr "所有者"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
 msgid "Group"
-msgstr "组"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:943
 msgid "Everyone"
-msgstr "所有人"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1202
 msgid "Select an application to open "
-msgstr "选择一个程序来打开 "
+msgstr ""
 
 #: ../src/Application.vala:137
 msgid "Show the version of the program."
-msgstr "显示程序版本。"
+msgstr ""
 
 #: ../src/Application.vala:139
 msgid "Open uri(s) in new tab"
-msgstr "在新标签中打开 uri"
+msgstr ""
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr "新窗口"
+msgstr ""
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
-msgstr "退出 Files。"
+msgstr ""
 
 #: ../src/Application.vala:145
 msgid "Enable debug logging"
-msgstr "启动调试日志"
+msgstr ""
 
 #: ../src/Application.vala:148
 msgid "[URI...]"
-msgstr "[URI...]"
+msgstr ""
 
 #: ../src/Application.vala:151
 msgid ""
@@ -2285,77 +2326,75 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
-"\n"
-"\n"
-"通过文件管理器浏览文件系统"
 
 #: ../src/Application.vala:178
 msgid "--quit cannot be used with URIs."
-msgstr "--quit 不能与 URI 一起使用。"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "浏览文件"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "文件管理器"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr "以管理员身份新建窗口(_A)"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr "关于文件(_F)"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
-msgstr "文件"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
-msgstr "文件操作"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:206
 msgid "All file operations have been successfully completed"
-msgstr "所有文件操作均已成功完成"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "有 %'d 项活动的文件操作"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/ProgressUIHandler.vala:242
 msgid "Show Details"
-msgstr "显示详情"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
-msgstr "显示复制对话框"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
-msgstr "取消所有正在进行的动作"
+msgstr ""
 
 #: ../libwidgets/LocationBar.vala:284
 msgid "Go to %s"
-msgstr "转到 %s"
+msgstr ""
 
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr "连接至服务器..."
+msgstr ""
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
-msgstr "连接至网络文件服务器"
+msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr "这些项目可通过清空回收站删除。"
+msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr "清空回收站"
+msgstr ""
