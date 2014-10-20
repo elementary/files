@@ -126,9 +126,6 @@ debug ("set  widget");
             entry.yalign = this.yalign;
             entry.set_padding ((int)xpad, (int)ypad);
 
-            var context = widget.get_style_context ();
-            var state = widget.get_state_flags ();
-
             entry.set_size_request (wrap_width, -1);
             entry.show_all ();
             entry.set_position (-1);

@@ -178,7 +178,7 @@ namespace Marlin.View {
             /* We can assume this is a horizontal or smooth scroll with out control pressed*/
             double increment = 0.0;
             increment = delta_x * 10.0;
-            if (increment != 0.0);
+            if (increment != 0.0)
                 hadj.set_value (hadj.get_value () + increment);
 
             return true;
