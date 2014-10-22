@@ -208,17 +208,20 @@ namespace FM {
                             zone = ClickZone.ICON;
 
                     } else if (!on_blank &&
-                               cy < icon_size) { /* stop edge of row appearing as name */
+                               cy < icon_size &&
+                               cx < x_offset + width - 6) { /* stop edges of row appearing as name */
                         zone = ClickZone.NAME;
                     } else {
                         c.cell_get_position (name_renderer, out x_offset, out width);
-                        if (cx >= x_offset + width - 24)
-                       zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
+                        if (right_margin_unselects_all && cx >= x_offset + width - 6) {
+                            zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
+                        }
                     }
                 } else
                     zone = ClickZone.EXPANDER;
-            } else
+            } else if (c != name_column) {
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
+            }
 
             return zone;
         }

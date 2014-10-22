@@ -200,6 +200,11 @@ namespace FM {
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
 
+        /* UI options for button press handling */
+        protected bool single_click_rename = false;
+        protected bool activate_on_blank = true;
+        protected bool right_margin_unselects_all = false;
+
         private Gdk.Cursor editable_cursor;
         private Gdk.Cursor activatable_cursor;
         private Gdk.Cursor blank_cursor;
@@ -221,6 +226,14 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
+
+            /* TODO make single_click_rename a setting
+             * Currently, this feature is deactivated, matching existing UI */
+            /* TODO make activate on blank a setting
+             * Currently, this feature is activated, matching existing UI */
+            /* TODO make right margin unselects all a setting
+             * Currently, this feature is deactivated, matching existing UI*/
+
             set_up__menu_actions ();
             set_up_directory_view ();
             view = create_view (); /* Abstract */
@@ -1545,9 +1558,6 @@ namespace FM {
         protected void start_drag_timer (Gdk.Event event) {
 //message ("start drag timer");
             connect_drag_timeout_motion_and_release_events ();
-            /* Remember position of click */ 
-            drag_x = (int)(event.button.x);
-            drag_y = (int)(event.button.y);
             var button_event = (Gdk.EventButton)event;
             drag_button = (int)(button_event.button);
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
@@ -2203,7 +2213,7 @@ debug ("on_motion_notify event");
                 var win = view.get_window ();
                 switch (click_zone) {
                     case ClickZone.NAME:
-                        if (file != null && file.is_writable ())
+                        if (single_click_rename && file != null && file.is_writable ())
                             win.set_cursor (editable_cursor);
                         else
                             win.set_cursor (selectable_cursor);
@@ -2398,6 +2408,9 @@ debug ("DV on view draw");
             Gtk.TreePath? path = null;
 
             click_zone = get_event_position_info (event, out path, true);
+            /* Unless single click renaming is enabled, treat name same as blank zone */
+            if (!single_click_rename && click_zone == ClickZone.NAME)
+                click_zone = ClickZone.BLANK_PATH;
 
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH)
@@ -2416,6 +2429,10 @@ debug ("DV on view draw");
                     select_path (path);
             }
 
+            /* Remember position of click for detecting drag motion*/ 
+            drag_x = (int)(event.x);
+            drag_y = (int)(event.y);
+
             bool result = true;
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
@@ -2425,24 +2442,36 @@ debug ("DV on view draw");
                             /* allow rubber banding */
                             result = false;
                             break;
+
                         case ClickZone.BLANK_PATH:
-                            block_drag_and_drop ();  
-                            result = false;
+                            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+                            should_activate =  activate_on_blank && (single_click_mode || double_click_event);
+
+                            if (!activate_on_blank || !path_selected) {
+                                block_drag_and_drop ();  
+                                result = false;
+                            } else
+                                result = handle_primary_button_click (event, path);
+
                             break;
+
                         case ClickZone.HELPER:
                             if (path_selected)
                                 unselect_path (path);
                             else
                                 select_path (path);
                             break;
+
                         case ClickZone.NAME:
                             unselect_all ();
                             select_path (path);
                             block_drag_and_drop ();
                             rename_file (selected_files.data);
                             break;
+
                         case ClickZone.ICON:
-                            result = handle_primary_button_click (event, path);
+                                result = handle_primary_button_click (event, path);
+
                             break;
                         case ClickZone.EXPANDER:
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking

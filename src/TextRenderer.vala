@@ -164,9 +164,8 @@ debug ("set  widget");
             Gtk.StateFlags state = widget.get_state_flags ();
 
             if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED)
-                state |= Gtk.StateFlags.PRELIGHT;
+                state |= Gtk.StateFlags.SELECTED;
             else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT)
-            if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT)
                 state = Gtk.StateFlags.PRELIGHT;
             else
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
