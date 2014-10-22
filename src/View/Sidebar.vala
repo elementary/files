@@ -119,6 +119,9 @@ namespace Marlin.Places {
          * bookmarks pointing to non-existent (or unmounted) files. */
         bool display_all_bookmarks = false;
 
+        /* Remember vertical adjustment value when lose focus */
+        double adjustment_val = 0.0;
+
         public Sidebar (Marlin.View.Window window) {
             init ();  //creates the Gtk.TreeModel store.
             this.last_selected_uri = null;
@@ -259,6 +262,26 @@ namespace Marlin.Places {
 
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
+
+            tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
+            tree_view.focus_in_event.connect (focus_in_event_cb);
+            tree_view.focus_out_event.connect (focus_out_event_cb);
+            /* Ensure tree has focus when scrolling */
+            tree_view.enter_notify_event.connect (()=> {
+                tree_view.grab_focus ();
+                return false;
+            });
+        }
+
+        private bool focus_in_event_cb (Gdk.EventFocus event) {
+            /* Restore saved adjustment value to prevent unexpected scrolling */
+            ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+            return false;
+        }
+        private bool focus_out_event_cb (Gdk.EventFocus event) {
+            /* Save current adjustment value */
+            adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
+            return false;
         }
 
         private void set_up_trash_monitor () {
@@ -1037,8 +1060,8 @@ namespace Marlin.Places {
             if (!store.get_iter (out iter, path))
                 return;
 
-            string uri;
-            Marlin.PluginCallbackFunc f;
+            string? uri = null;
+            Marlin.PluginCallbackFunc? f = null;
             store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
             if (uri != null) {
@@ -1512,8 +1535,13 @@ namespace Marlin.Places {
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
-            Gtk.TreePath path;
-            tree_view.get_path_at_pos ((int)event.x, (int)event.y, out path, null, null, null);
+            int tx, ty;
+            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
+            Gtk.TreePath? path = null;
+            tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+
+            if (path == null)
+                return false;
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
@@ -1550,8 +1578,11 @@ namespace Marlin.Places {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
                 return true;
 
-            Gtk.TreePath path;
-            if (clicked_eject_button (out path)) {
+            int tx, ty;
+            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
+
+            Gtk.TreePath? path = null;
+            if (over_eject_button (tx, ty, out path)) { /* returns path whether or not over eject button */
                 eject_or_unmount_bookmark (path);
                 return false;
             }
@@ -1559,8 +1590,6 @@ namespace Marlin.Places {
             if (event.button ==1) {
                 if (event.window != tree_view.get_bin_window ())
                     return false;
-
-                tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
 
                 if (path != null)
                     open_selected_bookmark (store, path,
@@ -1571,6 +1600,10 @@ namespace Marlin.Places {
         }
 
         public bool handle_scroll_event (Gdk.EventScroll event) {
+            /* Ensure tree view has focus when scrolling to avoid unexpected scrolling on clicking */
+            if (!tree_view.has_focus)
+                tree_view.grab_focus ();
+
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
                 return false;
 
@@ -1649,23 +1682,7 @@ namespace Marlin.Places {
             });
          }
 
-        private bool clicked_eject_button (out Gtk.TreePath p) {
-            Gdk.Event event = Gtk.get_current_event ();
-            Gtk.TreePath path = null;
-
-            p = null;
-
-            if ((event.type == Gdk.EventType.BUTTON_PRESS
-              || event.type == Gdk.EventType.BUTTON_RELEASE)
-              && over_eject_button (event.button.x, event.button.y, out path)) {
-                p = path;
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool over_eject_button (double x, double y, out Gtk.TreePath p) {
+        private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
             int width, x_offset, hseparator;
             int eject_button_size;
@@ -1675,10 +1692,11 @@ namespace Marlin.Places {
 
             p = null;
             int cell_x, cell_y;
-            if (tree_view.get_path_at_pos ((int)x, (int)y, out path, out column, out cell_x, out cell_y)) {
+            if (tree_view.get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 if (path == null)
                     return false;
 
+                p = path; /* Return path either way */
                 store.get_iter (out iter, path);
                 store.@get (iter, Column.EJECT, out show_eject);
 
@@ -1692,10 +1710,8 @@ namespace Marlin.Places {
 
                 eject_button_size = 20;
                 x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
-                if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size) {
-                    p = path;
+                if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size)
                     return true;
-                }
             }
 
             return false;
