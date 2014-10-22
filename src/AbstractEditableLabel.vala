@@ -56,6 +56,8 @@ namespace Marlin {
                 case Gdk.Key.z:
                     if (control_pressed)
                         set_text (original_name);
+                    else
+                        return false;
 
                     break;
                 default:
