@@ -44,14 +44,14 @@ namespace FM {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
-            {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
+            {"text/plain", 0, TargetType.STRING},
+            {"text/uri-list", 0, TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] drop_targets = {
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
-            {"_NETSCAPE_URL", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
+            {"text/uri-list", 0, TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", 0, TargetType.TEXT_URI_LIST},
+            {"_NETSCAPE_URL", 0, TargetType.TEXT_URI_LIST}
         };
 
         const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
