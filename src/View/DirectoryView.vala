@@ -2188,6 +2188,13 @@ namespace FM {
 
                     break;
 
+                case Gdk.Key.Menu:
+                case Gdk.Key.MenuKB:
+                    if (no_mods)
+                        show_context_menu (event);
+
+                   return true;
+
                 default:
                     break;
             }
