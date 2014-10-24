@@ -753,10 +753,11 @@ namespace Marlin.View {
                 tip_uri = null;
             }
 
-            if (tabs_added == 0)
-                add_tab ();
-
             freeze_view_changes = false;
+
+            /* Don't attempt to set active tab position if no tabs were restored */
+            if (tabs_added == 0)
+                return 0;
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
             if (active_tab_position >=0 && active_tab_position < tabs_added) {
