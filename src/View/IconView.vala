@@ -191,11 +191,12 @@ namespace FM {
             unowned Gtk.TreePath? p = null;
             unowned Gtk.CellRenderer? r;
             uint zone;
-            int x, y, mask;
+            int x, y;
 
-            get_window ().get_device_position (event.get_device (), out x, out y, out mask);
+            x = (int)event.x;
+            y = (int)event.y;
 
-            tree.get_item_at_pos ((int)event.x, (int)event.y, out p, out r);
+            tree.get_item_at_pos (x, y, out p, out r);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 

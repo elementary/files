@@ -181,7 +181,6 @@ namespace Marlin.View {
             assert (slot.directory != null);
 
             content = view.get_content_box ();
-            plugin_directory_loaded ();
             load_slot_directory (slot);
         }
 
@@ -191,10 +190,11 @@ namespace Marlin.View {
             /* Allow time for the window to update before starting to load directory so that
              * the window is displayed more quickly with the "Loading ... " message
              * when starting the application in, or switching view to, a folder that contains
-             * a large number of files.
+             * a large number of files. Also ensures infobars are added correctly by plugins.
              */           
             Timeout.add (100, () => {
                 slot.directory.load ();
+                plugin_directory_loaded ();
                 return false;
             });
         }
@@ -204,7 +204,8 @@ namespace Marlin.View {
             var slot = get_current_slot ();
             Object[] data = new Object[3];
             data[0] = window;
-            data[1] = slot;
+            /* infobars are added view, not the active slot */
+            data[1] = view;
             data[2] = slot.directory.file;
 
             plugins.directory_loaded ((void*) data);

@@ -1587,7 +1587,8 @@ namespace FM {
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
                 Eel.pop_up_context_menu (menu, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, Eel.DEFAULT_POPUP_MENU_DISPLACEMENT, (Gdk.EventButton) event);
-            }
+            } else
+                warning ("Model is null");
         }
 
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
