@@ -2500,6 +2500,11 @@ debug ("DV on view draw");
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
+                    if (click_zone == ClickZone.NAME ||
+                        (!single_click_rename && click_zone == ClickZone.BLANK_PATH))
+
+                        select_path (path);
+
                     result = handle_secondary_button_click (event);
                     break;
 
