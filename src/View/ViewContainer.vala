@@ -167,13 +167,11 @@ namespace Marlin.View {
 
         public void slot_path_changed (GLib.File loc) {
 //message ("VC slot path changed");
-#if 0 
             /* automagicly enable icon view for icons keypath */
             if (get_current_slot ().directory.uri_contain_keypath_icons && view_mode != Marlin.ViewMode.ICON)
                 change_view_mode (Marlin.ViewMode.ICON, null);
             else
-#endif
-            set_up_current_slot ();
+                set_up_current_slot ();
         }
 
         private void set_up_current_slot () {
