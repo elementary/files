@@ -53,6 +53,9 @@ namespace Marlin.View {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
 
+        /* To maintain compatibility with existing plugins */
+        public signal void path_changed (File file);
+
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
 //message ("New ViewContainer");
@@ -66,10 +69,10 @@ namespace Marlin.View {
             Gdk.RGBA transparent = {0, 0, 0, 0};
             override_background_color (0, transparent);
 
-            /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            /* The overlay is already added in the constructor of the statusbar */
-            //overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+
+            path_changed.connect (user_path_change_request);
+
             change_view_mode (mode, loc);
         }
 
