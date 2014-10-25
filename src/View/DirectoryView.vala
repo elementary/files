@@ -2429,7 +2429,7 @@ debug ("DV on view draw");
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
 
             if (!no_mods)
-                return false;
+                return window.button_press_event (event);
 
             if (!path_selected && (on_blank || !(click_zone == ClickZone.HELPER))){
                 unselect_all ();
@@ -2509,7 +2509,7 @@ debug ("DV on view draw");
                     break;
 
                 default:
-                    result = handle_default_button_click ();
+                    result = handle_default_button_click (event);
                     break;
             }
             return result;
@@ -2647,7 +2647,10 @@ debug ("DV on view draw");
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
-        protected virtual bool handle_default_button_click () {return false;}
+        protected virtual bool handle_default_button_click (Gdk.EventButton event) {
+            /* pass unhandled events to the Marlin.View.Window */
+            return window.button_press_event (event);
+        }
 
         protected virtual void freeze_tree () {
         }

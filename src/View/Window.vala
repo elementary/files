@@ -216,17 +216,7 @@ namespace Marlin.View {
                 return false;
             });
 
-            button_press_event.connect ((event) => {
-                /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
-                if (event.button == 8) {
-                    on_go_back ();
-                    return true;
-                } else if (event.button == 9) {
-                    on_go_forward ();
-                    return true;
-                } else
-                    return false;
-            });
+            button_press_event.connect (on_button_press_event);
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
@@ -284,6 +274,34 @@ namespace Marlin.View {
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
+        }
+
+        private bool on_button_press_event (Gdk.EventButton event) {
+//message ("window button press");
+            Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool result = false;
+            switch (event.button) {
+                /* Extra mouse button actions */
+                case 6:
+                case 8:
+                    if (mods == 0) {
+                        result = true;
+                        on_go_back ();
+                    }
+                    break;
+
+                case 7:
+                case 9:
+                    if (mods == 0) {
+                        result = true;
+                        on_go_forward ();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+            return result;
         }
 
         private void on_go_forward (int n = 1) {

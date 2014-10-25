@@ -132,9 +132,9 @@ namespace FM {
             return result;
         }
 
-        protected override bool handle_default_button_click () {
+        protected override bool handle_default_button_click (Gdk.EventButton event) {
             cancel_await_double_click ();
-            return false;
+            return base.handle_default_button_click (event);
         }
 
         protected override void change_zoom_level () {
