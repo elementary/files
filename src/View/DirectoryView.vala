@@ -1895,7 +1895,6 @@ namespace FM {
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
                                                           slot.location,
-                                                          //slot.directory.location,
                                                           (_("Untitled %s")).printf (template.get_display_name ()),
                                                           template.location,
                                                           (Marlin.CreateCallback?) create_file_done,
@@ -2228,7 +2227,6 @@ debug ("on_motion_notify event");
 
                         break;
                     case ClickZone.BLANK_NO_PATH:
-                        //win.set_cursor (blank_cursor);
                         win.set_cursor (selectable_cursor);
                         break;
                     case ClickZone.ICON:

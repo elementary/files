@@ -153,7 +153,7 @@ namespace Marlin.View {
             colpane.queue_draw ();
         }
 
-        public override void user_path_change_request (GLib.File loc) {
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
 //message ("Slot received user path change signal to loc %s, current location is %s", loc.get_uri (), location.get_uri ());
             assert (loc != null);
 
@@ -161,8 +161,10 @@ namespace Marlin.View {
                 var old_dir = directory;
                 set_up_directory (loc);
                 dir_view.change_directory (old_dir, directory);
-                /* View Container takes care of updating appearance */
-                ctab.slot_path_changed (loc);
+                /* View Container takes care of updating appearance
+                 * If allow_mode_change is false View Container will not automagically
+                 * switch to icon view for icon folders (needed for Miller View) */
+                ctab.slot_path_changed (loc, allow_mode_change);
             } else {
                 ctab.reload ();
             }

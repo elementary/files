@@ -142,13 +142,13 @@ namespace Marlin.View {
 /** Signal handling **/
 /*********************/
 
-        public override void user_path_change_request (GLib.File loc) {
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = false) {
 //message ("MV user path change request %s", loc.get_uri ());
             /* user request always make new root */
             var slot = slot_list.first().data;
             assert (slot != null);
             truncate_list_after_slot (slot);
-            slot.user_path_change_request (loc);
+            slot.user_path_change_request (loc, false);
             root_location = loc;
         }
 
@@ -226,6 +226,10 @@ namespace Marlin.View {
 
         private bool on_key_released (Gtk.Widget box, Gdk.EventKey event) {
 //message ("Miller key release");
+            /* Only handle unmodified keys */
+            if ((event.state & Gtk.accelerator_get_default_mod_mask ()) > 0)
+                return false;
+
             int current_position = slot_list.index (current_slot);
             Marlin.View.Slot to_activate = null;
 

@@ -47,7 +47,6 @@ namespace Marlin {
         }
 
         private void set_widget (Gtk.Widget? widget) {
-debug ("set  widget");
             Pango.FontMetrics metrics;
             Pango.Context context;
             int focus_padding;
