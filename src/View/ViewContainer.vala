@@ -141,9 +141,10 @@ namespace Marlin.View {
                     view = new Slot (loc, this, mode);
 
                 view_mode = mode;
-                slot_path_changed (loc);
+                set_up_current_slot ();
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
+                window.update_top_menu ();
             }
         }
 
