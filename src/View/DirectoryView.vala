@@ -1933,8 +1933,8 @@ namespace FM {
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter) {
                         file = model.file_for_iter (iter);
-                        /* only ask thumbnails once per file */
-                        if (file != null && file.flags == 0)
+                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
+                        if (file != null && file.flags < 2)
                             visible_files.prepend (file);
 
                         /* check if we've reached the end of the visible range */
