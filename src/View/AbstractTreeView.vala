@@ -57,7 +57,6 @@ namespace FM {
         protected void set_up_view () {
 //message ("ATV tree view set up view");
             connect_tree_signals ();
-            Preferences.settings.bind ("single-click", tree, "activate-on-single-click", GLib.SettingsBindFlags.GET);
         }
 
         protected override void set_up_name_renderer () {

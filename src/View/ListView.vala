@@ -147,6 +147,7 @@ namespace FM {
             base.create_view ();
             tree.set_show_expanders (true);
             tree.set_headers_visible (true);
+            tree.set_rubber_banding (true);
             append_extra_tree_columns ();
             connect_additional_signals ();
             return tree as Gtk.Widget;

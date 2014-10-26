@@ -1563,8 +1563,7 @@ namespace FM {
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    drag_delay,
                                                    () => {
-                disconnect_drag_timeout_motion_and_release_events ();
-                drag_timer_id = 0;
+                /* on_drag_timeout_button_release disconnects signals and cancels timer */
                 on_drag_timeout_button_release((Gdk.EventButton)event);
                 return false;
             });
@@ -2395,17 +2394,12 @@ debug ("DV on view draw");
             drag_data = view.get_data ("gtk-site-data");
             GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
             dnd_disabled = true;
-            if (view is Gtk.TreeView)
-                (view as Gtk.TreeView).set_rubber_banding (true);
         }
 
         protected void unblock_drag_and_drop () {
 //message ("unblock_drag_and_drop");
-            drag_data = view.get_data ("gtk-site-data");
             GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
             dnd_disabled = false;
-            if (view is Gtk.TreeView)
-                (view as Gtk.TreeView).set_rubber_banding (false);
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
