@@ -306,6 +306,16 @@ namespace Marlin.View {
         public virtual signal void go_up () {
             action_go_up ();
         }
+        
+        [Signal (action=true)]
+        public virtual signal void go_back () {
+            action_go_back ();
+        }
+        
+        [Signal (action=true)]
+        public virtual signal void go_forward () {
+            action_go_forward ();
+        }
 
         [Signal (action=true)]
         public virtual signal void edit_path () {
