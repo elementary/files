@@ -45,7 +45,7 @@ namespace Marlin {
                 entry = new Marlin.SingleLineEditableLabel ();
 
             entry.editing_done.connect (on_entry_editing_done);
-            entry.editable_widget.focus_out_event.connect (on_entry_focus_out_event);
+            entry.get_real_editable ().focus_out_event.connect (on_entry_focus_out_event);
         }
 
 

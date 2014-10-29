@@ -28,6 +28,10 @@ namespace Marlin {
             return textview as Gtk.Widget;
         }
 
+        public override Gtk.Widget get_real_editable () {
+            return textview;
+        }
+
         public override void set_text (string text) {
             textview.set_text (text);
             original_name = text;

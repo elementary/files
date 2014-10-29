@@ -33,7 +33,7 @@ namespace Marlin {
             editable_widget = create_editable_widget ();
             add (editable_widget);
             show_all ();
-            editable_widget.key_press_event.connect (on_key_press_event);
+            get_real_editable ().key_press_event.connect (on_key_press_event);
         } 
 
         public bool on_key_press_event (Gdk.EventKey event) {
@@ -59,6 +59,7 @@ namespace Marlin {
                         return false;
 
                     break;
+
                 default:
                     return false;
             }
@@ -85,6 +86,7 @@ namespace Marlin {
         public abstract int get_position ();
         public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
+        public abstract Gtk.Widget get_real_editable ();
 
 
         /** CellEditable interface */
