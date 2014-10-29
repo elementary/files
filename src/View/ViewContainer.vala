@@ -226,10 +226,11 @@ namespace Marlin.View {
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
+            browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
+
             window.loading_uri (loc.get_uri ());
             window.update_top_menu ();
             window.update_labels (loc.get_parse_name (), tab_name);
-            browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
             window.set_can_go_back (browser.get_can_go_back ());
             window.set_can_go_forward (browser.get_can_go_forward ());
         }
