@@ -2664,15 +2664,10 @@ namespace FM {
             return window.button_press_event (event);
         }
 
-        protected virtual void thaw_tree () {
-            queue_draw ();
-        }
-
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
         protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
-        protected virtual void freeze_tree () {}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -2684,6 +2679,10 @@ namespace FM {
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
+        public abstract void set_cursor (Gtk.TreePath? path,
+                                         bool start_editing,
+                                         bool select,
+                                         bool scroll_to_top);
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
@@ -2700,10 +2699,11 @@ namespace FM {
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);
-        public abstract void set_cursor (Gtk.TreePath? path,
-                                         bool start_editing,
-                                         bool select,
-                                         bool scroll_to_top);
+        protected abstract void freeze_tree ();
+        protected abstract void thaw_tree ();
+
+
+        
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

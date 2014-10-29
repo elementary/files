@@ -293,17 +293,17 @@ namespace FM {
             return path;
         }
 
-        /* These two functions accelerate the loading of icon view for large folders */
+        /* These two functions accelerate the loading of Views especially for large folders
+         * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
-            base.freeze_tree ();
             tree.freeze_child_notify ();
             tree.set_model (null);
         }
 
         protected override void thaw_tree () {
-            base.thaw_tree ();
             tree.set_model (model);
             tree.thaw_child_notify ();
+            queue_draw ();
         }
     }
 }
