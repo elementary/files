@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-10-06 19:04+0000\n"
+"PO-Revision-Date: 2014-10-19 14:43+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:10+0000\n"
+"X-Launchpad-Export-Date: 2014-10-20 06:54+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1321,49 +1321,66 @@ msgstr[1] "Encore %'d fichiers à mettre à la corbeille"
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
 msgstr ""
+"Impossible de déplacer le fichier vers la corbeille ou de le supprimer"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Impossible de supprimer ou déplacer des fichiers dans la corbeille dans un "
+"système de fichiers en lecture seule."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Impossible de supprimer ou déplacer des fichiers dans la corbeille si vous "
+"n'avez pas les droits d'écriture dans le dossier parent."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Impossible de supprimer ou déplacer des fichiers dans la corbeille dont vous "
+"n'avez pas les droits d'écriture."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Impossible de déplacer le fichier dans la corbeille. Essayer de le supprimer "
+"directement ?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Ce fichier n'a pas pu être déplacé dans la corbeille. Veuillez vous référer "
+"aux détails ci-dessous pour plus d'informations."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Impossible de déplacer le fichier dans la corbeille. Essayer de le supprimer "
+"?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Impossible de déplacer le fichier dans la corbeille. Vous le pouvez pas non "
+"plus le supprimer."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Supprimer un fichier est irréversible."
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -2439,16 +2456,16 @@ msgstr "Aller à %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Se connecter à un serveur…"
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Se connecter à un serveur de fichier distant"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Ces fichiers peuvent être supprimés en vidant la corbeille."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Vider la corbeille"

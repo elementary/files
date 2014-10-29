@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-08-04 20:50+0000\n"
-"Last-Translator: alessandro <pepealex98@gmail.com>\n"
+"PO-Revision-Date: 2014-10-19 14:42+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:13+0000\n"
+"X-Launchpad-Export-Date: 2014-10-20 06:54+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1309,50 +1309,62 @@ msgstr[1] "%'d files left to move to Rubbish Bin"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Cannot move file to the Rubbish Bin or delete it"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"It is not permitted to move to the Rubbish Bin or delete files on a read "
+"only filesystem."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"It is not permitted to move to the Rubbish Bin or delete files inside "
+"folders for which you do not have write privileges."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"It is not permitted to move to the Rubbish Bin or delete folders for which "
+"you do not have write privileges."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Cannot move file to the Rubbish Bin. Try to delete it immediately?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"This file could not be moved to the Rubbish Bin. See details below for "
+"further information."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Cannot move file to the Rubbish Bin.  Try to delete it?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"This file could not be moved to the Rubbish Bin. You may not be able to "
+"delete it either."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Deleting a file removes it permanently"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -2425,16 +2437,16 @@ msgstr "Go to %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Connect to Server…"
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Connect to a network file server"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "These items may be deleted by emptying the Rubbish Bin."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Empty the Rubbish Bin"

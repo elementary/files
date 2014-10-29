@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-10-16 08:14+0000\n"
+"PO-Revision-Date: 2014-10-21 17:53+0000\n"
 "Last-Translator: ProsjektX <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:11+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-10-22 06:05+0000\n"
+"X-Generator: Launchpad (build 17203)\n"
 "Language: nb\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -52,11 +52,11 @@ msgstr "Denne mappen er tom."
 
 #: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr "_Sorter oppføringer"
+msgstr "_Sorter elementer"
 
 #: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr "Om_vendt Rekkefølge"
+msgstr "Om_vendt rekkefølge"
 
 #: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
@@ -72,7 +72,7 @@ msgstr "Behold ikoner sortert etter navn i rader"
 
 #: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr "Etter _Størrelse"
+msgstr "Etter _størrelse"
 
 #: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
@@ -80,7 +80,7 @@ msgstr "Behold ikoner sortert etter størrelse i rader"
 
 #: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr "Etter _Type"
+msgstr "Etter _type"
 
 #: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
@@ -109,14 +109,14 @@ msgstr "Ugyldig filnavn gitt av XDS dra nettstedet"
 #: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Kunne ikke opprette lenke for URL-en «%s»"
+msgstr "Kunne ikke opprette lenke for nettadressen «%s»"
 
 #: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Bruk «%s» til å åpne valgt oppføring"
-msgstr[1] "Bruk «%s» til å åpne valgte oppføringer"
+msgstr[0] "Bruk «%s» for å åpne valgte element"
+msgstr[1] "Bruk «%s» for å åpne valgte elementer"
 
 #: ../src/fm-directory-view.c:2037
 #, c-format
@@ -145,11 +145,11 @@ msgstr "Åpne i ny _fane"
 #: ../src/fm-directory-view.c:2347
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "Åpne i %'d nye vinduer"
+msgstr "Åpne i %'d nye _vinduer"
 
 #: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
-msgstr "Åpne i Nytt _vindu"
+msgstr "Åpne i nytt _vindu"
 
 #: ../src/fm-directory-view.c:3792
 msgid "Set as default"
@@ -157,17 +157,17 @@ msgstr "Bruk som standard"
 
 #: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Gjør klar valgte filer for flytting med kommandoen «Lim inn filer»"
+msgstr "Gjør klar valgte filer for flytting med «Lim inn» funksjonen"
 
 #: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Gjør klar valgte filer for kopiering med kommandoen «Lim inn filer»"
+msgstr "Gjør klar valgte filer for kopiering med «Lim inn» funksjonen"
 
 #: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
-"Flytt eller kopier filer som er valgt tidligere med kommandoene «Klipp ut "
-"filer» eller «Kopier filer»"
+"Flytt eller kopier filer tidligere valgt med funksjonen «Klipp ut» eller "
+"«Kopier»"
 
 #: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
@@ -178,8 +178,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Flytt eller kopier filer tidligere valgt av klipp ut eller kopier til valgt "
-"mappe"
+"Flytt eller kopier filer tidligere valgt av «Klipp ut» eller «Kopier» til "
+"valgt mappe"
 
 #: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
@@ -187,7 +187,7 @@ msgstr "_Gi nytt navn..."
 
 #: ../src/fm-directory-view.c:3860
 msgid "Rename selected item"
-msgstr "Endre navn på valgt oppføring"
+msgstr "Endre navn på valgte element"
 
 #: ../src/fm-directory-view.c:3863
 msgid "Create New _Folder"
@@ -199,7 +199,7 @@ msgstr "Lag en ny tom mappe i denne mappen"
 
 #: ../src/fm-directory-view.c:3866
 msgid "Create New _File"
-msgstr "Lag en Ny _Fil"
+msgstr "Lag en ny _fil"
 
 #: ../src/fm-directory-view.c:3868
 msgid "_Empty File"
@@ -211,7 +211,7 @@ msgstr "Lag en ny tom fil i denne mappen"
 
 #: ../src/fm-directory-view.c:3873
 msgid "Open the selected item"
-msgstr "Åpne den valgte oppføringen"
+msgstr "Åpne det valgte elementet"
 
 #: ../src/fm-directory-view.c:3880
 msgid "Open in new Window"
@@ -219,11 +219,11 @@ msgstr "Åpne i et nytt vindu"
 
 #: ../src/fm-directory-view.c:3881
 msgid "Open each selected item in a new window"
-msgstr "Åpne hver valgte oppføring i nytt vindu"
+msgstr "Åpne hver valgte element i nytt vindu"
 
 #: ../src/fm-directory-view.c:3885
 msgid "Open each selected item in a new tab"
-msgstr "Åpne hver valgt oppføring i ny fane"
+msgstr "Åpne hver valgt element i ny fane"
 
 #: ../src/fm-directory-view.c:3887
 msgid "Open Wit_h"
@@ -231,7 +231,7 @@ msgstr "Åpne _med"
 
 #: ../src/fm-directory-view.c:3888
 msgid "Choose a program with which to open the selected item"
-msgstr "Velg et program du vil åpne valgte oppføring med"
+msgstr "Velg et program du vil åpne valgte element med"
 
 #: ../src/fm-directory-view.c:3890
 msgid "Other _Application..."
@@ -239,7 +239,7 @@ msgstr "Annet _program…"
 
 #: ../src/fm-directory-view.c:3891
 msgid "Choose another application with which to open the selected item"
-msgstr "Velg et annet program du vil åpne valgt oppføring med"
+msgstr "Velg et annet program du vil åpne valgt element med"
 
 #: ../src/fm-directory-view.c:3894
 msgid "Mo_ve to Trash"
@@ -247,7 +247,7 @@ msgstr "Fl_ytt til papirkurven"
 
 #: ../src/fm-directory-view.c:3895
 msgid "Move each selected item to the Trash"
-msgstr "Flytt hver valgt oppføring til papirkurven"
+msgstr "Flytt hvert valgte element til papirkurven"
 
 #: ../src/fm-directory-view.c:3898
 msgid "_Delete Permanently"
@@ -255,7 +255,7 @@ msgstr "_Slett permanent"
 
 #: ../src/fm-directory-view.c:3899
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "Slett hver valgt oppføring, uten å flytte dem til Papirkurven"
+msgstr "Slett hvert valgte element, uten å flytte dem til papirkurven"
 
 #: ../src/fm-directory-view.c:3902
 msgid "_Restore"
@@ -263,7 +263,7 @@ msgstr "_Gjenopprett"
 
 #: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
 msgid "Select All"
-msgstr "Velg Alle"
+msgstr "Velg alle"
 
 #: ../src/fm-directory-view.c:3910
 msgid "_Properties"
@@ -271,7 +271,7 @@ msgstr "_Egenskaper"
 
 #: ../src/fm-directory-view.c:3911
 msgid "View or modify the properties of each selected item"
-msgstr "Vis eller modifiser egenskapene for hver av de valgte oppføringene"
+msgstr "Vis eller modifiser egenskapene for hvert av de valgte elementene"
 
 #: ../src/fm-directory-view.c:4024
 msgid "Set Color:"
@@ -291,7 +291,7 @@ msgstr "Ikonvisning"
 
 #: ../src/exo-icon-view.c:864
 msgid "Layout mode"
-msgstr "Oppsettetmodus"
+msgstr "Oppsettsmodus"
 
 #: ../src/exo-icon-view.c:865
 msgid "The layout mode"
@@ -349,11 +349,11 @@ msgstr "Finner ikke tjeneren på «%s»."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "Prøv Igjen"
+msgstr "Prøv igjen"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Kontroller brukardata."
+msgstr "Kontroller brukerdata."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -386,7 +386,7 @@ msgstr "_Type:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr "_Del:"
+msgstr "_Delt ressurs:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
@@ -430,7 +430,7 @@ msgstr "_Lag lenke her"
 
 #: ../src/marlin-dnd.c:117
 msgid "Set as _Background"
-msgstr "Sett som _Bakgrunn"
+msgstr "Sett som _bakgrunn"
 
 #: ../src/marlin-dnd.c:124
 msgid "Cancel"
@@ -444,7 +444,7 @@ msgstr "Klarte ikke å kjøre fil \"%s\""
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr "Slett %d kopierte oppføringer"
+msgstr "Slett %d kopierte elementer"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #: ../libcore/marlin-undostack-manager.c:1215
@@ -456,12 +456,12 @@ msgstr "Slett «%s»"
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Slett %d duplikerte oppføringer"
+msgstr "Slett %d dupliserte elementer"
 
 #: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Flytt %d oppføringer tilbake til «%s»"
+msgstr "Flytt %d elementer tilbake til «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -478,7 +478,7 @@ msgstr "Endre navn på «%s» til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "Gjenopprett %d oppføringer fra papirkurven"
+msgstr "Gjenopprett %d elementer fra papirkurven"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
@@ -488,7 +488,7 @@ msgstr "Gjenopprett «%s» til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "Flytt %d oppføringer tilbake til papirkurven"
+msgstr "Flytt %d elementer tilbake til papirkurven"
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -508,8 +508,7 @@ msgstr "Slett lenke til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-"Gjenopprett opprinnelige rettigheter på oppføringene som ligger i «%s»"
+msgstr "Gjenopprett opprinnelige rettigheter på elementene som ligger i «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
@@ -529,7 +528,7 @@ msgstr "Gjenopprett eierskapsforhold av «%s» til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Kopier %d oppføringer til «%s»"
+msgstr "Kopier %d elementer til «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
@@ -539,17 +538,17 @@ msgstr "Kopier «%s» til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Duplikat av %d oppføringer i «%s»"
+msgstr "Duplikat av %d elementer i «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Dupliserer «%s» i «%s»"
+msgstr "Duplikat «%s» i «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Flytt %d oppføringer til «%s»"
+msgstr "Flytt %d elementer til «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
@@ -574,7 +573,7 @@ msgstr "Lag en ny mappe «%s»"
 #: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "Flytt %d oppføringer til papirkurven"
+msgstr "Flytt %d elementer til papirkurven"
 
 #: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
@@ -599,7 +598,7 @@ msgstr "Opprett lenke til «%s»"
 #: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Sett rettigheter på oppføringer som ligger i «%s»"
+msgstr "Sett rettigheter på elementer som ligger i «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1482
 #, c-format
@@ -627,8 +626,8 @@ msgstr[1] "_Angre kopiering av %d elementer"
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Angre duplikering av %d element"
-msgstr[1] "_Angre duplikering av %d elementer"
+msgstr[0] "_Angre duplisering av %d element"
+msgstr[1] "_Angre duplisering av %d elementer"
 
 #: ../libcore/marlin-undostack-manager.c:1543
 #, c-format
@@ -822,7 +821,7 @@ msgstr "lenke til %s"
 #: ../libcore/gof-file.c:1748
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Kunne ikke tolke skrivebordsfil:%s"
+msgstr "Kunne ikke tolke skrivebordsfil: %s"
 
 #: ../libcore/gof-file.c:1786
 msgid "No Exec field specified"
@@ -854,32 +853,33 @@ msgstr "Vis flere _detaljer"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "I dag ved %-I:%M %p"
+msgstr "I dag %H:%M"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "I går ved %-I:%M %p"
+msgstr "I går %H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b den %-I:%M %p"
+msgstr "%a %-d. %b %H:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d. %b %Y %H:%M"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Flett mappe «%s»?"
+msgstr "Slå sammen mappe «%s»?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:373
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr "Fletting vil be om bekreftelse før konflikterende filer overskrives"
+msgstr ""
+"Slå sammen vil be om bekreftelse før konflikterende filer overskrives."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:378
@@ -925,7 +925,7 @@ msgstr "Erstatt fil \"%s\"?"
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:402
 msgid "Replacing it will overwrite its content."
-msgstr "Hvis du erstatter den vil du skrive over innholdet."
+msgstr "Erstatte den vil skrive over innholdet."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:406
@@ -979,7 +979,7 @@ msgstr "Erstatt med"
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:515
 msgid "Merge"
-msgstr "Sammenføy"
+msgstr "Slå sammen"
 
 #: ../libcore/marlin-file-conflict-dialog.c:709
 msgid "_Select a new name for the destination"
@@ -1098,7 +1098,7 @@ msgstr "%'dre lenke til %s"
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr "%'dre lenke til %s"
+msgstr "%'ddde lenke til %s"
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
@@ -1187,28 +1187,28 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Er du sikker på at du vil slette %'d valgt oppføring i papirkurven permanent?"
+"Er du sikker på at du vil slette %'d valgt element i papirkurven permanent?"
 msgstr[1] ""
-"Er du sikker på at du vil slette %'d valgte oppføringer i papirkurven "
+"Er du sikker på at du vil slette %'d valgte elementer i papirkurven "
 "permanent?"
 
 #: ../libcore/marlin-file-operations.c:1396
 #: ../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Hvis du sletter en oppføring vil den bli borte for godt."
+msgstr "Hvis du sletter et element vil det bli slettet permanent."
 
 #: ../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr "Tøm papirkurven?"
+msgstr "Tømme papirkurven?"
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle oppføringer i papirkurven vil fjernes for godt."
+msgstr "Alle elementer i papirkurven vil slettes permanent."
 
 #: ../libcore/marlin-file-operations.c:1424
 #: ../libcore/marlin-file-operations.c:2405 ../src/View/Sidebar.vala:1242
 msgid "Empty _Trash"
-msgstr "Tøm _Papirkurven"
+msgstr "Tøm _papirkurven"
 
 #: ../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1219,9 +1219,8 @@ msgstr "Er du sikker på at du vil slette «%B» permanent?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Er du sikker på at du vil slette %'d valgt oppføring permanent?"
-msgstr[1] ""
-"Er du sikker på at du vil slette %'d valgte oppføringer permanent?"
+msgstr[0] "Er du sikker på at du vil slette %'d valgt element permanent?"
+msgstr[1] "Er du sikker på at du vil slette %'d valgte elementer permanent?"
 
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:1512
@@ -1390,11 +1389,11 @@ msgid ""
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 "Papirkurven må tømmes for å få tilbake ledig plass på dette volumet. Alle "
-"oppføringer i papirkurven vil bli borte permanent."
+"elementer i papirkurven vil bli borte permanent."
 
 #: ../libcore/marlin-file-operations.c:2403
 msgid "Do _not Empty Trash"
-msgstr "Ikke_ tøm papirkurv"
+msgstr "_Ikke tøm papirkurv"
 
 #: ../libcore/marlin-file-operations.c:2517
 #, c-format
@@ -1405,21 +1404,21 @@ msgstr "Kan ikke montere %s"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Forbereder kopiering av %'d fil (%S) …"
+msgstr[0] "Forbereder kopiering av %'d fil (%S)…"
 msgstr[1] "Forbereder kopiering av %'d filer (%S)..."
 
 #: ../libcore/marlin-file-operations.c:2601
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Forbereder flytting av %'d fil (%S) …"
+msgstr[0] "Forbereder flytting av %'d fil (%S)…"
 msgstr[1] "Forbereder flytting av %'d filer (%S)..."
 
 #: ../libcore/marlin-file-operations.c:2607
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Forbereder sletting av %'d fil (%S) …"
+msgstr[0] "Forbereder sletting av %'d fil (%S)…"
 msgstr[1] "Forbereder sletting av %'d filer (%S)..."
 
 #: ../libcore/marlin-file-operations.c:2613
@@ -1451,7 +1450,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappeb «%B» kan ikke håndteres fordi du ikke har rettigheter til å "
+"Filer i mappen «%B» kan ikke håndteres fordi du ikke har rettigheter til å "
 "se dem."
 
 #: ../libcore/marlin-file-operations.c:2755
@@ -1481,11 +1480,11 @@ msgstr "Feil under kopiering til «%B»."
 
 #: ../libcore/marlin-file-operations.c:2939
 msgid "You do not have permissions to access the destination folder."
-msgstr "Du har ikke rettigheter til å apne målmappen."
+msgstr "Du har ikke rettigheter til å åpne målmappen."
 
 #: ../libcore/marlin-file-operations.c:2941
 msgid "There was an error getting information about the destination."
-msgstr "Det oppsto en feil under henting av informsjon om målkatalog."
+msgstr "Det oppsto en feil under henting av informsjon om målmappen."
 
 #: ../libcore/marlin-file-operations.c:2978
 msgid "The destination is not a folder."
@@ -1746,11 +1745,11 @@ msgstr "Tømmer papirkurv"
 #: ../libcore/marlin-file-utilities.c:118
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Kunne ikke fastslå opprinnelig lokasjon for \"%s\" "
+msgstr "Kunne ikke fastslå opprinnelig lokasjon for «%s» "
 
 #: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
-msgstr "Oppføringen kan ikke gjenopprettes fra papirkurven"
+msgstr "Elementet kan ikke gjenopprettes fra papirkurven"
 
 #: ../src/View/LocationBar.vala:123
 msgid "AFP"
@@ -1806,7 +1805,7 @@ msgstr "Launchpad oversettere"
 
 #: ../src/View/Window.vala:138
 msgid "Files isn't your default file manager."
-msgstr "Filer ikke er din standard filbehandler."
+msgstr "Filer er ikke din standard filbehandler."
 
 #: ../src/View/Window.vala:144
 msgid "Set as Default"
@@ -1826,11 +1825,11 @@ msgstr "Angre siste handling"
 
 #: ../src/View/Window.vala:442
 msgid "Redo"
-msgstr "Gjenta"
+msgstr "Gjør om"
 
 #: ../src/View/Window.vala:443 ../src/View/Window.vala:764
 msgid "Redo the last action"
-msgstr "Gjenopprett siste handling"
+msgstr "Gjør om siste handling"
 
 #: ../src/View/Window.vala:739
 msgid "_File"
@@ -1894,11 +1893,11 @@ msgstr "Søk den gjeldende mappen"
 
 #: ../src/View/Window.vala:769
 msgid "Open _Parent"
-msgstr "Åpne_overnevnt"
+msgstr "Åpne _overordnet"
 
 #: ../src/View/Window.vala:770
 msgid "Open the parent folder"
-msgstr "Åpne opphavsmappen"
+msgstr "Åpne den overordnede mappen"
 
 #: ../src/View/Window.vala:772
 msgid "_Back"
@@ -1906,7 +1905,7 @@ msgstr "_Tilbake"
 
 #: ../src/View/Window.vala:773
 msgid "Go to the previous visited location"
-msgstr "Gå til forrige adresselokasjon"
+msgstr "Gå til forrige besøkte lokasjon"
 
 #: ../src/View/Window.vala:776
 msgid "_Forward"
@@ -1914,7 +1913,7 @@ msgstr "_Framover"
 
 #: ../src/View/Window.vala:777
 msgid "Go to the next visited location"
-msgstr "Gå til neste besøkte adresse"
+msgstr "Gå til neste besøkte lokasjon"
 
 #: ../src/View/Window.vala:779
 msgid "_Reload"
@@ -1946,7 +1945,7 @@ msgstr "_Nettverk"
 
 #: ../src/View/Window.vala:792
 msgid "Browse bookmarked and local network locations"
-msgstr "Bla gjennom lokale nettverkslokasjoner og bokmerker"
+msgstr "Bla igjennom lokale nettverkslokasjoner og bokmerker"
 
 #: ../src/View/Window.vala:795
 msgid "Zoom _In"
@@ -1974,15 +1973,15 @@ msgstr "Bruk normal visningsstørrelse"
 
 #: ../src/View/Window.vala:819
 msgid "Next Tab"
-msgstr "Neste Fane"
+msgstr "Neste fane"
 
 #: ../src/View/Window.vala:823
 msgid "Previous Tab"
-msgstr "Forrige Fane"
+msgstr "Forrige fane"
 
 #: ../src/View/Window.vala:827
 msgid "Connect to _Server..."
-msgstr "Koble til _Tjener …"
+msgstr "Koble til _tjener …"
 
 #: ../src/View/Window.vala:828
 msgid "Connect to a remote computer or shared disk"
@@ -1998,7 +1997,7 @@ msgstr "Vis rulletekst"
 
 #: ../src/View/Window.vala:835
 msgid "Report a Problem..."
-msgstr "Rapporter et Problem"
+msgstr "Rapporter et problem"
 
 #: ../src/View/Window.vala:836
 msgid "File a bug on Launchpad"
@@ -2006,7 +2005,7 @@ msgstr "Send inn en feilrapport på Launchpad"
 
 #: ../src/View/Window.vala:839
 msgid "Get Help Online..."
-msgstr "Få hjelp på nettet …"
+msgstr "Få hjelp på nettet…"
 
 #: ../src/View/Window.vala:843
 msgid "Translate This Application..."
@@ -2026,7 +2025,7 @@ msgstr "_Steder"
 
 #: ../src/View/Window.vala:858
 msgid "Change the visibility of this window's side pane"
-msgstr "Endre synligheten for dette vinduets sidelinje"
+msgstr "Endre synligheten for dette vinduets siderute"
 
 #: ../src/View/Window.vala:866
 msgid "Icon"
@@ -2054,7 +2053,7 @@ msgstr "Hjem"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr "Åpne søppelkassa"
+msgstr "Åpne papirkurven"
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
@@ -2062,7 +2061,7 @@ msgstr "Enheter"
 
 #: ../src/View/Sidebar.vala:447
 msgid "Your local partitions and devices"
-msgstr "Din lokale partisjoner og enheter"
+msgstr "Dine lokale partisjoner og enheter"
 
 #: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
 msgid "File System"
@@ -2086,7 +2085,7 @@ msgstr "Hele nettverket"
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
-msgstr "Bla gjennom innholdet på nettverket"
+msgstr "Bla igjennom innholdet på nettverket"
 
 #: ../src/View/Sidebar.vala:1115
 msgid "Unable to start %s"
@@ -2206,7 +2205,7 @@ msgstr "Denne mappen finnes ikke."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr "Mappen \"%s\" kan ikke bli funnet."
+msgstr "Mappen «%s» kan ikke bli funnet."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -2214,7 +2213,7 @@ msgstr "Opprett"
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr "Lag mappen \"%s\""
+msgstr "Lag mappen «%s»"
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -2260,7 +2259,7 @@ msgstr "Opprettet"
 
 #: ../src/View/PropertiesWindow.vala:410
 msgid "Last Access"
-msgstr "Siste Tilgang"
+msgstr "Siste tilgang"
 
 #: ../src/View/PropertiesWindow.vala:416
 msgid "Deleted"
@@ -2276,7 +2275,7 @@ msgstr "Mime-typer"
 
 #: ../src/View/PropertiesWindow.vala:449
 msgid "Location"
-msgstr "Sted."
+msgstr "Sted"
 
 #: ../src/View/PropertiesWindow.vala:452
 msgid "Target"
@@ -2430,7 +2429,7 @@ msgstr "Gå til %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr "Kobler til tjener..."
+msgstr "Koble til tjener..."
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
@@ -2442,4 +2441,4 @@ msgstr "Disse elementene kan slettes ved å tømme papirkurven."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr "Tøm papirkurven."
+msgstr "Tøm papirkurven"
