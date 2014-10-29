@@ -164,7 +164,8 @@ public class GOF.Directory.Async : Object {
                 }
             }
 
-            done_loading ();
+            if (!cancellable.is_cancelled ())
+                done_loading ();
         }
     }
 
