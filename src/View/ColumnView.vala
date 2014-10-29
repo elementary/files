@@ -112,6 +112,7 @@ namespace FM {
                     });
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+                should_activate = false;
                 cancel_await_double_click ();
 
                 if (selected_folder != null)

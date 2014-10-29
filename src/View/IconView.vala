@@ -303,7 +303,6 @@ namespace FM {
         protected override void thaw_tree () {
             tree.set_model (model);
             tree.thaw_child_notify ();
-            queue_draw ();
         }
     }
 }

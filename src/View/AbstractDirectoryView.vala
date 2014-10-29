@@ -201,6 +201,7 @@ namespace FM {
         public bool select_added_files = false;
         protected bool renaming = false;
         private bool updates_frozen = false;
+        protected bool tree_frozen = false;
         private bool in_trash = false;
         protected bool is_loading;
         protected bool helpers_shown;
@@ -2445,6 +2446,7 @@ namespace FM {
             drag_y = (int)(event.y);
 
             bool result = true;
+            should_activate = false;
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:

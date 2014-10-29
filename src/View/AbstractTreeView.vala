@@ -268,12 +268,15 @@ namespace FM {
         protected override void freeze_tree () {
             tree.freeze_child_notify ();
             tree.set_model (null);
+            tree_frozen = true;
         }
 
         protected override void thaw_tree () {
-            tree.set_model (model);
-            tree.thaw_child_notify ();
-            queue_draw ();
+            if (tree_frozen) {
+                tree.set_model (model);
+                tree.thaw_child_notify ();
+                tree_frozen = false;
+            }
         }
     }
 }
