@@ -355,7 +355,7 @@ namespace Marlin.View {
             dir.cancel ();
             dir.need_reload.disconnect (reload);
             dir.remove_dir_from_cache ();
-            dir.load ();
+            change_view (view_mode, null);
         }
 
         public void update_location_state (bool save_history) {
