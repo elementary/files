@@ -47,7 +47,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 slot.add_extra_widget (infobar);
                 infobar.show_all ();
             }
-        } else {
+        } else if (infobar != null) {
             infobar.destroy ();
             infobar = null;
         }
