@@ -45,7 +45,6 @@ namespace Marlin.View {
         private GLib.List<unowned GOF.File>? selected_files = null;
 
         public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
-//message ("New Overlay Bar");
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             window = win;
@@ -60,7 +59,6 @@ namespace Marlin.View {
         }
 
         public void on_selection_changed (GLib.List<GOF.File>? files = null) {
-//message ("overlay selection changed");
             if (files != null)
                 selected_files = files.copy ();
             else
@@ -74,7 +72,6 @@ namespace Marlin.View {
         }
 
         private void update_hovered (GOF.File? file) {
-//message ("update hovered");
             GLib.List<GOF.File> list = null;
             if (file != null) {
                 bool matched = false;
@@ -97,7 +94,6 @@ namespace Marlin.View {
         }
 
        private void real_update (GLib.List<GOF.File>? files) {
-//message ("Overlay bar real update");
             count = 0;
             goffile = null;
             folders_count = 0;
@@ -125,7 +121,6 @@ namespace Marlin.View {
         }
 
         private void update_status () {
-//message ("update status");
             /* if we're still collecting image info, cancel */
             if (image_cancellable != null) {
                 image_cancellable.cancel ();
@@ -176,7 +171,6 @@ namespace Marlin.View {
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
-//message ("scan list");
             if (files == null)
                 return;
 

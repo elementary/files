@@ -25,12 +25,10 @@ namespace Marlin.View.Chrome
         public Breadcrumbs bread;
 
         private string _path;
-        //public new string path {
         public new string path {
             set {
                 var new_path = GLib.Uri.unescape_string (value);
                 if (new_path != null) {
-//message ("setting new path -  %s", new_path);
                     _path = new_path;
 
                     if (!bread.is_focus && !win.freeze_view_changes) {
@@ -61,7 +59,6 @@ namespace Marlin.View.Chrome
         }
 
         public LocationBar (Marlin.View.Window win) {
-//message ("New LocationBar");
             this.win = win;
             bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
@@ -89,7 +86,6 @@ namespace Marlin.View.Chrome
         }
 
         private void on_path_changed (File file) {
-//message ("LB on path changed");
             if (win.freeze_view_changes)
                 return;
 
@@ -297,7 +293,6 @@ namespace Marlin.View.Chrome
         }
 
         public void on_need_completion () {
-//message ("on need completion - text is %s", text);
             File file = get_file_for_path (text);
             to_search = file.get_basename ();
             autocompleted = false;

@@ -40,7 +40,6 @@ namespace Marlin.View.Chrome
         }
 
         public TopMenu (Marlin.View.Window window) {
-//message ("New TopMenu");
             win = window;
 
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
@@ -121,7 +120,6 @@ namespace Marlin.View.Chrome
         }
 
         public void update_location_bar (string new_path) {
-//message ("TM New path is %s", new_path);
             location_bar.path = new_path;
         }
 

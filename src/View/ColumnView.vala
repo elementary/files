@@ -18,33 +18,24 @@
 
 
 namespace FM {
-    /* View for use within the Miller View only */
     public class ColumnView : AbstractTreeView {
-    /** Miller View support */
+        /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
         private unowned GOF.File? selected_folder = null;
 
         public ColumnView (Marlin.View.Slot _slot) {
-//message ("New column view");
             base (_slot);
-            /* We do not need to load the directory - this is done by Miller */
+            /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
-        ~ColumnView () {
-//message ("CV destgructor");
-        }
-
-    /** Modified Signal handler */
         protected new void on_view_selection_changed () {
-//message ("on tree selection changed");
             set_active_slot ();
             base.on_view_selection_changed ();
         }
 
         private void cancel_await_double_click () {
-//message ("MCV cancel await double click");
             if (awaiting_double_click) {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
@@ -54,7 +45,6 @@ namespace FM {
         }
 
         private bool not_double_click (Gdk.EventButton event, Gtk.TreePath? path) {
-//message ("MCV not double click");
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
@@ -65,30 +55,29 @@ namespace FM {
             return false;
         }
 
-/** Override parent's abstract and virtual methods as required*/
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-//message ("CV setup zoom_level");
             var zoom = Preferences.marlin_column_view_settings.get_enum ("zoom-level");
             Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+
             return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {
             var zoom = Preferences.marlin_column_view_settings.get_enum ("default-zoom-level");
             Preferences.marlin_column_view_settings.set_enum ("zoom-level", zoom);
+
             return (Marlin.ZoomLevel)zoom;
         }
 
         protected override Gtk.Widget? create_view () {
-//message ("CV create view");
             model.set_property ("has-child", false);
             base.create_view ();
             tree.show_expanders = false;
+
             return tree as Gtk.Widget;
         }
 
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
-//message ("Column view button release");
             /* Invoke default handler unless waiting for a double-click in single-click mode */
             if (Preferences.settings.get_boolean ("single-click") && awaiting_double_click) {
                 should_activate = true; /* will activate when times out */
@@ -98,17 +87,17 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-//message ("CV handle left button");
-
-            selected_folder = null;
             unowned GOF.File file = selected_files.data;
             bool is_folder = file.is_folder ();
+
+            selected_folder = null;
 
             if (!is_folder || !Preferences.settings.get_boolean ("single-click"))
                 return base.handle_primary_button_click (event, path);
 
             selected_folder = file;
-            bool result = true; 
+            bool result = true;
+
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click)
@@ -124,6 +113,7 @@ namespace FM {
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
                 cancel_await_double_click ();
+
                 if (selected_folder != null)
                     load_root_location (selected_folder.location);
 

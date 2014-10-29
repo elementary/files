@@ -16,16 +16,12 @@
  Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
-
 namespace Marlin {
-    //public class EditableLabel : Gtk.TextView, Gtk.Editable, Gtk.CellEditable {
     public class SingleLineEditableLabel : AbstractEditableLabel {
 
         protected Gtk.Entry textview;
 
-        public SingleLineEditableLabel () {
-//message ("single line widget");
-        }
+        public SingleLineEditableLabel () {}
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.Entry ();
@@ -43,23 +39,22 @@ namespace Marlin {
                 case Gtk.Justification.LEFT:
                     textview.set_alignment (0.0f);
                     break;
+
                 case Gtk.Justification.CENTER:
                     textview.set_alignment (0.5f);
                     break;
+
                 case Gtk.Justification.RIGHT:
                     textview.set_alignment (1.0f);
                     break;
+
                 default:
                     textview.set_alignment (0.5f);
                     break;
             }
         }
 
-        public override void set_padding (int xpad, int ypad) {
-        }
-
         public override string get_text () {
-//message ("get text");
             return textview.get_text ();
         }
 

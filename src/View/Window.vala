@@ -277,7 +277,6 @@ namespace Marlin.View {
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
-//message ("window button press");
             Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool result = false;
             switch (event.button) {
@@ -320,7 +319,6 @@ namespace Marlin.View {
         }
 
         public GOF.AbstractSlot? get_active_slot() {
-//message ("get_active_slot");
             if (current_tab != null)
                 return current_tab.get_current_slot ();
             else
@@ -334,6 +332,7 @@ namespace Marlin.View {
         public void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
+
             if (current_tab == null || old_tab == current_tab || freeze_view_changes)
                 return;
 
@@ -356,12 +355,12 @@ namespace Marlin.View {
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
-//message ("add tab");
             mode = real_mode (mode);
             update_view_mode (mode);
             var content = new View.ViewContainer (this, mode, location);
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.label = content.tab_name;
+
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
             });
@@ -427,7 +426,6 @@ namespace Marlin.View {
         }
 
         private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
-//message ("action quit");
             (application as Marlin.Application).quit ();
         }
 
@@ -571,17 +569,16 @@ namespace Marlin.View {
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
-//message ("change state select all");
             var slot = get_active_slot ();
             if (slot != null) {
                 bool state = !action.state.get_boolean ();
+
                 if (slot.set_all_selected (state))
                     action.set_state (new GLib.Variant.boolean (state));
             }
         }
 
         public void change_state_show_hidden (GLib.SimpleAction action) {
-//message ("change state hidden");
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-hiddenfiles", state);
@@ -631,8 +628,10 @@ namespace Marlin.View {
                 case Marlin.ViewMode.LIST:
                 case Marlin.ViewMode.MILLER_COLUMNS:
                     return mode;
+
                 case Marlin.ViewMode.CURRENT:
                     return current_tab.view_mode;
+
                 default:
                     break;
             }
@@ -644,7 +643,6 @@ namespace Marlin.View {
         }
 
         private bool is_marlin_mydefault_fm () {
-//message ("is default?");
             bool foldertype_is_default = ("pantheon-files.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id());
 
             bool trash_uri_is_default = false;
@@ -658,8 +656,8 @@ namespace Marlin.View {
         private void make_marlin_default_fm (bool active) {
             if (active) {
                 AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
+
                 if (marlin_app != null) {
-//message ("make default");
                     try {
                         marlin_app.set_as_default_for_type ("inode/directory");
                         marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
@@ -668,7 +666,6 @@ namespace Marlin.View {
                     }
                 } else
                     critical ("Failed to make Pantheon Files App Info");
-
             } else {
                 AppInfo.reset_type_associations ("inode/directory");
                 AppInfo.reset_type_associations ("x-scheme-handler/trash");
@@ -676,39 +673,40 @@ namespace Marlin.View {
         }
 
         public void update_view_mode (Marlin.ViewMode mode) {
-//message ("update viewmode");
             GLib.SimpleAction action = get_action ("view_mode");
             action.set_state (mode_strings [(int)mode]);
             top_menu.view_switcher.mode = mode;
         }
 
         public void quit () {
-//message ("quitting window");
             if (is_first_window) {
                 save_geometries ();
                 save_tabs ();
             }
+
             this.destroy ();
         }
 
         private void save_geometries () {
             Gtk.Allocation sidebar_alloc;
             sidebar.get_allocation (out sidebar_alloc);
+
             if (sidebar_alloc.width > 1)
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
+
             if (is_maximized == false) {
                 int width, height;
                 get_size(out width, out height);
                 Preferences.settings.set_int("window-width", width);
                 Preferences.settings.set_int("window-height", height);
             }
+
             Preferences.settings.set_boolean("maximized", is_maximized);
         }
 
         private void save_tabs () {
-//message ("save tabs");
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
 
             foreach (var tab in tabs.tabs) {
@@ -731,7 +729,6 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
-//message ("Restore tabs");
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window)
                 return 0;
@@ -747,21 +744,25 @@ namespace Marlin.View {
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
             freeze_view_changes = true;
+
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
                 if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
                 string? unescaped_root_uri = GLib.Uri.unescape_string (root_uri);
+
                 if (unescaped_root_uri == null) {
                     warning ("Invalid root location for tab");
                     continue;
                 }
 
                 GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
+
                 if (!valid_location (root_location))
                     continue;
 
                 add_tab (root_location, mode);
+
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
                     expand_miller_view (tip_uri, root_location);
 
@@ -778,6 +779,7 @@ namespace Marlin.View {
                 return 0;
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
+
             if (active_tab_position >=0 && active_tab_position < tabs_added) {
                 tabs.current = tabs.get_tab_by_index (active_tab_position);
                 change_tab (active_tab_position);
@@ -798,11 +800,13 @@ namespace Marlin.View {
             top_menu.location_bar.path = path;
             /* restore location bar animation */
             top_menu.location_bar.bread.animation_visible = true;
+
             return tabs_added;
         }
 
         private bool valid_location (GLib.File location) {
             GLib.FileInfo? info = null;
+
             try {
                 info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
             }
@@ -820,7 +824,6 @@ namespace Marlin.View {
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
-//message ("expand Miller");
 /**TODO - move to Miller.vala **/ 
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
@@ -843,6 +846,7 @@ namespace Marlin.View {
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = GLib.File.new_for_uri (uri);
+
                     if (!valid_location (gfile))
                         break;
 
@@ -862,7 +866,6 @@ namespace Marlin.View {
         }
 
         public void update_labels (string new_path, string tab_name) {
-//message ("update labels");
             assert (new_path != null && new_path != "");
             set_title (title);
             top_menu.update_location_bar (new_path);
@@ -870,9 +873,11 @@ namespace Marlin.View {
 
         public void mount_removed (Mount mount) {
             GLib.File root = mount.get_root ();
+
             foreach (var page in tabs.get_children ()) {
                 var view_container = page as Marlin.View.ViewContainer;
                 GLib.File location = view_container.location;
+
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab)
                         view_container.user_path_change_request (File.new_for_path (Environment.get_home_dir ()));
@@ -883,8 +888,8 @@ namespace Marlin.View {
         }
 
         public void file_path_change_request (GLib.File loc) {
-//message ("file path change request");
             FileType type = loc.query_file_type (GLib.FileQueryInfoFlags.NONE);
+
             if (type == FileType.DIRECTORY || type == FileType.UNKNOWN)
                 /* ViewContainer deals with non-existent or unmounted directories */
                 current_tab.user_path_change_request (loc);
@@ -897,7 +902,6 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-//message ("WIN grab focus");
             current_tab.grab_focus ();
         }
 

@@ -26,16 +26,15 @@ using Marlin;
 
 namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
+
         public Gtk.Widget? content_item;
         public bool can_show_folder = true;
         public string label = "";
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
-        Browser browser;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
         public GLib.File? location {
             get {
-//message ("VC get location");
                 var slot = get_current_slot ();
                 return slot != null ? slot.location : null;
             }
@@ -48,17 +47,16 @@ namespace Marlin.View {
         }
         public OverlayBar overlay_statusbar;
 
+        private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
-
         /* To maintain compatibility with existing plugins */
         public signal void path_changed (File file);
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
-//message ("New ViewContainer");
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
@@ -70,9 +68,7 @@ namespace Marlin.View {
             override_background_color (0, transparent);
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-
             path_changed.connect (user_path_change_request);
-
             change_view_mode (mode, loc);
         }
 
@@ -100,27 +96,26 @@ namespace Marlin.View {
         }
 
         public void go_up () {
-//message ("VC go up");
             if (view.directory.has_parent ())
                 user_path_change_request (view.directory.get_parent ());
         }
 
         public void go_back (int n = 1) {
             string? loc = browser.go_back (n);
+
             if (loc != null)
                 user_path_change_request (File.new_for_commandline_arg (loc));
         }
 
         public void go_forward (int n = 1) {
-//message ("VC go forward");
             string? loc = browser.go_forward (n);
+
             if (loc != null)
                 user_path_change_request (File.new_for_commandline_arg (loc));
         }
 
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
-//message ("change view mode.  Mode is %i,  View mode is %i", (int)mode, (int)view_mode);
             if (mode != view_mode) {
 
                 if (loc == null) /* Only untrue on container creation */
@@ -149,12 +144,10 @@ namespace Marlin.View {
         }
 
         public void user_path_change_request (GLib.File loc) {
-//message ("VC user path changed request");
             view.user_path_change_request (loc);
         }
 
         public void new_container_request (GLib.File loc, int flag = 1) {
-//message ("VC new container request");
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);
@@ -170,7 +163,6 @@ namespace Marlin.View {
         }
 
         public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
-//message ("VC slot path changed");
             /* automagicly enable icon view for icons keypath */
             if (allow_mode_change &&
                 get_current_slot ().directory.uri_contain_keypath_icons &&
@@ -182,7 +174,6 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
-//message ("set up current slot");
             var slot = get_current_slot ();
             assert (slot != null);
             assert (slot.directory != null);
@@ -207,11 +198,10 @@ namespace Marlin.View {
         }
 
         private void plugin_directory_loaded () {
-//message ("plugin directory loaded");
             var slot = get_current_slot ();
             Object[] data = new Object[3];
             data[0] = window;
-            /* infobars are added view, not the active slot */
+            /* infobars are added to the view, not the active slot */
             data[1] = view;
             data[2] = slot.directory.file;
 
@@ -221,7 +211,7 @@ namespace Marlin.View {
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
             var loc = aslot.directory.file.location;
             var slot_path = loc.get_path ();
-//message ("refresh slot info - path is %s", slot_path);
+
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
@@ -232,6 +222,7 @@ namespace Marlin.View {
                 tab_name = _("This folder does not exist");
                 can_show_folder = false;
             }
+
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
@@ -244,11 +235,11 @@ namespace Marlin.View {
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-//message ("directory done loading");
             FileInfo file_info;
 
             loading (false);
             refresh_slot_info (slot);
+
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -257,12 +248,10 @@ namespace Marlin.View {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                     can_show_folder = false;
-                }
-                else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
+                } else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
                     view.select_glib_files (selected_locations, null);
                     selected_locations = null;
                 }
-
             } catch (Error err) {
                 /* query_info will throw an exception if it cannot find the file */
                 if (err is IOError.NOT_MOUNTED)
@@ -275,10 +264,11 @@ namespace Marlin.View {
         }
 
         private void store_selection () {
-//message ("Storing selection");
             unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
             selected_locations = null;
+
             if (selected_files.length () >= 1) {
+
                 selected_files.@foreach ((file) => {
                     selected_locations.prepend (GLib.File.new_for_uri (file.uri));
                 });
@@ -286,18 +276,16 @@ namespace Marlin.View {
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {
-//debug ("VC get current slot");
            return view.get_current_slot ();
         }
 
         public void set_active_state (bool is_active) {
-//message ("VC set slot active to %s", is_active ? "true" : "false");
             get_current_slot ().set_active_state (is_active);
         }
 
         public void focus_location (GLib.File file) {
-//message ("focus file %s", file.get_uri ());
             GLib.File? loc = null;
+
             if (file.query_file_type (0) == FileType.DIRECTORY) {
                 if (location.equal (file))
                     return;
@@ -330,7 +318,6 @@ namespace Marlin.View {
         }
 
         public void reload () {
-//message ("VC reload");
             if (!can_show_folder) /* Try to display folder again */
                 content = view.get_content_box ();
 
@@ -355,12 +342,10 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-//message ("VC grab focus");
             if (can_show_folder)
                 view.grab_focus ();
             else
                 content.grab_focus ();
         }
-
     }
 }

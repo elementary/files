@@ -16,19 +16,14 @@
  Authors : Jeremy Wootten <jeremy@elementary.org>
 */
 
-
 namespace Marlin {
-    //public class EditableLabel : Gtk.TextView, Gtk.Editable, Gtk.CellEditable {
     public class MultiLineEditableLabel : AbstractEditableLabel {
 
         protected Gtk.TextView textview;
 
-        public MultiLineEditableLabel () {
-//message ("multi line widget");
-        }
+        public MultiLineEditableLabel () {}
 
         public override Gtk.Widget create_editable_widget () {
-//message ("create editable widget");
             textview = new Gtk.TextView ();
             return textview as Gtk.Widget;
         }
@@ -50,12 +45,15 @@ namespace Marlin {
                 case Pango.WrapMode.CHAR:
                     textview.set_wrap_mode (Gtk.WrapMode.CHAR);
                     break;
+
                 case Pango.WrapMode.WORD:
                     textview.set_wrap_mode (Gtk.WrapMode.WORD);
                     break;
+
                 case Pango.WrapMode.WORD_CHAR:
                     textview.set_wrap_mode (Gtk.WrapMode.WORD_CHAR);
                     break;
+
                 default:
                     break;
             }
@@ -73,7 +71,6 @@ namespace Marlin {
         }
 
         public override string get_text () {
-//message ("get text");
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -90,6 +87,7 @@ namespace Marlin {
             Gtk.TextIter? bound = null;
 
             buffer.get_iter_at_offset (out ins, start_pos);
+
             if (end_pos > 0)
                 buffer.get_iter_at_offset (out bound, end_pos);
             else
@@ -105,6 +103,7 @@ namespace Marlin {
             Gtk.TextIter? end = null;
 
             buffer.get_iter_at_offset (out start, start_pos);
+
             if (end_pos > 0)
                 buffer.get_iter_at_offset (out end, end_pos);
             else
@@ -127,12 +126,11 @@ namespace Marlin {
             Gtk.TextIter? end = null;
 
             buffer.get_iter_at_offset (out start, start_pos);
+
             if (end_pos > 0)
                 buffer.get_iter_at_offset (out end, end_pos);
             else
                 buffer.get_end_iter (out end);
-
-            buffer.delete_range (start, end);
 
             return buffer.get_text (start, end, false);
         }
@@ -154,6 +152,7 @@ namespace Marlin {
             buffer.get_selection_bounds (out start, out end);
             start_pos = start.get_offset ();
             end_pos = end.get_offset ();
+
             return start_pos != end_pos;
         }
 
@@ -184,8 +183,6 @@ namespace Marlin {
         }
 
         public override void set_size_request (int width, int height) {
-//message ("MLEL set size request %i, %i", width, height);
-
             textview.set_size_request (width, height);
         }
     }

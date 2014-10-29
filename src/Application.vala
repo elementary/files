@@ -215,13 +215,11 @@ public class Marlin.Application : Granite.Application {
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-message ("quit");
         if (quitting)
             return;
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
-message ("number of windows is %u", window_list.length ());
         window_list.@foreach ((window) => {
             ((Marlin.View.Window)window).quit ();
         });

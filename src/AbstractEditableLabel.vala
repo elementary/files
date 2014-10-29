@@ -18,7 +18,6 @@
 
 
 namespace Marlin {
-    //public class EditableLabel : Gtk.TextView, Gtk.Editable, Gtk.CellEditable {
     public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
 
         public bool editing_canceled { get; set; }
@@ -31,7 +30,6 @@ namespace Marlin {
         public Gtk.Widget editable_widget;
 
         public AbstractEditableLabel () {
-//message ("AEL new");
             editable_widget = create_editable_widget ();
             add (editable_widget);
             show_all ();
@@ -39,7 +37,6 @@ namespace Marlin {
         } 
 
         public bool on_key_press_event (Gdk.EventKey event) {
-//message ("Editable key press");
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
             switch (event.keyval) {
                 case Gdk.Key.Return:
@@ -48,11 +45,13 @@ namespace Marlin {
                     editing_done ();
                     remove_widget ();
                     break;
+
                 case Gdk.Key.Escape:
                     editing_canceled = true;
                     editing_done ();
                     remove_widget ();
                     break;
+
                 case Gdk.Key.z:
                     if (control_pressed)
                         set_text (original_name);
@@ -63,7 +62,6 @@ namespace Marlin {
                 default:
                     return false;
             }
-
             return true;
         }
 
@@ -91,8 +89,6 @@ namespace Marlin {
 
         /** CellEditable interface */
         /* modified gtk+-3.0.vapi required */
-        public virtual void start_editing (Gdk.Event? event) {
-
-        }
+        public virtual void start_editing (Gdk.Event? event) {}
     }
 }

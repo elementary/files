@@ -19,7 +19,11 @@
 namespace Marlin.View {
     public class Miller : GOF.AbstractSlot {
         private unowned Marlin.View.ViewContainer ctab;
-        private GLib.File root_location; /* Need private copy of initial location as Miller does not have its own Asyncdirectory object */
+
+        /* Need private copy of initial location as Miller
+         * does not have its own Asyncdirectory object */
+        private GLib.File root_location;
+
         private Gtk.Box colpane;
 
         public Gtk.ScrolledWindow scrolled_window;
@@ -29,7 +33,6 @@ namespace Marlin.View {
         public int total_width = 0;
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
-//message ("Making new Miller View %s", loc.get_uri());
             base.init ();
             this.ctab = ctab;
             this.root_location = loc;
@@ -38,11 +41,11 @@ namespace Marlin.View {
                 show_hidden_files_changed (((GOF.Preferences)s).show_hidden_files);
             });
 
-            this.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
-            this.scrolled_window = new Gtk.ScrolledWindow (null, null);
+            scrolled_window = new Gtk.ScrolledWindow (null, null);
             scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
-            this.hadj = scrolled_window.get_hadjustment ();
+            hadj = scrolled_window.get_hadjustment ();
 
             var viewport = new Gtk.Viewport (null, null);
             viewport.set_shadow_type (Gtk.ShadowType.NONE);
@@ -52,28 +55,23 @@ namespace Marlin.View {
             content_box.pack_start (scrolled_window);
             content_box.show_all ();
 
-            this.colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
-            this.colpane.key_release_event.connect (on_key_released);
-            this.make_view ();
-        }
-
-        ~Miller () {
-//message ("Miller destructor");
+            colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
+            colpane.key_release_event.connect (on_key_released);
+            make_view ();
         }
 
         protected override void make_view () {
-//message ("Miller View: making root view");
-            this.current_slot = null;
+            current_slot = null;
             add_location (root_location, null);  /* current slot gets set by this */
         }
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null) {
-//message ("MV add location %s", loc.get_uri ());
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-            this.total_width += new_slot.width;
-            this.colpane.set_size_request (total_width, -1);
+            total_width += new_slot.width;
+
+            colpane.set_size_request (total_width, -1);
             nest_slot_in_host_slot (new_slot, host);
             connect_slot_signals (new_slot);
             slot_list.append (new_slot);
@@ -83,7 +81,6 @@ namespace Marlin.View {
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
-//message ("Miller: nest slot");
             var hpane1 = new Granite.Widgets.ThinPaned (Gtk.Orientation.HORIZONTAL);
             hpane1.hexpand = true;
             slot.hpane = hpane1;
@@ -105,7 +102,6 @@ namespace Marlin.View {
         }
 
         private void truncate_list_after_slot (Marlin.View.Slot slot) {
-//message ("truncate list after slot");
             if (slot_list.length () <= 0)
                 return;
 
@@ -115,10 +111,12 @@ namespace Marlin.View {
             });
 
             uint n = slot.slot_number;
+
             slot_list.@foreach ((s) => {
                 if (s.slot_number > n)
                     disconnect_slot_signals (s);
             });
+
             slot_list.nth (n).next = null;
             calculate_total_width ();
             current_slot = slot;
@@ -132,10 +130,8 @@ namespace Marlin.View {
         }
 
         private void update_total_width (Slot slot, int change) {
-//message ("update total width %i", total_width);
             total_width += change;
             this.colpane.set_size_request (total_width + 90, -1);
-//message ("total width now %i", total_width);
         }
 
 /*********************/
@@ -143,7 +139,6 @@ namespace Marlin.View {
 /*********************/
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = false) {
-//message ("MV user path change request %s", loc.get_uri ());
             /* user request always make new root */
             var slot = slot_list.first().data;
             assert (slot != null);
@@ -168,16 +163,17 @@ namespace Marlin.View {
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
-                if (make_root)
-                    user_path_change_request (loc);
-                else
-                    add_location (loc, slot);
+            if (make_root)
+                user_path_change_request (loc);
+            else
+                add_location (loc, slot);
         }
 
         private bool on_slot_horizontal_scroll_event (double delta_x) {
-            /* We can assume this is a horizontal or smooth scroll with out control pressed*/
+            /* We can assume this is a horizontal or smooth scroll without control pressed*/
             double increment = 0.0;
             increment = delta_x * 10.0;
+
             if (increment != 0.0)
                 hadj.set_value (hadj.get_value () + increment);
 
@@ -188,7 +184,6 @@ namespace Marlin.View {
          *  Should not be called directly
          **/
         private void on_slot_active (Marlin.View.Slot slot) {
-//message ("Miller: Slot active");
             if (this.current_slot == slot)
                 return;
 
@@ -197,16 +192,16 @@ namespace Marlin.View {
                     s.inactive ();
             });
 
-            this.current_slot = slot;
+            current_slot = slot;
             scroll_to_slot (slot);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
-//message ("default prefs notification");
             if (!show_hidden) {
                 /* we are hiding hidden files - check whether any slot is a hidden directory */
                 int i = -1;
                 int hidden = -1;
+
                 slot_list.@foreach ((s) => {
                     i ++;
                     if (s.directory.file.is_hidden && hidden <= 0)
@@ -225,7 +220,6 @@ namespace Marlin.View {
         }
 
         private bool on_key_released (Gtk.Widget box, Gdk.EventKey event) {
-//message ("Miller key release");
             /* Only handle unmodified keys */
             if ((event.state & Gtk.accelerator_get_default_mod_mask ()) > 0)
                 return false;
@@ -245,11 +239,13 @@ namespace Marlin.View {
                         return true;
 
                     GOF.File? selected_file = current_slot.get_selected_files ().data;
+
                     if (selected_file == null)
                         return true;
 
                     GLib.File current_location = selected_file.location;
-                    GLib.File? next_location = null; 
+                    GLib.File? next_location = null;
+ 
                     if (current_position < slot_list.length () - 1)
                         next_location = slot_list.nth_data (current_position + 1).location;
 
@@ -272,8 +268,8 @@ namespace Marlin.View {
         }
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {
-            /* Ensure all slots synchronise the frozen state and suppress key press event processing when frozen*/
-//message ("on_slot_frozen_changed");
+            /* Ensure all slots synchronise the frozen state and
+             *  suppress key press event processing when frozen */
             if (frozen)
                 this.colpane.key_release_event.disconnect (on_key_released);
             else
@@ -293,7 +289,6 @@ namespace Marlin.View {
 /** Helper functions */
 
         private void scroll_to_slot (GOF.AbstractSlot slot) {
-//message ("scroll_to_slot");
             int width = 0;
             int previous_width = 0;
 
@@ -318,6 +313,7 @@ namespace Marlin.View {
                 new_value = width;
 
             int val = page_size - (width + slot.width + 100);
+
             if (val < 0)
                 /*scroll left until right hand edge of active slot is in view*/
                 new_value =  -val;
@@ -342,8 +338,10 @@ namespace Marlin.View {
         }
 
         public override string? get_tip_uri () {
-//message ("MILLER get_tip_uri");
-            if (slot_list != null && slot_list.last () != null && slot_list.last ().data is GOF.AbstractSlot) {
+            if (slot_list != null &&
+                slot_list.last () != null &&
+                slot_list.last ().data is GOF.AbstractSlot) {
+
                 return slot_list.last ().data.uri;
             } else {
                 return null;
@@ -351,12 +349,10 @@ namespace Marlin.View {
         }
 
         public override string? get_root_uri () {
-//message ("MV get root uri %s", root_location.get_uri ());
             return root_location.get_uri ();
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
-//message ("Miller: select glib files");
             current_slot.select_glib_files (files, focus_location);
         }
 
@@ -364,11 +360,24 @@ namespace Marlin.View {
             current_slot.select_first_for_empty_selection ();
         }
 
-        public override void zoom_in () {((Marlin.View.Slot)(current_slot)).zoom_in ();}
-        public override void zoom_out () {((Marlin.View.Slot)(current_slot)).zoom_out ();}
-        public override void zoom_normal () {((Marlin.View.Slot)(current_slot)).zoom_normal ();}
-        public override void grab_focus () {((Marlin.View.Slot)(current_slot)).grab_focus ();}
-        public override void reload () {((Marlin.View.Slot)(current_slot)).reload ();}
+        public override void zoom_in () {
+            ((Marlin.View.Slot)(current_slot)).zoom_in ();
+        }
+        
+        public override void zoom_out () {
+            ((Marlin.View.Slot)(current_slot)).zoom_out ();
+        }
 
+        public override void zoom_normal () {
+            ((Marlin.View.Slot)(current_slot)).zoom_normal ();
+        }
+
+        public override void grab_focus () {
+            ((Marlin.View.Slot)(current_slot)).grab_focus ();
+        }
+
+        public override void reload () {
+            ((Marlin.View.Slot)(current_slot)).reload ();
+        }
     }
 }

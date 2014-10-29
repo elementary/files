@@ -1036,7 +1036,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
                          file_entry->subdirectory, file_entry->ptr);
     file_entry->reverse_map = g_hash_table_new (g_direct_hash, g_direct_equal);
 
-    *directory = file_entry->subdirectory; /* DirectoryView will maintain another reference on this */
+    *directory = file_entry->subdirectory; /* AbstractDirectoryView will maintain another reference on this */
     return TRUE;
 }
 
@@ -1078,7 +1078,7 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
                    list_model_signals[SUBDIRECTORY_UNLOADED], 0,
                    file_entry->subdirectory);
 
-    g_object_unref (file_entry->subdirectory); /* DirectoryView will also release its reference */
+    g_object_unref (file_entry->subdirectory); /* AbstractDirectoryView will also release its reference */
     file_entry->subdirectory = NULL;
     g_assert (g_hash_table_size (file_entry->reverse_map) == 0);
     g_hash_table_destroy (file_entry->reverse_map);

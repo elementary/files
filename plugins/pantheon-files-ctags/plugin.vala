@@ -233,7 +233,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
-//message ("Ctags context menu");
         if (selected_files.length () < 1 || widget == null)
             return;
 
@@ -287,10 +286,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             deselect.connect (() => {
                 has_focus = false;
             });
-        }
-
-        ~ColorWidget () {
-message ("Color widget destructor");
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {

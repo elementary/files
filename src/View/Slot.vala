@@ -22,17 +22,19 @@ namespace Marlin.View {
         private unowned Marlin.View.ViewContainer ctab;
         private Marlin.ViewMode mode;
         private int preferred_column_width;
+        private FM.AbstractDirectoryView? dir_view = null;
 
         protected bool updates_frozen = false;
+
         public bool is_active {get; protected set;}
 
-        private FM.DirectoryView? dir_view = null;
         public unowned Marlin.View.Window window {
             get {return ctab.window;}
         }
 
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
+
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze); 
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
@@ -47,52 +49,45 @@ namespace Marlin.View {
 
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
-//message ("New slot location %s", _location.get_uri ());
             base.init ();
             ctab = _ctab;
             mode = _mode;
             is_active = true;
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
-            set_up_directory (_location);
 
+            set_up_directory (_location);
             connect_slot_signals ();
             make_view ();
         }
 
-        ~Slot () {
-//message ("Slot destructor");
-        }
-
         private void connect_slot_signals () {
-//message ("connect slot signals");
             active.connect (() => {
-//message ("Slot %s active", location.get_uri ());
                 ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
             });
 
             inactive.connect (() => {
-//message ("Slot %s inactive", location.get_uri ());
                 is_active = false;
             });
         }
 
         private void connect_dir_view_signals () {
             dir_view.path_change_request.connect ((loc, flag, make_root) => {
-                /* Avoid race conditions in signal processing TODO identify and prevent race condition*/
+                /* Avoid race conditions in signal processing
+                 *  TODO identify and prevent race condition */
                 schedule_path_change_request (loc, flag, make_root);
             });
         }
 
         private void set_up_directory (GLib.File loc) {
-//message ("set up directory");
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
 
             directory.done_loading.connect (() => {
                 ctab.directory_done_loading (this);
+
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     autosize_slot ();
             });
@@ -104,7 +99,6 @@ namespace Marlin.View {
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
-//message ("schedule path change request");
             GLib.Timeout.add (20, () => {
                 on_path_change_request (loc, flag, make_root);
                 return false;
@@ -112,7 +106,6 @@ namespace Marlin.View {
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
-//message ("on_path change request - make root is %s", make_root ? "true" : "false");
             if (flag == 0) {
                 if (dir_view is FM.ColumnView)
                     miller_slot_request (loc, make_root);
@@ -126,7 +119,6 @@ namespace Marlin.View {
             if (dir_view == null)
                 return;
 
-//message ("autosize_slot");
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ())
@@ -146,7 +138,6 @@ namespace Marlin.View {
 
             width = width.clamp (preferred_column_width, preferred_column_width * 3);
 
-//message ("new width %i, old width %i, icon size %i", width, old_width, directory.icon_size);
             size_change (width - old_width);
             hpane.set_position (width);
             colpane.show_all ();
@@ -154,14 +145,13 @@ namespace Marlin.View {
         }
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
-//message ("Slot received user path change signal to loc %s, current location is %s", loc.get_uri (), location.get_uri ());
             assert (loc != null);
 
             if (!location.equal (loc)) {
                 var old_dir = directory;
                 set_up_directory (loc);
                 dir_view.change_directory (old_dir, directory);
-                /* View Container takes care of updating appearance
+                /* ViewContainer takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
                 ctab.slot_path_changed (loc, allow_mode_change);
@@ -171,7 +161,6 @@ namespace Marlin.View {
         }
 
         protected override void make_view () {
-//message ("Slot make view");
             assert (dir_view == null);
 
             switch (mode) {
@@ -202,7 +191,6 @@ namespace Marlin.View {
         }
 
         public override bool set_all_selected (bool select_all) {
-//message ("Slot all selected is %s", select_all ? "true" : "false");
             if (dir_view != null) {
                 if (select_all)
                     dir_view.select_all ();
@@ -222,16 +210,13 @@ namespace Marlin.View {
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
-//message ("SLot: select_glib_files");
             if (dir_view != null)
                 dir_view.select_glib_files (files, focus_location);
-
         }
 
         public override void select_first_for_empty_selection () {
             if (dir_view != null)
                 dir_view.select_first_for_empty_selection ();
-
         }
 
         public override void set_active_state (bool set_active) {
@@ -245,19 +230,28 @@ namespace Marlin.View {
             return this as GOF.AbstractSlot;
         }
 
-        public unowned FM.DirectoryView? get_directory_view () {
+        public unowned FM.AbstractDirectoryView? get_directory_view () {
             return dir_view;
         }
 
         public override void grab_focus () {
-//message ("SLot grab focus");
             dir_view.grab_focus ();
         }
-        public override void zoom_in () {dir_view.zoom_in ();}
-        public override void zoom_out () {dir_view.zoom_out ();}
-        public override void zoom_normal () {dir_view.zoom_normal ();}
 
-        public override void reload () {dir_view.reload ();}
+        public override void zoom_in () {
+            dir_view.zoom_in ();
+        }
 
+        public override void zoom_out () {
+            dir_view.zoom_out ();
+        }
+
+        public override void zoom_normal () {
+            dir_view.zoom_normal ();
+        }
+
+        public override void reload () {
+            dir_view.reload ();
+        }
     }
 }

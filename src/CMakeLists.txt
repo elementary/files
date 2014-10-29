@@ -69,7 +69,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/DiskRenderer.vala
         View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
-        View/DirectoryView.vala
+        View/AbstractDirectoryView.vala
         View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
@@ -135,7 +135,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
-        View/DirectoryView.vala
+        View/AbstractDirectoryView.vala
         View/Window.vala
         View/Resources.vala
 #        View/DbusTags.vala

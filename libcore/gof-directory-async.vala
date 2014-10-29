@@ -72,7 +72,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private Async (GLib.File _file) {
-//message ("create dir");
         location = _file;
         file = GOF.File.get (location);
         file.exists = true;
@@ -134,7 +133,7 @@ public class GOF.Directory.Async : Object {
 
         if (state == State.LOADING)
             return;
-//message ("Async load");
+
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
             if (state == State.LOADING)
@@ -191,7 +190,6 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
-//message ("done_loading emit2");
         done_loading ();
     }
 
@@ -263,7 +261,6 @@ public class GOF.Directory.Async : Object {
                 state = State.LOADED;
             } else {
                 debug ("WARNING load() has been called again before LOADING finished");
-//message ("WARNING load() has been called again before LOADING finished");
                 return;
             }
         } catch (Error err) {
@@ -280,7 +277,6 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-//message ("done_loading emit3");
         done_loading ();
     }
 
@@ -323,7 +319,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
-//message ("async fir add and refresh");
         if (gof.is_gone)
             return;
 
@@ -343,7 +338,6 @@ public class GOF.Directory.Async : Object {
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
             longest_file_name = gof.basename;
-//message ("done_loading emit4");
             done_loading ();
         }
     }
@@ -357,7 +351,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
-//message ("notify file added");
         file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
@@ -400,7 +393,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
-//message ("real directory changed");
         switch (event) {
         case FileMonitorEvent.CHANGES_DONE_HINT:
             MarlinFile.changes_queue_file_changed (_file);
@@ -465,7 +457,6 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_added (List<GLib.File> files) {
-//message ("notify files added 1");
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);
@@ -504,7 +495,6 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_moved (List<GLib.Array<GLib.File>> files) {
-//message ("notify files moved");
         List<GLib.File> list_from = new List<GLib.File> ();
         List<GLib.File> list_to = new List<GLib.File> ();
 
@@ -630,7 +620,6 @@ public class GOF.Directory.Async : Object {
     private bool thumbs_thread_running;
 
     private void *load_thumbnails_func () {
-//message ("load thumbnails func");
         return_val_if_fail (this is Async, null);
         /* Ensure only one thread loading thumbs for this directory */
         return_val_if_fail (!thumbs_thread_running, null);
@@ -663,7 +652,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void threaded_load_thumbnails (int size) {
-//message ("threaded load thumbnails");
         try {
             icon_size = size;
             thumbs_stop = false;
@@ -676,7 +664,6 @@ public class GOF.Directory.Async : Object {
 
     private bool queue_thumbs_timeout_cb () {
         /* Wait for thumbnail thread to stop then start a new thread */
-//message ("queue thumbs timeout");
         if (!thumbs_thread_running) {
             threaded_load_thumbnails (icon_size);
             timeout_thumbsq = 0;
@@ -695,7 +682,6 @@ public class GOF.Directory.Async : Object {
         if ((icon_size == size) && thumbs_thread_running)
             return;
 
-//message ("queue_load_thumbnails");
         icon_size = size;
         thumbs_stop = true;
 

@@ -41,7 +41,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private uint count;
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
-    private FM.DirectoryView view;
+    private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
 
@@ -84,7 +84,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         PREVIEW
     }
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.DirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);

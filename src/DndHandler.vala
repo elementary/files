@@ -24,19 +24,13 @@
 namespace FM {
     public class DndHandler : GLib.Object {
         Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
-        public DndHandler () {
-//message ("new DnDHandler");
-        }
 
-        ~DndHandler () {
-//message ("In Dndhandler destructor");
-        }
+        public DndHandler () {}
 
         public bool dnd_perform (Gtk.Widget widget,
                                  GOF.File drop_target,
                                  GLib.List<GLib.File> drop_file_list,
                                  Gdk.DragAction action) {
-//message ("dnd perform");
 
             if (drop_target.is_folder ()) {
                 Marlin.FileOperations.copy_move (drop_file_list,
@@ -60,28 +54,29 @@ namespace FM {
             return false;
         }
 
-        private void dnd_done (GLib.List<GLib.File> files, void* data) {
-        }
+        private void dnd_done (GLib.List<GLib.File> files, void* data) {}
 
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
                                                       Gtk.ApplicationWindow win,
                                                       Gdk.DragAction possible_actions) {
-//message ("drag_drop_action_ask");
             this.chosen = Gdk.DragAction.DEFAULT;
             add_action (win);
             var ask_menu = build_menu (possible_actions);
             ask_menu.set_screen (dest_widget.get_screen ());
             ask_menu.show_all ();
             var loop = new GLib.MainLoop (null, false);
+
             ask_menu.deactivate.connect (() => {
                 if (loop.is_running ())
                     loop.quit ();
 
                 remove_action (win);
             });
+
             ask_menu.popup (null, null, null, 0, Gdk.CURRENT_TIME);
             loop.run ();
             Gtk.grab_remove (ask_menu);
+
             return this.chosen;
         }
 
@@ -113,22 +108,23 @@ namespace FM {
         private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action, Gdk.DragAction possible_actions) {
             if ((possible_actions & action) != 0) {
                 var item = new Gtk.MenuItem.with_label (label);
+
                 item.activate.connect (() => {
                     this.chosen = action;
                 });
+
                 menu.append (item);
             }
         }
 
         public void on_choice (GLib.Variant? param) {
-//message ("on choice");
-
             if (param == null || !param.is_of_type (GLib.VariantType.STRING)) {
                 critical ("Invalid variant type in DndHandler Menu");
                 return;
             }
 
             string choice = param.get_string ();
+
             switch (choice) {
                 case "move":
                     this.chosen = Gdk.DragAction.MOVE;
@@ -148,7 +144,6 @@ namespace FM {
         }
 
         public string? get_source_filename (Gdk.DragContext context) {
-//message ("set source filename");
             uchar []? data = null;
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
@@ -164,7 +159,7 @@ namespace FM {
                                            );
  
             if (exists && data != null) {
-               string name = data_to_string (data);
+                string name = data_to_string (data);
                 if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
                     warning ("invalid source filename");
                     return null; /* not a valid filename */
@@ -177,7 +172,7 @@ namespace FM {
         }
 
         public void set_source_uri (Gdk.DragContext context, string uri) {
-//message ("DNDHANDLER: set source uri to %s", uri);
+            debug ("DNDHANDLER: set source uri to %s", uri);
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
 
@@ -190,11 +185,14 @@ namespace FM {
                                  uri.length);
         }
 
-        public bool handle_xdnddirectsave (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
-//message ("dnd direct save");
+        public bool handle_xdnddirectsave (Gdk.DragContext context,
+                                           GOF.File drop_target,
+                                           Gtk.SelectionData selection) {
             bool success = false;
+
             if (selection.get_length ()  == 1 && selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
+
                 switch (result) {
                     case 'F':
                         /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
@@ -202,7 +200,7 @@ namespace FM {
                     case 'S':
                         /* XdndDirectSave "Success" */
                         if (drop_target.is_folder ()) {
-                            //TODO Reload the directory ?/
+                            //TODO Reload the directory ? */
                         }
                         success = true;
                         break;
@@ -211,6 +209,7 @@ namespace FM {
                         break;
                 }
             }
+
             if (!success)
                 set_source_uri (context, "");
 
@@ -218,8 +217,8 @@ namespace FM {
         }
 
         public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
-//message ("dnd netscape uri");
             string [] parts = (selection.get_text ()).split ("\n");
+
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
             if (parts.length != 2)
                 return false;
@@ -236,7 +235,6 @@ namespace FM {
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {
-//message ("handle drag file actions");
             bool success = false;
             Gdk.DragAction action = suggested_action;
 
@@ -254,25 +252,23 @@ namespace FM {
 
 
         public bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
-//message ("DNDHANDLER selection data is uri list");
             text = null;
-            if (info == DirectoryView.TargetType.TEXT_URI_LIST &&
-                   selection_data.get_format () == 8 &&
-                   selection_data.get_length () > 0) {
+
+            if (info == AbstractDirectoryView.TargetType.TEXT_URI_LIST &&
+                selection_data.get_format () == 8 &&
+                selection_data.get_length () > 0) {
 
                 text = data_to_string (selection_data.get_data_with_length ());
             }
-//message ("DNDHANDLER selection data is uri list returning %s", (text != null) ? "true" : "false");
+            debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
             return (text != null);
         }
 
-/** Helper functions */
         private string data_to_string (uchar [] cdata) {
             var sb = new StringBuilder ("");
 
-            foreach (uchar u in cdata) {
+            foreach (uchar u in cdata)
                 sb.append_c ((char)u);
-            }
 
             return sb.str;
         }
