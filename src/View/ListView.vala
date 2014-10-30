@@ -193,5 +193,32 @@ namespace FM {
 
             return true;
         }
+
+        protected override bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
+            Gtk.TreePath? path = model.get_path (iter);
+            Gtk.TreeIter start = iter;
+ 
+            if (path == null)
+                return false;
+ 
+            if (recurse && tree.is_row_expanded (path)) {
+                Gtk.TreeIter? child_iter = null;
+                if (model.iter_children (out child_iter, iter)) {
+                    iter = child_iter;
+                    return true;
+                }
+            }
+ 
+            if (model.iter_next (ref iter))
+                return true;
+            else {
+                Gtk.TreeIter? parent = null;
+                if (model.iter_parent (out parent, start)) {
+                    iter = parent;
+                    return get_next_visible_iter (ref iter, false);
+                }
+            }
+            return false;
+        }
     }
 }

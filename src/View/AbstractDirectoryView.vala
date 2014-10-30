@@ -1964,7 +1964,7 @@ namespace FM {
                         path = model.get_path (iter);
 
                         if (path.compare (end_path) != 0)
-                            valid_iter = model.iter_next (ref iter);
+                            valid_iter = get_next_visible_iter (ref iter);
                         else
                             valid_iter = false;
                     }
@@ -2682,6 +2682,10 @@ namespace FM {
         protected virtual bool handle_default_button_click (Gdk.EventButton event) {
             /* pass unhandled events to the Marlin.View.Window */
             return window.button_press_event (event);
+        }
+
+        protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
+            return model.iter_next (ref iter);
         }
 
         public virtual void sync_selection () {}
