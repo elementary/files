@@ -191,6 +191,7 @@ namespace FM {
             unowned Gtk.CellRenderer? r;
             uint zone;
             int x, y;
+            path = null;
 
             x = (int)event.x;
             y = (int)event.y;
@@ -203,6 +204,11 @@ namespace FM {
                 Gdk.Rectangle rect, area;
                 tree.get_cell_rect  (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+
+                /* rectangles are in bin window coordinates - need to adjust event y coordinate
+                 * for vertical scrolling in order to accurately detect whicn area of item was
+                 * clicked on */
+                y -= (int)(get_vadjustment ().value);
 
                 if (r is Marlin.TextRenderer) {
                     Gtk.TreeIter iter;
@@ -224,8 +230,8 @@ namespace FM {
                         zone = ClickZone.NAME;
                     else if (rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding */
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
+                        x = rect.x + rect.width / 2;
+                        y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 } else {
@@ -244,8 +250,8 @@ namespace FM {
                         zone = ClickZone.ICON;
                     else if (rubberband) {
                         /* Fake location outside centre top of item for rubberbanding */
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y - 10 + (int)(get_vadjustment ().value);
+                        x = rect.x + rect.width / 2;
+                        y = rect.y - 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 }
