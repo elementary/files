@@ -77,7 +77,6 @@ namespace Marlin.View {
             slot_list.append (new_slot);
             ctab.load_slot_directory (new_slot);
             new_slot.active ();
-            new_slot.autosize_slot ();
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -113,8 +112,10 @@ namespace Marlin.View {
             uint n = slot.slot_number;
 
             slot_list.@foreach ((s) => {
-                if (s.slot_number > n)
+                if (s.slot_number > n) {
+                    slot.cancel ();
                     disconnect_slot_signals (s);
+                }
             });
 
             slot_list.nth (n).next = null;
@@ -129,9 +130,9 @@ namespace Marlin.View {
             });
         }
 
-        private void update_total_width (Slot slot, int change) {
-            total_width += change;
-            this.colpane.set_size_request (total_width + 90, -1);
+        private void update_total_width () {
+            calculate_total_width ();
+            this.colpane.set_size_request (total_width, -1);
         }
 
 /*********************/

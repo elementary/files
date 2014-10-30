@@ -130,7 +130,6 @@ namespace FM {
 
         protected override void change_zoom_level () {
             base.change_zoom_level ();
-            slot.autosize_slot ();
         }
     }
 }

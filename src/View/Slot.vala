@@ -25,6 +25,7 @@ namespace Marlin.View {
         private FM.AbstractDirectoryView? dir_view = null;
 
         protected bool updates_frozen = false;
+        public bool has_autosized = false;
 
         public bool is_active {get; protected set;}
 
@@ -45,7 +46,7 @@ namespace Marlin.View {
         public Gtk.Box colpane;
         public Granite.Widgets.ThinPaned hpane;
         public signal void miller_slot_request (GLib.File file, bool make_root);
-        public signal void size_change (int change);
+        public signal void size_change ();
 
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
@@ -85,6 +86,7 @@ namespace Marlin.View {
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
 
+            has_autosized = false;
             directory.done_loading.connect (() => {
                 ctab.directory_done_loading (this);
 
@@ -116,7 +118,10 @@ namespace Marlin.View {
         }
 
         public void autosize_slot () {
-            if (dir_view == null)
+            if (dir_view == null ||
+                !colpane.get_realized () ||
+                has_autosized)
+
                 return;
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
@@ -138,10 +143,11 @@ namespace Marlin.View {
 
             width = width.clamp (preferred_column_width, preferred_column_width * 3);
 
-            size_change (width - old_width);
+            size_change ();
             hpane.set_position (width);
             colpane.show_all ();
             colpane.queue_draw ();
+            has_autosized = true;
         }
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {

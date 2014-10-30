@@ -1935,6 +1935,9 @@ namespace FM {
 
             cancel_thumbnailing ();
             thumbnail_source_id = GLib.Timeout.add (175, () => {
+                if (slot == null || slot.directory == null)
+                    return false;
+
                 if (slot.directory.is_loading ())
                     return true;
 
