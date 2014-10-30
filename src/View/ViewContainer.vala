@@ -128,7 +128,10 @@ namespace Marlin.View {
                  * and allows the processor to display or update the window more quickly
                  */    
                 GOF.AbstractSlot temp;
-                temp = view; 
+                temp = view;
+
+                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+                view.cancel ();
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);

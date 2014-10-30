@@ -235,23 +235,33 @@ namespace Marlin.View {
         }
 
         public override void grab_focus () {
-            dir_view.grab_focus ();
+            if (dir_view != null)
+                dir_view.grab_focus ();
         }
 
         public override void zoom_in () {
-            dir_view.zoom_in ();
+            if (dir_view != null)
+                dir_view.zoom_in ();
         }
 
         public override void zoom_out () {
-            dir_view.zoom_out ();
+            if (dir_view != null)
+                dir_view.zoom_out ();
         }
 
         public override void zoom_normal () {
-            dir_view.zoom_normal ();
+            if (dir_view != null)
+                dir_view.zoom_normal ();
         }
 
         public override void reload () {
-            dir_view.reload ();
+            if (dir_view != null)
+                dir_view.reload ();
+        }
+
+        public override void cancel () {
+            if (dir_view != null)
+                dir_view.cancel ();
         }
     }
 }

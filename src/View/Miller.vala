@@ -379,5 +379,12 @@ namespace Marlin.View {
         public override void reload () {
             ((Marlin.View.Slot)(current_slot)).reload ();
         }
+
+        public override void cancel () {
+            slot_list.@foreach ((slot) => {
+                if (slot != null)
+                    slot.cancel ();
+            });
+        }
     }
 }

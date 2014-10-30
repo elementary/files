@@ -277,7 +277,8 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-        done_loading ();
+        if (!cancellable.is_cancelled ())
+            done_loading ();
     }
 
     public GOF.File? file_hash_lookup_location (GLib.File location) {

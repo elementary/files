@@ -56,6 +56,7 @@ namespace GOF {
         public abstract void select_first_for_empty_selection ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         protected abstract void make_view ();
+        public abstract void cancel ();
 
         public virtual void zoom_out () {}
         public virtual void zoom_in () {}

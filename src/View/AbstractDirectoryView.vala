@@ -546,10 +546,8 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
-            if (dir.is_loading ()) {
+            if (dir.is_loading ())
                 dir.file_loaded.disconnect (on_directory_file_loaded);
-                dir.cancel ();
-            }
 
             dir.file_added.disconnect (on_directory_file_added);
             dir.file_changed.disconnect (on_directory_file_changed);
@@ -561,6 +559,9 @@ namespace FM {
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
             freeze_tree ();
+            old_dir.cancel ();
+            cancel_thumbnailing ();
+
             disconnect_directory_handlers (old_dir);
             block_model ();
 
@@ -571,6 +572,7 @@ namespace FM {
             loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
+
             connect_directory_handlers (new_dir);
             update_menu_actions ();
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
@@ -578,6 +580,15 @@ namespace FM {
 
         public void reload () {
             change_directory (slot.directory, slot.directory);
+        }
+
+        public void cancel () {
+            slot.directory.cancel ();
+            cancel_thumbnailing ();
+            
+            loaded_subdirectories.@foreach ((dir) => {
+                remove_subdirectory (dir);
+            });
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
