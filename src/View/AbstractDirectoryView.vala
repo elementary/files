@@ -206,6 +206,7 @@ namespace FM {
         private bool in_trash = false;
         protected bool is_loading;
         protected bool helpers_shown;
+        private uint select_timeout_id = 0;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -353,23 +354,36 @@ namespace FM {
         public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
             updates_frozen = true;
             unselect_all ();
+            GLib.List<GOF.File>? file_list = null;
 
             if (focus_location == null)
                 focus_location = location_list.first ().data;
 
-            location_list.@foreach ((location) => {
-                var iter = Gtk.TreeIter ();
-                GOF.File file = GOF.File.@get (location);
+            location_list.@foreach ((loc) => {
+                file_list.prepend (GOF.File.@get (loc));
+            });
 
-                if (model.get_first_iter_for_file (file, out iter)) {
-                    Gtk.TreePath path = model.get_path (iter);
-                    if (path != null) {
-                        if (focus_location == location)
-                            set_cursor (path, false, true, false); /* set cursor and select */
-                        else
-                            select_path (path);
-                    } 
-                } 
+            /* Because the Icon View disconnects the model while loading, we need to wait until
+             * the tree is thawed and the model reconnected before selecting the files */
+            select_timeout_id = GLib.Timeout.add (100, () => {
+                if (tree_frozen)
+                    return true;
+
+                file_list.@foreach ((file) => {
+                    var iter = Gtk.TreeIter ();
+
+                    if (model.get_first_iter_for_file (file, out iter)) {
+                        Gtk.TreePath path = model.get_path (iter);
+                        if (path != null) {
+                            if (focus_location == file.location)
+                                set_cursor (path, false, true, false); /* set cursor and select */
+                            else
+                                select_path (path);
+                        } 
+                    }
+                });
+                select_timeout_id = 0;
+                return false;
             });
 
             updates_frozen = false;
@@ -378,6 +392,12 @@ namespace FM {
             grab_focus ();
         }
 
+        private void cancel_selection () {
+            if (select_timeout_id > 0) {
+                GLib.Source.remove (select_timeout_id);
+                select_timeout_id = 0;
+            }
+        }
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
             return open_with_apps;
         }
@@ -586,6 +606,7 @@ namespace FM {
         public void cancel () {
             slot.directory.cancel ();
             cancel_thumbnailing ();
+            cancel_selection ();
             
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);

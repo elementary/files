@@ -302,13 +302,17 @@ namespace FM {
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
+            tree_frozen = true;
             tree.freeze_child_notify ();
             tree.set_model (null);
         }
 
         protected override void thaw_tree () {
-            tree.set_model (model);
-            tree.thaw_child_notify ();
+            if (tree_frozen) {
+                tree.set_model (model);
+                tree.thaw_child_notify ();
+                tree_frozen = false;
+            }
         }
     }
 }

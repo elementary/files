@@ -121,17 +121,17 @@ namespace Marlin.View {
                 if (loc == null) /* Only untrue on container creation */
                     loc = this.location;
 
-                if (view != null)
+                if (view != null) {
                     store_selection ();
+                    /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+                    view.cancel ();
+                }
 
                 /* the following 2 lines delays destruction of the old view until this function returns
                  * and allows the processor to display or update the window more quickly
                  */    
                 GOF.AbstractSlot temp;
                 temp = view;
-
-                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                view.cancel ();
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
@@ -289,7 +289,6 @@ namespace Marlin.View {
 
         public void focus_location (GLib.File file) {
             GLib.File? loc = null;
-
             if (file.query_file_type (0) == FileType.DIRECTORY) {
                 if (location.equal (file))
                     return;
