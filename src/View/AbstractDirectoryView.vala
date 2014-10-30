@@ -275,7 +275,7 @@ namespace FM {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+            set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
             /* TODO previewer support */
 

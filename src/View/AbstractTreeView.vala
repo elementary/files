@@ -31,7 +31,6 @@ namespace FM {
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
             name_column.set_expand (true);
-            name_column.set_resizable (true);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
             set_up_name_renderer ();
