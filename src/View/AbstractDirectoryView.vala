@@ -179,6 +179,7 @@ namespace FM {
         protected bool right_margin_unselects_all = false;
         public bool single_click_mode {get; set;}
         protected bool should_activate = false;
+        protected bool should_scroll = true;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
 
@@ -441,8 +442,8 @@ namespace FM {
         }
  
 /*** Protected Methods */
-        protected void set_active_slot () {
-            slot.active ();
+        protected void set_active_slot (bool scroll = true) {
+            slot.active (scroll);
         }
 
         protected void load_location (GLib.File location) {
@@ -2413,6 +2414,7 @@ namespace FM {
         }
 
         protected bool handle_secondary_button_click (Gdk.EventButton event) {
+            should_scroll = false;
             show_or_queue_context_menu (event);
             return true;
         }
@@ -2461,6 +2463,7 @@ namespace FM {
 
             bool result = true;
             should_activate = false;
+            should_scroll = true;
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
@@ -2533,6 +2536,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
+            //should_scroll = !result;
             return result;
         }
 
@@ -2543,7 +2547,7 @@ namespace FM {
             if (renaming)
                 return true;
 
-            slot.active ();
+            slot.active (should_scroll);
 
             if (should_activate) {
                 Gtk.Widget widget = get_real_view ();

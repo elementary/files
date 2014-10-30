@@ -120,7 +120,7 @@ namespace Marlin.View {
 
             slot_list.nth (n).next = null;
             calculate_total_width ();
-            current_slot = slot;
+            slot.active ();
         }
 
         private void calculate_total_width () {
@@ -184,7 +184,10 @@ namespace Marlin.View {
         /** Called in response to slot active signal.
          *  Should not be called directly
          **/
-        private void on_slot_active (Marlin.View.Slot slot) {
+        private void on_slot_active (Marlin.View.Slot slot, bool scroll = true) {
+            if (scroll)
+                scroll_to_slot (slot);
+
             if (this.current_slot == slot)
                 return;
 
@@ -194,7 +197,6 @@ namespace Marlin.View {
             });
 
             current_slot = slot;
-            scroll_to_slot (slot);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
@@ -290,34 +292,37 @@ namespace Marlin.View {
 /** Helper functions */
 
         private void scroll_to_slot (GOF.AbstractSlot slot) {
+            if (!content_box.get_realized ())
+                return;
+
             int width = 0;
             int previous_width = 0;
 
             /* Calculate width up to left-hand edge of given slot */
-            unowned GLib.List<GOF.AbstractSlot> l = slot_list;
-            while (l.data != slot) {
-                previous_width = width;
-                width += l.data.width;
-                l = l.next;
-            }
+            slot_list.@foreach ((abs) => {
+                if (abs.slot_number < slot.slot_number) {
+                    previous_width = width;
+                    width += abs.width;
+                }
+            });
 
+            /* previous width = left edge of slot before the active slot
+             * width = left edge of active slot */  
             int page_size = (int) this.hadj.get_page_size ();
-            int current_value = (int) this.hadj.get_value (); ;
+            int current_value = (int) this.hadj.get_value ();
             int new_value = current_value;
 
-            if (current_value > previous_width)
-                /*scroll right until left hand edge of slot before the active slot is in view*/
+            if (current_value > previous_width) /*scroll right until left hand edge of slot before the active slot is in view*/
                 new_value = previous_width;
 
-            if (new_value > width)
-                /*scroll right until left hand edge of active slot is in view*/
+            int offset = slot.slot_number < slot_list.length () -1 ? 90 : 0;
+            int val = page_size - (width + slot.width + offset);
+
+            if (val < 0)  /*scroll left until right hand edge of active slot is in view*/
+                new_value = -val;
+
+            if (slot.width + offset > page_size) /*scroll right until left hand edge of active slot is in view*/
                 new_value = width;
-
-            int val = page_size - (width + slot.width + 100);
-
-            if (val < 0)
-                /*scroll left until right hand edge of active slot is in view*/
-                new_value =  -val;
 
             Marlin.Animation.smooth_adjustment_to (this.hadj, new_value);
         }

@@ -39,7 +39,7 @@ namespace Marlin.View {
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze); 
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
-        public signal void active (); 
+        public signal void active (bool scroll = true); 
         public signal void inactive ();
 
         /* Support for multi-slot view (Miller)*/
@@ -79,6 +79,10 @@ namespace Marlin.View {
                 /* Avoid race conditions in signal processing
                  *  TODO identify and prevent race condition */
                 schedule_path_change_request (loc, flag, make_root);
+            });
+
+            dir_view.size_allocate.connect ((alloc) => {
+                width = alloc.width;
             });
         }
 
@@ -136,7 +140,6 @@ namespace Marlin.View {
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
-            int old_width = width;
             width = (int) Pango.units_to_double (extents.width)
                   + dir_view.icon_size
                   + 64; /* allow some extra room for icon padding and right margin*/
