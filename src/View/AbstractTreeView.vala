@@ -266,13 +266,11 @@ namespace FM {
          * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
             tree.freeze_child_notify ();
-            tree.set_model (null);
             tree_frozen = true;
         }
 
         protected override void thaw_tree () {
             if (tree_frozen) {
-                tree.set_model (model);
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
