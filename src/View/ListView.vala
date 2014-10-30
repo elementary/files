@@ -54,6 +54,9 @@ namespace FM {
                                                                       "text", k);     
                     col.set_sort_column_id (k);
                     col.set_resizable (true);
+                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED)
+                        renderer.@set ("xalign", 1.0f);
+
                     tree.append_column (col);
                 }
             }
