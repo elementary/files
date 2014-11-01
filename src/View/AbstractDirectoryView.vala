@@ -2524,7 +2524,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
-            //should_scroll = !result;
+
             return result;
         }
 

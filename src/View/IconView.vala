@@ -230,8 +230,8 @@ namespace FM {
                         zone = ClickZone.NAME;
                     else if (rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding */
-                        x = rect.x + rect.width / 2;
-                        y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
+                        event.x = rect.x + rect.width / 2;
+                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 } else {
@@ -250,8 +250,8 @@ namespace FM {
                         zone = ClickZone.ICON;
                     else if (rubberband) {
                         /* Fake location outside centre top of item for rubberbanding */
-                        x = rect.x + rect.width / 2;
-                        y = rect.y - 10 + (int)(get_vadjustment ().value);
+                        event.x = rect.x + rect.width / 2;
+                        event.y = rect.y - 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 }
