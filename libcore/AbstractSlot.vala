@@ -21,8 +21,15 @@ namespace GOF {
     public abstract class AbstractSlot : GLib.Object {
 
         GOF.Directory.Async _directory;
-        public GOF.Directory.Async directory {
-            get {return get_current_slot ()._directory;}
+        public GOF.Directory.Async? directory {
+            get {
+                AbstractSlot? current = get_current_slot ();
+                if (current != null)
+                    return current._directory;
+                else
+                    return null;
+            }
+
             protected set {_directory = value;}
         }
         public GLib.File location  {

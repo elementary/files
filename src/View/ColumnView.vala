@@ -134,7 +134,7 @@ namespace FM {
 
         public override void cancel () {
             base.cancel ();
-            cancel_timeout (ref double_click_timeout_id);
+            cancel_await_double_click ();
         }
     }
 }

@@ -1916,12 +1916,12 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            if (thumbnail_source_id != 0 || slot.directory == null)
+            if (thumbnail_source_id != 0 || !(slot is GOF.AbstractSlot) || slot.directory == null)
                 return;
 
             cancel_thumbnailing ();
             thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (slot == null || slot.directory == null)
+                if (!(slot is GOF.AbstractSlot) || slot.directory == null)
                     return false;
 
                 if (slot.directory.is_loading ())
