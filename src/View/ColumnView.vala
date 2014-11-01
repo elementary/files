@@ -131,5 +131,10 @@ namespace FM {
         protected override void change_zoom_level () {
             base.change_zoom_level ();
         }
+
+        public override void cancel () {
+            base.cancel ();
+            cancel_timeout (ref double_click_timeout_id);
+        }
     }
 }

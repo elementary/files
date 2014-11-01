@@ -392,12 +392,6 @@ namespace FM {
             grab_focus ();
         }
 
-        private void cancel_selection () {
-            if (select_timeout_id > 0) {
-                GLib.Source.remove (select_timeout_id);
-                select_timeout_id = 0;
-            }
-        }
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
             return open_with_apps;
         }
@@ -579,10 +573,9 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
+            cancel_thumbnailing ();
             freeze_tree ();
             old_dir.cancel ();
-            cancel_thumbnailing ();
-
             disconnect_directory_handlers (old_dir);
             block_model ();
 
@@ -603,16 +596,6 @@ namespace FM {
             change_directory (slot.directory, slot.directory);
         }
 
-        public void cancel () {
-            slot.directory.cancel ();
-            cancel_thumbnailing ();
-            cancel_selection ();
-            
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
-        }
-
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
             /* Set up as drop site */
             Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
@@ -630,37 +613,18 @@ namespace FM {
         }
 
         protected void cancel_drag_timer () {
-            if (drag_timer_id > 0) {
-                disconnect_drag_timeout_motion_and_release_events ();
-                GLib.Source.remove (drag_timer_id);
-                drag_timer_id = 0;
-            }
-        }
-
-        protected void cancel_drag_scroll_timer () {
-            if (drag_scroll_timer_id > 0) {
-                GLib.Source.remove (drag_scroll_timer_id);
-                drag_scroll_timer_id = 0;
-            }
+            disconnect_drag_timeout_motion_and_release_events ();
+            cancel_timeout (ref drag_timer_id);
         }
 
         protected void cancel_thumbnailing () {
             slot.directory.cancel ();
-
-            if (thumbnail_source_id > 0) {
-                GLib.Source.remove (thumbnail_source_id);
-                thumbnail_source_id = 0;
-            }
+            cancel_timeout (ref thumbnail_source_id);
 
             if (thumbnail_request > 0) {
                 thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = 0;
             }
-        }
-
-        protected void remove_timers () {
-            cancel_drag_timer ();
-            cancel_drag_scroll_timer ();
         }
 
         protected bool is_drag_pending () {
@@ -1312,7 +1276,7 @@ namespace FM {
         }
 
         private void on_drag_end (Gdk.DragContext context) {
-            cancel_drag_scroll_timer ();
+            cancel_timeout (ref drag_scroll_timer_id);
             drag_file_list = null;
             drop_target_file = null;
             current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -1439,7 +1403,7 @@ namespace FM {
             /* reset the drop-file for the icon renderer */
             icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
             /* stop any running drag autoscroll timer */
-            cancel_drag_scroll_timer ();
+            cancel_timeout (ref drag_scroll_timer_id);
 
             /* disable the drop highlighting around the view */
             if (drop_highlight) {
@@ -2030,6 +1994,9 @@ namespace FM {
         }
 
         private void disconnect_drag_timeout_motion_and_release_events () {
+            if (drag_timer_id == 0)
+                return;
+
             var real_view = get_real_view ();
             real_view.button_release_event.disconnect (on_drag_timeout_button_release);
             real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
@@ -2696,6 +2663,13 @@ namespace FM {
             update_menu_actions_sort ();
         }
 
+        protected void cancel_timeout (ref uint id) {
+            if (id > 0) {
+                GLib.Source.remove (id);
+                id = 0;
+            }
+        }
+
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
             return true;
         }
@@ -2707,6 +2681,18 @@ namespace FM {
 
         protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
             return model.iter_next (ref iter);
+        }
+
+        public virtual void cancel () {
+            cancel_thumbnailing ();
+            slot.directory.cancel ();
+            cancel_drag_timer ();
+            cancel_timeout (ref select_timeout_id);
+            cancel_timeout (ref drag_scroll_timer_id);
+            
+            loaded_subdirectories.@foreach ((dir) => {
+                remove_subdirectory (dir);
+            });
         }
 
         public virtual void sync_selection () {}

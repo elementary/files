@@ -85,6 +85,7 @@ public class GOF.Directory.Async : Object {
 
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
+
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
@@ -155,8 +156,7 @@ public class GOF.Directory.Async : Object {
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
-            //foreach (GOF.File gof in file_hash.get_values ()) {
-            file_hash.@foreach ((location, gof) => {
+            foreach (GOF.File gof in file_hash.get_values ()) {
                 if (gof != null) {
                     if (gof.info != null && (!gof.is_hidden || show_hidden)) {
                         if (track_longest_name)
@@ -164,11 +164,11 @@ public class GOF.Directory.Async : Object {
 
                         file_loaded (gof);
                     }
-                } else {
-                    critical ("CRITICAL location %s gof null", location.get_uri ());
                 }
-            });
-            done_loading ();
+            }
+
+            if (!cancellable.is_cancelled ())
+                done_loading ();
         }
     }
 
@@ -190,7 +190,8 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
-        done_loading ();
+        if (!cancellable.is_cancelled ())
+            done_loading ();
     }
 
     public void update_desktop_files () {
@@ -281,13 +282,17 @@ public class GOF.Directory.Async : Object {
             done_loading ();
     }
 
-    public GOF.File? file_hash_lookup_location (GLib.File location) {
-        GOF.File? result = file_hash.lookup (location);
-        return result;
+    public GOF.File? file_hash_lookup_location (GLib.File? location) {
+        if (location != null && location is GLib.File) {
+            GOF.File? result = file_hash.lookup (location);
+            return result;
+        } else {
+            return null;
+        }
     }
 
     public void file_hash_add_file (GOF.File gof) {
-            file_hash.insert (gof.location, gof);
+        file_hash.insert (gof.location, gof);
     }
 
     /* TODO move this to GOF.File */
@@ -526,7 +531,7 @@ public class GOF.Directory.Async : Object {
             dir.file_hash.remove (gof.location);
     }
 
-    public static Async? cache_lookup (GLib.File *file) {
+    public static Async? cache_lookup (GLib.File? file) {
         Async? cached_dir = null;
 
         if (directory_cache == null) {
@@ -534,6 +539,9 @@ public class GOF.Directory.Async : Object {
             dir_cache_lock = GLib.Mutex ();
             return null;
         }
+
+        if (file == null)
+            return null;
 
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);

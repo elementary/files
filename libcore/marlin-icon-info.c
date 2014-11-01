@@ -378,7 +378,7 @@ marlin_icon_info_get_and_cache_raw_pixbuf (GIcon *icon)
     GdkPixbuf *pixbuf;
     char *str_icon = g_icon_to_string (icon);
 
-    g_message ("%s stream %s\n", G_STRFUNC, str_icon);
+    //g_message ("%s stream %s\n", G_STRFUNC, str_icon);
     pixbuf = gdk_pixbuf_new_from_file (str_icon, NULL);
 
     if (pixbuf != NULL) {
@@ -573,6 +573,7 @@ marlin_icon_info_lookup_from_path (const char *path, int size)
     GFile *icon_file;
     GIcon *icon;
     MarlinIconInfo *info;
+
     g_return_val_if_fail (size >= 1, NULL);
     icon_file = g_file_new_for_path (path);
     icon = g_file_icon_new (icon_file);

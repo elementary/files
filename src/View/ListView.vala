@@ -108,6 +108,12 @@ namespace FM {
             });
         }
 
+        private void cancel_file_timeout () {
+            if (unload_file_timeout_id > 0) {
+                GLib.Source.remove (unload_file_timeout_id);
+                unload_file_timeout_id = 0;
+            }
+        }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -219,6 +225,11 @@ namespace FM {
                 }
             }
             return false;
+        }
+
+        public override void cancel () {
+            base.cancel ();
+            cancel_file_timeout ();
         }
     }
 }
