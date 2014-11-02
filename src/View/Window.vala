@@ -285,6 +285,8 @@ namespace Marlin.View {
             if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
 
