@@ -334,20 +334,22 @@ namespace Marlin.View {
                 return slot;
         }
 
-        public string? get_root_uri () {
+        public string get_root_uri () {
+            string path = "";
             if (mwcol != null)
-                return mwcol.get_root_uri ();
+                path = mwcol.get_root_uri () ?? "";
             else if (slot != null)
-                return slot.location.get_uri ();
+                path = slot.location.get_uri () ?? "";
 
-            return null;
+            return path;
         }
 
-        public string? get_tip_uri () {
+        public string get_tip_uri () {
+            string path = "";
             if (mwcol != null)
-                return mwcol.get_tip_uri ();
-            else
-                return "";
+                path = mwcol.get_tip_uri () ?? "";
+
+            return path;
         }
 
         public void reload () {
