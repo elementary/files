@@ -2118,7 +2118,10 @@ rename_callback (GObject *source_object,
     if (error == NULL)
         gof_file_update_existing (op->file, new_file);
     else
-        marlin_dialogs_show_error (NULL, error, "Failed to rename %s", op->file->uri);
+        marlin_dialogs_show_error (NULL,
+                                   error,
+                                   "Failed to rename %s",
+                                   g_file_get_parse_name (op->file->location));
 
     //g_warning ("%s %u", G_STRFUNC, G_OBJECT (op->file)->ref_count);
     //gof_file_operation_complete (op, NULL, error);

@@ -45,7 +45,7 @@ namespace Marlin {
                 entry = new Marlin.SingleLineEditableLabel ();
 
             entry.editing_done.connect (on_entry_editing_done);
-            entry.get_real_editable ().focus_out_event.connect (on_entry_focus_out_event);
+            entry.get_real_editable ().focus_out_event.connect_after (on_entry_focus_out_event);
         }
 
 
@@ -217,12 +217,13 @@ namespace Marlin {
             bool cancelled = entry.editing_canceled;
             base.stop_editing (cancelled);
 
+            entry.hide ();
+
             if (!cancelled) {
                 string text = entry.get_text ();
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
-            entry.hide ();
         }
 
         private bool on_entry_focus_out_event (Gdk.Event event) {

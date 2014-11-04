@@ -2335,10 +2335,15 @@ namespace FM {
                 try {
                     Filename.from_uri ("file:///" + Uri.escape_string (new_name));
                 } catch (GLib.ConvertError e) {
-                    var dialog = new Gtk.MessageDialog ((Gtk.Window)window, Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, _("%s is not a valid file name"), new_name);
+                    var dialog = new Gtk.MessageDialog ((Gtk.Window)window,
+                                                        Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                                        Gtk.MessageType.ERROR,
+                                                        Gtk.ButtonsType.CLOSE,
+                                                        _("%s is not a valid file name"),
+                                                       new_name);
                     dialog.run ();
                     dialog.destroy ();
-                    return;
+                    on_name_editing_canceled ();
                 }
 
                 var path = new Gtk.TreePath.from_string (path_string);
@@ -2363,7 +2368,6 @@ namespace FM {
             on_name_editing_canceled ();
         }
 
-       
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
