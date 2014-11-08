@@ -30,7 +30,7 @@ namespace Marlin.Places {
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
-        private const int EJECT_BUTTON_XPAD = 4;
+        private const int EJECT_BUTTON_XPAD = 12;
         private const int TEXT_XPAD = 5;
         private const int ICON_XPAD = 6;
         private const int PROP_0 = 0;
