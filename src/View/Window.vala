@@ -330,6 +330,7 @@ namespace Marlin.View {
         public void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
+
             if (current_tab == null || old_tab == current_tab)
                 return;
 
@@ -540,6 +541,9 @@ namespace Marlin.View {
                 viewmode = -1;
                 root_uri = null;
                 tip_uri = null;
+
+                /* Prevent too rapid loading of tabs which can cause crashes */
+                Thread.usleep (100000);
             }
 
             freeze_view_changes = false;
