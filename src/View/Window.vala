@@ -342,6 +342,7 @@ namespace Marlin.View {
         public void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
+
             if (current_tab == null || old_tab == current_tab)
                 return;
 
@@ -523,8 +524,8 @@ namespace Marlin.View {
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
             int tabs_added = 0;
             int viewmode = -1;
-            string root_uri = null;
-            string tip_uri = null;
+            string? root_uri = null;
+            string? tip_uri = null;
 
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
@@ -552,20 +553,25 @@ namespace Marlin.View {
                 viewmode = -1;
                 root_uri = null;
                 tip_uri = null;
+
+                /* Prevent too rapid loading of tabs which can cause crashes */
+                Thread.usleep (100000);
             }
 
             freeze_view_changes = false;
 
-            int active_tab_position = Preferences.settings.get_int ("active-tab-position");
-            if (active_tab_position >=0 && active_tab_position < tabs_added) {
-                tabs.current = tabs.get_tab_by_index (active_tab_position);
-                change_tab (active_tab_position);
-            }
+            if (tabs_added < 1)
+                return 0;
 
-            string path;
-            if (current_tab == null)
-                path = "";
-            else {
+            int active_tab_position = Preferences.settings.get_int ("active-tab-position");
+            if (active_tab_position < 0 || active_tab_position >= tabs_added)
+                active_tab_position = 0;
+
+            tabs.current = tabs.get_tab_by_index (active_tab_position);
+            change_tab (active_tab_position);
+
+            string path = "";
+            if (current_tab != null) {
                 path = current_tab.get_tip_uri ();
                 if (path == "")
                     path = current_tab.get_root_uri ();

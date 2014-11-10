@@ -32,7 +32,7 @@ namespace Marlin.View {
         public GOF.Window.Slot? slot = null;
         public Marlin.Window.Columns? mwcol = null;
         Browser browser;
-        public int view_mode = 0;
+        public int view_mode = -1;
         public OverlayBar overlay_statusbar;
 
         //private ulong file_info_callback;
@@ -48,15 +48,13 @@ namespace Marlin.View {
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
-            view_mode = _view_mode;
 
             /* set active tab */
             browser = new Browser ();
             label = _("Loading…");
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
-
-            change_view (view_mode, location);
+            change_view (_view_mode, location);
             update_location_state (true);
 
             this.show_all ();
@@ -203,14 +201,16 @@ namespace Marlin.View {
             bool user_change_rq = location == null;
             select_childs = null;
 
+            GOF.Window.Slot? active_slot = get_active_slot ();
+
             if (location == null) {
                 /* we re just changing view keep the same location */
-                GOF.Window.Slot? active_slot = get_active_slot ();
                 if (active_slot == null) {
                     warning ("No active slot found - cannot change view");
                     return;
                 }
                 location = active_slot.location;
+
                 /* store the old selection to restore it */
                 if (slot != null && !content_shown) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
@@ -233,12 +233,17 @@ namespace Marlin.View {
             Marlin.Window.Columns new_mwcol;
             GOF.Window.Slot new_slot;
 
-            if (nview == ViewMode.MILLER) {
-                new_mwcol = new Marlin.Window.Columns (location, this);
-                new_slot = new_mwcol.active_slot;
+            if (nview != view_mode || location != active_slot.location) {
+                if (nview == ViewMode.MILLER) {
+                    new_mwcol = new Marlin.Window.Columns (location, this);
+                    new_slot = new_mwcol.active_slot;
+                } else {
+                    new_mwcol = null;
+                    new_slot = new GOF.Window.Slot (location, this);
+                }
             } else {
-                new_mwcol = null;
-                new_slot = new GOF.Window.Slot (location, this);
+                new_mwcol = mwcol;
+                new_slot = slot;
             }
 
             /* automagicly enable icon view for icons keypath */
@@ -281,17 +286,15 @@ namespace Marlin.View {
             slot = new_slot;
             mwcol = new_mwcol;
 
-            /* Setting up view_mode and its button */
-            view_mode = nview;
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-
             connect_available_info ();
             if (slot != null) {
                 slot.directory.done_loading.connect (directory_done_loading);
                 slot.directory.need_reload.connect (reload);
             }
             plugin_directory_loaded ();
+
+            /* Setting up view_mode and its button */
+            view_mode = nview;
 
             switch (nview) {
             case ViewMode.LIST:
@@ -304,6 +307,9 @@ namespace Marlin.View {
                 slot.make_icon_view ();
                 break;
             }
+
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             overlay_statusbar.showbar = nview != ViewMode.LIST;
         }
@@ -334,20 +340,22 @@ namespace Marlin.View {
                 return slot;
         }
 
-        public string? get_root_uri () {
+        public string get_root_uri () {
+            string path = "";
             if (mwcol != null)
-                return mwcol.get_root_uri ();
+                path = mwcol.get_root_uri () ?? "";
             else if (slot != null)
-                return slot.location.get_uri ();
+                path = slot.location.get_uri () ?? "";
 
-            return null;
+            return path;
         }
 
-        public string? get_tip_uri () {
+        public string get_tip_uri () {
+            string path = "";
             if (mwcol != null)
-                return mwcol.get_tip_uri ();
-            else
-                return "";
+                path = mwcol.get_tip_uri () ?? "";
+
+            return path;
         }
 
         public void reload () {
@@ -355,7 +363,7 @@ namespace Marlin.View {
             dir.cancel ();
             dir.need_reload.disconnect (reload);
             dir.remove_dir_from_cache ();
-            change_view (view_mode, null);
+            dir.load ();
         }
 
         public void update_location_state (bool save_history) {
