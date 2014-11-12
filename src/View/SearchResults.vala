@@ -67,6 +67,8 @@ namespace Marlin.View
 
         bool local_search_finished = false;
         bool global_search_finished = false;
+        public bool search_current_directory_only = false;
+        public bool begins_with_only = false;
 
         bool is_grabbing = false;
         Gdk.Device? device = null;
@@ -651,7 +653,6 @@ namespace Marlin.View
 
             new Thread<void*> (null, () => {
                 local_search_finished = false;
-
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
                     visit (term.normalize ().casefold (), include_hidden, file_search_operation);
                 }
@@ -662,7 +663,10 @@ namespace Marlin.View
                 return null;
             });
 
-            get_zg_results.begin (term);
+            if (!search_current_directory_only)
+                get_zg_results.begin (term);
+            else
+                global_search_finished = true;
 
             var bookmarks_matched = new Gee.LinkedList<Match> ();
             var search_term = term.normalize ().casefold ();
@@ -704,6 +708,7 @@ namespace Marlin.View
             FileEnumerator enumerator;
 
             var folder = directory_queue.poll ();
+
             if (folder == null)
                 return;
 
@@ -734,7 +739,7 @@ namespace Marlin.View
                     if (info.get_is_hidden () && !include_hidden)
                         continue;
 
-                    if (info.get_file_type () == FileType.DIRECTORY) {
+                    if (info.get_file_type () == FileType.DIRECTORY && !search_current_directory_only) {
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
@@ -851,7 +856,12 @@ namespace Marlin.View
             // TODO improve.
 
             // term is assumed to be down
-            var res = name.normalize ().casefold ().contains (term);
+            bool res;
+            if (begins_with_only)
+                res = name.normalize ().casefold ().has_prefix (term);
+            else
+                res = name.normalize ().casefold ().contains (term);
+
             return res;
         }
 

@@ -81,7 +81,9 @@ namespace Marlin.View.Chrome
             pack_start (bread, true, true, 0);
         }
 
-        public void enter_search_mode () {
+        public void enter_search_mode (bool local_only = false, bool begins_with_only = false) {
+            bread.search_results.search_current_directory_only = local_only;
+            bread.search_results.begins_with_only = begins_with_only;
             bread.search_mode = true;
         }
 
