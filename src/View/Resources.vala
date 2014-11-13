@@ -17,6 +17,7 @@ namespace Marlin {
         "Vadim Rutkovsky",
         "Rico Tzschichholz",
         "Mario Guerriero <mario@elementaryos.org>",
+        "Jeremy Wootten <jeremy@elementaryos.org>",
         null
     };
 

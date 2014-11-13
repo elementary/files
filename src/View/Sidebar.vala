@@ -31,12 +31,6 @@ namespace Marlin.Places {
             STORAGE_CATEGORY
         }
 
-//        enum Marlin.OpenFlag {
-//            DEFAULT,
-//            NEW_TAB,
-//            NEW_WINDOW
-//        }
-
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
         private const int EJECT_BUTTON_XPAD = 12;
@@ -135,7 +129,6 @@ namespace Marlin.Places {
         bool display_all_bookmarks = false;
 
         public Sidebar (Marlin.View.Window window) {
-//message ("New sidebar");
             init ();  //creates the Gtk.TreeModel store.
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -614,7 +607,6 @@ namespace Marlin.Places {
             if (last_selected_uri != null)
                 set_matching_selection (this.last_selected_uri);
             else
-                //set_matching_selection  (this.slot_location);
                 set_matching_selection  (slot_location);
         }
 
@@ -882,7 +874,6 @@ namespace Marlin.Places {
                 if (drop_uri.has_prefix ("trash:///"))
                     actions &= Gdk.DragAction.MOVE;
 
-                //real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
                 real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, window, actions);
             }
 
@@ -1089,8 +1080,6 @@ namespace Marlin.Places {
 
         private void mount_volume (Volume volume, Gtk.MountOperation mount_op, Marlin.OpenFlag flags) {
             mounting = true;
-            //go_to_after_mount_flags = flags;
-            //Marlin.View.ViewContainer? ctab = window.current_tab;
             volume.mount.begin (GLib.MountMountFlags.NONE,
                                 mount_op,
                                 null,
@@ -1134,7 +1123,6 @@ namespace Marlin.Places {
         }
 
         private void rename_selected_bookmark () {
-//message ("rename selected bookmark");
             Gtk.TreeIter iter;
             if (!get_selected_iter ( out iter))
                 return;
@@ -1500,7 +1488,6 @@ namespace Marlin.Places {
          * open in a new tab.
          */
         private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
-//message ("side bar key press");
             Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
             if (event.keyval == Gdk.Key.Down
              && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
@@ -1578,10 +1565,12 @@ namespace Marlin.Places {
 
                 tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
 
-                if (path != null)
-                    open_selected_bookmark (store, path,
-                        //(event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
-                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? Marlin.OpenFlag.NEW_TAB : Marlin.OpenFlag.DEFAULT);
+                if (path != null) {
+                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0)
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
+                    else
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.DEFAULT);
+                }
             }
 
             return false;
@@ -1730,7 +1719,7 @@ namespace Marlin.Places {
                         drive.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        //message ("Error ejecting drive: %s", error.message);
+                        warning ("Error ejecting drive: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1746,7 +1735,7 @@ namespace Marlin.Places {
                         volume.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        //message ("Error ejecting volume: %s", error.message);
+                        warning ("Error ejecting volume: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1762,7 +1751,7 @@ namespace Marlin.Places {
                         mount.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        //message ("Error ejecting mount: %s", error.message);
+                        warning ("Error ejecting mount: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });

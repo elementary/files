@@ -152,7 +152,7 @@ namespace FM {
         }
 
         public override void sync_selection () {
-            /* FIXME Not implemented - needed? */
+            /* Not implemented - needed? No current bug reports. */
         }
 
         protected override void update_selected_files () {
@@ -160,7 +160,6 @@ namespace FM {
 
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 unowned GOF.File? file; /* can be null if click on blank row in list view */
-                /* FIXME - model does not return owned object?  Is this correct? */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null)
                     selected_files.prepend (file);

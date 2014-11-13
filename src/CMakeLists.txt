@@ -49,7 +49,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         BookmarkList.vala
         ConnectServerOperation.vala
         DndHandler.vala
-#        EditableLabel.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
@@ -63,7 +62,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
-#        View/ExoIconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
         View/DiskRenderer.vala
@@ -73,7 +71,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
-#        View/DbusTags.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
@@ -85,7 +82,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-#        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES
@@ -138,7 +134,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/Resources.vala
-#        View/DbusTags.vala
         View/ViewContainer.vala
         View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
@@ -151,7 +146,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-#        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES
@@ -179,20 +173,10 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (../pantheon-files
-    #eel-editable-label.c
     marlin-enum-types.c
-    #marlin-dnd.c
     marlin-clipboard-manager.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
-    #marlin-text-renderer.c
-    #marlin-cell-renderer-text-ellipsized.c
-    #exo-icon-view.c
-    #exo-tree-view.c
-    #fm-abstract-icon-view.c
-    #fm-icon-view.c
-    #fm-list-view.c
-    #fm-columns-view.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 

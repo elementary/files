@@ -833,7 +833,7 @@ namespace Marlin.View {
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
-/**TODO - move to Miller.vala **/ 
+            /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             var mwcols = view.view as Miller;

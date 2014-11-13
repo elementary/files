@@ -95,7 +95,7 @@ namespace FM {
             unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY, () => {
                 Gtk.TreeIter iter;
                 Gtk.TreePath path;
-                /* FIXME model.get_tree_iter_from_file does not work for some reason */
+
                 if (model.get_first_iter_for_file (file, out iter)) {
                     path = ((Gtk.TreeModel)model).get_path (iter);
                     if (path != null && !((Gtk.TreeView)tree).is_row_expanded (path))

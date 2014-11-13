@@ -161,7 +161,7 @@ namespace FM {
         uint thumbnail_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
-        /* TODO Support for preview */
+        /* TODO Support for preview see bug #1380139 */
         private string? previewer = null;
 
         /* Rename support */
@@ -232,12 +232,10 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
 
-            /* TODO make single_click_rename a setting
-             * Currently, this feature is deactivated, matching existing UI */
-            /* TODO make activate on blank a setting
-             * Currently, this feature is activated, matching existing UI */
-            /* TODO make right margin unselects all a setting
-             * Currently, this feature is deactivated, matching existing UI*/
+             /* Currently, "single-click rename" is disabled, matching existing UI
+              * Currently, "activate on blank" is enabled, matching existing UI
+              * Currently, "right margin unselects all" is disabled, matching existing UI
+              */
 
             set_up__menu_actions ();
             set_up_directory_view ();
@@ -279,7 +277,6 @@ namespace FM {
         private void set_up_directory_view () {
             set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
-            /* TODO previewer support */
 
             size_allocate.connect_after (on_size_allocate);
             button_press_event.connect (on_button_press_event);
@@ -423,7 +420,6 @@ namespace FM {
             clipboard.changed.disconnect (on_clipboard_changed);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
-            /* TODO queue file changed/added/.. and freeze their updates */
         }
 
         protected void unfreeze_updates () {
@@ -508,7 +504,7 @@ namespace FM {
 
                 Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
                 GLib.List<GLib.File> location_list = null;
-                GOF.File file = selection.data; /* FIXME Can only preview one file */
+                GOF.File file = selection.data;
                 location_list.prepend (file.location);
                 Gdk.AppLaunchContext context = screen.get_display ().get_app_launch_context ();
                 try {
@@ -851,7 +847,7 @@ namespace FM {
                 return;
 
             if (selected_files.next != null)
-                /* TODO invoke batch renamer */
+                /* TODO invoke batch renamer see bug #1014122*/
                 warning ("Cannot rename multiple files (yet) - renaming first only");
 
             var file = selected_files.first ().data;
@@ -1246,7 +1242,6 @@ namespace FM {
                 return;
 
             GOF.File file = drag_file_list.first ().data;
-            /* TODO - get drag icon depending on view and zoom_level */
 
             if (file != null && file.pix != null)
                 Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
@@ -1684,7 +1679,7 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_menu_templates () {
-            /* TODO - Do just once when app starts or view created? */
+            /* Potential optimisation - do just once when app starts or view created */
             templates = null;
             var template_path = "%s/Templates".printf (GLib.Environment.get_home_dir ());
             var template_folder = GLib.File.new_for_path (template_path);
@@ -1750,7 +1745,8 @@ namespace FM {
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
-            action_set_enabled (common_actions, "copy", true); /* TODO inhibit copy for unreadable files */
+            /* TODO inhibit copy for unreadable files see bug #1392465*/
+            action_set_enabled (common_actions, "copy", true); 
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
@@ -2360,8 +2356,6 @@ namespace FM {
                 /* Only rename if name actually changed */
                 if (new_name != original_name) {
                     file.rename (new_name, (file, result_location, error) => {
-                        /* FIXME Cannot access calling environment within this closure for some reason
-                         * so cannot display dialog now*/
                         if (error != null)
                             warning ("Rename Error:  %s", error.message);
                     });
@@ -2562,7 +2556,7 @@ namespace FM {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
-            icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
+            icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {

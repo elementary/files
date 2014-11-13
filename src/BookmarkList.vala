@@ -89,7 +89,6 @@ namespace Marlin {
         }
 
         public void insert_uri_at_end (string uri) {
-//message ("insert uri at end %s", uri);
             append_internal (new Bookmark.from_uri (uri, null));
             save_bookmarks_file ();
         }
