@@ -46,7 +46,6 @@ namespace Marlin.View {
             }
         }
         public OverlayBar overlay_statusbar;
-
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -289,6 +288,7 @@ namespace Marlin.View {
 
         public void focus_location (GLib.File file) {
             GLib.File? loc = null;
+
             if (file.query_file_type (0) == FileType.DIRECTORY) {
                 if (location.equal (file))
                     return;
@@ -312,12 +312,20 @@ namespace Marlin.View {
             }
         }
 
-        public string? get_root_uri () {
-            return view.get_root_uri ();
+        public string get_root_uri () {
+            string path = "";
+            if (view != null)
+                path = view.get_root_uri () ?? "";
+
+            return path;
         }
 
-        public string? get_tip_uri () {
-            return view.get_tip_uri ();
+        public string get_tip_uri () {
+            string path = "";
+            if (view != null)
+                path = view.get_tip_uri () ?? "";
+
+            return path;
         }
 
         public void reload () {

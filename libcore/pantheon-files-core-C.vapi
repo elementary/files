@@ -240,6 +240,7 @@ namespace GOF {
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
+        public GLib.List<string>? emblems_list;
         public GLib.FileInfo? info;
         public string basename;
         public string uri;
