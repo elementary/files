@@ -243,6 +243,11 @@ namespace Marlin.View.Chrome
 
                 search_mode = false;
             });
+
+            search_results.first_match_found.connect ((file) => {
+                win.current_tab.focus_location_if_in_current_directory (file);
+            });
+
             search_results.hide.connect (() => {
                 text = "";
             });

@@ -44,6 +44,7 @@ namespace Marlin.View
         const int DELAY_ADDING_RESULTS = 150;
 
         public signal void file_selected (File file);
+        public signal void first_match_found (File? file);
 
         public Gtk.Entry entry { get; construct; }
         public bool working { get; private set; default = false; }
@@ -148,14 +149,21 @@ namespace Marlin.View
             });
             view.model = filter;
 
+            list.row_changed.connect ((path, iter) => {
+                /* If the first match is in the current directory it will be selected */
+                if (path.to_string () == "0:0") {
+                    File? file;
+                    list.@get (iter, 3, out file);
+                    first_match_found (file);
+                }
+            });
+
             list.append (out local_results, null);
             list.@set (local_results, 0, get_category_header (_("In This Folder")));
             list.append (out bookmark_results, null);
             list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
             list.append (out global_results, null);
             list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
-            list.append (out no_results_label, null);
-            list.@set (no_results_label, 0, get_category_header (_("No Results Found")));
 
             scroll.add (view);
             frame.add (scroll);
@@ -668,15 +676,17 @@ namespace Marlin.View
             else
                 global_search_finished = true;
 
-            var bookmarks_matched = new Gee.LinkedList<Match> ();
-            var search_term = term.normalize ().casefold ();
-            foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (search_term, bookmark.label)) {
-                    bookmarks_matched.add (new Match.from_bookmark (bookmark));
+            if (!search_current_directory_only) {
+                var bookmarks_matched = new Gee.LinkedList<Match> ();
+                var search_term = term.normalize ().casefold ();
+                foreach (var bookmark in BookmarkList.get_instance ().list) {
+                    if (term_matches (search_term, bookmark.label)) {
+                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
+                    }
                 }
-            }
 
-            add_results (bookmarks_matched, bookmark_results);
+                add_results (bookmarks_matched, bookmark_results);
+            }
         }
 
         bool send_search_finished ()
@@ -689,8 +699,10 @@ namespace Marlin.View
             filter.refilter ();
 
             select_first ();
-            if (list_empty ())
+            if (local_search_finished && global_search_finished && list_empty ()) {
                 view.get_selection ().unselect_all ();
+                first_match_found (null);
+            }
 
             resize_popup ();
 
