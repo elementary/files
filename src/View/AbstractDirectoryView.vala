@@ -465,11 +465,11 @@ namespace FM {
         }
 
     /** Operations on selections */
-        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
+                                                GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             if (updates_frozen || in_trash)
                 return;
 
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint nb_elem = selection.length ();
 
             if (nb_elem < 1)
@@ -683,10 +683,10 @@ namespace FM {
                 show_context_menu (event);
         }
 
-        protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer () {
+        protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             unowned GLib.List<unowned GOF.File> list = null;
 
-            selected_files.@foreach ((file) => {
+            selection.@foreach ((file) => {
                 list.prepend (file);
             });
 
@@ -979,19 +979,18 @@ namespace FM {
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
-            get_files_for_action ();
 
             switch (param.get_string ()) {
                 case "TAB":
-                    activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    activate_selected_items (Marlin.OpenFlag.NEW_TAB, get_files_for_action ());
                     break;
 
                 case "WINDOW":
-                    activate_selected_items (Marlin.OpenFlag.NEW_WINDOW);
+                    activate_selected_items (Marlin.OpenFlag.NEW_WINDOW, get_files_for_action ());
                     break;
 
                 case "TERMINAL":
-                    open_selected_in_terminal ();
+                    open_selected_in_terminal (get_files_for_action ());
                     break;
 
                 default:
@@ -999,11 +998,11 @@ namespace FM {
             }
         }
 
-        private void open_selected_in_terminal () {
+        private void open_selected_in_terminal (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             var terminal = new GLib.DesktopAppInfo (Marlin.OPEN_IN_TERMINAL_DESKTOP_ID);
 
             if (terminal != null)
-                open_files_with (terminal, selected_files);
+                open_files_with (terminal, selection);
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1011,14 +1010,11 @@ namespace FM {
         }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
-            get_files_for_action ();
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
-            clipboard.copy_files (selection);
+            clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            get_files_for_action ();
-            var file = get_selected_files ().nth_data (0);
+            var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.get_can_paste ()) {
                 prepare_to_select_added_files ();
@@ -2058,11 +2054,17 @@ namespace FM {
             }
         }
 
+        /* For actions on the background we need to return the current slot directory, but this
+         * should not be added to the list of selected files
+         */  
         private unowned GLib.List<unowned GOF.File> get_files_for_action () {
-            if (selected_files == null)
-                selected_files.prepend (slot.directory.file);
+            unowned GLib.List<unowned GOF.File> action_files = null;
+            if (selected_files == null) {
+                action_files.prepend (slot.directory.file);
+            } else
+                action_files = selected_files;
 
-            return selected_files;
+            return action_files;
         }
 
         protected void on_view_items_activated () {
