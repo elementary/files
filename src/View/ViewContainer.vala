@@ -302,6 +302,7 @@ namespace Marlin.View {
                     get_current_slot ().select_glib_files (list, file);
                 } else {
                     loc = file.get_parent ();
+                    selected_locations.prepend (file);
                     user_path_change_request (loc);
                 }
             }
