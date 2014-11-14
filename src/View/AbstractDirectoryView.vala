@@ -1600,6 +1600,7 @@ namespace FM {
                 return null;
 
             var menu = new GLib.Menu ();
+            menu.append_section (null, build_menu_open ());
             menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
 
@@ -1623,11 +1624,12 @@ namespace FM {
         }
 
         private GLib.MenuModel build_menu_open () {
-            var menu = new GLib.Menu ();        
+            var menu = new GLib.Menu ();
             string label = _("Invalid");
-            var selection = selected_files.data;
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GOF.File selected_file = selection.data;
 
-            if (!selection.is_folder () && selection.is_executable ()) {
+            if (!selected_file.is_folder () && selected_file.is_executable ()) {
                 label = _("Run");
                 menu.append (label, "selection.open");
             } else if (default_app != null) {
@@ -1639,7 +1641,7 @@ namespace FM {
                 }
             }
 
-            GLib.MenuModel? app_submenu = build_submenu_open_with_applications ();
+            GLib.MenuModel? app_submenu = build_submenu_open_with_applications (selection);
 
             if (app_submenu != null)
                 menu.append_submenu (_("Open with"), app_submenu);
@@ -1647,8 +1649,7 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel? build_submenu_open_with_applications () {
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
+        private GLib.MenuModel? build_submenu_open_with_applications (GLib.List<unowned GOF.File> selection) {
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
             filter_default_app_from_open_with_apps ();
             filter_this_app_from_open_with_apps ();
