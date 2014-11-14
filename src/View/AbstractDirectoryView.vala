@@ -2223,6 +2223,10 @@ namespace FM {
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
             Gtk.TreePath? path = null;
+
+            if (renaming)
+                return true;
+
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
             GOF.File? file = path != null ? model.file_for_path (path) : null;
 
