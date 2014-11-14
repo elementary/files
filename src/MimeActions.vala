@@ -23,7 +23,6 @@
 public class Marlin.MimeActions {
 
     public static AppInfo? get_default_application_for_file (GOF.File file) {
-//message ("Mime Actions get default app for file");
 
         AppInfo app = file.get_default_handler ();
 
@@ -39,7 +38,6 @@ public class Marlin.MimeActions {
 
     public static AppInfo? get_default_application_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
-//message ("Mime Actions get default app for files");
         /* Need to make a new list to avoid corrupting the selection */
         unowned GLib.List<GOF.File> sorted_files = null;
         files.@foreach ((file) => {
@@ -78,7 +76,6 @@ public class Marlin.MimeActions {
     }
 
     public static List<AppInfo>? get_applications_for_file (GOF.File file) {
-//message ("Mime Actions get apps for files");
 
         List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
         string uri_scheme = file.location.get_uri_scheme ();
@@ -99,7 +96,6 @@ public class Marlin.MimeActions {
     }
 
     public static List<AppInfo>? get_applications_for_folder (GOF.File file) {
-//message ("Mime Actions get default app for folder");
         List<AppInfo> result = AppInfo.get_all_for_type (ContentType.get_mime_type ("inode/directory"));
         string uri_scheme = file.location.get_uri_scheme ();
 

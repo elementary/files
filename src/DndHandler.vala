@@ -98,7 +98,6 @@ namespace FM {
             build_and_append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
             build_and_append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
 
-            //TODO Implement set as background option ??
             menu.append (new Gtk.SeparatorMenuItem ());
             menu.append (new Gtk.MenuItem.with_label (_("Cancel")));
 
@@ -199,9 +198,6 @@ namespace FM {
                         break;
                     case 'S':
                         /* XdndDirectSave "Success" */
-                        if (drop_target.is_folder ()) {
-                            //TODO Reload the directory ? */
-                        }
                         success = true;
                         break;
                     default:
@@ -223,7 +219,7 @@ namespace FM {
             if (parts.length != 2)
                 return false;
 
-            //TODO Handle NETSCAPE URL
+            /* NETSCAPE URLs are not currently handled.  No current bug reports */
             return false;
         }
 

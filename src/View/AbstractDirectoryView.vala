@@ -161,7 +161,7 @@ namespace FM {
         uint thumbnail_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
-        /* TODO Support for preview */
+        /* TODO Support for preview see bug #1380139 */
         private string? previewer = null;
 
         /* Rename support */
@@ -232,12 +232,10 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
 
-            /* TODO make single_click_rename a setting
-             * Currently, this feature is deactivated, matching existing UI */
-            /* TODO make activate on blank a setting
-             * Currently, this feature is activated, matching existing UI */
-            /* TODO make right margin unselects all a setting
-             * Currently, this feature is deactivated, matching existing UI*/
+             /* Currently, "single-click rename" is disabled, matching existing UI
+              * Currently, "activate on blank" is enabled, matching existing UI
+              * Currently, "right margin unselects all" is disabled, matching existing UI
+              */
 
             set_up__menu_actions ();
             set_up_directory_view ();
@@ -279,7 +277,6 @@ namespace FM {
         private void set_up_directory_view () {
             set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
-            /* TODO previewer support */
 
             size_allocate.connect_after (on_size_allocate);
             button_press_event.connect (on_button_press_event);
@@ -423,7 +420,6 @@ namespace FM {
             clipboard.changed.disconnect (on_clipboard_changed);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
-            /* TODO queue file changed/added/.. and freeze their updates */
         }
 
         protected void unfreeze_updates () {
@@ -469,11 +465,11 @@ namespace FM {
         }
 
     /** Operations on selections */
-        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
+                                                GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             if (updates_frozen || in_trash)
                 return;
 
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
             uint nb_elem = selection.length ();
 
             if (nb_elem < 1)
@@ -508,7 +504,7 @@ namespace FM {
 
                 Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
                 GLib.List<GLib.File> location_list = null;
-                GOF.File file = selection.data; /* FIXME Can only preview one file */
+                GOF.File file = selection.data;
                 location_list.prepend (file.location);
                 Gdk.AppLaunchContext context = screen.get_display ().get_app_launch_context ();
                 try {
@@ -687,10 +683,10 @@ namespace FM {
                 show_context_menu (event);
         }
 
-        protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer () {
+        protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             unowned GLib.List<unowned GOF.File> list = null;
 
-            selected_files.@foreach ((file) => {
+            selection.@foreach ((file) => {
                 list.prepend (file);
             });
 
@@ -851,7 +847,7 @@ namespace FM {
                 return;
 
             if (selected_files.next != null)
-                /* TODO invoke batch renamer */
+                /* TODO invoke batch renamer see bug #1014122*/
                 warning ("Cannot rename multiple files (yet) - renaming first only");
 
             var file = selected_files.first ().data;
@@ -983,19 +979,18 @@ namespace FM {
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
-            get_files_for_action ();
 
             switch (param.get_string ()) {
                 case "TAB":
-                    activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    activate_selected_items (Marlin.OpenFlag.NEW_TAB, get_files_for_action ());
                     break;
 
                 case "WINDOW":
-                    activate_selected_items (Marlin.OpenFlag.NEW_WINDOW);
+                    activate_selected_items (Marlin.OpenFlag.NEW_WINDOW, get_files_for_action ());
                     break;
 
                 case "TERMINAL":
-                    open_selected_in_terminal ();
+                    open_selected_in_terminal (get_files_for_action ());
                     break;
 
                 default:
@@ -1003,11 +998,11 @@ namespace FM {
             }
         }
 
-        private void open_selected_in_terminal () {
+        private void open_selected_in_terminal (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             var terminal = new GLib.DesktopAppInfo (Marlin.OPEN_IN_TERMINAL_DESKTOP_ID);
 
             if (terminal != null)
-                open_files_with (terminal, selected_files);
+                open_files_with (terminal, selection);
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1015,14 +1010,11 @@ namespace FM {
         }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
-            get_files_for_action ();
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
-            clipboard.copy_files (selection);
+            clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            get_files_for_action ();
-            var file = get_selected_files ().nth_data (0);
+            var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.get_can_paste ()) {
                 prepare_to_select_added_files ();
@@ -1246,7 +1238,6 @@ namespace FM {
                 return;
 
             GOF.File file = drag_file_list.first ().data;
-            /* TODO - get drag icon depending on view and zoom_level */
 
             if (file != null && file.pix != null)
                 Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
@@ -1609,6 +1600,7 @@ namespace FM {
                 return null;
 
             var menu = new GLib.Menu ();
+            menu.append_section (null, build_menu_open ());
             menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
             menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
 
@@ -1632,11 +1624,12 @@ namespace FM {
         }
 
         private GLib.MenuModel build_menu_open () {
-            var menu = new GLib.Menu ();        
+            var menu = new GLib.Menu ();
             string label = _("Invalid");
-            var selection = selected_files.data;
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GOF.File selected_file = selection.data;
 
-            if (!selection.is_folder () && selection.is_executable ()) {
+            if (!selected_file.is_folder () && selected_file.is_executable ()) {
                 label = _("Run");
                 menu.append (label, "selection.open");
             } else if (default_app != null) {
@@ -1648,7 +1641,7 @@ namespace FM {
                 }
             }
 
-            GLib.MenuModel? app_submenu = build_submenu_open_with_applications ();
+            GLib.MenuModel? app_submenu = build_submenu_open_with_applications (selection);
 
             if (app_submenu != null)
                 menu.append_submenu (_("Open with"), app_submenu);
@@ -1656,8 +1649,7 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel? build_submenu_open_with_applications () {
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
+        private GLib.MenuModel? build_submenu_open_with_applications (GLib.List<unowned GOF.File> selection) {
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
             filter_default_app_from_open_with_apps ();
             filter_this_app_from_open_with_apps ();
@@ -1684,7 +1676,7 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_menu_templates () {
-            /* TODO - Do just once when app starts or view created? */
+            /* Potential optimisation - do just once when app starts or view created */
             templates = null;
             var template_path = "%s/Templates".printf (GLib.Environment.get_home_dir ());
             var template_folder = GLib.File.new_for_path (template_path);
@@ -1750,7 +1742,8 @@ namespace FM {
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
-            action_set_enabled (common_actions, "copy", true); /* TODO inhibit copy for unreadable files */
+            /* TODO inhibit copy for unreadable files see bug #1392465*/
+            action_set_enabled (common_actions, "copy", true); 
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
@@ -2062,11 +2055,17 @@ namespace FM {
             }
         }
 
+        /* For actions on the background we need to return the current slot directory, but this
+         * should not be added to the list of selected files
+         */  
         private unowned GLib.List<unowned GOF.File> get_files_for_action () {
-            if (selected_files == null)
-                selected_files.prepend (slot.directory.file);
+            unowned GLib.List<unowned GOF.File> action_files = null;
+            if (selected_files == null) {
+                action_files.prepend (slot.directory.file);
+            } else
+                action_files = selected_files;
 
-            return selected_files;
+            return action_files;
         }
 
         protected void on_view_items_activated () {
@@ -2224,6 +2223,10 @@ namespace FM {
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
             Gtk.TreePath? path = null;
+
+            if (renaming)
+                return true;
+
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
             GOF.File? file = path != null ? model.file_for_path (path) : null;
 
@@ -2360,8 +2363,6 @@ namespace FM {
                 /* Only rename if name actually changed */
                 if (new_name != original_name) {
                     file.rename (new_name, (file, result_location, error) => {
-                        /* FIXME Cannot access calling environment within this closure for some reason
-                         * so cannot display dialog now*/
                         if (error != null)
                             warning ("Rename Error:  %s", error.message);
                     });
@@ -2562,7 +2563,7 @@ namespace FM {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
-            icon_renderer.set_property ("selection-helpers", helpers_shown); /* TODO What is suitable minimum size? */
+            icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
         public void start_renaming_file (GOF.File file, bool preselect_whole_name) {

@@ -298,8 +298,57 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_label = new Granite.Widgets.WrapLabel ("");
         size_label = new Gtk.Label ("");
         type_key_label = create_label_key (_("Type") + (": "));
+
+        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
+         * control over the size and position of the emblems so we create a composite pixbuf */
+
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_img = new Gtk.Image.from_pixbuf (file_pix);
+
+        /* Add space around the pixbuf for emblems */
+        var icon_pix = new Gdk.Pixbuf (file_pix.colorspace,
+                                         file_pix.has_alpha,
+                                         file_pix.bits_per_sample,
+                                         64, 64);
+        icon_pix.fill (0);
+        file_pix.composite (icon_pix,
+                            8, 8,
+                            48, 48,
+                            8, 8,
+                            1.0, 1.0,
+                            Gdk.InterpType.NEAREST,
+                            255);
+
+        /* Composite in the emblems, if any */
+        Gdk.Pixbuf? pixbuf = null;
+        if (goffile.emblems_list != null) {
+            var theme = Gtk.IconTheme.get_default ();
+            int pos = 0;
+            foreach (string emblem_name in goffile.emblems_list) {
+                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
+                if (info == null)
+                    continue;
+
+                try {
+                    pixbuf = info.load_icon ();
+                    /* Emblems drawn in a vertical column to the right of the icon */
+                    pixbuf.composite (icon_pix,
+                                      44, 44 - pos * 17,
+                                      16, 16,
+                                      44.0, 44.0 - pos * 17.0,
+                                      1.0, 1.0,
+                                      Gdk.InterpType.NEAREST,
+                                      255);
+                    pos++;
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
+                }
+                if (pos > 3) /* Only room for 3 emblems */ 
+                    break;
+            }
+        }
+
+        var file_img = new Gtk.Image.from_pixbuf (icon_pix);
         file_img.set_valign (Gtk.Align.CENTER);
         content.pack_start (file_img, false, false);
 

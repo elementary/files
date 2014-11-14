@@ -161,7 +161,7 @@ namespace FM {
         }
 
         public override void sync_selection () {
-            /* FIXME Not implemented - needed? */
+            /* Not implemented - needed? No current bug reports */
         }
 
         protected override void update_selected_files () {
@@ -170,7 +170,7 @@ namespace FM {
             tree.selected_foreach ((tree, path) => {
                 unowned GOF.File file;
                 file = model.file_for_path (path);
-                /* FIXME - model does not return owned object?  Is this correct? */
+
                 if (file != null)
                     selected_files.prepend (file);
                 else

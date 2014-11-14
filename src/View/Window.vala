@@ -272,6 +272,8 @@ namespace Marlin.View {
             if (is_first_window) {
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
         }
@@ -744,10 +746,12 @@ namespace Marlin.View {
 
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
+
             Marlin.ViewMode mode = Marlin.ViewMode.INVALID;
-            string root_uri = null;
-            string tip_uri = null;
+            string? root_uri = null;
+            string? tip_uri = null;
             int tabs_added = 0;
+
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
             freeze_view_changes = true;
@@ -777,25 +781,29 @@ namespace Marlin.View {
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
+
+                /* Prevent too rapid loading of tabs which can cause crashes
+                 * This may not be necessary with the Vala version of the views but does no harm
+                 */ 
+                Thread.usleep (100000);
             }
 
             freeze_view_changes = false;
 
             /* Don't attempt to set active tab position if no tabs were restored */
-            if (tabs_added == 0)
+            if (tabs_added < 1)
                 return 0;
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
 
-            if (active_tab_position >=0 && active_tab_position < tabs_added) {
-                tabs.current = tabs.get_tab_by_index (active_tab_position);
-                change_tab (active_tab_position);
-            }
+            if (active_tab_position < 0 || active_tab_position >= tabs_added)
+                active_tab_position = 0;
 
-            string? path;
-            if (current_tab == null)
-                path = "";
-            else {
+            tabs.current = tabs.get_tab_by_index (active_tab_position);
+            change_tab (active_tab_position);
+
+            string path = "";
+            if (current_tab != null) {
                 path = current_tab.get_tip_uri ();
 
                 if (path == null || path == "")
@@ -831,7 +839,7 @@ namespace Marlin.View {
         }
 
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
-/**TODO - move to Miller.vala **/ 
+            /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
             var mwcols = view.view as Miller;

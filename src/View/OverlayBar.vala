@@ -58,7 +58,7 @@ namespace Marlin.View {
             });
         }
 
-        public void on_selection_changed (GLib.List<GOF.File>? files = null) {
+        private void on_selection_changed (GLib.List<GOF.File>? files = null) {
             if (files != null)
                 selected_files = files.copy ();
             else

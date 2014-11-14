@@ -31,11 +31,10 @@ namespace FM
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public void remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
-        public unowned GOF.File file_for_path(Gtk.TreePath path); /* FIXME - is unowned correct? */
+        public unowned GOF.File file_for_path(Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
-        //public void get_directory_file (Gtk.TreePath path, out GOF.Directory.Async directory, out GOF.File file);
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
         public GOF.File file_for_iter (Gtk.TreeIter iter);
         public void clear ();
@@ -240,6 +239,7 @@ namespace GOF {
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
+        public GLib.List<string>? emblems_list;
         public GLib.FileInfo? info;
         public string basename;
         public string uri;

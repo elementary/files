@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-09-11 09:12+0000\n"
-"Last-Translator: smutok <smutok@gmail.com>\n"
+"PO-Revision-Date: 2014-11-05 19:55+0000\n"
+"Last-Translator: Jakub Ivanicky <jivanicky@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:12+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-06 06:29+0000\n"
+"X-Generator: Launchpad (build 17223)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -42,7 +42,7 @@ msgstr "Typ"
 
 #: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
 msgid "Modified"
-msgstr "Zmena"
+msgstr "Upravené"
 
 #: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
 #: ../src/fm-directory-view.c:547
@@ -67,7 +67,7 @@ msgstr "Podľa _názvu"
 
 #: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "Udržiavať ikony zoradené podľa názvu v riadkoch"
+msgstr "Udržiava ikony zoradené podľa mena v riadkoch"
 
 #: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -659,36 +659,36 @@ msgstr "_Vrátiť vytvorenie súboru zo šablóny"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť vytvorenie priečinka %d"
+msgstr[1] "Vrátiť naspäť vytvorenie priečinkov %d"
 
 #: ../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť presunutie položky %d do koša"
+msgstr[1] "Vrátiť naspäť presunutie položiek %d do koša"
 
 #: ../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť obnovenie položky %d z koša"
+msgstr[1] "Vrátiť naspäť obnovenie položiek %d z koša"
 
 #: ../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť vytvorenie odkazu na položku %d"
+msgstr[1] "Vrátiť naspäť vytvorenie odkazu na položky %d"
 
 #: ../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť odstránenie položky %d"
+msgstr[1] "Vrátiť naspäť odstránenie položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1584
 #, c-format
