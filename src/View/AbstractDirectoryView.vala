@@ -1030,7 +1030,7 @@ namespace FM {
                     clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, null);
                 else
                     clipboard.paste_files (slot.directory.location, this as Gtk.Widget, null);
-            } 
+            }
         }
 
 
@@ -1589,7 +1589,17 @@ namespace FM {
             else {
                 menu.append_section (null, build_menu_open (ref builder));
 
-                menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
+                var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
+                /* Do not display the 'Paste into' menuitem if selection is not a folder.
+                 * We have to hard-code the menuitem index so any change to the clipboard-
+                 * selection menu definition in directory_view_popup.ui may necessitate changing
+                 * the index below.
+                 */
+                if (!common_actions.get_action_enabled ("paste_into"))
+                    clipboard_menu.remove (2);
+
+                menu.append_section (null, clipboard_menu);
+
                 menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
                 menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
 
@@ -1606,7 +1616,10 @@ namespace FM {
 
             var menu = new GLib.Menu ();
             menu.append_section (null, build_menu_open (ref builder));
-            menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
+
+            if (common_actions.get_action_enabled ("paste_into"))
+                menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+
 
             GLib.MenuModel? template_menu = build_menu_templates ();
             var new_menu = builder.get_object ("new") as GLib.Menu;
