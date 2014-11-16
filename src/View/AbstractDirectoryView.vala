@@ -892,8 +892,14 @@ namespace FM {
 
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            var dialog = new Gtk.AppChooserDialog (window, 0, selection.data.location);
             GOF.File file = selection.data as GOF.File;
+
+            Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
+                                    Gtk.DialogFlags.DESTROY_WITH_PARENT |
+                                    Gtk.DialogFlags.USE_HEADER_BAR;
+ 
+            var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
+            dialog.set_heading (_("Select an application"));
 
             var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
             dialog.get_content_area ().pack_start (check_default, false, false, 0);
@@ -913,6 +919,8 @@ namespace FM {
                 }
                 open_files_with (app, selection);
             }
+
+            dialog.destroy ();
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1579,10 +1587,7 @@ namespace FM {
             if (in_trash)
                 menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
             else {
-                menu.append_section (null, build_menu_open ());
-
-                if (common_actions.get_action_enabled ("open_in"))
-                    menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+                menu.append_section (null, build_menu_open (ref builder));
 
                 menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
                 menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
@@ -1600,8 +1605,7 @@ namespace FM {
                 return null;
 
             var menu = new GLib.Menu ();
-            menu.append_section (null, build_menu_open ());
-            menu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+            menu.append_section (null, build_menu_open (ref builder));
             menu.append_section (null, builder.get_object ("clipboard") as GLib.MenuModel);
 
             GLib.MenuModel? template_menu = build_menu_templates ();
@@ -1623,7 +1627,7 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel build_menu_open () {
+        private GLib.MenuModel build_menu_open (ref Gtk.Builder builder) {
             var menu = new GLib.Menu ();
             string label = _("Invalid");
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
@@ -1634,45 +1638,66 @@ namespace FM {
                 menu.append (label, "selection.open");
             } else if (default_app != null) {
                 var app_name = default_app.get_display_name ();
-
                 if (app_name != "Files") {
-                    label = (_("Open with %s")).printf (app_name);
+                    label = (_("Open in %s")).printf (app_name);
                     menu.append (label, "selection.open_with_default");
                 }
             }
 
-            GLib.MenuModel? app_submenu = build_submenu_open_with_applications (selection);
+            GLib.MenuModel? app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
             if (app_submenu != null)
-                menu.append_submenu (_("Open with"), app_submenu);
+                menu.append_submenu (_("Open in"), app_submenu);
 
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel? build_submenu_open_with_applications (GLib.List<unowned GOF.File> selection) {
+        private GLib.MenuModel? build_submenu_open_with_applications (ref Gtk.Builder builder,
+                                                                      GLib.List<unowned GOF.File> selection) {
+
+            var open_with_submenu = new GLib.Menu ();
+            int index = -1;
+
+            if (common_actions.get_action_enabled ("open_in"))
+                open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
             filter_default_app_from_open_with_apps ();
             filter_this_app_from_open_with_apps ();
 
-            if (open_with_apps.length () == 0)
-                return null;
+            if (open_with_apps.length () > 0) {
+                var apps_section = new GLib.Menu ();
+                string last_label = "";
+                open_with_apps.@foreach ((app) => {
+                    var label = app.get_display_name ();
 
-            var apps_submenu = new GLib.Menu ();
-            int index = -1;
+                    /* The following mainly applies to Nautilus, whose display name is also "Files" */
+                    if (label == "Files") {
+                        label = app.get_executable ();
+                        label = label[0].toupper ().to_string () + label.substring (1);
+                    }
 
-            open_with_apps.@foreach ((app) => {
-                var label = app.get_display_name ();
-                if (label == "Files")
-                    label = app.get_executable ();
+                    /* Do no show same name twice - some apps have more than one .desktop file
+                     * with the same name (e.g. Nautilus)
+                     */       
+                    if (label != last_label) {
+                        index++;
+                        apps_section.append (label, "selection.open_with_app::" + index.to_string ());
+                        last_label = label.dup ();
+                    }
+                });
 
-                index++;
-                apps_submenu.append (label, "selection.open_with_app::" + index.to_string ());
-            });
+                if (index >= 0)
+                    open_with_submenu.append_section (null, apps_section);
+            }
 
-            if (selection.length () == 1)
-                apps_submenu.append (_("Other Application"), "selection.other_app");
+            if (selection.length () == 1) {
+                var other_app_menu = new GLib.Menu ();
+                other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
+                open_with_submenu.append_section (null, other_app_menu);
+            }
 
-            return apps_submenu as MenuModel;
+            return open_with_submenu as GLib.MenuModel;
         }
 
         private GLib.MenuModel? build_menu_templates () {
@@ -1717,19 +1742,20 @@ namespace FM {
             if (updates_frozen)
                 return;
 
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files ();
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
             bool single_folder = true; /* background is a folder */
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
 
+            update_default_app (selection);
+
             if (selection_count > 0) {
                 unowned GOF.File? file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
                     can_rename = file.is_writable ();
-                    update_default_app (selection);
                 } else
                     critical ("File in selection is null");
             }

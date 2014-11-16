@@ -50,33 +50,28 @@
 
     </menu>
     <menu id='hidden'>
-            <item>
-                <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
-                <attribute name='action'>background.show_hidden</attribute>
-            </item>
+        <item>
+            <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
+            <attribute name='action'>background.show_hidden</attribute>
+        </item>
     </menu>
 
     <menu id='open-in'>
-        <submenu>
-            <attribute name='label' translatable = 'yes'>Open in</attribute>
-            <section>
-                <item>
-                    <attribute name='label' translatable='yes'>New Tab</attribute>
-                    <attribute name='action'>common.open_in</attribute>
-                    <attribute name="target">TAB</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>New Window</attribute>
-                    <attribute name='action'>common.open_in</attribute>
-                    <attribute name="target">WINDOW</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>Terminal</attribute>
-                    <attribute name='action'>common.open_in</attribute>
-                    <attribute name="target">TERMINAL</attribute>
-                </item>
-            </section>
-        </submenu>
+        <item>
+            <attribute name='label' translatable='yes'>New Tab</attribute>
+            <attribute name='action'>common.open_in</attribute>
+            <attribute name="target">TAB</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>New Window</attribute>
+            <attribute name='action'>common.open_in</attribute>
+            <attribute name="target">WINDOW</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>Terminal</attribute>
+            <attribute name='action'>common.open_in</attribute>
+            <attribute name="target">TERMINAL</attribute>
+        </item>
     </menu>
 
     <menu id='properties'>
