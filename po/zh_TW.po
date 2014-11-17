@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-07-17 05:07+0000\n"
+"PO-Revision-Date: 2014-11-17 00:45+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:13+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-17 05:53+0000\n"
+"X-Generator: Launchpad (build 17241)\n"
+"Language: zh_TW\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -119,7 +120,7 @@ msgstr[0] "使用「%s」來開啟選定的項目"
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "使用「%s」作為新檔案的模板"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
@@ -552,7 +553,7 @@ msgstr "移動「%s」至「%s」"
 #: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "從範本建立新檔案「%s」 "
+msgstr "從模板建立新檔案「%s」 "
 
 #: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
@@ -639,7 +640,7 @@ msgstr "取消空白檔案的建立動作(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr "取消從範本製作檔案的建立動作(_U)"
+msgstr "取消從模板製作檔案的建立動作(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1559
 #, c-format
@@ -725,7 +726,7 @@ msgstr "再次執行空白檔案的建立動作(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr "再次執行從範本製作檔案的建立動作(_R)"
+msgstr "再次執行從模板製作檔案的建立動作(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1654
 #, c-format
@@ -829,7 +830,7 @@ msgstr "昨日%p %-I:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%Y年%b%-d日%p %-I:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1257,50 +1258,52 @@ msgstr[0] "剩下 %'d 個檔案要丟進垃圾筒"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "無法將檔案丟至垃圾筒或刪除"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "尚未取得在唯讀檔案系統上將檔案丟至垃圾筒，或刪除檔案的許可。"
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
+msgstr "尚未取得在您未具寫入權的資料夾內將檔案丟至垃圾筒，或刪除檔案的許可。"
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "尚未取得將您未具寫入權的資料夾丟至垃圾筒，或刪除資料夾的許可。"
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "無法將檔案丟至垃圾桶。是否現在嘗試刪除？"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
+msgstr "此檔案無法丟至垃圾桶中。請見下方詳細資料以深入瞭解更多資訊。"
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "無法將檔案丟至垃圾筒。是否嘗試刪除？"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "此檔案無法丟至垃圾桶中。您可能也無法將之刪除。"
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" 刪除檔案將永久失去檔案"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -1724,7 +1727,7 @@ msgstr "「檔案」不是您的預設檔案瀏覽器。"
 
 #: ../src/View/Window.vala:144
 msgid "Set as Default"
-msgstr ""
+msgstr "設為預設值"
 
 #: ../src/View/Window.vala:149
 msgid "Ignore"
@@ -1800,11 +1803,11 @@ msgstr "再次動作(_R)"
 
 #: ../src/View/Window.vala:766
 msgid "_Find"
-msgstr ""
+msgstr "尋找(_F)"
 
 #: ../src/View/Window.vala:767
 msgid "Search the current folder"
-msgstr ""
+msgstr "搜尋目前的資料夾"
 
 #: ../src/View/Window.vala:769
 msgid "Open _Parent"
@@ -1968,7 +1971,7 @@ msgstr "家屋"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr ""
+msgstr "開啟垃圾筒"
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
@@ -1984,7 +1987,7 @@ msgstr "檔案系統"
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "開啟檔案系統的目錄"
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
@@ -1996,7 +1999,7 @@ msgstr "您的網路位置"
 
 #: ../src/View/Sidebar.vala:590
 msgid "Entire Network"
-msgstr ""
+msgstr "整個網路"
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
@@ -2008,7 +2011,7 @@ msgstr "無法開啟 %s"
 
 #: ../src/View/Sidebar.vala:1184
 msgid "Open"
-msgstr ""
+msgstr "開啟"
 
 #: ../src/View/Sidebar.vala:1206
 msgid "Remove"
@@ -2016,7 +2019,7 @@ msgstr "移除"
 
 #: ../src/View/Sidebar.vala:1214
 msgid "Rename"
-msgstr ""
+msgstr "重新命名"
 
 #: ../src/View/Sidebar.vala:1223
 msgid "_Mount"
@@ -2032,23 +2035,23 @@ msgstr "退出(_E)"
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "於此資料夾中"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "書籤"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "任何其他位置"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "找不到相關結果"
 
 #: ../src/View/ViewContainer.vala:55
 msgid "Loading…"
-msgstr ""
+msgstr "載入中…"
 
 #: ../src/View/ViewContainer.vala:149
 msgid "This folder does not exist"
@@ -2068,7 +2071,7 @@ msgstr "您未取得檢視此資料夾的許可。"
 
 #: ../src/View/ViewContainer.vala:250
 msgid "Connecting…"
-msgstr ""
+msgstr "連接中…"
 
 #: ../src/View/Chrome/ViewSwicher.vala:75
 msgid "View as Grid"
@@ -2084,11 +2087,11 @@ msgstr "分欄檢視"
 
 #: ../src/View/Chrome/TopMenu.vala:34
 msgid "Previous"
-msgstr ""
+msgstr "上一個"
 
 #: ../src/View/Chrome/TopMenu.vala:39
 msgid "Next"
-msgstr ""
+msgstr "下一個"
 
 #: ../src/View/OverlayBar.vala:136
 msgid "%u folders"
@@ -2158,7 +2161,7 @@ msgstr "預覽"
 
 #: ../src/View/PropertiesWindow.vala:176
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "%u selected items"
@@ -2262,7 +2265,7 @@ msgstr "在新的分頁開啟 URI"
 
 #: ../src/Application.vala:141
 msgid "New Window"
-msgstr ""
+msgstr "新視窗"
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
@@ -2304,7 +2307,7 @@ msgstr "以管理員身分開啟新視窗(_A)"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "關於《檔案》(_F)"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
@@ -2343,16 +2346,16 @@ msgstr "前往 %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr ""
+msgstr "連接到伺服器…"
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "連接到網路檔案伺服器"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "這些項目可能已在淨空垃圾筒後刪除。"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "淨空垃圾筒"
