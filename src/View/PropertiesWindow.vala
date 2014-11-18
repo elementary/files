@@ -94,15 +94,29 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         border_width = 5;
         destroy_with_parent = true;
 
-        if (_files == null || _view == null)
+        if (_files == null) {
+            critical ("Properties Window constructor called with null file list");
             return;
+        }
+
+        if (_view == null) {
+            critical ("Properties Window constructor called with null Directory View");
+            return;
+        }
 
         view = _view;
         files = _files.copy ();
         count = files.length();
 
-        if (count < 1 || !(files.data is GOF.File))
+        if (count < 1 ) {
+            critical ("Properties Window constructor called with empty file list");
             return;
+        }
+
+        if (!(files.data is GOF.File)) {
+            critical ("Properties Window constructor called with invalid file data (1)");
+            return;
+        }
 
         Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         header.height_request = 15;
@@ -125,9 +139,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
         {
-            if (!(gof is GOF.File))
+            if (!(gof is GOF.File)) {
+                critical ("Properties Window constructor called with invalid file data (2)");
                 return;
-
+            }
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
