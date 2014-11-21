@@ -24,7 +24,6 @@
 #define __MARLIN_ICON_RENDERER_H__
 
 #include "marlin-enum-types.h"
-//#include "marlin-vala.h"
 #include "gof-file.h"
 
 G_BEGIN_DECLS

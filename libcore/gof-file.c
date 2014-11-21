@@ -321,7 +321,6 @@ gof_file_update_type (GOFFile *file)
 
     gof_file_update_formated_type (file);
     /* update icon */
-//g_message ("%s build new icon", G_STRFUNC);
     file->icon = g_content_type_get_icon (ftype);
     gof_file_update_icon_internal (file, file->pix_size);
     gof_file_icon_changed (file);
@@ -359,7 +358,6 @@ gof_file_update (GOFFile *file)
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
-        //g_message ("%s target uri: %s", G_STRFUNC, target_uri);
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
@@ -511,7 +509,6 @@ gof_file_update (GOFFile *file)
 static MarlinIconInfo *
 gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
-//g_message ("%s - size %i", G_STRFUNC, size);
     g_return_val_if_fail (size >= 1, NULL);
 
     if (file->custom_icon_name != NULL) {
@@ -544,7 +541,6 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (file, NULL);
     g_return_val_if_fail (size >= 1, NULL);
 
-//g_message ("%s - size %i", G_STRFUNC, size);
     icon = gof_file_get_special_icon (file, size, flags);
     if (icon != NULL && !marlin_icon_info_is_fallback (icon))
         return icon;
@@ -578,7 +574,6 @@ static GdkPixbuf
 {
     GdkPixbuf *pix;
     MarlinIconInfo *temp_nicon;
-//g_message ("%s - size %i", G_STRFUNC, size);
     g_return_val_if_fail (size >= 1, NULL);
 
     pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
@@ -598,7 +593,6 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 {
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
-//g_message ("%s - size %i", G_STRFUNC, size);
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, flags);
     //nicon = gof_file_get_icon (file, size, 0);
@@ -608,8 +602,6 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     if (nicon)
         g_object_unref (nicon);
     //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
-    /*if (pix && nicon)
-        //g_message ("%s ref count %u %u", G_STRFUNC, G_OBJECT (nicon)->ref_count, G_OBJECT (pix)->ref_count);*/
 
     return pix;
 }
@@ -618,8 +610,6 @@ static void
 gof_file_update_icon_internal (GOFFile *file, gint size)
 {
     g_return_if_fail (size >= 1);
-    /*//g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
-//g_message ("%s - size %i", G_STRFUNC, size);
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
@@ -639,7 +629,6 @@ void gof_file_update_icon (GOFFile *file, gint size)
     if (!(file->pix == NULL || file->pix_size != size))
         return;
 
-//g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
     gof_file_update_icon_internal (file, size);
 }
 
@@ -1717,7 +1706,6 @@ gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
     }
 
     if (error != NULL) {
-        //g_message ("Could not start application on terminal: %s", error->message);
         g_error_free (error);
     }
 
@@ -1910,7 +1898,6 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
 
 gboolean
 gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
-//gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
 {
     GdkAppLaunchContext *context;
     gboolean             succeed;
@@ -2107,7 +2094,6 @@ rename_callback (GObject *source_object,
     GFile *new_file;
     GError *error;
 
-//g_message ("rename callback");
     op = callback_data;
     error = NULL;
     new_file = g_file_set_display_name_finish (G_FILE (source_object),
@@ -2124,7 +2110,6 @@ rename_callback (GObject *source_object,
                                    g_file_get_parse_name (op->file->location));
 
     //g_warning ("%s %u", G_STRFUNC, G_OBJECT (op->file)->ref_count);
-    //gof_file_operation_complete (op, NULL, error);
     gof_file_operation_complete (op, new_file, error);
     if (new_file != NULL) {
         g_object_unref (new_file);
@@ -2145,7 +2130,6 @@ gof_file_rename (GOFFile *file,
     //char *new_file_name;
     //gboolean success, name_changed;
     GError *error;
-//g_message ("%s -", G_STRFUNC);
     //g_warning ("%s %u", G_STRFUNC, G_OBJECT (file)->ref_count);
     g_return_if_fail (GOF_IS_FILE (file));
     g_return_if_fail (new_name != NULL);

@@ -96,7 +96,6 @@ G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
 static void
 file_entry_free (FileEntry *file_entry)
 {
-//g_message ("%s - ", G_STRFUNC);
     if (file_entry->reverse_map) {
         g_hash_table_destroy (file_entry->reverse_map);
         file_entry->reverse_map = NULL;
@@ -144,7 +143,6 @@ fm_list_model_get_column_type (GtkTreeModel *tree_model, int index)
 static void
 fm_list_model_ptr_to_iter (FMListModel *model, GSequenceIter *ptr, GtkTreeIter *iter)
 {
-//g_message ("%s -", G_STRFUNC);
     g_assert (!g_sequence_iter_is_end (ptr));
     if (iter != NULL) {
         iter->stamp = model->details->stamp;
@@ -156,7 +154,6 @@ fm_list_model_ptr_to_iter (FMListModel *model, GSequenceIter *ptr, GtkTreeIter *
 static gboolean
 fm_list_model_get_iter (GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath *path)
 {
-//g_message ("%s -", G_STRFUNC);
     FMListModel *model;
     GSequence *files;
     GSequenceIter *ptr;
@@ -187,7 +184,6 @@ fm_list_model_get_iter (GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath
 static GtkTreePath *
 fm_list_model_get_path (GtkTreeModel *tree_model, GtkTreeIter *iter)
 {
-//g_message ("%s -", G_STRFUNC);
     GtkTreePath *path;
     FMListModel *model;
     GSequenceIter *ptr;
@@ -678,7 +674,6 @@ add_dummy_row (FMListModel *model, FileEntry *parent_entry)
     FileEntry *dummy_file_entry;
     GtkTreeIter iter;
     GtkTreePath *path;
-//g_message ("Add dummy row");
     dummy_file_entry = g_new0 (FileEntry, 1);
     dummy_file_entry->parent = parent_entry;
     dummy_file_entry->ptr = g_sequence_insert_sorted (parent_entry->files, dummy_file_entry,
@@ -854,7 +849,6 @@ fm_list_model_get_length (FMListModel *model)
 static void
 fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
 {
-//g_message ("%s -", G_STRFUNC);
     GSequenceIter *ptr, *child_ptr;
     FileEntry *file_entry, *child_file_entry, *parent_file_entry;
     GtkTreePath *path;
@@ -928,7 +922,6 @@ void
 fm_list_model_remove_file (FMListModel *model, GOFFile *file,
                            GOFDirectoryAsync *directory)
 {
-//g_message ("%s -", G_STRFUNC);
     GtkTreeIter iter;
 
     if (fm_list_model_get_tree_iter_from_file (model, file, directory, &iter)) {
@@ -939,7 +932,6 @@ fm_list_model_remove_file (FMListModel *model, GOFFile *file,
 static void
 fm_list_model_clear_directory (FMListModel *model, GSequence *files)
 {
-//g_message ("%s -", G_STRFUNC);
     GtkTreeIter iter;
     FileEntry *file_entry;
 
@@ -959,7 +951,6 @@ fm_list_model_clear_directory (FMListModel *model, GSequence *files)
 void
 fm_list_model_clear (FMListModel *model)
 {
-//g_message ("%s -", G_STRFUNC);
     g_return_if_fail (model != NULL);
 
     fm_list_model_clear_directory (model, model->details->files);
@@ -968,7 +959,6 @@ fm_list_model_clear (FMListModel *model)
 GOFFile *
 fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
 {
-//g_message ("%s -", G_STRFUNC);
     GOFFile *file;
     GtkTreeIter iter;
 
@@ -985,7 +975,6 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
 GOFFile *
 fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
 {
-//g_message ("%s -", G_STRFUNC);
     GOFFile *file;
 
     file = NULL;
@@ -998,7 +987,6 @@ fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
 gboolean
 fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory, GOFFile **file)
 {
-//g_message ("%s -", G_STRFUNC);
     GtkTreeIter iter;
     FileEntry *file_entry;
 
@@ -1016,7 +1004,6 @@ fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, GOFDire
 gboolean
 fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory)
 {
-//g_message ("%s -", G_STRFUNC);
     GtkTreeIter iter;
     FileEntry *file_entry;
 
@@ -1044,7 +1031,6 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
 void
 fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
 {
-//g_message ("%s - ", G_STRFUNC);
     GSequenceIter *child_ptr;
     FileEntry *file_entry, *child_file_entry;
     GtkTreeIter child_iter;

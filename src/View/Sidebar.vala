@@ -118,9 +118,6 @@ namespace Marlin.Places {
         /* volume mounting - delayed open process */
         bool mounting = false;
 
-        //GOF.Window.Slot go_to_after_mount_slot;
-        //Marlin.OpenFlag go_to_after_mount_flags;
-
         /* prevent multiple unmount processes */
         bool ejecting_or_unmounting = false;
 

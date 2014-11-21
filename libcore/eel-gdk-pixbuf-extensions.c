@@ -31,7 +31,6 @@
 static GdkPixbuf *
 create_new_pixbuf (GdkPixbuf *src)
 {
-//g_message ("eel new pix buf from src - width %i, height %i", gdk_pixbuf_get_width (src), gdk_pixbuf_get_height (src));
     g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
     g_assert ((!gdk_pixbuf_get_has_alpha (src)
                && gdk_pixbuf_get_n_channels (src) == 3)
