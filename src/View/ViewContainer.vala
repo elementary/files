@@ -188,7 +188,7 @@ namespace Marlin.View {
             can_show_folder = true;
             loading (true);
             /* Allow time for the window to update before starting to load directory so that
-             * the window is displayed more quickly with the "Loading ... " message
+             * the window is displayed more quickly
              * when starting the application in, or switching view to, a folder that contains
              * a large number of files. Also ensures infobars are added correctly by plugins.
              */           
@@ -197,6 +197,7 @@ namespace Marlin.View {
                 plugin_directory_loaded ();
                 return false;
             });
+            refresh_slot_info (slot);
         }
 
         private void plugin_directory_loaded () {
@@ -211,22 +212,8 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
-            var loc = aslot.directory.file.location;
-            var slot_path = loc.get_path ();
-
-            if (slot_path == Environment.get_home_dir ())
-                tab_name = _("Home");
-            else if (slot_path == "/")
-                tab_name = _("File System");
-            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
-                tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else {
-                tab_name = _("This folder does not exist");
-                can_show_folder = false;
-            }
-
-            if (Posix.getuid() == 0)
-                tab_name = tab_name + " " + _("(as Administrator)");
+            GLib.File loc = aslot.directory.file.location;
+            update_tab_name (loc);
 
             browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
 
@@ -237,11 +224,36 @@ namespace Marlin.View {
             window.set_can_go_forward (browser.get_can_go_forward ());
         }
 
+        public void update_tab_name (GLib.File loc) {
+            var slot_path = loc.get_path ();
+
+            if (slot_path == Environment.get_home_dir ())
+                tab_name = _("Home");
+            else if (slot_path == "/")
+                tab_name = _("File System");
+            else if (loc.query_exists ()) {
+                try {
+                    var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
+                    tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not get location display name. %s", e.message);
+                }
+
+            } else {
+                tab_name = _("This folder does not exist");
+                can_show_folder = false;
+            }
+
+            if (Posix.getuid() == 0)
+                tab_name = tab_name + " " + _("(as Administrator)");
+
+        }
+
         public void directory_done_loading (GOF.AbstractSlot slot) {
             FileInfo file_info;
 
             loading (false);
-            refresh_slot_info (slot);
 
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
