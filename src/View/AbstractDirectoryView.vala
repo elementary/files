@@ -2566,7 +2566,11 @@ namespace FM {
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
-            if (renaming)
+            /* Ignore button release from click that started renaming.
+             * View may lose focus during a drag if another tab is hovered, in which case
+             * we do not want to refocus this view. 
+             * Under both these circumstances, 'should_activate' will be false */      
+            if (renaming || !view_has_focus ())
                 return true;
 
             slot.active (should_scroll);
