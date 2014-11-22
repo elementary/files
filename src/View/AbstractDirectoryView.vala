@@ -2353,7 +2353,8 @@ namespace FM {
 
                 renaming = false;
                 name_renderer.editable = false;
-                unfreeze_updates ();               
+                unfreeze_updates ();
+                grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {
