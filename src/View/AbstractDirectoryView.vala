@@ -2244,19 +2244,6 @@ namespace FM {
                 default:
                     break;
             }
-
-#if 0
-            /* Use find function instead of view interactive search */
-            if (no_mods || only_shift_pressed) {
-                /* Use printable characters to initiate search */
-                if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                    window.win_actions.activate_action ("find", null);
-                    window.key_press_event (event);
-                    return true;
-                } 
-            }
-#endif
-
             return false;
         }
 

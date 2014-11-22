@@ -333,10 +333,5 @@ namespace GOF {
         NONE,
         USE_THUMBNAILS
     }
-
-//    [CCode (cheader_filename = "gof-abstract-slot.h")]
-//    public class AbstractSlot : GLib.Object {
-//        public void add_extra_widget(Gtk.Widget widget);
-//    }
 }
 

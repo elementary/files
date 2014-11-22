@@ -249,7 +249,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
         menu.append (menu_item);
         menu_item.show ();
-       // plugins.menuitem_references.add (menu_item);
     }
 
     private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
@@ -359,7 +358,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (radius_y > h - radius_y)
                 radius_y = h / 2;
 
-            //approximate (quite close) the arc using a bezier curve
+            /* approximate (quite close) the arc using a bezier curve */
             double ca = ARC_TO_BEZIER * radius_x;
             double cb = ARC_TO_BEZIER * radius_y;
 
@@ -381,7 +380,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             case "fill":
                 Gdk.RGBA rgba = Gdk.RGBA ();
                 rgba.parse (GOF.Preferences.TAGS_COLORS[color]);
-                //rgba.alpha = 0.7;
                 Gdk.cairo_set_source_rgba (cr, rgba);
                 cr.fill ();
                 break;
