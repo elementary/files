@@ -322,7 +322,9 @@ gof_file_update_type (GOFFile *file)
     gof_file_update_formated_type (file);
     /* update icon */
     file->icon = g_content_type_get_icon (ftype);
-    gof_file_update_icon_internal (file, file->pix_size);
+    if (file->pix_size > 1)
+        gof_file_update_icon_internal (file, file->pix_size);
+
     gof_file_icon_changed (file);
 }
 
@@ -623,7 +625,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    if (size <=0)
+    if (size <= 1)
         return;
 
     if (!(file->pix == NULL || file->pix_size != size))
@@ -783,7 +785,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
     gchar    *md5_hash;
 
     /* Silently ignore invalid requests */
-    if (file->pix <= 1)
+    if (file->pix_size <= 1)
         return;
 
     if (gof_file_get_thumbnail_path (file) == NULL) {
