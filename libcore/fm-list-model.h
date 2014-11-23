@@ -28,6 +28,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include "gof-file.h"
+#include "../src/marlin-enum-types.h"
 #include "pantheon-files-core.h"
 
 #ifndef FM_LIST_MODEL_H
@@ -48,6 +49,7 @@
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
     FM_LIST_MODEL_COLOR,
+    FM_LIST_MODEL_PIXBUF,
     FM_LIST_MODEL_FILENAME,
     FM_LIST_MODEL_SIZE,
     FM_LIST_MODEL_TYPE,
@@ -88,18 +90,10 @@ void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gb
 
 GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
 GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
-void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
+gboolean        fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
                                                   GOFDirectoryAsync **directory, GOFFile **file);
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);
-
-/*int               fm_list_model_add_column (FMListModel *model,
-  NautilusColumn *column);*/
-/*int               fm_list_model_get_column_number (FMListModel *model,
-  const char *column_name);*/
-
-/*void              fm_list_model_subdirectory_done_loading (FMListModel       *model,
-  NautilusDirectory *directory);*/
 
 const gchar     *fm_list_model_get_string_from_column_id (gint id);
 gint            fm_list_model_get_column_id_from_string (const gchar *colstr);

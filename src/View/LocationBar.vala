@@ -28,12 +28,19 @@ namespace Marlin.View.Chrome
         public new string path {
             set {
                 var new_path = GLib.Uri.unescape_string (value);
-                _path = new_path;
-                if (!bread.is_focus && !win.freeze_view_changes) {
-                    bread.text = "";
-                    bread.change_breadcrumbs (new_path);
+                if (new_path != null) {
+                    _path = new_path;
+
+                    if (!bread.is_focus && !win.freeze_view_changes) {
+                        bread.text = "";
+
+                        bread.change_breadcrumbs (new_path);
+                    }
+                } else {
+                    critical ("Tried to set null path");
                 }
             }
+
             get {
                 return _path;
             }
@@ -51,9 +58,9 @@ namespace Marlin.View.Chrome
             natural_width = 3000;
         }
 
-        public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
+        public LocationBar (Marlin.View.Window win) {
             this.win = win;
-            bread = new Breadcrumbs (ui, win);
+            bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
 
             bread.path_changed.connect (on_path_changed);
@@ -82,13 +89,8 @@ namespace Marlin.View.Chrome
             if (win.freeze_view_changes)
                 return;
 
-            /* focus back the view */
-            if (win.current_tab.content_shown)
-                win.current_tab.content.grab_focus ();
-            else
-                win.current_tab.slot.view_box.grab_focus ();
-
-            activate(file);
+            win.grab_focus ();
+            activate (file);
         }
     }
 
@@ -96,7 +98,6 @@ namespace Marlin.View.Chrome
         public SearchResults search_results { get; private set; }
 
         Gtk.Menu menu;
-        private Gtk.UIManager ui;
 
         /* Used for auto-copmpletion */
         GOF.Directory.Async files;
@@ -114,10 +115,8 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
-        public Breadcrumbs (Gtk.UIManager ui, Marlin.View.Window win)
+        public Breadcrumbs (Marlin.View.Window win)
         {
-            /* grab the UIManager */
-            this.ui = ui;
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
@@ -206,16 +205,12 @@ namespace Marlin.View.Chrome
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
                     
-                win.current_tab.up ();
+                win.go_up ();
                 grab_focus ();
             });
 
             down.connect (() => {
-                // focus back the view 
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else
-                    win.current_tab.slot.view_box.grab_focus ();
+                win.grab_focus ();
             });
 
             completed.connect (() => {
@@ -241,12 +236,8 @@ namespace Marlin.View.Chrome
             search_results = new SearchResults (this);
 
             search_results.file_selected.connect ((file) => {
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else
-                    win.current_tab.slot.view_box.grab_focus ();
-
-                win.current_tab.focus_file (file);
+                win.grab_focus ();
+                win.current_tab.focus_location (file);
 
                 search_mode = false;
             });
@@ -255,7 +246,7 @@ namespace Marlin.View.Chrome
             });
 
             search_changed.connect ((text) => {
-                search_results.search (text, win.current_tab.slot.location);
+                search_results.search (text, win.current_tab.location);
             });
         }
 
@@ -269,7 +260,7 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file) {
             string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
-            if(file.is_folder () && file_display_name.length > to_search.length) {
+            if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
                         text_completion = file_display_name.slice (to_search.length, file_display_name.length);
@@ -290,7 +281,9 @@ namespace Marlin.View.Chrome
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
-                    string str = text.slice (0, text.length - to_search.length);
+                    string? str = null;
+                    if (text.length >=1)
+                        str = text.slice (0, text.length - to_search.length);
                     if (str != null && !multiple_completions) {
                         text = str + file.get_display_name ().slice (0, to_search.length);
                         set_position (-1);
@@ -302,7 +295,6 @@ namespace Marlin.View.Chrome
         public void on_need_completion () {
             File file = get_file_for_path (text);
             to_search = file.get_basename ();
-
             autocompleted = false;
             multiple_completions = false;
             
@@ -329,7 +321,7 @@ namespace Marlin.View.Chrome
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                win.add_tab (File.new_for_uri (current_right_click_path));
+                win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
             // Then the "Open with" menuitem is added to the menu.
@@ -393,7 +385,7 @@ namespace Marlin.View.Chrome
                 menu.append (menuitem);
                 menuitem.activate.connect (() => {
                     unowned File loc = menu.get_active ().get_data ("location");
-                    win.current_tab.path_changed (loc);
+                    win.file_path_change_request (loc);
                 });
             }
             menu.show_all ();
@@ -406,15 +398,6 @@ namespace Marlin.View.Chrome
 
         protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
             Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
-        }
-
-        public override string? update_breadcrumbs (string new_path, string base_path) {
-            string strloc = base.update_breadcrumbs (new_path, base_path);
-            if(strloc != null) {
-                File location = File.new_for_commandline_arg (strloc);
-                win.current_tab.path_changed (location);
-            }
-            return strloc;
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {

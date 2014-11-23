@@ -185,14 +185,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 escape ();
                 return true;
         }
-        
         return base.key_press_event (event);
     }
 
     public override bool button_press_event (Gdk.EventButton event) {
         if (is_focus)    
             return base.button_press_event (event);
-        
+
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
 
@@ -242,7 +241,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
                 selected = elements.index_of (el);
-                var newpath = get_path_from_element (el);
+                var newpath = sanitise_path (get_path_from_element (el));
                 path_changed (get_file_for_path (newpath));
             } else
                 grab_focus ();
@@ -318,13 +317,17 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (search_mode)
             set_entry_text ("");
         else
-            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()
-                    .replace ("file:////", "/")
-                    .replace ("file:///", "/")
-                    .replace ("trash:///", "")
-                    .replace ("network:///", "")));
+            set_entry_text (sanitise_path (GLib.Uri.unescape_string (get_elements_path ())));
+                    
                 
         return base.focus_in_event (event);
+    }
+
+    string sanitise_path (string path) {
+        return path.replace ("file:////", "/")
+                   .replace ("file:///", "/")
+                   .replace ("trash:///", "")
+                   .replace ("network:///", "");
     }
     
     void on_grab_focus () {
@@ -398,7 +401,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         icons.append (icon);
     }
     
-    public void complete () {        
+    public void complete () {
         if (text_completion.length == 0)
             return;
 
@@ -428,6 +431,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     
     public void set_entry_cursor (Gdk.Cursor? cursor) {
         /* Only child 13 needs to be modified for the cursor - there may be a better way to do this */
+        /* TODO - this doesn't work ? */
         get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
     
@@ -439,7 +443,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             secondary_icon_tooltip_text = tooltip;
         }
     }
-    
+
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
         double total_width = 0.0;
         breadcrumbs_count = 0;
@@ -478,7 +482,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                     break;
             }
         }
-
         return newpath;
     }
 
@@ -493,7 +496,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             if (element.display)
                 strpath += element.text + "/";
         }
-
         return strpath;
     }
     
@@ -530,7 +532,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * @param event a button event to compute the coords of the new menu.
      *
      **/
-    private bool select_bread_from_coord (Gdk.EventButton event) {    
+    private bool select_bread_from_coord (Gdk.EventButton event) {
         var el = get_element_from_coordinates ((int) event.x, (int) event.y);
 
         if (el != null) {

@@ -23,6 +23,7 @@ private Mutex dir_cache_lock;
 public class GOF.Directory.Async : Object {
     public GLib.File location;
     public GOF.File file;
+    public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
@@ -84,10 +85,9 @@ public class GOF.Directory.Async : Object {
 
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
-        debug ("dir %s ref_count %u", this.file.uri, this.ref_count);
 
+        debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
-
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
     }
 
@@ -101,6 +101,7 @@ public class GOF.Directory.Async : Object {
                 dir.remove_dir_from_cache ();
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        } else {
         }
     }
 
@@ -114,7 +115,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private void clear_directory_info () {
+    public void clear_directory_info () {
         if (idle_consume_changes_id != 0) {
             Source.remove ((uint) idle_consume_changes_id);
             idle_consume_changes_id = 0;
@@ -156,11 +157,13 @@ public class GOF.Directory.Async : Object {
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
             foreach (GOF.File gof in file_hash.get_values ()) {
-                if (gof.info != null && (!gof.is_hidden || show_hidden)) {
-                    if (track_longest_name)
-                        update_longest_file_name (gof);
+                if (gof != null) {
+                    if (gof.info != null && (!gof.is_hidden || show_hidden)) {
+                        if (track_longest_name)
+                            update_longest_file_name (gof);
 
-                    file_loaded (gof);
+                        file_loaded (gof);
+                    }
                 }
             }
 
@@ -187,8 +190,8 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
-
-        done_loading ();
+        if (!cancellable.is_cancelled ())
+            done_loading ();
     }
 
     public void update_desktop_files () {
@@ -275,17 +278,21 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-        //TODO send err code
-        done_loading ();
+        if (!cancellable.is_cancelled ())
+            done_loading ();
     }
 
-    public GOF.File? file_hash_lookup_location (GLib.File location) {
-        GOF.File? result = file_hash.lookup (location);
-        return result;
+    public GOF.File? file_hash_lookup_location (GLib.File? location) {
+        if (location != null && location is GLib.File) {
+            GOF.File? result = file_hash.lookup (location);
+            return result;
+        } else {
+            return null;
+        }
     }
 
     public void file_hash_add_file (GOF.File gof) {
-            file_hash.insert (gof.location, gof);
+        file_hash.insert (gof.location, gof);
     }
 
     /* TODO move this to GOF.File */
@@ -326,8 +333,9 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
             file_added (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -523,7 +531,7 @@ public class GOF.Directory.Async : Object {
             dir.file_hash.remove (gof.location);
     }
 
-    public static Async? cache_lookup (GLib.File *file) {
+    public static Async? cache_lookup (GLib.File? file) {
         Async? cached_dir = null;
 
         if (directory_cache == null) {
@@ -531,6 +539,9 @@ public class GOF.Directory.Async : Object {
             dir_cache_lock = GLib.Mutex ();
             return null;
         }
+
+        if (file == null)
+            return null;
 
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);
@@ -575,6 +586,14 @@ public class GOF.Directory.Async : Object {
         return file.directory;
     }
 
+    public bool is_loading () {
+        return this.state == State.LOADING;
+    }
+
+    public bool is_loaded () {
+        return this.state == State.LOADED;
+    }
+
     public bool is_empty () {
         uint file_hash_count = 0;
 
@@ -605,7 +624,6 @@ public class GOF.Directory.Async : Object {
     }
 
     /* Thumbnail loading */
-    public int icon_size;
     private uint timeout_thumbsq = 0;
     private bool thumbs_stop;
     private bool thumbs_thread_running;
@@ -619,7 +637,6 @@ public class GOF.Directory.Async : Object {
             this.unref ();
             return null;
         }
-
         thumbs_thread_running = true;
         thumbs_stop = false;
 
@@ -666,16 +683,21 @@ public class GOF.Directory.Async : Object {
     }
 
     public void queue_load_thumbnails (int size) {
+        icon_size = size;
+        if (this.state == State.LOADING)
+            return;
+
         /* Do not interrupt loading thumbs at same size for this folder */
-        if (icon_size == size && thumbs_thread_running)
+        if ((icon_size == size) && thumbs_thread_running)
             return;
 
         icon_size = size;
         thumbs_stop = true;
 
         /* Wait for thumbnail thread to stop then start a new thread */
-        if (timeout_thumbsq == 0) {
-            timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
-        }
+        if (timeout_thumbsq != 0)
+            GLib.Source.remove (timeout_thumbsq);
+
+        timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
     }
 }

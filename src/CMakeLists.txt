@@ -48,31 +48,40 @@ IF (WITH_UNITY AND UNITY_FOUND)
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
+        DndHandler.vala
+        AbstractEditableLabel.vala
+        SingleLineEditableLabel.vala
+        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        TextRenderer.vala
         QuicklistHandler.vala
+        View/ColumnView.vala
+        View/AbstractTreeView.vala
+        View/IconView.vala
+        View/ListView.vala
         ZeitgeistManager.vala
         View/DiskRenderer.vala
         View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
+        View/AbstractDirectoryView.vala
         View/SearchResults.vala
         View/Window.vala
         View/Resources.vala
-        View/DbusTags.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
+        View/Slot.vala
+        View/Miller.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES
@@ -104,35 +113,45 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
+        DndHandler.vala
+        AbstractEditableLabel.vala
+        SingleLineEditableLabel.vala
+        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
         MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
+        TextRenderer.vala
+        View/ColumnView.vala
+        View/AbstractTreeView.vala
+        View/IconView.vala
+        View/ListView.vala
         ZeitgeistManager.vala
         View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
+        View/AbstractDirectoryView.vala
         View/Window.vala
         View/Resources.vala
-        View/DbusTags.vala
         View/ViewContainer.vala
         View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/ViewMode.vala
         View/LocationBar.vala
         View/Sidebar.vala
+        View/Slot.vala
+        View/Miller.vala
         View/Chrome/TopMenu.vala
         View/Chrome/ButtonWithMenu.vala
         View/Chrome/ViewSwicher.vala
-        View/Chrome/ColorWidget.vala
         View/Chrome/XsEntry.vala
         View/Chrome/ImgEventBox.vala
     PACKAGES
         gtk+-3.0
         gio-2.0
+        pango
         posix
         gee-0.8
         granite
@@ -154,23 +173,10 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (../pantheon-files
-    eel-editable-label.c
     marlin-enum-types.c
-    marlin-dnd.c
     marlin-clipboard-manager.c
-    marlin-window-columns.c
-    gof-window-slot.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
-    marlin-text-renderer.c
-    marlin-cell-renderer-text-ellipsized.c
-    fm-directory-view.c
-    exo-icon-view.c
-    exo-tree-view.c
-    fm-abstract-icon-view.c
-    fm-icon-view.c
-    fm-list-view.c
-    fm-columns-view.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
@@ -184,5 +190,5 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 install (TARGETS ../pantheon-files RUNTIME DESTINATION bin)
-install (FILES pantheon-files-ui.xml fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION ${UI_DIR})
+install (FILES View/directory_view_popup.ui DESTINATION ${UI_DIR})
 include (Tests)

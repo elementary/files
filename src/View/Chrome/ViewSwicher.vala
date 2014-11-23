@@ -25,77 +25,86 @@ namespace Marlin.View.Chrome {
     public class ViewSwitcher : Gtk.Box {
         public Granite.Widgets.ModeButton switcher;
 
-        private ViewMode _mode;
-        public ViewMode mode {
-        //private ViewMode mode{
+        private int _mode;
+        public int mode {
             set {
                 Gtk.Widget target;
                 int active_index;
 
-                switch (value) {
-                case ViewMode.LIST:
+                switch ((Marlin.ViewMode)value) {
+                case Marlin.ViewMode.LIST:
                     target = list;
                     active_index = 1;
                     break;
-                case ViewMode.MILLER:
+                case Marlin.ViewMode.MILLER_COLUMNS:
                     target = miller;
                     active_index = 2;
                     break;
                 default:
                     target = icon;
                     active_index = 0;
+                    value = 0;
                     break;
                 }
 
                 Preferences.settings.set_enum ("default-viewmode", value);
                 //switcher.focus(target);
+                freeze_update = true;
                 switcher.set_active (active_index);
-                _mode = mode;
+                freeze_update = false;
+                _mode = value;
             }
             private get {
                 return _mode;
             }
         }
 
-        private Gtk.ActionGroup main_actions;
+        private bool freeze_update = false;
+        private GLib.SimpleAction view_mode_action;
 
         private Gtk.Image icon;
         private Gtk.Image list;
         private Gtk.Image miller;
 
-        public ViewSwitcher (Gtk.ActionGroup action_group) {
+        private GLib.Variant icon_sv;
+        private GLib.Variant list_sv;
+        private GLib.Variant miller_sv;
+
+        public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
             Object (orientation: Gtk.Orientation.HORIZONTAL);
 
-            main_actions = action_group;
-
+            this.view_mode_action = _view_mode_action;
             switcher = new Granite.Widgets.ModeButton ();
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
 
             icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
             icon.tooltip_text = _("View as Grid");
             switcher.append (icon);
+            icon_sv = new GLib.Variant.string ("ICON");
+
             list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
             list.tooltip_text  = _("View as List");
             switcher.append (list);
+            list_sv = new GLib.Variant.string ("LIST");
+
             miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.MENU);
             miller.tooltip_text = _("View in Columns");
             switcher.append (miller);
+            miller_sv = new GLib.Variant.string ("MILLER");
 
-            mode = (ViewMode) Preferences.settings.get_enum("default-viewmode");
+            mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
-            switcher.mode_changed.connect ((mode) => {
-                Gtk.Action action;
+            switcher.mode_changed.connect ((image) => {
+                if (freeze_update) {
+                    return;
+                }
 
-                //You cannot do a switch here, only for int and string
-                if (mode == list) {
-                    action = main_actions.get_action ("view-as-detailed-list");
-                    action.activate ();
-                } else if (mode == miller) {
-                    action = main_actions.get_action ("view-as-columns");
-                    action.activate ();
+                if (image == list) {
+                    view_mode_action.activate (list_sv);
+                } else if (image == miller) {
+                    view_mode_action.activate (miller_sv);
                 } else {
-                    action = main_actions.get_action ("view-as-icons");
-                    action.activate ();
+                    view_mode_action.activate (icon_sv);
                 }
             });
 
