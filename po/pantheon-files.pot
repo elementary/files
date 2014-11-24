@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-23 16:58-0800\n"
+"POT-Creation-Date: 2014-11-24 08:26-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,173 +137,6 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:370
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:373
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:378
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:391
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:402
-msgid "Replacing it will overwrite its content."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:406
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:410
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:414
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:469
-msgid "Original file"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:470
-#: ../libcore/marlin-file-conflict-dialog.c:491
-msgid "Size:"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:473
-#: ../libcore/marlin-file-conflict-dialog.c:494
-msgid "Type:"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:476
-#: ../libcore/marlin-file-conflict-dialog.c:497
-msgid "Last modified:"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:490
-msgid "Replace with"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:515
-msgid "Merge"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:709
-msgid "_Select a new name for the destination"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:723
-msgid "Reset"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:735
-msgid "Apply this action to all files"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:746
-#: ../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:751
-msgid "Re_name"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:757
-msgid "Replace"
-msgstr ""
-
-#: ../libcore/marlin-file-conflict-dialog.c:830
-msgid "File conflict"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr ""
-
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
 msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1202
@@ -678,12 +511,204 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
+#: ../libcore/gof-file.c:303
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1789
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1827
+msgid "No Exec field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1847
+msgid "No URL field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1853
+msgid "Invalid desktop file"
+msgstr ""
+
+#: ../libcore/gof-file.c:2145
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+
+#: ../libcore/gof-file.c:2165
+msgid "Toplevel files cannot be renamed"
+msgstr ""
+
 #: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr ""
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
+msgid "Replacing it will remove all files in the folder."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
+msgid "Replacing it will overwrite its content."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
+msgid "Original file"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
+msgid "Size:"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
+msgid "Type:"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
+msgid "Last modified:"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
+msgid "Replace with"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
+msgid "Merge"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:709
+msgid "_Select a new name for the destination"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:723
+msgid "Reset"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:735
+msgid "Apply this action to all files"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:751
+msgid "Re_name"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:757
+msgid "Replace"
+msgstr ""
+
+#: ../libcore/marlin-file-conflict-dialog.c:830
+msgid "File conflict"
+msgstr ""
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:200
@@ -1391,225 +1416,96 @@ msgstr ""
 msgid "Emptying Trash"
 msgstr ""
 
-#: ../libcore/gof-file.c:303
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "link to %s"
+msgid "Could not determine original location of \"%s\" "
 msgstr ""
 
-#: ../libcore/gof-file.c:1789
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1827
-msgid "No Exec field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1847
-msgid "No URL field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1853
-msgid "Invalid desktop file"
-msgstr ""
-
-#: ../libcore/gof-file.c:2145
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: ../libcore/gof-file.c:2165
-msgid "Toplevel files cannot be renamed"
-msgstr ""
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:150
-msgid "In This Folder"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:152
-msgid "Bookmarks"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:154
-msgid "Everywhere Else"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:156
-msgid "No Results Found"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "The folder \"%s\" can't be found."
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:41
-msgid "Create the folder \"%s\""
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:55
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
-msgid "Properties"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:145
-msgid "General"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:153
-msgid "More"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:172
-msgid "Preview"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:180
-msgid "Close"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:218
-msgid "file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:220
-msgid "files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:222
-msgid "Actual size could be larger, "
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:222
-msgid "could not be read due to permissions or other errors."
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:251
-msgid "unknown"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:300 ../src/View/ListView.vala:28
-#: ../src/View/directory_view_popup.ui:115
-msgid "Type"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:357
-msgid "%u selected items"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:455
-msgid "Created"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:457 ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:460
-msgid "Last Access"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:466
-msgid "Deleted"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:471
-msgid "MimeType"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:479
-msgid "MimeTypes"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:492 ../src/View/PropertiesWindow.vala:541
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:120
-msgid "Size"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:499
-msgid "Location"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:502
-msgid "Target"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:508
-msgid "Origin Location"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:536
-msgid "Info:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:576
-msgid "Other application..."
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:600
-msgid "Open with:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:620
-msgid "Usage:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:625
-msgid "Device usage:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:632
-msgid "%s free of %s (%d%% used)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:771
-msgid "Read"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:776
-msgid "Write"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:781
-msgid "Execute"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:994
-#: ../src/View/PropertiesWindow.vala:1007
-msgid "Owner"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:999
-#: ../src/View/PropertiesWindow.vala:1011
-msgid "Group"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1015
-msgid "Everyone"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1274
-msgid "Select an application to open "
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
 msgstr ""
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
+msgstr ""
+
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/directory_view_popup.ui:120
+msgid "Size"
+msgstr ""
+
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:300
+#: ../src/View/directory_view_popup.ui:115
+msgid "Type"
+msgstr ""
+
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:457
+msgid "Modified"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:132
+msgid "AFP"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:133
+msgid "DAV"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:134
+msgid "DAVS"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:135
+msgid "FTP"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:137
+msgid "SFTP"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:138
+msgid "SMB"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:331
+msgid "Open in New Tab"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:338
+msgid "Open with"
+msgstr ""
+
+#: ../src/View/LocationBar.vala:369
+msgid "Other Application .."
+msgstr ""
+
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: ../src/View/Resources.vala:29
+msgid "Launchpad Translators"
+msgstr ""
+
+#: ../src/View/Window.vala:175
+msgid "Files isn't your default file manager."
+msgstr ""
+
+#: ../src/View/Window.vala:181
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:187
+msgid "Ignore"
 msgstr ""
 
 #: ../src/View/Sidebar.vala:385
@@ -1626,10 +1522,6 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:409
 msgid "Open your personal folder"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:429 ../src/View/LocationBar.vala:129
-msgid "Trash"
 msgstr ""
 
 #: ../src/View/Sidebar.vala:436
@@ -1654,10 +1546,6 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:562 ../src/View/LocationBar.vala:126
-msgid "Network"
 msgstr ""
 
 #: ../src/View/Sidebar.vala:567
@@ -1708,6 +1596,22 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
+#: ../src/View/SearchResults.vala:150
+msgid "In This Folder"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:152
+msgid "Bookmarks"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:154
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../src/View/SearchResults.vala:156
+msgid "No Results Found"
+msgstr ""
+
 #: ../src/View/ViewContainer.vala:244
 msgid "This folder does not exist"
 msgstr ""
@@ -1724,70 +1628,6 @@ msgstr ""
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/LocationBar.vala:122
-msgid "AFP"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:123
-msgid "DAV"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:124
-msgid "DAVS"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:125
-msgid "FTP"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:127
-msgid "SFTP"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:128
-msgid "SMB"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:321
-msgid "Open in New Tab"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:328
-msgid "Open with"
-msgstr ""
-
-#: ../src/View/LocationBar.vala:359
-msgid "Other Application .."
-msgstr ""
-
-#: ../src/View/Slot.vala:36
-msgid "This folder is empty."
-msgstr ""
-
-#: ../src/View/Slot.vala:37
-msgid "Access denied"
-msgstr ""
-
-#: ../src/View/Window.vala:175
-msgid "Files isn't your default file manager."
-msgstr ""
-
-#: ../src/View/Window.vala:181
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:187
-msgid "Ignore"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:47
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:51
-msgid "Next"
-msgstr ""
-
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
 msgstr ""
@@ -1798,6 +1638,14 @@ msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:47
+msgid "Previous"
+msgstr ""
+
+#: ../src/View/Chrome/TopMenu.vala:51
+msgid "Next"
 msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:514
@@ -1872,12 +1720,185 @@ msgstr ""
 msgid "%u items selected (%s)"
 msgstr ""
 
-#: ../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
 msgstr ""
 
-#: ../src/View/Resources.vala:29
-msgid "Launchpad Translators"
+#: ../src/View/DirectoryNotFound.vala:39
+msgid "The folder \"%s\" can't be found."
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:41
+msgid "Create the folder \"%s\""
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:55
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
+msgid "Properties"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:145
+msgid "General"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:153
+msgid "More"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:172
+msgid "Preview"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:180
+msgid "Close"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:218
+msgid "file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:220
+msgid "files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual size could be larger, "
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "could not be read due to permissions or other errors."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:251
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:357
+msgid "%u selected items"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:455
+msgid "Created"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:460
+msgid "Last Access"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:466
+msgid "Deleted"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:471
+msgid "MimeType"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:479
+msgid "MimeTypes"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:499
+msgid "Location"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:502
+msgid "Target"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:508
+msgid "Origin Location"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:536
+msgid "Info:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:576
+msgid "Other application..."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:600
+msgid "Open with:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:620
+msgid "Usage:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:625
+msgid "Device usage:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:632
+msgid "%s free of %s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:771
+msgid "Read"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:776
+msgid "Write"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:781
+msgid "Execute"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:994
+#: ../src/View/PropertiesWindow.vala:1007
+msgid "Owner"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:999
+#: ../src/View/PropertiesWindow.vala:1011
+msgid "Group"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1015
+msgid "Everyone"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1274
+msgid "Select an application to open "
+msgstr ""
+
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr ""
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr ""
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr ""
+
+#: ../src/DndHandler.vala:97
+msgid "Move Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:98
+msgid "Copy Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:99
+msgid "Link Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:102
+msgid "Cancel"
 msgstr ""
 
 #: ../src/Application.vala:139
@@ -1915,33 +1936,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr ""
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr ""
@@ -1970,27 +1964,34 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: ../src/DndHandler.vala:47
-msgid "Failed to execute \"%s\""
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
 msgstr ""
 
-#: ../src/DndHandler.vala:97
-msgid "Move Here"
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
 msgstr ""
 
-#: ../src/DndHandler.vala:98
-msgid "Copy Here"
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
 msgstr ""
 
-#: ../src/DndHandler.vala:99
-msgid "Link Here"
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
 msgstr ""
 
-#: ../src/DndHandler.vala:102
-msgid "Cancel"
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:283
+#: ../libwidgets/LocationBar.vala:290
 msgid "Go to %s"
 msgstr ""
 
