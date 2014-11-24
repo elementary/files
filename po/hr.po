@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-10-12 19:26+0000\n"
-"Last-Translator: Nikola Curilovic <ncurilovic@gmail.com>\n"
+"PO-Revision-Date: 2014-11-14 13:10+0000\n"
+"Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:12+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-15 06:49+0000\n"
+"X-Generator: Launchpad (build 17241)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1340,50 +1340,62 @@ msgstr[2] "%'d datoteka preostalo za baciti u smeće"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Nemoguće pomaknuti datoteku u smeće ili baciti"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Nije dozvoljeno premještanje u smeće ili brisanje datoteka na sustavu za "
+"čitanje."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Nije dozvoljeno premještanje u smeće ili brisanje datoteka u mapama za koje "
+"nemate pravo pisanja."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Nije dozvoljeno premještanje u smeće ili brisanje datoteka za koje nemate "
+"pravo pisanja."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Nije moguće premjestiti u smeće. Želite li trajno obrisati?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Datoteka ne može biti premještena u smeće. Pogledaj detaljne informacije "
+"ispod."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Nije moguće premjestiti u smeće. Pokušati trajno obrisati?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Datoteka ne može biti premještena u smeće. Vjerojatno ju neće biti moguće ni "
+"obrisati."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Brisanjem datoteke ona se trajno uklanja"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -2462,16 +2474,16 @@ msgstr "Idi na %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Povezivanje na poslužitelj..."
 
 #: ../plugins/network-places/plugin.vala:48
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Povezivanje na mrežu datotečnih poslužitelja"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:38
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Ove datoteke mogu se obrisati pražnjenjem smeća."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:39
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Isprazni smeće"

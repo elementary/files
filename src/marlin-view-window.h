@@ -21,17 +21,29 @@
 #ifndef MARLIN_VIEW_WINDOW_H
 #define MARLIN_VIEW_WINDOW_H
 
-#ifndef GOF_WINDOW_SLOT_DEFINED
-#define GOF_WINDOW_SLOT_DEFINED
-typedef struct GOFWindowSlot GOFWindowSlot;
-#endif
+#define MARLIN_TYPE_OPEN_FLAG (marlin_open_flag_get_type ())
 
-typedef struct GOFWindowSlotClass GOFWindowSlotClass;
+typedef enum
+{
+    MARLIN_OPEN_FLAG_DEFAULT,
+    MARLIN_OPEN_FLAG_NEW_ROOT,
+    MARLIN_OPEN_FLAG_NEW_TAB,
+    MARLIN_OPEN_FLAG_NEW_WINDOW
+} MarlinOpenFlag;
 
-typedef enum {
-	MARLIN_WINDOW_OPEN_FLAG_DEFAULT,
-	MARLIN_WINDOW_OPEN_FLAG_NEW_TAB,
-	MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW
-} MarlinViewWindowOpenFlags;
+GType           marlin_open_flag_get_type     (void) G_GNUC_CONST;
 
+#define MARLIN_TYPE_VIEW_MODE (marlin_view_mode_get_type ())
+
+typedef enum
+{
+    MARLIN_VIEW_MODE_ICON,
+    MARLIN_VIEW_MODE_LIST,
+    MARLIN_VIEW_MODE_MILLER_COLUMNS,
+    MARLIN_VIEW_MODE_CURRENT,
+    MARLIN_VIEW_MODE_PREFERRED,
+    MARLIN_VIEW_MODE_INVALID,
+} MarlinViewMode;
+
+GType           marlin_view_mode_get_type     (void) G_GNUC_CONST;
 #endif /* MARLIN_VIEW_WINDOW_H */

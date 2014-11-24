@@ -17,6 +17,7 @@ namespace Marlin {
         "Vadim Rutkovsky",
         "Rico Tzschichholz",
         "Mario Guerriero <mario@elementaryos.org>",
+        "Jeremy Wootten <jeremy@elementaryos.org>",
         null
     };
 
@@ -49,4 +50,6 @@ namespace Marlin {
 
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
+
+    public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 }

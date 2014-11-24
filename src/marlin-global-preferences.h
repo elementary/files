@@ -5,6 +5,7 @@ GSettings  *settings;
 GSettings  *marlin_icon_view_settings;
 GSettings  *marlin_list_view_settings;
 GSettings  *marlin_column_view_settings;
+GSettings   *gnome_mouse_settings;
 
 #define MARLIN_PREFERENCES_DATE_FORMAT                      "date-format"
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_PERSONAL_EXPANDER    "sidebar-cat-personal-expander"

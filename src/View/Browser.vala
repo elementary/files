@@ -40,6 +40,7 @@ namespace Marlin.View {
          * the back/forward stacks
          */
         public void record_uri (string uri) {
+            /* When path changed by browser buttons or menu, uri will equal current_uri */
             if (current_uri != null && current_uri != uri) {
                 back_stack.push (current_uri);
                 forward_stack.clear ();
@@ -53,18 +54,6 @@ namespace Marlin.View {
             ZeitgeistManager.report_event (uri, Zeitgeist.ZG.ACCESS_EVENT);
         }
 
-        /*private void clear ()
-          {
-          back_stack.clear ();
-          forward_stack.clear ();
-          current_uri = null;
-          }*/
-
-        /*private void printstack ()
-          {
-          stdout.printf ("bck|fwd: %d %d\n", back_stack.size(), forward_stack.size());
-          }*/
-
         public Gee.List<string> go_back_list () {
             return back_stack.slice_head (history_list_length);
         }
@@ -75,14 +64,12 @@ namespace Marlin.View {
 
         public string? go_back (uint n = 1) {
             debug ("[Browser] go back %i places", (int) n);
-
             var uri = back_stack.pop ();
             if (uri != null) {
                 if (current_uri != null) {
                     forward_stack.push (current_uri);
                     current_uri = uri;
                 }
-                //stdout.printf ("%% %s\n", uri);
             }
 
             if (n <= 1)
@@ -93,14 +80,12 @@ namespace Marlin.View {
 
         public string? go_forward (uint n = 1) {
             debug ("[Browser] go forward %i places", (int) n);
-
             var uri = forward_stack.pop ();
             if (uri != null) {
                 if (current_uri != null) {
                     back_stack.push (current_uri);
                     current_uri = uri;
                 }
-                //stdout.printf ("%% %s\n", uri);
             }
 
             if (n <= 1)
@@ -109,11 +94,11 @@ namespace Marlin.View {
                 return go_forward (n-1);
         }
 
-        public bool can_go_back () {
+        public bool get_can_go_back () {
             return !back_stack.is_empty ();
         }
 
-        public bool can_go_forward () {
+        public bool get_can_go_forward () {
             return !forward_stack.is_empty ();
         }
     } /* End: Browser class */

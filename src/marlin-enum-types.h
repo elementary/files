@@ -26,6 +26,8 @@
 
 G_BEGIN_DECLS;
 
+#define APP_NAME "pantheon-files"
+
 #define MARLIN_TYPE_ICON_SIZE (marlin_icon_size_get_type ())
 
 typedef enum
@@ -42,7 +44,6 @@ typedef enum
 GType marlin_icon_size_get_type (void) G_GNUC_CONST;
 
 #define MARLIN_TYPE_ZOOM_LEVEL (marlin_zoom_level_get_type ())
-
 typedef enum
 {
     MARLIN_ZOOM_LEVEL_SMALLEST,
@@ -52,9 +53,6 @@ typedef enum
     MARLIN_ZOOM_LEVEL_LARGE,
     MARLIN_ZOOM_LEVEL_LARGER,
     MARLIN_ZOOM_LEVEL_LARGEST,
-
-    /*< private >*/
-    MARLIN_ZOOM_N_LEVELS,
 } MarlinZoomLevel;
 
 GType           marlin_zoom_level_get_type     (void) G_GNUC_CONST;

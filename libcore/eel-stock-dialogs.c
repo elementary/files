@@ -55,7 +55,6 @@ show_message_dialog (const char *primary_text,
                      GtkWindow *parent)
 {
     GtkWidget *dialog;
-
     dialog = gtk_message_dialog_new (parent, 0, type, buttons_type, NULL);
     g_object_set (dialog, "text", primary_text, "secondary-text", secondary_text, NULL);
 
@@ -78,11 +77,9 @@ show_ok_dialog (const char *primary_text,
                 GtkWindow *parent)
 {
     GtkDialog *dialog;
-
     dialog = show_message_dialog (primary_text, secondary_text, type,
                                   GTK_BUTTONS_OK, NULL, parent);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-
     return dialog;
 }
 
