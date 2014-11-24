@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2014-10-27 20:05+0000\n"
-"Last-Translator: Sören Richter <soeren@dreieck-project.de>\n"
+"PO-Revision-Date: 2014-11-24 00:19+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-10-28 07:08+0000\n"
-"X-Generator: Launchpad (build 17203)\n"
+"X-Launchpad-Export-Date: 2014-11-24 06:14+0000\n"
+"X-Generator: Launchpad (build 17252)\n"
 "Language: de\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -288,7 +288,7 @@ msgstr "Eingabemethoden"
 
 #: ../src/fm-icon-view.c:100
 msgid "Icon directory listing"
-msgstr "Ordner Symbolansicht"
+msgstr "Ordnersymbolansicht"
 
 #: ../src/fm-icon-view.c:101
 msgid "Icon view"
@@ -1238,7 +1238,7 @@ msgstr[1] "Sollen die %'d gewählten Objekte dauerhaft gelöscht werden?"
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr "Dateien entfernen"
+msgstr "Dateien werden gelöscht"
 
 #: ../libcore/marlin-file-operations.c:1506
 #, c-format
