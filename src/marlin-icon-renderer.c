@@ -442,8 +442,6 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     if (!(priv->file && priv->pixbuf))
       return;  /* return silently - this is not an error - could be rendering blank line (e.g. expanded empty subdirectory */
 
-    //g_return_if_fail (priv->file);
-    //g_return_if_fail (priv->pixbuf);
     g_return_if_fail (GDK_IS_PIXBUF (priv->pixbuf));
     g_return_if_fail (priv->size >= 1);
 

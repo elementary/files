@@ -2244,18 +2244,6 @@ namespace FM {
                     break;
             }
 
-//#if 0
-            /* Use find function instead of view interactive search */
-            if (no_mods || only_shift_pressed) {
-                /* Use printable characters to initiate search */
-                if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                    window.win_actions.activate_action ("find", "CURRENT_DIRECTORY_ONLY");
-                    window.key_press_event (event);
-                    return true;
-                } 
-            }
-//#endif
-
             return false;
         }
 
@@ -2578,7 +2566,11 @@ namespace FM {
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
-            if (renaming)
+            /* Ignore button release from click that started renaming.
+             * View may lose focus during a drag if another tab is hovered, in which case
+             * we do not want to refocus this view. 
+             * Under both these circumstances, 'should_activate' will be false */      
+            if (renaming || !view_has_focus ())
                 return true;
 
             slot.active (should_scroll);

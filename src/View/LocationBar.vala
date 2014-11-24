@@ -117,6 +117,16 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
+        private bool drop_data_ready = false; /* whether the drop data was received already */
+        private bool drop_occurred = false; /* whether the data was dropped */
+        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
+        protected static FM.DndHandler dnd_handler = new FM.DndHandler ();
+
+        Gdk.DragAction current_suggested_action = 0; /* No action */
+        Gdk.DragAction current_actions = 0; /* No action */
+
+        GOF.File? drop_target_file = null;
+
         public Breadcrumbs (Marlin.View.Window win)
         {
             this.win = win;
@@ -403,10 +413,6 @@ namespace Marlin.View.Chrome
             file.launch (win.get_screen (), app);
         }
 
-        protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
-            Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
-        }
-
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             x = (int) menu_x_root;
             y = (int) menu_y_root;
@@ -431,6 +437,115 @@ namespace Marlin.View.Chrome
                         get_menu_position,
                         0,
                         Gtk.get_current_event_time ());
+        }
+
+        protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            Gtk.drag_unhighlight (this);
+
+            foreach (BreadcrumbsElement element in elements)
+                element.pressed = false;
+
+            var el = get_element_from_coordinates (x, y);
+
+            if (el != null)
+                el.pressed = true;
+            else
+                /* No action taken on drop */
+                Gdk.drag_status (context, 0, time);
+
+            queue_draw ();
+
+            return false;
+        }
+
+        protected override bool on_drag_drop (Gdk.DragContext context,
+                                   int x,
+                                   int y,
+                                   uint timestamp) {
+            Gtk.TargetList list = null;
+            bool ok_to_drop = false;
+
+            Gdk.Atom target = Gtk.drag_dest_find_target  (this, context, list);
+
+            ok_to_drop = (target != Gdk.Atom.NONE);
+
+            if (ok_to_drop) {
+                drop_occurred = true;
+                Gtk.drag_get_data (this, context, target, timestamp);
+            }
+
+            return ok_to_drop;
+        }
+
+        protected override void on_drag_data_received (Gdk.DragContext context,
+                                            int x,
+                                            int y,
+                                            Gtk.SelectionData selection_data,
+                                            uint info,
+                                            uint timestamp
+                                            ) {
+            bool success = false;
+
+            if (!drop_data_ready) {
+                drop_file_list = null;
+                foreach (var uri in selection_data.get_uris ()) {
+                    debug ("Path to move: %s\n", uri);
+                    drop_file_list.append (File.new_for_uri (uri));
+                    drop_data_ready = true;
+                }
+            }
+
+            if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
+                drop_occurred = false;
+                current_actions = 0;
+                current_suggested_action = 0;
+
+                drop_target_file = get_target_location (x, y);
+                if (drop_target_file != null) {
+                    current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                     context,
+                                                                     out current_suggested_action);
+
+                    if ((current_actions & file_drag_actions) != 0)
+                        success = dnd_handler.handle_file_drag_actions  (this,
+                                                                         win,
+                                                                         context,
+                                                                         drop_target_file,
+                                                                         drop_file_list,
+                                                                         current_actions,
+                                                                         current_suggested_action,
+                                                                         timestamp);
+                }
+
+                Gtk.drag_finish (context, success, false, timestamp);
+                on_drag_leave (context, timestamp);
+            }
+        }
+
+        protected override void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+            foreach (BreadcrumbsElement element in elements) {
+                if (element.pressed) {
+                    element.pressed = false;
+                    break;
+                }
+            }
+
+            drop_occurred = false;
+            drop_data_ready = false;
+            drop_file_list = null;
+
+            queue_draw ();
+        }
+
+        private GOF.File? get_target_location (int x, int y) {
+            GOF.File? file;
+            var el = get_element_from_coordinates (x, y);
+            if (el != null) {
+                file = GOF.File.get_by_uri (get_path_from_element (el));
+                file.ensure_query_info ();
+                return file;
+            }
+            return null;
         }
     }
 }

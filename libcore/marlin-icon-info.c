@@ -378,7 +378,6 @@ marlin_icon_info_get_and_cache_raw_pixbuf (GIcon *icon)
     GdkPixbuf *pixbuf;
     char *str_icon = g_icon_to_string (icon);
 
-    //g_message ("%s stream %s\n", G_STRFUNC, str_icon);
     pixbuf = gdk_pixbuf_new_from_file (str_icon, NULL);
 
     if (pixbuf != NULL) {

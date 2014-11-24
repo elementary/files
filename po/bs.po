@@ -8,30 +8,30 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-16 01:39-0500\n"
-"PO-Revision-Date: 2012-05-07 03:04+0000\n"
-"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
+"PO-Revision-Date: 2014-11-14 13:03+0000\n"
+"Last-Translator: Coa_brate <aleksandar.todorovic@mail.ru>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:09+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-15 06:49+0000\n"
+"X-Generator: Launchpad (build 17241)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Nema ništa u clipboard-u da nalijepim"
 
 #: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
 #: ../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Nije moguće preimenovati %s u %s"
 
 #: ../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Ime datoteke"
 
 #: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
 msgid "Size"
@@ -48,51 +48,51 @@ msgstr "Promijenjeno"
 #: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
 #: ../src/fm-directory-view.c:547
 msgid "This folder is empty."
-msgstr ""
+msgstr "Ovaj direktorij je prazan"
 
 #: ../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "Po_redaj stavke"
 
 #: ../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "O_brnuti redoslijed"
 
 #: ../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Prikaži ikone obrnutim redoslijedom"
 
 #: ../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Po _imenu"
 
 #: ../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Ikone poredane po imenu u redovima"
 
 #: ../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Po _veličini"
 
 #: ../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Ikone poredane po veličini u redovima"
 
 #: ../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Po _tipu"
 
 #: ../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Ikone poredane po tipu u redovima"
 
 #: ../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Po _datumu promjene"
 
 #: ../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Ikone poredane po datumu promjene u redovima"
 
 #: ../src/exo-tree-view.c:159
 msgid "Single Click"
@@ -109,28 +109,29 @@ msgstr ""
 #: ../src/fm-directory-view.c:1388
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "Kreiranje linka prema \"%s\" URL-u nije moguće"
 
 #: ../src/fm-directory-view.c:1844
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Koristi \"%s\" za otvaranje izabrane stavke"
+msgstr[1] "Koristi \"%s\" za otvaranje izabrane stavke"
+msgstr[2] "Koristi \"%s\" za otvaranje izabranih stavki"
 
 #: ../src/fm-directory-view.c:2037
 #, c-format
 msgid "Use \"%s\" as template for new file"
-msgstr ""
+msgstr "Koristi \"%s\" kao obrazac za novu datoteku"
 
 #: ../src/fm-directory-view.c:2316
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "O_tvori pomoću %s"
 
 #: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
 msgid "_Open"
-msgstr ""
+msgstr "_Otvori"
 
 #: ../src/fm-directory-view.c:2338
 #, c-format
@@ -140,7 +141,7 @@ msgstr ""
 #: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Otvori u novom _tabu"
 
 #: ../src/fm-directory-view.c:2347
 #, c-format
@@ -149,33 +150,36 @@ msgstr ""
 
 #: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Otvori u novom _prozoru"
 
 #: ../src/fm-directory-view.c:3792
 msgid "Set as default"
-msgstr ""
+msgstr "Postavi kao podrazumijevano"
 
 #: ../src/fm-directory-view.c:3844
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "Pripremi izabrane datoteke za premještanje pomoću naredbe Nalijepi"
 
 #: ../src/fm-directory-view.c:3848
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "Pripremi izabrane datoteke za umnožavanje pomoću naredbe Nalijepi"
 
 #: ../src/fm-directory-view.c:3852
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Premjesti ili kopiraj datoteke izabrane pomoću naredbe Isijeci ili Kopiraj"
 
 #: ../src/fm-directory-view.c:3855
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Zalijepi u direktorij"
 
 #: ../src/fm-directory-view.c:3856
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Premjesti ili kopiraj datoteke prethodno označene od Isijeci ili Kopiraj "
+"komande u označeni direktorij"
 
 #: ../src/fm-directory-view.c:3859
 msgid "_Rename..."
@@ -835,7 +839,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:2122
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Datoteke najvišeg nivoa ne mogu biti preimenovane"
 
 #: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
@@ -873,6 +877,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Spajanje će upitati za potvrdu prije zamjene bilo koje datoteke u "
+"direktoriju koja je u konfliktu sa datotekama koje se kopiraju."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:378
@@ -895,7 +901,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:391
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Zamjena će ukloniti sve datoteke u direktoriju."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:393
@@ -984,7 +990,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Primjeni ovu radnju za sve datoteke"
 
 #: ../libcore/marlin-file-conflict-dialog.c:746
 #: ../libcore/marlin-file-operations.c:199
@@ -1215,14 +1221,15 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr ""
+msgstr "Brišem datoteke"
 
 #: ../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Preostala je %'d datoteka za brisanje"
+msgstr[1] "Preostale su %'d datoteke za brisanje"
+msgstr[2] "Preostalo je %'d datoteka za brisanje"
 
 #: ../libcore/marlin-file-operations.c:1526
 msgid "%T left"
@@ -1243,6 +1250,8 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Ne mogu da uklonim datoteke iz direktorija „%B“ jer nemate ovlašćenja da ga "
+"čitate."
 
 #: ../libcore/marlin-file-operations.c:1601
 #: ../libcore/marlin-file-operations.c:2719
@@ -1250,11 +1259,12 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
+"Javila se greška pri dobijanju podataka o datotekama u direktoriju „%B“."
 
 #: ../libcore/marlin-file-operations.c:1610
 #: ../libcore/marlin-file-operations.c:3724
 msgid "_Skip files"
-msgstr ""
+msgstr "_Preskoči datoteke"
 
 #: ../libcore/marlin-file-operations.c:1631
 msgid ""
@@ -1279,14 +1289,15 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1821
 #: ../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Premještam datoteke u smeće"
 
 #: ../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Preostaje %'d datoteka za premještanje u smeće"
+msgstr[1] "Preostaju %'d datoteke za premeštanje u smeće"
+msgstr[2] "Preostaje %'d datoteka za premeštanje u smeće"
 
 #: ../libcore/marlin-file-operations.c:1930
 #: ../libcore/marlin-file-operations.c:1933
@@ -1298,12 +1309,16 @@ msgstr ""
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Nemate ovlaštenja za premještanje u smeće ili brisanje datoteka na sistemu "
+"samo za čitanje"
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Nema te Nemate ovlaštenja za premještanje u smeće ili brisanje datoteka "
+"unutar direktorija gdje nemate ovlašćenja za pisanje."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
@@ -1339,11 +1354,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
-msgstr ""
+msgstr "Šaljem u smeće"
 
 #: ../libcore/marlin-file-operations.c:2145
 msgid "Deleting Files"
-msgstr ""
+msgstr "Brišem datoteke"
 
 #: ../libcore/marlin-file-operations.c:2217
 msgid "Unable to eject %V"
@@ -1376,29 +1391,33 @@ msgstr ""
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pripremam %'d datoteku za kopiranje (%S)"
+msgstr[1] "Pripremam %'d datoteke za kopiranje (%S)"
+msgstr[2] "Pripremam %'d datoteka za kopiranje (%S)"
 
 #: ../libcore/marlin-file-operations.c:2601
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pripremam %'d datoteku za premještanje (%S)"
+msgstr[1] "Pripremam %'d datoteke za premještanje (%S)"
+msgstr[2] "Pripremam %'d datoteka za premještanje (%S)"
 
 #: ../libcore/marlin-file-operations.c:2607
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pripremam %'d datoteku za brisanje (%S)"
+msgstr[1] "Pripremam %'d datoteke za brisanje (%S)"
+msgstr[2] "Pripremam %'d datoteka za brisanje (%S)"
 
 #: ../libcore/marlin-file-operations.c:2613
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Priprema za slanje %'d datoteke u smeće"
+msgstr[1] "Priprema za slanje %'d datoteke u smeće"
+msgstr[2] "Priprema za slanje %'d datoteka u smeće"
 
 #: ../libcore/marlin-file-operations.c:2656
 #: ../libcore/marlin-file-operations.c:3576
@@ -1415,13 +1434,15 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2662
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Greška pri premještanju datoteka u smeće."
 
 #: ../libcore/marlin-file-operations.c:2716
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Datoteke u direktorijumu \"%B\" ne mogu biti obrađivane zato što nemate "
+"ovlašćenja da ih vidite."
 
 #: ../libcore/marlin-file-operations.c:2755
 msgid ""
@@ -1463,6 +1484,8 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Nema dovoljno prostora u odredištu. Pokušajte da uklonite neke datoteke da "
+"biste napravili prostora."
 
 #: ../libcore/marlin-file-operations.c:3013
 #, c-format
@@ -1488,39 +1511,45 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3111
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
+msgstr[0] "Premještam %'d datoteku (iz „%B“) u „%B“"
 msgstr[1] ""
+msgstr[2] "Premještam %'d datoteka (iz „%B“) u „%B“"
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiram %'d datoteku (iz „%B“) u „%B“"
+msgstr[1] "Kopiram %'d datoteke (iz „%B“) u „%B“"
+msgstr[2] "Kopiram %'d datoteka (iz „%B“) u „%B“"
 
 #: ../libcore/marlin-file-operations.c:3121
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Udvostručujem %'d datoteku (iz „%B“)"
+msgstr[1] "Udvostručujem %'d datoteke (iz „%B“)"
+msgstr[2] "Udvostručujem %'d datoteka (iz „%B“)"
 
 #: ../libcore/marlin-file-operations.c:3130
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Premještam %'d datoteku u „%B“"
+msgstr[1] "Premještam %'d datoteke u „%B“"
+msgstr[2] "Premještam %'d datoteka u „%B“"
 
 #: ../libcore/marlin-file-operations.c:3134
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiram %'d datoteku u „%B“"
+msgstr[1] "Kopiram %'d datoteke u „%B“"
+msgstr[2] "Kopiram %'d datoteka u „%B“"
 
 #: ../libcore/marlin-file-operations.c:3139
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
+msgstr[0] "Udvostručujem %'d datoteku"
 msgstr[1] ""
+msgstr[2] "Udvostručujem %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:3190
 #, c-format
@@ -1548,6 +1577,8 @@ msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Datoteke u direktorijumu „%B“ ne mogu biti kopirane zato što nemate "
+"ovlašćenja da ih vidite."
 
 #: ../libcore/marlin-file-operations.c:3757
 msgid ""
@@ -1575,7 +1606,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3889
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Ne mogu da uklonim datoteke iz već postojećeg direktorija %F."
 
 #: ../libcore/marlin-file-operations.c:3930
 #, c-format
@@ -1621,7 +1652,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4804
 msgid "Copying Files"
-msgstr ""
+msgstr "Kopiram datoteke"
 
 #: ../libcore/marlin-file-operations.c:4830
 msgid "Preparing to move to \"%B\""
@@ -1631,8 +1662,9 @@ msgstr ""
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Priprema za premještanje %'d datoteke"
+msgstr[1] "Priprema za premještanje %'d datoteke"
+msgstr[2] "Priprema za premještanje %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:5091
 #, c-format
@@ -1641,7 +1673,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5354
 msgid "Moving Files"
-msgstr ""
+msgstr "Premještam datoteke"
 
 #: ../libcore/marlin-file-operations.c:5384
 msgid "Creating links in \"%B\""
@@ -1651,8 +1683,9 @@ msgstr ""
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pravim vezu ka %'d datoteci"
+msgstr[1] "Pravim veze ka %'d datoteke"
+msgstr[2] "Pravim veze ka %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:5530
 msgid "Error while creating link to %B."
@@ -1660,7 +1693,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5532
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Simboličke veze su moguće samo nad lokalnim datotekama"
 
 #: ../libcore/marlin-file-operations.c:5535
 msgid "The target doesn't support symbolic links."
@@ -1768,7 +1801,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:138
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Datoteke nije vaš podrazumijevani menadžer datoteka"
 
 #: ../src/View/Window.vala:144
 msgid "Set as Default"
@@ -1820,7 +1853,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:746
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Otvori još jedan Datoteke prozor na prikazanoj lokaciji"
 
 #: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
@@ -1976,11 +2009,11 @@ msgstr ""
 
 #: ../src/View/Window.vala:852
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Prikaži _skrivene datoteke"
 
 #: ../src/View/Window.vala:853
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Prikaži ili sakrij sakrivene datoteke u tekućem prozoru"
 
 #: ../src/View/Window.vala:857
 msgid "_Places"
@@ -2032,7 +2065,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Otvara sadržaj FileSystem"
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
@@ -2311,7 +2344,7 @@ msgstr ""
 
 #: ../src/Application.vala:143
 msgid "Quit Files."
-msgstr ""
+msgstr "Zatvori Datoteke"
 
 #: ../src/Application.vala:145
 msgid "Enable debug logging"
@@ -2334,7 +2367,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Pretraži vaše datoteke"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -2346,11 +2379,11 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "O _Datotekama"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
-msgstr ""
+msgstr "Datoteke"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236

@@ -361,7 +361,6 @@ namespace Marlin.View {
             update_view_mode (mode);
             var content = new View.ViewContainer (this, mode, location);
             var tab = new Granite.Widgets.Tab ("", null, content);
-            tab.label = _("Loading ...");
 
             content.tab_name_changed.connect ((tab_name) => {
                 tab.label = tab_name;
@@ -369,12 +368,10 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
-
-                if (is_loading)
-                    tab.label = _("Loading ...");
             });
 
             change_tab ((int)tabs.insert_tab (tab, -1));
+            content.update_tab_name (location);
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                a tab, the overlay status bar is shown empty. */
