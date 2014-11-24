@@ -36,6 +36,13 @@ public struct Marlin.View.Chrome.IconDirectory {
 
 public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
+    public enum TargetType {
+        TEXT_URI_LIST,
+    }
+
+    protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+
+
     public string current_right_click_path;
     public string current_right_click_root;
 
@@ -156,12 +163,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         changed.connect (on_change);
 
         /* Drag and drop */
-        Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, 0};
+        Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
         Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, {target_uri_list}, Gdk.DragAction.MOVE);
-        drag_begin.connect (on_drag_begin);
         drag_leave.connect (on_drag_leave);
         drag_motion.connect (on_drag_motion);
         drag_data_received.connect (on_drag_data_received);
+        drag_drop.connect (on_drag_drop);
     }
     
     public override bool key_press_event (Gdk.EventKey event) {
@@ -340,57 +347,21 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         text_completion = "";
     }
 
-    void on_drag_begin (Gdk.DragContext drag_context) {
-        critical ("Start drag...");
-    }
+    protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
 
-    void on_drag_leave (Gdk.DragContext drag_context, uint time) {
-        foreach (BreadcrumbsElement element in elements) {
-            if (element.pressed) {
-                element.pressed = false;
-                queue_draw ();
-                break;
-            }
-        }
-    }
+    protected abstract void on_drag_data_received (Gdk.DragContext context,
+                                                   int x,
+                                                   int y,
+                                                   Gtk.SelectionData selection_data,
+                                                   uint info,
+                                                   uint time_);
 
-    void on_drag_data_received (Gdk.DragContext context, int x, int y, Gtk.SelectionData selection_data, uint info, uint time_) {
-        var real_action = context.get_selected_action ();
-        var uris = new List<GLib.File> ();
+    protected abstract bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time);
 
-        foreach (var uri in selection_data.get_uris ()) {
-            print ("Path to move: %s\n", uri);
-            uris.append (File.new_for_uri (uri));
-        }
-
-        var el = get_element_from_coordinates (x, y);
-        if (el != null) {
-            var newpath = get_path_from_element (el);
-            print ("Move to: %s\n", newpath);
-            var target_file = GLib.File.new_for_uri (newpath);
-            on_file_dropped (uris, target_file, real_action);
-        }
-    }
-
-    protected abstract void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action);
-
-    bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
-        Gtk.drag_unhighlight (this);
-
-        foreach (BreadcrumbsElement element in elements)
-            element.pressed = false;
-
-        var el = get_element_from_coordinates (x, y);
-
-        if (el != null)
-            el.pressed = true;
-        else
-            Gdk.drag_status (context, 0, time);
-
-        queue_draw ();
-
-        return false;
-    }
+    protected abstract bool on_drag_drop (Gdk.DragContext context,
+                                          int x,
+                                          int y,
+                                          uint timestamp);
     
     protected void add_icon (IconDirectory icon) {
         if (icon.gicon != null)
@@ -457,9 +428,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return total_width;
     }
 
-    private BreadcrumbsElement? get_element_from_coordinates (int x, int y) {
+    protected BreadcrumbsElement? get_element_from_coordinates (int x, int y) {
         double x_render = 0;
-
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
                 if (x_render <= x && x <= x_render + element.real_width)
@@ -468,11 +438,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 x_render += element.real_width;
             }
         }
-
         return null;
     }
 
-    private string get_path_from_element (BreadcrumbsElement el) {
+    protected string get_path_from_element (BreadcrumbsElement el) {
         string newpath = protocol;
 
         foreach (BreadcrumbsElement element in elements) {
