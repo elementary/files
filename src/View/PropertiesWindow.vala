@@ -84,7 +84,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         PREVIEW
     }
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
@@ -93,7 +93,31 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_hint = Gdk.WindowTypeHint.DIALOG;      
         border_width = 5;
         destroy_with_parent = true;
-        
+
+        if (_files == null) {
+            critical ("Properties Window constructor called with null file list");
+            return;
+        }
+
+        if (_view == null) {
+            critical ("Properties Window constructor called with null Directory View");
+            return;
+        }
+
+        view = _view;
+        files = _files.copy ();
+        count = files.length();
+
+        if (count < 1 ) {
+            critical ("Properties Window constructor called with empty file list");
+            return;
+        }
+
+        if (!(files.data is GOF.File)) {
+            critical ("Properties Window constructor called with invalid file data (1)");
+            return;
+        }
+
         Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         header.height_request = 15;
         set_titlebar (header);
@@ -110,13 +134,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_vbox.margin_right = 5;
         content_vbox.margin_left = 5;
 
-        view = _view;
-        files = _files.copy ();
-        count = files.length();
         goffile = (GOF.File) files.data;
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
         {
+            if (!(gof is GOF.File)) {
+                critical ("Properties Window constructor called with invalid file data (2)");
+                return;
+            }
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
