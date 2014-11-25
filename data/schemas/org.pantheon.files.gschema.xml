@@ -127,7 +127,7 @@
     </key>
     <key type="a(uss)" name="tab-info-list">
       <summary>Details of open tabs</summary>
-      <default>[(0,"","")]</default>
+      <default>[(0,'','')]</default>
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
   </schema>
@@ -147,12 +147,12 @@
 
   <schema path="/org/pantheon/files/list-view/" id="org.pantheon.files.list-view">
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'smallest'</default>
+      <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the list view.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'smallest'</default>
+      <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the list view.</description>
     </key>
@@ -160,12 +160,12 @@
 
   <schema path="/org/pantheon/files/column-view/" id="org.pantheon.files.column-view">
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'smallest'</default>
+      <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the column view.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
-      <default>'smallest'</default>
+      <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the column view.</description>
     </key>

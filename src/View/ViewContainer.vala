@@ -22,79 +22,53 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
 
+using Marlin;
+
 namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
+
         public Gtk.Widget? content_item;
-        public bool content_shown = false;
         public bool can_show_folder = true;
-        private string label;
-        private Marlin.View.Window window;
-        public GOF.Window.Slot? slot = null;
-        public Marlin.Window.Columns? mwcol = null;
-        Browser browser;
-        public int view_mode = 0;
+        public string label = "";
+        public Marlin.View.Window window;
+        public GOF.AbstractSlot? view = null;
+        public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+        public GLib.File? location {
+            get {
+                var slot = get_current_slot ();
+                return slot != null ? slot.location : null;
+            }
+        }
+        public string uri {
+            get {
+                var slot = get_current_slot ();
+                return slot != null ? slot.uri : null;
+            }
+        }
         public OverlayBar overlay_statusbar;
+        private Browser browser;
+        private GLib.List<GLib.File>? selected_locations = null;
 
-        //private ulong file_info_callback;
-        private GLib.List<GLib.File> select_childs = null;
-
-        public signal void path_changed (File file);
-        public signal void up ();
-        public signal void back (int n=1);
-        public signal void forward (int n=1);
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
+        /* To maintain compatibility with existing plugins */
+        public signal void path_changed (File file);
 
-        public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0) {
+        /* Initial location now set by Window.make_tab after connecting signals */
+        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
-            view_mode = _view_mode;
-
-            /* set active tab */
             browser = new Browser ();
-            label = _("Loading…");
-            window.button_back.fetcher = get_back_menu;
-            window.button_forward.fetcher = get_forward_menu;
-
-            change_view (view_mode, location);
-            update_location_state (true);
 
             this.show_all ();
 
-            // Override background color to support transparency on overlay widgets
+            /* Override background color to support transparency on overlay widgets */
             Gdk.RGBA transparent = {0, 0, 0, 0};
             override_background_color (0, transparent);
 
-            /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            add_overlay (overlay_statusbar);
-            overlay_statusbar.showbar = view_mode != ViewMode.LIST;
-
-            path_changed.connect ((myfile) => {
-                /* location didn't change, do nothing */
-                if (slot != null && myfile != null && slot.directory.file.exists && slot.location.equal (myfile))
-                    return;
-
-                change_view(view_mode, myfile);
-                update_location_state (true);
-            });
-
-            up.connect (() => {
-                if (slot.directory.has_parent ()) {
-                    change_view (view_mode, slot.directory.get_parent ());
-                    update_location_state (true);
-                }
-            });
-
-            back.connect ((n) => {
-                change_view (view_mode, File.new_for_commandline_arg (browser.go_back (n)));
-                update_location_state (false);
-            });
-
-            forward.connect ((n) => {
-                change_view (view_mode, File.new_for_commandline_arg (browser.go_forward (n)));
-                update_location_state (false);
-            });
+            path_changed.connect (user_path_change_request);
+            change_view_mode (mode, loc);
         }
 
         public Gtk.Widget content {
@@ -104,7 +78,6 @@ namespace Marlin.View {
                 add (value);
                 content_item = value;
                 content_item.show_all ();
-                content_shown = true;
             }
             get {
                 return content_item;
@@ -121,31 +94,153 @@ namespace Marlin.View {
             }
         }
 
+        public void go_up () {
+            if (view.directory.has_parent ())
+                user_path_change_request (view.directory.get_parent ());
+        }
+
+        public void go_back (int n = 1) {
+            string? loc = browser.go_back (n);
+
+            if (loc != null)
+                user_path_change_request (File.new_for_commandline_arg (loc));
+        }
+
+        public void go_forward (int n = 1) {
+            string? loc = browser.go_forward (n);
+
+            if (loc != null)
+                user_path_change_request (File.new_for_commandline_arg (loc));
+        }
+
+
+        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+            if (mode != view_mode) {
+
+                if (loc == null) /* Only untrue on container creation */
+                    loc = this.location;
+
+                if (view != null) {
+                    store_selection ();
+                    /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+                    view.cancel ();
+                }
+
+                /* the following 2 lines delays destruction of the old view until this function returns
+                 * and allows the processor to display or update the window more quickly
+                 */    
+                GOF.AbstractSlot temp;
+                temp = view;
+
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    view = new Miller (loc, this, mode);
+                else
+                    view = new Slot (loc, this, mode);
+
+                view_mode = mode;
+                set_up_current_slot ();
+                overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+                overlay_statusbar.reset_selection ();
+                window.update_top_menu ();
+            }
+        }
+
+        public void user_path_change_request (GLib.File loc) {
+            view.user_path_change_request (loc);
+        }
+
+        public void new_container_request (GLib.File loc, int flag = 1) {
+            switch ((Marlin.OpenFlag)flag) {
+                case Marlin.OpenFlag.NEW_TAB:
+                    this.window.add_tab (loc, view_mode);
+                    break;
+
+                case Marlin.OpenFlag.NEW_WINDOW:
+                    this.window.add_window (loc, view_mode);
+                    break;
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
+            /* automagicly enable icon view for icons keypath */
+            if (allow_mode_change &&
+                get_current_slot ().directory.uri_contain_keypath_icons &&
+                view_mode != Marlin.ViewMode.ICON)
+
+                change_view_mode (Marlin.ViewMode.ICON, null);
+            else
+                set_up_current_slot ();
+        }
+
+        private void set_up_current_slot () {
+            var slot = get_current_slot ();
+            assert (slot != null);
+            assert (slot.directory != null);
+
+            content = view.get_content_box ();
+            load_slot_directory (slot);
+        }
+
+        public void load_slot_directory (GOF.AbstractSlot slot) {
+            can_show_folder = true;
+            loading (true);
+            /* Allow time for the window to update before starting to load directory so that
+             * the window is displayed more quickly
+             * when starting the application in, or switching view to, a folder that contains
+             * a large number of files. Also ensures infobars are added correctly by plugins.
+             */           
+            Timeout.add (100, () => {
+                slot.directory.load ();
+                plugin_directory_loaded ();
+                return false;
+            });
+            refresh_slot_info (slot);
+        }
+
         private void plugin_directory_loaded () {
+            var slot = get_current_slot ();
             Object[] data = new Object[3];
             data[0] = window;
-            (mwcol != null) ? data[1] = mwcol : data[1] = slot;
-            //data[2] = GOF.File.get(slot.location);
+            /* infobars are added to the view, not the active slot */
+            data[1] = view;
             data[2] = slot.directory.file;
+
             plugins.directory_loaded ((void*) data);
         }
 
-        private void connect_available_info () {
-            if (window.current_tab == this)
-                window.loading_uri (slot.directory.file.uri);
+        public void refresh_slot_info (GOF.AbstractSlot aslot) {
+            GLib.File loc = aslot.directory.file.location;
+            update_tab_name (loc);
+
+            browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
+
+            window.loading_uri (loc.get_uri ());
+            window.update_top_menu ();
+            window.update_labels (loc.get_parse_name (), tab_name);
+            window.set_can_go_back (browser.get_can_go_back ());
+            window.set_can_go_forward (browser.get_can_go_forward ());
         }
 
-        public void refresh_slot_info () {
-            loading (false);
-            var aslot = get_active_slot ();
-            var slot_path = aslot.directory.file.location.get_path ();
+        public void update_tab_name (GLib.File loc) {
+            var slot_path = loc.get_path ();
+
             if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (aslot.directory.file.exists && (aslot.directory.file.info is FileInfo))
-                tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-            else {
+            else if (loc.query_exists ()) {
+                try {
+                    var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
+                    tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not get location display name. %s", e.message);
+                }
+
+            } else {
                 tab_name = _("This folder does not exist");
                 can_show_folder = false;
             }
@@ -153,18 +248,13 @@ namespace Marlin.View {
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
-            /* update window title */
-            if (window.current_tab == this) {
-                window.set_title (tab_name);
-                if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name ();
-            }
-
         }
 
-        /* Handle nonexistent, non-directory, and unpermitted location */
-        public void directory_done_loading () {
+        public void directory_done_loading (GOF.AbstractSlot slot) {
             FileInfo file_info;
+
+            loading (false);
+
             try {
                 file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
 
@@ -173,245 +263,124 @@ namespace Marlin.View {
                     content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
                     can_show_folder = false;
-                }
-
-                /* If not a directory, then change the location to the parent */
-                if (file_info.get_file_type () == FileType.DIRECTORY) {
-                    content_shown = false;
-
-                    if (select_childs != null)
-                        ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
-                } else {
-                    path_changed (slot.location.get_parent ());
+                } else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
+                    view.select_glib_files (selected_locations, null);
+                    selected_locations = null;
                 }
             } catch (Error err) {
-                /* query_info will throw an expception if it cannot find the file */
-
-                if (err is IOError.NOT_MOUNTED) {
-                    reload ();
-                } else {
+                /* query_info will throw an exception if it cannot find the file */
+                if (err is IOError.NOT_MOUNTED)
+                    slot.reload ();
+                else {
                     content = new DirectoryNotFound (slot.directory, this);
+                    can_show_folder = false;
                 }
             }
-
-            warning ("directory done loading");
-            slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
-        public void change_view (int nview, GLib.File? location, GLib.File? focus_file = null) {
-            /* if location is null then we have a user change view request */
-            bool user_change_rq = location == null;
-            select_childs = null;
+        private void store_selection () {
+            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
+            selected_locations = null;
 
-            if (location == null) {
-                /* we re just changing view keep the same location */
-                GOF.Window.Slot? active_slot = get_active_slot ();
-                if (active_slot == null) {
-                    warning ("No active slot found - cannot change view");
-                    return;
-                }
-                location = active_slot.location;
-                /* store the old selection to restore it */
-                if (slot != null && !content_shown) {
-                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
-                    foreach (var elem in list)
-                        select_childs.prepend (elem.location);
-                }
-            } else {
-                can_show_folder = true;
-                /* check if the requested location is a parent of the previous one */
-                if (slot != null) {
-                    var parent = slot.location.get_parent ();
-                    if (parent != null && parent.equal (location))
-                        select_childs.prepend (slot.directory.file.location);
-                }
-            }
+            if (selected_files.length () >= 1) {
 
-            if (focus_file != null)
-                select_childs.prepend (focus_file);
-
-            Marlin.Window.Columns new_mwcol;
-            GOF.Window.Slot new_slot;
-
-            if (nview == ViewMode.MILLER) {
-                new_mwcol = new Marlin.Window.Columns (location, this);
-                new_slot = new_mwcol.active_slot;
-            } else {
-                new_mwcol = null;
-                new_slot = new GOF.Window.Slot (location, this);
-            }
-
-            /* automagicly enable icon view for icons keypath */
-            if (!user_change_rq && new_slot.directory.uri_contain_keypath_icons)
-                nview = 0; /* icon view */
-
-            /* Mount the directory if it's not mounted */
-            if (!new_slot.directory.file.is_mounted) {
-                tab_name = _("Connecting…");
-                loading (true);
-                
-                new_slot.directory.mount_mountable.begin ((obj,res) => {
-                    try {
-                        new_slot.directory.mount_mountable.end (res);
-                        make_view (nview, new_mwcol, new_slot);
-                    } catch (Error e) {
-                        warning ("mount_mountable failed: %s", e.message);
-
-                        if (get_active_slot () == null) {
-                            /* There's no previous slot to refresh */
-                            File home = File.new_for_path (Environment.get_home_dir ());
-                            change_view (nview, home);
-                        } else {
-                            /* Reset the tab label */
-                            refresh_slot_info ();
-                        }
-                    }
+                selected_files.@foreach ((file) => {
+                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
                 });
-            } else {
-                make_view (nview, new_mwcol, new_slot);
             }
         }
 
-        private void make_view (int nview, Marlin.Window.Columns? new_mwcol, GOF.Window.Slot new_slot) {
-            if (slot != null && slot.directory != null && slot.directory.file.exists) {
-                slot.directory.cancel ();
-                slot.directory.track_longest_name = false;
-            }
-
-            slot = new_slot;
-            mwcol = new_mwcol;
-
-            /* Setting up view_mode and its button */
-            view_mode = nview;
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-
-            connect_available_info ();
-            if (slot != null) {
-                slot.directory.done_loading.connect (directory_done_loading);
-                slot.directory.need_reload.connect (reload);
-            }
-            plugin_directory_loaded ();
-
-            switch (nview) {
-            case ViewMode.LIST:
-                slot.make_list_view ();
-                break;
-            case ViewMode.MILLER:
-                mwcol.make_view ();
-                break;
-            default:
-                slot.make_icon_view ();
-                break;
-            }
-
-            overlay_statusbar.showbar = nview != ViewMode.LIST;
+        public unowned GOF.AbstractSlot? get_current_slot () {
+           return view.get_current_slot ();
         }
 
-        public void focus_file (File file) {
-            if (file.query_file_type (0) == FileType.DIRECTORY) {
-                if (slot.location.equal (file))
-                    return;
+        public void set_active_state (bool is_active) {
+            get_current_slot ().set_active_state (is_active);
+        }
 
-                change_view (view_mode, file);
-            } else {
-                if (slot.location.equal (file.get_parent ())) {
-                    var list = new List<File> ();
+        public void focus_location (GLib.File? file, bool select_in_current_only = false) {
+            if (file == null) {
+                get_current_slot ().set_all_selected (false);
+                return;
+            }
+
+            if (location.equal (file))
+                return;
+
+            GLib.File? loc = null;
+            File? parent = file.get_parent ();
+            if (parent != null && location.equal (file.get_parent ())) {
+                if (select_in_current_only || file.query_file_type (0) != FileType.DIRECTORY) {
+                   var list = new List<File> ();
                     list.prepend (file);
-                    ((FM.Directory.View) slot.view_box).select_glib_files (list);
+                    get_current_slot ().select_glib_files (list, file);
                 } else
-                    change_view (view_mode, file.get_parent (), file);
+                    loc = file;
+            } else if (!select_in_current_only) {
+                if (file.query_file_type (0) == FileType.DIRECTORY)
+                    loc = file;
+                else if (parent != null) {
+                    loc = parent;
+                    selected_locations.prepend (file);
+                }
             }
 
-            update_location_state (true);
-            refresh_slot_info ();
+            if (loc != null) {
+                user_path_change_request (loc);
+                slot_path_changed (loc);
+                refresh_slot_info (get_current_slot ());
+            }
         }
 
-        public GOF.Window.Slot? get_active_slot () {
-            if (mwcol != null)
-                return mwcol.active_slot;
-            else
-                return slot;
+        public void focus_location_if_in_current_directory (GLib.File? file) {
+            focus_location (file, true);
         }
 
-        public string? get_root_uri () {
-            if (mwcol != null)
-                return mwcol.get_root_uri ();
-            else if (slot != null)
-                return slot.location.get_uri ();
+        public string get_root_uri () {
+            string path = "";
+            if (view != null)
+                path = view.get_root_uri () ?? "";
 
-            return null;
+            return path;
         }
 
-        public string? get_tip_uri () {
-            if (mwcol != null)
-                return mwcol.get_tip_uri ();
-            else
-                return "";
+        public string get_tip_uri () {
+            string path = "";
+            if (view != null)
+                path = view.get_tip_uri () ?? "";
+
+            return path;
         }
 
         public void reload () {
-            GOF.Directory.Async dir = slot.directory;
-            dir.cancel ();
-            dir.need_reload.disconnect (reload);
-            dir.remove_dir_from_cache ();
-            change_view (view_mode, null);
+            if (!can_show_folder) /* Try to display folder again */
+                content = view.get_content_box ();
+
+            loading (true);
+            /* Allow time for the signal to propagate and the tab label to redraw */
+            Timeout.add (10, () => {
+                var slot = view.get_current_slot ();
+                slot.reload ();
+                load_slot_directory (slot);
+                return false;
+            });
         }
 
-        public void update_location_state (bool save_history) {
-            if (slot == null || !slot.directory.file.exists)
-                return;
-
-            if (save_history)
-                browser.record_uri (slot.directory.location.get_parse_name ());
-
-            window.can_go_up = slot.directory.has_parent ();
-            window.can_go_back = browser.can_go_back ();
-            window.can_go_forward = browser.can_go_forward ();
-            /* update ModeButton */
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+        public Gee.List<string> get_go_back_path_list () {
+            assert (browser != null);
+            return browser.go_back_list ();
         }
 
-        public Gtk.Menu get_back_menu () {
-            /* Clear the back menu and re-add the correct entries. */
-            var back_menu = new Gtk.Menu ();
-            var list = browser.go_back_list ();
-            var n = 1;
-            foreach (var path in list) {
-                int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
-                              // You see if I would just use back(n) the reference to n would be passed
-                              // in the clusure, restulting in a value of n which would always be n=1. So
-                              // by introducting a new variable I can bypass this anoyance.
-                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
-                item.activate.connect (() => { back(cn); });
-                back_menu.insert (item, -1);
-            }
-
-            back_menu.show_all ();
-            return back_menu;
+        public Gee.List<string> get_go_forward_path_list () {
+            assert (browser != null);
+            return browser.go_forward_list ();
         }
 
-        public Gtk.Menu get_forward_menu () {
-            /* Same for the forward menu */
-            var forward_menu = new Gtk.Menu ();
-            var list = browser.go_forward_list ();
-            var n = 1;
-            foreach (var path in list) {
-                int cn = n++; // For explenation look up
-                var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
-                item.activate.connect (() => forward (cn));
-                forward_menu.insert (item, -1);
-            }
-
-            forward_menu.show_all ();
-            return forward_menu;
+        public new void grab_focus () {
+            if (can_show_folder)
+                view.grab_focus ();
+            else
+                content.grab_focus ();
         }
-
-        public new Gtk.Widget get_window ()
-        {
-            return ((Gtk.Widget) window);
-        }
-
     }
 }

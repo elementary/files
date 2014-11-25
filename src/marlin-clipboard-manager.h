@@ -46,6 +46,9 @@ gboolean                marlin_clipboard_manager_get_can_paste   (MarlinClipboar
 gboolean                marlin_clipboard_manager_has_cutted_file (MarlinClipboardManager *manager,
                                                                   const GOFFile          *file);
 
+gboolean                marlin_clipboard_manager_has_file (MarlinClipboardManager *manager,
+                                                           const GOFFile          *file);
+
 void                    marlin_clipboard_manager_copy_files      (MarlinClipboardManager *manager,
                                                                   GList                  *files);
 void                    marlin_clipboard_manager_cut_files       (MarlinClipboardManager *manager,

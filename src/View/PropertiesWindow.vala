@@ -41,15 +41,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private uint count;
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
-    private FM.Directory.View view;
+    private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
 
     private Granite.Widgets.WrapLabel header_title;
-    private Gtk.Label header_desc;
+    private Granite.Widgets.WrapLabel type_label;
+    private Gtk.Label size_label;
+    private Gtk.Widget type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
-    private Gtk.Label spinner_label;
+    private Gtk.Image size_warning_image;
+    private int size_warning = 0;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
@@ -81,7 +84,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         PREVIEW
     }
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
@@ -90,7 +93,31 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_hint = Gdk.WindowTypeHint.DIALOG;      
         border_width = 5;
         destroy_with_parent = true;
-        
+
+        if (_files == null) {
+            critical ("Properties Window constructor called with null file list");
+            return;
+        }
+
+        if (_view == null) {
+            critical ("Properties Window constructor called with null Directory View");
+            return;
+        }
+
+        view = _view;
+        files = _files.copy ();
+        count = files.length();
+
+        if (count < 1 ) {
+            critical ("Properties Window constructor called with empty file list");
+            return;
+        }
+
+        if (!(files.data is GOF.File)) {
+            critical ("Properties Window constructor called with invalid file data (1)");
+            return;
+        }
+
         Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         header.height_request = 15;
         set_titlebar (header);
@@ -107,14 +134,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_vbox.margin_right = 5;
         content_vbox.margin_left = 5;
 
-        view = _view;
-        files = _files.copy ();
-        count = files.length();
         goffile = (GOF.File) files.data;
-
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
         {
+            if (!(gof is GOF.File)) {
+                critical ("Properties Window constructor called with invalid file data (2)");
+                return;
+            }
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
@@ -126,8 +153,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         cancellable = new GLib.Cancellable ();
 
         /* Header Box */
-        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 9);
+        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
         add_header_box (content_vbox, header_box);
+        header_box.margin_bottom = 15;
+        header_box.margin_left = header_box.margin_right = 10;
 
         /* Static Notebook */
         var notebook = new Granite.Widgets.StaticNotebook ();
@@ -171,7 +200,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_vbox.show ();
         content_area.show_all ();
         show_all ();
-        
+
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -184,19 +213,16 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         present ();
 
-        if (folder_count == 0) {
+        if (folder_count == 0)
             spinner.hide ();
-        } else if (file_count == 0) {
-            header_desc.hide ();
+
+        if (size_warning < 1)
+            size_warning_image.hide ();
+
+        if (file_count > 1) {
+            type_key_label.hide ();
+            type_label.hide ();
         }
-
-        if (file_count > 0)
-            spinner_label.hide ();
-    }
-
-
-    private string span_weight_light (string str) {
-        return "<span weight='light'>" + str + "</span>";
     }
 
     private uint64 total_size = 0;
@@ -206,10 +232,22 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         //header_desc_str = Eel.format_size (total_size);
         header_desc_str = format_size ((int64) total_size);
-        if (ftype != null) {
-            header_desc_str += ", " + goffile.formated_type;
+        if (ftype != null) 
+            type_label.label = goffile.formated_type;
+        else {
+            type_key_label.hide ();
+            type_label.hide ();
+        } 
+
+        if (size_warning > 0) {
+            string file_plural = _("file");
+            if (size_warning > 1)
+                file_plural = _("files");
+            size_warning_image.visible = true;
+            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
         }
-        header_desc.set_markup (span_weight_light(header_desc_str));
+
+        size_label.label = header_desc_str;
     }
 
     private Mutex mutex;
@@ -220,6 +258,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         deep_count_directories = null;
         folder_count = 0;
         file_count = 0;
+        size_warning = 0;
+        size_warning_image.hide ();
 
         foreach (GOF.File gof in files) {
             if (gof.is_directory) {
@@ -230,12 +270,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                     mutex.lock ();
                                     deep_count_directories.remove (d);
                                     total_size += d.total_size;
+                                    size_warning = d.file_not_read;
                                     update_header_desc ();
+                                    if (file_count + folder_count == size_warning)
+                                        size_label.label = _("unknown");
+                                        
                                     folder_count--;
-                                    if (!header_desc.visible)
-                                        header_desc.show ();
-                                    if (spinner_label.visible)
-                                        spinner_label.hide ();
+                                    if (!size_label.visible)
+                                        size_label.show ();
                                     mutex.unlock ();
                                     });
             } else {
@@ -243,7 +285,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             }
 
             mutex.lock ();
-            total_size += gof.size;
+            total_size += PropertiesWindow.file_real_size (gof);
             mutex.unlock ();
         }
 
@@ -255,7 +297,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
             folder_count_changed.connect (() => {
                 if (folder_count == 0) {
-                    spinner_label.hide ();
                     spinner.hide ();
                     spinner.stop ();
                 }
@@ -279,49 +320,83 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 */
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
-        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_img = new Gtk.Image.from_pixbuf (file_pix);
-        file_img.set_valign (Gtk.Align.START);
-        content.pack_start (file_img, false, false);
+        type_label = new Granite.Widgets.WrapLabel ("");
+        size_label = new Gtk.Label ("");
+        type_key_label = create_label_key (_("Type") + (": "));
 
-        var vvbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content.pack_start (vvbox);
+        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
+         * control over the size and position of the emblems so we create a composite pixbuf */
+
+        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
+
+        /* Add space around the pixbuf for emblems */
+        var icon_pix = new Gdk.Pixbuf (file_pix.colorspace,
+                                         file_pix.has_alpha,
+                                         file_pix.bits_per_sample,
+                                         64, 64);
+        icon_pix.fill (0);
+        file_pix.composite (icon_pix,
+                            8, 8,
+                            48, 48,
+                            8, 8,
+                            1.0, 1.0,
+                            Gdk.InterpType.NEAREST,
+                            255);
+
+        /* Composite in the emblems, if any */
+        Gdk.Pixbuf? pixbuf = null;
+        if (goffile.emblems_list != null) {
+            var theme = Gtk.IconTheme.get_default ();
+            int pos = 0;
+            foreach (string emblem_name in goffile.emblems_list) {
+                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
+                if (info == null)
+                    continue;
+
+                try {
+                    pixbuf = info.load_icon ();
+                    /* Emblems drawn in a vertical column to the right of the icon */
+                    pixbuf.composite (icon_pix,
+                                      44, 44 - pos * 17,
+                                      16, 16,
+                                      44.0, 44.0 - pos * 17.0,
+                                      1.0, 1.0,
+                                      Gdk.InterpType.NEAREST,
+                                      255);
+                    pos++;
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
+                }
+                if (pos > 3) /* Only room for 3 emblems */ 
+                    break;
+            }
+        }
+
+        var file_img = new Gtk.Image.from_pixbuf (icon_pix);
+        file_img.set_valign (Gtk.Align.CENTER);
+        content.pack_start (file_img, false, false);
 
         header_title = new Granite.Widgets.WrapLabel ();
         if (count > 1)
-            header_title.set_markup ("<span weight='semibold' size='large'>" + _("%u selected items").printf(count) + "</span>");
+            header_title.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
         else
-            header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.info.get_name () + "</span>");
+            header_title.set_markup ("<span>" + goffile.info.get_name () + "</span>");
+        header_title.get_style_context ().add_class ("h2");
+        header_title.margin_top = 5;
 
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        hbox.set_halign (Gtk.Align.START);
-
+        hbox.set_halign (Gtk.Align.CENTER);
+        header_title.set_valign (Gtk.Align.CENTER);
+        content.pack_start (header_title);
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
-        spinner_label = new Gtk.Label (_("Calculating size…"));
 
-        header_desc = new Gtk.Label (null);
-        header_desc.set_use_markup (true);
-
-        if (ftype != null) {
-            header_desc.set_markup (span_weight_light (goffile.formated_type));
-        }
+        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+        size_warning_image.hide ();
 
         selection_size_update ();
-
-        hbox.pack_start (spinner);
-        hbox.pack_start (spinner_label);
-        hbox.pack_start (header_desc);
-
-        /*var font_style = new Pango.FontDescription();
-          font_style.set_size(12 * 1000);
-          header_title.modify_font(font_style);*/
-
-        vvbox.pack_start (header_title);
-        vvbox.pack_start (hbox);
-
-        /* Bottom padding */
-        vvbox.margin_bottom = 12;
+        size_warning_image.hide ();
 
         vbox.pack_start (content, false, false, 0);
     }
@@ -459,6 +534,24 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
     }
 
+    private void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
+        key_label.margin_left = 20;
+        value_label.set_selectable (true);
+        value_label.set_hexpand (true);
+        value_label.set_use_markup (true);
+        value_label.set_can_focus (false);
+
+        information.attach (key_label, 0, line, 1, 1);
+        if (value_container != null) {
+            value_container.set_size_request (150, -1);
+            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+        else
+            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        line++;
+    }
+
     private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Gtk.Grid();
         information.row_spacing = 3;
@@ -469,20 +562,24 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         information.attach (label, 0, 0, 1, 1);
 
         int n = 1;
+        // Have to have these separate as size call is async
+        var size_key_label = create_label_key (_("Size") + (": "));
+        var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
+        size_box.pack_start (size_label, false, true);
+        size_box.pack_start (spinner, false, false);
+        size_box.pack_start (size_warning_image);
+
+        spinner.halign = Gtk.Align.START;
+        size_warning_image.halign = Gtk.Align.START;
+        create_info_line (size_key_label, size_label, information, ref n, size_box);
+        size_label.set_hexpand (false);
+
+        create_info_line (type_key_label, type_label, information, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Granite.Widgets.WrapLabel (pair.value);
             var key_label = create_label_key (pair.key);
-            key_label.margin_left = 20;
-            value_label.set_selectable (true);
-            value_label.set_size_request (150, -1);
-            value_label.set_hexpand (true);
-            value_label.set_use_markup (true);
-            value_label.set_can_focus (false);
-
-            information.attach (key_label, 0, n, 1, 1);
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
+            create_info_line (key_label, value_label, information, ref n);
         }
 
         /* Open with */
@@ -564,7 +661,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 warning ("error: %s", e.message);
             }
         }
-
+        
         box.pack_start (information);
     }
 
@@ -1217,10 +1314,27 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             try {
                 foreach (var mime in mimes)
                     app.set_as_default_for_type (mime);
-                view.notify_selection_changed ();
+
+                view.notify_selection_changed (); /* indirectly update menus */
             } catch (Error e) {
                 critical ("Couldn't set as default: %s", e.message);
             }
         }
     }
+
+    public static uint64 file_real_size (GOF.File gof) {
+        uint64 file_size = gof.size;
+        try {
+            var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
+            uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
+            // Check for sparse file, allocated size will be smaller, for normal files allocated size
+            // includes overhead size so we don't use it for those here
+            if (allocated_size < file_size && !gof.is_directory)
+                file_size = allocated_size;
+        } catch (Error err) {
+            warning ("%s", err.message);
+        }
+        return file_size;
+    }
 }
+

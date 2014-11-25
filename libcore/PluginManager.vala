@@ -169,7 +169,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Widget menu, List<GOF.File> files) {
+    public void hook_context_menu (Gtk.Widget menu, List<unowned GOF.File> files) {
         drop_menu_references (menu);
 
         if (menu is Gtk.Menu)

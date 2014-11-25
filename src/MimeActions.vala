@@ -23,6 +23,7 @@
 public class Marlin.MimeActions {
 
     public static AppInfo? get_default_application_for_file (GOF.File file) {
+
         AppInfo app = file.get_default_handler ();
 
         if (app == null) {
@@ -35,16 +36,20 @@ public class Marlin.MimeActions {
         return app;
     }
 
-    public static AppInfo? get_default_application_for_files (List<GOF.File> files) {
+    public static AppInfo? get_default_application_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
+        /* Need to make a new list to avoid corrupting the selection */
+        unowned GLib.List<GOF.File> sorted_files = null;
+        files.@foreach ((file) => {
+            sorted_files.prepend (file);
+        });
 
-        List<GOF.File> sorted_files = files.copy ();
         sorted_files.sort (file_compare_by_mime_type);
 
-        AppInfo app = null;
-        GOF.File previous_file = null;
+        AppInfo? app = null;
+        GOF.File? previous_file = null;
 
-        foreach (var file in sorted_files) {
+        foreach (GOF.File file in sorted_files) {
             if (previous_file == null) {
                 app = get_default_application_for_file (file);
                 previous_file = file;
@@ -67,11 +72,11 @@ public class Marlin.MimeActions {
 
             previous_file = file;
         }
-
         return app;
     }
 
     public static List<AppInfo>? get_applications_for_file (GOF.File file) {
+
         List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -109,16 +114,19 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    public static List<AppInfo>? get_applications_for_files (List<GOF.File> files) {
+    public static List<AppInfo>? get_applications_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
-
-        List<GOF.File> sorted_files = files.copy ();
+        /* Need to make a new list to avoid corrupting the selection */
+        unowned GLib.List<GOF.File> sorted_files = null;
+        files.@foreach ((file) => {
+            sorted_files.prepend (file);
+        });
         sorted_files.sort (file_compare_by_mime_type);
 
         List<AppInfo> result = null;
-        GOF.File previous_file = null;
+        unowned GOF.File previous_file = null;
 
-        foreach (var file in sorted_files) {
+        foreach (unowned GOF.File file in sorted_files) {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
                 previous_file = file;

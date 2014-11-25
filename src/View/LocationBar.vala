@@ -28,12 +28,19 @@ namespace Marlin.View.Chrome
         public new string path {
             set {
                 var new_path = GLib.Uri.unescape_string (value);
-                _path = new_path;
-                if (!bread.is_focus && !win.freeze_view_changes) {
-                    bread.text = "";
-                    bread.change_breadcrumbs (new_path);
+                if (new_path != null) {
+                    _path = new_path;
+
+                    if (!bread.is_focus && !win.freeze_view_changes) {
+                        bread.text = "";
+
+                        bread.change_breadcrumbs (new_path);
+                    }
+                } else {
+                    critical ("Tried to set null path");
                 }
             }
+
             get {
                 return _path;
             }
@@ -51,9 +58,9 @@ namespace Marlin.View.Chrome
             natural_width = 3000;
         }
 
-        public LocationBar (Gtk.UIManager ui, Marlin.View.Window win) {
+        public LocationBar (Marlin.View.Window win) {
             this.win = win;
-            bread = new Breadcrumbs (ui, win);
+            bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
 
             bread.path_changed.connect (on_path_changed);
@@ -74,7 +81,9 @@ namespace Marlin.View.Chrome
             pack_start (bread, true, true, 0);
         }
 
-        public void enter_search_mode () {
+        public void enter_search_mode (bool local_only = false, bool begins_with_only = false) {
+            bread.search_results.search_current_directory_only = local_only;
+            bread.search_results.begins_with_only = begins_with_only;
             bread.search_mode = true;
         }
 
@@ -82,13 +91,8 @@ namespace Marlin.View.Chrome
             if (win.freeze_view_changes)
                 return;
 
-            /* focus back the view */
-            if (win.current_tab.content_shown)
-                win.current_tab.content.grab_focus ();
-            else
-                win.current_tab.slot.view_box.grab_focus ();
-
-            activate(file);
+            win.grab_focus ();
+            activate (file);
         }
     }
 
@@ -96,7 +100,6 @@ namespace Marlin.View.Chrome
         public SearchResults search_results { get; private set; }
 
         Gtk.Menu menu;
-        private Gtk.UIManager ui;
 
         /* Used for auto-copmpletion */
         GOF.Directory.Async files;
@@ -114,10 +117,18 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
-        public Breadcrumbs (Gtk.UIManager ui, Marlin.View.Window win)
+        private bool drop_data_ready = false; /* whether the drop data was received already */
+        private bool drop_occurred = false; /* whether the data was dropped */
+        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
+        protected static FM.DndHandler dnd_handler = new FM.DndHandler ();
+
+        Gdk.DragAction current_suggested_action = 0; /* No action */
+        Gdk.DragAction current_actions = 0; /* No action */
+
+        GOF.File? drop_target_file = null;
+
+        public Breadcrumbs (Marlin.View.Window win)
         {
-            /* grab the UIManager */
-            this.ui = ui;
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
@@ -206,16 +217,12 @@ namespace Marlin.View.Chrome
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
                     
-                win.current_tab.up ();
+                win.go_up ();
                 grab_focus ();
             });
 
             down.connect (() => {
-                // focus back the view 
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else
-                    win.current_tab.slot.view_box.grab_focus ();
+                win.grab_focus ();
             });
 
             completed.connect (() => {
@@ -241,21 +248,22 @@ namespace Marlin.View.Chrome
             search_results = new SearchResults (this);
 
             search_results.file_selected.connect ((file) => {
-                if (win.current_tab.content_shown)
-                    win.current_tab.content.grab_focus ();
-                else
-                    win.current_tab.slot.view_box.grab_focus ();
-
-                win.current_tab.focus_file (file);
+                win.grab_focus ();
+                win.current_tab.focus_location (file);
 
                 search_mode = false;
             });
+
+            search_results.first_match_found.connect ((file) => {
+                win.current_tab.focus_location_if_in_current_directory (file);
+            });
+
             search_results.hide.connect (() => {
                 text = "";
             });
 
             search_changed.connect ((text) => {
-                search_results.search (text, win.current_tab.slot.location);
+                search_results.search (text, win.current_tab.location);
             });
         }
 
@@ -269,7 +277,7 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file) {
             string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
-            if(file.is_folder () && file_display_name.length > to_search.length) {
+            if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {
                         text_completion = file_display_name.slice (to_search.length, file_display_name.length);
@@ -290,7 +298,9 @@ namespace Marlin.View.Chrome
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
-                    string str = text.slice (0, text.length - to_search.length);
+                    string? str = null;
+                    if (text.length >=1)
+                        str = text.slice (0, text.length - to_search.length);
                     if (str != null && !multiple_completions) {
                         text = str + file.get_display_name ().slice (0, to_search.length);
                         set_position (-1);
@@ -304,16 +314,14 @@ namespace Marlin.View.Chrome
 
             // don't use get_basename (), it will return "folder" for "/folder/"
             int last_slash = text.last_index_of_char ('/');
-            message ("last %d , leng %d",last_slash,text.length);
             if (last_slash > -1 && last_slash < text.length)
                 to_search = text.slice (last_slash + 1, text.length);
             else
                 to_search = "";
-            message (to_search);
 
             autocompleted = false;
             multiple_completions = false;
-            
+
             if (to_search != "" && file.has_parent (null))
                 file = file.get_parent ();
             else
@@ -337,7 +345,7 @@ namespace Marlin.View.Chrome
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                win.add_tab (File.new_for_uri (current_right_click_path));
+                win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
             // Then the "Open with" menuitem is added to the menu.
@@ -401,7 +409,7 @@ namespace Marlin.View.Chrome
                 menu.append (menuitem);
                 menuitem.activate.connect (() => {
                     unowned File loc = menu.get_active ().get_data ("location");
-                    win.current_tab.path_changed (loc);
+                    win.file_path_change_request (loc);
                 });
             }
             menu.show_all ();
@@ -410,19 +418,6 @@ namespace Marlin.View.Chrome
         private void launch_uri_with_app (AppInfo app, string uri) {
             var file = GOF.File.get (File.new_for_uri (uri));
             file.launch (win.get_screen (), app);
-        }
-
-        protected override void on_file_dropped (List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
-            Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
-        }
-
-        public override string? update_breadcrumbs (string new_path, string base_path) {
-            string strloc = base.update_breadcrumbs (new_path, base_path);
-            if(strloc != null) {
-                File location = File.new_for_commandline_arg (strloc);
-                win.current_tab.path_changed (location);
-            }
-            return strloc;
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
@@ -449,6 +444,115 @@ namespace Marlin.View.Chrome
                         get_menu_position,
                         0,
                         Gtk.get_current_event_time ());
+        }
+
+        protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            Gtk.drag_unhighlight (this);
+
+            foreach (BreadcrumbsElement element in elements)
+                element.pressed = false;
+
+            var el = get_element_from_coordinates (x, y);
+
+            if (el != null)
+                el.pressed = true;
+            else
+                /* No action taken on drop */
+                Gdk.drag_status (context, 0, time);
+
+            queue_draw ();
+
+            return false;
+        }
+
+        protected override bool on_drag_drop (Gdk.DragContext context,
+                                   int x,
+                                   int y,
+                                   uint timestamp) {
+            Gtk.TargetList list = null;
+            bool ok_to_drop = false;
+
+            Gdk.Atom target = Gtk.drag_dest_find_target  (this, context, list);
+
+            ok_to_drop = (target != Gdk.Atom.NONE);
+
+            if (ok_to_drop) {
+                drop_occurred = true;
+                Gtk.drag_get_data (this, context, target, timestamp);
+            }
+
+            return ok_to_drop;
+        }
+
+        protected override void on_drag_data_received (Gdk.DragContext context,
+                                            int x,
+                                            int y,
+                                            Gtk.SelectionData selection_data,
+                                            uint info,
+                                            uint timestamp
+                                            ) {
+            bool success = false;
+
+            if (!drop_data_ready) {
+                drop_file_list = null;
+                foreach (var uri in selection_data.get_uris ()) {
+                    debug ("Path to move: %s\n", uri);
+                    drop_file_list.append (File.new_for_uri (uri));
+                    drop_data_ready = true;
+                }
+            }
+
+            if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
+                drop_occurred = false;
+                current_actions = 0;
+                current_suggested_action = 0;
+
+                drop_target_file = get_target_location (x, y);
+                if (drop_target_file != null) {
+                    current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                     context,
+                                                                     out current_suggested_action);
+
+                    if ((current_actions & file_drag_actions) != 0)
+                        success = dnd_handler.handle_file_drag_actions  (this,
+                                                                         win,
+                                                                         context,
+                                                                         drop_target_file,
+                                                                         drop_file_list,
+                                                                         current_actions,
+                                                                         current_suggested_action,
+                                                                         timestamp);
+                }
+
+                Gtk.drag_finish (context, success, false, timestamp);
+                on_drag_leave (context, timestamp);
+            }
+        }
+
+        protected override void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+            foreach (BreadcrumbsElement element in elements) {
+                if (element.pressed) {
+                    element.pressed = false;
+                    break;
+                }
+            }
+
+            drop_occurred = false;
+            drop_data_ready = false;
+            drop_file_list = null;
+
+            queue_draw ();
+        }
+
+        private GOF.File? get_target_location (int x, int y) {
+            GOF.File? file;
+            var el = get_element_from_coordinates (x, y);
+            if (el != null) {
+                file = GOF.File.get_by_uri (get_path_from_element (el));
+                file.ensure_query_info ();
+                return file;
+            }
+            return null;
         }
     }
 }
