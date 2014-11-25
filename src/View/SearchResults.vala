@@ -44,6 +44,7 @@ namespace Marlin.View
         const int DELAY_ADDING_RESULTS = 150;
 
         public signal void file_selected (File file);
+        public signal void first_match_found (File? file);
 
         public Gtk.Entry entry { get; construct; }
         public bool working { get; private set; default = false; }
@@ -67,6 +68,8 @@ namespace Marlin.View
 
         bool local_search_finished = false;
         bool global_search_finished = false;
+        public bool search_current_directory_only = false;
+        public bool begins_with_only = false;
 
         bool is_grabbing = false;
         Gdk.Device? device = null;
@@ -146,14 +149,21 @@ namespace Marlin.View
             });
             view.model = filter;
 
+            list.row_changed.connect ((path, iter) => {
+                /* If the first match is in the current directory it will be selected */
+                if (path.to_string () == "0:0") {
+                    File? file;
+                    list.@get (iter, 3, out file);
+                    first_match_found (file);
+                }
+            });
+
             list.append (out local_results, null);
             list.@set (local_results, 0, get_category_header (_("In This Folder")));
             list.append (out bookmark_results, null);
             list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
             list.append (out global_results, null);
             list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
-            list.append (out no_results_label, null);
-            list.@set (no_results_label, 0, get_category_header (_("No Results Found")));
 
             scroll.add (view);
             frame.add (scroll);
@@ -651,7 +661,6 @@ namespace Marlin.View
 
             new Thread<void*> (null, () => {
                 local_search_finished = false;
-
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
                     visit (term.normalize ().casefold (), include_hidden, file_search_operation);
                 }
@@ -662,17 +671,22 @@ namespace Marlin.View
                 return null;
             });
 
-            get_zg_results.begin (term);
+            if (!search_current_directory_only)
+                get_zg_results.begin (term);
+            else
+                global_search_finished = true;
 
-            var bookmarks_matched = new Gee.LinkedList<Match> ();
-            var search_term = term.normalize ().casefold ();
-            foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (search_term, bookmark.label)) {
-                    bookmarks_matched.add (new Match.from_bookmark (bookmark));
+            if (!search_current_directory_only) {
+                var bookmarks_matched = new Gee.LinkedList<Match> ();
+                var search_term = term.normalize ().casefold ();
+                foreach (var bookmark in BookmarkList.get_instance ().list) {
+                    if (term_matches (search_term, bookmark.label)) {
+                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
+                    }
                 }
-            }
 
-            add_results (bookmarks_matched, bookmark_results);
+                add_results (bookmarks_matched, bookmark_results);
+            }
         }
 
         bool send_search_finished ()
@@ -685,8 +699,10 @@ namespace Marlin.View
             filter.refilter ();
 
             select_first ();
-            if (list_empty ())
+            if (local_search_finished && global_search_finished && list_empty ()) {
                 view.get_selection ().unselect_all ();
+                first_match_found (null);
+            }
 
             resize_popup ();
 
@@ -704,6 +720,7 @@ namespace Marlin.View
             FileEnumerator enumerator;
 
             var folder = directory_queue.poll ();
+
             if (folder == null)
                 return;
 
@@ -734,7 +751,7 @@ namespace Marlin.View
                     if (info.get_is_hidden () && !include_hidden)
                         continue;
 
-                    if (info.get_file_type () == FileType.DIRECTORY) {
+                    if (info.get_file_type () == FileType.DIRECTORY && !search_current_directory_only) {
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
@@ -851,7 +868,12 @@ namespace Marlin.View
             // TODO improve.
 
             // term is assumed to be down
-            var res = name.normalize ().casefold ().contains (term);
+            bool res;
+            if (begins_with_only)
+                res = name.normalize ().casefold ().has_prefix (term);
+            else
+                res = name.normalize ().casefold ().contains (term);
+
             return res;
         }
 

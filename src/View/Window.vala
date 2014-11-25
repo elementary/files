@@ -30,7 +30,7 @@ namespace Marlin.View {
             {"refresh", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
-            {"find", action_find},
+            {"find", action_find, "s"},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -417,8 +417,14 @@ namespace Marlin.View {
             top_menu.location_bar.bread.grab_focus ();
         }
 
-        private void action_find () {
-            top_menu.location_bar.enter_search_mode ();
+        private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
+            string search_scope = param.get_string ();
+            if (search_scope == "CURRENT_DIRECTORY_ONLY")
+                /* Just search current directory for filenames beginning with term */
+                top_menu.location_bar.enter_search_mode (true, true);
+            else
+                top_menu.location_bar.enter_search_mode ();
+                    
         }
 
         private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
@@ -917,7 +923,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
-            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});

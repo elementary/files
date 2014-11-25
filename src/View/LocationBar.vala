@@ -81,7 +81,9 @@ namespace Marlin.View.Chrome
             pack_start (bread, true, true, 0);
         }
 
-        public void enter_search_mode () {
+        public void enter_search_mode (bool local_only = false, bool begins_with_only = false) {
+            bread.search_results.search_current_directory_only = local_only;
+            bread.search_results.begins_with_only = begins_with_only;
             bread.search_mode = true;
         }
 
@@ -251,6 +253,11 @@ namespace Marlin.View.Chrome
 
                 search_mode = false;
             });
+
+            search_results.first_match_found.connect ((file) => {
+                win.current_tab.focus_location_if_in_current_directory (file);
+            });
+
             search_results.hide.connect (() => {
                 text = "";
             });

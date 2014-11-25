@@ -386,7 +386,6 @@ namespace FM {
             updates_frozen = false;
             update_selected_files ();
             notify_selection_changed ();
-            grab_focus ();
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -2244,6 +2243,7 @@ namespace FM {
                 default:
                     break;
             }
+
             return false;
         }
 

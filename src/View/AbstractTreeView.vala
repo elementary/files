@@ -87,8 +87,6 @@ namespace FM {
             tree.set_rubber_banding (true);
 
             create_and_set_up_name_column ();
-            tree.set_search_column (FM.ListModel.ColumnID.FILENAME);
-            tree.set_enable_search (true);
             set_up_view ();
 
             return tree as Gtk.Widget;

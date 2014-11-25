@@ -298,31 +298,42 @@ namespace Marlin.View {
             get_current_slot ().set_active_state (is_active);
         }
 
-        public void focus_location (GLib.File file) {
+        public void focus_location (GLib.File? file, bool select_in_current_only = false) {
+            if (file == null) {
+                get_current_slot ().set_all_selected (false);
+                return;
+            }
+
+            if (location.equal (file))
+                return;
+
             GLib.File? loc = null;
-
-            if (file.query_file_type (0) == FileType.DIRECTORY) {
-                if (location.equal (file))
-                    return;
-
-                loc = file;
-                user_path_change_request (loc);
-            } else {
-                if (location.equal (file.get_parent ())) {
-                    var list = new List<File> ();
+            File? parent = file.get_parent ();
+            if (parent != null && location.equal (file.get_parent ())) {
+                if (select_in_current_only || file.query_file_type (0) != FileType.DIRECTORY) {
+                   var list = new List<File> ();
                     list.prepend (file);
                     get_current_slot ().select_glib_files (list, file);
-                } else {
-                    loc = file.get_parent ();
+                } else
+                    loc = file;
+            } else if (!select_in_current_only) {
+                if (file.query_file_type (0) == FileType.DIRECTORY)
+                    loc = file;
+                else if (parent != null) {
+                    loc = parent;
                     selected_locations.prepend (file);
-                    user_path_change_request (loc);
                 }
             }
 
             if (loc != null) {
+                user_path_change_request (loc);
                 slot_path_changed (loc);
                 refresh_slot_info (get_current_slot ());
             }
+        }
+
+        public void focus_location_if_in_current_directory (GLib.File? file) {
+            focus_location (file, true);
         }
 
         public string get_root_uri () {
