@@ -311,10 +311,17 @@ namespace Marlin.View.Chrome
 
         public void on_need_completion () {
             File file = get_file_for_path (text);
-            to_search = file.get_basename ();
+
+            // don't use get_basename (), it will return "folder" for "/folder/"
+            int last_slash = text.last_index_of_char ('/');
+            if (last_slash > -1 && last_slash < text.length)
+                to_search = text.slice (last_slash + 1, text.length);
+            else
+                to_search = "";
+
             autocompleted = false;
             multiple_completions = false;
-            
+
             if (to_search != "" && file.has_parent (null))
                 file = file.get_parent ();
             else
