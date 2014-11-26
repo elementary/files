@@ -43,6 +43,7 @@ namespace Marlin.Places {
 
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;
+        Gtk.CellRendererText name_renderer;
         Gtk.CellRendererPixbuf icon_cell_renderer;
         Marlin.IconSpinnerRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
@@ -67,6 +68,7 @@ namespace Marlin.Places {
         bool drop_occurred;
         bool internal_drag_started;
         bool dragged_out_of_window;
+        bool renaming = false;
 
         /* Identifiers for target types */
         public enum TargetType {
@@ -203,18 +205,19 @@ namespace Marlin.Places {
                                 "active", Column.SHOW_SPINNER,
                                 "pulse", Column.SPINNER_PULSE);
 
-            crt = new Gtk.CellRendererText ();
-            crt.editable = false;
-            crt.ellipsize = Pango.EllipsizeMode.END;
-            crt.ellipsize_set = true;
-            crt.edited.connect (edited);
-            crt.editing_canceled.connect (editing_canceled);
-            col.pack_start (crt,true);
-            col.set_attributes (crt,
+            name_renderer = new Gtk.CellRendererText ();
+            name_renderer.editable = false;
+            name_renderer.editable_set = true;
+            name_renderer.ellipsize = Pango.EllipsizeMode.END;
+            name_renderer.ellipsize_set = true;
+            name_renderer.edited.connect (edited);
+            name_renderer.editing_canceled.connect (editing_canceled);
+            col.pack_start (name_renderer,true);
+            col.set_attributes (name_renderer,
                                 "text", Column.NAME,
                                 "visible", Column.NO_EJECT,
                                 "editable-set", Column.BOOKMARK);
-            col.set_cell_data_func (crt, category_renderer_func);
+            col.set_cell_data_func (name_renderer, category_renderer_func);
 
             tree_view.show_expanders = false;
             var cre = new Granite.Widgets.CellRendererExpander ();
@@ -272,9 +275,12 @@ namespace Marlin.Places {
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
             tree_view.focus_out_event.connect (focus_out_event_cb);
+
             /* Ensure tree has focus when scrolling */
             tree_view.enter_notify_event.connect (()=> {
-                tree_view.grab_focus ();
+                if (!renaming)
+                    tree_view.grab_focus ();
+
                 return false;
             });
         }
@@ -1149,10 +1155,11 @@ namespace Marlin.Places {
 
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
-            var renderers = column.get_cells ();
-            var cell = (Gtk.CellRendererText)(renderers.nth_data (5));
-            cell.editable = true;
-            tree_view.set_cursor_on_cell (path, column, cell, true);
+            name_renderer.editable = true;
+            renaming = true;
+            tree_view.set_cursor_on_cell (path, column, name_renderer, true);
+            /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename */
+            ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
         }
 
         private void remove_selected_bookmarks () {
@@ -1350,7 +1357,8 @@ namespace Marlin.Places {
         }
 
         private void edited (Gtk.CellRendererText cell, string path_string, string new_text) {
-            cell.editable = false;
+            editing_canceled (cell);
+
             var path = new Gtk.TreePath.from_string (path_string);
 
             Gtk.TreeIter iter;
@@ -1369,6 +1377,7 @@ namespace Marlin.Places {
 
         private void editing_canceled (Gtk.CellRenderer cell) {
             ((Gtk.CellRendererText)cell).editable = false;
+            renaming = false;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout,
