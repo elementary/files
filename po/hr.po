@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-14 13:10+0000\n"
+"PO-Revision-Date: 2014-11-25 23:32+0000\n"
 "Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:01+0000\n"
+"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
 "X-Generator: Launchpad (build 17252)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1392,12 +1392,12 @@ msgstr "Nemoguće je ukloniti postojeću datoteku s istim imenom u %F."
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Dogodila se pogreška prilikom kopiranja \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "Dogodila se pogreška prilikom kopiranja u %s."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1418,7 +1418,7 @@ msgstr[2] "Priprema za premještanje %'d datoteka"
 #: ../libcore/marlin-file-operations.c:5088
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Pogreška prilikom pomicanja \"%F\""
 
 #: ../libcore/marlin-file-operations.c:5089
 #, c-format
@@ -1726,11 +1726,11 @@ msgstr "Sljedeće"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Neuspješan prikaz"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
-msgstr ""
+msgstr "Odaberi aplikaciju"
 
 #: ../src/View/AbstractDirectoryView.vala:904
 msgid "Set as default"
@@ -1742,35 +1742,35 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Neispravno postavljeno ime"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Neispravan"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Pokreni"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Otvori u %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Otvori u"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Druga aplikacija"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Neimenovan %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s nije valjano ime datoteke"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1844,23 +1844,23 @@ msgstr "Zatvori"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "datoteka"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "datoteke"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Stvarna veličina može biti veća, "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "nemoguće čitati zbog prava pristupa ili drugih grešaka."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1958,23 +1958,23 @@ msgstr "Ova mapa je prazna."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Pristup odbijen"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Nije uspjelo pokretanje \"%s\""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Premjesti ovdje"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopiraj ovdje"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Poveži ovdje"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2097,72 +2097,72 @@ msgstr "Isprazni smeće"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Vrati iz smeća"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Trajno obriši"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Prebaci u smeće"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Mapa"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Prazna datoteka"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Pokaži skrivene datoteke"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Nova kartica"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Oznaka"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Zalijepi"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Izreži"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Zalijepi u mapu"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Razvrstaj po"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Obratni redoslijed"

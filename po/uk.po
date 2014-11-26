@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-25 06:40+0000\n"
-"Last-Translator: Klimenko Mikola <Unknown>\n"
+"PO-Revision-Date: 2014-11-25 19:22+0000\n"
+"Last-Translator: Andy Karaushu <Karandriy@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:02+0000\n"
+"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
 "X-Generator: Launchpad (build 17252)\n"
 "Language: uk\n"
 
@@ -1043,12 +1043,12 @@ msgstr[2] "залишилось перемістити у смітник %'d ф�
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Не вдалося перемістити файл в корзину або видалити його"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "Не допускається видаляти системні файли"
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
@@ -1065,6 +1065,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Не вдалося перемістити файл в корзину. Спробувати видалити його зараз?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
@@ -1390,12 +1391,12 @@ msgstr "Не вдалось вилучити вже наявний файл з �
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Сталося помилка при копіювані \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "Сталося  помилка при копіювані файла в %s."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1416,7 +1417,7 @@ msgstr[2] "Підготовка до переміщення %'d файлів"
 #: ../libcore/marlin-file-operations.c:5088
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Помилка при переміщенні \"% F\"."
 
 #: ../libcore/marlin-file-operations.c:5089
 #, c-format

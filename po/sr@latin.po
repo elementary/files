@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-07-17 05:03+0000\n"
-"Last-Translator: nadrimajstor <ipejic@gmail.com>\n"
+"PO-Revision-Date: 2014-11-25 20:47+0000\n"
+"Last-Translator: Stefan Ric <stfric369@gmail.com>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:02+0000\n"
+"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
 "X-Generator: Launchpad (build 17252)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Ne postoji ništa na klipbordu za nalepljivanje"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -41,7 +41,7 @@ msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Windows share"
+msgstr "Vindouz deljenje"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -49,7 +49,7 @@ msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Secure WebDAV (HTTPS)"
+msgstr "Bezbedni WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -66,7 +66,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Ne može da se otvori fascikla \"%s\" na \"%s\"."
+msgstr "Fasciklu \"%s\" nije moguće otvoriti u \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -96,7 +96,7 @@ msgstr "Veza do servera"
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr "Detaljno o serveru"
+msgstr "Detalji o serveru"
 
 #: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
@@ -104,7 +104,7 @@ msgstr "_Server:"
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr "_Port:"
+msgstr "_Priključak:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
@@ -112,7 +112,7 @@ msgstr "_Tip:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr "Sh_are:"
+msgstr "_Deljenje"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
@@ -140,19 +140,19 @@ msgstr "_Zapamti ovu lozinku"
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Operacija je obustavljena"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Izbriši %d kopiranih stavki"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #: ../libcore/marlin-undostack-manager.c:1215
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Izbriši '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
@@ -162,44 +162,44 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Premesti %d stavki u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Premesti '%s' nazad u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Preimenuj '%s' kao '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1255
 #: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Povrati %d stavki iz otpada"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Vrati '%s' u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Premesti %d stavki nazad u otpad"
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Premesti '%s' nazad u otpad"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Izbriši veze sa %d stavki"
 
 #: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
