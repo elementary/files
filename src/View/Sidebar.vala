@@ -22,19 +22,24 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
-        enum ViewWindowOpenFlags {
-            DEFAULT,
-            NEW_TAB,
-            NEW_WINDOW
+        enum PlaceType {
+            BUILT_IN,
+            MOUNTED_VOLUME,
+            BOOKMARK,
+            BOOKMARKS_CATEGORY,
+            PERSONAL_CATEGORY,
+            STORAGE_CATEGORY
         }
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
-        private const int EJECT_BUTTON_XPAD = 4;
+        private const int EJECT_BUTTON_XPAD = 12;
         private const int TEXT_XPAD = 5;
         private const int ICON_XPAD = 6;
         private const int PROP_0 = 0;
         private const int PROP_ZOOM_LEVEL = 1;
+
+        private static FM.DndHandler dnd_handler = new FM.DndHandler ();
 
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;
@@ -112,6 +117,7 @@ namespace Marlin.Places {
 
         /* volume mounting - delayed open process */
         bool mounting = false;
+
         /* prevent multiple unmount processes */
         bool ejecting_or_unmounting = false;
 
@@ -388,12 +394,6 @@ namespace Marlin.Places {
             this.select_path = null;
             this.n_builtins_before = 0;
 
-            var slot = window.get_active_slot();
-            if (slot != null)
-                this.slot_location = slot.location.get_uri ();
-            else
-                this.slot_location = null;
-
             if ((tree_view.get_selection ()).get_selected (null, out iter))
                 store.@get (iter, Column.URI, &last_selected_uri);
             else
@@ -627,7 +627,7 @@ namespace Marlin.Places {
             if (last_selected_uri != null)
                 set_matching_selection (this.last_selected_uri);
             else
-                set_matching_selection  (this.slot_location);
+                set_matching_selection  (slot_location);
         }
 
         private void add_bookmark (Gtk.TreeIter iter, Marlin.Bookmark bm, uint index) {
@@ -894,7 +894,7 @@ namespace Marlin.Places {
                 if (drop_uri.has_prefix ("trash:///"))
                     actions &= Gdk.DragAction.MOVE;
 
-                real_action = Marlin.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
+                real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, window, actions);
             }
 
             if (real_action == Gdk.DragAction.DEFAULT)
@@ -959,6 +959,10 @@ namespace Marlin.Places {
             });
             if (uris != null)
                 bookmarks.insert_uris (uris, position);
+        }
+
+        public void add_uri (string uri) {
+            bookmarks.insert_uri_at_end (uri);
         }
 
         private  bool drag_scroll_timer () {
@@ -1052,7 +1056,7 @@ namespace Marlin.Places {
 
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
-                                             ViewWindowOpenFlags flags) {
+                                             Marlin.OpenFlag flags) {
             if (path == null)
                 return;
 
@@ -1067,14 +1071,12 @@ namespace Marlin.Places {
             if (uri != null) {
                 var location = File.new_for_uri (uri);
                 /* Navigate to the clicked location */
-                if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
-                    window.add_window (location);
-                } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
-                    window.add_tab (location);
+                if (flags == Marlin.OpenFlag.NEW_WINDOW) {
+                    window.add_window (location, Marlin.ViewMode.CURRENT);
+                } else if (flags == Marlin.OpenFlag.NEW_TAB) {
+                    window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    GOF.Window.Slot? slot = window.get_active_slot ();
-                    if (slot != null)
-                        GLib.Signal.emit_by_name (slot.ctab, "path-changed", location);
+                    window.file_path_change_request (location);
                 }
             } else if (f != null) {
                 f (this);
@@ -1096,10 +1098,8 @@ namespace Marlin.Places {
             }
         }
 
-        private void mount_volume (Volume volume, Gtk.MountOperation mount_op, ViewWindowOpenFlags flags) {
+        private void mount_volume (Volume volume, Gtk.MountOperation mount_op, Marlin.OpenFlag flags) {
             mounting = true;
-            //go_to_after_mount_flags = flags;
-            Marlin.View.ViewContainer? slot = window.current_tab;
             volume.mount.begin (GLib.MountMountFlags.NONE,
                                 mount_op,
                                 null,
@@ -1108,15 +1108,15 @@ namespace Marlin.Places {
                     mounting = false;
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
-                    if (mount != null && slot != null) {
+                    if (mount != null) {
                         var location = mount.get_default_location ();
-                        if (flags == ViewWindowOpenFlags.NEW_WINDOW) {
+                        if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location, window.get_screen ());
-                        } else if (flags == ViewWindowOpenFlags.NEW_TAB) {
-                            window.add_tab (location);
+                        } else if (flags == Marlin.OpenFlag.NEW_TAB) {
+                            window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            slot.path_changed (location);
+                            window.file_path_change_request (location);
                         }
                     }
                 }
@@ -1566,7 +1566,7 @@ namespace Marlin.Places {
 
                 case Gdk.BUTTON_MIDDLE:
                     if (path != null && !category_at_path (path))
-                        open_selected_bookmark (store, path, ViewWindowOpenFlags.NEW_TAB);
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
 
                     break;
             }
@@ -1591,9 +1591,14 @@ namespace Marlin.Places {
                 if (event.window != tree_view.get_bin_window ())
                     return false;
 
-                if (path != null)
-                    open_selected_bookmark (store, path,
-                        (event.state & Gdk.ModifierType.CONTROL_MASK) != 0 ? ViewWindowOpenFlags.NEW_TAB : ViewWindowOpenFlags.DEFAULT);
+                tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
+
+                if (path != null) {
+                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0)
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
+                    else
+                        open_selected_bookmark (store, path, Marlin.OpenFlag.DEFAULT);
+                }
             }
 
             return false;
@@ -1676,7 +1681,7 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    message ("Error while unmounting");
+                    //message ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
@@ -1729,7 +1734,7 @@ namespace Marlin.Places {
                         drive.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting drive: %s", error.message);
+                        warning ("Error ejecting drive: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1745,7 +1750,7 @@ namespace Marlin.Places {
                         volume.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting volume: %s", error.message);
+                        warning ("Error ejecting volume: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1761,7 +1766,7 @@ namespace Marlin.Places {
                         mount.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
-                        message ("Error ejecting mount: %s", error.message);
+                        warning ("Error ejecting mount: %s", error.message);
                     }
                     finish_eject_or_unmount (row_ref);
                 });
@@ -1842,22 +1847,22 @@ namespace Marlin.Places {
 
 /* POPUP MENU CALLBACK FUNCTIONS */
 
-        private void open_shortcut_from_menu (ViewWindowOpenFlags flags) {
+        private void open_shortcut_from_menu (Marlin.OpenFlag flags) {
             Gtk.TreePath path;
             tree_view.get_cursor (out path, null);
             open_selected_bookmark (store, path, flags);
         }
 
         private void open_shortcut_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.DEFAULT);
+            open_shortcut_from_menu (Marlin.OpenFlag.DEFAULT);
         }
 
         private void open_shortcut_in_new_window_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.NEW_WINDOW);
+            open_shortcut_from_menu (Marlin.OpenFlag.NEW_WINDOW);
         }
 
         private void open_shortcut_in_new_tab_cb (Gtk.MenuItem item) {
-            open_shortcut_from_menu (ViewWindowOpenFlags.NEW_TAB);
+            open_shortcut_from_menu (Marlin.OpenFlag.NEW_TAB);
         }
 
         private void mount_shortcut_cb (Gtk.MenuItem item) {
@@ -1936,6 +1941,7 @@ namespace Marlin.Places {
 
         private void loading_uri_callback (string location) {
                 set_matching_selection (location);
+                slot_location = location;
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {

@@ -37,13 +37,18 @@ namespace Marlin.View {
             }
         }
 
-        public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay)
-        {
-            base (overlay);
+        private uint count = 0;
+        private uint folders_count = 0;
+        private uint files_count = 0;
+        private uint64 files_size = 0;
+        private GOF.File? goffile = null;
+        private GLib.List<unowned GOF.File>? selected_files = null;
+
+        public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
+            base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             window = win;
-
-            window.selection_changed.connect (update);
+            window.selection_changed.connect (on_selection_changed);
             window.item_hovered.connect (update_hovered);
 
             hide.connect (() => {
@@ -53,37 +58,44 @@ namespace Marlin.View {
             });
         }
 
-        private uint count = 0;
-        private uint folders_count = 0;
-        private uint files_count = 0;
-        private uint64 files_size = 0;
-        private GOF.File? goffile = null;
-        //private unowned GLib.List<GOF.File>? last_selection = null;
+        private void on_selection_changed (GLib.List<GOF.File>? files = null) {
+            if (files != null)
+                selected_files = files.copy ();
+            else
+                selected_files = null;
 
-        public void update (GLib.List<GOF.File>? files = null)
-        {
-            //last_selection = files;
-            real_update (files);
+            real_update (selected_files);
         }
 
-        private void update_hovered (GOF.File? file)
-        {
+        public void reset_selection () {
+            selected_files = null;
+        }
+
+        private void update_hovered (GOF.File? file) {
+            GLib.List<GOF.File> list = null;
             if (file != null) {
-                GLib.List<GOF.File> list = null;
-                list.prepend (file);
-                real_update (list);
-            } else {
-                GOF.Window.Slot slot = window.current_tab.slot;
-                if (slot != null) {
-                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
+                bool matched = false;
+                if (selected_files != null) {
+                    selected_files.@foreach ((f) => {
+                        if (f == file)
+                            matched = true;
+                    });
+                }
+
+                if (matched) {
+                    real_update (selected_files);
+                    return;
+                } else {
+                    list.prepend (file);
                     real_update (list);
                 }
             }
+            real_update (list);
         }
 
-        private void real_update (GLib.List<GOF.File>? files = null)
-        {
+       private void real_update (GLib.List<GOF.File>? files) {
             count = 0;
+            goffile = null;
             folders_count = 0;
             files_count = 0;
             files_size = 0;
@@ -93,28 +105,29 @@ namespace Marlin.View {
             if (files != null) {
                 visible = showbar;
 
-                /* list contain only one element */
-                if (files.next == null) {
-                    goffile = files.data;
-                }
-                scan_list (files);
-                update_status ();
+                if (files.data != null) {
+                    if (files.next == null)
+                        /* list contain only one element */
+                        goffile = files.first ().data;
+                    else
+                        scan_list (files);
 
+                    update_status ();
+                }
             } else {
                 visible = false;
                 status = "";
             }
         }
 
-        private void update_status ()
-        {
+        private void update_status () {
             /* if we're still collecting image info, cancel */
             if (image_cancellable != null) {
                 image_cancellable.cancel ();
                 image_cancellable = null;
             }
 
-            if (count == 1) {
+            if (goffile != null) {
                 if (goffile.is_network_uri_scheme ()) {
                     status = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -134,10 +147,6 @@ namespace Marlin.View {
                 string str = null;
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
-                    /*if (sub_folders_count > 0)
-                      str += " (containing %u items)".printf (sub_count);
-                      else
-                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
@@ -146,10 +155,6 @@ namespace Marlin.View {
                         str += _(" selected");
                 } else if (folders_count == 1) {
                     str = _("%u folder").printf (folders_count);
-                    /*if (sub_folders_count > 0)
-                      str += " (containing %u items)".printf (sub_count);
-                      else
-                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
@@ -165,8 +170,10 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (List<GOF.File> files)
-        {
+        private void scan_list (GLib.List<GOF.File>? files) {
+            if (files == null)
+                return;
+
             foreach (var gof in files) {
                 if (gof.is_folder ()) {
                     folders_count++;
@@ -175,13 +182,11 @@ namespace Marlin.View {
                     files_count++;
                     files_size += PropertiesWindow.file_real_size (gof);
                 }
-                count++;
             }
         }
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
-        private async void load_resolution (GOF.File gofile)
-        {
+        private async void load_resolution (GOF.File goffile) {
             var file = goffile.location;
             image_size_loaded = false;
             image_cancellable = new Cancellable ();
@@ -206,7 +211,7 @@ namespace Marlin.View {
                 });
 
                 yield read_image_stream (loader, stream, image_cancellable);
-            } catch (Error e) { warning (e.message); }
+            } catch (Error e) { debug (e.message); }
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)

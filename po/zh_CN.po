@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-16 01:39-0500\n"
+"POT-Creation-Date: 2014-11-24 08:26-0600\n"
 "PO-Revision-Date: 2014-10-19 05:18+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -15,282 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2014-10-20 06:54+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-25 07:02+0000\n"
+"X-Generator: Launchpad (build 17252)\n"
 "Language: \n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "剪贴板中没有可粘贴的内容"
-
-#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
-#: ../src/fm-abstract-icon-view.c:139
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "无法将 %s 重命名为 %s"
-
-#: ../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "文件名"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
-msgid "Size"
-msgstr "大小"
-
-#: ../src/fm-list-view.c:59
-msgid "Type"
-msgstr "类型"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
-msgid "Modified"
-msgstr "已修改"
-
-#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
-#: ../src/fm-directory-view.c:547
-msgid "This folder is empty."
-msgstr "该文件夹为空。"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "排列项目(_G)"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "逆序(_V)"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "用相反的顺序显示图标"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "按名称(_N)"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "按名称排列图标"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "按大小(_S)"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "按大小排列图标"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "按类型(_T)"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "按类型排列图标"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "按修改时间(_D)"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "按修改时间排列图标"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "单击"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "该视图中的项目是否可以通过单击激活"
-
-#: ../src/fm-directory-view.c:1230
-msgid "Invalid filename provided by XDS drag site"
-msgstr "来自XDS拖动站的无效文件名"
-
-#: ../src/fm-directory-view.c:1388
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "创建到 URL “%s”的链接失败"
-
-#: ../src/fm-directory-view.c:1844
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "用“%s”打开选中的项目"
-
-#: ../src/fm-directory-view.c:2037
-#, c-format
-msgid "Use \"%s\" as template for new file"
-msgstr "使用 “%s”作为新文件的模板"
-
-#: ../src/fm-directory-view.c:2316
-#, c-format
-msgid "_Open With %s"
-msgstr "使用 %s 打开(_O)"
-
-#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
-msgid "_Open"
-msgstr "打开(_O)"
-
-#: ../src/fm-directory-view.c:2338
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "在 %'d 新标签中打开(_T)"
-
-#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1192
-msgid "Open in New _Tab"
-msgstr "在新标签中打开(_T)"
-
-#: ../src/fm-directory-view.c:2347
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "在 %'d 新窗口中打开(_W)"
-
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
-msgid "Open in New _Window"
-msgstr "在新窗口中打开(_W)"
-
-#: ../src/fm-directory-view.c:3792
-msgid "Set as default"
-msgstr "设为默认"
-
-#: ../src/fm-directory-view.c:3844
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "准备将选中的文件用粘贴命令移动"
-
-#: ../src/fm-directory-view.c:3848
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "准备将选中的文件用粘贴命令复制"
-
-#: ../src/fm-directory-view.c:3852
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "移动或复制由前面的剪切或复制命令所选中的文件"
-
-#: ../src/fm-directory-view.c:3855
-msgid "Paste Into Folder"
-msgstr "粘贴到文件夹"
-
-#: ../src/fm-directory-view.c:3856
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr "移动/复制先前由剪切/复制命令选中的文件到选中的文件夹"
-
-#: ../src/fm-directory-view.c:3859
-msgid "_Rename..."
-msgstr "重命名(_R)..."
-
-#: ../src/fm-directory-view.c:3860
-msgid "Rename selected item"
-msgstr "重命名选中的项目"
-
-#: ../src/fm-directory-view.c:3863
-msgid "Create New _Folder"
-msgstr "创建文件夹(_F)"
-
-#: ../src/fm-directory-view.c:3864
-msgid "Create a new empty folder inside this folder"
-msgstr "在该文件夹中创建新的空文件夹"
-
-#: ../src/fm-directory-view.c:3866
-msgid "Create New _File"
-msgstr "创建文件(_F)"
-
-#: ../src/fm-directory-view.c:3868
-msgid "_Empty File"
-msgstr "空文件(_E)"
-
-#: ../src/fm-directory-view.c:3869
-msgid "Create a new empty file inside this folder"
-msgstr "在该文件夹中创建新的空文件"
-
-#: ../src/fm-directory-view.c:3873
-msgid "Open the selected item"
-msgstr "打开选中的项目"
-
-#: ../src/fm-directory-view.c:3880
-msgid "Open in new Window"
-msgstr "在新窗口中打开"
-
-#: ../src/fm-directory-view.c:3881
-msgid "Open each selected item in a new window"
-msgstr "在新窗口中打开选中的文件"
-
-#: ../src/fm-directory-view.c:3885
-msgid "Open each selected item in a new tab"
-msgstr "在新标签中打开选中的每个项目"
-
-#: ../src/fm-directory-view.c:3887
-msgid "Open Wit_h"
-msgstr "打开方式(_H)"
-
-#: ../src/fm-directory-view.c:3888
-msgid "Choose a program with which to open the selected item"
-msgstr "选择用来打开选中项目的程序"
-
-#: ../src/fm-directory-view.c:3890
-msgid "Other _Application..."
-msgstr "其它程序(_A)..."
-
-#: ../src/fm-directory-view.c:3891
-msgid "Choose another application with which to open the selected item"
-msgstr "另选一个用来打开选中项目的程序"
-
-#: ../src/fm-directory-view.c:3894
-msgid "Mo_ve to Trash"
-msgstr "移动到回收站(_V)"
-
-#: ../src/fm-directory-view.c:3895
-msgid "Move each selected item to the Trash"
-msgstr "把每个选中项目都移到回收站"
-
-#: ../src/fm-directory-view.c:3898
-msgid "_Delete Permanently"
-msgstr "永久删除(_D)"
-
-#: ../src/fm-directory-view.c:3899
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "删除每个选中的项目，而不移动到回收站"
-
-#: ../src/fm-directory-view.c:3902
-msgid "_Restore"
-msgstr "还原(_R)"
-
-#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
-msgid "Select All"
-msgstr "全选"
-
-#: ../src/fm-directory-view.c:3910
-msgid "_Properties"
-msgstr "属性(_P)"
-
-#: ../src/fm-directory-view.c:3911
-msgid "View or modify the properties of each selected item"
-msgstr "查看或修改每个选中项目的属性"
-
-#: ../src/fm-directory-view.c:4024
-msgid "Set Color:"
-msgstr "设置颜色"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "输入法"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "图标目录列表"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "图标视图"
-
-#: ../src/exo-icon-view.c:864
-msgid "Layout mode"
-msgstr "布局模式"
-
-#: ../src/exo-icon-view.c:865
-msgid "The layout mode"
-msgstr "布局模式"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -410,31 +141,6 @@ msgstr "记住密码"
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "操作已取消"
-
-#: ../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "移到此处(_M)"
-
-#: ../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "复制到到处(_C)"
-
-#: ../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "在此处创建链接(_L)"
-
-#: ../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "设置为背景(_B)"
-
-#: ../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "取消"
-
-#: ../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "执行“%s”文件失败"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -782,33 +488,33 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "重新改变 %d 个项目的所有者"
 
-#: ../libcore/gof-file.c:302
+#: ../libcore/gof-file.c:303
 #, c-format
 msgid "link to %s"
 msgstr "链接到 %s"
 
-#: ../libcore/gof-file.c:1748
+#: ../libcore/gof-file.c:1789
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "解析桌面文件 %s 失败"
 
-#: ../libcore/gof-file.c:1786
+#: ../libcore/gof-file.c:1827
 msgid "No Exec field specified"
 msgstr "没有指定 Exec 字段"
 
-#: ../libcore/gof-file.c:1806
+#: ../libcore/gof-file.c:1847
 msgid "No URL field specified"
 msgstr "没有指定 URL 字段"
 
-#: ../libcore/gof-file.c:1812
+#: ../libcore/gof-file.c:1853
 msgid "Invalid desktop file"
 msgstr "无效的桌面文件"
 
-#: ../libcore/gof-file.c:2102
+#: ../libcore/gof-file.c:2145
 msgid "Slashes are not allowed in filenames"
 msgstr "文件名中不能出现斜线"
 
-#: ../libcore/gof-file.c:2122
+#: ../libcore/gof-file.c:2165
 msgid "Toplevel files cannot be renamed"
 msgstr "无法重命名顶级文件"
 
@@ -1213,13 +919,13 @@ msgstr "“%B”文件夹中的文件无法删除，因为您没有查看它们�
 
 #: ../libcore/marlin-file-operations.c:1601
 #: ../libcore/marlin-file-operations.c:2719
-#: ../libcore/marlin-file-operations.c:3715
+#: ../libcore/marlin-file-operations.c:3713
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "在获取文件夹“%B”中的信息时出现了一个错误。"
 
 #: ../libcore/marlin-file-operations.c:1610
-#: ../libcore/marlin-file-operations.c:3724
+#: ../libcore/marlin-file-operations.c:3722
 msgid "_Skip files"
 msgstr "跳过文件(_S)"
 
@@ -1231,7 +937,7 @@ msgstr "无法删除文件夹“%B”，因为您没有读它们的权限。"
 
 #: ../libcore/marlin-file-operations.c:1634
 #: ../libcore/marlin-file-operations.c:2758
-#: ../libcore/marlin-file-operations.c:3760
+#: ../libcore/marlin-file-operations.c:3758
 msgid "There was an error reading the folder \"%B\"."
 msgstr "读取文件夹“%B”时出现了一个错误。"
 
@@ -1365,15 +1071,15 @@ msgid_plural "Preparing to trash %'d files"
 msgstr[0] "正在准备将 %'d 个文件移到回收站"
 
 #: ../libcore/marlin-file-operations.c:2656
-#: ../libcore/marlin-file-operations.c:3576
-#: ../libcore/marlin-file-operations.c:3707
-#: ../libcore/marlin-file-operations.c:3752
+#: ../libcore/marlin-file-operations.c:3575
+#: ../libcore/marlin-file-operations.c:3705
+#: ../libcore/marlin-file-operations.c:3750
 msgid "Error while copying."
 msgstr "复制出错。"
 
 #: ../libcore/marlin-file-operations.c:2658
-#: ../libcore/marlin-file-operations.c:3705
-#: ../libcore/marlin-file-operations.c:3750
+#: ../libcore/marlin-file-operations.c:3703
+#: ../libcore/marlin-file-operations.c:3748
 msgid "Error while moving."
 msgstr "移动出错。"
 
@@ -1393,270 +1099,278 @@ msgid ""
 "read it."
 msgstr "无法操作文件夹“%B”，因为您没有读取它的权限。"
 
-#: ../libcore/marlin-file-operations.c:2832
+#: ../libcore/marlin-file-operations.c:2831
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "无法操作文件“%B”，因为您没有读取它的权限。"
 
-#: ../libcore/marlin-file-operations.c:2835
+#: ../libcore/marlin-file-operations.c:2834
 msgid "There was an error getting information about \"%B\"."
 msgstr "获取有关“%B”的信息时出错。"
 
-#: ../libcore/marlin-file-operations.c:2935
-#: ../libcore/marlin-file-operations.c:2977
-#: ../libcore/marlin-file-operations.c:3010
-#: ../libcore/marlin-file-operations.c:3040
+#: ../libcore/marlin-file-operations.c:2934
+#: ../libcore/marlin-file-operations.c:2976
+#: ../libcore/marlin-file-operations.c:3009
+#: ../libcore/marlin-file-operations.c:3039
 msgid "Error while copying to \"%B\"."
 msgstr "复制到“%B”时出错。"
 
-#: ../libcore/marlin-file-operations.c:2939
+#: ../libcore/marlin-file-operations.c:2938
 msgid "You do not have permissions to access the destination folder."
 msgstr "您没有访问目标文件夹的权限。"
 
-#: ../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:2940
 msgid "There was an error getting information about the destination."
 msgstr "获取目标信息时出现了一个错误。"
 
-#: ../libcore/marlin-file-operations.c:2978
+#: ../libcore/marlin-file-operations.c:2977
 msgid "The destination is not a folder."
 msgstr "目标不是一个文件夹。"
 
-#: ../libcore/marlin-file-operations.c:3011
+#: ../libcore/marlin-file-operations.c:3010
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "目标位置没有足够的空间。尝试删除文件来腾出空间。"
 
-#: ../libcore/marlin-file-operations.c:3013
+#: ../libcore/marlin-file-operations.c:3012
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "可用空间为 %S，但需要 %S。"
 
-#: ../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3040
 msgid "The destination is read-only."
 msgstr "目标为只读。"
 
-#: ../libcore/marlin-file-operations.c:3102
+#: ../libcore/marlin-file-operations.c:3101
 msgid "Moving \"%B\" to \"%B\""
 msgstr "正在将“%B”移动到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3103
+#: ../libcore/marlin-file-operations.c:3102
 msgid "Copying \"%B\" to \"%B\""
 msgstr "正在将“%B”复制到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3107
+#: ../libcore/marlin-file-operations.c:3106
 msgid "Duplicating \"%B\""
 msgstr "正在复制“%B”"
 
-#: ../libcore/marlin-file-operations.c:3111
+#: ../libcore/marlin-file-operations.c:3110
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正在移动 %'d 个文件(位于“%B”)到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3114
+#: ../libcore/marlin-file-operations.c:3113
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正在复制 %'d 个文件(位于“%B”)到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3121
+#: ../libcore/marlin-file-operations.c:3120
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "正在重复 %'d 个文件(位于“%B”)"
 
-#: ../libcore/marlin-file-operations.c:3130
+#: ../libcore/marlin-file-operations.c:3129
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "正在移动 %'d 个文件到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3134
+#: ../libcore/marlin-file-operations.c:3133
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "正在复制 %'d 个文件到“%B”"
 
-#: ../libcore/marlin-file-operations.c:3139
+#: ../libcore/marlin-file-operations.c:3138
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "正在重复 %'d 个文件"
 
-#: ../libcore/marlin-file-operations.c:3190
+#: ../libcore/marlin-file-operations.c:3189
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: ../libcore/marlin-file-operations.c:3201
+#: ../libcore/marlin-file-operations.c:3200
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S of %S — 剩余 %T(%S/秒)"
 
-#: ../libcore/marlin-file-operations.c:3580
+#: ../libcore/marlin-file-operations.c:3579
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "无法复制文件夹“%B”，因为您没有在目标位置创建它的权限。"
 
-#: ../libcore/marlin-file-operations.c:3583
+#: ../libcore/marlin-file-operations.c:3582
 msgid "There was an error creating the folder \"%B\"."
 msgstr "创建文件夹“%B”时出现了一个错误。"
 
-#: ../libcore/marlin-file-operations.c:3712
+#: ../libcore/marlin-file-operations.c:3710
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "无法复制文件夹“%B”中的文件，因为您没有查看它们的权限。"
 
-#: ../libcore/marlin-file-operations.c:3757
+#: ../libcore/marlin-file-operations.c:3755
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "无法复制文件夹“%B”，因为您没有读取它的权限。"
 
-#: ../libcore/marlin-file-operations.c:3802
-#: ../libcore/marlin-file-operations.c:4503
-#: ../libcore/marlin-file-operations.c:5090
+#: ../libcore/marlin-file-operations.c:3800
+#: ../libcore/marlin-file-operations.c:4501
 msgid "Error while moving \"%B\"."
 msgstr "移动“%B”时出错。"
 
-#: ../libcore/marlin-file-operations.c:3803
+#: ../libcore/marlin-file-operations.c:3801
 msgid "Could not remove the source folder."
 msgstr "无法移动源文件夹。"
 
-#: ../libcore/marlin-file-operations.c:3888
-#: ../libcore/marlin-file-operations.c:3929
-#: ../libcore/marlin-file-operations.c:4505
-#: ../libcore/marlin-file-operations.c:4576
+#: ../libcore/marlin-file-operations.c:3886
+#: ../libcore/marlin-file-operations.c:3927
+#: ../libcore/marlin-file-operations.c:4503
 msgid "Error while copying \"%B\"."
 msgstr "复制“%B”时出错。"
 
-#: ../libcore/marlin-file-operations.c:3889
+#: ../libcore/marlin-file-operations.c:3887
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "无法从已存在的文件夹 %F 中移除文件。"
 
-#: ../libcore/marlin-file-operations.c:3930
+#: ../libcore/marlin-file-operations.c:3928
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "无法移除已存在的文件 %F。"
 
-#: ../libcore/marlin-file-operations.c:4259
-#: ../libcore/marlin-file-operations.c:4930
+#: ../libcore/marlin-file-operations.c:4257
+#: ../libcore/marlin-file-operations.c:4928
 msgid "You cannot move a folder into itself."
 msgstr "您不能将文件夹移到它自己里面。"
 
-#: ../libcore/marlin-file-operations.c:4260
-#: ../libcore/marlin-file-operations.c:4931
+#: ../libcore/marlin-file-operations.c:4258
+#: ../libcore/marlin-file-operations.c:4929
 msgid "You cannot copy a folder into itself."
 msgstr "您不能将文件夹复制到它自己里面。"
 
-#: ../libcore/marlin-file-operations.c:4261
-#: ../libcore/marlin-file-operations.c:4932
+#: ../libcore/marlin-file-operations.c:4259
+#: ../libcore/marlin-file-operations.c:4930
 msgid "The destination folder is inside the source folder."
 msgstr "目标文件夹在源文件夹内。"
 
-#: ../libcore/marlin-file-operations.c:4292
+#: ../libcore/marlin-file-operations.c:4290
 msgid "You cannot move a file over itself."
 msgstr "您不能原地移动一个文件。"
 
-#: ../libcore/marlin-file-operations.c:4293
+#: ../libcore/marlin-file-operations.c:4291
 msgid "You cannot copy a file over itself."
 msgstr "您不能原地复制一个文件。"
 
-#: ../libcore/marlin-file-operations.c:4294
+#: ../libcore/marlin-file-operations.c:4292
 msgid "The source file would be overwritten by the destination."
 msgstr "源文件会被目标文件覆盖。"
 
-#: ../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4505
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "无法移除 %F 中同名的现有文件。"
 
-#: ../libcore/marlin-file-operations.c:4577
+#: ../libcore/marlin-file-operations.c:4574
 #, c-format
-msgid "There was an error copying the file into %F."
-msgstr "将文件复制到 %F 时出错。"
+msgid "There was an Error while copying \"%s\"."
+msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4804
+#: ../libcore/marlin-file-operations.c:4575
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
 msgstr "正在复制文件"
 
-#: ../libcore/marlin-file-operations.c:4830
+#: ../libcore/marlin-file-operations.c:4828
 msgid "Preparing to move to \"%B\""
 msgstr "正在准备移到“%B”"
 
-#: ../libcore/marlin-file-operations.c:4842
+#: ../libcore/marlin-file-operations.c:4840
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "正在准备移动 %'d 个文件"
 
-#: ../libcore/marlin-file-operations.c:5091
+#: ../libcore/marlin-file-operations.c:5088
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:5089
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "将文件移到 %F 时出错。"
 
-#: ../libcore/marlin-file-operations.c:5354
+#: ../libcore/marlin-file-operations.c:5352
 msgid "Moving Files"
 msgstr "正在移动文件"
 
-#: ../libcore/marlin-file-operations.c:5384
+#: ../libcore/marlin-file-operations.c:5381
 msgid "Creating links in \"%B\""
 msgstr "在“%B”中创建链接"
 
-#: ../libcore/marlin-file-operations.c:5395
+#: ../libcore/marlin-file-operations.c:5392
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "正在创建到 %'d 个文件的链接"
 
-#: ../libcore/marlin-file-operations.c:5530
+#: ../libcore/marlin-file-operations.c:5526
 msgid "Error while creating link to %B."
 msgstr "创建指向 %B 的链接时出错。"
 
-#: ../libcore/marlin-file-operations.c:5532
+#: ../libcore/marlin-file-operations.c:5528
 msgid "Symbolic links only supported for local files"
 msgstr "符号链接只支持本地文件"
 
-#: ../libcore/marlin-file-operations.c:5535
+#: ../libcore/marlin-file-operations.c:5531
 msgid "The target doesn't support symbolic links."
 msgstr "目标不支持符号链接。"
 
-#: ../libcore/marlin-file-operations.c:5538
+#: ../libcore/marlin-file-operations.c:5534
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "在 %F 中创建符号链接时出错。"
 
-#: ../libcore/marlin-file-operations.c:5866
-#: ../libcore/marlin-file-operations.c:5869
+#: ../libcore/marlin-file-operations.c:5862
+#: ../libcore/marlin-file-operations.c:5865
 msgid "Setting permissions"
 msgstr "正在设置权限"
 
-#: ../libcore/marlin-file-operations.c:6120
+#: ../libcore/marlin-file-operations.c:6116
 msgid "untitled folder"
 msgstr "无标题文件夹"
 
-#: ../libcore/marlin-file-operations.c:6128
+#: ../libcore/marlin-file-operations.c:6124
 msgid "new file"
 msgstr "新文件"
 
-#: ../libcore/marlin-file-operations.c:6299
+#: ../libcore/marlin-file-operations.c:6295
 msgid "Error while creating directory %B."
 msgstr "创建目录 %B 出错。"
 
-#: ../libcore/marlin-file-operations.c:6301
+#: ../libcore/marlin-file-operations.c:6297
 msgid "Error while creating file %B."
 msgstr "创建文件 %B 出错。"
 
-#: ../libcore/marlin-file-operations.c:6303
+#: ../libcore/marlin-file-operations.c:6299
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "在 %F 中创建目录时出现了一个错误。"
 
-#: ../libcore/marlin-file-operations.c:6613
+#: ../libcore/marlin-file-operations.c:6609
 msgid "Emptying the trash"
 msgstr "清空回收站"
 
-#: ../libcore/marlin-file-operations.c:6621
+#: ../libcore/marlin-file-operations.c:6617
 msgid "Emptying Trash"
 msgstr "正在清空回收站"
 
@@ -1669,47 +1383,66 @@ msgstr "无法确定“%s”的原位置 "
 msgid "The item cannot be restored from trash"
 msgstr "无法从回收站中恢复该项目"
 
-#: ../src/View/LocationBar.vala:123
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "文件名"
+
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/directory_view_popup.ui:120
+msgid "Size"
+msgstr "大小"
+
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:300
+#: ../src/View/directory_view_popup.ui:115
+msgid "Type"
+msgstr "类型"
+
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:457
+msgid "Modified"
+msgstr "已修改"
+
+#: ../src/View/LocationBar.vala:132
 msgid "AFP"
 msgstr "AFP"
 
-#: ../src/View/LocationBar.vala:124
+#: ../src/View/LocationBar.vala:133
 msgid "DAV"
 msgstr "DAV"
 
-#: ../src/View/LocationBar.vala:125
+#: ../src/View/LocationBar.vala:134
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../src/View/LocationBar.vala:126
+#: ../src/View/LocationBar.vala:135
 msgid "FTP"
 msgstr "FTP"
 
-#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+#: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
 msgstr "网络"
 
-#: ../src/View/LocationBar.vala:128
+#: ../src/View/LocationBar.vala:137
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../src/View/LocationBar.vala:129
+#: ../src/View/LocationBar.vala:138
 msgid "SMB"
 msgstr "SMB"
 
-#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+#: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
 msgstr "回收站"
 
-#: ../src/View/LocationBar.vala:329
+#: ../src/View/LocationBar.vala:331
 msgid "Open in New Tab"
 msgstr "在新标签页中打开"
 
-#: ../src/View/LocationBar.vala:336
+#: ../src/View/LocationBar.vala:338
 msgid "Open with"
 msgstr "打开方式"
 
-#: ../src/View/LocationBar.vala:367
+#: ../src/View/LocationBar.vala:369
 msgid "Other Application .."
 msgstr "其他应用程序..."
 
@@ -1717,245 +1450,21 @@ msgstr "其他应用程序..."
 msgid "A simple and powerful file manager"
 msgstr "一款简洁、强大的文件管理器"
 
-#: ../src/View/Resources.vala:28
+#: ../src/View/Resources.vala:29
 msgid "Launchpad Translators"
 msgstr "Launchpad 翻译者"
 
-#: ../src/View/Window.vala:138
+#: ../src/View/Window.vala:175
 msgid "Files isn't your default file manager."
 msgstr "Files 不是您的默认文件管理器。"
 
-#: ../src/View/Window.vala:144
+#: ../src/View/Window.vala:181
 msgid "Set as Default"
 msgstr "设为默认"
 
-#: ../src/View/Window.vala:149
+#: ../src/View/Window.vala:187
 msgid "Ignore"
 msgstr "忽略"
-
-#: ../src/View/Window.vala:432
-msgid "Undo"
-msgstr "撤销"
-
-#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
-msgid "Undo the last action"
-msgstr "撤销上次操作"
-
-#: ../src/View/Window.vala:442
-msgid "Redo"
-msgstr "重做"
-
-#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
-msgid "Redo the last action"
-msgstr "重做上次操作"
-
-#: ../src/View/Window.vala:739
-msgid "_File"
-msgstr "文件(_F)"
-
-#: ../src/View/Window.vala:740
-msgid "_Edit"
-msgstr "编辑(_E)"
-
-#: ../src/View/Window.vala:741
-msgid "_View"
-msgstr "查看(_V)"
-
-#: ../src/View/Window.vala:742
-msgid "_Go"
-msgstr "转到(_G)"
-
-#: ../src/View/Window.vala:743
-msgid "_Help"
-msgstr "帮助(_H)"
-
-#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "新建窗口(_W)"
-
-#: ../src/View/Window.vala:746
-msgid "Open another Files window for the displayed location"
-msgstr "在另一个窗口中打开显示的位置"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "新建标签(_T)"
-
-#: ../src/View/Window.vala:750
-msgid "Open another tab for the displayed location"
-msgstr "在另一个标签中打开显示的位置"
-
-#: ../src/View/Window.vala:754
-msgid "_Close"
-msgstr "关闭(_C)"
-
-#: ../src/View/Window.vala:755
-msgid "Close this folder"
-msgstr "关闭此文件夹"
-
-#: ../src/View/Window.vala:760
-msgid "_Undo"
-msgstr "撤销(_U)"
-
-#: ../src/View/Window.vala:763
-msgid "_Redo"
-msgstr "重做(_R)"
-
-#: ../src/View/Window.vala:766
-msgid "_Find"
-msgstr "查找(_F)"
-
-#: ../src/View/Window.vala:767
-msgid "Search the current folder"
-msgstr "搜索当前文件夹"
-
-#: ../src/View/Window.vala:769
-msgid "Open _Parent"
-msgstr "打开父文件夹(_P)"
-
-#: ../src/View/Window.vala:770
-msgid "Open the parent folder"
-msgstr "打开父文件夹"
-
-#: ../src/View/Window.vala:772
-msgid "_Back"
-msgstr "返回(_B)"
-
-#: ../src/View/Window.vala:773
-msgid "Go to the previous visited location"
-msgstr "转到上一个访问过的位置"
-
-#: ../src/View/Window.vala:776
-msgid "_Forward"
-msgstr "前进(_F)"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the next visited location"
-msgstr "转到下一个访问过的位置"
-
-#: ../src/View/Window.vala:779
-msgid "_Reload"
-msgstr "重新载入(_R)"
-
-#: ../src/View/Window.vala:780
-msgid "Reload the current location"
-msgstr "重新载入当前位置"
-
-#: ../src/View/Window.vala:783
-msgid "_Home Folder"
-msgstr "主文件夹(_H)"
-
-#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
-msgid "Open your personal folder"
-msgstr "打开您的个人文件夹"
-
-#: ../src/View/Window.vala:787
-msgid "_Trash"
-msgstr "回收站(_T)"
-
-#: ../src/View/Window.vala:788
-msgid "Open your personal trash folder"
-msgstr "打开您个人回收站文件夹"
-
-#: ../src/View/Window.vala:791
-msgid "_Network"
-msgstr "网络(_N)"
-
-#: ../src/View/Window.vala:792
-msgid "Browse bookmarked and local network locations"
-msgstr "浏览书签和局域网"
-
-#: ../src/View/Window.vala:795
-msgid "Zoom _In"
-msgstr "放大(_I)"
-
-#: ../src/View/Window.vala:796
-msgid "Increase the view size"
-msgstr "增加视图大小"
-
-#: ../src/View/Window.vala:807
-msgid "Zoom _Out"
-msgstr "缩小(_O)"
-
-#: ../src/View/Window.vala:808
-msgid "Decrease the view size"
-msgstr "减少视图大小"
-
-#: ../src/View/Window.vala:815
-msgid "Normal Si_ze"
-msgstr "普通大小(_Z)"
-
-#: ../src/View/Window.vala:816
-msgid "Use the normal view size"
-msgstr "使用普通大小的视图"
-
-#: ../src/View/Window.vala:819
-msgid "Next Tab"
-msgstr "下一个标签"
-
-#: ../src/View/Window.vala:823
-msgid "Previous Tab"
-msgstr "上一个标签"
-
-#: ../src/View/Window.vala:827
-msgid "Connect to _Server..."
-msgstr "连接到服务器(_S)..."
-
-#: ../src/View/Window.vala:828
-msgid "Connect to a remote computer or shared disk"
-msgstr "连接到远程计算机或共享磁盘"
-
-#: ../src/View/Window.vala:831
-msgid "_About"
-msgstr "关于(_A)"
-
-#: ../src/View/Window.vala:832
-msgid "Display credits"
-msgstr "开发人员名单"
-
-#: ../src/View/Window.vala:835
-msgid "Report a Problem..."
-msgstr "报告问题..."
-
-#: ../src/View/Window.vala:836
-msgid "File a bug on Launchpad"
-msgstr "向 Launchpad 提交 Bug"
-
-#: ../src/View/Window.vala:839
-msgid "Get Help Online..."
-msgstr "获取在线帮助..."
-
-#: ../src/View/Window.vala:843
-msgid "Translate This Application..."
-msgstr "翻译此应用程序..."
-
-#: ../src/View/Window.vala:852
-msgid "Show _Hidden Files"
-msgstr "显示隐藏文件(_H)"
-
-#: ../src/View/Window.vala:853
-msgid "Toggle the display of hidden files in the current window"
-msgstr "切换当前窗口中是否显示隐藏文件"
-
-#: ../src/View/Window.vala:857
-msgid "_Places"
-msgstr "位置(_P)"
-
-#: ../src/View/Window.vala:858
-msgid "Change the visibility of this window's side pane"
-msgstr "更改该窗口侧边栏的可见性"
-
-#: ../src/View/Window.vala:866
-msgid "Icon"
-msgstr "图标"
-
-#: ../src/View/Window.vala:869
-msgid "List"
-msgstr "列表"
-
-#: ../src/View/Window.vala:872
-msgid "Columns"
-msgstr "列"
 
 #: ../src/View/Sidebar.vala:385
 msgid "Personal"
@@ -1965,9 +1474,13 @@ msgstr "个人"
 msgid "Your common places and bookmarks"
 msgstr "您的常用位置和书签"
 
-#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:231
 msgid "Home"
 msgstr "主目录"
+
+#: ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "打开您的个人文件夹"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
@@ -1981,7 +1494,7 @@ msgstr "设备"
 msgid "Your local partitions and devices"
 msgstr "您的本地分区和设备"
 
-#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
 msgid "File System"
 msgstr "文件系统"
 
@@ -2013,11 +1526,19 @@ msgstr "无法启动 %s"
 msgid "Open"
 msgstr "打开"
 
+#: ../src/View/Sidebar.vala:1192
+msgid "Open in New _Tab"
+msgstr "在新标签中打开(_T)"
+
+#: ../src/View/Sidebar.vala:1198
+msgid "Open in New _Window"
+msgstr "在新窗口中打开(_W)"
+
 #: ../src/View/Sidebar.vala:1206
 msgid "Remove"
 msgstr "移除"
 
-#: ../src/View/Sidebar.vala:1214
+#: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
 msgstr "重命名"
 
@@ -2049,71 +1570,111 @@ msgstr "其它地方"
 msgid "No Results Found"
 msgstr "未发现任何结果"
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr "正在载入..."
-
-#: ../src/View/ViewContainer.vala:149
+#: ../src/View/ViewContainer.vala:244
 msgid "This folder does not exist"
 msgstr "该文件夹不存在"
 
-#: ../src/View/ViewContainer.vala:154
+#: ../src/View/ViewContainer.vala:249
 msgid "(as Administrator)"
 msgstr "(以管理员身份)"
 
-#: ../src/View/ViewContainer.vala:173
+#: ../src/View/ViewContainer.vala:263
 msgid "This does not belong to you."
 msgstr "它不属于您。"
 
-#: ../src/View/ViewContainer.vala:174
+#: ../src/View/ViewContainer.vala:264
 msgid "You don't have permission to view this folder."
 msgstr "您没有权限查看该文件夹。"
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr "正在连接…"
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
 msgstr "网格视图"
 
-#: ../src/View/Chrome/ViewSwicher.vala:78
+#: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
 msgstr "列表视图"
 
-#: ../src/View/Chrome/ViewSwicher.vala:81
+#: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "分栏显示"
 
-#: ../src/View/Chrome/TopMenu.vala:34
+#: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
 msgstr "上一个"
 
-#: ../src/View/Chrome/TopMenu.vala:39
+#: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
 msgstr "下一个"
 
-#: ../src/View/OverlayBar.vala:136
+#: ../src/View/AbstractDirectoryView.vala:514
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:902
+msgid "Select an application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:904
+msgid "Set as default"
+msgstr "设为默认"
+
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Invalid file name provided"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1645
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1650
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1655
+msgid "Open in %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1663
+msgid "Open in"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1709
+msgid "Other Application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1933
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2374
+msgid "%s is not a valid file name"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
 msgstr "%u 个文件夹"
 
-#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
 msgid " and %u other item (%s) selected"
 msgstr " 和 %u 其他项目(%s)已被选中"
 
-#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+#: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
 msgid " and %u other items (%s) selected"
 msgstr " 和 %u 个其他条目 - 已选中(%s)"
 
-#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+#: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
 msgid " selected"
 msgstr " 已选中"
 
-#: ../src/View/OverlayBar.vala:148
+#: ../src/View/OverlayBar.vala:157
 msgid "%u folder"
 msgstr "%u 个文件夹"
 
-#: ../src/View/OverlayBar.vala:160
+#: ../src/View/OverlayBar.vala:165
 msgid "%u items selected (%s)"
 msgstr "已选中 %u 个条目 (%s)"
 
@@ -2143,143 +1704,189 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/PropertiesWindow.vala:85
+#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
 msgid "Properties"
 msgstr "属性"
 
-#: ../src/View/PropertiesWindow.vala:141
+#: ../src/View/PropertiesWindow.vala:145
 msgid "General"
 msgstr "常规"
 
-#: ../src/View/PropertiesWindow.vala:149
+#: ../src/View/PropertiesWindow.vala:153
 msgid "More"
 msgstr "更多"
 
-#: ../src/View/PropertiesWindow.vala:168
+#: ../src/View/PropertiesWindow.vala:172
 msgid "Preview"
 msgstr "预览"
 
-#: ../src/View/PropertiesWindow.vala:176
+#: ../src/View/PropertiesWindow.vala:180
 msgid "Close"
 msgstr "关闭"
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:218
+msgid "file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:220
+msgid "files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual size could be larger, "
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "could not be read due to permissions or other errors."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:251
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
 msgstr "已选择 %u 个条目"
 
-#: ../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr "正在计算大小..."
-
-#: ../src/View/PropertiesWindow.vala:405
+#: ../src/View/PropertiesWindow.vala:455
 msgid "Created"
 msgstr "创建时间"
 
-#: ../src/View/PropertiesWindow.vala:410
+#: ../src/View/PropertiesWindow.vala:460
 msgid "Last Access"
 msgstr "上次访问"
 
-#: ../src/View/PropertiesWindow.vala:416
+#: ../src/View/PropertiesWindow.vala:466
 msgid "Deleted"
 msgstr "已删除"
 
-#: ../src/View/PropertiesWindow.vala:421
+#: ../src/View/PropertiesWindow.vala:471
 msgid "MimeType"
 msgstr "MIME 类型"
 
-#: ../src/View/PropertiesWindow.vala:429
+#: ../src/View/PropertiesWindow.vala:479
 msgid "MimeTypes"
 msgstr "Mime 类型"
 
-#: ../src/View/PropertiesWindow.vala:449
+#: ../src/View/PropertiesWindow.vala:499
 msgid "Location"
 msgstr "位置"
 
-#: ../src/View/PropertiesWindow.vala:452
+#: ../src/View/PropertiesWindow.vala:502
 msgid "Target"
 msgstr "目标"
 
-#: ../src/View/PropertiesWindow.vala:458
+#: ../src/View/PropertiesWindow.vala:508
 msgid "Origin Location"
 msgstr "原位置"
 
-#: ../src/View/PropertiesWindow.vala:468
+#: ../src/View/PropertiesWindow.vala:536
 msgid "Info:"
 msgstr "信息："
 
-#: ../src/View/PropertiesWindow.vala:504
+#: ../src/View/PropertiesWindow.vala:576
 msgid "Other application..."
 msgstr "其它程序..."
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:600
 msgid "Open with:"
 msgstr "打开方式："
 
-#: ../src/View/PropertiesWindow.vala:548
+#: ../src/View/PropertiesWindow.vala:620
 msgid "Usage:"
 msgstr "使用情况："
 
-#: ../src/View/PropertiesWindow.vala:553
+#: ../src/View/PropertiesWindow.vala:625
 msgid "Device usage:"
 msgstr "设备使用率："
 
-#: ../src/View/PropertiesWindow.vala:560
+#: ../src/View/PropertiesWindow.vala:632
 msgid "%s free of %s (%d%% used)"
 msgstr "空闲：%s/%s(已用 %d%%)"
 
-#: ../src/View/PropertiesWindow.vala:699
+#: ../src/View/PropertiesWindow.vala:771
 msgid "Read"
 msgstr "读取"
 
-#: ../src/View/PropertiesWindow.vala:704
+#: ../src/View/PropertiesWindow.vala:776
 msgid "Write"
 msgstr "写入"
 
-#: ../src/View/PropertiesWindow.vala:709
+#: ../src/View/PropertiesWindow.vala:781
 msgid "Execute"
 msgstr "执行"
 
-#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+#: ../src/View/PropertiesWindow.vala:994
+#: ../src/View/PropertiesWindow.vala:1007
 msgid "Owner"
 msgstr "所有者"
 
-#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+#: ../src/View/PropertiesWindow.vala:999
+#: ../src/View/PropertiesWindow.vala:1011
 msgid "Group"
 msgstr "组"
 
-#: ../src/View/PropertiesWindow.vala:943
+#: ../src/View/PropertiesWindow.vala:1015
 msgid "Everyone"
 msgstr "所有人"
 
-#: ../src/View/PropertiesWindow.vala:1202
+#: ../src/View/PropertiesWindow.vala:1274
 msgid "Select an application to open "
 msgstr "选择一个程序来打开 "
 
-#: ../src/Application.vala:137
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "该文件夹为空。"
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr ""
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr ""
+
+#: ../src/DndHandler.vala:97
+msgid "Move Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:98
+msgid "Copy Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:99
+msgid "Link Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:102
+msgid "Cancel"
+msgstr "取消"
+
+#: ../src/Application.vala:139
 msgid "Show the version of the program."
 msgstr "显示程序版本。"
 
-#: ../src/Application.vala:139
+#: ../src/Application.vala:141
 msgid "Open uri(s) in new tab"
 msgstr "在新标签中打开 uri"
 
-#: ../src/Application.vala:141
+#: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
 msgstr "新窗口"
 
-#: ../src/Application.vala:143
+#: ../src/Application.vala:145
 msgid "Quit Files."
 msgstr "退出 Files。"
 
-#: ../src/Application.vala:145
+#: ../src/Application.vala:147
 msgid "Enable debug logging"
 msgstr "启动调试日志"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:150
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:151
+#: ../src/Application.vala:153
 msgid ""
 "\n"
 "\n"
@@ -2289,7 +1896,7 @@ msgstr ""
 "\n"
 "通过文件管理器浏览文件系统"
 
-#: ../src/Application.vala:178
+#: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能与 URI 一起使用。"
 
@@ -2300,6 +1907,14 @@ msgstr "浏览文件"
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "文件管理器"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "新建标签(_T)"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "新建窗口(_W)"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -2339,23 +1954,95 @@ msgstr "显示复制对话框"
 msgid "Cancel All In-progress Actions"
 msgstr "取消所有正在进行的动作"
 
-#: ../libwidgets/LocationBar.vala:284
+#: ../libwidgets/LocationBar.vala:290
 msgid "Go to %s"
 msgstr "转到 %s"
 
 #: ../plugins/network-places/plugin.vala:23
-#: ../plugins/network-places/plugin.vala:48
+#: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
 msgstr "连接至服务器..."
 
-#: ../plugins/network-places/plugin.vala:48
+#: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"
 msgstr "连接至网络文件服务器"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:38
+#: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
 msgstr "这些项目可通过清空回收站删除。"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:39
+#: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
 msgstr "清空回收站"
+
+#: ../src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:9
+msgid "Delete permanently"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:23
+msgid "Move to Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:30
+msgid "New"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:32
+msgid "Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:37
+msgid "Empty File"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:46
+msgid "Show Hidden Files"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:53
+msgid "New Tab"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:63
+msgid "Terminal"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:78
+msgid "Bookmark"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:85
+msgid "Paste"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:92
+msgid "Cut"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:96
+msgid "Copy"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:100
+msgid "Paste into Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:107
+msgid "Sort by"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:110
+msgid "Name"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:125
+msgid "Date"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:132
+msgid "Reversed Order"
+msgstr ""

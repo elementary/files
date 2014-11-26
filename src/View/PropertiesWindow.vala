@@ -41,7 +41,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private uint count;
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
-    private FM.Directory.View view;
+    private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
 
@@ -84,7 +84,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         PREVIEW
     }
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
         set_default_size (220, -1);
@@ -93,7 +93,31 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_hint = Gdk.WindowTypeHint.DIALOG;      
         border_width = 5;
         destroy_with_parent = true;
-        
+
+        if (_files == null) {
+            critical ("Properties Window constructor called with null file list");
+            return;
+        }
+
+        if (_view == null) {
+            critical ("Properties Window constructor called with null Directory View");
+            return;
+        }
+
+        view = _view;
+        files = _files.copy ();
+        count = files.length();
+
+        if (count < 1 ) {
+            critical ("Properties Window constructor called with empty file list");
+            return;
+        }
+
+        if (!(files.data is GOF.File)) {
+            critical ("Properties Window constructor called with invalid file data (1)");
+            return;
+        }
+
         Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         header.height_request = 15;
         set_titlebar (header);
@@ -110,14 +134,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_vbox.margin_right = 5;
         content_vbox.margin_left = 5;
 
-        view = _view;
-        files = _files.copy ();
-        count = files.length();
         goffile = (GOF.File) files.data;
-
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
         {
+            if (!(gof is GOF.File)) {
+                critical ("Properties Window constructor called with invalid file data (2)");
+                return;
+            }
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
@@ -299,8 +323,57 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         type_label = new Granite.Widgets.WrapLabel ("");
         size_label = new Gtk.Label ("");
         type_key_label = create_label_key (_("Type") + (": "));
+
+        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
+         * control over the size and position of the emblems so we create a composite pixbuf */
+
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_img = new Gtk.Image.from_pixbuf (file_pix);
+
+        /* Add space around the pixbuf for emblems */
+        var icon_pix = new Gdk.Pixbuf (file_pix.colorspace,
+                                         file_pix.has_alpha,
+                                         file_pix.bits_per_sample,
+                                         64, 64);
+        icon_pix.fill (0);
+        file_pix.composite (icon_pix,
+                            8, 8,
+                            48, 48,
+                            8, 8,
+                            1.0, 1.0,
+                            Gdk.InterpType.NEAREST,
+                            255);
+
+        /* Composite in the emblems, if any */
+        Gdk.Pixbuf? pixbuf = null;
+        if (goffile.emblems_list != null) {
+            var theme = Gtk.IconTheme.get_default ();
+            int pos = 0;
+            foreach (string emblem_name in goffile.emblems_list) {
+                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
+                if (info == null)
+                    continue;
+
+                try {
+                    pixbuf = info.load_icon ();
+                    /* Emblems drawn in a vertical column to the right of the icon */
+                    pixbuf.composite (icon_pix,
+                                      44, 44 - pos * 17,
+                                      16, 16,
+                                      44.0, 44.0 - pos * 17.0,
+                                      1.0, 1.0,
+                                      Gdk.InterpType.NEAREST,
+                                      255);
+                    pos++;
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
+                }
+                if (pos > 3) /* Only room for 3 emblems */ 
+                    break;
+            }
+        }
+
+        var file_img = new Gtk.Image.from_pixbuf (icon_pix);
         file_img.set_valign (Gtk.Align.CENTER);
         content.pack_start (file_img, false, false);
 
@@ -1241,7 +1314,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             try {
                 foreach (var mime in mimes)
                     app.set_as_default_for_type (mime);
-                view.notify_selection_changed ();
+
+                view.notify_selection_changed (); /* indirectly update menus */
             } catch (Error e) {
                 critical ("Couldn't set as default: %s", e.message);
             }
@@ -1263,3 +1337,4 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         return file_size;
     }
 }
+

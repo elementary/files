@@ -103,7 +103,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
 
         if (pressed) {
             cr.save ();
-            double text_width = max_width > 0 ? max_width : text_width;
+            double text_width = max_width > 0 ? max_width : this.text_width;
             cr.move_to (x - height / 2 - estimated_border_size, 0);
             cr.line_to (x - height / 2 - estimated_border_size, y);
             cr.line_to (x - estimated_border_size, y + height / 2);
@@ -145,7 +145,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         }
 
         if (pressed) {
-            double text_width = max_width > 0 ? max_width : text_width;
+            double text_width = max_width > 0 ? max_width : this.text_width;
             cr.restore ();
 
             cr.move_to (0, 0);

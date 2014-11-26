@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-16 01:39-0500\n"
+"POT-Creation-Date: 2014-11-24 08:26-0600\n"
 "PO-Revision-Date: 2014-07-17 05:01+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -15,282 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:09+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
+"X-Generator: Launchpad (build 17252)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "በቁራጭ ሰሌዳው ላይ የሚለጠፍ ምንም ነገር የለም"
-
-#: ../src/fm-columns-view.c:182 ../src/fm-list-view.c:205
-#: ../src/fm-abstract-icon-view.c:139
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "እንደገና መሰየም አልተሳካም %s ወደ %s"
-
-#: ../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "የፋይል ስም"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
-msgid "Size"
-msgstr "መጠን"
-
-#: ../src/fm-list-view.c:59
-msgid "Type"
-msgstr "አይነት"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
-msgid "Modified"
-msgstr "የተሻሻለው"
-
-#: ../src/fm-list-view.c:600 ../src/fm-abstract-icon-view.c:569
-#: ../src/fm-directory-view.c:547
-msgid "This folder is empty."
-msgstr "ይህ ፎልደር ባዶ ነው"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "እቃዎችን _ማዘጋጃ"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "በተ_ቃራኒ ደንብ"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "በተቃራኒ ደንብ ምልክቶች ማሳያ"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "በ _ስም"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "ምልክቶችን መለያ በስም በረድፎች ውስጥ"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "በ _መጠን"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "ምልክቶችን መለያ በመጠን በረድፎች ውስጥ"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "በ _አይነት"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "ምልክቶችን መለያ በአይነት በረድፎች ውስጥ"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "በተቀየረበት _ቀን"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "ምልክቶችን መለያ በተሻሻሉበት ቀን በረድፎች ውስጥ"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "አንድ ጊዜ ይጫኑ"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: ../src/fm-directory-view.c:1230
-msgid "Invalid filename provided by XDS drag site"
-msgstr ""
-
-#: ../src/fm-directory-view.c:1388
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "አገናኝ መፍጠር አልተቻለም ለ URL \"%s\""
-
-#: ../src/fm-directory-view.c:1844
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "ይጠቀሙ \"%s\" የተመረጠውን እቃ ለመክፈት"
-msgstr[1] "ይጠቀሙ \"%s\" የተመረጡትን እቃዎች ለመክፈት"
-
-#: ../src/fm-directory-view.c:2037
-#, c-format
-msgid "Use \"%s\" as template for new file"
-msgstr ""
-
-#: ../src/fm-directory-view.c:2316
-#, c-format
-msgid "_Open With %s"
-msgstr "_መክፈቻ በ %s"
-
-#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
-msgid "_Open"
-msgstr "_መክፈቻ"
-
-#: ../src/fm-directory-view.c:2338
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "መክፈቻ በ %'d አዲስ _ንዑስ መስኮት"
-
-#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1192
-msgid "Open in New _Tab"
-msgstr "በአዲስ _ንዑስ መስኮት መክፈቻ"
-
-#: ../src/fm-directory-view.c:2347
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "መክፈቻ በ %'d አዲስ _መስኮት"
-
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1198
-msgid "Open in New _Window"
-msgstr "በአዲስ _መስኮት መክፈቻ"
-
-#: ../src/fm-directory-view.c:3792
-msgid "Set as default"
-msgstr "እንደነባር ማዘጋጃ"
-
-#: ../src/fm-directory-view.c:3844
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "የተመረጡትን ፋይሎች በመለጠፊያ ትእዛዝ  ለማንቀሳቀስ በማዘጋጀት ላይ"
-
-#: ../src/fm-directory-view.c:3848
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "የተመረጡትን ፋይሎች በመለጠፊያ ትእዛዝ  ኮፒ እንዲደረጉ በማዘጋጀት ላይ"
-
-#: ../src/fm-directory-view.c:3852
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "ማንቀሳቀሻ ወይንም ኮፒ ማድረጊያ ቀደም ብለው የተመረጡትን ፋይሎች በመቁረጫ ወይንም በመለጠፊያ ትእዛዝ"
-
-#: ../src/fm-directory-view.c:3855
-msgid "Paste Into Folder"
-msgstr "ወደ ፎልደር መለጠፊያ"
-
-#: ../src/fm-directory-view.c:3856
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-
-#: ../src/fm-directory-view.c:3859
-msgid "_Rename..."
-msgstr "_እንደገና መሰየሚያ..."
-
-#: ../src/fm-directory-view.c:3860
-msgid "Rename selected item"
-msgstr "የተመረጠውን እቃ እንደገና መሰየሚያ"
-
-#: ../src/fm-directory-view.c:3863
-msgid "Create New _Folder"
-msgstr "አዲስ _ፎልደር መፍጠሪያ"
-
-#: ../src/fm-directory-view.c:3864
-msgid "Create a new empty folder inside this folder"
-msgstr "በዚህ ፎልደር ውስጥ አዲስ ባዶ ፎልደር መፍጠሪያ"
-
-#: ../src/fm-directory-view.c:3866
-msgid "Create New _File"
-msgstr "አዲስ _ፋይል መፍጠሪያ"
-
-#: ../src/fm-directory-view.c:3868
-msgid "_Empty File"
-msgstr "_ባዶ ፋይል"
-
-#: ../src/fm-directory-view.c:3869
-msgid "Create a new empty file inside this folder"
-msgstr "በዚህ ፎልደር ውስጥ አዲስ ባዶ ፋይል መፍጠሪያ"
-
-#: ../src/fm-directory-view.c:3873
-msgid "Open the selected item"
-msgstr "የተመረጠውን እቃ መክፈቻ"
-
-#: ../src/fm-directory-view.c:3880
-msgid "Open in new Window"
-msgstr "በአዲስ መስኮት መክፈቻ"
-
-#: ../src/fm-directory-view.c:3881
-msgid "Open each selected item in a new window"
-msgstr "እያንዳንዱ የተመረጠውን እቃ በአዲስ መስኮት መክፈቻ"
-
-#: ../src/fm-directory-view.c:3885
-msgid "Open each selected item in a new tab"
-msgstr "እያንዳንዱ የተመረጠውን እቃ በአዲስ ንዑስ መስኮት መክፈቻ"
-
-#: ../src/fm-directory-view.c:3887
-msgid "Open Wit_h"
-msgstr "መክፈቻ _በ"
-
-#: ../src/fm-directory-view.c:3888
-msgid "Choose a program with which to open the selected item"
-msgstr "ለተመረጠውን እቃ መክፈቻ የሚሆን መተግበሪያ ይምረጡ"
-
-#: ../src/fm-directory-view.c:3890
-msgid "Other _Application..."
-msgstr "ሌሎች _መተግበሪያዎች..."
-
-#: ../src/fm-directory-view.c:3891
-msgid "Choose another application with which to open the selected item"
-msgstr "ለተመረጠውን እቃ መክፈቻ የሚሆን ሌላ መተግበሪያ ይምረጡ"
-
-#: ../src/fm-directory-view.c:3894
-msgid "Mo_ve to Trash"
-msgstr "ወደ ቆሻሻ ማን_ቀሳቀሻ"
-
-#: ../src/fm-directory-view.c:3895
-msgid "Move each selected item to the Trash"
-msgstr "እያንዳንዱ የተመረጠውን እቃ ወደ ቆሻሻ ማንቀሳቀሻ"
-
-#: ../src/fm-directory-view.c:3898
-msgid "_Delete Permanently"
-msgstr "በቋሚነት _ማጥፊያ"
-
-#: ../src/fm-directory-view.c:3899
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "እያንዳንዱ የተመረጠውን እቃ ማጥፊያ ወደ ቆሻሻ ሳያንቀሳቅሱ"
-
-#: ../src/fm-directory-view.c:3902
-msgid "_Restore"
-msgstr "_እንደነበር መመለሻ"
-
-#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
-msgid "Select All"
-msgstr "ሁሉንም መምረጫ"
-
-#: ../src/fm-directory-view.c:3910
-msgid "_Properties"
-msgstr "_ባህሪዎች"
-
-#: ../src/fm-directory-view.c:3911
-msgid "View or modify the properties of each selected item"
-msgstr "እያንዳንዱ የተመረጠውን እቃ ባህሪ መመልከቻ ወይንም ማረሚያ"
-
-#: ../src/fm-directory-view.c:4024
-msgid "Set Color:"
-msgstr "ቀለም ማሰናጃ :"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "የማስገቢያ ዘዴዎች"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "የምልክቶች ዳይሬክቶሪ ዝርዝር"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "በምልክት መመልከቻ"
-
-#: ../src/exo-icon-view.c:864
-msgid "Layout mode"
-msgstr "በእቅድ ዘዴ"
-
-#: ../src/exo-icon-view.c:865
-msgid "The layout mode"
-msgstr "የእቅዱ ዘዴ"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -410,31 +140,6 @@ msgstr "_ይህን የመግቢያ ቃል አስታውስ"
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "ተግባሩ ተሰርዟል"
-
-#: ../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "ወደ እዚህ _ማንቀሳቀሻ"
-
-#: ../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "ወደ እዚህ _ኮፒ ማድረጊያ"
-
-#: ../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "ወደ እዚህ _ማገናኛ"
-
-#: ../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "_እንደ መደብ ማሰናጃ"
-
-#: ../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "መሰረዣ"
-
-#: ../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "ፋይሉን መፈጸም አልተቻለም \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -808,33 +513,33 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/gof-file.c:302
+#: ../libcore/gof-file.c:303
 #, c-format
 msgid "link to %s"
 msgstr "አገናኝ ወደ %s"
 
-#: ../libcore/gof-file.c:1748
+#: ../libcore/gof-file.c:1789
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr ""
 
-#: ../libcore/gof-file.c:1786
+#: ../libcore/gof-file.c:1827
 msgid "No Exec field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1806
+#: ../libcore/gof-file.c:1847
 msgid "No URL field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1812
+#: ../libcore/gof-file.c:1853
 msgid "Invalid desktop file"
 msgstr "ዋጋ የሌለው የዴስክቶፕ ፋይል"
 
-#: ../libcore/gof-file.c:2102
+#: ../libcore/gof-file.c:2145
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../libcore/gof-file.c:2122
+#: ../libcore/gof-file.c:2165
 msgid "Toplevel files cannot be renamed"
 msgstr "ከፍተኛ ደረጃ ፋይሎችን እንደገና መሰየም አይቻልም"
 
@@ -1248,13 +953,13 @@ msgstr "በፎልደር ውስጥ ያሉትን ፋይሎች \"%B\" ማጥፋት 
 
 #: ../libcore/marlin-file-operations.c:1601
 #: ../libcore/marlin-file-operations.c:2719
-#: ../libcore/marlin-file-operations.c:3715
+#: ../libcore/marlin-file-operations.c:3713
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "ስህተት ተፈጥሯል የፋይሎች እና የፎልደሮች መረጃ በሚፈለግበት ጊዜ \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1610
-#: ../libcore/marlin-file-operations.c:3724
+#: ../libcore/marlin-file-operations.c:3722
 msgid "_Skip files"
 msgstr "ፋይሎችን _መዝለያ"
 
@@ -1266,7 +971,7 @@ msgstr "ይህን ፎልደር \"%B\" ማጥፋት አይችሉም ምክንያ�
 
 #: ../libcore/marlin-file-operations.c:1634
 #: ../libcore/marlin-file-operations.c:2758
-#: ../libcore/marlin-file-operations.c:3760
+#: ../libcore/marlin-file-operations.c:3758
 msgid "There was an error reading the folder \"%B\"."
 msgstr "ፎልደሩን በማንበብ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
 
@@ -1405,15 +1110,15 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: ../libcore/marlin-file-operations.c:2656
-#: ../libcore/marlin-file-operations.c:3576
-#: ../libcore/marlin-file-operations.c:3707
-#: ../libcore/marlin-file-operations.c:3752
+#: ../libcore/marlin-file-operations.c:3575
+#: ../libcore/marlin-file-operations.c:3705
+#: ../libcore/marlin-file-operations.c:3750
 msgid "Error while copying."
 msgstr "ካፒ በማድረግ ላይ ስህተት ተፈጥሯል"
 
 #: ../libcore/marlin-file-operations.c:2658
-#: ../libcore/marlin-file-operations.c:3705
-#: ../libcore/marlin-file-operations.c:3750
+#: ../libcore/marlin-file-operations.c:3703
+#: ../libcore/marlin-file-operations.c:3748
 msgid "Error while moving."
 msgstr "በማንቀሳቀስ ላይ ስህተት ተፈጥሯል"
 
@@ -1433,281 +1138,289 @@ msgid ""
 "read it."
 msgstr "ይህን ፎልደር \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:2832
+#: ../libcore/marlin-file-operations.c:2831
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "ይህን ፋይል \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:2835
+#: ../libcore/marlin-file-operations.c:2834
 msgid "There was an error getting information about \"%B\"."
 msgstr "ስህተት ተፈጥሯል መረጃ በማግኘት ላይ እንዳለ ስለ \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2935
-#: ../libcore/marlin-file-operations.c:2977
-#: ../libcore/marlin-file-operations.c:3010
-#: ../libcore/marlin-file-operations.c:3040
+#: ../libcore/marlin-file-operations.c:2934
+#: ../libcore/marlin-file-operations.c:2976
+#: ../libcore/marlin-file-operations.c:3009
+#: ../libcore/marlin-file-operations.c:3039
 msgid "Error while copying to \"%B\"."
 msgstr "ስህተት ተፈጥሯል ኮፒ በማድረግ ላይ እንዳለ \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2939
+#: ../libcore/marlin-file-operations.c:2938
 msgid "You do not have permissions to access the destination folder."
 msgstr "መድረሻው ፎልደር ጋር ለመድረስ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:2941
+#: ../libcore/marlin-file-operations.c:2940
 msgid "There was an error getting information about the destination."
 msgstr "ስለ መድረሻው መረጃ በማግኘት ላይ እንዳለ ስህተት ተፈጥሯል"
 
-#: ../libcore/marlin-file-operations.c:2978
+#: ../libcore/marlin-file-operations.c:2977
 msgid "The destination is not a folder."
 msgstr "መድረሻው ፎልደር አይደለም"
 
-#: ../libcore/marlin-file-operations.c:3011
+#: ../libcore/marlin-file-operations.c:3010
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "በመድረሻው ውስጥ በቂ ባዶ ቦታ የለም በቂ ቦታ ለማግኘት ፋይሎች ማስወገድ አለብዎት"
 
-#: ../libcore/marlin-file-operations.c:3013
+#: ../libcore/marlin-file-operations.c:3012
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3041
+#: ../libcore/marlin-file-operations.c:3040
 msgid "The destination is read-only."
 msgstr "መድረሻው ለንባብ - ብቻ ነው"
 
-#: ../libcore/marlin-file-operations.c:3102
+#: ../libcore/marlin-file-operations.c:3101
 msgid "Moving \"%B\" to \"%B\""
 msgstr "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3103
+#: ../libcore/marlin-file-operations.c:3102
 msgid "Copying \"%B\" to \"%B\""
 msgstr "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3107
+#: ../libcore/marlin-file-operations.c:3106
 msgid "Duplicating \"%B\""
 msgstr "በማባዛት ላይ \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3111
+#: ../libcore/marlin-file-operations.c:3110
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3114
+#: ../libcore/marlin-file-operations.c:3113
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3121
+#: ../libcore/marlin-file-operations.c:3120
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3130
+#: ../libcore/marlin-file-operations.c:3129
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3134
+#: ../libcore/marlin-file-operations.c:3133
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3139
+#: ../libcore/marlin-file-operations.c:3138
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3190
+#: ../libcore/marlin-file-operations.c:3189
 #, c-format
 msgid "%S of %S"
 msgstr "%S ከ %S"
 
-#: ../libcore/marlin-file-operations.c:3201
+#: ../libcore/marlin-file-operations.c:3200
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S ከ %S — %T የቀረው (%S/sec)"
 msgstr[1] "%S ከ %S — %T የቀረው (%S/sec)"
 
-#: ../libcore/marlin-file-operations.c:3580
+#: ../libcore/marlin-file-operations.c:3579
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 "ይህን ፎልደር \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም በመድረሻው ላይ ፎልደሩን ለመፍጠር በቂ የሆነ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:3583
+#: ../libcore/marlin-file-operations.c:3582
 msgid "There was an error creating the folder \"%B\"."
 msgstr "ፎልደር በመፍጠር ላይ ስህተት ተፈጥሯል \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3712
+#: ../libcore/marlin-file-operations.c:3710
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 "በፎልደሩ ውስጥ ያሉ ፋይሎችን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ፋይሎቹን ለማየት በቂ የሆነ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:3757
+#: ../libcore/marlin-file-operations.c:3755
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "ፎልደሩን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ለማንበብ ፍቃድ የሎትም"
 
-#: ../libcore/marlin-file-operations.c:3802
-#: ../libcore/marlin-file-operations.c:4503
-#: ../libcore/marlin-file-operations.c:5090
+#: ../libcore/marlin-file-operations.c:3800
+#: ../libcore/marlin-file-operations.c:4501
 msgid "Error while moving \"%B\"."
 msgstr "በማንቀሳቀስ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3803
+#: ../libcore/marlin-file-operations.c:3801
 msgid "Could not remove the source folder."
 msgstr "የፎልደሩን ምንጭ ማስወገድ አይቻልም"
 
-#: ../libcore/marlin-file-operations.c:3888
-#: ../libcore/marlin-file-operations.c:3929
-#: ../libcore/marlin-file-operations.c:4505
-#: ../libcore/marlin-file-operations.c:4576
+#: ../libcore/marlin-file-operations.c:3886
+#: ../libcore/marlin-file-operations.c:3927
+#: ../libcore/marlin-file-operations.c:4503
 msgid "Error while copying \"%B\"."
 msgstr "ኮፒ በማድረግ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3889
+#: ../libcore/marlin-file-operations.c:3887
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "ፋይሉን ከነበረበት ፎልደር ውስጥ ማስወገድ አይችሉም %F."
 
-#: ../libcore/marlin-file-operations.c:3930
+#: ../libcore/marlin-file-operations.c:3928
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "የነበረውን ፋይል ማስወገድ አይችሉም %F."
 
-#: ../libcore/marlin-file-operations.c:4259
-#: ../libcore/marlin-file-operations.c:4930
+#: ../libcore/marlin-file-operations.c:4257
+#: ../libcore/marlin-file-operations.c:4928
 msgid "You cannot move a folder into itself."
 msgstr "ፎልደሩን ወደራሱ ማንቀሳቀስ አይችሉም"
 
-#: ../libcore/marlin-file-operations.c:4260
-#: ../libcore/marlin-file-operations.c:4931
+#: ../libcore/marlin-file-operations.c:4258
+#: ../libcore/marlin-file-operations.c:4929
 msgid "You cannot copy a folder into itself."
 msgstr "ፎልደሩን ወደራሱ ኮፒ ማድረግ አይችሉም"
 
-#: ../libcore/marlin-file-operations.c:4261
-#: ../libcore/marlin-file-operations.c:4932
+#: ../libcore/marlin-file-operations.c:4259
+#: ../libcore/marlin-file-operations.c:4930
 msgid "The destination folder is inside the source folder."
 msgstr "መደረሻው ፎልደር በፎልደሩ ምንጭ ውስጥ ነው"
 
-#: ../libcore/marlin-file-operations.c:4292
+#: ../libcore/marlin-file-operations.c:4290
 msgid "You cannot move a file over itself."
 msgstr "ፋይሉን ወደራሱ ማንቀሳቀስ አይችሉም"
 
-#: ../libcore/marlin-file-operations.c:4293
+#: ../libcore/marlin-file-operations.c:4291
 msgid "You cannot copy a file over itself."
 msgstr "ፋይሉን ወደራሱ ኮፒ ማድረግ አይችሉም"
 
-#: ../libcore/marlin-file-operations.c:4294
+#: ../libcore/marlin-file-operations.c:4292
 msgid "The source file would be overwritten by the destination."
 msgstr "በመድረሻው ላይ የፋይሉ ምንጭ ተደርቦ ይጻፋል"
 
-#: ../libcore/marlin-file-operations.c:4507
+#: ../libcore/marlin-file-operations.c:4505
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "በዚህ ስም ቀደም ብሎ የነበረውን ፋይል ማጥፋት አልተቻለም ከ %F."
 
-#: ../libcore/marlin-file-operations.c:4577
+#: ../libcore/marlin-file-operations.c:4574
 #, c-format
-msgid "There was an error copying the file into %F."
-msgstr "ስህተት ተፈጥሯል ፋይሉ ኮፒ ሲደረግ ወደ %F."
+msgid "There was an Error while copying \"%s\"."
+msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4804
+#: ../libcore/marlin-file-operations.c:4575
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
 msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
 
-#: ../libcore/marlin-file-operations.c:4830
+#: ../libcore/marlin-file-operations.c:4828
 msgid "Preparing to move to \"%B\""
 msgstr "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ \"%B\""
 
-#: ../libcore/marlin-file-operations.c:4842
+#: ../libcore/marlin-file-operations.c:4840
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
 msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
 
-#: ../libcore/marlin-file-operations.c:5091
+#: ../libcore/marlin-file-operations.c:5088
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:5089
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "ስህተት ተፈጥሯል ፋይሉን በማንቀሳቀስ ላይ እንዳለ %F."
 
-#: ../libcore/marlin-file-operations.c:5354
+#: ../libcore/marlin-file-operations.c:5352
 msgid "Moving Files"
 msgstr "ፋይሎችን በማንቀሳቀስ ላይ"
 
-#: ../libcore/marlin-file-operations.c:5384
+#: ../libcore/marlin-file-operations.c:5381
 msgid "Creating links in \"%B\""
 msgstr "አገናኞች በመፍጠር ላይ ወደ \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5395
+#: ../libcore/marlin-file-operations.c:5392
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
 msgstr[1] "አገናኞች በመፍጠር ላይ ወደ %&#x27;d ፋይሎች"
 
-#: ../libcore/marlin-file-operations.c:5530
+#: ../libcore/marlin-file-operations.c:5526
 msgid "Error while creating link to %B."
 msgstr "ስህተት ተፈጥሯል አገናኝ በመፍጠር ላይ %B."
 
-#: ../libcore/marlin-file-operations.c:5532
+#: ../libcore/marlin-file-operations.c:5528
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5535
+#: ../libcore/marlin-file-operations.c:5531
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5538
+#: ../libcore/marlin-file-operations.c:5534
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5866
-#: ../libcore/marlin-file-operations.c:5869
+#: ../libcore/marlin-file-operations.c:5862
+#: ../libcore/marlin-file-operations.c:5865
 msgid "Setting permissions"
 msgstr "ፍቃዶች በማሰናዳት ላይ"
 
-#: ../libcore/marlin-file-operations.c:6120
+#: ../libcore/marlin-file-operations.c:6116
 msgid "untitled folder"
 msgstr "ያልተሰየመ ፎልደር"
 
-#: ../libcore/marlin-file-operations.c:6128
+#: ../libcore/marlin-file-operations.c:6124
 msgid "new file"
 msgstr "አዲስ ፋይል"
 
-#: ../libcore/marlin-file-operations.c:6299
+#: ../libcore/marlin-file-operations.c:6295
 msgid "Error while creating directory %B."
 msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
 
-#: ../libcore/marlin-file-operations.c:6301
+#: ../libcore/marlin-file-operations.c:6297
 msgid "Error while creating file %B."
 msgstr "ፋይል በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
 
-#: ../libcore/marlin-file-operations.c:6303
+#: ../libcore/marlin-file-operations.c:6299
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %F."
 
-#: ../libcore/marlin-file-operations.c:6613
+#: ../libcore/marlin-file-operations.c:6609
 msgid "Emptying the trash"
 msgstr "ቆሻሻውን ባዶ ማድረጊያ"
 
-#: ../libcore/marlin-file-operations.c:6621
+#: ../libcore/marlin-file-operations.c:6617
 msgid "Emptying Trash"
 msgstr "ቆሻሻ ማጠራቀሚያውን ባዶ በማድረግ ላይ"
 
@@ -1720,47 +1433,66 @@ msgstr "ዋናውን አካባቢ መወሰን አልተቻለም ከ \"%s\" "
 msgid "The item cannot be restored from trash"
 msgstr "ከቆሻሻ ማጠራቀሚያው ውስጥ እቃውን እንደነበር ማድረግ አይቻልም"
 
-#: ../src/View/LocationBar.vala:123
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "የፋይል ስም"
+
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/directory_view_popup.ui:120
+msgid "Size"
+msgstr "መጠን"
+
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:300
+#: ../src/View/directory_view_popup.ui:115
+msgid "Type"
+msgstr "አይነት"
+
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:457
+msgid "Modified"
+msgstr "የተሻሻለው"
+
+#: ../src/View/LocationBar.vala:132
 msgid "AFP"
 msgstr "AFP"
 
-#: ../src/View/LocationBar.vala:124
+#: ../src/View/LocationBar.vala:133
 msgid "DAV"
 msgstr "DAV"
 
-#: ../src/View/LocationBar.vala:125
+#: ../src/View/LocationBar.vala:134
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../src/View/LocationBar.vala:126
+#: ../src/View/LocationBar.vala:135
 msgid "FTP"
 msgstr "FTP"
 
-#: ../src/View/LocationBar.vala:127 ../src/View/Sidebar.vala:562
+#: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
 msgstr "ኔትዎርክ"
 
-#: ../src/View/LocationBar.vala:128
+#: ../src/View/LocationBar.vala:137
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../src/View/LocationBar.vala:129
+#: ../src/View/LocationBar.vala:138
 msgid "SMB"
 msgstr "SMB"
 
-#: ../src/View/LocationBar.vala:130 ../src/View/Sidebar.vala:429
+#: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
 msgstr "ቆሻሻ"
 
-#: ../src/View/LocationBar.vala:329
+#: ../src/View/LocationBar.vala:331
 msgid "Open in New Tab"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: ../src/View/LocationBar.vala:336
+#: ../src/View/LocationBar.vala:338
 msgid "Open with"
 msgstr "መክፈቻ በ"
 
-#: ../src/View/LocationBar.vala:367
+#: ../src/View/LocationBar.vala:369
 msgid "Other Application .."
 msgstr "ሌሎች መተግበሪያዎች"
 
@@ -1768,245 +1500,21 @@ msgstr "ሌሎች መተግበሪያዎች"
 msgid "A simple and powerful file manager"
 msgstr "ቀላል እና ህይለኛ የ ፋይል አስተዳዳሪ"
 
-#: ../src/View/Resources.vala:28
+#: ../src/View/Resources.vala:29
 msgid "Launchpad Translators"
 msgstr "የ ላውንች ፓድ ተርጓሚዎች"
 
-#: ../src/View/Window.vala:138
+#: ../src/View/Window.vala:175
 msgid "Files isn't your default file manager."
 msgstr ""
 
-#: ../src/View/Window.vala:144
+#: ../src/View/Window.vala:181
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:149
+#: ../src/View/Window.vala:187
 msgid "Ignore"
 msgstr "መተው"
-
-#: ../src/View/Window.vala:432
-msgid "Undo"
-msgstr "መተው"
-
-#: ../src/View/Window.vala:433 ../src/View/Window.vala:761
-msgid "Undo the last action"
-msgstr "የመጨረሻውን ተግባር መተው"
-
-#: ../src/View/Window.vala:442
-msgid "Redo"
-msgstr "እንደገና መስሪያ"
-
-#: ../src/View/Window.vala:443 ../src/View/Window.vala:764
-msgid "Redo the last action"
-msgstr "የመጨረሻውን ተግባር እንደገና መስሪያ"
-
-#: ../src/View/Window.vala:739
-msgid "_File"
-msgstr "_ፋይል"
-
-#: ../src/View/Window.vala:740
-msgid "_Edit"
-msgstr "_ማረሚያ"
-
-#: ../src/View/Window.vala:741
-msgid "_View"
-msgstr "_መመልከቻ"
-
-#: ../src/View/Window.vala:742
-msgid "_Go"
-msgstr "_መሄጃ"
-
-#: ../src/View/Window.vala:743
-msgid "_Help"
-msgstr "_እርዳታ"
-
-#: ../src/View/Window.vala:745 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "አዲስ _መስኮት"
-
-#: ../src/View/Window.vala:746
-msgid "Open another Files window for the displayed location"
-msgstr "ለሚታየው አካባቢ አዲስ የፋይሎች መስኮት መክፈቻ"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "አዲስ _ንዑስ መስኮት"
-
-#: ../src/View/Window.vala:750
-msgid "Open another tab for the displayed location"
-msgstr "ለሚታየው አካባቢ አዲስ ንዑስ መስኮት መክፈቻ"
-
-#: ../src/View/Window.vala:754
-msgid "_Close"
-msgstr "_መዝጊያ"
-
-#: ../src/View/Window.vala:755
-msgid "Close this folder"
-msgstr "ይህን ፎልደር መዝጊያ"
-
-#: ../src/View/Window.vala:760
-msgid "_Undo"
-msgstr "_መተው"
-
-#: ../src/View/Window.vala:763
-msgid "_Redo"
-msgstr "_እንደገና መስሪያ"
-
-#: ../src/View/Window.vala:766
-msgid "_Find"
-msgstr ""
-
-#: ../src/View/Window.vala:767
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:769
-msgid "Open _Parent"
-msgstr "ወላጁን _መክፈቻ"
-
-#: ../src/View/Window.vala:770
-msgid "Open the parent folder"
-msgstr "ወላጅ ፎልደሩን መክፈቻ"
-
-#: ../src/View/Window.vala:772
-msgid "_Back"
-msgstr "_ወደ ኋላ"
-
-#: ../src/View/Window.vala:773
-msgid "Go to the previous visited location"
-msgstr "ቀደም ብሎ ወደ ተጎበኘው አካባቢ መሄጃ"
-
-#: ../src/View/Window.vala:776
-msgid "_Forward"
-msgstr "_ወደ ፊት"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the next visited location"
-msgstr "ቀጥሎ ወደ ተጎበኘው አካባቢ መሄጃ"
-
-#: ../src/View/Window.vala:779
-msgid "_Reload"
-msgstr "_እንደገና መጫኛ"
-
-#: ../src/View/Window.vala:780
-msgid "Reload the current location"
-msgstr "የአሁኑን አካባቢ እንደገና መጫኛ"
-
-#: ../src/View/Window.vala:783
-msgid "_Home Folder"
-msgstr "_የቤት ፎልደር"
-
-#: ../src/View/Window.vala:784 ../src/View/Sidebar.vala:409
-msgid "Open your personal folder"
-msgstr "የግል ፎልደር መክፈቻ"
-
-#: ../src/View/Window.vala:787
-msgid "_Trash"
-msgstr "_ቆሻሻ"
-
-#: ../src/View/Window.vala:788
-msgid "Open your personal trash folder"
-msgstr "የእርስዎን የቆሻሻ ፎልደር መክፈቻ"
-
-#: ../src/View/Window.vala:791
-msgid "_Network"
-msgstr "_ኔትዎርክ"
-
-#: ../src/View/Window.vala:792
-msgid "Browse bookmarked and local network locations"
-msgstr "የኔትዎርክ አካባቢዎችን እና ምልክት የተደረገበትን መቃኛ"
-
-#: ../src/View/Window.vala:795
-msgid "Zoom _In"
-msgstr "በቅርብ _ማሳያ"
-
-#: ../src/View/Window.vala:796
-msgid "Increase the view size"
-msgstr "የመመልከቻውን መጠን መጨመሪያ"
-
-#: ../src/View/Window.vala:807
-msgid "Zoom _Out"
-msgstr "በርቀት ማሳያ"
-
-#: ../src/View/Window.vala:808
-msgid "Decrease the view size"
-msgstr "የመመልከቻውን መጠን ማሳነሻ"
-
-#: ../src/View/Window.vala:815
-msgid "Normal Si_ze"
-msgstr "መደበኛ መጠ_ን"
-
-#: ../src/View/Window.vala:816
-msgid "Use the normal view size"
-msgstr "መደበኛ መመልከቻውን መጠን መጠቀሚያ"
-
-#: ../src/View/Window.vala:819
-msgid "Next Tab"
-msgstr "የሚቀጥለው ንዑስ መስኮት"
-
-#: ../src/View/Window.vala:823
-msgid "Previous Tab"
-msgstr "ቀደም ያለው ንዑስ መስኮት"
-
-#: ../src/View/Window.vala:827
-msgid "Connect to _Server..."
-msgstr "ወደ _ሰርቨር መገናኛ..."
-
-#: ../src/View/Window.vala:828
-msgid "Connect to a remote computer or shared disk"
-msgstr "መገናኛ በርቀት ካለ ኮምፒዩተር ወይንም ዲስክ መካፈያ ጋር"
-
-#: ../src/View/Window.vala:831
-msgid "_About"
-msgstr "_ስለ"
-
-#: ../src/View/Window.vala:832
-msgid "Display credits"
-msgstr "ምስጋናዎችን ማሳያ"
-
-#: ../src/View/Window.vala:835
-msgid "Report a Problem..."
-msgstr "ችግሩን ማመልከቻ..."
-
-#: ../src/View/Window.vala:836
-msgid "File a bug on Launchpad"
-msgstr "ችግሮችን ለ Launchpad ያሳውቁ"
-
-#: ../src/View/Window.vala:839
-msgid "Get Help Online..."
-msgstr "በመስመር ላይ እርዳታ ያግኙ..."
-
-#: ../src/View/Window.vala:843
-msgid "Translate This Application..."
-msgstr "ይህን መተግበሪያ ይተርጉሙ..."
-
-#: ../src/View/Window.vala:852
-msgid "Show _Hidden Files"
-msgstr "_የተደበቁ ፋይሎችን ማሳያ"
-
-#: ../src/View/Window.vala:853
-msgid "Toggle the display of hidden files in the current window"
-msgstr "ለአሁኑ መስኮት የተደበቁ ፋይሎችን ማሳያ መቀያየሪያ"
-
-#: ../src/View/Window.vala:857
-msgid "_Places"
-msgstr "_ቦታዎች"
-
-#: ../src/View/Window.vala:858
-msgid "Change the visibility of this window's side pane"
-msgstr "የዚህን መስኮት የጎን ክፍል መመልከቻ መቀየሪያ"
-
-#: ../src/View/Window.vala:866
-msgid "Icon"
-msgstr "ምልክት"
-
-#: ../src/View/Window.vala:869
-msgid "List"
-msgstr "ዝርዝር"
-
-#: ../src/View/Window.vala:872
-msgid "Columns"
-msgstr "አምዶች"
 
 #: ../src/View/Sidebar.vala:385
 msgid "Personal"
@@ -2016,9 +1524,13 @@ msgstr "የግል"
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:143
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:231
 msgid "Home"
 msgstr "ቤት"
+
+#: ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "የግል ፎልደር መክፈቻ"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
@@ -2032,7 +1544,7 @@ msgstr "አካላቶች"
 msgid "Your local partitions and devices"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:145
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
 msgid "File System"
 msgstr "የፋይል ስርአት"
 
@@ -2064,11 +1576,19 @@ msgstr "ማስጀመር አልተቻለም %s"
 msgid "Open"
 msgstr ""
 
+#: ../src/View/Sidebar.vala:1192
+msgid "Open in New _Tab"
+msgstr "በአዲስ _ንዑስ መስኮት መክፈቻ"
+
+#: ../src/View/Sidebar.vala:1198
+msgid "Open in New _Window"
+msgstr "በአዲስ _መስኮት መክፈቻ"
+
 #: ../src/View/Sidebar.vala:1206
 msgid "Remove"
 msgstr "ማስወገጃ"
 
-#: ../src/View/Sidebar.vala:1214
+#: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
 msgstr ""
 
@@ -2100,71 +1620,111 @@ msgstr ""
 msgid "No Results Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:149
+#: ../src/View/ViewContainer.vala:244
 msgid "This folder does not exist"
 msgstr "ይህ ፎልደር አልነበረም"
 
-#: ../src/View/ViewContainer.vala:154
+#: ../src/View/ViewContainer.vala:249
 msgid "(as Administrator)"
 msgstr "(እንደ አስተዳዳሪ)"
 
-#: ../src/View/ViewContainer.vala:173
+#: ../src/View/ViewContainer.vala:263
 msgid "This does not belong to you."
 msgstr "ይህ የ እርስዎ አይደለም"
 
-#: ../src/View/ViewContainer.vala:174
+#: ../src/View/ViewContainer.vala:264
 msgid "You don't have permission to view this folder."
 msgstr "ይህን ፎልደር ለማየት ፍቃድ የሎትም"
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
+#: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
 msgstr "እንደ መጋጠሚያ መመልከቻ"
 
-#: ../src/View/Chrome/ViewSwicher.vala:78
+#: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
 msgstr "እንደ ዝርዝር መመልከቻ"
 
-#: ../src/View/Chrome/ViewSwicher.vala:81
+#: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "እንደ አምዶች መመልከቻ"
 
-#: ../src/View/Chrome/TopMenu.vala:34
+#: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
 msgstr ""
 
-#: ../src/View/Chrome/TopMenu.vala:39
+#: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:136
+#: ../src/View/AbstractDirectoryView.vala:514
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:902
+msgid "Select an application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:904
+msgid "Set as default"
+msgstr "እንደነባር ማዘጋጃ"
+
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Invalid file name provided"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1645
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1650
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1655
+msgid "Open in %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1663
+msgid "Open in"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1709
+msgid "Other Application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1933
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2374
+msgid "%s is not a valid file name"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
 msgstr "%u ፎልደሮች"
 
-#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
 msgid " and %u other item (%s) selected"
 msgstr " እና %u ሌሎች እቃዎች (%s) ተመርጠዋል"
 
-#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
+#: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
 msgid " and %u other items (%s) selected"
 msgstr " እና %u ሌሎች እቃዎች (%s) የተመረጡት"
 
-#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
+#: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
 msgid " selected"
 msgstr " የተመረጠው"
 
-#: ../src/View/OverlayBar.vala:148
+#: ../src/View/OverlayBar.vala:157
 msgid "%u folder"
 msgstr "%u ፎልደር"
 
-#: ../src/View/OverlayBar.vala:160
+#: ../src/View/OverlayBar.vala:165
 msgid "%u items selected (%s)"
 msgstr "%u የተመረጡት እቃዎች (%s)"
 
@@ -2194,143 +1754,189 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/PropertiesWindow.vala:85
+#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
 msgid "Properties"
 msgstr "ባህሪዎች"
 
-#: ../src/View/PropertiesWindow.vala:141
+#: ../src/View/PropertiesWindow.vala:145
 msgid "General"
 msgstr "ባጠቃላይ"
 
-#: ../src/View/PropertiesWindow.vala:149
+#: ../src/View/PropertiesWindow.vala:153
 msgid "More"
 msgstr "ተጨማሪ"
 
-#: ../src/View/PropertiesWindow.vala:168
+#: ../src/View/PropertiesWindow.vala:172
 msgid "Preview"
 msgstr "ቅድመ እይታ"
 
-#: ../src/View/PropertiesWindow.vala:176
+#: ../src/View/PropertiesWindow.vala:180
 msgid "Close"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:218
+msgid "file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:220
+msgid "files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual size could be larger, "
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "could not be read due to permissions or other errors."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:251
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
 msgstr "%u የተመረጡት እቃዎች"
 
-#: ../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr "በ ማስላት ላይ መጠኑን…"
-
-#: ../src/View/PropertiesWindow.vala:405
+#: ../src/View/PropertiesWindow.vala:455
 msgid "Created"
 msgstr "የተፈጠረው"
 
-#: ../src/View/PropertiesWindow.vala:410
+#: ../src/View/PropertiesWindow.vala:460
 msgid "Last Access"
 msgstr "መጨረሻ የተደረሰበት"
 
-#: ../src/View/PropertiesWindow.vala:416
+#: ../src/View/PropertiesWindow.vala:466
 msgid "Deleted"
 msgstr "የተሰረዘ"
 
-#: ../src/View/PropertiesWindow.vala:421
+#: ../src/View/PropertiesWindow.vala:471
 msgid "MimeType"
 msgstr "MimeType"
 
-#: ../src/View/PropertiesWindow.vala:429
+#: ../src/View/PropertiesWindow.vala:479
 msgid "MimeTypes"
 msgstr "MimeTypes"
 
-#: ../src/View/PropertiesWindow.vala:449
+#: ../src/View/PropertiesWindow.vala:499
 msgid "Location"
 msgstr "አካባቢ"
 
-#: ../src/View/PropertiesWindow.vala:452
+#: ../src/View/PropertiesWindow.vala:502
 msgid "Target"
 msgstr "ኢላማው"
 
-#: ../src/View/PropertiesWindow.vala:458
+#: ../src/View/PropertiesWindow.vala:508
 msgid "Origin Location"
 msgstr "ዋናው አካባቢ"
 
-#: ../src/View/PropertiesWindow.vala:468
+#: ../src/View/PropertiesWindow.vala:536
 msgid "Info:"
 msgstr "መረጃ :"
 
-#: ../src/View/PropertiesWindow.vala:504
+#: ../src/View/PropertiesWindow.vala:576
 msgid "Other application..."
 msgstr "ሌሎች መተግበሪያዎች..."
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:600
 msgid "Open with:"
 msgstr "መክፈቻ በ :"
 
-#: ../src/View/PropertiesWindow.vala:548
+#: ../src/View/PropertiesWindow.vala:620
 msgid "Usage:"
 msgstr "አጠቃቀም :"
 
-#: ../src/View/PropertiesWindow.vala:553
+#: ../src/View/PropertiesWindow.vala:625
 msgid "Device usage:"
 msgstr "የአካሎች አጠቃቀም :"
 
-#: ../src/View/PropertiesWindow.vala:560
+#: ../src/View/PropertiesWindow.vala:632
 msgid "%s free of %s (%d%% used)"
 msgstr "%s ነፃ ከ %s (%d%% የተጠቀሙት)"
 
-#: ../src/View/PropertiesWindow.vala:699
+#: ../src/View/PropertiesWindow.vala:771
 msgid "Read"
 msgstr "ያንብቡ"
 
-#: ../src/View/PropertiesWindow.vala:704
+#: ../src/View/PropertiesWindow.vala:776
 msgid "Write"
 msgstr "መጻፊያ"
 
-#: ../src/View/PropertiesWindow.vala:709
+#: ../src/View/PropertiesWindow.vala:781
 msgid "Execute"
 msgstr "መፈጸሚያ"
 
-#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
+#: ../src/View/PropertiesWindow.vala:994
+#: ../src/View/PropertiesWindow.vala:1007
 msgid "Owner"
 msgstr "ባለቤት"
 
-#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
+#: ../src/View/PropertiesWindow.vala:999
+#: ../src/View/PropertiesWindow.vala:1011
 msgid "Group"
 msgstr "ቡድን"
 
-#: ../src/View/PropertiesWindow.vala:943
+#: ../src/View/PropertiesWindow.vala:1015
 msgid "Everyone"
 msgstr "ሁሉም"
 
-#: ../src/View/PropertiesWindow.vala:1202
+#: ../src/View/PropertiesWindow.vala:1274
 msgid "Select an application to open "
 msgstr "መተግበሪያ ይምረጡ ለመክፈት "
 
-#: ../src/Application.vala:137
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "ይህ ፎልደር ባዶ ነው"
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr ""
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr ""
+
+#: ../src/DndHandler.vala:97
+msgid "Move Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:98
+msgid "Copy Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:99
+msgid "Link Here"
+msgstr ""
+
+#: ../src/DndHandler.vala:102
+msgid "Cancel"
+msgstr "መሰረዣ"
+
+#: ../src/Application.vala:139
 msgid "Show the version of the program."
 msgstr "የመተግበሪያውን እትም ማሳያ"
 
-#: ../src/Application.vala:139
+#: ../src/Application.vala:141
 msgid "Open uri(s) in new tab"
 msgstr "መክፈቻ uri(s) በአዲስ ንዑስ መስኮት"
 
-#: ../src/Application.vala:141
+#: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
 msgstr ""
 
-#: ../src/Application.vala:143
+#: ../src/Application.vala:145
 msgid "Quit Files."
 msgstr "ፋይሎች መዝጊያ"
 
-#: ../src/Application.vala:145
+#: ../src/Application.vala:147
 msgid "Enable debug logging"
 msgstr ""
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:150
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:151
+#: ../src/Application.vala:153
 msgid ""
 "\n"
 "\n"
@@ -2340,7 +1946,7 @@ msgstr ""
 "\n"
 "በፋይል አስተዳዳሪ የፋይል ስርአቱን መቃኛ"
 
-#: ../src/Application.vala:178
+#: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -2351,6 +1957,14 @@ msgstr "ፋይሎችን መቃኛ"
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "የፋይል አስተዳዳሪ"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "አዲስ _ንዑስ መስኮት"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "አዲስ _መስኮት"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -2391,23 +2005,95 @@ msgstr "የኮፒ ንግግር ማሳያ"
 msgid "Cancel All In-progress Actions"
 msgstr "ሁሉንም በሂደት - ላይ ያሉ ተግባሮችን መሰረዣ"
 
-#: ../libwidgets/LocationBar.vala:284
+#: ../libwidgets/LocationBar.vala:290
 msgid "Go to %s"
 msgstr "መሄጃ ወደ %s"
 
 #: ../plugins/network-places/plugin.vala:23
-#: ../plugins/network-places/plugin.vala:48
+#: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
 msgstr ""
 
-#: ../plugins/network-places/plugin.vala:48
+#: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"
 msgstr ""
 
-#: ../plugins/pantheon-files-trash/plugin.vala:38
+#: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
 
-#: ../plugins/pantheon-files-trash/plugin.vala:39
+#: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:9
+msgid "Delete permanently"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:23
+msgid "Move to Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:30
+msgid "New"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:32
+msgid "Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:37
+msgid "Empty File"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:46
+msgid "Show Hidden Files"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:53
+msgid "New Tab"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:63
+msgid "Terminal"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:78
+msgid "Bookmark"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:85
+msgid "Paste"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:92
+msgid "Cut"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:96
+msgid "Copy"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:100
+msgid "Paste into Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:107
+msgid "Sort by"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:110
+msgid "Name"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:125
+msgid "Date"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:132
+msgid "Reversed Order"
 msgstr ""
