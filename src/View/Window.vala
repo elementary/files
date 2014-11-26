@@ -425,7 +425,7 @@ namespace Marlin.View {
                 top_menu.location_bar.enter_search_mode (true, true);
             else
                 top_menu.location_bar.enter_search_mode ();
-                    
+
         }
 
         private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
