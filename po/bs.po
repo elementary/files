@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-14 13:03+0000\n"
+"PO-Revision-Date: 2014-11-26 22:45+0000\n"
 "Last-Translator: Coa_brate <aleksandar.todorovic@mail.ru>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-11-27 07:19+0000\n"
+"X-Generator: Launchpad (build 17261)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -25,179 +25,181 @@ msgstr "Nema ništa u clipboard-u da nalijepim"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "Javni FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (sa prijavom)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "Dijeljeni windows direktorij"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Sigurni WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "Povezivanje..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Ne mogu da učitam spisak podržanih metoda sa servera.\n"
+"Proverite da li je Gvfs ispravno instaliran."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Ne mogu da otvorim direktorij „%s“ u „%s“."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Ne mogu da nađem server na „%s“."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "Pokušaj ponovo"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Provjerite vaše podatke za ovaj nalog."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "Nastavi"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr ""
+msgstr "_Poveži se"
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr ""
+msgstr "Poveži se na server"
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr ""
+msgstr "Detalji servera"
 
 #: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr ""
+msgstr "_Server:"
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr ""
+msgstr "_Tip:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr ""
+msgstr "Po_dijeli:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr ""
+msgstr "_Direktorij:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr ""
+msgstr "Korisnički detalji"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Ime domena:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "_Korisničko ime:"
 
 #: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr ""
+msgstr "_Lozinka:"
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Zapamti ovu lozinku"
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Operacija otkazana"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Izbriši %d kopiranih stavki"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #: ../libcore/marlin-undostack-manager.c:1215
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Obriši '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Obriši %d dupliciranih stavki"
 
 #: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Premjesti %d stavki nazad u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Premjesti '%s' nazad u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Preimenuj '%s' u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1255
 #: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Vrati %d stavki iz smeća"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Vrati '%s' u '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Premjesti %d stavki nazad u smeću"
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Premjesti '%s' nazad u smeće"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Izbriši linkove ka %d stavki"
 
 #: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
