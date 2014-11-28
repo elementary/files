@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-26 16:05+0000\n"
+"PO-Revision-Date: 2014-11-27 18:22+0000\n"
 "Last-Translator: Kristófer Reykjalín Þorláksson <kristoferrt@gmail.com>\n"
 "Language-Team: Icelandic <is@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-27 07:19+0000\n"
+"X-Launchpad-Export-Date: 2014-11-28 07:02+0000\n"
 "X-Generator: Launchpad (build 17261)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -44,7 +44,7 @@ msgstr "Windows deilimappa"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
@@ -59,6 +59,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Get ekki hlaðið inn lista með studdum þjónasamskiptum.\n"
+"Vinsamlegast athugið uppsetningu gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -76,7 +78,7 @@ msgstr "Reyndu aftur"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Vinsamlegast athugaðu notendaupplýsingarnar þínar."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -105,39 +107,39 @@ msgstr "_Gátt:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr ""
+msgstr "_Tegund:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr ""
+msgstr "S_ameign:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr ""
+msgstr "_Mappa:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr ""
+msgstr "Nánar um notanda"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Heiti léns:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "_Notandanafn:"
 
 #: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr ""
+msgstr "Lykil_orð:"
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Muna þetta lykilorð"
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Hætt var við aðgerð"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -149,7 +151,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Eyða '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
@@ -164,13 +166,13 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Færa '%s' aftur í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Endurnefna '%s' sem '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1255
 #: ../libcore/marlin-undostack-manager.c:1450
@@ -181,7 +183,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Endurheimta '%s' í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
@@ -191,7 +193,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Færa '%s' aftur í ruslið"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -211,7 +213,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Endurheimta upphaflegar heimildir fyrir '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
@@ -221,7 +223,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Endurheimta eiganda '%s' sem '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1365
 #, c-format
@@ -231,7 +233,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Afrita '%s' í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
@@ -241,22 +243,22 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Tvírit af '%s' í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Færa %d hluti í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Færa '%s' í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Búa til nýja skrá '%s' út frá sniðmáti "
 
 #: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
@@ -266,22 +268,22 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Búa til nýja möppu '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Færa %d hluti í ruslið"
 
 #: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Færa '%s' í ruslið"
 
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Endurheimta '%s' úr ruslinu"
 
 #: ../libcore/marlin-undostack-manager.c:1462
 #, c-format
@@ -291,7 +293,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Búa til tengil í '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
