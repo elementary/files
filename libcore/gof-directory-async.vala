@@ -162,6 +162,7 @@ public class GOF.Directory.Async : Object {
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
+//message ("file loaded 1");
                         file_loaded (gof);
                     }
                 }
@@ -186,6 +187,7 @@ public class GOF.Directory.Async : Object {
                     if (track_longest_name)
                         update_longest_file_name (gof);
 
+//message ("file loaded 2");
                     file_loaded (gof);
                 }
             }
@@ -204,7 +206,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public async void mount_mountable () throws Error {
-        debug ("mount_mountable %s", file.uri);
+        //message ("mount_mountable %s", file.uri);
 
         /* TODO pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
@@ -226,6 +228,7 @@ public class GOF.Directory.Async : Object {
         debug ("list directory %s", file.uri);
 
         try {
+//message ("gio_attrs is %s", gio_attrs);
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
             while (state == State.LOADING) {
                 var files = yield e.next_files_async (200, 0, cancellable);
@@ -236,11 +239,21 @@ public class GOF.Directory.Async : Object {
                 bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
 
                 foreach (var file_info in files) {
-                    GLib.File loc = location.get_child ((string) file_info.get_name ());
+//message ("file_info display name is %s", file_info.get_display_name ());
+//message ("file_info  name is %s", file_info.get_name ());
+//message ("location uri is %s", location.get_uri ());
+                    /* The following line does not work properly for network files for some reason */
+                    //GLib.File loc = location.get_child_for_display_name (file_info.get_display_name ());
+
+                    /* Construct a uri to create a GFile from */
+                    string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
+                    GLib.File loc = GLib.File.new_for_uri (uri);
                     GOF.File gof = GOF.File.cache_lookup (loc);
 
-                    if (gof == null)
+                    if (gof == null) {
+//message ("Creating new gof file location %s", loc.get_uri ());
                         gof = new GOF.File (loc, location);
+                    }
 
                     gof.info = file_info;
                     gof.update ();
@@ -251,6 +264,7 @@ public class GOF.Directory.Async : Object {
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
+//message ("file loaded 3");
                         file_loaded (gof);
                     }
 
@@ -325,6 +339,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
+//message ("add and refresh %s", gof.uri);
         if (gof.is_gone)
             return;
 
@@ -357,6 +372,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
+//message ("notify file added %s", gof.uri);
         file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
@@ -463,6 +479,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public static void notify_files_added (List<GLib.File> files) {
+//message ("static nofity files added");
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);

@@ -287,7 +287,7 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo app_info);
+        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);

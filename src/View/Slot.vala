@@ -64,8 +64,10 @@ namespace Marlin.View {
 
         private void connect_slot_signals () {
             active.connect (() => {
-                ctab.refresh_slot_info (this);
-                is_active = true;
+                if (!is_active) {
+                    ctab.refresh_slot_info (this);
+                    is_active = true;
+                }
                 dir_view.grab_focus ();
             });
 
@@ -112,6 +114,7 @@ namespace Marlin.View {
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+message ("SLOT on_path_change_req %s", loc.get_uri ());
             if (flag == 0) {
                 if (dir_view is FM.ColumnView)
                     miller_slot_request (loc, make_root);
@@ -155,7 +158,7 @@ namespace Marlin.View {
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
-
+message ("SLot user path change request %s", loc.get_uri ());
             if (!location.equal (loc)) {
                 var old_dir = directory;
                 set_up_directory (loc);

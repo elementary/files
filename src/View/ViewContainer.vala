@@ -146,6 +146,7 @@ namespace Marlin.View {
         }
 
         public void user_path_change_request (GLib.File loc) {
+message ("VC path change request %s", loc.get_uri ());
             view.user_path_change_request (loc);
         }
 
@@ -165,6 +166,7 @@ namespace Marlin.View {
         }
 
         public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
+message ("slot path changed %s", loc.get_uri ());
             /* automagicly enable icon view for icons keypath */
             if (allow_mode_change &&
                 get_current_slot ().directory.uri_contain_keypath_icons &&
@@ -176,9 +178,26 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
+message ("set up current slot");
             var slot = get_current_slot ();
             assert (slot != null);
             assert (slot.directory != null);
+
+            /* Mount the directory if it's not mounted */
+            if (!slot.directory.file.is_mounted) {
+message ("Trying to mount file");
+                tab_name = _("Connecting…");
+                loading (true);
+                
+                slot.directory.mount_mountable.begin ((obj,res) => {
+                    try {
+                        slot.directory.mount_mountable.end (res);
+                        //make_view (nview, new_mwcol, new_slot);
+                    } catch (Error e) {
+                        warning ("mount_mountable failed: %s", e.message);
+                    }
+                });
+            }
 
             content = view.get_content_box ();
             load_slot_directory (slot);
@@ -212,6 +231,7 @@ namespace Marlin.View {
         }
 
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
+message ("refresh slot info");
             GLib.File loc = aslot.directory.file.location;
             update_tab_name (loc);
 

@@ -457,6 +457,7 @@ namespace FM {
         }
 
         protected void load_location (GLib.File location) {
+message ("load location %s", location.get_uri ());
             path_change_request (location, Marlin.OpenFlag.DEFAULT, false);
         }
 
@@ -476,21 +477,32 @@ namespace FM {
                 return;
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
-            bool only_folders = selection_only_contains_folders (selection);
+            //bool only_folders = selection_only_contains_folders (selection);
 
-            if (nb_elem < 10 && (default_app == null || only_folders)) {
+message ("Activate selected items nb_elem %u", nb_elem);
+            if (nb_elem == 1) {
+                activate_file (selection.data, screen, flag, true);
+                return;
+            }
+
+            if (nb_elem < 10 && (default_app == null)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
-                bool only_one_file = (nb_elem == 1);
-
+                //bool only_one_file = (nb_elem == 1);
+message ("Launch individual files");
                 foreach (unowned GOF.File file in selection) {
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                    GLib.Timeout.add (50, () => {
-                        activate_file (file, screen, flag, only_one_file);
-                        return false;
-                    });
+                    if (file.is_folder ()) {
+                        GLib.Timeout.add (50, () => {
+                            activate_file (file, screen, flag, false);
+                            return false;
+                        });
+                    } else
+                        file.open_single (screen, null);
                 }
-            } else if (default_app != null)
+            } else if (default_app != null) {
+message ("default app not null");
                 open_files_with (default_app, selection);
+            }
         }
 
         protected void preview_selected_items () {
@@ -569,6 +581,7 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
+//message ("DV change directory");
             cancel_thumbnailing ();
             freeze_tree ();
             old_dir.cancel ();
@@ -631,7 +644,13 @@ namespace FM {
             bool only_folders = true;
 
             list.@foreach ((file) => {
-                if (!file.is_folder ())
+//message ("file %s is folder %s", file.uri, file.is_folder ().to_string ());
+//message ("file %s is network uri scheme %s", file.uri, file.is_network_uri_scheme ().to_string ());
+//message ("file %s ftype %s", file.uri, file.get_ftype ());
+
+                if (!(file.is_folder () || file.is_root_network_folder ()))
+                //var location = file.get_target_location ();
+                //if (!(location.get_ftype () == "inode/directory"))
                     only_folders = false;
             });
 
@@ -700,13 +719,22 @@ namespace FM {
             if (updates_frozen || in_trash)
                 return;
 
-            debug ("activate file %s  only one file %s", file.uri, only_one_file.to_string ());
-            GLib.File location = file.location.dup ();
+            //message ("activate file %s  only one file %s, target uri %s", file.uri, only_one_file.to_string (), file.get_display_target_uri ());
 
+            GLib.File location = file.get_target_location ();
+//            string? target = file.get_display_target_uri ();
+//            if (target != null)
+//                location = GLib.File.new_for_uri (target);
+//            else
+//                location = GLib.File.new_for_uri (file.uri);
+
+            
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
 
-            if (file.is_folder ()) {
+message ("file type is %s", file.get_ftype ());
+            if (file.is_folder () || file.get_ftype () == "inode/directory") {
+message ("File is folder");
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                         window.add_tab (location, Marlin.ViewMode.CURRENT);
@@ -717,18 +745,22 @@ namespace FM {
                         break;
 
                     default:
+message ("Default");
                         if (only_one_file)
                             load_location (location);
 
                         break;
                 }
-            } else if (only_one_file && file.is_root_network_folder ())
+            } else if (only_one_file && file.is_root_network_folder ()) {
+message ("root network folder");
                 load_location (location);
-            else if (only_one_file && file.is_executable ())
+            } else if (only_one_file && file.is_executable ()) {
+message ("execute file");
                 file.execute (screen, null, null);
-            else if (only_one_file && default_app != null)
+            } else if (only_one_file && default_app != null) {
+message ("gof open single");
                 file.open_single (screen, default_app);
-            else
+            } else
                 warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
         }
 
@@ -749,6 +781,7 @@ namespace FM {
         }
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
+//message ("Add file %s", file.uri);
             model.add_file (file, dir);
 
             if (select_added_files)
@@ -1035,10 +1068,12 @@ namespace FM {
 
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
+//message ("On directory file added");
             add_file (file, dir);
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
+//message ("On directory file loaded");
             select_added_files = false;
             add_file (file, dir);
         }
@@ -1937,6 +1972,7 @@ namespace FM {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<unowned GOF.File> files) {
+//message ("open files with %s ", app.get_display_name ());
             GOF.File.launch_files (files, get_screen (), app);
         }
 

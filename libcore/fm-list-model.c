@@ -698,6 +698,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     gboolean replaced_dummy;
     GHashTable *parent_hash;
 
+//g_message ("fm list model add file %s", file->uri);
     g_return_val_if_fail (file != NULL, FALSE);
     parent_ptr = g_hash_table_lookup (model->details->directory_reverse_map,
                                       directory);
