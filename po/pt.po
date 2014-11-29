@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-25 19:18+0000\n"
+"PO-Revision-Date: 2014-11-27 21:43+0000\n"
 "Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-11-28 07:02+0000\n"
+"X-Generator: Launchpad (build 17261)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -2106,7 +2106,7 @@ msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Adicionar aos Marcadores"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
@@ -2122,7 +2122,7 @@ msgstr "Copiar"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Colar nesta Pasta"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-24 22:00+0000\n"
+"PO-Revision-Date: 2014-11-26 19:58+0000\n"
 "Last-Translator: Nikos <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-11-27 07:19+0000\n"
+"X-Generator: Launchpad (build 17261)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1375,7 +1375,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Une erreur est survenue lors de la copie de \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
@@ -1708,11 +1708,11 @@ msgstr "Suivant"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Prévisualisation impossible"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
-msgstr ""
+msgstr "Sélectionner une application"
 
 #: ../src/View/AbstractDirectoryView.vala:904
 msgid "Set as default"
@@ -1720,19 +1720,19 @@ msgstr "Définir comme valeur par défaut"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Impossible de supprimer ce fichier"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Nom de fichier fourni invalide"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Invalide"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Éxécuter"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
@@ -1740,15 +1740,15 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Ouvrir avec"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Autre application…"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Sans titre %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
