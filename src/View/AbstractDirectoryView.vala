@@ -386,7 +386,6 @@ namespace FM {
             updates_frozen = false;
             update_selected_files ();
             notify_selection_changed ();
-            grab_focus ();
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -2280,6 +2279,7 @@ message ("gof open single");
                 default:
                     break;
             }
+
             return false;
         }
 
@@ -2389,7 +2389,8 @@ message ("gof open single");
 
                 renaming = false;
                 name_renderer.editable = false;
-                unfreeze_updates ();               
+                unfreeze_updates ();
+                grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {
@@ -2602,7 +2603,11 @@ message ("gof open single");
             if (dnd_disabled)
                 unblock_drag_and_drop ();
 
-            if (renaming)
+            /* Ignore button release from click that started renaming.
+             * View may lose focus during a drag if another tab is hovered, in which case
+             * we do not want to refocus this view. 
+             * Under both these circumstances, 'should_activate' will be false */      
+            if (renaming || !view_has_focus ())
                 return true;
 
             slot.active (should_scroll);

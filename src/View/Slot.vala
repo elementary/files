@@ -64,10 +64,11 @@ namespace Marlin.View {
 
         private void connect_slot_signals () {
             active.connect (() => {
-                if (!is_active) {
-                    ctab.refresh_slot_info (this);
-                    is_active = true;
-                }
+                if (is_active)
+                    return;
+
+                ctab.refresh_slot_info (this);
+                is_active = true;
                 dir_view.grab_focus ();
             });
 
