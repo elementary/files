@@ -348,7 +348,6 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
     private delegate void func_query_info (GOF.File gof);
 
     private async void query_info_async (GOF.File gof, func_query_info? f = null) {
-message ("query info async");
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
@@ -375,7 +374,6 @@ message ("query info async");
     }
 
     private void add_and_refresh (GOF.File gof) {
-//message ("add and refresh %s", gof.uri);
         if (gof.is_gone)
             return;
 
@@ -408,7 +406,6 @@ message ("query info async");
     }
 
     private void notify_file_added (GOF.File gof) {
-//message ("notify file added %s", gof.uri);
         file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
@@ -515,7 +512,6 @@ message ("query info async");
     }
 
     public static void notify_files_added (List<GLib.File> files) {
-//message ("static nofity files added");
         foreach (var loc in files) {
             GOF.File gof = GOF.File.get (loc);
             Async? dir = cache_lookup (gof.directory);
@@ -571,7 +567,6 @@ message ("query info async");
 
     public static Async from_gfile (GLib.File file) {
         /* Note: cache_lookup creates directory_cache if necessary */
-message ("Async from gfile");
         return cache_lookup (file) ?? new Async (file);
     }
 
@@ -594,17 +589,19 @@ message ("Async from gfile");
             return null;
         }
 
-        if (file == null)
+        if (file == null) {
             return null;
+        }
 
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);
 
         if (cached_dir != null) {
-            debug ("found cached dir %s\n", cached_dir.file.uri);
+            //message ("found cached dir %s", cached_dir.file.uri);
             if (cached_dir.file.info == null)
                 cached_dir.file.query_update ();
         }
+
         dir_cache_lock.unlock ();
 
         return cached_dir;
