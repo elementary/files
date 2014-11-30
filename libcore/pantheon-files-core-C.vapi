@@ -229,7 +229,7 @@ namespace GOF {
 
         public File(GLib.File location, GLib.File? dir);
         public static GOF.File @get(GLib.File location);
-        public static GOF.File get_by_uri (string uri);
+        public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
         public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
@@ -271,7 +271,7 @@ namespace GOF {
 
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
-        public unowned string get_ftype ();
+        public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();

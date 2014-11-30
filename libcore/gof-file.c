@@ -749,12 +749,11 @@ gof_file_query_info (GOFFile *file)
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
-        }
-        if (err->code == G_IO_ERROR_NOT_FOUND
+        } else if (err->code == G_IO_ERROR_NOT_FOUND
             || err->code == G_IO_ERROR_NOT_DIRECTORY) {
             file->exists = FALSE;
-        }
-        print_error (err);
+        } else
+            print_error (err);
     }
     return info;
 }
@@ -2422,7 +2421,10 @@ gof_file_is_folder (GOFFile *file)
 const gchar *
 gof_file_get_ftype (GOFFile *file)
 {
-    g_return_val_if_fail (file->info != NULL, NULL);
+    //g_return_val_if_fail (file->info != NULL, NULL);
+
+    if (file->info == NULL)
+        return NULL;
 
     const char *ftype = NULL;
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))

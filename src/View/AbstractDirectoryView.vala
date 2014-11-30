@@ -456,7 +456,6 @@ namespace FM {
         }
 
         protected void load_location (GLib.File location) {
-message ("load location %s", location.get_uri ());
             path_change_request (location, Marlin.OpenFlag.DEFAULT, false);
         }
 
@@ -478,7 +477,6 @@ message ("load location %s", location.get_uri ());
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             //bool only_folders = selection_only_contains_folders (selection);
 
-message ("Activate selected items nb_elem %u", nb_elem);
             if (nb_elem == 1) {
                 activate_file (selection.data, screen, flag, true);
                 return;
@@ -487,7 +485,6 @@ message ("Activate selected items nb_elem %u", nb_elem);
             if (nb_elem < 10 && (default_app == null)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
                 //bool only_one_file = (nb_elem == 1);
-message ("Launch individual files");
                 foreach (unowned GOF.File file in selection) {
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
                     if (file.is_folder ()) {
@@ -499,7 +496,6 @@ message ("Launch individual files");
                         file.open_single (screen, null);
                 }
             } else if (default_app != null) {
-message ("default app not null");
                 open_files_with (default_app, selection);
             }
         }
@@ -580,7 +576,7 @@ message ("default app not null");
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-//message ("DV change directory");
+message ("DV change directory");
             cancel_thumbnailing ();
             freeze_tree ();
             old_dir.cancel ();
@@ -594,10 +590,7 @@ message ("default app not null");
             loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
-
             connect_directory_handlers (new_dir);
-            update_menu_actions ();
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
         }
 
         public void reload () {
@@ -626,7 +619,6 @@ message ("default app not null");
         }
 
         protected void cancel_thumbnailing () {
-message ("ADV Cancel thumbnailing");
             slot.directory.cancel ();
             cancel_timeout (ref thumbnail_source_id);
 
@@ -719,22 +711,12 @@ message ("ADV Cancel thumbnailing");
             if (updates_frozen || in_trash)
                 return;
 
-            //message ("activate file %s  only one file %s, target uri %s", file.uri, only_one_file.to_string (), file.get_display_target_uri ());
-
             GLib.File location = file.get_target_location ();
-//            string? target = file.get_display_target_uri ();
-//            if (target != null)
-//                location = GLib.File.new_for_uri (target);
-//            else
-//                location = GLib.File.new_for_uri (file.uri);
-
             
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
 
-message ("file type is %s", file.get_ftype ());
             if (file.is_folder () || file.get_ftype () == "inode/directory") {
-message ("File is folder");
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                         window.add_tab (location, Marlin.ViewMode.CURRENT);
@@ -745,20 +727,16 @@ message ("File is folder");
                         break;
 
                     default:
-message ("Default");
                         if (only_one_file)
                             load_location (location);
 
                         break;
                 }
             } else if (only_one_file && file.is_root_network_folder ()) {
-message ("root network folder");
                 load_location (location);
             } else if (only_one_file && file.is_executable ()) {
-message ("execute file");
                 file.execute (screen, null, null);
             } else if (only_one_file && default_app != null) {
-message ("gof open single");
                 file.open_single (screen, default_app);
             } else
                 warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
@@ -781,7 +759,6 @@ message ("gof open single");
         }
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
-//message ("Add file %s", file.uri);
             model.add_file (file, dir);
 
             if (select_added_files)
@@ -1068,12 +1045,10 @@ message ("gof open single");
 
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-//message ("On directory file added");
             add_file (file, dir);
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
-//message ("On directory file loaded");
             select_added_files = false;
             add_file (file, dir);
         }
@@ -1107,6 +1082,8 @@ message ("gof open single");
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
             thaw_tree ();
+            update_menu_actions ();
+            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
             queue_draw ();
         }
 
@@ -1972,7 +1949,6 @@ message ("gof open single");
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<unowned GOF.File> files) {
-//message ("open files with %s ", app.get_display_name ());
             GOF.File.launch_files (files, get_screen (), app);
         }
 
@@ -2442,10 +2418,11 @@ message ("gof open single");
             if (slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (slot.directory.is_empty ())
+                if (slot.directory.is_empty ()) {
                     layout.set_markup (slot.empty_message, -1);
-                else if (slot.directory.permission_denied)
+                } else if (slot.directory.permission_denied) {
                     layout.set_markup (slot.denied_message, -1);
+                }
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2760,7 +2737,6 @@ message ("gof open single");
         }
 
         public virtual void cancel () {
-message ("ADV cancel");
             cancel_thumbnailing ();
             slot.directory.cancel ();
             cancel_drag_timer ();

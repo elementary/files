@@ -134,6 +134,7 @@ message ("SLOT on_path_change_req %s", loc.get_uri ());
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
+            /* get size of message - message actually drawn by AbstractDirectoryView */
             if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)

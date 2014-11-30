@@ -75,12 +75,10 @@ public class GOF.Directory.Async : Object {
 message ("new async");
         location = _file;
         file = GOF.File.get (location);
-        file.exists = true;
-        file.is_mounted = true;
         cancellable = new Cancellable ();
 
-        if (file.info == null)
-            file.query_update ();
+        //if (file.info == null)
+            //file.query_update (); /* Will set file.exists and file.is_mounted */
 
         assert (directory_cache != null);
         directory_cache.insert (location, this);
@@ -91,6 +89,7 @@ message ("new async");
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+message ("leave new asynv");
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
@@ -108,7 +107,7 @@ message ("new async");
     }
 
     public void cancel () {
-message ("Cancelling async %s", file.uri);
+//message ("Cancelling async %s", file.uri);
         cancellable.cancel ();
 
         /* remove any pending thumbnail generation */
@@ -132,8 +131,10 @@ message ("Cancelling async %s", file.uri);
     }
 
     public void load () {
+message ("load () %s", file.uri);
         cancellable.reset ();
         longest_file_name = "";
+        permission_denied = false;
 
         if (state == State.LOADING)
             return;
@@ -143,9 +144,11 @@ message ("Cancelling async %s", file.uri);
             if (state == State.LOADING)
                 clear_directory_info ();
 
-            list_directory.begin ();
+            //list_directory.begin ();
             /* Mount the directory if it's not mounted */
-            if (!file.is_mounted) {
+            if (file.is_mounted)
+                complete_loading_operation ();
+            else {
 message ("Trying to mount file");
                 //tab_name = _("Connecting…");
                 //loading (true);
@@ -153,33 +156,25 @@ message ("Trying to mount file");
                 mount_mountable.begin ((obj,res) => {
                     try {
                         mount_mountable.end (res);
-                        list_directory.begin ();
                         //make_view (nview, new_mwcol, new_slot);
                     } catch (Error e) {
-                        warning ("mount_mountable failed: %s, code %i", e.message, e.code);
-                        if (e is IOError.ALREADY_MOUNTED ||
-                            e is IOError.NOT_MOUNTABLE_FILE ||
-                            e is IOError.NOT_SUPPORTED ||
-                            e is IOError.PERMISSION_DENIED) {
+                        warning ("mount_mountable failed: %s, domanin %s, code %i", e.message, e.domain.to_string (), e.code);
+                        if (e is IOError.ALREADY_MOUNTED) {
 message ("already mounted");
                             file.is_mounted = true;
-                        }
+                        } else if (e is IOError.PERMISSION_DENIED ||
+                                   e is IOError.FAILED_HANDLED) {
+message ("access denied");
+                            permission_denied = true;
+                        } else
+                            return;
                     }
-                    if (file.is_mounted) {
-                        try {
-                            monitor = location.monitor_directory (0);
-                            monitor.changed.connect (directory_changed);
-                        } catch (IOError e) {
-                            if (!(e is IOError.NOT_MOUNTED)) {
-                                warning ("directory monitor failed: %s %s", e.message, file.uri);
-                            }
-                        }
-                    }
+                    complete_loading_operation ();
                 });
             }
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
-            debug ("directory %s load cached files", file.uri);
+            message ("directory %s load cached files", file.uri);
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
@@ -194,9 +189,23 @@ message ("already mounted");
                     }
                 }
             }
-
-            if (!cancellable.is_cancelled ())
+            if (!cancellable.is_cancelled ()) {
                 done_loading ();
+            } else
+message ("list directory - cancelled - not emitting signal");
+        }
+    }
+
+    private void complete_loading_operation () {
+message ("complete_loading_operation");
+        list_directory.begin ();
+        try {
+            monitor = location.monitor_directory (0);
+            monitor.changed.connect (directory_changed);
+        } catch (IOError e) {
+            if (!(e is IOError.NOT_MOUNTED)) {
+                warning ("directory monitor failed: %s %s", e.message, file.uri);
+            }
         }
     }
 
@@ -214,7 +223,6 @@ message ("already mounted");
                     if (track_longest_name)
                         update_longest_file_name (gof);
 
-//message ("file loaded 2");
                     file_loaded (gof);
                 }
             }
@@ -241,15 +249,11 @@ message ("mount_mountable %s", file.uri);
         bool result = false;
         if (file.file_type != FileType.MOUNTABLE) {
 message ("mount enclosing");
-            //result_file = yield location.mount_enclosing_volume (0, mount_op, cancellable);
             result = yield location.mount_enclosing_volume (0, mount_op, cancellable); /* May throw Error */
-            //result = (result_file != null);
-message ("result location uri %s", result ? result_file.get_uri () : "null");
 
         } else {
 message ("yield location mount mountable");
             result_file = yield location.mount_mountable (0, mount_op, cancellable); /* May throw Error */
-            //result = yield location.mount_mountable (0, mount_op, cancellable);
             result = (result_file != null);
 message ("result location uri %s", result ? result_file.get_uri () : "null");
         }
@@ -260,7 +264,7 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
         files_count = 0;
         state = State.LOADING;
 
-        debug ("list directory %s", file.uri);
+        message ("list directory %s", file.uri);
 
         try {
 //message ("gio_attrs is %s", gio_attrs);
@@ -274,16 +278,17 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
                 bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
 
                 foreach (var file_info in files) {
-//message ("file_info display name is %s", file_info.get_display_name ());
+message ("file_info display name is %s", file_info.get_display_name ());
 //message ("file_info  name is %s", file_info.get_name ());
-//message ("location uri is %s", location.get_uri ());
+message ("location uri is %s", location.get_uri ());
                     /* The following line does not work properly for network files for some reason */
-                    //GLib.File loc = location.get_child_for_display_name (file_info.get_display_name ());
+                    GLib.File loc = location.get_child_for_display_name (file_info.get_display_name ());
 
                     /* Construct a uri to create a GFile from */
-                    string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
-                    GLib.File loc = GLib.File.new_for_uri (uri);
-                    GOF.File gof = GOF.File.cache_lookup (loc);
+                    //string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
+                    //GLib.File loc = GLib.File.new_for_uri (uri);
+
+                    GOF.File? gof = GOF.File.cache_lookup (loc);
 
                     if (gof == null) {
 //message ("Creating new gof file location %s", loc.get_uri ());
@@ -291,6 +296,7 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
                     }
 
                     gof.info = file_info;
+message ("update gof");
                     gof.update ();
 
                     file_hash.insert (gof.location, gof);
@@ -299,7 +305,6 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
-//message ("file loaded 3");
                         file_loaded (gof);
                     }
 
@@ -310,7 +315,7 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
                 file.exists = true;
                 state = State.LOADED;
             } else {
-                debug ("WARNING load() has been called again before LOADING finished");
+                message ("WARNING load() has been called again before LOADING finished");
                 return;
             }
         } catch (Error err) {
@@ -323,12 +328,16 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
             else if (err is IOError.PERMISSION_DENIED)
                 permission_denied = true;
 
-            else if (err is IOError.NOT_MOUNTED)
+            else if (err is IOError.NOT_MOUNTED) {
+message ("Setting is mounted false");
                 file.is_mounted = false;
+            }
         }
 
-        if (!cancellable.is_cancelled ())
+        if (!cancellable.is_cancelled ()) {
             done_loading ();
+        } else
+message ("list directory - cancelled - not emitting signal");
     }
 
     public GOF.File? file_hash_lookup_location (GLib.File? location) {
@@ -355,7 +364,7 @@ message ("result location uri %s", result ? result_file.get_uri () : "null");
             if (f != null)
                 f (gof);
         } catch (Error err) {
-            debug ("query info failed, %s %s", err.message, gof.uri);
+            message ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND)
                 gof.exists = false;
         }
