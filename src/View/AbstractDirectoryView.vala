@@ -626,6 +626,7 @@ message ("default app not null");
         }
 
         protected void cancel_thumbnailing () {
+message ("ADV Cancel thumbnailing");
             slot.directory.cancel ();
             cancel_timeout (ref thumbnail_source_id);
 
@@ -2759,6 +2760,7 @@ message ("gof open single");
         }
 
         public virtual void cancel () {
+message ("ADV cancel");
             cancel_thumbnailing ();
             slot.directory.cancel ();
             cancel_drag_timer ();

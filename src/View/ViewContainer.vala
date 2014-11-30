@@ -183,22 +183,6 @@ message ("set up current slot");
             assert (slot != null);
             assert (slot.directory != null);
 
-            /* Mount the directory if it's not mounted */
-            if (!slot.directory.file.is_mounted) {
-message ("Trying to mount file");
-                tab_name = _("Connecting…");
-                loading (true);
-                
-                slot.directory.mount_mountable.begin ((obj,res) => {
-                    try {
-                        slot.directory.mount_mountable.end (res);
-                        //make_view (nview, new_mwcol, new_slot);
-                    } catch (Error e) {
-                        warning ("mount_mountable failed: %s", e.message);
-                    }
-                });
-            }
-
             content = view.get_content_box ();
             load_slot_directory (slot);
         }

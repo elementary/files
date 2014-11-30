@@ -72,9 +72,11 @@ public class GOF.Directory.Async : Object {
     }
 
     private Async (GLib.File _file) {
+message ("new async");
         location = _file;
         file = GOF.File.get (location);
         file.exists = true;
+        file.is_mounted = true;
         cancellable = new Cancellable ();
 
         if (file.info == null)
@@ -106,6 +108,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public void cancel () {
+message ("Cancelling async %s", file.uri);
         cancellable.cancel ();
 
         /* remove any pending thumbnail generation */
@@ -141,14 +144,38 @@ public class GOF.Directory.Async : Object {
                 clear_directory_info ();
 
             list_directory.begin ();
-
-            try {
-                monitor = location.monitor_directory (0);
-                monitor.changed.connect (directory_changed);
-            } catch (IOError e) {
-                if (!(e is IOError.NOT_MOUNTED)) {
-                    warning ("directory monitor failed: %s %s", e.message, file.uri);
-                }
+            /* Mount the directory if it's not mounted */
+            if (!file.is_mounted) {
+message ("Trying to mount file");
+                //tab_name = _("Connecting…");
+                //loading (true);
+                cancellable.reset ();
+                mount_mountable.begin ((obj,res) => {
+                    try {
+                        mount_mountable.end (res);
+                        list_directory.begin ();
+                        //make_view (nview, new_mwcol, new_slot);
+                    } catch (Error e) {
+                        warning ("mount_mountable failed: %s, code %i", e.message, e.code);
+                        if (e is IOError.ALREADY_MOUNTED ||
+                            e is IOError.NOT_MOUNTABLE_FILE ||
+                            e is IOError.NOT_SUPPORTED ||
+                            e is IOError.PERMISSION_DENIED) {
+message ("already mounted");
+                            file.is_mounted = true;
+                        }
+                    }
+                    if (file.is_mounted) {
+                        try {
+                            monitor = location.monitor_directory (0);
+                            monitor.changed.connect (directory_changed);
+                        } catch (IOError e) {
+                            if (!(e is IOError.NOT_MOUNTED)) {
+                                warning ("directory monitor failed: %s %s", e.message, file.uri);
+                            }
+                        }
+                    }
+                });
             }
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
@@ -206,18 +233,26 @@ public class GOF.Directory.Async : Object {
     }
 
     public async void mount_mountable () throws Error {
-        //message ("mount_mountable %s", file.uri);
+message ("mount_mountable %s", file.uri);
 
         /* TODO pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
+        GLib.File? result_file = null;
+        bool result = false;
+        if (file.file_type != FileType.MOUNTABLE) {
+message ("mount enclosing");
+            //result_file = yield location.mount_enclosing_volume (0, mount_op, cancellable);
+            result = yield location.mount_enclosing_volume (0, mount_op, cancellable); /* May throw Error */
+            //result = (result_file != null);
+message ("result location uri %s", result ? result_file.get_uri () : "null");
 
-        if (file.file_type != FileType.MOUNTABLE)
-            yield location.mount_enclosing_volume (0, mount_op, cancellable);
-        else
-            yield location.mount_mountable (0, mount_op, cancellable);
-
-        file.is_mounted = true;
-        yield query_info_async (file, file_info_available);
+        } else {
+message ("yield location mount mountable");
+            result_file = yield location.mount_mountable (0, mount_op, cancellable); /* May throw Error */
+            //result = yield location.mount_mountable (0, mount_op, cancellable);
+            result = (result_file != null);
+message ("result location uri %s", result ? result_file.get_uri () : "null");
+        }
     }
 
     private async void list_directory () {
@@ -279,7 +314,7 @@ public class GOF.Directory.Async : Object {
                 return;
             }
         } catch (Error err) {
-            warning ("%s %s", err.message, file.uri);
+            warning ("LIsting directory error: %s %s", err.message, file.uri);
             state = State.NOT_LOADED;
 
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
@@ -313,6 +348,7 @@ public class GOF.Directory.Async : Object {
     private delegate void func_query_info (GOF.File gof);
 
     private async void query_info_async (GOF.File gof, func_query_info? f = null) {
+message ("query info async");
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
@@ -363,9 +399,9 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private void file_info_available (GOF.File gof) {
-        gof.update ();
-    }
+//    private void file_info_available (GOF.File gof) {
+//        gof.update ();
+//    }
 
     private void notify_file_changed (GOF.File gof) {
         query_info_async.begin (gof, changed_and_refresh);
@@ -535,6 +571,7 @@ public class GOF.Directory.Async : Object {
 
     public static Async from_gfile (GLib.File file) {
         /* Note: cache_lookup creates directory_cache if necessary */
+message ("Async from gfile");
         return cache_lookup (file) ?? new Async (file);
     }
 

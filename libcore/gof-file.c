@@ -2395,10 +2395,10 @@ gof_file_is_folder (GOFFile *file)
 {
 //g_message ("%s file type %u", file->uri, file->file_type);
     /* TODO check */
-g_message ("ftype is %s", gof_file_get_ftype (file));
-g_message ("->file_type is %u", file->file_type);
+
     if (file->is_directory  ||
-       g_strcmp0 (gof_file_get_ftype (file), "inode/directory"))
+       g_strcmp0 (gof_file_get_ftype (file), "inode/directory") == 0)
+
         return TRUE;
 //g_message ("is directory false");
 //g_message ("target location %s", file->target_location != NULL ? "Not null" : "NULL");
@@ -2406,10 +2406,13 @@ g_message ("->file_type is %u", file->file_type);
 
     if (file->target_location != NULL &&
        ((file->file_type == G_FILE_TYPE_MOUNTABLE && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) ||
-       (file->target_gof && file->target_gof->is_directory && gof_preferences_get_default ()->pref_interpret_desktop_files)))
+       (file->target_gof && file->target_gof->is_directory && (gof_preferences_get_default ()->pref_interpret_desktop_files) || gof_file_is_network_uri_scheme (file->target_gof))))
         return TRUE;
 
-g_message ("%s is not a folder", file->uri);
+//g_message ("ftype is '%s'", gof_file_get_ftype (file));
+//g_message ("->file_type is %u", file->file_type);
+//g_message ("g_strcmp0 (gof_file_get_ftype (file), 'inode/directory') is %s", g_strcmp0 (gof_file_get_ftype (file), "inode/directory") == 0 ? "true" : "false");
+//g_message ("%s is not a folder", file->uri);
     return FALSE;
 }
 
