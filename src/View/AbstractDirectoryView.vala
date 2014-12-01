@@ -372,7 +372,7 @@ namespace FM {
                     if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
                         if (path != null) {
-                            if (focus_location == file.location)
+                            if (focus_location.equal (file.location))
                                 set_cursor (path, false, true, false); /* set cursor and select */
                             else
                                 select_path (path);
