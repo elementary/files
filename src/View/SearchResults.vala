@@ -177,9 +177,6 @@ namespace Marlin.View
                 popdown ();
                 return false;
             });
-            entry.focus_in_event.connect (() => {
-                return false;
-            });
 
             button_press_event.connect ((e) => {
                 if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
@@ -217,11 +214,8 @@ namespace Marlin.View
         }
 
         void on_cursor_changed () {
-message ("Cursor changed");
-            cursor_changed (null);
             Gtk.TreeIter iter;
             Gtk.TreePath? path = null;
-message ("getting selected");
             var selected_paths = view.get_selection ().get_selected_rows (null);
 
             if (selected_paths != null)
@@ -255,6 +249,7 @@ message ("getting selected");
 
             switch (event.keyval) {
                 case Gdk.Key.Escape:
+                    cursor_changed (null); /* Clears selection in view */
                     popdown ();
                     return true;
                 case Gdk.Key.Return:
@@ -453,7 +448,6 @@ message ("getting selected");
 
         void get_iter_at_cursor (out Gtk.TreeIter iter)
         {
-message ("get iter at cursor");
             Gtk.TreePath path;
             Gtk.TreeIter filter_iter;
 
@@ -462,7 +456,6 @@ message ("get iter at cursor");
             if (path == null)
                 return;
 
-message ("path not null %s", path.to_string ());
             filter.get_iter (out filter_iter, path);
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
@@ -478,7 +471,6 @@ message ("path not null %s", path.to_string ());
 
         void popup ()
         {
-message ("popup");
             if (get_mapped ()
                 || !entry.get_mapped ()
                 || !entry.has_focus
@@ -597,7 +589,6 @@ message ("popup");
 
         void accept (Gtk.TreeIter? accepted = null)
         {
-message ("Accepted is %s", accepted != null ? "not null" : "null");
             if (list_empty ()) {
                 Gdk.beep ();
                 return;
@@ -621,14 +612,11 @@ message ("Accepted is %s", accepted != null ? "not null" : "null");
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
         {
-message ("get file at iter");
             if (iter == null) {
-message ("filter iter is null");
                 get_iter_at_cursor (out iter);
             }
 
             File? file = null;
-message ("getting file");
             if (iter != null)
                 list.@get (iter, 3, out file);
 

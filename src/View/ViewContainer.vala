@@ -298,13 +298,16 @@ namespace Marlin.View {
             get_current_slot ().set_active_state (is_active);
         }
 
-        public void focus_location (GLib.File? file, bool select_in_current_only = false) {
-            if (file == null) {
+        public void focus_location (GLib.File? file,
+                                    bool select_in_current_only = false,
+                                    bool unselect_others = false) {
+
+            if (unselect_others || file == null) {
                 get_current_slot ().set_all_selected (false);
-                return;
+                selected_locations = null;
             }
 
-            if (location.equal (file))
+            if (file == null || location.equal (file))
                 return;
 
             GLib.File? loc = null;
@@ -332,8 +335,10 @@ namespace Marlin.View {
             }
         }
 
-        public void focus_location_if_in_current_directory (GLib.File? file) {
-            focus_location (file, true);
+        public void focus_location_if_in_current_directory (GLib.File? file,
+                                                            bool unselect_others = false) {
+
+            focus_location (file, true, unselect_others);
         }
 
         public string get_root_uri () {
