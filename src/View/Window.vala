@@ -820,6 +820,13 @@ namespace Marlin.View {
         private bool valid_location (GLib.File location) {
             GLib.FileInfo? info = null;
 
+            string scheme = location.get_uri_scheme ();
+            if (scheme == "smb" ||
+                scheme == "ftp" ||
+                scheme == "network")
+
+                return true;
+
             try {
                 info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
             }
@@ -879,7 +886,6 @@ namespace Marlin.View {
         }
 
         public void update_labels (string new_path, string tab_name) {
-message ("update labels - new path %s", new_path);
             assert (new_path != null && new_path != "");
             set_title (title);
             top_menu.update_location_bar (new_path);

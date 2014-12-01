@@ -60,6 +60,7 @@ namespace Marlin.View {
             set_up_directory (_location);
             connect_slot_signals ();
             make_view ();
+            connect_dir_view_signals ();
         }
 
         private void connect_slot_signals () {
@@ -196,8 +197,6 @@ message ("SLot user path change request %s", loc.get_uri ());
 
             if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
-
-            connect_dir_view_signals ();
         }
 
         public void set_view_updates_frozen (bool freeze) {

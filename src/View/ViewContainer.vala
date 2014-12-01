@@ -138,15 +138,15 @@ namespace Marlin.View {
                     view = new Slot (loc, this, mode);
 
                 view_mode = mode;
-                set_up_current_slot ();
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
+
+                set_up_current_slot ();
                 window.update_top_menu ();
             }
         }
 
         public void user_path_change_request (GLib.File loc) {
-message ("VC path change request %s", loc.get_uri ());
             view.user_path_change_request (loc);
         }
 
@@ -166,7 +166,6 @@ message ("VC path change request %s", loc.get_uri ());
         }
 
         public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
-message ("slot path changed %s", loc.get_uri ());
             /* automagicly enable icon view for icons keypath */
             if (allow_mode_change &&
                 get_current_slot ().directory.uri_contain_keypath_icons &&
@@ -178,17 +177,17 @@ message ("slot path changed %s", loc.get_uri ());
         }
 
         private void set_up_current_slot () {
-message ("set up current slot");
             var slot = get_current_slot ();
             assert (slot != null);
             assert (slot.directory != null);
 
             content = view.get_content_box ();
-            load_slot_directory (slot);
+
+            if (get_current_slot ().directory.file.is_mounted)
+                load_slot_directory (slot);
         }
 
         public void load_slot_directory (GOF.AbstractSlot slot) {
-message ("load slot directory");
             can_show_folder = true;
             loading (true);
             /* Allow time for the window to update before starting to load directory so that
@@ -216,7 +215,6 @@ message ("load slot directory");
         }
 
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
-message ("refresh slot info");
             GLib.File loc = aslot.directory.file.location;
             update_tab_name (loc);
 
@@ -230,24 +228,19 @@ message ("refresh slot info");
         }
 
         public void update_tab_name (GLib.File loc) {
-message ("update tab name uri %s", loc.get_uri ());
             string? slot_path = loc.get_path ();
             tab_name = "-----";
             if (slot_path == null) {
-message ("slot_path is null");
                 string [] uri_parts = loc.get_uri ().split (Path.DIR_SEPARATOR_S);
                 foreach (string s in uri_parts) {
-message ("Length of %s, is %u", s, s.length);
                     if (s.length >= 1)
                         tab_name = s;
                 }
-message ("tab_name is %s", tab_name);
             } else if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
             else if (loc.query_exists ()) {
-message ("%s exists", loc.get_basename ());
                 try {
                     var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
                     tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
@@ -256,8 +249,6 @@ message ("%s exists", loc.get_basename ());
                     warning ("Could not get location display name. %s", e.message);
                 }
             } else {
-message ("%s does not exist", loc.get_basename ());
-                //tab_name = _("This folder does not exist");
                 tab_name = loc.get_basename ();
                 can_show_folder = false;
             }
@@ -272,7 +263,6 @@ message ("%s does not exist", loc.get_basename ());
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
             FileInfo file_info;
-message ("done loading");
             loading (false);
 
             file_info = slot.directory.file.info;
@@ -288,29 +278,6 @@ message ("done loading");
                     view.select_glib_files (selected_locations, null);
                     selected_locations = null;
             }
-
-//            try {
-//                file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
-
-//                /* If not readable, alert the user */
-//                if (slot.directory.permission_denied) {
-//message ("VC permission denied");
-//                    content = new Granite.Widgets.Welcome (_("This does not belong to you."),
-//                                                           _("You don't have permission to view this folder."));
-//                    can_show_folder = false;
-//                } else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
-//                    view.select_glib_files (selected_locations, null);
-//                    selected_locations = null;
-//                }
-//            } catch (Error err) {
-//                /* query_info will throw an exception if it cannot find the file */
-//                if (err is IOError.NOT_MOUNTED) {
-//                    //slot.reload ();
-//                } else {
-//                    content = new DirectoryNotFound (slot.directory, this);
-//                    can_show_folder = false;
-//                }
-//            }
 
             refresh_slot_info (slot);
         }
