@@ -44,6 +44,7 @@ namespace Marlin.View
         const int DELAY_ADDING_RESULTS = 150;
 
         public signal void file_selected (File file);
+        public signal void cursor_changed (File? file);
         public signal void first_match_found (File? file);
 
         public Gtk.Entry entry { get; construct; }
@@ -83,6 +84,8 @@ namespace Marlin.View
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
+        ulong cursor_changed_handler_id;
+
         public SearchResults (Gtk.Entry entry)
         {
             Object (entry: entry,
@@ -111,6 +114,7 @@ namespace Marlin.View
             scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
 
             view = new Gtk.TreeView ();
+            view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
             view.headers_visible = false;
             view.show_expanders = false;
             view.level_indentation = 12;
@@ -173,6 +177,9 @@ namespace Marlin.View
                 popdown ();
                 return false;
             });
+            entry.focus_in_event.connect (() => {
+                return false;
+            });
 
             button_press_event.connect ((e) => {
                 if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
@@ -189,6 +196,7 @@ namespace Marlin.View
                 Gtk.TreePath path;
                 Gtk.TreeIter iter;
 
+                SignalHandler.block (view, cursor_changed_handler_id);
                 view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
 
                 if (path != null) {
@@ -196,14 +204,35 @@ namespace Marlin.View
                     filter.convert_iter_to_child_iter (out iter, iter);
                     accept (iter);
                 }
-
+                SignalHandler.unblock (view, cursor_changed_handler_id);
                 return true;
             });
+
+            cursor_changed_handler_id = view.cursor_changed.connect (on_cursor_changed);
 
             key_release_event.connect (key_event);
             key_press_event.connect (key_event);
 
             entry.key_press_event.connect (entry_key_press);
+        }
+
+        void on_cursor_changed () {
+message ("Cursor changed");
+            cursor_changed (null);
+            Gtk.TreeIter iter;
+            Gtk.TreePath? path = null;
+message ("getting selected");
+            var selected_paths = view.get_selection ().get_selected_rows (null);
+
+            if (selected_paths != null)
+                path = selected_paths.data;
+
+            if (path != null) {
+                filter.get_iter (out iter, path);
+                filter.convert_iter_to_child_iter (out iter, iter);
+                cursor_changed (get_file_at_iter (iter));
+            }
+
         }
 
         bool entry_key_press (Gdk.EventKey event)
@@ -424,10 +453,16 @@ namespace Marlin.View
 
         void get_iter_at_cursor (out Gtk.TreeIter iter)
         {
+message ("get iter at cursor");
             Gtk.TreePath path;
             Gtk.TreeIter filter_iter;
 
             view.get_cursor (out path, null);
+
+            if (path == null)
+                return;
+
+message ("path not null %s", path.to_string ());
             filter.get_iter (out filter_iter, path);
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
@@ -443,6 +478,7 @@ namespace Marlin.View
 
         void popup ()
         {
+message ("popup");
             if (get_mapped ()
                 || !entry.get_mapped ()
                 || !entry.has_focus
@@ -561,6 +597,7 @@ namespace Marlin.View
 
         void accept (Gtk.TreeIter? accepted = null)
         {
+message ("Accepted is %s", accepted != null ? "not null" : "null");
             if (list_empty ()) {
                 Gdk.beep ();
                 return;
@@ -580,6 +617,22 @@ namespace Marlin.View
             file_selected (file);
 
             popdown ();
+        }
+
+        File? get_file_at_iter (Gtk.TreeIter? iter)
+        {
+message ("get file at iter");
+            if (iter == null) {
+message ("filter iter is null");
+                get_iter_at_cursor (out iter);
+            }
+
+            File? file = null;
+message ("getting file");
+            if (iter != null)
+                list.@get (iter, 3, out file);
+
+            return file;
         }
 
         public void clear ()
