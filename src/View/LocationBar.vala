@@ -252,6 +252,7 @@ namespace Marlin.View.Chrome
                 win.current_tab.focus_location (file);
 
                 search_mode = false;
+                escape ();
             });
 
             search_results.cursor_changed.connect ((file) => {
