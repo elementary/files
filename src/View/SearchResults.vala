@@ -211,6 +211,19 @@ namespace Marlin.View
             if (!get_mapped ())
                 return false;
 
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
+            if (mods != 0) {
+                if (only_control_pressed && event.keyval == Gdk.Key.f) {
+                    search_current_directory_only = false;
+                    begins_with_only = false;
+                    entry.changed ();
+                    return true;
+            } else
+                return false;
+            }
+
             switch (event.keyval) {
                 case Gdk.Key.Escape:
                     popdown ();
@@ -400,7 +413,7 @@ namespace Marlin.View
 
             y += entry_alloc.height;
 
-            if (y + height > workarea.x + workarea.height)
+            if (y + height > workarea.y + workarea.height)
                 height = workarea.y + workarea.height - y - 12;
 
             scroll.set_min_content_height (height);
