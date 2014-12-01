@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-28 20:48+0000\n"
+"PO-Revision-Date: 2014-11-30 10:35+0000\n"
 "Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-29 06:39+0000\n"
-"X-Generator: Launchpad (build 17267)\n"
+"X-Launchpad-Export-Date: 2014-12-01 06:24+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1735,7 +1735,7 @@ msgstr "Далее"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Не удалось просмотреть"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
