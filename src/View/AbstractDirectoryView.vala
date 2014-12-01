@@ -2165,6 +2165,9 @@ message ("DV change directory");
                     if (no_mods) {
                         trash_or_delete_selected_files ();
                         return true;
+                    } else if (only_shift_pressed && !renaming) {
+                        delete_selected_files ();
+                        return true;
                     }
                     break;
 

@@ -331,7 +331,6 @@ gof_file_update_type (GOFFile *file)
 void
 gof_file_update (GOFFile *file)
 {
-//g_message ("gof_file_update %s", file->uri);
     GKeyFile *key_file;
     gchar *p;
 
@@ -1232,7 +1231,9 @@ gof_file_is_writable (GOFFile *file)
         /* For some reason, the trash folder doesn't have this attribute defined.
          * The function must be forced to return TRUE if the folder in question
          * is the trash folder (since it is writable). */
-        if (strncmp (file->uri, "trash:///", 10) == 0)
+        if (strncmp (file->uri, "trash:///", 10) == 0 ||
+            gof_file_is_smb_uri_scheme (file) ||
+            gof_file_is_remote_uri_scheme (file))
             return TRUE;
 
         return FALSE;
