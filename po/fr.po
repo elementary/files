@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-26 19:58+0000\n"
-"Last-Translator: Nikos <Unknown>\n"
+"PO-Revision-Date: 2014-12-01 19:17+0000\n"
+"Last-Translator: Mehdi Benadel <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-11-27 07:19+0000\n"
-"X-Generator: Launchpad (build 17261)\n"
+"X-Launchpad-Export-Date: 2014-12-02 06:04+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1752,7 +1752,7 @@ msgstr "Sans titre %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s n'est pas un nom de fichier valide"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1826,7 +1826,7 @@ msgstr "Fermer"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "fichier"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
@@ -1834,11 +1834,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "La taille actuelle pourrait être plus grande, "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "ne peut être lu dû aux permissions ou à d'autres erreurs."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
@@ -1948,7 +1948,7 @@ msgstr ""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Déplacer ici"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
@@ -2078,7 +2078,7 @@ msgstr "Vider la corbeille"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Restaurer"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
@@ -2110,19 +2110,19 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Ajouter aux favoris"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Coller"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Couper"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
