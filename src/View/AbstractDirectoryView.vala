@@ -372,7 +372,7 @@ namespace FM {
                     if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
                         if (path != null) {
-                            if (focus_location == file.location)
+                            if (focus_location.equal (file.location))
                                 set_cursor (path, false, true, false); /* set cursor and select */
                             else
                                 select_path (path);
@@ -2242,6 +2242,16 @@ namespace FM {
 
                 default:
                     break;
+            }
+
+            /* Use find function instead of view interactive search */
+            if (no_mods || only_shift_pressed) {
+                /* Use printable characters to initiate search */
+                if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                    window.win_actions.activate_action ("find", "CURRENT_DIRECTORY_ONLY");
+                    window.key_press_event (event);
+                    return true;
+                } 
             }
 
             return false;
