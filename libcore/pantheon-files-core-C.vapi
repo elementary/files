@@ -233,6 +233,7 @@ namespace GOF {
         public static File cache_lookup (GLib.File file);
         public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
+        public static GLib.Mount? get_mount_at (GLib.File location);
 
         public void remove_from_caches ();
         public bool is_gone;
@@ -301,6 +302,7 @@ namespace GOF {
         public bool can_set_group ();
         public bool can_set_permissions ();
         public bool can_unmount ();
+        public GLib.Mount? mount;
         public string get_permissions_as_string ();
         public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 

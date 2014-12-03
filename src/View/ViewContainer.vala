@@ -262,10 +262,7 @@ namespace Marlin.View {
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-            FileInfo file_info;
             loading (false);
-
-            file_info = slot.directory.file.info;
 
             if (slot.directory.permission_denied) {
                 content = new Granite.Widgets.Welcome (_("This does not belong to you."),

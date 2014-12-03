@@ -2066,6 +2066,9 @@ delete_job (GIOSchedulerJob *io_job,
     for (l = job->files; l != NULL; l = l->next) {
         file = l->data;
 
+        if (g_file_get_path (file) == NULL)
+            continue;
+
         if (job->try_trash &&
             g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
@@ -2073,12 +2076,13 @@ delete_job (GIOSchedulerJob *io_job,
         } else if (can_delete_without_confirm (file)) {
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else {
-            if (job->try_trash) {
+            if (job->try_trash &&
+                !g_file_has_uri_scheme (file, "smb")) {
                 to_trash_files = g_list_prepend (to_trash_files, file);
             } else {
                 must_confirm_delete = TRUE;
                 to_delete_files = g_list_prepend (to_delete_files, file);
-            }
+            } 
         }
     }
 

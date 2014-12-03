@@ -25,6 +25,13 @@
         </item>
     </menu>
 
+    <menu id='delete'>
+        <item>
+            <attribute name='label' translatable='yes'>Delete permanently</attribute>
+            <attribute name='action'>selection.delete</attribute>
+        </item>
+    </menu>
+
     <menu id='new'>
         <submenu id='new-submenu'>
             <attribute name='label' translatable='yes'>New</attribute>

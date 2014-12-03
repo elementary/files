@@ -63,7 +63,6 @@ public class GOF.Directory.Async : Object {
 
     private unowned string gio_attrs {
         get {
-            var scheme = location.get_uri_scheme ();
             if (scheme == "network" || scheme == "computer" || scheme == "smb")
                 return "*";
             else
@@ -71,30 +70,47 @@ public class GOF.Directory.Async : Object {
         }
     }
 
+    private string scheme;
+    public bool is_local;
+    public bool is_trash;
+    public bool has_trash_dirs;
+    public bool can_load;
+
     private Async (GLib.File _file) {
         location = _file;
         file = GOF.File.get (location);
         cancellable = new Cancellable ();
 
+        scheme = location.get_uri_scheme ();
+        is_local = (scheme == "file");
+        is_trash = (scheme == "trash");
+        can_load = true;
+
         if (file.info == null)
             file.ensure_query_info();
 
-        if (!file.is_mounted) {
+        if (!is_trash && !is_local && !file.is_mounted) {
+            can_load = false;
             mount_mountable.begin ((obj,res) => {
                 try {
                     mount_mountable.end (res);
+                    can_load = true;
                 } catch (Error e) {
-                    warning ("mount_mountable failed: %s, domanin %s, code %i", e.message, e.domain.to_string (), e.code);
-                    if (e is IOError.ALREADY_MOUNTED) {
-                        file.is_mounted = true;
-                    } else if (e is IOError.PERMISSION_DENIED ||
+                    warning ("mount_mountable failed: %s", e.message);
+
+                    if (e is IOError.ALREADY_MOUNTED)
+                        can_load = true;
+                    else if (e is IOError.PERMISSION_DENIED ||
                                e is IOError.FAILED_HANDLED) {
+
                         permission_denied = true;
                     }
                 }
+                check_mount_and_trash ();
                 need_reload ();
             });
-        }
+        } else
+            check_mount_and_trash ();
 
         assert (directory_cache != null);
         directory_cache.insert (location, this);
@@ -107,6 +123,18 @@ public class GOF.Directory.Async : Object {
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
     }
 
+    private void check_mount_and_trash () {
+        GLib.List? trash_dirs = null;
+        file.mount = GOF.File.get_mount_at (location);
+
+        if (file.mount != null) {
+            file.is_mounted = true;
+            trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+            has_trash_dirs = (trash_dirs != null);
+        } else
+            has_trash_dirs = is_local;
+    }
+
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         return_if_fail (object != null && object is Object);
         if (is_last) {
@@ -117,7 +145,6 @@ public class GOF.Directory.Async : Object {
                 dir.remove_dir_from_cache ();
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        } else {
         }
     }
 
@@ -157,30 +184,15 @@ public class GOF.Directory.Async : Object {
             if (state == State.LOADING)
                 clear_directory_info ();
 
-            complete_loading_operation ();
-            /* Mount the directory if it's not mounted */
-//            if (file.is_mounted) 
-//                complete_loading_operation ();
-//            else {
-//                cancellable.reset ();
-//                mount_mountable.begin ((obj,res) => {
-//                    try {
-//                        mount_mountable.end (res);
-//                        //make_view (nview, new_mwcol, new_slot);
-//                    } catch (Error e) {
-//                        warning ("mount_mountable failed: %s, domanin %s, code %i", e.message, e.domain.to_string (), e.code);
-//                        if (e is IOError.ALREADY_MOUNTED) {
-//                            file.is_mounted = true;
-//                        } else if (e is IOError.PERMISSION_DENIED ||
-//                                   e is IOError.FAILED_HANDLED) {
-//                            permission_denied = true;
-//                        } else
-//                            return;
-//                    }
-//message ("try to complete load");
-//                    complete_loading_operation ();
-//                });
-//            }
+            list_directory.begin ();
+            try {
+                monitor = location.monitor_directory (0);
+                monitor.changed.connect (directory_changed);
+            } catch (IOError e) {
+                if (!(e is IOError.NOT_MOUNTED)) {
+                    warning ("directory monitor failed: %s %s", e.message, file.uri);
+                }
+            }
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
@@ -199,18 +211,6 @@ public class GOF.Directory.Async : Object {
             }
             if (!cancellable.is_cancelled ())
                 done_loading ();
-        }
-    }
-
-    private void complete_loading_operation () {
-        list_directory.begin ();
-        try {
-            monitor = location.monitor_directory (0);
-            monitor.changed.connect (directory_changed);
-        } catch (IOError e) {
-            if (!(e is IOError.NOT_MOUNTED)) {
-                warning ("directory monitor failed: %s %s", e.message, file.uri);
-            }
         }
     }
 

@@ -68,7 +68,6 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 const gchar     *gof_file_get_thumbnail_path (GOFFile *file);
-static GMount   *get_mount_at (GFile *target);
 
 static GIcon *
 get_icon_user_special_dirs(char *path)
@@ -211,6 +210,24 @@ gof_file_is_location_uri_default (GOFFile *file)
     return FALSE;
 }
 
+static gboolean
+gof_file_is_smb_share (GOFFile *file)
+{
+    const char *target_uri = g_file_info_get_attribute_string (file->info,
+                                                               G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+    if (target_uri != NULL) {
+        gchar **split = g_strsplit (target_uri, "/", 4);
+        if (split[4] == NULL || !strcmp (split[4], "")) {
+            g_strfreev (split);
+            return TRUE;
+        }
+        g_strfreev (split);
+    }
+
+    return FALSE;
+}
+
 gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
@@ -227,7 +244,7 @@ gof_file_is_root_network_folder (GOFFile *file)
     if (gof_file_is_network_uri_scheme (file))
         return TRUE;
 
-    return (gof_file_is_smb_uri_scheme (file) && gof_file_is_location_uri_default (file));
+    return (gof_file_is_smb_uri_scheme (file) && gof_file_is_smb_share (file));
 }
 
 gboolean
@@ -365,7 +382,7 @@ gof_file_update (GOFFile *file)
             gof_file_target_location_update (file);
 
             if (file->file_type == G_FILE_TYPE_MOUNTABLE)
-                file->mount = get_mount_at (file->target_location);
+                file->mount = gof_file_get_mount_at (file->target_location);
         }
     }
 
@@ -701,8 +718,8 @@ print_error (GError *error)
     }
 }
 
-static GMount *
-get_mount_at (GFile *target)
+GMount *
+gof_file_get_mount_at (GFile *target)
 {
     GVolumeMonitor *monitor;
     GFile *root;

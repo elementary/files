@@ -222,6 +222,7 @@ void            gof_file_rename (GOFFile *file,
                                  gpointer callback_data);
 void            gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state);
 void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
+GMount*         gof_file_get_mount_at (GFile* target);
 
 /* To provide a wrapper around g_file_get_uri (not sure it is really useful tough) */
 #define gof_file_get_uri(obj) g_file_get_uri(obj->location)

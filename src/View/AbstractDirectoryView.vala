@@ -576,7 +576,6 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-message ("DV change directory");
             cancel_thumbnailing ();
             freeze_tree ();
             old_dir.cancel ();
@@ -636,13 +635,7 @@ message ("DV change directory");
             bool only_folders = true;
 
             list.@foreach ((file) => {
-//message ("file %s is folder %s", file.uri, file.is_folder ().to_string ());
-//message ("file %s is network uri scheme %s", file.uri, file.is_network_uri_scheme ().to_string ());
-//message ("file %s ftype %s", file.uri, file.get_ftype ());
-
                 if (!(file.is_folder () || file.is_root_network_folder ()))
-                //var location = file.get_target_location ();
-                //if (!(location.get_ftype () == "inode/directory"))
                     only_folders = false;
             });
 
@@ -708,15 +701,18 @@ message ("DV change directory");
     /** File operations */
 
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
+
             if (updates_frozen || in_trash)
                 return;
 
             GLib.File location = file.get_target_location ();
-            
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
 
-            if (file.is_folder () || file.get_ftype () == "inode/directory") {
+            if (file.is_folder () ||
+                file.get_ftype () == "inode/directory" ||
+                file.is_root_network_folder ()) {
+
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                         window.add_tab (location, Marlin.ViewMode.CURRENT);
@@ -1080,7 +1076,7 @@ message ("DV change directory");
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
             debug ("DV  directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
-            in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
+            in_trash = slot.directory.is_trash;
             thaw_tree ();
             update_menu_actions ();
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
@@ -1572,11 +1568,11 @@ message ("DV change directory");
         protected void show_context_menu (Gdk.Event event) {
             /* select selection or background context menu */
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
-            GLib.MenuModel? model;
+            GLib.MenuModel? model = null;
 
-            if (get_selected_files () != null) 
-                model = build_menu_selection (ref builder, in_trash);
-            else
+            if (get_selected_files () != null) {
+                model = build_menu_selection (ref builder, in_trash, valid_selection_for_edit ());
+            } else
                 model = build_menu_background (ref builder, in_trash);
 
             if (model != null) {
@@ -1589,31 +1585,43 @@ message ("DV change directory");
                                          Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          (Gdk.EventButton) event);
-            } else
-                warning ("Model is null");
+            }
         }
 
-        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
+        private bool valid_selection_for_edit () {
+            foreach (GOF.File file in get_selected_files ()) {
+                if (file.is_root_network_folder ())
+                    return false;
+            }
+            return true;
+        }
+
+        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool can_edit) {
             GLib.Menu menu = new GLib.Menu ();
 
             if (in_trash)
                 menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
             else {
                 menu.append_section (null, build_menu_open (ref builder));
+                if (can_edit) {
+                    var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
+                    /* Do not display the 'Paste into' menuitem if selection is not a folder.
+                     * We have to hard-code the menuitem index so any change to the clipboard-
+                     * selection menu definition in directory_view_popup.ui may necessitate changing
+                     * the index below.
+                     */
+                    if (!common_actions.get_action_enabled ("paste_into"))
+                        clipboard_menu.remove (2);
 
-                var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
-                /* Do not display the 'Paste into' menuitem if selection is not a folder.
-                 * We have to hard-code the menuitem index so any change to the clipboard-
-                 * selection menu definition in directory_view_popup.ui may necessitate changing
-                 * the index below.
-                 */
-                if (!common_actions.get_action_enabled ("paste_into"))
-                    clipboard_menu.remove (2);
+                    menu.append_section (null, clipboard_menu);
 
-                menu.append_section (null, clipboard_menu);
+                    if (slot.directory.has_trash_dirs)
+                        menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
+                    else if (slot.directory.file.mount != null)
+                        menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
 
-                menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
+                    menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
+                }
 
                 if (common_actions.get_action_enabled ("bookmark"))
                     menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
@@ -1793,6 +1801,8 @@ message ("DV change directory");
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
+            action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
+
             /* TODO inhibit copy for unreadable files see bug #1392465*/
             action_set_enabled (common_actions, "copy", true); 
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);

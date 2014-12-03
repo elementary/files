@@ -117,7 +117,7 @@ namespace Marlin.View {
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
 message ("SLOT on_path_change_req %s", loc.get_uri ());
-            if (flag == 0) {
+            if (flag == 0) { /* make view in existing container */
                 if (dir_view is FM.ColumnView)
                     miller_slot_request (loc, make_root);
                 else
