@@ -23,8 +23,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         trash_monitor = TrashMonitor.get ();
         trash_monitor.trash_state_changed.connect ((state) => {
             /* state true = empty trash */
-            if (infobar != null)
+            if (infobar != null) {
                 infobar.set_response_sensitive (0, !state);
+                infobar.set_visible (!state);
+            }
         });
     }
 
@@ -46,6 +48,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
                 slot.add_extra_widget (infobar);
                 infobar.show_all ();
+                infobar.set_visible (!TrashMonitor.is_empty ());
             }
         } else if (infobar != null) {
             infobar.destroy ();
