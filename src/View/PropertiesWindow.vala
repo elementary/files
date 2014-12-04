@@ -201,6 +201,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_area.show_all ();
         show_all ();
 
+        if (count == 1) {
+            int start_offset= 0, end_offset = -1;
+
+            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+        }
+        
+
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -322,7 +330,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private void rename_file (GOF.File file, string new_name) {
         /* Only rename if name actually changed */
-        var original_name = file.get_display_name ();
+        var original_name = file.info.get_name ();
         if (new_name != original_name) {
             file.rename (new_name, (file, result_location, error) => {
             if (error != null)
@@ -395,7 +403,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             Gtk.Entry entry = new Gtk.Entry ();
+
             entry.set_text (goffile.info.get_name ());
+
             entry.activate.connect (() => {
                 rename_file (goffile, entry.get_text ());
             });
