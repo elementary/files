@@ -119,10 +119,12 @@ namespace FM {
         /* drag support */
         uint drag_scroll_timer_id = 0;
         uint drag_timer_id = 0;
+        uint drag_enter_timer_id = 0;
         int drag_x = 0;
         int drag_y = 0;
         int drag_button;
         protected int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
+        protected int drag_enter_delay = 1000;
 
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -1402,6 +1404,7 @@ namespace FM {
             icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
             /* stop any running drag autoscroll timer */
             cancel_timeout (ref drag_scroll_timer_id);
+            cancel_timeout (ref drag_enter_timer_id);
 
             /* disable the drop highlighting around the view */
             if (drop_highlight) {
@@ -1498,7 +1501,17 @@ namespace FM {
                 current_suggested_action = Gdk.DragAction.DEFAULT;
                 if (file != null) {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
-                    highlight_drop_file (drop_target_file, current_actions, path); 
+                    highlight_drop_file (drop_target_file, current_actions, path);
+                    if (file.is_folder ()) {
+                        cancel_timeout (ref drag_enter_timer_id);
+                        drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
+                                                                     drag_enter_delay,
+                                                                     () => {
+                            load_location (file.get_target_location ());
+                            drag_enter_timer_id = 0;
+                            return false;
+                        });
+                    }
                 }
                 Gdk.drag_status (context, current_suggested_action, timestamp);
             }
