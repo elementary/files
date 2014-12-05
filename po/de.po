@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-12-03 17:29+0000\n"
-"Last-Translator: Timo Reimerdes <Unknown>\n"
+"PO-Revision-Date: 2014-12-04 20:47+0000\n"
+"Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-12-04 06:28+0000\n"
+"X-Launchpad-Export-Date: 2014-12-05 06:16+0000\n"
 "X-Generator: Launchpad (build 17274)\n"
 "Language: de\n"
 
@@ -1731,7 +1731,7 @@ msgstr "Als Vorgabe festlegen"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Diese Datei kann nicht abgelegt werden"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
@@ -2123,7 +2123,7 @@ msgstr "Neuer Tab"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
