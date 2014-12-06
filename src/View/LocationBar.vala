@@ -252,10 +252,15 @@ namespace Marlin.View.Chrome
                 win.current_tab.focus_location (file);
 
                 search_mode = false;
+                escape ();
+            });
+
+            search_results.cursor_changed.connect ((file) => {
+                win.current_tab.focus_location_if_in_current_directory (file, true);
             });
 
             search_results.first_match_found.connect ((file) => {
-                win.current_tab.focus_location_if_in_current_directory (file);
+                win.current_tab.focus_location_if_in_current_directory (file, true);
             });
 
             search_results.hide.connect (() => {

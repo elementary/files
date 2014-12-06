@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-07-17 05:10+0000\n"
-"Last-Translator: Marek Suchánek <suchm@seznam.cz>\n"
+"PO-Revision-Date: 2014-12-05 15:41+0000\n"
+"Last-Translator: Marek Doležel <marekdolezel@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-06 06:29+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -36,7 +36,7 @@ msgstr "FTP (s přihlášením)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -587,7 +587,7 @@ msgstr "Včera v %-I:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b v %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1038,44 +1038,53 @@ msgstr[2] "zbývá %'d souborů k přesunutí do koše"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Soubor nelze odstranit nebo přesunout do koše"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Některé soubory nelze odstranit nebo přesunout do koše, protože souborový "
+"systém je pouze pro čtení."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Některé soubory nelze odstranit nebo přesunout do koše, protože se nacházejí "
+"uvnitř složek, ke kterým nemáte právo zápisu."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Některé soubory nelze odstranit nebo přesunout do koše, protože k nim nemáte "
+"právo zápisu."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Tento soubor nemohl být přesunut do koše. Níže naleznete podrobnější "
+"informace."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Soubor nemůže být přesunut do koše. Možná jej nebudete moci ani smazat."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
@@ -1383,12 +1392,12 @@ msgstr "Nelze odstranit již existující soubor se stejným názvem v %F."
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Došlo k chybě při kopírování \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "Došlo k chybě při kopírování souboru do %s."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1409,7 +1418,7 @@ msgstr[2] "Připravuje se přesun %'d souborů"
 #: ../libcore/marlin-file-operations.c:5088
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Chyba při přesunu \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5089
 #, c-format
@@ -1513,19 +1522,19 @@ msgstr "Změněno"
 
 #: ../src/View/LocationBar.vala:132
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: ../src/View/LocationBar.vala:133
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../src/View/LocationBar.vala:134
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../src/View/LocationBar.vala:135
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
@@ -1533,11 +1542,11 @@ msgstr "Síť"
 
 #: ../src/View/LocationBar.vala:137
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../src/View/LocationBar.vala:138
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
@@ -1545,23 +1554,23 @@ msgstr "Koš"
 
 #: ../src/View/LocationBar.vala:331
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Otevřít v nové kartě"
 
 #: ../src/View/LocationBar.vala:338
 msgid "Open with"
-msgstr ""
+msgstr "Otevřít s"
 
 #: ../src/View/LocationBar.vala:369
 msgid "Other Application .."
-msgstr ""
+msgstr "Další aplikace .."
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Jednoduchý a účelový prohlížeč souborů"
 
 #: ../src/View/Resources.vala:29
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Launchpad překladatelé"
 
 #: ../src/View/Window.vala:175
 msgid "Files isn't your default file manager."
@@ -1569,7 +1578,7 @@ msgstr "Tento Správce souborů není váš výchozí"
 
 #: ../src/View/Window.vala:181
 msgid "Set as Default"
-msgstr ""
+msgstr "Nastavit jako Výchozí"
 
 #: ../src/View/Window.vala:187
 msgid "Ignore"
@@ -1593,7 +1602,7 @@ msgstr "Otevřít osobní složku"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr ""
+msgstr "Otevřít Koš"
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
@@ -1609,7 +1618,7 @@ msgstr "Souborový systém"
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Otevřít obsah souborového systému"
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
@@ -1621,7 +1630,7 @@ msgstr "Vaše síť"
 
 #: ../src/View/Sidebar.vala:590
 msgid "Entire Network"
-msgstr ""
+msgstr "Celá síť"
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
@@ -1633,7 +1642,7 @@ msgstr "Nelze aktivovat %s"
 
 #: ../src/View/Sidebar.vala:1184
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
@@ -1649,7 +1658,7 @@ msgstr "Odstranit"
 
 #: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
-msgstr ""
+msgstr "Přejmenovat"
 
 #: ../src/View/Sidebar.vala:1223
 msgid "_Mount"
@@ -1677,11 +1686,11 @@ msgstr ""
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Nenalezeny žádné výsledky"
 
 #: ../src/View/ViewContainer.vala:244
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Tato složka neexistuje"
 
 #: ../src/View/ViewContainer.vala:249
 msgid "(as Administrator)"
@@ -1693,7 +1702,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:264
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1709,11 +1718,11 @@ msgstr "Zobrazit ve sloupcích"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
-msgstr ""
+msgstr "Předchozí"
 
 #: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
-msgstr ""
+msgstr "Následující"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
@@ -1733,23 +1742,23 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Zadán neplatný název souboru"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Neplatný"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Spustit"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Otevřít v %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Otevřít v"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
@@ -1757,43 +1766,43 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Nepojmenovaný soubor %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s není platný název souboru"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
-msgstr ""
+msgstr "%u složek"
 
 #: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " a %u další položka (%s) zvolena"
 
 #: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " a %u dalších položek (%s) zvoleno"
 
 #: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
 msgid " selected"
-msgstr ""
+msgstr " zvoleno"
 
 #: ../src/View/OverlayBar.vala:157
 msgid "%u folder"
-msgstr ""
+msgstr "%u složka"
 
 #: ../src/View/OverlayBar.vala:165
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u označených položek (%s)"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Tato složka neexistuje."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Složka \"%s\" nenalezena."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -1801,7 +1810,7 @@ msgstr "Vytvořit"
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Vytvořit složku \"%s\""
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -1809,6 +1818,8 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Selhalo vytvoření složky\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
 msgid "Properties"
@@ -1828,11 +1839,11 @@ msgstr "Náhled"
 
 #: ../src/View/PropertiesWindow.vala:180
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "soubor"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
@@ -1852,7 +1863,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
-msgstr ""
+msgstr "%u vybraných položek"
 
 #: ../src/View/PropertiesWindow.vala:455
 msgid "Created"
@@ -1938,7 +1949,7 @@ msgstr "Kdokoli"
 
 #: ../src/View/PropertiesWindow.vala:1274
 msgid "Select an application to open "
-msgstr ""
+msgstr "Zvolte aplikaci k otevření "
 
 #: ../src/View/Slot.vala:36
 msgid "This folder is empty."
@@ -1946,19 +1957,19 @@ msgstr "Tato složka je prázdná."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Přístup odepřen"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Nepodařilo se spustit \"%s\""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Přesunout sem"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopírovat sem"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
@@ -1978,7 +1989,7 @@ msgstr "Otevřít adresu(-y) v nové kartě"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr ""
+msgstr "Nové okno"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
@@ -2069,71 +2080,71 @@ msgstr "Přejít do %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Připojit k Serveru..."
 
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Připojit k souborovému serveru"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Tyto položky budou odstraněny vysypáním koše."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Vysypat Koš"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Obnovit z Koše"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Odstranit navždy"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Přesunout do Koše"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Nový"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Složka"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Prázdný soubor"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Zobrazovat skryté soubory"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Nová karta"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Příkazová řádka"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Vytvořit záložku"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Vložit"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Vyjmout"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovat"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
@@ -2141,16 +2152,16 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Seřadit podle"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Název souboru"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Změněno"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Opačné pořadí"

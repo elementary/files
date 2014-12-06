@@ -425,7 +425,7 @@ namespace Marlin.View {
                 top_menu.location_bar.enter_search_mode (true, true);
             else
                 top_menu.location_bar.enter_search_mode ();
-                    
+
         }
 
         private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
@@ -466,6 +466,10 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
+            /* cancel any unfinished location bar activity */
+            top_menu.location_bar.escape ();
+
             current_tab.change_view_mode (mode);
             update_view_mode (mode);
         }

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-26 19:58+0000\n"
-"Last-Translator: Nikos <Unknown>\n"
+"PO-Revision-Date: 2014-12-04 13:06+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2014-11-27 07:19+0000\n"
-"X-Generator: Launchpad (build 17261)\n"
+"X-Launchpad-Export-Date: 2014-12-05 06:16+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1736,7 +1736,7 @@ msgstr "Éxécuter"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Ouvrir avec %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
@@ -1752,7 +1752,7 @@ msgstr "Sans titre %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s n'est pas un nom de fichier valide"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1826,23 +1826,23 @@ msgstr "Fermer"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "fichier"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "fichiers"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "La taille actuelle pourrait être plus grande, "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "ne peut être lu dû aux permissions ou à d'autres erreurs."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "inconnu"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1940,23 +1940,23 @@ msgstr "Ce dossier est vide."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Accès refusé"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Échec lors de l'exécution de \"%s\""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Déplacer ici"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Copier ici"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Lier ici"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2078,72 +2078,72 @@ msgstr "Vider la corbeille"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Restaurer"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Supprimer définitivement"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Déplacer dans la corbeille"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Dossier"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Fichier vide"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Afficher les fichiers cachés"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Nouvel onglet"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Ajouter aux favoris"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Coller"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Couper"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Copier"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Copier dans le dossier"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Trier par"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Ordre décroissant"
