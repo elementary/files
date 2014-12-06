@@ -87,8 +87,8 @@ namespace Marlin.View.Chrome
             bread.search_mode = true;
         }
 
-        private void on_path_changed (File file) {
-            if (win.freeze_view_changes)
+        private void on_path_changed (File? file) {
+            if (file == null || win.freeze_view_changes)
                 return;
 
             win.grab_focus ();
@@ -228,12 +228,12 @@ namespace Marlin.View.Chrome
             completed.connect (() => {
                 string path = "";
                 string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
-                
+
                 foreach (BreadcrumbsElement element in elements) {
                     if (!element.hidden)
                         path += element.text + "/";
                 }
-            
+
                 if (path != newpath)
                     change_breadcrumbs (newpath);
                 
@@ -315,7 +315,10 @@ namespace Marlin.View.Chrome
         }
 
         public void on_need_completion () {
-            File file = get_file_for_path (text);
+            File? file = get_file_for_path (text);
+
+            if (file == null)
+                return;
 
             // don't use get_basename (), it will return "folder" for "/folder/"
             int last_slash = text.last_index_of_char ('/');
