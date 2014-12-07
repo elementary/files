@@ -125,7 +125,7 @@ namespace Marlin.Places {
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
-        bool display_all_bookmarks = false;
+        bool display_all_bookmarks = true;
 
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
@@ -963,6 +963,7 @@ namespace Marlin.Places {
                 if (can_accept_file_as_bookmark (file))
                     uris.prepend (file.get_uri ());
             });
+
             if (uris != null)
                 bookmarks.insert_uris (uris, position);
         }
