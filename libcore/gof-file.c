@@ -198,6 +198,7 @@ static gboolean
 gof_file_is_location_uri_default (GOFFile *file)
 {
     const char *target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
     if (target_uri != NULL) {
         gchar **split = g_strsplit (target_uri, "/", 4);
         if (split[3] == NULL || !strcmp (split[3], "")) {
@@ -295,7 +296,6 @@ gof_file_target_location_update (GOFFile *file)
 static void
 gof_file_update_size (GOFFile *file)
 {
-//g_message ("update size");
     g_free (file->format_size);
     if (gof_file_is_folder (file))
         file->format_size = g_strdup ("—");
@@ -474,7 +474,6 @@ gof_file_update (GOFFile *file)
 
     /* sizes */
     gof_file_update_size (file);
-//g_message ("done");
     /* modified date */
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
@@ -523,7 +522,6 @@ gof_file_update (GOFFile *file)
 	}
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
-//g_message ("leaving file update");
 }
 
 static MarlinIconInfo *
@@ -543,7 +541,7 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         /* TODO thumb test : Playing with the thumbs */
         //if (file->flags != 0 && thumb_path != NULL) {
         if (thumb_path != NULL) {
-            ////g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
+            //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
             //return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
             return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
@@ -654,7 +652,6 @@ void gof_file_update_icon (GOFFile *file, gint size)
 
 void gof_file_update_desktop_file (GOFFile *file)
 {
-//g_message ("update desktop file");
     g_free (file->utf8_collation_key);
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
     gof_file_update_formated_type (file);
@@ -757,10 +754,7 @@ gof_file_query_info (GOFFile *file)
     GFileInfo *info = NULL;
     GError *err = NULL;
 
-    //info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
-//g_message ("file query info");
-    info = g_file_query_info (file->location, "*",
-                              0, NULL, &err);
+    info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
@@ -778,7 +772,6 @@ gof_file_query_info (GOFFile *file)
 void
 gof_file_query_update (GOFFile *file)
 {
-//g_message ("file query update");
     GFileInfo *info = NULL;
 
     if ((info = gof_file_query_info (file)) != NULL) {
@@ -1142,7 +1135,7 @@ gof_file_compare_for_sort (GOFFile *file1,
     }
 
     result = gof_file_compare_for_sort_internal (file1, file2, directories_first, reversed);
-    ////g_message ("res %d %s %s\n", result, file1->name, file2->name);
+    //g_message ("res %d %s %s\n", result, file1->name, file2->name);
 
     if (result == 0) {
         switch (sort_type) {
@@ -2413,34 +2406,24 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
-//g_message ("%s file type %u", file->uri, file->file_type);
     /* TODO check */
 
     if (file->is_directory  ||
        g_strcmp0 (gof_file_get_ftype (file), "inode/directory") == 0)
 
         return TRUE;
-//g_message ("is directory false");
-//g_message ("target location %s", file->target_location != NULL ? "Not null" : "NULL");
-
 
     if (file->target_location != NULL &&
        ((file->file_type == G_FILE_TYPE_MOUNTABLE && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) ||
        (file->target_gof && file->target_gof->is_directory && (gof_preferences_get_default ()->pref_interpret_desktop_files) || gof_file_is_network_uri_scheme (file->target_gof))))
         return TRUE;
 
-//g_message ("ftype is '%s'", gof_file_get_ftype (file));
-//g_message ("->file_type is %u", file->file_type);
-//g_message ("g_strcmp0 (gof_file_get_ftype (file), 'inode/directory') is %s", g_strcmp0 (gof_file_get_ftype (file), "inode/directory") == 0 ? "true" : "false");
-//g_message ("%s is not a folder", file->uri);
     return FALSE;
 }
 
 const gchar *
 gof_file_get_ftype (GOFFile *file)
 {
-    //g_return_val_if_fail (file->info != NULL, NULL);
-
     if (file->info == NULL)
         return NULL;
 

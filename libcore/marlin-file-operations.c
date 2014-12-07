@@ -2069,8 +2069,7 @@ delete_job (GIOSchedulerJob *io_job,
         if (g_file_get_path (file) == NULL)
             continue;
 
-        if (job->try_trash &&
-            g_file_has_uri_scheme (file, "trash")) {
+        if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else if (can_delete_without_confirm (file)) {

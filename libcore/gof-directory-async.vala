@@ -209,6 +209,7 @@ public class GOF.Directory.Async : Object {
                     }
                 }
             }
+
             if (!cancellable.is_cancelled ())
                 done_loading ();
         }
@@ -272,11 +273,6 @@ public class GOF.Directory.Async : Object {
                 foreach (var file_info in files) {
                     /* The following line does not work properly for network files for some reason */
                     GLib.File loc = location.get_child_for_display_name (file_info.get_display_name ());
-
-                    /* Construct a uri to create a GFile from */
-                    //string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
-                    //GLib.File loc = GLib.File.new_for_uri (uri);
-
                     GOF.File? gof = GOF.File.cache_lookup (loc);
 
                     if (gof == null)
@@ -301,11 +297,11 @@ public class GOF.Directory.Async : Object {
                 file.exists = true;
                 state = State.LOADED;
             } else {
-                message ("WARNING load() has been called again before LOADING finished");
+                debug ("WARNING load() has been called again before LOADING finished");
                 return;
             }
         } catch (Error err) {
-            warning ("LIsting directory error: %s %s", err.message, file.uri);
+            debug ("Listing directory error: %s %s", err.message, file.uri);
             state = State.NOT_LOADED;
 
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
@@ -314,9 +310,8 @@ public class GOF.Directory.Async : Object {
             else if (err is IOError.PERMISSION_DENIED)
                 permission_denied = true;
 
-            else if (err is IOError.NOT_MOUNTED) {
+            else if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
-            }
         }
 
         if (!cancellable.is_cancelled ())
@@ -347,7 +342,7 @@ public class GOF.Directory.Async : Object {
             if (f != null)
                 f (gof);
         } catch (Error err) {
-            message ("query info failed, %s %s", err.message, gof.uri);
+            debug ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND)
                 gof.exists = false;
         }
@@ -576,19 +571,17 @@ public class GOF.Directory.Async : Object {
             return null;
         }
 
-        if (file == null) {
+        if (file == null)
             return null;
-        }
 
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);
 
         if (cached_dir != null) {
-            //message ("found cached dir %s", cached_dir.file.uri);
+            debug ("found cached dir %s", cached_dir.file.uri);
             if (cached_dir.file.info == null)
                 cached_dir.file.query_update ();
         }
-
         dir_cache_lock.unlock ();
 
         return cached_dir;

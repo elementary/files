@@ -475,7 +475,6 @@ namespace FM {
                 return;
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
-            //bool only_folders = selection_only_contains_folders (selection);
 
             if (nb_elem == 1) {
                 activate_file (selection.data, screen, flag, true);
@@ -484,7 +483,6 @@ namespace FM {
 
             if (nb_elem < 10 && (default_app == null)) {
                 /* launch each selected file individually ignoring selections greater than 10 */
-                //bool only_one_file = (nb_elem == 1);
                 foreach (unowned GOF.File file in selection) {
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
                     if (file.is_folder ()) {
@@ -728,14 +726,15 @@ namespace FM {
 
                         break;
                 }
-            } else if (only_one_file && file.is_root_network_folder ()) {
+            } else if (only_one_file && file.is_root_network_folder ())
                 load_location (location);
-            } else if (only_one_file && file.is_executable ()) {
+            else if (only_one_file && file.is_executable ())
                 file.execute (screen, null, null);
-            } else if (only_one_file && default_app != null) {
+            else if (only_one_file && default_app != null)
                 file.open_single (screen, default_app);
-            } else
-                warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
+            else
+                warning ("Unable to activate this file.  Default app is %s",
+                         default_app != null ? default_app.get_name () : "null");
         }
 
         private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list, bool delete_if_already_in_trash) {
@@ -1377,7 +1376,6 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
-                    message ("dropping");
                     if (!slot.directory.is_local) {
                         /* Cannot be sure that view will automatically refresh properly
                          * so we force a refresh after a short delay */ 
@@ -1584,9 +1582,9 @@ namespace FM {
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
             GLib.MenuModel? model = null;
 
-            if (get_selected_files () != null) {
+            if (get_selected_files () != null)
                 model = build_menu_selection (ref builder, in_trash, valid_selection_for_edit ());
-            } else
+            else
                 model = build_menu_background (ref builder, in_trash);
 
             if (model != null) {
@@ -2455,11 +2453,10 @@ namespace FM {
             if (slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (slot.directory.is_empty ()) {
+                if (slot.directory.is_empty ())
                     layout.set_markup (slot.empty_message, -1);
-                } else if (slot.directory.permission_denied) {
+                else if (slot.directory.permission_denied)
                     layout.set_markup (slot.denied_message, -1);
-                }
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);

@@ -443,7 +443,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 string s = element.text;
                 if (first) {
                     newpath += s == "file://" ? "/" : s;
-
                     first = false;
                 } else
                     newpath += (s + "/");
@@ -525,21 +524,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return false;
     }    
 
-    /* This function is misnamed - it does not update anything */
     public virtual string? update_breadcrumbs (string newpath, string breadpath) {
         string strloc;
 
-        if (Posix.strncmp (newpath, "./", 2) == 0) {
+        if (Posix.strncmp (newpath, "./", 2) == 0)
             return null;
-        }
 
-        if (newpath[0] == '/') {
+        if (newpath[0] == '/')
             strloc = newpath;
-        } else if (Posix.strncmp (newpath, "~/", 2) == 0) {
+        else if (Posix.strncmp (newpath, "~/", 2) == 0)
             strloc = Environment.get_home_dir ();
-        } else {
+        else
             strloc = breadpath + newpath;
-        }
 
         return strloc;
     }
