@@ -374,9 +374,8 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
+        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
-        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */

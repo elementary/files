@@ -4349,6 +4349,9 @@ retry:
                            &error);
     }
 
+    /* FIXME Result is false if file being moved is a folder and the target is on a Samba share even if
+     * the file is successfully copied.  */
+
     if (res) {
         transfer_info->num_files ++;
         report_copy_progress (copy_job, source_info, transfer_info);

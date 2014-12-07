@@ -359,8 +359,10 @@ namespace Marlin.View {
         }
 
         public void reload () {
-            if (!can_show_folder) /* Try to display folder again */
+            if (!can_show_folder) {
+                can_show_folder = true;/* Try to display folder again */
                 content = view.get_content_box ();
+            }
 
             loading (true);
             /* Allow time for the signal to propagate and the tab label to redraw */

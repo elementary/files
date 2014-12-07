@@ -1030,6 +1030,13 @@ namespace FM {
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
+            if (!slot.directory.is_local) {
+                /* Cannot be sure that view will automatically refresh properly
+                 * so we force a refresh after a short delay */ 
+                slot.directory.clear_directory_info ();
+                slot.directory.need_reload ();
+            }
+
             if (file != null && clipboard.get_can_paste ()) {
                 prepare_to_select_added_files ();
                 if (file.is_folder () && !clipboard.has_file (file))
@@ -1370,6 +1377,13 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
+                    message ("dropping");
+                    if (!slot.directory.is_local) {
+                        /* Cannot be sure that view will automatically refresh properly
+                         * so we force a refresh after a short delay */ 
+                        slot.directory.clear_directory_info ();
+                        slot.directory.need_reload (); 
+                    }
                     switch (info) {
                         case TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
