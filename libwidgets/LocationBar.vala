@@ -435,12 +435,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     protected string get_path_from_element (BreadcrumbsElement? el) {
-        string newpath = (protocol == "file://" ? "" : protocol);
+        /* return path up to the speficied element or, if the parameter is null, the whole path */
+        string newpath = "";
+        bool first = true;
 
         foreach (BreadcrumbsElement element in elements) {
-                newpath += element.text;
-                //if (element.text != "/")
-                    newpath += "/";
+                string s = element.text;
+                if (first) {
+                    newpath += s == "file://" ? "/" : s;
+
+                    first = false;
+                } else
+                    newpath += (s + "/");
 
                 if (el != null && element == el)
                     break;
@@ -479,11 +485,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             if (parts.length > 2) {
                 warning ("Invalid path");
                 return null;
-            } else {
-                if (!parts[1].has_prefix ("/"))
-                    parts[1] = "/" + parts[1];
-
-                newpath = parts[0] + parts[1];
             }
         }
 
@@ -521,7 +522,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             load_right_click_menu (menu_x_root, menu_y_root);
             return true;
         }
-
         return false;
     }    
 
@@ -564,10 +564,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         selected = -1;
         var breads = current_path.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
-        if (breads.length == 0 || breads[0] == "") {
-            var element = new BreadcrumbsElement (protocol, left_padding, right_padding);
-            newelements.add (element);
-        }
+
+        newelements.add (new BreadcrumbsElement (protocol, left_padding, right_padding));
+
 
         /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
         var volume_monitor = VolumeMonitor.get ();
@@ -588,16 +587,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
 
         foreach (string dir in breads) {
-            if (dir != "") {
-                var element = new BreadcrumbsElement (dir, left_padding, right_padding);
-                newelements.add (element);
-            }
+            if (dir != "")
+                newelements.add (new BreadcrumbsElement (dir, left_padding, right_padding));
         }
 
-        newelements[0].text = "";
-
         int max_path = int.min (elements.size, newelements.size);
-
         foreach (IconDirectory icon in icons) {
             if (icon.protocol && icon.path == protocol) {
                 newelements[0].set_icon(icon.icon);

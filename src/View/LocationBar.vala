@@ -435,6 +435,9 @@ namespace Marlin.View.Chrome
         }
 
         protected override void load_right_click_menu (double x, double y) {
+            if (current_right_click_root == null)
+                return;
+
             menu_x_root = x;
             menu_y_root = y;
             menu = new Gtk.Menu ();

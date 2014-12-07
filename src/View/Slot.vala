@@ -161,7 +161,6 @@ message ("SLOT on_path_change_req %s", loc.get_uri ());
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
-message ("SLot user path change request %s", loc.get_uri ());
             if (!location.equal (loc)) {
                 var old_dir = directory;
                 set_up_directory (loc);
