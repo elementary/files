@@ -1502,7 +1502,7 @@ namespace FM {
                 if (file != null) {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
                     highlight_drop_file (drop_target_file, current_actions, path);
-                    if (file.is_folder ()) {
+                    if (file.is_folder () && drag_file_list.index (file) == -1) {
                         cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      drag_enter_delay,
