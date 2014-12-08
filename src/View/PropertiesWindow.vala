@@ -334,7 +334,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (new_name != original_name) {
             file.rename (new_name, (file, result_location, error) => {
             if (error != null)
-                warning ("Rename Error:  %s", error.message);
+                warning ("Rename Error while renaming %s to %s:  %s", original_name, new_name, error.message);
             });
         }
     }
@@ -398,11 +398,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content.pack_start (file_img, false, false);
 
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            Granite.Widgets.WrapLabel label = new Granite.Widgets.WrapLabel ();
+            var label = new Granite.Widgets.WrapLabel ();
             label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
-            Gtk.Entry entry = new Gtk.Entry ();
+            var entry = new Gtk.Entry ();
 
             entry.set_text (goffile.info.get_name ());
 
