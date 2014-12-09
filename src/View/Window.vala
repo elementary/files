@@ -828,8 +828,8 @@ namespace Marlin.View {
             if (scheme == "smb" ||
                 scheme == "ftp" ||
                 scheme == "network")
-
-                return true;
+                /* Do not restore remote and network locations */
+                return false;
 
             try {
                 info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
