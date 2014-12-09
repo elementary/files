@@ -4348,8 +4348,9 @@ retry:
                            &error);
     }
 
-    /* FIXME Result is false if file being moved is a folder and the target is on a Samba share even if
-     * the file is successfully copied.  */
+    /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
+     * the file is successfully copied, so the change will not be notified to the view.
+     * The view will need to be refreshed anyway */
 
     if (res) {
         transfer_info->num_files ++;

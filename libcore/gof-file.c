@@ -213,24 +213,31 @@ gof_file_is_location_uri_default (GOFFile *file)
     return FALSE;
 }
 
+gboolean
+gof_file_is_mountable (GOFFile *file) {
+    g_return_val_if_fail (file->info != NULL, FALSE);
+    return g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE;
+}
+
 static gboolean
 gof_file_is_smb_share (GOFFile *file)
 {
     g_return_val_if_fail (file->info != NULL, FALSE);
+    gboolean res;
 
-    const char *target_uri = g_file_info_get_attribute_string (file->info,
-                                                               G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    res = FALSE;
 
-    if (target_uri != NULL) {
-        gchar **split = g_strsplit (target_uri, "/", 4);
-        if (split[4] == NULL || !strcmp (split[4], "")) {
+    if (gof_file_is_smb_uri_scheme (file)) {
+        const char *target_uri = g_file_info_get_attribute_string (file->info,
+                                                                   G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+        if (target_uri != NULL) {
+            gchar **split = g_strsplit (target_uri, "/", 6);
+            res = (g_strv_length (split) < 5);
             g_strfreev (split);
-            return TRUE;
         }
-        g_strfreev (split);
     }
-
-    return FALSE;
+    return res;
 }
 
 gboolean
@@ -247,12 +254,9 @@ gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
     if (file->info == NULL)
-        return FALSE;
-
-    if (gof_file_is_network_uri_scheme (file))
         return TRUE;
 
-    return (gof_file_is_smb_uri_scheme (file) && gof_file_is_smb_share (file));
+    return (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_share (file));
 }
 
 gboolean
@@ -1243,9 +1247,8 @@ gof_file_is_writable (GOFFile *file)
         return FALSE;
 
     if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-        /* For some reason, the trash folder doesn't have this attribute defined.
-         * The function must be forced to return TRUE if the folder in question
-         * is the trash folder (since it is writable). */
+        /* Trash folder and network folders do not necessarily have this attribute defined.
+         * The function must be forced to return TRUE in these cases. */
         if (strncmp (file->uri, "trash:///", 10) == 0 ||
             gof_file_is_smb_uri_scheme (file) ||
             gof_file_is_remote_uri_scheme (file))
@@ -2418,9 +2421,20 @@ gof_file_is_folder (GOFFile *file)
 
         return TRUE;
 
-    if (file->target_location != NULL &&
-       ((file->file_type == G_FILE_TYPE_MOUNTABLE && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) ||
-       (file->target_gof && file->target_gof->is_directory && (gof_preferences_get_default ()->pref_interpret_desktop_files) || gof_file_is_network_uri_scheme (file->target_gof))))
+    if (file->target_location == NULL)
+        return FALSE;
+
+    if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
+        g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
+
+        return TRUE;
+
+    if (!file->target_gof || !file->target_gof->is_directory)
+        return FALSE;
+
+    if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
+        gof_file_is_network_uri_scheme (file->target_gof))
+
         return TRUE;
 
     return FALSE;

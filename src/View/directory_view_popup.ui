@@ -66,6 +66,9 @@
             <attribute name='action'>common.open_in</attribute>
             <attribute name="target">WINDOW</attribute>
         </item>
+    </menu>
+
+    <menu id='open-in-terminal'>
         <item>
             <attribute name='label' translatable='yes'>Terminal</attribute>
             <attribute name='action'>common.open_in</attribute>

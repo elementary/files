@@ -204,6 +204,7 @@ namespace FM {
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
+        private bool in_network_root = false;
         protected bool is_loading;
         protected bool helpers_shown;
         private uint select_timeout_id = 0;
@@ -1082,6 +1083,7 @@ namespace FM {
             debug ("DV  directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = slot.directory.is_trash;
+            in_network_root = slot.directory.file.is_root_network_folder ();
             thaw_tree ();
             update_menu_actions ();
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
@@ -1610,9 +1612,10 @@ namespace FM {
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool can_edit) {
             GLib.Menu menu = new GLib.Menu ();
 
-            if (in_trash)
+            if (in_trash) {
                 menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
-            else {
+                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
+            } else {
                 menu.append_section (null, build_menu_open (ref builder));
                 if (can_edit) {
                     var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
@@ -1632,12 +1635,13 @@ namespace FM {
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
 
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
-                }
 
-                if (common_actions.get_action_enabled ("bookmark"))
-                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+                    if (common_actions.get_action_enabled ("bookmark"))
+                        menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+
+                    menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
+                }
             }
-            menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
         }
 
@@ -1648,26 +1652,29 @@ namespace FM {
             var menu = new GLib.Menu ();
             menu.append_section (null, build_menu_open (ref builder));
 
-            if (common_actions.get_action_enabled ("paste_into"))
-                menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+            if (!in_network_root) {
+                if (common_actions.get_action_enabled ("paste_into"))
+                    menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
 
+                GLib.MenuModel? template_menu = build_menu_templates ();
+                var new_menu = builder.get_object ("new") as GLib.Menu;
 
-            GLib.MenuModel? template_menu = build_menu_templates ();
-            var new_menu = builder.get_object ("new") as GLib.Menu;
+                if (template_menu != null) {
+                    var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
+                    new_submenu.append_section (null, template_menu);
+                }
 
-            if (template_menu != null) {
-                var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
-                new_submenu.append_section (null, template_menu);
+                menu.append_section (null, new_menu as GLib.MenuModel);
+
+                menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+
+                if (common_actions.get_action_enabled ("bookmark"))
+                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+
+                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
-            menu.append_section (null, new_menu as GLib.MenuModel);
-            menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-
-            if (common_actions.get_action_enabled ("bookmark"))
-                menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-
-            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
-            menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             return menu as MenuModel;
         }
 
@@ -1690,8 +1697,14 @@ namespace FM {
 
             GLib.MenuModel? app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
-            if (app_submenu != null)
-                menu.append_submenu (_("Open in"), app_submenu);
+            if (app_submenu != null) {
+                if (selected_file.is_folder () || selected_file.is_root_network_folder ())
+                    label =  _("Open in");
+                else
+                    label = _("Open with");
+
+                menu.append_submenu (label, app_submenu);
+            }
 
             return menu as MenuModel;
         }
@@ -1702,8 +1715,14 @@ namespace FM {
             var open_with_submenu = new GLib.Menu ();
             int index = -1;
 
-            if (common_actions.get_action_enabled ("open_in"))
+            if (common_actions.get_action_enabled ("open_in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
+
+                if (!selection.data.is_mountable () && !selection.data.is_root_network_folder ())
+                    open_with_submenu.append_section (null, builder.get_object ("open-in-terminal") as GLib.MenuModel);
+                else
+                    return open_with_submenu;
+            }
 
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
             filter_default_app_from_open_with_apps ();
@@ -1721,7 +1740,7 @@ namespace FM {
                         label = label[0].toupper ().to_string () + label.substring (1);
                     }
 
-                    /* Do no show same name twice - some apps have more than one .desktop file
+                    /* Do not show same name twice - some apps have more than one .desktop file
                      * with the same name (e.g. Nautilus)
                      */       
                     if (label != last_label) {

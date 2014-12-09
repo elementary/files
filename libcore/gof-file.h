@@ -257,6 +257,7 @@ gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_root_network_folder (GOFFile *file);
 gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
+gboolean        gof_file_is_mountable (GOFFile *file);
 gboolean        gof_file_thumb_can_frame (GOFFile *file);
 
 char            *gof_file_get_display_target_uri (GOFFile *file);

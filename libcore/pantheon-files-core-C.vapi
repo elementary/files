@@ -265,6 +265,7 @@ namespace GOF {
         public bool is_trashed();
         public bool is_writable ();
         public bool is_executable ();
+        public bool is_mountable ();
         public bool link_known_target;
         public uint flags;
 

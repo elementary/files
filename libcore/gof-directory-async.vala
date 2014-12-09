@@ -270,7 +270,6 @@ public class GOF.Directory.Async : Object {
                 bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
 
                 foreach (var file_info in files) {
-                    /* The following line does not work properly for network files for some reason */
                     GLib.File loc = location.get_child_for_display_name (file_info.get_display_name ());
                     GOF.File? gof = GOF.File.cache_lookup (loc);
 
