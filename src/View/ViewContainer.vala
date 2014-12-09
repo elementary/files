@@ -264,9 +264,16 @@ namespace Marlin.View {
         public void directory_done_loading (GOF.AbstractSlot slot) {
             loading (false);
 
+            if (slot.directory.is_cancelled)
+                return;
+
             if (slot.directory.permission_denied) {
                 content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
+                can_show_folder = false;
+            } else if (!slot.directory.can_load) {
+                content = new Granite.Widgets.Welcome (_("Unable to mount folder."),
+                                                           _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
                     content = new DirectoryNotFound (slot.directory, this);

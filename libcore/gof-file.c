@@ -197,6 +197,8 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 static gboolean
 gof_file_is_location_uri_default (GOFFile *file)
 {
+    g_return_val_if_fail (file->info != NULL, FALSE);
+
     const char *target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
     if (target_uri != NULL) {
@@ -214,6 +216,8 @@ gof_file_is_location_uri_default (GOFFile *file)
 static gboolean
 gof_file_is_smb_share (GOFFile *file)
 {
+    g_return_val_if_fail (file->info != NULL, FALSE);
+
     const char *target_uri = g_file_info_get_attribute_string (file->info,
                                                                G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
@@ -242,6 +246,9 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
+    if (file->info == NULL)
+        return FALSE;
+
     if (gof_file_is_network_uri_scheme (file))
         return TRUE;
 
@@ -567,7 +574,6 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
-        //printf ("thumbnail loading\n");
     } else {
         gicon = _g_object_ref0 (file->icon);
     }
@@ -1135,7 +1141,6 @@ gof_file_compare_for_sort (GOFFile *file1,
     }
 
     result = gof_file_compare_for_sort_internal (file1, file2, directories_first, reversed);
-    //g_message ("res %d %s %s\n", result, file1->name, file2->name);
 
     if (result == 0) {
         switch (sort_type) {

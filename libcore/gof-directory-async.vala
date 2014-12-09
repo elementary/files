@@ -76,6 +76,10 @@ public class GOF.Directory.Async : Object {
     public bool has_trash_dirs;
     public bool can_load;
 
+    public bool is_cancelled {
+        get { return cancellable.is_cancelled (); }
+    }
+
     private Async (GLib.File _file) {
         location = _file;
         file = GOF.File.get (location);
@@ -90,13 +94,12 @@ public class GOF.Directory.Async : Object {
             file.ensure_query_info();
 
         if (!is_trash && !is_local && !file.is_mounted) {
-            can_load = false;
             mount_mountable.begin ((obj,res) => {
                 try {
                     mount_mountable.end (res);
-                    can_load = true;
                 } catch (Error e) {
                     warning ("mount_mountable failed: %s", e.message);
+                    can_load = false;
 
                     if (e is IOError.ALREADY_MOUNTED)
                         can_load = true;
@@ -180,21 +183,18 @@ public class GOF.Directory.Async : Object {
             return;
 
         if (state != State.LOADED) {
-            /* clear directory info if it's not fully loaded */
-            if (state == State.LOADING)
-                clear_directory_info ();
 
             list_directory.begin ();
+
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);
             } catch (IOError e) {
                 if (!(e is IOError.NOT_MOUNTED)) {
-                    warning ("directory monitor failed: %s %s", e.message, file.uri);
+                    debug ("directory monitor failed: %s %s", e.message, file.uri);
                 }
             }
         } else {
-            /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
 
             bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
@@ -210,8 +210,7 @@ public class GOF.Directory.Async : Object {
                 }
             }
 
-            if (!cancellable.is_cancelled ())
-                done_loading ();
+            done_loading ();
         }
     }
 
@@ -233,8 +232,8 @@ public class GOF.Directory.Async : Object {
                 }
             }
         }
-        if (!cancellable.is_cancelled ())
-            done_loading ();
+
+        done_loading ();
     }
 
     public void update_desktop_files () {
@@ -293,6 +292,7 @@ public class GOF.Directory.Async : Object {
                     files_count++;
                 }
             }
+
             if (state == State.LOADING) {
                 file.exists = true;
                 state = State.LOADED;
@@ -314,8 +314,7 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-        if (!cancellable.is_cancelled ())
-            done_loading ();
+        done_loading ();
     }
 
     public GOF.File? file_hash_lookup_location (GLib.File? location) {

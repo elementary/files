@@ -699,7 +699,6 @@ namespace FM {
     /** File operations */
 
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-
             if (updates_frozen || in_trash)
                 return;
 

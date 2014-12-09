@@ -561,7 +561,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         var breads = current_path.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
 
-        newelements.add (new BreadcrumbsElement (protocol, left_padding, right_padding));
+        string s = protocol == Marlin.ROOT_FS_URI ? "" : protocol;
+        newelements.add (new BreadcrumbsElement (s, left_padding, right_padding));
 
 
         /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */

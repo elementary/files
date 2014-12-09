@@ -100,6 +100,8 @@ namespace Marlin.View {
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     autosize_slot ();
+
+                set_view_updates_frozen (false);
             });
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
@@ -194,6 +196,8 @@ namespace Marlin.View {
 
             if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
+
+            set_view_updates_frozen (true);
         }
 
         public void set_view_updates_frozen (bool freeze) {
