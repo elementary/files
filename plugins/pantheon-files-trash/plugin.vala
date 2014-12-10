@@ -17,13 +17,13 @@
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private TrashMonitor trash_monitor;
-    private Gee.Map<GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<GOF.AbstractSlot, Gtk.InfoBar>();
+    private Gee.HashMap<GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<GOF.AbstractSlot, Gtk.InfoBar>();
 
     public Trash () {
         trash_monitor = TrashMonitor.get ();
         trash_monitor.trash_state_changed.connect ((state) => {
             /* state true = empty trash */
-            Gee.List<Gee.Map.Entry<GOF.AbstractSlot,Gtk.InfoBar>> to_remove = new Gee.LinkedList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.InfoBar>> ();
+            var to_remove = new Gee.ArrayList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.InfoBar>> ();
             foreach (var entry in infobars.entries) {
                 var infobar = entry.value;
                 if (infobar.get_parent () != null) {
