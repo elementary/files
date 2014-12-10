@@ -62,7 +62,6 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 infobar.show_all ();
                 infobar.set_visible (!TrashMonitor.is_empty ());
                 infobars.@set (slot, infobar);
-
             }
         } else {
             var infobar = infobars.@get (slot);
