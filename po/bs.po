@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-12-07 09:31+0000\n"
+"PO-Revision-Date: 2014-12-10 00:37+0000\n"
 "Last-Translator: aleksandar-todorovic <aleksandar.todorovic@mail.ru>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-12-08 06:34+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2014-12-10 07:00+0000\n"
+"X-Generator: Launchpad (build 17283)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1721,39 +1721,39 @@ msgstr "Postavi kao podrazumijevano"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Nije moguće spustiti ovu datoteku"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Ime datoteke nije validno"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Nije validno"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Pokreni"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Otvori pomoću %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Otvori sa"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Ostale aplikacije"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Neimenovana %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s nije validno ime za datoteku"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1827,23 +1827,23 @@ msgstr "Zatvori"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "datoteka"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "datoteke"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Stvarna veličina je možda veća, "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "nije moguće pročitati zbog prava pristupa ili neke druge greške."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1941,23 +1941,23 @@ msgstr "Ovaj direktorij je prazan"
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Pristup odbijen"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Izvršavanje \"%s\" nije uspjelo"
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Premjesti ovdje"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopiraj ovdje"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Dodaj link ovdje"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2084,68 +2084,68 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Trajno izbriši"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Premjesti u smeće"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Novi"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Direktorij"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Prazna datoteka"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Prikaži sakrivene datoteke"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Novi tab"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Bookmark"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Nalijepi"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Isijeci"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Nalijepi u direktorij"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Sortiraj po"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Imenu"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Datumu"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Obrnuti redosljed"
