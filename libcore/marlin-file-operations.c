@@ -4235,13 +4235,10 @@ copy_move_file (CopyMoveJob *copy_job,
     handled_invalid_filename = *dest_fs_type != NULL;
 
     //amtest
-    printf("%s\n", G_STRFUNC);
     if (unique_names) {
         dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr++);
-        printf ("unique_names TRUE\n");
     } else {
         dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-        printf ("unique_names FALSE\n");
     }
 
 
@@ -5953,7 +5950,6 @@ marlin_file_operations_copy_move   (GList                  *files,
                                     MarlinCopyCallback     done_callback,
                                     gpointer               done_callback_data)
 {
-    printf ("%s\n", G_STRFUNC);
     GList *p;
     GFile *src_dir;
     GtkWindow *parent_window;
