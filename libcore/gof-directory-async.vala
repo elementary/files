@@ -128,7 +128,6 @@ public class GOF.Directory.Async : Object {
             can_load = false;
             return false;
         }
-
         return true;
     }
 
@@ -262,7 +261,6 @@ public class GOF.Directory.Async : Object {
         cancellable.reset ();
         longest_file_name = "";
         permission_denied = false;
-
         if (state == State.LOADING)
             return;
 
@@ -344,7 +342,6 @@ public class GOF.Directory.Async : Object {
             state = State.NOT_LOADED;
             return;
         }
-
         file.exists = true;
         files_count = 0;
         state = State.LOADING;
@@ -389,7 +386,7 @@ public class GOF.Directory.Async : Object {
                 return;
             }
         } catch (Error err) {
-            message ("Listing directory error: %s %s", err.message, file.uri);
+            debug ("Listing directory error: %s %s", err.message, file.uri);
             state = State.NOT_LOADED;
 
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)

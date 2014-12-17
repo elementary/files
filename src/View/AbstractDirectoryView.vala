@@ -1633,7 +1633,7 @@ namespace FM {
 
                     if (slot.directory.has_trash_dirs)
                         menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
-                    else if (slot.directory.file.mount != null)
+                    else
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
 
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);

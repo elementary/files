@@ -118,7 +118,6 @@ namespace Marlin.View {
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
             if (mode != view_mode) {
-
                 if (loc == null) /* Only untrue on container creation */
                     loc = this.location;
 
@@ -139,11 +138,13 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
+                content = view.get_content_box ();
+
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
 
-                set_up_current_slot ();
+                load_slot_directory (view);
                 window.update_top_menu ();
             }
         }
@@ -269,7 +270,6 @@ namespace Marlin.View {
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
-
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
