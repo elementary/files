@@ -161,7 +161,7 @@ namespace Marlin.View {
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
-            if (!location.equal (loc)) {
+            //if (!location.equal (loc)) {
                 var old_dir = directory;
                 set_up_directory (loc);
                 dir_view.change_directory (old_dir, directory);
@@ -169,9 +169,10 @@ namespace Marlin.View {
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
                 ctab.slot_path_changed (directory.location, allow_mode_change);
-            } else {
-                ctab.reload ();
-            }
+            //}
+            //else {
+              //  ctab.reload ();
+            //}
         }
 
         protected override void make_view () {
@@ -269,8 +270,10 @@ namespace Marlin.View {
         }
 
         public override void reload () {
-            if (dir_view != null)
-                dir_view.reload ();
+message ("Slot reload");
+            user_path_change_request (location, false);
+//            if (dir_view != null)
+//                dir_view.reload ();
         }
 
         public override void cancel () {

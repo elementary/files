@@ -149,6 +149,7 @@ namespace Marlin.View {
         }
 
         public void user_path_change_request (GLib.File loc) {
+            loading (true);
             view.user_path_change_request (loc);
         }
 
@@ -187,7 +188,6 @@ namespace Marlin.View {
             if (slot == null)
                 return;
 
-            loading (true);
             refresh_slot_info (slot);
 
             /* Allow time for the window to update before trying to load directory so that

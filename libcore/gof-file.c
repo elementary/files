@@ -174,19 +174,6 @@ gof_file_clear_info (GOFFile *file)
     file->can_unmount = FALSE;
 }
 
-static gboolean
-gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
-{
-    int iterator;
-
-    for (iterator = 0; iterator < G_N_ELEMENTS (schemes); iterator++) {
-        if (g_file_has_uri_scheme (file->location, schemes[iterator]))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
 /**
  * gof_file_is_location_uri_default:
  *
@@ -243,11 +230,8 @@ gof_file_is_smb_share (GOFFile *file)
 gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
-    if (gof_file_is_root_network_folder (file))
+    if (gof_file_is_root_network_folder (file) || gof_file_is_other_uri_scheme (file))
         return TRUE;
-
-    const char* SCHEMES[] = { "afp", "dav", "davs", "ftp", "sftp" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
 }
 
 gboolean
@@ -262,15 +246,29 @@ gof_file_is_root_network_folder (GOFFile *file)
 gboolean
 gof_file_is_network_uri_scheme (GOFFile *file)
 {
-    const char* SCHEMES[] = { "network" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
+    return g_file_has_uri_scheme (file->location, "network");
 }
 
 gboolean
 gof_file_is_smb_uri_scheme (GOFFile *file)
 {
-    const char* SCHEMES[] = { "smb" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
+    return g_file_has_uri_scheme (file->location, "smb");
+}
+
+gboolean
+gof_file_is_other_uri_scheme (GOFFile *file)
+{
+    GFile *loc = file->location;
+
+    gboolean res;
+
+    res = g_file_has_uri_scheme (loc, "ftp") ||
+          g_file_has_uri_scheme (loc, "sftp") ||
+          g_file_has_uri_scheme (loc, "afp") ||
+          g_file_has_uri_scheme (loc, "dav") ||
+          g_file_has_uri_scheme (loc, "davs");
+
+    return res;
 }
 
 void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
@@ -487,7 +485,6 @@ gof_file_update (GOFFile *file)
     gof_file_update_size (file);
     /* modified date */
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-
     /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
@@ -513,25 +510,30 @@ gof_file_update (GOFFile *file)
     file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
     const char *owner = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_USER);
     const char *group = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_GROUP);
+
     if (owner != NULL)
         file->owner = strdup (owner);
+
     if (group != NULL)
         file->group = strdup (group);
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
         file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
         if (file->owner == NULL)
             file->owner = g_strdup_printf ("%d", file->uid);
     }
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
         file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
         if (file->group == NULL)
             file->group = g_strdup_printf ("%d", file->gid);
     }
 
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT)) {
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT))
         file->can_unmount = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT);
-	}
+
     gof_file_update_trash_info (file);
+
     gof_file_update_emblem (file);
 }
 
@@ -671,6 +673,10 @@ void gof_file_update_desktop_file (GOFFile *file)
 
 void gof_file_update_emblem (GOFFile *file)
 {
+    /* Do not try to add emblems to network and remote files (except smb) - can cause blocking io*/
+    if (gof_file_is_other_uri_scheme (file) || gof_file_is_network_uri_scheme (file))
+        return;
+
     /* erase previous stored emblems */
     if (file->emblems_list != NULL) {
         g_list_free (file->emblems_list);
@@ -679,6 +685,7 @@ void gof_file_update_emblem (GOFFile *file)
 
     if(plugins != NULL)
         marlin_plugin_manager_update_file_info (plugins, file);
+
 
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
@@ -696,10 +703,12 @@ void gof_file_update_emblem (GOFFile *file)
         else
             gof_file_add_emblem (file, "emblem-unreadable");
     }
+
     /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
         gof_file_icon_changed (file);
+
 }
 
 void gof_file_add_emblem (GOFFile* file, const gchar* emblem)

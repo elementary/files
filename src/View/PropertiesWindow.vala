@@ -254,6 +254,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private void selection_size_update () {
+message ("selection sizr update");
         total_size = 0;
         deep_count_directories = null;
         folder_count = 0;
@@ -1323,6 +1324,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 
     public static uint64 file_real_size (GOF.File gof) {
+        if (!gof.is_connected)
+            return 0;
+
         uint64 file_size = gof.size;
         try {
             var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
@@ -1333,6 +1337,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 file_size = allocated_size;
         } catch (Error err) {
             warning ("%s", err.message);
+            gof.is_connected = false;
         }
         return file_size;
     }

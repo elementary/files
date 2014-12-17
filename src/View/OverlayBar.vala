@@ -137,7 +137,6 @@ namespace Marlin.View {
                     if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         load_resolution.begin (goffile);
                     }
-
                     status = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
                 } else {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);

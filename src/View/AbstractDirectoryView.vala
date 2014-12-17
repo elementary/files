@@ -2360,8 +2360,15 @@ namespace FM {
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
-                window.item_hovered (file);
-                hover_path = path;
+                /* cannot get file info while network disconnected */
+                if (slot.directory.is_local || slot.directory.check_network ()) {
+                    /* cannot get file info while network disconnected */
+                    window.item_hovered (file);
+                    hover_path = path;
+                } else {
+                    slot.reload ();
+                    slot.directory.need_reload ();
+                }
             }
 
             return false;

@@ -87,24 +87,19 @@ public class GOF.Directory.Async : Object {
     }
 
     private Async (GLib.File _file) {
-message ("New async");
         location = _file;
         file = GOF.File.get (location);
         cancellable = new Cancellable ();
         state = State.NOT_LOADED;
         is_ready = false;
+        can_load = true;
 
         scheme = location.get_uri_scheme ();
         is_trash = (scheme == "trash");
         is_local = is_trash || (scheme == "file");
 
-        if (!get_file_info () || (!file.is_folder () && !file.is_root_network_folder ())) {
-            if (!try_parent ()) {
-                is_ready = true;
-                can_load = false;
-                return;
-            }
-        }
+        if (!prepare_directory ())
+            return;
 
         assert (directory_cache != null);
         directory_cache.insert (location, this);
@@ -115,6 +110,26 @@ message ("New async");
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+    }
+
+    /* This is also called when reloading the directory so that another attempt to connect to
+     * the network is made */
+    private bool prepare_directory () {
+        if (!get_file_info ()) {
+            is_ready = true;
+            /* local uris are deemed loadable even if they do not exist
+             * If they do not exist an opportunity will be given to create them */
+            can_load = is_local;
+            return false;
+        }
+
+        if (!file.is_folder () && !file.is_root_network_folder () && !try_parent ()) {
+            is_ready = true;
+            can_load = false;
+            return false;
+        }
+
+        return true;
     }
 
     private bool try_parent () {
@@ -132,7 +147,7 @@ message ("New async");
     }
 
     private bool get_file_info () { 
-        if (!is_local & !check_network ()) {
+        if (!is_local && !check_network ()) {
             return false;
         }
 
@@ -167,7 +182,7 @@ message ("New async");
         return true;
     }
 
-    private bool check_network () {
+    public bool check_network () {
         var net_mon = GLib.NetworkMonitor.get_default ();
         var net_available = net_mon.get_network_available ();
 
@@ -185,6 +200,7 @@ message ("New async");
                 }
                 catch (GLib.Error e) {}
             }
+
             return false;
         }
 
@@ -233,9 +249,11 @@ message ("New async");
             idle_consume_changes_id = 0;
         }
 
+        if (file_hash != null)
+            file_hash.remove_all ();
+
         monitor = null;
         sorted_dirs = null;
-        file_hash.remove_all ();
         files_count = 0;
         state = State.NOT_LOADED;
     }
@@ -248,7 +266,6 @@ message ("New async");
         if (state == State.LOADING)
             return;
 
-message ("Async load");
         if (state != State.LOADED) {
             list_directory.begin ();
 
@@ -327,7 +344,6 @@ message ("Async load");
             state = State.NOT_LOADED;
             return;
         }
-message ("Async list directory");
 
         file.exists = true;
         files_count = 0;
@@ -337,7 +353,6 @@ message ("Async list directory");
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
             while (state == State.LOADING) {
                 var files = yield e.next_files_async (200, 0, cancellable);
-
                 if (files == null)
                     break;
 
@@ -374,7 +389,7 @@ message ("Async list directory");
                 return;
             }
         } catch (Error err) {
-            debug ("Listing directory error: %s %s", err.message, file.uri);
+            message ("Listing directory error: %s %s", err.message, file.uri);
             state = State.NOT_LOADED;
 
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
@@ -618,14 +633,10 @@ message ("Async list directory");
     }
 
     public static Async from_gfile (GLib.File file) {
-message ("Async from gfile");
         /* Note: cache_lookup creates directory_cache if necessary */
         Async?  dir = cache_lookup (file);
-        if (dir != null) {
-message ("got from cache");
-            if (!dir.is_local)
-                dir.get_file_info ();
-        }
+        if (dir != null && !dir.is_local)
+                dir = null;
 
         return dir ?? new Async (file);
     }
