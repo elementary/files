@@ -343,8 +343,8 @@ namespace Marlin.View.Chrome
                 /* Verify that we got a new instance of files so we do not double up events */
                 if (files_cache != files)
                     files.file_loaded.connect (on_file_loaded);
-                
-                files.load ();
+
+                files.load_cached_files ();
             }
         }
 

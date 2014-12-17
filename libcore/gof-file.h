@@ -94,6 +94,7 @@ struct _GOFFile {
     int             color;
     gboolean        is_mounted;
     gboolean        exists;
+    gboolean        is_connected;
 
     gboolean        has_permissions;
     guint32         permissions;

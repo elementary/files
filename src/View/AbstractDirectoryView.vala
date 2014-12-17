@@ -588,10 +588,12 @@ namespace FM {
             loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
-            connect_directory_handlers (new_dir);
+            if (new_dir.can_load);
+                connect_directory_handlers (new_dir);
         }
 
         public void reload () {
+            slot.directory.clear_directory_info ();
             change_directory (slot.directory, slot.directory);
         }
 
@@ -2003,13 +2005,14 @@ namespace FM {
             if (thumbnail_source_id != 0 || !(slot is GOF.AbstractSlot) || slot.directory == null)
                 return;
 
-            cancel_thumbnailing ();
             thumbnail_source_id = GLib.Timeout.add (175, () => {
                 if (!(slot is GOF.AbstractSlot) || slot.directory == null)
                     return false;
 
                 if (slot.directory.is_loading ())
                     return true;
+
+                cancel_thumbnailing ();
 
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;

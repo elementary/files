@@ -563,13 +563,17 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
+
                 var root = mount.get_default_location ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
-                    if (scheme == "archive") {
+                    if (scheme == "archive" ) {
                         network_mounts.prepend (mount);
                         continue;
                     }
+                } else {
+                    network_mounts.prepend (mount);
+                    continue;
                 }
 
                 add_place (Marlin.PlaceType.MOUNTED_VOLUME,

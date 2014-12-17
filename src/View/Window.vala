@@ -333,6 +333,9 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
+            if (freeze_view_changes)
+                return;
+
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
@@ -829,7 +832,8 @@ namespace Marlin.View {
                 scheme == "ftp" ||
                 scheme == "network")
                 /* Do not restore remote and network locations */
-                return false;
+                //return false;
+                return true;
 
             try {
                 info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
@@ -882,6 +886,10 @@ namespace Marlin.View {
         }
 
         public void update_top_menu () {
+            if (freeze_view_changes)
+                return;
+
+
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
@@ -912,13 +920,9 @@ namespace Marlin.View {
         }
 
         public void file_path_change_request (GLib.File loc) {
-            FileType type = loc.query_file_type (GLib.FileQueryInfoFlags.NONE);
-
-            if (type == FileType.DIRECTORY || type == FileType.UNKNOWN)
-                /* ViewContainer deals with non-existent or unmounted directories */
-                current_tab.user_path_change_request (loc);
-            else
-                current_tab.focus_location (loc);
+            /* ViewContainer deals with non-existent or unmounted directories
+             * and locations that are not directories */
+            current_tab.user_path_change_request (loc);
         }
 
         public void uri_path_change_request (string uri) {

@@ -168,7 +168,7 @@ namespace Marlin.View {
                 /* ViewContainer takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
-                ctab.slot_path_changed (loc, allow_mode_change);
+                ctab.slot_path_changed (directory.location, allow_mode_change);
             } else {
                 ctab.reload ();
             }

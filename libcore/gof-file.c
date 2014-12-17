@@ -772,8 +772,11 @@ gof_file_query_info (GOFFile *file)
         } else if (err->code == G_IO_ERROR_NOT_FOUND
             || err->code == G_IO_ERROR_NOT_DIRECTORY) {
             file->exists = FALSE;
-        } else
-            print_error (err);
+        } else if (err->code == G_IO_ERROR_TIMED_OUT) {
+            file->is_connected = FALSE;
+        }
+
+        print_error (err); /* also frees error */
     }
     return info;
 }
@@ -877,6 +880,7 @@ static void gof_file_init (GOFFile *file) {
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
     file->exists = TRUE;
+    file->is_connected = TRUE;
 
     file->flags = 0;
     file->pix_size = -1;
@@ -1941,7 +1945,7 @@ gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
     gfiles = gof_files_get_location_list (files);
 
     succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
-    print_error (error);
+    print_error (error); /* also frees error */
 
     g_list_free_full (gfiles, (GDestroyNotify) eel_g_file_unref);
     g_object_unref (context);

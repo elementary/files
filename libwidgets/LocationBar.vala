@@ -192,6 +192,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 escape ();
                 return true;
         }
+
         return base.key_press_event (event);
     }
 
