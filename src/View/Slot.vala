@@ -214,10 +214,6 @@ namespace Marlin.View {
                 return false;
         }
 
-        public bool is_renaming () {
-            return dir_view.renaming;
-        } 
-
         public override unowned GLib.List<unowned GOF.File>? get_selected_files () {
             if (dir_view != null)
                 return dir_view.get_selected_files ();

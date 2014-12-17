@@ -232,14 +232,14 @@ namespace Marlin.View {
 
             switch (event.keyval) {
                 case Gdk.Key.Left:
-                    if (! (slot_list.nth_data (current_position).is_renaming ()))
+                    if (! (slot_list.nth_data (current_position).get_directory_view ().renaming))
                         if (current_position > 0)
                             to_activate = slot_list.nth_data (current_position - 1);
 
                     break;
 
                 case Gdk.Key.Right:
-                    if (! (slot_list.nth_data (current_position).is_renaming ())) {
+                    if (! (slot_list.nth_data (current_position).get_directory_view ().renaming)) {
                         if (current_slot.get_selected_files () == null)
                             return true;
 
