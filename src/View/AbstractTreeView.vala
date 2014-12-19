@@ -241,6 +241,7 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
+message ("ATV set cursor");
             if (path == null)
                 return;
 
