@@ -1837,7 +1837,11 @@ namespace FM {
 
             /* TODO inhibit copy for unreadable files see bug #1392465*/
             action_set_enabled (common_actions, "copy", true); 
-            action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
+
+            /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
+             * because remote file bookmarks do not work correctly for unmounted locations */
+            bool can_bookmark = (slot.directory.is_local && !more_than_one_selected) || single_folder;
+            action_set_enabled (common_actions, "bookmark", can_bookmark);
         }
 
         private void update_menu_actions_sort () {
