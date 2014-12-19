@@ -68,6 +68,11 @@ namespace Marlin.View {
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             path_changed.connect (user_path_change_request);
+            win.folder_deleted.connect ((location) => {
+                if (location.equal (loc)) {
+                    window.remove_tab (this);
+                }
+            });
             change_view_mode (mode, loc);
         }
 
