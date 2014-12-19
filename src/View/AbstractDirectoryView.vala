@@ -2165,6 +2165,9 @@ namespace FM {
                     if (no_mods) {
                         trash_or_delete_selected_files ();
                         return true;
+                    } else if (only_shift_pressed) {
+                        delete_selected_files ();
+                        return true;
                     }
                     break;
 
