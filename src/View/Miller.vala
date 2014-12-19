@@ -228,38 +228,39 @@ namespace Marlin.View {
                 return false;
 
             int current_position = slot_list.index (current_slot);
+            
+            if (slot_list.nth_data (current_position).get_directory_view ().renaming)
+                return false;
+
             Marlin.View.Slot to_activate = null;
 
             switch (event.keyval) {
                 case Gdk.Key.Left:
-                    if (! (slot_list.nth_data (current_position).get_directory_view ().renaming))
-                        if (current_position > 0)
-                            to_activate = slot_list.nth_data (current_position - 1);
+                    if (current_position > 0)
+                        to_activate = slot_list.nth_data (current_position - 1);
 
                     break;
 
                 case Gdk.Key.Right:
-                    if (! (slot_list.nth_data (current_position).get_directory_view ().renaming)) {
-                        if (current_slot.get_selected_files () == null)
-                            return true;
+                    if (current_slot.get_selected_files () == null)
+                        return true;
 
-                        GOF.File? selected_file = current_slot.get_selected_files ().data;
+                    GOF.File? selected_file = current_slot.get_selected_files ().data;
 
-                        if (selected_file == null)
-                            return true;
+                    if (selected_file == null)
+                        return true;
 
-                        GLib.File current_location = selected_file.location;
-                        GLib.File? next_location = null;
-     
-                        if (current_position < slot_list.length () - 1)
-                            next_location = slot_list.nth_data (current_position + 1).location;
+                    GLib.File current_location = selected_file.location;
+                    GLib.File? next_location = null;
+ 
+                    if (current_position < slot_list.length () - 1)
+                        next_location = slot_list.nth_data (current_position + 1).location;
 
-                        if (next_location != null && next_location.equal (current_location)) {
-                            to_activate = slot_list.nth_data (current_position + 1);
-                        } else if (selected_file.is_folder ()) {
-                            add_location (current_location, current_slot);
-                            return true;
-                        }
+                    if (next_location != null && next_location.equal (current_location)) {
+                        to_activate = slot_list.nth_data (current_position + 1);
+                    } else if (selected_file.is_folder ()) {
+                        add_location (current_location, current_slot);
+                        return true;
                     }
                     break;
             }
