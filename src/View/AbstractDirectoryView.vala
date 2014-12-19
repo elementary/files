@@ -1042,7 +1042,6 @@ namespace FM {
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
-message ("on_directory_file_deleted");
             remove_marlin_icon_info_cache (file);
             model.remove_file (file, dir);
             if (file.is_folder ()) {

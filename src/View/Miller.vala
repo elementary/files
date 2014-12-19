@@ -154,6 +154,9 @@ namespace Marlin.View {
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.connect (on_miller_slot_request);
             slot.size_change.connect (update_total_width);
+            slot.folder_deleted.connect ((file, dir) => {
+                on_slot_folder_deleted (slot, dir);
+            });
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -179,6 +182,12 @@ namespace Marlin.View {
                 hadj.set_value (hadj.get_value () + increment);
 
             return true;
+        }
+
+        private void on_slot_folder_deleted (Slot slot, GOF.Directory.Async dir) {
+            Slot? next_slot = slot_list.nth_data (slot.slot_number +1);
+            if (next_slot != null && next_slot.directory == dir)
+                truncate_list_after_slot (slot);
         }
 
         /** Called in response to slot active signal.
