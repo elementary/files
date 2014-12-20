@@ -62,8 +62,12 @@ namespace Marlin.View.Chrome
             this.win = win;
             bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
-
             bread.path_changed.connect (on_path_changed);
+
+            bread.reload.connect (() => {
+                win.win_actions.activate_action ("refresh", null);
+            });
+
             bread.activate_alternate.connect ((file) => { activate_alternate(file); });
             bread.notify["search-mode"].connect (() => {
                 if (!bread.search_mode) {

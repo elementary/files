@@ -102,6 +102,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void path_changed (File file);
     public signal void need_completion ();
     public signal void search_changed (string text);
+    public signal void reload ();
 
     List<IconDirectory?> icons;
 
@@ -286,7 +287,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             if (is_focus)
                 on_activate ();
             else
-                path_changed (get_file_for_path (get_path_from_element (elements.last ())));
+                reload ();
         }
     }
 
