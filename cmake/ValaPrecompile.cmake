@@ -229,7 +229,6 @@ macro(vala_precompile output target_name)
         ${vala_pkg_opts} 
         ${ARGS_OPTIONS} 
         "-g"
-        "--save-temps"
         ${in_files} 
         ${custom_vapi_arguments}
     COMMAND
