@@ -185,19 +185,18 @@ static gboolean
 gof_file_is_location_uri_default (GOFFile *file)
 {
     g_return_val_if_fail (file->info != NULL, FALSE);
+    gboolean res;
 
     const char *target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
-    if (target_uri != NULL) {
-        gchar **split = g_strsplit (target_uri, "/", 4);
-        if (split[3] == NULL || !strcmp (split[3], "")) {
-            g_strfreev (split);
-            return TRUE;
-        }
-        g_strfreev (split);
-    }
+    if (target_uri == NULL)
+        target_uri = file->uri;
 
-    return FALSE;
+    gchar **split = g_strsplit (target_uri, "/", 4);
+    res = (split[3] == NULL || !strcmp (split[3], ""));
+    g_strfreev (split);
+
+    return res;
 }
 
 gboolean
@@ -218,11 +217,12 @@ gof_file_is_smb_share (GOFFile *file)
         const char *target_uri = g_file_info_get_attribute_string (file->info,
                                                                    G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
-        if (target_uri != NULL) {
-            gchar **split = g_strsplit (target_uri, "/", 6);
-            res = (g_strv_length (split) < 5);
-            g_strfreev (split);
-        }
+        if (target_uri == NULL)
+            target_uri = file->uri;
+
+        gchar **split = g_strsplit (target_uri, "/", 6);
+        res = (g_strv_length (split) < 5);
+        g_strfreev (split);
     }
     return res;
 }
@@ -729,7 +729,7 @@ print_error (GError *error)
 {
     if (error != NULL)
     {
-        g_warning ("%s [code %d]\n", error->message, error->code);
+        g_debug ("%s [code %d]\n", error->message, error->code);
         g_clear_error (&error);
     }
 }
@@ -2427,17 +2427,15 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
-    /* TODO check */
-
-    if (file->is_directory  ||
-       g_strcmp0 (gof_file_get_ftype (file), "inode/directory") == 0)
-
+    /* TODO check this works for non-local files and other uri schemes*/
+    if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
         return TRUE;
 
     if (file->target_location == NULL)
         return FALSE;
 
     if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
+        file->info != NULL &&
         g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
 
         return TRUE;
@@ -2445,6 +2443,7 @@ gof_file_is_folder (GOFFile *file)
     if (!file->target_gof || !file->target_gof->is_directory)
         return FALSE;
 
+    /* file->target_gof is directory */
     if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
         gof_file_is_network_uri_scheme (file->target_gof))
 
@@ -2456,14 +2455,16 @@ gof_file_is_folder (GOFFile *file)
 const gchar *
 gof_file_get_ftype (GOFFile *file)
 {
-    if (file->info == NULL)
+    if (file->info == NULL || gof_file_is_location_uri_default (file))
         return NULL;
 
     const char *ftype = NULL;
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
         ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+
     if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype)
         return file->tagstype;
 

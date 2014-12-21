@@ -163,7 +163,7 @@ public class GOF.Directory.Async : Object {
                     mount_mountable.end (res);
                     can_load = true;
                 } catch (Error e) {
-                    warning ("mount_mountable failed: %s", e.message);
+                    debug ("mount_mountable failed: %s", e.message);
 
                     if (e is IOError.ALREADY_MOUNTED) {
                         can_load = true;
