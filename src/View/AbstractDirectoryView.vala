@@ -2616,7 +2616,7 @@ namespace FM {
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
-            helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
+            helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
