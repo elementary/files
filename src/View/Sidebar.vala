@@ -33,9 +33,8 @@ namespace Marlin.Places {
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
-        private const int EJECT_BUTTON_XPAD = 12;
-        private const int TEXT_XPAD = 5;
-        private const int ICON_XPAD = 6;
+        private const int EJECT_BUTTON_XPAD = 6;
+        private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
         private const int PROP_ZOOM_LEVEL = 1;
 
@@ -160,32 +159,30 @@ namespace Marlin.Places {
             tree_view.set_size_request (Preferences.settings.get_int ("minimum-sidebar-width"), -1);
             tree_view.set_headers_visible (false);
 
-            var col = new Gtk.TreeViewColumn ();
+            var cab = new Gtk.CellAreaBox ();
+            var col = new Gtk.TreeViewColumn.with_area (cab);
             col.max_width = -1;
             col.expand = true;
             col.spacing = 3;
 
             var crt = new Gtk.CellRendererText ();
-            col.pack_start(crt, false);
-            col.set_cell_data_func (crt, root_indent_cell_data_func);
-
-            crt = new Gtk.CellRendererText ();
             this.indent_renderer = crt;
-            col.pack_start(crt, false);
+            cab.pack_start(crt, false, false, false);
             col.set_cell_data_func (crt, indent_cell_data_func);
 
             var crpb = new Gtk.CellRendererPixbuf ();
             this.icon_cell_renderer = crpb;
             crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
-            col.pack_start(crpb, false);
+            cab.pack_start(crpb, false, false, false);
             col.set_attributes (crpb, "gicon", Column.ICON);
             col.set_cell_data_func (crpb, icon_cell_data_func);
 
             var crd = new Marlin.CellRendererDisk ();
             crd.ellipsize = Pango.EllipsizeMode.END;
             crd.ellipsize_set = true;
-            col.pack_start (crd, true);
+            crd.rpad = 12;
+            cab.pack_start (crd, true, false, false);
             col.set_attributes (crd,
                                 "text", Column.NAME,
                                 "visible", Column.EJECT,
@@ -196,9 +193,9 @@ namespace Marlin.Places {
             eject_spinner_cell_renderer = crs;
             crs.mode = Gtk.CellRendererMode.ACTIVATABLE;
             crs.icon_size = Gtk.IconSize.MENU;
-            crs.xpad = EJECT_BUTTON_XPAD;
+            crs.xpad = 0;
             crs.xalign = (float)1.0;
-            col.pack_start (crs, false);
+            cab.pack_start (crs, false, false, false);
             col.set_attributes (crs,
                                 "gicon", Column.EJECT_ICON,
                                 "visible", Column.EJECT,
@@ -212,7 +209,7 @@ namespace Marlin.Places {
             name_renderer.ellipsize_set = true;
             name_renderer.edited.connect (edited);
             name_renderer.editing_canceled.connect (editing_canceled);
-            col.pack_start (name_renderer,true);
+            cab.pack_start (name_renderer,true, false, false);
             col.set_attributes (name_renderer,
                                 "text", Column.NAME,
                                 "visible", Column.NO_EJECT,
@@ -225,10 +222,16 @@ namespace Marlin.Places {
             cre.is_category_expander = true;
             /* this is required to align the eject buttons to the right */
             int exp_size = cre.get_arrow_size (tree_view);
-            cre.xpad = (16 - exp_size).abs () + EJECT_BUTTON_XPAD - 2;
-            cre.xalign = (float)1.0;
-            col.pack_end (cre, false);
+            int eject_size;
+            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out eject_size, null);
+            cre.xpad = int.max ((eject_size - exp_size)/2, 0);
+            cab.pack_start (cre, false, false, false);
             col.set_cell_data_func (cre, expander_cell_data_func);
+
+            crt = new Gtk.CellRendererText ();
+            crt.xpad = EJECT_BUTTON_XPAD;
+            crt.xalign = (float)1.0;
+            cab.pack_start(crt, false, false, false);
 
             tree_view.append_column (col);
             tree_view.tooltip_column = Column.TOOLTIP;
@@ -1392,22 +1395,13 @@ namespace Marlin.Places {
             cell.set_visible (!store.iter_has_child (iter));
         }
 
-        private void root_indent_cell_data_func (Gtk.CellLayout layout,
-                                                 Gtk.CellRenderer cell,
-                                                 Gtk.TreeModel model,
-                                                 Gtk.TreeIter iter) {
-            cell.set_visible (true);
-            cell.xpad = ROOT_INDENTATION_XPAD;
-        }
-
         private void indent_cell_data_func (Gtk.CellLayout layout,
                                                  Gtk.CellRenderer cell,
                                                  Gtk.TreeModel model,
                                                  Gtk.TreeIter iter) {
             var path = store.get_path (iter);
             var depth = path.get_depth ();
-            cell.set_visible (depth > 1);
-            cell.xpad = ICON_XPAD;
+            cell.xpad = depth > 1 ? ICON_XPAD : ROOT_INDENTATION_XPAD;
         }
 
         private void expander_cell_data_func (Gtk.CellLayout layout,
@@ -1464,8 +1458,9 @@ namespace Marlin.Places {
                                              Gtk.CellRenderer renderer,
                                              Gtk.TreeModel model,
                                              Gtk.TreeIter iter) {
+
+            var crt = renderer as Gtk.CellRendererText;
             Marlin.PlaceType type;
-            Gtk.CellRendererText crt = renderer as Gtk.CellRendererText;
             model.@get (iter, Column.ROW_TYPE, out type, -1);
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||

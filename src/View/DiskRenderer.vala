@@ -23,10 +23,14 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 
+    /* padding to the right of the disk usage graphic */
+    public uint rpad {set; get;}
+
     /* offset to left align disk usage graphic with the text */
     private int offset = 2;
 
     public CellRendererDisk () {
+        rpad = 0;
     }
 
     /**
@@ -54,6 +58,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
             Gtk.StateFlags state;
             Gtk.StyleContext context = widget.get_parent ().get_style_context ();
             cr.set_line_width (1.0);
+            uint width = area.width - rpad;
             if (widget.get_state_flags () != Gtk.StateFlags.BACKDROP) {
                 state = Gtk.StateFlags.NORMAL;
                 state |= widget.get_state_flags ();
@@ -62,7 +67,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                 Gdk.cairo_set_source_rgba (cr, color_border);
                 cr.rectangle (area.x,
                               area.y + area.height - 3,
-                              area.width,
+                              width,
                               4);
                 cr.fill ();
             }
@@ -71,14 +76,14 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
             Gdk.cairo_set_source_rgba (cr, context.get_color (state));
             cr.rectangle (area.x + 1,
                           area.y + area.height - 2,
-                          area.width - 2,
+                          width - 2,
                           2);
             cr.fill ();
 
             Gdk.cairo_set_source_rgba (cr, context.get_background_color(state));
             cr.rectangle (area.x + 1,
                           area.y + area.height - 2,
-                          area.width - (int)(((double)free_space)/((double)disk_size)*((double)area.width - 2)),
+                          width - (int)(((double)free_space)/((double)disk_size)*((double)area.width - 2)),
                           2);
             cr.stroke ();
         }
