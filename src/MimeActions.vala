@@ -76,7 +76,11 @@ public class Marlin.MimeActions {
     }
 
     public static List<AppInfo>? get_applications_for_file (GOF.File file) {
-        List<AppInfo> result = AppInfo.get_all_for_type (file.get_ftype ());
+        string? type = file.get_ftype ();
+        if (type == null)
+            return null;
+
+        List<AppInfo> result = AppInfo.get_all_for_type (type);
         string uri_scheme = file.location.get_uri_scheme ();
 
         if (uri_scheme != null) {

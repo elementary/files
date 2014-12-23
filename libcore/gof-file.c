@@ -208,14 +208,14 @@ gof_file_is_mountable (GOFFile *file) {
 static gboolean
 gof_file_is_smb_share (GOFFile *file)
 {
-    g_return_val_if_fail (file->info != NULL, FALSE);
     gboolean res;
 
     res = FALSE;
 
     if (gof_file_is_smb_uri_scheme (file)) {
-        const char *target_uri = g_file_info_get_attribute_string (file->info,
-                                                                   G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+        const char *target_uri = NULL;
+        if (file->info != NULL)
+            target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
         if (target_uri == NULL)
             target_uri = file->uri;
@@ -237,9 +237,6 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
-    if (file->info == NULL)
-        return TRUE;
-
     return (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_share (file));
 }
 
