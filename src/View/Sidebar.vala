@@ -54,6 +54,7 @@ namespace Marlin.Places {
         Gtk.IconTheme theme;
         GLib.Icon eject_icon;
 
+        int eject_button_size = 20;
         uint n_builtins_before;
         string last_selected_uri;
         string slot_location;
@@ -222,9 +223,8 @@ namespace Marlin.Places {
             cre.is_category_expander = true;
             /* this is required to align the eject buttons to the right */
             int exp_size = cre.get_arrow_size (tree_view);
-            int eject_size;
-            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out eject_size, null);
-            cre.xpad = int.max ((eject_size - exp_size)/2, 0);
+            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out eject_button_size, null);
+            cre.xpad = int.max ((eject_button_size - exp_size)/2, 0);
             cab.pack_start (cre, false, false, false);
             col.set_cell_data_func (cre, expander_cell_data_func);
 
@@ -1690,7 +1690,7 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    //message ("Error while unmounting");
+                    debug ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
@@ -1699,7 +1699,6 @@ namespace Marlin.Places {
         private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
             int width, x_offset, hseparator;
-            int eject_button_size;
             bool show_eject;
             Gtk.TreeIter iter;
             Gtk.TreePath path;
@@ -1722,8 +1721,7 @@ namespace Marlin.Places {
                 column.cell_set_cell_data (store, iter, false, false);
                 column.cell_get_position (eject_spinner_cell_renderer, out x_offset, out width);
 
-                eject_button_size = 20;
-                x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
+                x_offset += width - hseparator - eject_button_size;
                 if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size)
                     return true;
             }
