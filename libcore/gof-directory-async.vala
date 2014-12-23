@@ -286,13 +286,11 @@ public class GOF.Directory.Async : Object {
         bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null) {
-                if (gof.info != null && (!gof.is_hidden || show_hidden)) {
-                    if (track_longest_name)
-                        update_longest_file_name (gof);
+            if (gof != null && (!gof.is_hidden || show_hidden)) {
+                if (track_longest_name)
+                    update_longest_file_name (gof);
 
-                    file_loaded (gof);
-                }
+                file_loaded (gof);
             }
         }
     }
@@ -310,7 +308,7 @@ public class GOF.Directory.Async : Object {
             load ();
         } else {
             foreach (GOF.File gof in file_hash.get_values ()) {
-                if (gof != null && gof.info != null && gof.is_hidden) {
+                if (gof != null && gof.is_hidden) {
                     if (track_longest_name)
                         update_longest_file_name (gof);
 
@@ -327,6 +325,7 @@ public class GOF.Directory.Async : Object {
             if (gof != null && gof.info != null
                 && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
                 && gof.is_desktop)
+
                 gof.update_desktop_file ();
         }
     }
@@ -451,7 +450,7 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
 
         if (!gof.is_hidden && gof.is_folder ()) {
@@ -731,7 +730,7 @@ public class GOF.Directory.Async : Object {
             return sorted_dirs;
 
         foreach (var gof in file_hash.get_values()) {
-            if (gof.info != null && !gof.is_hidden && gof.is_folder ())
+            if (!gof.is_hidden && gof.is_folder ())
                 sorted_dirs.prepend (gof);
         }
 
