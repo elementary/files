@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-25 22:26+0000\n"
+"PO-Revision-Date: 2014-12-12 13:00+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-13 07:04+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1698,7 +1698,7 @@ msgstr "Määra vaikimisi"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Faili ümbertõstmine pole võimalik"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"

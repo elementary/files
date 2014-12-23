@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-08-13 13:51+0000\n"
-"Last-Translator: KrisPetkov <kristian.p.petkov@gmail.com>\n"
+"PO-Revision-Date: 2014-12-12 15:56+0000\n"
+"Last-Translator: ITPROJECTS <Unknown>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-13 07:04+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -564,7 +564,7 @@ msgstr "Вчера в %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b на %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1008,50 +1008,59 @@ msgstr[1] "%'d файла остават в Кошчето"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Не може файла да бъде преместен или изтрит"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Не е позволено да се трият файлове на система в режим само за четене."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Не е позволено да се трият файлове в папки, за които нямате права за писане."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "Не е позволено да се трият папки, за които нямате права за писане."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Не е възможно преместването в кошчето. Да се изтрие ли напряко веднага?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Този файл не може да се премести в кошчето. Вижте по-долу за още сведения."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Този файл не може да се премести в кошчето.  Да се опита ли изтриването?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Този файл не може да се премести в кошчето. Също така не можете и да го "
+"изтриете."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Изтриването на файла го премахва завинаги"
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -1344,12 +1353,12 @@ msgstr "Не може да се премахне вече съществуващ
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Стана Грешка при преписването на \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "Стана грешкна при преписването на файла в %s."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1369,7 +1378,7 @@ msgstr[1] "Подготовка за прместване на %'d файла"
 #: ../libcore/marlin-file-operations.c:5088
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Грешка при преместването на \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5089
 #, c-format
@@ -1552,7 +1561,7 @@ msgstr "Отворете личната си папка"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr ""
+msgstr "Отвори в Кошчето"
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
@@ -1568,7 +1577,7 @@ msgstr "Файлова система"
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Отвори съдържанието на файловата система"
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
@@ -1580,7 +1589,7 @@ msgstr "Вашите места в мрежата"
 
 #: ../src/View/Sidebar.vala:590
 msgid "Entire Network"
-msgstr ""
+msgstr "Цялата Мрежа"
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
@@ -1592,7 +1601,7 @@ msgstr "Не може да се стартира %s"
 
 #: ../src/View/Sidebar.vala:1184
 msgid "Open"
-msgstr ""
+msgstr "Отвoри"
 
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
@@ -1608,7 +1617,7 @@ msgstr "Премахни"
 
 #: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
-msgstr ""
+msgstr "Преименувай"
 
 #: ../src/View/Sidebar.vala:1223
 msgid "_Mount"
@@ -1668,19 +1677,19 @@ msgstr "Изглед като Колони"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
-msgstr ""
+msgstr "Предишен"
 
 #: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
-msgstr ""
+msgstr "Следващ"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Провал при прегледа"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
-msgstr ""
+msgstr "Изберете приложение"
 
 #: ../src/View/AbstractDirectoryView.vala:904
 msgid "Set as default"
@@ -1688,39 +1697,39 @@ msgstr "Задай по подразбиране"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Не може да се метне този файл"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Невярно дадено файлово име"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Невярно"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Изпълнение"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Отваряне с %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Отваряне в"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Други Приложения"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Неименован %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s не е приемливо име"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1794,23 +1803,24 @@ msgstr "Затваряне"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "файл"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "файлове"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Истинския размер може да е по-голям, "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
 msgstr ""
+"не може да бъде прочетен заради липса на разрешение или друга грешка."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "неизвестен"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1908,23 +1918,23 @@ msgstr "Папката е празна."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Достъпа отказан"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Неуспешно изпълнение на „%s“"
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Преместване Тук"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Препис Тук"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Създаване на връзка"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -1940,7 +1950,7 @@ msgstr "Отваряне на адреса/те в нов подпрозорец
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr ""
+msgstr "Нов Прозорец"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
@@ -1990,7 +2000,7 @@ msgstr "Нов Прозорец Като _Управител"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "Относно _Файлове"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
@@ -2030,88 +2040,88 @@ msgstr "Отиди в %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Връзка със Сървър..."
 
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Връзка със мрежов файлов сървър"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Тези файлове могат да бъдат изтрити при изчистване на кошчето."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Изчисти Кошчето"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Възстанови от Кошчето"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Изтрий безвъзвратно"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Преместване в Кошчето"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Нов"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Папка"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Празен Файл"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Покажи Скритите файлове"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Нов Подпрозорец"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Терминал"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Отметка"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Поставяне"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Отрязване"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Преписване"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Сложи в Папката"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Отбери По"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Обратен Ред"

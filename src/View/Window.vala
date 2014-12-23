@@ -28,8 +28,10 @@ namespace Marlin.View {
             {"new_window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
+            {"refresh2", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
+            {"bookmark", action_bookmark},
             {"find", action_find, "s"},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
@@ -70,6 +72,7 @@ namespace Marlin.View {
         public signal void item_hovered (GOF.File? gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
+
         [Signal (action=true)]
         public virtual signal void go_up () {
             current_tab.go_up ();
@@ -419,6 +422,10 @@ namespace Marlin.View {
    
         private void action_edit_path () {
             top_menu.location_bar.bread.grab_focus ();
+        }
+
+        private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+            sidebar.add_uri (current_tab.location.get_uri ());
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
@@ -939,6 +946,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
+            application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
@@ -953,6 +961,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
             application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R"});
+            application.set_accels_for_action ("win.refresh2", {"F5"});
             application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
             application.set_accels_for_action ("win.go_to::TRASH", {"<Alt>T"});
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});

@@ -45,7 +45,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private Gee.Set<string>? mimes;
 
-    private Granite.Widgets.WrapLabel header_title;
+    private Gtk.Widget header_title;
     private Granite.Widgets.WrapLabel type_label;
     private Gtk.Label size_label;
     private Gtk.Widget type_key_label;
@@ -201,6 +201,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_area.show_all ();
         show_all ();
 
+        if (count == 1) {
+            int start_offset= 0, end_offset = -1;
+
+            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+        }
+        
+
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -320,6 +328,18 @@ message ("selection sizr update");
         deep_count_directories = null;
     }
 */
+
+    private void rename_file (GOF.File file, string new_name) {
+        /* Only rename if name actually changed */
+        var original_name = file.info.get_name ();
+        if (new_name != original_name) {
+            file.rename (new_name, (file, result_location, error) => {
+            if (error != null)
+                warning ("Rename Error while renaming %s to %s:  %s", original_name, new_name, error.message);
+            });
+        }
+    }
+
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
         type_label = new Granite.Widgets.WrapLabel ("");
         size_label = new Gtk.Label ("");
@@ -378,11 +398,25 @@ message ("selection sizr update");
         file_img.set_valign (Gtk.Align.CENTER);
         content.pack_start (file_img, false, false);
 
-        header_title = new Granite.Widgets.WrapLabel ();
-        if (count > 1)
-            header_title.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
-        else
-            header_title.set_markup ("<span>" + goffile.info.get_name () + "</span>");
+        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
+            var label = new Granite.Widgets.WrapLabel ();
+            label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
+            header_title = label;
+        } else if (count == 1 && goffile.is_writable ()) {
+            var entry = new Gtk.Entry ();
+
+            entry.set_text (goffile.info.get_name ());
+
+            entry.activate.connect (() => {
+                rename_file (goffile, entry.get_text ());
+            });
+
+            entry.focus_out_event.connect (() => {
+                rename_file (goffile, entry.get_text ());
+                return false;
+            });
+            header_title = entry;
+        }
         header_title.get_style_context ().add_class ("h2");
         header_title.margin_top = 5;
 
