@@ -65,8 +65,8 @@ namespace Marlin {
         /** Gtk.Editable interface */
 
         public override void select_region (int start_pos, int end_pos) {
-            textview.select_region (start_pos, end_pos);
             textview.grab_focus ();
+            textview.select_region (start_pos, end_pos);
         }
 
         public override void do_delete_text (int start_pos, int end_pos) {

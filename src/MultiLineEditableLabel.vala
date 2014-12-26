@@ -89,6 +89,7 @@ namespace Marlin {
         /** Gtk.Editable interface */
 
         public override void select_region (int start_pos, int end_pos) {
+            textview.grab_focus ();
             var buffer = textview.get_buffer ();
             Gtk.TextIter? ins = null;
             Gtk.TextIter? bound = null;
@@ -101,7 +102,6 @@ namespace Marlin {
                 buffer.get_end_iter (out bound);
 
             buffer.select_range (ins, bound);
-            textview.grab_focus ();
         }
 
         public override void do_delete_text (int start_pos, int end_pos) {
