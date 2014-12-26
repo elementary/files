@@ -590,6 +590,7 @@ namespace FM {
         }
 
         public void reload () {
+            slot.directory.clear_directory_info ();
             change_directory (slot.directory, slot.directory);
         }
 
