@@ -1522,12 +1522,6 @@ namespace Marlin.Places {
              && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
                 return eject_or_unmount_selection ();
 
-            if ((event.keyval == Gdk.Key.Delete || event.keyval == Gdk.Key.KP_Delete)
-             && (event.state & modifiers) == 0) {
-                remove_selected_bookmarks ();
-                return true;
-            }
-
             if (event.keyval == Gdk.Key.F2 && (event.state & modifiers) == 0) {
                 rename_selected_bookmark ();
                 return true;
