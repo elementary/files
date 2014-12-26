@@ -41,7 +41,7 @@ namespace Marlin {
             public bool has_file (GOF.File file);
             public void copy_files (GLib.List files);
             public void cut_files (GLib.List files);
-            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.Closure? new_file_closure);
+            public void paste_files (GLib.File target, Gtk.Widget widget, CopyCallback? new_file_closure);
             public signal void changed ();
         }
 
