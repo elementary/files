@@ -69,6 +69,8 @@ namespace Marlin {
     public delegate void UnmountCallback (void* callback_data);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void CreateCallback (GLib.File new_file, void* callback_data);
+    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+    public delegate void CopyCallBack (GLib.HashTable<GLib.File, void*> debuting_uris, void* pointer);
 
 }
 

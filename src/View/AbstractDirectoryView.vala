@@ -201,7 +201,13 @@ namespace FM {
         private Gtk.TreePath? hover_path = null;
 
         private bool selection_was_removed = false;
-        public bool select_added_files = false;
+
+        /* Rapid keyboard paste support */
+        protected bool pasting_files = false;
+        GLib.Timer? paste_timer = null;
+        protected uint paste_timeout_id = 0; 
+        protected bool select_added_files = false;
+
         protected bool renaming = false;
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
@@ -1022,18 +1028,50 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
-        private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            var file = get_files_for_action ().nth_data (0);
+        public static void after_pasting_files (GLib.HashTable uris, void* pointer) {
+            var view = pointer as FM.AbstractDirectoryView; 
+            if (view.paste_timer == null)
+                view.paste_timer = new GLib.Timer ();
 
-            if (file != null && clipboard.get_can_paste ()) {
-                prepare_to_select_added_files ();
-                if (file.is_folder () && !clipboard.has_file (file))
-                    clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, null);
-                else
-                    clipboard.paste_files (slot.directory.location, this as Gtk.Widget, null);
+            view.paste_timer.start (); /* restarts timer if already running */
+
+            /* Limit paste action rate to 10 per second, do not unblock the directory monitor
+             * until at least one second after the last paste event in order to avoid duplicate
+             * "add-file" events and messed up selection. */ 
+            if (view.paste_timeout_id == 0) {
+                view.paste_timeout_id = Timeout.add (100, () => {
+                    view.pasting_files = false; /* allows another paste action to occur */
+
+                    if (view.paste_timer.elapsed () < 1.0)
+                        return true;
+
+                    view.slot.directory.unblock_monitor ();
+                    view.select_added_files = false;
+                    view.paste_timeout_id = 0;
+                    view.paste_timer.stop ();
+                    view.paste_timer = null;
+                    return false;
+                });
             }
         }
 
+        private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
+            if (pasting_files)
+                return;
+
+            var file = get_files_for_action ().nth_data (0);
+
+            if (file != null && clipboard.get_can_paste ()) {
+                pasting_files = true;
+                prepare_to_select_added_files ();
+                /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+                slot.directory.block_monitor ();
+                if (file.is_folder () && !clipboard.has_file (file))
+                    clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, after_pasting_files);
+                else
+                    clipboard.paste_files (slot.directory.location, this as Gtk.Widget, after_pasting_files);
+            }
+        }
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
             add_file (file, dir);

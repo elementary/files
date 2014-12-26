@@ -114,7 +114,7 @@ typedef struct
     MarlinClipboardManager *manager;
     GFile                  *target_file;
     GtkWidget              *widget;
-    GClosure               *new_files_closure;
+    GCallback               *new_files_closure;
 } MarlinClipboardPasteRequest;
 
 
@@ -338,13 +338,13 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
             /*marlin_file_operations_copy (file_list, NULL, request->target_file,
               NULL, NULL, NULL);*/
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_COPY, NULL, NULL, NULL);
+                                              GDK_ACTION_COPY, NULL, request->new_files_closure, request->widget);
 
         } else {
             printf ("marlin_application_move_into\n");
             //marlin_application_move_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_MOVE, NULL, NULL, NULL);
+                                              GDK_ACTION_MOVE, NULL, request->new_files_closure, request->widget);
         }
         //g_object_unref (G_OBJECT (application));
         g_list_free_full (file_list, g_object_unref);
@@ -372,8 +372,7 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
     /* free the request */
     if (G_LIKELY (request->widget != NULL))
         g_object_remove_weak_pointer (G_OBJECT (request->widget), (gpointer) &request->widget);
-    if (G_LIKELY (request->new_files_closure != NULL))
-        g_closure_unref (request->new_files_closure);
+
     g_object_unref (G_OBJECT (request->manager));
     g_object_unref (request->target_file);
     g_slice_free (MarlinClipboardPasteRequest, request);
@@ -730,7 +729,7 @@ void
 marlin_clipboard_manager_paste_files (MarlinClipboardManager *manager,
                                       GFile                  *target_file,
                                       GtkWidget              *widget,
-                                      GClosure               *new_files_closure)
+                                      MarlinCopyCallback     *new_files_closure)
 {
     MarlinClipboardPasteRequest *request;
 
@@ -747,8 +746,6 @@ marlin_clipboard_manager_paste_files (MarlinClipboardManager *manager,
     if (G_LIKELY (new_files_closure != NULL))
     {
         request->new_files_closure = new_files_closure;
-        g_closure_ref (new_files_closure);
-        g_closure_sink (new_files_closure);
     }
 
     /* get notified when the widget is destroyed prior to
