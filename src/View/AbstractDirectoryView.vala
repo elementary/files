@@ -202,7 +202,7 @@ namespace FM {
 
         private bool selection_was_removed = false;
         public bool select_added_files = false;
-        protected bool renaming = false;
+        public bool renaming {get; protected set; default = false;}
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
