@@ -337,7 +337,9 @@ namespace Marlin.View
         void select_adjacent (bool up)
         {
             File? file = null;
-            Gtk.TreeIter iter, parent;
+            Gtk.TreeIter? iter = null;
+            Gtk.TreeIter? parent = null;
+
             get_iter_at_cursor (out iter);
 
             var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
@@ -446,17 +448,21 @@ namespace Marlin.View
             resize (width_request, height_request);
         }
 
-        void get_iter_at_cursor (out Gtk.TreeIter iter)
+        void get_iter_at_cursor (out Gtk.TreeIter? iter)
         {
-            Gtk.TreePath path;
-            Gtk.TreeIter filter_iter;
+            Gtk.TreePath? path = null;
+            Gtk.TreeIter? filter_iter = null;
 
+            iter = null;
             view.get_cursor (out path, null);
 
             if (path == null)
                 return;
 
             filter.get_iter (out filter_iter, path);
+
+            if (filter_iter == null)
+                return;
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
         }
@@ -594,8 +600,11 @@ namespace Marlin.View
                 return;
             }
 
-            if (accepted == null)
-                get_iter_at_cursor (out accepted);
+            if (accepted == null) {
+                Gtk.TreeIter? iter = null;
+                get_iter_at_cursor (out iter);
+                accepted = iter;
+            }
 
             File? file = null;
             list.@get (accepted, 3, out file);
@@ -613,7 +622,9 @@ namespace Marlin.View
         File? get_file_at_iter (Gtk.TreeIter? iter)
         {
             if (iter == null) {
-                get_iter_at_cursor (out iter);
+                Gtk.TreeIter? iter2 = null;
+                get_iter_at_cursor (out iter2);
+                iter = iter2;
             }
 
             File? file = null;
