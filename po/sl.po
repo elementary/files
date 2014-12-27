@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-12-24 10:19+0000\n"
+"PO-Revision-Date: 2014-12-25 10:53+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2014-12-25 06:03+0000\n"
+"X-Launchpad-Export-Date: 2014-12-26 06:14+0000\n"
 "X-Generator: Launchpad (build 17286)\n"
 "Language: sl\n"
 
@@ -38,7 +38,7 @@ msgstr "FTP (s prijavo)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -615,11 +615,11 @@ msgstr "Včeraj ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y ob %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -1083,24 +1083,25 @@ msgstr[3] "%'d preostale datoteke za premikanje v smeti"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Ni mogoče premakniti datoteke v smeti oz. je izbrisati"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Datotek na datotečnem sistemu samo za branje ni mogoče premakniti v smeti."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
+msgstr "Datotek v mapah za katere nimate privilegijev ni mogoče izbrisati."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "Map za katere nimate privilegijev ni mogoče izbrisati."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1574,19 +1575,19 @@ msgstr "Spremenjeno"
 
 #: ../src/View/LocationBar.vala:132
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: ../src/View/LocationBar.vala:133
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../src/View/LocationBar.vala:134
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../src/View/LocationBar.vala:135
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
@@ -1594,11 +1595,11 @@ msgstr "Omrežje"
 
 #: ../src/View/LocationBar.vala:137
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../src/View/LocationBar.vala:138
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
@@ -1666,7 +1667,7 @@ msgstr "Vaši krajevni razdelki in naprave"
 
 #: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
 msgid "File System"
-msgstr "Datotečni Sistem"
+msgstr "Datotečni sistem"
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
@@ -1778,7 +1779,7 @@ msgstr "Nazaj"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Predogleda ni bilo mogoče prikazati"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
@@ -1790,7 +1791,7 @@ msgstr "Nastavi kot privzeto"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Datoteke ni mogoče spustiti"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
@@ -1798,7 +1799,7 @@ msgstr "Ime datoteke je napačno"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Neveljavna"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
@@ -1838,7 +1839,7 @@ msgstr " in %u drugih predmetov (%s)"
 
 #: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
 msgid " selected"
-msgstr ""
+msgstr " izbranih"
 
 #: ../src/View/OverlayBar.vala:157
 msgid "%u folder"
@@ -1976,7 +1977,7 @@ msgstr "%s prosto od %s (%d%% uporabljeno)"
 
 #: ../src/View/PropertiesWindow.vala:771
 msgid "Read"
-msgstr "Prebrano"
+msgstr "Branje"
 
 #: ../src/View/PropertiesWindow.vala:776
 msgid "Write"
@@ -2134,7 +2135,7 @@ msgstr "Pojdi v %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
-msgstr "Povezava s strežnikom"
+msgstr "Poveži se s strežnikom..."
 
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"

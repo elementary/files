@@ -208,7 +208,7 @@ namespace FM {
         protected uint paste_timeout_id = 0; 
         protected bool select_added_files = false;
 
-        protected bool renaming = false;
+        public bool renaming {get; protected set; default = false;}
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
