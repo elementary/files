@@ -63,7 +63,7 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         box.pack_start (this.progress_bar, true, false, 0);
         hbox.pack_start (box, true, true, 0);
 
-        var image = new Gtk.Image.from_stock (Gtk.Stock.CANCEL, Gtk.IconSize.BUTTON);
+        var image = new Gtk.Image.from_icon_name ("process-stop", Gtk.IconSize.BUTTON);
         var button = new Gtk.Button ();
         button.add (image);
         button.clicked.connect (() => {
