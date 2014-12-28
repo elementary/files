@@ -67,13 +67,29 @@ namespace Marlin.View {
             override_background_color (0, transparent);
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            path_changed.connect (user_path_change_request);
-            win.folder_deleted.connect ((location) => {
-                if (location.equal (loc)) {
-                    window.remove_tab (this);
-                }
-            });
+            connect_signals ();
             change_view_mode (mode, loc);
+        }
+
+        private void connect_signals () {
+            path_changed.connect (user_path_change_request);
+            window.folder_deleted.connect (on_folder_deleted);
+        }
+
+        private void disconnect_signals () {
+            path_changed.disconnect (user_path_change_request);
+            window.folder_deleted.disconnect (on_folder_deleted);
+        }
+
+        private void on_folder_deleted (GLib.File deleted) {
+            if (deleted.equal (this.location)) {
+                close ();
+                window.remove_tab (this);
+            }
+        }
+
+        public void close () {
+            disconnect_signals ();
         }
 
         public Gtk.Widget content {

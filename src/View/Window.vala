@@ -243,6 +243,8 @@ namespace Marlin.View {
                 if (tabs.n_tabs == 1)
                     add_tab ();
 
+                /* The close () method of ViewContainer ensures its destruction */
+               (tab.page as ViewContainer).close ();
                 return true;
             });
 
