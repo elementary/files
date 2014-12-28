@@ -227,6 +227,13 @@ public class Marlin.Application : Granite.Application {
         base.quit ();
     }
 
+    public void folder_deleted (GLib.File file) {
+        unowned List<Gtk.Window> window_list = this.get_windows ();
+        window_list.@foreach ((window) => {
+            ((Marlin.View.Window)window).folder_deleted (file);
+        });
+    }
+
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {
