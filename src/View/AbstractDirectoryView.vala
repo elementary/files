@@ -201,7 +201,7 @@ namespace FM {
 
         private bool selection_was_removed = false;
         public bool select_added_files = false;
-        protected bool renaming = false;
+        public bool renaming {get; protected set; default = false;}
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
@@ -2583,7 +2583,7 @@ namespace FM {
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
-            helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
+            helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 

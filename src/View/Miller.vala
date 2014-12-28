@@ -237,6 +237,10 @@ namespace Marlin.View {
                 return false;
 
             int current_position = slot_list.index (current_slot);
+            
+            if (slot_list.nth_data (current_position).get_directory_view ().renaming)
+                return false;
+
             Marlin.View.Slot to_activate = null;
 
             switch (event.keyval) {
@@ -267,7 +271,6 @@ namespace Marlin.View {
                         add_location (current_location, current_slot);
                         return true;
                     }
-
                     break;
             }
 
