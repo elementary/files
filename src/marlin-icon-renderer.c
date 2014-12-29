@@ -572,13 +572,15 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GdkPixbuf *pix;
 
     if (priv->selection_helpers &&
-        (flags & GTK_CELL_RENDERER_PRELIT) != 0 &&
+        (flags & (GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_SELECTED)) != 0 &&
         priv->file != priv->drop_file)
     {
-        if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
-            nicon = marlin_icon_info_lookup_from_name ("remove", 16);
-        else
-            nicon = marlin_icon_info_lookup_from_name ("add", 16);
+        if((flags & GTK_CELL_RENDERER_SELECTED) != 0 && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-remove", 16);
+        else if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-checked", 16);
+        else if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-add", 16);
         pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
