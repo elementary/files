@@ -340,7 +340,7 @@ namespace Marlin.Places {
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_spinner_cell_renderer.icon_size = stock_size;
 
-            Gdk.Pixbuf pixbuf = null;
+            Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
                 var icon_info = Marlin.IconInfo.lookup (icon, icon_size);
