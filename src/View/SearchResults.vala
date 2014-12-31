@@ -595,19 +595,7 @@ namespace Marlin.View
 
         void accept (Gtk.TreeIter? accepted = null)
         {
-            if (list_empty ()) {
-                Gdk.beep ();
-                return;
-            }
-
-            if (accepted == null) {
-                Gtk.TreeIter? iter = null;
-                get_iter_at_cursor (out iter);
-                accepted = iter;
-            }
-
-            File? file = null;
-            list.@get (accepted, 3, out file);
+            File? file = get_file_at_iter (accepted);
 
             if (file == null) {
                 Gdk.beep ();
@@ -621,14 +609,18 @@ namespace Marlin.View
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
         {
+            if (list_empty ()) {
+                Gdk.beep ();
+                return null;
+            }
+
+            File? file = null;
             if (iter == null) {
                 Gtk.TreeIter? iter2 = null;
                 get_iter_at_cursor (out iter2);
                 iter = iter2;
-            }
-
-            File? file = null;
-            if (iter != null)
+                list.@get (iter2, 3, out file);
+            } else
                 list.@get (iter, 3, out file);
 
             return file;
