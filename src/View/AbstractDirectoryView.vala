@@ -1302,7 +1302,7 @@ namespace FM {
             GLib.StringBuilder sb = new GLib.StringBuilder ("");
 
             drag_file_list.@foreach ((file) => {
-                sb.append (file.uri);
+                sb.append (file.get_target_location ().get_uri ());
                 sb.append ("\n");
             });
 
