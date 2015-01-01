@@ -599,6 +599,7 @@ GdkPixbuf *
 marlin_icon_info_get_pixbuf_nodefault (MarlinIconInfo  *icon)
 {
     GdkPixbuf *res = NULL;
+    g_return_val_if_fail (icon != NULL && MARLIN_IS_ICON_INFO (icon), NULL);
 
     if (icon->pixbuf) {
         /* don't ref the first toggled reference */
