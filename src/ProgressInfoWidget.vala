@@ -63,9 +63,8 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         box.pack_start (this.progress_bar, true, false, 0);
         hbox.pack_start (box, true, true, 0);
 
-        var image = new Gtk.Image.from_stock (Gtk.Stock.CANCEL, Gtk.IconSize.BUTTON);
-        var button = new Gtk.Button ();
-        button.add (image);
+        var button = new Gtk.Button.from_icon_name ("process-stop-symbolic", Gtk.IconSize.BUTTON);
+        button.get_style_context ().add_class ("flat");
         button.clicked.connect (() => {
             this.info.cancel ();
             button.sensitive = false;

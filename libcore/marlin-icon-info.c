@@ -378,7 +378,6 @@ marlin_icon_info_get_and_cache_raw_pixbuf (GIcon *icon)
     GdkPixbuf *pixbuf;
     char *str_icon = g_icon_to_string (icon);
 
-    g_message ("%s stream %s\n", G_STRFUNC, str_icon);
     pixbuf = gdk_pixbuf_new_from_file (str_icon, NULL);
 
     if (pixbuf != NULL) {
@@ -404,6 +403,8 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     //GdkPixbuf *scaled_pixbuf = NULL;
 
     g_return_val_if_fail (icon && G_IS_ICON (icon), NULL);
+    size = MAX (1, size);
+
     if (G_IS_LOADABLE_ICON (icon)) {
         LoadableIconKey lookup_key;
         LoadableIconKey *key;
@@ -456,12 +457,14 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         char *str_icon = g_icon_to_string (icon);
         gint width, height;
 
-        if (gdk_pixbuf_get_file_info (str_icon, &width, &height) != NULL)
+        gdk_pixbuf_get_file_info (str_icon, &width, &height);
+        if ((width >= 1 || width == -1) && (height >= 1 || height == -1))
             pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, MIN (width, size), MIN (height, size), NULL);
+
         /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
         icon_info->pixbuf = pixbuf;*/
-        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
         if (pixbuf != NULL) {
+            icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
             key = loadable_icon_key_new (icon, size);
             g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
             g_free (str_icon);
@@ -555,7 +558,7 @@ marlin_icon_info_lookup_from_name (const char *name, int size)
 {
     GIcon *icon;
     MarlinIconInfo *info;
-
+    g_return_val_if_fail (size >= 1, NULL);
     icon = g_themed_icon_new (name);
     info = marlin_icon_info_lookup (icon, size);
     g_object_unref (icon);
@@ -570,6 +573,7 @@ marlin_icon_info_lookup_from_path (const char *path, int size)
     GIcon *icon;
     MarlinIconInfo *info;
 
+    g_return_val_if_fail (size >= 1, NULL);
     icon_file = g_file_new_for_path (path);
     icon = g_file_icon_new (icon_file);
     info = marlin_icon_info_lookup (icon, size);

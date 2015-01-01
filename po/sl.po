@@ -7,270 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 04:58+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"POT-Creation-Date: 2014-11-24 08:26-0600\n"
+"PO-Revision-Date: 2014-12-25 10:53+0000\n"
+"Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:28+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-12-26 06:14+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
+"Language: sl\n"
 
-#: ../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Ime datoteke"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
-msgid "Size"
-msgstr "Velikost"
-
-#: ../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Vrsta"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
-msgid "Modified"
-msgstr "Spremenjeno"
-
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Ni mogoče preimenovati %s v %s"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
-msgid "This folder is empty."
-msgstr "Ta mapa je prazna."
-
-#: ../src/fm-directory-view.c:1230
-msgid "Invalid filename provided by XDS drag site"
-msgstr ""
-
-#: ../src/fm-directory-view.c:1388
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Ni bilo mogoče ustvariti povezave za URL \"%s\""
-
-#: ../src/fm-directory-view.c:1844
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Uporabi \"%s\" za odpiranje izbranih predmetov"
-msgstr[1] "Uporabi \"%s\" za odpiranje izbranega predmeta"
-msgstr[2] "Za odpiranje izbranega predmeta uporabite \"%s\""
-msgstr[3] "Za odpiranje izbranega predmeta uporabite \"%s\""
-
-#: ../src/fm-directory-view.c:2037
-#, c-format
-msgid "Use \"%s\" as template for new file"
-msgstr ""
-
-#: ../src/fm-directory-view.c:2316
-#, c-format
-msgid "_Open With %s"
-msgstr "_Odpri s programom %s"
-
-#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
-msgid "_Open"
-msgstr "_Odpri"
-
-#: ../src/fm-directory-view.c:2338
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
-msgid "Open in New _Tab"
-msgstr "Odpri v novem _zavihku"
-
-#: ../src/fm-directory-view.c:2347
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
-msgid "Open in New _Window"
-msgstr "Odpri v novem _oknu"
-
-#: ../src/fm-directory-view.c:3792
-msgid "Set as default"
-msgstr "Nastavi kot privzeto"
-
-#: ../src/fm-directory-view.c:3844
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Pripravi izbrane datoteke za premik z ukazom Prilepi"
-
-#: ../src/fm-directory-view.c:3848
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Pripravi izbrane datoteke za kopiranje z ukazom Prilepi"
-
-#: ../src/fm-directory-view.c:3852
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Premakni ali kopiraj datoteke, predhodno izbrane z ukazom Izreži ali Kopiraj"
-
-#: ../src/fm-directory-view.c:3855
-msgid "Paste Into Folder"
-msgstr "Prilepi v mapo"
-
-#: ../src/fm-directory-view.c:3856
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-
-#: ../src/fm-directory-view.c:3859
-msgid "_Rename..."
-msgstr "P_reimenuj ..."
-
-#: ../src/fm-directory-view.c:3860
-msgid "Rename selected item"
-msgstr "Preimenuje izbran predmet"
-
-#: ../src/fm-directory-view.c:3863
-msgid "Create New _Folder"
-msgstr "Ustvari _novo mapo"
-
-#: ../src/fm-directory-view.c:3864
-msgid "Create a new empty folder inside this folder"
-msgstr "V tej mapi ustvari novo prazno mapo"
-
-#: ../src/fm-directory-view.c:3866
-msgid "Create New _File"
-msgstr ""
-
-#: ../src/fm-directory-view.c:3868
-msgid "_Empty File"
-msgstr "_Prazna datoteka"
-
-#: ../src/fm-directory-view.c:3869
-msgid "Create a new empty file inside this folder"
-msgstr "Ustvari novo prazno datoteko v tej mapi"
-
-#: ../src/fm-directory-view.c:3873
-msgid "Open the selected item"
-msgstr "Odpri izbran predmet"
-
-#: ../src/fm-directory-view.c:3880
-msgid "Open in new Window"
-msgstr "Odpri v novem oknu"
-
-#: ../src/fm-directory-view.c:3881
-msgid "Open each selected item in a new window"
-msgstr "Odpri vsak izbran predmet v novem oknu"
-
-#: ../src/fm-directory-view.c:3885
-msgid "Open each selected item in a new tab"
-msgstr "Odpri vsako izbrano povezavo v novem zavihku"
-
-#: ../src/fm-directory-view.c:3887
-msgid "Open Wit_h"
-msgstr "Odpri _z"
-
-#: ../src/fm-directory-view.c:3888
-msgid "Choose a program with which to open the selected item"
-msgstr "Izberite program, s katerim naj se odpre izbran predmet"
-
-#: ../src/fm-directory-view.c:3890
-msgid "Other _Application..."
-msgstr "Drug _program ..."
-
-#: ../src/fm-directory-view.c:3891
-msgid "Choose another application with which to open the selected item"
-msgstr "Izberite drug program, s katerim naj se odpre izbran predmet"
-
-#: ../src/fm-directory-view.c:3894
-msgid "Mo_ve to Trash"
-msgstr "Pr_emakni v smeti"
-
-#: ../src/fm-directory-view.c:3895
-msgid "Move each selected item to the Trash"
-msgstr "Premakni vsak izbran predmet v Smeti"
-
-#: ../src/fm-directory-view.c:3898
-msgid "_Delete Permanently"
-msgstr "_Trajno izbriši"
-
-#: ../src/fm-directory-view.c:3899
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Izbriše vsak izbran predmet, brez prestavljanja v Smeti"
-
-#: ../src/fm-directory-view.c:3902
-msgid "_Restore"
-msgstr "_Obnovi"
-
-#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
-msgid "Select All"
-msgstr "Izberi vse"
-
-#: ../src/fm-directory-view.c:3910
-msgid "_Properties"
-msgstr "_Lastnosti"
-
-#: ../src/fm-directory-view.c:3911
-msgid "View or modify the properties of each selected item"
-msgstr "Poglej ali spremeni lastnosti vsakega izbranega predmeta"
-
-#: ../src/fm-directory-view.c:4024
-msgid "Set Color:"
-msgstr "Nastavi barvo:"
-
-#: ../src/exo-icon-view.c:864
-msgid "Layout mode"
-msgstr "Način postavitve"
-
-#: ../src/exo-icon-view.c:865
-msgid "The layout mode"
-msgstr "Način postavitve"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Razpo_redi predmete"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "_Obrnjen vrstni red"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Prikaži ikone v obratnem vrstnem redu"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Po ime_nu"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Ikone naj bodo razvrščene po imenu v vrsticah"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Po veliko_sti"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Ikone naj bodo razvrščene po velikosti v vrsticah"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Po _vrsti"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Ikone naj bodo razvrščene po vrsti v vrsticah"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Po _datumu spremembe"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Ikone naj bodo razvrščene po datumu spremembe v vrsticah"
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Na odložišču ni ničesar"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -286,7 +38,7 @@ msgstr "FTP (s prijavo)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -390,990 +142,6 @@ msgstr "_Zapomni si geslo"
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Opravilo je preklicano."
-
-#: ../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "_Premakni sem"
-
-#: ../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "_Kopiraj sem"
-
-#: ../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "_Poveži sem"
-
-#: ../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "Uporabi kot ozadje namizja"
-
-#: ../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "Prekliči"
-
-#: ../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Ni bilo mogoče zagnati datoteke \"%s\""
-
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Na odložišču ni ničesar"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr ""
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "Pogled ikon"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Enojni klik"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Vnosne metode"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Pripravljanje"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (neveljaven Unicode znak)"
-
-#: ../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Ni mogoče določiti privzetega mesta \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Predmeta ni mogoče obnoviti iz smeti."
-
-#: ../libcore/gof-file.c:302
-#, c-format
-msgid "link to %s"
-msgstr "povezava do %s"
-
-#: ../libcore/gof-file.c:1748
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
-
-#: ../libcore/gof-file.c:1786
-msgid "No Exec field specified"
-msgstr "Polje 'Exec' ni določeno"
-
-#: ../libcore/gof-file.c:1806
-msgid "No URL field specified"
-msgstr "Polje 'URL' ni določeno"
-
-#: ../libcore/gof-file.c:1812
-msgid "Invalid desktop file"
-msgstr "Neveljavna namizna datoteka"
-
-#: ../libcore/gof-file.c:2102
-msgid "Slashes are not allowed in filenames"
-msgstr "Poševnice v imenik datotek niso dovoljene"
-
-#: ../libcore/gof-file.c:2122
-msgid "Toplevel files cannot be renamed"
-msgstr "Datotek vrhnje ravni ni mogoče preimenovati"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:370
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Ali naj se združi mapa \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:373
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Med združevanjem bo program pred zamenjavo datotek, ki so v sporu s "
-"kopiranimi datotekami, zahteval potrditev."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:378
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starejša mapa z istim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novejša mapa z istim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Mapa z istim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:391
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zamenjava bo odstranila vse datoteke v mapi."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ali naj se zamenja mapa \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mapa z istim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ali naj se datoteka \"%s\" prepiše?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:402
-msgid "Replacing it will overwrite its content."
-msgstr "Zamenjava bo prepisala njeno vsebino."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:406
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starejša datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:410
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novejša datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:414
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Druga datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:469
-msgid "Original file"
-msgstr "Izvirna datoteka"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:470
-#: ../libcore/marlin-file-conflict-dialog.c:491
-msgid "Size:"
-msgstr "Velikost:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:473
-#: ../libcore/marlin-file-conflict-dialog.c:494
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:476
-#: ../libcore/marlin-file-conflict-dialog.c:497
-msgid "Last modified:"
-msgstr "Zadnja sprememba:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:490
-msgid "Replace with"
-msgstr "Zamenjaj z"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:515
-msgid "Merge"
-msgstr "Združi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:709
-msgid "_Select a new name for the destination"
-msgstr "_Izbor novega imena za cilj"
-
-#: ../libcore/marlin-file-conflict-dialog.c:723
-msgid "Reset"
-msgstr "Ponastavi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:735
-msgid "Apply this action to all files"
-msgstr "Uveljavi dejanje za vse datoteke"
-
-#: ../libcore/marlin-file-conflict-dialog.c:746
-#: ../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "_Preskoči"
-
-#: ../libcore/marlin-file-conflict-dialog.c:751
-msgid "Re_name"
-msgstr "_Preimenuj"
-
-#: ../libcore/marlin-file-conflict-dialog.c:757
-msgid "Replace"
-msgstr "Zamenjaj"
-
-#: ../libcore/marlin-file-conflict-dialog.c:830
-msgid "File conflict"
-msgstr "Datoteke v sporu"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Pokaži več _podrobnosti"
-
-#: ../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "Pres_koči vse"
-
-#: ../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "Poskusi _znova"
-
-#: ../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "_Izbriši vse"
-
-#: ../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "_Zamenjaj"
-
-#: ../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "Zamenjaj _Vse"
-
-#: ../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "_Združi"
-
-#: ../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "Združi _vse"
-
-#: ../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "_Vseeno kopiraj"
-
-#: ../libcore/marlin-file-operations.c:296
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d sekund"
-msgstr[1] "%'d sekunda"
-msgstr[2] "%'d sekundi"
-msgstr[3] "%'d sekunde"
-
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minut"
-msgstr[1] "%'d minuta"
-msgstr[2] "%'d minuti"
-msgstr[3] "%'d minute"
-
-#: ../libcore/marlin-file-operations.c:311
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d ur"
-msgstr[1] "%'d ura"
-msgstr[2] "%'d uri"
-msgstr[3] "%'d ure"
-
-#: ../libcore/marlin-file-operations.c:319
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "približno %'d ur"
-msgstr[1] "približno %'d ura"
-msgstr[2] "približno %'d uri"
-msgstr[3] "približno %'d ure"
-
-#: ../libcore/marlin-file-operations.c:395
-#, c-format
-msgid "Link to %s"
-msgstr "Povezava do %s"
-
-#: ../libcore/marlin-file-operations.c:399
-#, c-format
-msgid "Another link to %s"
-msgstr "Še ena povezava na %s"
-
-#: ../libcore/marlin-file-operations.c:415
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d povezava na %s"
-
-#: ../libcore/marlin-file-operations.c:419
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d. povezava na %s"
-
-#: ../libcore/marlin-file-operations.c:423
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d. povezava na %s"
-
-#: ../libcore/marlin-file-operations.c:427
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d. povezava na %s"
-
-#: ../libcore/marlin-file-operations.c:465
-msgid " (copy)"
-msgstr " (kopija)"
-
-#: ../libcore/marlin-file-operations.c:467
-msgid " (another copy)"
-msgstr " (druga kopija)"
-
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
-msgid "th copy)"
-msgstr ". kopija)"
-
-#: ../libcore/marlin-file-operations.c:477
-msgid "st copy)"
-msgstr ". kopija)"
-
-#: ../libcore/marlin-file-operations.c:479
-msgid "nd copy)"
-msgstr ". kopija)"
-
-#: ../libcore/marlin-file-operations.c:481
-msgid "rd copy)"
-msgstr ". kopija)"
-
-#: ../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:500
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s (druga kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s (%'d. kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s (%'d. kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'d. kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s (%'d. kopija)%s"
-
-#: ../libcore/marlin-file-operations.c:619
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:627
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: ../libcore/marlin-file-operations.c:1383
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Ali ste prepričani, da želite iz smeti trajno izbrisati \"%B\"?"
-
-#: ../libcore/marlin-file-operations.c:1386
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbranih "
-"predmetov?"
-msgstr[1] ""
-"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbran predmet?"
-msgstr[2] ""
-"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbrana predmeta?"
-msgstr[3] ""
-"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbrane predmete?"
-
-#: ../libcore/marlin-file-operations.c:1396
-#: ../libcore/marlin-file-operations.c:1464
-msgid "If you delete an item, it will be permanently lost."
-msgstr "V primeru, da predmet izbrišete, bo trajno izgubljen."
-
-#: ../libcore/marlin-file-operations.c:1417
-msgid "Empty all items from Trash?"
-msgstr "Ali želite izbrisati vse predmete iz smeti?"
-
-#: ../libcore/marlin-file-operations.c:1421
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Vsi predmeti v smeteh bodo trajno izbrisani."
-
-#: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
-msgid "Empty _Trash"
-msgstr "Izprazni _smeti"
-
-#: ../libcore/marlin-file-operations.c:1452
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Ali ste prepričani, da želite trajno izbrisati \"%B\"?"
-
-#: ../libcore/marlin-file-operations.c:1455
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Ali ste prepričani, da želite trajno izbrisati %'d izbranih predmetov?"
-msgstr[1] ""
-"Ali ste prepričani, da želite trajno izbrisati %'d izbrani predmet?"
-msgstr[2] ""
-"Ali ste prepričani, da želite trajno izbrisati %'d izbrana predmeta?"
-msgstr[3] ""
-"Ali ste prepričani, da želite trajno izbrisati %'d izbrane predmete?"
-
-#: ../libcore/marlin-file-operations.c:1480
-#: ../libcore/marlin-file-operations.c:1512
-msgid "Deleting files"
-msgstr "Brisanje datotek"
-
-#: ../libcore/marlin-file-operations.c:1506
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "%'d preostalih datotek za brisanje"
-msgstr[1] "%'d preostala datoteka za brisanje"
-msgstr[2] "%'d preostali datoteki za brisanje"
-msgstr[3] "%'d preostale datoteke za brisanje"
-
-#: ../libcore/marlin-file-operations.c:1526
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "%T preostalih"
-msgstr[1] "%T preostala"
-msgstr[2] "%T preostali"
-msgstr[3] "%T preostale"
-
-#: ../libcore/marlin-file-operations.c:1594
-#: ../libcore/marlin-file-operations.c:1628
-#: ../libcore/marlin-file-operations.c:1667
-#: ../libcore/marlin-file-operations.c:1744
-#: ../libcore/marlin-file-operations.c:2590
-msgid "Error while deleting."
-msgstr "Napaka med brisanjem."
-
-#: ../libcore/marlin-file-operations.c:1598
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"Datotek v mapi \"%B\" ni mogoče izbrisati, ker nimate dovoljenj za ogled."
-
-#: ../libcore/marlin-file-operations.c:1601
-#: ../libcore/marlin-file-operations.c:2649
-#: ../libcore/marlin-file-operations.c:3645
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"Prišlo je do napake med pridobivanjem podrobnosti o datotekah v mapi \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1610
-#: ../libcore/marlin-file-operations.c:3654
-msgid "_Skip files"
-msgstr "Pre_skoči datoteke"
-
-#: ../libcore/marlin-file-operations.c:1631
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr "Mape \"%B\" ni mogoče izbrisati, ker nimate dovoljenja za branje."
-
-#: ../libcore/marlin-file-operations.c:1634
-#: ../libcore/marlin-file-operations.c:2688
-#: ../libcore/marlin-file-operations.c:3690
-msgid "There was an error reading the folder \"%B\"."
-msgstr "Prišlo je do napake med branjem mape \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1668
-msgid "Could not remove the folder %B."
-msgstr "Ni mogoče odstraniti mape %B."
-
-#: ../libcore/marlin-file-operations.c:1745
-msgid "There was an error deleting %B."
-msgstr "Prišlo je do napake med brisanjem %B."
-
-#: ../libcore/marlin-file-operations.c:1821
-#: ../libcore/marlin-file-operations.c:1833
-msgid "Moving files to trash"
-msgstr "Premikanje datotek v smeti"
-
-#: ../libcore/marlin-file-operations.c:1835
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "%'d preostalih datotek za premikanje v smeti"
-msgstr[1] "%'d preostala datoteka za premikanje v smeti"
-msgstr[2] "%'d preostali datoteki za premikanje v smeti"
-msgstr[3] "%'d preostale datoteke za premikanje v smeti"
-
-#: ../libcore/marlin-file-operations.c:1890
-msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Datoteke ni mogoče premakniti v smeti. Takojšnji izbris?"
-
-#: ../libcore/marlin-file-operations.c:1891
-msgid ""
-"This file is located on an external media and cannot be moved to the trash. "
-"Once deleted, it cannot be restored."
-msgstr ""
-"Ta datoteka se nahaja na zunanjem mediu in ga ni mogoče premakniti v smeti. "
-"Ko je izbrisana, jeni več mogoče obnoviti."
-
-#: ../libcore/marlin-file-operations.c:2073
-msgid "Trashing Files"
-msgstr "Premikanje datotek v smeti"
-
-#: ../libcore/marlin-file-operations.c:2075
-msgid "Deleting Files"
-msgstr "Brisanje datotek"
-
-#: ../libcore/marlin-file-operations.c:2147
-msgid "Unable to eject %V"
-msgstr "%V ni mogoče izvreči"
-
-#: ../libcore/marlin-file-operations.c:2149
-msgid "Unable to unmount %V"
-msgstr "%V ni mogoče odklopiti"
-
-#: ../libcore/marlin-file-operations.c:2325
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Ali želite izbrisati smeti preden napravo odklopite?"
-
-#: ../libcore/marlin-file-operations.c:2327
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Če želite pridobiti prostor na tej napravi, morate izbrisati smeti. Vsi "
-"predmeti v smeteh bodo trajno izgubljeni."
-
-#: ../libcore/marlin-file-operations.c:2333
-msgid "Do _not Empty Trash"
-msgstr "_Ne izprazni smeti"
-
-#: ../libcore/marlin-file-operations.c:2447
-#, c-format
-msgid "Unable to mount %s"
-msgstr "Ni mogoče priklopiti mesta %s"
-
-#: ../libcore/marlin-file-operations.c:2525
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Priprava na kopiranje %'d datotek (%S)"
-msgstr[1] "Priprava na kopiranje %'d datoteke (%S)"
-msgstr[2] "Priprava na kopiranje %'d datotek (%S)"
-msgstr[3] "Priprava na kopiranje %'d datotek (%S)"
-
-#: ../libcore/marlin-file-operations.c:2531
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Priprava na premikanje %'d datotek (%S)"
-msgstr[1] "Priprava na premikanje %'d datoteke (%S)"
-msgstr[2] "Priprava na premikanje %'d datotek (%S)"
-msgstr[3] "Priprava na premikanje %'d datotek (%S)"
-
-#: ../libcore/marlin-file-operations.c:2537
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Priprava na brisanje %'d datotek (%S)"
-msgstr[1] "Priprava na brisanje %'d datoteke (%S)"
-msgstr[2] "Priprava na brisanje %'d datotek (%S)"
-msgstr[3] "Priprava na brisanje %'d datotek (%S)"
-
-#: ../libcore/marlin-file-operations.c:2543
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Priprava na premikanje %'d datotek v smeti"
-msgstr[1] "Priprava na premikanje %'d datoteke v smeti"
-msgstr[2] "Priprava na premikanje %'d datotek v smeti"
-msgstr[3] "Priprava na premikanje %'d datotek v smeti"
-
-#: ../libcore/marlin-file-operations.c:2586
-#: ../libcore/marlin-file-operations.c:3506
-#: ../libcore/marlin-file-operations.c:3637
-#: ../libcore/marlin-file-operations.c:3682
-msgid "Error while copying."
-msgstr "Napaka med kopiranjem."
-
-#: ../libcore/marlin-file-operations.c:2588
-#: ../libcore/marlin-file-operations.c:3635
-#: ../libcore/marlin-file-operations.c:3680
-msgid "Error while moving."
-msgstr "Napaka med premikanjem."
-
-#: ../libcore/marlin-file-operations.c:2592
-msgid "Error while moving files to trash."
-msgstr "Napaka medi premikanjem datotek v smeti."
-
-#: ../libcore/marlin-file-operations.c:2646
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Z datotekami v mapi \"%B\" ni mogoče upravljati, ker nimate dovoljenja za "
-"ogled."
-
-#: ../libcore/marlin-file-operations.c:2685
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr "Z mapo \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
-
-#: ../libcore/marlin-file-operations.c:2762
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Z datoteko \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
-
-#: ../libcore/marlin-file-operations.c:2765
-msgid "There was an error getting information about \"%B\"."
-msgstr "Prišlo je do napake med pridobivanjem podrobnosti o \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2865
-#: ../libcore/marlin-file-operations.c:2907
-#: ../libcore/marlin-file-operations.c:2940
-#: ../libcore/marlin-file-operations.c:2970
-msgid "Error while copying to \"%B\"."
-msgstr "Napaka med kopiranjem v \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2869
-msgid "You do not have permissions to access the destination folder."
-msgstr "Nimate dovoljenj za dostop do ciljne mape."
-
-#: ../libcore/marlin-file-operations.c:2871
-msgid "There was an error getting information about the destination."
-msgstr "Prišlo je do napake med pridobivanjem podatkov o cilju."
-
-#: ../libcore/marlin-file-operations.c:2908
-msgid "The destination is not a folder."
-msgstr "Ciljno mesto ni mapa."
-
-#: ../libcore/marlin-file-operations.c:2941
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr "Na cilju ni dovolj prostora. Poskusite odstraniti nekaj datotek."
-
-#: ../libcore/marlin-file-operations.c:2943
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Na voljo je %S prostora, toda zagotoviti ga je treba %S."
-
-#: ../libcore/marlin-file-operations.c:2971
-msgid "The destination is read-only."
-msgstr "Cilj je mogoče le brati."
-
-#: ../libcore/marlin-file-operations.c:3032
-msgid "Moving \"%B\" to \"%B\""
-msgstr "Premikanje \"%B\" v \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3033
-msgid "Copying \"%B\" to \"%B\""
-msgstr "Kopiranje \"%B\" v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3037
-msgid "Duplicating \"%B\""
-msgstr "Podvajanje \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3041
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[1] "Premikanje %'d datoteke (iz \"%B\") v \"%B\""
-msgstr[2] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[3] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3044
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[1] "Kopiranje %'d datoteke (iz \"%B\") v \"%B\""
-msgstr[2] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[3] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3051
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Podvajanje %'d datotek (v \"%B\")"
-msgstr[1] "Podvajanje %'d datoteke (v \"%B\")"
-msgstr[2] "Podvajanje %'d datotek (v \"%B\")"
-msgstr[3] "Podvajanje %'d datotek (v \"%B\")"
-
-#: ../libcore/marlin-file-operations.c:3060
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Premikanje %'d datotek v \"%B\""
-msgstr[1] "Premikanje %'d datoteke v \"%B\""
-msgstr[2] "Premikanje %'d datotek v \"%B\""
-msgstr[3] "Premikanje %'d datotek v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3064
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Kopiranje %'d datotek v \"%B\""
-msgstr[1] "Kopiranje %'d datoteke v \"%B\""
-msgstr[2] "Kopiranje %'d datotek v \"%B\""
-msgstr[3] "Kopiranje %'d datotek v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3069
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Podvajanje %'d datotek"
-msgstr[1] "Podvajanje %'d datoteke"
-msgstr[2] "Podvajanje %'d datotek"
-msgstr[3] "Podvajanje %'d datotek"
-
-#: ../libcore/marlin-file-operations.c:3120
-#, c-format
-msgid "%S of %S"
-msgstr "%S od %S"
-
-#: ../libcore/marlin-file-operations.c:3131
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S od %S — %T preostalih (%S/sek)"
-msgstr[1] "%S od %S — %T preostala (%S/sek)"
-msgstr[2] "%S od %S — %T preostali (%S/sek)"
-msgstr[3] "%S od %S — %T preostale (%S/sek)"
-
-#: ../libcore/marlin-file-operations.c:3510
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za pisanje na ciljnem "
-"mestu."
-
-#: ../libcore/marlin-file-operations.c:3513
-msgid "There was an error creating the folder \"%B\"."
-msgstr "Prišlo je do napake med ustvarjanjem mape \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3642
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Datotek v mapi \"%B\" ni mogoče kopirati, ker nimate dovoljenja za ogled."
-
-#: ../libcore/marlin-file-operations.c:3687
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr "Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za branje."
-
-#: ../libcore/marlin-file-operations.c:3732
-#: ../libcore/marlin-file-operations.c:4433
-#: ../libcore/marlin-file-operations.c:5020
-msgid "Error while moving \"%B\"."
-msgstr "Napaka med premikanjem \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3733
-msgid "Could not remove the source folder."
-msgstr "Ni mogoče odstraniti izvorne mape."
-
-#: ../libcore/marlin-file-operations.c:3818
-#: ../libcore/marlin-file-operations.c:3859
-#: ../libcore/marlin-file-operations.c:4435
-#: ../libcore/marlin-file-operations.c:4506
-msgid "Error while copying \"%B\"."
-msgstr "Napaka med kopiranjem \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3819
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "Ni mogoče odstraniti datotek iz obstoječe mape %F."
-
-#: ../libcore/marlin-file-operations.c:3860
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "Ni mogoče odstraniti že obstoječe datoteke %F."
-
-#: ../libcore/marlin-file-operations.c:4189
-#: ../libcore/marlin-file-operations.c:4860
-msgid "You cannot move a folder into itself."
-msgstr "Mape ni mogoče premakniti same vase."
-
-#: ../libcore/marlin-file-operations.c:4190
-#: ../libcore/marlin-file-operations.c:4861
-msgid "You cannot copy a folder into itself."
-msgstr "Mape ni mogoče kopirati same vase."
-
-#: ../libcore/marlin-file-operations.c:4191
-#: ../libcore/marlin-file-operations.c:4862
-msgid "The destination folder is inside the source folder."
-msgstr "Ciljna mapa je znotraj izvorne mape."
-
-#: ../libcore/marlin-file-operations.c:4222
-msgid "You cannot move a file over itself."
-msgstr "Datoteke ni mogoče premakniti preko same sebe."
-
-#: ../libcore/marlin-file-operations.c:4223
-msgid "You cannot copy a file over itself."
-msgstr "Datoteke ni mogoče kopirati preko same sebe."
-
-#: ../libcore/marlin-file-operations.c:4224
-msgid "The source file would be overwritten by the destination."
-msgstr "Izvorna datoteka bo bila prepisana s ciljno datoteko."
-
-#: ../libcore/marlin-file-operations.c:4437
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %F."
-
-#: ../libcore/marlin-file-operations.c:4507
-#, c-format
-msgid "There was an error copying the file into %F."
-msgstr "Prišlo je do napake med kopiranjem datoteke v %F."
-
-#: ../libcore/marlin-file-operations.c:4734
-msgid "Copying Files"
-msgstr "Kopiranje datotek"
-
-#: ../libcore/marlin-file-operations.c:4760
-msgid "Preparing to move to \"%B\""
-msgstr "Pripravljanje na premik v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:4772
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Pripravljanje na premikanje %'d datotek"
-msgstr[1] "Pripravljanje na premikanje %'d datoteke"
-msgstr[2] "Pripravljanje na premikanje %'d datotek"
-msgstr[3] "Pripravljanje na premikanje %'d datotek"
-
-#: ../libcore/marlin-file-operations.c:5021
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "Prišlo je do napake med premikanjem programa v %F."
-
-#: ../libcore/marlin-file-operations.c:5284
-msgid "Moving Files"
-msgstr "Premikanje datotek"
-
-#: ../libcore/marlin-file-operations.c:5314
-msgid "Creating links in \"%B\""
-msgstr "Ustvarjanje povezav v \"%B\""
-
-#: ../libcore/marlin-file-operations.c:5325
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Ustvarjanje povezave na %'d datotek"
-msgstr[1] "Ustvarjanje povezave na %'d datoteko"
-msgstr[2] "Ustvarjanje povezave na %'d datoteki"
-msgstr[3] "Ustvarjanje povezave na %'d datoteke"
-
-#: ../libcore/marlin-file-operations.c:5460
-msgid "Error while creating link to %B."
-msgstr "Napaka med ustvarjanjem povezave z %B."
-
-#: ../libcore/marlin-file-operations.c:5462
-msgid "Symbolic links only supported for local files"
-msgstr "Simbolne povezave so podprte le za krajevne datoteke"
-
-#: ../libcore/marlin-file-operations.c:5465
-msgid "The target doesn't support symbolic links."
-msgstr "Cilj ne podpira simbolnih povezav."
-
-#: ../libcore/marlin-file-operations.c:5468
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "Prišlo je do napake med ustvarjanjem simbolne povezave v %F."
-
-#: ../libcore/marlin-file-operations.c:5796
-#: ../libcore/marlin-file-operations.c:5799
-msgid "Setting permissions"
-msgstr "Nastavljanje dovoljenj"
-
-#: ../libcore/marlin-file-operations.c:6050
-msgid "untitled folder"
-msgstr "neimenovana mapa"
-
-#: ../libcore/marlin-file-operations.c:6058
-msgid "new file"
-msgstr "nova datoteka"
-
-#: ../libcore/marlin-file-operations.c:6229
-msgid "Error while creating directory %B."
-msgstr "Napaka med ustvarjanjem mape %B."
-
-#: ../libcore/marlin-file-operations.c:6231
-msgid "Error while creating file %B."
-msgstr "Napaka med ustvarjanjem datoteke %B."
-
-#: ../libcore/marlin-file-operations.c:6233
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "Prišlo je do napake med ustvarjanjem mape v %F."
-
-#: ../libcore/marlin-file-operations.c:6543
-msgid "Emptying the trash"
-msgstr "Praznjenje smeti"
-
-#: ../libcore/marlin-file-operations.c:6551
-msgid "Emptying Trash"
-msgstr "Praznjenje smeti"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1799,249 +567,1295 @@ msgstr[1] "_Uveljavi spremembo lastnika %d predmeta"
 msgstr[2] "_Uveljavi spremembo lastnika %d predmetov"
 msgstr[3] "_Uveljavi spremembo lastnika %d predmetov"
 
-#: ../src/View/Resources.vala:10
-msgid "A simple and powerful file manager"
+#: ../libcore/gof-file.c:303
+#, c-format
+msgid "link to %s"
+msgstr "povezava do %s"
+
+#: ../libcore/gof-file.c:1789
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
+
+#: ../libcore/gof-file.c:1827
+msgid "No Exec field specified"
+msgstr "Polje 'Exec' ni določeno"
+
+#: ../libcore/gof-file.c:1847
+msgid "No URL field specified"
+msgstr "Polje 'URL' ni določeno"
+
+#: ../libcore/gof-file.c:1853
+msgid "Invalid desktop file"
+msgstr "Neveljavna namizna datoteka"
+
+#: ../libcore/gof-file.c:2145
+msgid "Slashes are not allowed in filenames"
+msgstr "Poševnice v imenik datotek niso dovoljene"
+
+#: ../libcore/gof-file.c:2165
+msgid "Toplevel files cannot be renamed"
+msgstr "Datotek vrhnje ravni ni mogoče preimenovati"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Pripravljanje"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Pokaži več _podrobnosti"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Danes ob %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Včeraj ob %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b ob %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y ob %-I:%M %p"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Ali naj se združi mapa \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
 msgstr ""
+"Med združevanjem bo program pred zamenjavo datotek, ki so v sporu s "
+"kopiranimi datotekami, zahteval potrditev."
 
-#: ../src/View/Resources.vala:28
-msgid "Launchpad Translators"
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starejša mapa z istim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novejša mapa z istim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Mapa z istim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zamenjava bo odstranila vse datoteke v mapi."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ali naj se zamenja mapa \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mapa z istim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ali naj se datoteka \"%s\" prepiše?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
+msgid "Replacing it will overwrite its content."
+msgstr "Zamenjava bo prepisala njeno vsebino."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starejša datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Novejša datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Druga datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
+msgid "Original file"
+msgstr "Izvirna datoteka"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
+msgid "Size:"
+msgstr "Velikost:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
+msgid "Last modified:"
+msgstr "Zadnja sprememba:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
+msgid "Replace with"
+msgstr "Zamenjaj z"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
+msgid "Merge"
+msgstr "Združi"
+
+#: ../libcore/marlin-file-conflict-dialog.c:709
+msgid "_Select a new name for the destination"
+msgstr "_Izbor novega imena za cilj"
+
+#: ../libcore/marlin-file-conflict-dialog.c:723
+msgid "Reset"
+msgstr "Ponastavi"
+
+#: ../libcore/marlin-file-conflict-dialog.c:735
+msgid "Apply this action to all files"
+msgstr "Uveljavi dejanje za vse datoteke"
+
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Preskoči"
+
+#: ../libcore/marlin-file-conflict-dialog.c:751
+msgid "Re_name"
+msgstr "_Preimenuj"
+
+#: ../libcore/marlin-file-conflict-dialog.c:757
+msgid "Replace"
+msgstr "Zamenjaj"
+
+#: ../libcore/marlin-file-conflict-dialog.c:830
+msgid "File conflict"
+msgstr "Datoteke v sporu"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (neveljaven Unicode znak)"
+
+#: ../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "Pres_koči vse"
+
+#: ../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "Poskusi _znova"
+
+#: ../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "_Izbriši vse"
+
+#: ../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "_Zamenjaj"
+
+#: ../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Zamenjaj _Vse"
+
+#: ../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "_Združi"
+
+#: ../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Združi _vse"
+
+#: ../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "_Vseeno kopiraj"
+
+#: ../libcore/marlin-file-operations.c:296
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d sekund"
+msgstr[1] "%'d sekunda"
+msgstr[2] "%'d sekundi"
+msgstr[3] "%'d sekunde"
+
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minut"
+msgstr[1] "%'d minuta"
+msgstr[2] "%'d minuti"
+msgstr[3] "%'d minute"
+
+#: ../libcore/marlin-file-operations.c:311
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d ur"
+msgstr[1] "%'d ura"
+msgstr[2] "%'d uri"
+msgstr[3] "%'d ure"
+
+#: ../libcore/marlin-file-operations.c:319
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "približno %'d ur"
+msgstr[1] "približno %'d ura"
+msgstr[2] "približno %'d uri"
+msgstr[3] "približno %'d ure"
+
+#: ../libcore/marlin-file-operations.c:395
+#, c-format
+msgid "Link to %s"
+msgstr "Povezava do %s"
+
+#: ../libcore/marlin-file-operations.c:399
+#, c-format
+msgid "Another link to %s"
+msgstr "Še ena povezava na %s"
+
+#: ../libcore/marlin-file-operations.c:415
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d povezava na %s"
+
+#: ../libcore/marlin-file-operations.c:419
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d. povezava na %s"
+
+#: ../libcore/marlin-file-operations.c:423
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d. povezava na %s"
+
+#: ../libcore/marlin-file-operations.c:427
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d. povezava na %s"
+
+#: ../libcore/marlin-file-operations.c:465
+msgid " (copy)"
+msgstr " (kopija)"
+
+#: ../libcore/marlin-file-operations.c:467
+msgid " (another copy)"
+msgstr " (druga kopija)"
+
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
+msgid "th copy)"
+msgstr ". kopija)"
+
+#: ../libcore/marlin-file-operations.c:477
+msgid "st copy)"
+msgstr ". kopija)"
+
+#: ../libcore/marlin-file-operations.c:479
+msgid "nd copy)"
+msgstr ". kopija)"
+
+#: ../libcore/marlin-file-operations.c:481
+msgid "rd copy)"
+msgstr ". kopija)"
+
+#: ../libcore/marlin-file-operations.c:498
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:500
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (druga kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'d. kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:515
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'d. kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:517
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'d. kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:519
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'d. kopija)%s"
+
+#: ../libcore/marlin-file-operations.c:619
+msgid " ("
+msgstr " ("
+
+#: ../libcore/marlin-file-operations.c:627
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: ../libcore/marlin-file-operations.c:1383
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Ali ste prepričani, da želite iz smeti trajno izbrisati \"%B\"?"
+
+#: ../libcore/marlin-file-operations.c:1386
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbranih "
+"predmetov?"
+msgstr[1] ""
+"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbran predmet?"
+msgstr[2] ""
+"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbrana predmeta?"
+msgstr[3] ""
+"Ali ste prepričani, da želite iz smeti trajno izbrisati %'d izbrane predmete?"
+
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
+msgid "If you delete an item, it will be permanently lost."
+msgstr "V primeru, da predmet izbrišete, bo trajno izgubljen."
+
+#: ../libcore/marlin-file-operations.c:1417
+msgid "Empty all items from Trash?"
+msgstr "Ali želite izbrisati vse predmete iz smeti?"
+
+#: ../libcore/marlin-file-operations.c:1421
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Vsi predmeti v smeteh bodo trajno izbrisani."
+
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2405 ../src/View/Sidebar.vala:1242
+msgid "Empty _Trash"
+msgstr "Izprazni _smeti"
+
+#: ../libcore/marlin-file-operations.c:1452
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Ali ste prepričani, da želite trajno izbrisati \"%B\"?"
+
+#: ../libcore/marlin-file-operations.c:1455
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] ""
+"Ali ste prepričani, da želite trajno izbrisati %'d izbranih predmetov?"
+msgstr[1] ""
+"Ali ste prepričani, da želite trajno izbrisati %'d izbrani predmet?"
+msgstr[2] ""
+"Ali ste prepričani, da želite trajno izbrisati %'d izbrana predmeta?"
+msgstr[3] ""
+"Ali ste prepričani, da želite trajno izbrisati %'d izbrane predmete?"
+
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
+msgid "Deleting files"
+msgstr "Brisanje datotek"
+
+#: ../libcore/marlin-file-operations.c:1506
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "%'d preostalih datotek za brisanje"
+msgstr[1] "%'d preostala datoteka za brisanje"
+msgstr[2] "%'d preostali datoteki za brisanje"
+msgstr[3] "%'d preostale datoteke za brisanje"
+
+#: ../libcore/marlin-file-operations.c:1526
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T preostalih"
+msgstr[1] "%T preostala"
+msgstr[2] "%T preostali"
+msgstr[3] "%T preostale"
+
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2660
+msgid "Error while deleting."
+msgstr "Napaka med brisanjem."
+
+#: ../libcore/marlin-file-operations.c:1598
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
 msgstr ""
+"Datotek v mapi \"%B\" ni mogoče izbrisati, ker nimate dovoljenj za ogled."
 
-#: ../src/View/OverlayBar.vala:136
-msgid "%u folders"
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2719
+#: ../libcore/marlin-file-operations.c:3713
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
+"Prišlo je do napake med pridobivanjem podrobnosti o datotekah v mapi \"%B\"."
 
-#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
-msgid " and %u other item (%s) selected"
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3722
+msgid "_Skip files"
+msgstr "Pre_skoči datoteke"
+
+#: ../libcore/marlin-file-operations.c:1631
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr "Mape \"%B\" ni mogoče izbrisati, ker nimate dovoljenja za branje."
+
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2758
+#: ../libcore/marlin-file-operations.c:3758
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Prišlo je do napake med branjem mape \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:1668
+msgid "Could not remove the folder %B."
+msgstr "Ni mogoče odstraniti mape %B."
+
+#: ../libcore/marlin-file-operations.c:1745
+msgid "There was an error deleting %B."
+msgstr "Prišlo je do napake med brisanjem %B."
+
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
+msgid "Moving files to trash"
+msgstr "Premikanje datotek v smeti"
+
+#: ../libcore/marlin-file-operations.c:1835
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "%'d preostalih datotek za premikanje v smeti"
+msgstr[1] "%'d preostala datoteka za premikanje v smeti"
+msgstr[2] "%'d preostali datoteki za premikanje v smeti"
+msgstr[3] "%'d preostale datoteke za premikanje v smeti"
+
+#: ../libcore/marlin-file-operations.c:1930
+#: ../libcore/marlin-file-operations.c:1933
+#: ../libcore/marlin-file-operations.c:1936
+msgid "Cannot move file to trash or delete it"
+msgstr "Ni mogoče premakniti datoteke v smeti oz. je izbrisati"
+
+#: ../libcore/marlin-file-operations.c:1931
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Datotek na datotečnem sistemu samo za branje ni mogoče premakniti v smeti."
 
-#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
-msgid " and %u other items (%s) selected"
+#: ../libcore/marlin-file-operations.c:1934
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr "Datotek v mapah za katere nimate privilegijev ni mogoče izbrisati."
+
+#: ../libcore/marlin-file-operations.c:1937
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr "Map za katere nimate privilegijev ni mogoče izbrisati."
+
+#: ../libcore/marlin-file-operations.c:1939
+msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Datoteke ni mogoče premakniti v smeti. Ali jo želite takoj izbrisati?"
 
-#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
-msgid " selected"
+#: ../libcore/marlin-file-operations.c:1940
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
 msgstr ""
+"Te datoteke ni bilo mogoče premakniti v smeti. Spodaj je več informacij."
 
-#: ../src/View/OverlayBar.vala:148
-msgid "%u folder"
+#: ../libcore/marlin-file-operations.c:1944
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr "Datoteke ni mogoče premakniti v smeti. Ali jo želite izbrisati?"
+
+#: ../libcore/marlin-file-operations.c:1945
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
 msgstr ""
+"Te datoteke ni bilo mogoče premakniti v smeti. Verjetno je tudi ne boste "
+"mogli izbrisati."
 
-#: ../src/View/OverlayBar.vala:160
-msgid "%u items selected (%s)"
-msgstr "%u predmetov je izbranih (%s)"
-
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Brisanje datoteko trajno odstrani."
 
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
-msgid "Home"
-msgstr "Domov"
+#: ../libcore/marlin-file-operations.c:2143
+msgid "Trashing Files"
+msgstr "Premikanje datotek v smeti"
 
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
-msgid "File System"
-msgstr "Datotečni Sistem"
+#: ../libcore/marlin-file-operations.c:2145
+msgid "Deleting Files"
+msgstr "Brisanje datotek"
 
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
+#: ../libcore/marlin-file-operations.c:2217
+msgid "Unable to eject %V"
+msgstr "%V ni mogoče izvreči"
+
+#: ../libcore/marlin-file-operations.c:2219
+msgid "Unable to unmount %V"
+msgstr "%V ni mogoče odklopiti"
+
+#: ../libcore/marlin-file-operations.c:2395
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Ali želite izbrisati smeti preden napravo odklopite?"
+
+#: ../libcore/marlin-file-operations.c:2397
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
 msgstr ""
+"Če želite pridobiti prostor na tej napravi, morate izbrisati smeti. Vsi "
+"predmeti v smeteh bodo trajno izgubljeni."
 
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "Kot administrator"
+#: ../libcore/marlin-file-operations.c:2403
+msgid "Do _not Empty Trash"
+msgstr "_Ne izprazni smeti"
 
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
+#: ../libcore/marlin-file-operations.c:2517
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Ni mogoče priklopiti mesta %s"
+
+#: ../libcore/marlin-file-operations.c:2595
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Priprava na kopiranje %'d datotek (%S)"
+msgstr[1] "Priprava na kopiranje %'d datoteke (%S)"
+msgstr[2] "Priprava na kopiranje %'d datotek (%S)"
+msgstr[3] "Priprava na kopiranje %'d datotek (%S)"
+
+#: ../libcore/marlin-file-operations.c:2601
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Priprava na premikanje %'d datotek (%S)"
+msgstr[1] "Priprava na premikanje %'d datoteke (%S)"
+msgstr[2] "Priprava na premikanje %'d datotek (%S)"
+msgstr[3] "Priprava na premikanje %'d datotek (%S)"
+
+#: ../libcore/marlin-file-operations.c:2607
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Priprava na brisanje %'d datotek (%S)"
+msgstr[1] "Priprava na brisanje %'d datoteke (%S)"
+msgstr[2] "Priprava na brisanje %'d datotek (%S)"
+msgstr[3] "Priprava na brisanje %'d datotek (%S)"
+
+#: ../libcore/marlin-file-operations.c:2613
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Priprava na premikanje %'d datotek v smeti"
+msgstr[1] "Priprava na premikanje %'d datoteke v smeti"
+msgstr[2] "Priprava na premikanje %'d datotek v smeti"
+msgstr[3] "Priprava na premikanje %'d datotek v smeti"
+
+#: ../libcore/marlin-file-operations.c:2656
+#: ../libcore/marlin-file-operations.c:3575
+#: ../libcore/marlin-file-operations.c:3705
+#: ../libcore/marlin-file-operations.c:3750
+msgid "Error while copying."
+msgstr "Napaka med kopiranjem."
+
+#: ../libcore/marlin-file-operations.c:2658
+#: ../libcore/marlin-file-operations.c:3703
+#: ../libcore/marlin-file-operations.c:3748
+msgid "Error while moving."
+msgstr "Napaka med premikanjem."
+
+#: ../libcore/marlin-file-operations.c:2662
+msgid "Error while moving files to trash."
+msgstr "Napaka medi premikanjem datotek v smeti."
+
+#: ../libcore/marlin-file-operations.c:2716
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
 msgstr ""
+"Z datotekami v mapi \"%B\" ni mogoče upravljati, ker nimate dovoljenja za "
+"ogled."
 
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
+#: ../libcore/marlin-file-operations.c:2755
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "Z mapo \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
+
+#: ../libcore/marlin-file-operations.c:2831
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
 msgstr ""
+"Z datoteko \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
+#: ../libcore/marlin-file-operations.c:2834
+msgid "There was an error getting information about \"%B\"."
+msgstr "Prišlo je do napake med pridobivanjem podrobnosti o \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:2934
+#: ../libcore/marlin-file-operations.c:2976
+#: ../libcore/marlin-file-operations.c:3009
+#: ../libcore/marlin-file-operations.c:3039
+msgid "Error while copying to \"%B\"."
+msgstr "Napaka med kopiranjem v \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:2938
+msgid "You do not have permissions to access the destination folder."
+msgstr "Nimate dovoljenj za dostop do ciljne mape."
+
+#: ../libcore/marlin-file-operations.c:2940
+msgid "There was an error getting information about the destination."
+msgstr "Prišlo je do napake med pridobivanjem podatkov o cilju."
+
+#: ../libcore/marlin-file-operations.c:2977
+msgid "The destination is not a folder."
+msgstr "Ciljno mesto ni mapa."
+
+#: ../libcore/marlin-file-operations.c:3010
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr "Na cilju ni dovolj prostora. Poskusite odstraniti nekaj datotek."
+
+#: ../libcore/marlin-file-operations.c:3012
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Na voljo je %S prostora, toda zagotoviti ga je treba %S."
+
+#: ../libcore/marlin-file-operations.c:3040
+msgid "The destination is read-only."
+msgstr "Cilj je mogoče le brati."
+
+#: ../libcore/marlin-file-operations.c:3101
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Premikanje \"%B\" v \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3102
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Kopiranje \"%B\" v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3106
+msgid "Duplicating \"%B\""
+msgstr "Podvajanje \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3110
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[1] "Premikanje %'d datoteke (iz \"%B\") v \"%B\""
+msgstr[2] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[3] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3113
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[1] "Kopiranje %'d datoteke (iz \"%B\") v \"%B\""
+msgstr[2] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[3] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3120
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Podvajanje %'d datotek (v \"%B\")"
+msgstr[1] "Podvajanje %'d datoteke (v \"%B\")"
+msgstr[2] "Podvajanje %'d datotek (v \"%B\")"
+msgstr[3] "Podvajanje %'d datotek (v \"%B\")"
+
+#: ../libcore/marlin-file-operations.c:3129
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Premikanje %'d datotek v \"%B\""
+msgstr[1] "Premikanje %'d datoteke v \"%B\""
+msgstr[2] "Premikanje %'d datotek v \"%B\""
+msgstr[3] "Premikanje %'d datotek v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3133
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Kopiranje %'d datotek v \"%B\""
+msgstr[1] "Kopiranje %'d datoteke v \"%B\""
+msgstr[2] "Kopiranje %'d datotek v \"%B\""
+msgstr[3] "Kopiranje %'d datotek v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3138
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Podvajanje %'d datotek"
+msgstr[1] "Podvajanje %'d datoteke"
+msgstr[2] "Podvajanje %'d datotek"
+msgstr[3] "Podvajanje %'d datotek"
+
+#: ../libcore/marlin-file-operations.c:3189
+#, c-format
+msgid "%S of %S"
+msgstr "%S od %S"
+
+#: ../libcore/marlin-file-operations.c:3200
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S od %S — %T preostalih (%S/sek)"
+msgstr[1] "%S od %S — %T preostala (%S/sek)"
+msgstr[2] "%S od %S — %T preostali (%S/sek)"
+msgstr[3] "%S od %S — %T preostale (%S/sek)"
+
+#: ../libcore/marlin-file-operations.c:3579
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
 msgstr ""
+"Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za pisanje na ciljnem "
+"mestu."
 
-#: ../src/View/LocationBar.vala:121
+#: ../libcore/marlin-file-operations.c:3582
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Prišlo je do napake med ustvarjanjem mape \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3710
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Datotek v mapi \"%B\" ni mogoče kopirati, ker nimate dovoljenja za ogled."
+
+#: ../libcore/marlin-file-operations.c:3755
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr "Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za branje."
+
+#: ../libcore/marlin-file-operations.c:3800
+#: ../libcore/marlin-file-operations.c:4501
+msgid "Error while moving \"%B\"."
+msgstr "Napaka med premikanjem \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3801
+msgid "Could not remove the source folder."
+msgstr "Ni mogoče odstraniti izvorne mape."
+
+#: ../libcore/marlin-file-operations.c:3886
+#: ../libcore/marlin-file-operations.c:3927
+#: ../libcore/marlin-file-operations.c:4503
+msgid "Error while copying \"%B\"."
+msgstr "Napaka med kopiranjem \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3887
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Ni mogoče odstraniti datotek iz obstoječe mape %F."
+
+#: ../libcore/marlin-file-operations.c:3928
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Ni mogoče odstraniti že obstoječe datoteke %F."
+
+#: ../libcore/marlin-file-operations.c:4257
+#: ../libcore/marlin-file-operations.c:4928
+msgid "You cannot move a folder into itself."
+msgstr "Mape ni mogoče premakniti same vase."
+
+#: ../libcore/marlin-file-operations.c:4258
+#: ../libcore/marlin-file-operations.c:4929
+msgid "You cannot copy a folder into itself."
+msgstr "Mape ni mogoče kopirati same vase."
+
+#: ../libcore/marlin-file-operations.c:4259
+#: ../libcore/marlin-file-operations.c:4930
+msgid "The destination folder is inside the source folder."
+msgstr "Ciljna mapa je znotraj izvorne mape."
+
+#: ../libcore/marlin-file-operations.c:4290
+msgid "You cannot move a file over itself."
+msgstr "Datoteke ni mogoče premakniti preko same sebe."
+
+#: ../libcore/marlin-file-operations.c:4291
+msgid "You cannot copy a file over itself."
+msgstr "Datoteke ni mogoče kopirati preko same sebe."
+
+#: ../libcore/marlin-file-operations.c:4292
+msgid "The source file would be overwritten by the destination."
+msgstr "Izvorna datoteka bo bila prepisana s ciljno datoteko."
+
+#: ../libcore/marlin-file-operations.c:4505
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %F."
+
+#: ../libcore/marlin-file-operations.c:4574
+#, c-format
+msgid "There was an Error while copying \"%s\"."
+msgstr "Pri kopiranju \"%s\" je prišlo do napake."
+
+#: ../libcore/marlin-file-operations.c:4575
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr "Pri kopiranju v \"%s\" je prišlo do napake."
+
+#: ../libcore/marlin-file-operations.c:4802
+msgid "Copying Files"
+msgstr "Kopiranje datotek"
+
+#: ../libcore/marlin-file-operations.c:4828
+msgid "Preparing to move to \"%B\""
+msgstr "Pripravljanje na premik v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:4840
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Pripravljanje na premikanje %'d datotek"
+msgstr[1] "Pripravljanje na premikanje %'d datoteke"
+msgstr[2] "Pripravljanje na premikanje %'d datotek"
+msgstr[3] "Pripravljanje na premikanje %'d datotek"
+
+#: ../libcore/marlin-file-operations.c:5088
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Pri premikanju \"%F\" je prišlo do napake."
+
+#: ../libcore/marlin-file-operations.c:5089
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Prišlo je do napake med premikanjem programa v %F."
+
+#: ../libcore/marlin-file-operations.c:5352
+msgid "Moving Files"
+msgstr "Premikanje datotek"
+
+#: ../libcore/marlin-file-operations.c:5381
+msgid "Creating links in \"%B\""
+msgstr "Ustvarjanje povezav v \"%B\""
+
+#: ../libcore/marlin-file-operations.c:5392
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Ustvarjanje povezave na %'d datotek"
+msgstr[1] "Ustvarjanje povezave na %'d datoteko"
+msgstr[2] "Ustvarjanje povezave na %'d datoteki"
+msgstr[3] "Ustvarjanje povezave na %'d datoteke"
+
+#: ../libcore/marlin-file-operations.c:5526
+msgid "Error while creating link to %B."
+msgstr "Napaka med ustvarjanjem povezave z %B."
+
+#: ../libcore/marlin-file-operations.c:5528
+msgid "Symbolic links only supported for local files"
+msgstr "Simbolne povezave so podprte le za krajevne datoteke"
+
+#: ../libcore/marlin-file-operations.c:5531
+msgid "The target doesn't support symbolic links."
+msgstr "Cilj ne podpira simbolnih povezav."
+
+#: ../libcore/marlin-file-operations.c:5534
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Prišlo je do napake med ustvarjanjem simbolne povezave v %F."
+
+#: ../libcore/marlin-file-operations.c:5862
+#: ../libcore/marlin-file-operations.c:5865
+msgid "Setting permissions"
+msgstr "Nastavljanje dovoljenj"
+
+#: ../libcore/marlin-file-operations.c:6116
+msgid "untitled folder"
+msgstr "neimenovana mapa"
+
+#: ../libcore/marlin-file-operations.c:6124
+msgid "new file"
+msgstr "nova datoteka"
+
+#: ../libcore/marlin-file-operations.c:6295
+msgid "Error while creating directory %B."
+msgstr "Napaka med ustvarjanjem mape %B."
+
+#: ../libcore/marlin-file-operations.c:6297
+msgid "Error while creating file %B."
+msgstr "Napaka med ustvarjanjem datoteke %B."
+
+#: ../libcore/marlin-file-operations.c:6299
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Prišlo je do napake med ustvarjanjem mape v %F."
+
+#: ../libcore/marlin-file-operations.c:6609
+msgid "Emptying the trash"
+msgstr "Praznjenje smeti"
+
+#: ../libcore/marlin-file-operations.c:6617
+msgid "Emptying Trash"
+msgstr "Praznjenje smeti"
+
+#: ../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Ni mogoče določiti privzetega mesta \"%s\" "
+
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Predmeta ni mogoče obnoviti iz smeti."
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Ime datoteke"
+
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/directory_view_popup.ui:120
+msgid "Size"
+msgstr "Velikost"
+
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:300
+#: ../src/View/directory_view_popup.ui:115
+msgid "Type"
+msgstr "Vrsta"
+
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:457
+msgid "Modified"
+msgstr "Spremenjeno"
+
+#: ../src/View/LocationBar.vala:132
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
-#: ../src/View/LocationBar.vala:122
+#: ../src/View/LocationBar.vala:133
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
-#: ../src/View/LocationBar.vala:123
+#: ../src/View/LocationBar.vala:134
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
-#: ../src/View/LocationBar.vala:124
+#: ../src/View/LocationBar.vala:135
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
+#: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
 msgstr "Omrežje"
 
-#: ../src/View/LocationBar.vala:126
+#: ../src/View/LocationBar.vala:137
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
-#: ../src/View/LocationBar.vala:127
+#: ../src/View/LocationBar.vala:138
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
+#: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
 msgstr "Smeti"
 
-#: ../src/View/LocationBar.vala:327
+#: ../src/View/LocationBar.vala:331
 msgid "Open in New Tab"
 msgstr "Odpri v novem zavihku"
 
-#: ../src/View/LocationBar.vala:334
+#: ../src/View/LocationBar.vala:338
 msgid "Open with"
-msgstr ""
+msgstr "Odpri z"
 
-#: ../src/View/LocationBar.vala:365
+#: ../src/View/LocationBar.vala:369
 msgid "Other Application .."
-msgstr ""
+msgstr "Drugo aplikacijo..."
+
+#: ../src/View/Resources.vala:10
+msgid "A simple and powerful file manager"
+msgstr "Preprost in zmogljiv upravljalnik datotek"
+
+#: ../src/View/Resources.vala:29
+msgid "Launchpad Translators"
+msgstr "Prevajalci na Launchpadu"
+
+#: ../src/View/Window.vala:175
+msgid "Files isn't your default file manager."
+msgstr "File ni vaš privzed upravljalnik datotek"
+
+#: ../src/View/Window.vala:181
+msgid "Set as Default"
+msgstr "Nastavi kot privzeto"
+
+#: ../src/View/Window.vala:187
+msgid "Ignore"
+msgstr "Prezri"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "Osebno"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "Vaša pogosta mesta in zaznamki"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:231
+msgid "Home"
+msgstr "Domov"
+
+#: ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "Odpri svojo osebno mapo"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr "Odpri smeti"
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "Naprave"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "Vaši krajevni razdelki in naprave"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
+msgid "File System"
+msgstr "Datotečni sistem"
+
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr "Odpri vsebino datotečnega sistema"
+
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "Priklopi in odpri %s"
+
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "Vaša omrežna mesta"
+
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr "Celotno omrežje"
+
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "Prebrskaj vsebino omrežja"
+
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "Ni mogoče zagnati %s"
+
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr "Odpri"
+
+#: ../src/View/Sidebar.vala:1192
+msgid "Open in New _Tab"
+msgstr "Odpri v novem _zavihku"
+
+#: ../src/View/Sidebar.vala:1198
+msgid "Open in New _Window"
+msgstr "Odpri v novem _oknu"
+
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "Odstrani"
+
+#: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "_Priklopi"
+
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "_Varno odstrani"
+
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "I_zvrzi"
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "V tej mapi"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zaznamki"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Vsepovsod"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Iskanje ni obrodilo sadov"
 
-#: ../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Lastnosti"
+#: ../src/View/ViewContainer.vala:244
+msgid "This folder does not exist"
+msgstr "Ta mapa ne obstaja"
 
-#: ../src/View/PropertiesWindow.vala:141
-msgid "General"
-msgstr "Splošno"
+#: ../src/View/ViewContainer.vala:249
+msgid "(as Administrator)"
+msgstr "Kot administrator"
 
-#: ../src/View/PropertiesWindow.vala:149
-msgid "More"
-msgstr "Dodatno"
+#: ../src/View/ViewContainer.vala:263
+msgid "This does not belong to you."
+msgstr "To ne pripada vam."
 
-#: ../src/View/PropertiesWindow.vala:168
-msgid "Preview"
-msgstr "Predogled"
+#: ../src/View/ViewContainer.vala:264
+msgid "You don't have permission to view this folder."
+msgstr "Nimate dovoljenja za ogled te mape."
 
-#: ../src/View/PropertiesWindow.vala:176
-msgid "Close"
-msgstr ""
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View as Grid"
+msgstr "Pogled mreže"
 
-#: ../src/View/PropertiesWindow.vala:292
-msgid "%u selected items"
-msgstr ""
+#: ../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as List"
+msgstr "Pogled seznama"
 
-#: ../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr ""
+#: ../src/View/Chrome/ViewSwicher.vala:91
+msgid "View in Columns"
+msgstr "Pogled v stolpcih"
 
-#: ../src/View/PropertiesWindow.vala:405
-msgid "Created"
-msgstr "Ustvarjeno"
+#: ../src/View/Chrome/TopMenu.vala:47
+msgid "Previous"
+msgstr "Naprej"
 
-#: ../src/View/PropertiesWindow.vala:410
-msgid "Last Access"
-msgstr "Zadnji dostop"
+#: ../src/View/Chrome/TopMenu.vala:51
+msgid "Next"
+msgstr "Nazaj"
 
-#: ../src/View/PropertiesWindow.vala:416
-msgid "Deleted"
-msgstr "Izbrisano"
+#: ../src/View/AbstractDirectoryView.vala:514
+msgid "Failed to preview"
+msgstr "Predogleda ni bilo mogoče prikazati"
 
-#: ../src/View/PropertiesWindow.vala:421
-msgid "MimeType"
-msgstr "Datotečni tip"
+#: ../src/View/AbstractDirectoryView.vala:902
+msgid "Select an application"
+msgstr "Izberite aplikacijo"
 
-#: ../src/View/PropertiesWindow.vala:429
-msgid "MimeTypes"
-msgstr "Datotečni tipi"
+#: ../src/View/AbstractDirectoryView.vala:904
+msgid "Set as default"
+msgstr "Nastavi kot privzeto"
 
-#: ../src/View/PropertiesWindow.vala:449
-msgid "Location"
-msgstr "Lokacija"
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Cannot drop this file"
+msgstr "Datoteke ni mogoče spustiti"
 
-#: ../src/View/PropertiesWindow.vala:452
-msgid "Target"
-msgstr "Cilj"
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Invalid file name provided"
+msgstr "Ime datoteke je napačno"
 
-#: ../src/View/PropertiesWindow.vala:458
-msgid "Origin Location"
-msgstr "Prvotna lokacija"
+#: ../src/View/AbstractDirectoryView.vala:1645
+msgid "Invalid"
+msgstr "Neveljavna"
 
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Info:"
-msgstr "Informacije"
+#: ../src/View/AbstractDirectoryView.vala:1650
+msgid "Run"
+msgstr "Zaženi"
 
-#: ../src/View/PropertiesWindow.vala:504
-msgid "Other application..."
+#: ../src/View/AbstractDirectoryView.vala:1655
+msgid "Open in %s"
+msgstr "Odpri v %s"
+
+#: ../src/View/AbstractDirectoryView.vala:1663
+msgid "Open in"
+msgstr "Odpri v"
+
+#: ../src/View/AbstractDirectoryView.vala:1709
+msgid "Other Application"
 msgstr "Druga aplikacija"
 
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Open with:"
-msgstr "Odpri s programom:"
+#: ../src/View/AbstractDirectoryView.vala:1933
+msgid "Untitled %s"
+msgstr "Neimenovana %s"
 
-#: ../src/View/PropertiesWindow.vala:548
-msgid "Usage:"
-msgstr "Uporaba:"
+#: ../src/View/AbstractDirectoryView.vala:2374
+msgid "%s is not a valid file name"
+msgstr "%s ni veljavno ime datoteke"
 
-#: ../src/View/PropertiesWindow.vala:553
-msgid "Device usage:"
-msgstr "Uporaba naprave:"
+#: ../src/View/OverlayBar.vala:149
+msgid "%u folders"
+msgstr "Izbranih %u map"
 
-#: ../src/View/PropertiesWindow.vala:560
-msgid "%s free of %s (%d%% used)"
-msgstr "%s prosto od %s (%d%% uporabljeno)"
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
+msgid " and %u other item (%s) selected"
+msgstr " in %u drug predmet (%s)"
 
-#: ../src/View/PropertiesWindow.vala:699
-msgid "Read"
-msgstr "Prebrano"
+#: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
+msgid " and %u other items (%s) selected"
+msgstr " in %u drugih predmetov (%s)"
 
-#: ../src/View/PropertiesWindow.vala:704
-msgid "Write"
-msgstr "Zapiši"
+#: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
+msgid " selected"
+msgstr " izbranih"
 
-#: ../src/View/PropertiesWindow.vala:709
-msgid "Execute"
-msgstr "Izvedi"
+#: ../src/View/OverlayBar.vala:157
+msgid "%u folder"
+msgstr "Izbrana %u mapa"
 
-#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
-msgid "Owner"
-msgstr "Lastnik"
-
-#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
-msgid "Group"
-msgstr "Skupina"
-
-#: ../src/View/PropertiesWindow.vala:943
-msgid "Everyone"
-msgstr "Vsi"
-
-#: ../src/View/PropertiesWindow.vala:1202
-msgid "Select an application to open "
-msgstr ""
+#: ../src/View/OverlayBar.vala:165
+msgid "%u items selected (%s)"
+msgstr "Izbranih %u predmetov (%s)"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ta mapa ne obstaja."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Mape \"%s\" ni mogoče najti."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -2049,7 +1863,7 @@ msgstr "Ustvari"
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Ustvari mapo \"%s\""
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -2057,360 +1871,193 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr ""
-
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Prezri"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Razveljavi"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Razveljavi zadnje dejanje"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Uveljavi"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Uveljavi zadnji ukaz"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Datoteka"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Pogled"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "Po_jdi"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "Pomo_č"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Novo _okno"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr ""
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nov za_vihek"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Odpre nov zavihek za prikazano mesto"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_Zapri"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Zapri to mapo"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_Razveljavi"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Uveljavi"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
-msgstr ""
-
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
-msgstr ""
-
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Odpri _nadrejeno"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Odpre nadrejeno mapo"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_Nazaj"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Pojdi na predhodno obiskano mesto"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Naprej"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Pojdi na naslednje obiskano mesto"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "Po_novno naloži"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Ponovno naloži trenutno mesto"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Domača mapa"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Odpri svojo osebno mapo"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Smeti"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Odpre osebno mapo smeti"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_Omrežje"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Brskanje po zaznamovanih in krajevnih omrežnih povezavah"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "_Približaj"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Približa pogled"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "_Oddalji"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Oddalji pogled"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Običajna _velikost"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Uporabi običajno velikost pogleda"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Naslednji zavihek"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Predhodni zavihek"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "Poveži se s _strežnikom ..."
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "Povezava z oddaljenim strežnikom ali diskom v souporabi"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "_O programu"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Prikaži zasluge"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Prijavi težavo ..."
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Poročaj hrošča na Launchpad"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Poiščite pomoč na spletu ..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Prevedi ta program ..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Pokaži s_krite datoteke"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Preklopi prikaz skritih datotek v trenutnem oknu"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Mesta"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Spremeni vidnost stranskega pladnja trenutnega okna"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Ikona"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "Seznam"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Stolpci"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Osebno"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Vaša pogosta mesta in zaznamki"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Naprave"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Vaši krajevni razdelki in naprave"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "Priklopi in odpri %s"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Vaša omrežna mesta"
-
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Prebrskaj vsebino omrežja"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "Ni mogoče zagnati %s"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Odstrani"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Priklopi"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Varno odstrani"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "I_zvrzi"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "Pogled mreže"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "Pogled seznama"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "Pogled v stolpcih"
-
-#: ../src/Application.vala:137
+"Ni bilo mogoče ustvariti mape\n"
+"\n"
+"%s"
+
+#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
+msgid "Properties"
+msgstr "Lastnosti"
+
+#: ../src/View/PropertiesWindow.vala:145
+msgid "General"
+msgstr "Splošno"
+
+#: ../src/View/PropertiesWindow.vala:153
+msgid "More"
+msgstr "Dodatno"
+
+#: ../src/View/PropertiesWindow.vala:172
+msgid "Preview"
+msgstr "Predogled"
+
+#: ../src/View/PropertiesWindow.vala:180
+msgid "Close"
+msgstr "Zapri"
+
+#: ../src/View/PropertiesWindow.vala:218
+msgid "file"
+msgstr "datoteka"
+
+#: ../src/View/PropertiesWindow.vala:220
+msgid "files"
+msgstr "datoteke"
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual size could be larger, "
+msgstr "Dejanska velikost se lahko razlikuje "
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "could not be read due to permissions or other errors."
+msgstr "ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
+
+#: ../src/View/PropertiesWindow.vala:251
+msgid "unknown"
+msgstr "neznano"
+
+#: ../src/View/PropertiesWindow.vala:357
+msgid "%u selected items"
+msgstr "%u izbranih predmetov"
+
+#: ../src/View/PropertiesWindow.vala:455
+msgid "Created"
+msgstr "Ustvarjeno"
+
+#: ../src/View/PropertiesWindow.vala:460
+msgid "Last Access"
+msgstr "Zadnji dostop"
+
+#: ../src/View/PropertiesWindow.vala:466
+msgid "Deleted"
+msgstr "Izbrisano"
+
+#: ../src/View/PropertiesWindow.vala:471
+msgid "MimeType"
+msgstr "Datotečni tip"
+
+#: ../src/View/PropertiesWindow.vala:479
+msgid "MimeTypes"
+msgstr "Datotečni tipi"
+
+#: ../src/View/PropertiesWindow.vala:499
+msgid "Location"
+msgstr "Lokacija"
+
+#: ../src/View/PropertiesWindow.vala:502
+msgid "Target"
+msgstr "Cilj"
+
+#: ../src/View/PropertiesWindow.vala:508
+msgid "Origin Location"
+msgstr "Prvotna lokacija"
+
+#: ../src/View/PropertiesWindow.vala:536
+msgid "Info:"
+msgstr "Informacije"
+
+#: ../src/View/PropertiesWindow.vala:576
+msgid "Other application..."
+msgstr "Druga aplikacija"
+
+#: ../src/View/PropertiesWindow.vala:600
+msgid "Open with:"
+msgstr "Odpri s programom:"
+
+#: ../src/View/PropertiesWindow.vala:620
+msgid "Usage:"
+msgstr "Uporaba:"
+
+#: ../src/View/PropertiesWindow.vala:625
+msgid "Device usage:"
+msgstr "Uporaba naprave:"
+
+#: ../src/View/PropertiesWindow.vala:632
+msgid "%s free of %s (%d%% used)"
+msgstr "%s prosto od %s (%d%% uporabljeno)"
+
+#: ../src/View/PropertiesWindow.vala:771
+msgid "Read"
+msgstr "Branje"
+
+#: ../src/View/PropertiesWindow.vala:776
+msgid "Write"
+msgstr "Zapiši"
+
+#: ../src/View/PropertiesWindow.vala:781
+msgid "Execute"
+msgstr "Izvedi"
+
+#: ../src/View/PropertiesWindow.vala:994
+#: ../src/View/PropertiesWindow.vala:1007
+msgid "Owner"
+msgstr "Lastnik"
+
+#: ../src/View/PropertiesWindow.vala:999
+#: ../src/View/PropertiesWindow.vala:1011
+msgid "Group"
+msgstr "Skupina"
+
+#: ../src/View/PropertiesWindow.vala:1015
+msgid "Everyone"
+msgstr "Vsi"
+
+#: ../src/View/PropertiesWindow.vala:1274
+msgid "Select an application to open "
+msgstr "Izberite aplikacijo za zagon "
+
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "Ta mapa je prazna."
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr "Dostop zavrnjen"
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr "Ni bilo mogoče zagnati \"%s\""
+
+#: ../src/DndHandler.vala:97
+msgid "Move Here"
+msgstr "Premakni sem"
+
+#: ../src/DndHandler.vala:98
+msgid "Copy Here"
+msgstr "Kopiraj sem"
+
+#: ../src/DndHandler.vala:99
+msgid "Link Here"
+msgstr "Povezava do sem"
+
+#: ../src/DndHandler.vala:102
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: ../src/Application.vala:139
 msgid "Show the version of the program."
 msgstr "Pokaži različico programa."
 
-#: ../src/Application.vala:139
+#: ../src/Application.vala:141
 msgid "Open uri(s) in new tab"
 msgstr "Odpri uri(je) v novem zavihku"
 
-#: ../src/Application.vala:141
+#: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr ""
-
-#: ../src/Application.vala:143
-msgid "Quit Files."
-msgstr ""
+msgstr "Novo okno"
 
 #: ../src/Application.vala:145
+msgid "Quit Files."
+msgstr "Zapri Datoteke."
+
+#: ../src/Application.vala:147
 msgid "Enable debug logging"
 msgstr "Omogoči beleženje razhroščevanja"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:150
 msgid "[URI...]"
 msgstr "[URI ...]"
 
-#: ../src/Application.vala:151
+#: ../src/Application.vala:153
 msgid ""
 "\n"
 "\n"
@@ -2420,9 +2067,37 @@ msgstr ""
 "\n"
 "Prebrskaj datotečni sistem z upravljalnikom datotek"
 
-#: ../src/Application.vala:178
+#: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr "možnosti --quit ni mogoče uporabiti naslovi URI."
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Brskajte po svojih datotekah"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Upravljalnik datotek"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nov za_vihek"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Novo _okno"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr "Novo okno kot _Administrator"
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr "O _Datotekah"
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Datoteke"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
@@ -2453,34 +2128,95 @@ msgstr "Pokaži pogovorno okno kopiranja"
 msgid "Cancel All In-progress Actions"
 msgstr "Prekliči vsa trenutno izvajajoča se dejanja"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Brskajte po svojih datotekah"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Upravljalnik datotek"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr ""
-
-#: ../libwidgets/LocationBar.vala:284
+#: ../libwidgets/LocationBar.vala:290
 msgid "Go to %s"
 msgstr "Pojdi v %s"
 
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "Te predmete odstranite z izpraznitvijo koša"
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:53
+msgid "Connect to Server…"
+msgstr "Poveži se s strežnikom..."
 
-#: ../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/network-places/plugin.vala:53
+msgid "Connect to a network file server"
+msgstr "Poveži se na omrežni datotečni strežnik"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:40
+msgid "These items may be deleted by emptying the trash."
+msgstr "Te predmete je moč izbrisati s praznjenjem smeti"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
 msgstr "Izprazni smeti"
+
+#: ../src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr "Obnovi s smeti"
+
+#: ../src/View/directory_view_popup.ui:9
+msgid "Delete permanently"
+msgstr "Trajno izbriši"
+
+#: ../src/View/directory_view_popup.ui:23
+msgid "Move to Trash"
+msgstr "Premakni v smeti"
+
+#: ../src/View/directory_view_popup.ui:30
+msgid "New"
+msgstr "Nova"
+
+#: ../src/View/directory_view_popup.ui:32
+msgid "Folder"
+msgstr "Mapa"
+
+#: ../src/View/directory_view_popup.ui:37
+msgid "Empty File"
+msgstr "Prazna datoteka"
+
+#: ../src/View/directory_view_popup.ui:46
+msgid "Show Hidden Files"
+msgstr "Prikaži skrite datoteke"
+
+#: ../src/View/directory_view_popup.ui:53
+msgid "New Tab"
+msgstr "Nov zavihek"
+
+#: ../src/View/directory_view_popup.ui:63
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../src/View/directory_view_popup.ui:78
+msgid "Bookmark"
+msgstr "Zaznamek"
+
+#: ../src/View/directory_view_popup.ui:85
+msgid "Paste"
+msgstr "Prilepi"
+
+#: ../src/View/directory_view_popup.ui:92
+msgid "Cut"
+msgstr "Izreži"
+
+#: ../src/View/directory_view_popup.ui:96
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: ../src/View/directory_view_popup.ui:100
+msgid "Paste into Folder"
+msgstr "Prilepi v mapo"
+
+#: ../src/View/directory_view_popup.ui:107
+msgid "Sort by"
+msgstr "Razvrsti po"
+
+#: ../src/View/directory_view_popup.ui:110
+msgid "Name"
+msgstr "Imenu"
+
+#: ../src/View/directory_view_popup.ui:125
+msgid "Date"
+msgstr "Datumu"
+
+#: ../src/View/directory_view_popup.ui:132
+msgid "Reversed Order"
+msgstr "Obratni vrstni red"

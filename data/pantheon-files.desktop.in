@@ -11,6 +11,7 @@ Type=Application
 MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
+X-GNOME-UsesNotifications=true
 
 X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root;AboutDialog
 
@@ -26,7 +27,7 @@ TargetEnvironment=Unity
 
 [Root Shortcut Group]
 Name=New Window As _Administrator
-Exec=gksu pantheon-files
+Exec=pantheon-files-pkexec
 TargetEnvironment=Unity
 
 [AboutDialog Shortcut Group]

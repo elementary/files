@@ -7,275 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-01 14:48-0500\n"
-"PO-Revision-Date: 2014-07-17 05:08+0000\n"
-"Last-Translator: Sergey Kostyuk <ks.hot.ua@gmail.com>\n"
+"POT-Creation-Date: 2014-11-24 08:26-0600\n"
+"PO-Revision-Date: 2014-12-28 13:58+0000\n"
+"Last-Translator: Max_ym <b.maxym.naumtchyk@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-08-02 06:29+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-12-29 06:10+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 "Language: uk\n"
 
-#: ../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Ім'я файлу"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:442
-msgid "Size"
-msgstr "Розмір"
-
-#: ../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Тип"
-
-#: ../src/fm-list-view.c:59 ../src/View/PropertiesWindow.vala:407
-msgid "Modified"
-msgstr "Змінено"
-
-#: ../src/fm-list-view.c:205 ../src/fm-abstract-icon-view.c:139
-#: ../src/fm-columns-view.c:182
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Не вдалося перейменувати %s в %s"
-
-#: ../src/fm-list-view.c:600 ../src/fm-directory-view.c:547
-#: ../src/fm-abstract-icon-view.c:569
-msgid "This folder is empty."
-msgstr "Ця тека є порожньою."
-
-#: ../src/fm-directory-view.c:1230
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Джерело XDS надав некоректне ім'я файлу"
-
-#: ../src/fm-directory-view.c:1388
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Не вдалося створити посилання на URL \"%s\""
-
-#: ../src/fm-directory-view.c:1844
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Використати \"%s\" для відкривання вибраного елементу"
-msgstr[1] "Використати \"%s\" для відкривання вибраних елементів"
-msgstr[2] "Використати \"%s\" для відкривання вибраних елементів"
-
-#: ../src/fm-directory-view.c:2037
-#, c-format
-msgid "Use \"%s\" as template for new file"
-msgstr ""
-
-#: ../src/fm-directory-view.c:2316
-#, c-format
-msgid "_Open With %s"
-msgstr "_Відкрити у %s"
-
-#: ../src/fm-directory-view.c:2322 ../src/fm-directory-view.c:3872
-msgid "_Open"
-msgstr "_Відкрити"
-
-#: ../src/fm-directory-view.c:2338
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Відкрити в %'d Новій _Вкладці"
-
-#: ../src/fm-directory-view.c:2342 ../src/fm-directory-view.c:3884
-#: ../src/View/Sidebar.vala:1195
-msgid "Open in New _Tab"
-msgstr "Відкрити у новій в_кладці"
-
-#: ../src/fm-directory-view.c:2347
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Відкрити в %'d Новому _Вікні"
-
-#: ../src/fm-directory-view.c:2351 ../src/View/Sidebar.vala:1201
-msgid "Open in New _Window"
-msgstr "Відкрити у новому _вікні"
-
-#: ../src/fm-directory-view.c:3792
-msgid "Set as default"
-msgstr "Установити за умовчанням"
-
-#: ../src/fm-directory-view.c:3844
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Підготувати виділені файли до переносу за допомогою команди \"Вставити\""
-
-#: ../src/fm-directory-view.c:3848
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Підготувати виділені файли до копіювання за допомогою команди \"Вставити\""
-
-#: ../src/fm-directory-view.c:3852
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
-"\"Копіювати\""
-
-#: ../src/fm-directory-view.c:3855
-msgid "Paste Into Folder"
-msgstr "Вставити в папку"
-
-#: ../src/fm-directory-view.c:3856
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
-"\"Копіювати\" у вибрану папку"
-
-#: ../src/fm-directory-view.c:3859
-msgid "_Rename..."
-msgstr "_Перейменувати..."
-
-#: ../src/fm-directory-view.c:3860
-msgid "Rename selected item"
-msgstr "Перейменувати вибраний елемент"
-
-#: ../src/fm-directory-view.c:3863
-msgid "Create New _Folder"
-msgstr "Створити Нову _Папку"
-
-#: ../src/fm-directory-view.c:3864
-msgid "Create a new empty folder inside this folder"
-msgstr "Створити порожню теку в цій теці"
-
-#: ../src/fm-directory-view.c:3866
-msgid "Create New _File"
-msgstr "Створити Новий _Файл"
-
-#: ../src/fm-directory-view.c:3868
-msgid "_Empty File"
-msgstr "_Порожній файл"
-
-#: ../src/fm-directory-view.c:3869
-msgid "Create a new empty file inside this folder"
-msgstr "Створити новий порожній файл в даному каталозі"
-
-#: ../src/fm-directory-view.c:3873
-msgid "Open the selected item"
-msgstr "Відкрити вибраний елемент"
-
-#: ../src/fm-directory-view.c:3880
-msgid "Open in new Window"
-msgstr "Відкрити у новому вікні"
-
-#: ../src/fm-directory-view.c:3881
-msgid "Open each selected item in a new window"
-msgstr "Відкрити кожний вибраний елемент у новому вікні"
-
-#: ../src/fm-directory-view.c:3885
-msgid "Open each selected item in a new tab"
-msgstr "Відкрити кожний вибраний елемент у новій вкладці"
-
-#: ../src/fm-directory-view.c:3887
-msgid "Open Wit_h"
-msgstr "Відкрити у_"
-
-#: ../src/fm-directory-view.c:3888
-msgid "Choose a program with which to open the selected item"
-msgstr "Виберіть програму, якою слід відкривати виділений елемент"
-
-#: ../src/fm-directory-view.c:3890
-msgid "Other _Application..."
-msgstr "Інша _Програма..."
-
-#: ../src/fm-directory-view.c:3891
-msgid "Choose another application with which to open the selected item"
-msgstr "Віберіть іншу програму, якою слід відкривати виділений елемент"
-
-#: ../src/fm-directory-view.c:3894
-msgid "Mo_ve to Trash"
-msgstr "Пере_містити у смітник"
-
-#: ../src/fm-directory-view.c:3895
-msgid "Move each selected item to the Trash"
-msgstr "Перемістити всі вибрані елементи у смітник"
-
-#: ../src/fm-directory-view.c:3898
-msgid "_Delete Permanently"
-msgstr "_Видалити Назавжди"
-
-#: ../src/fm-directory-view.c:3899
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Видалити всі вибрані елементи без переносу в смітник"
-
-#: ../src/fm-directory-view.c:3902
-msgid "_Restore"
-msgstr "_Відновити"
-
-#: ../src/fm-directory-view.c:3906 ../src/eel-editable-label.c:3189
-msgid "Select All"
-msgstr "Вибрати все"
-
-#: ../src/fm-directory-view.c:3910
-msgid "_Properties"
-msgstr "_Властивості"
-
-#: ../src/fm-directory-view.c:3911
-msgid "View or modify the properties of each selected item"
-msgstr "Переглянути чи змінити властивості кожного вибраного елементу"
-
-#: ../src/fm-directory-view.c:4024
-msgid "Set Color:"
-msgstr "Вибрати колір"
-
-#: ../src/exo-icon-view.c:864
-msgid "Layout mode"
-msgstr "Режим перегляду"
-
-#: ../src/exo-icon-view.c:865
-msgid "The layout mode"
-msgstr "Режим перегляду"
-
-#: ../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Впорядкувати _елементи"
-
-#: ../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "З_воротний порядок"
-
-#: ../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Показувати піктограми у зворотному порядку"
-
-#: ../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "За _назвою"
-
-#: ../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Лишити піктограми впорядкованими за назвою в рядках"
-
-#: ../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "За _розміром"
-
-#: ../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Лишити піктограми впорядкованими за розміром в рядках"
-
-#: ../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "За _типом"
-
-#: ../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Лишити піктограми впорядкованими за типом в рядках"
-
-#: ../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "за датою _зміни"
-
-#: ../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Лишити піктограми впорядкованими за датою зміни в рядках"
+#: ../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Буфер обміну порожній"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -395,968 +142,6 @@ msgstr "_Запам'ятати цей пароль"
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
 msgstr "Операцію скасовано"
-
-#: ../src/marlin-dnd.c:102
-msgid "_Move Here"
-msgstr "Пере_містити сюди"
-
-#: ../src/marlin-dnd.c:107
-msgid "_Copy Here"
-msgstr "_Копіювати сюди"
-
-#: ../src/marlin-dnd.c:112
-msgid "_Link Here"
-msgstr "_Посилання сюди"
-
-#: ../src/marlin-dnd.c:117
-msgid "Set as _Background"
-msgstr "Встановити як фон"
-
-#: ../src/marlin-dnd.c:124
-msgid "Cancel"
-msgstr "Відміна"
-
-#: ../src/marlin-dnd.c:216
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Не вдається виконати файл \"%s\""
-
-#: ../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Буфер обміну порожній"
-
-#: ../src/fm-icon-view.c:100
-msgid "Icon directory listing"
-msgstr "Список у вигляді іконок"
-
-#: ../src/fm-icon-view.c:101
-msgid "Icon view"
-msgstr "Режим піктограм"
-
-#: ../src/exo-tree-view.c:159
-msgid "Single Click"
-msgstr "Одинарний клік"
-
-#: ../src/exo-tree-view.c:160
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Чи буде елемент активовано при одинарному кліку"
-
-#: ../src/eel-editable-label.c:3200
-msgid "Input Methods"
-msgstr "Способи вводу"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Сьогодні о %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Вчора о %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y на %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "Приготування"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
-
-#: ../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не вдається визначити початкове розташування \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Елемент неможливо відновити зі смітника"
-
-#: ../libcore/gof-file.c:302
-#, c-format
-msgid "link to %s"
-msgstr "посилання на %s"
-
-#: ../libcore/gof-file.c:1748
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Неможливо обробити desktop-файл: %s"
-
-#: ../libcore/gof-file.c:1786
-msgid "No Exec field specified"
-msgstr "Не вказано поле Exec"
-
-#: ../libcore/gof-file.c:1806
-msgid "No URL field specified"
-msgstr "Не вказано URL"
-
-#: ../libcore/gof-file.c:1812
-msgid "Invalid desktop file"
-msgstr "Некоректний файл .desktop"
-
-#: ../libcore/gof-file.c:2102
-msgid "Slashes are not allowed in filenames"
-msgstr "У назвах файлів не можна використовувати косу риску"
-
-#: ../libcore/gof-file.c:2122
-msgid "Toplevel files cannot be renamed"
-msgstr "Файли верхнього рівня не можна перейменовувати"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:370
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Об'єднати теку «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:373
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Якщо при об'єднанні виникнуть конфлікти із файлами, що копіюються, тоді буде "
-"запропоновано підтвердити заміну файлів."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:378
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Старіша тека з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Новіша тека з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Інша тека з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:391
-msgid "Replacing it will remove all files in the folder."
-msgstr "Замінивши, ви вилучите всі файли в теці."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Замінити теку \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Тека з таким ім’ям вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:400
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Замінити файл \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:402
-msgid "Replacing it will overwrite its content."
-msgstr "При заміні вміст буде перезаписано."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:406
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Старіший файл з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:410
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Новіший файл з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:414
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Інший файл з такою ж назвою вже існує в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:469
-msgid "Original file"
-msgstr "Початковий файл"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:470
-#: ../libcore/marlin-file-conflict-dialog.c:491
-msgid "Size:"
-msgstr "Розмір"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:473
-#: ../libcore/marlin-file-conflict-dialog.c:494
-msgid "Type:"
-msgstr "Тип:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:476
-#: ../libcore/marlin-file-conflict-dialog.c:497
-msgid "Last modified:"
-msgstr "Востаннє змінено:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:490
-msgid "Replace with"
-msgstr "Замінити на"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:515
-msgid "Merge"
-msgstr "Об’єднати"
-
-#: ../libcore/marlin-file-conflict-dialog.c:709
-msgid "_Select a new name for the destination"
-msgstr "_Оберіть нову назву для призначення"
-
-#: ../libcore/marlin-file-conflict-dialog.c:723
-msgid "Reset"
-msgstr "Відновити"
-
-#: ../libcore/marlin-file-conflict-dialog.c:735
-msgid "Apply this action to all files"
-msgstr "Застосувати цю дію для всіх файлів"
-
-#: ../libcore/marlin-file-conflict-dialog.c:746
-#: ../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "П_ропустити"
-
-#: ../libcore/marlin-file-conflict-dialog.c:751
-msgid "Re_name"
-msgstr "Перей_менувати"
-
-#: ../libcore/marlin-file-conflict-dialog.c:757
-msgid "Replace"
-msgstr "Замінити"
-
-#: ../libcore/marlin-file-conflict-dialog.c:830
-msgid "File conflict"
-msgstr "Конфлікт файлів"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
-
-#: ../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "Пр_опустити все"
-
-#: ../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "_Повторити"
-
-#: ../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "В_идалити все"
-
-#: ../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "_Замінити"
-
-#: ../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "Замінити вс_і"
-
-#: ../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "_Об'єднати"
-
-#: ../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "Об'єднати _всі"
-
-#: ../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "В_сеодно копіювати"
-
-#: ../libcore/marlin-file-operations.c:296
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d секунда"
-msgstr[1] "%'d секунди"
-msgstr[2] "%'d секунд"
-
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d хвилина"
-msgstr[1] "%'d хвилини"
-msgstr[2] "%'d хвилин"
-
-#: ../libcore/marlin-file-operations.c:311
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d година"
-msgstr[1] "%'d години"
-msgstr[2] "%'d годин"
-
-#: ../libcore/marlin-file-operations.c:319
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "приблизно %'d година"
-msgstr[1] "приблизно %'d години"
-msgstr[2] "приблизно %'d годин"
-
-#: ../libcore/marlin-file-operations.c:395
-#, c-format
-msgid "Link to %s"
-msgstr "Посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:399
-#, c-format
-msgid "Another link to %s"
-msgstr "Інше посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:415
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d-е посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:419
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:423
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d-е посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:427
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d-е посилання на %s"
-
-#: ../libcore/marlin-file-operations.c:465
-msgid " (copy)"
-msgstr " (копія)"
-
-#: ../libcore/marlin-file-operations.c:467
-msgid " (another copy)"
-msgstr " (інша копія)"
-
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
-msgid "th copy)"
-msgstr "-а копія)"
-
-#: ../libcore/marlin-file-operations.c:477
-msgid "st copy)"
-msgstr "-а копія)"
-
-#: ../libcore/marlin-file-operations.c:479
-msgid "nd copy)"
-msgstr "-а копія)"
-
-#: ../libcore/marlin-file-operations.c:481
-msgid "rd copy)"
-msgstr "-я копія)"
-
-#: ../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (копія)%s"
-
-#: ../libcore/marlin-file-operations.c:500
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s (інша копія)%s"
-
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s (%'d-а копія)%s"
-
-#: ../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s (%'d-а копія)%s"
-
-#: ../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'d-а копія)%s"
-
-#: ../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s (%'d-я копія)%s"
-
-#: ../libcore/marlin-file-operations.c:619
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:627
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: ../libcore/marlin-file-operations.c:1383
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Ви дійсно хочете остаточно видалити \"%B\" з кошика?"
-
-#: ../libcore/marlin-file-operations.c:1386
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Ви дійсно хочете остаточно видалити %'d виділений елемент з кошика?"
-msgstr[1] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементи з кошика?"
-msgstr[2] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементів з кошика?"
-
-#: ../libcore/marlin-file-operations.c:1396
-#: ../libcore/marlin-file-operations.c:1464
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Якщо ви видалите елемент, він буде остаточно втрачений."
-
-#: ../libcore/marlin-file-operations.c:1417
-msgid "Empty all items from Trash?"
-msgstr "Очистити кошик?"
-
-#: ../libcore/marlin-file-operations.c:1421
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Всі об’єкти з кошика будуть остаточно видалені."
-
-#: ../libcore/marlin-file-operations.c:1424
-#: ../libcore/marlin-file-operations.c:2335 ../src/View/Sidebar.vala:1244
-msgid "Empty _Trash"
-msgstr "О_чистити кошик"
-
-#: ../libcore/marlin-file-operations.c:1452
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Ви впевнені, що хочете остаточно видалити \"%B\"?"
-
-#: ../libcore/marlin-file-operations.c:1455
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Ви дійсно хочете остаточно знищити %'d вибраний елемент?"
-msgstr[1] "Ви дійсно хочете остаточно знищити %'d вибрані елементи?"
-msgstr[2] "Ви дійсно хочете остаточно знищити %'d вибраних елементів?"
-
-#: ../libcore/marlin-file-operations.c:1480
-#: ../libcore/marlin-file-operations.c:1512
-msgid "Deleting files"
-msgstr "Вилучення файлів"
-
-#: ../libcore/marlin-file-operations.c:1506
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "залишилось вилучити %'d файл"
-msgstr[1] "залишилось вилучити %'d файли"
-msgstr[2] "залишилось вилучити %'d файлів"
-
-#: ../libcore/marlin-file-operations.c:1526
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "%T залишилась"
-msgstr[1] "%T залишились"
-msgstr[2] "%T залишилось"
-
-#: ../libcore/marlin-file-operations.c:1594
-#: ../libcore/marlin-file-operations.c:1628
-#: ../libcore/marlin-file-operations.c:1667
-#: ../libcore/marlin-file-operations.c:1744
-#: ../libcore/marlin-file-operations.c:2590
-msgid "Error while deleting."
-msgstr "Помилка при видаленні."
-
-#: ../libcore/marlin-file-operations.c:1598
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"Неможливо знищити файли з каталогу \"%B\", оскільки у вас немає прав на їх "
-"перегляд."
-
-#: ../libcore/marlin-file-operations.c:1601
-#: ../libcore/marlin-file-operations.c:2649
-#: ../libcore/marlin-file-operations.c:3645
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr "Помилка при отриманні відомостей про файли у каталозі «%B»."
-
-#: ../libcore/marlin-file-operations.c:1610
-#: ../libcore/marlin-file-operations.c:3654
-msgid "_Skip files"
-msgstr "_Пропустити файли"
-
-#: ../libcore/marlin-file-operations.c:1631
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"Неможливо вилучити теку «%B», оскільки у вас немає прав на її читання."
-
-#: ../libcore/marlin-file-operations.c:1634
-#: ../libcore/marlin-file-operations.c:2688
-#: ../libcore/marlin-file-operations.c:3690
-msgid "There was an error reading the folder \"%B\"."
-msgstr "Помилка при читанні теки «%B»."
-
-#: ../libcore/marlin-file-operations.c:1668
-msgid "Could not remove the folder %B."
-msgstr "Не вдалось вилучити теку %B."
-
-#: ../libcore/marlin-file-operations.c:1745
-msgid "There was an error deleting %B."
-msgstr "Помилка при вилучені %B."
-
-#: ../libcore/marlin-file-operations.c:1821
-#: ../libcore/marlin-file-operations.c:1833
-msgid "Moving files to trash"
-msgstr "Переміщення файлів у смітник"
-
-#: ../libcore/marlin-file-operations.c:1835
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "залишилось перемістити у смітник %'d файл"
-msgstr[1] "залишилось перемістити у смітник %'d файли"
-msgstr[2] "залишилось перемістити у смітник %'d файлів"
-
-#: ../libcore/marlin-file-operations.c:1890
-msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Не вдається перемістити файли у смітник. Видалити негайно?"
-
-#: ../libcore/marlin-file-operations.c:1891
-msgid ""
-"This file is located on an external media and cannot be moved to the trash. "
-"Once deleted, it cannot be restored."
-msgstr ""
-"Цей файл розміщено на приєднаному розділі та не може бути переміщено у "
-"смітник. Видалений файл не може бути відновлено."
-
-#: ../libcore/marlin-file-operations.c:2073
-msgid "Trashing Files"
-msgstr "Переміщення файлів у смітник"
-
-#: ../libcore/marlin-file-operations.c:2075
-msgid "Deleting Files"
-msgstr "Вилучення файлів"
-
-#: ../libcore/marlin-file-operations.c:2147
-msgid "Unable to eject %V"
-msgstr "Неможливо витягнути %V"
-
-#: ../libcore/marlin-file-operations.c:2149
-msgid "Unable to unmount %V"
-msgstr "Неможливо демонтувати %V"
-
-#: ../libcore/marlin-file-operations.c:2325
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Очистити смітник перед демонтуванням?"
-
-#: ../libcore/marlin-file-operations.c:2327
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Для звільнення місця на цьому пристрої треба очистити смітник. Всі елементи, "
-"що в смітнику на цьому носії, буде остаточно втрачено."
-
-#: ../libcore/marlin-file-operations.c:2333
-msgid "Do _not Empty Trash"
-msgstr "_Не очищати смітник"
-
-#: ../libcore/marlin-file-operations.c:2447
-#, c-format
-msgid "Unable to mount %s"
-msgstr "Неможливо змонтувати %s"
-
-#: ../libcore/marlin-file-operations.c:2525
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Триває підготовка до копіювання %'d файлу (%S)"
-msgstr[1] "Триває підготовка до копіювання %'d файли (%S)"
-msgstr[2] "Триває підготовка до копіювання %'d файлів (%S)"
-
-#: ../libcore/marlin-file-operations.c:2531
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Триває підготовка до переміщення %'d файлу (%S)"
-msgstr[1] "Триває підготовка до переміщення %'d файли (%S)"
-msgstr[2] "Триває підготовка до переміщення %'d файлів (%S)"
-
-#: ../libcore/marlin-file-operations.c:2537
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Триває підготовка до видалення %'d файлу (%S)"
-msgstr[1] "Триває підготовка до видалення %'d файли (%S)"
-msgstr[2] "Триває підготовка до видалення %'d файлів (%S)"
-
-#: ../libcore/marlin-file-operations.c:2543
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Триває підготовка до переміщення %'d файлу до смітника"
-msgstr[1] "Триває підготовка до переміщення %'d файлів до смітника"
-msgstr[2] "Триває підготовка до переміщення %'d файлів до смітника"
-
-#: ../libcore/marlin-file-operations.c:2586
-#: ../libcore/marlin-file-operations.c:3506
-#: ../libcore/marlin-file-operations.c:3637
-#: ../libcore/marlin-file-operations.c:3682
-msgid "Error while copying."
-msgstr "Помилка при копіюванні."
-
-#: ../libcore/marlin-file-operations.c:2588
-#: ../libcore/marlin-file-operations.c:3635
-#: ../libcore/marlin-file-operations.c:3680
-msgid "Error while moving."
-msgstr "Помилка при переміщенні."
-
-#: ../libcore/marlin-file-operations.c:2592
-msgid "Error while moving files to trash."
-msgstr "Помилка при переміщенні файлів до смітника."
-
-#: ../libcore/marlin-file-operations.c:2646
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Неможливо обробити файли у теці «%B», оскільки ви не маєте прав на їхній "
-"перегляд."
-
-#: ../libcore/marlin-file-operations.c:2685
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Неможливо обробити теку «%B», оскільки ви не маєте прав на її читання."
-
-#: ../libcore/marlin-file-operations.c:2762
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Неможливо обробити файл «%B», оскільки ви не маєте прав на його читання."
-
-#: ../libcore/marlin-file-operations.c:2765
-msgid "There was an error getting information about \"%B\"."
-msgstr "Помилка при отриманні інформації про «%B»."
-
-#: ../libcore/marlin-file-operations.c:2865
-#: ../libcore/marlin-file-operations.c:2907
-#: ../libcore/marlin-file-operations.c:2940
-#: ../libcore/marlin-file-operations.c:2970
-msgid "Error while copying to \"%B\"."
-msgstr "Помилка при копіюванні до «%B»."
-
-#: ../libcore/marlin-file-operations.c:2869
-msgid "You do not have permissions to access the destination folder."
-msgstr "Ви не маєте прав доступу до цільової теки."
-
-#: ../libcore/marlin-file-operations.c:2871
-msgid "There was an error getting information about the destination."
-msgstr "Помилка при отриманні відомостей про місце призначення."
-
-#: ../libcore/marlin-file-operations.c:2908
-msgid "The destination is not a folder."
-msgstr "Місце призначення не є текою."
-
-#: ../libcore/marlin-file-operations.c:2941
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"Недостатньо місця на цільовому пристрої. Спробуйте вилучити якісь файли, щоб "
-"звільнити місце."
-
-#: ../libcore/marlin-file-operations.c:2943
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Доступно %S, проте потрібно %S."
-
-#: ../libcore/marlin-file-operations.c:2971
-msgid "The destination is read-only."
-msgstr "Пристрій призначенння доступний лише для читання."
-
-#: ../libcore/marlin-file-operations.c:3032
-msgid "Moving \"%B\" to \"%B\""
-msgstr "«%B» переміщується до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3033
-msgid "Copying \"%B\" to \"%B\""
-msgstr "«%B» копіюється до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3037
-msgid "Duplicating \"%B\""
-msgstr "Дублюється «%B»"
-
-#: ../libcore/marlin-file-operations.c:3041
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Переміщується %'d файл (з «%B») до «%B»"
-msgstr[1] "Переміщується %'d файли (з «%B») до «%B»"
-msgstr[2] "Переміщується %'d файлів (з «%B») до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3044
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Копіюється %'d файл (з «%B») до «%B»"
-msgstr[1] "Копіюється %'d файли (з «%B») до «%B»"
-msgstr[2] "Копіюється %'d файлів (з «%B») до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3051
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Дублюється %'d файл (у «%B»)"
-msgstr[1] "Дублюється %'d файли (у «%B»)"
-msgstr[2] "Дублюється %'d файлів (у «%B»)"
-
-#: ../libcore/marlin-file-operations.c:3060
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "%'d файл переміщується до «%B»"
-msgstr[1] "%'d файли переміщується до «%B»"
-msgstr[2] "%'d файлів переміщується до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3064
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d файл копіюється до «%B»"
-msgstr[1] "%'d файли копіюється до «%B»"
-msgstr[2] "%'d файлів копіюється до «%B»"
-
-#: ../libcore/marlin-file-operations.c:3069
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Дублюється %'d файл"
-msgstr[1] "Дублюється %'d файли"
-msgstr[2] "Дублюється %'d файлів"
-
-#: ../libcore/marlin-file-operations.c:3120
-#, c-format
-msgid "%S of %S"
-msgstr "%S з %S"
-
-#: ../libcore/marlin-file-operations.c:3131
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S з %S — залишилась %T (%S/с)"
-msgstr[1] "%S з %S — залишилось %T (%S/с)"
-msgstr[2] "%S з %S — залишилось %T (%S/с)"
-
-#: ../libcore/marlin-file-operations.c:3510
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її створення за "
-"місцем призначення."
-
-#: ../libcore/marlin-file-operations.c:3513
-msgid "There was an error creating the folder \"%B\"."
-msgstr "Помилка при створенні теки «%B»."
-
-#: ../libcore/marlin-file-operations.c:3642
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Неможливо скопіювати файли з теки «%B», оскільки у вас немає прав на їх "
-"перегляд."
-
-#: ../libcore/marlin-file-operations.c:3687
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її читання."
-
-#: ../libcore/marlin-file-operations.c:3732
-#: ../libcore/marlin-file-operations.c:4433
-#: ../libcore/marlin-file-operations.c:5020
-msgid "Error while moving \"%B\"."
-msgstr "Помилка при перенесенні «%B»."
-
-#: ../libcore/marlin-file-operations.c:3733
-msgid "Could not remove the source folder."
-msgstr "Неможливо вилучити первинну теку."
-
-#: ../libcore/marlin-file-operations.c:3818
-#: ../libcore/marlin-file-operations.c:3859
-#: ../libcore/marlin-file-operations.c:4435
-#: ../libcore/marlin-file-operations.c:4506
-msgid "Error while copying \"%B\"."
-msgstr "Помилка при копіюванні «%B»."
-
-#: ../libcore/marlin-file-operations.c:3819
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "Не вдається видалити файли з вже існуючої теки %F."
-
-#: ../libcore/marlin-file-operations.c:3860
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "Не вдається видалити вже існуючий файл %F."
-
-#: ../libcore/marlin-file-operations.c:4189
-#: ../libcore/marlin-file-operations.c:4860
-msgid "You cannot move a folder into itself."
-msgstr "Не можна переміщувати теку у саму себе."
-
-#: ../libcore/marlin-file-operations.c:4190
-#: ../libcore/marlin-file-operations.c:4861
-msgid "You cannot copy a folder into itself."
-msgstr "Не можна копіювати теку у саму себе."
-
-#: ../libcore/marlin-file-operations.c:4191
-#: ../libcore/marlin-file-operations.c:4862
-msgid "The destination folder is inside the source folder."
-msgstr "Місце призначення знаходиться у середині первинної теки."
-
-#: ../libcore/marlin-file-operations.c:4222
-msgid "You cannot move a file over itself."
-msgstr "Неможливо перемістити файл сам у себе."
-
-#: ../libcore/marlin-file-operations.c:4223
-msgid "You cannot copy a file over itself."
-msgstr "Неможливо скопіювати файл сам у себе."
-
-#: ../libcore/marlin-file-operations.c:4224
-msgid "The source file would be overwritten by the destination."
-msgstr "Початковий файл буде переписаний файлом призначення."
-
-#: ../libcore/marlin-file-operations.c:4437
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Не вдалось вилучити вже наявний файл з такою ж назвою у %F."
-
-#: ../libcore/marlin-file-operations.c:4507
-#, c-format
-msgid "There was an error copying the file into %F."
-msgstr "Помилка при копіюванні файла в %F."
-
-#: ../libcore/marlin-file-operations.c:4734
-msgid "Copying Files"
-msgstr "Копіювання файлів"
-
-#: ../libcore/marlin-file-operations.c:4760
-msgid "Preparing to move to \"%B\""
-msgstr "Пiдготовка до перемiщення у \"%B\""
-
-#: ../libcore/marlin-file-operations.c:4772
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Підготовка до переміщення %'d файлу"
-msgstr[1] "Підготовка до переміщення %'d файлів"
-msgstr[2] "Підготовка до переміщення %'d файлів"
-
-#: ../libcore/marlin-file-operations.c:5021
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "Помилка при переміщенні файлу до %F."
-
-#: ../libcore/marlin-file-operations.c:5284
-msgid "Moving Files"
-msgstr "Переміщення файлів"
-
-#: ../libcore/marlin-file-operations.c:5314
-msgid "Creating links in \"%B\""
-msgstr "Створення посилань у \"%B\""
-
-#: ../libcore/marlin-file-operations.c:5325
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Створення посилання на %'d файл"
-msgstr[1] "Створення посилання на %'d файли"
-msgstr[2] "Створення посилань на %'d файлів"
-
-#: ../libcore/marlin-file-operations.c:5460
-msgid "Error while creating link to %B."
-msgstr "Помилка при створенні посилання на %B."
-
-#: ../libcore/marlin-file-operations.c:5462
-msgid "Symbolic links only supported for local files"
-msgstr "Символьні посилання підтримуються лише для локальних файлів"
-
-#: ../libcore/marlin-file-operations.c:5465
-msgid "The target doesn't support symbolic links."
-msgstr "Ціль не підтримує символьні посилання."
-
-#: ../libcore/marlin-file-operations.c:5468
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "Помилка при створенні символьного посилання у %F."
-
-#: ../libcore/marlin-file-operations.c:5796
-#: ../libcore/marlin-file-operations.c:5799
-msgid "Setting permissions"
-msgstr "Налаштування прав"
-
-#: ../libcore/marlin-file-operations.c:6050
-msgid "untitled folder"
-msgstr "неназвана тека"
-
-#: ../libcore/marlin-file-operations.c:6058
-msgid "new file"
-msgstr "новий файл"
-
-#: ../libcore/marlin-file-operations.c:6229
-msgid "Error while creating directory %B."
-msgstr "Помилка при створенні теки %B."
-
-#: ../libcore/marlin-file-operations.c:6231
-msgid "Error while creating file %B."
-msgstr "Помилка при створенні файлу %B."
-
-#: ../libcore/marlin-file-operations.c:6233
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "Помилка при створенні каталогу в %F."
-
-#: ../libcore/marlin-file-operations.c:6543
-msgid "Emptying the trash"
-msgstr "Очищення кошика"
-
-#: ../libcore/marlin-file-operations.c:6551
-msgid "Emptying Trash"
-msgstr "Очищення смітника"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
@@ -1756,113 +541,1135 @@ msgstr[0] "Повернути зміну власника %d елемента"
 msgstr[1] "Повернути зміну власника %d елементів"
 msgstr[2] "Повернути зміну власника %d елементів"
 
+#: ../libcore/gof-file.c:303
+#, c-format
+msgid "link to %s"
+msgstr "посилання на %s"
+
+#: ../libcore/gof-file.c:1789
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Неможливо обробити desktop-файл: %s"
+
+#: ../libcore/gof-file.c:1827
+msgid "No Exec field specified"
+msgstr "Не вказано поле Exec"
+
+#: ../libcore/gof-file.c:1847
+msgid "No URL field specified"
+msgstr "Не вказано URL"
+
+#: ../libcore/gof-file.c:1853
+msgid "Invalid desktop file"
+msgstr "Некоректний файл .desktop"
+
+#: ../libcore/gof-file.c:2145
+msgid "Slashes are not allowed in filenames"
+msgstr "У назвах файлів не можна використовувати косу риску"
+
+#: ../libcore/gof-file.c:2165
+msgid "Toplevel files cannot be renamed"
+msgstr "Файли верхнього рівня не можна перейменовувати"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "Приготування"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Показати додаткові _подробиці"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Сьогодні о %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Вчора о %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b в %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y на %-I:%M %p"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:370
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Об'єднати теку «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:373
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Якщо при об'єднанні виникнуть конфлікти із файлами, що копіюються, тоді буде "
+"запропоновано підтвердити заміну файлів."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:378
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Старіша тека з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Новіша тека з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Інша тека з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:391
+msgid "Replacing it will remove all files in the folder."
+msgstr "Замінивши, ви вилучите всі файли в теці."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Замінити теку \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Тека з таким ім’ям вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:400
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Замінити файл \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:402
+msgid "Replacing it will overwrite its content."
+msgstr "При заміні вміст буде перезаписано."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:406
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Старіший файл з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:410
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Новіший файл з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:414
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Інший файл з такою ж назвою вже існує в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:469
+msgid "Original file"
+msgstr "Початковий файл"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:470
+#: ../libcore/marlin-file-conflict-dialog.c:491
+msgid "Size:"
+msgstr "Розмір"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:473
+#: ../libcore/marlin-file-conflict-dialog.c:494
+msgid "Type:"
+msgstr "Тип:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:476
+#: ../libcore/marlin-file-conflict-dialog.c:497
+msgid "Last modified:"
+msgstr "Востаннє змінено:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:490
+msgid "Replace with"
+msgstr "Замінити на"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:515
+msgid "Merge"
+msgstr "Об’єднати"
+
+#: ../libcore/marlin-file-conflict-dialog.c:709
+msgid "_Select a new name for the destination"
+msgstr "_Оберіть нову назву для призначення"
+
+#: ../libcore/marlin-file-conflict-dialog.c:723
+msgid "Reset"
+msgstr "Відновити"
+
+#: ../libcore/marlin-file-conflict-dialog.c:735
+msgid "Apply this action to all files"
+msgstr "Застосувати цю дію для всіх файлів"
+
+#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "П_ропустити"
+
+#: ../libcore/marlin-file-conflict-dialog.c:751
+msgid "Re_name"
+msgstr "Перей_менувати"
+
+#: ../libcore/marlin-file-conflict-dialog.c:757
+msgid "Replace"
+msgstr "Замінити"
+
+#: ../libcore/marlin-file-conflict-dialog.c:830
+msgid "File conflict"
+msgstr "Конфлікт файлів"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (некоректний символ Unicode)"
+
+#: ../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "Пр_опустити все"
+
+#: ../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "_Повторити"
+
+#: ../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "В_идалити все"
+
+#: ../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "_Замінити"
+
+#: ../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Замінити вс_і"
+
+#: ../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "_Об'єднати"
+
+#: ../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Об'єднати _всі"
+
+#: ../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "В_сеодно копіювати"
+
+#: ../libcore/marlin-file-operations.c:296
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d секунда"
+msgstr[1] "%'d секунди"
+msgstr[2] "%'d секунд"
+
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d хвилина"
+msgstr[1] "%'d хвилини"
+msgstr[2] "%'d хвилин"
+
+#: ../libcore/marlin-file-operations.c:311
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d година"
+msgstr[1] "%'d години"
+msgstr[2] "%'d годин"
+
+#: ../libcore/marlin-file-operations.c:319
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "приблизно %'d година"
+msgstr[1] "приблизно %'d години"
+msgstr[2] "приблизно %'d годин"
+
+#: ../libcore/marlin-file-operations.c:395
+#, c-format
+msgid "Link to %s"
+msgstr "Посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:399
+#, c-format
+msgid "Another link to %s"
+msgstr "Інше посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:415
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d-е посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:419
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:423
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d-е посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:427
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d-е посилання на %s"
+
+#: ../libcore/marlin-file-operations.c:465
+msgid " (copy)"
+msgstr " (копія)"
+
+#: ../libcore/marlin-file-operations.c:467
+msgid " (another copy)"
+msgstr " (інша копія)"
+
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
+msgid "th copy)"
+msgstr "-а копія)"
+
+#: ../libcore/marlin-file-operations.c:477
+msgid "st copy)"
+msgstr "-а копія)"
+
+#: ../libcore/marlin-file-operations.c:479
+msgid "nd copy)"
+msgstr "-а копія)"
+
+#: ../libcore/marlin-file-operations.c:481
+msgid "rd copy)"
+msgstr "-я копія)"
+
+#: ../libcore/marlin-file-operations.c:498
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (копія)%s"
+
+#: ../libcore/marlin-file-operations.c:500
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (інша копія)%s"
+
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#: ../libcore/marlin-file-operations.c:515
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#: ../libcore/marlin-file-operations.c:517
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#: ../libcore/marlin-file-operations.c:519
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'d-я копія)%s"
+
+#: ../libcore/marlin-file-operations.c:619
+msgid " ("
+msgstr " ("
+
+#: ../libcore/marlin-file-operations.c:627
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: ../libcore/marlin-file-operations.c:1383
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Ви дійсно хочете остаточно видалити \"%B\" з кошика?"
+
+#: ../libcore/marlin-file-operations.c:1386
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Ви дійсно хочете остаточно видалити %'d виділений елемент з кошика?"
+msgstr[1] ""
+"Ви дійсно хочете остаточно видалити %'d виділених елементи з кошика?"
+msgstr[2] ""
+"Ви дійсно хочете остаточно видалити %'d виділених елементів з кошика?"
+
+#: ../libcore/marlin-file-operations.c:1396
+#: ../libcore/marlin-file-operations.c:1464
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Якщо ви видалите елемент, він буде остаточно втрачений."
+
+#: ../libcore/marlin-file-operations.c:1417
+msgid "Empty all items from Trash?"
+msgstr "Очистити кошик?"
+
+#: ../libcore/marlin-file-operations.c:1421
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Всі об’єкти з кошика будуть остаточно видалені."
+
+#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:2405 ../src/View/Sidebar.vala:1242
+msgid "Empty _Trash"
+msgstr "О_чистити кошик"
+
+#: ../libcore/marlin-file-operations.c:1452
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Ви впевнені, що хочете остаточно видалити \"%B\"?"
+
+#: ../libcore/marlin-file-operations.c:1455
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Ви дійсно хочете остаточно знищити %'d вибраний елемент?"
+msgstr[1] "Ви дійсно хочете остаточно знищити %'d вибрані елементи?"
+msgstr[2] "Ви дійсно хочете остаточно знищити %'d вибраних елементів?"
+
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:1512
+msgid "Deleting files"
+msgstr "Вилучення файлів"
+
+#: ../libcore/marlin-file-operations.c:1506
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "залишилось вилучити %'d файл"
+msgstr[1] "залишилось вилучити %'d файли"
+msgstr[2] "залишилось вилучити %'d файлів"
+
+#: ../libcore/marlin-file-operations.c:1526
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T залишилась"
+msgstr[1] "%T залишились"
+msgstr[2] "%T залишилось"
+
+#: ../libcore/marlin-file-operations.c:1594
+#: ../libcore/marlin-file-operations.c:1628
+#: ../libcore/marlin-file-operations.c:1667
+#: ../libcore/marlin-file-operations.c:1744
+#: ../libcore/marlin-file-operations.c:2660
+msgid "Error while deleting."
+msgstr "Помилка при видаленні."
+
+#: ../libcore/marlin-file-operations.c:1598
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Неможливо знищити файли з каталогу \"%B\", оскільки у вас немає прав на їх "
+"перегляд."
+
+#: ../libcore/marlin-file-operations.c:1601
+#: ../libcore/marlin-file-operations.c:2719
+#: ../libcore/marlin-file-operations.c:3713
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "Помилка при отриманні відомостей про файли у каталозі «%B»."
+
+#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:3722
+msgid "_Skip files"
+msgstr "_Пропустити файли"
+
+#: ../libcore/marlin-file-operations.c:1631
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"Неможливо вилучити теку «%B», оскільки у вас немає прав на її читання."
+
+#: ../libcore/marlin-file-operations.c:1634
+#: ../libcore/marlin-file-operations.c:2758
+#: ../libcore/marlin-file-operations.c:3758
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Помилка при читанні теки «%B»."
+
+#: ../libcore/marlin-file-operations.c:1668
+msgid "Could not remove the folder %B."
+msgstr "Не вдалось вилучити теку %B."
+
+#: ../libcore/marlin-file-operations.c:1745
+msgid "There was an error deleting %B."
+msgstr "Помилка при вилучені %B."
+
+#: ../libcore/marlin-file-operations.c:1821
+#: ../libcore/marlin-file-operations.c:1833
+msgid "Moving files to trash"
+msgstr "Переміщення файлів у смітник"
+
+#: ../libcore/marlin-file-operations.c:1835
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "залишилось перемістити у смітник %'d файл"
+msgstr[1] "залишилось перемістити у смітник %'d файли"
+msgstr[2] "залишилось перемістити у смітник %'d файлів"
+
+#: ../libcore/marlin-file-operations.c:1930
+#: ../libcore/marlin-file-operations.c:1933
+#: ../libcore/marlin-file-operations.c:1936
+msgid "Cannot move file to trash or delete it"
+msgstr "Не вдалося перемістити файл в корзину або видалити його"
+
+#: ../libcore/marlin-file-operations.c:1931
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
+msgstr "Не допускається видаляти системні файли"
+
+#: ../libcore/marlin-file-operations.c:1934
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1937
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1939
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+"Не вдалося перемістити файл в корзину. Спробувати видалити його зараз?"
+
+#: ../libcore/marlin-file-operations.c:1940
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1944
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1945
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr "Не вдалося перемістити файл у смітник. Також його не можна видалити."
+
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:2143
+msgid "Trashing Files"
+msgstr "Переміщення файлів у смітник"
+
+#: ../libcore/marlin-file-operations.c:2145
+msgid "Deleting Files"
+msgstr "Вилучення файлів"
+
+#: ../libcore/marlin-file-operations.c:2217
+msgid "Unable to eject %V"
+msgstr "Неможливо витягнути %V"
+
+#: ../libcore/marlin-file-operations.c:2219
+msgid "Unable to unmount %V"
+msgstr "Неможливо демонтувати %V"
+
+#: ../libcore/marlin-file-operations.c:2395
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Очистити смітник перед демонтуванням?"
+
+#: ../libcore/marlin-file-operations.c:2397
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Для звільнення місця на цьому пристрої треба очистити смітник. Всі елементи, "
+"що в смітнику на цьому носії, буде остаточно втрачено."
+
+#: ../libcore/marlin-file-operations.c:2403
+msgid "Do _not Empty Trash"
+msgstr "_Не очищати смітник"
+
+#: ../libcore/marlin-file-operations.c:2517
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Неможливо змонтувати %s"
+
+#: ../libcore/marlin-file-operations.c:2595
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Триває підготовка до копіювання %'d файлу (%S)"
+msgstr[1] "Триває підготовка до копіювання %'d файли (%S)"
+msgstr[2] "Триває підготовка до копіювання %'d файлів (%S)"
+
+#: ../libcore/marlin-file-operations.c:2601
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Триває підготовка до переміщення %'d файлу (%S)"
+msgstr[1] "Триває підготовка до переміщення %'d файли (%S)"
+msgstr[2] "Триває підготовка до переміщення %'d файлів (%S)"
+
+#: ../libcore/marlin-file-operations.c:2607
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Триває підготовка до видалення %'d файлу (%S)"
+msgstr[1] "Триває підготовка до видалення %'d файли (%S)"
+msgstr[2] "Триває підготовка до видалення %'d файлів (%S)"
+
+#: ../libcore/marlin-file-operations.c:2613
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Триває підготовка до переміщення %'d файлу до смітника"
+msgstr[1] "Триває підготовка до переміщення %'d файлів до смітника"
+msgstr[2] "Триває підготовка до переміщення %'d файлів до смітника"
+
+#: ../libcore/marlin-file-operations.c:2656
+#: ../libcore/marlin-file-operations.c:3575
+#: ../libcore/marlin-file-operations.c:3705
+#: ../libcore/marlin-file-operations.c:3750
+msgid "Error while copying."
+msgstr "Помилка при копіюванні."
+
+#: ../libcore/marlin-file-operations.c:2658
+#: ../libcore/marlin-file-operations.c:3703
+#: ../libcore/marlin-file-operations.c:3748
+msgid "Error while moving."
+msgstr "Помилка при переміщенні."
+
+#: ../libcore/marlin-file-operations.c:2662
+msgid "Error while moving files to trash."
+msgstr "Помилка при переміщенні файлів до смітника."
+
+#: ../libcore/marlin-file-operations.c:2716
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Неможливо обробити файли у теці «%B», оскільки ви не маєте прав на їхній "
+"перегляд."
+
+#: ../libcore/marlin-file-operations.c:2755
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Неможливо обробити теку «%B», оскільки ви не маєте прав на її читання."
+
+#: ../libcore/marlin-file-operations.c:2831
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Неможливо обробити файл «%B», оскільки ви не маєте прав на його читання."
+
+#: ../libcore/marlin-file-operations.c:2834
+msgid "There was an error getting information about \"%B\"."
+msgstr "Помилка при отриманні інформації про «%B»."
+
+#: ../libcore/marlin-file-operations.c:2934
+#: ../libcore/marlin-file-operations.c:2976
+#: ../libcore/marlin-file-operations.c:3009
+#: ../libcore/marlin-file-operations.c:3039
+msgid "Error while copying to \"%B\"."
+msgstr "Помилка при копіюванні до «%B»."
+
+#: ../libcore/marlin-file-operations.c:2938
+msgid "You do not have permissions to access the destination folder."
+msgstr "Ви не маєте прав доступу до цільової теки."
+
+#: ../libcore/marlin-file-operations.c:2940
+msgid "There was an error getting information about the destination."
+msgstr "Помилка при отриманні відомостей про місце призначення."
+
+#: ../libcore/marlin-file-operations.c:2977
+msgid "The destination is not a folder."
+msgstr "Місце призначення не є текою."
+
+#: ../libcore/marlin-file-operations.c:3010
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Недостатньо місця на цільовому пристрої. Спробуйте вилучити якісь файли, щоб "
+"звільнити місце."
+
+#: ../libcore/marlin-file-operations.c:3012
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Доступно %S, проте потрібно %S."
+
+#: ../libcore/marlin-file-operations.c:3040
+msgid "The destination is read-only."
+msgstr "Пристрій призначенння доступний лише для читання."
+
+#: ../libcore/marlin-file-operations.c:3101
+msgid "Moving \"%B\" to \"%B\""
+msgstr "«%B» переміщується до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3102
+msgid "Copying \"%B\" to \"%B\""
+msgstr "«%B» копіюється до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3106
+msgid "Duplicating \"%B\""
+msgstr "Дублюється «%B»"
+
+#: ../libcore/marlin-file-operations.c:3110
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Переміщується %'d файл (з «%B») до «%B»"
+msgstr[1] "Переміщується %'d файли (з «%B») до «%B»"
+msgstr[2] "Переміщується %'d файлів (з «%B») до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3113
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Копіюється %'d файл (з «%B») до «%B»"
+msgstr[1] "Копіюється %'d файли (з «%B») до «%B»"
+msgstr[2] "Копіюється %'d файлів (з «%B») до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3120
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Дублюється %'d файл (у «%B»)"
+msgstr[1] "Дублюється %'d файли (у «%B»)"
+msgstr[2] "Дублюється %'d файлів (у «%B»)"
+
+#: ../libcore/marlin-file-operations.c:3129
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "%'d файл переміщується до «%B»"
+msgstr[1] "%'d файли переміщується до «%B»"
+msgstr[2] "%'d файлів переміщується до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3133
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "%'d файл копіюється до «%B»"
+msgstr[1] "%'d файли копіюється до «%B»"
+msgstr[2] "%'d файлів копіюється до «%B»"
+
+#: ../libcore/marlin-file-operations.c:3138
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Дублюється %'d файл"
+msgstr[1] "Дублюється %'d файли"
+msgstr[2] "Дублюється %'d файлів"
+
+#: ../libcore/marlin-file-operations.c:3189
+#, c-format
+msgid "%S of %S"
+msgstr "%S з %S"
+
+#: ../libcore/marlin-file-operations.c:3200
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S з %S — залишилась %T (%S/с)"
+msgstr[1] "%S з %S — залишилось %T (%S/с)"
+msgstr[2] "%S з %S — залишилось %T (%S/с)"
+
+#: ../libcore/marlin-file-operations.c:3579
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її створення за "
+"місцем призначення."
+
+#: ../libcore/marlin-file-operations.c:3582
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Помилка при створенні теки «%B»."
+
+#: ../libcore/marlin-file-operations.c:3710
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Неможливо скопіювати файли з теки «%B», оскільки у вас немає прав на їх "
+"перегляд."
+
+#: ../libcore/marlin-file-operations.c:3755
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її читання."
+
+#: ../libcore/marlin-file-operations.c:3800
+#: ../libcore/marlin-file-operations.c:4501
+msgid "Error while moving \"%B\"."
+msgstr "Помилка при перенесенні «%B»."
+
+#: ../libcore/marlin-file-operations.c:3801
+msgid "Could not remove the source folder."
+msgstr "Неможливо вилучити первинну теку."
+
+#: ../libcore/marlin-file-operations.c:3886
+#: ../libcore/marlin-file-operations.c:3927
+#: ../libcore/marlin-file-operations.c:4503
+msgid "Error while copying \"%B\"."
+msgstr "Помилка при копіюванні «%B»."
+
+#: ../libcore/marlin-file-operations.c:3887
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Не вдається видалити файли з вже існуючої теки %F."
+
+#: ../libcore/marlin-file-operations.c:3928
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Не вдається видалити вже існуючий файл %F."
+
+#: ../libcore/marlin-file-operations.c:4257
+#: ../libcore/marlin-file-operations.c:4928
+msgid "You cannot move a folder into itself."
+msgstr "Не можна переміщувати теку у саму себе."
+
+#: ../libcore/marlin-file-operations.c:4258
+#: ../libcore/marlin-file-operations.c:4929
+msgid "You cannot copy a folder into itself."
+msgstr "Не можна копіювати теку у саму себе."
+
+#: ../libcore/marlin-file-operations.c:4259
+#: ../libcore/marlin-file-operations.c:4930
+msgid "The destination folder is inside the source folder."
+msgstr "Місце призначення знаходиться у середині первинної теки."
+
+#: ../libcore/marlin-file-operations.c:4290
+msgid "You cannot move a file over itself."
+msgstr "Неможливо перемістити файл сам у себе."
+
+#: ../libcore/marlin-file-operations.c:4291
+msgid "You cannot copy a file over itself."
+msgstr "Неможливо скопіювати файл сам у себе."
+
+#: ../libcore/marlin-file-operations.c:4292
+msgid "The source file would be overwritten by the destination."
+msgstr "Початковий файл буде переписаний файлом призначення."
+
+#: ../libcore/marlin-file-operations.c:4505
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Не вдалось вилучити вже наявний файл з такою ж назвою у %F."
+
+#: ../libcore/marlin-file-operations.c:4574
+#, c-format
+msgid "There was an Error while copying \"%s\"."
+msgstr "Сталося помилка при копіювані \"%s\"."
+
+#: ../libcore/marlin-file-operations.c:4575
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr "Сталося  помилка при копіювані файла в %s."
+
+#: ../libcore/marlin-file-operations.c:4802
+msgid "Copying Files"
+msgstr "Копіювання файлів"
+
+#: ../libcore/marlin-file-operations.c:4828
+msgid "Preparing to move to \"%B\""
+msgstr "Пiдготовка до перемiщення у \"%B\""
+
+#: ../libcore/marlin-file-operations.c:4840
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Підготовка до переміщення %'d файлу"
+msgstr[1] "Підготовка до переміщення %'d файлів"
+msgstr[2] "Підготовка до переміщення %'d файлів"
+
+#: ../libcore/marlin-file-operations.c:5088
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Помилка при переміщенні \"% F\"."
+
+#: ../libcore/marlin-file-operations.c:5089
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Помилка при переміщенні файлу до %F."
+
+#: ../libcore/marlin-file-operations.c:5352
+msgid "Moving Files"
+msgstr "Переміщення файлів"
+
+#: ../libcore/marlin-file-operations.c:5381
+msgid "Creating links in \"%B\""
+msgstr "Створення посилань у \"%B\""
+
+#: ../libcore/marlin-file-operations.c:5392
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Створення посилання на %'d файл"
+msgstr[1] "Створення посилання на %'d файли"
+msgstr[2] "Створення посилань на %'d файлів"
+
+#: ../libcore/marlin-file-operations.c:5526
+msgid "Error while creating link to %B."
+msgstr "Помилка при створенні посилання на %B."
+
+#: ../libcore/marlin-file-operations.c:5528
+msgid "Symbolic links only supported for local files"
+msgstr "Символьні посилання підтримуються лише для локальних файлів"
+
+#: ../libcore/marlin-file-operations.c:5531
+msgid "The target doesn't support symbolic links."
+msgstr "Ціль не підтримує символьні посилання."
+
+#: ../libcore/marlin-file-operations.c:5534
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Помилка при створенні символьного посилання у %F."
+
+#: ../libcore/marlin-file-operations.c:5862
+#: ../libcore/marlin-file-operations.c:5865
+msgid "Setting permissions"
+msgstr "Налаштування прав"
+
+#: ../libcore/marlin-file-operations.c:6116
+msgid "untitled folder"
+msgstr "неназвана тека"
+
+#: ../libcore/marlin-file-operations.c:6124
+msgid "new file"
+msgstr "новий файл"
+
+#: ../libcore/marlin-file-operations.c:6295
+msgid "Error while creating directory %B."
+msgstr "Помилка при створенні теки %B."
+
+#: ../libcore/marlin-file-operations.c:6297
+msgid "Error while creating file %B."
+msgstr "Помилка при створенні файлу %B."
+
+#: ../libcore/marlin-file-operations.c:6299
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Помилка при створенні каталогу в %F."
+
+#: ../libcore/marlin-file-operations.c:6609
+msgid "Emptying the trash"
+msgstr "Очищення кошика"
+
+#: ../libcore/marlin-file-operations.c:6617
+msgid "Emptying Trash"
+msgstr "Очищення смітника"
+
+#: ../libcore/marlin-file-utilities.c:118
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Не вдається визначити початкове розташування \"%s\" "
+
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Елемент неможливо відновити зі смітника"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Ім'я файлу"
+
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/directory_view_popup.ui:120
+msgid "Size"
+msgstr "Розмір"
+
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:300
+#: ../src/View/directory_view_popup.ui:115
+msgid "Type"
+msgstr "Тип"
+
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:457
+msgid "Modified"
+msgstr "Змінено"
+
+#: ../src/View/LocationBar.vala:132
+msgid "AFP"
+msgstr "AFP"
+
+#: ../src/View/LocationBar.vala:133
+msgid "DAV"
+msgstr "DAV"
+
+#: ../src/View/LocationBar.vala:134
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../src/View/LocationBar.vala:135
+msgid "FTP"
+msgstr "FTP"
+
+#: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
+msgid "Network"
+msgstr "Мережа"
+
+#: ../src/View/LocationBar.vala:137
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../src/View/LocationBar.vala:138
+msgid "SMB"
+msgstr "SMB"
+
+#: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
+msgid "Trash"
+msgstr "Кошик"
+
+#: ../src/View/LocationBar.vala:331
+msgid "Open in New Tab"
+msgstr "Відкрити у Новій Вкладці"
+
+#: ../src/View/LocationBar.vala:338
+msgid "Open with"
+msgstr "Відкрити за допомогою"
+
+#: ../src/View/LocationBar.vala:369
+msgid "Other Application .."
+msgstr "Інша програма .."
+
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
 msgstr "Простий і потужний файловий менеджер"
 
-#: ../src/View/Resources.vala:28
+#: ../src/View/Resources.vala:29
 msgid "Launchpad Translators"
 msgstr "Перекладачі Launchpad"
 
-#: ../src/View/OverlayBar.vala:136
-msgid "%u folders"
-msgstr "%u теки"
+#: ../src/View/Window.vala:175
+msgid "Files isn't your default file manager."
+msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
 
-#: ../src/View/OverlayBar.vala:142 ../src/View/OverlayBar.vala:154
-msgid " and %u other item (%s) selected"
-msgstr " та %u інший елемент (%s) обрано"
-
-#: ../src/View/OverlayBar.vala:143 ../src/View/OverlayBar.vala:155
-msgid " and %u other items (%s) selected"
-msgstr " і %u інших елементів (%s) вибрано"
-
-#: ../src/View/OverlayBar.vala:146 ../src/View/OverlayBar.vala:158
-msgid " selected"
-msgstr " обрано"
-
-#: ../src/View/OverlayBar.vala:148
-msgid "%u folder"
-msgstr "%u тека"
-
-#: ../src/View/OverlayBar.vala:160
-msgid "%u items selected (%s)"
-msgstr "%u елементів обрано (%s)"
-
-#: ../src/View/ViewContainer.vala:55
-msgid "Loading…"
+#: ../src/View/Window.vala:181
+msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:143 ../src/View/Sidebar.vala:412
+#: ../src/View/Window.vala:187
+msgid "Ignore"
+msgstr "Ігнорувати"
+
+#: ../src/View/Sidebar.vala:385
+msgid "Personal"
+msgstr "Особисте"
+
+#: ../src/View/Sidebar.vala:390
+msgid "Your common places and bookmarks"
+msgstr "Ваші загальні місця та закладки"
+
+#: ../src/View/Sidebar.vala:402 ../src/View/ViewContainer.vala:231
 msgid "Home"
 msgstr "Домівка"
 
-#: ../src/View/ViewContainer.vala:145 ../src/View/Sidebar.vala:462
+#: ../src/View/Sidebar.vala:409
+msgid "Open your personal folder"
+msgstr "Відкрити Ваш особистий каталог"
+
+#: ../src/View/Sidebar.vala:436
+msgid "Open the Trash"
+msgstr "Відкрити Корзину"
+
+#: ../src/View/Sidebar.vala:442
+msgid "Devices"
+msgstr "Пристрої"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your local partitions and devices"
+msgstr "Ваші локальні розділи та пристрої"
+
+#: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
 msgid "File System"
 msgstr "Файлова Система"
 
-#: ../src/View/ViewContainer.vala:149
-msgid "This folder does not exist"
-msgstr "Дана тека не існує"
+#: ../src/View/Sidebar.vala:459
+msgid "Open the contents of the FileSystem"
+msgstr "Відкрити вміст файлової системи"
 
-#: ../src/View/ViewContainer.vala:154
-msgid "(as Administrator)"
-msgstr "(як Адміністратор)"
+#: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
+msgid "Mount and open %s"
+msgstr "Підключити та відкрити %s"
 
-#: ../src/View/ViewContainer.vala:173
-msgid "This does not belong to you."
-msgstr "Це не належить вам."
+#: ../src/View/Sidebar.vala:567
+msgid "Your network places"
+msgstr "Ваші мережеві місця"
 
-#: ../src/View/ViewContainer.vala:174
-msgid "You don't have permission to view this folder."
-msgstr "Ви не маєте права переглядати дану теку."
+#: ../src/View/Sidebar.vala:590
+msgid "Entire Network"
+msgstr "Вся мережа"
 
-#: ../src/View/ViewContainer.vala:250
-msgid "Connecting…"
-msgstr ""
+#: ../src/View/Sidebar.vala:597
+msgid "Browse the contents of the network"
+msgstr "Перегляд вмісту мережі"
 
-#: ../src/View/LocationBar.vala:121
-msgid "AFP"
-msgstr "AFP"
+#: ../src/View/Sidebar.vala:1115
+msgid "Unable to start %s"
+msgstr "Не вдається запустити %s"
 
-#: ../src/View/LocationBar.vala:122
-msgid "DAV"
-msgstr "DAV"
+#: ../src/View/Sidebar.vala:1184
+msgid "Open"
+msgstr "Відкрити"
 
-#: ../src/View/LocationBar.vala:123
-msgid "DAVS"
-msgstr "DAVS"
+#: ../src/View/Sidebar.vala:1192
+msgid "Open in New _Tab"
+msgstr "Відкрити у Новій В_кладці"
 
-#: ../src/View/LocationBar.vala:124
-msgid "FTP"
-msgstr "FTP"
+#: ../src/View/Sidebar.vala:1198
+msgid "Open in New _Window"
+msgstr "Відкрити у Новому _Вікні"
 
-#: ../src/View/LocationBar.vala:125 ../src/View/Sidebar.vala:572
-msgid "Network"
-msgstr "Мережа"
+#: ../src/View/Sidebar.vala:1206
+msgid "Remove"
+msgstr "Видалити"
 
-#: ../src/View/LocationBar.vala:126
-msgid "SFTP"
-msgstr "SFTP"
+#: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
+msgid "Rename"
+msgstr "Перейменувати"
 
-#: ../src/View/LocationBar.vala:127
-msgid "SMB"
-msgstr "SMB"
+#: ../src/View/Sidebar.vala:1223
+msgid "_Mount"
+msgstr "_Підключити"
 
-#: ../src/View/LocationBar.vala:128 ../src/View/Sidebar.vala:439
-msgid "Trash"
-msgstr "Кошик"
+#: ../src/View/Sidebar.vala:1229
+msgid "_Unmount"
+msgstr "_Відключити"
 
-#: ../src/View/LocationBar.vala:327
-msgid "Open in New Tab"
-msgstr "Відкрити у новій вкладці"
-
-#: ../src/View/LocationBar.vala:334
-msgid "Open with"
-msgstr "Відкрити за допомогою"
-
-#: ../src/View/LocationBar.vala:365
-msgid "Other Application .."
-msgstr ""
+#: ../src/View/Sidebar.vala:1235
+msgid "_Eject"
+msgstr "Ви_йняти"
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
@@ -1874,123 +1681,119 @@ msgstr ""
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "В інших місцях"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:85
-msgid "Properties"
-msgstr "Параметри"
+#: ../src/View/ViewContainer.vala:244
+msgid "This folder does not exist"
+msgstr "Дана тека не існує"
 
-#: ../src/View/PropertiesWindow.vala:141
-msgid "General"
-msgstr "Загальне"
+#: ../src/View/ViewContainer.vala:249
+msgid "(as Administrator)"
+msgstr "(як Адміністратор)"
 
-#: ../src/View/PropertiesWindow.vala:149
-msgid "More"
-msgstr "Більше"
+#: ../src/View/ViewContainer.vala:263
+msgid "This does not belong to you."
+msgstr "Це не належить вам."
 
-#: ../src/View/PropertiesWindow.vala:168
-msgid "Preview"
-msgstr "Попередній перегляд"
+#: ../src/View/ViewContainer.vala:264
+msgid "You don't have permission to view this folder."
+msgstr "Ви не маєте права переглядати дану теку."
 
-#: ../src/View/PropertiesWindow.vala:176
-msgid "Close"
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View as Grid"
+msgstr "Перегляд у вигляді таблиці"
+
+#: ../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as List"
+msgstr "Перегляд у вигляді списку"
+
+#: ../src/View/Chrome/ViewSwicher.vala:91
+msgid "View in Columns"
+msgstr "Перегляд у вигляді колонок"
+
+#: ../src/View/Chrome/TopMenu.vala:47
+msgid "Previous"
+msgstr "Попередній"
+
+#: ../src/View/Chrome/TopMenu.vala:51
+msgid "Next"
+msgstr "Наступний"
+
+#: ../src/View/AbstractDirectoryView.vala:514
+msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:292
-msgid "%u selected items"
-msgstr "%u вибраних елементів"
+#: ../src/View/AbstractDirectoryView.vala:902
+msgid "Select an application"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:301
-msgid "Calculating size…"
-msgstr "Вираховую розмір..."
+#: ../src/View/AbstractDirectoryView.vala:904
+msgid "Set as default"
+msgstr "Установити за умовчанням"
 
-#: ../src/View/PropertiesWindow.vala:405
-msgid "Created"
-msgstr "Створено"
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Cannot drop this file"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:410
-msgid "Last Access"
-msgstr "Останній доступ"
+#: ../src/View/AbstractDirectoryView.vala:1328
+msgid "Invalid file name provided"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:416
-msgid "Deleted"
-msgstr "Видалено"
+#: ../src/View/AbstractDirectoryView.vala:1645
+msgid "Invalid"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:421
-msgid "MimeType"
-msgstr "Тип MIME"
+#: ../src/View/AbstractDirectoryView.vala:1650
+msgid "Run"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:429
-msgid "MimeTypes"
-msgstr "Типи MIME"
+#: ../src/View/AbstractDirectoryView.vala:1655
+msgid "Open in %s"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:449
-msgid "Location"
-msgstr "Розташування"
+#: ../src/View/AbstractDirectoryView.vala:1663
+msgid "Open in"
+msgstr "Відкрити у"
 
-#: ../src/View/PropertiesWindow.vala:452
-msgid "Target"
-msgstr "Ціль"
+#: ../src/View/AbstractDirectoryView.vala:1709
+msgid "Other Application"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:458
-msgid "Origin Location"
-msgstr "Дійсне розташування"
+#: ../src/View/AbstractDirectoryView.vala:1933
+msgid "Untitled %s"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Info:"
-msgstr "Інформація:"
+#: ../src/View/AbstractDirectoryView.vala:2374
+msgid "%s is not a valid file name"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:504
-msgid "Other application..."
-msgstr "Інша програма…"
+#: ../src/View/OverlayBar.vala:149
+msgid "%u folders"
+msgstr "%u теки"
 
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Open with:"
-msgstr "Відкрити за допомогою:"
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
+msgid " and %u other item (%s) selected"
+msgstr " та %u інший елемент (%s) обрано"
 
-#: ../src/View/PropertiesWindow.vala:548
-msgid "Usage:"
-msgstr "Використання:"
+#: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
+msgid " and %u other items (%s) selected"
+msgstr " і %u інших елементів (%s) вибрано"
 
-#: ../src/View/PropertiesWindow.vala:553
-msgid "Device usage:"
-msgstr "Використання пристрою:"
+#: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
+msgid " selected"
+msgstr " обрано"
 
-#: ../src/View/PropertiesWindow.vala:560
-msgid "%s free of %s (%d%% used)"
-msgstr "%s із %s вільно (%d%% використано)"
+#: ../src/View/OverlayBar.vala:157
+msgid "%u folder"
+msgstr "%u тека"
 
-#: ../src/View/PropertiesWindow.vala:699
-msgid "Read"
-msgstr "Читання"
-
-#: ../src/View/PropertiesWindow.vala:704
-msgid "Write"
-msgstr "Запис"
-
-#: ../src/View/PropertiesWindow.vala:709
-msgid "Execute"
-msgstr "Виконання"
-
-#: ../src/View/PropertiesWindow.vala:922 ../src/View/PropertiesWindow.vala:935
-msgid "Owner"
-msgstr "Власник"
-
-#: ../src/View/PropertiesWindow.vala:927 ../src/View/PropertiesWindow.vala:939
-msgid "Group"
-msgstr "Група"
-
-#: ../src/View/PropertiesWindow.vala:943
-msgid "Everyone"
-msgstr "Будь-хто"
-
-#: ../src/View/PropertiesWindow.vala:1202
-msgid "Select an application to open "
-msgstr "Виберіть програму, аби відкрити "
+#: ../src/View/OverlayBar.vala:165
+msgid "%u items selected (%s)"
+msgstr "%u елементів обрано (%s)"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -2018,359 +1821,189 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Window.vala:142
-msgid "Files isn't your default file manager."
-msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
+#: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
+msgid "Properties"
+msgstr "Параметри"
 
-#: ../src/View/Window.vala:148
-msgid "Set as Default"
+#: ../src/View/PropertiesWindow.vala:145
+msgid "General"
+msgstr "Загальне"
+
+#: ../src/View/PropertiesWindow.vala:153
+msgid "More"
+msgstr "Більше"
+
+#: ../src/View/PropertiesWindow.vala:172
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: ../src/View/PropertiesWindow.vala:180
+msgid "Close"
+msgstr "Закрити"
+
+#: ../src/View/PropertiesWindow.vala:218
+msgid "file"
 msgstr ""
 
-#: ../src/View/Window.vala:153
-msgid "Ignore"
-msgstr "Ігнорувати"
-
-#: ../src/View/Window.vala:436
-msgid "Undo"
-msgstr "Скасувати"
-
-#: ../src/View/Window.vala:437 ../src/View/Window.vala:765
-msgid "Undo the last action"
-msgstr "Скасувати останню дію"
-
-#: ../src/View/Window.vala:446
-msgid "Redo"
-msgstr "Поновити"
-
-#: ../src/View/Window.vala:447 ../src/View/Window.vala:768
-msgid "Redo the last action"
-msgstr "Поновити останню дію"
-
-#: ../src/View/Window.vala:743
-msgid "_File"
-msgstr "_Файл"
-
-#: ../src/View/Window.vala:744
-msgid "_Edit"
-msgstr "_Редагувати"
-
-#: ../src/View/Window.vala:745
-msgid "_View"
-msgstr "_Вигляд"
-
-#: ../src/View/Window.vala:746
-msgid "_Go"
-msgstr "_Перейти"
-
-#: ../src/View/Window.vala:747
-msgid "_Help"
-msgstr "_Допомога"
-
-#: ../src/View/Window.vala:749 ../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Нове _вікно"
-
-#: ../src/View/Window.vala:750
-msgid "Open another Files window for the displayed location"
-msgstr "Відкрити нове вікно Files для обраного каталога"
-
-#: ../src/View/Window.vala:753 ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Нова _вкладка"
-
-#: ../src/View/Window.vala:754
-msgid "Open another tab for the displayed location"
-msgstr "Відкрити іншу вкладку для відображеної директорії"
-
-#: ../src/View/Window.vala:758
-msgid "_Close"
-msgstr "_Закрити"
-
-#: ../src/View/Window.vala:759
-msgid "Close this folder"
-msgstr "Закрити цю папку"
-
-#: ../src/View/Window.vala:764
-msgid "_Undo"
-msgstr "_Відмінити дію"
-
-#: ../src/View/Window.vala:767
-msgid "_Redo"
-msgstr "_Повторити дію"
-
-#: ../src/View/Window.vala:770
-msgid "_Find"
+#: ../src/View/PropertiesWindow.vala:220
+msgid "files"
 msgstr ""
 
-#: ../src/View/Window.vala:771
-msgid "Search the current folder"
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual size could be larger, "
 msgstr ""
 
-#: ../src/View/Window.vala:773
-msgid "Open _Parent"
-msgstr "Відкрити _верхню"
-
-#: ../src/View/Window.vala:774
-msgid "Open the parent folder"
-msgstr "Відкрити папку вище"
-
-#: ../src/View/Window.vala:776
-msgid "_Back"
-msgstr "_Назад"
-
-#: ../src/View/Window.vala:777
-msgid "Go to the previous visited location"
-msgstr "Перейти до попереднього відвіданого місця"
-
-#: ../src/View/Window.vala:780
-msgid "_Forward"
-msgstr "_Вперед"
-
-#: ../src/View/Window.vala:781
-msgid "Go to the next visited location"
-msgstr "Перейти до наступного відвіданого місця"
-
-#: ../src/View/Window.vala:783
-msgid "_Reload"
-msgstr "_Перезавантажити"
-
-#: ../src/View/Window.vala:784
-msgid "Reload the current location"
-msgstr "Перезавантажити поточний каталог"
-
-#: ../src/View/Window.vala:787
-msgid "_Home Folder"
-msgstr "_Домашня тека"
-
-#: ../src/View/Window.vala:788 ../src/View/Sidebar.vala:419
-msgid "Open your personal folder"
-msgstr "Відкрити Ваш особистий каталог"
-
-#: ../src/View/Window.vala:791
-msgid "_Trash"
-msgstr "_Смітник"
-
-#: ../src/View/Window.vala:792
-msgid "Open your personal trash folder"
-msgstr "Відкрити вашу теку смітника"
-
-#: ../src/View/Window.vala:795
-msgid "_Network"
-msgstr "_Мережа"
-
-#: ../src/View/Window.vala:796
-msgid "Browse bookmarked and local network locations"
-msgstr "Переглянути збережені та локальні мережеві адреси"
-
-#: ../src/View/Window.vala:799
-msgid "Zoom _In"
-msgstr "Збільшити"
-
-#: ../src/View/Window.vala:800
-msgid "Increase the view size"
-msgstr "Збільшити розмір перегляду"
-
-#: ../src/View/Window.vala:811
-msgid "Zoom _Out"
-msgstr "Зменшити"
-
-#: ../src/View/Window.vala:812
-msgid "Decrease the view size"
-msgstr "Зменшити розмір перегляду"
-
-#: ../src/View/Window.vala:819
-msgid "Normal Si_ze"
-msgstr "Звичайний _розмір"
-
-#: ../src/View/Window.vala:820
-msgid "Use the normal view size"
-msgstr "Звичайний розмір перегляду"
-
-#: ../src/View/Window.vala:823
-msgid "Next Tab"
-msgstr "Наступна вкладка"
-
-#: ../src/View/Window.vala:827
-msgid "Previous Tab"
-msgstr "Попередня вкладка"
-
-#: ../src/View/Window.vala:831
-msgid "Connect to _Server..."
-msgstr "З'єднатись з _сервером…"
-
-#: ../src/View/Window.vala:832
-msgid "Connect to a remote computer or shared disk"
-msgstr "З'єднатись до віддаленого комп'ютера або спільного диску"
-
-#: ../src/View/Window.vala:835
-msgid "_About"
-msgstr "Про програму"
-
-#: ../src/View/Window.vala:836
-msgid "Display credits"
-msgstr "Показати кредити"
-
-#: ../src/View/Window.vala:839
-msgid "Report a Problem..."
-msgstr "Повідомити про проблему..."
-
-#: ../src/View/Window.vala:840
-msgid "File a bug on Launchpad"
-msgstr "Надіслати повідомлення про помилку на Launchpad"
-
-#: ../src/View/Window.vala:843
-msgid "Get Help Online..."
-msgstr "Отримати онлайн довідку..."
-
-#: ../src/View/Window.vala:847
-msgid "Translate This Application..."
-msgstr "Перекласти цю програму..."
-
-#: ../src/View/Window.vala:856
-msgid "Show _Hidden Files"
-msgstr "Показати При_ховані Файли"
-
-#: ../src/View/Window.vala:857
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Перемикнути показ прихованих файлів у поточному вікні"
-
-#: ../src/View/Window.vala:861
-msgid "_Places"
-msgstr "_Місця"
-
-#: ../src/View/Window.vala:862
-msgid "Change the visibility of this window's side pane"
-msgstr "Змінити видимість бічної панелі цього вікна"
-
-#: ../src/View/Window.vala:870
-msgid "Icon"
-msgstr "Піктограма"
-
-#: ../src/View/Window.vala:873
-msgid "List"
-msgstr "Список"
-
-#: ../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Стовпчики"
-
-#: ../src/View/Sidebar.vala:395
-msgid "Personal"
-msgstr "Особисте"
-
-#: ../src/View/Sidebar.vala:400
-msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
-
-#: ../src/View/Sidebar.vala:446
-msgid "Open the Trash"
+#: ../src/View/PropertiesWindow.vala:222
+msgid "could not be read due to permissions or other errors."
 msgstr ""
 
-#: ../src/View/Sidebar.vala:452
-msgid "Devices"
-msgstr "Пристрої"
-
-#: ../src/View/Sidebar.vala:457
-msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
-
-#: ../src/View/Sidebar.vala:469
-msgid "Open the contents of the FileSystem"
+#: ../src/View/PropertiesWindow.vala:251
+msgid "unknown"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:499 ../src/View/Sidebar.vala:673
-msgid "Mount and open %s"
-msgstr "Підключити та відкрити %s"
+#: ../src/View/PropertiesWindow.vala:357
+msgid "%u selected items"
+msgstr "%u вибраних елементів"
 
-#: ../src/View/Sidebar.vala:577
-msgid "Your network places"
-msgstr "Ваші мережеві місця"
+#: ../src/View/PropertiesWindow.vala:455
+msgid "Created"
+msgstr "Створено"
 
-#: ../src/View/Sidebar.vala:598
-msgid "Entire Network"
+#: ../src/View/PropertiesWindow.vala:460
+msgid "Last Access"
+msgstr "Останній доступ"
+
+#: ../src/View/PropertiesWindow.vala:466
+msgid "Deleted"
+msgstr "Видалено"
+
+#: ../src/View/PropertiesWindow.vala:471
+msgid "MimeType"
+msgstr "Тип MIME"
+
+#: ../src/View/PropertiesWindow.vala:479
+msgid "MimeTypes"
+msgstr "Типи MIME"
+
+#: ../src/View/PropertiesWindow.vala:499
+msgid "Location"
+msgstr "Розташування"
+
+#: ../src/View/PropertiesWindow.vala:502
+msgid "Target"
+msgstr "Ціль"
+
+#: ../src/View/PropertiesWindow.vala:508
+msgid "Origin Location"
+msgstr "Дійсне розташування"
+
+#: ../src/View/PropertiesWindow.vala:536
+msgid "Info:"
+msgstr "Інформація:"
+
+#: ../src/View/PropertiesWindow.vala:576
+msgid "Other application..."
+msgstr "Інша програма…"
+
+#: ../src/View/PropertiesWindow.vala:600
+msgid "Open with:"
+msgstr "Відкрити за допомогою:"
+
+#: ../src/View/PropertiesWindow.vala:620
+msgid "Usage:"
+msgstr "Пам’ять:"
+
+#: ../src/View/PropertiesWindow.vala:625
+msgid "Device usage:"
+msgstr "Використання пам’яті:"
+
+#: ../src/View/PropertiesWindow.vala:632
+msgid "%s free of %s (%d%% used)"
+msgstr "%s із %s вільно (%d%% зайнято)"
+
+#: ../src/View/PropertiesWindow.vala:771
+msgid "Read"
+msgstr "Читання"
+
+#: ../src/View/PropertiesWindow.vala:776
+msgid "Write"
+msgstr "Запис"
+
+#: ../src/View/PropertiesWindow.vala:781
+msgid "Execute"
+msgstr "Виконання"
+
+#: ../src/View/PropertiesWindow.vala:994
+#: ../src/View/PropertiesWindow.vala:1007
+msgid "Owner"
+msgstr "Власник"
+
+#: ../src/View/PropertiesWindow.vala:999
+#: ../src/View/PropertiesWindow.vala:1011
+msgid "Group"
+msgstr "Група"
+
+#: ../src/View/PropertiesWindow.vala:1015
+msgid "Everyone"
+msgstr "Будь-хто"
+
+#: ../src/View/PropertiesWindow.vala:1274
+msgid "Select an application to open "
+msgstr "Виберіть програму, аби відкрити "
+
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "Ця тека є порожньою."
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:605
-msgid "Browse the contents of the network"
-msgstr "Перегляд вмісту мережі"
-
-#: ../src/View/Sidebar.vala:1118
-msgid "Unable to start %s"
-msgstr "Не вдається запустити %s"
-
-#: ../src/View/Sidebar.vala:1187
-msgid "Open"
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1208
-msgid "Remove"
-msgstr "Видалити"
-
-#: ../src/View/Sidebar.vala:1216
-msgid "Rename"
+#: ../src/DndHandler.vala:97
+msgid "Move Here"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1225
-msgid "_Mount"
-msgstr "_Підключити"
-
-#: ../src/View/Sidebar.vala:1231
-msgid "_Unmount"
-msgstr "_Відключити"
-
-#: ../src/View/Sidebar.vala:1237
-msgid "_Eject"
-msgstr "Ви_йняти"
-
-#: ../src/View/Sidebar.vala:1251
-msgid "Connect to Server..."
+#: ../src/DndHandler.vala:98
+msgid "Copy Here"
 msgstr ""
 
-#: ../src/View/Chrome/TopMenu.vala:34
-msgid "Previous"
+#: ../src/DndHandler.vala:99
+msgid "Link Here"
 msgstr ""
 
-#: ../src/View/Chrome/TopMenu.vala:39
-msgid "Next"
-msgstr ""
+#: ../src/DndHandler.vala:102
+msgid "Cancel"
+msgstr "Відміна"
 
-#: ../src/View/Chrome/ViewSwicher.vala:75
-msgid "View as Grid"
-msgstr "Перегляд у вигляді таблиці"
-
-#: ../src/View/Chrome/ViewSwicher.vala:78
-msgid "View as List"
-msgstr "Перегляд у вигляді списку"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View in Columns"
-msgstr "Перегляд у вигляді колонок"
-
-#: ../src/Application.vala:137
+#: ../src/Application.vala:139
 msgid "Show the version of the program."
 msgstr "Показати версію програми."
 
-#: ../src/Application.vala:139
+#: ../src/Application.vala:141
 msgid "Open uri(s) in new tab"
 msgstr "Відкрити адресу(и) в новій вкладці"
 
-#: ../src/Application.vala:141
+#: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr ""
+msgstr "Новому Вікні"
 
-#: ../src/Application.vala:143
+#: ../src/Application.vala:145
 msgid "Quit Files."
 msgstr "Вийти із Files."
 
-#: ../src/Application.vala:145
+#: ../src/Application.vala:147
 msgid "Enable debug logging"
 msgstr "Включити журнал налагодження"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:150
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: ../src/Application.vala:151
+#: ../src/Application.vala:153
 msgid ""
 "\n"
 "\n"
@@ -2380,9 +2013,37 @@ msgstr ""
 "\n"
 "Перегляд файлової системи менеджером файлів"
 
-#: ../src/Application.vala:178
+#: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Переглянути свої файли"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Файловий менеджер"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Новій В_кладці"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Новому _Вікні"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:11
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:12
+msgid "Files"
+msgstr "Файли"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
@@ -2412,34 +2073,95 @@ msgstr "Відобразити вікно копіювання"
 msgid "Cancel All In-progress Actions"
 msgstr "Скасувати всі активні дії"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Переглянути свої файли"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Файловий менеджер"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "New Window As _Administrator"
-msgstr "Нове вікно від імені адміністратора"
-
-#: ../src/DesktopLauncher.vala:11
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:12
-msgid "Files"
-msgstr "Файли"
-
-#: ../libwidgets/LocationBar.vala:284
+#: ../libwidgets/LocationBar.vala:290
 msgid "Go to %s"
 msgstr "Перейти до %s"
 
-#: ../plugins/marlin-trash/plugin.vala:38
-msgid "These items may be deleted by emptying the trash."
-msgstr "Ці елементи можуть бути видалені при очищенні Смітника."
+#: ../plugins/network-places/plugin.vala:23
+#: ../plugins/network-places/plugin.vala:53
+msgid "Connect to Server…"
+msgstr ""
 
-#: ../plugins/marlin-trash/plugin.vala:39
+#: ../plugins/network-places/plugin.vala:53
+msgid "Connect to a network file server"
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:40
+msgid "These items may be deleted by emptying the trash."
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
-msgstr "Очистити Смітник"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:9
+msgid "Delete permanently"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:23
+msgid "Move to Trash"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:30
+msgid "New"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:32
+msgid "Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:37
+msgid "Empty File"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:46
+msgid "Show Hidden Files"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:53
+msgid "New Tab"
+msgstr "Новій Вкладці"
+
+#: ../src/View/directory_view_popup.ui:63
+msgid "Terminal"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:78
+msgid "Bookmark"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:85
+msgid "Paste"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:92
+msgid "Cut"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:96
+msgid "Copy"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:100
+msgid "Paste into Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:107
+msgid "Sort by"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:110
+msgid "Name"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:125
+msgid "Date"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:132
+msgid "Reversed Order"
+msgstr ""

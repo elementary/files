@@ -44,6 +44,8 @@ namespace Marlin.View
         const int DELAY_ADDING_RESULTS = 150;
 
         public signal void file_selected (File file);
+        public signal void cursor_changed (File? file);
+        public signal void first_match_found (File? file);
 
         public Gtk.Entry entry { get; construct; }
         public bool working { get; private set; default = false; }
@@ -67,6 +69,8 @@ namespace Marlin.View
 
         bool local_search_finished = false;
         bool global_search_finished = false;
+        public bool search_current_directory_only = false;
+        public bool begins_with_only = false;
 
         bool is_grabbing = false;
         Gdk.Device? device = null;
@@ -79,6 +83,8 @@ namespace Marlin.View
         Gtk.TreeStore list;
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
+
+        ulong cursor_changed_handler_id;
 
         public SearchResults (Gtk.Entry entry)
         {
@@ -108,6 +114,7 @@ namespace Marlin.View
             scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
 
             view = new Gtk.TreeView ();
+            view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
             view.headers_visible = false;
             view.show_expanders = false;
             view.level_indentation = 12;
@@ -146,14 +153,21 @@ namespace Marlin.View
             });
             view.model = filter;
 
+            list.row_changed.connect ((path, iter) => {
+                /* If the first match is in the current directory it will be selected */
+                if (path.to_string () == "0:0") {
+                    File? file;
+                    list.@get (iter, 3, out file);
+                    first_match_found (file);
+                }
+            });
+
             list.append (out local_results, null);
             list.@set (local_results, 0, get_category_header (_("In This Folder")));
             list.append (out bookmark_results, null);
             list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
             list.append (out global_results, null);
             list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
-            list.append (out no_results_label, null);
-            list.@set (no_results_label, 0, get_category_header (_("No Results Found")));
 
             scroll.add (view);
             frame.add (scroll);
@@ -179,6 +193,7 @@ namespace Marlin.View
                 Gtk.TreePath path;
                 Gtk.TreeIter iter;
 
+                SignalHandler.block (view, cursor_changed_handler_id);
                 view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
 
                 if (path != null) {
@@ -186,9 +201,11 @@ namespace Marlin.View
                     filter.convert_iter_to_child_iter (out iter, iter);
                     accept (iter);
                 }
-
+                SignalHandler.unblock (view, cursor_changed_handler_id);
                 return true;
             });
+
+            cursor_changed_handler_id = view.cursor_changed.connect (on_cursor_changed);
 
             key_release_event.connect (key_event);
             key_press_event.connect (key_event);
@@ -196,13 +213,43 @@ namespace Marlin.View
             entry.key_press_event.connect (entry_key_press);
         }
 
+        void on_cursor_changed () {
+            Gtk.TreeIter iter;
+            Gtk.TreePath? path = null;
+            var selected_paths = view.get_selection ().get_selected_rows (null);
+
+            if (selected_paths != null)
+                path = selected_paths.data;
+
+            if (path != null) {
+                filter.get_iter (out iter, path);
+                filter.convert_iter_to_child_iter (out iter, iter);
+                cursor_changed (get_file_at_iter (iter));
+            }
+
+        }
+
         bool entry_key_press (Gdk.EventKey event)
         {
             if (!get_mapped ())
                 return false;
 
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
+            if (mods != 0) {
+                if (only_control_pressed && event.keyval == Gdk.Key.f) {
+                    search_current_directory_only = false;
+                    begins_with_only = false;
+                    entry.changed ();
+                    return true;
+            } else
+                return false;
+            }
+
             switch (event.keyval) {
                 case Gdk.Key.Escape:
+                    cursor_changed (null); /* Clears selection in view */
                     popdown ();
                     return true;
                 case Gdk.Key.Return:
@@ -290,7 +337,9 @@ namespace Marlin.View
         void select_adjacent (bool up)
         {
             File? file = null;
-            Gtk.TreeIter iter, parent;
+            Gtk.TreeIter? iter = null;
+            Gtk.TreeIter? parent = null;
+
             get_iter_at_cursor (out iter);
 
             var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
@@ -390,7 +439,7 @@ namespace Marlin.View
 
             y += entry_alloc.height;
 
-            if (y + height > workarea.x + workarea.height)
+            if (y + height > workarea.y + workarea.height)
                 height = workarea.y + workarea.height - y - 12;
 
             scroll.set_min_content_height (height);
@@ -399,13 +448,21 @@ namespace Marlin.View
             resize (width_request, height_request);
         }
 
-        void get_iter_at_cursor (out Gtk.TreeIter iter)
+        void get_iter_at_cursor (out Gtk.TreeIter? iter)
         {
-            Gtk.TreePath path;
-            Gtk.TreeIter filter_iter;
+            Gtk.TreePath? path = null;
+            Gtk.TreeIter? filter_iter = null;
 
+            iter = null;
             view.get_cursor (out path, null);
+
+            if (path == null)
+                return;
+
             filter.get_iter (out filter_iter, path);
+
+            if (filter_iter == null)
+                return;
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
         }
@@ -543,8 +600,11 @@ namespace Marlin.View
                 return;
             }
 
-            if (accepted == null)
-                get_iter_at_cursor (out accepted);
+            if (accepted == null) {
+                Gtk.TreeIter? iter = null;
+                get_iter_at_cursor (out iter);
+                accepted = iter;
+            }
 
             File? file = null;
             list.@get (accepted, 3, out file);
@@ -557,6 +617,21 @@ namespace Marlin.View
             file_selected (file);
 
             popdown ();
+        }
+
+        File? get_file_at_iter (Gtk.TreeIter? iter)
+        {
+            if (iter == null) {
+                Gtk.TreeIter? iter2 = null;
+                get_iter_at_cursor (out iter2);
+                iter = iter2;
+            }
+
+            File? file = null;
+            if (iter != null)
+                list.@get (iter, 3, out file);
+
+            return file;
         }
 
         public void clear ()
@@ -651,7 +726,6 @@ namespace Marlin.View
 
             new Thread<void*> (null, () => {
                 local_search_finished = false;
-
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
                     visit (term.normalize ().casefold (), include_hidden, file_search_operation);
                 }
@@ -662,17 +736,22 @@ namespace Marlin.View
                 return null;
             });
 
-            get_zg_results.begin (term);
+            if (!search_current_directory_only)
+                get_zg_results.begin (term);
+            else
+                global_search_finished = true;
 
-            var bookmarks_matched = new Gee.LinkedList<Match> ();
-            var search_term = term.normalize ().casefold ();
-            foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (search_term, bookmark.label)) {
-                    bookmarks_matched.add (new Match.from_bookmark (bookmark));
+            if (!search_current_directory_only) {
+                var bookmarks_matched = new Gee.LinkedList<Match> ();
+                var search_term = term.normalize ().casefold ();
+                foreach (var bookmark in BookmarkList.get_instance ().list) {
+                    if (term_matches (search_term, bookmark.label)) {
+                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
+                    }
                 }
-            }
 
-            add_results (bookmarks_matched, bookmark_results);
+                add_results (bookmarks_matched, bookmark_results);
+            }
         }
 
         bool send_search_finished ()
@@ -685,8 +764,10 @@ namespace Marlin.View
             filter.refilter ();
 
             select_first ();
-            if (list_empty ())
+            if (local_search_finished && global_search_finished && list_empty ()) {
                 view.get_selection ().unselect_all ();
+                first_match_found (null);
+            }
 
             resize_popup ();
 
@@ -704,6 +785,7 @@ namespace Marlin.View
             FileEnumerator enumerator;
 
             var folder = directory_queue.poll ();
+
             if (folder == null)
                 return;
 
@@ -734,7 +816,7 @@ namespace Marlin.View
                     if (info.get_is_hidden () && !include_hidden)
                         continue;
 
-                    if (info.get_file_type () == FileType.DIRECTORY) {
+                    if (info.get_file_type () == FileType.DIRECTORY && !search_current_directory_only) {
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
@@ -851,7 +933,12 @@ namespace Marlin.View
             // TODO improve.
 
             // term is assumed to be down
-            var res = name.normalize ().casefold ().contains (term);
+            bool res;
+            if (begins_with_only)
+                res = name.normalize ().casefold ().has_prefix (term);
+            else
+                res = name.normalize ().casefold ().contains (term);
+
             return res;
         }
 

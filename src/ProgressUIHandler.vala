@@ -134,13 +134,16 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.progress_window != null)
             return;
 
-        this.progress_window = new Gtk.Dialog ();
+        this.progress_window = new Gtk.Dialog.with_buttons (null, null, Gtk.DialogFlags.USE_HEADER_BAR);
         this.progress_window.type_hint = Gdk.WindowTypeHint.DIALOG;
         this.progress_window.resizable = false;
         this.progress_window.title = _("File Operations");
         this.progress_window.set_wmclass ("file_progress", "Marlin");
         this.progress_window.set_position (Gtk.WindowPosition.CENTER);
         this.progress_window.icon_name = "system-file-manager";
+        (this.progress_window.get_header_bar () as Gtk.HeaderBar).show_close_button = false;
+        this.progress_window.get_header_bar ().get_style_context ().remove_class ("header-bar");
+
 
         this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 

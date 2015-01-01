@@ -86,7 +86,6 @@ marlin_file_changes_queue_file_added (GFile *location)
 {
     MarlinFileChange *new_item;
     MarlinFileChangesQueue *queue;
-
     queue = marlin_file_changes_queue_get();
 
     new_item = g_new0 (MarlinFileChange, 1);
@@ -146,7 +145,6 @@ marlin_file_changes_queue_get_change (MarlinFileChangesQueue *queue)
     MarlinFileChange *result;
 
     g_assert (queue != NULL);
-
     /* dequeue the tail item while locking down the list */
     g_mutex_lock (&queue->mutex);
 
@@ -204,7 +202,6 @@ marlin_file_changes_consume_changes (gboolean consume_all)
     guint chunk_count;
     MarlinFileChangesQueue *queue;
     gboolean flush_needed;
-
 
     additions = NULL;
     changes = NULL;

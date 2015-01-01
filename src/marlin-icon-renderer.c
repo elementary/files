@@ -33,9 +33,7 @@
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
-//#define MARLIN_EMBLEM_SIZE 18
-#define MARLIN_EMBLEM_MIN_SIZE 7
-
+#define MARLIN_EMBLEM_SIZE 16
 
 static void marlin_icon_renderer_get_property  (GObject                    *object,
                                                 guint                       param_id,
@@ -83,6 +81,7 @@ struct _MarlinIconRendererPrivate
     GOFFile   *file;
     GOFFile   *drop_file;
     gint      size;
+    gint      helper_size;
     MarlinZoomLevel zoom_level;
     double scale;
 
@@ -299,6 +298,7 @@ marlin_icon_renderer_set_property (GObject      *object,
         break;
     case PROP_ZOOM_LEVEL:
         priv->zoom_level = g_value_get_enum (value);
+        priv->helper_size = (priv->zoom_level > MARLIN_ZOOM_LEVEL_NORMAL) ? 24 : 16;
         break;
     case PROP_EMBLEMS:
         priv->emblems = g_value_get_boolean (value);
@@ -441,11 +441,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    g_return_if_fail (priv->file);
-    g_return_if_fail (priv->pixbuf);
+    if (!(priv->file && priv->pixbuf))
+      return;  /* return silently - this is not an error - could be rendering blank line (e.g. expanded empty subdirectory */
+
     g_return_if_fail (GDK_IS_PIXBUF (priv->pixbuf));
-    /*if (!(priv->file && priv->pixbuf))
-      return;*/
+    g_return_if_fail (priv->size >= 1);
+
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x,
@@ -474,6 +475,14 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         g_object_unref (nicon);
         g_object_unref (pixbuf);
         pixbuf = temp;
+    } else if (priv->file->is_directory) {
+        if (priv->file->is_expanded) {
+            nicon = marlin_icon_info_lookup_from_name ("folder-open", priv->size);
+            temp = marlin_icon_info_get_pixbuf_nodefault (nicon);
+            g_object_unref (nicon);
+            g_object_unref (pixbuf);
+            pixbuf = temp;
+        }
     }
 
     /* clipboard */
@@ -565,13 +574,15 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GdkPixbuf *pix;
 
     if (priv->selection_helpers &&
-        (flags & GTK_CELL_RENDERER_PRELIT) != 0 &&
+        (flags & (GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_SELECTED)) != 0 &&
         priv->file != priv->drop_file)
     {
-        if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
-            nicon = marlin_icon_info_lookup_from_name ("remove", 16);
-        else
-            nicon = marlin_icon_info_lookup_from_name ("add", 16);
+        if((flags & GTK_CELL_RENDERER_SELECTED) != 0 && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-remove", priv->helper_size);
+        else if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-checked", priv->helper_size);
+        else if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-add", priv->helper_size);
         pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
@@ -588,10 +599,10 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
         /* render the emblems
          * show number of emblems depending on the zoom lvl. */
-        while (emblems != NULL && position < priv->zoom_level + 1)
+        while (emblems != NULL && priv->zoom_level > 0 && position < priv->zoom_level)
         {
             /* check if we have the emblem in the icon theme */
-            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_MIN_SIZE + 2 * priv->zoom_level);
+            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
             pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
             if(pix == NULL) {
                 g_warning ("Can't load icon %s", (char *) emblems->data);

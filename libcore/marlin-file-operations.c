@@ -1852,10 +1852,21 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
     GFile *file;
     GList *to_delete;
     GError *error;
+    GFileInfo *info;
+    GFileInfo *parent_info;
+    GFileInfo *fsinfo;
     int total_files, files_trashed;
     char *primary, *secondary, *details;
     int response;
     guint64 mtime;
+    gboolean can_delete;
+    gboolean can_write;
+    gboolean is_folder;
+    gboolean parent_can_write;
+    gboolean readonly_fs;
+    gboolean have_info;
+    gboolean have_parent_info;
+    gboolean have_filesystem_info;
 
     if (job_aborted (job)) {
         return;
@@ -1887,20 +1898,79 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                 goto skip;
             }
 
-            primary = f (_("Cannot move file to trash. Delete Immediately?"));
-            secondary = f (_("This file is located on an external media and cannot be moved to the trash. Once deleted, it cannot be restored."));
-            details = NULL;
-            if (!IS_IO_ERROR (error, NOT_SUPPORTED)) {
-                details = error->message;
+            info = g_file_query_info (file, "access::can-write,standard::type", 0, NULL, NULL);
+            parent_info = g_file_query_info (g_file_get_parent (file), "access::can-write", 0, NULL, NULL);
+            fsinfo = g_file_query_filesystem_info (file, "filesystem::readonly", NULL, NULL);
+
+            if (info != NULL) {
+                can_write = g_file_info_get_attribute_boolean (info, "access::can-write");
+                is_folder = (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY);
+                have_info = TRUE;
+                g_object_unref (info);
+            } else
+                have_info = FALSE;
+
+            if (parent_info != NULL) {
+                parent_can_write = g_file_info_get_attribute_boolean (parent_info, "access::can-write");
+                have_parent_info = TRUE;
+                g_object_unref (parent_info);
+            } else
+                have_parent_info = FALSE;
+
+            if (fsinfo != NULL) {
+                readonly_fs = g_file_info_get_attribute_boolean (fsinfo, "filesystem::readonly");
+                have_filesystem_info = TRUE;
+                g_object_unref (fsinfo);
+            } else
+                have_filesystem_info = FALSE;
+
+            if (have_info) {
+                can_delete = FALSE;
+                if (have_filesystem_info && readonly_fs) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete files on a read only filesystem."));
+                } else if (have_parent_info && !parent_can_write) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
+                } else if (is_folder && !can_write ) {
+                    primary = f (_("Cannot move file to trash or delete it"));
+                    secondary = f (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
+                } else {
+                    primary = f (_("Cannot move file to trash. Try to delete it immediately?"));
+                    secondary = f (_("This file could not be moved to trash. See details below for further information."));
+                    can_delete = TRUE;
+                }
+            } else {
+                primary = f (_("Cannot move file to trash.  Try to delete it?"));
+                secondary = f (_("This file could not be moved to trash. You may not be able to delete it either."));
+                can_delete = TRUE;
             }
 
-            response = run_question (job,
-                                     primary,
-                                     secondary,
-                                     details,
-                                     (total_files - files_trashed) > 1,
-                                     GTK_STOCK_CANCEL, SKIP_ALL, SKIP, DELETE_ALL, GTK_STOCK_DELETE,
-                                     NULL);
+            if (can_delete)
+                secondary = g_strconcat (secondary, f (_("\n Deleting a file removes it permanently")), NULL);
+
+            details = NULL;
+            details = error->message;
+
+            /* Note primary and secondary text is freed by run_simple_dialog_va */
+            if (can_delete) {
+                response = run_question (job,
+                                         primary,
+                                         secondary,
+                                         details,
+                                         (total_files - files_trashed) > 1,
+                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP, DELETE_ALL, GTK_STOCK_DELETE,
+                                         NULL);
+            } else {
+                response = run_question (job,
+                                         primary,
+                                         secondary,
+                                         details,
+                                         (total_files - files_trashed) > 1,
+                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                         NULL);
+
+            }
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
                 ((DeleteJob *) job)->user_cancel = TRUE;
@@ -1950,9 +2020,7 @@ delete_job_done (gpointer user_data)
     g_list_free_full (job->files, g_object_unref);
 
     if (job->done_callback) {
-        debuting_uris = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
-        job->done_callback (debuting_uris, job->user_cancel, job->done_callback_data);
-        g_hash_table_unref (debuting_uris);
+        job->done_callback (job->user_cancel, job->done_callback_data);
     }
 
     finalize_common ((CommonJob *)job);
@@ -2731,7 +2799,6 @@ scan_file (GFile *file,
     int response;
 
     dirs = g_queue_new ();
-
 retry:
     error = NULL;
     info = g_file_query_info (file,
@@ -3535,7 +3602,6 @@ retry:
         }
         return CREATE_DEST_DIR_FAILED;
     }
-    marlin_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
     marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
@@ -4167,13 +4233,10 @@ copy_move_file (CopyMoveJob *copy_job,
     handled_invalid_filename = *dest_fs_type != NULL;
 
     //amtest
-    printf("%s\n", G_STRFUNC);
     if (unique_names) {
         dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr++);
-        printf ("unique_names TRUE\n");
     } else {
         dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-        printf ("unique_names FALSE\n");
     }
 
 
@@ -4293,7 +4356,7 @@ retry:
         if (copy_job->is_move) {
             marlin_file_changes_queue_file_moved (src, dest);
         } else {
-            marlin_file_changes_queue_file_added (dest);
+           marlin_file_changes_queue_file_added (dest);
         }
 
         /* If copying a trusted desktop file to the desktop,
@@ -4503,8 +4566,8 @@ retry:
             g_error_free (error);
             goto out;
         }
-        primary = f (_("Error while copying \"%B\"."), src);
-        secondary = f (_("There was an error copying the file into %F."), dest_dir);
+        primary = f (_("There was an Error while copying \"%s\"."), g_file_get_uri (src));
+        secondary = f (_("There was an error copying the file into %s."), g_file_get_uri (dest_dir));
         details = error->message;
 
         response = run_warning (job,
@@ -5017,7 +5080,7 @@ retry:
         if (job->skip_all_error) {
             goto out;
         }
-        primary = f (_("Error while moving \"%B\"."), src);
+        primary = f (_("Error while moving \"%F\"."), src);
         secondary = f (_("There was an error moving the file into %F."), dest_dir);
         details = error->message;
 
@@ -5282,7 +5345,6 @@ marlin_file_operations_move (GList *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
-
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
         if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
@@ -5406,8 +5468,7 @@ retry:
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-
-        marlin_file_changes_queue_file_added (dest);
+       marlin_file_changes_queue_file_added (dest);
         /*if (position) {
             //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
         } else {
@@ -5887,7 +5948,6 @@ marlin_file_operations_copy_move   (GList                  *files,
                                     MarlinCopyCallback     done_callback,
                                     gpointer               done_callback_data)
 {
-    printf ("%s\n", G_STRFUNC);
     GList *p;
     GFile *src_dir;
     GtkWindow *parent_window;
@@ -6140,7 +6200,7 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-        marlin_file_changes_queue_file_added (dest);
+       marlin_file_changes_queue_file_added (dest);
         /*if (job->has_position) {
             //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
         } else {

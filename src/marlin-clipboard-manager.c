@@ -655,6 +655,16 @@ marlin_clipboard_manager_has_cutted_file (MarlinClipboardManager *manager,
     return (manager->files_cutted && g_list_find (manager->files, file) != NULL);
 }
 
+gboolean
+marlin_clipboard_manager_has_file (MarlinClipboardManager *manager,
+                                          const GOFFile       *file)
+{
+    g_return_val_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+
+    return (g_list_find (manager->files, file) != NULL);
+}
+
 guint
 marlin_clipboard_manager_count_files (MarlinClipboardManager *manager)
 {

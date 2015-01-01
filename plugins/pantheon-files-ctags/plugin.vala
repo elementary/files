@@ -17,7 +17,6 @@
 
 [DBus (name = "org.elementary.pantheonfiles.db")]
 interface MarlinDaemon : Object {
-    //public abstract async HashTable<string,Variant> get_uri_infos_from_directory (string directory) throws IOError;
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
 
@@ -26,7 +25,6 @@ interface MarlinDaemon : Object {
 
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private MarlinDaemon daemon;
-    //GOF.Directory.Async directory;
     GOF.File directory;
     private bool is_user_dir;
     private bool ignore_dir;
@@ -49,41 +47,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             stderr.printf ("%s\n", e.message);
         }
     }
-
-    /*private void file_info_update (HashTable<string,Variant> rc, GOF.File file)
-      {
-      Variant row = rc.lookup (file.uri);
-      if (row == null)
-      return;
-
-      VariantIter iter = row.iterator ();
-      warning ("iter n_children %d", (int) iter.n_children ());
-      assert (iter.n_children () == 1);
-      VariantIter row_iter = iter.next_value ().iterator ();
-      warning ("row_iter n_children %d", (int) row_iter.n_children ());
-
-      if (row_iter.n_children () == 2) {
-      unowned string type = row_iter.next_value ().get_string ();
-      int n = int.parse (row_iter.next_value ().get_string ());
-      file.tagstype = type;
-    //file.color = Preferences.tags_colors[n];
-    file.update_type ();
-    message ("grrrrrr %s %d", type, n);
-    }
-    }*/
-
-    /*private async void files_infos_updates ()
-      {
-      var rc = yield daemon.get_uri_infos_from_directory (directory.file.uri);
-
-      foreach (var file in directory.unknown_types) {
-      message ("unknown %s %s", file.name, file.ftype);
-      file_info_update (rc, file);
-      }
-      directory.unknown_types = null;
-
-
-      }*/
 
     /* Arbitrary user dir list */
     private const string users_dirs[2] = {
@@ -112,7 +75,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-        message  ("CANCEL");
+        debug  ("CANCEL");
         cancellable.cancel ();
 
 
@@ -124,15 +87,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         unknowns.clear ();
         cancellable.reset ();
 
-        //directory = GOF.Directory.Async.from_file(((Object[])user_data)[2] as GOF.File);
         directory = ((Object[]) user_data)[2] as GOF.File;
-        //warning ("CTags Plugin dir %s", directory.file.uri);
-        warning ("CTags Plugin dir %s", directory.uri);
+        debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
-    //private Variant add_entry (string uri, string content_type, int modified_time)
     private Variant add_entry (GOF.File gof) {
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
@@ -147,12 +107,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         Variant[] entries = null;
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
-            //warning ("--- known %s", gof.name);
             entries += add_entry (gof);
         }
 
         if (entries != null) {
-            warning ("--- known entries %d", entries.length);
+            debug ("--- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries, directory.uri);
             } catch (Error err) {
@@ -165,7 +124,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         GOF.File gof = null;
 
         var count = unknowns.get_length ();
-        message ("unknows queue nb: %u", count);
+        debug ("unknowns queue length: %u", count);
         if (count > 10) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
@@ -188,11 +147,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
         } else {
             while ((gof = unknowns.pop_head ()) != null) {
-                //warning ("--- unknown %s", gof.name);
                 try {
-                    //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    warning ("--- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
                     warning ("query_info failed: %s %s", err2.message, gof.uri);
@@ -200,7 +156,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             }
         }
-        idle_consume_unknowns = 0;
     }
 
     private void add_to_knowns_queue (GOF.File file, FileInfo info) {
@@ -214,6 +169,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
         t_consume_knowns = Timeout.add (300, () => {
                                         consume_knowns_queue ();
+                                        t_consume_knowns = 0;
                                         return false;
                                         });
     }
@@ -225,25 +181,24 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (idle_consume_unknowns == 0)
                 idle_consume_unknowns = Idle.add (() => {
                                                   consume_unknowns_queue ();
+                                                  idle_consume_unknowns = 0;
                                                   return false;
                                                   });
         }
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        //warning ("ctags update %s", file.name);
         try {
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
-            //warning ("iter n_children %d", (int) iter.n_children ());
+            debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-            //warning ("row_iter n_children %d", (int) row_iter.n_children ());
+            debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
-                //message ("%s %d %d", file.name, (int) file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED), (int) modified);
                 unowned string type = row_iter.next_value ().get_string ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
@@ -259,7 +214,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         file.update_type ();
                     }
                 }
-                //message ("grrrrrr %s %s %d %s", myfile.name, type, n, myfile.ftype);
             } else {
                 add_to_unknowns_queue (file);
             }
@@ -277,9 +231,183 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             /*if (file.ftype == "application/octet-stream")*/
             rreal_update_file_info (file);
     }
-}
 
+    public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
+        if (selected_files.length () < 1 || widget == null)
+            return;
+
+        var menu = widget as Gtk.Menu;
+        var color_menu_item = new ColorWidget ();
+        color_menu_item.color_changed.connect ((ncolor) => {
+            set_color (selected_files, ncolor);
+        });
+
+        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
+        add_menuitem (menu, color_menu_item);
+    }
+
+    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+        menu.append (menu_item);
+        menu_item.show ();
+    }
+
+    private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
+        Variant[] entries = null;
+        foreach (unowned GOF.File file in files) {
+            file.color = n;
+            entries +=  add_entry (file);
+        }
+
+        if (entries != null) {
+            try {
+                yield daemon.record_uris (entries, ((GOF.File) files.data).uri);
+            } catch (Error err) {
+                warning ("%s", err.message);
+            }
+        }
+    }
+
+    private class ColorWidget : Gtk.MenuItem {
+        private new bool has_focus;
+        private int height;
+        public signal void color_changed (int ncolor);
+        public ColorWidget () {
+            set_size_request (150, 20);
+            height = 20;
+
+            button_press_event.connect (button_pressed_cb);
+            draw.connect (on_draw);
+
+            select.connect (() => {
+                has_focus = true;
+            });
+
+            deselect.connect (() => {
+                has_focus = false;
+            });
+        }
+
+        private bool button_pressed_cb (Gdk.EventButton event) {
+            determine_button_pressed_event (event);
+            return true;
+        }
+
+        private void determine_button_pressed_event (Gdk.EventButton event) {
+            int i;
+            int btnw = 10;
+            int btnh = 10;
+            int y0 = (height - btnh) /2;
+            int x0 = btnw+5;
+            int xpad = 9;
+
+            if (event.y >= y0 && event.y <= y0+btnh)
+                for (i=1; i<=10; i++) {
+                    if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
+                        color_changed (i-1);
+                        break;
+                    }
+                }
+        }
+
+        protected bool on_draw (Cairo.Context cr) {
+            int i;
+            int btnw = 10;
+            int btnh = 10;
+            int y0 = (height - btnh) /2;
+            int x0 = btnw+5;
+            int xpad = 9;
+
+            for (i=1; i<=10; i++) {
+                if (i==1)
+                    DrawCross (cr,xpad + x0*i, y0+1, btnw-2, btnh-2);
+                else {
+                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "stroke", i-1);
+                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "fill", i-1);
+                    DrawGradientOverlay (cr,xpad + x0*i, y0, btnw, btnh);
+                }
+            }
+
+            return true;
+        }
+
+        private void DrawCross (Cairo.Context cr, int x, int y, int w, int h) {
+            cr.new_path ();
+            cr.set_line_width (2.0);
+            cr.move_to (x, y);
+            cr.rel_line_to (w, h);
+            cr.move_to (x, y+h);
+            cr.rel_line_to (w, -h);
+            cr.set_source_rgba (0,0,0,0.6);
+            cr.stroke();
+
+            cr.close_path ();
+        }
+
+        /*
+         * Create a rounded rectangle using the Bezier curve.
+         * Adapted from http://cairographics.org/cookbook/roundedrectangles/
+         */
+        private void DrawRoundedRectangle (Cairo.Context cr, int x, int y, int w, int h, string style, int color) {
+            int radius_x=2;
+            int radius_y=2;
+            double ARC_TO_BEZIER = 0.55228475;
+
+            if (radius_x > w - radius_x)
+                radius_x = w / 2;
+
+            if (radius_y > h - radius_y)
+                radius_y = h / 2;
+
+            /* approximate (quite close) the arc using a bezier curve */
+            double ca = ARC_TO_BEZIER * radius_x;
+            double cb = ARC_TO_BEZIER * radius_y;
+
+            cr.new_path ();
+            cr.set_line_width (0.7);
+            cr.set_tolerance (0.1);
+            cr.move_to (x + radius_x, y);
+            cr.rel_line_to (w - 2 * radius_x, 0.0);
+            cr.rel_curve_to (ca, 0.0, radius_x, cb, radius_x, radius_y);
+            cr.rel_line_to (0, h - 2 * radius_y);
+            cr.rel_curve_to (0.0, cb, ca - radius_x, radius_y, -radius_x, radius_y);
+            cr.rel_line_to (-w + 2 * radius_x, 0);
+            cr.rel_curve_to (-ca, 0, -radius_x, -cb, -radius_x, -radius_y);
+            cr.rel_line_to (0, -h + 2 * radius_y);
+            cr.rel_curve_to (0.0, -cb, radius_x - ca, -radius_y, radius_x, -radius_y);
+
+            switch (style) {
+            default:
+            case "fill":
+                Gdk.RGBA rgba = Gdk.RGBA ();
+                rgba.parse (GOF.Preferences.TAGS_COLORS[color]);
+                Gdk.cairo_set_source_rgba (cr, rgba);
+                cr.fill ();
+                break;
+            case "stroke":
+                cr.set_source_rgba (0,0,0,0.5);
+                cr.stroke ();
+                break;
+            }
+
+            cr.close_path ();
+        }
+
+        /*
+         * Draw the overlaying gradient
+         */
+        private void DrawGradientOverlay (Cairo.Context cr, int x, int y, int w, int h) {
+            var radial = new Cairo.Pattern.radial (w, h, 1, 0.0, 0.0, 0.0);
+            radial.add_color_stop_rgba (0, 0.3, 0.3, 0.3,0.0);
+            radial.add_color_stop_rgba (1, 0.0, 0.0, 0.0,0.5);
+
+            cr.set_source (radial);
+            cr.rectangle (x,y,w,h);
+            cr.fill ();
+        }
+    }
+}
 
 public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.CTags ();
 }
+
