@@ -430,7 +430,6 @@ namespace FM {
         protected void unfreeze_updates () {
             updates_frozen = false;
             slot.directory.freeze_update = false;;
-            update_menu_actions ();
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
@@ -947,10 +946,13 @@ namespace FM {
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+            GLib.File location;
             if (selected_files != null)
-                window.sidebar.add_uri (selected_files.data.uri);
+                location = selected_files.data.get_target_location ();
             else
-                window.sidebar.add_uri (slot.directory.file.uri);
+                location = slot.directory.file.get_target_location ();
+
+                window.sidebar.add_uri (location.get_uri (), null);
         }
 
         /** Background actions */
@@ -1132,7 +1134,6 @@ namespace FM {
             in_trash = slot.directory.is_trash;
             in_network_root = slot.directory.file.is_root_network_folder ();
             thaw_tree ();
-            update_menu_actions ();
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
             queue_draw ();
         }
@@ -1254,7 +1255,6 @@ namespace FM {
 
 /** Handle clipboard signal */
         private void on_clipboard_changed () {
-            update_menu_actions ();
             /* show possible change in appearance of cut items */
             queue_draw ();
         }
@@ -1267,7 +1267,6 @@ namespace FM {
             if (updates_frozen)
                 return;
 
-            update_menu_actions ();
             window.selection_changed (get_selected_files ());
         }
 
@@ -1619,6 +1618,7 @@ namespace FM {
 
         protected void show_context_menu (Gdk.Event event) {
             /* select selection or background context menu */
+            update_menu_actions ();
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
             GLib.MenuModel? model = null;
 
@@ -1674,12 +1674,12 @@ namespace FM {
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
 
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
-
-                    if (common_actions.get_action_enabled ("bookmark"))
-                        menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-
-                    menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
                 }
+
+                if (common_actions.get_action_enabled ("bookmark"))
+                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+
+                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
             return menu as MenuModel;
         }
@@ -1706,13 +1706,13 @@ namespace FM {
                 menu.append_section (null, new_menu as GLib.MenuModel);
 
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-
-                if (common_actions.get_action_enabled ("bookmark"))
-                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-
-                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
+
+            if (common_actions.get_action_enabled ("bookmark"))
+                menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+
+            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+            menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
 
             return menu as MenuModel;
         }
@@ -1845,6 +1845,8 @@ namespace FM {
                 return;
 
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GOF.File file;
+
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
             bool single_folder = true; /* background is a folder */
@@ -1854,13 +1856,14 @@ namespace FM {
             update_default_app (selection);
 
             if (selection_count > 0) {
-                unowned GOF.File? file = selection.data;
+                file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
                     can_rename = file.is_writable ();
                 } else
                     critical ("File in selection is null");
-            }
+            } else
+                file = slot.directory.file;
 
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
@@ -1877,7 +1880,7 @@ namespace FM {
 
             /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
              * because remote file bookmarks do not work correctly for unmounted locations */
-            bool can_bookmark = (slot.directory.is_local && !more_than_one_selected) || single_folder;
+            bool can_bookmark = (!more_than_one_selected || single_folder) && (!file.is_mountable () || file.is_mounted);
             action_set_enabled (common_actions, "bookmark", can_bookmark);
         }
 
@@ -2307,7 +2310,6 @@ namespace FM {
                         action_set_enabled (common_actions, "paste_into", true);
                         unselect_all ();
                         common_actions.activate_action ("paste_into", null);
-                        update_menu_actions ();
                         return true;
                     }
                     break;
@@ -2817,8 +2819,6 @@ namespace FM {
                     warning ("Could not set file attributes - %s", e.message);
                 }
             });
-
-            update_menu_actions_sort ();
         }
 
         protected void cancel_timeout (ref uint id) {

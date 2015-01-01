@@ -387,8 +387,10 @@ gof_file_update (GOFFile *file)
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
 
-            if (file->file_type == G_FILE_TYPE_MOUNTABLE)
+            if (file->file_type == G_FILE_TYPE_MOUNTABLE) {
                 file->mount = gof_file_get_mount_at (file->target_location);
+                file->is_mounted = (file->mount != NULL);
+            }
         }
     }
 
