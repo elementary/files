@@ -544,31 +544,33 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
       pixbuf = stated;
       }*/
 
-    if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
-        && gof_file_get_thumbnail_path (priv->file)
-        && gof_file_thumb_can_frame (priv->file)
-        && thumbnail_needs_frame (pixbuf, pix_rect.width, pix_rect.height))
-    {
-        cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4,
-                                    pix_rect.width-4, pix_rect.height-6,
-                                    4, 0, 0, 0, 8);
+    if (pixbuf != NULL) {
+        if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
+            && gof_file_get_thumbnail_path (priv->file)
+            && gof_file_thumb_can_frame (priv->file)
+            && thumbnail_needs_frame (pixbuf, pix_rect.width, pix_rect.height))
+        {
+            cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4,
+                                        pix_rect.width-4, pix_rect.height-6,
+                                        4, 0, 0, 0, 8);
+        }
+
+        gtk_render_icon (context, cr, pixbuf,
+                         pix_rect.x, pix_rect.y);
+
+        /* let the theme draw a frame for loaded thumbnails */
+        if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
+            && gof_file_get_thumbnail_path (priv->file)
+            && gof_file_thumb_can_frame (priv->file))
+        {
+            gtk_render_frame (context, cr,
+                              pix_rect.x, pix_rect.y,
+                              pix_rect.width, pix_rect.height);
+        }
+
+        gtk_style_context_restore (context);
+        g_object_unref (pixbuf);
     }
-
-    gtk_render_icon (context, cr, pixbuf,
-                     pix_rect.x, pix_rect.y);
-
-    /* let the theme draw a frame for loaded thumbnails */
-    if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
-        && gof_file_get_thumbnail_path (priv->file)
-        && gof_file_thumb_can_frame (priv->file))
-    {
-        gtk_render_frame (context, cr,
-                          pix_rect.x, pix_rect.y,
-                          pix_rect.width, pix_rect.height);
-    }
-
-    gtk_style_context_restore (context);
-    g_object_unref (pixbuf);
 
     /* add remove helpers +/- */
     GdkPixbuf *pix;
@@ -583,12 +585,16 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             nicon = marlin_icon_info_lookup_from_name ("selection-checked", priv->helper_size);
         else if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
             nicon = marlin_icon_info_lookup_from_name ("selection-add", priv->helper_size);
+
         pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
-        gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
-        cairo_paint (cr);
+        if (pix != NULL) {
+            gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
+            cairo_paint (cr);
+            g_object_unref (pix);
+        }
 
         g_object_unref (nicon);
-        g_object_unref (pix);
+
     }
 
     /* check if we should render emblems as well */
@@ -604,7 +610,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             /* check if we have the emblem in the icon theme */
             nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
             pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
-            if(pix == NULL) {
+            if (pix == NULL) {
                 g_warning ("Can't load icon %s", (char *) emblems->data);
                 return;
             }
