@@ -81,6 +81,7 @@ struct _MarlinIconRendererPrivate
     GOFFile   *file;
     GOFFile   *drop_file;
     gint      size;
+    gint      helper_size;
     MarlinZoomLevel zoom_level;
     double scale;
 
@@ -297,6 +298,7 @@ marlin_icon_renderer_set_property (GObject      *object,
         break;
     case PROP_ZOOM_LEVEL:
         priv->zoom_level = g_value_get_enum (value);
+        priv->helper_size = (priv->zoom_level > MARLIN_ZOOM_LEVEL_NORMAL) ? 24 : 16;
         break;
     case PROP_EMBLEMS:
         priv->emblems = g_value_get_boolean (value);
@@ -577,12 +579,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         (flags & (GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_SELECTED)) != 0 &&
         priv->file != priv->drop_file)
     {
-        if ((flags & GTK_CELL_RENDERER_SELECTED) != 0 && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
-            nicon = marlin_icon_info_lookup_from_name ("selection-remove", 16);
+        if((flags & GTK_CELL_RENDERER_SELECTED) != 0 && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            nicon = marlin_icon_info_lookup_from_name ("selection-remove", priv->helper_size);
         else if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
-            nicon = marlin_icon_info_lookup_from_name ("selection-checked", 16);
+            nicon = marlin_icon_info_lookup_from_name ("selection-checked", priv->helper_size);
         else if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
-            nicon = marlin_icon_info_lookup_from_name ("selection-add", 16);
+            nicon = marlin_icon_info_lookup_from_name ("selection-add", priv->helper_size);
 
         pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
         if (pix != NULL) {

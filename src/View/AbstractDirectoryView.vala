@@ -2182,8 +2182,9 @@ namespace FM {
 
                 case Gdk.Key.v:
                     if (only_control_pressed) {
-                        /* Force attempt to paste - as a fallback will paste into current directory */
+                        /* Will drop any existing selection and paste into current directory */
                         action_set_enabled (common_actions, "paste_into", true);
+                        unselect_all ();
                         common_actions.activate_action ("paste_into", null);
                         update_menu_actions ();
                         return true;
