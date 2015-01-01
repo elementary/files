@@ -2020,9 +2020,7 @@ delete_job_done (gpointer user_data)
     g_list_free_full (job->files, g_object_unref);
 
     if (job->done_callback) {
-        debuting_uris = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
-        job->done_callback (debuting_uris, job->user_cancel, job->done_callback_data);
-        g_hash_table_unref (debuting_uris);
+        job->done_callback (job->user_cancel, job->done_callback_data);
     }
 
     finalize_common ((CommonJob *)job);

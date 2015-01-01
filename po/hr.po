@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-27 21:43+0000\n"
+"PO-Revision-Date: 2014-12-27 22:48+0000\n"
 "Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-28 07:02+0000\n"
-"X-Generator: Launchpad (build 17261)\n"
+"X-Launchpad-Export-Date: 2014-12-28 06:01+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1738,7 +1738,7 @@ msgstr "Postavi kao zadano"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Nije moguće ispustiti ovu datoteku"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"

@@ -72,6 +72,7 @@ namespace Marlin.View {
         public signal void item_hovered (GOF.File? gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
+        public signal void folder_deleted (GLib.File location);
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -245,6 +246,8 @@ namespace Marlin.View {
                 if (tabs.n_tabs == 1)
                     add_tab ();
 
+                /* The close () method of ViewContainer ensures its destruction */
+               (tab.page as ViewContainer).close ();
                 return true;
             });
 

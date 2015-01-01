@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-25 19:22+0000\n"
-"Last-Translator: Andy Karaushu <Karandriy@gmail.com>\n"
+"PO-Revision-Date: 2014-12-28 13:58+0000\n"
+"Last-Translator: Max_ym <b.maxym.naumtchyk@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-11-26 06:47+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-29 06:10+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1081,7 +1081,7 @@ msgstr ""
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "Не вдалося перемістити файл у смітник. Також його не можна видалити."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
@@ -1553,7 +1553,7 @@ msgstr "Кошик"
 
 #: ../src/View/LocationBar.vala:331
 msgid "Open in New Tab"
-msgstr "Відкрити у новій вкладці"
+msgstr "Відкрити у Новій Вкладці"
 
 #: ../src/View/LocationBar.vala:338
 msgid "Open with"
@@ -1645,11 +1645,11 @@ msgstr "Відкрити"
 
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
-msgstr "Відкрити у новій в_кладці"
+msgstr "Відкрити у Новій В_кладці"
 
 #: ../src/View/Sidebar.vala:1198
 msgid "Open in New _Window"
-msgstr "Відкрити у новому _вікні"
+msgstr "Відкрити у Новому _Вікні"
 
 #: ../src/View/Sidebar.vala:1206
 msgid "Remove"
@@ -1757,7 +1757,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Відкрити у"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
@@ -1911,15 +1911,15 @@ msgstr "Відкрити за допомогою:"
 
 #: ../src/View/PropertiesWindow.vala:620
 msgid "Usage:"
-msgstr "Використання:"
+msgstr "Пам’ять:"
 
 #: ../src/View/PropertiesWindow.vala:625
 msgid "Device usage:"
-msgstr "Використання пристрою:"
+msgstr "Використання пам’яті:"
 
 #: ../src/View/PropertiesWindow.vala:632
 msgid "%s free of %s (%d%% used)"
-msgstr "%s із %s вільно (%d%% використано)"
+msgstr "%s із %s вільно (%d%% зайнято)"
 
 #: ../src/View/PropertiesWindow.vala:771
 msgid "Read"
@@ -1989,7 +1989,7 @@ msgstr "Відкрити адресу(и) в новій вкладці"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr "Нове вікно"
+msgstr "Новому Вікні"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
@@ -2027,15 +2027,15 @@ msgstr "Файловий менеджер"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Нова _вкладка"
+msgstr "Новій В_кладці"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Нове _вікно"
+msgstr "Новому _Вікні"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr "Нове вікно від імені адміністратора"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
@@ -2124,7 +2124,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Новій Вкладці"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"

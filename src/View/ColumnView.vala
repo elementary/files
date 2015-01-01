@@ -77,6 +77,27 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
+        protected override bool on_view_key_press_event (Gdk.EventKey event) {
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool no_mods = (mods == 0);
+
+            switch (event.keyval) {
+                /* Do not emit alert sound on left and right cursor keys in Miller View */
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+                    if (no_mods)
+                        return true;
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            return base.on_view_key_press_event (event);
+        }
+
+
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
             /* Invoke default handler unless waiting for a double-click in single-click mode */
             if (Preferences.settings.get_boolean ("single-click") && awaiting_double_click) {
