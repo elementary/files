@@ -8,180 +8,182 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-07-17 05:10+0000\n"
-"Last-Translator: Marko Mancev <marko.manchev@gmail.com>\n"
+"PO-Revision-Date: 2015-01-03 00:09+0000\n"
+"Last-Translator: Bojan Karkalasev <bojankarkalasev@gmail.com>\n"
 "Language-Team: Macedonian <mk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:00+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2015-01-03 05:59+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Таблата со исечоци е празна, вметнувањето не е можно"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "Јавен FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (со најава)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Протокол)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "Windows споделување"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Безбеден WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "Се поврзувам..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Не можам да ја вчитам листата на поддржани методи.\n"
+"Проверете ја Вашата gvfs инсталација."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Папката „%s“ не може да се отвори со „%s“."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Не можам да го пронајдам серверот на „%s“."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "Обиди се повторно"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Проверете ги Вашите кориснички податоци"
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "Продолжи"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr ""
+msgstr "П_оврзи се"
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr ""
+msgstr "Поврзи се со сервер"
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr ""
+msgstr "Детали за серверот"
 
 #: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr ""
+msgstr "_Сервер:"
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr ""
+msgstr "_Порта:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr ""
+msgstr "_Тип:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr ""
+msgstr "Сп_одели:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr ""
+msgstr "_Папка:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr ""
+msgstr "Детали за корисникот"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Име на домеин:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr ""
+msgstr "_Корисничко име:"
 
 #: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr ""
+msgstr "Лози_нка:"
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Запамти ја оваа лозинка"
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Операцијата е откажана"
 
 #: ../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Избриши %d копирани датотеки"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #: ../libcore/marlin-undostack-manager.c:1215
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Избриши '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Избриши %d дуплицирани датотеки"
 
 #: ../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Врати %d датотеки назад во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Врати '%s' датотеки назад во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Преименувај '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1255
 #: ../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Врати %d датотеки од канта за отпадоци"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Врати '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1274
 #, c-format
@@ -231,52 +233,52 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Копирај '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Дуплицирај %d датотеки во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Дуплицирај '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Премести %d датотеки во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Премести '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Направи нова датотека '%s' од темплејт "
 
 #: ../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Направи празна датотека '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Направи нова папка '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Премести %d датотеки во канта за отпадоци"
 
 #: ../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Премести '%s' во канта за отпадоци"
 
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
