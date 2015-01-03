@@ -432,7 +432,8 @@ namespace Marlin.View
             view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
             items = n_matches (out headers);
 
-            var height = (items + headers) * (cell_height + separator_height) + separator_height;
+            int total = int.max ((items + headers), 2);
+            var height = total * (cell_height + separator_height);
 
             if (x < workarea.x)
                 x = workarea.x;
