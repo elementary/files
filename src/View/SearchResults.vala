@@ -255,6 +255,8 @@ namespace Marlin.View
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
+                    current_operation.cancel ();
+                    file_search_operation.cancel ();
                     accept ();
                     return true;
                 case Gdk.Key.Up:
@@ -646,8 +648,10 @@ namespace Marlin.View
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
                 device = device.associated_device;
 
-            if (!current_operation.is_cancelled ())
+            if (!current_operation.is_cancelled ()) {
                 current_operation.cancel ();
+                file_search_operation.cancel ();
+            }
 
             if (adding_timeout != 0) {
                 Source.remove (adding_timeout);
