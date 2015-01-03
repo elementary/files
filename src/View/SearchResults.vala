@@ -255,8 +255,6 @@ namespace Marlin.View
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
-                    current_operation.cancel ();
-                    file_search_operation.cancel ();
                     accept ();
                     return true;
                 case Gdk.Key.Up:
@@ -339,9 +337,7 @@ namespace Marlin.View
         void select_adjacent (bool up)
         {
             File? file = null;
-            Gtk.TreeIter? iter = null;
-            Gtk.TreeIter? parent = null;
-
+            Gtk.TreeIter iter, parent;
             get_iter_at_cursor (out iter);
 
             var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
@@ -432,8 +428,7 @@ namespace Marlin.View
             view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
             items = n_matches (out headers);
 
-            int total = int.max ((items + headers), 2);
-            var height = total * (cell_height + separator_height);
+            var height = (items + headers) * (cell_height + separator_height) + separator_height;
 
             if (x < workarea.x)
                 x = workarea.x;
@@ -451,21 +446,18 @@ namespace Marlin.View
             resize (width_request, height_request);
         }
 
-        void get_iter_at_cursor (out Gtk.TreeIter? iter)
+        void get_iter_at_cursor (out Gtk.TreeIter iter)
         {
             Gtk.TreePath? path = null;
-            Gtk.TreeIter? filter_iter = null;
+            Gtk.TreeIter filter_iter = Gtk.TreeIter ();
+            iter = Gtk.TreeIter ();
 
-            iter = null;
             view.get_cursor (out path, null);
 
             if (path == null)
                 return;
 
             filter.get_iter (out filter_iter, path);
-
-            if (filter_iter == null)
-                return;
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
         }
@@ -598,7 +590,16 @@ namespace Marlin.View
 
         void accept (Gtk.TreeIter? accepted = null)
         {
-            File? file = get_file_at_iter (accepted);
+            if (list_empty ()) {
+                Gdk.beep ();
+                return;
+            }
+
+            if (accepted == null)
+                get_iter_at_cursor (out accepted);
+
+            File? file = null;
+            list.@get (accepted, 3, out file);
 
             if (file == null) {
                 Gdk.beep ();
@@ -612,18 +613,12 @@ namespace Marlin.View
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
         {
-            if (list_empty ()) {
-                Gdk.beep ();
-                return null;
+            if (iter == null) {
+                get_iter_at_cursor (out iter);
             }
 
             File? file = null;
-            if (iter == null) {
-                Gtk.TreeIter? iter2 = null;
-                get_iter_at_cursor (out iter2);
-                iter = iter2;
-                list.@get (iter2, 3, out file);
-            } else
+            if (iter != null)
                 list.@get (iter, 3, out file);
 
             return file;
@@ -649,10 +644,8 @@ namespace Marlin.View
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
                 device = device.associated_device;
 
-            if (!current_operation.is_cancelled ()) {
+            if (!current_operation.is_cancelled ())
                 current_operation.cancel ();
-                file_search_operation.cancel ();
-            }
 
             if (adding_timeout != 0) {
                 Source.remove (adding_timeout);
