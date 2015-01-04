@@ -199,7 +199,7 @@ namespace FM {
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
-        private bool selection_was_removed = false;
+        private bool can_trash_or_delete = true;
 
         /* Rapid keyboard paste support */
         protected bool pasting_files = false;
@@ -792,7 +792,10 @@ namespace FM {
             unselect_all ();
             select_gof_file (file_to_rename);
 
-            if (file_to_rename.is_writable ())
+            /* Assume writability on remote locations
+             * TODO Reliably determine writability with various remote protocols.
+             */
+            if (file_to_rename.is_writable () || !slot.directory.is_local)
                 start_renaming_file (file_to_rename, false);
             else
                 warning ("You do not have permission to rename this file");
@@ -806,11 +809,19 @@ namespace FM {
 
             var view = (FM.AbstractDirectoryView)data;
             var file_to_rename = GOF.File.@get (new_file);
-            /* Allow time for the file to appear in the tree model before renaming */
-            GLib.Timeout.add (50, () => {
+            bool local = view.slot.directory.is_local;
+            if (!local)
+                view.slot.directory.need_reload ();
+
+            /* Allow time for the file to appear in the tree model before renaming
+             * Wait longer for remote locations to allow for reload
+             */
+            int delay = local ? 50 : 500;
+            GLib.Timeout.add (delay, () => {
                 view.rename_file (file_to_rename);
                 return false;
             });
+
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -819,9 +830,9 @@ namespace FM {
             var view = data as FM.AbstractDirectoryView;
             assert (view is FM.AbstractDirectoryView);
 
-            if (user_cancel)
-                view.selection_was_removed = false;
-            else if (!view.slot.directory.is_local)
+            view.can_trash_or_delete = true;
+
+            if (!view.slot.directory.is_local)
                 view.slot.directory.need_reload ();
         }
 
@@ -830,18 +841,18 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            if (selection_was_removed)
+            if (!can_trash_or_delete)
                 return;
 
             unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
+                can_trash_or_delete = false;
                 trash_or_delete_files (selection, true, delete_immediately);
-                selection_was_removed = true;
             }
         }
 
         private void delete_selected_files () {
-             unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
             if (selection == null)
                 return;
 
@@ -2476,6 +2487,8 @@ namespace FM {
                 name_renderer.editable = false;
                 unfreeze_updates ();
                 grab_focus ();
+                if (!slot.directory.is_local)
+                    slot.directory.need_reload ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {

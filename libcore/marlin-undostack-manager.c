@@ -828,7 +828,6 @@ marlin_undo_manager_get_file_modification_time (GFile *file)
 {
     GFileInfo *info;
     guint64 mtime;
-
     info = g_file_query_info (file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
                               G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, FALSE, NULL);
     if (info == NULL) {

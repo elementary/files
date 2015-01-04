@@ -58,6 +58,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
+        public uint window_number;
 
         public void set_can_go_forward (bool can) {
            top_menu.set_can_go_forward (can);
@@ -73,6 +74,7 @@ namespace Marlin.View {
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
+        public signal void tab_reloaded (GLib.File location);
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -86,7 +88,7 @@ namespace Marlin.View {
 
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
-            var window_number = app.window_count;
+            window_number = app.window_count;
             application = app;
             screen = myscreen;
             is_first_window = (window_number == 0);

@@ -1366,16 +1366,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             return 0;
 
         uint64 file_size = gof.size;
-        try {
-            var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
-            uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
-            // Check for sparse file, allocated size will be smaller, for normal files allocated size
-            // includes overhead size so we don't use it for those here
-            if (allocated_size < file_size && !gof.is_directory)
-                file_size = allocated_size;
-        } catch (Error err) {
-            warning ("%s", err.message);
-            gof.is_connected = false;
+        if (gof.location is GLib.File) {
+            try {
+                var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
+                uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
+                // Check for sparse file, allocated size will be smaller, for normal files allocated size
+                // includes overhead size so we don't use it for those here
+                if (allocated_size < file_size && !gof.is_directory)
+                    file_size = allocated_size;
+            } catch (Error err) {
+                warning ("%s", err.message);
+                gof.is_connected = false;
+            }
         }
         return file_size;
     }

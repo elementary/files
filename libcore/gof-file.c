@@ -243,12 +243,18 @@ gof_file_is_root_network_folder (GOFFile *file)
 gboolean
 gof_file_is_network_uri_scheme (GOFFile *file)
 {
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
     return g_file_has_uri_scheme (file->location, "network");
 }
 
 gboolean
 gof_file_is_smb_uri_scheme (GOFFile *file)
 {
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
     return g_file_has_uri_scheme (file->location, "smb");
 }
 
@@ -256,6 +262,8 @@ gboolean
 gof_file_is_other_uri_scheme (GOFFile *file)
 {
     GFile *loc = file->location;
+    if (!G_IS_FILE (file->location))
+        return TRUE;
 
     gboolean res;
 
@@ -772,6 +780,8 @@ gof_file_query_info (GOFFile *file)
     GFileInfo *info = NULL;
     GError *err = NULL;
 
+    g_return_val_if_fail (G_IS_FILE (file->location), NULL);
+
     info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
     if (err != NULL) {
@@ -914,10 +924,8 @@ static void gof_file_finalize (GObject* obj) {
 #endif
 
     g_clear_object (&file->info);
-    if (file->location)
-        g_object_unref (file->location);
-    if (file->directory)
-        g_object_unref (file->directory);
+    _g_object_unref0 (file->location);
+    _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
@@ -925,8 +933,7 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0(file->format_size);
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
-    if (file->pix)
-        g_object_unref (file->pix);
+    _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
 
     _g_free0 (file->custom_display_name);

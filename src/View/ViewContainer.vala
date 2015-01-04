@@ -412,12 +412,19 @@ namespace Marlin.View {
             return path;
         }
 
-        public void reload () {
+        public void reload (bool propagate = true) {
             /* Allow time for the signal to propagate and the tab label to redraw */
             Idle.add (() => {
                 var slot = view.get_current_slot ();
                 slot.reload ();
                 load_slot_directory (slot);
+                /* For remote folders, make sure any other windows showing the same folder are
+                 * also refreshed. Prevent infinite loop with propagate - when called from application,
+                 * propagate will be false.
+                 */   
+                if (propagate)
+                    ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
+
                 return false;
             });
         }

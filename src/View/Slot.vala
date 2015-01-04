@@ -111,7 +111,9 @@ namespace Marlin.View {
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                 directory.track_longest_name = true;
 
-            directory.need_reload.connect (ctab.reload);
+            directory.need_reload.connect (() => {
+                ctab.reload ();
+            });
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {

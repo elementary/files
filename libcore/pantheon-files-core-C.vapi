@@ -242,6 +242,7 @@ namespace GOF {
         public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
+        public GLib.File target_location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.List<string>? emblems_list;
