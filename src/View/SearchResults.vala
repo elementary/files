@@ -231,8 +231,18 @@ namespace Marlin.View
 
         bool entry_key_press (Gdk.EventKey event)
         {
-            if (!get_mapped ())
+            if (!get_mapped ()) {
+                switch (event.keyval) {
+                    case Gdk.Key.Return:
+                    case Gdk.Key.KP_Enter:
+                    case Gdk.Key.ISO_Enter:
+                        return true;
+
+                    default:
+                        break;
+                }
                 return false;
+            }
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
@@ -278,7 +288,6 @@ namespace Marlin.View
 
                     return true;
             }
-
             return false;
         }
 
