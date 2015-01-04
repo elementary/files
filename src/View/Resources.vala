@@ -87,4 +87,21 @@ namespace Marlin {
                 return protocol;
         }
     }
+
+    public string get_smb_share_from_uri (string uri) {
+        if (!(Uri.parse_scheme (uri) == "smb"))
+            return (uri);
+
+        string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
+
+        if (uri_parts.length < 4)
+            return uri;
+        else {
+            var sb = new StringBuilder ();
+            for (int i = 0; i < 4; i++)
+                sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
+
+            return sb.str;
+        }
+    }
 }

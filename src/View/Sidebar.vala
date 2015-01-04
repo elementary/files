@@ -608,16 +608,23 @@ namespace Marlin.Places {
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
                 var root = mount.get_default_location ();
+                /* get_smb_share_from_uri will return the uri unaltered if does not have
+                 * the smb scheme so we need not test.  This is required because the mount
+                 * does not return the true root location of the share but the location used
+                 * when creating the mount.
+                 */
+                string uri = Marlin.get_smb_share_from_uri (root.get_uri ());
+
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            mount.get_name (),
                            mount.get_icon (),
-                           root.get_uri (),
+                           uri,
                            null,
                            null,
                            mount,
                            0,
-                           root.get_parse_name ());
+                           uri);
             }
 
             /* Add Entire Network BUILTIN */
