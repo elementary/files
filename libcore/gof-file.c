@@ -2430,23 +2430,19 @@ gof_file_is_folder (GOFFile *file)
     if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
         return TRUE;
 
-    if (file->target_location == NULL)
-        return FALSE;
-
     if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
         file->info != NULL &&
         g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
 
         return TRUE;
 
-    if (!file->target_gof || !file->target_gof->is_directory)
-        return FALSE;
+    if (file->target_gof && file->target_gof->is_directory) {
+        /* file->target_gof is directory */
+        if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
+            gof_file_is_network_uri_scheme (file->target_gof))
 
-    /* file->target_gof is directory */
-    if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
-        gof_file_is_network_uri_scheme (file->target_gof))
-
-        return TRUE;
+            return TRUE;
+    }
 
     return FALSE;
 }
