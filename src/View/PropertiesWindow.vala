@@ -267,7 +267,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private void selection_size_update () {
-message ("selection sizr update");
         total_size = 0;
         deep_count_directories = null;
         folder_count = 0;
