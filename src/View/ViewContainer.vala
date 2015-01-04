@@ -265,28 +265,36 @@ namespace Marlin.View {
             tab_name = "-----";
             if (slot_path == null) {
                 string [] uri_parts = loc.get_uri ().split (Path.DIR_SEPARATOR_S);
-                foreach (string s in uri_parts) {
-                    if (s.length >= 1)
-                        tab_name = s;
+                uint index = uri_parts.length - 1;
+                string s;
+                while (index >= 0) {
+                    s = uri_parts [index];
+                    if (s.length >= 1) {
+                        if (index == 0) {
+                            tab_name = Marlin.protocol_to_name (s);
+                        } else
+                            tab_name = s;
+                        break;
+                    }
+                    index--;
                 }
             } else if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (ready && loc.query_exists ()) { /* avoid blocking IO when not ready */
+            else {
                 try {
                     var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
                     tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
                 }
                 catch (GLib.Error e) {
                     warning ("Could not get location display name. %s", e.message);
+                    tab_name = loc.get_basename ();
+                    can_show_folder = false;
                 }
-            } else {
-                tab_name = loc.get_basename ();
-                can_show_folder = false;
             }
 
-            if (tab_name == "----")
+            if (tab_name == "-----")
                 tab_name = loc.get_uri ();
 
             if (Posix.getuid() == 0)
