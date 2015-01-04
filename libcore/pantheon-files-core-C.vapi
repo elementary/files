@@ -138,8 +138,8 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
         public static IconInfo lookup(GLib.Icon icon, int size);
-        public Gdk.Pixbuf get_pixbuf_nodefault();
-        public Gdk.Pixbuf get_pixbuf_at_size(int size);
+        public Gdk.Pixbuf? get_pixbuf_nodefault();
+        public Gdk.Pixbuf? get_pixbuf_at_size(int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
         public static void infos_caches ();
