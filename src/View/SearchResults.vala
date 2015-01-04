@@ -614,6 +614,13 @@ namespace Marlin.View
             }            
 
             File? file = null;
+
+            /* It is important that the next line is not put into an if clause.
+             * For reasons unknown, doing so causes a segmentation fault on some systems but not
+             * others.  Any changes to the format and content of the accept () function should be
+             * carefully checked for stability on a range of systems which differ in architecture,
+             * speed and configuration.
+             */ 
             list.@get (accepted, 3, out file);
 
             if (file == null) {
