@@ -456,7 +456,7 @@ namespace Marlin.View
             resize (width_request, height_request);
         }
 
-        void get_iter_at_cursor (out Gtk.TreeIter iter)
+        bool get_iter_at_cursor (out Gtk.TreeIter iter)
         {
             Gtk.TreePath? path = null;
             Gtk.TreeIter filter_iter = Gtk.TreeIter ();
@@ -464,12 +464,11 @@ namespace Marlin.View
 
             view.get_cursor (out path, null);
 
-            if (path == null)
-                return;
-
-            filter.get_iter (out filter_iter, path);
+            if (path == null || !filter.get_iter (out filter_iter, path))
+                return false;
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
+            return true;
         }
 
         void select_iter (Gtk.TreeIter iter)
@@ -605,8 +604,14 @@ namespace Marlin.View
                 return;
             }
 
+            bool valid_iter = true ;
             if (accepted == null)
-                get_iter_at_cursor (out accepted);
+                valid_iter = get_iter_at_cursor (out accepted);
+
+            if (!valid_iter) {
+                Gdk.beep ();
+                return;
+            }            
 
             File? file = null;
             list.@get (accepted, 3, out file);
