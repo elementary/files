@@ -2013,8 +2013,6 @@ static gboolean
 delete_job_done (gpointer user_data)
 {
     DeleteJob *job;
-    GHashTable *debuting_uris;
-
     job = user_data;
 
     g_list_free_full (job->files, g_object_unref);
@@ -2113,6 +2111,7 @@ delete_job (GIOSchedulerJob *io_job,
                                                delete_job_done,
                                                job,
                                                NULL);
+
 
     return FALSE;
 }
@@ -5924,28 +5923,16 @@ location_list_from_uri_list (const GList *uris)
 }
 #endif
 
-typedef struct {
-    MarlinCopyCallback real_callback;
-    gpointer real_data;
-} MoveTrashCBData;
-
-static void
-callback_for_move_to_trash (GHashTable *debuting_uris,
-                            gboolean user_cancelled,
-                            MoveTrashCBData *data)
-{
-    if (data->real_callback)
-        data->real_callback (debuting_uris, data->real_data);
-    g_slice_free (MoveTrashCBData, data);
-}
-
+/** The done_callback function has a variable signature. When the file is being moved to
+ * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
+ */ 
 void
 marlin_file_operations_copy_move   (GList                  *files,
                                     GArray                 *relative_item_points,
                                     GFile                  *target_dir,
                                     GdkDragAction          copy_action,
                                     GtkWidget              *parent_view,
-                                    MarlinCopyCallback     done_callback,
+                                    gpointer               done_callback,
                                     gpointer               done_callback_data)
 {
     GList *p;
@@ -5980,6 +5967,7 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
+        /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||
             (src_dir != NULL &&
@@ -5987,13 +5975,15 @@ marlin_file_operations_copy_move   (GList                  *files,
             marlin_file_operations_duplicate (files,
                                               relative_item_points,
                                               parent_window,
-                                              done_callback, done_callback_data);
+                                              (MarlinCopyCallback)done_callback,
+                                              done_callback_data);
         } else {
             marlin_file_operations_copy (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         done_callback, done_callback_data);
+                                         (MarlinCopyCallback)done_callback,
+                                         done_callback_data);
         }
         if (src_dir) {
             g_object_unref (src_dir);
@@ -6001,28 +5991,28 @@ marlin_file_operations_copy_move   (GList                  *files,
 
     } else if (copy_action == GDK_ACTION_MOVE) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
-            MoveTrashCBData *cb_data;
+            /* done_callback is (or should be) a DeleteCallBack or null in this case */
 
-            cb_data = g_slice_new0 (MoveTrashCBData);
-            cb_data->real_callback = done_callback;
-            cb_data->real_data = done_callback_data;
             marlin_file_operations_trash_or_delete (files,
                                                     parent_window,
-                                                    (MarlinDeleteCallback) callback_for_move_to_trash,
-                                                    cb_data);
+                                                    (MarlinDeleteCallback)done_callback,
+                                                    done_callback_data);
         } else {
+            /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         done_callback, done_callback_data);
+                                         (MarlinCopyCallback)done_callback,
+                                         done_callback_data);
         }
     } else {
         marlin_file_operations_link (files,
                                      relative_item_points,
                                      target_dir,
                                      parent_window,
-                                     done_callback, done_callback_data);
+                                    (MarlinCopyCallback)done_callback,
+                                     done_callback_data);
     }
 }
 
