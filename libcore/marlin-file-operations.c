@@ -2316,6 +2316,9 @@ get_trash_dirs_for_mount (GMount *mount)
     char *relpath;
     GList *list;
 
+    if (mount == NULL)
+        return NULL;
+
     root = g_mount_get_root (mount);
     if (root == NULL) {
         return NULL;
