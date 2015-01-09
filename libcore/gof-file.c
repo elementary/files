@@ -205,24 +205,49 @@ gof_file_is_mountable (GOFFile *file) {
     return g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE;
 }
 
-static gboolean
+guint
+get_number_of_uri_parts (GOFFile *file) {
+    const char *target_uri = NULL;
+    if (file->info != NULL)
+        target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+    if (target_uri == NULL)
+        target_uri = file->uri;
+
+    gchar **split = g_strsplit (target_uri, "/", 6);
+    guint i, count;
+    count = 0;
+    for (i = 0; i < g_strv_length (split); i++) {
+        if (split [i][0] != NULL) {
+            count++;
+        }
+    }
+    g_strfreev (split);
+    return count;
+}
+
+gboolean
 gof_file_is_smb_share (GOFFile *file)
 {
     gboolean res;
 
     res = FALSE;
 
-    if (gof_file_is_smb_uri_scheme (file)) {
-        const char *target_uri = NULL;
-        if (file->info != NULL)
-            target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
+        res = get_number_of_uri_parts (file) == 3;
+    }
+    return res;
+}
 
-        if (target_uri == NULL)
-            target_uri = file->uri;
+gboolean
+gof_file_is_smb_server (GOFFile *file)
+{
+    gboolean res;
 
-        gchar **split = g_strsplit (target_uri, "/", 6);
-        res = (g_strv_length (split) < 5);
-        g_strfreev (split);
+    res = FALSE;
+
+    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
+        res = get_number_of_uri_parts (file) == 2;
     }
     return res;
 }

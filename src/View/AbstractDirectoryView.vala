@@ -1891,7 +1891,11 @@ namespace FM {
 
             /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
              * because remote file bookmarks do not work correctly for unmounted locations */
-            bool can_bookmark = (!more_than_one_selected || single_folder) && (!file.is_mountable () || file.is_mounted);
+            bool can_bookmark = (!more_than_one_selected || single_folder) &&
+                                 (slot.directory.is_local ||
+                                 (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
+                                 file.is_smb_server ());
+
             action_set_enabled (common_actions, "bookmark", can_bookmark);
         }
 

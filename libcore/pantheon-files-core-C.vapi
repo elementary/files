@@ -272,6 +272,8 @@ namespace GOF {
         public bool is_executable ();
         public bool is_mountable ();
         public bool link_known_target;
+        public bool is_smb_share ();
+        public bool is_smb_server ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
