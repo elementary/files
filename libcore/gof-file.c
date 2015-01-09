@@ -684,6 +684,10 @@ void gof_file_update_emblem (GOFFile *file)
     if (gof_file_is_other_uri_scheme (file) || gof_file_is_network_uri_scheme (file))
         return;
 
+    /* Do not try to add emblems to smb shares either */
+    if (gof_file_is_smb_share (file))
+        return;
+
     /* erase previous stored emblems */
     if (file->emblems_list != NULL) {
         g_list_free (file->emblems_list);
