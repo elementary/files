@@ -62,6 +62,10 @@ namespace Marlin.View {
             make_view ();
         }
 
+        ~Slot () {
+            debug ("Slot destruct");
+        }
+
         private void connect_slot_signals () {
             active.connect (() => {
                 if (is_active)
