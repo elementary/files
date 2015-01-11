@@ -23,8 +23,8 @@ Standards-Version: 3.9.5
 
 Package: pantheon-files
 Architecture: any
-Depends: tumbler, ${misc:Depends}, ${shlibs:Depends}
-Recommends: contractor
+Depends: gvfs, tumbler, ${misc:Depends}, ${shlibs:Depends}
+Recommends: contractor, gvfs-backends
 Suggests: tumbler-plugins-extra
 Description: File manager for the Pantheon desktop
  TODO
