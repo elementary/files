@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-12-02 17:34+0000\n"
-"Last-Translator: Andrzej Markiewicz <sowizz@gmail.com>\n"
+"PO-Revision-Date: 2015-01-05 17:41+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2014-12-03 06:42+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2015-01-06 07:00+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 "Language: pl\n"
 
 #: ../src/marlin-clipboard-manager.c:369
@@ -1743,7 +1743,7 @@ msgstr "Następny"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Błąd podglądu"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
@@ -1759,23 +1759,23 @@ msgstr "Nie można upuścić tego pliku"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Podano nieprawidłową nazwę pliku"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Niewłaściwy"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Uruchom"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Otwórz w %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Otwórz w"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
@@ -1783,7 +1783,7 @@ msgstr "Inny program"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Nienazwany %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
@@ -1861,11 +1861,11 @@ msgstr "Zamknij"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "plik"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "pliki"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
@@ -1877,7 +1877,7 @@ msgstr "nie można odczytać ze względu na uprawnienia lub inne błędy"
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "nieznany"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1975,23 +1975,23 @@ msgstr "Ten katalog jest pusty"
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Odmowa dostępu"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Nie udało się uruchomić \"%s\""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Przenieś tutaj"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopiuj tutaj"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Utwórz dowiązanie tutaj"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2118,51 +2118,51 @@ msgstr "Przywróć z kosza"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Usuń trwale"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Przenieś do kosza"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Nowy"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Katalog"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Pusty plik"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Pokaż ukryte pliki"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Nowa karta"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Zakładka"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Wklej"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Wytnij"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Kopiuj"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
@@ -2170,16 +2170,16 @@ msgstr "Wklej do folderu"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Sortuj według"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Nazwy"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Daty"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Odwrócona kolejność"
