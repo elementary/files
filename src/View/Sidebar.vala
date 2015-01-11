@@ -1584,6 +1584,9 @@ namespace Marlin.Places {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
                 return true;
 
+            if (renaming)
+                return true;
+
             int tx, ty;
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
 
