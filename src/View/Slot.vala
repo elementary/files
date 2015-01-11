@@ -75,6 +75,10 @@ namespace Marlin.View {
             inactive.connect (() => {
                 is_active = false;
             });
+
+            folder_deleted.connect ((file, dir) => {
+               ((Marlin.Application)(window.application)).folder_deleted (file.location);
+            });
         }
 
         private void connect_dir_view_signals () {

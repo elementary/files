@@ -340,7 +340,7 @@ namespace Marlin.Places {
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_spinner_cell_renderer.icon_size = stock_size;
 
-            Gdk.Pixbuf pixbuf = null;
+            Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
                 var icon_info = Marlin.IconInfo.lookup (icon, icon_size);
@@ -1521,12 +1521,6 @@ namespace Marlin.Places {
             if (event.keyval == Gdk.Key.Down
              && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
                 return eject_or_unmount_selection ();
-
-            if ((event.keyval == Gdk.Key.Delete || event.keyval == Gdk.Key.KP_Delete)
-             && (event.state & modifiers) == 0) {
-                remove_selected_bookmarks ();
-                return true;
-            }
 
             if (event.keyval == Gdk.Key.F2 && (event.state & modifiers) == 0) {
                 rename_selected_bookmark ();

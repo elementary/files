@@ -158,16 +158,21 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         header_box.margin_bottom = 15;
         header_box.margin_left = header_box.margin_right = 10;
 
-        /* Static Notebook */
-        var notebook = new Granite.Widgets.StaticNotebook ();
-        notebook.margin_bottom = 15;
-        content_vbox.pack_start (notebook, true, true, 0);
+        /* Stack */
+        var stack_switcher = new Gtk.StackSwitcher ();
+        content_vbox.pack_start (stack_switcher, false, false, 5);
+        stack_switcher.halign = Gtk.Align.CENTER;
+
+        var stack = new Gtk.Stack ();
+        stack.margin_bottom = 15;
+        stack_switcher.stack = stack;        
+        content_vbox.pack_start (stack, true, true, 0);
 
         /* Info */
         if (info.size > 0) {
             var info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             construct_info_panel (info_vbox, info);
-            add_section (notebook, _("General"), PanelType.INFO, info_vbox);
+            add_section (stack, _("General"), PanelType.INFO, info_vbox);
         }
 
         /* Permissions */
@@ -175,7 +180,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             var perm_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             construct_perm_panel (perm_vbox);
-            add_section (notebook, _("More"), PanelType.PERMISSIONS, perm_vbox);
+            add_section (stack, _("More"), PanelType.PERMISSIONS, perm_vbox);
             if (!goffile.can_set_permissions ()) {
                 foreach (var widget in perm_vbox.get_children ())
                     widget.set_sensitive (false);
@@ -194,7 +199,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
             construct_preview_panel (preview_box, small_preview);
-            add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
+            add_section (stack, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
         content_vbox.show ();
@@ -435,12 +440,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         vbox.pack_start (content, false, false, 0);
     }
 
-    private void add_section (Granite.Widgets.StaticNotebook notebook, string title, PanelType type, Gtk.Box content) {
+    private void add_section (Gtk.Stack stack, string title, PanelType type, Gtk.Box content) {
         if (content != null) {
             content.set_border_width (5);
             content.margin_right = 15;
             content.margin_left = 0;
-            notebook.append_page(content, new Gtk.Label (title));
+            stack.add_titled(content, type.to_string (), title);
         }
     }
 

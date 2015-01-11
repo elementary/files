@@ -231,8 +231,18 @@ namespace Marlin.View
 
         bool entry_key_press (Gdk.EventKey event)
         {
-            if (!get_mapped ())
+            if (!get_mapped ()) {
+                switch (event.keyval) {
+                    case Gdk.Key.Return:
+                    case Gdk.Key.KP_Enter:
+                    case Gdk.Key.ISO_Enter:
+                        return true;
+
+                    default:
+                        break;
+                }
                 return false;
+            }
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
@@ -278,7 +288,6 @@ namespace Marlin.View
 
                     return true;
             }
-
             return false;
         }
 
@@ -428,7 +437,8 @@ namespace Marlin.View
             view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
             items = n_matches (out headers);
 
-            var height = (items + headers) * (cell_height + separator_height) + separator_height;
+            int total = int.max ((items + headers), 2);
+            var height = total * (cell_height + separator_height);
 
             if (x < workarea.x)
                 x = workarea.x;
@@ -446,19 +456,19 @@ namespace Marlin.View
             resize (width_request, height_request);
         }
 
-        void get_iter_at_cursor (out Gtk.TreeIter iter)
+        bool get_iter_at_cursor (out Gtk.TreeIter iter)
         {
-            Gtk.TreePath path;
-            Gtk.TreeIter filter_iter;
+            Gtk.TreePath? path = null;
+            Gtk.TreeIter filter_iter = Gtk.TreeIter ();
+            iter = Gtk.TreeIter ();
 
             view.get_cursor (out path, null);
 
-            if (path == null)
-                return;
-
-            filter.get_iter (out filter_iter, path);
+            if (path == null || !filter.get_iter (out filter_iter, path))
+                return false;
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
+            return true;
         }
 
         void select_iter (Gtk.TreeIter iter)
@@ -594,10 +604,23 @@ namespace Marlin.View
                 return;
             }
 
+            bool valid_iter = true ;
             if (accepted == null)
-                get_iter_at_cursor (out accepted);
+                valid_iter = get_iter_at_cursor (out accepted);
+
+            if (!valid_iter) {
+                Gdk.beep ();
+                return;
+            }            
 
             File? file = null;
+
+            /* It is important that the next line is not put into an if clause.
+             * For reasons unknown, doing so causes a segmentation fault on some systems but not
+             * others.  Any changes to the format and content of the accept () function should be
+             * carefully checked for stability on a range of systems which differ in architecture,
+             * speed and configuration.
+             */ 
             list.@get (accepted, 3, out file);
 
             if (file == null) {

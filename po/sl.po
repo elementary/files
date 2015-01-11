@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-07-17 04:58+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2014-12-25 10:53+0000\n"
+"Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:01+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-26 06:14+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
+"Language: sl\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -37,7 +38,7 @@ msgstr "FTP (s prijavo)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -606,19 +607,19 @@ msgstr "Pokaži več _podrobnosti"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Danes ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Včeraj ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y ob %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -1082,50 +1083,57 @@ msgstr[3] "%'d preostale datoteke za premikanje v smeti"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Ni mogoče premakniti datoteke v smeti oz. je izbrisati"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Datotek na datotečnem sistemu samo za branje ni mogoče premakniti v smeti."
 
 #: ../libcore/marlin-file-operations.c:1934
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
+msgstr "Datotek v mapah za katere nimate privilegijev ni mogoče izbrisati."
 
 #: ../libcore/marlin-file-operations.c:1937
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "Map za katere nimate privilegijev ni mogoče izbrisati."
 
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Datoteke ni mogoče premakniti v smeti. Ali jo želite takoj izbrisati?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Te datoteke ni bilo mogoče premakniti v smeti. Spodaj je več informacij."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Datoteke ni mogoče premakniti v smeti. Ali jo želite izbrisati?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Te datoteke ni bilo mogoče premakniti v smeti. Verjetno je tudi ne boste "
+"mogli izbrisati."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Brisanje datoteko trajno odstrani."
 
 #: ../libcore/marlin-file-operations.c:2143
 msgid "Trashing Files"
@@ -1435,12 +1443,12 @@ msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %F."
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Pri kopiranju \"%s\" je prišlo do napake."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "Pri kopiranju v \"%s\" je prišlo do napake."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1462,7 +1470,7 @@ msgstr[3] "Pripravljanje na premikanje %'d datotek"
 #: ../libcore/marlin-file-operations.c:5088
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Pri premikanju \"%F\" je prišlo do napake."
 
 #: ../libcore/marlin-file-operations.c:5089
 #, c-format
@@ -1567,19 +1575,19 @@ msgstr "Spremenjeno"
 
 #: ../src/View/LocationBar.vala:132
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: ../src/View/LocationBar.vala:133
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../src/View/LocationBar.vala:134
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../src/View/LocationBar.vala:135
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../src/View/LocationBar.vala:136 ../src/View/Sidebar.vala:562
 msgid "Network"
@@ -1587,11 +1595,11 @@ msgstr "Omrežje"
 
 #: ../src/View/LocationBar.vala:137
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../src/View/LocationBar.vala:138
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: ../src/View/LocationBar.vala:139 ../src/View/Sidebar.vala:429
 msgid "Trash"
@@ -1603,27 +1611,27 @@ msgstr "Odpri v novem zavihku"
 
 #: ../src/View/LocationBar.vala:338
 msgid "Open with"
-msgstr ""
+msgstr "Odpri z"
 
 #: ../src/View/LocationBar.vala:369
 msgid "Other Application .."
-msgstr ""
+msgstr "Drugo aplikacijo..."
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Preprost in zmogljiv upravljalnik datotek"
 
 #: ../src/View/Resources.vala:29
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Prevajalci na Launchpadu"
 
 #: ../src/View/Window.vala:175
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "File ni vaš privzed upravljalnik datotek"
 
 #: ../src/View/Window.vala:181
 msgid "Set as Default"
-msgstr ""
+msgstr "Nastavi kot privzeto"
 
 #: ../src/View/Window.vala:187
 msgid "Ignore"
@@ -1647,7 +1655,7 @@ msgstr "Odpri svojo osebno mapo"
 
 #: ../src/View/Sidebar.vala:436
 msgid "Open the Trash"
-msgstr ""
+msgstr "Odpri smeti"
 
 #: ../src/View/Sidebar.vala:442
 msgid "Devices"
@@ -1659,11 +1667,11 @@ msgstr "Vaši krajevni razdelki in naprave"
 
 #: ../src/View/Sidebar.vala:452 ../src/View/ViewContainer.vala:233
 msgid "File System"
-msgstr "Datotečni Sistem"
+msgstr "Datotečni sistem"
 
 #: ../src/View/Sidebar.vala:459
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Odpri vsebino datotečnega sistema"
 
 #: ../src/View/Sidebar.vala:489 ../src/View/Sidebar.vala:667
 msgid "Mount and open %s"
@@ -1675,7 +1683,7 @@ msgstr "Vaša omrežna mesta"
 
 #: ../src/View/Sidebar.vala:590
 msgid "Entire Network"
-msgstr ""
+msgstr "Celotno omrežje"
 
 #: ../src/View/Sidebar.vala:597
 msgid "Browse the contents of the network"
@@ -1687,7 +1695,7 @@ msgstr "Ni mogoče zagnati %s"
 
 #: ../src/View/Sidebar.vala:1184
 msgid "Open"
-msgstr ""
+msgstr "Odpri"
 
 #: ../src/View/Sidebar.vala:1192
 msgid "Open in New _Tab"
@@ -1703,7 +1711,7 @@ msgstr "Odstrani"
 
 #: ../src/View/Sidebar.vala:1214 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
-msgstr ""
+msgstr "Preimenuj"
 
 #: ../src/View/Sidebar.vala:1223
 msgid "_Mount"
@@ -1719,23 +1727,23 @@ msgstr "I_zvrzi"
 
 #: ../src/View/SearchResults.vala:150
 msgid "In This Folder"
-msgstr ""
+msgstr "V tej mapi"
 
 #: ../src/View/SearchResults.vala:152
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zaznamki"
 
 #: ../src/View/SearchResults.vala:154
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Vsepovsod"
 
 #: ../src/View/SearchResults.vala:156
 msgid "No Results Found"
-msgstr ""
+msgstr "Iskanje ni obrodilo sadov"
 
 #: ../src/View/ViewContainer.vala:244
 msgid "This folder does not exist"
-msgstr ""
+msgstr "Ta mapa ne obstaja"
 
 #: ../src/View/ViewContainer.vala:249
 msgid "(as Administrator)"
@@ -1743,11 +1751,11 @@ msgstr "Kot administrator"
 
 #: ../src/View/ViewContainer.vala:263
 msgid "This does not belong to you."
-msgstr ""
+msgstr "To ne pripada vam."
 
 #: ../src/View/ViewContainer.vala:264
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Nimate dovoljenja za ogled te mape."
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1763,19 +1771,19 @@ msgstr "Pogled v stolpcih"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
-msgstr ""
+msgstr "Naprej"
 
 #: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
-msgstr ""
+msgstr "Nazaj"
 
 #: ../src/View/AbstractDirectoryView.vala:514
 msgid "Failed to preview"
-msgstr ""
+msgstr "Predogleda ni bilo mogoče prikazati"
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
-msgstr ""
+msgstr "Izberite aplikacijo"
 
 #: ../src/View/AbstractDirectoryView.vala:904
 msgid "Set as default"
@@ -1783,71 +1791,71 @@ msgstr "Nastavi kot privzeto"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Datoteke ni mogoče spustiti"
 
 #: ../src/View/AbstractDirectoryView.vala:1328
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Ime datoteke je napačno"
 
 #: ../src/View/AbstractDirectoryView.vala:1645
 msgid "Invalid"
-msgstr ""
+msgstr "Neveljavna"
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Zaženi"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
-msgstr ""
+msgstr "Odpri v %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1663
 msgid "Open in"
-msgstr ""
+msgstr "Odpri v"
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Druga aplikacija"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
-msgstr ""
+msgstr "Neimenovana %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s ni veljavno ime datoteke"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
-msgstr ""
+msgstr "Izbranih %u map"
 
 #: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " in %u drug predmet (%s)"
 
 #: ../src/View/OverlayBar.vala:152 ../src/View/OverlayBar.vala:160
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " in %u drugih predmetov (%s)"
 
 #: ../src/View/OverlayBar.vala:155 ../src/View/OverlayBar.vala:163
 msgid " selected"
-msgstr ""
+msgstr " izbranih"
 
 #: ../src/View/OverlayBar.vala:157
 msgid "%u folder"
-msgstr ""
+msgstr "Izbrana %u mapa"
 
 #: ../src/View/OverlayBar.vala:165
 msgid "%u items selected (%s)"
-msgstr "%u predmetov je izbranih (%s)"
+msgstr "Izbranih %u predmetov (%s)"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Ta mapa ne obstaja."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Mape \"%s\" ni mogoče najti."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -1855,7 +1863,7 @@ msgstr "Ustvari"
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Ustvari mapo \"%s\""
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -1863,6 +1871,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Ni bilo mogoče ustvariti mape\n"
+"\n"
+"%s"
 
 #: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:71
 msgid "Properties"
@@ -1882,31 +1893,31 @@ msgstr "Predogled"
 
 #: ../src/View/PropertiesWindow.vala:180
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "datoteka"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "datoteke"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Dejanska velikost se lahko razlikuje "
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "neznano"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
-msgstr ""
+msgstr "%u izbranih predmetov"
 
 #: ../src/View/PropertiesWindow.vala:455
 msgid "Created"
@@ -1966,7 +1977,7 @@ msgstr "%s prosto od %s (%d%% uporabljeno)"
 
 #: ../src/View/PropertiesWindow.vala:771
 msgid "Read"
-msgstr "Prebrano"
+msgstr "Branje"
 
 #: ../src/View/PropertiesWindow.vala:776
 msgid "Write"
@@ -1992,7 +2003,7 @@ msgstr "Vsi"
 
 #: ../src/View/PropertiesWindow.vala:1274
 msgid "Select an application to open "
-msgstr ""
+msgstr "Izberite aplikacijo za zagon "
 
 #: ../src/View/Slot.vala:36
 msgid "This folder is empty."
@@ -2000,23 +2011,23 @@ msgstr "Ta mapa je prazna."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Dostop zavrnjen"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Ni bilo mogoče zagnati \"%s\""
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Premakni sem"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopiraj sem"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Povezava do sem"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2032,11 +2043,11 @@ msgstr "Odpri uri(je) v novem zavihku"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:58
 msgid "New Window"
-msgstr ""
+msgstr "Novo okno"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
-msgstr ""
+msgstr "Zapri Datoteke."
 
 #: ../src/Application.vala:147
 msgid "Enable debug logging"
@@ -2078,15 +2089,15 @@ msgstr "Novo _okno"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Novo okno kot _Administrator"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "O _Datotekah"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
-msgstr ""
+msgstr "Datoteke"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
@@ -2124,88 +2135,88 @@ msgstr "Pojdi v %s"
 #: ../plugins/network-places/plugin.vala:23
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Poveži se s strežnikom..."
 
 #: ../plugins/network-places/plugin.vala:53
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Poveži se na omrežni datotečni strežnik"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Te predmete je moč izbrisati s praznjenjem smeti"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Izprazni smeti"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Obnovi s smeti"
 
 #: ../src/View/directory_view_popup.ui:9
 msgid "Delete permanently"
-msgstr ""
+msgstr "Trajno izbriši"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Premakni v smeti"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Nova"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Mapa"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Prazna datoteka"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Prikaži skrite datoteke"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Nov zavihek"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Zaznamek"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Prilepi"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Izreži"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Prilepi v mapo"
 
 #: ../src/View/directory_view_popup.ui:107
 msgid "Sort by"
-msgstr ""
+msgstr "Razvrsti po"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Imenu"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"
-msgstr ""
+msgstr "Datumu"
 
 #: ../src/View/directory_view_popup.ui:132
 msgid "Reversed Order"
-msgstr ""
+msgstr "Obratni vrstni red"

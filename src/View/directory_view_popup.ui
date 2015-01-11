@@ -112,12 +112,12 @@
                     <attribute name="target">name</attribute>
                 </item>
                 <item>
-                    <attribute name='label' translatable='yes'>Type</attribute>
+                    <attribute name='label' translatable='yes'>Size</attribute>
                     <attribute name='action'>background.sort_by</attribute>
                     <attribute name="target">size</attribute>
                 </item>
                 <item>
-                    <attribute name='label' translatable='yes'>Size</attribute>
+                    <attribute name='label' translatable='yes'>Type</attribute>
                     <attribute name='action'>background.sort_by</attribute>
                     <attribute name="target">type</attribute>
                 </item>

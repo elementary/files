@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-10-19 14:46+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2014-12-29 18:00+0000\n"
+"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-25 06:59+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2014-12-30 06:18+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1011,7 +1011,7 @@ msgstr[1] "Queden %'d fitxers per moure a la paperera"
 #: ../libcore/marlin-file-operations.c:1933
 #: ../libcore/marlin-file-operations.c:1936
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "No s'ha pogut moure el fitxer a la paperera o suprimir-ho"
 
 #: ../libcore/marlin-file-operations.c:1931
 msgid ""
@@ -1033,16 +1033,20 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1939
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho "
+"immediatament?"
 
 #: ../libcore/marlin-file-operations.c:1940
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Vegeu els detalls a continuació."
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho?"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
@@ -1348,12 +1352,12 @@ msgstr "No s'ha pogut suprimir el fitxer amb el mateix nom a %F."
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "S'ha produït un error en copiar «%s»."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
+msgstr "S'ha produït un error en copiar el fitxer en %s."
 
 #: ../libcore/marlin-file-operations.c:4802
 msgid "Copying Files"
@@ -1684,7 +1688,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:902
 msgid "Select an application"
-msgstr ""
+msgstr "Trieu una aplicació"
 
 #: ../src/View/AbstractDirectoryView.vala:904
 msgid "Set as default"
@@ -1704,7 +1708,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1650
 msgid "Run"
-msgstr ""
+msgstr "Executa"
 
 #: ../src/View/AbstractDirectoryView.vala:1655
 msgid "Open in %s"
@@ -1716,7 +1720,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1709
 msgid "Other Application"
-msgstr ""
+msgstr "Una altra aplicació"
 
 #: ../src/View/AbstractDirectoryView.vala:1933
 msgid "Untitled %s"
@@ -1724,7 +1728,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2374
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s no és un nom de fitxer vàlid"
 
 #: ../src/View/OverlayBar.vala:149
 msgid "%u folders"
@@ -1798,11 +1802,11 @@ msgstr "Tanca"
 
 #: ../src/View/PropertiesWindow.vala:218
 msgid "file"
-msgstr ""
+msgstr "fitxer"
 
 #: ../src/View/PropertiesWindow.vala:220
 msgid "files"
-msgstr ""
+msgstr "fitxers"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual size could be larger, "
@@ -1814,7 +1818,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "unknown"
-msgstr ""
+msgstr "desconegut"
 
 #: ../src/View/PropertiesWindow.vala:357
 msgid "%u selected items"
@@ -1912,23 +1916,23 @@ msgstr "Aquesta carpeta és buida."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "S'ha denegat l'accés"
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "No s'ha pogut executar «%s»"
 
 #: ../src/DndHandler.vala:97
 msgid "Move Here"
-msgstr ""
+msgstr "Mou aquí"
 
 #: ../src/DndHandler.vala:98
 msgid "Copy Here"
-msgstr ""
+msgstr "Copia aquí"
 
 #: ../src/DndHandler.vala:99
 msgid "Link Here"
-msgstr ""
+msgstr "Enllaça aquí"
 
 #: ../src/DndHandler.vala:102
 msgid "Cancel"
@@ -2042,11 +2046,11 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:40
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "És possible suprimir aquests elements en buidar la paperera."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:41
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Buida la paperera"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2058,47 +2062,47 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Mou a la paperera"
 
 #: ../src/View/directory_view_popup.ui:30
 msgid "New"
-msgstr ""
+msgstr "Nou"
 
 #: ../src/View/directory_view_popup.ui:32
 msgid "Folder"
-msgstr ""
+msgstr "Carpeta"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Empty File"
-msgstr ""
+msgstr "Fitxer buit"
 
 #: ../src/View/directory_view_popup.ui:46
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Mostra els fitxers ocults"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "New Tab"
-msgstr ""
+msgstr "Pestanya nova"
 
 #: ../src/View/directory_view_popup.ui:63
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "Bookmark"
-msgstr ""
+msgstr "Afegeix a les adreces d'interès"
 
 #: ../src/View/directory_view_popup.ui:85
 msgid "Paste"
-msgstr ""
+msgstr "Enganxa"
 
 #: ../src/View/directory_view_popup.ui:92
 msgid "Cut"
-msgstr ""
+msgstr "Retalla"
 
 #: ../src/View/directory_view_popup.ui:96
 msgid "Copy"
-msgstr ""
+msgstr "Copia"
 
 #: ../src/View/directory_view_popup.ui:100
 msgid "Paste into Folder"
@@ -2110,7 +2114,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: ../src/View/directory_view_popup.ui:125
 msgid "Date"

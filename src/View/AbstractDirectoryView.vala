@@ -197,12 +197,11 @@ namespace FM {
         private GLib.List<unowned GOF.File>? templates = null;
 
         private GLib.AppInfo default_app;
-        private Gtk.TreePath selection_before_delete;
         private Gtk.TreePath? hover_path = null;
 
         private bool selection_was_removed = false;
         public bool select_added_files = false;
-        protected bool renaming = false;
+        public bool renaming {get; protected set; default = false;}
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
@@ -305,8 +304,6 @@ namespace FM {
             connect_directory_handlers (slot.directory);
 
             model.row_deleted.connect (on_row_deleted);
-            model.row_deleted.connect_after (after_restore_selection);
-
             model.sort_column_changed.connect (on_sort_column_changed);
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
 
@@ -537,11 +534,6 @@ namespace FM {
             select_path (path);
         }
 
-        protected void after_restore_selection (Gtk.TreePath path) {
-            set_cursor (selection_before_delete, false, true, false);
-            selection_before_delete = null;
-        }
-
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (GOF.Directory.Async dir) {
@@ -733,7 +725,9 @@ namespace FM {
                 warning ("Unable to activate this file.  Default app is %s", default_app != null ? default_app.get_name () : "null");
         }
 
-        private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list, bool delete_if_already_in_trash) {
+        private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list,
+                                            bool delete_if_already_in_trash,
+                                            bool delete_immediately) {
             GLib.List<GLib.File> locations = null;
 
             file_list.@foreach ((file) => {
@@ -742,10 +736,16 @@ namespace FM {
 
             if (locations != null) {
                 locations.reverse ();
-                Marlin.FileOperations.trash_or_delete (locations,
-                                                       window as Gtk.Window,
-                                                       (void*) after_trash_or_delete,
-                                                       null);
+                if (delete_immediately)
+                    Marlin.FileOperations.delete (locations,
+                                                           window as Gtk.Window,
+                                                           after_trash_or_delete,
+                                                           this);
+                else
+                    Marlin.FileOperations.trash_or_delete (locations,
+                                                           window as Gtk.Window,
+                                                           after_trash_or_delete,
+                                                           this);
             }
         }
 
@@ -799,39 +799,24 @@ namespace FM {
             });
         }
 
-        private void after_trash_or_delete (GLib.HashTable? debuting_files, bool user_cancel, void* data) {
-            if (user_cancel)
-                selection_was_removed = false;
+        public static void after_trash_or_delete (bool user_cancel, void* callback_data) {
+            FM.AbstractDirectoryView view = (FM.AbstractDirectoryView)callback_data;
+                view.selection_was_removed = false;
         }
 
-        private void trash_or_delete_selected_files () {
+        private void trash_or_delete_selected_files (bool delete_immediately = false) {
         /* This might be rapidly called multiple times for the same selection
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            if (!selection_was_removed) {
-                 unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
-                if (selection != null) {
-                    selection_was_removed = true;
-                    trash_or_delete_files (selection, true);
-                }
-            }
-        }
-
-
-        private void delete_selected_files () {
-             unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
-            if (selection == null)
+            if (selection_was_removed)
                 return;
 
-            GLib.List<GLib.File> locations = null;
-
-            selection.@foreach ((file) => {
-                locations.prepend (file.location);
-            });
-
-            locations.reverse ();
-            Marlin.FileOperations.@delete (locations, window as Gtk.Window, null, null);
+            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            if (selection != null) {
+                trash_or_delete_files (selection, true, delete_immediately);
+                selection_was_removed = true;
+            }
         }
 
 /** Signal Handlers */
@@ -863,11 +848,11 @@ namespace FM {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files ();
+            trash_or_delete_selected_files (false);
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
-            delete_selected_files ();
+            trash_or_delete_selected_files (true);
         }
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1188,24 +1173,7 @@ namespace FM {
 
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
-             GLib.List<Gtk.TreePath>? selected_paths = get_selected_paths ();
-            selection_before_delete = null;
-
-            /* Do nothing if the deleted row is not selected or there is more than one file selected */
-            if (selected_paths == null ||
-                selected_paths.length () != 1 ||
-                selected_paths.find_custom (path, Gtk.TreePath.compare) == null)
-
-                return;
-
-            /* Create a copy the path (we're not allowed to modify it in this handler) */
-            Gtk.TreePath path_copy = path.copy ();
-
-            /* Remember the selected path so that it can be restored after the row has
-             * been removed. If the first row is removed, select the first row after the
-             * removal, if any other row is removed, select the row before that one */
-            path_copy.prev ();
-            selection_before_delete = path_copy.copy ();
+                unselect_all ();
         }
 
 /** Handle clipboard signal */
@@ -1217,8 +1185,6 @@ namespace FM {
 
 /** Handle Selection changes */
         public void notify_selection_changed () {
-            selection_was_removed = false;
-
             if (!get_realized ())
                 return;
 
@@ -2012,13 +1978,11 @@ namespace FM {
 
         protected void block_model () {
             model.row_deleted.disconnect (on_row_deleted);
-            model.row_deleted.disconnect (after_restore_selection);
             updates_frozen = true;
         }
 
         protected void unblock_model () {
             model.row_deleted.connect (on_row_deleted);
-            model.row_deleted.connect (after_restore_selection);
             updates_frozen = false;
         }
 
@@ -2163,7 +2127,10 @@ namespace FM {
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
                     if (no_mods) {
-                        trash_or_delete_selected_files ();
+                        trash_or_delete_selected_files (false);
+                        return true;
+                    } else if (only_shift_pressed) {
+                        trash_or_delete_selected_files (true);
                         return true;
                     }
                     break;
@@ -2215,8 +2182,9 @@ namespace FM {
 
                 case Gdk.Key.v:
                     if (only_control_pressed) {
-                        /* Force attempt to paste - as a fallback will paste into current directory */
+                        /* Will drop any existing selection and paste into current directory */
                         action_set_enabled (common_actions, "paste_into", true);
+                        unselect_all ();
                         common_actions.activate_action ("paste_into", null);
                         update_menu_actions ();
                         return true;
@@ -2616,7 +2584,7 @@ namespace FM {
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             icon_renderer.set_property ("size", icon_size);
-            helpers_shown = (zoom_level >= Marlin.ZoomLevel.SMALL);
+            helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
