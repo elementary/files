@@ -138,7 +138,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
         /* Load reload image */
         try {
-            reload_img = Gtk.IconTheme.get_default ().load_icon ("reload", 16, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+            reload_img = Gtk.IconTheme.get_default ().load_icon ("view-refresh-symbolic", 16, Gtk.IconLookupFlags.GENERIC_FALLBACK);
         } catch (Error err) {
             stderr.printf ("Unable to load reload icon: %s", err.message);
         }
@@ -447,7 +447,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             secondary_icon_tooltip_text = "";
         } else if (!active) {
             secondary_icon_pixbuf = reload_img;
-            secondary_icon_tooltip_text = _("Reload current folder");
+            secondary_icon_tooltip_text = _("Reload this folder");
         } else {
             secondary_icon_pixbuf = arrow_img;
             secondary_icon_tooltip_text = tooltip;
