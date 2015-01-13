@@ -210,7 +210,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public bool on_button_press_event (Gdk.EventButton event) {
-        /* We need to distinguish whether the event comes from on of the icons.
+        /* We need to distinguish whether the event comes from one of the icons.
          * There doesn't seem to be a way of doing this directly so we check the window width */
         if (event.window.get_width () < 24)
             return false;
@@ -253,7 +253,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     public bool on_button_release_event (Gdk.EventButton event) {
-        /* We need to distinguish whether the event comes from on of the icons.
+        /* We need to distinguish whether the event comes from one of the icons.
          * There doesn't seem to be a way of doing this directly so we check the window width */
         if (event.window.get_width () < 24)
             return false;
