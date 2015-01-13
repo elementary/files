@@ -2179,7 +2179,12 @@ namespace FM {
 
                 case Gdk.Key.c:
                     if (only_control_pressed) {
-                        common_actions.activate_action ("copy", null);
+                 /* Should not copy files in the trash - cut instead */
+                        if (slot.directory.location.has_uri_scheme ("trash"))
+                            selection_actions.activate_action ("cut", null);
+                        else
+                            common_actions.activate_action ("copy", null);
+
                         return true;
                     }
                     break;
