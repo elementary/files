@@ -1567,6 +1567,7 @@ gof_file_accepts_drop (GOFFile          *file,
     GFile           *parent_file;
     GList           *lp;
     guint           n;
+    gboolean        trashing;
 
     g_return_val_if_fail (GOF_IS_FILE (file), 0);
     g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), 0);
@@ -1582,15 +1583,19 @@ gof_file_accepts_drop (GOFFile          *file,
     g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
     _g_free0 (uri);
 
+    trashing = gof_file_is_trashed (file);
     /* check if we have a writable directory here or an executable file */
     if (gof_file_is_folder (file) && gof_file_is_writable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
 
-        /* cannot create symbolic links in the trash or copy to the trash */
-        if (gof_file_is_trashed (file))
+        /* cannot create symbolic links in the trash or copy to the trash
+         * and always suggest move */
+        if (trashing) {
+            suggested_action = GDK_ACTION_MOVE;
             actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
+        }
 
         /* check up to 100 of the paths (just in case somebody tries to
          * drag around his music collection with 5000 files).
@@ -1619,8 +1624,16 @@ gof_file_accepts_drop (GOFFile          *file,
             }
 
             /* copy/move/link within the trash not possible */
-            if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
-                return 0;
+            if (G_UNLIKELY (eel_g_file_is_trashed (lp->data))) {
+                if (trashing)
+                    return 0;
+                else {
+                /* cannot copy or link to trashed files */
+                    suggested_action = GDK_ACTION_MOVE;
+                    actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
+                    n = 100;  /* no need to check more files */
+                }
+            }
         }
 
         /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
@@ -1662,8 +1675,7 @@ gof_file_accepts_drop (GOFFile          *file,
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
-    }
-    else
+    } else
         return 0;
 
     /* determine the preferred action based on the context */

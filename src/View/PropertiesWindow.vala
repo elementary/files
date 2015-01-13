@@ -1371,8 +1371,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             if (allocated_size < file_size && !gof.is_directory)
                 file_size = allocated_size;
         } catch (Error err) {
-            warning ("%s", err.message);
-        }
+            debug ("%s", err.message); /* Actual file may have been deleted */
+        } 
         return file_size;
     }
 }

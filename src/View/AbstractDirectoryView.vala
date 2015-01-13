@@ -1258,8 +1258,8 @@ namespace FM {
                              int y,
                              uint timestamp) {
             /* if we don't have drop data already ... */
-            if (!drop_data_ready) {
-                get_drop_data (context, x, y, timestamp);
+            if (!drop_data_ready && !get_drop_data (context, x, y, timestamp)) {
+                return false;
             } else
             /* We have the drop data - check whether we can drop here*/
                 check_destination_actions_and_target_file (context, x, y, timestamp);
@@ -1267,6 +1267,7 @@ namespace FM {
             if (drag_scroll_timer_id == 0)
                 start_drag_scroll_timer (context);
 
+            Gdk.drag_status (context, current_suggested_action, timestamp);
             return true;
         }
 
@@ -1417,7 +1418,7 @@ namespace FM {
             return file;
         }   
 
-        private void get_drop_data (Gdk.DragContext context, int x, int y, uint timestamp) {
+        private bool get_drop_data (Gdk.DragContext context, int x, int y, uint timestamp) {
             Gdk.DragAction action = Gdk.DragAction.DEFAULT;
             Gtk.TargetList? list = null;
             Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
@@ -1450,9 +1451,10 @@ namespace FM {
             } else if (target != Gdk.Atom.NONE)
                 /* request the drag data from the source */
                 Gtk.drag_get_data (get_real_view (), context, target, timestamp); /* emits "drag_data_received" */
+            else
+                return false;
 
-            /* tell Gdk whether we can drop here */
-            Gdk.drag_status (context, action, timestamp);
+            return true;
         }
 
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
@@ -1461,13 +1463,16 @@ namespace FM {
             string uri = file != null ? file.uri : "";
             string current_uri = drop_target_file != null ? drop_target_file.uri : "";
 
+            Gdk.drag_status (context, Gdk.DragAction.MOVE, timestamp);
             if (uri != current_uri) {
                 drop_target_file = file;
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
+
                 if (file != null) {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
                     highlight_drop_file (drop_target_file, current_actions, path);
+
                     if (file.is_folder () && drag_file_list.index (file) == -1) {
                         cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
@@ -1479,7 +1484,6 @@ namespace FM {
                         });
                     }
                 }
-                Gdk.drag_status (context, current_suggested_action, timestamp);
             }
         }
 
@@ -2762,9 +2766,6 @@ namespace FM {
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
         protected abstract void thaw_tree ();
-
-
-        
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
