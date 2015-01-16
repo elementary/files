@@ -343,8 +343,9 @@ namespace Marlin.Places {
             Gdk.Pixbuf pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
-                var icon_info = Marlin.IconInfo.lookup (icon, icon_size);
-                pixbuf = icon_info.get_pixbuf_nodefault ();
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, icon_size);
+                if (icon_info != null)
+                    pixbuf = icon_info.get_pixbuf_nodefault ();
             }
 
             bool show_eject, show_unmount;
