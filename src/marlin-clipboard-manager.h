@@ -30,6 +30,9 @@
 typedef struct _MarlinClipboardManagerClass MarlinClipboardManagerClass;
 typedef struct _MarlinClipboardManager      MarlinClipboardManager;
 
+typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
+                                          gpointer    callback_data);
+
 #define MARLIN_TYPE_CLIPBOARD_MANAGER             (marlin_clipboard_manager_get_type ())
 #define MARLIN_CLIPBOARD_MANAGER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_TYPE_CLIPBOARD_MANAGER, MarlinClipboardManager))
 #define MARLIN_CLIPBOARD_MANAGER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((obj), MARLIN_TYPE_CLIPBOARD_MANAGER, MarlinClipboardManagerClass))
@@ -56,7 +59,7 @@ void                    marlin_clipboard_manager_cut_files       (MarlinClipboar
 void                    marlin_clipboard_manager_paste_files     (MarlinClipboardManager *manager,
                                                                   GFile                  *target_file,
                                                                   GtkWidget              *widget,
-                                                                  GClosure               *new_files_closure);
+                                                                  MarlinCopyCallback     *new_files_closure);
 
 
 #endif /* !__MARLIN_CLIPBOARD_MANAGER_H__ */

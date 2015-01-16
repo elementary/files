@@ -52,8 +52,8 @@ namespace Marlin {
         static void mount_volume (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun);
         static void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
         static void unmount_mount_full (Gtk.Window? parent_window, GLib.Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
-        static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback, void* callback_data);
-        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback, void* callback_data);
+        static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null, void* callback_data = null);
+        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null, void* callback_data = null);
         static bool has_trash_files (GLib.Mount mount);
         static int prompt_empty_trash (Gtk.Window? parent_window);
         static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
@@ -70,8 +70,9 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void CreateCallback (GLib.File new_file, void* callback_data);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
+    public delegate void CopyCallBack (GLib.HashTable<GLib.File, void*> debuting_uris, void* pointer);
+    [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
-
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -136,8 +137,8 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
         public static IconInfo lookup(GLib.Icon icon, int size);
-        public Gdk.Pixbuf get_pixbuf_nodefault();
-        public Gdk.Pixbuf get_pixbuf_at_size(int size);
+        public Gdk.Pixbuf? get_pixbuf_nodefault();
+        public Gdk.Pixbuf? get_pixbuf_at_size(int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
         public static void infos_caches ();

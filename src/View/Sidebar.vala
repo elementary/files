@@ -340,7 +340,7 @@ namespace Marlin.Places {
             Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
             eject_spinner_cell_renderer.icon_size = stock_size;
 
-            Gdk.Pixbuf pixbuf = null;
+            Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
                 Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, icon_size);
@@ -1539,6 +1539,9 @@ namespace Marlin.Places {
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
+            if (renaming)
+                return true;
+
             int tx, ty;
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
@@ -1580,6 +1583,9 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
+                return true;
+
+            if (renaming)
                 return true;
 
             int tx, ty;
