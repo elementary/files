@@ -60,6 +60,7 @@ public class GOF.Directory.Async : Object {
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
+    private bool monitor_blocked = false;
 
     private unowned string gio_attrs {
         get {
@@ -144,6 +145,7 @@ public class GOF.Directory.Async : Object {
 
             try {
                 monitor = location.monitor_directory (0);
+                monitor.rate_limit = 100;
                 monitor.changed.connect (directory_changed);
             } catch (IOError e) {
                 if (!(e is IOError.NOT_MOUNTED)) {
@@ -169,6 +171,20 @@ public class GOF.Directory.Async : Object {
 
             if (!cancellable.is_cancelled ())
                 done_loading ();
+        }
+    }
+
+    public void block_monitor () {
+        if (monitor != null && !monitor_blocked) {
+            monitor_blocked = true;
+            monitor.changed.disconnect (directory_changed);
+        }
+    }
+
+    public void unblock_monitor () {
+        if (monitor != null && monitor_blocked) {
+            monitor_blocked = false;
+            monitor.changed.connect (directory_changed);
         }
     }
 
@@ -333,9 +349,8 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
+        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
-        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -383,6 +398,7 @@ public class GOF.Directory.Async : Object {
     private const uint FCHANGES_MAX = 20;
 
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
+        /* If view is frozen, store events for processing later */
         if (freeze_update) {
             if (list_fchanges_count < FCHANGES_MAX) {
                 var fc = fchanges ();
@@ -391,11 +407,9 @@ public class GOF.Directory.Async : Object {
                 list_fchanges.prepend (fc);
                 list_fchanges_count++;
             }
-
             return;
-        }
-
-        real_directory_changed (_file, other_file, event);
+        } else
+            real_directory_changed (_file, other_file, event);
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {

@@ -1538,6 +1538,9 @@ namespace Marlin.Places {
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
+            if (renaming)
+                return true;
+
             int tx, ty;
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
@@ -1579,6 +1582,9 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
+                return true;
+
+            if (renaming)
                 return true;
 
             int tx, ty;
