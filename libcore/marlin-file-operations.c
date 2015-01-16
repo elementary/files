@@ -4565,8 +4565,9 @@ retry:
             g_error_free (error);
             goto out;
         }
-        primary = f (_("There was an Error while copying \"%s\"."), g_file_get_uri (src));
-        secondary = f (_("There was an error copying the file into %s."), g_file_get_uri (dest_dir));
+
+        primary = f (_("Cannot copy \"%B\" here."), src);
+        secondary = f (_("There was an error copying the file into %B."), dest_dir);
         details = error->message;
 
         response = run_warning (job,
