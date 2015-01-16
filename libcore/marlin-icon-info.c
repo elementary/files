@@ -59,7 +59,7 @@ marlin_icon_info_init (MarlinIconInfo *icon)
 gboolean
 marlin_icon_info_is_fallback (MarlinIconInfo  *icon)
 {
-    return icon->pixbuf == NULL;
+    return icon != NULL ? icon->pixbuf == NULL : FALSE;
 }
 
 static void
