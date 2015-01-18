@@ -82,7 +82,7 @@ namespace Marlin.View.Chrome
             margin_bottom = 4;
             margin_left = 3;
 
-            bread.set_entry_secondary_icon (false);
+            bread.set_entry_secondary_icon (false, true);
             pack_start (bread, true, true, 0);
         }
 

@@ -70,11 +70,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     protected string text_completion = "";
     protected bool multiple_completions = false;
     protected bool text_changed = false;
-    protected bool arrow_hovered = false;
     protected bool ignore_focus_in = false;
     protected bool ignore_change = false;
-    private Gdk.Pixbuf arrow_img;
-    private Gdk.Pixbuf reload_img;
 
     /* if we must display the BreadcrumbsElement which are in  newbreads. */
     bool view_old = false;
@@ -107,6 +104,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     List<IconDirectory?> icons;
 
     string current_path = "";
+    string refresh_tip = _("Reload this folder");
 
     int selected = -1;
     int space_breads = 12;
@@ -129,19 +127,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     construct {
         icon_factory = Granite.Services.IconFactory.get_default ();
         icons = new List<IconDirectory?> ();
-        
-        /* Load arrow image */
-        try {
-            arrow_img = Gtk.IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, Gtk.IconLookupFlags.GENERIC_FALLBACK);
-        } catch (Error err) {
-            stderr.printf ("Unable to load home icon: %s", err.message);
-        }
-        /* Load reload image */
-        try {
-            reload_img = Gtk.IconTheme.get_default ().load_icon ("view-refresh-symbolic", 16, Gtk.IconLookupFlags.GENERIC_FALLBACK);
-        } catch (Error err) {
-            stderr.printf ("Unable to load reload icon: %s", err.message);
-        }
 
         button_context = get_style_context ();
         button_context.add_class ("button");
@@ -170,7 +155,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         button_press_event.connect (on_button_press_event);
         button_release_event.connect (on_button_release_event);
         icon_press.connect (on_icon_press);
-        motion_notify_event.connect (on_motion_notify);
+        motion_notify_event.connect_after (after_motion_notify);
         focus_in_event.connect (on_focus_in);
         focus_out_event.connect (on_focus_out);
         grab_focus.connect_after (on_grab_focus);
@@ -302,19 +287,24 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return;
         }
 
-        set_entry_secondary_icon (true, true, (text.length > 0) ? "Navigate to: " + text : "");
+        set_entry_secondary_icon (true, true);
         text_completion = "";
         need_completion ();
     }
     
-    bool on_motion_notify (Gdk.EventMotion event) {
+    bool after_motion_notify (Gdk.EventMotion event) {
+
+        if (is_focus)
+            return false;
+
         int x = (int) event.x;
         double x_render = 0;
         double x_previous = -10;
         set_tooltip_text ("");
-        
-        if (is_focus)
-            return base.motion_notify_event (event);
+        /* We must reset the icon tooltip as the above line turns all tooltips off */
+        set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
+
+
 
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
@@ -333,8 +323,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
         else
             set_entry_cursor (null);
-            
-        return base.motion_notify_event (event);
+
+        return false;
     }
 
     bool on_focus_out (Gdk.EventFocus event) {
@@ -344,7 +334,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
     
         ignore_focus_in = false;
-        set_entry_secondary_icon (false);
+        set_entry_secondary_icon (false, true);
         set_entry_text ("");
         search_mode = false;
         
@@ -441,16 +431,17 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
     
-    public void set_entry_secondary_icon (bool active, bool visible = true, string? tooltip = null) {
+    public void set_entry_secondary_icon (bool active, bool visible) {
         if (!visible) {
             secondary_icon_pixbuf = null;
-            secondary_icon_tooltip_text = "";
+            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, "");
         } else if (!active) {
-            secondary_icon_pixbuf = reload_img;
-            secondary_icon_tooltip_text = _("Reload this folder");
+            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "view-refresh-symbolic");
+            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
         } else {
-            secondary_icon_pixbuf = arrow_img;
-            secondary_icon_tooltip_text = tooltip;
+            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "go-jump-symbolic");
+            var tooltip = (text.length > 0) ? (_("Navigate to %s")).printf (text) : "";
+            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tooltip);
         }
     }
 
