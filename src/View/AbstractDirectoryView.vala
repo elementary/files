@@ -269,6 +269,7 @@ namespace FM {
         }
 
         ~AbstractDirectoryView () {
+            debug ("ADV destruct");
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
