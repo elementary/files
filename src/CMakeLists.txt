@@ -49,6 +49,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         BookmarkList.vala
         ConnectServerOperation.vala
         DndHandler.vala
+        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
@@ -114,6 +115,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         BookmarkList.vala
         ConnectServerOperation.vala
         DndHandler.vala
+        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
@@ -173,7 +175,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (../pantheon-files
-    marlin-enum-types.c
     marlin-clipboard-manager.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
