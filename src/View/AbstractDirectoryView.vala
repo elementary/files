@@ -208,6 +208,7 @@ namespace FM {
         protected bool select_added_files = false;
 
         public bool renaming {get; protected set; default = false;}
+
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
@@ -821,7 +822,6 @@ namespace FM {
                 view.rename_file (file_to_rename);
                 return false;
             });
-
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -847,6 +847,7 @@ namespace FM {
             unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 can_trash_or_delete = false;
+
                 trash_or_delete_files (selection, true, delete_immediately);
             }
         }
@@ -1095,6 +1096,7 @@ namespace FM {
                 prepare_to_select_added_files ();
                 /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
                 slot.directory.block_monitor ();
+
                 if (file.is_folder () && !clipboard.has_file (file)) {
                     GLib.File? loc = file.get_target_location ();
                     if (loc == null || !(loc is GLib.File))

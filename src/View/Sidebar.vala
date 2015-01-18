@@ -240,8 +240,8 @@ namespace Marlin.Places {
 
         private void configure_tree_view () {
             var style_context = tree_view.get_style_context ();
-            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
-            style_context.add_class (Granite.StyleClass.SOURCE_LIST);
+            style_context.add_class ("sidebar");
+            style_context.add_class ("source-list");
 
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
@@ -926,7 +926,7 @@ namespace Marlin.Places {
                                                      null,
                                                      File.new_for_uri (drop_uri),
                                                      real_action,
-                                                     null, null, null);
+                                                     this, null, null);
                     return true;
                 case TargetType.GTK_TREE_MODEL_ROW:
                     return false;
@@ -1227,7 +1227,7 @@ namespace Marlin.Places {
             popupmenu.attach_to_widget ((Gtk.Widget)this, (Gtk.MenuDetachFunc)popup_menu_detach_cb);
 
             var item = new Gtk.ImageMenuItem.with_mnemonic (_("Open"));
-            var image = new Gtk.Image.from_stock (Gtk.Stock.OPEN, Gtk.IconSize.MENU);
+            var image = new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.MENU);
 
             item.set_image (image);
             item.activate.connect (open_shortcut_cb);
@@ -1250,7 +1250,7 @@ namespace Marlin.Places {
 
             item = new Gtk.ImageMenuItem.with_label (_("Remove"));
             popupmenu_remove_item = item;
-            image = new Gtk.Image.from_stock (Gtk.Stock.REMOVE, Gtk.IconSize.MENU);
+            image = new Gtk.Image.from_icon_name ("list-remove", Gtk.IconSize.MENU);
             item.set_image (image);
             item.activate.connect (remove_shortcut_cb);
             item.show ();
@@ -1545,6 +1545,9 @@ namespace Marlin.Places {
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
+            if (renaming)
+                return true;
+
             int tx, ty;
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
@@ -1586,6 +1589,9 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
+                return true;
+
+            if (renaming)
                 return true;
 
             int tx, ty;

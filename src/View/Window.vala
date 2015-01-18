@@ -111,7 +111,7 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            var lside_pane = new Granite.Widgets.ThinPaned ();
+            var lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);

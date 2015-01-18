@@ -336,13 +336,13 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
             /*marlin_file_operations_copy (file_list, NULL, request->target_file,
               NULL, NULL, NULL);*/
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_COPY, NULL, request->new_files_closure, request->widget);
+                                              GDK_ACTION_COPY, request->widget, request->new_files_closure, request->widget);
 
         } else {
             g_debug ("marlin_application_move_into\n");
             //marlin_application_move_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_MOVE, NULL, request->new_files_closure, request->widget);
+                                              GDK_ACTION_MOVE, request->widget, request->new_files_closure, request->widget);
         }
         //g_object_unref (G_OBJECT (application));
         g_list_free_full (file_list, g_object_unref);
