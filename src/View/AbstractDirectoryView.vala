@@ -167,7 +167,6 @@ namespace FM {
         private string? previewer = null;
 
         /* Rename support */
-        protected Gtk.TreeViewColumn name_column;
         protected Marlin.TextRenderer? name_renderer = null;
         unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
@@ -1098,7 +1097,12 @@ namespace FM {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
             thaw_tree ();
-            queue_draw ();
+            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
+             * are sometimes not properly aligned when first drawn, only after redrawing the view. */ 
+            Idle.add (() => {
+                queue_draw ();
+                return false;
+            });
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -2645,7 +2649,7 @@ namespace FM {
 
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_column, name_renderer as Gtk.CellRenderer, true, false);
+            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
 
             int start_offset= 0, end_offset = -1;
 
@@ -2793,10 +2797,8 @@ namespace FM {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                Gtk.TreeViewColumn? col,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.TreeViewColumn? col,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);

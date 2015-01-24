@@ -260,7 +260,7 @@ namespace FM {
             return zone;
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col,  bool scroll_to_top) {
+        protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             if (tree == null || path == null || slot.directory.permission_denied)
                 return;
 
@@ -268,11 +268,10 @@ namespace FM {
         }
 
         protected override void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.TreeViewColumn? col,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell(path, name_column, scroll_to_top);
+            scroll_to_cell(path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
         }
 
@@ -286,7 +285,7 @@ namespace FM {
             if (!select)
                 tree.selection_changed.disconnect (on_view_selection_changed);
 
-            set_cursor_on_cell (path, null, name_renderer, start_editing, scroll_to_top);
+            set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
             select_path (path);
 
             if (!select)
