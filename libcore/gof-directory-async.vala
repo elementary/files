@@ -128,7 +128,16 @@ public class GOF.Directory.Async : Object {
         state = State.NOT_LOADED;
     }
 
-    public void load () {
+    public delegate void GOFFileLoadedFunc (GOF.File file);
+
+    /** Views call the following function with null parameter - file_loaded and done_loading
+      * signals are emitted and cause the view and view container to update.
+      * 
+      * LocationBar calls this function, with a callback, on its own Async instances in order
+      * to perform filename completion.- Emitting a done_loaded signal in that case would cause
+      * the premature ending of text entry.
+     **/ 
+    public void load (GOFFileLoadedFunc? file_loaded_func = null) {
         cancellable.reset ();
         longest_file_name = "";
 
@@ -140,14 +149,16 @@ public class GOF.Directory.Async : Object {
             if (state == State.LOADING)
                 clear_directory_info ();
 
-            list_directory.begin ();
+            list_directory.begin (file_loaded_func);
 
-            try {
-                monitor = location.monitor_directory (0);
-                monitor.changed.connect (directory_changed);
-            } catch (IOError e) {
-                if (!(e is IOError.NOT_MOUNTED)) {
-                    warning ("directory monitor failed: %s %s", e.message, file.uri);
+            if (file_loaded_func == null) {
+                try {
+                    monitor = location.monitor_directory (0);
+                    monitor.changed.connect (directory_changed);
+                } catch (IOError e) {
+                    if (!(e is IOError.NOT_MOUNTED)) {
+                        warning ("directory monitor failed: %s %s", e.message, file.uri);
+                    }
                 }
             }
         } else {
@@ -162,12 +173,15 @@ public class GOF.Directory.Async : Object {
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
-                        file_loaded (gof);
+                        if (file_loaded_func == null)
+                            file_loaded (gof);
+                        else
+                            file_loaded_func (gof);
                     }
                 }
             }
 
-            if (!cancellable.is_cancelled ())
+            if (file_loaded_func == null && !cancellable.is_cancelled ())
                 done_loading ();
         }
     }
@@ -218,7 +232,7 @@ public class GOF.Directory.Async : Object {
         yield query_info_async (file, file_info_available);
     }
 
-    private async void list_directory () {
+    private async void list_directory (GOFFileLoadedFunc? file_loaded_func = null) {
         file.exists = true;
         files_count = 0;
         state = State.LOADING;
@@ -251,12 +265,16 @@ public class GOF.Directory.Async : Object {
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
-                        file_loaded (gof);
+                        if (file_loaded_func == null)
+                            file_loaded (gof);
+                        else
+                            file_loaded_func (gof);
                     }
 
                     files_count++;
                 }
             }
+
             if (state == State.LOADING) {
                 file.exists = true;
                 state = State.LOADED;
@@ -277,8 +295,7 @@ public class GOF.Directory.Async : Object {
             else if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
         }
-
-        if (!cancellable.is_cancelled ())
+        if (file_loaded_func == null && !cancellable.is_cancelled ())
             done_loading ();
     }
 

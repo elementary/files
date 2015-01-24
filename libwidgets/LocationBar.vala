@@ -59,7 +59,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
             if (_search_mode) {
                 primary_icon_name = "edit-find-symbolic";
-                set_entry_secondary_icon (false, false);
+                show_refresh_icon (false);
             } else
                 primary_icon_name = null;
 
@@ -170,7 +170,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         drag_drop.connect (on_drag_drop);
     }
     
-    public override bool key_press_event (Gdk.EventKey event) {
+    public new bool key_press_event (Gdk.EventKey event) {
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
@@ -287,7 +287,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return;
         }
 
-        set_entry_secondary_icon (true, true);
+        show_navigate_icon ();
         text_completion = "";
         need_completion ();
     }
@@ -328,17 +328,20 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     bool on_focus_out (Gdk.EventFocus event) {
-        if (is_focus) {
+        if (is_focus)
             ignore_focus_in = true;
-            return base.focus_out_event (event);
+        else {
+            reset ();
+            show_refresh_icon (true);
         }
-    
+
+        return base.focus_out_event (event);
+    }
+
+    void reset () {
         ignore_focus_in = false;
-        set_entry_secondary_icon (false, true);
         set_entry_text ("");
         search_mode = false;
-        
-        return base.focus_out_event (event);
     }
 
     bool on_focus_in (Gdk.EventFocus event) {
@@ -348,8 +351,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (search_mode)
             set_entry_text ("");
         else {
-            set_entry_text (sanitise_path (GLib.Uri.unescape_string (get_elements_path ())));
-            set_entry_secondary_icon (true, true);
+            current_path = sanitise_path (GLib.Uri.unescape_string (get_elements_path ()));
+            set_entry_text (current_path);
+            show_navigate_icon ();
         }
         return base.focus_in_event (event);
     }
@@ -370,6 +374,20 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         string path = text + text_completion;
         path_changed (get_file_for_path (path));
         text_completion = "";
+    }
+
+    public void show_refresh_icon (bool show = true) {
+        /* Cancel any editing or search if refresh icon is to be shown */
+        if (show) {
+            reset ();
+            escape ();
+        }
+
+        set_entry_secondary_icon (false, show);
+    }
+
+    public void show_navigate_icon (bool show = true) {
+        set_entry_secondary_icon (true, show && text != current_path);
     }
 
     protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
@@ -839,7 +857,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 Pango.cairo_show_layout (cr, layout);
             }
         }
-        
+
         return true;
     }
 
