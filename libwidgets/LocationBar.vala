@@ -450,10 +450,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public void set_entry_secondary_icon (bool active, bool visible) {
-        if (!visible) {
+        if (!visible)
             secondary_icon_pixbuf = null;
-            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, "");
-        } else if (!active) {
+        else if (!active) {
             set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "view-refresh-symbolic");
             set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
         } else {
