@@ -280,6 +280,9 @@ namespace Marlin.View {
         }
 
         public override void cancel () {
+            if (directory != null)
+                directory.cancel ();
+
             if (dir_view != null)
                 dir_view.cancel ();
         }
