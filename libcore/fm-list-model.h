@@ -28,7 +28,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include "gof-file.h"
-#include "../src/marlin-enum-types.h"
 #include "pantheon-files-core.h"
 
 #ifndef FM_LIST_MODEL_H
