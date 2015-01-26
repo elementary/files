@@ -41,7 +41,7 @@ namespace Marlin {
             public bool has_file (GOF.File file);
             public void copy_files (GLib.List files);
             public void cut_files (GLib.List files);
-            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.Closure? new_file_closure);
+            public void paste_files (GLib.File target, Gtk.Widget widget, CopyCallBack? new_file_closure);
             public signal void changed ();
         }
 
@@ -54,50 +54,4 @@ namespace Marlin {
     public class IconRenderer : Gtk.CellRenderer {
         public IconRenderer ();
     }    
-
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public enum ZoomLevel {
-        SMALLEST,
-        SMALLER,
-        SMALL,
-        NORMAL,
-        LARGE,
-        LARGER,
-        LARGEST,
-        N_LEVELS
-    }
-
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public static Gtk.IconSize zoom_level_to_stock_icon_size (ZoomLevel zoom);
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public static Marlin.IconSize zoom_level_to_icon_size (ZoomLevel zoom);
-
-    [CCode (cheader_filename = "marlin-enum-types.h")]
-    public enum IconSize {
-        SMALLEST = 16,
-        SMALLER = 24,
-        SMALL = 32,
-        NORMAL = 48,
-        LARGE = 64,
-        LARGER = 96,
-        LARGEST = 128
-    }
-
-    [CCode (cheader_filename = "marlin-view-window.h")]
-    public enum OpenFlag {
-        DEFAULT,
-        NEW_ROOT,
-        NEW_TAB,
-        NEW_WINDOW
-    }
-
-    [CCode (cheader_filename = "marlin-view-window.h")]
-    public enum ViewMode {
-        ICON,
-        LIST,
-        MILLER_COLUMNS,
-        CURRENT,
-        PREFERRED,
-        INVALID
-    }
 }
