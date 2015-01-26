@@ -373,7 +373,7 @@ namespace Marlin.View {
 
             key_press_event.connect ((event) => {
                 if (top_menu.location_bar.bread.is_focus)
-                    return top_menu.location_bar.bread.key_press_event (event);
+                    return top_menu.location_bar.bread.on_key_press_event (event);
 
                 return false;
             });

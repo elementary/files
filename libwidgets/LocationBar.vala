@@ -169,8 +169,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         drag_data_received.connect (on_drag_data_received);
         drag_drop.connect (on_drag_drop);
     }
-    
-    public new bool key_press_event (Gdk.EventKey event) {
+
+    public bool on_key_press_event (Gdk.EventKey event) {
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
