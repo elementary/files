@@ -1669,17 +1669,8 @@ namespace Marlin.Places {
             if (mount == null)
                 return;
 
-            if (Marlin.FileOperations.has_trash_files (mount)) {
-                int response = Marlin.FileOperations.prompt_empty_trash (null);
-                if (response == Gtk.ResponseType.ACCEPT) {
-                    GLib.List<GLib.File> dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
-                } else if (response == Gtk.ResponseType.CANCEL) {
-                    finish_eject_or_unmount (row_ref);
-                    return;
-                }
-            }
-
+            /* Do not offer to empty trash every time - this can be done
+             * from the context menu if needed */
             ejecting_or_unmounting = true;
             GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
             mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
@@ -1690,11 +1681,20 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    //message ("Error while unmounting");
+                    warning ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
          }
+
+        private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
+            if (Marlin.FileOperations.has_trash_files (mount)) {
+                    unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
+                    /* Marlin.FileOperations will show a confirm dialog according to settings */
+                    if (dirs != null)
+                        Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
+            }
+        }
 
         private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
@@ -1733,8 +1733,9 @@ namespace Marlin.Places {
 
         private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive, Gtk.TreeRowReference? row_ref = null) {
             GLib.MountOperation mount_op = new GLib.MountOperation ();
-            ejecting_or_unmounting = true;
+
             if (drive != null) {
+                ejecting_or_unmounting = true;
                 drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
@@ -1751,6 +1752,7 @@ namespace Marlin.Places {
             }
 
             if (volume != null){
+                ejecting_or_unmounting = true;
                 volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                    mount_op,
                                                    null,
@@ -1767,6 +1769,7 @@ namespace Marlin.Places {
             }
 
             if (mount != null){
+                ejecting_or_unmounting = true;
                 mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
@@ -1902,7 +1905,22 @@ namespace Marlin.Places {
         }
 
         private void empty_trash_cb (Gtk.MenuItem item) {
-            Marlin.FileOperations.empty_trash (window);
+            Gtk.TreeIter iter;
+            if (!get_selected_iter (out iter))
+                return;
+
+            Mount mount;
+            string uri;
+            store.@get (iter,
+                        Column.URI, out uri,
+                        Column.MOUNT, out mount);
+
+            if (mount != null)
+                /* A particular mount was clicked - empty only the trash on the mount */
+                empty_trash_on_mount (mount);
+            else
+                /* Trash icon was clicked - empty all trash directories, including any mounted. */
+                Marlin.FileOperations.empty_trash (window);
         }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */
@@ -2053,10 +2071,16 @@ namespace Marlin.Places {
                               out show_start,
                               out show_stop);
 
-            bool show_empty_trash = (uri != null) && (uri == Marlin.TRASH_URI);
+            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native 
+             * file system whose trash contains files */ 
+            bool show_empty_trash = (uri != null) &&
+                                    ((uri == Marlin.TRASH_URI) ||
+                                    Marlin.FileOperations.has_trash_files (mount));
+
             Eel.gtk_widget_set_shown (popupmenu_separator_item2,
                                       show_eject || show_unmount ||
                                       show_mount || show_empty_trash);
+
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
