@@ -2169,6 +2169,7 @@ namespace FM {
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+            bool in_trash = slot.location.has_uri_scheme ("trash");
 
             switch (event.keyval) {
                 case Gdk.Key.F10:
@@ -2179,7 +2180,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.F2:
-                    if (no_mods) {
+                    if (no_mods && !in_trash) {
                         rename_selected_file ();
                         return true;
                     }
@@ -2187,7 +2188,7 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (no_mods) {
+                    if (no_mods && !in_trash) {
                         trash_or_delete_selected_files (false);
                         return true;
                     } else if (only_shift_pressed) {
@@ -2198,7 +2199,7 @@ namespace FM {
 
                 case Gdk.Key.space:
                     if (view_has_focus ()) {
-                        if (only_shift_pressed)
+                        if (only_shift_pressed  && !in_trash)
                             activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                         else if (no_mods)
                             preview_selected_items ();
@@ -2211,7 +2212,9 @@ namespace FM {
 
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    if (only_shift_pressed)
+                    if (in_trash)
+                        return false;
+                    else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                     else if (no_mods)
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
@@ -2221,21 +2224,21 @@ namespace FM {
                     return true;
 
                 case Gdk.Key.T:
-                    if (only_control_pressed) {
+                    if (only_control_pressed && !in_trash) {
                         open_selected_in_terminal ();
                         return true;
                     }
                     break;
 
                 case Gdk.Key.N:
-                    if (only_control_pressed) {
+                    if (only_control_pressed && !in_trash) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                         return true;
                     }
                     break;
 
                 case Gdk.Key.c:
-                    if (only_control_pressed) {
+                    if (only_control_pressed && !in_trash) {
                  /* Should not copy files in the trash - cut instead */
                         if (slot.directory.location.has_uri_scheme ("trash"))
                             selection_actions.activate_action ("cut", null);
@@ -2258,7 +2261,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
-                    if (only_control_pressed) {
+                    if (only_control_pressed && !in_trash) {
                         selection_actions.activate_action ("cut", null);
                         return true;
                     }
