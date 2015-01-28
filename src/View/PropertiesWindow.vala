@@ -595,9 +595,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         var information = new Gtk.Grid();
         information.row_spacing = 3;
 
-        var label = new Gtk.Label ("");
-        label.use_markup = true;
-        label.set_markup ("<b>" + _("Info:") + "\t\t\t</b>"); //FIXME: find a better solution for this
+        var label = new Gtk.Label (_("Info"));
+        label.set_halign (Gtk.Align.START);
+        label.get_style_context ().add_class ("h4");
         information.attach (label, 0, 0, 1, 1);
 
         int n = 1;
@@ -679,9 +679,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                     n++;
 
                     debug ("%d", n);
-                    label = new Gtk.Label ("");
-                    label.use_markup = true;
-                    label.set_markup ("<b>" + _("Usage:") + "\t\t\t</b>"); //FIXME: find a better solution for this
+                    label = new Gtk.Label (_("Usage"));
+                    label.set_halign (Gtk.Align.START);
+                    label.get_style_context ().add_class ("h4");
                     information.attach (label, 0, n, 1, 1);
 
                     n++;

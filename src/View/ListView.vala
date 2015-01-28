@@ -43,21 +43,25 @@ namespace FM {
         private void append_extra_tree_columns () {
             int fnc = FM.ListModel.ColumnID.FILENAME;
 
+            int preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             for (int k = fnc; k < FM.ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
-                    int preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
-                    name_column.min_width = preferred_column_width / 2;
-                    name_column.max_width = preferred_column_width * 3;
+                    name_column.min_width = preferred_column_width;
                 } else {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                       renderer,
                                                                       "text", k);     
                     col.set_sort_column_id (k);
+                    col.set_resizable (false);
+                    col.set_expand (false);
+                    col.min_width = 24;
                     if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED)
                         renderer.@set ("xalign", 1.0f);
+                    else
+                        renderer.@set ("xalign", 0.0f);
 
                     tree.append_column (col);
                 }

@@ -22,6 +22,7 @@ namespace FM {
         const int ICON_XPAD = 6;
 
         protected Gtk.TreeView tree;
+        protected Gtk.TreeViewColumn name_column;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -31,6 +32,7 @@ namespace FM {
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
             name_column.set_expand (true);
+            name_column.set_resizable (true);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
             set_up_name_renderer ();
@@ -222,19 +224,18 @@ namespace FM {
             return zone;
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, Gtk.TreeViewColumn? col, bool scroll_to_top) {
+        protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             if (tree == null || path == null || slot.directory.permission_denied)
                 return;
 
-            tree.scroll_to_cell (path, col, scroll_to_top, 0.0f, 0.0f);
+            tree.scroll_to_cell (path, name_column, scroll_to_top, 0.0f, 0.0f);
         }
         protected override void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.TreeViewColumn? col,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell (path, name_column, scroll_to_top);
-            tree.set_cursor_on_cell (path, col, renderer, start_editing);
+            scroll_to_cell (path, scroll_to_top);
+            tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
         public override void set_cursor (Gtk.TreePath? path,
@@ -249,7 +250,7 @@ namespace FM {
             if (!select)
                 selection.changed.disconnect (on_view_selection_changed);
 
-            set_cursor_on_cell (path, name_column, name_renderer, start_editing, scroll_to_top);
+            set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select)
                 selection.changed.connect (on_view_selection_changed);

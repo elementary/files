@@ -130,7 +130,7 @@ void marlin_file_operations_copy_move   (GList                  *files,
                                          GFile                  *target_dir,
                                          GdkDragAction          copy_action,
                                          GtkWidget              *parent_view,
-                                         gpointer               done_callback,
+                                         GCallback              done_callback,
                                          gpointer               done_callback_data);
 
 void marlin_file_operations_move      (GList                *files,

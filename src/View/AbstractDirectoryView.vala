@@ -167,7 +167,6 @@ namespace FM {
         private string? previewer = null;
 
         /* Rename support */
-        protected Gtk.TreeViewColumn name_column;
         protected Marlin.TextRenderer? name_renderer = null;
         unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
@@ -200,8 +199,15 @@ namespace FM {
         private Gtk.TreePath? hover_path = null;
 
         private bool selection_was_removed = false;
-        public bool select_added_files = false;
+
+        /* Rapid keyboard paste support */
+        protected bool pasting_files = false;
+        GLib.Timer? paste_timer = null;
+        protected uint paste_timeout_id = 0; 
+        protected bool select_added_files = false;
+
         public bool renaming {get; protected set; default = false;}
+
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
@@ -262,6 +268,7 @@ namespace FM {
         }
 
         ~AbstractDirectoryView () {
+            debug ("ADV destruct");
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
@@ -738,9 +745,9 @@ namespace FM {
                 locations.reverse ();
                 if (delete_immediately)
                     Marlin.FileOperations.delete (locations,
-                                                           window as Gtk.Window,
-                                                           after_trash_or_delete,
-                                                           this);
+                                                  window as Gtk.Window,
+                                                  after_trash_or_delete,
+                                                  this);
                 else
                     Marlin.FileOperations.trash_or_delete (locations,
                                                            window as Gtk.Window,
@@ -1007,18 +1014,63 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
-        private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            var file = get_files_for_action ().nth_data (0);
+        public static void after_pasting_files (GLib.HashTable uris, void* pointer) {
+            var view = pointer as FM.AbstractDirectoryView; 
+            if (view.paste_timer == null)
+                view.paste_timer = new GLib.Timer ();
 
-            if (file != null && clipboard.get_can_paste ()) {
-                prepare_to_select_added_files ();
-                if (file.is_folder () && !clipboard.has_file (file))
-                    clipboard.paste_files (file.get_target_location (), this as Gtk.Widget, null);
-                else
-                    clipboard.paste_files (slot.directory.location, this as Gtk.Widget, null);
+            view.paste_timer.start (); /* restarts timer if already running */
+
+            /* Limit paste action rate to 10 per second, do not unblock the directory monitor
+             * until at least one second after the last paste event in order to avoid duplicate
+             * "add-file" events and messed up selection. */ 
+            if (view.paste_timeout_id == 0) {
+                view.paste_timeout_id = Timeout.add (100, () => {
+                    view.pasting_files = false; /* allows another paste action to occur */
+
+                    if (view.paste_timer.elapsed () < 1.0)
+                        return true;
+
+                    view.slot.directory.unblock_monitor ();
+                    view.select_added_files = false;
+                    view.paste_timeout_id = 0;
+                    view.paste_timer.stop ();
+                    view.paste_timer = null;
+                    return false;
+                });
             }
         }
 
+        private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
+            if (pasting_files)
+                return;
+
+            var file = get_files_for_action ().nth_data (0);
+
+            if (file != null && clipboard.get_can_paste ()) {
+                pasting_files = true;
+
+                GLib.File target;
+                GLib.Callback? call_back;
+
+                if (file.is_folder () && !clipboard.has_file (file))
+                    target = file.get_target_location ();
+                else
+                    target = slot.location;
+
+                if (target.has_uri_scheme ("trash"))
+                    call_back = (GLib.Callback)after_trash_or_delete;
+                else {
+                    prepare_to_select_added_files ();
+                    /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+                    slot.directory.block_monitor ();
+                    call_back = (GLib.Callback)after_pasting_files;
+                }
+
+                clipboard.paste_files (target, this as Gtk.Widget, call_back);
+                
+            }
+        }
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
             add_file (file, dir);
@@ -1058,7 +1110,12 @@ namespace FM {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = (dir.file.uri == Marlin.TRASH_URI); /* trash cannot be subdirectory */
             thaw_tree ();
-            queue_draw ();
+            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
+             * are sometimes not properly aligned when first drawn, only after redrawing the view. */ 
+            Idle.add (() => {
+                queue_draw ();
+                return false;
+            });
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -2614,7 +2671,7 @@ namespace FM {
 
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_column, name_renderer as Gtk.CellRenderer, true, false);
+            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
 
             int start_offset= 0, end_offset = -1;
 
@@ -2762,10 +2819,8 @@ namespace FM {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                Gtk.TreeViewColumn? col,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.TreeViewColumn? col,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);

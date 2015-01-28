@@ -60,6 +60,10 @@ namespace Marlin.View {
             make_view ();
         }
 
+        ~Miller () {
+            debug ("Miller destruct");
+        }
+
         protected override void make_view () {
             current_slot = null;
             add_location (root_location, null);  /* current slot gets set by this */
@@ -154,9 +158,7 @@ namespace Marlin.View {
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.connect (on_miller_slot_request);
             slot.size_change.connect (update_total_width);
-            slot.folder_deleted.connect ((file, dir) => {
-                on_slot_folder_deleted (slot, dir);
-            });
+            slot.folder_deleted.connect (on_slot_folder_deleted);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -164,6 +166,8 @@ namespace Marlin.View {
             slot.active.disconnect (on_slot_active);
             slot.horizontal_scroll_event.disconnect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.disconnect (on_miller_slot_request);
+            slot.size_change.disconnect (update_total_width);
+            slot.folder_deleted.disconnect (on_slot_folder_deleted);
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
@@ -184,7 +188,7 @@ namespace Marlin.View {
             return true;
         }
 
-        private void on_slot_folder_deleted (Slot slot, GOF.Directory.Async dir) {
+        private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number +1);
             if (next_slot != null && next_slot.directory == dir)
                 truncate_list_after_slot (slot);

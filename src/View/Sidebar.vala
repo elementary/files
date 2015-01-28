@@ -237,8 +237,8 @@ namespace Marlin.Places {
 
         private void configure_tree_view () {
             var style_context = tree_view.get_style_context ();
-            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
-            style_context.add_class (Granite.StyleClass.SOURCE_LIST);
+            style_context.add_class ("sidebar");
+            style_context.add_class ("source-list");
 
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
@@ -345,8 +345,9 @@ namespace Marlin.Places {
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
                 int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
-                var icon_info = Marlin.IconInfo.lookup (icon, icon_size);
-                pixbuf = icon_info.get_pixbuf_nodefault ();
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, icon_size);
+                if (icon_info != null)
+                    pixbuf = icon_info.get_pixbuf_nodefault ();
             }
 
             bool show_eject, show_unmount;
@@ -1214,7 +1215,7 @@ namespace Marlin.Places {
             popupmenu.attach_to_widget ((Gtk.Widget)this, (Gtk.MenuDetachFunc)popup_menu_detach_cb);
 
             var item = new Gtk.ImageMenuItem.with_mnemonic (_("Open"));
-            var image = new Gtk.Image.from_stock (Gtk.Stock.OPEN, Gtk.IconSize.MENU);
+            var image = new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.MENU);
 
             item.set_image (image);
             item.activate.connect (open_shortcut_cb);
@@ -1237,7 +1238,7 @@ namespace Marlin.Places {
 
             item = new Gtk.ImageMenuItem.with_label (_("Remove"));
             popupmenu_remove_item = item;
-            image = new Gtk.Image.from_stock (Gtk.Stock.REMOVE, Gtk.IconSize.MENU);
+            image = new Gtk.Image.from_icon_name ("list-remove", Gtk.IconSize.MENU);
             item.set_image (image);
             item.activate.connect (remove_shortcut_cb);
             item.show ();
@@ -1540,6 +1541,9 @@ namespace Marlin.Places {
             if (event.window != tree_view.get_bin_window ())
                 return true;
 
+            if (renaming)
+                return true;
+
             int tx, ty;
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
@@ -1581,6 +1585,9 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             if (event.type != Gdk.EventType.BUTTON_RELEASE)
+                return true;
+
+            if (renaming)
                 return true;
 
             int tx, ty;
@@ -1665,17 +1672,8 @@ namespace Marlin.Places {
             if (mount == null)
                 return;
 
-            if (Marlin.FileOperations.has_trash_files (mount)) {
-                int response = Marlin.FileOperations.prompt_empty_trash (null);
-                if (response == Gtk.ResponseType.ACCEPT) {
-                    GLib.List<GLib.File> dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
-                } else if (response == Gtk.ResponseType.CANCEL) {
-                    finish_eject_or_unmount (row_ref);
-                    return;
-                }
-            }
-
+            /* Do not offer to empty trash every time - this can be done
+             * from the context menu if needed */
             ejecting_or_unmounting = true;
             GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
             mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
@@ -1686,11 +1684,20 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    //message ("Error while unmounting");
+                    warning ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
          }
+
+        private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
+            if (Marlin.FileOperations.has_trash_files (mount)) {
+                    unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
+                    /* Marlin.FileOperations will show a confirm dialog according to settings */
+                    if (dirs != null)
+                        Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
+            }
+        }
 
         private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
@@ -1729,8 +1736,9 @@ namespace Marlin.Places {
 
         private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive, Gtk.TreeRowReference? row_ref = null) {
             GLib.MountOperation mount_op = new GLib.MountOperation ();
-            ejecting_or_unmounting = true;
+
             if (drive != null) {
+                ejecting_or_unmounting = true;
                 drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
@@ -1747,6 +1755,7 @@ namespace Marlin.Places {
             }
 
             if (volume != null){
+                ejecting_or_unmounting = true;
                 volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                    mount_op,
                                                    null,
@@ -1763,6 +1772,7 @@ namespace Marlin.Places {
             }
 
             if (mount != null){
+                ejecting_or_unmounting = true;
                 mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
@@ -1898,7 +1908,22 @@ namespace Marlin.Places {
         }
 
         private void empty_trash_cb (Gtk.MenuItem item) {
-            Marlin.FileOperations.empty_trash (window);
+            Gtk.TreeIter iter;
+            if (!get_selected_iter (out iter))
+                return;
+
+            Mount mount;
+            string uri;
+            store.@get (iter,
+                        Column.URI, out uri,
+                        Column.MOUNT, out mount);
+
+            if (mount != null)
+                /* A particular mount was clicked - empty only the trash on the mount */
+                empty_trash_on_mount (mount);
+            else
+                /* Trash icon was clicked - empty all trash directories, including any mounted. */
+                Marlin.FileOperations.empty_trash (window);
         }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */
@@ -2049,10 +2074,16 @@ namespace Marlin.Places {
                               out show_start,
                               out show_stop);
 
-            bool show_empty_trash = (uri != null) && (uri == Marlin.TRASH_URI);
+            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native 
+             * file system whose trash contains files */ 
+            bool show_empty_trash = (uri != null) &&
+                                    ((uri == Marlin.TRASH_URI) ||
+                                    Marlin.FileOperations.has_trash_files (mount));
+
             Eel.gtk_widget_set_shown (popupmenu_separator_item2,
                                       show_eject || show_unmount ||
                                       show_mount || show_empty_trash);
+
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
