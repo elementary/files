@@ -767,6 +767,8 @@ namespace FM {
             if (parent_uri == null)
                 parent_uri = slot.directory.file.uri;
 
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
             Marlin.FileOperations.new_file (this as Gtk.Widget,
                                             null,
                                             parent_uri,
@@ -800,8 +802,9 @@ namespace FM {
             var view = (FM.AbstractDirectoryView)data;
             var file_to_rename = GOF.File.@get (new_file);
             /* Allow time for the file to appear in the tree model before renaming */
-            GLib.Timeout.add (50, () => {
+            GLib.Timeout.add (250, () => {
                 view.rename_file (file_to_rename);
+                view.slot.directory.unblock_monitor ();
                 return false;
             });
         }
@@ -1949,6 +1952,8 @@ namespace FM {
         /** Menu action functions */
 
         private void create_from_template (GOF.File template) {
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
                                                           slot.location,
