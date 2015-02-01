@@ -1402,23 +1402,36 @@ confirm_delete_from_trash (CommonJob *job,
     return (response == 1);
 }
 
-#if 0
 static gboolean
-confirm_empty_trash (CommonJob *job)
+confirm_empty_trash (EmptyTrashJob *job)
 {
-    char *prompt;
+    gchar *prompt;
+    gchar* secondary_text;
     int response;
 
     /* Just Say Yes if the preference says not to confirm. */
-    if (!should_confirm_trash ()) {
+    if (!should_confirm_trash ())
         return TRUE;
+
+    GList *files = job->trash_dirs;
+
+    if (g_list_length (files) >= 1) {
+        if (g_file_has_uri_scheme (files->data, "trash")) {
+                /* Empty all trash */
+                prompt = f (_("Permanently delete all items from Trash?"));
+                secondary_text = f(_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
+        } else {
+                /* Empty trash on a particular mounted volume */
+                prompt = f (_("Permanently delete all items from Trash on this mount?"));
+                secondary_text = f(_("All items in the trash on this mount, will be permanently deleted."));
+        }
     }
 
-    prompt = f (_("Empty all items from Trash?"));
+    /* The strings are freed by the f () function */
 
     response = run_warning (job,
                             prompt,
-                            f(_("All items in the Trash will be permanently deleted.")),
+                            secondary_text,
                             NULL,
                             FALSE,
                             GTK_STOCK_CANCEL, _("Empty _Trash"),
@@ -1426,7 +1439,6 @@ confirm_empty_trash (CommonJob *job)
 
     return (response == 1);
 }
-#endif
 
 static gboolean
 confirm_delete_directly (CommonJob *job,
@@ -2013,8 +2025,6 @@ static gboolean
 delete_job_done (gpointer user_data)
 {
     DeleteJob *job;
-    GHashTable *debuting_uris;
-
     job = user_data;
 
     g_list_free_full (job->files, g_object_unref);
@@ -2306,6 +2316,9 @@ get_trash_dirs_for_mount (GMount *mount)
     GFile *trash;
     char *relpath;
     GList *list;
+
+    if (mount == NULL)
+        return NULL;
 
     root = g_mount_get_root (mount);
     if (root == NULL) {
@@ -5931,28 +5944,16 @@ location_list_from_uri_list (const GList *uris)
 }
 #endif
 
-typedef struct {
-    MarlinCopyCallback real_callback;
-    gpointer real_data;
-} MoveTrashCBData;
-
-static void
-callback_for_move_to_trash (GHashTable *debuting_uris,
-                            gboolean user_cancelled,
-                            MoveTrashCBData *data)
-{
-    if (data->real_callback)
-        data->real_callback (debuting_uris, data->real_data);
-    g_slice_free (MoveTrashCBData, data);
-}
-
+/** The done_callback function has a variable signature. When the file is being moved to
+ * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
+ */ 
 void
 marlin_file_operations_copy_move   (GList                  *files,
                                     GArray                 *relative_item_points,
                                     GFile                  *target_dir,
                                     GdkDragAction          copy_action,
                                     GtkWidget              *parent_view,
-                                    MarlinCopyCallback     done_callback,
+                                    gpointer               done_callback,
                                     gpointer               done_callback_data)
 {
     GList *p;
@@ -5987,6 +5988,7 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
+        /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||
             (src_dir != NULL &&
@@ -5994,13 +5996,15 @@ marlin_file_operations_copy_move   (GList                  *files,
             marlin_file_operations_duplicate (files,
                                               relative_item_points,
                                               parent_window,
-                                              done_callback, done_callback_data);
+                                              (MarlinCopyCallback)done_callback,
+                                              done_callback_data);
         } else {
             marlin_file_operations_copy (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         done_callback, done_callback_data);
+                                         (MarlinCopyCallback)done_callback,
+                                         done_callback_data);
         }
         if (src_dir) {
             g_object_unref (src_dir);
@@ -6008,28 +6012,28 @@ marlin_file_operations_copy_move   (GList                  *files,
 
     } else if (copy_action == GDK_ACTION_MOVE) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
-            MoveTrashCBData *cb_data;
+            /* done_callback is (or should be) a DeleteCallBack or null in this case */
 
-            cb_data = g_slice_new0 (MoveTrashCBData);
-            cb_data->real_callback = done_callback;
-            cb_data->real_data = done_callback_data;
             marlin_file_operations_trash_or_delete (files,
                                                     parent_window,
-                                                    (MarlinDeleteCallback) callback_for_move_to_trash,
-                                                    cb_data);
+                                                    (MarlinDeleteCallback)done_callback,
+                                                    done_callback_data);
         } else {
+            /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         done_callback, done_callback_data);
+                                         (MarlinCopyCallback)done_callback,
+                                         done_callback_data);
         }
     } else {
         marlin_file_operations_link (files,
                                      relative_item_points,
                                      target_dir,
                                      parent_window,
-                                     done_callback, done_callback_data);
+                                    (MarlinCopyCallback)done_callback,
+                                     done_callback_data);
     }
 }
 
@@ -6535,7 +6539,7 @@ delete_trash_file (CommonJob *job,
 }
 
 static gboolean
-empty_trash_job_done (gpointer user_data)
+finalize_empty_trash_job (gpointer user_data)
 {
     EmptyTrashJob *job;
 
@@ -6543,13 +6547,17 @@ empty_trash_job_done (gpointer user_data)
 
     g_list_free_full (job->trash_dirs, g_object_unref);
 
-    if (job->done_callback) {
-        job->done_callback (job->done_callback_data);
-    }
-
-    marlin_undo_manager_trash_has_emptied (marlin_undo_manager_instance());
-
     finalize_common ((CommonJob *)job);
+    return FALSE;
+}
+
+static gboolean
+empty_trash_job_done (gpointer user_data)
+{
+    /* There is no job callback after emptying trash */
+    marlin_undo_manager_trash_has_emptied (marlin_undo_manager_instance());
+    finalize_empty_trash_job (user_data);
+
     return FALSE;
 }
 
@@ -6571,17 +6579,20 @@ empty_trash_job (GIOSchedulerJob *io_job,
     marlin_progress_info_start (job->common.progress);
 #endif
 
-    for (l = job->trash_dirs;
-         l != NULL && !job_aborted (common);
-         l = l->next) {
+    if (confirm_empty_trash (job)) {
+        for (l = job->trash_dirs;
+             l != NULL && !job_aborted (common);
+             l = l->next) {
 
-        delete_trash_file (common, l->data, FALSE, TRUE);
-    }
+            delete_trash_file (common, l->data, FALSE, TRUE);
+        }
 
-    g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                               empty_trash_job_done,
-                                               job,
-                                               NULL);
+        g_io_scheduler_job_send_to_mainloop_async (io_job,
+                                                   empty_trash_job_done,
+                                                   job,
+                                                   NULL);
+    } else
+        finalize_empty_trash_job (job);
 
     return FALSE;
 }
@@ -6604,11 +6615,14 @@ void
 marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
 {
     EmptyTrashJob *job;
-
     job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
 #ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
 #endif
+
+    job->done_callback = NULL;
+    job->done_callback_data = NULL;
+    job->should_confirm = TRUE;
 
     if (dirs != NULL)
         job->trash_dirs = dirs;

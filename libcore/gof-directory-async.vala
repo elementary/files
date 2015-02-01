@@ -209,7 +209,7 @@ public class GOF.Directory.Async : Object {
 
     private void make_ready () {
         is_ready = true;
-        GLib.List? trash_dirs = null;
+        unowned GLib.List? trash_dirs = null;
         file.mount = GOF.File.get_mount_at (location);
 
         if (file.mount != null) {
@@ -816,6 +816,9 @@ public class GOF.Directory.Async : Object {
     }
 
     public void queue_load_thumbnails (int size) {
+        if (!is_local)
+            return;
+
         icon_size = size;
         if (this.state == State.LOADING)
             return;

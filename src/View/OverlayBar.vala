@@ -94,14 +94,11 @@ namespace Marlin.View {
         }
 
        private void real_update (GLib.List<GOF.File>? files) {
-            count = 0;
             goffile = null;
             folders_count = 0;
             files_count = 0;
             files_size = 0;
 
-            /* cancel any pending subfolder scan */
-            //cancellable.cancel ();
             if (files != null) {
                 visible = showbar;
 
@@ -127,7 +124,7 @@ namespace Marlin.View {
                 image_cancellable = null;
             }
 
-            if (goffile != null) {
+            if (goffile != null) { /* a single file is hovered or selected */
                 if (goffile.is_network_uri_scheme ()) {
                     status = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -142,7 +139,7 @@ namespace Marlin.View {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
 
                 }
-            } else {
+            } else { /* hovering over multiple selection */
                 string str = null;
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
@@ -160,9 +157,8 @@ namespace Marlin.View {
                                          files_count);
                     else
                         str += _(" selected");
-                } else {
-                    str = _("%u items selected (%s)").printf (count, format_size ((int64) files_size));
-                }
+                } else /* folder_count = 0 and files_count > 0 */
+                    str = _("%u items selected (%s)").printf (files_count, format_size ((int64) files_size));
 
                 status = str;
 
@@ -176,7 +172,6 @@ namespace Marlin.View {
             foreach (var gof in files) {
                 if (gof.is_folder ()) {
                     folders_count++;
-                    //scan_folder (gof.location);
                 } else {
                     files_count++;
                     files_size += PropertiesWindow.file_real_size (gof);

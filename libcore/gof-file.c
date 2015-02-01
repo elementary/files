@@ -620,7 +620,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 
     if (gicon != NULL) {
         icon = marlin_icon_info_lookup (gicon, size);
-        if (marlin_icon_info_is_fallback(icon)) {
+        if (icon != NULL && marlin_icon_info_is_fallback(icon)) {
             g_object_unref (icon);
             icon = marlin_icon_info_get_generic_icon (size);
         }

@@ -29,6 +29,7 @@
 #include "marlin-clipboard-manager.h"
 #include "marlin-icon-renderer.h"
 #include "eel-gdk-pixbuf-extensions.h"
+#include "marlin-vala.h"
 
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)

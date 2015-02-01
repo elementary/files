@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-24 08:26-0600\n"
-"PO-Revision-Date: 2014-11-01 16:42+0000\n"
-"Last-Translator: Jon Persson <Unknown>\n"
+"PO-Revision-Date: 2015-01-28 10:58+0000\n"
+"Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2014-11-25 07:02+0000\n"
-"X-Generator: Launchpad (build 17252)\n"
+"X-Launchpad-Export-Date: 2015-01-29 05:51+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
 
 #: ../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1347,7 +1347,7 @@ msgstr "Kunde inte ta bort den redan befintliga filen med samma namn i %F."
 #: ../libcore/marlin-file-operations.c:4574
 #, c-format
 msgid "There was an Error while copying \"%s\"."
-msgstr ""
+msgstr "Ett fel inträffade vid kopiering av \"%s\"."
 
 #: ../libcore/marlin-file-operations.c:4575
 #, c-format

@@ -63,6 +63,10 @@ namespace Marlin.View {
             connect_dir_view_signals ();
         }
 
+        ~Slot () {
+            debug ("Slot destruct");
+        }
+
         private void connect_slot_signals () {
             active.connect (() => {
                 if (is_active)
@@ -275,6 +279,9 @@ namespace Marlin.View {
         }
 
         public override void cancel () {
+            if (directory != null)
+                directory.cancel ();
+
             if (dir_view != null)
                 dir_view.cancel ();
         }

@@ -167,7 +167,6 @@ namespace FM {
         private string? previewer = null;
 
         /* Rename support */
-        protected Gtk.TreeViewColumn name_column;
         protected Marlin.TextRenderer? name_renderer = null;
         unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
@@ -270,6 +269,7 @@ namespace FM {
         }
 
         ~AbstractDirectoryView () {
+            debug ("ADV destruct");
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
@@ -775,6 +775,8 @@ namespace FM {
             if (parent_uri == null)
                 parent_uri = slot.directory.file.uri;
 
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
             Marlin.FileOperations.new_file (this as Gtk.Widget,
                                             null,
                                             parent_uri,
@@ -815,11 +817,13 @@ namespace FM {
                 view.slot.directory.need_reload ();
 
             /* Allow time for the file to appear in the tree model before renaming
-             * Wait longer for remote locations to allow for reload
+             * Wait longer for remote locations to allow for reload.
+             * TODO: Remove need for hard coded delay. 
              */
-            int delay = local ? 50 : 500;
+            int delay = local ? 250 : 500;
             GLib.Timeout.add (delay, () => {
                 view.rename_file (file_to_rename);
+                view.slot.directory.unblock_monitor ();
                 return false;
             });
         }
@@ -1122,7 +1126,8 @@ namespace FM {
             model.file_changed (file, dir);
             /* 2nd parameter is for returned request id if required - we do not use it? */
             /* This is required if we need to dequeue the request */
-            thumbnailer.queue_file (file, null, false);
+            if (slot.directory.is_local)
+                thumbnailer.queue_file (file, null, false);
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
@@ -1147,8 +1152,15 @@ namespace FM {
             in_trash = slot.directory.is_trash;
             in_network_root = slot.directory.file.is_root_network_folder ();
             thaw_tree ();
+
             model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-            queue_draw ();
+
+            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
+             * are sometimes not properly aligned when first drawn, only after redrawing the view. */ 
+            Idle.add (() => {
+                queue_draw ();
+                return false;
+            });
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -1160,7 +1172,7 @@ namespace FM {
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
-            if (get_realized ())
+            if (get_realized () && slot.directory.is_local)
                 load_thumbnails (slot.directory, zoom);
         }
 
@@ -2042,6 +2054,8 @@ namespace FM {
         /** Menu action functions */
 
         private void create_from_template (GOF.File template) {
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
                                                           slot.location,
@@ -2063,7 +2077,11 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            if (thumbnail_source_id != 0 || !(slot is GOF.AbstractSlot) || slot.directory == null)
+            if (thumbnail_source_id != 0 ||
+                !(slot is GOF.AbstractSlot) ||
+                slot.directory == null ||
+                !slot.directory.is_local)
+
                 return;
 
             thumbnail_source_id = GLib.Timeout.add (175, () => {
@@ -2125,7 +2143,7 @@ namespace FM {
         }
 
         private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-            /* Async function checks dir is not loading */
+            /* Async function checks dir is not loading and dir is local */
             dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
         }
 
@@ -2754,7 +2772,7 @@ namespace FM {
 
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_column, name_renderer as Gtk.CellRenderer, true, false);
+            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
 
             int start_offset= 0, end_offset = -1;
 
@@ -2900,10 +2918,8 @@ namespace FM {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                Gtk.TreeViewColumn? col,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.TreeViewColumn? col,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);
