@@ -230,7 +230,6 @@ gboolean
 gof_file_is_smb_share (GOFFile *file)
 {
     gboolean res;
-
     res = FALSE;
 
     if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
@@ -243,7 +242,6 @@ gboolean
 gof_file_is_smb_server (GOFFile *file)
 {
     gboolean res;
-
     res = FALSE;
 
     if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
@@ -303,17 +301,21 @@ gof_file_is_other_uri_scheme (GOFFile *file)
 
 void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
 {
-    if (!file->is_hidden && file->uri != NULL && file->icon == NULL) {
+    if (file->icon != NULL)
+        return;
+
+    if (!file->is_hidden && file->uri != NULL) {
         char *path = g_filename_from_uri (file->uri, NULL, NULL);
         file->icon = get_icon_user_special_dirs(path);
         _g_free0 (path);
     }
 
-    if (file->icon == NULL && !g_file_is_native (file->location)
+    if (!g_file_is_native (file->location)
         && gof_file_is_remote_uri_scheme (file))
+
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
-    if (file->icon == NULL)
-        file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
+
+    file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
 }
 
 static void
