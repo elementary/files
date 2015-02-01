@@ -102,8 +102,8 @@ namespace Eel {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-stock-dialogs.h")]
 namespace Eel {
-    public Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    public Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 }
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]

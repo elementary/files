@@ -5982,6 +5982,19 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
+        if (g_file_has_uri_scheme (target_dir, "trash")) {
+            char *primary = f (_("Cannot copy into trash."));
+            char *secondary = f (_("It is not permitted to copy files into the trash"));
+            eel_show_error_dialog (primary,
+                                   secondary,
+                                   parent_window);
+
+            if (done_callback != NULL)
+                ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
+
+            return;
+        }
+
         /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||

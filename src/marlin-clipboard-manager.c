@@ -330,7 +330,7 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
                                               NULL,
                                               request->target_file,
                                               GDK_ACTION_COPY,
-                                              NULL,
+                                              request->widget,
                                               request->new_files_closure,
                                               request->widget);
 
@@ -339,7 +339,7 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
                                               NULL,
                                               request->target_file,
                                               GDK_ACTION_MOVE,
-                                              NULL,
+                                              request->widget,
                                               request->new_files_closure,
                                               request->widget);
 
@@ -727,7 +727,6 @@ void
 marlin_clipboard_manager_paste_files (MarlinClipboardManager *manager,
                                       GFile                  *target_file,
                                       GtkWidget              *widget,
-                                      //MarlinCopyCallback     *new_files_closure)
                                       GCallback     *new_files_closure)
 {
     MarlinClipboardPasteRequest *request;

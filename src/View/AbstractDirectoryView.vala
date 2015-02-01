@@ -807,8 +807,10 @@ namespace FM {
         }
 
         public static void after_trash_or_delete (bool user_cancel, void* callback_data) {
-            FM.AbstractDirectoryView view = (FM.AbstractDirectoryView)callback_data;
-                view.selection_was_removed = false;
+            assert (callback_data != null);
+
+            var view = (FM.AbstractDirectoryView)callback_data;
+            view.selection_was_removed = false;
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -1015,6 +1017,8 @@ namespace FM {
         }
 
         public static void after_pasting_files (GLib.HashTable uris, void* pointer) {
+            assert (pointer != null);
+
             var view = pointer as FM.AbstractDirectoryView; 
             if (view.paste_timer == null)
                 view.paste_timer = new GLib.Timer ();
@@ -1048,8 +1052,6 @@ namespace FM {
             var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.get_can_paste ()) {
-                pasting_files = true;
-
                 GLib.File target;
                 GLib.Callback? call_back;
 
@@ -1058,9 +1060,12 @@ namespace FM {
                 else
                     target = slot.location;
 
-                if (target.has_uri_scheme ("trash"))
+                if (target.has_uri_scheme ("trash")) {
+                    /* Pasting files into trash is equivalent to trash or delete action */
+                    pasting_files = false; 
                     call_back = (GLib.Callback)after_trash_or_delete;
-                else {
+                } else {
+                    pasting_files = true;
                     prepare_to_select_added_files ();
                     /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
                     slot.directory.block_monitor ();
@@ -1609,7 +1614,10 @@ namespace FM {
             if (model != null) {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
-                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+
+                if (!in_trash)
+                    plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
                 Eel.pop_up_context_menu (menu,
@@ -1623,12 +1631,16 @@ namespace FM {
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
             GLib.Menu menu = new GLib.Menu ();
 
-            if (in_trash)
-                menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
-            else {
-                menu.append_section (null, build_menu_open (ref builder));
+            var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
 
-                var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
+            if (in_trash) {
+                menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
+                clipboard_menu.remove (1); /* Copy */
+                clipboard_menu.remove (1); /* Paste (index updated by previous line) */
+
+                menu.append_section (null, clipboard_menu);
+            } else {
+                menu.append_section (null, build_menu_open (ref builder));
                 /* Do not display the 'Paste into' menuitem if selection is not a folder.
                  * We have to hard-code the menuitem index so any change to the clipboard-
                  * selection menu definition in directory_view_popup.ui may necessitate changing
@@ -1650,8 +1662,15 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash) {
-            if (in_trash)
-                return null;
+            if (in_trash) {
+                var menu = new GLib.Menu ();
+                if (common_actions.get_action_enabled ("paste_into")) {
+                    menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+
+                    return menu as MenuModel;
+                } else
+                    return null;
+            }
 
             var menu = new GLib.Menu ();
             menu.append_section (null, build_menu_open (ref builder));
@@ -1821,7 +1840,7 @@ namespace FM {
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             /* TODO inhibit copy for unreadable files see bug #1392465*/
-            action_set_enabled (common_actions, "copy", true); 
+            action_set_enabled (common_actions, "copy", !in_trash); 
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
@@ -2188,8 +2207,9 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (no_mods && !in_trash) {
-                        trash_or_delete_selected_files (false);
+                    if (no_mods) {
+                        /* If already in trash, permanently delete the file */
+                        trash_or_delete_selected_files (in_trash);
                         return true;
                     } else if (only_shift_pressed) {
                         trash_or_delete_selected_files (true);
@@ -2238,11 +2258,15 @@ namespace FM {
                     break;
 
                 case Gdk.Key.c:
-                    if (only_control_pressed && !in_trash) {
-                 /* Should not copy files in the trash - cut instead */
-                        if (slot.directory.location.has_uri_scheme ("trash"))
+                    if (only_control_pressed) {
+                        /* Should not copy files in the trash - cut instead */
+                        if (in_trash) {
+                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                     _("Cutting the selection instead"),
+                                                     window as Gtk.Window);
+
                             selection_actions.activate_action ("cut", null);
-                        else
+                        } else
                             common_actions.activate_action ("copy", null);
 
                         return true;
@@ -2261,7 +2285,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
-                    if (only_control_pressed && !in_trash) {
+                    if (only_control_pressed) {
                         selection_actions.activate_action ("cut", null);
                         return true;
                     }
