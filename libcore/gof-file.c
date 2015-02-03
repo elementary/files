@@ -232,9 +232,11 @@ gof_file_is_smb_share (GOFFile *file)
     gboolean res;
     res = FALSE;
 
-    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
+    if (gof_file_is_smb_uri_scheme (file))
+        res = get_number_of_uri_parts (file) <= 3;
+    else if (gof_file_is_network_uri_scheme (file))
         res = get_number_of_uri_parts (file) == 3;
-    }
+
     return res;
 }
 
