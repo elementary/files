@@ -25,19 +25,17 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
     public double last_height = 0;
     public double text_width = -1;
     public double text_height = -1;
-    public int left_padding = 1;
-    public int right_padding = 1;
     public double max_width = -1;
     public double x = 0;
     public double width {
         get {
-            return text_width + left_padding + right_padding + last_height / 2;
+            return text_width + padding.left + padding.right + last_height / 2;
         }
     }
     public double real_width {
         get {
             return (max_width > 0 ? max_width : text_width) +
-                    left_padding + right_padding + last_height / 2;
+                    padding.left + padding.right + last_height / 2;
         }
     }
     Gdk.Pixbuf icon;
@@ -46,11 +44,9 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
     public bool display_text = true;
     public string? text_displayed = null;
 
-    public BreadcrumbsElement (string text_, int left_padding, int right_padding) {
+    public BreadcrumbsElement (string text_) {
         text = text_;
         text_displayed = Uri.unescape_string (text);
-        this.left_padding = left_padding;
-        this.right_padding = right_padding;
     }
 
     public void set_icon (Gdk.Pixbuf icon_) {
@@ -65,9 +61,16 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
     }
 
     public bool pressed = false;
+    private Gtk.Border padding =  Gtk.Border ();
 
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget) {
         int estimated_border_size = 3; /* to be under the borders properly. */
+        var state = button_context.get_state ();
+        if (pressed) {
+            state |= Gtk.StateFlags.ACTIVE;
+        }
+        padding = button_context.get_padding (state);
+        double line_width = cr.get_line_width ();
 
         cr.restore ();
         cr.save ();
@@ -104,31 +107,32 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         if (pressed) {
             cr.save ();
             double text_width = max_width > 0 ? max_width : this.text_width;
-            cr.move_to (x - height / 2 - estimated_border_size, 0);
-            cr.line_to (x - height / 2 - estimated_border_size, y);
-            cr.line_to (x - estimated_border_size, y + height / 2);
-            cr.line_to (x - height / 2 - estimated_border_size, y + height);
-            cr.line_to (x - height / 2 - estimated_border_size, y + height + 3);
-            cr.line_to (x + text_width + estimated_border_size, y + height + 3);
-            cr.line_to (x + text_width + estimated_border_size, y + height);
-            cr.line_to (x + text_width + height / 2 + estimated_border_size, y + height / 2);
-            cr.line_to (x + text_width + estimated_border_size, y);
-            cr.line_to (x + text_width + estimated_border_size, 0);
+            var base_x = x;
+            var left_x = base_x - height / 2 + line_width;
+            var right_x = base_x + text_width + padding.left + padding.right;
+            var arrow_right_x = right_x + height / 2;
+            var top_y = y + padding.top - line_width;
+            var bottom_y = y + height - padding.bottom + line_width;
+            var arrow_y = y + height / 2;
+            cr.move_to (left_x, top_y);
+            cr.line_to (base_x, arrow_y);
+            cr.line_to (left_x, bottom_y);
+            cr.line_to (right_x, bottom_y);
+            cr.line_to (arrow_right_x, arrow_y);
+            cr.line_to (right_x, top_y);
             cr.close_path ();
 
             cr.clip ();
             button_context.save ();
             button_context.set_state (Gtk.StateFlags.ACTIVE);
-            button_context.render_background (cr, x - height / 2 - estimated_border_size, y,
-                                              text_width + 2 * height / 2 + 4 * estimated_border_size, height);
-            button_context.render_frame (cr, 0, y, widget.get_allocated_width (), height );
+            button_context.render_background (cr, left_x, y, text_width + height + padding.left + padding.right + 2 * line_width, height);
+            button_context.render_frame (cr, 0, padding.top - line_width, widget.get_allocated_width (), height - line_width);
             button_context.restore ();
             cr.restore ();
         }
 
-        x += left_padding;
-
-        x -= Math.sin (offset*Math.PI / 2) * width;
+        x += padding.left;
+        x -= Math.sin (offset*Math.PI_2) * width;
         if (icon == null) {
             button_context.render_layout (cr, x,
                                           y + height/2 - text_height/2, layout);
@@ -144,43 +148,21 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
                                           y + height/2 - text_height/2, layout);
         }
 
-        if (pressed) {
-            double text_width = max_width > 0 ? max_width : this.text_width;
-            cr.restore ();
-
-            cr.move_to (0, 0);
-            cr.line_to (x - height / 2 - 2 * estimated_border_size - 1, 0);
-            cr.line_to (x - estimated_border_size, y + height / 2);
-            cr.line_to (x - height / 2 - 2 * estimated_border_size - 1, y + height + 3);
-            cr.line_to (0, y + height + 3);
-            cr.close_path ();
-
-            cr.move_to (x + text_width, y + height + 3);
-            cr.line_to (x + text_width, y + height);
-            cr.line_to (x + text_width + height / 2, y + height / 2);
-            cr.line_to (x + text_width, y);
-            cr.line_to (x + text_width, 0);
-            cr.line_to (widget.get_allocated_width (), 0);
-            cr.line_to (widget.get_allocated_width (), y + height);
-            cr.line_to (widget.get_allocated_width (), y + height + 3);
-            cr.close_path ();
-            cr.clip ();
-
-            cr.save ();
-        }
-
-        x += right_padding + (max_width > 0 ? max_width : text_width);
+        x += padding.right + (max_width > 0 ? max_width : text_width);
 
         /* Draw the separator */
         cr.save ();
         cr.translate (x - height / 4, y + height / 2);
-        cr.rectangle (0, -height / 2 + 2, height - 4, height - 4);
+        cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
         cr.clip ();
-        cr.rotate (Math.PI / 4);
+        cr.rotate (Math.PI_4);
         button_context.save ();
         button_context.add_class ("noradius-button");
-        button_context.render_frame (cr, -height / 2, -height / 2,
-                                     Math.sqrt (height * height), Math.sqrt (height * height));
+        if (pressed) {
+            button_context.set_state (Gtk.StateFlags.ACTIVE);
+        }
+
+        button_context.render_frame (cr, -height / 2, -height / 2, height, height);
         button_context.restore ();
         cr.restore ();
 
