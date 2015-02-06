@@ -61,14 +61,15 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
     }
 
     public bool pressed = false;
-    private Gtk.Border padding =  Gtk.Border ();
+    private Gtk.Border padding = Gtk.Border ();
+    private static const int ICON_MARGIN = 3;
 
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget) {
-        int estimated_border_size = 3; /* to be under the borders properly. */
         var state = button_context.get_state ();
         if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
         }
+
         padding = button_context.get_padding (state);
         double line_width = cr.get_line_width ();
 
@@ -82,10 +83,10 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         if (icon == null) {
             computetext_width (layout);
         } else if (!display_text) {
-            text_width = icon.get_width ();
+            text_width = icon.get_width () + ICON_MARGIN;
         } else {
             computetext_width (layout);
-            text_width += icon.get_width () + 5;
+            text_width += icon.get_width () + 2 * ICON_MARGIN;
         }
 
         if (max_width > 0) {
@@ -97,9 +98,9 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
             cr.move_to (x - height/2, y);
             cr.line_to (x, y + height/2);
             cr.line_to (x - height/2, y + height);
-            cr.line_to (x + text_width + estimated_border_size, y + height);
-            cr.line_to (x + text_width + height/2 + estimated_border_size, y + height/2);
-            cr.line_to (x + text_width + estimated_border_size, y);
+            cr.line_to (x + text_width + padding.left, y + height);
+            cr.line_to (x + text_width + height/2 + padding.left, y + height/2);
+            cr.line_to (x + text_width + padding.left, y);
             cr.close_path ();
             cr.clip ();
         }
@@ -137,14 +138,12 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
             button_context.render_layout (cr, x,
                                           y + height/2 - text_height/2, layout);
         } else if (!display_text) {
-            Gdk.cairo_set_source_pixbuf (cr, icon, x,
+            button_context.render_icon (cr, icon, x + ICON_MARGIN,
                                          y + height/2 - icon.get_height ()/2);
-            cr.paint ();
         } else {
-            Gdk.cairo_set_source_pixbuf (cr, icon, x,
+            button_context.render_icon (cr, icon, x + ICON_MARGIN,
                                          y + height/2 - icon.get_height ()/2);
-            cr.paint ();
-            button_context.render_layout (cr, x + icon.get_width () + 5,
+            button_context.render_layout (cr, x + icon.get_width () + 2 * ICON_MARGIN,
                                           y + height/2 - text_height/2, layout);
         }
 
