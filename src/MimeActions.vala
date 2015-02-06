@@ -145,11 +145,12 @@ public class Marlin.MimeActions {
 
             if (result != null)
                 result = intersect_application_lists (result, one_result);
+
             else
                 result = one_result.copy ();
 
             if (result == null)
-                break;
+                return null;
 
             previous_file = file;
         }
@@ -189,12 +190,11 @@ public class Marlin.MimeActions {
     }
 
     private static void filter_non_uri_apps (List<AppInfo> apps) {
-        var non_uri_apps = new List<AppInfo> ();
+         List<AppInfo> non_uri_apps = null;
 
         foreach (var app in apps) {
-            if (!app.supports_uris ()) {
+            if (!app.supports_uris ())
                 non_uri_apps.append (app);
-            }
         }
 
         foreach (var app in non_uri_apps) {

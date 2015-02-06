@@ -232,9 +232,7 @@ gof_file_is_smb_share (GOFFile *file)
     gboolean res;
     res = FALSE;
 
-    if (gof_file_is_smb_uri_scheme (file))
-        res = get_number_of_uri_parts (file) <= 3;
-    else if (gof_file_is_network_uri_scheme (file))
+    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file))
         res = get_number_of_uri_parts (file) == 3;
 
     return res;
@@ -262,7 +260,7 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
-    return (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_share (file));
+    return (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_server (file));
 }
 
 gboolean
@@ -2478,6 +2476,9 @@ gof_file_is_folder (GOFFile *file)
     if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
         return TRUE;
 
+    if (gof_file_is_smb_share)
+        return TRUE;
+
     if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
         file->info != NULL &&
         g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
@@ -2491,7 +2492,6 @@ gof_file_is_folder (GOFFile *file)
 
             return TRUE;
     }
-
     return FALSE;
 }
 

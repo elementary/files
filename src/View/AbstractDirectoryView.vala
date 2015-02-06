@@ -1649,11 +1649,11 @@ namespace FM {
             GLib.MenuModel? model = null;
 
             if (get_selected_files () != null)
-                model = build_menu_selection (ref builder, in_trash, valid_selection_for_edit ());
+                model = build_menu_selection (ref builder, in_trash);
             else
                 model = build_menu_background (ref builder, in_trash);
 
-            if (model != null) {
+            if (model != null && model is GLib.MenuModel) {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
@@ -1674,15 +1674,21 @@ namespace FM {
             return true;
         }
 
-        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool can_edit) {
+        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
             GLib.Menu menu = new GLib.Menu ();
 
             if (in_trash) {
                 menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             } else {
-                menu.append_section (null, build_menu_open (ref builder));
-                if (can_edit) {
+                var open_menu = build_menu_open (ref builder);
+                if (open_menu != null)
+                    menu.append_section (null, open_menu);
+
+                if (slot.directory.file.is_smb_server ()) {
+                    if (common_actions.get_action_enabled ("paste_into"))
+                        menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+                } else if (valid_selection_for_edit ()) {
                     var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
                     /* Do not display the 'Paste into' menuitem if selection is not a folder.
                      * We have to hard-code the menuitem index so any change to the clipboard-
@@ -1700,13 +1706,15 @@ namespace FM {
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
 
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
-                }
+
+                } 
 
                 if (common_actions.get_action_enabled ("bookmark"))
                     menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
 
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
+
             return menu as MenuModel;
         }
 
@@ -1745,6 +1753,7 @@ namespace FM {
 
         private GLib.MenuModel build_menu_open (ref Gtk.Builder builder) {
             var menu = new GLib.Menu ();
+
             string label = _("Invalid");
             unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             unowned GOF.File selected_file = selection.data;
@@ -1762,7 +1771,7 @@ namespace FM {
 
             GLib.MenuModel? app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
-            if (app_submenu != null) {
+            if (app_submenu != null && app_submenu.get_n_items () > 0) {
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ())
                     label =  _("Open in");
                 else
@@ -1793,25 +1802,26 @@ namespace FM {
             filter_default_app_from_open_with_apps ();
             filter_this_app_from_open_with_apps ();
 
-            if (open_with_apps.length () > 0) {
+            if (open_with_apps != null) {
                 var apps_section = new GLib.Menu ();
                 string last_label = "";
                 open_with_apps.@foreach ((app) => {
-                    var label = app.get_display_name ();
+                    if (app != null && app is AppInfo) {
+                        var label = app.get_display_name ();
+                        /* The following mainly applies to Nautilus, whose display name is also "Files" */
+                        if (label == "Files") {
+                            label = app.get_executable ();
+                            label = label[0].toupper ().to_string () + label.substring (1);
+                        }
 
-                    /* The following mainly applies to Nautilus, whose display name is also "Files" */
-                    if (label == "Files") {
-                        label = app.get_executable ();
-                        label = label[0].toupper ().to_string () + label.substring (1);
-                    }
-
-                    /* Do not show same name twice - some apps have more than one .desktop file
-                     * with the same name (e.g. Nautilus)
-                     */       
-                    if (label != last_label) {
-                        index++;
-                        apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                        last_label = label.dup ();
+                        /* Do not show same name twice - some apps have more than one .desktop file
+                         * with the same name (e.g. Nautilus)
+                         */       
+                        if (label != last_label) {
+                            index++;
+                            apps_section.append (label, "selection.open_with_app::" + index.to_string ());
+                            last_label = label.dup ();
+                        }
                     }
                 });
 
@@ -1875,7 +1885,7 @@ namespace FM {
 
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
-            bool single_folder = true; /* background is a folder */
+            bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
 
@@ -1888,8 +1898,10 @@ namespace FM {
                     can_rename = file.is_writable ();
                 } else
                     critical ("File in selection is null");
-            } else
+            } else {
                 file = slot.directory.file;
+                single_folder = (!more_than_one_selected && file.is_folder ());
+            }
 
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
@@ -2018,13 +2030,19 @@ namespace FM {
             unowned GLib.List<AppInfo> l = open_with_apps;
 
             while (l != null) {
-                exec_name = l.data.get_executable ();
+                if (l.data is AppInfo) {
+                    exec_name = l.data.get_executable ();
 
-                if (exec_name != null && (exec_name == APP_NAME || exec_name == TERMINAL_NAME)) {
+                    if (exec_name != null && (exec_name == APP_NAME || exec_name == TERMINAL_NAME)) {
+                        open_with_apps.delete_link (l);
+                        break;
+                    }
+                } else {
                     open_with_apps.delete_link (l);
-                    break;
+                    l = open_with_apps;
+                    if (l == null)
+                        break;
                 }
-
                 l = l.next;
             }
         }
@@ -2039,7 +2057,7 @@ namespace FM {
             if (id2 != null) {
                 unowned GLib.List<AppInfo> l = open_with_apps;
 
-                while (l != null) {
+                while (l != null && l.data is AppInfo) {
                     id1 = l.data.get_id ();
 
                     if (id1 != null && id1 == id2) {
@@ -2505,15 +2523,13 @@ namespace FM {
         }
 
         protected void on_name_editing_canceled () {
-                if (!renaming)
-                    return;
+            if (!renaming)
+                return;
 
-                renaming = false;
-                name_renderer.editable = false;
-                unfreeze_updates ();
-                grab_focus ();
-                if (!slot.directory.is_local)
-                    slot.directory.need_reload ();
+            renaming = false;
+            name_renderer.editable = false;
+            unfreeze_updates ();
+            grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {
@@ -2535,9 +2551,11 @@ namespace FM {
                                                        new_name);
                     dialog.run ();
                     dialog.destroy ();
-                    on_name_editing_canceled ();
+                    new_name = "";
                 }
+            }
 
+            if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
@@ -2551,6 +2569,9 @@ namespace FM {
                     file.rename (new_name, (file, result_location, error) => {
                         if (error != null)
                             warning ("Rename Error:  %s", error.message);
+
+                        if (!slot.directory.is_local)
+                            slot.directory.need_reload ();
                     });
                 }
             }
@@ -2926,9 +2947,6 @@ namespace FM {
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
         protected abstract void thaw_tree ();
-
-
-        
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

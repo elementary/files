@@ -587,12 +587,18 @@ namespace Marlin.View {
 
         private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
             update_undo_actions ();
-            undo_manager.undo (null);
+            undo_manager.undo (this, after_undo_redo);
+        }
+
+        public static void after_undo_redo (void  *data) {
+            var window = data as Marlin.View.Window;
+            if (!window.current_tab.slot.directory.is_local)
+                window.current_tab.reload ();
         }
 
         private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
             update_undo_actions ();
-            undo_manager.redo (null);
+            undo_manager.redo (this, after_undo_redo);
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
@@ -604,6 +610,7 @@ namespace Marlin.View {
                     action.set_state (new GLib.Variant.boolean (state));
             }
         }
+
 
         public void change_state_show_hidden (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();

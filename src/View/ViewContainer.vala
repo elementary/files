@@ -45,6 +45,13 @@ namespace Marlin.View {
                 return slot != null ? slot.uri : null;
             }
         }
+
+        public GOF.AbstractSlot? slot {
+            get {
+                return get_current_slot ();
+            }
+        }
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;

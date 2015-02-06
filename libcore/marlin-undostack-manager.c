@@ -402,7 +402,8 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
 void
 marlin_undo_manager_redo (MarlinUndoManager *manager,
                           GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb)
+                          MarlinUndoFinishCallback cb,
+                          gpointer callback_data)
 {
     GList *uris;
     GOFFile *file;
@@ -486,8 +487,6 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             g_object_unref (fparent);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
-            //amtest
-            //printf ("MARLIN_UNDO_MOVETRASH\n");
             if (g_hash_table_size (action->trashed) > 0) {
                 GList *uri_to_trash = g_hash_table_get_keys (action->trashed);
                 uris = uri_list_to_gfile_list (uri_to_trash);
@@ -553,7 +552,8 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 void
 marlin_undo_manager_undo (MarlinUndoManager *manager,
                           GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb)
+                          MarlinUndoFinishCallback cb,
+                          gpointer done_callback_data)
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
