@@ -326,7 +326,7 @@ namespace Marlin.View.Chrome
             if (file == null)
                 return;
 
-            // don't use get_basename (), it will return "folder" for "/folder/"
+            /* don't use get_basename (), it will return "folder" for "/folder/" */
             int last_slash = text.last_index_of_char ('/');
             if (last_slash > -1 && last_slash < text.length)
                 to_search = text.slice (last_slash + 1, text.length);
@@ -347,14 +347,14 @@ namespace Marlin.View.Chrome
         }
 
         private void on_files_loaded_menu () {
-            // First the "Open in new tab" menuitem is added to the menu.
+            /* First the "Open in new tab" menuitem is added to the menu. */
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
                 win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
-            // Then the "Open with" menuitem is added to the menu.
+            /* Then the "Open with" menuitem is added to the menu. */
             var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
             menu.append (menu_open_with);
 
@@ -443,7 +443,7 @@ namespace Marlin.View.Chrome
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => { reset_elements_states (); });
             menu.deactivate.connect (() => { reset_elements_states (); });
-            /* current_right_click_root is parent of the directory named on the breadcrumb. */ 
+            /* current_right_click_root is parent of the directory named on the breadcrumb. */
             var directory = File.new_for_uri (current_right_click_root);
             files_menu = GOF.Directory.Async.from_gfile (directory);
             files_menu.done_loading.connect (on_files_loaded_menu);

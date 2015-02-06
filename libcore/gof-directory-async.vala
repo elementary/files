@@ -275,9 +275,6 @@ public class GOF.Directory.Async : Object {
             return;
 
         if (state != State.LOADED) {
-            /* clear directory info if it's not fully loaded */
-            if (state == State.LOADING)
-                clear_directory_info ();
 
             list_directory.begin (file_loaded_func);
 
@@ -288,7 +285,8 @@ public class GOF.Directory.Async : Object {
                     monitor.changed.connect (directory_changed);
                 } catch (IOError e) {
                     if (!(e is IOError.NOT_MOUNTED)) {
-                        warning ("directory monitor failed: %s %s", e.message, file.uri);
+                        /* Will fail for remote filesystems - not an error */
+                        debug ("directory monitor failed: %s %s", e.message, file.uri);
                     }
                 }
             }
@@ -328,9 +326,9 @@ public class GOF.Directory.Async : Object {
         if (monitor != null && monitor_blocked) {
             monitor_blocked = false;
             monitor.changed.connect (directory_changed);
-            if (!is_local)
-                need_reload ();
         }
+        if (!is_local)
+            need_reload ();
     }
 
     private void update_longest_file_name (GOF.File gof) {
@@ -427,7 +425,7 @@ public class GOF.Directory.Async : Object {
                 return;
             }
         } catch (Error err) {
-            debug ("Listing directory error: %s %s", err.message, file.uri);
+            warning ("Listing directory error: %s %s", err.message, file.uri);
             state = State.NOT_LOADED;
 
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
@@ -777,7 +775,6 @@ public class GOF.Directory.Async : Object {
         }
 
         sorted_dirs.sort (GOF.File.compare_by_display_name);
-
         return sorted_dirs;
     }
 
