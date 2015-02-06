@@ -258,7 +258,16 @@ public class GOF.Directory.Async : Object {
         state = State.NOT_LOADED;
     }
 
-    public void load () {
+    public delegate void GOFFileLoadedFunc (GOF.File file);
+
+    /** Views call the following function with null parameter - file_loaded and done_loading
+      * signals are emitted and cause the view and view container to update.
+      * 
+      * LocationBar calls this function, with a callback, on its own Async instances in order
+      * to perform filename completion.- Emitting a done_loaded signal in that case would cause
+      * the premature ending of text entry.
+     **/ 
+    public void load (GOFFileLoadedFunc? file_loaded_func = null) {
         cancellable.reset ();
         longest_file_name = "";
         permission_denied = false;
@@ -266,34 +275,45 @@ public class GOF.Directory.Async : Object {
             return;
 
         if (state != State.LOADED) {
-            list_directory.begin ();
+            /* clear directory info if it's not fully loaded */
+            if (state == State.LOADING)
+                clear_directory_info ();
 
-            try {
-                monitor = location.monitor_directory (0);
-                monitor.rate_limit = 100;
-                monitor.changed.connect (directory_changed);
-            } catch (IOError e) {
-                if (!(e is IOError.NOT_MOUNTED)) {
-                    debug ("directory monitor failed: %s %s", e.message, file.uri);
+            list_directory.begin (file_loaded_func);
+
+            if (file_loaded_func == null) {
+                try {
+                    monitor = location.monitor_directory (0);
+                    monitor.rate_limit = 100;
+                    monitor.changed.connect (directory_changed);
+                } catch (IOError e) {
+                    if (!(e is IOError.NOT_MOUNTED)) {
+                        warning ("directory monitor failed: %s %s", e.message, file.uri);
+                    }
                 }
             }
         } else {
-            load_cached_files ();
-            done_loading ();
-        }
-    }
+            /* even if the directory is currently loading model_add_file manage duplicates */
+            debug ("directory %s load cached files", file.uri);
 
-    public void load_cached_files () {
-        debug ("directory %s load cached files", file.uri);
-        bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
+            bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
 
-        foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && (!gof.is_hidden || show_hidden)) {
-                if (track_longest_name)
-                    update_longest_file_name (gof);
+            foreach (GOF.File gof in file_hash.get_values ()) {
+                if (gof != null) {
+                    if (gof.info != null && (!gof.is_hidden || show_hidden)) {
+                        if (track_longest_name)
+                            update_longest_file_name (gof);
 
-                file_loaded (gof);
+                        if (file_loaded_func == null)
+                            file_loaded (gof);
+                        else
+                            file_loaded_func (gof);
+                    }
+                }
             }
+
+            if (file_loaded_func == null && !cancellable.is_cancelled ())
+                done_loading ();
         }
     }
 
@@ -354,11 +374,12 @@ public class GOF.Directory.Async : Object {
         yield location.mount_enclosing_volume (0, mount_op, cancellable);
     }
 
-    public async void list_directory () {
+    private async void list_directory (GOFFileLoadedFunc? file_loaded_func = null) {
         if (!can_load) {
             state = State.NOT_LOADED;
             return;
         }
+
         file.exists = true;
         files_count = 0;
         state = State.LOADING;
@@ -388,7 +409,10 @@ public class GOF.Directory.Async : Object {
                         if (track_longest_name)
                             update_longest_file_name (gof);
 
-                        file_loaded (gof);
+                        if (file_loaded_func == null)
+                            file_loaded (gof);
+                        else
+                            file_loaded_func (gof);
                     }
 
                     files_count++;
@@ -414,7 +438,8 @@ public class GOF.Directory.Async : Object {
                 file.is_mounted = false;
         }
 
-        done_loading ();
+        if (file_loaded_func == null && !cancellable.is_cancelled ())
+            done_loading ();
     }
 
     public GOF.File? file_hash_lookup_location (GLib.File? location) {

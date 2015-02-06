@@ -62,8 +62,12 @@ namespace Marlin.View.Chrome
             this.win = win;
             bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
-
             bread.path_changed.connect (on_path_changed);
+
+            bread.reload.connect (() => {
+                win.win_actions.activate_action ("refresh", null);
+            });
+
             bread.activate_alternate.connect ((file) => { activate_alternate(file); });
             bread.notify["search-mode"].connect (() => {
                 if (!bread.search_mode) {
@@ -78,6 +82,7 @@ namespace Marlin.View.Chrome
             margin_bottom = 4;
             margin_left = 3;
 
+            bread.set_entry_secondary_icon (false, true);
             pack_start (bread, true, true, 0);
         }
 
@@ -335,18 +340,10 @@ namespace Marlin.View.Chrome
                 file = file.get_parent ();
             else
                 return;
-
-            var directory = file;
-            var files_cache = files;
             
-            files = GOF.Directory.Async.from_gfile (directory);
-            if (files.file.exists) {
-                /* Verify that we got a new instance of files so we do not double up events */
-                if (files_cache != files)
-                    files.file_loaded.connect (on_file_loaded);
-
-                files.load_cached_files ();
-            }
+            files = GOF.Directory.Async.from_gfile (file);
+            if (files.file.exists)
+                files.load (on_file_loaded);
         }
 
         private void on_files_loaded_menu () {
@@ -410,7 +407,6 @@ namespace Marlin.View.Chrome
             menu_open_with.set_submenu (submenu_open_with);
             menu.append (new Gtk.SeparatorMenuItem ());
 
-
             unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
             foreach (var gof in sorted_dirs) {
                 var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
@@ -422,6 +418,9 @@ namespace Marlin.View.Chrome
                 });
             }
             menu.show_all ();
+            /* Release the Async directory as soon as possible */
+            files_menu.done_loading.disconnect (on_files_loaded_menu);
+            files_menu = null;
         }
 
         private void launch_uri_with_app (AppInfo app, string uri) {
@@ -444,9 +443,8 @@ namespace Marlin.View.Chrome
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => { reset_elements_states (); });
             menu.deactivate.connect (() => { reset_elements_states (); });
+            /* current_right_click_root is parent of the directory named on the breadcrumb. */ 
             var directory = File.new_for_uri (current_right_click_root);
-            if (files_menu != null)
-                files_menu.done_loading.disconnect (on_files_loaded_menu);
             files_menu = GOF.Directory.Async.from_gfile (directory);
             files_menu.done_loading.connect (on_files_loaded_menu);
             files_menu.load ();

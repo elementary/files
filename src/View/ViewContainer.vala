@@ -368,6 +368,10 @@ namespace Marlin.View {
             if (file == null || location.equal (file))
                 return;
 
+            var filetype = file.query_file_type (0);
+            if (filetype == FileType.UNKNOWN)
+                return;
+
             GLib.File? loc = null;
             File? parent = file.get_parent ();
             if (parent != null && location.equal (file.get_parent ())) {
@@ -378,7 +382,7 @@ namespace Marlin.View {
                 } else
                     loc = file;
             } else if (!select_in_current_only) {
-                if (file.query_file_type (0) == FileType.DIRECTORY)
+                if (filetype == FileType.DIRECTORY)
                     loc = file;
                 else if (parent != null) {
                     loc = parent;

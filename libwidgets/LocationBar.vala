@@ -57,7 +57,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
             _search_mode = value;
 
-            primary_icon_name = _search_mode ? "edit-find-symbolic" : null;
+            if (_search_mode) {
+                primary_icon_name = "edit-find-symbolic";
+                show_refresh_icon (false);
+            } else
+                primary_icon_name = null;
 
             grab_focus ();
         }
@@ -66,10 +70,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     protected string text_completion = "";
     protected bool multiple_completions = false;
     protected bool text_changed = false;
-    protected bool arrow_hovered = false;
     protected bool ignore_focus_in = false;
     protected bool ignore_change = false;
-    private Gdk.Pixbuf arrow_img;
 
     /* if we must display the BreadcrumbsElement which are in  newbreads. */
     bool view_old = false;
@@ -97,10 +99,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void path_changed (File file);
     public signal void need_completion ();
     public signal void search_changed (string text);
+    public signal void reload ();
 
     List<IconDirectory?> icons;
 
     string current_path = "";
+    string refresh_tip = _("Reload this folder");
 
     int selected = -1;
     int space_breads = 12;
@@ -123,13 +127,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     construct {
         icon_factory = Granite.Services.IconFactory.get_default ();
         icons = new List<IconDirectory?> ();
-        
-        /* Load arrow image */
-        try {
-            arrow_img = Gtk.IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, Gtk.IconLookupFlags.GENERIC_FALLBACK);
-        } catch (Error err) {
-            stderr.printf ("Unable to load home icon: %s", err.message);
-        }
 
         button_context = get_style_context ();
         button_context.add_class ("button");
@@ -155,8 +152,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         secondary_icon_sensitive = true;
         truncate_multiline = true;
         activate.connect (on_activate);
-        icon_press.connect (on_activate);
-        motion_notify_event.connect (on_motion_notify);
+        button_press_event.connect (on_button_press_event);
+        button_release_event.connect (on_button_release_event);
+        icon_press.connect (on_icon_press);
+        motion_notify_event.connect_after (after_motion_notify);
         focus_in_event.connect (on_focus_in);
         focus_out_event.connect (on_focus_out);
         grab_focus.connect_after (on_grab_focus);
@@ -170,8 +169,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         drag_data_received.connect (on_drag_data_received);
         drag_drop.connect (on_drag_drop);
     }
-    
-    public override bool key_press_event (Gdk.EventKey event) {
+
+    public bool on_key_press_event (Gdk.EventKey event) {
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
@@ -196,7 +195,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return base.key_press_event (event);
     }
 
-    public override bool button_press_event (Gdk.EventButton event) {
+    public bool on_button_press_event (Gdk.EventButton event) {
+        /* We need to distinguish whether the event comes from one of the icons.
+         * There doesn't seem to be a way of doing this directly so we check the window width */
+        if (event.window.get_width () < 24)
+            return false;
+
         if (is_focus)    
             return base.button_press_event (event);
 
@@ -234,7 +238,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return true;
     }
 
-    public override bool button_release_event (Gdk.EventButton event) {
+    public bool on_button_release_event (Gdk.EventButton event) {
+        /* We need to distinguish whether the event comes from one of the icons.
+         * There doesn't seem to be a way of doing this directly so we check the window width */
+        if (event.window.get_width () < 24)
+            return false;
+
         reset_elements_states ();
 
         if (timeout != -1) {
@@ -244,6 +253,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         
         if (is_focus)
             return base.button_release_event (event);
+
 
         if (event.button == 1) {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
@@ -257,7 +267,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         
         return base.button_release_event (event);
     }
-    
+
+    public void on_icon_press (Gtk.EntryIconPosition pos, Gdk.Event event) {
+        if (pos == Gtk.EntryIconPosition.SECONDARY) {
+            if (is_focus)
+                on_activate ();
+            else
+                reload ();
+        }
+    }
+
     void on_change () {
         if (search_mode) {
             search_changed (text);
@@ -269,19 +288,24 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return;
         }
 
-        set_entry_icon (true, (text.length > 0) ? "Navigate to: " + text : "");
+        show_navigate_icon ();
         text_completion = "";
         need_completion ();
     }
     
-    bool on_motion_notify (Gdk.EventMotion event) {
+    bool after_motion_notify (Gdk.EventMotion event) {
+
+        if (is_focus)
+            return false;
+
         int x = (int) event.x;
         double x_render = 0;
         double x_previous = -10;
         set_tooltip_text ("");
-        
-        if (is_focus)
-            return base.motion_notify_event (event);
+        /* We must reset the icon tooltip as the above line turns all tooltips off */
+        set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
+
+
 
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
@@ -300,22 +324,25 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
         else
             set_entry_cursor (null);
-            
-        return base.motion_notify_event (event);
+
+        return false;
     }
 
     bool on_focus_out (Gdk.EventFocus event) {
-        if (is_focus) {
+        if (is_focus)
             ignore_focus_in = true;
-            return base.focus_out_event (event);
+        else {
+            reset ();
+            show_refresh_icon (true);
         }
-    
+
+        return base.focus_out_event (event);
+    }
+
+    void reset () {
         ignore_focus_in = false;
-        set_entry_icon (false);
         set_entry_text ("");
         search_mode = false;
-        
-        return base.focus_out_event (event);
     }
 
     bool on_focus_in (Gdk.EventFocus event) {
@@ -324,10 +351,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         if (search_mode)
             set_entry_text ("");
-        else
+        else {
             set_entry_text (GLib.Uri.unescape_string (get_elements_path ()));
-                    
-                
+            show_navigate_icon ();
+        }
+
         return base.focus_in_event (event);
     }
 
@@ -337,8 +365,23 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_activate () {
-        path_changed (get_file_for_path (text + text_completion));
+        string path = text + text_completion;
+        path_changed (get_file_for_path (path));
         text_completion = "";
+    }
+
+    public void show_refresh_icon (bool show = true) {
+        /* Cancel any editing or search if refresh icon is to be shown */
+        if (show) {
+            reset ();
+            escape ();
+        }
+
+        set_entry_secondary_icon (false, show);
+    }
+
+    public void show_navigate_icon (bool show = true) {
+        set_entry_secondary_icon (true, show && text != current_path);
     }
 
     protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
@@ -400,12 +443,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
     
-    public void set_entry_icon (bool active, string? tooltip = null) {
-        if (!active)
+    public void set_entry_secondary_icon (bool active, bool visible) {
+        if (!visible)
             secondary_icon_pixbuf = null;
-        else {
-            secondary_icon_pixbuf = arrow_img;
-            secondary_icon_tooltip_text = tooltip;
+        else if (!active) {
+            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "view-refresh-symbolic");
+            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
+        } else {
+            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "go-jump-symbolic");
+            var tooltip = (text.length > 0) ? (_("Navigate to %s")).printf (text) : "";
+            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tooltip);
         }
     }
 
@@ -801,7 +848,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 Pango.cairo_show_layout (cr, layout);
             }
         }
-        
+
         return true;
     }
 
