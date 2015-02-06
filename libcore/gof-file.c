@@ -1657,15 +1657,19 @@ gof_file_accepts_drop (GOFFile          *file,
     /* default to whatever GTK+ thinks for the suggested action */
     suggested_action = gdk_drag_context_get_suggested_action (context);
 
-    char *uri = g_file_get_uri (file_list->data);
-    g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
-    _g_free0 (uri);
-
     /* check if we have a writable directory here or an executable file */
     if (gof_file_is_folder (file) && gof_file_is_writable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
+
+        char *scheme;
+        scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
+        /* do not allow symbolic links to remote filesystems */
+        if (!g_str_has_prefix (scheme, "file"))
+            actions &= ~(GDK_ACTION_LINK);
+
+        g_free (scheme);
 
         /* cannot create symbolic links in the trash or copy to the trash */
         if (gof_file_is_trashed (file))
@@ -1674,12 +1678,16 @@ gof_file_accepts_drop (GOFFile          *file,
         /* check up to 100 of the paths (just in case somebody tries to
          * drag around his music collection with 5000 files).
          */
+
         for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
         {
-            uri = g_file_get_uri (lp->data);
-            g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
-            _g_free0 (uri);
+            scheme = g_file_get_uri_scheme (lp->data);
+            if (!g_str_has_prefix (scheme, "file")) {
+                /* do not allow symbolic links from remote filesystems */
+                actions &= ~(GDK_ACTION_LINK);
+            }
 
+            g_free (scheme);
             /* we cannot drop a file on itself */
             if (G_UNLIKELY (g_file_equal (gof_file_get_target_location (file), lp->data)))
                 return 0;
@@ -1700,6 +1708,8 @@ gof_file_accepts_drop (GOFFile          *file,
             /* copy/move/link within the trash not possible */
             if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
                 return 0;
+
+
         }
 
         /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
@@ -1728,13 +1738,11 @@ gof_file_accepts_drop (GOFFile          *file,
                         && g_file_info_get_attribute_uint32 (ofile->info,
                                                              G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
                 {
-                    //printf ("%s default suggested action GDK_ACTION_COPY\n", G_STRFUNC);
                     /* default to copy and get outa here */
                     suggested_action = GDK_ACTION_COPY;
                     break;
                 }
             }
-            //printf ("%s actions MOVE %d COPY %d suggested %d\n", G_STRFUNC, GDK_ACTION_MOVE, GDK_ACTION_COPY, suggested_action);
         }
     }
     else if (!gof_file_is_folder (file) && gof_file_is_executable (file))

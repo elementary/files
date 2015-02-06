@@ -5473,9 +5473,15 @@ retry:
     not_local = FALSE;
 
     path = get_abs_path_for_symlink (src);
-    if (path == NULL) {
+    char *scheme;
+    scheme = g_file_get_uri_scheme (src);
+
+    if (path == NULL || !g_str_has_prefix (scheme, "file"))
         not_local = TRUE;
-    } else if (g_file_make_symbolic_link (dest,
+
+    g_free (scheme);
+
+    if (!not_local && g_file_make_symbolic_link (dest,
                                           path,
                                           common->cancellable,
                                           &error)) {
@@ -5485,6 +5491,7 @@ retry:
         // End UNDO-REDO
 
         g_free (path);
+
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }

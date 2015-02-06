@@ -1451,6 +1451,7 @@ namespace FM {
                         case TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
                                 prepare_to_select_added_files ();
+
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
                                                                                  context,
