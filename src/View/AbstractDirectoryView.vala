@@ -2574,14 +2574,14 @@ namespace FM {
                     file.rename (new_name, (file, result_location, error) => {
                         if (error != null)
                             warning ("Rename Error:  %s", error.message);
-
-                        if (!slot.directory.is_local)
-                            slot.directory.need_reload ();
                     });
                 }
             }
 
             on_name_editing_canceled ();
+
+            if (!slot.directory.is_local && new_name != original_name)
+                slot.directory.need_reload ();
         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
