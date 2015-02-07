@@ -351,7 +351,7 @@ namespace Marlin.View.Chrome
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
+                win.add_tab (File.new_for_commandline_arg (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
             /* Then the "Open with" menuitem is added to the menu. */
