@@ -2273,6 +2273,7 @@ namespace FM {
                 return;
 
             notify_selection_changed ();
+            update_menu_actions ();
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
@@ -2297,7 +2298,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.F2:
-                    if (no_mods) {
+                    if (no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selected_file ();
                         return true;
                     }
