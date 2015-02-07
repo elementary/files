@@ -185,8 +185,7 @@ static void undo_redo_op_callback (gpointer callback_data);
 static void undo_redo_done_rename_callback (GOFFile * file,
                                             GFile * result_location, GError * error, gpointer callback_data);
 
-static void undo_redo_done_delete_callback (GHashTable *debuting_uris,
-                                            gboolean user_cancel, gpointer callback_data);
+static void undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data);
 
 static void undo_redo_done_create_callback (GFile * new_file,
                                             gpointer callback_data);
@@ -1730,10 +1729,9 @@ undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
 
 /** ---------------------------------------------------------------- */
 static void
-undo_redo_done_delete_callback (GHashTable *
-                                debuting_uris, gboolean user_cancel, gpointer callback_data)
+undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (debuting_uris, callback_data);
+    undo_redo_done_transfer_callback (NULL, callback_data);
 }
 
 /** ---------------------------------------------------------------- */

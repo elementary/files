@@ -4586,8 +4586,9 @@ retry:
             g_error_free (error);
             goto out;
         }
-        primary = f (_("There was an Error while copying \"%s\"."), g_file_get_uri (src));
-        secondary = f (_("There was an error copying the file into %s."), g_file_get_uri (dest_dir));
+
+        primary = f (_("Cannot copy \"%B\" here."), src);
+        secondary = f (_("There was an error copying the file into %B."), dest_dir);
         details = error->message;
 
         response = run_warning (job,
@@ -5960,7 +5961,7 @@ marlin_file_operations_copy_move   (GList                  *files,
                                     GFile                  *target_dir,
                                     GdkDragAction          copy_action,
                                     GtkWidget              *parent_view,
-                                    gpointer               done_callback,
+                                    GCallback              done_callback,
                                     gpointer               done_callback_data)
 {
     GList *p;
@@ -5995,6 +5996,19 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
+        if (g_file_has_uri_scheme (target_dir, "trash")) {
+            char *primary = f (_("Cannot copy into trash."));
+            char *secondary = f (_("It is not permitted to copy files into the trash"));
+            eel_show_error_dialog (primary,
+                                   secondary,
+                                   parent_window);
+
+            if (done_callback != NULL)
+                ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
+
+            return;
+        }
+
         /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||

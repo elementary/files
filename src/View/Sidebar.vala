@@ -252,7 +252,9 @@ namespace Marlin.Places {
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
                                                 source_targets,
                                                 Gdk.DragAction.MOVE);
-            Gtk.drag_dest_set (tree_view, Gtk.DestDefaults.MOTION, drop_targets,
+            Gtk.drag_dest_set (tree_view,
+                               Gtk.DestDefaults.MOTION,
+                               drop_targets,
                                Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 

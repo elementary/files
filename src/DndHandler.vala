@@ -38,7 +38,7 @@ namespace FM {
                                                  drop_target.get_target_location (),
                                                  action,
                                                  widget,
-                                                 (void*)dnd_done,
+                                                 null,
                                                  null);
                 return true;
             } else if (drop_target.is_executable ()) {
@@ -53,8 +53,6 @@ namespace FM {
             }
             return false;
         }
-
-        private void dnd_done (GLib.List<GLib.File> files, void* data) {}
 
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
                                                       Gtk.ApplicationWindow win,
