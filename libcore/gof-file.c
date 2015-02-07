@@ -301,7 +301,8 @@ gof_file_is_other_uri_scheme (GOFFile *file)
     return res;
 }
 
-void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
+void
+gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
 {
     if (file->icon != NULL)
         return;
@@ -313,11 +314,11 @@ void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
     }
 
     if (!g_file_is_native (file->location)
-        && gof_file_is_remote_uri_scheme (file))
+        && gof_file_is_remote_uri_scheme (file)) {
 
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
-
-    file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
+        file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
+    }
 }
 
 static void
