@@ -59,7 +59,7 @@ namespace Marlin {
         static unowned GLib.List<unowned GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
         static void empty_trash_dirs (Gtk.Window? parent_window, owned GLib.List<GLib.File> dirs);
         static void empty_trash (Gtk.Widget? widget);
-        static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
+        static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Callback? done_callback = null, void* done_callback_data = null);
         static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
         static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
     }
@@ -102,8 +102,8 @@ namespace Eel {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-stock-dialogs.h")]
 namespace Eel {
-    public Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    public Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 }
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]

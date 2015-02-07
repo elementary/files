@@ -279,8 +279,6 @@ convert_lines_to_gfile_list (char **lines)
 
     result = NULL;
     for (i=0; lines[i] != NULL; i++) {
-        //printf ("lines %d: %s\n", i, lines[i]);
-        //result = g_list_prepend (result, g_strdup (lines[i]));
         result = g_list_prepend (result, g_file_new_for_uri (lines[i]));
     }
     return g_list_reverse (result);
@@ -291,7 +289,6 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
                                             GtkSelectionData *selection_data,
                                             gpointer          user_data)
 {
-    g_debug ("%s\n", G_STRFUNC);
     MarlinClipboardPasteRequest *request = user_data;
     MarlinClipboardManager      *manager = MARLIN_CLIPBOARD_MANAGER (request->manager);
     gboolean                     path_copy = TRUE;
@@ -327,24 +324,25 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
     /* perform the action if possible */
     if (G_LIKELY (file_list != NULL))
     {
-        //application = marlin_application_get ();
-        //TODO
         if (G_LIKELY (path_copy))
         {
-            //marlin_application_copy_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
-            g_debug ("marlin_application_copy_into\n");
-            /*marlin_file_operations_copy (file_list, NULL, request->target_file,
-              NULL, NULL, NULL);*/
-            marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_COPY, request->widget, request->new_files_closure, request->widget);
-
+            marlin_file_operations_copy_move (file_list,
+                                              NULL,
+                                              request->target_file,
+                                              GDK_ACTION_COPY,
+                                              request->widget,
+                                              request->new_files_closure,
+                                              request->widget);
         } else {
-            g_debug ("marlin_application_move_into\n");
-            //marlin_application_move_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
-            marlin_file_operations_copy_move (file_list, NULL, request->target_file,
-                                              GDK_ACTION_MOVE, request->widget, request->new_files_closure, request->widget);
+            marlin_file_operations_copy_move (file_list,
+                                              NULL,
+                                              request->target_file,
+                                              GDK_ACTION_MOVE,
+                                              request->widget,
+                                              request->new_files_closure,
+                                              request->widget);
         }
-        //g_object_unref (G_OBJECT (application));
+
         g_list_free_full (file_list, g_object_unref);
 
         /* clear the clipboard if it contained "cutted data"
@@ -727,7 +725,7 @@ void
 marlin_clipboard_manager_paste_files (MarlinClipboardManager *manager,
                                       GFile                  *target_file,
                                       GtkWidget              *widget,
-                                      MarlinCopyCallback     *new_files_closure)
+                                      GCallback     *new_files_closure)
 {
     MarlinClipboardPasteRequest *request;
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager));

@@ -1708,8 +1708,6 @@ gof_file_accepts_drop (GOFFile          *file,
             /* copy/move/link within the trash not possible */
             if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
                 return 0;
-
-
         }
 
         /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
@@ -1749,8 +1747,7 @@ gof_file_accepts_drop (GOFFile          *file,
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
-    }
-    else
+    } else
         return 0;
 
     /* determine the preferred action based on the context */
