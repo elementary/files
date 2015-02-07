@@ -2058,6 +2058,7 @@ delete_job (GIOSchedulerJob *io_job,
 
     common = (CommonJob *)job;
     common->io_job = io_job;
+
 #ifdef ENABLE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
 #else
@@ -2073,9 +2074,6 @@ delete_job (GIOSchedulerJob *io_job,
 
     for (l = job->files; l != NULL; l = l->next) {
         file = l->data;
-
-        if (g_file_get_path (file) == NULL)
-            continue;
 
         if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
@@ -2156,14 +2154,11 @@ trash_or_delete_internal (GList                  *files,
         inhibit_power_manager ((CommonJob *)job, _("Deleting Files"));
     }
 
-    // Start UNDO-REDO
     if (try_trash && !marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
         job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
-        //undotest usefull ??
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
-    // End UNDO-REDO
 
     g_io_scheduler_push_job (delete_job,
                              job,

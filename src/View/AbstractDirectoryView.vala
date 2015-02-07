@@ -746,8 +746,8 @@ namespace FM {
         private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
-            GLib.List<GLib.File> locations = null;
 
+            GLib.List<GLib.File> locations = null;
             file_list.@foreach ((file) => {
                 locations.prepend (file.location);
             });
