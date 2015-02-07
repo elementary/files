@@ -430,11 +430,13 @@ namespace FM {
 
         protected void unfreeze_updates () {
             updates_frozen = false;
-            slot.directory.freeze_update = false;;
+            slot.directory.freeze_update = false;
+            update_menu_actions ();
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
+
         }
 
         public new void grab_focus () {
@@ -708,6 +710,8 @@ namespace FM {
             GLib.File location = file.get_target_location ();
             if (screen == null)
                 screen = Eel.gtk_widget_get_screen (this);
+
+            default_app = Marlin.MimeActions.get_default_application_for_file (file);
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
