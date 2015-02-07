@@ -313,12 +313,11 @@ gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
         _g_free0 (path);
     }
 
-    if (!g_file_is_native (file->location)
-        && gof_file_is_remote_uri_scheme (file)) {
-
+    if (file->icon == NULL && !g_file_is_native (file->location)
+        && gof_file_is_remote_uri_scheme (file))
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
+    if (file->icon == NULL)
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
-    }
 }
 
 static void
