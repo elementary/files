@@ -59,7 +59,7 @@ void                    marlin_clipboard_manager_cut_files       (MarlinClipboar
 void                    marlin_clipboard_manager_paste_files     (MarlinClipboardManager *manager,
                                                                   GFile                  *target_file,
                                                                   GtkWidget              *widget,
-                                                                  MarlinCopyCallback     *new_files_closure);
+                                                                  GCallback              *new_files_closure);
 
 
 #endif /* !__MARLIN_CLIPBOARD_MANAGER_H__ */

@@ -92,8 +92,8 @@ namespace Marlin.View.Chrome
             bread.search_mode = true;
         }
 
-        private void on_path_changed (File file) {
-            if (win.freeze_view_changes)
+        private void on_path_changed (File? file) {
+            if (file == null || win.freeze_view_changes)
                 return;
 
             win.grab_focus ();
@@ -136,14 +136,15 @@ namespace Marlin.View.Chrome
         {
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
-            add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
-            add_icon ({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAV")});
-            add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAVS")});
-            add_icon ({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("FTP")});
-            add_icon ({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
-            add_icon ({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SFTP")});
-            add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SMB")});
-            add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
+            add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_AFP});
+            add_icon ({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_DAV});
+            add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_DAVS});
+            add_icon ({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_FTP});
+            add_icon ({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_NETWORK});
+            add_icon ({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_SFTP});
+            add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_SMB});
+            add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
+
 
             /* music */
             string dir;
@@ -233,12 +234,12 @@ namespace Marlin.View.Chrome
             completed.connect (() => {
                 string path = "";
                 string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
-                
+
                 foreach (BreadcrumbsElement element in elements) {
                     if (!element.hidden)
                         path += element.text + "/";
                 }
-            
+
                 if (path != newpath)
                     change_breadcrumbs (newpath);
                 
@@ -320,9 +321,12 @@ namespace Marlin.View.Chrome
         }
 
         public void on_need_completion () {
-            File file = get_file_for_path (text);
+            File? file = get_file_for_path (text);
 
-            // don't use get_basename (), it will return "folder" for "/folder/"
+            if (file == null)
+                return;
+
+            /* don't use get_basename (), it will return "folder" for "/folder/" */
             int last_slash = text.last_index_of_char ('/');
             if (last_slash > -1 && last_slash < text.length)
                 to_search = text.slice (last_slash + 1, text.length);
@@ -338,20 +342,19 @@ namespace Marlin.View.Chrome
                 return;
             
             files = GOF.Directory.Async.from_gfile (file);
-            if (files.file.exists) {
+            if (files.file.exists)
                 files.load (on_file_loaded);
-            }
         }
 
         private void on_files_loaded_menu () {
-            // First the "Open in new tab" menuitem is added to the menu.
+            /* First the "Open in new tab" menuitem is added to the menu. */
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                win.add_tab (File.new_for_uri (current_right_click_path), Marlin.ViewMode.CURRENT);
+                win.add_tab (File.new_for_commandline_arg (current_right_click_path), Marlin.ViewMode.CURRENT);
             });
 
-            // Then the "Open with" menuitem is added to the menu.
+            /* Then the "Open with" menuitem is added to the menu. */
             var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
             menu.append (menu_open_with);
 
@@ -432,12 +435,15 @@ namespace Marlin.View.Chrome
         }
 
         protected override void load_right_click_menu (double x, double y) {
+            if (current_right_click_root == null)
+                return;
+
             menu_x_root = x;
             menu_y_root = y;
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => { reset_elements_states (); });
             menu.deactivate.connect (() => { reset_elements_states (); });
-            /* current_right_click_root is parent of the directory named on the breadcrumb. */ 
+            /* current_right_click_root is parent of the directory named on the breadcrumb. */
             var directory = File.new_for_uri (current_right_click_root);
             files_menu = GOF.Directory.Async.from_gfile (directory);
             files_menu.done_loading.connect (on_files_loaded_menu);

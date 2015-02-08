@@ -33,7 +33,8 @@ typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
 typedef void (* MarlinCreateCallback)    (GFile      *new_file,
                                           gpointer    callback_data);
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
-typedef void (* MarlinDeleteCallback)    (gboolean    user_cancel, gpointer    callback_data);
+typedef void (* MarlinDeleteCallback)    (gboolean    user_cancel,
+                                          gpointer    callback_data);
 typedef void (* MarlinMountCallback)     (GVolume    *volume,
                                           GObject    *callback_data_object);
 typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
@@ -130,7 +131,7 @@ void marlin_file_operations_copy_move   (GList                  *files,
                                          GFile                  *target_dir,
                                          GdkDragAction          copy_action,
                                          GtkWidget              *parent_view,
-                                         gpointer               done_callback,
+                                         GCallback              done_callback,
                                          gpointer               done_callback_data);
 
 void marlin_file_operations_move      (GList                *files,

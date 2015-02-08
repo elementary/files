@@ -52,4 +52,56 @@ namespace Marlin {
     public const string NETWORK_URI = "network:///";
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
+
+    public const string PROTOCOL_NAME_AFP = _("AFP");
+    public const string PROTOCOL_NAME_DAV = _("DAV");
+    public const string PROTOCOL_NAME_DAVS = _("DAVS");
+    public const string PROTOCOL_NAME_FTP = _("FTP");
+    public const string PROTOCOL_NAME_NETWORK = _("Network");
+    public const string PROTOCOL_NAME_SFTP = _("SFTP");
+    public const string PROTOCOL_NAME_SMB = _("SMB");
+    public const string PROTOCOL_NAME_TRASH = _("Trash");
+
+    public string protocol_to_name (string protocol) {
+        /* Deal with protocol with or without : or / characters at the end */
+        string s = protocol.delimit (":/", ' ').chomp ();
+
+        switch (s) {
+            case "trash":
+                return Marlin.PROTOCOL_NAME_TRASH;
+            case "network":
+                return Marlin.PROTOCOL_NAME_NETWORK;
+            case "smb": 
+                return Marlin.PROTOCOL_NAME_SMB;
+            case "ftp": 
+                return Marlin.PROTOCOL_NAME_FTP;
+            case "sftp": 
+                return Marlin.PROTOCOL_NAME_SFTP;
+            case "afp":
+                return Marlin.PROTOCOL_NAME_AFP;
+            case "dav":
+                return Marlin.PROTOCOL_NAME_DAV;
+            case "davs":
+                return Marlin.PROTOCOL_NAME_DAVS;
+            default:
+                return protocol;
+        }
+    }
+
+    public string get_smb_share_from_uri (string uri) {
+        if (!(Uri.parse_scheme (uri) == "smb"))
+            return (uri);
+
+        string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
+
+        if (uri_parts.length < 4)
+            return uri;
+        else {
+            var sb = new StringBuilder ();
+            for (int i = 0; i < 4; i++)
+                sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
+
+            return sb.str;
+        }
+    }
 }

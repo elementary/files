@@ -68,7 +68,6 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 const gchar     *gof_file_get_thumbnail_path (GOFFile *file);
-static GMount   *get_mount_at (GFile *target);
 
 static GIcon *
 get_icon_user_special_dirs(char *path)
@@ -175,19 +174,6 @@ gof_file_clear_info (GOFFile *file)
     file->can_unmount = FALSE;
 }
 
-static gboolean
-gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
-{
-    int iterator;
-
-    for (iterator = 0; iterator < G_N_ELEMENTS (schemes); iterator++) {
-        if (g_file_has_uri_scheme (file->location, schemes[iterator]))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
 /**
  * gof_file_is_location_uri_default:
  *
@@ -198,56 +184,130 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 static gboolean
 gof_file_is_location_uri_default (GOFFile *file)
 {
+    g_return_val_if_fail (file->info != NULL, FALSE);
+    gboolean res;
+
     const char *target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 
-    if (target_uri != NULL) {
-        gchar **split = g_strsplit (target_uri, "/", 4);
-        if (split[3] == NULL || !strcmp (split[3], "")) {
-            g_strfreev (split);
-            return TRUE;
+    if (target_uri == NULL)
+        target_uri = file->uri;
+
+    gchar **split = g_strsplit (target_uri, "/", 4);
+    res = (split[3] == NULL || !strcmp (split[3], ""));
+    g_strfreev (split);
+
+    return res;
+}
+
+gboolean
+gof_file_is_mountable (GOFFile *file) {
+    g_return_val_if_fail (file->info != NULL, FALSE);
+    return g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE;
+}
+
+guint
+get_number_of_uri_parts (GOFFile *file) {
+    const char *target_uri = NULL;
+    if (file->info != NULL)
+        target_uri = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+    if (target_uri == NULL)
+        target_uri = file->uri;
+
+    gchar **split = g_strsplit (target_uri, "/", 6);
+    guint i, count;
+    count = 0;
+    for (i = 0; i < g_strv_length (split); i++) {
+        if (split [i][0] != NULL) {
+            count++;
         }
-        g_strfreev (split);
+    }
+    g_strfreev (split);
+    return count;
+}
+
+gboolean
+gof_file_is_smb_share (GOFFile *file)
+{
+    gboolean res;
+    res = FALSE;
+
+    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)) {
+        res = get_number_of_uri_parts (file) == 3;
     }
 
-    return FALSE;
+    return res;
+}
+
+gboolean
+gof_file_is_smb_server (GOFFile *file)
+{
+    gboolean res;
+    res = FALSE;
+
+    if (gof_file_is_smb_uri_scheme (file) || gof_file_is_network_uri_scheme (file)){
+        res = get_number_of_uri_parts (file) == 2;
+    }
+
+    return res;
 }
 
 gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
-    if (gof_file_is_root_network_folder (file))
+    if (gof_file_is_root_network_folder (file) || gof_file_is_other_uri_scheme (file))
         return TRUE;
-
-    const char* SCHEMES[] = { "afp", "dav", "davs", "ftp", "sftp" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
 }
 
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
-    if (gof_file_is_network_uri_scheme (file))
-        return TRUE;
-
-    return (gof_file_is_smb_uri_scheme (file) && gof_file_is_location_uri_default (file));
+    return (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_server (file));
 }
 
 gboolean
 gof_file_is_network_uri_scheme (GOFFile *file)
 {
-    const char* SCHEMES[] = { "network" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
+    return g_file_has_uri_scheme (file->location, "network");
 }
 
 gboolean
 gof_file_is_smb_uri_scheme (GOFFile *file)
 {
-    const char* SCHEMES[] = { "smb" };
-    return gof_file_compare_uri_schemes (file, SCHEMES);
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
+    return g_file_has_uri_scheme (file->location, "smb");
 }
 
-void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
+gboolean
+gof_file_is_other_uri_scheme (GOFFile *file)
 {
-    if (!file->is_hidden && file->uri != NULL && file->icon == NULL) {
+    GFile *loc = file->location;
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
+    gboolean res;
+
+    res = g_file_has_uri_scheme (loc, "ftp") ||
+          g_file_has_uri_scheme (loc, "sftp") ||
+          g_file_has_uri_scheme (loc, "afp") ||
+          g_file_has_uri_scheme (loc, "dav") ||
+          g_file_has_uri_scheme (loc, "davs");
+
+    return res;
+}
+
+void
+gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
+{
+    if (file->icon != NULL)
+        return;
+
+    if (!file->is_hidden && file->uri != NULL) {
         char *path = g_filename_from_uri (file->uri, NULL, NULL);
         file->icon = get_icon_user_special_dirs(path);
         _g_free0 (path);
@@ -364,8 +424,10 @@ gof_file_update (GOFFile *file)
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
 
-            if (file->file_type == G_FILE_TYPE_MOUNTABLE)
-                file->mount = get_mount_at (file->target_location);
+            if (file->file_type == G_FILE_TYPE_MOUNTABLE) {
+                file->mount = gof_file_get_mount_at (file->target_location);
+                file->is_mounted = (file->mount != NULL);
+            }
         }
     }
 
@@ -457,10 +519,8 @@ gof_file_update (GOFFile *file)
 
     /* sizes */
     gof_file_update_size (file);
-
     /* modified date */
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-
     /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
@@ -486,25 +546,30 @@ gof_file_update (GOFFile *file)
     file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
     const char *owner = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_USER);
     const char *group = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_GROUP);
+
     if (owner != NULL)
         file->owner = strdup (owner);
+
     if (group != NULL)
         file->group = strdup (group);
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
         file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
         if (file->owner == NULL)
             file->owner = g_strdup_printf ("%d", file->uid);
     }
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
         file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
         if (file->group == NULL)
             file->group = g_strdup_printf ("%d", file->gid);
     }
 
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT)) {
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT))
         file->can_unmount = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT);
-	}
+
     gof_file_update_trash_info (file);
+
     gof_file_update_emblem (file);
 }
 
@@ -551,7 +616,6 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
-        //printf ("thumbnail loading\n");
     } else {
         gicon = _g_object_ref0 (file->icon);
     }
@@ -645,6 +709,14 @@ void gof_file_update_desktop_file (GOFFile *file)
 
 void gof_file_update_emblem (GOFFile *file)
 {
+    /* Do not try to add emblems to network and remote files (except smb) - can cause blocking io*/
+    if (gof_file_is_other_uri_scheme (file) || gof_file_is_network_uri_scheme (file))
+        return;
+
+    /* Do not try to add emblems to smb shares either */
+    if (gof_file_is_smb_share (file))
+        return;
+
     /* erase previous stored emblems */
     if (file->emblems_list != NULL) {
         g_list_free (file->emblems_list);
@@ -653,6 +725,7 @@ void gof_file_update_emblem (GOFFile *file)
 
     if(plugins != NULL)
         marlin_plugin_manager_update_file_info (plugins, file);
+
 
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
@@ -670,10 +743,12 @@ void gof_file_update_emblem (GOFFile *file)
         else
             gof_file_add_emblem (file, "emblem-unreadable");
     }
+
     /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
         gof_file_icon_changed (file);
+
 }
 
 void gof_file_add_emblem (GOFFile* file, const gchar* emblem)
@@ -694,13 +769,13 @@ print_error (GError *error)
 {
     if (error != NULL)
     {
-        g_warning ("%s [code %d]\n", error->message, error->code);
+        g_debug ("%s [code %d]\n", error->message, error->code);
         g_clear_error (&error);
     }
 }
 
-static GMount *
-get_mount_at (GFile *target)
+GMount *
+gof_file_get_mount_at (GFile *target)
 {
     GVolumeMonitor *monitor;
     GFile *root;
@@ -738,18 +813,21 @@ gof_file_query_info (GOFFile *file)
     GFileInfo *info = NULL;
     GError *err = NULL;
 
-    info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
-                              0, NULL, &err);
+    g_return_val_if_fail (G_IS_FILE (file->location), NULL);
+
+    info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
-        }
-        if (err->code == G_IO_ERROR_NOT_FOUND
+        } else if (err->code == G_IO_ERROR_NOT_FOUND
             || err->code == G_IO_ERROR_NOT_DIRECTORY) {
             file->exists = FALSE;
+        } else if (err->code == G_IO_ERROR_TIMED_OUT) {
+            file->is_connected = FALSE;
         }
-        print_error (err);
+
+        print_error (err); /* also frees error */
     }
     return info;
 }
@@ -853,6 +931,7 @@ static void gof_file_init (GOFFile *file) {
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
     file->exists = TRUE;
+    file->is_connected = TRUE;
 
     file->flags = 0;
     file->pix_size = -1;
@@ -878,10 +957,8 @@ static void gof_file_finalize (GObject* obj) {
 #endif
 
     g_clear_object (&file->info);
-    if (file->location)
-        g_object_unref (file->location);
-    if (file->directory)
-        g_object_unref (file->directory);
+    _g_object_unref0 (file->location);
+    _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
@@ -889,8 +966,7 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0(file->format_size);
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
-    if (file->pix)
-        g_object_unref (file->pix);
+    _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
 
     _g_free0 (file->custom_display_name);
@@ -1121,7 +1197,6 @@ gof_file_compare_for_sort (GOFFile *file1,
     }
 
     result = gof_file_compare_for_sort_internal (file1, file2, directories_first, reversed);
-    //g_message ("res %d %s %s\n", result, file1->name, file2->name);
 
     if (result == 0) {
         switch (sort_type) {
@@ -1216,15 +1291,19 @@ gof_file_is_writable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    if (file->target_gof)
+    /* Take care not to create infinite loop */
+    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location))
         return gof_file_is_writable (file->target_gof);
+
     if (file->info == NULL)
         return FALSE;
+
     if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-        /* For some reason, the trash folder doesn't have this attribute defined.
-         * The function must be forced to return TRUE if the folder in question
-         * is the trash folder (since it is writable). */
-        if (strncmp (file->uri, "trash:///", 10) == 0)
+        /* Trash folder and network folders do not necessarily have this attribute defined.
+         * The function must be forced to return TRUE in these cases. */
+        if (strncmp (file->uri, "trash:///", 10) == 0 ||
+            gof_file_is_smb_uri_scheme (file) ||
+            gof_file_is_remote_uri_scheme (file))
             return TRUE;
 
         return FALSE;
@@ -1578,15 +1657,19 @@ gof_file_accepts_drop (GOFFile          *file,
     /* default to whatever GTK+ thinks for the suggested action */
     suggested_action = gdk_drag_context_get_suggested_action (context);
 
-    char *uri = g_file_get_uri (file_list->data);
-    g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
-    _g_free0 (uri);
-
     /* check if we have a writable directory here or an executable file */
     if (gof_file_is_folder (file) && gof_file_is_writable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
+
+        char *scheme;
+        scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
+        /* do not allow symbolic links to remote filesystems */
+        if (!g_str_has_prefix (scheme, "file"))
+            actions &= ~(GDK_ACTION_LINK);
+
+        g_free (scheme);
 
         /* cannot create symbolic links in the trash or copy to the trash */
         if (gof_file_is_trashed (file))
@@ -1595,12 +1678,16 @@ gof_file_accepts_drop (GOFFile          *file,
         /* check up to 100 of the paths (just in case somebody tries to
          * drag around his music collection with 5000 files).
          */
+
         for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
         {
-            uri = g_file_get_uri (lp->data);
-            g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
-            _g_free0 (uri);
+            scheme = g_file_get_uri_scheme (lp->data);
+            if (!g_str_has_prefix (scheme, "file")) {
+                /* do not allow symbolic links from remote filesystems */
+                actions &= ~(GDK_ACTION_LINK);
+            }
 
+            g_free (scheme);
             /* we cannot drop a file on itself */
             if (G_UNLIKELY (g_file_equal (gof_file_get_target_location (file), lp->data)))
                 return 0;
@@ -1649,21 +1736,18 @@ gof_file_accepts_drop (GOFFile          *file,
                         && g_file_info_get_attribute_uint32 (ofile->info,
                                                              G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
                 {
-                    //printf ("%s default suggested action GDK_ACTION_COPY\n", G_STRFUNC);
                     /* default to copy and get outa here */
                     suggested_action = GDK_ACTION_COPY;
                     break;
                 }
             }
-            //printf ("%s actions MOVE %d COPY %d suggested %d\n", G_STRFUNC, GDK_ACTION_MOVE, GDK_ACTION_COPY, suggested_action);
         }
     }
     else if (!gof_file_is_folder (file) && gof_file_is_executable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
-    }
-    else
+    } else
         return 0;
 
     /* determine the preferred action based on the context */
@@ -1914,7 +1998,7 @@ gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
     gfiles = gof_files_get_location_list (files);
 
     succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
-    print_error (error);
+    print_error (error); /* also frees error */
 
     g_list_free_full (gfiles, (GDestroyNotify) eel_g_file_unref);
     g_object_unref (context);
@@ -2387,12 +2471,26 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
-    /* TODO check */
-    if (file->is_directory)
+    /* TODO check this works for non-local files and other uri schemes*/
+    if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
         return TRUE;
-    if (file->target_location != NULL
-        && ( (file->file_type == G_FILE_TYPE_MOUNTABLE && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) || (file->target_gof && file->target_gof->is_directory && gof_preferences_get_default ()->pref_interpret_desktop_files) ))
+
+    if (gof_file_is_smb_share (file))
         return TRUE;
+
+    if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
+        file->info != NULL &&
+        g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
+
+        return TRUE;
+
+    if (file->target_gof && file->target_gof->is_directory) {
+        /* file->target_gof is directory */
+        if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
+            gof_file_is_network_uri_scheme (file->target_gof))
+
+            return TRUE;
+    }
 
     return FALSE;
 }
@@ -2400,13 +2498,16 @@ gof_file_is_folder (GOFFile *file)
 const gchar *
 gof_file_get_ftype (GOFFile *file)
 {
-    g_return_val_if_fail (file->info != NULL, NULL);
+    if (file->info == NULL || gof_file_is_location_uri_default (file))
+        return NULL;
 
     const char *ftype = NULL;
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
         ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+
     if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype)
         return file->tagstype;
 

@@ -130,11 +130,10 @@ namespace Marlin.View {
                 } else if (!goffile.is_folder ()) {
 
                     /* if we have an image, see if we can get its resolution */
-                    var type = goffile.get_ftype ();
-                    if (type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
+                    string? type = goffile.get_ftype ();
+                    if (type != null && type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         load_resolution.begin (goffile);
                     }
-
                     status = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
                 } else {
                     status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);

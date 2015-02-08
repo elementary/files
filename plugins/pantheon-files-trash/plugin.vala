@@ -49,7 +49,6 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         if (file.location.get_uri_scheme () == "trash") {
             /* Only add infobar once */
             if (!infobars.has_key (slot)) {
-
                 var infobar = new Gtk.InfoBar ();
                 (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (_("These items may be deleted by emptying the trash.")));
                 infobar.add_button (_("Empty the Trash"), 0);
@@ -58,10 +57,11 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 });
                 infobar.set_message_type (Gtk.MessageType.INFO);
                 infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
-                slot.add_extra_widget (infobar);
                 infobar.show_all ();
                 infobar.set_visible (!TrashMonitor.is_empty ());
+                slot.add_extra_widget (infobar);
                 infobars.@set (slot, infobar);
+
             }
         } else {
             var infobar = infobars.@get (slot);

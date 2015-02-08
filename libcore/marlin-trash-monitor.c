@@ -131,7 +131,6 @@ static void
 schedule_update_info (MarlinTrashMonitor *trash_monitor)
 {
     GFile *location;
-
     location = g_file_new_for_uri (MARLIN_TRASH_URI);
 
     g_file_query_info_async (location,
@@ -150,7 +149,6 @@ file_changed (GFileMonitor* monitor,
               gpointer user_data)
 {
     MarlinTrashMonitor *trash_monitor;
-
     trash_monitor = MARLIN_TRASH_MONITOR (user_data);
 
     schedule_update_info (trash_monitor);

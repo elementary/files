@@ -59,7 +59,7 @@ namespace Marlin {
         static unowned GLib.List<unowned GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
         static void empty_trash_dirs (Gtk.Window? parent_window, owned GLib.List<GLib.File> dirs);
         static void empty_trash (Gtk.Widget? widget);
-        static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
+        static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Callback? done_callback = null, void* done_callback_data = null);
         static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
         static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
     }
@@ -70,7 +70,7 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void CreateCallback (GLib.File new_file, void* callback_data);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
-    public delegate void CopyCallBack (GLib.HashTable<GLib.File, void*> debuting_uris, void* pointer);
+    public delegate void CopyCallback (GLib.HashTable<GLib.File, void*> debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
 }
@@ -102,8 +102,8 @@ namespace Eel {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-stock-dialogs.h")]
 namespace Eel {
-    public Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    public Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 }
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
@@ -161,19 +161,17 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public delegate void UndoFinishCallback (UndoManager manager, Gtk.Widget? w);
-    /*public delegate void UndoFinishCallback (void *data);*/
-    /*public delegate void UndoFinishCallback ();*/
+    public delegate void UndoFinishCallback (void *data);
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public abstract class UndoManager : GLib.Object
+    public class UndoManager : GLib.Object
     {
         public static UndoManager instance ();
 
         public signal void request_menu_update (UndoMenuData data);
 
-        public void undo (UndoFinishCallback? cb);
-        public void redo (UndoFinishCallback? cb);
+        public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
+        public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
     }
 
     [CCode (cheader_filename = "marlin-progress-info.h")]
@@ -232,14 +230,16 @@ namespace GOF {
 
         public File(GLib.File location, GLib.File? dir);
         public static GOF.File @get(GLib.File location);
-        public static GOF.File get_by_uri (string uri);
+        public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
         public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
+        public static GLib.Mount? get_mount_at (GLib.File location);
 
         public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
+        public GLib.File target_location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.List<string>? emblems_list;
@@ -267,14 +267,17 @@ namespace GOF {
         public bool is_trashed();
         public bool is_writable ();
         public bool is_executable ();
+        public bool is_mountable ();
         public bool link_known_target;
+        public bool is_smb_share ();
+        public bool is_smb_server ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
 
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
-        public unowned string get_ftype ();
+        public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
@@ -290,7 +293,7 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo app_info);
+        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -304,6 +307,7 @@ namespace GOF {
         public bool can_set_group ();
         public bool can_set_permissions ();
         public bool can_unmount ();
+        public GLib.Mount? mount;
         public string get_permissions_as_string ();
         public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
@@ -314,6 +318,7 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_connected;
 
         public unowned string get_display_target_uri ();
 
