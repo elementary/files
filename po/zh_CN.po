@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-11-27 07:57+0000\n"
+"PO-Revision-Date: 2015-02-09 13:40+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:11+0000\n"
+"X-Launchpad-Export-Date: 2015-02-10 06:57+0000\n"
 "X-Generator: Launchpad (build 17331)\n"
 "Language: \n"
 
@@ -846,7 +846,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "您确实想从回收站中永久删除“%B”吗？"
+msgstr "您确定要从回收站中永久删除“%B”吗？"
 
 #: ../libcore/marlin-file-operations.c:1386
 #, c-format
@@ -861,25 +861,25 @@ msgstr[0] "您确实想从回收站中永久删除所选的 %'d 项吗？"
 #: ../libcore/marlin-file-operations.c:1396
 #: ../libcore/marlin-file-operations.c:1476
 msgid "If you delete an item, it will be permanently lost."
-msgstr "如果您删除一项，它会永远消失。"
+msgstr "如果您选择删除，它将会永远消失。"
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "永久删除回收站中的所有项目吗？"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr ""
+msgstr "所有回收站中的项目，包括外接分卷回收站中的项目，都将被永久删除。"
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "永久删除此分卷回收站中的所有项目吗？"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "此分卷回收站中的所有项目将会被永久删除。"
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -888,7 +888,7 @@ msgstr "清空回收站(_T)"
 
 #: ../libcore/marlin-file-operations.c:1464
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "您确实想永久删除“%B”吗？"
+msgstr "您确定要永久删除“%B”吗？"
 
 #: ../libcore/marlin-file-operations.c:1467
 #, c-format
@@ -1287,11 +1287,11 @@ msgstr "无法移除 %F 中同名的现有文件。"
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "无法复制 \"%B\" 到此处。"
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "将文件复制到 %B 出错。"
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1355,11 +1355,11 @@ msgstr "正在设置权限"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "无法复制到回收站。"
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "将文件复制到回收站是不允许的。"
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1597,19 +1597,19 @@ msgstr "您没有权限查看该文件夹。"
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "无法装载文件夹。"
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "无法定位此文件夹的位置。"
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "未找到文件。"
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "选中的文件已不存在。"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1677,11 +1677,11 @@ msgstr "未命名 %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "无法复制回收站中的文件"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "更改选中项为剪切"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
@@ -1815,7 +1815,7 @@ msgstr "原位置"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "信息"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1827,7 +1827,7 @@ msgstr "打开方式："
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "用量"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -1989,7 +1989,7 @@ msgstr "取消所有正在进行的动作"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "重新载入此文件夹"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
@@ -1997,7 +1997,7 @@ msgstr "转到 %s"
 
 #: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
-msgstr ""
+msgstr "前往 %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

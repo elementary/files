@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-12-27 22:48+0000\n"
+"PO-Revision-Date: 2015-02-09 21:15+0000\n"
 "Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:10+0000\n"
+"X-Launchpad-Export-Date: 2015-02-10 06:57+0000\n"
 "X-Generator: Launchpad (build 17331)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -929,13 +929,15 @@ msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Trajno izbrisati sve stavke iz smeća?"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Sve datoteke u mapama smeća, uključujući one na montiranim vanjskim "
+"uređajima, bit će trajno obrisane."
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
@@ -943,7 +945,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Sve stavke u smeću na ovom uređaju bit će trajno obrisane."
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -1401,11 +1403,11 @@ msgstr "Nemoguće je ukloniti postojeću datoteku s istim imenom u %F."
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Nemoguće kopirati \"%B\" ovdje."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Dogodila se pogreška prilikom kopiranja datoteke u %B."
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1473,11 +1475,11 @@ msgstr "Postavljanje dozvola"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Nemoguće je kopirati u smeće."
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Nije dozvoljeno kopiranje datoteka u smeće"
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1723,7 +1725,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Datoteka nije pronađena."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
@@ -1933,7 +1935,7 @@ msgstr "Izvorna lokacija"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1945,7 +1947,7 @@ msgstr "Otvori pomoću:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Iskorištenost"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2109,7 +2111,7 @@ msgstr "Otkaži sve radnje u tijeku"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Ponovno učitaj ovu mapu"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
