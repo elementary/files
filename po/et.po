@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-12-12 13:00+0000\n"
+"PO-Revision-Date: 2015-02-10 20:17+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:08+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-11 06:19+0000\n"
+"X-Generator: Launchpad (build 17336)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -898,21 +898,25 @@ msgstr "Faili jäädavalt kustutades pole seda hiljem võimalik taastada."
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Kõik prügikastis olevad failid ning haagitud ketastelt prügikasti tõstetud "
+"failid kustutatakse jäädavalt."
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"Soovid kõik sellelt kettalt prügikasti tõstetud failid jäädavalt kustutada?"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Kõik sellelt ketta prügikasti tõstetud failid kustutatakse jäädavalt."
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -1363,11 +1367,11 @@ msgstr "Asukohas %F olemasolevat sama nimega faili pole võimalik eemaldada."
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "\"%B\" kopeerimine siia pole võimalik."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Faili kopeerimisel sihtkohta %B ilmnes probleem."
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1433,11 +1437,11 @@ msgstr "Õiguste seadistamine"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Prügikasti kopeerimine pole võimalik."
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Failide kopeerimine prügikasti pole võimalik."
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1675,19 +1679,19 @@ msgstr "Sul pole õigusi selle kausta sisu vaatamiseks."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Kausta haakimine ebaõnnestus."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Selle kausta serverit pole võimalik leida."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Faili ei leitud."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Valitud faili ei eksisteeri enam."
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1755,11 +1759,11 @@ msgstr "Nimetu %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Valitud failide lõikamine"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
@@ -1893,7 +1897,7 @@ msgstr "Päritolu asukoht"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Teave"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1905,7 +1909,7 @@ msgstr "Avamine rakendusega:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Kasutus"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2068,7 +2072,7 @@ msgstr "Kõikide töösolevate toimetuste katkestamine"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Värskenda kausta sisu"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
@@ -2076,7 +2080,7 @@ msgstr "Mine %s"
 
 #: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navigeerimine sihtkohta %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
