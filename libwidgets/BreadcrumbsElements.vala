@@ -20,6 +20,7 @@
 
 public class Marlin.View.Chrome.BreadcrumbsElement : Object {
 
+    private static const int ICON_MARGIN = 3;
     public string? text;
     public double offset = 0;
     public double last_height = 0;
@@ -38,11 +39,14 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
                     padding.left + padding.right + last_height / 2;
         }
     }
-    Gdk.Pixbuf icon;
     public bool hidden = false;
     public bool display = true;
     public bool display_text = true;
     public string? text_displayed = null;
+
+    public bool pressed = false;
+    private Gtk.Border padding = Gtk.Border ();
+    private Gdk.Pixbuf icon = null;
 
     public BreadcrumbsElement (string text_) {
         text = text_;
@@ -53,22 +57,10 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         icon = icon_;
     }
 
-    void computetext_width (Pango.Layout pango) {
-        int text_width, text_height;
-        pango.get_size (out text_width, out text_height);
-        this.text_width = Pango.units_to_double (text_width);
-        this.text_height = Pango.units_to_double (text_height);
-    }
-
-    public bool pressed = false;
-    private Gtk.Border padding = Gtk.Border ();
-    private static const int ICON_MARGIN = 3;
-
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget) {
         var state = button_context.get_state ();
-        if (pressed) {
+        if (pressed)
             state |= Gtk.StateFlags.ACTIVE;
-        }
 
         padding = button_context.get_padding (state);
         double line_width = cr.get_line_width ();
@@ -157,9 +149,8 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         cr.rotate (Math.PI_4);
         button_context.save ();
         button_context.add_class ("noradius-button");
-        if (pressed) {
+        if (pressed)
             button_context.set_state (Gtk.StateFlags.ACTIVE);
-        }
 
         button_context.render_frame (cr, -height / 2, -height / 2, height, height);
         button_context.restore ();
@@ -168,5 +159,12 @@ public class Marlin.View.Chrome.BreadcrumbsElement : Object {
         x += height / 2;
 
         return x;
+    }
+
+    private void computetext_width (Pango.Layout pango) {
+        int text_width, text_height;
+        pango.get_size (out text_width, out text_height);
+        this.text_width = Pango.units_to_double (text_width);
+        this.text_height = Pango.units_to_double (text_height);
     }
 }
