@@ -119,9 +119,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     private int timeout = -1;
 
-    int left_padding;
-    int right_padding;
-
     private Granite.Services.IconFactory icon_factory;
 
     construct {
@@ -137,9 +134,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         Gtk.Border border = button_context.get_padding (Gtk.StateFlags.NORMAL);
         Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-        left_padding = border.left;
-        right_padding = border.right;
 
         /* x padding */
         x = 0;
@@ -570,7 +564,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 menu_x_root = event.x_root - event.x + el.x - space_breads;
 
             double menu_y_root = event.y_root - event.y + get_allocated_height ();
-            load_right_click_menu (menu_x_root, menu_y_root);
+            var style_context = get_style_context ();
+            var padding = style_context.get_padding (style_context.get_state ());
+            load_right_click_menu (menu_x_root, menu_y_root - padding.bottom - padding.top);
             return true;
         }
         return false;
@@ -612,9 +608,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         selected = -1;
         var breads = current_path.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
-
         string s = protocol == Marlin.ROOT_FS_URI ? "" : protocol;
-        newelements.add (new BreadcrumbsElement (s, left_padding, right_padding));
+        newelements.add (new BreadcrumbsElement (s));
 
 
         /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
@@ -637,7 +632,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         foreach (string dir in breads) {
             if (dir != "")
-                newelements.add (new BreadcrumbsElement (dir, left_padding, right_padding));
+                newelements.add (new BreadcrumbsElement (dir));
         }
 
         int max_path = int.min (elements.size, newelements.size);
@@ -817,7 +812,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
                 foreach (BreadcrumbsElement element in elements)
                     if (element.display && element.width > max_element_width)
-                        element.max_width = max_element_width - element.left_padding - element.right_padding - element.last_height/2;
+                        element.max_width = max_element_width - element.last_height/2;
             }
 
             cr.save ();
