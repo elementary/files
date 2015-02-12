@@ -60,6 +60,7 @@ namespace Marlin.View {
             set_up_directory (_location);
             connect_slot_signals ();
             make_view ();
+            connect_dir_view_signals ();
         }
 
         ~Slot () {
@@ -107,12 +108,16 @@ namespace Marlin.View {
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     autosize_slot ();
+
+                set_view_updates_frozen (false);
             });
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                 directory.track_longest_name = true;
 
-            directory.need_reload.connect (ctab.reload);
+            directory.need_reload.connect (() => {
+                ctab.reload ();
+            });
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
@@ -123,7 +128,7 @@ namespace Marlin.View {
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
-            if (flag == 0) {
+            if (flag == 0) { /* make view in existing container */
                 if (dir_view is FM.ColumnView)
                     miller_slot_request (loc, make_root);
                 else
@@ -166,18 +171,13 @@ namespace Marlin.View {
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
-
-            if (!location.equal (loc)) {
-                var old_dir = directory;
-                set_up_directory (loc);
-                dir_view.change_directory (old_dir, directory);
-                /* ViewContainer takes care of updating appearance
-                 * If allow_mode_change is false View Container will not automagically
-                 * switch to icon view for icon folders (needed for Miller View) */
-                ctab.slot_path_changed (loc, allow_mode_change);
-            } else {
-                ctab.reload ();
-            }
+            var old_dir = directory;
+            set_up_directory (loc);
+            dir_view.change_directory (old_dir, directory);
+            /* ViewContainer takes care of updating appearance
+             * If allow_mode_change is false View Container will not automagically
+             * switch to icon view for icon folders (needed for Miller View) */
+            ctab.slot_path_changed (directory.location, allow_mode_change);
         }
 
         protected override void make_view () {
@@ -203,7 +203,7 @@ namespace Marlin.View {
             if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
 
-            connect_dir_view_signals ();
+            set_view_updates_frozen (true);
         }
 
         public void set_view_updates_frozen (bool freeze) {
@@ -275,8 +275,7 @@ namespace Marlin.View {
         }
 
         public override void reload () {
-            if (dir_view != null)
-                dir_view.reload ();
+            user_path_change_request (location, false);
         }
 
         public override void cancel () {

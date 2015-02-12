@@ -69,7 +69,9 @@ namespace GOF {
         public virtual void zoom_in () {}
         public virtual void zoom_normal () {}
         public virtual bool set_all_selected (bool all_selected) {return false;}
-        public virtual Gtk.Widget get_content_box () {return content_box as Gtk.Widget;}
+        public virtual Gtk.Widget get_content_box () {
+            return content_box as Gtk.Widget;
+        }
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
     }

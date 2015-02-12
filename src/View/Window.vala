@@ -58,6 +58,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
+        public uint window_number;
 
         public void set_can_go_forward (bool can) {
            top_menu.set_can_go_forward (can);
@@ -73,6 +74,7 @@ namespace Marlin.View {
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
+        public signal void tab_reloaded (GLib.File location);
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -86,7 +88,7 @@ namespace Marlin.View {
 
         public Window (Marlin.Application app, Gdk.Screen myscreen) {
             /* Capture application window_count and active_window before they can change */
-            var window_number = app.window_count;
+            window_number = app.window_count;
             application = app;
             screen = myscreen;
             is_first_window = (window_number == 0);
@@ -332,6 +334,9 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
+            if (freeze_view_changes)
+                return;
+
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
@@ -582,12 +587,18 @@ namespace Marlin.View {
 
         private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
             update_undo_actions ();
-            undo_manager.undo (null);
+            undo_manager.undo (this, after_undo_redo);
+        }
+
+        public static void after_undo_redo (void  *data) {
+            var window = data as Marlin.View.Window;
+            if (!window.current_tab.slot.directory.is_local)
+                window.current_tab.reload ();
         }
 
         private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
             update_undo_actions ();
-            undo_manager.redo (null);
+            undo_manager.redo (this, after_undo_redo);
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
@@ -599,6 +610,7 @@ namespace Marlin.View {
                     action.set_state (new GLib.Variant.boolean (state));
             }
         }
+
 
         public void change_state_show_hidden (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
@@ -835,6 +847,14 @@ namespace Marlin.View {
         private bool valid_location (GLib.File location) {
             GLib.FileInfo? info = null;
 
+            string scheme = location.get_uri_scheme ();
+            if (scheme == "smb" ||
+                scheme == "ftp" ||
+                scheme == "network")
+                /* Do not restore remote and network locations */
+                //return false;
+                return true;
+
             try {
                 info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
             }
@@ -886,6 +906,10 @@ namespace Marlin.View {
         }
 
         public void update_top_menu () {
+            if (freeze_view_changes)
+                return;
+
+
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
@@ -916,13 +940,9 @@ namespace Marlin.View {
         }
 
         public void file_path_change_request (GLib.File loc) {
-            FileType type = loc.query_file_type (GLib.FileQueryInfoFlags.NONE);
-
-            if (type == FileType.DIRECTORY || type == FileType.UNKNOWN)
-                /* ViewContainer deals with non-existent or unmounted directories */
-                current_tab.user_path_change_request (loc);
-            else
-                current_tab.focus_location (loc);
+            /* ViewContainer deals with non-existent or unmounted directories
+             * and locations that are not directories */
+            current_tab.user_path_change_request (loc);
         }
 
         public void uri_path_change_request (string uri) {

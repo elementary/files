@@ -185,6 +185,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 escape ();
                 return true;
         }
+
         return base.key_press_event (event);
     }
 
@@ -252,7 +253,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             var el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
                 selected = elements.index_of (el);
-                var newpath = sanitise_path (get_path_from_element (el));
+                var newpath = get_path_from_element (el);
                 path_changed (get_file_for_path (newpath));
             } else
                 grab_focus ();
@@ -345,20 +346,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (search_mode)
             set_entry_text ("");
         else {
-            current_path = sanitise_path (GLib.Uri.unescape_string (get_elements_path ()));
-            set_entry_text (current_path);
+            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()));
             show_navigate_icon ();
         }
+
         return base.focus_in_event (event);
     }
 
-    string sanitise_path (string path) {
-        return path.replace ("file:////", "/")
-                   .replace ("file:///", "/")
-                   .replace ("trash:///", "")
-                   .replace ("network:///", "");
-    }
-    
     void on_grab_focus () {
         select_region (0, 0);
         set_position (-1);
@@ -482,15 +476,25 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return null;
     }
 
-    protected string get_path_from_element (BreadcrumbsElement el) {
-        string newpath = protocol;
+    protected string get_path_from_element (BreadcrumbsElement? el) {
+        /* return path up to the speficied element or, if the parameter is null, the whole path */
+        string newpath = "";
+        bool first = true;
 
         foreach (BreadcrumbsElement element in elements) {
-            if (element.display) {
-                newpath += element.text + "/";
-                if (element == el)
+                string s = element.text;
+                if (first) {
+                    if (s == "" || s == "file://")
+                        newpath = "/";
+                    else
+                        newpath = s;
+
+                    first = false;
+                } else
+                    newpath += (s + "/");
+
+                if (el != null && element == el)
                     break;
-            }
         }
         return newpath;
     }
@@ -499,20 +503,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * Get the current path of the PathBar, based on the elements that it contains
      **/
     public string get_elements_path () {
-        string strpath = "";
-        strpath = protocol;
-
-        foreach (BreadcrumbsElement element in elements) {
-            if (element.display)
-                strpath += element.text + "/";
-        }
-        return strpath;
+        return get_path_from_element (null);
     }
     
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
-    public File get_file_for_path (string path) {
+    public File? get_file_for_path (string path) {
         string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
         string newpath = GLib.Uri.unescape_string (path ?? "");
 
@@ -523,12 +520,22 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (newpath[0] == '~')
             newpath = newpath.replace("~", Environment.get_home_dir ());
 
-        if (!newpath.contains("://"))
+        if (!newpath.contains("://")) {
+            if (!newpath.has_prefix ("/"))
+                newpath = "/" + newpath;
+
             newpath = Marlin.ROOT_FS_URI + newpath;
-        
+        } else {
+            string [] parts = newpath.split ("://", 3);
+            if (parts.length > 2) {
+                warning ("Invalid path");
+                return null;
+            }
+        }
+
         newpath = newpath.replace("ssh:", "sftp:");
         newpath = GLib.Uri.escape_string (newpath, reserved_chars, true);
-        
+
         File file = File.new_for_commandline_arg (newpath);
         return file;
     }
@@ -562,24 +569,21 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             load_right_click_menu (menu_x_root, menu_y_root - padding.bottom - padding.top);
             return true;
         }
-
         return false;
     }    
 
     public virtual string? update_breadcrumbs (string newpath, string breadpath) {
         string strloc;
 
-        if (Posix.strncmp (newpath, "./", 2) == 0) {
+        if (Posix.strncmp (newpath, "./", 2) == 0)
             return null;
-        }
 
-        if (newpath[0] == '/') {
+        if (newpath[0] == '/')
             strloc = newpath;
-        } else if (Posix.strncmp (newpath, "~/", 2) == 0) {
+        else if (Posix.strncmp (newpath, "~/", 2) == 0)
             strloc = Environment.get_home_dir ();
-        } else {
+        else
             strloc = breadpath + newpath;
-        }
 
         return strloc;
     }
@@ -604,10 +608,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         selected = -1;
         var breads = current_path.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
-        if (breads.length == 0 || breads[0] == "") {
-            var element = new BreadcrumbsElement (protocol);
-            newelements.add (element);
-        }
+        string s = protocol == Marlin.ROOT_FS_URI ? "" : protocol;
+        newelements.add (new BreadcrumbsElement (s));
 
 
         /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
@@ -629,17 +631,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         }
 
         foreach (string dir in breads) {
-            if (dir != "") {
-                var element = new BreadcrumbsElement (dir);
-                newelements.add (element);
-            }
+            if (dir != "")
+                newelements.add (new BreadcrumbsElement (dir));
         }
 
-        if (protocol == Marlin.ROOT_FS_URI)
-            newelements[0].text = "/";
-
         int max_path = int.min (elements.size, newelements.size);
-
         foreach (IconDirectory icon in icons) {
             if (icon.protocol && icon.path == protocol) {
                 newelements[0].set_icon(icon.icon);
@@ -649,7 +645,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 bool found = true;
                 int h = 0;
 
-                for (int i = 0; i < icon.exploded.length; i++) {
+                for (int i = 1; i < icon.exploded.length; i++) {
                     if (icon.exploded[i] != newelements[i].text) {
                         found = false;
                         break;
@@ -666,10 +662,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                     newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
                     newelements[h].text_displayed = icon.text_displayed;
 
-                    if (icon.break_loop) {
-                        newelements[h].text = icon.path;
+                    if (icon.break_loop)
                         break;
-                    }
+
                 }
             }
         }

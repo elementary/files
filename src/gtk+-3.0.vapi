@@ -999,13 +999,28 @@ namespace Gtk {
 		public virtual signal void remove_editable (Gtk.CellRenderer p0, Gtk.CellEditable p1);
 	}
 	[CCode (cheader_filename = "gtk/gtk.h", type_id = "gtk_cell_area_box_get_type ()")]
-	public class CellAreaBox : Gtk.CellArea, Gtk.CellLayout, Gtk.Buildable, Gtk.Orientable {
+    /* We have to remove the reference to the Gtk.CellLayout interface in order to use the new pack_
+     * start and pack_end functions of Gtk.CellAreaBox, which have a different signature.
+     * Instead we add the other CellLayout methods explicitly */
+	//public class CellAreaBox : Gtk.CellArea, Gtk.CellLayout, Gtk.Buildable, Gtk.Orientable {
+	public class CellAreaBox : Gtk.CellArea, Gtk.Buildable, Gtk.Orientable {
 		[CCode (has_construct_function = false, type = "GtkCellArea*")]
 		public CellAreaBox ();
 		public int get_spacing ();
 		public void set_spacing (int spacing);
 		public int spacing { get; set; }
+        public void pack_start (Gtk.CellRenderer renderer, bool expand, bool align, bool fixed);
+        public void pack_end (Gtk.CellRenderer renderer, bool expand, bool align, bool fixed);
+		public void add_attribute (Gtk.CellRenderer cell, string attribute, int column);
+		public void clear ();
+		public void clear_attributes (Gtk.CellRenderer cell);
+		public unowned Gtk.CellArea get_area ();
+		public GLib.List<weak Gtk.CellRenderer> get_cells ();
+		public void reorder (Gtk.CellRenderer cell, int position);
+		public void set_attributes (Gtk.CellRenderer cell, ...);
+		public void set_cell_data_func (Gtk.CellRenderer cell, owned Gtk.CellLayoutDataFunc func);
 	}
+
 	[CCode (cheader_filename = "gtk/gtk.h", type_id = "gtk_cell_area_context_get_type ()")]
 	public class CellAreaContext : GLib.Object {
 		[CCode (has_construct_function = false)]

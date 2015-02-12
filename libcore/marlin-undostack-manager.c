@@ -185,8 +185,7 @@ static void undo_redo_op_callback (gpointer callback_data);
 static void undo_redo_done_rename_callback (GOFFile * file,
                                             GFile * result_location, GError * error, gpointer callback_data);
 
-static void undo_redo_done_delete_callback (GHashTable *debuting_uris,
-                                            gboolean user_cancel, gpointer callback_data);
+static void undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data);
 
 static void undo_redo_done_create_callback (GFile * new_file,
                                             gpointer callback_data);
@@ -402,7 +401,8 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
 void
 marlin_undo_manager_redo (MarlinUndoManager *manager,
                           GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb)
+                          MarlinUndoFinishCallback cb,
+                          gpointer callback_data)
 {
     GList *uris;
     GOFFile *file;
@@ -486,8 +486,6 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             g_object_unref (fparent);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
-            //amtest
-            //printf ("MARLIN_UNDO_MOVETRASH\n");
             if (g_hash_table_size (action->trashed) > 0) {
                 GList *uri_to_trash = g_hash_table_get_keys (action->trashed);
                 uris = uri_list_to_gfile_list (uri_to_trash);
@@ -553,7 +551,8 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 void
 marlin_undo_manager_undo (MarlinUndoManager *manager,
                           GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb)
+                          MarlinUndoFinishCallback cb,
+                          gpointer done_callback_data)
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
@@ -828,7 +827,6 @@ marlin_undo_manager_get_file_modification_time (GFile *file)
 {
     GFileInfo *info;
     guint64 mtime;
-
     info = g_file_query_info (file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
                               G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, FALSE, NULL);
     if (info == NULL) {
@@ -1731,10 +1729,9 @@ undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
 
 /** ---------------------------------------------------------------- */
 static void
-undo_redo_done_delete_callback (GHashTable *
-                                debuting_uris, gboolean user_cancel, gpointer callback_data)
+undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (debuting_uris, callback_data);
+    undo_redo_done_transfer_callback (NULL, callback_data);
 }
 
 /** ---------------------------------------------------------------- */

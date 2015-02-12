@@ -108,11 +108,11 @@ marlin_undo_manager_add_action (MarlinUndoManager* manager,
 
 void
 marlin_undo_manager_undo (MarlinUndoManager* manager,
-                          GtkWidget *parent_view, MarlinUndoFinishCallback cb);
+                          GtkWidget *parent_view, MarlinUndoFinishCallback cb, gpointer done_callback_data);
 
 void
 marlin_undo_manager_redo (MarlinUndoManager* manager,
-                          GtkWidget *parent_view, MarlinUndoFinishCallback cb);
+                          GtkWidget *parent_view, MarlinUndoFinishCallback cb, gpointer done_callback_data);
 
 MarlinUndoActionData*
 marlin_undo_manager_data_new (MarlinUndoActionType type,

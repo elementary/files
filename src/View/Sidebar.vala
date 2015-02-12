@@ -33,9 +33,8 @@ namespace Marlin.Places {
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
-        private const int EJECT_BUTTON_XPAD = 12;
-        private const int TEXT_XPAD = 5;
-        private const int ICON_XPAD = 6;
+        private const int EJECT_BUTTON_XPAD = 6;
+        private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
         private const int PROP_ZOOM_LEVEL = 1;
 
@@ -55,6 +54,7 @@ namespace Marlin.Places {
         Gtk.IconTheme theme;
         GLib.Icon eject_icon;
 
+        int eject_button_size = 20;
         uint n_builtins_before;
         string last_selected_uri;
         string slot_location;
@@ -125,7 +125,7 @@ namespace Marlin.Places {
 
         /* TODO Make it an option in Settings whether or not to show
          * bookmarks pointing to non-existent (or unmounted) files. */
-        bool display_all_bookmarks = false;
+        bool display_all_bookmarks = true;
 
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
@@ -160,32 +160,30 @@ namespace Marlin.Places {
             tree_view.set_size_request (Preferences.settings.get_int ("minimum-sidebar-width"), -1);
             tree_view.set_headers_visible (false);
 
-            var col = new Gtk.TreeViewColumn ();
+            var cab = new Gtk.CellAreaBox ();
+            var col = new Gtk.TreeViewColumn.with_area (cab);
             col.max_width = -1;
             col.expand = true;
             col.spacing = 3;
 
             var crt = new Gtk.CellRendererText ();
-            col.pack_start(crt, false);
-            col.set_cell_data_func (crt, root_indent_cell_data_func);
-
-            crt = new Gtk.CellRendererText ();
             this.indent_renderer = crt;
-            col.pack_start(crt, false);
+            cab.pack_start(crt, false, false, false);
             col.set_cell_data_func (crt, indent_cell_data_func);
 
             var crpb = new Gtk.CellRendererPixbuf ();
             this.icon_cell_renderer = crpb;
             crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
-            col.pack_start(crpb, false);
+            cab.pack_start(crpb, false, false, false);
             col.set_attributes (crpb, "gicon", Column.ICON);
             col.set_cell_data_func (crpb, icon_cell_data_func);
 
             var crd = new Marlin.CellRendererDisk ();
             crd.ellipsize = Pango.EllipsizeMode.END;
             crd.ellipsize_set = true;
-            col.pack_start (crd, true);
+            crd.rpad = 12;
+            cab.pack_start (crd, true, false, false);
             col.set_attributes (crd,
                                 "text", Column.NAME,
                                 "visible", Column.EJECT,
@@ -196,9 +194,9 @@ namespace Marlin.Places {
             eject_spinner_cell_renderer = crs;
             crs.mode = Gtk.CellRendererMode.ACTIVATABLE;
             crs.icon_size = Gtk.IconSize.MENU;
-            crs.xpad = EJECT_BUTTON_XPAD;
+            crs.xpad = 0;
             crs.xalign = (float)1.0;
-            col.pack_start (crs, false);
+            cab.pack_start (crs, false, false, false);
             col.set_attributes (crs,
                                 "gicon", Column.EJECT_ICON,
                                 "visible", Column.EJECT,
@@ -212,7 +210,7 @@ namespace Marlin.Places {
             name_renderer.ellipsize_set = true;
             name_renderer.edited.connect (edited);
             name_renderer.editing_canceled.connect (editing_canceled);
-            col.pack_start (name_renderer,true);
+            cab.pack_start (name_renderer,true, false, false);
             col.set_attributes (name_renderer,
                                 "text", Column.NAME,
                                 "visible", Column.NO_EJECT,
@@ -225,10 +223,15 @@ namespace Marlin.Places {
             cre.is_category_expander = true;
             /* this is required to align the eject buttons to the right */
             int exp_size = cre.get_arrow_size (tree_view);
-            cre.xpad = (16 - exp_size).abs () + EJECT_BUTTON_XPAD - 2;
-            cre.xalign = (float)1.0;
-            col.pack_end (cre, false);
+            Gtk.icon_size_lookup (Gtk.IconSize.MENU, out eject_button_size, null);
+            cre.xpad = int.max ((eject_button_size - exp_size)/2, 0);
+            cab.pack_start (cre, false, false, false);
             col.set_cell_data_func (cre, expander_cell_data_func);
+
+            crt = new Gtk.CellRendererText ();
+            crt.xpad = EJECT_BUTTON_XPAD;
+            crt.xalign = (float)1.0;
+            cab.pack_start(crt, false, false, false);
 
             tree_view.append_column (col);
             tree_view.tooltip_column = Column.TOOLTIP;
@@ -249,7 +252,9 @@ namespace Marlin.Places {
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
                                                 source_targets,
                                                 Gdk.DragAction.MOVE);
-            Gtk.drag_dest_set (tree_view, Gtk.DestDefaults.MOTION, drop_targets,
+            Gtk.drag_dest_set (tree_view,
+                               Gtk.DestDefaults.MOTION,
+                               drop_targets,
                                Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
@@ -564,13 +569,17 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
+
                 var root = mount.get_default_location ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
-                    if (scheme == "archive") {
+                    if (scheme == "archive" ) {
                         network_mounts.prepend (mount);
                         continue;
                     }
+                } else {
+                    network_mounts.prepend (mount);
+                    continue;
                 }
 
                 add_place (Marlin.PlaceType.MOUNTED_VOLUME,
@@ -602,16 +611,23 @@ namespace Marlin.Places {
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
                 var root = mount.get_default_location ();
+                /* get_smb_share_from_uri will return the uri unaltered if does not have
+                 * the smb scheme so we need not test.  This is required because the mount
+                 * does not return the true root location of the share but the location used
+                 * when creating the mount.
+                 */
+                string uri = Marlin.get_smb_share_from_uri (root.get_uri ());
+
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            mount.get_name (),
                            mount.get_icon (),
-                           root.get_uri (),
+                           uri,
                            null,
                            null,
                            mount,
                            0,
-                           root.get_parse_name ());
+                           uri);
             }
 
             /* Add Entire Network BUILTIN */
@@ -913,7 +929,7 @@ namespace Marlin.Places {
                                                      null,
                                                      File.new_for_uri (drop_uri),
                                                      real_action,
-                                                     null, null, null);
+                                                     this, null, null);
                     return true;
                 case TargetType.GTK_TREE_MODEL_ROW:
                     return false;
@@ -964,12 +980,13 @@ namespace Marlin.Places {
                 if (can_accept_file_as_bookmark (file))
                     uris.prepend (file.get_uri ());
             });
+
             if (uris != null)
                 bookmarks.insert_uris (uris, position);
         }
 
-        public void add_uri (string uri) {
-            bookmarks.insert_uri_at_end (uri);
+        public void add_uri (string uri, string? label = null) {
+            bookmarks.insert_uri_at_end (uri, label);
         }
 
         private  bool drag_scroll_timer () {
@@ -1388,22 +1405,13 @@ namespace Marlin.Places {
             cell.set_visible (!store.iter_has_child (iter));
         }
 
-        private void root_indent_cell_data_func (Gtk.CellLayout layout,
-                                                 Gtk.CellRenderer cell,
-                                                 Gtk.TreeModel model,
-                                                 Gtk.TreeIter iter) {
-            cell.set_visible (true);
-            cell.xpad = ROOT_INDENTATION_XPAD;
-        }
-
         private void indent_cell_data_func (Gtk.CellLayout layout,
                                                  Gtk.CellRenderer cell,
                                                  Gtk.TreeModel model,
                                                  Gtk.TreeIter iter) {
             var path = store.get_path (iter);
             var depth = path.get_depth ();
-            cell.set_visible (depth > 1);
-            cell.xpad = ICON_XPAD;
+            cell.xpad = depth > 1 ? ICON_XPAD : ROOT_INDENTATION_XPAD;
         }
 
         private void expander_cell_data_func (Gtk.CellLayout layout,
@@ -1460,8 +1468,9 @@ namespace Marlin.Places {
                                              Gtk.CellRenderer renderer,
                                              Gtk.TreeModel model,
                                              Gtk.TreeIter iter) {
+
+            var crt = renderer as Gtk.CellRendererText;
             Marlin.PlaceType type;
-            Gtk.CellRendererText crt = renderer as Gtk.CellRendererText;
             model.@get (iter, Column.ROW_TYPE, out type, -1);
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
@@ -1682,7 +1691,7 @@ namespace Marlin.Places {
                     mount.unmount_with_operation.end (res);
                 }
                 catch (GLib.Error error) {
-                    warning ("Error while unmounting");
+                    debug ("Error while unmounting");
                 }
                 finish_eject_or_unmount (row_ref);
             });
@@ -1690,17 +1699,16 @@ namespace Marlin.Places {
 
         private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
             if (Marlin.FileOperations.has_trash_files (mount)) {
-                    unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                    /* Marlin.FileOperations will show a confirm dialog according to settings */
-                    if (dirs != null)
-                        Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
+                unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
+                /* Marlin.FileOperations will show a confirm dialog according to settings */
+                if (dirs != null)
+                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
             }
         }
 
         private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
             unowned Gtk.TreeViewColumn column;
             int width, x_offset, hseparator;
-            int eject_button_size;
             bool show_eject;
             Gtk.TreeIter iter;
             Gtk.TreePath path;
@@ -1723,8 +1731,7 @@ namespace Marlin.Places {
                 column.cell_set_cell_data (store, iter, false, false);
                 column.cell_get_position (eject_spinner_cell_renderer, out x_offset, out width);
 
-                eject_button_size = 20;
-                x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
+                x_offset += width - hseparator - eject_button_size;
                 if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size)
                     return true;
             }

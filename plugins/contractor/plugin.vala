@@ -73,11 +73,14 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
             } else {
                 files = get_file_array (gof_files);
                 var mimetypes = get_mimetypes (gof_files);
-                contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
+                if (mimetypes.length > 0)
+                    contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
             }
 
             assert (files != null);
-            assert (contracts != null);
+
+            if (contracts == null)
+                return;
 
             for (int i = 0; i < contracts.size; i++) {
                 var contract = contracts.get (i);

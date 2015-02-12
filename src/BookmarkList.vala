@@ -83,13 +83,13 @@ namespace Marlin {
             return instance;
         }
 
-        public void insert_uri (string uri, uint index) {
-            insert_item_internal (new Bookmark.from_uri (uri, null), index);
+        public void insert_uri (string uri, uint index, string? label = null) {
+            insert_item_internal (new Bookmark.from_uri (uri, label), index);
             save_bookmarks_file ();
         }
 
-        public void insert_uri_at_end (string uri) {
-            append_internal (new Bookmark.from_uri (uri, null));
+        public void insert_uri_at_end (string uri, string? label = null) {
+            append_internal (new Bookmark.from_uri (uri, label));
             save_bookmarks_file ();
         }
 

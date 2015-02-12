@@ -2058,6 +2058,7 @@ delete_job (GIOSchedulerJob *io_job,
 
     common = (CommonJob *)job;
     common->io_job = io_job;
+
 #ifdef ENABLE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
 #else
@@ -2074,19 +2075,19 @@ delete_job (GIOSchedulerJob *io_job,
     for (l = job->files; l != NULL; l = l->next) {
         file = l->data;
 
-        if (job->try_trash &&
-            g_file_has_uri_scheme (file, "trash")) {
+        if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else if (can_delete_without_confirm (file)) {
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else {
-            if (job->try_trash) {
+            if (job->try_trash &&
+                !g_file_has_uri_scheme (file, "smb")) {
                 to_trash_files = g_list_prepend (to_trash_files, file);
             } else {
                 must_confirm_delete = TRUE;
                 to_delete_files = g_list_prepend (to_delete_files, file);
-            }
+            } 
         }
     }
 
@@ -2153,14 +2154,11 @@ trash_or_delete_internal (GList                  *files,
         inhibit_power_manager ((CommonJob *)job, _("Deleting Files"));
     }
 
-    // Start UNDO-REDO
     if (try_trash && !marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
         job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
-        //undotest usefull ??
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
-    // End UNDO-REDO
 
     g_io_scheduler_push_job (delete_job,
                              job,
@@ -4353,6 +4351,10 @@ retry:
                            &error);
     }
 
+    /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
+     * the file is successfully copied, so the change will not be notified to the view.
+     * The view will need to be refreshed anyway */
+
     if (res) {
         transfer_info->num_files ++;
         report_copy_progress (copy_job, source_info, transfer_info);
@@ -4579,8 +4581,9 @@ retry:
             g_error_free (error);
             goto out;
         }
-        primary = f (_("There was an Error while copying \"%s\"."), g_file_get_uri (src));
-        secondary = f (_("There was an error copying the file into %s."), g_file_get_uri (dest_dir));
+
+        primary = f (_("Cannot copy \"%B\" here."), src);
+        secondary = f (_("There was an error copying the file into %B."), dest_dir);
         details = error->message;
 
         response = run_warning (job,
@@ -5466,9 +5469,15 @@ retry:
     not_local = FALSE;
 
     path = get_abs_path_for_symlink (src);
-    if (path == NULL) {
+    char *scheme;
+    scheme = g_file_get_uri_scheme (src);
+
+    if (path == NULL || !g_str_has_prefix (scheme, "file"))
         not_local = TRUE;
-    } else if (g_file_make_symbolic_link (dest,
+
+    g_free (scheme);
+
+    if (!not_local && g_file_make_symbolic_link (dest,
                                           path,
                                           common->cancellable,
                                           &error)) {
@@ -5478,6 +5487,7 @@ retry:
         // End UNDO-REDO
 
         g_free (path);
+
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
@@ -5946,7 +5956,7 @@ marlin_file_operations_copy_move   (GList                  *files,
                                     GFile                  *target_dir,
                                     GdkDragAction          copy_action,
                                     GtkWidget              *parent_view,
-                                    gpointer               done_callback,
+                                    GCallback              done_callback,
                                     gpointer               done_callback_data)
 {
     GList *p;
@@ -5981,6 +5991,19 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
+        if (g_file_has_uri_scheme (target_dir, "trash")) {
+            char *primary = f (_("Cannot copy into trash."));
+            char *secondary = f (_("It is not permitted to copy files into the trash"));
+            eel_show_error_dialog (primary,
+                                   secondary,
+                                   parent_window);
+
+            if (done_callback != NULL)
+                ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
+
+            return;
+        }
+
         /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||

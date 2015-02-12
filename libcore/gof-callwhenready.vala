@@ -36,10 +36,8 @@ public class GOF.CallWhenReady : Object {
             if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async.begin (gof, file_ready);
-                //message ("cwr %s", gof.uri);
-            } else {
+            } else
                 count++;
-            }
         }
 
         /* we didn't need to queue anything, all the infos were available */
@@ -51,7 +49,6 @@ public class GOF.CallWhenReady : Object {
 
     private void file_ready (GOF.File gof) {
         gof.update ();
-        //message ("file ready %s", gof.uri);
     }
 
     /* TODO move this to GOF.File */
@@ -67,7 +64,7 @@ public class GOF.CallWhenReady : Object {
             if (fqi != null)
                 fqi (gof);
         } catch (Error err) {
-            warning ("query info failed, %s %s", err.message, gof.uri);
+            debug ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND)
                 gof.exists = false;
             if (err is IOError.NOT_MOUNTED)
@@ -76,7 +73,7 @@ public class GOF.CallWhenReady : Object {
 
         call_when_ready_list.remove (gof);
         if (call_when_ready_list == null) {
-            message ("call when ready OK - empty list");
+            debug ("call when ready OK - empty list");
             if (f != null)
                 f (files);
         }

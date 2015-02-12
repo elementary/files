@@ -137,7 +137,7 @@ namespace FM {
                 cancel_await_double_click ();
 
                 if (selected_folder != null)
-                    load_root_location (selected_folder.location);
+                    load_root_location (selected_folder.get_target_location ());
 
                 result = true;
             }

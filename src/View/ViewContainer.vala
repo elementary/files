@@ -45,9 +45,18 @@ namespace Marlin.View {
                 return slot != null ? slot.uri : null;
             }
         }
+
+        public GOF.AbstractSlot? slot {
+            get {
+                return get_current_slot ();
+            }
+        }
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
+
+        private bool ready = false;
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
@@ -137,7 +146,6 @@ namespace Marlin.View {
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
             if (mode != view_mode) {
-
                 if (loc == null) /* Only untrue on container creation */
                     loc = this.location;
 
@@ -158,15 +166,19 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
+                content = view.get_content_box ();
+
                 view_mode = mode;
-                set_up_current_slot ();
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
+
+                load_slot_directory (view);
                 window.update_top_menu ();
             }
         }
 
         public void user_path_change_request (GLib.File loc) {
+            loading (true);
             view.user_path_change_request (loc);
         }
 
@@ -197,28 +209,39 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
-            var slot = get_current_slot ();
-            assert (slot != null);
-            assert (slot.directory != null);
-
-            content = view.get_content_box ();
-            load_slot_directory (slot);
+            ready = false;
+            load_slot_directory (get_current_slot ());
         }
 
-        public void load_slot_directory (GOF.AbstractSlot slot) {
-            can_show_folder = true;
-            loading (true);
-            /* Allow time for the window to update before starting to load directory so that
-             * the window is displayed more quickly
-             * when starting the application in, or switching view to, a folder that contains
-             * a large number of files. Also ensures infobars are added correctly by plugins.
-             */           
-            Timeout.add (100, () => {
-                slot.directory.load ();
-                plugin_directory_loaded ();
+        public void load_slot_directory (GOF.AbstractSlot? slot) {
+            if (slot == null)
+                return;
+
+            refresh_slot_info (slot);
+
+            /* Allow time for the window to update before trying to load directory so that
+             * the window is displayed more quickly when starting the application in,
+             * or switching view to, a folder that contains a large number of files.
+             * Also ensures infobars are added correctly by plugins.  Only checking in idle
+             * time allows pathbar animation to complete smoothly.
+
+             * Wait until directory is flagged ready to allow time for network folders to be found
+             * and accessed.
+
+             * Do not try and load directory that is not flagged 'can load'.
+             */
+            Idle.add (() => {
+                if (!slot.directory.is_ready)
+                    return true;
+
+                if (slot.directory.can_load) {
+                    slot.directory.load ();
+                    plugin_directory_loaded ();
+                } else
+                     directory_done_loading (slot);
+
                 return false;
             });
-            refresh_slot_info (slot);
         }
 
         private void plugin_directory_loaded () {
@@ -235,7 +258,6 @@ namespace Marlin.View {
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
             GLib.File loc = aslot.directory.file.location;
             update_tab_name (loc);
-
             browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
 
             window.loading_uri (loc.get_uri ());
@@ -246,56 +268,78 @@ namespace Marlin.View {
         }
 
         public void update_tab_name (GLib.File loc) {
-            var slot_path = loc.get_path ();
-
-            if (slot_path == Environment.get_home_dir ())
+            string? slot_path = loc.get_path ();
+            tab_name = "-----";
+            if (slot_path == null) {
+                string [] uri_parts = loc.get_uri ().split (Path.DIR_SEPARATOR_S);
+                uint index = uri_parts.length - 1;
+                string s;
+                while (index >= 0) {
+                    s = uri_parts [index];
+                    if (s.length >= 1) {
+                        if (index == 0) {
+                            tab_name = Marlin.protocol_to_name (s);
+                        } else
+                            tab_name = s;
+                        break;
+                    }
+                    index--;
+                }
+            } else if (slot_path == Environment.get_home_dir ())
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (loc.query_exists ()) {
+            else {
                 try {
                     var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
                     tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
                 }
                 catch (GLib.Error e) {
                     warning ("Could not get location display name. %s", e.message);
+                    tab_name = loc.get_basename ();
+                    can_show_folder = false;
                 }
-
-            } else {
-                tab_name = _("This folder does not exist");
-                can_show_folder = false;
             }
+
+            if (tab_name == "-----")
+                tab_name = loc.get_uri ();
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
-
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-            FileInfo file_info;
-
             loading (false);
+            can_show_folder = true;
 
-            try {
-                file_info = slot.location.query_info ("standard::*,access::*", FileQueryInfoFlags.NONE);
-
-                /* If not readable, alert the user */
-                if (slot.directory.permission_denied) {
-                    content = new Granite.Widgets.Welcome (_("This does not belong to you."),
+            if (slot.directory.permission_denied) {
+                content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                            _("You don't have permission to view this folder."));
-                    can_show_folder = false;
-                } else if (file_info.get_file_type () == FileType.DIRECTORY && selected_locations != null) {
-                    view.select_glib_files (selected_locations, null);
-                    selected_locations = null;
-                }
-            } catch (Error err) {
-                /* query_info will throw an exception if it cannot find the file */
-                if (err is IOError.NOT_MOUNTED)
-                    slot.reload ();
-                else {
+                can_show_folder = false;
+            } else if (!slot.directory.can_load) {
+                content = new Granite.Widgets.Welcome (_("Unable to mount folder."),
+                                                           _("The server for this folder could not be located."));
+                can_show_folder = false;
+            } else if (!slot.directory.file.exists) {
                     content = new DirectoryNotFound (slot.directory, this);
                     can_show_folder = false;
+            } else if (selected_locations != null) {
+                    view.select_glib_files (selected_locations, null);
+                    selected_locations = null;
+            } else if (slot.directory.selected_file != null) {
+                if (slot.directory.selected_file.query_exists ())
+                    focus_location_if_in_current_directory (slot.directory.selected_file);
+                else {
+                    content = new Granite.Widgets.Welcome (_("File not found."),
+                                                           _("The file selected no longer exists."));
+                    can_show_folder = false;
                 }
+                slot.directory.selected_file = null;
+            }
+
+            if (can_show_folder) {
+                ready = true;
+                content = view.get_content_box ();
             }
         }
 
@@ -353,11 +397,8 @@ namespace Marlin.View {
                 }
             }
 
-            if (loc != null) {
+            if (loc != null)
                 user_path_change_request (loc);
-                slot_path_changed (loc);
-                refresh_slot_info (get_current_slot ());
-            }
         }
 
         public void focus_location_if_in_current_directory (GLib.File? file,
@@ -382,16 +423,19 @@ namespace Marlin.View {
             return path;
         }
 
-        public void reload () {
-            if (!can_show_folder) /* Try to display folder again */
-                content = view.get_content_box ();
-
-            loading (true);
+        public void reload (bool propagate = true) {
             /* Allow time for the signal to propagate and the tab label to redraw */
-            Timeout.add (10, () => {
+            Idle.add (() => {
                 var slot = view.get_current_slot ();
                 slot.reload ();
                 load_slot_directory (slot);
+                /* For remote folders, make sure any other windows showing the same folder are
+                 * also refreshed. Prevent infinite loop with propagate - when called from application,
+                 * propagate will be false.
+                 */   
+                if (propagate)
+                    ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
+
                 return false;
             });
         }
