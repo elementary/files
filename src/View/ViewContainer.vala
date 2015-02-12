@@ -155,12 +155,6 @@ namespace Marlin.View {
                     view.cancel ();
                 }
 
-                /* the following 2 lines delays destruction of the old view until this function returns
-                 * and allows the processor to display or update the window more quickly
-                 */    
-                GOF.AbstractSlot temp;
-                temp = view;
-
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
                 else

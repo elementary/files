@@ -201,9 +201,7 @@ namespace FM {
         private bool can_trash_or_delete = true;
 
         /* Rapid keyboard paste support */
-        protected bool pasting_files = false;
-        GLib.Timer? paste_timer = null;
-        protected uint paste_timeout_id = 0; 
+        protected bool pasting_files = false; 
         protected bool select_added_files = false;
         private HashTable? pasted_files = null;
 
@@ -216,7 +214,6 @@ namespace FM {
         private bool in_network_root = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        private uint select_timeout_id = 0;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -362,39 +359,35 @@ namespace FM {
             unselect_all ();
             GLib.List<GOF.File>? file_list = null;
 
-            if (focus_location == null)
-                focus_location = location_list.first ().data;
-
             location_list.@foreach ((loc) => {
                 file_list.prepend (GOF.File.@get (loc));
             });
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
              * the tree is thawed and the model reconnected before selecting the files */
-            select_timeout_id = GLib.Timeout.add (100, () => {
-                if (tree_frozen)
-                    return true;
-
-                file_list.@foreach ((file) => {
-                    var iter = Gtk.TreeIter ();
-
-                    if (model.get_first_iter_for_file (file, out iter)) {
-                        Gtk.TreePath path = model.get_path (iter);
-                        if (path != null) {
-                            if (focus_location != null && focus_location.equal (file.location))
-                                set_cursor (path, false, true, false); /* set cursor and select */
-                            else
-                                select_path (path);
-                        } 
-                    }
-                });
-                select_timeout_id = 0;
-                return false;
+            Idle.add (() => {
+                bool try_again = true;
+                if (!tree_frozen) {
+                    try_again = false;
+                    file_list.@foreach ((file) => {
+                        var iter = Gtk.TreeIter ();
+                        if (model.get_first_iter_for_file (file, out iter)) {
+                            Gtk.TreePath path = model.get_path (iter);
+                            if (path != null) {
+                                if (focus_location != null && focus_location.equal (file.location))
+                                    set_cursor (path, false, true, false); /* set cursor and select */
+                                else
+                                    select_path (path);
+                            }
+                        } else {
+                            /* model has not caught up yet - wait a bit */ 
+                            try_again = true;
+                        }
+                    });
+                }
+                return try_again;
             });
-
             updates_frozen = false;
-            update_selected_files ();
-            notify_selection_changed ();
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -1074,34 +1067,21 @@ namespace FM {
             var view = pointer as FM.AbstractDirectoryView; 
             view.pasted_files = uris;
 
-            if (view.paste_timer == null)
-                view.paste_timer = new GLib.Timer ();
-
-            view.paste_timer.start (); /* restarts timer if already running */
-
-            /* Limit paste action rate to 10 per second */ 
-            if (view.paste_timeout_id == 0) {
-                view.paste_timeout_id = Timeout.add (100, () => {
-                    view.pasting_files = false; /* allows another paste action to occur */
-                    view.paste_timeout_id = 0;
-                    view.paste_timer.stop ();
-                    view.paste_timer = null;
-
-                    /* Select the most recently pasted files */
-                    GLib.List<GLib.File> pasted_files_list = null;
-                    view.pasted_files.foreach ((k, v) => {
-                        File f = k as File;
-                        pasted_files_list.prepend (f);
-                    });
-
-                    if (!view.slot.directory.is_local)
-                        view.slot.directory.need_reload ();
-
-                    view.select_glib_files (pasted_files_list, null);
-
-                    return false;
+            Idle.add (() => {
+                /* Select the most recently pasted files */
+                GLib.List<GLib.File> pasted_files_list = null;
+                view.pasted_files.foreach ((k, v) => {
+                    File f = k as File;
+                    pasted_files_list.prepend (f);
                 });
-            }
+
+                if (!view.slot.directory.is_local)
+                    view.slot.directory.need_reload ();
+
+                view.select_glib_files (pasted_files_list, null);
+                view.pasting_files = false;
+                return false;
+            });
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2284,9 +2264,10 @@ namespace FM {
          */  
         private unowned GLib.List<unowned GOF.File> get_files_for_action () {
             unowned GLib.List<unowned GOF.File> action_files = null;
-            if (selected_files == null) {
+            
+            if (selected_files == null)
                 action_files.prepend (slot.directory.file);
-            } else
+            else
                 action_files = selected_files;
 
             return action_files;
@@ -2298,12 +2279,10 @@ namespace FM {
 
         protected virtual void on_view_selection_changed () {
             update_selected_files ();
-
             if (updates_frozen)
                 return;
 
             notify_selection_changed ();
-            update_menu_actions ();
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
@@ -2952,7 +2931,6 @@ namespace FM {
             cancel_thumbnailing ();
             slot.directory.cancel ();
             cancel_drag_timer ();
-            cancel_timeout (ref select_timeout_id);
             cancel_timeout (ref drag_scroll_timer_id);
             
             loaded_subdirectories.@foreach ((dir) => {

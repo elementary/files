@@ -28,6 +28,10 @@ namespace FM {
             base (_slot);
         }
 
+        ~AbstractTreeView () {
+            debug ("ATV destruct");
+        }
+
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
