@@ -205,6 +205,8 @@ namespace FM {
         GLib.Timer? paste_timer = null;
         protected uint paste_timeout_id = 0; 
         protected bool select_added_files = false;
+        private HashTable? pasted_files = null;
+
 
         public bool renaming {get; protected set; default = false;}
 
@@ -379,7 +381,7 @@ namespace FM {
                     if (model.get_first_iter_for_file (file, out iter)) {
                         Gtk.TreePath path = model.get_path (iter);
                         if (path != null) {
-                            if (focus_location.equal (file.location))
+                            if (focus_location != null && focus_location.equal (file.location))
                                 set_cursor (path, false, true, false); /* set cursor and select */
                             else
                                 select_path (path);
@@ -1070,26 +1072,33 @@ namespace FM {
             assert (pointer != null);
 
             var view = pointer as FM.AbstractDirectoryView; 
+            view.pasted_files = uris;
+
             if (view.paste_timer == null)
                 view.paste_timer = new GLib.Timer ();
 
             view.paste_timer.start (); /* restarts timer if already running */
 
-            /* Limit paste action rate to 10 per second, do not unblock the directory monitor
-             * until at least one second after the last paste event in order to avoid duplicate
-             * "add-file" events and messed up selection. */ 
+            /* Limit paste action rate to 10 per second */ 
             if (view.paste_timeout_id == 0) {
                 view.paste_timeout_id = Timeout.add (100, () => {
                     view.pasting_files = false; /* allows another paste action to occur */
-
-                    if (view.paste_timer.elapsed () < 1.0)
-                        return true;
-
-                    view.slot.directory.unblock_monitor ();
-                    view.select_added_files = false;
                     view.paste_timeout_id = 0;
                     view.paste_timer.stop ();
                     view.paste_timer = null;
+
+                    /* Select the most recently pasted files */
+                    GLib.List<GLib.File> pasted_files_list = null;
+                    view.pasted_files.foreach ((k, v) => {
+                        File f = k as File;
+                        pasted_files_list.prepend (f);
+                    });
+
+                    if (!view.slot.directory.is_local)
+                        view.slot.directory.need_reload ();
+
+                    view.select_glib_files (pasted_files_list, null);
+
                     return false;
                 });
             }
@@ -1116,9 +1125,7 @@ namespace FM {
                     call_back = (GLib.Callback)after_trash_or_delete;
                 } else {
                     pasting_files = true;
-                    prepare_to_select_added_files ();
-                    /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-                    slot.directory.block_monitor ();
+                    /* callback takes care of selecting pasted files */
                     call_back = (GLib.Callback)after_pasting_files;
                 }
 
@@ -1465,8 +1472,10 @@ namespace FM {
 
                         case TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
-                                prepare_to_select_added_files ();
-
+                                if (selected_files != null)
+                                    unselect_all ();
+ 
+                                select_added_files = true;
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
                                                                                  context,
@@ -2252,13 +2261,6 @@ namespace FM {
                     val = (val + 2 * offset).clamp (lower, upper - page);
                     adj.set_value (val);
                 }
-        }
-
-        private void prepare_to_select_added_files () {
-            if (selected_files != null)
-                unselect_all ();
-
-            select_added_files = true;
         }
 
         private void remove_marlin_icon_info_cache (GOF.File file) {
