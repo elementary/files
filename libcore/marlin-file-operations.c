@@ -1430,13 +1430,21 @@ confirm_empty_trash (EmptyTrashJob *job)
 
     /* The strings are freed by the f () function */
 
-    response = run_warning (job,
-                            prompt,
-                            secondary_text,
-                            NULL,
-                            FALSE,
-                            GTK_STOCK_CANCEL, _("Empty _Trash"),
-                            NULL);
+    /**
+     *  If we have more than one trash show a confirmation dialog,
+     *  otherwise empty system trash directly.
+     */
+    if (g_list_length (files) > 1) {
+        response = run_warning (job,
+                                prompt,
+                                secondary_text,
+                                NULL,
+                                FALSE,
+                                GTK_STOCK_CANCEL, _("Empty _Trash"),
+                                NULL);
+    } else {
+        response = 1;
+    }
 
     return (response == 1);
 }
