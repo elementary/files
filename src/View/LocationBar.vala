@@ -141,10 +141,10 @@ namespace Marlin.View.Chrome
             add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_DAVS});
             add_icon ({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_FTP});
             add_icon ({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_NETWORK});
-            add_icon ({ "recent://", Marlin.ICON_RECENT_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_RECENT});
             add_icon ({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_SFTP});
             add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_SMB});
             add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
+            add_icon ({ "recent://", Marlin.ICON_RECENT_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_RECENT});
 
             /* music */
             string dir;
