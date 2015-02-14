@@ -398,6 +398,18 @@ namespace Marlin.Places {
             return iter;
         }
 
+        private bool recent_is_supported () {
+            string [] supported;
+
+            supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
+            for (int i = 0; supported[i] != null; i++) {
+                if (supported[i] == "recent") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void update_places () {
             Gtk.TreeIter iter;
             string mount_uri;
@@ -413,7 +425,7 @@ namespace Marlin.Places {
 
             store.clear ();
 
-            /* ADD BOOKMARKS CATEGORY*/
+            /* Add Bookmarks CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -423,6 +435,22 @@ namespace Marlin.Places {
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your common places and bookmarks"));
+
+            /*  Add Recents BUILTIN */
+            if (recent_is_supported ()) {
+                add_place (Marlin.PlaceType.BUILT_IN,
+                    iter,
+                    Marlin.PROTOCOL_NAME_RECENT,
+                    new ThemedIcon (Marlin.ICON_RECENT),
+                    Marlin.RECENT_URI,
+                    null,
+                    null,
+                    null,
+                    0,
+                    _("View the list of recently opened files"));
+
+                n_builtins_before++;
+            }
 
             /* Add Home BUILTIN */
             try {
