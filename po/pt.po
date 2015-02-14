@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-11-29 12:49+0000\n"
-"Last-Translator: Pedro Monteiro <Unknown>\n"
+"PO-Revision-Date: 2015-02-13 13:27+0000\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:10+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-14 05:56+0000\n"
+"X-Generator: Launchpad (build 17341)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -903,21 +903,23 @@ msgstr "Se eliminar um item, este não poderá ser recuperado."
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Apagar permanentemente todos os itens do Lixo?"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Todos os itens em diretórios de lixo, incluindo aqueles em quaisquer "
+"unidades externas ligadas, serão apagados permanentemente."
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Apagar permanentemente todos os itens do Lixo neste disco?"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Todos os itens do lixo neste disco serão apagados permanentemente."
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -1377,11 +1379,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Não é possivel copiar \"%B\" para aqui."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Ocorreu um erro ao copiar o ficheiro para %B."
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1447,11 +1449,11 @@ msgstr "A definir as permissões"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Não é possivel copiar para o lixo."
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Não é permitido copiar ficheiros para o lixo"
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1689,19 +1691,19 @@ msgstr "Não tem permissões para ver esta pasta."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Não foi possível montar a pasta."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "O servidor para esta pasta não foi localizado."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Ficheiro não encontrado."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "O ficheiro selecionado já não existe."
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1769,11 +1771,11 @@ msgstr "%s Sem Nome"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Não é possivel copiar ficheiros que estão no lixo"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Então cortar a seleção"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
@@ -1907,7 +1909,7 @@ msgstr "Localização original"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Informação"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1919,7 +1921,7 @@ msgstr "Abrir com:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Utilização"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2082,7 +2084,7 @@ msgstr "Cancelar todas as operações ativas"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Recarregar esta pasta"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
@@ -2090,7 +2092,7 @@ msgstr "Ir para %s"
 
 #: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navegar para %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
