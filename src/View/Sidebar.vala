@@ -22,6 +22,8 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
+        public GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+
         enum PlaceType {
             BUILT_IN,
             MOUNTED_VOLUME,
@@ -437,7 +439,7 @@ namespace Marlin.Places {
                         Column.TOOLTIP, _("Your common places and bookmarks"));
 
             /*  Add Recents BUILTIN */
-            if (recent_is_supported ()) {
+            if (recent_is_supported () && privacy_settings.get_boolean ("remember-recent-files")) {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
                     Marlin.PROTOCOL_NAME_RECENT,
