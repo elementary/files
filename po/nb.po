@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-11-27 08:51+0000\n"
+"PO-Revision-Date: 2015-02-14 08:06+0000\n"
 "Last-Translator: ProsjektX <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:09+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-15 05:56+0000\n"
+"X-Generator: Launchpad (build 17341)\n"
 "Language: nb\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -901,21 +901,26 @@ msgstr "Hvis du sletter et element vil det bli slettet permanent."
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Slette alle elementer i papirkurven permanent?"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Alle elementer i alle mapper i papirkurven, inkludert de på monterte "
+"eksterne enheter, vil bli permanent slettet."
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"Slette alle elementer i papirkurven permanent på denne monterte enheten?"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Alle elementer i papirkurven på denne monterte enhet vil bli permanent "
+"slettet."
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -1363,11 +1368,11 @@ msgstr "Kunne ikke fjerne eksisterende fil med samme navn i %F."
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Kan ikke kopiere \"%B\" her."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "En feil oppstod under kopiering av filen til %B."
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1433,11 +1438,11 @@ msgstr "Setter rettigheter"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Kan ikke kopiere til papirkurv."
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Det er ikke tillatt å kopiere filer til papirkurven"
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1675,19 +1680,19 @@ msgstr "Du har ikke rettigheter til å se denne mappen."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Kunne ikke montere mappen."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Tjeneren for denne mappen kunne ikke bli funnet."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Filen ble ikke funnet."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Den valgte filen finnes ikke lenger."
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1755,11 +1760,11 @@ msgstr "Uten navn %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Kan ikke kopiere filer som er i papirkurven"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Klipper ut utvalget i stedet"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
@@ -1893,7 +1898,7 @@ msgstr "Opphavssted"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1905,7 +1910,7 @@ msgstr "Åpne med:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Bruk"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2068,7 +2073,7 @@ msgstr "Avbryt alle pågående handlinger"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Last inn mappe på nytt"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
@@ -2076,7 +2081,7 @@ msgstr "Gå til %s"
 
 #: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Naviger til %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
