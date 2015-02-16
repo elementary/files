@@ -75,6 +75,7 @@ public class GOF.Directory.Async : Object {
     private string scheme;
     public bool is_local;
     public bool is_trash;
+    public bool is_recent;
     public bool has_trash_dirs;
     public bool can_load;
     private bool _is_ready;
@@ -97,7 +98,8 @@ public class GOF.Directory.Async : Object {
 
         scheme = location.get_uri_scheme ();
         is_trash = (scheme == "trash");
-        is_local = is_trash || (scheme == "file");
+        is_recent = (scheme == "recent");
+        is_local = is_trash || is_recent || (scheme == "file");
 
         if (!prepare_directory ())
             return;

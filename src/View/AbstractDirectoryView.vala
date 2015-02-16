@@ -211,6 +211,7 @@ namespace FM {
         private bool updates_frozen = false;
         protected bool tree_frozen = false;
         private bool in_trash = false;
+        private bool in_recent = false;
         private bool in_network_root = false;
         protected bool is_loading;
         protected bool helpers_shown;
@@ -474,7 +475,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<unowned GOF.File> selection = get_selected_files ()) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen || in_trash || in_recent)
                 return;
 
             uint nb_elem = selection.length ();
@@ -704,7 +705,7 @@ namespace FM {
     /** File operations */
 
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen || in_trash || in_recent)
                 return;
 
             GLib.File location = file.get_target_location ();
@@ -1164,6 +1165,7 @@ namespace FM {
             debug ("DV  directory done loading %s", dir.file.uri);
             dir.file_loaded.disconnect (on_directory_file_loaded);
             in_trash = slot.directory.is_trash;
+            in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
             thaw_tree ();
 
@@ -1667,9 +1669,9 @@ namespace FM {
             GLib.MenuModel? model = null;
 
             if (get_selected_files () != null)
-                model = build_menu_selection (ref builder, in_trash);
+                model = build_menu_selection (ref builder, in_trash, in_recent);
             else
-                model = build_menu_background (ref builder, in_trash);
+                model = build_menu_background (ref builder, in_trash, in_recent);
 
             if (model != null && model is GLib.MenuModel) {
                 /* add any additional entries from plugins */
@@ -1695,7 +1697,7 @@ namespace FM {
             return true;
         }
 
-        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
+        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
             GLib.Menu menu = new GLib.Menu ();
 
             var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
@@ -1707,6 +1709,12 @@ namespace FM {
                 clipboard_menu.remove (1); /* Paste (index updated by previous line) */
 
                 menu.append_section (null, clipboard_menu);
+            } else if (in_recent) {
+                clipboard_menu.remove (0); /* Cut */
+                clipboard_menu.remove (1); /* Paste */
+
+                menu.append_section (null, clipboard_menu);
+                menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
             } else {
                 var open_menu = build_menu_open (ref builder);
                 if (open_menu != null)
@@ -1743,9 +1751,10 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash) {
+        private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
+            var menu = new GLib.Menu ();
+
             if (in_trash) {
-                var menu = new GLib.Menu ();
                 if (common_actions.get_action_enabled ("paste_into")) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
 
@@ -1754,7 +1763,13 @@ namespace FM {
                     return null;
             }
 
-            var menu = new GLib.Menu ();
+            if (in_recent) {
+                menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+
+                return menu as MenuModel;
+            }
+
             menu.append_section (null, build_menu_open (ref builder));
 
             if (!in_network_root) {
