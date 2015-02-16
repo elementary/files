@@ -392,7 +392,15 @@ public class GOF.Directory.Async : Object {
                 bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
 
                 foreach (var file_info in files) {
-                    string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
+                    var name = file_info.get_name ();
+                    var path = location.get_path ();
+                    string uri;
+
+                    if (path == null || path.length < 1)
+                        uri = Path.build_filename (file.uri, name);
+                    else
+                        uri = GLib.Filename.to_uri (Path.build_filename (path, name));
+
                     GLib.File loc = GLib.File.new_for_uri (uri);
                     GOF.File? gof = GOF.File.cache_lookup (loc);
 
