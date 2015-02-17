@@ -590,7 +590,7 @@ namespace FM {
             loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
-            if (new_dir.can_load);
+            if (new_dir.can_load)
                 connect_directory_handlers (new_dir);
         }
 
