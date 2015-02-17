@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2015-02-05 14:28+0000\n"
+"PO-Revision-Date: 2015-02-16 21:28+0000\n"
 "Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:10+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-17 06:18+0000\n"
+"X-Generator: Launchpad (build 17341)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1018,24 +1018,30 @@ msgstr[1] "%'d filer återstår att kasta"
 #: ../libcore/marlin-file-operations.c:1945
 #: ../libcore/marlin-file-operations.c:1948
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Kan inte flytta filen till papperskorgen eller ta bort den"
 
 #: ../libcore/marlin-file-operations.c:1943
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Det är inte tillåtet att flytta filer till papperskorgen eller radera filer "
+"på ett skrivskyddat filsystem."
 
 #: ../libcore/marlin-file-operations.c:1946
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Det är inte tillåtet att flytta filer till papperskorgen eller radera filer "
+"i en mapp som du inte har skrivrättigheter till."
 
 #: ../libcore/marlin-file-operations.c:1949
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Det är inte tillåtet att flytta mappar till papperskorgen eller ta bort "
+"mappar som du inte har skrivrättigheter till."
 
 #: ../libcore/marlin-file-operations.c:1951
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1046,6 +1052,8 @@ msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Denna fil kunde inte flyttas till papperskorgen. Se nedan för vidare "
+"information."
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1356,7 +1364,7 @@ msgstr "Kunde inte ta bort den redan befintliga filen med samma namn i %F."
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Kan inte kopiera \"%B\" hit."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
@@ -1672,11 +1680,11 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Servern för den här mappen kunde inte hittas."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Filen hittades inte."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
@@ -1708,7 +1716,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:944
 msgid "Select an application"
-msgstr ""
+msgstr "Välj ett program"
 
 #: ../src/View/AbstractDirectoryView.vala:946
 msgid "Set as default"
@@ -1720,7 +1728,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Ogiltigt filnamn angivit"
 
 #: ../src/View/AbstractDirectoryView.vala:1789
 msgid "Invalid"
@@ -1744,7 +1752,7 @@ msgstr "Annat program"
 
 #: ../src/View/AbstractDirectoryView.vala:2113
 msgid "Untitled %s"
-msgstr ""
+msgstr "Namnlös %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
@@ -1756,7 +1764,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s är inte ett giltigt filnamn"
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
@@ -1830,7 +1838,7 @@ msgstr "Stäng"
 
 #: ../src/View/PropertiesWindow.vala:256
 msgid "file"
-msgstr ""
+msgstr "fil"
 
 #: ../src/View/PropertiesWindow.vala:258
 msgid "files"
@@ -1948,19 +1956,19 @@ msgstr ""
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Misslyckades att köra \"%s\""
 
 #: ../src/DndHandler.vala:95
 msgid "Move Here"
-msgstr ""
+msgstr "Flytta hit"
 
 #: ../src/DndHandler.vala:96
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopiera hit"
 
 #: ../src/DndHandler.vala:97
 msgid "Link Here"
-msgstr ""
+msgstr "Länka hit"
 
 #: ../src/DndHandler.vala:100
 msgid "Cancel"
@@ -1976,7 +1984,7 @@ msgstr "Öppna uri(s) i en ny tab"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:65
 msgid "New Window"
-msgstr ""
+msgstr "Nytt fönster"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
@@ -2073,7 +2081,7 @@ msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Anslut till server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2085,11 +2093,11 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Töm papperskorgen"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Återställ från papperskorgen"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30
@@ -2102,59 +2110,59 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
-msgstr ""
+msgstr "Ny"
 
 #: ../src/View/directory_view_popup.ui:39
 msgid "Folder"
-msgstr ""
+msgstr "Mapp"
 
 #: ../src/View/directory_view_popup.ui:44
 msgid "Empty File"
-msgstr ""
+msgstr "Tom fil"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Visa dolda filer"
 
 #: ../src/View/directory_view_popup.ui:60
 msgid "New Tab"
-msgstr ""
+msgstr "Ny flik"
 
 #: ../src/View/directory_view_popup.ui:73
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:88
 msgid "Bookmark"
-msgstr ""
+msgstr "Bokmärk"
 
 #: ../src/View/directory_view_popup.ui:95
 msgid "Paste"
-msgstr ""
+msgstr "Klistra in"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Cut"
-msgstr ""
+msgstr "Klipp ut"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Klistra in i mapp"
 
 #: ../src/View/directory_view_popup.ui:117
 msgid "Sort by"
-msgstr ""
+msgstr "Sortera efter"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
