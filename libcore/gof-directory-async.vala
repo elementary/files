@@ -146,7 +146,7 @@ public class GOF.Directory.Async : Object {
         return false;
     }
 
-    private bool get_file_info () { 
+    private bool get_file_info () {
         if (!is_local && !check_network ()) {
             return false;
         }
@@ -176,7 +176,7 @@ public class GOF.Directory.Async : Object {
                 }
                 make_ready ();
             });
-        } else 
+        } else
             make_ready ();
 
         return true;
@@ -262,11 +262,11 @@ public class GOF.Directory.Async : Object {
 
     /** Views call the following function with null parameter - file_loaded and done_loading
       * signals are emitted and cause the view and view container to update.
-      * 
+      *
       * LocationBar calls this function, with a callback, on its own Async instances in order
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
-     **/ 
+     **/
     public void load (GOFFileLoadedFunc? file_loaded_func = null) {
         cancellable.reset ();
         longest_file_name = "";
@@ -294,7 +294,7 @@ public class GOF.Directory.Async : Object {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
 
-            bool show_hidden = Preferences.get_default ().pref_show_hidden_files;
+            bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
 
             foreach (GOF.File gof in file_hash.get_values ()) {
                 if (gof != null) {
@@ -389,7 +389,7 @@ public class GOF.Directory.Async : Object {
                 if (files == null)
                     break;
 
-                bool show_hidden =  Preferences.get_default ().pref_show_hidden_files;
+                bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
 
                 foreach (var file_info in files) {
                     string uri = Path.build_filename (location.get_uri (), file_info.get_name ());
