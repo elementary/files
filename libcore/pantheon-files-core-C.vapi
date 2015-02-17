@@ -91,33 +91,38 @@ namespace EelGFile {
     public static GLib.List<GLib.File> list_new_from_string (string filelist);
 }
 
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-gtk-extensions.h")]
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
+    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
+    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
+    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
+    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
+    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
-}
 
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-stock-dialogs.h")]
-namespace Eel {
+    [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
+    [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-}
 
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
-namespace Eel {
+    [CCode (cheader_filename = "eel-fcts.h")]
     public string? get_date_as_string (uint64 d, string format);
+    [CCode (cheader_filename = "eel-fcts.h")]
     public GLib.List? get_user_names ();
+    [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_user_id_from_user_name (string *user_name, out int uid);
+    [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_group_id_from_group_name (string *group_name, out int gid);
+    [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_id_from_digit_string (string digit_str, out int id);
+    [CCode (cheader_filename = "eel-fcts.h")]
     public string format_size (uint64 size);
-}
 
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-string.h")]
-namespace Eel {
+    [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
 }
 
