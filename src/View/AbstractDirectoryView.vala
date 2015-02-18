@@ -945,7 +945,7 @@ namespace FM {
 
             var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
             dialog.get_content_area ().pack_start (check_default, false, false, 0);
-            dialog.show_all ();
+            dialog.show ();
 
             int response = dialog.run ();
 

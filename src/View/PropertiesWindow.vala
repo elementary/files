@@ -1336,7 +1336,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 (str == null) ? str = mime : str = string.join (", ", str, mime);
             }
             app_chooser_dlg.set_heading (_("Select an application to open " + str));
-            app_chooser_dlg.show_all ();
+            app_chooser_dlg.show ();
 
             int res = app_chooser_dlg.run ();
             if (res == Gtk.ResponseType.OK) {
