@@ -121,6 +121,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     private Granite.Services.IconFactory icon_factory;
 
+    private Gdk.Window? entry_window = null;
+
     construct {
         icon_factory = Granite.Services.IconFactory.get_default ();
         icons = new List<IconDirectory?> ();
@@ -154,6 +156,18 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         focus_out_event.connect (on_focus_out);
         grab_focus.connect_after (on_grab_focus);
         changed.connect (on_change);
+        /* After realizing, we take a reference on the Gdk.Window of the Entry so 
+         * we can set the cursor icon as needed. This relies on Gtk storing the
+         * owning widget as the user data on a Gdk.Window. We ignore the icon window 
+         * by checking the width.  
+         */    
+        realize.connect_after (() => {
+            List<unowned Gdk.Window> children = get_window ().get_children_with_user_data (this);
+            foreach (Gdk.Window win in children) {
+                if (win.get_width () > 24)
+                    entry_window = win; 
+            }
+        });
 
         /* Drag and drop */
         Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
@@ -432,9 +446,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
     
     public void set_entry_cursor (Gdk.Cursor? cursor) {
-        /* Only child 13 needs to be modified for the cursor - there may be a better way to do this */
-        /* TODO - this doesn't work ? */
-        get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
+        entry_window.set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
+
     }
     
     public void set_entry_secondary_icon (bool active, bool visible) {
