@@ -742,14 +742,19 @@ get_all_trashed_items (GQueue *stack)
 {
     MarlinUndoActionData *action = NULL;
     GList *trash = NULL;
+    GList *keys;
     GList *l;
     GQueue *tmp_stack = g_queue_copy(stack);
 
-    while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL)
-        if (action->trashed)
-            for (l = g_hash_table_get_keys (action->trashed); l != NULL; l=l->next) {
+    while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL) {
+        if (action->trashed) {
+            keys = g_hash_table_get_keys (action->trashed);
+            for (l = keys; l != NULL; l=l->next) {
                 trash = g_list_append(trash, l->data);
             }
+            g_list_free (keys);
+        }
+    }
 
     g_queue_free (tmp_stack);
     return (trash);
