@@ -750,7 +750,7 @@ get_all_trashed_items (GQueue *stack)
         if (action->trashed) {
             keys = g_hash_table_get_keys (action->trashed);
             for (l = keys; l != NULL; l=l->next) {
-                trash = g_list_append(trash, l->data);
+                trash = g_list_prepend(trash, l->data);
             }
             g_list_free (keys);
         }
@@ -907,9 +907,9 @@ marlin_undo_manager_data_add_origin_target_pair (MarlinUndoActionData *data,
         return;
 
     char *src_relative = g_file_get_relative_path (data->src_dir, origin);
-    data->sources = g_list_append (data->sources, src_relative);
+    data->sources = g_list_prepend (data->sources, src_relative);
     char *dest_relative = g_file_get_relative_path (data->dest_dir, target);
-    data->destinations = g_list_append (data->destinations, dest_relative);
+    data->destinations = g_list_prepend (data->destinations, dest_relative);
 
     data->is_valid = TRUE;
 }
@@ -1923,7 +1923,7 @@ construct_gfile_list (const GList * urilist, GFile * parent)
 
     for (l = urilist; l != NULL; l = l->next) {
         file = g_file_get_child (parent, l->data);
-        file_list = g_list_append (file_list, file);
+        file_list = g_list_prepend (file_list, file);
     }
 
     return file_list;
@@ -1937,7 +1937,7 @@ construct_gfile_list_from_uri (char *uri)
     GFile *file;
 
     file = g_file_new_for_uri (uri);
-    file_list = g_list_append (file_list, file);
+    file_list = g_list_prepend (file_list, file);
 
     return file_list;
 }
@@ -1952,7 +1952,7 @@ uri_list_to_gfile_list (GList * urilist)
 
     for (l = urilist; l != NULL; l = l->next) {
         file = g_file_new_for_uri (l->data);
-        file_list = g_list_append (file_list, file);
+        file_list = g_list_prepend (file_list, file);
     }
 
     return file_list;
