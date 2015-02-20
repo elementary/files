@@ -72,10 +72,14 @@ public class GOF.Directory.Async : Object {
         }
     }
 
+    private VolumeMonitor mounts_monitor = VolumeMonitor.get ();
+    private List<Mount> mounts;
+
     private string scheme;
     public bool is_local;
     public bool is_trash;
     public bool is_recent;
+    public bool has_mounts;
     public bool has_trash_dirs;
     public bool can_load;
     private bool _is_ready;
@@ -181,6 +185,14 @@ public class GOF.Directory.Async : Object {
         } else
             make_ready ();
 
+        mounts = mounts_monitor.get_mounts ();
+        has_mounts = (mounts != null);
+
+        if (has_mounts)
+            Preferences.get_default ().confirm_trash = true;
+        else
+            Preferences.get_default ().confirm_trash = false;
+
         return true;
     }
 
@@ -218,8 +230,9 @@ public class GOF.Directory.Async : Object {
             file.is_mounted = true;
             trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
             has_trash_dirs = (trash_dirs != null);
-        } else
+        } else {
             has_trash_dirs = is_local;
+        }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
