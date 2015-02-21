@@ -64,7 +64,7 @@ namespace Marlin {
     public const string PROTOCOL_NAME_SFTP = _("SFTP");
     public const string PROTOCOL_NAME_SMB = _("SMB");
     public const string PROTOCOL_NAME_TRASH = _("Trash");
-    public const string PROTOCOL_NAME_RECENT = _("Recent Files");
+    public const string PROTOCOL_NAME_RECENT = _("Recent");
 
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */

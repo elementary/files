@@ -52,12 +52,14 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
             if (!infobars.has_key (slot)) {
                 var infobar = new Gtk.InfoBar ();
                 (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (_("These items may be restored or deleted from the trash.")));
-                infobar.add_button (_("Restore All Files"), 0);
+                infobar.add_button (_("Restore All"), 0);
                 infobar.add_button (_("Empty the Trash"), 1);
                 infobar.response.connect ((self, response) => {
                     switch (response) {
                         case 0:
-                            
+                            slot.set_all_selected (true);
+                            unowned GLib.List<unowned GOF.File> selection = slot.get_selected_files ();
+                            Marlin.restore_files_from_trash (selection, window);
                             break;
                         case 1:
                             Marlin.FileOperations.empty_trash (self);

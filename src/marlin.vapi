@@ -46,8 +46,6 @@ namespace Marlin {
         }
 
     [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
     public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all);
 
     [CCode (cheader_filename = "marlin-icon-renderer.h")]
