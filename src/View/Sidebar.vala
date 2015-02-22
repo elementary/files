@@ -86,20 +86,7 @@ namespace Marlin.Places {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
         };
 
-        private Marlin.ZoomLevel _zoom = Marlin.ZoomLevel.SMALLEST;
-        public Marlin.ZoomLevel zoom_level {
-            get {
-                return _zoom;
-            }
-            set {
-                _zoom = value;
-                update_places ();
-                tree_view.columns_autosize ();
-            }
-        }
-
-        /* Handle smooth zooming */
-        double total_delta_y = 0;
+        private Marlin.ZoomLevel zoom_level = Marlin.ZoomLevel.SMALLEST;
 
         Gtk.Menu popupmenu;
         Gtk.MenuItem popupmenu_open_in_new_tab_item;
@@ -135,7 +122,6 @@ namespace Marlin.Places {
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
-            this.scroll_event.connect (handle_scroll_event);
             window.loading_uri.connect (loading_uri_callback);
 
             construct_tree_view ();
@@ -347,8 +333,7 @@ namespace Marlin.Places {
 
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
-                int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, icon_size);
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, zoom_level);
                 if (icon_info != null)
                     pixbuf = icon_info.get_pixbuf_nodefault ();
             }
@@ -1623,54 +1608,8 @@ namespace Marlin.Places {
             return false;
         }
 
-        public bool handle_scroll_event (Gdk.EventScroll event) {
-            /* Ensure tree view has focus when scrolling to avoid unexpected scrolling on clicking */
-            if (!tree_view.has_focus)
-                tree_view.grab_focus ();
-
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
-                return false;
-
-            switch (event.direction) {
-                case Gdk.ScrollDirection.UP:
-                    zoom_in ();
-                    break;
-                case Gdk.ScrollDirection.DOWN:
-                    zoom_out ();
-                    break;
-                case Gdk.ScrollDirection.SMOOTH:
-                /* try to emulate a normal scrolling event by summing deltas */
-                    total_delta_y += event.delta_y;
-                    if (total_delta_y >= 3) {
-                        total_delta_y = 0;
-                        zoom_out ();
-                    } else if (total_delta_y <= -3) {
-                        total_delta_y = 0;
-                        zoom_in ();
-                    }
-                    break;
-                default:
-                    return false;
-            }
-            return true;
-        }
-
         public new void style_set (Gtk.Style previous_style) {
             update_places ();
-        }
-
-        private void zoom_in () {
-            if (zoom_level == Marlin.ZoomLevel.NORMAL)
-                return;
-
-            zoom_level = zoom_level + 1;
-        }
-
-        private void zoom_out () {
-            if (zoom_level == Marlin.ZoomLevel.SMALLEST)
-                return;
-
-            zoom_level = zoom_level - 1;
         }
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */
