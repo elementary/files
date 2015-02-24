@@ -64,6 +64,7 @@ namespace FM {
             {"open_with_default", on_selection_action_open_with_default},
             {"open_with_other_app", on_selection_action_open_with_other_app},
             {"rename", on_selection_action_rename},
+            {"view_in_location", on_selection_action_view_in_location},
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
@@ -880,6 +881,23 @@ namespace FM {
 
     /** Menu actions */
         /** Selection actions */
+
+        private void on_selection_action_view_in_location (GLib.SimpleAction action, GLib.Variant? param) {
+            view_selected_file ();
+        }
+
+        private void view_selected_file () {
+            if (selected_files == null)
+                return;
+
+            if (selected_files.next != null)
+                warning ("Cannot open multiple locations (yet)");
+
+            var file = selected_files.first ().data;
+            var location = GLib.File.new_for_uri (file.get_display_target_uri ());
+
+            load_location (location);
+        }
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
             rename_selected_file ();
@@ -1710,6 +1728,8 @@ namespace FM {
 
                 menu.append_section (null, clipboard_menu);
             } else if (in_recent) {
+                menu.append_section (null, builder.get_object ("view-in-location") as GLib.Menu);
+
                 clipboard_menu.remove (0); /* Cut */
                 clipboard_menu.remove (1); /* Paste */
 
@@ -1956,6 +1976,7 @@ namespace FM {
 
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
+            action_set_enabled (selection_actions, "view_in_location", selection_count == 1);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
