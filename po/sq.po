@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2015-02-22 18:14+0000\n"
+"PO-Revision-Date: 2015-02-23 20:05+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-23 05:29+0000\n"
+"X-Launchpad-Export-Date: 2015-02-24 05:41+0000\n"
 "X-Generator: Launchpad (build 17355)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -873,7 +873,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 
 #: ../libcore/marlin-file-operations.c:1386
 #, c-format
@@ -912,7 +912,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
 msgid "Empty _Trash"
-msgstr "Zbraz _Koshin"
+msgstr "Boshatis _koshin"
 
 #: ../libcore/marlin-file-operations.c:1464
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1079,7 +1079,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2412
 msgid "Do _not Empty Trash"
-msgstr "M_os e zbraz koshin"
+msgstr "M_os e boshatis koshin"
 
 #: ../libcore/marlin-file-operations.c:2526
 #, c-format
@@ -1427,11 +1427,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6636
 msgid "Emptying the trash"
-msgstr "Duke zbrazur koshin"
+msgstr "Duke boshatisur koshin"
 
 #: ../libcore/marlin-file-operations.c:6648
 msgid "Emptying Trash"
-msgstr "Duke zbrazur koshin"
+msgstr "Duke boshatisur koshin"
 
 #: ../libcore/marlin-file-utilities.c:118
 #, c-format
@@ -1544,7 +1544,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:471
 msgid "Open the Trash"
-msgstr "Hap Koshin"
+msgstr "Hap koshin"
 
 #: ../src/View/Sidebar.vala:477
 msgid "Devices"
@@ -1720,7 +1720,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Nuk mund të kopjohen skedarët që janë në kosh"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
@@ -2051,7 +2051,7 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "Empty the Trash"
-msgstr "Zbraz koshin"
+msgstr "Boshatis koshin"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

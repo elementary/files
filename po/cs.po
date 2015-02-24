@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2014-12-23 18:22+0000\n"
-"Last-Translator: Marek Doležel <marekdolezel@gmail.com>\n"
+"PO-Revision-Date: 2015-02-23 16:05+0000\n"
+"Last-Translator: Tomo Moto <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:08+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-24 05:41+0000\n"
+"X-Generator: Launchpad (build 17355)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -928,21 +928,23 @@ msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
 #: ../libcore/marlin-file-operations.c:1421
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Trvale smazat všechny položky z koše?"
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Položky ze všech košů, včetně těch na připojených externích discích, budou "
+"trvale smazány."
 
 #: ../libcore/marlin-file-operations.c:1425
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Trvale smazat všechny položky z koše v tomto umístění?"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
 
 #: ../libcore/marlin-file-operations.c:1437
 #: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
@@ -1403,11 +1405,11 @@ msgstr "Nelze odstranit již existující soubor se stejným názvem v %F."
 
 #: ../libcore/marlin-file-operations.c:4585
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "\"%B\" zde nelze zkopírovat."
 
 #: ../libcore/marlin-file-operations.c:4586
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Při kopírování souboru do %B došlo k chybě."
 
 #: ../libcore/marlin-file-operations.c:4813
 msgid "Copying Files"
@@ -1475,11 +1477,11 @@ msgstr "Nastavuje se oprávnění"
 
 #: ../libcore/marlin-file-operations.c:5995
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Nelze kopírovat do koše."
 
 #: ../libcore/marlin-file-operations.c:5996
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Není dovoleno kopírovat soubory do koše."
 
 #: ../libcore/marlin-file-operations.c:6137
 msgid "untitled folder"
@@ -1717,19 +1719,19 @@ msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Složku nelze připojit."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Server pro tuto složku nelze nalézt."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Soubor nebyl nalezen."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Vybraný soubor již neexistuje."
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1797,7 +1799,7 @@ msgstr "Nepojmenovaný soubor %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
@@ -1934,7 +1936,7 @@ msgstr "Původní umístění"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Informace"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1946,7 +1948,7 @@ msgstr "Oteřít s:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Použití"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2110,7 +2112,7 @@ msgstr "Zrušit všechny vykonávané akce"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Obnovit složku"
 
 #: ../libwidgets/LocationBar.vala:315
 msgid "Go to %s"
@@ -2118,7 +2120,7 @@ msgstr "Přejít do %s"
 
 #: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Přejít do %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
