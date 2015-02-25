@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2015-02-23 20:05+0000\n"
+"PO-Revision-Date: 2015-02-24 20:14+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:41+0000\n"
+"X-Launchpad-Export-Date: 2015-02-25 05:54+0000\n"
 "X-Generator: Launchpad (build 17355)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -36,7 +36,7 @@ msgstr "FTP (me identifikim)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV i sigurt (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -76,7 +76,7 @@ msgstr "Provo përsëri"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Verifikoni detajet tuaja të përdoruesit."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -85,7 +85,7 @@ msgstr "Vazhdo"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr ""
+msgstr "L_idhu"
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr "_Lloji:"
+msgstr "_Tipi:"
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
@@ -164,7 +164,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Zhvendos '%s' prapë në '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1234
 #: ../libcore/marlin-undostack-manager.c:1401
@@ -191,7 +191,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1275
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Lëviz '%s' prapë në kosh"
+msgstr "Zhvendos '%s' prapë në kosh"
 
 #: ../libcore/marlin-undostack-manager.c:1284
 #, c-format
@@ -251,7 +251,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "Lëviz '%s' në '%s'"
+msgstr "Zhvendos '%s' në '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1410
 #, c-format
@@ -276,7 +276,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1438
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Lëviz '%s' në kosh"
+msgstr "Zhvendos '%s' në kosh"
 
 #: ../libcore/marlin-undostack-manager.c:1451
 #, c-format
@@ -311,7 +311,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1499
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Vendos pronarin e '%s' tek '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1531
 #, c-format
@@ -353,8 +353,8 @@ msgstr ""
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Zhbëj krijimin e dosjes %d"
+msgstr[1] "_Zhbëj krijimin e dosjeve %d"
 
 #: ../libcore/marlin-undostack-manager.c:1562
 #, c-format
@@ -514,7 +514,7 @@ msgstr[1] ""
 #: ../libcore/gof-file.c:363
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "lidhje me %s"
 
 #: ../libcore/gof-file.c:1873
 #, c-format
@@ -543,7 +543,7 @@ msgstr ""
 
 #: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr ""
+msgstr "Duke përgatitur"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -652,21 +652,21 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:470
 #: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
-msgstr ""
+msgstr "Madhësia:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:473
 #: ../libcore/marlin-file-conflict-dialog.c:494
 msgid "Type:"
-msgstr "Lloji:"
+msgstr "Tipi:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
 #: ../libcore/marlin-file-conflict-dialog.c:476
 #: ../libcore/marlin-file-conflict-dialog.c:497
 msgid "Last modified:"
-msgstr ""
+msgstr "Ndryshimi i fundit:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:490
@@ -1444,35 +1444,35 @@ msgstr ""
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "Emri i skedarit"
 
 #: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:556
 #: ../src/View/PropertiesWindow.vala:605
 #: ../src/View/directory_view_popup.ui:125
 msgid "Size"
-msgstr ""
+msgstr "Madhësisë"
 
 #: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:350
 #: ../src/View/directory_view_popup.ui:130
 msgid "Type"
-msgstr ""
+msgstr "Tipit"
 
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:521
 msgid "Modified"
-msgstr ""
+msgstr "Ndryshuar"
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr "Hape në një skedë të re"
+msgstr "Hap në një skedë të re"
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1810
 msgid "Open with"
-msgstr ""
+msgstr "Hap me"
 
 #: ../src/View/LocationBar.vala:389
 msgid "Other Application .."
-msgstr ""
+msgstr "Program tjetër .."
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1540,7 +1540,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:444
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Hape dosjen tënde personale"
 
 #: ../src/View/Sidebar.vala:471
 msgid "Open the Trash"
@@ -1584,15 +1584,15 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1232
 msgid "Open"
-msgstr ""
+msgstr "Hap"
 
 #: ../src/View/Sidebar.vala:1240
 msgid "Open in New _Tab"
-msgstr "Hape në një _skedë të re"
+msgstr "Hap në një _skedë të re"
 
 #: ../src/View/Sidebar.vala:1246
 msgid "Open in New _Window"
-msgstr "Hape në një _dritare të re"
+msgstr "Hap në një _dritare të re"
 
 #: ../src/View/Sidebar.vala:1254
 msgid "Remove"
@@ -1656,15 +1656,15 @@ msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
-msgstr ""
+msgstr "Shfaq si rrjetë"
 
 #: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
-msgstr ""
+msgstr "Shfaq si listë"
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr ""
+msgstr "Shfaq në kolona"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
@@ -1704,7 +1704,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1799
 msgid "Open in %s"
-msgstr "Hape në %s"
+msgstr "Hap në %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1808
 msgid "Open in"
@@ -1712,7 +1712,7 @@ msgstr "Hap në"
 
 #: ../src/View/AbstractDirectoryView.vala:1866
 msgid "Other Application"
-msgstr ""
+msgstr "Program tjetër"
 
 #: ../src/View/AbstractDirectoryView.vala:2113
 msgid "Untitled %s"
@@ -1732,7 +1732,7 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
-msgstr ""
+msgstr "%u dosje"
 
 #: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
 msgid " and %u other item (%s) selected"
@@ -1748,7 +1748,7 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:153
 msgid "%u folder"
-msgstr ""
+msgstr "%u dosje"
 
 #: ../src/View/OverlayBar.vala:161
 msgid "%u items selected (%s)"
@@ -1756,11 +1756,11 @@ msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr ""
+msgstr "Kjo dosje nuk ekziston."
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "Dosja \"%s\" nuk mund të gjehet."
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
@@ -1768,7 +1768,7 @@ msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Krijo dosjen \"%s\""
 
 #: ../src/View/DirectoryNotFound.vala:55
 msgid ""
@@ -1779,15 +1779,15 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:81
 msgid "Properties"
-msgstr ""
+msgstr "Vetitë"
 
 #: ../src/View/PropertiesWindow.vala:175
 msgid "General"
-msgstr ""
+msgstr "Të përgjithshme"
 
 #: ../src/View/PropertiesWindow.vala:183
 msgid "More"
-msgstr ""
+msgstr "Më shumë"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Preview"
@@ -1859,11 +1859,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
-msgstr ""
+msgstr "Program tjetër..."
 
 #: ../src/View/PropertiesWindow.vala:664
 msgid "Open with:"
-msgstr ""
+msgstr "Hap me:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
@@ -1879,29 +1879,29 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:835
 msgid "Read"
-msgstr ""
+msgstr "Lexim"
 
 #: ../src/View/PropertiesWindow.vala:840
 msgid "Write"
-msgstr ""
+msgstr "Shkrim"
 
 #: ../src/View/PropertiesWindow.vala:845
 msgid "Execute"
-msgstr ""
+msgstr "Ekzekutim"
 
 #: ../src/View/PropertiesWindow.vala:1058
 #: ../src/View/PropertiesWindow.vala:1071
 msgid "Owner"
-msgstr ""
+msgstr "Pronari"
 
 #: ../src/View/PropertiesWindow.vala:1063
 #: ../src/View/PropertiesWindow.vala:1075
 msgid "Group"
-msgstr ""
+msgstr "Grupi"
 
 #: ../src/View/PropertiesWindow.vala:1079
 msgid "Everyone"
-msgstr ""
+msgstr "Çdokush"
 
 #: ../src/View/PropertiesWindow.vala:1338
 msgid "Select an application to open "
@@ -1945,7 +1945,7 @@ msgstr ""
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:65
 msgid "New Window"
-msgstr ""
+msgstr "Dritare të re"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
@@ -1988,7 +1988,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Dritare e re si _Administrator"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
@@ -2064,7 +2064,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Zhvendos në kosh"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
@@ -2072,7 +2072,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:39
 msgid "Folder"
-msgstr ""
+msgstr "Dosje"
 
 #: ../src/View/directory_view_popup.ui:44
 msgid "Empty File"
@@ -2080,11 +2080,11 @@ msgstr "Skedar bosh"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Shfaq skedarët e fshehur"
 
 #: ../src/View/directory_view_popup.ui:60
 msgid "New Tab"
-msgstr ""
+msgstr "Skedë të re"
 
 #: ../src/View/directory_view_popup.ui:73
 msgid "Terminal"
@@ -2096,7 +2096,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:95
 msgid "Paste"
-msgstr ""
+msgstr "Ngjit"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Cut"
@@ -2108,20 +2108,20 @@ msgstr "Kopjo"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Ngjit brenda dosjes"
 
 #: ../src/View/directory_view_popup.ui:117
 msgid "Sort by"
-msgstr ""
+msgstr "Rendit sipas"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Name"
-msgstr ""
+msgstr "Emrit"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Date"
-msgstr ""
+msgstr "Datës"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
-msgstr ""
+msgstr "Renditje e kundërt"
