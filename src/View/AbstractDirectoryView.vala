@@ -1695,7 +1695,7 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
 
-                if (!in_trash)
+                if (!in_trash && !in_recent)
                     plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
 
                 menu.set_screen (null);
