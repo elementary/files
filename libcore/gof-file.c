@@ -1503,7 +1503,7 @@ GOFFile* gof_file_cache_lookup (GFile *location)
 
 void
 gof_file_set_expanded (GOFFile *file, gboolean expanded) {
-    g_return_if_fail (file != NULL && !file->is_directory);
+    g_return_if_fail (file != NULL && file->is_directory);
     file->is_expanded = expanded;
 }
 
