@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2015-02-25 18:55+0000\n"
+"PO-Revision-Date: 2015-02-26 21:05+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-26 05:43+0000\n"
+"X-Launchpad-Export-Date: 2015-02-27 05:45+0000\n"
 "X-Generator: Launchpad (build 17361)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -142,7 +142,7 @@ msgstr "Veprimi u anulua"
 #: ../libcore/marlin-undostack-manager.c:1200
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Fshij %d elementet e kopjuar"
 
 #: ../libcore/marlin-undostack-manager.c:1203
 #: ../libcore/marlin-undostack-manager.c:1213
@@ -154,12 +154,12 @@ msgstr "Fshije '%s'"
 #: ../libcore/marlin-undostack-manager.c:1210
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Fshij %d elementet e dyfishuar"
 
 #: ../libcore/marlin-undostack-manager.c:1221
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Zhvendos %d elementet përsëri në '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -186,7 +186,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1272
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Zhvendos %d elemente përsëri në kosh"
 
 #: ../libcore/marlin-undostack-manager.c:1275
 #, c-format
@@ -196,12 +196,12 @@ msgstr "Zhvendos '%s' prapë në kosh"
 #: ../libcore/marlin-undostack-manager.c:1284
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Fshij lidhjet me %d elementet"
 
 #: ../libcore/marlin-undostack-manager.c:1287
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Fshij lidhjen me '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
@@ -246,7 +246,7 @@ msgstr "Dyfisho '%s' në '%s'"
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Zhvendos %d elemente në '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
@@ -256,7 +256,7 @@ msgstr "Zhvendos '%s' në '%s'"
 #: ../libcore/marlin-undostack-manager.c:1410
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Krijo një skedar të ri '%s' nga shablloni "
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
@@ -271,7 +271,7 @@ msgstr "Krijo një dosje të re '%s'"
 #: ../libcore/marlin-undostack-manager.c:1432
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Zhvendos %d elemente në kosh"
 
 #: ../libcore/marlin-undostack-manager.c:1438
 #, c-format
@@ -286,12 +286,12 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1460
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Krijo lidhje me %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Krijo lidhje me '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1472
 #, c-format
@@ -317,8 +317,8 @@ msgstr "Vendos pronarin e '%s' tek '%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo kopjen e %d elementi"
+msgstr[1] "_Anulo kopjen e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1536
 #, c-format
@@ -331,15 +331,15 @@ msgstr[1] ""
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo zhvendosjen e %d elementi"
+msgstr[1] "_Anulo zhvendosjen e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1546
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo emërimin e %d elementi"
+msgstr[1] "_Anulo emërimin e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1550
 msgid "_Undo creation of an empty file"
@@ -347,7 +347,7 @@ msgstr "_Anulo krijimit e një skedari bosh"
 
 #: ../libcore/marlin-undostack-manager.c:1553
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Anulo krijiin e skedarit nga shablloni"
 
 #: ../libcore/marlin-undostack-manager.c:1557
 #, c-format
@@ -360,8 +360,8 @@ msgstr[1] "_Zhbëj krijimin e dosjeve %d"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo zhvendosjen në kosh të %d elementi"
+msgstr[1] "_Anulo zhvendosjen në kosh të %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
@@ -374,15 +374,15 @@ msgstr[1] ""
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo krijimin e lidhjes me %d element"
+msgstr[1] "_Anulo krijimin e lidhjes me %d elementë"
 
 #: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulo fshirjen e %d elementi"
+msgstr[1] "_Anulo fshirjen e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
@@ -416,51 +416,51 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Përsërit kopjimin e %d elementi"
+msgstr[1] "Përsërit kopjimin e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1631
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit dyfishimin e %d elementi"
+msgstr[1] "_Përsërit dyfishimin e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1636
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit zhvendosjen e %d elementi"
+msgstr[1] "_Përsërit zhvendosjen e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit emërimin e %d elementi"
+msgstr[1] "_Përsërit emërimin e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1645
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Përsërit krijimin e një skedari bosh"
 
 #: ../libcore/marlin-undostack-manager.c:1648
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Përsërit krijimin e një skedari nga shablloni"
 
 #: ../libcore/marlin-undostack-manager.c:1652
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit krijimin e %d dosjeje"
+msgstr[1] "_Përsërit krijimin e %d dosjeve"
 
 #: ../libcore/marlin-undostack-manager.c:1657
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit zhvendosjen në kosh të %d elementi"
+msgstr[1] "_Përsërit zhvendosjen në kosh të %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
@@ -473,15 +473,15 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit krijimin e lidhjes me %d element"
+msgstr[1] "_Përsërit krijimin e lidhjes me %d elementë"
 
 #: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Përsërit fshirjen e %d elementi"
+msgstr[1] "_Përsërit fshirjen e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
