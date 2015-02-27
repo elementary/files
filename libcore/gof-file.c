@@ -1429,8 +1429,6 @@ gof_file_is_executable (GOFFile *file)
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
     {
         /* get the content type of the file */
-        //TODO
-        //content_type = g_file_info_get_content_type (file->info);
         content_type = gof_file_get_ftype (file);
         if (G_LIKELY (content_type != NULL))
         {
@@ -1442,11 +1440,8 @@ gof_file_is_executable (GOFFile *file)
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
             if (g_content_type_is_a (content_type, "application/x-executable")
-                || g_content_type_is_a (content_type, "application/x-shellscript")
-                || g_content_type_is_a (content_type, "application/octet-stream"))
-            {
+                || g_content_type_is_a (content_type, "application/x-shellscript"))
                 can_execute = TRUE;
-            }
 #endif
         }
     }
