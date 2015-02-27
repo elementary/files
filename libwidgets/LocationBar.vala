@@ -147,6 +147,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         secondary_icon_activatable = true;
         secondary_icon_sensitive = true;
         truncate_multiline = true;
+
+        realize.connect_after (after_realize);
         activate.connect (on_activate);
         button_press_event.connect (on_button_press_event);
         button_release_event.connect (on_button_release_event);
@@ -156,18 +158,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         focus_out_event.connect (on_focus_out);
         grab_focus.connect_after (on_grab_focus);
         changed.connect (on_change);
-        /* After realizing, we take a reference on the Gdk.Window of the Entry so 
-         * we can set the cursor icon as needed. This relies on Gtk storing the
-         * owning widget as the user data on a Gdk.Window. We ignore the icon window 
-         * by checking the width.  
-         */    
-        realize.connect_after (() => {
-            List<unowned Gdk.Window> children = get_window ().get_children_with_user_data (this);
-            foreach (Gdk.Window win in children) {
-                if (win.get_width () > 24)
-                    entry_window = win; 
-            }
-        });
 
         /* Drag and drop */
         Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
@@ -301,6 +291,15 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         need_completion ();
     }
     
+    void after_realize () {
+        /* After realizing, we take a reference on the Gdk.Window of the Entry so 
+         * we can set the cursor icon as needed. This relies on Gtk storing the
+         * owning widget as the user data on a Gdk.Window. The required window   
+         * will be the first child of the entry. 
+         */
+        entry_window = get_window ().get_children_with_user_data (this).data;
+    }
+
     bool after_motion_notify (Gdk.EventMotion event) {
 
         if (is_focus)
