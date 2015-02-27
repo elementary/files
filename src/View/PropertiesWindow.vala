@@ -1372,7 +1372,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
                 // Check for sparse file, allocated size will be smaller, for normal files allocated size
                 // includes overhead size so we don't use it for those here
-                if (allocated_size < file_size && !gof.is_directory)
+                if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory)
                     file_size = allocated_size;
             } catch (Error err) {
                 warning ("%s", err.message);
