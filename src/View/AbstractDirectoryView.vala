@@ -942,9 +942,21 @@ namespace FM {
  
             var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
             dialog.set_heading (_("Select an application"));
+            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
+            app_chooser.set_show_default (false);
+            app_chooser.set_show_recommended (true);
+            app_chooser.set_show_fallback (false);
+            app_chooser.set_show_other (false);
 
+            var content_area = dialog.get_content_area ();
+            int content_area_border;
+            content_area.style_get ("content-area-border", out content_area_border);
             var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            dialog.get_content_area ().pack_start (check_default, false, false, 0);
+            /* The value of 10 for the margin is hard-coded into Gtk.AppChooserDialog */
+            check_default.set_margin_start (10 + content_area_border);
+            check_default.set_active (true);
+            check_default.show ();
+            content_area.pack_start (check_default, false, false, 0);
             dialog.show ();
 
             int response = dialog.run ();
