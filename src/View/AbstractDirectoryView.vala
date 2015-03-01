@@ -937,28 +937,36 @@ namespace FM {
             GOF.File file = selection.data as GOF.File;
 
             Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT |
-                                    Gtk.DialogFlags.USE_HEADER_BAR;
+                                    Gtk.DialogFlags.DESTROY_WITH_PARENT;
  
             var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
             dialog.set_deletable (false);
-            /* Use empty box to hide titlebar */
-            var titlebar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            dialog.set_titlebar (titlebar);
+
+            /* We need to remove the border of the (invisible) search bar
+             * so we do not get a line under the title bar
+             */
+            var searchbar_css = new Gtk.CssProvider ();
+            string data = ".search-bar{border: none; background: none;}";
+            try {
+                searchbar_css.load_from_data (data, data.length);
+                dialog.get_style_context ().add_provider (searchbar_css, 0);
+            } 
+            catch (GLib.Error e) {
+                warning ("Could not set searchbar style in AppChooserDialog");
+            }
 
             var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
             app_chooser.set_show_recommended (true);
 
             var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            int content_area_border;
-            dialog.style_get ("content-area-border", out content_area_border);
-            /* The value of 10 for the margin is hard-coded into Gtk.AppChooserDialog */
-            check_default.set_margin_start (10 + content_area_border);
             check_default.set_active (true);
             check_default.show ();
-            dialog.get_content_area ().pack_start (check_default, true, false, 0);
-            dialog.show ();
 
+            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
+            action_area.add (check_default);
+            action_area.set_child_secondary (check_default, true);
+
+            dialog.show ();
             int response = dialog.run ();
 
             if (response == Gtk.ResponseType.OK) {
