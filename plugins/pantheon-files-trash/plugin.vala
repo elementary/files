@@ -54,6 +54,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (_("These items may be restored or deleted from the trash.")));
                 infobar.add_button (_("Restore All"), 0);
                 infobar.add_button (_("Empty the Trash"), 1);
+
                 infobar.response.connect ((self, response) => {
                     switch (response) {
                         case 0:
