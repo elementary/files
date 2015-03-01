@@ -71,6 +71,8 @@ namespace Marlin {
         string s = protocol.delimit (":/", ' ').chomp ();
 
         switch (s) {
+            case "recent":
+                return Marlin.PROTOCOL_NAME_RECENT;
             case "trash":
                 return Marlin.PROTOCOL_NAME_TRASH;
             case "network":
