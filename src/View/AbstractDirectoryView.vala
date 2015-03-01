@@ -228,7 +228,6 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
-
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
@@ -275,6 +274,10 @@ namespace FM {
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
+        }
+
+        public bool is_in_recent () {
+            return in_recent;
         }
 
         protected virtual void set_up_name_renderer () {
