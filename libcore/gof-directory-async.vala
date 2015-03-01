@@ -75,6 +75,7 @@ public class GOF.Directory.Async : Object {
     private string scheme;
     public bool is_local;
     public bool is_trash;
+    public bool has_mounts;
     public bool has_trash_dirs;
     public bool can_load;
     private bool _is_ready;
@@ -178,6 +179,14 @@ public class GOF.Directory.Async : Object {
             });
         } else
             make_ready ();
+
+        var mounts = VolumeMonitor.get ().get_mounts ();
+        has_mounts = (mounts != null);
+
+        if (has_mounts)
+            Preferences.get_default ().confirm_trash = true;
+        else
+            Preferences.get_default ().confirm_trash = false;
 
         return true;
     }
