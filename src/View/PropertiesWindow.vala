@@ -547,7 +547,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         /* get image size in pixels */
         var mime = file.icon.to_string ();
         if ("image" in mime) {
-            var path = file.location.get_path ();
+            string path;
+
+            if (view.is_in_recent ())
+                path = (file.get_display_target_uri ()).substring (7, -1);
+            else
+                path = file.location.get_path ();
 
             try {
                 Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
