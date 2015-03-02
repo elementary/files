@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-02-08 13:45-0600\n"
+"POT-Creation-Date: 2015-03-01 10:37-0600\n"
 "PO-Revision-Date: 2014-12-13 04:47+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-02-09 06:11+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-03-02 05:32+0000\n"
+"X-Generator: Launchpad (build 17361)\n"
 "Language: zh_TW\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -142,405 +142,364 @@ msgstr "記住此密碼(_R)"
 msgid "Operation cancelled"
 msgstr "操作程序已取消"
 
-#: ../libcore/marlin-undostack-manager.c:1200
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "顯示更多細節(_D)"
+
+#: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
 msgid "Delete %d copied items"
 msgstr "移除 %d 個複製的項目"
 
-#: ../libcore/marlin-undostack-manager.c:1203
-#: ../libcore/marlin-undostack-manager.c:1213
-#: ../libcore/marlin-undostack-manager.c:1244
+#: ../libcore/marlin-undostack-manager.c:1208
+#: ../libcore/marlin-undostack-manager.c:1218
+#: ../libcore/marlin-undostack-manager.c:1249
 #, c-format
 msgid "Delete '%s'"
 msgstr "刪除「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1210
+#: ../libcore/marlin-undostack-manager.c:1215
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "移除 %d 個重製的項目"
 
-#: ../libcore/marlin-undostack-manager.c:1221
+#: ../libcore/marlin-undostack-manager.c:1226
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "將 %d 個項目移回 「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:1230
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "將「%s」移回「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1234
-#: ../libcore/marlin-undostack-manager.c:1401
+#: ../libcore/marlin-undostack-manager.c:1239
+#: ../libcore/marlin-undostack-manager.c:1406
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "將「%s」重新命名為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1253
-#: ../libcore/marlin-undostack-manager.c:1448
+#: ../libcore/marlin-undostack-manager.c:1258
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "從垃圾筒還原 %d 個項目"
 
-#: ../libcore/marlin-undostack-manager.c:1261
+#: ../libcore/marlin-undostack-manager.c:1266
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "將「%s」還原為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1272
+#: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "將 %d 個項目移回到垃圾筒"
 
-#: ../libcore/marlin-undostack-manager.c:1275
+#: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "將「%s」移回到垃圾筒"
 
-#: ../libcore/marlin-undostack-manager.c:1284
+#: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete links to %d items"
 msgstr "將 %d 項目刪除連結"
 
-#: ../libcore/marlin-undostack-manager.c:1287
+#: ../libcore/marlin-undostack-manager.c:1292
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "刪除到「%s」的連結"
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1302
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "還原在「%s」中封入項目的原始許可權"
 
-#: ../libcore/marlin-undostack-manager.c:1305
+#: ../libcore/marlin-undostack-manager.c:1310
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "還原「%s」的原始許可權"
 
-#: ../libcore/marlin-undostack-manager.c:1314
+#: ../libcore/marlin-undostack-manager.c:1319
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "將「%s」的群組還原為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1324
+#: ../libcore/marlin-undostack-manager.c:1329
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "將「%s」的擁有者還原為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1363
+#: ../libcore/marlin-undostack-manager.c:1368
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "複製 %d 個項目至「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1367
+#: ../libcore/marlin-undostack-manager.c:1372
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "複製「%s」至「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1375
+#: ../libcore/marlin-undostack-manager.c:1380
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "重製 %d 個項目於「%s」中"
 
-#: ../libcore/marlin-undostack-manager.c:1380
+#: ../libcore/marlin-undostack-manager.c:1385
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "重製「%s」於「%s」中"
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1393
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "移動 %d 個項目至「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1397
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "移動「%s」至「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1410
+#: ../libcore/marlin-undostack-manager.c:1415
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "從模板建立新檔案「%s」 "
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1422
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "建立空白檔案「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1424
+#: ../libcore/marlin-undostack-manager.c:1429
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "建立新的資料夾「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1432
+#: ../libcore/marlin-undostack-manager.c:1437
 #, c-format
 msgid "Move %d items to trash"
 msgstr "移動 %d 個項目至垃圾筒"
 
-#: ../libcore/marlin-undostack-manager.c:1438
+#: ../libcore/marlin-undostack-manager.c:1443
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "移動「%s」至垃圾筒"
 
-#: ../libcore/marlin-undostack-manager.c:1451
+#: ../libcore/marlin-undostack-manager.c:1456
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "從垃圾筒還原「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1460
+#: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create links to %d items"
 msgstr "為 %d 個物件建立連結"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Create link to '%s'"
 msgstr "建立前往「%s」的連結"
 
-#: ../libcore/marlin-undostack-manager.c:1472
+#: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "設定封入「%s」的項目的許可權"
 
-#: ../libcore/marlin-undostack-manager.c:1480
+#: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "設定「%s」的許可權"
 
-#: ../libcore/marlin-undostack-manager.c:1489
+#: ../libcore/marlin-undostack-manager.c:1494
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "將「%s」的群組設定為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1499
+#: ../libcore/marlin-undostack-manager.c:1504
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "將「%s」的擁有者設定為「%s」"
 
-#: ../libcore/marlin-undostack-manager.c:1531
+#: ../libcore/marlin-undostack-manager.c:1536
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "取消 %d 個項目的複製動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1536
+#: ../libcore/marlin-undostack-manager.c:1541
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "取消 %d 個項目的重製動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1541
+#: ../libcore/marlin-undostack-manager.c:1546
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "取消 %d 個項目的移動動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1546
+#: ../libcore/marlin-undostack-manager.c:1551
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "取消 %d 個項目的重新命名動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1550
+#: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of an empty file"
 msgstr "取消空白檔案的建立動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1553
+#: ../libcore/marlin-undostack-manager.c:1558
 msgid "_Undo creation of a file from template"
 msgstr "取消從模板製作檔案的建立動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1557
+#: ../libcore/marlin-undostack-manager.c:1562
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "取消 %d 個檔案夾的建立動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1562
+#: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "取消 %d 個項目移至垃圾筒的動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1567
+#: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "取消 %d 個項目從垃圾筒還原的動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1572
+#: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "取消給 %d 個項目建立連結的動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1577
+#: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "取消 %d 個項目的刪除動作(_U)"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "取消 %d 個項目其遞迴改變許可權的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1588
+#: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "取消 %d 個項目其改變許可權的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1593
+#: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "取消 %d 個項目其群組改變的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1598
+#: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "取消 %d 個項目其擁有者改變的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1626
+#: ../libcore/marlin-undostack-manager.c:1631
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "再次執行 %d 個項目的複製動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1631
+#: ../libcore/marlin-undostack-manager.c:1636
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "再次執行 %d 個項目的重製動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1636
+#: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "再次執行 %d 個項目的移動動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1641
+#: ../libcore/marlin-undostack-manager.c:1646
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "再次執行 %d 個項目的重新命名動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1645
+#: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of an empty file"
 msgstr "再次執行空白檔案的建立動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1648
+#: ../libcore/marlin-undostack-manager.c:1653
 msgid "_Redo creation of a file from template"
 msgstr "再次執行從模板製作檔案的建立動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1652
+#: ../libcore/marlin-undostack-manager.c:1657
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "再次執行 %d 個資料夾的建立動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1657
+#: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "再次執行 %d 個項目其移至垃圾筒的動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1662
+#: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "再次執行 %d 個項目從垃圾筒還原的動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1667
+#: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "再次執行給 %d 個項目建立連結的動作(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1672
+#: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "再次執行 %d 個項目的刪除(_R)"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "再次執行 %d 個項目其遞迴改變許可權的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1683
+#: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "再次執行 %d 個項目其改變許可權的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1688
+#: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "再次執行 %d 個項目其改變群組的動作"
 
-#: ../libcore/marlin-undostack-manager.c:1693
+#: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "再次執行 %d 個項目其改變擁有者的動作"
 
-#: ../libcore/gof-file.c:363
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "link to %s"
-msgstr "連結到 %s"
+msgid "Could not determine original location of \"%s\" "
+msgstr "無法決定「%s」的原始位置 "
 
-#: ../libcore/gof-file.c:1873
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "無法解析桌面檔：%s"
-
-#: ../libcore/gof-file.c:1911
-msgid "No Exec field specified"
-msgstr "Exec 欄並未指定"
-
-#: ../libcore/gof-file.c:1931
-msgid "No URL field specified"
-msgstr "URL 欄並未指定"
-
-#: ../libcore/gof-file.c:1937
-msgid "Invalid desktop file"
-msgstr "無效的桌面檔"
-
-#: ../libcore/gof-file.c:2229
-msgid "Slashes are not allowed in filenames"
-msgstr "檔案名稱中不能使用斜線 ( / )"
-
-#: ../libcore/gof-file.c:2249
-msgid "Toplevel files cannot be renamed"
-msgstr "頂端層級檔案無法更改名稱"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "準備中"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "顯示更多細節(_D)"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "今日%p %-I:%M"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "昨日%p %-I:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%Y年%b%-d日%p %-I:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y年%b%-d日  %a %p %-I:%M"
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "此項目不能從垃圾筒還原。"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -687,6 +646,10 @@ msgstr "檔案發生衝突"
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (無效的統一碼)"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "準備中"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -844,11 +807,11 @@ msgstr " ("
 msgid " (%'d"
 msgstr " (第 %'d"
 
-#: ../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1385
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "確定要將「%B」從垃圾筒中永久刪除嗎？"
 
-#: ../libcore/marlin-file-operations.c:1386
+#: ../libcore/marlin-file-operations.c:1388
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -858,162 +821,162 @@ msgid_plural ""
 "trash?"
 msgstr[0] "確定要將 %'d 個選定的項目從垃圾筒中永久刪除嗎？"
 
-#: ../libcore/marlin-file-operations.c:1396
-#: ../libcore/marlin-file-operations.c:1476
+#: ../libcore/marlin-file-operations.c:1398
+#: ../libcore/marlin-file-operations.c:1478
 msgid "If you delete an item, it will be permanently lost."
 msgstr "如果您刪除這個項目，它將被永久刪除無法還原。"
 
-#: ../libcore/marlin-file-operations.c:1421
+#: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1422
+#: ../libcore/marlin-file-operations.c:1424
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1425
+#: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1426
+#: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1437
-#: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
+#: ../libcore/marlin-file-operations.c:1439
+#: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
 msgid "Empty _Trash"
 msgstr "清理垃圾(_T)"
 
-#: ../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "確定要將「%B」永久地刪除嗎？"
 
-#: ../libcore/marlin-file-operations.c:1467
+#: ../libcore/marlin-file-operations.c:1469
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "確定要將 %'d 個選定的項目永久地刪除嗎？"
 
-#: ../libcore/marlin-file-operations.c:1492
-#: ../libcore/marlin-file-operations.c:1524
+#: ../libcore/marlin-file-operations.c:1494
+#: ../libcore/marlin-file-operations.c:1526
 msgid "Deleting files"
 msgstr "正在刪除檔案"
 
-#: ../libcore/marlin-file-operations.c:1518
+#: ../libcore/marlin-file-operations.c:1520
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "剩下 %'d 個檔案要刪除"
 
-#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1540
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "剩下 %T"
 
-#: ../libcore/marlin-file-operations.c:1606
-#: ../libcore/marlin-file-operations.c:1640
-#: ../libcore/marlin-file-operations.c:1679
-#: ../libcore/marlin-file-operations.c:1756
-#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:1608
+#: ../libcore/marlin-file-operations.c:1642
+#: ../libcore/marlin-file-operations.c:1681
+#: ../libcore/marlin-file-operations.c:1758
+#: ../libcore/marlin-file-operations.c:2671
 msgid "Error while deleting."
 msgstr "刪除時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:1612
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr "無法刪除資料夾「%B」中的檔案，因為您沒有查看它們的許可權。"
 
-#: ../libcore/marlin-file-operations.c:1613
-#: ../libcore/marlin-file-operations.c:2728
-#: ../libcore/marlin-file-operations.c:3722
+#: ../libcore/marlin-file-operations.c:1615
+#: ../libcore/marlin-file-operations.c:2730
+#: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "在取得「%s」資料夾檔案的相關資訊時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3731
+#: ../libcore/marlin-file-operations.c:1624
+#: ../libcore/marlin-file-operations.c:3733
 msgid "_Skip files"
 msgstr "略過檔案(_S)"
 
-#: ../libcore/marlin-file-operations.c:1643
+#: ../libcore/marlin-file-operations.c:1645
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "無法刪除資料夾「%B」，因為您沒有讀取它的許可權。"
 
-#: ../libcore/marlin-file-operations.c:1646
-#: ../libcore/marlin-file-operations.c:2767
-#: ../libcore/marlin-file-operations.c:3767
+#: ../libcore/marlin-file-operations.c:1648
+#: ../libcore/marlin-file-operations.c:2769
+#: ../libcore/marlin-file-operations.c:3769
 msgid "There was an error reading the folder \"%B\"."
 msgstr "讀取資料夾「%B」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1682
 msgid "Could not remove the folder %B."
 msgstr "無法移除資料夾 %B。"
 
-#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:1759
 msgid "There was an error deleting %B."
 msgstr "刪除 %B 時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:1833
-#: ../libcore/marlin-file-operations.c:1845
+#: ../libcore/marlin-file-operations.c:1835
+#: ../libcore/marlin-file-operations.c:1847
 msgid "Moving files to trash"
 msgstr "將檔案丟進垃圾筒"
 
-#: ../libcore/marlin-file-operations.c:1847
+#: ../libcore/marlin-file-operations.c:1849
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "剩下 %'d 個檔案要丟進垃圾筒"
 
-#: ../libcore/marlin-file-operations.c:1942
-#: ../libcore/marlin-file-operations.c:1945
-#: ../libcore/marlin-file-operations.c:1948
+#: ../libcore/marlin-file-operations.c:1944
+#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1950
 msgid "Cannot move file to trash or delete it"
 msgstr "無法將檔案丟至垃圾筒或刪除"
 
-#: ../libcore/marlin-file-operations.c:1943
+#: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "尚未取得在唯讀檔案系統上將檔案丟至垃圾筒，或刪除檔案的許可。"
 
-#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr "尚未取得在您未具寫入權的資料夾內將檔案丟至垃圾筒，或刪除檔案的許可。"
 
-#: ../libcore/marlin-file-operations.c:1949
+#: ../libcore/marlin-file-operations.c:1951
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr "尚未取得將您未具寫入權的資料夾丟至垃圾筒，或刪除資料夾的許可。"
 
-#: ../libcore/marlin-file-operations.c:1951
+#: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "無法將檔案丟至垃圾桶。是否現在嘗試刪除？"
 
-#: ../libcore/marlin-file-operations.c:1952
+#: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr "此檔案無法丟至垃圾桶中。請見下方詳細資料以深入瞭解更多資訊。"
 
-#: ../libcore/marlin-file-operations.c:1956
+#: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "無法將檔案丟至垃圾筒。是否嘗試刪除？"
 
-#: ../libcore/marlin-file-operations.c:1957
+#: ../libcore/marlin-file-operations.c:1959
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr "此檔案無法丟至垃圾桶中。您可能也無法將之刪除。"
 
-#: ../libcore/marlin-file-operations.c:1962
+#: ../libcore/marlin-file-operations.c:1964
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1021,383 +984,481 @@ msgstr ""
 "\n"
 " 刪除檔案將永久失去檔案"
 
-#: ../libcore/marlin-file-operations.c:2152
+#: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
 msgstr "正將檔案丟進垃圾筒"
 
-#: ../libcore/marlin-file-operations.c:2154
+#: ../libcore/marlin-file-operations.c:2156
 msgid "Deleting Files"
 msgstr "正在刪除檔案"
 
-#: ../libcore/marlin-file-operations.c:2223
+#: ../libcore/marlin-file-operations.c:2225
 msgid "Unable to eject %V"
 msgstr "無法退出 %V"
 
-#: ../libcore/marlin-file-operations.c:2225
+#: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to unmount %V"
 msgstr "無法卸載 %V"
 
-#: ../libcore/marlin-file-operations.c:2404
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "卸載前是否要清空垃圾筒？"
 
-#: ../libcore/marlin-file-operations.c:2406
+#: ../libcore/marlin-file-operations.c:2408
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr "若要重新取得此裝置的可用空間，必須清空垃圾筒。所有在垃圾筒的東西將會永久地刪除。"
 
-#: ../libcore/marlin-file-operations.c:2412
+#: ../libcore/marlin-file-operations.c:2414
 msgid "Do _not Empty Trash"
 msgstr "不要清空垃圾筒(_N)"
 
-#: ../libcore/marlin-file-operations.c:2526
+#: ../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Unable to mount %s"
 msgstr "無法掛載 %s"
 
-#: ../libcore/marlin-file-operations.c:2604
+#: ../libcore/marlin-file-operations.c:2606
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "正準備複製 %'d 個檔案 (%S)"
 
-#: ../libcore/marlin-file-operations.c:2610
+#: ../libcore/marlin-file-operations.c:2612
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "正準備移動 %'d 個檔案 (%S)"
 
-#: ../libcore/marlin-file-operations.c:2616
+#: ../libcore/marlin-file-operations.c:2618
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "正準備刪除 %'d 個檔案 (%S)"
 
-#: ../libcore/marlin-file-operations.c:2622
+#: ../libcore/marlin-file-operations.c:2624
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "正準備將 %'d 個檔案丟進垃圾筒"
 
-#: ../libcore/marlin-file-operations.c:2665
-#: ../libcore/marlin-file-operations.c:3584
-#: ../libcore/marlin-file-operations.c:3714
-#: ../libcore/marlin-file-operations.c:3759
+#: ../libcore/marlin-file-operations.c:2667
+#: ../libcore/marlin-file-operations.c:3586
+#: ../libcore/marlin-file-operations.c:3716
+#: ../libcore/marlin-file-operations.c:3761
 msgid "Error while copying."
 msgstr "複製時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2667
-#: ../libcore/marlin-file-operations.c:3712
-#: ../libcore/marlin-file-operations.c:3757
+#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:3714
+#: ../libcore/marlin-file-operations.c:3759
 msgid "Error while moving."
 msgstr "移動時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2671
+#: ../libcore/marlin-file-operations.c:2673
 msgid "Error while moving files to trash."
 msgstr "將檔案丟進垃圾筒時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2725
+#: ../libcore/marlin-file-operations.c:2727
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr "無法處理資料夾「%B」中的檔案，因為您沒有查看它們的許可權。"
 
-#: ../libcore/marlin-file-operations.c:2764
+#: ../libcore/marlin-file-operations.c:2766
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "無法處理資料夾「%B」，因為您沒有讀取它的許可權。"
 
-#: ../libcore/marlin-file-operations.c:2840
+#: ../libcore/marlin-file-operations.c:2842
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "無法處理檔案「%B」，因為您沒有讀取它的許可權。"
 
-#: ../libcore/marlin-file-operations.c:2843
+#: ../libcore/marlin-file-operations.c:2845
 msgid "There was an error getting information about \"%B\"."
 msgstr "取得關於「%B」的資訊時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2943
-#: ../libcore/marlin-file-operations.c:2985
-#: ../libcore/marlin-file-operations.c:3018
-#: ../libcore/marlin-file-operations.c:3048
+#: ../libcore/marlin-file-operations.c:2945
+#: ../libcore/marlin-file-operations.c:2987
+#: ../libcore/marlin-file-operations.c:3020
+#: ../libcore/marlin-file-operations.c:3050
 msgid "Error while copying to \"%B\"."
 msgstr "複製至「%B」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2947
+#: ../libcore/marlin-file-operations.c:2949
 msgid "You do not have permissions to access the destination folder."
 msgstr "您沒有存取目的端資料夾的許可權。"
 
-#: ../libcore/marlin-file-operations.c:2949
+#: ../libcore/marlin-file-operations.c:2951
 msgid "There was an error getting information about the destination."
 msgstr "取得關於目的地端資訊時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:2986
+#: ../libcore/marlin-file-operations.c:2988
 msgid "The destination is not a folder."
 msgstr "該目的地並非資料夾。"
 
-#: ../libcore/marlin-file-operations.c:3019
+#: ../libcore/marlin-file-operations.c:3021
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "目的地空間不足。請試著移除檔案以挪出空間。"
 
-#: ../libcore/marlin-file-operations.c:3021
+#: ../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "這裡有 %S，但需要 %S。"
 
-#: ../libcore/marlin-file-operations.c:3049
+#: ../libcore/marlin-file-operations.c:3051
 msgid "The destination is read-only."
 msgstr "目的地端是唯讀的。"
 
-#: ../libcore/marlin-file-operations.c:3110
+#: ../libcore/marlin-file-operations.c:3112
 msgid "Moving \"%B\" to \"%B\""
 msgstr "正將「%B」移動到「%B」"
 
-#: ../libcore/marlin-file-operations.c:3111
+#: ../libcore/marlin-file-operations.c:3113
 msgid "Copying \"%B\" to \"%B\""
 msgstr "正將「%B」複製到「%B」"
 
-#: ../libcore/marlin-file-operations.c:3115
+#: ../libcore/marlin-file-operations.c:3117
 msgid "Duplicating \"%B\""
 msgstr "正在重製「%B」"
 
-#: ../libcore/marlin-file-operations.c:3119
+#: ../libcore/marlin-file-operations.c:3121
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正在移動 %'d 個檔案 (於「%B」中) 到「%B」"
 
-#: ../libcore/marlin-file-operations.c:3122
+#: ../libcore/marlin-file-operations.c:3124
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正複製 %'d 個檔案 (於「%B」中) 到「%B」"
 
-#: ../libcore/marlin-file-operations.c:3129
+#: ../libcore/marlin-file-operations.c:3131
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "正重製 %'d 個檔案 (於「%B」中)"
 
-#: ../libcore/marlin-file-operations.c:3138
+#: ../libcore/marlin-file-operations.c:3140
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "正在移動 %'d 個檔案到「%B」中"
 
-#: ../libcore/marlin-file-operations.c:3142
+#: ../libcore/marlin-file-operations.c:3144
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "正在複製 %'d 個檔案到「%B」中"
 
-#: ../libcore/marlin-file-operations.c:3147
+#: ../libcore/marlin-file-operations.c:3149
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "正在重製 %'d 個檔案"
 
-#: ../libcore/marlin-file-operations.c:3198
+#: ../libcore/marlin-file-operations.c:3200
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: ../libcore/marlin-file-operations.c:3209
+#: ../libcore/marlin-file-operations.c:3211
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — 剩餘 %T (%S/秒)"
 
-#: ../libcore/marlin-file-operations.c:3588
+#: ../libcore/marlin-file-operations.c:3590
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "無法複製資料夾「%B」，因為您沒有在目的地端建立它的許可權。"
 
-#: ../libcore/marlin-file-operations.c:3591
+#: ../libcore/marlin-file-operations.c:3593
 msgid "There was an error creating the folder \"%B\"."
 msgstr "建立資料夾「%B」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:3719
+#: ../libcore/marlin-file-operations.c:3721
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "無法複製資料夾「%B」中的檔案，因為您沒有查看它們的許可權。"
 
-#: ../libcore/marlin-file-operations.c:3764
+#: ../libcore/marlin-file-operations.c:3766
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "無法複製資料夾「%B」，因為您沒有讀取它的許可權。"
 
-#: ../libcore/marlin-file-operations.c:3809
-#: ../libcore/marlin-file-operations.c:4511
+#: ../libcore/marlin-file-operations.c:3811
+#: ../libcore/marlin-file-operations.c:4513
 msgid "Error while moving \"%B\"."
 msgstr "移動「%B」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:3810
+#: ../libcore/marlin-file-operations.c:3812
 msgid "Could not remove the source folder."
 msgstr "無法移除來源資料夾。"
 
-#: ../libcore/marlin-file-operations.c:3895
-#: ../libcore/marlin-file-operations.c:3936
-#: ../libcore/marlin-file-operations.c:4513
+#: ../libcore/marlin-file-operations.c:3897
+#: ../libcore/marlin-file-operations.c:3938
+#: ../libcore/marlin-file-operations.c:4515
 msgid "Error while copying \"%B\"."
 msgstr "複製「%B」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:3896
+#: ../libcore/marlin-file-operations.c:3898
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "無法自既有的資料夾 %F 移除檔案。"
 
-#: ../libcore/marlin-file-operations.c:3937
+#: ../libcore/marlin-file-operations.c:3939
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "無法移除既有的檔案 %F。"
 
-#: ../libcore/marlin-file-operations.c:4263
-#: ../libcore/marlin-file-operations.c:4939
+#: ../libcore/marlin-file-operations.c:4265
+#: ../libcore/marlin-file-operations.c:4941
 msgid "You cannot move a folder into itself."
 msgstr "不可將資料夾移動至資料夾本身之內。"
 
-#: ../libcore/marlin-file-operations.c:4264
-#: ../libcore/marlin-file-operations.c:4940
+#: ../libcore/marlin-file-operations.c:4266
+#: ../libcore/marlin-file-operations.c:4942
 msgid "You cannot copy a folder into itself."
 msgstr "不可將資料夾複製至資料夾本身之內。"
 
-#: ../libcore/marlin-file-operations.c:4265
-#: ../libcore/marlin-file-operations.c:4941
+#: ../libcore/marlin-file-operations.c:4267
+#: ../libcore/marlin-file-operations.c:4943
 msgid "The destination folder is inside the source folder."
 msgstr "目的地端資料夾在來源資料夾內。"
 
-#: ../libcore/marlin-file-operations.c:4296
+#: ../libcore/marlin-file-operations.c:4298
 msgid "You cannot move a file over itself."
 msgstr "不可將檔案移動至相同位置之上。"
 
-#: ../libcore/marlin-file-operations.c:4297
+#: ../libcore/marlin-file-operations.c:4299
 msgid "You cannot copy a file over itself."
 msgstr "不可將檔案複製至相同位置之上。"
 
-#: ../libcore/marlin-file-operations.c:4298
+#: ../libcore/marlin-file-operations.c:4300
 msgid "The source file would be overwritten by the destination."
 msgstr "來源檔案會被目的端覆蓋。"
 
-#: ../libcore/marlin-file-operations.c:4515
+#: ../libcore/marlin-file-operations.c:4517
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "無法移除 %F 中有相同名稱的既有檔案。"
 
-#: ../libcore/marlin-file-operations.c:4585
+#: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4586
+#: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4813
+#: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
 msgstr "正在複製檔案"
 
-#: ../libcore/marlin-file-operations.c:4839
+#: ../libcore/marlin-file-operations.c:4841
 msgid "Preparing to move to \"%B\""
 msgstr "正準備移動到「%B」"
 
-#: ../libcore/marlin-file-operations.c:4851
+#: ../libcore/marlin-file-operations.c:4853
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "正準備移動到 %'d 個檔案"
 
-#: ../libcore/marlin-file-operations.c:5099
+#: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "移動「%F」時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:5100
+#: ../libcore/marlin-file-operations.c:5102
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "移動檔案到 %F 時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:5363
+#: ../libcore/marlin-file-operations.c:5365
 msgid "Moving Files"
 msgstr "正在移動檔案"
 
-#: ../libcore/marlin-file-operations.c:5392
+#: ../libcore/marlin-file-operations.c:5394
 msgid "Creating links in \"%B\""
 msgstr "正在「%B」中建立連結"
 
-#: ../libcore/marlin-file-operations.c:5403
+#: ../libcore/marlin-file-operations.c:5405
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "正在建立給 %'d 個檔案的連結"
 
-#: ../libcore/marlin-file-operations.c:5544
+#: ../libcore/marlin-file-operations.c:5546
 msgid "Error while creating link to %B."
 msgstr "建立給 「%B」的連結時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:5546
+#: ../libcore/marlin-file-operations.c:5548
 msgid "Symbolic links only supported for local files"
 msgstr "符號連結只支援本地端檔案"
 
-#: ../libcore/marlin-file-operations.c:5549
+#: ../libcore/marlin-file-operations.c:5551
 msgid "The target doesn't support symbolic links."
 msgstr "目標不支援符號連結。"
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5554
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "在 %F 中建立符號連結時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:5880
-#: ../libcore/marlin-file-operations.c:5883
+#: ../libcore/marlin-file-operations.c:5882
+#: ../libcore/marlin-file-operations.c:5885
 msgid "Setting permissions"
 msgstr "設定許可權中"
 
-#: ../libcore/marlin-file-operations.c:5995
+#: ../libcore/marlin-file-operations.c:5997
 msgid "Cannot copy into trash."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5996
+#: ../libcore/marlin-file-operations.c:5998
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6137
+#: ../libcore/marlin-file-operations.c:6139
 msgid "untitled folder"
 msgstr "未命名資料夾"
 
-#: ../libcore/marlin-file-operations.c:6145
+#: ../libcore/marlin-file-operations.c:6147
 msgid "new file"
 msgstr "新檔案"
 
-#: ../libcore/marlin-file-operations.c:6316
+#: ../libcore/marlin-file-operations.c:6318
 msgid "Error while creating directory %B."
 msgstr "建立目錄 %B 時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:6318
+#: ../libcore/marlin-file-operations.c:6320
 msgid "Error while creating file %B."
 msgstr "建立檔案 %B 時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:6320
+#: ../libcore/marlin-file-operations.c:6322
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "在 %F 中建立目錄時發生錯誤。"
 
-#: ../libcore/marlin-file-operations.c:6636
+#: ../libcore/marlin-file-operations.c:6638
 msgid "Emptying the trash"
 msgstr "正在清理垃圾筒"
 
-#: ../libcore/marlin-file-operations.c:6648
+#: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying Trash"
 msgstr "正在清空垃圾筒"
 
-#: ../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "無法決定「%s」的原始位置 "
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "今日%p %-I:%M"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "此項目不能從垃圾筒還原。"
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "昨日%p %-I:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%Y年%b%-d日%p %-I:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y年%b%-d日  %a %p %-I:%M"
+
+#: ../libcore/gof-file.c:363
+#, c-format
+msgid "link to %s"
+msgstr "連結到 %s"
+
+#: ../libcore/gof-file.c:1868
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "無法解析桌面檔：%s"
+
+#: ../libcore/gof-file.c:1906
+msgid "No Exec field specified"
+msgstr "Exec 欄並未指定"
+
+#: ../libcore/gof-file.c:1926
+msgid "No URL field specified"
+msgstr "URL 欄並未指定"
+
+#: ../libcore/gof-file.c:1932
+msgid "Invalid desktop file"
+msgstr "無效的桌面檔"
+
+#: ../libcore/gof-file.c:2224
+msgid "Slashes are not allowed in filenames"
+msgstr "檔案名稱中不能使用斜線 ( / )"
+
+#: ../libcore/gof-file.c:2244
+msgid "Toplevel files cannot be renamed"
+msgstr "頂端層級檔案無法更改名稱"
+
+#: ../src/View/Window.vala:181
+msgid "Files isn't your default file manager."
+msgstr "「檔案」不是您的預設檔案瀏覽器。"
+
+#: ../src/View/Window.vala:187
+msgid "Set as Default"
+msgstr "設為預設值"
+
+#: ../src/View/Window.vala:193
+msgid "Ignore"
+msgstr "忽略"
+
+#: ../src/View/ViewContainer.vala:289 ../src/View/Sidebar.vala:437
+msgid "Home"
+msgstr "家屋"
+
+#: ../src/View/ViewContainer.vala:291 ../src/View/Sidebar.vala:487
+msgid "File System"
+msgstr "檔案系統"
+
+#: ../src/View/ViewContainer.vala:308
+msgid "(as Administrator)"
+msgstr "（以管理員身份）"
+
+#: ../src/View/ViewContainer.vala:316
+msgid "This does not belong to you."
+msgstr "此物不屬於您。"
+
+#: ../src/View/ViewContainer.vala:317
+msgid "You don't have permission to view this folder."
+msgstr "您未取得檢視此資料夾的許可。"
+
+#: ../src/View/ViewContainer.vala:320
+msgid "Unable to mount folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:321
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:333
+msgid "File not found."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:334
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/View/LocationBar.vala:351
+msgid "Open in New Tab"
+msgstr "在新分頁中開啟"
+
+#: ../src/View/LocationBar.vala:358
+#: ../src/View/AbstractDirectoryView.vala:1810
+msgid "Open with"
+msgstr "以此開啟"
+
+#: ../src/View/LocationBar.vala:389
+msgid "Other Application .."
+msgstr "其他應用程式…"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1417,19 +1478,6 @@ msgstr "類型"
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:521
 msgid "Modified"
 msgstr "已修改"
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "在新分頁中開啟"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1810
-msgid "Open with"
-msgstr "以此開啟"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "其他應用程式…"
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1471,246 +1519,6 @@ msgstr "SMB"
 msgid "Trash"
 msgstr "垃圾"
 
-#: ../src/View/Window.vala:181
-msgid "Files isn't your default file manager."
-msgstr "「檔案」不是您的預設檔案瀏覽器。"
-
-#: ../src/View/Window.vala:187
-msgid "Set as Default"
-msgstr "設為預設值"
-
-#: ../src/View/Window.vala:193
-msgid "Ignore"
-msgstr "忽略"
-
-#: ../src/View/Sidebar.vala:420
-msgid "Personal"
-msgstr "個人"
-
-#: ../src/View/Sidebar.vala:425
-msgid "Your common places and bookmarks"
-msgstr "您的常用位置與書籤"
-
-#: ../src/View/Sidebar.vala:437 ../src/View/ViewContainer.vala:289
-msgid "Home"
-msgstr "家屋"
-
-#: ../src/View/Sidebar.vala:444
-msgid "Open your personal folder"
-msgstr "開啟您的個人資料夾"
-
-#: ../src/View/Sidebar.vala:471
-msgid "Open the Trash"
-msgstr "開啟垃圾筒"
-
-#: ../src/View/Sidebar.vala:477
-msgid "Devices"
-msgstr "裝置"
-
-#: ../src/View/Sidebar.vala:482
-msgid "Your local partitions and devices"
-msgstr "您的本地端分割區和裝置"
-
-#: ../src/View/Sidebar.vala:487 ../src/View/ViewContainer.vala:291
-msgid "File System"
-msgstr "檔案系統"
-
-#: ../src/View/Sidebar.vala:494
-msgid "Open the contents of the FileSystem"
-msgstr "開啟檔案系統的目錄"
-
-#: ../src/View/Sidebar.vala:524 ../src/View/Sidebar.vala:713
-msgid "Mount and open %s"
-msgstr "掛載並開啟 %s"
-
-#: ../src/View/Sidebar.vala:606
-msgid "Your network places"
-msgstr "您的網路位置"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Entire Network"
-msgstr "整個網路"
-
-#: ../src/View/Sidebar.vala:643
-msgid "Browse the contents of the network"
-msgstr "瀏覽網路的內容"
-
-#: ../src/View/Sidebar.vala:1162
-msgid "Unable to start %s"
-msgstr "無法開啟 %s"
-
-#: ../src/View/Sidebar.vala:1232
-msgid "Open"
-msgstr "開啟"
-
-#: ../src/View/Sidebar.vala:1240
-msgid "Open in New _Tab"
-msgstr "在新分頁中開啟(_T)"
-
-#: ../src/View/Sidebar.vala:1246
-msgid "Open in New _Window"
-msgstr "在新視窗中開啟(_W)"
-
-#: ../src/View/Sidebar.vala:1254
-msgid "Remove"
-msgstr "移除"
-
-#: ../src/View/Sidebar.vala:1262 ../src/View/directory_view_popup.ui:16
-msgid "Rename"
-msgstr "重新命名"
-
-#: ../src/View/Sidebar.vala:1271
-msgid "_Mount"
-msgstr "掛載(_M)"
-
-#: ../src/View/Sidebar.vala:1277
-msgid "_Unmount"
-msgstr "卸載(_U)"
-
-#: ../src/View/Sidebar.vala:1283
-msgid "_Eject"
-msgstr "退出(_E)"
-
-#: ../src/View/SearchResults.vala:166
-msgid "In This Folder"
-msgstr "於此資料夾中"
-
-#: ../src/View/SearchResults.vala:168
-msgid "Bookmarks"
-msgstr "書籤"
-
-#: ../src/View/SearchResults.vala:170
-msgid "Everywhere Else"
-msgstr "任何其他位置"
-
-#: ../src/View/ViewContainer.vala:308
-msgid "(as Administrator)"
-msgstr "（以管理員身份）"
-
-#: ../src/View/ViewContainer.vala:316
-msgid "This does not belong to you."
-msgstr "此物不屬於您。"
-
-#: ../src/View/ViewContainer.vala:317
-msgid "You don't have permission to view this folder."
-msgstr "您未取得檢視此資料夾的許可。"
-
-#: ../src/View/ViewContainer.vala:320
-msgid "Unable to mount folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:321
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:333
-msgid "File not found."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:334
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "格狀檢視"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "列表檢視"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "分欄檢視"
-
-#: ../src/View/Chrome/TopMenu.vala:47
-msgid "Previous"
-msgstr "上一個"
-
-#: ../src/View/Chrome/TopMenu.vala:51
-msgid "Next"
-msgstr "下一個"
-
-#: ../src/View/AbstractDirectoryView.vala:527
-msgid "Failed to preview"
-msgstr "無法預覽"
-
-#: ../src/View/AbstractDirectoryView.vala:944
-msgid "Select an application"
-msgstr "選取應用程式"
-
-#: ../src/View/AbstractDirectoryView.vala:946
-msgid "Set as default"
-msgstr "設為預設值"
-
-#: ../src/View/AbstractDirectoryView.vala:1410
-msgid "Cannot drop this file"
-msgstr "無法放下此檔案"
-
-#: ../src/View/AbstractDirectoryView.vala:1410
-msgid "Invalid file name provided"
-msgstr "提供的檔名無效"
-
-#: ../src/View/AbstractDirectoryView.vala:1789
-msgid "Invalid"
-msgstr "無效"
-
-#: ../src/View/AbstractDirectoryView.vala:1794
-msgid "Run"
-msgstr "執行"
-
-#: ../src/View/AbstractDirectoryView.vala:1799
-msgid "Open in %s"
-msgstr "以 %s 開啟"
-
-#: ../src/View/AbstractDirectoryView.vala:1808
-msgid "Open in"
-msgstr "開啟方式"
-
-#: ../src/View/AbstractDirectoryView.vala:1866
-msgid "Other Application"
-msgstr "其他應用程式"
-
-#: ../src/View/AbstractDirectoryView.vala:2113
-msgid "Untitled %s"
-msgstr "未命名 %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2395
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2396
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2596
-msgid "%s is not a valid file name"
-msgstr "%s 不是無效的檔案名稱"
-
-#: ../src/View/OverlayBar.vala:145
-msgid "%u folders"
-msgstr "%u 個資料夾"
-
-#: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
-msgid " and %u other item (%s) selected"
-msgstr " 與其他 %u 個項目 (%s) 被選取"
-
-#: ../src/View/OverlayBar.vala:148 ../src/View/OverlayBar.vala:156
-msgid " and %u other items (%s) selected"
-msgstr " 與另外 %u 個項目 (%s) 已選取"
-
-#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
-msgid " selected"
-msgstr " 已選取"
-
-#: ../src/View/OverlayBar.vala:153
-msgid "%u folder"
-msgstr "%u 個資料夾"
-
-#: ../src/View/OverlayBar.vala:161
-msgid "%u items selected (%s)"
-msgstr "已選取 %u 個項目（%s）"
-
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr "此資料夾不存在。"
@@ -1736,6 +1544,38 @@ msgstr ""
 "無法建立資料夾\n"
 "\n"
 "%s"
+
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "這個資料夾是空的。"
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr "存取受拒"
+
+#: ../src/View/OverlayBar.vala:145
+msgid "%u folders"
+msgstr "%u 個資料夾"
+
+#: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
+msgid " and %u other item (%s) selected"
+msgstr " 與其他 %u 個項目 (%s) 被選取"
+
+#: ../src/View/OverlayBar.vala:148 ../src/View/OverlayBar.vala:156
+msgid " and %u other items (%s) selected"
+msgstr " 與另外 %u 個項目 (%s) 已選取"
+
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
+msgid " selected"
+msgstr " 已選取"
+
+#: ../src/View/OverlayBar.vala:153
+msgid "%u folder"
+msgstr "%u 個資料夾"
+
+#: ../src/View/OverlayBar.vala:161
+msgid "%u items selected (%s)"
+msgstr "已選取 %u 個項目（%s）"
 
 #: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:81
 msgid "Properties"
@@ -1867,33 +1707,173 @@ msgstr "所有人"
 msgid "Select an application to open "
 msgstr "請選取應用程式以開啟 "
 
-#: ../src/View/Slot.vala:36
-msgid "This folder is empty."
-msgstr "這個資料夾是空的。"
+#: ../src/View/Sidebar.vala:420
+msgid "Personal"
+msgstr "個人"
 
-#: ../src/View/Slot.vala:37
-msgid "Access denied"
-msgstr "存取受拒"
+#: ../src/View/Sidebar.vala:425
+msgid "Your common places and bookmarks"
+msgstr "您的常用位置與書籤"
 
-#: ../src/DndHandler.vala:47
-msgid "Failed to execute \"%s\""
-msgstr "無法執行「%s」"
+#: ../src/View/Sidebar.vala:444
+msgid "Open your personal folder"
+msgstr "開啟您的個人資料夾"
 
-#: ../src/DndHandler.vala:95
-msgid "Move Here"
-msgstr "移動到此處"
+#: ../src/View/Sidebar.vala:471
+msgid "Open the Trash"
+msgstr "開啟垃圾筒"
 
-#: ../src/DndHandler.vala:96
-msgid "Copy Here"
-msgstr "複製到此處"
+#: ../src/View/Sidebar.vala:477
+msgid "Devices"
+msgstr "裝置"
 
-#: ../src/DndHandler.vala:97
-msgid "Link Here"
-msgstr "連結到此處"
+#: ../src/View/Sidebar.vala:482
+msgid "Your local partitions and devices"
+msgstr "您的本地端分割區和裝置"
 
-#: ../src/DndHandler.vala:100
-msgid "Cancel"
-msgstr "取消"
+#: ../src/View/Sidebar.vala:494
+msgid "Open the contents of the FileSystem"
+msgstr "開啟檔案系統的目錄"
+
+#: ../src/View/Sidebar.vala:524 ../src/View/Sidebar.vala:713
+msgid "Mount and open %s"
+msgstr "掛載並開啟 %s"
+
+#: ../src/View/Sidebar.vala:606
+msgid "Your network places"
+msgstr "您的網路位置"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Entire Network"
+msgstr "整個網路"
+
+#: ../src/View/Sidebar.vala:643
+msgid "Browse the contents of the network"
+msgstr "瀏覽網路的內容"
+
+#: ../src/View/Sidebar.vala:1162
+msgid "Unable to start %s"
+msgstr "無法開啟 %s"
+
+#: ../src/View/Sidebar.vala:1232
+msgid "Open"
+msgstr "開啟"
+
+#: ../src/View/Sidebar.vala:1240
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: ../src/View/Sidebar.vala:1246
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: ../src/View/Sidebar.vala:1254
+msgid "Remove"
+msgstr "移除"
+
+#: ../src/View/Sidebar.vala:1262 ../src/View/directory_view_popup.ui:16
+msgid "Rename"
+msgstr "重新命名"
+
+#: ../src/View/Sidebar.vala:1271
+msgid "_Mount"
+msgstr "掛載(_M)"
+
+#: ../src/View/Sidebar.vala:1277
+msgid "_Unmount"
+msgstr "卸載(_U)"
+
+#: ../src/View/Sidebar.vala:1283
+msgid "_Eject"
+msgstr "退出(_E)"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View as Grid"
+msgstr "格狀檢視"
+
+#: ../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as List"
+msgstr "列表檢視"
+
+#: ../src/View/Chrome/ViewSwicher.vala:91
+msgid "View in Columns"
+msgstr "分欄檢視"
+
+#: ../src/View/Chrome/TopMenu.vala:47
+msgid "Previous"
+msgstr "上一個"
+
+#: ../src/View/Chrome/TopMenu.vala:51
+msgid "Next"
+msgstr "下一個"
+
+#: ../src/View/SearchResults.vala:166
+msgid "In This Folder"
+msgstr "於此資料夾中"
+
+#: ../src/View/SearchResults.vala:168
+msgid "Bookmarks"
+msgstr "書籤"
+
+#: ../src/View/SearchResults.vala:170
+msgid "Everywhere Else"
+msgstr "任何其他位置"
+
+#: ../src/View/AbstractDirectoryView.vala:527
+msgid "Failed to preview"
+msgstr "無法預覽"
+
+#: ../src/View/AbstractDirectoryView.vala:944
+msgid "Select an application"
+msgstr "選取應用程式"
+
+#: ../src/View/AbstractDirectoryView.vala:946
+msgid "Set as default"
+msgstr "設為預設值"
+
+#: ../src/View/AbstractDirectoryView.vala:1410
+msgid "Cannot drop this file"
+msgstr "無法放下此檔案"
+
+#: ../src/View/AbstractDirectoryView.vala:1410
+msgid "Invalid file name provided"
+msgstr "提供的檔名無效"
+
+#: ../src/View/AbstractDirectoryView.vala:1789
+msgid "Invalid"
+msgstr "無效"
+
+#: ../src/View/AbstractDirectoryView.vala:1794
+msgid "Run"
+msgstr "執行"
+
+#: ../src/View/AbstractDirectoryView.vala:1799
+msgid "Open in %s"
+msgstr "以 %s 開啟"
+
+#: ../src/View/AbstractDirectoryView.vala:1808
+msgid "Open in"
+msgstr "開啟方式"
+
+#: ../src/View/AbstractDirectoryView.vala:1866
+msgid "Other Application"
+msgstr "其他應用程式"
+
+#: ../src/View/AbstractDirectoryView.vala:2113
+msgid "Untitled %s"
+msgstr "未命名 %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2395
+msgid "Cannot copy files that are in the trash"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2396
+msgid "Cutting the selection instead"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2596
+msgid "%s is not a valid file name"
+msgstr "%s 不是無效的檔案名稱"
 
 #: ../src/Application.vala:139
 msgid "Show the version of the program."
@@ -1932,6 +1912,26 @@ msgstr ""
 #: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能與 URI 一起使用。"
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr "無法執行「%s」"
+
+#: ../src/DndHandler.vala:95
+msgid "Move Here"
+msgstr "移動到此處"
+
+#: ../src/DndHandler.vala:96
+msgid "Copy Here"
+msgstr "複製到此處"
+
+#: ../src/DndHandler.vala:97
+msgid "Link Here"
+msgstr "連結到此處"
+
+#: ../src/DndHandler.vala:100
+msgid "Cancel"
+msgstr "取消"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1991,11 +1991,11 @@ msgstr "取消所有正在進行的動作"
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:315
+#: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
 msgstr "前往 %s"
 
-#: ../libwidgets/LocationBar.vala:454
+#: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
 msgstr ""
 
@@ -2007,11 +2007,15 @@ msgstr "連接到伺服器…"
 msgid "Connect to a network file server"
 msgstr "連接到網路檔案伺服器"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:53
-msgid "These items may be deleted by emptying the trash."
-msgstr "這些項目可能已在淨空垃圾筒後刪除。"
-
 #: ../plugins/pantheon-files-trash/plugin.vala:54
+msgid "These items may be restored or deleted from the trash."
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:55
+msgid "Restore All"
+msgstr ""
+
+#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
 msgstr "淨空垃圾筒"
 
