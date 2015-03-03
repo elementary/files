@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-02-27 22:39+0000\n"
+"PO-Revision-Date: 2015-03-02 14:26+0000\n"
 "Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
+"X-Launchpad-Export-Date: 2015-03-03 05:44+0000\n"
 "X-Generator: Launchpad (build 17361)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1029,6 +1029,8 @@ msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Denna fil kunde inte flyttas till papperskorgen. Du kan kanske inte heller "
+"radera den."
 
 #: ../libcore/marlin-file-operations.c:1964
 msgid ""
@@ -1333,7 +1335,7 @@ msgstr "Kan inte kopiera \"%B\" hit."
 
 #: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Ett fel inträffade när filen kopierades till %B."
 
 #: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
@@ -1444,7 +1446,7 @@ msgstr "Igår kl. %H.%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %-H:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1526,7 +1528,7 @@ msgstr "Filen hittades inte."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Den valda filen finns inte längre."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1632,7 +1634,7 @@ msgstr "Mappen är tom."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Åtkomst nekad"
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
@@ -1688,7 +1690,7 @@ msgstr "filer"
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Faktisk storlek kan vara större, "
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "could not be read due to permissions or other errors."
@@ -1748,7 +1750,7 @@ msgstr "Öppna med:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Användning"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -1898,7 +1900,7 @@ msgstr "Bokmärken"
 
 #: ../src/View/SearchResults.vala:170
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Alla andra platser"
 
 #: ../src/View/AbstractDirectoryView.vala:527
 msgid "Failed to preview"
@@ -1914,7 +1916,7 @@ msgstr "Använd som standard"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Kan inte släppa denna fil"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Invalid file name provided"
@@ -1922,7 +1924,7 @@ msgstr "Ogiltigt filnamn angivit"
 
 #: ../src/View/AbstractDirectoryView.vala:1789
 msgid "Invalid"
-msgstr ""
+msgstr "Ogiltig"
 
 #: ../src/View/AbstractDirectoryView.vala:1794
 msgid "Run"
@@ -1930,7 +1932,7 @@ msgstr "Kör"
 
 #: ../src/View/AbstractDirectoryView.vala:1799
 msgid "Open in %s"
-msgstr ""
+msgstr "Öppna med %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1808
 msgid "Open in"
@@ -1946,11 +1948,11 @@ msgstr "Namnlös %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Klipper ut markeringen istället"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
@@ -2071,7 +2073,7 @@ msgstr "Avbryt alla pågående åtgärder"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Ladda om den här mappen"
 
 #: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
@@ -2079,7 +2081,7 @@ msgstr "Gå till %s"
 
 #: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navigera till %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2087,7 +2089,7 @@ msgstr "Anslut till server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Anslut till en nätverksfilserver"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
@@ -2112,7 +2114,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Flytta till papperskorgen"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
@@ -2172,4 +2174,4 @@ msgstr "Datum"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
-msgstr ""
+msgstr "Omvänd ordning"
