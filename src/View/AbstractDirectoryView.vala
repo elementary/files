@@ -942,19 +942,6 @@ namespace FM {
             var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
             dialog.set_deletable (false);
 
-            /* We need to remove the border of the (invisible) search bar
-             * so we do not get a line under the title bar
-             */
-            var searchbar_css = new Gtk.CssProvider ();
-            string data = ".search-bar{border: none; background: none;}";
-            try {
-                searchbar_css.load_from_data (data, data.length);
-                dialog.get_style_context ().add_provider (searchbar_css, 0);
-            } 
-            catch (GLib.Error e) {
-                warning ("Could not set searchbar style in AppChooserDialog");
-            }
-
             var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
             app_chooser.set_show_recommended (true);
 
