@@ -2356,6 +2356,7 @@ namespace FM {
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
             bool in_trash = slot.location.has_uri_scheme ("trash");
+            bool in_recent = slot.location.has_uri_scheme ("recent");
 
             switch (event.keyval) {
                 case Gdk.Key.F10:
@@ -2374,6 +2375,9 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
+                    if (in_recent)
+                        return true;
+
                     if (no_mods) {
                         /* If already in trash, permanently delete the file */
                         trash_or_delete_selected_files (in_trash);

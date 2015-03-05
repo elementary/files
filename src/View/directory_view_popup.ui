@@ -13,7 +13,7 @@
 
     <menu id='view-in-location'>
         <item>
-            <attribute name='label' translatable='yes'>View in original location...</attribute>
+            <attribute name='label' translatable='yes'>Open parent folder</attribute>
             <attribute name='action'>selection.view_in_location</attribute>
         </item>
     </menu>
