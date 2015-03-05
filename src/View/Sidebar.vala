@@ -1964,7 +1964,26 @@ namespace Marlin.Places {
         }
 
         private void drive_changed_callback (VolumeMonitor volume_monitor, Drive drive) {
-            update_places ();
+            if (ejecting_or_unmounting)
+                return;
+
+            if (!drive.is_media_check_automatic ()) {
+                drive.poll_for_media.begin (null, (obj, res) => {
+                    try {
+                        if (drive.poll_for_media.end (res)) 
+                            eject_drive_if_no_media (drive);
+                    }
+                    catch (GLib.Error e) {
+                        warning ("Could not poll for media");
+                    }
+                });
+            } else 
+                 eject_drive_if_no_media (drive);
+        }
+
+        private void eject_drive_if_no_media (Drive drive) {
+            if (!drive.has_media () && drive.can_eject ())
+                do_eject (null, null, drive, null);
         }
 
 /* MISCELLANEOUS CALLBACK FUNCTIONS */
