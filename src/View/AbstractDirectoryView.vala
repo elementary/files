@@ -2292,6 +2292,17 @@ namespace FM {
             notify_selection_changed ();
         }
 
+/** Keyboard event handling **/
+
+        protected uint get_keycode (int keyval) {
+            Gdk.KeymapKey [] keys;
+            Gdk.Keymap keymap = Gdk.Keymap.get_default ();
+            if (keymap.get_entries_for_keyval (keyval, out keys)) {
+                return keys[0].keycode;
+            } else
+                return 0;
+        }
+
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
             if (updates_frozen || event.is_modifier == 1)
                 return false;
@@ -2362,53 +2373,6 @@ namespace FM {
 
                     return true;
 
-                case Gdk.Key.T:
-                    if (only_control_pressed && !in_trash) {
-                        open_selected_in_terminal ();
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.N:
-                    if (only_control_pressed && !in_trash) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.c:
-                    if (only_control_pressed) {
-                        /* Should not copy files in the trash - cut instead */
-                        if (in_trash) {
-                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                     _("Cutting the selection instead"),
-                                                     window as Gtk.Window);
-
-                            selection_actions.activate_action ("cut", null);
-                        } else
-                            common_actions.activate_action ("copy", null);
-
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.v:
-                    if (only_control_pressed) {
-                        /* Will drop any existing selection and paste into current directory */
-                        action_set_enabled (common_actions, "paste_into", true);
-                        unselect_all ();
-                        common_actions.activate_action ("paste_into", null);
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.x:
-                    if (only_control_pressed) {
-                        selection_actions.activate_action ("cut", null);
-                        return true;
-                    }
-                    break;
-
                 case Gdk.Key.minus:
                     if (only_alt_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
@@ -2434,6 +2398,34 @@ namespace FM {
 
                 default:
                     break;
+            }
+
+            /* Use hardware keycodes for cut, copy and paste so the key used 
+             * is unaffected by internationalized layout */   
+            if (only_control_pressed) {
+                uint keycode = event.hardware_keycode;
+                if (keycode == get_keycode (Gdk.Key.c)) {
+                    /* Should not copy files in the trash - cut instead */
+                    if (in_trash) {
+                        Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                 _("Cutting the selection instead"),
+                                                 window as Gtk.Window);
+
+                        selection_actions.activate_action ("cut", null);
+                    } else
+                        common_actions.activate_action ("copy", null);
+
+                    return true;
+                } else if (keycode == get_keycode (Gdk.Key.v)) {
+                    /* Will drop any existing selection and paste into current directory */
+                    action_set_enabled (common_actions, "paste_into", true);
+                    unselect_all ();
+                    common_actions.activate_action ("paste_into", null);
+                    return true;
+                } else if (keycode == get_keycode (Gdk.Key.x)) {
+                    selection_actions.activate_action ("cut", null);
+                    return true;
+                }
             }
 
             /* Use find function instead of view interactive search */
