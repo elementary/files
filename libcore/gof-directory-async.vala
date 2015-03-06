@@ -114,6 +114,10 @@ public class GOF.Directory.Async : Object {
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
     }
 
+    ~Async () {
+        debug ("Async destruct");
+    }
+
     /* This is also called when reloading the directory so that another attempt to connect to
      * the network is made */
     private bool prepare_directory () {
