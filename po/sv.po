@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-02 14:26+0000\n"
-"Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
+"PO-Revision-Date: 2015-03-09 20:06+0000\n"
+"Last-Translator: Joachim Johansson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-03 05:44+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-03-10 05:33+0000\n"
+"X-Generator: Launchpad (build 17389)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1355,7 +1355,7 @@ msgstr[1] "Förbereder att flytta %'d filer"
 #: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Ett fel inträffade när \"%F\" skulle flyttas."
 
 #: ../libcore/marlin-file-operations.c:5102
 #, c-format
