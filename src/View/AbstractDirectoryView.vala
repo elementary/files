@@ -201,10 +201,10 @@ namespace FM {
         private bool can_trash_or_delete = true;
 
         /* Rapid keyboard paste support */
-        protected bool pasting_files = false;
-        GLib.Timer? paste_timer = null;
-        protected uint paste_timeout_id = 0; 
+        protected bool pasting_files = false; 
         protected bool select_added_files = false;
+        private HashTable? pasted_files = null;
+
 
         public bool renaming {get; protected set; default = false;}
 
@@ -214,7 +214,6 @@ namespace FM {
         private bool in_network_root = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        private uint select_timeout_id = 0;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -360,39 +359,35 @@ namespace FM {
             unselect_all ();
             GLib.List<GOF.File>? file_list = null;
 
-            if (focus_location == null)
-                focus_location = location_list.first ().data;
-
             location_list.@foreach ((loc) => {
                 file_list.prepend (GOF.File.@get (loc));
             });
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
              * the tree is thawed and the model reconnected before selecting the files */
-            select_timeout_id = GLib.Timeout.add (100, () => {
-                if (tree_frozen)
-                    return true;
-
-                file_list.@foreach ((file) => {
-                    var iter = Gtk.TreeIter ();
-
-                    if (model.get_first_iter_for_file (file, out iter)) {
-                        Gtk.TreePath path = model.get_path (iter);
-                        if (path != null) {
-                            if (focus_location.equal (file.location))
-                                set_cursor (path, false, true, false); /* set cursor and select */
-                            else
-                                select_path (path);
-                        } 
-                    }
-                });
-                select_timeout_id = 0;
-                return false;
+            Idle.add (() => {
+                bool try_again = true;
+                if (!tree_frozen) {
+                    try_again = false;
+                    file_list.@foreach ((file) => {
+                        var iter = Gtk.TreeIter ();
+                        if (model.get_first_iter_for_file (file, out iter)) {
+                            Gtk.TreePath path = model.get_path (iter);
+                            if (path != null) {
+                                if (focus_location != null && focus_location.equal (file.location))
+                                    set_cursor (path, false, true, false); /* set cursor and select */
+                                else
+                                    select_path (path);
+                            }
+                        } else {
+                            /* model has not caught up yet - wait a bit */ 
+                            try_again = true;
+                        }
+                    });
+                }
+                return try_again;
             });
-
             updates_frozen = false;
-            update_selected_files ();
-            notify_selection_changed ();
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -937,16 +932,23 @@ namespace FM {
             GOF.File file = selection.data as GOF.File;
 
             Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT |
-                                    Gtk.DialogFlags.USE_HEADER_BAR;
+                                    Gtk.DialogFlags.DESTROY_WITH_PARENT;
  
             var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
-            dialog.set_heading (_("Select an application"));
+            dialog.set_deletable (false);
+
+            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
+            app_chooser.set_show_recommended (true);
 
             var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            dialog.get_content_area ().pack_start (check_default, false, false, 0);
-            dialog.show ();
+            check_default.set_active (true);
+            check_default.show ();
 
+            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
+            action_area.add (check_default);
+            action_area.set_child_secondary (check_default, true);
+
+            dialog.show ();
             int response = dialog.run ();
 
             if (response == Gtk.ResponseType.OK) {
@@ -1070,29 +1072,23 @@ namespace FM {
             assert (pointer != null);
 
             var view = pointer as FM.AbstractDirectoryView; 
-            if (view.paste_timer == null)
-                view.paste_timer = new GLib.Timer ();
+            view.pasted_files = uris;
 
-            view.paste_timer.start (); /* restarts timer if already running */
-
-            /* Limit paste action rate to 10 per second, do not unblock the directory monitor
-             * until at least one second after the last paste event in order to avoid duplicate
-             * "add-file" events and messed up selection. */ 
-            if (view.paste_timeout_id == 0) {
-                view.paste_timeout_id = Timeout.add (100, () => {
-                    view.pasting_files = false; /* allows another paste action to occur */
-
-                    if (view.paste_timer.elapsed () < 1.0)
-                        return true;
-
-                    view.slot.directory.unblock_monitor ();
-                    view.select_added_files = false;
-                    view.paste_timeout_id = 0;
-                    view.paste_timer.stop ();
-                    view.paste_timer = null;
-                    return false;
+            Idle.add (() => {
+                /* Select the most recently pasted files */
+                GLib.List<GLib.File> pasted_files_list = null;
+                view.pasted_files.foreach ((k, v) => {
+                    File f = k as File;
+                    pasted_files_list.prepend (f);
                 });
-            }
+
+                if (!view.slot.directory.is_local)
+                    view.slot.directory.need_reload ();
+
+                view.select_glib_files (pasted_files_list, null);
+                view.pasting_files = false;
+                return false;
+            });
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1116,9 +1112,7 @@ namespace FM {
                     call_back = (GLib.Callback)after_trash_or_delete;
                 } else {
                     pasting_files = true;
-                    prepare_to_select_added_files ();
-                    /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-                    slot.directory.block_monitor ();
+                    /* callback takes care of selecting pasted files */
                     call_back = (GLib.Callback)after_pasting_files;
                 }
 
@@ -1465,8 +1459,10 @@ namespace FM {
 
                         case TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
-                                prepare_to_select_added_files ();
-
+                                if (selected_files != null)
+                                    unselect_all ();
+ 
+                                select_added_files = true;
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
                                                                                  context,
@@ -2254,13 +2250,6 @@ namespace FM {
                 }
         }
 
-        private void prepare_to_select_added_files () {
-            if (selected_files != null)
-                unselect_all ();
-
-            select_added_files = true;
-        }
-
         private void remove_marlin_icon_info_cache (GOF.File file) {
             string? path = file.get_thumbnail_path ();
 
@@ -2282,9 +2271,10 @@ namespace FM {
          */  
         private unowned GLib.List<unowned GOF.File> get_files_for_action () {
             unowned GLib.List<unowned GOF.File> action_files = null;
-            if (selected_files == null) {
+            
+            if (selected_files == null)
                 action_files.prepend (slot.directory.file);
-            } else
+            else
                 action_files = selected_files;
 
             return action_files;
@@ -2296,12 +2286,21 @@ namespace FM {
 
         protected virtual void on_view_selection_changed () {
             update_selected_files ();
-
             if (updates_frozen)
                 return;
 
             notify_selection_changed ();
-            update_menu_actions ();
+        }
+
+/** Keyboard event handling **/
+
+        protected uint get_keycode (int keyval) {
+            Gdk.KeymapKey [] keys;
+            Gdk.Keymap keymap = Gdk.Keymap.get_default ();
+            if (keymap.get_entries_for_keyval (keyval, out keys)) {
+                return keys[0].keycode;
+            } else
+                return 0;
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
@@ -2374,53 +2373,6 @@ namespace FM {
 
                     return true;
 
-                case Gdk.Key.T:
-                    if (only_control_pressed && !in_trash) {
-                        open_selected_in_terminal ();
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.N:
-                    if (only_control_pressed && !in_trash) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.c:
-                    if (only_control_pressed) {
-                        /* Should not copy files in the trash - cut instead */
-                        if (in_trash) {
-                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                     _("Cutting the selection instead"),
-                                                     window as Gtk.Window);
-
-                            selection_actions.activate_action ("cut", null);
-                        } else
-                            common_actions.activate_action ("copy", null);
-
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.v:
-                    if (only_control_pressed) {
-                        /* Will drop any existing selection and paste into current directory */
-                        action_set_enabled (common_actions, "paste_into", true);
-                        unselect_all ();
-                        common_actions.activate_action ("paste_into", null);
-                        return true;
-                    }
-                    break;
-
-                case Gdk.Key.x:
-                    if (only_control_pressed) {
-                        selection_actions.activate_action ("cut", null);
-                        return true;
-                    }
-                    break;
-
                 case Gdk.Key.minus:
                     if (only_alt_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
@@ -2446,6 +2398,34 @@ namespace FM {
 
                 default:
                     break;
+            }
+
+            /* Use hardware keycodes for cut, copy and paste so the key used 
+             * is unaffected by internationalized layout */   
+            if (only_control_pressed) {
+                uint keycode = event.hardware_keycode;
+                if (keycode == get_keycode (Gdk.Key.c)) {
+                    /* Should not copy files in the trash - cut instead */
+                    if (in_trash) {
+                        Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                 _("Cutting the selection instead"),
+                                                 window as Gtk.Window);
+
+                        selection_actions.activate_action ("cut", null);
+                    } else
+                        common_actions.activate_action ("copy", null);
+
+                    return true;
+                } else if (keycode == get_keycode (Gdk.Key.v)) {
+                    /* Will drop any existing selection and paste into current directory */
+                    action_set_enabled (common_actions, "paste_into", true);
+                    unselect_all ();
+                    common_actions.activate_action ("paste_into", null);
+                    return true;
+                } else if (keycode == get_keycode (Gdk.Key.x)) {
+                    selection_actions.activate_action ("cut", null);
+                    return true;
+                }
             }
 
             /* Use find function instead of view interactive search */
@@ -2950,7 +2930,6 @@ namespace FM {
             cancel_thumbnailing ();
             slot.directory.cancel ();
             cancel_drag_timer ();
-            cancel_timeout (ref select_timeout_id);
             cancel_timeout (ref drag_scroll_timer_id);
             
             loaded_subdirectories.@foreach ((dir) => {

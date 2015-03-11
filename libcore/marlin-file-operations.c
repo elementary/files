@@ -1134,6 +1134,8 @@ do_run_simple_dialog (gpointer _data)
                                      GTK_BUTTONS_NONE,
                                      NULL);
 
+    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
+
     g_object_set (dialog,
                   "text", data->primary_text,
                   "secondary-text", data->secondary_text,
@@ -1419,15 +1421,15 @@ confirm_empty_trash (EmptyTrashJob *job)
         if (g_file_has_uri_scheme (files->data, "trash")) {
                 /* Empty all trash */
                 prompt = f (_("Permanently delete all items from Trash?"));
-                secondary_text = f(_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
+                secondary_text = f (_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
         } else {
                 /* Empty trash on a particular mounted volume */
                 prompt = f (_("Permanently delete all items from Trash on this mount?"));
-                secondary_text = f(_("All items in the trash on this mount, will be permanently deleted."));
+                secondary_text = f (_("All items in the trash on this mount, will be permanently deleted."));
         }
     }
 
-    /* The strings are freed by the f () function */
+    /* The strings are freed by f () */
 
     response = run_warning (job,
                             prompt,

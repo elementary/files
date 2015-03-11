@@ -497,7 +497,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 loc = get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
                 continue;
             }
-            if (!loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH))))
+            if (gof != null && !loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH))))
                 return null;
         }
 
@@ -1139,7 +1139,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 uid = gof.uid;
                 continue;
             }
-            if (uid != gof.uid)
+            if (gof != null && uid != gof.uid)
                 return null;
         }
 
@@ -1164,7 +1164,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 gid = gof.gid;
                 continue;
             }
-            if (gid != gof.gid)
+            if (gof != null && gid != gof.gid)
                 return null;
         }
 
@@ -1372,10 +1372,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
                 // Check for sparse file, allocated size will be smaller, for normal files allocated size
                 // includes overhead size so we don't use it for those here
-                if (allocated_size < file_size && !gof.is_directory)
+                if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory)
                     file_size = allocated_size;
             } catch (Error err) {
-                warning ("%s", err.message);
+                debug ("%s", err.message);
                 gof.is_connected = false;
             }
         }

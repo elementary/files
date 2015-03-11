@@ -75,6 +75,7 @@ public class GOF.Directory.Async : Object {
     private string scheme;
     public bool is_local;
     public bool is_trash;
+    public bool has_mounts;
     public bool has_trash_dirs;
     public bool can_load;
     private bool _is_ready;
@@ -111,6 +112,10 @@ public class GOF.Directory.Async : Object {
         debug ("created dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.File.hash, GLib.File.equal);
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+    }
+
+    ~Async () {
+        debug ("Async destruct");
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to
@@ -178,6 +183,14 @@ public class GOF.Directory.Async : Object {
             });
         } else
             make_ready ();
+
+        var mounts = VolumeMonitor.get ().get_mounts ();
+        has_mounts = (mounts != null);
+
+        if (has_mounts)
+            Preferences.get_default ().confirm_trash = true;
+        else
+            Preferences.get_default ().confirm_trash = false;
 
         return true;
     }
