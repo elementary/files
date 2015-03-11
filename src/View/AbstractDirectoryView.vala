@@ -2366,6 +2366,8 @@ namespace FM {
                         return false;
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    else if (only_alt_pressed)
+                        common_actions.activate_action ("properties", null);
                     else if (no_mods)
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     else 
