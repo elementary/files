@@ -1387,7 +1387,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory)
                     file_size = allocated_size;
             } catch (Error err) {
-                warning ("%s", err.message);
+                debug ("%s", err.message);
                 gof.is_connected = false;
             }
         }

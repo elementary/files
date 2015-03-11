@@ -37,9 +37,9 @@ namespace Marlin.View {
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
 
         public signal bool horizontal_scroll_event (double delta_x);
-        public signal void frozen_changed (bool freeze); 
+        public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
-        public signal void active (bool scroll = true); 
+        public signal void active (bool scroll = true);
         public signal void inactive ();
 
         /* Support for multi-slot view (Miller)*/
@@ -275,6 +275,7 @@ namespace Marlin.View {
         }
 
         public override void reload () {
+            directory.clear_directory_info ();
             user_path_change_request (location, false);
         }
 

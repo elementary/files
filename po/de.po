@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-08 13:45-0600\n"
-"PO-Revision-Date: 2015-02-23 20:47+0000\n"
-"Last-Translator: Pascal Riesinger <riesinger.pascal@gmail.com>\n"
+"POT-Creation-Date: 2015-03-01 10:37-0600\n"
+"PO-Revision-Date: 2015-03-06 14:42+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:41+0000\n"
-"X-Generator: Launchpad (build 17355)\n"
+"X-Launchpad-Export-Date: 2015-03-07 05:36+0000\n"
+"X-Generator: Launchpad (build 17383)\n"
 "Language: de\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -142,231 +142,235 @@ msgstr "Dieses Passwort me_rken"
 msgid "Operation cancelled"
 msgstr "Vorgang abgebrochen"
 
-#: ../libcore/marlin-undostack-manager.c:1200
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Weitere _Details anzeigen"
+
+#: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Lösche %d kopierte Dateien"
 
-#: ../libcore/marlin-undostack-manager.c:1203
-#: ../libcore/marlin-undostack-manager.c:1213
-#: ../libcore/marlin-undostack-manager.c:1244
+#: ../libcore/marlin-undostack-manager.c:1208
+#: ../libcore/marlin-undostack-manager.c:1218
+#: ../libcore/marlin-undostack-manager.c:1249
 #, c-format
 msgid "Delete '%s'"
 msgstr "Lösche »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1210
+#: ../libcore/marlin-undostack-manager.c:1215
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Lösche %d doppelte Dateien"
 
-#: ../libcore/marlin-undostack-manager.c:1221
+#: ../libcore/marlin-undostack-manager.c:1226
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Verschiebe %d Dateien zurück nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:1230
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Verschiebe »%s« zurück nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1234
-#: ../libcore/marlin-undostack-manager.c:1401
+#: ../libcore/marlin-undostack-manager.c:1239
+#: ../libcore/marlin-undostack-manager.c:1406
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "»%s« in »%s« umbenennen"
 
-#: ../libcore/marlin-undostack-manager.c:1253
-#: ../libcore/marlin-undostack-manager.c:1448
+#: ../libcore/marlin-undostack-manager.c:1258
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "%d Dateien aus dem Papierkorb wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1261
+#: ../libcore/marlin-undostack-manager.c:1266
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "»%s« nach »%s« wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1272
+#: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "%d Dateien zurück in den Papierkorb verschieben"
 
-#: ../libcore/marlin-undostack-manager.c:1275
+#: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "»%s« zurück in den Papierkorb verschieben"
 
-#: ../libcore/marlin-undostack-manager.c:1284
+#: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Lösche Verknüpfungen zu %d Dateien"
 
-#: ../libcore/marlin-undostack-manager.c:1287
+#: ../libcore/marlin-undostack-manager.c:1292
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Lösche Verknüpfung nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1302
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Ursprüngliche Zugriffsrechte aller Objekte in »%s« wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1305
+#: ../libcore/marlin-undostack-manager.c:1310
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Ursprüngliche Zugriffsrechte von »%s« wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1314
+#: ../libcore/marlin-undostack-manager.c:1319
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Gruppe von »%s« auf »%s« wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1324
+#: ../libcore/marlin-undostack-manager.c:1329
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Besitzer von »%s« auf »%s« zurücksetzen"
 
-#: ../libcore/marlin-undostack-manager.c:1363
+#: ../libcore/marlin-undostack-manager.c:1368
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopiere %d Dateien nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1367
+#: ../libcore/marlin-undostack-manager.c:1372
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "»%s« nach »%s« kopieren"
 
-#: ../libcore/marlin-undostack-manager.c:1375
+#: ../libcore/marlin-undostack-manager.c:1380
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Dupliziere %d in »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1380
+#: ../libcore/marlin-undostack-manager.c:1385
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Dupliziere »%s« in »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1393
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Verschiebe %d Dateien nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1397
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Verschiebe »%s« nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1410
+#: ../libcore/marlin-undostack-manager.c:1415
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Neue Datei »%s« aus Vorlage erstellen "
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1422
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Erstelle eine leere Datei »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1424
+#: ../libcore/marlin-undostack-manager.c:1429
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Erstelle einen neuen Ordner »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1432
+#: ../libcore/marlin-undostack-manager.c:1437
 #, c-format
 msgid "Move %d items to trash"
 msgstr "%d Objekte in den Papierkorb verschieben"
 
-#: ../libcore/marlin-undostack-manager.c:1438
+#: ../libcore/marlin-undostack-manager.c:1443
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "»%s« in den Papierkorb verschieben"
 
-#: ../libcore/marlin-undostack-manager.c:1451
+#: ../libcore/marlin-undostack-manager.c:1456
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "»%s« aus dem Papierkorb wiederherstellen"
 
-#: ../libcore/marlin-undostack-manager.c:1460
+#: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create links to %d items"
 msgstr "Erstelle Verknüpfungen für %d Objekte"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Erstelle Verknüpfung nach »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1472
+#: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Setze Berechtigungen der Objekte die in »%s« enthalten sind"
 
-#: ../libcore/marlin-undostack-manager.c:1480
+#: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Setze Berechtigungen von »%s«"
 
-#: ../libcore/marlin-undostack-manager.c:1489
+#: ../libcore/marlin-undostack-manager.c:1494
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Gruppe von »%s« auf »%s« festlegen"
 
-#: ../libcore/marlin-undostack-manager.c:1499
+#: ../libcore/marlin-undostack-manager.c:1504
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Besitzer von »%s« zu »%s« setzen"
 
-#: ../libcore/marlin-undostack-manager.c:1531
+#: ../libcore/marlin-undostack-manager.c:1536
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "Kopieren von %d Objekt _rückgängig machen"
 msgstr[1] "Kopieren von %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1536
+#: ../libcore/marlin-undostack-manager.c:1541
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "Duplizieren von %d Objekt _rückgängig machen"
 msgstr[1] "Duplizieren von %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1541
+#: ../libcore/marlin-undostack-manager.c:1546
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "Verschieben von %d Objekt _rückgängig machen"
 msgstr[1] "Verschieben von %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1546
+#: ../libcore/marlin-undostack-manager.c:1551
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "Umbenennen von %d Objekt _rückgängig machen"
 msgstr[1] "Umbenennen von %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1550
+#: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of an empty file"
 msgstr "Erstellen einer leeren Datei  _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1553
+#: ../libcore/marlin-undostack-manager.c:1558
 msgid "_Undo creation of a file from template"
 msgstr "Erstellen einer leeren Datei aus Vorlage  _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1557
+#: ../libcore/marlin-undostack-manager.c:1562
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "Erstellen von %d Ordner _rückgängig machen"
 msgstr[1] "Erstellen von %d Ordnern _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1562
+#: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "Verschieben in den Papierkorb von %d Objekt _rückgängig machen"
 msgstr[1] "Verschieben in den Papierkorb von %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1567
+#: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
@@ -374,120 +378,120 @@ msgstr[0] "Wiederherstellen vom Papierkorb für %d Objekt _rückgängig machen"
 msgstr[1] ""
 "Wiederherstellen vom Papierkorb für %d Objekten _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1572
+#: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "Erstellen einer Verknüpfung für %d Objekt _rückgängig machen"
 msgstr[1] "Erstellen einer Verknüpfung für %d Objekte _rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1577
+#: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Rückgängig machen von %d Objekt"
 msgstr[1] "_Rückgängig machen von %d Objekten"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Veränderung der Benutzerrechte für %d Objekt rückgängig machen"
 msgstr[1] "Veränderung der Benutzerrechte für %d Objekte rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1588
+#: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Veränderung der Zugriffsrechte von %d Objekt rückgängig machen"
 msgstr[1] "Veränderung der Zugriffsrechte von %d Objekten rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1593
+#: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Veränderung der Gruppe von %d Objekt rückgängig machen"
 msgstr[1] "Veränderung der Gruppe von %d Objekten rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1598
+#: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Veränderung der Besitzer von %d Objekt rückgängig machen"
 msgstr[1] "Veränderung der Besitzer von %d Objekten rückgängig machen"
 
-#: ../libcore/marlin-undostack-manager.c:1626
+#: ../libcore/marlin-undostack-manager.c:1631
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "Kopieren von %d Objekt wiede_rholen"
 msgstr[1] "Kopieren von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1631
+#: ../libcore/marlin-undostack-manager.c:1636
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "Duplizieren von %d Objekt wiede_rholen"
 msgstr[1] "Duplizieren von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1636
+#: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "Verschieben von %d Objekt wiede_rholen"
 msgstr[1] "Verschieben von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1641
+#: ../libcore/marlin-undostack-manager.c:1646
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "Umbenennen von %d Objekt wiede_rholen"
 msgstr[1] "Umbenennen von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1645
+#: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of an empty file"
 msgstr "Erstellen einer leeren Datei wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1648
+#: ../libcore/marlin-undostack-manager.c:1653
 msgid "_Redo creation of a file from template"
 msgstr "Erstellen einer Datei aus Vorlage wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1652
+#: ../libcore/marlin-undostack-manager.c:1657
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "Erstellen von %d Ordner wiede_rholen"
 msgstr[1] "Erstellen von %d Ordnern wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1657
+#: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "Verschieben von %d Objekt in den Papierkorb wiede_rholen"
 msgstr[1] "Verschieben von %d Objekten in den Papierkorb wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1662
+#: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "Wiederherstellen aus dem Papierkorb von %d Objekt wiede_rholen"
 msgstr[1] "Wiederherstellen aus dem Papierkorb von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1667
+#: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "Erstellen von Verknüpfung für %d Objekt wiederholen"
 msgstr[1] "Erstellen von Verknüpfungen für %d Objekte wiederholen"
 
-#: ../libcore/marlin-undostack-manager.c:1672
+#: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "Löschen von %d Objekt wiederholen"
 msgstr[1] "Löschen von %d Objekten wiederholen"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
@@ -496,80 +500,35 @@ msgstr[0] ""
 msgstr[1] ""
 "Rekursive Veränderung der Zugriffsrechte für %d Objekte wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1683
+#: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Veränderung der Zugriffsrechte von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung der Zugriffsrechte von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1688
+#: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Veränderung der Gruppe von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung der Gruppe von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-undostack-manager.c:1693
+#: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Veränderung des Besitzers von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
-#: ../libcore/gof-file.c:363
+#: ../libcore/marlin-file-utilities.c:118
 #, c-format
-msgid "link to %s"
-msgstr "Verweis nach %s"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 
-#: ../libcore/gof-file.c:1873
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
-
-#: ../libcore/gof-file.c:1911
-msgid "No Exec field specified"
-msgstr "Kein Exec-Feld angegeben"
-
-#: ../libcore/gof-file.c:1931
-msgid "No URL field specified"
-msgstr "Kein Adressfeld angegeben"
-
-#: ../libcore/gof-file.c:1937
-msgid "Invalid desktop file"
-msgstr "Ungültige .desktop-Datei"
-
-#: ../libcore/gof-file.c:2229
-msgid "Slashes are not allowed in filenames"
-msgstr "Schrägstriche sind in Dateinamen nicht erlaubt"
-
-#: ../libcore/gof-file.c:2249
-msgid "Toplevel files cannot be renamed"
-msgstr "Dateien im obersten Ordner können nicht umbenannt werden"
-
-#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
-msgid "Preparing"
-msgstr "In Vorbereitung"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Weitere _Details anzeigen"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Heute um %-I:%M Uhr"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Gestern um %-I:%M Uhr"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b um %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d. %b %Y um %-H:%M Uhr"
+#: ../libcore/marlin-file-utilities.c:121
+msgid "The item cannot be restored from trash"
+msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -718,6 +677,10 @@ msgstr "Dateikonflikt"
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (ungültiger Unicode)"
+
+#: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
+msgid "Preparing"
+msgstr "In Vorbereitung"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -879,12 +842,12 @@ msgstr " ("
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1383
+#: ../libcore/marlin-file-operations.c:1385
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Sind Sie sicher, dass Sie »%B« dauerhaft aus dem Papierkorb löschen möchten?"
 
-#: ../libcore/marlin-file-operations.c:1386
+#: ../libcore/marlin-file-operations.c:1388
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -899,16 +862,16 @@ msgstr[1] ""
 "Sind Sie sicher, dass Sie die %'d gewählten Objekte dauerhaft aus dem "
 "Papierkorb löschen möchten?"
 
-#: ../libcore/marlin-file-operations.c:1396
-#: ../libcore/marlin-file-operations.c:1476
+#: ../libcore/marlin-file-operations.c:1398
+#: ../libcore/marlin-file-operations.c:1478
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Sobald Sie ein Objekt entfernen, geht es dauerhaft verloren."
 
-#: ../libcore/marlin-file-operations.c:1421
+#: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
 msgstr "Alle Objekte im Papierkorb dauerhaft löschen?"
 
-#: ../libcore/marlin-file-operations.c:1422
+#: ../libcore/marlin-file-operations.c:1424
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -916,27 +879,27 @@ msgstr ""
 "Alle Objekte in allen Papierkörben, einschließlich denen auf externen "
 "Datenträgern, werden dauerhaft gelöscht."
 
-#: ../libcore/marlin-file-operations.c:1425
+#: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "Alle Objekte im Papierkorb auf diesem Datenträger dauerhaft löschen?"
 
-#: ../libcore/marlin-file-operations.c:1426
+#: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 "Alle Objekte im Papierkorb auf diesem Datenträger werden dauerhaft gelöscht."
 
-#: ../libcore/marlin-file-operations.c:1437
-#: ../libcore/marlin-file-operations.c:2414 ../src/View/Sidebar.vala:1290
+#: ../libcore/marlin-file-operations.c:1439
+#: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
 msgid "Empty _Trash"
 msgstr "_Papierkorb leeren"
 
-#: ../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr ""
 "Soll das folgende Objekt dauerhaft gelöscht werden?\n"
 "»%B«"
 
-#: ../libcore/marlin-file-operations.c:1467
+#: ../libcore/marlin-file-operations.c:1469
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -944,33 +907,33 @@ msgid_plural ""
 msgstr[0] "Soll das %'d gewählte Objekt dauerhaft gelöscht werden?"
 msgstr[1] "Sollen die %'d gewählten Objekte dauerhaft gelöscht werden?"
 
-#: ../libcore/marlin-file-operations.c:1492
-#: ../libcore/marlin-file-operations.c:1524
+#: ../libcore/marlin-file-operations.c:1494
+#: ../libcore/marlin-file-operations.c:1526
 msgid "Deleting files"
 msgstr "Dateien werden gelöscht"
 
-#: ../libcore/marlin-file-operations.c:1518
+#: ../libcore/marlin-file-operations.c:1520
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Noch %'d zu entfernende Datei"
 msgstr[1] "Noch %'d zu entfernende Dateien"
 
-#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1540
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T übrig"
 msgstr[1] "%T übrig"
 
-#: ../libcore/marlin-file-operations.c:1606
-#: ../libcore/marlin-file-operations.c:1640
-#: ../libcore/marlin-file-operations.c:1679
-#: ../libcore/marlin-file-operations.c:1756
-#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:1608
+#: ../libcore/marlin-file-operations.c:1642
+#: ../libcore/marlin-file-operations.c:1681
+#: ../libcore/marlin-file-operations.c:1758
+#: ../libcore/marlin-file-operations.c:2671
 msgid "Error while deleting."
 msgstr "Fehler beim Entfernen."
 
-#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:1612
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -978,21 +941,21 @@ msgstr ""
 "Dateien im Ordner »%B« können nicht entfernt werden, da Sie nicht die "
 "nötigen Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:1613
-#: ../libcore/marlin-file-operations.c:2728
-#: ../libcore/marlin-file-operations.c:3722
+#: ../libcore/marlin-file-operations.c:1615
+#: ../libcore/marlin-file-operations.c:2730
+#: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Es ist ein Fehler beim Einlesen der Informationen über die Dateien im Ordner "
 "»%B« aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3731
+#: ../libcore/marlin-file-operations.c:1624
+#: ../libcore/marlin-file-operations.c:3733
 msgid "_Skip files"
 msgstr "Dateien ü_berspringen"
 
-#: ../libcore/marlin-file-operations.c:1643
+#: ../libcore/marlin-file-operations.c:1645
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1000,48 +963,48 @@ msgstr ""
 "Der Ordner »%B« kann nicht entfernt werden, da Sie nicht die nötigen "
 "Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:1646
-#: ../libcore/marlin-file-operations.c:2767
-#: ../libcore/marlin-file-operations.c:3767
+#: ../libcore/marlin-file-operations.c:1648
+#: ../libcore/marlin-file-operations.c:2769
+#: ../libcore/marlin-file-operations.c:3769
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Beim Lesen des Ordners »%B« ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1682
 msgid "Could not remove the folder %B."
 msgstr "Der Ordner »%B« konnte nicht entfernt werden."
 
-#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:1759
 msgid "There was an error deleting %B."
 msgstr "Beim Entfernen von »%B« ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:1833
-#: ../libcore/marlin-file-operations.c:1845
+#: ../libcore/marlin-file-operations.c:1835
+#: ../libcore/marlin-file-operations.c:1847
 msgid "Moving files to trash"
 msgstr "Dateien werden in den Papierkorb verschoben"
 
-#: ../libcore/marlin-file-operations.c:1847
+#: ../libcore/marlin-file-operations.c:1849
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Noch %'d in den Papierkorb zu verschiebende Datei"
 msgstr[1] "Noch %'d in den Papierkorb zu verschiebende Dateien"
 
-#: ../libcore/marlin-file-operations.c:1942
-#: ../libcore/marlin-file-operations.c:1945
-#: ../libcore/marlin-file-operations.c:1948
+#: ../libcore/marlin-file-operations.c:1944
+#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1950
 msgid "Cannot move file to trash or delete it"
 msgstr ""
 "Es ist zur Zeit nicht möglich, diese Datei zu löschen oder in den Papierkorb "
 "zu verschieben"
 
-#: ../libcore/marlin-file-operations.c:1943
+#: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Sie sind nicht berechtigt, Dateien zu löschen oder in den Papierkorb zu "
 "verschieben, da auf diesem System nur das Lesen von Dateien erlaubt ist."
 
-#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1049,7 +1012,7 @@ msgstr ""
 "Sie sind nicht berechtigt, in Ordnern, für welche Sie keine Schreibrechte "
 "besitzen, Dateien zu löschen oder sie in den Papierkorb zu verschieben."
 
-#: ../libcore/marlin-file-operations.c:1949
+#: ../libcore/marlin-file-operations.c:1951
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1057,13 +1020,13 @@ msgstr ""
 "Sie sind nicht berechtigt, Dateien zu löschen oder in den Papierkorb zu "
 "verschieben, für welche Sie keine Schreibrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:1951
+#: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Datei konnte nicht in den Papierkorb verschoben werden. Versuchen, die Datei "
 "komplett zu löschen?"
 
-#: ../libcore/marlin-file-operations.c:1952
+#: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1071,13 +1034,13 @@ msgstr ""
 "Diese Datei konnte nicht in den Papierkorb verschoben werden. Prüfen Sie die "
 "Details für weitere Informationen."
 
-#: ../libcore/marlin-file-operations.c:1956
+#: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
 "Datei konnte nicht in den Papierkorb verschoben werden. Soll die Datei "
 "komplett gelöscht werden?"
 
-#: ../libcore/marlin-file-operations.c:1957
+#: ../libcore/marlin-file-operations.c:1959
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1085,7 +1048,7 @@ msgstr ""
 "Datei konnte nicht in den Papierkorb verschoben werden. Möglicherweise kann "
 "diese Datei auch nicht gelöscht werden."
 
-#: ../libcore/marlin-file-operations.c:1962
+#: ../libcore/marlin-file-operations.c:1964
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1093,27 +1056,27 @@ msgstr ""
 "\n"
 " Das Löschen einer Datei entfernt diese endgültig"
 
-#: ../libcore/marlin-file-operations.c:2152
+#: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
 msgstr "Dateien werden in den Papierkorb verschoben"
 
-#: ../libcore/marlin-file-operations.c:2154
+#: ../libcore/marlin-file-operations.c:2156
 msgid "Deleting Files"
 msgstr "Dateien werden gelöscht"
 
-#: ../libcore/marlin-file-operations.c:2223
+#: ../libcore/marlin-file-operations.c:2225
 msgid "Unable to eject %V"
 msgstr "Auswerfen von %V nicht möglich"
 
-#: ../libcore/marlin-file-operations.c:2225
+#: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to unmount %V"
 msgstr "%V kann nicht ausgehängt werden"
 
-#: ../libcore/marlin-file-operations.c:2404
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Soll der Papierkorb vor dem Aushängen geleert werden?"
 
-#: ../libcore/marlin-file-operations.c:2406
+#: ../libcore/marlin-file-operations.c:2408
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1122,61 +1085,61 @@ msgstr ""
 "der Papierkorb geleert werden. Alle im Papierkorb dieses Datenträgers "
 "enthaltenen Objekte werden dauerhaft gelöscht."
 
-#: ../libcore/marlin-file-operations.c:2412
+#: ../libcore/marlin-file-operations.c:2414
 msgid "Do _not Empty Trash"
 msgstr "Papierkorb _nicht leeren"
 
-#: ../libcore/marlin-file-operations.c:2526
+#: ../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s kann nicht eingehängt werden"
 
-#: ../libcore/marlin-file-operations.c:2604
+#: ../libcore/marlin-file-operations.c:2606
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Kopieren von %'d Datei wird vorbereitet (%S)"
 msgstr[1] "Kopieren von %'d Dateien wird vorbereitet (%S)"
 
-#: ../libcore/marlin-file-operations.c:2610
+#: ../libcore/marlin-file-operations.c:2612
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Verschieben von %'d Datei wird vorbereitet (%S)"
 msgstr[1] "Verschieben von %'d Dateien wird vorbereitet (%S)"
 
-#: ../libcore/marlin-file-operations.c:2616
+#: ../libcore/marlin-file-operations.c:2618
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Entfernen von %'d Datei wird vorbereitet (%S)"
 msgstr[1] "Entfernen von %'d Dateien wird vorbereitet (%S)"
 
-#: ../libcore/marlin-file-operations.c:2622
+#: ../libcore/marlin-file-operations.c:2624
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Verschieben von %'d Datei in den Papierkorb wird vorbereitet"
 msgstr[1] "Verschieben von %'d Dateien in den Papierkorb wird vorbereitet"
 
-#: ../libcore/marlin-file-operations.c:2665
-#: ../libcore/marlin-file-operations.c:3584
-#: ../libcore/marlin-file-operations.c:3714
-#: ../libcore/marlin-file-operations.c:3759
+#: ../libcore/marlin-file-operations.c:2667
+#: ../libcore/marlin-file-operations.c:3586
+#: ../libcore/marlin-file-operations.c:3716
+#: ../libcore/marlin-file-operations.c:3761
 msgid "Error while copying."
 msgstr "Fehler beim Kopieren."
 
-#: ../libcore/marlin-file-operations.c:2667
-#: ../libcore/marlin-file-operations.c:3712
-#: ../libcore/marlin-file-operations.c:3757
+#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:3714
+#: ../libcore/marlin-file-operations.c:3759
 msgid "Error while moving."
 msgstr "Fehler beim Verschieben."
 
-#: ../libcore/marlin-file-operations.c:2671
+#: ../libcore/marlin-file-operations.c:2673
 msgid "Error while moving files to trash."
 msgstr "Fehler beim Verschieben von Objekten in den Papierkorb."
 
-#: ../libcore/marlin-file-operations.c:2725
+#: ../libcore/marlin-file-operations.c:2727
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1184,7 +1147,7 @@ msgstr ""
 "Auf Dateien im Ordner »%B« kann nicht zugegriffen werden, da Sie nicht die "
 "nötigen Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:2764
+#: ../libcore/marlin-file-operations.c:2766
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1192,7 +1155,7 @@ msgstr ""
 "Auf den Ordner »%B« kann nicht zugegriffen werden, da Sie nicht die nötigen "
 "Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:2840
+#: ../libcore/marlin-file-operations.c:2842
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1200,34 +1163,34 @@ msgstr ""
 "Auf die Datei »%B« kann nicht zugegriffen werden, da Sie nicht die nötigen "
 "Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:2843
+#: ../libcore/marlin-file-operations.c:2845
 msgid "There was an error getting information about \"%B\"."
 msgstr ""
 "Es ist ein Fehler beim Einlesen der Informationen über »%B« aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:2943
-#: ../libcore/marlin-file-operations.c:2985
-#: ../libcore/marlin-file-operations.c:3018
-#: ../libcore/marlin-file-operations.c:3048
+#: ../libcore/marlin-file-operations.c:2945
+#: ../libcore/marlin-file-operations.c:2987
+#: ../libcore/marlin-file-operations.c:3020
+#: ../libcore/marlin-file-operations.c:3050
 msgid "Error while copying to \"%B\"."
 msgstr "Fehler beim Kopieren nach »%B«."
 
-#: ../libcore/marlin-file-operations.c:2947
+#: ../libcore/marlin-file-operations.c:2949
 msgid "You do not have permissions to access the destination folder."
 msgstr ""
 "Sie besitzen nicht die nötigen Zugriffsrechte, um auf den Zielordner "
 "zuzugreifen."
 
-#: ../libcore/marlin-file-operations.c:2949
+#: ../libcore/marlin-file-operations.c:2951
 msgid "There was an error getting information about the destination."
 msgstr ""
 "Es ist ein Fehler beim Einlesen der Informationen über das Ziel aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:2986
+#: ../libcore/marlin-file-operations.c:2988
 msgid "The destination is not a folder."
 msgstr "Das Ziel ist kein Ordner."
 
-#: ../libcore/marlin-file-operations.c:3019
+#: ../libcore/marlin-file-operations.c:3021
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1235,76 +1198,76 @@ msgstr ""
 "Am Ziel ist nicht genügend freier Platz. Entfernen Sie einige Dateien, um "
 "Platz zu schaffen."
 
-#: ../libcore/marlin-file-operations.c:3021
+#: ../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Es ist %S verfügbar, es wird jedoch %S benötigt."
 
-#: ../libcore/marlin-file-operations.c:3049
+#: ../libcore/marlin-file-operations.c:3051
 msgid "The destination is read-only."
 msgstr "Das Ziel ist schreibgeschützt."
 
-#: ../libcore/marlin-file-operations.c:3110
+#: ../libcore/marlin-file-operations.c:3112
 msgid "Moving \"%B\" to \"%B\""
 msgstr "»%B« wird nach »%B« verschoben"
 
-#: ../libcore/marlin-file-operations.c:3111
+#: ../libcore/marlin-file-operations.c:3113
 msgid "Copying \"%B\" to \"%B\""
 msgstr "»%B« wird nach »%B« kopiert"
 
-#: ../libcore/marlin-file-operations.c:3115
+#: ../libcore/marlin-file-operations.c:3117
 msgid "Duplicating \"%B\""
 msgstr "»%B« wird verdoppelt"
 
-#: ../libcore/marlin-file-operations.c:3119
+#: ../libcore/marlin-file-operations.c:3121
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Verschieben von %'d Datei (in »%B«) nach »%B«"
 msgstr[1] "Verschieben von %'d Dateien (in »%B«) nach »%B«"
 
-#: ../libcore/marlin-file-operations.c:3122
+#: ../libcore/marlin-file-operations.c:3124
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopieren von %'d Datei (in »%B«) nach »%B«"
 msgstr[1] "Kopieren von %'d Dateien (in »%B«) nach »%B«"
 
-#: ../libcore/marlin-file-operations.c:3129
+#: ../libcore/marlin-file-operations.c:3131
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplizieren von %'d Datei (in »%B«)"
 msgstr[1] "Duplizieren von %'d Dateien (in »%B«)"
 
-#: ../libcore/marlin-file-operations.c:3138
+#: ../libcore/marlin-file-operations.c:3140
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Verschieben von %'d Datei nach »%B«"
 msgstr[1] "Verschieben von %'d Dateien nach »%B«"
 
-#: ../libcore/marlin-file-operations.c:3142
+#: ../libcore/marlin-file-operations.c:3144
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopieren von %'d Datei nach »%B«"
 msgstr[1] "Kopieren von %'d Dateien nach »%B«"
 
-#: ../libcore/marlin-file-operations.c:3147
+#: ../libcore/marlin-file-operations.c:3149
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Duplizieren von %'d Datei"
 msgstr[1] "Duplizieren von %'d Dateien"
 
-#: ../libcore/marlin-file-operations.c:3198
+#: ../libcore/marlin-file-operations.c:3200
 #, c-format
 msgid "%S of %S"
 msgstr "%S von %S"
 
-#: ../libcore/marlin-file-operations.c:3209
+#: ../libcore/marlin-file-operations.c:3211
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S von %S — noch %T (%S/Sekunde)"
 msgstr[1] "%S von %S — noch %T (%S/Sekunde)"
 
-#: ../libcore/marlin-file-operations.c:3588
+#: ../libcore/marlin-file-operations.c:3590
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1312,11 +1275,11 @@ msgstr ""
 "Der Ordner »%B« konnte nicht kopiert werden, da Sie nicht die nötigen Rechte "
 "besitzen, um den Ordner im Ziel zu erstellen."
 
-#: ../libcore/marlin-file-operations.c:3591
+#: ../libcore/marlin-file-operations.c:3593
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Beim Erstellen des Ordners »%B« ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:3719
+#: ../libcore/marlin-file-operations.c:3721
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1324,7 +1287,7 @@ msgstr ""
 "Dateien im Ordner »%B« können nicht kopiert werden, da Sie nicht die nötigen "
 "Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:3764
+#: ../libcore/marlin-file-operations.c:3766
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1332,187 +1295,285 @@ msgstr ""
 "Der Ordner »%B« kann nicht kopiert werden, da Sie nicht die nötigen "
 "Lesezugriffsrechte besitzen."
 
-#: ../libcore/marlin-file-operations.c:3809
-#: ../libcore/marlin-file-operations.c:4511
+#: ../libcore/marlin-file-operations.c:3811
+#: ../libcore/marlin-file-operations.c:4513
 msgid "Error while moving \"%B\"."
 msgstr "Fehler beim Verschieben von »%B«."
 
-#: ../libcore/marlin-file-operations.c:3810
+#: ../libcore/marlin-file-operations.c:3812
 msgid "Could not remove the source folder."
 msgstr "Der Quellordner konnte nicht entfernt werden."
 
-#: ../libcore/marlin-file-operations.c:3895
-#: ../libcore/marlin-file-operations.c:3936
-#: ../libcore/marlin-file-operations.c:4513
+#: ../libcore/marlin-file-operations.c:3897
+#: ../libcore/marlin-file-operations.c:3938
+#: ../libcore/marlin-file-operations.c:4515
 msgid "Error while copying \"%B\"."
 msgstr "Fehler beim Kopieren von »%B«."
 
-#: ../libcore/marlin-file-operations.c:3896
+#: ../libcore/marlin-file-operations.c:3898
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 "Die Dateien aus dem bereits bestehenden Ordner %F konnten nicht entfernt "
 "werden."
 
-#: ../libcore/marlin-file-operations.c:3937
+#: ../libcore/marlin-file-operations.c:3939
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Die bereits bestehende Datei %F konnte nicht entfernt werden."
 
-#: ../libcore/marlin-file-operations.c:4263
-#: ../libcore/marlin-file-operations.c:4939
+#: ../libcore/marlin-file-operations.c:4265
+#: ../libcore/marlin-file-operations.c:4941
 msgid "You cannot move a folder into itself."
 msgstr "Sie können einen Ordner nicht in sich selbst verschieben."
 
-#: ../libcore/marlin-file-operations.c:4264
-#: ../libcore/marlin-file-operations.c:4940
+#: ../libcore/marlin-file-operations.c:4266
+#: ../libcore/marlin-file-operations.c:4942
 msgid "You cannot copy a folder into itself."
 msgstr "Sie können einen Ordner nicht in sich selbst kopieren."
 
-#: ../libcore/marlin-file-operations.c:4265
-#: ../libcore/marlin-file-operations.c:4941
+#: ../libcore/marlin-file-operations.c:4267
+#: ../libcore/marlin-file-operations.c:4943
 msgid "The destination folder is inside the source folder."
 msgstr "Der Zielordner befindet sich im Quellordner."
 
-#: ../libcore/marlin-file-operations.c:4296
+#: ../libcore/marlin-file-operations.c:4298
 msgid "You cannot move a file over itself."
 msgstr "Sie können eine Datei nicht über sich selbst verschieben."
 
-#: ../libcore/marlin-file-operations.c:4297
+#: ../libcore/marlin-file-operations.c:4299
 msgid "You cannot copy a file over itself."
 msgstr "Sie können eine Datei nicht über sich selbst kopieren."
 
-#: ../libcore/marlin-file-operations.c:4298
+#: ../libcore/marlin-file-operations.c:4300
 msgid "The source file would be overwritten by the destination."
 msgstr "Die Quelldatei würde durch das Ziel überschrieben werden."
 
-#: ../libcore/marlin-file-operations.c:4515
+#: ../libcore/marlin-file-operations.c:4517
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Die bereits in %F bestehende Datei mit dem selben Namen konnte nicht "
 "entfernt werden."
 
-#: ../libcore/marlin-file-operations.c:4585
+#: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
 msgstr "»%B« kann nicht hierher kopiert werden."
 
-#: ../libcore/marlin-file-operations.c:4586
+#: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
 msgstr ""
 "Es ist ein ein Fehler während des Kopierens der Datei nach %B aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:4813
+#: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
 msgstr "Dateien werden kopiert"
 
-#: ../libcore/marlin-file-operations.c:4839
+#: ../libcore/marlin-file-operations.c:4841
 msgid "Preparing to move to \"%B\""
 msgstr "Verschieben nach »%B« wird vorbereitet"
 
-#: ../libcore/marlin-file-operations.c:4851
+#: ../libcore/marlin-file-operations.c:4853
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Verschieben von %'d Datei wird vorbereitet"
 msgstr[1] "Verschieben von %'d Dateien wird vorbereitet"
 
-#: ../libcore/marlin-file-operations.c:5099
+#: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Fehler beim Verschieben von »%F«"
 
-#: ../libcore/marlin-file-operations.c:5100
+#: ../libcore/marlin-file-operations.c:5102
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Beim Verschieben der Datei nach %F ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:5363
+#: ../libcore/marlin-file-operations.c:5365
 msgid "Moving Files"
 msgstr "Dateien werden verschoben"
 
-#: ../libcore/marlin-file-operations.c:5392
+#: ../libcore/marlin-file-operations.c:5394
 msgid "Creating links in \"%B\""
 msgstr "Verknüpfungen werden in »%B« angelegt"
 
-#: ../libcore/marlin-file-operations.c:5403
+#: ../libcore/marlin-file-operations.c:5405
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Verknüpfung mit %'d Datei wird angelegt"
 msgstr[1] "Verknüpfungen mit %'d Dateien werden angelegt"
 
-#: ../libcore/marlin-file-operations.c:5544
+#: ../libcore/marlin-file-operations.c:5546
 msgid "Error while creating link to %B."
 msgstr "Fehler beim Anlegen einer Verknüpfung mit »%B«."
 
-#: ../libcore/marlin-file-operations.c:5546
+#: ../libcore/marlin-file-operations.c:5548
 msgid "Symbolic links only supported for local files"
 msgstr ""
 "Symbolische Verknüpfungen werden ausschließlich auf lokalen Dateisystemen "
 "unterstützt."
 
-#: ../libcore/marlin-file-operations.c:5549
+#: ../libcore/marlin-file-operations.c:5551
 msgid "The target doesn't support symbolic links."
 msgstr "Dieses Ablegeziel unterstützt keine symbolischen Verknüpfungen."
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5554
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 "Beim Erstellen der symbolischen Verknüpfung in »%F« ist ein Fehler "
 "aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:5880
-#: ../libcore/marlin-file-operations.c:5883
+#: ../libcore/marlin-file-operations.c:5882
+#: ../libcore/marlin-file-operations.c:5885
 msgid "Setting permissions"
 msgstr "Zugriffsrechte werden eingestellt"
 
-#: ../libcore/marlin-file-operations.c:5995
+#: ../libcore/marlin-file-operations.c:5997
 msgid "Cannot copy into trash."
 msgstr "Es kann nicht in den Papierkorb kopiert werden"
 
-#: ../libcore/marlin-file-operations.c:5996
+#: ../libcore/marlin-file-operations.c:5998
 msgid "It is not permitted to copy files into the trash"
 msgstr "Es nicht möglich, Dateien in den Papierkorb zu kopieren"
 
-#: ../libcore/marlin-file-operations.c:6137
+#: ../libcore/marlin-file-operations.c:6139
 msgid "untitled folder"
 msgstr "Namenloser Ordner"
 
-#: ../libcore/marlin-file-operations.c:6145
+#: ../libcore/marlin-file-operations.c:6147
 msgid "new file"
 msgstr "neue Datei"
 
-#: ../libcore/marlin-file-operations.c:6316
+#: ../libcore/marlin-file-operations.c:6318
 msgid "Error while creating directory %B."
 msgstr "Fehler beim Erstellen des Ordners »%B«."
 
-#: ../libcore/marlin-file-operations.c:6318
+#: ../libcore/marlin-file-operations.c:6320
 msgid "Error while creating file %B."
 msgstr "Fehler beim Erstellen der Datei »%B«."
 
-#: ../libcore/marlin-file-operations.c:6320
+#: ../libcore/marlin-file-operations.c:6322
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:6636
+#: ../libcore/marlin-file-operations.c:6638
 msgid "Emptying the trash"
 msgstr "Papierkorb wird geleert"
 
-#: ../libcore/marlin-file-operations.c:6648
+#: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying Trash"
 msgstr "Papierkorb wird geleert"
 
-#: ../libcore/marlin-file-utilities.c:118
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Heute um %-I:%M Uhr"
 
-#: ../libcore/marlin-file-utilities.c:121
-msgid "The item cannot be restored from trash"
-msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Gestern um %-I:%M Uhr"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b um %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d. %b %Y um %-H:%M Uhr"
+
+#: ../libcore/gof-file.c:363
+#, c-format
+msgid "link to %s"
+msgstr "Verweis nach %s"
+
+#: ../libcore/gof-file.c:1868
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+
+#: ../libcore/gof-file.c:1906
+msgid "No Exec field specified"
+msgstr "Kein Exec-Feld angegeben"
+
+#: ../libcore/gof-file.c:1926
+msgid "No URL field specified"
+msgstr "Kein Adressfeld angegeben"
+
+#: ../libcore/gof-file.c:1932
+msgid "Invalid desktop file"
+msgstr "Ungültige .desktop-Datei"
+
+#: ../libcore/gof-file.c:2224
+msgid "Slashes are not allowed in filenames"
+msgstr "Schrägstriche sind in Dateinamen nicht erlaubt"
+
+#: ../libcore/gof-file.c:2244
+msgid "Toplevel files cannot be renamed"
+msgstr "Dateien im obersten Ordner können nicht umbenannt werden"
+
+#: ../src/View/Window.vala:181
+msgid "Files isn't your default file manager."
+msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
+
+#: ../src/View/Window.vala:187
+msgid "Set as Default"
+msgstr "Als Vorgabe einstellen"
+
+#: ../src/View/Window.vala:193
+msgid "Ignore"
+msgstr "Ignorieren"
+
+#: ../src/View/ViewContainer.vala:289 ../src/View/Sidebar.vala:437
+msgid "Home"
+msgstr "Persönlicher Ordner"
+
+#: ../src/View/ViewContainer.vala:291 ../src/View/Sidebar.vala:487
+msgid "File System"
+msgstr "Dateisystem"
+
+#: ../src/View/ViewContainer.vala:308
+msgid "(as Administrator)"
+msgstr "(als Administrator)"
+
+#: ../src/View/ViewContainer.vala:316
+msgid "This does not belong to you."
+msgstr "Dieses gehört Ihnen nicht."
+
+#: ../src/View/ViewContainer.vala:317
+msgid "You don't have permission to view this folder."
+msgstr "Sie haben keine Zugriffsrechte, um diesen Ordner anzuzeigen."
+
+#: ../src/View/ViewContainer.vala:320
+msgid "Unable to mount folder."
+msgstr "Ordner konnte nicht eingehängt werden."
+
+#: ../src/View/ViewContainer.vala:321
+msgid "The server for this folder could not be located."
+msgstr "Der Server für diesen Ordner konnte nicht gefunden werden."
+
+#: ../src/View/ViewContainer.vala:333
+msgid "File not found."
+msgstr "Datei nicht gefunden."
+
+#: ../src/View/ViewContainer.vala:334
+msgid "The file selected no longer exists."
+msgstr "Die ausgewählte Datei existiert nicht mehr."
+
+#: ../src/View/LocationBar.vala:351
+msgid "Open in New Tab"
+msgstr "In neuem Tab öffnen"
+
+#: ../src/View/LocationBar.vala:358
+#: ../src/View/AbstractDirectoryView.vala:1810
+msgid "Open with"
+msgstr "Öffnen mit"
+
+#: ../src/View/LocationBar.vala:389
+msgid "Other Application .."
+msgstr "Andere Anwendung …"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1532,19 +1593,6 @@ msgstr "Typ"
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:521
 msgid "Modified"
 msgstr "Verändert"
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "In neuem Tab öffnen"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1810
-msgid "Open with"
-msgstr "Öffnen mit"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Andere Anwendung …"
 
 #: ../src/View/Resources.vala:10
 msgid "A simple and powerful file manager"
@@ -1586,246 +1634,6 @@ msgstr "SMB"
 msgid "Trash"
 msgstr "Papierkorb"
 
-#: ../src/View/Window.vala:181
-msgid "Files isn't your default file manager."
-msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
-
-#: ../src/View/Window.vala:187
-msgid "Set as Default"
-msgstr "Als Vorgabe einstellen"
-
-#: ../src/View/Window.vala:193
-msgid "Ignore"
-msgstr "Ignorieren"
-
-#: ../src/View/Sidebar.vala:420
-msgid "Personal"
-msgstr "Persönlich"
-
-#: ../src/View/Sidebar.vala:425
-msgid "Your common places and bookmarks"
-msgstr "Ihre normalen Orte und Lesezeichen"
-
-#: ../src/View/Sidebar.vala:437 ../src/View/ViewContainer.vala:289
-msgid "Home"
-msgstr "Persönlicher Ordner"
-
-#: ../src/View/Sidebar.vala:444
-msgid "Open your personal folder"
-msgstr "Persönlichen Ordner öffnen"
-
-#: ../src/View/Sidebar.vala:471
-msgid "Open the Trash"
-msgstr "Den Papierkorb öffnen"
-
-#: ../src/View/Sidebar.vala:477
-msgid "Devices"
-msgstr "Geräte"
-
-#: ../src/View/Sidebar.vala:482
-msgid "Your local partitions and devices"
-msgstr "Ihre lokalen Partitionen und Geräte"
-
-#: ../src/View/Sidebar.vala:487 ../src/View/ViewContainer.vala:291
-msgid "File System"
-msgstr "Dateisystem"
-
-#: ../src/View/Sidebar.vala:494
-msgid "Open the contents of the FileSystem"
-msgstr "Den Inhalt des Dateisystems öffnen"
-
-#: ../src/View/Sidebar.vala:524 ../src/View/Sidebar.vala:713
-msgid "Mount and open %s"
-msgstr "%s einhängen und öffnen"
-
-#: ../src/View/Sidebar.vala:606
-msgid "Your network places"
-msgstr "Ihre Orte im Netzwerk"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Entire Network"
-msgstr "Gesamtes Netzwerk"
-
-#: ../src/View/Sidebar.vala:643
-msgid "Browse the contents of the network"
-msgstr "Inhalt des Netzwerks durchsuchen"
-
-#: ../src/View/Sidebar.vala:1162
-msgid "Unable to start %s"
-msgstr "Starten von %s nicht möglich"
-
-#: ../src/View/Sidebar.vala:1232
-msgid "Open"
-msgstr "Öffnen"
-
-#: ../src/View/Sidebar.vala:1240
-msgid "Open in New _Tab"
-msgstr "In neuem _Tab öffnen"
-
-#: ../src/View/Sidebar.vala:1246
-msgid "Open in New _Window"
-msgstr "In neuem _Fenster öffnen"
-
-#: ../src/View/Sidebar.vala:1254
-msgid "Remove"
-msgstr "Entfernen"
-
-#: ../src/View/Sidebar.vala:1262 ../src/View/directory_view_popup.ui:16
-msgid "Rename"
-msgstr "Umbenennen"
-
-#: ../src/View/Sidebar.vala:1271
-msgid "_Mount"
-msgstr "_Einhängen"
-
-#: ../src/View/Sidebar.vala:1277
-msgid "_Unmount"
-msgstr "_Aushängen"
-
-#: ../src/View/Sidebar.vala:1283
-msgid "_Eject"
-msgstr "Aus_werfen"
-
-#: ../src/View/SearchResults.vala:166
-msgid "In This Folder"
-msgstr "In diesem Ordner"
-
-#: ../src/View/SearchResults.vala:168
-msgid "Bookmarks"
-msgstr "Lesezeichen"
-
-#: ../src/View/SearchResults.vala:170
-msgid "Everywhere Else"
-msgstr "Überall sonst"
-
-#: ../src/View/ViewContainer.vala:308
-msgid "(as Administrator)"
-msgstr "(als Administrator)"
-
-#: ../src/View/ViewContainer.vala:316
-msgid "This does not belong to you."
-msgstr "Dieses gehört Ihnen nicht."
-
-#: ../src/View/ViewContainer.vala:317
-msgid "You don't have permission to view this folder."
-msgstr "Sie haben keine Zugriffsrechte, um diesen Ordner anzuzeigen."
-
-#: ../src/View/ViewContainer.vala:320
-msgid "Unable to mount folder."
-msgstr "Ordner konnte nicht eingehängt werden."
-
-#: ../src/View/ViewContainer.vala:321
-msgid "The server for this folder could not be located."
-msgstr "Der Server für diesen Ordner konnte nicht gefunden werden."
-
-#: ../src/View/ViewContainer.vala:333
-msgid "File not found."
-msgstr "Datei nicht gefunden."
-
-#: ../src/View/ViewContainer.vala:334
-msgid "The file selected no longer exists."
-msgstr "Die ausgewählte Datei existiert nicht mehr."
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Als Raster anzeigen"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Als Liste anzeigen"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Als Spalten anzeigen"
-
-#: ../src/View/Chrome/TopMenu.vala:47
-msgid "Previous"
-msgstr "Zurück"
-
-#: ../src/View/Chrome/TopMenu.vala:51
-msgid "Next"
-msgstr "Weiter"
-
-#: ../src/View/AbstractDirectoryView.vala:527
-msgid "Failed to preview"
-msgstr "Vorschau fehlgeschlagen"
-
-#: ../src/View/AbstractDirectoryView.vala:944
-msgid "Select an application"
-msgstr "Anwendung wählen"
-
-#: ../src/View/AbstractDirectoryView.vala:946
-msgid "Set as default"
-msgstr "Als Vorgabe festlegen"
-
-#: ../src/View/AbstractDirectoryView.vala:1410
-msgid "Cannot drop this file"
-msgstr "Diese Datei kann nicht abgelegt werden"
-
-#: ../src/View/AbstractDirectoryView.vala:1410
-msgid "Invalid file name provided"
-msgstr "Ungültiger Name angegeben"
-
-#: ../src/View/AbstractDirectoryView.vala:1789
-msgid "Invalid"
-msgstr "Ungültig"
-
-#: ../src/View/AbstractDirectoryView.vala:1794
-msgid "Run"
-msgstr "Ausführen"
-
-#: ../src/View/AbstractDirectoryView.vala:1799
-msgid "Open in %s"
-msgstr "In %s öffnen"
-
-#: ../src/View/AbstractDirectoryView.vala:1808
-msgid "Open in"
-msgstr "Öffnen in"
-
-#: ../src/View/AbstractDirectoryView.vala:1866
-msgid "Other Application"
-msgstr "Andere Anwendung"
-
-#: ../src/View/AbstractDirectoryView.vala:2113
-msgid "Untitled %s"
-msgstr "%s ohne Namen"
-
-#: ../src/View/AbstractDirectoryView.vala:2395
-msgid "Cannot copy files that are in the trash"
-msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
-
-#: ../src/View/AbstractDirectoryView.vala:2396
-msgid "Cutting the selection instead"
-msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
-
-#: ../src/View/AbstractDirectoryView.vala:2596
-msgid "%s is not a valid file name"
-msgstr "%s ist kein gültiger Dateiname"
-
-#: ../src/View/OverlayBar.vala:145
-msgid "%u folders"
-msgstr "%u Ordner"
-
-#: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
-msgid " and %u other item (%s) selected"
-msgstr " und %u anderes Element (%s) ausgewählt"
-
-#: ../src/View/OverlayBar.vala:148 ../src/View/OverlayBar.vala:156
-msgid " and %u other items (%s) selected"
-msgstr " und %u andere Elemente (%s) ausgewählt"
-
-#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
-msgid " selected"
-msgstr " ausgewählt"
-
-#: ../src/View/OverlayBar.vala:153
-msgid "%u folder"
-msgstr "%u Ordner"
-
-#: ../src/View/OverlayBar.vala:161
-msgid "%u items selected (%s)"
-msgstr "%u ausgewählte Elemente (%s)"
-
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
 msgstr "Dieser Ordner existiert nicht."
@@ -1851,6 +1659,38 @@ msgstr ""
 "Das Anlegen des Ordners ist fehlgeschlagen\n"
 "\n"
 "%s"
+
+#: ../src/View/Slot.vala:36
+msgid "This folder is empty."
+msgstr "Dieser Ordner ist leer."
+
+#: ../src/View/Slot.vala:37
+msgid "Access denied"
+msgstr "Zugriff verweigert"
+
+#: ../src/View/OverlayBar.vala:145
+msgid "%u folders"
+msgstr "%u Ordner"
+
+#: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
+msgid " and %u other item (%s) selected"
+msgstr " und %u anderes Element (%s) ausgewählt"
+
+#: ../src/View/OverlayBar.vala:148 ../src/View/OverlayBar.vala:156
+msgid " and %u other items (%s) selected"
+msgstr " und %u andere Elemente (%s) ausgewählt"
+
+#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
+msgid " selected"
+msgstr " ausgewählt"
+
+#: ../src/View/OverlayBar.vala:153
+msgid "%u folder"
+msgstr "%u Ordner"
+
+#: ../src/View/OverlayBar.vala:161
+msgid "%u items selected (%s)"
+msgstr "%u ausgewählte Elemente (%s)"
 
 #: ../src/View/PropertiesWindow.vala:88 ../src/View/directory_view_popup.ui:81
 msgid "Properties"
@@ -1984,33 +1824,173 @@ msgstr "Jeder"
 msgid "Select an application to open "
 msgstr "Wählen Sie eine Anwendung, die Sie öffnen möchten "
 
-#: ../src/View/Slot.vala:36
-msgid "This folder is empty."
-msgstr "Dieser Ordner ist leer."
+#: ../src/View/Sidebar.vala:420
+msgid "Personal"
+msgstr "Persönlich"
 
-#: ../src/View/Slot.vala:37
-msgid "Access denied"
-msgstr "Zugriff verweigert"
+#: ../src/View/Sidebar.vala:425
+msgid "Your common places and bookmarks"
+msgstr "Ihre normalen Orte und Lesezeichen"
 
-#: ../src/DndHandler.vala:47
-msgid "Failed to execute \"%s\""
-msgstr "»%s« konnte nicht ausgeführt werden"
+#: ../src/View/Sidebar.vala:444
+msgid "Open your personal folder"
+msgstr "Persönlichen Ordner öffnen"
 
-#: ../src/DndHandler.vala:95
-msgid "Move Here"
-msgstr "Hierhin verschieben"
+#: ../src/View/Sidebar.vala:471
+msgid "Open the Trash"
+msgstr "Den Papierkorb öffnen"
 
-#: ../src/DndHandler.vala:96
-msgid "Copy Here"
-msgstr "Hierhin kopieren"
+#: ../src/View/Sidebar.vala:477
+msgid "Devices"
+msgstr "Geräte"
 
-#: ../src/DndHandler.vala:97
-msgid "Link Here"
-msgstr "Verknüpfung hier anlegen"
+#: ../src/View/Sidebar.vala:482
+msgid "Your local partitions and devices"
+msgstr "Ihre lokalen Partitionen und Geräte"
 
-#: ../src/DndHandler.vala:100
-msgid "Cancel"
-msgstr "Abbrechen"
+#: ../src/View/Sidebar.vala:494
+msgid "Open the contents of the FileSystem"
+msgstr "Den Inhalt des Dateisystems öffnen"
+
+#: ../src/View/Sidebar.vala:524 ../src/View/Sidebar.vala:713
+msgid "Mount and open %s"
+msgstr "%s einhängen und öffnen"
+
+#: ../src/View/Sidebar.vala:606
+msgid "Your network places"
+msgstr "Ihre Orte im Netzwerk"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Entire Network"
+msgstr "Gesamtes Netzwerk"
+
+#: ../src/View/Sidebar.vala:643
+msgid "Browse the contents of the network"
+msgstr "Inhalt des Netzwerks durchsuchen"
+
+#: ../src/View/Sidebar.vala:1162
+msgid "Unable to start %s"
+msgstr "Starten von %s nicht möglich"
+
+#: ../src/View/Sidebar.vala:1232
+msgid "Open"
+msgstr "Öffnen"
+
+#: ../src/View/Sidebar.vala:1240
+msgid "Open in New _Tab"
+msgstr "In neuem _Tab öffnen"
+
+#: ../src/View/Sidebar.vala:1246
+msgid "Open in New _Window"
+msgstr "In neuem _Fenster öffnen"
+
+#: ../src/View/Sidebar.vala:1254
+msgid "Remove"
+msgstr "Entfernen"
+
+#: ../src/View/Sidebar.vala:1262 ../src/View/directory_view_popup.ui:16
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: ../src/View/Sidebar.vala:1271
+msgid "_Mount"
+msgstr "_Einhängen"
+
+#: ../src/View/Sidebar.vala:1277
+msgid "_Unmount"
+msgstr "_Aushängen"
+
+#: ../src/View/Sidebar.vala:1283
+msgid "_Eject"
+msgstr "Aus_werfen"
+
+#: ../src/View/Chrome/ViewSwicher.vala:81
+msgid "View as Grid"
+msgstr "Als Raster anzeigen"
+
+#: ../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as List"
+msgstr "Als Liste anzeigen"
+
+#: ../src/View/Chrome/ViewSwicher.vala:91
+msgid "View in Columns"
+msgstr "Als Spalten anzeigen"
+
+#: ../src/View/Chrome/TopMenu.vala:47
+msgid "Previous"
+msgstr "Zurück"
+
+#: ../src/View/Chrome/TopMenu.vala:51
+msgid "Next"
+msgstr "Weiter"
+
+#: ../src/View/SearchResults.vala:166
+msgid "In This Folder"
+msgstr "In diesem Ordner"
+
+#: ../src/View/SearchResults.vala:168
+msgid "Bookmarks"
+msgstr "Lesezeichen"
+
+#: ../src/View/SearchResults.vala:170
+msgid "Everywhere Else"
+msgstr "Überall sonst"
+
+#: ../src/View/AbstractDirectoryView.vala:527
+msgid "Failed to preview"
+msgstr "Vorschau fehlgeschlagen"
+
+#: ../src/View/AbstractDirectoryView.vala:944
+msgid "Select an application"
+msgstr "Anwendung wählen"
+
+#: ../src/View/AbstractDirectoryView.vala:946
+msgid "Set as default"
+msgstr "Als Vorgabe festlegen"
+
+#: ../src/View/AbstractDirectoryView.vala:1410
+msgid "Cannot drop this file"
+msgstr "Diese Datei kann nicht abgelegt werden"
+
+#: ../src/View/AbstractDirectoryView.vala:1410
+msgid "Invalid file name provided"
+msgstr "Ungültiger Name angegeben"
+
+#: ../src/View/AbstractDirectoryView.vala:1789
+msgid "Invalid"
+msgstr "Ungültig"
+
+#: ../src/View/AbstractDirectoryView.vala:1794
+msgid "Run"
+msgstr "Ausführen"
+
+#: ../src/View/AbstractDirectoryView.vala:1799
+msgid "Open in %s"
+msgstr "In %s öffnen"
+
+#: ../src/View/AbstractDirectoryView.vala:1808
+msgid "Open in"
+msgstr "Öffnen in"
+
+#: ../src/View/AbstractDirectoryView.vala:1866
+msgid "Other Application"
+msgstr "Andere Anwendung"
+
+#: ../src/View/AbstractDirectoryView.vala:2113
+msgid "Untitled %s"
+msgstr "%s ohne Namen"
+
+#: ../src/View/AbstractDirectoryView.vala:2395
+msgid "Cannot copy files that are in the trash"
+msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
+
+#: ../src/View/AbstractDirectoryView.vala:2396
+msgid "Cutting the selection instead"
+msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
+
+#: ../src/View/AbstractDirectoryView.vala:2596
+msgid "%s is not a valid file name"
+msgstr "%s ist kein gültiger Dateiname"
 
 #: ../src/Application.vala:139
 msgid "Show the version of the program."
@@ -2049,6 +2029,26 @@ msgstr ""
 #: ../src/Application.vala:180
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kann nicht mit Adressen benutzt werden."
+
+#: ../src/DndHandler.vala:47
+msgid "Failed to execute \"%s\""
+msgstr "»%s« konnte nicht ausgeführt werden"
+
+#: ../src/DndHandler.vala:95
+msgid "Move Here"
+msgstr "Hierhin verschieben"
+
+#: ../src/DndHandler.vala:96
+msgid "Copy Here"
+msgstr "Hierhin kopieren"
+
+#: ../src/DndHandler.vala:97
+msgid "Link Here"
+msgstr "Verknüpfung hier anlegen"
+
+#: ../src/DndHandler.vala:100
+msgid "Cancel"
+msgstr "Abbrechen"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2109,11 +2109,11 @@ msgstr "Alle laufenden Aktionen abbrechen"
 msgid "Reload this folder"
 msgstr "Ordner neu laden"
 
-#: ../libwidgets/LocationBar.vala:315
+#: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
 msgstr "Gehe zu %s"
 
-#: ../libwidgets/LocationBar.vala:454
+#: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
 msgstr "Zu %s gehen"
 
@@ -2125,11 +2125,17 @@ msgstr "Mit Server verbinden…"
 msgid "Connect to a network file server"
 msgstr "Mit einem Dateiserver im Netzwerk verbinden"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:53
-msgid "These items may be deleted by emptying the trash."
-msgstr "Diese Objekte werden mit dem Leeren des Papierkorbes gelöscht."
-
 #: ../plugins/pantheon-files-trash/plugin.vala:54
+msgid "These items may be restored or deleted from the trash."
+msgstr ""
+"Diese Elemente können aus dem Papierkorb wiederhergestellt oder gelöscht "
+"werden."
+
+#: ../plugins/pantheon-files-trash/plugin.vala:55
+msgid "Restore All"
+msgstr "Alle wiederherstellen"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
 msgstr "Papierkorb leeren"
 

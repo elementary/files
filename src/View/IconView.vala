@@ -31,6 +31,10 @@ namespace FM {
                 zoom_level = minimum_zoom;
         }
 
+        ~IconView () {
+            debug ("Icon View destruct");
+        }
+
         private void set_up_view () {
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
