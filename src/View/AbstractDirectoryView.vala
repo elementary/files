@@ -474,7 +474,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<unowned GOF.File> selection = get_selected_files ()) {
-            if (updates_frozen || in_trash || in_recent)
+            if (updates_frozen || in_trash)
                 return;
 
             uint nb_elem = selection.length ();
@@ -704,8 +704,13 @@ namespace FM {
     /** File operations */
 
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (updates_frozen || in_trash || in_recent)
+            if (updates_frozen || in_trash)
                 return;
+
+            if (in_recent) {
+                view_selected_file ();
+                return;
+            }
 
             GLib.File location = file.get_target_location ();
             if (screen == null)
@@ -888,8 +893,10 @@ namespace FM {
             if (selected_files == null)
                 return;
 
-            if (selected_files.next != null)
+            if (selected_files.next != null) {
                 warning ("Cannot open multiple locations (yet)");
+                return;
+            }
 
             var file = selected_files.first ().data;
             var location = GLib.File.new_for_uri (file.get_display_target_uri ());
@@ -2408,8 +2415,7 @@ namespace FM {
                     if (in_trash)
                         return false;
                     else if (in_recent)
-                        if (selected_files.next == null)
-                            view_selected_file ();
+                        view_selected_file ();
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                     else if (no_mods)
