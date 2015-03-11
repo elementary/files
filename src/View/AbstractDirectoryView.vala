@@ -2407,6 +2407,9 @@ namespace FM {
                 case Gdk.Key.KP_Enter:
                     if (in_trash)
                         return false;
+                    else if (in_recent)
+                        if (selected_files.next == null)
+                            view_selected_file ();
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                     else if (no_mods)
