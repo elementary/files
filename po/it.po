@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-07 19:01+0000\n"
+"PO-Revision-Date: 2015-03-13 19:00+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-08 05:23+0000\n"
-"X-Generator: Launchpad (build 17383)\n"
+"X-Launchpad-Export-Date: 2015-03-14 05:24+0000\n"
+"X-Generator: Launchpad (build 17389)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1073,7 +1073,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2414
 msgid "Do _not Empty Trash"
-msgstr "_Non svuotare il cestino"
+msgstr "Non svuotare il cestino"
 
 #: ../libcore/marlin-file-operations.c:2528
 #, c-format
