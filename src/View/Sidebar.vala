@@ -36,7 +36,6 @@ namespace Marlin.Places {
         private const int EJECT_BUTTON_XPAD = 6;
         private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
-        private const int PROP_ZOOM_LEVEL = 1;
 
         private static FM.DndHandler dnd_handler = new FM.DndHandler ();
 
@@ -85,8 +84,6 @@ namespace Marlin.Places {
             {"GTK_TREE_MODEL_ROW", Gtk.TargetFlags.SAME_WIDGET, TargetType.GTK_TREE_MODEL_ROW},
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
         };
-
-        private Marlin.ZoomLevel zoom_level = Marlin.ZoomLevel.SMALLEST;
 
         Gtk.Menu popupmenu;
         Gtk.MenuItem popupmenu_open_in_new_tab_item;
@@ -328,12 +325,9 @@ namespace Marlin.Places {
                                                    Mount? mount,
                                                    uint index,
                                                    string tooltip) {
-            Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
-            eject_spinner_cell_renderer.icon_size = stock_size;
-
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, zoom_level);
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLER);
                 if (icon_info != null)
                     pixbuf = icon_info.get_pixbuf_nodefault ();
             }
