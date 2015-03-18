@@ -327,7 +327,7 @@ namespace Marlin.Places {
                                                    string tooltip) {
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLER);
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLEST);
                 if (icon_info != null)
                     pixbuf = icon_info.get_pixbuf_nodefault ();
             }
