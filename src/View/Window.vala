@@ -267,7 +267,6 @@ namespace Marlin.View {
 
         private void make_bindings () {
             /*Preference bindings */
-            Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.SET);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.DEFAULT);
 
             /* keyboard shortcuts bindings */
