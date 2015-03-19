@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-12-04 13:06+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
+"PO-Revision-Date: 2015-03-18 15:28+0000\n"
+"Last-Translator: Mathieu Lance <mathieu.lance@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:30+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-03-19 05:29+0000\n"
+"X-Generator: Launchpad (build 17403)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -868,7 +868,7 @@ msgstr "Si vous supprimez un élément, il sera définitivement perdu."
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Supprimer définitivement tous les éléments de la corbeille ?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
@@ -1347,11 +1347,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Impossible de copier \"%B\" ici."
 
 #: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Une erreur est survenue lors de la copie du fichier dans %B."
 
 #: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
@@ -1418,7 +1418,7 @@ msgstr "Définition des permissions"
 
 #: ../libcore/marlin-file-operations.c:5997
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Impossible de copier dans la corbeille."
 
 #: ../libcore/marlin-file-operations.c:5998
 msgid "It is not permitted to copy files into the trash"
@@ -1533,7 +1533,7 @@ msgstr "Vous n'avez pas la permission de voir ce dossier."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Impossible de monter le dossier."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
@@ -1545,7 +1545,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Le fichier sélectionné n'existe plus."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
