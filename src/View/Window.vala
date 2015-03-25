@@ -28,7 +28,6 @@ namespace Marlin.View {
             {"new_window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
-            {"refresh2", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
@@ -967,13 +966,12 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.view_mode::ICON", {"<Ctrl>1"});
             application.set_accels_for_action ("win.view_mode::LIST", {"<Ctrl>2"});
             application.set_accels_for_action ("win.view_mode::MILLER", {"<Ctrl>3"});
-            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>equal"});
+            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
             application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
-            application.set_accels_for_action ("win.refresh", {"<Ctrl>R"});
-            application.set_accels_for_action ("win.refresh2", {"F5"});
+            application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
             application.set_accels_for_action ("win.go_to::TRASH", {"<Alt>T"});
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
