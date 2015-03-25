@@ -22,7 +22,7 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
-        public GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+        private GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
 
         enum PlaceType {
             BUILT_IN,

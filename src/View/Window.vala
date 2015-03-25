@@ -76,6 +76,8 @@ namespace Marlin.View {
         public signal void folder_deleted (GLib.File location);
         public signal void tab_reloaded (GLib.File location);
 
+        private GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+
         [Signal (action=true)]
         public virtual signal void go_up () {
             current_tab.go_up ();
@@ -799,6 +801,9 @@ namespace Marlin.View {
                 GLib.File root_location = GLib.File.new_for_uri (unescaped_root_uri);
 
                 if (!valid_location (root_location))
+                    continue;
+
+                if (root_location.get_uri_scheme () == "recent" && !privacy_settings.get_boolean ("remember-recent-files"))
                     continue;
 
                 add_tab (root_location, mode);
