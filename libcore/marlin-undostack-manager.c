@@ -30,7 +30,7 @@
 #include <locale.h>
 #include <gdk/gdk.h>
 #include "eel-glib-extensions.h"
-
+#include "marlin-file-changes-queue.h"
 
 struct _MarlinUndoActionData
 {
@@ -599,9 +599,11 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                     name = g_file_get_uri (f->data);
                     g_free (name);
                     g_file_delete (f->data, NULL, NULL);
+                    marlin_file_changes_queue_file_removed (f->data);
                     g_object_unref (f->data);
                 }
                 g_list_free (uris);
+                marlin_file_changes_consume_changes (TRUE);
 
                 /* Here we must do what's necessary for the callback */
                 undo_redo_done_transfer_callback (NULL, action);
@@ -628,10 +630,11 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                     dest = g_file_new_for_uri (value);
                     g_file_move (item, dest,
                                  G_FILE_COPY_NOFOLLOW_SYMLINKS, NULL, NULL, NULL, NULL);
+                    marlin_file_changes_queue_file_moved (item, dest);
                     g_object_unref (dest);
                 }
-
                 g_list_free (gfiles_in_trash);
+                marlin_file_changes_consume_changes (TRUE);
             }
             g_hash_table_destroy (files_to_restore);
 

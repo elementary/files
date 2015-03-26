@@ -3616,6 +3616,8 @@ retry:
         return CREATE_DEST_DIR_FAILED;
     }
 
+    marlin_file_changes_queue_file_added (*dest);
+
     // Start UNDO-REDO
     marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
     // End UNDO-REDO
