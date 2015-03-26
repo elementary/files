@@ -48,7 +48,7 @@ public class GOF.Directory.Async : Object {
     private Cancellable cancellable;
     private FileMonitor? monitor = null;
 
-    private List<GOF.File>? sorted_dirs = null;
+    private List<unowned GOF.File>? sorted_dirs = null;
 
     public signal void file_loaded (GOF.File file);
     public signal void file_added (GOF.File file);
@@ -528,7 +528,9 @@ public class GOF.Directory.Async : Object {
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
-            sorted_dirs.insert_sorted (gof, GOF.File.compare_by_display_name);
+            if (sorted_dirs.find (gof) == null)
+                sorted_dirs.insert_sorted (gof,
+                    GOF.File.compare_by_display_name);
         }
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
@@ -551,6 +553,13 @@ public class GOF.Directory.Async : Object {
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
+
+            /* Addendum note: GLib.List.remove() does not unreference objects.
+               See: https://bugzilla.gnome.org/show_bug.cgi?id=624249
+                    https://bugzilla.gnome.org/show_bug.cgi?id=532268
+
+               The declaration of sorted_dirs has been changed to contain
+               weak pointers as a temporary solution. */
             sorted_dirs.remove (gof);
         }
 

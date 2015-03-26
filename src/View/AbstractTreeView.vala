@@ -163,7 +163,7 @@ namespace FM {
             selected_files = null;
 
             tree.get_selection ().selected_foreach ((model, path, iter) => {
-                unowned GOF.File? file; /* can be null if click on blank row in list view */
+                GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null)
                     selected_files.prepend (file);
