@@ -466,6 +466,25 @@ public class GOF.Directory.Async : Object {
         file_hash.insert (gof.location, gof);
     }
 
+    public GOF.File file_cache_find_or_insert (GLib.File file,
+        bool update_hash = false)
+    {
+        GOF.File? result = file_hash.lookup (file);
+
+        if (result == null) {
+            result = GOF.File.cache_lookup (file);
+
+            if (result == null) {
+                result = new GOF.File (file, location);
+                file_hash.insert (file, result);
+            }
+            else if (update_hash)
+                file_hash.insert (file, result);
+        }
+
+        return (!) result;
+    }
+
     /* TODO move this to GOF.File */
     private delegate void func_query_info (GOF.File gof);
 
@@ -523,7 +542,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
-        file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
 
@@ -622,7 +640,7 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = GOF.File.get (loc);
+                GOF.File gof = dir.file_cache_find_or_insert (loc);
                 dir.notify_file_changed (gof);
             }
         }
@@ -633,7 +651,7 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = GOF.File.get (loc);
+                GOF.File gof = dir.file_cache_find_or_insert (loc, true);
                 dir.notify_file_added (gof);
             }
         }
@@ -647,7 +665,7 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = GOF.File.get (loc);
+                GOF.File gof = dir.file_cache_find_or_insert (loc);
                 dir.notify_file_removed (gof);
                 found = false;
 
