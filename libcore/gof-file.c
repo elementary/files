@@ -114,6 +114,7 @@ gof_file_new (GFile *location, GFile *dir)
     file->basename = g_file_get_basename (file->location);
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
 
+    //g_debug ("%s: create %p", __func__, file);
     return (file);
 }
 
@@ -946,6 +947,8 @@ static void gof_file_init (GOFFile *file) {
 }
 
 static void gof_file_finalize (GObject* obj) {
+    //g_debug ("%s: delete %p", __func__, obj);
+
     GOFFile *file;
 
     file = GOF_FILE (obj);
@@ -976,6 +979,13 @@ static void gof_file_finalize (GObject* obj) {
     _g_object_unref0 (file->mount);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
+
+#ifndef NDEBUG
+    g_warn_if_fail (file->target_gof == NULL);
+#endif
+
+    _g_free0 (file->owner);
+    _g_free0 (file->group);
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
