@@ -619,21 +619,23 @@ public class GOF.Directory.Async : Object {
 
     public static void notify_files_changed (List<GLib.File> files) {
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
-            if (dir != null)
+            if (dir != null) {
+                GOF.File gof = GOF.File.get (loc);
                 dir.notify_file_changed (gof);
+            }
         }
     }
 
     public static void notify_files_added (List<GLib.File> files) {
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
-            if (dir != null)
+            if (dir != null) {
+                GOF.File gof = GOF.File.get (loc);
                 dir.notify_file_added (gof);
+            }
         }
     }
 
@@ -642,10 +644,10 @@ public class GOF.Directory.Async : Object {
         bool found;
 
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
+                GOF.File gof = GOF.File.get (loc);
                 dir.notify_file_removed (gof);
                 found = false;
 
@@ -723,6 +725,11 @@ public class GOF.Directory.Async : Object {
         dir_cache_lock.unlock ();
 
         return cached_dir;
+    }
+
+    public static Async? cache_lookup_parent (GLib.File file) {
+        GLib.File? parent = file.get_parent ();
+        return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
 
     public bool remove_dir_from_cache () {
