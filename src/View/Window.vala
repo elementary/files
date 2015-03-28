@@ -218,6 +218,13 @@ namespace Marlin.View {
 
             button_press_event.connect (on_button_press_event);
 
+            key_press_event.connect ((event) => {
+                if (top_menu.location_bar.bread.is_focus)
+                    return top_menu.location_bar.bread.on_key_press_event (event);
+
+                return current_tab.key_press_event (event);
+            });
+
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
                     Preferences.settings.set_boolean("maximized",
@@ -257,7 +264,6 @@ namespace Marlin.View {
             tabs.tab_duplicated.connect ((tab) => {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
-
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
@@ -374,13 +380,6 @@ namespace Marlin.View {
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
                 top_menu.location_bar.bread.show_refresh_icon (!is_loading);
-            });
-
-            key_press_event.connect ((event) => {
-                if (top_menu.location_bar.bread.is_focus)
-                    return top_menu.location_bar.bread.on_key_press_event (event);
-
-                return false;
             });
 
             change_tab ((int)tabs.insert_tab (tab, -1));

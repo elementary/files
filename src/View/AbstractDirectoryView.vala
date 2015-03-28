@@ -355,7 +355,6 @@ namespace FM {
         }
 
         public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            updates_frozen = true;
             unselect_all ();
             GLib.List<GOF.File>? file_list = null;
 
@@ -387,7 +386,6 @@ namespace FM {
                 }
                 return try_again;
             });
-            updates_frozen = false;
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
