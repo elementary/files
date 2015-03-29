@@ -98,26 +98,41 @@ namespace Marlin.View {
             });
         }
 
+        private void connect_dir_signals () {
+            directory.done_loading.connect (on_directory_done_loading);
+            directory.need_reload.connect (on_directory_need_reload);
+        }
+
+        private void disconnect_dir_signals () {
+            directory.done_loading.disconnect (on_directory_done_loading);
+            directory.need_reload.disconnect (on_directory_need_reload);
+        }
+
+        private void on_directory_done_loading (GOF.Directory.Async dir) {
+            ctab.directory_done_loading (this);
+
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                autosize_slot ();
+
+            set_view_updates_frozen (false);
+        }
+
+        private void on_directory_need_reload (GOF.Directory.Async dir) {
+            ctab.reload ();
+        }
+
         private void set_up_directory (GLib.File loc) {
+            if (directory != null)
+                disconnect_dir_signals ();
+
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
 
+            connect_dir_signals ();
             has_autosized = false;
-            directory.done_loading.connect (() => {
-                ctab.directory_done_loading (this);
-
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
-                    autosize_slot ();
-
-                set_view_updates_frozen (false);
-            });
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                 directory.track_longest_name = true;
-
-            directory.need_reload.connect (() => {
-                ctab.reload ();
-            });
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
