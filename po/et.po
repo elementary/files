@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-02-10 20:17+0000\n"
+"PO-Revision-Date: 2015-03-19 14:34+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:30+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-03-20 05:07+0000\n"
+"X-Generator: Launchpad (build 17405)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -2093,10 +2093,11 @@ msgstr "Võrgus oleva failiserveriga ühendamine…"
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"Neid faile on võimalik prügikastist taastada või jäädavalt kustutada."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Taasta kõik"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
