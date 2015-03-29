@@ -39,7 +39,7 @@ public class Marlin.MimeActions {
     public static AppInfo? get_default_application_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
-        unowned GLib.List<GOF.File> sorted_files = null;
+        GLib.List<unowned GOF.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
@@ -120,7 +120,7 @@ public class Marlin.MimeActions {
     public static List<AppInfo>? get_applications_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
-        unowned GLib.List<GOF.File> sorted_files = null;
+        GLib.List<unowned GOF.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });

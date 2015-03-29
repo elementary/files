@@ -4004,19 +4004,23 @@ copy_file_progress_callback (goffset current_num_bytes,
 static gboolean
 test_dir_is_parent (GFile *child, GFile *root)
 {
-    GFile *f;
+    GFile *f = child;
+    GFile *prev = NULL;
 
-    f = g_file_dup (child);
-    while (f) {
+    if (g_file_equal (child, root))
+        return TRUE;
+
+    while ((f = g_file_get_parent (f))) {
+        if (prev) g_object_unref (prev);
+
         if (g_file_equal (f, root)) {
             g_object_unref (f);
             return TRUE;
         }
-        f = g_file_get_parent (f);
+        prev = f;
     }
-    if (f) {
-        g_object_unref (f);
-    }
+    if (prev) g_object_unref (prev);
+
     return FALSE;
 }
 

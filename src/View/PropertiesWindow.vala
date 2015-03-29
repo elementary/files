@@ -40,7 +40,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private uint count;
     private GLib.List<GOF.File> files;
-    private GOF.File goffile;
+    private unowned GOF.File goffile;
     private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
@@ -105,7 +105,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
 
         view = _view;
-        files = _files.copy ();
+
+        /* The properties window may outlive the passed-in file object
+           lifetimes. The objects must be referenced as a precaution.
+
+           GLib.List.copy() would not guarantee valid references: because it
+           does a shallow copy (copying the pointer values only) the objects'
+           memory may be freed even while this code is using it. */
+        foreach (unowned GOF.File file in _files)
+            /* prepend(G) is declared "owned G", so ref() will be called once
+               on the unowned foreach value. */
+            files.prepend (file);
+
         count = files.length();
 
         if (count < 1 ) {
