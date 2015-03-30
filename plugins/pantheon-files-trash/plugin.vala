@@ -48,9 +48,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
         /* Ignore directories other than trash and ignore reloading trash */
         if (file.location.get_uri_scheme () == "trash") {
+            Gtk.InfoBar? infobar = null;
             /* Only add infobar once */
             if (!infobars.has_key (slot)) {
-                var infobar = new Gtk.InfoBar ();
+                infobar = new Gtk.InfoBar ();
                 (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (_("These items may be restored or deleted from the trash.")));
                 infobar.add_button (_("Restore All"), 0);
                 infobar.add_button (_("Empty the Trash"), 1);
@@ -67,14 +68,23 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                             break;
                     }
                 });
+
                 infobar.set_message_type (Gtk.MessageType.INFO);
                 infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
                 infobar.set_response_sensitive (1, !TrashMonitor.is_empty ());
                 infobar.show_all ();
-                infobar.set_visible (!TrashMonitor.is_empty ());
+                infobar.set_visible (false);
                 slot.add_extra_widget (infobar);
                 infobars.@set (slot, infobar);
 
+                GLib.Timeout.add (10, () => {
+                    if (!slot.get_realized ())
+                        return true;
+                    else {
+                        infobar.set_visible (!TrashMonitor.is_empty ());
+                        return false;
+                    }
+                });
             }
         } else {
             var infobar = infobars.@get (slot);
