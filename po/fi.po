@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-02 06:44+0000\n"
+"PO-Revision-Date: 2015-03-31 06:59+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-03 05:44+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-04-01 05:25+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -330,8 +330,8 @@ msgstr[1] "_Kumoa %d kohteen kopiointi"
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Kumoa %d kohteen monistaminen"
+msgstr[1] "_Kumoa %d kohteen monistaminen"
 
 #: ../libcore/marlin-undostack-manager.c:1546
 #, c-format
@@ -429,8 +429,8 @@ msgstr[1] "_Tee uudelleen %d kohteen kopiointi"
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Tee uudelleen %d kohteen monistaminen"
+msgstr[1] "_Tee uudelleen %d kohteen monistaminen"
 
 #: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
