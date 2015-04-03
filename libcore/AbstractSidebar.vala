@@ -27,6 +27,7 @@ namespace Marlin {
         BOOKMARKS_CATEGORY,
         PERSONAL_CATEGORY,
         STORAGE_CATEGORY,
+        NETWORK_CATEGORY,
         PLUGIN_ITEM
     }
 
