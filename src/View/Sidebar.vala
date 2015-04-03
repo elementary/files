@@ -1393,6 +1393,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY)
                 expander_renderer.visible = true;
             else
@@ -1445,6 +1446,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY) {
 
                 crt.weight = 900;
