@@ -193,7 +193,27 @@ namespace FM {
 
         private GLib.List<GLib.AppInfo> open_with_apps;
         protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
-        protected GLib.List<unowned GOF.File> selected_files = null ;
+
+        /* TODO: Remove the "unowned" portion of the declaration for
+                 selected_files and on code that repeats its type.
+
+                 Selected files are originally obtained with
+                 gtk_tree_model_get(): this function increases the reference
+                 count of the file object.
+
+                 In order to prevent the obvious memory leak when inserting
+                 these owned objects into the unowned element container, the
+                 objects are unreferenced upon being inserted.
+
+                 This results in a container filled with weak references to
+                 objects with reference counts of 1.
+
+                 A scenario may occur that the cell holding the original file
+                 object is destroyed, and the container is left with pointers
+                 pointing to freed memory. Reference counting the container
+                 elements would prevent this possibility. */
+        protected GLib.List<unowned GOF.File> selected_files = null;
+
         private GLib.List<unowned GOF.File>? templates = null;
 
         private GLib.AppInfo default_app;

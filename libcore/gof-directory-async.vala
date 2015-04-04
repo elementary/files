@@ -48,7 +48,7 @@ public class GOF.Directory.Async : Object {
     private Cancellable cancellable;
     private FileMonitor? monitor = null;
 
-    private List<GOF.File>? sorted_dirs = null;
+    private List<unowned GOF.File>? sorted_dirs = null;
 
     public signal void file_loaded (GOF.File file);
     public signal void file_added (GOF.File file);
@@ -474,6 +474,25 @@ public class GOF.Directory.Async : Object {
         file_hash.insert (gof.location, gof);
     }
 
+    public GOF.File file_cache_find_or_insert (GLib.File file,
+        bool update_hash = false)
+    {
+        GOF.File? result = file_hash.lookup (file);
+
+        if (result == null) {
+            result = GOF.File.cache_lookup (file);
+
+            if (result == null) {
+                result = new GOF.File (file, location);
+                file_hash.insert (file, result);
+            }
+            else if (update_hash)
+                file_hash.insert (file, result);
+        }
+
+        return (!) result;
+    }
+
     /* TODO move this to GOF.File */
     private delegate void func_query_info (GOF.File gof);
 
@@ -517,7 +536,9 @@ public class GOF.Directory.Async : Object {
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
-            sorted_dirs.insert_sorted (gof, GOF.File.compare_by_display_name);
+            if (sorted_dirs.find (gof) == null)
+                sorted_dirs.insert_sorted (gof,
+                    GOF.File.compare_by_display_name);
         }
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
@@ -531,7 +552,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_added (GOF.File gof) {
-        file_hash.insert (gof.location, gof);
         query_info_async.begin (gof, add_and_refresh);
     }
 
@@ -541,6 +561,13 @@ public class GOF.Directory.Async : Object {
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
+
+            /* Addendum note: GLib.List.remove() does not unreference objects.
+               See: https://bugzilla.gnome.org/show_bug.cgi?id=624249
+                    https://bugzilla.gnome.org/show_bug.cgi?id=532268
+
+               The declaration of sorted_dirs has been changed to contain
+               weak pointers as a temporary solution. */
             sorted_dirs.remove (gof);
         }
 
@@ -627,21 +654,23 @@ public class GOF.Directory.Async : Object {
 
     public static void notify_files_changed (List<GLib.File> files) {
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
-            if (dir != null)
+            if (dir != null) {
+                GOF.File gof = dir.file_cache_find_or_insert (loc);
                 dir.notify_file_changed (gof);
+            }
         }
     }
 
     public static void notify_files_added (List<GLib.File> files) {
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
-            if (dir != null)
+            if (dir != null) {
+                GOF.File gof = dir.file_cache_find_or_insert (loc, true);
                 dir.notify_file_added (gof);
+            }
         }
     }
 
@@ -650,10 +679,10 @@ public class GOF.Directory.Async : Object {
         bool found;
 
         foreach (var loc in files) {
-            GOF.File gof = GOF.File.get (loc);
-            Async? dir = cache_lookup (gof.directory);
+            Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
+                GOF.File gof = dir.file_cache_find_or_insert (loc);
                 dir.notify_file_removed (gof);
                 found = false;
 
@@ -731,6 +760,11 @@ public class GOF.Directory.Async : Object {
         dir_cache_lock.unlock ();
 
         return cached_dir;
+    }
+
+    public static Async? cache_lookup_parent (GLib.File file) {
+        GLib.File? parent = file.get_parent ();
+        return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
 
     public bool remove_dir_from_cache () {

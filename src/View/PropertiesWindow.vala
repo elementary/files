@@ -40,13 +40,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private uint count;
     private GLib.List<GOF.File> files;
-    private GOF.File goffile;
+    private unowned GOF.File goffile;
     private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
 
     private Gtk.Widget header_title;
-    private Granite.Widgets.WrapLabel type_label;
+    private Gtk.Label type_label;
     private Gtk.Label size_label;
     private Gtk.Widget type_key_label;
     private string ftype; /* common type */
@@ -105,7 +105,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
 
         view = _view;
-        files = _files.copy ();
+
+        /* The properties window may outlive the passed-in file object
+           lifetimes. The objects must be referenced as a precaution.
+
+           GLib.List.copy() would not guarantee valid references: because it
+           does a shallow copy (copying the pointer values only) the objects'
+           memory may be freed even while this code is using it. */
+        foreach (unowned GOF.File file in _files)
+            /* prepend(G) is declared "owned G", so ref() will be called once
+               on the unowned foreach value. */
+            files.prepend (file);
+
         count = files.length();
 
         if (count < 1 ) {
@@ -345,7 +356,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
-        type_label = new Granite.Widgets.WrapLabel ("");
+        type_label = new Gtk.Label ("");
+        type_label.set_halign (Gtk.Align.START);
         size_label = new Gtk.Label ("");
         type_key_label = create_label_key (_("Type") + (": "));
 
@@ -403,8 +415,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content.pack_start (file_img, false, false);
 
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Granite.Widgets.WrapLabel ();
+            var label = new Gtk.Label ("");
             label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
+            label.set_halign (Gtk.Align.START);
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             var entry = new Gtk.Entry ();
@@ -591,6 +604,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         value_label.set_hexpand (true);
         value_label.set_use_markup (true);
         value_label.set_can_focus (false);
+        value_label.set_halign (Gtk.Align.START);
 
         information.attach (key_label, 0, line, 1, 1);
         if (value_container != null) {
@@ -628,7 +642,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         create_info_line (type_key_label, type_label, information, ref n);
 
         foreach (var pair in item_info) {
-            var value_label = new Granite.Widgets.WrapLabel (pair.value);
+            var value_label = new Gtk.Label (pair.value);
             var key_label = create_label_key (pair.key);
             create_info_line (key_label, value_label, information, ref n);
         }

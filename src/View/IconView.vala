@@ -172,7 +172,7 @@ namespace FM {
             selected_files = null;
 
             tree.selected_foreach ((tree, path) => {
-                unowned GOF.File file;
+                GOF.File? file;
                 file = model.file_for_path (path);
 
                 if (file != null)

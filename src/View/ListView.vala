@@ -89,7 +89,7 @@ namespace FM {
         }
 
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
-            unowned GOF.File? file = model.file_for_path (path);
+            GOF.File? file = model.file_for_path (path);
 
             if (file != null)
                 file.set_expanded (expanded);

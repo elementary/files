@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-06 12:53+0000\n"
+"PO-Revision-Date: 2015-04-01 21:44+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-07 05:36+0000\n"
-"X-Generator: Launchpad (build 17383)\n"
+"X-Launchpad-Export-Date: 2015-04-02 05:44+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -180,12 +180,12 @@ msgstr "Riemërto '%s' si '%s'"
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Rikthe %d elemente nga koshi"
 
 #: ../libcore/marlin-undostack-manager.c:1266
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Rikthe '%s' tek '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -240,7 +240,7 @@ msgstr "Kopjo '%s' në '%s'"
 #: ../libcore/marlin-undostack-manager.c:1380
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Dyfishimi i %d elementeve në '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1385
 #, c-format
@@ -285,7 +285,7 @@ msgstr "Zhvendos '%s' në kosh"
 #: ../libcore/marlin-undostack-manager.c:1456
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Rikthe '%s' nga koshi"
 
 #: ../libcore/marlin-undostack-manager.c:1465
 #, c-format
@@ -522,7 +522,7 @@ msgstr "Nuk mund të përcaktohet pozicioni origjinar i \"%s\" "
 
 #: ../libcore/marlin-file-utilities.c:121
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Elementi nuk mund të kthehet nga koshi"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:370
@@ -643,7 +643,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
-msgstr ""
+msgstr "Rivendos"
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
@@ -879,7 +879,7 @@ msgstr "Boshatis _koshin"
 
 #: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "A dëshironi më vërtetë të fshini përfundimisht \"%B\"?"
+msgstr "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
 
 #: ../libcore/marlin-file-operations.c:1469
 #, c-format
@@ -2074,7 +2074,7 @@ msgstr "Boshatis koshin"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Rikthe nga koshi"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30

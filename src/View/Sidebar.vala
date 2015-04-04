@@ -608,7 +608,7 @@ namespace Marlin.Places {
             store.@set (iter,
                         Column.ICON, null,
                         Column.NAME, _("Network"),
-                        Column.ROW_TYPE, Marlin.PlaceType.STORAGE_CATEGORY,
+                        Column.ROW_TYPE, Marlin.PlaceType.NETWORK_CATEGORY,
                         Column.EJECT, false,
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
@@ -1432,6 +1432,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY)
                 expander_renderer.visible = true;
             else
@@ -1440,7 +1441,7 @@ namespace Marlin.Places {
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
             switch (type) {
-                case Marlin.PlaceType.PERSONAL_CATEGORY:
+                case Marlin.PlaceType.NETWORK_CATEGORY:
                     Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
@@ -1484,6 +1485,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY) {
 
                 crt.weight = 900;
