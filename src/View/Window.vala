@@ -719,6 +719,11 @@ namespace Marlin.View {
                 save_tabs ();
             }
 
+            foreach (var tab in tabs.tabs) {
+                current_tab = null;
+                (tab.page as Marlin.View.ViewContainer).close ();
+            }
+
             this.destroy ();
         }
 
