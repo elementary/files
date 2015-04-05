@@ -240,7 +240,10 @@ namespace Marlin.View {
                 if (tabs.n_tabs == 1)
                     add_tab ();
 
-                /* The close () method of ViewContainer ensures its destruction */
+                /* set current_tab to null to ensure closed ViewContainer is destroyed
+                 * it will be reassigned in tab_changed
+                 */  
+                current_tab = null;
                (tab.page as ViewContainer).close ();
                 return true;
             });
@@ -354,7 +357,6 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-
             current_tab.set_active_state (true);
         }
 

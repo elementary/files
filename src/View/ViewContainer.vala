@@ -80,6 +80,10 @@ namespace Marlin.View {
             change_view_mode (mode, loc);
         }
 
+        ~ViewContainer () {
+            debug ("ViewContainer destruct");
+        }
+
         private void connect_signals () {
             path_changed.connect (user_path_change_request);
             window.folder_deleted.connect (on_folder_deleted);
@@ -99,6 +103,7 @@ namespace Marlin.View {
 
         public void close () {
             disconnect_signals ();
+            view.cancel ();
         }
 
         public Gtk.Widget content {
@@ -350,11 +355,13 @@ namespace Marlin.View {
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {
-           return view.get_current_slot ();
+           return view != null ? view.get_current_slot () : null;
         }
 
         public void set_active_state (bool is_active) {
-            get_current_slot ().set_active_state (is_active);
+            var aslot = get_current_slot ();
+            if (aslot != null)
+                aslot.set_active_state (is_active);
         }
 
         public void focus_location (GLib.File? file,
@@ -420,7 +427,10 @@ namespace Marlin.View {
         public void reload (bool propagate = true) {
             /* Allow time for the signal to propagate and the tab label to redraw */
             Idle.add (() => {
-                var slot = view.get_current_slot ();
+                var slot = get_current_slot ();
+                if (slot == null)
+                    return false;
+
                 slot.reload ();
                 load_slot_directory (slot);
                 /* For remote folders, make sure any other windows showing the same folder are
@@ -445,7 +455,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            if (can_show_folder)
+            if (can_show_folder && view != null)
                 view.grab_focus ();
             else
                 content.grab_focus ();
