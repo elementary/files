@@ -436,7 +436,7 @@ namespace Marlin.View {
                 /* For remote folders, make sure any other windows showing the same folder are
                  * also refreshed. Prevent infinite loop with propagate - when called from application,
                  * propagate will be false.
-                 */   
+                 */
                 if (propagate)
                     ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
 
