@@ -103,6 +103,9 @@ public class GOF.Directory.Async : Object {
         if (!prepare_directory ())
             return;
 
+        if (is_trash)
+            connect_volume_monitor_signals ();
+
         assert (directory_cache != null);
         directory_cache.insert (location, this);
 
@@ -184,16 +187,43 @@ public class GOF.Directory.Async : Object {
         } else
             make_ready ();
 
-        var mounts = VolumeMonitor.get ().get_mounts ();
-        has_mounts = (mounts != null);
-
-        if (has_mounts)
-            Preferences.get_default ().confirm_trash = true;
-        else
-            Preferences.get_default ().confirm_trash = false;
-
         return true;
     }
+
+    private void set_confirm_trash () {
+        bool to_confirm = true;
+        if (is_trash) {
+message ("in trash");
+            to_confirm = false;
+            var mounts = VolumeMonitor.get ().get_mounts ();
+            has_mounts = (mounts != null);
+
+            if (has_mounts) {
+                foreach (GLib.Mount m in mounts) {
+
+                    bool has_trash_dirs = (Marlin.FileOperations.get_trash_dirs_for_mount (m).length () > 0);
+                    bool has_trash_files = Marlin.FileOperations.has_trash_files (m);
+
+                    to_confirm |= has_trash_files;
+                }
+            }
+        }
+        Preferences.get_default ().confirm_trash = to_confirm;
+    }
+
+    private void connect_volume_monitor_signals () {
+        var vm = VolumeMonitor.get();
+        vm.mount_changed.connect (on_mount_changed);
+    }
+    private void disconnect_volume_monitor_signals () {
+        var vm = VolumeMonitor.get();
+        vm.mount_changed.disconnect (on_mount_changed);
+    }
+
+    private void on_mount_changed () {
+        need_reload ();
+    }
+
 
     public bool check_network () {
         var net_mon = GLib.NetworkMonitor.get_default ();
@@ -254,6 +284,9 @@ public class GOF.Directory.Async : Object {
             Source.remove (timeout_thumbsq);
             timeout_thumbsq = 0;
         }
+
+        if (is_trash)
+            disconnect_volume_monitor_signals ();
     }
 
     public void clear_directory_info () {
@@ -288,7 +321,7 @@ public class GOF.Directory.Async : Object {
             return;
 
         if (state != State.LOADED) {
-
+            set_confirm_trash ();
             list_directory.begin (file_loaded_func);
 
             if (file_loaded_func == null) {
