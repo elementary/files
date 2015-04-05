@@ -829,7 +829,12 @@ namespace FM {
             if (new_file == null)
                 return;
 
-            var view = (FM.AbstractDirectoryView)data;
+            var view = data as FM.AbstractDirectoryView;
+            if (view == null) {
+                warning ("View invalid after creating file");
+                return;
+            }
+
             var file_to_rename = GOF.File.@get (new_file);
             bool local = view.slot.directory.is_local;
             if (!local)
@@ -851,7 +856,8 @@ namespace FM {
           * using this callback */ 
         public static void after_trash_or_delete (bool user_cancel, void* data) {
             var view = data as FM.AbstractDirectoryView;
-            assert (view is FM.AbstractDirectoryView);
+            if (view == null)
+                return;
 
             view.can_trash_or_delete = true;
 
@@ -1088,10 +1094,16 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
-        public static void after_pasting_files (GLib.HashTable uris, void* pointer) {
-            assert (pointer != null);
+        public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
+            if (uris == null || pointer == null)
+                return;
 
             var view = pointer as FM.AbstractDirectoryView; 
+            if (view == null) {
+                warning ("view no longer valid after pasting files");
+                return;
+            }
+
             view.pasted_files = uris;
 
             Idle.add (() => {
