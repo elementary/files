@@ -103,7 +103,7 @@ namespace Marlin.View {
 
         public void close () {
             disconnect_signals ();
-            view.cancel ();
+            view.close ();
         }
 
         public Gtk.Widget content {

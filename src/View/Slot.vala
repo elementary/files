@@ -297,15 +297,21 @@ namespace Marlin.View {
         }
 
         public override void cancel () {
-            if (directory != null) {
-                disconnect_dir_signals ();
+            if (directory != null)
                 directory.cancel ();
-            }
 
-            if (dir_view != null) {
-                disconnect_dir_view_signals ();
+            if (dir_view != null)
                 dir_view.cancel ();
-            }
+        }
+
+        public override void close () {
+            cancel ();
+
+            if (directory != null)
+                disconnect_dir_signals ();
+
+            if (dir_view != null)
+                disconnect_dir_view_signals ();
         }
     }
 }

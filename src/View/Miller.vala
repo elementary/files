@@ -408,5 +408,12 @@ namespace Marlin.View {
                     slot.cancel ();
             });
         }
+
+        public override void close () {
+            slot_list.@foreach ((slot) => {
+                if (slot != null)
+                    slot.close ();
+            });
+        }
     }
 }
