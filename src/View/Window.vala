@@ -236,6 +236,11 @@ namespace Marlin.View {
                 add_tab ();
             });
 
+            recent.changed.connect (() => {
+                if (recent.size == 0)
+                    actual_remove_tab (tabs.current);
+            });
+
             tabs.close_tab_requested.connect ((tab) => {
                 tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
 
