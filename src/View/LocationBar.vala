@@ -24,7 +24,7 @@ namespace Marlin.View.Chrome
     public class LocationBar : Gtk.Box {
         public Breadcrumbs bread;
 
-        public GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+        private Gtk.RecentManager recent = new Gtk.RecentManager ();
 
         private string _path;
         public new string path {
@@ -98,7 +98,7 @@ namespace Marlin.View.Chrome
             if (file == null || win.freeze_view_changes)
                 return;
 
-            if (file.get_uri_scheme () == "recent" && !privacy_settings.get_boolean ("remember-recent-files"))
+            if (file.get_uri_scheme () == "recent" && recent.size == 0)
                 return;
 
             win.grab_focus ();

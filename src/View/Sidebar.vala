@@ -22,7 +22,7 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
-        private GLib.Settings privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+        private Gtk.RecentManager recent = new Gtk.RecentManager ();
 
         enum PlaceType {
             BUILT_IN,
@@ -138,6 +138,8 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+
+            recent.changed.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -418,7 +420,7 @@ namespace Marlin.Places {
                         Column.TOOLTIP, _("Your common places and bookmarks"));
 
             /*  Add Recents BUILTIN */
-            if (recent_is_supported () && privacy_settings.get_boolean ("remember-recent-files")) {
+            if (recent_is_supported () && recent.size >= 1) {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
                     Marlin.PROTOCOL_NAME_RECENT,
