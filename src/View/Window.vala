@@ -237,7 +237,7 @@ namespace Marlin.View {
             });
 
             recent.changed.connect (() => {
-                if (recent.size == 0)
+                if ((tabs.current as ViewContainer).location.get_uri () == "recent" && recent.size == 0)
                     actual_remove_tab (tabs.current);
             });
 
