@@ -119,6 +119,8 @@ public class GOF.Directory.Async : Object {
 
     ~Async () {
         debug ("Async destruct");
+        if (is_trash)
+            disconnect_volume_monitor_signals ();
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to
@@ -193,18 +195,11 @@ public class GOF.Directory.Async : Object {
     private void set_confirm_trash () {
         bool to_confirm = true;
         if (is_trash) {
-message ("in trash");
             to_confirm = false;
             var mounts = VolumeMonitor.get ().get_mounts ();
-            has_mounts = (mounts != null);
-
-            if (has_mounts) {
+            if (mounts != null) {
                 foreach (GLib.Mount m in mounts) {
-
-                    bool has_trash_dirs = (Marlin.FileOperations.get_trash_dirs_for_mount (m).length () > 0);
-                    bool has_trash_files = Marlin.FileOperations.has_trash_files (m);
-
-                    to_confirm |= has_trash_files;
+                    to_confirm |= (m.can_eject () && Marlin.FileOperations.has_trash_files (m));
                 }
             }
         }
@@ -284,9 +279,6 @@ message ("in trash");
             Source.remove (timeout_thumbsq);
             timeout_thumbsq = 0;
         }
-
-        if (is_trash)
-            disconnect_volume_monitor_signals ();
     }
 
     public void clear_directory_info () {
