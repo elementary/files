@@ -118,7 +118,7 @@ public class GOF.Directory.Async : Object {
     }
 
     ~Async () {
-        debug ("Async destruct");
+        debug ("Async destruct %s", file.uri);
         if (is_trash)
             disconnect_volume_monitor_signals ();
     }
