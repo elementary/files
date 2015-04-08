@@ -375,7 +375,6 @@ namespace FM {
         }
 
         public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            updates_frozen = true;
             unselect_all ();
             GLib.List<GOF.File>? file_list = null;
 
@@ -407,7 +406,6 @@ namespace FM {
                 }
                 return try_again;
             });
-            updates_frozen = false;
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -2399,6 +2397,8 @@ namespace FM {
                         return false;
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    else if (only_alt_pressed)
+                        common_actions.activate_action ("properties", null);
                     else if (no_mods)
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     else 
