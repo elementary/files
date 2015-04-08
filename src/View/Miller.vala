@@ -117,7 +117,7 @@ namespace Marlin.View {
 
             slot_list.@foreach ((s) => {
                 if (s.slot_number > n) {
-                    slot.cancel ();
+                    s.close ();
                     disconnect_slot_signals (s);
                 }
             });
@@ -406,6 +406,13 @@ namespace Marlin.View {
             slot_list.@foreach ((slot) => {
                 if (slot != null)
                     slot.cancel ();
+            });
+        }
+
+        public override void close () {
+            slot_list.@foreach ((slot) => {
+                if (slot != null)
+                    slot.close ();
             });
         }
     }

@@ -115,7 +115,7 @@ public class GOF.Directory.Async : Object {
     }
 
     ~Async () {
-        debug ("Async destruct");
+        debug ("Async destruct %s", file.uri);
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to

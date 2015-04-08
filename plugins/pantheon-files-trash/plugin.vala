@@ -17,7 +17,7 @@
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private TrashMonitor trash_monitor;
-    private Gee.HashMap<GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<GOF.AbstractSlot, Gtk.InfoBar>();
+    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar>();
 
     public Trash () {
         trash_monitor = TrashMonitor.get ();
@@ -42,9 +42,9 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-        GOF.File file = ((Object[]) user_data)[2] as GOF.File;
+        unowned GOF.File file = ((Object[]) user_data)[2] as GOF.File;
         assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
-        GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
+        unowned GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
 
         /* Ignore directories other than trash and ignore reloading trash */
         if (file.location.get_uri_scheme () == "trash") {

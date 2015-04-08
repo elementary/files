@@ -164,8 +164,8 @@ namespace Marlin.View {
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
 
-            if (is_first_window)      
-                set_accelerators ();          
+            if (is_first_window)
+                set_accelerators ();
         }
 
         private void construct_top_menu () {
@@ -244,11 +244,15 @@ namespace Marlin.View {
             tabs.close_tab_requested.connect ((tab) => {
                 tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
 
+                /* set current_tab to null to ensure closed ViewContainer is destroyed
+                 * it will be reassigned in tab_changed
+                 */
+                current_tab = null;
+               (tab.page as ViewContainer).close ();
+
                 if (tabs.n_tabs == 1)
                     add_tab ();
 
-                /* The close () method of ViewContainer ensures its destruction */
-               (tab.page as ViewContainer).close ();
                 return true;
             });
 
@@ -317,7 +321,7 @@ namespace Marlin.View {
         private void on_go_back (int n = 1) {
             current_tab.go_back (n);
         }
-        
+
 
         private void show_infobar (bool val) {
             if (val)
@@ -360,7 +364,6 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-
             current_tab.set_active_state (true);
         }
 
@@ -385,7 +388,7 @@ namespace Marlin.View {
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                a tab, the overlay status bar is shown empty. */
-            item_hovered (null); 
+            item_hovered (null);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -422,7 +425,7 @@ namespace Marlin.View {
         private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
             update_undo_actions (data);
         }
-   
+
         private void action_edit_path () {
             top_menu.location_bar.bread.grab_focus ();
         }
@@ -715,6 +718,11 @@ namespace Marlin.View {
                 save_tabs ();
             }
 
+            foreach (var tab in tabs.tabs) {
+                current_tab = null;
+                (tab.page as Marlin.View.ViewContainer).close ();
+            }
+
             this.destroy ();
         }
 
@@ -806,7 +814,7 @@ namespace Marlin.View {
 
                 /* Prevent too rapid loading of tabs which can cause crashes
                  * This may not be necessary with the Vala version of the views but does no harm
-                 */ 
+                 */
                 Thread.usleep (100000);
             }
 
