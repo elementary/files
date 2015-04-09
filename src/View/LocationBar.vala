@@ -24,8 +24,6 @@ namespace Marlin.View.Chrome
     public class LocationBar : Gtk.Box {
         public Breadcrumbs bread;
 
-        private Gtk.RecentManager recent = new Gtk.RecentManager ();
-
         private string _path;
         public new string path {
             set {
@@ -96,9 +94,6 @@ namespace Marlin.View.Chrome
 
         private void on_path_changed (File? file) {
             if (file == null || win.freeze_view_changes)
-                return;
-
-            if (file.get_uri_scheme () == "recent" && recent.size == 0)
                 return;
 
             win.grab_focus ();

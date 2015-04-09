@@ -34,6 +34,7 @@ namespace Marlin.View {
         }
 
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
+        public string empty_recents = "<span size='x-large'>" + _("There are no recent files.") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
 
         public signal bool horizontal_scroll_event (double delta_x);
@@ -153,10 +154,7 @@ namespace Marlin.View {
         }
 
         public void autosize_slot () {
-            if (dir_view == null ||
-                !colpane.get_realized () ||
-                has_autosized)
-
+            if (dir_view == null || !colpane.get_realized () || has_autosized)
                 return;
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
