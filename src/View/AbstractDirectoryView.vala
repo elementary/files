@@ -2690,7 +2690,9 @@ namespace FM {
             if (slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (slot.directory.is_empty ())
+                if (slot.directory.is_empty () && slot.directory.location.get_uri_scheme () == "recent")
+                    layout.set_markup (slot.empty_recents, -1);
+                else if (slot.directory.is_empty ())
                     layout.set_markup (slot.empty_message, -1);
                 else if (slot.directory.permission_denied)
                     layout.set_markup (slot.denied_message, -1);

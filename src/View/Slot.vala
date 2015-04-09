@@ -159,7 +159,9 @@ namespace Marlin.View {
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ())
+            if (directory.is_empty () && directory.location.get_uri_scheme () == "recent")
+                layout.set_markup (empty_recents, -1);
+            else if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);
