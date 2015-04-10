@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-22 19:33+0000\n"
+"PO-Revision-Date: 2015-04-09 15:58+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-23 05:25+0000\n"
-"X-Generator: Launchpad (build 17405)\n"
+"X-Launchpad-Export-Date: 2015-04-10 05:08+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -349,7 +349,7 @@ msgstr[1] "_Annulla rinomina di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of an empty file"
-msgstr "_Annulla creazione di un file vuoto"
+msgstr "Annulla creazione di un file vuoto"
 
 #: ../libcore/marlin-undostack-manager.c:1558
 msgid "_Undo creation of a file from template"
@@ -448,7 +448,7 @@ msgstr[1] "_Ripeti rinomina di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of an empty file"
-msgstr "_Ripeti crezione di un file vuoto"
+msgstr "Ripeti crezione di un file vuoto"
 
 #: ../libcore/marlin-undostack-manager.c:1653
 msgid "_Redo creation of a file from template"
@@ -883,7 +883,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
 msgid "Empty _Trash"
-msgstr "S_vuota cestino"
+msgstr "Svuota cestino"
 
 #: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"

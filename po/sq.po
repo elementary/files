@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-04-08 18:20+0000\n"
+"PO-Revision-Date: 2015-04-10 00:07+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-04-09 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-04-10 05:08+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -141,7 +141,7 @@ msgstr "Veprimi u anulua"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "Shfaq më tepër _detaje"
+msgstr "Shfaq më shumë _detaje"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
