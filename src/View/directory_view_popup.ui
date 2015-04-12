@@ -18,6 +18,13 @@
         </item>
     </menu>
 
+    <menu id='forget'>
+        <item>
+            <attribute name='label' translatable='yes'>Forget</attribute>
+            <attribute name='action'>selection.forget</attribute>
+        </item>
+    </menu>
+
     <menu id='rename'>
         <item>
             <attribute name='label' translatable='yes'>Rename</attribute>

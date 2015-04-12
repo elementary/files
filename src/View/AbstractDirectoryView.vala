@@ -65,6 +65,7 @@ namespace FM {
             {"open_with_other_app", on_selection_action_open_with_other_app},
             {"rename", on_selection_action_rename},
             {"view_in_location", on_selection_action_view_in_location},
+            {"forget", on_selection_action_forget},
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
@@ -132,7 +133,6 @@ namespace FM {
 
         unowned GLib.List<unowned GOF.File> drag_file_list = null;
         GOF.File? drop_target_file = null;
-
 
         /* drop site support */
         bool _drop_highlight;
@@ -226,7 +226,6 @@ namespace FM {
         protected bool select_added_files = false;
         private HashTable? pasted_files = null;
 
-
         public bool renaming {get; protected set; default = false;}
 
         private bool updates_frozen = false;
@@ -244,6 +243,8 @@ namespace FM {
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new FM.DndHandler ();
+
+        private Gtk.RecentManager recent = new Gtk.RecentManager ();
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
@@ -922,6 +923,23 @@ namespace FM {
             var location = GLib.File.new_for_uri (file.get_display_target_uri ());
 
             load_location (location);
+        }
+
+        private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
+            forget_selected_file ();
+        }
+
+        private void forget_selected_file () {
+            if (selected_files == null)
+                return;
+
+            try {
+                foreach (var file in selected_files) {
+                    recent.remove_item (file.get_display_target_uri ());
+                }
+            } catch (Error err) {
+                critical (err.message);
+            }
         }
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1755,6 +1773,7 @@ namespace FM {
                 menu.append_section (null, clipboard_menu);
             } else if (in_recent) {
                 menu.append_section (null, builder.get_object ("view-in-location") as GLib.Menu);
+                menu.append_section (null, builder.get_object ("forget") as GLib.Menu);
 
                 clipboard_menu.remove (0); /* Cut */
                 clipboard_menu.remove (1); /* Paste */
