@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-12-28 13:58+0000\n"
-"Last-Translator: Max_ym <b.maxym.naumtchyk@gmail.com>\n"
+"PO-Revision-Date: 2015-04-12 08:35+0000\n"
+"Last-Translator: lem8r <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-04-13 05:35+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -67,7 +67,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Каталог «%s» неможливо відкрити на «%s»."
+msgstr "Теку \"%s\" неможливо відкрити на \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -93,7 +93,7 @@ msgstr "З'_єднатись"
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr "З'єднання з сервером"
+msgstr "З'єднатися з сервером"
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
@@ -105,7 +105,7 @@ msgstr "_Сервер:"
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr "П_орт:"
+msgstr "_Порт:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
@@ -117,7 +117,7 @@ msgstr "_Ресурс:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr "_Каталог:"
+msgstr "_Тека:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
@@ -125,7 +125,7 @@ msgstr "Відомості про користувача"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "_Доменна назва:"
+msgstr "Назва _домену:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
@@ -145,7 +145,7 @@ msgstr "Операцію скасовано"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr "_Докладніше"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
@@ -239,7 +239,7 @@ msgstr "Копіювати %d елементів до '%s'"
 #: ../libcore/marlin-undostack-manager.c:1372
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Скопіювати '%s' до '%s'"
+msgstr "Копіювати «%s» у «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1380
 #, c-format
@@ -643,7 +643,7 @@ msgstr "Початковий файл"
 #: ../libcore/marlin-file-conflict-dialog.c:470
 #: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
-msgstr "Розмір"
+msgstr "Розмір:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -675,7 +675,7 @@ msgstr "_Оберіть нову назву для призначення"
 
 #: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
-msgstr "Відновити"
+msgstr "Скинути"
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
@@ -716,7 +716,7 @@ msgstr "_Повторити"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "В_идалити все"
+msgstr "В_илучити все"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -872,7 +872,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1385
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Ви дійсно хочете остаточно видалити \"%B\" з кошика?"
+msgstr "Ви справді бажаєте остаточно вилучити \"%B\" зі смітника?"
 
 #: ../libcore/marlin-file-operations.c:1388
 #, c-format
@@ -883,11 +883,11 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Ви дійсно хочете остаточно видалити %'d виділений елемент з кошика?"
+"Ви впевнені, що бажеєте вилучити вибраний елемент %'d зі смітника?"
 msgstr[1] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементи з кошика?"
+"Ви впевнені, що бажеєте вилучити вибрані елементи %'d зі смітника?"
 msgstr[2] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементів з кошика?"
+"Ви впевнені, що бажеєте вилучити вибраних елементів %'d зі смітника?"
 
 #: ../libcore/marlin-file-operations.c:1398
 #: ../libcore/marlin-file-operations.c:1478
@@ -896,26 +896,30 @@ msgstr "Якщо ви видалите елемент, він буде оста�
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Безповоротно видалити всі елементи зі смітника?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Всі елементи у всіх теках смітника, включаючи ті, що на змонтованих носіях, "
+"будуть безповоротно вилучені."
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"Безповоротно вилучити всі елементи зі смітника на цій точці монтування?"
 
 #: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Всі елементи в смітнику на цій точці монтування будуть безповоротно вилучені."
 
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
 msgid "Empty _Trash"
-msgstr "О_чистити кошик"
+msgstr "Спорожнити _смітник"
 
 #: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1016,51 +1020,62 @@ msgstr[2] "залишилось перемістити у смітник %'d ф�
 #: ../libcore/marlin-file-operations.c:1947
 #: ../libcore/marlin-file-operations.c:1950
 msgid "Cannot move file to trash or delete it"
-msgstr "Не вдалося перемістити файл в корзину або видалити його"
+msgstr "Не вдалося перемістити файл у смітник або видалити його"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr "Не допускається видаляти системні файли"
+msgstr ""
+"Не допускається видаляти або переміщувати у смітник файли, що знаходяться в "
+"файловій системі тільки для читання."
 
 #: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Не допускається видаляти або переміщувати в смітник файли з тек, в яких у "
+"вас немає прав на запис"
 
 #: ../libcore/marlin-file-operations.c:1951
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Не допускається видаляти або переміщувати в смітник теки, в яких у вас немає "
+"прав на запис"
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
-"Не вдалося перемістити файл в корзину. Спробувати видалити його зараз?"
+"Не вдалося перемістити файл в смітник. Спробувати видалити його зараз?"
 
 #: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Не вдалося перемістити файл у смітник. Подробиці можна переглянути нижче."
 
 #: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Не вдалося перемістити файл у смітник. Спробувати видалити його?"
 
 #: ../libcore/marlin-file-operations.c:1959
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr "Не вдалося перемістити файл у смітник. Також його не можна видалити."
+msgstr ""
+"Не вдалося перемістити файл у смітник. Також можливо його не можливо "
+"видалити."
 
 #: ../libcore/marlin-file-operations.c:1964
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Видалення файлу усуне його назавжди"
 
 #: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
@@ -1212,15 +1227,15 @@ msgstr "Пристрій призначенння доступний лише д
 
 #: ../libcore/marlin-file-operations.c:3112
 msgid "Moving \"%B\" to \"%B\""
-msgstr "«%B» переміщується до «%B»"
+msgstr "Переміщення \"%B\" до \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3113
 msgid "Copying \"%B\" to \"%B\""
-msgstr "«%B» копіюється до «%B»"
+msgstr "Копіювання \"%B\" до \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3117
 msgid "Duplicating \"%B\""
-msgstr "Дублюється «%B»"
+msgstr "Дублювання \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3121
 msgid "Moving %'d file (in \"%B\") to \"%B\""
@@ -1363,11 +1378,11 @@ msgstr "Не вдалось вилучити вже наявний файл з �
 
 #: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Неможливо скопіювати \"%B\" сюди."
 
 #: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "виникла помилка під час копіювання файлу в %B."
 
 #: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
@@ -1435,11 +1450,11 @@ msgstr "Налаштування прав"
 
 #: ../libcore/marlin-file-operations.c:5997
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Неможливо скопіювати у смітник."
 
 #: ../libcore/marlin-file-operations.c:5998
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Копіювати файли в смітник не дозволено."
 
 #: ../libcore/marlin-file-operations.c:6139
 msgid "untitled folder"
@@ -1464,7 +1479,7 @@ msgstr "Помилка при створенні каталогу в %F."
 
 #: ../libcore/marlin-file-operations.c:6638
 msgid "Emptying the trash"
-msgstr "Очищення кошика"
+msgstr "Очищення смітника"
 
 #: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying Trash"
@@ -1510,7 +1525,7 @@ msgstr "Некоректний файл .desktop"
 
 #: ../libcore/gof-file.c:2224
 msgid "Slashes are not allowed in filenames"
-msgstr "У назвах файлів не можна використовувати косу риску"
+msgstr "У назвах файлів не можна використовувати похилу риску"
 
 #: ../libcore/gof-file.c:2244
 msgid "Toplevel files cannot be renamed"
@@ -1522,7 +1537,7 @@ msgstr "Ця програма не являється файловим мене�
 
 #: ../src/View/Window.vala:187
 msgid "Set as Default"
-msgstr ""
+msgstr "Встановити як типовий"
 
 #: ../src/View/Window.vala:193
 msgid "Ignore"
@@ -1534,7 +1549,7 @@ msgstr "Домівка"
 
 #: ../src/View/ViewContainer.vala:291 ../src/View/Sidebar.vala:487
 msgid "File System"
-msgstr "Файлова Система"
+msgstr "Файлова система"
 
 #: ../src/View/ViewContainer.vala:308
 msgid "(as Administrator)"
@@ -1550,23 +1565,23 @@ msgstr "Ви не маєте права переглядати дану теку
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Не можливо змонтувати теку."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Сервер з цією текою неможливо знайти."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Файл не знайдено."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Виділений файл більше не існує."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr "Відкрити у Новій Вкладці"
+msgstr "Відкрити у новій вкладці"
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1810
@@ -1575,7 +1590,7 @@ msgstr "Відкрити за допомогою"
 
 #: ../src/View/LocationBar.vala:389
 msgid "Other Application .."
-msgstr "Інша програма .."
+msgstr "Інший застосунок ..."
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1634,7 +1649,7 @@ msgstr "SMB"
 
 #: ../src/View/Resources.vala:63 ../src/View/Sidebar.vala:464
 msgid "Trash"
-msgstr "Кошик"
+msgstr "Смітник"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -1668,7 +1683,7 @@ msgstr "Ця тека є порожньою."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Доступ заборонено"
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
@@ -1716,23 +1731,23 @@ msgstr "Закрити"
 
 #: ../src/View/PropertiesWindow.vala:256
 msgid "file"
-msgstr ""
+msgstr "файл"
 
 #: ../src/View/PropertiesWindow.vala:258
 msgid "files"
-msgstr ""
+msgstr "файли"
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Фактичний розмір може бути більший, "
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "не можливо прочитати через права або інші помилки."
 
 #: ../src/View/PropertiesWindow.vala:289
 msgid "unknown"
-msgstr ""
+msgstr "невідомо"
 
 #: ../src/View/PropertiesWindow.vala:407
 msgid "%u selected items"
@@ -1772,11 +1787,11 @@ msgstr "Дійсне розташування"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Інформація"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
-msgstr "Інша програма…"
+msgstr "Інший застосунок..."
 
 #: ../src/View/PropertiesWindow.vala:664
 msgid "Open with:"
@@ -1784,7 +1799,7 @@ msgstr "Відкрити за допомогою:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Використання"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -1822,7 +1837,7 @@ msgstr "Будь-хто"
 
 #: ../src/View/PropertiesWindow.vala:1338
 msgid "Select an application to open "
-msgstr "Виберіть програму, аби відкрити "
+msgstr "Виберіть програму, щоб відкрити "
 
 #: ../src/View/Sidebar.vala:420
 msgid "Personal"
@@ -1838,7 +1853,7 @@ msgstr "Відкрити Ваш особистий каталог"
 
 #: ../src/View/Sidebar.vala:471
 msgid "Open the Trash"
-msgstr "Відкрити Корзину"
+msgstr "Відкрити смітник"
 
 #: ../src/View/Sidebar.vala:477
 msgid "Devices"
@@ -1878,11 +1893,11 @@ msgstr "Відкрити"
 
 #: ../src/View/Sidebar.vala:1240
 msgid "Open in New _Tab"
-msgstr "Відкрити у Новій В_кладці"
+msgstr "Відкрити у новій в_кладці"
 
 #: ../src/View/Sidebar.vala:1246
 msgid "Open in New _Window"
-msgstr "Відкрити у Новому _Вікні"
+msgstr "Відкрити у новому _вікні"
 
 #: ../src/View/Sidebar.vala:1254
 msgid "Remove"
@@ -1894,27 +1909,27 @@ msgstr "Перейменувати"
 
 #: ../src/View/Sidebar.vala:1271
 msgid "_Mount"
-msgstr "_Підключити"
+msgstr "При_єднати"
 
 #: ../src/View/Sidebar.vala:1277
 msgid "_Unmount"
-msgstr "_Відключити"
+msgstr "_Від'єднати"
 
 #: ../src/View/Sidebar.vala:1283
 msgid "_Eject"
-msgstr "Ви_йняти"
+msgstr "_Витягнути"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
-msgstr "Перегляд у вигляді таблиці"
+msgstr "У вигляді сітки"
 
 #: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
-msgstr "Перегляд у вигляді списку"
+msgstr "У вигляді списку"
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr "Перегляд у вигляді колонок"
+msgstr "У вигляді колонок"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
@@ -1926,11 +1941,11 @@ msgstr "Наступний"
 
 #: ../src/View/SearchResults.vala:166
 msgid "In This Folder"
-msgstr ""
+msgstr "В цій теці"
 
 #: ../src/View/SearchResults.vala:168
 msgid "Bookmarks"
-msgstr ""
+msgstr "Закладки"
 
 #: ../src/View/SearchResults.vala:170
 msgid "Everywhere Else"
@@ -1938,35 +1953,35 @@ msgstr "В інших місцях"
 
 #: ../src/View/AbstractDirectoryView.vala:527
 msgid "Failed to preview"
-msgstr ""
+msgstr "Помилка попереднього перегляду"
 
 #: ../src/View/AbstractDirectoryView.vala:944
 msgid "Select an application"
-msgstr ""
+msgstr "Оберіть застосунок"
 
 #: ../src/View/AbstractDirectoryView.vala:946
 msgid "Set as default"
-msgstr "Установити за умовчанням"
+msgstr "Зробити типовим"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Неможливо перемістити цей файл"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Некоректне ім'я файлу"
 
 #: ../src/View/AbstractDirectoryView.vala:1789
 msgid "Invalid"
-msgstr ""
+msgstr "Некоректний"
 
 #: ../src/View/AbstractDirectoryView.vala:1794
 msgid "Run"
-msgstr ""
+msgstr "Виконати"
 
 #: ../src/View/AbstractDirectoryView.vala:1799
 msgid "Open in %s"
-msgstr ""
+msgstr "Відкрити в %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1808
 msgid "Open in"
@@ -1974,23 +1989,23 @@ msgstr "Відкрити у"
 
 #: ../src/View/AbstractDirectoryView.vala:1866
 msgid "Other Application"
-msgstr ""
+msgstr "Інший застосунок"
 
 #: ../src/View/AbstractDirectoryView.vala:2113
 msgid "Untitled %s"
-msgstr ""
+msgstr "Неназваний %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Неможливо скопіювати файли, що знаходяться у смітнику"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Натомість вирізаю виділення"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s не є коректним ім'ям файлу"
 
 #: ../src/Application.vala:139
 msgid "Show the version of the program."
@@ -2002,15 +2017,15 @@ msgstr "Відкрити адресу(и) в новій вкладці"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:65
 msgid "New Window"
-msgstr "Новому Вікні"
+msgstr "Нове вікно"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
-msgstr "Вийти із Files."
+msgstr "Вийти з Файлів."
 
 #: ../src/Application.vala:147
 msgid "Enable debug logging"
-msgstr "Включити журнал налагодження"
+msgstr "Включити журнал зневадження"
 
 #: ../src/Application.vala:150
 msgid "[URI...]"
@@ -2032,23 +2047,23 @@ msgstr "--quit неможливо використати з URI."
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Не вдається виконати \"%s\""
 
 #: ../src/DndHandler.vala:95
 msgid "Move Here"
-msgstr ""
+msgstr "Перемістити сюди"
 
 #: ../src/DndHandler.vala:96
 msgid "Copy Here"
-msgstr ""
+msgstr "Скопіювати сюди"
 
 #: ../src/DndHandler.vala:97
 msgid "Link Here"
-msgstr ""
+msgstr "Посилання сюди"
 
 #: ../src/DndHandler.vala:100
 msgid "Cancel"
-msgstr "Відміна"
+msgstr "Скасувати"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2060,19 +2075,19 @@ msgstr "Файловий менеджер"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Новій В_кладці"
+msgstr "Нова _вкладка"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Новому _Вікні"
+msgstr "_Нове вікно"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Відкрити нове вікно як _Адміністратор"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "Про _Файли"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
@@ -2108,7 +2123,7 @@ msgstr "Скасувати всі активні дії"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Оновити теку"
 
 #: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
@@ -2116,97 +2131,97 @@ msgstr "Перейти до %s"
 
 #: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Перейти до %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "З'єднатися з сервером..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Під’єднатися до мережевого серверу файлів"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Ці елементи можуть бути відновлені або вилучені зі смітника."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Відновити все"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Очистити смітник"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Відновити зі смітника"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30
 msgid "Delete permanently"
-msgstr ""
+msgstr "Видалити безповоротно"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Перемістити у смітник"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
-msgstr ""
+msgstr "Новий"
 
 #: ../src/View/directory_view_popup.ui:39
 msgid "Folder"
-msgstr ""
+msgstr "Тека"
 
 #: ../src/View/directory_view_popup.ui:44
 msgid "Empty File"
-msgstr ""
+msgstr "Порожній файл"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Показати приховані файли"
 
 #: ../src/View/directory_view_popup.ui:60
 msgid "New Tab"
-msgstr "Новій Вкладці"
+msgstr "Нова вкладка"
 
 #: ../src/View/directory_view_popup.ui:73
 msgid "Terminal"
-msgstr ""
+msgstr "Термінал"
 
 #: ../src/View/directory_view_popup.ui:88
 msgid "Bookmark"
-msgstr ""
+msgstr "Закладка"
 
 #: ../src/View/directory_view_popup.ui:95
 msgid "Paste"
-msgstr ""
+msgstr "Вставити"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Cut"
-msgstr ""
+msgstr "Вирізати"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Copy"
-msgstr ""
+msgstr "Копіювати"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Вставити до теки"
 
 #: ../src/View/directory_view_popup.ui:117
 msgid "Sort by"
-msgstr ""
+msgstr "Сортувати за"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Name"
-msgstr ""
+msgstr "Ім’я"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
-msgstr ""
+msgstr "В зворотному порядку"
