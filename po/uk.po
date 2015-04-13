@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-04-11 18:42+0000\n"
-"Last-Translator: Nazar <n.suhovich@gmail.com>\n"
+"PO-Revision-Date: 2015-04-12 08:35+0000\n"
+"Last-Translator: lem8r <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-04-12 05:49+0000\n"
+"X-Launchpad-Export-Date: 2015-04-13 05:35+0000\n"
 "X-Generator: Launchpad (build 17423)\n"
 "Language: uk\n"
 
@@ -67,7 +67,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Каталог «%s» неможливо відкрити на «%s»."
+msgstr "Теку \"%s\" неможливо відкрити на \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -93,7 +93,7 @@ msgstr "З'_єднатись"
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr "З'єднання з сервером"
+msgstr "З'єднатися з сервером"
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
@@ -105,7 +105,7 @@ msgstr "_Сервер:"
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr "П_орт:"
+msgstr "_Порт:"
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
@@ -117,7 +117,7 @@ msgstr "_Ресурс:"
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr "_Каталог:"
+msgstr "_Тека:"
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
@@ -125,7 +125,7 @@ msgstr "Відомості про користувача"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "_Доменна назва:"
+msgstr "Назва _домену:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
@@ -145,7 +145,7 @@ msgstr "Операцію скасовано"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr "_Докладніше"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
@@ -239,7 +239,7 @@ msgstr "Копіювати %d елементів до '%s'"
 #: ../libcore/marlin-undostack-manager.c:1372
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Скопіювати '%s' до '%s'"
+msgstr "Копіювати «%s» у «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1380
 #, c-format
@@ -643,7 +643,7 @@ msgstr "Початковий файл"
 #: ../libcore/marlin-file-conflict-dialog.c:470
 #: ../libcore/marlin-file-conflict-dialog.c:491
 msgid "Size:"
-msgstr "Розмір"
+msgstr "Розмір:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -675,7 +675,7 @@ msgstr "_Оберіть нову назву для призначення"
 
 #: ../libcore/marlin-file-conflict-dialog.c:723
 msgid "Reset"
-msgstr "Відновити"
+msgstr "Скинути"
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 msgid "Apply this action to all files"
@@ -716,7 +716,7 @@ msgstr "_Повторити"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "В_идалити все"
+msgstr "В_илучити все"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -1227,15 +1227,15 @@ msgstr "Пристрій призначенння доступний лише д
 
 #: ../libcore/marlin-file-operations.c:3112
 msgid "Moving \"%B\" to \"%B\""
-msgstr "«%B» переміщується до «%B»"
+msgstr "Переміщення \"%B\" до \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3113
 msgid "Copying \"%B\" to \"%B\""
-msgstr "«%B» копіюється до «%B»"
+msgstr "Копіювання \"%B\" до \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3117
 msgid "Duplicating \"%B\""
-msgstr "Дублюється «%B»"
+msgstr "Дублювання \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3121
 msgid "Moving %'d file (in \"%B\") to \"%B\""
@@ -1525,7 +1525,7 @@ msgstr "Некоректний файл .desktop"
 
 #: ../libcore/gof-file.c:2224
 msgid "Slashes are not allowed in filenames"
-msgstr "У назвах файлів не можна використовувати косу риску"
+msgstr "У назвах файлів не можна використовувати похилу риску"
 
 #: ../libcore/gof-file.c:2244
 msgid "Toplevel files cannot be renamed"
@@ -1549,7 +1549,7 @@ msgstr "Домівка"
 
 #: ../src/View/ViewContainer.vala:291 ../src/View/Sidebar.vala:487
 msgid "File System"
-msgstr "Файлова Система"
+msgstr "Файлова система"
 
 #: ../src/View/ViewContainer.vala:308
 msgid "(as Administrator)"
@@ -1581,7 +1581,7 @@ msgstr "Виділений файл більше не існує."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr "Відкрити у Новій Вкладці"
+msgstr "Відкрити у новій вкладці"
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1810
@@ -1590,7 +1590,7 @@ msgstr "Відкрити за допомогою"
 
 #: ../src/View/LocationBar.vala:389
 msgid "Other Application .."
-msgstr "Інша програма .."
+msgstr "Інший застосунок ..."
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1791,7 +1791,7 @@ msgstr "Інформація"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
-msgstr "Інша програма…"
+msgstr "Інший застосунок..."
 
 #: ../src/View/PropertiesWindow.vala:664
 msgid "Open with:"
@@ -1837,7 +1837,7 @@ msgstr "Будь-хто"
 
 #: ../src/View/PropertiesWindow.vala:1338
 msgid "Select an application to open "
-msgstr "Виберіть програму, аби відкрити "
+msgstr "Виберіть програму, щоб відкрити "
 
 #: ../src/View/Sidebar.vala:420
 msgid "Personal"
@@ -1893,11 +1893,11 @@ msgstr "Відкрити"
 
 #: ../src/View/Sidebar.vala:1240
 msgid "Open in New _Tab"
-msgstr "Відкрити у Новій В_кладці"
+msgstr "Відкрити у новій в_кладці"
 
 #: ../src/View/Sidebar.vala:1246
 msgid "Open in New _Window"
-msgstr "Відкрити у Новому _Вікні"
+msgstr "Відкрити у новому _вікні"
 
 #: ../src/View/Sidebar.vala:1254
 msgid "Remove"
@@ -1909,27 +1909,27 @@ msgstr "Перейменувати"
 
 #: ../src/View/Sidebar.vala:1271
 msgid "_Mount"
-msgstr "_Підключити"
+msgstr "При_єднати"
 
 #: ../src/View/Sidebar.vala:1277
 msgid "_Unmount"
-msgstr "_Відключити"
+msgstr "_Від'єднати"
 
 #: ../src/View/Sidebar.vala:1283
 msgid "_Eject"
-msgstr "Ви_йняти"
+msgstr "_Витягнути"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
-msgstr "Перегляд у вигляді таблиці"
+msgstr "У вигляді сітки"
 
 #: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
-msgstr "Перегляд у вигляді списку"
+msgstr "У вигляді списку"
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr "Перегляд у вигляді колонок"
+msgstr "У вигляді колонок"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
@@ -1961,7 +1961,7 @@ msgstr "Оберіть застосунок"
 
 #: ../src/View/AbstractDirectoryView.vala:946
 msgid "Set as default"
-msgstr "Установити за умовчанням"
+msgstr "Зробити типовим"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Cannot drop this file"
@@ -2017,15 +2017,15 @@ msgstr "Відкрити адресу(и) в новій вкладці"
 
 #: ../src/Application.vala:143 ../src/View/directory_view_popup.ui:65
 msgid "New Window"
-msgstr "Новому Вікні"
+msgstr "Нове вікно"
 
 #: ../src/Application.vala:145
 msgid "Quit Files."
-msgstr "Вийти із Files."
+msgstr "Вийти з Файлів."
 
 #: ../src/Application.vala:147
 msgid "Enable debug logging"
-msgstr "Включити журнал налагодження"
+msgstr "Включити журнал зневадження"
 
 #: ../src/Application.vala:150
 msgid "[URI...]"
@@ -2063,7 +2063,7 @@ msgstr "Посилання сюди"
 
 #: ../src/DndHandler.vala:100
 msgid "Cancel"
-msgstr "Відміна"
+msgstr "Скасувати"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2075,11 +2075,11 @@ msgstr "Файловий менеджер"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Новій В_кладці"
+msgstr "Нова _вкладка"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Новому _Вікні"
+msgstr "_Нове вікно"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -2135,7 +2135,7 @@ msgstr "Перейти до %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "З'єднатися зі сервером"
+msgstr "З'єднатися з сервером..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2184,7 +2184,7 @@ msgstr "Показати приховані файли"
 
 #: ../src/View/directory_view_popup.ui:60
 msgid "New Tab"
-msgstr "Новій Вкладці"
+msgstr "Нова вкладка"
 
 #: ../src/View/directory_view_popup.ui:73
 msgid "Terminal"
