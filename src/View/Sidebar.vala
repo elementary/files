@@ -419,22 +419,6 @@ namespace Marlin.Places {
                         Column.BOOKMARK, false,
                         Column.TOOLTIP, _("Your common places and bookmarks"));
 
-            /*  Add Recents BUILTIN */
-            if (recent_is_supported () && recent.size >= 1) {
-                add_place (Marlin.PlaceType.BUILT_IN,
-                    iter,
-                    Marlin.PROTOCOL_NAME_RECENT,
-                    new ThemedIcon (Marlin.ICON_RECENT),
-                    Marlin.RECENT_URI,
-                    null,
-                    null,
-                    null,
-                    0,
-                    _("View the list of recently opened files"));
-
-                n_builtins_before++;
-            }
-
             /* Add Home BUILTIN */
             try {
                 mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
@@ -455,6 +439,22 @@ namespace Marlin.Places {
                        _("Open your personal folder"));
 
             n_builtins_before++;
+
+            /*  Add Recents BUILTIN */
+            if (recent_is_supported () && recent.size >= 1) {
+                add_place (Marlin.PlaceType.BUILT_IN,
+                    iter,
+                    Marlin.PROTOCOL_NAME_RECENT,
+                    new ThemedIcon (Marlin.ICON_RECENT),
+                    Marlin.RECENT_URI,
+                    null,
+                    null,
+                    null,
+                    0,
+                    _("View the list of recently opened files"));
+
+                n_builtins_before++;
+            }
 
             /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();
