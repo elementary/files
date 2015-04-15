@@ -926,7 +926,7 @@ namespace FM {
             var file = selected_files.first ().data;
             var location = GLib.File.new_for_uri (file.get_display_target_uri ());
 
-            load_location (location);
+            window.add_tab (location, Marlin.ViewMode.CURRENT);
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
