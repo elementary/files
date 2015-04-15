@@ -22,8 +22,6 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
-        private Gtk.RecentManager recent = new Gtk.RecentManager ();
-
         enum PlaceType {
             BUILT_IN,
             MOUNTED_VOLUME,
@@ -138,8 +136,6 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
-
-            recent.changed.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -441,7 +437,7 @@ namespace Marlin.Places {
             n_builtins_before++;
 
             /*  Add Recents BUILTIN */
-            if (recent_is_supported () && recent.size >= 1) {
+            if (recent_is_supported ()) {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
                     Marlin.PROTOCOL_NAME_RECENT,
