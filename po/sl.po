@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-12-25 10:53+0000\n"
+"PO-Revision-Date: 2015-04-15 15:17+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-04-16 05:25+0000\n"
+"X-Generator: Launchpad (build 17428)\n"
 "Language: sl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1854,11 +1854,11 @@ msgstr "Branje"
 
 #: ../src/View/PropertiesWindow.vala:840
 msgid "Write"
-msgstr "Zapiši"
+msgstr "Pisanje"
 
 #: ../src/View/PropertiesWindow.vala:845
 msgid "Execute"
-msgstr "Izvedi"
+msgstr "Izvajanje"
 
 #: ../src/View/PropertiesWindow.vala:1058
 #: ../src/View/PropertiesWindow.vala:1071
