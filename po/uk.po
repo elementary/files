@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-04-12 08:35+0000\n"
+"PO-Revision-Date: 2015-04-16 16:42+0000\n"
 "Last-Translator: lem8r <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-04-13 05:35+0000\n"
-"X-Generator: Launchpad (build 17423)\n"
+"X-Launchpad-Export-Date: 2015-04-17 05:28+0000\n"
+"X-Generator: Launchpad (build 17430)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2168,7 +2168,7 @@ msgstr "Перемістити у смітник"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
-msgstr "Новий"
+msgstr "Створити"
 
 #: ../src/View/directory_view_popup.ui:39
 msgid "Folder"
