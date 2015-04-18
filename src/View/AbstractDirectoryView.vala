@@ -3039,6 +3039,7 @@ namespace FM {
             select_all ();
 
             foreach (Gtk.TreeRowReference r in selected_row_refs) {
+                var p = r.get_path ();
                 if (p != null)
                     unselect_path (p);
             }

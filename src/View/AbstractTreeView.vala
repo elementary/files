@@ -196,10 +196,17 @@ namespace FM {
             if (c != null && c == name_column) {
                 int? x_offset = null, width = null;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
-                int expander_width = (tree.show_expanders ? 10 : 0) * (depth +1) + ICON_XPAD;
+
+                int expander_width = ICON_XPAD;
+                if (tree.show_expanders) {
+                    var expander_val = GLib.Value (typeof (int));
+                    tree.style_get_property ("expander-size", ref expander_val);
+                    int expander_size = expander_val.get_int () + tree.get_level_indentation ();
+                    expander_width += expander_size * (depth +1);
+                }
                 int orig_x = expander_width + x_offset;
 
-                if (cx > expander_width ) {
+                if (cx > orig_x ) {
                     bool on_helper = false;
                     /* We pass cy as orig_y as we are always within the y dimension of the icon
                      * (otherwise we would be on a different row)
