@@ -2449,6 +2449,12 @@ namespace FM {
                         new_empty_folder ();
 
                    return true;
+                   
+                case Gdk.Key.A:
+                    if (shift_pressed && only_control_pressed)
+                        invert_selection ();
+
+                   return true;
 
                 default:
                     break;
@@ -3022,6 +3028,20 @@ namespace FM {
             }
 
             return on_icon;
+        }
+
+        protected void invert_selection () {
+            GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
+
+            foreach (Gtk.TreePath p in get_selected_paths ())
+                selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
+
+            select_all ();
+
+            foreach (Gtk.TreeRowReference r in selected_row_refs) {
+                if (p != null)
+                    unselect_path (p);
+            }
         }
 
         public virtual void sync_selection () {}
