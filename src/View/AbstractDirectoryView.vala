@@ -338,8 +338,8 @@ namespace FM {
 
             model.row_deleted.connect (on_row_deleted);
             model.sort_column_changed.connect (on_sort_column_changed);
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
 
+            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
         }
 
         private void set_up__menu_actions () {
@@ -1239,7 +1239,10 @@ namespace FM {
             in_network_root = slot.directory.file.is_root_network_folder ();
             thaw_tree ();
 
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            if (in_recent)
+                model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+            else
+                model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
              * are sometimes not properly aligned when first drawn, only after redrawing the view. */ 
