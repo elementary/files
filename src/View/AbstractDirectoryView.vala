@@ -244,7 +244,7 @@ namespace FM {
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new FM.DndHandler ();
 
-        private Gtk.RecentManager recent = new Gtk.RecentManager ();
+        protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
 
@@ -260,6 +260,8 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
+
+            recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
