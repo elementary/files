@@ -344,6 +344,11 @@ invalidate_size (gint *width, gint *height)
         *height = -1;
 }
 
+guint
+marlin_icon_renderer_get_helper_size (MarlinIconRenderer *renderer) {
+    return renderer->priv->helper_size;
+}
+
 static void
 marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
                                GtkWidget          *widget,
