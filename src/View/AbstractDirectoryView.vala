@@ -774,9 +774,15 @@ namespace FM {
                                             bool delete_immediately) {
 
             GLib.List<GLib.File> locations = null;
-            file_list.@foreach ((file) => {
-                locations.prepend (file.location);
-            });
+            if (in_recent){
+                file_list.@foreach ((file) => {
+                    locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                });
+            } else {
+                file_list.@foreach ((file) => {
+                    locations.prepend (file.location);
+                });
+            }
 
             if (locations != null) {
                 locations.reverse ();
@@ -791,6 +797,12 @@ namespace FM {
                                                            window as Gtk.Window,
                                                            after_trash_or_delete,
                                                            this);
+            }
+
+            /* If in recent "folder" we need to refresh the view. */
+            if (in_recent) {
+                slot.directory.clear_directory_info ();
+                slot.directory.need_reload ();
             }
         }
 
@@ -1794,6 +1806,8 @@ namespace FM {
                 clipboard_menu.remove (1); /* Paste */
 
                 menu.append_section (null, clipboard_menu);
+
+                menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
                 menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
             } else {
                 var open_menu = build_menu_open (ref builder);
@@ -2436,9 +2450,6 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (in_recent)
-                        return true;
-
                     if (no_mods) {
                         /* If already in trash, permanently delete the file */
                         trash_or_delete_selected_files (in_trash);
