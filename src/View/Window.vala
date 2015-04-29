@@ -924,7 +924,7 @@ namespace Marlin.View {
 
         public void update_labels (string new_path, string tab_name) {
             assert (new_path != null && new_path != "");
-            set_title (title);
+            set_title (tab_name);
             top_menu.update_location_bar (new_path);
         }
 
