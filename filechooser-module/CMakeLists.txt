@@ -3,7 +3,7 @@ find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED glib-2.0 gthread-2.0 gtk+-3.0>=3.10 granite gee-0.8)
 add_definitions (${DEPS_CFLAGS})
 link_directories (${DEPS_LIBRARY_DIRS})
-set (MODULE_NAME "pantheon-files-module")
+set (MODULE_NAME "pantheon-filechooser-module")
 set (MOULDES_LIBDIR "/usr/lib/x86_64-linux-gnu")
 
 vala_precompile (VALA_C ${MODULE_NAME}

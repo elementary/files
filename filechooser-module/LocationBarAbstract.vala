@@ -114,8 +114,15 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         button_context.add_class ("pathbar");
 
         Gtk.Border border = button_context.get_padding (Gtk.StateFlags.NORMAL);
-        Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        //Granite.Widgets.Utils.set_theming (this, , null,
+               //                            );
+
+        var css = new Gtk.CssProvider ();
+        css.load_from_data ("* {
+.noradius-button{border-radius:0px;}
+}", 0);
+
+        this.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         /* x padding */
         x = 0;
