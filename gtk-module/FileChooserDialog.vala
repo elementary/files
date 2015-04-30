@@ -50,7 +50,6 @@ public class CustomFileChooserDialog : Object {
         d.deletable = false;
         prepare_action_section ();
         setup_filter_box ();
-        //if (d.)
 
         remove_gtk_widgets ();
 

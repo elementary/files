@@ -48,26 +48,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public string current_right_click_path;
     public string current_right_click_root;
 
-    bool _search_mode = false;
-    public bool search_mode {
-        get {
-            return _search_mode;
-        }
-        set {
-            if (_search_mode == value)
-                return;
-
-            _search_mode = value;
-
-            if (_search_mode) {
-                primary_icon_name = "edit-find-symbolic";
-                show_refresh_icon (false);
-            } else
-                primary_icon_name = null;
-
-            grab_focus ();
-        }
-    }
     
     protected string text_completion = "";
     protected bool multiple_completions = false;
@@ -100,13 +80,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void activate_alternate (File file);
     public signal void path_changed (File file);
     public signal void need_completion ();
-    public signal void search_changed (string text);
     public signal void reload ();
 
     List<IconDirectory?> icons;
 
     string current_path = "";
-    string refresh_tip = "Reload this folder";
 
     int selected = -1;
     int space_breads = 12;
@@ -275,17 +253,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_change () {
-        if (search_mode) {
-            search_changed (text);
-            return;
-        }
-
         if (ignore_change) {
             ignore_change = false;
             return;
         }
 
-        show_navigate_icon ();
         text_completion = "";
         need_completion ();
     }
@@ -308,10 +280,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         double x_render = 0;
         double x_previous = -10;
         set_tooltip_text ("");
-        /* We must reset the icon tooltip as the above line turns all tooltips off */
-        set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
-
-
 
         foreach (BreadcrumbsElement element in elements) {
             if (element.display) {
@@ -337,10 +305,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     bool on_focus_out (Gdk.EventFocus event) {
         if (is_focus)
             ignore_focus_in = true;
-        else {
+        else
             reset ();
-            show_refresh_icon (true);
-        }
 
         return base.focus_out_event (event);
     }
@@ -348,20 +314,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     void reset () {
         ignore_focus_in = false;
         set_entry_text ("");
-        search_mode = false;
     }
 
     bool on_focus_in (Gdk.EventFocus event) {
         if (ignore_focus_in)
             return base.focus_in_event (event);
 
-        if (search_mode)
-            set_entry_text ("");
-        else {
-            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()));
-            show_navigate_icon ();
-        }
-
+        set_entry_text (GLib.Uri.unescape_string (get_elements_path ()));
         return base.focus_in_event (event);
     }
 
@@ -374,20 +333,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         string path = text + text_completion;
         path_changed (get_file_for_path (path));
         text_completion = "";
-    }
-
-    public void show_refresh_icon (bool show = true) {
-        /* Cancel any editing or search if refresh icon is to be shown */
-        if (show) {
-            reset ();
-            escape ();
-        }
-
-        set_entry_secondary_icon (false, show);
-    }
-
-    public void show_navigate_icon (bool show = true) {
-        set_entry_secondary_icon (true, show && text != current_path);
     }
 
     protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
@@ -448,19 +393,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     }
     
-    public void set_entry_secondary_icon (bool active, bool visible) {
-        if (!visible)
-            secondary_icon_pixbuf = null;
-        else if (!active) {
-            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "view-refresh-symbolic");
-            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
-        } else {
-            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "go-jump-symbolic");
-            var tooltip = (text.length > 0) ? ("Navigate to %s").printf (text) : "";
-            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tooltip);
-        }
-    }
-
     public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
         double total_width = 0.0;
         breadcrumbs_count = 0;

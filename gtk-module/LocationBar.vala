@@ -80,7 +80,6 @@ namespace Marlin.View.Chrome
         public new signal void activate (GLib.File file);
         public signal void activate_alternate (GLib.File file);
         public signal void escape ();
-        public signal void search_mode_left ();
         public signal void change_to_file (string filename);
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
@@ -101,24 +100,10 @@ namespace Marlin.View.Chrome
                 change_to_file (file.get_path ());              
             });
             
-            bread.notify["search-mode"].connect (() => {
-                if (!bread.search_mode) {
-                    search_mode_left ();
-                } else {
-                    bread.text = "";
-                }
-            });
-
             margin_top = 4;
             margin_bottom = 4;
             margin_left = 3;
-
-            bread.set_entry_secondary_icon (false, true);
             pack_start (bread, true, true, 0);
-        }
-
-        public void enter_search_mode (bool local_only = false, bool begins_with_only = false) {
-            bread.search_mode = true;
         }
 
         private void on_path_changed (File? file) {
@@ -131,13 +116,6 @@ namespace Marlin.View.Chrome
 
     public class Breadcrumbs : BasePathBar {
         Gtk.Menu menu;
-
-        /* Used for auto-copmpletion */
-        /* The string which contains the text we search in the file. e.g, if the
-         * user enter /home/user/a, we will search for "a". */
-        string to_search = "";
-
-        bool autocompleted = false;
 
         double menu_x_root;
         double menu_y_root;
@@ -236,61 +214,8 @@ namespace Marlin.View.Chrome
                 grab_focus ();
             });
 
-            down.connect (() => {
-                //win.grab_focus ();
-            });
-
-            completed.connect (() => {
-                string path = "";
-                string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
-
-                foreach (BreadcrumbsElement element in elements) {
-                    if (!element.hidden)
-                        path += element.text + "/";
-                }
-
-                if (path != newpath)
-                    change_breadcrumbs (newpath);
-                
-                grab_focus ();
-            });
-
-            need_completion.connect (on_need_completion);
-
             menu = new Gtk.Menu ();
             menu.show_all ();
-        }
-
-        /**
-         * This function is used as a callback for files.file_loaded.
-         * We check that the file can be used
-         * in auto-completion, if yes we put it in our entry.
-         *
-         * @param file The file you want to load
-         *
-         **/
-
-        public void on_need_completion () {
-            File? file = get_file_for_path (text);
-
-            if (file == null)
-                return;
-
-            /* don't use get_basename (), it will return "folder" for "/folder/" */
-            int last_slash = text.last_index_of_char ('/');
-            if (last_slash > -1 && last_slash < text.length)
-                to_search = text.slice (last_slash + 1, text.length);
-            else
-                to_search = "";
-
-            autocompleted = false;
-            multiple_completions = false;
-
-            if (to_search != "" && file.has_parent (null))
-                file = file.get_parent ();
-            else
-                return;
-            
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
