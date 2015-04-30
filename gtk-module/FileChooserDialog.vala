@@ -17,7 +17,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Authored by: Adam Bieńkowski <<donadigos159@gmail.com>
+ * Authored by: Adam Bieńkowski <donadigos159@gmail.com>
  */
 
 public class CustomFileChooserDialog : Object {
@@ -26,13 +26,15 @@ public class CustomFileChooserDialog : Object {
     private static Gtk.Widget rootwidget;
     
     private static Gtk.Box container_box;
-    
+    private static Gtk.Button? gtk_folder_button = null;
+
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -3;    
 
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_box" };
     private const string[] GTK_FILTERCHOSSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
+    private const string[] GTK_CREATEFOLDER_BUTTON = { "browse_header_stack", "browse_path_bar_hbox", "browse_new_folder_button" };
 
     private const string FILE_PREFIX = "file://";
 
@@ -48,6 +50,8 @@ public class CustomFileChooserDialog : Object {
         d.deletable = false;
         prepare_action_section ();
         setup_filter_box ();
+        //if (d.)
+
         remove_gtk_widgets ();
 
         var header_bar = new Gtk.HeaderBar ();
@@ -61,6 +65,17 @@ public class CustomFileChooserDialog : Object {
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (pathbar);
+        if (gtk_folder_button != null
+            && chooser.get_action () == Gtk.FileChooserAction.SELECT_FOLDER
+            && chooser.get_action () == Gtk.FileChooserAction.CREATE_FOLDER) {
+        	var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
+        	create_folder_button.clicked.connect (() => {
+        		gtk_folder_button.clicked ();
+        	});
+
+        	header_bar.pack_end (create_folder_button);
+        }
+
 
         d.set_titlebar (header_bar);
         d.show_all ();
@@ -126,18 +141,32 @@ public class CustomFileChooserDialog : Object {
                                 foreach (var w2 in (paned as Gtk.Container).get_children ()) {
                                     if (w2.get_name () == GTK_PATHBAR_PATH[2]) {
                                         foreach (var w3 in (w2 as Gtk.Container).get_children ()) {
-                                            if (w3.get_name () == GTK_PATHBAR_PATH[3])
+                                            if (w3.get_name () == GTK_PATHBAR_PATH[3]) {
+                                            	foreach (var w4 in (w3 as Gtk.Container).get_children ()) {
+                                            		if (w4.get_name () == GTK_CREATEFOLDER_BUTTON[0]) {
+                                            			foreach (var w5 in (w4 as Gtk.Container).get_children ()) {
+                                            				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON[1]) {
+                                            					foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
+                                            						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON[2])
+                                            							/* Register the button so we can use it's signal */
+                                            							gtk_folder_button = w6.@ref () as Gtk.Button;
+                                            					}	
+                                            				}
+                                            			}
+                                            		}
+                                            	}
+
                                                 (w2 as Gtk.Container).remove (w3);
+                                            }
                                         }
                                     }    
                                 }
                             } 
                         } else {
                             if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0]) {
-                                foreach (var w4 in (w1 as Gtk.Container).get_children ()) {
-                                    if (w4.get_name () == GTK_FILTERCHOSSER_PATH[1]) {
-                                       (w1 as Gtk.Container).remove (w4);
-                                    }
+                                foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
+                                    if (w5.get_name () == GTK_FILTERCHOSSER_PATH[1])
+                                       (w1 as Gtk.Container).remove (w5);
                                 }
                             }                            
                         }   
@@ -146,7 +175,7 @@ public class CustomFileChooserDialog : Object {
             }  
         }   
     }
-    
+
     private static void prepare_action_section () {
         var tmp = d.get_widget_for_response (BUTTON_RESPONSE);
 

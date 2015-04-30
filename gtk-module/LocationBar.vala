@@ -21,7 +21,6 @@
  */
 
 namespace Marlin {
-
     public const string ICON_ABOUT_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
     public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
