@@ -1059,7 +1059,7 @@ namespace FM {
             else
                 location = slot.directory.file.get_target_location ();
 
-                window.sidebar.add_uri (location.get_uri (), null);
+            window.sidebar.add_uri (location.get_uri (), null);
         }
 
         /** Background actions */
@@ -1766,7 +1766,7 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
 
-                if (!in_trash && !in_recent)
+                if (!in_trash)
                     plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
 
                 menu.set_screen (null);

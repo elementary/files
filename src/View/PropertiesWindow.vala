@@ -87,6 +87,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
+        deletable = false;
         set_default_size (220, -1);
         transient_for = parent;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
@@ -128,10 +129,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             critical ("Properties Window constructor called with invalid file data (1)");
             return;
         }
-
-        Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        header.height_request = 15;
-        set_titlebar (header);
 
         // Set the default containers
         var content_area = get_content_area ();
