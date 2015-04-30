@@ -132,10 +132,12 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         File[] file_array = new File[0];
 
         foreach (var file in files) {
-            if (file.location.get_uri_scheme () == "recent")
-                file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
-            if (file.location != null)
-                file_array += file.location;
+            if (file.location != null) {
+                if (file.location.get_uri_scheme () == "recent")
+                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
+                else
+                    file_array += file.location;
+            }
         }
 
         return file_array;
