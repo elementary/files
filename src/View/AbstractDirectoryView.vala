@@ -1146,7 +1146,10 @@ namespace FM {
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
-            new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
+            if (!(selected_files.next != null && in_recent))
+                new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
+            else
+                return;
         }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2029,6 +2032,12 @@ namespace FM {
             bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
+            bool can_show_properties = false;
+
+            if (!(in_recent && selection_count > 1))
+                can_show_properties = true;
+            else
+                can_show_properties = false;
 
             update_default_app (selection);
 
@@ -2054,6 +2063,7 @@ namespace FM {
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
+            action_set_enabled (common_actions, "properties", can_show_properties);
 
             /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
              * because remote file bookmarks do not work correctly for unmounted locations */

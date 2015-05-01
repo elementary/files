@@ -201,7 +201,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             /* Retrieve the low quality (existent) thumbnail.
             This will be shown to prevent resizing the properties window
             when the large preview is retrieved. */
-            var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+            Gdk.Pixbuf small_preview;
+
+            if (view.is_in_recent ())
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
+            else
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+
             /* Request the creation of the large thumbnail */
             Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
             var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
