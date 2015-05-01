@@ -560,7 +560,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             string path;
 
             if (view.is_in_recent ())
-                path = (file.get_display_target_uri ()).substring (7, -1);
+                path = (file.get_display_target_uri ()).substring (7, -1).replace ("%20", " ");
             else
                 path = file.location.get_path ();
 
@@ -570,13 +570,15 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 var height = pixbuf.get_height ().to_string ();
                 info.add (new Pair<string, string> (_("Size") + (": "), width +" × " + height + " px"));
             } catch (Error e) {
-                stdout.printf ("Error: %s\n", e.message);
+                warning ("Error: %s\n", e.message);
             }
         }
 
         if (got_common_location ()) {
             if (view.is_in_recent ()) {
-                string location_folder = (file.get_display_target_uri ()).slice (0, -(file.get_display_name ().length));
+                string original_location = file.get_display_target_uri ().replace ("%20", " ");
+                string file_name = file.get_display_name ().replace ("%20", " ");
+                string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
                 string location_name = location_folder.slice (7, -1);
 
                 info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
