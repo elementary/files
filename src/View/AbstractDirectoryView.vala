@@ -932,15 +932,9 @@ namespace FM {
             if (selected_files == null)
                 return;
 
-            if (selected_files.next != null) {
-                warning ("Cannot open multiple locations (yet)");
-                return;
-            }
-
-            var file = selected_files.first ().data;
-            var location = GLib.File.new_for_uri (file.get_display_target_uri ());
-
-            window.add_tab (location, Marlin.ViewMode.CURRENT);
+            foreach (GOF.File file in selected_files) {
+                window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
+            }        
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2059,7 +2053,7 @@ namespace FM {
 
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
-            action_set_enabled (selection_actions, "view_in_location", selection_count == 1);
+            action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
             action_set_enabled (selection_actions, "open", selection_count == 1);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
