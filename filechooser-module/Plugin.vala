@@ -46,6 +46,7 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
 
 public static PantheonModule.FileChooserDialog filechooser_module = null;
 public void gtk_module_init ([CCode (array_length_cname = "argc", array_length_pos = 0.5)] ref unowned string[]? argv) {
-    Gtk.init (ref argv);
-    filechooser_module = new PantheonModule.FileChooserDialog ();
+    var appinfo = AppInfo.get_default_for_type ("inode/directory", true);
+    if (appinfo.get_executable () == "pantheon-files")
+        filechooser_module = new PantheonModule.FileChooserDialog ();
 }
