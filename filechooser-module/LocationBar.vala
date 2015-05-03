@@ -115,12 +115,12 @@ namespace Marlin.View.Chrome
         double menu_x_root;
         double menu_y_root;
 
-        private bool drop_data_ready = false; /* whether the drop data was received already */
-        private bool drop_occurred = false; /* whether the data was dropped */
-        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
+        private bool drop_data_ready = false;
+        private bool drop_occurred = false;
+        private GLib.List<GLib.File> drop_file_list = null;
 
-        Gdk.DragAction current_suggested_action = 0; /* No action */
-        Gdk.DragAction current_actions = 0; /* No action */
+        Gdk.DragAction current_suggested_action = 0;
+        Gdk.DragAction current_actions = 0;
 
         public Breadcrumbs ()
         {
@@ -228,8 +228,8 @@ namespace Marlin.View.Chrome
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => { reset_elements_states (); });
             menu.deactivate.connect (() => { reset_elements_states (); });
-            /* current_right_click_root is parent of the directory named on the breadcrumb. */
             
+            /* current_right_click_root is parent of the directory named on the breadcrumb. */        
             menu.popup (null,
                         null,
                         get_menu_position,

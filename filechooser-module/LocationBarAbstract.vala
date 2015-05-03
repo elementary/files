@@ -578,31 +578,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 }
             }
         }
-
-        /* Remove the volume icons we added just before. */
-        /*for (uint i = icons.length () - 1; i >= icons_list; i--) {
-            icons.remove (icons.nth_data (i));
-        }
-
-
-        if (anim > 0) {
-            Source.remove (anim);
-            anim = 0;
-        }
-
-        if (newelements.size > elements.size) {
-            view_old = false;
-            newbreads = newelements.slice (max_path, newelements.size);
-            animate_new_breads ();
-        } else if (newelements.size < elements.size) {
-            view_old = true;
-            newbreads = elements.slice (max_path, elements.size);
-            animate_old_breads ();
-        } else {
-            newbreads = newelements.slice (max_path, newelements.size);
-            animate_new_breads ();
-        }*/
-
         
         if (old) {
             view_old = true;
@@ -632,8 +607,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         anim = Timeout.add (1000/60, () => {
             anim_state += step;
-            /* FIXME: Instead of this hacksih if( != null), we should use a
-             * nice mutex */
             if (newbreads == null) {
                 anim = 0;
                 return false;
@@ -671,8 +644,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         anim = Timeout.add (1000/60, () => {
             anim_state -= step;
-            /* FIXME: Instead of this hacksih if( != null), we should use a
-             * nice mutex */
             if (newbreads == null) {
                 anim = 0;
                 return false;
@@ -718,8 +689,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             int breadcrumbs_displayed = 0;
             double max_width = get_all_breadcrumbs_width (out breadcrumbs_displayed);
 
-            if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                /* each element must not be bigger than the width/breadcrumbs count */
+            if (max_width > width_marged) {
+                /* Let's check if the breadcrumbs are bigger than the widget
+                 * each element must not be bigger than the width/breadcrumbs count */
                 double max_element_width = width_marged/breadcrumbs_displayed;
 
                 foreach (BreadcrumbsElement element in elements) {
@@ -739,7 +711,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             foreach (BreadcrumbsElement element in elements) {
                 if (element.display) {
                     x_render = element.draw (cr, x_render, margin, height_marged, button_context, this);
-                    /* save element x axis position */
+                    /* Save element x axis position */
                     element.x = x_render - element.real_width;
                 }
             }

@@ -21,7 +21,7 @@
  */
 
 public class PantheonModule.FileChooserDialog : GLib.Object {
-    /* CATCHING DIALOGS SECTION BY: tintou (https://launchpad.net/~tintou) */
+    /* Catching dialogs section by: tintou (https://launchpad.net/~tintou) */
     Gee.TreeSet<Gtk.FileChooserDialog> tree_set;
     public FileChooserDialog () {
         tree_set = new Gee.TreeSet<Gtk.FileChooserDialog> ();
@@ -50,5 +50,6 @@ public void gtk_module_init ([CCode (array_length_cname = "argc", array_length_p
         var appinfo = AppInfo.get_default_for_type ("inode/directory", true);
         if (appinfo.get_executable () == "pantheon-files")
             filechooser_module = new PantheonModule.FileChooserDialog ();
-    }    
+    } else
+        warning ("The required GTK version is 3.14");    
 }
