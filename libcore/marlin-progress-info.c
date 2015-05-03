@@ -86,7 +86,7 @@ marlin_progress_info_finalize (GObject *object)
     g_object_unref (info->cancellable);
 
     if (G_OBJECT_CLASS (marlin_progress_info_parent_class)->finalize) {
-	(*G_OBJECT_CLASS (marlin_progress_info_parent_class)->finalize) (object);
+        (*G_OBJECT_CLASS (marlin_progress_info_parent_class)->finalize) (object);
     }
 }
 
@@ -103,9 +103,9 @@ marlin_progress_info_dispose (GObject *object)
        could come here before the destroy, which should
        ressurect the object for a while */
     if (info->idle_source) {
-	g_source_destroy (info->idle_source);
-	g_source_unref (info->idle_source);
-	info->idle_source = NULL;
+        g_source_destroy (info->idle_source);
+        g_source_unref (info->idle_source);
+        info->idle_source = NULL;
     }
     G_UNLOCK (progress_info);
 }
@@ -119,40 +119,40 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
     gobject_class->dispose = marlin_progress_info_dispose;
 
     signals[CHANGED] =
-	g_signal_new ("changed",
-		      MARLIN_TYPE_PROGRESS_INFO,
-		      G_SIGNAL_RUN_LAST,
-		      0,
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("changed",
+                  MARLIN_TYPE_PROGRESS_INFO,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 
     signals[PROGRESS_CHANGED] =
-	g_signal_new ("progress-changed",
-		      MARLIN_TYPE_PROGRESS_INFO,
-		      G_SIGNAL_RUN_LAST,
-		      0,
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("progress-changed",
+                  MARLIN_TYPE_PROGRESS_INFO,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 
     signals[STARTED] =
-	g_signal_new ("started",
-		      MARLIN_TYPE_PROGRESS_INFO,
-		      G_SIGNAL_RUN_LAST,
-		      0,
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("started",
+                  MARLIN_TYPE_PROGRESS_INFO,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 
     signals[FINISHED] =
-	g_signal_new ("finished",
-		      MARLIN_TYPE_PROGRESS_INFO,
-		      G_SIGNAL_RUN_LAST,
-		      0,
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
+    g_signal_new ("finished",
+                  MARLIN_TYPE_PROGRESS_INFO,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 
 }
 
@@ -186,9 +186,9 @@ marlin_progress_info_get_status (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (info->status) {
-	res = g_strdup (info->status);
+        res = g_strdup (info->status);
     } else {
-	res = g_strdup (_("Preparing"));
+        res = g_strdup (_("Preparing"));
     }
 
     G_UNLOCK (progress_info);
@@ -204,9 +204,9 @@ marlin_progress_info_get_details (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (info->details) {
-	res = g_strdup (info->details);
+        res = g_strdup (info->details);
     } else {
-	res = g_strdup (_("Preparing"));
+        res = g_strdup (_("Preparing"));
     }
 
     G_UNLOCK (progress_info);
@@ -222,9 +222,9 @@ marlin_progress_info_get_progress (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (info->activity_mode) {
-	res = -1.0;
+        res = -1.0;
     } else {
-	res = info->progress;
+        res = info->progress;
     }
 
     G_UNLOCK (progress_info);
@@ -235,37 +235,37 @@ marlin_progress_info_get_progress (MarlinProgressInfo *info)
 double
 marlin_progress_info_get_current (MarlinProgressInfo *info)
 {
-	double current;
-	
-	G_LOCK (progress_info);
+    double current;
 
-	if (info->activity_mode) {
-		current = 0.0;
-	} else {
-		current = info->current;
-	}
-	
-	G_UNLOCK (progress_info);
-	
-	return current;
+    G_LOCK (progress_info);
+
+    if (info->activity_mode) {
+        current = 0.0;
+    } else {
+        current = info->current;
+    }
+
+    G_UNLOCK (progress_info);
+
+    return current;
 }
 
 double
 marlin_progress_info_get_total (MarlinProgressInfo *info)
 {
-	double total;
-	
-	G_LOCK (progress_info);
+    double total;
 
-	if (info->activity_mode) {
-		total = -1.0;
-	} else {
-		total = info->total;
-	}
-	
-	G_UNLOCK (progress_info);
-	
-	return total;
+    G_LOCK (progress_info);
+
+    if (info->activity_mode) {
+        total = -1.0;
+    } else {
+        total = info->total;
+    }
+
+    G_UNLOCK (progress_info);
+
+    return total;
 }
 
 void
@@ -354,8 +354,8 @@ idle_callback (gpointer data)
        Similar to what gdk_threads_add_idle does.
        */
     if (g_source_is_destroyed (source)) {
-	G_UNLOCK (progress_info);
-	return FALSE;
+        G_UNLOCK (progress_info);
+        return FALSE;
     }
 
     /* We hadn't destroyed the source, so take a ref.
@@ -382,27 +382,27 @@ idle_callback (gpointer data)
     G_UNLOCK (progress_info);
 
     if (start_at_idle) {
-	g_signal_emit (info,
-		       signals[STARTED],
-		       0);
+        g_signal_emit (info,
+                       signals[STARTED],
+                       0);
     }
 
     if (changed_at_idle) {
-	g_signal_emit (info,
-		       signals[CHANGED],
-		       0);
+        g_signal_emit (info,
+                       signals[CHANGED],
+                       0);
     }
 
     if (progress_at_idle) {
-	g_signal_emit (info,
-		       signals[PROGRESS_CHANGED],
-		       0);
+        g_signal_emit (info,
+                       signals[PROGRESS_CHANGED],
+                       0);
     }
 
     if (finish_at_idle) {
-	g_signal_emit (info,
-		       signals[FINISHED],
-		       0);
+        g_signal_emit (info,
+                       signals[FINISHED],
+                       0);
     }
 
     g_object_unref (info);
@@ -415,21 +415,23 @@ static void
 queue_idle (MarlinProgressInfo *info, gboolean now)
 {
     if (info->idle_source == NULL ||
-	(now && !info->source_is_now)) {
-	if (info->idle_source) {
-	    g_source_destroy (info->idle_source);
-	    g_source_unref (info->idle_source);
-	    info->idle_source = NULL;
-	}
+        (now && !info->source_is_now)) {
 
-	info->source_is_now = now;
-	if (now) {
-	    info->idle_source = g_idle_source_new ();
-	} else {
-	    info->idle_source = g_timeout_source_new (SIGNAL_DELAY_MSEC);
-	}
-	g_source_set_callback (info->idle_source, idle_callback, info, NULL);
-	g_source_attach (info->idle_source, NULL);
+        if (info->idle_source) {
+            g_source_destroy (info->idle_source);
+            g_source_unref (info->idle_source);
+            info->idle_source = NULL;
+        }
+
+        info->source_is_now = now;
+        if (now) {
+            info->idle_source = g_idle_source_new ();
+        } else {
+            info->idle_source = g_timeout_source_new (SIGNAL_DELAY_MSEC);
+        }
+
+        g_source_set_callback (info->idle_source, idle_callback, info, NULL);
+        g_source_attach (info->idle_source, NULL);
     }
 }
 
@@ -439,7 +441,7 @@ marlin_progress_info_pause (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (!info->paused) {
-	info->paused = TRUE;
+        info->paused = TRUE;
     }
 
     G_UNLOCK (progress_info);
@@ -451,7 +453,7 @@ marlin_progress_info_resume (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (info->paused) {
-	info->paused = FALSE;
+        info->paused = FALSE;
     }
 
     G_UNLOCK (progress_info);
@@ -463,10 +465,10 @@ marlin_progress_info_start (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (!info->started) {
-	info->started = TRUE;
+        info->started = TRUE;
 
-	info->start_at_idle = TRUE;
-	queue_idle (info, TRUE);
+        info->start_at_idle = TRUE;
+        queue_idle (info, TRUE);
     }
 
     G_UNLOCK (progress_info);
@@ -478,10 +480,10 @@ marlin_progress_info_finish (MarlinProgressInfo *info)
     G_LOCK (progress_info);
 
     if (!info->finished) {
-	info->finished = TRUE;
+        info->finished = TRUE;
 
-	info->finish_at_idle = TRUE;
-	queue_idle (info, TRUE);
+        info->finish_at_idle = TRUE;
+        queue_idle (info, TRUE);
     }
 
     G_UNLOCK (progress_info);
@@ -489,18 +491,18 @@ marlin_progress_info_finish (MarlinProgressInfo *info)
 
 void
 marlin_progress_info_take_status (MarlinProgressInfo *info,
-				  char *status)
+                                  char *status)
 {
     G_LOCK (progress_info);
 
     if (eel_strcmp (info->status, status) != 0) {
-	g_free (info->status);
-	info->status = status;
+        g_free (info->status);
+        info->status = status;
 
-	info->changed_at_idle = TRUE;
-	queue_idle (info, FALSE);
+        info->changed_at_idle = TRUE;
+        queue_idle (info, FALSE);
     } else {
-	g_free (status);
+        g_free (status);
     }
 
     G_UNLOCK (progress_info);
@@ -508,16 +510,16 @@ marlin_progress_info_take_status (MarlinProgressInfo *info,
 
 void
 marlin_progress_info_set_status (MarlinProgressInfo *info,
-				 const char *status)
+                                 const char *status)
 {
     G_LOCK (progress_info);
 
     if (eel_strcmp (info->status, status) != 0) {
-	g_free (info->status);
-	info->status = g_strdup (status);
+        g_free (info->status);
+        info->status = g_strdup (status);
 
-	info->changed_at_idle = TRUE;
-	queue_idle (info, FALSE);
+        info->changed_at_idle = TRUE;
+        queue_idle (info, FALSE);
     }
 
     G_UNLOCK (progress_info);
@@ -526,18 +528,18 @@ marlin_progress_info_set_status (MarlinProgressInfo *info,
 
 void
 marlin_progress_info_take_details (MarlinProgressInfo *info,
-				   char           *details)
+                                   char           *details)
 {
     G_LOCK (progress_info);
 
     if (eel_strcmp (info->details, details) != 0) {
-	g_free (info->details);
-	info->details = details;
+        g_free (info->details);
+        info->details = details;
 
-	info->changed_at_idle = TRUE;
-	queue_idle (info, FALSE);
+        info->changed_at_idle = TRUE;
+        queue_idle (info, FALSE);
     } else {
-	g_free (details);
+        g_free (details);
     }
 
     G_UNLOCK (progress_info);
@@ -545,16 +547,16 @@ marlin_progress_info_take_details (MarlinProgressInfo *info,
 
 void
 marlin_progress_info_set_details (MarlinProgressInfo *info,
-				  const char           *details)
+                                  const char           *details)
 {
     G_LOCK (progress_info);
 
     if (eel_strcmp (info->details, details) != 0) {
-	g_free (info->details);
-	info->details = g_strdup (details);
+        g_free (info->details);
+        info->details = g_strdup (details);
 
-	info->changed_at_idle = TRUE;
-	queue_idle (info, FALSE);
+        info->changed_at_idle = TRUE;
+        queue_idle (info, FALSE);
     }
 
     G_UNLOCK (progress_info);
@@ -575,36 +577,36 @@ marlin_progress_info_pulse_progress (MarlinProgressInfo *info)
 
 void
 marlin_progress_info_set_progress (MarlinProgressInfo *info,
-				   double                current,
-				   double                total)
+                                   double                current,
+                                   double                total)
 {
     double current_percent;
 
     if (total <= 0) {
-	current_percent = 1.0;
+        current_percent = 1.0;
     } else {
-	current_percent = current / total;
+        current_percent = current / total;
 
-	if (current_percent < 0) {
-	    current_percent	= 0;
-	}
+        if (current_percent < 0) {
+            current_percent = 0;
+        }
 
-	if (current_percent > 1.0) {
-	    current_percent	= 1.0;
-	}
+        if (current_percent > 1.0) {
+            current_percent = 1.0;
+        }
     }
 
     G_LOCK (progress_info);
 
     if (info->activity_mode || /* emit on switch from activity mode */
-	fabs (current_percent - info->progress) > 0.005 /* Emit on change of 0.5 percent */
-       ) {
-	info->activity_mode = FALSE;
-	info->progress = current_percent;
-	info->current = current;
-	info->total = total;
-	info->progress_at_idle = TRUE;
-	queue_idle (info, FALSE);
+        fabs (current_percent - info->progress) > 0.005) { /* Emit on change of 0.5 percent */
+
+        info->activity_mode = FALSE;
+        info->progress = current_percent;
+        info->current = current;
+        info->total = total;
+        info->progress_at_idle = TRUE;
+        queue_idle (info, FALSE);
     }
 
     G_UNLOCK (progress_info);

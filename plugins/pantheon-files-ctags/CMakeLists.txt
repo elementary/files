@@ -2,12 +2,12 @@
 
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-	gtk+-3.0
+    gtk+-3.0
     gio-2.0
     gee-0.8
 )
 set(CFLAGS
-	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
+    ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
@@ -27,7 +27,7 @@ OPTIONS
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
-add_library(pantheon-filesctags SHARED 
+add_library(pantheon-filesctags SHARED
     ${VALA_C})
 target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-files-core)
 add_dependencies(pantheon-filesctags pantheon-files-core)

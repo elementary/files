@@ -34,7 +34,7 @@
 #include "marlin-icon-info.h"
 #include "pantheon-files-core.h"
 
-#define FILE_ICON_SIZE_LARGE	    64
+#define FILE_ICON_SIZE_LARGE        64
 
 typedef void GOFFileListHandle;
 
@@ -69,8 +69,8 @@ G_DEFINE_TYPE (MarlinFileConflictDialog,
                marlin_file_conflict_dialog,
                GTK_TYPE_DIALOG);
 
-#define MARLIN_FILE_CONFLICT_DIALOG_GET_PRIVATE(object)		\
-    (G_TYPE_INSTANCE_GET_PRIVATE ((object), MARLIN_TYPE_FILE_CONFLICT_DIALOG, \
+#define MARLIN_FILE_CONFLICT_DIALOG_GET_PRIVATE(object)                         \
+    (G_TYPE_INSTANCE_GET_PRIVATE ((object), MARLIN_TYPE_FILE_CONFLICT_DIALOG,   \
                                   MarlinFileConflictDialogDetails))
 
 static void
@@ -101,7 +101,7 @@ file_list_ready_cb (GList *files,
     GOFFile *src, *dest, *dest_dir;
     time_t src_mtime, dest_mtime;
     GtkDialog *dialog;
-    gboolean source_is_dir,	dest_is_dir, should_show_type;
+    gboolean source_is_dir, dest_is_dir, should_show_type;
     MarlinFileConflictDialogDetails *details;
     char *primary_text, *message, *secondary_text;
     const gchar *message_extra;
@@ -359,7 +359,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
                    gof_file_get_uri (dest));
     }
 
-    should_show_type = g_strcmp0 (src_ftype, dest_ftype);    
+    should_show_type = g_strcmp0 (src_ftype, dest_ftype);
 
     const gchar *dest_display_name = gof_file_get_display_name (dest);
     const gchar *dest_dir_display_name = gof_file_get_display_name (dest_dir);

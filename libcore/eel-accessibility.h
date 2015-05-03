@@ -39,14 +39,14 @@ AtkObject    *eel_accessibility_get_atk_object        (gpointer              obj
 AtkObject    *eel_accessibility_for_object            (gpointer              object);
 gpointer      eel_accessibility_get_gobject           (AtkObject            *object);
 AtkObject    *eel_accessibility_set_atk_object_return (gpointer              object,
-						       AtkObject            *atk_object);
+                                                       AtkObject            *atk_object);
 GType         eel_accessibility_create_derived_type   (const char           *type_name,
-						       GType                 existing_gobject_with_proxy,
-						       EelAccessibilityClassInitFn class_init);
+                                                       GType                existing_gobject_with_proxy,
+                                                       EelAccessibilityClassInitFn class_init);
 void          eel_accessibility_set_name              (gpointer              object,
-						       const char           *name);
+                                                       const char           *name);
 void          eel_accessibility_set_description       (gpointer              object,
-						       const char           *description);
+                                                       const char           *description);
 
 char*         eel_accessibility_text_get_text         (AtkText              *text,
                                                        gint                 start_pos,
@@ -85,68 +85,68 @@ gint          eel_accessibility_text_get_character_count
 typedef struct _EelAccessibleText EelAccessibleText;
 
 typedef struct {
-	GTypeInterface parent;
-	
-	GailTextUtil *(*get_text)   (GObject *text);
-	PangoLayout  *(*get_layout) (GObject *text);
+    GTypeInterface parent;
+
+    GailTextUtil *(*get_text)   (GObject *text);
+    PangoLayout  *(*get_layout) (GObject *text);
 } EelAccessibleTextIface;
 
 GType eel_accessible_text_get_type      (void);
 void  eel_accessibility_add_simple_text (GType type);
 
 /* From gail - should be unneccessary when AtkObjectFactory is fixed */
-#define EEL_ACCESSIBLE_FACTORY(type, factory_name, type_as_function, opt_create_accessible)	\
-										\
-static GType									\
-type_as_function ## _factory_get_accessible_type (void)				\
-{										\
-  return type;									\
-}										\
-										\
-static AtkObject*								\
-type_as_function ## _factory_create_accessible (GObject *obj)			\
-{										\
-  AtkObject *accessible;							\
-										\
-  g_assert (G_IS_OBJECT (obj));  						\
-										\
-  accessible = opt_create_accessible (obj);					\
-										\
-  return accessible;								\
-}										\
-										\
-static void									\
-type_as_function ## _factory_class_init (AtkObjectFactoryClass *klass)		\
-{										\
-  klass->create_accessible   = type_as_function ## _factory_create_accessible;	\
-  klass->get_accessible_type = type_as_function ## _factory_get_accessible_type;\
-}										\
-										\
-static GType									\
-type_as_function ## _factory_get_type (void)					\
-{										\
-  static GType t = 0;								\
-										\
-  if (!t)									\
-  {										\
-    static const GTypeInfo tinfo =						\
-    {										\
-      sizeof (AtkObjectFactoryClass),					\
-      NULL, NULL, (GClassInitFunc) type_as_function ## _factory_class_init,			\
-      NULL, NULL, sizeof (AtkObjectFactory), 0, NULL, NULL			\
-    };										\
-										\
-    t = g_type_register_static (						\
-	    ATK_TYPE_OBJECT_FACTORY, factory_name, &tinfo, 0);			\
-  }										\
-										\
-  return t;									\
+#define EEL_ACCESSIBLE_FACTORY(type, factory_name, type_as_function, opt_create_accessible) \
+                                                                                            \
+static GType                                                                                \
+type_as_function ## _factory_get_accessible_type (void)                                     \
+{                                                                                           \
+  return type;                                                                              \
+}                                                                                           \
+                                                                                            \
+static AtkObject*                                                                           \
+type_as_function ## _factory_create_accessible (GObject *obj)                               \
+{                                                                                           \
+  AtkObject *accessible;                                                                    \
+                                                                                            \
+  g_assert (G_IS_OBJECT (obj));                                                             \
+                                                                                            \
+  accessible = opt_create_accessible (obj);                                                 \
+                                                                                            \
+  return accessible;                                                                        \
+}                                                                                           \
+                                                                                            \
+static void                                                                                 \
+type_as_function ## _factory_class_init (AtkObjectFactoryClass *klass)                      \
+{                                                                                           \
+  klass->create_accessible   = type_as_function ## _factory_create_accessible;              \
+  klass->get_accessible_type = type_as_function ## _factory_get_accessible_type;            \
+}                                                                                           \
+                                                                                            \
+static GType                                                                                \
+type_as_function ## _factory_get_type (void)                                                \
+{                                                                                           \
+  static GType t = 0;                                                                       \
+                                                                                            \
+  if (!t)                                                                                   \
+  {                                                                                         \
+    static const GTypeInfo tinfo =                                                          \
+    {                                                                                       \
+      sizeof (AtkObjectFactoryClass),                                                       \
+      NULL, NULL, (GClassInitFunc) type_as_function ## _factory_class_init,                 \
+      NULL, NULL, sizeof (AtkObjectFactory), 0, NULL, NULL                                  \
+    };                                                                                      \
+                                                                                            \
+    t = g_type_register_static (                                                            \
+        ATK_TYPE_OBJECT_FACTORY, factory_name, &tinfo, 0);                                  \
+  }                                                                                         \
+                                                                                            \
+  return t;                                                                                 \
 }
 
-#define EEL_OBJECT_SET_FACTORY(object_type, type_as_function)			\
-	atk_registry_set_factory_type (atk_get_default_registry (),		\
-				       object_type,				\
-				       type_as_function ## _factory_get_type ())
+#define EEL_OBJECT_SET_FACTORY(object_type, type_as_function)           \
+    atk_registry_set_factory_type (atk_get_default_registry (),         \
+                       object_type,                                     \
+                       type_as_function ## _factory_get_type ())
 
 
 #endif /* EEL_ACCESSIBILITY_H */

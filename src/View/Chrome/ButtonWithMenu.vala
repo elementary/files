@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -81,11 +81,11 @@ namespace Marlin.View.Chrome {
 
         public ulong toggled_sig_id;
 
-        /** 
-         * Delegate function used to populate menu 
+        /**
+         * Delegate function used to populate menu
          */
         public delegate Gtk.Menu MenuFetcher ();
-        
+
         public signal void slow_press ();
 
         public MenuFetcher fetcher {
@@ -173,15 +173,15 @@ namespace Marlin.View.Chrome {
         }
 
         private bool on_button_press_event (Gdk.EventButton ev) {
-            // If the button is kept pressed, don't make the user wait when there's no action
+            /* If the button is kept pressed, don't make the user wait when there's no action */
             int max_press_time = LONG_PRESS_TIME;
             if (ev.button == 1 || ev.button == 3)
                 active = true;
-                
+
             if (timeout == -1 && ev.button == 1) {
                 last_click_time = ev.time;
                 timeout = (int) Timeout.add(max_press_time, () => {
-                    // long click
+                    /* long click */
                     timeout = -1;
                     popup_menu (ev);
                     return false;
@@ -189,7 +189,7 @@ namespace Marlin.View.Chrome {
             }
 
             if (ev.button == 3) {
-                // right_click
+                /* right_click */
                 right_click (ev);
                 popup_menu (ev);
             }
@@ -198,9 +198,10 @@ namespace Marlin.View.Chrome {
         }
 
         private bool on_mnemonic_activate (bool group_cycling) {
-            // ToggleButton always grabs focus away from the editor,
-            // so reimplement Widget's version, which only grabs the
-            // focus if we are group cycling.
+            /* ToggleButton always grabs focus away from the editor,
+             * so reimplement Widget's version, which only grabs the
+             * focus if we are group cycling.
+             */
             if (!group_cycling) {
                 activate ();
             } else if (can_focus) {
@@ -239,7 +240,7 @@ namespace Marlin.View.Chrome {
             menu.get_allocation (out menu_allocation);
 
             if (menu.attach_widget == null || menu.attach_widget.get_window () == null) {
-                // Prevent null exception in weird cases
+                /* Prevent null exception in weird cases */
                 x = 0;
                 y = 0;
                 push_in = true;
@@ -247,7 +248,7 @@ namespace Marlin.View.Chrome {
             }
 
             menu.attach_widget.get_window ().get_origin (out x, out y);
-            
+
             Gtk.Allocation allocation;
             menu.attach_widget.get_allocation (out allocation);
 
@@ -286,8 +287,9 @@ namespace Marlin.View.Chrome {
                 int parent_window_x0 = x;
                 int parent_window_xf = parent_window_x0 + window_allocation.width;
 
-                // Now check if the menu is outside the window and un-center it
-                // if that's the case
+                /* Now check if the menu is outside the window and un-center it
+                 * if that's the case
+                 */
 
                 if (x + menu_allocation.width > parent_window_xf)
                     x = parent_window_xf - menu_allocation.width; // Move to left

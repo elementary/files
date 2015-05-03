@@ -1,20 +1,20 @@
-/*
- Copyright (C) 2014 elementary Developers
+/***
+    Copyright (C) 2015 elementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors :
-*/
+    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace FM {
     /* Implement common features of ColumnView and ListView */
@@ -72,7 +72,7 @@ namespace FM {
             name_renderer.@set ("ellipsize-set", true);
             name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
-            name_renderer.yalign = 0.5f; 
+            name_renderer.yalign = 0.5f;
         }
 
         protected void connect_tree_signals () {

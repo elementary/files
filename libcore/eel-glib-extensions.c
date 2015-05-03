@@ -92,7 +92,7 @@ eel_remove_weak_pointer (gpointer pointer_location)
 
     g_return_if_fail (pointer_location != NULL);
 
-    object_location = (gpointer *) pointer_location;	
+    object_location = (gpointer *) pointer_location;
     if (*object_location == NULL) {
         /* The object was already destroyed and the reference
          * nulled out, nothing to do.
@@ -145,7 +145,7 @@ eel_g_object_list_copy (GList *list)
 GList *
 eel_g_str_list_alphabetize (GList *list)
 {
-	return g_list_sort (list, (GCompareFunc) g_utf8_collate);
+    return g_list_sort (list, (GCompareFunc) g_utf8_collate);
 }
 
 

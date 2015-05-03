@@ -1,23 +1,23 @@
-/*
- * Copyright (c) 2010 mathijshenquet
- * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
- *
- * Marlin is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * Marlin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- *
- */
+/***
+    Copyright (c) 2010 mathijshenquet
+    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Marlin is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program; see the file COPYING.  If not,
+    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
+
+***/
 
 namespace Marlin.View.Chrome
 {
@@ -114,7 +114,7 @@ namespace Marlin.View.Chrome
 
         /* Used for the context menu we show when there is a right click */
         GOF.Directory.Async files_menu = null;
-        
+
         bool autocompleted = false;
 
         Marlin.View.Window win;
@@ -215,14 +215,14 @@ namespace Marlin.View.Chrome
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon (icon);
-            
+
             up.connect (() => {
                 File file = get_file_for_path (text);
                 File parent = file.get_parent ();
-                
+
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
-                    
+
                 win.go_up ();
                 grab_focus ();
             });
@@ -242,7 +242,7 @@ namespace Marlin.View.Chrome
 
                 if (path != newpath)
                     change_breadcrumbs (newpath);
-                
+
                 grab_focus ();
             });
 
@@ -305,7 +305,7 @@ namespace Marlin.View.Chrome
                         text_completion = to_add;
                         multiple_completions = true;
                     }
-                    
+
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
@@ -340,7 +340,7 @@ namespace Marlin.View.Chrome
                 file = file.get_parent ();
             else
                 return;
-            
+
             files = GOF.Directory.Async.from_gfile (file);
             if (files.file.exists)
                 files.load (on_file_loaded);

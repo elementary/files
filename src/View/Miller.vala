@@ -1,20 +1,20 @@
-/*
- Copyright (C) 2014 ELementary Developers
+/***
+    Copyright (C) 2015 ELementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Jeremy Wootten <jeremy@elementary.org>
-*/
+    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace Marlin.View {
     public class Miller : GOF.AbstractSlot {
@@ -241,7 +241,7 @@ namespace Marlin.View {
                 return false;
 
             int current_position = slot_list.index (current_slot);
-            
+
             if (slot_list.nth_data (current_position).get_directory_view ().renaming)
                 return false;
 
@@ -265,7 +265,7 @@ namespace Marlin.View {
 
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
- 
+
                     if (current_position < slot_list.length () - 1)
                         next_location = slot_list.nth_data (current_position + 1).location;
 
@@ -323,7 +323,7 @@ namespace Marlin.View {
             });
 
             /* previous width = left edge of slot before the active slot
-             * width = left edge of active slot */  
+             * width = left edge of active slot */
             int page_size = (int) this.hadj.get_page_size ();
             int current_value = (int) this.hadj.get_value ();
             int new_value = current_value;
@@ -385,7 +385,7 @@ namespace Marlin.View {
         public override void zoom_in () {
             ((Marlin.View.Slot)(current_slot)).zoom_in ();
         }
-        
+
         public override void zoom_out () {
             ((Marlin.View.Slot)(current_slot)).zoom_out ();
         }

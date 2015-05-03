@@ -49,16 +49,16 @@ struct MarlinTrashMonitor {
 struct MarlinTrashMonitorClass {
     GObjectClass parent_class;
 
-    void (* trash_state_changed)    (MarlinTrashMonitor 	*trash_monitor,
-                                     gboolean 		 new_state);
+    void (* trash_state_changed)    (MarlinTrashMonitor     *trash_monitor,
+                                     gboolean        new_state);
 };
 
-GType	            marlin_trash_monitor_get_type                   (void);
+GType               marlin_trash_monitor_get_type                   (void);
 
 MarlinTrashMonitor  *marlin_trash_monitor_get                       (void);
-gboolean	        marlin_trash_monitor_is_empty                   (void);
+gboolean            marlin_trash_monitor_is_empty                   (void);
 GIcon               *marlin_trash_monitor_get_icon                  (void);
 
-void		        marlin_trash_monitor_add_new_trash_directories  (void);
+void                marlin_trash_monitor_add_new_trash_directories  (void);
 
 #endif

@@ -138,9 +138,9 @@ eel_gtk_menu_append_separator (GtkMenu *menu)
  * @event: The event that invoked this popup menu.
 **/
 void
-eel_pop_up_context_menu (GtkMenu	     *menu,
-                         gint16	      offset_x,
-                         gint16	      offset_y,
+eel_pop_up_context_menu (GtkMenu         *menu,
+                         gint16       offset_x,
+                         gint16       offset_y,
                          GdkEventButton *event)
 {
     GdkPoint offset;
@@ -165,12 +165,12 @@ eel_pop_up_context_menu (GtkMenu	     *menu,
         button = 0;
     }
 
-    gtk_menu_popup (menu,					/* menu */
-                    NULL,					/* parent_menu_shell */
-                    NULL,					/* parent_menu_item */
+    gtk_menu_popup (menu,                   /* menu */
+                    NULL,                   /* parent_menu_shell */
+                    NULL,                   /* parent_menu_item */
                     NULL,
-                    &offset,			        /* data */
-                    button,					/* button */
+                    &offset,                /* data */
+                    button,                 /* button */
                     event ? event->time : GDK_CURRENT_TIME); /* activate_time */
 
     g_object_ref_sink (menu);

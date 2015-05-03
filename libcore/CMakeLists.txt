@@ -107,16 +107,16 @@ install (FILES ${C_HEADER_FILES} DESTINATION include/pantheon-files-core/)
 
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-	glib-2.0>=2.29.0
-	gthread-2.0
-	gio-2.0
-	pango>=1.1.2
-	gtk+-3.0>=3.4.0
-	gail-3.0
+    glib-2.0>=2.29.0
+    gthread-2.0
+    gio-2.0
+    pango>=1.1.2
+    gtk+-3.0>=3.4.0
+    gail-3.0
     gee-0.8
     gmodule-2.0
-	sqlite3
-	libnotify>=0.7.2)
+    sqlite3
+    libnotify>=0.7.2)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})

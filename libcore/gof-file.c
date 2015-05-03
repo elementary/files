@@ -64,7 +64,7 @@ static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
 static gpointer _g_object_ref0 (gpointer self) {
-	return self ? g_object_ref (self) : NULL;
+    return self ? g_object_ref (self) : NULL;
 }
 
 const gchar     *gof_file_get_thumbnail_path (GOFFile *file);
@@ -803,9 +803,9 @@ gof_file_get_mount_at (GFile *target)
     }
 
     g_list_free_full (mounts, g_object_unref);
-	g_object_unref (monitor);
+    g_object_unref (monitor);
 
-	return found;
+    return found;
 }
 
 static GFileInfo *
@@ -1002,37 +1002,37 @@ static void gof_file_class_init (GOFFileClass * klass) {
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
 
     signals[CHANGED] = g_signal_new ("changed",
-                                    G_TYPE_FROM_CLASS (klass),
-                                    G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GOFFileClass, changed),
-                                    NULL, NULL,
-                                    g_cclosure_marshal_VOID__VOID,
-                                    G_TYPE_NONE, 0);
+                                     G_TYPE_FROM_CLASS (klass),
+                                     G_SIGNAL_RUN_LAST,
+                                     G_STRUCT_OFFSET (GOFFileClass, changed),
+                                     NULL, NULL,
+                                     g_cclosure_marshal_VOID__VOID,
+                                     G_TYPE_NONE, 0);
 
     signals[DESTROY] = g_signal_new ("destroy",
-                                    G_TYPE_FROM_CLASS (klass),
-                                    G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GOFFileClass, destroy),
-                                    NULL, NULL,
-                                    g_cclosure_marshal_VOID__VOID,
-                                    G_TYPE_NONE, 0);
+                                     G_TYPE_FROM_CLASS (klass),
+                                     G_SIGNAL_RUN_LAST,
+                                     G_STRUCT_OFFSET (GOFFileClass, destroy),
+                                     NULL, NULL,
+                                     g_cclosure_marshal_VOID__VOID,
+                                     G_TYPE_NONE, 0);
 
 
     signals[INFO_AVAILABLE] = g_signal_new ("info_available",
-                                    G_TYPE_FROM_CLASS (klass),
-                                    G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GOFFileClass, info_available),
-                                    NULL, NULL,
-                                    g_cclosure_marshal_VOID__VOID,
-                                    G_TYPE_NONE, 0);
+                                             G_TYPE_FROM_CLASS (klass),
+                                             G_SIGNAL_RUN_LAST,
+                                             G_STRUCT_OFFSET (GOFFileClass, info_available),
+                                             NULL, NULL,
+                                             g_cclosure_marshal_VOID__VOID,
+                                             G_TYPE_NONE, 0);
 
     signals[ICON_CHANGED] = g_signal_new ("icon_changed",
-                                    G_TYPE_FROM_CLASS (klass),
-                                    G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GOFFileClass, icon_changed),
-                                    NULL, NULL,
-                                    g_cclosure_marshal_VOID__VOID,
-                                    G_TYPE_NONE, 0);
+                                          G_TYPE_FROM_CLASS (klass),
+                                          G_SIGNAL_RUN_LAST,
+                                          G_STRUCT_OFFSET (GOFFileClass, icon_changed),
+                                          NULL, NULL,
+                                          g_cclosure_marshal_VOID__VOID,
+                                          G_TYPE_NONE, 0);
 
     /*g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_NAME, g_param_spec_string ("name", "name", "name", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_SIZE, g_param_spec_uint64 ("size", "size", "size", 0, G_MAXUINT64, 0U, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
@@ -1520,7 +1520,7 @@ gof_file_get (GFile *location)
     GOFDirectoryAsync *dir = NULL;
 
 g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
- 
+
     if ((parent = g_file_get_parent (location)) != NULL) {
         dir = gof_directory_async_cache_lookup (parent);
         if (dir != NULL) {
@@ -2278,10 +2278,10 @@ gof_file_can_set_owner (GOFFile *file)
 {
     /* unknown file uid */
     if (file->uid == -1)
-		return FALSE;
+        return FALSE;
 
-	/* root */
-	return geteuid() == 0;
+    /* root */
+    return geteuid() == 0;
 }
 
 /* copied from nautilus-file.c */
@@ -2300,22 +2300,22 @@ gof_file_can_set_owner (GOFFile *file)
 gboolean
 gof_file_can_set_group (GOFFile *file)
 {
-	uid_t user_id;
+    uid_t user_id;
 
-	if (file->gid == -1)
-		return FALSE;
+    if (file->gid == -1)
+        return FALSE;
 
-	user_id = geteuid();
+    user_id = geteuid();
 
-	/* Owner is allowed to set group (with restrictions). */
-	if (user_id == (uid_t) file->uid)
-		return TRUE;
+    /* Owner is allowed to set group (with restrictions). */
+    if (user_id == (uid_t) file->uid)
+        return TRUE;
 
-	/* Root is also allowed to set group. */
-	if (user_id == 0)
-		return TRUE;
+    /* Root is also allowed to set group. */
+    if (user_id == 0)
+        return TRUE;
 
-	return FALSE;
+    return FALSE;
 }
 
 /* copied from nautilus-file.c */
@@ -2330,26 +2330,26 @@ gof_file_can_set_group (GOFFile *file)
 GList *
 gof_file_get_settable_group_names (GOFFile *file)
 {
-	uid_t user_id;
-	GList *result = NULL;
+    uid_t user_id;
+    GList *result = NULL;
 
-	if (!gof_file_can_set_group (file))
-		return NULL;
+    if (!gof_file_can_set_group (file))
+        return NULL;
 
-	/* Check the user. */
-	user_id = geteuid();
+    /* Check the user. */
+    user_id = geteuid();
 
-	if (user_id == 0) {
-		/* Root is allowed to set group to anything. */
-		result = eel_get_all_group_names ();
-	} else if (user_id == (uid_t) file->uid) {
-		/* Owner is allowed to set group to any that owner is member of. */
-		result = eel_get_group_names_for_user ();
-	} else {
-		g_warning ("unhandled case in %s", G_STRFUNC);
-	}
+    if (user_id == 0) {
+        /* Root is allowed to set group to anything. */
+        result = eel_get_all_group_names ();
+    } else if (user_id == (uid_t) file->uid) {
+        /* Owner is allowed to set group to any that owner is member of. */
+        result = eel_get_group_names_for_user ();
+    } else {
+        g_warning ("unhandled case in %s", G_STRFUNC);
+    }
 
-	return result;
+    return result;
 }
 
 /* copied from nautilus-file.c */
@@ -2572,9 +2572,9 @@ gof_file_get_preview_path(GOFFile* file)
 gboolean
 gof_file_can_unmount (GOFFile *file)
 {
-	g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-	return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
+    return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
 }
 
 gboolean

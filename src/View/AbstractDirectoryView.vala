@@ -1,26 +1,26 @@
-/*
- Copyright (C) 2014 elementary Developers
+/***
+    Copyright (C) 2015 elementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Jeremy Wootten <jeremy@elementary.org>
+    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+***/
+
+/* Implementations of AbstractDirectoryView are
+     * IconView
+     * ListView
+     * ColumnView
 */
-
-/** Implementations of AbstractDirectoryView are
- * IconView
- * ListView
- * ColumnView
-**/
 
 namespace FM {
     public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
@@ -163,7 +163,8 @@ namespace FM {
         uint thumbnail_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
-        /* TODO Support for preview see bug #1380139 */
+        /**TODO** Support for preview see bug #1380139 */
+
         private string? previewer = null;
 
         /* Rename support */
@@ -193,24 +194,25 @@ namespace FM {
         private GLib.List<GLib.AppInfo> open_with_apps;
         protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
 
-        /* TODO: Remove the "unowned" portion of the declaration for
-                 selected_files and on code that repeats its type.
+        /**TODO**:  Remove the "unowned" portion of the declaration for
+                    selected_files and on code that repeats its type.
 
-                 Selected files are originally obtained with
-                 gtk_tree_model_get(): this function increases the reference
-                 count of the file object.
+                    Selected files are originally obtained with
+                    gtk_tree_model_get(): this function increases the reference
+                    count of the file object.
 
-                 In order to prevent the obvious memory leak when inserting
-                 these owned objects into the unowned element container, the
-                 objects are unreferenced upon being inserted.
+                    In order to prevent the obvious memory leak when inserting
+                    these owned objects into the unowned element container, the
+                    objects are unreferenced upon being inserted.
 
-                 This results in a container filled with weak references to
-                 objects with reference counts of 1.
+                    This results in a container filled with weak references to
+                    objects with reference counts of 1.
 
-                 A scenario may occur that the cell holding the original file
-                 object is destroyed, and the container is left with pointers
-                 pointing to freed memory. Reference counting the container
-                 elements would prevent this possibility. */
+                    A scenario may occur that the cell holding the original file
+                    object is destroyed, and the container is left with pointers
+                    pointing to freed memory. Reference counting the container
+                    elements would prevent this possibility.*/
+
         protected GLib.List<unowned GOF.File> selected_files = null;
 
         private GLib.List<unowned GOF.File>? templates = null;
@@ -824,9 +826,10 @@ namespace FM {
             unselect_all ();
             select_gof_file (file_to_rename);
 
-            /* Assume writability on remote locations
-             * TODO Reliably determine writability with various remote protocols.
-             */
+            /* Assume writability on remote locations */
+
+            /**TODO** Reliably determine writability with various remote protocols.*/
+
             if (file_to_rename.is_writable () || !slot.directory.is_local)
                 start_renaming_file (file_to_rename, false);
             else
@@ -852,8 +855,10 @@ namespace FM {
 
             /* Allow time for the file to appear in the tree model before renaming
              * Wait longer for remote locations to allow for reload.
-             * TODO: Remove need for hard coded delay.
              */
+
+            /**TODO** Remove need for hard coded delay*/
+
             int delay = local ? 250 : 500;
             GLib.Timeout.add (delay, () => {
                 view.rename_file (file_to_rename);
@@ -920,8 +925,9 @@ namespace FM {
                 return;
 
             if (selected_files.next != null)
-                /* TODO invoke batch renamer see bug #1014122*/
                 warning ("Cannot rename multiple files (yet) - renaming first only");
+
+            /**TODO** invoke batch renamer see bug #1014122*/
 
             var file = selected_files.first ().data;
             bool preselect_whole_name = file.is_folder ();
@@ -1991,7 +1997,9 @@ namespace FM {
                                  file.is_smb_server ());
 
             action_set_enabled (common_actions, "bookmark", can_bookmark);
-            /* TODO inhibit copy for unreadable files see bug #1392465*/
+
+            /**TODO** inhibit copy for unreadable files see bug #1392465*/
+
             action_set_enabled (common_actions, "copy", !in_trash);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
@@ -2449,7 +2457,7 @@ namespace FM {
                         new_empty_folder ();
 
                    return true;
-                   
+
                 case Gdk.Key.A:
                     if (shift_pressed && only_control_pressed)
                         invert_selection ();

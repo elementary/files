@@ -77,7 +77,7 @@ static void iconized_entry_changed_cb (GtkEditable *entry,
 
 enum {
     RESPONSE_CONNECT
-};	
+};
 
 struct MethodInfo {
     const char *scheme;
@@ -160,7 +160,7 @@ connect_dialog_set_connecting (MarlinConnectServerDialog *dialog)
     gint width, height;
 
     connect_dialog_restore_info_bar (dialog, GTK_MESSAGE_INFO);
-    gtk_widget_show (dialog->details->info_bar);	
+    gtk_widget_show (dialog->details->info_bar);
 
     content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (dialog->details->info_bar));
 
@@ -228,7 +228,7 @@ iconized_entry_restore (gpointer data,
 
     g_signal_handlers_disconnect_by_func (entry,
                                           iconized_entry_changed_cb,
-                                          dialog);	
+                                          dialog);
 }
 
 static void
@@ -295,7 +295,7 @@ connect_dialog_set_info_bar_error (MarlinConnectServerDialog *dialog,
 
         g_free (str);
 
-        break;		
+        break;
     case G_IO_ERROR_FAILED:
     default:
         label = gtk_label_new (error->message);
@@ -1023,8 +1023,8 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     }
 
     gtk_widget_show (combo);
-	gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
-	gtk_grid_attach_next_to (GTK_GRID (grid), combo, label,
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+    gtk_grid_attach_next_to (GTK_GRID (grid), combo, label,
                              GTK_POS_RIGHT, 1, 1);
     g_signal_connect_swapped (combo, "changed",
                               G_CALLBACK (connect_dialog_setup_for_type),
