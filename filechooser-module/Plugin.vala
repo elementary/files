@@ -54,10 +54,8 @@ public void gtk_module_init ([CCode (array_length_cname = "argc", array_length_p
 }
 
 private static bool get_supported_gtk () {
-    if (Gtk.get_major_version () >= 3) {
-        if (Gtk.get_minor_version () >= 14)
-            return true;
-    }
+    if (Gtk.check_version (3, 14, 0) == null)
+        return true;
 
-    return false;
+    return false;    
 }
