@@ -18,7 +18,6 @@ PACKAGES
     posix
     gee-0.8 
 OPTIONS
-    --Xcc=-lm
     --thread   
 )
 

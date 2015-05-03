@@ -48,7 +48,7 @@ public class CustomFileChooserDialog : Object {
         chooser = (d as Gtk.FileChooser);
 
         d.deletable = false;
-        prepare_action_section ();
+        assign_container_box ();
         setup_filter_box ();
 
         remove_gtk_widgets ();
@@ -64,9 +64,9 @@ public class CustomFileChooserDialog : Object {
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (pathbar);
-        if (gtk_folder_button != null
-            && chooser.get_action () == Gtk.FileChooserAction.SELECT_FOLDER
-            && chooser.get_action () == Gtk.FileChooserAction.CREATE_FOLDER) {
+        if ((gtk_folder_button != null)
+            && (chooser.get_action () == Gtk.FileChooserAction.SELECT_FOLDER
+                || chooser.get_action () == Gtk.FileChooserAction.CREATE_FOLDER)) {
         	var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
         	create_folder_button.clicked.connect (() => {
         		gtk_folder_button.clicked ();
@@ -87,7 +87,7 @@ public class CustomFileChooserDialog : Object {
             try {
                 chooser.set_current_folder_file (parent);
             } catch (Error e) {
-                error (e.message);
+                error ("%s\n", e.message);
             }
         });
 
@@ -121,7 +121,7 @@ public class CustomFileChooserDialog : Object {
                 if (w0.get_name () == GTK_PATHBAR_PATH[0]) {
                     /* Add top separator between headerbar and filechooser when is not SAVE action */
                     if (chooser.get_action () != Gtk.FileChooserAction.SAVE) {
-                        var chooserwidget = w0.@ref () as Gtk.Container;
+                        var chooserwidget = w0 as Gtk.Container;
                         chooserwidget.vexpand = true;
 
                         (root as Gtk.Container).remove (w0);
@@ -175,7 +175,7 @@ public class CustomFileChooserDialog : Object {
         }   
     }
 
-    private static void prepare_action_section () {
+    private static void assign_container_box () {
         var tmp = d.get_widget_for_response (BUTTON_RESPONSE);
 
         var container = tmp.get_parent ();
@@ -196,8 +196,7 @@ public class CustomFileChooserDialog : Object {
             });
 
             filters.foreach ((filter) => {
-                var f = filter.@ref () as Gtk.FileFilter;
-                combo_box.append_text (f.get_filter_name ()); 
+                combo_box.append_text (filter.get_filter_name ()); 
             });
 
             combo_box.active = 0;

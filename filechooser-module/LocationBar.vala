@@ -21,34 +21,30 @@
  */
 
 namespace Marlin {
-    public const string ICON_ABOUT_LOGO = "system-file-manager";
-    public const string ICON_FILESYSTEM = "drive-harddisk-system";
-    public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
-    public const string ICON_FOLDER = "folder";
-    public const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
-    public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
-    public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
-    public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
-    public const string ICON_FOLDER_REMOTE = "folder-remote";
-    public const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
-    public const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";
-    public const string ICON_FOLDER_VIDEOS_SYMBOLIC = "folder-videos-symbolic";
-    public const string ICON_GO_HOME_SYMBOLIC = "go-home-symbolic";
-    public const string ICON_HOME = "user-home";
-    public const string ICON_NETWORK = "network-workgroup";
-    public const string ICON_NETWORK_SERVER = "network-server";
-    public const string ICON_TRASH = "user-trash";
-    public const string ICON_TRASH_FULL = "user-trash-full";
-    public const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
+    private const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
+    private const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
+    private const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
+    private const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
+    private const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
+    private const string ICON_FOLDER_REMOTE = "folder-remote";
+    private const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
+    private const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";
+    private const string ICON_FOLDER_VIDEOS_SYMBOLIC = "folder-videos-symbolic";
+    private const string ICON_GO_HOME_SYMBOLIC = "go-home-symbolic";
+    private const string ICON_NETWORK = "network-workgroup";
+    private const string ICON_NETWORK_SERVER = "network-server";
+    private const string ICON_TRASH = "user-trash";
+    private const string ICON_TRASH_FULL = "user-trash-full";
+    private const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
 
-    public const string PROTOCOL_NAME_AFP = "AFP";
-    public const string PROTOCOL_NAME_DAV =  "DAV";
-    public const string PROTOCOL_NAME_DAVS = "DAVS";
-    public const string PROTOCOL_NAME_FTP = "FTP";
-    public const string PROTOCOL_NAME_NETWORK = "Network";
-    public const string PROTOCOL_NAME_SFTP = "SFTP";
-    public const string PROTOCOL_NAME_SMB = "SMB";
-    public const string PROTOCOL_NAME_TRASH = "Trash";
+    private const string PROTOCOL_NAME_AFP = "AFP";
+    private const string PROTOCOL_NAME_DAV =  "DAV";
+    private const string PROTOCOL_NAME_DAVS = "DAVS";
+    private const string PROTOCOL_NAME_FTP = "FTP";
+    private const string PROTOCOL_NAME_NETWORK = "Network";
+    private const string PROTOCOL_NAME_SFTP = "SFTP";
+    private const string PROTOCOL_NAME_SMB = "SMB";
+    private const string PROTOCOL_NAME_TRASH = "Trash";
 }
 
 namespace Marlin.View.Chrome
@@ -68,7 +64,7 @@ namespace Marlin.View.Chrome
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {
-                    critical ("Tried to set null path");
+                    critical ("Tried to set null path\n");
                 }
             }
 
@@ -78,7 +74,6 @@ namespace Marlin.View.Chrome
         }
 
         public new signal void activate (GLib.File file);
-        public signal void activate_alternate (GLib.File file);
         public signal void escape ();
         public signal void change_to_file (string filename);
 
@@ -89,7 +84,7 @@ namespace Marlin.View.Chrome
 
         public LocationBar () {
             bread = new Breadcrumbs ();
-            bread.escape.connect (() => { escape(); });
+            bread.escape.connect (() => { escape (); });
             bread.path_changed.connect (on_path_changed);
 
             bread.reload.connect (() => {
@@ -285,8 +280,7 @@ namespace Marlin.View.Chrome
                                             int y,
                                             Gtk.SelectionData selection_data,
                                             uint info,
-                                            uint timestamp
-                                            ) {
+                                            uint timestamp) {
             bool success = false;
 
             if (!drop_data_ready) {

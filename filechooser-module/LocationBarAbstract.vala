@@ -42,13 +42,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         TEXT_URI_LIST,
     }
 
-    protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
-
-
     public string current_right_click_path;
     public string current_right_click_root;
 
-    
     protected string text_completion = "";
     protected bool multiple_completions = false;
     protected bool text_changed = false;
@@ -87,7 +83,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     string current_path = "";
 
     int selected = -1;
-    int space_breads = 12;
     int x;
     int y;
     string protocol;
@@ -114,13 +109,15 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         button_context.add_class ("pathbar");
 
         Gtk.Border border = button_context.get_padding (Gtk.StateFlags.NORMAL);
-        //Granite.Widgets.Utils.set_theming (this, , null,
-               //                            );
 
         var css = new Gtk.CssProvider ();
-        css.load_from_data ("* {
-.noradius-button{border-radius:0px;}
+        try {
+            css.load_from_data ("* {
+.noradius-button {border-radius:0px;}
 }", 0);
+        } catch (Error e) {
+            error ("%s\n", e.message);
+        }
 
         this.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
@@ -147,7 +144,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         changed.connect (on_change);
 
         /* Drag and drop */
-        Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
+        Gtk.TargetEntry target_uri_list = { "text/uri-list", 0, TargetType.TEXT_URI_LIST };
         Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, {target_uri_list}, Gdk.DragAction.MOVE);
         drag_leave.connect (on_drag_leave);
         drag_motion.connect (on_drag_motion);
@@ -201,7 +198,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         if (timeout == -1 && event.button == 1) {
             timeout = (int) Timeout.add (150, () => {
-                select_bread_from_coord (event);
                 timeout = -1;
                 return false;
             });
@@ -213,9 +209,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 change_breadcrumbs (newpath, true);
                 activate_alternate (get_file_for_path (newpath));
             }
-
-        if (event.button == 3)
-            return select_bread_from_coord (event);
 
         return true;
     }
@@ -490,38 +483,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return file;
     }
     
-    /**
-     * Select the breadcrumb to make a right click. This function check
-     * where the user click, then, it loads a context menu with the others
-     * directory in it parent.
-     * See load_right_click_menu() for the context menu.
-     *
-     * @param event a button event to compute the coords of the new menu.
-     *
-     **/
-    private bool select_bread_from_coord (Gdk.EventButton event) {
-        var el = get_element_from_coordinates ((int) event.x, (int) event.y);
-
-        if (el != null) {
-            var newpath = get_path_from_element (el);
-            current_right_click_path = newpath;
-            current_right_click_root = Marlin.Utils.get_parent (newpath);
-            double menu_x_root;
-
-            if (el.x - space_breads < 0)
-                menu_x_root = event.x_root - event.x + el.x;
-            else
-                menu_x_root = event.x_root - event.x + el.x - space_breads;
-
-            double menu_y_root = event.y_root - event.y + get_allocated_height ();
-            var style_context = get_style_context ();
-            var padding = style_context.get_padding (style_context.get_state ());
-            load_right_click_menu (menu_x_root, menu_y_root - padding.bottom - padding.top);
-            return true;
-        }
-        return false;
-    }    
-
     public virtual string? update_breadcrumbs (string newpath, string breadpath) {
         string strloc;
 
