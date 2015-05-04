@@ -738,7 +738,8 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
-    if (!gof_file_is_writable (file)) {
+    /* We hide lock icon if in recents, because they are not real files and it would always shown. */
+    if (!gof_file_is_writable (file) && !g_file_has_uri_scheme (file->location, "recent")) {
         if (gof_file_is_readable (file))
             gof_file_add_emblem (file, "emblem-readonly");
         else
