@@ -33,12 +33,13 @@ public class CustomFileChooserDialog : Object {
 
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_box" };
-    private const string[] GTK_FILTERCHOSSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
+    private const string[] GTK_FILTERCHOSSER_PATH = { "extra_and_filters" };
     private const string[] GTK_CREATEFOLDER_BUTTON = { "browse_header_stack", "browse_path_bar_hbox", "browse_new_folder_button" };
 
     private const string FILE_PREFIX = "file://";
 
-    private GenericArray<string> path_list = new GenericArray<string> ();
+    private GenericArray<string> forward_path_list = new GenericArray<string> ();
+    private Gee.ArrayList<string> history  = new Gee.ArrayList<string> ();
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
         /* The "d" variable is the main dialog */
@@ -64,9 +65,7 @@ public class CustomFileChooserDialog : Object {
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (pathbar);
-        if ((gtk_folder_button != null)
-            && (chooser.get_action () == Gtk.FileChooserAction.SELECT_FOLDER
-                || chooser.get_action () == Gtk.FileChooserAction.CREATE_FOLDER)) {
+        if ((gtk_folder_button != null) && (chooser.get_action () != Gtk.FileChooserAction.OPEN)) {
         	var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
         	create_folder_button.clicked.connect (() => {
         		gtk_folder_button.clicked ();
@@ -75,38 +74,33 @@ public class CustomFileChooserDialog : Object {
         	header_bar.pack_end (create_folder_button);
         }
 
-
         d.set_titlebar (header_bar);
         d.show_all ();
         
         button_back.clicked.connect (() => {
-            path_list.add (chooser.get_current_folder ());
-            var parent = chooser.get_current_folder_file ().get_parent ();
-            pathbar.path = FILE_PREFIX + parent.get_path ();
-            
-            try {
-                chooser.set_current_folder_file (parent);
-            } catch (Error e) {
-                error ("%s\n", e.message);
-            }
+            forward_path_list.add (chooser.get_current_folder ());
+     
+            history.remove (history.last ());
+            chooser.set_current_folder (history.last ()); 
+            history.remove (history.last ());
         });
 
         button_forward.clicked.connect (() => {
-            if (path_list.length > 0) {
-                int length = path_list.length - 1;
-                pathbar.path = path_list.@get (length);
-                chooser.set_current_folder (path_list.@get (length));
-                path_list.remove (path_list.@get (length));
+            if (forward_path_list.length > 0) {
+                int length = forward_path_list.length - 1;
+                
+                pathbar.path = forward_path_list.@get (length);
+                chooser.set_current_folder (forward_path_list.@get (length));
+                forward_path_list.remove (forward_path_list.@get (length));
             }
         });
 
         chooser.current_folder_changed.connect (() => {
-            button_forward.sensitive = (path_list.length > 0);
+            button_back.sensitive = (history.size > 0);
+            button_forward.sensitive = (forward_path_list.length > 0);
+            history.add (chooser.get_current_folder ());
+
             pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
-            if (chooser.get_current_folder () == "/")
-                button_back.sensitive = false;
-            else
-                button_back.sensitive = true;    
         });
         
         pathbar.change_to_file.connect ((file) => {
@@ -128,6 +122,7 @@ public class CustomFileChooserDialog : Object {
                         var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
                         root_box.add (chooserwidget); 
+                        root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
                         (root as Gtk.Container).add (root_box);
                         rootwidget = chooserwidget;
                     } else {
@@ -162,12 +157,8 @@ public class CustomFileChooserDialog : Object {
                                 }
                             } 
                         } else {
-                            if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0]) {
-                                foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
-                                    if (w5.get_name () == GTK_FILTERCHOSSER_PATH[1])
-                                       (w1 as Gtk.Container).remove (w5);
-                                }
-                            }                            
+                            if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0])
+                                (w0 as Gtk.Container).remove (w1);
                         }   
                     }
                 }

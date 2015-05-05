@@ -63,9 +63,8 @@ namespace Marlin.View.Chrome
                         bread.text = "";
                         bread.change_breadcrumbs (new_path);
                     }
-                } else {
-                    critical ("Tried to set null path\n");
-                }
+                } else
+                    warning ("Tried to set null path\n");
             }
 
             get {
@@ -85,27 +84,15 @@ namespace Marlin.View.Chrome
         public LocationBar () {
             bread = new Breadcrumbs ();
             bread.escape.connect (() => { escape (); });
-            bread.path_changed.connect (on_path_changed);
-
-            bread.reload.connect (() => {
-            });
-
             bread.activate_alternate.connect ((file) => {
                 path = "file://" + file.get_path ();
-                change_to_file (file.get_path ());              
+                change_to_file (file.get_path ());            
             });
             
             margin_top = 4;
             margin_bottom = 4;
             margin_left = 3;
             pack_start (bread, true, true, 0);
-        }
-
-        private void on_path_changed (File? file) {
-            if (file == null)
-                return;
-
-            activate (file);
         }
     }
 
@@ -124,7 +111,8 @@ namespace Marlin.View.Chrome
 
         public Breadcrumbs ()
         {
-            /*  the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
+            /* The string split of the path url is kinda too basic,
+             * we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_AFP});
             add_icon ({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_DAV});
             add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_DAVS});
