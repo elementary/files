@@ -1,4 +1,3 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
  * Copyright (c) 2015 Pantheon Developers (http://launchpad.net/elementary)
  *
@@ -33,8 +32,9 @@ public class CustomFileChooserDialog : Object {
 
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_box" };
-    private const string[] GTK_FILTERCHOSSER_PATH = { "extra_and_filters" };
-    private const string[] GTK_CREATEFOLDER_BUTTON = { "browse_header_stack", "browse_path_bar_hbox", "browse_new_folder_button" };
+    private const string[] GTK_FILTERCHOSSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
+    private const string[] GTK_CREATEFOLDER_BUTTON_PATH = { "browse_header_stack", "browse_path_bar_hbox", "browse_new_folder_button" };
+    private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
     private const string FILE_PREFIX = "file://";
 
@@ -55,8 +55,12 @@ public class CustomFileChooserDialog : Object {
         remove_gtk_widgets ();
 
         var header_bar = new Gtk.HeaderBar ();
+        
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_back.sensitive = false;
+        
         var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_forward.sensitive = false;
 
         var pathbar = new Marlin.View.Chrome.LocationBar ();
         pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
@@ -107,13 +111,13 @@ public class CustomFileChooserDialog : Object {
             chooser.set_current_folder (file);
         });
     }
-    
+
     /* Remove GTK's native path bar and filefilter chooser by widgets names */
     private static void remove_gtk_widgets () {
         foreach (var root in d.get_children ()) {
             foreach (var w0 in (root as Gtk.Container).get_children ()) {
                 if (w0.get_name () == GTK_PATHBAR_PATH[0]) {
-                    /* Add top separator between headerbar and filechooser when is not SAVE action */
+                    /* Add top separator between headerbar and filechooser when is not Save action */
                     if (chooser.get_action () != Gtk.FileChooserAction.SAVE) {
                         var chooserwidget = w0 as Gtk.Container;
                         chooserwidget.vexpand = true;
@@ -122,7 +126,6 @@ public class CustomFileChooserDialog : Object {
                         var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
                         root_box.add (chooserwidget); 
-                        root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
                         (root as Gtk.Container).add (root_box);
                         rootwidget = chooserwidget;
                     } else {
@@ -133,15 +136,19 @@ public class CustomFileChooserDialog : Object {
                         if (w1.get_name () == GTK_PATHBAR_PATH[1]) {
                             foreach (var paned in (w1 as Gtk.Container).get_children ()) {
                                 foreach (var w2 in (paned as Gtk.Container).get_children ()) {
-                                    if (w2.get_name () == GTK_PATHBAR_PATH[2]) {
+                                    if (w2.get_name () == PLACES_SIDEBAR_PATH) {
+                                        (w2 as Gtk.PlacesSidebar).show_desktop = false; 
+                                        (w2 as Gtk.PlacesSidebar).show_enter_location = false;
+                                    }                                      
+                                    else if (w2.get_name () == GTK_PATHBAR_PATH[2]) {
                                         foreach (var w3 in (w2 as Gtk.Container).get_children ()) {
                                             if (w3.get_name () == GTK_PATHBAR_PATH[3]) {
                                             	foreach (var w4 in (w3 as Gtk.Container).get_children ()) {
-                                            		if (w4.get_name () == GTK_CREATEFOLDER_BUTTON[0]) {
+                                            		if (w4.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[0]) {
                                             			foreach (var w5 in (w4 as Gtk.Container).get_children ()) {
-                                            				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON[1]) {
+                                            				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[1]) {
                                             					foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
-                                            						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON[2])
+                                            						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[2])
                                             							/* Register the button so we can use it's signal */
                                             							gtk_folder_button = w6.@ref () as Gtk.Button;
                                             					}	
@@ -157,8 +164,12 @@ public class CustomFileChooserDialog : Object {
                                 }
                             } 
                         } else {
-                            if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0])
-                                (w0 as Gtk.Container).remove (w1);
+                            if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0]) {
+                                foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
+                                    if (w5.get_name () == GTK_FILTERCHOSSER_PATH[1])
+                                       (w1 as Gtk.Container).remove (w5);
+                                }
+                            }
                         }   
                     }
                 }
