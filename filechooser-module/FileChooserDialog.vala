@@ -41,6 +41,8 @@ public class CustomFileChooserDialog : Object {
     private GenericArray<string> forward_path_list = new GenericArray<string> ();
     private Gee.ArrayList<string> history  = new Gee.ArrayList<string> ();
 
+    private static bool filters_available = false;
+
     public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
         /* The "d" variable is the main dialog */
         d = _dialog;
@@ -51,7 +53,6 @@ public class CustomFileChooserDialog : Object {
         d.deletable = false;
         assign_container_box ();
         setup_filter_box ();
-
         remove_gtk_widgets ();
 
         var header_bar = new Gtk.HeaderBar ();
@@ -126,6 +127,8 @@ public class CustomFileChooserDialog : Object {
                         var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
                         root_box.add (chooserwidget); 
+                        if (!filters_available)
+                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));                        
                         (root as Gtk.Container).add (root_box);
                         rootwidget = chooserwidget;
                     } else {
@@ -187,6 +190,7 @@ public class CustomFileChooserDialog : Object {
     private static void setup_filter_box () {
         var filters = chooser.list_filters (); 
         if (filters.length () > 0) {
+            filters_available = true;
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.margin_top = 4;
 
