@@ -2478,7 +2478,7 @@ gboolean
 gof_file_is_folder (GOFFile *file)
 {
     /* TODO check this works for non-local files and other uri schemes*/
-    if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
+    if ((file->is_directory && !gof_file_is_root_network_folder (file)))
         return TRUE;
 
     if (gof_file_is_smb_share (file))

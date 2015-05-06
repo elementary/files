@@ -724,20 +724,19 @@ namespace FM {
 /*** Private methods */
     /** File operations */
 
-        private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
+        private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
             if (updates_frozen || in_trash)
                 return;
 
-            if (in_recent) {
-                view_selected_file ();
-                return;
-            }
-
-            GLib.File location = file.get_target_location ();
-            if (screen == null)
-                screen = Eel.gtk_widget_get_screen (this);
+            GOF.File file = _file;
+            if (in_recent)
+                file = GOF.File.get_by_uri (file.get_display_target_uri ());
 
             default_app = Marlin.MimeActions.get_default_application_for_file (file);
+            GLib.File location = file.get_target_location ();
+
+            if (screen == null)
+                screen = Eel.gtk_widget_get_screen (this);
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
@@ -1796,6 +1795,10 @@ namespace FM {
 
                 menu.append_section (null, clipboard_menu);
             } else if (in_recent) {
+                var open_menu = build_menu_open (ref builder);
+                if (open_menu != null)
+                    menu.append_section (null, open_menu);
+
                 menu.append_section (null, builder.get_object ("view-in-location") as GLib.Menu);
                 menu.append_section (null, builder.get_object ("forget") as GLib.Menu);
 
@@ -1891,9 +1894,19 @@ namespace FM {
 
         private GLib.MenuModel build_menu_open (ref Gtk.Builder builder) {
             var menu = new GLib.Menu ();
+            GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GLib.List<unowned GOF.File> files_for_action = get_files_for_action ();
+            unowned GLib.List<unowned GOF.File> selection = null;
+
+            if (in_recent) {
+                files_for_action.@foreach ((file) => {
+                    selection.append (GOF.File.get_by_uri (file.get_display_target_uri ()));
+                });
+            } else
+                selection = files_for_action;
+
             unowned GOF.File selected_file = selection.data;
 
             if (!selected_file.is_folder () && selected_file.is_executable ()) {
@@ -1907,7 +1920,8 @@ namespace FM {
                 }
             }
 
-            GLib.MenuModel? app_submenu = build_submenu_open_with_applications (ref builder, selection);
+            // Hide submenu for the moment
+            (!in_recent ? app_submenu = build_submenu_open_with_applications (ref builder, selection) : app_submenu = null);
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ())
@@ -2085,7 +2099,16 @@ namespace FM {
         }
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
-            default_app = Marlin.MimeActions.get_default_application_for_files (selection);
+            GLib.List<GOF.File> files = null;
+
+            if (in_recent) {
+                selection.@foreach ((file) => {
+                    files.append (GOF.File.get_by_uri (file.get_display_target_uri ()));
+                });
+
+                default_app = Marlin.MimeActions.get_default_application_for_files (files);
+            } else
+                default_app = Marlin.MimeActions.get_default_application_for_files (selection);
         }
 
         private void update_paste_action_enabled (bool single_folder) {
@@ -2485,7 +2508,7 @@ namespace FM {
                     if (in_trash)
                         return false;
                     else if (in_recent)
-                        view_selected_file ();
+                        activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                     else if (only_alt_pressed)
