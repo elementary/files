@@ -81,7 +81,7 @@ namespace Marlin.View.Chrome
             natural_width = 3000;
         }
 
-        public LocationBar (Gtk.Dialog parent) {
+        public LocationBar (Gtk.Widget parent) {
             bread = new Breadcrumbs ();
             bread.escape.connect (() => { escape (); });
             bread.activate_alternate.connect ((file) => {
@@ -92,6 +92,7 @@ namespace Marlin.View.Chrome
             bread.path_changed.connect ((file) => {
                 path = "file://" + file.get_path ();
                 change_to_file (file.get_path ());
+
                 parent.grab_focus ();
             });
             
@@ -196,7 +197,6 @@ namespace Marlin.View.Chrome
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
                     
-                //win.go_up ();
                 grab_focus ();
             });
 

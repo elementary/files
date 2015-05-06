@@ -496,7 +496,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         foreach (BreadcrumbsElement element in elements) {
                 string s = element.text;
                 if (first) {
-                    if (s == "" || s == "file://")
+                    if (s == "" || s == ROOT_FS_URI)
                         newpath = "/";
                     else
                         newpath = s;

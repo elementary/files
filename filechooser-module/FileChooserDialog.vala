@@ -64,7 +64,7 @@ public class CustomFileChooserDialog : Object {
         var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_forward.sensitive = false;
 
-        var pathbar = new Marlin.View.Chrome.LocationBar (d);
+        var pathbar = new Marlin.View.Chrome.LocationBar (rootwidget);
         pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
         pathbar.hexpand = true;
 
@@ -133,7 +133,7 @@ public class CustomFileChooserDialog : Object {
                         (root as Gtk.Container).add (root_box);
                         rootwidget = chooserwidget;
                         rootwidget = w0;
-
+                        rootwidget.can_focus = true;
                     foreach (var w1 in (rootwidget as Gtk.Container).get_children ()) {
                         if (w1.name == "GtkBox" && w1.get_name () != GTK_PATHBAR_PATH[1]) {
                             var new_w1 = w1.@ref ();
@@ -175,7 +175,6 @@ public class CustomFileChooserDialog : Object {
                                             			}
                                             		}
                                             	}
-
                                                 (w2 as Gtk.Container).remove (w3);
                                             }
                                         }

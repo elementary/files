@@ -324,7 +324,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_activate () {
-        print ("PRESSED\n\n");
         string path = text + text_completion;
         path_changed (get_file_for_path (path));
         text_completion = "";      
@@ -731,3 +730,4 @@ namespace Marlin.Utils {
         return file.get_parent ().get_uri ();
     }
 }
+
