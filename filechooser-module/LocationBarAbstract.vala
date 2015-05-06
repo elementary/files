@@ -87,7 +87,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     int y;
     string protocol;
 
-    public signal void completed ();
     public signal void escape ();
     public signal void up ();
     public signal void down ();
@@ -156,7 +155,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         switch (event.keyval) {
             case Gdk.Key.KP_Tab:
             case Gdk.Key.Tab:
-                complete ();
                 return true;
 
             case Gdk.Key.KP_Down:
@@ -257,9 +255,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             ignore_change = false;
             return;
         }
-
-        text_completion = "";
-        need_completion ();
     }
     
     void after_realize () {
@@ -272,7 +267,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     bool after_motion_notify (Gdk.EventMotion event) {
-
         if (is_focus)
             return false;
 
@@ -330,9 +324,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     }
 
     void on_activate () {
+        print ("PRESSED\n\n");
         string path = text + text_completion;
         path_changed (get_file_for_path (path));
-        text_completion = "";
+        text_completion = "";      
     }
 
     protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
@@ -359,21 +354,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         icons.append (icon);
     }
-    
-    public void complete () {
-        if (text_completion.length == 0)
-            return;
 
-        string path = text + text_completion;
-        
-        /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-        if (!multiple_completions) {
-            set_entry_text (path + "/");
-            completed ();
-        } else
-            set_entry_text (path);
-    }
-    
     public void reset_elements_states () {
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
@@ -741,8 +722,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         return true;
     }
-
-    protected abstract void load_right_click_menu (double x, double y);
 }
 
 

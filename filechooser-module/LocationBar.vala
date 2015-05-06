@@ -81,12 +81,18 @@ namespace Marlin.View.Chrome
             natural_width = 3000;
         }
 
-        public LocationBar () {
+        public LocationBar (Gtk.Dialog parent) {
             bread = new Breadcrumbs ();
             bread.escape.connect (() => { escape (); });
             bread.activate_alternate.connect ((file) => {
                 path = "file://" + file.get_path ();
                 change_to_file (file.get_path ());            
+            });
+            
+            bread.path_changed.connect ((file) => {
+                path = "file://" + file.get_path ();
+                change_to_file (file.get_path ());
+                parent.grab_focus ();
             });
             
             margin_top = 4;
@@ -98,9 +104,6 @@ namespace Marlin.View.Chrome
 
     public class Breadcrumbs : BasePathBar {
         Gtk.Menu menu;
-
-        double menu_x_root;
-        double menu_y_root;
 
         private bool drop_data_ready = false;
         private bool drop_occurred = false;
@@ -199,30 +202,6 @@ namespace Marlin.View.Chrome
 
             menu = new Gtk.Menu ();
             menu.show_all ();
-        }
-
-        private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            x = (int) menu_x_root;
-            y = (int) menu_y_root;
-            push_in = true;
-        }
-
-        protected override void load_right_click_menu (double x, double y) {
-            if (current_right_click_root == null)
-                return;
-
-            menu_x_root = x;
-            menu_y_root = y;
-            menu = new Gtk.Menu ();
-            menu.cancel.connect (() => { reset_elements_states (); });
-            menu.deactivate.connect (() => { reset_elements_states (); });
-            
-            /* current_right_click_root is parent of the directory named on the breadcrumb. */        
-            menu.popup (null,
-                        null,
-                        get_menu_position,
-                        0,
-                        Gtk.get_current_event_time ());
         }
 
         protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
