@@ -1920,7 +1920,7 @@ namespace FM {
                 }
             }
 
-            // Hide submenu for the moment
+            // Hide open_with menu for the moment
             (!in_recent ? app_submenu = build_submenu_open_with_applications (ref builder, selection) : app_submenu = null);
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {

@@ -386,6 +386,7 @@ namespace Marlin.Places {
                     return true;
                 }
             }
+
             return false;
         }
 
