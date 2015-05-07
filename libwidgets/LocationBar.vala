@@ -73,7 +73,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     protected bool ignore_focus_in = false;
     protected bool ignore_change = false;
 
-    /* if we must display the BreadcrumbsElement which are in newbreads. */
+    /* if we must display the BreadcrumbsElement which are in  newbreads. */
     bool view_old = false;
 
     /* This list will contain all BreadcrumbsElement */
@@ -496,7 +496,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         foreach (BreadcrumbsElement element in elements) {
                 string s = element.text;
                 if (first) {
-                    if (s == "" || s == ROOT_FS_URI)
+                    if (s == "" || s == "file://")
                         newpath = "/";
                     else
                         newpath = s;
