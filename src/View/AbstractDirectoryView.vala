@@ -773,7 +773,7 @@ namespace FM {
                                             bool delete_immediately) {
 
             GLib.List<GLib.File> locations = null;
-            if (in_recent){
+            if (in_recent) {
                 file_list.@foreach ((file) => {
                     locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
                 });
@@ -2570,13 +2570,17 @@ namespace FM {
 
                     return true;
                 } else if (keycode == get_keycode (Gdk.Key.v)) {
-                    /* Will drop any existing selection and paste into current directory */
-                    action_set_enabled (common_actions, "paste_into", true);
-                    unselect_all ();
-                    common_actions.activate_action ("paste_into", null);
-                    return true;
+                    if (!in_recent) {
+                        /* Will drop any existing selection and paste into current directory */
+                        action_set_enabled (common_actions, "paste_into", true);
+                        unselect_all ();
+                        common_actions.activate_action ("paste_into", null);
+
+                        return true;
+                    }
                 } else if (keycode == get_keycode (Gdk.Key.x)) {
                     selection_actions.activate_action ("cut", null);
+
                     return true;
                 }
             }
