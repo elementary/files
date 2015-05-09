@@ -118,41 +118,37 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
     gobject_class->finalize = marlin_progress_info_finalize;
     gobject_class->dispose = marlin_progress_info_dispose;
 
-    signals[CHANGED] =
-    g_signal_new ("changed",
-                  MARLIN_TYPE_PROGRESS_INFO,
-                  G_SIGNAL_RUN_LAST,
-                  0,
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+    signals[CHANGED] = g_signal_new ("changed",
+                                     MARLIN_TYPE_PROGRESS_INFO,
+                                     G_SIGNAL_RUN_LAST,
+                                     0,
+                                     NULL, NULL,
+                                     g_cclosure_marshal_VOID__VOID,
+                                     G_TYPE_NONE, 0);
 
-    signals[PROGRESS_CHANGED] =
-    g_signal_new ("progress-changed",
-                  MARLIN_TYPE_PROGRESS_INFO,
-                  G_SIGNAL_RUN_LAST,
-                  0,
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+    signals[PROGRESS_CHANGED] = g_signal_new ("progress-changed",
+                                              MARLIN_TYPE_PROGRESS_INFO,
+                                              G_SIGNAL_RUN_LAST,
+                                              0,
+                                              NULL, NULL,
+                                              g_cclosure_marshal_VOID__VOID,
+                                              G_TYPE_NONE, 0);
 
-    signals[STARTED] =
-    g_signal_new ("started",
-                  MARLIN_TYPE_PROGRESS_INFO,
-                  G_SIGNAL_RUN_LAST,
-                  0,
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+    signals[STARTED] = g_signal_new ("started",
+                                     MARLIN_TYPE_PROGRESS_INFO,
+                                     G_SIGNAL_RUN_LAST,
+                                     0,
+                                     NULL, NULL,
+                                     g_cclosure_marshal_VOID__VOID,
+                                     G_TYPE_NONE, 0);
 
-    signals[FINISHED] =
-    g_signal_new ("finished",
-                  MARLIN_TYPE_PROGRESS_INFO,
-                  G_SIGNAL_RUN_LAST,
-                  0,
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+    signals[FINISHED] = g_signal_new ("finished",
+                                      MARLIN_TYPE_PROGRESS_INFO,
+                                      G_SIGNAL_RUN_LAST,
+                                      0,
+                                      NULL, NULL,
+                                      g_cclosure_marshal_VOID__VOID,
+                                      G_TYPE_NONE, 0);
 
 }
 
