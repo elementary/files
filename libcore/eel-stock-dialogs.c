@@ -56,6 +56,7 @@ show_message_dialog (const char *primary_text,
 {
     GtkWidget *dialog;
     dialog = gtk_message_dialog_new (parent, 0, type, buttons_type, NULL);
+    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
     g_object_set (dialog, "text", primary_text, "secondary-text", secondary_text, NULL);
 
     if (details_text != NULL) {
