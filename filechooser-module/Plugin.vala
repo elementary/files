@@ -28,11 +28,13 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
         /* It's the only way to get every new window */
         var map_id = GLib.Signal.lookup ("window-state-event", typeof (Gtk.Dialog));
         GLib.Signal.add_emission_hook (map_id, 0, (ihint, param_values) => {
-            if (param_values [0].type () == typeof (Gtk.FileChooserDialog)) {
-                var dialog = (Gtk.FileChooserDialog)param_values [0].dup_object ();
+            if (param_values[0].type () == typeof (Gtk.FileChooserDialog)) {
+                var dialog = (Gtk.FileChooserDialog)param_values [0];//.dup_object ();
                 if (tree_set.contains (dialog) == false) {
                     tree_set.add (dialog);
-                    new CustomFileChooserDialog (dialog);  
+                    
+                    var dialog_new = new CustomFileChooserDialog (dialog);  
+                    dialog_new.chooser.set_current_folder (dialog.get_current_folder ());
                     dialog.destroy.connect (() => {
                         tree_set.remove (dialog);
                     });

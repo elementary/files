@@ -189,16 +189,6 @@ namespace Marlin.View.Chrome
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon (icon);
-            
-            up.connect (() => {
-                File file = get_file_for_path (text);
-                File parent = file.get_parent ();
-                
-                if (parent != null && file.get_uri () != parent.get_uri ())
-                    change_breadcrumbs (parent.get_uri ());
-                    
-                grab_focus ();
-            });
 
             menu = new Gtk.Menu ();
             menu.show_all ();

@@ -20,8 +20,9 @@
  */
 
 public class CustomFileChooserDialog : Object {
+	public static Gtk.FileChooser chooser;
+	
     private static Gtk.FileChooserDialog d;
-    private static Gtk.FileChooser chooser;
     private static Gtk.Widget rootwidget;
     
     private static Gtk.Box container_box;
@@ -42,6 +43,7 @@ public class CustomFileChooserDialog : Object {
     private Gee.ArrayList<string> history  = new Gee.ArrayList<string> ();
 
     private static bool filters_available = false;
+    private string previous_dir = "";
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
         /* The "d" variable is the main dialog */
@@ -85,7 +87,7 @@ public class CustomFileChooserDialog : Object {
         
         button_back.clicked.connect (() => {
             forward_path_list.add (chooser.get_current_folder ());
-     
+            
             history.remove (history.last ());
             chooser.set_current_folder (history.last ()); 
             history.remove (history.last ());
@@ -104,9 +106,10 @@ public class CustomFileChooserDialog : Object {
         chooser.current_folder_changed.connect (() => {
             button_back.sensitive = (history.size > 0);
             button_forward.sensitive = (forward_path_list.length > 0);
-            history.add (chooser.get_current_folder ());
 
-            pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
+            history.add (chooser.get_current_folder ());
+                
+            pathbar.path = previous_dir = FILE_PREFIX + chooser.get_current_folder ();
         });
         
         pathbar.change_to_file.connect ((file) => {
@@ -217,6 +220,7 @@ public class CustomFileChooserDialog : Object {
                 combo_box.margin_top = 8;
             else    
                 combo_box.margin_top = 4;
+                
             combo_box.changed.connect (() => {
                 chooser.list_filters ().@foreach ((filter) => {
                     if (filter.get_filter_name () == combo_box.get_active_text ())
