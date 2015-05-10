@@ -448,7 +448,7 @@ namespace Marlin.Places {
                     null,
                     null,
                     0,
-                    _("View the list of recently opened files"));
+                    _("View the list of recently used files"));
 
                 n_builtins_before++;
             }
