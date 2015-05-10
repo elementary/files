@@ -47,8 +47,7 @@ namespace Marlin {
     private const string PROTOCOL_NAME_TRASH = "Trash";
 }
 
-namespace Marlin.View.Chrome
-{
+namespace Marlin.View.Chrome {
     public class LocationBar : Gtk.Box {
         public Breadcrumbs bread;
 
