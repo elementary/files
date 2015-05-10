@@ -1887,7 +1887,9 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
 
             menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
-            menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
+
+            if (!in_network_root)
+                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
 
             return menu as MenuModel;
         }
