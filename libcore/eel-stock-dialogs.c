@@ -209,7 +209,6 @@ marlin_dialogs_show_error (gpointer      parent,
                                      GTK_BUTTONS_CLOSE,
                                      "%s.", primary_text);
     gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
-    
 
     /* move the dialog to the appropriate screen */
     if (G_UNLIKELY (window == NULL && screen != NULL))
