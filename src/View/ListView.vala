@@ -53,7 +53,7 @@ namespace FM {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                       renderer,
-                                                                      "text", k);     
+                                                                      "text", k);
                     col.set_sort_column_id (k);
                     col.set_resizable (false);
                     col.set_expand (false);
@@ -207,10 +207,10 @@ namespace FM {
         protected override bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
             Gtk.TreePath? path = model.get_path (iter);
             Gtk.TreeIter start = iter;
- 
+
             if (path == null)
                 return false;
- 
+
             if (recurse && tree.is_row_expanded (path)) {
                 Gtk.TreeIter? child_iter = null;
                 if (model.iter_children (out child_iter, iter)) {
@@ -218,7 +218,7 @@ namespace FM {
                     return true;
                 }
             }
- 
+
             if (model.iter_next (ref iter))
                 return true;
             else {
