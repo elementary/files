@@ -43,7 +43,6 @@ public class CustomFileChooserDialog : Object {
     private Gee.ArrayList<string> history  = new Gee.ArrayList<string> ();
 
     private static bool filters_available = false;
-    private string previous_dir = "";
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
         /* The "d" variable is the main dialog */
@@ -109,7 +108,7 @@ public class CustomFileChooserDialog : Object {
 
             history.add (chooser.get_current_folder ());
                 
-            pathbar.path = previous_dir = FILE_PREFIX + chooser.get_current_folder ();
+            pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
         });
         
         pathbar.change_to_file.connect ((file) => {
