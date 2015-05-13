@@ -20,7 +20,7 @@
  */
 
 public class CustomFileChooserDialog : Object {
-	public static Gtk.FileChooser chooser;
+	private static Gtk.FileChooser chooser;
 	
     private static Gtk.FileChooserDialog d;
     private static Gtk.Widget rootwidget;
@@ -74,6 +74,7 @@ public class CustomFileChooserDialog : Object {
         header_bar.pack_start (pathbar);
         if ((gtk_folder_button != null) && (chooser.get_action () != Gtk.FileChooserAction.OPEN)) {
         	var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
+            create_folder_button.set_tooltip_text (_("Create folder"));
         	create_folder_button.clicked.connect (() => {
         		gtk_folder_button.clicked ();
         	});
@@ -116,6 +117,10 @@ public class CustomFileChooserDialog : Object {
         });
     }
 
+    public Gtk.FileChooser get_chooser () {
+        return chooser;
+    }
+
     /* Remove GTK's native path bar and filefilter chooser by widgets names */
     private static void remove_gtk_widgets () {
         foreach (var root in d.get_children ()) {
@@ -136,69 +141,68 @@ public class CustomFileChooserDialog : Object {
                         rootwidget = chooserwidget;
                         rootwidget = w0;
                         rootwidget.can_focus = true;
-                    foreach (var w1 in (rootwidget as Gtk.Container).get_children ()) {
-                        if (w1.name == "GtkBox" && w1.get_name () != GTK_PATHBAR_PATH[1]) {
-                            var new_w1 = w1.@ref ();
-                            (rootwidget as Gtk.Container).remove (w1);
 
-                            foreach (var grid in (new_w1 as Gtk.Container).get_children ()) {
-                                if (grid != null) {
-                                    var new_grid = grid.@ref ();
-                                    (new_grid as Gtk.Widget).margin = 0;
-                                    (new_w1 as Gtk.Container).remove (grid);
-                                    container_box.add (new_grid as Gtk.Widget);
-                                }
-                            } 
-                                   
-                            container_box.show_all ();
-                        }
-                        
-                        if (w1.get_name () == GTK_PATHBAR_PATH[1]) {
-                            foreach (var paned in (w1 as Gtk.Container).get_children ()) {
-                                foreach (var w2 in (paned as Gtk.Container).get_children ()) {
-                                    if (w2.get_name () == PLACES_SIDEBAR_PATH) {
-                                        (w2 as Gtk.PlacesSidebar).show_desktop = false; 
-                                        (w2 as Gtk.PlacesSidebar).show_enter_location = false;
-                                    } 
-                                                                         
-                                    else if (w2.get_name () == GTK_PATHBAR_PATH[2]) {
-                                        foreach (var w3 in (w2 as Gtk.Container).get_children ()) {
-                                            if (w3.get_name () == GTK_PATHBAR_PATH[3]) {
-                                            	foreach (var w4 in (w3 as Gtk.Container).get_children ()) {
-                                            		if (w4.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[0]) {
-                                            			foreach (var w5 in (w4 as Gtk.Container).get_children ()) {
-                                            				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[1]) {
-                                            					foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
-                                            						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[2])
-                                            							/* Register the button so we can use it's signal */
-                                            							gtk_folder_button = w6.@ref () as Gtk.Button;
-                                            					}	
-                                            				}
-                                            			}
-                                            		}
-                                            	}
-                                                (w2 as Gtk.Container).remove (w3);
-                                            }
-                                        }
-                                    }    
-                                }
-                            } 
-                        } else {
-                            if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0]) {
-                                /* Remove extra_and_filters if there is no extra widget */
-                                if (chooser.get_extra_widget () == null)
-                                    (w0 as Gtk.Container).remove (w1);
-                                else {
-                                    foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
-                                        if (w5.get_name () == GTK_FILTERCHOSSER_PATH[1])
-                                           (w1 as Gtk.Container).remove (w5);
-                                    }
-                                }
+                foreach (var w1 in (rootwidget as Gtk.Container).get_children ()) {
+                    if (w1.name == "GtkBox" && w1.get_name () != GTK_PATHBAR_PATH[1]) {
+                        var new_w1 = w1.@ref ();
+                        (rootwidget as Gtk.Container).remove (w1);
+
+                        foreach (var grid in (new_w1 as Gtk.Container).get_children ()) {
+                            if (grid != null) {
+                                var new_grid = grid.@ref ();
+                                (new_grid as Gtk.Widget).margin = 0;
+                                (new_w1 as Gtk.Container).remove (grid);
+                                container_box.add (new_grid as Gtk.Widget);
                             }
-                        }   
+                        } 
+                               
+                        container_box.show_all ();
+                    }   
+                         
+                    if (w1.get_name () == GTK_PATHBAR_PATH[1]) {
+                    foreach (var paned in (w1 as Gtk.Container).get_children ()) {
+                        foreach (var w2 in (paned as Gtk.Container).get_children ()) {
+                            if (w2.get_name () == PLACES_SIDEBAR_PATH) {
+                                (w2 as Gtk.PlacesSidebar).show_desktop = false; 
+                                (w2 as Gtk.PlacesSidebar).show_enter_location = false;
+                            } else if (w2.get_name () == GTK_PATHBAR_PATH[2]) {
+                                foreach (var w3 in (w2 as Gtk.Container).get_children ()) {
+                                if (w3.get_name () == GTK_PATHBAR_PATH[3]) {
+                                	foreach (var w4 in (w3 as Gtk.Container).get_children ()) {
+                                		if (w4.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[0]) {
+                            			foreach (var w5 in (w4 as Gtk.Container).get_children ()) {
+                            				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[1]) {
+                            					foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
+                        						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[2])
+                    							/* Register the button so we can use it's signal */
+                    							gtk_folder_button = w6.@ref () as Gtk.Button;
+                        					}	
+                            				}
+                            			}
+                                		}
+                                	}
+                                    (w2 as Gtk.Container).remove (w3);
+                                }
+                                }
+                            }    
+                        }
+                    } 
+                } else {
+                    if (w1.get_name () == GTK_FILTERCHOSSER_PATH[0]) {
+                        /* Remove extra_and_filters if there is no extra widget */
+                        if (chooser.get_extra_widget () == null)
+                            (w0 as Gtk.Container).remove (w1);
+                        else {
+                            foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
+                                if (w5.get_name () == GTK_FILTERCHOSSER_PATH[1])
+                                   (w1 as Gtk.Container).remove (w5);
+                            }
+                        }
                     }
+                }   
                 }
-            }  
+            }
+        }  
         }   
     }
 

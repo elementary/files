@@ -115,7 +115,7 @@ namespace Marlin.View.Chrome {
         public Breadcrumbs ()
         {
             /* The string split of the path url is kinda too basic,
-             * we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
+             * we should use the GFile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_AFP});
             add_icon ({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_DAV});
             add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_DAVS});
@@ -191,6 +191,10 @@ namespace Marlin.View.Chrome {
 
             menu = new Gtk.Menu ();
             menu.show_all ();
+        }
+
+        protected override void load_right_click_menu (double x, double y) {
+
         }
 
         protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
