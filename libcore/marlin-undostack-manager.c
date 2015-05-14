@@ -30,7 +30,7 @@
 #include <locale.h>
 #include <gdk/gdk.h>
 #include "eel-glib-extensions.h"
-
+#include "marlin-file-changes-queue.h"
 
 struct _MarlinUndoActionData
 {
@@ -599,9 +599,11 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                     name = g_file_get_uri (f->data);
                     g_free (name);
                     g_file_delete (f->data, NULL, NULL);
+                    marlin_file_changes_queue_file_removed (f->data);
                     g_object_unref (f->data);
                 }
                 g_list_free (uris);
+                marlin_file_changes_consume_changes (TRUE);
 
                 /* Here we must do what's necessary for the callback */
                 undo_redo_done_transfer_callback (NULL, action);
@@ -628,10 +630,11 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                     dest = g_file_new_for_uri (value);
                     g_file_move (item, dest,
                                  G_FILE_COPY_NOFOLLOW_SYMLINKS, NULL, NULL, NULL, NULL);
+                    marlin_file_changes_queue_file_moved (item, dest);
                     g_object_unref (dest);
                 }
-
                 g_list_free (gfiles_in_trash);
+                marlin_file_changes_consume_changes (TRUE);
             }
             g_hash_table_destroy (files_to_restore);
 
@@ -742,14 +745,19 @@ get_all_trashed_items (GQueue *stack)
 {
     MarlinUndoActionData *action = NULL;
     GList *trash = NULL;
+    GList *keys;
     GList *l;
     GQueue *tmp_stack = g_queue_copy(stack);
 
-    while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL)
-        if (action->trashed)
-            for (l = g_hash_table_get_keys (action->trashed); l != NULL; l=l->next) {
-                trash = g_list_append(trash, l->data);
+    while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL) {
+        if (action->trashed) {
+            keys = g_hash_table_get_keys (action->trashed);
+            for (l = keys; l != NULL; l=l->next) {
+                trash = g_list_prepend(trash, l->data);
             }
+            g_list_free (keys);
+        }
+    }
 
     g_queue_free (tmp_stack);
     return (trash);
@@ -902,9 +910,9 @@ marlin_undo_manager_data_add_origin_target_pair (MarlinUndoActionData *data,
         return;
 
     char *src_relative = g_file_get_relative_path (data->src_dir, origin);
-    data->sources = g_list_append (data->sources, src_relative);
+    data->sources = g_list_prepend (data->sources, src_relative);
     char *dest_relative = g_file_get_relative_path (data->dest_dir, target);
-    data->destinations = g_list_append (data->destinations, dest_relative);
+    data->destinations = g_list_prepend (data->destinations, dest_relative);
 
     data->is_valid = TRUE;
 }
@@ -1918,7 +1926,7 @@ construct_gfile_list (const GList * urilist, GFile * parent)
 
     for (l = urilist; l != NULL; l = l->next) {
         file = g_file_get_child (parent, l->data);
-        file_list = g_list_append (file_list, file);
+        file_list = g_list_prepend (file_list, file);
     }
 
     return file_list;
@@ -1932,7 +1940,7 @@ construct_gfile_list_from_uri (char *uri)
     GFile *file;
 
     file = g_file_new_for_uri (uri);
-    file_list = g_list_append (file_list, file);
+    file_list = g_list_prepend (file_list, file);
 
     return file_list;
 }
@@ -1947,7 +1955,7 @@ uri_list_to_gfile_list (GList * urilist)
 
     for (l = urilist; l != NULL; l = l->next) {
         file = g_file_new_for_uri (l->data);
-        file_list = g_list_append (file_list, file);
+        file_list = g_list_prepend (file_list, file);
     }
 
     return file_list;

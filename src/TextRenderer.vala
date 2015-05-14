@@ -25,7 +25,7 @@ namespace Marlin {
         public Marlin.ZoomLevel zoom_level {get; set;}
         public bool follow_state {get; set;}
         public new string background { set; private get;}
-        public GOF.File file {set; private get;}
+        public GOF.File? file {set; private get;}
         public int text_width;
         public int text_height;
 
@@ -91,6 +91,11 @@ namespace Marlin {
                                          layout);
 
             style_context.restore ();
+
+            /* The render call should always be preceded by a set_property call
+               from GTK. It should be safe to unreference or free the allocated
+               memory here. */
+            file = null;
         }
 
         public void set_up_layout (string? text, Gdk.Rectangle cell_area) {
@@ -211,6 +216,7 @@ namespace Marlin {
 
         private void invalidate () {
             set_widget (null);
+            file = null;
         }
 
         private void on_entry_editing_done () {
@@ -224,6 +230,7 @@ namespace Marlin {
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
+            file = null;
         }
 
         private bool on_entry_focus_out_event (Gdk.Event event) {

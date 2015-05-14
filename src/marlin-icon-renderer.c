@@ -344,6 +344,11 @@ invalidate_size (gint *width, gint *height)
         *height = -1;
 }
 
+guint
+marlin_icon_renderer_get_helper_size (MarlinIconRenderer *renderer) {
+    return renderer->priv->helper_size;
+}
+
 static void
 marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
                                GtkWidget          *widget,
@@ -661,6 +666,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             g_object_unref (pix);
         }
     }
+
+    /* The render call should always be preceded by a set_property call from
+       GTK. It should be safe to unreference or free the allocate memory
+       here. */
+    _g_object_unref0 (priv->file);
+    _g_object_unref0 (priv->drop_file);
 }
 
 /*

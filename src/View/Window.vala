@@ -28,7 +28,6 @@ namespace Marlin.View {
             {"new_window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
-            {"refresh2", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
@@ -165,8 +164,8 @@ namespace Marlin.View {
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
 
-            if (is_first_window)      
-                set_accelerators ();          
+            if (is_first_window)
+                set_accelerators ();
         }
 
         private void construct_top_menu () {
@@ -218,6 +217,13 @@ namespace Marlin.View {
 
             button_press_event.connect (on_button_press_event);
 
+            key_press_event.connect ((event) => {
+                if (top_menu.location_bar.bread.is_focus)
+                    return top_menu.location_bar.bread.on_key_press_event (event);
+
+                return current_tab.key_press_event (event);
+            });
+
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
                     Preferences.settings.set_boolean("maximized",
@@ -238,11 +244,15 @@ namespace Marlin.View {
             tabs.close_tab_requested.connect ((tab) => {
                 tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
 
+                /* set current_tab to null to ensure closed ViewContainer is destroyed
+                 * it will be reassigned in tab_changed
+                 */
+                current_tab = null;
+               (tab.page as ViewContainer).close ();
+
                 if (tabs.n_tabs == 1)
                     add_tab ();
 
-                /* The close () method of ViewContainer ensures its destruction */
-               (tab.page as ViewContainer).close ();
                 return true;
             });
 
@@ -257,7 +267,6 @@ namespace Marlin.View {
             tabs.tab_duplicated.connect ((tab) => {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
-
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
@@ -267,7 +276,6 @@ namespace Marlin.View {
 
         private void make_bindings () {
             /*Preference bindings */
-            Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.SET);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.DEFAULT);
 
             /* keyboard shortcuts bindings */
@@ -313,7 +321,7 @@ namespace Marlin.View {
         private void on_go_back (int n = 1) {
             current_tab.go_back (n);
         }
-        
+
 
         private void show_infobar (bool val) {
             if (val)
@@ -356,7 +364,6 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-
             current_tab.set_active_state (true);
         }
 
@@ -376,19 +383,12 @@ namespace Marlin.View {
                 top_menu.location_bar.bread.show_refresh_icon (!is_loading);
             });
 
-            key_press_event.connect ((event) => {
-                if (top_menu.location_bar.bread.is_focus)
-                    return top_menu.location_bar.bread.on_key_press_event (event);
-
-                return false;
-            });
-
             change_tab ((int)tabs.insert_tab (tab, -1));
             content.update_tab_name (location);
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                a tab, the overlay status bar is shown empty. */
-            item_hovered (null); 
+            item_hovered (null);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -425,7 +425,7 @@ namespace Marlin.View {
         private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
             update_undo_actions (data);
         }
-   
+
         private void action_edit_path () {
             top_menu.location_bar.bread.grab_focus ();
         }
@@ -718,6 +718,11 @@ namespace Marlin.View {
                 save_tabs ();
             }
 
+            foreach (var tab in tabs.tabs) {
+                current_tab = null;
+                (tab.page as Marlin.View.ViewContainer).close ();
+            }
+
             this.destroy ();
         }
 
@@ -809,7 +814,7 @@ namespace Marlin.View {
 
                 /* Prevent too rapid loading of tabs which can cause crashes
                  * This may not be necessary with the Vala version of the views but does no harm
-                 */ 
+                 */
                 Thread.usleep (100000);
             }
 
@@ -919,7 +924,7 @@ namespace Marlin.View {
 
         public void update_labels (string new_path, string tab_name) {
             assert (new_path != null && new_path != "");
-            set_title (title);
+            set_title (tab_name);
             top_menu.update_location_bar (new_path);
         }
 
@@ -968,13 +973,12 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.view_mode::ICON", {"<Ctrl>1"});
             application.set_accels_for_action ("win.view_mode::LIST", {"<Ctrl>2"});
             application.set_accels_for_action ("win.view_mode::MILLER", {"<Ctrl>3"});
-            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>equal"});
+            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
             application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
-            application.set_accels_for_action ("win.refresh", {"<Ctrl>R"});
-            application.set_accels_for_action ("win.refresh2", {"F5"});
+            application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
             application.set_accels_for_action ("win.go_to::TRASH", {"<Alt>T"});
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});

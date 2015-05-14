@@ -114,6 +114,7 @@ gof_file_new (GFile *location, GFile *dir)
     file->basename = g_file_get_basename (file->location);
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
 
+    //g_debug ("%s: create %p", __func__, file);
     return (file);
 }
 
@@ -946,6 +947,8 @@ static void gof_file_init (GOFFile *file) {
 }
 
 static void gof_file_finalize (GObject* obj) {
+    //g_debug ("%s: delete %p", __func__, obj);
+
     GOFFile *file;
 
     file = GOF_FILE (obj);
@@ -976,6 +979,13 @@ static void gof_file_finalize (GObject* obj) {
     _g_object_unref0 (file->mount);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
+
+#ifndef NDEBUG
+    g_warn_if_fail (file->target_gof == NULL);
+#endif
+
+    _g_free0 (file->owner);
+    _g_free0 (file->group);
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
@@ -1429,8 +1439,6 @@ gof_file_is_executable (GOFFile *file)
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
     {
         /* get the content type of the file */
-        //TODO
-        //content_type = g_file_info_get_content_type (file->info);
         content_type = gof_file_get_ftype (file);
         if (G_LIKELY (content_type != NULL))
         {
@@ -1442,11 +1450,8 @@ gof_file_is_executable (GOFFile *file)
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
             if (g_content_type_is_a (content_type, "application/x-executable")
-                || g_content_type_is_a (content_type, "application/x-shellscript")
-                || g_content_type_is_a (content_type, "application/octet-stream"))
-            {
+                || g_content_type_is_a (content_type, "application/x-shellscript"))
                 can_execute = TRUE;
-            }
 #endif
         }
     }
@@ -1503,7 +1508,7 @@ GOFFile* gof_file_cache_lookup (GFile *location)
 
 void
 gof_file_set_expanded (GOFFile *file, gboolean expanded) {
-    g_return_if_fail (file != NULL || !file->is_directory);
+    g_return_if_fail (file != NULL && file->is_directory);
     file->is_expanded = expanded;
 }
 

@@ -28,6 +28,10 @@ namespace FM {
             base (_slot);
         }
 
+        ~AbstractTreeView () {
+            debug ("ATV destruct");
+        }
+
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
             name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
@@ -159,7 +163,7 @@ namespace FM {
             selected_files = null;
 
             tree.get_selection ().selected_foreach ((model, path, iter) => {
-                unowned GOF.File? file; /* can be null if click on blank row in list view */
+                GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null)
                     selected_files.prepend (file);
@@ -175,7 +179,7 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-            unowned Gtk.TreePath? p = null;
+            Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
             int cx, cy, depth;
@@ -184,37 +188,42 @@ namespace FM {
             if (event.window != tree.get_bin_window ())
                 return ClickZone.INVALID;
 
-            bool on_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
+            tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
             if (c != null && c == name_column) {
-                int? x_offset, width;
+                int? x_offset = null, width = null;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
-                int expander_width = (tree.show_expanders ? 10 : 0) * (depth +1);
-                expander_width += ICON_XPAD;
 
-                if (cx > expander_width ) {
-                    if (cx <= x_offset + width + expander_width) {
-                        if (helpers_shown &&
-                            ((cx -x_offset - expander_width) <= 18) &&
-                            (cy <=18))
+                int expander_width = ICON_XPAD;
+                if (tree.show_expanders) {
+                    var expander_val = GLib.Value (typeof (int));
+                    tree.style_get_property ("expander-size", ref expander_val);
+                    int expander_size = expander_val.get_int () + tree.get_level_indentation ();
+                    expander_width += expander_size * (depth +1);
+                }
+                int orig_x = expander_width + x_offset;
 
-                            zone = ClickZone.HELPER;
-                        else
-                            zone = ClickZone.ICON;
+                if (cx > orig_x ) {
+                    bool on_helper = false;
+                    /* We pass cy as orig_y as we are always within the y dimension of the icon
+                     * (otherwise we would be on a different row)
+                     */
+                    bool on_icon = is_on_icon (cx, cy, orig_x, cy, ref on_helper);
 
-                    } else if (!on_blank &&
-                               cy < icon_size &&
-                               cx < x_offset + width - 6) /* stop edges of row appearing as name */
-
-                        zone = ClickZone.NAME;
+                    if (on_helper)
+                        zone = ClickZone.HELPER;
+                    else if (on_icon)
+                        zone = ClickZone.ICON;
                     else {
                         c.cell_get_position (name_renderer, out x_offset, out width);
-
-                        if (right_margin_unselects_all && cx >= x_offset + width - 6)
+                        orig_x = expander_width + x_offset;
+                        if (right_margin_unselects_all && cx >= orig_x + width - 6)
                             zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
+                        else
+                            zone = ClickZone.NAME;
                     }
                 } else
                     zone = ClickZone.EXPANDER;

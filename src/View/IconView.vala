@@ -31,6 +31,10 @@ namespace FM {
                 zoom_level = minimum_zoom;
         }
 
+        ~IconView () {
+            debug ("Icon View destruct");
+        }
+
         private void set_up_view () {
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
@@ -168,7 +172,7 @@ namespace FM {
             selected_files = null;
 
             tree.selected_foreach ((tree, path) => {
-                unowned GOF.File file;
+                GOF.File? file;
                 file = model.file_for_path (path);
 
                 if (file != null)
@@ -217,9 +221,6 @@ namespace FM {
                     model.@get (iter,
                             FM.ListModel.ColumnID.FILENAME, out text);
 
-                    if (text == null)
-                        text = "";
-
                     (r as Marlin.TextRenderer).set_up_layout (text, area);
 
                     if (x >= rect.x &&
@@ -235,18 +236,12 @@ namespace FM {
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 } else {
-                    if (helpers_shown &&
-                        x >= area.x &&
-                        x <= area.x + 18 &&
-                        y >= area.y &&
-                        y <= area.y + 18)
+                    bool on_helper = false;
+                    bool on_icon = is_on_icon (x, y, area.x, area.y, ref on_helper);
 
+                    if (on_helper)
                         zone = ClickZone.HELPER;
-                    else if (x >= area.x &&
-                             x <= area.x + icon_size &&
-                             y >= area.y &&
-                             y <= area.y + icon_size)
-
+                    else if (on_icon)
                         zone = ClickZone.ICON;
                     else if (rubberband) {
                         /* Fake location outside centre top of item for rubberbanding */

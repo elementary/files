@@ -22,21 +22,11 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
-        enum PlaceType {
-            BUILT_IN,
-            MOUNTED_VOLUME,
-            BOOKMARK,
-            BOOKMARKS_CATEGORY,
-            PERSONAL_CATEGORY,
-            STORAGE_CATEGORY
-        }
-
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
         private const int EJECT_BUTTON_XPAD = 6;
         private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
-        private const int PROP_ZOOM_LEVEL = 1;
 
         private static FM.DndHandler dnd_handler = new FM.DndHandler ();
 
@@ -86,21 +76,6 @@ namespace Marlin.Places {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
         };
 
-        private Marlin.ZoomLevel _zoom = Marlin.ZoomLevel.SMALLEST;
-        public Marlin.ZoomLevel zoom_level {
-            get {
-                return _zoom;
-            }
-            set {
-                _zoom = value;
-                update_places ();
-                tree_view.columns_autosize ();
-            }
-        }
-
-        /* Handle smooth zooming */
-        double total_delta_y = 0;
-
         Gtk.Menu popupmenu;
         Gtk.MenuItem popupmenu_open_in_new_tab_item;
         Gtk.MenuItem popupmenu_open_in_new_window_item;
@@ -135,7 +110,6 @@ namespace Marlin.Places {
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
-            this.scroll_event.connect (handle_scroll_event);
             window.loading_uri.connect (loading_uri_callback);
 
             construct_tree_view ();
@@ -342,13 +316,9 @@ namespace Marlin.Places {
                                                    Mount? mount,
                                                    uint index,
                                                    string tooltip) {
-            Gtk.IconSize stock_size = Marlin.zoom_level_to_stock_icon_size (zoom_level);
-            eject_spinner_cell_renderer.icon_size = stock_size;
-
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
-                int icon_size = Marlin.zoom_level_to_icon_size (zoom_level);
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, icon_size);
+                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLEST);
                 if (icon_info != null)
                     pixbuf = icon_info.get_pixbuf_nodefault ();
             }
@@ -599,7 +569,7 @@ namespace Marlin.Places {
             store.@set (iter,
                         Column.ICON, null,
                         Column.NAME, _("Network"),
-                        Column.ROW_TYPE, Marlin.PlaceType.STORAGE_CATEGORY,
+                        Column.ROW_TYPE, Marlin.PlaceType.NETWORK_CATEGORY,
                         Column.EJECT, false,
                         Column.NO_EJECT, true,
                         Column.BOOKMARK, false,
@@ -1423,6 +1393,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY)
                 expander_renderer.visible = true;
             else
@@ -1431,7 +1402,7 @@ namespace Marlin.Places {
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
             switch (type) {
-                case Marlin.PlaceType.PERSONAL_CATEGORY:
+                case Marlin.PlaceType.NETWORK_CATEGORY:
                     Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
@@ -1475,6 +1446,7 @@ namespace Marlin.Places {
 
             if (type == Marlin.PlaceType.PERSONAL_CATEGORY ||
                 type == Marlin.PlaceType.STORAGE_CATEGORY ||
+                type == Marlin.PlaceType.NETWORK_CATEGORY ||
                 type == Marlin.PlaceType.BOOKMARKS_CATEGORY) {
 
                 crt.weight = 900;
@@ -1623,54 +1595,8 @@ namespace Marlin.Places {
             return false;
         }
 
-        public bool handle_scroll_event (Gdk.EventScroll event) {
-            /* Ensure tree view has focus when scrolling to avoid unexpected scrolling on clicking */
-            if (!tree_view.has_focus)
-                tree_view.grab_focus ();
-
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
-                return false;
-
-            switch (event.direction) {
-                case Gdk.ScrollDirection.UP:
-                    zoom_in ();
-                    break;
-                case Gdk.ScrollDirection.DOWN:
-                    zoom_out ();
-                    break;
-                case Gdk.ScrollDirection.SMOOTH:
-                /* try to emulate a normal scrolling event by summing deltas */
-                    total_delta_y += event.delta_y;
-                    if (total_delta_y >= 3) {
-                        total_delta_y = 0;
-                        zoom_out ();
-                    } else if (total_delta_y <= -3) {
-                        total_delta_y = 0;
-                        zoom_in ();
-                    }
-                    break;
-                default:
-                    return false;
-            }
-            return true;
-        }
-
         public new void style_set (Gtk.Style previous_style) {
             update_places ();
-        }
-
-        private void zoom_in () {
-            if (zoom_level == Marlin.ZoomLevel.NORMAL)
-                return;
-
-            zoom_level = zoom_level + 1;
-        }
-
-        private void zoom_out () {
-            if (zoom_level == Marlin.ZoomLevel.SMALLEST)
-                return;
-
-            zoom_level = zoom_level - 1;
         }
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */

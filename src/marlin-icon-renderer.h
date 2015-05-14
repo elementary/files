@@ -53,6 +53,7 @@ struct _MarlinIconRendererClass
 
 GType            marlin_icon_renderer_get_type (void) G_GNUC_CONST;
 GtkCellRenderer *marlin_icon_renderer_new      (void);
+guint           marlin_icon_renderer_get_helper_size (MarlinIconRenderer *renderer);
 
 
 G_END_DECLS
