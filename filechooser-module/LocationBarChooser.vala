@@ -51,7 +51,7 @@ namespace Marlin.View.Chrome {
     public class LocationBar : Gtk.Box {
         public Breadcrumbs bread;
 
-        public string _path;
+        private string _path;
         public new string path {
             set {
                 var new_path = GLib.Uri.unescape_string (value);
