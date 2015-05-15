@@ -63,9 +63,11 @@ public class CustomFileChooserDialog : Object {
         var header_bar = new Gtk.HeaderBar ();
         
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_back.tooltip_text = _("Previous");
         button_back.sensitive = false;
         
         var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
         var pathbar = new Marlin.View.Chrome.LocationBar (rootwidget);
