@@ -97,7 +97,7 @@ public class CustomFileChooserDialog : Object {
             if (forward_path_list.length > 0) {
                 int length = forward_path_list.length - 1;
                 
-                pathbar.path = forward_path_list.@get (length);
+                pathbar.path = FILE_PREFIX + forward_path_list.@get (length);
                 chooser.set_current_folder (forward_path_list.@get (length));
                 forward_path_list.remove (forward_path_list.@get (length));
             }
@@ -107,7 +107,12 @@ public class CustomFileChooserDialog : Object {
             button_back.sensitive = (history.size > 0);
             button_forward.sensitive = (forward_path_list.length > 0);
 
-            history.add (chooser.get_current_folder ());
+            string previous_path = "";
+            if (history.size > 0)
+                previous_path = history.last ();
+
+            if (chooser.get_current_folder () != previous_path)
+                history.add (chooser.get_current_folder ());
                 
             pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
         });
