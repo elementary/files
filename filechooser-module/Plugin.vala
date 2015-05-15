@@ -34,7 +34,7 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
                     tree_set.add (dialog);
                     
                     var dialog_new = new CustomFileChooserDialog (dialog);  
-                    dialog_new.get_chooser ().set_current_folder (dialog.get_current_folder ());
+                    dialog_new.set_open_path (dialog.get_current_folder ());
                     dialog.destroy.connect (() => {
                         tree_set.remove (dialog);
                     });

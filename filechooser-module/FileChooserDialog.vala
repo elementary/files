@@ -44,6 +44,9 @@ public class CustomFileChooserDialog : Object {
 
     private static bool filters_available = false;
 
+    private static string open_path;
+    private string previous_path = "";
+
     public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
         /* The "d" variable is the main dialog */
         d = _dialog;
@@ -104,16 +107,19 @@ public class CustomFileChooserDialog : Object {
         });
 
         chooser.current_folder_changed.connect (() => {
+            if (history.size > 0)
+                previous_path = history.last (); 
+            else if (open_path != chooser.get_current_folder ()) {
+                previous_path = "";
+                history.add (open_path);
+            }
+
             button_back.sensitive = (history.size > 0);
             button_forward.sensitive = (forward_path_list.length > 0);
 
-            string previous_path = "";
-            if (history.size > 0)
-                previous_path = history.last ();
-
             if (chooser.get_current_folder () != previous_path)
                 history.add (chooser.get_current_folder ());
-                
+
             pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
         });
         
@@ -122,11 +128,13 @@ public class CustomFileChooserDialog : Object {
         });
     }
 
-    public Gtk.FileChooser get_chooser () {
-        return chooser;
+    public void set_open_path (string _open_path) {
+        open_path = _open_path;
+        previous_path = open_path;
+        chooser.set_current_folder (open_path);
     }
 
-    /* Remove GTK's native path bar and filefilter chooser by widgets names */
+    /* Remove GTK's native path bar and FileFilter chooser by widgets names */
     private static void remove_gtk_widgets () {
         foreach (var root in d.get_children ()) {
             foreach (var w0 in (root as Gtk.Container).get_children ()) {
@@ -141,7 +149,8 @@ public class CustomFileChooserDialog : Object {
                         root_box.add (chooserwidget); 
 
                         if (chooser.get_extra_widget () == null)
-                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));                        
+                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));   
+                                                 
                         (root as Gtk.Container).add (root_box);
                         rootwidget = chooserwidget;
                         rootwidget = w0;
@@ -179,6 +188,7 @@ public class CustomFileChooserDialog : Object {
                             				if (w5.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[1]) {
                             					foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
                         						if (w6.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[2])
+                                                
                     							/* Register the button so we can use it's signal */
                     							gtk_folder_button = w6.@ref () as Gtk.Button;
                         					}	
