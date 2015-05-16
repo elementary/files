@@ -1,3 +1,15 @@
+pantheon-files (0.2.0.1) trusty; urgency=low
+
+  * New upstream release
+
+ -- Cody Garver <cody@elementaryos.org>  Sat, 16 May 2015 06:41:58 -0500
+
+pantheon-files (0.2.0) trusty; urgency=low
+
+  * New upstream release
+
+ -- Cody Garver <cody@elementaryos.org>  Sat, 11 Apr 2015 01:15:57 -0500
+
 pantheon-files (0.1.5.1) precise; urgency=low
 
   * Select new folders after creation (LP: 1178869)
