@@ -123,7 +123,7 @@ namespace FM {
         int drag_x = 0;
         int drag_y = 0;
         int drag_button;
-        protected int drag_delay = Gtk.Settings.get_default ().gtk_menu_popup_delay;
+        protected int drag_delay = 300;
         protected int drag_enter_delay = 1000;
 
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
