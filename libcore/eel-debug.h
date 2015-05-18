@@ -39,7 +39,7 @@ void eel_make_warnings_and_criticals_stop_in_debugger (void);
 void eel_debug_shut_down                              (void);
 void eel_debug_call_at_shutdown                       (EelFunction function);
 void eel_debug_call_at_shutdown_with_data             (GFreeFunc   function,
-						       gpointer    data);
+                                                       gpointer    data);
 
 G_END_DECLS
 

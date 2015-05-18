@@ -1430,7 +1430,7 @@ confirm_empty_trash (EmptyTrashJob *job)
         }
     }
 
-    /* Strings are freed by f () */
+    /* The strings are freed by f () */
 
     response = run_warning (job,
                             prompt,
@@ -2090,7 +2090,7 @@ delete_job (GIOSchedulerJob *io_job,
             } else {
                 must_confirm_delete = TRUE;
                 to_delete_files = g_list_prepend (to_delete_files, file);
-            } 
+            }
         }
     }
 
@@ -5958,7 +5958,7 @@ location_list_from_uri_list (const GList *uris)
 
 /** The done_callback function has a variable signature. When the file is being moved to
  * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
- */ 
+ */
 void
 marlin_file_operations_copy_move   (GList                  *files,
                                     GArray                 *relative_item_points,

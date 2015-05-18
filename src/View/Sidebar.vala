@@ -1,22 +1,22 @@
 /***
-  Copyright (C) 2014 elementary Developers and Jeremy Wootten
+    Copyright (C) 2015 elementary Developers
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Mr Jamie McCracken (jamiemcc at blueyonder dot co dot uk)
+    Authors : Mr Jamie McCracken (jamiemcc at blueyonder dot co dot uk)
               Roth Robert <evfool@gmail.com>
               ammonkey <am.monkeyd@gmail.com>
-*             Jeremy Wootten <jeremywootten@gmail.com>
+              Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
 namespace Marlin.Places {
@@ -115,7 +115,7 @@ namespace Marlin.Places {
         double adjustment_val = 0.0;
 
         public Sidebar (Marlin.View.Window window) {
-            init ();  //creates the Gtk.TreeModel store.
+            init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -2043,8 +2043,8 @@ namespace Marlin.Places {
                               out show_start,
                               out show_stop);
 
-            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native 
-             * file system whose trash contains files */ 
+            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
+             * file system whose trash contains files */
             bool show_empty_trash = (uri != null) &&
                                     ((uri == Marlin.TRASH_URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));

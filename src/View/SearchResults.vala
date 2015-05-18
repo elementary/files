@@ -1,3 +1,20 @@
+/***
+    Copyright (C) 2015 elementary Developers
+
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    Authors :
+***/
 
 namespace Marlin.View
 {
@@ -148,7 +165,7 @@ namespace Marlin.View
                 if (iter == no_results_label)
                     return n_results < 1;
 
-                // hide empty category headers
+                /* hide empty category headers */
                 return list.iter_depth (iter) != 0 || list.iter_has_child (iter);
             });
             view.model = filter;
@@ -315,7 +332,7 @@ namespace Marlin.View
                 break;
             } while (list.iter_next (ref iter));
 
-            // make sure we actually scroll all the way back to the unselectable header
+            /* make sure we actually scroll all the way back to the unselectable header */
             scroll.vadjustment.@value = 0;
         }
 
@@ -334,7 +351,7 @@ namespace Marlin.View
 
                 list.@get (iter, 3, out file);
 
-                // catch the case when we land on an ellipsis
+                /* catch the case when we land on an ellipsis */
                 if (file == null)
                     list.iter_previous (ref iter);
 
@@ -375,7 +392,7 @@ namespace Marlin.View
 
             list.iter_nth_child (out iter, parent, up ? list.iter_n_children (parent) - 1 : 0);
 
-            // make sure we haven't hit an ellipsis
+            /* make sure we haven't hit an ellipsis */
             if (up) {
                 list.@get (iter, 3, out file);
                 if (file == null)
@@ -543,7 +560,7 @@ namespace Marlin.View
             File file;
 
             foreach (var match in new_results) {
-                // prevent results from showing in both global and local results
+                /* prevent results from showing in both global and local results */
                 if (parent == global_results) {
                     var already_added = false;
 
@@ -611,7 +628,7 @@ namespace Marlin.View
             if (!valid_iter) {
                 Gdk.beep ();
                 return;
-            }            
+            }
 
             File? file = null;
 
@@ -620,7 +637,7 @@ namespace Marlin.View
              * others.  Any changes to the format and content of the accept () function should be
              * carefully checked for stability on a range of systems which differ in architecture,
              * speed and configuration.
-             */ 
+             */
             list.@get (accepted, 3, out file);
 
             if (file == null) {
@@ -674,9 +691,11 @@ namespace Marlin.View
                 adding_timeout = 0;
                 allow_adding_results = true;
 
-                // we need to catch the case when we were only waiting for the timeout
-                // to be finished and the actual search was already done. Otherwise the next
-                // condition will never be reached.
+                /* we need to catch the case when we were only waiting for the timeout
+                 * to be finished and the actual search was already done. Otherwise the next
+                 * condition will never be reached.
+                 */
+
                 if (global_search_finished && local_search_finished) {
                     working = false;
                 }
@@ -862,7 +881,7 @@ namespace Marlin.View
                 } else
                     display_count = new_count;
 
-                // use a closure here to get vala to pass the userdata that we actually want
+                /* use a closure here to get vala to pass the userdata that we actually want */
                 Idle.add (() => {
                     add_results (new_results, local_results);
                     return false;
@@ -879,7 +898,7 @@ namespace Marlin.View
                 results = yield zg_index.search (term,
                                                  new Zeitgeist.TimeRange.anytime (),
                                                  templates,
-                                                 0, // offset
+                                                 0, /* offset */
                                                  MAX_RESULTS + 1,
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
@@ -942,9 +961,9 @@ namespace Marlin.View
 
         bool term_matches (string term, string name)
         {
-            // TODO improve.
+            /**TODO** improve */
 
-            // term is assumed to be down
+            /* term is assumed to be down */
             bool res;
             if (begins_with_only)
                 res = name.normalize ().casefold ().has_prefix (term);

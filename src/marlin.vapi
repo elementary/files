@@ -51,5 +51,6 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-icon-renderer.h")]
     public class IconRenderer : Gtk.CellRenderer {
         public IconRenderer ();
-    }    
+        public uint get_helper_size ();
+    }
 }

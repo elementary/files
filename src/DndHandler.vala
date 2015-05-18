@@ -1,25 +1,23 @@
-/*
- * DndHandler.vala
- * 
- * Copyright 2014 jeremy <jeremy@jeremy-MM061>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
+/***
+    Copyright (C) 2015 elementary Developers
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+    MA 02110-1301, USA.
+
+    Authors: Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace FM {
     public class DndHandler : GLib.Object {
@@ -81,7 +79,7 @@ namespace FM {
         private void add_action (Gtk.ApplicationWindow win) {
             var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
             action.activate.connect (this.on_choice);
-            
+
             win.add_action (action);
         }
 
@@ -154,7 +152,7 @@ namespace FM {
                                             null, null, /* actual property type and format got disregarded */
                                             out data
                                            );
- 
+
             if (exists && data != null) {
                 string name = data_to_string (data);
                 if (GLib.Path.DIR_SEPARATOR.to_string () in name) {

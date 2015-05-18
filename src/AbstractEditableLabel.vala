@@ -1,20 +1,20 @@
-/*
- Copyright (C) 2014 elementary Developers
+/***
+    Copyright (C) 2015 elementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Jeremy Wootten <jeremy@elementary.org>
-*/
+    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace Marlin {
     public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
@@ -33,7 +33,7 @@ namespace Marlin {
             add (editable_widget);
             show_all ();
             get_real_editable ().key_press_event.connect (on_key_press_event);
-        } 
+        }
 
         public bool on_key_press_event (Gdk.EventKey event) {
             bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -74,7 +74,7 @@ namespace Marlin {
         public virtual void set_line_wrap_mode (Pango.WrapMode mode) {}
         public virtual void set_justify (Gtk.Justification jtype) {}
         public virtual void set_padding (int xpad, int ypad) {}
-        
+
         public abstract new void set_size_request (int width, int height);
         public abstract Gtk.Widget create_editable_widget ();
         public abstract string get_text ();

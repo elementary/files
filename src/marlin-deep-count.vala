@@ -1,21 +1,21 @@
-/*
- * Copyright (C) 2011 Marlin Developers
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Author: ammonkey <am.monkeyd@gmail.com>
- */
+/***
+    Copyright (C) 2011 Marlin Developers
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Author: ammonkey <am.monkeyd@gmail.com>
+***/
 
 public class Marlin.DeepCount : Object {
 
@@ -58,18 +58,17 @@ public class Marlin.DeepCount : Object {
                     unowned string name = f.get_name ();
                     File location = directory.get_child (name);
                     if (f.get_file_type () == FileType.DIRECTORY) {
-                        //message ("found: %s", name);
                         yield process_directory (location);
                         dirs_count++;
                     } else {
-                        //message ("file: %s %s", name, location.get_uri ());
                         files_count++;
                     }
                     mutex.lock ();
                     uint64 file_size = f.get_size ();
                     uint64 allocated_size = f.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
-                    // Check for sparse file, allocated size will be smaller, for normal files allocated size
-                    // includes overhead size so we don't use it for those here
+                    /* Check for sparse file, allocated size will be smaller, for normal files allocated size
+                     * includes overhead size so we don't use it for those here
+                     */
                     if (allocated_size < file_size && f.get_file_type () != FileType.DIRECTORY)
                         file_size = allocated_size;
 
@@ -87,13 +86,9 @@ public class Marlin.DeepCount : Object {
         }
 
         directories.remove (directory);
-        /*message ("----------------");
-          foreach (var dir in directories)
-          message ("dir %s", dir.get_uri ());*/
-        if (directories == null) {
-            //message ("DEEP COUNT dir %s size %s", file.get_uri (), format_size_for_display ((int64) total_size));
+
+        if (directories == null)
             finished ();
-        }
     }
 
     public void cancel ()  {

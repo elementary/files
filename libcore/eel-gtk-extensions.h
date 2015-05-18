@@ -1,6 +1,6 @@
 /* eel-gtk-extensions.h - interface for new functions that operate on
-  			       gtk classes. Perhaps some of these should be
-  			       rolled into gtk someday.
+                   gtk classes. Perhaps some of these should be
+                   rolled into gtk someday.
 
    Copyright (C) 1999, 2000, 2001 Eazel, Inc.
 
@@ -28,13 +28,13 @@
 
 #include <gtk/gtk.h>
 
-#define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT 	2
+#define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT     2
 
 GtkMenuItem *eel_gtk_menu_append_separator (GtkMenu *menu);
 
-void        eel_pop_up_context_menu (GtkMenu	     *menu,
-                                     gint16	      offset_x,
-                                     gint16	      offset_y,
+void        eel_pop_up_context_menu (GtkMenu         *menu,
+                                     gint16       offset_x,
+                                     gint16       offset_y,
                                      GdkEventButton *event);
 void        eel_gtk_widget_set_shown (GtkWidget *widget, gboolean shown);
 

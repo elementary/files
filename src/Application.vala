@@ -1,23 +1,23 @@
 /***
-  Copyright (C) 1999, 2000 Red Hat, Inc.
-  Copyright (C) 2000, 2001 Eazel, Inc.
-  Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (C) 1999, 2000 Red Hat, Inc.
+    Copyright (C) 2000, 2001 Eazel, Inc.
+    Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
-  Authors: Elliot Lee <sopwith@redhat.com>,
-           Darin Adler <darin@bentspoon.com>,
-           Julián Unrrein <junrrein@gmail.com>
+    Authors: Elliot Lee <sopwith@redhat.com>,
+             Darin Adler <darin@bentspoon.com>,
+             Julián Unrrein <junrrein@gmail.com>
 ***/
 
 private Marlin.Application application_singleton = null;
@@ -98,8 +98,9 @@ public class Marlin.Application : Granite.Application {
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
-        /* TODO move the volume manager here? */
-        /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+        /**TODO** move the volume manager here? */
+        /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+
         this.volume_monitor = VolumeMonitor.get ();
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
 

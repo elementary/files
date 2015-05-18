@@ -1,21 +1,21 @@
-/*
- * Copyright (C) 2011 Marlin Developers
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Author: ammonkey <am.monkeyd@gmail.com>
- */
+/***
+    Copyright (C) 2011 Marlin Developers
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Author: ammonkey <am.monkeyd@gmail.com>
+***/
 
 private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 private Mutex dir_cache_lock;
@@ -72,9 +72,6 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private VolumeMonitor mounts_monitor = VolumeMonitor.get ();
-    private List<Mount> mounts;
-
     private string scheme;
     public bool is_local;
     public bool is_trash;
@@ -129,12 +126,14 @@ public class GOF.Directory.Async : Object {
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to
-     * the network is made */
+     * the network is made
+     */
     private bool prepare_directory () {
         if (!get_file_info ()) {
             is_ready = true;
             /* local uris are deemed loadable even if they do not exist
-             * If they do not exist an opportunity will be given to create them */
+             * If they do not exist an opportunity will be given to create them
+             */
             can_load = is_local;
             return false;
         }
@@ -193,16 +192,6 @@ public class GOF.Directory.Async : Object {
             });
         } else
             make_ready ();
-
-        mounts = mounts_monitor.get_mounts ();
-        var mounts = VolumeMonitor.get ().get_mounts ();
-
-        has_mounts = (mounts != null);
-
-        if (has_mounts)
-            Preferences.get_default ().confirm_trash = true;
-        else
-            Preferences.get_default ().confirm_trash = false;
 
         return true;
     }
@@ -269,9 +258,8 @@ public class GOF.Directory.Async : Object {
             file.is_mounted = true;
             trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
             has_trash_dirs = (trash_dirs != null);
-        } else {
+        } else
             has_trash_dirs = is_local;
-        }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
@@ -421,7 +409,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public async void mount_mountable () throws Error {
-        /* TODO pass GtkWindow *parent to Gtk.MountOperation */
+        /**TODO** pass GtkWindow *parent to Gtk.MountOperation */
         var mount_op = new Gtk.MountOperation (null);
         yield location.mount_enclosing_volume (0, mount_op, cancellable);
     }
@@ -526,7 +514,7 @@ public class GOF.Directory.Async : Object {
         return (!) result;
     }
 
-    /* TODO move this to GOF.File */
+    /**TODO** move this to GOF.File */
     private delegate void func_query_info (GOF.File gof);
 
     private async void query_info_async (GOF.File gof, func_query_info? f = null) {

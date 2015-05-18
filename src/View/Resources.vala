@@ -1,3 +1,21 @@
+/***
+    Copyright (C) 2015 elementary Developers
+
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    Authors :
+***/
+
 namespace Marlin {
     public const string APP_TITLE = "Files";
     public const string COPYRIGHT = APP_YEARS + " Marlin Developers";
@@ -77,11 +95,11 @@ namespace Marlin {
                 return Marlin.PROTOCOL_NAME_TRASH;
             case "network":
                 return Marlin.PROTOCOL_NAME_NETWORK;
-            case "smb": 
+            case "smb":
                 return Marlin.PROTOCOL_NAME_SMB;
-            case "ftp": 
+            case "ftp":
                 return Marlin.PROTOCOL_NAME_FTP;
-            case "sftp": 
+            case "sftp":
                 return Marlin.PROTOCOL_NAME_SFTP;
             case "afp":
                 return Marlin.PROTOCOL_NAME_AFP;

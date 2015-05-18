@@ -64,7 +64,7 @@ static void     fm_list_model_sortable_init (GtkTreeSortableIface *iface);
 struct FMListModelDetails {
     GSequence *files;
     GHashTable *directory_reverse_map; /* map from directory to GSequenceIter's */
-    GHashTable *top_reverse_map;	   /* map from files in top dir to GSequenceIter's */
+    GHashTable *top_reverse_map;       /* map from files in top dir to GSequenceIter's */
 
     int stamp;
     gboolean        has_child;
@@ -79,7 +79,7 @@ typedef struct FileEntry FileEntry;
 
 struct FileEntry {
     GOFFile *file;
-    GHashTable *reverse_map;	/* map from files to GSequenceIter's */
+    GHashTable *reverse_map;    /* map from files to GSequenceIter's */
     GOFDirectoryAsync *subdirectory;
     FileEntry *parent;
     GSequence *files;
@@ -1304,7 +1304,7 @@ fm_list_model_get_string_from_column_id (gint id)
 
 typedef struct {
     const gchar *name;
-    gint	    value;
+    gint        value;
 } ColumnsEnum;
 
 static const ColumnsEnum columnsview[] = {
