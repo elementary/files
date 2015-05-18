@@ -27,7 +27,7 @@
 #include <gtk/gtk.h>
 
 //char *  marlin_get_xdg_dir                      (const char *type);
-char	*marlin_get_accel_map_file		(void);
+char    *marlin_get_accel_map_file      (void);
 
 void    marlin_restore_files_from_trash         (GList *files, GtkWindow *parent_window);
 

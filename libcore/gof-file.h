@@ -140,8 +140,8 @@ struct _GOFFileClass {
 #define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"
 
 typedef enum {
-	GOF_FILE_ICON_FLAGS_NONE = 0,
-	GOF_FILE_ICON_FLAGS_USE_THUMBNAILS = (1<<0)
+    GOF_FILE_ICON_FLAGS_NONE = 0,
+    GOF_FILE_ICON_FLAGS_USE_THUMBNAILS = (1<<0)
 } GOFFileIconFlags;
 
 typedef void (*GOFFileOperationCallback) (GOFFile  *file,
@@ -150,14 +150,14 @@ typedef void (*GOFFileOperationCallback) (GOFFile  *file,
                                           gpointer callback_data);
 
 typedef struct {
-	GOFFile *file;
-	GCancellable *cancellable;
-	GOFFileOperationCallback callback;
-	gpointer callback_data;
-	gboolean is_rename;
+    GOFFile *file;
+    GCancellable *cancellable;
+    GOFFileOperationCallback callback;
+    gpointer callback_data;
+    gboolean is_rename;
 
-	gpointer data;
-	GDestroyNotify free_data;
+    gpointer data;
+    GDestroyNotify free_data;
 } GOFFileOperation;
 
 

@@ -86,7 +86,7 @@ eel_create_spotlight_pixbuf (GdkPixbuf* src)
     for (i = 0; i < height; i++) {
         pixdest = target_pixels + i * dst_row_stride;
         pixsrc = original_pixels + i * src_row_stride;
-        for (j = 0; j < width; j++) {		
+        for (j = 0; j < width; j++) {
             *pixdest++ = lighten_component (*pixsrc++);
             *pixdest++ = lighten_component (*pixsrc++);
             *pixdest++ = lighten_component (*pixsrc++);
@@ -194,7 +194,7 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
     for (i = 0; i < height; i++) {
         pixdest = target_pixels + i*dst_row_stride;
         pixsrc = original_pixels + i*src_row_stride;
-        for (j = 0; j < width; j++) {		
+        for (j = 0; j < width; j++) {
             *pixdest++ = (*pixsrc++ * red_value) >> 8;
             *pixdest++ = (*pixsrc++ * green_value) >> 8;
             *pixdest++ = (*pixsrc++ * blue_value) >> 8;

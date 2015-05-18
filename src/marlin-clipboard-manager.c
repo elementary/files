@@ -652,7 +652,7 @@ marlin_clipboard_manager_has_cutted_file (MarlinClipboardManager *manager,
 
 gboolean
 marlin_clipboard_manager_has_file (MarlinClipboardManager *manager,
-                                          const GOFFile       *file)
+                                   const GOFFile       *file)
 {
     g_return_val_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager), FALSE);
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);

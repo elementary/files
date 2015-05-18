@@ -69,16 +69,16 @@ void          marlin_progress_info_finish          (MarlinProgressInfo *info);
 void          marlin_progress_info_pause           (MarlinProgressInfo *info);
 void          marlin_progress_info_resume          (MarlinProgressInfo *info);
 void          marlin_progress_info_set_status      (MarlinProgressInfo *info,
-						    const char         *status);
+                                                    const char         *status);
 void          marlin_progress_info_take_status     (MarlinProgressInfo *info,
-						    char               *status);
+                                                    char               *status);
 void          marlin_progress_info_set_details     (MarlinProgressInfo *info,
-						    const char         *details);
+                                                    const char         *details);
 void          marlin_progress_info_take_details    (MarlinProgressInfo *info,
-						    char               *details);
+                                                    char               *details);
 void          marlin_progress_info_set_progress    (MarlinProgressInfo *info,
-						    double             current,
-						    double             total);
+                                                    double             current,
+                                                    double             total);
 void          marlin_progress_info_pulse_progress  (MarlinProgressInfo *info);
 
 

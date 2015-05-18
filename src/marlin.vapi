@@ -52,5 +52,5 @@ namespace Marlin {
     public class IconRenderer : Gtk.CellRenderer {
         public IconRenderer ();
         public uint get_helper_size ();
-    }    
+    }
 }

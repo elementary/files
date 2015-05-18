@@ -73,6 +73,7 @@ eel_pango_attr_list_big (void)
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
         attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_LARGE), NULL);
+
     return attr_list;
 }
 
@@ -93,6 +94,7 @@ eel_pango_attr_list_small (void)
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
         attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_SMALL), NULL);
+
     return attr_list;
 }
 
@@ -112,7 +114,8 @@ eel_pango_attr_list_big_bold (void)
 {
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
-        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_LARGE), pango_attr_weight_new (PANGO_WEIGHT_BOLD), NULL);
+        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_LARGE),
+                                              pango_attr_weight_new (PANGO_WEIGHT_BOLD), NULL);
     return attr_list;
 }
 
@@ -133,6 +136,7 @@ eel_pango_attr_list_bold (void)
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
         attr_list = eel_pango_attr_list_wrap (pango_attr_weight_new (PANGO_WEIGHT_BOLD), NULL);
+
     return attr_list;
 }
 
@@ -153,6 +157,7 @@ eel_pango_attr_list_italic (void)
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
         attr_list = eel_pango_attr_list_wrap (pango_attr_style_new (PANGO_STYLE_ITALIC), NULL);
+
     return attr_list;
 }
 
@@ -172,7 +177,8 @@ eel_pango_attr_list_small_italic (void)
 {
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
-        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_SMALL), pango_attr_style_new (PANGO_STYLE_ITALIC), NULL);
+        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_SMALL),
+                                              pango_attr_style_new (PANGO_STYLE_ITALIC), NULL);
     return attr_list;
 }
 
@@ -193,6 +199,7 @@ eel_pango_attr_list_underline_single (void)
     static PangoAttrList *attr_list = NULL;
     if (G_UNLIKELY (attr_list == NULL))
         attr_list = eel_pango_attr_list_wrap (pango_attr_underline_new (PANGO_UNDERLINE_SINGLE), NULL);
+
     return attr_list;
 }
 

@@ -310,5 +310,5 @@ marlin_file_changes_consume_changes (gboolean consume_all)
         }
 
         g_free (change);
-    }	
+    }
 }

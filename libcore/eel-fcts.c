@@ -113,17 +113,17 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
 GList *
 eel_get_user_names (void)
 {
-	GList *list;
-	struct passwd *user;
+    GList *list;
+    struct passwd *user;
 
-	list = NULL;
-	setpwent ();
-	while ((user = getpwent ()) != NULL) {
-		list = g_list_prepend (list, g_strdup (user->pw_name));
-	}
-	endpwent ();
+    list = NULL;
+    setpwent ();
+    while ((user = getpwent ()) != NULL) {
+        list = g_list_prepend (list, g_strdup (user->pw_name));
+    }
+    endpwent ();
 
-	return eel_g_str_list_alphabetize (list);
+    return eel_g_str_list_alphabetize (list);
 }
 
 /* Get a list of group names, filtered to only the ones
@@ -133,24 +133,24 @@ eel_get_user_names (void)
 GList *
 eel_get_group_names_for_user (void)
 {
-	GList *list;
-	struct group *group;
-	int count, i;
-	gid_t gid_list[NGROUPS_MAX + 1];
-	
+    GList *list;
+    struct group *group;
+    int count, i;
+    gid_t gid_list[NGROUPS_MAX + 1];
 
-	list = NULL;
 
-	count = getgroups (NGROUPS_MAX + 1, gid_list);
-	for (i = 0; i < count; i++) {
-		group = getgrgid (gid_list[i]);
-		if (group == NULL)
-			break;
-		
-		list = g_list_prepend (list, g_strdup (group->gr_name));
-	}
+    list = NULL;
 
-	return eel_g_str_list_alphabetize (list);
+    count = getgroups (NGROUPS_MAX + 1, gid_list);
+    for (i = 0; i < count; i++) {
+        group = getgrgid (gid_list[i]);
+        if (group == NULL)
+            break;
+
+        list = g_list_prepend (list, g_strdup (group->gr_name));
+    }
+
+    return eel_g_str_list_alphabetize (list);
 }
 
 /**
@@ -159,71 +159,71 @@ eel_get_group_names_for_user (void)
 GList *
 eel_get_all_group_names (void)
 {
-	GList *list;
-	struct group *group;
-	
-	list = NULL;
+    GList *list;
+    struct group *group;
 
-	setgrent ();
-	
-	while ((group = getgrent ()) != NULL)
-		list = g_list_prepend (list, g_strdup (group->gr_name));
-	
-	endgrent ();
-	
-	return eel_g_str_list_alphabetize (list);
+    list = NULL;
+
+    setgrent ();
+
+    while ((group = getgrent ()) != NULL)
+        list = g_list_prepend (list, g_strdup (group->gr_name));
+
+    endgrent ();
+
+    return eel_g_str_list_alphabetize (list);
 }
 
 gboolean
 eel_get_group_id_from_group_name (const char *group_name, uid_t *gid)
 {
-	struct group *group;
+    struct group *group;
 
-	g_assert (gid != NULL);
+    g_assert (gid != NULL);
 
-	group = getgrnam (group_name);
+    group = getgrnam (group_name);
 
-	if (group == NULL)
-		return FALSE;
+    if (group == NULL)
+        return FALSE;
 
-	*gid = group->gr_gid;
+    *gid = group->gr_gid;
 
-	return TRUE;
+    return TRUE;
 }
 
 gboolean
 eel_get_user_id_from_user_name (const char *user_name, uid_t *uid)
 {
-	struct passwd *password_info;
+    struct passwd *password_info;
 
-	g_assert (uid != NULL);
+    g_assert (uid != NULL);
 
-	password_info = getpwnam (user_name);
+    password_info = getpwnam (user_name);
 
-	if (password_info == NULL)
+    if (password_info == NULL)
         return FALSE;
 
-	*uid = password_info->pw_uid;
+    *uid = password_info->pw_uid;
 
-	return TRUE;
+    return TRUE;
 }
 
 gboolean
 eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 {
-	long scanned_id;
-	char c;
+    long scanned_id;
+    char c;
 
-	g_assert (id != NULL);
+    g_assert (id != NULL);
 
-	/* Only accept string if it has one integer with nothing
-	 * afterwards.
-	 */
-	if (sscanf (digit_string, "%ld%c", &scanned_id, &c) != 1) {
-		return FALSE;
-	}
-	*id = scanned_id;
-	return TRUE;
+    /* Only accept string if it has one integer with nothing
+     * afterwards.
+     */
+    if (sscanf (digit_string, "%ld%c", &scanned_id, &c) != 1) {
+        return FALSE;
+    }
+    *id = scanned_id;
+    return TRUE;
 }
 
 gchar

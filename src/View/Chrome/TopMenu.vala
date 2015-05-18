@@ -1,24 +1,25 @@
-//
-//  TopMenu.cs
-//
-//  Authors:
-//       mathijshenquet <mathijs.henquet@gmail.com>
-//       ammonkey <am.monkeyd@gmail.com>
-//
-//  Copyright (c) 2010 mathijshenquet
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+/***
+    TopMenu.cs
+
+    Authors:
+       mathijshenquet <mathijs.henquet@gmail.com>
+       ammonkey <am.monkeyd@gmail.com>
+
+    Copyright (c) 2010 mathijshenquet
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
 
 namespace Marlin.View.Chrome
 {
@@ -74,7 +75,7 @@ namespace Marlin.View.Chrome
                 win.add_tab (file, Marlin.ViewMode.CURRENT);
             });
 
-            
+
             location_bar.show_all ();
             view_switcher.margin_right = 20;
             pack_start (location_bar);
@@ -87,10 +88,11 @@ namespace Marlin.View.Chrome
             var back_menu = new Gtk.Menu ();
             var n = 1;
             foreach (string path in path_list) {
-                int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
-                              // You see if I would just use back(n) the reference to n would be passed
-                              // in the clusure, restulting in a value of n which would always be n=1. So
-                              // by introducting a new variable I can bypass this anoyance.
+                int cn = n++; /* No i'm not mad, thats just how closures work in vala (and other langs).
+                               * You see if I would just use back(n) the reference to n would be passed
+                               * in the clusure, restulting in a value of n which would always be n=1. So
+                               * by introducting a new variable I can bypass this anoyance.
+                               */
                 var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
                 item.activate.connect (() => {
                     back(cn);
@@ -107,7 +109,7 @@ namespace Marlin.View.Chrome
             var forward_menu = new Gtk.Menu ();
             var n = 1;
             foreach (string path in path_list) {
-                int cn = n++; // For explanation look up
+                int cn = n++; /* For explanation look up */
                 var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
                 item.activate.connect (() => {
                     forward (cn);

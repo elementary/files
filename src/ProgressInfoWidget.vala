@@ -1,22 +1,22 @@
 /***
-  Copyright (C) 2007, 2011 Red Hat, Inc.
-  Copyright (C) 2013 elementary Developers
+    Copyright (C) 2007, 2011 Red Hat, Inc.
+    Copyright (C) 2013 elementary Developers
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
-  Authors: Alexander Larsson <alexl@redhat.com>
-           Cosimo Cecchi <cosimoc@redhat.com>
-           Julián Unrrein <junrrein@gmail.com>
+    Authors: Alexander Larsson <alexl@redhat.com>
+             Cosimo Cecchi <cosimoc@redhat.com>
+             Julián Unrrein <junrrein@gmail.com>
 ***/
 
 public class Marlin.Progress.InfoWidget : Gtk.Box {
@@ -42,7 +42,7 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
             destroy ();
         });
     }
-    
+
     private void build_and_show_widget () {
         this.orientation = Gtk.Orientation.VERTICAL;
         this.homogeneous = false;
@@ -69,7 +69,7 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
             this.info.cancel ();
             button.sensitive = false;
         });
-        
+
         hbox.pack_start (button, false, false, 0);
 
         pack_start (hbox, false, false, 0);
