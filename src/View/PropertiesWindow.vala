@@ -196,8 +196,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         /* Preview */
         if (count == 1 && goffile.flags != 0) {
             /* Retrieve the low quality (existent) thumbnail.
-            This will be shown to prevent resizing the properties window
-            when the large preview is retrieved. */
+             * This will be shown to prevent resizing the properties window
+             * when the large preview is retrieved.
+             */
             Gdk.Pixbuf small_preview;
 
             if (view.is_in_recent ())

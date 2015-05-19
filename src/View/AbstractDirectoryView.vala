@@ -1157,10 +1157,7 @@ namespace FM {
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
-            if (!(selected_files.next != null && in_recent))
-                new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
-            else
-                return;
+            new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
         }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
