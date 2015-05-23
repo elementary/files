@@ -1704,7 +1704,8 @@ gof_file_accepts_drop (GOFFile          *file,
                 if (g_file_equal (gof_file_get_target_location (file), parent_file))
                 {
                     g_object_unref (parent_file);
-                    return 0;
+                    suggested_action = GDK_ACTION_ASK;
+                    actions = GDK_ACTION_ASK|GDK_ACTION_LINK;
                 }
                 else
                     g_object_unref (parent_file);
