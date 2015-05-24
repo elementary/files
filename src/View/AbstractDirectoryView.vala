@@ -1638,7 +1638,8 @@ namespace FM {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
                     highlight_drop_file (drop_target_file, current_actions, path);
 
-                    if (file.is_folder () && drag_file_list.index (file) == -1) {
+                    if (file.is_folder () && is_valid_drop_folder (file)) {
+                        /* open the target folder after a short delay */
                         cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      drag_enter_delay,
@@ -1650,6 +1651,17 @@ namespace FM {
                     }
                 }
             }
+        }
+
+        private bool is_valid_drop_folder (GOF.File file) {
+            /* Cannot drop onto a file onto its parent or onto itself */
+            if (file.uri != slot.uri &&
+                drag_file_list != null &&
+                drag_file_list.index (file) >= 0)
+
+                return true;
+            else
+                return false;
         }
 
         private void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
