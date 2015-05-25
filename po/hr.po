@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-02 15:49+0000\n"
+"PO-Revision-Date: 2015-04-06 19:09+0000\n"
 "Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-03-03 05:44+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:28+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1565,7 +1565,7 @@ msgstr "Datoteka nije pronađena."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Označena datoteka  više ne postoji."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1985,7 +1985,7 @@ msgstr "Neimenovan %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Nemoguće kopirati dokumente iz smeća"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
@@ -2180,7 +2180,7 @@ msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:88
 msgid "Bookmark"
-msgstr "Oznaka"
+msgstr "Zabilješka"
 
 #: ../src/View/directory_view_popup.ui:95
 msgid "Paste"

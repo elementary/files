@@ -1,21 +1,21 @@
-/*
- * Copyright (C) 2011 Marlin Developers
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Author: ammonkey <am.monkeyd@gmail.com>
- */
+/***
+    Copyright (C) 2011 Marlin Developers
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Author: ammonkey <am.monkeyd@gmail.com>
+***/
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private class Pair<F, G> {
@@ -40,13 +40,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private uint count;
     private GLib.List<GOF.File> files;
-    private GOF.File goffile;
+    private unowned GOF.File goffile;
     private FM.AbstractDirectoryView view;
 
     private Gee.Set<string>? mimes;
 
     private Gtk.Widget header_title;
-    private Granite.Widgets.WrapLabel type_label;
+    private Gtk.Label type_label;
     private Gtk.Label size_label;
     private Gtk.Widget type_key_label;
     private string ftype; /* common type */
@@ -61,7 +61,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private bool files_contain_a_directory;
 
-    //To stop the spinner
     private uint _folder_count;
     private signal void folder_count_changed ();
 
@@ -90,7 +89,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         set_default_size (220, -1);
         transient_for = parent;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        type_hint = Gdk.WindowTypeHint.DIALOG;      
+        type_hint = Gdk.WindowTypeHint.DIALOG;
         border_width = 5;
         destroy_with_parent = true;
 
@@ -105,7 +104,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
 
         view = _view;
-        files = _files.copy ();
+
+        /* The properties window may outlive the passed-in file object
+           lifetimes. The objects must be referenced as a precaution.
+
+           GLib.List.copy() would not guarantee valid references: because it
+           does a shallow copy (copying the pointer values only) the objects'
+           memory may be freed even while this code is using it. */
+        foreach (unowned GOF.File file in _files)
+            /* prepend(G) is declared "owned G", so ref() will be called once
+               on the unowned foreach value. */
+            files.prepend (file);
+
         count = files.length();
 
         if (count < 1 ) {
@@ -122,15 +132,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         header.height_request = 15;
         set_titlebar (header);
 
-        // Set the default containers
+        /* Set the default containers */
         var content_area = get_content_area ();
         sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
 
         var content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        //var content_vbox = new VBox(false, 12);
         content_area.pack_start (content_vbox);
 
-        // Adjust sizes
+        /* Adjust sizes */
         content_vbox.margin_right = 5;
         content_vbox.margin_left = 5;
 
@@ -165,7 +174,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         var stack = new Gtk.Stack ();
         stack.margin_bottom = 15;
-        stack_switcher.stack = stack;        
+        stack_switcher.stack = stack;
         content_vbox.pack_start (stack, true, true, 0);
 
         /* Info */
@@ -188,12 +197,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
 
         /* Preview */
-        //message ("flag %d", (int) goffile.flags);
         if (count == 1 && goffile.flags != 0) {
             /* Retrieve the low quality (existent) thumbnail.
-            This will be shown to prevent resizing the properties window
-            when the large preview is retrieved. */
+             * This will be shown to prevent resizing the properties window
+             * when the large preview is retrieved.
+             */
             var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+
             /* Request the creation of the large thumbnail */
             Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
             var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -212,7 +222,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
             (header_title as Gtk.Entry).select_region (start_offset, end_offset);
         }
-        
+
 
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
@@ -243,14 +253,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private void update_header_desc () {
         string header_desc_str;
 
-        //header_desc_str = Eel.format_size (total_size);
         header_desc_str = format_size ((int64) total_size);
-        if (ftype != null) 
+        if (ftype != null)
             type_label.label = goffile.formated_type;
         else {
             type_key_label.hide ();
             type_label.hide ();
-        } 
+        }
 
         if (size_warning > 0) {
             string file_plural = _("file");
@@ -287,7 +296,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                     update_header_desc ();
                                     if (file_count + folder_count == size_warning)
                                         size_label.label = _("unknown");
-                                        
+
                                     folder_count--;
                                     if (!size_label.visible)
                                         size_label.show ();
@@ -345,7 +354,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     }
 
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
-        type_label = new Granite.Widgets.WrapLabel ("");
+        type_label = new Gtk.Label ("");
+        type_label.set_halign (Gtk.Align.START);
         size_label = new Gtk.Label ("");
         type_key_label = create_label_key (_("Type") + (": "));
 
@@ -393,7 +403,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 catch (GLib.Error e) {
                     warning ("Could not create emblem %s - %s", emblem_name, e.message);
                 }
-                if (pos > 3) /* Only room for 3 emblems */ 
+                if (pos > 3) /* Only room for 3 emblems */
                     break;
             }
         }
@@ -403,8 +413,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content.pack_start (file_img, false, false);
 
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Granite.Widgets.WrapLabel ();
+            var label = new Gtk.Label ("");
             label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
+            label.set_halign (Gtk.Align.START);
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             var entry = new Gtk.Entry ();
@@ -523,7 +534,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             if (time_last_access != null)
                 info.add (new Pair<string, string>(_("Last Access") + (": "), time_last_access));
             /* print deletion date if trashed file */
-            //TODO format trash deletion date string
+
+            /**TODO** format trash deletion date string*/
+
             if (file.is_trashed ()) {
                 var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
                 if (deletion_date != null)
@@ -579,6 +592,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         value_label.set_hexpand (true);
         value_label.set_use_markup (true);
         value_label.set_can_focus (false);
+        value_label.set_halign (Gtk.Align.START);
 
         information.attach (key_label, 0, line, 1, 1);
         if (value_container != null) {
@@ -601,7 +615,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         information.attach (label, 0, 0, 1, 1);
 
         int n = 1;
-        // Have to have these separate as size call is async
+        /* Have to have these separate as size call is async */
         var size_key_label = create_label_key (_("Size") + (": "));
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
         size_box.pack_start (size_label, false, true);
@@ -616,7 +630,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         create_info_line (type_key_label, type_label, information, ref n);
 
         foreach (var pair in item_info) {
-            var value_label = new Granite.Widgets.WrapLabel (pair.value);
+            var value_label = new Gtk.Label (pair.value);
             var key_label = create_label_key (pair.key);
             create_info_line (key_label, value_label, information, ref n);
         }
@@ -700,7 +714,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 warning ("error: %s", e.message);
             }
         }
-        
+
         box.pack_start (information);
     }
 
@@ -734,9 +748,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private Gtk.Widget create_label_key (string str, Gtk.Align valign = Gtk.Align.START) {
         Gtk.Label key_label = new Gtk.Label (str);
         key_label.set_sensitive (false);
-        /*key_label.set_halign (Align.END);
-        key_label.set_valign (valign);*/
-        //key_label.set_hexpand (true);
         key_label.margin_right = 5;
         var yalign = get_alignment_float_from_align (valign);
 
@@ -833,17 +844,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         hbox.homogeneous = true;
         var btn_read = new Gtk.ToggleButton ();
         toggle_button_add_label (btn_read, _("Read"));
-        //btn_read.set_relief (Gtk.ReliefStyle.NONE);
         btn_read.set_data ("permissiontype", pt);
         btn_read.toggled.connect (action_toggled_read);
         var btn_write = new Gtk.ToggleButton ();
         toggle_button_add_label (btn_write, _("Write"));
-        //btn_write.set_relief (Gtk.ReliefStyle.NONE);
         btn_write.set_data ("permissiontype", pt);
         btn_write.toggled.connect (action_toggled_write);
         var btn_exe = new Gtk.ToggleButton ();
         toggle_button_add_label (btn_exe, _("Execute"));
-        //btn_exe.set_relief (Gtk.ReliefStyle.NONE);
         btn_exe.set_data ("permissiontype", pt);
         btn_exe.toggled.connect (action_toggled_execute);
         hbox.pack_start (btn_read);
@@ -855,7 +863,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private uint32 get_perm_from_chmod_unit (uint32 vfs_perm, int nb,
                                              int chmod, PermissionType pt) {
-        //message ("chmod code %d %d", chmod, nb);
         if (nb > 7 || nb < 0)
             critical ("erroned chmod code %d %d", chmod, nb);
 
@@ -868,7 +875,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             if (div >= 1)
                 vfs_perm |= vfs_perms[pt,i];
             nb = modulo;
-            //message ("div %d modulo %d", div, modulo);
         }
 
         return vfs_perm;
@@ -942,7 +948,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                                             uint32 val, Cancellable? _cancellable = null) {
         FileInfo info = new FileInfo ();
 
-        //TODO use marlin jobs
+        /**TODO** use marlin jobs*/
+
         try {
             info.set_attribute_uint32 (attr, val);
             yield file.location.set_attributes_async (info,
@@ -959,7 +966,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (is_chmod_code (str)) {
             reset_and_cancel_perm_timeout ();
             timeout_perm = Timeout.add (60, () => {
-                //message ("changed %s", str);
                 uint32 perm = chmod_to_vfs (int.parse (str));
                 perm_code_should_update = false;
                 update_perm_grid_toggle_states (perm);
@@ -975,9 +981,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                         file_set_attributes.begin (gof, FileAttribute.UNIX_MODE, perm, cancellable);
                         n++;
                     } else {
-                        //TODO add a list of permissions set errors in the property dialog.
                         warning ("can't change permission on %s", gof.uri);
                     }
+                        /**TODO** add a list of permissions set errors in the property dialog.*/
                 }
                 timeout_perm = 0;
 
@@ -995,7 +1001,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             return;
 
         store_users.get (iter, 0, out user);
-        //message ("combo_user changed: %s", user);
 
         if (!goffile.can_set_owner ()) {
             critical ("error can't set user");
@@ -1023,12 +1028,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             return;
 
         store_groups.get (iter, 0, out group);
-        //message ("combo_group changed: %s", group);
 
         if (!goffile.can_set_group ()) {
             critical ("error can't set group");
-            //TODO
-            //_("Not allowed to set group"));
             return;
         }
 
@@ -1036,8 +1038,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (!Eel.get_group_id_from_group_name (group, out gid)
             && !Eel.get_id_from_digit_string (group, out gid)) {
             critical ("group doesn t exit");
-            //TODO
-            //_("Specified group '%s' doesn't exist"), group);
             return;
         }
 
@@ -1082,15 +1082,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         perm_grid.attach (value_hlabel, 1, 5, 1, 1);
 
         perm_code = new Granite.Widgets.XsEntry ();
-        //var perm_code = new Label("705");
-        //perm_code.margin_right = 2;
         perm_code.set_text ("000");
         perm_code.set_max_length (3);
-        //perm_code.set_has_frame (false);
         perm_code.set_size_request (35, -1);
 
         var perm_code_hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
-        //var l_perm = new Label("-rwxr-xr-x");
         l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
         perm_code_hbox.pack_start (l_perm, true, true, 0);
         perm_code_hbox.pack_start (perm_code, false, false, 0);
@@ -1099,26 +1095,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         box.pack_start (perm_grid);
 
-        /*uint32 perm = chmod_to_vfs (702);
-        update_perm_grid_toggle_states (perm);*/
         update_perm_grid_toggle_states (goffile.permissions);
 
         perm_code.changed.connect (entry_changed);
-
-        /*int nbb;
-
-        nbb = 702;
-        goffile.permissions = chmod_to_vfs(nbb);
-        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
-        nbb = 343;
-        goffile.permissions = chmod_to_vfs(nbb);
-        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
-        nbb = 206;
-        goffile.permissions = chmod_to_vfs(nbb);
-        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
-        nbb = 216;
-        goffile.permissions = chmod_to_vfs(nbb);
-        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());*/
     }
 
     private bool selection_can_set_owner () {
@@ -1175,7 +1154,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         Gtk.Widget choice;
         choice = null;
 
-        //if (goffile.can_set_owner()) {
         if (selection_can_set_owner ()) {
             GLib.List<string> users;
             Gtk.TreeIter iter;
@@ -1205,7 +1183,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             var renderer = new Gtk.CellRendererText ();
             combo.pack_start (renderer, true);
             combo.add_attribute (renderer, "text", 0);
-            //renderer.attributes = EelPango.attr_list_small();
             if (owner_index == -1)
                 combo.set_active (0);
             else
@@ -1215,12 +1192,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
             choice = (Gtk.Widget) combo;
         } else {
-            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FileAttribute.OWNER_USER));
             string? common_owner = get_common_owner ();
             if (common_owner == null)
                 common_owner = "--";
             choice = (Gtk.Widget) new Gtk.Label (common_owner);
-            //choice.margin_left = 6;
             choice.set_halign (Gtk.Align.START);
         }
 
@@ -1232,7 +1207,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private Gtk.Widget create_group_choice () {
         Gtk.Widget choice;
 
-        //if (goffile.can_set_group()) {
         if (selection_can_set_group ()) {
             GLib.List<string> groups;
             Gtk.TreeIter iter;
@@ -1262,7 +1236,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             var renderer = new Gtk.CellRendererText ();
             combo.pack_start (renderer, true);
             combo.add_attribute (renderer, "text", 0);
-            //renderer.attributes = EelPango.attr_list_small();
+
             if (group_index == -1)
                 combo.set_active (0);
             else
@@ -1272,7 +1246,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
             choice = (Gtk.Widget) combo;
         } else {
-            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FileAttribute.OWNER_GROUP));
             string? common_group = get_common_group ();
             if (common_group == null)
                 common_group = "--";
@@ -1328,7 +1301,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         store_apps.get (iter,
                         AppsColumn.LABEL, out app_label,
                         AppsColumn.APP_INFO, out app);
-        //message ("combo_open_with changed: %s %s", app_label, app.get_name ());
+
         if (app == null) {
             var app_chooser_dlg = new Gtk.AppChooserDialog (this, 0, goffile.location);
             string str = null;
@@ -1370,12 +1343,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             try {
                 var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
                 uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
-                // Check for sparse file, allocated size will be smaller, for normal files allocated size
-                // includes overhead size so we don't use it for those here
+                /* Check for sparse file, allocated size will be smaller, for normal files allocated size
+                 * includes overhead size so we don't use it for those here
+                 */
                 if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory)
                     file_size = allocated_size;
             } catch (Error err) {
-                warning ("%s", err.message);
+                debug ("%s", err.message);
                 gof.is_connected = false;
             }
         }

@@ -19,8 +19,8 @@
  * Boston, MA 02111-1307, USA.
  *
  * Authors: Darin Adler <darin@eazel.com>
- *	    Pavel Cisler <pavel@eazel.com>
- *	    Mike Fleming  <mfleming@eazel.com>
+ *          Pavel Cisler <pavel@eazel.com>
+ *          Mike Fleming  <mfleming@eazel.com>
  *          John Sullivan <sullivan@eazel.com>
  */
 

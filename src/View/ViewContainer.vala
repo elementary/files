@@ -1,26 +1,26 @@
-//
-//  ViewContainer.vala
-//
-//  Authors:
-//       Mathijs Henquet <mathijs.henquet@gmail.com>
-//       ammonkey <am.monkeyd@gmail.com>
-//
-//  Copyright (c) 2010 Mathijs Henquet
-//
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-//
+/***
+    ViewContainer.vala
+
+    Authors:
+       Mathijs Henquet <mathijs.henquet@gmail.com>
+       ammonkey <am.monkeyd@gmail.com>
+
+    Copyright (c) 2010 Mathijs Henquet
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+***/
 
 using Marlin;
 
@@ -80,6 +80,10 @@ namespace Marlin.View {
             change_view_mode (mode, loc);
         }
 
+        ~ViewContainer () {
+            debug ("ViewContainer destruct");
+        }
+
         private void connect_signals () {
             path_changed.connect (user_path_change_request);
             window.folder_deleted.connect (on_folder_deleted);
@@ -99,6 +103,7 @@ namespace Marlin.View {
 
         public void close () {
             disconnect_signals ();
+            view.close ();
         }
 
         public Gtk.Widget content {
@@ -154,12 +159,6 @@ namespace Marlin.View {
                     /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
                     view.cancel ();
                 }
-
-                /* the following 2 lines delays destruction of the old view until this function returns
-                 * and allows the processor to display or update the window more quickly
-                 */    
-                GOF.AbstractSlot temp;
-                temp = view;
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
@@ -356,11 +355,13 @@ namespace Marlin.View {
         }
 
         public unowned GOF.AbstractSlot? get_current_slot () {
-           return view.get_current_slot ();
+           return view != null ? view.get_current_slot () : null;
         }
 
         public void set_active_state (bool is_active) {
-            get_current_slot ().set_active_state (is_active);
+            var aslot = get_current_slot ();
+            if (aslot != null)
+                aslot.set_active_state (is_active);
         }
 
         public void focus_location (GLib.File? file,
@@ -426,13 +427,16 @@ namespace Marlin.View {
         public void reload (bool propagate = true) {
             /* Allow time for the signal to propagate and the tab label to redraw */
             Idle.add (() => {
-                var slot = view.get_current_slot ();
+                var slot = get_current_slot ();
+                if (slot == null)
+                    return false;
+
                 slot.reload ();
                 load_slot_directory (slot);
                 /* For remote folders, make sure any other windows showing the same folder are
                  * also refreshed. Prevent infinite loop with propagate - when called from application,
                  * propagate will be false.
-                 */   
+                 */
                 if (propagate)
                     ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
 
@@ -451,7 +455,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            if (can_show_folder)
+            if (can_show_folder && view != null)
                 view.grab_focus ();
             else
                 content.grab_focus ();

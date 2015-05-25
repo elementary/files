@@ -58,7 +58,7 @@ GType marlin_progress_info_manager_get_type (void);
 MarlinProgressInfoManager* marlin_progress_info_manager_new (void);
 
 void marlin_progress_info_manager_add_new_info (MarlinProgressInfoManager *self,
-						  MarlinProgressInfo *info);
+                                                MarlinProgressInfo *info);
 GList *marlin_progress_info_manager_get_all_infos (MarlinProgressInfoManager *self);
 
 G_END_DECLS

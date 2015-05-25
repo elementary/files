@@ -1,20 +1,20 @@
-/*
- Copyright (C) 2014 elementary Developers
+/***
+    Copyright (C) 2015 elementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Jeremy Wootten <jeremy@elementary.org>
-*/
+    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace FM {
     public class IconView : AbstractDirectoryView {
@@ -29,6 +29,10 @@ namespace FM {
 
             if (zoom_level < minimum_zoom)
                 zoom_level = minimum_zoom;
+        }
+
+        ~IconView () {
+            debug ("Icon View destruct");
         }
 
         private void set_up_view () {
@@ -168,7 +172,7 @@ namespace FM {
             selected_files = null;
 
             tree.selected_foreach ((tree, path) => {
-                unowned GOF.File file;
+                GOF.File? file;
                 file = model.file_for_path (path);
 
                 if (file != null)
@@ -217,9 +221,6 @@ namespace FM {
                     model.@get (iter,
                             FM.ListModel.ColumnID.FILENAME, out text);
 
-                    if (text == null)
-                        text = "";
-
                     (r as Marlin.TextRenderer).set_up_layout (text, area);
 
                     if (x >= rect.x &&
@@ -235,18 +236,12 @@ namespace FM {
                         zone = ClickZone.BLANK_NO_PATH;
                     }
                 } else {
-                    if (helpers_shown &&
-                        x >= area.x &&
-                        x <= area.x + 18 &&
-                        y >= area.y &&
-                        y <= area.y + 18)
+                    bool on_helper = false;
+                    bool on_icon = is_on_icon (x, y, area.x, area.y, ref on_helper);
 
+                    if (on_helper)
                         zone = ClickZone.HELPER;
-                    else if (x >= area.x &&
-                             x <= area.x + icon_size &&
-                             y >= area.y &&
-                             y <= area.y + icon_size)
-
+                    else if (on_icon)
                         zone = ClickZone.ICON;
                     else if (rubberband) {
                         /* Fake location outside centre top of item for rubberbanding */

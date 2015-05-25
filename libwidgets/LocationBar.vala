@@ -1,22 +1,22 @@
-/*
- * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
- *
- * Marlin is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * Marlin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- *
- */
+/***
+    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Marlin is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program; see the file COPYING.  If not,
+    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
+
+***/
 
 namespace Marlin {
     public const string ROOT_FS_URI = "file://";
@@ -42,7 +42,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
-
     public string current_right_click_path;
     public string current_right_click_root;
 
@@ -66,7 +65,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             grab_focus ();
         }
     }
-    
+
     protected string text_completion = "";
     protected bool multiple_completions = false;
     protected bool text_changed = false;
@@ -121,6 +120,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     private Granite.Services.IconFactory icon_factory;
 
+    private Gdk.Window? entry_window = null;
+
     construct {
         icon_factory = Granite.Services.IconFactory.get_default ();
         icons = new List<IconDirectory?> ();
@@ -141,10 +142,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         y = 0;
 
         elements = new Gee.ArrayList<BreadcrumbsElement> ();
-        
+
         secondary_icon_activatable = true;
         secondary_icon_sensitive = true;
         truncate_multiline = true;
+
+        realize.connect_after (after_realize);
         activate.connect (on_activate);
         button_press_event.connect (on_button_press_event);
         button_release_event.connect (on_button_release_event);
@@ -157,7 +160,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         /* Drag and drop */
         Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
-        Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, {target_uri_list}, Gdk.DragAction.MOVE);
+        Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
         drag_leave.connect (on_drag_leave);
         drag_motion.connect (on_drag_motion);
         drag_data_received.connect (on_drag_data_received);
@@ -180,7 +183,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             case Gdk.Key.Up:
                 up ();
                 return true;
-                
+
             case Gdk.Key.Escape:
                 escape ();
                 return true;
@@ -195,7 +198,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (event.window.get_width () < 24)
             return false;
 
-        if (is_focus)    
+        if (is_focus)
             return base.button_press_event (event);
 
         foreach (BreadcrumbsElement element in elements)
@@ -222,7 +225,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 var newpath = get_path_from_element (el);
                 activate_alternate (get_file_for_path (newpath));
             }
-            
+
             return true;
         }
 
@@ -244,7 +247,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             Source.remove ((uint) timeout);
             timeout = -1;
         }
-        
+
         if (is_focus)
             return base.button_release_event (event);
 
@@ -258,7 +261,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             } else
                 grab_focus ();
         }
-        
+
         return base.button_release_event (event);
     }
 
@@ -286,7 +289,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         text_completion = "";
         need_completion ();
     }
-    
+
+    void after_realize () {
+        /* After realizing, we take a reference on the Gdk.Window of the Entry so
+         * we can set the cursor icon as needed. This relies on Gtk storing the
+         * owning widget as the user data on a Gdk.Window. The required window
+         * will be the first child of the entry.
+         */
+        entry_window = get_window ().get_children_with_user_data (this).data;
+    }
+
     bool after_motion_notify (Gdk.EventMotion event) {
 
         if (is_focus)
@@ -393,7 +405,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                                           int x,
                                           int y,
                                           uint timestamp);
-    
+
     protected void add_icon (IconDirectory icon) {
         if (icon.gicon != null)
             icon.icon = icon_factory.load_symbolic_icon_from_gicon (button_context, icon.gicon, 16);
@@ -402,13 +414,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         icons.append (icon);
     }
-    
+
     public void complete () {
         if (text_completion.length == 0)
             return;
 
         string path = text + text_completion;
-        
+
         /* If there are multiple results, tab as far as we can, otherwise do the entire result */
         if (!multiple_completions) {
             set_entry_text (path + "/");
@@ -416,27 +428,25 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         } else
             set_entry_text (path);
     }
-    
+
     public void reset_elements_states () {
         foreach (BreadcrumbsElement element in elements)
             element.pressed = false;
 
         queue_draw ();
     }
-    
+
     public void set_entry_text (string text) {
         ignore_change = true;
         text_completion = "";
         this.text = text;
         set_position (-1);
     }
-    
+
     public void set_entry_cursor (Gdk.Cursor? cursor) {
-        /* Only child 13 needs to be modified for the cursor - there may be a better way to do this */
-        /* TODO - this doesn't work ? */
-        get_window ().get_children ().nth_data (13).set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
+        entry_window.set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
     }
-    
+
     public void set_entry_secondary_icon (bool active, bool visible) {
         if (!visible)
             secondary_icon_pixbuf = null;
@@ -505,7 +515,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public string get_elements_path () {
         return get_path_from_element (null);
     }
-    
+
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
@@ -516,7 +526,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         /* Format our path so its valid */
         if (newpath == "")
             newpath = "/";
-            
+
         if (newpath[0] == '~')
             newpath = newpath.replace("~", Environment.get_home_dir ());
 
@@ -539,7 +549,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         File file = File.new_for_commandline_arg (newpath);
         return file;
     }
-    
+
     /**
      * Select the breadcrumb to make a right click. This function check
      * where the user click, then, it loads a context menu with the others
@@ -570,7 +580,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             return true;
         }
         return false;
-    }    
+    }
 
     public virtual string? update_breadcrumbs (string newpath, string breadpath) {
         string strloc;
@@ -784,7 +794,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             button_context_active.set_path(button_context.get_path ());
             button_context_active.set_state (Gtk.StateFlags.ACTIVE);
         }
-        
+
         base.draw (cr);
         double height = get_allocated_height ();
         double width = get_allocated_width ();
@@ -830,13 +840,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 foreach (BreadcrumbsElement element in newbreads)
                     if (element.display)
                         x_render = element.draw(cr, x_render, margin, height_marged, button_context, this);
-                        
+
             cr.restore ();
         } else {
             if (text_completion != "") {
                 int layout_width, layout_height;
                 double text_width, text_height;
-                
+
                 cr.set_source_rgba (0, 0, 0, 0.4);
                 Pango.Layout layout = create_pango_layout (text);
                 layout.get_size (out layout_width, out layout_height);

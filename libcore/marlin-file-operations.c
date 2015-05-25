@@ -2089,7 +2089,7 @@ delete_job (GIOSchedulerJob *io_job,
             } else {
                 must_confirm_delete = TRUE;
                 to_delete_files = g_list_prepend (to_delete_files, file);
-            } 
+            }
         }
     }
 
@@ -3616,6 +3616,8 @@ retry:
         return CREATE_DEST_DIR_FAILED;
     }
 
+    marlin_file_changes_queue_file_added (*dest);
+
     // Start UNDO-REDO
     marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
     // End UNDO-REDO
@@ -4002,19 +4004,23 @@ copy_file_progress_callback (goffset current_num_bytes,
 static gboolean
 test_dir_is_parent (GFile *child, GFile *root)
 {
-    GFile *f;
+    GFile *f = child;
+    GFile *prev = NULL;
 
-    f = g_file_dup (child);
-    while (f) {
+    if (g_file_equal (child, root))
+        return TRUE;
+
+    while ((f = g_file_get_parent (f))) {
+        if (prev) g_object_unref (prev);
+
         if (g_file_equal (f, root)) {
             g_object_unref (f);
             return TRUE;
         }
-        f = g_file_get_parent (f);
+        prev = f;
     }
-    if (f) {
-        g_object_unref (f);
-    }
+    if (prev) g_object_unref (prev);
+
     return FALSE;
 }
 
@@ -5951,7 +5957,7 @@ location_list_from_uri_list (const GList *uris)
 
 /** The done_callback function has a variable signature. When the file is being moved to
  * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
- */ 
+ */
 void
 marlin_file_operations_copy_move   (GList                  *files,
                                     GArray                 *relative_item_points,

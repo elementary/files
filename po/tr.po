@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-12-07 09:59+0000\n"
-"Last-Translator: Mehmet Bozoklu <Unknown>\n"
+"PO-Revision-Date: 2015-05-19 04:04+0000\n"
+"Last-Translator: Sadık <sadikpoyraz01@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-20 05:24+0000\n"
+"X-Generator: Launchpad (build 17508)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -36,7 +36,7 @@ msgstr "FTP (giriş gerektiren)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Dosyalama Protokolü)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -123,7 +123,7 @@ msgstr "Kullanıcı Ayrıntıları"
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "Alan a_dı:"
+msgstr "_Alan adı:"
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
@@ -135,7 +135,7 @@ msgstr "Par_ola:"
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr "Bu parolayı hatı_rla"
+msgstr "_Bu parolayı hatırla"
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
@@ -143,7 +143,7 @@ msgstr "İşlem iptal edildi"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "Daha _fazla ayrıntı göster"
+msgstr "Daha fazla _ayrıntı göster"
 
 #: ../libcore/marlin-undostack-manager.c:1205
 #, c-format
@@ -170,13 +170,13 @@ msgstr "%d öğeyi geri taşı: '%s'"
 #: ../libcore/marlin-undostack-manager.c:1230
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "'%s' '%s''e geri taşı"
+msgstr "'%s' konumundan '%s'' konumuna geri taşı"
 
 #: ../libcore/marlin-undostack-manager.c:1239
 #: ../libcore/marlin-undostack-manager.c:1406
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "'%s' öğesinin adını '%s' olarak değiştir"
+msgstr "'%s' dosyasını '%s' olarak yeniden adlandır"
 
 #: ../libcore/marlin-undostack-manager.c:1258
 #: ../libcore/marlin-undostack-manager.c:1453
@@ -187,7 +187,7 @@ msgstr "%d öğeyi çöpten geri yükle"
 #: ../libcore/marlin-undostack-manager.c:1266
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "Geri yükle: '%s' > '%s'"
+msgstr "Geri yükle: '%s' den '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -197,7 +197,7 @@ msgstr "%d öğeyi çöpe geri taşı"
 #: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "'%s'i çöpe geri taşı"
+msgstr "'%s' ögesini çöpe geri taşı"
 
 #: ../libcore/marlin-undostack-manager.c:1289
 #, c-format
@@ -344,7 +344,8 @@ msgstr[1] "%d öğenin taşınmasını _Geri al"
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d öğenin yeniden adlandırılmasını _geri al"
+msgstr[0] "%d adlı ögenin yeniden adlandırılmasını _geri al"
+msgstr[1] "_%d ögelerin yeniden adlandırılmasını _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of an empty file"
@@ -358,79 +359,92 @@ msgstr "Şablondan bir dosya oluşturulmasını _geri al"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d dizinin oluşturulmasını _geri al"
+msgstr[0] "_%d adlı dizinin oluşturulmasını _geri al"
+msgstr[1] "_%d adlı dizinlerin oluşturulmasını _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d öğenin çöpe taşınmasını _geri al"
+msgstr[0] "%d adlı ögenin çöpe taşınmasını _geri al"
+msgstr[1] "%d adlı ögelerin çöpe taşınmasını _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "%d öğenin çöpten geri yüklenmesini _geri al"
+msgstr[0] "%d adlı ögenin çöpten geri yüklenmesini _geri al"
+msgstr[1] "%d adlı ögelerin çöpten geri yüklenmesini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d öğeye bağlantı oluşturulmasını _geri al"
+msgstr[0] "%d adlı ögeye bağlantı oluşturulmasını _geri al"
+msgstr[1] "%d adlı ögelere bağlantı oluşturulmasını _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d öğenin silinmesini _geri al"
+msgstr[0] "%d adlı ögenin silinmesini _geri al"
+msgstr[1] "%d adlı ögelerin silinmesini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d öğenin özyineli izin değişikliğini _geri al"
+msgstr[0] "%d adlı ögenin özyineli izin değişikliğini _geri al"
+msgstr[1] "%d adlı ögelerin özyineli izin değişikliğini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d öğenin izin değişikliğini _geri al"
+msgstr[0] "%d adlı ögenin izin değişikliğini _geri al"
+msgstr[1] "%d adlı ögelerin izin değişikliğini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "%d öğenin grup değişikliğini _geri al"
+msgstr[0] "%d adlı ögenin grup değişikliğini _geri al"
+msgstr[1] "%d adlı ögelerin grup değişikliğini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d öğe sahibinin değişikliğini _geri al"
+msgstr[0] "%d adlı ögenin sahibinin değişikliğini _geri al"
+msgstr[1] "%d adlı ögelerin sahibinin değişikliğini _geri al"
 
 #: ../libcore/marlin-undostack-manager.c:1631
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d öğenin kopyalanmasını _yinele"
+msgstr[0] "%d adlı ögenin kopyalanmasını _yinele"
+msgstr[1] "%d adlı ögelerin kopyalanmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1636
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d öğesinin çoğaltılmasını _Yinele"
+msgstr[0] "%d adlı ögenin çoğaltılması işlemini tekrarla"
+msgstr[1] "%d adlı ögelerin çoğaltılması işlemini tekrarla"
 
 #: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "%d öğenin taşınmasını _yinele"
+msgstr[0] "%d adlı ögenin taşınmasını _yinele"
+msgstr[1] "%d adlı ögelerin taşınmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1646
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d öğenin yeniden adlandırılmasını _yinele"
+msgstr[0] "%d adlı ögenin yeniden adlandırılmasını _yinele"
+msgstr[1] "%d adlı ögelerin yeniden adlandırılmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of an empty file"
@@ -445,54 +459,63 @@ msgstr "Şablondan boş bir dosya oluşturulmasını _yinele"
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "%d dizin oluşturulmasını _yinele"
+msgstr[1] "%d dizinler oluşturulmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d öğenin çöpe taşınmasını _yinele"
+msgstr[0] "%d adlı ögenin çöpe taşınmasını _yinele"
+msgstr[1] "%d adlı ögelerin çöpe taşınmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d öğenin çöpten geri yüklenmesini _yinele"
+msgstr[0] "%d adlı ögenin çöpten geri yüklenmesini _yinele"
+msgstr[1] "%d adlı ögelerin çöpten geri yüklenmesini _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d öğeye bağlantı oluşturulmasını _yinele"
+msgstr[0] "%d adlı ögeye bağlantı oluşturulmasını _yinele"
+msgstr[1] "%d adlı ögelere bağlantı oluşturulmasını _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d öğenin silinmesini _yinele"
+msgstr[0] "%d adlı ögenin silinmesini _yinele"
+msgstr[1] "%d adlı ögelerin silinmesini _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d öğenin özyineli izin değişikliğini _yinele"
+msgstr[0] "%d adlı ögenin özyineli izin değişikliğini _yinele"
+msgstr[1] "%d adlı ögelerin özyineli izin değişikliğini _yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d öğenin izinlerinin değiştirilmesini yinele"
+msgstr[0] "%d adlı ögenin izinlerinin değiştirilmesini yinele"
+msgstr[1] "%d adlı ögelerin izinlerinin değiştirilmesini yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "%d öğenin grup değişikliğini yinele"
+msgstr[0] "%d adlı ögenin grup değişikliğini yinele"
+msgstr[1] "%d adlı ögelerin grup değişikliğini yinele"
 
 #: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d öğe sahibinin değiştirilmesini yinele"
+msgstr[0] "%d adlı öge sahibinin değiştirilmesini yinele"
+msgstr[1] "%d adlı ögelerin sahibinin değiştirilmesini yinele"
 
 #: ../libcore/marlin-file-utilities.c:118
 #, c-format
@@ -692,6 +715,7 @@ msgstr "Yine de _Kopyala"
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d saniye"
+msgstr[1] "%'d saniye"
 
 #: ../libcore/marlin-file-operations.c:301
 #: ../libcore/marlin-file-operations.c:312
@@ -699,18 +723,21 @@ msgstr[0] "%'d saniye"
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d dakika"
+msgstr[1] "%'d dakika"
 
 #: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d saat"
+msgstr[1] "%'d saat"
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "yaklaşık %'d saat"
+msgstr[1] "yaklaşık %'d saat"
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
@@ -826,6 +853,8 @@ msgid_plural ""
 "trash?"
 msgstr[0] ""
 "%'d seçili öğeyi kalıcı olarak çöpten silmek istediğinizden emin misiniz?"
+msgstr[1] ""
+"Seçili %'d ögeyi çöp kutusundan kalıcı olarak silmek istiyor musunuz?"
 
 #: ../libcore/marlin-file-operations.c:1398
 #: ../libcore/marlin-file-operations.c:1478
@@ -834,7 +863,7 @@ msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Bütün ögeler kalıcı olarak çöp kutusundan silinecek?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
@@ -864,7 +893,8 @@ msgstr "\"%B\" dosyasını kalıcı olarak silmek istediğinize emin misiniz?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "%'d seçili öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
+msgstr[0] "Seçili %'d öğeyi kalıcı olarak silmek istiyor musunuz?"
+msgstr[1] "Seçili %'d öğeyi kalıcı olarak silmek istiyor musunuz?"
 
 #: ../libcore/marlin-file-operations.c:1494
 #: ../libcore/marlin-file-operations.c:1526
@@ -875,12 +905,14 @@ msgstr "Dosyalar siliniyor"
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "%'d dosya silinmek için bekliyor"
+msgstr[0] "Silinecek %'d dosya kaldı"
+msgstr[1] "Silenecek %'d dosya kaldı"
 
 #: ../libcore/marlin-file-operations.c:1540
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T kaldı"
+msgstr[1] "%T kaldı"
 
 #: ../libcore/marlin-file-operations.c:1608
 #: ../libcore/marlin-file-operations.c:1642
@@ -941,17 +973,19 @@ msgstr "Dosyalar çöpe taşınıyor"
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
+msgstr[1] "%'d dosya çöpe gönderilmeyi bekliyor"
 
 #: ../libcore/marlin-file-operations.c:1944
 #: ../libcore/marlin-file-operations.c:1947
 #: ../libcore/marlin-file-operations.c:1950
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Dosya çöpe taşınamıyor veya silindi"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Salt okunur dosya sisteminde çöpe taşımaya veya silmeye izin verilmiyor."
 
 #: ../libcore/marlin-file-operations.c:1948
 msgid ""
@@ -967,17 +1001,19 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Dosya çöpe taşınamıyor. Hızlı silmeyi denemek ister misiniz?"
 
 #: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Bu dosya çöpe taşınamıyor. Daha fazla bilgi için aşağıdaki açıklamalara "
+"bakın."
 
 #: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Dosya çöpe taşınamıyor. Silmeyi denemek ister misiniz?"
 
 #: ../libcore/marlin-file-operations.c:1959
 msgid ""
@@ -990,6 +1026,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Öge kalıcı olarak siliniyor"
 
 #: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
@@ -1033,24 +1071,28 @@ msgstr "%s bağlanamıyor"
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "%'d dosya kopyalanmak için hazırlanıyor (%S)"
+msgstr[1] "%'d dosya kopyalanmak için hazırlanıyor (%S)"
 
 #: ../libcore/marlin-file-operations.c:2612
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "%'d dosya taşınmak için hazırlanıyor (%S)"
+msgstr[1] "%'d dosya taşınmak için hazırlanıyor (%S)"
 
 #: ../libcore/marlin-file-operations.c:2618
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "%'d dosya silinmek için hazırlanıyor (%S)"
+msgstr[1] "%'d dosya silinmek için hazırlanıyor (%S)"
 
 #: ../libcore/marlin-file-operations.c:2624
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d dosya çöpe atılmak için hazırlanıyor"
+msgstr[1] "%'d dosya çöpe atılmak için hazırlanıyor"
 
 #: ../libcore/marlin-file-operations.c:2667
 #: ../libcore/marlin-file-operations.c:3586
@@ -1146,26 +1188,31 @@ msgstr "\"%B\" çoğaltılıyor"
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine taşınıyor"
+msgstr[1] "%'d dosya (\"%B\" içerisinde) \"%B\" konumuna taşınıyor"
 
 #: ../libcore/marlin-file-operations.c:3124
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine kopyalanıyor"
+msgstr[1] "%'d dosya (\"%B\" içerisinde) \"%B\" konumuna kopyalanıyor"
 
 #: ../libcore/marlin-file-operations.c:3131
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "%'d dosya (\"%B\" içerisinde) çoğaltılıyor"
+msgstr[1] "%'d dosya (\"%B\" içerisinde) çoğaltılıyor"
 
 #: ../libcore/marlin-file-operations.c:3140
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d dosya \"%B\" hedefine taşınıyor"
+msgstr[1] "%'d dosya \"%B\" konumuna taşınıyor"
 
 #: ../libcore/marlin-file-operations.c:3144
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d dosya \"%B\" hedefine kopyalanıyor"
+msgstr[1] "%'d dosya \"%B\" konumuna kopyalanıyor"
 
 #: ../libcore/marlin-file-operations.c:3149
 #, c-format
@@ -1182,6 +1229,7 @@ msgstr "%S / %S"
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — %T kaldı (%S/sn)"
+msgstr[1] "%S / %S — %T kaldı (%S/sn)"
 
 #: ../libcore/marlin-file-operations.c:3590
 msgid ""
@@ -1270,7 +1318,7 @@ msgstr "%F içerisinde aynı adda zaten mevcut olan dosya silinemedi."
 
 #: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "\"%B\" buraya kopyalanamaz."
 
 #: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
@@ -1289,11 +1337,12 @@ msgstr "\"%B\" içerisine taşımaya hazırlanıyor"
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
+msgstr[1] "%'d dosya taşınmak için hazırlanıyor"
 
 #: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "\"%F\" taşınırken bir hata oluştu"
 
 #: ../libcore/marlin-file-operations.c:5102
 #, c-format
@@ -1312,7 +1361,8 @@ msgstr "\"%B\" içerisinde bağlar oluşturuluyor"
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "%'d dosyaya bağ yapılıyor"
+msgstr[0] "%'d dosyaya bağlantı yapılıyor"
+msgstr[1] "%'d dosyaya bağlantı yapılıyor"
 
 #: ../libcore/marlin-file-operations.c:5546
 msgid "Error while creating link to %B."
@@ -1461,7 +1511,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "Dosya bulunamadı."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
@@ -1571,7 +1621,7 @@ msgstr "Bu dizin boş."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "Erişim reddedildi"
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
@@ -1619,23 +1669,23 @@ msgstr "Kapat"
 
 #: ../src/View/PropertiesWindow.vala:256
 msgid "file"
-msgstr ""
+msgstr "Dosya"
 
 #: ../src/View/PropertiesWindow.vala:258
 msgid "files"
-msgstr ""
+msgstr "dosyalar"
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Gerçek boyutu daha büyük olabilir, "
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "İzinler veya diğer hatalar sebebi ile okunamıyor"
 
 #: ../src/View/PropertiesWindow.vala:289
 msgid "unknown"
-msgstr ""
+msgstr "bilinmeyen"
 
 #: ../src/View/PropertiesWindow.vala:407
 msgid "%u selected items"
@@ -1675,7 +1725,7 @@ msgstr "Kaynak Konum"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "Bilgi"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1687,7 +1737,7 @@ msgstr "Birlikte aç:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Kullanım"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -1753,7 +1803,7 @@ msgstr "Yerel bölüm ve aygıtlarınız"
 
 #: ../src/View/Sidebar.vala:494
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "FileSystem içindekileri aç"
 
 #: ../src/View/Sidebar.vala:524 ../src/View/Sidebar.vala:713
 msgid "Mount and open %s"
@@ -1821,31 +1871,31 @@ msgstr "Sütun Olarak Görüntüle"
 
 #: ../src/View/Chrome/TopMenu.vala:47
 msgid "Previous"
-msgstr ""
+msgstr "Önceki"
 
 #: ../src/View/Chrome/TopMenu.vala:51
 msgid "Next"
-msgstr ""
+msgstr "Sonraki"
 
 #: ../src/View/SearchResults.vala:166
 msgid "In This Folder"
-msgstr ""
+msgstr "Bu klasörde"
 
 #: ../src/View/SearchResults.vala:168
 msgid "Bookmarks"
-msgstr ""
+msgstr "Yer İmleri"
 
 #: ../src/View/SearchResults.vala:170
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Her Yerde"
 
 #: ../src/View/AbstractDirectoryView.vala:527
 msgid "Failed to preview"
-msgstr ""
+msgstr "Önizleme hatası"
 
 #: ../src/View/AbstractDirectoryView.vala:944
 msgid "Select an application"
-msgstr ""
+msgstr "Bir uygulama seçin"
 
 #: ../src/View/AbstractDirectoryView.vala:946
 msgid "Set as default"
@@ -1857,19 +1907,19 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Belirtilen dosya adı geçersiz"
 
 #: ../src/View/AbstractDirectoryView.vala:1789
 msgid "Invalid"
-msgstr ""
+msgstr "Geçersiz"
 
 #: ../src/View/AbstractDirectoryView.vala:1794
 msgid "Run"
-msgstr ""
+msgstr "Çalıştır"
 
 #: ../src/View/AbstractDirectoryView.vala:1799
 msgid "Open in %s"
-msgstr ""
+msgstr "%s ile aç"
 
 #: ../src/View/AbstractDirectoryView.vala:1808
 msgid "Open in"
@@ -1877,7 +1927,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1866
 msgid "Other Application"
-msgstr ""
+msgstr "Başka Uygulama"
 
 #: ../src/View/AbstractDirectoryView.vala:2113
 msgid "Untitled %s"
@@ -1893,7 +1943,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s geçerli bir dosya adı değil"
 
 #: ../src/Application.vala:139
 msgid "Show the version of the program."
@@ -1943,11 +1993,11 @@ msgstr ""
 
 #: ../src/DndHandler.vala:96
 msgid "Copy Here"
-msgstr ""
+msgstr "Buraya Kopyala"
 
 #: ../src/DndHandler.vala:97
 msgid "Link Here"
-msgstr ""
+msgstr "Bağlantı oluştur"
 
 #: ../src/DndHandler.vala:100
 msgid "Cancel"
@@ -1975,7 +2025,7 @@ msgstr "_Yönetici Olarak Yeni Pencere"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "About _Files"
-msgstr ""
+msgstr "_Dosyalar Hakkında"
 
 #: ../src/DesktopLauncher.vala:12
 msgid "Files"
@@ -2021,11 +2071,11 @@ msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Sunucuya Bağlan…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Ağ dosya sunucusuna bağlan"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
@@ -2037,20 +2087,20 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Çöpü Boşalt"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Çöpten Geri Al"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30
 msgid "Delete permanently"
-msgstr ""
+msgstr "Kalıcı olarak sil"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "Çöpe Taşı"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
@@ -2086,28 +2136,28 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Cut"
-msgstr ""
+msgstr "Kes"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Copy"
-msgstr ""
+msgstr "Kopyala"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Dizine Yapıştır"
 
 #: ../src/View/directory_view_popup.ui:117
 msgid "Sort by"
-msgstr ""
+msgstr "Sıralama ölçütü"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Name"
-msgstr ""
+msgstr "İsim"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Date"
-msgstr ""
+msgstr "Tarih"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
-msgstr ""
+msgstr "Tersine Düzen"

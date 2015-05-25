@@ -1,20 +1,20 @@
-/*
- Copyright (C) 2014 elementary Developers
+/***
+    Copyright (C) 2015 elementary Developers
 
- This program is free software: you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License version 3, as published
- by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranties of
- MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors : Jeremy Wootten <jeremy@elementary.org>
-*/
+    Authors: Jeremy Wootten <jeremy@elementaryos.org>
+***/
 
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
@@ -25,7 +25,7 @@ namespace Marlin {
         public Marlin.ZoomLevel zoom_level {get; set;}
         public bool follow_state {get; set;}
         public new string background { set; private get;}
-        public GOF.File file {set; private get;}
+        public GOF.File? file {set; private get;}
         public int text_width;
         public int text_height;
 
@@ -91,6 +91,11 @@ namespace Marlin {
                                          layout);
 
             style_context.restore ();
+
+            /* The render call should always be preceded by a set_property call
+               from GTK. It should be safe to unreference or free the allocated
+               memory here. */
+            file = null;
         }
 
         public void set_up_layout (string? text, Gdk.Rectangle cell_area) {
@@ -211,6 +216,7 @@ namespace Marlin {
 
         private void invalidate () {
             set_widget (null);
+            file = null;
         }
 
         private void on_entry_editing_done () {
@@ -224,6 +230,7 @@ namespace Marlin {
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
+            file = null;
         }
 
         private bool on_entry_focus_out_event (Gdk.Event event) {

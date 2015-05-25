@@ -1,22 +1,22 @@
 /***
-  Copyright (C)  1999, 2000 Eazel, Inc.
-                 2014 elementary Developers and Jeremy Wootten
+    Copyright (C)  1999, 2000 Eazel, Inc.
+                   2015 elementary Developers
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
- Authors :    John Sullivan <sullivan@eazel.com>
+    Authors : John Sullivan <sullivan@eazel.com>
               ammonkey <am.monkeyd@gmail.com>
-              Jeremy Wootten <jeremywootten@gmail.com>
+              Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
 namespace Marlin {
@@ -49,33 +49,69 @@ namespace Marlin {
                                                         "gtk-3.0",
                                                         "bookmarks",
                                                         null);
+
             var file = GLib.File.new_for_path (filename);
             if (!file.query_exists (null)) {
+                /* Bookmarks file does not exist in right place  ... create a new one */
                 try {
                     file.get_parent ().make_directory_with_parents (null);
+                }
+                catch (GLib.Error error) {
+                    /* Probably already exists */
+                    warning ("Could not create bookmarks directory: %s", error.message);
+                }
+
+                try {
                     file.create (GLib.FileCreateFlags.NONE, null);
                 }
                 catch (GLib.Error error){
                     critical ("Could not create bookmarks file: %s", error.message);
                 }
-                /* load existing bookmarks from old location if exists */
+
+                /* load existing bookmarks from the old location if it exists */
                 var old_filename = GLib.Path.build_filename (GLib.Environment.get_home_dir (),
                                                             ".gtk-bookmarks",
                                                             null);
+
                 var old_file = GLib.File.new_for_path (old_filename);
                 if (old_file.query_exists (null)) {
+                    /* If there is a legacy bookmark file we copy it to the new location */
                     Marlin.BookmarkList.bookmarks_file = old_file;
                     load_bookmarks_file ();
                     Marlin.BookmarkList.bookmarks_file = file;
-                    save_bookmarks_file ();
+                } else {
+                    /* Else populate the new file with default bookmarks */
+                    Marlin.BookmarkList.bookmarks_file = file;
+                    add_special_directories ();
                 }
-            }
-            else {
+                save_bookmarks_file ();
+            } else {
                 Marlin.BookmarkList.bookmarks_file = file;
                 load_bookmarks_file ();
             }
         }
 
+       private void add_special_directory (GLib.UserDirectory user_dir, ref GLib.List<string> uris) {
+            string? dir_s = Environment.get_user_special_dir (user_dir);
+ 
+            if (dir_s != null)
+                uris.prepend ("file://" + dir_s);
+        }
+
+       private void add_special_directories () {
+           GLib.List<string> uris = null;
+            add_special_directory (UserDirectory.DOCUMENTS, ref uris);
+            add_special_directory (UserDirectory.DOWNLOAD, ref uris);
+            add_special_directory (UserDirectory.MUSIC, ref uris);
+            add_special_directory (UserDirectory.PUBLIC_SHARE, ref uris);
+            add_special_directory (UserDirectory.PICTURES, ref uris);
+            add_special_directory (UserDirectory.TEMPLATES, ref uris);
+            add_special_directory (UserDirectory.VIDEOS, ref uris);
+           
+            uris.reverse ();
+            insert_uris_at_end (uris);
+        }
+ 
         public static BookmarkList get_instance () {
             if (instance == null)
                 instance = new BookmarkList ();
@@ -101,6 +137,13 @@ namespace Marlin {
             save_bookmarks_file ();
         }
 
+       public void insert_uris_at_end (GLib.List<string> uris) {
+            uris.@foreach ((uri) => {
+                append_internal (new Bookmark.from_uri (uri, null));
+            });
+            save_bookmarks_file ();
+        }
+ 
         public bool contains (Marlin.Bookmark bm) {
             return (list.find_custom (bm, Marlin.Bookmark.compare_with) != null);
         }

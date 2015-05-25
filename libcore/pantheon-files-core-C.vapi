@@ -31,7 +31,7 @@ namespace FM
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public void remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
-        public unowned GOF.File file_for_path(Gtk.TreePath path);
+        public GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
@@ -68,9 +68,9 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void UnmountCallback (void* callback_data);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
-    public delegate void CreateCallback (GLib.File new_file, void* callback_data);
+    public delegate void CreateCallback (GLib.File? new_file, void* callback_data);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
-    public delegate void CopyCallback (GLib.HashTable<GLib.File, void*> debuting_uris, void* pointer);
+    public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
 }

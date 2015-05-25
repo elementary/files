@@ -1,20 +1,20 @@
-/*
- *
- * Marlin is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Marlin is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+/***
 
-// See src/marlin-connect-server-dialog.c
+     Marlin is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+
+     Marlin is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+
+     You should have received a copy of the GNU General Public License along
+     with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
+
+/* See src/marlin-connect-server-dialog.c */
 extern void marlin_connect_server_dialog_show (Gtk.Widget widget);
 
 public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
@@ -25,7 +25,7 @@ public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
     public override void update_sidebar (Gtk.Widget widget) {
         var sidebar = widget as Marlin.AbstractSidebar;
         sidebar.add_extra_network_item (_("Connect to Server…"), _("Connect to a network file server"),
-                                         new ThemedIcon.with_default_fallbacks ("network-server"), 
+                                         new ThemedIcon.with_default_fallbacks ("network-server"),
                                          marlin_connect_server_dialog_show);
     }
 }

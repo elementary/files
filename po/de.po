@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-02-23 20:47+0000\n"
-"Last-Translator: Pascal Riesinger <riesinger.pascal@gmail.com>\n"
+"PO-Revision-Date: 2015-03-06 14:42+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:27+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 "Language: de\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2128,10 +2128,12 @@ msgstr "Mit einem Dateiserver im Netzwerk verbinden"
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"Diese Elemente können aus dem Papierkorb wiederhergestellt oder gelöscht "
+"werden."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Alle wiederherstellen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"

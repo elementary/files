@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-09-17 03:50+0000\n"
-"Last-Translator: MinSik CHO <Unknown>\n"
+"PO-Revision-Date: 2015-03-20 08:24+0000\n"
+"Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:27+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -827,21 +827,21 @@ msgstr "휴지통을 비우면 항목들이 완전히 지워지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "휴지통의 항목을 완전히 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr ""
+msgstr "휴지통의 모든 내용과, 외부 장비에 연결된 것을 포함한, 모든 폴더가 완전히 지워지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "이 장비와 휴지통에 연결된 모든 내용을 다 지우실 건가요?"
 
 #: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "이 장비와 휴지통에 연결된 모든 내용은 완전히 지워지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
@@ -936,50 +936,52 @@ msgstr[0] "휴지통에 파일 %'d 개 남음"
 #: ../libcore/marlin-file-operations.c:1947
 #: ../libcore/marlin-file-operations.c:1950
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "파일이 휴지통으로 보내지지 않거나 지워지지 않습니다"
 
 #: ../libcore/marlin-file-operations.c:1945
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "읽기 전용 파일시스템의 파일은 휴지통에 버리거나 지울 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
+msgstr "쓰기 권한이 없는 폴더 안의 파일은 휴지통에 버리거나 지울 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:1951
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "쓰기 권한이 없는 폴더는 휴지통에 버리거나 지울 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "파일을 휴지통에 버릴 수 없습니다. 바로 지울까요?"
 
 #: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
+msgstr "이 파일은 휴지통에 버릴 수 없습니다. 자세한 내용은 아래 세부 사항을 확인하세요."
 
 #: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "파일을 휴지통에 버릴 수 없습니다. 그냥 지울까요?"
 
 #: ../libcore/marlin-file-operations.c:1959
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도  않을 수 있습니다."
 
 #: ../libcore/marlin-file-operations.c:1964
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" 지우기는 완전히 제거하는 것입니다"
 
 #: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
@@ -1247,11 +1249,11 @@ msgstr "%F 안에 같은 이름을 가진 기존의 파일을 지울 수 없습�
 
 #: ../libcore/marlin-file-operations.c:4587
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "이곳으로 \"%B\"를 복사할 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:4588
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "파일을 다음으로 복사하는중에 오류가 생겼습니다 %B."
 
 #: ../libcore/marlin-file-operations.c:4815
 msgid "Copying Files"
@@ -1270,7 +1272,7 @@ msgstr[0] "%'d개의 파일을 옮길 준비 중"
 #: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "다음 이동중 오류 발생 \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5102
 #, c-format
@@ -1315,11 +1317,11 @@ msgstr "권한을 설정하는 중"
 
 #: ../libcore/marlin-file-operations.c:5997
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "휴지통으로는 복사할 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:5998
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "휴지통으로 파일을 복사하는 권한은 없습니다."
 
 #: ../libcore/marlin-file-operations.c:6139
 msgid "untitled folder"
@@ -1430,19 +1432,19 @@ msgstr "이 폴더를 볼 권한이 없습니다."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "폴더에 연결할 수 없습니다."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
-msgstr ""
+msgstr "파일이 없습니다."
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "선택하신 파일이 더이상 존재하지 않습니다."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1548,7 +1550,7 @@ msgstr "폴더가 비어 있습니다."
 
 #: ../src/View/Slot.vala:37
 msgid "Access denied"
-msgstr ""
+msgstr "접근 거부됨"
 
 #: ../src/View/OverlayBar.vala:145
 msgid "%u folders"
@@ -1596,23 +1598,23 @@ msgstr "닫기"
 
 #: ../src/View/PropertiesWindow.vala:256
 msgid "file"
-msgstr ""
+msgstr "파일"
 
 #: ../src/View/PropertiesWindow.vala:258
 msgid "files"
-msgstr ""
+msgstr "파일"
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "실제 크기는 좀 더 클 수 있습니다, "
 
 #: ../src/View/PropertiesWindow.vala:260
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "권한 문제나 다른 이유로 읽지 못할 수 있습니다."
 
 #: ../src/View/PropertiesWindow.vala:289
 msgid "unknown"
-msgstr ""
+msgstr "알 수 없음"
 
 #: ../src/View/PropertiesWindow.vala:407
 msgid "%u selected items"
@@ -1652,7 +1654,7 @@ msgstr "원본 위치"
 
 #: ../src/View/PropertiesWindow.vala:598
 msgid "Info"
-msgstr ""
+msgstr "정보"
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Other application..."
@@ -1664,7 +1666,7 @@ msgstr "다음으로 열기:"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "사용"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -1818,11 +1820,11 @@ msgstr "이 폴더 외 전체 위치"
 
 #: ../src/View/AbstractDirectoryView.vala:527
 msgid "Failed to preview"
-msgstr ""
+msgstr "미리 보기 실패"
 
 #: ../src/View/AbstractDirectoryView.vala:944
 msgid "Select an application"
-msgstr ""
+msgstr "프로그램 선택"
 
 #: ../src/View/AbstractDirectoryView.vala:946
 msgid "Set as default"
@@ -1830,47 +1832,47 @@ msgstr "기본값으로 설정"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "이 파일을 놓을 수 없음"
 
 #: ../src/View/AbstractDirectoryView.vala:1410
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "잘못된 파일 이름이 사용됨"
 
 #: ../src/View/AbstractDirectoryView.vala:1789
 msgid "Invalid"
-msgstr ""
+msgstr "잘못됨"
 
 #: ../src/View/AbstractDirectoryView.vala:1794
 msgid "Run"
-msgstr ""
+msgstr "실행"
 
 #: ../src/View/AbstractDirectoryView.vala:1799
 msgid "Open in %s"
-msgstr ""
+msgstr "다음으로 열기 %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1808
 msgid "Open in"
-msgstr ""
+msgstr "열기"
 
 #: ../src/View/AbstractDirectoryView.vala:1866
 msgid "Other Application"
-msgstr ""
+msgstr "다른 프로그램"
 
 #: ../src/View/AbstractDirectoryView.vala:2113
 msgid "Untitled %s"
-msgstr ""
+msgstr "이름 없는 %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2395
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "휴지통에 있는 파일은 복사할 수 없음"
 
 #: ../src/View/AbstractDirectoryView.vala:2396
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "선택한 것을 대신 잘라냄"
 
 #: ../src/View/AbstractDirectoryView.vala:2596
 msgid "%s is not a valid file name"
-msgstr ""
+msgstr "%s 는 잘못된 파일 이름입니다"
 
 #: ../src/Application.vala:139
 msgid "Show the version of the program."
@@ -1912,19 +1914,19 @@ msgstr "--quit 옵션은 URI와 같이 사용할 수 없습니다."
 
 #: ../src/DndHandler.vala:47
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "다음을 실행하는데 실패함 \"%s\""
 
 #: ../src/DndHandler.vala:95
 msgid "Move Here"
-msgstr ""
+msgstr "여기로 이동"
 
 #: ../src/DndHandler.vala:96
 msgid "Copy Here"
-msgstr ""
+msgstr "여기로 복사"
 
 #: ../src/DndHandler.vala:97
 msgid "Link Here"
-msgstr ""
+msgstr "여기로 연결"
 
 #: ../src/DndHandler.vala:100
 msgid "Cancel"
@@ -1986,7 +1988,7 @@ msgstr "진행 중인 모든 작업 취소"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "이 폴더를 다시 볼러 옴"
 
 #: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
@@ -1994,97 +1996,97 @@ msgstr "%s 로 가기"
 
 #: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
-msgstr ""
+msgstr "다음으로 찾아감 %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "서버에 연결 중…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "네트워크 파일 서버에 연결"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "아래 항목들이 휴지통에서 복구되었거나 지워졌을 수 있습니다."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "모두 복구 시키기"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "휴지통 비우기"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "휴지통에서 복구 시키기"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30
 msgid "Delete permanently"
-msgstr ""
+msgstr "완전히 삭제"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"
-msgstr ""
+msgstr "휴지통에 버리기"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "New"
-msgstr ""
+msgstr "새로 만들기"
 
 #: ../src/View/directory_view_popup.ui:39
 msgid "Folder"
-msgstr ""
+msgstr "폴더"
 
 #: ../src/View/directory_view_popup.ui:44
 msgid "Empty File"
-msgstr ""
+msgstr "빈 파일"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "숨김 파일 표시"
 
 #: ../src/View/directory_view_popup.ui:60
 msgid "New Tab"
-msgstr ""
+msgstr "새 탭"
 
 #: ../src/View/directory_view_popup.ui:73
 msgid "Terminal"
-msgstr ""
+msgstr "터미널"
 
 #: ../src/View/directory_view_popup.ui:88
 msgid "Bookmark"
-msgstr ""
+msgstr "책갈피"
 
 #: ../src/View/directory_view_popup.ui:95
 msgid "Paste"
-msgstr ""
+msgstr "붙여 넣기"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Cut"
-msgstr ""
+msgstr "자르기"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Copy"
-msgstr ""
+msgstr "복사하기"
 
 #: ../src/View/directory_view_popup.ui:110
 msgid "Paste into Folder"
-msgstr ""
+msgstr "폴더로 복사하기"
 
 #: ../src/View/directory_view_popup.ui:117
 msgid "Sort by"
-msgstr ""
+msgstr "정렬 기준"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Name"
-msgstr ""
+msgstr "이름"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Date"
-msgstr ""
+msgstr "날짜"
 
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
-msgstr ""
+msgstr "거꾸로"

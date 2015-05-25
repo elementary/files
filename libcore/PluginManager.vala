@@ -1,23 +1,23 @@
-/*
- * Copyright (C) 2011 Lucas Baudin <xapantu@gmail.com>
- *
- * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org> (from Rygel)
- *
- * This file is part of Marlin.
- *
- * Marlin is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Marlin is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+/***
+    Copyright (C) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org> (from Rygel)
+
+    This file is part of Marlin.
+
+    Marlin is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
 
 public static Marlin.PluginManager plugins;
 
@@ -30,7 +30,7 @@ public class Marlin.PluginManager : Object {
     bool update_queued = false;
 
     [Deprecated (replacement = "Marlin.PluginManager.menuitem_references")]
-    public GLib.List<Gtk.Widget>? menus; // this doesn't manage GObject references properly
+    public GLib.List<Gtk.Widget>? menus; /* this doesn't manage GObject references properly */
 
     public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
 
@@ -48,7 +48,7 @@ public class Marlin.PluginManager : Object {
 
         load_plugins ();
 
-        // Monitor plugin dirs
+        /* Monitor plugin dirs */
         foreach (string path in plugin_dirs)
             set_directory_monitor (path);
     }
@@ -66,7 +66,7 @@ public class Marlin.PluginManager : Object {
         try {
             var monitor = dir.monitor_directory (FileMonitorFlags.NONE, null);
             monitor.changed.connect (on_plugin_directory_change);
-            monitor.ref (); // keep alive
+            monitor.ref (); /* keep alive */
         } catch (IOError e) {
             critical ("Could not setup monitor for '%s': %s", dir.get_path (), e.message);
         }
@@ -223,10 +223,7 @@ public class Marlin.PluginManager : Object {
 
     public void update_file_info (GOF.File file) {
         foreach (var plugin in plugin_hash.values)
-            /*Idle.add (() => {*/
-                plugin.update_file_info (file);
-                /*return false;
-            });*/
+            plugin.update_file_info (file);
     }
 
     public Gee.List<string> get_available_plugins () {

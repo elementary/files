@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-02 14:26+0000\n"
-"Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
+"PO-Revision-Date: 2015-04-12 08:01+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-03 05:44+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:28+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -861,7 +861,7 @@ msgstr "Om du raderar ett objekt så är det borta för alltid."
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Radera alla objekt i papperskorgen permanent?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
@@ -873,11 +873,12 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Radera alla objekt i papperskorgen permanent på denna enhet?"
 
 #: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Alla objekt i papperskorgen på denna enhet kommer att raderas permanent."
 
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1290
@@ -1010,7 +1011,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Kan inte flytta filen till papperskorgen. Vill du radera den direkt?"
 
 #: ../libcore/marlin-file-operations.c:1954
 msgid ""
@@ -1023,6 +1024,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1958
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Kan inte flytta filen till papperskorgen. Vill du försöka radera den?"
 
 #: ../libcore/marlin-file-operations.c:1959
 msgid ""
@@ -1037,6 +1039,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Att radera en fil tar bort den permanent"
 
 #: ../libcore/marlin-file-operations.c:2154
 msgid "Trashing Files"
@@ -1355,7 +1359,7 @@ msgstr[1] "Förbereder att flytta %'d filer"
 #: ../libcore/marlin-file-operations.c:5101
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Ett fel inträffade när \"%F\" skulle flyttas."
 
 #: ../libcore/marlin-file-operations.c:5102
 #, c-format
@@ -1670,7 +1674,7 @@ msgstr "Allmänt"
 
 #: ../src/View/PropertiesWindow.vala:183
 msgid "More"
-msgstr "Fler"
+msgstr "Mer"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Preview"
@@ -2093,11 +2097,11 @@ msgstr "Anslut till en nätverksfilserver"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Dessa objekt kan återskapas eller raderas från papperskorgen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Återställ alla"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
@@ -2110,7 +2114,7 @@ msgstr "Återställ från papperskorgen"
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:30
 msgid "Delete permanently"
-msgstr ""
+msgstr "Radera permanent"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Move to Trash"

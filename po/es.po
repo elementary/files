@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-05 05:53+0000\n"
-"X-Generator: Launchpad (build 17374)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:28+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 "Language: es\n"
 
 #: ../src/marlin-clipboard-manager.c:365

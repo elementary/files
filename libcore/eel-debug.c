@@ -29,8 +29,8 @@
 #include <stdio.h>
 
 typedef struct {
-	gpointer data;
-	GFreeFunc function;
+    gpointer data;
+    GFreeFunc function;
 } ShutdownFunction;
 
 static GList *shutdown_functions;
@@ -38,30 +38,30 @@ static GList *shutdown_functions;
 void
 eel_debug_shut_down (void)
 {
-	ShutdownFunction *f;
+    ShutdownFunction *f;
 
-	while (shutdown_functions != NULL) {
-		f = shutdown_functions->data;
-		shutdown_functions = g_list_remove (shutdown_functions, f);
-		
-		f->function (f->data);
-		g_free (f);
-	}
+    while (shutdown_functions != NULL) {
+        f = shutdown_functions->data;
+        shutdown_functions = g_list_remove (shutdown_functions, f);
+
+        f->function (f->data);
+        g_free (f);
+    }
 }
 
 void
 eel_debug_call_at_shutdown (EelFunction function)
 {
-	eel_debug_call_at_shutdown_with_data ((GFreeFunc) function, NULL);
+    eel_debug_call_at_shutdown_with_data ((GFreeFunc) function, NULL);
 }
 
 void
 eel_debug_call_at_shutdown_with_data (GFreeFunc function, gpointer data)
 {
-	ShutdownFunction *f;
+    ShutdownFunction *f;
 
-	f = g_new (ShutdownFunction, 1);
-	f->data = data;
-	f->function = function;
-	shutdown_functions = g_list_prepend (shutdown_functions, f);
+    f = g_new (ShutdownFunction, 1);
+    f->data = data;
+    f->function = function;
+    shutdown_functions = g_list_prepend (shutdown_functions, f);
 }

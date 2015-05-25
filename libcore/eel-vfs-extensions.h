@@ -19,8 +19,8 @@
  * Boston, MA 02111-1307, USA.
  *
  * Authors: Darin Adler <darin@eazel.com>
- *	    Pavel Cisler <pavel@eazel.com>
- *	    Mike Fleming  <mfleming@eazel.com>
+ *          Pavel Cisler <pavel@eazel.com>
+ *          Mike Fleming  <mfleming@eazel.com>
  *          John Sullivan <sullivan@eazel.com>
  */
 
@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-/*#define	EEL_TRASH_URI "trash:"
+/*#define   EEL_TRASH_URI "trash:"
 #define EEL_DESKTOP_URI "x-nautilus-desktop:"
 #define EEL_SEARCH_URI "x-nautilus-search:"*/
 

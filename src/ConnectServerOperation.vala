@@ -1,21 +1,21 @@
 /***
-  Copyright (C) 2010 Cosimo Cecchi <cosimoc@gnome.org>
-  Copyright (C) 2013 elementary Developers
+    Copyright (C) 2010 Cosimo Cecchi <cosimoc@gnome.org>
+    Copyright (C) 2015 elementary Developers
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
-  Authors: Cosimo Cecchi <cosimoc@gnome.org>
-           Julián Unrrein <junrrein@gmail.com>
+    Authors: Cosimo Cecchi <cosimoc@gnome.org>
+             Julián Unrrein <junrrein@gmail.com>
 ***/
 
 public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
@@ -25,8 +25,8 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
     public Operation (Marlin.ConnectServer.Dialog dialog) {
         this.dialog = dialog;
         this.set_parent (dialog);
-        
-        // Turn the parent's modal functionality off because the mount operation needs to take over
+
+        /* Turn the parent's modal functionality off because the mount operation needs to take over */
         this.dialog.modal = false;
         this.reply.connect ( (result) => {
            this.dialog.modal = true;

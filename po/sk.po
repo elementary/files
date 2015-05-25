@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2014-11-05 19:55+0000\n"
-"Last-Translator: Jakub Ivanicky <jivanicky@gmail.com>\n"
+"PO-Revision-Date: 2015-03-19 21:19+0000\n"
+"Last-Translator: laci357 <laci357@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2015-03-02 05:31+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:28+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -398,79 +398,80 @@ msgstr[1] "Vrátiť naspäť odstránenie položiek %d"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť rekurzívnu zmenu oprávnení položky %d"
+msgstr[1] "Vrátiť naspäť rekurzívnu zmenu oprávnení položiek %d"
+msgstr[2] "Vrátiť naspäť rekurzívnu zmenu oprávnení položky %d"
 
 #: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť zmenu oprávnení položky %d"
+msgstr[1] "Vrátiť naspäť zmenu oprávnení položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť zmenu skupiny položky %d"
+msgstr[1] "Vrátiť naspäť zmenu skupiny položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vrátiť naspäť zmenu vlastníka položky %d"
+msgstr[1] "Vrátiť naspäť zmenu vlastníka položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1631
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť kópiu položky %d"
+msgstr[1] "_Obnoviť kópiu položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1636
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť duplikát položky %d"
+msgstr[1] "_Obnoviť duplikát položiek %d"
 
 #: ../libcore/marlin-undostack-manager.c:1641
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť presun %d položky"
+msgstr[1] "_Obnoviť presun %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1646
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť premenovanie %d položky"
+msgstr[1] "_Obnoviť premenovanie %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Obnoviť vytvorenie prázdneho súboru"
 
 #: ../libcore/marlin-undostack-manager.c:1653
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Obnoviť vytvorenie súboru na základe šablóny"
 
 #: ../libcore/marlin-undostack-manager.c:1657
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť vytvorenie %d priečinku"
+msgstr[1] "_Obnoviť vytvorenie %d priečinkov"
 
 #: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Obnoviť presunutie %d položky do koša"
+msgstr[1] "_Obnoviť presunutie %d položiek do koša"
 
 #: ../libcore/marlin-undostack-manager.c:1667
 #, c-format

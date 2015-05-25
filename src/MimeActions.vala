@@ -1,23 +1,23 @@
 /***
-  Copyright (C) 2000 Eazel, Inc.
-  Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
-  Copyright (C) 2013 elementary Developers
+    Copyright (C) 2000 Eazel, Inc.
+    Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
+    Copyright (C) 2013 elementary Developers
 
-  This program is free software: you can redistribute it and/or modify it
-  under the terms of the GNU Lesser General Public License version 3, as published
-  by the Free Software Foundation.
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License version 3, as published
+    by the Free Software Foundation.
 
-  This program is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranties of
-  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-  PURPOSE. See the GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranties of
+    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+    PURPOSE. See the GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License along
-  with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
 
-  Authors: Maciej Stachowiak <mjs@eazel.com>
-           ammonkey <am.monkeyd@gmail.com>
-           Julián Unrrein <junrrein@gmail.com>
+    Authors: Maciej Stachowiak <mjs@eazel.com>
+             ammonkey <am.monkeyd@gmail.com>
+             Julián Unrrein <junrrein@gmail.com>
 ***/
 
 public class Marlin.MimeActions {
@@ -39,7 +39,7 @@ public class Marlin.MimeActions {
     public static AppInfo? get_default_application_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
-        unowned GLib.List<GOF.File> sorted_files = null;
+        GLib.List<unowned GOF.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
@@ -120,7 +120,7 @@ public class Marlin.MimeActions {
     public static List<AppInfo>? get_applications_for_files (GLib.List<unowned GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
-        unowned GLib.List<GOF.File> sorted_files = null;
+        GLib.List<unowned GOF.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });

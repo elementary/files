@@ -1,23 +1,23 @@
-/*
- * Copyright (c) 2010 mathijshenquet
- * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
- *
- * Marlin is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * Marlin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- *
- */
+/***
+    Copyright (c) 2010 mathijshenquet
+    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Marlin is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program; see the file COPYING.  If not,
+    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
+
+***/
 
 namespace Marlin.View.Chrome
 {
@@ -114,7 +114,7 @@ namespace Marlin.View.Chrome
 
         /* Used for the context menu we show when there is a right click */
         GOF.Directory.Async files_menu = null;
-        
+
         bool autocompleted = false;
 
         Marlin.View.Window win;
@@ -215,14 +215,14 @@ namespace Marlin.View.Chrome
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon (icon);
-            
+
             up.connect (() => {
                 File file = get_file_for_path (text);
                 File parent = file.get_parent ();
-                
+
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
-                    
+
                 win.go_up ();
                 grab_focus ();
             });
@@ -242,7 +242,7 @@ namespace Marlin.View.Chrome
 
                 if (path != newpath)
                     change_breadcrumbs (newpath);
-                
+
                 grab_focus ();
             });
 
@@ -305,7 +305,7 @@ namespace Marlin.View.Chrome
                         text_completion = to_add;
                         multiple_completions = true;
                     }
-                    
+
                     /* autocompletion is case insensitive so we have to change the first completed
                      * parts: the entry.text.
                      */
@@ -340,7 +340,7 @@ namespace Marlin.View.Chrome
                 file = file.get_parent ();
             else
                 return;
-            
+
             files = GOF.Directory.Async.from_gfile (file);
             if (files.file.exists)
                 files.load (on_file_loaded);
@@ -457,22 +457,32 @@ namespace Marlin.View.Chrome
         }
 
         protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            if (!drop_data_ready) {
+                Gtk.TargetList list = null;
+                Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
+                if (target != Gdk.Atom.NONE)
+                    Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+            }
+
             Gtk.drag_unhighlight (this);
+            GLib.Signal.stop_emission_by_name (this, "drag-motion");
 
             foreach (BreadcrumbsElement element in elements)
                 element.pressed = false;
 
             var el = get_element_from_coordinates (x, y);
-
-            if (el != null)
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            if (el != null && drop_file_list != null) {
                 el.pressed = true;
-            else
-                /* No action taken on drop */
-                Gdk.drag_status (context, 0, time);
+                drop_target_file = get_target_location (x, y);
+                current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                 context,
+                                                                 out current_suggested_action);
+            }
 
+            Gdk.drag_status (context, current_suggested_action, time);
             queue_draw ();
-
-            return false;
+            return true;
         }
 
         protected override bool on_drag_drop (Gdk.DragContext context,
@@ -512,6 +522,7 @@ namespace Marlin.View.Chrome
                 }
             }
 
+            GLib.Signal.stop_emission_by_name (this, "drag-data-received");
             if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
                 drop_occurred = false;
                 current_actions = 0;
@@ -558,7 +569,7 @@ namespace Marlin.View.Chrome
             GOF.File? file;
             var el = get_element_from_coordinates (x, y);
             if (el != null) {
-                file = GOF.File.get_by_uri (get_path_from_element (el));
+                file = GOF.File.get (GLib.File.new_for_path (get_path_from_element (el)));
                 file.ensure_query_info ();
                 return file;
             }
