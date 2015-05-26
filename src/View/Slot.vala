@@ -44,7 +44,7 @@ namespace Marlin.View {
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
-        public Granite.Widgets.ThinPaned hpane;
+        public Gtk.Paned hpane;
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
