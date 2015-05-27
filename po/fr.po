@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-01 10:37-0600\n"
-"PO-Revision-Date: 2015-03-26 18:21+0000\n"
+"PO-Revision-Date: 2015-05-26 22:50+0000\n"
 "Last-Translator: Mathieu Lance <mathieu.lance@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-05-07 05:27+0000\n"
-"X-Generator: Launchpad (build 17474)\n"
+"X-Launchpad-Export-Date: 2015-05-27 05:27+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1542,7 +1542,7 @@ msgstr "Impossible de monter le dossier."
 
 #: ../src/View/ViewContainer.vala:321
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Le serveur de ce dossier n'a pas pu être localisé."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "File not found."
@@ -1772,7 +1772,7 @@ msgstr "Ouvrir avec :"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "Usage"
-msgstr ""
+msgstr "Utilisation"
 
 #: ../src/View/PropertiesWindow.vala:689
 msgid "Device usage:"
@@ -2095,7 +2095,7 @@ msgstr "Annuler toutes les actions en cours"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Actualiser ce dossier"
 
 #: ../libwidgets/LocationBar.vala:309
 msgid "Go to %s"
@@ -2103,7 +2103,7 @@ msgstr "Aller à %s"
 
 #: ../libwidgets/LocationBar.vala:448
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Naviguer vers %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2115,11 +2115,11 @@ msgstr "Se connecter à un serveur de fichier distant"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:54
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Ces éléments peuvent être restaurés ou supprimés de la corbeille."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Tout restaurer"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
