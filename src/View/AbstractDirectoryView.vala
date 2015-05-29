@@ -2587,7 +2587,9 @@ namespace FM {
         }
 
         protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            grab_focus (); /* Cause OverLay to appear */
+            if (slot.is_active)
+                grab_focus (); /* Cause OverLay to appear */
+
             return false;
         }
 
