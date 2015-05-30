@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-05-29 05:31+0000\n"
+"X-Launchpad-Export-Date: 2015-05-30 05:27+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 "Language: zh_TW\n"
 
@@ -2087,6 +2087,3 @@ msgstr "日期"
 #: ../src/View/directory_view_popup.ui:142
 msgid "Reversed Order"
 msgstr "相反順序"
-
-#~ msgid "Select an application"
-#~ msgstr "選取應用程式"
