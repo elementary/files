@@ -29,7 +29,7 @@ public class CustomFileChooserDialog : Object {
     private static Gtk.Button? gtk_folder_button = null;
 
     /* Response to get parent of the bottom box */
-    private const int BUTTON_RESPONSE = -3;    
+    private const int BUTTON_RESPONSE = -6;    
 
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_box" };
@@ -235,7 +235,7 @@ public class CustomFileChooserDialog : Object {
         var tmp = d.get_widget_for_response (BUTTON_RESPONSE);
 
         var container = tmp.get_parent ();
-        container_box = container.get_parent () as Gtk.Box;             
+        container_box = container.get_parent () as Gtk.Box;           
     }
     
     private static void setup_filter_box () {
