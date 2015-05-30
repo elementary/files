@@ -42,7 +42,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
-
     public string current_right_click_path;
     public string current_right_click_root;
 
@@ -117,7 +116,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
     public signal void up ();
     public signal void down ();
 
-    private int timeout = -1;
+    private uint timeout = 0;
 
     private Granite.Services.IconFactory icon_factory;
 
@@ -161,7 +160,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         /* Drag and drop */
         Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
-        Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, {target_uri_list}, Gdk.DragAction.MOVE);
+        Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
         drag_leave.connect (on_drag_leave);
         drag_motion.connect (on_drag_motion);
         drag_data_received.connect (on_drag_data_received);
@@ -212,10 +211,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         queue_draw ();
 
-        if (timeout == -1 && event.button == 1) {
-            timeout = (int) Timeout.add (150, () => {
+        if (timeout == 0 && event.button == 1) {
+            timeout = Timeout.add (150, () => {
                 select_bread_from_coord (event);
-                timeout = -1;
+                timeout = 0;
                 return false;
             });
         }
@@ -244,9 +243,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
         reset_elements_states ();
 
-        if (timeout != -1) {
-            Source.remove ((uint) timeout);
-            timeout = -1;
+        if (timeout > 0) {
+            Source.remove (timeout);
+            timeout = 0;
         }
 
         if (is_focus)

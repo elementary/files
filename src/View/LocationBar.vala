@@ -457,22 +457,32 @@ namespace Marlin.View.Chrome
         }
 
         protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            if (!drop_data_ready) {
+                Gtk.TargetList list = null;
+                Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
+                if (target != Gdk.Atom.NONE)
+                    Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+            }
+
             Gtk.drag_unhighlight (this);
+            GLib.Signal.stop_emission_by_name (this, "drag-motion");
 
             foreach (BreadcrumbsElement element in elements)
                 element.pressed = false;
 
             var el = get_element_from_coordinates (x, y);
-
-            if (el != null)
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            if (el != null && drop_file_list != null) {
                 el.pressed = true;
-            else
-                /* No action taken on drop */
-                Gdk.drag_status (context, 0, time);
+                drop_target_file = get_target_location (x, y);
+                current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                 context,
+                                                                 out current_suggested_action);
+            }
 
+            Gdk.drag_status (context, current_suggested_action, time);
             queue_draw ();
-
-            return false;
+            return true;
         }
 
         protected override bool on_drag_drop (Gdk.DragContext context,
@@ -512,6 +522,7 @@ namespace Marlin.View.Chrome
                 }
             }
 
+            GLib.Signal.stop_emission_by_name (this, "drag-data-received");
             if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
                 drop_occurred = false;
                 current_actions = 0;
@@ -558,7 +569,7 @@ namespace Marlin.View.Chrome
             GOF.File? file;
             var el = get_element_from_coordinates (x, y);
             if (el != null) {
-                file = GOF.File.get_by_uri (get_path_from_element (el));
+                file = GOF.File.get (GLib.File.new_for_path (get_path_from_element (el)));
                 file.ensure_query_info ();
                 return file;
             }

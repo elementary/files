@@ -774,9 +774,15 @@ public class GOF.Directory.Async : Object {
         cached_dir = directory_cache.lookup (file);
 
         if (cached_dir != null) {
-            debug ("found cached dir %s", cached_dir.file.uri);
-            if (cached_dir.file.info == null)
-                cached_dir.file.query_update ();
+            if (cached_dir is Async && cached_dir.file != null) {
+                debug ("found cached dir %s", cached_dir.file.uri);
+                if (cached_dir.file.info == null)
+                    cached_dir.file.query_update ();
+            } else {
+                warning ("Invalid directory found in cache");
+                cached_dir = null;
+                directory_cache.remove (file);
+            }
         }
         dir_cache_lock.unlock ();
 

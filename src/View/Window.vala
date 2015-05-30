@@ -243,13 +243,16 @@ namespace Marlin.View {
             });
 
             tabs.close_tab_requested.connect ((tab) => {
-                tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
+                var view_container = (tab.page as ViewContainer);
+                tab.restore_data = view_container.location.get_uri ();
 
-                /* set current_tab to null to ensure closed ViewContainer is destroyed
-                 * it will be reassigned in tab_changed
+                /* If closing tab is current, set current_tab to null to ensure
+                 * closed ViewContainer is destroyed. It will be reassigned in tab_changed
                  */
-                current_tab = null;
-               (tab.page as ViewContainer).close ();
+                if (view_container == current_tab)
+                    current_tab = null;
+
+               view_container.close ();
 
                 if (tabs.n_tabs == 1)
                     add_tab ();

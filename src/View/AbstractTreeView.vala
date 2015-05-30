@@ -201,8 +201,8 @@ namespace FM {
                 if (tree.show_expanders) {
                     var expander_val = GLib.Value (typeof (int));
                     tree.style_get_property ("expander-size", ref expander_val);
-                    int expander_size = expander_val.get_int () + tree.get_level_indentation ();
-                    expander_width += expander_size * (depth +1);
+                    int expander_size = expander_val.get_int () + tree.get_level_indentation () + 3;
+                    expander_width += expander_size * (depth) + zoom_level;
                 }
                 int orig_x = expander_width + x_offset;
 

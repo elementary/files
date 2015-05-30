@@ -114,8 +114,8 @@ namespace Marlin.View.Chrome {
         }
 
         private int LONG_PRESS_TIME = Gtk.Settings.get_default ().gtk_double_click_time * 2;
-        private int timeout = -1;
-        private uint last_click_time = -1;
+        private uint timeout = 0;
+        private uint last_click_time = 0;
         private bool has_fetcher = false;
 
         private unowned MenuFetcher _fetcher;
@@ -164,9 +164,9 @@ namespace Marlin.View.Chrome {
                 active = false;
             }
 
-            if (timeout != -1) {
-                Source.remove ((uint) timeout);
-                timeout = -1;
+            if (timeout > 0) {
+                Source.remove (timeout);
+                timeout = 0;
             }
 
             return false;
@@ -178,11 +178,11 @@ namespace Marlin.View.Chrome {
             if (ev.button == 1 || ev.button == 3)
                 active = true;
 
-            if (timeout == -1 && ev.button == 1) {
+            if (timeout == 0 && ev.button == 1) {
                 last_click_time = ev.time;
-                timeout = (int) Timeout.add(max_press_time, () => {
+                timeout = Timeout.add (max_press_time, () => {
                     /* long click */
-                    timeout = -1;
+                    timeout = 0;
                     popup_menu (ev);
                     return false;
                 });

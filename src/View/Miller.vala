@@ -84,7 +84,7 @@ namespace Marlin.View {
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
-            var hpane1 = new Granite.Widgets.ThinPaned (Gtk.Orientation.HORIZONTAL);
+            var hpane1 = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             hpane1.hexpand = true;
             slot.hpane = hpane1;
 
