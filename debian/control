@@ -17,13 +17,18 @@ Build-Depends: cmake (>= 2.6),
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
-               valac-0.26 | valac (>= 0.26)
+               valac (>= 0.26)
 Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.9.5
 
 Package: pantheon-files
 Architecture: any
-Depends: gvfs, tumbler, ${misc:Depends}, ${shlibs:Depends}
+Depends: gvfs,
+         libpantheon-files-core0 (= ${binary:Version}),
+         libpantheon-files-widgets0 (= ${binary:Version}),
+         tumbler,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Recommends: contractor, gvfs-backends
 Suggests: tumbler-plugins-extra
 Description: File manager for the Pantheon desktop
@@ -52,7 +57,7 @@ Description: File manager for the Pantheon desktop (debugging symbols)
   - Column view to effortlessly traverse complex folder hierarchies,
     in addition to Icon and Tree views
   - Contextual actions on files and folders provided by Contractor
-  - Transparent support for remote servers and network shares 
+  - Transparent support for remote servers and network shares
   - Compliance with elementary HIG, e.g. lets you restore closed tabs
   - Session persistence - take up where you left!
  .
