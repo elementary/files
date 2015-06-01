@@ -174,12 +174,13 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public class UndoManager : GLib.Object
     {
-        public static UndoManager instance ();
+        public static unowned UndoManager instance ();
 
         public signal void request_menu_update (UndoMenuData data);
 
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
+        public void add_rename_action (GLib.File renamed_file, string original_name);
     }
 
     [CCode (cheader_filename = "marlin-progress-info.h")]
@@ -335,12 +336,13 @@ namespace GOF {
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
-        public void rename (string new_name, GOF.FileOperationCallback callback);
+        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* data = null);
 
         public GOF.File @ref ();
         public GOF.File unref ();
     }
 
+    [CCode (cheader_filename = "gof-file.h", has_target = false)]
     public delegate void FileOperationCallback (GOF.File file, GLib.File? result_location, GLib.Error? error, void* callback_data);
 
     [CCode (cheader_filename = "gof-file.h")]
