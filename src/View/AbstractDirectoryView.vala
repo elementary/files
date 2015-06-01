@@ -182,6 +182,8 @@ namespace FM {
         public bool single_click_mode {get; set;}
         protected bool should_activate = false;
         protected bool should_scroll = true;
+        protected bool should_deselect = false;
+        protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
 
@@ -1394,9 +1396,9 @@ namespace FM {
 
 /** Handle Drop target signals*/
         private bool on_drag_motion (Gdk.DragContext context,
-                             int x,
-                             int y,
-                             uint timestamp) {
+                                     int x,
+                                     int y,
+                                     uint timestamp) {
             /* if we don't have drop data already ... */
             if (!drop_data_ready && !get_drop_data (context, x, y, timestamp))
                 return false;
@@ -1622,7 +1624,8 @@ namespace FM {
                     current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
                     highlight_drop_file (drop_target_file, current_actions, path);
 
-                    if (file.is_folder () && drag_file_list.index (file) == -1) {
+                    if (file.is_folder () && is_valid_drop_folder (file)) {
+                        /* open the target folder after a short delay */
                         cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      drag_enter_delay,
@@ -1634,6 +1637,17 @@ namespace FM {
                     }
                 }
             }
+        }
+
+        private bool is_valid_drop_folder (GOF.File file) {
+            /* Cannot drop onto a file onto its parent or onto itself */
+            if (file.uri != slot.uri &&
+                drag_file_list != null &&
+                drag_file_list.index (file) >= 0)
+
+                return true;
+            else
+                return false;
         }
 
         private void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
@@ -2557,7 +2571,9 @@ namespace FM {
         }
 
         protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            grab_focus (); /* Cause OverLay to appear */
+            if (slot.is_active)
+                grab_focus (); /* Cause OverLay to appear */
+
             return false;
         }
 
@@ -2686,7 +2702,6 @@ namespace FM {
 
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-            should_activate =  single_click_mode || double_click_event;
 
             if (!double_click_event)
                 start_drag_timer ((Gdk.Event)event);
@@ -2725,6 +2740,7 @@ namespace FM {
                 unselect_path (path);
                 path = null;
             }
+            click_path = path;
 
             /* Unless single click renaming is enabled, treat name same as blank zone */
             if (!single_click_rename && click_zone == ClickZone.NAME)
@@ -2744,10 +2760,10 @@ namespace FM {
              * dragging on blank areas
              */
             block_drag_and_drop ();
+
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
             if (!no_mods && !only_control_pressed) {
-                block_drag_and_drop ();
                 return window.button_press_event (event);
             }
 
@@ -2755,7 +2771,8 @@ namespace FM {
                 if (no_mods)
                     unselect_all ();
 
-                if (!on_blank)
+                /* If modifier pressed then default handler determines selection */
+                if (no_mods && !on_blank)
                     select_path (path);
             }
 
@@ -2765,20 +2782,32 @@ namespace FM {
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
+                    /* Control-click should deselect previously selected path on key release (unless
+                     * pointer moves)
+                     */
+                    should_deselect = only_control_pressed && path_selected;
+
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
                             result = false;
                             break;
 
                         case ClickZone.BLANK_PATH:
+                        case ClickZone.ICON:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+                            /* determine whether should activate on key release (unless pointer moved)*/
                             should_activate =  no_mods &&
-                                               activate_on_blank &&
+                                               (!on_blank || activate_on_blank) &&
                                                (single_click_mode || double_click_event);
 
-                            if (!activate_on_blank || !path_selected) {
-                                result = false;
-                            } else
+                            /* We need to decide whether to rubberband or drag&drop.
+                             * Rubberband if modifer pressed or if not on the icon and either
+                             * the item is unselected or activate_on_blank is not enabled.
+                             */
+
+                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected)))
+                                 result = false; /* Rubberband */
+                            else
                                 result = handle_primary_button_click (event, path);
 
                             break;
@@ -2793,14 +2822,6 @@ namespace FM {
 
                         case ClickZone.NAME:
                             rename_file (selected_files.data);
-                            break;
-
-                        case ClickZone.ICON:
-                            /* Allow dragging of icons */
-                            unblock_drag_and_drop ();
-                            if (no_mods)
-                                result = handle_primary_button_click (event, path);
-
                             break;
 
                         case ClickZone.EXPANDER:
@@ -2850,17 +2871,19 @@ namespace FM {
 
             slot.active (should_scroll);
 
-            if (should_activate) {
-                Gtk.Widget widget = get_real_view ();
-                int x = (int)event.x;
-                int y = (int)event.y;
-
-                /* Only activate if pointer has not moved */
-                if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y))
+            Gtk.Widget widget = get_real_view ();
+            int x = (int)event.x;
+            int y = (int)event.y;
+            /* Only take action if pointer has not moved */
+            if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
+                if (should_activate)
                     activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                else if (should_deselect && click_path != null)
+                    unselect_path (click_path);
             }
-
             should_activate = false;
+            should_deselect = false;
+            click_path = null;
             return false;
         }
 
