@@ -521,7 +521,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      **/
     public File? get_file_for_path (string path) {
         string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
-        string newpath = GLib.Uri.unescape_string (path ?? "");
+        string newpath = path ?? "";
 
         /* Format our path so its valid */
         if (newpath == "")
@@ -605,7 +605,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * be animated.
      **/
     public void change_breadcrumbs (string newpath) {
-        var explode_protocol = Uri.unescape_string (newpath).split ("://");
+        var explode_protocol = newpath.split ("://");
 
         if (explode_protocol.length > 1) {
             protocol = explode_protocol[0] + "://";
