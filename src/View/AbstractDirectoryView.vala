@@ -129,7 +129,7 @@ namespace FM {
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
 
-        unowned GLib.List<unowned GOF.File> drag_file_list = null;
+        unowned GLib.List<GOF.File> drag_file_list = null;
         GOF.File? drop_target_file = null;
 
 
@@ -194,28 +194,12 @@ namespace FM {
         private GLib.List<GLib.AppInfo> open_with_apps;
         protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
 
-        /**TODO**:  Remove the "unowned" portion of the declaration for
-                    selected_files and on code that repeats its type.
+        /*  Selected files are originally obtained with
+            gtk_tree_model_get(): this function increases the reference
+            count of the file object.*/
+        protected GLib.List<GOF.File> selected_files = null;
 
-                    Selected files are originally obtained with
-                    gtk_tree_model_get(): this function increases the reference
-                    count of the file object.
-
-                    In order to prevent the obvious memory leak when inserting
-                    these owned objects into the unowned element container, the
-                    objects are unreferenced upon being inserted.
-
-                    This results in a container filled with weak references to
-                    objects with reference counts of 1.
-
-                    A scenario may occur that the cell holding the original file
-                    object is destroyed, and the container is left with pointers
-                    pointing to freed memory. Reference counting the container
-                    elements would prevent this possibility.*/
-
-        protected GLib.List<unowned GOF.File> selected_files = null;
-
-        private GLib.List<unowned GOF.File>? templates = null;
+        private GLib.List<GOF.File>? templates = null;
 
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
@@ -465,7 +449,7 @@ namespace FM {
             }
         }
 
-        public unowned GLib.List<unowned GOF.File> get_selected_files () {
+        public unowned GLib.List<GOF.File> get_selected_files () {
             return selected_files;
         }
 
@@ -488,7 +472,7 @@ namespace FM {
 
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
-                                                GLib.List<unowned GOF.File> selection = get_selected_files ()) {
+                                                GLib.List<GOF.File> selection = get_selected_files ()) {
             if (updates_frozen || in_trash)
                 return;
 
@@ -508,7 +492,7 @@ namespace FM {
              * Do not launch with new instances of this app - open according to flag instead
              */
             if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
-                foreach (unowned GOF.File file in selection) {
+                foreach (GOF.File file in selection) {
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
                     if (file.is_folder ()) {
                         /* By default, multiple folders open in new tabs */
@@ -537,7 +521,7 @@ namespace FM {
             if (previewer == null)  /* At present this is the case! */
                 activate_selected_items (Marlin.OpenFlag.DEFAULT);
             else {
-                unowned GLib.List<unowned GOF.File>? selection = get_selected_files ();
+                unowned GLib.List<GOF.File>? selection = get_selected_files ();
 
                 if (selection == null)
                     return;
@@ -661,7 +645,7 @@ namespace FM {
             return drag_has_begun;
         }
 
-        protected bool selection_only_contains_folders (GLib.List<unowned GOF.File> list) {
+        protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
             bool only_folders = true;
 
             list.@foreach ((file) => {
@@ -717,8 +701,8 @@ namespace FM {
                 show_context_menu (event);
         }
 
-        protected unowned GLib.List<unowned GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
-            unowned GLib.List<unowned GOF.File> list = null;
+        protected unowned GLib.List<GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
+            unowned GLib.List<GOF.File> list = null;
 
             selection.@foreach ((file) => {
                 list.prepend (file);
@@ -770,7 +754,7 @@ namespace FM {
                          default_app != null ? default_app.get_name () : "null");
         }
 
-        private void trash_or_delete_files (GLib.List<unowned GOF.File> file_list,
+        private void trash_or_delete_files (GLib.List<GOF.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
@@ -888,7 +872,7 @@ namespace FM {
             if (!can_trash_or_delete)
                 return;
 
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 can_trash_or_delete = false;
 
@@ -897,7 +881,7 @@ namespace FM {
         }
 
         private void delete_selected_files () {
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection == null)
                 return;
 
@@ -936,7 +920,7 @@ namespace FM {
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             clipboard.cut_files (selection);
         }
 
@@ -949,12 +933,12 @@ namespace FM {
         }
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<unowned GOF.File> selection = get_selected_files_for_transfer ();
+            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             Marlin.restore_files_from_trash (selection, window);
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             file.execute (screen, null, null);
@@ -970,7 +954,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_other_app () {
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
 
             Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
@@ -1095,7 +1079,7 @@ namespace FM {
             }
         }
 
-        private void open_selected_in_terminal (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
+        private void open_selected_in_terminal (GLib.List<GOF.File> selection = get_selected_files ()) {
             var terminal = new GLib.DesktopAppInfo (Marlin.OPEN_IN_TERMINAL_DESKTOP_ID);
 
             if (terminal != null)
@@ -1831,8 +1815,8 @@ namespace FM {
             var menu = new GLib.Menu ();
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            unowned GOF.File selected_file = selection.data;
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GOF.File selected_file = selection.data;
 
             if (!selected_file.is_folder () && selected_file.is_executable ()) {
                 label = _("Run");
@@ -1860,7 +1844,7 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_submenu_open_with_applications (ref Gtk.Builder builder,
-                                                                      GLib.List<unowned GOF.File> selection) {
+                                                                      GLib.List<GOF.File> selection) {
 
             var open_with_submenu = new GLib.Menu ();
             int index = -1;
@@ -1956,8 +1940,8 @@ namespace FM {
             if (updates_frozen)
                 return;
 
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            unowned GOF.File file;
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GOF.File file;
 
             uint selection_count = selection.length ();
             bool more_than_one_selected = (selection_count > 1);
@@ -2016,7 +2000,7 @@ namespace FM {
             }
         }
 
-        private void update_default_app (GLib.List<unowned GOF.File> selection) {
+        private void update_default_app (GLib.List<GOF.File> selection) {
             default_app = Marlin.MimeActions.get_default_application_for_files (selection);
         }
 
@@ -2165,7 +2149,7 @@ namespace FM {
                                                           this);
         }
 
-        private void open_files_with (GLib.AppInfo app, GLib.List<unowned GOF.File> files) {
+        private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
             GOF.File.launch_files (files, get_screen (), app);
         }
 
@@ -2198,7 +2182,7 @@ namespace FM {
                 Gtk.TreeIter iter;
                 bool valid_iter;
                 GOF.File file;
-                GLib.List<unowned GOF.File> visible_files = null;
+                GLib.List<GOF.File> visible_files = null;
 
                 if (get_visible_range (out start_path, out end_path)) {
                     /* iterate over the range to collect all files */
@@ -2322,8 +2306,8 @@ namespace FM {
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
          */
-        private unowned GLib.List<unowned GOF.File> get_files_for_action () {
-            unowned GLib.List<unowned GOF.File> action_files = null;
+        private unowned GLib.List<GOF.File> get_files_for_action () {
+            unowned GLib.List<GOF.File> action_files = null;
 
             if (selected_files == null)
                 action_files.prepend (slot.directory.file);
