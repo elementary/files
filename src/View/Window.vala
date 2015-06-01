@@ -52,7 +52,7 @@ namespace Marlin.View {
         };
 
         public Gtk.Builder ui;
-        private UndoManager undo_manager;
+        private unowned UndoManager undo_manager;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
