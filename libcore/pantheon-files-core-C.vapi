@@ -174,7 +174,7 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public class UndoManager : GLib.Object
     {
-        public static UndoManager instance ();
+        public static unowned UndoManager instance ();
 
         public signal void request_menu_update (UndoMenuData data);
 
