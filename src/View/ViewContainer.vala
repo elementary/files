@@ -269,8 +269,9 @@ namespace Marlin.View {
         public void update_tab_name (GLib.File loc) {
             string? slot_path = loc.get_path ();
             tab_name = "-----";
+
             if (slot_path == null) {
-                string [] uri_parts = loc.get_uri ().split (Path.DIR_SEPARATOR_S);
+                string [] uri_parts = GLib.Uri.unescape_string (loc.get_uri ()).split (Path.DIR_SEPARATOR_S);
                 uint index = uri_parts.length - 1;
                 string s;
                 while (index >= 0) {
