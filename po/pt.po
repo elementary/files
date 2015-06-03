@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2015-03-01 23:10+0000\n"
 "Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:42+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1493,6 +1493,20 @@ msgstr "Os nomes de ficheiros não podem ter barras"
 msgid "Toplevel files cannot be renamed"
 msgstr "Não pode mudar o nome dos ficheiros do nível superior"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Anterior"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Seguinte"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "O Files não é o gestor de ficheiros do sistema"
@@ -1892,14 +1906,6 @@ msgstr "Ver como lista"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Ver em colunas"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Anterior"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Seguinte"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

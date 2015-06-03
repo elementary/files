@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2015-03-06 14:42+0000\n"
 "Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 "Language: de\n"
 
@@ -1514,6 +1514,20 @@ msgstr "Schrägstriche sind in Dateinamen nicht erlaubt"
 msgid "Toplevel files cannot be renamed"
 msgstr "Dateien im obersten Ordner können nicht umbenannt werden"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Zurück"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Weiter"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
@@ -1915,14 +1929,6 @@ msgstr "Als Liste anzeigen"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Als Spalten anzeigen"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Zurück"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Weiter"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

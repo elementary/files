@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2015-02-23 16:05+0000\n"
 "Last-Translator: Tomo Moto <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:25+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1521,6 +1521,20 @@ msgstr "Lomítka nejsou v názvech souborů povolena"
 msgid "Toplevel files cannot be renamed"
 msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Předchozí"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Následující"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Tento Správce souborů není váš výchozí"
@@ -1919,14 +1933,6 @@ msgstr "Zobrazit jako seznam"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Zobrazit ve sloupcích"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Předchozí"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Následující"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

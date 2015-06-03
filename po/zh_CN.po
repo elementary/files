@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2015-04-26 08:47+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:27+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:42+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 "Language: \n"
 
@@ -1399,6 +1399,20 @@ msgstr "文件名中不能出现斜线"
 msgid "Toplevel files cannot be renamed"
 msgstr "无法重命名顶级文件"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "上一个"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "下一个"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Files 不是您的默认文件管理器。"
@@ -1798,14 +1812,6 @@ msgstr "列表视图"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "分栏显示"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "上一个"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "下一个"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2014-12-12 15:56+0000\n"
 "Last-Translator: ITPROJECTS <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:25+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
@@ -1476,6 +1476,20 @@ msgstr "Файловите имена не могат да съдържат зн
 msgid "Toplevel files cannot be renamed"
 msgstr "Файловете от най-високо ниво не могат да бъдат преименувани"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Предишен"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Следващ"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Files не е вашият файлов мениджър по подразбиране"
@@ -1876,14 +1890,6 @@ msgstr "Изглед като Списък"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Изглед като Колони"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Предишен"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Следващ"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"
