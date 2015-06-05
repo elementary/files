@@ -271,6 +271,10 @@ namespace Marlin.View {
             tabs.tab_duplicated.connect ((tab) => {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
+
+            sidebar.sync_needed.connect (() => {
+                loading_uri (current_tab.uri);
+            });
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
