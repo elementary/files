@@ -105,6 +105,8 @@ namespace Marlin.Places {
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
 
+        public signal bool request_focus ();
+
         public Sidebar (Marlin.View.Window window) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
@@ -251,17 +253,20 @@ namespace Marlin.Places {
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
 
-            tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
+            tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
             tree_view.focus_out_event.connect (focus_out_event_cb);
+            tree_view.enter_notify_event.connect (on_enter_notify_event);
+        }
 
-            /* Ensure tree has focus when scrolling */
-            tree_view.enter_notify_event.connect (()=> {
-                if (!renaming)
-                    tree_view.grab_focus ();
+        private bool on_enter_notify_event () {
+            /* Ensure tree has focus when scrolling but do not grab focus if either a bookmark
+             *  is being renamed or request_focus is denied.
+             */ 
+            if (!tree_view.has_focus && !renaming && request_focus ())
+                tree_view.grab_focus ();
 
-                return false;
-            });
+            return false;
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {

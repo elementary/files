@@ -52,6 +52,12 @@ namespace Marlin.View {
             }
         }
 
+        public bool locked_focus {
+            get {
+                return get_current_slot ().locked_focus;
+            }
+        }
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;

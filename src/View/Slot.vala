@@ -33,6 +33,12 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
+        public override bool locked_focus {
+            get {
+                return dir_view.renaming;
+            }
+        }
+
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
 
