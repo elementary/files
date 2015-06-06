@@ -1119,7 +1119,7 @@ namespace FM {
                 if (!view.slot.directory.is_local)
                     view.slot.directory.need_reload ();
 
-                view.select_glib_files (pasted_files_list, null);
+                view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
                 view.pasting_files = false;
                 return false;
             });
