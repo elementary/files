@@ -27,7 +27,7 @@ namespace Marlin.View.Chrome
         private string _path;
         public new string path {
             set {
-                var new_path = GLib.Uri.unescape_string (value);
+                var new_path = value;
                 if (new_path != null) {
                     _path = new_path;
 
@@ -287,7 +287,8 @@ namespace Marlin.View.Chrome
          *
          **/
         private void on_file_loaded(GOF.File file) {
-            string file_display_name = GLib.Uri.unescape_string (file.get_display_name ());
+            string file_display_name = file.get_display_name ();
+
             if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
                     if (!autocompleted) {

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
-"PO-Revision-Date: 2015-03-20 08:24+0000\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
+"PO-Revision-Date: 2015-06-06 00:08+0000\n"
 "Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-06-07 05:24+0000\n"
+"X-Generator: Launchpad (build 17540)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1398,6 +1398,20 @@ msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
 msgid "Toplevel files cannot be renamed"
 msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "이전"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "다음"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr "폴더 만들기"
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Files가 기본 파일 관리자가 아닙니다."
@@ -1797,14 +1811,6 @@ msgstr "목록으로 보기"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "나란히 보기"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "이전"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "다음"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

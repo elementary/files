@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
-"PO-Revision-Date: 2012-08-16 06:10+0000\n"
-"Last-Translator: Arturo Torres Sánchez <r2d2.art2005@gmail.com>\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
+"PO-Revision-Date: 2015-06-03 22:26+0000\n"
+"Last-Translator: Colin Dean <cad@cad.cx>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-06-04 05:27+0000\n"
+"X-Generator: Launchpad (build 17540)\n"
 "Language: eo\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1445,6 +1445,20 @@ msgstr "Oblikvaj streketoj ne estas permesitaj en dosiernomoj"
 msgid "Toplevel files cannot be renamed"
 msgstr "Ne povas alinomigi Toplevel-dosierojn"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr ""
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr ""
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr ""
@@ -1455,7 +1469,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:193
 msgid "Ignore"
-msgstr ""
+msgstr "Ignori"
 
 #: ../src/View/ViewContainer.vala:288 ../src/View/Sidebar.vala:407
 msgid "Home"
@@ -1463,7 +1477,7 @@ msgstr "Hejmo"
 
 #: ../src/View/ViewContainer.vala:290 ../src/View/Sidebar.vala:457
 msgid "File System"
-msgstr ""
+msgstr "Dosiersistemo"
 
 #: ../src/View/ViewContainer.vala:307
 msgid "(as Administrator)"
@@ -1508,7 +1522,7 @@ msgstr ""
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "Dosiernomo"
 
 #: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:569
 #: ../src/View/PropertiesWindow.vala:619
@@ -1551,7 +1565,7 @@ msgstr ""
 
 #: ../src/View/Resources.vala:78 ../src/View/Sidebar.vala:571
 msgid "Network"
-msgstr ""
+msgstr "Reto"
 
 #: ../src/View/Resources.vala:79
 msgid "SFTP"
@@ -1622,7 +1636,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:87 ../src/View/directory_view_popup.ui:81
 msgid "Properties"
-msgstr ""
+msgstr "Atributoj"
 
 #: ../src/View/PropertiesWindow.vala:184
 msgid "General"
@@ -1630,7 +1644,7 @@ msgstr "Ĝenerala"
 
 #: ../src/View/PropertiesWindow.vala:192
 msgid "More"
-msgstr ""
+msgstr "Pli"
 
 #: ../src/View/PropertiesWindow.vala:212
 msgid "Preview"
@@ -1678,15 +1692,15 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:548
 msgid "MimeType"
-msgstr ""
+msgstr "MIME-tipo"
 
 #: ../src/View/PropertiesWindow.vala:556
 msgid "MimeTypes"
-msgstr ""
+msgstr "MIME-tipoj"
 
 #: ../src/View/PropertiesWindow.vala:576
 msgid "Location"
-msgstr ""
+msgstr "Loko"
 
 #: ../src/View/PropertiesWindow.vala:579
 msgid "Target"
@@ -1702,11 +1716,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:654
 msgid "Other application..."
-msgstr ""
+msgstr "Alia aplikaĵo..."
 
 #: ../src/View/PropertiesWindow.vala:678
 msgid "Open with:"
-msgstr ""
+msgstr "Malfermi per:"
 
 #: ../src/View/PropertiesWindow.vala:696
 msgid "Usage"
@@ -1740,7 +1754,7 @@ msgstr "Posedanto"
 #: ../src/View/PropertiesWindow.vala:1063
 #: ../src/View/PropertiesWindow.vala:1075
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: ../src/View/PropertiesWindow.vala:1079
 msgid "Everyone"
@@ -1840,14 +1854,6 @@ msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr ""
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
 msgstr ""
 
 #: ../src/View/SearchResults.vala:183

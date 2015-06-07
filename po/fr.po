@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
 "PO-Revision-Date: 2015-05-26 22:50+0000\n"
 "Last-Translator: Mathieu Lance <mathieu.lance@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1504,6 +1504,20 @@ msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
 msgid "Toplevel files cannot be renamed"
 msgstr "Impossible de renommer les fichiers racines"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Précedent"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Suivant"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Fichiers n'est pas votre gestionnaire de fichiers par défaut."
@@ -1903,14 +1917,6 @@ msgstr "Vue en liste"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Vue en colonnes"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Précedent"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Suivant"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

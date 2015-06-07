@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-28 19:14-0500\n"
-"PO-Revision-Date: 2015-04-09 15:58+0000\n"
+"POT-Creation-Date: 2015-06-02 14:15-0500\n"
+"PO-Revision-Date: 2015-05-31 06:39+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-30 05:26+0000\n"
+"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
 "X-Generator: Launchpad (build 17532)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -323,29 +323,29 @@ msgstr "Imposta il proprietario di «%s» a «%s»"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Annulla copia di %d elemento"
-msgstr[1] "_Annulla copia di %d elementi"
+msgstr[0] "Annulla copia di %d elemento"
+msgstr[1] "Annulla copia di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1544
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Annulla duplicazione di %d elemento"
-msgstr[1] "_Annulla duplicazione di %d elementi"
+msgstr[0] "Annulla duplicazione di %d elemento"
+msgstr[1] "Annulla duplicazione di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1549
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "_Annulla spostamento di %d elemento"
-msgstr[1] "_Annulla spostamento di %d elementi"
+msgstr[0] "Annulla spostamento di %d elemento"
+msgstr[1] "Annulla spostamento di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1554
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Annulla rinomina di %d elemento"
-msgstr[1] "_Annulla rinomina di %d elementi"
+msgstr[0] "Annulla ridenominazione di %d elemento"
+msgstr[1] "Annulla ridenominazione di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1558
 msgid "_Undo creation of an empty file"
@@ -353,56 +353,56 @@ msgstr "Annulla creazione di un file vuoto"
 
 #: ../libcore/marlin-undostack-manager.c:1561
 msgid "_Undo creation of a file from template"
-msgstr "_Annulla creazione di un file da modello"
+msgstr "Annulla creazione di un file da modello"
 
 #: ../libcore/marlin-undostack-manager.c:1565
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Annulla creazione di %d cartella"
-msgstr[1] "_Annulla creazione di %d cartelle"
+msgstr[0] "Annulla creazione di %d cartella"
+msgstr[1] "Annulla creazione di %d cartelle"
 
 #: ../libcore/marlin-undostack-manager.c:1570
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Annulla spostamento nel cestino di %d elemento"
-msgstr[1] "_Annulla spostamento nel cestino di %d elementi"
+msgstr[0] "Annulla spostamento nel cestino di %d elemento"
+msgstr[1] "Annulla spostamento nel cestino di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Annulla il ripristino dal cestino di %d elemento"
-msgstr[1] "_Annulla il ripristino dal cestino di %d elementi"
+msgstr[0] "Annulla il ripristino dal cestino di %d elemento"
+msgstr[1] "Annulla il ripristino dal cestino di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1580
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Annulla creazione collegamento a %d elemento"
-msgstr[1] "_Annulla creazione collegamento a %d elementi"
+msgstr[0] "Annulla creazione collegamento a %d elemento"
+msgstr[1] "Annulla creazione collegamento a %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1585
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Annulla eliminazione di %d elemento"
-msgstr[1] "_Annulla eliminazione di %d elementi"
+msgstr[0] "Annulla eliminazione di %d elemento"
+msgstr[1] "Annulla eliminazione di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "_Annulla cambiamento ricorsivo dei permessi di %d elemento"
-msgstr[1] "_Annulla cambiamento ricorsivo dei permessi di %d elementi"
+msgstr[0] "Annulla cambiamento ricorsivo dei permessi di %d elemento"
+msgstr[1] "Annulla cambiamento ricorsivo dei permessi di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1596
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "_Annulla cambiamento permessi di %d elemento"
-msgstr[1] "_Annulla cambiamento permessi di %d elementi"
+msgstr[0] "Annulla cambiamento permessi di %d elemento"
+msgstr[1] "Annulla cambiamento permessi di %d elementi"
 
 #: ../libcore/marlin-undostack-manager.c:1601
 #, c-format
@@ -1490,6 +1490,20 @@ msgstr "Nei nomi di file non è consentito l'uso di \"/\""
 msgid "Toplevel files cannot be renamed"
 msgstr "I file di livello principale non possono essere rinominati"
 
+#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../src/View/Chrome/TopMenu.vala:48
+msgid "Previous"
+msgstr "Precedente"
+
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Chrome/TopMenu.vala:52
+msgid "Next"
+msgstr "Successivo"
+
+#: ../filechooser-module/FileChooserDialog.vala:82
+msgid "Create folder"
+msgstr ""
+
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
 msgstr "Files non è il tuo gestore file predefinito."
@@ -1889,14 +1903,6 @@ msgstr "Visualizza come Lista"
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
 msgstr "Visualizza in Colonne"
-
-#: ../src/View/Chrome/TopMenu.vala:48
-msgid "Previous"
-msgstr "Precedente"
-
-#: ../src/View/Chrome/TopMenu.vala:52
-msgid "Next"
-msgstr "Successivo"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"

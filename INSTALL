@@ -42,3 +42,6 @@ Options:
 
     To install only libcore and libwidgets use the following command:
         cmake .. -DLIB_ONLY=true
+        
+    To install only the Gtk-Module use the following command:
+        cmake .. -DMODULE_ONLY=true
