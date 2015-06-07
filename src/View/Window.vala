@@ -979,7 +979,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
+            application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B", "F9"});
             application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
