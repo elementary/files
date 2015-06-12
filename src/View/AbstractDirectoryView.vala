@@ -1097,7 +1097,7 @@ namespace FM {
         }
 
         public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
-            if (uris == null || pointer == null)
+            if (pointer == null)
                 return;
 
             var view = pointer as FM.AbstractDirectoryView;
@@ -1106,21 +1106,24 @@ namespace FM {
                 return;
             }
 
+            view.pasting_files = false;
+            if (uris == null || uris.size () == 0)
+                return;
+
             view.pasted_files = uris;
 
             Idle.add (() => {
                 /* Select the most recently pasted files */
                 GLib.List<GLib.File> pasted_files_list = null;
                 view.pasted_files.foreach ((k, v) => {
-                    File f = k as File;
-                    pasted_files_list.prepend (f);
+                    if (k is GLib.File)
+                        pasted_files_list.prepend (k as File);
                 });
 
                 if (!view.slot.directory.is_local)
                     view.slot.directory.need_reload ();
 
                 view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
-                view.pasting_files = false;
                 return false;
             });
         }
