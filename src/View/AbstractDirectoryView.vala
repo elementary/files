@@ -1221,16 +1221,13 @@ namespace FM {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
+
             if (!show) {
                 block_model ();
                 model.clear ();
             }
 
             directory_hidden_changed (slot.directory, show);
-            if (loaded_subdirectories != null)
-                loaded_subdirectories.@foreach ((dir) => {
-                    directory_hidden_changed (dir, show);
-                });
 
             if (!show)
                 unblock_model ();
