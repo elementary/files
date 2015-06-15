@@ -1221,7 +1221,7 @@ namespace FM {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
-
+            cancel ();
             if (!show) {
                 block_model ();
                 model.clear ();
