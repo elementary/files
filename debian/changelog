@@ -1,3 +1,9 @@
+pantheon-files (0.2.1) trusty; urgency=low
+
+  * New upstream release
+
+ -- Cody Garver <cody@elementary.io>  Wed, 17 Jun 2015 21:51:32 -0500
+
 pantheon-files (0.2.0.1) trusty; urgency=low
 
   * New upstream release
