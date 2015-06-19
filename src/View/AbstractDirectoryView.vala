@@ -809,17 +809,22 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
-            unselect_all ();
-            select_gof_file (file_to_rename);
+            GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                var iter = Gtk.TreeIter ();
+                if (model.get_first_iter_for_file (file_to_rename, out iter)) {
+                    /* Assume writability on remote locations */
+                    /**TODO** Reliably determine writability with various remote protocols.*/
+                    if (file_to_rename.is_writable () || !slot.directory.is_local)
+                        start_renaming_file (file_to_rename, false);
+                    else
+                        warning ("You do not have permission to rename this file");
+                } else
+                    return true;
 
-            /* Assume writability on remote locations */
+                return false;
+            });
 
-            /**TODO** Reliably determine writability with various remote protocols.*/
 
-            if (file_to_rename.is_writable () || !slot.directory.is_local)
-                start_renaming_file (file_to_rename, false);
-            else
-                warning ("You do not have permission to rename this file");
         }
 
 
@@ -834,23 +839,11 @@ namespace FM {
                 return;
             }
 
-            var file_to_rename = GOF.File.@get (new_file);
-            bool local = view.slot.directory.is_local;
-            if (!local)
+            if (!view.slot.directory.is_local)
                 view.slot.directory.need_reload ();
 
-            /* Allow time for the file to appear in the tree model before renaming
-             * Wait longer for remote locations to allow for reload.
-             */
-
-            /**TODO** Remove need for hard coded delay*/
-
-            int delay = local ? 250 : 500;
-            GLib.Timeout.add (delay, () => {
-                view.rename_file (file_to_rename);
-                view.slot.directory.unblock_monitor ();
-                return false;
-            });
+            view.slot.directory.unblock_monitor ();
+            view.rename_file (GOF.File.@get (new_file));
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -2912,7 +2905,6 @@ namespace FM {
             Gtk.TreePath path = model.get_path (iter);
             /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
             set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-
             int start_offset= 0, end_offset = -1;
 
             if (editable_widget != null) {
@@ -2920,8 +2912,10 @@ namespace FM {
                     Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
 
                 editable_widget.select_region (start_offset, end_offset);
-            } else
+            } else {
                 warning ("Editable widget is null");
+                on_name_editing_canceled ();
+            }
 
         }
 
