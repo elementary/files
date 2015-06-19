@@ -344,13 +344,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private void rename_file (GOF.File file, string new_name) {
         /* Only rename if name actually changed */
-        var original_name = file.info.get_name ();
-        if (new_name != original_name) {
-            file.rename (new_name, (file, result_location, error) => {
-            if (error != null)
-                warning ("Rename Error while renaming %s to %s:  %s", original_name, new_name, error.message);
-            });
-        }
+        if (new_name != file.info.get_name ())
+            file.rename (new_name, (GOF.FileOperationCallback?)after_rename_file, this);
+    }
+
+    public static void after_rename_file (GOF.File file, GLib.File? result_location, GLib.Error? error, void* data) {
+        if (error != null)
+            warning ("Rename Error while renaming %s:  %s", file.uri, error.message);
     }
 
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {

@@ -544,7 +544,6 @@ namespace FM {
 
         protected void select_gof_file (GOF.File file) {
             var iter = Gtk.TreeIter ();
-
             if (!model.get_first_iter_for_file (file, out iter))
                 return; /* file not in model */
 
@@ -809,6 +808,7 @@ namespace FM {
         }
 
         protected void rename_file (GOF.File file_to_rename) {
+            uint count = 0;
             GLib.Idle.add_full (GLib.Priority.LOW, () => {
                 var iter = Gtk.TreeIter ();
                 if (model.get_first_iter_for_file (file_to_rename, out iter)) {
@@ -818,9 +818,11 @@ namespace FM {
                         start_renaming_file (file_to_rename, false);
                     else
                         warning ("You do not have permission to rename this file");
-                } else
-                    return true;
-
+                } else {
+                    /* Guard against possible infinite loop */
+                    count++;
+                    return count < 1000;
+                }
                 return false;
             });
 
@@ -2648,22 +2650,29 @@ namespace FM {
                 model.get_iter (out iter, path);
 
                 GOF.File? file = null;
-                model.@get (iter,
-                            FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
                 if (new_name != original_name) {
-                    file.rename (new_name, (file, result_location, error) => {
-                        if (error != null)
-                            warning ("Rename Error:  %s", error.message);
-                    });
+                    file.rename (new_name,
+                                 (GOF.FileOperationCallback)after_rename_file,
+                                 this);
                 }
             }
 
             on_name_editing_canceled ();
+        }
 
-            if (!slot.directory.is_local && new_name != original_name)
-                slot.directory.need_reload ();
+        public static void after_rename_file (GOF.File file, GLib.File? result_location, GLib.Error? error, void* data) {
+            var view = data as FM.AbstractDirectoryView;
+
+            if (!view.slot.directory.is_local && file.basename != view.original_name)
+                view.slot.directory.need_reload ();
+
+            if (error != null)
+                warning ("Rename Error:  %s", error.message);
+            else
+                view.select_gof_file (file);
         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {

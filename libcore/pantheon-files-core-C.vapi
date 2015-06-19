@@ -335,12 +335,13 @@ namespace GOF {
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
-        public void rename (string new_name, GOF.FileOperationCallback callback);
+        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* callback_data = null);
 
         public GOF.File @ref ();
         public GOF.File unref ();
     }
 
+    [CCode (cheader_filename = "gof-file.h", has_target = false)]
     public delegate void FileOperationCallback (GOF.File file, GLib.File? result_location, GLib.Error? error, void* callback_data);
 
     [CCode (cheader_filename = "gof-file.h")]
