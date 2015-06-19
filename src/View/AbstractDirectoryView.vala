@@ -441,6 +441,9 @@ namespace FM {
         }
 
         public new void grab_focus () {
+            if (updates_frozen)
+                return;
+
             if (view.get_realized ())
                 view.grab_focus ();
             else { /* wait until realized */
@@ -804,13 +807,15 @@ namespace FM {
         }
 
         private void new_empty_folder () {
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
             Marlin.FileOperations.new_folder (null, null, slot.location, (Marlin.CreateCallback?) create_file_done, this);
         }
 
         protected void rename_file (GOF.File file_to_rename) {
+            var iter = Gtk.TreeIter ();
             uint count = 0;
-            GLib.Idle.add_full (GLib.Priority.LOW, () => {
-                var iter = Gtk.TreeIter ();
+            GLib.Timeout.add (10, () => {
                 if (model.get_first_iter_for_file (file_to_rename, out iter)) {
                     /* Assume writability on remote locations */
                     /**TODO** Reliably determine writability with various remote protocols.*/
@@ -818,24 +823,26 @@ namespace FM {
                         start_renaming_file (file_to_rename, false);
                     else
                         warning ("You do not have permission to rename this file");
-                } else {
+                } else if (count < 100) {
                     /* Guard against possible infinite loop */
                     count++;
-                    return count < 1000;
+                    return true;
                 }
+
                 return false;
             });
-
-
         }
 
 
 /** File operation callbacks */
         static void create_file_done (GLib.File? new_file, void* data) {
+            var view = data as FM.AbstractDirectoryView;
+            view.slot.directory.unblock_monitor ();
+
             if (new_file == null)
                 return;
 
-            var view = data as FM.AbstractDirectoryView;
+
             if (view == null) {
                 warning ("View invalid after creating file");
                 return;
@@ -844,7 +851,6 @@ namespace FM {
             if (!view.slot.directory.is_local)
                 view.slot.directory.need_reload ();
 
-            view.slot.directory.unblock_monitor ();
             view.rename_file (GOF.File.@get (new_file));
         }
 
@@ -910,10 +916,7 @@ namespace FM {
 
             /**TODO** invoke batch renamer see bug #1014122*/
 
-            var file = selected_files.first ().data;
-            bool preselect_whole_name = file.is_folder ();
-
-            start_renaming_file (file, preselect_whole_name);
+            rename_file (selected_files.first ().data);
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2896,7 +2899,7 @@ namespace FM {
             icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
-        public void start_renaming_file (GOF.File file, bool preselect_whole_name) {
+        private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
             /* Select whole name if we are in renaming mode already */
             if (renaming)
                 return;
@@ -2907,24 +2910,53 @@ namespace FM {
                 return;
             }
 
-            name_renderer.editable = true;
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             freeze_updates ();
 
             Gtk.TreePath path = model.get_path (iter);
-            /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
-            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-            int start_offset= 0, end_offset = -1;
 
-            if (editable_widget != null) {
-                if (!file.is_folder ())
-                    Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
+            /* Scroll to row to be renamed and then start renaming after a delay
+             * so that file to be renamed is on screen.  This avoids the renaming being
+             * cancelled */
+            set_cursor (path, false, true, false);
+            uint count = 0;
+            Gtk.TreePath? start_path = null;
+            bool ok_next_time   = false;
 
-                editable_widget.select_region (start_offset, end_offset);
-            } else {
-                warning ("Editable widget is null");
-                on_name_editing_canceled ();
-            }
+            GLib.Timeout.add (50, () => {
+                /* Wait until view stops scrolling before starting to rename (up to 1 second)
+                 * Scrolling is deemed to have stopped when the starting visible path is stable
+                 * over two cycles */
+                Gtk.TreePath? start = null;
+                Gtk.TreePath? end = null;
+                get_visible_range (out start, out end);
+                count++;
+
+                if (start_path == null || (count < 20 && start.compare (start_path) != 0)) {
+                    start_path = start;
+                    ok_next_time = false;
+                    return true;
+                } else if (!ok_next_time) {
+                    ok_next_time = true;
+                    return true;
+                }
+
+                /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
+                name_renderer.editable = true;
+                set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
+
+                if (editable_widget != null) {
+                    int start_offset= 0, end_offset = -1;
+                    if (!file.is_folder ())
+                        Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
+
+                    editable_widget.select_region (start_offset, end_offset);
+                } else {
+                    warning ("Editable widget is null");
+                    on_name_editing_canceled ();
+                }
+                return false;
+            });
 
         }
 
