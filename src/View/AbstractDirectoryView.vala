@@ -194,7 +194,7 @@ namespace FM {
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
-        protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
+        protected GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
@@ -277,9 +277,6 @@ namespace FM {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct");
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
         }
 
         protected virtual void set_up_name_renderer () {
@@ -590,17 +587,11 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-            cancel_thumbnailing ();
+            cancel ();
             freeze_tree ();
             old_dir.cancel ();
             disconnect_directory_handlers (old_dir);
             block_model ();
-
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
-
-            loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
             if (new_dir.can_load)
@@ -3022,7 +3013,6 @@ namespace FM {
             slot.directory.cancel ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
-
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
