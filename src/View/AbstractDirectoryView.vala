@@ -372,10 +372,8 @@ namespace FM {
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
              * the tree is thawed and the model reconnected before selecting the files */
-            Idle.add (() => {
-                bool try_again = true;
+            Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
-                    try_again = false;
                     file_list.@foreach ((file) => {
                         var iter = Gtk.TreeIter ();
                         if (model.get_first_iter_for_file (file, out iter)) {
@@ -386,13 +384,11 @@ namespace FM {
                                 else
                                     select_path (path);
                             }
-                        } else {
-                            /* model has not caught up yet - wait a bit */
-                            try_again = true;
                         }
                     });
-                }
-                return try_again;
+                    return false;
+                } else
+                    return true;
             });
         }
 
