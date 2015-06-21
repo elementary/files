@@ -1141,6 +1141,11 @@ namespace Marlin.Places {
             if (!get_selected_iter ( out iter))
                 return;
 
+            bool is_bookmark;
+            store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
+            if (!is_bookmark)
+                return;
+
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
             name_renderer.editable = true;
