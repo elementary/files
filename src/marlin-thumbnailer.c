@@ -399,8 +399,9 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     //content_type = marlin_file_get_content_type (file);
     content_type = gof_file_get_ftype (file);
 
-    /* abort if the content type is unknown */
-    if (content_type == NULL)
+    /* abort if the content type is unknown.  Also, until such time that the thumbnailer backend can
+     * provide cover art if available, do not attempt to thumbnail audio (lp: 1467224)*/
+    if (content_type == NULL || g_content_type_is_a (content_type, "audio/*"))
     {
         /* release the thumbnailer lock */
         g_mutex_unlock (&thumbnailer->lock);
