@@ -105,6 +105,8 @@ namespace Marlin.Places {
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
 
+        public signal void sync_needed ();
+
         public Sidebar (Marlin.View.Window window) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
@@ -262,6 +264,14 @@ namespace Marlin.Places {
 
                 return false;
             });
+
+            tree_view.leave_notify_event.connect (on_leave_notify_event);
+        }
+
+        private bool on_leave_notify_event () {
+            /* Signal Marlin.View.Window to synchronise sidebar with current tab */
+            sync_needed ();
+            return false;
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {
