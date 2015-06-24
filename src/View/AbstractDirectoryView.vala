@@ -171,6 +171,7 @@ namespace FM {
         protected Marlin.TextRenderer? name_renderer = null;
         unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
+        public string proposed_name = "";
 
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
@@ -2629,25 +2630,6 @@ namespace FM {
             if (!renaming)
                 return;
 
-            /* Don't allow a rename with an empty string. Revert to original
-             * without notifying the user. */
-            if (new_name != "") {
-                /* Validate filename before trying to rename the file */
-                try {
-                    Filename.from_uri ("file:///" + Uri.escape_string (new_name));
-                } catch (GLib.ConvertError e) {
-                    var dialog = new Gtk.MessageDialog ((Gtk.Window)window,
-                                                        Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                                        Gtk.MessageType.ERROR,
-                                                        Gtk.ButtonsType.CLOSE,
-                                                        _("%s is not a valid file name"),
-                                                       new_name);
-                    dialog.run ();
-                    dialog.destroy ();
-                    new_name = "";
-                }
-            }
-
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
@@ -2658,19 +2640,51 @@ namespace FM {
                             FM.ListModel.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
+                original_name = file.info.get_name ();
                 if (new_name != original_name) {
-                    file.rename (new_name, (file, result_location, error) => {
-                        if (error != null)
-                            warning ("Rename Error:  %s", error.message);
-                    });
+                    proposed_name = new_name;
+                    file.rename (new_name, (GOF.FileOperationCallback)rename_callback, (void*)this);
                 }
             }
 
             on_name_editing_canceled ();
-
-            if (!slot.directory.is_local && new_name != original_name)
-                slot.directory.need_reload ();
         }
+
+
+        public static void rename_callback (GOF.File file, GLib.File? result_location, GLib.Error error, void* data) {
+            FM.AbstractDirectoryView? view = null;
+            Marlin.View.PropertiesWindow? pw = null;
+
+            var object = (GLib.Object)data;
+
+            if (object is FM.AbstractDirectoryView)
+                view = (FM.AbstractDirectoryView)data;
+            else if (object is Marlin.View.PropertiesWindow) {
+                pw = (Marlin.View.PropertiesWindow)object;
+                view = pw.view;
+            }
+
+            assert (view != null);
+
+            if (error != null) {
+                Eel.show_error_dialog (_("Could not rename to '%s'").printf (view.proposed_name),
+                                       error.message,
+                                       view.window as Gtk.Window);
+            } else {
+                Marlin.UndoManager.instance ().add_rename_action (file.location,
+                                                                  view.original_name);
+
+                if (!view.slot.directory.is_local)
+                    view.slot.directory.need_reload ();
+            }
+
+            if (pw != null) {
+                if (error == null)
+                    pw.reset_entry_text (file.info.get_name ());
+                else
+                    pw.reset_entry_text ();  //resets entry to old name
+            }
+         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
