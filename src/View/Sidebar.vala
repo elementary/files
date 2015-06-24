@@ -115,6 +115,7 @@ namespace Marlin.Places {
             construct_tree_view ();
             configure_tree_view ();
             connect_tree_view_signals ();
+            this.scroll_event.connect (update_adjustment_val);
             this.content_box.pack_start (this.tree_view, true);
 
             this.bookmarks = Marlin.BookmarkList.get_instance ();
@@ -253,7 +254,6 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            tree_view.focus_out_event.connect (focus_out_event_cb);
 
             /* Ensure tree has focus when scrolling */
             tree_view.enter_notify_event.connect (()=> {
@@ -269,8 +269,8 @@ namespace Marlin.Places {
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
             return false;
         }
-        private bool focus_out_event_cb (Gdk.EventFocus event) {
-            /* Save current adjustment value */
+
+        private bool update_adjustment_val () {
             adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
             return false;
         }
@@ -1151,7 +1151,9 @@ namespace Marlin.Places {
             name_renderer.editable = true;
             renaming = true;
             tree_view.set_cursor_on_cell (path, column, name_renderer, true);
-            /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename */
+            /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
+             * For some reason, scroll to cell does not always work here
+             */
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
         }
 
