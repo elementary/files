@@ -377,14 +377,14 @@ namespace FM {
                 if (!tree_frozen) {
                     try_again = false;
                     file_list.@foreach ((file) => {
-                        var iter = Gtk.TreeIter ();
+                        Gtk.TreeIter iter;
                         if (model.get_first_iter_for_file (file, out iter)) {
                             Gtk.TreePath path = model.get_path (iter);
                             if (path != null) {
+                                select_path (path);
                                 if (focus_location != null && focus_location.equal (file.location))
-                                    set_cursor (path, false, true, false); /* set cursor and select */
-                                else
-                                    select_path (path);
+                                    /* set cursor and scroll to focus location*/
+                                    set_cursor (path, false, false, true); 
                             }
                         } else {
                             /* model has not caught up yet - wait a bit */
