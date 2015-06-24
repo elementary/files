@@ -627,8 +627,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             emblem_area.height = gdk_pixbuf_get_height (pix);
 
             /* stack emblem on a vertical line begging from the bottom */
-            emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width + priv->zoom_level, background_area->x + background_area->width - emblem_area.width);
-            emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * (position+1);
+            guint overlap = MIN (8 + priv->zoom_level, pix_rect.width / 4);
+            emblem_area.x = pix_rect.x + pix_rect.width - overlap;
+            emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * (position + 1);
             /* don't show cutted emblems */
             if (emblem_area.y < background_area->y)
                 break;
