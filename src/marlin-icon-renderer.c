@@ -581,6 +581,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     /* add remove helpers +/- */
     GdkPixbuf *pix;
 
+    /* Do not show selection helpers or emblems for very small icons */
     if (priv->selection_helpers &&
         (flags & (GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_SELECTED)) != 0 &&
         priv->file != priv->drop_file)
@@ -604,7 +605,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }
 
     /* check if we should render emblems as well */
-    if (G_LIKELY (priv->emblems))
+    if (G_LIKELY (priv->emblems) && priv->selection_helpers)
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
