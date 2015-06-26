@@ -69,8 +69,6 @@ namespace Marlin.View {
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
 
-            this.show_all ();
-
             /* Override background color to support transparency on overlay widgets */
             Gdk.RGBA transparent = {0, 0, 0, 0};
             override_background_color (0, transparent);
@@ -169,7 +167,6 @@ namespace Marlin.View {
 
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-                overlay_statusbar.reset_selection ();
 
                 load_slot_directory (view);
                 window.update_top_menu ();
@@ -306,6 +303,7 @@ namespace Marlin.View {
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
+                overlay_statusbar.hide ();
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
@@ -340,7 +338,9 @@ namespace Marlin.View {
             if (can_show_folder) {
                 ready = true;
                 content = view.get_content_box ();
+                overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
             }
+
         }
 
         private void store_selection () {
@@ -460,6 +460,10 @@ namespace Marlin.View {
                 view.grab_focus ();
             else
                 content.grab_focus ();
+        }
+
+        public void on_item_hovered (GOF.File? file) {
+            overlay_statusbar.update_hovered (file);
         }
     }
 }

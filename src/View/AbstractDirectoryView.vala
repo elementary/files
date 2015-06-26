@@ -233,7 +233,7 @@ namespace FM {
         protected static DndHandler dnd_handler = new FM.DndHandler ();
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
-
+        public signal void item_hovered (GOF.File? file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -2554,7 +2554,7 @@ namespace FM {
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || slot.directory.check_network ()) {
                     /* cannot get file info while network disconnected */
-                    window.item_hovered (file);
+                    item_hovered (file);
                     hover_path = path;
                 } else {
                     slot.reload ();

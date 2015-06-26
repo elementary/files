@@ -275,6 +275,10 @@ namespace Marlin.View {
             sidebar.sync_needed.connect (() => {
                 loading_uri (current_tab.uri);
             });
+
+            item_hovered.connect ((file) => {
+                current_tab.on_item_hovered (file);
+            });
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
@@ -396,7 +400,6 @@ namespace Marlin.View {
             tabs.current = tab;
             /* The following fixes a bug where upon first opening
                a tab, the overlay status bar is shown empty. */
-            item_hovered (null);
         }
 
         public void remove_tab (ViewContainer view_container) {
