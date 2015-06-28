@@ -71,12 +71,8 @@ namespace Marlin.View {
             if (!showbar)
                 return;
 
+            cancel_update ();
             visible = false;
-
-            if (update_timeout_id > 0) {
-                GLib.Source.remove (update_timeout_id);
-                update_timeout_id = 0;
-            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
@@ -101,6 +97,13 @@ namespace Marlin.View {
                 update_timeout_id = 0;
                 return false;
             });
+        }
+
+        public void cancel_update () {
+            if (update_timeout_id > 0) {
+                GLib.Source.remove (update_timeout_id);
+                update_timeout_id = 0;
+            }
         }
 
        private void real_update (GLib.List<GOF.File>? files) {

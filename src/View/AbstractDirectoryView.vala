@@ -2518,7 +2518,6 @@ namespace FM {
 
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
-
                 switch (click_zone) {
                     case ClickZone.NAME:
                         if (single_click_rename && file != null && file.is_writable ())
@@ -2566,7 +2565,7 @@ namespace FM {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            window.item_hovered (null); /* Cause OverLay to disappear */
+            item_hovered (null); /* Ensure overlay statusbar disappears */
             return false;
         }
 

@@ -85,6 +85,7 @@ namespace Marlin.View {
         private void connect_signals () {
             path_changed.connect (user_path_change_request);
             window.folder_deleted.connect (on_folder_deleted);
+            enter_notify_event.connect (on_enter_notify_event);
         }
 
         private void disconnect_signals () {
@@ -205,6 +206,7 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
+            overlay_statusbar.halign = Gtk.Align.END;
             ready = false;
             load_slot_directory (get_current_slot ());
         }
@@ -338,9 +340,9 @@ namespace Marlin.View {
             if (can_show_folder) {
                 ready = true;
                 content = view.get_content_box ();
-                overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
             }
 
+            overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
         private void store_selection () {
@@ -464,6 +466,14 @@ namespace Marlin.View {
 
         public void on_item_hovered (GOF.File? file) {
             overlay_statusbar.update_hovered (file);
+        }
+
+        private bool on_enter_notify_event () {
+            /* Before the status bar is entered a leave event is triggered on the view, which
+             * causes the statusbar to disappear. To block this we just cancel the update.
+             */
+            overlay_statusbar.cancel_update ();
+            return false;
         }
     }
 }

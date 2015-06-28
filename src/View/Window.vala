@@ -70,7 +70,6 @@ namespace Marlin.View {
         private bool tabs_restored = false;
         public bool freeze_view_changes = false;
 
-        public signal void item_hovered (GOF.File? gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
@@ -275,10 +274,6 @@ namespace Marlin.View {
             sidebar.sync_needed.connect (() => {
                 loading_uri (current_tab.uri);
             });
-
-            item_hovered.connect ((file) => {
-                current_tab.on_item_hovered (file);
-            });
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
@@ -398,8 +393,6 @@ namespace Marlin.View {
             change_tab ((int)tabs.insert_tab (tab, -1));
             content.update_tab_name (location);
             tabs.current = tab;
-            /* The following fixes a bug where upon first opening
-               a tab, the overlay status bar is shown empty. */
         }
 
         public void remove_tab (ViewContainer view_container) {
