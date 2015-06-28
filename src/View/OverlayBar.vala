@@ -24,7 +24,7 @@ namespace Marlin.View {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
         const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff"};
-        Cancellable? image_cancellable = null;
+        Cancellable? cancellable = null;
         bool image_size_loaded = false;
         private uint folders_count = 0;
         private uint files_count = 0;
@@ -35,6 +35,8 @@ namespace Marlin.View {
         private GLib.FileInputStream? stream;
         private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
+        private Marlin.DeepCount? deep_counter = null;
+        private uint deep_count_timeout_id = 0;
 
         public bool showbar = false;
 
@@ -47,11 +49,11 @@ namespace Marlin.View {
             window = win;
             window.selection_changed.connect (on_selection_changed);
 
-            hide.connect (() => {
-                /* when we're hiding, we no longer want to search for image size */
-                if (image_cancellable != null)
-                    image_cancellable.cancel ();
-            });
+            hide.connect (cancel);
+        }
+
+        ~OverlayBar () {
+            cancel ();
         }
 
         private void on_selection_changed (GLib.List<GOF.File>? files = null) {
@@ -71,7 +73,7 @@ namespace Marlin.View {
             if (!showbar)
                 return;
 
-            cancel_update ();
+            cancel ();
             visible = false;
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
@@ -99,10 +101,21 @@ namespace Marlin.View {
             });
         }
 
-        public void cancel_update () {
+        public void cancel() {
             if (update_timeout_id > 0) {
                 GLib.Source.remove (update_timeout_id);
                 update_timeout_id = 0;
+            }
+
+            if (deep_count_timeout_id > 0) {
+                GLib.Source.remove (deep_count_timeout_id);
+                deep_count_timeout_id = 0;
+            }
+
+            /* if we're still collecting image info or deep counting, cancel */
+            if (cancellable != null) {
+                cancellable.cancel ();
+                cancellable = null;
             }
         }
 
@@ -129,49 +142,91 @@ namespace Marlin.View {
         }
 
         private string update_status () {
-            /* if we're still collecting image info, cancel */
-            if (image_cancellable != null) {
-                image_cancellable.cancel ();
-                image_cancellable = null;
-            }
-
             string str = "";
-
             if (goffile != null) { /* a single file is hovered or selected */
                 if (goffile.is_network_uri_scheme ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* if we have an image, see if we can get its resolution */
+                    cancellable = new Cancellable ();
                     string? type = goffile.get_ftype ();
                     if (type != null && type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         load_resolution.begin (goffile);
                     }
-                    str = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
+                    str = "%s- %s (%s)".printf (goffile.info.get_name (),
+                                                goffile.formated_type,
+                                                format_size (PropertiesWindow.file_real_size (goffile)));
                 } else {
                     str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
+                    schedule_deep_count ();
                 }
             } else { /* hovering over multiple selection */
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
                     if (files_count > 0)
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
-                                         _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
+                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
+                                         _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
                                          files_count);
                     else
                         str += _(" selected");
                 } else if (folders_count == 1) {
                     str = _("%u folder").printf (folders_count);
                     if (files_count > 0)
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size ((int64) files_size)),
-                                         _(" and %u other items (%s) selected").printf (files_count, format_size ((int64) files_size)),
+                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
+                                         _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
                                          files_count);
                     else
                         str += _(" selected");
                 } else /* folder_count = 0 and files_count > 0 */
-                    str = _("%u items selected (%s)").printf (files_count, format_size ((int64) files_size));
+                    str = _("%u items selected (%s)").printf (files_count, format_size (files_size));
             }
 
             return str;
+        }
+
+        private void schedule_deep_count () {
+            cancel ();
+            deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
+                status += " (counting ...)";
+                deep_counter = new Marlin.DeepCount (goffile.location);
+                deep_counter.finished.connect (update_status_after_deep_count);
+
+                cancellable = new Cancellable (); /* re-use existing cancellable */
+                cancellable.cancelled.connect (() => {
+                    if (deep_counter != null) {
+                        deep_counter.finished.disconnect (update_status_after_deep_count);
+                        deep_counter.cancel ();
+                        deep_counter = null;
+                    }
+                });
+                deep_count_timeout_id = 0;
+                return false;
+            });
+        }
+
+        private void update_status_after_deep_count () {
+            string str;
+
+            if (deep_counter != null) {
+                status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+
+                if (deep_counter.dirs_count > 0) {
+                    str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
+                    status += str.printf (deep_counter.dirs_count);
+                }
+
+                if (deep_counter.files_count > 0) {
+                    str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
+                    status += str.printf (deep_counter.files_count);
+                }
+
+                status += format_size (deep_counter.total_size);
+                
+                if (deep_counter.file_not_read > 0)
+                    status += " approx - %u files not readable".printf (deep_counter.file_not_read);
+
+                status += ")";
+            }
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
@@ -192,10 +247,9 @@ namespace Marlin.View {
         private async void load_resolution (GOF.File goffile) {
             var file = goffile.location;
             image_size_loaded = false;
-            image_cancellable = new Cancellable ();
 
             try {
-                stream = yield file.read_async (0, image_cancellable);
+                stream = yield file.read_async (0, cancellable);
                 if (stream == null)
                     error ("Could not read image file's size data");
                 loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
@@ -206,14 +260,14 @@ namespace Marlin.View {
                 });
 
                 /* Gdk wants us to always close the loader, so we are nice to it */
-                image_cancellable.cancelled.connect (() => {
+                cancellable.cancelled.connect (() => {
                     try {
                         loader.close ();
                         stream.close ();
                     } catch (Error e) {}
                 });
 
-                yield read_image_stream (loader, stream, image_cancellable);
+                yield read_image_stream (loader, stream, cancellable);
             } catch (Error e) { debug (e.message); }
         }
 
@@ -237,7 +291,7 @@ namespace Marlin.View {
                     warning (e.message);
                 }
             }
-            image_cancellable.cancelled ();
+            cancellable.cancelled ();
         }
     }
 }

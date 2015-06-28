@@ -149,6 +149,7 @@ namespace Marlin.View {
 
 
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+            overlay_statusbar.cancel ();
             if (mode != view_mode) {
                 if (loc == null) /* Only untrue on container creation */
                     loc = this.location;
@@ -167,6 +168,7 @@ namespace Marlin.View {
                 content = view.get_content_box ();
 
                 view_mode = mode;
+
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
                 load_slot_directory (view);
@@ -195,6 +197,7 @@ namespace Marlin.View {
         }
 
         public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
+            overlay_statusbar.cancel ();
             /* automagicly enable icon view for icons keypath */
             if (allow_mode_change &&
                 get_current_slot ().directory.uri_contain_keypath_icons &&
@@ -472,7 +475,7 @@ namespace Marlin.View {
             /* Before the status bar is entered a leave event is triggered on the view, which
              * causes the statusbar to disappear. To block this we just cancel the update.
              */
-            overlay_statusbar.cancel_update ();
+            overlay_statusbar.cancel ();
             return false;
         }
     }

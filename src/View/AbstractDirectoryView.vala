@@ -2358,6 +2358,7 @@ namespace FM {
             if (updates_frozen || event.is_modifier == 1)
                 return false;
 
+            cancel_hover ();
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -2740,8 +2741,9 @@ namespace FM {
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
             grab_focus (); /* cancels any renaming */
-            Gtk.TreePath? path = null;
+            cancel_hover (); /* cancel overlay statusbar cancellables */
 
+            Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
@@ -3030,6 +3032,7 @@ namespace FM {
         }
 
         public virtual void cancel () {
+            cancel_hover ();
             cancel_thumbnailing ();
             slot.directory.cancel ();
             cancel_drag_timer ();
@@ -3038,6 +3041,11 @@ namespace FM {
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
+        }
+
+        private void cancel_hover () {
+            item_hovered (null);
+            hover_path = null;
         }
 
         protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
