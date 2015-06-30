@@ -165,8 +165,6 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
-                content = view.get_content_box ();
-
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
@@ -233,11 +231,10 @@ namespace Marlin.View {
                 if (!slot.directory.is_ready)
                     return true;
 
-                if (slot.directory.can_load) {
+                if (slot.directory.can_load)
                     slot.directory.load ();
-                    plugin_directory_loaded ();
-                } else
-                     directory_done_loading (slot);
+                else
+                    directory_done_loading (slot);
 
                 return false;
             });
@@ -321,11 +318,11 @@ namespace Marlin.View {
                                                            _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
-                    content = new DirectoryNotFound (slot.directory, this);
-                    can_show_folder = false;
+                content = new DirectoryNotFound (slot.directory, this);
+                can_show_folder = false;
             } else if (selected_locations != null) {
-                    view.select_glib_files (selected_locations, null);
-                    selected_locations = null;
+                view.select_glib_files (selected_locations, null);
+                selected_locations = null;
             } else if (slot.directory.selected_file != null) {
                 if (slot.directory.selected_file.query_exists ())
                     focus_location_if_in_current_directory (slot.directory.selected_file);
@@ -340,6 +337,7 @@ namespace Marlin.View {
             if (can_show_folder) {
                 ready = true;
                 content = view.get_content_box ();
+                plugin_directory_loaded ();
             }
         }
 
