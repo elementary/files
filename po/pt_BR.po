@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-02 14:15-0500\n"
-"PO-Revision-Date: 2015-02-18 13:28+0000\n"
-"Last-Translator: Leonardo Lemos <leonardolemos@live.com>\n"
+"PO-Revision-Date: 2015-06-24 18:37+0000\n"
+"Last-Translator: Cleiton Floss <cleitonfloss@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-06-03 05:42+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-06-25 05:33+0000\n"
+"X-Generator: Launchpad (build 17578)\n"
 "Language: pt_BR\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1506,7 +1506,7 @@ msgstr "Próximo"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Criar pasta"
 
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
@@ -2107,11 +2107,11 @@ msgstr "Conectar-se a um servidor de arquivos de rede"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Estes itens podem ser restaurados ou excluídos da lixeira"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Restore All"
-msgstr ""
+msgstr "Restaurar tudo"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:57
 msgid "Empty the Trash"

@@ -105,6 +105,8 @@ namespace Marlin.Places {
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
 
+        public signal void sync_needed ();
+
         public Sidebar (Marlin.View.Window window) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
@@ -115,6 +117,7 @@ namespace Marlin.Places {
             construct_tree_view ();
             configure_tree_view ();
             connect_tree_view_signals ();
+            this.scroll_event.connect (update_adjustment_val);
             this.content_box.pack_start (this.tree_view, true);
 
             this.bookmarks = Marlin.BookmarkList.get_instance ();
@@ -253,7 +256,6 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            tree_view.focus_out_event.connect (focus_out_event_cb);
 
             /* Ensure tree has focus when scrolling */
             tree_view.enter_notify_event.connect (()=> {
@@ -262,6 +264,14 @@ namespace Marlin.Places {
 
                 return false;
             });
+
+            tree_view.leave_notify_event.connect (on_leave_notify_event);
+        }
+
+        private bool on_leave_notify_event () {
+            /* Signal Marlin.View.Window to synchronise sidebar with current tab */
+            sync_needed ();
+            return false;
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {
@@ -269,8 +279,8 @@ namespace Marlin.Places {
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
             return false;
         }
-        private bool focus_out_event_cb (Gdk.EventFocus event) {
-            /* Save current adjustment value */
+
+        private bool update_adjustment_val () {
             adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
             return false;
         }
@@ -1141,12 +1151,19 @@ namespace Marlin.Places {
             if (!get_selected_iter ( out iter))
                 return;
 
+            bool is_bookmark;
+            store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
+            if (!is_bookmark)
+                return;
+
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
             name_renderer.editable = true;
             renaming = true;
             tree_view.set_cursor_on_cell (path, column, name_renderer, true);
-            /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename */
+            /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
+             * For some reason, scroll to cell does not always work here
+             */
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
         }
 
