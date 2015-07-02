@@ -52,6 +52,33 @@ namespace Marlin.View {
             }
         }
 
+        public Gtk.Widget? content {
+            set {
+                if (content_item != null)
+                    remove (content_item);
+
+                content_item = value;
+
+                if (content_item != null) { 
+                    add (content_item);
+                    content_item.show_all ();
+                }
+            }
+            get {
+                return content_item;
+            }
+        }
+
+        public string tab_name {
+            set {
+                label = value;
+                tab_name_changed (value);
+            }
+            get {
+                return label;
+            }
+        }
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
@@ -106,29 +133,6 @@ namespace Marlin.View {
             view.close ();
         }
 
-        public Gtk.Widget content {
-            set {
-                if (content_item != null)
-                    remove (content_item);
-                add (value);
-                content_item = value;
-                content_item.show_all ();
-            }
-            get {
-                return content_item;
-            }
-        }
-
-        public string tab_name {
-            set {
-                label = value;
-                tab_name_changed (value);
-            }
-            get {
-                return label;
-            }
-        }
-
         public void go_up () {
             if (view.directory.has_parent ())
                 user_path_change_request (view.directory.get_parent ());
@@ -165,6 +169,7 @@ namespace Marlin.View {
                 else
                     view = new Slot (loc, this, mode);
 
+                content = null;
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
                 overlay_statusbar.reset_selection ();
