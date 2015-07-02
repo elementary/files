@@ -1737,18 +1737,29 @@ namespace FM {
             return true;
         }
 
+        private bool valid_selection_for_restore () {
+            foreach (GOF.File file in get_selected_files ()) {
+                if (!(file.directory.get_basename () == "/"))
+                    return false;
+            }
+            return true;
+        }
+
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash) {
             GLib.Menu menu = new GLib.Menu ();
 
             var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
 
             if (in_trash) {
-                menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
+                /* In trash, only show context menu when all selected files are in root folder */
+                if (valid_selection_for_restore ()) {
+                    menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
 
-                clipboard_menu.remove (1); /* Copy */
-                clipboard_menu.remove (1); /* Paste (index updated by previous line) */
+                    clipboard_menu.remove (1); /* Copy */
+                    clipboard_menu.remove (1); /* Paste (index updated by previous line) */
 
-                menu.append_section (null, clipboard_menu);
+                    menu.append_section (null, clipboard_menu);
+                }
             } else {
                 var open_menu = build_menu_open (ref builder);
                 if (open_menu != null)
@@ -1782,7 +1793,10 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
-            return menu as MenuModel;
+            if (menu.get_n_items () > 0)
+                return menu as MenuModel;
+            else
+                return null;
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash) {
