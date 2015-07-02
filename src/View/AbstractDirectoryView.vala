@@ -472,7 +472,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen)
                 return;
 
             uint nb_elem = selection.length ();
@@ -487,33 +487,36 @@ namespace FM {
                 return;
             }
 
-            /* launch each selected file individually ignoring selections greater than 10
-             * Do not launch with new instances of this app - open according to flag instead
-             */
-            if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
-                foreach (GOF.File file in selection) {
-                    /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                    if (file.is_folder ()) {
-                        /* By default, multiple folders open in new tabs */
-                        if (flag == Marlin.OpenFlag.DEFAULT)
-                            flag = Marlin.OpenFlag.NEW_TAB;
+            if (!in_trash) {
+                /* launch each selected file individually ignoring selections greater than 10
+                 * Do not launch with new instances of this app - open according to flag instead
+                 */
+                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
+                    foreach (GOF.File file in selection) {
+                        /* Prevent too rapid activation of files - causes New Tab to crash for example */
+                        if (file.is_folder ()) {
+                            /* By default, multiple folders open in new tabs */
+                            if (flag == Marlin.OpenFlag.DEFAULT)
+                                flag = Marlin.OpenFlag.NEW_TAB;
 
-                        GLib.Idle.add (() => {
-                            activate_file (file, screen, flag, false);
-                            return false;
-                        });
-                    } else
-                        GLib.Idle.add (() => {
-                            file.open_single (screen, null);
-                            return false;
-                        });
+                            GLib.Idle.add (() => {
+                                activate_file (file, screen, flag, false);
+                                return false;
+                            });
+                        } else
+                            GLib.Idle.add (() => {
+                                file.open_single (screen, null);
+                                return false;
+                            });
+                    }
+                } else if (default_app != null) {
+                    GLib.Idle.add (() => {
+                        open_files_with (default_app, selection);
+                        return false;
+                    });
                 }
-            } else if (default_app != null) {
-                GLib.Idle.add (() => {
-                    open_files_with (default_app, selection);
-                    return false;
-                });
-            }
+            } else
+                warning ("Cannot open files in trash");
         }
 
         protected void preview_selected_items () {
@@ -714,7 +717,7 @@ namespace FM {
     /** File operations */
 
         private void activate_file (GOF.File file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen)
                 return;
 
             GLib.File location = file.get_target_location ();
@@ -742,15 +745,18 @@ namespace FM {
 
                         break;
                 }
-            } else if (only_one_file && file.is_root_network_folder ())
-                load_location (location);
-            else if (only_one_file && file.is_executable ())
-                file.execute (screen, null, null);
-            else if (only_one_file && default_app != null)
-                file.open_single (screen, default_app);
-            else
-                warning ("Unable to activate this file.  Default app is %s",
-                         default_app != null ? default_app.get_name () : "null");
+            } else if (!in_trash) {
+                if (only_one_file && file.is_root_network_folder ())
+                    load_location (location);
+                else if (only_one_file && file.is_executable ())
+                    file.execute (screen, null, null);
+                else if (only_one_file && default_app != null)
+                    file.open_single (screen, default_app);
+                else
+                    warning ("Unable to activate this file.  Default app is %s",
+                             default_app != null ? default_app.get_name () : "null");
+            } else
+                warning ("Cannot open file in trash");
         }
 
         private void trash_or_delete_files (GLib.List<GOF.File> file_list,
