@@ -202,7 +202,7 @@ namespace FM {
             count of the file object.*/
         protected GLib.List<GOF.File> selected_files = null;
 
-        private GLib.List<GOF.File>? templates = null;
+        private GLib.List<GLib.File> templates = null;
 
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
@@ -1903,15 +1903,15 @@ namespace FM {
             int count = 0;
 
             templates.@foreach ((template) => {
-                var label = template.get_display_name ();
-
-                if (!template.is_folder ()) {
-                    templates_submenu.append (label, "background.create_from::" + index.to_string ());
-                    count ++;
-                } else {
+                var label = template.get_basename ();
+                var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();
+                    templates_submenu = new GLib.Menu ();             
+                } else {
+                    templates_submenu.append (label, "background.create_from::" + index.to_string ());
+                    count ++;
                 }
 
                 index++;
@@ -2029,28 +2029,24 @@ namespace FM {
         }
 
         private void load_templates_from_folder (GLib.File template_folder) {
-            GLib.List<GOF.File>? gof_file_list = null;
-            GLib.List<GLib.File>? folder_list = null;
+            GLib.List<GLib.File> file_list = null;
+            GLib.List<GLib.File> folder_list = null;
 
             GLib.FileEnumerator enumerator;
+            var f_attr = GLib.FileAttribute.STANDARD_NAME + GLib.FileAttribute.STANDARD_TYPE;
+            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
-                enumerator = template_folder.enumerate_children (GLib.FileAttribute.STANDARD_NAME,
-                                                                 GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                                                                 null);
+                enumerator = template_folder.enumerate_children (f_attr, flags, null);
                 uint count = templates.length ();
                 GLib.File location;
-                GOF.File file;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
                 while (count < MAX_TEMPLATES && (info != null)) {
                     location = template_folder.get_child (info.get_name ());
-                    file = GOF.File.@get (location);
-                    file.ensure_query_info ();
-
-                    if (file.is_folder ()) {
+                    if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                         folder_list.prepend (location);
                     } else {
-                        gof_file_list.prepend (file);
+                        file_list.prepend (location);
                         count ++;
                     }
 
@@ -2060,12 +2056,14 @@ namespace FM {
                 return;
             }
 
-            if (gof_file_list.length () > 0) {
-                gof_file_list.sort (GOF.File.compare_by_display_name);
-                templates.concat (gof_file_list.copy ());
-                GOF.File dir = GOF.File.@get (template_folder);
-                dir.ensure_query_info ();
-                templates.append (dir);
+            if (file_list.length () > 0) {
+                file_list.sort ((a,b) => {
+                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                });
+                foreach (var file in file_list)
+                    templates.append (file);
+
+                templates.append (template_folder);
             }
 
             if (folder_list.length () > 0) {
@@ -2126,15 +2124,16 @@ namespace FM {
 
         /** Menu action functions */
 
-        private void create_from_template (GOF.File template) {
+        private void create_from_template (GLib.File template) {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
+            var new_name = (_("Untitled %s")).printf (template.get_basename ());
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
                                                           slot.location,
-                                                          (_("Untitled %s")).printf (template.get_display_name ()),
-                                                          template.location,
-                                                          (Marlin.CreateCallback?) create_file_done,
+                                                          new_name,
+                                                          template,
+                                                          create_file_done,
                                                           this);
         }
 
