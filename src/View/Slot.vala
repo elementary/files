@@ -33,8 +33,9 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
-        public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
+        public string empty_message = _("This folder is empty.");
+        public string empty_trash_message = _("Trash is empty.");
+        public string denied_message = _("Access denied.");
 
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze);
@@ -164,9 +165,12 @@ namespace Marlin.View {
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ())
-                layout.set_markup (empty_message, -1);
-            else if (directory.permission_denied)
+            if (directory.is_empty ()) {
+                if (directory.is_trash)
+                    layout.set_markup (empty_trash_message, -1);
+                else
+                    layout.set_markup (empty_message, -1);
+            } else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);
             else
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
@@ -177,6 +181,10 @@ namespace Marlin.View {
             width = (int) Pango.units_to_double (extents.width)
                   + dir_view.icon_size
                   + 64; /* allow some extra room for icon padding and right margin*/
+
+            /* Allow extra room for MESSAGE_CLASS styling of special messages */
+            if (directory.is_empty () || directory.permission_denied)
+                width += width;
 
             width = width.clamp (preferred_column_width, preferred_column_width * 3);
 

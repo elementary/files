@@ -42,6 +42,7 @@ namespace FM {
             INVALID
         }
 
+        const string MESSAGE_CLASS = "h2";
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -1697,6 +1698,9 @@ namespace FM {
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
+                /* Override style MESSAGE_CLASS of view when it is empty */
+                if (slot.directory.is_empty ())
+                    menu.get_style_context ().add_class ("context-menu");
                 Eel.pop_up_context_menu (menu,
                                          Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
@@ -2665,13 +2669,19 @@ namespace FM {
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
+            var style_context = get_style_context ();
             if (slot.directory.is_empty () || slot.directory.permission_denied) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (slot.directory.is_empty ())
-                    layout.set_markup (slot.empty_message, -1);
-                else if (slot.directory.permission_denied)
+                if (!style_context.has_class (MESSAGE_CLASS))
+                    style_context.add_class (MESSAGE_CLASS);
+
+                if (slot.directory.permission_denied)
                     layout.set_markup (slot.denied_message, -1);
+                else if (slot.directory.is_trash)
+                    layout.set_markup (slot.empty_trash_message, -1);
+                else 
+                    layout.set_markup (slot.empty_message, -1);
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2684,7 +2694,8 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            }
+            } else if (style_context.has_class (MESSAGE_CLASS))
+                style_context.remove_class (MESSAGE_CLASS);
 
             return false;
         }
