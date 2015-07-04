@@ -587,17 +587,10 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-            cancel_thumbnailing ();
+            cancel ();
             freeze_tree ();
-            old_dir.cancel ();
             disconnect_directory_handlers (old_dir);
             block_model ();
-
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
-
-            loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
             if (new_dir.can_load)
@@ -605,7 +598,6 @@ namespace FM {
         }
 
         public void reload () {
-            slot.directory.clear_directory_info ();
             change_directory (slot.directory, slot.directory);
         }
 
@@ -833,15 +825,12 @@ namespace FM {
 
             var file_to_rename = GOF.File.@get (new_file);
             bool local = view.slot.directory.is_local;
-            if (!local)
-                view.slot.directory.need_reload ();
+            view.slot.reload (true); /* non-local only */
 
             /* Allow time for the file to appear in the tree model before renaming
              * Wait longer for remote locations to allow for reload.
              */
-
             /**TODO** Remove need for hard coded delay*/
-
             int delay = local ? 250 : 500;
             GLib.Timeout.add (delay, () => {
                 view.rename_file (file_to_rename);
@@ -858,9 +847,7 @@ namespace FM {
                 return;
 
             view.can_trash_or_delete = true;
-
-            if (!view.slot.directory.is_local)
-                view.slot.directory.need_reload ();
+            view.slot.reload (true); /* non-local only */
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -1117,9 +1104,7 @@ namespace FM {
                         pasted_files_list.prepend (k as File);
                 });
 
-                if (!view.slot.directory.is_local)
-                    view.slot.directory.need_reload ();
-
+                view.slot.reload (true); /* non-local only */
                 view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
                 return false;
             });
@@ -1472,12 +1457,8 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
-                    if (!slot.directory.is_local) {
-                        /* Cannot be sure that view will automatically refresh properly
-                         * so we force a refresh after a short delay */
-                        slot.directory.clear_directory_info ();
-                        slot.directory.need_reload ();
-                    }
+                    slot.reload (true); /* non-local only */
+
                     switch (info) {
                         case TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
@@ -2557,8 +2538,7 @@ namespace FM {
                     window.item_hovered (file);
                     hover_path = path;
                 } else {
-                    slot.reload ();
-                    slot.directory.need_reload ();
+                    slot.reload (true); /* non-local only */
                 }
             }
 
@@ -2648,6 +2628,9 @@ namespace FM {
             }
 
             on_name_editing_canceled ();
+
+            if (new_name != original_name)
+                slot.reload (true); /* non-local only */
         }
 
 
@@ -3032,7 +3015,6 @@ namespace FM {
 
         public virtual void cancel () {
             cancel_thumbnailing ();
-            slot.directory.cancel ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
 

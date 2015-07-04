@@ -284,6 +284,8 @@ public class GOF.Directory.Async : Object {
     }
 
     public void clear_directory_info () {
+        cancel ();
+
         if (idle_consume_changes_id != 0) {
             Source.remove ((uint) idle_consume_changes_id);
             idle_consume_changes_id = 0;

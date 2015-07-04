@@ -57,7 +57,7 @@ namespace GOF {
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active);
         public abstract unowned AbstractSlot? get_current_slot ();
-        public abstract void reload ();
+        public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc, bool allow_mode_change = true);
         public abstract void select_first_for_empty_selection ();
