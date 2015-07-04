@@ -30,6 +30,7 @@ namespace FM {
         };
 
         private uint unload_file_timeout_id = 0;
+        private GLib.List<GOF.File> subdirectories_to_unload = null;
 
         public ListView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -82,8 +83,9 @@ namespace FM {
             set_path_expanded (path, false);
 
             if (model.get_directory_file (path, out dir, out file)) {
-                schedule_model_unload_directory (file, dir);
                 remove_subdirectory (dir);
+                subdirectories_to_unload.append (file);
+                schedule_model_unload_directories ();
             } else
                 critical ("failed to get directory/file");
         }
@@ -95,8 +97,14 @@ namespace FM {
                 file.set_expanded (expanded);
         }
 
-        private void schedule_model_unload_directory (GOF.File file, GOF.Directory.Async directory) {
-            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY, () => {
+        private void schedule_model_unload_directories () {
+            cancel_file_timeout ();
+            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY, 
+                                                               unload_directories);
+        }
+
+        private bool unload_directories () {
+            foreach (var file in subdirectories_to_unload) {
                 Gtk.TreeIter iter;
                 Gtk.TreePath path;
 
@@ -105,11 +113,15 @@ namespace FM {
                     if (path != null && !((Gtk.TreeView)tree).is_row_expanded (path))
                         model.unload_subdirectory (iter);
                 } else
-                    critical ("Failed to get iter");
+                    warning ("Subdirectory to unload not found in model");
+            }
 
-                unload_file_timeout_id = 0;
-                return false;
+            subdirectories_to_unload.@foreach ((file) => {
+                subdirectories_to_unload.remove (file);
             });
+
+            unload_file_timeout_id = 0;
+            return false;
         }
 
         private void cancel_file_timeout () {
