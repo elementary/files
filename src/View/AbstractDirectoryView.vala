@@ -1618,7 +1618,7 @@ namespace FM {
             /* Cannot drop onto a file onto its parent or onto itself */
             if (file.uri != slot.uri &&
                 drag_file_list != null &&
-                drag_file_list.index (file) >= 0)
+                drag_file_list.index (file) < 0)
 
                 return true;
             else
