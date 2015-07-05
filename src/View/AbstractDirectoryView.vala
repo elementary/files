@@ -172,6 +172,7 @@ namespace FM {
         protected Marlin.TextRenderer? name_renderer = null;
         unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
+        public string proposed_name = "";
 
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
@@ -195,14 +196,14 @@ namespace FM {
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
-        protected GLib.List<GOF.Directory.Async>? loaded_subdirectories = null;
+        protected GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
         protected GLib.List<GOF.File> selected_files = null;
 
-        private GLib.List<GOF.File>? templates = null;
+        private GLib.List<GLib.File> templates = null;
 
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
@@ -281,9 +282,6 @@ namespace FM {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct");
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
         }
 
         public bool is_in_recent () {
@@ -380,10 +378,8 @@ namespace FM {
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
              * the tree is thawed and the model reconnected before selecting the files */
-            Idle.add (() => {
-                bool try_again = true;
+            Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
-                    try_again = false;
                     file_list.@foreach ((file) => {
                         var iter = Gtk.TreeIter ();
                         if (model.get_first_iter_for_file (file, out iter)) {
@@ -394,13 +390,11 @@ namespace FM {
                                 else
                                     select_path (path);
                             }
-                        } else {
-                            /* model has not caught up yet - wait a bit */
-                            try_again = true;
                         }
                     });
-                }
-                return try_again;
+                    return false;
+                } else
+                    return true;
             });
         }
 
@@ -598,17 +592,10 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
-            cancel_thumbnailing ();
+            cancel ();
             freeze_tree ();
-            old_dir.cancel ();
             disconnect_directory_handlers (old_dir);
             block_model ();
-
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
-
-            loaded_subdirectories = null;
             model.clear ();
             unblock_model ();
             if (new_dir.can_load)
@@ -616,7 +603,6 @@ namespace FM {
         }
 
         public void reload () {
-            slot.directory.clear_directory_info ();
             change_directory (slot.directory, slot.directory);
         }
 
@@ -860,15 +846,12 @@ namespace FM {
 
             var file_to_rename = GOF.File.@get (new_file);
             bool local = view.slot.directory.is_local;
-            if (!local)
-                view.slot.directory.need_reload ();
+            view.slot.reload (true); /* non-local only */
 
             /* Allow time for the file to appear in the tree model before renaming
              * Wait longer for remote locations to allow for reload.
              */
-
             /**TODO** Remove need for hard coded delay*/
-
             int delay = local ? 250 : 500;
             GLib.Timeout.add (delay, () => {
                 view.rename_file (file_to_rename);
@@ -885,9 +868,7 @@ namespace FM {
                 return;
 
             view.can_trash_or_delete = true;
-
-            if (!view.slot.directory.is_local)
-                view.slot.directory.need_reload ();
+            view.slot.reload (true); /* non-local only */
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -1151,7 +1132,7 @@ namespace FM {
         }
 
         public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
-            if (uris == null || pointer == null)
+            if (pointer == null)
                 return;
 
             var view = pointer as FM.AbstractDirectoryView;
@@ -1160,21 +1141,22 @@ namespace FM {
                 return;
             }
 
+            view.pasting_files = false;
+            if (uris == null || uris.size () == 0)
+                return;
+
             view.pasted_files = uris;
 
             Idle.add (() => {
                 /* Select the most recently pasted files */
                 GLib.List<GLib.File> pasted_files_list = null;
                 view.pasted_files.foreach ((k, v) => {
-                    File f = k as File;
-                    pasted_files_list.prepend (f);
+                    if (k is GLib.File)
+                        pasted_files_list.prepend (k as File);
                 });
 
-                if (!view.slot.directory.is_local)
-                    view.slot.directory.need_reload ();
-
+                view.slot.reload (true); /* non-local only */
                 view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
-                view.pasting_files = false;
                 return false;
             });
         }
@@ -1279,16 +1261,13 @@ namespace FM {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
+            cancel ();
             if (!show) {
                 block_model ();
                 model.clear ();
             }
 
             directory_hidden_changed (slot.directory, show);
-            if (loaded_subdirectories != null)
-                loaded_subdirectories.@foreach ((dir) => {
-                    directory_hidden_changed (dir, show);
-                });
 
             if (!show)
                 unblock_model ();
@@ -1530,12 +1509,8 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
-                    if (!slot.directory.is_local) {
-                        /* Cannot be sure that view will automatically refresh properly
-                         * so we force a refresh after a short delay */
-                        slot.directory.clear_directory_info ();
-                        slot.directory.need_reload ();
-                    }
+                    slot.reload (true); /* non-local only */
+
                     switch (info) {
                         case TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
@@ -2021,15 +1996,15 @@ namespace FM {
             int count = 0;
 
             templates.@foreach ((template) => {
-                var label = template.get_display_name ();
-
-                if (!template.is_folder ()) {
-                    templates_submenu.append (label, "background.create_from::" + index.to_string ());
-                    count ++;
-                } else {
+                var label = template.get_basename ();
+                var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();
+                    templates_submenu = new GLib.Menu ();             
+                } else {
+                    templates_submenu.append (label, "background.create_from::" + index.to_string ());
+                    count ++;
                 }
 
                 index++;
@@ -2164,28 +2139,24 @@ namespace FM {
         }
 
         private void load_templates_from_folder (GLib.File template_folder) {
-            GLib.List<GOF.File>? gof_file_list = null;
-            GLib.List<GLib.File>? folder_list = null;
+            GLib.List<GLib.File> file_list = null;
+            GLib.List<GLib.File> folder_list = null;
 
             GLib.FileEnumerator enumerator;
+            var f_attr = GLib.FileAttribute.STANDARD_NAME + GLib.FileAttribute.STANDARD_TYPE;
+            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
-                enumerator = template_folder.enumerate_children (GLib.FileAttribute.STANDARD_NAME,
-                                                                 GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                                                                 null);
+                enumerator = template_folder.enumerate_children (f_attr, flags, null);
                 uint count = templates.length ();
                 GLib.File location;
-                GOF.File file;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
                 while (count < MAX_TEMPLATES && (info != null)) {
                     location = template_folder.get_child (info.get_name ());
-                    file = GOF.File.@get (location);
-                    file.ensure_query_info ();
-
-                    if (file.is_folder ()) {
+                    if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                         folder_list.prepend (location);
                     } else {
-                        gof_file_list.prepend (file);
+                        file_list.prepend (location);
                         count ++;
                     }
 
@@ -2195,12 +2166,14 @@ namespace FM {
                 return;
             }
 
-            if (gof_file_list.length () > 0) {
-                gof_file_list.sort (GOF.File.compare_by_display_name);
-                templates.concat (gof_file_list.copy ());
-                GOF.File dir = GOF.File.@get (template_folder);
-                dir.ensure_query_info ();
-                templates.append (dir);
+            if (file_list.length () > 0) {
+                file_list.sort ((a,b) => {
+                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                });
+                foreach (var file in file_list)
+                    templates.append (file);
+
+                templates.append (template_folder);
             }
 
             if (folder_list.length () > 0) {
@@ -2261,15 +2234,16 @@ namespace FM {
 
         /** Menu action functions */
 
-        private void create_from_template (GOF.File template) {
+        private void create_from_template (GLib.File template) {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
+            var new_name = (_("Untitled %s")).printf (template.get_basename ());
             Marlin.FileOperations.new_file_from_template (this,
                                                           null,
                                                           slot.location,
-                                                          (_("Untitled %s")).printf (template.get_display_name ()),
-                                                          template.location,
-                                                          (Marlin.CreateCallback?) create_file_done,
+                                                          new_name,
+                                                          template,
+                                                          create_file_done,
                                                           this);
         }
 
@@ -2674,8 +2648,7 @@ namespace FM {
                     window.item_hovered (file);
                     hover_path = path;
                 } else {
-                    slot.reload ();
-                    slot.directory.need_reload ();
+                    slot.reload (true); /* non-local only */
                 }
             }
 
@@ -2747,25 +2720,6 @@ namespace FM {
             if (!renaming)
                 return;
 
-            /* Don't allow a rename with an empty string. Revert to original
-             * without notifying the user. */
-            if (new_name != "") {
-                /* Validate filename before trying to rename the file */
-                try {
-                    Filename.from_uri ("file:///" + Uri.escape_string (new_name));
-                } catch (GLib.ConvertError e) {
-                    var dialog = new Gtk.MessageDialog ((Gtk.Window)window,
-                                                        Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                                        Gtk.MessageType.ERROR,
-                                                        Gtk.ButtonsType.CLOSE,
-                                                        _("%s is not a valid file name"),
-                                                       new_name);
-                    dialog.run ();
-                    dialog.destroy ();
-                    new_name = "";
-                }
-            }
-
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
@@ -2776,19 +2730,54 @@ namespace FM {
                             FM.ListModel.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
+                original_name = file.info.get_name ();
                 if (new_name != original_name) {
-                    file.rename (new_name, (file, result_location, error) => {
-                        if (error != null)
-                            warning ("Rename Error:  %s", error.message);
-                    });
+                    proposed_name = new_name;
+                    file.rename (new_name, (GOF.FileOperationCallback)rename_callback, (void*)this);
                 }
             }
 
             on_name_editing_canceled ();
 
-            if (!slot.directory.is_local && new_name != original_name)
-                slot.directory.need_reload ();
+            if (new_name != original_name)
+                slot.reload (true); /* non-local only */
         }
+
+
+        public static void rename_callback (GOF.File file, GLib.File? result_location, GLib.Error error, void* data) {
+            FM.AbstractDirectoryView? view = null;
+            Marlin.View.PropertiesWindow? pw = null;
+
+            var object = (GLib.Object)data;
+
+            if (object is FM.AbstractDirectoryView)
+                view = (FM.AbstractDirectoryView)data;
+            else if (object is Marlin.View.PropertiesWindow) {
+                pw = (Marlin.View.PropertiesWindow)object;
+                view = pw.view;
+            }
+
+            assert (view != null);
+
+            if (error != null) {
+                Eel.show_error_dialog (_("Could not rename to '%s'").printf (view.proposed_name),
+                                       error.message,
+                                       view.window as Gtk.Window);
+            } else {
+                Marlin.UndoManager.instance ().add_rename_action (file.location,
+                                                                  view.original_name);
+
+                if (!view.slot.directory.is_local)
+                    view.slot.directory.need_reload ();
+            }
+
+            if (pw != null) {
+                if (error == null)
+                    pw.reset_entry_text (file.info.get_name ());
+                else
+                    pw.reset_entry_text ();  //resets entry to old name
+            }
+         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
@@ -3138,10 +3127,8 @@ namespace FM {
 
         public virtual void cancel () {
             cancel_thumbnailing ();
-            slot.directory.cancel ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
-
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });

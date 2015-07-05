@@ -241,19 +241,6 @@ public class Marlin.Application : Granite.Application {
         });
     }
 
-    public void tab_reloaded (Marlin.View.Window source, GLib.File file) {
-        unowned List<Gtk.Window> window_list = this.get_windows ();
-        window_list.@foreach ((window) => {
-            var win = (Marlin.View.Window)window;
-
-            if ((source.window_number != win.window_number) &&
-                 file.equal (win.current_tab.get_current_slot ().location))
-
-                win.current_tab.reload (false);
-
-        });
-    }
-
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {

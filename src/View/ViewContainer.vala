@@ -56,7 +56,7 @@ namespace Marlin.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
-        private bool ready = false;
+        public bool ready {get; private set;}
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
@@ -64,7 +64,7 @@ namespace Marlin.View {
         public signal void path_changed (File file);
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
+        public ViewContainer (Marlin.View.Window win) {
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
@@ -77,7 +77,6 @@ namespace Marlin.View {
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
-            change_view_mode (mode, loc);
         }
 
         ~ViewContainer () {
@@ -177,7 +176,6 @@ namespace Marlin.View {
         }
 
         public void user_path_change_request (GLib.File loc) {
-            loading (true);
             view.user_path_change_request (loc);
         }
 
@@ -217,7 +215,7 @@ namespace Marlin.View {
                 return;
 
             refresh_slot_info (slot);
-
+            loading (true);
             /* Allow time for the window to update before trying to load directory so that
              * the window is displayed more quickly when starting the application in,
              * or switching view to, a folder that contains a large number of files.
@@ -229,7 +227,7 @@ namespace Marlin.View {
 
              * Do not try and load directory that is not flagged 'can load'.
              */
-            Idle.add (() => {
+            Idle.add_full (GLib.Priority.LOW, () => {
                 if (!slot.directory.is_ready)
                     return true;
 
@@ -426,23 +424,10 @@ namespace Marlin.View {
         }
 
         public void reload (bool propagate = true) {
-            /* Allow time for the signal to propagate and the tab label to redraw */
-            Idle.add (() => {
-                var slot = get_current_slot ();
-                if (slot == null)
-                    return false;
-
+            loading (true);
+            var slot = get_current_slot ();
+            if (slot != null)
                 slot.reload ();
-                load_slot_directory (slot);
-                /* For remote folders, make sure any other windows showing the same folder are
-                 * also refreshed. Prevent infinite loop with propagate - when called from application,
-                 * propagate will be false.
-                 */
-                if (propagate)
-                    ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
-
-                return false;
-            });
         }
 
         public Gee.List<string> get_go_back_path_list () {

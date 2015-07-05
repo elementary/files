@@ -286,6 +286,8 @@ public class GOF.Directory.Async : Object {
     }
 
     public void clear_directory_info () {
+        cancel ();
+
         if (idle_consume_changes_id != 0) {
             Source.remove ((uint) idle_consume_changes_id);
             idle_consume_changes_id = 0;
@@ -485,6 +487,8 @@ public class GOF.Directory.Async : Object {
     public GOF.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
             GOF.File? result = file_hash.lookup (location);
+            /* Although file_hash.lookup returns an unowned value, Vala will add a reference
+             * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */ 
             return result;
         } else {
             return null;
@@ -499,7 +503,8 @@ public class GOF.Directory.Async : Object {
         bool update_hash = false)
     {
         GOF.File? result = file_hash.lookup (file);
-
+        /* Although file_hash.lookup returns an unowned value, Vala will add a reference
+         * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */ 
         if (result == null) {
             result = GOF.File.cache_lookup (file);
 

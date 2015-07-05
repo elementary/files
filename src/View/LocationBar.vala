@@ -33,7 +33,6 @@ namespace Marlin.View.Chrome
 
                     if (!bread.is_focus && !win.freeze_view_changes) {
                         bread.text = "";
-
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {

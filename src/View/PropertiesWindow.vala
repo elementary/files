@@ -41,7 +41,28 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private uint count;
     private GLib.List<GOF.File> files;
     private unowned GOF.File goffile;
-    private FM.AbstractDirectoryView view;
+
+    public FM.AbstractDirectoryView view {get; private set;}
+    public Gtk.Entry entry {get; private set;}
+    private string original_name {
+        get {
+            return view.original_name;
+        }
+
+        set {
+            view.original_name = value;
+        }
+    }
+
+    private string proposed_name {
+        get {
+            return view.proposed_name;
+        }
+
+        set {
+            view.proposed_name = value;
+        }
+    }
 
     private Gee.Set<string>? mimes;
 
@@ -346,14 +367,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private void rename_file (GOF.File file, string new_name) {
         /* Only rename if name actually changed */
-        var original_name = file.info.get_name ();
-        if (new_name != original_name) {
-            file.rename (new_name, (file, result_location, error) => {
-            if (error != null)
-                warning ("Rename Error while renaming %s to %s:  %s", original_name, new_name, error.message);
-            });
-        }
+        original_name = file.info.get_name ();
+
+        if (new_name != "") {
+            if (new_name != original_name) {
+                proposed_name = new_name;
+                file.rename (new_name,
+                            (GOF.FileOperationCallback)(FM.AbstractDirectoryView.rename_callback),
+                            (void*)this);
+            }
+        } else
+            reset_entry_text ();
     }
+
+    public void reset_entry_text (string? new_name = null) {
+        if (new_name != null)
+            original_name = new_name;
+
+        entry.set_text (original_name);
+     }
 
     private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
         type_label = new Gtk.Label ("");
@@ -420,9 +452,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             label.set_halign (Gtk.Align.START);
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
-            var entry = new Gtk.Entry ();
-
-            entry.set_text (goffile.info.get_name ());
+            entry = new Gtk.Entry ();
+            original_name = goffile.info.get_name ();
+            reset_entry_text ();
 
             entry.activate.connect (() => {
                 rename_file (goffile, entry.get_text ());

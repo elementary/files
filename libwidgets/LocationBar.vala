@@ -42,6 +42,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
 
     protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
+    protected string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
     public string current_right_click_path;
     public string current_right_click_root;
 
@@ -358,7 +359,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         if (search_mode)
             set_entry_text ("");
         else {
-            set_entry_text (GLib.Uri.unescape_string (get_elements_path ()));
+            set_entry_text (get_elements_path ());
             show_navigate_icon ();
         }
 
@@ -486,13 +487,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         return null;
     }
 
+    /** Return an unescaped path from the breadcrumbs **/
     protected string get_path_from_element (BreadcrumbsElement? el) {
-        /* return path up to the speficied element or, if the parameter is null, the whole path */
+        /* return path up to the specified element or, if the parameter is null, the whole path */
         string newpath = "";
         bool first = true;
 
         foreach (BreadcrumbsElement element in elements) {
-                string s = element.text;
+                string s = element.text;  /* element text should be an escaped string */
                 if (first) {
                     if (s == "" || s == "file://")
                         newpath = "/";
@@ -506,7 +508,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
                 if (el != null && element == el)
                     break;
         }
-        return newpath;
+        /* Return original string as fallback if unescaping fails (should not happen) */
+        return GLib.Uri.unescape_string (newpath) ?? newpath;
     }
 
     /**
@@ -520,7 +523,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
      * Gets a properly escaped GLib.File for the given path
      **/
     public File? get_file_for_path (string path) {
-        string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
         string newpath = path ?? "";
 
         /* Format our path so its valid */
@@ -615,6 +617,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
             protocol = Marlin.ROOT_FS_URI;
         }
 
+        /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
+        current_path = Uri.escape_string ((Uri.unescape_string (current_path) ?? current_path), reserved_chars, true);
         selected = -1;
         var breads = current_path.split ("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement> ();

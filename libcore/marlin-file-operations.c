@@ -6457,6 +6457,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
+    g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
     job->dest_dir = parent_dir;
     if (target_point != NULL) {
         job->position = *target_point;
@@ -6465,6 +6466,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job->filename = g_strdup (target_filename);
 
     if (template) {
+        g_object_ref (template); /* job->src unref'd in create_job done */
         job->src = template;
     }
 
