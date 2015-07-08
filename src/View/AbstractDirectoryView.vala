@@ -233,7 +233,7 @@ namespace FM {
         protected static DndHandler dnd_handler = new FM.DndHandler ();
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
-
+        public signal void item_hovered (GOF.File? file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -2492,7 +2492,6 @@ namespace FM {
 
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
-
                 switch (click_zone) {
                     case ClickZone.NAME:
                         if (single_click_rename && file != null && file.is_writable ())
@@ -2528,7 +2527,7 @@ namespace FM {
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || slot.directory.check_network ()) {
                     /* cannot get file info while network disconnected */
-                    window.item_hovered (file);
+                    item_hovered (file);
                     hover_path = path;
                 } else {
                     slot.reload (true); /* non-local only */
@@ -2539,7 +2538,7 @@ namespace FM {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            window.item_hovered (null); /* Cause OverLay to disappear */
+            item_hovered (null); /* Ensure overlay statusbar disappears */
             return false;
         }
 

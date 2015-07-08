@@ -22,34 +22,30 @@ namespace Marlin.View {
         private Marlin.View.Window window;
 
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
+        const int STATUS_UPDATE_DELAY = 200;
         const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff"};
         Cancellable? image_cancellable = null;
         bool image_size_loaded = false;
-
-        private bool _showbar;
-        public bool showbar {
-            set {
-                _showbar = value;
-                visible = value && count > 0;
-            }
-            get {
-                return _showbar;
-            }
-        }
-
-        private uint count = 0;
         private uint folders_count = 0;
         private uint files_count = 0;
         private uint64 files_size = 0;
         private GOF.File? goffile = null;
         private GLib.List<unowned GOF.File>? selected_files = null;
+        private uint8 [] buffer;
+        private GLib.FileInputStream? stream;
+        private Gdk.PixbufLoader loader;
+        private uint update_timeout_id = 0;
+
+        public bool showbar = false;
 
         public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
+            buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
+            status = "";
+
             window = win;
             window.selection_changed.connect (on_selection_changed);
-            window.item_hovered.connect (update_hovered);
 
             hide.connect (() => {
                 /* when we're hiding, we no longer want to search for image size */
@@ -71,26 +67,43 @@ namespace Marlin.View {
             selected_files = null;
         }
 
-        private void update_hovered (GOF.File? file) {
-            GLib.List<GOF.File> list = null;
-            if (file != null) {
-                bool matched = false;
-                if (selected_files != null) {
-                    selected_files.@foreach ((f) => {
-                        if (f == file)
-                            matched = true;
-                    });
-                }
+        public void update_hovered (GOF.File? file) {
+            if (!showbar)
+                return;
 
-                if (matched) {
-                    real_update (selected_files);
-                    return;
-                } else {
-                    list.prepend (file);
-                    real_update (list);
-                }
+            cancel_update ();
+            visible = false;
+
+            update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
+                GLib.List<GOF.File> list = null;
+                if (file != null) {
+                    bool matched = false;
+                    if (selected_files != null) {
+                        selected_files.@foreach ((f) => {
+                            if (f == file)
+                                matched = true;
+                        });
+                    }
+
+                    if (matched)
+                        real_update (selected_files);
+                    else {
+                        list.prepend (file);
+                        real_update (list);
+                    }
+                } else 
+                    real_update (null);
+
+                update_timeout_id = 0;
+                return false;
+            });
+        }
+
+        public void cancel_update () {
+            if (update_timeout_id > 0) {
+                GLib.Source.remove (update_timeout_id);
+                update_timeout_id = 0;
             }
-            real_update (list);
         }
 
        private void real_update (GLib.List<GOF.File>? files) {
@@ -98,10 +111,9 @@ namespace Marlin.View {
             folders_count = 0;
             files_count = 0;
             files_size = 0;
+            status = "";
 
             if (files != null) {
-                visible = showbar;
-
                 if (files.data != null) {
                     if (files.next == null)
                         /* list contain only one element */
@@ -109,38 +121,36 @@ namespace Marlin.View {
                     else
                         scan_list (files);
 
-                    update_status ();
+                    status = update_status ();
                 }
-            } else {
-                visible = false;
-                status = "";
             }
+
+            visible = showbar && (status.length > 0);
         }
 
-        private void update_status () {
+        private string update_status () {
             /* if we're still collecting image info, cancel */
             if (image_cancellable != null) {
                 image_cancellable.cancel ();
                 image_cancellable = null;
             }
 
+            string str = "";
+
             if (goffile != null) { /* a single file is hovered or selected */
                 if (goffile.is_network_uri_scheme ()) {
-                    status = goffile.get_display_target_uri ();
+                    str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
-
                     /* if we have an image, see if we can get its resolution */
                     string? type = goffile.get_ftype ();
                     if (type != null && type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
                         load_resolution.begin (goffile);
                     }
-                    status = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
+                    str = "%s (%s)".printf (goffile.formated_type, format_size ((int64) PropertiesWindow.file_real_size (goffile)));
                 } else {
-                    status = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
-
+                    str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
                 }
             } else { /* hovering over multiple selection */
-                string str = null;
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
                     if (files_count > 0)
@@ -159,10 +169,9 @@ namespace Marlin.View {
                         str += _(" selected");
                 } else /* folder_count = 0 and files_count > 0 */
                     str = _("%u items selected (%s)").printf (files_count, format_size ((int64) files_size));
-
-                status = str;
-
             }
+
+            return str;
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
@@ -186,10 +195,10 @@ namespace Marlin.View {
             image_cancellable = new Cancellable ();
 
             try {
-                var stream = yield file.read_async (0, image_cancellable);
+                stream = yield file.read_async (0, image_cancellable);
                 if (stream == null)
                     error ("Could not read image file's size data");
-                var loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
 
                 loader.size_prepared.connect ((width, height) => {
                     image_size_loaded = true;
@@ -208,35 +217,27 @@ namespace Marlin.View {
             } catch (Error e) { debug (e.message); }
         }
 
+
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
         {
-            if (image_size_loaded)
-                return;
-
-            var buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
-
-            try {
-                var read = yield stream.read_async (buffer, 0, cancellable);
-
-                if (read > 0 && loader.write (buffer) && !image_size_loaded) {
-                    yield read_image_stream (loader, stream, cancellable);
-                    return;
-                }
-
-                image_size_loaded = true;
-                loader.close ();
-                loader = null;
-                stream.close ();
-            } catch (IOError e) {
-                if (!(e is IOError.CANCELLED))
+            ssize_t read = 1;
+            while (!image_size_loaded  && read > 0) {
+                try {
+                    read = yield stream.read_async (buffer, 0, cancellable);
+                    loader.write (buffer);
+                    
+                } catch (IOError e) {
+                    if (!(e is IOError.CANCELLED))
+                        warning (e.message);
+                } catch (Gdk.PixbufError e) {
+                    /* errors while loading are expected, we only need to know the size */
+                } catch (FileError e) {
                     warning (e.message);
-            } catch (Gdk.PixbufError e) {
-                /* errors while loading are expected, we only need to know the size */
-            } catch (FileError e) {
-                warning (e.message);
-            } catch (Error e) {
-                warning (e.message);
+                } catch (Error e) {
+                    warning (e.message);
+                }
             }
+            image_cancellable.cancelled ();
         }
     }
 }
