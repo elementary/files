@@ -916,7 +916,6 @@ namespace Marlin.View {
             if (freeze_view_changes)
                 return;
 
-
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
