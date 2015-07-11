@@ -208,6 +208,19 @@ eel_get_user_id_from_user_name (const char *user_name, uid_t *uid)
     return TRUE;
 }
 
+gchar*
+eel_get_user_name_from_user_uid (uid_t uid)
+{
+    struct passwd *password_info;
+
+    password_info = getpwuid (uid);
+
+    if (password_info == NULL || password_info->pw_name == NULL)
+        return NULL;
+
+    return g_strdup (password_info->pw_name);
+}
+
 gboolean
 eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 {

@@ -2958,6 +2958,10 @@ namespace FM {
             int sort_column_id;
             Gtk.SortType sort_order;
 
+            /* Setting file attributes fails when root */
+            if (Posix.getuid() == 0)
+                return;
+
             if (!model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 

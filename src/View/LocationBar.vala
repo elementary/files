@@ -144,11 +144,12 @@ namespace Marlin.View.Chrome
             add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_SMB});
             add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
 
+            /* Note: user special directories may be null e.g. when running as root */
 
             /* music */
             string dir;
             dir = Environment.get_user_special_dir (UserDirectory.MUSIC);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_MUSIC_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -156,7 +157,7 @@ namespace Marlin.View.Chrome
 
             /* image */
             dir = Environment.get_user_special_dir (UserDirectory.PICTURES);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_PICTURES_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -164,7 +165,7 @@ namespace Marlin.View.Chrome
 
             /* movie */
             dir = Environment.get_user_special_dir (UserDirectory.VIDEOS);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -172,7 +173,7 @@ namespace Marlin.View.Chrome
 
             /* downloads */
             dir = Environment.get_user_special_dir (UserDirectory.DOWNLOAD);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -180,7 +181,7 @@ namespace Marlin.View.Chrome
 
             /* documents */
             dir = Environment.get_user_special_dir (UserDirectory.DOCUMENTS);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -188,7 +189,7 @@ namespace Marlin.View.Chrome
 
             /* templates */
             dir = Environment.get_user_special_dir (UserDirectory.TEMPLATES);
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
@@ -196,7 +197,7 @@ namespace Marlin.View.Chrome
 
             /* home */
             dir = Environment.get_home_dir ();
-            if (dir.contains ("/")) {
+            if (dir != null && dir.contains ("/")) {
                 IconDirectory icon = {dir, Marlin.ICON_GO_HOME_SYMBOLIC, false, null, null, dir.split ("/"), true, null};
                 icon.exploded[0] = "/";
                 add_icon (icon);
