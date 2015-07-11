@@ -162,10 +162,7 @@ namespace Marlin.View {
         }
 
         public void autosize_slot () {
-            if (dir_view == null ||
-                !colpane.get_realized () ||
-                has_autosized)
-
+            if (dir_view == null || has_autosized)
                 return;
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
@@ -189,7 +186,10 @@ namespace Marlin.View {
             size_change ();
             hpane.set_position (width);
             colpane.show_all ();
-            colpane.queue_draw ();
+
+            if (colpane.get_realized ())
+                colpane.queue_draw ();
+
             has_autosized = true;
         }
 
