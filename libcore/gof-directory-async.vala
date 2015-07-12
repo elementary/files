@@ -100,7 +100,7 @@ public class GOF.Directory.Async : Object {
         scheme = location.get_uri_scheme ();
         is_trash = (scheme == "trash");
         is_recent = (scheme == "recent");
-        is_local = is_trash || is_recent || (scheme == "file");
+        is_local = is_trash || (scheme == "file");
 
         if (!prepare_directory ())
             return;
@@ -259,7 +259,7 @@ public class GOF.Directory.Async : Object {
             trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
             has_trash_dirs = (trash_dirs != null);
         } else
-            has_trash_dirs = is_local;
+            has_trash_dirs = is_local || is_recent;
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
