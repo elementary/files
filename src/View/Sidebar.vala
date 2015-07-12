@@ -717,12 +717,12 @@ namespace Marlin.Places {
         private bool drag_failed_callback (Gdk.DragContext context, Gtk.DragResult result) {
             int x, y;
             Gdk.Device device;
-            Marlin.Animation.PoofWindow poof_window;
+            Plank.Widgets.PoofWindow poof_window;
 
             if (internal_drag_started && dragged_out_of_window) {
                 device = context.get_device ();
                 device.get_position (null, out x, out y);
-                poof_window = Marlin.Animation.PoofWindow.get_default ();
+                poof_window = Plank.Widgets.PoofWindow.get_default ();
                 poof_window.show_at (x, y);
                 remove_selected_bookmarks ();
                 return true;
