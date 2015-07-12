@@ -1359,7 +1359,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 foreach (var mime in mimes)
                     app.set_as_default_for_type (mime);
 
-                view.notify_selection_changed (); /* indirectly update menus */
             } catch (Error e) {
                 critical ("Couldn't set as default: %s", e.message);
             }

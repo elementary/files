@@ -70,7 +70,6 @@ namespace Marlin.View {
         private bool tabs_restored = false;
         public bool freeze_view_changes = false;
 
-        public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void tab_reloaded (GLib.File location);

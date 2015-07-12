@@ -234,6 +234,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
         public signal void item_hovered (GOF.File? file);
+        public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -1326,17 +1327,6 @@ namespace FM {
             queue_draw ();
         }
 
-/** Handle Selection changes */
-        public void notify_selection_changed () {
-            if (!get_realized ())
-                return;
-
-            if (updates_frozen)
-                return;
-
-            window.selection_changed (get_selected_files ());
-        }
-
     /** Handle size allocation event */
         private void on_size_allocate (Gtk.Allocation allocation) {
             schedule_thumbnail_timeout ();
@@ -2340,7 +2330,7 @@ namespace FM {
             if (updates_frozen)
                 return;
 
-            notify_selection_changed ();
+            selection_changed (get_selected_files ());
         }
 
 /** Keyboard event handling **/
@@ -3019,6 +3009,7 @@ namespace FM {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
+            item_hovered (null);
             return true;
         }
 

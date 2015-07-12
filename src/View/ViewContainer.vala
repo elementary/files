@@ -471,6 +471,10 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
+        public void on_selection_changed (GLib.List<GOF.File> files) {
+            overlay_statusbar.selection_changed (files);
+        }
+
         private bool on_enter_notify_event () {
             /* Before the status bar is entered a leave event is triggered on the view, which
              * causes the statusbar to disappear. To block this we just cancel the update.

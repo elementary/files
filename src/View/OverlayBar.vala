@@ -19,8 +19,6 @@
 namespace Marlin.View {
 
     public class OverlayBar : Granite.Widgets.OverlayBar {
-        private Marlin.View.Window window;
-
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
         const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff"};
@@ -46,9 +44,6 @@ namespace Marlin.View {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             status = "";
 
-            window = win;
-            window.selection_changed.connect (on_selection_changed);
-
             hide.connect (cancel);
         }
 
@@ -56,13 +51,23 @@ namespace Marlin.View {
             cancel ();
         }
 
-        private void on_selection_changed (GLib.List<GOF.File>? files = null) {
-            if (files != null)
-                selected_files = files.copy ();
-            else
-                selected_files = null;
+        public void selection_changed (GLib.List<GOF.File> files) {
+            cancel ();
+            visible = false;
 
-            real_update (selected_files);
+            if (!showbar)
+                return;
+
+            update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
+                if (files != null)
+                    selected_files = files.copy ();
+                else
+                    selected_files = null;
+
+                real_update (selected_files);
+                update_timeout_id = 0;
+                return false;
+            });
         }
 
         public void reset_selection () {
@@ -70,11 +75,11 @@ namespace Marlin.View {
         }
 
         public void update_hovered (GOF.File? file) {
-            if (!showbar)
-                return;
-
             cancel ();
             visible = false;
+
+            if (!showbar)
+                return;
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
