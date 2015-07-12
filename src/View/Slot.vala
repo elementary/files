@@ -89,15 +89,21 @@ namespace Marlin.View {
         private void connect_dir_view_signals () {
             dir_view.path_change_request.connect (schedule_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
+            dir_view.item_hovered.connect (on_dir_view_item_hovered);
         }
 
         private void disconnect_dir_view_signals () {
             dir_view.path_change_request.disconnect (schedule_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
+            dir_view.item_hovered.disconnect (on_dir_view_item_hovered);
         }
 
         private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
                 width = alloc.width;
+        }
+
+        private void on_dir_view_item_hovered (GOF.File? file) {
+            ctab.on_item_hovered (file);
         }
 
         private void connect_dir_signals () {

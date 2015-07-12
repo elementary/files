@@ -69,8 +69,6 @@ namespace Marlin.View {
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
 
-            this.show_all ();
-
             /* Override background color to support transparency on overlay widgets */
             Gdk.RGBA transparent = {0, 0, 0, 0};
             override_background_color (0, transparent);
@@ -86,6 +84,7 @@ namespace Marlin.View {
         private void connect_signals () {
             path_changed.connect (user_path_change_request);
             window.folder_deleted.connect (on_folder_deleted);
+            enter_notify_event.connect (on_enter_notify_event);
         }
 
         private void disconnect_signals () {
@@ -168,7 +167,6 @@ namespace Marlin.View {
 
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-                overlay_statusbar.reset_selection ();
 
                 load_slot_directory (view);
                 window.update_top_menu ();
@@ -206,6 +204,7 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
+            overlay_statusbar.halign = Gtk.Align.END;
             ready = false;
             load_slot_directory (get_current_slot ());
         }
@@ -304,6 +303,7 @@ namespace Marlin.View {
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
+                overlay_statusbar.hide ();
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
@@ -339,6 +339,8 @@ namespace Marlin.View {
                 ready = true;
                 content = view.get_content_box ();
             }
+
+            overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
         private void store_selection () {
@@ -445,6 +447,18 @@ namespace Marlin.View {
                 view.grab_focus ();
             else
                 content.grab_focus ();
+        }
+
+        public void on_item_hovered (GOF.File? file) {
+            overlay_statusbar.update_hovered (file);
+        }
+
+        private bool on_enter_notify_event () {
+            /* Before the status bar is entered a leave event is triggered on the view, which
+             * causes the statusbar to disappear. To block this we just cancel the update.
+             */
+            overlay_statusbar.cancel_update ();
+            return false;
         }
     }
 }

@@ -236,6 +236,7 @@ namespace FM {
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
+        public signal void item_hovered (GOF.File? file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -2092,13 +2093,18 @@ namespace FM {
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
             GLib.List<GOF.File> files = null;
+            string uri = "";
 
             if (in_recent) {
                 selection.@foreach ((file) => {
-                    files.append (GOF.File.get_by_uri (file.get_display_target_uri ()));
+                    uri = file.get_display_target_uri ();
+
+                    if (uri != null)
+                        files.append (GOF.File.get_by_uri (uri));
                 });
 
-                default_app = Marlin.MimeActions.get_default_application_for_files (files);
+                if (files != null)
+                    default_app = Marlin.MimeActions.get_default_application_for_files (files);
             } else
                 default_app = Marlin.MimeActions.get_default_application_for_files (selection);
         }
@@ -2609,7 +2615,6 @@ namespace FM {
 
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
-
                 switch (click_zone) {
                     case ClickZone.NAME:
                         if (single_click_rename && file != null && file.is_writable ())
@@ -2645,7 +2650,7 @@ namespace FM {
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || slot.directory.check_network ()) {
                     /* cannot get file info while network disconnected */
-                    window.item_hovered (file);
+                    item_hovered (file);
                     hover_path = path;
                 } else {
                     slot.reload (true); /* non-local only */
@@ -2656,7 +2661,7 @@ namespace FM {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            window.item_hovered (null); /* Cause OverLay to disappear */
+            item_hovered (null); /* Ensure overlay statusbar disappears */
             return false;
         }
 
