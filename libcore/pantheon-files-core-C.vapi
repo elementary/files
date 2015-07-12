@@ -180,6 +180,7 @@ namespace Marlin
 
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
+        public void add_rename_action (GLib.File renamed_file, string original_name);
     }
 
     [CCode (cheader_filename = "marlin-progress-info.h")]
@@ -335,7 +336,7 @@ namespace GOF {
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
-        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* callback_data = null);
+        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* data = null);
 
         public GOF.File @ref ();
         public GOF.File unref ();

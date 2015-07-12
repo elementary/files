@@ -1,26 +1,26 @@
-# Tamil translation for pantheon-files
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# Bengali translation for pantheon-files
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-02 14:15-0500\n"
-"PO-Revision-Date: 2014-07-17 04:58+0000\n"
-"Last-Translator: Khaleel Jageer <jskcse4@gmail.com>\n"
-"Language-Team: Tamil <ta@li.org>\n"
+"PO-Revision-Date: 2015-06-26 18:38+0000\n"
+"Last-Translator: Nazir Ahmed Sabbir <na_sabbir@yahoo.com>\n"
+"Language-Team: Bengali <bn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-06 05:28+0000\n"
+"X-Launchpad-Export-Date: 2015-07-06 05:27+0000\n"
 "X-Generator: Launchpad (build 17597)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "ক্লিপবোর্ডে পেস্ট করার মত কিছু নেই"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -28,37 +28,39 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "பொதுவான எஃப்டிபி"
+msgstr "পাবলিক FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "எஃப்டிபி (புகுபதிகையுடன்)"
+msgstr "FTP (লগ-ইন সহ)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "சாளர பகிர்வு"
+msgstr "উইন্ডো শেয়ার"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "வெப்டேவ் (ஹெச்டிடிபி)"
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "பாதுகாப்பான வெப்டேவ் (ஹெச்டிடிபிஎஸ்)"
+msgstr "নিরাপদ WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "இணைக்கிறது..."
+msgstr "সংযোগ হচ্ছে ..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"সমর্থিত সার্ভার মেথড তালিকায় লোড করা যায় না।\n"
+"অনুগ্রহ করে আপনার gvfs ইনস্টলেশন পরীক্ষা করুন।"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -72,72 +74,72 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "மீண்டும் முயல்க"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "உங்கள் பயனர் விவரங்களை சரி பார்க்கவும்"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr "தொடரவும்"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1150
 msgid "C_onnect"
-msgstr "இணை (_o)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:885
 msgid "Connect to Server"
-msgstr "சேவையகத்துடன் இணை"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:903
 msgid "Server Details"
-msgstr "சேவையக விவரங்கள்"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:927
 msgid "_Server:"
-msgstr "சேவையகம் (_S):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:947
 msgid "_Port:"
-msgstr "முனையம் (_P):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:965
 msgid "_Type:"
-msgstr "வகை_T :"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1034
 msgid "Sh_are:"
-msgstr "பகிர் (_ a):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1049
 msgid "_Folder:"
-msgstr "அடைவு (_F):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1067
 msgid "User Details"
-msgstr "பயனர் விவரங்கள்"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1090
 msgid "_Domain name:"
-msgstr "களப்பெயர் (_D):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1105
 msgid "_User name:"
-msgstr "பயனர் பெயர் (_U):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1120
 msgid "Pass_word:"
-msgstr "கடவுச்சொல் (_w):"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1136
 msgid "_Remember this password"
-msgstr "இந்த கடவுச்சொலை நினைவில் கொள்ளவும் (_R)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1239
 msgid "Operation cancelled"
-msgstr "செயல்பாடு ரத்து செய்யப்பட்டது"
+msgstr ""
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -875,7 +877,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1260
 msgid "Empty _Trash"
-msgstr "குப்பை தொட்டியை காலி செய் (_T)"
+msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1466
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1466,23 +1468,23 @@ msgstr ""
 
 #: ../src/View/Window.vala:193
 msgid "Ignore"
-msgstr "புறக்கணி"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:288 ../src/View/Sidebar.vala:407
 msgid "Home"
-msgstr "இல்லம்"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:290 ../src/View/Sidebar.vala:457
 msgid "File System"
-msgstr "கோப்பு அமைப்பு"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:307
 msgid "(as Administrator)"
-msgstr "(நிர்வாகியாக)"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:315
 msgid "This does not belong to you."
-msgstr "இது உங்களுக்கு உரியதன்று."
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:316
 msgid "You don't have permission to view this folder."
@@ -1506,35 +1508,35 @@ msgstr ""
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr "புதிய தத்தில் திற"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1868
 msgid "Open with"
-msgstr "உடன் திறக்கவும்"
+msgstr ""
 
 #: ../src/View/LocationBar.vala:389
 msgid "Other Application .."
-msgstr "மற்ற பயன்பாட்டு .."
+msgstr ""
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
-msgstr "கோப்பின் பெயர்"
+msgstr ""
 
 #: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:569
 #: ../src/View/PropertiesWindow.vala:619
 #: ../src/View/directory_view_popup.ui:125
 msgid "Size"
-msgstr "அளவு"
+msgstr ""
 
 #: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:360
 #: ../src/View/directory_view_popup.ui:130
 msgid "Type"
-msgstr "வகை"
+msgstr ""
 
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:532
 msgid "Modified"
-msgstr "மாற்றப்பட்ட"
+msgstr ""
 
 #: ../src/View/Resources.vala:28
 msgid "A simple and powerful file manager"
@@ -1546,39 +1548,39 @@ msgstr ""
 
 #: ../src/View/Resources.vala:74
 msgid "AFP"
-msgstr "AFP"
+msgstr ""
 
 #: ../src/View/Resources.vala:75
 msgid "DAV"
-msgstr "DAV"
+msgstr ""
 
 #: ../src/View/Resources.vala:76
 msgid "DAVS"
-msgstr "DAVS"
+msgstr ""
 
 #: ../src/View/Resources.vala:77
 msgid "FTP"
-msgstr "கோப்பு பரிமாற்ற நெறிமுறை"
+msgstr ""
 
 #: ../src/View/Resources.vala:78 ../src/View/Sidebar.vala:571
 msgid "Network"
-msgstr "வலையமைப்பு"
+msgstr ""
 
 #: ../src/View/Resources.vala:79
 msgid "SFTP"
-msgstr "SFTP"
+msgstr ""
 
 #: ../src/View/Resources.vala:80
 msgid "SMB"
-msgstr "SMB"
+msgstr ""
 
 #: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:434
 msgid "Trash"
-msgstr "குப்பைத் தொட்டி"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
-msgstr "இந்த அடைவு இருப்பில் இல்லை"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1586,7 +1588,7 @@ msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create"
-msgstr "உருவாக்கு"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:41
 msgid "Create the folder \"%s\""
@@ -1625,7 +1627,7 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:153
 msgid "%u folder"
-msgstr "%u அடைவு"
+msgstr ""
 
 #: ../src/View/OverlayBar.vala:161
 msgid "%u items selected (%s)"
@@ -1633,19 +1635,19 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:87 ../src/View/directory_view_popup.ui:81
 msgid "Properties"
-msgstr "பண்புகள்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:184
 msgid "General"
-msgstr "பொதுவான"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:192
 msgid "More"
-msgstr "மேலும்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:212
 msgid "Preview"
-msgstr "முன்தோற்றம்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:228
 msgid "Close"
@@ -1677,7 +1679,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:530
 msgid "Created"
-msgstr "உருவாக்கப்பட்ட"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:535
 msgid "Last Access"
@@ -1685,7 +1687,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:543
 msgid "Deleted"
-msgstr "அழிக்கப்பட்டது"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:548
 msgid "MimeType"
@@ -1697,11 +1699,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:576
 msgid "Location"
-msgstr "இடம்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:579
 msgid "Target"
-msgstr "இலக்கு"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:585
 msgid "Origin Location"
@@ -1713,11 +1715,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:654
 msgid "Other application..."
-msgstr "மற்ற பயன்பாடு..."
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:678
 msgid "Open with:"
-msgstr "இதனால் திற:"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:696
 msgid "Usage"
@@ -1733,29 +1735,29 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:846
 msgid "Read"
-msgstr "படி"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:850
 msgid "Write"
-msgstr "எழுது"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:854
 msgid "Execute"
-msgstr "செயல்படுத்து"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1058
 #: ../src/View/PropertiesWindow.vala:1071
 msgid "Owner"
-msgstr "உரிமையாளர்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1063
 #: ../src/View/PropertiesWindow.vala:1075
 msgid "Group"
-msgstr "குழு"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1079
 msgid "Everyone"
-msgstr "அனைவரும்"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1311
 msgid "Select an application to open "
@@ -1763,7 +1765,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:390
 msgid "Personal"
-msgstr "தனிப்பட்ட"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:395
 msgid "Your common places and bookmarks"
@@ -1771,7 +1773,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:414
 msgid "Open your personal folder"
-msgstr "உங்கள் தனிப்பட்ட அடைவைத் திறக்கவும்"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:441
 msgid "Open the Trash"
@@ -1779,7 +1781,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:447
 msgid "Devices"
-msgstr "சாதனங்கள்"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:452
 msgid "Your local partitions and devices"
@@ -1807,7 +1809,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1132
 msgid "Unable to start %s"
-msgstr "%s ஐ துவக்க முடியவில்லை"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1202
 msgid "Open"
@@ -1815,15 +1817,15 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1210
 msgid "Open in New _Tab"
-msgstr "புதிய கீற்றில் திற (_T)"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1216
 msgid "Open in New _Window"
-msgstr "புதிய சாளரத்தில் திற (_W)"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1224
 msgid "Remove"
-msgstr "அகற்று"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:1232 ../src/View/directory_view_popup.ui:16
 msgid "Rename"
@@ -1839,7 +1841,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1253
 msgid "_Eject"
-msgstr "வெளியேற்று (_E)"
+msgstr ""
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
@@ -1871,7 +1873,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:987
 msgid "Set as default"
-msgstr "முன்னிருப்பாக அமைக்கவும்"
+msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1454
 msgid "Cannot drop this file"
@@ -1919,7 +1921,7 @@ msgstr ""
 
 #: ../src/Application.vala:140
 msgid "Show the version of the program."
-msgstr "நிரல் பதிப்பை காட்டு."
+msgstr ""
 
 #: ../src/Application.vala:142
 msgid "Open uri(s) in new tab"
@@ -1970,7 +1972,7 @@ msgstr ""
 
 #: ../src/DndHandler.vala:98
 msgid "Cancel"
-msgstr "இரத்துசெய்"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1982,11 +1984,11 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "புதிய தத்தல் (_T)"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "புதிய சாளரம் (_W)"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
