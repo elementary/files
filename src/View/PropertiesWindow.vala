@@ -239,7 +239,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_area.show_all ();
         show_all ();
 
-        if (count == 1) {
+        if (count == 1 && !view.is_in_recent ()) {
             int start_offset= 0, end_offset = -1;
 
             Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
