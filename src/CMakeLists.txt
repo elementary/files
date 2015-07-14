@@ -26,6 +26,7 @@ pkg_check_modules (DEPS REQUIRED
     sqlite3
     dbus-glib-1
     libnotify>=0.7.2
+    plank
     zeitgeist-2.0)
 
 set (CFLAGS
@@ -98,6 +99,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         pantheon-files-widgets
         marlin
         zeitgeist-2.0
+        plank
     GENERATE_HEADER
         marlin-vala
     OPTIONS
@@ -163,6 +165,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         pantheon-files-widgets
         marlin
         zeitgeist-2.0
+        plank
     GENERATE_HEADER
         marlin-vala
     OPTIONS

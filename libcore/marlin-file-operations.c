@@ -1135,8 +1135,6 @@ do_run_simple_dialog (gpointer _data)
                                      NULL);
     gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
 
-    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
-
     g_object_set (dialog,
                   "text", data->primary_text,
                   "secondary-text", data->secondary_text,
