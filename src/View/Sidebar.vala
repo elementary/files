@@ -51,6 +51,7 @@ namespace Marlin.Places {
 
         /* DnD */
         List<GLib.File> drag_list;
+        Gtk.TreeRowReference? drag_row_ref;
         uint drag_data_info;
         uint drag_scroll_timer_id;
         Gdk.DragContext drag_context;
@@ -724,7 +725,11 @@ namespace Marlin.Places {
                 device.get_position (null, out x, out y);
                 poof_window = Plank.Widgets.PoofWindow.get_default ();
                 poof_window.show_at (x, y);
-                remove_selected_bookmarks ();
+                if (drag_row_ref != null) {
+                    Gtk.TreeIter iter;
+                    store.get_iter (out iter, drag_row_ref.get_path ());
+                    remove_bookmark_iter (iter);
+                }
                 return true;
             } else
                 return false;
@@ -820,13 +825,19 @@ namespace Marlin.Places {
                                                   uint info,
                                                   uint time) {
             if (!received_drag_data) {
+                this.drag_list = null;
+                this.drag_row_ref = null;
                 if (selection_data.get_target () != Gdk.Atom.NONE
                     && info == TargetType.TEXT_URI_LIST) {
                     string s = (string)(selection_data.get_data ());
                     drag_list = EelGFile.list_new_from_string (s);
-                } else
-                    this.drag_list = null;
-
+                } else {
+                    if (info == TargetType.GTK_TREE_MODEL_ROW) {
+                        Gtk.TreePath path;
+                        Gtk.tree_get_row_drag_data (selection_data, null, out path);
+                        drag_row_ref = new Gtk.TreeRowReference (store, path);
+                    }
+                }
                 received_drag_data = true;
                 drag_data_info = info;
             }
@@ -1153,6 +1164,7 @@ namespace Marlin.Places {
 
             bool is_bookmark;
             store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
+
             if (!is_bookmark)
                 return;
 
@@ -1172,8 +1184,16 @@ namespace Marlin.Places {
             if (!get_selected_iter (out iter))
                 return;
 
+            remove_bookmark_iter (iter);
+        }
+
+        private void remove_bookmark_iter (Gtk.TreeIter? iter) {
+            if (iter == null)
+                return;
+
             bool is_bookmark;
             store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
+
             if (!is_bookmark)
                 return;
 
