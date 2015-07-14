@@ -52,6 +52,7 @@ namespace Marlin.Places {
         /* DnD */
         List<GLib.File> drag_list;
         Gtk.TreeRowReference? drag_row_ref;
+        bool dnd_disabled = false;
         uint drag_data_info;
         uint drag_scroll_timer_id;
         Gdk.DragContext drag_context;
@@ -105,6 +106,9 @@ namespace Marlin.Places {
 
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
+
+        /* Remember path at button press */
+        Gtk.TreePath? click_path = null;
 
         public signal void sync_needed ();
 
@@ -1550,9 +1554,7 @@ namespace Marlin.Places {
         }
 
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
-            if (event.type != Gdk.EventType.BUTTON_PRESS)
-                return true;
-
+            click_path = null;
             var tree_view = widget as Gtk.TreeView;
             if (event.window != tree_view.get_bin_window ())
                 return true;
@@ -1560,13 +1562,12 @@ namespace Marlin.Places {
             if (renaming)
                 return true;
 
-            int tx, ty;
-            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
-            Gtk.TreePath? path = null;
-            tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
-
+            Gtk.TreePath? path = get_path_at_click_position (event);
             if (path == null)
                 return false;
+
+            this.click_path = path.copy ();
+
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
@@ -1580,7 +1581,9 @@ namespace Marlin.Places {
                             tree_view.expand_row (path, false);
 
                         return true;
-                    }
+                    } else if (!bookmark_at_path (path))
+                        block_drag_and_drop ();
+
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
@@ -1600,17 +1603,21 @@ namespace Marlin.Places {
         }
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
-            if (event.type != Gdk.EventType.BUTTON_RELEASE)
+            Gtk.TreePath? path = get_path_at_click_position (event);
+
+            if (dnd_disabled) {
+                unblock_drag_and_drop ();
+                /* Do not take action if a blocked drag was attempted (mouse over different row
+                 * from when button pressed or not over row) */
+                if (path == null || (click_path != null && path.compare (click_path) != 0)) {
+                    return true;
+                }
+            }
+
+            if (renaming) 
                 return true;
 
-            if (renaming)
-                return true;
-
-            int tx, ty;
-            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
-
-            Gtk.TreePath? path = null;
-            if (over_eject_button (tx, ty, out path)) { /* returns path whether or not over eject button */
+            if (over_eject_button (event)) {
                 eject_or_unmount_bookmark (path);
                 return false;
             }
@@ -1618,8 +1625,6 @@ namespace Marlin.Places {
             if (event.button ==1) {
                 if (event.window != tree_view.get_bin_window ())
                     return false;
-
-                tree_view.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, null, null);
 
                 if (path != null) {
                     if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0)
@@ -1669,20 +1674,21 @@ namespace Marlin.Places {
             }
         }
 
-        private bool over_eject_button (int x, int y, out Gtk.TreePath p) {
+        private bool over_eject_button (Gdk.EventButton event) {
             unowned Gtk.TreeViewColumn column;
             int width, x_offset, hseparator;
             bool show_eject;
             Gtk.TreeIter iter;
             Gtk.TreePath path;
 
-            p = null;
+            int x, y;
+            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out x, out y);
+
             int cell_x, cell_y;
             if (tree_view.get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 if (path == null)
                     return false;
 
-                p = path; /* Return path either way */
                 store.get_iter (out iter, path);
                 store.@get (iter, Column.EJECT, out show_eject);
 
@@ -2091,6 +2097,44 @@ namespace Marlin.Places {
          * means that the item is a category.
          */
             return path.get_depth () == 1;
+        }
+
+        private bool bookmark_at_path (Gtk.TreePath? path) {
+            if (path != null) {
+                Gtk.TreeIter iter;
+                store.get_iter (out iter, path);
+                return bookmark_at_iter (iter);
+            } else
+                return false;
+        }
+
+        private bool bookmark_at_iter (Gtk.TreeIter? iter) {
+            if (iter == null)
+                return false;
+
+            bool is_bookmark;
+            store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
+            return is_bookmark;
+        }
+
+        private Gtk.TreePath? get_path_at_click_position (Gdk.EventButton event) {
+            int tx, ty;
+            tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
+            Gtk.TreePath? path = null;
+            tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+            return path;
+        }
+
+        protected void block_drag_and_drop () {
+            tree_view.unset_rows_drag_source ();
+            dnd_disabled = true;
+        }
+
+        protected void unblock_drag_and_drop () {
+            tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
+                                                source_targets,
+                                                Gdk.DragAction.MOVE);
+            dnd_disabled = false;
         }
 
     }
