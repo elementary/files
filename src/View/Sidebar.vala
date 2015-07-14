@@ -1166,11 +1166,8 @@ namespace Marlin.Places {
             if (!get_selected_iter ( out iter))
                 return;
 
-            bool is_bookmark;
-            store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
-
-            if (!is_bookmark)
-                return;
+            if (!bookmark_at_iter (iter))
+                 return;
 
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
@@ -1195,11 +1192,8 @@ namespace Marlin.Places {
             if (iter == null)
                 return;
 
-            bool is_bookmark;
-            store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
-
-            if (!is_bookmark)
-                return;
+            if (!bookmark_at_iter (iter))
+                 return;
 
             uint index;
             store.@get (iter, Column.INDEX, out index);
@@ -1209,26 +1203,27 @@ namespace Marlin.Places {
 
         /* Reorder the selected bookmark to the specified position */
         private void reorder_bookmarks (uint new_position) {
-            /* Get the selected path */
-            Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
-                return;
+            if (drag_row_ref != null) {
+                Gtk.TreeIter iter;
+                store.get_iter (out iter, drag_row_ref.get_path ());
+                drag_row_ref = null;
 
-            bool is_bookmark;
-            uint old_position;
-            store.@get (iter,
-                        Column.BOOKMARK, out is_bookmark,
-                        Column.INDEX, out old_position);
+                if (!bookmark_at_iter (iter))
+                    return;
 
-            if (old_position <= n_builtins_before)
-                old_position = 0;
-            else
-                old_position-= n_builtins_before;
+                uint old_position;
+                store.@get (iter, Column.INDEX, out old_position);
 
-            if (!is_bookmark || old_position >= bookmarks.length ())
-                return;
+                if (old_position <= n_builtins_before)
+                    old_position = 0;
+                else
+                    old_position-= n_builtins_before;
 
-            bookmarks.move_item (old_position, new_position);
+                if (old_position >= bookmarks.length ())
+                    return;
+
+                bookmarks.move_item (old_position, new_position);
+            }
         }
 
 /* POPUP MENU FUNCTIONS */
