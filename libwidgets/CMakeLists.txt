@@ -39,7 +39,6 @@ include_directories (${CMAKE_BINARY_DIR})
 vala_precompile(VALA_C ${PKGNAME}
     Animations.vala
     LocationBar.vala
-    PoofWindow.vala
     BreadcrumbsElements.vala
 PACKAGES
     gtk+-3.0
