@@ -170,7 +170,6 @@ namespace FM {
             debug ("DNDHANDLER: set source uri to %s", uri);
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
-
             Gdk.property_change (context.get_source_window (),
                                  property_name,
                                  property_type,
@@ -191,6 +190,10 @@ namespace FM {
                 switch (result) {
                     case 'F':
                         /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
+                        break;
+                    case 'E':
+                        /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
+                         * Note this result may be obtained even if the file was successfully saved */
                         break;
                     case 'S':
                         /* XdndDirectSave "Success" */
