@@ -802,6 +802,8 @@ namespace FM {
         protected void rename_file (GOF.File file_to_rename) {
             var iter = Gtk.TreeIter ();
             uint count = 0;
+            /* Allow time for the file to appear in the tree model before renaming
+             */
             GLib.Timeout.add (10, () => {
                 if (model.get_first_iter_for_file (file_to_rename, out iter)) {
                     /* Assume writability on remote locations */
@@ -836,19 +838,11 @@ namespace FM {
             }
 
             var file_to_rename = GOF.File.@get (new_file);
-            bool local = view.slot.directory.is_local;
             view.slot.reload (true); /* non-local only */
 
-            /* Allow time for the file to appear in the tree model before renaming
-             * Wait longer for remote locations to allow for reload.
-             */
-            /**TODO** Remove need for hard coded delay*/
-            int delay = local ? 250 : 500;
-            GLib.Timeout.add (delay, () => {
-                view.rename_file (file_to_rename);
-                view.slot.directory.unblock_monitor ();
-                return false;
-            });
+            view.rename_file (file_to_rename); /* will wait for file to appear in model */
+            view.slot.directory.unblock_monitor ();
+
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -2655,8 +2649,8 @@ namespace FM {
                 Marlin.UndoManager.instance ().add_rename_action (file.location,
                                                                   view.original_name);
 
-                if (!view.slot.directory.is_local)
-                    view.slot.directory.need_reload ();
+                view.select_gof_file (file);  /* Select and scroll to show renamed file */
+                view.slot.reload (true);
             }
 
             if (pw != null) {
