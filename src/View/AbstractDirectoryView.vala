@@ -2814,6 +2814,10 @@ namespace FM {
                             result = expand_collapse (path);
                             break;
 
+                        case ClickZone.INVALID:
+                            result = true; /* Prevent rubberbanding */
+                            break;
+
                         default:
                             break;
                     }
