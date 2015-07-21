@@ -62,7 +62,7 @@ namespace Marlin.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
-        private bool ready = false;
+        public bool ready {get; private set;}
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
@@ -70,12 +70,10 @@ namespace Marlin.View {
         public signal void path_changed (File file);
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win, Marlin.ViewMode mode, GLib.File loc) {
+        public ViewContainer (Marlin.View.Window win) {
             window = win;
             overlay_statusbar = new OverlayBar (win, this);
             browser = new Browser ();
-
-            this.show_all ();
 
             /* Override background color to support transparency on overlay widgets */
             Gdk.RGBA transparent = {0, 0, 0, 0};
@@ -83,7 +81,6 @@ namespace Marlin.View {
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
-            change_view_mode (mode, loc);
         }
 
         ~ViewContainer () {
@@ -93,6 +90,7 @@ namespace Marlin.View {
         private void connect_signals () {
             path_changed.connect (user_path_change_request);
             window.folder_deleted.connect (on_folder_deleted);
+            enter_notify_event.connect (on_enter_notify_event);
         }
 
         private void disconnect_signals () {
@@ -175,7 +173,6 @@ namespace Marlin.View {
 
                 view_mode = mode;
                 overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-                overlay_statusbar.reset_selection ();
 
                 load_slot_directory (view);
                 window.update_top_menu ();
@@ -183,7 +180,6 @@ namespace Marlin.View {
         }
 
         public void user_path_change_request (GLib.File loc) {
-            loading (true);
             view.user_path_change_request (loc);
         }
 
@@ -214,6 +210,7 @@ namespace Marlin.View {
         }
 
         private void set_up_current_slot () {
+            overlay_statusbar.halign = Gtk.Align.END;
             ready = false;
             load_slot_directory (get_current_slot ());
         }
@@ -223,7 +220,7 @@ namespace Marlin.View {
                 return;
 
             refresh_slot_info (slot);
-
+            loading (true);
             /* Allow time for the window to update before trying to load directory so that
              * the window is displayed more quickly when starting the application in,
              * or switching view to, a folder that contains a large number of files.
@@ -235,7 +232,7 @@ namespace Marlin.View {
 
              * Do not try and load directory that is not flagged 'can load'.
              */
-            Idle.add (() => {
+            Idle.add_full (GLib.Priority.LOW, () => {
                 if (!slot.directory.is_ready)
                     return true;
 
@@ -312,6 +309,7 @@ namespace Marlin.View {
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
+                overlay_statusbar.hide ();
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
@@ -347,6 +345,8 @@ namespace Marlin.View {
                 ready = true;
                 content = view.get_content_box ();
             }
+
+            overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
         private void store_selection () {
@@ -432,23 +432,10 @@ namespace Marlin.View {
         }
 
         public void reload (bool propagate = true) {
-            /* Allow time for the signal to propagate and the tab label to redraw */
-            Idle.add (() => {
-                var slot = get_current_slot ();
-                if (slot == null)
-                    return false;
-
+            loading (true);
+            var slot = get_current_slot ();
+            if (slot != null)
                 slot.reload ();
-                load_slot_directory (slot);
-                /* For remote folders, make sure any other windows showing the same folder are
-                 * also refreshed. Prevent infinite loop with propagate - when called from application,
-                 * propagate will be false.
-                 */
-                if (propagate)
-                    ((Marlin.Application)(window.application)).tab_reloaded (window, slot.location);
-
-                return false;
-            });
         }
 
         public Gee.List<string> get_go_back_path_list () {
@@ -466,6 +453,18 @@ namespace Marlin.View {
                 view.grab_focus ();
             else
                 content.grab_focus ();
+        }
+
+        public void on_item_hovered (GOF.File? file) {
+            overlay_statusbar.update_hovered (file);
+        }
+
+        private bool on_enter_notify_event () {
+            /* Before the status bar is entered a leave event is triggered on the view, which
+             * causes the statusbar to disappear. To block this we just cancel the update.
+             */
+            overlay_statusbar.cancel_update ();
+            return false;
         }
     }
 }

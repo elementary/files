@@ -459,16 +459,15 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
                                          action->dest_dir, NULL, undo_redo_done_transfer_callback, action);
             g_list_free_full (uris, g_object_unref);
             break;
-#if 0
+
         case MARLIN_UNDO_RENAME:
             new_name = get_uri_basename (action->new_uri);
             file = gof_file_get_by_uri (action->old_uri);
-            marlin_file_rename (file, new_name,
-                                undo_redo_done_rename_callback, action);
+            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
             g_object_unref (file);
             g_free (new_name);
             break;
-#endif
+
         case MARLIN_UNDO_CREATEEMPTYFILE:
             puri = get_uri_parent (action->target_uri);
             new_name = get_uri_basename (action->target_uri);
@@ -647,15 +646,16 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                                          action->src_dir, NULL, undo_redo_done_transfer_callback, action);
             g_list_free_full (uris, g_object_unref);
             break;
-#if 0
+
         case MARLIN_UNDO_RENAME:
             new_name = get_uri_basename (action->old_uri);
             file = gof_file_get_by_uri (action->new_uri);
-            marlin_file_rename (file, new_name,
-                                undo_redo_done_rename_callback, action);
+            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
             g_object_unref (file);
             g_free (new_name);
             break;
+
+#if 0
         case MARLIN_UNDO_SETPERMISSIONS:
             file = gof_file_get_by_uri (action->target_uri);
             marlin_file_set_permissions (file,
@@ -737,7 +737,24 @@ marlin_undo_manager_add_action (MarlinUndoManager *manager,
     g_mutex_unlock (&priv->mutex);
 
     do_menu_update (manager);
+}
 
+void
+marlin_undo_manager_add_rename_action (MarlinUndoManager* manager,
+                                       GFile* new_file,
+                                       const char* original_name) {
+
+    MarlinUndoActionData *data = marlin_undo_manager_data_new (MARLIN_UNDO_RENAME, 1);
+
+    data->old_uri = g_strconcat (g_path_get_dirname (g_file_get_uri (new_file)),
+                                 G_DIR_SEPARATOR_S,
+                                 original_name,
+                                 NULL);
+
+    data->new_uri = g_file_get_uri (new_file);
+    data->is_valid = TRUE;
+
+    marlin_undo_manager_add_action (manager, data);
 }
 
 static GList *

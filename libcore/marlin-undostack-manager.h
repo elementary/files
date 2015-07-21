@@ -107,6 +107,11 @@ marlin_undo_manager_add_action (MarlinUndoManager* manager,
                                 MarlinUndoActionData* action);
 
 void
+marlin_undo_manager_add_rename_action (MarlinUndoManager* manager,
+                                       GFile* file,
+                                       const char* original_name);
+ 
+void
 marlin_undo_manager_undo (MarlinUndoManager* manager,
                           GtkWidget *parent_view, MarlinUndoFinishCallback cb, gpointer done_callback_data);
 

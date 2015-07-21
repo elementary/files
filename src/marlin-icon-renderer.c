@@ -581,6 +581,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     /* add remove helpers +/- */
     GdkPixbuf *pix;
 
+    /* Do not show selection helpers or emblems for very small icons */
     if (priv->selection_helpers &&
         (flags & (GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_SELECTED)) != 0 &&
         priv->file != priv->drop_file)
@@ -604,7 +605,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }
 
     /* check if we should render emblems as well */
-    if (G_LIKELY (priv->emblems))
+    if (G_LIKELY (priv->emblems) && priv->selection_helpers)
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
@@ -626,8 +627,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             emblem_area.height = gdk_pixbuf_get_height (pix);
 
             /* stack emblem on a vertical line begging from the bottom */
-            emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width + priv->zoom_level, background_area->x + background_area->width - emblem_area.width);
-            emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * (position+1);
+            guint overlap = MIN (8 + priv->zoom_level, pix_rect.width / 4);
+            emblem_area.x = pix_rect.x + pix_rect.width - overlap;
+            emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * (position + 1);
             /* don't show cutted emblems */
             if (emblem_area.y < background_area->y)
                 break;
