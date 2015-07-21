@@ -146,30 +146,33 @@ namespace Marlin.View {
                 user_path_change_request (File.new_for_commandline_arg (loc));
         }
 
+        public void add_view (Marlin.ViewMode mode, GLib.File loc) {
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                view = new Miller (loc, this, mode);
+            else
+                view = new Slot (loc, this, mode);
 
-        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+            content = view.get_content_box ();
+            view_mode = mode;
+            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+            load_slot_directory (view);
+            /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
+             * The slot becomes active when the tab becomes current */
+        }
+
+        public void change_view_mode (Marlin.ViewMode mode) {
+            assert (view != null && location != null);
             if (mode != view_mode) {
-                if (loc == null) /* Only untrue on container creation */
-                    loc = this.location;
+                store_selection ();
+                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+                view.cancel ();
 
-                if (view != null) {
-                    store_selection ();
-                    /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                    view.cancel ();
-                }
-
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
-                    view = new Miller (loc, this, mode);
-                else
-                    view = new Slot (loc, this, mode);
-
-                content = view.get_content_box ();
-
-                view_mode = mode;
-                overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-
-                load_slot_directory (view);
+                add_view (mode, location);
+                /* Slot is created inactive so we activate now since we must be the current tab
+                 * to have received a change mode instruction */
+                set_active_state (true);
                 window.update_top_menu ();
+
             }
         }
 
@@ -198,7 +201,7 @@ namespace Marlin.View {
                 get_current_slot ().directory.uri_contain_keypath_icons &&
                 view_mode != Marlin.ViewMode.ICON)
 
-                change_view_mode (Marlin.ViewMode.ICON, null);
+                change_view_mode (Marlin.ViewMode.ICON);
             else
                 set_up_current_slot ();
         }

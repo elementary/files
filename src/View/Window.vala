@@ -391,7 +391,7 @@ namespace Marlin.View {
             });
 
             content.update_tab_name (location);
-            content.change_view_mode (mode, location);
+            content.add_view (mode, location);
 
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;

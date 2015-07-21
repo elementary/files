@@ -262,7 +262,9 @@ namespace FM {
                 add (view);
                 show_all ();
                 connect_drag_drop_signals (view);
-                view.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+                view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
+                                 Gdk.EventMask.ENTER_NOTIFY_MASK |
+                                 Gdk.EventMask.LEAVE_NOTIFY_MASK);
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
                 view.enter_notify_event.connect (on_enter_notify_event);
