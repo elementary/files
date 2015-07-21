@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-02 14:15-0500\n"
-"PO-Revision-Date: 2015-04-15 15:17+0000\n"
+"PO-Revision-Date: 2015-06-23 17:47+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2015-06-03 05:42+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-07-16 05:33+0000\n"
+"X-Generator: Launchpad (build 17628)\n"
 "Language: sl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -929,21 +929,23 @@ msgstr "V primeru, da predmet izbrišete, bo trajno izgubljen."
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Trajno izbriši vse v smeteh?"
 
 #: ../libcore/marlin-file-operations.c:1424
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Vsi predmeti v vseh smeteh, vključno s tistimi na zunanjih pogonih, bodo "
+"trajno izbrisani."
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Trajno izbriši vse v smeteh na tem priklopu?"
 
 #: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Vsi predmeti v smeteh na tem pogonu bodo trajno izbrisani."
 
 #: ../libcore/marlin-file-operations.c:1439
 #: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1260
@@ -1415,11 +1417,11 @@ msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %F."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "\"%B\" ni mogoče kopirati sem."
 
 #: ../libcore/marlin-file-operations.c:4594
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Pri kopiranju datoteke v \"%B\" je prišlo do napake."
 
 #: ../libcore/marlin-file-operations.c:4821
 msgid "Copying Files"
@@ -1489,11 +1491,11 @@ msgstr "Nastavljanje dovoljenj"
 
 #: ../libcore/marlin-file-operations.c:6003
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "V smeti se ne da kopirati."
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Kopiranje v smeti ni mogoče."
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
@@ -1582,7 +1584,7 @@ msgstr "Nazaj"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Ustvari mapo"
 
 #: ../src/View/Window.vala:181
 msgid "Files isn't your default file manager."
@@ -1618,19 +1620,19 @@ msgstr "Nimate dovoljenja za ogled te mape."
 
 #: ../src/View/ViewContainer.vala:319
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Ni bilo mogoče priklopiti mape."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Strežnika za to mapo ni bilo mogoče najti."
 
 #: ../src/View/ViewContainer.vala:332
 msgid "File not found."
-msgstr ""
+msgstr "Datoteke ni mogoče najti."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Izbrana datoteka več ne obstaja."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1840,7 +1842,7 @@ msgstr "Prvotna lokacija"
 
 #: ../src/View/PropertiesWindow.vala:612
 msgid "Info"
-msgstr ""
+msgstr "Informacije"
 
 #: ../src/View/PropertiesWindow.vala:654
 msgid "Other application..."
@@ -1852,7 +1854,7 @@ msgstr "Odpri s programom:"
 
 #: ../src/View/PropertiesWindow.vala:696
 msgid "Usage"
-msgstr ""
+msgstr "Način uporabe"
 
 #: ../src/View/PropertiesWindow.vala:703
 msgid "Device usage:"
@@ -2038,7 +2040,7 @@ msgstr "Neimenovana %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2492
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Datotek v smeteh ni mogoče kopirati"
 
 #: ../src/View/AbstractDirectoryView.vala:2493
 msgid "Cutting the selection instead"
@@ -2165,7 +2167,7 @@ msgstr "Prekliči vsa trenutno izvajajoča se dejanja"
 
 #: ../libwidgets/LocationBar.vala:106
 msgid "Reload this folder"
-msgstr ""
+msgstr "Osveži to mapo"
 
 #: ../libwidgets/LocationBar.vala:321
 msgid "Go to %s"
@@ -2173,7 +2175,7 @@ msgstr "Pojdi v %s"
 
 #: ../libwidgets/LocationBar.vala:458
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Pojdi v %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2185,11 +2187,11 @@ msgstr "Poveži se na omrežni datotečni strežnik"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Te predmete se lahko obnovi iz smeti."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Restore All"
-msgstr ""
+msgstr "Obnovi vse"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:57
 msgid "Empty the Trash"

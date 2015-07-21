@@ -70,11 +70,9 @@ namespace Marlin.View {
         private bool tabs_restored = false;
         public bool freeze_view_changes = false;
 
-        public signal void item_hovered (GOF.File? gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
-        public signal void tab_reloaded (GLib.File location);
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -271,6 +269,10 @@ namespace Marlin.View {
             tabs.tab_duplicated.connect ((tab) => {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
+
+            sidebar.sync_needed.connect (() => {
+                loading_uri (current_tab.uri);
+            });
         }
 
         public void focus_location_bar (Gdk.EventKey event) {
@@ -375,7 +377,8 @@ namespace Marlin.View {
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
             update_view_mode (mode);
-            var content = new View.ViewContainer (this, mode, location);
+
+            var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
 
             content.tab_name_changed.connect ((tab_name) => {
@@ -387,12 +390,11 @@ namespace Marlin.View {
                 top_menu.location_bar.bread.show_refresh_icon (!is_loading);
             });
 
-            change_tab ((int)tabs.insert_tab (tab, -1));
             content.update_tab_name (location);
+            content.change_view_mode (mode, location);
+
+            change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-            /* The following fixes a bug where upon first opening
-               a tab, the overlay status bar is shown empty. */
-            item_hovered (null);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -456,15 +458,12 @@ namespace Marlin.View {
             (application as Marlin.Application).quit ();
         }
 
-        private uint reload_timeout_id = 0;
         private void action_reload (GLib.SimpleAction action, GLib.Variant? param) {
             /* avoid spawning reload when key kept pressed */
-            if (reload_timeout_id == 0)
-                reload_timeout_id = Timeout.add (90, () => {
-                    current_tab.reload ();
-                    reload_timeout_id = 0;
-                    return false;
-                });
+            if (tabs.current.working || !current_tab.ready)
+                return;
+
+            current_tab.reload ();
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
@@ -979,7 +978,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B"});
+            application.set_accels_for_action ("win.show_sidebar", {"<Ctrl>B", "F9"});
             application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});

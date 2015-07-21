@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-02 14:15-0500\n"
-"PO-Revision-Date: 2015-01-03 00:09+0000\n"
-"Last-Translator: Bojan Karkalasev <bojankarkalasev@gmail.com>\n"
+"PO-Revision-Date: 2015-06-13 17:33+0000\n"
+"Last-Translator: Goran Maksimovski <Unknown>\n"
 "Language-Team: Macedonian <mk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
-"X-Launchpad-Export-Date: 2015-06-03 05:42+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-07-16 05:32+0000\n"
+"X-Generator: Launchpad (build 17628)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -143,7 +143,7 @@ msgstr "Операцијата е откажана"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr ""
+msgstr "Покажи повеќе _детали"
 
 #: ../libcore/marlin-undostack-manager.c:1208
 #, c-format
@@ -192,47 +192,47 @@ msgstr "Врати '%s' во '%s'"
 #: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Помести %d работи назад во ѓубрето."
 
 #: ../libcore/marlin-undostack-manager.c:1283
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Премести го '%s' назад во ѓубрето."
 
 #: ../libcore/marlin-undostack-manager.c:1292
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Избриши врска до %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1295
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Избриши врска до  '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1305
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Врати ги оригиналните овластувања на работите во  '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1313
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Врати ги оригиналните овластувања на  '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Врати ја групата на '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1332
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Врати сопственик на '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1371
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Копирај %d работи во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1375
 #, c-format
@@ -287,108 +287,108 @@ msgstr "Премести '%s' во канта за отпадоци"
 #: ../libcore/marlin-undostack-manager.c:1459
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Врати '%s' од ѓубрето."
 
 #: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Создади врски до %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1471
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Создади врска до '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1480
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Постави овластувања на работите во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Постави овластувања на '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Постави група на '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1507
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Постави сопственик на '%s' во '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1539
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати копија на %d работа."
+msgstr[1] "_Врати копии на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1544
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати дупликат на %d работа."
+msgstr[1] "_Врати дупликат на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1549
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати поместување на %d работа."
+msgstr[1] "_Врати поместување на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1554
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати преименување на %d работа."
+msgstr[1] "_Врати преименувања на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1558
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Врати создавање на празен фајл."
 
 #: ../libcore/marlin-undostack-manager.c:1561
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Врати создавање на фајл од шаблон."
 
 #: ../libcore/marlin-undostack-manager.c:1565
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати создавање на %d фолдер."
+msgstr[1] "_Врати создавање на %d фолдери."
 
 #: ../libcore/marlin-undostack-manager.c:1570
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати местење на %d работа од ѓубре."
+msgstr[1] "_Врати местење на %d работи од ѓубре."
 
 #: ../libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати вадење од ѓубре на %d работа"
+msgstr[1] "Врати вадење од ѓубре на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1580
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати создавање на врска до %d работа."
+msgstr[1] "_Врати создавање на врска до %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1585
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Врати бришење на %d работа."
+msgstr[1] "_Врати бришење на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1590
 #, c-format
@@ -422,29 +422,29 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторно копирај %d работа"
+msgstr[1] "_Повторно копирај %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1639
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторно направи дупликат на %d работа."
+msgstr[1] "_Повторно направи дупликат на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1644
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторно помести %d работа."
+msgstr[1] "_Повторно помести %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1649
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторно промени име на %d работа."
+msgstr[1] "_Повторно промени има на %d работи."
 
 #: ../libcore/marlin-undostack-manager.c:1653
 msgid "_Redo creation of an empty file"
