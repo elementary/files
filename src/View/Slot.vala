@@ -25,8 +25,8 @@ namespace Marlin.View {
         private FM.AbstractDirectoryView? dir_view = null;
 
         protected bool updates_frozen = false;
-        public bool has_autosized = false;
 
+        public bool has_autosized = false;
         public bool is_active {get; protected set;}
 
         public unowned Marlin.View.Window window {

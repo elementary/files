@@ -38,6 +38,8 @@ namespace GOF {
         public string uri {
             get { return directory.file.uri;}
         }
+        public bool can_create {get {return directory != null && !directory.is_trash;}}
+
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
         protected int slot_number;

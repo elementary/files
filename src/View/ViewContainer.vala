@@ -328,8 +328,12 @@ namespace Marlin.View {
                                                            _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
+                if (slot.can_create)
                     content = new DirectoryNotFound (slot.directory, this);
-                    can_show_folder = false;
+                else
+                    content = new Granite.Widgets.Welcome (_("This folder does not exist."),
+                                                           _("You cannot create a folder here"));
+                can_show_folder = false;
             } else if (selected_locations != null) {
                     view.select_glib_files (selected_locations, null);
                     selected_locations = null;
