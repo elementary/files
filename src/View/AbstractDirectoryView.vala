@@ -45,14 +45,15 @@ namespace FM {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
-            {"text/plain", 0, TargetType.STRING},
-            {"text/uri-list", 0, TargetType.TEXT_URI_LIST}
+            {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] drop_targets = {
-            {"text/uri-list", 0, TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", 0, TargetType.TEXT_URI_LIST},
-            {"_NETSCAPE_URL", 0, TargetType.TEXT_URI_LIST}
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, TargetType.XDND_DIRECT_SAVE0},
+            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, TargetType.NETSCAPE_URL}
         };
 
         const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
@@ -131,7 +132,7 @@ namespace FM {
 
         unowned GLib.List<GOF.File> drag_file_list = null;
         GOF.File? drop_target_file = null;
-
+        Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
         /* drop site support */
         bool _drop_highlight;
@@ -1545,10 +1546,10 @@ namespace FM {
         }
 
         private bool get_drop_data (Gdk.DragContext context, int x, int y, uint timestamp) {
-            Gdk.DragAction action = Gdk.DragAction.DEFAULT;
             Gtk.TargetList? list = null;
             Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
-
+            bool result = false;
+            current_target_type = target;
             /* Check if we can handle it yet */
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0") ||
                 target == Gdk.Atom.intern_static_string ("_NETSCAPE_URL")) {
@@ -1557,30 +1558,20 @@ namespace FM {
                 Gtk.TreePath? path = null;
                 GOF.File? file = get_drop_target_file (x, y, out path);
 
+
                 if (file != null &&
                     file.is_folder () &&
                     file.is_writable ()) {
-
-                    action = context.get_suggested_action ();
-
-                    if (action == 0 && path != null)
-                        path = null;
-
-                    if (drop_highlight != (path == null && action != 0)) {
-                        drop_highlight = !drop_highlight;
-                        queue_draw ();
-                    }
-
-                    icon_renderer.@set ("drop-file", (action != 0) ? file : null);
+                    icon_renderer.@set ("drop-file", file);
                     highlight_path (path);
+                    drop_data_ready = true;
+                    result = true;
                 }
             } else if (target != Gdk.Atom.NONE)
                 /* request the drag data from the source */
                 Gtk.drag_get_data (get_real_view (), context, target, timestamp); /* emits "drag_data_received" */
-            else
-                return false;
 
-            return true;
+            return result;
         }
 
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
@@ -1596,7 +1587,12 @@ namespace FM {
                 current_suggested_action = Gdk.DragAction.DEFAULT;
 
                 if (file != null) {
-                    current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
+                    if (current_target_type == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
+                        current_suggested_action = Gdk.DragAction.COPY;
+                        current_actions = current_suggested_action;
+                    } else
+                        current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
+
                     highlight_drop_file (drop_target_file, current_actions, path);
 
                     if (file.is_folder () && is_valid_drop_folder (file)) {
@@ -1618,7 +1614,7 @@ namespace FM {
             /* Cannot drop onto a file onto its parent or onto itself */
             if (file.uri != slot.uri &&
                 drag_file_list != null &&
-                drag_file_list.index (file) >= 0)
+                drag_file_list.index (file) < 0)
 
                 return true;
             else
@@ -2816,6 +2812,10 @@ namespace FM {
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility)*/
                             result = expand_collapse (path);
+                            break;
+
+                        case ClickZone.INVALID:
+                            result = true; /* Prevent rubberbanding */
                             break;
 
                         default:
