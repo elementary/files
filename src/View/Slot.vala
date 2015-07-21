@@ -53,7 +53,7 @@ namespace Marlin.View {
             base.init ();
             ctab = _ctab;
             mode = _mode;
-            is_active = true;
+            is_active = false;
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 

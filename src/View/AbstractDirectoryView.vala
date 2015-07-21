@@ -1619,7 +1619,7 @@ namespace FM {
             /* Cannot drop onto a file onto its parent or onto itself */
             if (file.uri != slot.uri &&
                 drag_file_list != null &&
-                drag_file_list.index (file) >= 0)
+                drag_file_list.index (file) < 0)
 
                 return true;
             else
@@ -2816,6 +2816,10 @@ namespace FM {
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility)*/
                             result = expand_collapse (path);
+                            break;
+
+                        case ClickZone.INVALID:
+                            result = true; /* Prevent rubberbanding */
                             break;
 
                         default:
