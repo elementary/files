@@ -191,9 +191,10 @@ namespace FM {
             tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
+            /* Do not allow rubberbanding to start except on a row in tree view */
+            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.INVALID);
 
-            if (c != null && c == name_column) {
+            if (p != null && c != null && c == name_column) {
                 int? x_offset = null, width = null;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
 
