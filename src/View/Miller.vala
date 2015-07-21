@@ -197,7 +197,15 @@ namespace Marlin.View {
         /** Called in response to slot active signal.
          *  Should not be called directly
          **/
-        private void on_slot_active (Marlin.View.Slot slot, bool scroll = true) {
+        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll = true) {
+
+            Marlin.View.Slot slot;
+
+            if (!(aslot is Marlin.View.Slot))
+                return;
+            else
+                slot = aslot as Marlin.View.Slot;
+    
             if (scroll)
                 scroll_to_slot (slot);
 
@@ -210,6 +218,7 @@ namespace Marlin.View {
             });
 
             current_slot = slot;
+            active ();
         }
 
         private void show_hidden_files_changed (bool show_hidden) {

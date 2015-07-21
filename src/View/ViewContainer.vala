@@ -156,12 +156,15 @@ namespace Marlin.View {
                     store_selection ();
                     /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
                     view.cancel ();
+                    view.active.disconnect (on_slot_active);
                 }
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     view = new Miller (loc, this, mode);
                 else
                     view = new Slot (loc, this, mode);
+
+                view.active.connect (on_slot_active);
 
                 content = view.get_content_box ();
 
@@ -171,6 +174,10 @@ namespace Marlin.View {
                 load_slot_directory (view);
                 window.update_top_menu ();
             }
+        }
+
+        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
+            plugin_directory_loaded ();
         }
 
         public void user_path_change_request (GLib.File loc) {
@@ -232,7 +239,6 @@ namespace Marlin.View {
 
                 if (slot.directory.can_load) {
                     slot.directory.load ();
-                    plugin_directory_loaded ();
                 } else
                      directory_done_loading (slot);
 
@@ -240,8 +246,11 @@ namespace Marlin.View {
             });
         }
 
-        private void plugin_directory_loaded () {
+        public void plugin_directory_loaded () {
             var slot = get_current_slot ();
+            if (slot == null)
+                return;
+
             Object[] data = new Object[3];
             data[0] = window;
             /* infobars are added to the view, not the active slot */
@@ -338,6 +347,7 @@ namespace Marlin.View {
             if (can_show_folder) {
                 ready = true;
                 content = view.get_content_box ();
+                plugin_directory_loaded ();
             }
 
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
