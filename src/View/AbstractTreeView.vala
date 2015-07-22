@@ -240,6 +240,7 @@ namespace FM {
 
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
+
         protected override void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
