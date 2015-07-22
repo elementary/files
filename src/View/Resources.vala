@@ -65,9 +65,12 @@ namespace Marlin {
     public const string ICON_TRASH = "user-trash";
     public const string ICON_TRASH_FULL = "user-trash-full";
     public const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
+    public const string ICON_RECENT = "document-open-recent";
+    public const string ICON_RECENT_SYMBOLIC = "document-open-recent-symbolic";
 
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
+    public const string RECENT_URI = "recent:///";
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
@@ -79,12 +82,15 @@ namespace Marlin {
     public const string PROTOCOL_NAME_SFTP = _("SFTP");
     public const string PROTOCOL_NAME_SMB = _("SMB");
     public const string PROTOCOL_NAME_TRASH = _("Trash");
+    public const string PROTOCOL_NAME_RECENT = _("Recent");
 
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();
 
         switch (s) {
+            case "recent":
+                return Marlin.PROTOCOL_NAME_RECENT;
             case "trash":
                 return Marlin.PROTOCOL_NAME_TRASH;
             case "network":

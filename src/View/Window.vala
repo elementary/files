@@ -495,6 +495,10 @@ namespace Marlin.View {
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
+                case "RECENT":
+                    uri_path_change_request (Marlin.RECENT_URI);
+                    break;
+
                 case "HOME":
                     uri_path_change_request ("file://" + Environment.get_home_dir());
                     break;
@@ -595,7 +599,7 @@ namespace Marlin.View {
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
-            if (!window.current_tab.slot.directory.is_local)
+            if (!window.current_tab.slot.directory.is_local || window.current_tab.slot.directory.is_recent)
                 window.current_tab.reload ();
         }
 

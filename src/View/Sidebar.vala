@@ -22,6 +22,15 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
+        enum PlaceType {
+            BUILT_IN,
+            MOUNTED_VOLUME,
+            BOOKMARK,
+            BOOKMARKS_CATEGORY,
+            PERSONAL_CATEGORY,
+            STORAGE_CATEGORY
+        }
+
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
         private const int EJECT_BUTTON_XPAD = 6;
@@ -383,6 +392,19 @@ namespace Marlin.Places {
             return iter;
         }
 
+        private bool recent_is_supported () {
+            string [] supported;
+
+            supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
+            for (int i = 0; supported[i] != null; i++) {
+                if (supported[i] == "recent") {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void update_places () {
             Gtk.TreeIter iter;
             string mount_uri;
@@ -398,7 +420,7 @@ namespace Marlin.Places {
 
             store.clear ();
 
-            /* ADD BOOKMARKS CATEGORY*/
+            /* Add Bookmarks CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -429,6 +451,22 @@ namespace Marlin.Places {
                        _("Open your personal folder"));
 
             n_builtins_before++;
+
+            /*  Add Recents BUILTIN */
+            if (recent_is_supported ()) {
+                add_place (Marlin.PlaceType.BUILT_IN,
+                    iter,
+                    Marlin.PROTOCOL_NAME_RECENT,
+                    new ThemedIcon (Marlin.ICON_RECENT),
+                    Marlin.RECENT_URI,
+                    null,
+                    null,
+                    null,
+                    0,
+                    _("View the list of recently used files"));
+
+                n_builtins_before++;
+            }
 
             /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();

@@ -1133,7 +1133,6 @@ do_run_simple_dialog (gpointer _data)
                                      data->message_type,
                                      GTK_BUTTONS_NONE,
                                      NULL);
-
     gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
 
     g_object_set (dialog,
