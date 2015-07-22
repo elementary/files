@@ -270,6 +270,10 @@ namespace Marlin.View {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
 
+            sidebar.request_focus.connect (() => {
+                return !current_tab.locked_focus;
+            });
+
             sidebar.sync_needed.connect (() => {
                 loading_uri (current_tab.uri);
             });
