@@ -134,15 +134,19 @@ namespace Marlin.View {
         }
 
         public void go_up () {
-            if (view.directory.has_parent ())
+            if (view.directory.has_parent ()) {
+                selected_locations.append (this.location);
                 user_path_change_request (view.directory.get_parent ());
+            }
         }
 
         public void go_back (int n = 1) {
             string? loc = browser.go_back (n);
 
-            if (loc != null)
+            if (loc != null) {
+                selected_locations.append (this.location);
                 user_path_change_request (File.new_for_commandline_arg (loc));
+            }
         }
 
         public void go_forward (int n = 1) {
@@ -328,7 +332,7 @@ namespace Marlin.View {
                     content = new DirectoryNotFound (slot.directory, this);
                     can_show_folder = false;
             } else if (selected_locations != null) {
-                    view.select_glib_files (selected_locations, null);
+                    view.select_glib_files (selected_locations, selected_locations.first ().data);
                     selected_locations = null;
             } else if (slot.directory.selected_file != null) {
                 if (slot.directory.selected_file.query_exists ())
