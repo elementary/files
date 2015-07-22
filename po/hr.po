@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2015-06-02 14:15-0500\n"
-"PO-Revision-Date: 2015-06-24 17:03+0000\n"
-"Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
+"PO-Revision-Date: 2015-07-21 15:20+0000\n"
+"Last-Translator: Paulo Pavačić <pavacic.p@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-07-16 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-07-22 05:31+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -905,6 +905,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1427
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"Ovime ćete trajno izbrisati sve datoteke iz Smeća na ovom montiranom uređaju."
 
 #: ../libcore/marlin-file-operations.c:1428
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -1567,11 +1568,11 @@ msgstr "Nemate ovlasti za gledanje ova mape."
 
 #: ../src/View/ViewContainer.vala:319
 msgid "Unable to mount folder."
-msgstr ""
+msgstr "Nemoguće montirati mapu."
 
 #: ../src/View/ViewContainer.vala:320
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Nije moguće locirati server za ovu mapu."
 
 #: ../src/View/ViewContainer.vala:332
 msgid "File not found."
@@ -2121,7 +2122,7 @@ msgstr "Idi na %s"
 
 #: ../libwidgets/LocationBar.vala:458
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Pokaži put do %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
