@@ -198,7 +198,6 @@ namespace FM {
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
-        protected GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
@@ -590,6 +589,7 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
+
             if (dir.is_loading ())
                 dir.file_loaded.disconnect (on_directory_file_loaded);
 
@@ -3192,9 +3192,7 @@ namespace FM {
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
+            /* List View will take care of unloading subdirectories */
         }
 
         protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
@@ -3231,8 +3229,6 @@ namespace FM {
 
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
-        protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
-        protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;

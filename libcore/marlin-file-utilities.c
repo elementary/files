@@ -59,6 +59,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
     GOFFile *file;
     GFile *original_file, *original_dir;
     GList *l, *m;
+    GFile *parent;
 
     directories = NULL;
 
@@ -68,36 +69,47 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
 
     for (l = files; l != NULL; l = l->next) {
         file = GOF_FILE (l->data);
-        original_file = eel_g_file_get_trash_original_file (
-                            g_file_info_get_attribute_byte_string (file->info,
-                                                                   G_FILE_ATTRIBUTE_TRASH_ORIG_PATH));
-        original_dir = NULL;
-        if (original_file != NULL) {
-            original_dir = g_file_get_parent (original_file);
-        }
+        /* Check it is a valid file (e.g. not a dummy row from list view) */
+        if (!(file->location != NULL && g_utf8_strlen (g_file_get_basename (file->location),2) > 0))
+            continue;
 
-        if (original_dir != NULL) {
-            if (directories == NULL) {
-                directories = g_hash_table_new_full (g_file_hash,
-                                                     (GEqualFunc) g_file_equal,
-                                                     (GDestroyNotify) g_object_unref,
-                                                     (GDestroyNotify) my_list_free_full);
+        /* Check that file is in root of trash.  If not, do not try to restore
+         * (it will be restored with its parent anyway) */
+        parent = g_file_get_parent(file->location);
+        if (parent != NULL && strcmp (g_file_get_basename (parent), G_DIR_SEPARATOR_S) == 0) {
+            original_file = eel_g_file_get_trash_original_file (
+                                g_file_info_get_attribute_byte_string (file->info,
+                                                                       G_FILE_ATTRIBUTE_TRASH_ORIG_PATH));
+            original_dir = NULL;
+            if (original_file != NULL) {
+                original_dir = g_file_get_parent (original_file);
             }
-            m = g_hash_table_lookup (directories, original_dir);
-            if (m != NULL) {
-                g_hash_table_steal (directories, original_dir);
+
+            if (original_dir != NULL) {
+                if (directories == NULL) {
+                    directories = g_hash_table_new_full (g_file_hash,
+                                                         (GEqualFunc) g_file_equal,
+                                                         (GDestroyNotify) g_object_unref,
+                                                         (GDestroyNotify) my_list_free_full);
+                }
+                m = g_hash_table_lookup (directories, original_dir);
+                if (m != NULL) {
+                    g_hash_table_steal (directories, original_dir);
+                }
+                m = g_list_append (m, g_object_ref (file->location));
+                g_hash_table_insert (directories, original_dir, m);
+            } else if (unhandled_files != NULL) {
+                *unhandled_files = g_list_append (*unhandled_files, gof_file_ref (file));
+                if (original_dir != NULL)
+                    g_object_unref (original_dir);
             }
-            m = g_list_append (m, g_object_ref (file->location));
-            g_hash_table_insert (directories, original_dir, m);
-        } else if (unhandled_files != NULL) {
-            *unhandled_files = g_list_append (*unhandled_files, gof_file_ref (file));
-            if (original_dir != NULL)
-                g_object_unref (original_dir);
+
+            if (original_file != NULL)
+                g_object_unref (original_file);
+
+            if (parent)
+                g_object_unref (parent);
         }
-
-        if (original_file != NULL)
-            g_object_unref (original_file);
-
     }
 
     return directories;
@@ -114,7 +126,6 @@ marlin_restore_files_from_trash (GList *files, GtkWindow *parent_window)
     char *message;
 
     original_dirs_hash = marlin_trashed_files_get_original_directories (files, &unhandled_files);
-
     for (l = unhandled_files; l != NULL; l = l->next) {
         file = GOF_FILE (l->data);
         message = g_strdup_printf (_("Could not determine original location of \"%s\" "),
