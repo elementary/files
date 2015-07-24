@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-07-22 09:29-0500\n"
-"PO-Revision-Date: 2015-06-07 06:58+0000\n"
-"Last-Translator: Matteo Piccina <altermatte@gmail.com>\n"
+"PO-Revision-Date: 2015-07-23 07:38+0000\n"
+"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-23 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-07-24 05:37+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1626,7 +1626,7 @@ msgstr "Cestino"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Recenti"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -1660,7 +1660,7 @@ msgstr "Questa cartella è vuota."
 
 #: ../src/View/Slot.vala:43
 msgid "There are no recent files."
-msgstr ""
+msgstr "Non ci sono file recenti."
 
 #: ../src/View/Slot.vala:44
 msgid "Access denied"
@@ -1831,11 +1831,11 @@ msgstr "Segnalibri e risorse"
 
 #: ../src/View/Sidebar.vala:454
 msgid "Open your personal folder"
-msgstr "Apre la propria cartella personale"
+msgstr "Apri la tua cartella personale"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Visualizza l'elenco dei file utilizzati di recente"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1979,7 +1979,7 @@ msgstr "Tagliare la selezione invece"
 
 #: ../src/View/AbstractDirectoryView.vala:2765
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Impossibile rinominare in '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2137,11 +2137,11 @@ msgstr "Elimina definitivamente"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Apri cartella genitore"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Rimuovi dalla cronologia"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2206,6 +2206,3 @@ msgstr "Data"
 #: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
 msgstr "Ordine inverso"
-
-#~ msgid "%s is not a valid file name"
-#~ msgstr "%s non è un nome di file valido"

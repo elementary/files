@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-07-22 09:29-0500\n"
-"PO-Revision-Date: 2015-06-03 06:05+0000\n"
+"PO-Revision-Date: 2015-07-23 17:28+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-23 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-07-24 05:37+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1618,7 +1618,7 @@ msgstr "Roskakori"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Viimeisimmät"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -1652,7 +1652,7 @@ msgstr "Kansio on tyhjä."
 
 #: ../src/View/Slot.vala:43
 msgid "There are no recent files."
-msgstr ""
+msgstr "Ei viimeaikaisia tiedostoja."
 
 #: ../src/View/Slot.vala:44
 msgid "Access denied"
@@ -1827,7 +1827,7 @@ msgstr "Avaa henkilökohtainen kansiosi"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Näytä luettelo äskettäin käytetyistä tiedostoista"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1971,7 +1971,7 @@ msgstr "Sen sijaan leikataan valinta"
 
 #: ../src/View/AbstractDirectoryView.vala:2765
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Nimen vaihtaminen muotoon '%s' epäonnistui"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2129,11 +2129,11 @@ msgstr "Poista lopullisesti"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Avaa ylätason kansio"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Poista historiasta"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2198,6 +2198,3 @@ msgstr "Päivä"
 #: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
-
-#~ msgid "%s is not a valid file name"
-#~ msgstr "%s ei ole kelvollinen tiedostonimi"
