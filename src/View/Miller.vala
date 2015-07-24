@@ -424,5 +424,9 @@ namespace Marlin.View {
                     slot.close ();
             });
         }
+
+        public override bool set_all_selected (bool all) {
+            return ((Marlin.View.Slot)(current_slot)).set_all_selected (all);
+        }
     }
 }

@@ -28,6 +28,7 @@ Browse it online and look for other branches at http://code.launchpad.net/panthe
 Refer to INSTALL for required dependencies.
 
 Then:
+
     mkdir build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
@@ -87,39 +88,48 @@ Be sure to understand this, and avoid a headache later!
 ====== Committing code ======
 
 Make a branch which will contain your changes for fixing bug XXXX:
+
     bzr branch lp:pantheon-files fix-XXXX
 
 Tell Bazaar your name if you haven't yet:
+
     bzr whoami "Real Name <email@address>"
 
 See what you did so far:
+
     bzr diff
     bzr diff | colordiff
 
 Get an overview of changed and new files:
+
     bzr status
 
 Add new files, move/ rename or delete:
+
     bzr add FILENAME
     bzr mv OLDFILE NEWFILE
     bzr rm FILENAME
 
 After making your changes, you need to commit your work as a new revision.
+
     bzr commit -m "Commit message"
 
 Commit your changes in small increments. It is better to keep different changes in different commits.
 
 To see the last 5 revisions in the current branch:
+
     bzr log -l5
     bzr log -l5 -p | less
 
 In the case you committed something wrong or want to ammend it:
+
     bzr uncommit
     
 If you want to revert all the changes made after the last revision:
     bzr revert
 
 Remember to keep your branch updated:
+
     bzr pull
 
 As a general rule of thumb, ''bzr help COMMAND'' gives you an explanation of any command and ''bzr help commands'' lists all available commands.

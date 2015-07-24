@@ -39,7 +39,11 @@ namespace GOF {
             get { return directory.file.uri;}
         }
         public bool can_create {get {return directory != null && !directory.is_trash;}}
-
+        public virtual bool locked_focus {
+            get {
+                return false;
+            }
+        }
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
         protected int slot_number;
@@ -81,5 +85,6 @@ namespace GOF {
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
         public virtual bool get_realized () {return content_box.get_realized ();}
+
     }
 }
