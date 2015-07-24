@@ -38,6 +38,11 @@ namespace GOF {
         public string uri {
             get { return directory.file.uri;}
         }
+        public virtual bool locked_focus {
+            get {
+                return false;
+            }
+        }
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
         protected int slot_number;
@@ -57,7 +62,7 @@ namespace GOF {
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active);
         public abstract unowned AbstractSlot? get_current_slot ();
-        public abstract void reload ();
+        public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc, bool allow_mode_change = true);
         public abstract void select_first_for_empty_selection ();
@@ -76,5 +81,6 @@ namespace GOF {
         public virtual string? get_root_uri () {return directory.file.uri;}
         public virtual string? get_tip_uri () {return null;}
         public virtual bool get_realized () {return content_box.get_realized ();}
+
     }
 }

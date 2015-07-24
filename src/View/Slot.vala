@@ -33,7 +33,14 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
+        public override bool locked_focus {
+            get {
+                return dir_view.renaming;
+            }
+        }
+
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
+        public string empty_recents = "<span size='x-large'>" + _("There are no recent files.") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
 
         public signal bool horizontal_scroll_event (double delta_x);
@@ -48,12 +55,11 @@ namespace Marlin.View {
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
-
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
             base.init ();
             ctab = _ctab;
             mode = _mode;
-            is_active = true;
+            is_active = false;
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
@@ -132,7 +138,8 @@ namespace Marlin.View {
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir) {
-            ctab.reload ();
+            dir_view.change_directory (directory, directory);
+            ctab.load_slot_directory (this);
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -167,15 +174,17 @@ namespace Marlin.View {
         }
 
         public void autosize_slot () {
-            if (dir_view == null ||
-                !colpane.get_realized () ||
+            if (dir_view == null || 
+                !colpane.get_realized () || 
                 has_autosized)
 
                 return;
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ())
+            if (directory.is_empty () && directory.location.get_uri_scheme () == "recent")
+                layout.set_markup (empty_recents, -1);
+            else if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);
@@ -201,12 +210,20 @@ namespace Marlin.View {
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
             var old_dir = directory;
+            old_dir.cancel ();
             set_up_directory (loc);
             dir_view.change_directory (old_dir, directory);
             /* ViewContainer takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
             ctab.slot_path_changed (directory.location, allow_mode_change);
+        }
+
+        public override void reload (bool non_local_only = false) {
+            if (!(non_local_only && directory.is_local)) {
+                directory.clear_directory_info ();
+                directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
+            }
         }
 
         protected override void make_view () {
@@ -301,11 +318,6 @@ namespace Marlin.View {
         public override void zoom_normal () {
             if (dir_view != null)
                 dir_view.zoom_normal ();
-        }
-
-        public override void reload () {
-            directory.clear_directory_info ();
-            user_path_change_request (location, false);
         }
 
         public override void cancel () {

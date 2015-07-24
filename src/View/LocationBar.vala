@@ -33,7 +33,6 @@ namespace Marlin.View.Chrome
 
                     if (!bread.is_focus && !win.freeze_view_changes) {
                         bread.text = "";
-
                         bread.change_breadcrumbs (new_path);
                     }
                 } else {
@@ -144,7 +143,7 @@ namespace Marlin.View.Chrome
             add_icon ({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_SFTP});
             add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_SMB});
             add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
-
+            add_icon ({ "recent://", Marlin.ICON_RECENT_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_RECENT});
 
             /* music */
             string dir;

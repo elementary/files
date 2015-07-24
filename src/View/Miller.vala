@@ -398,8 +398,8 @@ namespace Marlin.View {
             ((Marlin.View.Slot)(current_slot)).grab_focus ();
         }
 
-        public override void reload () {
-            ((Marlin.View.Slot)(current_slot)).reload ();
+        public override void reload (bool non_local_only = false) {
+            ((Marlin.View.Slot)(current_slot)).reload (non_local_only);
         }
 
         public override void cancel () {
@@ -414,6 +414,10 @@ namespace Marlin.View {
                 if (slot != null)
                     slot.close ();
             });
+        }
+
+        public override bool set_all_selected (bool all) {
+            return ((Marlin.View.Slot)(current_slot)).set_all_selected (all);
         }
     }
 }

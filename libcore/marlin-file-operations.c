@@ -1133,7 +1133,6 @@ do_run_simple_dialog (gpointer _data)
                                      data->message_type,
                                      GTK_BUTTONS_NONE,
                                      NULL);
-
     gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
 
     g_object_set (dialog,
@@ -6456,6 +6455,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
+    g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
     job->dest_dir = parent_dir;
     if (target_point != NULL) {
         job->position = *target_point;
@@ -6464,6 +6464,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     job->filename = g_strdup (target_filename);
 
     if (template) {
+        g_object_ref (template); /* job->src unref'd in create_job done */
         job->src = template;
     }
 

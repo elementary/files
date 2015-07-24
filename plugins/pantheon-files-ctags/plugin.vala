@@ -22,7 +22,6 @@ interface MarlinDaemon : Object {
 
 }
 
-
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private MarlinDaemon daemon;
     GOF.File directory;
@@ -271,6 +270,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         private new bool has_focus;
         private int height;
         public signal void color_changed (int ncolor);
+
         public ColorWidget () {
             set_size_request (150, 20);
             height = 20;

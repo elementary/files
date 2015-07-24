@@ -28,6 +28,7 @@ public class Marlin.Application : Granite.Application {
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.ClipboardManager clipboard;
     private Marlin.Thumbnailer thumbnailer;
+    private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
 
@@ -93,6 +94,7 @@ public class Marlin.Application : Granite.Application {
         this.progress_handler = new Marlin.Progress.UIHandler ();
         this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
         this.thumbnailer = Marlin.Thumbnailer.get ();
+        this.recent = new Gtk.RecentManager ();
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
 
@@ -113,6 +115,10 @@ public class Marlin.Application : Granite.Application {
 
     public unowned Marlin.ClipboardManager get_clipboard_manager () {
         return this.clipboard;
+    }
+
+    public unowned Gtk.RecentManager get_recent_manager () {
+        return this.recent;
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
@@ -232,19 +238,6 @@ public class Marlin.Application : Granite.Application {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
             ((Marlin.View.Window)window).folder_deleted (file);
-        });
-    }
-
-    public void tab_reloaded (Marlin.View.Window source, GLib.File file) {
-        unowned List<Gtk.Window> window_list = this.get_windows ();
-        window_list.@foreach ((window) => {
-            var win = (Marlin.View.Window)window;
-
-            if ((source.window_number != win.window_number) &&
-                 file.equal (win.current_tab.get_current_slot ().location))
-
-                win.current_tab.reload (false);
-
         });
     }
 
