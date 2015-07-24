@@ -22,6 +22,15 @@
 namespace Marlin.Places {
     public class Sidebar : Marlin.AbstractSidebar {
 
+        enum PlaceType {
+            BUILT_IN,
+            MOUNTED_VOLUME,
+            BOOKMARK,
+            BOOKMARKS_CATEGORY,
+            PERSONAL_CATEGORY,
+            STORAGE_CATEGORY
+        }
+
         private const int MAX_BOOKMARKS_DROPPED = 100;
         private const int ROOT_INDENTATION_XPAD = 2;
         private const int EJECT_BUTTON_XPAD = 6;
@@ -106,10 +115,10 @@ namespace Marlin.Places {
 
         /* Remember vertical adjustment value when lose focus */
         double adjustment_val = 0.0;
-
         /* Remember path at button press */
         Gtk.TreePath? click_path = null;
 
+        public signal bool request_focus ();
         public signal void sync_needed ();
 
         public Sidebar (Marlin.View.Window window) {
@@ -259,18 +268,21 @@ namespace Marlin.Places {
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
 
-            tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
+            tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-
-            /* Ensure tree has focus when scrolling */
-            tree_view.enter_notify_event.connect (()=> {
-                if (!renaming)
-                    tree_view.grab_focus ();
-
-                return false;
-            });
-
+            //tree_view.focus_out_event.connect (focus_out_event_cb);
+            tree_view.enter_notify_event.connect (on_enter_notify_event);
             tree_view.leave_notify_event.connect (on_leave_notify_event);
+        }
+
+        private bool on_enter_notify_event () {
+            /* Ensure tree has focus when scrolling but do not grab focus if either a bookmark
+             *  is being renamed or request_focus is denied.
+             */ 
+            if (!tree_view.has_focus && !renaming && request_focus ())
+                tree_view.grab_focus ();
+
+            return false;
         }
 
         private bool on_leave_notify_event () {
@@ -383,6 +395,19 @@ namespace Marlin.Places {
             return iter;
         }
 
+        private bool recent_is_supported () {
+            string [] supported;
+
+            supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
+            for (int i = 0; supported[i] != null; i++) {
+                if (supported[i] == "recent") {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void update_places () {
             Gtk.TreeIter iter;
             string mount_uri;
@@ -398,7 +423,7 @@ namespace Marlin.Places {
 
             store.clear ();
 
-            /* ADD BOOKMARKS CATEGORY*/
+            /* Add Bookmarks CATEGORY*/
             store.append (out iter, null);
             store.@set (iter,
                         Column.ICON, null,
@@ -429,6 +454,22 @@ namespace Marlin.Places {
                        _("Open your personal folder"));
 
             n_builtins_before++;
+
+            /*  Add Recents BUILTIN */
+            if (recent_is_supported ()) {
+                add_place (Marlin.PlaceType.BUILT_IN,
+                    iter,
+                    Marlin.PROTOCOL_NAME_RECENT,
+                    new ThemedIcon (Marlin.ICON_RECENT),
+                    Marlin.RECENT_URI,
+                    null,
+                    null,
+                    null,
+                    0,
+                    _("View the list of recently used files"));
+
+                n_builtins_before++;
+            }
 
             /* Add bookmarks */
             uint bookmark_count = bookmarks.length ();

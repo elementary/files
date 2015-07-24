@@ -107,6 +107,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         title = _("Properties");
         resizable = false;
+        deletable = false;
         set_default_size (220, -1);
         transient_for = parent;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
@@ -148,10 +149,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             critical ("Properties Window constructor called with invalid file data (1)");
             return;
         }
-
-        Gtk.Box header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        header.height_request = 15;
-        set_titlebar (header);
 
         /* Set the default containers */
         var content_area = get_content_area ();
@@ -223,7 +220,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
              * This will be shown to prevent resizing the properties window
              * when the large preview is retrieved.
              */
-            var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+            Gdk.Pixbuf small_preview;
+
+            if (view.is_in_recent ())
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
+            else
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
 
             /* Request the creation of the large thumbnail */
             Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
@@ -237,7 +239,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         content_area.show_all ();
         show_all ();
 
-        if (count == 1) {
+        if (count == 1 && !view.is_in_recent ()) {
             int start_offset= 0, end_offset = -1;
 
             Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
@@ -592,7 +594,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         /* get image size in pixels */
         var mime = file.icon.to_string ();
         if ("image" in mime) {
-            var path = file.location.get_path ();
+            string path;
+
+            if (view.is_in_recent ())
+                path = (file.get_display_target_uri ()).substring (7, -1).replace ("%20", " ");
+            else
+                path = file.location.get_path ();
 
             try {
                 Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
@@ -600,13 +607,22 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 var height = pixbuf.get_height ().to_string ();
                 info.add (new Pair<string, string> (_("Size") + (": "), width +" × " + height + " px"));
             } catch (Error e) {
-                stdout.printf ("Error: %s\n", e.message);
+                warning ("Error: %s\n", e.message);
             }
         }
 
-        if (got_common_location ())
-            info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">"
-                                                            + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
+        if (got_common_location ()) {
+            if (view.is_in_recent ()) {
+                string original_location = file.get_display_target_uri ().replace ("%20", " ");
+                string file_name = file.get_display_name ().replace ("%20", " ");
+                string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
+                string location_name = location_folder.slice (7, -1);
+
+                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
+            } else
+                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
+        }
+
         if (count == 1 && file.info.get_is_symlink ())
             info.add (new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
 

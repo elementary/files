@@ -33,7 +33,14 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
+        public override bool locked_focus {
+            get {
+                return dir_view.renaming;
+            }
+        }
+
         public string empty_message = "<span size='x-large'>" + _("This folder is empty.") + "</span>";
+        public string empty_recents = "<span size='x-large'>" + _("There are no recent files.") + "</span>";
         public string denied_message = "<span size='x-large'>" + _("Access denied") + "</span>";
 
         public signal bool horizontal_scroll_event (double delta_x);
@@ -47,7 +54,6 @@ namespace Marlin.View {
         public Gtk.Paned hpane;
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
-
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
             base.init ();
@@ -167,7 +173,9 @@ namespace Marlin.View {
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ())
+            if (directory.is_empty () && directory.location.get_uri_scheme () == "recent")
+                layout.set_markup (empty_recents, -1);
+            else if (directory.is_empty ())
                 layout.set_markup (empty_message, -1);
             else if (directory.permission_denied)
                 layout.set_markup (denied_message, -1);

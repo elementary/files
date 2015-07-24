@@ -16,7 +16,6 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-
 namespace Marlin {
     public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
 
