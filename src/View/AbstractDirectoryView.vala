@@ -445,7 +445,6 @@ namespace FM {
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
-
         }
 
         public new void grab_focus () {
@@ -600,6 +599,10 @@ namespace FM {
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
+            var style_context = get_style_context ();
+            if (style_context.has_class (MESSAGE_CLASS))
+                style_context.remove_class (MESSAGE_CLASS);
+
             cancel ();
             freeze_tree ();
             disconnect_directory_handlers (old_dir);
