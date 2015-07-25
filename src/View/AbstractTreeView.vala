@@ -191,9 +191,10 @@ namespace FM {
             tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
+            /* Do not allow rubberbanding to start except on a row in tree view */
+            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.INVALID);
 
-            if (c != null && c == name_column) {
+            if (p != null && c != null && c == name_column) {
                 int? x_offset = null, width = null;
                 c.cell_get_position (icon_renderer, out x_offset, out width);
 
@@ -237,14 +238,17 @@ namespace FM {
             if (tree == null || path == null || slot.directory.permission_denied)
                 return;
 
-            tree.scroll_to_cell (path, name_column, scroll_to_top, 0.0f, 0.0f);
+            tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
+
         protected override void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
-            tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
+
+            if (start_editing)
+                tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
         public override void set_cursor (Gtk.TreePath? path,

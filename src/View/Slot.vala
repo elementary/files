@@ -33,9 +33,16 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = _("This folder is empty.");
-        public string empty_trash_message = _("Trash is empty.");
-        public string denied_message = _("Access denied.");
+        public string empty_message = _("This Folder is Empty.");
+        public string empty_trash_message = _("Trash is Empty.");
+        public string empty_recents_message = _("There are no Recent Files.");
+        public string denied_message = _("Access Denied.");
+
+        public override bool locked_focus {
+            get {
+                return dir_view.renaming;
+            }
+        }
 
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze);
@@ -49,12 +56,11 @@ namespace Marlin.View {
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
-
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
             base.init ();
             ctab = _ctab;
             mode = _mode;
-            is_active = true;
+            is_active = false;
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
@@ -90,15 +96,21 @@ namespace Marlin.View {
         private void connect_dir_view_signals () {
             dir_view.path_change_request.connect (schedule_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
+            dir_view.item_hovered.connect (on_dir_view_item_hovered);
         }
 
         private void disconnect_dir_view_signals () {
             dir_view.path_change_request.disconnect (schedule_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
+            dir_view.item_hovered.disconnect (on_dir_view_item_hovered);
         }
 
         private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
                 width = alloc.width;
+        }
+
+        private void on_dir_view_item_hovered (GOF.File? file) {
+            ctab.on_item_hovered (file);
         }
 
         private void connect_dir_signals () {
@@ -157,8 +169,8 @@ namespace Marlin.View {
         }
 
         public void autosize_slot () {
-            if (dir_view == null ||
-                !colpane.get_realized () ||
+            if (dir_view == null || 
+                !colpane.get_realized () || 
                 has_autosized)
 
                 return;
@@ -168,6 +180,8 @@ namespace Marlin.View {
             if (directory.is_empty ()) {
                 if (directory.is_trash)
                     layout.set_markup (empty_trash_message, -1);
+                else if (directory.is_recent)
+                    layout.set_markup (empty_recents_message, -1);
                 else
                     layout.set_markup (empty_message, -1);
             } else if (directory.permission_denied)

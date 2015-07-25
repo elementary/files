@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-02 14:15-0500\n"
+"POT-Creation-Date: 2015-07-22 09:29-0500\n"
 "PO-Revision-Date: 2015-02-23 16:05+0000\n"
 "Last-Translator: Tomo Moto <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-06-03 05:41+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-07-23 05:37+0000\n"
+"X-Generator: Launchpad (build 17628)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -85,59 +85,59 @@ msgid "Continue"
 msgstr "Pokračovat"
 
 #: ../src/marlin-connect-server-dialog.c:760
-#: ../src/marlin-connect-server-dialog.c:1150
+#: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
 msgstr "_Připojit"
 
-#: ../src/marlin-connect-server-dialog.c:885
+#: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
 msgstr "Připojit k serveru"
 
-#: ../src/marlin-connect-server-dialog.c:903
+#: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
 msgstr "Detaily o serveru"
 
-#: ../src/marlin-connect-server-dialog.c:927
+#: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
 msgstr "_Server:"
 
-#: ../src/marlin-connect-server-dialog.c:947
+#: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
 msgstr "_Port:"
 
-#: ../src/marlin-connect-server-dialog.c:965
+#: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
 msgstr "_Typ:"
 
-#: ../src/marlin-connect-server-dialog.c:1034
+#: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
 msgstr "Sdíl_ení:"
 
-#: ../src/marlin-connect-server-dialog.c:1049
+#: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
 msgstr "_Složka:"
 
-#: ../src/marlin-connect-server-dialog.c:1067
+#: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
 msgstr "Detaily o uživateli"
 
-#: ../src/marlin-connect-server-dialog.c:1090
+#: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
 msgstr "Název _domény:"
 
-#: ../src/marlin-connect-server-dialog.c:1105
+#: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
 msgstr "_Uživatelské jméno:"
 
-#: ../src/marlin-connect-server-dialog.c:1120
+#: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
 msgstr "_Heslo:"
 
-#: ../src/marlin-connect-server-dialog.c:1136
+#: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
 msgstr "_Zapamatovat si heslo"
 
-#: ../src/marlin-connect-server-dialog.c:1239
+#: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Operace zrušena"
 
@@ -145,181 +145,181 @@ msgstr "Operace zrušena"
 msgid "Show more _details"
 msgstr "Zobrazit více _detailů"
 
-#: ../libcore/marlin-undostack-manager.c:1208
+#: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Smazat %d zkopírovaných položek"
 
-#: ../libcore/marlin-undostack-manager.c:1211
-#: ../libcore/marlin-undostack-manager.c:1221
-#: ../libcore/marlin-undostack-manager.c:1252
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
 msgstr "Smazat „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1218
+#: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Smazat %d duplikátních položek"
 
-#: ../libcore/marlin-undostack-manager.c:1229
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Přesunout %d položek zpět do „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1233
+#: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Přesunout „%s“ zpět do „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1242
-#: ../libcore/marlin-undostack-manager.c:1409
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Přejmenovat „%s“ na „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1261
-#: ../libcore/marlin-undostack-manager.c:1456
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Obnovit %d položek z koše"
 
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Obnovit „%s“ do „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1280
+#: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Přesunout %d položek zpět do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1283
+#: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Přesunout „%s“ zpět do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1292
+#: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Smazat odkazy na %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1295
+#: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Smazat odkaz k „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1305
+#: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Obnovit původní oprávnění položek v „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1313
+#: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Vrátit původní oprávnění „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Obnovit skupinu položky „%s“ na „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1332
+#: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Obnovit vlastníka „%s“ na „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1371
+#: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopírovat %d položek do „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1375
+#: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Kopírovat „%s“ do „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1383
+#: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Zdvojení %d položek v „%s“"
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Zdvojení '%s' v '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1396
+#: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Přesunout %d položek do '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Přesunout '%s' do '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1418
+#: ../libcore/marlin-undostack-manager.c:1435
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Vytvořit nový soubor „%s“ ze šablony "
 
-#: ../libcore/marlin-undostack-manager.c:1425
+#: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Vytvořit prázdný soubor '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1432
+#: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Vytvořit novou složku '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1440
+#: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Přesunout %d položek do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1446
+#: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Přesunout '%s' do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1459
+#: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Obnovit '%s' z koše"
 
-#: ../libcore/marlin-undostack-manager.c:1468
+#: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Create links to %d items"
 msgstr "Vytvořit odkazy k %d položkám"
 
-#: ../libcore/marlin-undostack-manager.c:1471
+#: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Vytvořit odkaz k '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1480
+#: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Nastavit oprávnění položek v '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Nastavit oprávnění '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Nastavit skupinu položky '%s' na '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1507
+#: ../libcore/marlin-undostack-manager.c:1524
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Nastavit vlastníka '%s' na '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1539
+#: ../libcore/marlin-undostack-manager.c:1556
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
@@ -327,7 +327,7 @@ msgstr[0] "_Vrátit kopírování %d položky"
 msgstr[1] "_Vrátit kopírování %d položek"
 msgstr[2] "_Vrátit kopírování %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1544
+#: ../libcore/marlin-undostack-manager.c:1561
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
@@ -335,7 +335,7 @@ msgstr[0] "_Vrátit zdvojení %d položky"
 msgstr[1] "_Vrátit zdvojení %d položek"
 msgstr[2] "_Vrátit zdvojení %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1549
+#: ../libcore/marlin-undostack-manager.c:1566
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
@@ -343,7 +343,7 @@ msgstr[0] "_Vrátit přesun %d položky"
 msgstr[1] "_Vrátit přesun %d položek"
 msgstr[2] "_Vrátit přesun %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1554
+#: ../libcore/marlin-undostack-manager.c:1571
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
@@ -351,15 +351,15 @@ msgstr[0] "_Vrátit přejmenování %d položky"
 msgstr[1] "_Vrátit přejmenování %d položek"
 msgstr[2] "_Vrátit přejmenování %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1558
+#: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
 msgstr "_Vrátit vytvoření prázdného souboru"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1578
 msgid "_Undo creation of a file from template"
 msgstr "_Vrátit vytvoření souboru z šablony"
 
-#: ../libcore/marlin-undostack-manager.c:1565
+#: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
@@ -367,7 +367,7 @@ msgstr[0] "_Vrátit vytvoření %d složky"
 msgstr[1] "_Vrátit vytvoření %d složek"
 msgstr[2] "_Vrátit vytvoření %d složek"
 
-#: ../libcore/marlin-undostack-manager.c:1570
+#: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
@@ -375,7 +375,7 @@ msgstr[0] "_Vrátit přesun %d položky do koše"
 msgstr[1] "_Vrátit přesun %d položek do koše"
 msgstr[2] "_Vrátit přesun %d položek do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
@@ -383,7 +383,7 @@ msgstr[0] "_Vrátit obnovení %d položky z koše"
 msgstr[1] "_Vrátit obnovení %d položek z koše"
 msgstr[2] "_Vrátit obnovení %d položek z koše"
 
-#: ../libcore/marlin-undostack-manager.c:1580
+#: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
@@ -391,7 +391,7 @@ msgstr[0] "_Vrátit vytvoření odkazu na %d položku"
 msgstr[1] "_Vrátit vytvoření odkazu na %d položky"
 msgstr[2] "_Vrátit vytvoření odkazu na %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1585
+#: ../libcore/marlin-undostack-manager.c:1602
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
@@ -399,7 +399,7 @@ msgstr[0] "_Vrátit smazání %d položky"
 msgstr[1] "_Vrátit smazání %d položek"
 msgstr[2] "_Vrátit smazání %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1590
+#: ../libcore/marlin-undostack-manager.c:1607
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
@@ -407,7 +407,7 @@ msgstr[0] "Vrátit vnořenou změnu práv %d položky"
 msgstr[1] "Vrátit vnořenou změnu práv %d položek"
 msgstr[2] "_Vrátit rekurzivní změnu oprávnění %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1596
+#: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
@@ -415,7 +415,7 @@ msgstr[0] "Vrátit změnu práv %d položky"
 msgstr[1] "Vrátit změnu práv %d položek"
 msgstr[2] "Vrátit změnu práv %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1601
+#: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
@@ -423,7 +423,7 @@ msgstr[0] "Vrátit změnu skupiny %d položky"
 msgstr[1] "Vrátit změnu skupiny %d položek"
 msgstr[2] "Vrátit změnu skupiny %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1606
+#: ../libcore/marlin-undostack-manager.c:1623
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
@@ -431,7 +431,7 @@ msgstr[0] "Vrátit změnu vlastníka %d položky"
 msgstr[1] "Vrátit změnu vlastníka %d položek"
 msgstr[2] "Vrátit změnu vlastníka %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1634
+#: ../libcore/marlin-undostack-manager.c:1651
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
@@ -439,7 +439,7 @@ msgstr[0] "_Znovu provést kopírování %d položky"
 msgstr[1] "_Znovu provést kopírování %d položek"
 msgstr[2] "_Znovu provést kopírování %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1639
+#: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
@@ -447,7 +447,7 @@ msgstr[0] "_Znovu provést zkopírování %d položky"
 msgstr[1] "_Znovu provést zkopírování %d položek"
 msgstr[2] "_Znovu provést zkopírování %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1644
+#: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
@@ -455,7 +455,7 @@ msgstr[0] "_Znovu provést přesun %d položky"
 msgstr[1] "_Znovu provést přesun %d položek"
 msgstr[2] "_Znovu provést přesun %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1649
+#: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
@@ -463,15 +463,15 @@ msgstr[0] "_Znovu provést přejmenování %d položky"
 msgstr[1] "_Znovu provést přejmenování %d položek"
 msgstr[2] "_Znovu provést přejmenování %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1653
+#: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
 msgstr "_Znovu vytvořit prázdný soubor"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
 msgstr "_Znovu vytvořit soubor z šablony"
 
-#: ../libcore/marlin-undostack-manager.c:1660
+#: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
@@ -479,7 +479,7 @@ msgstr[0] "_Znovu provést vytvoření %d složky"
 msgstr[1] "_Znovu provést vytvoření %d složek"
 msgstr[2] "_Znovu provést vytvoření %d složek"
 
-#: ../libcore/marlin-undostack-manager.c:1665
+#: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
@@ -487,7 +487,7 @@ msgstr[0] "_Znovu provést přesun %d položky do koše"
 msgstr[1] "_Znovu provést přesun %d položek do koše"
 msgstr[2] "_Znovu provést přesun %d položek do koše"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
@@ -495,7 +495,7 @@ msgstr[0] "_Znovu provést obnovení %d položky z koše"
 msgstr[1] "_Znovu provést obnovení %d položek z koše"
 msgstr[2] "_Znovu provést obnovení %d položek z koše"
 
-#: ../libcore/marlin-undostack-manager.c:1675
+#: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
@@ -503,7 +503,7 @@ msgstr[0] "_Znovu vytvořit odkaz na %d položku"
 msgstr[1] "_Znovu vytvořit odkaz na %d položky"
 msgstr[2] "_Znovu vytvořit odkaz na %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1680
+#: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
@@ -511,7 +511,7 @@ msgstr[0] "_Znovu provést smazání %d položky"
 msgstr[1] "_Znovu provést smazání %d položek"
 msgstr[2] "_Znovu provést smazání %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1685
+#: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
@@ -519,7 +519,7 @@ msgstr[0] "Znovu provést vnořenou změnu práv %d položky"
 msgstr[1] "Znovu provést vnořenou změnu práv %d položek"
 msgstr[2] "Znovu provést vnořenou změnu práv %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1691
+#: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
@@ -527,7 +527,7 @@ msgstr[0] "Znovu provést změnu práv %d položky"
 msgstr[1] "Znovu provést změnu práv %d položek"
 msgstr[2] "Znovu provést změnu práv %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1696
+#: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
@@ -535,7 +535,7 @@ msgstr[0] "Znovu provést změnu skupiny %d položky"
 msgstr[1] "Znovu provést změnu skupiny %d položek"
 msgstr[2] "Znovu provést změnu skupiny %d položek"
 
-#: ../libcore/marlin-undostack-manager.c:1701
+#: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -553,13 +553,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Soubor nelze z koše obnovit"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:370
+#: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Sloučit složku \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:373
+#: ../libcore/marlin-file-conflict-dialog.c:375
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -568,131 +568,131 @@ msgstr ""
 "kopírovanými soubory, budete před jeho nahrazením dotázáni na potvrzení."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:378
+#: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starší složka se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:382
+#: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Novější složka se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:386
+#: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Jiná složka se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:391
+#: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
 msgstr "Nahrazením se odstraní všechny soubory ve složce."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:393
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Nahradit složku \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:395
+#: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Složka se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:400
+#: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Nahradit soubor \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:402
+#: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
 msgstr "Při nahrazení se přepíše jeho obsah."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:406
+#: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Starší soubor se stejným názvem již existuje v \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:410
+#: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Novější soubor se stejným názvem již existuje v \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:414
+#: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Jiný soubor se stejným názvem již existuje v \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:469
+#: ../libcore/marlin-file-conflict-dialog.c:471
 msgid "Original file"
 msgstr "Původní soubor"
 
 #: ../libcore/marlin-file-conflict-dialog.c:253
 #: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:470
-#: ../libcore/marlin-file-conflict-dialog.c:491
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
 msgid "Size:"
 msgstr "Velikost:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:473
-#: ../libcore/marlin-file-conflict-dialog.c:494
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
 msgid "Type:"
 msgstr "Typ:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:476
-#: ../libcore/marlin-file-conflict-dialog.c:497
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
 msgstr "Naposledy změněno:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:490
+#: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
 msgstr "Nahradit s"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:515
+#: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
 msgstr "Sloučit"
 
-#: ../libcore/marlin-file-conflict-dialog.c:709
+#: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
 msgstr "Vybrat nový název pro _cíl"
 
-#: ../libcore/marlin-file-conflict-dialog.c:723
+#: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
 msgstr "Obnovit výchozí"
 
-#: ../libcore/marlin-file-conflict-dialog.c:735
+#: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
 msgstr "Použít tuto akci na všechny soubory"
 
-#: ../libcore/marlin-file-conflict-dialog.c:746
+#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
 msgstr "Pře_skočit"
 
-#: ../libcore/marlin-file-conflict-dialog.c:751
+#: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
 msgstr "Přejme_novat"
 
-#: ../libcore/marlin-file-conflict-dialog.c:757
+#: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
 msgstr "Nahradit"
 
-#: ../libcore/marlin-file-conflict-dialog.c:830
+#: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Konflikt souborů"
 
@@ -868,11 +868,11 @@ msgstr " ("
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1385
+#: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Jste si jisti, že chcete z koše nenávratně smazat „%B“?"
 
-#: ../libcore/marlin-file-operations.c:1388
+#: ../libcore/marlin-file-operations.c:1387
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -884,16 +884,16 @@ msgstr[0] "Opravdu chcete z koše nenávratně smazat %'d vybranou položku?"
 msgstr[1] "Opravdu chcete z koše nenávratně smazat %'d vybrané položky?"
 msgstr[2] "Opravdu chcete z koše nenávratně smazat %'d vybraných položek?"
 
-#: ../libcore/marlin-file-operations.c:1398
-#: ../libcore/marlin-file-operations.c:1478
+#: ../libcore/marlin-file-operations.c:1397
+#: ../libcore/marlin-file-operations.c:1477
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
-#: ../libcore/marlin-file-operations.c:1423
+#: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
 msgstr "Trvale smazat všechny položky z koše?"
 
-#: ../libcore/marlin-file-operations.c:1424
+#: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -901,24 +901,24 @@ msgstr ""
 "Položky ze všech košů, včetně těch na připojených externích discích, budou "
 "trvale smazány."
 
-#: ../libcore/marlin-file-operations.c:1427
+#: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "Trvale smazat všechny položky z koše v tomto umístění?"
 
-#: ../libcore/marlin-file-operations.c:1428
+#: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
 
-#: ../libcore/marlin-file-operations.c:1439
-#: ../libcore/marlin-file-operations.c:2416 ../src/View/Sidebar.vala:1260
+#: ../libcore/marlin-file-operations.c:1438
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
 msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 
-#: ../libcore/marlin-file-operations.c:1466
+#: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Opravdu chcete „%B“ nenávratně smazat?"
 
-#: ../libcore/marlin-file-operations.c:1469
+#: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -927,12 +927,12 @@ msgstr[0] "Opravdu chcete nenávratně smazat %'d vybranou položku?"
 msgstr[1] "Opravdu chcete nenávratně smazat %'d vybrané položky?"
 msgstr[2] "Opravdu chcete nenávratně smazat %'d vybraných položek?"
 
-#: ../libcore/marlin-file-operations.c:1494
-#: ../libcore/marlin-file-operations.c:1526
+#: ../libcore/marlin-file-operations.c:1493
+#: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
 msgstr "Mazání souborů"
 
-#: ../libcore/marlin-file-operations.c:1520
+#: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -940,22 +940,22 @@ msgstr[0] "zbývá smazat %'d soubor"
 msgstr[1] "zbývá smazat %'d soubory"
 msgstr[2] "zbývá smazat %'d souborů"
 
-#: ../libcore/marlin-file-operations.c:1540
+#: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "zbývá %T"
 msgstr[1] "zbývají %T"
 msgstr[2] "zbývá %T"
 
-#: ../libcore/marlin-file-operations.c:1608
-#: ../libcore/marlin-file-operations.c:1642
-#: ../libcore/marlin-file-operations.c:1681
-#: ../libcore/marlin-file-operations.c:1758
-#: ../libcore/marlin-file-operations.c:2671
+#: ../libcore/marlin-file-operations.c:1607
+#: ../libcore/marlin-file-operations.c:1641
+#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:2670
 msgid "Error while deleting."
 msgstr "Chyba během mazání."
 
-#: ../libcore/marlin-file-operations.c:1612
+#: ../libcore/marlin-file-operations.c:1611
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -963,45 +963,45 @@ msgstr ""
 "Soubory ve složce „%B“ nelze smazat, protože nemáte oprávnění na jejich "
 "zobrazení."
 
-#: ../libcore/marlin-file-operations.c:1615
-#: ../libcore/marlin-file-operations.c:2730
-#: ../libcore/marlin-file-operations.c:3726
+#: ../libcore/marlin-file-operations.c:1614
+#: ../libcore/marlin-file-operations.c:2729
+#: ../libcore/marlin-file-operations.c:3725
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Nastala chyba při zjišťování informací o souborech ve složce \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:1624
-#: ../libcore/marlin-file-operations.c:3735
+#: ../libcore/marlin-file-operations.c:1623
+#: ../libcore/marlin-file-operations.c:3734
 msgid "_Skip files"
 msgstr "Pře_skočit soubory"
 
-#: ../libcore/marlin-file-operations.c:1645
+#: ../libcore/marlin-file-operations.c:1644
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Složku „%B“ nelze smazat, protože nemáte oprávnění na její zobrazení."
 
-#: ../libcore/marlin-file-operations.c:1648
-#: ../libcore/marlin-file-operations.c:2769
-#: ../libcore/marlin-file-operations.c:3771
+#: ../libcore/marlin-file-operations.c:1647
+#: ../libcore/marlin-file-operations.c:2768
+#: ../libcore/marlin-file-operations.c:3770
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Došlo k chybě při čtení složky \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:1682
+#: ../libcore/marlin-file-operations.c:1681
 msgid "Could not remove the folder %B."
 msgstr "Nelze odstranit složku %B."
 
-#: ../libcore/marlin-file-operations.c:1759
+#: ../libcore/marlin-file-operations.c:1758
 msgid "There was an error deleting %B."
 msgstr "Při mazání %B došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:1835
-#: ../libcore/marlin-file-operations.c:1847
+#: ../libcore/marlin-file-operations.c:1834
+#: ../libcore/marlin-file-operations.c:1846
 msgid "Moving files to trash"
 msgstr "Soubory se přesouvají do koše"
 
-#: ../libcore/marlin-file-operations.c:1849
+#: ../libcore/marlin-file-operations.c:1848
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1009,20 +1009,20 @@ msgstr[0] "zbývá %'d soubor k přesunutí do koše"
 msgstr[1] "zbývají %'d soubory k přesunutí do koše"
 msgstr[2] "zbývá %'d souborů k přesunutí do koše"
 
-#: ../libcore/marlin-file-operations.c:1944
-#: ../libcore/marlin-file-operations.c:1947
-#: ../libcore/marlin-file-operations.c:1950
+#: ../libcore/marlin-file-operations.c:1943
+#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1949
 msgid "Cannot move file to trash or delete it"
 msgstr "Soubor nelze odstranit nebo přesunout do koše"
 
-#: ../libcore/marlin-file-operations.c:1945
+#: ../libcore/marlin-file-operations.c:1944
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Některé soubory nelze odstranit nebo přesunout do koše, protože souborový "
 "systém je pouze pro čtení."
 
-#: ../libcore/marlin-file-operations.c:1948
+#: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1030,7 +1030,7 @@ msgstr ""
 "Některé soubory nelze odstranit nebo přesunout do koše, protože se nacházejí "
 "uvnitř složek, ke kterým nemáte právo zápisu."
 
-#: ../libcore/marlin-file-operations.c:1951
+#: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1038,11 +1038,11 @@ msgstr ""
 "Některé soubory nelze odstranit nebo přesunout do koše, protože k nim nemáte "
 "právo zápisu."
 
-#: ../libcore/marlin-file-operations.c:1953
+#: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
 
-#: ../libcore/marlin-file-operations.c:1954
+#: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1050,18 +1050,18 @@ msgstr ""
 "Tento soubor nemohl být přesunut do koše. Níže naleznete podrobnější "
 "informace."
 
-#: ../libcore/marlin-file-operations.c:1958
+#: ../libcore/marlin-file-operations.c:1957
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
 
-#: ../libcore/marlin-file-operations.c:1959
+#: ../libcore/marlin-file-operations.c:1958
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 "Soubor nemůže být přesunut do koše. Možná jej nebudete moci ani smazat."
 
-#: ../libcore/marlin-file-operations.c:1964
+#: ../libcore/marlin-file-operations.c:1963
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1069,27 +1069,27 @@ msgstr ""
 "\n"
 " Smazáním souboru smažete soubor nenávratně"
 
-#: ../libcore/marlin-file-operations.c:2154
+#: ../libcore/marlin-file-operations.c:2153
 msgid "Trashing Files"
 msgstr "Soubory se přesouvají do koše"
 
-#: ../libcore/marlin-file-operations.c:2156
+#: ../libcore/marlin-file-operations.c:2155
 msgid "Deleting Files"
 msgstr "Mazání souborů"
 
-#: ../libcore/marlin-file-operations.c:2225
+#: ../libcore/marlin-file-operations.c:2224
 msgid "Unable to eject %V"
 msgstr "Nelze vysunout %V"
 
-#: ../libcore/marlin-file-operations.c:2227
+#: ../libcore/marlin-file-operations.c:2226
 msgid "Unable to unmount %V"
 msgstr "Nelze odpojit %V"
 
-#: ../libcore/marlin-file-operations.c:2406
+#: ../libcore/marlin-file-operations.c:2405
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Chcete před odpojením vysypat koš?"
 
-#: ../libcore/marlin-file-operations.c:2408
+#: ../libcore/marlin-file-operations.c:2407
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1097,16 +1097,16 @@ msgstr ""
 "Aby bylo možné uvolnit prostor na tomto svazku, je nutné vyprázdnit koš. "
 "Všechny položky v koši na tomto svazku budou nenávratně ztraceny."
 
-#: ../libcore/marlin-file-operations.c:2414
+#: ../libcore/marlin-file-operations.c:2413
 msgid "Do _not Empty Trash"
 msgstr "_Nevyprazdňovat koš"
 
-#: ../libcore/marlin-file-operations.c:2528
+#: ../libcore/marlin-file-operations.c:2527
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nelze připojit %s"
 
-#: ../libcore/marlin-file-operations.c:2606
+#: ../libcore/marlin-file-operations.c:2605
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1114,7 +1114,7 @@ msgstr[0] "Připravuje se kopírování %'d souboru (%S)"
 msgstr[1] "Připravuje se kopírování %'d souborů (%S)"
 msgstr[2] "Připravuje se kopírování %'d souborů (%S)"
 
-#: ../libcore/marlin-file-operations.c:2612
+#: ../libcore/marlin-file-operations.c:2611
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1122,7 +1122,7 @@ msgstr[0] "Připravuje se přesun %'d souboru (%S)"
 msgstr[1] "Připravuje se přesun %'d souborů (%S)"
 msgstr[2] "Připravuje se přesun %'d souborů (%S)"
 
-#: ../libcore/marlin-file-operations.c:2618
+#: ../libcore/marlin-file-operations.c:2617
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1130,7 +1130,7 @@ msgstr[0] "Připravuje se smazání %'d souboru (%S)"
 msgstr[1] "Připravuje se smazání %'d souborů (%S)"
 msgstr[2] "Připravuje se smazání %'d souborů (%S)"
 
-#: ../libcore/marlin-file-operations.c:2624
+#: ../libcore/marlin-file-operations.c:2623
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1138,24 +1138,24 @@ msgstr[0] "Připravuje se přesun %'d souboru do koše"
 msgstr[1] "Připravuje se přesun %'d souborů do koše"
 msgstr[2] "Připravuje se přesun %'d souborů do koše"
 
-#: ../libcore/marlin-file-operations.c:2667
-#: ../libcore/marlin-file-operations.c:3586
-#: ../libcore/marlin-file-operations.c:3718
-#: ../libcore/marlin-file-operations.c:3763
+#: ../libcore/marlin-file-operations.c:2666
+#: ../libcore/marlin-file-operations.c:3585
+#: ../libcore/marlin-file-operations.c:3717
+#: ../libcore/marlin-file-operations.c:3762
 msgid "Error while copying."
 msgstr "Chyba při kopírování."
 
-#: ../libcore/marlin-file-operations.c:2669
-#: ../libcore/marlin-file-operations.c:3716
-#: ../libcore/marlin-file-operations.c:3761
+#: ../libcore/marlin-file-operations.c:2668
+#: ../libcore/marlin-file-operations.c:3715
+#: ../libcore/marlin-file-operations.c:3760
 msgid "Error while moving."
 msgstr "Chyba při přesunu."
 
-#: ../libcore/marlin-file-operations.c:2673
+#: ../libcore/marlin-file-operations.c:2672
 msgid "Error while moving files to trash."
 msgstr "Chyba při přesunu souborů do koše."
 
-#: ../libcore/marlin-file-operations.c:2727
+#: ../libcore/marlin-file-operations.c:2726
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1163,106 +1163,106 @@ msgstr ""
 "Soubory ve složce \"%B\" nelze spravovat, protože nemáte oprávnění pro "
 "jejich zobrazení."
 
-#: ../libcore/marlin-file-operations.c:2766
+#: ../libcore/marlin-file-operations.c:2765
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Složku \"%B\" nelze spravovat, protože nemáte oprávnění na její čtení."
 
-#: ../libcore/marlin-file-operations.c:2842
+#: ../libcore/marlin-file-operations.c:2841
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Soubor \"%B\" nelze spravovat, protože nemáte oprávnění jej číst."
 
-#: ../libcore/marlin-file-operations.c:2845
+#: ../libcore/marlin-file-operations.c:2844
 msgid "There was an error getting information about \"%B\"."
 msgstr "Při získávání informací o \"%B\" došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:2945
-#: ../libcore/marlin-file-operations.c:2987
-#: ../libcore/marlin-file-operations.c:3020
-#: ../libcore/marlin-file-operations.c:3050
+#: ../libcore/marlin-file-operations.c:2944
+#: ../libcore/marlin-file-operations.c:2986
+#: ../libcore/marlin-file-operations.c:3019
+#: ../libcore/marlin-file-operations.c:3049
 msgid "Error while copying to \"%B\"."
 msgstr "Chyba při kopírování do \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2949
+#: ../libcore/marlin-file-operations.c:2948
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nemáte oprávnění přistupovat k cílové složce."
 
-#: ../libcore/marlin-file-operations.c:2951
+#: ../libcore/marlin-file-operations.c:2950
 msgid "There was an error getting information about the destination."
 msgstr "Při získávání informací o cíli došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:2988
+#: ../libcore/marlin-file-operations.c:2987
 msgid "The destination is not a folder."
 msgstr "Cílové umístění není složka."
 
-#: ../libcore/marlin-file-operations.c:3021
+#: ../libcore/marlin-file-operations.c:3020
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 "V cíli není dostatek místa. Zkuste uvolnit místo odstraněním souborů."
 
-#: ../libcore/marlin-file-operations.c:3023
+#: ../libcore/marlin-file-operations.c:3022
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Dostupno je %S, ale vyžadováno je %S."
 
-#: ../libcore/marlin-file-operations.c:3051
+#: ../libcore/marlin-file-operations.c:3050
 msgid "The destination is read-only."
 msgstr "Cílové umístění je pouze pro čtení."
 
-#: ../libcore/marlin-file-operations.c:3112
+#: ../libcore/marlin-file-operations.c:3111
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Přesouvá se \"%B\" do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3113
+#: ../libcore/marlin-file-operations.c:3112
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopíruje se \"%B\" do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3117
+#: ../libcore/marlin-file-operations.c:3116
 msgid "Duplicating \"%B\""
 msgstr "Zdvojování \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3121
+#: ../libcore/marlin-file-operations.c:3120
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Přesouvá se %'d soubor (z \"%B\") do \"%B\""
 msgstr[1] "Přesouvají se %'d soubory (z \"%B\") do \"%B\""
 msgstr[2] "Přesouvá se %'d souborů (z \"%B\") do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3124
+#: ../libcore/marlin-file-operations.c:3123
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopíruje se %'d soubor (z \"%B\") do \"%B\""
 msgstr[1] "Kopírují se %'d soubory (z \"%B\") do \"%B\""
 msgstr[2] "Kopíruje se %'d souborů (z \"%B\") do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3131
+#: ../libcore/marlin-file-operations.c:3130
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Zdvojuje se %'d soubor (v \"%B\")"
 msgstr[1] "Zdvojují se %'d soubory (v \"%B\")"
 msgstr[2] "Zdvojuje se %'d souborů (v \"%B\")"
 
-#: ../libcore/marlin-file-operations.c:3140
+#: ../libcore/marlin-file-operations.c:3139
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Přesouvá se %'d soubor do \"%B\""
 msgstr[1] "Přesouvají se %'d soubory do \"%B\""
 msgstr[2] "Přesouvá se %'d souborů do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3144
+#: ../libcore/marlin-file-operations.c:3143
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopíruje se %'d soubor do \"%B\""
 msgstr[1] "Kopírují se %'d soubory do \"%B\""
 msgstr[2] "Kopíruje se %'d souborů do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3149
+#: ../libcore/marlin-file-operations.c:3148
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1270,19 +1270,19 @@ msgstr[0] "Zdvojuje se %'d soubor"
 msgstr[1] "Zdvojují se %'d soubory"
 msgstr[2] "Zdvojuje se %'d souborů"
 
-#: ../libcore/marlin-file-operations.c:3200
+#: ../libcore/marlin-file-operations.c:3199
 #, c-format
 msgid "%S of %S"
 msgstr "%S z %S"
 
-#: ../libcore/marlin-file-operations.c:3211
+#: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S z %S — zbývá %T (%S/s)"
 msgstr[1] "%S z %S — zbývají %T (%S/s)"
 msgstr[2] "%S z %S — zbývá %T (%S/s)"
 
-#: ../libcore/marlin-file-operations.c:3590
+#: ../libcore/marlin-file-operations.c:3589
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1290,11 +1290,11 @@ msgstr ""
 "Složku \"%B\" nelze zkopírovat, protože nemáte oprávnění vytvořit ji v "
 "cílovém umístění."
 
-#: ../libcore/marlin-file-operations.c:3593
+#: ../libcore/marlin-file-operations.c:3592
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Při vytváření složky \"%B\" došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:3723
+#: ../libcore/marlin-file-operations.c:3722
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1302,87 +1302,87 @@ msgstr ""
 "Soubory ve složce \"%B\" nelze zkopírovat, protože nemáte oprávnění na "
 "jejich zobrazení."
 
-#: ../libcore/marlin-file-operations.c:3768
+#: ../libcore/marlin-file-operations.c:3767
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Složku \"%B\" nelze zkopírovat, protože nemáte oprávnění na její čtení."
 
-#: ../libcore/marlin-file-operations.c:3813
-#: ../libcore/marlin-file-operations.c:4519
+#: ../libcore/marlin-file-operations.c:3812
+#: ../libcore/marlin-file-operations.c:4518
 msgid "Error while moving \"%B\"."
 msgstr "Chyba při přesunu \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3814
+#: ../libcore/marlin-file-operations.c:3813
 msgid "Could not remove the source folder."
 msgstr "Nelze odstranit zdrojovou složku."
 
-#: ../libcore/marlin-file-operations.c:3899
-#: ../libcore/marlin-file-operations.c:3940
-#: ../libcore/marlin-file-operations.c:4521
+#: ../libcore/marlin-file-operations.c:3898
+#: ../libcore/marlin-file-operations.c:3939
+#: ../libcore/marlin-file-operations.c:4520
 msgid "Error while copying \"%B\"."
 msgstr "Chyba při kopírování \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3900
+#: ../libcore/marlin-file-operations.c:3899
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nelze odstranit soubory z již existující složky %F."
 
-#: ../libcore/marlin-file-operations.c:3941
+#: ../libcore/marlin-file-operations.c:3940
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nelze odstranit již existující soubor %F."
 
-#: ../libcore/marlin-file-operations.c:4271
-#: ../libcore/marlin-file-operations.c:4947
+#: ../libcore/marlin-file-operations.c:4270
+#: ../libcore/marlin-file-operations.c:4946
 msgid "You cannot move a folder into itself."
 msgstr "Složku nejde přesunout do ní samé."
 
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
+#: ../libcore/marlin-file-operations.c:4271
+#: ../libcore/marlin-file-operations.c:4947
 msgid "You cannot copy a folder into itself."
 msgstr "Složku nejde kopírovat do ní samé."
 
-#: ../libcore/marlin-file-operations.c:4273
-#: ../libcore/marlin-file-operations.c:4949
+#: ../libcore/marlin-file-operations.c:4272
+#: ../libcore/marlin-file-operations.c:4948
 msgid "The destination folder is inside the source folder."
 msgstr "Cílové umístění je uvnitř zdrojové složky."
 
-#: ../libcore/marlin-file-operations.c:4304
+#: ../libcore/marlin-file-operations.c:4303
 msgid "You cannot move a file over itself."
 msgstr "Nelze přesunout soubor sám na sebe."
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:4304
 msgid "You cannot copy a file over itself."
 msgstr "Nelze kopírovat soubor sám na sebe."
 
-#: ../libcore/marlin-file-operations.c:4306
+#: ../libcore/marlin-file-operations.c:4305
 msgid "The source file would be overwritten by the destination."
 msgstr "Zdrojový soubor by byl přepsán cílovým."
 
-#: ../libcore/marlin-file-operations.c:4523
+#: ../libcore/marlin-file-operations.c:4522
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Nelze odstranit již existující soubor se stejným názvem v %F."
 
-#: ../libcore/marlin-file-operations.c:4593
+#: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
 msgstr "\"%B\" zde nelze zkopírovat."
 
-#: ../libcore/marlin-file-operations.c:4594
+#: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
 msgstr "Při kopírování souboru do %B došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:4821
+#: ../libcore/marlin-file-operations.c:4820
 msgid "Copying Files"
 msgstr "Soubory se kopírují"
 
-#: ../libcore/marlin-file-operations.c:4847
+#: ../libcore/marlin-file-operations.c:4846
 msgid "Preparing to move to \"%B\""
 msgstr "Připravuje se přesun do \"%B\""
 
-#: ../libcore/marlin-file-operations.c:4859
+#: ../libcore/marlin-file-operations.c:4858
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1390,25 +1390,25 @@ msgstr[0] "Připravuje se přesun %'d souboru"
 msgstr[1] "Připravuje se přesun %'d souborů"
 msgstr[2] "Připravuje se přesun %'d souborů"
 
-#: ../libcore/marlin-file-operations.c:5107
+#: ../libcore/marlin-file-operations.c:5106
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Chyba při přesunu \"%F\"."
 
-#: ../libcore/marlin-file-operations.c:5108
+#: ../libcore/marlin-file-operations.c:5107
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Při přesunu souboru do %F došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:5371
+#: ../libcore/marlin-file-operations.c:5370
 msgid "Moving Files"
 msgstr "Soubory se přesouvají"
 
-#: ../libcore/marlin-file-operations.c:5400
+#: ../libcore/marlin-file-operations.c:5399
 msgid "Creating links in \"%B\""
 msgstr "Vytváří se odkazy v \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5411
+#: ../libcore/marlin-file-operations.c:5410
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1416,62 +1416,62 @@ msgstr[0] "Vytváří se odkaz k %'d souboru"
 msgstr[1] "Vytváří se odkazy k %'d souborům"
 msgstr[2] "Vytváří se odkazy k %'d souborům"
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5551
 msgid "Error while creating link to %B."
 msgstr "Chyba při vytváření odkazu na %B."
 
-#: ../libcore/marlin-file-operations.c:5554
+#: ../libcore/marlin-file-operations.c:5553
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolické odkazy jsou podporovány pouze pro místní soubory"
 
-#: ../libcore/marlin-file-operations.c:5557
+#: ../libcore/marlin-file-operations.c:5556
 msgid "The target doesn't support symbolic links."
 msgstr "Tento cíl nepodporuje symbolické odkazy."
 
-#: ../libcore/marlin-file-operations.c:5560
+#: ../libcore/marlin-file-operations.c:5559
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Při vytváření symbolického odkazu v %F došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:5888
-#: ../libcore/marlin-file-operations.c:5891
+#: ../libcore/marlin-file-operations.c:5887
+#: ../libcore/marlin-file-operations.c:5890
 msgid "Setting permissions"
 msgstr "Nastavuje se oprávnění"
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:6002
 msgid "Cannot copy into trash."
 msgstr "Nelze kopírovat do koše."
 
-#: ../libcore/marlin-file-operations.c:6004
+#: ../libcore/marlin-file-operations.c:6003
 msgid "It is not permitted to copy files into the trash"
 msgstr "Není dovoleno kopírovat soubory do koše."
 
-#: ../libcore/marlin-file-operations.c:6145
+#: ../libcore/marlin-file-operations.c:6144
 msgid "untitled folder"
 msgstr "nepojmenovaná složka"
 
-#: ../libcore/marlin-file-operations.c:6153
+#: ../libcore/marlin-file-operations.c:6152
 msgid "new file"
 msgstr "nový soubor"
 
-#: ../libcore/marlin-file-operations.c:6324
+#: ../libcore/marlin-file-operations.c:6323
 msgid "Error while creating directory %B."
 msgstr "Chyba při vytváření složky %B."
 
-#: ../libcore/marlin-file-operations.c:6326
+#: ../libcore/marlin-file-operations.c:6325
 msgid "Error while creating file %B."
 msgstr "Chyba při vytváření souboru %B."
 
-#: ../libcore/marlin-file-operations.c:6328
+#: ../libcore/marlin-file-operations.c:6327
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Při vytváření složky v %F došlo k chybě."
 
-#: ../libcore/marlin-file-operations.c:6644
+#: ../libcore/marlin-file-operations.c:6645
 msgid "Emptying the trash"
 msgstr "Vyprazdňuje se koš"
 
-#: ../libcore/marlin-file-operations.c:6656
+#: ../libcore/marlin-file-operations.c:6657
 msgid "Emptying Trash"
 msgstr "Vyprazdňuje se koš"
 
@@ -1496,28 +1496,28 @@ msgstr "%a %-d %b %Y v %-I:%M %p"
 msgid "link to %s"
 msgstr "odkaz na %s"
 
-#: ../libcore/gof-file.c:1879
+#: ../libcore/gof-file.c:1880
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
 
-#: ../libcore/gof-file.c:1917
+#: ../libcore/gof-file.c:1918
 msgid "No Exec field specified"
 msgstr "Nebylo specifikováno pole Exec"
 
-#: ../libcore/gof-file.c:1937
+#: ../libcore/gof-file.c:1938
 msgid "No URL field specified"
 msgstr "Nebyla zadána adresa URL"
 
-#: ../libcore/gof-file.c:1943
+#: ../libcore/gof-file.c:1944
 msgid "Invalid desktop file"
 msgstr "Neplatný soubor pracovní plochy"
 
-#: ../libcore/gof-file.c:2235
+#: ../libcore/gof-file.c:2236
 msgid "Slashes are not allowed in filenames"
 msgstr "Lomítka nejsou v názvech souborů povolena"
 
-#: ../libcore/gof-file.c:2255
+#: ../libcore/gof-file.c:2256
 msgid "Toplevel files cannot be renamed"
 msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
 
@@ -1535,51 +1535,51 @@ msgstr "Následující"
 msgid "Create folder"
 msgstr ""
 
-#: ../src/View/Window.vala:181
+#: ../src/View/Window.vala:179
 msgid "Files isn't your default file manager."
 msgstr "Tento Správce souborů není váš výchozí"
 
-#: ../src/View/Window.vala:187
+#: ../src/View/Window.vala:185
 msgid "Set as Default"
 msgstr "Nastavit jako Výchozí"
 
-#: ../src/View/Window.vala:193
+#: ../src/View/Window.vala:191
 msgid "Ignore"
 msgstr "Ignorovat"
 
-#: ../src/View/ViewContainer.vala:288 ../src/View/Sidebar.vala:407
+#: ../src/View/ViewContainer.vala:296 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Domů"
 
-#: ../src/View/ViewContainer.vala:290 ../src/View/Sidebar.vala:457
+#: ../src/View/ViewContainer.vala:298 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Souborový systém"
 
-#: ../src/View/ViewContainer.vala:307
+#: ../src/View/ViewContainer.vala:315
 msgid "(as Administrator)"
 msgstr "(jako Administrátor)"
 
-#: ../src/View/ViewContainer.vala:315
+#: ../src/View/ViewContainer.vala:324
 msgid "This does not belong to you."
 msgstr "Toto vám nepatří"
 
-#: ../src/View/ViewContainer.vala:316
+#: ../src/View/ViewContainer.vala:325
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
-#: ../src/View/ViewContainer.vala:319
+#: ../src/View/ViewContainer.vala:328
 msgid "Unable to mount folder."
 msgstr "Složku nelze připojit."
 
-#: ../src/View/ViewContainer.vala:320
+#: ../src/View/ViewContainer.vala:329
 msgid "The server for this folder could not be located."
 msgstr "Server pro tuto složku nelze nalézt."
 
-#: ../src/View/ViewContainer.vala:332
+#: ../src/View/ViewContainer.vala:341
 msgid "File not found."
 msgstr "Soubor nebyl nalezen."
 
-#: ../src/View/ViewContainer.vala:333
+#: ../src/View/ViewContainer.vala:342
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor již neexistuje."
 
@@ -1588,7 +1588,7 @@ msgid "Open in New Tab"
 msgstr "Otevřít v nové kartě"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1868
+#: ../src/View/AbstractDirectoryView.vala:1918
 msgid "Open with"
 msgstr "Otevřít s"
 
@@ -1600,18 +1600,18 @@ msgstr "Další aplikace .."
 msgid "Filename"
 msgstr "Název souboru"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:569
-#: ../src/View/PropertiesWindow.vala:619
-#: ../src/View/directory_view_popup.ui:125
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
+#: ../src/View/PropertiesWindow.vala:667
+#: ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Velikost"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:360
-#: ../src/View/directory_view_popup.ui:130
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
+#: ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Typ"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:532
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
 msgid "Modified"
 msgstr "Změněno"
 
@@ -1623,37 +1623,41 @@ msgstr "Jednoduchý a účelový prohlížeč souborů"
 msgid "Launchpad Translators"
 msgstr "Launchpad překladatelé"
 
-#: ../src/View/Resources.vala:74
+#: ../src/View/Resources.vala:77
 msgid "AFP"
 msgstr "AFP"
 
-#: ../src/View/Resources.vala:75
+#: ../src/View/Resources.vala:78
 msgid "DAV"
 msgstr "DAV"
 
-#: ../src/View/Resources.vala:76
+#: ../src/View/Resources.vala:79
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../src/View/Resources.vala:77
+#: ../src/View/Resources.vala:80
 msgid "FTP"
 msgstr "FTP"
 
-#: ../src/View/Resources.vala:78 ../src/View/Sidebar.vala:571
+#: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:627
 msgid "Network"
 msgstr "Síť"
 
-#: ../src/View/Resources.vala:79
+#: ../src/View/Resources.vala:82
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../src/View/Resources.vala:80
+#: ../src/View/Resources.vala:83
 msgid "SMB"
 msgstr "SMB"
 
-#: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:434
+#: ../src/View/Resources.vala:84 ../src/View/Sidebar.vala:490
 msgid "Trash"
 msgstr "Koš"
+
+#: ../src/View/Resources.vala:85
+msgid "Recent"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This folder does not exist."
@@ -1680,245 +1684,254 @@ msgstr ""
 "Selhalo vytvoření složky\n"
 "%s"
 
-#: ../src/View/Slot.vala:36
+#: ../src/View/Slot.vala:42
 msgid "This folder is empty."
 msgstr "Tato složka je prázdná."
 
-#: ../src/View/Slot.vala:37
+#: ../src/View/Slot.vala:43
+msgid "There are no recent files."
+msgstr ""
+
+#: ../src/View/Slot.vala:44
 msgid "Access denied"
 msgstr "Přístup odepřen"
 
-#: ../src/View/OverlayBar.vala:145
+#: ../src/View/OverlayBar.vala:155
 msgid "%u folders"
 msgstr "%u složek"
 
-#: ../src/View/OverlayBar.vala:147 ../src/View/OverlayBar.vala:155
+#: ../src/View/OverlayBar.vala:157 ../src/View/OverlayBar.vala:165
 msgid " and %u other item (%s) selected"
 msgstr " a %u další položka (%s) zvolena"
 
-#: ../src/View/OverlayBar.vala:148 ../src/View/OverlayBar.vala:156
+#: ../src/View/OverlayBar.vala:158 ../src/View/OverlayBar.vala:166
 msgid " and %u other items (%s) selected"
 msgstr " a %u dalších položek (%s) zvoleno"
 
-#: ../src/View/OverlayBar.vala:151 ../src/View/OverlayBar.vala:159
+#: ../src/View/OverlayBar.vala:161 ../src/View/OverlayBar.vala:169
 msgid " selected"
 msgstr " zvoleno"
 
-#: ../src/View/OverlayBar.vala:153
+#: ../src/View/OverlayBar.vala:163
 msgid "%u folder"
 msgstr "%u složka"
 
-#: ../src/View/OverlayBar.vala:161
+#: ../src/View/OverlayBar.vala:171
 msgid "%u items selected (%s)"
 msgstr "%u označených položek (%s)"
 
-#: ../src/View/PropertiesWindow.vala:87 ../src/View/directory_view_popup.ui:81
+#: ../src/View/PropertiesWindow.vala:108
+#: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../src/View/PropertiesWindow.vala:184
+#: ../src/View/PropertiesWindow.vala:202
 msgid "General"
 msgstr "Obecné"
 
-#: ../src/View/PropertiesWindow.vala:192
+#: ../src/View/PropertiesWindow.vala:210
 msgid "More"
 msgstr "Další"
 
-#: ../src/View/PropertiesWindow.vala:212
+#: ../src/View/PropertiesWindow.vala:235
 msgid "Preview"
 msgstr "Náhled"
 
-#: ../src/View/PropertiesWindow.vala:228
+#: ../src/View/PropertiesWindow.vala:251
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:288
 msgid "file"
 msgstr "soubor"
 
-#: ../src/View/PropertiesWindow.vala:267
+#: ../src/View/PropertiesWindow.vala:290
 msgid "files"
 msgstr "souborů"
 
-#: ../src/View/PropertiesWindow.vala:269
+#: ../src/View/PropertiesWindow.vala:292
 msgid "Actual size could be larger, "
 msgstr "Skutečná velikost může být větší, "
 
-#: ../src/View/PropertiesWindow.vala:269
+#: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
 msgstr "nelze přečist kvůli nedostatečnému oprávnění nebo jiným chybám."
 
-#: ../src/View/PropertiesWindow.vala:298
+#: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
 msgstr "neznámý"
 
-#: ../src/View/PropertiesWindow.vala:417
+#: ../src/View/PropertiesWindow.vala:451
 msgid "%u selected items"
 msgstr "%u vybraných položek"
 
-#: ../src/View/PropertiesWindow.vala:530
+#: ../src/View/PropertiesWindow.vala:564
 msgid "Created"
 msgstr "Vytvořeno"
 
-#: ../src/View/PropertiesWindow.vala:535
+#: ../src/View/PropertiesWindow.vala:569
 msgid "Last Access"
 msgstr "Poslední přístup"
 
-#: ../src/View/PropertiesWindow.vala:543
+#: ../src/View/PropertiesWindow.vala:577
 msgid "Deleted"
 msgstr "Smazáno"
 
-#: ../src/View/PropertiesWindow.vala:548
+#: ../src/View/PropertiesWindow.vala:582
 msgid "MimeType"
 msgstr "MIME typ"
 
-#: ../src/View/PropertiesWindow.vala:556
+#: ../src/View/PropertiesWindow.vala:590
 msgid "MimeTypes"
 msgstr "MIME typy"
 
-#: ../src/View/PropertiesWindow.vala:576
+#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
 msgid "Location"
 msgstr "Umístění"
 
-#: ../src/View/PropertiesWindow.vala:579
+#: ../src/View/PropertiesWindow.vala:627
 msgid "Target"
 msgstr "Cíl"
 
-#: ../src/View/PropertiesWindow.vala:585
+#: ../src/View/PropertiesWindow.vala:633
 msgid "Origin Location"
 msgstr "Původní umístění"
 
-#: ../src/View/PropertiesWindow.vala:612
+#: ../src/View/PropertiesWindow.vala:660
 msgid "Info"
 msgstr "Informace"
 
-#: ../src/View/PropertiesWindow.vala:654
+#: ../src/View/PropertiesWindow.vala:702
 msgid "Other application..."
 msgstr "Jiná aplikace…"
 
-#: ../src/View/PropertiesWindow.vala:678
+#: ../src/View/PropertiesWindow.vala:726
 msgid "Open with:"
 msgstr "Oteřít s:"
 
-#: ../src/View/PropertiesWindow.vala:696
+#: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
 msgstr "Použití"
 
-#: ../src/View/PropertiesWindow.vala:703
+#: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
 msgstr "Využití zařízení:"
 
-#: ../src/View/PropertiesWindow.vala:710
+#: ../src/View/PropertiesWindow.vala:758
 msgid "%s free of %s (%d%% used)"
 msgstr "%s volných z %s (%d%% využito)"
 
-#: ../src/View/PropertiesWindow.vala:846
+#: ../src/View/PropertiesWindow.vala:894
 msgid "Read"
 msgstr "Čtení"
 
-#: ../src/View/PropertiesWindow.vala:850
+#: ../src/View/PropertiesWindow.vala:898
 msgid "Write"
 msgstr "Zápis"
 
-#: ../src/View/PropertiesWindow.vala:854
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Execute"
 msgstr "Spouštění"
 
-#: ../src/View/PropertiesWindow.vala:1058
-#: ../src/View/PropertiesWindow.vala:1071
+#: ../src/View/PropertiesWindow.vala:1106
+#: ../src/View/PropertiesWindow.vala:1119
 msgid "Owner"
 msgstr "Vlastník"
 
-#: ../src/View/PropertiesWindow.vala:1063
-#: ../src/View/PropertiesWindow.vala:1075
+#: ../src/View/PropertiesWindow.vala:1111
+#: ../src/View/PropertiesWindow.vala:1123
 msgid "Group"
 msgstr "Skupina"
 
-#: ../src/View/PropertiesWindow.vala:1079
+#: ../src/View/PropertiesWindow.vala:1127
 msgid "Everyone"
 msgstr "Kdokoli"
 
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/PropertiesWindow.vala:1359
 msgid "Select an application to open "
 msgstr "Zvolte aplikaci k otevření "
 
-#: ../src/View/Sidebar.vala:390
+#: ../src/View/Sidebar.vala:430
 msgid "Personal"
 msgstr "Osobní"
 
-#: ../src/View/Sidebar.vala:395
+#: ../src/View/Sidebar.vala:435
 msgid "Your common places and bookmarks"
 msgstr "Vaše často prohlížená místa a záložky"
 
-#: ../src/View/Sidebar.vala:414
+#: ../src/View/Sidebar.vala:454
 msgid "Open your personal folder"
 msgstr "Otevřít osobní složku"
 
-#: ../src/View/Sidebar.vala:441
+#: ../src/View/Sidebar.vala:469
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
 msgstr "Otevřít Koš"
 
-#: ../src/View/Sidebar.vala:447
+#: ../src/View/Sidebar.vala:503
 msgid "Devices"
 msgstr "Zařízení"
 
-#: ../src/View/Sidebar.vala:452
+#: ../src/View/Sidebar.vala:508
 msgid "Your local partitions and devices"
 msgstr "Vaše místní oddíly a zařízení"
 
-#: ../src/View/Sidebar.vala:464
+#: ../src/View/Sidebar.vala:520
 msgid "Open the contents of the FileSystem"
 msgstr "Otevřít obsah souborového systému"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/Sidebar.vala:683
+#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
 msgstr "Připojit a otevřít %s"
 
-#: ../src/View/Sidebar.vala:576
+#: ../src/View/Sidebar.vala:632
 msgid "Your network places"
 msgstr "Vaše síť"
 
-#: ../src/View/Sidebar.vala:606
+#: ../src/View/Sidebar.vala:662
 msgid "Entire Network"
 msgstr "Celá síť"
 
-#: ../src/View/Sidebar.vala:613
+#: ../src/View/Sidebar.vala:669
 msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
-#: ../src/View/Sidebar.vala:1132
+#: ../src/View/Sidebar.vala:1198
 msgid "Unable to start %s"
 msgstr "Nelze aktivovat %s"
 
-#: ../src/View/Sidebar.vala:1202
+#: ../src/View/Sidebar.vala:1279
 msgid "Open"
 msgstr "Otevřít"
 
-#: ../src/View/Sidebar.vala:1210
+#: ../src/View/Sidebar.vala:1287
 msgid "Open in New _Tab"
 msgstr "Otevřít v nové kar_tě"
 
-#: ../src/View/Sidebar.vala:1216
+#: ../src/View/Sidebar.vala:1293
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: ../src/View/Sidebar.vala:1224
+#: ../src/View/Sidebar.vala:1301
 msgid "Remove"
 msgstr "Odstranit"
 
-#: ../src/View/Sidebar.vala:1232 ../src/View/directory_view_popup.ui:16
+#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../src/View/Sidebar.vala:1241
+#: ../src/View/Sidebar.vala:1318
 msgid "_Mount"
 msgstr "_Připojit"
 
-#: ../src/View/Sidebar.vala:1247
+#: ../src/View/Sidebar.vala:1324
 msgid "_Unmount"
 msgstr "_Odpojit"
 
-#: ../src/View/Sidebar.vala:1253
+#: ../src/View/Sidebar.vala:1330
 msgid "_Eject"
 msgstr "V_ysunout"
 
@@ -1946,83 +1959,83 @@ msgstr "Záložky"
 msgid "Everywhere Else"
 msgstr "Všude jinde"
 
-#: ../src/View/AbstractDirectoryView.vala:556
+#: ../src/View/AbstractDirectoryView.vala:545
 msgid "Failed to preview"
 msgstr "Nelze zobrazit náhled"
 
-#: ../src/View/AbstractDirectoryView.vala:987
+#: ../src/View/AbstractDirectoryView.vala:1009
 msgid "Set as default"
 msgstr "Nastavit jako výchozí"
 
-#: ../src/View/AbstractDirectoryView.vala:1454
+#: ../src/View/AbstractDirectoryView.vala:1478
 msgid "Cannot drop this file"
 msgstr "Tento soubor nelze přetáhnout"
 
-#: ../src/View/AbstractDirectoryView.vala:1454
+#: ../src/View/AbstractDirectoryView.vala:1478
 msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
-#: ../src/View/AbstractDirectoryView.vala:1847
+#: ../src/View/AbstractDirectoryView.vala:1887
 msgid "Invalid"
 msgstr "Neplatný"
 
-#: ../src/View/AbstractDirectoryView.vala:1852
+#: ../src/View/AbstractDirectoryView.vala:1901
 msgid "Run"
 msgstr "Spustit"
 
-#: ../src/View/AbstractDirectoryView.vala:1857
+#: ../src/View/AbstractDirectoryView.vala:1906
 msgid "Open in %s"
 msgstr "Otevřít v %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1866
+#: ../src/View/AbstractDirectoryView.vala:1916
 msgid "Open in"
 msgstr "Otevřít v"
 
-#: ../src/View/AbstractDirectoryView.vala:1924
+#: ../src/View/AbstractDirectoryView.vala:1974
 msgid "Other Application"
 msgstr "Jiná Aplikace"
 
-#: ../src/View/AbstractDirectoryView.vala:2176
+#: ../src/View/AbstractDirectoryView.vala:2243
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2492
+#: ../src/View/AbstractDirectoryView.vala:2566
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: ../src/View/AbstractDirectoryView.vala:2493
+#: ../src/View/AbstractDirectoryView.vala:2567
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2660
-msgid "%s is not a valid file name"
-msgstr "%s není platný název souboru"
+#: ../src/View/AbstractDirectoryView.vala:2765
+msgid "Could not rename to '%s'"
+msgstr ""
 
-#: ../src/Application.vala:140
+#: ../src/Application.vala:146
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: ../src/Application.vala:142
+#: ../src/Application.vala:148
 msgid "Open uri(s) in new tab"
 msgstr "Otevřít adresu(-y) v nové kartě"
 
-#: ../src/Application.vala:144 ../src/View/directory_view_popup.ui:65
+#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
 msgstr "Nové okno"
 
-#: ../src/Application.vala:146
+#: ../src/Application.vala:152
 msgid "Quit Files."
 msgstr "Ukončit Správce souborů"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:154
 msgid "Enable debug logging"
 msgstr "Vypisovat ladicí zprávy"
 
-#: ../src/Application.vala:151
+#: ../src/Application.vala:157
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: ../src/Application.vala:154
+#: ../src/Application.vala:160
 msgid ""
 "\n"
 "\n"
@@ -2032,7 +2045,7 @@ msgstr ""
 "\n"
 "Procházet systém souborů správcem souborů"
 
-#: ../src/Application.vala:181
+#: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít spolu s adresami URI."
 
@@ -2112,15 +2125,15 @@ msgstr "Zobrazit nabídku kopírování"
 msgid "Cancel All In-progress Actions"
 msgstr "Zrušit všechny vykonávané akce"
 
-#: ../libwidgets/LocationBar.vala:106
+#: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
 msgstr "Obnovit složku"
 
-#: ../libwidgets/LocationBar.vala:321
+#: ../libwidgets/LocationBar.vala:322
 msgid "Go to %s"
 msgstr "Přejít do %s"
 
-#: ../libwidgets/LocationBar.vala:458
+#: ../libwidgets/LocationBar.vala:459
 msgid "Navigate to %s"
 msgstr "Přejít do %s"
 
@@ -2149,70 +2162,81 @@ msgid "Restore from Trash"
 msgstr "Obnovit z Koše"
 
 #: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:30
+#: ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Odstranit navždy"
 
+#: ../src/View/directory_view_popup.ui:16
+msgid "Open Parent Folder"
+msgstr ""
+
 #: ../src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
 msgstr "Přesunout do Koše"
 
-#: ../src/View/directory_view_popup.ui:37
+#: ../src/View/directory_view_popup.ui:51
 msgid "New"
 msgstr "Nový"
 
-#: ../src/View/directory_view_popup.ui:39
+#: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
 msgstr "Složka"
 
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
 msgstr "Prázdný soubor"
 
-#: ../src/View/directory_view_popup.ui:53
+#: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
 msgstr "Zobrazovat skryté soubory"
 
-#: ../src/View/directory_view_popup.ui:60
+#: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
 msgstr "Nová karta"
 
-#: ../src/View/directory_view_popup.ui:73
+#: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
 msgstr "Příkazová řádka"
 
-#: ../src/View/directory_view_popup.ui:88
+#: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
 msgstr "Vytvořit záložku"
 
-#: ../src/View/directory_view_popup.ui:95
+#: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
 msgstr "Vložit"
 
-#: ../src/View/directory_view_popup.ui:102
+#: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: ../src/View/directory_view_popup.ui:106
+#: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../src/View/directory_view_popup.ui:110
+#: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"
 msgstr "Vložit do složky"
 
-#: ../src/View/directory_view_popup.ui:117
+#: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
 msgstr "Seřadit podle"
 
-#: ../src/View/directory_view_popup.ui:120
+#: ../src/View/directory_view_popup.ui:134
 msgid "Name"
 msgstr "Název souboru"
 
-#: ../src/View/directory_view_popup.ui:135
+#: ../src/View/directory_view_popup.ui:149
 msgid "Date"
 msgstr "Změněno"
 
-#: ../src/View/directory_view_popup.ui:142
+#: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
 msgstr "Opačné pořadí"
+
+#~ msgid "%s is not a valid file name"
+#~ msgstr "%s není platný název souboru"

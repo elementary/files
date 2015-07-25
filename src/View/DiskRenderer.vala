@@ -1,5 +1,6 @@
 /***
      Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+     Copyright (c) 2015 elementary Team
 
      Marlin is free software; you can redistribute it and/or
      modify it under the terms of the GNU General Public License as
@@ -19,73 +20,36 @@
 ***/
 
 public class Marlin.CellRendererDisk : Gtk.CellRendererText {
-
+    // padding to the right of the disk usage graphic
+    public uint rpad { set; get; }
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 
-    /* padding to the right of the disk usage graphic */
-    public uint rpad {set; get;}
-
-    /* offset to left align disk usage graphic with the text */
-    private int offset = 2;
+    // offset to left align disk usage graphic with the text
+    private const int OFFSET = 2;
+    private const int LEVEL_BAR_HEIGHT = 4;
 
     public CellRendererDisk () {
         rpad = 0;
     }
 
-    /**
-     * Function called by gtk to determine the size request of the cell.
-     **/
-    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                   out int x_offset, out int y_offset,
-                                   out int width, out int height) {
-        height = 50;
-        width = 250; /* Hardcoded, maybe it should be configurable */
-        x_offset = 0;
-        y_offset = 0;
-    }
+    public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
+                                 Gdk.Rectangle area, Gtk.CellRendererState flags) {
+        base.render (cr, widget, bg_area, area, flags);
+        area.x += OFFSET;
+        area.width -= OFFSET;
 
-    /**
-     * Function called by gtk to draw the cell content.
-     **/
-    public override void render (Cairo.Context cr, Gtk.Widget widget,
-                                 Gdk.Rectangle background_area, Gdk.Rectangle area,
-                                 Gtk.CellRendererState flags) {
-        base.render (cr, widget, background_area, area, flags);
-        area.x+= offset;
-        area.width-= offset;
         if (free_space > 0) {
-            Gtk.StateFlags state;
-            Gtk.StyleContext context = widget.get_parent ().get_style_context ();
-            cr.set_line_width (1.0);
+            var context = widget.get_style_context ();
+            context.add_class ("level-bar");
             uint width = area.width - rpad;
-            if (widget.get_state_flags () != Gtk.StateFlags.BACKDROP) {
-                state = Gtk.StateFlags.NORMAL;
-                state |= widget.get_state_flags ();
-                var color_border = context.get_color (state);
-                color_border.alpha -= 0.4;
-                Gdk.cairo_set_source_rgba (cr, color_border);
-                cr.rectangle (area.x,
-                              area.y + area.height - 3,
-                              width,
-                              4);
-                cr.fill ();
-            }
-            state = Gtk.StateFlags.SELECTED;
-            state |= widget.get_state_flags ();
-            Gdk.cairo_set_source_rgba (cr, context.get_color (state));
-            cr.rectangle (area.x + 1,
-                          area.y + area.height - 2,
-                          width - 2,
-                          2);
-            cr.fill ();
+            uint fill_width = width - (int) (((double) free_space / (double) disk_size) * ((double) area.width - 2));
 
-            Gdk.cairo_set_source_rgba (cr, context.get_background_color(state));
-            cr.rectangle (area.x + 1,
-                          area.y + area.height - 2,
-                          width - (int)(((double)free_space)/((double)disk_size)*((double)area.width - 2)),
-                          2);
-            cr.stroke ();
+            context.render_background (cr, area.x, area.y + area.height - 3, width, LEVEL_BAR_HEIGHT);
+            context.add_class ("fill-block");
+            context.render_background (cr, area.x, area.y + area.height - 3, fill_width, LEVEL_BAR_HEIGHT);
+            context.remove_class ("fill-block");
+            context.render_frame (cr, area.x, area.y + area.height - 3, width, LEVEL_BAR_HEIGHT);
         }
     }
 }

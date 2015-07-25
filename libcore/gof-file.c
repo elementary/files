@@ -738,7 +738,8 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
-    if (!gof_file_is_writable (file)) {
+    /* We hide lock emblems if in Recents, because files here are not real files and emblems would always shown. */
+    if (!gof_file_is_writable (file) && !g_file_has_uri_scheme (file->location, "recent")) {
         if (gof_file_is_readable (file))
             gof_file_add_emblem (file, "emblem-readonly");
         else
@@ -2478,7 +2479,7 @@ gboolean
 gof_file_is_folder (GOFFile *file)
 {
     /* TODO check this works for non-local files and other uri schemes*/
-    if ((file->is_directory || gof_file_get_ftype (file) == NULL) && !gof_file_is_root_network_folder (file))
+    if ((file->is_directory && !gof_file_is_root_network_folder (file)))
         return TRUE;
 
     if (gof_file_is_smb_share (file))
