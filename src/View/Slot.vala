@@ -33,10 +33,10 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = _("This Folder is Empty.");
-        public string empty_trash_message = _("Trash is Empty.");
-        public string empty_recents_message = _("There are no Recent Files.");
-        public string denied_message = _("Access Denied.");
+        public string empty_message = _("This Folder is Empty");
+        public string empty_trash_message = _("Trash is Empty");
+        public string empty_recents_message = _("There are no Recent Files");
+        public string denied_message = _("Access Denied");
 
         public override bool locked_focus {
             get {
