@@ -324,11 +324,11 @@ namespace Marlin.View {
             can_show_folder = true;
 
             if (slot.directory.permission_denied) {
-                content = new Granite.Widgets.Welcome (_("This does not belong to you."),
+                content = new Granite.Widgets.Welcome (_("This Folder Does Not Belong to You"),
                                                            _("You don't have permission to view this folder."));
                 can_show_folder = false;
             } else if (!slot.directory.can_load) {
-                content = new Granite.Widgets.Welcome (_("Unable to mount folder."),
+                content = new Granite.Widgets.Welcome (_("Unable to Mount Folder"),
                                                            _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
@@ -341,7 +341,7 @@ namespace Marlin.View {
                 if (slot.directory.selected_file.query_exists ())
                     focus_location_if_in_current_directory (slot.directory.selected_file);
                 else {
-                    content = new Granite.Widgets.Welcome (_("File not found."),
+                    content = new Granite.Widgets.Welcome (_("File not Found"),
                                                            _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
