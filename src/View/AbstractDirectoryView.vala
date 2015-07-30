@@ -2439,13 +2439,19 @@ namespace FM {
 
 /** Keyboard event handling **/
 
-        protected uint get_keycode (int keyval) {
+        /** Returns true if the code parameter matches the keycode of the keyval parameter for
+          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/ 
+        protected bool match_keycode (int keyval, uint code) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                return keys[0].keycode;
-            } else
-                return 0;
+                foreach (var key in keys) {
+                    if (code == key.keycode)
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
@@ -2567,7 +2573,7 @@ namespace FM {
              * is unaffected by internationalized layout */
             if (only_control_pressed) {
                 uint keycode = event.hardware_keycode;
-                if (keycode == get_keycode (Gdk.Key.c)) {
+                if (match_keycode (Gdk.Key.c, keycode)) {
                     /* Should not copy files in the trash - cut instead */
                     if (in_trash) {
                         Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
@@ -2579,18 +2585,16 @@ namespace FM {
                         common_actions.activate_action ("copy", null);
 
                     return true;
-                } else if (keycode == get_keycode (Gdk.Key.v)) {
+                } else if (match_keycode (Gdk.Key.v, keycode)) {
                     if (!in_recent) {
                         /* Will drop any existing selection and paste into current directory */
                         action_set_enabled (common_actions, "paste_into", true);
                         unselect_all ();
                         common_actions.activate_action ("paste_into", null);
-
                         return true;
                     }
-                } else if (keycode == get_keycode (Gdk.Key.x)) {
+                } else if (match_keycode (Gdk.Key.x, keycode)) {
                     selection_actions.activate_action ("cut", null);
-
                     return true;
                 }
             }
