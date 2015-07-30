@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-22 09:29-0500\n"
+"POT-Creation-Date: 2015-07-30 16:57-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1467,39 +1467,39 @@ msgstr ""
 msgid "Ignore"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:296 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:299 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:298 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:315
+#: ../src/View/ViewContainer.vala:318
 msgid "(as Administrator)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:324
-msgid "This does not belong to you."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:325
-msgid "You don't have permission to view this folder."
+#: ../src/View/ViewContainer.vala:327
+msgid "This Folder Does Not Belong to You"
 msgstr ""
 
 #: ../src/View/ViewContainer.vala:328
-msgid "Unable to mount folder."
+msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:331
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:332
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:341
-msgid "File not found."
+#: ../src/View/ViewContainer.vala:344
+msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:345
 msgid "The file selected no longer exists."
 msgstr ""
 
@@ -1508,7 +1508,7 @@ msgid "Open in New Tab"
 msgstr ""
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1918
+#: ../src/View/AbstractDirectoryView.vala:1932
 msgid "Open with"
 msgstr ""
 
@@ -1602,16 +1602,20 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/View/Slot.vala:42
-msgid "This folder is empty."
+#: ../src/View/Slot.vala:36
+msgid "This Folder Is Empty"
 msgstr ""
 
-#: ../src/View/Slot.vala:43
-msgid "There are no recent files."
+#: ../src/View/Slot.vala:37
+msgid "Trash Is Empty"
 msgstr ""
 
-#: ../src/View/Slot.vala:44
-msgid "Access denied"
+#: ../src/View/Slot.vala:38
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:39
+msgid "Access Denied"
 msgstr ""
 
 #: ../src/View/OverlayBar.vala:155
@@ -1877,55 +1881,55 @@ msgstr ""
 msgid "Everywhere Else"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:545
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1009
+#: ../src/View/AbstractDirectoryView.vala:1020
 msgid "Set as default"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1489
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1489
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1887
+#: ../src/View/AbstractDirectoryView.vala:1901
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1901
+#: ../src/View/AbstractDirectoryView.vala:1915
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1906
+#: ../src/View/AbstractDirectoryView.vala:1920
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1916
+#: ../src/View/AbstractDirectoryView.vala:1930
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1974
+#: ../src/View/AbstractDirectoryView.vala:1988
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2243
+#: ../src/View/AbstractDirectoryView.vala:2257
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2566
+#: ../src/View/AbstractDirectoryView.vala:2586
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2567
+#: ../src/View/AbstractDirectoryView.vala:2587
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2765
+#: ../src/View/AbstractDirectoryView.vala:2782
 msgid "Could not rename to '%s'"
 msgstr ""
 
