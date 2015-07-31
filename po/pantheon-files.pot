@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-31 00:02-0500\n"
+"POT-Creation-Date: 2015-07-31 16:37-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1580,7 +1580,7 @@ msgid "Recent"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
+msgid "This Folder Does Not Exist"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
