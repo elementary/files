@@ -156,7 +156,8 @@ namespace Marlin.View {
                 user_path_change_request (File.new_for_commandline_arg (loc));
         }
 
-        public void add_view (Marlin.ViewMode mode, GLib.File loc) {
+        public void add_view (Marlin.ViewMode mode, GLib.File? loc = null) {
+            overlay_statusbar.cancel ();
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                 view = new Miller (loc, this, mode);
             else
@@ -206,6 +207,7 @@ namespace Marlin.View {
         }
 
         public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
+            overlay_statusbar.cancel ();
             /* automagicly enable icon view for icons keypath */
             if (allow_mode_change &&
                 get_current_slot ().directory.uri_contain_keypath_icons &&
@@ -466,11 +468,15 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
+        public void on_selection_changed (GLib.List<GOF.File> files) {
+            overlay_statusbar.selection_changed (files);
+        }
+
         private bool on_enter_notify_event () {
             /* Before the status bar is entered a leave event is triggered on the view, which
              * causes the statusbar to disappear. To block this we just cancel the update.
              */
-            overlay_statusbar.cancel_update ();
+            overlay_statusbar.cancel ();
             return false;
         }
     }

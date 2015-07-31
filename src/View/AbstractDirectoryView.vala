@@ -240,6 +240,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
         public signal void item_hovered (GOF.File? file);
+        public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -1377,17 +1378,6 @@ namespace FM {
             queue_draw ();
         }
 
-/** Handle Selection changes */
-        public void notify_selection_changed () {
-            if (!get_realized ())
-                return;
-
-            if (updates_frozen)
-                return;
-
-            window.selection_changed (get_selected_files ());
-        }
-
     /** Handle size allocation event */
         private void on_size_allocate (Gtk.Allocation allocation) {
             schedule_thumbnail_timeout ();
@@ -2441,7 +2431,7 @@ namespace FM {
             if (updates_frozen)
                 return;
 
-            notify_selection_changed ();
+            selection_changed (get_selected_files ());
         }
 
 /** Keyboard event handling **/
@@ -2465,6 +2455,7 @@ namespace FM {
             if (updates_frozen || event.is_modifier == 1)
                 return false;
 
+            cancel_hover ();
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -2862,8 +2853,9 @@ namespace FM {
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
             grab_focus (); /* cancels any renaming */
-            Gtk.TreePath? path = null;
+            cancel_hover (); /* cancel overlay statusbar cancellables */
 
+            Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
@@ -3173,6 +3165,7 @@ namespace FM {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
+            item_hovered (null);
             return true;
         }
 
@@ -3186,12 +3179,18 @@ namespace FM {
         }
 
         public virtual void cancel () {
+            cancel_hover ();
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             loaded_subdirectories.@foreach ((dir) => {
                 remove_subdirectory (dir);
             });
+        }
+
+        private void cancel_hover () {
+            item_hovered (null);
+            hover_path = null;
         }
 
         protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {

@@ -36,7 +36,6 @@ public class Marlin.DeepCount : Object {
         file = _file;
         deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_ALLOCATED_SIZE;
         cancellable = new Cancellable ();
-
         process_directory.begin (file);
     }
 
@@ -81,7 +80,7 @@ public class Marlin.DeepCount : Object {
                 mutex.lock ();
                 file_not_read ++;
                 mutex.unlock ();
-                warning ("%s", err.message);
+                debug ("%s", err.message);
             }
         }
 
