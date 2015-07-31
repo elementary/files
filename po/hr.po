@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
-"POT-Creation-Date: 2015-07-22 09:29-0500\n"
+"POT-Creation-Date: 2015-07-31 00:02-0500\n"
 "PO-Revision-Date: 2015-07-29 11:23+0000\n"
 "Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-07-30 06:05+0000\n"
-"X-Generator: Launchpad (build 17646)\n"
+"X-Launchpad-Export-Date: 2015-07-31 05:33+0000\n"
+"X-Generator: Launchpad (build 17656)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1534,51 +1534,51 @@ msgstr "Sljedeće"
 msgid "Create folder"
 msgstr "Stvori mapu"
 
-#: ../src/View/Window.vala:179
+#: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
 msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
 
-#: ../src/View/Window.vala:185
+#: ../src/View/Window.vala:184
 msgid "Set as Default"
 msgstr "Postavi kao zadano"
 
-#: ../src/View/Window.vala:191
+#: ../src/View/Window.vala:190
 msgid "Ignore"
 msgstr "Zanemari"
 
-#: ../src/View/ViewContainer.vala:296 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Osobna mapa"
 
-#: ../src/View/ViewContainer.vala:298 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:303 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Datotečni sustav"
 
-#: ../src/View/ViewContainer.vala:315
+#: ../src/View/ViewContainer.vala:320
 msgid "(as Administrator)"
 msgstr "(kao administrator)"
 
-#: ../src/View/ViewContainer.vala:324
-msgid "This does not belong to you."
-msgstr "Ovo ne pripada Vama."
+#: ../src/View/ViewContainer.vala:329
+msgid "This Folder Does Not Belong to You"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:325
+#: ../src/View/ViewContainer.vala:330
 msgid "You don't have permission to view this folder."
 msgstr "Nemate ovlasti za gledanje ova mape."
 
-#: ../src/View/ViewContainer.vala:328
-msgid "Unable to mount folder."
-msgstr "Nemoguće montirati mapu."
+#: ../src/View/ViewContainer.vala:333
+msgid "Unable to Mount Folder"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:334
 msgid "The server for this folder could not be located."
 msgstr "Nije moguće locirati server za ovu mapu."
 
-#: ../src/View/ViewContainer.vala:341
-msgid "File not found."
-msgstr "Datoteka nije pronađena."
+#: ../src/View/ViewContainer.vala:346
+msgid "File not Found"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:347
 msgid "The file selected no longer exists."
 msgstr "Označena datoteka  više ne postoji."
 
@@ -1587,7 +1587,7 @@ msgid "Open in New Tab"
 msgstr "Otvori u novoj kartici"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1918
+#: ../src/View/AbstractDirectoryView.vala:1922
 msgid "Open with"
 msgstr "Otvori sa"
 
@@ -1684,41 +1684,61 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:42
-msgid "This folder is empty."
-msgstr "Ova mapa je prazna."
+#: ../src/View/Slot.vala:36
+msgid "This Folder Is Empty"
+msgstr ""
 
-#: ../src/View/Slot.vala:43
-msgid "There are no recent files."
-msgstr "Nema nedavnih datoteka."
+#: ../src/View/Slot.vala:37
+msgid "Trash Is Empty"
+msgstr ""
 
-#: ../src/View/Slot.vala:44
-msgid "Access denied"
-msgstr "Pristup odbijen"
+#: ../src/View/Slot.vala:38
+msgid "There Are No Recent Files"
+msgstr ""
 
-#: ../src/View/OverlayBar.vala:155
+#: ../src/View/Slot.vala:39
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
 msgstr "%u mape"
 
-#: ../src/View/OverlayBar.vala:157 ../src/View/OverlayBar.vala:165
+#: ../src/View/OverlayBar.vala:172 ../src/View/OverlayBar.vala:180
 msgid " and %u other item (%s) selected"
 msgstr " i %u drugih stavki  (%s) označeno"
 
-#: ../src/View/OverlayBar.vala:158 ../src/View/OverlayBar.vala:166
+#: ../src/View/OverlayBar.vala:173 ../src/View/OverlayBar.vala:181
 msgid " and %u other items (%s) selected"
 msgstr " i %u drugih stavki (%s) označeno"
 
-#: ../src/View/OverlayBar.vala:161 ../src/View/OverlayBar.vala:169
+#: ../src/View/OverlayBar.vala:176 ../src/View/OverlayBar.vala:184
 msgid " selected"
 msgstr " označeno"
 
-#: ../src/View/OverlayBar.vala:163
+#: ../src/View/OverlayBar.vala:178
 msgid "%u folder"
 msgstr "%u mapa"
 
-#: ../src/View/OverlayBar.vala:171
+#: ../src/View/OverlayBar.vala:186
 msgid "%u items selected (%s)"
 msgstr "%u odabranih stavaka (%s)"
+
+#: ../src/View/OverlayBar.vala:219
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:219
+msgid "%u sub-folders, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:224
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:224
+msgid "%u files, "
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1959,55 +1979,55 @@ msgstr "Zabilješke"
 msgid "Everywhere Else"
 msgstr "Svugdje Drugdje"
 
-#: ../src/View/AbstractDirectoryView.vala:545
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Neuspješan prikaz"
 
-#: ../src/View/AbstractDirectoryView.vala:1009
+#: ../src/View/AbstractDirectoryView.vala:1021
 msgid "Set as default"
 msgstr "Postavi kao zadano"
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1479
 msgid "Cannot drop this file"
 msgstr "Nije moguće ispustiti ovu datoteku"
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1479
 msgid "Invalid file name provided"
 msgstr "Neispravno postavljeno ime"
 
-#: ../src/View/AbstractDirectoryView.vala:1887
+#: ../src/View/AbstractDirectoryView.vala:1891
 msgid "Invalid"
 msgstr "Neispravan"
 
-#: ../src/View/AbstractDirectoryView.vala:1901
+#: ../src/View/AbstractDirectoryView.vala:1905
 msgid "Run"
 msgstr "Pokreni"
 
-#: ../src/View/AbstractDirectoryView.vala:1906
+#: ../src/View/AbstractDirectoryView.vala:1910
 msgid "Open in %s"
 msgstr "Otvori u %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1916
+#: ../src/View/AbstractDirectoryView.vala:1920
 msgid "Open in"
 msgstr "Otvori sa"
 
-#: ../src/View/AbstractDirectoryView.vala:1974
+#: ../src/View/AbstractDirectoryView.vala:1978
 msgid "Other Application"
 msgstr "Druga aplikacija"
 
-#: ../src/View/AbstractDirectoryView.vala:2243
+#: ../src/View/AbstractDirectoryView.vala:2247
 msgid "Untitled %s"
 msgstr "Neimenovan %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2566
+#: ../src/View/AbstractDirectoryView.vala:2577
 msgid "Cannot copy files that are in the trash"
 msgstr "Nemoguće kopirati dokumente iz smeća"
 
-#: ../src/View/AbstractDirectoryView.vala:2567
+#: ../src/View/AbstractDirectoryView.vala:2578
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2765
+#: ../src/View/AbstractDirectoryView.vala:2773
 msgid "Could not rename to '%s'"
 msgstr "Nemoguće preimenovati u '%s'"
 

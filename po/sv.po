@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-22 09:29-0500\n"
+"POT-Creation-Date: 2015-07-31 00:02-0500\n"
 "PO-Revision-Date: 2015-07-16 10:38+0000\n"
 "Last-Translator: Mathias <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-23 05:38+0000\n"
-"X-Generator: Launchpad (build 17628)\n"
+"X-Launchpad-Export-Date: 2015-07-31 05:33+0000\n"
+"X-Generator: Launchpad (build 17656)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1500,51 +1500,51 @@ msgstr "Nästa"
 msgid "Create folder"
 msgstr "Skapa mapp"
 
-#: ../src/View/Window.vala:179
+#: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
 msgstr "Files är inte din standardfilhanterare."
 
-#: ../src/View/Window.vala:185
+#: ../src/View/Window.vala:184
 msgid "Set as Default"
 msgstr "Ange som standard"
 
-#: ../src/View/Window.vala:191
+#: ../src/View/Window.vala:190
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: ../src/View/ViewContainer.vala:296 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Hem"
 
-#: ../src/View/ViewContainer.vala:298 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:303 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../src/View/ViewContainer.vala:315
+#: ../src/View/ViewContainer.vala:320
 msgid "(as Administrator)"
 msgstr "(som administratör)"
 
-#: ../src/View/ViewContainer.vala:324
-msgid "This does not belong to you."
-msgstr "Det här tillhör inte dig"
+#: ../src/View/ViewContainer.vala:329
+msgid "This Folder Does Not Belong to You"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:325
+#: ../src/View/ViewContainer.vala:330
 msgid "You don't have permission to view this folder."
 msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
 
-#: ../src/View/ViewContainer.vala:328
-msgid "Unable to mount folder."
-msgstr "Kunde inte montera mapp."
+#: ../src/View/ViewContainer.vala:333
+msgid "Unable to Mount Folder"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:334
 msgid "The server for this folder could not be located."
 msgstr "Servern för den här mappen kunde inte hittas."
 
-#: ../src/View/ViewContainer.vala:341
-msgid "File not found."
-msgstr "Filen hittades inte."
+#: ../src/View/ViewContainer.vala:346
+msgid "File not Found"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:347
 msgid "The file selected no longer exists."
 msgstr "Den valda filen finns inte längre."
 
@@ -1553,7 +1553,7 @@ msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1918
+#: ../src/View/AbstractDirectoryView.vala:1922
 msgid "Open with"
 msgstr "Öppna med"
 
@@ -1650,41 +1650,61 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:42
-msgid "This folder is empty."
-msgstr "Mappen är tom."
-
-#: ../src/View/Slot.vala:43
-msgid "There are no recent files."
+#: ../src/View/Slot.vala:36
+msgid "This Folder Is Empty"
 msgstr ""
 
-#: ../src/View/Slot.vala:44
-msgid "Access denied"
-msgstr "Åtkomst nekad"
+#: ../src/View/Slot.vala:37
+msgid "Trash Is Empty"
+msgstr ""
 
-#: ../src/View/OverlayBar.vala:155
+#: ../src/View/Slot.vala:38
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:39
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
 msgstr "%u mappar"
 
-#: ../src/View/OverlayBar.vala:157 ../src/View/OverlayBar.vala:165
+#: ../src/View/OverlayBar.vala:172 ../src/View/OverlayBar.vala:180
 msgid " and %u other item (%s) selected"
 msgstr " och %u andra objekt (%s) är valda"
 
-#: ../src/View/OverlayBar.vala:158 ../src/View/OverlayBar.vala:166
+#: ../src/View/OverlayBar.vala:173 ../src/View/OverlayBar.vala:181
 msgid " and %u other items (%s) selected"
 msgstr " och %u andra objekt (%s) har valts"
 
-#: ../src/View/OverlayBar.vala:161 ../src/View/OverlayBar.vala:169
+#: ../src/View/OverlayBar.vala:176 ../src/View/OverlayBar.vala:184
 msgid " selected"
 msgstr " vald"
 
-#: ../src/View/OverlayBar.vala:163
+#: ../src/View/OverlayBar.vala:178
 msgid "%u folder"
 msgstr "%u mapp"
 
-#: ../src/View/OverlayBar.vala:171
+#: ../src/View/OverlayBar.vala:186
 msgid "%u items selected (%s)"
 msgstr "%u objekt valda (%s)"
+
+#: ../src/View/OverlayBar.vala:219
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:219
+msgid "%u sub-folders, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:224
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:224
+msgid "%u files, "
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1925,55 +1945,55 @@ msgstr "Bokmärken"
 msgid "Everywhere Else"
 msgstr "Alla andra platser"
 
-#: ../src/View/AbstractDirectoryView.vala:545
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Förhandsvisning misslyckades"
 
-#: ../src/View/AbstractDirectoryView.vala:1009
+#: ../src/View/AbstractDirectoryView.vala:1021
 msgid "Set as default"
 msgstr "Använd som standard"
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1479
 msgid "Cannot drop this file"
 msgstr "Kan inte släppa denna fil"
 
-#: ../src/View/AbstractDirectoryView.vala:1478
+#: ../src/View/AbstractDirectoryView.vala:1479
 msgid "Invalid file name provided"
 msgstr "Ogiltigt filnamn angivit"
 
-#: ../src/View/AbstractDirectoryView.vala:1887
+#: ../src/View/AbstractDirectoryView.vala:1891
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: ../src/View/AbstractDirectoryView.vala:1901
+#: ../src/View/AbstractDirectoryView.vala:1905
 msgid "Run"
 msgstr "Kör"
 
-#: ../src/View/AbstractDirectoryView.vala:1906
+#: ../src/View/AbstractDirectoryView.vala:1910
 msgid "Open in %s"
 msgstr "Öppna med %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1916
+#: ../src/View/AbstractDirectoryView.vala:1920
 msgid "Open in"
 msgstr "Öppna med"
 
-#: ../src/View/AbstractDirectoryView.vala:1974
+#: ../src/View/AbstractDirectoryView.vala:1978
 msgid "Other Application"
 msgstr "Annat program"
 
-#: ../src/View/AbstractDirectoryView.vala:2243
+#: ../src/View/AbstractDirectoryView.vala:2247
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2566
+#: ../src/View/AbstractDirectoryView.vala:2577
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: ../src/View/AbstractDirectoryView.vala:2567
+#: ../src/View/AbstractDirectoryView.vala:2578
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: ../src/View/AbstractDirectoryView.vala:2765
+#: ../src/View/AbstractDirectoryView.vala:2773
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2202,6 +2222,3 @@ msgstr "Datum"
 #: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
 msgstr "Omvänd ordning"
-
-#~ msgid "%s is not a valid file name"
-#~ msgstr "%s är inte ett giltigt filnamn"
