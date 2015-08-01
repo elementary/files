@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-31 00:02-0500\n"
+"POT-Creation-Date: 2015-07-31 16:37-0500\n"
 "PO-Revision-Date: 2014-07-17 05:09+0000\n"
 "Last-Translator: Иван Благојевић <ivan_blagojevic@mail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-07-31 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-08-01 05:39+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1600,8 +1600,8 @@ msgid "Recent"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Ова фасцикла не постоји."
+msgid "This Folder Does Not Exist"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."

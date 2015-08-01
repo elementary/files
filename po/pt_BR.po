@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-31 00:02-0500\n"
+"POT-Creation-Date: 2015-07-31 16:37-0500\n"
 "PO-Revision-Date: 2015-06-24 18:37+0000\n"
 "Last-Translator: Cleiton Floss <cleitonfloss@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-07-31 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-08-01 05:39+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 "Language: pt_BR\n"
 
@@ -1633,8 +1633,8 @@ msgid "Recent"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Esta pasta não existe"
+msgid "This Folder Does Not Exist"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."

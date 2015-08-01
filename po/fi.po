@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-31 00:02-0500\n"
-"PO-Revision-Date: 2015-07-23 17:28+0000\n"
+"POT-Creation-Date: 2015-07-31 16:37-0500\n"
+"PO-Revision-Date: 2015-07-31 07:49+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-31 05:32+0000\n"
+"X-Launchpad-Export-Date: 2015-08-01 05:38+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1522,7 +1522,7 @@ msgstr "(ylläpitäjänä)"
 
 #: ../src/View/ViewContainer.vala:329
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Tämä kansio ei kuulu sinulle"
 
 #: ../src/View/ViewContainer.vala:330
 msgid "You don't have permission to view this folder."
@@ -1530,7 +1530,7 @@ msgstr "Sinulla ei ole oikeuksia tarkastella tätä kansiota."
 
 #: ../src/View/ViewContainer.vala:333
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Kansion liittäminen epäonnistui"
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The server for this folder could not be located."
@@ -1538,7 +1538,7 @@ msgstr "Tämän kansion palvelinta ei voitu paikantaa."
 
 #: ../src/View/ViewContainer.vala:346
 msgid "File not Found"
-msgstr ""
+msgstr "Tiedostoa ei löytynyt"
 
 #: ../src/View/ViewContainer.vala:347
 msgid "The file selected no longer exists."
@@ -1621,8 +1621,8 @@ msgid "Recent"
 msgstr "Viimeisimmät"
 
 #: ../src/View/DirectoryNotFound.vala:39
-msgid "This folder does not exist."
-msgstr "Tätä kansiota ei ole olemassa."
+msgid "This Folder Does Not Exist"
+msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1648,19 +1648,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Tämä kansio on tyhjä"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Roskakori on tyhjä"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Ei viimeaikaisia tiedostoja"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Pääsy estetty"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1688,19 +1688,19 @@ msgstr "%u kohdetta valittu (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u alikansio, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u alikansiota, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u tiedosto, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u tiedostoa, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
