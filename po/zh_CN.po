@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-31 16:37-0500\n"
-"PO-Revision-Date: 2015-06-04 05:58+0000\n"
+"PO-Revision-Date: 2015-08-01 08:06+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-08-01 05:39+0000\n"
+"X-Launchpad-Export-Date: 2015-08-02 05:28+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 "Language: \n"
 
@@ -1439,7 +1439,7 @@ msgstr "(以管理员身份)"
 
 #: ../src/View/ViewContainer.vala:329
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "此文件夹不属于您"
 
 #: ../src/View/ViewContainer.vala:330
 msgid "You don't have permission to view this folder."
@@ -1447,7 +1447,7 @@ msgstr "您没有权限查看该文件夹。"
 
 #: ../src/View/ViewContainer.vala:333
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "无法挂载文件夹"
 
 #: ../src/View/ViewContainer.vala:334
 msgid "The server for this folder could not be located."
@@ -1455,7 +1455,7 @@ msgstr "无法定位此文件夹的位置。"
 
 #: ../src/View/ViewContainer.vala:346
 msgid "File not Found"
-msgstr ""
+msgstr "文件未找到"
 
 #: ../src/View/ViewContainer.vala:347
 msgid "The file selected no longer exists."
@@ -1535,11 +1535,11 @@ msgstr "回收站"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "最近使用"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "此文件夹不存在"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1565,19 +1565,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "此文件夹为空"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "回收站为空"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "无最近使用的文件"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "拒绝访问"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1605,19 +1605,19 @@ msgstr "已选中 %u 个条目 (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u 子文件夹， "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u 子文件夹， "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u 文件， "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u 文件， "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1764,7 +1764,7 @@ msgstr "打开您的个人文件夹"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "查看最近使用的文件列表"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1908,7 +1908,7 @@ msgstr "更改选中项为剪切"
 
 #: ../src/View/AbstractDirectoryView.vala:2773
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "无法重命名为 '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2065,11 +2065,11 @@ msgstr "永久删除"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "打开上级文件夹"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "从历史中删除"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
