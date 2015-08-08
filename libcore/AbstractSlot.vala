@@ -38,6 +38,7 @@ namespace GOF {
         public string uri {
             get { return directory.file.uri;}
         }
+        public bool can_create {get {return directory != null && !directory.is_trash;}}
         public virtual bool locked_focus {
             get {
                 return false;
@@ -47,6 +48,9 @@ namespace GOF {
         protected Gtk.Box content_box;
         protected int slot_number;
         protected int width;
+
+        public signal void active (bool scroll = true);
+        public signal void inactive ();
 
         public  void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);

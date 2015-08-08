@@ -199,7 +199,6 @@ namespace FM {
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
-        protected GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
@@ -486,7 +485,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen)
                 return;
 
             uint nb_elem = selection.length ();
@@ -501,33 +500,36 @@ namespace FM {
                 return;
             }
 
-            /* launch each selected file individually ignoring selections greater than 10
-             * Do not launch with new instances of this app - open according to flag instead
-             */
-            if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
-                foreach (GOF.File file in selection) {
-                    /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                    if (file.is_folder ()) {
-                        /* By default, multiple folders open in new tabs */
-                        if (flag == Marlin.OpenFlag.DEFAULT)
-                            flag = Marlin.OpenFlag.NEW_TAB;
+            if (!in_trash) {
+                /* launch each selected file individually ignoring selections greater than 10
+                 * Do not launch with new instances of this app - open according to flag instead
+                 */
+                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
+                    foreach (GOF.File file in selection) {
+                        /* Prevent too rapid activation of files - causes New Tab to crash for example */
+                        if (file.is_folder ()) {
+                            /* By default, multiple folders open in new tabs */
+                            if (flag == Marlin.OpenFlag.DEFAULT)
+                                flag = Marlin.OpenFlag.NEW_TAB;
 
-                        GLib.Idle.add (() => {
-                            activate_file (file, screen, flag, false);
-                            return false;
-                        });
-                    } else
-                        GLib.Idle.add (() => {
-                            file.open_single (screen, null);
-                            return false;
-                        });
+                            GLib.Idle.add (() => {
+                                activate_file (file, screen, flag, false);
+                                return false;
+                            });
+                        } else
+                            GLib.Idle.add (() => {
+                                file.open_single (screen, null);
+                                return false;
+                            });
+                    }
+                } else if (default_app != null) {
+                    GLib.Idle.add (() => {
+                        open_files_with (default_app, selection);
+                        return false;
+                    });
                 }
-            } else if (default_app != null) {
-                GLib.Idle.add (() => {
-                    open_files_with (default_app, selection);
-                    return false;
-                });
-            }
+            } else
+                warning ("Cannot open files in trash");
         }
 
         protected void preview_selected_items () {
@@ -588,6 +590,7 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
+
             if (dir.is_loading ())
                 dir.file_loaded.disconnect (on_directory_file_loaded);
 
@@ -722,8 +725,9 @@ namespace FM {
 /*** Private methods */
     /** File operations */
 
+
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (updates_frozen || in_trash)
+            if (updates_frozen)
                 return;
 
             GOF.File file = _file;
@@ -755,15 +759,18 @@ namespace FM {
 
                         break;
                 }
-            } else if (only_one_file && file.is_root_network_folder ())
-                load_location (location);
-            else if (only_one_file && file.is_executable ())
-                file.execute (screen, null, null);
-            else if (only_one_file && default_app != null)
-                file.open_single (screen, default_app);
-            else
-                warning ("Unable to activate this file.  Default app is %s",
-                         default_app != null ? default_app.get_name () : "null");
+            } else if (!in_trash) {
+                if (only_one_file && file.is_root_network_folder ())
+                    load_location (location);
+                else if (only_one_file && file.is_executable ())
+                    file.execute (screen, null, null);
+                else if (only_one_file && default_app != null)
+                    file.open_single (screen, default_app);
+                else
+                    warning ("Unable to activate this file.  Default app is %s",
+                             default_app != null ? default_app.get_name () : "null");
+            } else
+                warning ("Cannot open file in trash");
         }
 
         private void trash_or_delete_files (GLib.List<GOF.File> file_list,
@@ -1772,18 +1779,29 @@ namespace FM {
             return true;
         }
 
+        private bool valid_selection_for_restore () {
+            foreach (GOF.File file in get_selected_files ()) {
+                if (!(file.directory.get_basename () == "/"))
+                    return false;
+            }
+            return true;
+        }
+
         private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
             GLib.Menu menu = new GLib.Menu ();
 
             var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
 
             if (in_trash) {
-                menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
+                /* In trash, only show context menu when all selected files are in root folder */
+                if (valid_selection_for_restore ()) {
+                    menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
 
-                clipboard_menu.remove (1); /* Copy */
-                clipboard_menu.remove (1); /* Paste (index updated by previous line) */
+                    clipboard_menu.remove (1); /* Copy */
+                    clipboard_menu.remove (1); /* Paste (index updated by previous line) */
 
-                menu.append_section (null, clipboard_menu);
+                    menu.append_section (null, clipboard_menu);
+                }
             } else if (in_recent) {
                 var open_menu = build_menu_open (ref builder);
                 if (open_menu != null)
@@ -1832,7 +1850,10 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
-            return menu as MenuModel;
+            if (menu.get_n_items () > 0)
+                return menu as MenuModel;
+            else
+                return null;
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
@@ -3183,9 +3204,7 @@ namespace FM {
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
-            loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
-            });
+            /* List View will take care of unloading subdirectories */
         }
 
         private void cancel_hover () {
@@ -3227,8 +3246,6 @@ namespace FM {
 
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
-        protected virtual void add_subdirectory (GOF.Directory.Async dir) {}
-        protected virtual void remove_subdirectory (GOF.Directory.Async dir) {}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;

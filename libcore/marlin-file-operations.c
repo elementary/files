@@ -5351,7 +5351,6 @@ marlin_file_operations_move (GList *files,
                              gpointer done_callback_data)
 {
     CopyMoveJob *job;
-
     job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
     job->is_move = TRUE;
     job->done_callback = done_callback;

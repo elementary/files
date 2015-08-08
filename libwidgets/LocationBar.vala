@@ -496,8 +496,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         foreach (BreadcrumbsElement element in elements) {
                 string s = element.text;  /* element text should be an escaped string */
                 if (first) {
-                    if (s == "" || s == "file://")
+                    if (s == "")
                         newpath = "/";
+
+                    /* return valid path when browsing trash and other schemes */
+                    else if (s.contains ("://") && ! s.contains (":///"))
+                        newpath = s + "/";
                     else
                         newpath = s;
 

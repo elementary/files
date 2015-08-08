@@ -425,7 +425,6 @@ public class GOF.Directory.Async : Object {
         file.exists = true;
         files_count = 0;
         state = State.LOADING;
-
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
             while (state == State.LOADING) {

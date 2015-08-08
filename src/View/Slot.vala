@@ -25,8 +25,8 @@ namespace Marlin.View {
         private FM.AbstractDirectoryView? dir_view = null;
 
         protected bool updates_frozen = false;
-        public bool has_autosized = false;
 
+        public bool has_autosized = false;
         public bool is_active {get; protected set;}
 
         public unowned Marlin.View.Window window {
@@ -47,8 +47,6 @@ namespace Marlin.View {
         public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
-        public signal void active (bool scroll = true);
-        public signal void inactive ();
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
