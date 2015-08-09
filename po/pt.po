@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-31 16:37-0500\n"
+"POT-Creation-Date: 2015-08-08 18:43-0500\n"
 "PO-Revision-Date: 2015-06-20 17:54+0000\n"
 "Last-Translator: Ricardo Almieda <ricardo.j.basilio@gmail.com>\n"
 "Language-Team: Português <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-01 05:39+0000\n"
+"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -518,12 +518,12 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Refazer a alteração de proprietário de %d item"
 msgstr[1] "Refazer a alteração de proprietário de %d itens"
 
-#: ../libcore/marlin-file-utilities.c:120
+#: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Não foi possível determinar a localização original de \"%s\" "
 
-#: ../libcore/marlin-file-utilities.c:124
+#: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
 msgstr "O item não pode ser recuperado do lixo"
 
@@ -1373,77 +1373,77 @@ msgstr "Erro ao mover \"%F\"."
 msgid "There was an error moving the file into %F."
 msgstr "Ocorreu um erro ao mover o ficheiro para %F."
 
-#: ../libcore/marlin-file-operations.c:5370
+#: ../libcore/marlin-file-operations.c:5369
 msgid "Moving Files"
 msgstr "A mover ficheiros"
 
-#: ../libcore/marlin-file-operations.c:5399
+#: ../libcore/marlin-file-operations.c:5398
 msgid "Creating links in \"%B\""
 msgstr "A criar as ligações em \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5410
+#: ../libcore/marlin-file-operations.c:5409
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "A criar a ligação a %'d ficheiro"
 msgstr[1] "A criar a ligação a %'d ficheiros"
 
-#: ../libcore/marlin-file-operations.c:5551
+#: ../libcore/marlin-file-operations.c:5550
 msgid "Error while creating link to %B."
 msgstr "Erro ao criar a ligação a %B."
 
-#: ../libcore/marlin-file-operations.c:5553
+#: ../libcore/marlin-file-operations.c:5552
 msgid "Symbolic links only supported for local files"
 msgstr "As ligações simbólicas só são suportadas pelos ficheiros locais"
 
-#: ../libcore/marlin-file-operations.c:5556
+#: ../libcore/marlin-file-operations.c:5555
 msgid "The target doesn't support symbolic links."
 msgstr "O destino não tem suporte a ligações simbólicas."
 
-#: ../libcore/marlin-file-operations.c:5559
+#: ../libcore/marlin-file-operations.c:5558
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Ocorreu um erro ao criar a ligação simbólica em %F."
 
-#: ../libcore/marlin-file-operations.c:5887
-#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5886
+#: ../libcore/marlin-file-operations.c:5889
 msgid "Setting permissions"
 msgstr "A definir as permissões"
 
-#: ../libcore/marlin-file-operations.c:6002
+#: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
 msgstr "Não é possivel copiar para o lixo."
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
 msgstr "Não é permitido copiar ficheiros para o lixo"
 
-#: ../libcore/marlin-file-operations.c:6144
+#: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
 msgstr "pasta sem nome"
 
-#: ../libcore/marlin-file-operations.c:6152
+#: ../libcore/marlin-file-operations.c:6151
 msgid "new file"
 msgstr "novo ficheiro"
 
-#: ../libcore/marlin-file-operations.c:6323
+#: ../libcore/marlin-file-operations.c:6322
 msgid "Error while creating directory %B."
 msgstr "Erro ao criar o diretório %B."
 
-#: ../libcore/marlin-file-operations.c:6325
+#: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating file %B."
 msgstr "Erro ao criar o ficheiro %B."
 
-#: ../libcore/marlin-file-operations.c:6327
+#: ../libcore/marlin-file-operations.c:6326
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Ocorreu um erro ao criar o diretório em %F."
 
-#: ../libcore/marlin-file-operations.c:6645
+#: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
 msgstr "A esvaziar o lixo"
 
-#: ../libcore/marlin-file-operations.c:6657
+#: ../libcore/marlin-file-operations.c:6656
 msgid "Emptying Trash"
 msgstr "A esvaziar o lixo"
 
@@ -1519,39 +1519,47 @@ msgstr "Definir como Predefinido"
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:308 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Pasta pessoal"
 
-#: ../src/View/ViewContainer.vala:303 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:310 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Sistema de ficheiros"
 
-#: ../src/View/ViewContainer.vala:320
+#: ../src/View/ViewContainer.vala:327
 msgid "(as Administrator)"
 msgstr "(como administrador)"
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:330
+#: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
 msgstr "Não tem permissões para ver esta pasta."
 
-#: ../src/View/ViewContainer.vala:333
+#: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:334
+#: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
 msgstr "O servidor para esta pasta não foi localizado."
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:348
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
 msgstr "O ficheiro selecionado já não existe."
 
@@ -1560,7 +1568,7 @@ msgid "Open in New Tab"
 msgstr "Abrir num novo separador"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1922
+#: ../src/View/AbstractDirectoryView.vala:1943
 msgid "Open with"
 msgstr "Abrir com"
 
@@ -1629,10 +1637,6 @@ msgstr "Lixo"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This Folder Does Not Exist"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
@@ -1952,55 +1956,55 @@ msgstr "Marcadores"
 msgid "Everywhere Else"
 msgstr "Outros Locais"
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr "Falha ao pré-visualizar"
 
-#: ../src/View/AbstractDirectoryView.vala:1021
+#: ../src/View/AbstractDirectoryView.vala:1028
 msgid "Set as default"
 msgstr "Definir como pré-definido"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Cannot drop this file"
 msgstr "Impossível arrastar este ficheiro"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Invalid file name provided"
 msgstr "Introduzido um nome do ficheiro inválido"
 
-#: ../src/View/AbstractDirectoryView.vala:1891
+#: ../src/View/AbstractDirectoryView.vala:1912
 msgid "Invalid"
 msgstr "Inválido"
 
-#: ../src/View/AbstractDirectoryView.vala:1905
+#: ../src/View/AbstractDirectoryView.vala:1926
 msgid "Run"
 msgstr "Executar"
 
-#: ../src/View/AbstractDirectoryView.vala:1910
+#: ../src/View/AbstractDirectoryView.vala:1931
 msgid "Open in %s"
 msgstr "Abrir em %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1920
+#: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Abrir em"
 
-#: ../src/View/AbstractDirectoryView.vala:1978
+#: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
 msgstr "Outra Aplicação"
 
-#: ../src/View/AbstractDirectoryView.vala:2247
+#: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
 msgstr "%s Sem Nome"
 
-#: ../src/View/AbstractDirectoryView.vala:2577
+#: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possivel copiar ficheiros que estão no lixo"
 
-#: ../src/View/AbstractDirectoryView.vala:2578
+#: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
 msgstr "Então cortar a seleção"
 
-#: ../src/View/AbstractDirectoryView.vala:2773
+#: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2138,16 +2142,20 @@ msgid "Connect to a network file server"
 msgstr "Ligar a um servidor de ficheiros remoto"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
-msgid "These items may be restored or deleted from the trash."
-msgstr "Estes itens podem ser restaurados ou apagados do Lixo."
-
-#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Restore All"
 msgstr "Restaurar Todos"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:57
+#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
 msgstr "Esvaziar o Lixo"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:77
+msgid "These items may be restored or deleted from the trash."
+msgstr "Estes itens podem ser restaurados ou apagados do Lixo."
+
+#: ../plugins/pantheon-files-trash/plugin.vala:79
+msgid "Cannot restore or delete unless in root folder"
+msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

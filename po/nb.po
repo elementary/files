@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-31 16:37-0500\n"
+"POT-Creation-Date: 2015-08-08 18:43-0500\n"
 "PO-Revision-Date: 2015-08-02 13:21+0000\n"
 "Last-Translator: Daniel Vedå <daniel1112223331@gmail.com>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-03 05:48+0000\n"
+"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 "Language: nb\n"
 
@@ -519,12 +519,12 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Gjenta eierendring av %d element"
 msgstr[1] "Gjenta eierendring av %d elementer"
 
-#: ../libcore/marlin-file-utilities.c:120
+#: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Kunne ikke fastslå opprinnelig lokasjon for «%s» "
 
-#: ../libcore/marlin-file-utilities.c:124
+#: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
 msgstr "Elementet kan ikke gjenopprettes fra papirkurven"
 
@@ -1362,77 +1362,77 @@ msgstr "Feilet ved flytting av \"%F\"."
 msgid "There was an error moving the file into %F."
 msgstr "Det oppstod en feil ved flytting av filen til %F."
 
-#: ../libcore/marlin-file-operations.c:5370
+#: ../libcore/marlin-file-operations.c:5369
 msgid "Moving Files"
 msgstr "Flytter filer"
 
-#: ../libcore/marlin-file-operations.c:5399
+#: ../libcore/marlin-file-operations.c:5398
 msgid "Creating links in \"%B\""
 msgstr "Oppretter lenker i \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5410
+#: ../libcore/marlin-file-operations.c:5409
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Oppretter lenke til %'d fil"
 msgstr[1] "Oppretter lenker til %'d filer"
 
-#: ../libcore/marlin-file-operations.c:5551
+#: ../libcore/marlin-file-operations.c:5550
 msgid "Error while creating link to %B."
 msgstr "Feil under oppretting av lenke til «%B»."
 
-#: ../libcore/marlin-file-operations.c:5553
+#: ../libcore/marlin-file-operations.c:5552
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolske lenker er kun støttet for lokale filer"
 
-#: ../libcore/marlin-file-operations.c:5556
+#: ../libcore/marlin-file-operations.c:5555
 msgid "The target doesn't support symbolic links."
 msgstr "Målet støtter ikke symbolske lenker."
 
-#: ../libcore/marlin-file-operations.c:5559
+#: ../libcore/marlin-file-operations.c:5558
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Det oppstod en feil ved oppretting av symbolsk lenke i %F."
 
-#: ../libcore/marlin-file-operations.c:5887
-#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5886
+#: ../libcore/marlin-file-operations.c:5889
 msgid "Setting permissions"
 msgstr "Setter rettigheter"
 
-#: ../libcore/marlin-file-operations.c:6002
+#: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
 msgstr "Kan ikke kopiere til papirkurv."
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
 msgstr "Det er ikke tillatt å kopiere filer til papirkurven"
 
-#: ../libcore/marlin-file-operations.c:6144
+#: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
 msgstr "mappe uten navn"
 
-#: ../libcore/marlin-file-operations.c:6152
+#: ../libcore/marlin-file-operations.c:6151
 msgid "new file"
 msgstr "ny fil"
 
-#: ../libcore/marlin-file-operations.c:6323
+#: ../libcore/marlin-file-operations.c:6322
 msgid "Error while creating directory %B."
 msgstr "Feil under oppretting av katalog %B."
 
-#: ../libcore/marlin-file-operations.c:6325
+#: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating file %B."
 msgstr "Feil under oppretting av fil «%B»."
 
-#: ../libcore/marlin-file-operations.c:6327
+#: ../libcore/marlin-file-operations.c:6326
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Det oppstod en feil under oppretting av katalog i %F."
 
-#: ../libcore/marlin-file-operations.c:6645
+#: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
 msgstr "Tømmer papirkurven"
 
-#: ../libcore/marlin-file-operations.c:6657
+#: ../libcore/marlin-file-operations.c:6656
 msgid "Emptying Trash"
 msgstr "Tømmer papirkurv"
 
@@ -1508,39 +1508,47 @@ msgstr "Velg som standard"
 msgid "Ignore"
 msgstr "Ignorer"
 
-#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:308 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Hjem"
 
-#: ../src/View/ViewContainer.vala:303 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:310 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../src/View/ViewContainer.vala:320
+#: ../src/View/ViewContainer.vala:327
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:330
+#: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
 msgstr "Du har ikke rettigheter til å se denne mappen."
 
-#: ../src/View/ViewContainer.vala:333
+#: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:334
+#: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
 msgstr "Tjeneren for denne mappen kunne ikke bli funnet."
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:348
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
 msgstr "Den valgte filen finnes ikke lenger."
 
@@ -1549,7 +1557,7 @@ msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1922
+#: ../src/View/AbstractDirectoryView.vala:1943
 msgid "Open with"
 msgstr "Åpne med"
 
@@ -1619,10 +1627,6 @@ msgstr "Papirkurv"
 #: ../src/View/Resources.vala:85
 msgid "Recent"
 msgstr "Nylig brukt"
-
-#: ../src/View/DirectoryNotFound.vala:39
-msgid "This Folder Does Not Exist"
-msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1941,55 +1945,55 @@ msgstr "Bokmerker"
 msgid "Everywhere Else"
 msgstr "Overalt ellers"
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr "Feilet forhåndsvisning"
 
-#: ../src/View/AbstractDirectoryView.vala:1021
+#: ../src/View/AbstractDirectoryView.vala:1028
 msgid "Set as default"
 msgstr "Bruk som standard"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Cannot drop this file"
 msgstr "Kunne ikke slippe denne fila"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Invalid file name provided"
 msgstr "Ugyldig filnavn angitt"
 
-#: ../src/View/AbstractDirectoryView.vala:1891
+#: ../src/View/AbstractDirectoryView.vala:1912
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: ../src/View/AbstractDirectoryView.vala:1905
+#: ../src/View/AbstractDirectoryView.vala:1926
 msgid "Run"
 msgstr "Kjør"
 
-#: ../src/View/AbstractDirectoryView.vala:1910
+#: ../src/View/AbstractDirectoryView.vala:1931
 msgid "Open in %s"
 msgstr "Åpne i %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1920
+#: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Åpne i"
 
-#: ../src/View/AbstractDirectoryView.vala:1978
+#: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
 msgstr "Annen applikasjon"
 
-#: ../src/View/AbstractDirectoryView.vala:2247
+#: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
 msgstr "Uten navn %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2577
+#: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer som er i papirkurven"
 
-#: ../src/View/AbstractDirectoryView.vala:2578
+#: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalget i stedet"
 
-#: ../src/View/AbstractDirectoryView.vala:2773
+#: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2127,16 +2131,20 @@ msgid "Connect to a network file server"
 msgstr "Koble til en nettverk filtjener"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
-msgid "These items may be restored or deleted from the trash."
-msgstr "Disse elementene kan gjenopprettes eller slettes fra papirkurven."
-
-#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Restore All"
 msgstr "Gjenopprett alle"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:57
+#: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
 msgstr "Tøm papirkurven"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:77
+msgid "These items may be restored or deleted from the trash."
+msgstr "Disse elementene kan gjenopprettes eller slettes fra papirkurven."
+
+#: ../plugins/pantheon-files-trash/plugin.vala:79
+msgid "Cannot restore or delete unless in root folder"
+msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

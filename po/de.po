@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-31 16:37-0500\n"
-"PO-Revision-Date: 2015-07-28 18:56+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"POT-Creation-Date: 2015-08-08 18:43-0500\n"
+"PO-Revision-Date: 2015-08-08 13:11+0000\n"
+"Last-Translator: Miranonet <mail@miranonet.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-01 05:38+0000\n"
+"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
 "X-Generator: Launchpad (build 17656)\n"
 "Language: de\n"
 
@@ -521,12 +521,12 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Veränderung des Besitzers von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
-#: ../libcore/marlin-file-utilities.c:120
+#: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 
-#: ../libcore/marlin-file-utilities.c:124
+#: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
 msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
@@ -1390,81 +1390,81 @@ msgstr "Fehler beim Verschieben von »%F«"
 msgid "There was an error moving the file into %F."
 msgstr "Beim Verschieben der Datei nach %F ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:5370
+#: ../libcore/marlin-file-operations.c:5369
 msgid "Moving Files"
 msgstr "Dateien werden verschoben"
 
-#: ../libcore/marlin-file-operations.c:5399
+#: ../libcore/marlin-file-operations.c:5398
 msgid "Creating links in \"%B\""
 msgstr "Verknüpfungen werden in »%B« angelegt"
 
-#: ../libcore/marlin-file-operations.c:5410
+#: ../libcore/marlin-file-operations.c:5409
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Verknüpfung mit %'d Datei wird angelegt"
 msgstr[1] "Verknüpfungen mit %'d Dateien werden angelegt"
 
-#: ../libcore/marlin-file-operations.c:5551
+#: ../libcore/marlin-file-operations.c:5550
 msgid "Error while creating link to %B."
 msgstr "Fehler beim Anlegen einer Verknüpfung mit »%B«."
 
-#: ../libcore/marlin-file-operations.c:5553
+#: ../libcore/marlin-file-operations.c:5552
 msgid "Symbolic links only supported for local files"
 msgstr ""
 "Symbolische Verknüpfungen werden ausschließlich auf lokalen Dateisystemen "
 "unterstützt."
 
-#: ../libcore/marlin-file-operations.c:5556
+#: ../libcore/marlin-file-operations.c:5555
 msgid "The target doesn't support symbolic links."
 msgstr "Dieses Ablegeziel unterstützt keine symbolischen Verknüpfungen."
 
-#: ../libcore/marlin-file-operations.c:5559
+#: ../libcore/marlin-file-operations.c:5558
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 "Beim Erstellen der symbolischen Verknüpfung in »%F« ist ein Fehler "
 "aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:5887
-#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5886
+#: ../libcore/marlin-file-operations.c:5889
 msgid "Setting permissions"
 msgstr "Zugriffsrechte werden eingestellt"
 
-#: ../libcore/marlin-file-operations.c:6002
+#: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
 msgstr "Es kann nicht in den Papierkorb kopiert werden"
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
 msgstr "Es nicht möglich, Dateien in den Papierkorb zu kopieren"
 
-#: ../libcore/marlin-file-operations.c:6144
+#: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
 msgstr "Namenloser Ordner"
 
-#: ../libcore/marlin-file-operations.c:6152
+#: ../libcore/marlin-file-operations.c:6151
 msgid "new file"
 msgstr "neue Datei"
 
-#: ../libcore/marlin-file-operations.c:6323
+#: ../libcore/marlin-file-operations.c:6322
 msgid "Error while creating directory %B."
 msgstr "Fehler beim Erstellen des Ordners »%B«."
 
-#: ../libcore/marlin-file-operations.c:6325
+#: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating file %B."
 msgstr "Fehler beim Erstellen der Datei »%B«."
 
-#: ../libcore/marlin-file-operations.c:6327
+#: ../libcore/marlin-file-operations.c:6326
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 
-#: ../libcore/marlin-file-operations.c:6645
+#: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
 msgstr "Papierkorb wird geleert"
 
-#: ../libcore/marlin-file-operations.c:6657
+#: ../libcore/marlin-file-operations.c:6656
 msgid "Emptying Trash"
 msgstr "Papierkorb wird geleert"
 
@@ -1540,39 +1540,47 @@ msgstr "Als Vorgabe einstellen"
 msgid "Ignore"
 msgstr "Ignorieren"
 
-#: ../src/View/ViewContainer.vala:301 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:308 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
-#: ../src/View/ViewContainer.vala:303 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:310 ../src/View/Sidebar.vala:513
 msgid "File System"
 msgstr "Dateisystem"
 
-#: ../src/View/ViewContainer.vala:320
+#: ../src/View/ViewContainer.vala:327
 msgid "(as Administrator)"
 msgstr "(als Administrator)"
 
-#: ../src/View/ViewContainer.vala:329
+#: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:330
+#: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
 msgstr "Sie haben keine Zugriffsrechte, um diesen Ordner anzuzeigen."
 
-#: ../src/View/ViewContainer.vala:333
+#: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Der Ordner kann nicht eingehangen werden."
 
-#: ../src/View/ViewContainer.vala:334
+#: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
 msgstr "Der Server für diesen Ordner konnte nicht gefunden werden."
 
-#: ../src/View/ViewContainer.vala:346
-msgid "File not Found"
+#: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
+msgid "This Folder Does Not Exist"
+msgstr "Dieser Ordner ist nicht vorhanden"
+
+#: ../src/View/ViewContainer.vala:348
+msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:357
+msgid "File not Found"
+msgstr "Datei nicht gefuden"
+
+#: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
@@ -1581,7 +1589,7 @@ msgid "Open in New Tab"
 msgstr "In neuem Tab öffnen"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1922
+#: ../src/View/AbstractDirectoryView.vala:1943
 msgid "Open with"
 msgstr "Öffnen mit"
 
@@ -1653,10 +1661,6 @@ msgid "Recent"
 msgstr "Zuletzt verwendet"
 
 #: ../src/View/DirectoryNotFound.vala:39
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
 msgstr "Der Ordner »%s« konnte nicht gefunden werden."
 
@@ -1680,19 +1684,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Dieser Ordner ist leer"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Der Papierkorb ist leer"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Es gibt keine zuletzt verwendete Dateien."
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Zugriff verweigert"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1720,19 +1724,19 @@ msgstr "%u ausgewählte Elemente (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u Unterordner, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u Unterordner, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u Datei, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u Dateien, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1881,7 +1885,7 @@ msgstr "Persönlichen Ordner öffnen"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Liste der zuletzt verwendeten Dateien anzeigen"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1975,57 +1979,57 @@ msgstr "Lesezeichen"
 msgid "Everywhere Else"
 msgstr "Überall sonst"
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr "Vorschau fehlgeschlagen"
 
-#: ../src/View/AbstractDirectoryView.vala:1021
+#: ../src/View/AbstractDirectoryView.vala:1028
 msgid "Set as default"
 msgstr "Als Vorgabe festlegen"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Cannot drop this file"
 msgstr "Diese Datei kann nicht abgelegt werden"
 
-#: ../src/View/AbstractDirectoryView.vala:1479
+#: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Invalid file name provided"
 msgstr "Ungültiger Name angegeben"
 
-#: ../src/View/AbstractDirectoryView.vala:1891
+#: ../src/View/AbstractDirectoryView.vala:1912
 msgid "Invalid"
 msgstr "Ungültig"
 
-#: ../src/View/AbstractDirectoryView.vala:1905
+#: ../src/View/AbstractDirectoryView.vala:1926
 msgid "Run"
 msgstr "Ausführen"
 
-#: ../src/View/AbstractDirectoryView.vala:1910
+#: ../src/View/AbstractDirectoryView.vala:1931
 msgid "Open in %s"
 msgstr "In %s öffnen"
 
-#: ../src/View/AbstractDirectoryView.vala:1920
+#: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Öffnen in"
 
-#: ../src/View/AbstractDirectoryView.vala:1978
+#: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
 msgstr "Andere Anwendung"
 
-#: ../src/View/AbstractDirectoryView.vala:2247
+#: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
 msgstr "%s ohne Namen"
 
-#: ../src/View/AbstractDirectoryView.vala:2577
+#: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
 msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
 
-#: ../src/View/AbstractDirectoryView.vala:2578
+#: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
 msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
-#: ../src/View/AbstractDirectoryView.vala:2773
+#: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Zu »%s« umzubenennen ist fehlgeschlagen"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2161,18 +2165,22 @@ msgid "Connect to a network file server"
 msgstr "Mit einem Dateiserver im Netzwerk verbinden"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
+msgid "Restore All"
+msgstr "Alle wiederherstellen"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:56
+msgid "Empty the Trash"
+msgstr "Papierkorb leeren"
+
+#: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
 "Diese Elemente können aus dem Papierkorb wiederhergestellt oder gelöscht "
 "werden."
 
-#: ../plugins/pantheon-files-trash/plugin.vala:56
-msgid "Restore All"
-msgstr "Alle wiederherstellen"
-
-#: ../plugins/pantheon-files-trash/plugin.vala:57
-msgid "Empty the Trash"
-msgstr "Papierkorb leeren"
+#: ../plugins/pantheon-files-trash/plugin.vala:79
+msgid "Cannot restore or delete unless in root folder"
+msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2185,11 +2193,11 @@ msgstr "Endgültig löschen"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Übergeordneten Ordner öffnen"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Aus dem Verlauf entfernen"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
