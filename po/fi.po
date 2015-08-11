@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-05 06:44+0000\n"
+"PO-Revision-Date: 2015-08-10 06:43+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-11 05:56+0000\n"
+"X-Generator: Launchpad (build 17686)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1542,7 +1542,7 @@ msgstr "Tätä kansiota ei ole olemassa"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Et voi luoda kansiota tähän sijaintiin."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
@@ -2144,7 +2144,7 @@ msgstr "Nämä kohteet on mahdollista palauttaa tai poistaa roskakorista."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Palauttaminen tai poistaminen ei onnistu, ellet ole juurikansiossa"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

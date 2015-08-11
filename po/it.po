@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-01 07:14+0000\n"
+"PO-Revision-Date: 2015-08-10 11:33+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-11 05:56+0000\n"
+"X-Generator: Launchpad (build 17686)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1550,7 +1550,7 @@ msgstr "Questa cartella non esiste"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Non puoi creare una cartella qui."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
@@ -2152,7 +2152,7 @@ msgstr "Questi elementi possono essere ripristinati o eliminati dal cestino."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Impossibile ripristinare o eliminare se non in cartella principale"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
