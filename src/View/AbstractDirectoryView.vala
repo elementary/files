@@ -118,7 +118,7 @@ namespace FM {
         }
 
         protected Marlin.ZoomLevel minimum_zoom = Marlin.ZoomLevel.SMALLEST;
-        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST; /* TODO Make a setting? */
+        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
         protected bool large_thumbnails = false;
 
         /* drag support */
