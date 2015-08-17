@@ -662,14 +662,10 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     GdkPixbuf *pix;
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, flags);
-    //nicon = gof_file_get_icon (file, size, 0);
-
-    //pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
-    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
-    if (nicon)
+    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
+    if (nicon) {
         g_object_unref (nicon);
-    //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
-
+    }
     return pix;
 }
 
@@ -680,8 +676,8 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
-    /* make sure we always got a non null pixbuf */
-    file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+    /* make sure we always got a non null pixbuf of the specified size */
+    file->pix = gof_file_get_icon_pixbuf (file, size, TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
 }
 
