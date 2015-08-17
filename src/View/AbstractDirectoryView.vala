@@ -118,7 +118,8 @@ namespace FM {
         }
 
         protected Marlin.ZoomLevel minimum_zoom = Marlin.ZoomLevel.SMALLEST;
-        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
+        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST; /* TODO Make a setting? */
+        protected bool large_thumbnails = false;
 
         /* drag support */
         uint drag_scroll_timer_id = 0;
@@ -1227,7 +1228,7 @@ namespace FM {
             /* 2nd parameter is for returned request id if required - we do not use it? */
             /* This is required if we need to dequeue the request */
             if (slot.directory.is_local)
-                thumbnailer.queue_file (file, null, false);
+                thumbnailer.queue_file (file, null, large_thumbnails);
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
@@ -1273,6 +1274,11 @@ namespace FM {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
+            if (!large_thumbnails && icon_size >= 128 || large_thumbnails && icon_size < 128) {
+                large_thumbnails = icon_size >= 128;
+                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+            }
+
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
@@ -2332,7 +2338,7 @@ namespace FM {
                 }
 
                 if (visible_files != null)
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, false);
+                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
 
                 thumbnail_source_id = 0;
                 return false;

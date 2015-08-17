@@ -343,5 +343,11 @@ namespace Marlin.View {
             if (dir_view != null)
                 disconnect_dir_view_signals ();
         }
+
+        public void refresh_files () {
+            if (directory != null) {
+                directory.update_files ();
+            }
+        }
     }
 }

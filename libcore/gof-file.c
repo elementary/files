@@ -873,8 +873,13 @@ gof_file_query_thumbnail_update (GOFFile *file)
         md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, file->uri, -1);
         base_name = g_strdup_printf ("%s.png", md5_hash);
         /* TODO Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding - when Tumbler does*/
-        file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
-                                                 "normal", base_name, NULL);
+        if (file->pix_size < 128) {
+            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+                                                     "normal", base_name, NULL);
+        } else {
+            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+                                                     "large", base_name, NULL);
+        }
         g_free (base_name);
         g_free (md5_hash);
     }
