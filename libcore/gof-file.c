@@ -675,9 +675,10 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     g_return_if_fail (size >= 1);
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
-    //g_clear_object (&file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
-    file->pix = gof_file_get_icon_pixbuf (file, size, TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+    file->pix = gof_file_get_icon_pixbuf (file, size,
+                                          gof_preferences_get_default ()->pref_force_icon_size,
+                                          GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
 }
 
