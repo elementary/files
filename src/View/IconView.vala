@@ -18,14 +18,11 @@
 
 namespace FM {
     public class IconView : AbstractDirectoryView {
-        const double COLUMN_SPACING_RATIO = 0.2;
-        const double ROW_SPACING_RATIO = 0.2;
-        const double ITEM_WIDTH_RATIO = 1.5;
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
             base (_slot);
-            minimum_zoom = Marlin.ZoomLevel.SMALLER;
+            minimum_zoom = Marlin.ZoomLevel.NORMAL;
 
             if (zoom_level < minimum_zoom)
                 zoom_level = minimum_zoom;
@@ -101,9 +98,9 @@ namespace FM {
 
         public override void change_zoom_level () {
             if (tree != null) {
-                tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
-                tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
-                tree.set_item_width ((int)((double)icon_size * ITEM_WIDTH_RATIO));
+                tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
+                tree.set_row_spacing ((int)((double)icon_size * (0.2 - zoom_level * 0.03)));
+                tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
 
                 name_renderer.set_property ("wrap-width", tree.get_item_width ());
                 name_renderer.set_property ("zoom-level", zoom_level);
