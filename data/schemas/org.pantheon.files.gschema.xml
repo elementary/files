@@ -12,7 +12,9 @@
     <value value="3" nick="normal"/>
     <value value="4" nick="large"/>
     <value value="5" nick="larger"/>
-    <value value="6" nick="largest"/>
+    <value value="6" nick="huge"/>
+    <value value="7" nick="huger"/>
+    <value value="8" nick="largest"/>
   </enum>
   <enum id="dateformatmode">
     <value value="0" nick="iso"/>
