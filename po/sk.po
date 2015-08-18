@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-03-19 21:19+0000\n"
-"Last-Translator: laci357 <laci357@gmail.com>\n"
+"PO-Revision-Date: 2015-08-17 14:51+0000\n"
+"Last-Translator: pyler <pyler.inbox@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-18 05:53+0000\n"
+"X-Generator: Launchpad (build 17690)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -363,36 +363,36 @@ msgstr "_Vrátiť vytvorenie súboru zo šablóny"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "Vrátiť naspäť vytvorenie priečinka %d"
-msgstr[1] "Vrátiť naspäť vytvorenie priečinkov %d"
+msgstr[0] "Vrátiť naspäť vytvorenie %d priečinka"
+msgstr[1] "Vrátiť naspäť vytvorenie %d priečinkov"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "Vrátiť naspäť presunutie položky %d do koša"
-msgstr[1] "Vrátiť naspäť presunutie položiek %d do koša"
+msgstr[0] "Vrátiť naspäť presunutie %d položky do koša"
+msgstr[1] "Vrátiť naspäť presunutie %d položiek do koša"
 
 #: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "Vrátiť naspäť obnovenie položky %d z koša"
-msgstr[1] "Vrátiť naspäť obnovenie položiek %d z koša"
+msgstr[0] "Vrátiť naspäť obnovenie %d položky z koša"
+msgstr[1] "Vrátiť naspäť obnovenie %d položiek z koša"
 
 #: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "Vrátiť naspäť vytvorenie odkazu na položku %d"
-msgstr[1] "Vrátiť naspäť vytvorenie odkazu na položky %d"
+msgstr[0] "Vrátiť naspäť vytvorenie odkazu na %d položku"
+msgstr[1] "Vrátiť naspäť vytvorenie odkazu na %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1602
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "Vrátiť naspäť odstránenie položky %d"
-msgstr[1] "Vrátiť naspäť odstránenie položiek %d"
+msgstr[0] "Vrátiť naspäť odstránenie %d položky"
+msgstr[1] "Vrátiť naspäť odstránenie %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1607
 #, c-format
@@ -406,36 +406,36 @@ msgstr[2] "Vrátiť naspäť rekurzívnu zmenu oprávnení položky %d"
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Vrátiť naspäť zmenu oprávnení položky %d"
-msgstr[1] "Vrátiť naspäť zmenu oprávnení položiek %d"
+msgstr[0] "Vrátiť naspäť zmenu oprávnení %d položky"
+msgstr[1] "Vrátiť naspäť zmenu oprávnení %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "Vrátiť naspäť zmenu skupiny položky %d"
-msgstr[1] "Vrátiť naspäť zmenu skupiny položiek %d"
+msgstr[0] "Vrátiť naspäť zmenu skupiny %d položky"
+msgstr[1] "Vrátiť naspäť zmenu skupiny %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1623
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "Vrátiť naspäť zmenu vlastníka položky %d"
-msgstr[1] "Vrátiť naspäť zmenu vlastníka položiek %d"
+msgstr[0] "Vrátiť naspäť zmenu vlastníka %d položky"
+msgstr[1] "Vrátiť naspäť zmenu vlastníka %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1651
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Obnoviť kópiu položky %d"
-msgstr[1] "_Obnoviť kópiu položiek %d"
+msgstr[0] "_Obnoviť kópiu %d položky"
+msgstr[1] "_Obnoviť kópiu %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Obnoviť duplikát položky %d"
-msgstr[1] "_Obnoviť duplikát položiek %d"
+msgstr[0] "_Obnoviť duplikát %d položky"
+msgstr[1] "_Obnoviť duplikát %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
@@ -1637,7 +1637,7 @@ msgstr "Kôš"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Nedávno použité súbory"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1671,7 +1671,7 @@ msgstr ""
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Žiadne nedávno použité súbory"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
@@ -1862,7 +1862,7 @@ msgstr "Otvoriť váš osobný priečinok"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Zobraziť zoznam nedávno použitých súborov"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
