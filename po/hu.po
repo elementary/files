@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-19 17:01+0000\n"
-"Last-Translator: Papp Ferenc <Unknown>\n"
+"PO-Revision-Date: 2015-08-20 16:19+0000\n"
+"Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-20 05:54+0000\n"
+"X-Launchpad-Export-Date: 2015-08-21 05:33+0000\n"
 "X-Generator: Launchpad (build 17690)\n"
 "Language: hu\n"
 
@@ -1700,7 +1700,7 @@ msgstr "%u fájl, "
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
-msgstr "Beállítások"
+msgstr "Tulajdonságok"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "General"
