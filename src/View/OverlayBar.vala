@@ -239,11 +239,15 @@ namespace Marlin.View {
                 return;
 
             foreach (var gof in files) {
-                if (gof.is_folder ()) {
-                    folders_count++;
+                if (gof != null && gof is GOF.File) { 
+                    if (gof.is_folder ()) {
+                        folders_count++;
+                    } else {
+                        files_count++;
+                        files_size += PropertiesWindow.file_real_size (gof);
+                    }
                 } else {
-                    files_count++;
-                    files_size += PropertiesWindow.file_real_size (gof);
+                    warning ("Null file found in OverlayBar scan_list - this should not happen");
                 }
             }
         }

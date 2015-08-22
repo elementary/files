@@ -2478,6 +2478,11 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
+    if (file == NULL) {
+        g_warning ("gof_file_is_folder () called with null file - ignoring");
+        return FALSE;
+    }
+
     /* TODO check this works for non-local files and other uri schemes*/
     if ((file->is_directory && !gof_file_is_root_network_folder (file)))
         return TRUE;
