@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-01 08:06+0000\n"
+"PO-Revision-Date: 2015-08-21 05:51+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-22 05:46+0000\n"
+"X-Generator: Launchpad (build 17690)\n"
 "Language: \n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1459,7 +1459,7 @@ msgstr "此文件夹不存在"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "无法在此位置新建文件夹。"
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
@@ -2060,7 +2060,7 @@ msgstr "这些项目可以恢复或从回收站删除。"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "只有在 root 权限下才能进行恢复或删除操作"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
