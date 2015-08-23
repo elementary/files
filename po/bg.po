@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2014-12-12 15:56+0000\n"
-"Last-Translator: ITPROJECTS <Unknown>\n"
+"PO-Revision-Date: 2015-08-22 19:00+0000\n"
+"Last-Translator: Eleonora <ekandzh95@gmail.com>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-23 05:49+0000\n"
+"X-Generator: Launchpad (build 17690)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -865,7 +865,7 @@ msgstr "Ако изтриете обекта, ще го загубите зав�
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Изтриване на файловете от кошчето завинаги?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
@@ -1325,11 +1325,11 @@ msgstr "Не може да се премахне вече съществуващ
 
 #: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Не можете да копирате \"%B\" тук."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Възникна грешка при копирането на файл в %B."
 
 #: ../libcore/marlin-file-operations.c:4820
 msgid "Copying Files"
@@ -1395,11 +1395,11 @@ msgstr "Задаване на права"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Не можете да копирате в кошчето."
 
 #: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Не е разрешено да копирате файлове в кошчето"
 
 #: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
@@ -1488,7 +1488,7 @@ msgstr "Следващ"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Създаване на папка"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
@@ -1516,7 +1516,7 @@ msgstr "като Администратор"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Тази папка не принадлежи на вас."
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
