@@ -981,6 +981,10 @@ static void gof_file_finalize (GObject* obj) {
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
 
+    if (file->target_gof != NULL) {
+        _g_object_unref0 (file->target_gof);
+    }
+
 #ifndef NDEBUG
     g_warn_if_fail (file->target_gof == NULL);
 #endif
