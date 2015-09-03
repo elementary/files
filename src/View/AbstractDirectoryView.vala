@@ -1964,7 +1964,11 @@ namespace FM {
             }
 
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
-            filter_default_app_from_open_with_apps ();
+
+            if (selection.data.is_executable () == false) {
+                filter_default_app_from_open_with_apps ();
+            }
+
             filter_this_app_from_open_with_apps ();
 
             if (open_with_apps != null) {
