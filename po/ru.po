@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2014-12-28 13:07+0000\n"
-"Last-Translator: Ushakov Maksym <msincster@gmail.com>\n"
+"PO-Revision-Date: 2015-09-02 16:34+0000\n"
+"Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-09-03 05:34+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -29,11 +29,11 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Общедоступный FTP"
+msgstr "Публичный FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (с авторизацией)"
+msgstr "FTP (с аутентификацией)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -60,7 +60,7 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Не удалось загрузить список поддерживаемых сервером методов.\n"
+"Не удалось загрузить список поддерживаемых сервером правил.\n"
 "Проверьте установку gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
@@ -79,7 +79,7 @@ msgstr "Повторить"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Подтвердите данные о пользователе."
+msgstr "Проверьте данные пользователя."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -88,7 +88,7 @@ msgstr "Продолжить"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "_Подключиться"
+msgstr "П_одключить"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -96,7 +96,7 @@ msgstr "Подключиться к серверу"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr "Подробности о сервере"
+msgstr "Сведения о сервере"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -136,11 +136,11 @@ msgstr "Паро_ль:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Запомнить этот пароль"
+msgstr "_Запомнить пароль"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr "Операция отменена"
+msgstr "Действие отменено"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -213,7 +213,7 @@ msgstr "Удалить ссылку на «%s»"
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Восстановить исходные права доступа к объектам, находящимся в «%s»"
+msgstr "Восстановить исходные права доступа к элементам в «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
@@ -223,7 +223,7 @@ msgstr "Восстановить исходные права доступа к �
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Восстановить «%s» группу «%s»"
+msgstr "Восстановить группу «%s» к «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
@@ -243,12 +243,12 @@ msgstr "Копировать «%s» в «%s»"
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Поместить дубликаты %d элементов в «%s»"
+msgstr "Копировать %d файлов в «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Копировать '%s' в '%s'"
+msgstr "Копировать «%s» в «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
@@ -303,12 +303,12 @@ msgstr "Создать ярлык на «%s»"
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Задать права доступа к объектам, находящимся в «%s»"
+msgstr "Задать права доступа к объектам в «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Установить права доступа для «%s»"
+msgstr "Установить права «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
@@ -898,21 +898,25 @@ msgstr "Если вы удалите элемент, вы больше не см
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Очистить корзину?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Все файлы в корзине, включая находящиеся на внешних носителях, будут "
+"безвозвратно удалены."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Безвозвратно удалить файлы из Корзины на этом носителе?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Все файлы с этого носителя, находящиеся в корзине, будут безвозвратно "
+"удалены."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
@@ -1373,11 +1377,11 @@ msgstr "Невозможно удалить уже существующий фа
 
 #: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Невозможно скопировать «%B» сюда."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Произошла ошибка во время копирования файла в «%B»."
 
 #: ../libcore/marlin-file-operations.c:4820
 msgid "Copying Files"
@@ -1445,11 +1449,11 @@ msgstr "Идёт установка прав"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Невозможно скопировать в корзину."
 
 #: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Копирование файлов в корзину запрещено"
 
 #: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
@@ -1538,7 +1542,7 @@ msgstr "Далее"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Создать папку"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
@@ -1566,7 +1570,7 @@ msgstr "(как Администратор)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Эта папка не принадлежит вам"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1574,27 +1578,27 @@ msgstr "У вас нет прав для просмотра этой папки.
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Невозможно смонтировать папку"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Невозможно определить сервер для указанной папки."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Эта папка не существует"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Вы не можете создать папку здесь"
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Файл не найден"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Выбранный файл больше не существует."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1670,7 +1674,7 @@ msgstr "Корзина"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Последние"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1696,19 +1700,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Папка пуста"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Корзина пуста"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Здесь нет недавних файлов"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Доступ запрещён"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1736,19 +1740,19 @@ msgstr "%u элементов выбрано (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u подпапка, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u подпапки, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u файл, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u файлы, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1777,7 +1781,7 @@ msgstr "файл"
 
 #: ../src/View/PropertiesWindow.vala:290
 msgid "files"
-msgstr ""
+msgstr "файлы"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "Actual size could be larger, "
@@ -1785,11 +1789,11 @@ msgstr "Фактический размер может быть больше, "
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "Чтение невозможно из-за ограничения прав или других ошибок."
 
 #: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
-msgstr ""
+msgstr "неизвестно"
 
 #: ../src/View/PropertiesWindow.vala:451
 msgid "%u selected items"
@@ -1829,7 +1833,7 @@ msgstr "Ссылка на"
 
 #: ../src/View/PropertiesWindow.vala:660
 msgid "Info"
-msgstr ""
+msgstr "Сведения"
 
 #: ../src/View/PropertiesWindow.vala:702
 msgid "Other application..."
@@ -1841,7 +1845,7 @@ msgstr "Открыть с помощью:"
 
 #: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
-msgstr ""
+msgstr "Использовано"
 
 #: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
@@ -1895,7 +1899,7 @@ msgstr "Открыть вашу личную папку"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Посмотреть список недавно использованных файлов"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -2031,15 +2035,15 @@ msgstr "Безымянный %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
 #: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Вырезать невыделенное"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Невозможно изменить название на «%s»"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2157,7 +2161,7 @@ msgstr "Отменить все выполняемые действия"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "Обновить папку"
 
 #: ../libwidgets/LocationBar.vala:322
 msgid "Go to %s"
@@ -2165,7 +2169,7 @@ msgstr "Перейти к %s"
 
 #: ../libwidgets/LocationBar.vala:459
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Перейти к %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2177,7 +2181,7 @@ msgstr "Подключиться к сетевому файловому серв
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Восстановить всё"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
@@ -2185,7 +2189,7 @@ msgstr "Очистить корзину"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Эти файлы могут быть восстановлены или удалены из Корзины"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2198,15 +2202,15 @@ msgstr "Восстановить из корзины"
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Удалить безвозвратно"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Открыть родительскую папку"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Удалить из истории"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
