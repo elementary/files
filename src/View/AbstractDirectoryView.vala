@@ -1223,12 +1223,17 @@ namespace FM {
         }
 
         private void on_directory_file_changed (GOF.Directory.Async dir, GOF.File file) {
-            remove_marlin_icon_info_cache (file);
-            model.file_changed (file, dir);
-            /* 2nd parameter is for returned request id if required - we do not use it? */
-            /* This is required if we need to dequeue the request */
-            if (slot.directory.is_local)
-                thumbnailer.queue_file (file, null, false);
+            if (file.location.equal (dir.file.location)) {
+                /* The slot directory has changed - it can only be the properties */
+                is_writable = slot.directory.file.is_writable ();
+            } else {
+                remove_marlin_icon_info_cache (file);
+                model.file_changed (file, dir);
+                /* 2nd parameter is for returned request id if required - we do not use it? */
+                /* This is required if we need to dequeue the request */
+                if (slot.directory.is_local)
+                    thumbnailer.queue_file (file, null, false);
+            }
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
