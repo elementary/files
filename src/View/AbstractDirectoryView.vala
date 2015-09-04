@@ -224,6 +224,7 @@ namespace FM {
         private bool in_trash = false;
         private bool in_recent = false;
         private bool in_network_root = false;
+        protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
 
@@ -848,7 +849,7 @@ namespace FM {
                 if (model.get_first_iter_for_file (file_to_rename, out iter)) {
                     /* Assume writability on remote locations */
                     /**TODO** Reliably determine writability with various remote protocols.*/
-                    if (file_to_rename.is_writable () || !slot.directory.is_local)
+                    if (is_writable || !slot.directory.is_local)
                         start_renaming_file (file_to_rename, false);
                     else
                         warning ("You do not have permission to rename this file");
@@ -1252,6 +1253,7 @@ namespace FM {
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
+            is_writable = slot.directory.file.is_writable ();
             thaw_tree ();
 
             if (in_recent)
@@ -2066,7 +2068,7 @@ namespace FM {
                 file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
-                    can_rename = file.is_writable ();
+                    can_rename = is_writable;
                 } else
                     critical ("File in selection is null");
             } else {
@@ -2449,6 +2451,7 @@ namespace FM {
 
         protected virtual void on_view_selection_changed () {
             update_selected_files ();
+            update_menu_actions ();
             if (updates_frozen)
                 return;
 
@@ -2644,7 +2647,7 @@ namespace FM {
                 var win = view.get_window ();
                 switch (click_zone) {
                     case ClickZone.NAME:
-                        if (single_click_rename && file != null && file.is_writable ())
+                        if (single_click_rename && is_writable && file != null)
                             win.set_cursor (editable_cursor);
                         else
                             win.set_cursor (selectable_cursor);
