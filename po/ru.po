@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-09-02 16:34+0000\n"
+"PO-Revision-Date: 2015-09-04 19:53+0000\n"
 "Last-Translator: Artem Anufrij <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-09-03 05:34+0000\n"
+"X-Launchpad-Export-Date: 2015-09-05 05:29+0000\n"
 "X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -29,7 +29,7 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Публичный FTP"
+msgstr "FTP (публичный)"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
@@ -2027,7 +2027,7 @@ msgstr "Открыть в"
 
 #: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
-msgstr "Другом приложении"
+msgstr "другом приложении"
 
 #: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
@@ -2055,7 +2055,7 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
-msgstr "Новое окно"
+msgstr "новом окне"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
@@ -2222,11 +2222,11 @@ msgstr "Создать"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr "Папка"
+msgstr "папку"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "Пустой файл"
+msgstr "пустой файл"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
@@ -2234,7 +2234,7 @@ msgstr "Показать скрытые файлы"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
-msgstr "Новая вкладка"
+msgstr "новой вкладке"
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
