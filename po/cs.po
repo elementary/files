@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-02-23 16:05+0000\n"
-"Last-Translator: Tomo Moto <Unknown>\n"
+"PO-Revision-Date: 2015-09-05 21:37+0000\n"
+"Last-Translator: Hlobil Vaclav <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-09-06 05:53+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1533,7 +1533,7 @@ msgstr "Následující"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Vytvořit složku"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
@@ -1561,7 +1561,7 @@ msgstr "(jako Administrátor)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Tato složka nepatří Vám"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1569,7 +1569,7 @@ msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Složku nelze připojit"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
@@ -1577,15 +1577,15 @@ msgstr "Server pro tuto složku nelze nalézt."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Tato složka neexistuje"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Zde nelze vytvořit složku"
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Soubor nenalezen"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
@@ -1665,7 +1665,7 @@ msgstr "Koš"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Nedávné"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1690,19 +1690,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Tato složka je prázdná"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Koš je prázdný"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Nejsou zde žádné nedávno použité soubory"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Přístup odepřen"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1730,19 +1730,19 @@ msgstr "%u označených položek (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u podsložka, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u podsložky, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u soubor, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u soubory, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1889,7 +1889,7 @@ msgstr "Otevřít osobní složku"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Zobrazit nedávno použité soubory"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -2029,11 +2029,11 @@ msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
 #: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Místo toho vyjmout výběr"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Přejmenování na '%s' se nezdařilo"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2171,7 +2171,7 @@ msgstr "Připojit k souborovému serveru"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Obnovit vše"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
@@ -2179,7 +2179,7 @@ msgstr "Vysypat Koš"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Tyto položky mohou být obnoveny nebo smazány z koše."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2196,11 +2196,11 @@ msgstr "Odstranit navždy"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Otevřít nadřazenou složku"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Odebrat z historie"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"

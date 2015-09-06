@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-09-04 23:29+0000\n"
+"PO-Revision-Date: 2015-09-05 21:06+0000\n"
 "Last-Translator: Adam Lukacovic <lukacovic.adam@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2015-09-05 05:29+0000\n"
+"X-Launchpad-Export-Date: 2015-09-06 05:53+0000\n"
 "X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -515,29 +515,33 @@ msgstr[2] "_Obnoviť odstraňovanie %d položiek"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Obnoviť spätnú zmenu povolení %d položky"
+msgstr[1] "Obnoviť spätnú zmenu povolení %d položiek"
+msgstr[2] "Obnoviť spätnú zmenu povolení %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Obnoviť zmenu povolení %d položky"
+msgstr[1] "Obnoviť zmenu povolení %d položiek"
+msgstr[2] "Obnoviť zmenu povolení %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Obnoviť zmenu skupiny %d položky"
+msgstr[1] "Obnoviť zmenu skupiny %d položiek"
+msgstr[2] "Obnoviť zmenu skupiny %d položiek"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Obnoviť zmenu vlastníka %d položky"
+msgstr[1] "Obnoviť zmenu vlastníka %d položiek"
+msgstr[2] "Obnoviť zmenu vlastníka %d položiek"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
@@ -678,7 +682,7 @@ msgstr "Použiť túto operáciu na všetky súbory"
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "Pre_skočiť"
+msgstr "_Preskočiť"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
@@ -702,15 +706,15 @@ msgstr "Pripravuje sa"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "Pres_kočiť všetko"
+msgstr "Pres_kočiť všetky"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "_Skúsiť znovu"
+msgstr "_Skúsiť znova"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Vym_azať všetko"
+msgstr "Vymazať_všetko"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -718,7 +722,7 @@ msgstr "Nah_radiť"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "N_ahradiť všetko"
+msgstr "Nahradiť _všetko"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
@@ -726,11 +730,11 @@ msgstr "_Zlúčiť"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Zlúčiť všetk_o"
+msgstr "Zlúčiť_všetko"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "_Aj tak skopírovať"
+msgstr "Skopírovať n_apriek tomu"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -838,17 +842,17 @@ msgstr "%s (ďalšia kópia)%s"
 #: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dth kopírovať)%s"
 
 #: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dst kopírovať)%s"
 
 #: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dnd kopírovať)%s"
 
 #: ../libcore/marlin-file-operations.c:519
 #, c-format
@@ -890,21 +894,23 @@ msgstr "Ak odstránite položku, bude nenávratne stratená."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Chcete natrvalo odstrániť všetky položky z koša?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Všetky položky vo všetkých priečinkoch v koši, vrátane tých ktorý sú v "
+"pripojených externých diskoch, budú natrvalo odstránené."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Natrvalo odstrániť všetky položky z koša na tomto zariadeni?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Všetky položky v koši na tomto zariadení budú natrvalo odstránené."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
@@ -970,7 +976,7 @@ msgstr "Nastala chyba pri zisťovaní informácií o súboroch v priečinku „%
 #: ../libcore/marlin-file-operations.c:1623
 #: ../libcore/marlin-file-operations.c:3734
 msgid "_Skip files"
-msgstr "Pre_skočiť súbory"
+msgstr "_Preskočiť súbory"
 
 #: ../libcore/marlin-file-operations.c:1644
 msgid ""
@@ -1011,50 +1017,62 @@ msgstr[2] "%'d súborov zostáva vyhodiť do koša"
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Nie je možné presunúť súbor do koša alebo ho odstrániť"
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Nie je povolené odstrániť alebo presunúť do koša súbory, ktoré sú len na "
+"čítanie."
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Nie je povolené odstrániť alebo presunúť do koša súbory v priečinkoch, ku "
+"ktorým nemáte práva na zápis."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Nie je povolené odstrániť alebo presunúť do koša priečinky, ku ktorým nemáte "
+"práva na zápis."
 
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Nie je možné presunúť súbor do koša. Skúste ich odstrániť okamžite."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Tento súbor nemôže byť premiestnený do koša. Pozrite si detaily nižšie pre "
+"viac informácií."
 
 #: ../libcore/marlin-file-operations.c:1957
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Nie je možné presunúť súbor do koša. Skúsili ste ich odstrániť?"
 
 #: ../libcore/marlin-file-operations.c:1958
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Tento súbor nie je možné presunúť do koša. Zrejme ho nebudete môcť ani "
+"odstrániť."
 
 #: ../libcore/marlin-file-operations.c:1963
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Odstránenie súboru zapríčiní jeho trvalé odstránenie"
 
 #: ../libcore/marlin-file-operations.c:2153
 msgid "Trashing Files"
@@ -1357,11 +1375,11 @@ msgstr "Nepodarilo sa odstrániť už existujúci súbor s rovnakým názvom v %
 
 #: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Nie je možné kopírovať \"%B\" SEM."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Nastala chyba počas kopírovania súboru do %B."
 
 #: ../libcore/marlin-file-operations.c:4820
 msgid "Copying Files"
@@ -1382,7 +1400,7 @@ msgstr[2] "Pripravuje sa presunutie %'d súborov"
 #: ../libcore/marlin-file-operations.c:5106
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Nastala chyba pri presúvaní \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5107
 #, c-format
@@ -1429,11 +1447,11 @@ msgstr "Nastavujú sa oprávnenia"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Nie je možné kopírovať do koša."
 
 #: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Nie je dovolené kopírovať súbory do koša"
 
 #: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
@@ -1449,7 +1467,7 @@ msgstr "Chyba pri vytváraní priečinka „%B“."
 
 #: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating file %B."
-msgstr "Chyba pri vytváraní súboru „%B“."
+msgstr "Chyba pri vytváraní súboru %B."
 
 #: ../libcore/marlin-file-operations.c:6326
 #, c-format
@@ -1474,7 +1492,7 @@ msgstr "Včera o %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b at %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1504,7 +1522,7 @@ msgstr "Neplatný súbor pracovnej plochy"
 
 #: ../libcore/gof-file.c:2236
 msgid "Slashes are not allowed in filenames"
-msgstr "Lomená nie sú v názvoch súborov povolené"
+msgstr "Lomítka nie sú povolené v názvoch súborov"
 
 #: ../libcore/gof-file.c:2256
 msgid "Toplevel files cannot be renamed"
@@ -1513,24 +1531,24 @@ msgstr "Súbory na najvyššej úrovni sa nedajú premenovať"
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../src/View/Chrome/TopMenu.vala:48
 msgid "Previous"
-msgstr ""
+msgstr "Predchadzajúci"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Chrome/TopMenu.vala:52
 msgid "Next"
-msgstr ""
+msgstr "Nasledujúci"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Vytvoriť priečinok"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
-msgstr "Prehliadač Súbory nie je nastavený ako predvolený správca súborov"
+msgstr "Aplikácia Files nie je nastavená ako predvolený správca súborov"
 
 #: ../src/View/Window.vala:184
 msgid "Set as Default"
-msgstr ""
+msgstr "Nastaviť ako predvolený"
 
 #: ../src/View/Window.vala:190
 msgid "Ignore"
@@ -1550,7 +1568,7 @@ msgstr "(Ako správca)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Tento priečinok nie je s vami prepojený"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1558,31 +1576,31 @@ msgstr "Nemáte oprávnenie pre prezeranie tohoto priečinka."
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Nie je možné pripojiť priečinok"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Server pre tento priečinok nie je možné lokalizovať."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Tento priečinok neexistuje"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Nie je možné vytvoriť priečinok TU."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Súbor nebol nájdený"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Vybraný súbor už neexistuje."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr "Otvoriť na novej karte"
+msgstr "Otvoriť v novej karte"
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1943
@@ -1680,11 +1698,11 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Tento priečinok je prázdny"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Kôš je prázdny"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
@@ -1692,7 +1710,7 @@ msgstr "Žiadne nedávno použité súbory"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Prístup zamietnutý"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1720,19 +1738,19 @@ msgstr "%u položiek vybraných (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u podpriečinok "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u podpriečinky "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u súbor, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u súbory, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1753,27 +1771,27 @@ msgstr "Náhľad"
 
 #: ../src/View/PropertiesWindow.vala:251
 msgid "Close"
-msgstr ""
+msgstr "Zavrieť"
 
 #: ../src/View/PropertiesWindow.vala:288
 msgid "file"
-msgstr ""
+msgstr "súbor"
 
 #: ../src/View/PropertiesWindow.vala:290
 msgid "files"
-msgstr ""
+msgstr "súbory"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Aktuálna veľkosť by mala byť väčšia, "
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "nie je možné čítanie kvôli povoleniam alebo iným chybám."
 
 #: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
-msgstr ""
+msgstr "neznáme"
 
 #: ../src/View/PropertiesWindow.vala:451
 msgid "%u selected items"
@@ -1813,7 +1831,7 @@ msgstr "Pôvodné umiestnenie"
 
 #: ../src/View/PropertiesWindow.vala:660
 msgid "Info"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: ../src/View/PropertiesWindow.vala:702
 msgid "Other application..."
@@ -1825,7 +1843,7 @@ msgstr "Otvoriť s:"
 
 #: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
-msgstr ""
+msgstr "Využitie"
 
 #: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
@@ -1883,7 +1901,7 @@ msgstr "Zobraziť zoznam nedávno použitých súborov"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
-msgstr ""
+msgstr "Otvoriť kôš"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
@@ -1895,7 +1913,7 @@ msgstr "Vaše miestne partície a zariadenia"
 
 #: ../src/View/Sidebar.vala:520
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "Otvoriť obsah systémového priečinku"
 
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
@@ -1907,7 +1925,7 @@ msgstr "Vaše miesta v sieti"
 
 #: ../src/View/Sidebar.vala:662
 msgid "Entire Network"
-msgstr ""
+msgstr "Celá sieť"
 
 #: ../src/View/Sidebar.vala:669
 msgid "Browse the contents of the network"
@@ -1919,11 +1937,11 @@ msgstr "Nepodarilo sa spustiť %s"
 
 #: ../src/View/Sidebar.vala:1279
 msgid "Open"
-msgstr ""
+msgstr "Otvoriť"
 
 #: ../src/View/Sidebar.vala:1287
 msgid "Open in New _Tab"
-msgstr "Otvoriť na novej _karte"
+msgstr "Otvoriť v novej _karte"
 
 #: ../src/View/Sidebar.vala:1293
 msgid "Open in New _Window"
@@ -1935,7 +1953,7 @@ msgstr "Odstrániť"
 
 #: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Premenovať"
 
 #: ../src/View/Sidebar.vala:1318
 msgid "_Mount"
@@ -1963,19 +1981,19 @@ msgstr "Zobraziť v stĺpcoch"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"
-msgstr ""
+msgstr "V tomto priečinku"
 
 #: ../src/View/SearchResults.vala:185
 msgid "Bookmarks"
-msgstr ""
+msgstr "Záložky"
 
 #: ../src/View/SearchResults.vala:187
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Všade inde"
 
 #: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
-msgstr ""
+msgstr "Nie je možné zobraziť náhľad"
 
 #: ../src/View/AbstractDirectoryView.vala:1028
 msgid "Set as default"
@@ -1983,47 +2001,47 @@ msgstr "Nastaviť ako predvolený"
 
 #: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Nie je možné zahodiť tento súbor"
 
 #: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Bolo zadané zlé meno súboru"
 
 #: ../src/View/AbstractDirectoryView.vala:1912
 msgid "Invalid"
-msgstr ""
+msgstr "Neplatný údaj"
 
 #: ../src/View/AbstractDirectoryView.vala:1926
 msgid "Run"
-msgstr ""
+msgstr "Spustiť"
 
 #: ../src/View/AbstractDirectoryView.vala:1931
 msgid "Open in %s"
-msgstr ""
+msgstr "Otvoriť v %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
-msgstr ""
+msgstr "Otvoriť v"
 
 #: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
-msgstr ""
+msgstr "Iná aplikácia"
 
 #: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
-msgstr ""
+msgstr "Bez názvu %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Nie je možné kopírovať súbory, ktoré sú v koši"
 
 #: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Vystrihnutie namiesto výberu"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Nie je možné premenovať na '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2035,15 +2053,15 @@ msgstr "Otvoriť uri v novej karte"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
-msgstr ""
+msgstr "Nové okno"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr "Ukončiť Files."
+msgstr "Zavrieť aplikáciu."
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
-msgstr "Povoľte zapisovanie pri ladení"
+msgstr "Povoliť zapisovanie pri laden"
 
 #: ../src/Application.vala:157
 msgid "[URI...]"
@@ -2057,7 +2075,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Prehliadať súborový systém správcom súborov"
+"Prehladať súborový systém správcom súboro"
 
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
@@ -2065,7 +2083,7 @@ msgstr "--quit nie je možné použiť s URI."
 
 #: ../src/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Nepodarilo sa spustiť \"%s\""
 
 #: ../src/DndHandler.vala:93
 msgid "Move Here"
