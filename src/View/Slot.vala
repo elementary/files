@@ -340,8 +340,10 @@ namespace Marlin.View {
             if (directory != null)
                 disconnect_dir_signals ();
 
-            if (dir_view != null)
+            if (dir_view != null) {
+                set_view_updates_frozen (true); /* stop signal handlers running during destruction */
                 disconnect_dir_view_signals ();
+            }
         }
     }
 }
