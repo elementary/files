@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-16 13:14+0000\n"
+"PO-Revision-Date: 2015-09-06 18:24+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-17 06:04+0000\n"
-"X-Generator: Launchpad (build 17686)\n"
+"X-Launchpad-Export-Date: 2015-09-07 05:53+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -884,7 +884,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
 msgid "Empty _Trash"
-msgstr "Tühjenda _prügikast"
+msgstr "_Tühjenda prügikast"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1437,11 +1437,11 @@ msgstr "Prügikasti tühjendamine"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "Täna kell %H%M"
+msgstr "Täna, kell %H:%M"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "Eile kell %H:%M"
+msgstr "Eile, kell %H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
@@ -1609,7 +1609,7 @@ msgstr "FTP"
 
 #: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:627
 msgid "Network"
-msgstr "Võrk:"
+msgstr "Võrk"
 
 #: ../src/View/Resources.vala:82
 msgid "SFTP"
@@ -1838,7 +1838,7 @@ msgstr "Rakenduse valimine, millega avada "
 
 #: ../src/View/Sidebar.vala:430
 msgid "Personal"
-msgstr "Isiklik:"
+msgstr "Isiklik"
 
 #: ../src/View/Sidebar.vala:435
 msgid "Your common places and bookmarks"
@@ -1858,7 +1858,7 @@ msgstr "Vaata prügikastis olevaid faile"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
-msgstr "Seadmed:"
+msgstr "Seadmed"
 
 #: ../src/View/Sidebar.vala:508
 msgid "Your local partitions and devices"
@@ -1902,11 +1902,11 @@ msgstr "Ava uues _aknas"
 
 #: ../src/View/Sidebar.vala:1301
 msgid "Remove"
-msgstr "Eemalda"
+msgstr "Eemalda järjehoidjatest"
 
 #: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr "Muuda nime..."
+msgstr "Muuda nime"
 
 #: ../src/View/Sidebar.vala:1318
 msgid "_Mount"
@@ -1974,7 +1974,7 @@ msgstr "Ava rakendusega %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
-msgstr "Avamine..."
+msgstr "Ava..."
 
 #: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
@@ -2135,7 +2135,7 @@ msgstr "Taasta kõik"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr "Tühjenda prügikasti"
+msgstr "Prügikasti tühjendamine..."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
@@ -2177,7 +2177,7 @@ msgstr "Kaust"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "Tühi fail"
+msgstr "Fail"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
