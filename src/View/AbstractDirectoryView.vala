@@ -1274,8 +1274,8 @@ namespace FM {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
-            if (!large_thumbnails && icon_size >= 128 || large_thumbnails && icon_size < 128) {
-                large_thumbnails = icon_size >= 128;
+            if (!large_thumbnails && icon_size > 128 || large_thumbnails && icon_size <= 128) {
+                large_thumbnails = icon_size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
             }
 
