@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-07-18 12:07+0000\n"
-"Last-Translator: Alexis Saettler <alexis@saettler.org>\n"
+"PO-Revision-Date: 2015-08-18 16:54+0000\n"
+"Last-Translator: AsuMagic <asusylvain@hotmail.fr>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-19 05:50+0000\n"
+"X-Generator: Launchpad (build 17690)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1544,7 +1544,7 @@ msgstr "(en tant qu'administrateur)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ce dossier ne vous appartient pas"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1552,7 +1552,7 @@ msgstr "Vous n'avez pas la permission de voir ce dossier."
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Impossible de monter le dossier"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
@@ -1560,15 +1560,15 @@ msgstr "Le serveur de ce dossier n'a pas pu être localisé."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Ce dossier n'existe pas"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Vous ne pouvez pas créer un dossier ici."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Fichier introuvable"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
@@ -1648,7 +1648,7 @@ msgstr "Corbeille"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Récent"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1674,19 +1674,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Ce dossier est vide"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "La corbeille est vide"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Il n'y a aucun fichier récent"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Accès refusé"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1714,19 +1714,19 @@ msgstr "%u éléments sélectionnés (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u sous-dossier, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u sous-dossiers, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u fichier, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u fichiers, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1873,7 +1873,7 @@ msgstr "Ouvrir votre dossier personnel"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Voir la liste de fichiers récemment utilisés"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -2017,7 +2017,7 @@ msgstr "Couper la sélection à la place"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Impossible de renommer en '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2179,11 +2179,11 @@ msgstr "Supprimer définitivement"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Ouvrir le dossier parent"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Retirer de l'historique"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"

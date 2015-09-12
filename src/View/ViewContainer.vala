@@ -110,13 +110,17 @@ namespace Marlin.View {
             view.close ();
         }
 
-        public Gtk.Widget content {
+        public Gtk.Widget? content {
             set {
-                if (content_item != null)
+                if (content_item != null) {
                     remove (content_item);
-                add (value);
+                }
                 content_item = value;
-                content_item.show_all ();
+
+                if (content_item != null) {
+                    add (content_item);
+                    content_item.show_all ();
+                }
             }
             get {
                 return content_item;
@@ -177,8 +181,9 @@ namespace Marlin.View {
             if (mode != view_mode) {
                 store_selection ();
                 /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                view.cancel ();
+                view.close ();
                 view.active.disconnect (on_slot_active);
+                content = null; /* Make sure old slot and directory view are destroyed */
 
                 add_view (mode, location);
                 /* Slot is created inactive so we activate now since we must be the current tab

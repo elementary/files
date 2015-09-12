@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-06-24 17:34+0000\n"
+"PO-Revision-Date: 2015-09-06 18:24+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-09-07 05:53+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -884,7 +884,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
 msgid "Empty _Trash"
-msgstr "Tühjenda _prügikast"
+msgstr "_Tühjenda prügikast"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1437,11 +1437,11 @@ msgstr "Prügikasti tühjendamine"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "Täna kell %H%M"
+msgstr "Täna, kell %H:%M"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "Eile kell %H:%M"
+msgstr "Eile, kell %H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
@@ -1521,7 +1521,7 @@ msgstr "- juurkasutajana"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "See kaust ei kuulu sulle"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1529,7 +1529,7 @@ msgstr "Sul pole õigusi selle kausta sisu vaatamiseks."
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Kausta haakimine ebaõnnestus"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
@@ -1537,15 +1537,15 @@ msgstr "Selle kausta serverit pole võimalik leida."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Seda kausta pole olemas"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Sul pole siia võimalik kausta luua."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Faili ei leitud"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
@@ -1609,7 +1609,7 @@ msgstr "FTP"
 
 #: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:627
 msgid "Network"
-msgstr "Võrk:"
+msgstr "Võrk"
 
 #: ../src/View/Resources.vala:82
 msgid "SFTP"
@@ -1625,7 +1625,7 @@ msgstr "Prügi"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Hiljutised"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1651,19 +1651,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "See kaust on tühi"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Prügikast on tühi"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Hiljutised failid puuduvad"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Juurdepääs keelatud"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1691,19 +1691,19 @@ msgstr "%u faili valitud (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u alamkaust, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u alamkausta, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u fail, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u faili, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1838,7 +1838,7 @@ msgstr "Rakenduse valimine, millega avada "
 
 #: ../src/View/Sidebar.vala:430
 msgid "Personal"
-msgstr "Isiklik:"
+msgstr "Isiklik"
 
 #: ../src/View/Sidebar.vala:435
 msgid "Your common places and bookmarks"
@@ -1850,7 +1850,7 @@ msgstr "Ava kodukaust"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Hiljuti kasutatud failide vaatamine"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1858,7 +1858,7 @@ msgstr "Vaata prügikastis olevaid faile"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
-msgstr "Seadmed:"
+msgstr "Seadmed"
 
 #: ../src/View/Sidebar.vala:508
 msgid "Your local partitions and devices"
@@ -1902,11 +1902,11 @@ msgstr "Ava uues _aknas"
 
 #: ../src/View/Sidebar.vala:1301
 msgid "Remove"
-msgstr "Eemalda"
+msgstr "Eemalda järjehoidjatest"
 
 #: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr "Muuda nime..."
+msgstr "Muuda nime"
 
 #: ../src/View/Sidebar.vala:1318
 msgid "_Mount"
@@ -1974,7 +1974,7 @@ msgstr "Ava rakendusega %s"
 
 #: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
-msgstr "Avamine..."
+msgstr "Ava..."
 
 #: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
@@ -1994,7 +1994,7 @@ msgstr "Valitud failide lõikamine"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2135,7 +2135,7 @@ msgstr "Taasta kõik"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr "Tühjenda prügikasti"
+msgstr "Prügikasti tühjendamine..."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
@@ -2144,7 +2144,7 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Taastamine või kustutamine pole võimalik, kui ei asuta juurkaustas"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2157,11 +2157,11 @@ msgstr "Lõplikult kustutamine..."
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Ava faili sisaldav kaust"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Eemalda hiljutistest"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2177,7 +2177,7 @@ msgstr "Kaust"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "Tühi fail"
+msgstr "Fail"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"

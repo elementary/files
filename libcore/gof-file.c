@@ -983,6 +983,10 @@ static void gof_file_finalize (GObject* obj) {
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
 
+    if (file->target_gof != NULL) {
+        _g_object_unref0 (file->target_gof);
+    }
+
 #ifndef NDEBUG
     g_warn_if_fail (file->target_gof == NULL);
 #endif
@@ -2480,6 +2484,11 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
+    if (file == NULL) {
+        g_warning ("gof_file_is_folder () called with null file - ignoring");
+        return FALSE;
+    }
+
     /* TODO check this works for non-local files and other uri schemes*/
     if ((file->is_directory && !gof_file_is_root_network_folder (file)))
         return TRUE;

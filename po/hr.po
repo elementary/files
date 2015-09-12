@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2015-08-09 18:15+0000\n"
-"Last-Translator: Ivan Vrljić <vrlja92@gmail.com>\n"
+"PO-Revision-Date: 2015-09-06 16:39+0000\n"
+"Last-Translator: Sinisa Perovic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-08-10 06:04+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-09-07 05:53+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1560,7 +1560,7 @@ msgstr "(kao administrator)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ova Mapa ne pripada vama"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1568,7 +1568,7 @@ msgstr "Nemate ovlasti za gledanje ova mape."
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Ne mogu montirati Mapu"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
@@ -1576,11 +1576,11 @@ msgstr "Nije moguće locirati server za ovu mapu."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Ova Mapa ne postoji"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Ne možete napraviti Mapu ovdje."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
@@ -1730,19 +1730,19 @@ msgstr "%u odabranih stavaka (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u podmapa, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u podmape, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u datoteka, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u datoteke, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -2029,7 +2029,7 @@ msgstr "Nemoguće kopirati dokumente iz smeća"
 
 #: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Umjesto toga izrezati sekciju"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
@@ -2183,7 +2183,7 @@ msgstr "Ove stavke mogu biti vraćene ili uklonjene iz smeća"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Nije moguće vratiti ili obrisati osim u root mapi"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2196,7 +2196,7 @@ msgstr "Trajno obriši"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Otvori Nadređenu Mapu"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"

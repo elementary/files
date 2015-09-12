@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-08-08 18:43-0500\n"
-"PO-Revision-Date: 2014-09-23 22:04+0000\n"
-"Last-Translator: Laszlo Espadas <kw@kardiweb.org>\n"
+"PO-Revision-Date: 2015-08-20 16:19+0000\n"
+"Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-08-21 05:33+0000\n"
+"X-Generator: Launchpad (build 17690)\n"
 "Language: hu\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -865,21 +865,23 @@ msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Végleg törli az összes elemet a kukából?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"A kuka összes könyvtárában, beleértve a csatolt meghajtókat is, minden adat "
+"törlődni fog."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Végleg törli az összes elemet a kukából ezen a köteten?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Minden elem a kukából ezen a köteten végleg törölve lesz."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
@@ -980,50 +982,59 @@ msgstr[1] "%'d fájl maradt Kukába való áthelyezésből"
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "A fájlt nem lehet törölni vagy áthelyezni a kukába"
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Nem lehet a fájlokat törölni vagy áthelyezni a kukába egy csak olvasható "
+"kötetről."
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Nem lehet fájlokat törölni vagy áthelyezni a kukába egy olyan könyvtárból "
+"amire nincs írási jogosultsága."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Nem lehet törölni vagy áthelyezni a kukába olyan könyvtárakat amikre nincs "
+"írási jogosultsága."
 
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "A fájlt nem lehet áthelyezni a kukába. Megpróbálja végleg törölni?"
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Ezt a fájlt nem lehet a kukába helyezni. A részleteket lejjebb láthatod."
 
 #: ../libcore/marlin-file-operations.c:1957
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "A fájl nem helyezhető a kukába. Megpróbálja törölni?"
 
 #: ../libcore/marlin-file-operations.c:1958
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "Ez a fájl nem helyezhető a kukába. Valószínűleg törölni sem tudja."
 
 #: ../libcore/marlin-file-operations.c:1963
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" A fájl véglegesen törlődik."
 
 #: ../libcore/marlin-file-operations.c:2153
 msgid "Trashing Files"
@@ -1311,11 +1322,11 @@ msgstr "A(z) „%F” mappában található azonos nevű fájl nem törölhető.
 
 #: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "\"%B\" nem másolható ide."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Hiba a fájl %B-be másolásakor."
 
 #: ../libcore/marlin-file-operations.c:4820
 msgid "Copying Files"
@@ -1335,7 +1346,7 @@ msgstr[1] "Felkészülés %'d fájl áthelyezésére"
 #: ../libcore/marlin-file-operations.c:5106
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Hiba a \"%F\" áthelyezésekor."
 
 #: ../libcore/marlin-file-operations.c:5107
 #, c-format
@@ -1381,11 +1392,11 @@ msgstr "Jogosultságok beállítása"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Nem lehet a kukába másolni."
 
 #: ../libcore/marlin-file-operations.c:6002
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Fájlok kukába másolása nem engedélyezett."
 
 #: ../libcore/marlin-file-operations.c:6143
 msgid "untitled folder"
@@ -1426,7 +1437,7 @@ msgstr "Tegnap %-k.%M-kor"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b - %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1474,7 +1485,7 @@ msgstr "Következő"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Mappa létrehozása"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
@@ -1502,7 +1513,7 @@ msgstr "(Adminisztrátorként)"
 
 #: ../src/View/ViewContainer.vala:336
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ez a mappa nem önhöz tartozik"
 
 #: ../src/View/ViewContainer.vala:337
 msgid "You don't have permission to view this folder."
@@ -1510,27 +1521,27 @@ msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
 
 #: ../src/View/ViewContainer.vala:340
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Mappa nem csatolható"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Nem található a mappához tartozó szerver."
 
 #: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Ez a mappa nem létezik"
 
 #: ../src/View/ViewContainer.vala:348
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Ide nem hozható létre mappa."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "File not Found"
-msgstr ""
+msgstr "Fájl nem található"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "A kiválasztott fájl már nem létezik."
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
@@ -1606,7 +1617,7 @@ msgstr "Kuka"
 
 #: ../src/View/Resources.vala:85
 msgid "Recent"
-msgstr ""
+msgstr "Előzmények"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1632,19 +1643,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Ez a mappa üres"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "A kuka üres"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Nincsenek előzmények"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Hozzáférés megtagadva"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1652,7 +1663,7 @@ msgstr "%u mappa"
 
 #: ../src/View/OverlayBar.vala:172 ../src/View/OverlayBar.vala:180
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " és %s egyéb elem (%s) kiválasztva"
 
 #: ../src/View/OverlayBar.vala:173 ../src/View/OverlayBar.vala:181
 msgid " and %u other items (%s) selected"
@@ -1672,24 +1683,24 @@ msgstr "%u elem kiválasztva (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u almappa, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u almappa, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u fájl, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u fájl, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
-msgstr "Beállítások"
+msgstr "Tulajdonságok"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "General"
@@ -1709,23 +1720,23 @@ msgstr "Bezárás"
 
 #: ../src/View/PropertiesWindow.vala:288
 msgid "file"
-msgstr ""
+msgstr "fájl"
 
 #: ../src/View/PropertiesWindow.vala:290
 msgid "files"
-msgstr ""
+msgstr "fájlok"
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "Actual size could be larger, "
-msgstr ""
+msgstr "Az aktuális méret nagyobb lehet, "
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
-msgstr ""
+msgstr "nem olvasható engedély hiányában, vagy egyéb hiba."
 
 #: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #: ../src/View/PropertiesWindow.vala:451
 msgid "%u selected items"
@@ -1765,7 +1776,7 @@ msgstr "Származási hely"
 
 #: ../src/View/PropertiesWindow.vala:660
 msgid "Info"
-msgstr ""
+msgstr "Infó"
 
 #: ../src/View/PropertiesWindow.vala:702
 msgid "Other application..."
@@ -1777,7 +1788,7 @@ msgstr "Megnyitás ezzel:"
 
 #: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
-msgstr ""
+msgstr "Használat"
 
 #: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
@@ -1831,7 +1842,7 @@ msgstr "Személyes mappa megnyitása"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "A nemrég használt fájlok megtekintése"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
@@ -1847,7 +1858,7 @@ msgstr "Helyi partíciók és eszközök"
 
 #: ../src/View/Sidebar.vala:520
 msgid "Open the contents of the FileSystem"
-msgstr ""
+msgstr "A fájlrendszer tartalmának megnyitása"
 
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
@@ -1927,7 +1938,7 @@ msgstr "Akárhol máshol"
 
 #: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
-msgstr ""
+msgstr "Nincs előnézet"
 
 #: ../src/View/AbstractDirectoryView.vala:1028
 msgid "Set as default"
@@ -1935,47 +1946,47 @@ msgstr "Beállítás alapértelmezettként"
 
 #: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "A fájlt nem lehet elejteni"
 
 #: ../src/View/AbstractDirectoryView.vala:1486
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Érvénytelen fájlnév megadva"
 
 #: ../src/View/AbstractDirectoryView.vala:1912
 msgid "Invalid"
-msgstr ""
+msgstr "Érvénytelen"
 
 #: ../src/View/AbstractDirectoryView.vala:1926
 msgid "Run"
-msgstr ""
+msgstr "Futtatás"
 
 #: ../src/View/AbstractDirectoryView.vala:1931
 msgid "Open in %s"
-msgstr ""
+msgstr "%s -ben megnyitás"
 
 #: ../src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
-msgstr ""
+msgstr "Nyissa meg ezzel:"
 
 #: ../src/View/AbstractDirectoryView.vala:1999
 msgid "Other Application"
-msgstr ""
+msgstr "Más alkalmazás"
 
 #: ../src/View/AbstractDirectoryView.vala:2268
 msgid "Untitled %s"
-msgstr ""
+msgstr "Névtelen %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2598
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "A kukában levő fájlok nem másolhatóak."
 
 #: ../src/View/AbstractDirectoryView.vala:2599
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "A kijelöltek kivágása inkább"
 
 #: ../src/View/AbstractDirectoryView.vala:2794
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Nem lehet átnevezni erre: '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2017,19 +2028,19 @@ msgstr "a --quit nem használható URI-címekkel."
 
 #: ../src/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\" futtatása sikertelen"
 
 #: ../src/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Áthelyezés ide"
 
 #: ../src/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "Másolás ide"
 
 #: ../src/DndHandler.vala:95
 msgid "Link Here"
-msgstr ""
+msgstr "Link ide"
 
 #: ../src/DndHandler.vala:98
 msgid "Cancel"
@@ -2092,7 +2103,7 @@ msgstr "Összes folyamatban lévő művelet megszakítása"
 
 #: ../libwidgets/LocationBar.vala:107
 msgid "Reload this folder"
-msgstr ""
+msgstr "A mappa újratöltése"
 
 #: ../libwidgets/LocationBar.vala:322
 msgid "Go to %s"
@@ -2100,109 +2111,109 @@ msgstr "Ugrás ide: %s"
 
 #: ../libwidgets/LocationBar.vala:459
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navigáljon ide: %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Kapcsolódás a szerverhez..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Kapcsolódás egy hálózati fájl szerverhez"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Összes visszaállítása"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Kuka ürítése"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Ezek az elemek visszaállíthatók vagy törölhetők a kukából."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Nem lehet visszaállítani vagy törölni a root mappán kívül"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Visszaállítás a kukából"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Végleges törlés"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Szülő mappa megnyitása"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Eltávolítás az előzmények közül"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Áthelyezés a kukába"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Új"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Mappa"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Üres fájl"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Rejtett fájlok megjelenítése"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
-msgstr ""
+msgstr "Új lap"
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
-msgstr ""
+msgstr "Terminál"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr ""
+msgstr "Könyvjelző"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
-msgstr ""
+msgstr "Beillesztés"
 
 #: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
-msgstr ""
+msgstr "Kivágás"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
-msgstr ""
+msgstr "Másolás"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Beillesztés mappába"
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
-msgstr ""
+msgstr "Rendezés"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #: ../src/View/directory_view_popup.ui:149
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 #: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
-msgstr ""
+msgstr "Fordított sorrend"

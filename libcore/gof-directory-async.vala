@@ -634,6 +634,7 @@ public class GOF.Directory.Async : Object {
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CHANGES_DONE_HINT:
+        case FileMonitorEvent.ATTRIBUTE_CHANGED:
             MarlinFile.changes_queue_file_changed (_file);
             break;
         case FileMonitorEvent.CREATED:
@@ -687,11 +688,17 @@ public class GOF.Directory.Async : Object {
 
     public static void notify_files_changed (List<GLib.File> files) {
         foreach (var loc in files) {
-            Async? dir = cache_lookup_parent (loc);
+            Async? parent_dir = cache_lookup_parent (loc);
+            GOF.File? gof = null;
+            if (parent_dir != null) {
+                gof = parent_dir.file_cache_find_or_insert (loc);
+                parent_dir.notify_file_changed (gof);
+            }
 
+            /* Has a background directory been changed (e.g. properties)? If so notify the view(s)*/
+            Async? dir = cache_lookup (loc);
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_changed (gof);
+                dir.notify_file_changed (dir.file);
             }
         }
     }
