@@ -53,13 +53,6 @@
         The default viewmode to be used when opening a new tab or window
       </description>
     </key>
-    <key type="as" name="toolbar-items">
-      <default>[ 'Back', 'Forward', 'ViewSwitcher', 'LocationEntry']</default>
-      <summary>List of actions present in the toolbar</summary>
-      <description>
-        List of actions present in the toolbar
-      </description>
-    </key>
     <key name="sidebar-zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'smallest'</default>
       <summary>Size of the icons in the Places sidebar</summary>
