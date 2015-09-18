@@ -21,6 +21,11 @@
   </enum>
 
   <schema path="/org/pantheon/files/preferences/" id="org.pantheon.files.preferences">
+    <key type="b" name="show-remote-thumbnails">
+      <default>false</default>
+      <summary>Thumbnail remote files</summary>
+      <description>Show thumbnails for files on remote filesystems</description>
+    </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
       <summary>Show the sidebar</summary>

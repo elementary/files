@@ -33,6 +33,8 @@ namespace GOF {
             }
         }
 
+        public bool show_remote_thumbnails {set; get; default=false;}
+
         public bool pref_confirm_trash = true;
         public bool confirm_trash {
             get {

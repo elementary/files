@@ -62,11 +62,18 @@
         </submenu>
     </menu>
 
-    <menu id='hidden'>
-        <item>
-            <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
-            <attribute name='action'>background.show_hidden</attribute>
-        </item>
+    <menu id='show'>
+        <submenu>
+            <attribute name='label' translatable='yes'>Show</attribute>
+            <item>
+                <attribute name='label' translatable='yes'>Hidden Files</attribute>
+                <attribute name='action'>background.show_hidden</attribute>
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Remote Thumbnails</attribute>
+                <attribute name='action'>background.show_remote_thumbnails</attribute>
+            </item>
+        </submenu>
     </menu>
 
     <menu id='open-in'>

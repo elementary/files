@@ -79,7 +79,8 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"show_hidden", null, null, "false", change_state_show_hidden}
+            {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -227,6 +228,7 @@ namespace FM {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
+        protected bool show_remote_thumbnails {get; set; default = false;} 
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -254,6 +256,7 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
+            Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
             recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
@@ -327,6 +330,7 @@ namespace FM {
             });
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
+            (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             connect_directory_handlers (slot.directory);
@@ -351,6 +355,7 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
+            action_set_state (background_actions, "show_remote_thumbnails", Preferences.settings.get_boolean ("show-remote-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1068,6 +1073,9 @@ namespace FM {
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
         }
+        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_remote_thumbnails (action);
+        }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
@@ -1231,8 +1239,9 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local)
+                if (slot.directory.is_local || show_remote_thumbnails) {
                     thumbnailer.queue_file (file, null, false);
+                }
             }
         }
 
@@ -1283,8 +1292,9 @@ namespace FM {
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
-            if (get_realized () && slot.directory.is_local)
+            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
                 load_thumbnails (slot.directory, zoom);
+            }
         }
 
     /** Handle Preference changes */
@@ -1302,6 +1312,14 @@ namespace FM {
                 unblock_model ();
 
             action_set_state (background_actions, "show_hidden", show);
+        }
+
+        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
+            action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
+            if (show_remote_thumbnails) {
+                slot.directory.load ();
+            }
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -1877,7 +1895,7 @@ namespace FM {
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("show") as GLib.MenuModel);
 
                 return menu as MenuModel;
             }
@@ -1904,7 +1922,7 @@ namespace FM {
             if (common_actions.get_action_enabled ("bookmark"))
                 menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
 
-            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+            menu.append_section (null, builder.get_object ("show") as GLib.MenuModel);
 
             if (!in_network_root)
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
@@ -2297,7 +2315,7 @@ namespace FM {
             if (thumbnail_source_id != 0 ||
                 !(slot is GOF.AbstractSlot) ||
                 slot.directory == null ||
-                !slot.directory.is_local)
+                (!slot.directory.is_local && !show_remote_thumbnails))
 
                 return;
 
