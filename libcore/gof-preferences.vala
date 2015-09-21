@@ -53,6 +53,16 @@ namespace GOF {
             }
         }
 
+        public bool pref_force_icon_size = true;
+        public bool force_icon_size {
+            get {
+                return pref_force_icon_size;
+            }
+            set {
+                pref_force_icon_size = value;
+            }
+        }
+
         public string pref_date_format = "iso";
         public string date_format {
             get {
