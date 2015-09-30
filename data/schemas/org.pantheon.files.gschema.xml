@@ -126,7 +126,7 @@
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
     <key type="b" name="force-icon-size">
-      <default>true</default>
+      <default>false</default>
       <summary>Whether to force icons to the specified size</summary>
       <description>Whether to scale up small icons to the size specified by the zoom level, if necessary</description>
     </key>
