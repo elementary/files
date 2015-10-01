@@ -20,33 +20,6 @@
  * Authored by: Corentin Noël <tintou@mailoo.org>
  */
 
-namespace Marlin {
-    private const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
-    private const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
-    private const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
-    private const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
-    private const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
-    private const string ICON_FOLDER_REMOTE = "folder-remote";
-    private const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
-    private const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";
-    private const string ICON_FOLDER_VIDEOS_SYMBOLIC = "folder-videos-symbolic";
-    private const string ICON_GO_HOME_SYMBOLIC = "go-home-symbolic";
-    private const string ICON_NETWORK = "network-workgroup";
-    private const string ICON_NETWORK_SERVER = "network-server";
-    private const string ICON_TRASH = "user-trash";
-    private const string ICON_TRASH_FULL = "user-trash-full";
-    private const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
-
-    private const string PROTOCOL_NAME_AFP = "AFP";
-    private const string PROTOCOL_NAME_DAV =  "DAV";
-    private const string PROTOCOL_NAME_DAVS = "DAVS";
-    private const string PROTOCOL_NAME_FTP = "FTP";
-    private const string PROTOCOL_NAME_NETWORK = "Network";
-    private const string PROTOCOL_NAME_SFTP = "SFTP";
-    private const string PROTOCOL_NAME_SMB = "SMB";
-    private const string PROTOCOL_NAME_TRASH = "Trash";
-}
-
 namespace Marlin.View.Chrome {
     public class LocationBar : Gtk.Box {
         public Breadcrumbs bread;

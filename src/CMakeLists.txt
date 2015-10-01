@@ -72,7 +72,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/SearchResults.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
@@ -137,7 +136,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
         View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
