@@ -8,6 +8,7 @@ set (MODULE_NAME "pantheon-filechooser-module")
 set (MODULE_LIBDIR "${CMAKE_INSTALL_LIBDIR}/gtk-3.0/modules/")
 
 vala_precompile (VALA_C ${MODULE_NAME}
+    ${CMAKE_SOURCE_DIR}/libwidgets/Resources.vala
     ${CMAKE_SOURCE_DIR}/libwidgets/LocationBar.vala
     ${CMAKE_SOURCE_DIR}/libwidgets/BreadcrumbsElements.vala
     LocationBarChooser.vala
@@ -28,3 +29,4 @@ target_link_libraries (${MODULE_NAME} ${DEPS_LIBRARIES} gthread-2.0)
 
 # Installation
 install (TARGETS ${MODULE_NAME} DESTINATION "${MODULE_LIBDIR}")
+

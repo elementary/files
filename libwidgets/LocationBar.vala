@@ -18,11 +18,6 @@
 
 ***/
 
-namespace Marlin {
-    public const string ROOT_FS_URI = "file://";
-    public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
-}
-
 public struct Marlin.View.Chrome.IconDirectory {
     string path;
     string icon_name;
@@ -494,23 +489,23 @@ public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
         bool first = true;
 
         foreach (BreadcrumbsElement element in elements) {
-                string s = element.text;  /* element text should be an escaped string */
-                if (first) {
-                    if (s == "")
-                        newpath = "/";
+            string s = element.text;  /* element text should be an escaped string */
+            if (first) {
+                if (s == "" || !s.has_suffix ("/")) {
+                    newpath = "/";
+                /* return valid path when browsing trash and other schemes */
+                } else if (s.contains ("://")) {
+                    newpath = Marlin.sanitize_protocol (s);
+                } else {
+                    newpath = s;
+                }
+                first = false;
+            } else {
+                newpath += (s + "/");
+            }
 
-                    /* return valid path when browsing trash and other schemes */
-                    else if (s.contains ("://") && ! s.contains (":///"))
-                        newpath = s + "/";
-                    else
-                        newpath = s;
-
-                    first = false;
-                } else
-                    newpath += (s + "/");
-
-                if (el != null && element == el)
-                    break;
+            if (el != null && element == el)
+                break;
         }
         /* Return original string as fallback if unescaping fails (should not happen) */
         return GLib.Uri.unescape_string (newpath) ?? newpath;
