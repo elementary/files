@@ -13,12 +13,7 @@ Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
 X-GNOME-UsesNotifications=true
 
-X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root;AboutDialog
-
-[TabNew Shortcut Group]
-Name=New _Tab
-Exec=pantheon-files -t
-TargetEnvironment=Unity
+X-Ayatana-Desktop-Shortcuts=WindowNew;Root;AboutDialog
 
 [WindowNew Shortcut Group]
 Name=New _Window
