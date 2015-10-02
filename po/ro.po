@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-08 18:43-0500\n"
+"POT-Creation-Date: 2015-10-01 05:47-0500\n"
 "PO-Revision-Date: 2014-07-17 05:05+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2015-08-09 06:07+0000\n"
-"X-Generator: Launchpad (build 17656)\n"
+"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1468,28 +1468,28 @@ msgstr "%a %-d %b %y la %-I:%M %p"
 msgid "link to %s"
 msgstr "ink catre %s"
 
-#: ../libcore/gof-file.c:1880
+#: ../libcore/gof-file.c:1886
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: ../libcore/gof-file.c:1918
+#: ../libcore/gof-file.c:1924
 msgid "No Exec field specified"
 msgstr "Nu s-a specificat un câmp „Exec”"
 
-#: ../libcore/gof-file.c:1938
+#: ../libcore/gof-file.c:1944
 msgid "No URL field specified"
 msgstr "Nu s-a specificat un URL"
 
-#: ../libcore/gof-file.c:1944
+#: ../libcore/gof-file.c:1950
 msgid "Invalid desktop file"
 msgstr "Fișier desktop invalid"
 
-#: ../libcore/gof-file.c:2236
+#: ../libcore/gof-file.c:2242
 msgid "Slashes are not allowed in filenames"
 msgstr "Caracterul nu este permis în numele fișierelor."
 
-#: ../libcore/gof-file.c:2256
+#: ../libcore/gof-file.c:2262
 msgid "Toplevel files cannot be renamed"
 msgstr "Fisierele de mai jos nu pot fi redenumite"
 
@@ -1519,47 +1519,48 @@ msgstr ""
 msgid "Ignore"
 msgstr "Ignoră"
 
-#: ../src/View/ViewContainer.vala:308 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "Acasă"
 
-#: ../src/View/ViewContainer.vala:310 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
+#: ../libwidgets/Resources.vala:94
 msgid "File System"
 msgstr "Sistem de fișiere"
 
-#: ../src/View/ViewContainer.vala:327
+#: ../src/View/ViewContainer.vala:332
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
-#: ../src/View/ViewContainer.vala:336
+#: ../src/View/ViewContainer.vala:341
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:337
+#: ../src/View/ViewContainer.vala:342
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:340
+#: ../src/View/ViewContainer.vala:345
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:341
+#: ../src/View/ViewContainer.vala:346
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:348
+#: ../src/View/ViewContainer.vala:353
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:357
+#: ../src/View/ViewContainer.vala:362
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:363
 msgid "The file selected no longer exists."
 msgstr ""
 
@@ -1568,7 +1569,7 @@ msgid "Open in New Tab"
 msgstr "Deschide într-o filă nouă"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1943
+#: ../src/View/AbstractDirectoryView.vala:1956
 msgid "Open with"
 msgstr ""
 
@@ -1594,50 +1595,6 @@ msgstr "Tip"
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
 msgid "Modified"
 msgstr "Modificat"
-
-#: ../src/View/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr ""
-
-#: ../src/View/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr ""
-
-#: ../src/View/Resources.vala:77
-msgid "AFP"
-msgstr ""
-
-#: ../src/View/Resources.vala:78
-msgid "DAV"
-msgstr ""
-
-#: ../src/View/Resources.vala:79
-msgid "DAVS"
-msgstr ""
-
-#: ../src/View/Resources.vala:80
-msgid "FTP"
-msgstr ""
-
-#: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:627
-msgid "Network"
-msgstr "Reţea"
-
-#: ../src/View/Resources.vala:82
-msgid "SFTP"
-msgstr ""
-
-#: ../src/View/Resources.vala:83
-msgid "SMB"
-msgstr ""
-
-#: ../src/View/Resources.vala:84 ../src/View/Sidebar.vala:490
-msgid "Trash"
-msgstr "Coș de gunoi"
-
-#: ../src/View/Resources.vala:85
-msgid "Recent"
-msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1861,6 +1818,10 @@ msgstr "Deschide dosarul personal"
 msgid "View the list of recently used files"
 msgstr ""
 
+#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
+msgid "Trash"
+msgstr "Coș de gunoi"
+
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
 msgstr ""
@@ -1880,6 +1841,10 @@ msgstr ""
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
 msgstr "Montează și deschide %s"
+
+#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
+msgid "Network"
+msgstr "Reţea"
 
 #: ../src/View/Sidebar.vala:632
 msgid "Your network places"
@@ -1953,55 +1918,55 @@ msgstr ""
 msgid "Everywhere Else"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:553
+#: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1028
+#: ../src/View/AbstractDirectoryView.vala:1030
 msgid "Set as default"
 msgstr "Definește ca implicit"
 
-#: ../src/View/AbstractDirectoryView.vala:1486
+#: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1486
+#: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1912
+#: ../src/View/AbstractDirectoryView.vala:1925
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1926
+#: ../src/View/AbstractDirectoryView.vala:1939
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1931
+#: ../src/View/AbstractDirectoryView.vala:1944
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1941
+#: ../src/View/AbstractDirectoryView.vala:1954
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1999
+#: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2268
+#: ../src/View/AbstractDirectoryView.vala:2285
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2598
+#: ../src/View/AbstractDirectoryView.vala:2616
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2599
+#: ../src/View/AbstractDirectoryView.vala:2617
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2794
+#: ../src/View/AbstractDirectoryView.vala:2812
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2072,22 +2037,18 @@ msgid "File Manager"
 msgstr "Manager de fișiere"
 
 #: ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Filă_Nouă"
-
-#: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "_Fereastră nouă"
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
 msgstr "Fereastră nouă ca și _Administrator"
 
-#: ../src/DesktopLauncher.vala:11
+#: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:12
+#: ../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "Files"
 
@@ -2119,16 +2080,56 @@ msgstr "Arată dialogul de copiere"
 msgid "Cancel All In-progress Actions"
 msgstr "Anuleaza toate actiunile in desfasurare"
 
-#: ../libwidgets/LocationBar.vala:107
+#: ../libwidgets/LocationBar.vala:102
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:322
+#: ../libwidgets/LocationBar.vala:317
 msgid "Go to %s"
 msgstr "Mergi la %s"
 
-#: ../libwidgets/LocationBar.vala:459
+#: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:47
+msgid "Launchpad Translators"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:84
+msgid "AFP"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:85
+msgid "DAV"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:86
+msgid "DAVS"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:87
+msgid "FTP"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:89
+msgid "SFTP"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:90
+msgid "SMB"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:92
+msgid "Recent"
+msgstr ""
+
+#: ../libwidgets/Resources.vala:93
+msgid "MTP"
 msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27

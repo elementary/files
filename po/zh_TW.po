@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-08 18:43-0500\n"
+"POT-Creation-Date: 2015-10-01 05:47-0500\n"
 "PO-Revision-Date: 2015-09-13 13:53+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-09-14 05:55+0000\n"
-"X-Generator: Launchpad (build 17720)\n"
+"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 "Language: zh_TW\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1374,28 +1374,28 @@ msgstr "%Y年%b%-d日  %a %p %-I:%M"
 msgid "link to %s"
 msgstr "連結到 %s"
 
-#: ../libcore/gof-file.c:1880
+#: ../libcore/gof-file.c:1886
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "無法解析桌面檔：%s"
 
-#: ../libcore/gof-file.c:1918
+#: ../libcore/gof-file.c:1924
 msgid "No Exec field specified"
 msgstr "Exec 欄並未指定"
 
-#: ../libcore/gof-file.c:1938
+#: ../libcore/gof-file.c:1944
 msgid "No URL field specified"
 msgstr "URL 欄並未指定"
 
-#: ../libcore/gof-file.c:1944
+#: ../libcore/gof-file.c:1950
 msgid "Invalid desktop file"
 msgstr "無效的桌面檔"
 
-#: ../libcore/gof-file.c:2236
+#: ../libcore/gof-file.c:2242
 msgid "Slashes are not allowed in filenames"
 msgstr "檔案名稱中不能使用斜線 ( / )"
 
-#: ../libcore/gof-file.c:2256
+#: ../libcore/gof-file.c:2262
 msgid "Toplevel files cannot be renamed"
 msgstr "頂端層級檔案無法更改名稱"
 
@@ -1425,47 +1425,48 @@ msgstr "設為預設值"
 msgid "Ignore"
 msgstr "忽略"
 
-#: ../src/View/ViewContainer.vala:308 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
 msgid "Home"
 msgstr "家屋"
 
-#: ../src/View/ViewContainer.vala:310 ../src/View/Sidebar.vala:513
+#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
+#: ../libwidgets/Resources.vala:94
 msgid "File System"
 msgstr "檔案系統"
 
-#: ../src/View/ViewContainer.vala:327
+#: ../src/View/ViewContainer.vala:332
 msgid "(as Administrator)"
 msgstr "（以管理員身份）"
 
-#: ../src/View/ViewContainer.vala:336
+#: ../src/View/ViewContainer.vala:341
 msgid "This Folder Does Not Belong to You"
 msgstr "這個資料夾不屬於您"
 
-#: ../src/View/ViewContainer.vala:337
+#: ../src/View/ViewContainer.vala:342
 msgid "You don't have permission to view this folder."
 msgstr "您未取得檢視此資料夾的許可。"
 
-#: ../src/View/ViewContainer.vala:340
+#: ../src/View/ViewContainer.vala:345
 msgid "Unable to Mount Folder"
 msgstr "無法掛載資料夾"
 
-#: ../src/View/ViewContainer.vala:341
+#: ../src/View/ViewContainer.vala:346
 msgid "The server for this folder could not be located."
 msgstr "無法定位此資料夾的伺服器。"
 
-#: ../src/View/ViewContainer.vala:347 ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
 msgstr "這個資料夾不存在"
 
-#: ../src/View/ViewContainer.vala:348
+#: ../src/View/ViewContainer.vala:353
 msgid "You cannot create a folder here."
 msgstr "您無法在這裡建立資料夾。"
 
-#: ../src/View/ViewContainer.vala:357
+#: ../src/View/ViewContainer.vala:362
 msgid "File not Found"
 msgstr "找不到檔案"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:363
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
 
@@ -1474,7 +1475,7 @@ msgid "Open in New Tab"
 msgstr "在新分頁中開啟"
 
 #: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1943
+#: ../src/View/AbstractDirectoryView.vala:1956
 msgid "Open with"
 msgstr "以此開啟"
 
@@ -1500,50 +1501,6 @@ msgstr "類型"
 #: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
 msgid "Modified"
 msgstr "已修改"
-
-#: ../src/View/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "簡單又強大的檔案管理器"
-
-#: ../src/View/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Launchpad 翻譯者"
-
-#: ../src/View/Resources.vala:77
-msgid "AFP"
-msgstr "AFP"
-
-#: ../src/View/Resources.vala:78
-msgid "DAV"
-msgstr "DAV"
-
-#: ../src/View/Resources.vala:79
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../src/View/Resources.vala:80
-msgid "FTP"
-msgstr "FTP"
-
-#: ../src/View/Resources.vala:81 ../src/View/Sidebar.vala:627
-msgid "Network"
-msgstr "網路"
-
-#: ../src/View/Resources.vala:82
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../src/View/Resources.vala:83
-msgid "SMB"
-msgstr "SMB"
-
-#: ../src/View/Resources.vala:84 ../src/View/Sidebar.vala:490
-msgid "Trash"
-msgstr "垃圾"
-
-#: ../src/View/Resources.vala:85
-msgid "Recent"
-msgstr "最近"
 
 #: ../src/View/DirectoryNotFound.vala:39
 msgid "The folder \"%s\" can't be found."
@@ -1770,6 +1727,10 @@ msgstr "開啟您的個人資料夾"
 msgid "View the list of recently used files"
 msgstr "檢視最近使用檔案的清單"
 
+#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
+msgid "Trash"
+msgstr "垃圾"
+
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
 msgstr "開啟垃圾筒"
@@ -1789,6 +1750,10 @@ msgstr "開啟檔案系統的目錄"
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
 msgstr "掛載並開啟 %s"
+
+#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
+msgid "Network"
+msgstr "網路"
 
 #: ../src/View/Sidebar.vala:632
 msgid "Your network places"
@@ -1862,55 +1827,55 @@ msgstr "書籤"
 msgid "Everywhere Else"
 msgstr "任何其他位置"
 
-#: ../src/View/AbstractDirectoryView.vala:553
+#: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
 msgstr "無法預覽"
 
-#: ../src/View/AbstractDirectoryView.vala:1028
+#: ../src/View/AbstractDirectoryView.vala:1030
 msgid "Set as default"
 msgstr "設為預設值"
 
-#: ../src/View/AbstractDirectoryView.vala:1486
+#: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Cannot drop this file"
 msgstr "無法放下此檔案"
 
-#: ../src/View/AbstractDirectoryView.vala:1486
+#: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Invalid file name provided"
 msgstr "提供的檔名無效"
 
-#: ../src/View/AbstractDirectoryView.vala:1912
+#: ../src/View/AbstractDirectoryView.vala:1925
 msgid "Invalid"
 msgstr "無效"
 
-#: ../src/View/AbstractDirectoryView.vala:1926
+#: ../src/View/AbstractDirectoryView.vala:1939
 msgid "Run"
 msgstr "執行"
 
-#: ../src/View/AbstractDirectoryView.vala:1931
+#: ../src/View/AbstractDirectoryView.vala:1944
 msgid "Open in %s"
 msgstr "以 %s 開啟"
 
-#: ../src/View/AbstractDirectoryView.vala:1941
+#: ../src/View/AbstractDirectoryView.vala:1954
 msgid "Open in"
 msgstr "開啟方式"
 
-#: ../src/View/AbstractDirectoryView.vala:1999
+#: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Other Application"
 msgstr "其他應用程式"
 
-#: ../src/View/AbstractDirectoryView.vala:2268
+#: ../src/View/AbstractDirectoryView.vala:2285
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2598
+#: ../src/View/AbstractDirectoryView.vala:2616
 msgid "Cannot copy files that are in the trash"
 msgstr "無法複製垃圾筒中的檔案"
 
-#: ../src/View/AbstractDirectoryView.vala:2599
+#: ../src/View/AbstractDirectoryView.vala:2617
 msgid "Cutting the selection instead"
 msgstr "改剪下選取項目"
 
-#: ../src/View/AbstractDirectoryView.vala:2794
+#: ../src/View/AbstractDirectoryView.vala:2812
 msgid "Could not rename to '%s'"
 msgstr "無法重新命名為「%s」"
 
@@ -1981,22 +1946,18 @@ msgid "File Manager"
 msgstr "檔案管理員"
 
 #: ../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "新增分頁(_T)"
-
-#: ../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "新增視窗(_W)"
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
 msgstr "以管理員身分開啟新視窗(_A)"
 
-#: ../src/DesktopLauncher.vala:11
+#: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
 msgstr "關於《檔案》(_F)"
 
-#: ../src/DesktopLauncher.vala:12
+#: ../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "檔案"
 
@@ -2026,17 +1987,57 @@ msgstr "顯示複製視窗"
 msgid "Cancel All In-progress Actions"
 msgstr "取消所有正在進行的動作"
 
-#: ../libwidgets/LocationBar.vala:107
+#: ../libwidgets/LocationBar.vala:102
 msgid "Reload this folder"
 msgstr "重新載入此資料夾"
 
-#: ../libwidgets/LocationBar.vala:322
+#: ../libwidgets/LocationBar.vala:317
 msgid "Go to %s"
 msgstr "前往 %s"
 
-#: ../libwidgets/LocationBar.vala:459
+#: ../libwidgets/LocationBar.vala:454
 msgid "Navigate to %s"
 msgstr "導航至 %s"
+
+#: ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "簡單又強大的檔案管理器"
+
+#: ../libwidgets/Resources.vala:47
+msgid "Launchpad Translators"
+msgstr "Launchpad 翻譯者"
+
+#: ../libwidgets/Resources.vala:84
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.vala:85
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:86
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:87
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:89
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:90
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:92
+msgid "Recent"
+msgstr "最近"
+
+#: ../libwidgets/Resources.vala:93
+msgid "MTP"
+msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
