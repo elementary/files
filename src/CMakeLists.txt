@@ -49,14 +49,11 @@ IF (WITH_UNITY AND UNITY_FOUND)
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
@@ -115,14 +112,11 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         Bookmark.vala
         BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala

@@ -124,7 +124,7 @@ namespace Marlin.View.Chrome
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
-        protected static FM.DndHandler dnd_handler = new FM.DndHandler ();
+        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         Gdk.DragAction current_suggested_action = 0; /* No action */
         Gdk.DragAction current_actions = 0; /* No action */

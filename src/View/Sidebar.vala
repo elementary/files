@@ -37,7 +37,7 @@ namespace Marlin.Places {
         private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
 
-        private static FM.DndHandler dnd_handler = new FM.DndHandler ();
+        private static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;

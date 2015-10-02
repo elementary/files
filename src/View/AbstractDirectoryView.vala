@@ -25,13 +25,6 @@
 namespace FM {
     public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
 
-        public enum TargetType {
-            STRING,
-            TEXT_URI_LIST,
-            XDND_DIRECT_SAVE0,
-            NETSCAPE_URL
-        }
-
         protected enum ClickZone {
             EXPANDER,
             HELPER,
@@ -46,15 +39,15 @@ namespace FM {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
-            {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
+            {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] drop_targets = {
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
-            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, TargetType.XDND_DIRECT_SAVE0},
-            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, TargetType.NETSCAPE_URL}
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.XDND_DIRECT_SAVE0},
+            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.NETSCAPE_URL}
         };
 
         const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
@@ -235,7 +228,7 @@ namespace FM {
         protected Marlin.IconRenderer icon_renderer;
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
-        protected static DndHandler dnd_handler = new FM.DndHandler ();
+        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
 
@@ -1536,19 +1529,19 @@ namespace FM {
                     slot.reload (true); /* non-local only */
 
                     switch (info) {
-                        case TargetType.XDND_DIRECT_SAVE0:
+                        case Marlin.TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
                                                                           drop_target_file,
                                                                            selection_data);
                             break;
 
-                        case TargetType.NETSCAPE_URL:
+                        case Marlin.TargetType.NETSCAPE_URL:
                             success = dnd_handler.handle_netscape_url  (context,
                                                                         drop_target_file,
                                                                         selection_data);
                             break;
 
-                        case TargetType.TEXT_URI_LIST:
+                        case Marlin.TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
                                 if (selected_files != null)
                                     unselect_all ();
