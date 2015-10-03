@@ -101,8 +101,6 @@ namespace Marlin.View
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-        ulong cursor_changed_handler_id;
-
         public SearchResults (Gtk.Entry entry)
         {
             Object (entry: entry,
@@ -219,8 +217,6 @@ namespace Marlin.View
                 }
                 return true;
             });
-
-            cursor_changed_handler_id = view.cursor_changed.connect (on_cursor_changed);
 
             key_release_event.connect (key_event);
             key_press_event.connect (key_event);
@@ -502,6 +498,7 @@ namespace Marlin.View
                 || is_grabbing)
                 return;
 
+            view.cursor_changed.connect (on_cursor_changed);
             resize_popup ();
 
             var toplevel = entry.get_toplevel ();
@@ -525,6 +522,7 @@ namespace Marlin.View
 
         void popdown ()
         {
+            view.cursor_changed.disconnect (on_cursor_changed);
             entry.reset_im_context ();
 
             if (is_grabbing && device != null) {
@@ -642,10 +640,9 @@ namespace Marlin.View
                 Gdk.beep ();
                 return;
             }
-            view.cursor_changed.disconnect (on_cursor_changed);
-            file_selected (file);
-
+            /* The order of these two lines is critical to prevent unwanted cursor-changed signals */
             popdown ();
+            file_selected (file);
         }
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
