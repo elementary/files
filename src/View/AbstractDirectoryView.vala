@@ -387,9 +387,10 @@ namespace FM {
                             Gtk.TreePath path = model.get_path (iter);
                             if (path != null) {
                                 select_path (path);
-                                if (focus_location != null && focus_location.equal (file.location))
+                                if (focus_location != null && focus_location.equal (file.location)) {
                                     /* set cursor and scroll to focus location*/
-                                    set_cursor (path, false, false, true); 
+                                    set_cursor (path, false, false, true);
+                                }
                             }
                         }
                     });

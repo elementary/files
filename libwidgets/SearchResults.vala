@@ -210,7 +210,6 @@ namespace Marlin.View
                 Gtk.TreePath path;
                 Gtk.TreeIter iter;
 
-                SignalHandler.block (view, cursor_changed_handler_id);
                 view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
 
                 if (path != null) {
@@ -218,7 +217,6 @@ namespace Marlin.View
                     filter.convert_iter_to_child_iter (out iter, iter);
                     accept (iter);
                 }
-                SignalHandler.unblock (view, cursor_changed_handler_id);
                 return true;
             });
 
@@ -644,7 +642,7 @@ namespace Marlin.View
                 Gdk.beep ();
                 return;
             }
-
+            view.cursor_changed.disconnect (on_cursor_changed);
             file_selected (file);
 
             popdown ();

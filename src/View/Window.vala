@@ -23,7 +23,7 @@
 
 namespace Marlin.View {
 
-    public class Window : Gtk.ApplicationWindow
+    public class Window : Gtk.ApplicationWindow, Marlin.Viewable
     {
         static const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
@@ -54,6 +54,7 @@ namespace Marlin.View {
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
         public Chrome.TopMenu top_menu;
+        public Chrome.ViewSwitcher view_switcher;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
@@ -167,11 +168,13 @@ namespace Marlin.View {
         }
 
         private void construct_top_menu () {
-            top_menu = new Chrome.TopMenu(this);
+            view_switcher = new Chrome.ViewSwitcher (win_actions.lookup_action ("view_mode") as SimpleAction);
+            view_switcher.mode = Preferences.settings.get_enum("default-viewmode");
+            top_menu = new Chrome.TopMenu(view_switcher, this as Marlin.Viewable);
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
         }
-
+                
         private void construct_info_bar () {
             info_bar = new Gtk.InfoBar ();
 
@@ -210,6 +213,20 @@ namespace Marlin.View {
 
             top_menu.forward.connect (on_go_forward);
             top_menu.back.connect (on_go_back);
+            top_menu.focus_in_event.connect (() => {
+                current_tab.set_frozen_state (true);
+                return false;
+            });
+            top_menu.focus_out_event.connect (() => {
+                current_tab.set_frozen_state (false);
+                grab_focus ();
+                return true;
+            });
+            top_menu.escape.connect (() => {
+                current_tab.set_frozen_state (false);
+                grab_focus ();
+            });
+            top_menu.reload_request.connect (action_reload);
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
@@ -461,7 +478,7 @@ namespace Marlin.View {
             (application as Marlin.Application).quit ();
         }
 
-        private void action_reload (GLib.SimpleAction action, GLib.Variant? param) {
+        private void action_reload () {
             /* avoid spawning reload when key kept pressed */
             if (tabs.current.working || !current_tab.ready)
                 return;
@@ -928,6 +945,7 @@ namespace Marlin.View {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
                 top_menu.view_switcher.mode = current_tab.view_mode;
+                Preferences.settings.set_enum ("default-viewmode", (int)(current_tab.view_mode));
             }
         }
 
@@ -996,6 +1014,28 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
             application.set_accels_for_action ("win.info::ABOUT", {"F3"});
+        }
+
+        public bool get_frozen () {
+            return freeze_view_changes;
+        }
+        
+        public GLib.File get_current_location () {
+            return current_tab.location;
+        }
+
+        public void refresh_view () {
+            action_reload ();
+        }
+
+        public void focus_location_request (GLib.File? loc,
+                                            bool select_in_current_only = false,
+                                            bool unselect_others = false) {
+            current_tab.focus_location (loc, select_in_current_only, unselect_others);
+        }
+
+        public void go_to_parent () {
+            go_up ();
         }
     }
 }

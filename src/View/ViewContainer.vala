@@ -396,11 +396,16 @@ namespace Marlin.View {
             if (aslot != null)
                 aslot.set_active_state (is_active);
         }
-
+        
+        public void set_frozen_state (bool is_frozen) {
+            var aslot = get_current_slot ();
+            if (aslot != null)
+                aslot.set_frozen_state (is_frozen);
+        }
+        
         public void focus_location (GLib.File? file,
                                     bool select_in_current_only = false,
                                     bool unselect_others = false) {
-
             if (unselect_others || file == null) {
                 get_current_slot ().set_all_selected (false);
                 selected_locations = null;
@@ -417,7 +422,7 @@ namespace Marlin.View {
             File? parent = file.get_parent ();
             if (parent != null && location.equal (file.get_parent ())) {
                 if (select_in_current_only || file.query_file_type (0) != FileType.DIRECTORY) {
-                   var list = new List<File> ();
+                    var list = new List<File> ();
                     list.prepend (file);
                     get_current_slot ().select_glib_files (list, file);
                 } else

@@ -31,7 +31,7 @@ namespace Marlin.View.Chrome
                 if (new_path != null) {
                     _path = new_path;
 
-                    if (!bread.is_focus && !win.freeze_view_changes) {
+                    if (!bread.is_focus && !win.get_frozen ()) {
                         bread.text = "";
                         bread.change_breadcrumbs (new_path);
                     }
@@ -45,26 +45,26 @@ namespace Marlin.View.Chrome
             }
         }
 
-        Marlin.View.Window win;
+        Marlin.Viewable win;
 
         public new signal void activate (GLib.File file);
         public signal void activate_alternate (GLib.File file);
         public signal void escape ();
         public signal void search_mode_left ();
-
+        public signal void reload_request ();
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
             minimum_width = -1;
             natural_width = 3000;
         }
 
-        public LocationBar (Marlin.View.Window win) {
+        public LocationBar (Marlin.Viewable win) {
             this.win = win;
             bread = new Breadcrumbs (win);
             bread.escape.connect (() => { escape(); });
             bread.path_changed.connect (on_path_changed);
 
             bread.reload.connect (() => {
-                win.win_actions.activate_action ("refresh", null);
+                win.refresh_view ();
             });
 
             bread.activate_alternate.connect ((file) => { activate_alternate(file); });
@@ -92,7 +92,8 @@ namespace Marlin.View.Chrome
         }
 
         private void on_path_changed (File? file) {
-            if (file == null || win.freeze_view_changes)
+            if (file == null || win.get_frozen ())
+            if (file == null)
                 return;
 
             win.grab_focus ();
@@ -116,7 +117,7 @@ namespace Marlin.View.Chrome
 
         bool autocompleted = false;
 
-        Marlin.View.Window win;
+        Marlin.Viewable win;
 
         double menu_x_root;
         double menu_y_root;
@@ -131,7 +132,7 @@ namespace Marlin.View.Chrome
 
         GOF.File? drop_target_file = null;
 
-        public Breadcrumbs (Marlin.View.Window win)
+        public Breadcrumbs (Marlin.Viewable win)
         {
             this.win = win;
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
@@ -222,7 +223,7 @@ namespace Marlin.View.Chrome
                 if (parent != null && file.get_uri () != parent.get_uri ())
                     change_breadcrumbs (parent.get_uri ());
 
-                win.go_up ();
+                win.go_to_parent ();
                 grab_focus ();
             });
 
@@ -254,18 +255,15 @@ namespace Marlin.View.Chrome
 
             search_results.file_selected.connect ((file) => {
                 win.grab_focus ();
-                win.current_tab.focus_location (file);
-
-                search_mode = false;
-                escape ();
+                win.focus_location_request (file, false, true);
             });
 
             search_results.cursor_changed.connect ((file) => {
-                win.current_tab.focus_location_if_in_current_directory (file, true);
+                win.focus_location_request (file, true, true);
             });
 
             search_results.first_match_found.connect ((file) => {
-                win.current_tab.focus_location_if_in_current_directory (file, true);
+                win.focus_location_request (file, true, true);
             });
 
             search_results.hide.connect (() => {
@@ -273,7 +271,7 @@ namespace Marlin.View.Chrome
             });
 
             search_changed.connect ((text) => {
-                search_results.search (text, win.current_tab.location);
+                search_results.search (text, win.get_current_location ());
             });
         }
 
@@ -364,7 +362,7 @@ namespace Marlin.View.Chrome
 
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
-                if (app_info.get_executable () != APP_NAME) {
+                if (app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
                     var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
                     menu_item.set_data ("appinfo", app_info);
