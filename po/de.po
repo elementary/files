@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-08-27 12:06+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"PO-Revision-Date: 2015-10-02 12:51+0000\n"
+"Last-Translator: Martin Hering <nekomajin@gmx.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:40+0000\n"
+"X-Launchpad-Export-Date: 2015-10-03 05:33+0000\n"
 "X-Generator: Launchpad (build 17783)\n"
 "Language: de\n"
 
@@ -2155,7 +2155,7 @@ msgstr "Zuletzt verwendet"
 
 #: ../libwidgets/Resources.vala:93
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
