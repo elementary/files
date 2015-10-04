@@ -26,7 +26,7 @@ namespace Marlin.View.Chrome
     public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
         public LocationBar? location_bar;
-        public Marlin.Viewable win;
+//        public Marlin.View.Window win;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
 
@@ -44,9 +44,9 @@ namespace Marlin.View.Chrome
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
         public signal void escape ();
         public signal void reload_request ();
-        
-        public TopMenu (ViewSwitcher switcher, Marlin.Viewable window) {
-            win = window;
+
+        public TopMenu (ViewSwitcher switcher) {
+//            win = window;
 
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
@@ -67,12 +67,17 @@ namespace Marlin.View.Chrome
                 back (1);
             });
 
+            key_press_event.connect (on_key_press_event);
+
+
+//            view_switcher = new ViewSwitcher (win.win_actions.lookup_action ("view_mode") as GLib.SimpleAction);
+//            view_switcher = new ViewSwitcher (view_mode_action);
             view_switcher = switcher;
             view_switcher.margin_right = 20;
             view_switcher.show_all ();
             pack_start (view_switcher);
 
-            location_bar = new LocationBar (win);
+            location_bar = new LocationBar ();
             connect_location_bar_signals ();
             location_bar.show_all ();
             pack_start (location_bar);
@@ -81,13 +86,14 @@ namespace Marlin.View.Chrome
         }
 
         private void connect_location_bar_signals () {
-            location_bar.escape.connect (win.grab_focus);
-            location_bar.activate.connect (win.file_path_change_request);
-            location_bar.activate_alternate.connect ((file) => {
-                win.add_tab (file, Marlin.ViewMode.CURRENT);
-            });
+//            location_bar.new_container_request.connect (win.new_container_request);
+//            location_bar.appchooser_request.connect (appchooser_request);
             location_bar.reload_request.connect (() => {
+//                win.win_actions.activate_action ("refresh", null);
                 reload_request ();
+            });
+            location_bar.focus_file_request.connect ((file) => {
+                focus_location_request (file);
             });
             location_bar.focus_in_event.connect ((event) => {
                 return focus_in_event (event);
@@ -95,8 +101,19 @@ namespace Marlin.View.Chrome
             location_bar.focus_out_event.connect ((event) => {
                 return focus_out_event (event);
             });
+            location_bar.path_change_request.connect ((path, flag) => {
+                path_change_request (path, flag);
+            });
         }
-        
+
+        public bool enter_search_mode (bool local_only, bool begins_with_only) {
+            return location_bar.enter_search_mode (local_only, begins_with_only);
+        }
+
+        public bool enter_navigate_mode () {
+            return location_bar.enter_navigate_mode ();
+        }
+
         public void set_back_menu (Gee.List<string> path_list) {
             /* Clear the back menu and re-add the correct entries. */
             var back_menu = new Gtk.Menu ();
@@ -104,7 +121,7 @@ namespace Marlin.View.Chrome
             foreach (string path in path_list) {
                 int cn = n++; /* No i'm not mad, thats just how closures work in vala (and other langs).
                                * You see if I would just use back(n) the reference to n would be passed
-                               * in the clusure, restulting in a value of n which would always be n=1. So
+                               * in the closure, resulting in a value of n which would always be n=1. So
                                * by introducting a new variable I can bypass this anoyance.
                                */
                 var item = new Gtk.MenuItem.with_label (GLib.Uri.unescape_string (path));
@@ -135,9 +152,18 @@ namespace Marlin.View.Chrome
             button_forward.menu = forward_menu;
         }
 
-        public void update_location_bar (string new_path) {
-            location_bar.path = new_path;
+        public void update_location_bar (string new_path, bool with_animation = true) {
+            location_bar.with_animation = with_animation;
+            location_bar.set_display_path (new_path);
+            location_bar.with_animation = true;
         }
 
+        public bool on_key_press_event (Gdk.EventKey event) {
+            bool res = false;
+            if (location_bar.has_focus) {
+                res = location_bar.key_press_event (event);
+            }
+            return res;
+        }
     }
 }

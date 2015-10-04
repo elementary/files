@@ -8,6 +8,11 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
+include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
+include_directories (${CMAKE_CURRENT_BINARY_DIR})
+include_directories (${CMAKE_BINARY_DIR})
+
 #install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 
 # Check for the deps
@@ -33,34 +38,37 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 
-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR})
-include_directories (${CMAKE_BINARY_DIR})
-
 vala_precompile(VALA_C ${PKGNAME}
+    Dialogs/ChooseAppDialog.vala
+    Interfaces/LocatableInterface.vala
+    Interfaces/NavigatableInterface.vala
+    Chrome/BasicLocationBar.vala
+    Chrome/BasicBreadcrumbsEntry.vala
+    Chrome/BreadcrumbElement.vala
+    Chrome/BreadcrumbIconList.vala
+    Chrome/ButtonWithMenu.vala
+    Chrome/ImgEventBox.vala
+    View/LocationBar.vala
+    View/BreadcrumbsEntry.vala
+    View/SearchResults.vala
+    Interfaces/SearchableInterface.vala
+    Chrome/TopMenu.vala
+    Chrome/ViewSwitcher.vala
+    Chrome/XsEntry.vala
+    Animations/Animations.vala
+    #Bookmark.vala
+    #BookmarkList.vala
+    #Enums.vala
     FileUtils.vala
     Resources.vala
-    LocationBar.vala
-    SearchResults.vala
-    Animations/Animations.vala
-    Chrome/LocationBar.vala
-    Chrome/BreadcrumbsElements.vala
-    Chrome/TopMenu.vala
-    Chrome/ButtonWithMenu.vala
-    Chrome/ViewSwicher.vala
-    Chrome/XsEntry.vala
-    Chrome/ImgEventBox.vala
-    Chrome/Viewable.vala
-    Dialogs/ChooseAppDialog.vala
 PACKAGES
     gtk+-3.0
     granite
     gee-0.8
     posix
-    zeitgeist-2.0
     pantheon-files-core
     pantheon-files-core-C
+    zeitgeist-2.0
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
