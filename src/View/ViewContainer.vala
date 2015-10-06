@@ -495,6 +495,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
+            set_frozen_state (false);
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

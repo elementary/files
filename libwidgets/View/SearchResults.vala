@@ -98,8 +98,6 @@ namespace Marlin.View.Chrome
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-//        ulong cursor_changed_handler_id;
-
         protected SearchResults (Gtk.Widget parent_widget)
         {
             Object (resizable: false,
@@ -203,7 +201,6 @@ namespace Marlin.View.Chrome
                 current_operation.cancel ();
             }
             clear ();
-            exit ();
         }
 
         public void search (string term, File folder)
@@ -399,6 +396,7 @@ namespace Marlin.View.Chrome
                     return true;
                 case Gdk.Key.Escape:
                     cancel ();
+                    exit ();
                     return true;
                 default:
                     break;
@@ -617,10 +615,9 @@ namespace Marlin.View.Chrome
             if (is_grabbing && device != null) {
                 device.ungrab (Gdk.CURRENT_TIME);
                 Gtk.device_grab_remove (this, device);
-
                 is_grabbing = false;
             }
-
+            parent.grab_focus ();
             hide ();
         }
 
@@ -750,7 +747,6 @@ namespace Marlin.View.Chrome
 
         protected void clear ()
         {
-//            SignalHandler.block (view, cursor_changed_handler_id);
             Gtk.TreeIter parent, iter;
             for (var valid = list.get_iter_first (out parent); valid; valid = list.iter_next (ref parent)) {
                 if (!list.iter_nth_child (out iter, parent, 0))
@@ -760,7 +756,6 @@ namespace Marlin.View.Chrome
             }
 
             resize_popup ();
-//            SignalHandler.unblock (view, cursor_changed_handler_id);
         }
 
 

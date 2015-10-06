@@ -215,13 +215,20 @@ namespace Marlin.View {
             top_menu.forward.connect (on_go_forward);
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
-            top_menu.path_change_request.connect (uri_path_change_request);
+            top_menu.path_change_request.connect ((loc) => {
+                current_tab.set_frozen_state (false);
+                uri_path_change_request (loc);
+            });
             top_menu.reload_request.connect (action_reload);
             top_menu.focus_location_request.connect ((loc) => {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });
+            top_menu.focus_in_event.connect (() => {
+                current_tab.set_frozen_state (true);
+                return true;
+            });
             top_menu.focus_out_event.connect (() => {
-                grab_focus ();
+                current_tab.set_frozen_state (false);
                 return true;
             });
 

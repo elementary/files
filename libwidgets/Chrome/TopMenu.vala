@@ -104,6 +104,7 @@ namespace Marlin.View.Chrome
             location_bar.path_change_request.connect ((path, flag) => {
                 path_change_request (path, flag);
             });
+            location_bar.escape.connect (() => {escape ();});
         }
 
         public bool enter_search_mode (bool local_only, bool begins_with_only) {

@@ -29,6 +29,7 @@ namespace Marlin.View.Chrome
 
         public signal void reload_request ();
         public signal void focus_file_request (File file);
+        public signal void escape ();
 
         public LocationBar () {
             var _bread = new BreadcrumbsEntry ();
@@ -53,6 +54,7 @@ namespace Marlin.View.Chrome
         }
 
         private void on_search_results_file_selected (GLib.File file) {
+            escape ();
             path_change_request (file.get_path ());
         }
         private void on_search_results_first_match_found (GLib.File? file) {
@@ -70,12 +72,13 @@ namespace Marlin.View.Chrome
         }
         private void on_search_results_exit () {
             bread.reset_im_context ();
+            escape ();
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
             search_mode = false;
-            search_results.cancel ();
+            hide_search_icon ();
             show_refresh_icon ();
             focus_out_event (event);
             return true;
@@ -102,9 +105,8 @@ namespace Marlin.View.Chrome
 
         protected override void after_bread_text_changed (string txt) {
             if (txt.length < 1) {
-                bread.hide_primary_icon ();
                 if (search_mode) {
-                    cancel_search ();
+                    switch_to_navigate_mode ();
                 }
                 show_placeholder ();
                 return;
