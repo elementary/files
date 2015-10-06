@@ -142,10 +142,15 @@ namespace Marlin.View {
         }
 
         public void go_up () {
-            if (view.directory.has_parent ()) {
-                selected_locations.append (this.location);
-                user_path_change_request (view.directory.get_parent ());
+            selected_locations.append (this.location);
+            GLib.File parent = location;
+            if (view.directory.has_parent ()) { /* May not work for some protocols */
+                parent = view.directory.get_parent ();
+            } else {
+                var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
+                parent = PF.FileUtils.get_file_for_path (parent_path);
             }
+            user_path_change_request (parent);
         }
 
         public void go_back (int n = 1) {
