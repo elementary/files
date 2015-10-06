@@ -70,8 +70,6 @@ namespace Marlin.View.Chrome
         }
         private void on_search_results_exit () {
             bread.reset_im_context ();
-            bread.reset ();
-            show_refresh_icon ();
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
@@ -86,6 +84,7 @@ namespace Marlin.View.Chrome
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
             search_location = PF.FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+            show_navigate_icon ();
             return true;
         }
 
@@ -122,7 +121,6 @@ namespace Marlin.View.Chrome
                 if (!txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_search_mode ();
                 } else {
-                    show_navigate_icon ();
                     base.after_bread_text_changed (txt);
                     bread.completion_needed (); /* delegate to bread to decide whether completion really needed */
                 }

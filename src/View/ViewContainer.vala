@@ -88,16 +88,20 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            path_changed.connect (user_path_change_request);
+            path_changed.connect (on_path_changed);
             window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
         }
 
         private void disconnect_signals () {
-            path_changed.disconnect (user_path_change_request);
+            path_changed.disconnect (on_path_changed);
             window.folder_deleted.disconnect (on_folder_deleted);
         }
 
+        private void on_path_changed (GLib.File file) {
+            focus_location (file);
+        }
+        
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
                 close ();
@@ -197,7 +201,10 @@ namespace Marlin.View {
             plugin_directory_loaded ();
         }
 
-        public void user_path_change_request (GLib.File loc) {
+        private void user_path_change_request (GLib.File loc) {
+            /* Ony call directly if it is known that a change of folder is required
+             * otherwise call focus_location.
+             */
             view.user_path_change_request (loc);
         }
 
@@ -356,9 +363,9 @@ namespace Marlin.View {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
                     selected_locations = null;
             } else if (slot.directory.selected_file != null) {
-                if (slot.directory.selected_file.query_exists ())
+                if (slot.directory.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (slot.directory.selected_file);
-                else {
+                } else {
                     content = new Granite.Widgets.Welcome (_("File not Found"),
                                                            _("The file selected no longer exists."));
                     can_show_folder = false;
@@ -406,6 +413,9 @@ namespace Marlin.View {
         public void focus_location (GLib.File? file,
                                     bool select_in_current_only = false,
                                     bool unselect_others = false) {
+            /* This function navigates to another folder if necessary if 
+             * select_in_current_only is not set to true.
+             */ 
             if (unselect_others || file == null) {
                 get_current_slot ().set_all_selected (false);
                 selected_locations = null;

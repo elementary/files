@@ -444,7 +444,7 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (updates_frozen)
+            if (view.has_focus || updates_frozen)
                 return;
 
             if (view.get_realized ())

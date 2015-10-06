@@ -56,8 +56,9 @@ namespace Marlin.View
                                      Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
                 }
 
-                if (success)
-                    ctab.user_path_change_request (dir_saved.location);
+                if (success) {
+                    ctab.path_changed (dir_saved.location);
+                }
             });
 
             show_all ();

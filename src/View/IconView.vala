@@ -269,9 +269,7 @@ namespace FM {
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell(path, scroll_to_top);
-
-            if (start_editing)
-                tree.set_cursor (path, renderer, start_editing);
+            tree.set_cursor (path, renderer, start_editing);
         }
 
         public override void set_cursor (Gtk.TreePath? path,
@@ -281,14 +279,17 @@ namespace FM {
             if (path == null)
                 return;
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.disconnect (on_view_selection_changed);
-
+            } else {
+                select_path (path);
+            }
+            
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
-            select_path (path);
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.connect (on_view_selection_changed);
+            }
         }
 
         public override Gtk.TreePath? get_path_at_cursor () {

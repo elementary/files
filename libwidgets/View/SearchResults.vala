@@ -188,41 +188,21 @@ namespace Marlin.View.Chrome
             frame.add (scroll);
             add (frame);
 
-            button_press_event.connect ((e) => {
-                if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
-                    view.event (e);
-                    return false;
-                }
-                popdown ();
-                exit ();
-                return true;
-            });
+            button_press_event.connect (on_button_press_event);
 
-            view.button_press_event.connect ((e) => {
-                Gtk.TreePath path;
-                Gtk.TreeIter iter;
+            view.button_press_event.connect (on_view_button_press_event);
 
-                view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
-
-                if (path != null) {
-                    filter.get_iter (out iter, path);
-                    filter.convert_iter_to_child_iter (out iter, iter);
-                    accept (iter);
-                }
-                return true;
-            });
-
-//            cursor_changed_handler_id = view.cursor_changed.connect (on_cursor_changed);
             key_press_event.connect (on_key_press_event);
         }
 
         /** Search interface functions **/
         public  void cancel () {
+            /* popdown first to avoid unwanted cursor change signals */
+            popdown ();
             if (current_operation != null) {
                 current_operation.cancel ();
             }
             clear ();
-            popdown ();
             exit ();
         }
 
@@ -350,6 +330,30 @@ namespace Marlin.View.Chrome
             }
         }
 
+        
+        bool on_button_press_event (Gdk.EventButton e) {
+            if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
+                view.event (e);
+                return false;
+            }
+            cancel ();
+            return false;            
+        }
+        
+        bool on_view_button_press_event (Gdk.EventButton e) {
+            Gtk.TreePath path;
+            Gtk.TreeIter iter;
+
+            view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
+
+            if (path != null) {
+                filter.get_iter (out iter, path);
+                filter.convert_iter_to_child_iter (out iter, iter);
+                accept (iter);
+            }
+            return true;
+        }
+
         bool on_key_press_event (Gdk.EventKey event) {
             if (event.is_modifier == 1) {
                 return true;
@@ -392,6 +396,9 @@ namespace Marlin.View.Chrome
                         return true;
                     }
                     select_adjacent (up);
+                    return true;
+                case Gdk.Key.Escape:
+                    cancel ();
                     return true;
                 default:
                     break;
@@ -723,9 +730,9 @@ namespace Marlin.View.Chrome
                 Gdk.beep ();
                 return;
             }
-
-            file_selected (file);
+            
             cancel ();
+            file_selected (file);
         }
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
