@@ -421,28 +421,33 @@ namespace Marlin.View {
                 selected_locations = null;
             }
 
-            if (file == null || location.equal (file))
+            if (file == null || location.equal (file)) {
                 return;
-
-            var filetype = file.query_file_type (0);
-            if (filetype == FileType.UNKNOWN)
-                return;
-
+            }
             GLib.File? loc = null;
-            File? parent = file.get_parent ();
-            if (parent != null && location.equal (file.get_parent ())) {
-                if (select_in_current_only || file.query_file_type (0) != FileType.DIRECTORY) {
-                    var list = new List<File> ();
-                    list.prepend (file);
-                    get_current_slot ().select_glib_files (list, file);
-                } else
-                    loc = file;
-            } else if (!select_in_current_only) {
-                if (filetype == FileType.DIRECTORY)
-                    loc = file;
-                else if (parent != null) {
-                    loc = parent;
-                    selected_locations.prepend (file);
+            var filetype = file.query_file_type (GLib.FileQueryInfoFlags.NONE);
+            if (filetype == FileType.UNKNOWN) {
+                /* May be request for non-existing file - in which case 
+                 * an opportunity will be given to create it when we try to 
+                 * load it
+                 */
+                loc = file;
+            } else {
+                File? parent = file.get_parent ();
+                if (parent != null && location.equal (parent)) {
+                    if (select_in_current_only || filetype != FileType.DIRECTORY) {
+                        var list = new List<File> ();
+                        list.prepend (file);
+                        get_current_slot ().select_glib_files (list, file);
+                    } else
+                        loc = file;
+                } else if (!select_in_current_only) {
+                    if (filetype == FileType.DIRECTORY)
+                        loc = file;
+                    else if (parent != null) {
+                        loc = parent;
+                        selected_locations.prepend (file);
+                    }
                 }
             }
 
