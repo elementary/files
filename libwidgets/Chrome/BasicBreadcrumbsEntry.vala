@@ -25,8 +25,9 @@ namespace Marlin.View.Chrome {
         }
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
         public const double COMPLETION_ALPHA = 0.5;
+        public const int ICON_WIDTH = 24;
         protected string placeholder = ""; /*Note: This is not the same as the Gtk.Entry placeholder_text */
-        protected BreadcrumbElement? clicked_element = null; 
+        protected BreadcrumbElement? clicked_element = null;
         protected string? current_dir_path = null;
         /* This list will contain all BreadcrumbElement */
         protected Gee.ArrayList<BreadcrumbElement> elements;
@@ -36,6 +37,9 @@ namespace Marlin.View.Chrome {
         protected bool animation_visible = true;
         uint animation_timeout_id = 0;
         protected Gee.Collection<BreadcrumbElement>? old_elements;
+
+        /* RTL support */
+        bool is_RTL = false;
 
         protected Gtk.StyleContext button_context;
         protected Gtk.StyleContext button_context_active;
@@ -47,6 +51,7 @@ namespace Marlin.View.Chrome {
     /** Construction **/
     /******************/
         construct {
+            is_RTL = Gtk.get_locale_direction () == Gtk.TextDirection.RTL;
             truncate_multiline = true;
             configure_style ();
             breadcrumb_icons = new BreadcrumbIconList (button_context);
@@ -202,7 +207,7 @@ namespace Marlin.View.Chrome {
         protected bool icon_event (Gdk.EventButton event) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */
-            if (event.window.get_width () < 24) {
+            if (event.window.get_width () < ICON_WIDTH) {
                 return true;
             } else if (is_focus) {
                 base.button_press_event (event);
@@ -233,35 +238,24 @@ namespace Marlin.View.Chrome {
             if (is_focus)
                 return false;
 
-            int x = (int) event.x;
-            double x_render = 0;
-            double x_previous = -10;
             string? tip = null;
             if (secondary_icon_pixbuf != null) {
                 tip = get_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY);
             }
-            set_tooltip_text (_("Enter search term or path"));
+            set_tooltip_text ("");
+            var el = get_element_from_coordinates ((int)event.x, (int)event.y);
+            if (el != null) {
+                set_tooltip_text (_("Go to %s").printf (el.text));
+                set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
+            } else {
+                set_entry_cursor (null);
+                set_tooltip_text (_("Enter search term or path"));
+            }
+
             if (tip != null) {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
                 set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
             }
-            foreach (BreadcrumbElement element in elements) {
-                if (element.display) {
-                    x_render += element.real_width;
-                    if (x <= x_render + 5 && x > x_previous + 5) {
-                        set_tooltip_text (_("Go to %s").printf (element.text));
-                        break;
-                    }
-
-                    x_previous = x_render;
-                }
-            }
-
-            if (event.x > 0 && event.x < x_render + 5)
-                set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
-            else
-                set_entry_cursor (null);
-
             return false;
         }
 
@@ -307,6 +301,7 @@ namespace Marlin.View.Chrome {
             foreach (BreadcrumbElement element in elements) {
                 element.pressed = false;
             }
+            queue_draw ();
         }
 
         public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
@@ -323,13 +318,20 @@ namespace Marlin.View.Chrome {
         }
 
         protected BreadcrumbElement? get_element_from_coordinates (int x, int y) {
-            double x_render = 0;
+            double width = get_allocated_width () - ICON_WIDTH;
+            double x_render = is_RTL ? width : 0;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
-                    if (x_render <= x && x <= x_render + element.real_width) {
-                        return element;
+                    if (is_RTL) {
+                        x_render -= element.real_width;
+                        if (x >= x_render - 5) {
+                            return element;
+                        }
                     } else {
                         x_render += element.real_width;
+                        if (x <= x_render - 5 ) {
+                            return element;
+                        }
                     }
                 }
             }
@@ -431,7 +433,7 @@ namespace Marlin.View.Chrome {
             elements.clear ();
             /* This occurs *before* the animations run, so the new elements are always drawn
              * whether or not the old elements are animated as well */
-            elements = new_elements;  
+            elements = new_elements;
             queue_draw ();
         }
 
@@ -499,7 +501,12 @@ namespace Marlin.View.Chrome {
                 /* Ensure there is an editable area to the right of the breadcrumbs */
                 double width_marged = width - 2*margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH;
                 double height_marged = height - 2*margin;
-                double x_render = margin;
+                double x_render;
+                if (is_RTL) {
+                    x_render = width - margin;
+                } else {
+                    x_render = margin;
+                }
                 int breadcrumbs_displayed = 0;
                 double max_width = get_all_breadcrumbs_width (out breadcrumbs_displayed);
 
@@ -522,38 +529,59 @@ namespace Marlin.View.Chrome {
                 /* Really draw the elements */
                 foreach (BreadcrumbElement element in elements) {
                     if (element.display) {
-                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, this);
-                        /* save element x axis position */
-                        element.x = x_render - element.real_width;
+                        if (is_RTL) {
+                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
+                            /* save element x axis position */
+                            element.x = x_render + element.real_width;
+                        } else {
+                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
+                            /* save element x axis position */
+                            element.x = x_render - element.real_width;
+                        }
                     }
                 }
                 /* Draw animated removal of elements when shortening the breadcrumbs */
                 if (old_elements != null) {
                     foreach (BreadcrumbElement element in old_elements) {
                         if (element.display) {
-                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, this);
-                            /* save element x axis position */
-                            element.x = x_render - element.real_width;
+                            if (is_RTL) {
+                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
+                                /* save element x axis position */
+                                element.x = x_render + element.real_width;
+                            } else {
+                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
+                                /* save element x axis position */
+                                element.x = x_render - element.real_width;
+                            }
                         }
                     }
                 }
                 cr.restore ();
             } else if (placeholder != "") {
-                    assert (placeholder != null);
-                    assert (text != null);
-                    int layout_width, layout_height;
-                    double text_width, text_height;
-                    /** TODO - Get offset due to margins from style context **/ 
-                    int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
-                    cr.set_source_rgba (0, 0, 0, COMPLETION_ALPHA);
-                    Pango.Layout layout = create_pango_layout (text);
-                    layout.get_size (out layout_width, out layout_height);
-                    text_width = Pango.units_to_double (layout_width);
-                    text_height = Pango.units_to_double (layout_height);
-                    /** TODO - Get offset due to margins from style context **/ 
-                    cr.move_to (text_width + icon_width + 6, text_height / 4);
-                    layout.set_text (placeholder, -1);
-                    Pango.cairo_show_layout (cr, layout);
+                assert (placeholder != null);
+                assert (text != null);
+                int layout_width, layout_height;
+                double text_width, text_height;
+                Pango.Layout layout;
+                /** TODO - Get offset due to margins from style context **/
+                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+                cr.set_source_rgba (0, 0, 0, COMPLETION_ALPHA);
+                if (is_RTL) {
+                    layout = create_pango_layout (text + placeholder);
+                } else {
+                    layout = create_pango_layout (text);
+                }
+                layout.get_size (out layout_width, out layout_height);
+                text_width = Pango.units_to_double (layout_width);
+                text_height = Pango.units_to_double (layout_height);
+                /** TODO - Get offset due to margins from style context **/
+                if (is_RTL) {
+                   cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
+                } else {
+                   cr.move_to (text_width + icon_width + 6, text_height / 4);
+                }
+                layout.set_text (placeholder, -1);
+                Pango.cairo_show_layout (cr, layout);
             }
 
             return true;

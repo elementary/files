@@ -62,7 +62,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         icon_name = icon_name_;
     }
 
-    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget) {
+    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, Gtk.Widget widget) {
         var state = button_context.get_state ();
         if (pressed)
             state |= Gtk.StateFlags.ACTIVE;
@@ -92,23 +92,44 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         if (offset > 0.0) {
-            cr.move_to (x - height/2, y);
-            cr.line_to (x, y + height/2);
-            cr.line_to (x - height/2, y + height);
-            cr.line_to (x + text_width + padding.left, y + height);
-            cr.line_to (x + text_width + height/2 + padding.left, y + height/2);
-            cr.line_to (x + text_width + padding.left, y);
-            cr.close_path ();
-            cr.clip ();
+            if (is_RTL) {
+                cr.move_to (x + height/2, y);
+                cr.line_to (x, y + height/2);
+                cr.line_to (x + height/2, y + height);
+                cr.line_to (x - text_width - padding.left, y + height);
+                cr.line_to (x - text_width - height/2 - padding.left, y + height/2);
+                cr.line_to (x - text_width - padding.left, y);
+                cr.close_path ();
+                cr.clip ();
+            } else {
+                cr.move_to (x - height/2, y);
+                cr.line_to (x, y + height/2);
+                cr.line_to (x - height/2, y + height);
+                cr.line_to (x + text_width + padding.left, y + height);
+                cr.line_to (x + text_width + height/2 + padding.left, y + height/2);
+                cr.line_to (x + text_width + padding.left, y);
+                cr.close_path ();
+                cr.clip ();
+            }
         }
 
         if (pressed) {
             cr.save ();
-            double text_width = max_width > 0 ? max_width : this.text_width;
-            var base_x = x;
-            var left_x = base_x - height / 2 + line_width;
-            var right_x = base_x + text_width + padding.left + padding.right;
-            var arrow_right_x = right_x + height / 2;
+            double base_x, left_x, right_x, arrow_right_x;
+                double text_width = max_width > 0 ? max_width : this.text_width;
+
+            if (is_RTL) {
+                base_x = x;
+                left_x = base_x + height / 2 - line_width;
+                right_x = base_x - text_width - padding.left - padding.right;
+                arrow_right_x = right_x - height / 2;
+
+            } else {
+                base_x = x;
+                left_x = base_x - height / 2 + line_width;
+                right_x = base_x + text_width + padding.left + padding.right;
+                arrow_right_x = right_x + height / 2;
+            }
             var top_y = y + padding.top - line_width;
             var bottom_y = y + height - padding.bottom + line_width;
             var arrow_y = y + height / 2;
@@ -129,39 +150,82 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.restore ();
         }
 
-        x += padding.left;
-        x -= Math.sin (offset*Math.PI_2) * width;
-        if (icon == null) {
-            button_context.render_layout (cr, x,
-                                          y + height/2 - text_height/2, layout);
-        } else if (!display_text) {
-            button_context.render_icon (cr, icon, x + ICON_MARGIN,
-                                         y + height/2 - icon.get_height ()/2);
+        if (is_RTL) {
+            x -= padding.left;
+            x += Math.sin (offset*Math.PI_2) * width;
+            if (icon == null) {
+                button_context.render_layout (cr, x - text_width,
+                                              y + height/2 - text_height/2, layout);
+            } else if (!display_text) {
+                button_context.render_icon (cr, icon, x - ICON_MARGIN - icon.get_width (),
+                                            y + height/2 - icon.get_height ()/2);
+            } else {
+                button_context.render_icon (cr, icon, x - ICON_MARGIN - icon.get_width (),
+                                            y + height/2 - icon.get_height ()/2);
+                /* text_width already includes icon_width */
+                button_context.render_layout (cr, x - text_width,
+                                              y + height/2 - text_height/2, layout);
+            }
         } else {
-            button_context.render_icon (cr, icon, x + ICON_MARGIN,
-                                         y + height/2 - icon.get_height ()/2);
-            button_context.render_layout (cr, x + icon.get_width () + 2 * ICON_MARGIN,
-                                          y + height/2 - text_height/2, layout);
+            x += padding.left;
+            x -= Math.sin (offset*Math.PI_2) * width;
+            if (icon == null) {
+                button_context.render_layout (cr, x,
+                                              y + height/2 - text_height/2, layout);
+            } else if (!display_text) {
+                button_context.render_icon (cr, icon, x + ICON_MARGIN,
+                                             y + height/2 - icon.get_height ()/2);
+            } else {
+                button_context.render_icon (cr, icon, x + ICON_MARGIN,
+                                             y + height/2 - icon.get_height ()/2);
+                button_context.render_layout (cr, x + icon.get_width () + 2 * ICON_MARGIN,
+                                              y + height/2 - text_height/2, layout);
+            }
         }
 
-        x += padding.right + (max_width > 0 ? max_width : text_width);
+        if (is_RTL) {
+            x -= (padding.left + (max_width > 0 ? max_width : text_width));
+        } else {
+            x += padding.right + (max_width > 0 ? max_width : text_width);
+        }
 
-        /* Draw the separator */
-        cr.save ();
-        cr.translate (x - height / 4, y + height / 2);
-        cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
-        cr.clip ();
-        cr.rotate (Math.PI_4);
-        button_context.save ();
-        button_context.add_class ("noradius-button");
-        if (pressed)
-            button_context.set_state (Gtk.StateFlags.ACTIVE);
+        if (is_RTL) {
+            /* Draw the separator */
+            cr.save ();
+            cr.translate (x + height/4, y + height / 2);
+            cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
+            cr.clip ();
+            cr.rotate (Math.PI_4);
+            button_context.save ();
+            button_context.add_class ("noradius-button");
+            if (pressed)
+                button_context.set_state (Gtk.StateFlags.ACTIVE);
 
-        button_context.render_frame (cr, -height / 2, -height / 2, height, height);
-        button_context.restore ();
-        cr.restore ();
+            button_context.render_frame (cr, -height / 2, -height / 2, height, height);
+            button_context.restore ();
+            cr.restore ();
+        } else {
+            /* Draw the separator */
+            cr.save ();
+            cr.translate (x - height / 4, y + height / 2);
+            cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
+            cr.clip ();
+            cr.rotate (Math.PI_4);
+            button_context.save ();
+            button_context.add_class ("noradius-button");
+            if (pressed) {
+                button_context.set_state (Gtk.StateFlags.ACTIVE);
+            }
+            button_context.render_frame (cr, -height / 2, -height / 2, height, height);
+            button_context.restore ();
+            cr.restore ();
+        }
 
-        x += height / 2;
+        if (is_RTL) {
+            x -= height / 2;
+        } else {
+            x += height / 2;
+        }
 
         return x;
     }

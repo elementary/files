@@ -521,6 +521,7 @@ namespace Marlin.View.Chrome {
             BreadcrumbElement? el = get_element_from_coordinates ((int) event.x, (int) event.y);
             if (el != null) {
                 el.pressed = true;
+                queue_draw ();
             }
             return el;
         }
