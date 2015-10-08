@@ -76,6 +76,7 @@ namespace Marlin.View.Chrome {
             realize.connect_after (after_realize);
             activate.connect (on_activate);
             button_release_event.connect (on_button_release_event);
+            button_press_event.connect (on_button_press_event);
             icon_press.connect (on_icon_press);
             motion_notify_event.connect_after (after_motion_notify);
             focus_in_event.connect (on_focus_in);
@@ -190,6 +191,10 @@ namespace Marlin.View.Chrome {
             return base.key_press_event (event);
         }
 
+        protected virtual bool on_button_press_event (Gdk.EventButton event) {
+            return !has_focus;
+        }
+
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
             if (icon_event (event)) {
                 return false;
@@ -204,6 +209,7 @@ namespace Marlin.View.Chrome {
             }
             return true;
         }
+
         protected bool icon_event (Gdk.EventButton event) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */

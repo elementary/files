@@ -26,7 +26,6 @@ namespace Marlin.View.Chrome
     public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
         public LocationBar? location_bar;
-//        public Marlin.View.Window win;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
 
@@ -46,8 +45,6 @@ namespace Marlin.View.Chrome
         public signal void reload_request ();
 
         public TopMenu (ViewSwitcher switcher) {
-//            win = window;
-
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_back.tooltip_text = _("Previous");
@@ -68,10 +65,6 @@ namespace Marlin.View.Chrome
             });
 
             key_press_event.connect (on_key_press_event);
-
-
-//            view_switcher = new ViewSwitcher (win.win_actions.lookup_action ("view_mode") as GLib.SimpleAction);
-//            view_switcher = new ViewSwitcher (view_mode_action);
             view_switcher = switcher;
             view_switcher.margin_right = 20;
             view_switcher.show_all ();
@@ -86,10 +79,7 @@ namespace Marlin.View.Chrome
         }
 
         private void connect_location_bar_signals () {
-//            location_bar.new_container_request.connect (win.new_container_request);
-//            location_bar.appchooser_request.connect (appchooser_request);
             location_bar.reload_request.connect (() => {
-//                win.win_actions.activate_action ("refresh", null);
                 reload_request ();
             });
             location_bar.focus_file_request.connect ((file) => {

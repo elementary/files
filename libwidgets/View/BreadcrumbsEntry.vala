@@ -492,7 +492,7 @@ namespace Marlin.View.Chrome {
             return base.on_focus_in (event);
         }
 
-        protected virtual bool on_button_press_event (Gdk.EventButton event) {
+        protected override bool on_button_press_event (Gdk.EventButton event) {
             if (icon_event (event)) {
                 return false;
             } else {

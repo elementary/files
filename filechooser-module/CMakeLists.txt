@@ -8,10 +8,15 @@ set (MODULE_NAME "pantheon-filechooser-module")
 set (MODULE_LIBDIR "${CMAKE_INSTALL_LIBDIR}/gtk-3.0/modules/")
 
 vala_precompile (VALA_C ${MODULE_NAME}
+    ${CMAKE_SOURCE_DIR}/libwidgets/Interfaces/LocatableInterface.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Interfaces/NavigatableInterface.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BasicLocationBar.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BasicBreadcrumbsEntry.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbElement.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbIconList.vala
     ${CMAKE_SOURCE_DIR}/libwidgets/Resources.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/LocationBar.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbsElements.vala
-    LocationBarChooser.vala
+    ${CMAKE_SOURCE_DIR}/libcore/Enums.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/FileUtils.vala
     FileChooserDialog.vala
     Plugin.vala
 PACKAGES

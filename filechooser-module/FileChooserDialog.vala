@@ -70,13 +70,13 @@ public class CustomFileChooserDialog : Object {
         button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
-        var pathbar = new Marlin.View.Chrome.LocationBar (rootwidget);
-        pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
-        pathbar.hexpand = true;
+        var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
+        location_bar.set_display_path (FILE_PREFIX + chooser.get_current_folder ());
+        location_bar.hexpand = true;
 
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
-        header_bar.pack_start (pathbar);
+        header_bar.pack_start (location_bar);
         if ((gtk_folder_button != null) && (chooser.get_action () != Gtk.FileChooserAction.OPEN)) {
             var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
             create_folder_button.set_tooltip_text (_("Create folder"));
@@ -102,7 +102,7 @@ public class CustomFileChooserDialog : Object {
             if (forward_path_list.length > 0) {
                 int length = forward_path_list.length - 1;
                 
-                pathbar.path = FILE_PREFIX + forward_path_list.@get (length);
+                location_bar.set_display_path (FILE_PREFIX + forward_path_list.@get (length));
                 chooser.set_current_folder (forward_path_list.@get (length));
                 forward_path_list.remove (forward_path_list.@get (length));
             }
@@ -122,11 +122,11 @@ public class CustomFileChooserDialog : Object {
             if (chooser.get_current_folder () != previous_path)
                 history.add (chooser.get_current_folder ());
 
-            pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
+            location_bar.set_display_path (FILE_PREFIX + chooser.get_current_folder ());
         });
         
-        pathbar.change_to_file.connect ((file) => {
-            chooser.set_current_folder (file);
+        location_bar.path_change_request.connect ((uri) => {
+            chooser.set_current_folder (uri);
         });
     }
 

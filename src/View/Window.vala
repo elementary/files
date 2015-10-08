@@ -37,7 +37,6 @@ namespace Marlin.View {
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
-//            {"navigate", action_navigate},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"select_all", null, null, "false", change_state_select_all},
             {"show_hidden", null, null, "false", change_state_show_hidden},
@@ -420,7 +419,6 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
-//                top_menu.location_bar.bread.show_refresh_icon (!is_loading);
             });
 
             content.update_tab_name (location);
@@ -978,7 +976,6 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab)
-//                        view_container.user_path_change_request (File.new_for_path (Environment.get_home_dir ()));
                         view_container.focus_location (File.new_for_path (Environment.get_home_dir ()));
                     else
                         remove_tab (view_container);
@@ -1043,27 +1040,5 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.info::HELP", {"F1"});
             application.set_accels_for_action ("win.info::ABOUT", {"F3"});
         }
-
-//        public bool get_frozen () {
-//            return freeze_view_changes;
-//        }
-        
-//        public GLib.File get_current_location () {
-//            return current_tab.location;
-//        }
-
-//        public void refresh_view () {
-//            action_reload ();
-//        }
-
-//        public void focus_location_request (GLib.File? loc,
-//                                            bool select_in_current_only = false,
-//                                            bool unselect_others = false) {
-//            current_tab.focus_location (loc, select_in_current_only, unselect_others);
-//        }
-
-//        public void go_to_parent () {
-//            go_up ();
-//        }
     }
 }
