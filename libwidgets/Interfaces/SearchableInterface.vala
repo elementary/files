@@ -19,6 +19,7 @@ namespace Marlin.View.Chrome {
     /* Interface implemented by SearchResults */
     public interface Searchable : Gtk.Widget {
         public signal void file_selected (GLib.File file);
+        public signal void file_activated (GLib.File file);
         public signal void cursor_changed (GLib.File? file);
         public signal void first_match_found (GLib.File? file);
         public signal void exit ();

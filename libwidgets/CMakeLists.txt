@@ -56,9 +56,6 @@ vala_precompile(VALA_C ${PKGNAME}
     Chrome/ViewSwitcher.vala
     Chrome/XsEntry.vala
     Animations/Animations.vala
-    #Bookmark.vala
-    #BookmarkList.vala
-    #Enums.vala
     FileUtils.vala
     Resources.vala
 PACKAGES

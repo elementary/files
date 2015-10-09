@@ -47,6 +47,7 @@ namespace Marlin.View.Chrome
         private void connect_additional_signals () {
             bread.open_with_request.connect (on_bread_open_with_request);
             search_results.file_selected.connect (on_search_results_file_selected);
+            search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
             search_results.first_match_found.connect (on_search_results_first_match_found);
             search_results.realize.connect (on_search_results_realize);
@@ -56,6 +57,17 @@ namespace Marlin.View.Chrome
         private void on_search_results_file_selected (GLib.File file) {
             escape ();
             path_change_request (file.get_path ());
+        }
+        private void on_search_results_file_activated (GLib.File file) {
+            escape ();
+            AppInfo? app;
+            try {
+                app = file.query_default_handler ();
+            } catch (GLib.Error e) {
+                /* a app chooser dialog will be shown if app is null */
+                app = null;
+            }
+            open_with_request (file, app);
         }
         private void on_search_results_first_match_found (GLib.File? file) {
             if (file != null) {

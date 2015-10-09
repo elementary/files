@@ -346,7 +346,7 @@ namespace Marlin.View.Chrome
             if (path != null) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter);
+                accept (iter, e.button > 1);
             }
             return true;
         }
@@ -358,7 +358,9 @@ namespace Marlin.View.Chrome
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed && event.keyval == Gdk.Key.f) {
@@ -366,6 +368,12 @@ namespace Marlin.View.Chrome
                     begins_with_only = false;
                     search (search_term, current_root);
                     return true;
+                } else if (only_alt_pressed &&
+                           event.keyval == Gdk.Key.Return ||
+                           event.keyval == Gdk.Key.KP_Enter ||
+                           event.keyval == Gdk.Key.ISO_Enter) {
+                               
+                    accept (null, true);
                 } else {
                     return false;
                 }
@@ -697,7 +705,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        void accept (Gtk.TreeIter? accepted = null)
+        void accept (Gtk.TreeIter? accepted = null, bool activate = false)
         {
             if (list_empty ()) {
                 Gdk.beep ();
@@ -729,7 +737,11 @@ namespace Marlin.View.Chrome
             }
             
             cancel ();
-            file_selected (file);
+            if (activate) {
+                file_activated (file);
+            } else {
+                file_selected (file);
+            }
         }
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
