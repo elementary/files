@@ -1,6 +1,10 @@
 find_package (PkgConfig)
 include(GNUInstallDirs)
 
+include_directories (${CMAKE_SOURCE_DIR}/libcore/)
+include_directories (${CMAKE_BINARY_DIR}/libcore/)
+include_directories (${CMAKE_BINARY_DIR}/libwidgets/)
+
 pkg_check_modules (DEPS REQUIRED glib-2.0 gthread-2.0 gtk+-3.0>=3.10 granite gee-0.8)
 
 pkg_check_modules (GRANITE REQUIRED "granite")
@@ -14,15 +18,6 @@ set (MODULE_NAME "pantheon-filechooser-module")
 set (MODULE_LIBDIR "${CMAKE_INSTALL_LIBDIR}/gtk-3.0/modules/")
 
 vala_precompile (VALA_C ${MODULE_NAME}
-    ${CMAKE_SOURCE_DIR}/libwidgets/Interfaces/LocatableInterface.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Interfaces/NavigatableInterface.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BasicLocationBar.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BasicBreadcrumbsEntry.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbElement.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbIconList.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/Resources.vala
-    ${CMAKE_SOURCE_DIR}/libcore/Enums.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/FileUtils.vala
     FileChooserDialog.vala
     Plugin.vala
 PACKAGES
@@ -30,8 +25,13 @@ PACKAGES
     granite
     posix
     gee-0.8
+    pantheon-files-widgets
+    pantheon-files-core
+    pantheon-files-core-C
 OPTIONS
-    --thread
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore
+    --vapidir=${CMAKE_BINARY_DIR}/libcore
+    --vapidir=${CMAKE_BINARY_DIR}/libwidgets
 )
 
 link_libraries(${DEPS_LIBRARIES})
