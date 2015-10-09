@@ -60,15 +60,10 @@ namespace Marlin.View.Chrome
         }
         private void on_search_results_file_activated (GLib.File file) {
             escape ();
-            AppInfo? app;
-            try {
-                app = file.query_default_handler ();
-            } catch (GLib.Error e) {
-                /* a app chooser dialog will be shown if app is null */
-                app = null;
-            }
-            open_with_request (file, app);
+            AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
+            Marlin.MimeActions.open_glib_file_request (file, this, app);
         }
+
         private void on_search_results_first_match_found (GLib.File? file) {
             if (file != null) {
                 focus_file_request (file);
@@ -104,7 +99,7 @@ namespace Marlin.View.Chrome
         }
 
         private void on_bread_open_with_request (File file, AppInfo? app) {
-            open_with_request (file, app);
+            Marlin.MimeActions.open_glib_file_request (file, this, app);
         }
 
         protected override void on_bread_action_icon_press () {
@@ -215,23 +210,6 @@ namespace Marlin.View.Chrome
 
         private void cancel_search () {
             search_results.cancel ();
-        }
-
-       private void open_with_request (GLib.File file_to_open, AppInfo? app) {
-            if (app == null) {
-                var chooser = new PF.ChooseAppDialog (get_toplevel () as Gtk.Window, file_to_open);
-                var choice = chooser.get_app_info ();
-                if (choice != null) {
-                    launch_with_app (file_to_open, choice);
-                }
-            } else {
-                launch_with_app (file_to_open, app);
-            }
-        }
-
-        private void launch_with_app (GLib.File file_to_open, AppInfo app) {
-            var goffile = GOF.File.get (file_to_open);
-            goffile.launch (get_screen (), app);
         }
     }
 }

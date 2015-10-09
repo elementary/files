@@ -20,7 +20,6 @@ vala_precompile(VALA_C ${PKGNAME}
     BookmarkList.vala
     DndHandler.vala
     Enums.vala
-    MimeActions.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
@@ -66,7 +65,6 @@ set (C_SOURCE_FILES
     marlin-progress-info.c
     marlin-progress-info-manager.c
     marlin-exec.c
-#    gof-abstract-slot.c
     gof-file.c
     marlin-icon-info.c
     marlin-trash-monitor.c
@@ -86,7 +84,6 @@ set (C_HEADER_FILES
     eel-string.h
     eel-ui.h
     eel-vfs-extensions.h
-#    gof-abstract-slot.h
     gof-file.h
     marlin-exec.h
     marlin-file-conflict-dialog.h

@@ -44,10 +44,10 @@ namespace PF.FileUtils {
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.MTP_URI ||
             parent_path == Marlin.SFTP_URI) {
-            
+
             parent_path = path;
         }
-        
+
         if (parent_path == Marlin.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }

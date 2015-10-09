@@ -58,6 +58,7 @@ vala_precompile(VALA_C ${PKGNAME}
     Animations/Animations.vala
     FileUtils.vala
     Resources.vala
+    MimeActions.vala
 PACKAGES
     gtk+-3.0
     granite
