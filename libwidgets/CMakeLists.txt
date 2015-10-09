@@ -10,20 +10,20 @@ set (DOLLAR "$")
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
 include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR})
-include_directories (${CMAKE_BINARY_DIR})
-
-#install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8 zeitgeist-2.0)
 
 pkg_check_modules (GRANITE REQUIRED "granite")
+pkg_check_modules (ZEITGEIST REQUIRED "zeitgeist-2.0")
 add_definitions (${GRANITE_CFLAGS})
 link_libraries (${GRANITE_LIBRARIES})
 link_directories (${GRANITE_LIBRARY_DIRS})
+add_definitions (${ZEITGEIST_CFLAGS})
+link_libraries (${ZEITGEIST_LIBRARIES})
+link_directories (${ZEITGEIST_LIBRARY_DIRS})
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
