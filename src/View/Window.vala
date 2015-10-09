@@ -214,9 +214,9 @@ namespace Marlin.View {
             top_menu.forward.connect (on_go_forward);
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
-            top_menu.path_change_request.connect ((loc) => {
+            top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.set_frozen_state (false);
-                uri_path_change_request (loc);
+                uri_path_change_request (loc, flag);
             });
             top_menu.reload_request.connect (action_reload);
             top_menu.focus_location_request.connect ((loc) => {
