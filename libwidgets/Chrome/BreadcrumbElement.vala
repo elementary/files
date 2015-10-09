@@ -149,18 +149,22 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.restore ();
             cr.restore ();
         }
-
+        
+        Gdk.Pixbuf? icon_to_draw = icon;
+        if (icon != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
+            icon_to_draw = Eel.gdk_pixbuf_lucent (icon_to_draw, 50);
+        }
         if (is_RTL) {
             x -= padding.left;
             x += Math.sin (offset*Math.PI_2) * width;
-            if (icon == null) {
+            if (icon_to_draw == null) {
                 button_context.render_layout (cr, x - text_width,
                                               y + height/2 - text_height/2, layout);
             } else if (!display_text) {
-                button_context.render_icon (cr, icon, x - ICON_MARGIN - icon.get_width (),
+                button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon.get_width (),
                                             y + height/2 - icon.get_height ()/2);
             } else {
-                button_context.render_icon (cr, icon, x - ICON_MARGIN - icon.get_width (),
+                button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon.get_width (),
                                             y + height/2 - icon.get_height ()/2);
                 /* text_width already includes icon_width */
                 button_context.render_layout (cr, x - text_width,
@@ -169,14 +173,14 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         } else {
             x += padding.left;
             x -= Math.sin (offset*Math.PI_2) * width;
-            if (icon == null) {
+            if (icon_to_draw == null) {
                 button_context.render_layout (cr, x,
                                               y + height/2 - text_height/2, layout);
             } else if (!display_text) {
-                button_context.render_icon (cr, icon, x + ICON_MARGIN,
+                button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
                                              y + height/2 - icon.get_height ()/2);
             } else {
-                button_context.render_icon (cr, icon, x + ICON_MARGIN,
+                button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
                                              y + height/2 - icon.get_height ()/2);
                 button_context.render_layout (cr, x + icon.get_width () + 2 * ICON_MARGIN,
                                               y + height/2 - text_height/2, layout);
