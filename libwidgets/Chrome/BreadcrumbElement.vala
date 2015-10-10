@@ -28,6 +28,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
     public string? text {get; private set;}
     public double offset = 0;
     public double max_width = -1;
+    public double min_width = -1;
     public double last_height = 0;
     public double x  = 0;
     public double width {
@@ -86,9 +87,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             text_width += icon.get_width () + 2 * ICON_MARGIN;
         }
 
-        if (max_width > 0) {
+        layout.set_ellipsize (Pango.EllipsizeMode.MIDDLE);
+        if (max_width > 0 && min_width < 0) {
             layout.set_width (Pango.units_from_double (max_width));
-            layout.set_ellipsize (Pango.EllipsizeMode.MIDDLE);
         }
 
         if (offset > 0.0) {
@@ -149,7 +150,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.restore ();
             cr.restore ();
         }
-        
+
         Gdk.Pixbuf? icon_to_draw = icon;
         if (icon != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = Eel.gdk_pixbuf_lucent (icon_to_draw, 50);

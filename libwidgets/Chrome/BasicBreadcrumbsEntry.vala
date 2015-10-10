@@ -310,17 +310,79 @@ namespace Marlin.View.Chrome {
             queue_draw ();
         }
 
-        public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
+        public double get_displayed_breadcrumbs_width (out GLib.List<BreadcrumbElement> displayed_breadcrumbs) {
             double total_width = 0.0;
-            breadcrumbs_count = 0;
+            displayed_breadcrumbs = null;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
                     total_width += element.width;
                     element.max_width = -1;
-                    breadcrumbs_count++;
+                    element.min_width = -1;
+                    displayed_breadcrumbs.prepend (element);
                 }
             }
+            displayed_breadcrumbs.reverse ();
             return total_width;
+        }
+
+        private void fix_displayed_widths (GLib.List<BreadcrumbElement> elements, double target_width) {
+            uint number_elements = elements.length ();
+            double available_width = target_width;
+            double w;
+            /* first element (protocol) always untruncated */
+            unowned GLib.List<BreadcrumbElement> l = elements.first ();
+            BreadcrumbElement el = l.data;
+            w = el.width;
+            el.min_width = ICON_WIDTH;
+            el.max_width = -1;
+            available_width -= w;
+            number_elements--;
+            if (number_elements == 0) {
+                return;
+            }
+
+            l = elements.last ();
+            el = l.data;
+            w = el.width;
+            el.min_width = ICON_WIDTH;
+            el.max_width = -1;
+            available_width -= w;
+            number_elements--;
+            if (available_width < 0) {
+                el.min_width = -1;
+                return;
+            } else if (number_elements == 0) {
+                return;
+            }
+
+            el = l.prev.data;
+            w = el.width;
+            el.min_width = ICON_WIDTH;
+            el.max_width = -1;
+            available_width -= w;
+            number_elements--;
+            if (available_width < 0) {
+                el.min_width = -1;
+                return;
+            }
+            return;
+        }
+
+        private void distribute_shortfall (GLib.List<BreadcrumbElement> elements, double target_width) {
+            double shortfall = double.max (ICON_WIDTH, target_width);
+            double free_width = 0;
+            foreach (BreadcrumbElement el in elements) {
+                shortfall -= el.width;
+                if (el.min_width < 0) {
+                    free_width += el.width;
+                }
+            }
+            double fraction_reduction = double.max (0.01, 1 + (shortfall / free_width));
+            foreach (BreadcrumbElement el in elements) {
+                if (el.min_width == -1) {
+                    el.max_width = el.width * fraction_reduction;
+                }
+            }
         }
 
         protected BreadcrumbElement? get_element_from_coordinates (int x, int y) {
@@ -496,7 +558,8 @@ namespace Marlin.View.Chrome {
                 button_context_active.set_path(button_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
-
+            var state = button_context.get_state ();
+            var padding = button_context.get_padding (state);
             base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
@@ -513,37 +576,26 @@ namespace Marlin.View.Chrome {
                 } else {
                     x_render = margin;
                 }
-                int breadcrumbs_displayed = 0;
-                double max_width = get_all_breadcrumbs_width (out breadcrumbs_displayed);
-
+                GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
+                double max_width = get_displayed_breadcrumbs_width (out displayed_breadcrumbs);
                 if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
                     /* each element must not be bigger than the width/breadcrumbs count */
-                    double max_element_width = width_marged/breadcrumbs_displayed;
-
-                    foreach (BreadcrumbElement element in elements) {
-                        if (element.display && element.width < max_element_width) {
-                            breadcrumbs_displayed --;
-                            max_element_width += (max_element_width - element.width)/breadcrumbs_displayed;
-                        }
-                    }
-
-                    foreach (BreadcrumbElement element in elements)
-                        if (element.display && element.width > max_element_width)
-                            element.max_width = max_element_width - element.last_height/2;
+                    double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
+                    width_marged -= total_arrow_width;
+                    fix_displayed_widths (displayed_breadcrumbs, width_marged);
+                    distribute_shortfall (displayed_breadcrumbs, width_marged);
                 }
                 cr.save ();
                 /* Really draw the elements */
-                foreach (BreadcrumbElement element in elements) {
-                    if (element.display) {
-                        if (is_RTL) {
-                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
-                            /* save element x axis position */
-                            element.x = x_render + element.real_width;
-                        } else {
-                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
-                            /* save element x axis position */
-                            element.x = x_render - element.real_width;
-                        }
+                foreach (BreadcrumbElement element in displayed_breadcrumbs) {
+                    if (is_RTL) {
+                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
+                        /* save element x axis position */
+                        element.x = x_render + element.real_width;
+                    } else {
+                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
+                        /* save element x axis position */
+                        element.x = x_render - element.real_width;
                     }
                 }
                 /* Draw animated removal of elements when shortening the breadcrumbs */
