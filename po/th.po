@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2014-07-05 20:09+0000\n"
-"Last-Translator: Jirayu Yingthawornsuk <me@jirayu.in.th>\n"
+"PO-Revision-Date: 2015-10-13 19:25+0000\n"
+"Last-Translator: ABCDEFGH <aefgh7233@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2015-10-14 05:51+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP สาธารณะ"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
@@ -85,7 +85,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "_เชื่อมต่อ"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -93,19 +93,19 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "รายละเอียดเซิร์ฟเวอร์"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "_เซิร์ฟเวอร์:"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_พอร์ต:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_ชนิด:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_โฟลเดอร์:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
