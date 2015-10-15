@@ -23,8 +23,6 @@ vala_precompile (VALA_C ${MODULE_NAME}
 PACKAGES
     gtk+-3.0
     granite
-    posix
-    gee-0.8
     pantheon-files-widgets
     pantheon-files-core
     pantheon-files-core-C
@@ -36,7 +34,8 @@ OPTIONS
 
 link_libraries(${DEPS_LIBRARIES})
 add_library (${MODULE_NAME} MODULE ${VALA_C})
-target_link_libraries (${MODULE_NAME} ${DEPS_LIBRARIES} gthread-2.0)
+target_link_libraries (${MODULE_NAME} ${DEPS_LIBRARIES} pantheon-files-widgets pantheon-files-core
+)
 
 # Installation
 install (TARGETS ${MODULE_NAME} DESTINATION "${MODULE_LIBDIR}")
