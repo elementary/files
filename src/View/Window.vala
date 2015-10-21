@@ -292,7 +292,7 @@ namespace Marlin.View {
             });
 
             sidebar.request_focus.connect (() => {
-                return !current_tab.locked_focus;
+                return !current_tab.locked_focus && !top_menu.locked_focus;
             });
 
             sidebar.sync_needed.connect (() => {

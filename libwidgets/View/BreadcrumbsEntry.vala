@@ -54,7 +54,6 @@ namespace Marlin.View.Chrome {
         public BreadcrumbsEntry () {
             base ();
             set_up_drag_drop ();
-            connect_additional_signals ();
         }
 
         private void set_up_drag_drop () {
@@ -65,10 +64,6 @@ namespace Marlin.View.Chrome {
             drag_motion.connect (on_drag_motion);
             drag_data_received.connect (on_drag_data_received);
             drag_drop.connect (on_drag_drop);
-        }
-
-        private void connect_additional_signals () {
-            button_press_event.connect (on_button_press_event);
         }
 
     /** Overridden Navigatable interface functions **/

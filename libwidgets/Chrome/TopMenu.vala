@@ -28,6 +28,7 @@ namespace Marlin.View.Chrome
         public LocationBar? location_bar;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
+        public bool locked_focus {get; private set; default = false;}
 
         public signal void forward (int steps);
         public signal void back (int steps);  /* TODO combine using negative step */
@@ -86,9 +87,11 @@ namespace Marlin.View.Chrome
                 focus_location_request (file);
             });
             location_bar.focus_in_event.connect ((event) => {
+                locked_focus = true;
                 return focus_in_event (event);
             });
             location_bar.focus_out_event.connect ((event) => {
+                locked_focus = false;
                 return focus_out_event (event);
             });
             location_bar.path_change_request.connect ((path, flag) => {
