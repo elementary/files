@@ -7,11 +7,6 @@ include_directories (${CMAKE_BINARY_DIR}/libwidgets/)
 
 pkg_check_modules (DEPS REQUIRED glib-2.0 gthread-2.0 gtk+-3.0>=3.10 granite gee-0.8)
 
-pkg_check_modules (GRANITE REQUIRED "granite")
-add_definitions (${GRANITE_CFLAGS})
-link_libraries (${GRANITE_LIBRARIES})
-link_directories (${GRANITE_LIBRARY_DIRS})
-
 add_definitions (${DEPS_CFLAGS})
 link_directories (${DEPS_LIBRARY_DIRS})
 set (MODULE_NAME "pantheon-filechooser-module")
