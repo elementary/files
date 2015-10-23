@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-10-22 00:48+0000\n"
-"Last-Translator: Maxim Taranov <png2378@protonmail.ch>\n"
+"PO-Revision-Date: 2015-10-22 21:16+0000\n"
+"Last-Translator: Ushakov Maksym <msincster@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-10-22 05:45+0000\n"
+"X-Launchpad-Export-Date: 2015-10-23 05:41+0000\n"
 "X-Generator: Launchpad (build 17812)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1089,11 +1089,11 @@ msgstr "Не удалось извлечь %V"
 
 #: ../libcore/marlin-file-operations.c:2226
 msgid "Unable to unmount %V"
-msgstr "Не удалось отсоединить %V"
+msgstr "Не удалось отключить %V"
 
 #: ../libcore/marlin-file-operations.c:2405
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Очистить корзину перед отсоединением?"
+msgstr "Очистить корзину перед отключением носителя?"
 
 #: ../libcore/marlin-file-operations.c:2407
 msgid ""
@@ -1275,9 +1275,9 @@ msgstr[2] "%'d файлов копируются в «%B»"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Создаётся копия %'d файла"
-msgstr[1] "Создаются копии %'d файлов"
-msgstr[2] "Создаются копии %'d файлов"
+msgstr[0] "Дублируется %'d файл"
+msgstr[1] "Дублируются %'d файла"
+msgstr[2] "Дублируются %'d файлов"
 
 #: ../libcore/marlin-file-operations.c:3199
 #, c-format
@@ -1296,7 +1296,7 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Нельзя скопировать папку «%B», потому что у вас нет прав на создание её в "
+"Нельзя скопировать папку «%B», потому что у вас нет прав на её создание в "
 "месте назначения."
 
 #: ../libcore/marlin-file-operations.c:3592
@@ -1389,7 +1389,7 @@ msgstr "Копирование файлов"
 
 #: ../libcore/marlin-file-operations.c:4846
 msgid "Preparing to move to \"%B\""
-msgstr "Идёт подготовка к перемещению в \"%B\""
+msgstr "Идёт подготовка к перемещению в «%B»"
 
 #: ../libcore/marlin-file-operations.c:4858
 #, c-format
@@ -1402,7 +1402,7 @@ msgstr[2] "Идёт подготовка к перемещению %'d файл�
 #: ../libcore/marlin-file-operations.c:5106
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Ошибка перемещения файла \"%F\"."
+msgstr "Произошла ошибка при перемещении «%F»."
 
 #: ../libcore/marlin-file-operations.c:5107
 #, c-format
@@ -1415,7 +1415,7 @@ msgstr "Перемещение файлов"
 
 #: ../libcore/marlin-file-operations.c:5398
 msgid "Creating links in \"%B\""
-msgstr "Идёт создание ссылок в «%B»"
+msgstr "Создание ссылок в «%B»"
 
 #: ../libcore/marlin-file-operations.c:5409
 #, c-format
@@ -1445,7 +1445,7 @@ msgstr "Произошла ошибка при создании символьн
 #: ../libcore/marlin-file-operations.c:5886
 #: ../libcore/marlin-file-operations.c:5889
 msgid "Setting permissions"
-msgstr "Идёт установка прав"
+msgstr "Установка прав доступа"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
@@ -1474,7 +1474,7 @@ msgstr "Произошла ошибка при создании файла %B."
 #: ../libcore/marlin-file-operations.c:6326
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Произошла ошибка при создании каталога в %F."
+msgstr "Произошла ошибка при создании папки в %F."
 
 #: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
@@ -1498,7 +1498,7 @@ msgstr "%a %-d %b в %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y в %-I:%M %p"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1508,7 +1508,7 @@ msgstr "ссылка на %s"
 #: ../libcore/gof-file.c:1886
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Невозможно обработать файл запуска: %s"
+msgstr "Ошибка обработки файла запуска: %s"
 
 #: ../libcore/gof-file.c:1924
 msgid "No Exec field specified"
@@ -1520,11 +1520,11 @@ msgstr "Не указано поле URL"
 
 #: ../libcore/gof-file.c:1950
 msgid "Invalid desktop file"
-msgstr "Некорректный .desktop-файл"
+msgstr "Некорректный файл запуска"
 
 #: ../libcore/gof-file.c:2242
 msgid "Slashes are not allowed in filenames"
-msgstr "В именах файлов нельзя использовать прямую косую черту"
+msgstr "В именах файлов нельзя использовать слэш"
 
 #: ../libcore/gof-file.c:2262
 msgid "Toplevel files cannot be renamed"
@@ -1546,7 +1546,7 @@ msgstr "Создать папку"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
-msgstr "Эта программа не является вашим файловым менеджером по-умолчанию."
+msgstr "Эта программа не является вашим файловым менеджером по умолчанию."
 
 #: ../src/View/Window.vala:184
 msgid "Set as Default"
@@ -1579,7 +1579,7 @@ msgstr "У вас нет прав для просмотра этой папки.
 
 #: ../src/View/ViewContainer.vala:345
 msgid "Unable to Mount Folder"
-msgstr "Невозможно смонтировать папку"
+msgstr "Не удалось подключить папку"
 
 #: ../src/View/ViewContainer.vala:346
 msgid "The server for this folder could not be located."
@@ -1591,7 +1591,7 @@ msgstr "Эта папка не существует"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "You cannot create a folder here."
-msgstr "Вы не можете создать папку здесь"
+msgstr "Вы не можете создать здесь папку"
 
 #: ../src/View/ViewContainer.vala:362
 msgid "File not Found"
@@ -1746,7 +1746,7 @@ msgstr "Фактический размер может быть больше, "
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
-msgstr "Чтение невозможно из-за ограничения прав или других ошибок."
+msgstr "не удалось прочитать из-за ограничения прав или других ошибок."
 
 #: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
@@ -1802,11 +1802,11 @@ msgstr "Открыть с помощью:"
 
 #: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
-msgstr "Использовано"
+msgstr "Статистика"
 
 #: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
-msgstr "Использование устройств:"
+msgstr "Устройство хранения:"
 
 #: ../src/View/PropertiesWindow.vala:758
 msgid "%s free of %s (%d%% used)"
@@ -1868,7 +1868,7 @@ msgstr "Открыть корзину"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
-msgstr "Оборудование"
+msgstr "Устройства"
 
 #: ../src/View/Sidebar.vala:508
 msgid "Your local partitions and devices"
@@ -1876,7 +1876,7 @@ msgstr "Ваши локальные разделы и устройства"
 
 #: ../src/View/Sidebar.vala:520
 msgid "Open the contents of the FileSystem"
-msgstr "Открыть содержание файловой системы"
+msgstr "Открыть содержимое файловой системы"
 
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
@@ -1884,11 +1884,11 @@ msgstr "Подключить и открыть %s"
 
 #: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
 msgid "Network"
-msgstr "Сеть"
+msgstr "Обзор сети"
 
 #: ../src/View/Sidebar.vala:632
 msgid "Your network places"
-msgstr "Ваша сеть"
+msgstr "Ваше сетевое окружение"
 
 #: ../src/View/Sidebar.vala:662
 msgid "Entire Network"
@@ -1896,7 +1896,7 @@ msgstr "Вся сеть"
 
 #: ../src/View/Sidebar.vala:669
 msgid "Browse the contents of the network"
-msgstr "Показать содержимое сети"
+msgstr "Обзор содержимого сети"
 
 #: ../src/View/Sidebar.vala:1198
 msgid "Unable to start %s"
@@ -1936,15 +1936,15 @@ msgstr "_Извлечь"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
-msgstr "Таблица"
+msgstr "Просмотр в виде значков"
 
 #: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
-msgstr "Список"
+msgstr "Просмотр в виде списка"
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr "Столбцы"
+msgstr "Просмотр в виде колонок"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"
@@ -1956,7 +1956,7 @@ msgstr "Закладки"
 
 #: ../src/View/SearchResults.vala:187
 msgid "Everywhere Else"
-msgstr "В других папках"
+msgstr "Везде"
 
 #: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
@@ -1968,11 +1968,11 @@ msgstr "Установить по умолчанию"
 
 #: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Cannot drop this file"
-msgstr "Не могу поместить файл"
+msgstr "Не удаётся поместить этот файл"
 
 #: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Invalid file name provided"
-msgstr "Некорректное имя файла"
+msgstr "Недопустимое имя файла"
 
 #: ../src/View/AbstractDirectoryView.vala:1925
 msgid "Invalid"
@@ -1992,7 +1992,7 @@ msgstr "Открыть в"
 
 #: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Other Application"
-msgstr "другом приложении"
+msgstr "Другом приложении"
 
 #: ../src/View/AbstractDirectoryView.vala:2285
 msgid "Untitled %s"
@@ -2020,11 +2020,11 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
-msgstr "новом окне"
+msgstr "Новом окне"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr "Выход"
+msgstr "Выйти"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
@@ -2070,7 +2070,7 @@ msgstr "Отмена"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "Просмотр файлов"
+msgstr "Обзор ваших файлов"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -2078,11 +2078,11 @@ msgstr "Файловый менеджер"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr "Создать _окно"
+msgstr "Новое _окно"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr "Открыть новое окно как администратор"
+msgstr "Новое окно от имени _Администратора"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
@@ -2106,7 +2106,7 @@ msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "Идёт %'d действие над файлами"
 msgstr[1] "Идут %'d действия над файлами"
-msgstr[2] "Идут %'d действия над файлами"
+msgstr[2] "Идут %'d действий над файлами"
 
 #: ../src/ProgressUIHandler.vala:242
 msgid "Show Details"
@@ -2114,15 +2114,15 @@ msgstr "Показать подробности"
 
 #: ../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
-msgstr "Показывать диалог копирования"
+msgstr "Показать диалог копирования"
 
 #: ../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
-msgstr "Отменить все выполняемые действия"
+msgstr "Отменить все выполняемые операции"
 
 #: ../libwidgets/LocationBar.vala:102
 msgid "Reload this folder"
-msgstr "Обновить папку"
+msgstr "Обновить эту папку"
 
 #: ../libwidgets/LocationBar.vala:317
 msgid "Go to %s"
@@ -2174,11 +2174,11 @@ msgstr "MTP"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Подключиться к серверу…"
+msgstr "Подключиться…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr "Подключиться к сетевому файловому серверу"
+msgstr "Подключиться к файловому серверу"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
@@ -2190,7 +2190,7 @@ msgstr "Очистить корзину"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "Эти файлы могут быть восстановлены или удалены из Корзины"
+msgstr "Эти файлы могут быть восстановлены или удалены из корзины"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2223,19 +2223,19 @@ msgstr "Создать"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr "папку"
+msgstr "Папку"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "пустой файл"
+msgstr "Пустой файл"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr "Показать скрытые файлы"
+msgstr "Показывать скрытые файлы"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
-msgstr "новой вкладке"
+msgstr "Новой вкладке"
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
@@ -2243,7 +2243,7 @@ msgstr "Терминале"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr "Закладка"
+msgstr "Добавить в закладки"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
@@ -2263,7 +2263,7 @@ msgstr "Вставить в папку"
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
-msgstr "Сортировать по"
+msgstr "Сортировать"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Name"
