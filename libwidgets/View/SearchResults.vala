@@ -375,7 +375,7 @@ namespace Marlin.View.Chrome
                                
                     accept (null, true);
                 } else {
-                    return false;
+                    return parent.key_press_event (event);
                 }
             }
             switch (event.keyval) {
