@@ -55,7 +55,7 @@ namespace Marlin.View.Chrome
         }
 
         private void on_search_results_file_selected (GLib.File file) {
-            escape ();
+            /* Search result widget ensures it has closed and released grab */
             path_change_request (file.get_path ());
         }
         private void on_search_results_file_activated (GLib.File file) {
@@ -78,6 +78,7 @@ namespace Marlin.View.Chrome
             (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
         }
         private void on_search_results_exit () {
+            /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             escape ();
         }

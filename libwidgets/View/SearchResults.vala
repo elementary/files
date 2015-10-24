@@ -403,7 +403,7 @@ namespace Marlin.View.Chrome
                     select_adjacent (up);
                     return true;
                 case Gdk.Key.Escape:
-                    cancel ();
+                    cancel (); /* release any grab */
                     exit ();
                     return true;
                 default:
@@ -600,12 +600,12 @@ namespace Marlin.View.Chrome
             if (get_mapped ()) {
                 return;
             }
-            view.cursor_changed.connect (on_cursor_changed);
-            grab_focus ();
+
             set_screen (parent.get_screen ());
             show_all ();
-
-            if (device != null) {
+            view.grab_focus ();
+            /* Ensure device grab and ungrab are paired */
+            if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
                 device.grab (get_window (), Gdk.GrabOwnership.WINDOW, false, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -613,17 +613,21 @@ namespace Marlin.View.Chrome
                     null, Gdk.CURRENT_TIME);
 
                 is_grabbing = true;
+                /* Also pair signal connect and disconnect */
+                view.cursor_changed.connect (on_cursor_changed);
             }
         }
 
         void popdown ()
         {
-            view.cursor_changed.disconnect (on_cursor_changed);
-            
+            /* Ensure device grab and ungrab are paired */
             if (is_grabbing && device != null) {
                 device.ungrab (Gdk.CURRENT_TIME);
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
+
+                /* Also pair signal connect and disconnect */
+                view.cursor_changed.disconnect (on_cursor_changed);
             }
             parent.grab_focus ();
             hide ();
