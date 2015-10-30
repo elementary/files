@@ -164,7 +164,10 @@ public class GOF.Directory.Async : Object {
         if (!is_local && !check_network ()) {
             return false;
         }
-
+        /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
+         * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
+         */
+        file.info = null; 
         if (!file.ensure_query_info()) {
             if (is_local || !file.is_connected)
                 return false;
