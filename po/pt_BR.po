@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-06-24 18:37+0000\n"
+"PO-Revision-Date: 2015-10-31 23:39+0000\n"
 "Last-Translator: Cleiton Floss <cleitonfloss@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2015-11-01 05:30+0000\n"
+"X-Generator: Launchpad (build 17838)\n"
 "Language: pt_BR\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1535,7 +1535,7 @@ msgstr "(como administrador)"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Essa pasta não pertence a você"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "You don't have permission to view this folder."
@@ -1543,7 +1543,7 @@ msgstr "Você não tem permissão para ver esta pasta."
 
 #: ../src/View/ViewContainer.vala:345
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Não foi possível montar a pasta"
 
 #: ../src/View/ViewContainer.vala:346
 msgid "The server for this folder could not be located."
@@ -1551,15 +1551,15 @@ msgstr "O servidor para esta pasta não pôde ser localizado."
 
 #: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Essa pasta não existe"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Você não pode criar uma pasta aqui."
 
 #: ../src/View/ViewContainer.vala:362
 msgid "File not Found"
-msgstr ""
+msgstr "Arquivo não encontrado"
 
 #: ../src/View/ViewContainer.vala:363
 msgid "The file selected no longer exists."
@@ -1621,19 +1621,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Essa pasta está vazia"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "A lixeira está vazia"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Não há arquivos recentes"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Acesso negado"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1661,19 +1661,19 @@ msgstr "%u itens selecionados (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u sub-pasta, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u sub-pastas, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u arquivo, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u arquivos, "
 
 #: ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:95
@@ -1820,7 +1820,7 @@ msgstr "Abrir sua pasta pessoal"
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Ver a lista de arquivos recém usados"
 
 #: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
 msgid "Trash"
@@ -1972,7 +1972,7 @@ msgstr "Cortar a seleção ao invés"
 
 #: ../src/View/AbstractDirectoryView.vala:2812
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Não foi possível renomear para '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2129,11 +2129,11 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:92
 msgid "Recent"
-msgstr ""
+msgstr "Recente"
 
 #: ../libwidgets/Resources.vala:93
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2157,7 +2157,7 @@ msgstr "Estes itens podem ser restaurados ou excluídos da lixeira"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Não é possível restaurar ou deletar a menos que na pasta raiz"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2170,11 +2170,11 @@ msgstr "Excluir permanentemente"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Abrir a pasta pai"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Remover do histórico"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
