@@ -99,7 +99,8 @@ public class Marlin.View.VolumePropertiesWindow : Gtk.Dialog {
 
         header_box.pack_start (new Gtk.Image.from_gicon (mount.get_icon (), Gtk.IconSize.DIALOG), false, false);
         var header_label = new Gtk.Label (mount.get_name ());
-        header_label.get_style_context ().add_class ("h1");
+        header_label.get_style_context ().add_class ("h2");
+        header_label.margin_top = 5;
         header_box.pack_start (header_label);
 
         content_vbox.pack_start (header_box, false, false, 0);
@@ -124,35 +125,44 @@ public class Marlin.View.VolumePropertiesWindow : Gtk.Dialog {
             }
 
             {
-                var key_label = create_label_key ("Mounted at" + " :");
+                var key_label = create_label_key ("Location" + " :");
                 var value_label = new Gtk.Label (mount.get_root ().get_path ());
                 create_info_line (key_label, value_label, info_grid, ref n);
             }
+
+            n++;
+
+            debug ("%d", n);
+            label = new Gtk.Label (_("Usage"));
+            label.set_halign (Gtk.Align.START);
+            label.get_style_context ().add_class ("h4");
+            info_grid.attach (label, 0, n, 1, 1);
+
+            n++;
 
             if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
                 info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
                 uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
                 uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+                uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
-                n++;
+                var key_label = create_label_key ("Capacity " + " :");
+                var value_label = new Gtk.Label (format_size ((int64)fs_capacity));
+                create_info_line (key_label, value_label, info_grid, ref n);
 
-                debug ("%d", n);
-                label = new Gtk.Label (_("Usage"));
-                label.set_halign (Gtk.Align.START);
-                label.get_style_context ().add_class ("h4");
-                info_grid.attach (label, 0, n, 1, 1);
+                key_label = create_label_key ("Available " + " :");
+                value_label = new Gtk.Label (format_size ((int64) fs_free));
+                create_info_line (key_label, value_label, info_grid, ref n);
 
-                n++;
-
-                var key_label = create_label_key (_("Device usage:"), Gtk.Align.CENTER);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                debug ("%d", n);
-                var progressbar = new Gtk.ProgressBar ();
                 double used =  1.0 - (double) fs_free / (double) fs_capacity;
+
+                key_label = create_label_key ("Used " + " :");
+                value_label = new Gtk.Label ("%s (%d%% used)".printf (format_size ((int64) fs_used), (int) used));
+                create_info_line (key_label, value_label, info_grid, ref n);
+
+                var progressbar = new Gtk.ProgressBar ();
                 progressbar.set_fraction (used);
-                progressbar.set_show_text (true);
-                progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
-                info_grid.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                info_grid.attach (progressbar, 0, n, 4, 1);
             }
         } catch (Error e) {
             warning ("error: %s", e.message);

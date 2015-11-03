@@ -2140,7 +2140,7 @@ namespace Marlin.Places {
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
-            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_unmount);
+            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, true);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
