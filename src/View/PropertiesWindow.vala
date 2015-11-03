@@ -17,6 +17,167 @@
     Author: ammonkey <am.monkeyd@gmail.com>
 ***/
 
+public class Marlin.View.VolumePropertiesWindow : Gtk.Dialog {
+    private Gtk.SizeGroup sg;
+
+    private float get_alignment_float_from_align (Gtk.Align align) {
+        switch (align) {
+        case Gtk.Align.START:
+            return 0.0f;
+        case Gtk.Align.END:
+            return 1.0f;
+        case Gtk.Align.CENTER:
+            return 0.5f;
+        default:
+            return 0.0f;
+        }
+    }
+
+    private Gtk.Widget create_label_key (string str, Gtk.Align valign = Gtk.Align.START) {
+        Gtk.Label key_label = new Gtk.Label (str);
+        key_label.set_sensitive (false);
+        key_label.margin_right = 5;
+        var yalign = get_alignment_float_from_align (valign);
+
+        var align = new Gtk.Alignment (1.0f, yalign, 0, 0);
+        align.add (key_label);
+        sg.add_widget (align);
+
+        return align;
+    }
+
+    private void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
+        key_label.margin_left = 20;
+        value_label.set_selectable (true);
+        value_label.set_hexpand (true);
+        value_label.set_use_markup (true);
+        value_label.set_can_focus (false);
+        value_label.set_halign (Gtk.Align.START);
+
+        information.attach (key_label, 0, line, 1, 1);
+        if (value_container != null) {
+            value_container.set_size_request (150, -1);
+            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+        else
+            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        line++;
+    }
+
+    public VolumePropertiesWindow (GLib.Mount mount, Gtk.Window parent) {
+        title = _("Properties");
+        resizable = false;
+        deletable = false;
+        set_default_size (220, -1);
+        transient_for = parent;
+        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+        type_hint = Gdk.WindowTypeHint.DIALOG;
+        border_width = 5;
+        destroy_with_parent = true;
+
+        if (mount == null) {
+            critical ("Properties Window constructor called with null mount");
+            return;
+        }
+
+        /* Set the default containers */
+        var content_area = get_content_area ();
+        sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+
+        var content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        content_area.pack_start (content_vbox);
+
+        /* Adjust sizes */
+        content_vbox.margin_right = 5;
+        content_vbox.margin_left = 5;
+
+        /* Header Box */
+        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
+        header_box.margin_bottom = 15;
+        header_box.margin_left = header_box.margin_right = 10;
+
+        header_box.pack_start (new Gtk.Image.from_gicon (mount.get_icon (), Gtk.IconSize.DIALOG), false, false);
+        var header_label = new Gtk.Label (mount.get_name ());
+        header_label.get_style_context ().add_class ("h1");
+        header_box.pack_start (header_label);
+
+        content_vbox.pack_start (header_box, false, false, 0);
+
+        var info_grid = new Gtk.Grid ();
+        info_grid.row_spacing = 3;
+
+        var label = new Gtk.Label (_("Info"));
+        label.set_halign (Gtk.Align.START);
+        label.get_style_context ().add_class ("h4");
+        info_grid.attach (label, 0, 0, 1, 1);
+
+        int n = 1;
+
+        try {
+            var info = mount.get_root ().query_filesystem_info ("filesystem::*");
+
+            if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+                var key_label = create_label_key ("Format" + " :");
+                var value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+                create_info_line (key_label, value_label, info_grid, ref n);
+            }
+
+            {
+                var key_label = create_label_key ("Mounted at" + " :");
+                var value_label = new Gtk.Label (mount.get_root ().get_path ());
+                create_info_line (key_label, value_label, info_grid, ref n);
+            }
+
+            if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+                info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+                uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+                uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+
+                n++;
+
+                debug ("%d", n);
+                label = new Gtk.Label (_("Usage"));
+                label.set_halign (Gtk.Align.START);
+                label.get_style_context ().add_class ("h4");
+                info_grid.attach (label, 0, n, 1, 1);
+
+                n++;
+
+                var key_label = create_label_key (_("Device usage:"), Gtk.Align.CENTER);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                debug ("%d", n);
+                var progressbar = new Gtk.ProgressBar ();
+                double used =  1.0 - (double) fs_free / (double) fs_capacity;
+                progressbar.set_fraction (used);
+                progressbar.set_show_text (true);
+                progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
+                info_grid.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            }
+        } catch (Error e) {
+            warning ("error: %s", e.message);
+        }
+
+        content_area.pack_start (info_grid);
+
+        content_vbox.show ();
+        content_area.show_all ();
+        show_all ();
+
+        /* Action area */
+        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        response.connect ((source, type) => {
+            switch (type) {
+                case Gtk.ResponseType.CLOSE:
+                    destroy ();
+                    break;
+            }
+        });
+
+        present ();
+    }
+}
+
 public class Marlin.View.PropertiesWindow : Gtk.Dialog {
     private class Pair<F, G> {
         public F key;

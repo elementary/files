@@ -100,6 +100,7 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_rescan_item;
         Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
+        Gtk.MenuItem popupmenu_drive_property_item;
         Gtk.MenuItem popupmenu_start_item;
         Gtk.MenuItem popupmenu_stop_item;
 
@@ -1339,6 +1340,14 @@ namespace Marlin.Places {
             item.activate.connect (empty_trash_cb);
             item.show ();
             popupmenu.append (item);
+
+            /* Drive property menu item */
+            item = new Gtk.ImageMenuItem.with_mnemonic (_("Properties"));
+            popupmenu_drive_property_item = item;
+            item.activate.connect (show_drive_info_cb);
+            item.show ();
+            popupmenu.append (item);
+
             check_popup_sensitivity ();
         }
 
@@ -1369,6 +1378,7 @@ namespace Marlin.Places {
             popupmenu_start_item = null;
             popupmenu_stop_item = null;
             popupmenu_empty_trash_item = null;
+            popupmenu_drive_property_item = null;
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -1909,6 +1919,19 @@ namespace Marlin.Places {
             rename_selected_bookmark ();
         }
 
+        private void show_drive_info_cb (Gtk.MenuItem item) {
+            Gtk.TreeIter iter;
+            if (!get_selected_iter (out iter))
+                return;
+
+            Mount mount;
+            store.@get (iter, Column.MOUNT, out mount);
+
+            if (mount != null) {
+                new Marlin.View.VolumePropertiesWindow (mount, window);
+            }
+        }
+
         private void eject_or_unmount_shortcut_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
@@ -2117,6 +2140,7 @@ namespace Marlin.Places {
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
+            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_unmount);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
