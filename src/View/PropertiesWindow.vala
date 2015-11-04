@@ -25,6 +25,59 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected Gtk.Box header_box;
     protected Gtk.StackSwitcher stack_switcher;
 
+    protected Gdk.Pixbuf overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
+        /* Add space around the pixbuf for emblems */
+        var icon_pix = new Gdk.Pixbuf (icon.colorspace,
+                                       icon.has_alpha,
+                                       icon.bits_per_sample,
+                                       64, 64);
+
+        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
+         * control over the size and position of the emblems so we create a composite pixbuf */
+
+        icon_pix.fill (0);
+        icon.composite (icon_pix,
+                        8, 8,
+                        48, 48,
+                        8, 8,
+                        1.0, 1.0,
+                        Gdk.InterpType.NEAREST,
+                        255);
+
+        /* Composite in the emblems, if any */
+        Gdk.Pixbuf? pixbuf = null;
+        if (emblems_list != null) {
+            var theme = Gtk.IconTheme.get_default ();
+            int pos = 0;
+            foreach (string emblem_name in emblems_list) {
+                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
+                if (info == null)
+                    continue;
+
+                try {
+                    pixbuf = info.load_icon ();
+                    /* Emblems drawn in a vertical column to the right of the icon */
+                    pixbuf.composite (icon_pix,
+                                      44, 44 - pos * 17,
+                                      16, 16,
+                                      44.0, 44.0 - pos * 17.0,
+                                      1.0, 1.0,
+                                      Gdk.InterpType.NEAREST,
+                                      255);
+                    pos++;
+                }
+                catch (GLib.Error e) {
+                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
+                }
+                if (pos > 3) /* Only room for 3 emblems */
+                    break;
+            }
+        }
+
+        return icon_pix;
+    }
+
+
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
         if (content != null) {
             content.set_border_width (5);
@@ -463,56 +516,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_label = new Gtk.Label ("");
         type_key_label = create_label_key (_("Type") + (": "));
 
-        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
-         * control over the size and position of the emblems so we create a composite pixbuf */
-
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-
-        /* Add space around the pixbuf for emblems */
-        var icon_pix = new Gdk.Pixbuf (file_pix.colorspace,
-                                         file_pix.has_alpha,
-                                         file_pix.bits_per_sample,
-                                         64, 64);
-        icon_pix.fill (0);
-        file_pix.composite (icon_pix,
-                            8, 8,
-                            48, 48,
-                            8, 8,
-                            1.0, 1.0,
-                            Gdk.InterpType.NEAREST,
-                            255);
-
-        /* Composite in the emblems, if any */
-        Gdk.Pixbuf? pixbuf = null;
-        if (goffile.emblems_list != null) {
-            var theme = Gtk.IconTheme.get_default ();
-            int pos = 0;
-            foreach (string emblem_name in goffile.emblems_list) {
-                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
-                if (info == null)
-                    continue;
-
-                try {
-                    pixbuf = info.load_icon ();
-                    /* Emblems drawn in a vertical column to the right of the icon */
-                    pixbuf.composite (icon_pix,
-                                      44, 44 - pos * 17,
-                                      16, 16,
-                                      44.0, 44.0 - pos * 17.0,
-                                      1.0, 1.0,
-                                      Gdk.InterpType.NEAREST,
-                                      255);
-                    pos++;
-                }
-                catch (GLib.Error e) {
-                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
-                }
-                if (pos > 3) /* Only room for 3 emblems */
-                    break;
-            }
-        }
-
-        var file_img = new Gtk.Image.from_pixbuf (icon_pix);
+        var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
         file_img.set_valign (Gtk.Align.CENTER);
         content.pack_start (file_img, false, false);
 
@@ -1425,8 +1430,41 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
     public VolumePropertiesWindow (GLib.Mount mount, Gtk.Window parent) {
         base ("Disk Properties", parent);
 
+        var mount_root = mount.get_root ();
+
+        GLib.FileInfo info;
+
+        try {
+            info = mount_root.query_filesystem_info ("filesystem::*");
+        } catch (Error e) {
+            warning ("error: %s", e.message);
+            return;
+        }
+
         /* Build the header box */
-        header_box.pack_start (new Gtk.Image.from_gicon (mount.get_icon (), Gtk.IconSize.DIALOG), false, false);
+        var theme = Gtk.IconTheme.get_default ();
+        Gtk.IconInfo? icon_info = null;
+
+        try {
+            icon_info = theme.lookup_by_gicon (mount.get_icon (), 48, Gtk.IconLookupFlags.FORCE_SIZE);
+
+            if (icon_info != null) {
+                var emblems_list = new GLib.List<string> ();
+
+                /* Overlay the 'readonly' emblem to tell the user the disk is
+                 * mounted as RO */
+                if (info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
+                    info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
+                    emblems_list.append ("emblem-readonly");
+                }
+
+                var final_pixbuf = overlay_emblems (icon_info.load_icon (), emblems_list);
+                header_box.pack_start (new Gtk.Image.from_pixbuf (final_pixbuf), false, false);
+            }
+        } catch (Error err) {
+            warning ("%s", err.message);
+        }
+
         var header_label = new Gtk.Label (mount.get_name ());
         header_label.get_style_context ().add_class ("h2");
         header_label.margin_top = 5;
@@ -1445,59 +1483,48 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
         int n = 1;
 
-        try {
-            var info = mount.get_root ().query_filesystem_info ("filesystem::*");
+        var key_label = create_label_key (_("Location") + " :");
+        var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
+        create_info_line (key_label, value_label, info_grid, ref n);
 
-            if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-                var key_label = create_label_key ("Format" + " :");
-                var value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
-                create_info_line (key_label, value_label, info_grid, ref n);
-            }
+        if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+            key_label = create_label_key ("Format" + " :");
+            value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+            create_info_line (key_label, value_label, info_grid, ref n);
+        }
 
-            {
-                var key_label = create_label_key (_("Location") + " :");
-                var mount_root = mount.get_root ();
-                var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
-                create_info_line (key_label, value_label, info_grid, ref n);
-            }
+        n++;
 
-            n++;
+        label = new Gtk.Label (_("Usage"));
+        label.set_halign (Gtk.Align.START);
+        label.get_style_context ().add_class ("h4");
+        info_grid.attach (label, 0, n, 1, 1);
 
-            debug ("%d", n);
-            label = new Gtk.Label (_("Usage"));
-            label.set_halign (Gtk.Align.START);
-            label.get_style_context ().add_class ("h4");
-            info_grid.attach (label, 0, n, 1, 1);
+        n++;
 
-            n++;
+        if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+            info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+            uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            double used =  1.0 - (double) fs_free / (double) fs_capacity;
 
-            if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-                info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
-                uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
-                uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            key_label = create_label_key (_("Capacity") + " :");
+            value_label = new Gtk.Label (format_size ((int64)fs_capacity));
+            create_info_line (key_label, value_label, info_grid, ref n);
 
-                var key_label = create_label_key ("Capacity " + " :");
-                var value_label = new Gtk.Label (format_size ((int64)fs_capacity));
-                create_info_line (key_label, value_label, info_grid, ref n);
+            key_label = create_label_key (_("Available") + " :");
+            value_label = new Gtk.Label (format_size ((int64) fs_free));
+            create_info_line (key_label, value_label, info_grid, ref n);
 
-                key_label = create_label_key ("Available " + " :");
-                value_label = new Gtk.Label (format_size ((int64) fs_free));
-                create_info_line (key_label, value_label, info_grid, ref n);
+            key_label = create_label_key (_("Used") + " :");
+            value_label = new Gtk.Label (_("%s (%d%% used)").printf (format_size ((int64) fs_used), (int) (used * 100)));
+            create_info_line (key_label, value_label, info_grid, ref n);
 
-                double used =  1.0 - (double) fs_free / (double) fs_capacity;
-
-                key_label = create_label_key ("Used " + " :");
-                value_label = new Gtk.Label ("%s (%d%% used)".printf (format_size ((int64) fs_used), (int) (used * 100)));
-                create_info_line (key_label, value_label, info_grid, ref n);
-
-                var progressbar = new Gtk.ProgressBar ();
-                progressbar.set_fraction (used);
-                progressbar.margin_top = 6;
-                info_grid.attach (progressbar, 0, n, 5, 1);
-            }
-        } catch (Error e) {
-            warning ("error: %s", e.message);
+            var progressbar = new Gtk.ProgressBar ();
+            progressbar.set_fraction (used);
+            progressbar.margin_top = 6;
+            info_grid.attach (progressbar, 0, n, 5, 1);
         }
 
         add_section (stack, _("General"), PanelType.INFO.to_string (), info_grid);
