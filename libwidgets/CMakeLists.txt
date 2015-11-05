@@ -41,6 +41,7 @@ vala_precompile(VALA_C ${PKGNAME}
     Animations.vala
     LocationBar.vala
     BreadcrumbsElements.vala
+    Welcome.vala
 PACKAGES
     gtk+-3.0
     granite
