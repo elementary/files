@@ -1926,14 +1926,20 @@ namespace Marlin.Places {
                 return;
 
             Mount mount;
+            Volume volume;
             string uri;
             store.@get (iter,
+                        Column.VOLUME, out volume,
                         Column.MOUNT, out mount,
                         Column.URI, out uri);
 
-            if (mount != null || uri == "file:///") {
-                new Marlin.View.VolumePropertiesWindow (mount, window);
+            if (mount == null && volume != null) {
+                Marlin.FileOperations.mount_volume_full (null, volume, false, (vol) => {
+                    new Marlin.View.VolumePropertiesWindow (vol.get_mount (), window as Gtk.Window);
+                }, null);
             }
+
+            new Marlin.View.VolumePropertiesWindow (mount, window);
         }
 
         private void eject_or_unmount_shortcut_cb (Gtk.MenuItem item) {
@@ -2140,7 +2146,7 @@ namespace Marlin.Places {
                                       show_eject || show_unmount ||
                                       show_mount || show_empty_trash);
 
-            bool show_property = (mount != null) || (uri == "file:///");
+            bool show_property = show_mount || show_unmount || (uri == "file:///");
 
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
