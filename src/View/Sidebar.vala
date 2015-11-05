@@ -1921,13 +1921,17 @@ namespace Marlin.Places {
 
         private void show_drive_info_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
+
             if (!get_selected_iter (out iter))
                 return;
 
             Mount mount;
-            store.@get (iter, Column.MOUNT, out mount);
+            string uri;
+            store.@get (iter,
+                        Column.MOUNT, out mount,
+                        Column.URI, out uri);
 
-            if (mount != null) {
+            if (mount != null || uri == "file:///") {
                 new Marlin.View.VolumePropertiesWindow (mount, window);
             }
         }
@@ -2136,11 +2140,13 @@ namespace Marlin.Places {
                                       show_eject || show_unmount ||
                                       show_mount || show_empty_trash);
 
+            bool show_property = (mount != null) || (uri == "file:///");
+
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
-            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, true);
+            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_property);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);

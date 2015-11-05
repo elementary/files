@@ -1427,10 +1427,26 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         INFO,
     }
 
-    public VolumePropertiesWindow (GLib.Mount mount, Gtk.Window parent) {
-        base ("Disk Properties", parent);
+    public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
+        base (_("Disk Properties"), parent);
 
-        var mount_root = mount.get_root ();
+        GLib.File mount_root;
+        string mount_name;
+        GLib.Icon mount_icon;
+
+        /* We might reach this point with mount being null, this happens when
+         * the user wants to see the properties for the 'File System' entry in
+         * the sidebar. GVfs is kind enough to not have a Mount entry for the
+         * root filesystem, so we try our best to gather enough data. */
+        if (mount != null) {
+            mount_root = mount.get_root ();
+            mount_name = mount.get_name ();
+            mount_icon = mount.get_icon ();
+        } else {
+            mount_root = GLib.File.new_for_uri ("file:///");
+            mount_name = _("File System");
+            mount_icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
+        }
 
         GLib.FileInfo info;
 
@@ -1446,7 +1462,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         Gtk.IconInfo? icon_info = null;
 
         try {
-            icon_info = theme.lookup_by_gicon (mount.get_icon (), 48, Gtk.IconLookupFlags.FORCE_SIZE);
+            icon_info = theme.lookup_by_gicon (mount_icon, 48, Gtk.IconLookupFlags.FORCE_SIZE);
 
             if (icon_info != null) {
                 var emblems_list = new GLib.List<string> ();
@@ -1465,7 +1481,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
             warning ("%s", err.message);
         }
 
-        var header_label = new Gtk.Label (mount.get_name ());
+        var header_label = new Gtk.Label (mount_name);
         header_label.get_style_context ().add_class ("h2");
         header_label.margin_top = 5;
         header_label.set_valign (Gtk.Align.CENTER);
