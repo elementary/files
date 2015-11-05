@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-10-31 23:39+0000\n"
+"PO-Revision-Date: 2015-11-04 12:37+0000\n"
 "Last-Translator: Cleiton Floss <cleitonfloss@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-11-02 05:27+0000\n"
+"X-Launchpad-Export-Date: 2015-11-05 05:41+0000\n"
 "X-Generator: Launchpad (build 17838)\n"
 "Language: pt_BR\n"
 
@@ -1828,7 +1828,7 @@ msgstr "Lixeira"
 
 #: ../src/View/Sidebar.vala:497
 msgid "Open the Trash"
-msgstr "Abre a lixeira"
+msgstr "Abrir a lixeira"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
@@ -1860,7 +1860,7 @@ msgstr "Toda a rede"
 
 #: ../src/View/Sidebar.vala:669
 msgid "Browse the contents of the network"
-msgstr "Navega o conteúdo da rede"
+msgstr "Navegar no conteúdo da rede"
 
 #: ../src/View/Sidebar.vala:1198
 msgid "Unable to start %s"
