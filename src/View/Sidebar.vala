@@ -1934,12 +1934,15 @@ namespace Marlin.Places {
                         Column.URI, out uri);
 
             if (mount == null && volume != null) {
+                /* Mount the device if possible, defer showing the dialog after
+                 * we're done */
                 Marlin.FileOperations.mount_volume_full (null, volume, false, (vol, win) => {
-                    assert (vol != null);
                     new Marlin.View.VolumePropertiesWindow (vol.get_mount (), (Gtk.Window) win);
                 }, window);
             } else {
-                new Marlin.View.VolumePropertiesWindow (mount, window);
+                if (mount != null || uri == "file:///") {
+                    new Marlin.View.VolumePropertiesWindow (mount, window);
+                }
             }
         }
 
