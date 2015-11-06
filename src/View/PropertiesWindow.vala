@@ -563,10 +563,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
         size_warning_image.halign = Gtk.Align.START;
-        size_warning_image.hide ();
+        size_warning_image.no_show_all = true;
 
         selection_size_update ();
-        size_warning_image.hide ();
     }
 
     private string? get_common_ftype () {
