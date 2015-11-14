@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-09-04 19:53+0000\n"
-"Last-Translator: Artem Anufrij <Unknown>\n"
+"POT-Creation-Date: 2015-11-05 05:29-0600\n"
+"PO-Revision-Date: 2015-11-05 11:54+0000\n"
+"Last-Translator: Yuly Nesterov <crow@rikka.io>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2015-11-06 05:31+0000\n"
+"X-Generator: Launchpad (build 17838)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -146,221 +146,229 @@ msgstr "Действие отменено"
 msgid "Show more _details"
 msgstr "Показать по_дробности"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:638
+msgid "Original location could not be determined"
+msgstr "Невозможно определить оригинальное расположение"
+
+#: ../libcore/marlin-undostack-manager.c:639
+msgid "Open trash folder and restore manually"
+msgstr "Открыть корзину и восстановить вручную"
+
+#: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Удалить %d скопированных файлов"
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1232
+#: ../libcore/marlin-undostack-manager.c:1242
+#: ../libcore/marlin-undostack-manager.c:1273
 #, c-format
 msgid "Delete '%s'"
 msgstr "Удалить «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-undostack-manager.c:1239
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Удалить %d дубликатов"
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Переместить %d файлов обратно в '%s'"
+msgstr "Переместить %d файлов обратно в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-undostack-manager.c:1254
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Переместить «%s» обратно в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1430
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Переименовать «%s» в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-undostack-manager.c:1282
+#: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Восстановить %d файлов из корзины"
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1290
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Восстановить «%s» в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1301
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Переместить %d файлов обратно в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1300
+#: ../libcore/marlin-undostack-manager.c:1304
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Переместить «%s» обратно в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1309
+#: ../libcore/marlin-undostack-manager.c:1313
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Удалить ссылки на %d файлов"
 
-#: ../libcore/marlin-undostack-manager.c:1312
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Удалить ссылку на «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Восстановить исходные права доступа к элементам в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1330
+#: ../libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Восстановить исходные права доступа к «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1339
+#: ../libcore/marlin-undostack-manager.c:1343
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Восстановить группу «%s» к «%s»"
+msgstr "Восстановить группу с «%s» на «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1349
+#: ../libcore/marlin-undostack-manager.c:1353
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "Восстановить владельца '%s' на '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Копировать %d файлов в '%s'"
+msgstr "Восстановить владельца с «%s» на «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Копировать %d файлов в «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Копировать «%s» в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1404
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Копировать %d файлов в «%s»"
+msgstr "Дублировать %d файлов в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1405
+#: ../libcore/marlin-undostack-manager.c:1409
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Копировать «%s» в «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Переместить %d файлов в '%s'"
+msgstr "Дублировать «%s» в «%s»"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Переместить '%s' в '%s'"
+msgid "Move %d items to '%s'"
+msgstr "Переместить %d файлов в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1435
+#: ../libcore/marlin-undostack-manager.c:1421
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Переместить «%s» в «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1439
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Создать новый файл «%s» из шаблона "
 
-#: ../libcore/marlin-undostack-manager.c:1442
+#: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Создать пустой файл «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1449
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Создать новую папку «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1457
+#: ../libcore/marlin-undostack-manager.c:1461
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Переместить %d файлов в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1467
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Переместить «%s» в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1476
+#: ../libcore/marlin-undostack-manager.c:1480
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Восстановить «%s» из корзины"
 
-#: ../libcore/marlin-undostack-manager.c:1485
+#: ../libcore/marlin-undostack-manager.c:1489
 #, c-format
 msgid "Create links to %d items"
-msgstr "Создать ярлыки на %d файлов"
+msgstr "Создать ссылки на %d файлов"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1492
 #, c-format
 msgid "Create link to '%s'"
-msgstr "Создать ярлык на «%s»"
+msgstr "Создать ссылку на «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Задать права доступа к объектам в «%s»"
+msgstr "Назначить права доступа к объектам в «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1505
+#: ../libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Установить права «%s»"
+msgstr "Установить права доступа «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1514
+#: ../libcore/marlin-undostack-manager.c:1518
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Назначить «%s» группу «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1524
+#: ../libcore/marlin-undostack-manager.c:1528
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Назначить владельцем «%s» «%s»"
 
-#: ../libcore/marlin-undostack-manager.c:1556
+#: ../libcore/marlin-undostack-manager.c:1560
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "Отменить копирование %d файла"
-msgstr[1] "Отменить копирование %d файлов"
-msgstr[2] "_Отменить копирование %d элементов"
+msgstr[0] "_Отменить копирование %d объекта"
+msgstr[1] "_Отменить копирование %d объектов"
+msgstr[2] "_Отменить копирование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1565
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Отменить дублирование %d файла"
-msgstr[1] "_Отменить дублирование %d файлов"
-msgstr[2] "_Отменить дублирование %d файлов"
+msgstr[0] "_Отменить дублирование %d объекта"
+msgstr[1] "_Отменить дублирование %d объектов"
+msgstr[2] "_Отменить дублирование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1566
+#: ../libcore/marlin-undostack-manager.c:1570
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "_Отменить перемещение %d файла"
-msgstr[1] "_Отменить перемещение %d файлов"
-msgstr[2] "_Отменить перемещение %d файлов"
+msgstr[0] "_Отменить перемещение %d объекта"
+msgstr[1] "_Отменить перемещение %d объектов"
+msgstr[2] "_Отменить перемещение %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1571
+#: ../libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Отменить переименование %d файла"
-msgstr[1] "_Отменить переименование %d файлов"
-msgstr[2] "_Отменить переименование %d файлов"
+msgstr[0] "_Отменить переименование %d объекта"
+msgstr[1] "_Отменить переименование %d объектов"
+msgstr[2] "_Отменить переименование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1579
 msgid "_Undo creation of an empty file"
-msgstr "Отменить создание пустого файла"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "Отменить создание файла из шаблона"
+msgstr "_Отменить создание пустого файла"
 
 #: ../libcore/marlin-undostack-manager.c:1582
+msgid "_Undo creation of a file from template"
+msgstr "_Отменить создание файла из шаблона"
+
+#: ../libcore/marlin-undostack-manager.c:1586
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
@@ -368,111 +376,111 @@ msgstr[0] "_Отменить создание %d папки"
 msgstr[1] "_Отменить создание %d папок"
 msgstr[2] "_Отменить создание %d папок"
 
-#: ../libcore/marlin-undostack-manager.c:1587
+#: ../libcore/marlin-undostack-manager.c:1591
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Отменить перемещение %d файла в корзину"
-msgstr[1] "_Отменить перемещение %d файлов в корзину"
-msgstr[2] "_Отменить перемещение %d файлов в корзину"
+msgstr[0] "_Отменить перемещение %d объекта в корзину"
+msgstr[1] "_Отменить перемещение %d объектов в корзину"
+msgstr[2] "_Отменить перемещение %d объектов в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1592
+#: ../libcore/marlin-undostack-manager.c:1596
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Отменить восстановление %d файла"
-msgstr[1] "_Отменить восстановление %d файлов"
-msgstr[2] "_Отменить восстановление %d файлов"
+msgstr[0] "_Отменить восстановление %d объекта из корзины"
+msgstr[1] "_Отменить восстановление %d объектов из корзины"
+msgstr[2] "_Отменить восстановление %d объектов из корзины"
 
-#: ../libcore/marlin-undostack-manager.c:1597
+#: ../libcore/marlin-undostack-manager.c:1601
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Отменить создание ссылок на %d файл"
-msgstr[1] "_Отменить создание ссылок на %d файлы"
-msgstr[2] "_Отменить создание ссылок на %d файлы"
+msgstr[0] "_Отменить создание ссылки на %d объект"
+msgstr[1] "_Отменить создание ссылки на %d объекта"
+msgstr[2] "_Отменить создание ссылок на %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1602
+#: ../libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Отменить удаление %d файла"
-msgstr[1] "_Отменить удаление %d файлов"
-msgstr[2] "_Отменить удаление %d файлов"
+msgstr[0] "_Отменить удаление %d объекта"
+msgstr[1] "_Отменить удаление %d объектов"
+msgstr[2] "_Отменить удаление %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1607
+#: ../libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Отменить рекурсивное изменение прав доступа к %d файлу"
-msgstr[1] "Отменить рекурсивное изменение прав доступа к %d файлам"
-msgstr[2] "Отменить рекурсивное изменение прав доступа к %d файлам"
+msgstr[0] "Отменить рекурсивное изменение прав доступа к %d объекту"
+msgstr[1] "Отменить рекурсивное изменение прав доступа к %d объектам"
+msgstr[2] "Отменить рекурсивное изменение прав доступа к %d объектам"
 
-#: ../libcore/marlin-undostack-manager.c:1613
+#: ../libcore/marlin-undostack-manager.c:1617
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Отменить изменение прав доступа к %d файлу"
-msgstr[1] "Отменить изменение прав доступа к %d файлам"
-msgstr[2] "Отменить изменение прав доступа к %d файлам"
+msgstr[0] "Отменить изменение прав доступа к %d объекту"
+msgstr[1] "Отменить изменение прав доступа к %d объектам"
+msgstr[2] "Отменить изменение прав доступа к %d объектам"
 
-#: ../libcore/marlin-undostack-manager.c:1618
+#: ../libcore/marlin-undostack-manager.c:1622
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "Отменить изменение группы для %d файла"
-msgstr[1] "Отменить изменение группы для %d файлов"
-msgstr[2] "Отменить изменение группы для %d файлов"
+msgstr[0] "Отменить изменение группы для %d объекта"
+msgstr[1] "Отменить изменение группы для %d объектов"
+msgstr[2] "Отменить изменение группы для %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1623
+#: ../libcore/marlin-undostack-manager.c:1627
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "Отменить изменение владельца %d файла"
-msgstr[1] "Отменить изменение владельца %d файлов"
-msgstr[2] "Отменить изменение владельца %d файлов"
+msgstr[0] "Отменить изменение владельца для %d объекта"
+msgstr[1] "Отменить изменение владельца для %d объектов"
+msgstr[2] "Отменить изменение владельца для %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1651
+#: ../libcore/marlin-undostack-manager.c:1655
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Повторить копирование %d файла"
-msgstr[1] "_Повторить копирование %d файлов"
-msgstr[2] "_Повторить копирование %d файлов"
+msgstr[0] "_Повторить копирование %d объекта"
+msgstr[1] "_Повторить копирование %d объектов"
+msgstr[2] "_Повторить копирование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1660
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Повторить дублирование %d файла"
-msgstr[1] "_Повторить дублирование %d файлов"
-msgstr[2] "_Повторить дублирование %d файлов"
+msgstr[0] "_Повторить дублирование %d объекта"
+msgstr[1] "_Повторить дублирование %d объектов"
+msgstr[2] "_Повторить дублирование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1661
+#: ../libcore/marlin-undostack-manager.c:1665
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "_Повторить перемещение %d файла"
-msgstr[1] "_Повторить перемещение %d файлов"
-msgstr[2] "_Повторить перемещение %d файлов"
+msgstr[0] "_Повторить перемещение %d объекта"
+msgstr[1] "_Повторить перемещение %d объектов"
+msgstr[2] "_Повторить перемещение %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1666
+#: ../libcore/marlin-undostack-manager.c:1670
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Повторить переименование %d файла"
-msgstr[1] "_Повторить переименование %d файла"
-msgstr[2] "_Повторить переименование %d файла"
+msgstr[0] "_Повторить переименование %d объекта"
+msgstr[1] "_Повторить переименование %d объектов"
+msgstr[2] "_Повторить переименование %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1674
 msgid "_Redo creation of an empty file"
 msgstr "_Повторить создание пустого файла"
 
-#: ../libcore/marlin-undostack-manager.c:1673
+#: ../libcore/marlin-undostack-manager.c:1677
 msgid "_Redo creation of a file from template"
 msgstr "_Повторить создание файла из шаблона"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1681
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
@@ -480,69 +488,69 @@ msgstr[0] "_Повторить создание %d папки"
 msgstr[1] "_Повторить создание %d папок"
 msgstr[2] "_Повторить создание %d папок"
 
-#: ../libcore/marlin-undostack-manager.c:1682
+#: ../libcore/marlin-undostack-manager.c:1686
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Повторить перемещение %d файла в корзину"
-msgstr[1] "_Повторить перемещение %d файлов в корзину"
-msgstr[2] "_Повторить перемещение %d файлов в корзину"
+msgstr[0] "_Повторить перемещение %d объекта в корзину"
+msgstr[1] "_Повторить перемещение %d объектов в корзину"
+msgstr[2] "_Повторить перемещение %d объектов в корзину"
 
-#: ../libcore/marlin-undostack-manager.c:1687
+#: ../libcore/marlin-undostack-manager.c:1691
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Повторить восстановление %d файла"
-msgstr[1] "_Повторить восстановление %d файлов"
-msgstr[2] "_Повторить восстановление %d файлов"
+msgstr[0] "_Повторить восстановление %d объекта из корзины"
+msgstr[1] "_Повторить восстановление %d объектов из корзины"
+msgstr[2] "_Повторить восстановление %d объектов из корзины"
 
-#: ../libcore/marlin-undostack-manager.c:1692
+#: ../libcore/marlin-undostack-manager.c:1696
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Повторить создание ссылок на %d файл"
-msgstr[1] "_Повторить создание ссылок на %d файл"
-msgstr[2] "_Повторить создание ссылок на %d файлы"
+msgstr[0] "_Повторить создание ссылок на %d объект"
+msgstr[1] "_Повторить создание ссылок на %d объекта"
+msgstr[2] "_Повторить создание ссылок на %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1697
+#: ../libcore/marlin-undostack-manager.c:1701
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Повторить удаление %d файла"
-msgstr[1] "_Повторить удаление %d файлов"
-msgstr[2] "_Повторить удаление %d файлов"
+msgstr[0] "_Повторить удаление %d объекта"
+msgstr[1] "_Повторить удаление %d объектов"
+msgstr[2] "_Повторить удаление %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1702
+#: ../libcore/marlin-undostack-manager.c:1706
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Повторить рекурсивное изменение прав доступа к %d элементу"
-msgstr[1] "Повторить рекурсивное изменение прав доступа к %d элементам"
-msgstr[2] "Повторить рекурсивное изменение прав доступа к %d элементам"
+msgstr[0] "Повторить рекурсивное изменение прав доступа к %d объекту"
+msgstr[1] "Повторить рекурсивное изменение прав доступа к %d объектам"
+msgstr[2] "Повторить рекурсивное изменение прав доступа к %d объектам"
 
-#: ../libcore/marlin-undostack-manager.c:1708
+#: ../libcore/marlin-undostack-manager.c:1712
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Повторить изменение прав доступа к %d файлу"
-msgstr[1] "Повторить изменение прав доступа к %d файлам"
-msgstr[2] "Повторить изменение прав доступа к %d файлам"
+msgstr[0] "Повторить изменение прав доступа к %d объекту"
+msgstr[1] "Повторить изменение прав доступа к %d объектам"
+msgstr[2] "Повторить изменение прав доступа к %d объектам"
 
-#: ../libcore/marlin-undostack-manager.c:1713
+#: ../libcore/marlin-undostack-manager.c:1717
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "Повторить изменение группы для %d файла"
-msgstr[1] "Повторить изменение группы для %d файлов"
-msgstr[2] "Повторить изменение группы для %d файлов"
+msgstr[0] "Повторить изменение группы для %d объекта"
+msgstr[1] "Повторить изменение группы для %d объектов"
+msgstr[2] "Повторить изменение группы для %d объектов"
 
-#: ../libcore/marlin-undostack-manager.c:1718
+#: ../libcore/marlin-undostack-manager.c:1722
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "Повторить изменение владельца %d файла"
-msgstr[1] "Повторить изменение владельца на %d файлы"
-msgstr[2] "Повторить изменение владельца %d файлов"
+msgstr[0] "Повторить изменение владельца %d объекта"
+msgstr[1] "Повторить изменение владельца %d объектов"
+msgstr[2] "Повторить изменение владельца %d объектов"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
@@ -557,7 +565,7 @@ msgstr "Объект не может быть восстановлен из ко
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Совместить папку «%s»?"
+msgstr "Объединить папку «%s»?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -565,7 +573,7 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Если при совмещении возникнут конфликты с копируемыми файлами, вам будет "
+"Если при объединении возникнут конфликты с копируемыми файлами, вам будет "
 "предложено подтвердить замену."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
@@ -589,7 +597,7 @@ msgstr "Другая папка с таким именем уже существ
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "При замене будут все файлы в папке удалены."
+msgstr "При замене все файлы в папке будут удалены."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
@@ -607,7 +615,7 @@ msgstr "Папка с таким именем уже существует в «%
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Заменить файл \"%s\"?"
+msgstr "Заменить файл «%s»?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
@@ -618,19 +626,19 @@ msgstr "При замене файла его содержимое будет п
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Более старый файл с таким именем уже существует в \"%s\"."
+msgstr "Более старый файл с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Более новый файл с таким именем уже существует в \"%s\"."
+msgstr "Более новый файл с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Другой файл с таким именем уже существует в \"%s\"."
+msgstr "Другой файл с таким именем уже существует в «%s»."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -670,15 +678,15 @@ msgstr "Объединить"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "Введите имя, которое вы хотите назначить"
+msgstr "_Выберите имя, которое вы хотите назначить"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr "Перезапуск"
+msgstr "Сбросить"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "Применить действие ко всем файлам"
+msgstr "Применить это действие ко всем файлам"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
@@ -871,7 +879,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Вы действительно хотите безвозвратно удалить \"%B\" из корзины?"
+msgstr "Вы действительно хотите безвозвратно удалить «%B» из корзины?"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -882,19 +890,19 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенный элемент из "
+"Вы действительно хотите безвозвратно удалить %'d выделенный объект из "
 "корзины?"
 msgstr[1] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенных элемента из "
+"Вы действительно хотите безвозвратно удалить %'d выделенных объекта из "
 "корзины?"
 msgstr[2] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенных элементов из "
+"Вы действительно хотите безвозвратно удалить %'d выделенных объектов из "
 "корзины?"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Если вы удалите элемент, вы больше не сможете его восстановить"
+msgstr "Если вы удалите объект, вы больше не сможете его восстановить."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
@@ -910,7 +918,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Безвозвратно удалить файлы из Корзины на этом носителе?"
+msgstr "Безвозвратно удалить файлы из корзины на этом носителе?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -925,7 +933,7 @@ msgstr "О_чистить корзину"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Вы действительно хотите безвозвратно удалить \"%B\"?"
+msgstr "Вы действительно хотите безвозвратно удалить «%B»?"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
@@ -933,11 +941,11 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенный элемент?"
+"Вы действительно хотите безвозвратно удалить %'d выделенный объект?"
 msgstr[1] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенных элемента?"
+"Вы действительно хотите безвозвратно удалить %'d выделенных объекта?"
 msgstr[2] ""
-"Вы действительно хотите безвозвратно удалить %'d выделенных элементов?"
+"Вы действительно хотите безвозвратно удалить %'d выделенных объектов?"
 
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
@@ -965,7 +973,7 @@ msgstr[2] "%T осталось"
 #: ../libcore/marlin-file-operations.c:1757
 #: ../libcore/marlin-file-operations.c:2670
 msgid "Error while deleting."
-msgstr "Произошла ошибка при удалении."
+msgstr "Ошибка при удалении."
 
 #: ../libcore/marlin-file-operations.c:1611
 msgid ""
@@ -1023,25 +1031,25 @@ msgstr[2] "осталось удалить в корзину %'d файлов"
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
 msgid "Cannot move file to trash or delete it"
-msgstr "Не удаётся переместить файл в корзину, или удалить его"
+msgstr "Не удаётся переместить файл в корзину или удалить его"
 
 #: ../libcore/marlin-file-operations.c:1944
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"Нельзя удалить файлы на файловой системе, доступной только для чтения"
+"Нельзя удалить файлы на файловой системе, доступной только для чтения."
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr "Нельзя удалить файлы в папке, на которые у вас нет прав на запись"
+msgstr "Нельзя удалить файлы в папке, на которые у вас нет прав на запись."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr "Нельзя удалить папки, на которые у вас нет прав на запись"
+msgstr "Нельзя удалить папки, на которые у вас нет прав на запись."
 
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1052,8 +1060,8 @@ msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
-"Этот файл не может быть перемещён в корзину. Для получения дополнительной "
-"информации смотреть подробности ниже."
+"Этот файл не может быть перемещён в корзину. Смотрите ниже для получения "
+"дополнительной информации."
 
 #: ../libcore/marlin-file-operations.c:1957
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1073,7 +1081,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Удаление файла удалит его навсегда"
+" Удаление файла будет безвозвратным"
 
 #: ../libcore/marlin-file-operations.c:2153
 msgid "Trashing Files"
@@ -1089,11 +1097,11 @@ msgstr "Не удалось извлечь %V"
 
 #: ../libcore/marlin-file-operations.c:2226
 msgid "Unable to unmount %V"
-msgstr "Не удалось отсоединить %V"
+msgstr "Не удалось отключить %V"
 
 #: ../libcore/marlin-file-operations.c:2405
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Очистить корзину перед отсоединением?"
+msgstr "Очистить корзину перед отключением носителя?"
 
 #: ../libcore/marlin-file-operations.c:2407
 msgid ""
@@ -1150,17 +1158,17 @@ msgstr[2] "Идёт подготовка к удалению %'d файлов в
 #: ../libcore/marlin-file-operations.c:3717
 #: ../libcore/marlin-file-operations.c:3762
 msgid "Error while copying."
-msgstr "Ошибка при копирования."
+msgstr "Ошибка при копировании."
 
 #: ../libcore/marlin-file-operations.c:2668
 #: ../libcore/marlin-file-operations.c:3715
 #: ../libcore/marlin-file-operations.c:3760
 msgid "Error while moving."
-msgstr "Произошла ошибка при перемещении."
+msgstr "Ошибка при перемещении."
 
 #: ../libcore/marlin-file-operations.c:2672
 msgid "Error while moving files to trash."
-msgstr "Произошла ошибка при удалении файлов в корзину."
+msgstr "Ошибка при перемещении файлов в корзину."
 
 #: ../libcore/marlin-file-operations.c:2726
 msgid ""
@@ -1218,7 +1226,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3022
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "Доступно %S, а требуется %S."
+msgstr "Доступно %S, но требуется %S."
 
 #: ../libcore/marlin-file-operations.c:3050
 msgid "The destination is read-only."
@@ -1226,15 +1234,15 @@ msgstr "Устройство назначения доступно только 
 
 #: ../libcore/marlin-file-operations.c:3111
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Перемещается «%B» в «%B»"
+msgstr "Перемещение «%B» в «%B»"
 
 #: ../libcore/marlin-file-operations.c:3112
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Копируется «%B» в «%B»"
+msgstr "Копирование «%B» в «%B»"
 
 #: ../libcore/marlin-file-operations.c:3116
 msgid "Duplicating \"%B\""
-msgstr "Создаётся копия «%B»"
+msgstr "Дублирование «%B»"
 
 #: ../libcore/marlin-file-operations.c:3120
 msgid "Moving %'d file (in \"%B\") to \"%B\""
@@ -1248,14 +1256,14 @@ msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Копируется %'d файл (из «%B») в «%B»"
 msgstr[1] "Копируются %'d файла (из «%B») в «%B»"
-msgstr[2] "Копируется %'d файлов (из «%B») в «%B»"
+msgstr[2] "Копируются %'d файлов (из «%B») в «%B»"
 
 #: ../libcore/marlin-file-operations.c:3130
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Создаётся копия %'d файла (в «%B»)"
-msgstr[1] "Создаются копии %'d файлов (в «%B»)"
-msgstr[2] "Создаются копии %'d файлов (в «%B»)"
+msgstr[0] "Дублируется %'d файл (из «%B») в «%B»"
+msgstr[1] "Дублируются %'d файла (из «%B») в «%B»"
+msgstr[2] "Дублируются %'d файлов (из «%B») в «%B»"
 
 #: ../libcore/marlin-file-operations.c:3139
 msgid "Moving %'d file to \"%B\""
@@ -1275,9 +1283,9 @@ msgstr[2] "%'d файлов копируются в «%B»"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Создаётся копия %'d файла"
-msgstr[1] "Создаются копии %'d файлов"
-msgstr[2] "Создаются копии %'d файлов"
+msgstr[0] "Дублируется %'d файл"
+msgstr[1] "Дублируются %'d файла"
+msgstr[2] "Дублируются %'d файлов"
 
 #: ../libcore/marlin-file-operations.c:3199
 #, c-format
@@ -1296,7 +1304,7 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Нельзя скопировать папку «%B», потому что у вас нет прав на создание её в "
+"Нельзя скопировать папку «%B», потому что у вас нет прав на её создание в "
 "месте назначения."
 
 #: ../libcore/marlin-file-operations.c:3592
@@ -1389,7 +1397,7 @@ msgstr "Копирование файлов"
 
 #: ../libcore/marlin-file-operations.c:4846
 msgid "Preparing to move to \"%B\""
-msgstr "Идёт подготовка к перемещению в \"%B\""
+msgstr "Идёт подготовка к перемещению в «%B»"
 
 #: ../libcore/marlin-file-operations.c:4858
 #, c-format
@@ -1402,7 +1410,7 @@ msgstr[2] "Идёт подготовка к перемещению %'d файл�
 #: ../libcore/marlin-file-operations.c:5106
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Ошибка перемещения файла \"%F\"."
+msgstr "Произошла ошибка при перемещении «%F»."
 
 #: ../libcore/marlin-file-operations.c:5107
 #, c-format
@@ -1415,7 +1423,7 @@ msgstr "Перемещение файлов"
 
 #: ../libcore/marlin-file-operations.c:5398
 msgid "Creating links in \"%B\""
-msgstr "Идёт создание ссылок в «%B»"
+msgstr "Создание ссылок в «%B»"
 
 #: ../libcore/marlin-file-operations.c:5409
 #, c-format
@@ -1445,7 +1453,7 @@ msgstr "Произошла ошибка при создании символьн
 #: ../libcore/marlin-file-operations.c:5886
 #: ../libcore/marlin-file-operations.c:5889
 msgid "Setting permissions"
-msgstr "Идёт установка прав"
+msgstr "Установка прав доступа"
 
 #: ../libcore/marlin-file-operations.c:6001
 msgid "Cannot copy into trash."
@@ -1474,7 +1482,7 @@ msgstr "Произошла ошибка при создании файла %B."
 #: ../libcore/marlin-file-operations.c:6326
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Произошла ошибка при создании каталога в %F."
+msgstr "Произошла ошибка при создании папки в %F."
 
 #: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
@@ -1498,7 +1506,7 @@ msgstr "%a %-d %b в %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y в %-I:%M %p"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1508,7 +1516,7 @@ msgstr "ссылка на %s"
 #: ../libcore/gof-file.c:1886
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Невозможно обработать файл запуска: %s"
+msgstr "Ошибка обработки файла запуска: %s"
 
 #: ../libcore/gof-file.c:1924
 msgid "No Exec field specified"
@@ -1520,11 +1528,11 @@ msgstr "Не указано поле URL"
 
 #: ../libcore/gof-file.c:1950
 msgid "Invalid desktop file"
-msgstr "Некорректный .desktop-файл"
+msgstr "Некорректный файл запуска"
 
 #: ../libcore/gof-file.c:2242
 msgid "Slashes are not allowed in filenames"
-msgstr "В именах файлов нельзя использовать прямую косую черту"
+msgstr "В именах файлов нельзя использовать слэш"
 
 #: ../libcore/gof-file.c:2262
 msgid "Toplevel files cannot be renamed"
@@ -1546,7 +1554,7 @@ msgstr "Создать папку"
 
 #: ../src/View/Window.vala:178
 msgid "Files isn't your default file manager."
-msgstr "Эта программа не является вашим файловым менеджером по-умолчанию."
+msgstr "Эта программа не является вашим файловым менеджером по умолчанию."
 
 #: ../src/View/Window.vala:184
 msgid "Set as Default"
@@ -1579,19 +1587,19 @@ msgstr "У вас нет прав для просмотра этой папки.
 
 #: ../src/View/ViewContainer.vala:345
 msgid "Unable to Mount Folder"
-msgstr "Невозможно смонтировать папку"
+msgstr "Не удалось подключить папку"
 
 #: ../src/View/ViewContainer.vala:346
 msgid "The server for this folder could not be located."
 msgstr "Невозможно определить сервер для указанной папки."
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr "Эта папка не существует"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "You cannot create a folder here."
-msgstr "Вы не можете создать папку здесь"
+msgstr "Вы не можете создать здесь папку"
 
 #: ../src/View/ViewContainer.vala:362
 msgid "File not Found"
@@ -1633,19 +1641,19 @@ msgstr "Тип"
 msgid "Modified"
 msgstr "Изменён"
 
-#: ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
 msgstr "Папка «%s» не найдена."
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
 msgstr "Создать"
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
 msgstr "Создать папку «%s»"
 
-#: ../src/View/DirectoryNotFound.vala:55
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1746,7 +1754,7 @@ msgstr "Фактический размер может быть больше, "
 
 #: ../src/View/PropertiesWindow.vala:292
 msgid "could not be read due to permissions or other errors."
-msgstr "Чтение невозможно из-за ограничения прав или других ошибок."
+msgstr "не удалось прочитать из-за ограничения прав или других ошибок."
 
 #: ../src/View/PropertiesWindow.vala:321
 msgid "unknown"
@@ -1802,11 +1810,11 @@ msgstr "Открыть с помощью:"
 
 #: ../src/View/PropertiesWindow.vala:744
 msgid "Usage"
-msgstr "Использовано"
+msgstr "Статистика"
 
 #: ../src/View/PropertiesWindow.vala:751
 msgid "Device usage:"
-msgstr "Использование устройств:"
+msgstr "Устройство хранения:"
 
 #: ../src/View/PropertiesWindow.vala:758
 msgid "%s free of %s (%d%% used)"
@@ -1868,7 +1876,7 @@ msgstr "Открыть корзину"
 
 #: ../src/View/Sidebar.vala:503
 msgid "Devices"
-msgstr "Оборудование"
+msgstr "Устройства"
 
 #: ../src/View/Sidebar.vala:508
 msgid "Your local partitions and devices"
@@ -1876,7 +1884,7 @@ msgstr "Ваши локальные разделы и устройства"
 
 #: ../src/View/Sidebar.vala:520
 msgid "Open the contents of the FileSystem"
-msgstr "Открыть содержание файловой системы"
+msgstr "Открыть содержимое файловой системы"
 
 #: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
 msgid "Mount and open %s"
@@ -1884,11 +1892,11 @@ msgstr "Подключить и открыть %s"
 
 #: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
 msgid "Network"
-msgstr "Сеть"
+msgstr "Обзор сети"
 
 #: ../src/View/Sidebar.vala:632
 msgid "Your network places"
-msgstr "Ваша сеть"
+msgstr "Ваше сетевое окружение"
 
 #: ../src/View/Sidebar.vala:662
 msgid "Entire Network"
@@ -1896,7 +1904,7 @@ msgstr "Вся сеть"
 
 #: ../src/View/Sidebar.vala:669
 msgid "Browse the contents of the network"
-msgstr "Показать содержимое сети"
+msgstr "Обзор содержимого сети"
 
 #: ../src/View/Sidebar.vala:1198
 msgid "Unable to start %s"
@@ -1936,15 +1944,15 @@ msgstr "_Извлечь"
 
 #: ../src/View/Chrome/ViewSwicher.vala:81
 msgid "View as Grid"
-msgstr "Таблица"
+msgstr "Просмотр в виде значков"
 
 #: ../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as List"
-msgstr "Список"
+msgstr "Просмотр в виде списка"
 
 #: ../src/View/Chrome/ViewSwicher.vala:91
 msgid "View in Columns"
-msgstr "Столбцы"
+msgstr "Просмотр в виде колонок"
 
 #: ../src/View/SearchResults.vala:183
 msgid "In This Folder"
@@ -1956,7 +1964,7 @@ msgstr "Закладки"
 
 #: ../src/View/SearchResults.vala:187
 msgid "Everywhere Else"
-msgstr "В других папках"
+msgstr "Везде"
 
 #: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
@@ -1968,11 +1976,11 @@ msgstr "Установить по умолчанию"
 
 #: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Cannot drop this file"
-msgstr "Не могу поместить файл"
+msgstr "Не удаётся поместить этот файл"
 
 #: ../src/View/AbstractDirectoryView.vala:1499
 msgid "Invalid file name provided"
-msgstr "Некорректное имя файла"
+msgstr "Недопустимое имя файла"
 
 #: ../src/View/AbstractDirectoryView.vala:1925
 msgid "Invalid"
@@ -1992,7 +2000,7 @@ msgstr "Открыть в"
 
 #: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Other Application"
-msgstr "другом приложении"
+msgstr "Другом приложении"
 
 #: ../src/View/AbstractDirectoryView.vala:2285
 msgid "Untitled %s"
@@ -2020,11 +2028,11 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
-msgstr "новом окне"
+msgstr "Новом окне"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr "Выход"
+msgstr "Выйти"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
@@ -2062,7 +2070,7 @@ msgstr "Копировать сюда"
 
 #: ../src/DndHandler.vala:95
 msgid "Link Here"
-msgstr "Создать ссылку сюда"
+msgstr "Создать ссылку здесь"
 
 #: ../src/DndHandler.vala:98
 msgid "Cancel"
@@ -2070,7 +2078,7 @@ msgstr "Отмена"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "Просмотр файлов"
+msgstr "Обзор ваших файлов"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -2078,11 +2086,11 @@ msgstr "Файловый менеджер"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr "Создать _окно"
+msgstr "Новое _окно"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr "Открыть новое окно как администратор"
+msgstr "Новое окно от имени _Администратора"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
@@ -2106,7 +2114,7 @@ msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "Идёт %'d действие над файлами"
 msgstr[1] "Идут %'d действия над файлами"
-msgstr[2] "Идут %'d действия над файлами"
+msgstr[2] "Идут %'d действий над файлами"
 
 #: ../src/ProgressUIHandler.vala:242
 msgid "Show Details"
@@ -2114,15 +2122,15 @@ msgstr "Показать подробности"
 
 #: ../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
-msgstr "Показывать диалог копирования"
+msgstr "Показать диалог копирования"
 
 #: ../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
-msgstr "Отменить все выполняемые действия"
+msgstr "Отменить все выполняемые операции"
 
 #: ../libwidgets/LocationBar.vala:102
 msgid "Reload this folder"
-msgstr "Обновить папку"
+msgstr "Обновить эту папку"
 
 #: ../libwidgets/LocationBar.vala:317
 msgid "Go to %s"
@@ -2166,19 +2174,19 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:92
 msgid "Recent"
-msgstr "Последние"
+msgstr "Недавние"
 
 #: ../libwidgets/Resources.vala:93
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Подключиться к серверу…"
+msgstr "Подключиться…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr "Подключиться к сетевому файловому серверу"
+msgstr "Подключиться к файловому серверу"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
@@ -2190,11 +2198,11 @@ msgstr "Очистить корзину"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "Эти файлы могут быть восстановлены или удалены из Корзины"
+msgstr "Эти файлы могут быть восстановлены или удалены из корзины"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Нельзя восстанавливать и удалять в корневой папке"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2223,19 +2231,19 @@ msgstr "Создать"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr "папку"
+msgstr "Папку"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "пустой файл"
+msgstr "Пустой файл"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr "Показать скрытые файлы"
+msgstr "Показывать скрытые файлы"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
-msgstr "новой вкладке"
+msgstr "Новой вкладке"
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
@@ -2243,7 +2251,7 @@ msgstr "Терминале"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr "Закладка"
+msgstr "Добавить в закладки"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
@@ -2263,7 +2271,7 @@ msgstr "Вставить в папку"
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
-msgstr "Сортировать по"
+msgstr "Сортировать"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Name"

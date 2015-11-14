@@ -350,19 +350,19 @@ namespace Marlin.View {
             can_show_folder = true;
 
             if (slot.directory.permission_denied) {
-                content = new Granite.Widgets.Welcome (_("This Folder Does Not Belong to You"),
-                                                           _("You don't have permission to view this folder."));
+                content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
+                                                   _("You don't have permission to view this folder."));
                 can_show_folder = false;
             } else if (!slot.directory.can_load) {
-                content = new Granite.Widgets.Welcome (_("Unable to Mount Folder"),
-                                                           _("The server for this folder could not be located."));
+                content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
+                                                   _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
                 if (slot.can_create)
                     content = new DirectoryNotFound (slot.directory, this);
                 else
-                    content = new Granite.Widgets.Welcome (_("This Folder Does Not Exist"),
-                                                           _("You cannot create a folder here."));
+                    content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
+                                                       _("You cannot create a folder here."));
                 can_show_folder = false;
             } else if (selected_locations != null) {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
@@ -371,8 +371,8 @@ namespace Marlin.View {
                 if (slot.directory.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (slot.directory.selected_file);
                 } else {
-                    content = new Granite.Widgets.Welcome (_("File not Found"),
-                                                           _("The file selected no longer exists."));
+                    content = new Marlin.View.Welcome (_("File not Found"),
+                                                       _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
                 slot.directory.selected_file = null;

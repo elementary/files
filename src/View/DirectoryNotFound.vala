@@ -20,18 +20,7 @@
 
 namespace Marlin.View
 {
-
-    public static int show_dialog (string message, Gtk.MessageType type, Gtk.ButtonsType buttons) {
-        var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
-                                            type, buttons, "%s", message);
-
-        dialog.set_position (Gtk.WindowPosition.MOUSE);
-        var response = dialog.run ();
-        dialog.destroy ();
-        return response;
-    }
-
-    public class DirectoryNotFound : Granite.Widgets.Welcome {
+    public class DirectoryNotFound : Marlin.View.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
 

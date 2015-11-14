@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-01 05:47-0500\n"
+"POT-Creation-Date: 2015-11-05 05:29-0600\n"
 "PO-Revision-Date: 2014-07-17 05:08+0000\n"
 "Last-Translator: Faissal Chamekh <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:40+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2015-11-06 05:30+0000\n"
+"X-Generator: Launchpad (build 17838)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -146,181 +146,189 @@ msgstr "أُلغيت العملية"
 msgid "Show more _details"
 msgstr "أظهر _تفاصيل أكثر"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:638
+msgid "Original location could not be determined"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:639
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete %d copied items"
 msgstr "حذف  %d العناصر المنسوخة"
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1232
+#: ../libcore/marlin-undostack-manager.c:1242
+#: ../libcore/marlin-undostack-manager.c:1273
 #, c-format
 msgid "Delete '%s'"
 msgstr "احذف '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-undostack-manager.c:1239
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "حذف  %d العناصر المتكررة"
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "أرجع %d العناصر إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-undostack-manager.c:1254
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "أرجع '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1430
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "غيّر اسم '%s' كـ '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-undostack-manager.c:1282
+#: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "أعد %d العناصر الموجودة في سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1290
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "استعد '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1301
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "أعد %d العناصر إلى سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1300
+#: ../libcore/marlin-undostack-manager.c:1304
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "انقل '%s' مرة أخرى إلى المُهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1309
+#: ../libcore/marlin-undostack-manager.c:1313
 #, c-format
 msgid "Delete links to %d items"
 msgstr "حذف روابط ل %d عناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1312
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "إحذف الرابط إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "استعد التصاريح الأصلية للعناصر المُضمنة في '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1330
+#: ../libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "استعد تصاريح '%s' الأصلية"
 
-#: ../libcore/marlin-undostack-manager.c:1339
+#: ../libcore/marlin-undostack-manager.c:1343
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "استعد مجموعة '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1349
+#: ../libcore/marlin-undostack-manager.c:1353
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "استعدالمالك '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "أنسخ %d العناصر إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "انسخ '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1404
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "ضاعِف %d العناصر في '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1405
+#: ../libcore/marlin-undostack-manager.c:1409
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "ضاعِف '%s' في '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1413
+#: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "إنقل %d العناصر إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1421
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "انقل '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1435
+#: ../libcore/marlin-undostack-manager.c:1439
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "أنشئ ملفا جديدا '%s' من قالب "
 
-#: ../libcore/marlin-undostack-manager.c:1442
+#: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "أنشئ ملف فارغ '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1449
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "أنشئ مجلد جديد '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1457
+#: ../libcore/marlin-undostack-manager.c:1461
 #, c-format
 msgid "Move %d items to trash"
 msgstr "أنقل %d العناصر إلى سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1467
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "انقل '%s' إلى المُهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1476
+#: ../libcore/marlin-undostack-manager.c:1480
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "استعد '%s' من المُهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1485
+#: ../libcore/marlin-undostack-manager.c:1489
 #, c-format
 msgid "Create links to %d items"
 msgstr "أنشئ رابط إلى عناصر  %d"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1492
 #, c-format
 msgid "Create link to '%s'"
 msgstr "أنشئ رابط إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "اضبط التصاريح للعناصر المضمنة في '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1505
+#: ../libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "اضبط التصاريح لـ '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1514
+#: ../libcore/marlin-undostack-manager.c:1518
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "اضبط مجموعة '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1524
+#: ../libcore/marlin-undostack-manager.c:1528
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "اضبط مالك '%s' إلى '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1556
+#: ../libcore/marlin-undostack-manager.c:1560
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
@@ -331,7 +339,7 @@ msgstr[3] "_ألغي النسخ %d العناصر"
 msgstr[4] "_ألغي النسخ %d العناصر"
 msgstr[5] "_ألغي النسخ %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1565
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
@@ -342,7 +350,7 @@ msgstr[3] "_ألغي تكرير %d العناصر"
 msgstr[4] "_ألغي تكرير %d العناصر"
 msgstr[5] "_ألغي تكرير %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1566
+#: ../libcore/marlin-undostack-manager.c:1570
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
@@ -353,7 +361,7 @@ msgstr[3] "_ألغي نقل %d العناصر"
 msgstr[4] "_ألغي نقل %d العناصر"
 msgstr[5] "_ألغي نقل %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1571
+#: ../libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
@@ -364,15 +372,15 @@ msgstr[3] "_ألغي إعادة التسمية %d العناصر"
 msgstr[4] "_ألغي إعادة التسمية %d العناصر"
 msgstr[5] "_ألغي إعادة التسمية %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1579
 msgid "_Undo creation of an empty file"
 msgstr "_ألغي إنشاء ملف خالي"
 
-#: ../libcore/marlin-undostack-manager.c:1578
+#: ../libcore/marlin-undostack-manager.c:1582
 msgid "_Undo creation of a file from template"
 msgstr "_ألغي إنشاء ملف قالب"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1586
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
@@ -383,7 +391,7 @@ msgstr[3] "_ألغي إنشاء %d ملفات"
 msgstr[4] "_ألغي إنشاء %d ملفات"
 msgstr[5] "_ألغي إنشاء %d ملفات"
 
-#: ../libcore/marlin-undostack-manager.c:1587
+#: ../libcore/marlin-undostack-manager.c:1591
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
@@ -394,7 +402,7 @@ msgstr[3] "_ألغي نقل العناصر %d إلى سلة المهملات"
 msgstr[4] "_ألغي نقل العناصر %d إلى سلة المهملات"
 msgstr[5] "_ألغي نقل العناصر %d إلى سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1592
+#: ../libcore/marlin-undostack-manager.c:1596
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
@@ -405,7 +413,7 @@ msgstr[3] "_ألغي إعادة العناصر %d من سلة المهملات"
 msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
 msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1597
+#: ../libcore/marlin-undostack-manager.c:1601
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
@@ -416,7 +424,7 @@ msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
 msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
 msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1602
+#: ../libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
@@ -427,7 +435,7 @@ msgstr[3] "_التراجع عن حذف %d العناصر"
 msgstr[4] "_التراجع عن حذف %d العناصر"
 msgstr[5] "_التراجع عن حذف %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1607
+#: ../libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
@@ -438,7 +446,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول لجميع مح�
 msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1613
+#: ../libcore/marlin-undostack-manager.c:1617
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
@@ -449,7 +457,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول  %d العناص
 msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1618
+#: ../libcore/marlin-undostack-manager.c:1622
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
@@ -460,7 +468,7 @@ msgstr[3] "التراجع عن تغير قونين الدخول خاصة بال�
 msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
 msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1623
+#: ../libcore/marlin-undostack-manager.c:1627
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
@@ -471,7 +479,7 @@ msgstr[3] "التراجع عن تغير المالك  %d العناصر"
 msgstr[4] "التراجع عن تغير المالك  %d العناصر"
 msgstr[5] "التراجع عن تغير المالك  %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1651
+#: ../libcore/marlin-undostack-manager.c:1655
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
@@ -482,7 +490,7 @@ msgstr[3] "_أعد نسخ %d العناصر"
 msgstr[4] "_أعد نسخ %d العناصر"
 msgstr[5] "_أعد نسخ %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1660
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
@@ -493,7 +501,7 @@ msgstr[3] "_أعد مضعفة %d العناصر"
 msgstr[4] "_أعد مضعفة %d العناصر"
 msgstr[5] "_أعد مضعفة %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1661
+#: ../libcore/marlin-undostack-manager.c:1665
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
@@ -504,7 +512,7 @@ msgstr[3] "_أعد نقل %d العناصر"
 msgstr[4] "_أعد نقل %d العناصر"
 msgstr[5] "_أعد نقل %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1666
+#: ../libcore/marlin-undostack-manager.c:1670
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
@@ -515,15 +523,15 @@ msgstr[3] "_أعد تسمية %d العناصر"
 msgstr[4] "_أعد تسمية %d العناصر"
 msgstr[5] "_أعد تسمية %d العناصر"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1674
 msgid "_Redo creation of an empty file"
 msgstr "_أعد إنشاء ملف غارغ"
 
-#: ../libcore/marlin-undostack-manager.c:1673
+#: ../libcore/marlin-undostack-manager.c:1677
 msgid "_Redo creation of a file from template"
 msgstr "_أعد إنشاء ملف قالب"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1681
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
@@ -534,7 +542,7 @@ msgstr[3] "_أعد إنشاء %d حوافظ"
 msgstr[4] "_أعد إنشاء %d حوافظ"
 msgstr[5] "_أعد إنشاء %d حوافظ"
 
-#: ../libcore/marlin-undostack-manager.c:1682
+#: ../libcore/marlin-undostack-manager.c:1686
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
@@ -545,7 +553,7 @@ msgstr[3] "_أعد نقل %d عناصر إلى سلة المهملات"
 msgstr[4] "_أعد نقل %d عناصر إلى سلة المهملات"
 msgstr[5] "_أعد نقل %d عناصر إلى سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1687
+#: ../libcore/marlin-undostack-manager.c:1691
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
@@ -556,7 +564,7 @@ msgstr[3] "_أعد جلب %d عناصر من سلة المهملات"
 msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
 msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
 
-#: ../libcore/marlin-undostack-manager.c:1692
+#: ../libcore/marlin-undostack-manager.c:1696
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
@@ -567,7 +575,7 @@ msgstr[3] "_أعد إنشاء رابط للعناصر %d"
 msgstr[4] "_أعد إنشاء رابط للعناصر %d"
 msgstr[5] "_أعد إنشاء رابط للعناصر %d"
 
-#: ../libcore/marlin-undostack-manager.c:1697
+#: ../libcore/marlin-undostack-manager.c:1701
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
@@ -578,7 +586,7 @@ msgstr[3] "_أعد حذف للعناصر %d"
 msgstr[4] "_أعد حذف للعناصر %d"
 msgstr[5] "_أعد حذف للعناصر %d"
 
-#: ../libcore/marlin-undostack-manager.c:1702
+#: ../libcore/marlin-undostack-manager.c:1706
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
@@ -589,7 +597,7 @@ msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى �
 msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 
-#: ../libcore/marlin-undostack-manager.c:1708
+#: ../libcore/marlin-undostack-manager.c:1712
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
@@ -600,7 +608,7 @@ msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
 msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
 
-#: ../libcore/marlin-undostack-manager.c:1713
+#: ../libcore/marlin-undostack-manager.c:1717
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
@@ -611,7 +619,7 @@ msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعنا
 msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
 msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
 
-#: ../libcore/marlin-undostack-manager.c:1718
+#: ../libcore/marlin-undostack-manager.c:1722
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -1706,7 +1714,7 @@ msgstr ""
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -1754,19 +1762,19 @@ msgstr "النّوع"
 msgid "Modified"
 msgstr "عُدِّل"
 
-#: ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
 msgstr "لا يمكن العثور على المجلد \"%s\""
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
 msgstr "أنشئ"
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
 msgstr "أنشئ المجلد  \"%s\""
 
-#: ../src/View/DirectoryNotFound.vala:55
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
 "Failed to create the folder\n"
 "\n"

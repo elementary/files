@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-10-01 11:02+0000\n"
+"POT-Creation-Date: 2015-11-05 05:29-0600\n"
+"PO-Revision-Date: 2015-11-05 12:08+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:40+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2015-11-06 05:30+0000\n"
+"X-Generator: Launchpad (build 17838)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -32,7 +32,7 @@ msgstr "Julkinen FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (sisäänkirjautumisen vaativa)"
+msgstr "FTP (sisäänkirjautumisella)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -145,372 +145,380 @@ msgstr "Toiminto peruttu"
 msgid "Show more _details"
 msgstr "Näytä _lisätietoja"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:638
+msgid "Original location could not be determined"
+msgstr "Alkuperäistä sijaintia ei voitu määrittää"
+
+#: ../libcore/marlin-undostack-manager.c:639
+msgid "Open trash folder and restore manually"
+msgstr "Avaa roskakori ja palauta manuaalisesti"
+
+#: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Poista %d kopioitua kohdetta"
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1232
+#: ../libcore/marlin-undostack-manager.c:1242
+#: ../libcore/marlin-undostack-manager.c:1273
 #, c-format
 msgid "Delete '%s'"
 msgstr "Poista \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-undostack-manager.c:1239
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Poista %d kohdennettua kohdetta"
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Siirrä %d kohdetta takaisin sijaintiin '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-undostack-manager.c:1254
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Siirrä \"%s\" takaisin sijaintiin \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1263
+#: ../libcore/marlin-undostack-manager.c:1430
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Nimeä \"%s\" muotoon \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-undostack-manager.c:1282
+#: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Palauta %d kohdetta roskakorista"
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1290
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Palauta \"%s\" sijaintiin \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1301
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Siirrä %d kohdetta takaisin roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1300
+#: ../libcore/marlin-undostack-manager.c:1304
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Siirrä \"%s\" takaisin roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1309
+#: ../libcore/marlin-undostack-manager.c:1313
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Poista linkit %d kohteeseen"
 
-#: ../libcore/marlin-undostack-manager.c:1312
+#: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Poista linkki kohteeseen \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Palauta kansioon \"%s\" sisältyvien kohteiden alkuperäiset oikeudet"
 
-#: ../libcore/marlin-undostack-manager.c:1330
+#: ../libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Palauta kohteen \"%s\" alkuperäiset käyttöoikeudet"
 
-#: ../libcore/marlin-undostack-manager.c:1339
+#: ../libcore/marlin-undostack-manager.c:1343
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Palauta kohteen \"%s\" ryhmäksi \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1349
+#: ../libcore/marlin-undostack-manager.c:1353
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Palauta kohteen \"%s\" omistajaksi \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopioi %d kohdetta sijaintiin '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Kopioi \"%s\" sijaintiin \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1404
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr ""
 
-#: ../libcore/marlin-undostack-manager.c:1405
+#: ../libcore/marlin-undostack-manager.c:1409
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Monista \"%s\" kohteessa \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1413
+#: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Siirrä %d kohdetta sijaintiin '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1421
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Siirrä \"%s\" sijaintiin \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1435
+#: ../libcore/marlin-undostack-manager.c:1439
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Luo uusi tiedosto ”%s” asiakirjamallista "
 
-#: ../libcore/marlin-undostack-manager.c:1442
+#: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Luo tyhjä tiedosto \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1449
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Luo uusi kansio \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1457
+#: ../libcore/marlin-undostack-manager.c:1461
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Siirrä %d kohdetta roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1467
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Siirrä \"%s\" roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1476
+#: ../libcore/marlin-undostack-manager.c:1480
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Palauta \"%s\" roskakorista"
 
-#: ../libcore/marlin-undostack-manager.c:1485
+#: ../libcore/marlin-undostack-manager.c:1489
 #, c-format
 msgid "Create links to %d items"
 msgstr "Luo linkit %d kohteeseen"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1492
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Luo linkki kohteeseen \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Aseta \"%s\" sisältyvien kohteiden oikeudet"
 
-#: ../libcore/marlin-undostack-manager.c:1505
+#: ../libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Aseta kohteen \"%s\" oikeudet"
 
-#: ../libcore/marlin-undostack-manager.c:1514
+#: ../libcore/marlin-undostack-manager.c:1518
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Aseta kohteen \"%s\" ryhmäksi \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1524
+#: ../libcore/marlin-undostack-manager.c:1528
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Aseta kohteen '%s' omistajaksi '%s'"
 
-#: ../libcore/marlin-undostack-manager.c:1556
+#: ../libcore/marlin-undostack-manager.c:1560
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Kumoa %d kohteen kopiointi"
 msgstr[1] "_Kumoa %d kohteen kopiointi"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1565
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Kumoa %d kohteen monistaminen"
 msgstr[1] "_Kumoa %d kohteen monistaminen"
 
-#: ../libcore/marlin-undostack-manager.c:1566
+#: ../libcore/marlin-undostack-manager.c:1570
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto"
 msgstr[1] "_Kumoa %d kohteen siirto"
 
-#: ../libcore/marlin-undostack-manager.c:1571
+#: ../libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Kumoa %d kohteen nimeäminen uudelleen"
 msgstr[1] "_Kumoa %d kohteen nimeäminen uudelleen"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1579
 msgid "_Undo creation of an empty file"
 msgstr "_Kumoa tyhjän tiedoston luonti"
 
-#: ../libcore/marlin-undostack-manager.c:1578
+#: ../libcore/marlin-undostack-manager.c:1582
 msgid "_Undo creation of a file from template"
 msgstr "_Kumoa tiedoston luonti mallista"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1586
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Kumoa %d kansion luonti"
 msgstr[1] "_Kumoa %d kansion luonti"
 
-#: ../libcore/marlin-undostack-manager.c:1587
+#: ../libcore/marlin-undostack-manager.c:1591
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto roskakoriin"
 msgstr[1] "_Kumoa %d kohteen siirto roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1592
+#: ../libcore/marlin-undostack-manager.c:1596
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Kumoa %d kohteen palautus roskakorista"
 msgstr[1] "_Kumoa %d kohteen palautus roskakorista"
 
-#: ../libcore/marlin-undostack-manager.c:1597
+#: ../libcore/marlin-undostack-manager.c:1601
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Kumoa linkin luonti %d kohteeseen"
 msgstr[1] "_Kumoa linkin luonti %d kohteeseen"
 
-#: ../libcore/marlin-undostack-manager.c:1602
+#: ../libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Kumoa %d kohteen poisto"
 msgstr[1] "_Kumoa %d kohteen poisto"
 
-#: ../libcore/marlin-undostack-manager.c:1607
+#: ../libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-undostack-manager.c:1613
+#: ../libcore/marlin-undostack-manager.c:1617
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Kumoa %d kohteen oikeuden muutokset"
 msgstr[1] "Kumoa %d kohteen oikeuden muutokset"
 
-#: ../libcore/marlin-undostack-manager.c:1618
+#: ../libcore/marlin-undostack-manager.c:1622
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Kumoa %d kohteen ryhmän muutos"
 msgstr[1] "Kumoa %d kohteen ryhmän muutokset"
 
-#: ../libcore/marlin-undostack-manager.c:1623
+#: ../libcore/marlin-undostack-manager.c:1627
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Kumoa %d kohteen omistajan muutos"
 msgstr[1] "Kumoa %d kohteen omistajan muutos"
 
-#: ../libcore/marlin-undostack-manager.c:1651
+#: ../libcore/marlin-undostack-manager.c:1655
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen kopiointi"
 msgstr[1] "_Tee uudelleen %d kohteen kopiointi"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1660
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen monistaminen"
 msgstr[1] "_Tee uudelleen %d kohteen monistaminen"
 
-#: ../libcore/marlin-undostack-manager.c:1661
+#: ../libcore/marlin-undostack-manager.c:1665
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen siirto"
 msgstr[1] "_Tee uudelleen %d kohteen siirto"
 
-#: ../libcore/marlin-undostack-manager.c:1666
+#: ../libcore/marlin-undostack-manager.c:1670
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
 msgstr[1] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1674
 msgid "_Redo creation of an empty file"
 msgstr "_Tee uudelleen tyhjän tiedoston luonti"
 
-#: ../libcore/marlin-undostack-manager.c:1673
+#: ../libcore/marlin-undostack-manager.c:1677
 msgid "_Redo creation of a file from template"
 msgstr "_Tee uudelleen tiedoston luominen mallipohjasta"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1681
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Tee uudelleen %d kansion luonti"
 msgstr[1] "_Tee uudelleen %d kansion luonti"
 
-#: ../libcore/marlin-undostack-manager.c:1682
+#: ../libcore/marlin-undostack-manager.c:1686
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
 msgstr[1] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
 
-#: ../libcore/marlin-undostack-manager.c:1687
+#: ../libcore/marlin-undostack-manager.c:1691
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
 msgstr[1] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
 
-#: ../libcore/marlin-undostack-manager.c:1692
+#: ../libcore/marlin-undostack-manager.c:1696
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Tee uudelleen linkki %d kohteeseen"
 msgstr[1] "_Tee uudelleen linkki %d kohteeseen"
 
-#: ../libcore/marlin-undostack-manager.c:1697
+#: ../libcore/marlin-undostack-manager.c:1701
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen poisto"
 msgstr[1] "_Tee uudelleen %d kohteen poisto"
 
-#: ../libcore/marlin-undostack-manager.c:1702
+#: ../libcore/marlin-undostack-manager.c:1706
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-undostack-manager.c:1708
+#: ../libcore/marlin-undostack-manager.c:1712
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Tee uudelleen %d kohteen oikeuksien muutos"
 msgstr[1] "Tee uudelleen %d kohteen oikeuksien muutos"
 
-#: ../libcore/marlin-undostack-manager.c:1713
+#: ../libcore/marlin-undostack-manager.c:1717
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Tee uudelleen %d kohteen ryhmän muutos"
 msgstr[1] "Tee uudelleen %d kohteen ryhmän muutos"
 
-#: ../libcore/marlin-undostack-manager.c:1718
+#: ../libcore/marlin-undostack-manager.c:1722
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -1537,7 +1545,7 @@ msgstr "Kansion liittäminen epäonnistui"
 msgid "The server for this folder could not be located."
 msgstr "Tämän kansion palvelinta ei voitu paikantaa."
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr "Tätä kansiota ei ole olemassa"
 
@@ -1585,19 +1593,19 @@ msgstr "Tyyppi"
 msgid "Modified"
 msgstr "Muokattu"
 
-#: ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
 msgstr "Kansiota \"%s\" ei löydy."
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
 msgstr "Luo"
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
 msgstr "Luo kansio \"%s\""
 
-#: ../src/View/DirectoryNotFound.vala:55
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
 "Failed to create the folder\n"
 "\n"

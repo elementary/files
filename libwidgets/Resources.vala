@@ -54,6 +54,7 @@ namespace Marlin {
     public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
     public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
     public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
+    public const string ICON_FOLDER_PUBLICSHARE_SYMBOLIC = "folder-publicshare-symbolic";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
     public const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
     public const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";

@@ -49,6 +49,7 @@ vala_precompile(VALA_C ${PKGNAME}
     FileUtils.vala
     Resources.vala
     MimeActions.vala
+    Welcome.vala
 PACKAGES
     gtk+-3.0
     granite
