@@ -54,6 +54,7 @@ namespace Marlin {
     public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
     public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
     public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
+    public const string ICON_FOLDER_PUBLICSHARE_SYMBOLIC = "folder-publicshare-symbolic";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
     public const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
     public const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";
@@ -71,6 +72,13 @@ namespace Marlin {
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
     public const string RECENT_URI = "recent:///";
+    public const string AFP_URI = "afp://";
+    public const string DAV_URI = "dav://";
+    public const string DAVS_URI = "davs://";
+    public const string SFTP_URI = "sftp://";
+    public const string FTP_URI = "ftp://";
+    public const string SMB_URI = "smb://";
+    public const string MTP_URI = "mtp://";
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
@@ -83,6 +91,11 @@ namespace Marlin {
     public const string PROTOCOL_NAME_SMB = _("SMB");
     public const string PROTOCOL_NAME_TRASH = _("Trash");
     public const string PROTOCOL_NAME_RECENT = _("Recent");
+    public const string PROTOCOL_NAME_MTP = _("MTP");
+    public const string PROTOCOL_NAME_FILE = _("File System");
+
+    public const string ROOT_FS_URI = "file://";
+    public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
 
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
@@ -107,8 +120,39 @@ namespace Marlin {
                 return Marlin.PROTOCOL_NAME_DAV;
             case "davs":
                 return Marlin.PROTOCOL_NAME_DAVS;
+            case "mtp":
+                return Marlin.PROTOCOL_NAME_MTP;
+            case "file":
+                return Marlin.PROTOCOL_NAME_FILE;
             default:
                 return protocol;
+        }
+    }
+
+    public string name_to_protocol_uri (string pname) {
+        /* Deal with protocol with or without : or / characters at the end */
+
+        switch (pname.strip ()) {
+            case Marlin.PROTOCOL_NAME_RECENT:
+                return Marlin.RECENT_URI;
+            case Marlin.PROTOCOL_NAME_TRASH:
+                return Marlin.TRASH_URI;
+            case Marlin.PROTOCOL_NAME_NETWORK:
+                return Marlin.NETWORK_URI;
+            case Marlin.PROTOCOL_NAME_SMB:
+                return Marlin.SMB_URI;
+            case Marlin.PROTOCOL_NAME_FTP:
+                return Marlin.FTP_URI;
+            case Marlin.PROTOCOL_NAME_SFTP:
+                return Marlin.SFTP_URI;
+            case  Marlin.PROTOCOL_NAME_AFP:
+                return Marlin.AFP_URI;
+            case Marlin.PROTOCOL_NAME_DAV:
+                return Marlin.DAV_URI;
+            case Marlin.PROTOCOL_NAME_DAVS:
+                return Marlin.DAVS_URI;
+            default:
+                return "";
         }
     }
 
@@ -128,4 +172,10 @@ namespace Marlin {
             return sb.str;
         }
     }
+
+    public string sanitize_protocol (string p) {
+        string pname = Marlin.protocol_to_name (p);
+        return Marlin.name_to_protocol_uri (pname);
+    }
+
 }

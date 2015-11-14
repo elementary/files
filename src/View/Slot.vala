@@ -345,5 +345,11 @@ namespace Marlin.View {
                 disconnect_dir_view_signals ();
             }
         }
+
+        public void refresh_files () {
+            if (directory != null) {
+                directory.update_files ();
+            }
+        }
     }
 }

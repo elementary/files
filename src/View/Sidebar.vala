@@ -763,12 +763,20 @@ namespace Marlin.Places {
         private bool drag_failed_callback (Gdk.DragContext context, Gtk.DragResult result) {
             int x, y;
             Gdk.Device device;
+#if HAVE_PLANK_0_11
+            Plank.PoofWindow poof_window;
+#else
             Plank.Widgets.PoofWindow poof_window;
+#endif
 
             if (internal_drag_started && dragged_out_of_window) {
                 device = context.get_device ();
                 device.get_position (null, out x, out y);
+#if HAVE_PLANK_0_11
+                poof_window = Plank.PoofWindow.get_default ();
+#else
                 poof_window = Plank.Widgets.PoofWindow.get_default ();
+#endif
                 poof_window.show_at (x, y);
                 if (drag_row_ref != null) {
                     Gtk.TreeIter iter;

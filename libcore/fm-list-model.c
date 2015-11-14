@@ -1171,7 +1171,7 @@ fm_list_model_class_init (FMListModelClass *klass)
     g_object_class_install_property (object_class,
                                      PROP_SIZE,
                                      g_param_spec_int ("size", "size", "icon size",
-                                                        16,  128,
+                                                        16,  256,
                                                         32,
                                                         G_PARAM_READWRITE));
 

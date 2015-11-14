@@ -42,6 +42,8 @@ namespace Marlin {
         NORMAL,
         LARGE,
         LARGER,
+        HUGE,
+        HUGER,
         LARGEST,
         N_LEVELS
     }
@@ -53,7 +55,9 @@ namespace Marlin {
         NORMAL = 48,
         LARGE = 64,
         LARGER = 96,
-        LARGEST = 128
+        HUGE = 128,
+        HUGER = 192,
+        LARGEST = 256
     }
 
     public static IconSize zoom_level_to_icon_size (ZoomLevel zoom_level) {
@@ -75,6 +79,12 @@ namespace Marlin {
 
             case ZoomLevel.LARGER:
                 return IconSize.LARGER;
+
+            case ZoomLevel.HUGE:
+                return IconSize.HUGE;
+
+            case ZoomLevel.HUGER:
+                return IconSize.HUGER;
 
             default:
                  return IconSize.LARGEST;
@@ -100,6 +110,12 @@ namespace Marlin {
         if (size <= IconSize.LARGER)
             return ZoomLevel.LARGER;
 
+        if (size <= IconSize.HUGE)
+            return ZoomLevel.HUGE;
+
+        if (size <= IconSize.HUGER)
+            return ZoomLevel.HUGER;
+
         return ZoomLevel.LARGEST;
     }
 
@@ -117,6 +133,8 @@ namespace Marlin {
             case ZoomLevel.NORMAL:
             case ZoomLevel.LARGE:
             case ZoomLevel.LARGER:
+            case ZoomLevel.HUGE:
+            case ZoomLevel.HUGER:
             case ZoomLevel.LARGEST:
                 return Gtk.IconSize.DIALOG;
 

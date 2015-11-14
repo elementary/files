@@ -120,6 +120,7 @@ namespace FM {
 
         protected Marlin.ZoomLevel minimum_zoom = Marlin.ZoomLevel.SMALLEST;
         protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
+        protected bool large_thumbnails = false;
 
         /* drag support */
         uint drag_scroll_timer_id = 0;
@@ -1240,7 +1241,7 @@ namespace FM {
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
                 if (slot.directory.is_local || show_remote_thumbnails) {
-                    thumbnailer.queue_file (file, null, false);
+                    thumbnailer.queue_file (file, null, large_thumbnails);
                 }
             }
         }
@@ -1289,6 +1290,11 @@ namespace FM {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
+            if (!large_thumbnails && icon_size > 128 || large_thumbnails && icon_size <= 128) {
+                large_thumbnails = icon_size > 128;
+                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+            }
+
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
@@ -1989,7 +1995,11 @@ namespace FM {
             }
 
             open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
-            filter_default_app_from_open_with_apps ();
+
+            if (selection.data.is_executable () == false) {
+                filter_default_app_from_open_with_apps ();
+            }
+
             filter_this_app_from_open_with_apps ();
 
             if (open_with_apps != null) {
@@ -2357,7 +2367,7 @@ namespace FM {
                 }
 
                 if (visible_files != null)
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, false);
+                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
 
                 thumbnail_source_id = 0;
                 return false;

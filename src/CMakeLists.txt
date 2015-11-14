@@ -29,6 +29,11 @@ pkg_check_modules (DEPS REQUIRED
     plank
     zeitgeist-2.0)
 
+pkg_check_modules(PLANK011 QUIET plank>=0.10.9)
+if (PLANK011_FOUND)
+  set (PLANK_OPTIONS --define=HAVE_PLANK_0_11)
+endif ()
+
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
@@ -72,7 +77,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/SearchResults.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
@@ -108,6 +112,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
+        ${PLANK_OPTIONS}
         --thread
         -D HAVE_UNITY)
 ELSE (WITH_UNITY AND UNITY_FOUND)
@@ -137,7 +142,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
         View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
@@ -174,6 +178,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
+        ${PLANK_OPTIONS}
         --thread)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 

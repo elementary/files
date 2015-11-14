@@ -37,9 +37,11 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR})
 include_directories (${CMAKE_BINARY_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
+    Resources.vala
     Animations.vala
     LocationBar.vala
     BreadcrumbsElements.vala
+    Welcome.vala
 PACKAGES
     gtk+-3.0
     granite

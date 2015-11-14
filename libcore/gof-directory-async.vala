@@ -399,6 +399,14 @@ public class GOF.Directory.Async : Object {
 
         done_loading ();
     }
+    public void update_files () {
+        foreach (GOF.File gof in file_hash.get_values ()) {
+            if (gof != null && gof.info != null
+                && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+
+                gof.update ();
+        }
+    }
 
     public void update_desktop_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
