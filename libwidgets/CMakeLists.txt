@@ -53,6 +53,7 @@ vala_precompile(VALA_C ${PKGNAME}
     Chrome/ImgEventBox.vala
     Chrome/Viewable.vala
     Dialogs/ChooseAppDialog.vala
+    Welcome.vala
 PACKAGES
     gtk+-3.0
     granite

@@ -195,6 +195,14 @@ namespace Marlin.View.Chrome
                 add_icon (icon);
             }
 
+            /* public */
+            dir = Environment.get_user_special_dir (UserDirectory.PUBLIC_SHARE);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_PUBLICSHARE_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
+
             /* home */
             dir = Environment.get_home_dir ();
             if (dir.contains ("/")) {
