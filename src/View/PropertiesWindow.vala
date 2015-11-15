@@ -1446,13 +1446,12 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
             mount_icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
         }
 
-        GLib.FileInfo info;
+        GLib.FileInfo info = null;
 
         try {
             info = mount_root.query_filesystem_info ("filesystem::*");
         } catch (Error e) {
             warning ("error: %s", e.message);
-            return;
         }
 
         /* Build the header box */
@@ -1468,7 +1467,8 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
                 /* Overlay the 'readonly' emblem to tell the user the disk is
                  * mounted as RO */
-                if (info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
+                if (info != null &&
+		    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
                     info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
                     emblems_list.append ("emblem-readonly");
                 }
@@ -1497,7 +1497,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
         create_info_line (key_label, value_label, info_grid, ref n);
 
-        if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+        if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
             key_label = create_label_key ("Format" + " :");
             value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
             create_info_line (key_label, value_label, info_grid, ref n);
@@ -1505,7 +1505,8 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
         create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
 
-        if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+        if (info != null &&
+	    info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
             uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
