@@ -326,9 +326,8 @@ namespace FM {
             connect_directory_handlers (slot.directory);
 
             model.row_deleted.connect (on_row_deleted);
+            /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
-
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
         }
 
         private void set_up__menu_actions () {
@@ -3160,19 +3159,25 @@ namespace FM {
         }
 
         protected void on_sort_column_changed () {
-            int sort_column_id;
-            Gtk.SortType sort_order;
+            int sort_column_id = 0;
+            Gtk.SortType sort_order = 0;
 
-            if (!model.get_sort_column_id (out sort_column_id, out sort_order))
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the 
+             * the directory file metadata incorrectly (bug 1511307).
+             */  
+            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 
             var info = new GLib.FileInfo ();
-            info.set_attribute_string ("metadata::marlin-sort-column-id",
-                                       get_string_from_column_id (sort_column_id));
-            info.set_attribute_string ("metadata::marlin-sort-reversed",
-                                       (sort_order == Gtk.SortType.DESCENDING ? "true" : "false"));
-
             var dir = slot.directory;
+            string sort_col_s = get_string_from_column_id (sort_column_id);
+            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
+            info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+
+            /* Make sure directory file info matches metadata (bug 1511307).*/
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
