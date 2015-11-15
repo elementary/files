@@ -88,16 +88,20 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            path_changed.connect (user_path_change_request);
+            path_changed.connect (on_path_changed);
             window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
         }
 
         private void disconnect_signals () {
-            path_changed.disconnect (user_path_change_request);
+            path_changed.disconnect (on_path_changed);
             window.folder_deleted.disconnect (on_folder_deleted);
         }
 
+        private void on_path_changed (GLib.File file) {
+            focus_location (file);
+        }
+        
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
                 close ();
@@ -138,10 +142,15 @@ namespace Marlin.View {
         }
 
         public void go_up () {
-            if (view.directory.has_parent ()) {
-                selected_locations.append (this.location);
-                user_path_change_request (view.directory.get_parent ());
+            selected_locations.append (this.location);
+            GLib.File parent = location;
+            if (view.directory.has_parent ()) { /* May not work for some protocols */
+                parent = view.directory.get_parent ();
+            } else {
+                var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
+                parent = PF.FileUtils.get_file_for_path (parent_path);
             }
+            user_path_change_request (parent);
         }
 
         public void go_back (int n = 1) {
@@ -197,7 +206,10 @@ namespace Marlin.View {
             plugin_directory_loaded ();
         }
 
-        public void user_path_change_request (GLib.File loc) {
+        private void user_path_change_request (GLib.File loc) {
+            /* Ony call directly if it is known that a change of folder is required
+             * otherwise call focus_location.
+             */
             view.user_path_change_request (loc);
         }
 
@@ -356,9 +368,9 @@ namespace Marlin.View {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
                     selected_locations = null;
             } else if (slot.directory.selected_file != null) {
-                if (slot.directory.selected_file.query_exists ())
+                if (slot.directory.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (slot.directory.selected_file);
-                else {
+                } else {
                     content = new Marlin.View.Welcome (_("File not Found"),
                                                        _("The file selected no longer exists."));
                     can_show_folder = false;
@@ -406,33 +418,41 @@ namespace Marlin.View {
         public void focus_location (GLib.File? file,
                                     bool select_in_current_only = false,
                                     bool unselect_others = false) {
+            /* This function navigates to another folder if necessary if 
+             * select_in_current_only is not set to true.
+             */ 
             if (unselect_others || file == null) {
                 get_current_slot ().set_all_selected (false);
                 selected_locations = null;
             }
 
-            if (file == null || location.equal (file))
+            if (file == null || location.equal (file)) {
                 return;
-
-            var filetype = file.query_file_type (0);
-            if (filetype == FileType.UNKNOWN)
-                return;
-
+            }
             GLib.File? loc = null;
-            File? parent = file.get_parent ();
-            if (parent != null && location.equal (file.get_parent ())) {
-                if (select_in_current_only || file.query_file_type (0) != FileType.DIRECTORY) {
-                    var list = new List<File> ();
-                    list.prepend (file);
-                    get_current_slot ().select_glib_files (list, file);
-                } else
-                    loc = file;
-            } else if (!select_in_current_only) {
-                if (filetype == FileType.DIRECTORY)
-                    loc = file;
-                else if (parent != null) {
-                    loc = parent;
-                    selected_locations.prepend (file);
+            var filetype = file.query_file_type (GLib.FileQueryInfoFlags.NONE);
+            if (filetype == FileType.UNKNOWN) {
+                /* May be request for non-existing file - in which case 
+                 * an opportunity will be given to create it when we try to 
+                 * load it
+                 */
+                loc = file;
+            } else {
+                File? parent = file.get_parent ();
+                if (parent != null && location.equal (parent)) {
+                    if (select_in_current_only || filetype != FileType.DIRECTORY) {
+                        var list = new List<File> ();
+                        list.prepend (file);
+                        get_current_slot ().select_glib_files (list, file);
+                    } else
+                        loc = file;
+                } else if (!select_in_current_only) {
+                    if (filetype == FileType.DIRECTORY)
+                        loc = file;
+                    else if (parent != null) {
+                        loc = parent;
+                        selected_locations.prepend (file);
+                    }
                 }
             }
 
@@ -480,6 +500,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
+            set_frozen_state (false);
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

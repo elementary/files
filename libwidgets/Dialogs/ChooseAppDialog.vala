@@ -21,9 +21,13 @@ namespace PF {
         Gtk.AppChooserDialog dialog;
         Gtk.CheckButton check_default;
         GLib.File file_to_open;
-        public ChooseAppDialog (Gtk.Window parent, GLib.File file) {
+        public ChooseAppDialog (Gtk.Widget? parent, GLib.File file) {
             file_to_open = file;
-            dialog = new Gtk.AppChooserDialog (parent,
+            Gtk.Window? window = null;
+            if (parent != null && parent is Gtk.Window) {
+                window = parent as Gtk.Window;
+            }
+            dialog = new Gtk.AppChooserDialog (window,
                                                Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
                                                file_to_open);
 

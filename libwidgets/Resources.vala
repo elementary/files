@@ -61,14 +61,21 @@ namespace Marlin {
     public const string ICON_FOLDER_VIDEOS_SYMBOLIC = "folder-videos-symbolic";
     public const string ICON_GO_HOME_SYMBOLIC = "go-home-symbolic";
     public const string ICON_HOME = "user-home";
+    public const string ICON_NETWORK_SYMBOLIC = "network-workgroup-symbolic";
     public const string ICON_NETWORK = "network-workgroup";
+    public const string ICON_NETWORK_SERVER_SYMBOLIC = "network-server-symbolic";
     public const string ICON_NETWORK_SERVER = "network-server";
     public const string ICON_TRASH = "user-trash";
     public const string ICON_TRASH_FULL = "user-trash-full";
     public const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
     public const string ICON_RECENT = "document-open-recent";
     public const string ICON_RECENT_SYMBOLIC = "document-open-recent-symbolic";
+    public const string ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC = "edit-find-symbolic";
+    public const string ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC = "emblem-documents-symbolic";
+    public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
+    public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
 
+    public const string ROOT_FS_URI = "file://";
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
     public const string RECENT_URI = "recent:///";
@@ -94,9 +101,11 @@ namespace Marlin {
     public const string PROTOCOL_NAME_MTP = _("MTP");
     public const string PROTOCOL_NAME_FILE = _("File System");
 
-    public const string ROOT_FS_URI = "file://";
     public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
-
+    public const uint LOCATION_BAR_ANIMATION_TIME_MSEC = 300;
+    public const uint FRAME_RATE_HZ = 60;
+    public const uint BUTTON_LONG_PRESS = 300;
+    
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();

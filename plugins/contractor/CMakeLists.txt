@@ -4,6 +4,11 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     glib-2.0
     granite)
+
+pkg_check_modules (GRANITE REQUIRED "granite")
+add_definitions (${GRANITE_CFLAGS})
+link_libraries (${GRANITE_LIBRARIES})
+link_directories (${GRANITE_LIBRARY_DIRS})
 set(CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )

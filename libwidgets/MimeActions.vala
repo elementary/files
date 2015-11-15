@@ -229,4 +229,26 @@ public class Marlin.MimeActions {
 
         return result;
     }
+
+    public static AppInfo? get_default_application_for_glib_file (GLib.File file) {
+        return get_default_application_for_file (GOF.File.@get (file));
+    }
+
+    public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
+        if (app == null) {
+            Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
+            var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
+            var choice = chooser.get_app_info ();
+            if (choice != null) {
+                launch_glib_file_with_app (file_to_open, parent, choice);
+            }
+        } else {
+            launch_glib_file_with_app (file_to_open, parent, app);
+        }
+    }
+
+    private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
+        var goffile = GOF.File.get (file_to_open);
+        goffile.launch (parent.get_screen (), app);
+    }
 }
