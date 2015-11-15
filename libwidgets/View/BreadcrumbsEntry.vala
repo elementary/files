@@ -140,10 +140,11 @@ namespace Marlin.View.Chrome {
             autocompleted = false;
             multiple_completions = false;
 
-            if (file.has_parent (null))
+            if (file.has_parent (null)) {
                 file = file.get_parent ();
-            else
+            } else {
                 return;
+            }
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = GOF.Directory.Async.from_gfile (file);
@@ -151,6 +152,7 @@ namespace Marlin.View.Chrome {
 
             if (current_completion_dir != null  && current_completion_dir.can_load) {
                 clear_completion ();
+                /* Completion text set by on_file_loaded () */
                 current_completion_dir.load (on_file_loaded);
             }
         }
@@ -170,8 +172,9 @@ namespace Marlin.View.Chrome {
             /* If there are multiple results, tab as far as we can, otherwise do the entire result */
             if (!multiple_completions) {
                 completed (path);
-            } else
+            } else {
                 set_entry_text (path);
+            }
         }
 
         private void completed (string txt) {
@@ -188,6 +191,8 @@ namespace Marlin.View.Chrome {
             if (placeholder != completion_text) {
                 placeholder = completion_text;
                 queue_draw ();
+                /* This corrects undiagnosed bug after completion required on remote filesystem */
+                set_position (-1);
             }
         }
 
