@@ -2005,8 +2005,9 @@ namespace Marlin.Places {
         }
 
         private void loading_uri_callback (string location) {
-                set_matching_selection (location);
-                slot_location = location;
+            set_matching_selection (location);
+            slot_location = location;
+            update_places();
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
