@@ -33,25 +33,39 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
+include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories (${CMAKE_CURRENT_BINARY_DIR})
 include_directories (${CMAKE_BINARY_DIR})
 
 vala_precompile(VALA_C ${PKGNAME}
+    FileUtils.vala
     Resources.vala
-    Animations.vala
     LocationBar.vala
-    BreadcrumbsElements.vala
+    SearchResults.vala
+    Animations/Animations.vala
+    Chrome/LocationBar.vala
+    Chrome/BreadcrumbsElements.vala
+    Chrome/TopMenu.vala
+    Chrome/ButtonWithMenu.vala
+    Chrome/ViewSwicher.vala
+    Chrome/XsEntry.vala
+    Chrome/ImgEventBox.vala
+    Chrome/Viewable.vala
+    Dialogs/ChooseAppDialog.vala
     Welcome.vala
 PACKAGES
     gtk+-3.0
     granite
     gee-0.8
     posix
+    zeitgeist-2.0
     pantheon-files-core
     pantheon-files-core-C
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
+    --target-glib=2.32 # Needed for new thread API
     --thread
 GENERATE_VAPI
     pantheon-files-widgets
@@ -66,4 +80,4 @@ set_target_properties (${PKGNAME} PROPERTIES
     SOVERSION ${PANTHEON_FILES_WIDGETS_SOVERSION})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})
+target_link_libraries(${PKGNAME} pantheon-files-core ${DEPS_LIBRARIES})

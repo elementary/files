@@ -428,5 +428,9 @@ namespace Marlin.View {
         public override bool set_all_selected (bool all) {
             return ((Marlin.View.Slot)(current_slot)).set_all_selected (all);
         }
+
+        public override void set_frozen_state (bool freeze) {
+            current_slot.set_frozen_state (freeze);
+        }
     }
 }

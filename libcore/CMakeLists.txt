@@ -16,6 +16,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 vala_precompile(VALA_C ${PKGNAME}
     AbstractSidebar.vala
     AbstractSlot.vala
+    Bookmark.vala
+    BookmarkList.vala
+    DndHandler.vala
+    Enums.vala
+    MimeActions.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala

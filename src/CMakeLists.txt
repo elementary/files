@@ -51,17 +51,12 @@ pkg_check_modules (UNITY unity>=4.0.0)
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
-        Bookmark.vala
-        BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
@@ -75,21 +70,15 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
-        View/SearchResults.vala
         View/Window.vala
         View/ViewContainer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/LocationBar.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/Chrome/TopMenu.vala
-        View/Chrome/ButtonWithMenu.vala
-        View/Chrome/ViewSwicher.vala
-        View/Chrome/XsEntry.vala
-        View/Chrome/ImgEventBox.vala
+
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -118,17 +107,12 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C pantheon-files
         Application.vala
-        Bookmark.vala
-        BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
         AbstractEditableLabel.vala
         SingleLineEditableLabel.vala
         MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
@@ -137,7 +121,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/IconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
-        View/SearchResults.vala
         View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
@@ -147,15 +130,9 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
-        View/LocationBar.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/Chrome/TopMenu.vala
-        View/Chrome/ButtonWithMenu.vala
-        View/Chrome/ViewSwicher.vala
-        View/Chrome/XsEntry.vala
-        View/Chrome/ImgEventBox.vala
     PACKAGES
         gtk+-3.0
         gio-2.0

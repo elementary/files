@@ -351,5 +351,10 @@ namespace Marlin.View {
                 directory.update_files ();
             }
         }
+
+        public override void set_frozen_state (bool freeze) {
+            set_view_updates_frozen (freeze);
+            frozen_changed (freeze);
+        }
     }
 }

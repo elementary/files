@@ -9,8 +9,8 @@ set (MODULE_LIBDIR "${CMAKE_INSTALL_LIBDIR}/gtk-3.0/modules/")
 
 vala_precompile (VALA_C ${MODULE_NAME}
     ${CMAKE_SOURCE_DIR}/libwidgets/Resources.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/LocationBar.vala
-    ${CMAKE_SOURCE_DIR}/libwidgets/BreadcrumbsElements.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/LocationBar.vala
+    ${CMAKE_SOURCE_DIR}/libwidgets/Chrome/BreadcrumbsElements.vala
     LocationBarChooser.vala
     FileChooserDialog.vala
     Plugin.vala

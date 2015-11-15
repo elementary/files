@@ -26,7 +26,7 @@ namespace Marlin.View.Chrome
     public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
         public LocationBar? location_bar;
-        public Marlin.View.Window win;
+        public Marlin.Viewable win;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
 
@@ -40,7 +40,12 @@ namespace Marlin.View.Chrome
            button_forward.set_sensitive (can);
         }
 
-        public TopMenu (Marlin.View.Window window) {
+        public signal void focus_location_request (GLib.File? location);
+        public signal void path_change_request (string path, Marlin.OpenFlag flag);
+        public signal void escape ();
+        public signal void reload_request ();
+        
+        public TopMenu (ViewSwitcher switcher, Marlin.Viewable window) {
             win = window;
 
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
@@ -62,27 +67,36 @@ namespace Marlin.View.Chrome
                 back (1);
             });
 
-
-            view_switcher = new ViewSwitcher (win.win_actions.lookup_action ("view_mode") as GLib.SimpleAction);
-
+            view_switcher = switcher;
+            view_switcher.margin_right = 20;
             view_switcher.show_all ();
             pack_start (view_switcher);
 
             location_bar = new LocationBar (win);
-            location_bar.escape.connect (win.grab_focus);
-            location_bar.activate.connect (win.file_path_change_request);
-            location_bar.activate_alternate.connect ((file) => {
-                win.add_tab (file, Marlin.ViewMode.CURRENT);
-            });
-
-
+            connect_location_bar_signals ();
             location_bar.show_all ();
-            view_switcher.margin_right = 20;
             pack_start (location_bar);
 
             show ();
         }
 
+        private void connect_location_bar_signals () {
+            location_bar.escape.connect (win.grab_focus);
+            location_bar.activate.connect (win.file_path_change_request);
+            location_bar.activate_alternate.connect ((file) => {
+                win.add_tab (file, Marlin.ViewMode.CURRENT);
+            });
+            location_bar.reload_request.connect (() => {
+                reload_request ();
+            });
+            location_bar.focus_in_event.connect ((event) => {
+                return focus_in_event (event);
+            });
+            location_bar.focus_out_event.connect ((event) => {
+                return focus_out_event (event);
+            });
+        }
+        
         public void set_back_menu (Gee.List<string> path_list) {
             /* Clear the back menu and re-add the correct entries. */
             var back_menu = new Gtk.Menu ();

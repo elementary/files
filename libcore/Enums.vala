@@ -142,4 +142,11 @@ namespace Marlin {
                 assert_not_reached ();
         }
     }
+    
+    public enum TargetType {
+        STRING,
+        TEXT_URI_LIST,
+        XDND_DIRECT_SAVE0,
+        NETSCAPE_URL
+    }
 }

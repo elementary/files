@@ -1,4 +1,5 @@
 /***
+    Copyright (c) 2010 mathijshenquet
     Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
 
     Marlin is free software; you can redistribute it and/or
@@ -18,864 +19,567 @@
 
 ***/
 
-public struct Marlin.View.Chrome.IconDirectory {
-    string path;
-    string icon_name;
-    bool protocol;
-    GLib.Icon gicon;
-    Gdk.Pixbuf icon;
-    string[] exploded;
-    bool break_loop;
-    string? text_displayed;
-}
+namespace Marlin.View.Chrome
+{
+    public class LocationBar : Gtk.Box {
+        public Breadcrumbs bread;
 
-public abstract class Marlin.View.Chrome.BasePathBar : Gtk.Entry {
+        private string _path;
+        public new string path {
+            set {
+                var new_path = value;
+                if (new_path != null) {
+                    _path = new_path;
 
-    public enum TargetType {
-        TEXT_URI_LIST,
-    }
+                    if (!bread.is_focus && !win.get_frozen ()) {
+                        bread.text = "";
+                        bread.change_breadcrumbs (new_path);
+                    }
+                } else {
+                    critical ("Tried to set null path");
+                }
+            }
 
-    protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
-
-    protected string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ").replace("#", "");
-    public string current_right_click_path;
-    public string current_right_click_root;
-
-    bool _search_mode = false;
-    public bool search_mode {
-        get {
-            return _search_mode;
+            get {
+                return _path;
+            }
         }
-        set {
-            if (_search_mode == value)
+
+        Marlin.Viewable win;
+
+        public new signal void activate (GLib.File file);
+        public signal void activate_alternate (GLib.File file);
+        public signal void escape ();
+        public signal void search_mode_left ();
+        public signal void reload_request ();
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            minimum_width = -1;
+            natural_width = 3000;
+        }
+
+        public LocationBar (Marlin.Viewable win) {
+            this.win = win;
+            bread = new Breadcrumbs (win);
+            bread.escape.connect (() => { escape(); });
+            bread.path_changed.connect (on_path_changed);
+
+            bread.reload.connect (() => {
+                win.refresh_view ();
+            });
+
+            bread.activate_alternate.connect ((file) => { activate_alternate(file); });
+            bread.notify["search-mode"].connect (() => {
+                if (!bread.search_mode) {
+                    bread.search_results.clear ();
+                    search_mode_left ();
+                } else {
+                    bread.text = "";
+                }
+            });
+
+            margin_top = 4;
+            margin_bottom = 4;
+            margin_left = 3;
+
+            bread.set_entry_secondary_icon (false, true);
+            pack_start (bread, true, true, 0);
+        }
+
+        public void enter_search_mode (bool local_only = false, bool begins_with_only = false) {
+            bread.search_results.search_current_directory_only = local_only;
+            bread.search_results.begins_with_only = begins_with_only;
+            bread.search_mode = true;
+        }
+
+        private void on_path_changed (File? file) {
+            if (file == null || win.get_frozen ())
+            if (file == null)
                 return;
 
-            _search_mode = value;
-
-            if (_search_mode) {
-                primary_icon_name = "edit-find-symbolic";
-                show_refresh_icon (false);
-            } else
-                primary_icon_name = null;
-
-            grab_focus ();
+            win.grab_focus ();
+            activate (file);
         }
     }
 
-    protected string text_completion = "";
-    protected bool multiple_completions = false;
-    protected bool text_changed = false;
-    protected bool ignore_focus_in = false;
-    protected bool ignore_change = false;
+    public class Breadcrumbs : BasePathBar {
+        public SearchResults search_results { get; private set; }
 
-    /* if we must display the BreadcrumbsElement which are in  newbreads. */
-    bool view_old = false;
+        Gtk.Menu menu;
 
-    /* This list will contain all BreadcrumbsElement */
-    protected Gee.ArrayList<BreadcrumbsElement> elements;
+        /* Used for auto-copmpletion */
+        GOF.Directory.Async files;
+        /* The string which contains the text we search in the file. e.g, if the
+         * user enter /home/user/a, we will search for "a". */
+        string to_search = "";
 
-    /* This list will contain the BreadcrumbsElement which are animated */
-    Gee.List<BreadcrumbsElement> newbreads;
+        /* Used for the context menu we show when there is a right click */
+        GOF.Directory.Async files_menu = null;
 
-    /* A flag to know when the animation is finished */
-    double anim_state = 0;
+        bool autocompleted = false;
 
-    /* A flag to 'hide' animation if desired */
-    public bool animation_visible = true;
+        Marlin.Viewable win;
 
-    Gtk.StyleContext button_context;
-    Gtk.StyleContext button_context_active;
+        double menu_x_root;
+        double menu_y_root;
 
-    /**
-     * When the user click on a breadcrumb, or when he enters a path by hand
-     * in the integrated entry
-     **/
-    public signal void activate_alternate (File file);
-    public signal void path_changed (File file);
-    public signal void need_completion ();
-    public signal void search_changed (string text);
-    public signal void reload ();
+        private bool drop_data_ready = false; /* whether the drop data was received already */
+        private bool drop_occurred = false; /* whether the data was dropped */
+        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
+        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
-    List<IconDirectory?> icons;
+        Gdk.DragAction current_suggested_action = 0; /* No action */
+        Gdk.DragAction current_actions = 0; /* No action */
 
-    string current_path = "";
-    string refresh_tip = _("Reload this folder");
+        GOF.File? drop_target_file = null;
 
-    int selected = -1;
-    int space_breads = 12;
-    int x;
-    int y;
-    string protocol;
+        public Breadcrumbs (Marlin.Viewable win)
+        {
+            this.win = win;
+            /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
+            add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_AFP});
+            add_icon ({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_DAV});
+            add_icon ({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_DAVS});
+            add_icon ({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_FTP});
+            add_icon ({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_NETWORK});
+            add_icon ({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_SFTP});
+            add_icon ({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true,Marlin.PROTOCOL_NAME_SMB});
+            add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
+            add_icon ({ "recent://", Marlin.ICON_RECENT_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_RECENT});
 
-    public signal void completed ();
-    public signal void escape ();
-    public signal void up ();
-    public signal void down ();
+            /* music */
+            string dir;
+            dir = Environment.get_user_special_dir (UserDirectory.MUSIC);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_MUSIC_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-    private uint timeout = 0;
+            /* image */
+            dir = Environment.get_user_special_dir (UserDirectory.PICTURES);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_PICTURES_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-    private Granite.Services.IconFactory icon_factory;
+            /* movie */
+            dir = Environment.get_user_special_dir (UserDirectory.VIDEOS);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-    private Gdk.Window? entry_window = null;
+            /* downloads */
+            dir = Environment.get_user_special_dir (UserDirectory.DOWNLOAD);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-    construct {
-        icon_factory = Granite.Services.IconFactory.get_default ();
-        icons = new List<IconDirectory?> ();
+            /* documents */
+            dir = Environment.get_user_special_dir (UserDirectory.DOCUMENTS);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-        button_context = get_style_context ();
-        button_context.add_class ("button");
-        button_context.add_class ("raised");
-        button_context.add_class ("marlin-pathbar");
-        button_context.add_class ("pathbar");
+            /* templates */
+            dir = Environment.get_user_special_dir (UserDirectory.TEMPLATES);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-        Gtk.Border border = button_context.get_padding (Gtk.StateFlags.NORMAL);
-        Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            /* public */
+            dir = Environment.get_user_special_dir (UserDirectory.PUBLIC_SHARE);
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FOLDER_PUBLICSHARE_SYMBOLIC, false, null, null, dir.split ("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-        /* x padding */
-        x = 0;
-        /* y padding */
-        y = 0;
+            /* home */
+            dir = Environment.get_home_dir ();
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_GO_HOME_SYMBOLIC, false, null, null, dir.split ("/"), true, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-        elements = new Gee.ArrayList<BreadcrumbsElement> ();
+            /* media mounted volumes */
+            dir = "/media";
+            if (dir.contains ("/")) {
+                IconDirectory icon = {dir, Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, dir.split ("/"), true, null};
+                icon.exploded[0] = "/";
+                add_icon (icon);
+            }
 
-        secondary_icon_activatable = true;
-        secondary_icon_sensitive = true;
-        truncate_multiline = true;
+            /* filesystem */
+            IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
+            icon.exploded = {"/"};
+            add_icon (icon);
 
-        realize.connect_after (after_realize);
-        activate.connect (on_activate);
-        button_press_event.connect (on_button_press_event);
-        button_release_event.connect (on_button_release_event);
-        icon_press.connect (on_icon_press);
-        motion_notify_event.connect_after (after_motion_notify);
-        focus_in_event.connect (on_focus_in);
-        focus_out_event.connect (on_focus_out);
-        grab_focus.connect_after (on_grab_focus);
-        changed.connect (on_change);
+            up.connect (() => {
+                File file = get_file_for_path (text);
+                File parent = file.get_parent ();
 
-        /* Drag and drop */
-        Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
-        Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
-        drag_leave.connect (on_drag_leave);
-        drag_motion.connect (on_drag_motion);
-        drag_data_received.connect (on_drag_data_received);
-        drag_drop.connect (on_drag_drop);
-    }
+                if (parent != null && file.get_uri () != parent.get_uri ())
+                    change_breadcrumbs (parent.get_uri ());
 
-    public bool on_key_press_event (Gdk.EventKey event) {
-        switch (event.keyval) {
-            case Gdk.Key.KP_Tab:
-            case Gdk.Key.Tab:
-                complete ();
-                return true;
+                win.go_to_parent ();
+                grab_focus ();
+            });
 
-            case Gdk.Key.KP_Down:
-            case Gdk.Key.Down:
-                down ();
-                return true;
+            down.connect (() => {
+                win.grab_focus ();
+            });
 
-            case Gdk.Key.KP_Up:
-            case Gdk.Key.Up:
-                up ();
-                return true;
+            completed.connect (() => {
+                string path = "";
+                string newpath = update_breadcrumbs (get_file_for_path (text).get_uri (), path);
 
-            case Gdk.Key.Escape:
-                escape ();
-                return true;
-        }
+                foreach (BreadcrumbsElement element in elements) {
+                    if (!element.hidden)
+                        path += element.text + "/";
+                }
 
-        return base.key_press_event (event);
-    }
+                if (path != newpath)
+                    change_breadcrumbs (newpath);
 
-    public bool on_button_press_event (Gdk.EventButton event) {
-        /* We need to distinguish whether the event comes from one of the icons.
-         * There doesn't seem to be a way of doing this directly so we check the window width */
-        if (event.window.get_width () < 24)
-            return false;
+                grab_focus ();
+            });
 
-        if (is_focus)
-            return base.button_press_event (event);
+            need_completion.connect (on_need_completion);
 
-        foreach (BreadcrumbsElement element in elements)
-            element.pressed = false;
+            menu = new Gtk.Menu ();
+            menu.show_all ();
 
-        var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+            search_results = new SearchResults (this);
 
-        if (el != null)
-            el.pressed = true;
+            search_results.file_selected.connect ((file) => {
+                win.grab_focus ();
+                win.focus_location_request (file, false, true);
+            });
 
-        queue_draw ();
+            search_results.cursor_changed.connect ((file) => {
+                win.focus_location_request (file, true, true);
+            });
 
-        if (timeout == 0 && event.button == 1) {
-            timeout = Timeout.add (150, () => {
-                select_bread_from_coord (event);
-                timeout = 0;
-                return false;
+            search_results.first_match_found.connect ((file) => {
+                win.focus_location_request (file, true, true);
+            });
+
+            search_results.hide.connect (() => {
+                text = "";
+            });
+
+            search_changed.connect ((text) => {
+                search_results.search (text, win.get_current_location ());
             });
         }
 
-        if (event.button == 2) {
-            if (el != null) {
-                selected = elements.index_of (el);
-                var newpath = get_path_from_element (el);
-                activate_alternate (get_file_for_path (newpath));
+        /**
+         * This function is used as a callback for files.file_loaded.
+         * We check that the file can be used
+         * in auto-completion, if yes we put it in our entry.
+         *
+         * @param file The file you want to load
+         *
+         **/
+        private void on_file_loaded(GOF.File file) {
+            string file_display_name = file.get_display_name ();
+
+            if (file_display_name.length > to_search.length) {
+                if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
+                    if (!autocompleted) {
+                        text_completion = file_display_name.slice (to_search.length, file_display_name.length);
+                        autocompleted = true;
+                    } else {
+                        string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
+                        string to_add = "";
+                        for (int i = 0; i < (text_completion.length > file_complet.length ? file_complet.length : text_completion.length); i++) {
+                            if (text_completion[i] == file_complet[i])
+                                to_add += text_completion[i].to_string ();
+                            else
+                                break;
+                        }
+                        text_completion = to_add;
+                        multiple_completions = true;
+                    }
+
+                    /* autocompletion is case insensitive so we have to change the first completed
+                     * parts: the entry.text.
+                     */
+                    string? str = null;
+                    if (text.length >=1)
+                        str = text.slice (0, text.length - to_search.length);
+                    if (str != null && !multiple_completions) {
+                        text = str + file.get_display_name ().slice (0, to_search.length);
+                        set_position (-1);
+                    }
+                }
+            }
+        }
+
+        public void on_need_completion () {
+            File? file = get_file_for_path (text);
+
+            if (file == null)
+                return;
+
+            /* don't use get_basename (), it will return "folder" for "/folder/" */
+            int last_slash = text.last_index_of_char ('/');
+            if (last_slash > -1 && last_slash < text.length)
+                to_search = text.slice (last_slash + 1, text.length);
+            else
+                to_search = "";
+
+            autocompleted = false;
+            multiple_completions = false;
+
+            if (to_search != "" && file.has_parent (null))
+                file = file.get_parent ();
+            else
+                return;
+
+            files = GOF.Directory.Async.from_gfile (file);
+            if (files.file.exists)
+                files.load (on_file_loaded);
+        }
+
+        private void on_files_loaded_menu () {
+            /* First the "Open in new tab" menuitem is added to the menu. */
+            var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
+            menu.append (menuitem_newtab);
+            menuitem_newtab.activate.connect (() => {
+                win.add_tab (File.new_for_commandline_arg (current_right_click_path), Marlin.ViewMode.CURRENT);
+            });
+
+            /* Then the "Open with" menuitem is added to the menu. */
+            var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
+            menu.append (menu_open_with);
+
+            var submenu_open_with = new Gtk.Menu ();
+            var root = GOF.File.get (File.new_for_uri (current_right_click_root));
+            var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
+
+            bool at_least_one = false;
+            foreach (AppInfo app_info in app_info_list) {
+                if (app_info.get_executable () != Environment.get_application_name ()) {
+                    at_least_one = true;
+                    var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
+                    menu_item.set_data ("appinfo", app_info);
+                    Icon icon;
+                    icon = app_info.get_icon ();
+                    if (icon == null)
+                        icon = new ThemedIcon ("application-x-executable");
+
+                    menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
+                    menu_item.always_show_image = true;
+                    menu_item.activate.connect (() => {
+                        AppInfo app = submenu_open_with.get_active ().get_data ("appinfo");
+                        launch_uri_with_app (app, current_right_click_path);
+                    });
+                    submenu_open_with.append (menu_item);
+                }
             }
 
+            if (at_least_one)
+                submenu_open_with.append (new Gtk.SeparatorMenuItem ());
+
+            var open_with_other_item = new Gtk.MenuItem.with_label (_("Other Application .."));
+            open_with_other_item.activate.connect (() => {
+                var dialog = new Gtk.AppChooserDialog(
+                                win,
+                                Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                File.new_for_uri (current_right_click_path)
+                                );
+
+                var response = dialog.run ();
+                if (response == Gtk.ResponseType.OK) {
+                    AppInfo app = dialog.get_app_info ();
+                    launch_uri_with_app (app, current_right_click_path);
+                }
+
+                dialog.destroy ();
+            });
+
+            submenu_open_with.append (open_with_other_item);
+            menu_open_with.set_submenu (submenu_open_with);
+            menu.append (new Gtk.SeparatorMenuItem ());
+
+            unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
+            foreach (var gof in sorted_dirs) {
+                var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                menuitem.set_data ("location", gof.get_target_location ());
+                menu.append (menuitem);
+                menuitem.activate.connect (() => {
+                    unowned File loc = menu.get_active ().get_data ("location");
+                    win.file_path_change_request (loc);
+                });
+            }
+            menu.show_all ();
+            /* Release the Async directory as soon as possible */
+            files_menu.done_loading.disconnect (on_files_loaded_menu);
+            files_menu = null;
+        }
+
+        private void launch_uri_with_app (AppInfo app, string uri) {
+            var file = GOF.File.get (File.new_for_uri (uri));
+            file.launch (win.get_screen (), app);
+        }
+
+        private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
+            x = (int) menu_x_root;
+            y = (int) menu_y_root;
+            push_in = true;
+        }
+
+        protected override void load_right_click_menu (double x, double y) {
+            if (current_right_click_root == null)
+                return;
+
+            menu_x_root = x;
+            menu_y_root = y;
+            menu = new Gtk.Menu ();
+            menu.cancel.connect (() => { reset_elements_states (); });
+            menu.deactivate.connect (() => { reset_elements_states (); });
+            /* current_right_click_root is parent of the directory named on the breadcrumb. */
+            var directory = File.new_for_uri (current_right_click_root);
+            files_menu = GOF.Directory.Async.from_gfile (directory);
+            files_menu.done_loading.connect (on_files_loaded_menu);
+            files_menu.load ();
+
+            menu.popup (null,
+                        null,
+                        get_menu_position,
+                        0,
+                        Gtk.get_current_event_time ());
+        }
+
+        protected override bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            if (!drop_data_ready) {
+                Gtk.TargetList list = null;
+                Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
+                if (target != Gdk.Atom.NONE)
+                    Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+            }
+
+            Gtk.drag_unhighlight (this);
+            GLib.Signal.stop_emission_by_name (this, "drag-motion");
+
+            foreach (BreadcrumbsElement element in elements)
+                element.pressed = false;
+
+            var el = get_element_from_coordinates (x, y);
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            if (el != null && drop_file_list != null) {
+                el.pressed = true;
+                drop_target_file = get_target_location (x, y);
+                current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                 context,
+                                                                 out current_suggested_action);
+            }
+
+            Gdk.drag_status (context, current_suggested_action, time);
+            queue_draw ();
             return true;
         }
 
-        if (event.button == 3)
-            return select_bread_from_coord (event);
+        protected override bool on_drag_drop (Gdk.DragContext context,
+                                   int x,
+                                   int y,
+                                   uint timestamp) {
+            Gtk.TargetList list = null;
+            bool ok_to_drop = false;
 
-        return true;
-    }
+            Gdk.Atom target = Gtk.drag_dest_find_target  (this, context, list);
 
-    public bool on_button_release_event (Gdk.EventButton event) {
-        /* We need to distinguish whether the event comes from one of the icons.
-         * There doesn't seem to be a way of doing this directly so we check the window width */
-        if (event.window.get_width () < 24)
-            return false;
+            ok_to_drop = (target != Gdk.Atom.NONE);
 
-        reset_elements_states ();
+            if (ok_to_drop) {
+                drop_occurred = true;
+                Gtk.drag_get_data (this, context, target, timestamp);
+            }
 
-        if (timeout > 0) {
-            Source.remove (timeout);
-            timeout = 0;
+            return ok_to_drop;
         }
 
-        if (is_focus)
-            return base.button_release_event (event);
+        protected override void on_drag_data_received (Gdk.DragContext context,
+                                            int x,
+                                            int y,
+                                            Gtk.SelectionData selection_data,
+                                            uint info,
+                                            uint timestamp
+                                            ) {
+            bool success = false;
 
+            if (!drop_data_ready) {
+                drop_file_list = null;
+                foreach (var uri in selection_data.get_uris ()) {
+                    debug ("Path to move: %s\n", uri);
+                    drop_file_list.append (File.new_for_uri (uri));
+                    drop_data_ready = true;
+                }
+            }
 
-        if (event.button == 1) {
-            var el = get_element_from_coordinates ((int) event.x, (int) event.y);
-            if (el != null) {
-                selected = elements.index_of (el);
-                var newpath = get_path_from_element (el);
-                path_changed (get_file_for_path (newpath));
-            } else
-                grab_focus ();
+            GLib.Signal.stop_emission_by_name (this, "drag-data-received");
+            if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
+                drop_occurred = false;
+                current_actions = 0;
+                current_suggested_action = 0;
+
+                drop_target_file = get_target_location (x, y);
+                if (drop_target_file != null) {
+                    current_actions = drop_target_file.accepts_drop (drop_file_list,
+                                                                     context,
+                                                                     out current_suggested_action);
+
+                    if ((current_actions & file_drag_actions) != 0)
+                        success = dnd_handler.handle_file_drag_actions  (this,
+                                                                         win,
+                                                                         context,
+                                                                         drop_target_file,
+                                                                         drop_file_list,
+                                                                         current_actions,
+                                                                         current_suggested_action,
+                                                                         timestamp);
+                }
+
+                Gtk.drag_finish (context, success, false, timestamp);
+                on_drag_leave (context, timestamp);
+            }
         }
 
-        return base.button_release_event (event);
-    }
-
-    public void on_icon_press (Gtk.EntryIconPosition pos, Gdk.Event event) {
-        if (pos == Gtk.EntryIconPosition.SECONDARY) {
-            if (is_focus)
-                on_activate ();
-            else
-                reload ();
-        }
-    }
-
-    void on_change () {
-        if (search_mode) {
-            search_changed (text);
-            return;
-        }
-
-        if (ignore_change) {
-            ignore_change = false;
-            return;
-        }
-
-        show_navigate_icon ();
-        text_completion = "";
-        need_completion ();
-    }
-
-    void after_realize () {
-        /* After realizing, we take a reference on the Gdk.Window of the Entry so
-         * we can set the cursor icon as needed. This relies on Gtk storing the
-         * owning widget as the user data on a Gdk.Window. The required window
-         * will be the first child of the entry.
-         */
-        entry_window = get_window ().get_children_with_user_data (this).data;
-    }
-
-    bool after_motion_notify (Gdk.EventMotion event) {
-
-        if (is_focus)
-            return false;
-
-        int x = (int) event.x;
-        double x_render = 0;
-        double x_previous = -10;
-        set_tooltip_text ("");
-        /* We must reset the icon tooltip as the above line turns all tooltips off */
-        set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
-
-
-
-        foreach (BreadcrumbsElement element in elements) {
-            if (element.display) {
-                x_render += element.real_width;
-                if (x <= x_render + 5 && x > x_previous + 5) {
-                    selected = elements.index_of (element);
-                    set_tooltip_text (_("Go to %s").printf (element.text));
+        protected override void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+            foreach (BreadcrumbsElement element in elements) {
+                if (element.pressed) {
+                    element.pressed = false;
                     break;
                 }
-
-                x_previous = x_render;
-            }
-        }
-
-        if (event.x > 0 && event.x < x_render + 5)
-            set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
-        else
-            set_entry_cursor (null);
-
-        return false;
-    }
-
-    bool on_focus_out (Gdk.EventFocus event) {
-        if (is_focus)
-            ignore_focus_in = true;
-        else {
-            reset ();
-            show_refresh_icon (true);
-        }
-
-        return base.focus_out_event (event);
-    }
-
-    void reset () {
-        ignore_focus_in = false;
-        set_entry_text ("");
-        search_mode = false;
-    }
-
-    bool on_focus_in (Gdk.EventFocus event) {
-        if (ignore_focus_in)
-            return base.focus_in_event (event);
-
-        if (search_mode)
-            set_entry_text ("");
-        else {
-            set_entry_text (get_elements_path ());
-            show_navigate_icon ();
-        }
-
-        return base.focus_in_event (event);
-    }
-
-    void on_grab_focus () {
-        select_region (0, 0);
-        set_position (-1);
-    }
-
-    void on_activate () {
-        string path = text + text_completion;
-        path_changed (get_file_for_path (path));
-        text_completion = "";
-    }
-
-    public void show_refresh_icon (bool show = true) {
-        /* Cancel any editing or search if refresh icon is to be shown */
-        if (show) {
-            reset ();
-            escape ();
-        }
-
-        set_entry_secondary_icon (false, show);
-    }
-
-    public void show_navigate_icon (bool show = true) {
-        set_entry_secondary_icon (true, show && text != current_path);
-    }
-
-    protected abstract void on_drag_leave (Gdk.DragContext drag_context, uint time);
-
-    protected abstract void on_drag_data_received (Gdk.DragContext context,
-                                                   int x,
-                                                   int y,
-                                                   Gtk.SelectionData selection_data,
-                                                   uint info,
-                                                   uint time_);
-
-    protected abstract bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time);
-
-    protected abstract bool on_drag_drop (Gdk.DragContext context,
-                                          int x,
-                                          int y,
-                                          uint timestamp);
-
-    protected void add_icon (IconDirectory icon) {
-        if (icon.gicon != null)
-            icon.icon = icon_factory.load_symbolic_icon_from_gicon (button_context, icon.gicon, 16);
-        else
-            icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
-
-        icons.append (icon);
-    }
-
-    public void complete () {
-        if (text_completion.length == 0)
-            return;
-
-        string path = text + text_completion;
-
-        /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-        if (!multiple_completions) {
-            set_entry_text (path + "/");
-            completed ();
-        } else
-            set_entry_text (path);
-    }
-
-    public void reset_elements_states () {
-        foreach (BreadcrumbsElement element in elements)
-            element.pressed = false;
-
-        queue_draw ();
-    }
-
-    public void set_entry_text (string text) {
-        ignore_change = true;
-        text_completion = "";
-        this.text = text;
-        set_position (-1);
-    }
-
-    public void set_entry_cursor (Gdk.Cursor? cursor) {
-        entry_window.set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
-    }
-
-    public void set_entry_secondary_icon (bool active, bool visible) {
-        if (!visible)
-            secondary_icon_pixbuf = null;
-        else if (!active) {
-            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "view-refresh-symbolic");
-            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, refresh_tip);
-        } else {
-            set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "go-jump-symbolic");
-            var tooltip = (text.length > 0) ? (_("Navigate to %s")).printf (text) : "";
-            set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tooltip);
-        }
-    }
-
-    public double get_all_breadcrumbs_width (out int breadcrumbs_count) {
-        double total_width = 0.0;
-        breadcrumbs_count = 0;
-        foreach (BreadcrumbsElement element in elements) {
-            if (element.display) {
-                total_width += element.width;
-                element.max_width = -1;
-                breadcrumbs_count++;
-            }
-        }
-        return total_width;
-    }
-
-    protected BreadcrumbsElement? get_element_from_coordinates (int x, int y) {
-        double x_render = 0;
-        foreach (BreadcrumbsElement element in elements) {
-            if (element.display) {
-                if (x_render <= x && x <= x_render + element.real_width)
-                    return element;
-
-                x_render += element.real_width;
-            }
-        }
-        return null;
-    }
-
-    /** Return an unescaped path from the breadcrumbs **/
-    protected string get_path_from_element (BreadcrumbsElement? el) {
-        /* return path up to the specified element or, if the parameter is null, the whole path */
-        string newpath = "";
-        bool first = true;
-
-        foreach (BreadcrumbsElement element in elements) {
-            string s = element.text;  /* element text should be an escaped string */
-            if (first) {
-                if (s == "" || !s.has_suffix ("/")) {
-                    newpath = "/";
-                /* return valid path when browsing trash and other schemes */
-                } else if (s.contains ("://")) {
-                    newpath = Marlin.sanitize_protocol (s);
-                } else {
-                    newpath = s;
-                }
-                first = false;
-            } else {
-                newpath += (s + "/");
             }
 
-            if (el != null && element == el)
-                break;
+            drop_occurred = false;
+            drop_data_ready = false;
+            drop_file_list = null;
+
+            queue_draw ();
         }
-        /* Return original string as fallback if unescaping fails (should not happen) */
-        return GLib.Uri.unescape_string (newpath) ?? newpath;
-    }
 
-    /**
-     * Get the current path of the PathBar, based on the elements that it contains
-     **/
-    public string get_elements_path () {
-        return get_path_from_element (null);
-    }
-
-    /**
-     * Gets a properly escaped GLib.File for the given path
-     **/
-    public File? get_file_for_path (string path) {
-        string newpath = path ?? "";
-
-        /* Format our path so its valid */
-        if (newpath == "")
-            newpath = "/";
-
-        if (newpath[0] == '~')
-            newpath = newpath.replace("~", Environment.get_home_dir ());
-
-        if (!newpath.contains("://")) {
-            if (!newpath.has_prefix ("/"))
-                newpath = "/" + newpath;
-
-            newpath = Marlin.ROOT_FS_URI + newpath;
-        } else {
-            string [] parts = newpath.split ("://", 3);
-            if (parts.length > 2) {
-                warning ("Invalid path");
-                return null;
+        private GOF.File? get_target_location (int x, int y) {
+            GOF.File? file;
+            var el = get_element_from_coordinates (x, y);
+            if (el != null) {
+                file = GOF.File.get (GLib.File.new_for_path (get_path_from_element (el)));
+                file.ensure_query_info ();
+                return file;
             }
-        }
-
-        newpath = newpath.replace("ssh:", "sftp:");
-        newpath = GLib.Uri.escape_string (newpath, reserved_chars, true);
-
-        File file = File.new_for_commandline_arg (newpath);
-        return file;
-    }
-
-    /**
-     * Select the breadcrumb to make a right click. This function check
-     * where the user click, then, it loads a context menu with the others
-     * directory in it parent.
-     * See load_right_click_menu() for the context menu.
-     *
-     * @param event a button event to compute the coords of the new menu.
-     *
-     **/
-    private bool select_bread_from_coord (Gdk.EventButton event) {
-        var el = get_element_from_coordinates ((int) event.x, (int) event.y);
-
-        if (el != null) {
-            var newpath = get_path_from_element (el);
-            current_right_click_path = newpath;
-            current_right_click_root = Marlin.Utils.get_parent (newpath);
-            double menu_x_root;
-
-            if (el.x - space_breads < 0)
-                menu_x_root = event.x_root - event.x + el.x;
-            else
-                menu_x_root = event.x_root - event.x + el.x - space_breads;
-
-            double menu_y_root = event.y_root - event.y + get_allocated_height ();
-            var style_context = get_style_context ();
-            var padding = style_context.get_padding (style_context.get_state ());
-            load_right_click_menu (menu_x_root, menu_y_root - padding.bottom - padding.top);
-            return true;
-        }
-        return false;
-    }
-
-    public virtual string? update_breadcrumbs (string newpath, string breadpath) {
-        string strloc;
-
-        if (Posix.strncmp (newpath, "./", 2) == 0)
             return null;
-
-        if (newpath[0] == '/')
-            strloc = newpath;
-        else if (Posix.strncmp (newpath, "~/", 2) == 0)
-            strloc = Environment.get_home_dir ();
-        else
-            strloc = breadpath + newpath;
-
-        return strloc;
-    }
-
-    /**
-     * Change the Breadcrumbs content.
-     *
-     * This function will try to see if the new/old BreadcrumbsElement can
-     * be animated.
-     **/
-    public void change_breadcrumbs (string newpath) {
-        var explode_protocol = newpath.split ("://");
-
-        if (explode_protocol.length > 1) {
-            protocol = explode_protocol[0] + "://";
-            current_path = explode_protocol[1];
-        } else {
-            current_path = newpath;
-            protocol = Marlin.ROOT_FS_URI;
         }
-
-        /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
-        current_path = Uri.escape_string ((Uri.unescape_string (current_path) ?? current_path), reserved_chars, true);
-        selected = -1;
-        var breads = current_path.split ("/");
-        var newelements = new Gee.ArrayList<BreadcrumbsElement> ();
-        string s = protocol == Marlin.ROOT_FS_URI ? "" : protocol;
-        newelements.add (new BreadcrumbsElement (s));
-
-
-        /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
-        var volume_monitor = VolumeMonitor.get ();
-        var mount_list = volume_monitor.get_mounts ();
-        var icons_list = icons.length ();
-
-        foreach (var mount in mount_list) {
-            IconDirectory icon_directory = { mount.get_root ().get_path (),
-                                             null, false,
-                                             mount.get_icon (),
-                                             null, mount.get_root ().get_path ().split ("/"),
-                                             true, mount.get_name () };
-
-            if (mount.get_root ().get_path () != null) {
-                icon_directory.exploded[0] = "/";
-                add_icon (icon_directory);
-            }
-        }
-
-        foreach (string dir in breads) {
-            if (dir != "")
-                newelements.add (new BreadcrumbsElement (dir));
-        }
-
-        int max_path = int.min (elements.size, newelements.size);
-        foreach (IconDirectory icon in icons) {
-            if (icon.protocol && icon.path == protocol) {
-                newelements[0].set_icon(icon.icon);
-                newelements[0].text_displayed = icon.text_displayed;
-                break;
-            } else if (!icon.protocol && icon.exploded.length <= newelements.size) {
-                bool found = true;
-                int h = 0;
-
-                for (int i = 1; i < icon.exploded.length; i++) {
-                    if (icon.exploded[i] != newelements[i].text) {
-                        found = false;
-                        break;
-                    }
-                    h = i;
-                }
-
-                if (found) {
-                    for (int j = 0; j < h; j++)
-                        newelements[j].display = false;
-
-                    newelements[h].display = true;
-                    newelements[h].set_icon (icon.icon);
-                    newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
-                    newelements[h].text_displayed = icon.text_displayed;
-
-                    if (icon.break_loop)
-                        break;
-
-                }
-            }
-        }
-
-        /* Remove the volume icons we added just before. */
-        for (uint i = icons.length () - 1; i >= icons_list; i--) {
-            icons.remove (icons.nth_data (i));
-        }
-
-        /* Stop any animation */
-        if (anim > 0) {
-            Source.remove (anim);
-            anim = 0;
-        }
-
-        if (newelements.size > elements.size) {
-            view_old = false;
-            newbreads = newelements.slice (max_path, newelements.size);
-            animate_new_breads ();
-        } else if (newelements.size < elements.size) {
-            view_old = true;
-            newbreads = elements.slice (max_path, elements.size);
-            animate_old_breads ();
-        } else {
-            /* This is to make sure breadcrumbs are rendered properly when switching to a duplicate tab */
-            newbreads = newelements.slice (max_path, newelements.size);
-            animate_new_breads ();
-        }
-
-        elements.clear ();
-        elements = newelements;
-    }
-
-    uint anim = 0;
-
-    /* A threaded function to animate the old BreadcrumbsElement */
-    private void animate_old_breads () {
-        anim_state = animation_visible ? 0.0 : 0.95;
-        var step = animation_visible ? 0.05 : 0.001;
-
-        foreach (BreadcrumbsElement bread in newbreads)
-            bread.offset = anim_state;
-
-        if (anim > 0)
-            Source.remove(anim);
-
-        anim = Timeout.add (1000/60, () => {
-            anim_state += step;
-            /* FIXME: Instead of this hacksih if( != null), we should use a
-             * nice mutex */
-            if (newbreads == null) {
-                anim = 0;
-                return false;
-            }
-
-            if (anim_state > 1.0 - step) {
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = 1.0;
-
-                newbreads = null;
-                view_old = false;
-                queue_draw ();
-                anim = 0;
-                return false;
-            } else {
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = anim_state;
-
-                queue_draw ();
-                return true;
-            }
-        });
-    }
-
-    /* A threaded function to animate the new BreadcrumbsElement */
-    private void animate_new_breads () {
-        anim_state = animation_visible ? 1.0 : 0.007;
-        double step = animation_visible ? 0.08 : 0.001;
-
-        foreach (BreadcrumbsElement bread in newbreads)
-            bread.offset = anim_state;
-
-        if (anim > 0)
-            Source.remove (anim);
-
-        anim = Timeout.add (1000/60, () => {
-            anim_state -= step;
-            /* FIXME: Instead of this hacksih if( != null), we should use a
-             * nice mutex */
-            if (newbreads == null) {
-                anim = 0;
-                return false;
-            }
-
-            if (anim_state < step) {
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = 0.0;
-
-                newbreads = null;
-                view_old = false;
-                anim = 0;
-                queue_draw ();
-                return false;
-            } else {
-                foreach (BreadcrumbsElement bread in newbreads)
-                    bread.offset = anim_state;
-
-                queue_draw ();
-                return true;
-            }
-        });
-    }
-
-    public override bool draw (Cairo.Context cr) {
-        if (button_context_active == null) {
-            button_context_active = new Gtk.StyleContext ();
-            button_context_active.set_path(button_context.get_path ());
-            button_context_active.set_state (Gtk.StateFlags.ACTIVE);
-        }
-
-        base.draw (cr);
-        double height = get_allocated_height ();
-        double width = get_allocated_width ();
-
-        if (!is_focus) {
-            double margin = y;
-
-            /* Ensure there is an editable area to the right of the breadcrumbs */
-            double width_marged = width - 2*margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH;
-            double height_marged = height - 2*margin;
-            double x_render = margin;
-            int breadcrumbs_displayed = 0;
-            double max_width = get_all_breadcrumbs_width (out breadcrumbs_displayed);
-
-            if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                /* each element must not be bigger than the width/breadcrumbs count */
-                double max_element_width = width_marged/breadcrumbs_displayed;
-
-                foreach (BreadcrumbsElement element in elements) {
-                    if (element.display && element.width < max_element_width) {
-                        breadcrumbs_displayed --;
-                        max_element_width += (max_element_width - element.width)/breadcrumbs_displayed;
-                    }
-                }
-
-                foreach (BreadcrumbsElement element in elements)
-                    if (element.display && element.width > max_element_width)
-                        element.max_width = max_element_width - element.last_height/2;
-            }
-
-            cr.save ();
-            /* Really draw the elements */
-            foreach (BreadcrumbsElement element in elements) {
-                if (element.display) {
-                    x_render = element.draw (cr, x_render, margin, height_marged, button_context, this);
-                    /* save element x axis position */
-                    element.x = x_render - element.real_width;
-                }
-            }
-
-            /* Draw the old breadcrumbs, only for the animations */
-            if (view_old)
-                foreach (BreadcrumbsElement element in newbreads)
-                    if (element.display)
-                        x_render = element.draw(cr, x_render, margin, height_marged, button_context, this);
-
-            cr.restore ();
-        } else {
-            if (text_completion != "") {
-                int layout_width, layout_height;
-                double text_width, text_height;
-
-                cr.set_source_rgba (0, 0, 0, 0.4);
-                Pango.Layout layout = create_pango_layout (text);
-                layout.get_size (out layout_width, out layout_height);
-                text_width = Pango.units_to_double (layout_width);
-                text_height = Pango.units_to_double (layout_height);
-                cr.move_to (text_width + 4, text_height / 4);
-                layout.set_text (text_completion, -1);
-                Pango.cairo_show_layout (cr, layout);
-            }
-        }
-
-        return true;
-    }
-
-    protected abstract void load_right_click_menu (double x, double y);
-}
-
-
-namespace Marlin.Utils {
-    public string get_parent (string newpath) {
-        var file = File.new_for_commandline_arg (newpath);
-        return file.get_parent ().get_uri ();
-    }
-
-    public bool has_parent (string newpath) {
-        var file = File.new_for_commandline_arg (newpath);
-        return file.get_parent () != null;
     }
 }
