@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-05 05:29-0600\n"
-"PO-Revision-Date: 2015-10-10 06:30+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
+"PO-Revision-Date: 2015-11-15 18:56+0000\n"
+"Last-Translator: Emanuele Tocco <mr.emanueletocco@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-06 05:31+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
+"X-Launchpad-Export-Date: 2015-11-16 05:23+0000\n"
+"X-Generator: Launchpad (build 17845)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -147,11 +147,11 @@ msgstr "Mostra maggiori _dettagli"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "La posizione originale non può essere determinata"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Apri la cartella del cestino e ripristina manualmente"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
