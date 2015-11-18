@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-05 05:29-0600\n"
-"PO-Revision-Date: 2015-11-17 00:35+0000\n"
+"PO-Revision-Date: 2015-11-17 19:08+0000\n"
 "Last-Translator: Beqa Arabuli <arabulibeqa@yahoo.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-11-17 05:47+0000\n"
+"X-Launchpad-Export-Date: 2015-11-18 05:25+0000\n"
 "X-Generator: Launchpad (build 17847)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr "გაცვლის ბუფერში ჩასასმელად არაფერია"
+msgstr "გაცვლის ბუფერი ცარიელია"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "SSH (უხიფათო შელი)"
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Public FTP (საზოგადო FTP)"
+msgstr "FTP (საჯარო)"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (შესვლით)"
+msgstr "FTP (ავთენტიფიკაციით)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple-ს ფაილების გაცვლის პროტოკოლი)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -63,157 +63,157 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "საქაღალდე \"%s\" ვერ გაიხსნება \"%s\"-ზე."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "სერვერი \"%s\" ვერ მოიძებნა."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "ხელახლა ცდა"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "გთხოვთ დააზუსტეთ თქვენი მომხმარებლის დეტალები."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "გაგრძელება"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "და_კავშირება"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "სერვერთან დაკავშირება"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "სერვერის დეტალები"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "_სერვერი:"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_პორტი:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_ტიპი:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "გა_ზიარება:"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_საქაღალდე:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "მომხმარებლის დეტალები"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "_დომენის სახელი:"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr ""
+msgstr "_მომხმარებლის სახელი:"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "პა_როლი"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr ""
+msgstr "ამ პაროლის _დამახსოვრება"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr ""
+msgstr "ოპერაცია გაუქმდა"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr ""
+msgstr "დამატებითი _დეტალების ჩვენება"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "საწყისი მდებაროების დადგენა ვერ მოხერხდა"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "ნაგვის საქაღალდის გახსნა და ფაილის ხელით აღდგენა"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "%d კოპირებული ელემენტის წაშლა"
 
 #: ../libcore/marlin-undostack-manager.c:1232
 #: ../libcore/marlin-undostack-manager.c:1242
 #: ../libcore/marlin-undostack-manager.c:1273
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "'%s'-ის წაშლა"
 
 #: ../libcore/marlin-undostack-manager.c:1239
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "%d დუბლირებული ელემენტის წაშლა"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d ელემენტების უკან, '%s'-ში გადატანა"
 
 #: ../libcore/marlin-undostack-manager.c:1254
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "'%s'-ის უკან, '%s'-ში გადატანა"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #: ../libcore/marlin-undostack-manager.c:1430
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s'-ის სახელის შეცვლა '%s'-ით"
 
 #: ../libcore/marlin-undostack-manager.c:1282
 #: ../libcore/marlin-undostack-manager.c:1477
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "ნაგვიდან %d ელემენტის აღდგენა"
 
 #: ../libcore/marlin-undostack-manager.c:1290
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "'%s'-ის აღდგენა '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1301
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "%d ელემენტის უკან, ნაგავში გადატანა"
 
 #: ../libcore/marlin-undostack-manager.c:1304
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "'%s'-ის უკან, სანაგვეში გადატანა"
 
 #: ../libcore/marlin-undostack-manager.c:1313
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "%d ელემენტის ბმულების წაშლა"
 
 #: ../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "'%s'-ის ბმულის წაშლა"
 
 #: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
@@ -1523,7 +1523,7 @@ msgstr ""
 
 #: ../src/View/LocationBar.vala:351
 msgid "Open in New Tab"
-msgstr ""
+msgstr "ახალ ჩანართში გახსნა"
 
 #: ../src/View/LocationBar.vala:358
 #: ../src/View/AbstractDirectoryView.vala:1956
@@ -1582,7 +1582,7 @@ msgstr ""
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "ბოლო ფაილებში არაფერია"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
@@ -1773,7 +1773,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:469
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "ბოლოს გამოყენებული ფაილების სიის ნახვა"
 
 #: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
 msgid "Trash"
@@ -1825,11 +1825,11 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1287
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "ახ_ალ ჩანართში გახსნა"
 
 #: ../src/View/Sidebar.vala:1293
 msgid "Open in New _Window"
-msgstr ""
+msgstr "ახალ ფან_ჯარაში გახსნა"
 
 #: ../src/View/Sidebar.vala:1301
 msgid "Remove"
@@ -1869,7 +1869,7 @@ msgstr ""
 
 #: ../src/View/SearchResults.vala:185
 msgid "Bookmarks"
-msgstr ""
+msgstr "სანიშნები"
 
 #: ../src/View/SearchResults.vala:187
 msgid "Everywhere Else"
@@ -1901,11 +1901,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1944
 msgid "Open in %s"
-msgstr ""
+msgstr "გახსნა -"
 
 #: ../src/View/AbstractDirectoryView.vala:1954
 msgid "Open in"
-msgstr ""
+msgstr "გახსნა"
 
 #: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Other Application"
@@ -2079,7 +2079,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:92
 msgid "Recent"
-msgstr ""
+msgstr "ბოლო"
 
 #: ../libwidgets/Resources.vala:93
 msgid "MTP"
@@ -2128,7 +2128,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "ნაგავში გადატანა"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
@@ -2152,11 +2152,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
-msgstr ""
+msgstr "ტერმინალი"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr ""
+msgstr "სანიშნი"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
@@ -2164,7 +2164,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
-msgstr ""
+msgstr "ამოჭრა"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
@@ -2176,7 +2176,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
-msgstr ""
+msgstr "დალაგება"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Name"
