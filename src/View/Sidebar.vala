@@ -560,16 +560,22 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     var root = mount.get_default_location ();
-                    add_place (Marlin.PlaceType.MOUNTED_VOLUME,
-                               iter,
-                               mount.get_name (),
-                               mount.get_icon (),
-                               root.get_uri (),
-                               null,
-                               volume,
-                               mount,
-                               0,
-                               root.get_parse_name ());
+                    var it = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
+                                        iter,
+                                        mount.get_name (),
+                                        mount.get_icon (),
+                                        root.get_uri (),
+                                        null,
+                                        volume,
+                                        mount,
+                                        0,
+                                        root.get_parse_name ());
+
+                    uint64 fs_capacity, fs_free;
+                    get_filesystem_space (root, out fs_capacity, out fs_free);
+                    store.@set (it,
+                                Column.FREE_SPACE, fs_free,
+                                Column.DISK_SIZE, fs_capacity);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -2044,8 +2050,9 @@ namespace Marlin.Places {
         }
 
         private void loading_uri_callback (string location) {
-                set_matching_selection (location);
-                slot_location = location;
+            set_matching_selection (location);
+            slot_location = location;
+            update_places();
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
