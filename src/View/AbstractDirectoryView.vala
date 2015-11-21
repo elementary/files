@@ -162,8 +162,11 @@ namespace FM {
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
-
         private string? previewer = null;
+
+        /* Free space signal support */
+        uint add_remove_file_timeout_id = 0;
+        bool signal_free_space_change = false;
 
         /* Rename support */
         protected Marlin.TextRenderer? name_renderer = null;
@@ -786,6 +789,7 @@ namespace FM {
             if (locations != null) {
                 locations.reverse ();
 
+                slot.directory.block_monitor ();
                 if (delete_immediately)
                     Marlin.FileOperations.@delete (locations,
                                                    window as Gtk.Window,
@@ -810,6 +814,27 @@ namespace FM {
 
             if (select_added_files)
                 add_gof_file_to_selection (file);
+
+            handle_free_space_change ();
+        }
+
+        private void handle_free_space_change () {
+            /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
+            if (add_remove_file_timeout_id == 0) {
+                signal_free_space_change = false;
+                add_remove_file_timeout_id = GLib.Timeout.add (250, () => {
+                    if (signal_free_space_change) {
+                        add_remove_file_timeout_id = 0;
+                        window.free_space_change ();
+                        return false;
+                    } else {
+                        signal_free_space_change = true;
+                        return true;
+                    }
+                });
+            } else {
+                signal_free_space_change = false;
+            }
         }
 
         private void new_empty_file (string? parent_uri = null) {
@@ -876,8 +901,6 @@ namespace FM {
             view.slot.reload (true); /* non-local only */
 
             view.rename_file (file_to_rename); /* will wait for file to appear in model */
-            view.slot.directory.unblock_monitor ();
-
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -887,6 +910,7 @@ namespace FM {
             if (view == null)
                 return;
 
+            view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
             view.slot.reload (true); /* non-local only */
         }
@@ -919,6 +943,7 @@ namespace FM {
             });
 
             locations.reverse ();
+            slot.directory.block_monitor ();
             Marlin.FileOperations.@delete (locations, window as Gtk.Window, after_trash_or_delete, this);
         }
 
@@ -1235,14 +1260,19 @@ namespace FM {
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
-            remove_marlin_icon_info_cache (file);
-            model.remove_file (file, dir);
-            if (file.is_folder ()) {
-                var file_dir = GOF.Directory.Async.cache_lookup (file.location);
-                if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
-                    slot.folder_deleted (file, file_dir);
+            /* Can be called twice for same file - once via Marlin.FileOperations and once via directory FileMonitor.
+             * Model.remove_file returns false if the file was already removed.
+             */
+            if (model.remove_file (file, dir)) {
+                remove_marlin_icon_info_cache (file);
+                if (file.is_folder ()) {
+                    var file_dir = GOF.Directory.Async.cache_lookup (file.location);
+                    if (file_dir != null) {
+                        file_dir.purge_dir_from_cache ();
+                        slot.folder_deleted (file, file_dir);
+                    }
                 }
+                handle_free_space_change ();
             }
         }
 
@@ -3221,6 +3251,7 @@ namespace FM {
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
+            cancel_timeout (ref add_remove_file_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 

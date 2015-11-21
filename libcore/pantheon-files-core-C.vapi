@@ -29,7 +29,7 @@ namespace FM
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
-        public void remove_file (GOF.File file, GOF.Directory.Async dir);
+        public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();

@@ -127,6 +127,7 @@ namespace Marlin.Places {
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
             window.loading_uri.connect (loading_uri_callback);
+            window.free_space_change.connect (reload);
 
             construct_tree_view ();
             configure_tree_view ();
@@ -1697,6 +1698,7 @@ namespace Marlin.Places {
         }
 
         public void reload () {
+            /* The free space on devices may have changed */
             update_places ();
         }
 

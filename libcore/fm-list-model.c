@@ -918,7 +918,7 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     gtk_tree_path_free (path);
 }
 
-void
+gboolean
 fm_list_model_remove_file (FMListModel *model, GOFFile *file,
                            GOFDirectoryAsync *directory)
 {
@@ -926,6 +926,9 @@ fm_list_model_remove_file (FMListModel *model, GOFFile *file,
 
     if (fm_list_model_get_tree_iter_from_file (model, file, directory, &iter)) {
         fm_list_model_remove (model, &iter);
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }
 

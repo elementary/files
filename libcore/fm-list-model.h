@@ -75,7 +75,7 @@ gboolean fm_list_model_add_file                          (FMListModel *model, GO
 void     fm_list_model_file_changed                      (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 gboolean fm_list_model_is_empty                          (FMListModel *model);
 guint    fm_list_model_get_length                        (FMListModel *model);
-void     fm_list_model_remove_file                       (FMListModel       *model,
+gboolean fm_list_model_remove_file                       (FMListModel       *model,
                                                           GOFFile           *file,
                                                           GOFDirectoryAsync *directory);
 void     fm_list_model_clear                             (FMListModel *model);
