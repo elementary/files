@@ -500,6 +500,7 @@ namespace Marlin.View {
                 return;
 
             current_tab.reload ();
+            sidebar.reload ();
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {

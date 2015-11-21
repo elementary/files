@@ -45,7 +45,6 @@ namespace Marlin.Places {
         Gtk.CellRendererPixbuf icon_cell_renderer;
         Marlin.IconSpinnerRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
-        Gtk.TreePath select_path;
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
@@ -271,7 +270,6 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            //tree_view.focus_out_event.connect (focus_out_event_cb);
             tree_view.enter_notify_event.connect (on_enter_notify_event);
             tree_view.leave_notify_event.connect (on_leave_notify_event);
         }
@@ -414,7 +412,6 @@ namespace Marlin.Places {
             string mount_uri;
 
             this.last_selected_uri = null;
-            this.select_path = null;
             this.n_builtins_before = 0;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
@@ -601,7 +598,6 @@ namespace Marlin.Places {
                 var volume = mount.get_volume ();
                 if (volume != null)
                     continue;
-
 
                 var root = mount.get_default_location ();
                 if (root.is_native ()) {
@@ -1628,7 +1624,6 @@ namespace Marlin.Places {
 
             this.click_path = path.copy ();
 
-
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                 /* If the user clicked over a category, toggle expansion. The entire row
@@ -1698,6 +1693,10 @@ namespace Marlin.Places {
         }
 
         public new void style_set (Gtk.Style previous_style) {
+            update_places ();
+        }
+
+        public void reload () {
             update_places ();
         }
 
@@ -2052,7 +2051,7 @@ namespace Marlin.Places {
         private void loading_uri_callback (string location) {
             set_matching_selection (location);
             slot_location = location;
-            update_places();
+
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
