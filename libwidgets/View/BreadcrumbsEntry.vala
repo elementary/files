@@ -20,8 +20,11 @@
 
 namespace Marlin.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
+        /** Breadcrumb context menu support **/
+        ulong files_menu_dir_handler_id = 0;
+        Gtk.Menu menu;
+
         /** Completion support **/
-        ulong files_menu_handler_id = 0;
         GOF.Directory.Async? current_completion_dir = null;
         string completion_text = "";
         bool autocompleted = false;
@@ -360,8 +363,9 @@ namespace Marlin.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            GLib.File loc = File.new_for_commandline_arg (path);
-            GLib.File? root = loc.get_parent ();
+            GLib.File loc = PF.FileUtils.get_file_for_path (path);
+            string parent_path = PF.FileUtils.get_parent_path_from_path (path);
+            GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
 
             var style_context = get_style_context ();
             var padding = style_context.get_padding (style_context.get_state ());
@@ -371,29 +375,34 @@ namespace Marlin.View.Chrome {
                 menu_x_root = event.x_root - event.x + clicked_element.x - BREAD_SPACING;
 
             menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
-            var menu = new Gtk.Menu ();
-            menu.cancel.connect (() => { reset_elements_states (); });
-            menu.deactivate.connect (() => { reset_elements_states (); });
-            build_base_menu (menu, loc);
 
+            menu = new Gtk.Menu ();
+            menu.cancel.connect (() => {reset_elements_states ();});
+            menu.deactivate.connect (() => {reset_elements_states ();});
+
+            build_base_menu (menu, loc);
             if (root != null) {
-                var files_menu = GOF.Directory.Async.from_gfile (root);
-                files_menu_handler_id = files_menu.done_loading.connect (() => {
-                    append_subdirectories (menu, files_menu);
+                var files_menu_dir = GOF.Directory.Async.from_gfile (root);
+                files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
+                    append_subdirectories (menu, files_menu_dir);
+                    files_menu_dir.disconnect (files_menu_dir_handler_id);
                 });
-                files_menu.load ();
+                files_menu_dir.load ();
+            } else {
+                warning ("Root directory null for %s", path);
             }
 
+            menu.show_all ();
             menu.popup (null,
                         null,
                         right_click_menu_position_func,
                         0,
-                        Gtk.get_current_event_time ());
+                        event.time);
         }
 
         private void build_base_menu (Gtk.Menu menu, GLib.File loc) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var path = loc.get_path ();
+            var path = loc.get_uri ();
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {                
@@ -409,17 +418,12 @@ namespace Marlin.View.Chrome {
 
             menu.append (new Gtk.SeparatorMenuItem ());
 
-            /* Then the "Open with" menuitem is added to the menu. */
-            var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
-            menu.append (menu_open_with);
             var submenu_open_with = new Gtk.Menu ();
-            menu_open_with.set_submenu (submenu_open_with);
-
             var root = GOF.File.get (loc);
             var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
-                if (app_info.get_executable () != Environment.get_application_name ()) {
+                if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
                     var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
                     menu_item.set_data ("appinfo", app_info);
@@ -436,8 +440,11 @@ namespace Marlin.View.Chrome {
                     submenu_open_with.append (menu_item);
                 }
             }
-
             if (at_least_one) {
+                /* Then the "Open with" menuitem is added to the menu. */
+                var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
+                menu.append (menu_open_with);
+                menu_open_with.set_submenu (submenu_open_with);
                 submenu_open_with.append (new Gtk.SeparatorMenuItem ());
             }
 
@@ -451,22 +458,22 @@ namespace Marlin.View.Chrome {
         }
 
         private void append_subdirectories (Gtk.Menu menu, GOF.Directory.Async dir) {
-            menu.append (new Gtk.SeparatorMenuItem ());
-
             /* Append list of directories at the same level */
             unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
-            foreach (var gof in sorted_dirs) {
-                var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
-                menuitem.set_data ("location", gof.uri);
-                menu.append (menuitem);
-                menuitem.activate.connect (() => {
-                    text = menu.get_active ().get_data ("location");
-                    activate ();
-                });
+            if (sorted_dirs.length () > 0) {
+                menu.append (new Gtk.SeparatorMenuItem ());
+                foreach (var gof in sorted_dirs) {
+                    var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                    menuitem.set_data ("location", gof.uri);
+                    menu.append (menuitem);
+                    menuitem.activate.connect (() => {
+                        text = menu.get_active ().get_data ("location");
+                        activate ();
+                    });
+                }
             }
             menu.show_all ();
             /* Release the Async directory as soon as possible */
-            dir.disconnect (files_menu_handler_id);
             dir.cancel ();
             dir = null;
         }

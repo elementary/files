@@ -874,8 +874,9 @@ public class GOF.Directory.Async : Object {
             return sorted_dirs;
 
         foreach (var gof in file_hash.get_values()) {
-            if (!gof.is_hidden && gof.is_folder ())
+            if (!gof.is_hidden && (gof.is_folder () || gof.is_smb_server ())) {
                 sorted_dirs.prepend (gof);
+            }
         }
 
         sorted_dirs.sort (GOF.File.compare_by_display_name);
