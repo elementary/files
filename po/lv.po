@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-05 05:29-0600\n"
-"PO-Revision-Date: 2014-12-22 14:12+0000\n"
-"Last-Translator: ERX <eriksh@inbox.lv>\n"
+"PO-Revision-Date: 2015-11-21 13:04+0000\n"
+"Last-Translator: Ar2 <arturss5@inbox.lv>\n"
 "Language-Team: Latvian <lv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-06 05:31+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
+"X-Launchpad-Export-Date: 2015-11-22 05:24+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -178,13 +178,13 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1254
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Pārvietot '%s' atpakaļ uz '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1263
 #: ../libcore/marlin-undostack-manager.c:1430
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Pārsaukt '%s' par '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1282
 #: ../libcore/marlin-undostack-manager.c:1477
@@ -195,7 +195,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1290
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Atjaunot '%s' mapē '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1301
 #, c-format
@@ -245,7 +245,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopēt '%s' uz '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1404
 #, c-format
