@@ -73,6 +73,7 @@ namespace Marlin.View {
 
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
+        public signal void free_space_change ();
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -500,6 +501,7 @@ namespace Marlin.View {
                 return;
 
             current_tab.reload ();
+            sidebar.reload ();
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
