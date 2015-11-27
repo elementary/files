@@ -1498,7 +1498,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         create_info_line (key_label, value_label, info_grid, ref n);
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            key_label = create_label_key ("Format" + " :");
+            key_label = create_label_key (_("Format") + " :");
             value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
             create_info_line (key_label, value_label, info_grid, ref n);
         }
