@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-27 10:35-0200\n"
+"POT-Creation-Date: 2015-11-27 13:47-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2073,7 +2073,7 @@ msgid "Open in New Window"
 msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application..."
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
