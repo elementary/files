@@ -31,20 +31,17 @@ namespace PF.FileUtils {
     }
 
     public string get_parent_path_from_path (string path) {
-        File? file = File.new_for_commandline_arg (path);
-        string parent_path = path;
-        if (file != null) {
-            File? parent = file.get_parent ();
-            if (parent != null) {
-                parent_path = parent.get_path ();
-            } else {
-                parent_path = construct_parent_path (path);
-            }
-        }
+        /* We construct the parent path rather than use File.get_parent () as the latter gives odd
+         * results for some gvfs files.
+         */  
+        string parent_path = construct_parent_path (path);
         if (parent_path == Marlin.FTP_URI ||
-            parent_path == Marlin.MTP_URI ||
             parent_path == Marlin.SFTP_URI) {
 
+            parent_path = path;
+        }
+
+        if (parent_path.has_prefix (Marlin.MTP_URI) && !valid_mtp_uri (parent_path)) {
             parent_path = path;
         }
 
@@ -68,7 +65,7 @@ namespace PF.FileUtils {
         }
         sb.erase (last_separator, -1);
         string parent_path = sb.str + Path.DIR_SEPARATOR_S;
-        return parent_path;
+        return sanitize_path (parent_path);
     }
 
     public bool path_has_parent (string new_path) {
@@ -145,7 +142,7 @@ namespace PF.FileUtils {
     **/
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
-        new_path = path;
+        new_path = path.dup ();
 
         string[] explode_protocol = new_path.split ("://");
         if (explode_protocol.length > 2) {
@@ -155,12 +152,18 @@ namespace PF.FileUtils {
         if (explode_protocol.length > 1) {
             if (explode_protocol[0] == "mtp") {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
-                protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
-                /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
-                new_path = explode_path [1] ?? "";
+                if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
+                    protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
+                    /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
+                    new_path = explode_path [1] ?? "";
+                } else {
+                    warning ("Invalid mtp path");
+                    protocol = new_path.dup ();
+                    new_path = "/";
+                }
             } else {
                 protocol = explode_protocol[0] + "://";
-                new_path = explode_protocol[1];
+                new_path = explode_protocol[1] ?? "";
             }
         } else {
             protocol = Marlin.ROOT_FS_URI;
@@ -172,5 +175,18 @@ namespace PF.FileUtils {
         if (!new_path.has_prefix (Path.DIR_SEPARATOR_S)) {
             new_path = Path.DIR_SEPARATOR_S + new_path;
         }
+    }
+
+    private bool valid_mtp_uri (string uri) {
+        if (!uri.contains (Marlin.MTP_URI)) {
+            return false;
+        }
+        string[] explode_protocol = uri.split ("://",2);
+        if (explode_protocol.length != 2 ||
+            !explode_protocol[1].has_prefix ("[") ||
+            !explode_protocol[1].contains ("]")) {
+            return false;
+        }
+        return true;
     }
 }
