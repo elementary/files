@@ -449,7 +449,7 @@ namespace Marlin.View.Chrome {
             }
 
             /* Then the "Open with other application ..." menuitem is added to the menu. */
-            var open_with_other_item = new Gtk.MenuItem.with_label (_("Open in Other Application ..."));
+            var open_with_other_item = new Gtk.MenuItem.with_label (_("Open in Other Application..."));
             open_with_other_item.activate.connect (() => {
                 open_with_request (loc, null);
             });
