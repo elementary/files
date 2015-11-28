@@ -1660,14 +1660,16 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             Gtk.TreePath? path = get_path_at_click_position (event);
+            /* Do not take action if a blocked drag was attempted (mouse over different row
+             * from when button pressed or not over row), or if button press was on different widget */
+            if (path == null || click_path == null || path.compare (click_path) != 0) {
+                return true;
+            }
+
+            this.click_path = null;
 
             if (dnd_disabled) {
                 unblock_drag_and_drop ();
-                /* Do not take action if a blocked drag was attempted (mouse over different row
-                 * from when button pressed or not over row) */
-                if (path == null || (click_path != null && path.compare (click_path) != 0)) {
-                    return true;
-                }
             }
 
             if (renaming) 
