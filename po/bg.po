@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-05 05:29-0600\n"
+"POT-Creation-Date: 2015-11-27 05:38-0600\n"
 "PO-Revision-Date: 2015-08-22 19:00+0000\n"
 "Last-Translator: Eleonora <ekandzh95@gmail.com>\n"
 "Language-Team: Bulgarian\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-06 05:30+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
+"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -890,7 +890,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1349
 msgid "Empty _Trash"
 msgstr "Опразни Кошчето"
 
@@ -1485,12 +1485,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr "Файловете от най-високо ниво не могат да бъдат преименувани"
 
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "Предишен"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "Следващ"
 
@@ -1498,92 +1498,79 @@ msgstr "Следващ"
 msgid "Create folder"
 msgstr "Създаване на папка"
 
-#: ../src/View/Window.vala:178
+#: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
 msgstr "Files не е вашият файлов мениджър по подразбиране"
 
-#: ../src/View/Window.vala:184
+#: ../src/View/Window.vala:188
 msgid "Set as Default"
 msgstr "По подразбиране"
 
-#: ../src/View/Window.vala:190
+#: ../src/View/Window.vala:194
 msgid "Ignore"
 msgstr "Игнориране"
 
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
 msgid "Home"
 msgstr "Домашна папка"
 
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
+#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
 msgid "File System"
 msgstr "Файлова система"
 
-#: ../src/View/ViewContainer.vala:332
+#: ../src/View/ViewContainer.vala:344
 msgid "(as Administrator)"
 msgstr "като Администратор"
 
-#: ../src/View/ViewContainer.vala:341
+#: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
 msgstr "Тази папка не принадлежи на вас."
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
 msgstr "Нямате разрешение да видите тази папка."
 
-#: ../src/View/ViewContainer.vala:345
+#: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:358
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:375
 msgid "The file selected no longer exists."
 msgstr ""
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "Отваряне в нов раздел"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "Отвори с"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Друго Пиложение"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Файлово име"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:682
+#: ../src/View/PropertiesWindow.vala:720
 #: ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Размер"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:558
 #: ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Тип"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:640
 msgid "Modified"
 msgstr "Промяна"
 
@@ -1665,303 +1652,322 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:108
+#: ../src/View/PropertiesWindow.vala:200
+msgid "Close"
+msgstr "Затваряне"
+
+#: ../src/View/PropertiesWindow.vala:297 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Настройки"
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:359
+#: ../src/View/PropertiesWindow.vala:1549
 msgid "General"
 msgstr "Общи"
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:367
 msgid "More"
 msgstr "Повече"
 
-#: ../src/View/PropertiesWindow.vala:235
+#: ../src/View/PropertiesWindow.vala:392
 msgid "Preview"
 msgstr "Преглед"
 
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr "Затваряне"
-
-#: ../src/View/PropertiesWindow.vala:288
+#: ../src/View/PropertiesWindow.vala:431
 msgid "file"
 msgstr "файл"
 
-#: ../src/View/PropertiesWindow.vala:290
+#: ../src/View/PropertiesWindow.vala:433
 msgid "files"
 msgstr "файлове"
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:435
 msgid "Actual size could be larger, "
 msgstr "Истинския размер може да е по-голям, "
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:435
 msgid "could not be read due to permissions or other errors."
 msgstr ""
 "не може да бъде прочетен заради липса на разрешение или друга грешка."
 
-#: ../src/View/PropertiesWindow.vala:321
+#: ../src/View/PropertiesWindow.vala:464
 msgid "unknown"
 msgstr "неизвестен"
 
-#: ../src/View/PropertiesWindow.vala:451
+#: ../src/View/PropertiesWindow.vala:528
 msgid "%u selected items"
 msgstr "%u избрани предмета"
 
-#: ../src/View/PropertiesWindow.vala:564
+#: ../src/View/PropertiesWindow.vala:638
 msgid "Created"
 msgstr "Създаден"
 
-#: ../src/View/PropertiesWindow.vala:569
+#: ../src/View/PropertiesWindow.vala:643
 msgid "Last Access"
 msgstr "Достъп"
 
-#: ../src/View/PropertiesWindow.vala:577
+#: ../src/View/PropertiesWindow.vala:651
 msgid "Deleted"
 msgstr "Изтрит"
 
-#: ../src/View/PropertiesWindow.vala:582
+#: ../src/View/PropertiesWindow.vala:656
 msgid "MimeType"
 msgstr "MimeType"
 
-#: ../src/View/PropertiesWindow.vala:590
+#: ../src/View/PropertiesWindow.vala:664
 msgid "MimeTypes"
 msgstr "МаймВидове"
 
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
+#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
+#: ../src/View/PropertiesWindow.vala:1496
 msgid "Location"
 msgstr "Адрес"
 
-#: ../src/View/PropertiesWindow.vala:627
+#: ../src/View/PropertiesWindow.vala:701
 msgid "Target"
 msgstr "Цел"
 
-#: ../src/View/PropertiesWindow.vala:633
+#: ../src/View/PropertiesWindow.vala:707
 msgid "Origin Location"
 msgstr "Адрес на произход"
 
-#: ../src/View/PropertiesWindow.vala:660
+#: ../src/View/PropertiesWindow.vala:717
+#: ../src/View/PropertiesWindow.vala:1494
 msgid "Info"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:702
+#: ../src/View/PropertiesWindow.vala:751
 msgid "Other application..."
 msgstr "Друго приложение…"
 
-#: ../src/View/PropertiesWindow.vala:726
+#: ../src/View/PropertiesWindow.vala:775
 msgid "Open with:"
 msgstr "Отваряне с:"
 
-#: ../src/View/PropertiesWindow.vala:744
+#: ../src/View/PropertiesWindow.vala:790
+#: ../src/View/PropertiesWindow.vala:1506
 msgid "Usage"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:792
 msgid "Device usage:"
 msgstr "Използвано място:"
 
-#: ../src/View/PropertiesWindow.vala:758
+#: ../src/View/PropertiesWindow.vala:799
 msgid "%s free of %s (%d%% used)"
 msgstr "%s свободни от %s (%d%% заети)"
 
-#: ../src/View/PropertiesWindow.vala:894
+#: ../src/View/PropertiesWindow.vala:909
 msgid "Read"
 msgstr "Четене"
 
-#: ../src/View/PropertiesWindow.vala:898
+#: ../src/View/PropertiesWindow.vala:913
 msgid "Write"
 msgstr "Запис"
 
-#: ../src/View/PropertiesWindow.vala:902
+#: ../src/View/PropertiesWindow.vala:917
 msgid "Execute"
 msgstr "Изпълним"
 
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
+#: ../src/View/PropertiesWindow.vala:1121
+#: ../src/View/PropertiesWindow.vala:1134
 msgid "Owner"
 msgstr "Собственик"
 
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
+#: ../src/View/PropertiesWindow.vala:1126
+#: ../src/View/PropertiesWindow.vala:1138
 msgid "Group"
 msgstr "Група"
 
-#: ../src/View/PropertiesWindow.vala:1127
+#: ../src/View/PropertiesWindow.vala:1142
 msgid "Everyone"
 msgstr "Всеки"
 
-#: ../src/View/PropertiesWindow.vala:1359
+#: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
 msgstr "Изберете приложение за отваряне "
 
-#: ../src/View/Sidebar.vala:430
+#: ../src/View/PropertiesWindow.vala:1429
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1501
+msgid "Format"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1517
+#: ../src/View/PropertiesWindow.vala:1536
+msgid "Capacity"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1521
+#: ../src/View/PropertiesWindow.vala:1540
+msgid "Available"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1525
+#: ../src/View/PropertiesWindow.vala:1544
+msgid "Used"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1526
+msgid "%s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1537
+#: ../src/View/PropertiesWindow.vala:1541
+#: ../src/View/PropertiesWindow.vala:1545
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:429
 msgid "Personal"
 msgstr "Лични"
 
-#: ../src/View/Sidebar.vala:435
+#: ../src/View/Sidebar.vala:434
 msgid "Your common places and bookmarks"
 msgstr "Вашите места и отметки"
 
-#: ../src/View/Sidebar.vala:454
+#: ../src/View/Sidebar.vala:453
 msgid "Open your personal folder"
 msgstr "Отворете личната си папка"
 
-#: ../src/View/Sidebar.vala:469
+#: ../src/View/Sidebar.vala:468
 msgid "View the list of recently used files"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
+#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
 msgid "Trash"
 msgstr "Кошче"
 
-#: ../src/View/Sidebar.vala:497
+#: ../src/View/Sidebar.vala:496
 msgid "Open the Trash"
 msgstr "Отвори в Кошчето"
 
-#: ../src/View/Sidebar.vala:503
+#: ../src/View/Sidebar.vala:502
 msgid "Devices"
 msgstr "Устройства"
 
-#: ../src/View/Sidebar.vala:508
+#: ../src/View/Sidebar.vala:507
 msgid "Your local partitions and devices"
 msgstr "Локалните Ви дялове и устройства"
 
-#: ../src/View/Sidebar.vala:520
+#: ../src/View/Sidebar.vala:519
 msgid "Open the contents of the FileSystem"
 msgstr "Отвори съдържанието на файловата система"
 
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
 msgid "Mount and open %s"
 msgstr "Монтирай и отвори %s"
 
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
+#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../src/View/Sidebar.vala:632
+#: ../src/View/Sidebar.vala:636
 msgid "Your network places"
 msgstr "Вашите места в мрежата"
 
-#: ../src/View/Sidebar.vala:662
+#: ../src/View/Sidebar.vala:666
 msgid "Entire Network"
 msgstr "Цялата Мрежа"
 
-#: ../src/View/Sidebar.vala:669
+#: ../src/View/Sidebar.vala:673
 msgid "Browse the contents of the network"
 msgstr "Разгледай съдържаннието на мрежата"
 
-#: ../src/View/Sidebar.vala:1198
+#: ../src/View/Sidebar.vala:1210
 msgid "Unable to start %s"
 msgstr "Не може да се стартира %s"
 
-#: ../src/View/Sidebar.vala:1279
+#: ../src/View/Sidebar.vala:1291
 msgid "Open"
 msgstr "Отвoри"
 
-#: ../src/View/Sidebar.vala:1287
+#: ../src/View/Sidebar.vala:1299
 msgid "Open in New _Tab"
 msgstr "Отвори в нов подпрозорец"
 
-#: ../src/View/Sidebar.vala:1293
+#: ../src/View/Sidebar.vala:1305
 msgid "Open in New _Window"
 msgstr "Отвори в нов прозорец"
 
-#: ../src/View/Sidebar.vala:1301
+#: ../src/View/Sidebar.vala:1313
 msgid "Remove"
 msgstr "Премахни"
 
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Преименувай"
 
-#: ../src/View/Sidebar.vala:1318
+#: ../src/View/Sidebar.vala:1330
 msgid "_Mount"
 msgstr "Монтирай"
 
-#: ../src/View/Sidebar.vala:1324
+#: ../src/View/Sidebar.vala:1336
 msgid "_Unmount"
 msgstr "Демонтирай"
 
-#: ../src/View/Sidebar.vala:1330
+#: ../src/View/Sidebar.vala:1342
 msgid "_Eject"
 msgstr "Извади"
 
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Изглед като Решетка"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Изглед като Списък"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Изглед като Колони"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
-msgstr "В тази папка"
-
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr "Отметки"
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr "Навсякъде другаде"
-
-#: ../src/View/AbstractDirectoryView.vala:555
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Провал при прегледа"
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1048
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Задай по подразбиране"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
 msgstr "Не може да се метне този файл"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Invalid file name provided"
 msgstr "Невярно дадено файлово име"
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1948
 msgid "Invalid"
 msgstr "Невярно"
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Run"
 msgstr "Изпълнение"
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1967
 msgid "Open in %s"
 msgstr "Отваряне с %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1977
 msgid "Open in"
 msgstr "Отваряне в"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1979
+#: ../libwidgets/View/BreadcrumbsEntry.vala:445
+msgid "Open with"
+msgstr "Отвори с"
+
+#: ../src/View/AbstractDirectoryView.vala:2039
 msgid "Other Application"
 msgstr "Други Приложения"
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2308
 msgid "Untitled %s"
 msgstr "Неименован %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2639
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2640
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2812
+#: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2002,26 +2008,6 @@ msgstr ""
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "„--quit“ не може да си използва с адреси."
-
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr "Неуспешно изпълнение на „%s“"
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr "Преместване Тук"
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr "Препис Тук"
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr "Създаване на връзка"
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "Отказ"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2074,17 +2060,25 @@ msgstr "Показване на диалоговия прозорец за ко�
 msgid "Cancel All In-progress Actions"
 msgstr "Отказване на всички изпълняващи се действия"
 
-#: ../libwidgets/LocationBar.vala:102
-msgid "Reload this folder"
-msgstr ""
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr "Неуспешно изпълнение на „%s“"
 
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "Отиди в %s"
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr "Преместване Тук"
 
-#: ../libwidgets/LocationBar.vala:454
-msgid "Navigate to %s"
-msgstr ""
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr "Препис Тук"
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr "Създаване на връзка"
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "Отказ"
 
 #: ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
@@ -2094,37 +2088,94 @@ msgstr "Прост и мощен папков уредник"
 msgid "Launchpad Translators"
 msgstr "Лончпадови Преводачи"
 
-#: ../libwidgets/Resources.vala:84
+#: ../libwidgets/Resources.vala:92
 msgid "AFP"
 msgstr "AFP"
 
-#: ../libwidgets/Resources.vala:85
+#: ../libwidgets/Resources.vala:93
 msgid "DAV"
 msgstr "DAV"
 
-#: ../libwidgets/Resources.vala:86
+#: ../libwidgets/Resources.vala:94
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../libwidgets/Resources.vala:87
+#: ../libwidgets/Resources.vala:95
 msgid "FTP"
 msgstr "FTP"
 
-#: ../libwidgets/Resources.vala:89
+#: ../libwidgets/Resources.vala:97
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../libwidgets/Resources.vala:90
+#: ../libwidgets/Resources.vala:98
 msgid "SMB"
 msgstr "SMB"
 
-#: ../libwidgets/Resources.vala:92
+#: ../libwidgets/Resources.vala:100
 msgid "Recent"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:93
+#: ../libwidgets/Resources.vala:101
 msgid "MTP"
 msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:162
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
+msgid "Enter search term or path"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Отваряне в нов раздел"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application ..."
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "В тази папка"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Отметки"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Навсякъде другаде"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Изглед като Решетка"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Изглед като Списък"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Изглед като Колони"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
+msgid "Navigate to %s"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
+msgid "Go to %s"
+msgstr "Отиди в %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

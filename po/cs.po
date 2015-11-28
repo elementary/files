@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-05 05:29-0600\n"
+"POT-Creation-Date: 2015-11-27 05:38-0600\n"
 "PO-Revision-Date: 2015-11-25 08:20+0000\n"
 "Last-Translator: Petr Dombek <dombek@oblati.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-26 05:27+0000\n"
+"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -918,7 +918,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1349
 msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 
@@ -1530,12 +1530,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
 
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "Předchozí"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "Následující"
 
@@ -1543,92 +1543,79 @@ msgstr "Následující"
 msgid "Create folder"
 msgstr "Vytvořit složku"
 
-#: ../src/View/Window.vala:178
+#: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
 msgstr "Tento Správce souborů není váš výchozí"
 
-#: ../src/View/Window.vala:184
+#: ../src/View/Window.vala:188
 msgid "Set as Default"
 msgstr "Nastavit jako Výchozí"
 
-#: ../src/View/Window.vala:190
+#: ../src/View/Window.vala:194
 msgid "Ignore"
 msgstr "Ignorovat"
 
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
+#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
 msgid "Home"
 msgstr "Domů"
 
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
+#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
 msgid "File System"
 msgstr "Souborový systém"
 
-#: ../src/View/ViewContainer.vala:332
+#: ../src/View/ViewContainer.vala:344
 msgid "(as Administrator)"
 msgstr "(jako Administrátor)"
 
-#: ../src/View/ViewContainer.vala:341
+#: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
 msgstr "Tato složka nepatří Vám"
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
-#: ../src/View/ViewContainer.vala:345
+#: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"
 msgstr "Složku nelze připojit"
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:358
 msgid "The server for this folder could not be located."
 msgstr "Server pro tuto složku nelze nalézt."
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr "Tato složka neexistuje"
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
 msgstr "Zde nelze vytvořit složku"
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
 msgstr "Soubor nenalezen"
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:375
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor již neexistuje."
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "Otevřít v nové kartě"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "Otevřít s"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Další aplikace .."
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Název souboru"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
+#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:682
+#: ../src/View/PropertiesWindow.vala:720
 #: ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Velikost"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
+#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:558
 #: ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Typ"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
+#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:640
 msgid "Modified"
 msgstr "Změněno"
 
@@ -1709,302 +1696,321 @@ msgstr "%u soubor, "
 msgid "%u files, "
 msgstr "%u soubory, "
 
-#: ../src/View/PropertiesWindow.vala:108
+#: ../src/View/PropertiesWindow.vala:200
+msgid "Close"
+msgstr "Zavřít"
+
+#: ../src/View/PropertiesWindow.vala:297 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:359
+#: ../src/View/PropertiesWindow.vala:1549
 msgid "General"
 msgstr "Obecné"
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:367
 msgid "More"
 msgstr "Další"
 
-#: ../src/View/PropertiesWindow.vala:235
+#: ../src/View/PropertiesWindow.vala:392
 msgid "Preview"
 msgstr "Náhled"
 
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr "Zavřít"
-
-#: ../src/View/PropertiesWindow.vala:288
+#: ../src/View/PropertiesWindow.vala:431
 msgid "file"
 msgstr "soubor"
 
-#: ../src/View/PropertiesWindow.vala:290
+#: ../src/View/PropertiesWindow.vala:433
 msgid "files"
 msgstr "souborů"
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:435
 msgid "Actual size could be larger, "
 msgstr "Skutečná velikost může být větší, "
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:435
 msgid "could not be read due to permissions or other errors."
 msgstr "nelze přečist kvůli nedostatečnému oprávnění nebo jiným chybám."
 
-#: ../src/View/PropertiesWindow.vala:321
+#: ../src/View/PropertiesWindow.vala:464
 msgid "unknown"
 msgstr "neznámý"
 
-#: ../src/View/PropertiesWindow.vala:451
+#: ../src/View/PropertiesWindow.vala:528
 msgid "%u selected items"
 msgstr "%u vybraných položek"
 
-#: ../src/View/PropertiesWindow.vala:564
+#: ../src/View/PropertiesWindow.vala:638
 msgid "Created"
 msgstr "Vytvořeno"
 
-#: ../src/View/PropertiesWindow.vala:569
+#: ../src/View/PropertiesWindow.vala:643
 msgid "Last Access"
 msgstr "Poslední přístup"
 
-#: ../src/View/PropertiesWindow.vala:577
+#: ../src/View/PropertiesWindow.vala:651
 msgid "Deleted"
 msgstr "Smazáno"
 
-#: ../src/View/PropertiesWindow.vala:582
+#: ../src/View/PropertiesWindow.vala:656
 msgid "MimeType"
 msgstr "MIME typ"
 
-#: ../src/View/PropertiesWindow.vala:590
+#: ../src/View/PropertiesWindow.vala:664
 msgid "MimeTypes"
 msgstr "MIME typy"
 
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
+#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
+#: ../src/View/PropertiesWindow.vala:1496
 msgid "Location"
 msgstr "Umístění"
 
-#: ../src/View/PropertiesWindow.vala:627
+#: ../src/View/PropertiesWindow.vala:701
 msgid "Target"
 msgstr "Cíl"
 
-#: ../src/View/PropertiesWindow.vala:633
+#: ../src/View/PropertiesWindow.vala:707
 msgid "Origin Location"
 msgstr "Původní umístění"
 
-#: ../src/View/PropertiesWindow.vala:660
+#: ../src/View/PropertiesWindow.vala:717
+#: ../src/View/PropertiesWindow.vala:1494
 msgid "Info"
 msgstr "Informace"
 
-#: ../src/View/PropertiesWindow.vala:702
+#: ../src/View/PropertiesWindow.vala:751
 msgid "Other application..."
 msgstr "Jiná aplikace…"
 
-#: ../src/View/PropertiesWindow.vala:726
+#: ../src/View/PropertiesWindow.vala:775
 msgid "Open with:"
 msgstr "Oteřít s:"
 
-#: ../src/View/PropertiesWindow.vala:744
+#: ../src/View/PropertiesWindow.vala:790
+#: ../src/View/PropertiesWindow.vala:1506
 msgid "Usage"
 msgstr "Použití"
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:792
 msgid "Device usage:"
 msgstr "Využití zařízení:"
 
-#: ../src/View/PropertiesWindow.vala:758
+#: ../src/View/PropertiesWindow.vala:799
 msgid "%s free of %s (%d%% used)"
 msgstr "%s volných z %s (%d%% využito)"
 
-#: ../src/View/PropertiesWindow.vala:894
+#: ../src/View/PropertiesWindow.vala:909
 msgid "Read"
 msgstr "Čtení"
 
-#: ../src/View/PropertiesWindow.vala:898
+#: ../src/View/PropertiesWindow.vala:913
 msgid "Write"
 msgstr "Zápis"
 
-#: ../src/View/PropertiesWindow.vala:902
+#: ../src/View/PropertiesWindow.vala:917
 msgid "Execute"
 msgstr "Spouštění"
 
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
+#: ../src/View/PropertiesWindow.vala:1121
+#: ../src/View/PropertiesWindow.vala:1134
 msgid "Owner"
 msgstr "Vlastník"
 
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
+#: ../src/View/PropertiesWindow.vala:1126
+#: ../src/View/PropertiesWindow.vala:1138
 msgid "Group"
 msgstr "Skupina"
 
-#: ../src/View/PropertiesWindow.vala:1127
+#: ../src/View/PropertiesWindow.vala:1142
 msgid "Everyone"
 msgstr "Kdokoli"
 
-#: ../src/View/PropertiesWindow.vala:1359
+#: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
 msgstr "Zvolte aplikaci k otevření "
 
-#: ../src/View/Sidebar.vala:430
+#: ../src/View/PropertiesWindow.vala:1429
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1501
+msgid "Format"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1517
+#: ../src/View/PropertiesWindow.vala:1536
+msgid "Capacity"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1521
+#: ../src/View/PropertiesWindow.vala:1540
+msgid "Available"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1525
+#: ../src/View/PropertiesWindow.vala:1544
+msgid "Used"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1526
+msgid "%s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1537
+#: ../src/View/PropertiesWindow.vala:1541
+#: ../src/View/PropertiesWindow.vala:1545
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:429
 msgid "Personal"
 msgstr "Osobní"
 
-#: ../src/View/Sidebar.vala:435
+#: ../src/View/Sidebar.vala:434
 msgid "Your common places and bookmarks"
 msgstr "Vaše často prohlížená místa a záložky"
 
-#: ../src/View/Sidebar.vala:454
+#: ../src/View/Sidebar.vala:453
 msgid "Open your personal folder"
 msgstr "Otevřít osobní složku"
 
-#: ../src/View/Sidebar.vala:469
+#: ../src/View/Sidebar.vala:468
 msgid "View the list of recently used files"
 msgstr "Zobrazit nedávno použité soubory"
 
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
+#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
 msgid "Trash"
 msgstr "Koš"
 
-#: ../src/View/Sidebar.vala:497
+#: ../src/View/Sidebar.vala:496
 msgid "Open the Trash"
 msgstr "Otevřít Koš"
 
-#: ../src/View/Sidebar.vala:503
+#: ../src/View/Sidebar.vala:502
 msgid "Devices"
 msgstr "Zařízení"
 
-#: ../src/View/Sidebar.vala:508
+#: ../src/View/Sidebar.vala:507
 msgid "Your local partitions and devices"
 msgstr "Vaše místní oddíly a zařízení"
 
-#: ../src/View/Sidebar.vala:520
+#: ../src/View/Sidebar.vala:519
 msgid "Open the contents of the FileSystem"
 msgstr "Otevřít obsah souborového systému"
 
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
 msgid "Mount and open %s"
 msgstr "Připojit a otevřít %s"
 
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
+#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
 msgid "Network"
 msgstr "Síť"
 
-#: ../src/View/Sidebar.vala:632
+#: ../src/View/Sidebar.vala:636
 msgid "Your network places"
 msgstr "Vaše síť"
 
-#: ../src/View/Sidebar.vala:662
+#: ../src/View/Sidebar.vala:666
 msgid "Entire Network"
 msgstr "Celá síť"
 
-#: ../src/View/Sidebar.vala:669
+#: ../src/View/Sidebar.vala:673
 msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
-#: ../src/View/Sidebar.vala:1198
+#: ../src/View/Sidebar.vala:1210
 msgid "Unable to start %s"
 msgstr "Nelze aktivovat %s"
 
-#: ../src/View/Sidebar.vala:1279
+#: ../src/View/Sidebar.vala:1291
 msgid "Open"
 msgstr "Otevřít"
 
-#: ../src/View/Sidebar.vala:1287
+#: ../src/View/Sidebar.vala:1299
 msgid "Open in New _Tab"
 msgstr "Otevřít v nové kar_tě"
 
-#: ../src/View/Sidebar.vala:1293
+#: ../src/View/Sidebar.vala:1305
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: ../src/View/Sidebar.vala:1301
+#: ../src/View/Sidebar.vala:1313
 msgid "Remove"
 msgstr "Odstranit"
 
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../src/View/Sidebar.vala:1318
+#: ../src/View/Sidebar.vala:1330
 msgid "_Mount"
 msgstr "_Připojit"
 
-#: ../src/View/Sidebar.vala:1324
+#: ../src/View/Sidebar.vala:1336
 msgid "_Unmount"
 msgstr "_Odpojit"
 
-#: ../src/View/Sidebar.vala:1330
+#: ../src/View/Sidebar.vala:1342
 msgid "_Eject"
 msgstr "V_ysunout"
 
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Zobrazit v mřížce"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Zobrazit jako seznam"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Zobrazit ve sloupcích"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
-msgstr "V této složce"
-
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr "Záložky"
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr "Všude jinde"
-
-#: ../src/View/AbstractDirectoryView.vala:555
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Nelze zobrazit náhled"
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1048
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Nastavit jako výchozí"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
 msgstr "Tento soubor nelze přetáhnout"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1948
 msgid "Invalid"
 msgstr "Neplatný"
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Run"
 msgstr "Spustit"
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1967
 msgid "Open in %s"
 msgstr "Otevřít v %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1977
 msgid "Open in"
 msgstr "Otevřít v"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1979
+#: ../libwidgets/View/BreadcrumbsEntry.vala:445
+msgid "Open with"
+msgstr "Otevřít s"
+
+#: ../src/View/AbstractDirectoryView.vala:2039
 msgid "Other Application"
 msgstr "Jiná Aplikace"
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2308
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2639
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2640
 msgid "Cutting the selection instead"
 msgstr "Místo toho vyjmout výběr"
 
-#: ../src/View/AbstractDirectoryView.vala:2812
+#: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr "Přejmenování na '%s' se nezdařilo"
 
@@ -2045,26 +2051,6 @@ msgstr ""
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít spolu s adresami URI."
-
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr "Nepodařilo se spustit \"%s\""
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr "Přesunout sem"
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr "Kopírovat sem"
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr "Odkaz sem"
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "Zrušit"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2118,17 +2104,25 @@ msgstr "Zobrazit nabídku kopírování"
 msgid "Cancel All In-progress Actions"
 msgstr "Zrušit všechny vykonávané akce"
 
-#: ../libwidgets/LocationBar.vala:102
-msgid "Reload this folder"
-msgstr "Obnovit složku"
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr "Nepodařilo se spustit \"%s\""
 
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "Přejít do %s"
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr "Přesunout sem"
 
-#: ../libwidgets/LocationBar.vala:454
-msgid "Navigate to %s"
-msgstr "Přejít do %s"
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr "Kopírovat sem"
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr "Odkaz sem"
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "Zrušit"
 
 #: ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
@@ -2138,37 +2132,94 @@ msgstr "Jednoduchý a účelový prohlížeč souborů"
 msgid "Launchpad Translators"
 msgstr "Launchpad překladatelé"
 
-#: ../libwidgets/Resources.vala:84
+#: ../libwidgets/Resources.vala:92
 msgid "AFP"
 msgstr "AFP"
 
-#: ../libwidgets/Resources.vala:85
+#: ../libwidgets/Resources.vala:93
 msgid "DAV"
 msgstr "DAV"
 
-#: ../libwidgets/Resources.vala:86
+#: ../libwidgets/Resources.vala:94
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../libwidgets/Resources.vala:87
+#: ../libwidgets/Resources.vala:95
 msgid "FTP"
 msgstr "FTP"
 
-#: ../libwidgets/Resources.vala:89
+#: ../libwidgets/Resources.vala:97
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../libwidgets/Resources.vala:90
+#: ../libwidgets/Resources.vala:98
 msgid "SMB"
 msgstr "SMB"
 
-#: ../libwidgets/Resources.vala:92
+#: ../libwidgets/Resources.vala:100
 msgid "Recent"
 msgstr "Nedávné"
 
-#: ../libwidgets/Resources.vala:93
+#: ../libwidgets/Resources.vala:101
 msgid "MTP"
 msgstr "MTP"
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr "Obnovit složku"
+
+#: ../libwidgets/View/LocationBar.vala:162
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
+msgid "Enter search term or path"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Otevřít v nové kartě"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application ..."
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "V této složce"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Záložky"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Všude jinde"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Zobrazit v mřížce"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Zobrazit jako seznam"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Zobrazit ve sloupcích"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
+msgid "Navigate to %s"
+msgstr "Přejít do %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
+msgid "Go to %s"
+msgstr "Přejít do %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
