@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-27 05:38-0600\n"
-"PO-Revision-Date: 2015-11-17 19:08+0000\n"
+"PO-Revision-Date: 2015-11-28 10:04+0000\n"
 "Last-Translator: Beqa Arabuli <arabulibeqa@yahoo.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Launchpad-Export-Date: 2015-11-29 05:24+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -59,6 +59,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"სერვერებოს წესწყობილების მხარდაჭერილი სიის ჩატვირთვა ვერ მოხერხდა.\n"
+"გთხოვთ შეამოწმეთ თქვენი gvfs ინსტალაცია."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -218,102 +220,102 @@ msgstr "'%s'-ის ბმულის წაშლა"
 #: ../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s'-ში დაცული ფაილების საწყისი უფლებების აღდგენა"
 
 #: ../libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "'%s'-ის საწყისი უფლებების აღდგენა"
 
 #: ../libcore/marlin-undostack-manager.c:1343
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s'-ის ჯგუფის აღდგენა  '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1353
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s'-ის მფლობელობის დაბრუნება  '%s'-სთვის"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "%d ელემენტის კოპირეა '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "'%s'-ს კოპირება '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1404
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "%d ელემენტის დუბლი '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1409
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "'%s'-ის დუბლირება '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "%d ელემენტის გადატანა '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1421
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "'%s'-ს გადატანა '%s'-ში"
 
 #: ../libcore/marlin-undostack-manager.c:1439
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "'%s' ახალი ფაილის შექმნა შაბლონიდან "
 
 #: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "ცარიელი ფაილის შექმნა სახელით '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "'%s' ახალი საქაღალდის შექმნა"
 
 #: ../libcore/marlin-undostack-manager.c:1461
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "%d ელემენტის გადატანა სანაგეში"
 
 #: ../libcore/marlin-undostack-manager.c:1467
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "'%s'-ის გადატანა სანაგვეში"
 
 #: ../libcore/marlin-undostack-manager.c:1480
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "'%s'-ის აღდგენა სანაგვიდან"
 
 #: ../libcore/marlin-undostack-manager.c:1489
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "%d ელემენტის ბმულის შექმნა"
 
 #: ../libcore/marlin-undostack-manager.c:1492
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "'%s'-ის ბმულის შექმნა"
 
 #: ../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s'-ში დაცული ელემენტების უფლებების დაყენება"
 
 #: ../libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "'%s'-ის უფლებების დაყენება"
 
 #: ../libcore/marlin-undostack-manager.c:1518
 #, c-format
@@ -883,7 +885,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1349
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_ნაგვის დაცარიელება"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1050,7 +1052,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2413
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "არ _დაცარიელდეს ნაგავი"
 
 #: ../libcore/marlin-file-operations.c:2527
 #, c-format
@@ -1398,11 +1400,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6644
 msgid "Emptying the trash"
-msgstr ""
+msgstr "ნაგავი ცარიელდება"
 
 #: ../libcore/marlin-file-operations.c:6656
 msgid "Emptying Trash"
-msgstr ""
+msgstr "ნაგავი ცარიელდება"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
@@ -1561,11 +1563,11 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "ეს საქაღალდე ცარიელია"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "ნაგავი ცარიელია"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
@@ -1643,7 +1645,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:433
 msgid "files"
-msgstr ""
+msgstr "ფაილები"
 
 #: ../src/View/PropertiesWindow.vala:435
 msgid "Actual size could be larger, "
@@ -1809,11 +1811,11 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:502
 msgid "Devices"
-msgstr ""
+msgstr "მოწყობილობები"
 
 #: ../src/View/Sidebar.vala:507
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "თქვენი ადგილობრივი დანაყოფები და მოწყობილობები"
 
 #: ../src/View/Sidebar.vala:519
 msgid "Open the contents of the FileSystem"
@@ -1931,31 +1933,31 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "'%s'-ზე გადარქმევა ვერ მოხერხდა"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
-msgstr ""
+msgstr "პროგრამის ვერსიის ჩვენება."
 
 #: ../src/Application.vala:148
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "uri(ებ)-ის გახსნა ახალ ჩანართში"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
 msgid "New Window"
-msgstr ""
+msgstr "ახალი ფანჯარა"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr ""
+msgstr "ფაილებიდან გამოსვლა"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
-msgstr ""
+msgstr "დებაგ ჟურნალის ჩართვა"
 
 #: ../src/Application.vala:157
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: ../src/Application.vala:160
 msgid ""
@@ -1963,113 +1965,115 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"ფაილური სისტემის ფაილების მმართველით დათვალიერება"
 
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--გამოსვლა ვერ იქნება URI(ებ)-თან გამოყენებული."
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "დაათვალიერეთ თქვენი ფაილები"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "ფაილების მმართველი"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr ""
+msgstr "ახალი _ფანჯარა"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "ახალი ფანჯარა |_ადმინისტრატორის სახელით"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
-msgstr ""
+msgstr "_ფაილების შესახებ"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "ფაილები"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
 msgid "File Operations"
-msgstr ""
+msgstr "ფაილური ოპერაციები"
 
 #: ../src/ProgressUIHandler.vala:206
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "ყველა ფაილური ოპერაცია წარმატებით დასრულდა"
 
 #: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "აქტიურია %'d ფაილური ოპერაცია"
 
 #: ../src/ProgressUIHandler.vala:242
 msgid "Show Details"
-msgstr ""
+msgstr "დეტალების ჩვენება"
 
 #: ../src/ProgressUIHandler.vala:323
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "ასლის დიალოგის ჩვენება"
 
 #: ../src/ProgressUIHandler.vala:335
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "ყველა მიმდინარე მოქმედების გაუქმება"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\"-ის გაშვება ჩაიშალა"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "აქ გადმოადგილება"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "აქ კოპირება"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Link Here"
-msgstr ""
+msgstr "ბმულის შექმნა აქ"
 
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "ფაილების მარტივი და მძლავრი მმართველი"
 
 #: ../libwidgets/Resources.vala:47
 msgid "Launchpad Translators"
-msgstr ""
+msgstr "Launchpad-ის მთარგმნელები"
 
 #: ../libwidgets/Resources.vala:92
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: ../libwidgets/Resources.vala:93
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../libwidgets/Resources.vala:94
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../libwidgets/Resources.vala:95
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../libwidgets/Resources.vala:97
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../libwidgets/Resources.vala:98
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:100
 msgid "Recent"
@@ -2077,16 +2081,16 @@ msgstr "ბოლო"
 
 #: ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
-msgstr ""
+msgstr "ამ საქაღალდის გადატვირთვა"
 
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
-msgstr ""
+msgstr "შეიყვანეთ საძიებო სიტყვა ან მდებარეობა"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:406
 msgid "Open in New Tab"
@@ -2094,15 +2098,15 @@ msgstr "ახალ ჩანართში გახსნა"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "ახალ ფანჯარაში გახსნა"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application ..."
-msgstr ""
+msgstr "სხვა პროგრამაში გახსნა..."
 
 #: ../libwidgets/View/SearchResults.vala:179
 msgid "In This Folder"
-msgstr ""
+msgstr "ამ საქაღალდეში"
 
 #: ../libwidgets/View/SearchResults.vala:181
 msgid "Bookmarks"
@@ -2110,72 +2114,72 @@ msgstr "სანიშნები"
 
 #: ../libwidgets/View/SearchResults.vala:183
 msgid "Everywhere Else"
-msgstr ""
+msgstr "ყველგან სხვაგან"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "ბადედ ჩვენება"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "სიად ჩვენება"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "სვეტებად ჩვენება"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "აკრიფეთ მდებარეობა"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
 msgid "Navigate to %s"
-msgstr ""
+msgstr "გადასვლა %s-ში"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
 msgid "Go to %s"
-msgstr ""
+msgstr "გადასვლა %s-ში"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "სერვერთან დაკავშირება..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "ქსელურ ფაილ სერვერთან დაკავშირება"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "ყველას აღდგენა"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "ნაგვის დაცარიელება"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "შესაძლებელია ნაგვიდან ამ ელემენტეის აღდგენა ან წაშლა"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "ფესვის საქაღალდეში მოხვედრამდე აღდგენა ან წაშლა შეუძლებელია"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "ნაგვიდან აღდგენა"
 
 #: ../src/View/directory_view_popup.ui:9
 #: ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "სამუდამოდ წაშლა"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "მშობელი საქაღალდის გახსნა"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "ისტორიიდან წაშლა"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2183,23 +2187,23 @@ msgstr "ნაგავში გადატანა"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "ახალი"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "საქაღალდე"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "ცარიელი ფაილი"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "დამალული ფაილების ჩვენება"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
-msgstr ""
+msgstr "ახალი ჩანართი"
 
 #: ../src/View/directory_view_popup.ui:87
 msgid "Terminal"
@@ -2211,7 +2215,7 @@ msgstr "სანიშნი"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
-msgstr ""
+msgstr "ჩასმა"
 
 #: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
@@ -2219,11 +2223,11 @@ msgstr "ამოჭრა"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
-msgstr ""
+msgstr "კოპირება"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"
-msgstr ""
+msgstr "საქაღალდეში ჩასმა"
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
@@ -2231,12 +2235,12 @@ msgstr "დალაგება"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #: ../src/View/directory_view_popup.ui:149
 msgid "Date"
-msgstr ""
+msgstr "თარიღი"
 
 #: ../src/View/directory_view_popup.ui:156
 msgid "Reversed Order"
-msgstr ""
+msgstr "შებრუნებული წყობა"
