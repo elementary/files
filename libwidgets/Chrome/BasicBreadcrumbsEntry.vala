@@ -558,6 +558,7 @@ namespace Marlin.View.Chrome {
                 button_context_active.set_path(button_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
+            is_RTL = ((this.get_style_context ().get_state () & Gtk.StateFlags.DIR_RTL) > 0);
             var state = button_context.get_state ();
             var padding = button_context.get_padding (state);
             base.draw (cr);
