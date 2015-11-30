@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-27 05:38-0600\n"
-"PO-Revision-Date: 2015-08-11 20:26+0000\n"
+"PO-Revision-Date: 2015-11-29 23:07+0000\n"
 "Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:54+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:25+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -148,11 +148,11 @@ msgstr "Mostrar mais _detalhes"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Impossível determinar localização original"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Abrir pasta de lixo e restaurar manualmente"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -1806,36 +1806,36 @@ msgstr "Selecione uma aplicação para abrir "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Propriedade do Disco"
 
 #: ../src/View/PropertiesWindow.vala:1501
 msgid "Format"
-msgstr ""
+msgstr "Formatar"
 
 #: ../src/View/PropertiesWindow.vala:1517
 #: ../src/View/PropertiesWindow.vala:1536
 msgid "Capacity"
-msgstr ""
+msgstr "Capacidade"
 
 #: ../src/View/PropertiesWindow.vala:1521
 #: ../src/View/PropertiesWindow.vala:1540
 msgid "Available"
-msgstr ""
+msgstr "Disponível"
 
 #: ../src/View/PropertiesWindow.vala:1525
 #: ../src/View/PropertiesWindow.vala:1544
 msgid "Used"
-msgstr ""
+msgstr "Usado"
 
 #: ../src/View/PropertiesWindow.vala:1526
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% usados)"
 
 #: ../src/View/PropertiesWindow.vala:1537
 #: ../src/View/PropertiesWindow.vala:1541
 #: ../src/View/PropertiesWindow.vala:1545
 msgid "Unknown"
-msgstr ""
+msgstr "Desconhecido"
 
 #: ../src/View/Sidebar.vala:429
 msgid "Personal"
@@ -2134,7 +2134,7 @@ msgstr "Recentes"
 
 #: ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
@@ -2143,7 +2143,7 @@ msgstr "Recarregar esta pasta"
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Introduzir termo de pesquisa ou caminho"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:406
 msgid "Open in New Tab"
@@ -2151,11 +2151,11 @@ msgstr "Abrir num novo separador"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Abrir numa Nova Janela"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application ..."
-msgstr ""
+msgstr "Abrir com Outra Aplicação ..."
 
 #: ../libwidgets/View/SearchResults.vala:179
 msgid "In This Folder"
@@ -2183,7 +2183,7 @@ msgstr "Ver em colunas"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Escreva um caminho"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
 msgid "Navigate to %s"

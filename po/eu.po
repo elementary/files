@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-27 05:38-0600\n"
-"PO-Revision-Date: 2014-07-17 05:08+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2015-11-29 14:33+0000\n"
+"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:25+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1324,7 +1324,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4592
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Ezin izan da hemen \"%B\" kopiatzea."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "There was an error copying the file into %B."
@@ -1478,7 +1478,7 @@ msgstr "Maila goreneko fitxategiak ezin dira berrizendatu"
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
-msgstr ""
+msgstr "Aurrekoa"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../libwidgets/Chrome/TopMenu.vala:55

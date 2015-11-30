@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-27 05:38-0600\n"
-"PO-Revision-Date: 2015-11-15 18:56+0000\n"
-"Last-Translator: Emanuele Tocco <mr.emanueletocco@gmail.com>\n"
+"PO-Revision-Date: 2015-11-29 15:41+0000\n"
+"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:25+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1803,36 +1803,36 @@ msgstr "Selezionare un'applicazione per aprire "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Proprietà del disco"
 
 #: ../src/View/PropertiesWindow.vala:1501
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: ../src/View/PropertiesWindow.vala:1517
 #: ../src/View/PropertiesWindow.vala:1536
 msgid "Capacity"
-msgstr ""
+msgstr "Capacità"
 
 #: ../src/View/PropertiesWindow.vala:1521
 #: ../src/View/PropertiesWindow.vala:1540
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: ../src/View/PropertiesWindow.vala:1525
 #: ../src/View/PropertiesWindow.vala:1544
 msgid "Used"
-msgstr ""
+msgstr "Usato"
 
 #: ../src/View/PropertiesWindow.vala:1526
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% usato)"
 
 #: ../src/View/PropertiesWindow.vala:1537
 #: ../src/View/PropertiesWindow.vala:1541
 #: ../src/View/PropertiesWindow.vala:1545
 msgid "Unknown"
-msgstr ""
+msgstr "Sconosciuto"
 
 #: ../src/View/Sidebar.vala:429
 msgid "Personal"
@@ -2140,7 +2140,7 @@ msgstr "Ricarica questa cartella"
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Inserisci un termine di ricerca o il percorso"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:406
 msgid "Open in New Tab"
@@ -2148,11 +2148,11 @@ msgstr "Apri in una nuova scheda"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Apri in una nuova finestra"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application ..."
-msgstr ""
+msgstr "Apri in un'altra applicazione ..."
 
 #: ../libwidgets/View/SearchResults.vala:179
 msgid "In This Folder"
@@ -2180,7 +2180,7 @@ msgstr "Visualizza in Colonne"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Digita un percorso"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
 msgid "Navigate to %s"
