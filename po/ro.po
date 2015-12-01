@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 05:38-0600\n"
+"POT-Creation-Date: 2015-11-30 03:19-0600\n"
 "PO-Revision-Date: 2014-07-17 05:05+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:54+0000\n"
+"X-Launchpad-Export-Date: 2015-12-01 05:30+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2152,7 +2152,7 @@ msgid "Open in New Window"
 msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application ..."
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:179

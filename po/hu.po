@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 05:38-0600\n"
+"POT-Creation-Date: 2015-11-30 03:19-0600\n"
 "PO-Revision-Date: 2015-08-20 16:19+0000\n"
 "Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Launchpad-Export-Date: 2015-12-01 05:29+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 "Language: hu\n"
 
@@ -2134,7 +2134,7 @@ msgid "Open in New Window"
 msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application ..."
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:179

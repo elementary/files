@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 05:38-0600\n"
+"POT-Creation-Date: 2015-11-30 03:19-0600\n"
 "PO-Revision-Date: 2013-07-25 20:12+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Lojban <jbo@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-11-28 04:53+0000\n"
+"X-Launchpad-Export-Date: 2015-12-01 05:29+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2097,7 +2097,7 @@ msgid "Open in New Window"
 msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application ..."
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:179
