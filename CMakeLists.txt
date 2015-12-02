@@ -1,16 +1,17 @@
 # Check http://elementaryos.org/docs/developer-guide/cmake for documentation
 
-cmake_minimum_required (VERSION 2.6)
-cmake_policy (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8)
+cmake_policy (VERSION 2.8)
 project (pantheon-files C)
 enable_testing ()
 
+include (GNUInstallDirs)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
-set (GETTEXT_PACKAGE "pantheon-files")
-set (PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/pantheon-files/")
+set (GETTEXT_PACKAGE ${CMAKE_PROJECT_NAME})
+set (PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/${CMAKE_PROJECT_NAME}/")
 set (GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (PLUGIN_DIR "${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/")
-set (UI_DIR "${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/")
+set (PLUGIN_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/${CMAKE_PROJECT_NAME}/plugins/")
+set (UI_DIR "${CMAKE_INSTALL_PREFIX}/share/${CMAKE_PROJECT_NAME}/ui/")
 set (PACKAGE_VERSION 0.2.4)
 set (VERSION 0.2.4)
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)

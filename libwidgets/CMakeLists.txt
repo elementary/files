@@ -8,8 +8,8 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
+include_directories (${CMAKE_SOURCE_DIR}/libcore/)
+include_directories (${CMAKE_BINARY_DIR}/libcore/)
 
 # Check for the deps
 
@@ -75,5 +75,5 @@ set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${PANTHEON_FILES_WIDGETS_VERSION}
     SOVERSION ${PANTHEON_FILES_WIDGETS_SOVERSION})
 
-install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 target_link_libraries(${PKGNAME} pantheon-files-core ${DEPS_LIBRARIES})

@@ -35,5 +35,5 @@ add_library(pantheon-files-contractor SHARED
     ${VALA_C})
 target_link_libraries(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
 add_dependencies(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
-install(TARGETS pantheon-files-contractor DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES contractor.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(TARGETS pantheon-files-contractor DESTINATION ${PLUGIN_DIR}/core/)
+install(FILES contractor.plug DESTINATION ${PLUGIN_DIR}/core/)
