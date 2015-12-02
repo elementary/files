@@ -1,4 +1,4 @@
-debian/tmp/usr/bin
-debian/tmp/usr/lib/pantheon-files
-debian/tmp/usr/share
-debian/tmp/usr/lib/*/gtk-3.0/modules/libpantheon-filechooser-module.so
+usr/bin
+usr/lib/*/pantheon-files
+usr/share
+usr/lib/*/gtk-3.0/modules/libpantheon-filechooser-module.so
