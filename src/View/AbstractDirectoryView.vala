@@ -3247,6 +3247,7 @@ namespace FM {
         }
 
         public virtual void cancel () {
+            grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
             cancel_drag_timer ();
