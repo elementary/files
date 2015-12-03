@@ -93,8 +93,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
         if (content != null) {
             content.set_border_width (5);
-            content.margin_right = 15;
-            content.margin_left = 0;
             stack.add_titled(content, name, title);
         }
 
@@ -115,19 +113,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         default:
             return 0.0f;
         }
-    }
-
-    protected Gtk.Widget create_label_key (string str, Gtk.Align valign = Gtk.Align.START) {
-        Gtk.Label key_label = new Gtk.Label (str);
-        key_label.set_sensitive (false);
-        key_label.margin_right = 5;
-        var yalign = get_alignment_float_from_align (valign);
-
-        var align = new Gtk.Alignment (1.0f, yalign, 0, 0);
-        align.add (key_label);
-        sg.add_widget (align);
-
-        return align;
     }
 
     protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
@@ -555,7 +540,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_label = new Gtk.Label ("");
         size_label.set_hexpand (false);
 
-        type_key_label = create_label_key (_("Type") + (": "));
+        type_key_label = new Gtk.Label (_("Type:"));
+        type_key_label.halign = Gtk.Align.END;
 
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
@@ -635,12 +621,12 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         if (count == 1) {
             var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
             if (time_created != null)
-                info.add (new Pair<string, string>(_("Created") + (": "), time_created));
+                info.add (new Pair<string, string>(_("Created:"), time_created));
             if (file.formated_modified != null)
-                info.add (new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
+                info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
             var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
             if (time_last_access != null)
-                info.add (new Pair<string, string>(_("Last Access") + (": "), time_last_access));
+                info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
             /* print deletion date if trashed file */
 
             /**TODO** format trash deletion date string*/
@@ -648,12 +634,12 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             if (file.is_trashed ()) {
                 var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
                 if (deletion_date != null)
-                    info.add (new Pair<string, string>(_("Deleted") + (": "), deletion_date));
+                    info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
             }
         }
         ftype = get_common_ftype ();
         if (ftype != null) {
-            info.add (new Pair<string, string>(_("MimeType") + (": "), ftype));
+            info.add (new Pair<string, string>(_("MimeType:"), ftype));
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (view.get_default_app () != null && !goffile.is_directory) {
@@ -661,7 +647,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 foreach (var mime in mimes) {
                     (str == null) ? str = mime : str = string.join (", ", str, mime);
                 }
-                info.add (new Pair<string, string>(_("MimeTypes") + (": "), str));
+                info.add (new Pair<string, string>(_("MimeTypes:"), str));
             }
         }
 
@@ -679,7 +665,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
                 var width = pixbuf.get_width ().to_string ();
                 var height = pixbuf.get_height ().to_string ();
-                info.add (new Pair<string, string> (_("Size") + (": "), width +" × " + height + " px"));
+                info.add (new Pair<string, string> (_("Size:"), width +" × " + height + " px"));
             } catch (Error e) {
                 warning ("Error: %s\n", e.message);
             }
@@ -692,32 +678,35 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
                 string location_name = location_folder.slice (7, -1);
 
-                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
+                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
             } else
-                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
+                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
         }
 
         if (count == 1 && file.info.get_is_symlink ())
-            info.add (new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
+            info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
 
         /* print orig location of trashed files */
         if (file.is_trashed () && file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
             if (trash_orig_loc != null)
-                info.add (new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
+                info.add (new Pair<string, string>(_("Origin Location:"), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
         }
     }
 
     private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Gtk.Grid();
-        information.row_spacing = 3;
+        information.column_spacing = 6;
+        information.row_spacing = 6;
 
         int n = 0;
 
         create_head_line (new Gtk.Label (_("Info")), information, ref n);
 
         /* Have to have these separate as size call is async */
-        var size_key_label = create_label_key (_("Size") + (": "));
+        var size_key_label = new Gtk.Label (_("Size:"));
+        size_key_label.halign = Gtk.Align.END;
+
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
         size_box.pack_start (size_label, false, true);
         size_box.pack_start (spinner, false, false);
@@ -728,7 +717,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
         foreach (var pair in item_info) {
             var value_label = new Gtk.Label (pair.value);
-            var key_label = create_label_key (pair.key);
+            var key_label = new Gtk.Label (pair.key);
+            key_label.halign = Gtk.Align.END;
             create_info_line (key_label, value_label, information, ref n);
         }
 
@@ -772,7 +762,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = create_label_key (_("Open with:"), Gtk.Align.CENTER);
+            var key_label = new Gtk.Label (_("Open with:"));
+            key_label.halign = Gtk.Align.END;
 
             information.attach (key_label, 0, n, 1, 1);
             information.attach (hcombo, 1, n, 1, 1);
@@ -789,7 +780,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
                     create_head_line (new Gtk.Label (_("Usage")), information, ref n);
 
-                    var key_label = create_label_key (_("Device usage:"), Gtk.Align.CENTER);
+                    var key_label = new Gtk.Label (_("Device usage:"));
+                    key_label.halign = Gtk.Align.END;
                     information.attach (key_label, 0, n, 1, 1);
 
                     var progressbar = new Gtk.ProgressBar ();
@@ -905,6 +897,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
         hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         hbox.homogeneous = true;
+        hbox.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
         var btn_read = new Gtk.ToggleButton ();
         toggle_button_add_label (btn_read, _("Read"));
         btn_read.set_data ("permissiontype", pt);
@@ -1113,17 +1106,21 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     private void construct_perm_panel (Gtk.Box box) {
         perm_grid = new Gtk.Grid();
+        perm_grid.column_spacing = 6;
+        perm_grid.row_spacing = 6;
 
         Gtk.Widget key_label;
         Gtk.Widget value_label;
         Gtk.Box value_hlabel;
 
-        key_label = create_label_key(_("Owner") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Owner:"));
+        key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 1, 1, 1);
         value_label = create_owner_choice ();
         perm_grid.attach (value_label, 1, 1, 1, 1);
 
-        key_label = create_label_key(_("Group") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Group:"));
+        key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 2, 1, 1);
         value_label = create_group_choice ();
         perm_grid.attach (value_label, 1, 2, 1, 1);
@@ -1131,15 +1128,18 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         /* make a separator with margins */
         key_label.margin_bottom = 7;
         value_label.margin_bottom = 7;
-        key_label = create_label_key (_("Owner") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Owner:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
         perm_grid.attach (value_hlabel, 1, 3, 1, 1);
-        key_label = create_label_key (_("Group") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Group:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
         perm_grid.attach (value_hlabel, 1, 4, 1, 1);
-        key_label = create_label_key (_("Everyone") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Everyone:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
         perm_grid.attach (value_hlabel, 1, 5, 1, 1);
@@ -1468,7 +1468,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
                 /* Overlay the 'readonly' emblem to tell the user the disk is
                  * mounted as RO */
                 if (info != null &&
-		    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
+                    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
                     info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
                     emblems_list.append ("emblem-readonly");
                 }
@@ -1487,18 +1487,23 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
         /* Build the grid holding the informations */
         var info_grid = new Gtk.Grid ();
-        info_grid.row_spacing = 3;
+        info_grid.column_spacing = 6;
+        info_grid.row_spacing = 6;
 
         int n = 0;
 
         create_head_line (new Gtk.Label (_("Info")), info_grid, ref n);
 
-        var key_label = create_label_key (_("Location") + " :");
+        var key_label = new Gtk.Label (_("Location:"));
+        key_label.halign = Gtk.Align.END;
+
         var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
         create_info_line (key_label, value_label, info_grid, ref n);
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            key_label = create_label_key (_("Format") + " :");
+            key_label = new Gtk.Label (_("Format:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
             create_info_line (key_label, value_label, info_grid, ref n);
         }
@@ -1506,7 +1511,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
 
         if (info != null &&
-	    info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
             uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
@@ -1514,15 +1519,21 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
             uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
             double used =  1.0 - (double) fs_free / (double) fs_capacity;
 
-            key_label = create_label_key (_("Capacity") + " :");
+            key_label = new Gtk.Label (_("Capacity:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (format_size ((int64)fs_capacity));
             create_info_line (key_label, value_label, info_grid, ref n);
 
-            key_label = create_label_key (_("Available") + " :");
+            key_label = new Gtk.Label (_("Available:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (format_size ((int64) fs_free));
             create_info_line (key_label, value_label, info_grid, ref n);
 
-            key_label = create_label_key (_("Used") + " :");
+            key_label = new Gtk.Label (_("Used:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (_("%s (%d%% used)").printf (format_size ((int64) fs_used), (int) (used * 100)));
             create_info_line (key_label, value_label, info_grid, ref n);
 
@@ -1533,15 +1544,21 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
-            key_label = create_label_key (_("Capacity") + " :");
+            key_label = new Gtk.Label (_("Capacity:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (_("Unknown"));
             create_info_line (key_label, value_label, info_grid, ref n);
 
-            key_label = create_label_key (_("Available") + " :");
+            key_label = new Gtk.Label (_("Available:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (_("Unknown"));
             create_info_line (key_label, value_label, info_grid, ref n);
 
-            key_label = create_label_key (_("Used") + " :");
+            key_label = new Gtk.Label (_("Used:"));
+            key_label.halign = Gtk.Align.END;
+
             value_label = new Gtk.Label (_("Unknown"));
             create_info_line (key_label, value_label, info_grid, ref n);
         }
