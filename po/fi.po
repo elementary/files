@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-30 03:19-0600\n"
-"PO-Revision-Date: 2015-11-30 12:42+0000\n"
+"PO-Revision-Date: 2015-12-02 13:16+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:29+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-03 06:06+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1799,7 +1799,7 @@ msgstr "Levyn ominaisuudet"
 
 #: ../src/View/PropertiesWindow.vala:1501
 msgid "Format"
-msgstr ""
+msgstr "Muoto"
 
 #: ../src/View/PropertiesWindow.vala:1517
 #: ../src/View/PropertiesWindow.vala:1536
