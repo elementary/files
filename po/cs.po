@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-30 03:19-0600\n"
+"POT-Creation-Date: 2015-12-03 05:07-0600\n"
 "PO-Revision-Date: 2015-11-25 08:20+0000\n"
 "Last-Translator: Petr Dombek <dombek@oblati.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:29+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-04 05:35+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -648,6 +648,7 @@ msgstr "Původní soubor"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
 msgid "Size:"
 msgstr "Velikost:"
 
@@ -655,6 +656,7 @@ msgstr "Velikost:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
 msgid "Type:"
 msgstr "Typ:"
 
@@ -1604,18 +1606,15 @@ msgstr "Vybraný soubor již neexistuje."
 msgid "Filename"
 msgstr "Název souboru"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:682
-#: ../src/View/PropertiesWindow.vala:720
-#: ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Velikost"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:558
-#: ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Typ"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:640
+#: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Změněno"
 
@@ -1696,136 +1695,140 @@ msgstr "%u soubor, "
 msgid "%u files, "
 msgstr "%u soubory, "
 
-#: ../src/View/PropertiesWindow.vala:200
+#: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../src/View/PropertiesWindow.vala:297 ../src/View/Sidebar.vala:1356
+#: ../src/View/PropertiesWindow.vala:282 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../src/View/PropertiesWindow.vala:359
-#: ../src/View/PropertiesWindow.vala:1549
+#: ../src/View/PropertiesWindow.vala:344
+#: ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Obecné"
 
-#: ../src/View/PropertiesWindow.vala:367
+#: ../src/View/PropertiesWindow.vala:352
 msgid "More"
 msgstr "Další"
 
-#: ../src/View/PropertiesWindow.vala:392
+#: ../src/View/PropertiesWindow.vala:377
 msgid "Preview"
 msgstr "Náhled"
 
-#: ../src/View/PropertiesWindow.vala:431
+#: ../src/View/PropertiesWindow.vala:416
 msgid "file"
 msgstr "soubor"
 
-#: ../src/View/PropertiesWindow.vala:433
+#: ../src/View/PropertiesWindow.vala:418
 msgid "files"
 msgstr "souborů"
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "Actual size could be larger, "
 msgstr "Skutečná velikost může být větší, "
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "could not be read due to permissions or other errors."
 msgstr "nelze přečist kvůli nedostatečnému oprávnění nebo jiným chybám."
 
-#: ../src/View/PropertiesWindow.vala:464
+#: ../src/View/PropertiesWindow.vala:449
 msgid "unknown"
 msgstr "neznámý"
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:513
 msgid "%u selected items"
 msgstr "%u vybraných položek"
 
-#: ../src/View/PropertiesWindow.vala:638
-msgid "Created"
-msgstr "Vytvořeno"
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Created:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:643
-msgid "Last Access"
-msgstr "Poslední přístup"
+#: ../src/View/PropertiesWindow.vala:626
+msgid "Modified:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:651
-msgid "Deleted"
-msgstr "Smazáno"
+#: ../src/View/PropertiesWindow.vala:629
+msgid "Last Access:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:656
-msgid "MimeType"
-msgstr "MIME typ"
+#: ../src/View/PropertiesWindow.vala:637
+msgid "Deleted:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:664
-msgid "MimeTypes"
-msgstr "MIME typy"
+#: ../src/View/PropertiesWindow.vala:642
+msgid "MimeType:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
-#: ../src/View/PropertiesWindow.vala:1496
-msgid "Location"
-msgstr "Umístění"
+#: ../src/View/PropertiesWindow.vala:650
+msgid "MimeTypes:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:701
-msgid "Target"
-msgstr "Cíl"
+#: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
+#: ../src/View/PropertiesWindow.vala:1497
+msgid "Location:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:707
-msgid "Origin Location"
-msgstr "Původní umístění"
+#: ../src/View/PropertiesWindow.vala:687
+msgid "Target:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:717
-#: ../src/View/PropertiesWindow.vala:1494
+#: ../src/View/PropertiesWindow.vala:693
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:704
+#: ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Informace"
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:741
 msgid "Other application..."
 msgstr "Jiná aplikace…"
 
-#: ../src/View/PropertiesWindow.vala:775
+#: ../src/View/PropertiesWindow.vala:765
 msgid "Open with:"
 msgstr "Oteřít s:"
 
-#: ../src/View/PropertiesWindow.vala:790
-#: ../src/View/PropertiesWindow.vala:1506
+#: ../src/View/PropertiesWindow.vala:781
+#: ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Použití"
 
-#: ../src/View/PropertiesWindow.vala:792
+#: ../src/View/PropertiesWindow.vala:783
 msgid "Device usage:"
 msgstr "Využití zařízení:"
 
-#: ../src/View/PropertiesWindow.vala:799
+#: ../src/View/PropertiesWindow.vala:791
 msgid "%s free of %s (%d%% used)"
 msgstr "%s volných z %s (%d%% využito)"
 
-#: ../src/View/PropertiesWindow.vala:909
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Read"
 msgstr "Čtení"
 
-#: ../src/View/PropertiesWindow.vala:913
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Write"
 msgstr "Zápis"
 
-#: ../src/View/PropertiesWindow.vala:917
+#: ../src/View/PropertiesWindow.vala:910
 msgid "Execute"
 msgstr "Spouštění"
 
-#: ../src/View/PropertiesWindow.vala:1121
-#: ../src/View/PropertiesWindow.vala:1134
-msgid "Owner"
-msgstr "Vlastník"
+#: ../src/View/PropertiesWindow.vala:1116
+#: ../src/View/PropertiesWindow.vala:1131
+msgid "Owner:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1126
-#: ../src/View/PropertiesWindow.vala:1138
-msgid "Group"
-msgstr "Skupina"
+#: ../src/View/PropertiesWindow.vala:1122
+#: ../src/View/PropertiesWindow.vala:1136
+msgid "Group:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1142
-msgid "Everyone"
-msgstr "Kdokoli"
+#: ../src/View/PropertiesWindow.vala:1141
+msgid "Everyone:"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1835,32 +1838,32 @@ msgstr "Zvolte aplikaci k otevření "
 msgid "Disk Properties"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1501
-msgid "Format"
+#: ../src/View/PropertiesWindow.vala:1504
+msgid "Format:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1517
-#: ../src/View/PropertiesWindow.vala:1536
-msgid "Capacity"
+#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1547
+msgid "Capacity:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1521
-#: ../src/View/PropertiesWindow.vala:1540
-msgid "Available"
+#: ../src/View/PropertiesWindow.vala:1528
+#: ../src/View/PropertiesWindow.vala:1553
+msgid "Available:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1525
-#: ../src/View/PropertiesWindow.vala:1544
-msgid "Used"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1526
-msgid "%s (%d%% used)"
+#: ../src/View/PropertiesWindow.vala:1534
+#: ../src/View/PropertiesWindow.vala:1559
+msgid "Used:"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1537
-#: ../src/View/PropertiesWindow.vala:1541
-#: ../src/View/PropertiesWindow.vala:1545
+msgid "%s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1550
+#: ../src/View/PropertiesWindow.vala:1556
+#: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
 msgstr ""
 
