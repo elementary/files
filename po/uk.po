@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-30 03:19-0600\n"
+"POT-Creation-Date: 2015-12-03 05:07-0600\n"
 "PO-Revision-Date: 2015-08-08 12:35+0000\n"
 "Last-Translator: Bogdan Lisnenko <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:30+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-04 05:36+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -650,6 +650,7 @@ msgstr "Початковий файл"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
 msgid "Size:"
 msgstr "Розмір:"
 
@@ -657,6 +658,7 @@ msgstr "Розмір:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
 msgid "Type:"
 msgstr "Тип:"
 
@@ -1614,18 +1616,15 @@ msgstr "Виділений файл більше не існує."
 msgid "Filename"
 msgstr "Ім'я файлу"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:682
-#: ../src/View/PropertiesWindow.vala:720
-#: ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Розмір"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:558
-#: ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Тип"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:640
+#: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Змінено"
 
@@ -1707,136 +1706,140 @@ msgstr "%u файл, "
 msgid "%u files, "
 msgstr "%u файли, "
 
-#: ../src/View/PropertiesWindow.vala:200
+#: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Закрити"
 
-#: ../src/View/PropertiesWindow.vala:297 ../src/View/Sidebar.vala:1356
+#: ../src/View/PropertiesWindow.vala:282 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Параметри"
 
-#: ../src/View/PropertiesWindow.vala:359
-#: ../src/View/PropertiesWindow.vala:1549
+#: ../src/View/PropertiesWindow.vala:344
+#: ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Загальне"
 
-#: ../src/View/PropertiesWindow.vala:367
+#: ../src/View/PropertiesWindow.vala:352
 msgid "More"
 msgstr "Більше"
 
-#: ../src/View/PropertiesWindow.vala:392
+#: ../src/View/PropertiesWindow.vala:377
 msgid "Preview"
 msgstr "Попередній перегляд"
 
-#: ../src/View/PropertiesWindow.vala:431
+#: ../src/View/PropertiesWindow.vala:416
 msgid "file"
 msgstr "файл"
 
-#: ../src/View/PropertiesWindow.vala:433
+#: ../src/View/PropertiesWindow.vala:418
 msgid "files"
 msgstr "файли"
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "Actual size could be larger, "
 msgstr "Фактичний розмір може бути більший, "
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "could not be read due to permissions or other errors."
 msgstr "не можливо прочитати через права або інші помилки."
 
-#: ../src/View/PropertiesWindow.vala:464
+#: ../src/View/PropertiesWindow.vala:449
 msgid "unknown"
 msgstr "невідомо"
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:513
 msgid "%u selected items"
 msgstr "%u вибраних елементів"
 
-#: ../src/View/PropertiesWindow.vala:638
-msgid "Created"
-msgstr "Створено"
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Created:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:643
-msgid "Last Access"
-msgstr "Останній доступ"
+#: ../src/View/PropertiesWindow.vala:626
+msgid "Modified:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:651
-msgid "Deleted"
-msgstr "Видалено"
+#: ../src/View/PropertiesWindow.vala:629
+msgid "Last Access:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:656
-msgid "MimeType"
-msgstr "Тип MIME"
+#: ../src/View/PropertiesWindow.vala:637
+msgid "Deleted:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:664
-msgid "MimeTypes"
-msgstr "Типи MIME"
+#: ../src/View/PropertiesWindow.vala:642
+msgid "MimeType:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
-#: ../src/View/PropertiesWindow.vala:1496
-msgid "Location"
-msgstr "Розташування"
+#: ../src/View/PropertiesWindow.vala:650
+msgid "MimeTypes:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:701
-msgid "Target"
-msgstr "Ціль"
+#: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
+#: ../src/View/PropertiesWindow.vala:1497
+msgid "Location:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:707
-msgid "Origin Location"
-msgstr "Дійсне розташування"
+#: ../src/View/PropertiesWindow.vala:687
+msgid "Target:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:717
-#: ../src/View/PropertiesWindow.vala:1494
+#: ../src/View/PropertiesWindow.vala:693
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:704
+#: ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Інформація"
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:741
 msgid "Other application..."
 msgstr "Інший додаток..."
 
-#: ../src/View/PropertiesWindow.vala:775
+#: ../src/View/PropertiesWindow.vala:765
 msgid "Open with:"
 msgstr "Відкрити за допомогою:"
 
-#: ../src/View/PropertiesWindow.vala:790
-#: ../src/View/PropertiesWindow.vala:1506
+#: ../src/View/PropertiesWindow.vala:781
+#: ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Використання"
 
-#: ../src/View/PropertiesWindow.vala:792
+#: ../src/View/PropertiesWindow.vala:783
 msgid "Device usage:"
 msgstr "Використання пам’яті:"
 
-#: ../src/View/PropertiesWindow.vala:799
+#: ../src/View/PropertiesWindow.vala:791
 msgid "%s free of %s (%d%% used)"
 msgstr "%s із %s вільно (%d%% зайнято)"
 
-#: ../src/View/PropertiesWindow.vala:909
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Read"
 msgstr "Читання"
 
-#: ../src/View/PropertiesWindow.vala:913
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Write"
 msgstr "Запис"
 
-#: ../src/View/PropertiesWindow.vala:917
+#: ../src/View/PropertiesWindow.vala:910
 msgid "Execute"
 msgstr "Виконання"
 
-#: ../src/View/PropertiesWindow.vala:1121
-#: ../src/View/PropertiesWindow.vala:1134
-msgid "Owner"
-msgstr "Власник"
+#: ../src/View/PropertiesWindow.vala:1116
+#: ../src/View/PropertiesWindow.vala:1131
+msgid "Owner:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1126
-#: ../src/View/PropertiesWindow.vala:1138
-msgid "Group"
-msgstr "Група"
+#: ../src/View/PropertiesWindow.vala:1122
+#: ../src/View/PropertiesWindow.vala:1136
+msgid "Group:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1142
-msgid "Everyone"
-msgstr "Будь-хто"
+#: ../src/View/PropertiesWindow.vala:1141
+msgid "Everyone:"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1846,32 +1849,32 @@ msgstr "Виберіть програму, щоб відкрити "
 msgid "Disk Properties"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1501
-msgid "Format"
+#: ../src/View/PropertiesWindow.vala:1504
+msgid "Format:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1517
-#: ../src/View/PropertiesWindow.vala:1536
-msgid "Capacity"
+#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1547
+msgid "Capacity:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1521
-#: ../src/View/PropertiesWindow.vala:1540
-msgid "Available"
+#: ../src/View/PropertiesWindow.vala:1528
+#: ../src/View/PropertiesWindow.vala:1553
+msgid "Available:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1525
-#: ../src/View/PropertiesWindow.vala:1544
-msgid "Used"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1526
-msgid "%s (%d%% used)"
+#: ../src/View/PropertiesWindow.vala:1534
+#: ../src/View/PropertiesWindow.vala:1559
+msgid "Used:"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1537
-#: ../src/View/PropertiesWindow.vala:1541
-#: ../src/View/PropertiesWindow.vala:1545
+msgid "%s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1550
+#: ../src/View/PropertiesWindow.vala:1556
+#: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-30 03:19-0600\n"
+"POT-Creation-Date: 2015-12-03 05:07-0600\n"
 "PO-Revision-Date: 2015-11-29 23:07+0000\n"
 "Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:30+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-04 05:36+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -623,6 +623,7 @@ msgstr "Ficheiro original"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
 msgid "Size:"
 msgstr "Tamanho:"
 
@@ -630,6 +631,7 @@ msgstr "Tamanho:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
 msgid "Type:"
 msgstr "Tipo:"
 
@@ -1576,18 +1578,15 @@ msgstr "O ficheiro selecionado já não existe."
 msgid "Filename"
 msgstr "Nome do ficheiro"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:682
-#: ../src/View/PropertiesWindow.vala:720
-#: ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Tamanho"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:558
-#: ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Tipo"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:640
+#: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Modificado"
 
@@ -1669,136 +1668,140 @@ msgstr "%u ficheiro, "
 msgid "%u files, "
 msgstr "%u ficheiros, "
 
-#: ../src/View/PropertiesWindow.vala:200
+#: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Fechar"
 
-#: ../src/View/PropertiesWindow.vala:297 ../src/View/Sidebar.vala:1356
+#: ../src/View/PropertiesWindow.vala:282 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Propriedades"
 
-#: ../src/View/PropertiesWindow.vala:359
-#: ../src/View/PropertiesWindow.vala:1549
+#: ../src/View/PropertiesWindow.vala:344
+#: ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Geral"
 
-#: ../src/View/PropertiesWindow.vala:367
+#: ../src/View/PropertiesWindow.vala:352
 msgid "More"
 msgstr "Mais"
 
-#: ../src/View/PropertiesWindow.vala:392
+#: ../src/View/PropertiesWindow.vala:377
 msgid "Preview"
 msgstr "Pré-visualizar"
 
-#: ../src/View/PropertiesWindow.vala:431
+#: ../src/View/PropertiesWindow.vala:416
 msgid "file"
 msgstr "ficheiro"
 
-#: ../src/View/PropertiesWindow.vala:433
+#: ../src/View/PropertiesWindow.vala:418
 msgid "files"
 msgstr "ficheiros"
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "Actual size could be larger, "
 msgstr "Tamanho real pode ser maior, "
 
-#: ../src/View/PropertiesWindow.vala:435
+#: ../src/View/PropertiesWindow.vala:420
 msgid "could not be read due to permissions or other errors."
 msgstr "não foi lido devido a permissões  ou outros erros."
 
-#: ../src/View/PropertiesWindow.vala:464
+#: ../src/View/PropertiesWindow.vala:449
 msgid "unknown"
 msgstr "desconhecido"
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:513
 msgid "%u selected items"
 msgstr "%u itens seleccionados"
 
-#: ../src/View/PropertiesWindow.vala:638
-msgid "Created"
-msgstr "Criado"
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Created:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:643
-msgid "Last Access"
-msgstr "Último acesso"
+#: ../src/View/PropertiesWindow.vala:626
+msgid "Modified:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:651
-msgid "Deleted"
-msgstr "Eliminado"
+#: ../src/View/PropertiesWindow.vala:629
+msgid "Last Access:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:656
-msgid "MimeType"
-msgstr "Tipo MIME"
+#: ../src/View/PropertiesWindow.vala:637
+msgid "Deleted:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:664
-msgid "MimeTypes"
-msgstr "Tipos Mime"
+#: ../src/View/PropertiesWindow.vala:642
+msgid "MimeType:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
-#: ../src/View/PropertiesWindow.vala:1496
-msgid "Location"
-msgstr "Localização"
+#: ../src/View/PropertiesWindow.vala:650
+msgid "MimeTypes:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:701
-msgid "Target"
-msgstr "Destino"
+#: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
+#: ../src/View/PropertiesWindow.vala:1497
+msgid "Location:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:707
-msgid "Origin Location"
-msgstr "Localização original"
+#: ../src/View/PropertiesWindow.vala:687
+msgid "Target:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:717
-#: ../src/View/PropertiesWindow.vala:1494
+#: ../src/View/PropertiesWindow.vala:693
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:704
+#: ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Informação"
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:741
 msgid "Other application..."
 msgstr "Outra aplicação..."
 
-#: ../src/View/PropertiesWindow.vala:775
+#: ../src/View/PropertiesWindow.vala:765
 msgid "Open with:"
 msgstr "Abrir com:"
 
-#: ../src/View/PropertiesWindow.vala:790
-#: ../src/View/PropertiesWindow.vala:1506
+#: ../src/View/PropertiesWindow.vala:781
+#: ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Utilização"
 
-#: ../src/View/PropertiesWindow.vala:792
+#: ../src/View/PropertiesWindow.vala:783
 msgid "Device usage:"
 msgstr "Utilização do dispositivo:"
 
-#: ../src/View/PropertiesWindow.vala:799
+#: ../src/View/PropertiesWindow.vala:791
 msgid "%s free of %s (%d%% used)"
 msgstr "%s livre de %s (%d%% utilzado)"
 
-#: ../src/View/PropertiesWindow.vala:909
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Read"
 msgstr "Leitura"
 
-#: ../src/View/PropertiesWindow.vala:913
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Write"
 msgstr "Escrita"
 
-#: ../src/View/PropertiesWindow.vala:917
+#: ../src/View/PropertiesWindow.vala:910
 msgid "Execute"
 msgstr "Executar"
 
-#: ../src/View/PropertiesWindow.vala:1121
-#: ../src/View/PropertiesWindow.vala:1134
-msgid "Owner"
-msgstr "Proprietário"
+#: ../src/View/PropertiesWindow.vala:1116
+#: ../src/View/PropertiesWindow.vala:1131
+msgid "Owner:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1126
-#: ../src/View/PropertiesWindow.vala:1138
-msgid "Group"
-msgstr "Grupo"
+#: ../src/View/PropertiesWindow.vala:1122
+#: ../src/View/PropertiesWindow.vala:1136
+msgid "Group:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1142
-msgid "Everyone"
-msgstr "Todos"
+#: ../src/View/PropertiesWindow.vala:1141
+msgid "Everyone:"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1808,32 +1811,32 @@ msgstr "Selecione uma aplicação para abrir "
 msgid "Disk Properties"
 msgstr "Propriedade do Disco"
 
-#: ../src/View/PropertiesWindow.vala:1501
-msgid "Format"
-msgstr "Formatar"
+#: ../src/View/PropertiesWindow.vala:1504
+msgid "Format:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1517
-#: ../src/View/PropertiesWindow.vala:1536
-msgid "Capacity"
-msgstr "Capacidade"
+#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1547
+msgid "Capacity:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1521
-#: ../src/View/PropertiesWindow.vala:1540
-msgid "Available"
-msgstr "Disponível"
+#: ../src/View/PropertiesWindow.vala:1528
+#: ../src/View/PropertiesWindow.vala:1553
+msgid "Available:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1525
-#: ../src/View/PropertiesWindow.vala:1544
-msgid "Used"
-msgstr "Usado"
+#: ../src/View/PropertiesWindow.vala:1534
+#: ../src/View/PropertiesWindow.vala:1559
+msgid "Used:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1526
+#: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
 msgstr "%s (%d%% usados)"
 
-#: ../src/View/PropertiesWindow.vala:1537
-#: ../src/View/PropertiesWindow.vala:1541
-#: ../src/View/PropertiesWindow.vala:1545
+#: ../src/View/PropertiesWindow.vala:1550
+#: ../src/View/PropertiesWindow.vala:1556
+#: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
 msgstr "Desconhecido"
 
