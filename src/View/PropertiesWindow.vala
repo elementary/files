@@ -124,7 +124,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     }
 
     protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
-        key_label.margin_left = 20;
+        key_label.margin_start = 20;
         value_label.set_selectable (true);
         value_label.set_hexpand (true);
         value_label.set_use_markup (true);
@@ -161,14 +161,14 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         content_area.pack_start (content_vbox);
 
         /* Adjust sizes */
-        content_vbox.margin_right = 5;
-        content_vbox.margin_left = 5;
+        content_vbox.margin_end = 5;
+        content_vbox.margin_start = 5;
 
         /* Header Box */
         header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
         content_vbox.pack_start (header_box, false, false, 0);
         header_box.margin_bottom = 15;
-        header_box.margin_left = header_box.margin_right = 10;
+        header_box.margin_start = header_box.margin_end = 10;
 
         /* Stack */
         stack_switcher = new Gtk.StackSwitcher ();
