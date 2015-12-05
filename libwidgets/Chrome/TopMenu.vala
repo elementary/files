@@ -67,7 +67,7 @@ namespace Marlin.View.Chrome
 
             key_press_event.connect (on_key_press_event);
             view_switcher = switcher;
-            view_switcher.margin_right = 20;
+            view_switcher.margin_end = 20;
             view_switcher.show_all ();
             pack_start (view_switcher);
 
