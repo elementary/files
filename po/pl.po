@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-02-13 11:10+0000\n"
-"Last-Translator: Damian Dygulski <dygulski13@gmail.com>\n"
+"PO-Revision-Date: 2015-12-07 12:38+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-04 05:35+0000\n"
+"X-Launchpad-Export-Date: 2015-12-08 05:40+0000\n"
 "X-Generator: Launchpad (build 17862)\n"
 "Language: pl\n"
 
@@ -1560,7 +1560,7 @@ msgstr "Następny"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
-msgstr ""
+msgstr "Utwórz katalog"
 
 #: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
@@ -1589,7 +1589,7 @@ msgstr "(jako administrator)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ten katalog nie należy do Ciebie"
 
 #: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
@@ -1597,7 +1597,7 @@ msgstr "Nie masz uprawnień do przegladania tego folderu."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Nie udało się zamontować katalogu"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The server for this folder could not be located."
@@ -1605,15 +1605,15 @@ msgstr "Serwer dla tego foleru nie mógł zostać zlokalizowany."
 
 #: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Katalog nie istnieje"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Nie można utworzyć tutaj katalogu."
 
 #: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
-msgstr ""
+msgstr "Plik nie istnieje"
 
 #: ../src/View/ViewContainer.vala:375
 msgid "The file selected no longer exists."
@@ -1659,19 +1659,19 @@ msgstr ""
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Katalog jest pusty"
 
 #: ../src/View/Slot.vala:37
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Kosz jest pusty"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Brak ostatnio otworzonych plików"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Brak dostępu"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1699,19 +1699,19 @@ msgstr "Zaznaczono %u elementów (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u podkatalog, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u podkatalogi, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u plik, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u pliki, "
 
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
@@ -1761,40 +1761,40 @@ msgstr "%u zaznaczonych elementów"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Created:"
-msgstr ""
+msgstr "Utworzono:"
 
 #: ../src/View/PropertiesWindow.vala:626
 msgid "Modified:"
-msgstr ""
+msgstr "Zmodyfikowano:"
 
 #: ../src/View/PropertiesWindow.vala:629
 msgid "Last Access:"
-msgstr ""
+msgstr "Ostatni dostęp:"
 
 #: ../src/View/PropertiesWindow.vala:637
 msgid "Deleted:"
-msgstr ""
+msgstr "Usunięto:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
-msgstr ""
+msgstr "Rodzaj MIME:"
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
-msgstr ""
+msgstr "Rodzaje MIME:"
 
 #: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
 #: ../src/View/PropertiesWindow.vala:1497
 msgid "Location:"
-msgstr ""
+msgstr "Położenie:"
 
 #: ../src/View/PropertiesWindow.vala:687
 msgid "Target:"
-msgstr ""
+msgstr "Cel:"
 
 #: ../src/View/PropertiesWindow.vala:693
 msgid "Origin Location:"
-msgstr ""
+msgstr "Pierwotne położenie:"
 
 #: ../src/View/PropertiesWindow.vala:704
 #: ../src/View/PropertiesWindow.vala:1495
@@ -1837,16 +1837,16 @@ msgstr "Uruchom"
 #: ../src/View/PropertiesWindow.vala:1116
 #: ../src/View/PropertiesWindow.vala:1131
 msgid "Owner:"
-msgstr ""
+msgstr "Właściciel:"
 
 #: ../src/View/PropertiesWindow.vala:1122
 #: ../src/View/PropertiesWindow.vala:1136
 msgid "Group:"
-msgstr ""
+msgstr "Grupa:"
 
 #: ../src/View/PropertiesWindow.vala:1141
 msgid "Everyone:"
-msgstr ""
+msgstr "Wszyscy:"
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1854,36 +1854,36 @@ msgstr "Wybierz program do uruchomienia "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Właściwości dysku"
 
 #: ../src/View/PropertiesWindow.vala:1504
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: ../src/View/PropertiesWindow.vala:1522
 #: ../src/View/PropertiesWindow.vala:1547
 msgid "Capacity:"
-msgstr ""
+msgstr "Pojemność:"
 
 #: ../src/View/PropertiesWindow.vala:1528
 #: ../src/View/PropertiesWindow.vala:1553
 msgid "Available:"
-msgstr ""
+msgstr "Dostępne:"
 
 #: ../src/View/PropertiesWindow.vala:1534
 #: ../src/View/PropertiesWindow.vala:1559
 msgid "Used:"
-msgstr ""
+msgstr "Używane:"
 
 #: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% użyto)"
 
 #: ../src/View/PropertiesWindow.vala:1550
 #: ../src/View/PropertiesWindow.vala:1556
 #: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
-msgstr ""
+msgstr "Nieznane"
 
 #: ../src/View/Sidebar.vala:429
 msgid "Personal"
@@ -1899,7 +1899,7 @@ msgstr "Przechodzi do katalogu użytkownika"
 
 #: ../src/View/Sidebar.vala:468
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Zobacz listę ostatnio używanych plików"
 
 #: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
 msgid "Trash"
@@ -2033,7 +2033,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Nie można zmienić nazwy na '%s'"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2179,11 +2179,11 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:100
 msgid "Recent"
-msgstr ""
+msgstr "Ostatnie"
 
 #: ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
@@ -2200,11 +2200,11 @@ msgstr "Otwórz w nowej karcie"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Otwórz w nowym oknie"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Otwórz w innym programie..."
 
 #: ../libwidgets/View/SearchResults.vala:179
 msgid "In This Folder"
@@ -2232,7 +2232,7 @@ msgstr "Widok kolumn"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Podaj ścieżkę"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
 msgid "Navigate to %s"
@@ -2252,7 +2252,7 @@ msgstr "Połącz z sieciowym serwerem plików"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Przywróć wszystko"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
@@ -2260,7 +2260,7 @@ msgstr "Opróżnij kosz"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Te pliki mogą zostać przywrócone lub usunięte z kosza."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2277,11 +2277,11 @@ msgstr "Usuń trwale"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Otwórz katalog nadrzędny"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Usuń z historii"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
