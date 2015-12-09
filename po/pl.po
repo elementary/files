@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-12-07 12:38+0000\n"
+"PO-Revision-Date: 2015-12-08 19:46+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-08 05:40+0000\n"
+"X-Launchpad-Export-Date: 2015-12-09 05:38+0000\n"
 "X-Generator: Launchpad (build 17862)\n"
 "Language: pl\n"
 
@@ -149,11 +149,11 @@ msgstr "Wyświetlenie większej ilości _szczegółów"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Nie można określić pierwotnego położenia"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Otwórz katalog kosza i przywróć ręcznie"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -695,11 +695,11 @@ msgstr "Wykonanie czynności dla wszystkich plików"
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "_Pomiń"
+msgstr "_Pomiń"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr "Zmień _nazwę"
+msgstr "Zmień _nazwę"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
@@ -2192,7 +2192,7 @@ msgstr "Odśwież ten folder"
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Wpisz szukane słowo lub ścieżkę"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:406
 msgid "Open in New Tab"
