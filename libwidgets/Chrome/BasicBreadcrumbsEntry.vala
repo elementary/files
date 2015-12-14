@@ -63,9 +63,6 @@ namespace Marlin.View.Chrome {
 
         protected virtual void configure_style () {
             button_context = get_style_context ();
-            button_context.add_class ("button");
-            button_context.add_class ("raised");
-            button_context.add_class ("marlin-pathbar");
             button_context.add_class ("pathbar");
 
             Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
