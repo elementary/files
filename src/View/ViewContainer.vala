@@ -259,19 +259,23 @@ namespace Marlin.View {
              * time allows pathbar animation to complete smoothly.
 
              * Wait until directory is flagged ready to allow time for network folders to be found
-             * and accessed.
+             * and accessed. Limit rate of checking to reduce cpu load during password dialogs.
+             * TODO Prepare Async Directory asynchronously and use callback to load. 
 
              * Do not try and load directory that is not flagged 'can load'.
              */
-            Idle.add_full (GLib.Priority.LOW, () => {
-                if (!slot.directory.is_ready)
+            Timeout.add_full (GLib.Priority.LOW, 200, () => {
+                if (!slot.directory.is_ready) {
+                    /* Directory has not completed preparation e.g. mounting or getting password */
                     return true;
+                }
 
                 if (slot.directory.can_load) {
                     slot.directory.load ();
-                } else
-                     directory_done_loading (slot);
-
+                } else {
+                    /* As directory cannot load files, this will show a warning message */
+                    directory_done_loading (slot);
+                }
                 return false;
             });
         }
