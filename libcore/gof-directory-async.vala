@@ -138,7 +138,10 @@ public class GOF.Directory.Async : Object {
             return false;
         }
 
-        if (!file.is_folder () && !file.is_root_network_folder () && !try_parent ()) {
+        /* Non-local locations must wait for mounting/password dialog to complete before they can
+         * be marked ready (in get_file_info ())
+         */   
+        if (is_local && !file.is_folder () && !try_parent ()) {
             is_ready = true;
             can_load = false;
             return false;
@@ -193,9 +196,9 @@ public class GOF.Directory.Async : Object {
                 }
                 make_ready ();
             });
-        } else
+        } else {
             make_ready ();
-
+        }
         return true;
     }
 
