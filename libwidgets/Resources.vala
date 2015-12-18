@@ -44,7 +44,7 @@ namespace Marlin {
         null
     };
 
-    public const string TRANSLATORS = _("Launchpad Translators");
+    public const string TRANSLATORS = _("translator-credits");
 
     public const string ICON_ABOUT_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
