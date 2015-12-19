@@ -32,11 +32,15 @@ namespace GOF {
 
             protected set {_directory = value;}
         }
+
+        public GOF.File file {
+            get {return directory.file;}
+        }
         public GLib.File location  {
             get {return directory.location;}
         }
         public string uri {
-            get { return directory.file.uri;}
+            get {return directory.file.uri;}
         }
         public bool can_create {get {return directory != null && !directory.is_trash;}}
         public virtual bool locked_focus {
@@ -69,7 +73,8 @@ namespace GOF {
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        public abstract void user_path_change_request (GLib.File loc, bool allow_mode_change = true);
+        public abstract void user_path_change_request (GLib.File loc, bool allow_mode_change, bool make_root);
+
         public abstract void select_first_for_empty_selection ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         protected abstract void make_view ();

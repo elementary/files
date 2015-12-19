@@ -155,19 +155,22 @@ namespace Marlin.View {
                 directory.track_longest_name = true;
         }
 
+        /* This delay in passing on the path change request is necessary to prevent occasional crashes
+         * due to undiagnosed bug.
+         */  
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
             GLib.Timeout.add (20, () => {
-                on_path_change_request (loc, flag, make_root);
+                on_dir_view_path_change_request (loc, flag, make_root);
                 return false;
             });
         }
 
-        private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (dir_view is FM.ColumnView)
-                    miller_slot_request (loc, make_root);
+                if (mode ==  Marlin.ViewMode.MILLER_COLUMNS)
+                    miller_slot_request (loc, make_root); /* signal to parent MillerView */
                 else
-                    user_path_change_request (loc);
+                    user_path_change_request (loc, false, make_root); /* Handle ourselves */
             } else
                 ctab.new_container_request (loc, flag);
         }
@@ -213,7 +216,7 @@ namespace Marlin.View {
             has_autosized = true;
         }
 
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
             assert (loc != null);
             var old_dir = directory;
             old_dir.cancel ();
@@ -284,6 +287,11 @@ namespace Marlin.View {
         public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
             if (dir_view != null)
                 dir_view.select_glib_files (files, focus_location);
+        }
+
+        public void select_gof_file (GOF.File gof) {
+            if (dir_view != null)
+                dir_view.select_gof_file (gof);
         }
 
         public override void select_first_for_empty_selection () {
