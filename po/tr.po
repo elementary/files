@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-11-23 21:36+0000\n"
-"Last-Translator: tolsen92 <tolsen92@outlook.com>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-18 20:00+0000\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-04 05:36+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Panoda yapıştırılacak birşey yok"
+"X-Launchpad-Export-Date: 2015-12-20 06:05+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,9 +137,38 @@ msgstr "_Bu parolayı hatırla"
 msgid "Operation cancelled"
 msgstr "İşlem iptal edildi"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Daha fazla _ayrıntı göster"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Panoda yapıştırılacak birşey yok"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" özgün konumu belirlenemedi "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Öge çöpten geri getirilemedi"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (geçersiz Unikod)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Bügün %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Dün %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b at %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -525,168 +550,10 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d adlı öge sahibinin değiştirilmesini yinele"
 msgstr[1] "%d adlı ögelerin sahibinin değiştirilmesini yinele"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" özgün konumu belirlenemedi "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Öge çöpten geri getirilemedi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "%s dizini birleştirilsin mi?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Birleştirme işlemi, dizindeki kopyalanan dosyalarla çakışan herhangi bir "
-"dosya değiştirilmeden önce onay isteyecek."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı daha eski bir dizin zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı daha yeni bir dizin zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isimde başka bir dizin zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Değiştirdiğinizde dizindeki tüm dosyalar kaldırılacak."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "%s dizinini yenisi ile değiştir?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı başka bir dizin zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "%s dosyasını yenisiyle değiştir?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı daha eski bir dosya zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı daha yeni bir dosya zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı adlı başka bir dosya zaten var."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Özgün dosya"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
-msgid "Size:"
-msgstr "Boyut:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:543
-msgid "Type:"
-msgstr "Tür:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Son düzenlenme tarihi:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Bununla değiştir"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Birleştir"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "Hedef için yeni bir ad _seçin"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Sıfırla"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Bu eylemi tüm dosyalara uygula"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Atla"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Ye_niden Adlandır"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Yerine Koy"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Dosya çakışması"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (geçersiz Unikod)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Hazırlanıyor"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -918,6 +785,8 @@ msgid_plural "%'d files left to delete"
 msgstr[0] "Silinecek %'d dosya kaldı"
 msgstr[1] "Silenecek %'d dosya kaldı"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1238,6 +1107,10 @@ msgstr[0] "%'d dosya çoğaltılıyor"
 msgid "%S of %S"
 msgstr "%S / %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1436,21 +1309,9 @@ msgstr "Çöp boşaltılıyor"
 msgid "Emptying Trash"
 msgstr "Çöp Boşaltılıyor"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Bügün %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Dün %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b at %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Daha fazla _ayrıntı göster"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1482,6 +1343,236 @@ msgstr "Dosya adlarında taksim işareti kullanılamaz"
 msgid "Toplevel files cannot be renamed"
 msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Hazırlanıyor"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "%s dizini birleştirilsin mi?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Birleştirme işlemi, dizindeki kopyalanan dosyalarla çakışan herhangi bir "
+"dosya değiştirilmeden önce onay isteyecek."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı daha eski bir dizin zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı daha yeni bir dizin zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı isimde başka bir dizin zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Değiştirdiğinizde dizindeki tüm dosyalar kaldırılacak."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "%s dizinini yenisi ile değiştir?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı başka bir dizin zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "%s dosyasını yenisiyle değiştir?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı daha eski bir dosya zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı daha yeni bir dosya zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı adlı başka bir dosya zaten var."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Özgün dosya"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Boyut:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Tür:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Son düzenlenme tarihi:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Bununla değiştir"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Birleştir"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "Hedef için yeni bir ad _seçin"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Bu eylemi tüm dosyalara uygula"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Ye_niden Adlandır"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Yerine Koy"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Dosya çakışması"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Basit ve güçlü bir dosya yöneticisi"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Bedrettin KEÇECİ https://launchpad.net/~bilgi-q\n"
+"  Celaleddin Hidayetoğlu https://launchpad.net/~celaleddin\n"
+"  Deniz CAN https://launchpad.net/~denizcan72\n"
+"  ERTAN ÇETİN https://launchpad.net/~ertancetinn\n"
+"  Emre Kucukarpaci https://launchpad.net/~ekkucukarpaci\n"
+"  Erberk A. https://launchpad.net/~erberk108\n"
+"  Fatih Dayioglu https://launchpad.net/~fthd\n"
+"  Ferhat TUNÇTAN https://launchpad.net/~ferhattnctn66\n"
+"  Furkan Ege Öztürk https://launchpad.net/~furkanegeozturk\n"
+"  Halit Alptekin https://launchpad.net/~halitalptekin\n"
+"  Kamil Tolga Atam https://launchpad.net/~atam\n"
+"  Mehmet https://launchpad.net/~mcavus\n"
+"  Mehmet Bozoklu https://launchpad.net/~mehmet-bozoklu\n"
+"  Mehmet MENENGEÇ https://launchpad.net/~mehmetmenengec\n"
+"  MuHa Aliss https://launchpad.net/~muha.aliss\n"
+"  Omer GOK https://launchpad.net/~mechulkalan\n"
+"  Sadık Atalay https://launchpad.net/~seaflames\n"
+"  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
+"  Salih https://launchpad.net/~hernandomtoto\n"
+"  Taha İbrahim https://launchpad.net/~tibayram\n"
+"  Uğurhan https://launchpad.net/~turkerugurhan\n"
+"  Yiğit Ateş https://launchpad.net/~yigitates\n"
+"  asdasdqwdq qwd qwq https://launchpad.net/~onlycodetr-deactivatedaccount-"
+"deactivatedaccount\n"
+"  burak https://launchpad.net/~pranis1243\n"
+"  dgnkdnz https://launchpad.net/~dgnkdnz\n"
+"  kulkke https://launchpad.net/~kulkke\n"
+"  tolsen92 https://launchpad.net/~tolsen92"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Ağ"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Çöp"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr ""
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr ""
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Dosya Sistemi"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
@@ -1495,101 +1586,6 @@ msgstr "Sonraki"
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
 msgstr "Dizin oluştur"
-
-#: ../src/View/Window.vala:182
-msgid "Files isn't your default file manager."
-msgstr "Files sizin varsayılan dosya yöneticiniz değil."
-
-#: ../src/View/Window.vala:188
-msgid "Set as Default"
-msgstr "Öntanımlı Olarak Ayarla"
-
-#: ../src/View/Window.vala:194
-msgid "Ignore"
-msgstr "Yoksay"
-
-#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
-msgid "Home"
-msgstr "Ana Sayfa"
-
-#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
-#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
-msgid "File System"
-msgstr "Dosya Sistemi"
-
-#: ../src/View/ViewContainer.vala:344
-msgid "(as Administrator)"
-msgstr "(yönetici olarak)"
-
-#: ../src/View/ViewContainer.vala:353
-msgid "This Folder Does Not Belong to You"
-msgstr "Bu Dizin Sana Ait Değil"
-
-#: ../src/View/ViewContainer.vala:354
-msgid "You don't have permission to view this folder."
-msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
-
-#: ../src/View/ViewContainer.vala:357
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The server for this folder could not be located."
-msgstr "Bu klasör için sunucu bulunamadı."
-
-#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:374
-msgid "File not Found"
-msgstr "Dosya Bulunamadı"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "The file selected no longer exists."
-msgstr "Seçilen dosya artık yok."
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Dosya adı"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
-msgid "Size"
-msgstr "Boyut"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
-msgid "Type"
-msgstr "Tür"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Değiştirildi"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" klasörü bulunamadı."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Oluştur"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "\"%s\" klasörünü oluştur"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Klasör oluşturulamadı\n"
-"\n"
-"%s"
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
@@ -1606,6 +1602,22 @@ msgstr ""
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
 msgstr ""
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Dosya adı"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+msgid "Size"
+msgstr "Boyut"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+msgid "Type"
+msgstr "Tür"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Değiştirildi"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1647,6 +1659,44 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Files sizin varsayılan dosya yöneticiniz değil."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr "Öntanımlı Olarak Ayarla"
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Yoksay"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" klasörü bulunamadı."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Oluştur"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "\"%s\" klasörünü oluştur"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Klasör oluşturulamadı\n"
+"\n"
+"%s"
+
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Kapat"
@@ -1656,8 +1706,7 @@ msgstr "Kapat"
 msgid "Properties"
 msgstr "Özellikler"
 
-#: ../src/View/PropertiesWindow.vala:344
-#: ../src/View/PropertiesWindow.vala:1566
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Genel"
 
@@ -1730,8 +1779,7 @@ msgstr ""
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:704
-#: ../src/View/PropertiesWindow.vala:1495
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Bilgi"
 
@@ -1743,8 +1791,7 @@ msgstr "Dİğer uygulama..."
 msgid "Open with:"
 msgstr "Birlikte aç:"
 
-#: ../src/View/PropertiesWindow.vala:781
-#: ../src/View/PropertiesWindow.vala:1511
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Kullanım"
 
@@ -1819,98 +1866,6 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:429
-msgid "Personal"
-msgstr "Kişisel"
-
-#: ../src/View/Sidebar.vala:434
-msgid "Your common places and bookmarks"
-msgstr "Ortak yerler ve yer imleriniz."
-
-#: ../src/View/Sidebar.vala:453
-msgid "Open your personal folder"
-msgstr "Kişisel dizininizi açın"
-
-#: ../src/View/Sidebar.vala:468
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
-msgid "Trash"
-msgstr "Çöp"
-
-#: ../src/View/Sidebar.vala:496
-msgid "Open the Trash"
-msgstr "Çöp Kutusunu Aç"
-
-#: ../src/View/Sidebar.vala:502
-msgid "Devices"
-msgstr "Aygıtlar"
-
-#: ../src/View/Sidebar.vala:507
-msgid "Your local partitions and devices"
-msgstr "Yerel bölüm ve aygıtlarınız"
-
-#: ../src/View/Sidebar.vala:519
-msgid "Open the contents of the FileSystem"
-msgstr "FileSystem içindekileri aç"
-
-#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
-msgid "Mount and open %s"
-msgstr "%s'i bağla ve aç"
-
-#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
-msgid "Network"
-msgstr "Ağ"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Your network places"
-msgstr "Ağ bağlantılarım"
-
-#: ../src/View/Sidebar.vala:666
-msgid "Entire Network"
-msgstr "Tüm Ağ"
-
-#: ../src/View/Sidebar.vala:673
-msgid "Browse the contents of the network"
-msgstr "Ağ içeriğine gözat"
-
-#: ../src/View/Sidebar.vala:1210
-msgid "Unable to start %s"
-msgstr "%s başlatılamadı"
-
-#: ../src/View/Sidebar.vala:1291
-msgid "Open"
-msgstr "Aç"
-
-#: ../src/View/Sidebar.vala:1299
-msgid "Open in New _Tab"
-msgstr "Yeni _Sekmede Aç"
-
-#: ../src/View/Sidebar.vala:1305
-msgid "Open in New _Window"
-msgstr "Yeni _Pencerede Aç"
-
-#: ../src/View/Sidebar.vala:1313
-msgid "Remove"
-msgstr "Sil"
-
-#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Yeniden Adlandır"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Mount"
-msgstr "_Bağla"
-
-#: ../src/View/Sidebar.vala:1336
-msgid "_Unmount"
-msgstr "Bağı Ka_ldır"
-
-#: ../src/View/Sidebar.vala:1342
-msgid "_Eject"
-msgstr "_Çıkart"
-
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Önizleme hatası"
@@ -1968,6 +1923,152 @@ msgstr "Seçilenin yerine kesiliyor."
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr ""
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Kişisel"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Ortak yerler ve yer imleriniz."
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Ana Sayfa"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Kişisel dizininizi açın"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr "Çöp Kutusunu Aç"
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Aygıtlar"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Yerel bölüm ve aygıtlarınız"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr "FileSystem içindekileri aç"
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "%s'i bağla ve aç"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Ağ bağlantılarım"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr "Tüm Ağ"
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Ağ içeriğine gözat"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "%s başlatılamadı"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr "Aç"
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Yeni _Sekmede Aç"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Yeni _Pencerede Aç"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Sil"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Bağla"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "Bağı Ka_ldır"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "_Çıkart"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(yönetici olarak)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr "Bu Dizin Sana Ait Değil"
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr "Bu klasör için sunucu bulunamadı."
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr "Dosya Bulunamadı"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr "Seçilen dosya artık yok."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Dosya İşlemleri"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d dosya işlemi etkin"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Ayrıntıları Göster"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Kopyalama Diyaloğunu Göster"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Devam Eden Tüm Eylemleri İptal Et"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2031,32 +2132,6 @@ msgstr "_Dosyalar Hakkında"
 msgid "Files"
 msgstr "Dosyalar"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Dosya İşlemleri"
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d dosya işlemi etkin"
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Ayrıntıları Göster"
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Kopyalama Diyaloğunu Göster"
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Devam Eden Tüm Eylemleri İptal Et"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr ""
@@ -2077,78 +2152,22 @@ msgstr "Bağlantı oluştur"
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Basit ve güçlü bir dosya yöneticisi"
-
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Launchpad Çevirmenkeri"
-
-#: ../libwidgets/Resources.vala:92
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:93
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:94
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:95
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:97
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:98
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:100
-msgid "Recent"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:101
-msgid "MTP"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "%s git"
 
-#: ../libwidgets/View/LocationBar.vala:159
-msgid "Reload this folder"
-msgstr "Klasörü Yenile"
-
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:406
-msgid "Open in New Tab"
-msgstr "Yeni Sekmede Aç"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:413
-msgid "Open in New Window"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
 msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:179
-msgid "In This Folder"
-msgstr "Bu klasörde"
-
-#: ../libwidgets/View/SearchResults.vala:181
-msgid "Bookmarks"
-msgstr "Yer İmleri"
-
-#: ../libwidgets/View/SearchResults.vala:183
-msgid "Everywhere Else"
-msgstr "Her Yerde"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2162,17 +2181,33 @@ msgstr "Liste Olarak Görüntüle"
 msgid "View in Columns"
 msgstr "Sütun Olarak Görüntüle"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "Bu klasörde"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Yer İmleri"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Her Yerde"
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr "Klasörü Yenile"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Yeni Sekmede Aç"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
-msgid "Navigate to %s"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
 msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
-msgid "Go to %s"
-msgstr "%s git"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2202,8 +2237,7 @@ msgstr ""
 msgid "Restore from Trash"
 msgstr "Çöpten Geri Al"
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Kalıcı olarak sil"
 

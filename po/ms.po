@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-02-03 18:40+0000\n"
-"Last-Translator: Anuar Muhammad <anuartechnology@gmail.com>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-18 20:00+0000\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-04 05:35+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Tiada apa-apa pada 'clipboard' untuk ditampalkan"
+"X-Launchpad-Export-Date: 2015-12-20 06:05+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,9 +137,38 @@ msgstr "_Ingat kata laluan ini"
 msgid "Operation cancelled"
 msgstr "Operasi dibatalkan"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Papar lebih _perician"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Tiada apa-apa pada 'clipboard' untuk ditampalkan"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Item tidak boleh dipulihkan kembali dari tong sampah"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (unikod tidak sah)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Semalam pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y pada %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -525,168 +550,10 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Buat semula ubah pemilik bagi %d item"
 msgstr[1] "Buat semula ubah pemilik bagi %d item"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Item tidak boleh dipulihkan kembali dari tong sampah"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Cantum folder \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
-"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Penggantiannya akan membuang semua fail di dalam folder."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ganti folder \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ganti fail \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Fail Asal"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
-msgid "Size:"
-msgstr "Saiz:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:543
-msgid "Type:"
-msgstr "Jenis:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Terakhir diubahsuai:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Ganti dengan"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Cantum"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Pilih nama baru destinasi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Tetap semula"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Laksanakan tindakan ini untuk semua fail"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Langkau"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "_Namakan Semula"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Ganti"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Fail konflik"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (unikod tidak sah)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Menyediakan"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -917,6 +784,8 @@ msgid_plural "%'d files left to delete"
 msgstr[0] "%'d fail lagi untuk dipadam"
 msgstr[1] "%'d fail lagi untuk dipadam"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1247,6 +1116,10 @@ msgstr[1] "Menduakan fail %'d"
 msgid "%S of %S"
 msgstr "%S dari %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1446,21 +1319,9 @@ msgstr "Mengosongkan tong sampah"
 msgid "Emptying Trash"
 msgstr "Mengosongkan Tong Sampah"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Semalam pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y pada %-I:%M %p"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Papar lebih _perician"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1492,6 +1353,211 @@ msgstr "Garis miring tidak dibenarkan dalam nama fail"
 msgid "Toplevel files cannot be renamed"
 msgstr "Fail aras tinggi tidak boleh dinamakan semula"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Menyediakan"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Cantum folder \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
+"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Penggantiannya akan membuang semua fail di dalam folder."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ganti folder \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ganti fail \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Fail Asal"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Saiz:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Jenis:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Terakhir diubahsuai:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Ganti dengan"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Cantum"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Pilih nama baru destinasi"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Tetap semula"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Laksanakan tindakan ini untuk semua fail"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "_Namakan Semula"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Ganti"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Fail konflik"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Merupakan pengurus fail yang ringkas dan hebat"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Anuar Muhammad https://launchpad.net/~anuartechnology\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  abuyop https://launchpad.net/~abuyop"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Rangkaian"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Tong Sampah"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr ""
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr ""
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Sistem Fail"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
@@ -1506,61 +1572,20 @@ msgstr "Berikutnya"
 msgid "Create folder"
 msgstr ""
 
-#: ../src/View/Window.vala:182
-msgid "Files isn't your default file manager."
-msgstr "Fail bukanlah pengurus fail lalai anda."
-
-#: ../src/View/Window.vala:188
-msgid "Set as Default"
-msgstr "Tetapkan sebagai Lalai"
-
-#: ../src/View/Window.vala:194
-msgid "Ignore"
-msgstr "Abai"
-
-#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
-msgid "Home"
-msgstr "Rumah"
-
-#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
-#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
-msgid "File System"
-msgstr "Sistem Fail"
-
-#: ../src/View/ViewContainer.vala:344
-msgid "(as Administrator)"
-msgstr "(sebagai Pentadbir)"
-
-#: ../src/View/ViewContainer.vala:353
-msgid "This Folder Does Not Belong to You"
+#: ../src/View/Slot.vala:36
+msgid "This Folder Is Empty"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:354
-msgid "You don't have permission to view this folder."
-msgstr "Anda tidak mempunyai keizinan untuk melihat folder ini."
-
-#: ../src/View/ViewContainer.vala:357
-msgid "Unable to Mount Folder"
+#: ../src/View/Slot.vala:37
+msgid "Trash Is Empty"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:358
-msgid "The server for this folder could not be located."
+#: ../src/View/Slot.vala:38
+msgid "There Are No Recent Files"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:374
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:375
-msgid "The file selected no longer exists."
+#: ../src/View/Slot.vala:39
+msgid "Access Denied"
 msgstr ""
 
 #: ../src/View/ListView.vala:26
@@ -1578,44 +1603,6 @@ msgstr "Jenis"
 #: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Diubahsuai"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Folder \"%s\" tidak ditemui."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Cipta"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Cipta folder \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Gagal mencipta folder\n"
-"\n"
-"%s"
-
-#: ../src/View/Slot.vala:36
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:37
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:38
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:39
-msgid "Access Denied"
-msgstr ""
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1657,6 +1644,44 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Fail bukanlah pengurus fail lalai anda."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr "Tetapkan sebagai Lalai"
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Abai"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Folder \"%s\" tidak ditemui."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Cipta"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Cipta folder \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Gagal mencipta folder\n"
+"\n"
+"%s"
+
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Tutup"
@@ -1666,8 +1691,7 @@ msgstr "Tutup"
 msgid "Properties"
 msgstr "Sifat"
 
-#: ../src/View/PropertiesWindow.vala:344
-#: ../src/View/PropertiesWindow.vala:1566
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Am"
 
@@ -1740,8 +1764,7 @@ msgstr ""
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:704
-#: ../src/View/PropertiesWindow.vala:1495
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr ""
 
@@ -1753,8 +1776,7 @@ msgstr "Aplikasi lain..."
 msgid "Open with:"
 msgstr "Buka dengan:"
 
-#: ../src/View/PropertiesWindow.vala:781
-#: ../src/View/PropertiesWindow.vala:1511
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr ""
 
@@ -1829,98 +1851,6 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:429
-msgid "Personal"
-msgstr "Peribadi"
-
-#: ../src/View/Sidebar.vala:434
-msgid "Your common places and bookmarks"
-msgstr "Tempat dan tanda buku umum anda"
-
-#: ../src/View/Sidebar.vala:453
-msgid "Open your personal folder"
-msgstr "Buka folder peribadi anda"
-
-#: ../src/View/Sidebar.vala:468
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
-msgid "Trash"
-msgstr "Tong Sampah"
-
-#: ../src/View/Sidebar.vala:496
-msgid "Open the Trash"
-msgstr "Buka Tong Sampah"
-
-#: ../src/View/Sidebar.vala:502
-msgid "Devices"
-msgstr "Peranti"
-
-#: ../src/View/Sidebar.vala:507
-msgid "Your local partitions and devices"
-msgstr "Sekaran dan peranti setempat anda"
-
-#: ../src/View/Sidebar.vala:519
-msgid "Open the contents of the FileSystem"
-msgstr "Buka kandungan Sistem Fail"
-
-#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
-msgid "Mount and open %s"
-msgstr "Lekap dan buka %s"
-
-#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
-msgid "Network"
-msgstr "Rangkaian"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Your network places"
-msgstr "Tempat rangkaian anda"
-
-#: ../src/View/Sidebar.vala:666
-msgid "Entire Network"
-msgstr "Keseluruhan Rangkaian"
-
-#: ../src/View/Sidebar.vala:673
-msgid "Browse the contents of the network"
-msgstr "Layar kandungan rangkaian"
-
-#: ../src/View/Sidebar.vala:1210
-msgid "Unable to start %s"
-msgstr "Tidak boleh mulakan %s"
-
-#: ../src/View/Sidebar.vala:1291
-msgid "Open"
-msgstr "Buka"
-
-#: ../src/View/Sidebar.vala:1299
-msgid "Open in New _Tab"
-msgstr "Buka dalam _Tab Baru"
-
-#: ../src/View/Sidebar.vala:1305
-msgid "Open in New _Window"
-msgstr "Buka dalam _Tetingkap Baru"
-
-#: ../src/View/Sidebar.vala:1313
-msgid "Remove"
-msgstr "Buang"
-
-#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Nama Semula"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Mount"
-msgstr "_Lekap"
-
-#: ../src/View/Sidebar.vala:1336
-msgid "_Unmount"
-msgstr "_Nyahlekap"
-
-#: ../src/View/Sidebar.vala:1342
-msgid "_Eject"
-msgstr "_Lenting"
-
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr ""
@@ -1978,6 +1908,153 @@ msgstr ""
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr ""
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Peribadi"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Tempat dan tanda buku umum anda"
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Rumah"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Buka folder peribadi anda"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr "Buka Tong Sampah"
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Peranti"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Sekaran dan peranti setempat anda"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr "Buka kandungan Sistem Fail"
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "Lekap dan buka %s"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Tempat rangkaian anda"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr "Keseluruhan Rangkaian"
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Layar kandungan rangkaian"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "Tidak boleh mulakan %s"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr "Buka"
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Buka dalam _Tab Baru"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Buka dalam _Tetingkap Baru"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Buang"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Nama Semula"
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Lekap"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "_Nyahlekap"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "_Lenting"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(sebagai Pentadbir)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "Anda tidak mempunyai keizinan untuk melihat folder ini."
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Operasi Fail"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Semua operasi fail berjaya diselesaikan"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d operasi fail aktif"
+msgstr[1] "%'d operasi fail aktif"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Papar Perincian"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Papar Dialog Salin"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Batal Semua TIndakan Dalam-proses"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2041,33 +2118,6 @@ msgstr "Perihal _Fail"
 msgid "Files"
 msgstr "Fail"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Operasi Fail"
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Semua operasi fail berjaya diselesaikan"
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d operasi fail aktif"
-msgstr[1] "%'d operasi fail aktif"
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Papar Perincian"
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Papar Dialog Salin"
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Batal Semua TIndakan Dalam-proses"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr ""
@@ -2088,78 +2138,22 @@ msgstr ""
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Merupakan pengurus fail yang ringkas dan hebat"
-
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Penterjemah Launchpad"
-
-#: ../libwidgets/Resources.vala:92
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:93
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:94
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:95
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:97
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:98
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:100
-msgid "Recent"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:101
-msgid "MTP"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Pergi ke %s"
 
-#: ../libwidgets/View/LocationBar.vala:159
-msgid "Reload this folder"
-msgstr ""
-
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:406
-msgid "Open in New Tab"
-msgstr "Buka dalam Tab Baru"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:413
-msgid "Open in New Window"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
 msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:179
-msgid "In This Folder"
-msgstr "Dalam Folder Ini"
-
-#: ../libwidgets/View/SearchResults.vala:181
-msgid "Bookmarks"
-msgstr "Tanda Buku"
-
-#: ../libwidgets/View/SearchResults.vala:183
-msgid "Everywhere Else"
-msgstr "Dimana Sahaja"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2173,17 +2167,33 @@ msgstr "Papar sebagai Senarai"
 msgid "View in Columns"
 msgstr "Papar dalam Lajur"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "Dalam Folder Ini"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Tanda Buku"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Dimana Sahaja"
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
-msgid "Navigate to %s"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Buka dalam Tab Baru"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
-msgid "Go to %s"
-msgstr "Pergi ke %s"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
+msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2213,8 +2223,7 @@ msgstr ""
 msgid "Restore from Trash"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr ""
 
