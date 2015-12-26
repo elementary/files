@@ -62,8 +62,6 @@ namespace Marlin.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
-        public bool ready {get; private set;}
-
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         /* To maintain compatibility with existing plugins */
@@ -170,36 +168,58 @@ namespace Marlin.View {
         }
 
         public void add_view (Marlin.ViewMode mode, GLib.File? loc = null) {
+            assert (view == null);
             overlay_statusbar.cancel ();
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
-                view = new Miller (loc, this, mode);
-            else
-                view = new Slot (loc, this, mode);
-
-            content = view.get_content_box ();
-            view.active.connect (on_slot_active);
             view_mode = mode;
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
-            load_slot_directory (view);
+
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                this.view = new Miller (loc, this, mode);
+            else
+                this.view = new Slot (loc, this, mode);
+
+            connect_slot_signals (this.view);
+            load_slot_directory (this.view);
+            view.directory.init ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
         }
 
         public void change_view_mode (Marlin.ViewMode mode) {
+            var aslot = get_current_slot ();
+            assert (aslot != null);
             assert (view != null && location != null);
+            var loc = location;
             if (mode != view_mode) {
-                store_selection ();
-                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                view.close ();
-                view.active.disconnect (on_slot_active);
-                content = null; /* Make sure old slot and directory view are destroyed */
-
-                add_view (mode, location);
-                /* Slot is created inactive so we activate now since we must be the current tab
-                 * to have received a change mode instruction */
-                set_active_state (true);
-                window.update_top_menu ();
+                before_mode_change ();
+                add_view (mode, loc);
+                after_mode_change ();
             }
+        }
+
+        private void before_mode_change () {
+            store_selection ();
+            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+            view.close ();
+            disconnect_slot_signals (view);
+            content = null; /* Make sure old slot and directory view are destroyed */
+            view = null; /* Pre-requisite for add view */
+            loading (false);
+        }
+        private void after_mode_change () {
+            /* Slot is created inactive so we activate now since we must be the current tab
+             * to have received a change mode instruction */
+            set_active_state (true);
+            window.update_top_menu ();
+        }
+
+        private void connect_slot_signals (GOF.AbstractSlot aslot) {
+            aslot.active.connect (on_slot_active);
+            aslot.path_changed.connect (on_slot_path_changed);
+        }
+        private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
+            aslot.active.disconnect (on_slot_active);
+            aslot.path_changed.disconnect (on_slot_path_changed);
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
@@ -228,56 +248,22 @@ namespace Marlin.View {
             }
         }
 
-        public void slot_path_changed (GLib.File loc, bool allow_mode_change = true) {
+        public void on_slot_path_changed (GOF.AbstractSlot slot, bool change_mode_to_icons) {
+            assert (slot != null);
             overlay_statusbar.cancel ();
             /* automagicly enable icon view for icons keypath */
-            if (allow_mode_change &&
-                get_current_slot ().directory.uri_contain_keypath_icons &&
-                view_mode != Marlin.ViewMode.ICON)
-
+            if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
                 change_view_mode (Marlin.ViewMode.ICON);
-            else
-                set_up_current_slot ();
+            } else {
+                load_slot_directory (slot);
+            }
         }
 
-        private void set_up_current_slot () {
+        public void load_slot_directory (GOF.AbstractSlot slot) {
+            assert (slot != null);
             overlay_statusbar.halign = Gtk.Align.END;
-            ready = false;
-            load_slot_directory (get_current_slot ());
-        }
-
-        public void load_slot_directory (GOF.AbstractSlot? slot) {
-            if (slot == null)
-                return;
-
             refresh_slot_info (slot);
             loading (true);
-            /* Allow time for the window to update before trying to load directory so that
-             * the window is displayed more quickly when starting the application in,
-             * or switching view to, a folder that contains a large number of files.
-             * Also ensures infobars are added correctly by plugins.  Only checking in idle
-             * time allows pathbar animation to complete smoothly.
-
-             * Wait until directory is flagged ready to allow time for network folders to be found
-             * and accessed. Limit rate of checking to reduce cpu load during password dialogs.
-             * TODO Prepare Async Directory asynchronously and use callback to load. 
-
-             * Do not try and load directory that is not flagged 'can load'.
-             */
-            Timeout.add_full (GLib.Priority.LOW, 200, () => {
-                if (!slot.directory.is_ready) {
-                    /* Directory has not completed preparation e.g. mounting or getting password */
-                    return true;
-                }
-
-                if (slot.directory.can_load) {
-                    slot.directory.load ();
-                } else {
-                    /* As directory cannot load files, this will show a warning message */
-                    directory_done_loading (slot);
-                }
-                return false;
-            });
         }
 
         public void plugin_directory_loaded () {
@@ -353,20 +339,20 @@ namespace Marlin.View {
             loading (false);
             can_show_folder = true;
 
-            if (slot.directory.permission_denied) {
+            if (!slot.directory.file.exists) {
+                if (slot.can_create)
+                    content = new DirectoryNotFound (slot.directory, this);
+                else
+                    content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
+                                                       _("You cannot create a folder here."));
+                can_show_folder = false;
+            } else if (slot.directory.permission_denied) {
                 content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                    _("You don't have permission to view this folder."));
                 can_show_folder = false;
             } else if (!slot.directory.can_load) {
                 content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
                                                    _("The server for this folder could not be located."));
-                can_show_folder = false;
-            } else if (!slot.directory.file.exists) {
-                if (slot.can_create)
-                    content = new DirectoryNotFound (slot.directory, this);
-                else
-                    content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
-                                                       _("You cannot create a folder here."));
                 can_show_folder = false;
             } else if (selected_locations != null) {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
@@ -383,7 +369,7 @@ namespace Marlin.View {
             }
 
             if (can_show_folder) {
-                ready = true;
+                assert (view != null);
                 content = view.get_content_box ();
                 plugin_directory_loaded ();
             }
@@ -487,7 +473,6 @@ namespace Marlin.View {
         }
 
         public void reload (bool propagate = true) {
-            loading (true);
             var slot = get_current_slot ();
             if (slot != null)
                 slot.reload ();

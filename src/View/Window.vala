@@ -497,7 +497,7 @@ namespace Marlin.View {
 
         private void action_reload () {
             /* avoid spawning reload when key kept pressed */
-            if (tabs.current.working || !current_tab.ready)
+            if (tabs.current.working)
                 return;
 
             current_tab.reload ();

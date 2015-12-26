@@ -79,8 +79,7 @@ namespace Marlin.View {
             nest_slot_in_host_slot (new_slot, host);
             connect_slot_signals (new_slot);
             slot_list.append (new_slot);
-            ctab.load_slot_directory (new_slot);
-            new_slot.active ();
+            new_slot.active (); /* This will set the new slot to be current_slot. Must do this before loading */
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -100,6 +99,8 @@ namespace Marlin.View {
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.colpane.add (hpane1);
+                ctab.load_slot_directory (slot);
+                slot.directory.init ();
             } else
                 this.colpane.add (hpane1);
         }
