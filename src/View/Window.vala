@@ -844,8 +844,10 @@ namespace Marlin.View {
 
                 GLib.File root_location = GLib.File.new_for_commandline_arg (unescaped_root_uri);
 
-                if (!valid_location (root_location))
-                    continue;
+                /* We do not check valid location here because it may cause the interface to hang
+                 * before the window appears (e.g. if trying to connect to a server that has become unavailable)
+                 * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously. 
+                 */
 
                 add_tab (root_location, mode);
 
@@ -890,32 +892,6 @@ namespace Marlin.View {
             return tabs_added;
         }
 
-        private bool valid_location (GLib.File location) {
-            GLib.FileInfo? info = null;
-
-            string scheme = location.get_uri_scheme ();
-            if (scheme == "smb" ||
-                scheme == "ftp" ||
-                scheme == "network")
-                /* Do not restore remote and network locations */
-                return true;
-
-            try {
-                info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
-            }
-            catch (GLib.Error e) {
-                warning ("Invalid location on restoring tabs - %s", location.get_uri ());
-                return false;
-            }
-
-            if (info.get_file_type () == GLib.FileType.DIRECTORY)
-                return true;
-            else {
-                warning ("Attempt to restore a location that is not a directory");
-                return false;
-            }
-        }
-
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
             /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
@@ -939,9 +915,6 @@ namespace Marlin.View {
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = GLib.File.new_for_uri (uri);
-
-                    if (!valid_location (gfile))
-                        break;
 
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }

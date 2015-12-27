@@ -2713,12 +2713,10 @@ namespace FM {
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
                 /* cannot get file info while network disconnected */
-                if (slot.directory.is_local || slot.directory.check_network ()) {
-                    /* cannot get file info while network disconnected */
+                if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
+                    /* cannot get file info while network disconnected. */
                     item_hovered (file);
                     hover_path = path;
-                } else {
-                    slot.reload (true); /* non-local only */
                 }
             }
 

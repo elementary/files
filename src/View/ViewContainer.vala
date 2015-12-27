@@ -316,15 +316,7 @@ namespace Marlin.View {
             else if (slot_path == "/")
                 tab_name = _("File System");
             else {
-                try {
-                    var info = loc.query_info (FileAttribute.STANDARD_DISPLAY_NAME, FileQueryInfoFlags.NONE);
-                    tab_name = info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
-                }
-                catch (GLib.Error e) {
-                    warning ("Could not get location display name. %s", e.message);
-                    tab_name = loc.get_basename ();
-                    can_show_folder = false;
-                }
+                tab_name = Uri.unescape_string (Path.get_basename (loc.get_uri ()));
             }
 
             if (tab_name == "-----")
@@ -346,13 +338,13 @@ namespace Marlin.View {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                        _("You cannot create a folder here."));
                 can_show_folder = false;
-            } else if (slot.directory.permission_denied) {
-                content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
-                                                   _("You don't have permission to view this folder."));
-                can_show_folder = false;
             } else if (!slot.directory.can_load) {
                 content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
                                                    _("The server for this folder could not be located."));
+                can_show_folder = false;
+            } else if (slot.directory.permission_denied) {
+                content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
+                                                   _("You don't have permission to view this folder."));
                 can_show_folder = false;
             } else if (selected_locations != null) {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
@@ -420,7 +412,10 @@ namespace Marlin.View {
                 return;
             }
             GLib.File? loc = null;
-            var filetype = file.query_file_type (GLib.FileQueryInfoFlags.NONE);
+            FileType filetype = FileType.UNKNOWN;
+            if (file.is_native ()) {
+                file.query_file_type (GLib.FileQueryInfoFlags.NONE); /* this may block */
+            }
             if (filetype == FileType.UNKNOWN) {
                 /* May be request for non-existing file - in which case 
                  * an opportunity will be given to create it when we try to 
