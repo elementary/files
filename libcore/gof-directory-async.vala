@@ -380,7 +380,6 @@ public class GOF.Directory.Async : Object {
             return;
         }
         cancellable.reset ();
-
         if (!can_load) {
             warning ("load called when cannot load - not expected to happen");
             after_loading (file_loaded_func);
@@ -789,9 +788,7 @@ public class GOF.Directory.Async : Object {
     public static Async from_gfile (GLib.File file) {
         /* Note: cache_lookup creates directory_cache if necessary */
         Async?  dir = cache_lookup (file);
-        if (dir != null && !dir.is_local)
-                dir = null;
-
+        /* Both local and non-local files can be cached */
         return dir ?? new Async (file);
     }
 
