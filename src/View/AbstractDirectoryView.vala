@@ -1277,7 +1277,9 @@ namespace FM {
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
+            /* Should only be called on directory creation or reload */
             dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();

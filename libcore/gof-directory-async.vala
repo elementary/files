@@ -118,15 +118,15 @@ public class GOF.Directory.Async : Object {
       * the premature ending of text entry.
      **/
     public void init (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state == State.LOADING) {
-            warning ("ASYNC init re-entered -should not happen");
+        if (state == State.LOADING) { /* Could happen reloading multiple windows */
             return;
         }
         state = State.LOADING;
         cancellable.cancel ();
         cancellable.reset ();
-        if (is_cached && can_load && state == State.LOADED) { /* false on first visit or when reloading */
-            list_cached_files (file_loaded_func);
+
+        if (file_hash != null && file_hash.size () > 0) { /* false on first visit or when reloading */
+            list_cached_files (file_loaded_func); /* will call make ready when done */
         } else {
             prepare_directory.begin (file_loaded_func);
         }
@@ -337,6 +337,9 @@ public class GOF.Directory.Async : Object {
 
     /** Called in preparation for a reload **/
     public void clear_directory_info () {
+        if (state != State.LOADED) { /* Could get called multiple times if multiple windows reload the same directory */
+            return;
+        }
         cancellable.cancel ();
         cancellable.reset ();
 
@@ -357,11 +360,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state != State.LOADED) {
-            warning ("load called in unloaded or loading state - not expected to happen");
+        if (state == State.NOT_LOADED) {
+            warning ("list cached files called in unloaded state - not expected to happen");
             return;
         }
-
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null) {
@@ -372,6 +374,11 @@ public class GOF.Directory.Async : Object {
     }
 
     private async void list_directory_async (GOFFileLoadedFunc? file_loaded_func) {
+        /* Should only be called after creation and if reloaded */
+        if (!is_cached || file_hash != null && file_hash.size () > 0) {
+            critical ("(Re)load directory called when not cleared");
+            return;
+        }
         cancellable.reset ();
 
         if (!can_load) {
@@ -437,9 +444,6 @@ public class GOF.Directory.Async : Object {
                 permission_denied = true;
             else if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
-
-            clear_directory_info ();
-            can_load = false;
         }
         after_loading (file_loaded_func);
     }
@@ -460,6 +464,7 @@ public class GOF.Directory.Async : Object {
         if (file_loaded_func == null) {
             done_loading ();
         }
+        state = State.LOADED;
     }
 
     public void block_monitor () {
@@ -487,7 +492,6 @@ public class GOF.Directory.Async : Object {
         if (!can_load) {
             return;
         }
-
         if (state != State.LOADED) {
             list_directory_async.begin (null);
         } else {

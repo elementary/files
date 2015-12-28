@@ -218,7 +218,6 @@ namespace Marlin.View {
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
             var old_dir = directory;
-            old_dir.cancel ();
             set_up_directory (loc);
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
