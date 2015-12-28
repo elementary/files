@@ -109,14 +109,14 @@ public class GOF.Directory.Async : Object {
     }
 
     public void init (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state == State.LOADING) {
-            warning ("ASYNC init re-entered -should not happen");
+        if (state == State.LOADING) { /* Could happen reloading multiple windows */
             return;
         }
+        state = State.LOADING;
         cancellable.cancel ();
         cancellable.reset ();
-        if (is_cached && can_load && state == State.LOADED) { /* false on first visit or when reloading */
-            list_cached_files (file_loaded_func);
+        if (file_hash != null && file_hash.size () > 0) { /* false on first visit or when reloading */
+            list_cached_files (file_loaded_func); /* will call make ready when done */
         } else if (!prepare_directory (file_loaded_func)) { /* Returns true if has already called make_ready () or will do so in a callback */
             make_ready (false);
         }
@@ -322,6 +322,9 @@ public class GOF.Directory.Async : Object {
 
     /** Called in preparation for a reload **/
     public void clear_directory_info () {
+        if (state != State.LOADED) { /* Could get called multiple times if multiple windows reload the same directory */
+            return;
+        }
         cancel ();
 
         if (idle_consume_changes_id != 0) {
@@ -346,18 +349,22 @@ public class GOF.Directory.Async : Object {
       * the premature ending of text entry.
      **/
     private void load (GOFFileLoadedFunc? file_loaded_func = null) {
+        /* Should only be called after creation and if reloaded */
+        if (!is_cached || file_hash != null && file_hash.size () > 0) {
+            critical ("(Re)load directory called when not cleared");
+            return;
+        }
         if (!can_load) {
             warning ("load called when cannot load - not expected to happen");
             after_loading (file_loaded_func);
             return;
         }
 
-        if (state != State.NOT_LOADED) {
+        if (state != State.LOADING) {
             warning ("load called in loaded or loading state - not expected to happen");
             return;
         }
 
-        cancellable.reset ();
         longest_file_name = "";
         permission_denied = false;
 
@@ -365,11 +372,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state != State.LOADED) {
-            warning ("load called in unloaded or loading state - not expected to happen");
+        if (state == State.NOT_LOADED) {
+            warning ("list cached files called in unloaded state - not expected to happen");
             return;
         }
-
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null) {
@@ -380,8 +386,6 @@ public class GOF.Directory.Async : Object {
     }
 
     private async void list_directory (GOFFileLoadedFunc? file_loaded_func) {
-        files_count = 0;
-        state = State.LOADING;
         try {
             bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, 0, cancellable);
@@ -417,8 +421,6 @@ public class GOF.Directory.Async : Object {
                 permission_denied = true;
             else if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
-
-            clear_directory_info ();
         }
         after_loading (file_loaded_func);
     }
@@ -439,6 +441,7 @@ public class GOF.Directory.Async : Object {
         if (file_loaded_func == null && !cancellable.is_cancelled ()) {
             done_loading ();
         }
+        state = State.LOADED;
     }
 
     public void block_monitor () {
@@ -466,7 +469,6 @@ public class GOF.Directory.Async : Object {
         if (!can_load) {
             return;
         }
-
         if (state != State.LOADED) {
             load ();
         } else {
