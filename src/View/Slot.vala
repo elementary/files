@@ -77,7 +77,6 @@ namespace Marlin.View {
                 if (is_active)
                     return;
 
-                ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
             });

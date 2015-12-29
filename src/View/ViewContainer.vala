@@ -179,7 +179,7 @@ namespace Marlin.View {
                 this.view = new Slot (loc, this, mode);
 
             connect_slot_signals (this.view);
-            load_slot_directory (this.view);
+            directory_is_loading (loc);
             view.directory.init ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -224,6 +224,7 @@ namespace Marlin.View {
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
             plugin_directory_loaded ();
+            refresh_slot_info (slot.location);
         }
 
         private void user_path_change_request (GLib.File loc) {
@@ -255,14 +256,14 @@ namespace Marlin.View {
             if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
                 change_view_mode (Marlin.ViewMode.ICON);
             } else {
-                load_slot_directory (slot);
+                directory_is_loading (slot.location);
             }
         }
 
-        public void load_slot_directory (GOF.AbstractSlot slot) {
+        public void directory_is_loading (GLib.File loc) {
             assert (slot != null);
             overlay_statusbar.halign = Gtk.Align.END;
-            refresh_slot_info (slot);
+            refresh_slot_info (loc);
             loading (true);
         }
 
@@ -280,8 +281,7 @@ namespace Marlin.View {
             plugins.directory_loaded ((void*) data);
         }
 
-        public void refresh_slot_info (GOF.AbstractSlot aslot) {
-            GLib.File loc = aslot.directory.file.location;
+        public void refresh_slot_info (GLib.File loc) {
             update_tab_name (loc);
             browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
 
