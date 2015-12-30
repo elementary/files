@@ -397,58 +397,45 @@ namespace Marlin.View {
                 aslot.set_frozen_state (is_frozen);
         }
         
-        public void focus_location (GLib.File? file,
-                                    bool select_in_current_only = false,
+        public void focus_location (GLib.File loc,
+                                    bool no_path_change = false,
                                     bool unselect_others = false) {
+
             /* This function navigates to another folder if necessary if 
              * select_in_current_only is not set to true.
-             */ 
-            if (unselect_others || file == null) {
-                get_current_slot ().set_all_selected (false);
-                selected_locations = null;
-            }
+             */
+            assert (loc != null);
 
-            if (file == null || location.equal (file)) {
+            if (location.equal (loc)) {
                 return;
             }
-            GLib.File? loc = null;
-            FileType filetype = FileType.UNKNOWN;
-            if (file.is_native ()) {
-                file.query_file_type (GLib.FileQueryInfoFlags.NONE); /* this may block */
-            }
-            if (filetype == FileType.UNKNOWN) {
-                /* May be request for non-existing file - in which case 
-                 * an opportunity will be given to create it when we try to 
-                 * load it
-                 */
-                loc = file;
-            } else {
-                File? parent = file.get_parent ();
-                if (parent != null && location.equal (parent)) {
-                    if (select_in_current_only || filetype != FileType.DIRECTORY) {
-                        var list = new List<File> ();
-                        list.prepend (file);
-                        get_current_slot ().select_glib_files (list, file);
-                    } else
-                        loc = file;
-                } else if (!select_in_current_only) {
-                    if (filetype == FileType.DIRECTORY)
-                        loc = file;
-                    else if (parent != null) {
-                        loc = parent;
-                        selected_locations.prepend (file);
-                    }
-                }
-            }
 
-            if (loc != null)
+            FileInfo? info = get_current_slot ().lookup_file_info (loc);
+            FileType filetype = FileType.UNKNOWN;
+            if (info != null) { /* location is in the current folder */
+                filetype = info.get_file_type ();
+                if (filetype != FileType.DIRECTORY || no_path_change) {
+                    if (unselect_others) {
+                        get_current_slot ().set_all_selected (false);
+                        selected_locations = null;
+                    }
+                    var list = new List<File> ();
+                    list.prepend (loc);
+                    get_current_slot ().select_glib_files (list, loc);
+                    return;
+                }
+            } else if (no_path_change) { /* not in current, do not navigate to it*/
+                return;
+            }
+            /* Attempt to navigate to the location */
+            if (loc != null) {
                 user_path_change_request (loc);
+            }
         }
 
-        public void focus_location_if_in_current_directory (GLib.File? file,
+        public void focus_location_if_in_current_directory (GLib.File? loc,
                                                             bool unselect_others = false) {
-
-            focus_location (file, true, unselect_others);
+            focus_location (loc, true, unselect_others);
         }
 
         public string get_root_uri () {

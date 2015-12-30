@@ -357,5 +357,14 @@ namespace Marlin.View {
             set_view_updates_frozen (freeze);
             frozen_changed (freeze);
         }
+
+        public override FileInfo? lookup_file_info (GLib.File loc) {
+            GOF.File? gof = directory.file_hash_lookup_location (loc);
+            if (gof != null) {
+                return gof.info;
+            } else {
+                return null;
+            }
+        }
     }
 }
