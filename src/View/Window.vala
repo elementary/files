@@ -524,7 +524,7 @@ namespace Marlin.View {
                     break;
             }
             current_tab.change_view_mode (mode);
-            update_view_mode (mode);
+            /* ViewContainer takes care of changing appearance */
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
@@ -747,7 +747,7 @@ namespace Marlin.View {
             }
         }
 
-        public void update_view_mode (Marlin.ViewMode mode) {
+        private void update_view_mode (Marlin.ViewMode mode) { /* Called via update topmenu */
             GLib.SimpleAction action = get_action ("view_mode");
             action.set_state (mode_strings [(int)mode]);
             view_switcher.mode = mode;

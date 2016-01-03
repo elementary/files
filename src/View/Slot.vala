@@ -25,7 +25,7 @@ namespace Marlin.View {
         private FM.AbstractDirectoryView? dir_view = null;
 
         protected bool updates_frozen = false;
-
+        protected bool original_reload_request = false;
         public bool has_autosized = false;
         public bool is_active {get; protected set;}
 
@@ -133,10 +133,26 @@ namespace Marlin.View {
                 autosize_slot ();
 
             set_view_updates_frozen (false);
+            updates_frozen = false;
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir) {
-            user_path_change_request (directory.location, false);
+            if (!updates_frozen) {
+                updates_frozen = true;
+                var old_dir = directory;
+                set_up_directory (this.location);
+                path_changed (false);
+                /* ViewContainer listens to this signal takes care of updating appearance
+                 * If allow_mode_change is false View Container will not automagically
+                 * switch to icon view for icon folders (needed for Miller View) */
+                dir_view.change_directory (old_dir, directory);
+                /* Only need to initialise directory once - the slot that originally received the
+                 * reload request does this */ 
+                if (original_reload_request) {
+                    directory.reload ();
+                    original_reload_request = false;
+                }
+            }
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -178,18 +194,19 @@ namespace Marlin.View {
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ()) {
-                if (directory.is_trash)
+            if (directory.is_empty ()) { /* No files in the file cache */
+                if (directory.permission_denied) {
+                    layout.set_markup (denied_message, -1);
+                } else if (directory.is_trash) {
                     layout.set_markup (empty_trash_message, -1);
-                else if (directory.is_recent)
+                } else if (directory.is_recent) {
                     layout.set_markup (empty_recents_message, -1);
-                else
+                } else {
                     layout.set_markup (empty_message, -1);
-            } else if (directory.permission_denied)
-                layout.set_markup (denied_message, -1);
-            else
+                }
+            } else {
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
-
+            }
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
@@ -227,8 +244,8 @@ namespace Marlin.View {
         }
 
         public override void reload (bool non_local_only = false) {
-            if (!(non_local_only && directory.is_local)) {
-                directory.clear_directory_info ();
+            if (!non_local_only || !directory.is_local) {
+                original_reload_request = true;
                 directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
             }
         }

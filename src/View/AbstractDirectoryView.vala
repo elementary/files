@@ -615,10 +615,6 @@ namespace FM {
             connect_directory_handlers (new_dir);
         }
 
-        public void reload () {
-            change_directory (slot.directory, slot.directory);
-        }
-
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
             /* Set up as drop site */
             Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
@@ -804,8 +800,7 @@ namespace FM {
 
             /* If in recent "folder" we need to refresh the view. */
             if (in_recent) {
-                slot.directory.clear_directory_info ();
-                slot.directory.need_reload ();
+                slot.reload ();
             }
         }
 
@@ -898,8 +893,6 @@ namespace FM {
             }
 
             var file_to_rename = GOF.File.@get (new_file);
-            view.slot.reload (true); /* non-local only */
-
             view.rename_file (file_to_rename); /* will wait for file to appear in model */
         }
 
@@ -912,7 +905,6 @@ namespace FM {
 
             view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
-            view.slot.reload (true); /* non-local only */
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -926,7 +918,6 @@ namespace FM {
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 can_trash_or_delete = false;
-
                 trash_or_delete_files (selection, true, delete_immediately);
             }
         }
@@ -1197,7 +1188,6 @@ namespace FM {
                         pasted_files_list.prepend (k as File);
                 });
 
-                view.slot.reload (true); /* non-local only */
                 view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
                 return false;
             });
@@ -1555,8 +1545,6 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
-                    slot.reload (true); /* non-local only */
-
                     switch (info) {
                         case Marlin.TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
@@ -2807,9 +2795,6 @@ namespace FM {
             }
 
             on_name_editing_canceled ();
-
-            if (new_name != original_name)
-                slot.reload (true); /* non-local only */
         }
 
 
@@ -2837,7 +2822,6 @@ namespace FM {
                                                                   view.original_name);
 
                 view.select_gof_file (file);  /* Select and scroll to show renamed file */
-                view.slot.reload (true);
             }
 
             if (pw != null) {
@@ -2852,20 +2836,22 @@ namespace FM {
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
             var style_context = get_style_context ();
-            if (slot.directory.is_empty () || slot.directory.permission_denied) {
+            if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
                 if (!style_context.has_class (MESSAGE_CLASS))
                     style_context.add_class (MESSAGE_CLASS);
 
-                if (slot.directory.permission_denied)
+
+                if (slot.directory.permission_denied) {
                     layout.set_markup (slot.denied_message, -1);
-                else if (slot.directory.is_trash) /* must be empty */
+                } else if (slot.directory.is_trash) {
                     layout.set_markup (slot.empty_trash_message, -1);
-                else if (slot.directory.location.get_uri_scheme () == "recent")
+                } else if (slot.directory.is_recent) {
                     layout.set_markup (slot.empty_recents_message, -1);
-                else
+                } else {
                     layout.set_markup (slot.empty_message, -1);
+                }
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2878,8 +2864,9 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            } else if (style_context.has_class (MESSAGE_CLASS))
+            } else if (style_context.has_class (MESSAGE_CLASS)) {
                 style_context.remove_class (MESSAGE_CLASS);
+            }
 
             return false;
         }
