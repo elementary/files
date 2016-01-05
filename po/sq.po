@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:45+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-01-04 11:17+0000\n"
+"Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:58+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-05 05:30+0000\n"
+"X-Generator: Launchpad (build 17876)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1375,7 +1375,7 @@ msgstr "Zëvendësimi i saj do të heqë të gjithë skedarët në dosje."
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Të zëvendësohet dosja \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
@@ -1605,11 +1605,11 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u nën-dosje, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u nën-dosje, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
@@ -1633,7 +1633,7 @@ msgstr "Shpërfill"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Kjo dosje nuk ekziston"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1978,7 +1978,7 @@ msgstr "(si Administrator)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Kjo dosje nuk ju përket juve"
 
 #: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
@@ -1994,7 +1994,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Nuk mund të krijoni një dosje këtu."
 
 #: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
