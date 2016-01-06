@@ -334,15 +334,12 @@ public class GOF.Directory.Async : Object {
     public void cancel () {
         /* This should only be called when closing the view - it will cancel initialisation of the directory */
         cancellable.cancel ();
-        cancel_thumbnailing ();
+        cancel_timeouts ();
     }
 
     public void cancel_thumbnailing () {
         /* remove any pending thumbnail generation */
-        if (timeout_thumbsq != 0) {
-            Source.remove (timeout_thumbsq);
-            timeout_thumbsq = 0;
-        }
+        cancel_timeout (ref timeout_thumbsq);
     }
 
     public void reload () {
@@ -356,12 +353,9 @@ public class GOF.Directory.Async : Object {
 
     /** Called in preparation for a reload **/
     private void clear_directory_info () {
+        cancel_timeouts ();
         cancellable.cancel ();
-        cancellable.reset ();
-
-        cancel_thumbnailing ();
-        cancel_timeout (ref load_timout_id);
-        cancel_timeout (ref idle_consume_changes_id);
+        cancellable = new Cancellable ();
 
         file_hash.remove_all ();
 
@@ -574,19 +568,23 @@ public class GOF.Directory.Async : Object {
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
-                                                            Priority.DEFAULT);
-            if (f != null)
+                                                            Priority.DEFAULT,
+                                                            cancellable);
+            if (f != null) {
                 f (gof);
+            }
         } catch (Error err) {
-            debug ("query info failed, %s %s", err.message, gof.uri);
+            warning ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND)
                 gof.exists = false;
         }
     }
 
     private void changed_and_refresh (GOF.File gof) {
-        if (gof.is_gone)
+        if (gof.is_gone) {
+            warning ("File marked as gone when refreshing change");
             return;
+        }
 
         gof.update ();
 
@@ -597,9 +595,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
-        if (gof.is_gone)
+        if (gof.is_gone) {
+            warning ("Add and refresh file which is gone");
             return;
-
+        }
         if (gof.info == null)
             critical ("FILE INFO null");
 
@@ -767,6 +766,8 @@ public class GOF.Directory.Async : Object {
 
                 if (!found)
                     dirs.append (dir);
+            } else {
+                warning ("parent of deleted file not found");
             }
         }
 
@@ -992,6 +993,13 @@ public class GOF.Directory.Async : Object {
             GLib.Source.remove (timeout_thumbsq);
 
         timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
+    }
+
+    private void cancel_timeouts () {
+        cancel_timeout (ref timeout_thumbsq);
+        cancel_timeout (ref idle_consume_changes_id);
+        cancel_timeout (ref load_timout_id);
+        
     }
 
     private bool cancel_timeout (ref uint id) {

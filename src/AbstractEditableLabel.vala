@@ -41,28 +41,25 @@ namespace Marlin {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     editing_canceled = false;
-                    editing_done ();
-                    remove_widget ();
-                    break;
+                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                    return true;
 
                 case Gdk.Key.Escape:
                     editing_canceled = true;
-                    editing_done ();
-                    remove_widget ();
-                    break;
+                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                    return true;
 
                 case Gdk.Key.z:
-                    if (control_pressed)
+                    if (control_pressed) {
                         set_text (original_name);
-                    else
-                        return false;
-
+                        return true;
+                    }
                     break;
 
                 default:
-                    return false;
+                    break;
             }
-            return true;
+            return false;
         }
 
 

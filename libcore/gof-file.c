@@ -967,9 +967,12 @@ static void gof_file_finalize (GObject* obj) {
     else
         g_warning ("%s %s", G_STRFUNC, file->basename);
 #endif
-
+    if (!(G_IS_FILE (file->location))) {
+        g_warning ("Invalid file location on finalize for %s", file->basename);
+    } else {
+        g_object_unref (file->location);
+    }
     g_clear_object (&file->info);
-    _g_object_unref0 (file->location);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);

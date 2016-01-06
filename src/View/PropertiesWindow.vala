@@ -216,7 +216,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     private uint count;
     private GLib.List<GOF.File> files;
-    private unowned GOF.File goffile;
+    private GOF.File goffile;
 
     public FM.AbstractDirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
@@ -278,7 +278,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     private uint file_count;
 
-    public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
 
         if (_files == null) {
@@ -299,7 +299,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
            GLib.List.copy() would not guarantee valid references: because it
            does a shallow copy (copying the pointer values only) the objects'
            memory may be freed even while this code is using it. */
-        foreach (unowned GOF.File file in _files)
+        foreach (GOF.File file in _files)
             /* prepend(G) is declared "owned G", so ref() will be called once
                on the unowned foreach value. */
             files.prepend (file);
@@ -489,12 +489,20 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         if (new_name != "") {
             if (new_name != original_name) {
                 proposed_name = new_name;
-                file.rename (new_name,
-                            (GOF.FileOperationCallback)(FM.AbstractDirectoryView.rename_callback),
-                            (void*)this);
+                view.set_file_display_name (new_name, file, after_rename);
             }
         } else
             reset_entry_text ();
+    }
+
+    private void after_rename (GOF.File original_file, GLib.File? new_location) {
+        if (new_location != null) {
+            reset_entry_text (new_location.get_basename ());
+            goffile = GOF.File.@get (new_location);
+            files.first ().data = goffile;
+        } else {
+            reset_entry_text ();  //resets entry to old name
+        }
     }
 
     public void reset_entry_text (string? new_name = null) {

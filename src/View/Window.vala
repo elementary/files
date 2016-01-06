@@ -497,9 +497,10 @@ namespace Marlin.View {
 
         private void action_reload () {
             /* avoid spawning reload when key kept pressed */
-            if (tabs.current.working)
+            if (tabs.current.working) {
+                warning ("Too rapid reloading suppressed");
                 return;
-
+            }
             current_tab.reload ();
             sidebar.reload ();
         }
