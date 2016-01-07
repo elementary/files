@@ -1,16 +1,16 @@
-# Hindi translation for pantheon-files
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Punjabi translation for pantheon-files
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2016-01-06 15:21+0000\n"
+"PO-Revision-Date: 2016-01-06 15:27+0000\n"
 "Last-Translator: amrit <amrit.singh.bains@live.com>\n"
-"Language-Team: Hindi <hi@li.org>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,90 +20,90 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "एसएसएच"
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "सार्वजनिक लोगिन सहित"
+msgstr "ਪਬਲਿਕ FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "लोगिन सहित"
+msgstr "FTP (ਲਾਗਇਨ ਨਾਲ)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "विंडोज़ शेयर"
+msgstr "Windows ਸਾਂਝ"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "वेब-डीएवी (HTTP)"
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "सुरक्षित वेब-डीएवी (HTTP)"
+msgstr "ਸੁਰੱਖਿਅਤ WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "कनेक्ट हो रहा है..."
+msgstr "ਜੁਡ਼ ਰਿਹਾ ਹੈ..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"समर्थित सर्वर पद्धति सूची लोड नहीं कर सकता.\n"
-"कृपया अपनी gvfs संस्थापन जाँच करें."
+"ਸਹਾਇਕ ਸਰਵਰ ਢੰਗ ਲਿਸਟ ਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।\n"
+"ਆਪਣੀ gvfs ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਜੀ।"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "फोल्डर \"%s\" नहीं खोल सकता है \"%s\" पर."
+msgstr "\"%2$s\" ਤੋਂ ਫੋਲਡਰ \"%1$s\" ਉੱਤੇ ਨਹੀਂ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\" ਤੇ ਸਰਵਰ ਲੱਭਿਆ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "ਤੁਹਾਡੇ ਉਪਭੋਗੀ ਵੇਰਵਾ ਦੀ ਪੜਤਾਲ ਕਰੋ"
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "ਜਾਰੀ"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "C_onnect"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "ਸਰਵਰ ਨਾਲ ਕੁਨੈਕਟ ਕਰੋ"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "ਸਰਵਰ ਵੇਰਵਾ"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "_ਸਰਵਰ"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_ਪੋਰਟ"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_ਕਿਸਮ"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
@@ -1462,14 +1462,12 @@ msgstr ""
 
 #: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
-msgstr "एक सरल और शक्तिशाली फ़ाइल प्रबंधक"
+msgstr ""
 
 #: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Siddhant Pathak https://launchpad.net/~sid02phi\n"
 "  amrit https://launchpad.net/~amrit-singh-bains"
 
 #: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
@@ -1518,7 +1516,7 @@ msgstr ""
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
 #: ../libwidgets/Resources.vala:102
 msgid "File System"
-msgstr "फ़ाइल तंत्र"
+msgstr ""
 
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
@@ -1608,7 +1606,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
-msgstr "फ़ाइल्स आपका डिफ़ॉल्ट फ़ाइल प्रबंधक नही है"
+msgstr ""
 
 #: ../src/View/Window.vala:188
 msgid "Set as Default"
@@ -1817,7 +1815,7 @@ msgstr ""
 #: ../src/View/AbstractDirectoryView.vala:1048
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
-msgstr "डिफ़ॉल्ट के रूप में नियत करें"
+msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
@@ -1878,7 +1876,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
 msgid "Home"
-msgstr "घर"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:453
 msgid "Open your personal folder"
@@ -1958,7 +1956,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:344
 msgid "(as Administrator)"
-msgstr "प्रशासक के रूप में"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
@@ -1966,7 +1964,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
-msgstr "आपको इस फ़ोल्डर को देखने की अनुमति नहीं है"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"

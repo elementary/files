@@ -1,16 +1,16 @@
-# Hindi translation for pantheon-files
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Urdu translation for pantheon-files
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2016-01-06 15:21+0000\n"
-"Last-Translator: amrit <amrit.singh.bains@live.com>\n"
-"Language-Team: Hindi <hi@li.org>\n"
+"PO-Revision-Date: 2016-01-06 17:52+0000\n"
+"Last-Translator: Waqas Ahmad <Unknown>\n"
+"Language-Team: Urdu <ur@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,48 +20,46 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "एसएसएच"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "सार्वजनिक लोगिन सहित"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "लोगिन सहित"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "विंडोज़ शेयर"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "वेब-डीएवी (HTTP)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "सुरक्षित वेब-डीएवी (HTTP)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "कनेक्ट हो रहा है..."
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"समर्थित सर्वर पद्धति सूची लोड नहीं कर सकता.\n"
-"कृपया अपनी gvfs संस्थापन जाँच करें."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "फोल्डर \"%s\" नहीं खोल सकता है \"%s\" पर."
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -70,7 +68,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "دوبارہ کوشش کرِیں"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
@@ -78,7 +76,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "جاری رکھیں"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
@@ -87,7 +85,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "سرور سِے رابطہ قائم کریں"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -95,15 +93,15 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "سرور:"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_ پورٹ:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_نوعیت:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
@@ -115,15 +113,15 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "صارف کی تفصیل"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "ڈومین کا نام"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr ""
+msgstr "صارف کا نام"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
@@ -135,11 +133,11 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr ""
+msgstr "عمل منسوخ"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "پیسٹ کرنے کے لیے کلپ بورڈ میں کچھ نہیں ہے"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
@@ -148,7 +146,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "شے کو ردی کی ٹوکری سے بحال نہیں کیا جا سکتا"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -172,11 +170,11 @@ msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "اصل مقام کا تعین نہیں کیا جا سکتا"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "ردی کی ٹوکری کھولیں اور بذاتِ خود بحال کریں"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -561,7 +559,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "_دوبارہ کوشش کریں"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
@@ -569,19 +567,19 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_بدل دیں"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "تمام_بدل دیں"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_ضم کریں"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "تمام_ضم کردیں"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
@@ -648,11 +646,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
-msgstr ""
+msgstr " (نقل کریں)"
 
 #: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
-msgstr ""
+msgstr " (ایک اور نقل کریں)"
 
 #: ../libcore/marlin-file-operations.c:470
 #: ../libcore/marlin-file-operations.c:472
@@ -1462,15 +1460,13 @@ msgstr ""
 
 #: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
-msgstr "एक सरल और शक्तिशाली फ़ाइल प्रबंधक"
+msgstr ""
 
 #: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Siddhant Pathak https://launchpad.net/~sid02phi\n"
-"  amrit https://launchpad.net/~amrit-singh-bains"
+"  Waqas Ahmad https://launchpad.net/~waqqas-ahmad"
 
 #: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
 msgid "AFP"
@@ -1518,7 +1514,7 @@ msgstr ""
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
 #: ../libwidgets/Resources.vala:102
 msgid "File System"
-msgstr "फ़ाइल तंत्र"
+msgstr ""
 
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
@@ -1608,7 +1604,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
-msgstr "फ़ाइल्स आपका डिफ़ॉल्ट फ़ाइल प्रबंधक नही है"
+msgstr ""
 
 #: ../src/View/Window.vala:188
 msgid "Set as Default"
@@ -1817,7 +1813,7 @@ msgstr ""
 #: ../src/View/AbstractDirectoryView.vala:1048
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
-msgstr "डिफ़ॉल्ट के रूप में नियत करें"
+msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
@@ -1878,7 +1874,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
 msgid "Home"
-msgstr "घर"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:453
 msgid "Open your personal folder"
@@ -1958,7 +1954,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:344
 msgid "(as Administrator)"
-msgstr "प्रशासक के रूप में"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Belong to You"
@@ -1966,7 +1962,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:354
 msgid "You don't have permission to view this folder."
-msgstr "आपको इस फ़ोल्डर को देखने की अनुमति नहीं है"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"
