@@ -34,7 +34,7 @@ namespace Marlin {
         int focus_border_width;
         Pango.Layout layout;
         Gtk.Widget widget;
-        Marlin.AbstractEditableLabel? entry = null;
+        public Marlin.AbstractEditableLabel? entry = null;
 
         public TextRenderer (Marlin.ViewMode viewmode) {
             this.mode = Gtk.CellRendererMode.EDITABLE;
@@ -132,13 +132,12 @@ namespace Marlin {
             text_height = height;
         }
 
-        /* Needs patched gtk+-3.0.vapi file - incorrect function signature up to version 0.25.4 */
-        public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-                                                                 Gtk.Widget widget,
-                                                                 string  path,
-                                                                 Gdk.Rectangle  background_area,
-                                                                 Gdk.Rectangle  cell_area,
-                                                                 Gtk.CellRendererState flags) {
+        public new unowned Gtk.CellEditable? start_editing (Gdk.Event event,
+                                                           Gtk.Widget widget,
+                                                           string  path,
+                                                           Gdk.Rectangle  background_area,
+                                                           Gdk.Rectangle  cell_area,
+                                                           Gtk.CellRendererState flags) {
 
             if (!visible || mode != Gtk.CellRendererMode.EDITABLE)
                 return null;

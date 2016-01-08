@@ -20,6 +20,7 @@ vala_precompile(VALA_C ${PKGNAME}
     BookmarkList.vala
     DndHandler.vala
     Enums.vala
+    FileUtils.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala

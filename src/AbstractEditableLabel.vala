@@ -86,7 +86,6 @@ namespace Marlin {
 
 
         /** CellEditable interface */
-        /* modified gtk+-3.0.vapi required */
-        public virtual void start_editing (Gdk.Event? event) {}
+        public virtual void start_editing (Gdk.Event event) {}
     }
 }

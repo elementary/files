@@ -24,7 +24,7 @@ option (MODULE_ONLY "Build only custom gtk filechooser dialog module" FALSE)
 
 find_package (Vala REQUIRED)
 include (ValaVersion)
-ensure_vala_version ("0.26" MINIMUM)
+ensure_vala_version ("0.30" MINIMUM)
 include (ValaPrecompile)
 
 if (MODULE_ONLY)

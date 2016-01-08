@@ -75,18 +75,6 @@ namespace Marlin {
     public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
     public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
 
-    public const string ROOT_FS_URI = "file://";
-    public const string TRASH_URI = "trash:///";
-    public const string NETWORK_URI = "network:///";
-    public const string RECENT_URI = "recent:///";
-    public const string AFP_URI = "afp://";
-    public const string DAV_URI = "dav://";
-    public const string DAVS_URI = "davs://";
-    public const string SFTP_URI = "sftp://";
-    public const string FTP_URI = "ftp://";
-    public const string SMB_URI = "smb://";
-    public const string MTP_URI = "mtp://";
-
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
     public const string PROTOCOL_NAME_AFP = _("AFP");
@@ -162,23 +150,6 @@ namespace Marlin {
                 return Marlin.DAVS_URI;
             default:
                 return "";
-        }
-    }
-
-    public string get_smb_share_from_uri (string uri) {
-        if (!(Uri.parse_scheme (uri) == "smb"))
-            return (uri);
-
-        string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
-
-        if (uri_parts.length < 4)
-            return uri;
-        else {
-            var sb = new StringBuilder ();
-            for (int i = 0; i < 4; i++)
-                sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
-
-            return sb.str;
         }
     }
 
