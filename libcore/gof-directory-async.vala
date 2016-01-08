@@ -158,7 +158,7 @@ public class GOF.Directory.Async : Object {
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         bool success = yield get_file_info ();
         if (success) {
-            if (!file.is_folder ()) {
+            if (!file.is_folder () && !file.is_root_network_folder ()) {
                 if (can_try_parent ()) {
                     success = yield get_file_info ();
                 } else {
@@ -188,14 +188,12 @@ public class GOF.Directory.Async : Object {
         if (is_local) {
             return file.ensure_query_info ();
         }
-
         /* Must be non-local */
         if (is_network && !yield check_network ()) {
             return false;
         } else {
             if (yield mount_mountable ()) {
-                file.ensure_query_info ();
-                return true;
+                return file.ensure_query_info ();
             } else {
                 return false;
             }
@@ -210,6 +208,7 @@ public class GOF.Directory.Async : Object {
             if (e is IOError.ALREADY_MOUNTED) {
                 return true;
             } else {
+                file.is_mounted = false;
                 warning ("mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
                     permission_denied = true;
@@ -343,8 +342,8 @@ public class GOF.Directory.Async : Object {
     public void reload () {
         if (state != State.LOADED) {
             warning ("Directory reload called when directory not loaded or loading");
-            return;
         }
+
         clear_directory_info ();
         init ();
     }
