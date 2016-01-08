@@ -189,4 +189,91 @@ namespace PF.FileUtils {
         }
         return true;
     }
+
+    public string get_smb_share_from_uri (string uri) {
+        if (!(Uri.parse_scheme (uri) == "smb"))
+            return (uri);
+
+        string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
+
+        if (uri_parts.length < 4)
+            return uri;
+        else {
+            var sb = new StringBuilder ();
+            for (int i = 0; i < 4; i++)
+                sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
+
+            return sb.str;
+        }
+    }
+
+    /* Signature must be compatible with MarlinUndoStackManager undo and redo functions */
+    public delegate void RenameCallbackFunc (GLib.File old_location, GLib.File? new_location, GLib.Error? error);
+
+    public void set_file_display_name (GLib.File old_location, string new_name, PF.FileUtils.RenameCallbackFunc? f) {
+
+        /** TODO Check validity of new name, make cancellable **/
+
+        GLib.File? new_location = null;
+        GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
+        string original_name = old_location.get_basename ();
+
+        old_location.set_display_name_async (new_name, 0, null, (obj, res) => {
+            try {
+                assert (obj is GLib.Object);
+                GLib.File? n = old_location.set_display_name_async.end (res);
+                /* Unless we decouple the new_file from the object returned by set_display_name_async
+                 * it can get corrupted when this thread exits when working with remote files, presumably
+                 * due to a bug in gvfs backend. This leads to obscure bugs in Files.
+                 */
+                new_location= GLib.File.new_for_uri (n.get_uri ());
+
+                if (dir != null) {
+                    /* Notify directory of change.  Since only a single file is changed we bypass MarlinFileChangesQueue */
+
+                    GLib.List<GLib.File>added_files = null;
+                    added_files.append (new_location);
+                    GLib.List<GLib.File>removed_files = null;
+                    removed_files.append (old_location);
+                    GOF.Directory.Async.notify_files_removed (removed_files);
+                    GOF.Directory.Async.notify_files_added (added_files);
+                } else {
+                    warning ("Renamed file has no GOF.Directory.Async");
+                }
+
+                /* Register the change with the undo manager */
+                Marlin.UndoManager.instance ().add_rename_action (new_location,
+                                                                  original_name);
+            } catch (Error e) {
+                warning ("Rename error");
+                Eel.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
+                                       e.message,
+                                       null);
+                new_location = null;
+
+                if (dir != null) {
+                    /* We emit this signal anyway so callers can know rename failed and disconnect */
+                    dir.file_added (null);
+                }
+            }
+            /* PropertiesWindow also calls this function with a different callback */
+            if (f != null) {
+                f (old_location, new_location, null);
+            }
+        });
+    }
+}
+
+namespace Marlin {
+    public const string ROOT_FS_URI = "file://";
+    public const string TRASH_URI = "trash:///";
+    public const string NETWORK_URI = "network:///";
+    public const string RECENT_URI = "recent:///";
+    public const string AFP_URI = "afp://";
+    public const string DAV_URI = "dav://";
+    public const string DAVS_URI = "davs://";
+    public const string SFTP_URI = "sftp://";
+    public const string FTP_URI = "ftp://";
+    public const string SMB_URI = "smb://";
+    public const string MTP_URI = "mtp://";
 }

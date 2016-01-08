@@ -26,7 +26,7 @@ namespace Marlin {
         public string original_name;
         public bool draw_outline {get; set;}
 
-        public Gtk.Widget editable_widget;
+        private Gtk.Widget editable_widget;
 
         public AbstractEditableLabel () {
             editable_widget = create_editable_widget ();
@@ -86,7 +86,6 @@ namespace Marlin {
 
 
         /** CellEditable interface */
-        /* modified gtk+-3.0.vapi required */
-        public virtual void start_editing (Gdk.Event? event) {}
+        public virtual void start_editing (Gdk.Event event) {}
     }
 }

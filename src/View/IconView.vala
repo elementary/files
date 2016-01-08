@@ -123,15 +123,7 @@ namespace FM {
         }
 
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-            unowned Gtk.TreePath? path = null;
-            Gtk.IconViewDropPosition? pos = null;
-
-            /* The next line needs a patched gtk+-3.0.vapi file in order to compile as of valac version 0.25.4
-             * - the fourth parameter should be an 'out' parameter */
-            if (x >= 0 && y >= 0 && tree.get_dest_item_at_pos  (x, y, out path, out pos))
-                return path;
-            else
-                return null;
+            return tree.get_path_at_pos (x, y);
         }
 
         public override void select_all () {

@@ -56,7 +56,7 @@ public class GOF.Directory.Async : Object {
     private List<unowned GOF.File>? sorted_dirs = null;
 
     public signal void file_loaded (GOF.File file);
-    public signal void file_added (GOF.File file);
+    public signal void file_added (GOF.File? file); /* null used to signal failed operation */
     public signal void file_changed (GOF.File file);
     public signal void file_deleted (GOF.File file);
     public signal void icon_changed (GOF.File file); /* Called directly by GOF.File - handled by AbstractDirectoryView

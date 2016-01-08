@@ -170,7 +170,6 @@ namespace FM {
 
         /* Rename support */
         protected Marlin.TextRenderer? name_renderer = null;
-        unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
         public string proposed_name = "";
 
@@ -864,13 +863,10 @@ namespace FM {
             Marlin.FileOperations.new_folder (null, null, slot.location, (Marlin.CreateCallback?) create_file_done, this);
         }
 
-        private void after_new_file_added (GOF.File file) {
+        private void after_new_file_added (GOF.File? file) {
             slot.directory.file_added.disconnect (after_new_file_added);
-            var iter = Gtk.TreeIter ();
-            if (model.get_first_iter_for_file (file, out iter)) {
+            if (file != null) {
                 rename_file (file);
-            } else {
-                warning ("New file not found in model when renaming");
             }
         }
 
@@ -882,7 +878,7 @@ namespace FM {
             /* Assume writability on remote locations */
             /**TODO** Reliably determine writability with various remote protocols.*/
             if (is_writable || !slot.directory.is_local) {
-                start_renaming_file (file_to_rename, false);
+                start_renaming_file (file_to_rename);
             } else {
                 warning ("You do not have permission to rename this file");
             }
@@ -1231,8 +1227,10 @@ namespace FM {
             }
         }
 
-        private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-            add_file (file, dir);
+        private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
+            if (file != null) {
+                add_file (file, dir);
+            }
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
@@ -2767,15 +2765,21 @@ namespace FM {
                 return;
             }
             renaming = true;
-            editable_widget = editable as Marlin.AbstractEditableLabel;
-            original_name = editable_widget.get_text ().dup ();
 
+            var editable_widget = editable as Gtk.Editable?;
             if (editable_widget != null) {
+                original_name = editable_widget.get_chars (0, -1);
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
                 GOF.File? file = null;
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                int start_offset= 0, end_offset = -1;
+                /* Select whole name if the file is a folder, otherwise do not select the extension */
+                if (!file.is_folder ()) {
+                    Marlin.get_rename_region (original_name, out start_offset, out end_offset, false);
+                }
+                editable_widget.select_region (start_offset, end_offset);
             } else {
                 warning ("Editable widget is null");
                 on_name_editing_canceled ();
@@ -2797,7 +2801,6 @@ namespace FM {
                 return;
             }
             proposed_name = "";
-
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
@@ -2811,7 +2814,7 @@ namespace FM {
 
                 if (new_name != original_name) {
                     proposed_name = new_name;
-                    set_file_display_name (new_name, file, after_rename);
+                    set_file_display_name (file.location, new_name, after_rename);
                 } else {
                     warning ("Name unchanged");
                     on_name_editing_canceled ();
@@ -2823,57 +2826,22 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public delegate void RenameCallbackFunc (GOF.File original_file, GLib.File? new_location);
-
-        public void set_file_display_name (string new_name, GOF.File file, RenameCallbackFunc? f) {
-            GLib.File? new_file = null;
-            GLib.File old_file = file.location;
-            original_name = file.info.get_name ();
-            old_file.set_display_name_async (new_name, 0, null, (obj, res) => {
-                try {
-                    assert (obj is GLib.Object);
-                    GLib.File? nf = old_file.set_display_name_async.end (res);
-                    /* Unless we decouple the new_file from the object returned by set_display_name_async
-                     * it can get corrupted when this thread exits when working with remote files, presumably
-                     * due to a bug in gvfs backend. This leads to obscure bugs in Files.
-                     */
-                    new_file = GLib.File.new_for_uri (nf.get_uri ());
-
-                    /* Wait for the file to be added to the model before trying to select and scroll to it */
-                    slot.directory.file_added.connect_after (after_renamed_file_added);
-                    /* Notify directory of change.  Since only a single file is changed we bypass MarlinFileChangesQueue */
-                    GLib.List<GLib.File>added_files = null;
-                    added_files.append (new_file);
-                    GLib.List<GLib.File>removed_files = null;
-                    removed_files.append (old_file);
-                    GOF.Directory.Async.notify_files_removed (removed_files);
-                    GOF.Directory.Async.notify_files_added (added_files);
-
-                    /* Register the change with the undo manager */
-                    Marlin.UndoManager.instance ().add_rename_action (new_file,
-                                                                      original_name);
-                } catch (Error e) {
-                    warning ("Rename error");
-                    Eel.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
-                       e.message,
-                       window as Gtk.Window);
-                    new_file = null;
-                }
-                /* PropertiesWindow also calls this function with a different callback */
-                if (f != null) {
-                    f (file, new_file);
-                }
-            });
+        public void set_file_display_name (GLib.File old_location, string new_name, PF.FileUtils.RenameCallbackFunc? f) {
+            /* Wait for the file to be added to the model before trying to select and scroll to it */
+            slot.directory.file_added.connect_after (after_renamed_file_added);
+            PF.FileUtils.set_file_display_name (old_location, new_name, f);
         }
 
-        public void after_rename (GOF.File file, GLib.File? result_location) {
+        public void after_rename (GLib.File file, GLib.File? result_location, GLib.Error? e) {
             on_name_editing_canceled ();
          }
 
-        private void after_renamed_file_added (GOF.File new_file) {
-                slot.directory.file_added.disconnect (after_renamed_file_added);
+        private void after_renamed_file_added (GOF.File? new_file) {
+            slot.directory.file_added.disconnect (after_renamed_file_added);
+            /* new_file will be null if rename failed */
+            if (new_file != null) {
                 select_and_scroll_to_gof_file (new_file);
-
+            }
         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
@@ -3114,8 +3082,7 @@ namespace FM {
             icon_renderer.set_property ("selection-helpers", helpers_shown);
         }
 
-        private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-            /* Select whole name if we are in renaming mode already */
+        private void start_renaming_file (GOF.File file) {
             if (updates_frozen) {
                 warning ("Trying to rename when frozen");
                 return;
@@ -3154,21 +3121,9 @@ namespace FM {
                     return true;
                 }
 
-                /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
+                /* set cursor_on_cell also triggers editing-started */
                 name_renderer.editable = true;
                 set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-
-                if (editable_widget != null) {
-                    original_name = editable_widget.get_text ().dup ();
-                    int start_offset= 0, end_offset = -1;
-                    if (!file.is_folder ()) {
-                        Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
-                    }
-                    editable_widget.select_region (start_offset, end_offset);
-                } else {
-                    warning ("Editable widget is null");
-                    on_name_editing_canceled ();
-                }
                 return false;
             });
 
