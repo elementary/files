@@ -158,7 +158,7 @@ public class GOF.Directory.Async : Object {
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         bool success = yield get_file_info ();
         if (success) {
-            if (is_local && !file.is_folder ()) {
+            if (!file.is_folder ()) {
                 if (can_try_parent ()) {
                     success = yield get_file_info ();
                 } else {
@@ -170,14 +170,12 @@ public class GOF.Directory.Async : Object {
     }
 
     private bool can_try_parent () {
-        if (file.is_connected) {
-            GLib.File? parent = location.get_parent ();
-            if (parent != null) {
-                file = GOF.File.get (parent);
-                selected_file = location.dup ();
-                location = parent;
-                return true;
-            }
+        GLib.File? parent = location.get_parent ();
+        if (parent != null) {
+            file = GOF.File.get (parent);
+            selected_file = location.dup ();
+            location = parent;
+            return true;
         }
         return false;
     }

@@ -1101,7 +1101,6 @@ namespace Marlin.Places {
             path = null;
             int num_rows = store.iter_n_children (null);
             if (!tree_view.get_dest_row_at_pos (x, y, out path, out drop_position)) {
-                warning ("compute_drop position dest_row_at_pos UNKNOWN");
                 return false;
             }
 
