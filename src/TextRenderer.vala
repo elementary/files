@@ -34,7 +34,7 @@ namespace Marlin {
         int focus_border_width;
         Pango.Layout layout;
         Gtk.Widget widget;
-        public Marlin.AbstractEditableLabel? entry = null;
+        public Marlin.AbstractEditableLabel entry;
 
         public TextRenderer (Marlin.ViewMode viewmode) {
             this.mode = Gtk.CellRendererMode.EDITABLE;

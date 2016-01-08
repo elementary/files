@@ -26,7 +26,7 @@ namespace Marlin {
         public string original_name;
         public bool draw_outline {get; set;}
 
-        public Gtk.Widget editable_widget;
+        private Gtk.Widget editable_widget;
 
         public AbstractEditableLabel () {
             editable_widget = create_editable_widget ();
