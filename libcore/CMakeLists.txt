@@ -25,12 +25,14 @@ vala_precompile(VALA_C ${PKGNAME}
     gof-preferences.vala
     PluginManager.vala
     Plugin.vala
+    SoundManager.vala
 PACKAGES
     granite
     gtk+-3.0
     gio-2.0
     gee-0.8
     gmodule-2.0
+    libcanberra
     pantheon-files-core-C
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
@@ -118,6 +120,7 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     gmodule-2.0
     sqlite3
+    libcanberra>=0.30
     libnotify>=0.7.2)
 # Link all
 
