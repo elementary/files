@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:45+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-01-09 11:46+0000\n"
+"Last-Translator: Lukáš Papík <stereo839@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-10 05:23+0000\n"
+"X-Generator: Launchpad (build 17881)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -172,11 +172,11 @@ msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Pôvodné umiestnenie nebolo možné určiť"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Otvorte priečinok koša a obnovte ručne"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -1556,11 +1556,13 @@ msgstr ""
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Jakub Ivanicky https://launchpad.net/~jivanicky\n"
+"  Lukáš Papík https://launchpad.net/~stereo839\n"
 "  Milan Slovák https://launchpad.net/~milboys\n"
 "  Tomáš Tomovčík https://launchpad.net/~tomovcik-tomas\n"
 "  laci357 https://launchpad.net/~laci357\n"
 "  majo dom https://launchpad.net/~majo-dom\n"
 "  pyler https://launchpad.net/~pyler-inbox\n"
+"  Ľubomír Hlavko https://launchpad.net/~5lubo555\n"
 "  Ľuboš Mudrák https://launchpad.net/~lubos-mudrak"
 
 #: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
@@ -1603,7 +1605,7 @@ msgstr "Nedávno použité súbory"
 
 #: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
@@ -1782,19 +1784,19 @@ msgstr "%u vybrané položky"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Created:"
-msgstr ""
+msgstr "Vytvorené:"
 
 #: ../src/View/PropertiesWindow.vala:626
 msgid "Modified:"
-msgstr ""
+msgstr "Zmenený:"
 
 #: ../src/View/PropertiesWindow.vala:629
 msgid "Last Access:"
-msgstr ""
+msgstr "Posledný prístup:"
 
 #: ../src/View/PropertiesWindow.vala:637
 msgid "Deleted:"
-msgstr ""
+msgstr "Vymazané:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
@@ -1802,20 +1804,20 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
-msgstr ""
+msgstr "MimeTypy:"
 
 #: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
 #: ../src/View/PropertiesWindow.vala:1497
 msgid "Location:"
-msgstr ""
+msgstr "Umiestnenie:"
 
 #: ../src/View/PropertiesWindow.vala:687
 msgid "Target:"
-msgstr ""
+msgstr "Cieľ:"
 
 #: ../src/View/PropertiesWindow.vala:693
 msgid "Origin Location:"
-msgstr ""
+msgstr "Pôvodne umiestnenie:"
 
 #: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
@@ -1856,16 +1858,16 @@ msgstr "Spustiť"
 #: ../src/View/PropertiesWindow.vala:1116
 #: ../src/View/PropertiesWindow.vala:1131
 msgid "Owner:"
-msgstr ""
+msgstr "Vlastník:"
 
 #: ../src/View/PropertiesWindow.vala:1122
 #: ../src/View/PropertiesWindow.vala:1136
 msgid "Group:"
-msgstr ""
+msgstr "Skupina:"
 
 #: ../src/View/PropertiesWindow.vala:1141
 msgid "Everyone:"
-msgstr ""
+msgstr "Každý:"
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1873,36 +1875,36 @@ msgstr "Vyberte aplikáciu na otvorenie "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Nastavenia Disku"
 
 #: ../src/View/PropertiesWindow.vala:1504
 msgid "Format:"
-msgstr ""
+msgstr "Formát :"
 
 #: ../src/View/PropertiesWindow.vala:1522
 #: ../src/View/PropertiesWindow.vala:1547
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapacita:"
 
 #: ../src/View/PropertiesWindow.vala:1528
 #: ../src/View/PropertiesWindow.vala:1553
 msgid "Available:"
-msgstr ""
+msgstr "Dostupné:"
 
 #: ../src/View/PropertiesWindow.vala:1534
 #: ../src/View/PropertiesWindow.vala:1559
 msgid "Used:"
-msgstr ""
+msgstr "Použité"
 
 #: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% použitých)"
 
 #: ../src/View/PropertiesWindow.vala:1550
 #: ../src/View/PropertiesWindow.vala:1556
 #: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
-msgstr ""
+msgstr "Neznáme"
 
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
@@ -2207,7 +2209,7 @@ msgstr "Zadajte hľadaný výraz alebo cestu"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Zadajte cestu"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2243,11 +2245,11 @@ msgstr "Otvoriť v novej karte"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Otvoriť v novom okne"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Otvoriť v Inej Aplikácií..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
