@@ -198,7 +198,6 @@ namespace Marlin.View {
                 /* Slot is created inactive so we activate now since we must be the current tab
                  * to have received a change mode instruction */
                 set_active_state (true);
-                window.update_top_menu ();
             }
         }
 
@@ -297,13 +296,9 @@ namespace Marlin.View {
         public void refresh_slot_info (GOF.AbstractSlot aslot) {
             GLib.File loc = aslot.directory.file.location;
             update_tab_name (loc);
-            browser.record_uri (loc.get_parse_name ()); /* will ignore null changes */
-
             window.loading_uri (loc.get_uri ());
-            window.update_top_menu ();
             window.update_labels (loc.get_parse_name (), tab_name);
-            window.set_can_go_back (browser.get_can_go_back ());
-            window.set_can_go_forward (browser.get_can_go_forward ());
+            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
         public void update_tab_name (GLib.File loc) {
@@ -362,11 +357,12 @@ namespace Marlin.View {
                                                    _("The server for this folder could not be located."));
                 can_show_folder = false;
             } else if (!slot.directory.file.exists) {
-                if (slot.can_create)
+                if (slot.can_create) {
                     content = new DirectoryNotFound (slot.directory, this);
-                else
+                } else {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                        _("You cannot create a folder here."));
+                }
                 can_show_folder = false;
             } else if (selected_locations != null) {
                     view.select_glib_files (selected_locations, selected_locations.first ().data);
@@ -386,8 +382,16 @@ namespace Marlin.View {
                 ready = true;
                 content = view.get_content_box ();
                 plugin_directory_loaded ();
+                browser.record_uri (slot.uri); /* will ignore null changes i.e reloading*/
+                window.set_can_go_forward (browser.get_can_go_forward ());
+            } else {
+                /* Save previous uri but do not record current one */
+                browser.record_uri (null);
+                /* Inactivate the forward button but do not lose existing forward stack */
+                window.set_can_go_forward (false);
             }
-
+            window.set_can_go_forward (browser.get_can_go_forward ());
+            window.update_top_menu ();
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
