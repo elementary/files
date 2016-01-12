@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2016-01-10 13:51+0000\n"
+"PO-Revision-Date: 2016-01-11 06:12+0000\n"
 "Last-Translator: Lukáš Papík <stereo839@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-01-11 04:54+0000\n"
+"X-Launchpad-Export-Date: 2016-01-12 05:33+0000\n"
 "X-Generator: Launchpad (build 17881)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1800,7 +1800,7 @@ msgstr "Vymazané:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
-msgstr ""
+msgstr "Typ média:"
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
