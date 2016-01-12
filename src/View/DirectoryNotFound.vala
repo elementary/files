@@ -46,7 +46,7 @@ namespace Marlin.View
                 }
 
                 if (success) {
-                    ctab.slot_path_changed (dir_saved.location);
+                    ctab.reload ();
                 }
             });
 

@@ -814,6 +814,10 @@ gof_file_query_info (GOFFile *file)
 
     g_return_val_if_fail (G_IS_FILE (file->location), NULL);
 
+    file->is_mounted = TRUE;
+    file->exists = TRUE;
+    file->is_connected = TRUE;
+
     info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
     if (err != NULL) {

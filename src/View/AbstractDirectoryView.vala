@@ -282,6 +282,8 @@ namespace FM {
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
             change_zoom_level ();
+
+            connect_directory_handlers (slot.directory);
         }
 
         ~AbstractDirectoryView () {
@@ -325,8 +327,6 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
-
-            connect_directory_handlers (slot.directory);
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -611,8 +611,8 @@ namespace FM {
             block_model ();
             model.clear ();
             unblock_model ();
-            if (new_dir.can_load)
-                connect_directory_handlers (new_dir);
+            /* As we connect the signal file_loaded signal handler, we initialise. */
+            connect_directory_handlers (new_dir);
         }
 
         public void reload () {
@@ -641,7 +641,7 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel ();
+            slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
 
             if (thumbnail_request > 0) {
@@ -1277,8 +1277,9 @@ namespace FM {
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-            debug ("DV  directory done loading %s", dir.file.uri);
+            /* Should only be called on directory creation or reload */
             dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
@@ -1287,8 +1288,9 @@ namespace FM {
 
             if (in_recent)
                 model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else
+            else if (slot.directory.file.info != null) {
                 model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
              * are sometimes not properly aligned when first drawn, only after redrawing the view. */
@@ -1334,12 +1336,9 @@ namespace FM {
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
+            /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-
-            if (show)
-                dir.load_hiddens ();
-            else
-                dir.load ();
+            dir.load_hiddens ();
         }
 
         private void on_interpret_desktop_files_changed () {
