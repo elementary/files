@@ -3083,6 +3083,7 @@ namespace FM {
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
+            view.style_updated ();
         }
 
         private void start_renaming_file (GOF.File file, bool preselect_whole_name) {

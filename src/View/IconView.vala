@@ -53,7 +53,6 @@ namespace FM {
             name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
-            name_renderer.set_fixed_size (-1, 54);
         }
 
         protected void set_up_icon_renderer () {
@@ -104,7 +103,6 @@ namespace FM {
         public override void change_zoom_level () {
             if (tree != null) {
                 tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
-                tree.set_row_spacing ((int)((double)icon_size * (0.2 - zoom_level * 0.03)));
                 tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
 
                 name_renderer.set_property ("wrap-width", tree.get_item_width ());
