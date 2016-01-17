@@ -473,9 +473,8 @@ namespace Marlin.View.Chrome {
                         var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
-                        menuitem.activate.connect (() => {
-                            text = menu.get_active ().get_data ("location");
-                            activate ();
+                        menuitem.activate.connect ((mi) => {
+                            activate_path (mi.get_data ("location"));
                         });
                     }
                 }
