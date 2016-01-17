@@ -139,13 +139,11 @@ namespace Marlin.View {
         private void on_directory_need_reload (GOF.Directory.Async dir) {
             if (!updates_frozen) {
                 updates_frozen = true;
-                var old_dir = directory;
-                set_up_directory (this.location);
                 path_changed (false);
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
-                dir_view.change_directory (old_dir, directory);
+                dir_view.clear (); /* clear model but do not change directory */
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
                 if (original_reload_request) {

@@ -23,8 +23,9 @@ private Mutex dir_cache_lock;
 public class GOF.Directory.Async : Object {
     public delegate void GOFFileLoadedFunc (GOF.File file);
 
-    private uint load_timout_id = 0;
+    private uint load_timeout_id = 0;
     private const int ENUMERATE_TIMEOUT_SEC = 10;
+    private const int QUERY_INFO_TIMEOUT_SEC = 15;
 
     public GLib.File location;
     public GLib.File? selected_file = null;
@@ -104,7 +105,7 @@ public class GOF.Directory.Async : Object {
         is_trash = (scheme == "trash");
         is_recent = (scheme == "recent");
         is_local = is_trash || is_recent || (scheme == "file");
-        is_network = !is_local && ("ftp ftps afp dav davs".contains (scheme));
+        is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
 
         dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
         directory_cache.insert (location.dup (), this);
@@ -130,13 +131,6 @@ public class GOF.Directory.Async : Object {
       * the premature ending of text entry.
      **/
     public void init (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state == State.LOADING) { /* Not an error - could happen simultaneously loading multiple views of the same directory */
-            debug ("Init called when already loading "); 
-            if (load_timout_id > 0) {
-                warning ("directory already started loading - may have missed some file loaded signals");
-            }
-            return;
-        }
         var previous_state = state;
         state = State.LOADING;
         cancellable.cancel ();
@@ -159,7 +153,11 @@ public class GOF.Directory.Async : Object {
         bool success = yield get_file_info ();
         if (success) {
             if (is_local && !file.is_folder ()) {
-                if (can_try_parent ()) {
+                var parent = file.is_connected ? location.get_parent () : null;
+                if (parent != null) {
+                    file = GOF.File.get (parent);
+                    selected_file = location.dup ();
+                    location = parent;
                     success = yield get_file_info ();
                 } else {
                     success = false;
@@ -167,19 +165,6 @@ public class GOF.Directory.Async : Object {
             }
         }
         make_ready (success, file_loaded_func); /* Only place that should call this function */
-    }
-
-    private bool can_try_parent () {
-        if (file.is_connected) {
-            GLib.File? parent = location.get_parent ();
-            if (parent != null) {
-                file = GOF.File.get (parent);
-                selected_file = location.dup ();
-                location = parent;
-                return true;
-            }
-        }
-        return false;
     }
 
     private async bool get_file_info () {
@@ -192,10 +177,33 @@ public class GOF.Directory.Async : Object {
         }
 
         /* Must be non-local */
-        if (is_network && !yield check_network ()) {
+        if (!is_local && !yield check_network ()) {
+            file.is_connected = false;
             return false;
         } else {
             if (yield mount_mountable ()) {
+                /* Previously mounted Samba servers still appear mounted even if disconnected
+                 * e.g. by unplugging the network cable.  So the following function can block for
+                 * a long time; we therefore use a timeout */
+                cancellable = new Cancellable ();
+                bool querying = true;
+                assert (load_timeout_id == 0);
+                load_timeout_id = Timeout.add_seconds (QUERY_INFO_TIMEOUT_SEC, () => {
+                    if (querying) {
+                        cancellable.cancel ();
+                        load_timeout_id = 0;
+                    }
+                    return false;
+                });
+
+                yield query_info_async (file, null, cancellable);
+                querying = false;
+                cancel_timeout (ref load_timeout_id);
+                if (cancellable.is_cancelled ()) {
+                    warning ("Failed to get info - timed out and cancelled");
+                    file.is_connected = false;
+                    return false;
+                }
                 file.ensure_query_info ();
                 return true;
             } else {
@@ -228,27 +236,36 @@ public class GOF.Directory.Async : Object {
         var net_mon = GLib.NetworkMonitor.get_default ();
         var net_available = net_mon.get_network_available ();
 
-        if (!net_available) {
-            SocketConnectable? connectable = null;
-            try {
-                connectable = NetworkAddress.parse_uri (file.uri, 21);
-            }
-            catch (GLib.Error e) {
-                warning ("Error parsing uri -%s: %s", file.uri, e.message);
-                return false;
-            }
-
-            try {
-                return yield net_mon.can_reach_async (connectable, cancellable);
-            }
-            catch (GLib.Error e) {
-                warning ("Error connecting to connectable %s - %s", file.uri, e.message);
-               return false;
+        if (net_available) {
+                SocketConnectable? connectable = null;
+            if (!is_network) { /* e.g. smb://  */
+                /* TODO:  Find a way of verifying samba server still connected;  gvfs does not detect
+                 * when network connection is broken - still appears mounted and connected */ 
+                return true;
+            } else {
+                try {
+                    connectable = NetworkAddress.parse_uri (file.uri, 21);
+                }
+                catch (GLib.Error e) {
+                    warning ("Error parsing uri -%s: %s", file.uri, e.message);
+                    return false;
+                }
+                try {
+                    /* Try to connect for real.  This should time out after about 15 seconds if
+                     * the host is not reachable */
+                    var scl = new SocketClient ();
+                    return (yield scl.connect_async (connectable, cancellable)) != null;
+                }
+                catch (GLib.Error e) {
+                    warning ("Error connecting to connectable %s - %s", file.uri, e.message);
+                   return false;
+                }
             }
         } else {
-            return true;
+            return false;
         }
     }
+     
 
     private void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         can_load = ready;
@@ -335,6 +352,8 @@ public class GOF.Directory.Async : Object {
         /* This should only be called when closing the view - it will cancel initialisation of the directory */
         cancellable.cancel ();
         cancel_thumbnailing ();
+        cancel_timeout (ref load_timeout_id);
+        cancel_timeout (ref idle_consume_changes_id);
     }
 
     public void cancel_thumbnailing () {
@@ -346,25 +365,14 @@ public class GOF.Directory.Async : Object {
     }
 
     public void reload () {
-        if (state != State.LOADED) {
-            warning ("Directory reload called when directory not loaded or loading");
-            return;
-        }
         clear_directory_info ();
         init ();
     }
 
     /** Called in preparation for a reload **/
     private void clear_directory_info () {
-        cancellable.cancel ();
-        cancellable.reset ();
-
-        cancel_thumbnailing ();
-        cancel_timeout (ref load_timout_id);
-        cancel_timeout (ref idle_consume_changes_id);
-
+        cancel ();
         file_hash.remove_all ();
-
         monitor = null;
         sorted_dirs = null;
         files_count = 0;
@@ -401,7 +409,7 @@ public class GOF.Directory.Async : Object {
             warning ("load called when already loaded - not expected to happen");
             return;
         }
-        if (load_timout_id > 0) {
+        if (load_timeout_id > 0) {
             warning ("load called when timeout already running - not expected to happen");
             return;
         }
@@ -418,14 +426,14 @@ public class GOF.Directory.Async : Object {
         try {
             /* This may hang for a long time if the connection was closed but is still mounted so we
              * impose a time limit */
-            load_timout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
+            load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
                 cancellable.cancel ();
-                load_timout_id = 0;
+                load_timeout_id = 0;
                 return false;
             });
 
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
-            cancel_timeout (ref load_timout_id);
+            cancel_timeout (ref load_timeout_id);
 
             GOF.File? gof;
             GLib.File loc;
@@ -570,11 +578,12 @@ public class GOF.Directory.Async : Object {
     /**TODO** move this to GOF.File */
     private delegate void func_query_info (GOF.File gof);
 
-    private async void query_info_async (GOF.File gof, func_query_info? f = null) {
+    private async void query_info_async (GOF.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
-                                                            Priority.DEFAULT);
+                                                            Priority.DEFAULT,
+                                                            cancellable);
             if (f != null)
                 f (gof);
         } catch (Error err) {
