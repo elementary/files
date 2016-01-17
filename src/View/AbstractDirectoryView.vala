@@ -159,6 +159,7 @@ namespace FM {
         /* support for generating thumbnails */
         uint thumbnail_request = 0;
         uint thumbnail_source_id = 0;
+        uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
@@ -307,6 +308,7 @@ namespace FM {
             set_shadow_type (Gtk.ShadowType.NONE);
 
             size_allocate.connect_after (on_size_allocate);
+
             button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
 
@@ -321,9 +323,7 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect ((alloc) => {
-                schedule_thumbnail_timeout ();
-            });
+            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
@@ -641,13 +641,12 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel_thumbnailing ();
-            cancel_timeout (ref thumbnail_source_id);
-
             if (thumbnail_request > 0) {
                 thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = 0;
             }
+            slot.directory.cancel_thumbnailing ();
+            cancel_timeout (ref thumbnail_source_id);
         }
 
         protected bool is_drag_pending () {
@@ -2325,44 +2324,71 @@ namespace FM {
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
-
-            if (thumbnail_source_id != 0 ||
-                !(slot is GOF.AbstractSlot) ||
-                slot.directory == null ||
-                !slot.directory.is_local)
-
+            if (slot.directory.is_loading ())
                 return;
 
-            thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (!(slot is GOF.AbstractSlot) || slot.directory == null)
-                    return false;
+            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
 
-                if (slot.directory.is_loading ())
+            /* In order to improve performance of the Icon View when there are a large number of files,
+             * we freeze child notifications while the view is being scrolled or resized.
+             * The timeout is restarted for each scroll or size allocate event */  
+            cancel_timeout (ref freeze_source_id);
+            freeze_child_notify ();
+            freeze_source_id = Timeout.add (500, () => {
+                if (thumbnail_source_id > 0) {
                     return true;
+                }
+                thaw_child_notify ();
+                freeze_source_id = 0;
+                return false;
+            });
 
-                cancel_thumbnailing ();
-
+            /* Views with a large number of files take longer to redraw (especially IconView) so
+             * we wait longer for scrolling to stop before updating the thumbnails */ 
+            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
+            thumbnail_source_id = GLib.Timeout.add (delay, () => {
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
+                Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
                 GOF.File file;
                 GLib.List<GOF.File> visible_files = null;
+                uint actually_visible = 0;
+
 
                 if (get_visible_range (out start_path, out end_path)) {
+                    sp = start_path;
+                    ep = end_path;
+
+                    /* To improve performance for large folders we thumbnail files on either side of visible region
+                     * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
+                     * redraws necessary when scrolling */ 
+                    int count = 50;
+                    while (start_path.prev () && count > 0) {
+                        count--;
+                    }
+                    count = 50;
+                    while (count > 0) {
+                        end_path.next ();
+                        count--;
+                    }
+
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
-
-                    while (valid_iter) {
+                    while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter);
-
-                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
-                        if (file != null && file.flags < 2)
-                            visible_files.prepend (file);
-
-                        /* check if we've reached the end of the visible range */
                         path = model.get_path (iter);
 
+                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
+                        if (file != null && file.flags < 2) {
+                            visible_files.prepend (file);
+                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                actually_visible++;
+                            }
+                        }
+
+                        /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0)
                             valid_iter = get_next_visible_iter (ref iter);
                         else
@@ -2370,9 +2396,11 @@ namespace FM {
                     }
                 }
 
-                if (visible_files != null)
+                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
+                 * and there has not been another event (which would zero the thumbnail_source_if) */
+                if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-
+                }
                 thumbnail_source_id = 0;
                 return false;
             });
@@ -3325,6 +3353,8 @@ namespace FM {
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
         protected abstract void thaw_tree ();
+        protected new abstract void freeze_child_notify ();
+        protected new abstract void thaw_child_notify ();
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

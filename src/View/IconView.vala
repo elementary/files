@@ -313,5 +313,12 @@ namespace FM {
                 tree_frozen = false;
             }
         }
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
+        }
     }
 }
