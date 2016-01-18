@@ -16,11 +16,11 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 namespace PF.FileUtils {
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
+    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
+
     public File? get_file_for_path (string? path) {
         File? file = null;
         string new_path = sanitize_path (path);
@@ -74,8 +74,8 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true) {
-        reserved_chars.replace("#", "");
-        return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), reserved_chars, allow_utf8);
+        string rc = reserved_chars.replace("#", "").replace ("*","");
+        return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
     /** Produce a valid unescaped path **/

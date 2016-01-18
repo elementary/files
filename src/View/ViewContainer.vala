@@ -183,6 +183,7 @@ namespace Marlin.View {
             connect_slot_signals (this.view);
             directory_is_loading (loc);
             view.directory.init ();
+            show_all ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
         }
@@ -252,7 +253,6 @@ namespace Marlin.View {
 
         public void on_slot_path_changed (GOF.AbstractSlot slot, bool change_mode_to_icons) {
             assert (slot != null);
-            directory_is_loading (slot.location);
             /* automagicly enable icon view for icons keypath */
             if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
                 change_view_mode (Marlin.ViewMode.ICON);
@@ -261,7 +261,7 @@ namespace Marlin.View {
             }
         }
 
-        public void directory_is_loading (GLib.File loc) {
+        private void directory_is_loading (GLib.File loc) {
             loading (true);
             overlay_statusbar.cancel ();
             overlay_statusbar.halign = Gtk.Align.END;
@@ -332,21 +332,22 @@ namespace Marlin.View {
 
             /* First deal with all cases where directory could not be loaded */
             if (!slot.directory.can_load) {
+                can_show_folder = false;
                 if (!slot.directory.file.exists) {
                     if (slot.can_create)
                         content = new DirectoryNotFound (slot.directory, this);
                     else
                         content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                            _("You cannot create a folder here."));
-                    can_show_folder = false;
                 } else if (slot.directory.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));
-                    can_show_folder = false;
-                } else {
+                } else if (!slot.directory.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
+                                                       _("Could not connect to the server for this folder."));
+                } else {
+                    content = new Marlin.View.Welcome (_("Unable show Folder"),
                                                        _("The server for this folder could not be located."));
-                    can_show_folder = false;
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
@@ -372,7 +373,6 @@ namespace Marlin.View {
             }
 
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
-            loading (false);
         }
 
         private void store_selection () {
@@ -393,7 +393,7 @@ namespace Marlin.View {
 
         public void set_active_state (bool is_active) {
             var aslot = get_current_slot ();
-            if (aslot != null)
+            if (aslot != null && aslot.directory.can_load)
                 aslot.set_active_state (is_active);
         }
         

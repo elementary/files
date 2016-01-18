@@ -585,21 +585,31 @@ namespace FM {
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (GOF.Directory.Async dir) {
             assert (dir != null);
-            dir.file_loaded.connect (on_directory_file_loaded);
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-            dir.done_loading.connect (on_directory_done_loading);
             dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
+            connect_directory_loading_handlers (dir);
+        }
+
+        protected void connect_directory_loading_handlers (GOF.Directory.Async dir) {
+            dir.file_loaded.connect (on_directory_file_loaded);
+            dir.done_loading.connect (on_directory_done_loading);
+        }
+
+        protected void disconnect_directory_loading_handlers (GOF.Directory.Async dir) {
+            dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
 
-            if (dir.is_loading ())
-                dir.file_loaded.disconnect (on_directory_file_loaded);
+            if (dir.is_loading ()) {
+                disconnect_directory_loading_handlers (dir);
+            }
 
             dir.file_added.disconnect (on_directory_file_added);
             dir.file_changed.disconnect (on_directory_file_changed);
@@ -615,13 +625,20 @@ namespace FM {
                 style_context.remove_class (MESSAGE_CLASS);
 
             cancel ();
-            freeze_tree ();
+            clear ();
             disconnect_directory_handlers (old_dir);
+            connect_directory_handlers (new_dir);
+        }
+
+        public void clear () {
+            /* after calling this (prior to reloading), the directory must be re-initialised so
+             * we reconnect the file_loaded and done_loading signals */
+            freeze_tree ();
             block_model ();
             model.clear ();
             unblock_model ();
-            /* As we connect the signal file_loaded signal handler, we initialise. */
-            connect_directory_handlers (new_dir);
+            connect_directory_loading_handlers (slot.directory);
+            /* tree will be thawed after done loading */
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
@@ -1275,8 +1292,7 @@ namespace FM {
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
             /* Should only be called on directory creation or reload */
-            dir.file_loaded.disconnect (on_directory_file_loaded);
-            dir.done_loading.disconnect (on_directory_done_loading);
+            disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
