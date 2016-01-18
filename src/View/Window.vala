@@ -943,6 +943,7 @@ namespace Marlin.View {
         }
 
         public void mount_removed (Mount mount) {
+            debug ("Mount %s removed", mount.get_name ());
             GLib.File root = mount.get_root ();
 
             foreach (var page in tabs.get_children ()) {
