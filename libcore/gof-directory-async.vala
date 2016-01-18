@@ -95,8 +95,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private Async (GLib.File _file) {
-        location = _file;
+        /* Ensure uri is correctly escaped */
+        location = GLib.File.new_for_uri (PF.FileUtils.escape_uri (_file.get_uri ()));
         file = GOF.File.get (location);
+
         cancellable = new Cancellable ();
         state = State.NOT_LOADED;
         can_load = false;
@@ -131,6 +133,9 @@ public class GOF.Directory.Async : Object {
       * the premature ending of text entry.
      **/
     public void init (GOFFileLoadedFunc? file_loaded_func = null) {
+        if (state == State.LOADING) {
+            return; /* Do not re-enter */
+        }
         var previous_state = state;
         state = State.LOADING;
         cancellable.cancel ();
@@ -182,6 +187,7 @@ public class GOF.Directory.Async : Object {
             return false;
         } else {
             if (yield mount_mountable ()) {
+                debug ("succesful mount %s", file.uri);
                 /* Previously mounted Samba servers still appear mounted even if disconnected
                  * e.g. by unplugging the network cable.  So the following function can block for
                  * a long time; we therefore use a timeout */
@@ -190,6 +196,7 @@ public class GOF.Directory.Async : Object {
                 assert (load_timeout_id == 0);
                 load_timeout_id = Timeout.add_seconds (QUERY_INFO_TIMEOUT_SEC, () => {
                     if (querying) {
+                        warning ("Cancelled after timeout in query info async %s", file.uri);
                         cancellable.cancel ();
                         load_timeout_id = 0;
                     }
@@ -218,9 +225,10 @@ public class GOF.Directory.Async : Object {
             return yield location.mount_enclosing_volume (0, mount_op, cancellable);
         } catch (Error e) {
             if (e is IOError.ALREADY_MOUNTED) {
+                debug ("Already mounted %s", file.uri);
                 return true;
             } else {
-                warning ("mount_mountable failed: %s", e.message);
+                warning ("Mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
                     permission_denied = true;
                 }
@@ -240,7 +248,7 @@ public class GOF.Directory.Async : Object {
                 SocketConnectable? connectable = null;
             if (!is_network) { /* e.g. smb://  */
                 /* TODO:  Find a way of verifying samba server still connected;  gvfs does not detect
-                 * when network connection is broken - still appears mounted and connected */ 
+                 * when network connection is broken - still appears mounted and connected */
                 return true;
             } else {
                 try {
@@ -262,6 +270,7 @@ public class GOF.Directory.Async : Object {
                 }
             }
         } else {
+            warning ("No network available");
             return false;
         }
     }
@@ -270,6 +279,7 @@ public class GOF.Directory.Async : Object {
     private void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         can_load = ready;
         if (!can_load) {
+            debug ("%s cannot load", file.uri);
             done_loading ();
             return;
         } else if (!is_ready) {
@@ -380,10 +390,11 @@ public class GOF.Directory.Async : Object {
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
-        if (state == State.NOT_LOADED) {
-            warning ("list cached files called in unloaded state - not expected to happen");
+        if (state != State.LOADED) {
+            warning ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
         }
+        state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null) {
@@ -414,7 +425,6 @@ public class GOF.Directory.Async : Object {
             return;
         }
 
-        cancellable.cancel ();
         cancellable = new Cancellable ();
         longest_file_name = "";
         permission_denied = false;
