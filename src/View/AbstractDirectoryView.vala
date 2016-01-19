@@ -242,10 +242,10 @@ namespace FM {
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
-            editable_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
-            activatable_cursor = new Gdk.Cursor (Gdk.CursorType.HAND1);
-            selectable_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
-            blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
@@ -962,7 +962,7 @@ namespace FM {
 
             foreach (GOF.File file in selected_files) {
                 window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
-            }        
+            }
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2063,7 +2063,7 @@ namespace FM {
                 if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();             
+                    templates_submenu = new GLib.Menu ();
                 } else {
                     templates_submenu.append (label, "background.create_from::" + index.to_string ());
                     count ++;
@@ -2498,7 +2498,7 @@ namespace FM {
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/ 
+          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (int keyval, uint code) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
@@ -3191,9 +3191,9 @@ namespace FM {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
-            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the 
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
-             */  
+             */
             if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 
