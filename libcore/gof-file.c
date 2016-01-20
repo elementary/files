@@ -926,6 +926,8 @@ static void gof_file_init (GOFFile *file) {
     file->icon = NULL;
     file->pix = NULL;
     file->color = 0;
+    file->width = 0;
+    file->height = 0;
 
     file->utf8_collation_key = NULL;
     file->formated_type = NULL;
