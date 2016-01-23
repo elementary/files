@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:46+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-01-05 10:24+0000\n"
+"Last-Translator: Bogdan Lisnenko <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-06 05:38+0000\n"
+"X-Generator: Launchpad (build 17876)\n"
 "Language: uk\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -174,11 +174,11 @@ msgstr "%a %-d %b %Y на %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Початкове місцезнаходження неможливо визначити"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Відкрити теку зі сміттям і відновити вручну"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -1619,7 +1619,7 @@ msgstr "Нещодавні"
 
 #: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
@@ -1798,40 +1798,40 @@ msgstr "%u вибраних елементів"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Created:"
-msgstr ""
+msgstr "Створено:"
 
 #: ../src/View/PropertiesWindow.vala:626
 msgid "Modified:"
-msgstr ""
+msgstr "Змінено:"
 
 #: ../src/View/PropertiesWindow.vala:629
 msgid "Last Access:"
-msgstr ""
+msgstr "Останній доступ:"
 
 #: ../src/View/PropertiesWindow.vala:637
 msgid "Deleted:"
-msgstr ""
+msgstr "Видалено"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
-msgstr ""
+msgstr "Тип Mime:"
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
-msgstr ""
+msgstr "Типи Mime:"
 
 #: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
 #: ../src/View/PropertiesWindow.vala:1497
 msgid "Location:"
-msgstr ""
+msgstr "Розташування:"
 
 #: ../src/View/PropertiesWindow.vala:687
 msgid "Target:"
-msgstr ""
+msgstr "Призначення:"
 
 #: ../src/View/PropertiesWindow.vala:693
 msgid "Origin Location:"
-msgstr ""
+msgstr "Початкове розташування:"
 
 #: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
@@ -1872,16 +1872,16 @@ msgstr "Виконання"
 #: ../src/View/PropertiesWindow.vala:1116
 #: ../src/View/PropertiesWindow.vala:1131
 msgid "Owner:"
-msgstr ""
+msgstr "Власник:"
 
 #: ../src/View/PropertiesWindow.vala:1122
 #: ../src/View/PropertiesWindow.vala:1136
 msgid "Group:"
-msgstr ""
+msgstr "Група:"
 
 #: ../src/View/PropertiesWindow.vala:1141
 msgid "Everyone:"
-msgstr ""
+msgstr "Всі:"
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1889,36 +1889,36 @@ msgstr "Виберіть програму, щоб відкрити "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Властивості диску"
 
 #: ../src/View/PropertiesWindow.vala:1504
 msgid "Format:"
-msgstr ""
+msgstr "Формат:"
 
 #: ../src/View/PropertiesWindow.vala:1522
 #: ../src/View/PropertiesWindow.vala:1547
 msgid "Capacity:"
-msgstr ""
+msgstr "Об’єм:"
 
 #: ../src/View/PropertiesWindow.vala:1528
 #: ../src/View/PropertiesWindow.vala:1553
 msgid "Available:"
-msgstr ""
+msgstr "Доступно:"
 
 #: ../src/View/PropertiesWindow.vala:1534
 #: ../src/View/PropertiesWindow.vala:1559
 msgid "Used:"
-msgstr ""
+msgstr "Використано:"
 
 #: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% використано)"
 
 #: ../src/View/PropertiesWindow.vala:1550
 #: ../src/View/PropertiesWindow.vala:1556
 #: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
-msgstr ""
+msgstr "Невідомо"
 
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
@@ -2088,7 +2088,7 @@ msgstr "Сервер з цією текою неможливо знайти."
 
 #: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Неможливо створити теку тут"
 
 #: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
@@ -2219,11 +2219,11 @@ msgstr "Перейти до %s"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Введіть пошуковий запит або шлях"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "введіть шлях"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2259,11 +2259,11 @@ msgstr "Відкрити у новій вкладці"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Відкрити у новому вікні"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Відкрити в іншому додатку..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2287,7 +2287,7 @@ msgstr "Ці елементи можуть бути відновлені або 
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Неможливо відновити поки ви не в кореневій теці"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
