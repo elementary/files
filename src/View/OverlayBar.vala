@@ -313,9 +313,6 @@ namespace Marlin.View {
         private void connect_loader_signals (Gdk.PixbufLoader loader) {
             loader.size_prepared.connect (on_size_prepared);
         }
-        private void disconnect_loader_signals (Gdk.PixbufLoader loader) {
-            loader.size_prepared.disconnect (on_size_prepared);
-        }
         private void on_size_prepared (int width, int height) {
             image_size_loaded = true;
             goffile.width = width;

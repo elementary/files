@@ -194,6 +194,8 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 }
 
 public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
+    private const string resolution_key = _("Resolution:");
+
     private class Pair<F, G> {
         public F key;
         public G value;
@@ -247,7 +249,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     }
 
     private Gee.Set<string>? mimes;
-
+    private Gtk.Box info_vbox;
+    private Gtk.Grid information;
     private Gtk.Widget header_title;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
@@ -339,7 +342,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
         /* Info */
         if (info.size > 0) {
-            var info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             construct_info_panel (info_vbox, info);
             add_section (stack, _("General"), PanelType.INFO.to_string (), info_vbox);
         }
@@ -651,25 +654,18 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
         }
 
-        /* get image size in pixels */
-        /* Skip the same types as the overlay bar */
-        if ("image" in ftype && !(ftype in Marlin.SKIP_IMAGES)) {
-            string path;
-            if (view.is_in_recent ())
-                path = (file.get_display_target_uri ()).substring (7, -1).replace ("%20", " ");
-            else
-                path = file.location.get_path ();
-
-            try {
-                /* This blocks so should not be used for large files e.g. .JP2 */
-                /* Note: OverlayBar does this a different way (async) - TODO use a common method - in FileUtils? */
-                Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
-                var width = pixbuf.get_width ().to_string ();
-                var height = pixbuf.get_height ().to_string ();
-                info.add (new Pair<string, string> (_("Size:"), width +" × " + height + " px"));
-            } catch (Error e) {
-                warning ("Error: %s\n", e.message);
+        /* get image size in pixels using an asynchronous method to stop the interface blocking on
+         * large images. */
+        if ("image" in ftype) {
+            string resolution_value = "";
+            if (file.width > 0) { /* resolution has already been determined */
+                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+            } else {
+                resolution_value = _("loading ...");
+                /* Async function will update info when resolution determined */
+                get_resolution.begin (file, info);
             }
+            info.add (new Pair<string, string> (resolution_key, resolution_value));
         }
 
         if (got_common_location ()) {
@@ -695,8 +691,47 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
     }
 
+    private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
+        GLib.FileInputStream? stream = null;
+        GLib.File file = goffile.location;
+        string resolution_value = _("Could not be determined");
+
+        try {
+            stream = yield file.read_async (0, cancellable);
+            if (stream == null) {
+                error ("Could not read image file's size data");
+            } else {
+                var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
+                goffile.width = pixbuf.get_width ();
+                goffile.height = pixbuf.get_height ();
+                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+            }
+        } catch (Error e) {
+            warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
+        }
+        try {
+            stream.close ();
+        } catch (GLib.Error e) {
+            debug ("Error closing stream in get_resolution: %s", e.message);
+        }
+
+        /* Cannot be sure which row the resolution line was added to the grid so we have to search for it */
+        Gtk.Widget? kw = null;
+        int row = 0;
+        do {
+            kw = information.get_child_at (0, row);
+            if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
+                Gtk.Widget vw = information.get_child_at (1, row);
+                if (vw is Gtk.Label) {
+                    (vw as Gtk.Label).label = resolution_value;
+                    break;
+                }
+            }
+            row++;
+        } while (kw != null);
+    }
     private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
-        var information = new Gtk.Grid();
+        information = new Gtk.Grid();
         information.column_spacing = 6;
         information.row_spacing = 6;
 
