@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:46+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-01-09 14:46+0000\n"
+"Last-Translator: hukomukhohangla <suv375@gmail.com>\n"
 "Language-Team: Bengali <bn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:58+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-10 05:23+0000\n"
+"X-Generator: Launchpad (build 17881)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "আবার চেষ্টা করুন"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
@@ -87,31 +87,31 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "সার্ভারের সাথে সংযোগ করুন"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "সার্ভারের বিস্তারিত তথ্য"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "সার্ভার (_S):"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "পোর্ট (_P):"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "ধরন: (_T)"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "শেয়ার: (_a)"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "ফোল্ডার (_F):"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -1469,7 +1469,8 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Nazir Ahmed Sabbir https://launchpad.net/~na-sabbir"
+"  Nazir Ahmed Sabbir https://launchpad.net/~na-sabbir\n"
+"  hukomukhohangla https://launchpad.net/~suv375"
 
 #: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
 msgid "AFP"

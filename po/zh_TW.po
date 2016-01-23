@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:45+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2015-12-24 14:23+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
+"X-Launchpad-Export-Date: 2015-12-25 05:30+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 "Language: zh_TW\n"
 
@@ -173,11 +173,11 @@ msgstr "%Y年%b%-d日  %a %p %-I:%M"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "無法判定原始位置"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "開啟垃圾筒資料夾並手動還原"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -1474,7 +1474,7 @@ msgstr "最近"
 
 #: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
@@ -1653,40 +1653,40 @@ msgstr "%u 個項目已選取"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Created:"
-msgstr ""
+msgstr "建立時間："
 
 #: ../src/View/PropertiesWindow.vala:626
 msgid "Modified:"
-msgstr ""
+msgstr "修改時間："
 
 #: ../src/View/PropertiesWindow.vala:629
 msgid "Last Access:"
-msgstr ""
+msgstr "上次存取："
 
 #: ../src/View/PropertiesWindow.vala:637
 msgid "Deleted:"
-msgstr ""
+msgstr "刪除時間："
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
-msgstr ""
+msgstr "MIME 類型："
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
-msgstr ""
+msgstr "MIME 類型："
 
 #: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
 #: ../src/View/PropertiesWindow.vala:1497
 msgid "Location:"
-msgstr ""
+msgstr "位置："
 
 #: ../src/View/PropertiesWindow.vala:687
 msgid "Target:"
-msgstr ""
+msgstr "目標："
 
 #: ../src/View/PropertiesWindow.vala:693
 msgid "Origin Location:"
-msgstr ""
+msgstr "原始位置："
 
 #: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
@@ -1727,16 +1727,16 @@ msgstr "執行"
 #: ../src/View/PropertiesWindow.vala:1116
 #: ../src/View/PropertiesWindow.vala:1131
 msgid "Owner:"
-msgstr ""
+msgstr "擁有者："
 
 #: ../src/View/PropertiesWindow.vala:1122
 #: ../src/View/PropertiesWindow.vala:1136
 msgid "Group:"
-msgstr ""
+msgstr "群組："
 
 #: ../src/View/PropertiesWindow.vala:1141
 msgid "Everyone:"
-msgstr ""
+msgstr "任何人："
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1744,36 +1744,36 @@ msgstr "請選取應用程式以開啟 "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "磁碟屬性"
 
 #: ../src/View/PropertiesWindow.vala:1504
 msgid "Format:"
-msgstr ""
+msgstr "格式："
 
 #: ../src/View/PropertiesWindow.vala:1522
 #: ../src/View/PropertiesWindow.vala:1547
 msgid "Capacity:"
-msgstr ""
+msgstr "容量："
 
 #: ../src/View/PropertiesWindow.vala:1528
 #: ../src/View/PropertiesWindow.vala:1553
 msgid "Available:"
-msgstr ""
+msgstr "可使用："
 
 #: ../src/View/PropertiesWindow.vala:1534
 #: ../src/View/PropertiesWindow.vala:1559
 msgid "Used:"
-msgstr ""
+msgstr "已使用："
 
 #: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (已使用 %d%%)"
 
 #: ../src/View/PropertiesWindow.vala:1550
 #: ../src/View/PropertiesWindow.vala:1556
 #: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
@@ -2072,11 +2072,11 @@ msgstr "前往 %s"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
 msgid "Enter search term or path"
-msgstr ""
+msgstr "請輸入搜尋詞語或路徑"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "請輸入路徑"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2112,11 +2112,11 @@ msgstr "在新分頁中開啟"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "在新視窗中開啟"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "以其他應用程式開啟…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2136,7 +2136,7 @@ msgstr "淨空垃圾筒"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "這些物件可能已還原，或已從垃圾筒中刪除。"
+msgstr "這些物件可選擇還原，或從垃圾筒中刪除。"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
