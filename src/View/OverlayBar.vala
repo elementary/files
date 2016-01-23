@@ -172,7 +172,10 @@ namespace Marlin.View {
                                                 goffile.formated_type,
                                                 goffile.format_size);
 
-                    if (type != null && type.substring (0, 6) == "image/" && !(type in Marlin.SKIP_IMAGES)) {
+                    if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
+                        (goffile.width > 0 ||                                     /* resolution already determined  or*/
+                        !((type in Marlin.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
+
                         load_resolution.begin (goffile);
                     }
                 } else {
@@ -271,12 +274,11 @@ namespace Marlin.View {
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
         private async void load_resolution (GOF.File goffile) {
-            if (goffile.width > 0) {
+            if (goffile.width > 0) { /* resolution may already have been determined */
                 on_size_prepared (goffile.width, goffile.height);
                 return;
-            } else if (goffile.width < 0) { /* failed before to determine resolution */
-                return;
             }
+
             var file = goffile.location;
             image_size_loaded = false;
 
@@ -287,7 +289,7 @@ namespace Marlin.View {
                 }
 
                 loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
-                connect_loader_signals (loader);
+                loader.size_prepared.connect (on_size_prepared);
 
                 cancel_cancellable ();
                 cancellable = new Cancellable ();
@@ -310,9 +312,6 @@ namespace Marlin.View {
             cancellable = null;
         }
 
-        private void connect_loader_signals (Gdk.PixbufLoader loader) {
-            loader.size_prepared.connect (on_size_prepared);
-        }
         private void on_size_prepared (int width, int height) {
             image_size_loaded = true;
             goffile.width = width;
