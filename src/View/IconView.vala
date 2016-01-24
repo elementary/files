@@ -311,5 +311,74 @@ namespace FM {
                 tree_frozen = false;
             }
         }
+
+        protected override void linear_select_path (Gtk.TreePath path) {
+            /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
+            /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
+            /* the previous selection was made with the Shift key pressed */
+            /* Note: 'first' and 'last' refer to position in selection, not the time selected */ 
+            var selected_paths = tree.get_selected_items ();
+            var first_selected = selected_paths.last ().data;
+            var last_selected = selected_paths.first ().data;
+
+            bool before_first = path.compare (first_selected) < 0;
+            bool before_last = path.compare (last_selected) < 0;
+            bool direction_change = false;
+
+            if (previous_linear_selection_path != null) {
+                direction_change =  (path.compare (previous_linear_selection_path) - previous_linear_selection_direction).abs () > 0;
+            }
+            
+            var p = path.copy ();
+            Gtk.TreePath p2 = null;
+
+            if (before_first) {
+                if (direction_change) { /* false if not previous_selection_was_linear */
+                    unselect_all ();
+                }
+                Gtk.TreePath end_path = first_selected;
+                if (!previous_selection_was_linear) {
+                    end_path = last_selected;
+                }
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.next ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) <= 0);
+            } else if (before_last) { /* between first and last */
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
+
+                p = path.copy ();
+                do {
+                    p2 = p.copy ();
+                    p.next ();
+                    unselect_path (p);
+                } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
+            } else { /* after last */
+                if (direction_change) {
+                    unselect_all ();
+                }
+                Gtk.TreePath end_path = last_selected;
+                if (!previous_selection_was_linear) {
+                    end_path = first_selected;
+                }
+                do {
+                    select_path (p);
+                    p2 = p.copy ();
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
+            }
+            previous_selection_was_linear = true;
+            if (previous_linear_selection_path != null) {
+                previous_linear_selection_direction = path.compare (previous_linear_selection_path);
+            } else {
+                previous_linear_selection_direction = path.compare (first_selected);
+            }
+            previous_linear_selection_path = path.copy ();
+        }
     }
 }
