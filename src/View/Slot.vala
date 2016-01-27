@@ -146,7 +146,9 @@ namespace Marlin.View {
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
-                dir_view.change_directory (directory, directory);
+
+                dir_view.clear (); /* clear model but do not change directory */
+
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
                 if (original_reload_request) {

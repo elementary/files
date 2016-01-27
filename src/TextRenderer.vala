@@ -19,7 +19,7 @@
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
-        const int MAX_LINES = 3;
+        const int MAX_LINES = 5;
         const uint BORDER_RADIUS = 6;
 
         public Marlin.ZoomLevel zoom_level {get; set;}
@@ -164,6 +164,7 @@ namespace Marlin {
             entry.set_data ("marlin-text-renderer-path", path.dup ());
             entry.show_all ();
 
+            base.start_editing (event, widget, path, background_area, cell_area, flags);
             return entry as Gtk.CellEditable;
         }
 
@@ -205,15 +206,16 @@ namespace Marlin {
 
         private void connect_widget_signals () {
             widget.destroy.connect (invalidate);
-            widget.style_set.connect (invalidate);
+            widget.style_updated.connect (invalidate);
         }
 
         private void disconnect_widget_signals () {
             widget.destroy.disconnect (invalidate);
-            widget.style_set.disconnect (invalidate);
+            widget.style_updated.disconnect (invalidate);
         }
 
         private void invalidate () {
+            disconnect_widget_signals ();
             set_widget (null);
             file = null;
         }
