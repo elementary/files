@@ -302,6 +302,7 @@ public class GOF.Directory.Async : Object {
                                                                              file.is_connected.to_string (),
                                                                              file.is_mounted.to_string (),
                                                                              file.exists.to_string ());
+            state = State.NOT_LOADED; /* ensure state is correct */
             done_loading ();
             return;
         } else if (!is_ready) {
@@ -521,6 +522,7 @@ public class GOF.Directory.Async : Object {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING) {
+            state = State.NOT_LOADED; /* else clear directory info will fail */
             clear_directory_info ();
             can_load = false;
         }
