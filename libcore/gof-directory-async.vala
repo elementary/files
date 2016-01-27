@@ -293,6 +293,7 @@ public class GOF.Directory.Async : Object {
         can_load = ready;
         if (!can_load) {
             debug ("%s cannot load", file.uri);
+            state = State.NOT_LOADED; /* ensure state is correct */
             done_loading ();
             return;
         } else if (!is_ready) {
@@ -517,6 +518,7 @@ public class GOF.Directory.Async : Object {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING) {
+            state = State.NOT_LOADED; /* else clear directory info will fail */
             clear_directory_info ();
             can_load = false;
         }
