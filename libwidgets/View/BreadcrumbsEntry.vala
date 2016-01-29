@@ -489,7 +489,7 @@ namespace Marlin.View.Chrome {
             GOF.File? file;
             var el = get_element_from_coordinates (x, y);
             if (el != null) {
-                file = GOF.File.get (GLib.File.new_for_path (get_path_from_element (el)));
+                file = GOF.File.get (GLib.File.new_for_commandline_arg (get_path_from_element (el)));
                 file.ensure_query_info ();
                 return file;
             }

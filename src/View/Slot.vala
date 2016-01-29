@@ -24,6 +24,9 @@ namespace Marlin.View {
         private int preferred_column_width;
         private FM.AbstractDirectoryView? dir_view = null;
 
+        private uint reload_timeout_id = 0;
+        private uint path_change_timeout_id = 0;
+
         protected bool updates_frozen = false;
         protected bool original_reload_request = false;
         public bool has_autosized = false;
@@ -143,14 +146,29 @@ namespace Marlin.View {
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
+
                 dir_view.clear (); /* clear model but do not change directory */
+
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
                 if (original_reload_request) {
-                    directory.reload ();
+                    schedule_reload ();
                     original_reload_request = false;
                 }
             }
+        }
+
+        private void schedule_reload () {
+            /* Allow time for other slots showing this directory to prepare for reload */
+            if (reload_timeout_id > 0) {
+                warning ("Path change request received too rapidly");
+                return;
+            }
+            reload_timeout_id = Timeout.add (50, ()=> {
+                    directory.reload ();
+                    reload_timeout_id = 0;
+                    return false;
+            });
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -172,8 +190,13 @@ namespace Marlin.View {
          * due to undiagnosed bug.
          */  
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
-            GLib.Timeout.add (20, () => {
+            if (path_change_timeout_id > 0) {
+                warning ("Path change request received too rapidly");
+                return;
+            }
+            path_change_timeout_id = GLib.Timeout.add (20, () => {
                 on_dir_view_path_change_request (loc, flag, make_root);
+                path_change_timeout_id = 0; 
                 return false;
             });
         }
@@ -350,6 +373,8 @@ namespace Marlin.View {
         }
 
         public override void cancel () {
+            cancel_timeouts ();
+
             if (directory != null)
                 directory.cancel ();
 
@@ -386,6 +411,18 @@ namespace Marlin.View {
                 return gof.info;
             } else {
                 return null;
+            }
+        }
+
+        private void cancel_timeouts () {
+            cancel_timeout (ref reload_timeout_id);
+            cancel_timeout (ref path_change_timeout_id);
+        }
+
+        private void cancel_timeout (ref uint id) {
+            if (id > 0) {
+                Source.remove (id);
+                id = 0;
             }
         }
     }
