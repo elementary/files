@@ -165,10 +165,10 @@ namespace FM {
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
-                if (file != null)
+                if (file != null) {
                     selected_files.prepend (file);
+                }
             });
-
             selected_files.reverse ();
         }
 
@@ -246,9 +246,7 @@ namespace FM {
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
-
-            if (start_editing)
-                tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
+            tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
         public override void set_cursor (Gtk.TreePath? path,
@@ -260,13 +258,17 @@ namespace FM {
 
             Gtk.TreeSelection selection = tree.get_selection ();
 
-            if (!select)
+            if (!select) {
                 selection.changed.disconnect (on_view_selection_changed);
-
+            } else {
+                select_path (path);
+            }
+            
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
-            if (!select)
+            if (!select) {
                 selection.changed.connect (on_view_selection_changed);
+            }
         }
 
         public override Gtk.TreePath? get_path_at_cursor () {
@@ -287,6 +289,14 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
         }
     }
 }

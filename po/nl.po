@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-05 05:29-0600\n"
-"PO-Revision-Date: 2014-07-17 05:11+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-21 13:47+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-06 05:30+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Er is niets op het klembord om te plakken"
+"X-Launchpad-Export-Date: 2015-12-22 04:58+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,9 +137,38 @@ msgstr "Dit wachtwoo_rd onthouden"
 msgid "Operation cancelled"
 msgstr "Bewerking geannuleerd"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Toon meer _details"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Er is niets op het klembord om te plakken"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ongeldige Unicode)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Vandaag om %k:%M"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Gisteren om %k:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y om %-k:%M"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -526,167 +551,10 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
 msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Map ‘%s’ samenvoegen?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
-"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Vervang map \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Vervang bestand \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Vervangen zal de inhoud overschrijven."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Origineel bestand"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-msgid "Size:"
-msgstr "Grootte:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-msgid "Type:"
-msgstr "Type:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Laatst bewerkt:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Vervang met"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Samenvoegen"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Selecteer een nieuwe naam voor de bestemming"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Herstel"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Pas deze actie toe op alle bestanden"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Overslaan"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Her_noemen"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Vervang"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Bestandsconflict"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ongeldige Unicode)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Bezig met voorbereiden"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -892,7 +760,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1349
 msgid "Empty _Trash"
 msgstr "Leeg _Prullenbak"
 
@@ -922,6 +790,8 @@ msgid_plural "%'d files left to delete"
 msgstr[0] "%'d te verwijderen bestand over"
 msgstr[1] "%'d te verwijderen bestanden over"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1244,6 +1114,10 @@ msgstr[1] "Dupliceren van %'d bestanden"
 msgid "%S of %S"
 msgstr "%S van %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1443,21 +1317,9 @@ msgstr "Prullenbak wordt geleegd"
 msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Vandaag om %k:%M"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Gisteren om %k:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y om %-k:%M"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Toon meer _details"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1489,130 +1351,258 @@ msgstr "Slashes zijn niet toegestaan in bestandsnamen"
 msgid "Toplevel files cannot be renamed"
 msgstr "Toplevel bestanden kunnen niet hernoemd worden"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Bezig met voorbereiden"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Map ‘%s’ samenvoegen?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
+"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr ""
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Vervang map \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Vervang bestand \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Vervangen zal de inhoud overschrijven."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Origineel bestand"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Grootte:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Type:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Laatst bewerkt:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Vervang met"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Samenvoegen"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Selecteer een nieuwe naam voor de bestemming"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Herstel"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Pas deze actie toe op alle bestanden"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Her_noemen"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Vervang"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Bestandsconflict"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Een eenvoudige en krachtige bestandsbeheerder"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ambroos Vaes https://launchpad.net/~ambroosv\n"
+"  Arnout https://launchpad.net/~arnout-van-eerde\n"
+"  BC https://launchpad.net/~b-coolsaet\n"
+"  Bas Dalenoord https://launchpad.net/~bdalenoord\n"
+"  Bauke-Jan Davids https://launchpad.net/~bauke-jandavids\n"
+"  Ben https://launchpad.net/~bboy9000\n"
+"  Benjamin Gabriel Rocha https://launchpad.net/~benjgr1\n"
+"  Chris https://launchpad.net/~z-info-t\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Emiel Beinema https://launchpad.net/~emiel\n"
+"  Frank https://launchpad.net/~franksterke\n"
+"  Jaap Broekhuizen https://launchpad.net/~jaapz-b\n"
+"  Jaap K https://launchpad.net/~jaapkoornstra\n"
+"  Jelle Licht https://launchpad.net/~wordempire\n"
+"  Jeroen https://launchpad.net/~jjeroen\n"
+"  Joey Haas https://launchpad.net/~joeyh-jo0\n"
+"  Joris Pelgröm https://launchpad.net/~joris-pelgrom-deactivatedaccount\n"
+"  Jurgen Reniers https://launchpad.net/~jurgie-reniers\n"
+"  Lorian Coltof https://launchpad.net/~loriancoltof\n"
+"  Marco van Poortvliet https://launchpad.net/~marc0tjevp\n"
+"  Maxim Van Damme https://launchpad.net/~maxim-vandamme\n"
+"  OrangeTux https://launchpad.net/~orangetux\n"
+"  Peter Nijssen https://launchpad.net/~ptnijssen\n"
+"  Quinten Schelfhout https://launchpad.net/~quintenschelfhout\n"
+"  René https://launchpad.net/~r-groothedde\n"
+"  Seppe Stas https://launchpad.net/~seppestas\n"
+"  Steven Roose https://launchpad.net/~stevenroose\n"
+"  Thomas Berends https://launchpad.net/~thomasberends\n"
+"  Thomas van der Meulen https://launchpad.net/~pje335\n"
+"  Tim v Herpen https://launchpad.net/~timvherpen\n"
+"  Tuur Dutoit https://launchpad.net/~tuur-dutoit-f\n"
+"  Wesley https://launchpad.net/~wesley-geens\n"
+"  leon https://launchpad.net/~leonwin7\n"
+"  needhelp007 https://launchpad.net/~iempie3\n"
+"  rob https://launchpad.net/~rvdb"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Netwerk"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Prullenbak"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr ""
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr ""
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Bestandssysteem"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr ""
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr ""
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
 msgstr ""
-
-#: ../src/View/Window.vala:178
-msgid "Files isn't your default file manager."
-msgstr "Bestanden is niet uw standaard bestandsbeheerder."
-
-#: ../src/View/Window.vala:184
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:190
-msgid "Ignore"
-msgstr "Negeren"
-
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
-msgid "Home"
-msgstr "Persoonlijke map"
-
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Bestandssysteem"
-
-#: ../src/View/ViewContainer.vala:332
-msgid "(as Administrator)"
-msgstr "(als Beheerder)"
-
-#: ../src/View/ViewContainer.vala:341
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:342
-msgid "You don't have permission to view this folder."
-msgstr "Je hebt niet de rechten om deze map te bekijken"
-
-#: ../src/View/ViewContainer.vala:345
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:346
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:353
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:362
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:363
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "Openen in nieuw tabblad"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "Openen met"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Andere applicatie .."
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Bestandsnaam"
-
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
-#: ../src/View/directory_view_popup.ui:139
-msgid "Size"
-msgstr "Grootte"
-
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
-#: ../src/View/directory_view_popup.ui:144
-msgid "Type"
-msgstr "Type"
-
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
-msgid "Modified"
-msgstr "Gewijzigd"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" kan niet gevonden worden."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Aanmaken"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Maak de map \"%s\" aan"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Kon de map niet aanmaken\n"
-"\n"
-"%s"
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
@@ -1629,6 +1619,22 @@ msgstr ""
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
 msgstr ""
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Bestandsnaam"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+msgid "Size"
+msgstr "Grootte"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+msgid "Type"
+msgstr "Type"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Gewijzigd"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1670,304 +1676,417 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Bestanden is niet uw standaard bestandsbeheerder."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Negeren"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" kan niet gevonden worden."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Aanmaken"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Maak de map \"%s\" aan"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Kon de map niet aanmaken\n"
+"\n"
+"%s"
+
+#: ../src/View/PropertiesWindow.vala:185
+msgid "Close"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:282 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Eigenschappen"
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Algemeen"
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:352
 msgid "More"
 msgstr "Meer"
 
-#: ../src/View/PropertiesWindow.vala:235
+#: ../src/View/PropertiesWindow.vala:377
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:288
+#: ../src/View/PropertiesWindow.vala:416
 msgid "file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:290
+#: ../src/View/PropertiesWindow.vala:418
 msgid "files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:420
 msgid "Actual size could be larger, "
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:420
 msgid "could not be read due to permissions or other errors."
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:321
+#: ../src/View/PropertiesWindow.vala:449
 msgid "unknown"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:451
+#: ../src/View/PropertiesWindow.vala:513
 msgid "%u selected items"
 msgstr "%u geselecteerde items"
 
-#: ../src/View/PropertiesWindow.vala:564
-msgid "Created"
-msgstr "Aangemaakt"
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Created:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:569
-msgid "Last Access"
-msgstr "Laatst geopend"
+#: ../src/View/PropertiesWindow.vala:626
+msgid "Modified:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:577
-msgid "Deleted"
-msgstr "Verwijderd"
+#: ../src/View/PropertiesWindow.vala:629
+msgid "Last Access:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:582
-msgid "MimeType"
-msgstr "Bestandstype"
+#: ../src/View/PropertiesWindow.vala:637
+msgid "Deleted:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:590
-msgid "MimeTypes"
-msgstr "Bestandstypes"
+#: ../src/View/PropertiesWindow.vala:642
+msgid "MimeType:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
-msgid "Location"
-msgstr "Locatie"
+#: ../src/View/PropertiesWindow.vala:650
+msgid "MimeTypes:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:627
-msgid "Target"
-msgstr "Doel"
+#: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
+#: ../src/View/PropertiesWindow.vala:1497
+msgid "Location:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:633
-msgid "Origin Location"
-msgstr "Oorspronkelijke lokatie"
+#: ../src/View/PropertiesWindow.vala:687
+msgid "Target:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:660
+#: ../src/View/PropertiesWindow.vala:693
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:702
+#: ../src/View/PropertiesWindow.vala:741
 msgid "Other application..."
 msgstr "Andere toepassing…"
 
-#: ../src/View/PropertiesWindow.vala:726
+#: ../src/View/PropertiesWindow.vala:765
 msgid "Open with:"
 msgstr "Openen met:"
 
-#: ../src/View/PropertiesWindow.vala:744
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:783
 msgid "Device usage:"
 msgstr "Apparaatgebruik:"
 
-#: ../src/View/PropertiesWindow.vala:758
+#: ../src/View/PropertiesWindow.vala:791
 msgid "%s free of %s (%d%% used)"
 msgstr "%s vrij van %s (%d%% gebruikt)"
 
-#: ../src/View/PropertiesWindow.vala:894
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Read"
 msgstr "Lezen"
 
-#: ../src/View/PropertiesWindow.vala:898
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Write"
 msgstr "Schrijven"
 
-#: ../src/View/PropertiesWindow.vala:902
+#: ../src/View/PropertiesWindow.vala:910
 msgid "Execute"
 msgstr "Uitvoeren"
 
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
-msgid "Owner"
-msgstr "Eigenaar"
+#: ../src/View/PropertiesWindow.vala:1116
+#: ../src/View/PropertiesWindow.vala:1131
+msgid "Owner:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
-msgid "Group"
-msgstr "Groep"
+#: ../src/View/PropertiesWindow.vala:1122
+#: ../src/View/PropertiesWindow.vala:1136
+msgid "Group:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1127
-msgid "Everyone"
-msgstr "Iedereen"
+#: ../src/View/PropertiesWindow.vala:1141
+msgid "Everyone:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1359
+#: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
 msgstr "Selecteer een applicatie om te openen "
 
-#: ../src/View/Sidebar.vala:430
-msgid "Personal"
-msgstr "Persoonlijk"
-
-#: ../src/View/Sidebar.vala:435
-msgid "Your common places and bookmarks"
-msgstr "Uw gebruikelijke plaatsen en bladwijzers"
-
-#: ../src/View/Sidebar.vala:454
-msgid "Open your personal folder"
-msgstr "Open uw persoonlijke map"
-
-#: ../src/View/Sidebar.vala:469
-msgid "View the list of recently used files"
+#: ../src/View/PropertiesWindow.vala:1429
+msgid "Disk Properties"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Prullenbak"
-
-#: ../src/View/Sidebar.vala:497
-msgid "Open the Trash"
+#: ../src/View/PropertiesWindow.vala:1504
+msgid "Format:"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:503
-msgid "Devices"
-msgstr "Apparaten"
-
-#: ../src/View/Sidebar.vala:508
-msgid "Your local partitions and devices"
-msgstr "Uw lokale partities en apparaten"
-
-#: ../src/View/Sidebar.vala:520
-msgid "Open the contents of the FileSystem"
+#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1547
+msgid "Capacity:"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
-msgid "Mount and open %s"
-msgstr "%s aankoppelen en openen"
-
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Netwerk"
-
-#: ../src/View/Sidebar.vala:632
-msgid "Your network places"
-msgstr "Uw netwerkplaatsen"
-
-#: ../src/View/Sidebar.vala:662
-msgid "Entire Network"
+#: ../src/View/PropertiesWindow.vala:1528
+#: ../src/View/PropertiesWindow.vala:1553
+msgid "Available:"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:669
-msgid "Browse the contents of the network"
-msgstr "Door de inhoud van het netwerk bladeren"
-
-#: ../src/View/Sidebar.vala:1198
-msgid "Unable to start %s"
-msgstr "Niet in staat %s te starten"
-
-#: ../src/View/Sidebar.vala:1279
-msgid "Open"
+#: ../src/View/PropertiesWindow.vala:1534
+#: ../src/View/PropertiesWindow.vala:1559
+msgid "Used:"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1287
-msgid "Open in New _Tab"
-msgstr "Open in Nieuwe _Tab"
-
-#: ../src/View/Sidebar.vala:1293
-msgid "Open in New _Window"
-msgstr "Open in Nieuw _Venster"
-
-#: ../src/View/Sidebar.vala:1301
-msgid "Remove"
-msgstr "Verwijder"
-
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
+#: ../src/View/PropertiesWindow.vala:1537
+msgid "%s (%d%% used)"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1318
-msgid "_Mount"
-msgstr "_Koppelen"
-
-#: ../src/View/Sidebar.vala:1324
-msgid "_Unmount"
-msgstr "_Ontkoppelen"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Eject"
-msgstr "Uitw_erpen"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Als rooster weergeven"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Lijst-weergave"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Kolom-weergave"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
+#: ../src/View/PropertiesWindow.vala:1550
+#: ../src/View/PropertiesWindow.vala:1556
+#: ../src/View/PropertiesWindow.vala:1562
+msgid "Unknown"
 msgstr ""
 
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr ""
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:555
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1048
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Instellen als standaard"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1948
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1967
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1977
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1979
+#: ../libwidgets/View/BreadcrumbsEntry.vala:445
+msgid "Open with"
+msgstr "Openen met"
+
+#: ../src/View/AbstractDirectoryView.vala:2039
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2308
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2639
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2640
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2812
+#: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr ""
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Persoonlijk"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Uw gebruikelijke plaatsen en bladwijzers"
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Persoonlijke map"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Open uw persoonlijke map"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Apparaten"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Uw lokale partities en apparaten"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "%s aankoppelen en openen"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Uw netwerkplaatsen"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Door de inhoud van het netwerk bladeren"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "Niet in staat %s te starten"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Open in Nieuwe _Tab"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Open in Nieuw _Venster"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Verwijder"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Koppelen"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "_Ontkoppelen"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "Uitw_erpen"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(als Beheerder)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "Je hebt niet de rechten om deze map te bekijken"
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Bestandsbewerkingen"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d bestandsbewerking actief"
+msgstr[1] "%'d bestandsbewerkingen actief"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "_Details tonen"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Kopieer-dialoogvenster tonen"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Alle actieve acties annuleren"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2007,26 +2126,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan niet gebruikt worden met URI's."
 
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr ""
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr ""
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr ""
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr ""
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "Annuleren"
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Bestanden doorbladeren"
@@ -2051,83 +2150,81 @@ msgstr ""
 msgid "Files"
 msgstr "Bestanden"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Bestandsbewerkingen"
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d bestandsbewerking actief"
-msgstr[1] "%'d bestandsbewerkingen actief"
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "_Details tonen"
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Kopieer-dialoogvenster tonen"
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Alle actieve acties annuleren"
-
-#: ../libwidgets/LocationBar.vala:102
-msgid "Reload this folder"
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "Ga naar %s"
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr ""
 
-#: ../libwidgets/LocationBar.vala:454
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
 msgid "Navigate to %s"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Een eenvoudige en krachtige bestandsbeheerder"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Ga naar %s"
 
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Launchpad Vertalers"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
+#: ../libwidgets/View/LocationBar.vala:162
+msgid "Enter search term or path"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Als rooster weergeven"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Lijst-weergave"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Kolom-weergave"
+
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Openen in nieuw tabblad"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
@@ -2158,8 +2255,7 @@ msgstr ""
 msgid "Restore from Trash"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr ""
 

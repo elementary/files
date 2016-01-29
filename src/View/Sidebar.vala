@@ -37,7 +37,7 @@ namespace Marlin.Places {
         private const int ICON_XPAD = 6 + ROOT_INDENTATION_XPAD;
         private const int PROP_0 = 0;
 
-        private static FM.DndHandler dnd_handler = new FM.DndHandler ();
+        private static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         Gtk.TreeView tree_view;
         Gtk.CellRenderer indent_renderer;
@@ -45,7 +45,6 @@ namespace Marlin.Places {
         Gtk.CellRendererPixbuf icon_cell_renderer;
         Marlin.IconSpinnerRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
-        Gtk.TreePath select_path;
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
@@ -100,6 +99,7 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_rescan_item;
         Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
+        Gtk.MenuItem popupmenu_drive_property_item;
         Gtk.MenuItem popupmenu_start_item;
         Gtk.MenuItem popupmenu_stop_item;
 
@@ -127,6 +127,7 @@ namespace Marlin.Places {
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
             window.loading_uri.connect (loading_uri_callback);
+            window.free_space_change.connect (reload);
 
             construct_tree_view ();
             configure_tree_view ();
@@ -270,7 +271,6 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            //tree_view.focus_out_event.connect (focus_out_event_cb);
             tree_view.enter_notify_event.connect (on_enter_notify_event);
             tree_view.leave_notify_event.connect (on_leave_notify_event);
         }
@@ -413,7 +413,6 @@ namespace Marlin.Places {
             string mount_uri;
 
             this.last_selected_uri = null;
-            this.select_path = null;
             this.n_builtins_before = 0;
 
             if ((tree_view.get_selection ()).get_selected (null, out iter))
@@ -559,16 +558,22 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     var root = mount.get_default_location ();
-                    add_place (Marlin.PlaceType.MOUNTED_VOLUME,
-                               iter,
-                               mount.get_name (),
-                               mount.get_icon (),
-                               root.get_uri (),
-                               null,
-                               volume,
-                               mount,
-                               0,
-                               root.get_parse_name ());
+                    var it = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
+                                        iter,
+                                        mount.get_name (),
+                                        mount.get_icon (),
+                                        root.get_uri (),
+                                        null,
+                                        volume,
+                                        mount,
+                                        0,
+                                        root.get_parse_name ());
+
+                    uint64 fs_capacity, fs_free;
+                    get_filesystem_space (root, out fs_capacity, out fs_free);
+                    store.@set (it,
+                                Column.FREE_SPACE, fs_free,
+                                Column.DISK_SIZE, fs_capacity);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -594,7 +599,6 @@ namespace Marlin.Places {
                 var volume = mount.get_volume ();
                 if (volume != null)
                     continue;
-
 
                 var root = mount.get_default_location ();
                 if (root.is_native ()) {
@@ -1347,6 +1351,14 @@ namespace Marlin.Places {
             item.activate.connect (empty_trash_cb);
             item.show ();
             popupmenu.append (item);
+
+            /* Drive property menu item */
+            item = new Gtk.ImageMenuItem.with_mnemonic (_("Properties"));
+            popupmenu_drive_property_item = item;
+            item.activate.connect (show_drive_info_cb);
+            item.show ();
+            popupmenu.append (item);
+
             check_popup_sensitivity ();
         }
 
@@ -1377,6 +1389,7 @@ namespace Marlin.Places {
             popupmenu_start_item = null;
             popupmenu_stop_item = null;
             popupmenu_empty_trash_item = null;
+            popupmenu_drive_property_item = null;
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -1612,7 +1625,6 @@ namespace Marlin.Places {
 
             this.click_path = path.copy ();
 
-
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY:
                 /* If the user clicked over a category, toggle expansion. The entire row
@@ -1648,14 +1660,16 @@ namespace Marlin.Places {
 
         private bool button_release_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             Gtk.TreePath? path = get_path_at_click_position (event);
+            /* Do not take action if a blocked drag was attempted (mouse over different row
+             * from when button pressed or not over row), or if button press was on different widget */
+            if (path == null || click_path == null || path.compare (click_path) != 0) {
+                return true;
+            }
+
+            this.click_path = null;
 
             if (dnd_disabled) {
                 unblock_drag_and_drop ();
-                /* Do not take action if a blocked drag was attempted (mouse over different row
-                 * from when button pressed or not over row) */
-                if (path == null || (click_path != null && path.compare (click_path) != 0)) {
-                    return true;
-                }
             }
 
             if (renaming) 
@@ -1682,6 +1696,11 @@ namespace Marlin.Places {
         }
 
         public new void style_set (Gtk.Style previous_style) {
+            update_places ();
+        }
+
+        public void reload () {
+            /* The free space on devices may have changed */
             update_places ();
         }
 
@@ -1917,6 +1936,33 @@ namespace Marlin.Places {
             rename_selected_bookmark ();
         }
 
+        private void show_drive_info_cb (Gtk.MenuItem item) {
+            Gtk.TreeIter iter;
+
+            if (!get_selected_iter (out iter))
+                return;
+
+            Mount mount;
+            Volume volume;
+            string uri;
+            store.@get (iter,
+                        Column.VOLUME, out volume,
+                        Column.MOUNT, out mount,
+                        Column.URI, out uri);
+
+            if (mount == null && volume != null) {
+                /* Mount the device if possible, defer showing the dialog after
+                 * we're done */
+                Marlin.FileOperations.mount_volume_full (null, volume, false, (vol, win) => {
+                    new Marlin.View.VolumePropertiesWindow (vol.get_mount (), (Gtk.Window) win);
+                }, window);
+            } else {
+                if (mount != null || uri == "file:///") {
+                    new Marlin.View.VolumePropertiesWindow (mount, window);
+                }
+            }
+        }
+
         private void eject_or_unmount_shortcut_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
@@ -2007,8 +2053,9 @@ namespace Marlin.Places {
         }
 
         private void loading_uri_callback (string location) {
-                set_matching_selection (location);
-                slot_location = location;
+            set_matching_selection (location);
+            slot_location = location;
+
         }
 
         private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
@@ -2121,10 +2168,13 @@ namespace Marlin.Places {
                                       show_eject || show_unmount ||
                                       show_mount || show_empty_trash);
 
+            bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
+
             Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
             Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
             Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
             Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
+            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_property);
             popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);

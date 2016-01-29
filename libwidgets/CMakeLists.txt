@@ -8,18 +8,13 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
-#install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+include_directories (${CMAKE_SOURCE_DIR}/libcore/)
+include_directories (${CMAKE_BINARY_DIR}/libcore/)
 
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8)
-
-pkg_check_modules (GRANITE REQUIRED "granite")
-add_definitions (${GRANITE_CFLAGS})
-link_libraries (${GRANITE_LIBRARIES})
-link_directories (${GRANITE_LIBRARY_DIRS})
-# Link all
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-0.8 granite zeitgeist-2.0)
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 set(LIBS
@@ -33,14 +28,27 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 
-include_directories (${CMAKE_CURRENT_BINARY_DIR})
-include_directories (${CMAKE_BINARY_DIR})
-
 vala_precompile(VALA_C ${PKGNAME}
+    Dialogs/ChooseAppDialog.vala
+    Interfaces/LocatableInterface.vala
+    Interfaces/NavigatableInterface.vala
+    Chrome/BasicLocationBar.vala
+    Chrome/BasicBreadcrumbsEntry.vala
+    Chrome/BreadcrumbElement.vala
+    Chrome/BreadcrumbIconList.vala
+    Chrome/ButtonWithMenu.vala
+    Chrome/ImgEventBox.vala
+    View/LocationBar.vala
+    View/BreadcrumbsEntry.vala
+    View/SearchResults.vala
+    Interfaces/SearchableInterface.vala
+    Chrome/TopMenu.vala
+    Chrome/ViewSwitcher.vala
+    Chrome/XsEntry.vala
+    Animations/Animations.vala
+    FileUtils.vala
     Resources.vala
-    Animations.vala
-    LocationBar.vala
-    BreadcrumbsElements.vala
+    MimeActions.vala
     Welcome.vala
 PACKAGES
     gtk+-3.0
@@ -49,9 +57,11 @@ PACKAGES
     posix
     pantheon-files-core
     pantheon-files-core-C
+    zeitgeist-2.0
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
+    --target-glib=2.32 # Needed for new thread API
     --thread
 GENERATE_VAPI
     pantheon-files-widgets
@@ -65,5 +75,5 @@ set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${PANTHEON_FILES_WIDGETS_VERSION}
     SOVERSION ${PANTHEON_FILES_WIDGETS_SOVERSION})
 
-install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})
+install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+target_link_libraries(${PKGNAME} pantheon-files-core ${DEPS_LIBRARIES})

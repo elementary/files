@@ -75,12 +75,13 @@ public class Marlin.MimeActions {
         return app;
     }
 
-    public static List<AppInfo>? get_applications_for_file (GOF.File file) {
+    public static List<AppInfo> get_applications_for_file (GOF.File file) {
+        List<AppInfo> result = null;
         string? type = file.get_ftype ();
         if (type == null)
-            return null;
+            return result;
 
-        List<AppInfo> result = AppInfo.get_all_for_type (type);
+        result = AppInfo.get_all_for_type (type);
         string uri_scheme = file.location.get_uri_scheme ();
 
         if (uri_scheme != null) {
@@ -98,7 +99,7 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    public static List<AppInfo>? get_applications_for_folder (GOF.File file) {
+    public static List<AppInfo> get_applications_for_folder (GOF.File file) {
         List<AppInfo> result = AppInfo.get_all_for_type (ContentType.get_mime_type ("inode/directory"));
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -110,10 +111,9 @@ public class Marlin.MimeActions {
         }
 
         if (!file_has_local_path (file))
-            filter_non_uri_apps (result);
+            result = filter_non_uri_apps (result);
 
         result.sort (application_compare_by_name);
-
         return result;
     }
 
@@ -189,17 +189,14 @@ public class Marlin.MimeActions {
         return strcmp (a.get_id (), b.get_id ());
     }
 
-    private static void filter_non_uri_apps (List<AppInfo> apps) {
-         List<AppInfo> non_uri_apps = null;
-
+    private static List<AppInfo> filter_non_uri_apps (List<AppInfo> apps) {
+         List<AppInfo> uri_apps = null;
         foreach (var app in apps) {
-            if (!app.supports_uris ())
-                non_uri_apps.append (app);
+            if (app.supports_uris ()) {
+                uri_apps.append (app);
+            }
         }
-
-        foreach (var app in non_uri_apps) {
-            apps.remove (app);
-        }
+        return uri_apps;
     }
 
     private static List<AppInfo> intersect_application_lists (List<AppInfo> a, List<AppInfo> b) {
@@ -228,5 +225,27 @@ public class Marlin.MimeActions {
         }
 
         return result;
+    }
+
+    public static AppInfo? get_default_application_for_glib_file (GLib.File file) {
+        return get_default_application_for_file (GOF.File.@get (file));
+    }
+
+    public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
+        if (app == null) {
+            Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
+            var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
+            var choice = chooser.get_app_info ();
+            if (choice != null) {
+                launch_glib_file_with_app (file_to_open, parent, choice);
+            }
+        } else {
+            launch_glib_file_with_app (file_to_open, parent, app);
+        }
+    }
+
+    private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
+        var goffile = GOF.File.get (file_to_open);
+        goffile.launch (parent.get_screen (), app);
     }
 }

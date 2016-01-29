@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 elementary, LLC <contact@elementary.io> -->
+<application>
+  <id type="desktop">pantheon-files.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <project_group>elementary</project_group>
+  <project_license>GPL-3.0+</project_license>
+  <name>Files</name>
+  <icon type="stock">system-file-manager</icon>
+  <summary>The simple, powerful, and sexy file manager from elementary</summary>
+  <description>
+    <p>
+      Files supports all the basic functions of a file manager and more.
+    </p>
+  </description>
+  <url type="homepage">http://elementary.io/</url>
+  <updatecontact>contact_at_elementary.io</updatecontact>
+</application>

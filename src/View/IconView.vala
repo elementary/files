@@ -53,7 +53,6 @@ namespace FM {
             name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
-            name_renderer.set_fixed_size (-1, 54);
         }
 
         protected void set_up_icon_renderer () {
@@ -104,7 +103,6 @@ namespace FM {
         public override void change_zoom_level () {
             if (tree != null) {
                 tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
-                tree.set_row_spacing ((int)((double)icon_size * (0.2 - zoom_level * 0.03)));
                 tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
 
                 name_renderer.set_property ("wrap-width", tree.get_item_width ());
@@ -269,9 +267,7 @@ namespace FM {
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell(path, scroll_to_top);
-
-            if (start_editing)
-                tree.set_cursor (path, renderer, start_editing);
+            tree.set_cursor (path, renderer, start_editing);
         }
 
         public override void set_cursor (Gtk.TreePath? path,
@@ -281,14 +277,17 @@ namespace FM {
             if (path == null)
                 return;
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.disconnect (on_view_selection_changed);
-
+            } else {
+                select_path (path);
+            }
+            
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
-            select_path (path);
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.connect (on_view_selection_changed);
+            }
         }
 
         public override Gtk.TreePath? get_path_at_cursor () {
@@ -311,6 +310,13 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
         }
     }
 }

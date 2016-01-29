@@ -7,21 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-05 05:29-0600\n"
-"PO-Revision-Date: 2015-11-05 11:54+0000\n"
-"Last-Translator: Yuly Nesterov <crow@rikka.io>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-21 13:43+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-06 05:31+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Буфер обмена пуст"
+"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -142,9 +138,38 @@ msgstr "_Запомнить пароль"
 msgid "Operation cancelled"
 msgstr "Действие отменено"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Показать по_дробности"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Буфер обмена пуст"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Не удалось определить исходное расположение «%s» "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Объект не может быть восстановлен из корзины"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (некорректные символы)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Сегодня в %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Вчера в %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b в %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y в %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -552,166 +577,10 @@ msgstr[0] "Повторить изменение владельца %d объе�
 msgstr[1] "Повторить изменение владельца %d объектов"
 msgstr[2] "Повторить изменение владельца %d объектов"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не удалось определить исходное расположение «%s» "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Объект не может быть восстановлен из корзины"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Объединить папку «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Если при объединении возникнут конфликты с копируемыми файлами, вам будет "
-"предложено подтвердить замену."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Более старая папка с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Более новая папка с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Другая папка с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "При замене все файлы в папке будут удалены."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Заменить папку «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Папка с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Заменить файл «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "При замене файла его содержимое будет перезаписано."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Более старый файл с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Более новый файл с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Другой файл с таким именем уже существует в «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Исходный файл"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-msgid "Size:"
-msgstr "Размер:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-msgid "Type:"
-msgstr "Тип:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Последнее изменение:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Заменить на"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Объединить"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Выберите имя, которое вы хотите назначить"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Сбросить"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Применить это действие ко всем файлам"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Пропустить"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Переи_меновать"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Заменить"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Конфликт файлов"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (некорректные символы)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Идёт подготовка"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -927,7 +796,7 @@ msgstr ""
 "удалены."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1349
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
@@ -960,6 +829,8 @@ msgstr[0] "осталось удалить %'d файл"
 msgstr[1] "осталось удалить %'d файла"
 msgstr[2] "осталось удалить %'d файлов"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1292,6 +1163,10 @@ msgstr[2] "Дублируются %'d файлов"
 msgid "%S of %S"
 msgstr "%S из %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1492,21 +1367,9 @@ msgstr "Очистка корзины"
 msgid "Emptying Trash"
 msgstr "Очистка корзины"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Сегодня в %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Вчера в %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b в %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y в %-I:%M %p"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Показать по_дробности"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1538,130 +1401,266 @@ msgstr "В именах файлов нельзя использовать сл�
 msgid "Toplevel files cannot be renamed"
 msgstr "Файлы верхнего уровня нельзя переименовывать"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Идёт подготовка"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Объединить папку «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Если при объединении возникнут конфликты с копируемыми файлами, вам будет "
+"предложено подтвердить замену."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Более старая папка с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Более новая папка с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Другая папка с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "При замене все файлы в папке будут удалены."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Заменить папку «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Папка с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Заменить файл «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "При замене файла его содержимое будет перезаписано."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Более старый файл с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Более новый файл с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Другой файл с таким именем уже существует в «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Исходный файл"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Размер:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Тип:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Последнее изменение:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Заменить на"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Объединить"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Выберите имя, которое вы хотите назначить"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Сбросить"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Применить это действие ко всем файлам"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Переи_меновать"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Заменить"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Конфликт файлов"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Простой и функциональный файловый менеджер"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Aleksey Kabanov https://launchpad.net/~ak099\n"
+"  Alexey https://launchpad.net/~alextelepov\n"
+"  Andrei Filinov https://launchpad.net/~kryhtas\n"
+"  Anton Snigiryov https://launchpad.net/~berkuteagle\n"
+"  ArtKun https://launchpad.net/~artkun\n"
+"  Artem Anufrij https://launchpad.net/~artem-anufrij\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  Dan https://launchpad.net/~dandarkach\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Desprit https://launchpad.net/~a-bondarev-it\n"
+"  Dmitry Shachnev https://launchpad.net/~mitya57\n"
+"  DonCHEG https://launchpad.net/~doncheg\n"
+"  Eugene Marshal https://launchpad.net/~lowrider\n"
+"  Gladyr Aleksandr https://launchpad.net/~gladyra\n"
+"  Hexlogic https://launchpad.net/~hexlogic\n"
+"  Igor Lopatkin https://launchpad.net/~sevenfrogz\n"
+"  Igor Mamzov https://launchpad.net/~igor-mamzov\n"
+"  Ildar https://launchpad.net/~valeyev-ildar\n"
+"  Ilya Vorozhbit https://launchpad.net/~medvedkoo\n"
+"  Ilya Vyatchin https://launchpad.net/~vyatchin\n"
+"  KRAB ABAB https://launchpad.net/~9017-5\n"
+"  Kirill Ivaha https://launchpad.net/~kirill-ivaha\n"
+"  Kom-Si https://launchpad.net/~val.komissarov\n"
+"  Leopotam https://launchpad.net/~leopotam\n"
+"  Max_ym https://launchpad.net/~kontact-cat\n"
+"  Maxim Nosovets https://launchpad.net/~molny\n"
+"  Maxim Taranov https://launchpad.net/~png2378\n"
+"  Michael Moukhin https://launchpad.net/~siomi\n"
+"  Ognehod https://launchpad.net/~ognehod\n"
+"  Oleg https://launchpad.net/~oopseekoleg\n"
+"  Pasha. P. Komar https://launchpad.net/~cellachain\n"
+"  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
+"  Sergey Filatov https://launchpad.net/~fildergrosse1\n"
+"  Sergey Hordiyenko https://launchpad.net/~phrippy2\n"
+"  Sergey Koptev https://launchpad.net/~djdante\n"
+"  Stranger https://launchpad.net/~black-danek\n"
+"  Sweetbubalekh https://launchpad.net/~obatnin\n"
+"  Ushakov Maksym https://launchpad.net/~mmx-dimitrov\n"
+"  Victor Makarov https://launchpad.net/~viktis\n"
+"  Volkov Sergey https://launchpad.net/~e-gress\n"
+"  Yuly Nesterov https://launchpad.net/~inpr1se\n"
+"  Zoi https://launchpad.net/~zoi-kun\n"
+"  evb87ar https://launchpad.net/~evb87ar-deactivatedaccount\n"
+"  hohhalf https://launchpad.net/~hohhalf\n"
+"  zEvilz https://launchpad.net/~zevilz13"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Обзор сети"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Корзина"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr "Недавние"
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Файловая система"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "Назад"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "Далее"
 
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
 msgstr "Создать папку"
-
-#: ../src/View/Window.vala:178
-msgid "Files isn't your default file manager."
-msgstr "Эта программа не является вашим файловым менеджером по умолчанию."
-
-#: ../src/View/Window.vala:184
-msgid "Set as Default"
-msgstr "Установить по умолчанию"
-
-#: ../src/View/Window.vala:190
-msgid "Ignore"
-msgstr "Пропустить"
-
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
-msgid "Home"
-msgstr "Домашняя папка"
-
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Файловая система"
-
-#: ../src/View/ViewContainer.vala:332
-msgid "(as Administrator)"
-msgstr "(как Администратор)"
-
-#: ../src/View/ViewContainer.vala:341
-msgid "This Folder Does Not Belong to You"
-msgstr "Эта папка не принадлежит вам"
-
-#: ../src/View/ViewContainer.vala:342
-msgid "You don't have permission to view this folder."
-msgstr "У вас нет прав для просмотра этой папки."
-
-#: ../src/View/ViewContainer.vala:345
-msgid "Unable to Mount Folder"
-msgstr "Не удалось подключить папку"
-
-#: ../src/View/ViewContainer.vala:346
-msgid "The server for this folder could not be located."
-msgstr "Невозможно определить сервер для указанной папки."
-
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Эта папка не существует"
-
-#: ../src/View/ViewContainer.vala:353
-msgid "You cannot create a folder here."
-msgstr "Вы не можете создать здесь папку"
-
-#: ../src/View/ViewContainer.vala:362
-msgid "File not Found"
-msgstr "Файл не найден"
-
-#: ../src/View/ViewContainer.vala:363
-msgid "The file selected no longer exists."
-msgstr "Выбранный файл больше не существует."
-
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "Открыть в новой вкладке"
-
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "Открыть с помощью"
-
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Другое приложение .."
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Имя файла"
-
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
-#: ../src/View/directory_view_popup.ui:139
-msgid "Size"
-msgstr "Размер"
-
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
-#: ../src/View/directory_view_popup.ui:144
-msgid "Type"
-msgstr "Тип"
-
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
-msgid "Modified"
-msgstr "Изменён"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Папка «%s» не найдена."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Создать"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Создать папку «%s»"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Не удалось создать папку\n"
-"\n"
-"%s"
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
@@ -1678,6 +1677,22 @@ msgstr "Здесь нет недавних файлов"
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
 msgstr "Доступ запрещён"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Имя файла"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+msgid "Size"
+msgstr "Размер"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+msgid "Type"
+msgstr "Тип"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Изменён"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1719,304 +1734,418 @@ msgstr "%u файл, "
 msgid "%u files, "
 msgstr "%u файлы, "
 
-#: ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Эта программа не является вашим файловым менеджером по умолчанию."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr "Установить по умолчанию"
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Пропустить"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr "Эта папка не существует"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Папка «%s» не найдена."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Создать"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Создать папку «%s»"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Не удалось создать папку\n"
+"\n"
+"%s"
+
+#: ../src/View/PropertiesWindow.vala:185
+msgid "Close"
+msgstr "Закрыть"
+
+#: ../src/View/PropertiesWindow.vala:282 ../src/View/Sidebar.vala:1356
 #: ../src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Свойства"
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Общие"
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:352
 msgid "More"
 msgstr "Еще"
 
-#: ../src/View/PropertiesWindow.vala:235
+#: ../src/View/PropertiesWindow.vala:377
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr "Закрыть"
-
-#: ../src/View/PropertiesWindow.vala:288
+#: ../src/View/PropertiesWindow.vala:416
 msgid "file"
 msgstr "файл"
 
-#: ../src/View/PropertiesWindow.vala:290
+#: ../src/View/PropertiesWindow.vala:418
 msgid "files"
 msgstr "файлы"
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:420
 msgid "Actual size could be larger, "
 msgstr "Фактический размер может быть больше, "
 
-#: ../src/View/PropertiesWindow.vala:292
+#: ../src/View/PropertiesWindow.vala:420
 msgid "could not be read due to permissions or other errors."
 msgstr "не удалось прочитать из-за ограничения прав или других ошибок."
 
-#: ../src/View/PropertiesWindow.vala:321
+#: ../src/View/PropertiesWindow.vala:449
 msgid "unknown"
 msgstr "неизвестно"
 
-#: ../src/View/PropertiesWindow.vala:451
+#: ../src/View/PropertiesWindow.vala:513
 msgid "%u selected items"
 msgstr "%u выбранных элементов"
 
-#: ../src/View/PropertiesWindow.vala:564
-msgid "Created"
-msgstr "Создан"
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Created:"
+msgstr "Создан:"
 
-#: ../src/View/PropertiesWindow.vala:569
-msgid "Last Access"
-msgstr "Последний доступ"
+#: ../src/View/PropertiesWindow.vala:626
+msgid "Modified:"
+msgstr "Изменён:"
 
-#: ../src/View/PropertiesWindow.vala:577
-msgid "Deleted"
-msgstr "Удалено"
+#: ../src/View/PropertiesWindow.vala:629
+msgid "Last Access:"
+msgstr "Последний доступ:"
 
-#: ../src/View/PropertiesWindow.vala:582
-msgid "MimeType"
-msgstr "Тип MIME"
+#: ../src/View/PropertiesWindow.vala:637
+msgid "Deleted:"
+msgstr "Удалён:"
 
-#: ../src/View/PropertiesWindow.vala:590
-msgid "MimeTypes"
-msgstr "Типы MIME"
+#: ../src/View/PropertiesWindow.vala:642
+msgid "MimeType:"
+msgstr "MIME-тип:"
 
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
-msgid "Location"
-msgstr "Адрес"
+#: ../src/View/PropertiesWindow.vala:650
+msgid "MimeTypes:"
+msgstr "MIME-типы:"
 
-#: ../src/View/PropertiesWindow.vala:627
-msgid "Target"
-msgstr "Объект"
+#: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
+#: ../src/View/PropertiesWindow.vala:1497
+msgid "Location:"
+msgstr "Адрес:"
 
-#: ../src/View/PropertiesWindow.vala:633
-msgid "Origin Location"
-msgstr "Ссылка на"
+#: ../src/View/PropertiesWindow.vala:687
+msgid "Target:"
+msgstr "Цель:"
 
-#: ../src/View/PropertiesWindow.vala:660
+#: ../src/View/PropertiesWindow.vala:693
+msgid "Origin Location:"
+msgstr "Исходный адрес:"
+
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Сведения"
 
-#: ../src/View/PropertiesWindow.vala:702
+#: ../src/View/PropertiesWindow.vala:741
 msgid "Other application..."
 msgstr "Другое приложение…"
 
-#: ../src/View/PropertiesWindow.vala:726
+#: ../src/View/PropertiesWindow.vala:765
 msgid "Open with:"
-msgstr "Открыть с помощью:"
+msgstr "Открывать с помощью:"
 
-#: ../src/View/PropertiesWindow.vala:744
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Статистика"
 
-#: ../src/View/PropertiesWindow.vala:751
+#: ../src/View/PropertiesWindow.vala:783
 msgid "Device usage:"
 msgstr "Устройство хранения:"
 
-#: ../src/View/PropertiesWindow.vala:758
+#: ../src/View/PropertiesWindow.vala:791
 msgid "%s free of %s (%d%% used)"
 msgstr "%s свободно из %s (%d%% использовано)"
 
-#: ../src/View/PropertiesWindow.vala:894
+#: ../src/View/PropertiesWindow.vala:902
 msgid "Read"
 msgstr "Чтение"
 
-#: ../src/View/PropertiesWindow.vala:898
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Write"
 msgstr "Запись"
 
-#: ../src/View/PropertiesWindow.vala:902
+#: ../src/View/PropertiesWindow.vala:910
 msgid "Execute"
 msgstr "Выполнение"
 
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
-msgid "Owner"
-msgstr "Владелец"
+#: ../src/View/PropertiesWindow.vala:1116
+#: ../src/View/PropertiesWindow.vala:1131
+msgid "Owner:"
+msgstr "Владелец:"
 
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
-msgid "Group"
-msgstr "Группа"
+#: ../src/View/PropertiesWindow.vala:1122
+#: ../src/View/PropertiesWindow.vala:1136
+msgid "Group:"
+msgstr "Группа:"
 
-#: ../src/View/PropertiesWindow.vala:1127
-msgid "Everyone"
-msgstr "Всем"
+#: ../src/View/PropertiesWindow.vala:1141
+msgid "Everyone:"
+msgstr "Все:"
 
-#: ../src/View/PropertiesWindow.vala:1359
+#: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
 msgstr "Выберите приложение для открытия "
 
-#: ../src/View/Sidebar.vala:430
-msgid "Personal"
-msgstr "Личное"
+#: ../src/View/PropertiesWindow.vala:1429
+msgid "Disk Properties"
+msgstr "Свойства диска"
 
-#: ../src/View/Sidebar.vala:435
-msgid "Your common places and bookmarks"
-msgstr "Ваши общие места и закладки"
+#: ../src/View/PropertiesWindow.vala:1504
+msgid "Format:"
+msgstr "Формат:"
 
-#: ../src/View/Sidebar.vala:454
-msgid "Open your personal folder"
-msgstr "Открыть вашу личную папку"
+#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1547
+msgid "Capacity:"
+msgstr "Ёмкость:"
 
-#: ../src/View/Sidebar.vala:469
-msgid "View the list of recently used files"
-msgstr "Посмотреть список недавно использованных файлов"
+#: ../src/View/PropertiesWindow.vala:1528
+#: ../src/View/PropertiesWindow.vala:1553
+msgid "Available:"
+msgstr "Доступно:"
 
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Корзина"
+#: ../src/View/PropertiesWindow.vala:1534
+#: ../src/View/PropertiesWindow.vala:1559
+msgid "Used:"
+msgstr "Использовано:"
 
-#: ../src/View/Sidebar.vala:497
-msgid "Open the Trash"
-msgstr "Открыть корзину"
+#: ../src/View/PropertiesWindow.vala:1537
+msgid "%s (%d%% used)"
+msgstr "%s (%d%% занято)"
 
-#: ../src/View/Sidebar.vala:503
-msgid "Devices"
-msgstr "Устройства"
+#: ../src/View/PropertiesWindow.vala:1550
+#: ../src/View/PropertiesWindow.vala:1556
+#: ../src/View/PropertiesWindow.vala:1562
+msgid "Unknown"
+msgstr "неизвестно"
 
-#: ../src/View/Sidebar.vala:508
-msgid "Your local partitions and devices"
-msgstr "Ваши локальные разделы и устройства"
-
-#: ../src/View/Sidebar.vala:520
-msgid "Open the contents of the FileSystem"
-msgstr "Открыть содержимое файловой системы"
-
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
-msgid "Mount and open %s"
-msgstr "Подключить и открыть %s"
-
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Обзор сети"
-
-#: ../src/View/Sidebar.vala:632
-msgid "Your network places"
-msgstr "Ваше сетевое окружение"
-
-#: ../src/View/Sidebar.vala:662
-msgid "Entire Network"
-msgstr "Вся сеть"
-
-#: ../src/View/Sidebar.vala:669
-msgid "Browse the contents of the network"
-msgstr "Обзор содержимого сети"
-
-#: ../src/View/Sidebar.vala:1198
-msgid "Unable to start %s"
-msgstr "Не удалось запустить %s"
-
-#: ../src/View/Sidebar.vala:1279
-msgid "Open"
-msgstr "Открыть"
-
-#: ../src/View/Sidebar.vala:1287
-msgid "Open in New _Tab"
-msgstr "Открыть в новой _вкладке"
-
-#: ../src/View/Sidebar.vala:1293
-msgid "Open in New _Window"
-msgstr "Открыть в _новом окне"
-
-#: ../src/View/Sidebar.vala:1301
-msgid "Remove"
-msgstr "Удалить"
-
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Переименовать"
-
-#: ../src/View/Sidebar.vala:1318
-msgid "_Mount"
-msgstr "_Подключить"
-
-#: ../src/View/Sidebar.vala:1324
-msgid "_Unmount"
-msgstr "_Отключить"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Eject"
-msgstr "_Извлечь"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Просмотр в виде значков"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Просмотр в виде списка"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Просмотр в виде колонок"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
-msgstr "В этой папке"
-
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr "Закладки"
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr "Везде"
-
-#: ../src/View/AbstractDirectoryView.vala:555
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Не удалось просмотреть"
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1048
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Установить по умолчанию"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Cannot drop this file"
 msgstr "Не удаётся поместить этот файл"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1522
 msgid "Invalid file name provided"
 msgstr "Недопустимое имя файла"
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1948
 msgid "Invalid"
 msgstr "Недоступно"
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Run"
 msgstr "Выполнить"
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1967
 msgid "Open in %s"
-msgstr "Открыть в %s"
+msgstr "Открыть в «%s»"
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1977
 msgid "Open in"
 msgstr "Открыть в"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1979
+#: ../libwidgets/View/BreadcrumbsEntry.vala:445
+msgid "Open with"
+msgstr "Открыть в"
+
+#: ../src/View/AbstractDirectoryView.vala:2039
 msgid "Other Application"
 msgstr "Другом приложении"
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2308
 msgid "Untitled %s"
 msgstr "Безымянный %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2639
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2640
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: ../src/View/AbstractDirectoryView.vala:2812
+#: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr "Невозможно изменить название на «%s»"
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Личное"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Ваши общие места и закладки"
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Домашняя папка"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Открыть вашу личную папку"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr "Посмотреть список недавно использованных файлов"
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr "Открыть корзину"
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Устройства"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Ваши локальные разделы и устройства"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr "Открыть содержимое файловой системы"
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "Подключить и открыть %s"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Ваше сетевое окружение"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr "Вся сеть"
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Обзор содержимого сети"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "Не удалось запустить %s"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr "Открыть"
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Открыть в новой _вкладке"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Открыть в _новом окне"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Удалить"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Переименовать"
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Подключить"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "_Отключить"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "_Извлечь"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(как Администратор)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr "Эта папка не принадлежит вам"
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "У вас нет прав для просмотра этой папки."
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr "Не удалось подключить папку"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr "Невозможно определить сервер для указанной папки."
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr "Вы не можете создать здесь папку"
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr "Файл не найден"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr "Выбранный файл больше не существует."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Работа с файлами"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Все операции с файлами успешно завершены"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "Идёт %'d действие над файлами"
+msgstr[1] "Идут %'d действия над файлами"
+msgstr[2] "Идут %'d действий над файлами"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Показать подробности"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Показать диалог копирования"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Отменить все выполняемые операции"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2056,26 +2185,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "параметр --quit нельзя использовать с адресами (URI)."
 
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr "Не удалось запустить «%s»"
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr "Переместить сюда"
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr "Копировать сюда"
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr "Создать ссылку здесь"
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "Отмена"
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Обзор ваших файлов"
@@ -2100,85 +2209,82 @@ msgstr "_О программе"
 msgid "Files"
 msgstr "Файлы"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Работа с файлами"
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr "Не удалось запустить «%s»"
 
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Все операции с файлами успешно завершены"
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr "Переместить сюда"
 
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "Идёт %'d действие над файлами"
-msgstr[1] "Идут %'d действия над файлами"
-msgstr[2] "Идут %'d действий над файлами"
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr "Копировать сюда"
 
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Показать подробности"
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr "Создать ссылку здесь"
 
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Показать диалог копирования"
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "Отмена"
 
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Отменить все выполняемые операции"
-
-#: ../libwidgets/LocationBar.vala:102
-msgid "Reload this folder"
-msgstr "Обновить эту папку"
-
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "Перейти к %s"
-
-#: ../libwidgets/LocationBar.vala:454
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
 msgid "Navigate to %s"
 msgstr "Перейти к %s"
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Простой и функциональный файловый менеджер"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Перейти к %s"
 
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Переводчики проекта Launchpad"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
+#: ../libwidgets/View/LocationBar.vala:162
+msgid "Enter search term or path"
+msgstr "Введите слово или путь для поиска"
 
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Введите путь"
 
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Просмотр в виде значков"
 
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Просмотр в виде списка"
 
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Просмотр в виде колонок"
 
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "В этой папке"
 
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Закладки"
 
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Недавние"
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Везде"
 
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr "Обновить эту папку"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Открыть в новой вкладке"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
+msgstr "Открыть в новом окне"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
+msgstr "Открыть в другом приложении..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2208,8 +2314,7 @@ msgstr "Нельзя восстанавливать и удалять в кор�
 msgid "Restore from Trash"
 msgstr "Восстановить из корзины"
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Удалить безвозвратно"
 

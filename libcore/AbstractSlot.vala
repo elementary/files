@@ -51,6 +51,7 @@ namespace GOF {
 
         public signal void active (bool scroll = true);
         public signal void inactive ();
+        public signal void path_changed (bool change_mode_to_icons = true);
 
         public  void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
@@ -65,6 +66,7 @@ namespace GOF {
 
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active);
+        public abstract void set_frozen_state (bool is_frozen);
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();

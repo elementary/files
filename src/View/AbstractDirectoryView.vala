@@ -25,13 +25,6 @@
 namespace FM {
     public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
 
-        public enum TargetType {
-            STRING,
-            TEXT_URI_LIST,
-            XDND_DIRECT_SAVE0,
-            NETSCAPE_URL
-        }
-
         protected enum ClickZone {
             EXPANDER,
             HELPER,
@@ -46,15 +39,15 @@ namespace FM {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
-            {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
+            {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] drop_targets = {
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
-            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, TargetType.XDND_DIRECT_SAVE0},
-            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, TargetType.NETSCAPE_URL}
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.XDND_DIRECT_SAVE0},
+            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.NETSCAPE_URL}
         };
 
         const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
@@ -167,11 +160,15 @@ namespace FM {
         /* support for generating thumbnails */
         uint thumbnail_request = 0;
         uint thumbnail_source_id = 0;
+        uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
-
         private string? previewer = null;
+
+        /* Free space signal support */
+        uint add_remove_file_timeout_id = 0;
+        bool signal_free_space_change = false;
 
         /* Rename support */
         protected Marlin.TextRenderer? name_renderer = null;
@@ -237,7 +234,7 @@ namespace FM {
         protected Marlin.IconRenderer icon_renderer;
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
-        protected static DndHandler dnd_handler = new FM.DndHandler ();
+        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
 
@@ -248,10 +245,10 @@ namespace FM {
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
-            editable_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
-            activatable_cursor = new Gdk.Cursor (Gdk.CursorType.HAND1);
-            selectable_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
-            blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
@@ -289,6 +286,8 @@ namespace FM {
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
             change_zoom_level ();
+
+            connect_directory_handlers (slot.directory);
         }
 
         ~AbstractDirectoryView () {
@@ -312,6 +311,7 @@ namespace FM {
             set_shadow_type (Gtk.ShadowType.NONE);
 
             size_allocate.connect_after (on_size_allocate);
+
             button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
 
@@ -326,20 +326,15 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect ((alloc) => {
-                schedule_thumbnail_timeout ();
-            });
+            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
-            connect_directory_handlers (slot.directory);
-
             model.row_deleted.connect (on_row_deleted);
+            /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
-
-            model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
         }
 
         private void set_up__menu_actions () {
@@ -399,9 +394,10 @@ namespace FM {
                             Gtk.TreePath path = model.get_path (iter);
                             if (path != null) {
                                 select_path (path);
-                                if (focus_location != null && focus_location.equal (file.location))
+                                if (focus_location != null && focus_location.equal (file.location)) {
                                     /* set cursor and scroll to focus location*/
-                                    set_cursor (path, false, false, true); 
+                                    set_cursor (path, false, false, true);
+                                }
                             }
                         }
                     });
@@ -455,7 +451,7 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (updates_frozen)
+            if (view.has_focus)
                 return;
 
             if (view.get_realized ())
@@ -620,8 +616,8 @@ namespace FM {
             block_model ();
             model.clear ();
             unblock_model ();
-            if (new_dir.can_load)
-                connect_directory_handlers (new_dir);
+            /* As we connect the signal file_loaded signal handler, we initialise. */
+            connect_directory_handlers (new_dir);
         }
 
         public void reload () {
@@ -650,13 +646,12 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel ();
-            cancel_timeout (ref thumbnail_source_id);
-
             if (thumbnail_request > 0) {
                 thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = 0;
             }
+            slot.directory.cancel_thumbnailing ();
+            cancel_timeout (ref thumbnail_source_id);
         }
 
         protected bool is_drag_pending () {
@@ -798,6 +793,7 @@ namespace FM {
             if (locations != null) {
                 locations.reverse ();
 
+                slot.directory.block_monitor ();
                 if (delete_immediately)
                     Marlin.FileOperations.@delete (locations,
                                                    window as Gtk.Window,
@@ -822,6 +818,27 @@ namespace FM {
 
             if (select_added_files)
                 add_gof_file_to_selection (file);
+
+            handle_free_space_change ();
+        }
+
+        private void handle_free_space_change () {
+            /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
+            if (add_remove_file_timeout_id == 0) {
+                signal_free_space_change = false;
+                add_remove_file_timeout_id = GLib.Timeout.add (250, () => {
+                    if (signal_free_space_change) {
+                        add_remove_file_timeout_id = 0;
+                        window.free_space_change ();
+                        return false;
+                    } else {
+                        signal_free_space_change = true;
+                        return true;
+                    }
+                });
+            } else {
+                signal_free_space_change = false;
+            }
         }
 
         private void new_empty_file (string? parent_uri = null) {
@@ -888,8 +905,6 @@ namespace FM {
             view.slot.reload (true); /* non-local only */
 
             view.rename_file (file_to_rename); /* will wait for file to appear in model */
-            view.slot.directory.unblock_monitor ();
-
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -899,6 +914,7 @@ namespace FM {
             if (view == null)
                 return;
 
+            view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
             view.slot.reload (true); /* non-local only */
         }
@@ -931,6 +947,7 @@ namespace FM {
             });
 
             locations.reverse ();
+            slot.directory.block_monitor ();
             Marlin.FileOperations.@delete (locations, window as Gtk.Window, after_trash_or_delete, this);
         }
 
@@ -949,7 +966,7 @@ namespace FM {
 
             foreach (GOF.File file in selected_files) {
                 window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
-            }        
+            }
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1251,20 +1268,26 @@ namespace FM {
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
-            remove_marlin_icon_info_cache (file);
-            model.remove_file (file, dir);
-            if (file.is_folder ()) {
-                var file_dir = GOF.Directory.Async.cache_lookup (file.location);
-                if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
-                    slot.folder_deleted (file, file_dir);
+            /* Can be called twice for same file - once via Marlin.FileOperations and once via directory FileMonitor.
+             * Model.remove_file returns false if the file was already removed.
+             */
+            if (model.remove_file (file, dir)) {
+                remove_marlin_icon_info_cache (file);
+                if (file.is_folder ()) {
+                    var file_dir = GOF.Directory.Async.cache_lookup (file.location);
+                    if (file_dir != null) {
+                        file_dir.purge_dir_from_cache ();
+                        slot.folder_deleted (file, file_dir);
+                    }
                 }
+                handle_free_space_change ();
             }
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-            debug ("DV  directory done loading %s", dir.file.uri);
+            /* Should only be called on directory creation or reload */
             dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
@@ -1273,8 +1296,9 @@ namespace FM {
 
             if (in_recent)
                 model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else
+            else if (slot.directory.file.info != null) {
                 model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
              * are sometimes not properly aligned when first drawn, only after redrawing the view. */
@@ -1324,17 +1348,14 @@ namespace FM {
             show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
             action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
             if (show_remote_thumbnails) {
-                slot.directory.load ();
+                slot.reload ();
             }
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
+            /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-
-            if (show)
-                dir.load_hiddens ();
-            else
-                dir.load ();
+            dir.load_hiddens ();
         }
 
         private void on_interpret_desktop_files_changed () {
@@ -1554,19 +1575,19 @@ namespace FM {
                     slot.reload (true); /* non-local only */
 
                     switch (info) {
-                        case TargetType.XDND_DIRECT_SAVE0:
+                        case Marlin.TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
                                                                           drop_target_file,
                                                                            selection_data);
                             break;
 
-                        case TargetType.NETSCAPE_URL:
+                        case Marlin.TargetType.NETSCAPE_URL:
                             success = dnd_handler.handle_netscape_url  (context,
                                                                         drop_target_file,
                                                                         selection_data);
                             break;
 
-                        case TargetType.TEXT_URI_LIST:
+                        case Marlin.TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
                                 if (selected_files != null)
                                     unselect_all ();
@@ -2059,7 +2080,7 @@ namespace FM {
                 if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();             
+                    templates_submenu = new GLib.Menu ();
                 } else {
                     templates_submenu.append (label, "background.create_from::" + index.to_string ());
                     count ++;
@@ -2322,43 +2343,77 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
+            assert (slot is GOF.AbstractSlot && slot.directory != null);
+
             if (thumbnail_source_id != 0 ||
-                !(slot is GOF.AbstractSlot) ||
-                slot.directory == null ||
-                (!slot.directory.is_local && !show_remote_thumbnails))
+                (!slot.directory.is_local && !show_remote_thumbnails) ||
+                (slot.directory.is_loading ())) {
 
-                return;
+                    return;
+            }
 
-            thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (!(slot is GOF.AbstractSlot) || slot.directory == null)
-                    return false;
+            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
 
-                if (slot.directory.is_loading ())
+            /* In order to improve performance of the Icon View when there are a large number of files,
+             * we freeze child notifications while the view is being scrolled or resized.
+             * The timeout is restarted for each scroll or size allocate event */  
+            cancel_timeout (ref freeze_source_id);
+            freeze_child_notify ();
+            freeze_source_id = Timeout.add (500, () => {
+                if (thumbnail_source_id > 0) {
                     return true;
+                }
+                thaw_child_notify ();
+                freeze_source_id = 0;
+                return false;
+            });
 
-                cancel_thumbnailing ();
-
+            /* Views with a large number of files take longer to redraw (especially IconView) so
+             * we wait longer for scrolling to stop before updating the thumbnails */ 
+            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
+            thumbnail_source_id = GLib.Timeout.add (delay, () => {
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
+                Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
                 GOF.File file;
                 GLib.List<GOF.File> visible_files = null;
+                uint actually_visible = 0;
+
 
                 if (get_visible_range (out start_path, out end_path)) {
+                    sp = start_path;
+                    ep = end_path;
+
+                    /* To improve performance for large folders we thumbnail files on either side of visible region
+                     * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
+                     * redraws necessary when scrolling */ 
+                    int count = 50;
+                    while (start_path.prev () && count > 0) {
+                        count--;
+                    }
+                    count = 50;
+                    while (count > 0) {
+                        end_path.next ();
+                        count--;
+                    }
+
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
-
-                    while (valid_iter) {
+                    while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter);
-
-                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
-                        if (file != null && file.flags < 2)
-                            visible_files.prepend (file);
-
-                        /* check if we've reached the end of the visible range */
                         path = model.get_path (iter);
 
+                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
+                        if (file != null && file.flags < 2) {
+                            visible_files.prepend (file);
+                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                actually_visible++;
+                            }
+                        }
+
+                        /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0)
                             valid_iter = get_next_visible_iter (ref iter);
                         else
@@ -2366,9 +2421,11 @@ namespace FM {
                     }
                 }
 
-                if (visible_files != null)
+                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
+                 * and there has not been another event (which would zero the thumbnail_source_if) */
+                if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-
+                }
                 thumbnail_source_id = 0;
                 return false;
             });
@@ -2494,7 +2551,7 @@ namespace FM {
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/ 
+          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (int keyval, uint code) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
@@ -3079,6 +3136,7 @@ namespace FM {
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
+            view.style_updated ();
         }
 
         private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -3184,19 +3242,25 @@ namespace FM {
         }
 
         protected void on_sort_column_changed () {
-            int sort_column_id;
-            Gtk.SortType sort_order;
+            int sort_column_id = 0;
+            Gtk.SortType sort_order = 0;
 
-            if (!model.get_sort_column_id (out sort_column_id, out sort_order))
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
+             * the directory file metadata incorrectly (bug 1511307).
+             */
+            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 
             var info = new GLib.FileInfo ();
-            info.set_attribute_string ("metadata::marlin-sort-column-id",
-                                       get_string_from_column_id (sort_column_id));
-            info.set_attribute_string ("metadata::marlin-sort-reversed",
-                                       (sort_order == Gtk.SortType.DESCENDING ? "true" : "false"));
-
             var dir = slot.directory;
+            string sort_col_s = get_string_from_column_id (sort_column_id);
+            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
+            info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+
+            /* Make sure directory file info matches metadata (bug 1511307).*/
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
@@ -3236,10 +3300,12 @@ namespace FM {
         }
 
         public virtual void cancel () {
+            grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
+            cancel_timeout (ref add_remove_file_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 
@@ -3313,6 +3379,8 @@ namespace FM {
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
         protected abstract void thaw_tree ();
+        protected new abstract void freeze_child_notify ();
+        protected new abstract void thaw_child_notify ();
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

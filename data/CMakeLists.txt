@@ -2,6 +2,7 @@ configure_file(pantheon-files.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/pantheon-fi
 configure_file(pantheon-files.service.cmake ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files.service)
 configure_file(pantheon-files-pkexec.cmake ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-pkexec)
 configure_file(net.launchpad.pantheon-files.policy.cmake ${CMAKE_CURRENT_BINARY_DIR}/net.launchpad.pantheon-files.policy)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-files.appdata.xml DESTINATION share/appdata)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files.desktop DESTINATION share/applications)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files.service DESTINATION share/dbus-1/services/)
 install (PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-pkexec DESTINATION bin)
