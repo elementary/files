@@ -51,6 +51,7 @@ namespace GOF {
 
         public signal void active (bool scroll = true);
         public signal void inactive ();
+        public signal void path_changed (bool change_mode_to_icons = true);
 
         public  void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
@@ -75,6 +76,7 @@ namespace GOF {
         protected abstract void make_view ();
         public abstract void cancel ();
         public abstract void close ();
+        public abstract FileInfo? lookup_file_info (GLib.File loc);
 
         public virtual void zoom_out () {}
         public virtual void zoom_in () {}

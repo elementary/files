@@ -141,12 +141,14 @@ gof_file_icon_changed (GOFFile *file)
     GOFDirectoryAsync *dir = NULL;
 
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
-    if (dir != NULL) {
-        if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
-            g_signal_emit_by_name (dir, "icon_changed", file);
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+        if (dir != NULL) {
+            if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
+                g_signal_emit_by_name (dir, "icon_changed", file);
 
-        g_object_unref (dir);
+            g_object_unref (dir);
+        }
     }
     g_signal_emit_by_name (file, "icon_changed");
 }
@@ -813,6 +815,10 @@ gof_file_query_info (GOFFile *file)
     GError *err = NULL;
 
     g_return_val_if_fail (G_IS_FILE (file->location), NULL);
+
+    file->is_mounted = TRUE;
+    file->exists = TRUE;
+    file->is_connected = TRUE;
 
     info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
@@ -2095,7 +2101,10 @@ gof_file_list_copy (GList *list)
 static void
 gof_file_update_existing (GOFFile *file, GFile *new_location)
 {
-    GOFDirectoryAsync *dir = gof_directory_async_cache_lookup (file->directory);
+    GOFDirectoryAsync *dir = NULL;
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+    }
 
     gof_file_remove_from_caches (file);
     file->is_gone = FALSE;
@@ -2593,10 +2602,12 @@ gof_file_can_unmount (GOFFile *file)
 gboolean
 gof_file_thumb_can_frame (GOFFile *file)
 {
-    GOFDirectoryAsync *dir;
+    GOFDirectoryAsync *dir = NULL;
 
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+    }
     if (dir != NULL) {
         gboolean can_frame = !dir->uri_contain_keypath_icons;
         g_object_unref (dir);

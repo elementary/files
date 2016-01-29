@@ -495,7 +495,7 @@ namespace Marlin.View {
 
         private void action_reload () {
             /* avoid spawning reload when key kept pressed */
-            if (tabs.current.working || !current_tab.ready)
+            if (tabs.current.working)
                 return;
 
             current_tab.reload ();
@@ -522,7 +522,7 @@ namespace Marlin.View {
                     break;
             }
             current_tab.change_view_mode (mode);
-            update_view_mode (mode);
+            /* ViewContainer takes care of changing appearance */
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
@@ -745,7 +745,7 @@ namespace Marlin.View {
             }
         }
 
-        public void update_view_mode (Marlin.ViewMode mode) {
+        private void update_view_mode (Marlin.ViewMode mode) { /* Called via update topmenu */
             GLib.SimpleAction action = get_action ("view_mode");
             action.set_state (mode_strings [(int)mode]);
             view_switcher.mode = mode;
@@ -842,8 +842,10 @@ namespace Marlin.View {
 
                 GLib.File root_location = GLib.File.new_for_commandline_arg (unescaped_root_uri);
 
-                if (!valid_location (root_location))
-                    continue;
+                /* We do not check valid location here because it may cause the interface to hang
+                 * before the window appears (e.g. if trying to connect to a server that has become unavailable)
+                 * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously. 
+                 */
 
                 add_tab (root_location, mode);
 
@@ -888,32 +890,6 @@ namespace Marlin.View {
             return tabs_added;
         }
 
-        private bool valid_location (GLib.File location) {
-            GLib.FileInfo? info = null;
-
-            string scheme = location.get_uri_scheme ();
-            if (scheme == "smb" ||
-                scheme == "ftp" ||
-                scheme == "network")
-                /* Do not restore remote and network locations */
-                return true;
-
-            try {
-                info = location.query_info ("standard::*", GLib.FileQueryInfoFlags.NONE);
-            }
-            catch (GLib.Error e) {
-                warning ("Invalid location on restoring tabs - %s", location.get_uri ());
-                return false;
-            }
-
-            if (info.get_file_type () == GLib.FileType.DIRECTORY)
-                return true;
-            else {
-                warning ("Attempt to restore a location that is not a directory");
-                return false;
-            }
-        }
-
         private void expand_miller_view (string tip_uri, GLib.File root_location) {
             /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
@@ -938,9 +914,6 @@ namespace Marlin.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = GLib.File.new_for_uri (uri);
 
-                    if (!valid_location (gfile))
-                        break;
-
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }
             } else {
@@ -952,12 +925,10 @@ namespace Marlin.View {
             if (freeze_view_changes)
                 return;
 
-
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
                 update_view_mode (current_tab.view_mode);
-
             }
         }
 
@@ -968,6 +939,7 @@ namespace Marlin.View {
         }
 
         public void mount_removed (Mount mount) {
+            debug ("Mount %s removed", mount.get_name ());
             GLib.File root = mount.get_root ();
 
             foreach (var page in tabs.get_children ()) {

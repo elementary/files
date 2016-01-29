@@ -129,15 +129,7 @@ public class Marlin.IconSpinnerRenderer : Gtk.CellRenderer {
             cr.save ();
             Gdk.cairo_rectangle (cr, cell_area);
             cr.clip ();
-            Gtk.paint_spinner (widget.get_style (),
-                               cr,
-                               Gtk.StateType.ACTIVE,
-                               widget,
-                               "cell",
-                               pulse,
-                               draw_rect.x, draw_rect.y,
-                               draw_rect.width, draw_rect.height);
-
+            widget.get_style_context ().render_activity (cr, draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height);
             cr.restore ();
         }
     }

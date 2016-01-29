@@ -242,10 +242,10 @@ namespace FM {
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
-            editable_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
-            activatable_cursor = new Gdk.Cursor (Gdk.CursorType.HAND1);
-            selectable_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
-            blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
@@ -282,6 +282,8 @@ namespace FM {
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
             change_zoom_level ();
+
+            connect_directory_handlers (slot.directory);
         }
 
         ~AbstractDirectoryView () {
@@ -325,8 +327,6 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
-
-            connect_directory_handlers (slot.directory);
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -576,21 +576,31 @@ namespace FM {
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (GOF.Directory.Async dir) {
             assert (dir != null);
-            dir.file_loaded.connect (on_directory_file_loaded);
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-            dir.done_loading.connect (on_directory_done_loading);
             dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
+            connect_directory_loading_handlers (dir);
+        }
+
+        protected void connect_directory_loading_handlers (GOF.Directory.Async dir) {
+            dir.file_loaded.connect (on_directory_file_loaded);
+            dir.done_loading.connect (on_directory_done_loading);
+        }
+
+        protected void disconnect_directory_loading_handlers (GOF.Directory.Async dir) {
+            dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
 
-            if (dir.is_loading ())
-                dir.file_loaded.disconnect (on_directory_file_loaded);
+            if (dir.is_loading ()) {
+                disconnect_directory_loading_handlers (dir);
+            }
 
             dir.file_added.disconnect (on_directory_file_added);
             dir.file_changed.disconnect (on_directory_file_changed);
@@ -606,17 +616,20 @@ namespace FM {
                 style_context.remove_class (MESSAGE_CLASS);
 
             cancel ();
-            freeze_tree ();
+            clear ();
             disconnect_directory_handlers (old_dir);
+            connect_directory_handlers (new_dir);
+        }
+
+        public void clear () {
+            /* after calling this (prior to reloading), the directory must be re-initialised so
+             * we reconnect the file_loaded and done_loading signals */
+            freeze_tree ();
             block_model ();
             model.clear ();
             unblock_model ();
-            if (new_dir.can_load)
-                connect_directory_handlers (new_dir);
-        }
-
-        public void reload () {
-            change_directory (slot.directory, slot.directory);
+            connect_directory_loading_handlers (slot.directory);
+            /* tree will be thawed after done loading */
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
@@ -641,7 +654,7 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel ();
+            slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
 
             if (thumbnail_request > 0) {
@@ -804,8 +817,7 @@ namespace FM {
 
             /* If in recent "folder" we need to refresh the view. */
             if (in_recent) {
-                slot.directory.clear_directory_info ();
-                slot.directory.need_reload ();
+                slot.reload ();
             }
         }
 
@@ -898,8 +910,6 @@ namespace FM {
             }
 
             var file_to_rename = GOF.File.@get (new_file);
-            view.slot.reload (true); /* non-local only */
-
             view.rename_file (file_to_rename); /* will wait for file to appear in model */
         }
 
@@ -912,7 +922,6 @@ namespace FM {
 
             view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
-            view.slot.reload (true); /* non-local only */
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -926,7 +935,6 @@ namespace FM {
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 can_trash_or_delete = false;
-
                 trash_or_delete_files (selection, true, delete_immediately);
             }
         }
@@ -962,7 +970,7 @@ namespace FM {
 
             foreach (GOF.File file in selected_files) {
                 window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
-            }        
+            }
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1197,7 +1205,6 @@ namespace FM {
                         pasted_files_list.prepend (k as File);
                 });
 
-                view.slot.reload (true); /* non-local only */
                 view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
                 return false;
             });
@@ -1277,8 +1284,8 @@ namespace FM {
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-            debug ("DV  directory done loading %s", dir.file.uri);
-            dir.file_loaded.disconnect (on_directory_file_loaded);
+            /* Should only be called on directory creation or reload */
+            disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
@@ -1287,8 +1294,9 @@ namespace FM {
 
             if (in_recent)
                 model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else
+            else if (slot.directory.file.info != null) {
                 model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
              * are sometimes not properly aligned when first drawn, only after redrawing the view. */
@@ -1334,12 +1342,9 @@ namespace FM {
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
+            /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-
-            if (show)
-                dir.load_hiddens ();
-            else
-                dir.load ();
+            dir.load_hiddens ();
         }
 
         private void on_interpret_desktop_files_changed () {
@@ -1556,8 +1561,6 @@ namespace FM {
             if (drop_occurred) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
-                    slot.reload (true); /* non-local only */
-
                     switch (info) {
                         case Marlin.TargetType.XDND_DIRECT_SAVE0:
                             success = dnd_handler.handle_xdnddirectsave  (context,
@@ -2064,7 +2067,7 @@ namespace FM {
                 if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();             
+                    templates_submenu = new GLib.Menu ();
                 } else {
                     templates_submenu.append (label, "background.create_from::" + index.to_string ());
                     count ++;
@@ -2499,7 +2502,7 @@ namespace FM {
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/ 
+          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (int keyval, uint code) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
@@ -2716,12 +2719,10 @@ namespace FM {
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
                 /* cannot get file info while network disconnected */
-                if (slot.directory.is_local || slot.directory.check_network ()) {
-                    /* cannot get file info while network disconnected */
+                if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
+                    /* cannot get file info while network disconnected. */
                     item_hovered (file);
                     hover_path = path;
-                } else {
-                    slot.reload (true); /* non-local only */
                 }
             }
 
@@ -2810,9 +2811,6 @@ namespace FM {
             }
 
             on_name_editing_canceled ();
-
-            if (new_name != original_name)
-                slot.reload (true); /* non-local only */
         }
 
 
@@ -2840,7 +2838,6 @@ namespace FM {
                                                                   view.original_name);
 
                 view.select_gof_file (file);  /* Select and scroll to show renamed file */
-                view.slot.reload (true);
             }
 
             if (pw != null) {
@@ -2855,20 +2852,22 @@ namespace FM {
             /* If folder is empty, draw the empty message in the middle of the view
              * otherwise pass on event */
             var style_context = get_style_context ();
-            if (slot.directory.is_empty () || slot.directory.permission_denied) {
+            if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
                 if (!style_context.has_class (MESSAGE_CLASS))
                     style_context.add_class (MESSAGE_CLASS);
 
-                if (slot.directory.permission_denied)
+
+                if (slot.directory.permission_denied) {
                     layout.set_markup (slot.denied_message, -1);
-                else if (slot.directory.is_trash) /* must be empty */
+                } else if (slot.directory.is_trash) {
                     layout.set_markup (slot.empty_trash_message, -1);
-                else if (slot.directory.location.get_uri_scheme () == "recent")
+                } else if (slot.directory.is_recent) {
                     layout.set_markup (slot.empty_recents_message, -1);
-                else
+                } else {
                     layout.set_markup (slot.empty_message, -1);
+                }
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
@@ -2881,8 +2880,9 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            } else if (style_context.has_class (MESSAGE_CLASS))
+            } else if (style_context.has_class (MESSAGE_CLASS)) {
                 style_context.remove_class (MESSAGE_CLASS);
+            }
 
             return false;
         }
@@ -3084,6 +3084,7 @@ namespace FM {
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
+            view.style_updated ();
         }
 
         private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -3192,9 +3193,9 @@ namespace FM {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
-            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the 
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
-             */  
+             */
             if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 
