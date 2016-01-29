@@ -305,7 +305,7 @@ namespace Marlin {
                     contents_changed ();
                 }
                 catch (GLib.Error error) {
-                    message ("Error replacing bookmarks file contents %s", error.message);
+                    warning ("Error replacing bookmarks file contents %s", error.message);
                 }
                 op_processed_call_back ();
             });
