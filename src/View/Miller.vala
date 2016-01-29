@@ -77,9 +77,7 @@ namespace Marlin.View {
             nest_slot_in_host_slot (new_slot, host);
             connect_slot_signals (new_slot);
             slot_list.append (new_slot);
-            ctab.load_slot_directory (new_slot);
-            new_slot.active ();
-            new_slot.select_first_for_empty_selection ();
+            new_slot.active (); /* This will set the new slot to be current_slot. Must do this before loading */
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -100,6 +98,7 @@ namespace Marlin.View {
                 truncate_list_after_slot (host);
                 host.select_gof_file (slot.file);
                 host.colpane.add (hpane1);
+                slot.directory.init ();
             } else
                 this.colpane.add (hpane1);
         }
@@ -124,6 +123,7 @@ namespace Marlin.View {
 
             slot_list.nth (n).next = null;
             calculate_total_width ();
+            current_slot = slot;
             slot.active ();
         }
 
@@ -226,6 +226,7 @@ namespace Marlin.View {
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
             slot.colpane.key_press_event.connect (on_key_pressed);
+            slot.path_changed.connect (on_slot_path_changed);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -236,7 +237,7 @@ namespace Marlin.View {
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
             slot.colpane.key_press_event.disconnect (on_key_pressed);
-
+            slot.path_changed.disconnect (on_slot_path_changed);
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
@@ -258,6 +259,10 @@ namespace Marlin.View {
                 hadj.set_value (hadj.get_value () + increment);
 
             return true;
+        }
+
+        private void on_slot_path_changed (GOF.AbstractSlot aslot, bool allow_mode_change) {
+            path_changed (false);
         }
 
         private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {

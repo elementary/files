@@ -63,9 +63,6 @@ namespace Marlin.View.Chrome {
 
         protected virtual void configure_style () {
             button_context = get_style_context ();
-            button_context.add_class ("button");
-            button_context.add_class ("raised");
-            button_context.add_class ("marlin-pathbar");
             button_context.add_class ("pathbar");
 
             Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
@@ -252,7 +249,7 @@ namespace Marlin.View.Chrome {
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
             if (el != null) {
                 set_tooltip_text (_("Go to %s").printf (el.text));
-                set_entry_cursor (new Gdk.Cursor (Gdk.CursorType.ARROW));
+                set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
                 set_tooltip_text (_("Enter search term or path"));
@@ -297,7 +294,7 @@ namespace Marlin.View.Chrome {
     /** Entry functions **/
     /****************************/
         public void set_entry_cursor (Gdk.Cursor? cursor) {
-            entry_window.set_cursor (cursor ?? new Gdk.Cursor (Gdk.CursorType.XTERM));
+            entry_window.set_cursor (cursor ?? new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text"));
         }
 
 

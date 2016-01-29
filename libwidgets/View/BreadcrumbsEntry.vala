@@ -151,12 +151,14 @@ namespace Marlin.View.Chrome {
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = GOF.Directory.Async.from_gfile (file);
-            }
+                current_completion_dir.init (on_file_loaded);
+            } else {
 
-            if (current_completion_dir != null  && current_completion_dir.can_load) {
-                clear_completion ();
-                /* Completion text set by on_file_loaded () */
-                current_completion_dir.load (on_file_loaded);
+                if (current_completion_dir != null  && current_completion_dir.can_load) {
+                    clear_completion ();
+                    /* Completion text set by on_file_loaded () */
+                    current_completion_dir.init (on_file_loaded);
+                }
             }
         }
 
@@ -387,7 +389,7 @@ namespace Marlin.View.Chrome {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
                 });
-                files_menu_dir.load ();
+                files_menu_dir.init ();
             } else {
                 warning ("Root directory null for %s", path);
             }

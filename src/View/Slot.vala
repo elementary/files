@@ -62,10 +62,10 @@ namespace Marlin.View {
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
-            set_up_directory (_location);
-            connect_slot_signals ();
+            set_up_directory (_location); /* Connect dir signals before making view */
             make_view ();
             connect_dir_view_signals ();
+            connect_slot_signals ();
         }
 
         ~Slot () {
@@ -77,7 +77,6 @@ namespace Marlin.View {
                 if (is_active)
                     return;
 
-                ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
             });
@@ -137,8 +136,7 @@ namespace Marlin.View {
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir) {
-            dir_view.change_directory (directory, directory);
-            ctab.load_slot_directory (this);
+            user_path_change_request (directory.location, false, true);
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -149,6 +147,7 @@ namespace Marlin.View {
             assert (directory != null);
 
             connect_dir_signals ();
+
             has_autosized = false;
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
@@ -217,15 +216,16 @@ namespace Marlin.View {
         }
 
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
+        /** Only this function must be used to change or reload the path **/
             assert (loc != null);
             var old_dir = directory;
-            old_dir.cancel ();
             set_up_directory (loc);
-            dir_view.change_directory (old_dir, directory);
-            /* ViewContainer takes care of updating appearance
+            path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
+            /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
-            ctab.slot_path_changed (directory.location, allow_mode_change);
+            dir_view.change_directory (old_dir, directory);
+            directory.init ();
         }
 
         public override void reload (bool non_local_only = false) {

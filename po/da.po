@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-12-09 15:37+0000\n"
-"Last-Translator: Jimmy Merrild Krag <jimmy@kragenet.dk>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-21 13:45+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-11 05:48+0000\n"
+"X-Launchpad-Export-Date: 2015-12-22 04:58+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Der er intet i udklipsholderen at indsætte"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,9 +137,38 @@ msgstr "_Husk denne adgangskode"
 msgid "Operation cancelled"
 msgstr "Handlingen blev afbrudt"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Vis flere _detaljer"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Der er intet i udklipsholderen at indsætte"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Elementet kan ikke genskabes fra papirkurven"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ugyldig Unicode)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "I dag klokken %H:%M"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "I går klokken %H:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d. %b kl. %H:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d. %b %Y kl. %H:%M"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -526,168 +551,10 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "_Gentag ændring af ejer for %d element"
 msgstr[1] "_Gentag ændring af ejer for %d elementer"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Elementet kan ikke genskabes fra papirkurven"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Flet mappen \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Ved fletning vil der blive bedt om bekræftelse før der overskrives filer i "
-"mappen, som er i konflikt med dem, der flyttes."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "En ældre mappe med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "En nyere mappe med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "En anden mappe med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Ved erstatning vil alle filer i mappen blive fjernet."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Erstat mappen \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "En mappe med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Erstat filen \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Ved erstatning vil dens indhold blive overskrevet."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "En ældre fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "En nyere fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Oprindelig fil"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
-msgid "Size:"
-msgstr "Størrelse:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:543
-msgid "Type:"
-msgstr "Type:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Sidst ændret:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Erstat med"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Flet"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Vælg et nyt navn til destinationen"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Nulstil"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Udfør denne handling på alle filer"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Spring over"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "_Omdøb"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Erstat"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Filkonflikt"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ugyldig Unicode)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Forbereder"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -923,6 +790,8 @@ msgid_plural "%'d files left to delete"
 msgstr[0] "%'d resterende fil at slette"
 msgstr[1] "%'d resterende filer at slette"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1249,6 +1118,10 @@ msgstr[1] "Duplikerer %'d filer"
 msgid "%S of %S"
 msgstr "%S af %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1448,21 +1321,9 @@ msgstr "Tømmer papirkurven"
 msgid "Emptying Trash"
 msgstr "Tømmer papirkurven"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "I dag klokken %H:%M"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "I går klokken %H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d. %b kl. %H:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d. %b %Y kl. %H:%M"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Vis flere _detaljer"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1494,6 +1355,223 @@ msgstr "Skråstreger er ikke tilladt i filnavne"
 msgid "Toplevel files cannot be renamed"
 msgstr "Topniveau-filer kan ikke omdøbes"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Forbereder"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Flet mappen \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Ved fletning vil der blive bedt om bekræftelse før der overskrives filer i "
+"mappen, som er i konflikt med dem, der flyttes."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "En ældre mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "En nyere mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "En anden mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Ved erstatning vil alle filer i mappen blive fjernet."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Erstat mappen \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "En mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Erstat filen \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Ved erstatning vil dens indhold blive overskrevet."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "En ældre fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "En nyere fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Oprindelig fil"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Størrelse:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Type:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Sidst ændret:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Erstat med"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Flet"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Vælg et nyt navn til destinationen"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Nulstil"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Udfør denne handling på alle filer"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "_Omdøb"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Erstat"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Filkonflikt"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Et simpelt og kraftfuldt filhåndteringsprogram"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Casper Christiansen https://launchpad.net/~fault\n"
+"  Casper Hedegaard https://launchpad.net/~casper-b\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Jamie Neubert Pedersen https://launchpad.net/~jamieneubert\n"
+"  Jimmy Merrild Krag https://launchpad.net/~beruic\n"
+"  Johnny Poulsen https://launchpad.net/~jp-0\n"
+"  Jonatan Nordentoft https://launchpad.net/~lo\n"
+"  Kasper Steensig https://launchpad.net/~reindeer-rensdyr\n"
+"  Kristoffer Andersen https://launchpad.net/~kris24\n"
+"  Mickas Jensen https://launchpad.net/~qrank\n"
+"  Rune Jensen https://launchpad.net/~runeofdenmark\n"
+"  Rune Jensen https://launchpad.net/~runeofdenmark-n\n"
+"  Simon https://launchpad.net/~sims73\n"
+"  js https://launchpad.net/~jonas-stisen-mb"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Netværk"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Papirkurv"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr "Seneste"
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Filsystem"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
@@ -1507,101 +1585,6 @@ msgstr "Næste"
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
 msgstr "Ny mappe"
-
-#: ../src/View/Window.vala:182
-msgid "Files isn't your default file manager."
-msgstr "Filer er ikke dit standard filhåndteringsprogram."
-
-#: ../src/View/Window.vala:188
-msgid "Set as Default"
-msgstr "Brug som standard"
-
-#: ../src/View/Window.vala:194
-msgid "Ignore"
-msgstr "Ignorér"
-
-#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
-msgid "Home"
-msgstr "Hjem"
-
-#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
-#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
-msgid "File System"
-msgstr "Filsystem"
-
-#: ../src/View/ViewContainer.vala:344
-msgid "(as Administrator)"
-msgstr "(som Administrator)"
-
-#: ../src/View/ViewContainer.vala:353
-msgid "This Folder Does Not Belong to You"
-msgstr "Denne mappe tilhører ikke dig"
-
-#: ../src/View/ViewContainer.vala:354
-msgid "You don't have permission to view this folder."
-msgstr "Du har ikke tilladelse til at se denne mappe."
-
-#: ../src/View/ViewContainer.vala:357
-msgid "Unable to Mount Folder"
-msgstr "Kan ikke montere mappe"
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The server for this folder could not be located."
-msgstr "Kan ikke finde serveren for denne mappe."
-
-#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Denne mappe eksisterer ikke"
-
-#: ../src/View/ViewContainer.vala:365
-msgid "You cannot create a folder here."
-msgstr "Du kan ikke oprette en mappe her"
-
-#: ../src/View/ViewContainer.vala:374
-msgid "File not Found"
-msgstr "Filen blev ikke fundet"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "The file selected no longer exists."
-msgstr "Den valgte fil eksisterer ikke længere."
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Filnavn"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
-msgid "Size"
-msgstr "Størrelse"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
-msgid "Type"
-msgstr "Type"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Ændret"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Mappen \"%s\" kan ikke findes"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Opret"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Opret mappen \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Kunne ikke oprette mappen\n"
-"\n"
-"%s"
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
@@ -1618,6 +1601,22 @@ msgstr "Der er ikke nogen seneste filer"
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
 msgstr "Adgang nægtet"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Filnavn"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+msgid "Size"
+msgstr "Størrelse"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+msgid "Type"
+msgstr "Type"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Ændret"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1659,6 +1658,44 @@ msgstr "%u fil, "
 msgid "%u files, "
 msgstr "%u filer, "
 
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Filer er ikke dit standard filhåndteringsprogram."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr "Brug som standard"
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Ignorér"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr "Denne mappe eksisterer ikke"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Mappen \"%s\" kan ikke findes"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Opret"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Opret mappen \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Kunne ikke oprette mappen\n"
+"\n"
+"%s"
+
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Luk"
@@ -1668,8 +1705,7 @@ msgstr "Luk"
 msgid "Properties"
 msgstr "Egenskaber"
 
-#: ../src/View/PropertiesWindow.vala:344
-#: ../src/View/PropertiesWindow.vala:1566
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Generelt"
 
@@ -1742,8 +1778,7 @@ msgstr "Mål:"
 msgid "Origin Location:"
 msgstr "Original lokation:"
 
-#: ../src/View/PropertiesWindow.vala:704
-#: ../src/View/PropertiesWindow.vala:1495
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Info"
 
@@ -1755,8 +1790,7 @@ msgstr "Andet program..."
 msgid "Open with:"
 msgstr "Åbn med:"
 
-#: ../src/View/PropertiesWindow.vala:781
-#: ../src/View/PropertiesWindow.vala:1511
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Anvendelse"
 
@@ -1831,98 +1865,6 @@ msgstr "%s (%d%% i brug)"
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/View/Sidebar.vala:429
-msgid "Personal"
-msgstr "Personlig"
-
-#: ../src/View/Sidebar.vala:434
-msgid "Your common places and bookmarks"
-msgstr "Dine almindelige steder og bogmærker"
-
-#: ../src/View/Sidebar.vala:453
-msgid "Open your personal folder"
-msgstr "Åbn din personlige mappe"
-
-#: ../src/View/Sidebar.vala:468
-msgid "View the list of recently used files"
-msgstr "Se listen med de seneste filer"
-
-#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
-msgid "Trash"
-msgstr "Papirkurv"
-
-#: ../src/View/Sidebar.vala:496
-msgid "Open the Trash"
-msgstr "Åben papirkurven"
-
-#: ../src/View/Sidebar.vala:502
-msgid "Devices"
-msgstr "Enheder"
-
-#: ../src/View/Sidebar.vala:507
-msgid "Your local partitions and devices"
-msgstr "Dine lokale partitioner og enheder"
-
-#: ../src/View/Sidebar.vala:519
-msgid "Open the contents of the FileSystem"
-msgstr "Åbn indholdet af filsystenet"
-
-#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
-msgid "Mount and open %s"
-msgstr "Montér og åbn %s"
-
-#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
-msgid "Network"
-msgstr "Netværk"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Your network places"
-msgstr "Dine netværkssteder"
-
-#: ../src/View/Sidebar.vala:666
-msgid "Entire Network"
-msgstr "Hele netværk"
-
-#: ../src/View/Sidebar.vala:673
-msgid "Browse the contents of the network"
-msgstr "Gennemse indholdet af netværket"
-
-#: ../src/View/Sidebar.vala:1210
-msgid "Unable to start %s"
-msgstr "Kan ikke starte %s"
-
-#: ../src/View/Sidebar.vala:1291
-msgid "Open"
-msgstr "Åbn"
-
-#: ../src/View/Sidebar.vala:1299
-msgid "Open in New _Tab"
-msgstr "Åbn i ny _fane"
-
-#: ../src/View/Sidebar.vala:1305
-msgid "Open in New _Window"
-msgstr "Åbn i nyt _vindue"
-
-#: ../src/View/Sidebar.vala:1313
-msgid "Remove"
-msgstr "Fjern"
-
-#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Omdøb"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Mount"
-msgstr "_Montér"
-
-#: ../src/View/Sidebar.vala:1336
-msgid "_Unmount"
-msgstr "_Afmontér"
-
-#: ../src/View/Sidebar.vala:1342
-msgid "_Eject"
-msgstr "_Skub ud"
-
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Forhåndsvisning fejlede"
@@ -1980,6 +1922,153 @@ msgstr "Klipper det markerede i stedet"
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Personlig"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Dine almindelige steder og bogmærker"
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Hjem"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Åbn din personlige mappe"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr "Se listen med de seneste filer"
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr "Åben papirkurven"
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Enheder"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Dine lokale partitioner og enheder"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr "Åbn indholdet af filsystenet"
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "Montér og åbn %s"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Dine netværkssteder"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr "Hele netværk"
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Gennemse indholdet af netværket"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "Kan ikke starte %s"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr "Åbn"
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Åbn i ny _fane"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Åbn i nyt _vindue"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Fjern"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Omdøb"
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Montér"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "_Afmontér"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "_Skub ud"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(som Administrator)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr "Denne mappe tilhører ikke dig"
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "Du har ikke tilladelse til at se denne mappe."
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr "Kan ikke montere mappe"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr "Kan ikke finde serveren for denne mappe."
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr "Du kan ikke oprette en mappe her"
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr "Filen blev ikke fundet"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr "Den valgte fil eksisterer ikke længere."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Filhandlinger"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Alle filhandlinger blev fuldført med succes"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d filoperation aktiv"
+msgstr[1] "%'d filoperationer aktive"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Vis detaljer"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Vis kopiéringsdialog"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Afbryd alle igangværende handlinger"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2043,33 +2132,6 @@ msgstr "Om _Filer"
 msgid "Files"
 msgstr "Filer"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Filhandlinger"
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Alle filhandlinger blev fuldført med succes"
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d filoperation aktiv"
-msgstr[1] "%'d filoperationer aktive"
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Vis detaljer"
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Vis kopiéringsdialog"
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Afbryd alle igangværende handlinger"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Kunne ikke udføre \"%s\""
@@ -2090,78 +2152,22 @@ msgstr "Henvis hertil"
 msgid "Cancel"
 msgstr "Annullér"
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Et simpelt og kraftfuldt filhåndteringsprogram"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
+msgstr "Navigér til %s"
 
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Launchpad oversættere"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Gå til %s"
 
-#: ../libwidgets/Resources.vala:92
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:93
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:94
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:95
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:97
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:98
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:100
-msgid "Recent"
-msgstr "Seneste"
-
-#: ../libwidgets/Resources.vala:101
-msgid "MTP"
-msgstr "MTP"
-
-#: ../libwidgets/View/LocationBar.vala:159
-msgid "Reload this folder"
-msgstr "Genindlæs denne mappe"
-
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
 msgstr "Indtast søgeterm eller sti"
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:406
-msgid "Open in New Tab"
-msgstr "Åbn i ny fane"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:413
-msgid "Open in New Window"
-msgstr "Åbn i nyt vindue"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application…"
-msgstr "Åbn med en anden applikation..."
-
-#: ../libwidgets/View/SearchResults.vala:179
-msgid "In This Folder"
-msgstr "I denne mappe"
-
-#: ../libwidgets/View/SearchResults.vala:181
-msgid "Bookmarks"
-msgstr "Bogmærker"
-
-#: ../libwidgets/View/SearchResults.vala:183
-msgid "Everywhere Else"
-msgstr "Alle andre steder"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Indtast en sti"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2175,17 +2181,33 @@ msgstr "Vis som Liste"
 msgid "View in Columns"
 msgstr "Vis i kolonner"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Indtast en sti"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "I denne mappe"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
-msgid "Navigate to %s"
-msgstr "Navigér til %s"
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Bogmærker"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
-msgid "Go to %s"
-msgstr "Gå til %s"
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Alle andre steder"
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr "Genindlæs denne mappe"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Åbn i ny fane"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
+msgstr "Åbn i nyt vindue"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
+msgstr "Åbn med en anden applikation..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2215,8 +2237,7 @@ msgstr "Kan kun gendanne eller slette fra rodmappen"
 msgid "Restore from Trash"
 msgstr "Gendan fra papirkurven"
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Slet permanent"
 

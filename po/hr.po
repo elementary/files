@@ -7,21 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
-"POT-Creation-Date: 2015-12-03 05:07-0600\n"
-"PO-Revision-Date: 2015-09-06 16:39+0000\n"
-"Last-Translator: Sinisa Perovic <Unknown>\n"
+"POT-Creation-Date: 2015-12-17 09:22-0200\n"
+"PO-Revision-Date: 2015-12-21 13:45+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-04 05:36+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Nema ništa u međuspremniku za zalijepiti"
+"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -142,9 +138,38 @@ msgstr "_Zapamti ovu lozinku"
 msgid "Operation cancelled"
 msgstr "Izmjena otkazana"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Prikaži više _pojedinosti"
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Nema ništa u međuspremniku za zalijepiti"
+
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "Stavka iz smeća ne može biti vraćena na izvornu lokaciju."
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (neispravan unicode)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Danas u %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Jučer u %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b kod %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y u %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
@@ -552,168 +577,10 @@ msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
 msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
 msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Stavka iz smeća ne može biti vraćena na izvornu lokaciju."
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Spojiti mapu \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
-"je u sukobu s datotekama koje se kopiraju."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zamjena će obrisati sve datoteke u mapi."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Zamijeniti mapu \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mapa s istim nazivom već postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Zamijeniti datoteku \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Zamjena će obrisati stari sadržaj."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Izvorna datoteka"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
-msgid "Size:"
-msgstr "Veličina:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:543
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Posljednja izmjena:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Zamijeni sa"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Spoji"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Odaberi novo ime za odredište"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Vrati izvorno"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Primjeni radnju na sve datoteke"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
 msgid "_Skip"
 msgstr "_Preskoči"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Pre_imenuj"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Zamijeni"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Sukob datoteka"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (neispravan unicode)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "Priprema"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -952,6 +819,8 @@ msgstr[0] "%'d datoteka preostala za brisanje"
 msgstr[1] "%'d datoteke preostale za brisanje"
 msgstr[2] "%'d datoteka preostalo za brisanje"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1286,6 +1155,10 @@ msgstr[2] "Udvostručavanje %'d datoteka"
 msgid "%S of %S"
 msgstr "%S od %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1484,21 +1357,9 @@ msgstr "Pražnjenje smeća"
 msgid "Emptying Trash"
 msgstr "Pražnjenje smeća"
 
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Danas u %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Jučer u %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b kod %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y u %-I:%M %p"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Prikaži više _pojedinosti"
 
 #: ../libcore/gof-file.c:364
 #, c-format
@@ -1530,6 +1391,218 @@ msgstr "Kose crte nisu dopuštene u imenima datoteka"
 msgid "Toplevel files cannot be renamed"
 msgstr "Datoteke najviše razine se ne mogu preimenovati"
 
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "Priprema"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Spojiti mapu \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
+"je u sukobu s datotekama koje se kopiraju."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zamjena će obrisati sve datoteke u mapi."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Zamijeniti mapu \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mapa s istim nazivom već postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Zamijeniti datoteku \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Zamjena će obrisati stari sadržaj."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Izvorna datoteka"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:668 ../src/View/PropertiesWindow.vala:707
+msgid "Size:"
+msgstr "Veličina:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:543
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Posljednja izmjena:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Zamijeni sa"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Spoji"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Odaberite novi naziv za odredište"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Vrati izvorno"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Primjeni radnju na sve datoteke"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Pre_imenuj"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Zamijeni"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Sukob datoteka"
+
+#: ../libwidgets/Resources.c:26 ../libwidgets/Resources.vala:28
+msgid "A simple and powerful file manager"
+msgstr "Jednostavan i moćan upravitelj datoteka"
+
+#: ../libwidgets/Resources.c:27 ../libwidgets/Resources.vala:47
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  AnSukkal https://launchpad.net/~ansukkal\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Davor Buday https://launchpad.net/~davor-buday-gmail\n"
+"  Ivan https://launchpad.net/~ivan-os\n"
+"  Ivan Vrljić https://launchpad.net/~vrlja92\n"
+"  Nikola Curilovic https://launchpad.net/~ncurilovic\n"
+"  Paulo Pavačić https://launchpad.net/~pavacic-p\n"
+"  Sinisa Perovic https://launchpad.net/~sinisa-p\n"
+"  Vedran Ivančević https://launchpad.net/~vedran-ivancevic\n"
+"  gogo https://launchpad.net/~trebelnik-stefina"
+
+#: ../libwidgets/Resources.c:68 ../libwidgets/Resources.vala:92
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.c:69 ../libwidgets/Resources.vala:93
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.c:70 ../libwidgets/Resources.vala:94
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.c:71 ../libwidgets/Resources.vala:95
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.c:72 ../src/View/Sidebar.vala:631
+#: ../libwidgets/Resources.vala:96
+msgid "Network"
+msgstr "Mreža"
+
+#: ../libwidgets/Resources.c:73 ../libwidgets/Resources.vala:97
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.c:74 ../libwidgets/Resources.vala:98
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.c:75 ../src/View/Sidebar.vala:489
+#: ../libwidgets/Resources.vala:99
+msgid "Trash"
+msgstr "Smeće"
+
+#: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
+msgid "Recent"
+msgstr "Nedavno"
+
+#: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
+msgid "MTP"
+msgstr ""
+
+#: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
+#: ../libwidgets/Resources.vala:102
+msgid "File System"
+msgstr "Datotečni sustav"
+
 #: ../filechooser-module/FileChooserDialog.vala:66
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
@@ -1543,101 +1616,6 @@ msgstr "Sljedeće"
 #: ../filechooser-module/FileChooserDialog.vala:82
 msgid "Create folder"
 msgstr "Stvori mapu"
-
-#: ../src/View/Window.vala:182
-msgid "Files isn't your default file manager."
-msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
-
-#: ../src/View/Window.vala:188
-msgid "Set as Default"
-msgstr "Postavi kao zadano"
-
-#: ../src/View/Window.vala:194
-msgid "Ignore"
-msgstr "Zanemari"
-
-#: ../src/View/ViewContainer.vala:325 ../src/View/Sidebar.vala:446
-msgid "Home"
-msgstr "Osobna mapa"
-
-#: ../src/View/ViewContainer.vala:327 ../src/View/PropertiesWindow.vala:1445
-#: ../src/View/Sidebar.vala:512 ../libwidgets/Resources.vala:102
-msgid "File System"
-msgstr "Datotečni sustav"
-
-#: ../src/View/ViewContainer.vala:344
-msgid "(as Administrator)"
-msgstr "(kao administrator)"
-
-#: ../src/View/ViewContainer.vala:353
-msgid "This Folder Does Not Belong to You"
-msgstr "Ova Mapa ne pripada vama"
-
-#: ../src/View/ViewContainer.vala:354
-msgid "You don't have permission to view this folder."
-msgstr "Nemate ovlasti za gledanje ova mape."
-
-#: ../src/View/ViewContainer.vala:357
-msgid "Unable to Mount Folder"
-msgstr "Ne mogu montirati Mapu"
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The server for this folder could not be located."
-msgstr "Nije moguće locirati server za ovu mapu."
-
-#: ../src/View/ViewContainer.vala:364 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Ova Mapa ne postoji"
-
-#: ../src/View/ViewContainer.vala:365
-msgid "You cannot create a folder here."
-msgstr "Ne možete napraviti Mapu ovdje."
-
-#: ../src/View/ViewContainer.vala:374
-msgid "File not Found"
-msgstr "Datoteka nije pronađena"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "The file selected no longer exists."
-msgstr "Označena datoteka  više ne postoji."
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Naziv datoteke"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
-msgid "Size"
-msgstr "Veličina"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
-msgid "Type"
-msgstr "Vrsta"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Izmijenjeno"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Mapu \"%s\" nije moguće pronaći."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Napravi"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Kreirajte mapu \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Neuspjelo kreiranje mape\n"
-"\n"
-"%s"
 
 #: ../src/View/Slot.vala:36
 msgid "This Folder Is Empty"
@@ -1654,6 +1632,22 @@ msgstr "Nema nedavnih dokumenata"
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
 msgstr "Pristup odbijen"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Naziv datoteke"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+msgid "Size"
+msgstr "Veličina"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+msgid "Type"
+msgstr "Vrsta"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Izmijenjeno"
 
 #: ../src/View/OverlayBar.vala:170
 msgid "%u folders"
@@ -1695,6 +1689,44 @@ msgstr "%u datoteka, "
 msgid "%u files, "
 msgstr "%u datoteke, "
 
+#: ../src/View/Window.vala:182
+msgid "Files isn't your default file manager."
+msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
+
+#: ../src/View/Window.vala:188
+msgid "Set as Default"
+msgstr "Postavi kao zadano"
+
+#: ../src/View/Window.vala:194
+msgid "Ignore"
+msgstr "Zanemari"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
+msgid "This Folder Does Not Exist"
+msgstr "Ova Mapa ne postoji"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Mapu \"%s\" nije moguće pronaći."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Napravi"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Kreirajte mapu \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Neuspjelo kreiranje mape\n"
+"\n"
+"%s"
+
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
 msgstr "Zatvori"
@@ -1704,8 +1736,7 @@ msgstr "Zatvori"
 msgid "Properties"
 msgstr "Svojstva"
 
-#: ../src/View/PropertiesWindow.vala:344
-#: ../src/View/PropertiesWindow.vala:1566
+#: ../src/View/PropertiesWindow.vala:344 ../src/View/PropertiesWindow.vala:1566
 msgid "General"
 msgstr "Općenito"
 
@@ -1778,8 +1809,7 @@ msgstr ""
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:704
-#: ../src/View/PropertiesWindow.vala:1495
+#: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
 msgstr "Info"
 
@@ -1791,8 +1821,7 @@ msgstr "Druga aplikacija..."
 msgid "Open with:"
 msgstr "Otvori pomoću:"
 
-#: ../src/View/PropertiesWindow.vala:781
-#: ../src/View/PropertiesWindow.vala:1511
+#: ../src/View/PropertiesWindow.vala:781 ../src/View/PropertiesWindow.vala:1511
 msgid "Usage"
 msgstr "Iskorištenost"
 
@@ -1867,98 +1896,6 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:429
-msgid "Personal"
-msgstr "Osobno"
-
-#: ../src/View/Sidebar.vala:434
-msgid "Your common places and bookmarks"
-msgstr "Vaša uobičajna mjesta i zabilješke"
-
-#: ../src/View/Sidebar.vala:453
-msgid "Open your personal folder"
-msgstr "Otvorite svoju osobnu mapu"
-
-#: ../src/View/Sidebar.vala:468
-msgid "View the list of recently used files"
-msgstr "Pogledaj listu nedavno korištenih datoteka"
-
-#: ../src/View/Sidebar.vala:489 ../libwidgets/Resources.vala:99
-msgid "Trash"
-msgstr "Smeće"
-
-#: ../src/View/Sidebar.vala:496
-msgid "Open the Trash"
-msgstr "Otvori smeće"
-
-#: ../src/View/Sidebar.vala:502
-msgid "Devices"
-msgstr "Uređaji"
-
-#: ../src/View/Sidebar.vala:507
-msgid "Your local partitions and devices"
-msgstr "Vaše lokalne particije i uređaji"
-
-#: ../src/View/Sidebar.vala:519
-msgid "Open the contents of the FileSystem"
-msgstr "Otvori sadržaj datotečnog sustava"
-
-#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
-msgid "Mount and open %s"
-msgstr "Montiraj i otvori %s"
-
-#: ../src/View/Sidebar.vala:631 ../libwidgets/Resources.vala:96
-msgid "Network"
-msgstr "Mreža"
-
-#: ../src/View/Sidebar.vala:636
-msgid "Your network places"
-msgstr "Vaša mrežna mjesta"
-
-#: ../src/View/Sidebar.vala:666
-msgid "Entire Network"
-msgstr "Cjelokupna mreža"
-
-#: ../src/View/Sidebar.vala:673
-msgid "Browse the contents of the network"
-msgstr "Pregledavanje sadržaja mreže"
-
-#: ../src/View/Sidebar.vala:1210
-msgid "Unable to start %s"
-msgstr "Nemoguće je pokrenuti %s"
-
-#: ../src/View/Sidebar.vala:1291
-msgid "Open"
-msgstr "Otvori"
-
-#: ../src/View/Sidebar.vala:1299
-msgid "Open in New _Tab"
-msgstr "Otvori u novoj _kartici"
-
-#: ../src/View/Sidebar.vala:1305
-msgid "Open in New _Window"
-msgstr "Otvori u novom _prozoru"
-
-#: ../src/View/Sidebar.vala:1313
-msgid "Remove"
-msgstr "Ukloni"
-
-#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Preimenuj"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Mount"
-msgstr "_Montiraj"
-
-#: ../src/View/Sidebar.vala:1336
-msgid "_Unmount"
-msgstr "_Odmontiraj"
-
-#: ../src/View/Sidebar.vala:1342
-msgid "_Eject"
-msgstr "_Izbaci"
-
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr "Neuspješan prikaz"
@@ -2016,6 +1953,154 @@ msgstr "Umjesto toga izrezati sekciju"
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
 msgstr "Nemoguće preimenovati u '%s'"
+
+#: ../src/View/Sidebar.vala:429
+msgid "Personal"
+msgstr "Osobno"
+
+#: ../src/View/Sidebar.vala:434
+msgid "Your common places and bookmarks"
+msgstr "Vaša uobičajna mjesta i zabilješke"
+
+#: ../src/View/Sidebar.vala:446 ../src/View/ViewContainer.vala:325
+msgid "Home"
+msgstr "Osobna mapa"
+
+#: ../src/View/Sidebar.vala:453
+msgid "Open your personal folder"
+msgstr "Otvorite svoju osobnu mapu"
+
+#: ../src/View/Sidebar.vala:468
+msgid "View the list of recently used files"
+msgstr "Pogledaj listu nedavno korištenih datoteka"
+
+#: ../src/View/Sidebar.vala:496
+msgid "Open the Trash"
+msgstr "Otvori smeće"
+
+#: ../src/View/Sidebar.vala:502
+msgid "Devices"
+msgstr "Uređaji"
+
+#: ../src/View/Sidebar.vala:507
+msgid "Your local partitions and devices"
+msgstr "Vaše lokalne particije i uređaji"
+
+#: ../src/View/Sidebar.vala:519
+msgid "Open the contents of the FileSystem"
+msgstr "Otvori sadržaj datotečnog sustava"
+
+#: ../src/View/Sidebar.vala:549 ../src/View/Sidebar.vala:743
+msgid "Mount and open %s"
+msgstr "Montiraj i otvori %s"
+
+#: ../src/View/Sidebar.vala:636
+msgid "Your network places"
+msgstr "Vaša mrežna mjesta"
+
+#: ../src/View/Sidebar.vala:666
+msgid "Entire Network"
+msgstr "Cjelokupna mreža"
+
+#: ../src/View/Sidebar.vala:673
+msgid "Browse the contents of the network"
+msgstr "Pregledavanje sadržaja mreže"
+
+#: ../src/View/Sidebar.vala:1210
+msgid "Unable to start %s"
+msgstr "Nemoguće je pokrenuti %s"
+
+#: ../src/View/Sidebar.vala:1291
+msgid "Open"
+msgstr "Otvori"
+
+#: ../src/View/Sidebar.vala:1299
+msgid "Open in New _Tab"
+msgstr "Otvori u novoj _kartici"
+
+#: ../src/View/Sidebar.vala:1305
+msgid "Open in New _Window"
+msgstr "Otvori u novom _prozoru"
+
+#: ../src/View/Sidebar.vala:1313
+msgid "Remove"
+msgstr "Ukloni"
+
+#: ../src/View/Sidebar.vala:1321 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: ../src/View/Sidebar.vala:1330
+msgid "_Mount"
+msgstr "_Montiraj"
+
+#: ../src/View/Sidebar.vala:1336
+msgid "_Unmount"
+msgstr "_Odmontiraj"
+
+#: ../src/View/Sidebar.vala:1342
+msgid "_Eject"
+msgstr "_Izbaci"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "(as Administrator)"
+msgstr "(kao administrator)"
+
+#: ../src/View/ViewContainer.vala:353
+msgid "This Folder Does Not Belong to You"
+msgstr "Ova Mapa ne pripada vama"
+
+#: ../src/View/ViewContainer.vala:354
+msgid "You don't have permission to view this folder."
+msgstr "Nemate ovlasti za gledanje ova mape."
+
+#: ../src/View/ViewContainer.vala:357
+msgid "Unable to Mount Folder"
+msgstr "Ne mogu montirati Mapu"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The server for this folder could not be located."
+msgstr "Nije moguće locirati server za ovu mapu."
+
+#: ../src/View/ViewContainer.vala:365
+msgid "You cannot create a folder here."
+msgstr "Ne možete napraviti Mapu ovdje."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "File not Found"
+msgstr "Datoteka nije pronađena"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "The file selected no longer exists."
+msgstr "Označena datoteka  više ne postoji."
+
+#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
+#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+msgid "File Operations"
+msgstr "Rad s datotekama"
+
+#: ../src/ProgressUIHandler.vala:206
+msgid "All file operations have been successfully completed"
+msgstr "Sve radnje nad datotekama su uspješno završene"
+
+#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d radnja nad datotekama se izvodi"
+msgstr[1] "%'d radnje nad datotekama  se izvode"
+msgstr[2] "%'d radnja nad datotekama  se izvodi"
+
+#: ../src/ProgressUIHandler.vala:242
+msgid "Show Details"
+msgstr "Prikaži pojedinosti"
+
+#: ../src/ProgressUIHandler.vala:323
+msgid "Show Copy Dialog"
+msgstr "Prikaži dijalog kopiranja"
+
+#: ../src/ProgressUIHandler.vala:335
+msgid "Cancel All In-progress Actions"
+msgstr "Otkaži sve radnje u tijeku"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2079,34 +2164,6 @@ msgstr "O Datotekama"
 msgid "Files"
 msgstr "Datoteke"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
-msgid "File Operations"
-msgstr "Rad s datotekama"
-
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Sve radnje nad datotekama su uspješno završene"
-
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d radnja nad datotekama se izvodi"
-msgstr[1] "%'d radnje nad datotekama  se izvode"
-msgstr[2] "%'d radnja nad datotekama  se izvodi"
-
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Prikaži pojedinosti"
-
-#: ../src/ProgressUIHandler.vala:323
-msgid "Show Copy Dialog"
-msgstr "Prikaži dijalog kopiranja"
-
-#: ../src/ProgressUIHandler.vala:335
-msgid "Cancel All In-progress Actions"
-msgstr "Otkaži sve radnje u tijeku"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Nije uspjelo pokretanje \"%s\""
@@ -2127,78 +2184,22 @@ msgstr "Poveži ovdje"
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: ../libwidgets/Resources.vala:28
-msgid "A simple and powerful file manager"
-msgstr "Jednostavan i moćan upravitelj datoteka"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
+msgstr "Pokaži put do %s"
 
-#: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Launchpad prevoditelji"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Idi na %s"
 
-#: ../libwidgets/Resources.vala:92
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:93
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:94
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:95
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:97
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:98
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:100
-msgid "Recent"
-msgstr "Nedavno"
-
-#: ../libwidgets/Resources.vala:101
-msgid "MTP"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:159
-msgid "Reload this folder"
-msgstr "Ponovno učitaj ovu mapu"
-
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:258
 msgid "Enter search term or path"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:406
-msgid "Open in New Tab"
-msgstr "Otvori u novoj kartici"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:413
-msgid "Open in New Window"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
 msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:452
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:179
-msgid "In This Folder"
-msgstr "U ovoj mapi"
-
-#: ../libwidgets/View/SearchResults.vala:181
-msgid "Bookmarks"
-msgstr "Zabilješke"
-
-#: ../libwidgets/View/SearchResults.vala:183
-msgid "Everywhere Else"
-msgstr "Svugdje Drugdje"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2212,17 +2213,33 @@ msgstr "Pogled popisa"
 msgid "View in Columns"
 msgstr "Pogled u stupcu"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "U ovoj mapi"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Zabilješke"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Svugdje Drugdje"
+
+#: ../libwidgets/View/LocationBar.vala:159
+msgid "Reload this folder"
+msgstr "Ponovno učitaj ovu mapu"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:406
+msgid "Open in New Tab"
+msgstr "Otvori u novoj kartici"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:413
+msgid "Open in New Window"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:167
-msgid "Navigate to %s"
-msgstr "Pokaži put do %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:254
-msgid "Go to %s"
-msgstr "Idi na %s"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:452
+msgid "Open in Other Application…"
+msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2252,8 +2269,7 @@ msgstr "Nije moguće vratiti ili obrisati osim u root mapi"
 msgid "Restore from Trash"
 msgstr "Vrati iz smeća"
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Trajno obriši"
 

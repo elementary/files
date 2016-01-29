@@ -242,10 +242,10 @@ namespace FM {
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
-            editable_cursor = new Gdk.Cursor (Gdk.CursorType.XTERM);
-            activatable_cursor = new Gdk.Cursor (Gdk.CursorType.HAND1);
-            selectable_cursor = new Gdk.Cursor (Gdk.CursorType.ARROW);
-            blank_cursor = new Gdk.Cursor (Gdk.CursorType.CROSSHAIR);
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
@@ -282,6 +282,8 @@ namespace FM {
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
             change_zoom_level ();
+
+            connect_directory_handlers (slot.directory);
         }
 
         ~AbstractDirectoryView () {
@@ -325,8 +327,6 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
-
-            connect_directory_handlers (slot.directory);
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -619,8 +619,8 @@ namespace FM {
             block_model ();
             model.clear ();
             unblock_model ();
-            if (new_dir.can_load)
-                connect_directory_handlers (new_dir);
+            /* As we connect the signal file_loaded signal handler, we initialise. */
+            connect_directory_handlers (new_dir);
         }
 
         public void reload () {
@@ -649,7 +649,7 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel ();
+            slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
 
             if (thumbnail_request > 0) {
@@ -970,7 +970,7 @@ namespace FM {
 
             foreach (GOF.File file in selected_files) {
                 window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
-            }        
+            }
         }
 
         private void on_selection_action_forget (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1285,8 +1285,9 @@ namespace FM {
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
-            debug ("DV  directory done loading %s", dir.file.uri);
+            /* Should only be called on directory creation or reload */
             dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.done_loading.disconnect (on_directory_done_loading);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
@@ -1295,8 +1296,9 @@ namespace FM {
 
             if (in_recent)
                 model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else
+            else if (slot.directory.file.info != null) {
                 model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
              * are sometimes not properly aligned when first drawn, only after redrawing the view. */
@@ -1342,12 +1344,9 @@ namespace FM {
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
+            /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-
-            if (show)
-                dir.load_hiddens ();
-            else
-                dir.load ();
+            dir.load_hiddens ();
         }
 
         private void on_interpret_desktop_files_changed () {
@@ -2072,7 +2071,7 @@ namespace FM {
                 if (ftype == GLib.FileType.DIRECTORY) {
                     var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();             
+                    templates_submenu = new GLib.Menu ();
                 } else {
                     templates_submenu.append (label, "background.create_from::" + index.to_string ());
                     count ++;
@@ -2507,7 +2506,7 @@ namespace FM {
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/ 
+          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (int keyval, uint code) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
@@ -3092,6 +3091,7 @@ namespace FM {
             icon_renderer.set_property ("size", icon_size);
             helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
             icon_renderer.set_property ("selection-helpers", helpers_shown);
+            view.style_updated ();
         }
 
         private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
@@ -3200,9 +3200,9 @@ namespace FM {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
-            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the 
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
-             */  
+             */
             if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
                 return;
 
