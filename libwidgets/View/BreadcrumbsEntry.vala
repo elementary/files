@@ -383,13 +383,13 @@ namespace Marlin.View.Chrome {
             menu.deactivate.connect (() => {reset_elements_states ();});
 
             build_base_menu (menu, loc);
+            GOF.Directory.Async? files_menu_dir = null;
             if (root != null) {
-                var files_menu_dir = GOF.Directory.Async.from_gfile (root);
+                files_menu_dir = GOF.Directory.Async.from_gfile (root);
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
                 });
-                files_menu_dir.init ();
             } else {
                 warning ("Root directory null for %s", path);
             }
@@ -400,6 +400,10 @@ namespace Marlin.View.Chrome {
                         right_click_menu_position_func,
                         0,
                         event.time);
+
+            if (files_menu_dir != null) {
+                files_menu_dir.init ();
+            }
         }
 
         private void build_base_menu (Gtk.Menu menu, GLib.File loc) {
@@ -461,17 +465,18 @@ namespace Marlin.View.Chrome {
 
         private void append_subdirectories (Gtk.Menu menu, GOF.Directory.Async dir) {
             /* Append list of directories at the same level */
-            unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
-            if (sorted_dirs.length () > 0) {
-                menu.append (new Gtk.SeparatorMenuItem ());
-                foreach (var gof in sorted_dirs) {
-                    var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
-                    menuitem.set_data ("location", gof.uri);
-                    menu.append (menuitem);
-                    menuitem.activate.connect (() => {
-                        text = menu.get_active ().get_data ("location");
-                        activate ();
-                    });
+            if (dir.can_load) {
+                unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
+                if (sorted_dirs.length () > 0) {
+                    menu.append (new Gtk.SeparatorMenuItem ());
+                    foreach (var gof in sorted_dirs) {
+                        var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                        menuitem.set_data ("location", gof.uri);
+                        menu.append (menuitem);
+                        menuitem.activate.connect ((mi) => {
+                            activate_path (mi.get_data ("location"));
+                        });
+                    }
                 }
             }
             menu.show_all ();

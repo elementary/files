@@ -81,6 +81,7 @@ namespace GOF {
         protected abstract void make_view ();
         public abstract void cancel ();
         public abstract void close ();
+        public abstract FileInfo? lookup_file_info (GLib.File loc);
 
         public virtual void zoom_out () {}
         public virtual void zoom_in () {}

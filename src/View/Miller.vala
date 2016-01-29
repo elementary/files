@@ -516,5 +516,9 @@ namespace Marlin.View {
         public override void set_frozen_state (bool freeze) {
             current_slot.set_frozen_state (freeze);
         }
+
+        public override FileInfo? lookup_file_info (GLib.File loc) {
+            return current_slot.lookup_file_info (loc);
+        }
     }
 }
