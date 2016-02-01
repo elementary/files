@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:47+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-02-01 01:43+0000\n"
+"Last-Translator: Murat Yilmazlar <muratyilmazlar@windowslive.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-02-01 05:28+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -172,11 +172,11 @@ msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: ../libcore/marlin-undostack-manager.c:638
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Gerçek konum tespit edilemedi"
 
 #: ../libcore/marlin-undostack-manager.c:639
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Çöp kutusunu aç ve el ile geri getir"
 
 #: ../libcore/marlin-undostack-manager.c:1229
 #, c-format
@@ -1506,12 +1506,14 @@ msgstr ""
 "  Fatih Dayioglu https://launchpad.net/~fthd\n"
 "  Ferhat TUNÇTAN https://launchpad.net/~ferhattnctn66\n"
 "  Furkan Ege Öztürk https://launchpad.net/~furkanegeozturk\n"
+"  Halil Öncen https://launchpad.net/~haliloncen09\n"
 "  Halit Alptekin https://launchpad.net/~halitalptekin\n"
 "  Kamil Tolga Atam https://launchpad.net/~atam\n"
 "  Mehmet https://launchpad.net/~mcavus\n"
 "  Mehmet Bozoklu https://launchpad.net/~mehmet-bozoklu\n"
 "  Mehmet MENENGEÇ https://launchpad.net/~mehmetmenengec\n"
 "  MuHa Aliss https://launchpad.net/~muha.aliss\n"
+"  Murat Yilmazlar https://launchpad.net/~muratyilmazlar\n"
 "  Omer GOK https://launchpad.net/~mechulkalan\n"
 "  Sadık Atalay https://launchpad.net/~seaflames\n"
 "  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
@@ -1562,11 +1564,11 @@ msgstr "Çöp"
 
 #: ../libwidgets/Resources.c:76 ../libwidgets/Resources.vala:100
 msgid "Recent"
-msgstr ""
+msgstr "Son kullanılan"
 
 #: ../libwidgets/Resources.c:77 ../libwidgets/Resources.vala:101
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Resources.c:78 ../src/View/PropertiesWindow.vala:1445
 #: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:327
@@ -1598,11 +1600,11 @@ msgstr "Çöp Kutusu Boş"
 
 #: ../src/View/Slot.vala:38
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Son Kullanılan Dosyalar Yok"
 
 #: ../src/View/Slot.vala:39
 msgid "Access Denied"
-msgstr ""
+msgstr "Erişim Rededildi"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1646,19 +1648,19 @@ msgstr "%u öğe seçildi (%s)"
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u alt klasör, "
 
 #: ../src/View/OverlayBar.vala:219
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u alt klasörler, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u file, "
-msgstr ""
+msgstr "%u dosya, "
 
 #: ../src/View/OverlayBar.vala:224
 msgid "%u files, "
-msgstr ""
+msgstr "%u dosyalar, "
 
 #: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
@@ -1674,7 +1676,7 @@ msgstr "Yoksay"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:364
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Bu Klasör Mevcut Değil"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1745,40 +1747,40 @@ msgstr "%u seçili öğe"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Created:"
-msgstr ""
+msgstr "Oluşturma tarihi:"
 
 #: ../src/View/PropertiesWindow.vala:626
 msgid "Modified:"
-msgstr ""
+msgstr "Değiştirilme tarihi:"
 
 #: ../src/View/PropertiesWindow.vala:629
 msgid "Last Access:"
-msgstr ""
+msgstr "Son Erişim:"
 
 #: ../src/View/PropertiesWindow.vala:637
 msgid "Deleted:"
-msgstr ""
+msgstr "Silindi:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "MimeType:"
-msgstr ""
+msgstr "Mime Türü:"
 
 #: ../src/View/PropertiesWindow.vala:650
 msgid "MimeTypes:"
-msgstr ""
+msgstr "Mime Türleri:"
 
 #: ../src/View/PropertiesWindow.vala:681 ../src/View/PropertiesWindow.vala:683
 #: ../src/View/PropertiesWindow.vala:1497
 msgid "Location:"
-msgstr ""
+msgstr "Konum:"
 
 #: ../src/View/PropertiesWindow.vala:687
 msgid "Target:"
-msgstr ""
+msgstr "Hedef:"
 
 #: ../src/View/PropertiesWindow.vala:693
 msgid "Origin Location:"
-msgstr ""
+msgstr "Başlangıç konumu:"
 
 #: ../src/View/PropertiesWindow.vala:704 ../src/View/PropertiesWindow.vala:1495
 msgid "Info"
@@ -1819,16 +1821,16 @@ msgstr "Çalıştır"
 #: ../src/View/PropertiesWindow.vala:1116
 #: ../src/View/PropertiesWindow.vala:1131
 msgid "Owner:"
-msgstr ""
+msgstr "Sahibi:"
 
 #: ../src/View/PropertiesWindow.vala:1122
 #: ../src/View/PropertiesWindow.vala:1136
 msgid "Group:"
-msgstr ""
+msgstr "Grup:"
 
 #: ../src/View/PropertiesWindow.vala:1141
 msgid "Everyone:"
-msgstr ""
+msgstr "Herkes:"
 
 #: ../src/View/PropertiesWindow.vala:1374
 msgid "Select an application to open "
@@ -1836,36 +1838,36 @@ msgstr "Açmak için uygulama seçin "
 
 #: ../src/View/PropertiesWindow.vala:1429
 msgid "Disk Properties"
-msgstr ""
+msgstr "Disk Özellikleri"
 
 #: ../src/View/PropertiesWindow.vala:1504
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: ../src/View/PropertiesWindow.vala:1522
 #: ../src/View/PropertiesWindow.vala:1547
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapasite:"
 
 #: ../src/View/PropertiesWindow.vala:1528
 #: ../src/View/PropertiesWindow.vala:1553
 msgid "Available:"
-msgstr ""
+msgstr "Kullanılabilir:"
 
 #: ../src/View/PropertiesWindow.vala:1534
 #: ../src/View/PropertiesWindow.vala:1559
 msgid "Used:"
-msgstr ""
+msgstr "Kullanılan:"
 
 #: ../src/View/PropertiesWindow.vala:1537
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% kullanıldı)"
 
 #: ../src/View/PropertiesWindow.vala:1550
 #: ../src/View/PropertiesWindow.vala:1556
 #: ../src/View/PropertiesWindow.vala:1562
 msgid "Unknown"
-msgstr ""
+msgstr "Bilinmeyen"
 
 #: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
@@ -1923,7 +1925,7 @@ msgstr "Seçilenin yerine kesiliyor."
 
 #: ../src/View/AbstractDirectoryView.vala:2835
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "'%s' yeniden adlandırılamadı"
 
 #: ../src/View/Sidebar.vala:429
 msgid "Personal"
@@ -1943,7 +1945,7 @@ msgstr "Kişisel dizininizi açın"
 
 #: ../src/View/Sidebar.vala:468
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Son kullanılan dosyaların listesini göster"
 
 #: ../src/View/Sidebar.vala:496
 msgid "Open the Trash"
@@ -2027,7 +2029,7 @@ msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
 
 #: ../src/View/ViewContainer.vala:357
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Klasörü Bağlama Başarısız"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The server for this folder could not be located."
@@ -2035,7 +2037,7 @@ msgstr "Bu klasör için sunucu bulunamadı."
 
 #: ../src/View/ViewContainer.vala:365
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Burada bir klasör oluşturamazsınız."
 
 #: ../src/View/ViewContainer.vala:374
 msgid "File not Found"
@@ -2058,6 +2060,7 @@ msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d dosya işlemi etkin"
+msgstr[1] "%'d dosya işlemleri etkin"
 
 #: ../src/ProgressUIHandler.vala:242
 msgid "Show Details"
@@ -2135,11 +2138,11 @@ msgstr "Dosyalar"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\" çalıştırılamadı"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Buraya Taşı"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
@@ -2155,7 +2158,7 @@ msgstr "İptal"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
 msgid "Navigate to %s"
-msgstr ""
+msgstr "%s'e git"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
 msgid "Go to %s"
@@ -2164,11 +2167,11 @@ msgstr "%s git"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 #: ../libwidgets/View/LocationBar.vala:162
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Arama koşullarını veya yolu gir"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Bir yol belirle"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2204,11 +2207,11 @@ msgstr "Yeni Sekmede Aç"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:413
 msgid "Open in New Window"
-msgstr ""
+msgstr "Yeni Pencerede Aç"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Başka Bir Uygulamayla Aç..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2232,7 +2235,7 @@ msgstr "Bu dosyalar çöp kutusundan silinebilir ve ya yeniden kullanılabilir."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Eğer kök klasöründe değilse geri alınamaz veya silinemez"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2244,11 +2247,11 @@ msgstr "Kalıcı olarak sil"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Ana Klasörü Aç"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Geçmişten Sil"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
