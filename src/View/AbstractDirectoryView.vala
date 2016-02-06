@@ -2533,6 +2533,19 @@ namespace FM {
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
 
+
+            /* Implement linear selection in Icon View with cursor keys */
+            bool linear_select_required = false;
+            if (!no_mods && !only_control_pressed) {
+                if (only_shift_pressed && (this is IconView)) {
+                    linear_select_required = true;
+                } else {
+                    previous_selection_was_linear = false;
+                }
+            } else {
+                previous_selection_was_linear = false;
+            }
+
             switch (event.keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
@@ -2627,6 +2640,32 @@ namespace FM {
                         invert_selection ();
 
                    return true;
+
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+
+                    if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null) {
+                            if (event.keyval == Gdk.Key.Right) {
+                                path.next ();
+                            } else if (event.keyval == Gdk.Key.Left) {
+                                path.prev ();
+                            } else if (event.keyval == Gdk.Key.Up) {
+                                path = up (path);
+                            } else if (event.keyval == Gdk.Key.Down) {
+                                path = down (path);
+                            }
+                            linear_select_path (path);
+                            return true;
+                        }
+                    } else {
+                        previous_selection_was_linear = false;
+                        previous_linear_selection_path = null;
+                    }
+                    break;
 
                 default:
                     break;
@@ -3011,12 +3050,12 @@ namespace FM {
                                     linear_select_path (path);
                                 } else {
                                     previous_selection_was_linear = false;
-                                    previous_linear_selection_path = null;
                                     result = false; /* Rubberband */
                                 }
                             else
                                 result = handle_primary_button_click (event, path);
 
+                            previous_linear_selection_path = path.copy ();
                             break;
 
                         case ClickZone.HELPER:
@@ -3073,7 +3112,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
-
+            previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }
 
@@ -3324,6 +3363,8 @@ namespace FM {
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual void linear_select_path (Gtk.TreePath path) {}
+        protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
+        protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
