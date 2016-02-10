@@ -2960,6 +2960,10 @@ namespace FM {
             grab_focus (); /* cancels any renaming */
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
+            if (dnd_disabled) { /* Second button pressed before first released - not permitted during rubberbanding */
+                return true;
+            }
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
