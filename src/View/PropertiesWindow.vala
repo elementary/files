@@ -1366,17 +1366,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                         AppsColumn.APP_INFO, out app);
 
         if (app == null) {
-            var app_chooser_dlg = new Gtk.AppChooserDialog (this, 0, goffile.location);
-            string str = null;
-            foreach (var mime in mimes) {
-                (str == null) ? str = mime : str = string.join (", ", str, mime);
-            }
-            app_chooser_dlg.set_heading (_("Select an application to open " + str));
-            app_chooser_dlg.show ();
-
-            int res = app_chooser_dlg.run ();
-            if (res == Gtk.ResponseType.OK) {
-                var app_chosen = app_chooser_dlg.get_app_info ();
+            var app_chosen = Marlin.MimeActions.choose_app_for_glib_file (goffile.location, this);
+            if (app_chosen != null) {
                 store_apps.prepend (out iter);
                 store_apps.set (iter,
                                 AppsColumn.APP_INFO, app_chosen,
@@ -1384,7 +1375,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                                 AppsColumn.ICON, ensure_icon (app_chosen));
                 combo.set_active (0);
             }
-            app_chooser_dlg.destroy ();
         } else {
             try {
                 foreach (var mime in mimes)
