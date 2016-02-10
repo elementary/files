@@ -617,24 +617,32 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     private void get_info (GOF.File file) {
         info = new Gee.LinkedList<Pair<string, string>>();
 
-        /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
+        /* Always give full time details (default format is "locale" for get_formatted_time_attribute_from_info function) */
         if (count == 1) {
-            var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
-            if (time_created != null)
+            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_CREATED);
+            if (time_created != "") {
                 info.add (new Pair<string, string>(_("Created:"), time_created));
-            if (file.formated_modified != null)
-                info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
-            var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
-            if (time_last_access != null)
+            }
+
+            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_MODIFIED);
+            if (time_modified != "") {
+                info.add (new Pair<string, string>(_("Modified:"), time_modified));
+            }
+
+            var time_last_access = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_ACCESS);
+            if (time_last_access != "") {
                 info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
+            }
+
             /* print deletion date if trashed file */
-
-            /**TODO** format trash deletion date string*/
-
             if (file.is_trashed ()) {
                 var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-                if (deletion_date != null)
-                    info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
+                var tv = TimeVal ();
+                if (deletion_date != null && tv.from_iso8601 (deletion_date)) {
+                    var time_deleted = PF.FileUtils.get_formatted_date_time (new DateTime.from_timeval_local (tv));
+                    if (time_deleted != "")
+                        info.add (new Pair<string, string>(_("Deleted:"), time_deleted));
+                }
             }
         }
         ftype = get_common_ftype ();

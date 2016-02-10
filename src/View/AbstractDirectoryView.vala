@@ -1838,8 +1838,9 @@ namespace FM {
 
                     clipboard_menu.remove (1); /* Copy */
                     clipboard_menu.remove (1); /* Paste (index updated by previous line) */
-
                     menu.append_section (null, clipboard_menu);
+
+                    menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
                 }
             } else if (in_recent) {
                 var open_menu = build_menu_open (ref builder);
@@ -2578,14 +2579,14 @@ namespace FM {
 
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    if (in_trash)
+                    if (only_alt_pressed) /* allowed to view properties of trashed files */
+                        common_actions.activate_action ("properties", null);
+                    else if (in_trash) /* but no other actions on trashed files */
                         return false;
                     else if (in_recent)
                         activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     else if (only_shift_pressed)
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                    else if (only_alt_pressed)
-                        common_actions.activate_action ("properties", null);
                     else if (no_mods)
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     else
