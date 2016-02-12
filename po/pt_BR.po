@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:44+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-02-11 18:00+0000\n"
+"Last-Translator: Arthur Bergamaschi <arthurbergmz@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-02-12 05:33+0000\n"
+"X-Generator: Launchpad (build 17923)\n"
 "Language: pt_BR\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -799,8 +799,8 @@ msgstr[1] "%'d arquivos restantes para excluir"
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T falta"
-msgstr[1] "%T faltam"
+msgstr[0] "%T restante"
+msgstr[1] "%T restantes"
 
 #: ../libcore/marlin-file-operations.c:1607
 #: ../libcore/marlin-file-operations.c:1641
@@ -1135,8 +1135,8 @@ msgstr "%S de %S"
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S de %S — %T falta (%S/seg)"
-msgstr[1] "%S de %S — %T faltam (%S/seg)"
+msgstr[0] "%S de %S — %T restante (%S/segundo)"
+msgstr[1] "%S de %S — %T restantes (%S/segundo)"
 
 #: ../libcore/marlin-file-operations.c:3589
 msgid ""
@@ -1521,9 +1521,12 @@ msgstr ""
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Alex https://launchpad.net/~asw-ijuhy\n"
 "  Aluísio Augusto Silva Gonçalves https://launchpad.net/~aluisio.asg\n"
+"  Arthur Bergamaschi https://launchpad.net/~arthurbergmz\n"
+"  Bruno Raphael Cabral de Mesquita https://launchpad.net/~brunoraphael\n"
 "  Cleiton Floss https://launchpad.net/~cleitonfloss\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Danilo Cominotti Marques https://launchpad.net/~dcominottim\n"
+"  Enos Buril https://launchpad.net/~enos-buril\n"
 "  Eudardo https://launchpad.net/~easilva91\n"
 "  Evertton de Lima https://launchpad.net/~everttonlima\n"
 "  Ewerton Wandalen https://launchpad.net/~ewandalen-9\n"
@@ -2299,7 +2302,7 @@ msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr "Marcador"
+msgstr "Favorito"
 
 #: ../src/View/directory_view_popup.ui:109
 msgid "Paste"
@@ -2307,7 +2310,7 @@ msgstr "Colar"
 
 #: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
-msgstr "Cortar"
+msgstr "Recortar"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
