@@ -225,7 +225,6 @@ namespace Marlin.View {
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
-            plugin_directory_loaded ();
             refresh_slot_info (slot.location);
         }
 
@@ -368,6 +367,7 @@ namespace Marlin.View {
                 /* Only record valid folders (will also log Zeitgeist event) */
                 browser.record_uri (slot.uri); /* will ignore null changes i.e reloading*/
                 window.set_can_go_forward (browser.get_can_go_forward ());
+                plugin_directory_loaded ();
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
