@@ -185,7 +185,6 @@ namespace Marlin.Places {
             var crd = new Marlin.CellRendererDisk (); /* Renders both bookmark name and diskspace */
             name_renderer = crd as Gtk.CellRendererText;
             name_renderer.xpad = NAME_XPAD;
-            crd.lpad = ROOT_INDENTATION_XPAD; /*left padding for disk-space indicator */
             crd.rpad = 12;
             name_renderer.editable = false;
             name_renderer.editable_set = true;

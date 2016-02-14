@@ -22,7 +22,6 @@
 public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     // padding to the right of the disk usage graphic
     public int rpad { set; get; }
-    public int lpad { set; get; }
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 
@@ -32,15 +31,13 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
     public CellRendererDisk () {
         rpad = 0;
-        lpad = 0;
     }
 
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle area, Gtk.CellRendererState flags) {
         base.render (cr, widget, bg_area, area, flags);
-        var offset = lpad + OFFSET;
-        area.x += offset;
-        area.width -= offset;
+        area.x += OFFSET;
+        area.width -= OFFSET;
 
         if (free_space > 0) {
             var context = widget.get_style_context ();
