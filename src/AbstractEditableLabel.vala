@@ -26,7 +26,7 @@ namespace Marlin {
         public string original_name;
         public bool draw_outline {get; set;}
 
-        public Gtk.Widget editable_widget;
+        private Gtk.Widget editable_widget;
 
         public AbstractEditableLabel () {
             editable_widget = create_editable_widget ();
@@ -41,28 +41,25 @@ namespace Marlin {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     editing_canceled = false;
-                    editing_done ();
-                    remove_widget ();
-                    break;
+                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                    return true;
 
                 case Gdk.Key.Escape:
                     editing_canceled = true;
-                    editing_done ();
-                    remove_widget ();
-                    break;
+                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                    return true;
 
                 case Gdk.Key.z:
-                    if (control_pressed)
+                    if (control_pressed) {
                         set_text (original_name);
-                    else
-                        return false;
-
+                        return true;
+                    }
                     break;
 
                 default:
-                    return false;
+                    break;
             }
-            return true;
+            return false;
         }
 
 
@@ -89,7 +86,6 @@ namespace Marlin {
 
 
         /** CellEditable interface */
-        /* modified gtk+-3.0.vapi required */
-        public virtual void start_editing (Gdk.Event? event) {}
+        public virtual void start_editing (Gdk.Event event) {}
     }
 }

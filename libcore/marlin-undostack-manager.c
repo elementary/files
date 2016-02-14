@@ -461,11 +461,10 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             break;
 
         case MARLIN_UNDO_RENAME:
-            new_name = get_uri_basename (action->new_uri);
-            file = gof_file_get_by_uri (action->old_uri);
-            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            g_free (new_name);
+            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->old_uri),
+                                                 get_uri_basename (action->new_uri),
+                                                 undo_redo_done_rename_callback,
+                                                 action);
             break;
 
         case MARLIN_UNDO_CREATEEMPTYFILE:
@@ -555,8 +554,6 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
-    GOFFile *file;
-    char *new_name;
     MarlinUndoManagerPrivate *priv = manager->priv;
 
     g_mutex_lock (&priv->mutex);
@@ -652,11 +649,10 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
             break;
 
         case MARLIN_UNDO_RENAME:
-            new_name = get_uri_basename (action->old_uri);
-            file = gof_file_get_by_uri (action->new_uri);
-            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            g_free (new_name);
+            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->new_uri),
+                                                 get_uri_basename (action->old_uri),
+                                                 undo_redo_done_rename_callback,
+                                                 action);
             break;
 
 #if 0
