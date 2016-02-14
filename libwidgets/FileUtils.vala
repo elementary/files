@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 Elementary Developers
+    Copyright (C) 2015 elementary Developers
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -16,8 +16,6 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 namespace PF.FileUtils {
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
@@ -71,11 +69,6 @@ namespace PF.FileUtils {
     public bool path_has_parent (string new_path) {
         var file = File.new_for_commandline_arg (new_path);
         return file.get_parent () != null;
-    }
-
-    public string? escape_uri (string uri, bool allow_utf8 = true) {
-        reserved_chars.replace("#", "");
-        return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), reserved_chars, allow_utf8);
     }
 
     /** Produce a valid unescaped path **/

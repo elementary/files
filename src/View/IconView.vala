@@ -142,6 +142,8 @@ namespace FM {
 
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
+                /* Ensure cursor follows last selection */
+                tree.set_cursor (path, null, false);
                 tree.select_path (path);
             }
         }
@@ -310,6 +312,139 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void linear_select_path (Gtk.TreePath path) {
+            /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
+            /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
+            /* the previous selection was made with the Shift key pressed */
+            /* Note: 'first' and 'last' refer to position in selection, not the time selected */
+
+            if (path == null) {
+                critical ("Ignoring attempt to select null path in linear_select_path");
+                return;
+            }
+            if (previous_linear_selection_path != null && path.compare (previous_linear_selection_path) == 0) {
+                /* Ignore if repeat click on same file as before. We keep the previous linear selection direction. */
+                return;
+            }
+
+            var selected_paths = tree.get_selected_items ();
+            /* Ensure the order of the selected files list matches the visible order */
+            selected_paths.sort (Gtk.TreePath.compare);
+
+            var first_selected = selected_paths.first ().data;
+            var last_selected = selected_paths.last ().data;
+            bool before_first = path.compare (first_selected) <= 0;
+            bool after_last = path.compare (last_selected) >= 0;
+            bool direction_change = false;
+
+            direction_change = (before_first && previous_linear_selection_direction > 0) ||
+                               (after_last && previous_linear_selection_direction < 0);
+
+            var p = path.copy ();
+            Gtk.TreePath p2 = null;
+
+            unselect_all ();
+            Gtk.TreePath? end_path = null;
+            if (!previous_selection_was_linear && previous_linear_selection_path != null) {
+                end_path = previous_linear_selection_path;
+            } else if (before_first) {
+                end_path = direction_change ? first_selected : last_selected;
+            } else {
+                end_path = direction_change ? last_selected : first_selected;
+            }
+
+            if (before_first) {
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.next ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) <= 0);
+            } else if (after_last) {
+                do {
+                    select_path (p);
+                    p2 = p.copy ();
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
+            } else {/* between first and last */
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
+
+                p = path.copy ();
+                do {
+                    p2 = p.copy ();
+                    p.next ();
+                    unselect_path (p);
+                } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
+            }
+            previous_selection_was_linear = true;
+
+            selected_paths = tree.get_selected_items ();
+            selected_paths.sort (Gtk.TreePath.compare);
+
+            first_selected = selected_paths.first ().data;
+            last_selected = selected_paths.last ().data;
+
+            if (path.compare (last_selected) == 0) {
+                previous_linear_selection_direction = 1; /* clicked after the (visually) first selection */
+            } else if (path.compare (first_selected) == 0) {
+                previous_linear_selection_direction = -1; /* clicked before the (visually) first selection */
+            } else {
+                critical ("Linear selection did not become end point - this should not happen!");
+                previous_linear_selection_direction = 0;
+            }
+            previous_linear_selection_path = path.copy ();
+            /* Ensure cursor in correct place, regardless of any selections made in this function */
+            tree.set_cursor (path, null, false);
+            tree.scroll_to_path (path, false, 0.5f, 0.5f);
+        }
+
+        protected override Gtk.TreePath up (Gtk.TreePath path) {
+            int item_row = tree.get_item_row (path);
+            if (item_row == 0) {
+                return path;
+            }
+            int cols = get_n_cols ();
+            int index = path.get_indices ()[0];
+            Gtk.TreePath new_path;
+            Gtk.TreeIter? iter = null;
+            new_path = new Gtk.TreePath.from_indices (index - cols, -1);
+            if (tree.model.get_iter (out iter, new_path)) {
+                return new_path;
+            } else {
+                return path;
+            }
+        }
+        protected override Gtk.TreePath down (Gtk.TreePath path) {
+            int cols = get_n_cols ();
+            int index = path.get_indices ()[0];
+
+            Gtk.TreePath new_path;
+            Gtk.TreeIter? iter = null;
+            new_path = new Gtk.TreePath.from_indices (index + cols, -1);
+            if (tree.model.get_iter (out iter, new_path)) {
+                return new_path;
+            } else {
+                return path;
+            }
+        }
+
+        /* When Icon View is automatically adjusting column number it does not expose the actual number of
+         * columns (get_columns () returns -1). So we have to write our own method. This is the only way
+         * (I can think of) that works on row 0. 
+         */   
+        private int get_n_cols () {
+            var path = new Gtk.TreePath.from_indices (0, -1);
+            int index = 0;
+            while (tree.get_item_row (path) == 0) {
+                index++;
+                path.next ();
+            }
+            return index;
         }
     }
 }

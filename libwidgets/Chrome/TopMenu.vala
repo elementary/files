@@ -159,5 +159,9 @@ namespace Marlin.View.Chrome
             }
             return res;
         }
+
+        public void cancel () {
+            location_bar.cancel ();
+        }
     }
 }
