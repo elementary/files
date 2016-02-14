@@ -246,9 +246,12 @@ namespace Marlin.View {
             });
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
                                                      (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                } else if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
+                    top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+                }
 
                 return false;
             });
