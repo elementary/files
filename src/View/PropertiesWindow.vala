@@ -254,6 +254,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     private Gtk.Widget header_title;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
+    private Gtk.Label contains_label;
+    private Gtk.Label contains_key_label;
     private Gtk.Widget type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
@@ -265,21 +267,24 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     private bool files_contain_a_directory;
 
-    private uint _folder_count;
-    private signal void folder_count_changed ();
+    private uint _uncounted_folders = 0;
+    private uint selected_folders = 0;
+    private uint selected_files = 0;
+    private signal void uncounted_folders_changed ();
 
-    private uint folder_count {
+    private uint uncounted_folders {
         get {
-            return _folder_count;
+            return _uncounted_folders;
         }
 
         set {
-            _folder_count = value;
-            folder_count_changed ();
+            _uncounted_folders = value;
+            uncounted_folders_changed ();
         }
     }
 
-    private uint file_count;
+    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
+    private uint file_count; /* Count of files current including top level (selected) files other than folders */
 
     public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
@@ -295,6 +300,12 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
 
         view = _view;
+
+        /* Connect signal before creating any DeepCount directories */
+        this.destroy.connect (() => {
+            foreach (var dir in deep_count_directories)
+                dir.cancel ();
+        });
 
         /* The properties window may outlive the passed-in file object
            lifetimes. The objects must be referenced as a precaution.
@@ -327,9 +338,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 critical ("Properties Window constructor called with invalid file data (2)");
                 return;
             }
+
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
+
             if (gof.is_directory)
                 files_contain_a_directory = true;
         }
@@ -380,25 +393,12 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             add_section (stack, _("Preview"), PanelType.PREVIEW.to_string (), preview_box);
         }
 
-        if (count == 1 && !view.is_in_recent ()) {
-            int start_offset= 0, end_offset = -1;
-
-            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
-            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
-        }
-
-        if (folder_count == 0)
-            spinner.hide ();
-
-        if (size_warning < 1)
-            size_warning_image.hide ();
-
-        if (file_count > 1) {
-            type_key_label.hide ();
-            type_label.hide ();
-        }
-
         show_all ();
+
+        /* There is a race condition between reaching update_header_desc () or here first
+         * so call update_widgets_state in both places.
+         */
+        update_widgets_state ();
         present ();
     }
 
@@ -408,12 +408,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         string header_desc_str;
 
         header_desc_str = format_size ((int64) total_size);
-        if (ftype != null)
-            type_label.label = goffile.formated_type;
-        else {
-            type_key_label.hide ();
-            type_label.hide ();
-        }
 
         if (size_warning > 0) {
             string file_plural = _("file");
@@ -424,6 +418,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
 
         size_label.label = header_desc_str;
+        contains_label.label = get_contains_label (folder_count, file_count);
+        update_widgets_state ();
     }
 
     private Mutex mutex;
@@ -431,58 +427,62 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     private void selection_size_update () {
         total_size = 0;
-        deep_count_directories = null;
+        uncounted_folders = 0;
+        selected_folders = 0;
+        selected_files = 0;
         folder_count = 0;
         file_count = 0;
         size_warning = 0;
         size_warning_image.hide ();
 
+        deep_count_directories = null;
+
         foreach (GOF.File gof in files) {
             if (gof.is_directory) {
-                folder_count++;
-                var d = new Marlin.DeepCount (gof.location);
+                mutex.lock ();
+                    uncounted_folders++; /* this gets decremented by DeepCount*/
+                mutex.unlock ();
+                selected_folders++;
+                var d = new Marlin.DeepCount (gof.location); /* Starts counting on creation */
                 deep_count_directories.prepend (d);
-                d.finished.connect (() => {
-                                    mutex.lock ();
-                                    deep_count_directories.remove (d);
-                                    total_size += d.total_size;
-                                    size_warning = d.file_not_read;
-                                    update_header_desc ();
-                                    if (file_count + folder_count == size_warning)
-                                        size_label.label = _("unknown");
 
-                                    folder_count--;
-                                    if (!size_label.visible)
-                                        size_label.show ();
-                                    mutex.unlock ();
-                                    });
+                d.finished.connect (() => {
+                    mutex.lock ();
+                        deep_count_directories.remove (d);
+
+                        total_size += d.total_size;
+                        size_warning = d.file_not_read;
+                        if (file_count + uncounted_folders == size_warning)
+                            size_label.label = _("unknown");
+
+                        folder_count += d.dirs_count;
+                        file_count += d.files_count;
+                        uncounted_folders--; /* triggers signal which updates description when reaches zero */
+
+                    mutex.unlock ();
+                });
+
             } else {
-                file_count++;
+                selected_files++;
             }
 
             mutex.lock ();
-            total_size += PropertiesWindow.file_real_size (gof);
+                total_size += PropertiesWindow.file_real_size (gof);
             mutex.unlock ();
         }
 
-        if (file_count > 0)
-            update_header_desc ();
-
-        if (folder_count > 0) {
+        if (uncounted_folders > 0) {/* possible race condition - uncounted_folders could have been decremented? */
             spinner.start ();
-
-            folder_count_changed.connect (() => {
-                if (folder_count == 0) {
+            uncounted_folders_changed.connect (() => {
+                if (uncounted_folders == 0) {
                     spinner.hide ();
                     spinner.stop ();
+                    update_header_desc ();
                 }
             });
+        } else {
+            update_header_desc ();
         }
-
-        this.destroy.connect (() => {
-            foreach (var dir in deep_count_directories)
-                dir.cancel ();
-        });
     }
 
     private void rename_file (GOF.File file, string new_name) {
@@ -508,12 +508,36 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     }
 
     private void build_header_box (Gtk.Box content) {
+        /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
 
+        spinner = new Gtk.Spinner ();
+        spinner.set_hexpand (false);
+        spinner.halign = Gtk.Align.START;
+
+        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+        size_warning_image.halign = Gtk.Align.START;
+        size_warning_image.no_show_all = true;
+        size_label = new Gtk.Label ("");
+        size_label.set_hexpand (false);
+
+        type_label = new Gtk.Label ("");
+        type_label.set_halign (Gtk.Align.START);
+        type_key_label = new Gtk.Label (_("Type:"));
+        type_key_label.halign = Gtk.Align.END;
+
+        contains_label = new Gtk.Label ("");
+        contains_label.set_halign (Gtk.Align.START);
+        contains_key_label = new Gtk.Label (_("Contains:"));
+        contains_key_label.set_halign (Gtk.Align.END);
+
+        selection_size_update (); /* Start counting first to get number of selected files and folders */
+
+        /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
             var label = new Gtk.Label ("");
-            label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
+            label.set_markup ("<span>" + get_selected_label (selected_folders, selected_files) + "</span>");
             label.set_halign (Gtk.Align.START);
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
@@ -533,28 +557,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
 
         pack_header_box (file_img, header_title);
-
-        /* The header box is ready, now let's build some widgets that are going
-         * to be updated by selection_size_update() while the rest of the UI is
-         * being built. */
-        type_label = new Gtk.Label ("");
-        type_label.set_halign (Gtk.Align.START);
-
-        size_label = new Gtk.Label ("");
-        size_label.set_hexpand (false);
-
-        type_key_label = new Gtk.Label (_("Type:"));
-        type_key_label.halign = Gtk.Align.END;
-
-        spinner = new Gtk.Spinner ();
-        spinner.set_hexpand (false);
-        spinner.halign = Gtk.Align.START;
-
-        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.halign = Gtk.Align.START;
-        size_warning_image.no_show_all = true;
-
-        selection_size_update ();
     }
 
     private string? get_common_ftype () {
@@ -640,9 +642,23 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                     info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
             }
         }
+
         ftype = get_common_ftype ();
         if (ftype != null) {
             info.add (new Pair<string, string>(_("MimeType:"), ftype));
+            /* get image size in pixels using an asynchronous method to stop the interface blocking on
+             * large images. */
+            if ("image" in ftype) {
+                string resolution_value = "";
+                if (file.width > 0) { /* resolution has already been determined */
+                    resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+                } else {
+                    resolution_value = _("loading ...");
+                    /* Async function will update info when resolution determined */
+                    get_resolution.begin (file, info);
+                }
+                info.add (new Pair<string, string> (resolution_key, resolution_value));
+            }
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (view.get_default_app () != null && !goffile.is_directory) {
@@ -654,19 +670,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
         }
 
-        /* get image size in pixels using an asynchronous method to stop the interface blocking on
-         * large images. */
-        if ("image" in ftype) {
-            string resolution_value = "";
-            if (file.width > 0) { /* resolution has already been determined */
-                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
-            } else {
-                resolution_value = _("loading ...");
-                /* Async function will update info when resolution determined */
-                get_resolution.begin (file, info);
-            }
-            info.add (new Pair<string, string> (resolution_key, resolution_value));
-        }
+
 
         if (got_common_location ()) {
             if (view.is_in_recent ()) {
@@ -744,12 +748,13 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_key_label.halign = Gtk.Align.END;
 
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.pack_start (size_label, false, true);
         size_box.pack_start (spinner, false, false);
+        size_box.pack_start (size_label, false, true);
         size_box.pack_start (size_warning_image);
 
         create_info_line (size_key_label, size_label, information, ref n, size_box);
         create_info_line (type_key_label, type_label, information, ref n);
+        create_info_line (contains_key_label, contains_label, information, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Gtk.Label (pair.value);
@@ -1452,6 +1457,127 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
         }
         return file_size;
+    }
+
+    private string get_contains_label (uint folders, uint files) {
+        string txt = "";
+        if (folders > 0) {
+            if (folders > 1) {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u subfolders and %u files");
+                    } else {
+                        txt = _("%u subfolders and %u file");
+                    }
+                } else {
+                    txt = _("%u subfolders");
+                }
+            } else {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u subfolder and %u files");
+                    } else {
+                        txt = _("%u subfolder and %u file");
+                    }
+                } else {
+                    txt = _("%u folder");
+                }
+            }
+
+            if (files > 0) {
+                txt = txt.printf (folders, files);
+            } else {
+                txt = txt.printf (folders);
+            }
+        } else {
+            if (files > 0) {
+                if (files > 1) {
+                    txt = _("%u files").printf (files);
+                } else {
+                    txt = _("%u file").printf (files);
+                }
+            }
+        }
+        return txt;
+    }
+    private string get_selected_label (uint folders, uint files) {
+        string txt = "";
+        uint total = folders + files;
+
+        if (folders > 0) {
+            if (folders > 1) {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u selected items (%u folders and %u files)");
+                    } else {
+                        txt = _("%u selected items (%u folders and %u file)");
+                    }
+                } else {
+                    txt = _("%u folders");
+                }
+            } else {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u selected items (%u folder and %u files)");
+                    } else {
+                        txt = _("%u selected items (%u folder and %u file)");
+                    }
+                } else {
+                    txt = _("%u folder"); /* displayed for background folder*/
+                }
+            }
+
+            if (files > 0) {
+                txt = txt.printf (total, folders, files);
+            } else {
+                txt = txt.printf (total, folders);
+            }
+        } else {
+            if (files > 0) {
+                if (files > 1) {
+                    txt = _("%u files").printf (files);
+                } else {
+                    txt = _("%u file").printf (files); /* should not be displayed - entry instead */
+                }
+            }
+        }
+
+        if (txt.length > 0) {
+            return txt;
+        } else {
+            return _("Empty");
+        }
+    }
+
+    /** Hide certain widgets under certain conditions **/
+    private void update_widgets_state () {
+        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous */
+        if (count > selected_folders) {
+            contains_key_label.hide ();
+            contains_label.hide ();
+        }
+
+        if (uncounted_folders == 0)
+            spinner.hide ();
+
+        if (size_warning < 1)
+            size_warning_image.hide ();
+
+        if (ftype != null) {
+            type_label.label = goffile.formated_type;
+        }
+
+        if (count > 1) {
+            type_key_label.hide ();
+            type_label.hide ();
+        }
+
+        if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
+            int start_offset= 0, end_offset = -1;
+
+            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+        }
     }
 }
 
