@@ -660,16 +660,17 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
 
         /* get image size in pixels */
-        var mime = file.icon.to_string ();
-        if ("image" in mime) {
+        /* Skip the same types as the overlay bar */
+        if ("image" in ftype && !(ftype in Marlin.SKIP_IMAGES)) {
             string path;
-
             if (view.is_in_recent ())
                 path = (file.get_display_target_uri ()).substring (7, -1).replace ("%20", " ");
             else
                 path = file.location.get_path ();
 
             try {
+                /* This blocks so should not be used for large files e.g. .JP2 */
+                /* Note: OverlayBar does this a different way (async) - TODO use a common method - in FileUtils? */
                 Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
                 var width = pixbuf.get_width ().to_string ();
                 var height = pixbuf.get_height ().to_string ();
