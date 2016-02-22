@@ -160,14 +160,14 @@ namespace Marlin.Places {
 
             var crt = new Gtk.CellRendererText ();
             this.indent_renderer = crt;
-            cab.pack_start(crt, false, false, false);
+            cab.pack_start(crt, false);
             col.set_cell_data_func (crt, indent_cell_data_func);
 
             var crpb = new Gtk.CellRendererPixbuf ();
             this.icon_cell_renderer = crpb;
             crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
-            cab.pack_start(crpb, false, false, false);
+            cab.pack_start(crpb, false);
             col.set_attributes (crpb, "gicon", Column.ICON);
             col.set_cell_data_func (crpb, icon_cell_data_func);
 
@@ -175,7 +175,7 @@ namespace Marlin.Places {
             crd.ellipsize = Pango.EllipsizeMode.END;
             crd.ellipsize_set = true;
             crd.rpad = 12;
-            cab.pack_start (crd, true, false, false);
+            cab.pack_start (crd, true);
             col.set_attributes (crd,
                                 "text", Column.NAME,
                                 "visible", Column.EJECT,
@@ -188,7 +188,7 @@ namespace Marlin.Places {
             crs.icon_size = Gtk.IconSize.MENU;
             crs.xpad = 0;
             crs.xalign = (float)1.0;
-            cab.pack_start (crs, false, false, false);
+            cab.pack_start (crs, false);
             col.set_attributes (crs,
                                 "gicon", Column.EJECT_ICON,
                                 "visible", Column.EJECT,
@@ -202,7 +202,7 @@ namespace Marlin.Places {
             name_renderer.ellipsize_set = true;
             name_renderer.edited.connect (edited);
             name_renderer.editing_canceled.connect (editing_canceled);
-            cab.pack_start (name_renderer,true, false, false);
+            cab.pack_start (name_renderer,true);
             col.set_attributes (name_renderer,
                                 "text", Column.NAME,
                                 "visible", Column.NO_EJECT,
@@ -217,13 +217,13 @@ namespace Marlin.Places {
             int exp_size = cre.get_arrow_size (tree_view);
             Gtk.icon_size_lookup (Gtk.IconSize.MENU, out eject_button_size, null);
             cre.xpad = int.max ((eject_button_size - exp_size)/2, 0);
-            cab.pack_start (cre, false, false, false);
+            cab.pack_start (cre, false);
             col.set_cell_data_func (cre, expander_cell_data_func);
 
             crt = new Gtk.CellRendererText ();
             crt.xpad = EJECT_BUTTON_XPAD;
             crt.xalign = (float)1.0;
-            cab.pack_start(crt, false, false, false);
+            cab.pack_start(crt, false);
 
             tree_view.append_column (col);
             tree_view.tooltip_column = Column.TOOLTIP;
@@ -646,7 +646,7 @@ namespace Marlin.Places {
                  * does not return the true root location of the share but the location used
                  * when creating the mount.
                  */
-                string uri = Marlin.get_smb_share_from_uri (root.get_uri ());
+                string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
 
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
