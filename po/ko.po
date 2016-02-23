@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:42+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-02-22 09:08+0000\n"
+"Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:58+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-02-23 05:58+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -300,7 +300,7 @@ msgstr "서식에서 새 파일 \"%s\" 만들기 "
 #: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "빈 파일 '%s' 만들기"
+msgstr "파일 '%s' 만들기"
 
 #: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
@@ -378,7 +378,7 @@ msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
 
 #: ../libcore/marlin-undostack-manager.c:1579
 msgid "_Undo creation of an empty file"
-msgstr "빈 파일 작성을 취소하기"
+msgstr "파일 만들기 취소"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 msgid "_Undo creation of a file from template"
@@ -464,7 +464,7 @@ msgstr[0] "%d 항목 이름 바꾸기 다시하기"
 
 #: ../libcore/marlin-undostack-manager.c:1674
 msgid "_Redo creation of an empty file"
-msgstr "빈 파일 작성 다시하기"
+msgstr "파일 다시 만들기"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 msgid "_Redo creation of a file from template"
@@ -2168,7 +2168,7 @@ msgstr "폴더"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "빈 파일"
+msgstr "파일"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
@@ -2196,7 +2196,7 @@ msgstr "자르기"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
-msgstr "복사하기"
+msgstr "복사"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"
