@@ -2972,7 +2972,10 @@ namespace FM {
             grab_focus (); /* cancels any renaming */
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
-            if (dnd_disabled) { /* Second button pressed before first released - not permitted during rubberbanding */
+            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
+             * Multiple click produces an event without corresponding release event so do not block that.
+             */
+            if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
                 return true;
             }
 
