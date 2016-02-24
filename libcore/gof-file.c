@@ -969,9 +969,12 @@ static void gof_file_finalize (GObject* obj) {
     else
         g_warning ("%s %s", G_STRFUNC, file->basename);
 #endif
-
+    if (!(G_IS_FILE (file->location))) {
+        g_warning ("Invalid file location on finalize for %s", file->basename);
+    } else {
+        g_object_unref (file->location);
+    }
     g_clear_object (&file->info);
-    _g_object_unref0 (file->location);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
@@ -1683,17 +1686,6 @@ gof_file_accepts_drop (GOFFile          *file,
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
 
-        char *scheme;
-        scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
-        /* do not allow symbolic links to remote filesystems */
-        if (!g_str_has_prefix (scheme, "file"))
-            actions &= ~(GDK_ACTION_LINK);
-
-        g_free (scheme);
-
-        /* cannot create symbolic links in the trash or copy to the trash */
-        if (gof_file_is_trashed (file))
-            actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
 
         /* check up to 100 of the paths (just in case somebody tries to
          * drag around his music collection with 5000 files).
@@ -1701,13 +1693,7 @@ gof_file_accepts_drop (GOFFile          *file,
 
         for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
         {
-            scheme = g_file_get_uri_scheme (lp->data);
-            if (!g_str_has_prefix (scheme, "file")) {
-                /* do not allow symbolic links from remote filesystems */
-                actions &= ~(GDK_ACTION_LINK);
-            }
 
-            g_free (scheme);
             /* we cannot drop a file on itself */
             if (G_UNLIKELY (g_file_equal (gof_file_get_target_location (file), lp->data)))
                 return 0;
@@ -1725,6 +1711,16 @@ gof_file_accepts_drop (GOFFile          *file,
                 else
                     g_object_unref (parent_file);
             }
+
+        /* Make these tests at the end so that any changes are not reversed subsequently */
+            char *scheme;
+            scheme = g_file_get_uri_scheme (lp->data);
+            if (!g_str_has_prefix (scheme, "file")) {
+                /* do not allow symbolic links from remote filesystems */
+                actions &= ~(GDK_ACTION_LINK);
+            }
+
+            g_free (scheme);
 
             /* copy/move/link within the trash not possible */
             if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
@@ -1768,8 +1764,28 @@ gof_file_accepts_drop (GOFFile          *file,
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
-    } else
+    } else {
+        g_debug ("Not a valid drop target");
         return 0;
+    }
+
+    /* Make these tests at the end so that any changes are not reversed subsequently */
+    char *scheme;
+    scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
+    /* do not allow symbolic links to remote filesystems */
+    if (!g_str_has_prefix (scheme, "file"))
+        actions &= ~(GDK_ACTION_LINK);
+
+    g_free (scheme);
+
+    /* cannot create symbolic links in the trash or copy to the trash */
+    if (gof_file_is_trashed (file))
+        actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
+
+    if (actions == GDK_ACTION_ASK) {
+        /* No point in asking if there are no allowed actions */
+        return 0;
+    }
 
     /* determine the preferred action based on the context */
     if (G_LIKELY (suggested_action_return != NULL))
