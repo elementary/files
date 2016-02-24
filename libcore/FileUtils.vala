@@ -63,6 +63,14 @@ namespace PF.FileUtils {
         int disp_year = dt.get_year ();
 
         if (disp_year < now_year) {
+            /* TRANSLATORS: This string determines the format and order in which the day month and year
+             * are shown informally for a date that occurred in the previous year or before.
+             * %-d expands to the numeric day of the month.
+             * %b expands to the abbreviated name of the month according to the locale.
+             * %Y expands to the 4-digit number of the year.
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */   
             return dt.format (_("%-d %b %Y"));
         }
 
@@ -70,6 +78,14 @@ namespace PF.FileUtils {
         int disp_day = dt.get_day_of_year ();
 
         if (disp_day < now_day - 7) {
+            /* TRANSLATORS: This string determines the format and order in which the day month and year
+             * are shown informally for a date that occurred in the current year but more than a week ago.
+             * %-d expands to the numeric day of the month.
+             * %b expands to the abbreviated name of the month according to the locale.
+             * %Y expands to the 4-digit number of the year.
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
             return dt.format (_("%-d %b %Y"));
         }
 
@@ -78,10 +94,35 @@ namespace PF.FileUtils {
 
         switch (now_weekday - disp_weekday) {
             case 0:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred today.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
                 return dt.format (_("Today at %-I:%M %p"));
             case 1:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred yesterday.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
                 return dt.format (_("Yesterday at %-I:%M %p"));
             default:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred in the past week.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale.
+             * %A expands to the abbreviated name of the weekday according to the locale.   
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
                 return dt.format (_("%A at %-I:%M %p"));
         }
     }
