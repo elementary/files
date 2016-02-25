@@ -68,7 +68,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ListView.vala
         ZeitgeistManager.vala
         View/DiskRenderer.vala
-        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
@@ -127,7 +126,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala
