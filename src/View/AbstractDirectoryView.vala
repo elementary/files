@@ -285,7 +285,6 @@ namespace FM {
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
-            change_zoom_level ();
 
             connect_directory_handlers (slot.directory);
         }
@@ -2364,10 +2363,10 @@ namespace FM {
                     while (valid_iter) {
                         file = model.file_for_iter (iter);
 
-                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
-                        if (file != null && file.flags < 2)
+                        /* Ask thumbnailer only if ThumbState UNKNOWN */
+                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
-
+                        }
                         /* check if we've reached the end of the visible range */
                         path = model.get_path (iter);
 
@@ -2378,9 +2377,10 @@ namespace FM {
                     }
                 }
 
-                if (visible_files != null)
+                /* This is the only place that new thumbnail files are created */ 
+                if (visible_files != null) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-
+                }
                 thumbnail_source_id = 0;
                 return false;
             });
