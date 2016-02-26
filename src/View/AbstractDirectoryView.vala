@@ -200,6 +200,10 @@ namespace FM {
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
         protected GLib.List<GOF.File> selected_files = null;
+        /* support for linear selection mode in icon view */
+        protected bool previous_selection_was_linear = false;
+        protected Gtk.TreePath? previous_linear_selection_path = null;
+        protected int previous_linear_selection_direction = 0;
 
         private GLib.List<GLib.File> templates = null;
 
@@ -2538,6 +2542,19 @@ namespace FM {
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
 
+
+            /* Implement linear selection in Icon View with cursor keys */
+            bool linear_select_required = false;
+            if (!no_mods && !only_control_pressed) {
+                if (only_shift_pressed && (this is IconView)) {
+                    linear_select_required = true;
+                } else {
+                    previous_selection_was_linear = false;
+                }
+            } else {
+                previous_selection_was_linear = false;
+            }
+
             switch (event.keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
@@ -2632,6 +2649,32 @@ namespace FM {
                         invert_selection ();
 
                    return true;
+
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+
+                    if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null) {
+                            if (event.keyval == Gdk.Key.Right) {
+                                path.next ();
+                            } else if (event.keyval == Gdk.Key.Left) {
+                                path.prev ();
+                            } else if (event.keyval == Gdk.Key.Up) {
+                                path = up (path);
+                            } else if (event.keyval == Gdk.Key.Down) {
+                                path = down (path);
+                            }
+                            linear_select_path (path);
+                            return true;
+                        }
+                    } else {
+                        previous_selection_was_linear = false;
+                        previous_linear_selection_path = null;
+                    }
+                    break;
 
                 default:
                     break;
@@ -2929,6 +2972,13 @@ namespace FM {
             grab_focus (); /* cancels any renaming */
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
+            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
+             * Multiple click produces an event without corresponding release event so do not block that.
+             */
+            if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
+                return true;
+            }
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
@@ -2950,11 +3000,13 @@ namespace FM {
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-
+            bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
+            bool linear_select_required = false;
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -2963,8 +3015,16 @@ namespace FM {
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
+            linear_select_required = false;
             if (!no_mods && !only_control_pressed) {
-                return window.button_press_event (event);
+                if (only_shift_pressed && (this is IconView)) {
+                    linear_select_required = true;
+                } else {
+                    previous_selection_was_linear = false;
+                    return window.button_press_event (event);
+                }
+            } else {
+                previous_selection_was_linear = false;
             }
 
             if (!path_selected && click_zone != ClickZone.HELPER) {
@@ -3006,17 +3066,31 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected)))
-                                 result = false; /* Rubberband */
+                                if (linear_select_required && selected_files.length () > 0) {
+                                    linear_select_path (path);
+                                } else {
+                                    previous_selection_was_linear = false;
+                                    result = false; /* Rubberband */
+                                }
                             else
                                 result = handle_primary_button_click (event, path);
 
+                            previous_linear_selection_path = path.copy ();
                             break;
 
                         case ClickZone.HELPER:
-                            if (path_selected)
-                                unselect_path (path);
-                            else
-                                select_path (path);
+                            if (linear_select_required && selected_files.length () > 0) {
+                                linear_select_path (path);
+                            } else {
+                                previous_selection_was_linear = false;
+                                previous_linear_selection_path = null;
+
+                                if (path_selected) {
+                                    unselect_path (path);
+                                } else {
+                                    select_path (path);
+                                }
+                            }
 
                             break;
 
@@ -3058,7 +3132,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
-
+            previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }
 
@@ -3294,6 +3368,9 @@ namespace FM {
 
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
+        protected virtual void linear_select_path (Gtk.TreePath path) {}
+        protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
+        protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
