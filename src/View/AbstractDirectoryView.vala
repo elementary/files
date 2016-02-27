@@ -170,7 +170,6 @@ namespace FM {
 
         /* Rename support */
         protected Marlin.TextRenderer? name_renderer = null;
-        unowned Marlin.AbstractEditableLabel? editable_widget = null;
         public string original_name = "";
         public string proposed_name = "";
 
@@ -201,6 +200,10 @@ namespace FM {
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
         protected GLib.List<GOF.File> selected_files = null;
+        /* support for linear selection mode in icon view */
+        protected bool previous_selection_was_linear = false;
+        protected Gtk.TreePath? previous_linear_selection_path = null;
+        protected int previous_linear_selection_direction = 0;
 
         private GLib.List<GLib.File> templates = null;
 
@@ -370,7 +373,6 @@ namespace FM {
             if (selected_files == null)
                 set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
         }
-
         public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
             unselect_all ();
             GLib.List<GOF.File>? file_list = null;
@@ -433,6 +435,7 @@ namespace FM {
             clipboard.changed.disconnect (on_clipboard_changed);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
+            slot.directory.block_monitor ();
         }
 
         protected void unfreeze_updates () {
@@ -443,6 +446,7 @@ namespace FM {
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
+            slot.directory.unblock_monitor ();
         }
 
         public new void grab_focus () {
@@ -560,6 +564,15 @@ namespace FM {
 
             var path = model.get_path (iter);
             set_cursor (path, false, true, false);
+        }
+
+        protected void select_and_scroll_to_gof_file (GOF.File file) {
+            var iter = Gtk.TreeIter ();
+            if (!model.get_first_iter_for_file (file, out iter))
+                return; /* file not in model */
+
+            var path = model.get_path (iter);
+            set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
@@ -871,29 +884,26 @@ namespace FM {
             Marlin.FileOperations.new_folder (null, null, slot.location, (Marlin.CreateCallback?) create_file_done, this);
         }
 
-        protected void rename_file (GOF.File file_to_rename) {
-            var iter = Gtk.TreeIter ();
-            uint count = 0;
-            /* Allow time for the file to appear in the tree model before renaming
-             */
-            GLib.Timeout.add (10, () => {
-                if (model.get_first_iter_for_file (file_to_rename, out iter)) {
-                    /* Assume writability on remote locations */
-                    /**TODO** Reliably determine writability with various remote protocols.*/
-                    if (is_writable || !slot.directory.is_local)
-                        start_renaming_file (file_to_rename, false);
-                    else
-                        warning ("You do not have permission to rename this file");
-                } else if (count < 100) {
-                    /* Guard against possible infinite loop */
-                    count++;
-                    return true;
-                }
-
-                return false;
-            });
+        private void after_new_file_added (GOF.File? file) {
+            slot.directory.file_added.disconnect (after_new_file_added);
+            if (file != null) {
+                rename_file (file);
+            }
         }
 
+        protected void rename_file (GOF.File file_to_rename) {
+            if (renaming) {
+                warning ("already renaming %s", file_to_rename.basename);
+                return;
+            }
+            /* Assume writability on remote locations */
+            /**TODO** Reliably determine writability with various remote protocols.*/
+            if (is_writable || !slot.directory.is_local) {
+                start_renaming_file (file_to_rename);
+            } else {
+                warning ("You do not have permission to rename this file");
+            }
+        }
 
 /** File operation callbacks */
         static void create_file_done (GLib.File? new_file, void* data) {
@@ -908,9 +918,8 @@ namespace FM {
                 warning ("View invalid after creating file");
                 return;
             }
-
-            var file_to_rename = GOF.File.@get (new_file);
-            view.rename_file (file_to_rename); /* will wait for file to appear in model */
+            /* Start to rename the file once we get signal that it has been added to model */
+            view.slot.directory.file_added.connect_after (view.after_new_file_added);
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -1239,8 +1248,10 @@ namespace FM {
             }
         }
 
-        private void on_directory_file_added (GOF.Directory.Async dir, GOF.File file) {
-            add_file (file, dir);
+        private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
+            if (file != null) {
+                add_file (file, dir);
+            }
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
@@ -2388,12 +2399,10 @@ namespace FM {
 
         protected void block_model () {
             model.row_deleted.disconnect (on_row_deleted);
-            updates_frozen = true;
         }
 
         protected void unblock_model () {
             model.row_deleted.connect (on_row_deleted);
-            updates_frozen = false;
         }
 
         private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
@@ -2534,6 +2543,19 @@ namespace FM {
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
 
+
+            /* Implement linear selection in Icon View with cursor keys */
+            bool linear_select_required = false;
+            if (!no_mods && !only_control_pressed) {
+                if (only_shift_pressed && (this is IconView)) {
+                    linear_select_required = true;
+                } else {
+                    previous_selection_was_linear = false;
+                }
+            } else {
+                previous_selection_was_linear = false;
+            }
+
             switch (event.keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
@@ -2628,6 +2650,32 @@ namespace FM {
                         invert_selection ();
 
                    return true;
+
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+
+                    if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null) {
+                            if (event.keyval == Gdk.Key.Right) {
+                                path.next ();
+                            } else if (event.keyval == Gdk.Key.Left) {
+                                path.prev ();
+                            } else if (event.keyval == Gdk.Key.Up) {
+                                path = up (path);
+                            } else if (event.keyval == Gdk.Key.Down) {
+                                path = down (path);
+                            }
+                            linear_select_path (path);
+                            return true;
+                        }
+                    } else {
+                        previous_selection_was_linear = false;
+                        previous_linear_selection_path = null;
+                    }
+                    break;
 
                 default:
                     break;
@@ -2771,30 +2819,48 @@ namespace FM {
         }
 
     /** name renderer signals */
-        protected void on_name_editing_started (Gtk.CellEditable? editable, string path) {
-            if (renaming)
+        protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
+            if (renaming) {
+                warning ("on_name_edited re-entered");
                 return;
-
+            }
             renaming = true;
-            freeze_updates ();
-            editable_widget = editable as Marlin.AbstractEditableLabel;
-            original_name = editable_widget.get_text ().dup ();
+
+            var editable_widget = editable as Gtk.Editable?;
+            if (editable_widget != null) {
+                original_name = editable_widget.get_chars (0, -1);
+                var path = new Gtk.TreePath.from_string (path_string);
+                Gtk.TreeIter? iter = null;
+                model.get_iter (out iter, path);
+                GOF.File? file = null;
+                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                int start_offset= 0, end_offset = -1;
+                /* Select whole name if the file is a folder, otherwise do not select the extension */
+                if (!file.is_folder ()) {
+                    Marlin.get_rename_region (original_name, out start_offset, out end_offset, false);
+                }
+                editable_widget.select_region (start_offset, end_offset);
+            } else {
+                warning ("Editable widget is null");
+                on_name_editing_canceled ();
+            }
         }
 
         protected void on_name_editing_canceled () {
-            if (!renaming)
-                return;
-
             renaming = false;
             name_renderer.editable = false;
+            proposed_name = "";
             unfreeze_updates ();
             grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {
-            if (!renaming)
+            /* Must not re-enter */
+            if (!renaming || proposed_name == new_name) {
+                warning ("on_name_edited re-entered");
                 return;
-
+            }
+            proposed_name = "";
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
@@ -2804,50 +2870,39 @@ namespace FM {
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
-                original_name = file.info.get_name ();
+                /* Because GOF.File.rename does not work correctly for remote files we handle ourselves */
+
                 if (new_name != original_name) {
                     proposed_name = new_name;
-                    file.rename (new_name, (GOF.FileOperationCallback)rename_callback, (void*)this);
+                    set_file_display_name (file.location, new_name, after_rename);
+                } else {
+                    warning ("Name unchanged");
+                    on_name_editing_canceled ();
                 }
+            } else {
+                warning ("No new name");
+                on_name_editing_canceled ();
             }
-
-            on_name_editing_canceled ();
+            /* do not cancel editing here - will be cancelled in rename callback */
         }
 
+        public void set_file_display_name (GLib.File old_location, string new_name, PF.FileUtils.RenameCallbackFunc? f) {
+            /* Wait for the file to be added to the model before trying to select and scroll to it */
+            slot.directory.file_added.connect_after (after_renamed_file_added);
+            PF.FileUtils.set_file_display_name (old_location, new_name, f);
+        }
 
-        public static void rename_callback (GOF.File file, GLib.File? result_location, GLib.Error error, void* data) {
-            FM.AbstractDirectoryView? view = null;
-            Marlin.View.PropertiesWindow? pw = null;
-
-            var object = (GLib.Object)data;
-
-            if (object is FM.AbstractDirectoryView)
-                view = (FM.AbstractDirectoryView)data;
-            else if (object is Marlin.View.PropertiesWindow) {
-                pw = (Marlin.View.PropertiesWindow)object;
-                view = pw.view;
-            }
-
-            assert (view != null);
-
-            if (error != null) {
-                Eel.show_error_dialog (_("Could not rename to '%s'").printf (view.proposed_name),
-                                       error.message,
-                                       view.window as Gtk.Window);
-            } else {
-                Marlin.UndoManager.instance ().add_rename_action (file.location,
-                                                                  view.original_name);
-
-                view.select_gof_file (file);  /* Select and scroll to show renamed file */
-            }
-
-            if (pw != null) {
-                if (error == null)
-                    pw.reset_entry_text (file.info.get_name ());
-                else
-                    pw.reset_entry_text ();  //resets entry to old name
-            }
+        public void after_rename (GLib.File file, GLib.File? result_location, GLib.Error? e) {
+            on_name_editing_canceled ();
          }
+
+        private void after_renamed_file_added (GOF.File? new_file) {
+            slot.directory.file_added.disconnect (after_renamed_file_added);
+            /* new_file will be null if rename failed */
+            if (new_file != null) {
+                select_and_scroll_to_gof_file (new_file);
+            }
+        }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
             /* If folder is empty, draw the empty message in the middle of the view
@@ -2918,6 +2973,13 @@ namespace FM {
             grab_focus (); /* cancels any renaming */
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
+            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
+             * Multiple click produces an event without corresponding release event so do not block that.
+             */
+            if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
+                return true;
+            }
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
@@ -2939,11 +3001,13 @@ namespace FM {
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-
+            bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
+            bool linear_select_required = false;
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -2952,8 +3016,16 @@ namespace FM {
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
+            linear_select_required = false;
             if (!no_mods && !only_control_pressed) {
-                return window.button_press_event (event);
+                if (only_shift_pressed && (this is IconView)) {
+                    linear_select_required = true;
+                } else {
+                    previous_selection_was_linear = false;
+                    return window.button_press_event (event);
+                }
+            } else {
+                previous_selection_was_linear = false;
             }
 
             if (!path_selected && click_zone != ClickZone.HELPER) {
@@ -2995,17 +3067,31 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected)))
-                                 result = false; /* Rubberband */
+                                if (linear_select_required && selected_files.length () > 0) {
+                                    linear_select_path (path);
+                                } else {
+                                    previous_selection_was_linear = false;
+                                    result = false; /* Rubberband */
+                                }
                             else
                                 result = handle_primary_button_click (event, path);
 
+                            previous_linear_selection_path = path.copy ();
                             break;
 
                         case ClickZone.HELPER:
-                            if (path_selected)
-                                unselect_path (path);
-                            else
-                                select_path (path);
+                            if (linear_select_required && selected_files.length () > 0) {
+                                linear_select_path (path);
+                            } else {
+                                previous_selection_was_linear = false;
+                                previous_linear_selection_path = null;
+
+                                if (path_selected) {
+                                    unselect_path (path);
+                                } else {
+                                    select_path (path);
+                                }
+                            }
 
                             break;
 
@@ -3047,7 +3133,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
-
+            previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }
 
@@ -3088,11 +3174,11 @@ namespace FM {
             view.style_updated ();
         }
 
-        private void start_renaming_file (GOF.File file, bool preselect_whole_name) {
-            /* Select whole name if we are in renaming mode already */
-            if (renaming)
+        private void start_renaming_file (GOF.File file) {
+            if (updates_frozen) {
+                warning ("Trying to rename when frozen");
                 return;
-
+            }
             Gtk.TreeIter? iter = null;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 critical ("Failed to find rename file in model");
@@ -3101,17 +3187,14 @@ namespace FM {
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             freeze_updates ();
-
             Gtk.TreePath path = model.get_path (iter);
 
+            uint count = 0;
+            bool ok_next_time = false;
+            Gtk.TreePath? start_path = null;
             /* Scroll to row to be renamed and then start renaming after a delay
              * so that file to be renamed is on screen.  This avoids the renaming being
              * cancelled */
-            set_cursor (path, false, true, false);
-            uint count = 0;
-            Gtk.TreePath? start_path = null;
-            bool ok_next_time   = false;
-
             GLib.Timeout.add (50, () => {
                 /* Wait until view stops scrolling before starting to rename (up to 1 second)
                  * Scrolling is deemed to have stopped when the starting visible path is stable
@@ -3130,20 +3213,9 @@ namespace FM {
                     return true;
                 }
 
-                /* set cursor_on_cell also triggers editing-started, where we save the editable widget */
+                /* set cursor_on_cell also triggers editing-started */
                 name_renderer.editable = true;
                 set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-
-                if (editable_widget != null) {
-                    int start_offset= 0, end_offset = -1;
-                    if (!file.is_folder ())
-                        Marlin.get_rename_region (original_name, out start_offset, out end_offset, preselect_whole_name);
-
-                    editable_widget.select_region (start_offset, end_offset);
-                } else {
-                    warning ("Editable widget is null");
-                    on_name_editing_canceled ();
-                }
                 return false;
             });
 
@@ -3297,6 +3369,9 @@ namespace FM {
 
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
+        protected virtual void linear_select_path (Gtk.TreePath path) {}
+        protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
+        protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;

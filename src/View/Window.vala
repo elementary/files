@@ -246,9 +246,12 @@ namespace Marlin.View {
             });
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
                                                      (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                } else if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
+                    top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+                }
 
                 return false;
             });
@@ -497,9 +500,10 @@ namespace Marlin.View {
 
         private void action_reload () {
             /* avoid spawning reload when key kept pressed */
-            if (tabs.current.working)
+            if (tabs.current.working) {
+                warning ("Too rapid reloading suppressed");
                 return;
-
+            }
             current_tab.reload ();
             sidebar.reload ();
         }
@@ -633,7 +637,7 @@ namespace Marlin.View {
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
-            if (!window.current_tab.slot.directory.is_local || window.current_tab.slot.directory.is_recent)
+            if (window.current_tab.slot.directory.is_recent)
                 window.current_tab.reload ();
         }
 
@@ -713,7 +717,7 @@ namespace Marlin.View {
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
         }
 
-        public GLib.SimpleActionGroup get_action_group () {
+        public new GLib.SimpleActionGroup get_action_group () {
             return this.win_actions;
         }
 

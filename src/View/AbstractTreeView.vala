@@ -133,6 +133,8 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
                 debug ("select path %s", path.to_string ());
+                /* Ensure cursor follows last selection */
+                tree.set_cursor (path, null, false);
                 tree.get_selection ().select_path (path);
             }
         }
