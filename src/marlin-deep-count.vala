@@ -68,7 +68,8 @@ public class Marlin.DeepCount : Object {
                     /* Check for sparse file, allocated size will be smaller, for normal files allocated size
                      * includes overhead size so we don't use it for those here
                      */
-                    if (allocated_size < file_size && f.get_file_type () != FileType.DIRECTORY)
+                    /* Network files may not have allocated size attribute so ignore zero result */
+                    if (allocated_size > 0 && allocated_size < file_size && f.get_file_type () != FileType.DIRECTORY)
                         file_size = allocated_size;
 
                     total_size += file_size;

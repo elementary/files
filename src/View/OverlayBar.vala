@@ -159,7 +159,7 @@ namespace Marlin.View {
             string str = "";
             status = "";
             if (goffile != null) { /* a single file is hovered or selected */
-                if (goffile.is_network_uri_scheme ()) {
+                if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* if we have an image, see if we can get its resolution */
@@ -232,9 +232,9 @@ namespace Marlin.View {
             string str;
             cancellable = null;
 
-            if (deep_counter != null) {
-                status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+            status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
+            if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
                     status += str.printf (deep_counter.dirs_count);
@@ -245,13 +245,22 @@ namespace Marlin.View {
                     status += str.printf (deep_counter.files_count);
                 }
 
-                status += format_size (deep_counter.total_size);
+                if (deep_counter.total_size == 0) {
+                    status += _("unknown size");
+                } else {
+                    status += format_size (deep_counter.total_size);
+                }
                 
-                if (deep_counter.file_not_read > 0)
-                    status += " approx - %u files not readable".printf (deep_counter.file_not_read);
-
-                status += ")";
+                if (deep_counter.file_not_read > 0) {
+                    if (deep_counter.total_size > 0) {
+                        status += " approx - %u files not readable".printf (deep_counter.file_not_read);
+                    } else {
+                        status += " %u files not readable".printf (deep_counter.file_not_read);
+                    }
+                }
             }
+
+            status += ")";
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
