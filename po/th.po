@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-17 09:22-0200\n"
-"PO-Revision-Date: 2015-12-21 13:45+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-02-28 05:20+0000\n"
+"Last-Translator: Big50000 <ictsanook@hotmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-12-22 04:59+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-02-28 05:32+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "โพรโตคอล SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
@@ -28,7 +28,7 @@ msgstr "FTP สาธารณะ"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (แบบล็อกอิน)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "โฟลเดอร์ใช้ร่วมของวินโดวส์"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -48,13 +48,15 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "กำลังเชื่อมต่อ..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"ไม่สามารถโหลดรายชื่อวิธีเชื่อมต่อผู้ให้บริการที่รองรับได้\n"
+"กรุณาตรวจสอบการติดตั้ง gvfs ของคุณ"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -1464,6 +1466,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  ABCDEFGH https://launchpad.net/~aefgh7233\n"
+"  Big50000 https://launchpad.net/~ictsanook\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Jirayu Yingthawornsuk https://launchpad.net/~jirayu"
