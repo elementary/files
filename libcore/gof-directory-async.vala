@@ -157,7 +157,8 @@ public class GOF.Directory.Async : Object {
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         bool success = yield get_file_info ();
         if (success) {
-            if (is_local && !file.is_folder ()) {
+            if (!file.is_folder () && !file.is_root_network_folder ()) {
+                warning ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
@@ -165,9 +166,14 @@ public class GOF.Directory.Async : Object {
                     location = parent;
                     success = yield get_file_info ();
                 } else {
+                    warning ("Parent is null for file %s", file.uri);
                     success = false;
                 }
+            } else {
+
             }
+        } else {
+            warning ("Failed to get file info for file %s", file.uri);
         }
         make_ready (success, file_loaded_func); /* Only place that should call this function */
     }
@@ -180,7 +186,6 @@ public class GOF.Directory.Async : Object {
         if (is_local) {
             return file.ensure_query_info ();
         }
-
         /* Must be non-local */
         if (!is_local && !yield check_network ()) {
             file.is_connected = false;
@@ -225,10 +230,10 @@ public class GOF.Directory.Async : Object {
         }
         if (success) {
             debug ("got file info");
-            file.ensure_query_info ();
+            file.update ();
             return true;
         } else {
-            debug ("Failed to get file info for %s", file.uri);
+            warning ("Failed to get file info for %s", file.uri);
             return false;
         }
     }
@@ -246,6 +251,7 @@ public class GOF.Directory.Async : Object {
                 file.is_connected = true;
             } else {
                 file.is_connected = false;
+                file.is_mounted = false;
                 warning ("Mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
                     permission_denied = true;
@@ -292,7 +298,10 @@ public class GOF.Directory.Async : Object {
     private void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         can_load = ready;
         if (!can_load) {
-            debug ("%s cannot load", file.uri);
+            warning ("%s cannot load.  Connected %s, Mounted %s, Exists %s", file.uri,
+                                                                             file.is_connected.to_string (),
+                                                                             file.is_mounted.to_string (),
+                                                                             file.exists.to_string ());
             state = State.NOT_LOADED; /* ensure state is correct */
             done_loading ();
             return;

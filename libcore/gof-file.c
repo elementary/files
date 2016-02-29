@@ -343,7 +343,7 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file))
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
         file->format_size = g_strdup ("—");
     else
         file->format_size = g_format_size (file->size);

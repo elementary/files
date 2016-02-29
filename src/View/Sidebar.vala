@@ -837,8 +837,11 @@ namespace Marlin.Places {
                 this.store.@get (iter, Column.URI, out uri);
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
-                    if (file.ensure_query_info ())
+                    if (file.ensure_query_info ()) {
                         file.accepts_drop (drag_list, context, out action);
+                    } else {
+                        warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                    }
                 }
             }
 
@@ -924,14 +927,18 @@ namespace Marlin.Places {
             Gtk.TreeViewDropPosition drop_pos;
             if (compute_drop_position (tree_view, x, y, out tree_path, out drop_pos)) {
                 Gtk.TreeIter iter;
-                if (!store.get_iter (out iter, tree_path))
+                if (!store.get_iter (out iter, tree_path)) {
+                    warning ("Could not retrieve tree path after drop onto sidebar");
                     return false;
+                }
 
                 if (drop_pos == Gtk.TreeViewDropPosition.BEFORE
                  || drop_pos == Gtk.TreeViewDropPosition.AFTER)
                     return process_drop_between (iter, drop_pos, info);
                 else
                     return process_drop_onto (iter, context, info);
+            } else {
+                warning ("compute drop position failed after drop onto sidebar");
             }
             return false;
         }
@@ -1011,8 +1018,7 @@ namespace Marlin.Places {
         }
 
         private  bool can_accept_file_as_bookmark (GLib.File file) {
-            GLib.FileType ftype = file.query_file_type (GLib.FileQueryInfoFlags.NONE, null);
-            return ftype == GLib.FileType.DIRECTORY;
+            return file.query_exists (null);
         }
 
         private bool can_accept_files_as_bookmarks (List<GLib.File> items) {
@@ -1028,8 +1034,10 @@ namespace Marlin.Places {
         }
 
         private void drop_drag_list (uint position) {
-            if (drag_list == null)
+            if (drag_list == null) {
+                warning ("dropped a null drag list");
                 return;
+            }
 
             GLib.List<string> uris = null;
             drag_list.@foreach ((file) => {
@@ -1109,7 +1117,7 @@ namespace Marlin.Places {
             path = null;
             int num_rows = store.iter_n_children (null);
             if (!tree_view.get_dest_row_at_pos (x, y, out path, out drop_position)) {
-                warning ("compute_drop position dest_row_at_pos UNKNOWN");
+                warning ("tree_view.get_dest_row_at_pos failed in sidebar");
                 return false;
             }
 
