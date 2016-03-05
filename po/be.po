@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-02-15 12:21+0000\n"
-"Last-Translator: Dmitry Taranovich <vorbissmcgregor@gmail.com>\n"
+"PO-Revision-Date: 2016-03-04 09:47+0000\n"
+"Last-Translator: Minus12 <minus12@gmail.com>\n"
 "Language-Team: Belarusian <be@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:40+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-05 06:10+0000\n"
+"X-Generator: Launchpad (build 17936)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -41,7 +41,7 @@ msgstr "AFP (пратакол файлінгу Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Супольна з Windows"
+msgstr "Супольны Windows-рэсурс"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -49,7 +49,7 @@ msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Абаронены WebDAV (HTTPS)"
+msgstr "Бяспечны WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -83,7 +83,7 @@ msgstr "Спраўдзіце параметры ўваходу."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr "Працягнуць"
+msgstr "Далей"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
@@ -155,7 +155,7 @@ msgstr "Не ўдалося аднавіць элемент са сметніц�
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Аб'яднаць змесціва папак \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -163,75 +163,77 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Пры аб'яднанні ні адзін канфліктны файл у папцы не будзе заменены іншым без "
+"пацвярджэння ад карыстальніка."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старэйшая папка з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Навейшая папка з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Іншая папка з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Пры замене ўсе файлы папкі будуць выдаленыя."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Замяніць папку \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Папка з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Замяніць файл \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Пры замене яго змесціва будзе перапісана."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старэйшы файл з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Навейшы файл з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Іншы файл з такой самай назвай ужо існуе ў \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
 msgid "Original file"
-msgstr ""
+msgstr "Арыгінальны файл"
 
 #: ../libcore/marlin-file-conflict-dialog.c:253
 #: ../libcore/marlin-file-conflict-dialog.c:284
@@ -239,7 +241,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:493
 #: ../src/View/PropertiesWindow.vala:755
 msgid "Size:"
-msgstr ""
+msgstr "Памер:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -247,67 +249,67 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:496
 #: ../src/View/PropertiesWindow.vala:558
 msgid "Type:"
-msgstr ""
+msgstr "Тып:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr ""
+msgstr "Апошняя змена:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr ""
+msgstr "Замяніць на"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
-msgstr ""
+msgstr "Аб'яднаць"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Выберыце іншую назву для месца прызначэння"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr ""
+msgstr "Скінуць"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Учыніць гэтае дзеянне для ўсіх файлаў"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr ""
+msgstr "_Прапусціць"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr ""
+msgstr "Пера_назваць"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
-msgstr ""
+msgstr "Замяніць"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
-msgstr ""
+msgstr "Канфлікт файлаў"
 
 #: ../libcore/gof-file.c:366
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "спасылка на %s"
 
 #: ../libcore/gof-file.c:1910
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Не атрымалася разлажыць файл рабочага стала: %s"
 
 #: ../libcore/gof-file.c:1948
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Поле Exec ня вызначана"
 
 #: ../libcore/gof-file.c:1968
 msgid "No URL field specified"
@@ -2116,6 +2118,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Dmitry Taranovich https://launchpad.net/~vorbissmcgregor\n"
 "  Ilya Tsimokhin https://launchpad.net/~ilyats\n"
+"  Minus12 https://launchpad.net/~minus12\n"
 "  Viktuk https://launchpad.net/~register885"
 
 #: ../libwidgets/Resources.vala:80
