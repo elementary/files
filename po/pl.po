@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2015-12-21 13:42+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-03-05 12:49+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:42+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-06 05:37+0000\n"
+"X-Generator: Launchpad (build 17936)\n"
 "Language: pl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -189,7 +189,7 @@ msgstr "W katalogu „%s” znajduje się już inny katalog o tej samej nazwie
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "Zmiana spowoduje usunięcie wszystkich plików z folderu."
+msgstr "Zastąpienie go spowoduje usunięcie wszystkich plików w katalogu."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
@@ -597,7 +597,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Pliki w folderze „%B” nie mogą być usunięte ponieważ nie masz uprawnień do "
+"Pliki w katalogu „%B” nie mogą być usunięte ponieważ nie masz uprawnień do "
 "ich oglądania"
 
 #: ../libcore/marlin-file-operations.c:1614
@@ -628,7 +628,7 @@ msgstr "Wystąpił błąd podczas odczytywania katalogu „%s”."
 
 #: ../libcore/marlin-file-operations.c:1681
 msgid "Could not remove the folder %B."
-msgstr "Nie można usunąć katalogu %B."
+msgstr "Nie można usunąć katalogu „%B”."
 
 #: ../libcore/marlin-file-operations.c:1758
 msgid "There was an error deleting %B."
@@ -665,16 +665,16 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Nie jest dozwolone przenoszenie do kosza lub usuwanie plików w folderach dla "
-"których nie masz prawa do zapisu."
+"Nie jest dozwolone przenoszenie do kosza lub usuwanie plików w katalogach, "
+"dla których nie masz prawa zapisu."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Nie jest dozwolone przenoszenie do kosza lub usuwanie folderów dla których "
-"nie masz prawa do zapisu."
+"Nie jest dozwolone przenoszenie do kosza lub usuwanie katalogów, dla których "
+"nie masz prawa zapisu."
 
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -801,7 +801,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Nie można przeprowadzić operacji na plikach w folderze „%B” ponieważ nie "
+"Nie można przeprowadzić operacji na plikach w katalogu „%B” ponieważ nie "
 "masz uprawnień do ich oglądania."
 
 #: ../libcore/marlin-file-operations.c:2765
@@ -809,7 +809,7 @@ msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można przeprowadzić operacji na folderze „%B” ponieważ nie masz "
+"Nie można przeprowadzić operacji na katalogu „%B” ponieważ nie masz "
 "uprawnień do jego odczytu."
 
 #: ../libcore/marlin-file-operations.c:2841
@@ -978,7 +978,7 @@ msgstr "Wystąpił błąd podczas kopiowania „%B”."
 #: ../libcore/marlin-file-operations.c:3899
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Nie można usunąć plików z istniejącego katalogu %F."
+msgstr "Nie można usunąć plików z istniejącego już katalogu „%F”."
 
 #: ../libcore/marlin-file-operations.c:3940
 #, c-format
@@ -988,18 +988,17 @@ msgstr "Nie można usunąć istniejącego pliku %F."
 #: ../libcore/marlin-file-operations.c:4270
 #: ../libcore/marlin-file-operations.c:4946
 msgid "You cannot move a folder into itself."
-msgstr "Nie można przenieść katalogu zastępując go samym sobą."
+msgstr "Nie można przenieść katalogu do niego samego."
 
 #: ../libcore/marlin-file-operations.c:4271
 #: ../libcore/marlin-file-operations.c:4947
 msgid "You cannot copy a folder into itself."
-msgstr "Nie można skopiować katalogu zastępując go samym sobą."
+msgstr "Nie można skopiować katalogu do niego samego."
 
 #: ../libcore/marlin-file-operations.c:4272
 #: ../libcore/marlin-file-operations.c:4948
 msgid "The destination folder is inside the source folder."
-msgstr ""
-"Położenie docelowe jest katalogiem podrzędnym położenia źródłowego."
+msgstr "Położenie docelowe jest katalogiem podrzędnym położenia źródłowego."
 
 #: ../libcore/marlin-file-operations.c:4303
 msgid "You cannot move a file over itself."
@@ -1708,7 +1707,7 @@ msgstr "Katalog nie istnieje"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "Folder \"%s\" nie mógł zostać odnaleziony."
+msgstr "Nie można odnaleźć katalogu „%s”."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1716,7 +1715,7 @@ msgstr "Utwórz"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "Utwórz folder \"%s\""
+msgstr "Utwórz katalog „%s”"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1724,7 +1723,7 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"Nie udało się utworzyć folderu\n"
+"Nie udało się utworzyć katalogu\n"
 "\n"
 "%s"
 
@@ -1784,7 +1783,7 @@ msgstr "Wytnij wybór"
 
 #: ../src/View/OverlayBar.vala:187
 msgid "%u folders"
-msgstr "%u folderów"
+msgstr "%u katalogów"
 
 #: ../src/View/OverlayBar.vala:189 ../src/View/OverlayBar.vala:197
 msgid " and %u other item (%s) selected"
@@ -1800,7 +1799,7 @@ msgstr " zaznaczono"
 
 #: ../src/View/OverlayBar.vala:195
 msgid "%u folder"
-msgstr "%u folder"
+msgstr "%u katalog"
 
 #: ../src/View/OverlayBar.vala:203
 msgid "%u items selected (%s)"
@@ -1824,7 +1823,7 @@ msgstr "%u pliki, "
 
 #: ../src/View/OverlayBar.vala:249
 msgid "unknown size"
-msgstr ""
+msgstr "nieznany rozmiar"
 
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
@@ -1832,7 +1831,7 @@ msgstr "Zamknij"
 
 #: ../src/View/PropertiesWindow.vala:197
 msgid "Resolution:"
-msgstr ""
+msgstr "Rozdzielczość:"
 
 #: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
 msgid "General"
@@ -1896,7 +1895,7 @@ msgstr "Rodzaje MIME:"
 
 #: ../src/View/PropertiesWindow.vala:676
 msgid "loading ..."
-msgstr ""
+msgstr "wczytywanie..."
 
 #: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
 #: ../src/View/PropertiesWindow.vala:1545
@@ -1913,7 +1912,7 @@ msgstr "Pierwotne położenie:"
 
 #: ../src/View/PropertiesWindow.vala:709
 msgid "Could not be determined"
-msgstr ""
+msgstr "Nie udało się ustalić"
 
 #: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
 msgid "Info"
@@ -2016,7 +2015,7 @@ msgstr "Ten katalog nie należy do Ciebie"
 
 #: ../src/View/ViewContainer.vala:344
 msgid "You don't have permission to view this folder."
-msgstr "Nie masz uprawnień do przegladania tego folderu."
+msgstr "Nie masz uprawnień do przegladania tego katalogu."
 
 #: ../src/View/ViewContainer.vala:346
 msgid "Unable to Mount Folder"
@@ -2024,15 +2023,15 @@ msgstr "Nie udało się zamontować katalogu"
 
 #: ../src/View/ViewContainer.vala:347
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Nie udało się połączyć z serwerem do tego katalogu."
 
 #: ../src/View/ViewContainer.vala:349
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Nie udało się wyświetlić katalogu"
 
 #: ../src/View/ViewContainer.vala:350
 msgid "The server for this folder could not be located."
-msgstr "Serwer dla tego foleru nie mógł zostać zlokalizowany."
+msgstr "Serwer dla tego katalogu nie mógł zostać zlokalizowany."
 
 #: ../src/View/ViewContainer.vala:360
 msgid "File not Found"
@@ -2186,7 +2185,7 @@ msgstr "Otwórz w innym programie..."
 
 #: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
-msgstr "Odśwież ten folder"
+msgstr "Odśwież ten katalog"
 
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
@@ -2218,6 +2217,7 @@ msgstr ""
 "  Arkadiusz https://launchpad.net/~elementary\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Damian Dygulski https://launchpad.net/~dygulski13\n"
+"  Damian Woźniak https://launchpad.net/~fisz\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Daniel Kur https://launchpad.net/~daniel-m-kur\n"
 "  Dweight https://launchpad.net/~devilsenator\n"
@@ -2388,7 +2388,7 @@ msgstr "Kopiuj"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"
-msgstr "Wklej do folderu"
+msgstr "Wklej do katalogu"
 
 #: ../src/View/directory_view_popup.ui:131
 msgid "Sort by"
