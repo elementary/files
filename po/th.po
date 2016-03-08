@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-02-28 14:57+0000\n"
+"PO-Revision-Date: 2016-03-07 15:57+0000\n"
 "Last-Translator: Big50000 <ictsanook@hotmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:42+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-08 05:42+0000\n"
+"X-Generator: Launchpad (build 17936)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -65,7 +65,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "ไม่สามารถเปิดโฟลเดอร์ \"%s\" บน \"%s\""
+msgstr "ไม่สามารถเปิดโฟลเดอร์ \"%s\" ที่ \"%s\" ได้"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -74,7 +74,7 @@ msgstr "ไม่พบเซิร์ฟเวอร์ที่ \"%s\""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "ลองใหม่"
+msgstr "ลองใหม่อีกครั้ง"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
@@ -87,7 +87,7 @@ msgstr "ดำเนินการต่อ"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "เชื่อมต่อ"
+msgstr "เชื่อมต่อ (C_)"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -99,23 +99,23 @@ msgstr "รายละเอียดเซิร์ฟเวอร์"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr "_เซิร์ฟเวอร์"
+msgstr "เซิร์ฟเวอร์ (S_)"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr "_พอร์ต:"
+msgstr "พอร์ต (P_)"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr "_ชนิด:"
+msgstr "ชนิด (_T)"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "ใช้ร่วมกับ (_H) :"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr "_โฟลเดอร์:"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -123,38 +123,38 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "ชื่อโดเมน (_D) :"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr ""
+msgstr "ชื่อผู้ใช้ (_U) :"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "รหัสผ่าน (_W) :"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr ""
+msgstr "จำรหัสผ่านนี้ไว้ (_R)"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr ""
+msgstr "การกระทำถูกยกเลิก"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "ไม่สามารถระบุตำแหน่งเดิมของ \"%s\" "
 
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "ไม่สามารถกู้รายการนี้คืนจากถังขยะได้"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "ต้องการผสานโฟลเดอร์ \"%s\" หรือไม่?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -162,75 +162,77 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"การผสานนี้จะถามยืนยันก่อนที่จะเขียนทับแฟ้มใดๆ "
+"ในโฟลเดอร์ปลายทางที่มีชื่อชนกับแฟ้มที่กำลังคัดลอก"
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีโฟลเดอร์ชื่อเดียวกันที่เก่ากว่าอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีโฟลเดอร์ชื่อเดียวกันที่ใหม่กว่าอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีอีกโฟลเดอร์หนึ่งที่มีชื่อเดียวกันอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "การเขียนทับ จะเป็นการลบแฟ้มทุกแฟ้มในโฟลเดอร์ดังกล่าว"
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "ต้องการเขียนทับโฟลเดอร์ \"%s\" หรือไม่?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีโฟลเดอร์ชื่อเดียวกันอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "ต้องการเขียนทับแฟ้ม \"%s\" หรือไม่?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "การเขียนทับ จะเป็นการเขียนทับเนื้อหาเดิมของแฟ้มดังกล่าว"
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีแฟ้มชื่อเดียวกันที่เก่ากว่าอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีแฟ้มชื่อเดียวกันที่ใหม่กว่าอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "มีอีกแฟ้มหนึ่งที่มีชื่อเดียวกันอยู่แล้วใน \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
 msgid "Original file"
-msgstr ""
+msgstr "แฟ้มเดิม"
 
 #: ../libcore/marlin-file-conflict-dialog.c:253
 #: ../libcore/marlin-file-conflict-dialog.c:284
@@ -238,7 +240,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:493
 #: ../src/View/PropertiesWindow.vala:755
 msgid "Size:"
-msgstr ""
+msgstr "ขนาด:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -246,53 +248,53 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:496
 #: ../src/View/PropertiesWindow.vala:558
 msgid "Type:"
-msgstr ""
+msgstr "ชนิด:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr ""
+msgstr "แก้ไขครั้งสุดท้าย:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr ""
+msgstr "เขียนทับด้วย"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
-msgstr ""
+msgstr "ผสาน"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "ตั้งชื่อใหม่ให้กับแฟ้มปลายทาง (_S)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr ""
+msgstr "รีเซ็ต"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "ปรับใช้การกระทำนี้กับแฟ้มทั้งหมด"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr ""
+msgstr "ข้าม (_S)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr ""
+msgstr "เปลี่ยนชื่อ (_N)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
-msgstr ""
+msgstr "เขียนทับ"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
-msgstr ""
+msgstr "แฟ้มขัดแย้งกัน"
 
 #: ../libcore/gof-file.c:366
 #, c-format
@@ -302,27 +304,27 @@ msgstr "เชื่อมโยงไปยัง %s"
 #: ../libcore/gof-file.c:1910
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "ไฟล์เดสก์ทอปไม่ถูกต้อง : %s"
 
 #: ../libcore/gof-file.c:1948
 msgid "No Exec field specified"
-msgstr ""
+msgstr "ไม่ได้กำหนดพารามิเตอร์การเรียกใ้ช้เป็นโปรแกรม"
 
 #: ../libcore/gof-file.c:1968
 msgid "No URL field specified"
-msgstr ""
+msgstr "ไม่พบตำแหน่ง URL ที่ระบุ"
 
 #: ../libcore/gof-file.c:1974
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "แฟ้มที่เดสท็อปไม่ถูกต้อง"
 
 #: ../libcore/gof-file.c:2269
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "ห้ามใช้ขีดทับในชื่อแฟ้ม"
 
 #: ../libcore/gof-file.c:2289
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "ไม่สามารถเปลี่ยนชื่อแฟ้มระดับบนสุดได้"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -358,40 +360,36 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "ผสานทั้งหมด (_A)"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "คัดลอก_ไปเลย"
+msgstr "ยืนยันคัดลอก (_A)"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d วินาที"
 
 #: ../libcore/marlin-file-operations.c:301
 #: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d นาที"
 
 #: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d ชั่วโมง"
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ประมาณ %'d ชั่วโมง"
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
@@ -401,35 +399,35 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "จุดเชื่อมโยงอีกอันไปยัง %s"
 
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
-msgstr " (สำเนา)"
+msgstr " (copy)"
 
 #: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
-msgstr " (อีกสำเนาหนึ่ง)"
+msgstr " (another copy)"
 
 #: ../libcore/marlin-file-operations.c:470
 #: ../libcore/marlin-file-operations.c:472
