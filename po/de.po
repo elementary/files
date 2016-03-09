@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-03-01 18:28+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-03-08 15:15+0000\n"
+"Last-Translator: Domar <domar@gmx.at>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-03-02 05:37+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-09 05:44+0000\n"
+"X-Generator: Launchpad (build 17936)\n"
 "Language: de\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1800,7 +1800,7 @@ msgstr "%u Dateien, "
 
 #: ../src/View/OverlayBar.vala:249
 msgid "unknown size"
-msgstr ""
+msgstr "unbekannte Größe"
 
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
@@ -1808,7 +1808,7 @@ msgstr "Schließen"
 
 #: ../src/View/PropertiesWindow.vala:197
 msgid "Resolution:"
-msgstr ""
+msgstr "Auflösung:"
 
 #: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
 msgid "General"
@@ -1850,36 +1850,36 @@ msgstr "%u ausgewählte Elemente"
 
 #: ../src/View/PropertiesWindow.vala:639
 msgid "Created:"
-msgstr ""
+msgstr "Erstellt am:"
 
 #: ../src/View/PropertiesWindow.vala:641
 msgid "Modified:"
-msgstr ""
+msgstr "Geändert am:"
 
 #: ../src/View/PropertiesWindow.vala:644
 msgid "Last Access:"
-msgstr ""
+msgstr "Letzter Zugriff:"
 
 #: ../src/View/PropertiesWindow.vala:652
 msgid "Deleted:"
-msgstr ""
+msgstr "Gelöscht:"
 
 #: ../src/View/PropertiesWindow.vala:657
 msgid "MimeType:"
-msgstr ""
+msgstr "Mime-Typ:"
 
 #: ../src/View/PropertiesWindow.vala:665
 msgid "MimeTypes:"
-msgstr ""
+msgstr "Mime-Typen:"
 
 #: ../src/View/PropertiesWindow.vala:676
 msgid "loading ..."
-msgstr ""
+msgstr "Lade …"
 
 #: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
 #: ../src/View/PropertiesWindow.vala:1545
 msgid "Location:"
-msgstr ""
+msgstr "Speicherort:"
 
 #: ../src/View/PropertiesWindow.vala:696
 msgid "Target:"
@@ -1887,11 +1887,11 @@ msgstr "Ziel:"
 
 #: ../src/View/PropertiesWindow.vala:702
 msgid "Origin Location:"
-msgstr ""
+msgstr "Ursprungsort:"
 
 #: ../src/View/PropertiesWindow.vala:709
 msgid "Could not be determined"
-msgstr ""
+msgstr "Konnte nicht ermittelt werden"
 
 #: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
 msgid "Info"
@@ -1932,16 +1932,16 @@ msgstr "Ausführen"
 #: ../src/View/PropertiesWindow.vala:1164
 #: ../src/View/PropertiesWindow.vala:1179
 msgid "Owner:"
-msgstr ""
+msgstr "Besitzer:"
 
 #: ../src/View/PropertiesWindow.vala:1170
 #: ../src/View/PropertiesWindow.vala:1184
 msgid "Group:"
-msgstr ""
+msgstr "Gruppe:"
 
 #: ../src/View/PropertiesWindow.vala:1189
 msgid "Everyone:"
-msgstr ""
+msgstr "Jeder:"
 
 #: ../src/View/PropertiesWindow.vala:1422
 msgid "Select an application to open "
@@ -1949,16 +1949,16 @@ msgstr "Wählen Sie eine Anwendung, die Sie öffnen möchten "
 
 #: ../src/View/PropertiesWindow.vala:1477
 msgid "Disk Properties"
-msgstr ""
+msgstr "Laufwerkseigenschaften"
 
 #: ../src/View/PropertiesWindow.vala:1552
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: ../src/View/PropertiesWindow.vala:1570
 #: ../src/View/PropertiesWindow.vala:1595
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapazität:"
 
 #: ../src/View/PropertiesWindow.vala:1576
 #: ../src/View/PropertiesWindow.vala:1601
@@ -1968,17 +1968,17 @@ msgstr "Verfügbar:"
 #: ../src/View/PropertiesWindow.vala:1582
 #: ../src/View/PropertiesWindow.vala:1607
 msgid "Used:"
-msgstr ""
+msgstr "Belegt:"
 
 #: ../src/View/PropertiesWindow.vala:1585
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% belegt)"
 
 #: ../src/View/PropertiesWindow.vala:1598
 #: ../src/View/PropertiesWindow.vala:1604
 #: ../src/View/PropertiesWindow.vala:1610
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: ../src/View/ViewContainer.vala:325
 msgid "(as Administrator)"
@@ -2003,10 +2003,11 @@ msgstr "Der Ordner kann nicht eingehangen werden."
 #: ../src/View/ViewContainer.vala:347
 msgid "Could not connect to the server for this folder."
 msgstr ""
+"Verbindung zum Server für diesen Ordner konnte nicht hergestellt werden."
 
 #: ../src/View/ViewContainer.vala:349
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Es ist nicht möglich, diesen Ordner anzuzeigen"
 
 #: ../src/View/ViewContainer.vala:350
 msgid "The server for this folder could not be located."
@@ -2155,11 +2156,11 @@ msgstr "In neuem Tab öffnen"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "In neuem Fenster öffnen"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "In einer anderen Anwendung öffnen…"
 
 #: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
@@ -2168,7 +2169,7 @@ msgstr "Ordner neu laden"
 #: ../libwidgets/View/LocationBar.vala:162
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Suchbegriff oder Pfad eingeben"
 
 #: ../libwidgets/View/SearchResults.vala:179
 msgid "In This Folder"
@@ -2197,6 +2198,7 @@ msgstr ""
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel https://launchpad.net/~daniel-87\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Denis Graipel https://launchpad.net/~denis98\n"
 "  Domar https://launchpad.net/~domar\n"
 "  Eduard Gotwig https://launchpad.net/~gotwig\n"
 "  Eduard Stürmer https://launchpad.net/~eduard-stuermer\n"
@@ -2266,7 +2268,7 @@ msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Pfad eingeben"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
