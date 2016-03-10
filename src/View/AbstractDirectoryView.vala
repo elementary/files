@@ -450,16 +450,8 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (view.has_focus)
-                return;
-
-            if (view.get_realized ())
+            if (slot.is_active && view.get_realized ()) {
                 view.grab_focus ();
-            else { /* wait until realized */
-                GLib.Timeout.add (100, () => {
-                    view.grab_focus ();
-                    return !view.get_realized ();
-                });
             }
         }
 
@@ -2783,9 +2775,7 @@ namespace FM {
         }
 
         protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            if (slot.is_active)
-                grab_focus (); /* Cause OverLay to appear */
-
+            grab_focus (); /* Cause OverLay to appear */
             return false;
         }
 
@@ -2819,8 +2809,7 @@ namespace FM {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            if (renaming) {
-                warning ("on_name_edited re-entered");
+            if (renaming) { /* Ignore duplicate editing-started signal*/
                 return;
             }
             renaming = true;
@@ -2856,7 +2845,6 @@ namespace FM {
         protected void on_name_edited (string path_string, string new_name) {
             /* Must not re-enter */
             if (!renaming || proposed_name == new_name) {
-                warning ("on_name_edited re-entered");
                 return;
             }
             proposed_name = "";
