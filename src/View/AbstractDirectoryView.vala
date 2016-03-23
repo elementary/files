@@ -2931,11 +2931,6 @@ namespace FM {
         }
 
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-
-            if (!double_click_event)
-                start_drag_timer ((Gdk.Event)event);
-
             return true;
         }
 
@@ -3060,9 +3055,10 @@ namespace FM {
                                     previous_selection_was_linear = false;
                                     result = false; /* Rubberband */
                                 }
-                            else
+                            else {
+                                unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
-
+                            }
                             previous_linear_selection_path = path.copy ();
                             break;
 
@@ -3113,6 +3109,7 @@ namespace FM {
 
                         select_path (path);
 
+                    unblock_drag_and_drop ();
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3335,7 +3332,6 @@ namespace FM {
                 on_helper = (x - orig_x <= helper_size &&
                              y - orig_y <= helper_size);
             }
-
             return on_icon;
         }
 
