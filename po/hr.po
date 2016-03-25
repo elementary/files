@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-02-05 10:04+0000\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"PO-Revision-Date: 2016-03-24 10:54+0000\n"
+"Last-Translator: zvacet <ikoli@yahoo.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:42+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-25 05:49+0000\n"
+"X-Generator: Launchpad (build 17967)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1806,7 +1806,7 @@ msgstr "%u datoteke, "
 
 #: ../src/View/OverlayBar.vala:249
 msgid "unknown size"
-msgstr ""
+msgstr "nepoznata veličina"
 
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
@@ -1862,11 +1862,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:644
 msgid "Last Access:"
-msgstr ""
+msgstr "Zadnji pristup:"
 
 #: ../src/View/PropertiesWindow.vala:652
 msgid "Deleted:"
-msgstr ""
+msgstr "Izbrisano:"
 
 #: ../src/View/PropertiesWindow.vala:657
 msgid "MimeType:"
@@ -1878,7 +1878,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:676
 msgid "loading ..."
-msgstr ""
+msgstr "učitavam..."
 
 #: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
 #: ../src/View/PropertiesWindow.vala:1545
@@ -1945,7 +1945,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1189
 msgid "Everyone:"
-msgstr ""
+msgstr "Svi:"
 
 #: ../src/View/PropertiesWindow.vala:1422
 msgid "Select an application to open "
@@ -1953,7 +1953,7 @@ msgstr "Odaberi aplikaciju za otvaranje "
 
 #: ../src/View/PropertiesWindow.vala:1477
 msgid "Disk Properties"
-msgstr ""
+msgstr "Osobitosti diska"
 
 #: ../src/View/PropertiesWindow.vala:1552
 msgid "Format:"
@@ -2204,7 +2204,8 @@ msgstr ""
 "  Paulo Pavačić https://launchpad.net/~pavacic-p\n"
 "  Sinisa Perovic https://launchpad.net/~sinisa-p\n"
 "  Vedran Ivančević https://launchpad.net/~vedran-ivancevic\n"
-"  gogo https://launchpad.net/~trebelnik-stefina"
+"  gogo https://launchpad.net/~trebelnik-stefina\n"
+"  zvacet https://launchpad.net/~ivicakolic"
 
 #: ../libwidgets/Resources.vala:80
 msgid "AFP"
@@ -2236,11 +2237,11 @@ msgstr "Nedavno"
 
 #: ../libwidgets/Resources.vala:89
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Upišite putanju"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
