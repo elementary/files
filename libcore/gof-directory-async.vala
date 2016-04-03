@@ -999,8 +999,9 @@ public class GOF.Directory.Async : Object {
             if (cancellable.is_cancelled () || thumbs_stop)
                 break;
 
-            if (gof.info != null && gof.flags != GOF.File.ThumbState.UNKNOWN) {
-                gof.flags = GOF.File.ThumbState.READY;
+            /* Only try to load pixbuf from thumbnail if one may exist.
+             * Note: query_thumbnail_update () does not call the thumbnailer, only loads pixbuf from existing thumbnail file.*/
+            if (gof.flags != GOF.File.ThumbState.NONE) {
                 gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }
