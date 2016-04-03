@@ -21,7 +21,7 @@
 
 public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     // padding to the right of the disk usage graphic
-    public uint rpad { set; get; }
+    public int rpad { set; get; }
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
 

@@ -187,9 +187,7 @@ namespace Marlin.View.Chrome
             add (frame);
 
             button_press_event.connect (on_button_press_event);
-
             view.button_press_event.connect (on_view_button_press_event);
-
             key_press_event.connect (on_key_press_event);
         }
 
@@ -208,11 +206,13 @@ namespace Marlin.View.Chrome
             device = Gtk.get_current_event_device ();
             search_term = term.normalize ().casefold ();
 
-            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
+            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
                 device = device.associated_device;
+            }
 
-            if (!current_operation.is_cancelled ())
+            if (!current_operation.is_cancelled ()) {
                 current_operation.cancel ();
+            }
 
             if (adding_timeout != 0) {
                 Source.remove (adding_timeout);
@@ -230,14 +230,15 @@ namespace Marlin.View.Chrome
             }
 
             if (working) {
-                if (waiting_handler != 0)
+                if (waiting_handler != 0) {
                     SignalHandler.disconnect (this, waiting_handler);
-
+                }
                 waiting_handler = notify["working"].connect (() => {
                     SignalHandler.disconnect (this, waiting_handler);
                     waiting_handler = 0;
                     search (search_term, folder);
                 });
+
                 return;
             }
 
@@ -286,12 +287,9 @@ namespace Marlin.View.Chrome
                 return null;
             });
 
-            if (!search_current_directory_only)
-                get_zg_results.begin (search_term);
-            else
-                global_search_finished = true;
-
             if (!search_current_directory_only) {
+                get_zg_results.begin (search_term);
+
                 var bookmarks_matched = new Gee.LinkedList<Match> ();
 
                 foreach (var bookmark in BookmarkList.get_instance ().list) {
@@ -301,6 +299,8 @@ namespace Marlin.View.Chrome
                 }
 
                 add_results (bookmarks_matched, bookmark_results);
+            } else {
+                global_search_finished = true;
             }
         }
 
@@ -327,16 +327,17 @@ namespace Marlin.View.Chrome
             }
         }
 
-        
+
         bool on_button_press_event (Gdk.EventButton e) {
             if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
                 view.event (e);
+                return true;
+            } else {
+                cancel ();
                 return false;
             }
-            cancel ();
-            return false;            
         }
-        
+
         bool on_view_button_press_event (Gdk.EventButton e) {
             Gtk.TreePath path;
             Gtk.TreeIter iter;
@@ -346,7 +347,7 @@ namespace Marlin.View.Chrome
             if (path != null) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, e.button > 1);
+                accept (iter, e.button > 1);  /* This will call cancel () */
             }
             return true;
         }
@@ -372,7 +373,7 @@ namespace Marlin.View.Chrome
                            event.keyval == Gdk.Key.Return ||
                            event.keyval == Gdk.Key.KP_Enter ||
                            event.keyval == Gdk.Key.ISO_Enter) {
-                               
+
                     accept (null, true);
                 } else {
                     return parent.key_press_event (event);
@@ -604,6 +605,7 @@ namespace Marlin.View.Chrome
             set_screen (parent.get_screen ());
             show_all ();
             view.grab_focus ();
+
             /* Ensure device grab and ungrab are paired */
             if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
@@ -613,23 +615,28 @@ namespace Marlin.View.Chrome
                     null, Gdk.CURRENT_TIME);
 
                 is_grabbing = true;
-                /* Also pair signal connect and disconnect */
-                view.cursor_changed.connect (on_cursor_changed);
             }
+            /* Also pair signal connect and disconnect */
+            view.cursor_changed.connect (on_cursor_changed);
         }
 
         void popdown ()
         {
-            /* Ensure device grab and ungrab are paired */
-            if (is_grabbing && device != null) {
+            if (is_grabbing) {
+                if (device == null) {
+                    /* 'device' can become null during searching for reasons as yet unidentified. This ensures
+                     * that grab and ungrab are matched (else interface freezes after some searches)
+                     */
+                    device = Gtk.get_current_event_device ();
+                    debug ("Reference to device was lost while grabbing - should not happen");
+                }
+
                 device.ungrab (Gdk.CURRENT_TIME);
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
-
-                /* Also pair signal connect and disconnect */
-                view.cursor_changed.disconnect (on_cursor_changed);
             }
-            parent.grab_focus ();
+            /* Also pair signal connect and disconnect */
+            view.cursor_changed.disconnect (on_cursor_changed);
             hide ();
         }
 
@@ -739,7 +746,7 @@ namespace Marlin.View.Chrome
                 Gdk.beep ();
                 return;
             }
-            
+
             cancel ();
             if (activate) {
                 file_activated (file);
@@ -778,8 +785,9 @@ namespace Marlin.View.Chrome
 
         bool send_search_finished ()
         {
-            if (!local_search_finished || !global_search_finished || !allow_adding_results)
+            if (!local_search_finished || !global_search_finished || !allow_adding_results) {
                 return false;
+            }
 
             working = false;
 

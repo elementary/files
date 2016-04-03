@@ -69,7 +69,8 @@ namespace Marlin.View {
         }
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
-        public bool freeze_view_changes = false;
+        private bool freeze_view_changes = false;
+        private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
@@ -246,9 +247,12 @@ namespace Marlin.View {
             });
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED)
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
                                                      (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                } else if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
+                    top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+                }
 
                 return false;
             });
@@ -628,19 +632,32 @@ namespace Marlin.View {
         }
 
         private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
-            update_undo_actions ();
+            if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Z */
+                return;
+            }
+            before_undo_redo ();
             undo_manager.undo (this, after_undo_redo);
+        }
+
+        private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
+            if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Shift-Z */
+                return;
+            }
+            before_undo_redo ();
+            undo_manager.redo (this, after_undo_redo);
+        }
+
+        private void before_undo_redo () {
+            doing_undo_redo = true;
+            update_undo_actions ();
         }
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
             if (window.current_tab.slot.directory.is_recent)
                 window.current_tab.reload ();
-        }
 
-        private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
-            update_undo_actions ();
-            undo_manager.redo (this, after_undo_redo);
+            window.doing_undo_redo = false;
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
