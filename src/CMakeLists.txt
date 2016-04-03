@@ -20,7 +20,7 @@ pkg_check_modules (DEPS REQUIRED
     gio-2.0
     gio-unix-2.0
     pango>=1.1.2
-    gtk+-3.0>=3.10
+    gtk+-3.0>=3.14
     gmodule-2.0
     gail-3.0
     gee-0.8
@@ -68,7 +68,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ListView.vala
         ZeitgeistManager.vala
         View/DiskRenderer.vala
-        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
@@ -127,7 +126,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala

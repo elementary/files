@@ -69,7 +69,8 @@ namespace Marlin.View {
         }
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
-        public bool freeze_view_changes = false;
+        private bool freeze_view_changes = false;
+        private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
@@ -500,9 +501,10 @@ namespace Marlin.View {
 
         private void action_reload () {
             /* avoid spawning reload when key kept pressed */
-            if (tabs.current.working)
+            if (tabs.current.working) {
+                warning ("Too rapid reloading suppressed");
                 return;
-
+            }
             current_tab.reload ();
             sidebar.reload ();
         }
@@ -630,19 +632,32 @@ namespace Marlin.View {
         }
 
         private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
-            update_undo_actions ();
+            if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Z */
+                return;
+            }
+            before_undo_redo ();
             undo_manager.undo (this, after_undo_redo);
+        }
+
+        private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
+            if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Shift-Z */
+                return;
+            }
+            before_undo_redo ();
+            undo_manager.redo (this, after_undo_redo);
+        }
+
+        private void before_undo_redo () {
+            doing_undo_redo = true;
+            update_undo_actions ();
         }
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
-            if (!window.current_tab.slot.directory.is_local || window.current_tab.slot.directory.is_recent)
+            if (window.current_tab.slot.directory.is_recent)
                 window.current_tab.reload ();
-        }
 
-        private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
-            update_undo_actions ();
-            undo_manager.redo (this, after_undo_redo);
+            window.doing_undo_redo = false;
         }
 
         private void change_state_select_all (GLib.SimpleAction action) {
@@ -716,7 +731,7 @@ namespace Marlin.View {
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
         }
 
-        public GLib.SimpleActionGroup get_action_group () {
+        public new GLib.SimpleActionGroup get_action_group () {
             return this.win_actions;
         }
 
