@@ -100,5 +100,9 @@ namespace Marlin {
         public override void set_size_request (int width, int height) {
             textview.set_size_request (width, height);
         }
+
+        public override void start_editing (Gdk.Event? event) {
+            textview.grab_focus ();
+        }
     }
 }

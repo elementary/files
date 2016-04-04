@@ -2814,7 +2814,7 @@ namespace FM {
             }
             renaming = true;
 
-            var editable_widget = editable as Gtk.Editable?;
+            var editable_widget = editable as Marlin.AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
                 var path = new Gtk.TreePath.from_string (path_string);
