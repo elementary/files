@@ -438,6 +438,10 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_warning_image.hide ();
 
         foreach (GOF.File gof in files) {
+            if (gof.is_root_network_folder ()) {
+                size_label.label = _("unknown");
+                continue;
+            }
             if (gof.is_directory) {
                 folder_count++;
                 var d = new Marlin.DeepCount (gof.location);

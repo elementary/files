@@ -284,7 +284,6 @@ namespace FM {
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
-            change_zoom_level ();
 
             connect_directory_handlers (slot.directory);
         }
@@ -450,16 +449,8 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (view.has_focus)
-                return;
-
-            if (view.get_realized ())
+            if (slot.is_active && view.get_realized ()) {
                 view.grab_focus ();
-            else { /* wait until realized */
-                GLib.Timeout.add (100, () => {
-                    view.grab_focus ();
-                    return !view.get_realized ();
-                });
             }
         }
 
@@ -2372,10 +2363,10 @@ namespace FM {
                     while (valid_iter) {
                         file = model.file_for_iter (iter);
 
-                        /* Ask thumbnail if ThumbState UNKNOWN or NONE */
-                        if (file != null && file.flags < 2)
+                        /* Ask thumbnailer only if ThumbState UNKNOWN */
+                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
-
+                        }
                         /* check if we've reached the end of the visible range */
                         path = model.get_path (iter);
 
@@ -2386,9 +2377,10 @@ namespace FM {
                     }
                 }
 
-                if (visible_files != null)
+                /* This is the only place that new thumbnail files are created */ 
+                if (visible_files != null) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-
+                }
                 thumbnail_source_id = 0;
                 return false;
             });
@@ -2784,9 +2776,7 @@ namespace FM {
         }
 
         protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            if (slot.is_active)
-                grab_focus (); /* Cause OverLay to appear */
-
+            grab_focus (); /* Cause OverLay to appear */
             return false;
         }
 
@@ -2820,13 +2810,12 @@ namespace FM {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            if (renaming) {
-                warning ("on_name_edited re-entered");
+            if (renaming) { /* Ignore duplicate editing-started signal*/
                 return;
             }
             renaming = true;
 
-            var editable_widget = editable as Gtk.Editable?;
+            var editable_widget = editable as Marlin.AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
                 var path = new Gtk.TreePath.from_string (path_string);
@@ -2857,7 +2846,6 @@ namespace FM {
         protected void on_name_edited (string path_string, string new_name) {
             /* Must not re-enter */
             if (!renaming || proposed_name == new_name) {
-                warning ("on_name_edited re-entered");
                 return;
             }
             proposed_name = "";
@@ -2944,11 +2932,6 @@ namespace FM {
         }
 
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-
-            if (!double_click_event)
-                start_drag_timer ((Gdk.Event)event);
-
             return true;
         }
 
@@ -3073,9 +3056,10 @@ namespace FM {
                                     previous_selection_was_linear = false;
                                     result = false; /* Rubberband */
                                 }
-                            else
+                            else {
+                                unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
-
+                            }
                             previous_linear_selection_path = path.copy ();
                             break;
 
@@ -3126,6 +3110,7 @@ namespace FM {
 
                         select_path (path);
 
+                    unblock_drag_and_drop ();
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3348,7 +3333,6 @@ namespace FM {
                 on_helper = (x - orig_x <= helper_size &&
                              y - orig_y <= helper_size);
             }
-
             return on_icon;
         }
 
