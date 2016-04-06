@@ -61,8 +61,7 @@ namespace Marlin.View.Chrome
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
             Marlin.MimeActions.open_glib_file_request (file, this, app);
-            /* Emit escape signal at end otherwise gets lost/ignored */
-            escape ();
+            on_search_results_exit ();
         }
 
         private void on_search_results_first_match_found (GLib.File? file) {
@@ -212,6 +211,11 @@ namespace Marlin.View.Chrome
 
         private void cancel_search () {
             search_results.cancel ();
+        }
+
+        public void cancel () {
+            cancel_search ();
+            on_search_results_exit (); /* Exit navigation mode as well */
         }
     }
 }

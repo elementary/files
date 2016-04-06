@@ -56,7 +56,7 @@ public class GOF.Directory.Async : Object {
     private List<unowned GOF.File>? sorted_dirs = null;
 
     public signal void file_loaded (GOF.File file);
-    public signal void file_added (GOF.File file);
+    public signal void file_added (GOF.File? file); /* null used to signal failed operation */
     public signal void file_changed (GOF.File file);
     public signal void file_deleted (GOF.File file);
     public signal void icon_changed (GOF.File file); /* Called directly by GOF.File - handled by AbstractDirectoryView
@@ -157,7 +157,8 @@ public class GOF.Directory.Async : Object {
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         bool success = yield get_file_info ();
         if (success) {
-            if (is_local && !file.is_folder ()) {
+            if (!file.is_folder () && !file.is_root_network_folder ()) {
+                warning ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
@@ -165,9 +166,14 @@ public class GOF.Directory.Async : Object {
                     location = parent;
                     success = yield get_file_info ();
                 } else {
+                    warning ("Parent is null for file %s", file.uri);
                     success = false;
                 }
+            } else {
+
             }
+        } else {
+            warning ("Failed to get file info for file %s", file.uri);
         }
         make_ready (success, file_loaded_func); /* Only place that should call this function */
     }
@@ -180,7 +186,6 @@ public class GOF.Directory.Async : Object {
         if (is_local) {
             return file.ensure_query_info ();
         }
-
         /* Must be non-local */
         if (!is_local && !yield check_network ()) {
             file.is_connected = false;
@@ -225,10 +230,10 @@ public class GOF.Directory.Async : Object {
         }
         if (success) {
             debug ("got file info");
-            file.ensure_query_info ();
+            file.update ();
             return true;
         } else {
-            debug ("Failed to get file info for %s", file.uri);
+            warning ("Failed to get file info for %s", file.uri);
             return false;
         }
     }
@@ -246,6 +251,7 @@ public class GOF.Directory.Async : Object {
                 file.is_connected = true;
             } else {
                 file.is_connected = false;
+                file.is_mounted = false;
                 warning ("Mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
                     permission_denied = true;
@@ -292,7 +298,10 @@ public class GOF.Directory.Async : Object {
     private void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         can_load = ready;
         if (!can_load) {
-            debug ("%s cannot load", file.uri);
+            warning ("%s cannot load.  Connected %s, Mounted %s, Exists %s", file.uri,
+                                                                             file.is_connected.to_string (),
+                                                                             file.is_mounted.to_string (),
+                                                                             file.exists.to_string ());
             state = State.NOT_LOADED; /* ensure state is correct */
             done_loading ();
             return;
@@ -375,17 +384,12 @@ public class GOF.Directory.Async : Object {
     public void cancel () {
         /* This should only be called when closing the view - it will cancel initialisation of the directory */
         cancellable.cancel ();
-        cancel_thumbnailing ();
-        cancel_timeout (ref load_timeout_id);
-        cancel_timeout (ref idle_consume_changes_id);
+        cancel_timeouts ();
     }
 
     public void cancel_thumbnailing () {
         /* remove any pending thumbnail generation */
-        if (timeout_thumbsq != 0) {
-            Source.remove (timeout_thumbsq);
-            timeout_thumbsq = 0;
-        }
+        cancel_timeout (ref timeout_thumbsq);
     }
 
     public void reload () {
@@ -620,8 +624,9 @@ public class GOF.Directory.Async : Object {
                                                             FileQueryInfoFlags.NONE,
                                                             Priority.DEFAULT,
                                                             cancellable);
-            if (f != null)
+            if (f != null) {
                 f (gof);
+            }
         } catch (Error err) {
             warning ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND) {
@@ -632,8 +637,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private void changed_and_refresh (GOF.File gof) {
-        if (gof.is_gone)
+        if (gof.is_gone) {
+            warning ("File marked as gone when refreshing change");
             return;
+        }
 
         gof.update ();
 
@@ -644,9 +651,10 @@ public class GOF.Directory.Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
-        if (gof.is_gone)
+        if (gof.is_gone) {
+            warning ("Add and refresh file which is gone");
             return;
-
+        }
         if (gof.info == null)
             critical ("FILE INFO null");
 
@@ -721,24 +729,29 @@ public class GOF.Directory.Async : Object {
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
-        case FileMonitorEvent.CHANGES_DONE_HINT:
-        case FileMonitorEvent.ATTRIBUTE_CHANGED:
-            MarlinFile.changes_queue_file_changed (_file);
-            break;
         case FileMonitorEvent.CREATED:
             MarlinFile.changes_queue_file_added (_file);
             break;
         case FileMonitorEvent.DELETED:
             MarlinFile.changes_queue_file_removed (_file);
             break;
+        case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
+        case FileMonitorEvent.ATTRIBUTE_CHANGED:
+            MarlinFile.changes_queue_file_changed (_file);
+            break;
         }
 
-        if (idle_consume_changes_id == 0)
-            idle_consume_changes_id = Idle.add (() => {
-                                                MarlinFile.changes_consume_changes (true);
-                                                idle_consume_changes_id = 0;
-                                                return false;
-                                                });
+        if (idle_consume_changes_id == 0) {
+            /* Insert delay to avoid race between gof.rename () finishing and consume changes -
+             * If consume changes called too soon can corrupt the view.
+             * TODO: Have GOF.Directory.Async control renaming.
+             */
+            idle_consume_changes_id = Timeout.add (10, () => {
+                MarlinFile.changes_consume_changes (true);
+                idle_consume_changes_id = 0;
+                return false;
+            });
+        }
     }
 
     private bool _freeze_update;
@@ -814,6 +827,8 @@ public class GOF.Directory.Async : Object {
 
                 if (!found)
                     dirs.append (dir);
+            } else {
+                warning ("parent of deleted file not found");
             }
         }
 
@@ -984,8 +999,9 @@ public class GOF.Directory.Async : Object {
             if (cancellable.is_cancelled () || thumbs_stop)
                 break;
 
-            if (gof.info != null && gof.flags != GOF.File.ThumbState.UNKNOWN) {
-                gof.flags = GOF.File.ThumbState.READY;
+            /* Only try to load pixbuf from thumbnail if one may exist.
+             * Note: query_thumbnail_update () does not call the thumbnailer, only loads pixbuf from existing thumbnail file.*/
+            if (gof.flags != GOF.File.ThumbState.NONE) {
                 gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }
@@ -1041,6 +1057,13 @@ public class GOF.Directory.Async : Object {
             GLib.Source.remove (timeout_thumbsq);
 
         timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
+    }
+
+    private void cancel_timeouts () {
+        cancel_timeout (ref timeout_thumbsq);
+        cancel_timeout (ref idle_consume_changes_id);
+        cancel_timeout (ref load_timeout_id);
+        
     }
 
     private bool cancel_timeout (ref uint id) {
