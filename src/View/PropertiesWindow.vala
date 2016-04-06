@@ -1591,15 +1591,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
 
         if (contains_label.get_text ().length < 1) {
-#if 0       /* Activate this clause if it is preferred to hide the line for selections that do not contain
-             * any sub-folders or files
-             */ 
             contains_key_label.hide ();
             contains_label.hide ();
-#else
-            /* Explicitly indicate that selected folders are empty */
-            contains_label.set_text (_("No subfolders or files"));
-#endif
         }
     }
 }
