@@ -1510,8 +1510,10 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 }
             }
         }
+
         return txt;
     }
+
     private string get_selected_label (uint folders, uint files) {
         string txt = "";
         uint total = folders + files;
@@ -1554,11 +1556,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
         }
 
-        if (txt.length > 0) {
-            return txt;
-        } else {
-            return _("Empty");
-        }
+        /* The selection should never be empty */
+        return txt;
     }
 
     /** Hide certain widgets under certain conditions **/
@@ -1589,6 +1588,18 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
             Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
             (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+        }
+
+        if (contains_label.get_text ().length < 1) {
+#if 0       /* Activate this clause if it is preferred to hide the line for selections that do not contain
+             * any sub-folders or files
+             */ 
+            contains_key_label.hide ();
+            contains_label.hide ();
+#else
+            /* Explicitly indicate that selected folders are empty */
+            contains_label.set_text (_("No subfolders or files"));
+#endif
         }
     }
 }
