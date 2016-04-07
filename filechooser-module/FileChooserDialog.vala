@@ -239,7 +239,9 @@ public class CustomFileChooserDialog : Object {
     }
     
     private static void setup_filter_box () {
-        var filters = chooser.list_filters (); 
+        var filters = chooser.list_filters ();
+        var current_filter_name = chooser.get_filter ().get_filter_name ();
+
         if (filters.length () > 0) {
             filters_available = true;
             var combo_box = new Gtk.ComboBoxText ();
@@ -256,12 +258,16 @@ public class CustomFileChooserDialog : Object {
                 });
             });
 
+            var index = 0;
             filters.foreach ((filter) => {
-                combo_box.append_text (filter.get_filter_name ()); 
+                var name = filter.get_filter_name ();
+                combo_box.append_text (name);
+                if (name == current_filter_name) {
+                    combo_box.active = index;
+                }
+                index++;
             });
 
-            combo_box.active = 0;
-       
             var grid = new Gtk.Grid ();
             grid.margin_start = 5;
             grid.add (combo_box);
