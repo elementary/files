@@ -69,7 +69,7 @@ namespace PF {
         const string APP_LOGO = "system-file-manager";
         public const string THEME = "freedesktop";
         public const string DELETE = "trash-empty";
-        public const string TRASH = "device-removed";
+        public const string TRASH = "audio-volume-change";
         public const string EMPTY_TRASH = "trash-empty";
     }
 }
