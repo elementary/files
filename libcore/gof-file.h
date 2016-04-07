@@ -89,6 +89,8 @@ struct _GOFFile {
     gchar           *custom_icon_name;
     GdkPixbuf       *pix;
     gint            pix_size;
+    gint            width;
+    gint            height;
     guint64         modified;
     gchar           *formated_modified;
     int             color;

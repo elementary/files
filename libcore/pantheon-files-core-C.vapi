@@ -268,6 +268,8 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf pix;
         public int pix_size;
+        public int width;
+        public int height;
         public int sort_column_id;
         public Gtk.SortType sort_order;
 
