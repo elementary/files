@@ -24,8 +24,11 @@ namespace Marlin.View {
         private int preferred_column_width;
         private FM.AbstractDirectoryView? dir_view = null;
 
-        protected bool updates_frozen = false;
+        private uint reload_timeout_id = 0;
+        private uint path_change_timeout_id = 0;
 
+        protected bool updates_frozen = false;
+        protected bool original_reload_request = false;
         public bool has_autosized = false;
         public bool is_active {get; protected set;}
 
@@ -62,10 +65,10 @@ namespace Marlin.View {
             preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
-            set_up_directory (_location);
-            connect_slot_signals ();
+            set_up_directory (_location); /* Connect dir signals before making view */
             make_view ();
             connect_dir_view_signals ();
+            connect_slot_signals ();
         }
 
         ~Slot () {
@@ -77,7 +80,6 @@ namespace Marlin.View {
                 if (is_active)
                     return;
 
-                ctab.refresh_slot_info (this);
                 is_active = true;
                 dir_view.grab_focus ();
             });
@@ -134,11 +136,39 @@ namespace Marlin.View {
                 autosize_slot ();
 
             set_view_updates_frozen (false);
+            updates_frozen = false;
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir) {
-            dir_view.change_directory (directory, directory);
-            ctab.load_slot_directory (this);
+            if (!updates_frozen) {
+                updates_frozen = true;
+                path_changed (false);
+                /* ViewContainer listens to this signal takes care of updating appearance
+                 * If allow_mode_change is false View Container will not automagically
+                 * switch to icon view for icon folders (needed for Miller View) */
+
+                dir_view.clear (); /* clear model but do not change directory */
+
+                /* Only need to initialise directory once - the slot that originally received the
+                 * reload request does this */ 
+                if (original_reload_request) {
+                    schedule_reload ();
+                    original_reload_request = false;
+                }
+            }
+        }
+
+        private void schedule_reload () {
+            /* Allow time for other slots showing this directory to prepare for reload */
+            if (reload_timeout_id > 0) {
+                warning ("Path change request received too rapidly");
+                return;
+            }
+            reload_timeout_id = Timeout.add (50, ()=> {
+                    directory.reload ();
+                    reload_timeout_id = 0;
+                    return false;
+            });
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -149,6 +179,7 @@ namespace Marlin.View {
             assert (directory != null);
 
             connect_dir_signals ();
+
             has_autosized = false;
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS)
@@ -156,18 +187,24 @@ namespace Marlin.View {
         }
 
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
-            GLib.Timeout.add (20, () => {
+            if (path_change_timeout_id > 0) {
+                warning ("Path change request received too rapidly");
+                return;
+            }
+            path_change_timeout_id = GLib.Timeout.add (20, () => {
                 on_path_change_request (loc, flag, make_root);
+                path_change_timeout_id = 0; 
                 return false;
             });
         }
 
         private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (dir_view is FM.ColumnView)
+                if (dir_view is FM.ColumnView) {
                     miller_slot_request (loc, make_root);
-                else
+                } else {
                     user_path_change_request (loc);
+                }
             } else
                 ctab.new_container_request (loc, flag);
         }
@@ -178,18 +215,19 @@ namespace Marlin.View {
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
-            if (directory.is_empty ()) {
-                if (directory.is_trash)
+            if (directory.is_empty ()) { /* No files in the file cache */
+                if (directory.permission_denied) {
+                    layout.set_markup (denied_message, -1);
+                } else if (directory.is_trash) {
                     layout.set_markup (empty_trash_message, -1);
-                else if (directory.is_recent)
+                } else if (directory.is_recent) {
                     layout.set_markup (empty_recents_message, -1);
-                else
+                } else {
                     layout.set_markup (empty_message, -1);
-            } else if (directory.permission_denied)
-                layout.set_markup (denied_message, -1);
-            else
+                }
+            } else {
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
-
+            }
             Pango.Rectangle extents;
             layout.get_extents (null, out extents);
 
@@ -213,21 +251,22 @@ namespace Marlin.View {
             has_autosized = true;
         }
 
+        /** Only this function must be used to change or reload the path **/
         public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
             var old_dir = directory;
-            old_dir.cancel ();
             set_up_directory (loc);
-            dir_view.change_directory (old_dir, directory);
-            /* ViewContainer takes care of updating appearance
+            path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
+            /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
-            ctab.slot_path_changed (directory.location, allow_mode_change);
+            dir_view.change_directory (old_dir, directory);
+            directory.init ();
         }
 
         public override void reload (bool non_local_only = false) {
-            if (!(non_local_only && directory.is_local)) {
-                directory.clear_directory_info ();
+            if (!non_local_only || !directory.is_local) {
+                original_reload_request = true;
                 directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
             }
         }
@@ -327,6 +366,8 @@ namespace Marlin.View {
         }
 
         public override void cancel () {
+            cancel_timeouts ();
+
             if (directory != null)
                 directory.cancel ();
 
@@ -355,6 +396,27 @@ namespace Marlin.View {
         public override void set_frozen_state (bool freeze) {
             set_view_updates_frozen (freeze);
             frozen_changed (freeze);
+        }
+
+        public override FileInfo? lookup_file_info (GLib.File loc) {
+            GOF.File? gof = directory.file_hash_lookup_location (loc);
+            if (gof != null) {
+                return gof.info;
+            } else {
+                return null;
+            }
+        }
+
+        private void cancel_timeouts () {
+            cancel_timeout (ref reload_timeout_id);
+            cancel_timeout (ref path_change_timeout_id);
+        }
+
+        private void cancel_timeout (ref uint id) {
+            if (id > 0) {
+                Source.remove (id);
+                id = 0;
+            }
         }
     }
 }
