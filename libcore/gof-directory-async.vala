@@ -187,7 +187,7 @@ public class GOF.Directory.Async : Object {
             return file.ensure_query_info ();
         }
         /* Must be non-local */
-        if (!is_local && !yield check_network ()) {
+        if (is_network && !yield check_network ()) {
             file.is_connected = false;
             return false;
         } else {
