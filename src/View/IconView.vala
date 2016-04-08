@@ -306,6 +306,14 @@ namespace FM {
             }
         }
 
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
+        }
+
         protected override void linear_select_path (Gtk.TreePath path) {
             /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
             /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
