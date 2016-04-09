@@ -327,7 +327,6 @@ namespace Marlin.View.Chrome
             }
         }
 
-
         bool on_button_press_event (Gdk.EventButton e) {
             if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
                 view.event (e);
@@ -616,12 +615,14 @@ namespace Marlin.View.Chrome
 
                 is_grabbing = true;
             }
-            /* Also pair signal connect and disconnect */
-            view.cursor_changed.connect (on_cursor_changed);
+            /* Paired with disconnect function in popdown () */
+            connect_view_cursor_changed_signal ();
         }
 
         void popdown ()
         {
+            /* Paired with connect function in popup () */
+            disconnect_view_cursor_changed_signal ();
             if (is_grabbing) {
                 if (device == null) {
                     /* 'device' can become null during searching for reasons as yet unidentified. This ensures
@@ -635,8 +636,7 @@ namespace Marlin.View.Chrome
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
             }
-            /* Also pair signal connect and disconnect */
-            view.cursor_changed.disconnect (on_cursor_changed);
+
             hide ();
         }
 
@@ -770,6 +770,9 @@ namespace Marlin.View.Chrome
 
         protected void clear ()
         {
+            /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
+             * causing incorrect files to get selected in icon view */ 
+            disconnect_view_cursor_changed_signal ();
             Gtk.TreeIter parent, iter;
             for (var valid = list.get_iter_first (out parent); valid; valid = list.iter_next (ref parent)) {
                 if (!list.iter_nth_child (out iter, parent, 0))
@@ -779,6 +782,8 @@ namespace Marlin.View.Chrome
             }
 
             resize_popup ();
+            /* Reconnect signal */
+            connect_view_cursor_changed_signal ();
         }
 
 
@@ -797,10 +802,11 @@ namespace Marlin.View.Chrome
 
             filter.refilter ();
 
-            select_first ();
             if (local_search_finished && global_search_finished && list_empty ()) {
                 view.get_selection ().unselect_all ();
                 first_match_found (null);
+            } else {
+                select_first ();
             }
 
             if (local_search_finished && global_search_finished) {
@@ -998,6 +1004,13 @@ namespace Marlin.View.Chrome
 
         public bool has_popped_up () {
             return is_grabbing;
+        }
+
+        private void connect_view_cursor_changed_signal () {
+            view.cursor_changed.connect (on_cursor_changed);
+        }
+        private void disconnect_view_cursor_changed_signal () {
+            view.cursor_changed.disconnect (on_cursor_changed);
         }
     }
 }
