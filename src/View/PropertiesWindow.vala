@@ -444,25 +444,25 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
             if (gof.is_directory) {
                 mutex.lock ();
-                    uncounted_folders++; /* this gets decremented by DeepCount*/
+                uncounted_folders++; /* this gets decremented by DeepCount*/
                 mutex.unlock ();
+
                 selected_folders++;
                 var d = new Marlin.DeepCount (gof.location); /* Starts counting on creation */
                 deep_count_directories.prepend (d);
 
                 d.finished.connect (() => {
                     mutex.lock ();
-                        deep_count_directories.remove (d);
+                    deep_count_directories.remove (d);
 
-                        total_size += d.total_size;
-                        size_warning = d.file_not_read;
-                        if (file_count + uncounted_folders == size_warning)
-                            size_label.label = _("unknown");
+                    total_size += d.total_size;
+                    size_warning = d.file_not_read;
+                    if (file_count + uncounted_folders == size_warning)
+                        size_label.label = _("unknown");
 
-                        folder_count += d.dirs_count;
-                        file_count += d.files_count;
-                        uncounted_folders--; /* triggers signal which updates description when reaches zero */
-
+                    folder_count += d.dirs_count;
+                    file_count += d.files_count;
+                    uncounted_folders--; /* triggers signal which updates description when reaches zero */
                     mutex.unlock ();
                 });
 
@@ -471,7 +471,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             }
 
             mutex.lock ();
-                total_size += PropertiesWindow.file_real_size (gof);
+            total_size += PropertiesWindow.file_real_size (gof);
             mutex.unlock ();
         }
 
@@ -1477,29 +1477,23 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             if (folders > 1) {
                 if (files > 0) {
                     if (files > 1) {
-                        txt = _("%u subfolders and %u files");
+                        txt = _("%u subfolders and %u files").printf (folders, files);
                     } else {
-                        txt = _("%u subfolders and %u file");
+                        txt = _("%u subfolders and %u file").printf (folders,files);
                     }
                 } else {
-                    txt = _("%u subfolders");
+                    txt = _("%u subfolders").printf (folders);
                 }
             } else {
                 if (files > 0) {
                     if (files > 1) {
-                        txt = _("%u subfolder and %u files");
+                        txt = _("%u subfolder and %u files").printf (folders, files);
                     } else {
-                        txt = _("%u subfolder and %u file");
+                        txt = _("%u subfolder and %u file").printf (folders, files);
                     }
                 } else {
-                    txt = _("%u folder");
+                    txt = _("%u folder").printf (folders);
                 }
-            }
-
-            if (files > 0) {
-                txt = txt.printf (folders, files);
-            } else {
-                txt = txt.printf (folders);
             }
         } else {
             if (files > 0) {
@@ -1522,29 +1516,23 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             if (folders > 1) {
                 if (files > 0) {
                     if (files > 1) {
-                        txt = _("%u selected items (%u folders and %u files)");
+                        txt = _("%u selected items (%u folders and %u files)").printf (total, folders, files);
                     } else {
-                        txt = _("%u selected items (%u folders and %u file)");
+                        txt = _("%u selected items (%u folders and %u file)").printf (total, folders, files);
                     }
                 } else {
-                    txt = _("%u folders");
+                    txt = _("%u folders").printf (folders);
                 }
             } else {
                 if (files > 0) {
                     if (files > 1) {
-                        txt = _("%u selected items (%u folder and %u files)");
+                        txt = _("%u selected items (%u folder and %u files)").printf (total, folders,files);
                     } else {
-                        txt = _("%u selected items (%u folder and %u file)");
+                        txt = _("%u selected items (%u folder and %u file)").printf (total, folders,files);
                     }
                 } else {
-                    txt = _("%u folder"); /* displayed for background folder*/
+                    txt = _("%u folder").printf (folders); /* displayed for background folder*/
                 }
-            }
-
-            if (files > 0) {
-                txt = txt.printf (total, folders, files);
-            } else {
-                txt = txt.printf (total, folders);
             }
         } else {
             if (files > 0) {
@@ -1562,12 +1550,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     /** Hide certain widgets under certain conditions **/
     private void update_widgets_state () {
-        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous */
-        if (count > selected_folders) {
-            contains_key_label.hide ();
-            contains_label.hide ();
-        }
-
         if (uncounted_folders == 0)
             spinner.hide ();
 
@@ -1590,9 +1572,15 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             (header_title as Gtk.Entry).select_region (start_offset, end_offset);
         }
 
-        if (contains_label.get_text ().length < 1) {
+        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
+         * the "contained files" counted are only in the subfolders or not.*/
+        /* Only show 'contains' label when folders selected are not empty */
+        if (count > selected_folders || contains_label.get_text ().length < 1) {
             contains_key_label.hide ();
             contains_label.hide ();
+        } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
+            contains_key_label.show ();
+            contains_label.show ();
         }
     }
 }
