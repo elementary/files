@@ -706,6 +706,8 @@ marlin_thumbnailer_ready_idle (gpointer user_data)
         {
             /* set thumbnail state to ready - we now have a thumbnail */
             gof_file_set_thumb_state (file, GOF_FILE_THUMB_STATE_READY);
+            /* ensure new thumbnail is displayed */
+            gof_file_query_thumbnail_update (file);
         }
         g_object_unref (file);
     }
@@ -846,9 +848,11 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
      * processed (and awaiting to be refreshed) */
     for (lp = g_list_last (files); lp != NULL; lp = lp->prev)
     {
-        /* It is up to the use interface whether or not remote files are thumbnailed*/
+        /* It is up to the user whether or not remote files are thumbnailed*/
         if (marlin_thumbnailer_file_is_supported (thumbnailer, lp->data)) {
                 supported_files = g_list_prepend (supported_files, lp->data);
+        } else {
+            gof_file_set_thumb_state (lp->data, GOF_FILE_THUMB_STATE_NONE);
         }
     }
 
