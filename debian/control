@@ -3,22 +3,23 @@ Section: x11
 Priority: optional
 Maintainer: Cody Garver <cody@elementaryos.org>
 Vcs-Bzr: https://code.launchpad.net/~elementary-os/pantheon-files/deb-packaging
-Build-Depends: cmake (>= 2.6),
+Build-Depends: cmake (>= 2.8),
                debhelper (>= 9),
                gnome-common,
+               libcanberra-dev (>= 0.30),
                libdbus-glib-1-dev,
                libgail-3-dev,
                libgee-0.8-dev,
                libglib2.0-dev (>= 2.29.0),
                libgranite-dev (>= 0.3.0~),
-               libgtk-3-dev (>= 3.10),
+               libgtk-3-dev (>= 3.14),
                libnotify-dev (>= 0.7.2),
                libpango1.0-dev (>= 1.1.2),
                libplank-dev (>= 0.3.0),
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
-               valac (>= 0.26)
+               valac (>= 0.28)
 Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.9.5
 
