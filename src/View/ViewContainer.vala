@@ -404,15 +404,27 @@ namespace Marlin.View {
             if (aslot != null)
                 aslot.set_frozen_state (is_frozen);
         }
+
+        private void set_all_selected (bool select_all) {
+            var aslot = get_current_slot ();
+            if (aslot != null) {
+                aslot.set_all_selected (select_all);
+            }
+        }
         
-        public void focus_location (GLib.File loc,
+        public void focus_location (GLib.File? loc,
                                     bool no_path_change = false,
                                     bool unselect_others = false) {
 
             /* This function navigates to another folder if necessary if 
              * select_in_current_only is not set to true.
              */
-            assert (loc != null);
+
+            /* Search can generate null focus requests if no match - deselect previous search selection */
+            if (loc == null) {
+                set_all_selected (false);
+                return;
+            }
 
             if (location.equal (loc)) {
                 return;
