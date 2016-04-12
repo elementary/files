@@ -18,11 +18,11 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 
     Some convenience wrappers around libcanberra for using sounds within pantheon-files.
- 
+
  ***/
 
 namespace PF {
- 
+
     public class SoundManager : GLib.Object {
         private static SoundManager? instance = null;
         public static unowned SoundManager get_instance () {
@@ -45,12 +45,8 @@ namespace PF {
             }
         }
 
-        public void play_trash_sound () {
-            play_sound (PF.Sound.TRASH);
-        }
         public void play_delete_sound () {
             play_sound (PF.Sound.DELETE);
-
         }
         public void play_empty_trash_sound () {
             play_sound (PF.Sound.EMPTY_TRASH);
@@ -69,7 +65,6 @@ namespace PF {
         const string APP_LOGO = "system-file-manager";
         public const string THEME = "freedesktop";
         public const string DELETE = "trash-empty";
-        public const string TRASH = "audio-volume-change";
         public const string EMPTY_TRASH = "trash-empty";
     }
 }
