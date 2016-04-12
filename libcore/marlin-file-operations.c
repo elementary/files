@@ -2019,10 +2019,6 @@ skip:
         }
     }
 
-    PFSoundManager *sm;
-    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
-    pf_sound_manager_play_trash_sound (sm);
-
     if (to_delete) {
         to_delete = g_list_reverse (to_delete);
         delete_files (job, to_delete, files_skipped);
