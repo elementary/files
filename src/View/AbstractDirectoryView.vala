@@ -2681,7 +2681,7 @@ namespace FM {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null) {
                             if (event.keyval == Gdk.Key.Right) {
-                                path.next ();
+                                path.next (); /* Does not check if path is valid */
                             } else if (event.keyval == Gdk.Key.Left) {
                                 path.prev ();
                             } else if (event.keyval == Gdk.Key.Up) {
@@ -2689,7 +2689,12 @@ namespace FM {
                             } else if (event.keyval == Gdk.Key.Down) {
                                 path = down (path);
                             }
-                            linear_select_path (path);
+
+                            Gtk.TreeIter? iter = null;
+                            /* Do not try to select invalid path */
+                            if (model.get_iter (out iter, path)) {
+                                linear_select_path (path);
+                            }
                             return true;
                         }
                     } else {
