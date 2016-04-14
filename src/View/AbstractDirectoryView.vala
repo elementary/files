@@ -1885,9 +1885,12 @@ namespace FM {
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
                 }
 
-                if (common_actions.get_action_enabled ("bookmark"))
-                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-
+                if (common_actions.get_action_enabled ("bookmark")) {
+                    /* Do  not offer to bookmark if the home folder is selected */
+                    if (!(file_location_is_builtin (selected_files.data))) {
+                        menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+                    }
+                }
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
@@ -1935,8 +1938,12 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
             }
 
-            if (common_actions.get_action_enabled ("bookmark"))
-                menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+            if (common_actions.get_action_enabled ("bookmark")) {
+                /* Do not insert bookmark for home or filesystem root (already have builtins) */
+                if (!(file_location_is_builtin (slot.directory.file))) {
+                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+                }
+            }
 
             menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
 
@@ -3378,6 +3385,11 @@ namespace FM {
                 if (p != null)
                     unselect_path (p);
             }
+        }
+        /** Check whether gof_file represents the user home directory or the root filesystem **/
+        protected bool file_location_is_builtin (GOF.File gof_file) {
+            var path = gof_file.location.get_path ();
+            return (path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S);
         }
 
         public virtual void sync_selection () {}

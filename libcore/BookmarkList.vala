@@ -206,8 +206,14 @@ namespace Marlin {
         }
 
         private void insert_item_internal (Marlin.Bookmark bm, uint index) {
-            if (this.contains (bm))
+            if (this.contains (bm)) {
                 return;
+            }
+            /* Do not insert bookmark for home or filesystem root (already have builtins) */
+            var path = bm.gof_file.location.get_path ();
+            if ((path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S)) {
+                return;
+            }
 
             list.insert (bm, (int)index);
             start_monitoring_bookmark (bm);
