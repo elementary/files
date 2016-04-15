@@ -1446,14 +1446,14 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (gof_file_is_desktop_file (file)) {
+        return TRUE;
+    }
+
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
         return FALSE;
-    }
-
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
     }
 
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
