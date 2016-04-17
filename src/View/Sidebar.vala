@@ -397,7 +397,7 @@ namespace Marlin.Places {
                             Column.VOLUME, volume,
                             Column.MOUNT, mount,
                             Column.NAME, converted_name,
-                            Column.ICON, (GLib.Icon)pixbuf,
+                            Column.ICON, icon,
                             Column.INDEX, index,
                             Column.CAN_EJECT, show_eject_button,
                             Column.NO_EJECT, !show_eject_button,
