@@ -3361,6 +3361,11 @@ namespace FM {
             hover_path = null;
         }
 
+        public void close () {
+            set_updates_frozen (true); /* stop signal handlers running during destruction */
+            unselect_all ();
+        }
+
         protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
             bool on_icon =  (x >= orig_x &&
                              x <= orig_x + icon_size &&
