@@ -16,9 +16,9 @@
     Authors :
 ***/
 
-namespace Marlin.View
+namespace Marlin.View.Chrome
 {
-    public class SearchResults : Gtk.Window
+    protected class SearchResults : Gtk.Window, Searchable
     {
         class Match : Object
         {
@@ -60,15 +60,12 @@ namespace Marlin.View
         const int MAX_DEPTH = 5;
         const int DELAY_ADDING_RESULTS = 150;
 
-        public signal void file_selected (File file);
-        public signal void cursor_changed (File? file);
-        public signal void first_match_found (File? file);
-
-        public Gtk.Entry entry { get; construct; }
-        public bool working { get; private set; default = false; }
-        public int n_results { get; private set; default = 0; }
+        private new Gtk.Widget parent;
+        protected bool working { get; private set; default = false; }
+        protected int n_results { get; private set; default = 0; }
 
         File current_root;
+        string search_term = "";
         Gee.Queue<File> directory_queue;
         ulong waiting_handler;
 
@@ -86,8 +83,8 @@ namespace Marlin.View
 
         bool local_search_finished = false;
         bool global_search_finished = false;
-        public bool search_current_directory_only = false;
-        public bool begins_with_only = false;
+        protected bool search_current_directory_only = false;
+        protected bool begins_with_only = false;
 
         bool is_grabbing = false;
         Gdk.Device? device = null;
@@ -101,14 +98,13 @@ namespace Marlin.View
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-        ulong cursor_changed_handler_id;
-
-        public SearchResults (Gtk.Entry entry)
+        protected SearchResults (Gtk.Widget parent_widget)
         {
-            Object (entry: entry,
-                    resizable: false,
+            Object (resizable: false,
                     type_hint: Gdk.WindowTypeHint.COMBO,
                     type: Gtk.WindowType.POPUP);
+
+            parent = parent_widget;
         }
 
         construct
@@ -190,46 +186,132 @@ namespace Marlin.View
             frame.add (scroll);
             add (frame);
 
-            entry.focus_out_event.connect (() => {
-                popdown ();
-                return false;
-            });
-
-            button_press_event.connect ((e) => {
-                if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
-                    view.event (e);
-                    return false;
-                }
-
-                entry.text = "";
-                popdown ();
-                return false;
-            });
-
-            view.button_press_event.connect ((e) => {
-                Gtk.TreePath path;
-                Gtk.TreeIter iter;
-
-                SignalHandler.block (view, cursor_changed_handler_id);
-                view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
-
-                if (path != null) {
-                    filter.get_iter (out iter, path);
-                    filter.convert_iter_to_child_iter (out iter, iter);
-                    accept (iter);
-                }
-                SignalHandler.unblock (view, cursor_changed_handler_id);
-                return true;
-            });
-
-            cursor_changed_handler_id = view.cursor_changed.connect (on_cursor_changed);
-
-            key_release_event.connect (key_event);
-            key_press_event.connect (key_event);
-
-            entry.key_press_event.connect (entry_key_press);
+            button_press_event.connect (on_button_press_event);
+            view.button_press_event.connect (on_view_button_press_event);
+            key_press_event.connect (on_key_press_event);
         }
 
+        /** Search interface functions **/
+        public  void cancel () {
+            /* popdown first to avoid unwanted cursor change signals */
+            popdown ();
+            if (current_operation != null) {
+                current_operation.cancel ();
+            }
+            clear ();
+        }
+
+        public void search (string term, File folder)
+        {
+            device = Gtk.get_current_event_device ();
+            search_term = term.normalize ().casefold ();
+
+            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
+                device = device.associated_device;
+            }
+
+            if (!current_operation.is_cancelled ()) {
+                current_operation.cancel ();
+            }
+
+            if (adding_timeout != 0) {
+                Source.remove (adding_timeout);
+                adding_timeout = 0;
+                allow_adding_results = true;
+
+                /* we need to catch the case when we were only waiting for the timeout
+                 * to be finished and the actual search was already done. Otherwise the next
+                 * condition will never be reached.
+                 */
+
+                if (global_search_finished && local_search_finished) {
+                    working = false;
+                }
+            }
+
+            if (working) {
+                if (waiting_handler != 0) {
+                    SignalHandler.disconnect (this, waiting_handler);
+                }
+                waiting_handler = notify["working"].connect (() => {
+                    SignalHandler.disconnect (this, waiting_handler);
+                    waiting_handler = 0;
+                    search (search_term, folder);
+                });
+
+                return;
+            }
+
+            var include_hidden = GOF.Preferences.get_default ().pref_show_hidden_files;
+
+            display_count = 0;
+            directory_queue = new Gee.LinkedList<File> ();
+            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Match> ();
+            current_root = folder;
+
+            current_operation = new Cancellable ();
+            file_search_operation = new Cancellable ();
+
+            current_operation.cancelled.connect (file_search_operation.cancel);
+
+            clear ();
+
+            working = true;
+            n_results = 0;
+
+            directory_queue.add (folder);
+
+            allow_adding_results = false;
+            adding_timeout = Timeout.add (DELAY_ADDING_RESULTS, () => {
+                adding_timeout = 0;
+                allow_adding_results = true;
+
+                var it = waiting_results.map_iterator ();
+
+                while (it.next ())
+                    add_results (it.get_value (), it.get_key ());
+
+                send_search_finished ();
+                return false;
+            });
+
+            new Thread<void*> (null, () => {
+                local_search_finished = false;
+                while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
+                    visit (search_term, include_hidden, file_search_operation);
+                }
+
+                local_search_finished = true;
+                Idle.add (send_search_finished);
+
+                return null;
+            });
+
+            if (!search_current_directory_only) {
+                get_zg_results.begin (search_term);
+
+                var bookmarks_matched = new Gee.LinkedList<Match> ();
+
+                foreach (var bookmark in BookmarkList.get_instance ().list) {
+                    if (term_matches (search_term, bookmark.label)) {
+                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
+                    }
+                }
+
+                add_results (bookmarks_matched, bookmark_results);
+            } else {
+                global_search_finished = true;
+            }
+        }
+
+        public void set_search_current_directory_only (bool only) {
+            search_current_directory_only = only;
+        }
+        public void set_begins_with_only (bool only) {
+            begins_with_only = only;
+        }
+
+        /** Signal handlers **/
         void on_cursor_changed () {
             Gtk.TreeIter iter;
             Gtk.TreePath? path = null;
@@ -243,42 +325,60 @@ namespace Marlin.View
                 filter.convert_iter_to_child_iter (out iter, iter);
                 cursor_changed (get_file_at_iter (iter));
             }
-
         }
 
-        bool entry_key_press (Gdk.EventKey event)
-        {
-            if (!get_mapped ()) {
-                switch (event.keyval) {
-                    case Gdk.Key.Return:
-                    case Gdk.Key.KP_Enter:
-                    case Gdk.Key.ISO_Enter:
-                        return true;
-
-                    default:
-                        break;
-                }
+        bool on_button_press_event (Gdk.EventButton e) {
+            if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
+                view.event (e);
+                return true;
+            } else {
+                cancel ();
                 return false;
             }
+        }
 
+        bool on_view_button_press_event (Gdk.EventButton e) {
+            Gtk.TreePath path;
+            Gtk.TreeIter iter;
+
+            view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
+
+            if (path != null) {
+                filter.get_iter (out iter, path);
+                filter.convert_iter_to_child_iter (out iter, iter);
+                accept (iter, e.button > 1);  /* This will call cancel () */
+            }
+            return true;
+        }
+
+        bool on_key_press_event (Gdk.EventKey event) {
+            if (event.is_modifier == 1) {
+                return true;
+            }
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
+            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
-            if (mods != 0) {
+            if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed && event.keyval == Gdk.Key.f) {
                     search_current_directory_only = false;
                     begins_with_only = false;
-                    entry.changed ();
+                    search (search_term, current_root);
                     return true;
-            } else
-                return false;
-            }
+                } else if (only_alt_pressed &&
+                           event.keyval == Gdk.Key.Return ||
+                           event.keyval == Gdk.Key.KP_Enter ||
+                           event.keyval == Gdk.Key.ISO_Enter) {
 
+                    accept (null, true);
+                } else {
+                    return parent.key_press_event (event);
+                }
+            }
             switch (event.keyval) {
-                case Gdk.Key.Escape:
-                    cursor_changed (null); /* Clears selection in view */
-                    popdown ();
-                    return true;
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
@@ -300,22 +400,16 @@ namespace Marlin.View
                             select_first ();
                         return true;
                     }
-
                     select_adjacent (up);
-
                     return true;
+                case Gdk.Key.Escape:
+                    cancel (); /* release any grab */
+                    exit ();
+                    return true;
+                default:
+                    break;
             }
-            return false;
-        }
-
-        bool key_event (Gdk.EventKey event)
-        {
-            if (!get_mapped ())
-                return false;
-
-            entry.event (event);
-
-            return true;
+            return parent.key_press_event (event);
         }
 
         void select_first ()
@@ -432,21 +526,21 @@ namespace Marlin.View
 
         void resize_popup ()
         {
-            var entry_window = entry.get_window ();
-            if (entry_window == null)
+            var parent_window = parent.get_window ();
+            if (parent_window == null)
                 return;
 
             int x, y;
-            Gtk.Allocation entry_alloc;
+            Gtk.Allocation parent_alloc;
 
-            entry_window.get_origin (out x, out y);
-            entry.get_allocation (out entry_alloc);
+            parent_window.get_origin (out x, out y);
+            parent.get_allocation (out parent_alloc);
 
-            x += entry_alloc.x;
-            y += entry_alloc.y;
+            x += parent_alloc.x;
+            y += parent_alloc.y;
 
-            var screen = entry.get_screen ();
-            var monitor = screen.get_monitor_at_window (entry_window);
+            var screen = parent.get_screen ();
+            var monitor = screen.get_monitor_at_window (parent_window);
             var workarea = screen.get_monitor_workarea (monitor);
 
             int cell_height, separator_height, items, headers;
@@ -454,21 +548,26 @@ namespace Marlin.View
             view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
             items = n_matches (out headers);
 
+            if (visible && items + headers <= 1 && !working) {
+                hide ();
+            } else if (!visible && items + headers > 1  && !working) {
+                popup ();
+            }
+
             int total = int.max ((items + headers), 2);
             var height = total * (cell_height + separator_height);
-
             if (x < workarea.x)
                 x = workarea.x;
             else if (x + width_request > workarea.x + workarea.width)
                 x = workarea.x + workarea.width - width_request;
 
-            y += entry_alloc.height;
+            y += parent_alloc.height;
 
             if (y + height > workarea.y + workarea.height)
                 height = workarea.y + workarea.height - y - 12;
 
             scroll.set_min_content_height (height);
-            set_size_request (int.min (entry_alloc.width, workarea.width), height);
+            set_size_request (int.min (parent_alloc.width, workarea.width), height);
             move (x, y);
             resize (width_request, height_request);
         }
@@ -498,23 +597,16 @@ namespace Marlin.View
 
         void popup ()
         {
-            if (get_mapped ()
-                || !entry.get_mapped ()
-                || !entry.has_focus
-                || is_grabbing)
+            if (get_mapped ()) {
                 return;
+            }
 
-            resize_popup ();
-
-            var toplevel = entry.get_toplevel ();
-            if (toplevel is Gtk.Window)
-                ((Gtk.Window) toplevel).get_group ().add_window (this);
-
-            grab_focus ();
-            set_screen (entry.get_screen ());
+            set_screen (parent.get_screen ());
             show_all ();
+            view.grab_focus ();
 
-            if (device != null) {
+            /* Ensure device grab and ungrab are paired */
+            if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
                 device.grab (get_window (), Gdk.GrabOwnership.WINDOW, false, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -523,16 +615,25 @@ namespace Marlin.View
 
                 is_grabbing = true;
             }
+            /* Paired with disconnect function in popdown () */
+            connect_view_cursor_changed_signal ();
         }
 
         void popdown ()
         {
-            entry.reset_im_context ();
+            /* Paired with connect function in popup () */
+            disconnect_view_cursor_changed_signal ();
+            if (is_grabbing) {
+                if (device == null) {
+                    /* 'device' can become null during searching for reasons as yet unidentified. This ensures
+                     * that grab and ungrab are matched (else interface freezes after some searches)
+                     */
+                    device = Gtk.get_current_event_device ();
+                    debug ("Reference to device was lost while grabbing - should not happen");
+                }
 
-            if (is_grabbing && device != null) {
                 device.ungrab (Gdk.CURRENT_TIME);
                 Gtk.device_grab_remove (this, device);
-
                 is_grabbing = false;
             }
 
@@ -541,8 +642,9 @@ namespace Marlin.View
 
         void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent)
         {
-            if (current_operation.is_cancelled ())
+            if (current_operation.is_cancelled ()) {
                 return;
+            }
 
             if (!allow_adding_results) {
                 Gee.List list;
@@ -551,7 +653,6 @@ namespace Marlin.View
                     list = new Gee.LinkedList<Match> ();
                     waiting_results.@set (parent, list);
                 }
-
                 list.insert_all (list.size, new_results);
                 return;
             }
@@ -569,7 +670,7 @@ namespace Marlin.View
 
                         list.@get (iter, 3, out file);
 
-                        if (file != null && file.equal (match.file)) {
+                        if (file != null && match.file != null && file.equal (match.file)) {
                             already_added = true;
                             break;
                         }
@@ -583,7 +684,7 @@ namespace Marlin.View
 
                         list.@get (iter, 3, out file);
 
-                        if (file != null && file.equal (match.file)) {
+                        if (file != null && match.file != null && file.equal (match.file)) {
                             list.remove (ref iter);
                             break;
                         }
@@ -610,11 +711,12 @@ namespace Marlin.View
                 view.expand_all ();
             }
 
-            if (!working)
+            if (!working) {
                 resize_popup ();
+            }
         }
 
-        void accept (Gtk.TreeIter? accepted = null)
+        void accept (Gtk.TreeIter? accepted = null, bool activate = false)
         {
             if (list_empty ()) {
                 Gdk.beep ();
@@ -645,9 +747,12 @@ namespace Marlin.View
                 return;
             }
 
-            file_selected (file);
-
-            popdown ();
+            cancel ();
+            if (activate) {
+                file_activated (file);
+            } else {
+                file_selected (file);
+            }
         }
 
         File? get_file_at_iter (Gtk.TreeIter? iter)
@@ -663,8 +768,11 @@ namespace Marlin.View
             return file;
         }
 
-        public void clear ()
+        protected void clear ()
         {
+            /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
+             * causing incorrect files to get selected in icon view */ 
+            disconnect_view_cursor_changed_signal ();
             Gtk.TreeIter parent, iter;
             for (var valid = list.get_iter_first (out parent); valid; valid = list.iter_next (ref parent)) {
                 if (!list.iter_nth_child (out iter, parent, 0))
@@ -674,133 +782,36 @@ namespace Marlin.View
             }
 
             resize_popup ();
+            /* Reconnect signal */
+            connect_view_cursor_changed_signal ();
         }
 
-        public void search (string term, File folder)
-        {
-            device = Gtk.get_current_event_device ();
 
-            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD)
-                device = device.associated_device;
-
-            if (!current_operation.is_cancelled ())
-                current_operation.cancel ();
-
-            if (adding_timeout != 0) {
-                Source.remove (adding_timeout);
-                adding_timeout = 0;
-                allow_adding_results = true;
-
-                /* we need to catch the case when we were only waiting for the timeout
-                 * to be finished and the actual search was already done. Otherwise the next
-                 * condition will never be reached.
-                 */
-
-                if (global_search_finished && local_search_finished) {
-                    working = false;
-                }
-            }
-
-            if (working) {
-                if (waiting_handler != 0)
-                    SignalHandler.disconnect (this, waiting_handler);
-
-                waiting_handler = notify["working"].connect (() => {
-                    SignalHandler.disconnect (this, waiting_handler);
-                    waiting_handler = 0;
-                    search (term, folder);
-                });
-                return;
-            }
-
-            if (term.strip () == "") {
-                clear ();
-                popdown ();
-                return;
-            }
-
-            var include_hidden = GOF.Preferences.get_default ().pref_show_hidden_files;
-
-            display_count = 0;
-            directory_queue = new Gee.LinkedList<File> ();
-            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Match> ();
-            current_root = folder;
-
-            current_operation = new Cancellable ();
-            file_search_operation = new Cancellable ();
-
-            current_operation.cancelled.connect (file_search_operation.cancel);
-
-            clear ();
-
-            working = true;
-            n_results = 0;
-
-            directory_queue.add (folder);
-
-            allow_adding_results = false;
-            adding_timeout = Timeout.add (DELAY_ADDING_RESULTS, () => {
-                if (!visible)
-                    popup ();
-
-                adding_timeout = 0;
-                allow_adding_results = true;
-                var it = waiting_results.map_iterator ();
-
-                while (it.next ())
-                    add_results (it.get_value (), it.get_key ());
-
-                send_search_finished ();
-
-                return false;
-            });
-
-            new Thread<void*> (null, () => {
-                local_search_finished = false;
-                while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
-                    visit (term.normalize ().casefold (), include_hidden, file_search_operation);
-                }
-
-                local_search_finished = true;
-                Idle.add (send_search_finished);
-
-                return null;
-            });
-
-            if (!search_current_directory_only)
-                get_zg_results.begin (term);
-            else
-                global_search_finished = true;
-
-            if (!search_current_directory_only) {
-                var bookmarks_matched = new Gee.LinkedList<Match> ();
-                var search_term = term.normalize ().casefold ();
-                foreach (var bookmark in BookmarkList.get_instance ().list) {
-                    if (term_matches (search_term, bookmark.label)) {
-                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
-                    }
-                }
-
-                add_results (bookmarks_matched, bookmark_results);
-            }
-        }
 
         bool send_search_finished ()
         {
-            if (!local_search_finished || !global_search_finished || !allow_adding_results)
+            if (!local_search_finished || !global_search_finished || !allow_adding_results) {
                 return false;
+            }
 
             working = false;
 
+            if (current_operation.is_cancelled ()) {
+                return false;
+            }
+
             filter.refilter ();
 
-            select_first ();
             if (local_search_finished && global_search_finished && list_empty ()) {
                 view.get_selection ().unselect_all ();
                 first_match_found (null);
+            } else {
+                select_first ();
             }
 
-            resize_popup ();
+            if (local_search_finished && global_search_finished) {
+                resize_popup ();
+            }
 
             return false;
         }
@@ -814,7 +825,6 @@ namespace Marlin.View
         void visit (string term, bool include_hidden, Cancellable cancel)
         {
             FileEnumerator enumerator;
-
             var folder = directory_queue.poll ();
 
             if (folder == null)
@@ -825,7 +835,7 @@ namespace Marlin.View
             File f = folder;
             var path_string = "";
             while (!f.equal (current_root)) {
-                path_string = f.get_basename () + (path_string == "" ? "" : "/" + path_string);
+                path_string = f.get_basename () + (path_string == "" ? "" : Path.DIR_SEPARATOR_S + path_string);
                 f = f.get_parent ();
                 depth++;
             }
@@ -941,7 +951,7 @@ namespace Marlin.View
                             if (path_string == "")
                                 path_string = parent.get_basename ();
                             else
-                                path_string = parent.get_basename () + "/" + path_string;
+                                path_string = parent.get_basename () + Path.DIR_SEPARATOR_S + path_string;
                         }
 
                         var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
@@ -990,6 +1000,17 @@ namespace Marlin.View
             }
 
             return color;
+        }
+
+        public bool has_popped_up () {
+            return is_grabbing;
+        }
+
+        private void connect_view_cursor_changed_signal () {
+            view.cursor_changed.connect (on_cursor_changed);
+        }
+        private void disconnect_view_cursor_changed_signal () {
+            view.cursor_changed.disconnect (on_cursor_changed);
         }
     }
 }

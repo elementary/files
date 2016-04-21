@@ -89,7 +89,7 @@ static void first_load_done(GOFDirectoryAsync* dir, gpointer data)
     GOFDirectoryAsync *dir2;
     dir2 = gof_directory_async_from_file(dir->file);
     g_signal_connect(dir2, "done_loading", (GCallback) second_load_done, NULL);
-    gof_directory_async_load(dir2, NULL, NULL);
+    gof_directory_async_init(dir2, NULL, NULL);
 
     /* free previously allocated dir */
     g_object_unref (dir);
@@ -107,7 +107,7 @@ void marlincore_tests_file(void)
 
     dir = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));
     g_signal_connect(dir, "done_loading", (GCallback) first_load_done, NULL);
-    gof_directory_async_load(dir, NULL, NULL);
+    gof_directory_async_init(dir, NULL, NULL);
 
     /*dir2 = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));
     g_signal_connect(dir2, "done_loading", (GCallback) second_load_done, NULL);

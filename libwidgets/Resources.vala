@@ -44,7 +44,7 @@ namespace Marlin {
         null
     };
 
-    public const string TRANSLATORS = _("Launchpad Translators");
+    public const string TRANSLATORS = _("translator-credits");
 
     public const string ICON_ABOUT_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
@@ -54,30 +54,26 @@ namespace Marlin {
     public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
     public const string ICON_FOLDER_MUSIC_SYMBOLIC = "folder-music-symbolic";
     public const string ICON_FOLDER_PICTURES_SYMBOLIC = "folder-pictures-symbolic";
+    public const string ICON_FOLDER_PUBLICSHARE_SYMBOLIC = "folder-publicshare-symbolic";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
     public const string ICON_FOLDER_REMOTE_SYMBOLIC = "folder-remote-symbolic";
     public const string ICON_FOLDER_TEMPLATES_SYMBOLIC = "folder-templates-symbolic";
     public const string ICON_FOLDER_VIDEOS_SYMBOLIC = "folder-videos-symbolic";
     public const string ICON_GO_HOME_SYMBOLIC = "go-home-symbolic";
     public const string ICON_HOME = "user-home";
+    public const string ICON_NETWORK_SYMBOLIC = "network-workgroup-symbolic";
     public const string ICON_NETWORK = "network-workgroup";
+    public const string ICON_NETWORK_SERVER_SYMBOLIC = "network-server-symbolic";
     public const string ICON_NETWORK_SERVER = "network-server";
     public const string ICON_TRASH = "user-trash";
     public const string ICON_TRASH_FULL = "user-trash-full";
     public const string ICON_TRASH_SYMBOLIC = "user-trash-symbolic";
     public const string ICON_RECENT = "document-open-recent";
     public const string ICON_RECENT_SYMBOLIC = "document-open-recent-symbolic";
-
-    public const string TRASH_URI = "trash:///";
-    public const string NETWORK_URI = "network:///";
-    public const string RECENT_URI = "recent:///";
-    public const string AFP_URI = "afp://";
-    public const string DAV_URI = "dav://";
-    public const string DAVS_URI = "davs://";
-    public const string SFTP_URI = "sftp://";
-    public const string FTP_URI = "ftp://";
-    public const string SMB_URI = "smb://";
-    public const string MTP_URI = "mtp://";
+    public const string ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC = "edit-find-symbolic";
+    public const string ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC = "emblem-documents-symbolic";
+    public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
+    public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
@@ -93,9 +89,13 @@ namespace Marlin {
     public const string PROTOCOL_NAME_MTP = _("MTP");
     public const string PROTOCOL_NAME_FILE = _("File System");
 
-    public const string ROOT_FS_URI = "file://";
     public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
+    public const uint LOCATION_BAR_ANIMATION_TIME_MSEC = 300;
+    public const uint FRAME_RATE_HZ = 60;
+    public const uint BUTTON_LONG_PRESS = 300;
 
+    public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
+    
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();
@@ -155,26 +155,8 @@ namespace Marlin {
         }
     }
 
-    public string get_smb_share_from_uri (string uri) {
-        if (!(Uri.parse_scheme (uri) == "smb"))
-            return (uri);
-
-        string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
-
-        if (uri_parts.length < 4)
-            return uri;
-        else {
-            var sb = new StringBuilder ();
-            for (int i = 0; i < 4; i++)
-                sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
-
-            return sb.str;
-        }
-    }
-
     public string sanitize_protocol (string p) {
         string pname = Marlin.protocol_to_name (p);
         return Marlin.name_to_protocol_uri (pname);
     }
-
 }

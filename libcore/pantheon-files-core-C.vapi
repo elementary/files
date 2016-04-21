@@ -29,7 +29,7 @@ namespace FM
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
-        public void remove_file (GOF.File file, GOF.Directory.Async dir);
+        public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();
@@ -124,6 +124,11 @@ namespace Eel {
 
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
+
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
 
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
@@ -263,6 +268,8 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf pix;
         public int pix_size;
+        public int width;
+        public int height;
         public int sort_column_id;
         public Gtk.SortType sort_order;
 

@@ -19,7 +19,7 @@
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace FM {
+namespace Marlin {
     public class DndHandler : GLib.Object {
         Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
 
@@ -249,7 +249,7 @@ namespace FM {
         public bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
             text = null;
 
-            if (info == AbstractDirectoryView.TargetType.TEXT_URI_LIST &&
+            if (info == Marlin.TargetType.TEXT_URI_LIST &&
                 selection_data.get_format () == 8 &&
                 selection_data.get_length () > 0) {
 

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-06-01 03:29+0000\n"
-"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
+"POT-Creation-Date: 2016-02-29 03:05-0600\n"
+"PO-Revision-Date: 2015-12-21 13:47+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:40+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2016-03-01 05:40+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -141,9 +141,973 @@ msgstr "_Recorda aquesta contrasenya"
 msgid "Operation cancelled"
 msgstr "S'ha cancel·lat l'operació"
 
+#: ../libcore/marlin-file-utilities.c:131
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "No s'ha pogut determinar la ubicació original de «%s» "
+
+#: ../libcore/marlin-file-utilities.c:135
+msgid "The item cannot be restored from trash"
+msgstr "No es pot restaurar l'element des de la paperera"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Voleu combinar la carpeta «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
+"entri en conflicte amb els que s'estiguin copiant."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Voleu reemplaçar la carpeta «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Voleu reemplaçar el fitxer «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "En reemplaçar-la se sobreescriuran els continguts."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Fitxer original"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:755
+msgid "Size:"
+msgstr "Mida:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:558
+msgid "Type:"
+msgstr "Tipus:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Darrera modificació:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Reemplaça amb"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Combina"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Seleccioneu un nom nou per a la destinació"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Reinicia"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Aplica aquesta acció a tots els fitxers"
+
+#: ../libcore/marlin-file-conflict-dialog.c:748
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Omet"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Canvia el _nom"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Substitueix"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Conflicte de fitxers"
+
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr "enllaç a %s"
+
+#: ../libcore/gof-file.c:1910
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+
+#: ../libcore/gof-file.c:1948
+msgid "No Exec field specified"
+msgstr "No s'ha especificat el camp Exec"
+
+#: ../libcore/gof-file.c:1968
+msgid "No URL field specified"
+msgstr "No s'ha especificat el camp URL"
+
+#: ../libcore/gof-file.c:1974
+msgid "Invalid desktop file"
+msgstr "El nom del fitxer d'escriptori no és vàlid"
+
+#: ../libcore/gof-file.c:2269
+msgid "Slashes are not allowed in filenames"
+msgstr "No es permeten barres en els noms dels fitxers"
+
+#: ../libcore/gof-file.c:2289
+msgid "Toplevel files cannot be renamed"
+msgstr "No es pot canviar el nom dels fitxers de nivell superior"
+
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "Mostra més _detalls"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (Unicode no vàlid)"
+
+#: ../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "O_met-los tots"
+
+#: ../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "_Torna-ho a intentar"
+
+#: ../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "Suprimeix-ho _tot"
+
+#: ../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "_Reemplaça"
+
+#: ../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Reempl_aça'ls tots"
+
+#: ../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "_Combina"
+
+#: ../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Combina-ho _tot"
+
+#: ../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "Copia _igualment"
+
+#: ../libcore/marlin-file-operations.c:296
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d segon"
+msgstr[1] "%'d segons"
+
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minut"
+msgstr[1] "%'d minuts"
+
+#: ../libcore/marlin-file-operations.c:311
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d hora"
+msgstr[1] "%'d hores"
+
+#: ../libcore/marlin-file-operations.c:319
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "aproximadament %'d hora"
+msgstr[1] "aproximadament %'d hores"
+
+#: ../libcore/marlin-file-operations.c:395
+#, c-format
+msgid "Link to %s"
+msgstr "Enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:399
+#, c-format
+msgid "Another link to %s"
+msgstr "Un altre enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:415
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'dr enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:419
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'dn enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:423
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'der enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:427
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'dè enllaç a %s"
+
+#: ../libcore/marlin-file-operations.c:465
+msgid " (copy)"
+msgstr " (còpia)"
+
+#: ../libcore/marlin-file-operations.c:467
+msgid " (another copy)"
+msgstr " (una altra còpia)"
+
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
+msgid "th copy)"
+msgstr "a còpia)"
+
+#: ../libcore/marlin-file-operations.c:477
+msgid "st copy)"
+msgstr "a còpia)"
+
+#: ../libcore/marlin-file-operations.c:479
+msgid "nd copy)"
+msgstr "a còpia)"
+
+#: ../libcore/marlin-file-operations.c:481
+msgid "rd copy)"
+msgstr "a còpia)"
+
+#: ../libcore/marlin-file-operations.c:498
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:500
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (una altra còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'da còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:515
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'da còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:517
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'da còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:519
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'da còpia)%s"
+
+#: ../libcore/marlin-file-operations.c:619
+msgid " ("
+msgstr " ("
+
+#: ../libcore/marlin-file-operations.c:627
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: ../libcore/marlin-file-operations.c:1384
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Esteu segur que voleu suprimir permanentment «%B» de la paperera?"
+
+#: ../libcore/marlin-file-operations.c:1387
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Esteu segur que voleu suprimir permanentment l'element seleccionat de la "
+"paperera?"
+msgstr[1] ""
+"Segur que voleu suprimir permanentment els %'d elements seleccionats de la "
+"paperera?"
+
+#: ../libcore/marlin-file-operations.c:1397
+#: ../libcore/marlin-file-operations.c:1477
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Si suprimiu un element, es perdrà permanentment."
+
+#: ../libcore/marlin-file-operations.c:1422
+msgid "Permanently delete all items from Trash?"
+msgstr "Voleu suprimir permanentment tots els elements de la paperera?"
+
+#: ../libcore/marlin-file-operations.c:1423
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1426
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1427
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1438
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1365
+msgid "Empty _Trash"
+msgstr "Buida la _paperera"
+
+#: ../libcore/marlin-file-operations.c:1465
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Esteu segur que voleu esborrrar «%B» permanentment?"
+
+#: ../libcore/marlin-file-operations.c:1468
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] ""
+"Esteu segur que voleu suprimir permanentment l'element seleccionat?"
+msgstr[1] ""
+"Esteu segur que voleu suprimir permanentment els %'d elements seleccionats?"
+
+#: ../libcore/marlin-file-operations.c:1493
+#: ../libcore/marlin-file-operations.c:1525
+msgid "Deleting files"
+msgstr "S'estan suprimint els fitxers"
+
+#: ../libcore/marlin-file-operations.c:1519
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "queda %'d fitxer per suprimir"
+msgstr[1] "queden %'d fitxers per suprimir"
+
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
+#: ../libcore/marlin-file-operations.c:1539
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "queda %T"
+msgstr[1] "queden %T"
+
+#: ../libcore/marlin-file-operations.c:1607
+#: ../libcore/marlin-file-operations.c:1641
+#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:2670
+msgid "Error while deleting."
+msgstr "S'ha produït un error en suprimir."
+
+#: ../libcore/marlin-file-operations.c:1611
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"No es poden suprimir els fitxers de la carpeta «%B» perquè no teniu permís "
+"per veure'ls."
+
+#: ../libcore/marlin-file-operations.c:1614
+#: ../libcore/marlin-file-operations.c:2729
+#: ../libcore/marlin-file-operations.c:3725
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"S'ha produït un error en obtenir informació sobre els fitxers de la carpeta "
+"«%B»."
+
+#: ../libcore/marlin-file-operations.c:1623
+#: ../libcore/marlin-file-operations.c:3734
+msgid "_Skip files"
+msgstr "_Omet els fitxers"
+
+#: ../libcore/marlin-file-operations.c:1644
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"No s'ha pogut suprimir la carpeta «%B» perquè no teniu permís per llegir-la."
+
+#: ../libcore/marlin-file-operations.c:1647
+#: ../libcore/marlin-file-operations.c:2768
+#: ../libcore/marlin-file-operations.c:3770
+msgid "There was an error reading the folder \"%B\"."
+msgstr "S'ha produït un error en llegir la carpeta «%B»."
+
+#: ../libcore/marlin-file-operations.c:1681
+msgid "Could not remove the folder %B."
+msgstr "No s'ha pogut suprimir la carpeta %B."
+
+#: ../libcore/marlin-file-operations.c:1758
+msgid "There was an error deleting %B."
+msgstr "S'ha produït un error en suprimir %B."
+
+#: ../libcore/marlin-file-operations.c:1834
+#: ../libcore/marlin-file-operations.c:1846
+msgid "Moving files to trash"
+msgstr "S'estan movent els fitxers a la paperera"
+
+#: ../libcore/marlin-file-operations.c:1848
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "Queda %'d fitxer per moure a la paperera"
+msgstr[1] "Queden %'d fitxers per moure a la paperera"
+
+#: ../libcore/marlin-file-operations.c:1943
+#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1949
+msgid "Cannot move file to trash or delete it"
+msgstr "No s'ha pogut moure el fitxer a la paperera o suprimir-ho"
+
+#: ../libcore/marlin-file-operations.c:1944
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+"No està permès enviar a la paperera o suprimir un fitxer dels sistemes de "
+"només lectura."
+
+#: ../libcore/marlin-file-operations.c:1947
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+"No està permès enviar a la paperera o suprimir un fitxer dins de carpetes "
+"per les quals no tingueu privilegis d’escriptura."
+
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+"No està permès enviar a la paperera o suprimir carpetes per les quals no "
+"tingueu privilegis d’escriptura."
+
+#: ../libcore/marlin-file-operations.c:1952
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho "
+"immediatament?"
+
+#: ../libcore/marlin-file-operations.c:1953
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Vegeu els detalls a continuació."
+
+#: ../libcore/marlin-file-operations.c:1957
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho?"
+
+#: ../libcore/marlin-file-operations.c:1958
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"No s’ha pogut moure aquest fitxer a la paperera. Tampoc és possible suprimir-"
+"ho."
+
+#: ../libcore/marlin-file-operations.c:1963
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" La supressió d’un fitxer l’elimina permanentment"
+
+#: ../libcore/marlin-file-operations.c:2153
+msgid "Trashing Files"
+msgstr "S'estan movent els fitxers a la paperera"
+
+#: ../libcore/marlin-file-operations.c:2155
+msgid "Deleting Files"
+msgstr "S'estan suprimint els fitxers"
+
+#: ../libcore/marlin-file-operations.c:2224
+msgid "Unable to eject %V"
+msgstr "No s'ha pogut expulsar %V"
+
+#: ../libcore/marlin-file-operations.c:2226
+msgid "Unable to unmount %V"
+msgstr "No s'ha pogut desmuntar %V"
+
+#: ../libcore/marlin-file-operations.c:2405
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Voleu buidar la paperera abans de desmuntar?"
+
+#: ../libcore/marlin-file-operations.c:2407
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Per poder obtenir tot l'espai lliure d'aquest dispositiu, cal que es buidi "
+"la paperera. Tots els elements de la paperera del dispositiu es perdran per "
+"sempre."
+
+#: ../libcore/marlin-file-operations.c:2413
+msgid "Do _not Empty Trash"
+msgstr "_No buidis la paperera"
+
+#: ../libcore/marlin-file-operations.c:2527
+#, c-format
+msgid "Unable to mount %s"
+msgstr "No s'ha pogut muntar %s"
+
+#: ../libcore/marlin-file-operations.c:2605
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "S'està preparant per copiar %'d fitxer (%S)"
+msgstr[1] "S'està preparant per copiar %'d fitxers (%S)"
+
+#: ../libcore/marlin-file-operations.c:2611
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "S'està preparant per moure %'d fitxer (%S)"
+msgstr[1] "S'està preparant per moure %'d fitxers (%S)"
+
+#: ../libcore/marlin-file-operations.c:2617
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "S'està preparant per suprimir %'d fitxer (%S)"
+msgstr[1] "S'està preparant per suprimir %'d fitxers (%S)"
+
+#: ../libcore/marlin-file-operations.c:2623
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "S'està preparant per moure a la paperera %'d fitxer"
+msgstr[1] "S'està preparant per moure a la paperera %'d fitxers"
+
+#: ../libcore/marlin-file-operations.c:2666
+#: ../libcore/marlin-file-operations.c:3585
+#: ../libcore/marlin-file-operations.c:3717
+#: ../libcore/marlin-file-operations.c:3762
+msgid "Error while copying."
+msgstr "S'ha produït un error en copiar."
+
+#: ../libcore/marlin-file-operations.c:2668
+#: ../libcore/marlin-file-operations.c:3715
+#: ../libcore/marlin-file-operations.c:3760
+msgid "Error while moving."
+msgstr "S'ha produït un error en moure."
+
+#: ../libcore/marlin-file-operations.c:2672
+msgid "Error while moving files to trash."
+msgstr "S'ha produït un error en moure els fitxers a la paperera."
+
+#: ../libcore/marlin-file-operations.c:2726
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"No es poden gestionar els fitxers en la carpeta «%B» perquè no teniu permís "
+"per veure'ls."
+
+#: ../libcore/marlin-file-operations.c:2765
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"No es pot gestionar la carpeta «%B» perquè no teniu permís per llegir-la."
+
+#: ../libcore/marlin-file-operations.c:2841
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"No es pot gestionar el fitxer «%B» perquè no teniu permís per llegir-lo."
+
+#: ../libcore/marlin-file-operations.c:2844
+msgid "There was an error getting information about \"%B\"."
+msgstr "S'ha produït un error en obtenir informació sobre «%B»."
+
+#: ../libcore/marlin-file-operations.c:2944
+#: ../libcore/marlin-file-operations.c:2986
+#: ../libcore/marlin-file-operations.c:3019
+#: ../libcore/marlin-file-operations.c:3049
+msgid "Error while copying to \"%B\"."
+msgstr "S'ha produït un error en copiar a «%B»."
+
+#: ../libcore/marlin-file-operations.c:2948
+msgid "You do not have permissions to access the destination folder."
+msgstr "No teniu permís per accedir a la carpeta de destinació."
+
+#: ../libcore/marlin-file-operations.c:2950
+msgid "There was an error getting information about the destination."
+msgstr "S'ha produït un error en obtenir informació sobre la destinació."
+
+#: ../libcore/marlin-file-operations.c:2987
+msgid "The destination is not a folder."
+msgstr "La destinació no és una carpeta."
+
+#: ../libcore/marlin-file-operations.c:3020
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"No hi ha prou espai a la destinació. Intenteu suprimir alguns fitxers per "
+"obtenir espai."
+
+#: ../libcore/marlin-file-operations.c:3022
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Hi ha %S disponible, però es necessita %S."
+
+#: ../libcore/marlin-file-operations.c:3050
+msgid "The destination is read-only."
+msgstr "La destinació només és de lectura."
+
+#: ../libcore/marlin-file-operations.c:3111
+msgid "Moving \"%B\" to \"%B\""
+msgstr "S'està movent «%B» a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3112
+msgid "Copying \"%B\" to \"%B\""
+msgstr "S'està copiant «%B» a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3116
+msgid "Duplicating \"%B\""
+msgstr "S'està duplicant «%B»"
+
+#: ../libcore/marlin-file-operations.c:3120
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "S'està movent %'d fitxer (des de «%B») a «%B»"
+msgstr[1] "S'estan movent %'d fitxers (des de «%B») a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3123
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "S'està copiant %'d fitxer (des de «%B») a «%B»"
+msgstr[1] "S'estan copiant %'d fitxers (des de «%B») a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3130
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "S'està duplicant %'d fitxer (des de «%B»)"
+msgstr[1] "S'estan duplicant %'d fitxers (des de «%B»)"
+
+#: ../libcore/marlin-file-operations.c:3139
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "S'està movent %'d fitxer a «%B»"
+msgstr[1] "S'estan movent %'d fitxers a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3143
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "S'està copiant %'d fitxer a «%B»"
+msgstr[1] "S'estan copiant %'d fitxers a «%B»"
+
+#: ../libcore/marlin-file-operations.c:3148
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "S'està duplicant %'d fitxer"
+msgstr[1] "S'estan duplicant %'d fitxers"
+
+#: ../libcore/marlin-file-operations.c:3199
+#, c-format
+msgid "%S of %S"
+msgstr "%S de %S"
+
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
+#: ../libcore/marlin-file-operations.c:3210
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S de %S — queda %T (%S/seg)"
+msgstr[1] "%S de %S — queden %T (%S/seg)"
+
+#: ../libcore/marlin-file-operations.c:3589
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"No es pot copiar la carpeta «%B» perquè no teniu permís per crear-la en la "
+"destinació."
+
+#: ../libcore/marlin-file-operations.c:3592
+msgid "There was an error creating the folder \"%B\"."
+msgstr "S'ha produït un error en crear la carpeta «%B»."
+
+#: ../libcore/marlin-file-operations.c:3722
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"No es poden copiar els fitxers de la carpeta «%B» perquè no teniu permís per "
+"veure'ls."
+
+#: ../libcore/marlin-file-operations.c:3767
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"No es pot copiar la carpeta «%B» perquè no teniu permís per llegir-la."
+
+#: ../libcore/marlin-file-operations.c:3812
+#: ../libcore/marlin-file-operations.c:4518
+msgid "Error while moving \"%B\"."
+msgstr "S'ha produït un error en moure «%B»."
+
+#: ../libcore/marlin-file-operations.c:3813
+msgid "Could not remove the source folder."
+msgstr "No s'ha pogut suprimir la carpeta d'origen."
+
+#: ../libcore/marlin-file-operations.c:3898
+#: ../libcore/marlin-file-operations.c:3939
+#: ../libcore/marlin-file-operations.c:4520
+msgid "Error while copying \"%B\"."
+msgstr "S'ha produït un error en copiar «%B»."
+
+#: ../libcore/marlin-file-operations.c:3899
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "No s'han pogut suprimir els fitxers de la carpeta %F."
+
+#: ../libcore/marlin-file-operations.c:3940
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "No s'ha pogut suprimir el fitxer %F."
+
+#: ../libcore/marlin-file-operations.c:4270
+#: ../libcore/marlin-file-operations.c:4946
+msgid "You cannot move a folder into itself."
+msgstr "No podeu moure una carpeta dins d'ella mateixa."
+
+#: ../libcore/marlin-file-operations.c:4271
+#: ../libcore/marlin-file-operations.c:4947
+msgid "You cannot copy a folder into itself."
+msgstr "No podeu copiar una carpeta dins d'ella mateixa."
+
+#: ../libcore/marlin-file-operations.c:4272
+#: ../libcore/marlin-file-operations.c:4948
+msgid "The destination folder is inside the source folder."
+msgstr "La carpeta destí és dins la carpeta origen."
+
+#: ../libcore/marlin-file-operations.c:4303
+msgid "You cannot move a file over itself."
+msgstr "No podeu moure un fitxer sobre ell mateix."
+
+#: ../libcore/marlin-file-operations.c:4304
+msgid "You cannot copy a file over itself."
+msgstr "No podeu copiar un fitxer sobre ell mateix."
+
+#: ../libcore/marlin-file-operations.c:4305
+msgid "The source file would be overwritten by the destination."
+msgstr "El fitxer d'origen seria sobreescrit pel de destinació."
+
+#: ../libcore/marlin-file-operations.c:4522
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "No s'ha pogut suprimir el fitxer amb el mateix nom a %F."
+
+#: ../libcore/marlin-file-operations.c:4592
+msgid "Cannot copy \"%B\" here."
+msgstr "No es pot copiar «%B» aquí."
+
+#: ../libcore/marlin-file-operations.c:4593
+msgid "There was an error copying the file into %B."
+msgstr "S’ha produït un error en copiar el fitxer en %B."
+
+#: ../libcore/marlin-file-operations.c:4820
+msgid "Copying Files"
+msgstr "S'estan copiant els fitxers"
+
+#: ../libcore/marlin-file-operations.c:4846
+msgid "Preparing to move to \"%B\""
+msgstr "S'està preparant per moure a «B»"
+
+#: ../libcore/marlin-file-operations.c:4858
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "S'està preparant per moure %'d fitxer"
+msgstr[1] "S'està preparant per moure %'d fitxers"
+
+#: ../libcore/marlin-file-operations.c:5106
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "S’ha produït un error en moure «%F»."
+
+#: ../libcore/marlin-file-operations.c:5107
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "S'ha produït un error en moure el fitxer a %F."
+
+#: ../libcore/marlin-file-operations.c:5369
+msgid "Moving Files"
+msgstr "S'estan movent els fitxers"
+
+#: ../libcore/marlin-file-operations.c:5398
+msgid "Creating links in \"%B\""
+msgstr "S'estan creant els enllaços a «%B»"
+
+#: ../libcore/marlin-file-operations.c:5409
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "S'està creant l'enllaç a %'d fitxer"
+msgstr[1] "S'estan creant els enllaços a %'d fitxers"
+
+#: ../libcore/marlin-file-operations.c:5550
+msgid "Error while creating link to %B."
+msgstr "S'ha produït un error en crear l'enllaç a %B."
+
+#: ../libcore/marlin-file-operations.c:5552
+msgid "Symbolic links only supported for local files"
+msgstr "Els enllaços simbòlics només permeten fitxers locals"
+
+#: ../libcore/marlin-file-operations.c:5555
+msgid "The target doesn't support symbolic links."
+msgstr "La destinació no permet enllaços simbòlics."
+
+#: ../libcore/marlin-file-operations.c:5558
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "S'ha produït un error en crear l'enllaç simbòlic a %F."
+
+#: ../libcore/marlin-file-operations.c:5886
+#: ../libcore/marlin-file-operations.c:5889
+msgid "Setting permissions"
+msgstr "S'estan establint els permisos"
+
+#: ../libcore/marlin-file-operations.c:6001
+msgid "Cannot copy into trash."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6002
+msgid "It is not permitted to copy files into the trash"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6143
+msgid "untitled folder"
+msgstr "carpeta nova"
+
+#: ../libcore/marlin-file-operations.c:6151
+msgid "new file"
+msgstr "fitxer nou"
+
+#: ../libcore/marlin-file-operations.c:6322
+msgid "Error while creating directory %B."
+msgstr "S'ha produït un error en crear el directori %B."
+
+#: ../libcore/marlin-file-operations.c:6324
+msgid "Error while creating file %B."
+msgstr "S'ha produït un error en crear el fitxer %B."
+
+#: ../libcore/marlin-file-operations.c:6326
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "S'ha produït un error en crear el directori a %F."
+
+#: ../libcore/marlin-file-operations.c:6644
+msgid "Emptying the trash"
+msgstr "S'està buidant la paperera"
+
+#: ../libcore/marlin-file-operations.c:6656
+msgid "Emptying Trash"
+msgstr "S'està buidant la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -517,928 +1481,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Refés el canvi de propietari d'%d element"
 msgstr[1] "Refés el canvi de propietari de %d elements"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "No s'ha pogut determinar la ubicació original de «%s» "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "No es pot restaurar l'element des de la paperera"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Voleu combinar la carpeta «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
-"entri en conflicte amb els que s'estiguin copiant."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Voleu reemplaçar la carpeta «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Voleu reemplaçar el fitxer «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "En reemplaçar-la se sobreescriuran els continguts."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Fitxer original"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-msgid "Size:"
-msgstr "Mida:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-msgid "Type:"
-msgstr "Tipus:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Darrera modificació:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Reemplaça amb"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Combina"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Seleccioneu un nom nou per a la destinació"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Reinicia"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Aplica aquesta acció a tots els fitxers"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
-#: ../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "_Omet"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Canvia el _nom"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Substitueix"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Conflicte de fitxers"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (Unicode no vàlid)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "S'està preparant"
-
-#: ../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "O_met-los tots"
-
-#: ../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "_Torna-ho a intentar"
-
-#: ../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "Suprimeix-ho _tot"
-
-#: ../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "_Reemplaça"
-
-#: ../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "Reempl_aça'ls tots"
-
-#: ../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "_Combina"
-
-#: ../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "Combina-ho _tot"
-
-#: ../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "Copia _igualment"
-
-#: ../libcore/marlin-file-operations.c:296
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d segon"
-msgstr[1] "%'d segons"
-
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minut"
-msgstr[1] "%'d minuts"
-
-#: ../libcore/marlin-file-operations.c:311
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d hora"
-msgstr[1] "%'d hores"
-
-#: ../libcore/marlin-file-operations.c:319
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "aproximadament %'d hora"
-msgstr[1] "aproximadament %'d hores"
-
-#: ../libcore/marlin-file-operations.c:395
-#, c-format
-msgid "Link to %s"
-msgstr "Enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:399
-#, c-format
-msgid "Another link to %s"
-msgstr "Un altre enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:415
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'dr enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:419
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'dn enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:423
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'der enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:427
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'dè enllaç a %s"
-
-#: ../libcore/marlin-file-operations.c:465
-msgid " (copy)"
-msgstr " (còpia)"
-
-#: ../libcore/marlin-file-operations.c:467
-msgid " (another copy)"
-msgstr " (una altra còpia)"
-
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
-msgid "th copy)"
-msgstr "a còpia)"
-
-#: ../libcore/marlin-file-operations.c:477
-msgid "st copy)"
-msgstr "a còpia)"
-
-#: ../libcore/marlin-file-operations.c:479
-msgid "nd copy)"
-msgstr "a còpia)"
-
-#: ../libcore/marlin-file-operations.c:481
-msgid "rd copy)"
-msgstr "a còpia)"
-
-#: ../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:500
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s (una altra còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s (%'da còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s (%'da còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'da còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s (%'da còpia)%s"
-
-#: ../libcore/marlin-file-operations.c:619
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:627
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: ../libcore/marlin-file-operations.c:1384
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Esteu segur que voleu suprimir permanentment «%B» de la paperera?"
-
-#: ../libcore/marlin-file-operations.c:1387
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Esteu segur que voleu suprimir permanentment l'element seleccionat de la "
-"paperera?"
-msgstr[1] ""
-"Segur que voleu suprimir permanentment els %'d elements seleccionats de la "
-"paperera?"
-
-#: ../libcore/marlin-file-operations.c:1397
-#: ../libcore/marlin-file-operations.c:1477
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Si suprimiu un element, es perdrà permanentment."
-
-#: ../libcore/marlin-file-operations.c:1422
-msgid "Permanently delete all items from Trash?"
-msgstr "Voleu suprimir permanentment tots els elements de la paperera?"
-
-#: ../libcore/marlin-file-operations.c:1423
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1426
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1427
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
-msgid "Empty _Trash"
-msgstr "Buida la _paperera"
-
-#: ../libcore/marlin-file-operations.c:1465
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Esteu segur que voleu esborrrar «%B» permanentment?"
-
-#: ../libcore/marlin-file-operations.c:1468
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Esteu segur que voleu suprimir permanentment l'element seleccionat?"
-msgstr[1] ""
-"Esteu segur que voleu suprimir permanentment els %'d elements seleccionats?"
-
-#: ../libcore/marlin-file-operations.c:1493
-#: ../libcore/marlin-file-operations.c:1525
-msgid "Deleting files"
-msgstr "S'estan suprimint els fitxers"
-
-#: ../libcore/marlin-file-operations.c:1519
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "queda %'d fitxer per suprimir"
-msgstr[1] "queden %'d fitxers per suprimir"
-
-#: ../libcore/marlin-file-operations.c:1539
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "queda %T"
-msgstr[1] "queden %T"
-
-#: ../libcore/marlin-file-operations.c:1607
-#: ../libcore/marlin-file-operations.c:1641
-#: ../libcore/marlin-file-operations.c:1680
-#: ../libcore/marlin-file-operations.c:1757
-#: ../libcore/marlin-file-operations.c:2670
-msgid "Error while deleting."
-msgstr "S'ha produït un error en suprimir."
-
-#: ../libcore/marlin-file-operations.c:1611
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"No es poden suprimir els fitxers de la carpeta «%B» perquè no teniu permís "
-"per veure'ls."
-
-#: ../libcore/marlin-file-operations.c:1614
-#: ../libcore/marlin-file-operations.c:2729
-#: ../libcore/marlin-file-operations.c:3725
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"S'ha produït un error en obtenir informació sobre els fitxers de la carpeta "
-"«%B»."
-
-#: ../libcore/marlin-file-operations.c:1623
-#: ../libcore/marlin-file-operations.c:3734
-msgid "_Skip files"
-msgstr "_Omet els fitxers"
-
-#: ../libcore/marlin-file-operations.c:1644
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"No s'ha pogut suprimir la carpeta «%B» perquè no teniu permís per llegir-la."
-
-#: ../libcore/marlin-file-operations.c:1647
-#: ../libcore/marlin-file-operations.c:2768
-#: ../libcore/marlin-file-operations.c:3770
-msgid "There was an error reading the folder \"%B\"."
-msgstr "S'ha produït un error en llegir la carpeta «%B»."
-
-#: ../libcore/marlin-file-operations.c:1681
-msgid "Could not remove the folder %B."
-msgstr "No s'ha pogut suprimir la carpeta %B."
-
-#: ../libcore/marlin-file-operations.c:1758
-msgid "There was an error deleting %B."
-msgstr "S'ha produït un error en suprimir %B."
-
-#: ../libcore/marlin-file-operations.c:1834
-#: ../libcore/marlin-file-operations.c:1846
-msgid "Moving files to trash"
-msgstr "S'estan movent els fitxers a la paperera"
-
-#: ../libcore/marlin-file-operations.c:1848
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "Queda %'d fitxer per moure a la paperera"
-msgstr[1] "Queden %'d fitxers per moure a la paperera"
-
-#: ../libcore/marlin-file-operations.c:1943
-#: ../libcore/marlin-file-operations.c:1946
-#: ../libcore/marlin-file-operations.c:1949
-msgid "Cannot move file to trash or delete it"
-msgstr "No s'ha pogut moure el fitxer a la paperera o suprimir-ho"
-
-#: ../libcore/marlin-file-operations.c:1944
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"No està permès enviar a la paperera o suprimir un fitxer dels sistemes de "
-"només lectura."
-
-#: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files inside folders for which you do "
-"not have write privileges."
-msgstr ""
-"No està permès enviar a la paperera o suprimir un fitxer dins de carpetes "
-"per les quals no tingueu privilegis d’escriptura."
-
-#: ../libcore/marlin-file-operations.c:1950
-msgid ""
-"It is not permitted to trash or delete folders for which you do not have "
-"write privileges."
-msgstr ""
-"No està permès enviar a la paperera o suprimir carpetes per les quals no "
-"tingueu privilegis d’escriptura."
-
-#: ../libcore/marlin-file-operations.c:1952
-msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho "
-"immediatament?"
-
-#: ../libcore/marlin-file-operations.c:1953
-msgid ""
-"This file could not be moved to trash. See details below for further "
-"information."
-msgstr ""
-"No s'ha pogut moure el fitxer a la paperera. Vegeu els detalls a continuació."
-
-#: ../libcore/marlin-file-operations.c:1957
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
-"No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho?"
-
-#: ../libcore/marlin-file-operations.c:1958
-msgid ""
-"This file could not be moved to trash. You may not be able to delete it "
-"either."
-msgstr ""
-"No s’ha pogut moure aquest fitxer a la paperera. Tampoc és possible suprimir-"
-"ho."
-
-#: ../libcore/marlin-file-operations.c:1963
-msgid ""
-"\n"
-" Deleting a file removes it permanently"
-msgstr ""
-"\n"
-" La supressió d’un fitxer l’elimina permanentment"
-
-#: ../libcore/marlin-file-operations.c:2153
-msgid "Trashing Files"
-msgstr "S'estan movent els fitxers a la paperera"
-
-#: ../libcore/marlin-file-operations.c:2155
-msgid "Deleting Files"
-msgstr "S'estan suprimint els fitxers"
-
-#: ../libcore/marlin-file-operations.c:2224
-msgid "Unable to eject %V"
-msgstr "No s'ha pogut expulsar %V"
-
-#: ../libcore/marlin-file-operations.c:2226
-msgid "Unable to unmount %V"
-msgstr "No s'ha pogut desmuntar %V"
-
-#: ../libcore/marlin-file-operations.c:2405
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Voleu buidar la paperera abans de desmuntar?"
-
-#: ../libcore/marlin-file-operations.c:2407
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Per poder obtenir tot l'espai lliure d'aquest dispositiu, cal que es buidi "
-"la paperera. Tots els elements de la paperera del dispositiu es perdran per "
-"sempre."
-
-#: ../libcore/marlin-file-operations.c:2413
-msgid "Do _not Empty Trash"
-msgstr "_No buidis la paperera"
-
-#: ../libcore/marlin-file-operations.c:2527
-#, c-format
-msgid "Unable to mount %s"
-msgstr "No s'ha pogut muntar %s"
-
-#: ../libcore/marlin-file-operations.c:2605
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "S'està preparant per copiar %'d fitxer (%S)"
-msgstr[1] "S'està preparant per copiar %'d fitxers (%S)"
-
-#: ../libcore/marlin-file-operations.c:2611
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "S'està preparant per moure %'d fitxer (%S)"
-msgstr[1] "S'està preparant per moure %'d fitxers (%S)"
-
-#: ../libcore/marlin-file-operations.c:2617
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "S'està preparant per suprimir %'d fitxer (%S)"
-msgstr[1] "S'està preparant per suprimir %'d fitxers (%S)"
-
-#: ../libcore/marlin-file-operations.c:2623
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "S'està preparant per moure a la paperera %'d fitxer"
-msgstr[1] "S'està preparant per moure a la paperera %'d fitxers"
-
-#: ../libcore/marlin-file-operations.c:2666
-#: ../libcore/marlin-file-operations.c:3585
-#: ../libcore/marlin-file-operations.c:3717
-#: ../libcore/marlin-file-operations.c:3762
-msgid "Error while copying."
-msgstr "S'ha produït un error en copiar."
-
-#: ../libcore/marlin-file-operations.c:2668
-#: ../libcore/marlin-file-operations.c:3715
-#: ../libcore/marlin-file-operations.c:3760
-msgid "Error while moving."
-msgstr "S'ha produït un error en moure."
-
-#: ../libcore/marlin-file-operations.c:2672
-msgid "Error while moving files to trash."
-msgstr "S'ha produït un error en moure els fitxers a la paperera."
-
-#: ../libcore/marlin-file-operations.c:2726
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"No es poden gestionar els fitxers en la carpeta «%B» perquè no teniu permís "
-"per veure'ls."
-
-#: ../libcore/marlin-file-operations.c:2765
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"No es pot gestionar la carpeta «%B» perquè no teniu permís per llegir-la."
-
-#: ../libcore/marlin-file-operations.c:2841
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"No es pot gestionar el fitxer «%B» perquè no teniu permís per llegir-lo."
-
-#: ../libcore/marlin-file-operations.c:2844
-msgid "There was an error getting information about \"%B\"."
-msgstr "S'ha produït un error en obtenir informació sobre «%B»."
-
-#: ../libcore/marlin-file-operations.c:2944
-#: ../libcore/marlin-file-operations.c:2986
-#: ../libcore/marlin-file-operations.c:3019
-#: ../libcore/marlin-file-operations.c:3049
-msgid "Error while copying to \"%B\"."
-msgstr "S'ha produït un error en copiar a «%B»."
-
-#: ../libcore/marlin-file-operations.c:2948
-msgid "You do not have permissions to access the destination folder."
-msgstr "No teniu permís per accedir a la carpeta de destinació."
-
-#: ../libcore/marlin-file-operations.c:2950
-msgid "There was an error getting information about the destination."
-msgstr "S'ha produït un error en obtenir informació sobre la destinació."
-
-#: ../libcore/marlin-file-operations.c:2987
-msgid "The destination is not a folder."
-msgstr "La destinació no és una carpeta."
-
-#: ../libcore/marlin-file-operations.c:3020
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"No hi ha prou espai a la destinació. Intenteu suprimir alguns fitxers per "
-"obtenir espai."
-
-#: ../libcore/marlin-file-operations.c:3022
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Hi ha %S disponible, però es necessita %S."
-
-#: ../libcore/marlin-file-operations.c:3050
-msgid "The destination is read-only."
-msgstr "La destinació només és de lectura."
-
-#: ../libcore/marlin-file-operations.c:3111
-msgid "Moving \"%B\" to \"%B\""
-msgstr "S'està movent «%B» a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3112
-msgid "Copying \"%B\" to \"%B\""
-msgstr "S'està copiant «%B» a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3116
-msgid "Duplicating \"%B\""
-msgstr "S'està duplicant «%B»"
-
-#: ../libcore/marlin-file-operations.c:3120
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "S'està movent %'d fitxer (des de «%B») a «%B»"
-msgstr[1] "S'estan movent %'d fitxers (des de «%B») a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3123
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "S'està copiant %'d fitxer (des de «%B») a «%B»"
-msgstr[1] "S'estan copiant %'d fitxers (des de «%B») a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3130
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "S'està duplicant %'d fitxer (des de «%B»)"
-msgstr[1] "S'estan duplicant %'d fitxers (des de «%B»)"
-
-#: ../libcore/marlin-file-operations.c:3139
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "S'està movent %'d fitxer a «%B»"
-msgstr[1] "S'estan movent %'d fitxers a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3143
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "S'està copiant %'d fitxer a «%B»"
-msgstr[1] "S'estan copiant %'d fitxers a «%B»"
-
-#: ../libcore/marlin-file-operations.c:3148
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "S'està duplicant %'d fitxer"
-msgstr[1] "S'estan duplicant %'d fitxers"
-
-#: ../libcore/marlin-file-operations.c:3199
-#, c-format
-msgid "%S of %S"
-msgstr "%S de %S"
-
-#: ../libcore/marlin-file-operations.c:3210
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S de %S — queda %T (%S/seg)"
-msgstr[1] "%S de %S — queden %T (%S/seg)"
-
-#: ../libcore/marlin-file-operations.c:3589
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"No es pot copiar la carpeta «%B» perquè no teniu permís per crear-la en la "
-"destinació."
-
-#: ../libcore/marlin-file-operations.c:3592
-msgid "There was an error creating the folder \"%B\"."
-msgstr "S'ha produït un error en crear la carpeta «%B»."
-
-#: ../libcore/marlin-file-operations.c:3722
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"No es poden copiar els fitxers de la carpeta «%B» perquè no teniu permís per "
-"veure'ls."
-
-#: ../libcore/marlin-file-operations.c:3767
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"No es pot copiar la carpeta «%B» perquè no teniu permís per llegir-la."
-
-#: ../libcore/marlin-file-operations.c:3812
-#: ../libcore/marlin-file-operations.c:4518
-msgid "Error while moving \"%B\"."
-msgstr "S'ha produït un error en moure «%B»."
-
-#: ../libcore/marlin-file-operations.c:3813
-msgid "Could not remove the source folder."
-msgstr "No s'ha pogut suprimir la carpeta d'origen."
-
-#: ../libcore/marlin-file-operations.c:3898
-#: ../libcore/marlin-file-operations.c:3939
-#: ../libcore/marlin-file-operations.c:4520
-msgid "Error while copying \"%B\"."
-msgstr "S'ha produït un error en copiar «%B»."
-
-#: ../libcore/marlin-file-operations.c:3899
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "No s'han pogut suprimir els fitxers de la carpeta %F."
-
-#: ../libcore/marlin-file-operations.c:3940
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "No s'ha pogut suprimir el fitxer %F."
-
-#: ../libcore/marlin-file-operations.c:4270
-#: ../libcore/marlin-file-operations.c:4946
-msgid "You cannot move a folder into itself."
-msgstr "No podeu moure una carpeta dins d'ella mateixa."
-
-#: ../libcore/marlin-file-operations.c:4271
-#: ../libcore/marlin-file-operations.c:4947
-msgid "You cannot copy a folder into itself."
-msgstr "No podeu copiar una carpeta dins d'ella mateixa."
-
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
-msgid "The destination folder is inside the source folder."
-msgstr "La carpeta destí és dins la carpeta origen."
-
-#: ../libcore/marlin-file-operations.c:4303
-msgid "You cannot move a file over itself."
-msgstr "No podeu moure un fitxer sobre ell mateix."
-
-#: ../libcore/marlin-file-operations.c:4304
-msgid "You cannot copy a file over itself."
-msgstr "No podeu copiar un fitxer sobre ell mateix."
-
-#: ../libcore/marlin-file-operations.c:4305
-msgid "The source file would be overwritten by the destination."
-msgstr "El fitxer d'origen seria sobreescrit pel de destinació."
-
-#: ../libcore/marlin-file-operations.c:4522
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "No s'ha pogut suprimir el fitxer amb el mateix nom a %F."
-
-#: ../libcore/marlin-file-operations.c:4592
-msgid "Cannot copy \"%B\" here."
-msgstr "No es pot copiar «%B» aquí."
-
-#: ../libcore/marlin-file-operations.c:4593
-msgid "There was an error copying the file into %B."
-msgstr "S’ha produït un error en copiar el fitxer en %B."
-
-#: ../libcore/marlin-file-operations.c:4820
-msgid "Copying Files"
-msgstr "S'estan copiant els fitxers"
-
-#: ../libcore/marlin-file-operations.c:4846
-msgid "Preparing to move to \"%B\""
-msgstr "S'està preparant per moure a «B»"
-
-#: ../libcore/marlin-file-operations.c:4858
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "S'està preparant per moure %'d fitxer"
-msgstr[1] "S'està preparant per moure %'d fitxers"
-
-#: ../libcore/marlin-file-operations.c:5106
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr "S’ha produït un error en moure «%F»."
-
-#: ../libcore/marlin-file-operations.c:5107
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "S'ha produït un error en moure el fitxer a %F."
-
-#: ../libcore/marlin-file-operations.c:5369
-msgid "Moving Files"
-msgstr "S'estan movent els fitxers"
-
-#: ../libcore/marlin-file-operations.c:5398
-msgid "Creating links in \"%B\""
-msgstr "S'estan creant els enllaços a «%B»"
-
-#: ../libcore/marlin-file-operations.c:5409
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "S'està creant l'enllaç a %'d fitxer"
-msgstr[1] "S'estan creant els enllaços a %'d fitxers"
-
-#: ../libcore/marlin-file-operations.c:5550
-msgid "Error while creating link to %B."
-msgstr "S'ha produït un error en crear l'enllaç a %B."
-
-#: ../libcore/marlin-file-operations.c:5552
-msgid "Symbolic links only supported for local files"
-msgstr "Els enllaços simbòlics només permeten fitxers locals"
-
-#: ../libcore/marlin-file-operations.c:5555
-msgid "The target doesn't support symbolic links."
-msgstr "La destinació no permet enllaços simbòlics."
-
-#: ../libcore/marlin-file-operations.c:5558
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "S'ha produït un error en crear l'enllaç simbòlic a %F."
-
-#: ../libcore/marlin-file-operations.c:5886
-#: ../libcore/marlin-file-operations.c:5889
-msgid "Setting permissions"
-msgstr "S'estan establint els permisos"
-
-#: ../libcore/marlin-file-operations.c:6001
-msgid "Cannot copy into trash."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6002
-msgid "It is not permitted to copy files into the trash"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6143
-msgid "untitled folder"
-msgstr "carpeta nova"
-
-#: ../libcore/marlin-file-operations.c:6151
-msgid "new file"
-msgstr "fitxer nou"
-
-#: ../libcore/marlin-file-operations.c:6322
-msgid "Error while creating directory %B."
-msgstr "S'ha produït un error en crear el directori %B."
-
-#: ../libcore/marlin-file-operations.c:6324
-msgid "Error while creating file %B."
-msgstr "S'ha produït un error en crear el fitxer %B."
-
-#: ../libcore/marlin-file-operations.c:6326
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "S'ha produït un error en crear el directori a %F."
-
-#: ../libcore/marlin-file-operations.c:6644
-msgid "Emptying the trash"
-msgstr "S'està buidant la paperera"
-
-#: ../libcore/marlin-file-operations.c:6656
-msgid "Emptying Trash"
-msgstr "S'està buidant la paperera"
-
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Avui a les %-H:%M"
@@ -1455,43 +1497,17 @@ msgstr "%a, %-d de %b. a les %-I:%M %p"
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d de %b de %Y a les %-H:%M"
 
-#: ../libcore/gof-file.c:364
-#, c-format
-msgid "link to %s"
-msgstr "enllaç a %s"
-
-#: ../libcore/gof-file.c:1886
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
-
-#: ../libcore/gof-file.c:1924
-msgid "No Exec field specified"
-msgstr "No s'ha especificat el camp Exec"
-
-#: ../libcore/gof-file.c:1944
-msgid "No URL field specified"
-msgstr "No s'ha especificat el camp URL"
-
-#: ../libcore/gof-file.c:1950
-msgid "Invalid desktop file"
-msgstr "El nom del fitxer d'escriptori no és vàlid"
-
-#: ../libcore/gof-file.c:2242
-msgid "Slashes are not allowed in filenames"
-msgstr "No es permeten barres en els noms dels fitxers"
-
-#: ../libcore/gof-file.c:2262
-msgid "Toplevel files cannot be renamed"
-msgstr "No es pot canviar el nom dels fitxers de nivell superior"
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "S'està preparant"
 
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "Anterior"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "Següent"
 
@@ -1499,108 +1515,157 @@ msgstr "Següent"
 msgid "Create folder"
 msgstr ""
 
-#: ../src/View/Window.vala:178
+#: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
 msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
 
-#: ../src/View/Window.vala:184
+#: ../src/View/Window.vala:188
 msgid "Set as Default"
 msgstr "Estableix com a predeterminada"
 
-#: ../src/View/Window.vala:190
+#: ../src/View/Window.vala:194
 msgid "Ignore"
 msgstr "Ignora"
 
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
+#: ../src/View/Sidebar.vala:446
+msgid "Personal"
+msgstr "Personal"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your common places and bookmarks"
+msgstr "Els vostres llocs comuns i adreces d'interès"
+
+#: ../src/View/Sidebar.vala:459 ../src/View/ViewContainer.vala:314
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
+#: ../src/View/Sidebar.vala:466
+msgid "Open your personal folder"
+msgstr "Obriu la vostra carpeta personal"
+
+#: ../src/View/Sidebar.vala:481
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:502 ../libwidgets/Resources.vala:87
+msgid "Trash"
+msgstr "Paperera"
+
+#: ../src/View/Sidebar.vala:509
+msgid "Open the Trash"
+msgstr "Obre la paperera"
+
+#: ../src/View/Sidebar.vala:513
+msgid "Devices"
+msgstr "Dispositius"
+
+#: ../src/View/Sidebar.vala:514
+msgid "Your local partitions and devices"
+msgstr "Dispositius y particions locals"
+
+#: ../src/View/Sidebar.vala:520 ../src/View/PropertiesWindow.vala:1493
+#: ../src/View/ViewContainer.vala:316 ../libwidgets/Resources.vala:90
 msgid "File System"
 msgstr "Sistema de fitxers"
 
-#: ../src/View/ViewContainer.vala:332
-msgid "(as Administrator)"
-msgstr "(com a Administrador)"
+#: ../src/View/Sidebar.vala:527
+msgid "Open the contents of the FileSystem"
+msgstr "Obre el contingut del sistema de fitxers"
 
-#: ../src/View/ViewContainer.vala:341
-msgid "This Folder Does Not Belong to You"
-msgstr ""
+#: ../src/View/Sidebar.vala:557 ../src/View/Sidebar.vala:751
+msgid "Mount and open %s"
+msgstr "Munta i obre %s"
 
-#: ../src/View/ViewContainer.vala:342
-msgid "You don't have permission to view this folder."
-msgstr "No teniu permís per veure aquesta carpeta."
+#: ../src/View/Sidebar.vala:638 ../libwidgets/Resources.vala:84
+msgid "Network"
+msgstr "Xarxa"
 
-#: ../src/View/ViewContainer.vala:345
-msgid "Unable to Mount Folder"
-msgstr ""
+#: ../src/View/Sidebar.vala:639
+msgid "Your network places"
+msgstr "Llocs a la xarxa"
 
-#: ../src/View/ViewContainer.vala:346
-msgid "The server for this folder could not be located."
-msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
+#: ../src/View/Sidebar.vala:669
+msgid "Entire Network"
+msgstr "Tota la xarxa"
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
-msgid "This Folder Does Not Exist"
-msgstr ""
+#: ../src/View/Sidebar.vala:676
+msgid "Browse the contents of the network"
+msgstr "Navega pel contingut de la xarxa"
 
-#: ../src/View/ViewContainer.vala:353
-msgid "You cannot create a folder here."
-msgstr ""
+#: ../src/View/Sidebar.vala:1226
+msgid "Unable to start %s"
+msgstr "No s'ha pogut iniciar %s"
 
-#: ../src/View/ViewContainer.vala:362
-msgid "File not Found"
-msgstr ""
+#: ../src/View/Sidebar.vala:1307
+msgid "Open"
+msgstr "Obre"
 
-#: ../src/View/ViewContainer.vala:363
-msgid "The file selected no longer exists."
-msgstr "El fitxer seleccionat ja no existeix."
+#: ../src/View/Sidebar.vala:1315
+msgid "Open in New _Tab"
+msgstr "Obre en una _pestanya nova"
 
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "Obre en una pestanya nova"
+#: ../src/View/Sidebar.vala:1321
+msgid "Open in New _Window"
+msgstr "Obre en una _finestra nova"
 
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "Obre amb"
+#: ../src/View/Sidebar.vala:1329
+msgid "Remove"
+msgstr "Elimina"
 
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "Una altra aplicació…"
+#: ../src/View/Sidebar.vala:1337 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Reanomena"
+
+#: ../src/View/Sidebar.vala:1346
+msgid "_Mount"
+msgstr "_Munta"
+
+#: ../src/View/Sidebar.vala:1352
+msgid "_Unmount"
+msgstr "_Desmunta"
+
+#: ../src/View/Sidebar.vala:1358
+msgid "_Eject"
+msgstr "_Expulsa"
+
+#: ../src/View/Sidebar.vala:1372 ../src/View/PropertiesWindow.vala:285
+#: ../src/View/directory_view_popup.ui:95
+msgid "Properties"
+msgstr "Propietats"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
-#: ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "Mida"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
-#: ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "Tipus"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
+#: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Modificat"
 
-#: ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:340
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
 msgstr "No s'ha pogut trobar la carpeta «%s»."
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
 msgstr "Crea"
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
 msgstr "Crea la carpeta «%s»"
 
-#: ../src/View/DirectoryNotFound.vala:55
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1610,359 +1675,334 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:36
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:37
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:38
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:39
-msgid "Access Denied"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:170
-msgid "%u folders"
-msgstr "%u carpetes"
-
-#: ../src/View/OverlayBar.vala:172 ../src/View/OverlayBar.vala:180
-msgid " and %u other item (%s) selected"
-msgstr " i %u altre element (%s) seleccionats"
-
-#: ../src/View/OverlayBar.vala:173 ../src/View/OverlayBar.vala:181
-msgid " and %u other items (%s) selected"
-msgstr " i %u altres elements (%s) seleccionats"
-
-#: ../src/View/OverlayBar.vala:176 ../src/View/OverlayBar.vala:184
-msgid " selected"
-msgstr " seleccionat"
-
-#: ../src/View/OverlayBar.vala:178
-msgid "%u folder"
-msgstr "%u carpeta"
-
-#: ../src/View/OverlayBar.vala:186
-msgid "%u items selected (%s)"
-msgstr "%u elements seleccionats (%s)"
-
-#: ../src/View/OverlayBar.vala:219
-msgid "%u sub-folder, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:219
-msgid "%u sub-folders, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:224
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:224
-msgid "%u files, "
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:108
-#: ../src/View/directory_view_popup.ui:95
-msgid "Properties"
-msgstr "Propietats"
-
-#: ../src/View/PropertiesWindow.vala:202
-msgid "General"
-msgstr "General"
-
-#: ../src/View/PropertiesWindow.vala:210
-msgid "More"
-msgstr "Més"
-
-#: ../src/View/PropertiesWindow.vala:235
-msgid "Preview"
-msgstr "Previsualització"
-
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr "Tanca"
-
-#: ../src/View/PropertiesWindow.vala:288
-msgid "file"
-msgstr "fitxer"
-
-#: ../src/View/PropertiesWindow.vala:290
-msgid "files"
-msgstr "fitxers"
-
-#: ../src/View/PropertiesWindow.vala:292
-msgid "Actual size could be larger, "
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:292
-msgid "could not be read due to permissions or other errors."
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:321
-msgid "unknown"
-msgstr "desconegut"
-
-#: ../src/View/PropertiesWindow.vala:451
-msgid "%u selected items"
-msgstr "%u elements seleccionats"
-
-#: ../src/View/PropertiesWindow.vala:564
-msgid "Created"
-msgstr "Creat"
-
-#: ../src/View/PropertiesWindow.vala:569
-msgid "Last Access"
-msgstr "Darrer accés"
-
-#: ../src/View/PropertiesWindow.vala:577
-msgid "Deleted"
-msgstr "S'ha suprimit"
-
-#: ../src/View/PropertiesWindow.vala:582
-msgid "MimeType"
-msgstr "Tipus MIME"
-
-#: ../src/View/PropertiesWindow.vala:590
-msgid "MimeTypes"
-msgstr "Tipus MIME"
-
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
-msgid "Location"
-msgstr "Ubicació"
-
-#: ../src/View/PropertiesWindow.vala:627
-msgid "Target"
-msgstr "Objectiu"
-
-#: ../src/View/PropertiesWindow.vala:633
-msgid "Origin Location"
-msgstr "Ubicació original"
-
-#: ../src/View/PropertiesWindow.vala:660
-msgid "Info"
-msgstr "Informació"
-
-#: ../src/View/PropertiesWindow.vala:702
-msgid "Other application..."
-msgstr "Una altra aplicació…"
-
-#: ../src/View/PropertiesWindow.vala:726
-msgid "Open with:"
-msgstr "Obre amb:"
-
-#: ../src/View/PropertiesWindow.vala:744
-msgid "Usage"
-msgstr "Ús"
-
-#: ../src/View/PropertiesWindow.vala:751
-msgid "Device usage:"
-msgstr "Ús del dispositiu:"
-
-#: ../src/View/PropertiesWindow.vala:758
-msgid "%s free of %s (%d%% used)"
-msgstr "%s lliure de %s (%d%% usat)"
-
-#: ../src/View/PropertiesWindow.vala:894
-msgid "Read"
-msgstr "Llegir"
-
-#: ../src/View/PropertiesWindow.vala:898
-msgid "Write"
-msgstr "Escriure"
-
-#: ../src/View/PropertiesWindow.vala:902
-msgid "Execute"
-msgstr "Execució"
-
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
-msgid "Owner"
-msgstr "Propietari"
-
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
-msgid "Group"
-msgstr "Grup"
-
-#: ../src/View/PropertiesWindow.vala:1127
-msgid "Everyone"
-msgstr "Tothom"
-
-#: ../src/View/PropertiesWindow.vala:1359
-msgid "Select an application to open "
-msgstr "Seleccioneu una aplicació per obrir "
-
-#: ../src/View/Sidebar.vala:430
-msgid "Personal"
-msgstr "Personal"
-
-#: ../src/View/Sidebar.vala:435
-msgid "Your common places and bookmarks"
-msgstr "Els vostres llocs comuns i adreces d'interès"
-
-#: ../src/View/Sidebar.vala:454
-msgid "Open your personal folder"
-msgstr "Obriu la vostra carpeta personal"
-
-#: ../src/View/Sidebar.vala:469
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Paperera"
-
-#: ../src/View/Sidebar.vala:497
-msgid "Open the Trash"
-msgstr "Obre la paperera"
-
-#: ../src/View/Sidebar.vala:503
-msgid "Devices"
-msgstr "Dispositius"
-
-#: ../src/View/Sidebar.vala:508
-msgid "Your local partitions and devices"
-msgstr "Dispositius y particions locals"
-
-#: ../src/View/Sidebar.vala:520
-msgid "Open the contents of the FileSystem"
-msgstr "Obre el contingut del sistema de fitxers"
-
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
-msgid "Mount and open %s"
-msgstr "Munta i obre %s"
-
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Xarxa"
-
-#: ../src/View/Sidebar.vala:632
-msgid "Your network places"
-msgstr "Llocs a la xarxa"
-
-#: ../src/View/Sidebar.vala:662
-msgid "Entire Network"
-msgstr "Tota la xarxa"
-
-#: ../src/View/Sidebar.vala:669
-msgid "Browse the contents of the network"
-msgstr "Navega pel contingut de la xarxa"
-
-#: ../src/View/Sidebar.vala:1198
-msgid "Unable to start %s"
-msgstr "No s'ha pogut iniciar %s"
-
-#: ../src/View/Sidebar.vala:1279
-msgid "Open"
-msgstr "Obre"
-
-#: ../src/View/Sidebar.vala:1287
-msgid "Open in New _Tab"
-msgstr "Obre en una _pestanya nova"
-
-#: ../src/View/Sidebar.vala:1293
-msgid "Open in New _Window"
-msgstr "Obre en una _finestra nova"
-
-#: ../src/View/Sidebar.vala:1301
-msgid "Remove"
-msgstr "Elimina"
-
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Reanomena"
-
-#: ../src/View/Sidebar.vala:1318
-msgid "_Mount"
-msgstr "_Munta"
-
-#: ../src/View/Sidebar.vala:1324
-msgid "_Unmount"
-msgstr "_Desmunta"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Eject"
-msgstr "_Expulsa"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "Visualitza com a graella"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "Visualitza com a llista"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "Visualitza en columnes"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
-msgstr "En aquesta carpeta"
-
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr "Adreces d'interès"
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr "Qualsevol lloc"
-
 #: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
 msgstr "La previsualització ha fallat"
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1065
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Estableix com a predeterminada"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1538
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1538
 msgid "Invalid file name provided"
 msgstr "S’ha proporcionat un nom de fitxer no vàlid"
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1976
 msgid "Run"
 msgstr "Executa"
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1981
 msgid "Open in %s"
 msgstr "Obre amb %s"
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1991
 msgid "Open in"
 msgstr "Obre amb"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Obre amb"
+
+#: ../src/View/AbstractDirectoryView.vala:2053
 msgid "Other Application"
 msgstr "Una altra aplicació"
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2322
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2690
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2691
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2812
-msgid "Could not rename to '%s'"
+#: ../src/View/OverlayBar.vala:187
+msgid "%u folders"
+msgstr "%u carpetes"
+
+#: ../src/View/OverlayBar.vala:189 ../src/View/OverlayBar.vala:197
+msgid " and %u other item (%s) selected"
+msgstr " i %u altre element (%s) seleccionats"
+
+#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+msgid " and %u other items (%s) selected"
+msgstr " i %u altres elements (%s) seleccionats"
+
+#: ../src/View/OverlayBar.vala:193 ../src/View/OverlayBar.vala:201
+msgid " selected"
+msgstr " seleccionat"
+
+#: ../src/View/OverlayBar.vala:195
+msgid "%u folder"
+msgstr "%u carpeta"
+
+#: ../src/View/OverlayBar.vala:203
+msgid "%u items selected (%s)"
+msgstr "%u elements seleccionats (%s)"
+
+#: ../src/View/OverlayBar.vala:239
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:239
+msgid "%u sub-folders, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:244
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:244
+msgid "%u files, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:249
+msgid "unknown size"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:185
+msgid "Close"
+msgstr "Tanca"
+
+#: ../src/View/PropertiesWindow.vala:197
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
+msgid "General"
+msgstr "General"
+
+#: ../src/View/PropertiesWindow.vala:355
+msgid "More"
+msgstr "Més"
+
+#: ../src/View/PropertiesWindow.vala:380
+msgid "Preview"
+msgstr "Previsualització"
+
+#: ../src/View/PropertiesWindow.vala:419
+msgid "file"
+msgstr "fitxer"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "files"
+msgstr "fitxers"
+
+#: ../src/View/PropertiesWindow.vala:423
+msgid "Actual size could be larger, "
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:423
+msgid "could not be read due to permissions or other errors."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:442 ../src/View/PropertiesWindow.vala:456
+msgid "unknown"
+msgstr "desconegut"
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "%u selected items"
+msgstr "%u elements seleccionats"
+
+#: ../src/View/PropertiesWindow.vala:639
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:641
+msgid "Modified:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:644
+msgid "Last Access:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:652
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:657
+msgid "MimeType:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:665
+msgid "MimeTypes:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:676
+msgid "loading ..."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
+#: ../src/View/PropertiesWindow.vala:1545
+msgid "Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:696
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:702
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
+msgid "Info"
+msgstr "Informació"
+
+#: ../src/View/PropertiesWindow.vala:789
+msgid "Other application..."
+msgstr "Una altra aplicació…"
+
+#: ../src/View/PropertiesWindow.vala:813
+msgid "Open with:"
+msgstr "Obre amb:"
+
+#: ../src/View/PropertiesWindow.vala:829 ../src/View/PropertiesWindow.vala:1559
+msgid "Usage"
+msgstr "Ús"
+
+#: ../src/View/PropertiesWindow.vala:831
+msgid "Device usage:"
+msgstr "Ús del dispositiu:"
+
+#: ../src/View/PropertiesWindow.vala:839
+msgid "%s free of %s (%d%% used)"
+msgstr "%s lliure de %s (%d%% usat)"
+
+#: ../src/View/PropertiesWindow.vala:950
+msgid "Read"
+msgstr "Llegir"
+
+#: ../src/View/PropertiesWindow.vala:954
+msgid "Write"
+msgstr "Escriure"
+
+#: ../src/View/PropertiesWindow.vala:958
+msgid "Execute"
+msgstr "Execució"
+
+#: ../src/View/PropertiesWindow.vala:1164
+#: ../src/View/PropertiesWindow.vala:1179
+msgid "Owner:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1170
+#: ../src/View/PropertiesWindow.vala:1184
+msgid "Group:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1189
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1422
+msgid "Select an application to open "
+msgstr "Seleccioneu una aplicació per obrir "
+
+#: ../src/View/PropertiesWindow.vala:1477
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1552
+msgid "Format:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1570
+#: ../src/View/PropertiesWindow.vala:1595
+msgid "Capacity:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1576
+#: ../src/View/PropertiesWindow.vala:1601
+msgid "Available:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1582
+#: ../src/View/PropertiesWindow.vala:1607
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1585
+msgid "%s (%d%% used)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1598
+#: ../src/View/PropertiesWindow.vala:1604
+#: ../src/View/PropertiesWindow.vala:1610
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:325
+msgid "(as Administrator)"
+msgstr "(com a Administrador)"
+
+#: ../src/View/ViewContainer.vala:341
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:343
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:344
+msgid "You don't have permission to view this folder."
+msgstr "No teniu permís per veure aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:346
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:347
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:349
+msgid "Unable show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:350
+msgid "The server for this folder could not be located."
+msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:360
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:361
+msgid "The file selected no longer exists."
+msgstr "El fitxer seleccionat ja no existeix."
+
+#: ../src/View/Slot.vala:39
+msgid "This Folder Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:40
+msgid "Trash Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:41
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:42
+msgid "Access Denied"
 msgstr ""
 
 #: ../src/Application.vala:146
@@ -2002,26 +2042,6 @@ msgstr ""
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
-
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr "No s'ha pogut executar «%s»"
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr "Mou aquí"
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr "Copia aquí"
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr "Enllaça aquí"
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "Canceŀla"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -2074,57 +2094,136 @@ msgstr "Mostra el diàleg de còpia"
 msgid "Cancel All In-progress Actions"
 msgstr "Cancel·la totes les accions en progrés"
 
-#: ../libwidgets/LocationBar.vala:102
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr "No s'ha pogut executar «%s»"
+
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr "Mou aquí"
+
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr "Copia aquí"
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr "Enllaça aquí"
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "Canceŀla"
+
+#: ../libcore/FileUtils.vala:249
+msgid "Could not rename to '%s'"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "Obre en una pestanya nova"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
 msgstr "Recarrega aquesta carpeta"
 
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "Vés a %s"
+#: ../libwidgets/View/LocationBar.vala:162
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
+msgid "Enter search term or path"
+msgstr ""
 
-#: ../libwidgets/LocationBar.vala:454
-msgid "Navigate to %s"
-msgstr "Navega a %s"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "En aquesta carpeta"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "Adreces d'interès"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "Qualsevol lloc"
 
 #: ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
 msgstr "Un administrador de fitxers simple i poderós"
 
 #: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "Traductors del Launchpad"
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Adolfo Jayme https://launchpad.net/~fitojb\n"
+"  Adri Sans https://launchpad.net/~asansc\n"
+"  Alfredo Hernández https://launchpad.net/~aldomann\n"
+"  Asturel https://launchpad.net/~elmalkavian\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Enrique Villarreal https://launchpad.net/~evillarreal\n"
+"  Gerard Mayans https://launchpad.net/~gerardmc-45\n"
+"  Sergio Tortosa https://launchpad.net/~sheosi"
 
-#: ../libwidgets/Resources.vala:84
+#: ../libwidgets/Resources.vala:80
 msgid "AFP"
 msgstr "AFP"
 
-#: ../libwidgets/Resources.vala:85
+#: ../libwidgets/Resources.vala:81
 msgid "DAV"
 msgstr "DAV"
 
-#: ../libwidgets/Resources.vala:86
+#: ../libwidgets/Resources.vala:82
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../libwidgets/Resources.vala:87
+#: ../libwidgets/Resources.vala:83
 msgid "FTP"
 msgstr "FTP"
 
-#: ../libwidgets/Resources.vala:89
+#: ../libwidgets/Resources.vala:85
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../libwidgets/Resources.vala:90
+#: ../libwidgets/Resources.vala:86
 msgid "SMB"
 msgstr "SMB"
 
-#: ../libwidgets/Resources.vala:92
+#: ../libwidgets/Resources.vala:88
 msgid "Recent"
 msgstr ""
 
-#: ../libwidgets/Resources.vala:93
+#: ../libwidgets/Resources.vala:89
 msgid "MTP"
 msgstr ""
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Visualitza com a graella"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Visualitza com a llista"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Visualitza en columnes"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
+msgstr "Navega a %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "Vés a %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2154,8 +2253,7 @@ msgstr ""
 msgid "Restore from Trash"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "Suprimeix permanentment"
 

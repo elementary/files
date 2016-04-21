@@ -48,7 +48,6 @@ namespace Marlin.View.Chrome {
                     break;
                 }
 
-                Preferences.settings.set_enum ("default-viewmode", value);
                 freeze_update = true;
                 switcher.set_active (active_index);
                 freeze_update = false;
@@ -91,8 +90,6 @@ namespace Marlin.View.Chrome {
             miller.tooltip_text = _("View in Columns");
             switcher.append (miller);
             miller_sv = new GLib.Variant.string ("MILLER");
-
-            mode = (Marlin.ViewMode) Preferences.settings.get_enum("default-viewmode");
 
             switcher.mode_changed.connect ((image) => {
                 if (freeze_update) {

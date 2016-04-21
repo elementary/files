@@ -29,6 +29,6 @@ add_library(pantheon-filestrash SHARED
     ${VALA_C})
 target_link_libraries(pantheon-filestrash ${DEPS_LIBRARIES} pantheon-files-core)
 add_dependencies(pantheon-filestrash pantheon-files-core)
-install(TARGETS pantheon-filestrash DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES pantheon-files-trash.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(TARGETS pantheon-filestrash DESTINATION ${PLUGIN_DIR}/core/)
+install(FILES pantheon-files-trash.plug DESTINATION ${PLUGIN_DIR}/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

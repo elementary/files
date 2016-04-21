@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-01 05:47-0500\n"
-"PO-Revision-Date: 2015-08-12 13:43+0000\n"
+"POT-Creation-Date: 2016-02-29 03:05-0600\n"
+"PO-Revision-Date: 2016-04-16 11:40+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-10-02 05:41+0000\n"
-"X-Generator: Launchpad (build 17783)\n"
+"X-Launchpad-Export-Date: 2016-04-17 05:53+0000\n"
+"X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -36,7 +36,7 @@ msgstr "FTP (로그인)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple 파일링 프로토콜)"
+msgstr "AFP (애플 파일링 프로토콜)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -141,356 +141,6 @@ msgstr "이 암호 기억(_R)"
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "자세히 표시(_D)"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "%d개의 복사된 항목들을 제거"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "'%s' 삭제"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "%d 개의 중복된 항목 지우기"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d 개 항목을 '%s'로 옮기기"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 다시 이동"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s'을(를) '%s'(으)로 이름 바꾸기"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d 개의 항목을 휴지통에서 복원하기"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 복원"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d 개의 항목을 휴지통으로 옮기기"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "'%s'을(를) 휴지통으로 다시 옮기기"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "%d 개 항목의 링크 삭제하기"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "'%s'의 링크 삭제"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s'에 포함된 파일의 권한을 복구"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "'%s'의 본래 권한 복구"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "'%s'의 그룹을 '%s'로 되돌려 놓기"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "'%s'의 소유자를 '%s'(으)로 복구"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d 항목을 '%s'로 복사하기"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "'%s'를 '%s'로 복사하기"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d개의 파일을 '%s'로 복사"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "'%s'을(를) '%s'에 복제"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d 항목을 '%s'로 보내기"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 이동"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "서식에서 새 파일 \"%s\" 만들기 "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "빈 파일 '%s' 만들기"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "새 폴더 '%s' 만들기"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d 항목을 휴지통에 버리기"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "'%s'을(를) 휴지통에 버리기"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "'%s'을(를) 휴지통에서 복원"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "%d 항목의 링크 만들기"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "'%s'의 링크 만들기"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s'에 포함된 파일의 권한을 설정"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "'%s'의 권한 설정"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "'%s'의 그룹을 '%s'로 설정"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "'%s'의 소유주를 '%s'(으)로 설정"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d 항목의 복사를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d 항목의 복제를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "%d 항목의 이동을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "빈 파일 작성을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "템플릿에서의 파일 작성을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d 폴더 생성을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d 항목 휴지통에  버리기를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "휴지통에 버린 %d 항목의 복구를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d 항목에 링크 만들기를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d 항목 지우기를 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d 항목의 권한 변경을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "%d 항목의 그룹 변경을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d 항목의 소유자 변경을 취소하기"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d 항목 복사 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d 항목 복제 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "%d 항목 이동 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d 항목 이름 바꾸기 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "빈 파일 작성 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "템플릿에서의 파일 작성 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d 폴더 생성 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d 항목 휴지통에 버리기 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d 항목 휴지통에서 복구 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d 항목에 링크 생성 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d  항목 지우기 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d 항목의 권한 변경을 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "%d 항목의 그룹 변경을 다시하기"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d 항목 소유자 변경 다시하기"
-
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
@@ -586,6 +236,7 @@ msgstr "원본 파일"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:755
 msgid "Size:"
 msgstr "크기:"
 
@@ -593,6 +244,7 @@ msgstr "크기:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:558
 msgid "Type:"
 msgstr "형식:"
 
@@ -642,13 +294,43 @@ msgstr "바꾸기"
 msgid "File conflict"
 msgstr "파일 충돌"
 
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr "%s(으)로의 링크"
+
+#: ../libcore/gof-file.c:1910
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다."
+
+#: ../libcore/gof-file.c:1948
+msgid "No Exec field specified"
+msgstr "Exec 항목이 정의되지 않았습니다."
+
+#: ../libcore/gof-file.c:1968
+msgid "No URL field specified"
+msgstr "URL 항목이 정의되지 않았습니다."
+
+#: ../libcore/gof-file.c:1974
+msgid "Invalid desktop file"
+msgstr "올바르지 않은 desktop 파일"
+
+#: ../libcore/gof-file.c:2269
+msgid "Slashes are not allowed in filenames"
+msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
+
+#: ../libcore/gof-file.c:2289
+msgid "Toplevel files cannot be renamed"
+msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "자세히 표시(_D)"
+
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (잘못된 유니코드)"
-
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
-msgid "Preparing"
-msgstr "준비하는 중"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -844,7 +526,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "이 장비와 휴지통에 연결된 모든 내용은 완전히 지워지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1337
+#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1365
 msgid "Empty _Trash"
 msgstr "휴지통 비우기(_T)"
 
@@ -870,6 +552,8 @@ msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "지울 파일 %'d 개 남음"
 
+#. /plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:1539
 msgid "%T left"
 msgid_plural "%T left"
@@ -1163,6 +847,10 @@ msgstr[0] "%'d 개의 파일을 복제하는 중"
 msgid "%S of %S"
 msgstr "%S / %S"
 
+#. /sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. 
 #: ../libcore/marlin-file-operations.c:3210
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1352,59 +1040,387 @@ msgstr "휴지통을 비우는 중"
 msgid "Emptying Trash"
 msgstr "휴지통을 비우는 중"
 
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "원래 위치를 확인할 수 없습니다."
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "휴지통을 열어 수동으로 복구하기"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "%d개의 복사된 항목들을 제거"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "'%s' 삭제"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "%d 개의 중복된 항목 지우기"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d 개 항목을 '%s'로 옮기기"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "'%s'을(를) '%s'(으)로 다시 이동"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "'%s'을(를) '%s'(으)로 이름 바꾸기"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d 개의 항목을 휴지통에서 복원하기"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "'%s'을(를) '%s'(으)로 복원"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "%d 개의 항목을 휴지통으로 옮기기"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "'%s'을(를) 휴지통으로 다시 옮기기"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "%d 개 항목의 링크 삭제하기"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "'%s'의 링크 삭제"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "'%s'에 포함된 파일의 권한을 복구"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "'%s'의 본래 권한 복구"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "'%s'의 그룹을 '%s'로 되돌려 놓기"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "'%s'의 소유자를 '%s'(으)로 복구"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "%d 항목을 '%s'로 복사하기"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "'%s'를 '%s'로 복사하기"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d개의 파일을 '%s'로 복사"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "'%s'을(를) '%s'에 복제"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "%d 항목을 '%s'로 보내기"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "'%s'을(를) '%s'(으)로 이동"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "서식에서 새 파일 \"%s\" 만들기 "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "파일 '%s' 만들기"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "새 폴더 '%s' 만들기"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "%d 항목을 휴지통에 버리기"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "'%s'을(를) 휴지통에 버리기"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "'%s'을(를) 휴지통에서 복원"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "%d 항목의 링크 만들기"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "'%s'의 링크 만들기"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "'%s'에 포함된 파일의 권한을 설정"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "'%s'의 권한 설정"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "'%s'의 그룹을 '%s'로 설정"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "'%s'의 소유주를 '%s'(으)로 설정"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "%d 항목의 복사를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "%d 항목의 복제를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "%d 항목의 이동을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "파일 만들기 취소"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "템플릿에서의 파일 작성을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "%d 폴더 생성을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "%d 항목 휴지통에  버리기를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "휴지통에 버린 %d 항목의 복구를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "%d 항목에 링크 만들기를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "%d 항목 지우기를 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "%d 항목의 권한 변경을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "%d 항목의 그룹 변경을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "%d 항목의 소유자 변경을 취소하기"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "%d 항목 복사 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "%d 항목 복제 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "%d 항목 이동 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "%d 항목 이름 바꾸기 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "파일 다시 만들기"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "템플릿에서의 파일 작성 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "%d 폴더 생성 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "%d 항목 휴지통에 버리기 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "%d 항목 휴지통에서 복구 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "%d 항목에 링크 생성 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "%d  항목 지우기 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "%d 항목의 권한 변경을 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "%d 항목의 그룹 변경을 다시하기"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "%d 항목 소유자 변경 다시하기"
+
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "오늘 %-l:%M %p"
+msgstr "오늘 %p %-l:%M"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "어제 %-l:%M %p"
+msgstr "어제 %p %-l:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b at %-I:%M %p"
+msgstr "%b %-d일 %a요일 %p %-I:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%-I:%M %p 의 %a %-d %b %Y"
+msgstr "%Y년 %b -d%일 %a요일 %p %-l:%M"
 
-#: ../libcore/gof-file.c:364
-#, c-format
-msgid "link to %s"
-msgstr "%s(으)로의 링크"
-
-#: ../libcore/gof-file.c:1886
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다."
-
-#: ../libcore/gof-file.c:1924
-msgid "No Exec field specified"
-msgstr "Exec 항목이 정의되지 않았습니다."
-
-#: ../libcore/gof-file.c:1944
-msgid "No URL field specified"
-msgstr "URL 항목이 정의되지 않았습니다."
-
-#: ../libcore/gof-file.c:1950
-msgid "Invalid desktop file"
-msgstr "올바르지 않은 desktop 파일"
-
-#: ../libcore/gof-file.c:2242
-msgid "Slashes are not allowed in filenames"
-msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
-
-#: ../libcore/gof-file.c:2262
-msgid "Toplevel files cannot be renamed"
-msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
+#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+msgid "Preparing"
+msgstr "준비하는 중"
 
 #: ../filechooser-module/FileChooserDialog.vala:66
-#: ../src/View/Chrome/TopMenu.vala:48
+#: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "이전"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../src/View/Chrome/TopMenu.vala:52
+#: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "다음"
 
@@ -1412,108 +1428,157 @@ msgstr "다음"
 msgid "Create folder"
 msgstr "폴더 만들기"
 
-#: ../src/View/Window.vala:178
+#: ../src/View/Window.vala:182
 msgid "Files isn't your default file manager."
 msgstr "Files가 기본 파일 관리자가 아닙니다."
 
-#: ../src/View/Window.vala:184
+#: ../src/View/Window.vala:188
 msgid "Set as Default"
 msgstr "기본값으로 설정"
 
-#: ../src/View/Window.vala:190
+#: ../src/View/Window.vala:194
 msgid "Ignore"
 msgstr "무시"
 
-#: ../src/View/ViewContainer.vala:313 ../src/View/Sidebar.vala:447
+#: ../src/View/Sidebar.vala:446
+msgid "Personal"
+msgstr "개인"
+
+#: ../src/View/Sidebar.vala:447
+msgid "Your common places and bookmarks"
+msgstr "사용자의 개인 폴더 및 즐겨찾기"
+
+#: ../src/View/Sidebar.vala:459 ../src/View/ViewContainer.vala:314
 msgid "Home"
 msgstr "홈"
 
-#: ../src/View/ViewContainer.vala:315 ../src/View/Sidebar.vala:513
-#: ../libwidgets/Resources.vala:94
+#: ../src/View/Sidebar.vala:466
+msgid "Open your personal folder"
+msgstr "개인 폴더를 엽니다"
+
+#: ../src/View/Sidebar.vala:481
+msgid "View the list of recently used files"
+msgstr "최근 사용 기록 보기"
+
+#: ../src/View/Sidebar.vala:502 ../libwidgets/Resources.vala:87
+msgid "Trash"
+msgstr "휴지통"
+
+#: ../src/View/Sidebar.vala:509
+msgid "Open the Trash"
+msgstr "휴지통 열기"
+
+#: ../src/View/Sidebar.vala:513
+msgid "Devices"
+msgstr "장치"
+
+#: ../src/View/Sidebar.vala:514
+msgid "Your local partitions and devices"
+msgstr "로컬 파티션과 장치"
+
+#: ../src/View/Sidebar.vala:520 ../src/View/PropertiesWindow.vala:1493
+#: ../src/View/ViewContainer.vala:316 ../libwidgets/Resources.vala:90
 msgid "File System"
 msgstr "파일 시스템"
 
-#: ../src/View/ViewContainer.vala:332
-msgid "(as Administrator)"
-msgstr "(관리자 권한으로)"
+#: ../src/View/Sidebar.vala:527
+msgid "Open the contents of the FileSystem"
+msgstr "파일 시스템의 항목을 열기"
 
-#: ../src/View/ViewContainer.vala:341
-msgid "This Folder Does Not Belong to You"
-msgstr "이 폴더의 소유자가 아니시네요"
+#: ../src/View/Sidebar.vala:557 ../src/View/Sidebar.vala:751
+msgid "Mount and open %s"
+msgstr "%s을(를) 마운트하고 엽니다"
 
-#: ../src/View/ViewContainer.vala:342
-msgid "You don't have permission to view this folder."
-msgstr "이 폴더를 볼 권한이 없습니다."
+#: ../src/View/Sidebar.vala:638 ../libwidgets/Resources.vala:84
+msgid "Network"
+msgstr "네트워크"
 
-#: ../src/View/ViewContainer.vala:345
-msgid "Unable to Mount Folder"
-msgstr "폴더에 접근할 수 없습니다"
+#: ../src/View/Sidebar.vala:639
+msgid "Your network places"
+msgstr "네트워크 위치"
 
-#: ../src/View/ViewContainer.vala:346
-msgid "The server for this folder could not be located."
-msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
+#: ../src/View/Sidebar.vala:669
+msgid "Entire Network"
+msgstr "전체 네트워크"
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/DirectoryNotFound.vala:39
-msgid "This Folder Does Not Exist"
-msgstr "이 폴더는 없는 폴더입니다"
+#: ../src/View/Sidebar.vala:676
+msgid "Browse the contents of the network"
+msgstr "네트워크를 탐색합니다"
 
-#: ../src/View/ViewContainer.vala:353
-msgid "You cannot create a folder here."
-msgstr "이곳엔 폴더를 만들 수 없습니다."
+#: ../src/View/Sidebar.vala:1226
+msgid "Unable to start %s"
+msgstr "'%s'을(를) 시작할 수 없습니다"
 
-#: ../src/View/ViewContainer.vala:362
-msgid "File not Found"
-msgstr "파일이 없습니다"
+#: ../src/View/Sidebar.vala:1307
+msgid "Open"
+msgstr "열기"
 
-#: ../src/View/ViewContainer.vala:363
-msgid "The file selected no longer exists."
-msgstr "선택하신 파일이 더이상 존재하지 않습니다."
+#: ../src/View/Sidebar.vala:1315
+msgid "Open in New _Tab"
+msgstr "새 탭에서 열기(_T)"
 
-#: ../src/View/LocationBar.vala:351
-msgid "Open in New Tab"
-msgstr "새 탭에서 열기"
+#: ../src/View/Sidebar.vala:1321
+msgid "Open in New _Window"
+msgstr "새 창에서 열기(_W)"
 
-#: ../src/View/LocationBar.vala:358
-#: ../src/View/AbstractDirectoryView.vala:1956
-msgid "Open with"
-msgstr "다음으로 열기"
+#: ../src/View/Sidebar.vala:1329
+msgid "Remove"
+msgstr "제거"
 
-#: ../src/View/LocationBar.vala:389
-msgid "Other Application .."
-msgstr "다른 프로그램 .."
+#: ../src/View/Sidebar.vala:1337 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "이름 바꾸기"
+
+#: ../src/View/Sidebar.vala:1346
+msgid "_Mount"
+msgstr "마운트(_M)"
+
+#: ../src/View/Sidebar.vala:1352
+msgid "_Unmount"
+msgstr "마운트 해제(_U)"
+
+#: ../src/View/Sidebar.vala:1358
+msgid "_Eject"
+msgstr "꺼내기(_E)"
+
+#: ../src/View/Sidebar.vala:1372 ../src/View/PropertiesWindow.vala:285
+#: ../src/View/directory_view_popup.ui:95
+msgid "Properties"
+msgstr "속성"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "파일 이름"
 
-#: ../src/View/ListView.vala:27 ../src/View/PropertiesWindow.vala:608
-#: ../src/View/PropertiesWindow.vala:667
-#: ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
 msgid "Size"
 msgstr "크기"
 
-#: ../src/View/ListView.vala:28 ../src/View/PropertiesWindow.vala:394
-#: ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
 msgid "Type"
 msgstr "종류"
 
-#: ../src/View/ListView.vala:29 ../src/View/PropertiesWindow.vala:566
+#: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "수정"
 
-#: ../src/View/DirectoryNotFound.vala:39
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:340
+msgid "This Folder Does Not Exist"
+msgstr "이 폴더는 없는 폴더입니다"
+
+#: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
 msgstr "\"%s\" 폴더를 찾지 못하였습니다."
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
 msgstr "만들기"
 
-#: ../src/View/DirectoryNotFound.vala:41
+#: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
 msgstr "\"%s\" 폴더를 생성합니다."
 
-#: ../src/View/DirectoryNotFound.vala:55
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1523,360 +1588,335 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:36
-msgid "This Folder Is Empty"
-msgstr "이 폴더는 비어 있습니다"
-
-#: ../src/View/Slot.vala:37
-msgid "Trash Is Empty"
-msgstr "휴지통이 비어있습니다"
-
-#: ../src/View/Slot.vala:38
-msgid "There Are No Recent Files"
-msgstr "최근 사용 기록이 없습니다"
-
-#: ../src/View/Slot.vala:39
-msgid "Access Denied"
-msgstr "접근이 거부되었습니다"
-
-#: ../src/View/OverlayBar.vala:170
-msgid "%u folders"
-msgstr "%u 폴더들"
-
-#: ../src/View/OverlayBar.vala:172 ../src/View/OverlayBar.vala:180
-msgid " and %u other item (%s) selected"
-msgstr " 와 %u 다른 개체 (%s)가 선택됨"
-
-#: ../src/View/OverlayBar.vala:173 ../src/View/OverlayBar.vala:181
-msgid " and %u other items (%s) selected"
-msgstr " 그리고 %u개의 다른 항목들 (%s) 선택됨"
-
-#: ../src/View/OverlayBar.vala:176 ../src/View/OverlayBar.vala:184
-msgid " selected"
-msgstr " 선택됨"
-
-#: ../src/View/OverlayBar.vala:178
-msgid "%u folder"
-msgstr "폴더 %u개"
-
-#: ../src/View/OverlayBar.vala:186
-msgid "%u items selected (%s)"
-msgstr "%u개 항목이 선택되었습니다. (%s)"
-
-#: ../src/View/OverlayBar.vala:219
-msgid "%u sub-folder, "
-msgstr "%u 보조-폴더, "
-
-#: ../src/View/OverlayBar.vala:219
-msgid "%u sub-folders, "
-msgstr "%u 보조-폴더들, "
-
-#: ../src/View/OverlayBar.vala:224
-msgid "%u file, "
-msgstr "%u 파일, "
-
-#: ../src/View/OverlayBar.vala:224
-msgid "%u files, "
-msgstr "%u 파일들, "
-
-#: ../src/View/PropertiesWindow.vala:108
-#: ../src/View/directory_view_popup.ui:95
-msgid "Properties"
-msgstr "속성"
-
-#: ../src/View/PropertiesWindow.vala:202
-msgid "General"
-msgstr "일반"
-
-#: ../src/View/PropertiesWindow.vala:210
-msgid "More"
-msgstr "더 보기"
-
-#: ../src/View/PropertiesWindow.vala:235
-msgid "Preview"
-msgstr "미리 보기"
-
-#: ../src/View/PropertiesWindow.vala:251
-msgid "Close"
-msgstr "닫기"
-
-#: ../src/View/PropertiesWindow.vala:288
-msgid "file"
-msgstr "파일"
-
-#: ../src/View/PropertiesWindow.vala:290
-msgid "files"
-msgstr "파일"
-
-#: ../src/View/PropertiesWindow.vala:292
-msgid "Actual size could be larger, "
-msgstr "실제 크기는 좀 더 클 수 있습니다, "
-
-#: ../src/View/PropertiesWindow.vala:292
-msgid "could not be read due to permissions or other errors."
-msgstr "권한 문제나 다른 이유로 읽지 못할 수 있습니다."
-
-#: ../src/View/PropertiesWindow.vala:321
-msgid "unknown"
-msgstr "알 수 없음"
-
-#: ../src/View/PropertiesWindow.vala:451
-msgid "%u selected items"
-msgstr "%u 선택된 항목들"
-
-#: ../src/View/PropertiesWindow.vala:564
-msgid "Created"
-msgstr "생성"
-
-#: ../src/View/PropertiesWindow.vala:569
-msgid "Last Access"
-msgstr "마지막 엑세스"
-
-#: ../src/View/PropertiesWindow.vala:577
-msgid "Deleted"
-msgstr "삭제함"
-
-#: ../src/View/PropertiesWindow.vala:582
-msgid "MimeType"
-msgstr "MIME 형식"
-
-#: ../src/View/PropertiesWindow.vala:590
-msgid "MimeTypes"
-msgstr "MIME 형식"
-
-#: ../src/View/PropertiesWindow.vala:621 ../src/View/PropertiesWindow.vala:623
-msgid "Location"
-msgstr "위치"
-
-#: ../src/View/PropertiesWindow.vala:627
-msgid "Target"
-msgstr "대상"
-
-#: ../src/View/PropertiesWindow.vala:633
-msgid "Origin Location"
-msgstr "원본 위치"
-
-#: ../src/View/PropertiesWindow.vala:660
-msgid "Info"
-msgstr "정보"
-
-#: ../src/View/PropertiesWindow.vala:702
-msgid "Other application..."
-msgstr "다른 프로그램..."
-
-#: ../src/View/PropertiesWindow.vala:726
-msgid "Open with:"
-msgstr "다음으로 열기:"
-
-#: ../src/View/PropertiesWindow.vala:744
-msgid "Usage"
-msgstr "사용"
-
-#: ../src/View/PropertiesWindow.vala:751
-msgid "Device usage:"
-msgstr "장치 사용량:"
-
-#: ../src/View/PropertiesWindow.vala:758
-msgid "%s free of %s (%d%% used)"
-msgstr "%s가 %s중에서 사용가능함 (%d%%사용됨)"
-
-#: ../src/View/PropertiesWindow.vala:894
-msgid "Read"
-msgstr "읽기"
-
-#: ../src/View/PropertiesWindow.vala:898
-msgid "Write"
-msgstr "쓰기"
-
-#: ../src/View/PropertiesWindow.vala:902
-msgid "Execute"
-msgstr "실행"
-
-#: ../src/View/PropertiesWindow.vala:1106
-#: ../src/View/PropertiesWindow.vala:1119
-msgid "Owner"
-msgstr "소유자"
-
-#: ../src/View/PropertiesWindow.vala:1111
-#: ../src/View/PropertiesWindow.vala:1123
-msgid "Group"
-msgstr "그룹"
-
-#: ../src/View/PropertiesWindow.vala:1127
-msgid "Everyone"
-msgstr "모든 사람"
-
-#: ../src/View/PropertiesWindow.vala:1359
-msgid "Select an application to open "
-msgstr "여는 데 사용할 애플리케이션 선택하기 "
-
-#: ../src/View/Sidebar.vala:430
-msgid "Personal"
-msgstr "개인"
-
-#: ../src/View/Sidebar.vala:435
-msgid "Your common places and bookmarks"
-msgstr "사용자의 개인 폴더 및 즐겨찾기"
-
-#: ../src/View/Sidebar.vala:454
-msgid "Open your personal folder"
-msgstr "개인 폴더를 엽니다"
-
-#: ../src/View/Sidebar.vala:469
-msgid "View the list of recently used files"
-msgstr "최근 사용 기록 보기"
-
-#: ../src/View/Sidebar.vala:490 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "휴지통"
-
-#: ../src/View/Sidebar.vala:497
-msgid "Open the Trash"
-msgstr "휴지통 열기"
-
-#: ../src/View/Sidebar.vala:503
-msgid "Devices"
-msgstr "장치"
-
-#: ../src/View/Sidebar.vala:508
-msgid "Your local partitions and devices"
-msgstr "로컬 파티션과 장치"
-
-#: ../src/View/Sidebar.vala:520
-msgid "Open the contents of the FileSystem"
-msgstr "파일 시스템의 항목을 열기"
-
-#: ../src/View/Sidebar.vala:550 ../src/View/Sidebar.vala:739
-msgid "Mount and open %s"
-msgstr "%s을(를) 마운트하고 엽니다"
-
-#: ../src/View/Sidebar.vala:627 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "네트워크"
-
-#: ../src/View/Sidebar.vala:632
-msgid "Your network places"
-msgstr "네트워크 위치"
-
-#: ../src/View/Sidebar.vala:662
-msgid "Entire Network"
-msgstr "전체 네트워크"
-
-#: ../src/View/Sidebar.vala:669
-msgid "Browse the contents of the network"
-msgstr "네트워크를 탐색합니다"
-
-#: ../src/View/Sidebar.vala:1198
-msgid "Unable to start %s"
-msgstr "'%s'을(를) 시작할 수 없습니다"
-
-#: ../src/View/Sidebar.vala:1279
-msgid "Open"
-msgstr "열기"
-
-#: ../src/View/Sidebar.vala:1287
-msgid "Open in New _Tab"
-msgstr "새 탭에서 열기(_T)"
-
-#: ../src/View/Sidebar.vala:1293
-msgid "Open in New _Window"
-msgstr "새 창에서 열기(_W)"
-
-#: ../src/View/Sidebar.vala:1301
-msgid "Remove"
-msgstr "제거"
-
-#: ../src/View/Sidebar.vala:1309 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "이름 바꾸기"
-
-#: ../src/View/Sidebar.vala:1318
-msgid "_Mount"
-msgstr "마운트(_M)"
-
-#: ../src/View/Sidebar.vala:1324
-msgid "_Unmount"
-msgstr "마운트 해제(_U)"
-
-#: ../src/View/Sidebar.vala:1330
-msgid "_Eject"
-msgstr "꺼내기(_E)"
-
-#: ../src/View/Chrome/ViewSwicher.vala:81
-msgid "View as Grid"
-msgstr "그리드로 보기"
-
-#: ../src/View/Chrome/ViewSwicher.vala:86
-msgid "View as List"
-msgstr "목록으로 보기"
-
-#: ../src/View/Chrome/ViewSwicher.vala:91
-msgid "View in Columns"
-msgstr "나란히 보기"
-
-#: ../src/View/SearchResults.vala:183
-msgid "In This Folder"
-msgstr "이 폴더에 있음"
-
-#: ../src/View/SearchResults.vala:185
-msgid "Bookmarks"
-msgstr "책갈피"
-
-#: ../src/View/SearchResults.vala:187
-msgid "Everywhere Else"
-msgstr "이 폴더 외 전체 위치"
-
 #: ../src/View/AbstractDirectoryView.vala:555
 msgid "Failed to preview"
 msgstr "미리 보기 실패"
 
-#: ../src/View/AbstractDirectoryView.vala:1030
+#: ../src/View/AbstractDirectoryView.vala:1065
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "기본값으로 설정"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1538
 msgid "Cannot drop this file"
 msgstr "이 파일을 놓을 수 없음"
 
-#: ../src/View/AbstractDirectoryView.vala:1499
+#: ../src/View/AbstractDirectoryView.vala:1538
 msgid "Invalid file name provided"
 msgstr "잘못된 파일 이름이 사용됨"
 
-#: ../src/View/AbstractDirectoryView.vala:1925
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Invalid"
 msgstr "잘못됨"
 
-#: ../src/View/AbstractDirectoryView.vala:1939
+#: ../src/View/AbstractDirectoryView.vala:1976
 msgid "Run"
 msgstr "실행"
 
-#: ../src/View/AbstractDirectoryView.vala:1944
+#: ../src/View/AbstractDirectoryView.vala:1981
 msgid "Open in %s"
-msgstr "다음으로 열기 %s"
+msgstr "%s에서 열기"
 
-#: ../src/View/AbstractDirectoryView.vala:1954
+#: ../src/View/AbstractDirectoryView.vala:1991
 msgid "Open in"
 msgstr "열기"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "다른 프로그램으로 열기"
+
+#: ../src/View/AbstractDirectoryView.vala:2053
 msgid "Other Application"
 msgstr "다른 프로그램"
 
-#: ../src/View/AbstractDirectoryView.vala:2285
+#: ../src/View/AbstractDirectoryView.vala:2322
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2616
+#: ../src/View/AbstractDirectoryView.vala:2690
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없음"
 
-#: ../src/View/AbstractDirectoryView.vala:2617
+#: ../src/View/AbstractDirectoryView.vala:2691
 msgid "Cutting the selection instead"
 msgstr "선택한 것을 대신 잘라냄"
 
-#: ../src/View/AbstractDirectoryView.vala:2812
-msgid "Could not rename to '%s'"
-msgstr "'%s'로 이름을 바꿀 수 없습니다"
+#: ../src/View/OverlayBar.vala:187
+msgid "%u folders"
+msgstr "%u 폴더들"
+
+#: ../src/View/OverlayBar.vala:189 ../src/View/OverlayBar.vala:197
+msgid " and %u other item (%s) selected"
+msgstr " 와 %u 다른 개체 (%s)가 선택됨"
+
+#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+msgid " and %u other items (%s) selected"
+msgstr " 그리고 %u개의 다른 항목들 (%s) 선택됨"
+
+#: ../src/View/OverlayBar.vala:193 ../src/View/OverlayBar.vala:201
+msgid " selected"
+msgstr " 선택됨"
+
+#: ../src/View/OverlayBar.vala:195
+msgid "%u folder"
+msgstr "폴더 %u개"
+
+#: ../src/View/OverlayBar.vala:203
+msgid "%u items selected (%s)"
+msgstr "%u개 항목이 선택되었습니다. (%s)"
+
+#: ../src/View/OverlayBar.vala:239
+msgid "%u sub-folder, "
+msgstr "%u 보조-폴더, "
+
+#: ../src/View/OverlayBar.vala:239
+msgid "%u sub-folders, "
+msgstr "%u 보조-폴더들, "
+
+#: ../src/View/OverlayBar.vala:244
+msgid "%u file, "
+msgstr "%u 파일, "
+
+#: ../src/View/OverlayBar.vala:244
+msgid "%u files, "
+msgstr "%u 파일들, "
+
+#: ../src/View/OverlayBar.vala:249
+msgid "unknown size"
+msgstr "크기 모름"
+
+#: ../src/View/PropertiesWindow.vala:185
+msgid "Close"
+msgstr "닫기"
+
+#: ../src/View/PropertiesWindow.vala:197
+msgid "Resolution:"
+msgstr "해상도:"
+
+#: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
+msgid "General"
+msgstr "일반"
+
+#: ../src/View/PropertiesWindow.vala:355
+msgid "More"
+msgstr "더 보기"
+
+#: ../src/View/PropertiesWindow.vala:380
+msgid "Preview"
+msgstr "미리 보기"
+
+#: ../src/View/PropertiesWindow.vala:419
+msgid "file"
+msgstr "파일"
+
+#: ../src/View/PropertiesWindow.vala:421
+msgid "files"
+msgstr "파일"
+
+#: ../src/View/PropertiesWindow.vala:423
+msgid "Actual size could be larger, "
+msgstr "실제 크기는 좀 더 클 수 있습니다, "
+
+#: ../src/View/PropertiesWindow.vala:423
+msgid "could not be read due to permissions or other errors."
+msgstr "권한 문제나 다른 이유로 읽지 못할 수 있습니다."
+
+#: ../src/View/PropertiesWindow.vala:442 ../src/View/PropertiesWindow.vala:456
+msgid "unknown"
+msgstr "알 수 없음"
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "%u selected items"
+msgstr "%u 선택된 항목들"
+
+#: ../src/View/PropertiesWindow.vala:639
+msgid "Created:"
+msgstr "생성:"
+
+#: ../src/View/PropertiesWindow.vala:641
+msgid "Modified:"
+msgstr "수정:"
+
+#: ../src/View/PropertiesWindow.vala:644
+msgid "Last Access:"
+msgstr "마지막 접근:"
+
+#: ../src/View/PropertiesWindow.vala:652
+msgid "Deleted:"
+msgstr "제거:"
+
+#: ../src/View/PropertiesWindow.vala:657
+msgid "MimeType:"
+msgstr "마임 형식:"
+
+#: ../src/View/PropertiesWindow.vala:665
+msgid "MimeTypes:"
+msgstr "마임 형식:"
+
+#: ../src/View/PropertiesWindow.vala:676
+msgid "loading ..."
+msgstr "불러오는 중 ..."
+
+#: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
+#: ../src/View/PropertiesWindow.vala:1545
+msgid "Location:"
+msgstr "위치:"
+
+#: ../src/View/PropertiesWindow.vala:696
+msgid "Target:"
+msgstr "대상:"
+
+#: ../src/View/PropertiesWindow.vala:702
+msgid "Origin Location:"
+msgstr "원본 위치:"
+
+#: ../src/View/PropertiesWindow.vala:709
+msgid "Could not be determined"
+msgstr "판별할 수 없음"
+
+#: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
+msgid "Info"
+msgstr "정보"
+
+#: ../src/View/PropertiesWindow.vala:789
+msgid "Other application..."
+msgstr "다른 프로그램..."
+
+#: ../src/View/PropertiesWindow.vala:813
+msgid "Open with:"
+msgstr "다른 프로그램으로 열기:"
+
+#: ../src/View/PropertiesWindow.vala:829 ../src/View/PropertiesWindow.vala:1559
+msgid "Usage"
+msgstr "사용"
+
+#: ../src/View/PropertiesWindow.vala:831
+msgid "Device usage:"
+msgstr "장치 사용량:"
+
+#: ../src/View/PropertiesWindow.vala:839
+msgid "%s free of %s (%d%% used)"
+msgstr "%s 사용 가능, 전체 크기 %s (%d%% 사용됨)"
+
+#: ../src/View/PropertiesWindow.vala:950
+msgid "Read"
+msgstr "읽기"
+
+#: ../src/View/PropertiesWindow.vala:954
+msgid "Write"
+msgstr "쓰기"
+
+#: ../src/View/PropertiesWindow.vala:958
+msgid "Execute"
+msgstr "실행"
+
+#: ../src/View/PropertiesWindow.vala:1164
+#: ../src/View/PropertiesWindow.vala:1179
+msgid "Owner:"
+msgstr "소유자"
+
+#: ../src/View/PropertiesWindow.vala:1170
+#: ../src/View/PropertiesWindow.vala:1184
+msgid "Group:"
+msgstr "그룹:"
+
+#: ../src/View/PropertiesWindow.vala:1189
+msgid "Everyone:"
+msgstr "모두:"
+
+#: ../src/View/PropertiesWindow.vala:1422
+msgid "Select an application to open "
+msgstr "여는 데 사용할 애플리케이션 선택하기 "
+
+#: ../src/View/PropertiesWindow.vala:1477
+msgid "Disk Properties"
+msgstr "디스크 정보"
+
+#: ../src/View/PropertiesWindow.vala:1552
+msgid "Format:"
+msgstr "형식:"
+
+#: ../src/View/PropertiesWindow.vala:1570
+#: ../src/View/PropertiesWindow.vala:1595
+msgid "Capacity:"
+msgstr "용량:"
+
+#: ../src/View/PropertiesWindow.vala:1576
+#: ../src/View/PropertiesWindow.vala:1601
+msgid "Available:"
+msgstr "유효:"
+
+#: ../src/View/PropertiesWindow.vala:1582
+#: ../src/View/PropertiesWindow.vala:1607
+msgid "Used:"
+msgstr "사용:"
+
+#: ../src/View/PropertiesWindow.vala:1585
+msgid "%s (%d%% used)"
+msgstr "%s (%d%%개 사용)"
+
+#: ../src/View/PropertiesWindow.vala:1598
+#: ../src/View/PropertiesWindow.vala:1604
+#: ../src/View/PropertiesWindow.vala:1610
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: ../src/View/ViewContainer.vala:325
+msgid "(as Administrator)"
+msgstr "(관리자 권한으로)"
+
+#: ../src/View/ViewContainer.vala:341
+msgid "You cannot create a folder here."
+msgstr "이곳엔 폴더를 만들 수 없습니다."
+
+#: ../src/View/ViewContainer.vala:343
+msgid "This Folder Does Not Belong to You"
+msgstr "이 폴더의 소유자가 아니시네요"
+
+#: ../src/View/ViewContainer.vala:344
+msgid "You don't have permission to view this folder."
+msgstr "이 폴더를 볼 권한이 없습니다."
+
+#: ../src/View/ViewContainer.vala:346
+msgid "Unable to Mount Folder"
+msgstr "폴더에 접근할 수 없습니다"
+
+#: ../src/View/ViewContainer.vala:347
+msgid "Could not connect to the server for this folder."
+msgstr "이 폴더와 서버를 연결할 수 없음."
+
+#: ../src/View/ViewContainer.vala:349
+msgid "Unable show Folder"
+msgstr "폴더를 표시할 수 없음"
+
+#: ../src/View/ViewContainer.vala:350
+msgid "The server for this folder could not be located."
+msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
+
+#: ../src/View/ViewContainer.vala:360
+msgid "File not Found"
+msgstr "파일이 없습니다"
+
+#: ../src/View/ViewContainer.vala:361
+msgid "The file selected no longer exists."
+msgstr "선택하신 파일이 더이상 존재하지 않습니다."
+
+#: ../src/View/Slot.vala:39
+msgid "This Folder Is Empty"
+msgstr "이 폴더는 비어 있습니다"
+
+#: ../src/View/Slot.vala:40
+msgid "Trash Is Empty"
+msgstr "휴지통이 비어있습니다"
+
+#: ../src/View/Slot.vala:41
+msgid "There Are No Recent Files"
+msgstr "최근 사용 기록이 없습니다"
+
+#: ../src/View/Slot.vala:42
+msgid "Access Denied"
+msgstr "접근이 거부되었습니다"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -1916,26 +1956,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 옵션은 URI와 같이 사용할 수 없습니다."
 
-#: ../src/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr "다음을 실행하는데 실패함 \"%s\""
-
-#: ../src/DndHandler.vala:93
-msgid "Move Here"
-msgstr "여기로 이동"
-
-#: ../src/DndHandler.vala:94
-msgid "Copy Here"
-msgstr "여기로 복사"
-
-#: ../src/DndHandler.vala:95
-msgid "Link Here"
-msgstr "여기로 연결"
-
-#: ../src/DndHandler.vala:98
-msgid "Cancel"
-msgstr "취소"
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "파일 찾아보기"
@@ -1954,11 +1974,11 @@ msgstr "관리자 권한으로 새 창 열기"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
-msgstr "파일에 대하여 (_F)"
+msgstr "파일스 소개 (_F)"
 
 #: ../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr "파일"
+msgstr "파일스"
 
 #: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
 #: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
@@ -1986,61 +2006,138 @@ msgstr "복사 대화 상자 보이기"
 msgid "Cancel All In-progress Actions"
 msgstr "진행 중인 모든 작업 취소"
 
-#: ../libwidgets/LocationBar.vala:102
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr "다음을 실행하는데 실패함 \"%s\""
+
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr "여기로 이동"
+
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr "여기로 복사"
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr "여기로 연결"
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
+msgstr "취소"
+
+#: ../libcore/FileUtils.vala:249
+msgid "Could not rename to '%s'"
+msgstr "'%s'로 이름을 바꿀 수 없습니다"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "새 탭에서 열기"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr "새 창에서 열기"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr "다른 프로그램으로 열기..."
+
+#: ../libwidgets/View/LocationBar.vala:159
 msgid "Reload this folder"
 msgstr "이 폴더를 다시 볼러 옴"
 
-#: ../libwidgets/LocationBar.vala:317
-msgid "Go to %s"
-msgstr "%s 로 가기"
+#: ../libwidgets/View/LocationBar.vala:162
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
+msgid "Enter search term or path"
+msgstr "검색어 또는 경로를 입력하세요"
 
-#: ../libwidgets/LocationBar.vala:454
-msgid "Navigate to %s"
-msgstr "다음으로 찾아감 %s"
+#: ../libwidgets/View/SearchResults.vala:179
+msgid "In This Folder"
+msgstr "이 폴더에 있음"
+
+#: ../libwidgets/View/SearchResults.vala:181
+msgid "Bookmarks"
+msgstr "책갈피"
+
+#: ../libwidgets/View/SearchResults.vala:183
+msgid "Everywhere Else"
+msgstr "이 폴더 외 전체 위치"
 
 #: ../libwidgets/Resources.vala:28
 msgid "A simple and powerful file manager"
 msgstr "간결하고 성능 좋은 파일 관리자"
 
 #: ../libwidgets/Resources.vala:47
-msgid "Launchpad Translators"
-msgstr "런치패드 번역팀"
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"
+"  Kenny Kim https://launchpad.net/~kennykim12\n"
+"  Kyu-Seok Yang https://launchpad.net/~lklk9110-3\n"
+"  LeeHoseok https://launchpad.net/~neochain\n"
+"  MinSik CHO https://launchpad.net/~mscho527\n"
+"  park jong heum https://launchpad.net/~whdgmawkd"
 
-#: ../libwidgets/Resources.vala:84
+#: ../libwidgets/Resources.vala:80
 msgid "AFP"
 msgstr "AFP"
 
-#: ../libwidgets/Resources.vala:85
+#: ../libwidgets/Resources.vala:81
 msgid "DAV"
 msgstr "DAV"
 
-#: ../libwidgets/Resources.vala:86
+#: ../libwidgets/Resources.vala:82
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../libwidgets/Resources.vala:87
+#: ../libwidgets/Resources.vala:83
 msgid "FTP"
 msgstr "FTP"
 
-#: ../libwidgets/Resources.vala:89
+#: ../libwidgets/Resources.vala:85
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../libwidgets/Resources.vala:90
+#: ../libwidgets/Resources.vala:86
 msgid "SMB"
 msgstr "SMB"
 
-#: ../libwidgets/Resources.vala:92
+#: ../libwidgets/Resources.vala:88
 msgid "Recent"
 msgstr "최근 사용 기록"
 
-#: ../libwidgets/Resources.vala:93
+#: ../libwidgets/Resources.vala:89
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "경로를 입력하세요"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "그리드로 보기"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "목록으로 보기"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "나란히 보기"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+msgid "Navigate to %s"
+msgstr "다음으로 찾아감 %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+msgid "Go to %s"
+msgstr "%s 로 가기"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "서버에 연결 중…"
+msgstr "서버에 연결하기…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2056,7 +2153,7 @@ msgstr "휴지통 비우기"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "아래 항목들이 휴지통에서 복구되었거나 지워졌을 수 있습니다."
+msgstr "아래 항목들이 휴지통에서 복구되거나 지워지게 됩니다."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2066,8 +2163,7 @@ msgstr "root 폴더에 있어야만 복원하거나 지울 수 있습니다"
 msgid "Restore from Trash"
 msgstr "휴지통에서 복구 시키기"
 
-#: ../src/View/directory_view_popup.ui:9
-#: ../src/View/directory_view_popup.ui:44
+#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
 msgstr "완전히 삭제"
 
@@ -2081,7 +2177,7 @@ msgstr "기록에서 지우기"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr "휴지통에 버리기"
+msgstr "휴지통으로"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
@@ -2093,11 +2189,11 @@ msgstr "폴더"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "빈 파일"
+msgstr "파일"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr "숨김 파일 표시"
+msgstr "숨긴 파일 표시"
 
 #: ../src/View/directory_view_popup.ui:74
 msgid "New Tab"
@@ -2117,11 +2213,11 @@ msgstr "붙여 넣기"
 
 #: ../src/View/directory_view_popup.ui:116
 msgid "Cut"
-msgstr "자르기"
+msgstr "잘라내기"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Copy"
-msgstr "복사하기"
+msgstr "복사"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Paste into Folder"

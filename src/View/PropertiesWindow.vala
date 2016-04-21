@@ -17,407 +17,51 @@
     Author: ammonkey <am.monkeyd@gmail.com>
 ***/
 
-public class Marlin.View.PropertiesWindow : Gtk.Dialog {
-    private class Pair<F, G> {
-        public F key;
-        public G value;
+protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
-        public Pair (F key, G value) {
-            this.key = key;
-            this.value = value;
-        }
+    protected Gtk.SizeGroup sg;
+    protected Gtk.Stack stack;
+    protected Gtk.Box content_vbox;
+    protected Gtk.Box header_box;
+    protected Gtk.StackSwitcher stack_switcher;
+
+    protected void pack_header_box (Gtk.Image image, Gtk.Widget title) {
+        image.set_valign (Gtk.Align.CENTER);
+
+        header_box.pack_start (image, false, false);
+
+        title.get_style_context ().add_class ("h2");
+        title.margin_top = 5;
+        title.set_valign (Gtk.Align.CENTER);
+
+        header_box.pack_start (title);
     }
 
-    private Gee.LinkedList<Pair<string, string>> info;
-    private Granite.Widgets.ImgEventBox evbox;
-    private Granite.Widgets.XsEntry perm_code;
-    private bool perm_code_should_update = true;
-    private Gtk.Label l_perm;
-
-    private Gtk.ListStore store_users;
-    private Gtk.ListStore store_groups;
-    private Gtk.ListStore store_apps;
-
-    private uint count;
-    private GLib.List<GOF.File> files;
-    private unowned GOF.File goffile;
-
-    public FM.AbstractDirectoryView view {get; private set;}
-    public Gtk.Entry entry {get; private set;}
-    private string original_name {
-        get {
-            return view.original_name;
-        }
-
-        set {
-            view.original_name = value;
-        }
-    }
-
-    private string proposed_name {
-        get {
-            return view.proposed_name;
-        }
-
-        set {
-            view.proposed_name = value;
-        }
-    }
-
-    private Gee.Set<string>? mimes;
-
-    private Gtk.Widget header_title;
-    private Gtk.Label type_label;
-    private Gtk.Label size_label;
-    private Gtk.Widget type_key_label;
-    private string ftype; /* common type */
-    private Gtk.Spinner spinner;
-    private Gtk.Image size_warning_image;
-    private int size_warning = 0;
-
-    private uint timeout_perm = 0;
-    private GLib.Cancellable? cancellable;
-
-    private Gtk.SizeGroup sg;
-
-    private bool files_contain_a_directory;
-
-    private uint _folder_count;
-    private signal void folder_count_changed ();
-
-    private uint folder_count {
-        get {
-            return _folder_count;
-        }
-
-        set {
-            _folder_count = value;
-            folder_count_changed ();
-        }
-    }
-
-    private uint file_count;
-
-    private enum PanelType {
-        INFO,
-        PERMISSIONS,
-        PREVIEW
-    }
-
-    public PropertiesWindow (GLib.List<unowned GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
-        title = _("Properties");
-        resizable = false;
-        deletable = false;
-        set_default_size (220, -1);
-        transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        type_hint = Gdk.WindowTypeHint.DIALOG;
-        border_width = 5;
-        destroy_with_parent = true;
-
-        if (_files == null) {
-            critical ("Properties Window constructor called with null file list");
-            return;
-        }
-
-        if (_view == null) {
-            critical ("Properties Window constructor called with null Directory View");
-            return;
-        }
-
-        view = _view;
-
-        /* The properties window may outlive the passed-in file object
-           lifetimes. The objects must be referenced as a precaution.
-
-           GLib.List.copy() would not guarantee valid references: because it
-           does a shallow copy (copying the pointer values only) the objects'
-           memory may be freed even while this code is using it. */
-        foreach (unowned GOF.File file in _files)
-            /* prepend(G) is declared "owned G", so ref() will be called once
-               on the unowned foreach value. */
-            files.prepend (file);
-
-        count = files.length();
-
-        if (count < 1 ) {
-            critical ("Properties Window constructor called with empty file list");
-            return;
-        }
-
-        if (!(files.data is GOF.File)) {
-            critical ("Properties Window constructor called with invalid file data (1)");
-            return;
-        }
-
-        /* Set the default containers */
-        var content_area = get_content_area ();
-        sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-
-        var content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_area.pack_start (content_vbox);
-
-        /* Adjust sizes */
-        content_vbox.margin_right = 5;
-        content_vbox.margin_left = 5;
-
-        goffile = (GOF.File) files.data;
-        mimes = new Gee.HashSet<string> ();
-        foreach (var gof in files)
-        {
-            if (!(gof is GOF.File)) {
-                critical ("Properties Window constructor called with invalid file data (2)");
-                return;
-            }
-            var ftype = gof.get_ftype ();
-            if (ftype != null)
-                mimes.add (ftype);
-            if (gof.is_directory)
-                files_contain_a_directory = true;
-        }
-
-        get_info (goffile);
-        cancellable = new GLib.Cancellable ();
-
-        /* Header Box */
-        var header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-        add_header_box (content_vbox, header_box);
-        header_box.margin_bottom = 15;
-        header_box.margin_left = header_box.margin_right = 10;
-
-        /* Stack */
-        var stack_switcher = new Gtk.StackSwitcher ();
-        content_vbox.pack_start (stack_switcher, false, false, 5);
-        stack_switcher.halign = Gtk.Align.CENTER;
-
-        var stack = new Gtk.Stack ();
-        stack.margin_bottom = 15;
-        stack_switcher.stack = stack;
-        content_vbox.pack_start (stack, true, true, 0);
-
-        /* Info */
-        if (info.size > 0) {
-            var info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_info_panel (info_vbox, info);
-            add_section (stack, _("General"), PanelType.INFO, info_vbox);
-        }
-
-        /* Permissions */
-        /* Don't show permissions for uri scheme trash and archives */
-        if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
-            var perm_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_perm_panel (perm_vbox);
-            add_section (stack, _("More"), PanelType.PERMISSIONS, perm_vbox);
-            if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_vbox.get_children ())
-                    widget.set_sensitive (false);
-            }
-        }
-
-        /* Preview */
-        if (count == 1 && goffile.flags != 0) {
-            /* Retrieve the low quality (existent) thumbnail.
-             * This will be shown to prevent resizing the properties window
-             * when the large preview is retrieved.
-             */
-            Gdk.Pixbuf small_preview;
-
-            if (view.is_in_recent ())
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
-            else
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
-
-            /* Request the creation of the large thumbnail */
-            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
-            var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-            construct_preview_panel (preview_box, small_preview);
-            add_section (stack, _("Preview"), PanelType.PREVIEW, preview_box);
-        }
-
-        content_vbox.show ();
-        content_area.show_all ();
-        show_all ();
-
-        if (count == 1 && !view.is_in_recent ()) {
-            int start_offset= 0, end_offset = -1;
-
-            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
-            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
-        }
-
-
-        /* Action area */
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
-        response.connect ((source, type) => {
-            switch (type) {
-                case Gtk.ResponseType.CLOSE:
-                    destroy ();
-                    break;
-            }
-        });
-
-        present ();
-
-        if (folder_count == 0)
-            spinner.hide ();
-
-        if (size_warning < 1)
-            size_warning_image.hide ();
-
-        if (file_count > 1) {
-            type_key_label.hide ();
-            type_label.hide ();
-        }
-    }
-
-    private uint64 total_size = 0;
-
-    private void update_header_desc () {
-        string header_desc_str;
-
-        header_desc_str = format_size ((int64) total_size);
-        if (ftype != null)
-            type_label.label = goffile.formated_type;
-        else {
-            type_key_label.hide ();
-            type_label.hide ();
-        }
-
-        if (size_warning > 0) {
-            string file_plural = _("file");
-            if (size_warning > 1)
-                file_plural = _("files");
-            size_warning_image.visible = true;
-            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
-        }
-
-        size_label.label = header_desc_str;
-    }
-
-    private Mutex mutex;
-    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
-
-    private void selection_size_update () {
-        total_size = 0;
-        deep_count_directories = null;
-        folder_count = 0;
-        file_count = 0;
-        size_warning = 0;
-        size_warning_image.hide ();
-
-        foreach (GOF.File gof in files) {
-            if (gof.is_directory) {
-                folder_count++;
-                var d = new Marlin.DeepCount (gof.location);
-                deep_count_directories.prepend (d);
-                d.finished.connect (() => {
-                                    mutex.lock ();
-                                    deep_count_directories.remove (d);
-                                    total_size += d.total_size;
-                                    size_warning = d.file_not_read;
-                                    update_header_desc ();
-                                    if (file_count + folder_count == size_warning)
-                                        size_label.label = _("unknown");
-
-                                    folder_count--;
-                                    if (!size_label.visible)
-                                        size_label.show ();
-                                    mutex.unlock ();
-                                    });
-            } else {
-                file_count++;
-            }
-
-            mutex.lock ();
-            total_size += PropertiesWindow.file_real_size (gof);
-            mutex.unlock ();
-        }
-
-        if (file_count > 0)
-            update_header_desc ();
-
-        if (folder_count > 0) {
-            spinner.start ();
-
-            folder_count_changed.connect (() => {
-                if (folder_count == 0) {
-                    spinner.hide ();
-                    spinner.stop ();
-                }
-            });
-        }
-
-        this.destroy.connect (() => {
-            foreach (var dir in deep_count_directories)
-                dir.cancel ();
-        });
-    }
-/*
-    private void selection_size_cancel () {
-        foreach (var d in deep_count_directories) {
-            mutex.lock ();
-            d.cancel ();
-            deep_count_directories.remove (d);
-            mutex.unlock ();
-        }
-        deep_count_directories = null;
-    }
-*/
-
-    private void rename_file (GOF.File file, string new_name) {
-        /* Only rename if name actually changed */
-        original_name = file.info.get_name ();
-
-        if (new_name != "") {
-            if (new_name != original_name) {
-                proposed_name = new_name;
-                file.rename (new_name,
-                            (GOF.FileOperationCallback)(FM.AbstractDirectoryView.rename_callback),
-                            (void*)this);
-            }
-        } else
-            reset_entry_text ();
-    }
-
-    public void reset_entry_text (string? new_name = null) {
-        if (new_name != null)
-            original_name = new_name;
-
-        entry.set_text (original_name);
-     }
-
-    private void add_header_box (Gtk.Box vbox, Gtk.Box content) {
-        type_label = new Gtk.Label ("");
-        type_label.set_halign (Gtk.Align.START);
-        size_label = new Gtk.Label ("");
-        type_key_label = create_label_key (_("Type") + (": "));
+    protected Gdk.Pixbuf overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
+        /* Add space around the pixbuf for emblems */
+        var icon_pix = new Gdk.Pixbuf (icon.colorspace,
+                                       icon.has_alpha,
+                                       icon.bits_per_sample,
+                                       64, 64);
 
         /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
          * control over the size and position of the emblems so we create a composite pixbuf */
 
-        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-
-        /* Add space around the pixbuf for emblems */
-        var icon_pix = new Gdk.Pixbuf (file_pix.colorspace,
-                                         file_pix.has_alpha,
-                                         file_pix.bits_per_sample,
-                                         64, 64);
         icon_pix.fill (0);
-        file_pix.composite (icon_pix,
-                            8, 8,
-                            48, 48,
-                            8, 8,
-                            1.0, 1.0,
-                            Gdk.InterpType.NEAREST,
-                            255);
+        icon.composite (icon_pix,
+                        8, 8,
+                        48, 48,
+                        8, 8,
+                        1.0, 1.0,
+                        Gdk.InterpType.NEAREST,
+                        255);
 
         /* Composite in the emblems, if any */
         Gdk.Pixbuf? pixbuf = null;
-        if (goffile.emblems_list != null) {
+        if (emblems_list != null) {
             var theme = Gtk.IconTheme.get_default ();
             int pos = 0;
-            foreach (string emblem_name in goffile.emblems_list) {
+            foreach (string emblem_name in emblems_list) {
                 Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
                 if (info == null)
                     continue;
@@ -442,13 +86,470 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             }
         }
 
-        var file_img = new Gtk.Image.from_pixbuf (icon_pix);
-        file_img.set_valign (Gtk.Align.CENTER);
-        content.pack_start (file_img, false, false);
+        return icon_pix;
+    }
 
+
+    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
+        if (content != null) {
+            content.set_border_width (5);
+            stack.add_titled(content, name, title);
+        }
+
+        /* Only show the stack switcher when there's more than a single tab */
+        if (stack.get_children ().length () > 1) {
+            stack_switcher.show ();
+        }
+    }
+
+    protected float get_alignment_float_from_align (Gtk.Align align) {
+        switch (align) {
+        case Gtk.Align.START:
+            return 0.0f;
+        case Gtk.Align.END:
+            return 1.0f;
+        case Gtk.Align.CENTER:
+            return 0.5f;
+        default:
+            return 0.0f;
+        }
+    }
+
+    protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
+        head_label.set_halign (Gtk.Align.START);
+        head_label.get_style_context ().add_class ("h4");
+        information.attach (head_label, 0, line, 1, 1);
+
+        line++;
+    }
+
+    protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
+        key_label.margin_start = 20;
+        value_label.set_selectable (true);
+        value_label.set_hexpand (true);
+        value_label.set_use_markup (true);
+        value_label.set_can_focus (false);
+        value_label.set_halign (Gtk.Align.START);
+
+        information.attach (key_label, 0, line, 1, 1);
+        if (value_container != null) {
+            value_container.set_size_request (150, -1);
+            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+        else
+            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        line++;
+    }
+ 
+    public PropertiesWindowBase (string _title, Gtk.Window parent) {
+        title = _title;
+        resizable = false;
+        deletable = false;
+        set_default_size (220, -1);
+        transient_for = parent;
+        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+        type_hint = Gdk.WindowTypeHint.DIALOG;
+        border_width = 5;
+        destroy_with_parent = true;
+
+        /* Set the default containers */
+        var content_area = get_content_area ();
+        sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+
+        content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        content_area.pack_start (content_vbox);
+
+        /* Adjust sizes */
+        content_vbox.margin_end = 5;
+        content_vbox.margin_start = 5;
+
+        /* Header Box */
+        header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
+        content_vbox.pack_start (header_box, false, false, 0);
+        header_box.margin_bottom = 15;
+        header_box.margin_start = header_box.margin_end = 10;
+
+        /* Stack */
+        stack_switcher = new Gtk.StackSwitcher ();
+        content_vbox.pack_start (stack_switcher, false, false, 5);
+        stack_switcher.halign = Gtk.Align.CENTER;
+        stack_switcher.no_show_all = true;
+
+        stack = new Gtk.Stack ();
+        stack.margin_bottom = 15;
+        stack_switcher.stack = stack;
+        content_vbox.pack_start (stack, true, true, 0);
+
+        /* Action area */
+        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        response.connect ((source, type) => {
+            switch (type) {
+                case Gtk.ResponseType.CLOSE:
+                    destroy ();
+                    break;
+            }
+        });
+    }
+}
+
+public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
+    private const string resolution_key = _("Resolution:");
+
+    private class Pair<F, G> {
+        public F key;
+        public G value;
+
+        public Pair (F key, G value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private Gee.LinkedList<Pair<string, string>> info;
+    private Granite.Widgets.ImgEventBox evbox;
+    private Granite.Widgets.XsEntry perm_code;
+    private bool perm_code_should_update = true;
+    private Gtk.Label l_perm;
+
+    private Gtk.ListStore store_users;
+    private Gtk.ListStore store_groups;
+    private Gtk.ListStore store_apps;
+
+    private uint count;
+    private GLib.List<GOF.File> files;
+    private GOF.File goffile;
+
+    public FM.AbstractDirectoryView view {get; private set;}
+    public Gtk.Entry entry {get; private set;}
+    private string original_name {
+        get {
+            return view.original_name;
+        }
+
+        set {
+            view.original_name = value;
+        }
+    }
+
+    private string proposed_name {
+        get {
+            return view.proposed_name;
+        }
+
+        set {
+            view.proposed_name = value;
+        }
+    }
+
+    private enum PanelType {
+        INFO,
+        PERMISSIONS,
+        PREVIEW
+    }
+
+    private Gee.Set<string>? mimes;
+    private Gtk.Box info_vbox;
+    private Gtk.Grid information;
+    private Gtk.Widget header_title;
+    private Gtk.Label type_label;
+    private Gtk.Label size_label;
+    private Gtk.Label contains_label;
+    private Gtk.Label contains_key_label;
+    private Gtk.Widget type_key_label;
+    private string ftype; /* common type */
+    private Gtk.Spinner spinner;
+    private Gtk.Image size_warning_image;
+    private int size_warning = 0;
+
+    private uint timeout_perm = 0;
+    private GLib.Cancellable? cancellable;
+
+    private bool files_contain_a_directory;
+
+    private uint _uncounted_folders = 0;
+    private uint selected_folders = 0;
+    private uint selected_files = 0;
+    private signal void uncounted_folders_changed ();
+
+    private uint uncounted_folders {
+        get {
+            return _uncounted_folders;
+        }
+
+        set {
+            _uncounted_folders = value;
+            uncounted_folders_changed ();
+        }
+    }
+
+    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
+    private uint file_count; /* Count of files current including top level (selected) files other than folders */
+
+    public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
+        base (_("Properties"), parent);
+
+        if (_files == null) {
+            critical ("Properties Window constructor called with null file list");
+            return;
+        }
+
+        if (_view == null) {
+            critical ("Properties Window constructor called with null Directory View");
+            return;
+        }
+
+        view = _view;
+
+        /* Connect signal before creating any DeepCount directories */
+        this.destroy.connect (() => {
+            foreach (var dir in deep_count_directories)
+                dir.cancel ();
+        });
+
+        /* The properties window may outlive the passed-in file object
+           lifetimes. The objects must be referenced as a precaution.
+
+           GLib.List.copy() would not guarantee valid references: because it
+           does a shallow copy (copying the pointer values only) the objects'
+           memory may be freed even while this code is using it. */
+        foreach (GOF.File file in _files)
+            /* prepend(G) is declared "owned G", so ref() will be called once
+               on the unowned foreach value. */
+            files.prepend (file);
+
+        count = files.length();
+
+        if (count < 1 ) {
+            critical ("Properties Window constructor called with empty file list");
+            return;
+        }
+
+        if (!(files.data is GOF.File)) {
+            critical ("Properties Window constructor called with invalid file data (1)");
+            return;
+        }
+
+        goffile = (GOF.File) files.data;
+        mimes = new Gee.HashSet<string> ();
+        foreach (var gof in files)
+        {
+            if (!(gof is GOF.File)) {
+                critical ("Properties Window constructor called with invalid file data (2)");
+                return;
+            }
+
+            var ftype = gof.get_ftype ();
+            if (ftype != null)
+                mimes.add (ftype);
+
+            if (gof.is_directory)
+                files_contain_a_directory = true;
+        }
+
+        get_info (goffile);
+        cancellable = new GLib.Cancellable ();
+
+        /* Header Box */
+        build_header_box (header_box);
+
+        /* Info */
+        if (info.size > 0) {
+            info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            construct_info_panel (info_vbox, info);
+            add_section (stack, _("General"), PanelType.INFO.to_string (), info_vbox);
+        }
+
+        /* Permissions */
+        /* Don't show permissions for uri scheme trash and archives */
+        if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
+            var perm_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            construct_perm_panel (perm_vbox);
+            add_section (stack, _("More"), PanelType.PERMISSIONS.to_string (), perm_vbox);
+            if (!goffile.can_set_permissions ()) {
+                foreach (var widget in perm_vbox.get_children ())
+                    widget.set_sensitive (false);
+            }
+        }
+
+        /* Preview */
+        if (count == 1 && goffile.flags != 0) {
+            /* Retrieve the low quality (existent) thumbnail.
+             * This will be shown to prevent resizing the properties window
+             * when the large preview is retrieved.
+             */
+            Gdk.Pixbuf small_preview;
+
+            if (view.is_in_recent ())
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
+            else
+                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+
+            /* Request the creation of the large thumbnail */
+            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
+            var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+
+            construct_preview_panel (preview_box, small_preview);
+            add_section (stack, _("Preview"), PanelType.PREVIEW.to_string (), preview_box);
+        }
+
+        show_all ();
+
+        /* There is a race condition between reaching update_header_desc () or here first
+         * so call update_widgets_state in both places.
+         */
+        update_widgets_state ();
+        present ();
+    }
+
+    private uint64 total_size = 0;
+
+    private void update_header_desc () {
+        string header_desc_str;
+
+        header_desc_str = format_size ((int64) total_size);
+
+        if (size_warning > 0) {
+            string file_plural = _("file");
+            if (size_warning > 1)
+                file_plural = _("files");
+            size_warning_image.visible = true;
+            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
+        }
+
+        size_label.label = header_desc_str;
+        contains_label.label = get_contains_label (folder_count, file_count);
+        update_widgets_state ();
+    }
+
+    private Mutex mutex;
+    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
+
+    private void selection_size_update () {
+        total_size = 0;
+        uncounted_folders = 0;
+        selected_folders = 0;
+        selected_files = 0;
+        folder_count = 0;
+        file_count = 0;
+        size_warning = 0;
+        size_warning_image.hide ();
+
+        deep_count_directories = null;
+
+        foreach (GOF.File gof in files) {
+            if (gof.is_root_network_folder ()) {
+                size_label.label = _("unknown");
+                continue;
+            }
+            if (gof.is_directory) {
+                mutex.lock ();
+                uncounted_folders++; /* this gets decremented by DeepCount*/
+                mutex.unlock ();
+
+                selected_folders++;
+                var d = new Marlin.DeepCount (gof.location); /* Starts counting on creation */
+                deep_count_directories.prepend (d);
+
+                d.finished.connect (() => {
+                    mutex.lock ();
+                    deep_count_directories.remove (d);
+
+                    total_size += d.total_size;
+                    size_warning = d.file_not_read;
+                    if (file_count + uncounted_folders == size_warning)
+                        size_label.label = _("unknown");
+
+                    folder_count += d.dirs_count;
+                    file_count += d.files_count;
+                    uncounted_folders--; /* triggers signal which updates description when reaches zero */
+                    mutex.unlock ();
+                });
+
+            } else {
+                selected_files++;
+            }
+
+            mutex.lock ();
+            total_size += PropertiesWindow.file_real_size (gof);
+            mutex.unlock ();
+        }
+
+        if (uncounted_folders > 0) {/* possible race condition - uncounted_folders could have been decremented? */
+            spinner.start ();
+            uncounted_folders_changed.connect (() => {
+                if (uncounted_folders == 0) {
+                    spinner.hide ();
+                    spinner.stop ();
+                    update_header_desc ();
+                }
+            });
+        } else {
+            update_header_desc ();
+        }
+    }
+
+    private void rename_file (GOF.File file, string new_name) {
+        /* Only rename if name actually changed */
+        original_name = file.info.get_name ();
+
+        if (new_name != "") {
+            if (new_name != original_name) {
+                proposed_name = new_name;
+                view.set_file_display_name (file.location, new_name, after_rename);
+            }
+        } else
+            reset_entry_text ();
+    }
+
+    private void after_rename (GLib.File original_file, GLib.File? new_location) {
+        if (new_location != null) {
+            reset_entry_text (new_location.get_basename ());
+            goffile = GOF.File.@get (new_location);
+            files.first ().data = goffile;
+        } else {
+            reset_entry_text ();  //resets entry to old name
+        }
+    }
+
+    public void reset_entry_text (string? new_name = null) {
+        if (new_name != null)
+            original_name = new_name;
+
+        entry.set_text (original_name);
+    }
+
+    private void build_header_box (Gtk.Box content) {
+        /* create some widgets first (may be hidden by selection_size_update ()) */
+        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
+        var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
+
+        spinner = new Gtk.Spinner ();
+        spinner.set_hexpand (false);
+        spinner.halign = Gtk.Align.START;
+
+        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+        size_warning_image.halign = Gtk.Align.START;
+        size_warning_image.no_show_all = true;
+        size_label = new Gtk.Label ("");
+        size_label.set_hexpand (false);
+
+        type_label = new Gtk.Label ("");
+        type_label.set_halign (Gtk.Align.START);
+        type_key_label = new Gtk.Label (_("Type:"));
+        type_key_label.halign = Gtk.Align.END;
+
+        contains_label = new Gtk.Label ("");
+        contains_label.set_halign (Gtk.Align.START);
+        contains_key_label = new Gtk.Label (_("Contains:"));
+        contains_key_label.set_halign (Gtk.Align.END);
+
+        selection_size_update (); /* Start counting first to get number of selected files and folders */
+
+        /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
             var label = new Gtk.Label ("");
-            label.set_markup ("<span>" + _("%u selected items").printf(count) + "</span>");
+            label.set_markup ("<span>" + get_selected_label (selected_folders, selected_files) + "</span>");
             label.set_halign (Gtk.Align.START);
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
@@ -466,32 +567,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             });
             header_title = entry;
         }
-        header_title.get_style_context ().add_class ("h2");
-        header_title.margin_top = 5;
 
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        hbox.set_halign (Gtk.Align.CENTER);
-        header_title.set_valign (Gtk.Align.CENTER);
-        content.pack_start (header_title);
-        spinner = new Gtk.Spinner ();
-        spinner.set_hexpand (false);
-
-        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.hide ();
-
-        selection_size_update ();
-        size_warning_image.hide ();
-
-        vbox.pack_start (content, false, false, 0);
-    }
-
-    private void add_section (Gtk.Stack stack, string title, PanelType type, Gtk.Box content) {
-        if (content != null) {
-            content.set_border_width (5);
-            content.margin_right = 15;
-            content.margin_left = 0;
-            stack.add_titled(content, type.to_string (), title);
-        }
+        pack_header_box (file_img, header_title);
     }
 
     private string? get_common_ftype () {
@@ -561,12 +638,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         if (count == 1) {
             var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
             if (time_created != null)
-                info.add (new Pair<string, string>(_("Created") + (": "), time_created));
+                info.add (new Pair<string, string>(_("Created:"), time_created));
             if (file.formated_modified != null)
-                info.add (new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
+                info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
             var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
             if (time_last_access != null)
-                info.add (new Pair<string, string>(_("Last Access") + (": "), time_last_access));
+                info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
             /* print deletion date if trashed file */
 
             /**TODO** format trash deletion date string*/
@@ -574,12 +651,26 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
             if (file.is_trashed ()) {
                 var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
                 if (deletion_date != null)
-                    info.add (new Pair<string, string>(_("Deleted") + (": "), deletion_date));
+                    info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
             }
         }
+
         ftype = get_common_ftype ();
         if (ftype != null) {
-            info.add (new Pair<string, string>(_("MimeType") + (": "), ftype));
+            info.add (new Pair<string, string>(_("MimeType:"), ftype));
+            /* get image size in pixels using an asynchronous method to stop the interface blocking on
+             * large images. */
+            if ("image" in ftype) {
+                string resolution_value = "";
+                if (file.width > 0) { /* resolution has already been determined */
+                    resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+                } else {
+                    resolution_value = _("loading ...");
+                    /* Async function will update info when resolution determined */
+                    get_resolution.begin (file, info);
+                }
+                info.add (new Pair<string, string> (resolution_key, resolution_value));
+            }
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (view.get_default_app () != null && !goffile.is_directory) {
@@ -587,29 +678,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 foreach (var mime in mimes) {
                     (str == null) ? str = mime : str = string.join (", ", str, mime);
                 }
-                info.add (new Pair<string, string>(_("MimeTypes") + (": "), str));
+                info.add (new Pair<string, string>(_("MimeTypes:"), str));
             }
         }
 
-        /* get image size in pixels */
-        var mime = file.icon.to_string ();
-        if ("image" in mime) {
-            string path;
 
-            if (view.is_in_recent ())
-                path = (file.get_display_target_uri ()).substring (7, -1).replace ("%20", " ");
-            else
-                path = file.location.get_path ();
-
-            try {
-                Gdk.Pixbuf pixbuf = new Gdk.Pixbuf.from_file (path);
-                var width = pixbuf.get_width ().to_string ();
-                var height = pixbuf.get_height ().to_string ();
-                info.add (new Pair<string, string> (_("Size") + (": "), width +" × " + height + " px"));
-            } catch (Error e) {
-                warning ("Error: %s\n", e.message);
-            }
-        }
 
         if (got_common_location ()) {
             if (view.is_in_recent ()) {
@@ -618,68 +691,87 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                 string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
                 string location_name = location_folder.slice (7, -1);
 
-                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
+                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
             } else
-                info.add (new Pair<string, string>(_("Location") + (": "), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
+                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
         }
 
         if (count == 1 && file.info.get_is_symlink ())
-            info.add (new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
+            info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
 
         /* print orig location of trashed files */
         if (file.is_trashed () && file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
             if (trash_orig_loc != null)
-                info.add (new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
+                info.add (new Pair<string, string>(_("Origin Location:"), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
         }
     }
 
-    private void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
-        key_label.margin_left = 20;
-        value_label.set_selectable (true);
-        value_label.set_hexpand (true);
-        value_label.set_use_markup (true);
-        value_label.set_can_focus (false);
-        value_label.set_halign (Gtk.Align.START);
+    private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
+        GLib.FileInputStream? stream = null;
+        GLib.File file = goffile.location;
+        string resolution_value = _("Could not be determined");
 
-        information.attach (key_label, 0, line, 1, 1);
-        if (value_container != null) {
-            value_container.set_size_request (150, -1);
-            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        try {
+            stream = yield file.read_async (0, cancellable);
+            if (stream == null) {
+                error ("Could not read image file's size data");
+            } else {
+                var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
+                goffile.width = pixbuf.get_width ();
+                goffile.height = pixbuf.get_height ();
+                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+            }
+        } catch (Error e) {
+            warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
         }
-        else
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        try {
+            stream.close ();
+        } catch (GLib.Error e) {
+            debug ("Error closing stream in get_resolution: %s", e.message);
+        }
 
-        line++;
+        /* Cannot be sure which row the resolution line was added to the grid so we have to search for it */
+        Gtk.Widget? kw = null;
+        int row = 0;
+        do {
+            kw = information.get_child_at (0, row);
+            if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
+                Gtk.Widget vw = information.get_child_at (1, row);
+                if (vw is Gtk.Label) {
+                    (vw as Gtk.Label).label = resolution_value;
+                    break;
+                }
+            }
+            row++;
+        } while (kw != null);
     }
-
     private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
-        var information = new Gtk.Grid();
-        information.row_spacing = 3;
+        information = new Gtk.Grid();
+        information.column_spacing = 6;
+        information.row_spacing = 6;
 
-        var label = new Gtk.Label (_("Info"));
-        label.set_halign (Gtk.Align.START);
-        label.get_style_context ().add_class ("h4");
-        information.attach (label, 0, 0, 1, 1);
+        int n = 0;
 
-        int n = 1;
+        create_head_line (new Gtk.Label (_("Info")), information, ref n);
+
         /* Have to have these separate as size call is async */
-        var size_key_label = create_label_key (_("Size") + (": "));
+        var size_key_label = new Gtk.Label (_("Size:"));
+        size_key_label.halign = Gtk.Align.END;
+
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.pack_start (size_label, false, true);
         size_box.pack_start (spinner, false, false);
+        size_box.pack_start (size_label, false, true);
         size_box.pack_start (size_warning_image);
 
-        spinner.halign = Gtk.Align.START;
-        size_warning_image.halign = Gtk.Align.START;
         create_info_line (size_key_label, size_label, information, ref n, size_box);
-        size_label.set_hexpand (false);
-
         create_info_line (type_key_label, type_label, information, ref n);
+        create_info_line (contains_key_label, contains_label, information, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Gtk.Label (pair.value);
-            var key_label = create_label_key (pair.key);
+            var key_label = new Gtk.Label (pair.key);
+            key_label.halign = Gtk.Align.END;
             create_info_line (key_label, value_label, information, ref n);
         }
 
@@ -723,7 +815,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = create_label_key (_("Open with:"), Gtk.Align.CENTER);
+            var key_label = new Gtk.Label (_("Open with:"));
+            key_label.halign = Gtk.Align.END;
 
             information.attach (key_label, 0, n, 1, 1);
             information.attach (hcombo, 1, n, 1, 1);
@@ -738,19 +831,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
                     uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
                     uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
 
-                    n++;
+                    create_head_line (new Gtk.Label (_("Usage")), information, ref n);
 
-                    debug ("%d", n);
-                    label = new Gtk.Label (_("Usage"));
-                    label.set_halign (Gtk.Align.START);
-                    label.get_style_context ().add_class ("h4");
-                    information.attach (label, 0, n, 1, 1);
-
-                    n++;
-
-                    var key_label = create_label_key (_("Device usage:"), Gtk.Align.CENTER);
+                    var key_label = new Gtk.Label (_("Device usage:"));
+                    key_label.halign = Gtk.Align.END;
                     information.attach (key_label, 0, n, 1, 1);
-                    debug ("%d", n);
+
                     var progressbar = new Gtk.ProgressBar ();
                     double used =  1.0 - (double) fs_free / (double) fs_capacity;
                     progressbar.set_fraction (used);
@@ -778,32 +864,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
 
         return false;
-    }
-
-    private float get_alignment_float_from_align (Gtk.Align align) {
-        switch (align) {
-        case Gtk.Align.START:
-            return 0.0f;
-        case Gtk.Align.END:
-            return 1.0f;
-        case Gtk.Align.CENTER:
-            return 0.5f;
-        default:
-            return 0.0f;
-        }
-    }
-
-    private Gtk.Widget create_label_key (string str, Gtk.Align valign = Gtk.Align.START) {
-        Gtk.Label key_label = new Gtk.Label (str);
-        key_label.set_sensitive (false);
-        key_label.margin_right = 5;
-        var yalign = get_alignment_float_from_align (valign);
-
-        var align = new Gtk.Alignment (1.0f, yalign, 0, 0);
-        align.add (key_label);
-        sg.add_widget (align);
-
-        return align;
     }
 
     private void toggle_button_add_label (Gtk.ToggleButton btn, string str) {
@@ -890,6 +950,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
         hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         hbox.homogeneous = true;
+        hbox.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
         var btn_read = new Gtk.ToggleButton ();
         toggle_button_add_label (btn_read, _("Read"));
         btn_read.set_data ("permissiontype", pt);
@@ -1098,17 +1159,21 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
 
     private void construct_perm_panel (Gtk.Box box) {
         perm_grid = new Gtk.Grid();
+        perm_grid.column_spacing = 6;
+        perm_grid.row_spacing = 6;
 
         Gtk.Widget key_label;
         Gtk.Widget value_label;
         Gtk.Box value_hlabel;
 
-        key_label = create_label_key(_("Owner") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Owner:"));
+        key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 1, 1, 1);
         value_label = create_owner_choice ();
         perm_grid.attach (value_label, 1, 1, 1, 1);
 
-        key_label = create_label_key(_("Group") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Group:"));
+        key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 2, 1, 1);
         value_label = create_group_choice ();
         perm_grid.attach (value_label, 1, 2, 1, 1);
@@ -1116,15 +1181,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         /* make a separator with margins */
         key_label.margin_bottom = 7;
         value_label.margin_bottom = 7;
-        key_label = create_label_key (_("Owner") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Owner:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
         perm_grid.attach (value_hlabel, 1, 3, 1, 1);
-        key_label = create_label_key (_("Group") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Group:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
         perm_grid.attach (value_hlabel, 1, 4, 1, 1);
-        key_label = create_label_key (_("Everyone") + ": ", Gtk.Align.CENTER);
+        key_label = new Gtk.Label (_("Everyone:"));
+        key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
         perm_grid.attach (value_hlabel, 1, 5, 1, 1);
@@ -1402,5 +1470,268 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog {
         }
         return file_size;
     }
+
+    private string get_contains_label (uint folders, uint files) {
+        string txt = "";
+        if (folders > 0) {
+            if (folders > 1) {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u subfolders and %u files").printf (folders, files);
+                    } else {
+                        txt = _("%u subfolders and %u file").printf (folders,files);
+                    }
+                } else {
+                    txt = _("%u subfolders").printf (folders);
+                }
+            } else {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u subfolder and %u files").printf (folders, files);
+                    } else {
+                        txt = _("%u subfolder and %u file").printf (folders, files);
+                    }
+                } else {
+                    txt = _("%u folder").printf (folders);
+                }
+            }
+        } else {
+            if (files > 0) {
+                if (files > 1) {
+                    txt = _("%u files").printf (files);
+                } else {
+                    txt = _("%u file").printf (files);
+                }
+            }
+        }
+
+        return txt;
+    }
+
+    private string get_selected_label (uint folders, uint files) {
+        string txt = "";
+        uint total = folders + files;
+
+        if (folders > 0) {
+            if (folders > 1) {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u selected items (%u folders and %u files)").printf (total, folders, files);
+                    } else {
+                        txt = _("%u selected items (%u folders and %u file)").printf (total, folders, files);
+                    }
+                } else {
+                    txt = _("%u folders").printf (folders);
+                }
+            } else {
+                if (files > 0) {
+                    if (files > 1) {
+                        txt = _("%u selected items (%u folder and %u files)").printf (total, folders,files);
+                    } else {
+                        txt = _("%u selected items (%u folder and %u file)").printf (total, folders,files);
+                    }
+                } else {
+                    txt = _("%u folder").printf (folders); /* displayed for background folder*/
+                }
+            }
+        } else {
+            if (files > 0) {
+                if (files > 1) {
+                    txt = _("%u files").printf (files);
+                } else {
+                    txt = _("%u file").printf (files); /* should not be displayed - entry instead */
+                }
+            }
+        }
+
+        /* The selection should never be empty */
+        return txt;
+    }
+
+    /** Hide certain widgets under certain conditions **/
+    private void update_widgets_state () {
+        if (uncounted_folders == 0)
+            spinner.hide ();
+
+        if (size_warning < 1)
+            size_warning_image.hide ();
+
+        if (ftype != null) {
+            type_label.label = goffile.formated_type;
+        }
+
+        if (count > 1) {
+            type_key_label.hide ();
+            type_label.hide ();
+        }
+
+        if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
+            int start_offset= 0, end_offset = -1;
+
+            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+        }
+
+        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
+         * the "contained files" counted are only in the subfolders or not.*/
+        /* Only show 'contains' label when folders selected are not empty */
+        if (count > selected_folders || contains_label.get_text ().length < 1) {
+            contains_key_label.hide ();
+            contains_label.hide ();
+        } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
+            contains_key_label.show ();
+            contains_label.show ();
+        }
+    }
 }
 
+public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBase {
+
+    private enum PanelType {
+        INFO,
+    }
+
+    public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
+        base (_("Disk Properties"), parent);
+
+        GLib.File mount_root;
+        string mount_name;
+        GLib.Icon mount_icon;
+
+        /* We might reach this point with mount being null, this happens when
+         * the user wants to see the properties for the 'File System' entry in
+         * the sidebar. GVfs is kind enough to not have a Mount entry for the
+         * root filesystem, so we try our best to gather enough data. */
+        if (mount != null) {
+            mount_root = mount.get_root ();
+            mount_name = mount.get_name ();
+            mount_icon = mount.get_icon ();
+        } else {
+            mount_root = GLib.File.new_for_uri ("file:///");
+            mount_name = _("File System");
+            mount_icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
+        }
+
+        GLib.FileInfo info = null;
+
+        try {
+            info = mount_root.query_filesystem_info ("filesystem::*");
+        } catch (Error e) {
+            warning ("error: %s", e.message);
+        }
+
+        /* Build the header box */
+        var theme = Gtk.IconTheme.get_default ();
+        Gtk.IconInfo? icon_info = null;
+        Gtk.Image image = new Gtk.Image.from_icon_name (Marlin.ICON_FILESYSTEM, Gtk.IconSize.DIALOG);
+
+        try {
+            icon_info = theme.lookup_by_gicon (mount_icon, 48, Gtk.IconLookupFlags.FORCE_SIZE);
+
+            if (icon_info != null) {
+                var emblems_list = new GLib.List<string> ();
+
+                /* Overlay the 'readonly' emblem to tell the user the disk is
+                 * mounted as RO */
+                if (info != null &&
+                    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
+                    info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
+                    emblems_list.append ("emblem-readonly");
+                }
+
+                var final_pixbuf = overlay_emblems (icon_info.load_icon (), emblems_list);
+                image = new Gtk.Image.from_pixbuf (final_pixbuf);
+            }
+        } catch (Error err) {
+            warning ("%s", err.message);
+        }
+
+        var header_label = new Gtk.Label (mount_name);
+        header_label.set_halign (Gtk.Align.START);
+
+        pack_header_box (image, header_label);
+
+        /* Build the grid holding the informations */
+        var info_grid = new Gtk.Grid ();
+        info_grid.column_spacing = 6;
+        info_grid.row_spacing = 6;
+
+        int n = 0;
+
+        create_head_line (new Gtk.Label (_("Info")), info_grid, ref n);
+
+        var key_label = new Gtk.Label (_("Location:"));
+        key_label.halign = Gtk.Align.END;
+
+        var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
+        create_info_line (key_label, value_label, info_grid, ref n);
+
+        if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+            key_label = new Gtk.Label (_("Format:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+            create_info_line (key_label, value_label, info_grid, ref n);
+        }
+
+        create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
+
+        if (info != null &&
+            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+            info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
+            info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
+            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+            uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            double used =  1.0 - (double) fs_free / (double) fs_capacity;
+
+            key_label = new Gtk.Label (_("Capacity:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (format_size ((int64)fs_capacity));
+            create_info_line (key_label, value_label, info_grid, ref n);
+
+            key_label = new Gtk.Label (_("Available:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (format_size ((int64) fs_free));
+            create_info_line (key_label, value_label, info_grid, ref n);
+
+            key_label = new Gtk.Label (_("Used:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (_("%s (%d%% used)").printf (format_size ((int64) fs_used), (int) (used * 100)));
+            create_info_line (key_label, value_label, info_grid, ref n);
+
+            var progressbar = new Gtk.ProgressBar ();
+            progressbar.set_fraction (used);
+            progressbar.margin_top = 6;
+            info_grid.attach (progressbar, 0, n, 5, 1);
+        } else {
+            /* We're not able to gether the usage statistics, show an error
+             * message to let the user know. */
+            key_label = new Gtk.Label (_("Capacity:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (_("Unknown"));
+            create_info_line (key_label, value_label, info_grid, ref n);
+
+            key_label = new Gtk.Label (_("Available:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (_("Unknown"));
+            create_info_line (key_label, value_label, info_grid, ref n);
+
+            key_label = new Gtk.Label (_("Used:"));
+            key_label.halign = Gtk.Align.END;
+
+            value_label = new Gtk.Label (_("Unknown"));
+            create_info_line (key_label, value_label, info_grid, ref n);
+        }
+
+        add_section (stack, _("General"), PanelType.INFO.to_string (), info_grid);
+
+        show_all ();
+        present ();
+    }
+}

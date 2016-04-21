@@ -141,12 +141,14 @@ gof_file_icon_changed (GOFFile *file)
     GOFDirectoryAsync *dir = NULL;
 
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
-    if (dir != NULL) {
-        if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
-            g_signal_emit_by_name (dir, "icon_changed", file);
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+        if (dir != NULL) {
+            if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
+                g_signal_emit_by_name (dir, "icon_changed", file);
 
-        g_object_unref (dir);
+            g_object_unref (dir);
+        }
     }
     g_signal_emit_by_name (file, "icon_changed");
 }
@@ -341,7 +343,7 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file))
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
         file->format_size = g_strdup ("—");
     else
         file->format_size = g_format_size (file->size);
@@ -536,8 +538,9 @@ gof_file_update (GOFFile *file)
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
     /* mark the thumb flags as state none, we'll load the thumbs once the directory
      * would be loaded on a thread */
-    if (gof_file_get_thumbnail_path (file) != NULL)
-        file->flags = GOF_FILE_THUMB_STATE_NONE;
+    if (gof_file_get_thumbnail_path (file) != NULL) {
+        file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+    }
 
     /* formated type */
     gof_file_update_formated_type (file);
@@ -814,6 +817,10 @@ gof_file_query_info (GOFFile *file)
 
     g_return_val_if_fail (G_IS_FILE (file->location), NULL);
 
+    file->is_mounted = TRUE;
+    file->exists = TRUE;
+    file->is_connected = TRUE;
+
     info = g_file_query_info (file->location, "*", 0, NULL, &err);
 
     if (err != NULL) {
@@ -869,12 +876,13 @@ gof_file_query_thumbnail_update (GOFFile *file)
         /* get the thumbnail path from md5 filename */
         md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, file->uri, -1);
         base_name = g_strdup_printf ("%s.png", md5_hash);
-        /* TODO Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding - when Tumbler does*/
+
+        /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
         if (file->pix_size <= 128) {
-            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+            file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "normal", base_name, NULL);
         } else {
-            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+            file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "large", base_name, NULL);
         }
         g_free (base_name);
@@ -922,6 +930,8 @@ static void gof_file_init (GOFFile *file) {
     file->icon = NULL;
     file->pix = NULL;
     file->color = 0;
+    file->width = 0;
+    file->height = 0;
 
     file->utf8_collation_key = NULL;
     file->formated_type = NULL;
@@ -937,7 +947,7 @@ static void gof_file_init (GOFFile *file) {
     file->exists = TRUE;
     file->is_connected = TRUE;
 
-    file->flags = 0;
+    file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;
     file->pix_size = -1;
 
     file->target_gof = NULL;
@@ -961,9 +971,12 @@ static void gof_file_finalize (GObject* obj) {
     else
         g_warning ("%s %s", G_STRFUNC, file->basename);
 #endif
-
+    if (!(G_IS_FILE (file->location))) {
+        g_warning ("Invalid file location on finalize for %s", file->basename);
+    } else {
+        g_object_unref (file->location);
+    }
     g_clear_object (&file->info);
-    _g_object_unref0 (file->location);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
@@ -1433,14 +1446,14 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (gof_file_is_desktop_file (file)) {
+        return TRUE;
+    }
+
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
         return FALSE;
-    }
-
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
     }
 
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
@@ -1675,17 +1688,6 @@ gof_file_accepts_drop (GOFFile          *file,
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
 
-        char *scheme;
-        scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
-        /* do not allow symbolic links to remote filesystems */
-        if (!g_str_has_prefix (scheme, "file"))
-            actions &= ~(GDK_ACTION_LINK);
-
-        g_free (scheme);
-
-        /* cannot create symbolic links in the trash or copy to the trash */
-        if (gof_file_is_trashed (file))
-            actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
 
         /* check up to 100 of the paths (just in case somebody tries to
          * drag around his music collection with 5000 files).
@@ -1693,13 +1695,7 @@ gof_file_accepts_drop (GOFFile          *file,
 
         for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
         {
-            scheme = g_file_get_uri_scheme (lp->data);
-            if (!g_str_has_prefix (scheme, "file")) {
-                /* do not allow symbolic links from remote filesystems */
-                actions &= ~(GDK_ACTION_LINK);
-            }
 
-            g_free (scheme);
             /* we cannot drop a file on itself */
             if (G_UNLIKELY (g_file_equal (gof_file_get_target_location (file), lp->data)))
                 return 0;
@@ -1717,6 +1713,16 @@ gof_file_accepts_drop (GOFFile          *file,
                 else
                     g_object_unref (parent_file);
             }
+
+        /* Make these tests at the end so that any changes are not reversed subsequently */
+            char *scheme;
+            scheme = g_file_get_uri_scheme (lp->data);
+            if (!g_str_has_prefix (scheme, "file")) {
+                /* do not allow symbolic links from remote filesystems */
+                actions &= ~(GDK_ACTION_LINK);
+            }
+
+            g_free (scheme);
 
             /* copy/move/link within the trash not possible */
             if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
@@ -1760,8 +1766,28 @@ gof_file_accepts_drop (GOFFile          *file,
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
-    } else
+    } else {
+        g_debug ("Not a valid drop target");
         return 0;
+    }
+
+    /* Make these tests at the end so that any changes are not reversed subsequently */
+    char *scheme;
+    scheme = g_file_get_uri_scheme (gof_file_get_target_location (file));
+    /* do not allow symbolic links to remote filesystems */
+    if (!g_str_has_prefix (scheme, "file"))
+        actions &= ~(GDK_ACTION_LINK);
+
+    g_free (scheme);
+
+    /* cannot create symbolic links in the trash or copy to the trash */
+    if (gof_file_is_trashed (file))
+        actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
+
+    if (actions == GDK_ACTION_ASK) {
+        /* No point in asking if there are no allowed actions */
+        return 0;
+    }
 
     /* determine the preferred action based on the context */
     if (G_LIKELY (suggested_action_return != NULL))
@@ -2095,7 +2121,10 @@ gof_file_list_copy (GList *list)
 static void
 gof_file_update_existing (GOFFile *file, GFile *new_location)
 {
-    GOFDirectoryAsync *dir = gof_directory_async_cache_lookup (file->directory);
+    GOFDirectoryAsync *dir = NULL;
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+    }
 
     gof_file_remove_from_caches (file);
     file->is_gone = FALSE;
@@ -2562,14 +2591,17 @@ gof_file_get_preview_path(GOFFile* file)
 
     if (thumbnail_path != NULL)
     {
-        thumbnail_path_split = g_strsplit(thumbnail_path, ".thumbnails/normal", -1);
-        if(g_strv_length(thumbnail_path_split) == 2)
+        /* Construct new path to large thumbnail based on $XDG_CACHE_HOME */
+        thumbnail_path_split = g_strsplit(thumbnail_path, G_DIR_SEPARATOR_S, -1);
+        uint l;
+        l = g_strv_length(thumbnail_path_split);
+        if(l > 2)
         {
-            new_thumbnail_path = g_strjoin(".thumbnails/large", thumbnail_path_split[0], thumbnail_path_split[1], NULL);
+            new_thumbnail_path = g_strjoin(G_DIR_SEPARATOR_S, g_get_user_cache_dir (), "thumbnails/large", thumbnail_path_split[l-1], NULL);
+
             if(!g_file_test(new_thumbnail_path, G_FILE_TEST_EXISTS))
             {
-                g_free(new_thumbnail_path);
-                new_thumbnail_path = NULL;
+                new_thumbnail_path = g_strdup(thumbnail_path);
             }
         }
         else
@@ -2593,10 +2625,12 @@ gof_file_can_unmount (GOFFile *file)
 gboolean
 gof_file_thumb_can_frame (GOFFile *file)
 {
-    GOFDirectoryAsync *dir;
+    GOFDirectoryAsync *dir = NULL;
 
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
+    if (file->directory != NULL) {
+        dir = gof_directory_async_cache_lookup (file->directory);
+    }
     if (dir != NULL) {
         gboolean can_frame = !dir->uri_contain_keypath_icons;
         g_object_unref (dir);
